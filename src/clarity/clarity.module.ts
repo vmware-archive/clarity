@@ -14,6 +14,7 @@ import {WIZARD_DIRECTIVES} from "./wizard/index";
 import {ICON_DIRECTIVES} from "./iconography/index";
 
 import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationService";
+import {CHECKBOX_DIRECTIVES} from "./checkboxes/index";
 
 @NgModule({
     imports: [
@@ -22,6 +23,7 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
     ],
     declarations: [
         ALERT_DIRECTIVES,
+        CHECKBOX_DIRECTIVES,
         CODE_HIGHLIGHT_DIRECTIVES,
         DROPDOWN_DIRECTIVES,
         LAYOUT_DIRECTIVES,
@@ -34,6 +36,7 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
     ],
     exports: [
         ALERT_DIRECTIVES,
+        CHECKBOX_DIRECTIVES,
         CODE_HIGHLIGHT_DIRECTIVES,
         DROPDOWN_DIRECTIVES,
         LAYOUT_DIRECTIVES,

@@ -1,6 +1,6 @@
 
 
-# clarity
+# Clarity Design System
 
 ## Overview
 

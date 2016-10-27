@@ -43,7 +43,13 @@ gulp.task("npm:icons:package", function () {
         .pipe(gulp.dest(npmFolder + "/clarity-icons"));
 });
 
-gulp.task("npm:icons", ["npm:icons:deliverables", "npm:icons:sources", "npm:icons:package"], function () {});
+gulp.task("npm:icons:readme", function () {
+    return gulp.src("build/npm/clarity-icons-README.md")
+        .pipe(rename("README.md"))
+        .pipe(gulp.dest(npmFolder + "/clarity-icons"));
+});
+
+gulp.task("npm:icons", ["npm:icons:deliverables", "npm:icons:sources", "npm:icons:package", "npm:icons:readme"], function () {});
 
 /**
  * Preparing the clarity-ui package
@@ -80,7 +86,13 @@ gulp.task("npm:ui:package", function () {
         .pipe(gulp.dest(npmFolder + "/clarity-ui"));
 });
 
-gulp.task("npm:ui", ["npm:ui:deliverables", "npm:ui:sources", "npm:ui:package"], function () {});
+gulp.task("npm:ui:readme", function () {
+    return gulp.src("build/npm/clarity-ui-README.md")
+        .pipe(rename("README.md"))
+        .pipe(gulp.dest(npmFolder + "/clarity-ui"));
+});
+
+gulp.task("npm:ui", ["npm:ui:deliverables", "npm:ui:sources", "npm:ui:package", "npm:ui:readme"], function () {});
 
 /**
  * Preparing the clarity-angular package
@@ -133,7 +145,13 @@ gulp.task("npm:angular:package", function () {
         .pipe(gulp.dest(npmFolder + "/clarity-angular"));
 });
 
-gulp.task("npm:angular", ["npm:angular:deliverables", "npm:angular:sources", "npm:angular:package"], function () {});
+gulp.task("npm:angular:readme", function () {
+    return gulp.src("build/npm/clarity-angular-README.md")
+        .pipe(rename("README.md"))
+        .pipe(gulp.dest(npmFolder + "/clarity-angular"));
+});
+
+gulp.task("npm:angular", ["npm:angular:deliverables", "npm:angular:sources", "npm:angular:package", "npm:angular:readme"], function () {});
 
 /**
  * Preparing the clarity-demos package
@@ -148,8 +166,6 @@ gulp.task("npm:angular", ["npm:angular:deliverables", "npm:angular:sources", "np
  */
 gulp.task("npm:demos:deliverables", function () {
     return gulp.src([
-        "CONTRIBUTING.md",
-        "README.md",
         "dist/bundles/clarity-demos.min.js",
         "tmp/clarity-demos/**/*.js",
         "tmp/clarity-demos/**/*.d.ts"
@@ -185,6 +201,12 @@ gulp.task("npm:demos:package", function () {
         .pipe(gulp.dest(npmFolder + "/clarity-demos"));
 });
 
-gulp.task("npm:demos", ["npm:demos:deliverables", "npm:demos:sources", "npm:demos:package"], function () {});
+gulp.task("npm:demos:readme", function () {
+    return gulp.src("build/npm/clarity-demos-README.md")
+        .pipe(rename("README.md"))
+        .pipe(gulp.dest(npmFolder + "/clarity-demos"));
+});
+
+gulp.task("npm:demos", ["npm:demos:deliverables", "npm:demos:sources", "npm:demos:package", "npm:demos:readme"], function () {});
 
 gulp.task("npm:all", ["npm:icons", "npm:ui", "npm:angular", "npm:demos"], function () {});

@@ -1,0 +1,194 @@
+<div class="clr-example">
+    <div class="backdrop-example-container">
+        <div class="clr-wizard main-container">
+            <div class="modal static">
+                <div class="modal-dialog modal-xl" role="dialog" aria-hidden="true">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        </div>
+                        <div class="modal-body">
+                            <div class="content-container">
+                                <nav class="nav-panel sidenav">
+                                    <div class="text-light">
+                                        <div class="wizard-title">
+                                            Wizard Title
+                                        </div>
+                                    </div>
+
+                                    <ol class="nav navList" role="tablist">
+                                        <li class="clr-nav-link complete" role="presentation"
+                                            id="clr-tabs-0-tab-0" aria-selected="true"
+                                            aria-controls="clr-tabs-0-content-0">
+                                            <a class="nav-link" href="javascript://" role="tab">
+                                                Step 1
+                                            </a>
+                                        </li>
+                                        <li class="clr-nav-link skipped" role="presentation"
+                                            id="clr-tabs-0-tab-1" aria-selected="true"
+                                            aria-controls="clr-tabs-0-content-1">
+                                            <a class="nav-link" href="javascript://" role="tab">
+                                                Step 2
+                                            </a>
+                                        </li>
+                                        <li class="clr-nav-link active" role="presentation"
+                                            id="clr-tabs-0-tab-2" aria-selected="true"
+                                            aria-controls="clr-tabs-0-content-2">
+                                            <a class="nav-link" href="javascript://" role="tab">
+                                                Step 3
+                                            </a>
+                                        </li>
+                                        <li class="clr-nav-link disabled" role="presentation"
+                                            id="clr-tabs-0-tab-3" aria-selected="true"
+                                            aria-controls="clr-tabs-0-content-3">
+                                            <a class="nav-link" href="#" role="tab">
+                                                Step 4
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </nav>
+                                <main class="content-area">
+                                    <button aria-label="Close" class="close" type="button">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                    <div class="clr-nav-content" role="tabpanel" id="clr-tabs-0-content-0"
+                                         aria-hidden="true" aria-labelledby="clr-tabs-0-tab-0" data-hidden="true">
+                                        <section>
+                                            <label class="text-light">Title for step 1
+                                            </label>
+                                            <div class="content-wrapper">Content for step 1</div>
+                                        </section>
+                                    </div>
+                                    <div class="clr-nav-content" role="tabpanel" id="clr-tabs-0-content-1"
+                                         aria-hidden="true" aria-labelledby="clr-tabs-0-tab-1" data-hidden="true">
+                                        <section>
+                                            <label class="text-light">Title for step 2</label>
+                                            <div class="content-wrapper">Content for step 2</div>
+                                        </section>
+                                    </div>
+                                    <div class="clr-nav-content active" role="tabpanel" id="clr-tabs-0-content-2"
+                                         aria-hidden="false" aria-labelledby="clr-tabs-0-tab-2" data-hidden="false">
+                                        <section>
+                                            <label class="text-light">Title for step 3</label>
+                                            <div class="content-wrapper">
+                                                Content for step 3
+                                            </div>
+                                        </section>
+                                    </div>
+                                    <div class="clr-nav-content" role="tabpanel" id="clr-tabs-0-content-3"
+                                         aria-hidden="true" aria-labelledby="clr-tabs-0-tab-3" data-hidden="true">
+                                        <section>
+                                            <label class="text-light">Title for step 4</label>
+                                            <div class="content-wrapper">Content for step 4</div>
+                                        </section>
+                                    </div>
+                                </main>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-link">Cancel</button>
+                            <button class="btn btn-outline">Back</button>
+                            <button class="btn btn-primary">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-backdrop static" aria-hidden="true"></div>
+        </div>
+    </div>
+</div>
+
+<pre>
+<code clr-code-highlight="language-html">
+&lt;div class="clr-wizard main-container"&gt;
+    &lt;div class="modal"&gt;
+        &lt;div class="modal-dialog modal-xl" role="dialog" aria-hidden="true"&gt;
+            &lt;div class="modal-content"&gt;
+    &lt;div class="modal-header"&gt;
+                &lt;/div&gt;
+                &lt;div class="modal-body"&gt;
+                            &lt;div class="content-container"&gt;
+                                &lt;nav class="nav-panel sidenav"&gt;
+                                    &lt;div class="text-light"&gt;
+                                        &lt;div class="wizard-title"&gt;
+                                            Wizard Title
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+
+                                    &lt;ol class="nav navList" role="tablist"&gt;
+                                        &lt;li class="clr-nav-link complete" role="presentation"
+                                            id="clr-tabs-0-tab-0" aria-selected="true"
+                                            aria-controls="clr-tabs-0-content-0"&gt;
+                                            &lt;a class="nav-link" href="javascript://" role="tab"&gt;
+                                                Step 1
+                                            &lt;/a&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class="clr-nav-link skipped" role="presentation"
+                                            id="clr-tabs-0-tab-1" aria-selected="true"
+                                            aria-controls="clr-tabs-0-content-1"&gt;
+                                            &lt;a class="nav-link" href="javascript://" role="tab"&gt;
+                                                Step 2
+                                            &lt;/a&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class="clr-nav-link active" role="presentation"
+                                            id="clr-tabs-0-tab-2" aria-selected="true"
+                                            aria-controls="clr-tabs-0-content-2"&gt;
+                                            &lt;a class="nav-link" href="javascript://" role="tab"&gt;
+                                                Step 3
+                                            &lt;/a&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class="clr-nav-link disabled" role="presentation"
+                                            id="clr-tabs-0-tab-3" aria-selected="true"
+                                            aria-controls="clr-tabs-0-content-3"&gt;
+                                            &lt;a class="nav-link" href="#" role="tab"&gt;
+                                                Step 4
+                                            &lt;/a&gt;
+                                        &lt;/li&gt;
+                                    &lt;/ol&gt;
+                                &lt;/nav&gt;
+                                &lt;main class="content-area"&gt;
+                                    &lt;button aria-label="Close" class="close" type="button"&gt;
+                                        &lt;span aria-hidden="true"&gt;×&lt;/span&gt;
+                                    &lt;/button&gt;
+                                    &lt;div class="clr-nav-content" role="tabpanel" id="clr-tabs-0-content-0"
+                                         aria-hidden="true" aria-labelledby="clr-tabs-0-tab-0" data-hidden="true"&gt;
+                                        &lt;section&gt;
+                                            &lt;label class="text-light"&gt;Title for step 1&lt;/label&gt;
+                                            &lt;div class="content-wrapper"&gt;Content for step 1&lt;/div&gt;
+                                        &lt;/section&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class="clr-nav-content" role="tabpanel" id="clr-tabs-0-content-1"
+                                         aria-hidden="true" aria-labelledby="clr-tabs-0-tab-1" data-hidden="true"&gt;
+                                        &lt;section&gt;
+                                            &lt;label class="text-light"&gt;Title for step 2&lt;/label&gt;
+                                            &lt;div class="content-wrapper"&gt;Content for step 2&lt;/div&gt;
+                                        &lt;/section&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class="clr-nav-content active" role="tabpanel" id="clr-tabs-0-content-2"
+                                         aria-hidden="false" aria-labelledby="clr-tabs-0-tab-2" data-hidden="false"&gt;
+                                        &lt;section&gt;
+                                            &lt;label class="text-light"&gt;Title for step 3&lt;/label&gt;
+                                            &lt;div class="content-wrapper"&gt;Content for step 3&lt;/div&gt;
+                                        &lt;/section&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class="clr-nav-content" role="tabpanel" id="clr-tabs-0-content-3"
+                                         aria-hidden="true" aria-labelledby="clr-tabs-0-tab-3" data-hidden="true"&gt;
+                                        &lt;section&gt;
+                                            &lt;label class="text-light"&gt;Title for step 4&lt;/label&gt;
+                                            &lt;div class="content-wrapper"&gt;Content for step 4&lt;/div&gt;
+                                        &lt;/section&gt;
+                                    &lt;/div&gt;
+                                &lt;/main&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                &lt;div class="modal-footer"&gt;
+                    &lt;button class="btn btn-link"&gt;Cancel&lt;/button&gt;
+                    &lt;button class="btn btn-outline"&gt;Back&lt;/button&gt;
+                    &lt;button class="btn btn-primary"&gt;Next&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-backdrop" aria-hidden="true"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+</code>
+</pre>

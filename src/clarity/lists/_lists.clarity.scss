@@ -1,0 +1,67 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+
+$clr-list-style-padding: 1.1em;
+
+@include exports('lists.clarity') {
+    %kill-list-styles {
+        padding-left: 0;
+        margin-left: 0;
+        list-style: none;
+    }
+
+    ul, ol {
+        list-style-position: inside;
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+
+        &.list {
+            list-style-position: outside;
+            margin-left: $clr-list-style-padding;
+
+            &.compact {
+                line-height: $clr_baselineRem_0_75;
+
+                & > li {
+                    margin-bottom: $clr_baselineRem_0_25;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+
+            }
+        }
+    }
+
+    // right now this causes no problems. but watch out in the future because it may
+    // cause issues with nested tabs, list-groups of sidenav lists or something.
+    // just be aware that this may need to be overridden down the line.
+    ul:not(.list-unstyled), ol {
+        & > li > ul.list-unstyled {
+            margin-left: $clr-list-style-padding;
+        }
+    }
+
+    ul.list-unstyled {
+        @extend %kill-list-styles;
+    }
+
+    li > ul {
+        margin-top: 0;
+        margin-left: $clr-list-style-padding;
+    }
+
+    ul.list-group {
+        margin-top: 0;
+    }
+
+    ul, ol {
+        &.list-spacer {
+            margin-top: $clr_baselineRem_1;
+        }
+    }
+}

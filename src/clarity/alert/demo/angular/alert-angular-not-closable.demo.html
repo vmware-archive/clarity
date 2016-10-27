@@ -1,0 +1,78 @@
+<div class="clr-example">
+    <div class="main-container">
+        <header class="header header-6">
+            <div class="branding">
+                <span class="title">Header</span>
+            </div>
+        </header>
+        <div class="content-container">
+            <div class="content-area">
+                <clr-alert [clrAlertClosable]="false">
+                    <div class="alert-item">
+                        <span class="alert-text">
+                            This alert cannot be dismissed.
+                        </span>
+                        <div class="alert-actions">
+                            <clr-dropdown [clrMenuPosition]="'bottom-right'">
+                                <a class="dropdown-toggle" href="javascript://">
+                                    Actions
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item">Shutdown</a>
+                                    <a class="dropdown-item">Delete</a>
+                                    <a class="dropdown-item">Reboot</a>
+                                </div>
+                            </clr-dropdown>
+                        </div>
+                    </div>
+                </clr-alert>
+                <clr-alert [clrAlertType]="'alert-warning'">
+                    <div class="alert-item">
+                        <span class="alert-text">
+                            Try closing this alert.
+                        </span>
+                    </div>
+                </clr-alert>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<pre>
+<code clr-code-highlight="language-html">
+&lt;clr-alert [clrAlertClosable]=&quot;false&quot;&gt;
+    &lt;div class=&quot;alert-item&quot;&gt;
+        &lt;span class=&quot;alert-text&quot;&gt;
+            This alert cannot be dismissed.
+        &lt;/span&gt;
+        &lt;div class=&quot;alert-actions&quot;&gt;
+            &lt;clr-dropdown [clrMenuPosition]=&quot;'bottom-right'&quot;&gt;
+                &lt;a class=&quot;dropdown-toggle&quot; href=&quot;javascript://&quot;&gt;
+                    Actions
+                &lt;/a&gt;
+                &lt;div class=&quot;dropdown-menu&quot;&gt;
+                    &lt;a class=&quot;dropdown-item&quot;&gt;Shutdown&lt;/a&gt;
+                    &lt;a class=&quot;dropdown-item&quot;&gt;Delete&lt;/a&gt;
+                    &lt;a class=&quot;dropdown-item&quot;&gt;Reboot&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/clr-dropdown&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/clr-alert&gt;
+&lt;clr-alert [clrAlertType]=&quot;'alert-warning'&quot;&gt;
+    &lt;div class=&quot;alert-item&quot;&gt;
+        &lt;span class=&quot;alert-text&quot;&gt;
+            Try closing this alert.
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/clr-alert&gt;
+</code></pre>

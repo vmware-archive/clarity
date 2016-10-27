@@ -1,0 +1,36 @@
+<svg id="Layer_3" data-name="Layer 3" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <style>
+            .cls-1 {
+                fill: #fafafa;
+            }
+            .cls-2 {
+                fill: #93c8dd;
+            }
+            .cls-3 {
+                fill: #9ddee9;
+            }
+            .cls-4 {
+                fill: #79b1c5;
+            }
+            .cls-5 {
+                fill: #81c4d1;
+            }
+            .cls-6 {
+                fill: #cedde0;
+            }
+            .cls-7 {
+                fill: #a7c9d5;
+            }
+        </style>
+    </defs>
+    <title>Login-img1</title><rect class="cls-1" y="0.38"/>
+    <polygon class="cls-2" points="0 3.06 0 599.24 298.14 301.43 0 3.06"/>
+    <polygon class="cls-3" points="0 408.65 0 599.24 95.29 504.06 0 408.65"/>
+    <polygon class="cls-2" points="918.21 921.95 818.63 822.3 718.89 921.95 918.21 921.95"/>
+    <polygon class="cls-4" points="718.89 921.95 818.63 822.3 298.14 301.43 0 599.24 0 655.02 266.51 921.95 718.89 921.95"/>
+    <polygon class="cls-5" points="512.67 921.95 95.29 504.06 0 599.24 0 654.97 267.06 921.95 512.67 921.95"/>
+    <polygon class="cls-6" points="266.51 921.95 0 655.02 0 921.95 266.51 921.95"/>
+    <polygon class="cls-7" points="1128 0 799.58 0 1128 329.83 1128 0"/>
+    <polygon class="cls-6" points="1128 329.83 799.58 0 599.9 0 298.14 301.43 818.63 822.3 1128 513.18 1128 329.83"/>
+</svg>

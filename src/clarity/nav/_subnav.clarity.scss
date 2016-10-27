@@ -1,0 +1,40 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+@import "../utils/layers.clarity";
+@import "../color/color.clarity";
+@import "../typography/typography.clarity";
+
+// TODO: would be nice to key text color in subnav off of the bgColor...
+$clr-subnav-bgColor: $gray-lightest !default;
+$clr-nav-shadow: 0 -1px 0 $gray-light-midtone inset;
+
+@include exports('subnav.clarity') {
+    .sub-nav, //deprecated
+    .subnav {
+        display: flex;
+        box-shadow: $clr-nav-shadow;
+        justify-content: space-between; //nav to the first and aside to the very right
+        align-items: center;
+        background-color: $clr-subnav-bgColor;
+        height: $clr-subnav-height;
+
+        .nav {
+            flex: 1 1 auto;
+            padding-left: $clr_baselineRem_1;
+        }
+
+        aside {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            height: $clr-subnav-height;
+            padding: 0 $clr_baselineRem_1;
+
+            & > :last-child {
+                margin-right: 0;
+                padding-right: 0;
+            }
+        }
+    }
+}

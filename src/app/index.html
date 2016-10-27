@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clarity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <base href="/">
+
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/web-animations-js/web-animations.min.js"></script>
+    <script src="node_modules/mutationobserver-shim/dist/mutationobserver.min.js"></script>
+    <script src="node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
+
+    <!-- PrismJS -->
+    <link rel="stylesheet" href="node_modules/prismjs/themes/prism-solarizedlight.css">
+    <script src="node_modules/prismjs/prism.js"></script>
+    <script src="node_modules/prismjs/components/prism-typescript.min.js"></script>
+
+    <!-- @if NODE_ENV='dev' -->
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="clarity-icons.css">
+    <link rel="stylesheet" href="clarity-ui.css">
+    <!-- @endif -->
+
+    <!-- @if NODE_ENV='prod' -->
+    <script src="bundles/define-clarity-icons.min.js"></script>
+    <script src="bundles/clarity-angular.min.js"></script>
+    <script src="bundles/clarity-demos.min.js"></script>
+
+    <!--Add font-awesome dependency. Needed for select boxes and check boxes-->
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bundles/clarity-icons.min.css">
+    <link rel="stylesheet" href="bundles/clarity-ui.min.css">
+    <!-- @endif -->
+  </head>
+
+  <body>
+    <my-app>Loading...</my-app>
+
+    <script>
+        (function(global) {
+
+
+            // map tells the System loader where to look for things
+            var map = {
+                'app':                                  'app',
+                'icons':                                'icons',
+                'rxjs':                                 'node_modules/rxjs',
+                '@angular/core':                        'node_modules/@angular/core/bundles/core.umd.js',
+                '@angular/common':                      'node_modules/@angular/common/bundles/common.umd.js',
+                '@angular/compiler':                    'node_modules/@angular/compiler/bundles/compiler.umd.js',
+                '@angular/platform-browser':            'node_modules/@angular/platform-browser/bundles/platform-browser.umd.js',
+                '@angular/platform-browser-dynamic':    'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+                '@angular/router':                      'node_modules/@angular/router/bundles/router.umd.js',
+                '@angular/forms':                       'node_modules/@angular/forms/bundles/forms.umd.js'
+            };
+
+            // packages tells the System loader how to load when no filename and/or no extension
+            var packages = {
+                'icons':                      { defaultExtension: 'js' },
+                'app':                        { defaultExtension: 'js' },
+                'rxjs':                       { defaultExtension: 'js' },
+                'clarity-angular':            { main: 'index.js', defaultExtension: 'js' },
+                'clarity-demos':              { defaultExtension: 'js' }
+            };
+
+            var config = {
+                map: map,
+                packages: packages
+            };
+            System.config(config);
+
+        })(this);
+
+      window.addEventListener("load", function() {
+
+        System.import('app/boot').then(null, console.error.bind(console));
+        System.import('icons/define-clarity-icons').then(null, console.error.bind(console));
+
+      });
+    </script>
+  </body>
+</html>

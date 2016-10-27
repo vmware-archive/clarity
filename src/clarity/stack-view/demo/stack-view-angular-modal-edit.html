@@ -1,0 +1,86 @@
+<div class="clr-example">
+    <clr-stack-view>
+        <clr-stack-header>
+            Modal editor
+            <a class="stack-action btn btn-sm btn-link" (click)="editModal = true">Edit</a>
+        </clr-stack-header>
+
+        <clr-stack-block *ngFor="let block of blocks">
+            <clr-stack-label>{{block.title}}</clr-stack-label>
+            <clr-stack-content>{{block.content}}</clr-stack-content>
+
+            <clr-stack-block *ngFor="let child of block.children">
+                <clr-stack-label>{{child.title}}</clr-stack-label>
+                <clr-stack-content>{{child.content}}</clr-stack-content>
+            </clr-stack-block>
+        </clr-stack-block>
+    </clr-stack-view>
+
+    <clr-modal [(clrModalOpen)]="editModal">
+        <h3 class="modal-title">Edit mode</h3>
+        <div class="modal-body">
+            <clr-stack-view>
+                <clr-stack-block *ngFor="let block of blocks; let blockIndex = index" [clrSbNotifyChange]="block.content!=='Content '+ (blockIndex+1)">
+                    <clr-stack-label>{{block.title}}</clr-stack-label>
+                    <clr-stack-content>
+                        <input type="text" [(ngModel)]="block.content"/>
+                    </clr-stack-content>
+
+                    <clr-stack-block *ngFor="let child of block.children; let blockChildIndex = index" [clrSbNotifyChange]="child.content!=='Sub-content '+ (blockChildIndex+1)">
+                        <clr-stack-label>{{child.title}}</clr-stack-label>
+                        <clr-stack-content>
+                            <input type="text" [(ngModel)]="child.content"/>
+                        </clr-stack-content>
+                    </clr-stack-block>
+                </clr-stack-block>
+            </clr-stack-view>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="editModal = false">Done</button>
+        </div>
+    </clr-modal>
+</div>
+
+<pre>
+<code ngNonBindable clr-code-highlight="language-html">
+&lt;clr-stack-view&gt;
+    &lt;clr-stack-header&gt;
+        Modal editor
+        &lt;a class=&quot;stack-action btn btn-sm btn-link&quot; (click)=&quot;editModal = true&quot;&gt;Edit&lt;/a&gt;
+    &lt;/clr-stack-header&gt;
+
+    &lt;clr-stack-block *ngFor=&quot;let block of blocks&quot;&gt;
+        &lt;clr-stack-label&gt;{{block.title}}&lt;/clr-stack-label&gt;
+        &lt;clr-stack-content&gt;{{block.content}}&lt;/clr-stack-content&gt;
+
+        &lt;clr-stack-block *ngFor=&quot;let child of block.children&quot;&gt;
+            &lt;clr-stack-label&gt;{{child.title}}&lt;/clr-stack-label&gt;
+            &lt;clr-stack-content&gt;{{child.content}}&lt;/clr-stack-content&gt;
+        &lt;/clr-stack-block&gt;
+    &lt;/clr-stack-block&gt;
+&lt;/clr-stack-view&gt;
+
+&lt;clr-modal [(clrModalOpen)]=&quot;editModal&quot;&gt;
+    &lt;h3 class=&quot;modal-title&quot;&gt;Edit mode&lt;/h3&gt;
+    &lt;div class=&quot;modal-body&quot;&gt;
+        &lt;clr-stack-view&gt;
+            &lt;clr-stack-block *ngFor=&quot;let block of blocks&quot;&gt;
+                &lt;clr-stack-label&gt;{{block.title}}&lt;/clr-stack-label&gt;
+                &lt;clr-stack-content&gt;
+                    &lt;input type=&quot;text&quot; [(ngModel)]=&quot;block.content&quot;/&gt;
+                &lt;/clr-stack-content&gt;
+
+                &lt;clr-stack-block *ngFor=&quot;let child of block.children&quot;&gt;
+                    &lt;clr-stack-label&gt;{{child.title}}&lt;/clr-stack-label&gt;
+                    &lt;clr-stack-content&gt;
+                        &lt;input type=&quot;text&quot; [(ngModel)]=&quot;child.content&quot;/&gt;
+                    &lt;/clr-stack-content&gt;
+                &lt;/clr-stack-block&gt;
+            &lt;/clr-stack-block&gt;
+        &lt;/clr-stack-view&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;modal-footer&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; (click)=&quot;editModal = false&quot;&gt;Done&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/clr-modal&gt;
+</code></pre>

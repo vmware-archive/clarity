@@ -1,0 +1,47 @@
+@import "../../utils/colors.clarity";
+@import "../color.clarity";
+@import "./color-shared.demo";
+
+@mixin clr-colordemo-luminanceTest($color) {
+    .all-L::after {
+        content: '#{decimal-round(_clr-getLuminance($color), 4)}';
+    }
+
+    .red-L::after {
+        content:  '#{decimal-round(_clr-getLuminance($color, red), 4)}';
+    }
+
+    .red-C::after {
+        content:  '#{decimal-round(_clr-getChromaticity(red($color)), 4)}';
+    }
+
+    .green-L::after {
+        content: '#{decimal-round(_clr-getLuminance($color, green), 4)}';
+    }
+
+    .green-C::after {
+        content: '#{decimal-round(_clr-getChromaticity(green($color)), 4)}';
+    }
+
+    .blue-L::after {
+        content: '#{decimal-round(_clr-getLuminance($color, blue), 4)}';
+    }
+
+    .blue-C::after {
+        content: '#{decimal-round(_clr-getChromaticity(blue($color)), 4)}';
+    }
+}
+
+.colordemo-luminance {
+    @include clr-colordemo-sharedContainerStyles;
+
+    margin: rem(1.4) 0;
+
+    .white-test {
+        @include clr-colordemo-luminanceTest(#fff);
+    }
+
+    .alt-test {
+        @include clr-colordemo-luminanceTest(#f99);
+    }
+}

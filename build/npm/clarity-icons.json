@@ -1,0 +1,24 @@
+{
+    "name": "clarity-icons",
+    "version": "/* @echo VERSION */",
+    "description": "Custom Element Icons for Clarity",
+    "homepage": "https://vmware.github.io/clarity/",
+    "repository" : {
+        "type" : "git",
+        "url" : "ssh://git@git.eng.vmware.com/clarity.git"
+    },
+    "peerDependencies": {
+        "mutationobserver-shim": "^0.3.2",
+        "@webcomponents/custom-elements": "github:webcomponents/custom-elements.git#v1.0.0-alpha.3"
+    },
+    //@exclude
+    "scripts": {
+        "prepublish": "echo 'Error: Please run \"npm run publish:clarity\" on the parent project' && exit 1"
+    },
+    //@endexclude
+    "author": "clarity",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/vmware/clarity/issues"
+    }
+}

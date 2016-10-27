@@ -1,0 +1,38 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+@import "node_modules/bootstrap/scss/code";
+
+@include exports('code.clarity') {
+    //Styles for Clarity Code Snippets
+    pre, pre[class*="language-"] {
+        margin: $clr_baselineRem_0_5 0;
+    }
+
+    pre {
+        white-space: normal;
+        border: 1px solid $gray-light-midtone;
+        max-height: baselineRem(15);
+        border-radius: 3px;
+        overflow: auto;
+    }
+
+    pre code {
+        white-space: pre;
+    }
+
+    //Overriding PrismJS code styles
+    :not(pre) > code[class*="language-"], pre[class*="language-"], pre, code[class*="language-"] {
+        line-height: $clr_baselineRem_1;
+        padding: 0;
+    }
+
+    //Overriding bootstrap code styles
+    code {
+        &.clr-code {
+            color: $reds-dark-midtone;
+            padding: 0;
+            background: transparent;
+        }
+    }
+}

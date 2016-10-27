@@ -1,0 +1,21 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "node_modules/bootstrap/scss/close";
+
+@include exports('close.clarity') {
+    .close {
+        font-weight: 200;
+        text-shadow: none;
+        color: $gray-dark;
+        opacity: 0.7;
+
+        &:hover {
+            color: $clr-black;
+            opacity: 1;
+        }
+
+        &:focus {
+            @include include-outline-style-form-fields();
+        }
+    }
+}

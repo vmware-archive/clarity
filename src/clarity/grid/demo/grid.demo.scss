@@ -1,0 +1,20 @@
+@import "../../utils/code";
+
+.clr-example{
+
+    .clr-example-col-value{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 36px;
+        border-radius: 3px;
+        background: #DDE3E5;
+        margin: 6px 0;
+    }
+
+    .clr-example-row {
+        background: #414957;
+        height: 108px;
+        margin: 6px 0;
+    }
+}

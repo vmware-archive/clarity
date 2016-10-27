@@ -1,0 +1,14 @@
+@import "../../color/color.clarity";
+@import "../../utils/variables.clarity";
+@import "../../utils/mixins.clarity";
+@import "../../utils/helpers.clarity";
+@import "../../utils/code";
+
+
+.clr-example{
+    header{
+        &.space-below{
+            margin-bottom: 24px;
+        }
+    }
+}

@@ -1,0 +1,57 @@
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {Component} from "@angular/core";
+import {FormsModule} from "@angular/forms";
+import {ClarityModule} from "../clarity.module";
+
+@Component({
+    template: `
+        <clr-stack-view #stackView>
+            <clr-stack-header>Title</clr-stack-header>
+            <clr-stack-block>
+                <clr-stack-label>Label</clr-stack-label>
+                <clr-stack-content>Content</clr-stack-content>
+            </clr-stack-block>
+        </clr-stack-view>
+   `
+})
+class TestComponent {
+}
+
+export default function(): void {
+    "use strict";
+    describe("StackView", () => {
+        let fixture: ComponentFixture<any>;
+        let compiled: any;
+
+        beforeEach(() => {
+            TestBed.configureTestingModule({
+                imports: [
+                    ClarityModule,
+                    FormsModule
+                ],
+                declarations: [TestComponent]
+            });
+
+            fixture = TestBed.createComponent(TestComponent);
+            fixture.detectChanges();
+            compiled = fixture.nativeElement;
+        });
+
+        afterEach(() => {
+            fixture.destroy();
+        });
+
+        /**
+         * There are basically no tests at the moment because the StackView component itself
+         * doesn't do anything apart from projecting content.
+         *
+         * This will change when inline editing becomes a public feature.
+         */
+
+        it("projects content", () => {
+            expect(compiled.textContent).toMatch(/Title/);
+            expect(compiled.textContent).toMatch(/Label/);
+            expect(compiled.textContent).toMatch(/Content/);
+        });
+    });
+};

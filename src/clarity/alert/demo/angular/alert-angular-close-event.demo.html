@@ -1,0 +1,44 @@
+<div class="clr-example">
+    <div class="main-container">
+        <header class="header header-6">
+            <div class="branding">
+                <span class="title">Header</span>
+            </div>
+        </header>
+        <div class="content-container">
+            <div class="content-area">
+                <clr-alert [clrAlertType]="'alert-success'" (clrAlertClosedChange)="onClose()">
+                    <div class="alert-item">
+                        <span class="alert-text">
+                            This alert indicates a success!
+                        </span>
+                    </div>
+                </clr-alert>
+                <div>{{closeMessage}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<pre>
+<code clr-code-highlight="language-html" ngNonBindable>
+    &lt;clr-alert [clrAlertType]=&quot;'alert-success'&quot; (clrAlertClosedChange)=&quot;onClose()&quot;&gt;
+        &lt;div class=&quot;alert-item&quot;&gt;
+            &lt;span class=&quot;alert-text&quot;&gt;
+                This alert indicates a success!
+            &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/clr-alert&gt;
+    &lt;div&gt;{{closeMessage}}&lt;/div&gt;
+</code></pre>
+
+<pre>
+<code clr-code-highlight="language-typescript">
+    export class AlertAngularDemo  {{'{'}}
+        closeMessage: string = "";
+
+        onClose() {{'{'}}
+            this.closeMessage = "The alert has been closed";
+         {{'}'}}
+    {{'}'}}
+</code></pre>

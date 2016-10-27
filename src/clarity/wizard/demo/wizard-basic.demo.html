@@ -1,0 +1,42 @@
+<button class="btn btn-primary" (click)="wizardMedium.open()">Medium Wizard</button>
+<button class="btn btn-primary" (click)="wizardLarge.open()">Large Wizard</button>
+<button class="btn btn-primary" (click)="wizardDefault.open()">Default Wizard</button>
+
+<clr-wizard #wizardmd [(clrWizardOpen)]="open" [clrWizardSize]="'md'">
+    <div class="wizard-title">Wizard Title</div>
+
+    <clr-wizard-step>Step 1</clr-wizard-step>
+    <clr-wizard-step>Step 2</clr-wizard-step>
+    <clr-wizard-step>Step 3</clr-wizard-step>
+
+    <clr-wizard-page>Content for step 1</clr-wizard-page>
+    <clr-wizard-page>Content for step 2</clr-wizard-page>
+    <clr-wizard-page>Content for step 3</clr-wizard-page>
+</clr-wizard>
+
+<clr-wizard #wizardlg [(clrWizardOpen)]="open" [clrWizardSize]="'lg'">
+    <div class="wizard-title">Wizard Title</div>
+
+    <clr-wizard-step>Step 1</clr-wizard-step>
+    <clr-wizard-step>Step 2</clr-wizard-step>
+    <clr-wizard-step>Step 3</clr-wizard-step>
+
+    <clr-wizard-page>Content for step 1</clr-wizard-page>
+    <clr-wizard-page>Content for step 2</clr-wizard-page>
+    <clr-wizard-page>Content for step 3</clr-wizard-page>
+</clr-wizard>
+
+<clr-wizard #wizardxlg [(clrWizardOpen)]="open">
+    <div class="wizard-title">Wizard Title</div>
+
+    <clr-wizard-step>Step 1</clr-wizard-step>
+    <clr-wizard-step>Step 2</clr-wizard-step>
+    <clr-wizard-step>Step 3</clr-wizard-step>
+
+    <clr-wizard-page>Content for step 1</clr-wizard-page>
+    <clr-wizard-page>Content for step 2</clr-wizard-page>
+    <clr-wizard-page>Content for step 3</clr-wizard-page>
+</clr-wizard>
+
+<clr-example [clrLanguage]="'typescript'" [clrCode]="code"></clr-example>
+<clr-example [clrLanguage]="'html'" [clrCode]="html"></clr-example>

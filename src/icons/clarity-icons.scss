@@ -1,0 +1,83 @@
+@import '../clarity/utils/variables.clarity';
+
+$clr-icon-sm: rem(16/$clr-rem-denominator);
+$clr-icon-md: rem(36/$clr-rem-denominator);
+$clr-icon-lg: rem(72/$clr-rem-denominator);
+
+@mixin setIconColor($clr-icon-color) {
+    fill: $clr-icon-color;
+    .transparent-fill-stroke {
+        stroke: $clr-icon-color;
+    }
+}
+
+clr-icon {
+    display: inline-block;
+    margin: 0;
+    height: $clr-icon-sm;
+    width: $clr-icon-sm;
+    vertical-align: text-top;
+    @include setIconColor(currentColor);
+    &.icon-size-sm {
+        height: $clr-icon-sm;
+        width: $clr-icon-sm;
+    }
+    &.icon-size-md {
+        height: $clr-icon-md;
+        width: $clr-icon-md;
+    }
+    &.icon-size-lg {
+        height: $clr-icon-lg;
+        width: $clr-icon-lg;
+    }
+    &.icon-color-success {
+        @include setIconColor($greens-dark-midtone);
+    }
+    &.icon-color-danger {
+        @include setIconColor($reds-dark);
+    }
+    &.icon-color-warning {
+        @include setIconColor($reds-light-midtone);
+    }
+    &.icon-color-info {
+        @include setIconColor($clr-actionblue);
+    }
+    &.icon-color-inverse {
+        @include setIconColor($clr-white);
+    }
+    &.icon-color-highlight {
+        @include setIconColor($clr-actionblue);
+    }
+    &.icon-orient-up {
+        svg {
+            transform: rotate(0deg);
+        }
+    }
+    &.icon-orient-down {
+        svg {
+            transform: rotate(180deg);
+        }
+    }
+    &.icon-orient-right {
+        svg {
+            transform: rotate(90deg);
+        }
+    }
+    &.icon-orient-left {
+        svg {
+            transform: rotate(270deg);
+        }
+    }
+    & > svg {
+        height: 100%;
+        width: 100%;
+        display: block;
+    }
+    .transparent-fill-stroke {
+        fill: none;
+        stroke-width: 1.3;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+    }
+
+}

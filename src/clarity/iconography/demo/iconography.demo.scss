@@ -1,0 +1,25 @@
+@import "../../utils/code";
+
+h6{
+    margin-top: $clr_baselineRem_1_25;
+}
+
+.clr-example {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    margin: 0;
+    padding: $clr_baselineRem_0_5 0;
+
+    &.inverse {
+        background: #414957;
+        margin: $clr_baselineRem_0_5 0 0;
+    }
+
+    clr-icon {
+        margin: 0 $clr_baselineRem_0_5;
+    }
+
+}
+

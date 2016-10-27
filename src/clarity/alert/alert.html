@@ -1,0 +1,11 @@
+<div
+    *ngIf="!_closed"
+    class="alert"
+    [ngClass]="alertType"
+    [class.alert-sm]="isSmall"
+    [class.alert-app-level]="isAppLevel">
+    <button type="button" class="close" aria-label="Close" *ngIf="closable" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <ng-content select=".alert-item"></ng-content>
+</div>

@@ -1,0 +1,52 @@
+<div class="clr-example">
+    <ul id="demoTabs" class="nav" role="tablist">
+        <li role="presentation" class="nav-item">
+            <a id="tabDashboard" href="javascript://" role="tab" aria-controls="panelDashboard" aria-selected="true"
+               class="nav-link active">Dashboard</a>
+        </li>
+        <li role="presentation" class="nav-item">
+            <a id="tabManagement" href="javascript://" role="tab" aria-controls="panelManagement" aria-selected="false"
+               class="nav-link">Management</a>
+        </li>
+        <li role="presentation" class="nav-item">
+            <a id="tabCloud" href="javascript://" role="tab" aria-controls="panelCloud" aria-selected="false"
+               class="nav-link">Cloud</a>
+        </li>
+    </ul>
+    <section id="panelDashboard" role="tabpanel" aria-labelledby="tabDashboard">
+        <p>You cannot switch between tabs in this static demo because it does not contain the JavaScript to handle this behavior.  The demo is here to show the look of tabs and the DOM structure.</p>
+    </section>
+    <section id="panelManagement" role="tabpanel" aria-labelledby="tabManagement" aria-hidden="true">
+        <p>Content 2</p>
+    </section>
+    <section id="panelCloud" role="tabpanel" aria-labelledby="tabCloud" aria-hidden="true">
+        <p>Content 3</p>
+    </section>
+</div>
+
+<pre>
+<code clr-code-highlight="language-html">
+&lt;ul id=&quot;tabs&quot; class=&quot;nav&quot; role=&quot;tablist&quot;&gt;
+    &lt;li role=&quot;presentation&quot; class=&quot;nav-item&quot;&gt;
+        &lt;a id=&quot;tab1&quot; href=&quot;#&quot; role=&quot;tab&quot; aria-controls=&quot;panel1&quot;
+           aria-selected=&quot;true&quot; class=&quot;nav-link active&quot;&gt;Dashboard&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li role=&quot;presentation&quot; class=&quot;nav-item&quot;&gt;
+        &lt;a id=&quot;tab2&quot; href=&quot;#&quot; role=&quot;tab&quot; aria-controls=&quot;panel2&quot;
+           aria-selected=&quot;false&quot; class=&quot;nav-link&quot;&gt;Management&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li role=&quot;presentation&quot; class=&quot;nav-item&quot;&gt;
+        &lt;a id=&quot;tab3&quot; href=&quot;#&quot; role=&quot;tab&quot; aria-controls=&quot;panel3&quot;
+           aria-selected=&quot;false&quot; class=&quot;nav-link&quot;&gt;Cloud&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;section id=&quot;panel1&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;tab1&quot;&gt;
+    ...
+&lt;/section&gt;
+&lt;section id=&quot;panel2&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;tab2&quot; aria-hidden=&quot;true&quot;&gt;
+    ...
+&lt;/section&gt;
+&lt;section id=&quot;panel3&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;tab3&quot; aria-hidden=&quot;true&quot;&gt;
+    ...
+&lt;/section&gt;
+</code></pre>

@@ -1,0 +1,120 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+@import "../color/color.clarity";
+@import "../utils/layers.clarity";
+@import "../typography/typography.clarity";
+
+$clr-modal-sm-width: baselineRem(12);
+$clr-modal-md-width: baselineRem(24);
+$clr-modal-lg-width: baselineRem(36);
+$clr-modal-xl-width: baselineRem(48);
+
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: map-get($clr-layers, modal);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: $clr_baselineRem_2;
+
+    @media screen and (max-width: map-get($clr-breakpoints, small)) {
+        padding: $clr_baselineRem_0_5;
+    }
+}
+
+.modal-dialog {
+    position: relative;
+    z-index: map-get($clr-layers, modal);
+    width: $clr-modal-md-width;
+    max-width: 100%;
+
+    &.modal-sm {
+        width: $clr-modal-sm-width;
+    }
+
+    &.modal-lg {
+        width: $clr-modal-lg-width;
+    }
+
+    &.modal-xl {
+        width: $clr-modal-xl-width;
+    }
+
+    $modal-boxshadow-y: 1px;
+    $modal-boxshadow-spread: 2px;
+
+    .modal-content {
+        padding: $clr-modal-content-padding-top $clr-modal-content-padding-right $clr-modal-content-padding-bottom $clr-modal-content-padding-left;
+        background-color: clr-getColor(lightest);
+        border-radius: $clr-default-borderradius;
+        box-shadow: 0 $modal-boxshadow-y $modal-boxshadow-spread $modal-boxshadow-spread rgba(0, 0, 0, 0.2);
+
+        .modal-header {
+            border-bottom: none;
+            padding: 0 0 $clr_baselineRem_1 0;
+
+            .modal-title {
+                @include clr-getTypePropertiesForDomElement(modal_header, (color, font-size, font-family, font-weight, line-height, letter-spacing));
+                margin: 0;
+                padding: 0;
+            }
+
+            .close {
+                margin-top: 0;
+                font-size: rem(26/$clr-rem-denominator);
+            }
+        }
+
+        .modal-body {
+            // This doesn't do much, but at least with several paragraphs in the content
+            // it doesn't mess up the modal's proportions.
+            max-height: 55vh;
+            overflow-y: auto;
+
+            @extend %clr-container;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            padding: $clr_baselineRem_1 0 0 0;
+
+            .btn {
+                //switched right margin to left because footer is right aligned
+                margin: 0 0 0 $clr_baselineRem_0_5;
+            }
+        }
+    }
+
+    @media screen and (max-width: map-get($clr-breakpoints, small)) {
+        .modal-content {
+            padding: $clr_baselineRem_0_5 0 $clr_baselineRem_0_5 $clr_baselineRem_1;
+
+            .modal-header {
+                padding: 0 $clr_baselineRem_1 $clr_baselineRem_0_5 0;
+            }
+
+            .modal-footer {
+                padding: $clr_baselineRem_0_5 $clr_baselineRem_1 0 0;
+            }
+        }
+    }
+}
+
+.modal-backdrop {
+    $clr-backdrop-opacity: 0.85;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: clr-getColor(darkest);
+    opacity: $clr-backdrop-opacity;
+    z-index: map-get($clr-layers, modal-bg);
+}

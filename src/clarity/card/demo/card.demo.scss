@@ -1,0 +1,11 @@
+@import "../../utils/code";
+
+.clr-example{
+    &>.card{
+        max-width: 480px;
+    }
+
+    &.nomargin{
+        margin-top: 0;
+    }
+}

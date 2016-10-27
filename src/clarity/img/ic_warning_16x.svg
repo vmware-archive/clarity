@@ -1,0 +1,13 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+    <defs>
+        <style>
+            .cls-1 {
+                fill: #575757;
+            }
+        </style>
+    </defs>
+    <title>ic_warning_16x5</title>
+    <path class="cls-1" d="M8.79,1.2l6,11.1v1.24l-0.3.25H1.67L1.2,13.44V12.3l6-11.1H8.79M9.5,0h-3L0,12v2l1.26,1H14.94L16,14.1V12L9.5,0h0Z"/>
+    <rect class="cls-1" x="7" y="5" width="2" height="4"/>
+    <rect class="cls-1" x="7" y="10" width="2" height="2"/>
+</svg>

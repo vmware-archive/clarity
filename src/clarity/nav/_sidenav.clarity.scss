@@ -1,0 +1,167 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+@import "../color/color.clarity";
+@import "../typography/typography.clarity";
+
+$sidenav-border-color: $gray-light-midtone;
+
+@mixin nav-link-colors {
+    &:hover {
+        background: $gray-light;
+    }
+
+    &.active {
+        background: $clr-selection-color;
+        color: $clr-black;
+    }
+}
+
+@include exports('sidenav.clarity') {
+
+
+
+    .sidenav {
+        @include clr-getTypePropertiesForDomElement(sidenav_text, (line-height));
+
+        max-width: baselineRem(13);
+        min-width: baselineRem(9);
+        width: $clr-sidenav-width;
+        border-right: 1px solid $sidenav-border-color;
+        display: flex;
+        flex-direction: column;
+
+        .sidenav-header {
+            flex: 0 0 auto;
+            height: $clr_baselineRem_2;
+            padding-left: $clr_baselineRem_1_5;
+            width: 100%;
+            border-bottom: 1px solid $sidenav-border-color;
+
+            .select {
+                width: 100%;
+                font-weight: 600;
+                line-height: $clr_baselineRem_2;
+
+                select {
+                    padding: 0; //Padding 0 as there is no border bottom in the sidenav
+                    border: none;
+                }
+
+                //Adjust the selectbox arrow since padding has been set to 0 above;
+                //TODO: Replace with SVG or a pseudo element
+                &::after {
+                    position: absolute;
+                    bottom: 0.5px;
+                    right: $clr_baselineRem_1;
+                }
+
+                select:hover {
+                    background: none;
+                }
+            }
+        }
+
+        .sidenav-content {
+            flex: 1 1 auto;
+            overflow: hidden;
+            margin-bottom: $clr_baselineRem_1;
+
+            &:hover {
+                overflow-y: auto;
+            }
+
+            //nav link common styles
+            .nav-link {
+                display: inline-block;
+                border-radius: $clr-default-borderradius 0 0 $clr-default-borderradius;
+                color: inherit;
+                cursor: pointer;
+                text-decoration: none;
+                width: 100%;
+            }
+
+            & > .nav-link {
+                @include clr-getTypePropertiesForDomElement(sidenav_sectionHeader, (color, font-size, font-weight, line-height, font-family, letter-spacing));
+                margin: $clr_baselineRem_1 0 0 $clr_baselineRem_1_25;
+                padding-left: $clr_baselineRem_0_5;
+
+                @include nav-link-colors();
+            }
+        }
+
+        .nav-group {
+            $clr-sidenav-fontsize: clr-getTypePropertyValueForDomElement(sidenav_text, font-size);
+
+            @include clr-getTypePropertiesForDomElement(sidenav_text, (color, font-size, font-weight, letter-spacing));
+
+            position: relative;
+            margin-top: $clr_baselineRem_1;
+            width: 100%;
+
+            .nav-list,
+            label {
+                padding: 0 0 0 $clr_baselineRem_1_75;
+            }
+
+            .nav-list {
+                list-style: none;
+                margin-top: 0;
+                overflow: hidden;
+
+                $navlink-padding: 4px;
+
+                .nav-link {
+                    line-height: $clr-sidenav-fontsize + 2; // need a little extra to handle descenders
+                    padding: $navlink-padding 0 $navlink-padding $clr_baselineRem_0_5;
+
+                    @include nav-link-colors();
+                }
+            }
+
+            label {
+                @include clr-getTypePropertiesForDomElement(sidenav_sectionHeader, (color, font-size, font-weight, line-height, font-family, letter-spacing));
+            }
+
+            input[type="checkbox"] {
+                display: none;
+            }
+        }
+
+        //TODO: Style Collapsible lists differently
+        .collapsible {
+            label {
+                cursor: pointer;
+                position: relative;
+                display: inline-block;
+                width: 100%;
+
+                &:after {
+                    position: absolute;
+                    font-size: rem(1);
+                    font-family: "FontAwesome";
+                    color: clr-getColor(dark-midtone);
+                    content: "\f107";
+                    bottom: 1px;
+                    left: $clr_baselineRem_1;
+                }
+            }
+
+            .nav-list, ul {
+                overflow: hidden;
+            }
+
+            input[type="checkbox"]:checked ~ .nav-list, input[type="checkbox"]:checked ~ ul {
+                height: 0;
+            }
+
+            input[type="checkbox"] ~ .nav-list, input[type="checkbox"] ~ ul {
+                height: auto;
+            }
+
+            input[type="checkbox"]:checked ~ label:after {
+                transform: rotate(-90deg);
+            }
+        }
+    }
+}

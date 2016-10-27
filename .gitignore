@@ -1,0 +1,8 @@
+dist/
+tmp/
+node_modules/
+typings/
+.idea/
+.DS_Store
+.npmrc.clarity
+npm-debug.log

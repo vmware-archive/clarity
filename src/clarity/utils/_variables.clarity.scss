@@ -1,0 +1,452 @@
+@import "node_modules/bootstrap/scss/variables";
+@import "./helpers.clarity";
+@import "../color/color.clarity";
+
+//BaselineRem Variables
+$clr_baselineRem_0_125: baselineRem(0.125);
+$clr_baselineRem_0_25: baselineRem(0.25);
+$clr_baselineRem_0_375: baselineRem(0.375);
+$clr_baselineRem_0_5: baselineRem(0.5);
+$clr_baselineRem_0_75: baselineRem(0.75);
+$clr_baselineRem_1: baselineRem(1);
+$clr_baselineRem_1_25: baselineRem(1.25);
+$clr_baselineRem_1_5: baselineRem(1.5);
+$clr_baselineRem_1_75: baselineRem(1.75);
+$clr_baselineRem_2: baselineRem(2);
+$clr_baselineRem_2_5: baselineRem(2.5);
+$clr_baselineRem_3: baselineRem(3);
+$clr_baselineRem_3_5: baselineRem(3.5);
+$clr_baselineRem_4: baselineRem(4);
+$clr_baselineRem_5: baselineRem(5);
+$clr_baselineRem_6: baselineRem(6);
+
+//Typography
+
+//0. Breakpoints
+$clr-breakpoints: (
+    small : 544px,
+    medium: 768px,
+    large : 992px,
+    xlarge: 1200px
+);
+
+//1. Fonts Options
+$clr-font: Metropolis, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif; //Default font stack for Clarity
+$clr-altFont: $clr-font; //TODO: TBD. Alternative font for Clarity
+$clr-font-size: 14px;
+$clr-rem-denominator: 14;
+$clr-kerning-lotsatext: normal; // 14px, but a lot of it
+$clr-kerning-smalltext: normal; // 14px-12px
+$clr-kerning-bigtext: 0.01em; // some types of 16px over dark background
+$clr-kerning-tinytext: 0.03em; // 11px and lower
+
+$clr-font-weights: (
+    light: 200,
+    regular: 400,
+    semibold: 500,
+    bold: 600
+);
+
+//2. Headers
+// NOTE: one day we may support responsive resizing of fonts. that day is not today, however.
+
+$clr-typography-commonmap-key: "clr-common";
+$clr-typography-lightfont: map-get($clr-font-weights,light);
+$clr-typography-regfont: map-get($clr-font-weights,regular);
+$clr-typography-sboldfont: map-get($clr-font-weights,semibold);
+$clr-typography-boldfont: map-get($clr-font-weights,bold);
+
+$clr-h1:(
+  clr-common: (
+    color: $clr-black,
+    font-weight: $clr-typography-lightfont,
+    font-family: $clr-altFont,
+    font-size: rem(32/$clr-rem-denominator),
+    letter-spacing: normal,
+    line-height: $clr_baselineRem_2,
+    margin-top: $clr_baselineRem_1,
+    margin-bottom: 0
+  ),
+  small:(),
+  medium:(),
+  large:(),
+  xlarge:()
+);
+
+$clr-h2:(
+  clr-common: (
+    color: $clr-black,
+    font-weight: $clr-typography-lightfont,
+    font-family: $clr-altFont,
+    font-size: rem(28/$clr-rem-denominator),
+    letter-spacing: normal,
+    line-height: $clr_baselineRem_2,
+    margin-top: $clr_baselineRem_1,
+    margin-bottom: 0
+  ),
+  small:(),
+  medium:(),
+  large:(),
+  xlarge:()
+);
+
+$clr-h3:(
+  clr-common: (
+    color: $clr-black,
+    font-weight: $clr-typography-lightfont,
+    font-family: $clr-altFont,
+    font-size: rem(22/$clr-rem-denominator),
+    letter-spacing: normal,
+    line-height: $clr_baselineRem_1,
+    margin-top: $clr_baselineRem_1,
+    margin-bottom: 0
+  ),
+  small:(),
+  medium:(),
+  large:(),
+  xlarge:()
+);
+
+$clr-h4:(
+  clr-common: (
+    color: $clr-black,
+    font-weight: $clr-typography-lightfont,
+    font-family: $clr-altFont,
+    font-size: rem(18/$clr-rem-denominator),
+    letter-spacing: normal,
+    line-height: $clr_baselineRem_1,
+    margin-top: $clr_baselineRem_1,
+    margin-bottom: 0
+  ),
+  small:(),
+  medium:(),
+  large:(),
+  xlarge:()
+);
+
+$clr-h5:(
+  clr-common: (
+    font-weight: $clr-typography-regfont,
+    font-family: $clr-altFont,
+    font-size: rem(16/$clr-rem-denominator),
+    letter-spacing: $clr-kerning-bigtext,
+    line-height: $clr_baselineRem_1,
+    margin-top: $clr_baselineRem_1,
+    margin-bottom: 0
+  ),
+  small:(),
+  medium:(),
+  large:(),
+  xlarge:()
+);
+
+$clr-h6:(
+  clr-common: (
+    font-weight: $clr-typography-sboldfont,
+    font-family: $clr-altFont,
+    font-size: rem(14/$clr-rem-denominator),
+    letter-spacing: $clr-kerning-smalltext,
+    line-height: $clr_baselineRem_1,
+    margin-top: $clr_baselineRem_1,
+    margin-bottom: 0,
+    color: $clr-near-black
+  ),
+  small:(),
+  medium:(),
+  large:(),
+  xlarge:()
+);
+
+
+//3. Paragraphs
+$clr-typography-smalltext: rem(13/$clr-rem-denominator);
+$clr-typography-xsmalltext: rem(12/$clr-rem-denominator);
+$clr-typography-xxsmalltext: rem(11/$clr-rem-denominator);
+$clr-typography-tinytext: rem(10/$clr-rem-denominator);
+
+// keeping this here as an easter egg. we use it on the website and it's not hurting anything. usage = intro text
+$clr-p0: (
+  clr-common: (
+    font-weight: $clr-typography-lightfont,
+    font-size: rem(20/$clr-rem-denominator),
+    letter-spacing: normal,
+    line-height: $clr_baselineRem_1,
+    margin-top: $clr_baselineRem_1,
+    margin-bottom: 0
+  ),
+  small:(),
+  medium:(),
+  large:(),
+  xlarge:()
+);
+
+$clr-p1: (
+  clr-common: (
+    font-weight: $clr-typography-regfont,
+    font-size: rem(1),
+    letter-spacing: $clr-kerning-lotsatext,
+    line-height: $clr_baselineRem_1,
+    margin-top: $clr_baselineRem_1,
+    margin-bottom: 0
+  ),
+  small:(),
+  medium:(),
+  large:(),
+  xlarge:()
+);
+
+$clr-p2: (
+  clr-common: (
+    font-weight: $clr-typography-sboldfont,
+    font-size: $clr-typography-smalltext,
+    letter-spacing: $clr-kerning-smalltext,
+    line-height: $clr_baselineRem_1,
+    margin-top: $clr_baselineRem_1,
+    margin-bottom: 0
+  ),
+  small:(),
+  medium:(),
+  large:(),
+  xlarge:()
+);
+
+$clr-p3: (
+  clr-common: (
+    font-weight: $clr-typography-regfont,
+    font-size: $clr-typography-smalltext,
+    letter-spacing: $clr-kerning-smalltext,
+    line-height: $clr_baselineRem_1,
+    margin-top: $clr_baselineRem_1,
+    margin-bottom: 0
+  ),
+  small:(),
+  medium:(),
+  large:(),
+  xlarge:()
+);
+
+$clr-p4: (
+  clr-common: (
+    font-weight: $clr-typography-boldfont,
+    font-size: $clr-typography-xsmalltext,
+    letter-spacing: $clr-kerning-smalltext,
+    line-height: $clr_baselineRem_1,
+    margin-top: $clr_baselineRem_1,
+    margin-bottom: 0
+  ),
+  small:(),
+  medium:(),
+  large:(),
+  xlarge:()
+);
+
+$clr-p5: (
+  clr-common: (
+    font-weight: $clr-typography-regfont,
+    font-size: $clr-typography-xsmalltext,
+    letter-spacing: $clr-kerning-smalltext,
+    line-height: $clr_baselineRem_1,
+    margin-top: $clr_baselineRem_1,
+    margin-bottom: 0
+  ),
+  small:(),
+  medium:(),
+  large:(),
+  xlarge:()
+);
+
+$clr-p6: (
+  clr-common: (
+    font-weight: $clr-typography-boldfont,
+    font-size: $clr-typography-xxsmalltext,
+    letter-spacing: $clr-kerning-tinytext,
+    line-height: $clr_baselineRem_0_5,
+    margin-top: $clr_baselineRem_1,
+    margin-bottom: 0
+  ),
+  small:(),
+  medium:(),
+  large:(),
+  xlarge:()
+);
+
+$clr-p7: (
+  clr-common: (
+    font-weight: $clr-typography-regfont,
+    font-size: $clr-typography-xxsmalltext,
+    letter-spacing: $clr-kerning-tinytext,
+    line-height: $clr_baselineRem_0_5,
+    margin-top: $clr_baselineRem_1,
+    margin-bottom: 0
+  ),
+  small:(),
+  medium:(),
+  large:(),
+  xlarge:()
+);
+
+$clr-p8: (
+  clr-common: (
+    font-weight: $clr-typography-regfont,
+    font-size: $clr-typography-tinytext,
+    letter-spacing: $clr-kerning-tinytext,
+    line-height: $clr_baselineRem_0_5,
+    margin-top: $clr_baselineRem_1,
+    margin-bottom: 0
+  ),
+  small:(),
+  medium:(),
+  large:(),
+  xlarge:()
+);
+
+//Element Properties Map
+$clr-elements: (
+  h1: $clr-h1,
+  h2: $clr-h2,
+  h3: $clr-h3,
+  h4: $clr-h4,
+  h5: $clr-h5,
+  h6: $clr-h6,
+  p0: $clr-p0,
+  p1: $clr-p1,
+  p2: $clr-p2,
+  p3: $clr-p3,
+  p4: $clr-p4,
+  p5: $clr-p5,
+  p6: $clr-p6,
+  p7: $clr-p7,
+  p8: $clr-p8
+);
+
+// DOM-Properties map
+$clr-typography-dom-to-type-element: (
+    alert-small_text: p4,
+    alert_text: p3,
+    card_link: p6,
+    card_text: p1,
+    card_title: h4,
+    dropdown_text: p1,
+    dropdown_header: p4,
+    form_block_label: h5,
+    form_group_fields: p3,
+    label_text: p7,
+    login_productName: h1,
+    login_subtitle: h3,
+    login_trademark: h2,
+    modal_header: h3,
+    nav_title: h5,
+    page_introParagraph: h5,
+    page_bodyText: p1,
+    page_mainHeading: h2,
+    page_secondaryHeading: h3,
+    page_sectionHeader: h5,
+    page_tertiaryHeading: h4,
+    sidenav_sectionHeader: h6,
+    sidenav_text: p1,
+    stackview_header: p2,
+    stackview_text: p3,
+    tab_text: p1,
+    table_header: p6,
+    table_text: p3,
+    toc_header: h6,
+    toc_text: p1,
+    tooltip_text: p3
+);
+
+//4. Navigation
+$clr-sidenav-width: 18%;
+$clr-header-height: $clr_baselineRem_2_5;
+$clr-subnav-height: $clr_baselineRem_1_5;
+
+//5.Content Area Paddings
+$clr-content-area-padding-top: $clr_baselineRem_1;
+$clr-content-area-padding-right: $clr_baselineRem_1;
+$clr-content-area-padding-bottom: $clr_baselineRem_1;
+$clr-content-area-padding-left: $clr_baselineRem_1;
+
+//6. Cards
+$clr-card-outer-margin: $clr_baselineRem_0_75;
+$clr-card-inner-margin: $clr_baselineRem_0_5;
+
+//7. Modal
+$clr-modal-content-padding-top: $clr_baselineRem_1;
+$clr-modal-content-padding-right: $clr_baselineRem_1;
+$clr-modal-content-padding-bottom: $clr_baselineRem_1;
+$clr-modal-content-padding-left: $clr_baselineRem_1;
+
+//8. Colors
+//TODO: Refactor colors across clarity to use these variables so that there
+//is only one lookup per color. Create additional color variables here if needed
+$gray-lightest: clr-getColor(lightest);
+$gray-lighter: clr-getColor(lighter);
+$gray-light: clr-getColor(light);
+$gray-light-midtone: clr-getColor(light-midtone);
+$gray-dark-midtone: clr-getColor(dark-midtone);
+$gray-dark: clr-getColor(dark);
+$gray-darker: clr-getColor(darker);
+$gray-darkest: clr-getColor(darkest);
+
+$action-blues-lightest: clr-getColor(lightest,action-blues);
+$action-blues-lighter: clr-getColor(lighter,action-blues);
+$action-blues-light: clr-getColor(light,action-blues);
+$action-blues-light-midtone: clr-getColor(light-midtone,action-blues);
+$action-blues-dark-midtone: clr-getColor(dark-midtone,action-blues);
+$action-blues-dark: clr-getColor(dark,action-blues);
+$action-blues-darker: clr-getColor(darker,action-blues);
+$action-blues-darkest: clr-getColor(darkest,action-blues);
+
+$reds-lightest: clr-getColor(lightest,reds);
+$reds-lighter: clr-getColor(lighter,reds);
+$reds-light: clr-getColor(light,reds);
+$reds-light-midtone: clr-getColor(light-midtone,reds);
+$reds-dark-midtone: clr-getColor(dark-midtone,reds);
+$reds-dark: clr-getColor(dark,reds);
+$reds-darker: clr-getColor(darker,reds);
+$reds-darkest: clr-getColor(darkest,reds);
+
+$greens-lightest: clr-getColor(lightest,greens);
+$greens-lighter: clr-getColor(lighter,greens);
+$greens-light: clr-getColor(light,greens);
+$greens-light-midtone: clr-getColor(light-midtone,greens);
+$greens-dark-midtone: clr-getColor(dark-midtone,greens);
+$greens-dark: clr-getColor(dark,greens);
+$greens-darker: clr-getColor(darker,greens);
+$greens-darkest: clr-getColor(darkest,greens);
+
+$action-purples-lightest: clr-getColor(lightest,action-purples);
+$action-purples-lighter: clr-getColor(lighter,action-purples);
+$action-purples-light: clr-getColor(light,action-purples);
+$action-purples-light-midtone: clr-getColor(light-midtone,action-purples);
+$action-purples-dark-midtone: clr-getColor(dark-midtone,action-purples);
+$action-purples-dark: clr-getColor(dark,action-purples);
+$action-purples-darker: clr-getColor(darker,action-purples);
+$action-purples-darkest: clr-getColor(darkest,action-purples);
+
+$yellows-lightest: clr-getColor(lightest,yellows);
+$yellows-lighter: clr-getColor(lighter,yellows);
+$yellows-light: clr-getColor(light,yellows);
+$yellows-light-midtone: clr-getColor(light-midtone,yellows);
+$yellows-dark-midtone: clr-getColor(dark-midtone,yellows);
+$yellows-dark: clr-getColor(dark,yellows);
+$yellows-darker: clr-getColor(darker,yellows);
+$yellows-darkest: clr-getColor(darkest,yellows);
+
+//Other Colors
+//TODO: Add these to the color palette
+$clr-links-visited-color: #5659b9;
+$clr-selection-color: #D9E4EA;
+
+// 9. Misc
+$clr-default-borderradius: $clr_baselineRem_0_125;
+
+//10. Buttons
+$clr-button-vertical-margin: $clr_baselineRem_0_25;
+$clr-button-horizontal-margin: $clr_baselineRem_0_5;
+
+//11. Icons
+$clr-icon-dimension-sm: rem(16/$clr-rem-denominator);
+
+//BS4 overrides
+$enable-flex: true;
+$grid-gutter-width: $clr_baselineRem_1;

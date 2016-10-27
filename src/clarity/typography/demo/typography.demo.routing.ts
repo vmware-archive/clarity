@@ -1,0 +1,23 @@
+import {ModuleWithProviders} from "@angular/core/src/metadata/ng_module";
+import {Routes, RouterModule} from "@angular/router";
+import {TypographyDemo} from "./typography.demo";
+import {TypographyFontWeightDemo} from "./typography-font-weight";
+import {TypographyHeadersDemo} from "./typography-headers";
+import {TypographyTextDemo} from "./typography-text";
+import {TypographyLinksDemo} from "./typography-links";
+
+const ROUTES: Routes = [
+    {
+        path: "",
+        component: TypographyDemo,
+        children: [
+            { path: "", redirectTo: "typography-font-weight", pathMatch: "full" },
+            { path: "typography-font-weight", component: TypographyFontWeightDemo },
+            { path: "typography-headers", component: TypographyHeadersDemo },
+            { path: "typography-text", component: TypographyTextDemo },
+            { path: "typography-links", component: TypographyLinksDemo }
+        ]
+    }
+];
+
+export const ROUTING: ModuleWithProviders = RouterModule.forChild(ROUTES);

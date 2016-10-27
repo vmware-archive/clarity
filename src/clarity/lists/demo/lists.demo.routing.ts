@@ -7,6 +7,7 @@ import {ListsUnstyledDemo} from "./lists-unstyled";
 import {ListsCompactDemo} from "./lists-compact";
 import {ListsMixedDemo} from "./lists-mixed";
 import {ListsInCardsDemo} from "./lists-in-cards";
+import {OldListsInCardsDemo} from "./old-lists-in-cards";
 
 const ROUTES: Routes = [
     {
@@ -19,7 +20,8 @@ const ROUTES: Routes = [
             { path: "lists-in-cards", component: ListsInCardsDemo },
             { path: "lists-unstyled", component: ListsUnstyledDemo },
             { path: "lists-mixed", component: ListsMixedDemo },
-            { path: "lists-compact", component: ListsCompactDemo }
+            { path: "lists-compact", component: ListsCompactDemo },
+            { path: "old-lists-in-cards", component: OldListsInCardsDemo }
         ]
     }
 ];

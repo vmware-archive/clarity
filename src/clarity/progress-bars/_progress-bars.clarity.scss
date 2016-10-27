@@ -7,6 +7,7 @@
 @import "../utils/helpers.clarity";
 @import "../utils/mixins.clarity";
 @import "./utils/mixins.clarity";
+@import "../card/card.clarity";
 
 $clr-progress-defaultBarColor: $clr-actionblue !default;
 $clr-progress-bgColor: $clr-light-gray !default;
@@ -386,11 +387,12 @@ $clr-progress-bgColor: $clr-light-gray !default;
     // Inside Cards
 
     $clr-progressInCard-height: rem(4/15);
-    .card-block {
+    .card-block,
+    .card-footer {
         .progress, .progress-static {
             // by default, positioned at the topmost of its card-block container
             margin: 0;
-            margin-top: -1 * rem(1.25); // setting from BS4...
+            margin-top: -1 * ($card-children-padding-vertical + 1);
             height: $clr-progressInCard-height;
             position: absolute;
             left: 0;
@@ -486,6 +488,10 @@ $clr-progress-bgColor: $clr-light-gray !default;
     .card-block .progress-block {
         margin-bottom: $clr_baselineRem_0_5;
         padding: 0 $clr_baselineRem_0_75;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
 
         & > label {
             max-width: 33%;

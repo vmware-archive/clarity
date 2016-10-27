@@ -3,23 +3,17 @@
 @import "../color/color.clarity";
 @import "../utils/helpers.clarity";
 @import "../typography/typography.clarity";
-@import "node_modules/bootstrap/scss/card";
 @import "../list-group/list-group.clarity";
 @import "../buttons/buttons.clarity";
 
 $card-action-blue: clr-getColor(light-midtone,action-blues);
-$card-light: clr-getColor(light);
+$card-light: $gray-light;
 $card-text-fontsize: clr-getTypePropertyValueForDomElement(card_text, font-size);
-$card-link-fontsize: clr-getTypePropertyValueForDomElement(card_link, font-size);
-$card-link-fontweight: clr-getTypePropertyValueForDomElement(card_link, font-weight);
-$card-link-left-margin: $clr_baselineRem_0_25;
+$card-children-padding-vertical: $clr_baselineRem_0_5;
+$card-children-padding-horizontal: $clr_baselineRem_0_75;
+$card-children-space-between: $clr_baselineRem_0_5;
 
 @include exports('card.clarity') {
-    %card-links-appearance {
-        @extend .btn;
-        @extend .btn-link;
-        @extend .btn-sm;
-    }
 
     %card-border-appearance {
         box-shadow: 0 2px 3px 0 rgba(116, 116, 116, .15); //Hardcoded color not in color palette
@@ -27,174 +21,292 @@ $card-link-left-margin: $clr_baselineRem_0_25;
         border: 1px solid $card-light;
     }
 
-    .card {
-        box-sizing: border-box;
-        @extend %card-border-appearance;
-        margin: baselineRem(1) 0 0 0;
-        transition: all 0.3s;
+    %clickable-card-transition {
+        box-shadow: 0 6px 10px 2px rgba(116, 116, 116, .20);
+        cursor: pointer;
+        text-decoration: none;
+        transform: translate3d(0, -4px, 0);
+        transition: transform 0.3s ease;
+    }
 
-        &:hover {
-            border: 1px solid $card-light;
+    %card-space-between {
+        margin-top: 0;
+        margin-bottom: $card-children-space-between;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    //Responsive Card Images
+    %card-image-appearance {
+        display: block;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .card {
+        position: relative;
+        display: block;
+        background-color: $clr-white;
+        width: 100%;
+        margin-top: $clr_baselineRem_1;
+        @extend %card-border-appearance;
+
+        .card-header,
+        &.card-block,
+        .card-block,
+        .card-footer {
+            padding: $card-children-padding-vertical $card-children-padding-horizontal;
         }
 
+        .card-header,
+        .card-title,
+        .card-subtitle {
+            @include clr-getTypePropertiesForDomElement(card_title, (color, font-size, font-weight, letter-spacing));
+        }
+
+        .card-text {
+            font-size: $card-text-fontsize;
+        }
+
+        //Images
+        .card-img {
+            &:first-child > img {
+                border-radius: $clr-default-borderradius $clr-default-borderradius 0 0;
+            }
+
+            &:last-child > img {
+                border-radius: 0 0 $clr-default-borderradius $clr-default-borderradius;
+            }
+
+            & > img {
+                @extend %card-image-appearance;
+            }
+        }
+
+        //Card with just an image
+        &.card-img,
+        & > .card-img:first-child:last-child {
+            & > img {
+                border-radius: $clr-default-borderradius;
+                @extend %card-image-appearance;
+            }
+        }
+
+        //Buttons
+        //Card Link - TODO: Deprecate this
+        .card-link {
+            @include generateButton();
+            @include clr-getStylesFromMap($clr-button-appearance-map,standard);
+            @include populateButtonProperties(link);
+        }
+
+        .card-link, //TODO: Deprecate this
+        .btn-link {
+            min-width: 0;
+
+            //NOTE: Set left and right padding of link buttons to 0. aligning these buttons
+            //without removing the paddings is a huge task and leads to a brittle card css
+            //plus the alignment doesn't work in all the cases
+            padding: 0;
+        }
+
+        &.card-block,
+        .card-block,
+        .card-footer {
+            .btn,
+            .btn.btn-link,
+            .card-link {
+                margin: 0 $clr-button-horizontal-margin 0 0;
+            }
+        }
+
+        //Clickable Cards
         &.clickable{
             color: inherit;
 
             &:hover {
-                box-shadow: 0 6px 10px 2px rgba(116, 116, 116, .20);
-                cursor: pointer;
-                text-decoration: none;
-                transform: translate3d(0, -4px, 0);
+                @extend %clickable-card-transition;
             }
         }
 
-        //Reset Margins of existing BS4 card elements
-        .card-title, .card-subtitle {
-            @include clr-getTypePropertiesForDomElement(card_title, (color, font-size, font-weight, letter-spacing));
-            margin: 0 $clr-card-outer-margin $clr-card-inner-margin $clr-card-outer-margin;
-        }
+        .card-header,
+        .card-block {
+            border-bottom: 1px solid $card-light;
 
-        .card-text, .list-unstyled {
-            font-size: $card-text-fontsize;
-            margin: 0 $clr-card-outer-margin $clr-card-inner-margin $clr-card-outer-margin;
-        }
-
-        .list {
-            font-size: $card-text-fontsize;
-            margin: 0 $clr-card-outer-margin $clr-card-inner-margin (2 * $clr-card-outer-margin);
-        }
-
-        .list-unstyled, .list {
-            li > .list {
-                margin-left: 1.1em;
+            &:last-child {
+                border-bottom: none;
             }
         }
 
-        //Update existing BS4 card elements
-        .btn, .dropdown {
-            margin: 0 0 0 $clr-card-outer-margin;
+        //Hide card dividers and just show the border bottom of card-header and card-block
+        .card-header + .card-divider,
+        .card-block + .card-divider {
+            display: none;
         }
 
-        //TODO: Have a footer element when we design Clarity Cards where all the actions are placed like we have for modals.
-        //Since bootstrap has no card-footer, rules for aligning card-link and flat buttons become really really complex.
-        //ASSUMPTION: If someone uses card link for card actions, they only use card links. If they mix and match the spacing
-        //most likely will be off.
-        .card-link {
-            @extend %card-links-appearance;
-        }
-
-        //First of Type buttons have a min width of 0 to accomodate alignment of small text like "OK" or "GO"
-        .btn-link,.card-link{
-            margin: 0;
-
-            &:first-of-type{
-                min-width: 0;
-                margin-left: $card-link-left-margin;
-            }
-        }
-
-        .btn,.card-link,.dropdown,.btn-link{
-            &:last-child{
-                margin-right: $clr-card-outer-margin;
-            }
-        }
-
-        //To handle the case where dropdown with card link as toggle is first
-        //Assign a margin of -12px to align the card link with the text above
-        .dropdown{
-            & > .card-link{
-                margin-left:  (-1 * $clr-card-outer-margin + $card-link-left-margin);
-            }
-        }
-
-        .card-link ~ .dropdown{
-            & > .card-link{
-                margin-left: (-1 * $clr-card-outer-margin);
-            }
-        }
-
-        .dropdown ~ .card-link{
-            margin-left: 0;
-        }
-
-        .list-group {
-            .list-group-item {
-                font-size: $card-text-fontsize;
-                padding: $clr-card-inner-margin $clr-card-outer-margin;
-                border-left-width: 0;
-                border-right-width: 0;
-                border-color: $clr-light-gray;
-            }
-        }
-
-        //Custom Clarity Components
+        //TODO: Deprecate this
+        //Use border-bottom directly on card header and card block to simplify the layout
         .card-divider {
             display: block;
-            width: 100%;
             border-bottom: 1px solid $card-light;
-            margin-bottom: $clr-card-inner-margin;
         }
 
-        .card-header {
-            padding: $clr_baselineRem_0_5 $clr_baselineRem_0_75;
-            background: clr-getColor(light);
-            font-weight: 600;
-
-            &:first-child{
-                border-radius: $clr-default-borderradius $clr-default-borderradius 0 0;
+        //TODO: Deprecate this
+        //NOTE: We have a card-divider in a card block only because
+        //in the previous layout the divider was always present in the card block
+        //as there was no footer. Once we deprecate the divider, the bottom border on headers,
+        //blocks and footers will act as dividers
+        &.card-block,
+        .card-block {
+            .card-divider {
+                @extend %card-space-between;
+                margin-left: -1 * ($card-children-padding-horizontal);
+                margin-right: -1 * ($card-children-padding-horizontal);
+                width: auto;
             }
         }
 
-        .group {
+        .card-title,
+        .card-subtitle,
+        .card-text,
+        .group, //TODO: Deprecate this
+        .card-media-block,
+        .list,
+        .list-unstyled {
+            @extend %card-space-between;
+        }
+
+        //Card Media Block
+        .group, //TODO: Deprecate this in 0.8.0
+        .card-media-block {
             display: flex;
-            margin: 0 $clr-card-outer-margin $clr-card-inner-margin $clr-card-outer-margin;
-            min-height: 1px;
 
-            .icon {
-                $icon-width: $clr_baselineRem_2_5;
+            .icon, //TODO: Deprecate this in 0.8.0
+            .card-media-image {
+                $card-media-image-size: $clr_baselineRem_2_5;
+                display: inline-block; //to make sure IE10 respects the max-height and max-width
                 flex: 0 0 auto;
-                max-width: $icon-width;
-                max-height: $icon-width;
+                height: $card-media-image-size;
+                width: $card-media-image-size;
+                max-height: $card-media-image-size;
+                max-width: $card-media-image-size;
             }
 
-            .description {
-                flex: 1 1 auto;
+            .description, //TODO: Deprecate this in 0.8.0
+            .card-media-description {
                 display: flex;
                 flex-direction: column;
-                font-size: $card-text-fontsize;
-                color: clr-getColor(dark);
-                margin: $clr_baselineRem_0_25 0 0 $clr_baselineRem_0_5;
+                margin: 0 0 0 $clr_baselineRem_0_5;
+            }
 
-                .title {
-                    font-size: rem(1);
-                    color: clr-getColor(darker);
-                }
+            .title, //TODO: Deprecate this in 0.8.0
+            .card-media-title {
+                display: inline-block;
+            }
 
-                //IE 10 needs this for the flex-direction to work.
-                & > * {
-                    display: inline-block;
-                }
-
+            span, //TODO: Deprecate this in 0.8.0
+            .card-media-text {
+                display: inline-block;
             }
 
             &.wrap {
                 flex-direction: column;
 
-                .description {
-                    margin-left: 0;
+                .description,
+                .card-media-description {
+                    margin: $clr_baselineRem_0_25 0 0 0;
                 }
             }
         }
 
-        //This is going to go away and will be replaced by Clarity dropdowns
+        //Clarity Lists
+        & > .list,
+        & > .list-unstyled {
+            padding: $card-children-padding-vertical $card-children-padding-horizontal;
+        }
+
+        &.card-block,
+        .card-block {
+            & > .list,
+            & > .list-unstyled {
+                padding: 0;
+            }
+        }
+
+        //Bootstrap 4 List Groups
+        .list-group {
+            .list-group-item {
+                font-size: $card-text-fontsize;
+                border-left-width: 0;
+                border-right-width: 0;
+                border-color: $clr-light-gray;
+            }
+
+            .list-group-item:first-child {
+                border-top-color: transparent;
+            }
+        }
+
+        //Dropdowns
+
+        //NOTE: This is a fix just for dropdowns in Cards in Edge.
+        //TODO: Figure out why the caret sign is not aligned next to the dropdown toggle only in cards
+        @include fixForMsEdge() {
+            .dropdown > .dropdown-toggle::after {
+                display: inline-block;
+                margin-top: -1 * $clr_baselineRem_0_5;
+            }
+        }
+    }
+
+    //Credit: Bootstrap 4 Card Masonry
+    //Added some fixes to avoid flickering in Clickable cards
+    //Added extra column classes to control the number of CSS columns
+    @media screen and (min-width: map-get($clr-breakpoints, small)) {
+        .card-columns {
+            column-count: 3;
+            column-gap: $clr_baselineRem_0_5;
+            break-inside: avoid;
+            column-fill: balance;
+
+            //Note: Safari Bug Fix for CSS Columns
+            //http://stackoverflow.com/a/34998087/3538394
+            -webkit-perspective: 1;
+
+            &.card-columns-2 {
+                column-count: 2;
+            }
+
+            &.card-columns-4 {
+                column-count: 4;
+            }
+
+            .card {
+                display: inline-block; //For some weird reason stops the cards from getting cut off between 2 columns
+                margin: $clr_baselineRem_0_25;
+            }
+
+            .clickable {
+                //To fix the flickering issue with clickable card transition
+                //http://stackoverflow.com/questions/3461441/prevent-flicker-on-webkit-transition-of-webkit-transform
+                backface-visibility: hidden;
+            }
+        }
+    }
+
+    //TODO: Deprecate in 0.7.0
+    .card{
         .card-overflow-menu {
             display: inline-block;
             position: relative;
+            margin: 0 $clr-button-horizontal-margin 0 0;
 
             & > .card-link {
                 position: relative;
                 padding-right: 15px; //15px because the arrow icon is 15px in width
-                margin: 0 0 0 $clr-card-outer-margin;
 
                 &::after {
                     position: absolute;
@@ -202,7 +314,7 @@ $card-link-left-margin: $clr_baselineRem_0_25;
                     content: "\f107";
                     font-size: $card-text-fontsize;
                     right: 2px;
-                    top: -1px;
+                    top: 0;
                 }
             }
 
@@ -243,11 +355,5 @@ $card-link-left-margin: $clr_baselineRem_0_25;
                 transform: rotate(180deg);
             }
         }
-
-    }
-
-    .card-block {
-        //override card-block side paddings to 0 to enable the divider occupy entire card-width
-        padding: $clr-card-outer-margin 0;
     }
 }

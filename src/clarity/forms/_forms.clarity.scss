@@ -198,6 +198,11 @@ $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height
                 margin-right: $clr_baselineRem_0_5;
             }
 
+            //Link buttons have no right margin
+            & > .btn.btn-link {
+                margin-right: 0;
+            }
+
             & > .checkbox,
             & > .radio{
                 flex: 1 1 100%;

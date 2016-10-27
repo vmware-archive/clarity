@@ -104,9 +104,10 @@ $clr-global-button-properties-map: (
 );
 
 //Button Variables
+$clr-button-horizontal-padding: $clr_baselineRem_0_5;
 $clr-button-height: $clr_baselineRem_1_5;
 $clr-button-height-sm: $clr_baselineRem_1;
-$clr-button-padding: 0 $clr_baselineRem_0_5;
+$clr-button-padding: 0 $clr-button-horizontal-padding;
 
 //Call to Action & Standard Button Appearance
 $clr-button-appearance-map: (
@@ -158,56 +159,54 @@ $clr-button-appearance-map: (
     }
 }
 
-@include exports('buttons.clarity') {
+@mixin btn-nowrap() {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 
-    %btn-nowrap {
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-    }
+@mixin btn-min-max-widths() {
+    min-width: baselineRem(3);
+    max-width: baselineRem(15);
+}
 
-    %btn-min-max-widths {
-        min-width: baselineRem(3);
-        max-width: baselineRem(15);
-    }
+@mixin btn-text-properties() {
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
 
-    %btn-text-properties {
-        text-align: center;
+    &:hover {
         text-decoration: none;
-        text-transform: uppercase;
-        vertical-align: middle;
-
-        &:hover {
-            text-decoration: none;
-        }
     }
+}
 
-    %btn-default-border-styles {
-        border-radius: $clr-default-borderradius;
-        border-style: solid;
-        border-width: 1px;
-    }
+@mixin btn-default-border-styles() {
+    border-radius: $clr-default-borderradius;
+    border-style: solid;
+    border-width: 1px;
+}
 
-    //Button Default appearance
-    %clr-button {
-        cursor: pointer;
-        display: inline-block;
-        margin: $clr-button-vertical-margin $clr-button-horizontal-margin $clr-button-vertical-margin 0;
+@mixin btn-appearance() {
+    cursor: pointer;
+    display: inline-block;
+    margin: $clr-button-vertical-margin $clr-button-horizontal-margin $clr-button-vertical-margin 0;
 
-        // Overrides a Fix for IOS in BS4 _normalize.scss (~ln 330)
-        // `!important` is to override specificity in this instance
-        // But we wanted to preserve the normalize fix in non-Clarity buttons for iOS
-        -webkit-appearance: none !important;
-    }
+    // Overrides a Fix for IOS in BS4 _normalize.scss (~ln 330)
+    // `!important` is to override specificity in this instance
+    // But we wanted to preserve the normalize fix in non-Clarity buttons for iOS
+    -webkit-appearance: none !important;
+}
 
-    //Button Mixins
-    @mixin generateButton() {
-        @extend %clr-button;
-        @extend %btn-default-border-styles;
-        @extend %btn-min-max-widths;
-        @extend %btn-nowrap;
-        @extend %btn-text-properties;
-    }
+@mixin generateButton() {
+    @include btn-appearance();
+    @include btn-default-border-styles();
+    @include btn-min-max-widths();
+    @include btn-nowrap();
+    @include btn-text-properties();
+}
+
+@include exports('buttons.clarity') {
 
     .btn {
         @include generateButton();
@@ -254,6 +253,7 @@ $clr-button-appearance-map: (
 
         &.btn-link {
             @include populateButtonProperties(link);
+            margin: $clr-button-vertical-margin 0;
         }
 
         &.btn-inverse {

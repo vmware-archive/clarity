@@ -13,6 +13,7 @@ import {ProgressBarStaticDemo} from "./progress-bar-static";
 import {ProgressBarStaticCardsDemo} from "./progress-bar-static-cards";
 import {ProgressBarInlineDemo} from "./progress-bar-inline";
 import {ProgressBarInlineCardsDemo} from "./progress-bar-inline-cards";
+import {OldProgressBarCardsDemo} from "./old-progress-bar-cards";
 
 @NgModule({
     imports: [
@@ -31,7 +32,8 @@ import {ProgressBarInlineCardsDemo} from "./progress-bar-inline-cards";
         ProgressBarStaticDemo,
         ProgressBarStaticCardsDemo,
         ProgressBarInlineDemo,
-        ProgressBarInlineCardsDemo
+        ProgressBarInlineCardsDemo,
+        OldProgressBarCardsDemo
     ],
     exports: [
         ProgressBarExamplesDemo,

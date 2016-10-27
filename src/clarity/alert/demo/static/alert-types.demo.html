@@ -68,54 +68,68 @@
 
 <h4>Alerts in Cards</h4>
 <div class="clr-example">
-    <div class="card card-block">
-        <div class="alert alert-warning alert-sm">
-            <button type="button" class="close" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <div class="alert-item">
-                <span class="alert-text">
-                    Use small alerts in a card.
-                </span>
+    <div class="card">
+        <div class="card-block">
+            <div class="alert alert-warning alert-sm">
+                <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="alert-item">
+                    <span class="alert-text">
+                        Use small alerts in a card.
+                    </span>
+                </div>
             </div>
-        </div>
-        <div class="group wrap">
-            <img class="icon" src="http://placehold.it/60x60" />
-            <div class="description">
-                <span class="title">Project B</span>
-                <span>Owner: Jane Doe</span>
+            <div class="card-media-block wrap">
+                <img class="card-media-image" src="http://placehold.it/60x60" />
+                <div class="card-media-description">
+                    <span class="card-media-title">Project B</span>
+                    <span class="card-media-text">Owner: Jane Doe</span>
+                </div>
             </div>
+            <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur.
+            </p>
         </div>
-        <div class="card-divider"></div>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <a class="card-link">Button One</a>
-        <a class="card-link">Button Two</a>
+        <div class="card-footer">
+            <a class="card-link">Button One</a>
+            <a class="card-link">Button Two</a>
+        </div>
     </div>
 </div>
 <pre>
 <code clr-code-highlight="language-html">
-&lt;div class=&quot;card card-block&quot;&gt;
-    &lt;div class=&quot;alert alert-warning alert-sm&quot;&gt;
-        &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;&gt;
-            &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
-        &lt;/button&gt;
-        &lt;div class=&quot;alert-item&quot;&gt;
-            &lt;span class=&quot;alert-text&quot;&gt;
-                Use small alerts in a card.
-            &lt;/span&gt;
+&lt;div class=&quot;card&quot;&gt;
+    &lt;div class=&quot;card-block&quot;&gt;
+        &lt;div class=&quot;alert alert-warning alert-sm&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;&gt;
+                &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;div class=&quot;alert-item&quot;&gt;
+                &lt;span class=&quot;alert-text&quot;&gt;
+                    Use small alerts in a card.
+                &lt;/span&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;group wrap&quot;&gt;
-        &lt;img class=&quot;icon&quot; src=&quot;http://placehold.it/60x60&quot; /&gt;
-        &lt;div class=&quot;description&quot;&gt;
-            &lt;span class=&quot;title&quot;&gt;Project B&lt;/span&gt;
-            &lt;span&gt;Owner: Jane Doe&lt;/span&gt;
+        &lt;div class=&quot;card-media-block wrap&quot;&gt;
+            &lt;img class=&quot;card-media-image&quot; src=&quot;http://placehold.it/60x60&quot; /&gt;
+            &lt;div class=&quot;card-media-description&quot;&gt;
+                &lt;span class=&quot;card-media-title&quot;&gt;Project B&lt;/span&gt;
+                &lt;span class=&quot;card-media-text&quot;&gt;Owner: Jane Doe&lt;/span&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
+        &lt;p class=&quot;card-text&quot;&gt;
+            ...
+        &lt;/p&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;card-divider&quot;&gt;&lt;/div&gt;
-    &lt;p class=&quot;card-text&quot;&gt;...&lt;/p&gt;
-    &lt;a class=&quot;card-link&quot;&gt;Button One&lt;/a&gt;
-    &lt;a class=&quot;card-link&quot;&gt;Button Two&lt;/a&gt;
+    &lt;div class=&quot;card-footer&quot;&gt;
+        &lt;a class=&quot;card-link&quot;&gt;Button One&lt;/a&gt;
+        &lt;a class=&quot;card-link&quot;&gt;Button Two&lt;/a&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
 

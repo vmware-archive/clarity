@@ -11,6 +11,7 @@ import {ProgressBarStaticDemo} from "./progress-bar-static";
 import {ProgressBarStaticCardsDemo} from "./progress-bar-static-cards";
 import {ProgressBarInlineDemo} from "./progress-bar-inline";
 import {ProgressBarInlineCardsDemo} from "./progress-bar-inline-cards";
+import {OldProgressBarCardsDemo} from "./old-progress-bar-cards";
 
 const ROUTES: Routes = [
     {
@@ -27,7 +28,8 @@ const ROUTES: Routes = [
             { path: "progress-bar-static", component: ProgressBarStaticDemo },
             { path: "progress-bar-static-cards", component: ProgressBarStaticCardsDemo },
             { path: "progress-bar-inline", component: ProgressBarInlineDemo },
-            { path: "progress-bar-inline-cards", component: ProgressBarInlineCardsDemo }
+            { path: "progress-bar-inline-cards", component: ProgressBarInlineCardsDemo },
+            { path: "old-progress-bar-cards", component: OldProgressBarCardsDemo }
         ]
     }
 ];

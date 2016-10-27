@@ -356,7 +356,7 @@ $alert-colors: (
     //1.cards
     .card {
         .alert {
-            $alert-card-horizontal-margin: $clr_baselineRem_0_75;
+            $alert-card-horizontal-margin: 0;
             $alert-card-vertical-margin: $clr_baselineRem_0_25;
 
             margin: $alert-card-vertical-margin $alert-card-horizontal-margin;

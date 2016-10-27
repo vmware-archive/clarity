@@ -9,6 +9,7 @@ import {ListsUnstyledDemo} from "./lists-unstyled";
 import {ListsCompactDemo} from "./lists-compact";
 import {ListsMixedDemo} from "./lists-mixed";
 import {ListsInCardsDemo} from "./lists-in-cards";
+import {OldListsInCardsDemo} from "./old-lists-in-cards";
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import {ListsInCardsDemo} from "./lists-in-cards";
         ListsUnstyledDemo,
         ListsCompactDemo,
         ListsMixedDemo,
-        ListsInCardsDemo
+        ListsInCardsDemo,
+        OldListsInCardsDemo
     ],
     exports: [
         ListsDemo,

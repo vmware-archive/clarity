@@ -9,9 +9,10 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./lists-ul']">Lists</a></li>
             <li><a [routerLink]="['./lists-unstyled']">Unstyled Lists</a></li>
             <li><a [routerLink]="['./lists-ol']">Ordered Lists</a></li>
-            <li><a [routerLink]="['./lists-in-cards']">Lists In Cards</a></li>
             <li><a [routerLink]="['./lists-mixed']">Mixing Styled and Unstyled Lists</a></li>
             <li><a [routerLink]="['./lists-compact']">Compact Lists</a></li>
+            <li><a [routerLink]="['./lists-in-cards']">Lists In Cards</a></li>
+            <li><a [routerLink]="['./old-lists-in-cards']">Old Lists In Cards</a></li>
         </ul>
         <router-outlet></router-outlet>
     `

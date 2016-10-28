@@ -1,0 +1,67 @@
+{% include header/header.html %}
+
+    {% assign currRelNumber = '' %}
+    {% assign breakingChangeCount = page.breakingChanges %}
+    {% assign bugFixCount = page.bugFixes %}
+    {% assign releaseDate = page.releaseDate %}
+    {% assign newComponentCount = page.newComponents %}
+    {% assign sketchTmplVersion = page.sketchTemplateVersion %}
+    {% assign gitLink = page.gitLink %}
+    {% assign thisVersionNumber = page.releaseNumber %}
+    {% assign hideSummaryBlocks = page.hideSummaryBlocks %}
+    {% assign hasIcons = page.hasIcons %}
+
+    {% for item in site.news %}
+        {% if item.isCurrent and item.hide != true %}
+            {% assign currRelNumber = item.releaseNumber %}
+
+            {% if page.permalink == '/news/index' %}
+                {% assign breakingChangeCount = item.breakingChanges %}
+                {% assign bugFixCount = item.bugFixes %}
+                {% assign releaseDate = item.releaseDate %}
+                {% assign newComponentCount = item.newComponents %}
+                {% assign sketchTmplVersion = item.sketchTemplateVersion %}
+                {% assign gitLink = item.gitLink %}
+                {% assign hideSummaryBlocks = item.hideSummaryBlocks %}
+                {% assign hasIcons = item.hasIcons %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+    {% unless sketchTmplVersion %}
+        {% capture sketchTmplVersion %}{% if page.releaseNumber %}{{ page.releaseNumber }}{% else %}{{ currRelNumber }}{% endif%}{% endcapture %}
+    {% endunless %}
+
+    {% unless thisVersionNumber %}
+        {% capture thisVersionNumber %}{% if page.releaseNumber %}{{ page.releaseNumber }}{% else %}{{ currRelNumber }}{% endif%}{% endcapture %}
+    {% endunless %}
+
+<div class="content-container">
+    <main class="content-area">
+        <section>
+            {% if page.permalink == '/news/index' %}
+                <h1>Current Release {% if currRelNumber != '' %}({{currRelNumber}}){% endif %}</h1>
+            {% else %}
+                <h1>{{ page.releaseNumber }} Changelog</h1>
+            {% endif %}
+            {% include news/release_summary.html
+                breakingChangeCount=breakingChangeCount
+                bugFixCount=bugFixCount
+                newComponentCount=newComponentCount
+                sketchTmplVersion=sketchTmplVersion
+                version=thisVersionNumber
+                hasIcons=hasIcons
+                linkToGit=gitLink
+                releaseDate=releaseDate
+                hideSummaryBlocks=hideSummaryBlocks %}
+            {{ content }}
+        </section>
+    </main>
+    <nav class="sidenav">
+        <section class="sidenav-content">
+            {% include news/sidebar_links.html %}
+        </section>
+    </nav>
+</div>
+
+{% include footer/footer.html %}

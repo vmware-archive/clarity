@@ -1,0 +1,136 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html itemscope itemtype="http://schema.org/{% if page.id or post.id %}Article{% else %}Organization{% endif %}" id="ie6" class="ie ie-old" lang="en-US"><![endif]-->
+<!--[if IE 7 ]>   <html itemscope itemtype="http://schema.org/{% if page.id or post.id %}Article{% else %}Organization{% endif %}" id="ie7" class="ie ie-old" lang="en-US"><![endif]-->
+<!--[if IE 8 ]>   <html itemscope itemtype="http://schema.org/{% if page.id or post.id %}Article{% else %}Organization{% endif %}" id="ie8" class="ie ie-old" lang="en-US"><![endif]-->
+<!--[if IE 9 ]>   <html itemscope itemtype="http://schema.org/{% if page.id or post.id %}Article{% else %}Organization{% endif %}" id="ie9" class="ie" lang="en-US"><![endif]-->
+<!--[if gt IE 9]><!--><html itemscope itemtype="http://schema.org/{% if page.id or post.id %}Article{% else %}Organization{% endif %}" lang="en-US"><!--<![endif]-->
+<head>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+
+    <title>{% if page.title %}{{ page.title }} - {{ site.data.global.title }}{% elsif post.title %}{{ post.title }} - {{ site.data.global.title }}{% else %}{{ site.data.global.title }}{% endif %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <base href="/">
+
+
+    {% if include.clarityNg %}
+        {% include header/clarity-ng-scripts.html %}
+        <script src="{{ site.baseurl }}/node_modules/web-animations-js/web-animations.min.js?{{ site.time | date: '%s%N' }}"></script>
+    {% endif %}
+
+    <link rel="stylesheet" href="{{ site.baseurl }}{{ site.data.global.clarity_icons_css_path}}">
+    <script src="{{ site.baseurl }}/node_modules/mutationobserver-shim/dist/mutationobserver.min.js"></script>
+    <script src="{{ site.baseurl }}/node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
+    <script src="{{ site.baseurl }}{{ site.data.global.clarity_icons_js_path}}"></script>
+
+    <!-- Styles -->
+    <!--PrismJS-->
+    <link rel="stylesheet" href="{{ site.baseurl }}/node_modules/prismjs/themes/prism-solarizedlight.css?{{ site.time | date: '%s%N' }}">
+    <script src="{{ site.baseurl }}/node_modules/prismjs/prism.js?{{ site.time | date: '%s%N' }}"></script>
+    <script src="{{ site.baseurl }}/node_modules/prismjs/components/prism-typescript.min.js?{{ site.time | date: '%s%N' }}"></script>
+    <!--End PrismJS-->
+
+    <link rel="stylesheet" href="{{ site.baseurl }}{{ site.data.global.clarity_ui_path}}?{{ site.time | date: '%s%N' }}">
+    <link rel="stylesheet" href="{{ site.baseurl }}{{ site.data.global.font_awesome_path}}?{{ site.time | date: '%s%N' }}">
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css?{{ site.time | date: '%s%N' }}">
+
+    <!-- TODO - DO WE NEED HTML5SHIV??? i think so... -->
+    <!--[if lt IE 9]>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="{{ site.data.global.url }}/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons will go here -->
+
+    {% comment %}
+    <!-- Piwik -->
+    <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            if (!!window.location.href.match('clarity.vmware.com') === false) {
+                // we don't want to capture analytics for localhost...
+                return;
+            }
+            var u="//clarity.vmware.com/analytics/";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', 1]);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js?{{ site.time | date: "%s%N" }}'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <noscript><p><img src="//clarity.vmware.com/analytics/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+    {% endcomment %}
+</head>
+
+{% assign dasherized_title = '' %}
+{% if post.title %}
+    {% capture dasherized_title %}page-{{ post.title | downcase | replace:' ','-' | replace:',','' | strip_html }}{% endcapture %}
+{% elsif page.title %}
+    {% capture dasherized_title %}page-{{ page.title | downcase | replace:' ','-' | replace:',','' | strip_html }}{% endcapture %}
+{% endif %}
+
+{% if page.layout == 'documentation' or page.layout == 'get-started' or page.layout == 'news' %}
+    {% assign hasSidebar = true %}
+{% else %}
+    {% assign hasSidebar = false %}
+{% endif %}
+
+<body id="body" class="{{ dasherized_title }} {% if page.category %} category-{{ page.category }}{% endif %}{% if page.layout-class %} layout-{{ page.layout-class }}{% else %}layout-{{ page.layout }}{% endif %}">
+    <div class="sliding-nav-wrapper">
+        <a class="close-toggle" href="javascript://" onclick="ClarityWeb.toggleNav('topnav')">&times;<span class="sr-only">Close</span></a>
+        <div class="sliding-nav">
+            <div class="sliding-nav-logo">
+                <span class="logo-img">
+            </div>
+            <ul class="slider-nav">
+                <li><a class="nav-link {% if page.layout == 'home' %}active{% endif %}" href="/"><span class="nav-text">Home</span></a></li>
+                {% for navItem in site.data.nav.main %}
+                    <li>{% include header/nav-item.html navUrl=navItem.url navText=navItem.text %}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% if hasSidebar %}
+    <div class="sliding-sidenav-wrapper sliding-nav-wrapper">
+        <a class="close-toggle" href="javascript://" onclick="ClarityWeb.toggleNav('sidenav')">&times;<span class="sr-only">Close</span></a>
+        <div class="sliding-nav sliding-sidenav">
+            <ul class="slider-nav">
+                {% if page.layout == 'documentation' %}
+                    <li><h5 class="documentation-hdr first">Patterns</h5></li>
+                    {% include documentation/just_navlinks.html type="pattern" %}
+
+                    <li><h5 class="documentation-hdr">Components</h5></li>
+                    {% include documentation/just_navlinks.html type="component" %}
+                {% else %}
+                    {% if page.layout == 'news'%}
+                        {% include news/just_navlinks.html section="current" responsive=true %}
+                        {% include news/just_navlinks.html responsive=true %}
+                    {% else %}
+                        <h5 class="furst">Get Started</h5>
+                        {% include get-started/just_navlinks.html section="clarity" responsive=true %}
+                        <h5>Contribute to Clarity</h5>
+                        {% include get-started/just_navlinks.html section="contribute" %}
+                    {% endif %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+    <div class="sliding-nav-backdrop">&nbsp;</div>
+
+    <div class="main-container">
+    {% unless include.noNav %}
+        {% include header/nav.html %}
+    {% endunless %}
+
+    {% unless page.layout == 'error' or hasSidebar %}
+    <div class="content-container">
+    {% endunless %}

@@ -1,0 +1,58 @@
+import {Injectable} from "@angular/core";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+
+import { ClrResponsiveNavCodes } from "./clrResponsiveNavCodes";
+import { ClrResponsiveNavControlMessage } from "./clrResponsiveNavControlMessage";
+
+@Injectable()
+export class ClrResponsiveNavigationService {
+    public responsiveNavList: number[] = [];
+    public registerNavSubject: BehaviorSubject<number[]>
+        = new BehaviorSubject<number[]>([]);
+    public controlNavSubject: BehaviorSubject<ClrResponsiveNavControlMessage>
+        = new BehaviorSubject<ClrResponsiveNavControlMessage>(
+                new ClrResponsiveNavControlMessage(
+                    ClrResponsiveNavCodes.NAV_CLOSE_ALL,
+                    -999
+                )
+            );
+
+    registerNav(navLevel: number): void {
+        if (!navLevel || this.isNavRegistered(navLevel)) {
+            return;
+        }
+        this.responsiveNavList.push(navLevel);
+        this.registerNavSubject.next(this.responsiveNavList);
+    }
+
+    isNavRegistered(navLevel: number): boolean {
+        if (this.responsiveNavList.indexOf(navLevel) > -1) {
+            console.error("Multiple clr-nav-level " + navLevel
+                + " attributes found. Please make sure that only one exists");
+            return true;
+        }
+        return false;
+    }
+
+    unregisterNav(navLevel: number) {
+        let index = this.responsiveNavList.indexOf(navLevel);
+        if (index > -1) {
+            this.responsiveNavList.splice(index, 1);
+            this.registerNavSubject.next(this.responsiveNavList);
+        }
+    }
+
+    sendControlMessage(controlCode: string, navLevel: number) {
+        let message: ClrResponsiveNavControlMessage
+            = new ClrResponsiveNavControlMessage(controlCode, navLevel);
+        this.controlNavSubject.next(message);
+    }
+
+    closeAllNavs() {
+        let message: ClrResponsiveNavControlMessage
+            = new ClrResponsiveNavControlMessage(
+                ClrResponsiveNavCodes.NAV_CLOSE_ALL, -999
+            );
+        this.controlNavSubject.next(message);
+    }
+}

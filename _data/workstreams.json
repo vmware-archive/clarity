@@ -1,0 +1,34 @@
+{
+    "imgPath": "bugs/",
+    "gsImgPath": "get-started/",
+    "workstreams": [
+        {
+            "name": "clarityUX",
+            "prettyName": "clarityUX",
+            "bug": "ux.png",
+            "gsBug": "badgeUX.png",
+            "gsDescription": "clarityUX is the design arm of Clarity, essentially where the vision begins.  We build on solid design fundamentals, solve problems, and design for components.  Our work here is highly explorative and iterative.  We reference existing repositories, examining successes and areas for improvement."
+        },
+        {
+            "name": "clarityUI",
+            "prettyName": "clarityUI",
+            "bug": "ui.png",
+            "gsBug": "badgeUI.png",
+            "gsDescription": "clarityUI is a set of UI components built using CSS and HTML.  These components work for any product, regardless of the JavaScript framework it uses. Built on the design choices made in clarityUX, clarityUI serves as both Clarity’s way of prototyping and Clarity’s way of delivering UX components."
+        },
+        {
+            "name": "clarityNG",
+            "prettyName": "clarityNG",
+            "bug": "ng.png",
+            "gsBug": "badgeNG.png",
+            "gsDescription": "clarityNG is for building databound components on top of Angular 2."
+        },
+        {
+            "name": "clarityCORE",
+            "prettyName": "clarityCORE",
+            "bug": "core.png",
+            "gsBug": "badgeCORE.png",
+            "gsDescription": "clarityCORE provides the tools for Clarity adoption and integration.  clarityCORE also makes it easier for developers to use and continue to apply Clarity to their products. A deliverable from this workstream is the Clarity website, which provides documentation and templates."
+        }
+    ]
+}

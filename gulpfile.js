@@ -1,82 +1,73 @@
-var gulp = require("gulp");
-var env = require('gulp-env');
-var requireDir = require('require-dir');
-var runSequence = require('run-sequence');
-var util = require('gulp-util');
+var Builder = require("systemjs-builder");
+var concat = require("gulp-concat");
+var gulp = require('gulp');
 
-/**
- * Check for prod flag during gulp task executions
- */
-if(util.env.prod){
-  env.set({NODE_ENV: "prod"});
-} else {
-  env.set({NODE_ENV: "dev"});
-}
-
-requireDir('./build/tasks', {recurse: true});
-
-/**
- * Cleans, compiles and bundles the entire application, before cleaning up the tmp/ folder again.
- */
-gulp.task('build', function (callback) {
-    var prod = process.env.NODE_ENV==="prod";
-    return runSequence(
-        'clean',
-        'sass',
-        prod ? ['typescript', 'html', 'bundle'] : ['typescript', 'html'],
-        callback
-    );
+gulp.task('concat', function() {
+    return gulp.src([
+            'node_modules/core-js/client/shim.min.js',
+            'node_modules/zone.js/dist/zone.min.js',
+            'node_modules/reflect-metadata/Reflect.js',
+            'node_modules/systemjs/dist/system.src.js'
+        ])
+        .pipe(concat("vendor.js"))
+        .pipe(gulp.dest('js'));
 });
 
-/**
- * Builds one time, then watches for changes and starts Browsersync
- */
-gulp.task("serve", function (callback) {
-    var prod = process.env.NODE_ENV==="prod";
-    return runSequence(
-        'build',
-        prod ?
-            ['sass:watch', 'typescript:watch', 'html:watch', 'bundle:watch'] :
-            ['sass:watch', 'typescript:watch', 'html:watch'],
-        'live',
-        callback
-    );
+gulp.task('bundle', function(){
+    var buildOpts = { minify: true, mangle: false, normalize: true };
+    var builder = new Builder();
+    // map tells the System loader where to look for things
+    var map = {
+        'app':                                  'app',
+        'clarity-angular':                      'node_modules/clarity-angular',
+        'clarity-demos':                        'node_modules/clarity-demos',
+        'rxjs':                                 'node_modules/rxjs',
+        '@angular/core':                        'node_modules/@angular/core/bundles/core.umd.js',
+        '@angular/common':                      'node_modules/@angular/common/bundles/common.umd.js',
+        '@angular/compiler':                    'node_modules/@angular/compiler/bundles/compiler.umd.js',
+        '@angular/platform-browser':            'node_modules/@angular/platform-browser/bundles/platform-browser.umd.js',
+        '@angular/platform-browser-dynamic':    'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+        '@angular/router':                      'node_modules/@angular/router/bundles/router.umd.js',
+        '@angular/forms':                       'node_modules/@angular/forms/bundles/forms.umd.js'
+    };
+
+    // packages tells the System loader how to load when no filename and/or no extension
+    var packages = {
+        'app':                          { defaultExtension: 'js' },
+        'clarity-angular':              { main: "index.js", defaultExtension: 'js' },
+        'clarity-demos':                { defaultExtension: "js" },
+        'rxjs':                         { defaultExtension: 'js' }
+    };
+
+    builder.config({
+        map: map,
+        packages: packages
+    });
+
+    return builder.bundle("app/**/*.js", 'js/app.min.js', buildOpts)
+        .catch(function(err) {
+            console.error(err);
+        });
 });
 
-/**
- * Builds the application in production mode and runs all tests once on it.
- */
-gulp.task("test", function (callback) {
-    env.set({NODE_ENV: "prod"}); // We only run tests in production mode for now
-    return runSequence(
-        'build',
-        'karma:verbose',
-        callback
-    );
+gulp.task('build', ['preprocess'], function (gulpCallBack){
+    var spawn = require('child_process').spawn;
+    var jekyll = spawn('jekyll', ['build'], { stdio: 'inherit' });
+
+    jekyll.on('exit', function(code) {
+        gulpCallBack(code === 0 ? null : 'ERROR: Jekyll process exited with code: '+code);
+    });
 });
 
-/**
- * Builds the application in production mode, runs all tests on it,
- * then watches for file changes to re-run tests.
- */
-gulp.task("test:watch", function(callback) {
-    env.set({NODE_ENV: "prod"}); // We only run tests in production mode for now
-    return runSequence(
-        'build',
-        ['sass:watch', 'typescript:watch', 'html:watch', 'bundle:watch'],
-        'karma:watch',
-        callback
-    );
+gulp.task('serve', ['preprocess'], function (gulpCallBack){
+    var spawn = require('child_process').spawn;
+    var jekyll = spawn('jekyll', ['serve'], { stdio: 'inherit' });
+
+    jekyll.on('exit', function(code) {
+        gulpCallBack(code === 0 ? null : 'ERROR: Jekyll process exited with code: '+code);
+    });
 });
 
-/**
- * Publishes the Clarity package to the NPM registry
- */
-gulp.task("npm:prepare", function(callback) {
-    env.set({NODE_ENV: "prod"}); // The build is in production mode
-    return runSequence(
-        'build',
-        'npm:all',
-        callback
-    );
-});
+gulp.task("preprocess", ['concat', 'bundle'], function(){});
+
+gulp.task("default", ['serve'], function(){});

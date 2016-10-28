@@ -1,0 +1,124 @@
+$clr-white: #fff;
+$clr-near-white: #fafafa;
+$clr-light-gray: #eee;
+$clr-lighter-midtone-gray: #ddd;
+$clr-light-midtone-gray: #ccc;
+$clr-dark-midtone-gray: #9a9a9a;
+$clr-gray: #747474;
+$clr-dark-gray:  #565656;
+$clr-near-black: #313131;
+$clr-black: #000;
+
+// a value of 0 defaults to white; a value of 9 defaults to black
+// anyone this deep in the implementation details is either lost or
+// really knows what they're doing.
+$clr-paletteIndexDefault-darkest: 8;
+$clr-paletteIndexDefault-lightest: 1;
+$clr-paletteIndexDefault-lightBg-text: 8;
+$clr-paletteIndexDefault-lightBg-subtext: 6;
+$clr-paletteIndexDefault-lightBg-hoverable: 6;
+$clr-paletteIndexDefault-lightBg-hovered: 7;
+$clr-paletteIndexDefault-lightBg-clicked: 8;
+$clr-paletteIndexDefault-darkBg-text: 1;
+$clr-paletteIndexDefault-darkBg-subtext: 2;
+$clr-paletteIndexDefault-darkBg-hoverable: 1;
+$clr-paletteIndexDefault-darkBg-hovered: 0;
+$clr-paletteIndexDefault-darkBg-clicked: 0;
+
+@function _getTextColorForMap($overrides: (), $label: null, $textColorList: $clr-gray-list, $defaultIndex: 8) {
+    @if (not($label == null) and map-has-key($overrides, $label)) {
+        @return map-get($overrides, $label);
+    } @else if ($defaultIndex > 9) {
+        @return $clr-black;
+    } @else if ($defaultIndex < 1) {
+        @return $clr-white;
+    }
+
+    @return nth($textColorList, $defaultIndex);
+}
+
+@function _buildTextColorMap($overrides: (), $textColorList: $clr-gray-list) {
+    $returnMap: (
+        darkest: _getTextColorForMap($overrides, darkest, $textColorList, $clr-paletteIndexDefault-darkest),
+        lightest: _getTextColorForMap($overrides, lightest, $textColorList, $clr-paletteIndexDefault-lightest),
+        lightBg: (
+            text: _getTextColorForMap($overrides, lightBg-text, $textColorList, $clr-paletteIndexDefault-lightBg-text),
+            subtext: _getTextColorForMap($overrides, lightBg-subtext, $textColorList, $clr-paletteIndexDefault-lightBg-subtext),
+            hoverable: _getTextColorForMap($overrides, lightBg-hoverable, $textColorList, $clr-paletteIndexDefault-lightBg-hoverable),
+            hovered: _getTextColorForMap($overrides, lightBg-hovered, $textColorList, $clr-paletteIndexDefault-lightBg-hovered),
+            clicked: _getTextColorForMap($overrides, lightBg-clicked, $textColorList, $clr-paletteIndexDefault-lightBg-clicked)
+        ),
+        darkBg: (
+            text: _getTextColorForMap($overrides, darkBg-text, $textColorList, $clr-paletteIndexDefault-darkBg-text),
+            subtext: _getTextColorForMap($overrides, darkBg-subtext, $textColorList, $clr-paletteIndexDefault-darkBg-subtext),
+            hoverable: _getTextColorForMap($overrides, darkBg-hoverable, $textColorList, $clr-paletteIndexDefault-darkBg-hoverable),
+            hovered: _getTextColorForMap($overrides, darkBg-hovered, $textColorList, $clr-paletteIndexDefault-darkBg-hovered),
+            clicked: _getTextColorForMap($overrides, darkBg-clicked, $textColorList, $clr-paletteIndexDefault-darkBg-clicked)
+        )
+    );
+
+    @return $returnMap;
+}
+
+$clr-gray-list: ($clr-white, $clr-near-white, $clr-light-gray, $clr-lighter-midtone-gray, $clr-light-midtone-gray, $clr-dark-midtone-gray, $clr-gray, $clr-dark-gray, $clr-near-black, $clr-black);
+$clr-gray-textColorOverrides: (
+    lightest: nth($clr-gray-list, 2),
+    darkest: nth($clr-gray-list, 9),
+    lightBg-text: nth($clr-gray-list, 8),
+    lightBg-subtext: nth($clr-gray-list, 7),
+    lightBg-hoverable: nth($clr-gray-list, 7),
+    lightBg-hovered: nth($clr-gray-list, 9),
+    lightBg-clicked: nth($clr-gray-list, 10),
+    darkBg-hoverable: nth($clr-gray-list, 2)
+);
+$clr-gray-textColorMap: _buildTextColorMap($clr-gray-textColorOverrides);
+$clr-grays: (label: gray, base: $clr-dark-gray, hex-colors: $clr-gray-list, text-colors: $clr-gray-textColorMap);
+
+$clr-blue: #006a91;
+
+$clr-actionblue: #007cbb;
+$clr-actionblue-list: (#e1f1f6, #89cbdf, #49afd9, #0094d2, $clr-actionblue, #004a70, #003a59, #002538);
+$clr-actionblue-textColorOverrides: (
+    lightest: lighten(nth($clr-actionblue-list, 1), 7%),
+    lightBg-hoverable: nth($clr-actionblue-list, 5),
+    darkBg-hoverable: lighten(nth($clr-actionblue-list, 1), 7%),
+    darkBg-subtext: darken(nth($clr-actionblue-list, 1), 7%)
+);
+$clr-actionblue-textColorMap: _buildTextColorMap($clr-actionblue-textColorOverrides, $clr-actionblue-list);
+$clr-actionblues: (label: action-blue, base: $clr-actionblue, hex-colors: $clr-actionblue-list, text-colors: $clr-actionblue-textColorMap);
+
+$clr-actionpurple: #853fb3;
+$clr-actionpurple-list: (#f3ecf7, #e7d9f0, #b68cd1, #9460b8, $clr-actionpurple, #660092, #50266b, #281336);
+$clr-actionpurple-textColorOverrides: (
+    lightBg-hoverable: nth($clr-actionpurple-list, 5),
+    lightBg-hovered: nth($clr-actionpurple-list, 6)
+);
+$clr-actionpurple-textColorMap: _buildTextColorMap($clr-actionpurple-textColorOverrides, $clr-actionpurple-list);
+$clr-actionpurples: (label: action-purple, base: $clr-actionpurple, hex-colors: $clr-actionpurple-list, text-colors: $clr-actionpurple-textColorMap);
+
+$clr-red: #c92100;
+$clr-red-list: (#fbf1f2, #f5dbd9, #ebafa6, #e62700, $clr-red, #a32100, #7d2100, #642100);
+$clr-red-textColorOverrides: (
+    lightBg-hoverable: nth($clr-red-list, 5),
+    lightBg-hovered: nth($clr-red-list, 6)
+);
+$clr-red-textColorMap: _buildTextColorMap($clr-red-textColorOverrides, $clr-red-list);
+$clr-reds: (label: stoplight-red, base: $clr-red, hex-colors: $clr-red-list, text-colors: $clr-red-textColorMap);
+
+$clr-yellow: #efd603;
+$clr-yellow-list: (#f9f0e1, #feecb5, $clr-yellow, #eb8d00, #ce5c00, #c25400, #9e4100, #642100);
+$clr-yellow-textColorOverrides: ();
+$clr-yellow-textColorMap: _buildTextColorMap($clr-yellow-textColorOverrides, $clr-yellow-list);
+$clr-yellows: (label: stoplight-yellow, base: $clr-yellow, hex-colors: $clr-yellow-list, text-colors: $clr-yellow-textColorMap);
+
+$clr-green: #60b515;
+$clr-green-list: (#dff0d0, #c6e4ab, $clr-green, #62a420, #318700, #266900, #1d5100, #0f2900);
+$clr-green-textColorOverrides: (
+    lightest: lighten(nth($clr-green-list, 1), 7%),
+    lightBg-hoverable: nth($clr-green-list, 5)
+);
+$clr-green-textColorMap: _buildTextColorMap($clr-green-textColorOverrides, $clr-green-list);
+$clr-greens: (label: stoplight-green, base: $clr-green, hex-colors: $clr-green-list, text-colors: $clr-green-textColorMap);
+
+$clr-base-color-list: ($clr-white, $clr-dark-gray, $clr-blue, $clr-actionblue, $clr-green);
+$clr-base-colors: (label: base, base: $clr-white, hex-colors: $clr-base-color-list);

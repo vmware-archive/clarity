@@ -1,0 +1,52 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../color/color.clarity";
+@import "../utils/helpers.clarity";
+@import "../images/icons.clarity";
+
+@mixin min-height($size){
+    min-height: $size;
+    min-width: $size;
+    height: $size;
+    width: $size;
+}
+
+@include exports('spinner.clarity') {
+    .spinner {
+        // spinner-lg is the default
+        position: relative;
+        display: inline-block;
+        @include min-height(rem(72/16));
+        animation: spin 1s linear infinite;
+        margin: 0;
+        padding: 0;
+        background: generateSpinnerIcon();
+        text-indent: 100%;
+        overflow: hidden;
+
+        &.spinner-md {
+            @include min-height(rem(36/$clr-rem-denominator));
+        }
+
+        &.spinner-inline, &.spinner-sm {
+            @include min-height(rem(18/$clr-rem-denominator));
+        }
+
+        &.spinner-inline {
+            vertical-align: text-bottom; //To align with text properly
+        }
+
+        &.spinner-inverse {
+            background: generateSpinnerIcon($clr-white);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}

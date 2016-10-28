@@ -1,0 +1,75 @@
+---
+layout: documentation
+title: Documentation
+load-components: false
+---
+{% assign labels =  "Item|UX|UI|Core|NG|Doc|Comments" | split: "|" %}
+
+<h1>Component Status</h1>
+
+<p>
+    The Clarity team is building a robust library of components as quickly as possible. Check back often for updates.
+    If a component you need is not listed here, <a href="https://github.com/vmware/clarity/issues">file a GitHub issue</a>.
+</p>
+
+<p class="component-legend">
+    <span class="component-legend-item">
+        <span class="symbol">{% include documentation/component-list-dot.html status=20 %}</span>
+        <span class="terminology">Done</span>
+    </span>
+    <span class="component-legend-item">
+        <span class="symbol">{% include documentation/component-list-dot.html status=10 %}</span>
+        <span class="terminology">In progress</span>
+    </span>
+    <span class="component-legend-item">
+        <span class="symbol">{% include documentation/component-list-dot.html status=5 %}</span>
+        <span class="terminology">In queue</span>
+    </span>
+    <span class="component-legend-item">
+        <span class="symbol">{% include documentation/component-list-dot.html status=-1 %}</span>
+        <span class="terminology">n/a</span>
+    </span>
+</p>
+
+<table class="table table-condensed table-component-list bump-down">
+    <thead>
+        {% for label in labels %}
+            <th>{{ label }}</th>
+        {% endfor %}
+    </thead>
+    <tbody>
+        {% for item in site.data.componentlist.list %}
+            <tr>
+                <td>
+                    {% if item.url %}
+                        <a href="{{ site.baseurl }}/{{item.url}}">{{item.text}}</a>
+                    {% else %}
+                        {{ item.text }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% include documentation/component-list-dot.html status=item.ux %}
+                </td>
+                <td>
+                    {% include documentation/component-list-dot.html status=item.ui %}
+                </td>
+                <td>
+                    {% include documentation/component-list-dot.html status=item.core %}
+                </td>
+                <td>
+                    {% include documentation/component-list-dot.html status=item.ng %}
+                </td>
+                <td>
+                    {% include documentation/component-list-dot.html status=item.dox %}
+                </td>
+                <td>
+                    {% if item.comments %}
+                        {{ item.comments }}
+                    {% else %}
+                        &nbsp;
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

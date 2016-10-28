@@ -1,0 +1,71 @@
+{% include header/header.html %}
+
+<main class="content-area">
+    <section class="community-top-section">
+        {{content}}
+    </section>
+
+    <section class="community-social-cards">
+        <h3>Engaging with the Clarity Team</h3>
+
+        <div class="hidden-sm-up">
+            <ul class="list-unstyled indent bump-down">
+                {% for item in site.data.team.social %}
+                    <li><a href="{{ item.url }}">{{ item.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="hidden-xs-down row">
+            {% for item in site.data.team.social %}
+                <div class="col-xs-4">
+                    {% include community/social-card.html socialUrl=item.url blurb=item.text img=item.img %}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+    <section class="community-team-cards">
+        <h3>Clarity Team</h3>
+
+        {% for t in site.data.team.members %}
+            {% assign myIndex = forloop.index %}
+            {% capture mightyModulo %}{{ myIndex | modulo:3 }}{% endcapture %}
+            {% if mightyModulo == '1' %}
+            <div class="row">
+            {% endif %}
+                <div class="card col-xs-12 col-sm-12 col-md-4">
+                    <div class="card-block">
+                        {% if t.img != '' %}
+                            <img src="{{ site.baseurl }}/images{{ site.data.team.IMAGE_PATH }}{{ t.img }}?{{ site.time | date: '%s%N' }}" alt="Picture of {{ t.name }}">
+                        {% else %}
+                            <img src="{{ site.baseurl }}/images{{ site.data.team.IMAGE_PATH }}placeholder.png" alt="Picture of {{ t.name }}">
+                        {% endif %}
+                        <div class="card-text">
+                            <p class="community-team-name">{{ t.name }}
+                            </p>
+                            <p class="community-team-role">{{ t.role }}</p>
+                            <p class="community-team-blurb">{{ t.blurb }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% if forloop.last or mightyModulo == '0' %}
+            </div>
+            {% endif %}
+        {% endfor %}
+    </section>
+
+    <section class="community-contributors">
+        <h3>Contributors</h3>
+        <ul class="list-unstyled">
+            {% for c in site.data.team.contributors %}
+                {% unless c.rip %}
+                    <li>{{ c.name }}</li>
+                {% endunless %}
+            {% endfor %}
+        </ul>
+    </section>
+
+</main>
+
+{% include footer/footer.html %}

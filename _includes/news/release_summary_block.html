@@ -1,0 +1,13 @@
+{% assign label=include.countLabel %}
+
+{% if include.count == 1 %}
+    {% assign label=include.countLabelSingular %}
+{% endif %}
+
+<div class="summary-block">
+    <p class="summary-block-title">{{ include.title }}</p>
+    <p class="summary-block-details">
+        {% if include.count %}<span class="count">{{ include.count }}</span>{% endif %}
+        {{ label }}
+    </p>
+</div>

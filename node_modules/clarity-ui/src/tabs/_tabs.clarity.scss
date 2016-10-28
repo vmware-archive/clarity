@@ -1,0 +1,7 @@
+@import "../utils/mixins.clarity";
+
+@include exports('tabs.clarity') {
+  [data-hidden="true"] {
+    display: none;
+  }
+}

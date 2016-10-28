@@ -1,0 +1,120 @@
+<!doctype html>
+<!--
+    @license
+    Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+    This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+    The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+    The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+    Code distributed by Google as part of the polymer project is also
+    subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+  <head>
+    <title>Custom Elements: imports integration</title>
+    <script>
+      var _HTMLImportsLoaded = false;
+
+      addEventListener('HTMLImportsLoaded', function() {
+        _HTMLImportsLoaded = true;
+      });
+
+      WCT = {
+        waitFor: function(cb) {
+          if (_HTMLImportsLoaded) {
+            cb();
+          } else {
+            addEventListener('HTMLImportsLoaded', function() {
+              cb();
+            });
+          }
+        }
+      };
+
+    </script>
+    <script src="../../../web-component-tester/browser.js"></script>
+    <script src="../../../webcomponentsjs/HTMLImports.js"></script>
+    <script src="../../custom-elements.min.js"></script>
+    <script>
+      customElements.enableFlush = true;
+      var elementsCreated = 0;
+      var connectedCount = 0;
+      var addedLinks = [];
+      var observedRoots = [];
+
+      // Patch _addNode and _observeRoot so we can spy on link nodes being
+      // processed. All this is hack so we can test compiled code
+      var origAddImport = CustomElementRegistry.prototype._addImport;
+      var origObserveRoot = CustomElementRegistry.prototype._observeRoot;
+      var origObserveRootName;
+      var origAddImportName;
+      // To patch a compiled method that's called internally in the class, we
+      // need to get the compiled, not exported, name:
+      for (var i in CustomElementRegistry.prototype) {
+        var method = CustomElementRegistry.prototype[i];
+        if (i !== '_addImport' && method === origAddImport) {
+          origAddImportName = i;
+        } else if (i !== '_observeRoot' && method === origObserveRoot) {
+          origObserveRootName = i;
+        }
+      }
+      customElements[origAddImportName] = function(link, visitedNodes) {
+        addedLinks.push(link);
+        return origAddImport.call(customElements, link, visitedNodes);
+      }
+      customElements[origObserveRootName] = function(root) {
+        observedRoots.push(root);
+        return origObserveRoot.call(customElements, root);
+      }
+    </script>
+    <link rel="import" href="sub-import.html" id="sub-import">
+    <link rel="import" href="imported-doc.html" id="import">
+    <link rel="not-import" href="imported-doc.html" id="not-import">
+    <script>
+
+      // This element is used in the imports
+      class XFoo extends HTMLElement {
+        constructor() {
+          super();
+          elementsCreated++;
+        }
+
+        connectedCallback() {
+          connectedCount++;
+        }
+      }
+      customElements.define('x-foo', XFoo);
+
+      suite('HTML Imports Integration', function() {
+
+        test('CustomElements upgrade', function() {
+          chai.assert.equal(elementsCreated, 2);
+        });
+
+        test('CustomElements do have connectedCallback called', function() {
+          // only the instance in the main document should be connected
+          chai.assert.equal(connectedCount, 2);
+        });
+
+        test('CustomElements only attempt to upgrade <link rel=import>', function() {
+          var nonImportLink = document.querySelector('#not-import');
+          var addedIds = addedLinks.map(function(n) {
+            return n.id;
+          });
+          chai.assert.notInclude(addedIds, 'not-import');
+        });
+
+        test('CustomElements only upgrades a <link rel=import> once', function() {
+          var observedSubImports = observedRoots.filter(function(n) {
+            return n.baseURI.endsWith('sub-import.html');
+          });
+          // check that we only observe an imported document once
+          chai.assert.equal(observedSubImports.length, 1);
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+    <x-foo></x-foo>
+  </body>
+</html>

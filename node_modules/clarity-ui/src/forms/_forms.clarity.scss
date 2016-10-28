@@ -1,0 +1,628 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+@import "../color/color.clarity";
+@import "../utils/layers.clarity";
+@import "../images/icons.clarity";
+
+$styledInputs: inputs("text", "password", "number", "email");
+$styledInputs1: inputs("button","submit");
+
+$clr-form-field-border-color: $gray-dark-midtone;
+$clr-form-field-background-color: $action-blues-light-midtone;
+$clr-form-disabled-background-color: $gray-light-midtone;
+$clr-form-field-disabled-color: $gray-dark;
+
+$clr-checkbox-radio-height: $clr-icon-dimension-sm;
+$clr-form-icon-dim: $clr-icon-dimension-sm;
+
+$clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height) / 2;
+
+//Standard Clarity Input Bottom Border Animation
+@mixin input-border-bottom-animation($border-color: clr-getColor(light-midtone,action-blues)) {
+    // Border-bottom animation on focus
+    background: linear-gradient(to bottom, transparent 95%, $border-color 95%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    transition: background-size 0.2s ease;
+
+    &:focus {
+        border-bottom: 1px solid $border-color;
+        background-size: 100% 100%;
+    }
+}
+
+//Validation Tooltips Arrow Color
+@mixin vertical-tooltip-arrow-color($dirA:top,$dirB:right,$color:#000000) {
+    $oppA: map-get($opp-directions, $dirA);
+    $oppB: map-get($opp-directions, $dirB);
+
+    border-#{$oppB}-color: $color;
+    border-#{$dirA}-color: $color;
+    border-#{$dirB}-color: transparent;
+    border-#{$oppA}-color: transparent;
+}
+
+@mixin horizontal-tooltip-arrow-color($dirA:top,$dirB:right,$color:#000000) {
+    $oppA: map-get($opp-directions, $dirA);
+    $oppB: map-get($opp-directions, $dirB);
+
+    border-top-color: $color;
+    border-#{$dirB}-color: $color;
+    border-bottom-color: transparent;
+    border-#{$oppB}-color: transparent;
+}
+
+@mixin generate-required-indicator() {
+    &.required{
+        &:after{
+            content:'*';
+            font-size: 1.1em;
+            color: $clr-red;
+            margin-left: $clr_baselineRem_0_25;
+        }
+    }
+}
+
+@include exports('forms.clarity') {
+    //Styling for #styledInputs and select
+    %custom-inputs {
+        @include clr-appearance-normal();
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background: none;
+        height: $clr_baselineRem_1;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+
+    %clr-form-fields-appearance {
+        display: inline-block;
+        border-bottom: 1px solid $clr-form-field-border-color;
+        min-width: $clr_baselineRem_2_5;
+    }
+
+    %checkbox-radio-input-styles {
+        position: absolute;
+        height: $clr-checkbox-radio-height;
+        width: $clr-checkbox-radio-height;
+        top: $clr-custom-checkbox-radio-top;
+        left: 0;
+        opacity: 0;
+    }
+
+    %checkbox-radio-label-styles {
+        display: inline-block;
+        min-height: $clr_baselineRem_1;
+        position: relative;
+        cursor: pointer;
+        padding-left: $clr-checkbox-radio-height + $clr_baselineRem_0_25;
+    }
+
+    %checkbox-radio-shared-inactive {
+        position: absolute;
+        content: '';
+        left: 0;
+        top: $clr-custom-checkbox-radio-top;
+        display: inline-block;
+        height: $clr-checkbox-radio-height;
+        width: $clr-checkbox-radio-height;
+        border: 1px solid $clr-form-field-border-color;
+    }
+
+    %form-fields-disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+    // added `.form` class because we may not always have proper HTML with form fields within a form.
+    // there may be weird cases where we have form fields inside a div or li tag with no wrapping form.
+    // that's bad, i know. but webdevs do it.
+    form, .form {
+        padding-top: $clr_baselineRem_0_5;
+
+        label, span{
+            display: inline-block;
+        }
+
+        .form-block {
+            margin: $clr_baselineRem_0_5 0 $clr_baselineRem_1_5 0;
+            & > label {
+                @include clr-getTypePropertiesForDomElement(form_block_label, (font-size, letter-spacing, font-weight));
+                color: $clr-black;
+                text-transform: uppercase;
+                margin-bottom: $clr_baselineRem_1;
+            }
+        }
+
+        //form-group Style and Layout using FlexBox for large screens
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+            padding-left: baselineRem(9.5); //Everything else except for the first label starts after this padding on large screens
+            margin-bottom: $clr_baselineRem_0_5;
+            @include clr-getTypePropertiesForDomElement(form_group_fields, (font-size, letter-spacing, line-height));
+
+            &.row{
+                padding-left: 0;
+            }
+
+            //The first label in a form-group always appears on the left hand side for large screens
+            //TODO: Figure out a fix for labels wrapping large text
+            & > label:first-child, & > span:first-child {
+                position: absolute;
+                width: baselineRem(8.5);
+                left: 0;
+                top: $clr_baselineRem_0_25;
+                margin: 0;
+            }
+
+            &.row > [class*='col-']:first-child > label,
+            &.row > [class*='col-']:first-child > span {
+                position: relative;
+            }
+
+            & > label:first-child,
+            & > span:first-child,
+            &.row > [class*='col-']:first-child > label,
+            &.row > [class*='col-']:first-child > span {
+                color: $clr-black;
+
+                @include generate-required-indicator();
+            }
+
+            .form-control{
+                width: 100%;
+            }
+
+            //Form fields side margins & flex properties apply only when they are direct children of form-groups
+            & > label:not(:first-child),
+            & > span:not(:first-child),
+            & > #{$styledInputs},
+            & > .tooltip-validation,
+            & > .select,
+            & > .checkbox-inline,
+            & > .radio-inline,
+            & > button,
+            & > a,
+            & > #{$styledInputs1},
+            & > .btn {
+                flex: 0 1 auto;
+                margin-left: 0;
+                margin-right: $clr_baselineRem_0_5;
+            }
+
+            & > .checkbox,
+            & > .radio{
+                flex: 1 1 100%;
+                margin-left: 0;
+                margin-right: $clr_baselineRem_1;
+            }
+
+            & > .toggle-switch{
+                flex: 0 1 auto;
+                margin-left: 0;
+                margin-right: $clr_baselineRem_1;
+            }
+
+            & > textarea{
+                margin-left: 0;
+                margin-right: $clr_baselineRem_0_5;
+            }
+
+            //All children have a top and bottom margin regarless if they are direct descendants or if they are
+            //in a grid
+            label, span, #{$styledInputs}, .tooltip-validation, textarea,
+            .select, .checkbox-inline, .radio-inline, .checkbox, .radio,
+            .toggle-switch, button, a, #{$styledInputs1}, .btn {
+                margin-top: $clr_baselineRem_0_25;
+                margin-bottom: $clr_baselineRem_0_25;
+            }
+
+            .btn-sm{
+                margin-top: $clr_baselineRem_0_5;
+                margin-bottom: $clr_baselineRem_0_5;
+            }
+
+            .tooltip-validation {
+                height: $clr_baselineRem_1;
+                input {
+                    margin: 0;
+                }
+            }
+
+            .radio, .checkbox, .radio-inline, .checkbox-inline, .toggle-switch {
+                label{
+                    margin-top: 0;
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        //Media Queries for the form-group for small screens
+        @media screen and (max-width: map-get($clr-breakpoints, small)) {
+
+            .form-group {
+                padding-left: 0;
+                margin-bottom: $clr_baselineRem_1;
+
+                & > label:first-of-type {
+                    position: relative;
+                    flex: 1 1 100%;
+                    margin: 0 0 $clr_baselineRem_0_5 0;
+                }
+
+                & > label:not(:first-child), span {
+                    margin: $clr_baselineRem_0_5 $clr_baselineRem_0_5 0 0;
+                    width: 80%;
+                }
+
+                #{$styledInputs} {
+                    flex: 1 1 100%;
+                    padding: 0 $clr_baselineRem_0_5;
+                }
+
+                .tooltip-validation {
+                    flex: 1 1 100%;
+
+                    input {
+                        margin: 0;
+                        width: 100%;
+                    }
+                }
+
+                .select, .toggle-switch, .checkbox, .radio, .checkbox-inline, .radio-inline {
+                    flex: 1 1 100%;
+                }
+            }
+        }
+    }
+
+    #{$styledInputs} {
+        @extend %custom-inputs;
+        @extend %clr-form-fields-appearance;
+        @include input-border-bottom-animation();
+        padding: 0 $clr_baselineRem_0_25;
+
+        &:disabled {
+            @extend %form-fields-disabled;
+        }
+    }
+
+    textarea {
+        resize: vertical;
+        width: 100%;
+        border: 1px solid $gray-light-midtone;
+        border-radius: $clr-default-borderradius;
+        padding: $clr_baselineRem_0_5 $clr_baselineRem_0_25;
+
+        &:focus {
+            @include include-outline-style-form-fields();
+        }
+    }
+
+    .select {
+        position: relative;
+        $select-hover-background: rgba(221, 221, 221, 0.5);
+        $select-after-color: $gray-dark-midtone;
+        $select-after-hover-color: $gray-dark;
+        height: $clr_baselineRem_1;
+
+        select {
+            @extend %custom-inputs;
+            @extend %clr-form-fields-appearance;
+            @include input-border-bottom-animation();
+
+            position: relative;
+            padding: 0 $clr_baselineRem_0_75 0 $clr_baselineRem_0_25;
+            cursor: pointer;
+            width: 100%;
+            //Moves the :after pseudo element (arrow) to the back so that clicking over it activates
+            //the dropdown.
+            z-index: map-get($clr-layers, select-box);
+
+            &:hover,
+            &:active {
+                border-color: $select-hover-background;
+                background: $select-hover-background;
+            }
+
+            &:disabled {
+                @extend %form-fields-disabled;
+            }
+        }
+
+        //Remove default arrow from IE
+        select::-ms-expand {
+            display: none;
+        }
+
+        //Selectbox custom arrow
+        //TODO: Replace with SVG or a pseudo element
+        &::after {
+            position: absolute;
+            font-family: "FontAwesome";
+            color: $select-after-color;
+            content: "\f107";
+            bottom: 1px;
+            right: 4px;
+        }
+
+        &:hover::after {
+            color: $select-after-hover-color;
+        }
+
+        &.disabled{
+            @extend %form-fields-disabled;
+
+            &:hover::after{
+                color: $select-after-color;
+            }
+        }
+
+        &.disabled > select, select:disabled {
+            @extend %form-fields-disabled;
+
+            &:hover{
+                background: none;
+                border-color: $clr-form-field-border-color;
+            }
+        }
+    }
+
+    .checkbox, .checkbox-inline {
+        position: relative;
+
+        //Hide the default checkbox behind the pseudo elements
+        //Opacity is set to 0 so that the input remains accessible
+        input[type="checkbox"] {
+            @extend %checkbox-radio-input-styles;
+        }
+
+        label {
+            @extend %checkbox-radio-label-styles;
+        }
+
+        //Checkbox base
+        input[type="checkbox"] + label::before {
+            @extend %checkbox-radio-shared-inactive;
+            border-radius: $clr-default-borderradius;
+        }
+
+        input[type="checkbox"]:focus + label::before {
+            @include include-outline-style-form-fields();
+        }
+
+        //Checkmark
+        input[type="checkbox"] + label::after {
+            position: absolute;
+            content: '';
+            display: none;
+            height: ($clr-checkbox-radio-height / 4 + 1);
+            width: $clr-checkbox-radio-height / 2;
+            border-left: 2px solid white;
+            border-bottom: 2px solid white;
+            transform: rotate(-45deg);
+            top: $clr-checkbox-radio-height / 2;
+            left: $clr-checkbox-radio-height / 4;
+        }
+
+        input[type="checkbox"]:checked + label::before {
+            background: $clr-form-field-background-color;
+            border: none;
+        }
+
+        input[type="checkbox"]:checked + label::after {
+            display: inline-block;
+        }
+
+        &.disabled {
+            label {
+                @extend %form-fields-disabled;
+            }
+
+            input[type="checkbox"]:checked + label::before {
+                background-color: $clr-form-disabled-background-color;
+            }
+
+            input[type="checkbox"]:checked + label::after {
+                $disabled-border-style: 2px solid $clr-form-field-disabled-color;
+                border-left: $disabled-border-style;
+                border-bottom: $disabled-border-style;
+            }
+        }
+    }
+
+    .radio, .radio-inline {
+        position: relative;
+
+        //Hide the default radio
+        input[type="radio"] {
+            @extend %checkbox-radio-input-styles;
+        }
+
+        label {
+            @extend %checkbox-radio-label-styles;
+        }
+
+        //Radio button base
+        input[type="radio"] + label::before {
+            @extend %checkbox-radio-shared-inactive;
+            border-radius: 50%;
+        }
+
+        //Checked Radio Styles
+        input[type="radio"]:checked + label::before {
+            box-shadow: inset 0 0 0 $clr_baselineRem_0_25 $clr-form-field-background-color;
+            border: none;
+        }
+
+        //Outline color for unchecked radios
+        input[type="radio"]:focus + label::before {
+            outline: 0;
+            box-shadow: 0 0 $clr-outline-blur $clr-outline-spread $clr-outline-color;
+        }
+
+        //Outline color for checked radios
+        input[type="radio"]:focus:checked + label::before {
+            outline: 0;
+            box-shadow: inset 0 0 0 $clr_baselineRem_0_25 $clr-form-field-background-color,
+                        0 0 $clr-outline-blur $clr-outline-spread $clr-outline-color;
+        }
+
+        &.disabled {
+            label {
+                @extend %form-fields-disabled;
+            }
+
+            input[type="radio"]:checked + label::before {
+                background-color: $clr-form-disabled-background-color;
+                box-shadow: inset 0 0 0 $clr_baselineRem_0_25 $clr-form-field-disabled-color;
+            }
+        }
+    }
+
+    .toggle-switch {
+        label {
+            margin-bottom: 0;
+        }
+    }
+
+    //This class is used to provide validation styling to textboxes.
+    //Wrap the textbox with a container extending this class
+    .tooltip.tooltip-validation {
+        $error-icon-width: $clr-form-icon-dim;
+        $error-icon-margin: $clr_baselineRem_0_25;
+
+        & > input {
+            //6px to the right & left of the error icon + 16px for the width of the error icon
+            padding-right: 2 * $error-icon-margin + $error-icon-width;
+        }
+
+        //Tooltips are not visible on hover for validation.
+        //They are visible when the user focuses on the input
+        &:hover > .tooltip-content {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        &.invalid {
+            & > input {
+                $invalid_red: clr-getColor(dark-midtone, reds);
+
+                border-bottom: 1px solid $invalid_red;
+                background: linear-gradient(to bottom, transparent 95%, #{$invalid_red} 95%);
+                transition: none;
+            }
+
+            //Show on input focus
+            & > input:focus + .tooltip-content {
+                background: $reds-dark-midtone;
+                visibility: visible;
+                opacity: 1;
+            }
+
+            //Adjust tooltip position to be on the icon and
+            //not on the middle of the input element
+            & > input:focus + .tooltip-content,
+            &.tooltip-top-right > input:focus + .tooltip-content,
+            &.tooltip-bottom-right > input:focus + .tooltip-content {
+                left: 100%;
+                right: auto;
+                //6px to the right & left of the error icon + 8px for half width of the error icon
+                margin-left: -1 * ($error-icon-margin + $error-icon-width / 2);
+            }
+
+            &.tooltip-top-left > input:focus + .tooltip-content,
+            &.tooltip-bottom-left > input:focus + .tooltip-content {
+                right: 0;
+                left: auto;
+                //6px to the right & left of the error icon + 8px for half width of the error icon
+                margin-right: $error-icon-margin + $error-icon-width / 2;
+            }
+
+            //Set arrow colors to red :(
+            & > .tooltip-content::before, &.tooltip-top-right > .tooltip-content::before {
+                @include vertical-tooltip-arrow-color(top, right, $reds-dark-midtone);
+            }
+
+            &.tooltip-top-left > .tooltip-content::before {
+                @include vertical-tooltip-arrow-color(top, left, $reds-dark-midtone);
+            }
+
+            &.tooltip-bottom-right > .tooltip-content::before {
+                @include vertical-tooltip-arrow-color(bottom, right, $reds-dark-midtone);
+            }
+
+            &.tooltip-bottom-left > .tooltip-content::before {
+                @include vertical-tooltip-arrow-color(bottom, left, $reds-dark-midtone);
+            }
+
+            &.tooltip-left > input:focus + .tooltip-content {
+                right: 100%;
+                left: auto;
+                margin: 0 ($error-icon-margin + $error-icon-width/2) 0 0;
+
+                &::before {
+                    @include horizontal-tooltip-arrow-color(top, left, $reds-dark-midtone);
+                }
+            }
+
+            &.tooltip-right > input:focus + .tooltip-content {
+                left: 100%;
+                right: auto;
+                margin: 0 0 0 ($error-icon-margin + $error-icon-width/2);
+
+                &::before {
+                    @include horizontal-tooltip-arrow-color(top, right, $reds-dark-midtone);
+                }
+            }
+
+            //Icon
+            &::before {
+                position: absolute;
+                content: '';
+                height: $clr-form-icon-dim;
+                width: $clr-form-icon-dim;
+                top: $clr_baselineRem_0_125;
+                right: $clr_baselineRem_0_25;
+                background: generateErrorIcon();
+                margin: 0;
+            }
+        }
+    }
+
+    form, .form {
+        &.compact {
+            .form-block {
+                margin: $clr_baselineRem_0_5 0 $clr_baselineRem_1 0;
+                & > label {
+                    margin-bottom: $clr_baselineRem_0_5;
+                }
+            }
+
+            .form-group {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    @include fixForIE10AndUp() {
+        #{$styledInputs} {
+            padding-bottom: $clr_baselineRem_0_125;
+        }
+    }
+
+    // order here is important b/c we need to override the IE10 styles
+    @include fixForMsEdge() {
+        #{$styledInputs} {
+            padding-bottom: 0;
+        }
+    }
+}

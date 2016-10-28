@@ -1,0 +1,60 @@
+{% assign nav_link_func = 'onclick="ClarityWeb.showSidebarNavLink(this)"' %}
+{% assign past_versions = "0.5|0.4|0.3|0.2" | split: "|" %}
+
+{% if include.section == 'current' %}
+    {% if page.url == '/news/index' %}
+        {% assign activeClass = ' active' %}
+    {% else %}
+        {% assign activeClass = '' %}
+    {% endif %}
+
+    {% for item in site.news %}
+        {% if item.hide != true and item.isCurrent == true %}
+            {% if include.responsive %}
+                <li><a class="nav-link{{ activeClass }}" href="{{ site.baseurl }}/news">Current Release ({{ item.releaseNumber }})</a></li>
+            {% else %}
+                <a class="nav-link{{ activeClass }}" href="{{ site.baseurl }}/news">Current Release ({{ item.releaseNumber }})</a>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% unless include.section == 'current' %}
+    {% for version in past_versions %}
+        {% capture version_check %}news/releases/{{version}}{% endcapture %}
+        {% capture titleText %}{{version}} Changelogs{% endcapture %}
+
+        {% if include.responsive %}
+        <li><h5 class="changelog-hdr">{{titleText}}</h5></li>
+        {% else %}
+        {% capture navGroupId%}tab_{{version}}{% endcapture %}
+
+        <section class="nav-group collapsible">
+            {% if page.permalink contains version_check %}
+            <input id="{{navGroupId}}" type="checkbox">
+            {% else %}
+            <input id="{{navGroupId}}" type="checkbox" checked="true">
+            {% endif %}
+            <label for="{{navGroupId}}">{{titleText}}</label>
+            <ul class="nav-list">
+        {% endif %}
+
+        {% for item in site.news reversed %}
+            {% if item.hide != true and (item.url contains version_check) %}
+                {% if page.permalink == item.url %}
+                    {% assign activeClass = ' active' %}
+                {% else %}
+                    {% assign activeClass = '' %}
+                {% endif %}
+
+                <li><a class="nav-link{{ activeClass }}" href="{{ site.baseurl }}{{ item.url }}">{{ item.releaseNumber }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% unless include.responsive %}
+            </ul>
+        </section>
+        {% endunless %}
+
+    {% endfor %}
+{% endunless %}

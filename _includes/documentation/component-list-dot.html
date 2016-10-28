@@ -1,0 +1,16 @@
+{% assign dotimg = 'na' %}
+{% assign dotmsg = 'Not applicable' %}
+
+{% case include.status %}
+    {% when 20 %}
+        {% assign dotimg = 'done' %}
+        {% assign dotmsg = 'Work completed' %}
+    {% when 10 %}
+        {% assign dotimg = 'in-progress' %}
+        {% assign dotmsg = 'Work in progress' %}
+    {% when 5 %}
+        {% assign dotimg = 'in-queue' %}
+        {% assign dotmsg = 'Work planned but not in progress' %}
+{% endcase %}
+
+<img src="{{ site.baseurl }}{{ site.data.global.images_path }}documentation/status/{{ dotimg }}.svg" title="{{ dotmsg }}" alt="{{ dotmsg }}">

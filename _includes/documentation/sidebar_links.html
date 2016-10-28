@@ -1,0 +1,24 @@
+
+{% if page.url == '/documentation/index' %}
+    {% assign activeClass = ' active' %}
+{% else %}
+    {% assign activeClass = '' %}
+{% endif %}
+<a class="nav-link{{ activeClass }}" href="/documentation">Component Status</a>
+
+<section class="nav-group collapsible">
+    <input id="tab2" type="checkbox">
+    <label for="tab2">Patterns</label>
+    <ul class="nav-list">
+        {% include documentation/just_navlinks.html type="pattern" %}
+    </ul>
+</section>
+<section class="nav-group collapsible">
+    <input id="tab1" type="checkbox">
+    <label for="tab1">Components</label>
+    <ul class="nav-list">
+        {% include documentation/just_navlinks.html type="component" %}
+    </ul>
+</section>
+
+{% include utility/sketch-tmpl-download.html cssClass="nav-link" linkText="Sketch Templates" %}

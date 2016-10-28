@@ -1,0 +1,108 @@
+{% include header/header.html noNav=true %}
+
+    <main class="content-area" style="overflow-y: hidden">
+        <section class="home-hero">
+            {% include header/nav.html %}
+
+            <div class="home-hero-content">
+                <h1>The Clarity Design System</h1>
+                <p>
+                    Clarity provides the patterns, components, guidelines, and
+                    tools to rapidly prototype and build exceptional experiences.
+                </p>
+                <div class="home-hero-btn">
+                    <a href="/get-started" class="btn btn-primary">Get Started</a>
+                    <a href="/documentation" class="btn btn-secondary btn-outline">Documentation</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-cards">
+            <div class="home-cards-container clearfix">
+                {% for ws in site.data.workstreams.workstreams %}
+                    <div class="home-card-wrapper">
+                        <div class="home-card home-card-{{ forloop.index }}">
+                            <div class="home-card-bug">
+                                <img src="{{ site.baseurl }}{{ site.data.global.images_path }}{{ site.data.workstreams.imgPath }}{{ ws.bug }}" alt="{{ ws.prettyName }}">
+                            </div>
+                            <h4 class="home-card-title">{{ ws.name }}</h4>
+                            {% case ws.name %}
+                                {% when 'clarityUX' %}
+                                    <p>
+                                        The design arm of Clarity, essentially
+                                        where explorations begin. Collaborative.
+                                        Iterative.
+                                    </p>
+                                {% when 'clarityUI' %}
+                                    <p>
+                                        UI components built using CSS and HTML.
+                                        Style informed by clarityUX.
+                                    </p>
+                                {% when 'clarityNG' %}
+                                    <p>
+                                        Databound components built on top of
+                                        Angular 2.
+                                    </p>
+                                {% when 'clarityCORE' %}
+                                    <p>
+                                        Tools for adopting and integrating the
+                                        design system.  Makes it easy to use
+                                        and continue to apply Clarity.
+                                    </p>
+                            {% endcase %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="home-process">
+            <h2>How we work</h2>
+
+            <div class="home-process-block row">
+                <div class="image col-xs-3">
+                    <img src="{{ site.baseurl }}{{ site.data.global.images_path }}home/product.png" alt="Product-Based Approach">
+                </div>
+                <div class="body col-xs-9">
+                    <h4>product-based approach</h4>
+                    <p>
+                        We develop components as we’re working with applications.
+                        This helps us to prioritize what to build and
+                        immediately test what we’re building.
+                    </p>
+                </div>
+            </div>
+
+            <div class="home-process-block row">
+                <div class="image col-xs-3">
+                    <img src="{{ site.baseurl }}{{ site.data.global.images_path }}home/ambassador.png" alt="Embedded Ambassadors">
+                </div>
+                <div class="body col-xs-9">
+                    <h4>embedded ambassadors</h4>
+                    <p>
+                        Clarity ambassadors work directly with product teams,
+                        providing design and development support. Ambassadors
+                        can help convert existing code to Clarity and influence
+                        Clarity with elements from your product.
+                    </p>
+                </div>
+            </div>
+
+            <div class="home-process-block row">
+                <div class="image col-xs-3">
+                    <img src="{{ site.baseurl }}{{ site.data.global.images_path }}home/iterative.png" alt="Iterative Cycles">
+                </div>
+                <div class="body col-xs-9">
+                    <h4>principles</h4>
+                    <p>
+                        Our iterative work cycles embrace design, research,
+                        implementation, and review. We learn from products and
+                        customer segments and feed this knowledge back into
+                        Clarity, applying it to products.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% include footer/footer.html %}

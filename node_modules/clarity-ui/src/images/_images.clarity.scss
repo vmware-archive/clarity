@@ -1,0 +1,62 @@
+@import '../utils/variables.clarity';
+@import '../utils/mixins.clarity';
+@import 'node_modules/bootstrap/scss/images';
+@import './icons.clarity';
+
+$clr-icon-dimension-sm: rem(1);
+
+@include exports('images.clarity') {
+    %icon-styles {
+        display: inline-block;
+        height: $clr-icon-dimension-sm;
+        width: $clr-icon-dimension-sm;
+        padding: 0;
+        background-repeat: no-repeat;
+        background-size: contain;
+        vertical-align: middle;
+    }
+
+    .alert-icon, .clr-icon {
+        @extend %icon-styles;
+
+        &.clr-icon-danger, &.icon-danger {
+            background-image: generateErrorIcon();
+        }
+
+        &.clr-icon-danger-white, &.icon-danger-white {
+            background-image: generateErrorIcon($gray-lightest);
+        }
+
+        &.clr-icon-warning, &.icon-warning {
+            background-image: generateWarningIcon();
+        }
+
+        &.clr-icon-warning-white {
+            background-image: generateWarningIcon($gray-lightest);
+        }
+
+        &.clr-icon-success, &.icon-success {
+            background-image: generateSuccessIcon();
+        }
+
+        &.clr-icon-success-white {
+            background-image: generateSuccessIcon($gray-lightest);
+        }
+
+        &.clr-icon-info, &.icon-info {
+            background-image: generateInfoIcon();
+        }
+
+        &.clr-icon-info-white {
+            background-image: generateInfoIcon($gray-lightest);
+        }
+
+        &.clr-icon-update {
+            background-image: generateUpdateIcon();
+        }
+
+        &.clr-vmw-logo {
+            background-image: generateVMWLogo();
+        }
+    }
+}

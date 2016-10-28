@@ -1,0 +1,22 @@
+language: node_js
+sudo: required
+dist: trusty
+node_js: stable
+addons:
+  sauce_connect: true
+  firefox: 48.0
+  apt:
+    sources:
+    - google-chrome
+    packages:
+    - google-chrome-stable
+before_script:
+- export PATH=$PWD/node_modules/.bin:$PATH
+script:
+- npm run build
+- xvfb-run wct
+- if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then wct -s 'default'; fi
+env:
+  global:
+  - secure: Fpp9LwJSGOdTrSIImQTlbzxozBsqe/2AJN5OfTXSe12FZxqzz50gevdxQcIlLypKaNyCtjb980DJbwdJR2cXUqaunLZAPWxrKa7ZPwamUxW+zVL7EHqy5zuvD+yJ+Vmk3ahs3WBTVyJ8T3XoaSfo9VumDIcKggWGJwgvM3blIMg=
+  - secure: Bj8MgzUVP0X8MLgK3d9eF48V7x0rPJyrN1IyguzKyJJVC8LV2XZXF+6o/M+zNsVMSsjhgXMkS3RRuaUShxO/OS6gHeG31FWcZqbXfZfgMMyH8a8zDls+r8m2lGEICaZo1OTXR0uiR/VNVt7n2xoBnTmjmRFwkaxAZk4yCjbXYzQ=

@@ -1,0 +1,38 @@
+<clr-modal
+      [clrModalOpen]="_open"
+      [clrModalSize]="size"
+      [clrModalClosable]="false"
+      [clrModalStaticBackdrop]="true"
+      (clrModalOpenChange)="close()">
+
+   <div class="modal-body">
+      <div class="content-container">
+         <main class="content-area">
+            <button type="button" class="close" aria-label="Close" (click)="close()">
+               <span aria-hidden="true">&times;</span>
+            </button>
+            <ng-content></ng-content>
+         </main>
+
+         <nav class="nav-panel sidenav">
+            <div class="text-light">
+               <ng-content select=".wizard-title"></ng-content>
+            </div>
+
+            <ol class="nav navList" role="tablist">
+               <ng-content select="clr-wizard-step"></ng-content>
+            </ol>
+         </nav>
+      </div>
+   </div>
+
+   <div class="modal-footer">
+      <button class="btn btn-link" (click)="close()">Cancel</button>
+      <button class="btn btn-outline"
+            *ngIf="!isFirst" (click)="prev($event)">Back</button>
+      <button class="btn btn-primary"
+            [class.disabled]="currentPage?.nextDisabled"
+            (click)="_next($event)">{{isLast? 'Finish' : 'Next'}}</button>
+   </div>
+
+</clr-modal>

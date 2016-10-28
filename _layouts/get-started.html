@@ -1,0 +1,14 @@
+{% include header/header.html %}
+
+<div id="main-container" class="content-container">
+    <main id="content-area" class="content-area">
+        {{ content }}
+    </main>
+    <nav class="sidenav">
+        <section class="sidenav-content">
+            {% include get-started/sidebar_links.html responsive=false %}
+        </section>
+    </nav>
+</div>
+
+{% include footer/footer.html hasNavLinks=true %}

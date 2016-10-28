@@ -1,0 +1,214 @@
+$bl-2_0: baselineRem(2);
+$bl-1_0: baselineRem(1);
+$bl-0_75: baselineRem(0.75);
+$bl-0_833: baselineRem(0.83333);
+
+$clrweb-content-maxwidth: 900px;
+
+@mixin clarityWebBoxShadow {
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.12);
+}
+
+@mixin clarityHeaderBackground {
+    background-color: #002538;
+    background-image: url("../images/splashBg.png");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+.cozy {
+    margin-top: baselineRem(1.5);
+}
+
+.cozy-sm {
+    margin-top: baselineRem(0.5);
+}
+
+p.cozy + p {
+    margin-top: 4px;
+}
+
+body p.squish {
+    margin-top: 0;
+}
+
+body ol.indent {
+    padding-left: $bl-2_0;
+    margin-top: $bl-1_0;
+
+    & li {
+        padding-bottom: baselineRem(0.5);
+    }
+}
+
+h6.indent + p.indent {
+    margin-top: 0;
+}
+
+.fully-wide {
+    padding: $bl-2_0 0;
+    text-align: center;
+}
+
+%killListStyles {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+
+.list-unstyled {
+    @extend %killListStyles;
+    & > li {
+        @extend %killListStyles;
+    }
+}
+
+.layout-default {
+    .main-container {
+        display: block;
+        height: auto;
+        min-height: 100vh;
+    }
+}
+
+.sidenav, .slider-nav {
+
+    .nav-group label {
+        font-weight: bold;
+        display: block;
+        width: 100%;
+    }
+
+    .nav-group label > a {
+        color: inherit;
+        text-decoration: none;
+        padding-left: 12px;
+
+
+        &:hover, &:active, &:focus {
+            color: inherit;
+            text-decoration: none;
+            background: #eee;
+        }
+
+        &.active {
+            background: #D9E4EA;
+
+            &:hover, &:active, &:focus {
+                background: #D9E4EA;
+            }
+        }
+    }
+
+    a.nav-link {
+        & > .nav-link-tag {
+            color: #313131;
+            display: inline-block;
+            padding-left: 8px;
+            font-size: 10px;
+            font-weight: 400;
+            vertical-align: top;
+            letter-spacing: 0.02em;
+
+            &.new {
+                color: #7e00b4;
+            }
+
+            &.updated {
+                color: #0094d2;
+            }
+        }
+    }
+}
+
+.slider-nav .nav-group label > a {
+    display: block;
+    width: auto;
+    margin-left: -12px;
+    margin-right: -12px;
+    border-radius: 3px 0 0 3px;
+}
+
+.valign {
+    display: table;
+
+    & > * {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+//Overriding PrismJS styles. This is in code.scss and not in code.clarity.scss because
+//we don't want to override the background in case someone chooses to use
+//another PrismJS theme.
+:not(pre) > code[class*="language-"], pre[class*="language-"], pre, code[class*="language-"]{
+    background: transparent;
+}
+
+@media (max-width: 991px) {
+    .main-container .sidenav {
+        display: none;
+    }
+
+    body.layout-get-started, body.layout-components {
+        .content-area > section {
+            width: 100%;
+            padding-left: 0;
+        }
+    }
+}
+
+a.btn-primary {
+    color: #fafafa;
+
+    &:hover, &:active, &:visited, &:focus {
+        color: #fff;
+    }
+}
+
+// had to remove these from clarity-ui putting back here so we don't get mondo breakage on the website
+// --smathis, 2016/06/22
+ul {
+    margin-top: $bl-1_0;
+
+    ul {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 577px) {
+    ul#content_tabs {
+        .nav .nav-item {
+            margin-right: baselineRem(0.25);
+        }
+    }
+}
+
+//Center items in a grid
+//TODO: Remove this when the flex grid supports center and vertical alignment
+//Used in app-layout.md
+.center-demo-grid-item {
+    align-self: center;
+    text-align: center;
+}
+
+body:not(.layout-home) {
+    .content-area section:first-of-type h1 {
+        margin-top: -6px;
+    }
+
+    .main-container .content-container .content-area {
+        padding-bottom: 72px;
+    }
+}
+
+.sidenav .sidenav-content {
+    margin-bottom: 0;
+    padding-bottom: 24px;
+}
+
+header .branding .clr-vmw-logo {
+    background-image: url(../images/clarity_logo.svg);
+    margin-right: 11px;
+}

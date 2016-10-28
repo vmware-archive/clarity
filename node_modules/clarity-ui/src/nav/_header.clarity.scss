@@ -1,0 +1,365 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+@import "../utils/layers.clarity";
+@import "../color/color.clarity";
+@import "../typography/typography.clarity";
+@import "../images/icons.clarity";
+
+// variables here...
+$clr-header-bgColor: $gray-darkest !default;
+$clr-header-textColor: clr-getTextColor($clr-header-bgColor, lightest);
+$clr-logo-width: $clr_baselineRem_1_5;
+$clr-nav-icon-size: rem(22/$clr-rem-denominator);
+$clr-header-section-divider-height: 40px;
+$clr-search-icon-width: $clr_baselineRem_1;
+
+@mixin header-section-divider() {
+    display: inline-block;
+    background: $clr-header-textColor;
+    opacity: 0.15;
+    height: $clr-header-section-divider-height;
+    width: 1px;
+    top: ($clr-header-height - $clr-header-section-divider-height) / 2;
+}
+
+@mixin remove-text-decoration() {
+    &:hover,
+    &:active {
+        text-decoration: none;
+    }
+}
+
+@mixin header-nav-appearance() {
+    color: $clr-header-textColor;
+    opacity: 0.85;
+
+    &:hover {
+        opacity: 1;
+    }
+};
+
+@mixin generate-nav-link-styles() {
+    .nav-link {
+        display: inline-block;
+        @include remove-text-decoration();
+
+        //TODO: Remove support for FA
+        .nav-icon,
+        .nav-text,
+        .fa {
+            @include header-nav-appearance();
+            line-height: $clr-header-height;
+        }
+
+        //nav-icons
+        .nav-icon {
+            font-size: $clr-nav-icon-size;
+            height: $clr-header-height;
+            width: $clr-header-height;
+            text-align: center;
+        }
+
+        //text-link
+        .nav-text {
+            padding: 0 $clr_baselineRem_1;
+        }
+
+        //.nav-text acts like the alt attribute for screens where responsiveness kicks in.
+        //on smaller screens icons are hidden and only nav-text is shown
+        .nav-icon + .nav-text {
+            display: none;
+        }
+
+        &.active {
+            background: rgba($clr-white,0.15);
+            opacity: 1;
+        }
+
+        &.active .nav-icon,
+        &.active .nav-text {
+            opacity: 1;
+        }
+
+        &:focus {
+            outline-offset: -5px; //So that the outline styles aren't hidden becasue of the browser
+        }
+    }
+}
+
+@include exports('header.clarity') {
+
+    %center-fields {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+
+
+    //Background Colors
+    header,
+    .header {
+        background-color: $clr-header-bgColor;
+
+        &.header-1{
+            background-color: $clr-header-bgColor;
+        }
+
+        &.header-2{
+            background-color: #485969; //Harcoded because this color is not in the color palette. Its reserved for headers only
+        }
+
+        &.header-3{
+            background-color: $action-purples-darkest;
+        }
+
+        &.header-4{
+            background-color: $clr-blue;
+        }
+
+        &.header-5{
+            background-color: $action-blues-dark;
+        }
+
+        &.header-6{
+            background-color: $action-blues-darkest;
+        }
+    }
+
+    //Header
+    header,
+    .header {
+        display: flex;
+        color: $clr-header-textColor;
+        height: $clr-header-height;
+        white-space: nowrap;
+
+        .branding,
+        .header-nav,
+        .search-box, //deprecated
+        .search,
+        .settings, //deprecated
+        .header-actions,
+        .divider {
+            height: $clr-header-height;
+        }
+
+        //logo and product title
+        .branding {
+            display: flex;
+            flex: 0 0 auto;
+            min-width: baselineRem(8.5);
+            padding: 0 $clr_baselineRem_1;
+
+            & > a,
+            & > .nav-link {
+                display: inline-flex;
+                align-items: center;
+                height: $clr-header-height;
+                @include remove-text-decoration();
+
+                &:focus {
+                    outline-offset: -5px; //So that the outline styles aren't hidden becasue of the browser
+                }
+            }
+
+            //vmw logo
+            //.logo class will be deprecated
+            .logo,
+            .clr-icon {
+                flex-grow: 0;
+                flex-shrink: 0;
+                height: $clr-logo-width;
+                width: $clr-logo-width;
+                margin-right: $clr_baselineRem_0_375;
+            }
+
+            //product title
+            .title {
+                @include clr-getTypePropertiesForDomElement(nav_title, (font-size, font-weight, font-family, letter-spacing));
+                color: $clr-header-textColor;
+                line-height: $clr-header-height;
+                text-decoration: none;
+            }
+        }
+
+        .header-nav {
+            //To remove space between nav links because the browser interprets
+            //newline or space between inline elements as content
+            display: flex;
+            flex: 0 0 auto;
+
+            @include generate-nav-link-styles();
+
+            .nav-link:first-of-type {
+                position: relative;
+
+                &::before {
+                    position: absolute;
+                    content: '';
+                    @include header-section-divider();
+                }
+
+                //Hide the divider if the link is active
+                &.active::before{
+                    display: none;
+                }
+            }
+
+            .nav-link:last-of-type {
+                position: relative;
+
+                &::after {
+                    position: absolute;
+                    content: '';
+                    @include header-section-divider();
+                }
+
+                //Hide the divider if the link is active
+                &.active::before{
+                    display: none;
+                }
+            }
+        }
+
+        //.search-box - to be deprecated
+        .search-box {
+            //old search icon
+            & > .fa {
+                font-size: 22px;
+            }
+        }
+
+        //search box
+        .search-box,
+        .search {
+            display: flex;
+            align-items: center;
+            flex: 0 0 auto;
+            max-width: baselineRem(12);
+            padding: 0;
+            @include header-nav-appearance();
+
+            & > .nav-icon {
+                margin: 0 $clr_baselineRem_0_25 $clr_baselineRem_0_125 $clr_baselineRem_1;
+            }
+
+            label {
+                display: inline-block;
+                height: $clr-header-height;
+                line-height: $clr-header-height;
+                padding-left: $clr_baselineRem_1;
+                text-align: center;
+
+                &::before {
+                    display: inline-block;
+                    content: '';
+                    background-image: generateSearchIcon();
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    cursor: pointer;
+                    height: $clr-search-icon-width;
+                    width: $clr-search-icon-width;
+                    margin: ($clr-header-height - $clr-search-icon-width) / 2 0 0 0;
+                    vertical-align: top;
+                }
+
+                input {
+                    line-height: $clr_baselineRem_1;
+                }
+            }
+
+            input[type="text"] {
+                border: none;
+                background: none;
+                color: $clr-header-textColor;
+                padding: 0;
+                vertical-align: middle;
+
+                &:focus,
+                &:active {
+                    background:none;
+                }
+            }
+        }
+
+        //settings area
+        .settings,
+        .header-actions {
+            flex: 1 0 auto;
+            display: flex;
+            justify-content: flex-end;
+
+            @include generate-nav-link-styles();
+        }
+
+        .branding + .search,
+        .branding + .search-box {
+            position: relative;
+
+            &::after {
+                position: absolute;
+                content: '';
+                @include header-section-divider();
+            }
+        }
+
+        .header-nav:last-child {
+            & > .nav-link:last-child::after {
+                content: none;
+            }
+        }
+    }
+
+    @media screen and (max-width: map-get($clr-breakpoints, medium)) {
+        header,
+        .header {
+
+            .search-box,
+            .search {
+                flex: 1 0 auto;
+                justify-content: flex-end;
+                max-width: none;
+
+                label {
+                    padding: 0;
+                    width: $clr-header-height;
+
+                    &::before {
+                        left: ($clr-header-height - $clr-search-icon-width) / 2;
+                    }
+
+                    input {
+                        display: none;  //TODO: Waiting for UX to finish the search designs.
+                    }
+                }
+            }
+
+            .branding + .search,
+            .branding + .search-box {
+
+                &::after {
+                    content: none;
+                }
+            }
+
+            //If actions directly follow search
+            .search-box + .settings,
+            .search-box + .header-actions,
+            .search + .settings,
+            .search + .header-actions {
+                position: relative;
+                flex: 0 0 auto;
+
+                //Divider
+                &::after {
+                    position: absolute;
+                    content: '';
+                    @include header-section-divider();
+                    left: 0;
+                }
+            }
+        }
+    }
+}

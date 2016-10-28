@@ -1,0 +1,402 @@
+{
+    "status": {
+        "done": 20,
+        "started": 10,
+        "notStarted": 5,
+        "notDoing": -1
+    },
+
+    "list": [
+        {
+            "url": "/documentation/app-layout",
+            "text": "Application Layout",
+            "type": "pattern",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/alerts",
+            "text": "Alerts",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/badges",
+            "text": "Badges",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/buttons",
+            "text": "Buttons",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/cards",
+            "text": "Cards",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/checkboxes",
+            "text": "Checkboxes",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/code-highlight",
+            "text": "Code Highlight",
+            "type": "component",
+            "ux": 20,
+            "ui": -1,
+            "core": -1,
+            "ng": 20,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/get-started/index.html#howToUse",
+            "text": "Clarity Build",
+            "ux": -1,
+            "ui": -1,
+            "core": 10,
+            "ng": -1,
+            "dox": 20,
+            "noDemo": true
+        },
+        {
+            "url": "/get-started/index.html#seedProject",
+            "text": "Clarity Seed",
+            "ux": -1,
+            "ui": -1,
+            "core": 20,
+            "ng": -1,
+            "dox": 20,
+            "noDemo": true
+        },
+        {
+            "url": "/documentation/color",
+            "text": "Color Palette",
+            "type": "pattern",
+            "ux": 20,
+            "ui": 20,
+            "core": 20,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": false,
+            "text": "Datagrid",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 10,
+            "dox": 10,
+            "comments": false
+        },
+        {
+            "url": "/documentation/dropdowns",
+            "text": "Dropdowns",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/forms",
+            "text": "Forms (Layout)",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 10,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/grid",
+            "text": "Grid",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "/documentation/header",
+            "text": "Header & Subnav",
+            "type": "component",
+            "ux": 10,
+            "ui": 10,
+            "core": -1,
+            "ng": 10,
+            "dox": 20,
+            "comments": "Search and Header Actions are under implementation"
+        },
+        {
+            "url": "/documentation/iconography",
+            "text": "Iconography",
+            "type": "pattern",
+            "ux": 20,
+            "ui": 20,
+            "core": 20,
+            "ng": -1,
+            "dox": 10,
+            "isNew": true,
+            "comments": false
+        },
+        {
+            "url": "/documentation/input-fields",
+            "text": "Input Fields",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 10,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/labels",
+            "text": "Labels",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/lists",
+            "text": "Lists",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/login",
+            "text": "Login Page",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "/documentation/modals",
+            "text": "Modals",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/navigation",
+            "text": "Navigation",
+            "type": "pattern",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20,
+            "isUpdated": true
+        },
+        {
+            "url": "/documentation/progress",
+            "text": "Progress Bars",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 5,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/radios",
+            "text": "Radio Buttons",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": false,
+            "text": "Search",
+            "type": "component",
+            "ux": 10,
+            "ui": 10,
+            "core": -1,
+            "ng": 10,
+            "dox": 10,
+            "comments": false
+        },
+        {
+            "url": "/documentation/select-boxes",
+            "text": "Select Boxes",
+            "type": "component",
+            "ux": 10,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": false,
+            "text": "Signpost",
+            "type": "component",
+            "ux": 20,
+            "ui": 10,
+            "core": -1,
+            "ng": 10,
+            "dox": 5,
+            "comments": "Signpost is in development"
+        },
+        {
+            "url": "/documentation/sidenav",
+            "text": "Sidenav",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 10,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/spinners",
+            "text": "Spinners",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "/documentation/stack-view",
+            "text": "Stack View",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20,
+            "comments": "Requires the Web Animations API"
+        },
+        {
+            "url": "/documentation/tables",
+            "text": "Tables",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/tabs",
+            "text": "Tabs",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/toggle-switches",
+            "text": "Toggle Switches",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 5,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/tooltips",
+            "text": "Tooltips",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 5,
+            "dox": 20,
+            "comments": false
+        },
+        {
+            "url": "/documentation/typography",
+            "text": "Typography",
+            "type": "pattern",
+            "ux": 20,
+            "ui": 20,
+            "core": 20,
+            "ng": -1,
+            "dox": 20,
+            "isNew": true,
+            "comments": "New Metropolis font included with 0.6.0"
+        },
+        {
+            "url": "/documentation/wizards",
+            "text": "Wizards",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        }
+    ]
+}

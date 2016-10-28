@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<title>Custom Elements: Create an element when definition is non-null and synchronous flag set</title>
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<script src="resources/custom-elements-helpers.js"></script>
+<body>
+<script>
+'use strict';
+
+function assert_rethrown(func, description) {
+  assert_throws({ name: 'rethrown' }, () => {
+    const err = new Error('check this is rethrown');
+    err.name = 'rethrown';
+    func(err);
+  }, description);
+}
+
+const expectTypeError = TypeError.prototype;
+const expectNotSupportedError = 'NOT_SUPPORTED_ERR';
+
+// https://dom.spec.whatwg.org/#concept-create-element
+// 6. If definition is non-null, then:
+// 6.1. If the synchronous custom elements flag is set:
+
+test_create_element_synchronous(
+  'createElement(): ',
+  (w, constructor, options) => {
+    w.customElements.define('a-a', constructor, options);
+    return w.document.createElement('a-a');
+  });
+
+test_create_element_synchronous(
+  'createElementNS(): ',
+  (w, constructor, options) => {
+    w.customElements.define('a-a', constructor, options);
+    return w.document.createElementNS('http://www.w3.org/1999/xhtml', 'a-a');
+  });
+
+function test_create_element_synchronous(description, define_and_create_element) {
+  test_with_window((w) => {
+    let is_constructed = false;
+    define_and_create_element(w, class extends w.HTMLElement {
+      constructor() { super(); is_constructed = true; }
+    });
+    assert_true(is_constructed, 'custom constructor ran');
+  }, `${description}Pre-flight check should succeed`);
+
+  test_with_window((w) => {
+    assert_rethrown(err => {
+      define_and_create_element(w, class extends w.HTMLElement {
+        constructor() { super(); throw err; }
+      });
+    });
+  }, `${description}6.1.2. Errors in Construct(C) should be rethrown`);
+
+  test_with_window((w) => {
+    assert_throws(expectTypeError, () => {
+      define_and_create_element(w, class {
+        constructor() {}
+      });
+    });
+  }, `${description}6.1.3. If result does not implement the HTMLElement interface, throw a TypeError`);
+
+  test_with_window((w) => {
+    assert_throws(expectNotSupportedError, () => {
+      define_and_create_element(w, class extends w.HTMLElement {
+        constructor() { super(); this.setAttribute('a', 'a'); }
+      });
+    });
+  }, `${description}6.1.4. If result\'s attribute list is not empty, then throw a NotSupportedError`);
+
+  test_with_window((w) => {
+    assert_throws(expectNotSupportedError, () => {
+      define_and_create_element(w, class extends w.HTMLElement {
+        constructor() { super(); this.appendChild(w.document.createElement('a')); }
+      });
+    }, 'should throw if it has a child element');
+    assert_throws(expectNotSupportedError, () => {
+      define_and_create_element(w, class extends w.HTMLElement {
+        constructor() { super(); this.appendChild(w.document.createTextNode('a')); }
+      });
+    }, 'should throw if it has a child text node');
+  }, `${description}6.1.5. If result has children, then throw a NotSupportedError`);
+
+  test_with_window((w) => {
+    assert_throws(expectNotSupportedError, () => {
+      define_and_create_element(w, class extends w.HTMLElement {
+        constructor() { super(); w.document.createElement('div').appendChild(this); }
+      });
+    });
+  }, `${description}6.1.6. If result\'s parent is not null, then throw a NotSupportedError`);
+
+  test_with_window((w) => {
+    assert_throws(expectNotSupportedError, () => {
+      define_and_create_element(w, class extends w.HTMLElement {
+        constructor() { super(); return w.document.implementation.createHTMLDocument().createElement('div'); }
+      });
+    });
+  }, `${description}6.1.7. If result\'s node document is not document, then throw a NotSupportedError`);
+
+  /* This is not testsable today, see https://github.com/whatwg/html/issues/1402
+  test_with_window((w) => {
+    assert_throws(expectNotSupportedError, () => {
+      define_and_create_element(w, class extends w.HTMLElement {
+        constructor() { super(); return w.document.createElementNS('http://www.w3.org/2000/svg', 'g'); }
+      });
+    });
+  }, `${description}6.1.8. If result\'s namespace is not the HTML namespace, then throw a NotSupportedError`);
+  */
+
+  test_with_window((w) => {
+    assert_throws(expectNotSupportedError, () => {
+      define_and_create_element(w, class extends w.HTMLElement {
+        constructor() { super(); return document.createElement('div'); }
+      });
+    });
+  }, `${description}6.1.9. If result\'s local name is not equal to localName, then throw a NotSupportedError`);
+}
+</script>
+</body>

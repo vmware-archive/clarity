@@ -1,0 +1,253 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../color/color.clarity";
+@import "../utils/helpers.clarity";
+@import "../typography/typography.clarity";
+@import "node_modules/bootstrap/scss/card";
+@import "../list-group/list-group.clarity";
+@import "../buttons/buttons.clarity";
+
+$card-action-blue: clr-getColor(light-midtone,action-blues);
+$card-light: clr-getColor(light);
+$card-text-fontsize: clr-getTypePropertyValueForDomElement(card_text, font-size);
+$card-link-fontsize: clr-getTypePropertyValueForDomElement(card_link, font-size);
+$card-link-fontweight: clr-getTypePropertyValueForDomElement(card_link, font-weight);
+$card-link-left-margin: $clr_baselineRem_0_25;
+
+@include exports('card.clarity') {
+    %card-links-appearance {
+        @extend .btn;
+        @extend .btn-link;
+        @extend .btn-sm;
+    }
+
+    %card-border-appearance {
+        box-shadow: 0 2px 3px 0 rgba(116, 116, 116, .15); //Hardcoded color not in color palette
+        border-radius: $clr-default-borderradius;
+        border: 1px solid $card-light;
+    }
+
+    .card {
+        box-sizing: border-box;
+        @extend %card-border-appearance;
+        margin: baselineRem(1) 0 0 0;
+        transition: all 0.3s;
+
+        &:hover {
+            border: 1px solid $card-light;
+        }
+
+        &.clickable{
+            color: inherit;
+
+            &:hover {
+                box-shadow: 0 6px 10px 2px rgba(116, 116, 116, .20);
+                cursor: pointer;
+                text-decoration: none;
+                transform: translate3d(0, -4px, 0);
+            }
+        }
+
+        //Reset Margins of existing BS4 card elements
+        .card-title, .card-subtitle {
+            @include clr-getTypePropertiesForDomElement(card_title, (color, font-size, font-weight, letter-spacing));
+            margin: 0 $clr-card-outer-margin $clr-card-inner-margin $clr-card-outer-margin;
+        }
+
+        .card-text, .list-unstyled {
+            font-size: $card-text-fontsize;
+            margin: 0 $clr-card-outer-margin $clr-card-inner-margin $clr-card-outer-margin;
+        }
+
+        .list {
+            font-size: $card-text-fontsize;
+            margin: 0 $clr-card-outer-margin $clr-card-inner-margin (2 * $clr-card-outer-margin);
+        }
+
+        .list-unstyled, .list {
+            li > .list {
+                margin-left: 1.1em;
+            }
+        }
+
+        //Update existing BS4 card elements
+        .btn, .dropdown {
+            margin: 0 0 0 $clr-card-outer-margin;
+        }
+
+        //TODO: Have a footer element when we design Clarity Cards where all the actions are placed like we have for modals.
+        //Since bootstrap has no card-footer, rules for aligning card-link and flat buttons become really really complex.
+        //ASSUMPTION: If someone uses card link for card actions, they only use card links. If they mix and match the spacing
+        //most likely will be off.
+        .card-link {
+            @extend %card-links-appearance;
+        }
+
+        //First of Type buttons have a min width of 0 to accomodate alignment of small text like "OK" or "GO"
+        .btn-link,.card-link{
+            margin: 0;
+
+            &:first-of-type{
+                min-width: 0;
+                margin-left: $card-link-left-margin;
+            }
+        }
+
+        .btn,.card-link,.dropdown,.btn-link{
+            &:last-child{
+                margin-right: $clr-card-outer-margin;
+            }
+        }
+
+        //To handle the case where dropdown with card link as toggle is first
+        //Assign a margin of -12px to align the card link with the text above
+        .dropdown{
+            & > .card-link{
+                margin-left:  (-1 * $clr-card-outer-margin + $card-link-left-margin);
+            }
+        }
+
+        .card-link ~ .dropdown{
+            & > .card-link{
+                margin-left: (-1 * $clr-card-outer-margin);
+            }
+        }
+
+        .dropdown ~ .card-link{
+            margin-left: 0;
+        }
+
+        .list-group {
+            .list-group-item {
+                font-size: $card-text-fontsize;
+                padding: $clr-card-inner-margin $clr-card-outer-margin;
+                border-left-width: 0;
+                border-right-width: 0;
+                border-color: $clr-light-gray;
+            }
+        }
+
+        //Custom Clarity Components
+        .card-divider {
+            display: block;
+            width: 100%;
+            border-bottom: 1px solid $card-light;
+            margin-bottom: $clr-card-inner-margin;
+        }
+
+        .card-header {
+            padding: $clr_baselineRem_0_5 $clr_baselineRem_0_75;
+            background: clr-getColor(light);
+            font-weight: 600;
+
+            &:first-child{
+                border-radius: $clr-default-borderradius $clr-default-borderradius 0 0;
+            }
+        }
+
+        .group {
+            display: flex;
+            margin: 0 $clr-card-outer-margin $clr-card-inner-margin $clr-card-outer-margin;
+            min-height: 1px;
+
+            .icon {
+                $icon-width: $clr_baselineRem_2_5;
+                flex: 0 0 auto;
+                max-width: $icon-width;
+                max-height: $icon-width;
+            }
+
+            .description {
+                flex: 1 1 auto;
+                display: flex;
+                flex-direction: column;
+                font-size: $card-text-fontsize;
+                color: clr-getColor(dark);
+                margin: $clr_baselineRem_0_25 0 0 $clr_baselineRem_0_5;
+
+                .title {
+                    font-size: rem(1);
+                    color: clr-getColor(darker);
+                }
+
+                //IE 10 needs this for the flex-direction to work.
+                & > * {
+                    display: inline-block;
+                }
+
+            }
+
+            &.wrap {
+                flex-direction: column;
+
+                .description {
+                    margin-left: 0;
+                }
+            }
+        }
+
+        //This is going to go away and will be replaced by Clarity dropdowns
+        .card-overflow-menu {
+            display: inline-block;
+            position: relative;
+
+            & > .card-link {
+                position: relative;
+                padding-right: 15px; //15px because the arrow icon is 15px in width
+                margin: 0 0 0 $clr-card-outer-margin;
+
+                &::after {
+                    position: absolute;
+                    font-family: "FontAwesome";
+                    content: "\f107";
+                    font-size: $card-text-fontsize;
+                    right: 2px;
+                    top: -1px;
+                }
+            }
+
+            .menu {
+                display: none;
+                z-index: 2;
+                position: absolute;
+                background: clr-getColor(lightest);
+                padding: $clr_baselineRem_0_5 0;
+                min-width: baselineRem(6);
+                border-radius: $clr-default-borderradius;
+                @extend %card-border-appearance;
+                bottom: $clr_baselineRem_1;
+                left: -1 * $clr_baselineRem_0_5;
+                overflow-y: auto;
+
+                .menu-item {
+                    padding: 0 $clr_baselineRem_1;
+                    color: clr-getTextColor();
+                    font-size: $card-text-fontsize;
+                    text-decoration: none;
+                    display: inline-block;
+                    width: 100%;
+                    cursor: pointer;
+                    white-space: nowrap;
+
+                    &:hover {
+                        background: rgba(154, 154, 154, .15);
+                    }
+                }
+            }
+
+            &.active .menu {
+                display: block;
+            }
+
+            &.active .card-link::after {
+                transform: rotate(180deg);
+            }
+        }
+
+    }
+
+    .card-block {
+        //override card-block side paddings to 0 to enable the divider occupy entire card-width
+        padding: $clr-card-outer-margin 0;
+    }
+}

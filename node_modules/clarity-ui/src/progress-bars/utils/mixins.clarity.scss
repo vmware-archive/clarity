@@ -1,0 +1,12 @@
+@mixin clr-progress-color($color: $clr-actionblue) {
+    // for IE...
+    color: $color;
+
+    &::-webkit-progress-value {
+        background-color: $color;
+    }
+
+    &::-moz-progress-bar {
+        background-color: $color;
+    }
+}

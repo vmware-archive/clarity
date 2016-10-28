@@ -1,3 +1,4 @@
+![Clarity](logo.png)
 
 # Clarity Design System
 

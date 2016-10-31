@@ -2,8 +2,8 @@
     <clr-header>
         <div class="branding">
             <a href="#" class="nav-link">
-                <span class="logo clr-icon clr-vmw-logo"></span>
-                <span class="title">Clarity Demo</span>
+                <clr-icon shape="vm-bug"></clr-icon>
+                <span class="title">Project Clarity</span>
             </a>
         </div>
         <div class="header-nav" [clr-nav-level]="1">
@@ -16,16 +16,17 @@
             </label>
         </form>
         <div class="header-actions">
-            <div class="dropdown bottom-right" ngNonBindable>
-                <a href="javascript://" class="nav-link dropdown-toggle">
-                    <span class="nav-icon fa fa-cog"></span>
-                </a>
+            <clr-dropdown [clrMenuPosition]="'bottom-right'">
+                <button class="nav-icon" clrDropdownToggle>
+                    <clr-icon shape="cog"></clr-icon>
+                    <clr-icon shape="caret" class="icon-orient-down"></clr-icon>
+                </button>
                 <div class="dropdown-menu">
-                    <a href="javascript://" class="dropdown-item">Preferences</a>
-                    <a href="javascript://" class="dropdown-item">About</a>
-                    <a href="javascript://" class="dropdown-item">Logout</a>
+                    <a href="javascript://" clrDropdownItem>About</a>
+                    <a href="javascript://" clrDropdownItem>Preferences</a>
+                    <a href="javascript://" clrDropdownItem>Logout</a>
                 </div>
-            </div>
+            </clr-dropdown>
         </div>
     </clr-header>
     <div class="content-container">

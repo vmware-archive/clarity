@@ -5,13 +5,14 @@ import {ClarityModule} from "../clarity.module";
 @Component({
     template: `
         <clr-dropdown [clrMenuPosition]="menuPosition" [clrCloseMenuOnItemClick]="menuClosable">
-            <button class="btn btn-primary dropdown-toggle" type="button">
+            <button class="btn btn-primary" type="button" clrDropdownToggle>
                 Dropdown
+                <clr-icon shape="caret" class="icon-orient-down"></clr-icon>
             </button>
             <div class="dropdown-menu">
                 <label class="dropdown-header">Header</label>
-                <a class="dropdown-item">Item</a>
-                <a class="dropdown-item disabled">Disabled Item</a>
+                <a href="javascript://" clrDropdownItem>Item</a>
+                <a href="javascript://" class="disabled" clrDropdownItem>Disabled Item</a>
             </div>
         </clr-dropdown>
    `
@@ -44,6 +45,20 @@ describe("Dropdown", () => {
         expect(compiled.textContent).toMatch(/Dropdown/);
         expect(compiled.textContent).toMatch(/Header/);
         expect(compiled.textContent).toMatch(/Item/);
+    });
+
+    it("adds the .dropdown class on clr-dropdown", () => {
+        expect(compiled.querySelector(".dropdown")).not.toBeNull();
+    });
+
+    it("adds the .dropdown-toggle class on clrDropdownToggle", () => {
+        let dropdownToggle: HTMLElement = compiled.querySelector("[clrDropdownToggle]");
+        expect(dropdownToggle.classList.contains(".dropdown-toggle"));
+    });
+
+    it("adds the .dropdown-item class on clrDropdownItem", () => {
+        let dropdownToggle: HTMLElement = compiled.querySelector("[clrDropdownItem]");
+        expect(dropdownToggle.classList.contains(".dropdown-item"));
     });
 
     it("supports clrMenuDirection option", () => {

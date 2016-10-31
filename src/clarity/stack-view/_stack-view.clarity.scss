@@ -4,6 +4,7 @@
 @import "../color/color.clarity";
 @import "../forms/forms.clarity";
 @import "../typography/typography.clarity";
+@import "../images/icons.clarity";
 
 $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, font-weight);
 
@@ -101,18 +102,13 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
             max-width: 40%;
 
             &::before {
+                display: inline-block;
                 content: "";
                 float: left;
-                font-family: "FontAwesome";
-                font-size: 1.4em;
-                font-weight: normal;
-                line-height: inherit;
-                height: 100%;
-                width: $clr_baselineRem_0_5;
-                margin-right: $clr_baselineRem_0_25;
+                height: $clr-dropdown-caret-icon-dimension;
+                width: $clr-dropdown-caret-icon-dimension;
+                margin: ($clr_baselineRem_0_25 + 1) $clr_baselineRem_0_25 0 0;
                 text-align: center;
-                color: $gray-dark-midtone;
-                transition: color 0.2s ease-in-out;
             }
         }
 
@@ -154,7 +150,9 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
                 cursor: pointer;
 
                 &::before {
-                    content: "\f105";
+                    background-image: generateCaretIcon();
+                    @include icon-background-styles();
+                    transform: rotate(-90deg);
                 }
             }
             > .stack-block-label, > .stack-block-content {
@@ -170,7 +168,7 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
 
         .stack-block-expanded {
             > .stack-block-label::before {
-                content: "\f107";
+                transform: rotate(0deg);
             }
 
             > .stack-block-label, > .stack-block-content {

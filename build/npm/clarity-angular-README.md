@@ -1,14 +1,15 @@
 ### Installing Clarity Angular
 
-1. Install Clarity UI package through npm:
+1. Install Clarity Icons package through npm:
+    ```
+    npm install clarity-icons
+    ```
+
+2. Install Clarity UI package through npm:
     ```
     npm install clarity-ui
     ```
 
-2. Install Font Awesome:
-    ```
-    npm install font-awesome
-    ```
 3. Install the clarity-angular package through npm:
     ```
     npm install clarity-angular

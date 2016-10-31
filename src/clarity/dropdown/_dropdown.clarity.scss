@@ -13,17 +13,14 @@ $dropdown-white: clr-getColor(lightest);
     text-align: left;
 }
 
-%dropdown-toggle-arrow {
-    content: '\f107';
-    font-family: "FontAwesome";
-}
-
 @include exports('dropdown.clarity') {
     .dropdown {
         position: relative;
         display: inline-block;
 
         .dropdown-toggle {
+            display: inline-block;
+
             position: relative;
             margin: 0;
             white-space: nowrap;
@@ -33,62 +30,38 @@ $dropdown-white: clr-getColor(lightest);
             & > * {
                 margin: 0;
             }
-        }
 
-
-        //Dropdown Arrow
-        .dropdown-toggle {
-            &::after {
-                @extend %dropdown-toggle-arrow;
-            }
-        }
-
-        //Buttons, Font Awesome icons and Anchor Links
-        //get dropdown arrow with position: relative
-        //Font awesome icons have the :after element not used so
-        //we can use that for the dropdown arrow
-        $toggle-afterMargin: $clr_baselineRem_0_25;
-        .dropdown-toggle {
-            &.btn::after, &.fa::after {
-                margin-left: $toggle-afterMargin;
-            }
-
-            //For some strange reason, the pseudo element on font awesome
-            //icons renders outside the .fa container. Need to
-            //mark display: inline for making it appear inside the container
-            &.fa {
-                display: inline;
-            }
-        }
-
-        a.dropdown-toggle {
-            &::after {
-                margin-left: $toggle-afterMargin;
-            }
-
-            &:hover::after,&:active::after {
-                //To make sure that arrow isn't underlined when you hover over the
-                //link. http://stackoverflow.com/a/20405045/3538394
-                display: inline-block;
-                text-decoration: none;
-            }
-        }
-
-        //Dropdown arrow next to Clarity icons needs absolute positioning
-        //We also need to add a margin-right to the icon so that the menu is
-        //aligned with the dropdown arrow
-        .dropdown-toggle {
-            &.clr-icon, &.alert-icon {
-                position: relative;
-                margin-right: $clr_baselineRem_0_75;
-            }
-
-            &.clr-icon:after, &.alert-icon:after {
+            clr-icon[shape="caret"] {
                 position: absolute;
                 top: 50%;
-                left: calc(100% + 6px); //I have to hard code 6px over here. baselineRem doesnt work in calc
                 transform: translateY(-50%);
+
+                color: inherit;
+                height: $clr-dropdown-caret-icon-dimension;
+                width: $clr-dropdown-caret-icon-dimension;
             }
+
+            &.btn {
+                padding-right: $clr-button-horizontal-padding + $clr-dropdown-caret-icon-dimension + $clr-dropdown-caret-left-margin;
+
+                clr-icon[shape="caret"] {
+                    right: $clr-button-horizontal-padding;
+                }
+            }
+
+            &:not(.btn) {
+                padding: 0 $clr-dropdown-caret-icon-dimension + $clr-dropdown-caret-left-margin 0 0;
+
+                clr-icon[shape="caret"] {
+                    right: 0;
+                }
+            }
+        }
+
+        button.dropdown-toggle:not(.btn) {
+            background: transparent;
+            border: none;
+            cursor: pointer;
         }
 
         //Dropdown Menu
@@ -166,7 +139,8 @@ $dropdown-white: clr-getColor(lightest);
                     background: none;
                 }
 
-                &.disabled:active, &.disabled:focus {
+                &.disabled:active,
+                &.disabled:focus {
                     background: none;
                     box-shadow: none;
                 }
@@ -182,7 +156,8 @@ $dropdown-white: clr-getColor(lightest);
             visibility: visible;
         }
 
-        &.bottom-left .dropdown-menu,&.bottom-right .dropdown-menu {
+        &.bottom-left .dropdown-menu,
+        &.bottom-right .dropdown-menu {
             top: 100%;
             bottom: auto;
             margin: 2px 0 0 0;
@@ -198,7 +173,8 @@ $dropdown-white: clr-getColor(lightest);
             left: auto;
         }
 
-        &.top-left .dropdown-menu, &.top-right .dropdown-menu {
+        &.top-left .dropdown-menu,
+        &.top-right .dropdown-menu {
             top: auto;
             bottom: 100%;
             margin: 0 0 2px 0;
@@ -214,7 +190,8 @@ $dropdown-white: clr-getColor(lightest);
             left: auto;
         }
 
-        &.left-top .dropdown-menu,&.left-bottom .dropdown-menu {
+        &.left-top .dropdown-menu,
+        &.left-bottom .dropdown-menu {
             right: 100%;
             left: auto;
             margin: 0 2px 0 0;
@@ -230,7 +207,8 @@ $dropdown-white: clr-getColor(lightest);
             top: auto;
         }
 
-        &.right-top .dropdown-menu,&.right-bottom .dropdown-menu {
+        &.right-top .dropdown-menu,
+        &.right-bottom .dropdown-menu {
             left: 100%;
             right: auto;
             margin: 0 0 0 2px;
@@ -244,23 +222,6 @@ $dropdown-white: clr-getColor(lightest);
         &.right-top .dropdown-menu {
             bottom: 0;
             top: auto;
-        }
-
-        @mixin lineHeightFixForIE {
-            // full line-height pushes button text down...
-            .dropdown-toggle {
-                &.btn::after, &.fa::after {
-                    line-height: $clr_baselineRem_1_5 - 1;
-                }
-            }
-        }
-
-        @include fixForIE10AndUp() {
-            @include lineHeightFixForIE;
-        }
-
-        @include fixForMsEdge() {
-            @include lineHeightFixForIE;
         }
     }
 }

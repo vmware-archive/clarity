@@ -187,6 +187,12 @@ $clr-alert-colors: (
                     color: $action-purples-darker;
                 }
             }
+
+            .dropdown-toggle:not(.btn) {
+                display: inline-block;
+                background: transparent;
+                border: none;
+            }
         }
 
         //Icons

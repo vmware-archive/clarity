@@ -3,15 +3,19 @@
 @import 'node_modules/bootstrap/scss/images';
 @import './icons.clarity';
 
+@mixin icon-background-styles() {
+    background-repeat: no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+}
+
 @include exports('images.clarity') {
     %icon-styles {
         display: inline-block;
         height: $clr-icon-dimension-sm;
         width: $clr-icon-dimension-sm;
         padding: 0;
-        background-repeat: no-repeat;
-        background-size: contain;
-        vertical-align: middle;
+        @include icon-background-styles();
     }
 
     .alert-icon, .clr-icon {
@@ -51,6 +55,10 @@
 
         &.clr-icon-update {
             background-image: generateUpdateIcon();
+        }
+
+        &.clr-icon-caret {
+            background-image: generateCaretIcon();
         }
 
         &.clr-vmw-logo {

@@ -7,7 +7,7 @@ import {ClarityModule} from "../clarity.module";
         <clr-header class="header">
             <div class="branding">
                 <a href="#" class="nav-link">
-                    <span class="logo clr-icon clr-vmw-logo"></span>
+                    <clr-icon shape="vm-bug"></clr-icon>
                     <span class="title">Title</span>
                 </a>
             </div>

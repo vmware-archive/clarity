@@ -6,7 +6,7 @@ import {DropdownStaticDefaultDemo} from "./dropdown-static-default";
 import {DropdownStaticPositioningDemo} from "./dropdown-static-positioning";
 import {DropdownStaticFontAwesomeToggleDemo} from "./dropdown-static-fontawesome-toggle";
 import {DropdownStaticIconToggleDemo} from "./dropdown-static-icon-toggle";
-import {DropdownStaticTextLinkToggleDemo} from "./dropdown-static-textlink-toggle";
+import {DropdownStaticButtonLinkToggleDemo} from "./dropdown-static-buttonlink-toggle";
 import {DropdownAngularPositioningDemo} from "./dropdown-angular-positioning";
 import {DropdownAngularCloseItemFalseDemo} from "./dropdown-angular-close-item-false";
 
@@ -20,7 +20,7 @@ const ROUTES: Routes = [
             { path: "positioning", component: DropdownStaticPositioningDemo },
             { path: "fontawesome-toggle", component: DropdownStaticFontAwesomeToggleDemo },
             { path: "icon-toggle", component: DropdownStaticIconToggleDemo },
-            { path: "textlink-toggle", component: DropdownStaticTextLinkToggleDemo },
+            { path: "buttonlink-toggle", component: DropdownStaticButtonLinkToggleDemo },
             { path: "angular-positioning", component: DropdownAngularPositioningDemo },
             { path: "multi-click", component: DropdownAngularCloseItemFalseDemo }
         ]

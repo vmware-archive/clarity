@@ -1,27 +1,33 @@
 <div class="clr-example squeeze">
     <clr-dropdown [clrMenuPosition]="'bottom-right'" [clrCloseMenuOnItemClick]="false">
-        <a href="javascript://" class="dropdown-toggle">Toggle</a>
+        <button clrDropdownToggle>
+            <clr-icon shape="danger" class="icon-color-danger icon-size-md"></clr-icon>
+            <clr-icon shape="caret" class="icon-orient-down"></clr-icon>
+        </button>
         <div class="dropdown-menu">
             <label class="dropdown-header">Dropdown header</label>
-            <a class="dropdown-item">Action 1</a>
-            <a class="dropdown-item">Action 2</a>
+            <a href="javascript://" clrDropdownItem>Action 1</a>
+            <a href="javascript://" clrDropdownItem>Action 2</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item">Link 1</a>
-            <a class="dropdown-item">Link 2</a>
+            <a href="javascript://" clrDropdownItem>Link 1</a>
+            <a href="javascript://" clrDropdownItem>Link 2</a>
         </div>
     </clr-dropdown>
 </div>
 <pre>
 <code clr-code-highlight="language-html">
 &lt;clr-dropdown [clrMenuPosition]=&quot;'bottom-right'&quot; [clrCloseMenuOnItemClick]=&quot;false&quot;&gt;
-    &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-toggle&quot;&gt;Toggle&lt;/a&gt;
+    &lt;button clrDropdownToggle&gt;
+        &lt;clr-icon shape=&quot;danger&quot; class=&quot;icon-color-danger icon-size-md&quot;&gt;&lt;/clr-icon&gt;
+        &lt;clr-icon shape=&quot;caret&quot; class=&quot;icon-orient-down&quot;&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
     &lt;div class=&quot;dropdown-menu&quot;&gt;
         &lt;label class=&quot;dropdown-header&quot;&gt;Dropdown header&lt;/label&gt;
-        &lt;a class=&quot;dropdown-item&quot;&gt;Action 1&lt;/a&gt;
-        &lt;a class=&quot;dropdown-item&quot;&gt;Action 2&lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Action 1&lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Action 2&lt;/a&gt;
         &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
-        &lt;a class=&quot;dropdown-item&quot;&gt;Link 1&lt;/a&gt;
-        &lt;a class=&quot;dropdown-item&quot;&gt;Link 2&lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Link 1&lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Link 2&lt;/a&gt;
     &lt;/div&gt;
 &lt;/clr-dropdown&gt;
 </code></pre>

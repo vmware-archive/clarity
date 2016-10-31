@@ -6,3 +6,5 @@ typings/
 .DS_Store
 .npmrc.clarity
 npm-debug.log
+.sass-cache/
+_site/

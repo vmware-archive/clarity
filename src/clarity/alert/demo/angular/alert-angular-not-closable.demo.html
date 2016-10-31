@@ -14,13 +14,14 @@
                         </span>
                         <div class="alert-actions">
                             <clr-dropdown [clrMenuPosition]="'bottom-right'">
-                                <a class="dropdown-toggle" href="javascript://">
+                                <button class="dropdown-toggle" clrDropdownToggle>
                                     Actions
-                                </a>
+                                    <clr-icon shape="caret" class="icon-orient-down"></clr-icon>
+                                </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item">Shutdown</a>
-                                    <a class="dropdown-item">Delete</a>
-                                    <a class="dropdown-item">Reboot</a>
+                                    <a href="javascript://" class="dropdown-item" clrDropdownItem>Shutdown</a>
+                                    <a href="javascript://" class="dropdown-item" clrDropdownItem>Delete</a>
+                                    <a href="javascript://" class="dropdown-item" clrDropdownItem>Reboot</a>
                                 </div>
                             </clr-dropdown>
                         </div>
@@ -56,13 +57,14 @@
         &lt;/span&gt;
         &lt;div class=&quot;alert-actions&quot;&gt;
             &lt;clr-dropdown [clrMenuPosition]=&quot;'bottom-right'&quot;&gt;
-                &lt;a class=&quot;dropdown-toggle&quot; href=&quot;javascript://&quot;&gt;
+                &lt;button class=&quot;dropdown-toggle&quot; clrDropdownToggle&gt;
                     Actions
-                &lt;/a&gt;
+                    &lt;clr-icon shape=&quot;caret&quot; class=&quot;icon-orient-down&quot;&gt;&lt;/clr-icon&gt;
+                &lt;/button&gt;
                 &lt;div class=&quot;dropdown-menu&quot;&gt;
-                    &lt;a class=&quot;dropdown-item&quot;&gt;Shutdown&lt;/a&gt;
-                    &lt;a class=&quot;dropdown-item&quot;&gt;Delete&lt;/a&gt;
-                    &lt;a class=&quot;dropdown-item&quot;&gt;Reboot&lt;/a&gt;
+                    &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot; clrDropdownItem&gt;Shutdown&lt;/a&gt;
+                    &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot; clrDropdownItem&gt;Delete&lt;/a&gt;
+                    &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot; clrDropdownItem&gt;Reboot&lt;/a&gt;
                 &lt;/div&gt;
             &lt;/clr-dropdown&gt;
         &lt;/div&gt;

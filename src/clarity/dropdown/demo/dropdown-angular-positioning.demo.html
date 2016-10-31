@@ -1,31 +1,36 @@
 <div class="clr-example squeeze">
     <clr-dropdown [clrMenuPosition]="'top-left'">
-        <button class="dropdown-toggle btn btn-primary" type="button">
+        <button class="btn btn-outline-primary" clrDropdownToggle>
             Dropdown
+            <clr-icon shape="caret" class="icon-orient-down"></clr-icon>
         </button>
         <div class="dropdown-menu">
             <label class="dropdown-header">Dropdown header</label>
-            <a class="dropdown-item">Action 1</a>
-            <a class="dropdown-item">Action 2</a>
+            <a href="javascript://" clrDropdownItem>Action 1</a>
+            <a href="javascript://" clrDropdownItem>Action 2</a>
+            <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item">Link 1</a>
-            <a class="dropdown-item disabled">Link 2</a>
+            <a href="javascript://" clrDropdownItem>Link 1</a>
+            <a href="javascript://" clrDropdownItem>Link 2</a>
         </div>
     </clr-dropdown>
 </div>
+
 <pre>
 <code clr-code-highlight="language-html">
 &lt;clr-dropdown [clrMenuPosition]=&quot;'top-left'&quot;&gt;
-    &lt;button class=&quot;dropdown-toggle btn btn-primary&quot; type=&quot;button&quot;&gt;
+    &lt;button class=&quot;btn btn-outline-primary&quot; clrDropdownToggle&gt;
         Dropdown
+        &lt;clr-icon shape=&quot;caret&quot; class=&quot;icon-orient-down&quot;&gt;&lt;/clr-icon&gt;
     &lt;/button&gt;
     &lt;div class=&quot;dropdown-menu&quot;&gt;
         &lt;label class=&quot;dropdown-header&quot;&gt;Dropdown header&lt;/label&gt;
-        &lt;a class=&quot;dropdown-item&quot;&gt;Action 1&lt;/a&gt;
-        &lt;a class=&quot;dropdown-item&quot;&gt;Action 2&lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Action 1&lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Action 2&lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; class=&quot;disabled&quot; clrDropdownItem&gt;Disabled Action&lt;/a&gt;
         &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
-        &lt;a class=&quot;dropdown-item&quot;&gt;Link 1&lt;/a&gt;
-        &lt;a class=&quot;dropdown-item&quot;&gt;Link 2&lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Link 1&lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Link 2&lt;/a&gt;
     &lt;/div&gt;
 &lt;/clr-dropdown&gt;
 </code></pre>

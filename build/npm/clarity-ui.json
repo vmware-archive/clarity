@@ -7,6 +7,9 @@
         "type" : "git",
         "url" : "git@github.com:vmware/clarity.git"
     },
+    "peerDependencies": {
+        "clarity-icons": "/* @echo VERSION */"
+    },
     //@exclude
     "scripts": {
         "prepublish": "echo 'Error: Please run \"npm run publish:clarity\" on the parent project' && exit 1"

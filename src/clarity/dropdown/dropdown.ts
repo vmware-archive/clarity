@@ -1,6 +1,5 @@
 import {
     Component,
-    Directive,
     ElementRef,
     EventEmitter,
     HostBinding,
@@ -24,8 +23,8 @@ const menuPositions: string[] = [
 @Component({
     selector: "clr-dropdown",
     template: `
-        <ng-content select=".dropdown-toggle"></ng-content>
-        <ng-content select=".dropdown-menu"></ng-content>
+        <ng-content select="[clrDropdownToggle]"></ng-content>
+        <ng-content></ng-content>
     `,
     host: {
         "[class.dropdown]" : "true"
@@ -98,39 +97,3 @@ export class Dropdown {
         }
     }
 }
-
-@Directive({
-    selector: ".dropdown-toggle"
-})
-export class DropdownToggle {
-
-    constructor(private _dropdown: Dropdown) {
-    }
-
-    @HostListener("click")
-    onDropdownToggleClick(): void {
-        this._dropdown.toggleDropdown();
-    }
-}
-
-@Directive({
-    selector: ".dropdown-item"
-})
-export class DropdownMenuItem {
-
-    constructor(private _dropdown: Dropdown, private el: ElementRef) {
-    }
-
-    @HostListener("click")
-    onDropdownItemClick(): void {
-        if (this._dropdown.isMenuClosable && !this.el.nativeElement.classList.contains("disabled")) {
-            this._dropdown.toggleDropdown();
-        }
-    }
-}
-
-export const DROPDOWN_DIRECTIVES: any[] = [
-    Dropdown,
-    DropdownToggle,
-    DropdownMenuItem
-];

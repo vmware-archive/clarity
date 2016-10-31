@@ -76,7 +76,7 @@ $clr-login-icon-size: $clr-icon-dimension-sm !default;
                         display: inline-block; //needed for IE. display: none to display:flex on parent doesnt work
                         content: '';
                         background: generateErrorIcon($clr-login-background-color);
-                        margin: 0 $clr_baselineRem_0_25 0 0;
+                        margin: 1px $clr_baselineRem_0_25 0 0;
                         height: $clr-login-icon-size;
                         width: $clr-login-icon-size;
                     }

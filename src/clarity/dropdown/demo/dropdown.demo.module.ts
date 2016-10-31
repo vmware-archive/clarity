@@ -8,11 +8,9 @@ import {DropdownStaticDefaultDemo} from "./dropdown-static-default";
 import {DropdownStaticPositioningDemo} from "./dropdown-static-positioning";
 import {DropdownStaticFontAwesomeToggleDemo} from "./dropdown-static-fontawesome-toggle";
 import {DropdownStaticIconToggleDemo} from "./dropdown-static-icon-toggle";
-import {DropdownStaticTextLinkToggleDemo} from "./dropdown-static-textlink-toggle";
+import {DropdownStaticButtonLinkToggleDemo} from "./dropdown-static-buttonlink-toggle";
 import {DropdownAngularPositioningDemo} from "./dropdown-angular-positioning";
 import {DropdownAngularCloseItemFalseDemo} from "./dropdown-angular-close-item-false";
-
-
 
 @NgModule({
     imports: [
@@ -26,7 +24,7 @@ import {DropdownAngularCloseItemFalseDemo} from "./dropdown-angular-close-item-f
         DropdownStaticPositioningDemo,
         DropdownStaticFontAwesomeToggleDemo,
         DropdownStaticIconToggleDemo,
-        DropdownStaticTextLinkToggleDemo,
+        DropdownStaticButtonLinkToggleDemo,
         DropdownAngularPositioningDemo,
         DropdownAngularCloseItemFalseDemo
     ],
@@ -34,9 +32,8 @@ import {DropdownAngularCloseItemFalseDemo} from "./dropdown-angular-close-item-f
         DropdownDemo,
         DropdownStaticDefaultDemo,
         DropdownStaticPositioningDemo,
-        DropdownStaticFontAwesomeToggleDemo,
         DropdownStaticIconToggleDemo,
-        DropdownStaticTextLinkToggleDemo,
+        DropdownStaticButtonLinkToggleDemo,
         DropdownAngularPositioningDemo,
         DropdownAngularCloseItemFalseDemo
     ]

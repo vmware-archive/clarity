@@ -4,11 +4,11 @@ THIRD PARTY SOFTWARE LICENSES
 Clarity includes code from the following third parties:
 
 * [Bootstrap](https://github.com/twbs/bootstrap) (MIT License)
-    - Button group
-    - Close
+    - Naming conventions
     - Flex grid
     - List group
-    - Naming conventions
+    - Button group
+    - Close
     - Media
     - Reboot
     - Responsive embed

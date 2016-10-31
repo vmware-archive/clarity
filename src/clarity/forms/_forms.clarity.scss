@@ -116,7 +116,7 @@ $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height
     }
 
     %form-fields-disabled {
-        opacity: 0.4;
+        opacity: 0.5;
         cursor: not-allowed;
     }
 
@@ -289,7 +289,11 @@ $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height
         @extend %clr-form-fields-appearance;
         @include input-border-bottom-animation();
         padding: 0 $clr_baselineRem_0_25;
+    }
 
+    #{$styledInputs},
+    #{$styledInputs1},
+    textarea {
         &:disabled {
             @extend %form-fields-disabled;
         }

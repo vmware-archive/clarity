@@ -32,7 +32,7 @@ $clr-search-icon-width: $clr_baselineRem_1;
 
 @mixin header-nav-appearance() {
     color: $clr-header-textColor;
-    opacity: 0.85;
+    opacity: 0.65;
 
     &:hover {
         opacity: 1;
@@ -63,6 +63,7 @@ $clr-search-icon-width: $clr_baselineRem_1;
         //text-link
         .nav-text {
             padding: 0 $clr_baselineRem_1;
+            font-weight: 500;
         }
 
         //.nav-text acts like the alt attribute for screens where responsiveness kicks in.

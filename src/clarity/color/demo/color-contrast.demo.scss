@@ -67,8 +67,8 @@
 
     $allMyTextColors: (
         "gray": map-get($clr-grays, text-colors),
-        "action": map-get($clr-actionblues, text-colors),
-        "purple": map-get($clr-actionpurples, text-colors),
+        "action": map-get($clr-action-blues, text-colors),
+        "purple": map-get($clr-action-purples, text-colors),
         "red": map-get($clr-reds, text-colors),
         "yellow": map-get($clr-yellows, text-colors),
         "green": map-get($clr-greens, text-colors)

@@ -5,73 +5,73 @@
 @import "../buttons/buttons.clarity";
 @import "../typography/typography.clarity";
 
-$app-level-alert-color: $clr-white;
-$icon-margin-right: $clr_baselineRem_0_25;
+$clr-app-level-alert-color: $clr-white !default;
+$clr-icon-margin-right: $clr_baselineRem_0_25 !default;
 
 //Regular Alert
-$alert-top-margin: $clr_baselineRem_0_25;
-$alert-min-height: $clr_baselineRem_1_5;
-$alert-font-size: clr-getTypePropertyValueForDomElement(alert_text, font-size);
-$alert-horizontal-padding: $clr_baselineRem_0_5;
-$alert-top-padding: $clr_baselineRem_0_125;
-$alert-bottom-padding: $clr_baselineRem_0_375;
-$alert-item-top-margin: $alert-bottom-padding - $alert-top-padding;
-$alert-item-min-height: $clr-icon-dimension-sm;
+$clr-alert-top-margin: $clr_baselineRem_0_25 !default;
+$clr-alert-min-height: $clr_baselineRem_1_5 !default;
+$clr-alert-font-size: clr-getTypePropertyValueForDomElement(alert_text, font-size);
+$clr-alert-horizontal-padding: $clr_baselineRem_0_5 !default;
+$clr-alert-top-padding: $clr_baselineRem_0_125 !default;
+$clr-alert-bottom-padding: $clr_baselineRem_0_375 !default;
+$clr-alert-item-top-margin: $clr-alert-bottom-padding - $clr-alert-top-padding !default;
+$clr-alert-item-min-height: $clr-icon-dimension-sm !default;
 
 //Small Alert
-$alert-sm-min-height: $clr_baselineRem_1;
-$alert-sm-font-size: clr-getTypePropertyValueForDomElement(alert-small_text, font-size);
-$alert-sm-horizontal-padding: $clr_baselineRem_0_25;
-$alert-sm-top-padding: 0;
-$alert-sm-bottom-padding: $clr_baselineRem_0_125;
-$alert-sm-item-top-margin: $alert-sm-bottom-padding - $alert-sm-top-padding;
-$alert-sm-item-min-height: $clr-icon-dimension-sm;
+$clr-alert-sm-min-height: $clr_baselineRem_1 !default;
+$clr-alert-sm-font-size: clr-getTypePropertyValueForDomElement(alert-small_text, font-size);
+$clr-alert-sm-horizontal-padding: $clr_baselineRem_0_25 !default;
+$clr-alert-sm-top-padding: 0 !default;
+$clr-alert-sm-bottom-padding: $clr_baselineRem_0_125 !default;
+$clr-alert-sm-item-top-margin: $clr-alert-sm-bottom-padding - $clr-alert-sm-top-padding !default;
+$clr-alert-sm-item-min-height: $clr-icon-dimension-sm !default;
 
-$alert-colors: (
+$clr-alert-colors: (
         info: (
-                background: $action-blues-lightest,
-                font: $action-blues-dark,
-                border: $action-blues-light
+                background: $clr-action-blue-lightest,
+                font: $clr-action-blue-dark,
+                border: $clr-action-blue-light
         ),
         success: (
-                background: $greens-lightest,
-                font: $greens-dark,
-                border: $greens-light
+                background: $clr-green-lightest,
+                font: $clr-green-dark,
+                border: $clr-green
         ),
         warning: (
-                background: $yellows-lighter,
-                font: $gray-darkest,
-                border: $yellows-light
+                background: $clr-yellow-lighter,
+                font: $clr-near-black,
+                border: $clr-yellow
         ),
         danger: (
-                background: $reds-lighter,
-                font: $reds-dark,
-                border: $reds-light
+                background: $clr-red-lighter,
+                font: $clr-red-dark,
+                border: $clr-red-light
         ),
         app-info: (
-                background: $clr-actionblue,
-                font: $app-level-alert-color,
+                background: $clr-action-blue,
+                font: $clr-app-level-alert-color,
                 border: none
         ),
         app-success: (
-                background: $greens-light-midtone,
-                font: $app-level-alert-color,
+                background: $clr-green-light-midtone,
+                font: $clr-app-level-alert-color,
                 border: none
         ),
         app-warning: (
-                background: $yellows-dark,
-                font: $app-level-alert-color,
+                background: $clr-yellow-dark,
+                font: $clr-app-level-alert-color,
                 border: none
         ),
         app-danger: (
                 background: $clr-red,
-                font: $app-level-alert-color,
+                font: $clr-app-level-alert-color,
                 border: none
         )
-);
+) !default;
 
 @mixin generateAlertType($alertType:"info") {
-    $propMap: map-get($alert-colors, $alertType);
+    $propMap: map-get($clr-alert-colors, $alertType);
     background: map-get($propMap, background);
     color: map-get($propMap, font);
 
@@ -97,16 +97,16 @@ $alert-colors: (
 
     .alert {
         @include clr-getTypePropertiesForDomElement(alert_text, (font-size, letter-spacing));
-        line-height: $alert-font-size;
+        line-height: $clr-alert-font-size;
         position: relative;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        min-height: $alert-min-height;
+        min-height: $clr-alert-min-height;
         width: auto;
-        padding: $alert-top-padding $alert-horizontal-padding $alert-bottom-padding $alert-horizontal-padding;
+        padding: $clr-alert-top-padding $clr-alert-horizontal-padding $clr-alert-bottom-padding $clr-alert-horizontal-padding;
         border-radius: $clr-default-borderradius;
-        margin-top: $alert-top-margin;
+        margin-top: $clr-alert-top-margin;
         @include generateAlertType(info);
 
         &.alert-info {
@@ -130,8 +130,8 @@ $alert-colors: (
             display: flex;
             align-items: center;
             flex-wrap: nowrap;
-            margin-top: $alert-item-top-margin;
-            min-height: $alert-item-min-height;
+            margin-top: $clr-alert-item-top-margin;
+            min-height: $clr-alert-item-min-height;
 
             //display: inline-block and max-width were specifically added for IE 10.
             //Flexbox content wouldn't wrap otherwise :(. 98% was just an estimate to distance the text from the
@@ -141,7 +141,7 @@ $alert-colors: (
                 display: inline-block;
                 max-width: 98%;
                 margin-right: $clr_baselineRem_0_5;
-                padding-left: $clr-icon-dimension-sm + $icon-margin-right;
+                padding-left: $clr-icon-dimension-sm + $clr-icon-margin-right;
 
                 //TODO: Added 1px padding top to help with the vertical alignment. Figure out why vertical alignment
                 //doesn't work without this.
@@ -159,7 +159,7 @@ $alert-colors: (
             .clr-icon {
                 height: $clr-icon-dimension-sm;
                 width: $clr-icon-dimension-sm;
-                margin-right: $icon-margin-right;
+                margin-right: $clr-icon-margin-right;
             }
 
             .clr-icon + .alert-text {
@@ -273,23 +273,23 @@ $alert-colors: (
 
             //Icons
             & > .alert-item > .alert-text::before, &.alert-info > .alert-item > .alert-text::before {
-                background-image: generateInfoIcon($app-level-alert-color);
+                background-image: generateInfoIcon($clr-app-level-alert-color);
             }
 
             &.alert-success > .alert-item > .alert-text::before {
-                background-image: generateSuccessIcon($app-level-alert-color);
+                background-image: generateSuccessIcon($clr-app-level-alert-color);
             }
 
             &.alert-warning > .alert-item > .alert-text::before {
-                background-image: generateWarningIcon($app-level-alert-color);
+                background-image: generateWarningIcon($clr-app-level-alert-color);
             }
 
             &.alert-danger > .alert-item > .alert-text::before {
-                background-image: generateErrorIcon($app-level-alert-color);
+                background-image: generateErrorIcon($clr-app-level-alert-color);
             }
 
             .close {
-                color: $app-level-alert-color;
+                color: $clr-app-level-alert-color;
                 top: 8px;
                 opacity: 0.75;
 
@@ -303,14 +303,14 @@ $alert-colors: (
     .alert {
         &.alert-sm {
             @include clr-getTypePropertiesForDomElement(alert-small_text, (font-size, letter-spacing));
-            line-height: $alert-sm-font-size;
+            line-height: $clr-alert-sm-font-size;
 
-            min-height: $alert-item-min-height;
+            min-height: $clr-alert-item-min-height;
             //Rigth padding same as regular alert to factor in the close button
-            padding: $alert-sm-top-padding $alert-horizontal-padding $alert-sm-bottom-padding $alert-sm-horizontal-padding;
+            padding: $clr-alert-sm-top-padding $clr-alert-horizontal-padding $clr-alert-sm-bottom-padding $clr-alert-sm-horizontal-padding;
 
             .alert-item {
-                margin-top: $alert-sm-item-top-margin;
+                margin-top: $clr-alert-sm-item-top-margin;
 
                 .alert-text{
 
@@ -339,7 +339,7 @@ $alert-colors: (
 
             .alert-actions {
                 margin-top: $clr_baselineRem_0_125;
-                margin-left: $clr-icon-dimension-sm + $icon-margin-right;
+                margin-left: $clr-icon-dimension-sm + $clr-icon-margin-right;
             }
         }
 
@@ -356,10 +356,9 @@ $alert-colors: (
     //1.cards
     .card {
         .alert {
-            $alert-card-horizontal-margin: 0;
-            $alert-card-vertical-margin: $clr_baselineRem_0_25;
-
-            margin: $alert-card-vertical-margin $alert-card-horizontal-margin;
+            $clr-alert-card-horizontal-margin: 0;
+            $clr-alert-card-vertical-margin: $clr_baselineRem_0_25;
+            margin: $clr-alert-card-vertical-margin $clr-alert-card-horizontal-margin;
         }
     }
 

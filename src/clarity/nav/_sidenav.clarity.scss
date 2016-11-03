@@ -4,7 +4,7 @@
 @import "../color/color.clarity";
 @import "../typography/typography.clarity";
 
-$sidenav-border-color: $gray-light-midtone;
+$clr-sidenav-border-color: $clr-light-midtone-gray !default;
 
 @mixin nav-link-colors {
     &:hover {
@@ -27,7 +27,7 @@ $sidenav-border-color: $gray-light-midtone;
         max-width: baselineRem(13);
         min-width: baselineRem(9);
         width: $clr-sidenav-width;
-        border-right: 1px solid $sidenav-border-color;
+        border-right: 1px solid $clr-sidenav-border-color;
         display: flex;
         flex-direction: column;
 
@@ -36,7 +36,7 @@ $sidenav-border-color: $gray-light-midtone;
             height: $clr_baselineRem_2;
             padding-left: $clr_baselineRem_1_5;
             width: 100%;
-            border-bottom: 1px solid $sidenav-border-color;
+            border-bottom: 1px solid $clr-sidenav-border-color;
 
             .select {
                 width: 100%;

@@ -28,24 +28,25 @@ $clr-breakpoints: (
     medium: 768px,
     large : 992px,
     xlarge: 1200px
-);
+) !default;
 
 //1. Fonts Options
-$clr-font: Metropolis, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif; //Default font stack for Clarity
-$clr-altFont: $clr-font; //TODO: TBD. Alternative font for Clarity
-$clr-font-size: 14px;
-$clr-rem-denominator: 14;
-$clr-kerning-lotsatext: normal; // 14px, but a lot of it
-$clr-kerning-smalltext: normal; // 14px-12px
-$clr-kerning-bigtext: 0.01em; // some types of 16px over dark background
-$clr-kerning-tinytext: 0.03em; // 11px and lower
+$clr-font: Metropolis, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !default; //Default font stack for Clarity
+$clr-altFont: $clr-font !default; //TODO: TBD. Alternative font for Clarity
+$clr-font-base-size: 14 !default;
+$clr-font-size: unquote($clr-font-base-size+'px') !default;
+$clr-rem-denominator: $clr-font-base-size !default;
+$clr-kerning-lotsatext: normal !default; // 14px, but a lot of it
+$clr-kerning-smalltext: normal !default; // 14px-12px
+$clr-kerning-bigtext: 0.01em !default; // some types of 16px over dark background
+$clr-kerning-tinytext: 0.03em !default; // 11px and lower
 
 $clr-font-weights: (
     light: 200,
     regular: 400,
     semibold: 500,
     bold: 600
-);
+) !default;
 
 //2. Headers
 // NOTE: one day we may support responsive resizing of fonts. that day is not today, however.
@@ -159,10 +160,10 @@ $clr-h6:(
 
 
 //3. Paragraphs
-$clr-typography-smalltext: rem(13/$clr-rem-denominator);
-$clr-typography-xsmalltext: rem(12/$clr-rem-denominator);
-$clr-typography-xxsmalltext: rem(11/$clr-rem-denominator);
-$clr-typography-tinytext: rem(10/$clr-rem-denominator);
+$clr-typography-smalltext: rem(13/$clr-rem-denominator) !default;
+$clr-typography-xsmalltext: rem(12/$clr-rem-denominator) !default;
+$clr-typography-xxsmalltext: rem(11/$clr-rem-denominator) !default;
+$clr-typography-tinytext: rem(10/$clr-rem-denominator) !default;
 
 // keeping this here as an easter egg. we use it on the website and it's not hurting anything. usage = intro text
 $clr-p0: (
@@ -355,25 +356,25 @@ $clr-typography-dom-to-type-element: (
 );
 
 //4. Navigation
-$clr-sidenav-width: 18%;
-$clr-header-height: $clr_baselineRem_2_5;
-$clr-subnav-height: $clr_baselineRem_1_5;
+$clr-sidenav-width: 18% !default;
+$clr-header-height: $clr_baselineRem_2_5 !default;
+$clr-subnav-height: $clr_baselineRem_1_5 !default;
 
 //5.Content Area Paddings
-$clr-content-area-padding-top: $clr_baselineRem_1;
-$clr-content-area-padding-right: $clr_baselineRem_1;
-$clr-content-area-padding-bottom: $clr_baselineRem_1;
-$clr-content-area-padding-left: $clr_baselineRem_1;
+$clr-content-area-padding-top: $clr_baselineRem_1 !default;
+$clr-content-area-padding-right: $clr_baselineRem_1 !default;
+$clr-content-area-padding-bottom: $clr_baselineRem_1 !default;
+$clr-content-area-padding-left: $clr_baselineRem_1 !default;
 
 //6. Cards
-$clr-card-outer-margin: $clr_baselineRem_0_75;
-$clr-card-inner-margin: $clr_baselineRem_0_5;
+$clr-card-outer-margin: $clr_baselineRem_0_75 !default;
+$clr-card-inner-margin: $clr_baselineRem_0_5 !default;
 
 //7. Modal
-$clr-modal-content-padding-top: $clr_baselineRem_1;
-$clr-modal-content-padding-right: $clr_baselineRem_1;
-$clr-modal-content-padding-bottom: $clr_baselineRem_1;
-$clr-modal-content-padding-left: $clr_baselineRem_1;
+$clr-modal-content-padding-top: $clr_baselineRem_1 !default;
+$clr-modal-content-padding-right: $clr_baselineRem_1 !default;
+$clr-modal-content-padding-bottom: $clr_baselineRem_1 !default;
+$clr-modal-content-padding-left: $clr_baselineRem_1 !default;
 
 //8. Colors
 //TODO: Refactor colors across clarity to use these variables so that there
@@ -434,18 +435,18 @@ $yellows-darkest: clr-getColor(darkest,yellows);
 
 //Other Colors
 //TODO: Add these to the color palette
-$clr-links-visited-color: #5659b9;
-$clr-selection-color: #D9E4EA;
+$clr-links-visited-color: #5659b9 !default;
+$clr-selection-color: #D9E4EA !default;
 
 // 9. Misc
-$clr-default-borderradius: $clr_baselineRem_0_125;
+$clr-default-borderradius: $clr_baselineRem_0_125 !default;
 
 //10. Buttons
-$clr-button-vertical-margin: $clr_baselineRem_0_25;
-$clr-button-horizontal-margin: $clr_baselineRem_0_5;
+$clr-button-vertical-margin: $clr_baselineRem_0_25 !default;
+$clr-button-horizontal-margin: $clr_baselineRem_0_5 !default;
 
 //11. Icons
-$clr-icon-dimension-sm: rem(16/$clr-rem-denominator);
+$clr-icon-dimension-sm: rem(16/$clr-rem-denominator) !default;
 
 //BS4 overrides
 $enable-flex: true;

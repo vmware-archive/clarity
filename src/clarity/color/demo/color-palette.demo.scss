@@ -3,7 +3,7 @@
 @import "../color.clarity";
 @import "./color-shared.demo";
 
-$clrdemo-colormaps: ($clr-base-colors, $clr-grays, $clr-actionblues, $clr-actionpurples, $clr-reds, $clr-yellows, $clr-greens);
+$clrdemo-colormaps: ($clr-base-colors, $clr-grays, $clr-action-blues, $clr-action-purples, $clr-reds, $clr-yellows, $clr-greens);
 
 .card-block {
     padding-bottom: 0;

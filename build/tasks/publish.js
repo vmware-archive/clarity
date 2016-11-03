@@ -65,10 +65,11 @@ gulp.task("npm:ui:deliverables", function () {
 });
 
 /**
- * We publish SCSS sources just for information.
+ * We publish SCSS sources so users can make changes to them and compile on their own.
  */
 gulp.task("npm:ui:sources", function () {
     return gulp.src([
+        "src/clarity/main.scss",
         "src/clarity/**/*.clarity.scss",
         "!src/clarity/**/demo/**"
     ])

@@ -5,10 +5,10 @@
 @import "../utils/layers.clarity";
 @import "../typography/typography.clarity";
 
-$clr-modal-sm-width: baselineRem(12);
-$clr-modal-md-width: baselineRem(24);
-$clr-modal-lg-width: baselineRem(36);
-$clr-modal-xl-width: baselineRem(48);
+$clr-modal-sm-width: baselineRem(12) !default;
+$clr-modal-md-width: baselineRem(24) !default;
+$clr-modal-lg-width: baselineRem(36) !default;
+$clr-modal-xl-width: baselineRem(48) !default;
 
 .modal {
     position: fixed;

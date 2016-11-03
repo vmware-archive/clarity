@@ -40,13 +40,13 @@ clr-icon {
         @include setIconColor($reds-light-midtone);
     }
     &.icon-color-info {
-        @include setIconColor($clr-actionblue);
+        @include setIconColor($clr-action-blue);
     }
     &.icon-color-inverse {
         @include setIconColor($clr-white);
     }
     &.icon-color-highlight {
-        @include setIconColor($clr-actionblue);
+        @include setIconColor($clr-action-blue);
     }
     &.icon-orient-up {
         svg {

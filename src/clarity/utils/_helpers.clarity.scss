@@ -1,11 +1,13 @@
 //Because the "rem" unit does not work on pseudo-elements in IE,
 //we use a function to compute "rem" to "px" with Sass.
+
+$clr-baseline: 24px !default;
+
 @function rem($remSize) {
     @return $remSize * $clr-font-size;
 };
 
 @function baselineRem($remSize) {
-    $clr-baseline: 24px;
     @return $remSize * $clr-baseline;
 }
 

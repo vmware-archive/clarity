@@ -104,10 +104,10 @@ $clr-global-button-properties-map: (
 );
 
 //Button Variables
-$clr-button-horizontal-padding: $clr_baselineRem_0_5;
-$clr-button-height: $clr_baselineRem_1_5;
-$clr-button-height-sm: $clr_baselineRem_1;
-$clr-button-padding: 0 $clr-button-horizontal-padding;
+$clr-button-horizontal-padding: $clr_baselineRem_0_5 !default;
+$clr-button-height: $clr_baselineRem_1_5 !default;
+$clr-button-height-sm: $clr_baselineRem_1 !default;
+$clr-button-padding: 0 $clr-button-horizontal-padding !default;
 
 //Call to Action & Standard Button Appearance
 $clr-button-appearance-map: (

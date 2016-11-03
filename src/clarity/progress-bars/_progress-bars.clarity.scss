@@ -9,7 +9,7 @@
 @import "./utils/mixins.clarity";
 @import "../card/card.clarity";
 
-$clr-progress-defaultBarColor: $clr-actionblue !default;
+$clr-progress-defaultBarColor: $clr-action-blue !default;
 $clr-progress-bgColor: $clr-light-gray !default;
 
 @include exports('prgross-bars.clarity') {

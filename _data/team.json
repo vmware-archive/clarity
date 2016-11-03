@@ -70,13 +70,6 @@
         "img":  "lilia.png",
         "workstreams": ["UX"]
     }, {
-        "name": "Etienne Le Sueur",
-        "role": "Developer",
-        "blurb": "Etienne contributes to Clarity’s Angular 2 components.",
-        "email": " ",
-        "img":  "etienne.png",
-        "workstreams": ["CR","NG"]
-    }, {
         "name": "Shijir Tsogoo",
         "role": "Developer",
         "blurb": "Shijir recently graduated from the University of Washington. He creates Angular 2 components for Clarity.",
@@ -100,6 +93,13 @@
             "email": " ",
             "img":  "",
             "workstreams": ["CR"]
+        }, {
+            "name": "Etienne Le Sueur",
+            "role": " ",
+            "blurb": "",
+            "email": " ",
+            "img":  "",
+            "workstreams": ["UX"]
         }, {
             "name": "Yu Xin",
             "role": " ",

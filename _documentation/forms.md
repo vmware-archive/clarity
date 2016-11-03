@@ -37,7 +37,7 @@ This is a required wrapper intended to contain a radio button or a checkbox inpu
 
 ### Compact Forms
 
-For forms inside of smaller containers like modals or wizards, the whitespace around form groups and form blocks can be minimized by using the `.compact` classname.
+For forms inside of smaller containers like modals or wizards, the whitespace around form groups and form blocks can be minimized by using the <code>.compact</code> classname.
 
 <clr-forms-compact-demo></clr-forms-compact-demo>
 

@@ -7,24 +7,24 @@ layout: documentation
 {: .component-summary }
 #### The login page is a predefined form required for every application.
 
-Use Clarity's login form by extending the `.login` classname on `form` and wrapping it in a container extending the `.login-wrapper` class.
+Use Clarity's login form by extending the <code>.login</code> classname on <code>form</code> and wrapping it in a container extending the <code>.login-wrapper</code> class.
 
 ###### .title, .subtitle and .trademark
 
-Extend the `.title` and `.subtitle` class on labels indicating the product title and subtitle. If your product title has the trademark symbol, make sure to wrap the trademark symbol in a `span` with the `.trademark` class on it.
+Extend the <code>.title</code> and <code>.subtitle</code> class on labels indicating the product title and subtitle. If your product title has the trademark symbol, make sure to wrap the trademark symbol in a <code>span</code> with the <code>.trademark</code> class on it.
 </div>
 
 ###### .username
 
-Extend the `.username` class on the username input field.
+Extend the <code>.username</code> class on the username input field.
 
 ###### .password
 
-Extend the `.password` class on the password input field.
+Extend the <code>.password</code> class on the password input field.
 
 ###### .error, .active
 
-This wrapper contains a validation message. Extend the `.active` class with `.error` to display the validation message.
+This wrapper contains a validation message. Extend the <code>.active</code> class with <code>.error</code> to display the validation message.
 
 #### Example
 

@@ -23,7 +23,7 @@ A static example of a modal with header, body and footer:
 
 ### Sizes
 
-In addition to the default, medium size, Clarity modals come in two optional sizes, large and small. To use an optional size, add `modal-sm` or `modal-lg` class to your modal-dialog.
+In addition to the default, medium size, Clarity modals come in two optional sizes, large and small. To use an optional size, add <code>modal-sm</code> or <code>modal-lg</code> class to your modal-dialog.
 
 <clr-modal-sizes-demo></clr-modal-sizes-demo>
 
@@ -35,7 +35,7 @@ Here is an example of a backdrop to use behind your modal, when you display it o
 
 ### Animation
 
-Modals and backdrops support fading animations. Clarity recommends using `fadeDown` on the `modal-dialog` and `fade` on the `modal-backdrop`. These animations hide the modal and backdrop by default. Adding or removing the `in` class animates the modal or backdrop in or out, respectively.
+Modals and backdrops support fading animations. Clarity recommends using <code>fadeDown</code> on the <code>modal-dialog</code> and <code>fade</code> on the <code>modal-backdrop</code>. These animations hide the modal and backdrop by default. Adding or removing the <code>in</code> class animates the modal or backdrop in or out, respectively.
 
 <clr-modal-animation-demo></clr-modal-animation-demo>
 
@@ -90,19 +90,19 @@ Modals and backdrops support fading animations. Clarity recommends using `fadeDo
 
 ###### 1. clrModalSize
 
-The Angular component offers the same optional sizes as the static styles through the `clrModalSize` input. The default, empty size is medium.
+The Angular component offers the same optional sizes as the static styles through the <code>clrModalSize</code> input. The default, empty size is medium.
 
 <clr-modal-angular-size-demo></clr-modal-angular-size-demo>
 
 ###### 2. clrModalClosable
 
-If you don't want your modal to be closable by clicking on the top-right "x" or on the mask, you can do so with the `clrModalClosable` input. The default value is `true`. You can still close the modal if one of _your_ components modifies the value bound to `clrModalOpen`.
+If you don't want your modal to be closable by clicking on the top-right "x" or on the mask, you can do so with the <code>clrModalClosable</code> input. The default value is <code>true</code>. You can still close the modal if one of _your_ components modifies the value bound to <code>clrModalOpen</code>.
 
 <clr-modal-angular-not-closable-demo></clr-modal-angular-not-closable-demo>
 
 ###### 3. clrModalStaticBackdrop
 
-If you want the modal to be closable with a top-right “x” button, but don’t want a click on the backdrop to close it, use the `clrModalStaticBackdrop`. If `true`, clicks on the background are ignored.  The default value is `false`.
+If you want the modal to be closable with a top-right “x” button, but don’t want a click on the backdrop to close it, use the <code>clrModalStaticBackdrop</code>. If <code>true</code>, clicks on the background are ignored.  The default value is <code>false</code>.
 
 <clr-modal-angular-static-backdrop-demo></clr-modal-angular-static-backdrop-demo>
 
@@ -129,7 +129,7 @@ If you want the modal to be closable with a top-right “x” button, but don’
             <td>NA</td>
             <td>NA</td>
             <td class="left">
-                Manually closes the modal if `clrModalClosable` is not set to `false`.
+                Manually closes the modal if <code>clrModalClosable</code> is not set to <code>false</code>.
             </td>
         </tr>
     </tbody>

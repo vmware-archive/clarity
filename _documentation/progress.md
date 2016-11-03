@@ -76,10 +76,10 @@ Because there was no way to turn off the animation in IE/Edge’s implementation
 <clr-progress-bar-static-demo></clr-progress-bar-static-demo>
 
 {: .list}
-- Instead of a `.progress` container `div`, the static progress bar has a `.progress-static` container `div`.
-- Instead of a `progress` element inside the container, there is a `div` with the class of `.progress-meter` applied to it.
-- A `div` cannot have a value attribute, so the `.progress-meter` element has `data-value` attribute. The completion value must be dynamically inserted in the`data-value` attribute.
-- The `data-value` attribute must contain an integer between 0 and 100.
+- Instead of a <code>.progress</code> container <code>div</code>, the static progress bar has a <code>.progress-static</code> container <code>div</code>.
+- Instead of a <code>progress</code> element inside the container, there is a <code>div</codeAtom> with the class of <code>.progress-meter</code> applied to it.
+- A <code>div</code> cannot have a value attribute, so the <code>.progress-meter</code> element has <code>data-value</code> attribute. The completion value must be dynamically inserted in the <code>data-value</code> attribute.
+- The <code>data-value</code> attribute must contain an integer between 0 and 100.
 
 ### Progress Bar Blocks and Groups
 

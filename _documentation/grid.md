@@ -89,7 +89,7 @@ In the example below, if the device size is ≥ 768px (medium or above), the gri
 
 ### Column Offsets
 
-The <code class="clr-code">&lt;class-prefix&gt;-offset-*</code> classes increase a column’s left margin by the width occupied by `*` number of columns.
+The <code class="clr-code">&lt;class-prefix&gt;-offset-*</code> classes increase a column’s left margin by the width occupied by <code>*</code> number of columns.
 <clr-grid-demo-column-offsetting></clr-grid-demo-column-offsetting>
 
 ### Column Ordering

@@ -11,11 +11,6 @@
             "text": "Report an issue",
             "img": "github",
             "url": "https://github.com/vmware/clarity/issues"
-        },
-        {
-            "text": "Send us an email",
-            "img": "email",
-            "url": "mailto:clarity@vmware.com"
         }
     ],
     "members": [{

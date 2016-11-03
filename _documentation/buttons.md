@@ -51,7 +51,7 @@ Clarity defines three button styles:
 
 <div class="row buttons-modal-gfx">
     <div class="col-xs-12 col-sm-2">
-        <button type="submit" class="btn btn-primary">Solid</button></p>
+        <button type="submit" class="btn btn-primary">Solid</button>
     </div>
     <div class="col-xs-12 col-sm-10">
         For the preferred or default action. One solid button per component.
@@ -59,7 +59,7 @@ Clarity defines three button styles:
 </div>
 <div class="row buttons-modal-gfx">
     <div class="col-xs-12 col-sm-2">
-        <button type="submit" class="btn btn-outline">Outline</button></p>
+        <button type="submit" class="btn btn-outline">Outline</button>
     </div>
     <div class="col-xs-12 col-sm-10">
         For a neutral or negative action, next to a solid button, or when actions are equivalent.

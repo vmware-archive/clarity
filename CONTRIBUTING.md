@@ -6,7 +6,7 @@ The Clarity project team welcomes contributions from the community.   Together, 
 Before you start working with Clarity, please complete the following steps:
 
 - Read our [code of conduct](/CODE_OF_CONDUCT.md).
-- Sign our Contributor License Agreement (CLA). Our CLA-bot will take you through the process and update the issue when you open a [Pull Request](https://help.github.com/articles/creating-a-pull-request/). For questions about the CLA process, see our [FAQ](https://cla.vmware.com/faq) or contact us through the GitHub issue tracker.
+- Read our [Developer Certificate of Origin](https://cla.vmware.com/dco). All contributions to this repository must be signed as described on that page. Your signature certifies that you wrote the patch or have the right to pass it on as an open-source patch.
 
 ## Contribution Flow
 
@@ -14,6 +14,7 @@ Here are the typical steps in a contributor's workflow:
 
 - [Fork](https://help.github.com/articles/fork-a-repo/) the main Clarity repository. 
 - Clone your fork and set the upstream remote to the main Clarity repository.
+- Set your name and e-mail in the Git configuration for signing.
 - Create a topic branch from where you want to base your work.
 - Setup your local environment to run and build Clarity. See our [build documentation](BUILD.md).
 - Make commits of logical units.
@@ -30,6 +31,10 @@ git clone git@github.com:<github username>/clarity.git
 # Navigate to the directory
 cd clarity
 
+# Set name and e-mail configuration
+git config user.name "John Doe"
+git config user.email johndoe@example.com
+
 # Setup the upstream remote
 git remote add upstream https://github.com/vmware/clarity.git
 
@@ -37,7 +42,7 @@ git remote add upstream https://github.com/vmware/clarity.git
 git checkout -b my-new-feature master
 
 # After making the desired changes, commit and push to your fork
-git commit -a
+git commit -a -s
 git push origin my-new-feature
 ```
 
@@ -85,6 +90,8 @@ Use this format for your commit message:
 <detailed commit message>
 <BLANK LINE>
 <reference to closing an issue>
+<BLANK LINE>
+Signed-off-by: Your Name <your.email@example.com>
 ```
 
 #### Type
@@ -106,7 +113,7 @@ These documents provide guidance creating a well-crafted commit message:
 
 ## Reporting Bugs and Creating Issues
 
-You can submit an issue or a bug to our [GitHub repositoory](https://github.com/vmware/clarity/issues).  You must provide:
+You can submit an issue or a bug to our [GitHub repository](https://github.com/vmware/clarity/issues).  You must provide:
 
 * The link to the reproduction scenario you created using [http://plnkr.com](http://plnkr.com)
 * The version number of Angular

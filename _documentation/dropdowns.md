@@ -9,7 +9,7 @@ layout: documentation
 
 ###### .dropdown:
 
-This class is a wrapper class around the `.dropdown-toggle` and the `.dropdown-menu`
+This class is a wrapper class around the <code>.dropdown-toggle</code> and the <code>.dropdown-menu</code>
 
 ###### .dropdown-toggle:
 
@@ -18,13 +18,13 @@ Extend this class on a button, icon or text link clicking on which the dropdown 
 ###### .dropdown-menu:
 
 
-A required wrapper intended to contain the dropdown menu. Items in the menu should extend the `.dropdown-header` or `.dropdown-item` class. `.dropdown-divider` can be on a block element used to seperate item groups. `.active` class with `.dropdown-item` adds a different styling for selected elements. Add the `.disabled` class to dropdown items to style them as disabled.
+A required wrapper intended to contain the dropdown menu. Items in the menu should extend the <code>.dropdown-header</code> or <code>.dropdown-item</code> class. <code>.dropdown-divider</code> can be on a block element used to seperate item groups. <code>.active</code> class with <code>.dropdown-item</code> adds a different styling for selected elements. Add the <code>.disabled</code> class to dropdown items to style them as disabled.
 
 ###### .open:
 
-A class to open the dropdown menu. Must be applied with `.dropdown`
+A class to open the dropdown menu. Must be applied with <code>.dropdown</code>
 
-The following classes when extended along with `.dropdown` will open the menu in the respective directions:
+The following classes when extended along with <code>.dropdown</code> will open the menu in the respective directions:
 
 {: .list }
 - .bottom-left

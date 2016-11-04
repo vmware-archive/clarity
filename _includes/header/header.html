@@ -93,7 +93,7 @@
                 <span class="logo-img">
             </div>
             <ul class="slider-nav">
-                <li><a class="nav-link {% if page.layout == 'home' %}active{% endif %}" href="/"><span class="nav-text">Home</span></a></li>
+                <li><a class="nav-link {% if page.layout == 'home' %}active{% endif %}" href="{{ site.baseurl }}/"><span class="nav-text">Home</span></a></li>
                 {% for navItem in site.data.nav.main %}
                     <li>{% include header/nav-item.html navUrl=navItem.url navText=navItem.text %}</li>
                 {% endfor %}

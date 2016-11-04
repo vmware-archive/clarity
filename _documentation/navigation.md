@@ -103,6 +103,8 @@ to build the layout of your application:
     Design guidelines start here...
 {% endcomment %}
 
+### Designing Navigation
+
 When establishing your navigation model, consider:
 
 {: .list}
@@ -111,7 +113,7 @@ When establishing your navigation model, consider:
 - Whether to orient the navigation horizontally, vertically, or both
 - Whether responsiveness needs to be part of your platform strategy
 
-### Navigation Components
+<!-- ### Navigation Components
 
 Clarity has three navigation components: header, subnav, and sidenav.  These components:
 
@@ -119,6 +121,9 @@ Clarity has three navigation components: header, subnav, and sidenav.  These com
 - Are independent of one another and can be used alone or in combination. This gives you flexibility in designing your navigation schema.
 - Support a consistent visual hierarchy between levels of navigation.
 - Adapt to changes in screen size according to predefined breakpoints and grid alignment. This responsiveness helps your app scale from small to large screens.
+-->
+
+### Usage
 
 #### Header
 

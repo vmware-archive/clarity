@@ -16,7 +16,16 @@
             </label>
         </form>
         <div class="header-actions">
-            <a href="javascript://" class="nav-link"><span class="nav-icon fa fa-cog"></span></a>
+            <div class="dropdown bottom-right open" ngNonBindable>
+                <a href="javascript://" class="nav-link dropdown-toggle">
+                    <span class="nav-icon fa fa-cog"></span>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="javascript://" class="dropdown-item">Preferences</a>
+                    <a href="javascript://" class="dropdown-item">About</a>
+                    <a href="javascript://" class="dropdown-item">Logout</a>
+                </div>
+            </div>
         </div>
     </clr-header>
     <div class="content-container">

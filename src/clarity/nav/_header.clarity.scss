@@ -13,11 +13,14 @@ $clr-logo-width: $clr_baselineRem_1_5;
 $clr-nav-icon-size: rem(22/$clr-rem-denominator);
 $clr-header-section-divider-height: 40px;
 $clr-search-icon-width: $clr_baselineRem_1;
+$clr-header-divider-opacity: 0.15;
+$clr-header-nav-opactiy: 0.65;
+$clr-header-nav-hover-opacity: 1;
 
 @mixin header-section-divider() {
     display: inline-block;
     background: $clr-header-textColor;
-    opacity: 0.15;
+    opacity: $clr-header-divider-opacity;
     height: $clr-header-section-divider-height;
     width: 1px;
     top: ($clr-header-height - $clr-header-section-divider-height) / 2;
@@ -32,10 +35,10 @@ $clr-search-icon-width: $clr_baselineRem_1;
 
 @mixin header-nav-appearance() {
     color: $clr-header-textColor;
-    opacity: 0.65;
+    opacity: $clr-header-nav-opactiy;
 
     &:hover {
-        opacity: 1;
+        opacity: $clr-header-nav-hover-opacity;
     }
 };
 
@@ -43,12 +46,12 @@ $clr-search-icon-width: $clr_baselineRem_1;
     .nav-link {
         display: inline-block;
         @include remove-text-decoration();
+        @include header-nav-appearance();
 
         //TODO: Remove support for FA
         .nav-icon,
         .nav-text,
         .fa {
-            @include header-nav-appearance();
             line-height: $clr-header-height;
         }
 
@@ -293,6 +296,37 @@ $clr-search-icon-width: $clr_baselineRem_1;
             justify-content: flex-end;
 
             @include generate-nav-link-styles();
+
+            //Position the after element (arrow) & menus of dropdowns in headers
+            //TODO: Update this when we start using Clarity Icons
+            & > .dropdown {
+                & > .dropdown-toggle {
+                    &::after {
+                        position: absolute;
+                        top: 50%;
+                        right: $clr_baselineRem_0_375;
+                        transform: translateY(-50%);
+                        margin-left: 0;
+                    }
+
+                    & > .nav-icon {
+                        padding-right: $clr_baselineRem_0_25;
+                    }
+                }
+
+                //Pull the dropdown menus of all dropdowns up to compensate
+                //for the height of the header.
+                &.bottom-right > .dropdown-menu,
+                &.bottom-left > .dropdown-menu, {
+                    top: 85%;
+                }
+
+                //Last Dropdown Menu adjustments so that the menu has some space
+                //between itself and the right end of the browser window
+                &:last-child.bottom-right > .dropdown-menu {
+                    right: 3px;
+                }
+            }
         }
 
         .branding + .search,
@@ -301,6 +335,7 @@ $clr-search-icon-width: $clr_baselineRem_1;
 
             &::after {
                 position: absolute;
+                left: 0;
                 content: '';
                 @include header-section-divider();
             }

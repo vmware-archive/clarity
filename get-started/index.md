@@ -104,7 +104,10 @@ For the most complete integration with Clarity, consume the framework at the Ang
 
 The Clarity Sketch template contains a library of components to help jumpstart your project. The template is versioned alongside other products in Clarity’s ecosystem (Clarity UI, Clarity Angular, Clarity Web). Download the most current version to ensure you have the most up-to-date components.
 
-[Download the latest Sketch template]({{ site.baseurl }}{{ site.data.global.template_link }}){: target='_blank' }
+Note that in order to design with the Sketch template, the open-source Metropolis font by Chris M. Simpson will need to be installed.
+
+- [Download the latest Sketch template]({{ site.baseurl }}{{ site.data.global.template_link }}){: target='_blank' }
+- [Download the Metropolis font](https://github.com/chrismsimpson/Metropolis){: target='_blank' }
 
 {: #seedProject}
 ## Using an Angular Seed Project

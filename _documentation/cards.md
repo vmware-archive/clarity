@@ -7,7 +7,78 @@ layout: documentation
 {: .component-summary }
 #### A card presents high-level information and can guide the user toward related actions and details.
 
-<clr-card-demo></clr-card-demo>
+#### Basic Card
+
+A <code class="clr-code">.card</code> can contain a <code class="clr-code">.card-header</code>, a
+<code class="clr-code">.card-footer</code>, and one or more <code class="clr-code">.card-block</code>s.
+
+<clr-card-layout-demo></clr-card-layout-demo>
+
+#### Clickable Cards
+
+Adding the <code class="clr-code">.clickable</code> class converts the entire
+card into an action.
+
+<clr-card-clickable-demo></clr-card-clickable-demo>
+
+#### Images in Cards
+
+A <code class="clr-code">.card-img</code> can be placed anywhere in the card, or it can occupy the entire card.
+
+<clr-card-images-demo></clr-card-images-demo>
+
+#### Dropdowns in Cards
+
+Two actions can go in the footer. For more actions, use a
+<a href="{{ site.baseurl }}/documentation/dropdowns">dropdown</a>.
+
+<clr-card-dropdown-demo></clr-card-dropdown-demo>
+
+#### Card Media Block
+
+A <code class="clr-code">.card-media-block</code> combines a <code class="clr-code">.card-media-image</code>
+and <code class="clr-code">.card-media-description</code>. The description can contain a <code class="clr-code">
+.card-media-title</code> and a <code class="clr-code">.card-media-text</code>.
+
+
+<clr-card-media-block-demo></clr-card-media-block-demo>
+
+#### Lists in Cards
+
+Cards can contain <a href="{{ site.baseurl }}/documentation/lists">lists</a>.
+
+<clr-lists-in-cards-demo></clr-lists-in-cards-demo>
+
+#### List Groups in Cards
+
+Cards can contain <a href="http://v4-alpha.getbootstrap.com/components/list-group/" target="_blank">Bootstrap 4 List Groups</a>.
+
+<clr-list-group-demo></clr-list-group-demo>
+
+#### Progress Bars in Cards
+
+Cards can contain <a href="{{ site.baseurl }}/documentation/progress">progress bars</a>.
+
+<clr-progress-bar-cards-demo></clr-progress-bar-cards-demo>
+
+<clr-progress-bar-inline-cards-demo></clr-progress-bar-inline-cards-demo>
+
+#### Card Layout
+
+Clarity recommends using cards in a <a href="{{ site.baseurl }}/documentation/grid">grid</a> or a CSS column layout.
+
+##### Cards in a Grid
+
+<clr-card-grid-demo></clr-card-grid-demo>
+
+##### Cards in CSS Columns
+
+Cards can be placed in <code class="clr-code">.card-columns</code>. The default number of columns is three,
+but can be changed to two or four by adding <code class="clr-code">.card-columns-2</code> or <code class="clr-code">.card-columns-4</code>.
+
+<p></p>
+
+<clr-card-masonry-demo></clr-card-masonry-demo>
 
 {% comment %}
     Design guidelines start here...
@@ -101,6 +172,6 @@ A grid places cards in fixed rows and columns:  more content in less vertical sp
 
 ### Switching views: cards and datagrids
 
-In homogeneous card groups, consider enabling users to switch between card view and datagrid view. While cards show richer content than a datagrid, a datagrid lists more items at once. 
+In homogeneous card groups, consider enabling users to switch between card view and datagrid view. While cards show richer content than a datagrid, a datagrid lists more items at once.
 
 Toggles for switching between views go in the upper right of the card group. The card group should be the default view.

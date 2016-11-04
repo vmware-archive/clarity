@@ -1,0 +1,22 @@
+Options -Indexes
+DirectoryIndex index.html index.php
+
+ErrorDocument 401 /error/index.html
+ErrorDocument 400 /error/index.html
+ErrorDocument 403 /error/index.html
+ErrorDocument 404 /error/index.html
+ErrorDocument 500 /error/index.html
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^clarity.vmware.com$ [NC]
+RewriteCond %{REQUEST_URI} !^/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /$1/
+RewriteCond %{HTTP_HOST} ^clarity.vmware.com$ [NC]
+RewriteRule ^(/)?$ /index.html [L]
+
+<IfModule mod_security.c>
+  SecFilterEngine Off
+  SecFilterScanPOST Off
+</IfModule>

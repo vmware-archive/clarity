@@ -1,0 +1,227 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+@import "../typography/typography.clarity";
+
+// Backgrounds
+$clr-table-bgcolor: clr-getColor(white);
+$clr-thead-bgcolor: clr-getColor(lighter);
+
+// Borders
+$clr-tablerow-bordercolor: clr-getColor(light); // #EEE
+$clr-table-bordercolor: clr-getColor(light-midtone); // #CCC
+$clr-table-borderwidth: 1px;
+$clr-table-borderstyle: $clr-table-borderwidth solid $clr-table-bordercolor;
+
+// Etc.
+$clr-table-fontsize: clr-getTypePropertyValueForDomElement(table_text, font-size);
+$clr-table-lineheight: rem(1);
+$clr-table-cellpadding: $clr_baselineRem_0_5;
+$clr-table-lineheightPaddingShim: ($clr_baselineRem_1 - $clr-table-lineheight)/2;
+$clr-table-headerLineheightPaddingShim: ($clr_baselineRem_1 - clr-getTypePropertyValueForDomElement(table_header, font-size))/2;
+$clr-table-vertpadding: (($clr-table-cellpadding - $clr-table-borderwidth) * 0.5) + $clr-table-lineheightPaddingShim; // have to account for border...
+$clr-table-smallpadding: 0.5 * $clr-table-cellpadding;
+// Border radius of corner cells needs to be slightly less than the table's,
+// To make sure they correctly cover the whole area up to the border.
+$clr-table-cornercellradius: $clr-default-borderradius - 1;
+
+// Mixin for basic table styles to be able to reuse them on non-table elements.
+@mixin basic-table($table, $thead, $tbody, $tr, $th, $td) {
+    #{$table} {
+        border-collapse: separate;
+        border: $clr-table-borderstyle;
+        border-radius: $clr-default-borderradius;
+
+        background-color: $clr-table-bgcolor;
+        color: clr-getTextColor($clr-table-bgcolor, text);
+        margin: $clr_baselineRem_1 0 0 0;
+        max-width: 100%;
+        width: 100%;
+
+        #{$th},
+        #{$td} {
+            font-size: $clr-table-fontsize;
+            line-height: $clr-table-lineheight;
+
+            border-top: $clr-table-borderwidth solid $clr-tablerow-bordercolor;
+            padding: $clr-table-vertpadding $clr-table-cellpadding;
+            text-align: center;
+            vertical-align: top;
+
+            &.left {
+                text-align: left;
+
+                &:first-child {
+                    padding-left: $clr-table-smallpadding; // 0.25brem or 6px...
+                }
+            }
+        }
+
+        #{$th} {
+            @include clr-getTypePropertiesForDomElement(table_header, (color, font-size, font-weight, letter-spacing));
+
+            background-color: $clr-thead-bgcolor;
+            vertical-align: bottom;
+            border-bottom: $clr-table-borderstyle;
+            border-top: 0 none;
+        }
+
+        #{$tbody} #{$tr}:first-child #{$td} {
+            border-top: 0 none;
+        }
+
+        // in the rare event we have more than one tbody element.
+        #{$tbody} + #{$tbody} {
+            border-top: $clr-table-borderstyle;
+        }
+
+        // Rounded corners on tables are a pain...
+        #{$thead} #{$th} {
+            &:first-child {
+                border-radius: $clr-table-cornercellradius 0 0 0;
+            }
+
+            &:last-child {
+                border-radius: 0 $clr-table-cornercellradius 0 0;
+            }
+        }
+
+        #{$tbody}:last-child {
+            #{$tr}:last-child {
+                #{$td} {
+                    &:first-child {
+                        border-radius: 0 0 0 $clr-table-cornercellradius;
+                    }
+
+                    &:last-child {
+                        border-radius: 0 0 $clr-table-cornercellradius 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include exports('tables.clarity') {
+    @include basic-table(".table", "thead", "tbody", "tr", "th", "td");
+
+    .table.table-vertical {
+        thead th {
+            border: 0 none;
+            border-radius: 0;
+            display: none;
+        }
+
+        th {
+            border-bottom: 0;
+            border-top: $clr-table-borderwidth solid $clr-table-bordercolor;
+            vertical-align: top;
+        }
+
+        td, th {
+            text-align: left;
+            border-color: $clr-table-bordercolor;
+
+            &:first-child {
+                border-right: $clr-table-borderstyle;
+                background-color: $clr-thead-bgcolor;
+                font-weight: clr-getTypePropertyValueForDomElement(table_header, font-weight);
+            }
+        }
+
+        tbody:first-of-type {
+            tr:first-child {
+                th, td {
+                    border-top: 0 none;
+
+                    &:first-child {
+                        border-radius: $clr-table-cornercellradius 0 0 0;
+                    }
+
+                    &:last-child {
+                        border-radius: 0 $clr-table-cornercellradius 0 0;
+                    }
+                }
+            }
+        }
+
+        tbody:last-child {
+            tr:last-child {
+                th, td {
+                    &:first-child {
+                        border-radius: 0 0 0 $clr-table-cornercellradius;
+                    }
+
+                    &:last-child {
+                        border-radius: 0 0 $clr-table-cornercellradius 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .table.table-noborder {
+        $clr-table-noborder-bordercolor: clr-getColor(4);
+
+        border-radius: 0;
+        box-shadow: none;
+        background-color: transparent;
+        border: 0;
+
+        th {
+            background-color: transparent;
+            border-bottom-color: $clr-table-noborder-bordercolor;
+            border-top: 0 none;
+
+            &:first-child {
+                // need this for vertical tables...
+                border-right: 0 none;
+            }
+        }
+
+        td {
+            border-top: 0 none;
+
+            // there's no border so we have to adjust padding to preserve baseline.
+            $clr-noborder-newpadding: $clr-table-vertpadding + ($clr-table-borderwidth/2);
+            padding-top: $clr-noborder-newpadding;
+            padding-bottom: $clr-noborder-newpadding;
+
+            &:first-child {
+                border-right: 0 none;
+            }
+        }
+
+        thead th {
+            &:first-child, &:last-child {
+                border-radius: 0;
+            }
+        }
+
+        th, td {
+            //  Very specific use of !important to avoid specificity inflation.
+            border-radius: 0 !important;
+
+            &:first-child {
+                padding-left: 0;
+            }
+        }
+    }
+
+    .table.table-compact {
+        $clr-compact-vertpadding: $clr-table-lineheightPaddingShim - ($clr-table-borderwidth/2);
+        $clr-compactNoBorder-vertpadding: $clr-table-lineheightPaddingShim;
+
+        th, td {
+            padding-top: $clr-compact-vertpadding;
+            padding-bottom: $clr-compact-vertpadding;
+        }
+
+        &.table-no-border {
+            th, td {
+                padding-top: $clr-compactNoBorder-vertpadding;
+                padding-bottom: $clr-compactNoBorder-vertpadding;
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<script>
+  window.onmessage = messageEvent => {
+    if (messageEvent.data === 'Go') {
+      navigator.bluetooth.requestDevice({
+        filters: [{services: ['heart_rate']}]
+      })
+      .then(device => device.gatt.connect())
+      .then(gattServer => {
+        parent.postMessage('Connected', '*');
+      }).catch(err => {
+        console.error(err);
+        parent.postMessage('FAIL: ' + err, '*');
+      });
+    }
+  };
+  parent.postMessage("Ready", "*");
+</script>

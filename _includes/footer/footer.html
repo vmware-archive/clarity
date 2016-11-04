@@ -1,0 +1,45 @@
+
+        {% unless page.layout == 'error' or page.layout == 'documentation' or page.layout == 'get-started' or page.layout == 'news' %}
+            </div>  <!-- /.content-container -->
+        {% endunless %}
+
+        <footer>
+            <div class="jumbo-footer">
+                <div class="jumbo-footer-wrapper">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="branding">
+                                <span class="footer-title">Clarity</span>
+                            </div>
+                        </div>
+                        <div class="link-block col-xs-4">
+                            <div class="link-block-title">Get In Touch</div>
+                            <ul>
+                                <li><a href="{{ site.data.global.email_link }}" target="_blank">Send us an email</a></li>
+                                <li><a href="{{ site.data.global.socialcast_request }}" target="_blank">Request an invitation to join our Slack channel</a></li>
+                                <li><a href="{{ site.data.global.socialcast_link }}" target="_blank">Follow us on Socialcast</a></li>
+                            </ul>
+                        </div>
+                        <div class="link-block col-xs-4">
+                            <div class="link-block-title">Quick Links</div>
+                            <ul>
+                                <li><a href="{{ site.baseurl }}/get-started">How to use</a></li>
+                                <li><a href="{{ site.baseurl }}/get-started">Understanding the build</a></li>
+                                <li><a href="{{ site.baseurl }}/get-started">Contributing to Clarity</a></li>
+                                <li>{% include utility/sketch-tmpl-download.html linkText="Download latest Sketch template" %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="{{ site.baseurl }}/js/clarityUtils.js?{{ site.time | date: '%s%N' }}"></script>
+        <script src="{{ site.baseurl }}/js/clarityWeb.js?{{ site.time | date: '%s%N' }}"></script>
+        {% if include.hasNavLinks == true %}
+            <script src="{{ site.baseurl }}/js/navLinks.clarityWeb.js?{{ site.time | date: '%s%N' }}"></script>
+        {% endif %}
+
+    </div> <!-- /.main-container -->
+    </body>
+</html>

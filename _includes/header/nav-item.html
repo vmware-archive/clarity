@@ -1,0 +1,17 @@
+{% if page.layout == 'documentation' %}
+    {% assign urlFromLayout = 'documentation' %}
+{% elsif page.layout == 'pattern' %}
+    {% assign urlFromLayout = 'patterns' %}
+{% elsif page.layout == 'get-started' %}
+    {% assign urlFromLayout = 'get-started' %}
+{% elsif page.layout == 'community' %}
+    {% assign urlFromLayout = 'community' %}
+{% elsif page.layout == 'news' %}
+    {% assign urlFromLayout = 'news' %}
+{% else %}
+    {% assign urlFromLayout = '' %}
+{% endif %}
+
+<a href="{{ site.baseurl }}/{{ include.navUrl }}" class="nav-link {% if include.navUrl == urlFromLayout %}active{% endif %}">
+    <span class="nav-text">{{ include.navText }}</span>
+</a>

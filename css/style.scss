@@ -1,0 +1,20 @@
+---
+path_to_sass: '../_sass/'
+---
+
+$clrweb-altGray: #f3f5f8;
+
+@import '{{path_to_sass}}clarityHelpers.scss';
+@import '{{path_to_sass}}global.scss';
+
+@import '{{path_to_sass}}syntax-highlighting.scss';
+@import '{{path_to_sass}}header.scss';
+@import '{{path_to_sass}}footer.scss';
+@import '{{path_to_sass}}home.scss';
+@import '{{path_to_sass}}get-started.scss';
+@import '{{path_to_sass}}whats-new.scss';
+@import '{{path_to_sass}}components.scss';
+@import '{{path_to_sass}}community.scss';
+@import '{{path_to_sass}}tabs.scss';
+
+@import '{{path_to_sass}}error-pages.scss';

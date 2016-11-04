@@ -1,0 +1,55 @@
+{% assign we_need_angular = true %}
+{% if page.load-components == false %}
+    {% assign we_need_angular = false %}
+{% endif %}
+
+{% include header/header.html clarityNg=we_need_angular %}
+
+<div class="content-container">
+    <main class="content-area">
+        <section>
+            {% if page.load-components == false %}
+                {{content}}
+            {% else %}
+                <my-app>
+                    <div class="spinner components-spinner"></div>
+                </my-app>
+            {% endif %}
+        </section>
+    </main>
+    <nav class="sidenav">
+        <section class="sidenav-content">
+            {% include documentation/sidebar_links.html %}
+        </section>
+    </nav>
+</div>
+
+{% unless page.load-components == false %}
+    <script type="text/html" id="app-template">
+        {% include documentation/title.html title=page.title workstreams=page.workstreams %}
+        <article>{{ content }}</article>
+    </script>
+
+    <script type="text/javascript">
+        (function(global) {
+            var config = {
+                packages: {
+                    'app': { defaultExtension: 'js' }
+                }
+            };
+            System.config(config);
+
+        })(this);
+
+        window.addEventListener("load", function() {
+            Promise.all([
+                System.import('/app/boot'),
+                System.import('/app{{page.permalink}}')
+            ]).then(function(imports) {
+                imports[0].bootstrap(imports[1].AppComponent, imports[1].DemosModule);
+            }, console.error.bind(console));
+        });
+    </script>
+{% endunless %}
+
+{% include footer/footer.html %}

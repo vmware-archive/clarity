@@ -1,0 +1,27 @@
+{% assign get_started_path = '/get-started/index.html' %}
+{% assign nav_link_func = 'onclick="ClarityWeb.showSidebarNavLink(this)"' %}
+
+{% unless include.section == 'contribute' %}
+    {% if include.responsive %}
+        {% comment %}TODO: DRY this out...{% endcomment %}
+        <li><a class="nav-link active" {{ nav_link_func }} href="{{ site.baseurl }}{{ get_started_path }}#introduction">Clarity Design System</a></li>
+        <li><a class="nav-link" {{ nav_link_func }} href="{{ site.baseurl }}{{ get_started_path }}#howToUse">How to Use Clarity</a></li>
+        <li><a class="nav-link" {{nav_link_func}} href="{{ site.baseurl }}{{ get_started_path }}#sketchTemplate">Using the Sketch Template</a></li>
+        <li><a class="nav-link" {{nav_link_func}} href="{{ site.baseurl }}{{ get_started_path }}#seedProject">Using a Seed Project</a></li>
+        <li><a class="nav-link" {{nav_link_func}} href="{{ site.baseurl }}{{ get_started_path }}#browserSupport">Device &amp; Browser Support</a></li>
+        <li><a class="nav-link" {{ nav_link_func }} href="{{ site.baseurl }}{{ get_started_path }}#contribute_guidelines">Contributing to Clarity</a></li>
+        <li><a class="nav-link" {{nav_link_func}} href="{{ site.baseurl }}{{ get_started_path }}#reportingBugs">Reporting an Issue</a></li>
+        <li><a class="nav-link" {{nav_link_func}} href="{{ site.baseurl }}{{ get_started_path }}#attributions">Attributions</a></li>
+    {% else %}
+        <label><a class="nav-link active" {{ nav_link_func }} href="{{ site.baseurl }}{{ get_started_path }}#introduction">Clarity Design System</a></label>
+        <label class="bump-down"><a class="nav-link" {{ nav_link_func }} href="{{ site.baseurl }}{{ get_started_path }}#howToUse">How to Use Clarity</a></label>
+        <ul class="nav-list">
+            <li><a class="nav-link" {{nav_link_func}} href="{{ site.baseurl }}{{ get_started_path }}#sketchTemplate">Using the Sketch Template</a></li>
+            <li><a class="nav-link" {{nav_link_func}} href="{{ site.baseurl }}{{ get_started_path }}#seedProject">Using a Seed Project</a></li>
+            <li><a class="nav-link" {{nav_link_func}} href="{{ site.baseurl }}{{ get_started_path }}#browserSupport">Device &amp; Browser Support</a></li>
+        </ul>
+        <label class="bump-down"><a class="nav-link" {{ nav_link_func }} href="{{ site.baseurl }}{{ get_started_path }}#contribute_guidelines">Contributing to Clarity</a></label>
+        <label class="bump-down"><a class="nav-link" {{nav_link_func}} href="{{ site.baseurl }}{{ get_started_path }}#reportingBugs">Reporting an Issue</a></label>
+        <label class="bump-down"><a class="nav-link" {{nav_link_func}} href="{{ site.baseurl }}{{ get_started_path }}#attributions">Attributions</a></label>
+    {% endif %}
+{% endunless %}

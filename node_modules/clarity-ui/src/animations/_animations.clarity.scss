@@ -1,0 +1,37 @@
+@import "../utils/mixins.clarity";
+
+/**
+ * TODO: figure out if we want to include animate.css or if we prefer sticking to a few,
+ * controlled animations that we write ourselves.
+ *
+ * At the moment, we rely on the fact that each ".foo" animation has the hidden styles by default,
+ * and ".foo.in" has the displayed styles. This will still be feasible by simply wrapping
+ * animate.css, if we want.
+ */
+
+$clr-animation-duration: 0.2s;
+
+@include exports('animations.clarity') {
+    .fade {
+        opacity: 0;
+        transition: opacity $clr-animation-duration ease-in-out;
+        will-change: opacity;
+
+        &.in {
+            opacity: 1;
+        }
+    }
+
+    .fadeDown {
+        opacity: 0;
+        transform: translate(0, -25%);
+        transition: opacity $clr-animation-duration ease-in-out,
+        transform $clr-animation-duration ease-in-out;
+        will-change: opacity, transform;
+
+        &.in {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+    }
+}

@@ -1,0 +1,142 @@
+.component-workstream-bugs {
+    float: right;
+
+    .bug-ng img {
+        margin-top: 1px;
+    }
+}
+
+.component-summary {
+    font-size: 16px;
+    font-weight: 200;
+
+    &:not(.no-margin) {
+        margin-bottom: 15px;
+        margin-top: 8px;
+    }
+}
+
+.layout-documentation {
+
+    .content-area > section {
+        max-width: $clrweb-content-maxwidth;
+    }
+
+    img {
+        max-width: $clrweb-content-maxwidth;
+    }
+
+    img.img-fluid {
+        max-width: 100%;
+    }
+
+    .code-card {
+        // weirdness with how these are coming through clarity-demos
+        padding-left: 0;
+        padding-bottom: 0;
+        overflow-x: auto;
+    }
+
+    .table-component-list {
+        max-width: $clrweb-content-maxwidth;
+
+        th {
+            border-top: 0 none;
+        }
+
+        th, td {
+            text-align: center;
+            vertical-align: middle;
+
+            &:first-child, &:last-child {
+                text-align: left;
+            }
+        }
+    }
+
+    .component-legend-item {
+        font-size: 13px;
+        width: 120px;
+        display: inline-block;
+
+        span {
+            display: inline-block;
+        }
+
+        .symbol {
+            width: 18px;
+
+            & > img {
+                margin-top: -3px;
+            }
+
+        }
+
+        &:first-child img {
+            margin-top: -1px;
+        }
+
+        &:last-child img {
+            margin-top: 0;
+        }
+    }
+}
+
+.page-typography {
+    clr-typography-demo {
+        div.indent {
+            & > h4 {
+                font-size: 28px;
+                line-height: 48px;
+                font-weight: 200;
+                margin-left: -48px;
+                margin-bottom: 12px;
+            }
+
+            & div.code-card {
+                padding-left: 48px;
+                padding-top: 0;
+                padding-bottom: 36px;
+            }
+        }
+    }
+}
+
+.components-spinner {
+    position: relative;
+    left: 50%;
+    margin-top: 15%;
+    margin-left: -23px;
+}
+
+.page-stack-view {
+    h3 + .alert {
+        margin-top: 16px;
+    }
+}
+
+table.buttons-cmp-table td {
+    vertical-align: middle;
+    text-align: left;
+}
+
+.buttons-modal-gfx {
+    margin-top: 24px;
+}
+
+.buttons-modal-gfx p {
+    margin-top: 6px;
+    margin-bottom: 18px;
+}
+
+.main-container {
+    .header > .header-nav > .nav-link:last-child::after {
+        content: none;
+    }
+}
+
+@media (max-width: 991px) {
+    .layout-documentation .component-legend-item {
+        width: 108px;
+    }
+}

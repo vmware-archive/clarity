@@ -1,0 +1,10 @@
+<a href="{{ include.socialUrl }}" class="social-card social-card-{{ include.img }}">
+    <div class="card clickable">
+        <div class="card-block">
+            <div class="community-social-icon">
+                <img src="{{ site.baseurl }}{{ site.data.global.images_path }}{{ site.data.team.SOCIAL_IMAGE_PATH }}{{ include.img }}.png" alt="{{ include.img }}">
+            </div>
+            <p class="card-text">{{ include.blurb }}</p>
+        </div>
+    </div>
+</a>

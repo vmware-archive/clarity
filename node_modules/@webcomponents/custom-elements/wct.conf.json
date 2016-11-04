@@ -1,0 +1,6 @@
+{
+  "suites": ["tests/index.html"],
+  "clientOptions": {
+    "environmentImports": []
+  }
+}

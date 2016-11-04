@@ -1,0 +1,55 @@
+<hr>
+
+{% if include.breakingChangeCount > 0 %}
+<div class="alert alert-danger breaking-change-alert">
+    <div class="alert-item">
+        <span class="alert-text">This build introduces breaking change. Please read below.</span>
+    </div>
+</div>
+{% endif %}
+
+<div class="card card-block whats-new-summary">
+    {% unless include.hideSummaryBlocks %}
+    <div class="card-text summary-blocks">
+        {% include news/release_summary_block.html title="Breaking Changes" count=include.breakingChangeCount countLabel="Changes" countLabelSingular="Change" %}
+
+        {% include news/release_summary_block.html title="Bugs" count=include.bugFixCount countLabel="Bug Fixes" countLabelSingular="Bug Fix" %}
+
+        {% if include.newComponentCount > 0 %}
+            {% include news/release_summary_block.html title="New Components" count=include.newComponentCount countLabel="Components" countLabelSingular="Component" %}
+        {% endif %}
+
+        {% if include.releaseDate %}
+            {% include news/release_summary_block.html title="Released" count=false countLabel=include.releaseDate countLabelSingular=include.releaseDate %}
+        {% endif %}
+    </div>
+    <div class="card-divider"></div>
+    {% endunless %}
+
+    {% capture npmContent %}
+        <a href="https://www.npmjs.com/package/clarity-ui"
+           target="_blank">clarity-ui</a><br>
+        <a href="https://www.npmjs.com/package/clarity-angular"
+           target="_blank">clarity-angular</a>
+        {% if include.hasIcons %}
+           <a href="https://www.npmjs.com/package/clarity-icons"
+              target="_blank">clarity-icons</a>
+        {% endif %}
+    {% endcapture %}
+    {% include news/release_media_block.html logoImg="npm.svg" title="NPM Packages" content=npmContent %}
+
+    {% capture sketchLinkText %}
+        Download the {{ include.sketchTmplVersion }} Sketch Template
+    {% endcapture %}
+    {% capture sketchContent %}
+        {% include utility/sketch-tmpl-download.html linkText=sketchLinkText sketchTmplVersionNumber=include.sketchTmplVersion %}
+    {% endcapture %}
+    {% include news/release_media_block.html logoImg="sketch.svg" title="Sketch Template" content=sketchContent %}
+
+    {% if include.linkToGit %}
+        {% capture gitContent %}
+            <a href="{{ include.linkToGit }}" target="_blank">Direct link to the git change</a>
+        {% endcapture %}
+        {% include news/release_media_block.html logoImg="git.svg" title="Git Change" content=gitContent %}
+    {% endif %}
+</div>

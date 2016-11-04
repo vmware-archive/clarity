@@ -1,0 +1,248 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+@import "../color/color.clarity";
+@import "../utils/layers.clarity";
+
+// Backgrounds
+$clr-wizard-main-bgcolor: clr-getColor(1);
+$clr-wizard-sidenav-bgcolor: clr-getColor(2);
+$clr-wizard-default-space: $clr_baselineRem_1;
+$clr-wizard-sidenav-text: clr-getTextColor($clr-wizard-sidenav-bgcolor, text);
+$clr-wizard-shadow-size: 4px;
+
+.clr-wizard {
+
+   &.main-container { // this is a hack that needs to be removed after we remove wizard's style dependency on layout/nav
+     display: inline;
+     height: 0;
+   }
+
+   .modal-header {
+      position: absolute;
+      right: $clr-wizard-default-space;
+      top: $clr-wizard-default-space;
+   }
+
+   .spinner {
+      left: calc(50% + 115px);
+      position: absolute;
+      top: 40%;
+   }
+
+  .modal-dialog .modal-content .modal-body {
+      max-height: none;
+      overflow-y: hidden;
+
+      .content-area {
+         background-color: $clr-wizard-main-bgcolor;
+         padding-bottom: 0;
+         margin-bottom: baselineRem(3.5);
+         padding-top: $clr-wizard-default-space;
+
+         &:hover {
+            overflow: auto;
+         }
+
+         >.close {
+             position: absolute;
+             right: 0;
+             top: 0;
+             display: inline-block;
+             margin: $clr_baselineRem_0_5 $clr_baselineRem_0_5;
+             height: $clr_baselineRem_1_5;
+             width: $clr_baselineRem_1_5;
+         }
+
+         section {
+            height: 100%;
+         }
+      }
+   }
+
+   .content-container {
+      padding-top: 0;
+      background-color: $clr-wizard-main-bgcolor;
+      height: 75vh;
+   }
+
+   .clr-nav-content {
+      height: 100%;
+      padding-bottom: $clr-wizard-default-space;
+
+      &[aria-hidden="false"] {
+         display: flex;
+         flex-direction: column;
+
+         .content-wrapper{
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: column;
+         }
+      }
+   }
+
+   .content-wrapper {
+      margin-top: $clr-wizard-default-space;
+      padding-bottom: $clr-wizard-default-space;
+
+      form {
+         padding-top: 0;
+      }
+   }
+
+   .text-light, .wizard-title {
+      font-size: rem(22/$clr-rem-denominator);
+      color: $clr-wizard-sidenav-text;
+      line-height: $clr-wizard-default-space;
+   }
+
+   .no-left-padding {
+      padding-left: 0;
+   }
+
+   .modal-content {
+      padding: 1px;
+   }
+
+   .modal-footer {
+      position: absolute;
+      bottom: $clr-wizard-default-space;
+      right: $clr-wizard-default-space;
+   }
+
+   .sidenav {
+      display: block;
+      padding: $clr-wizard-default-space;
+      background-color: $clr-wizard-sidenav-bgcolor;
+      width: 34%;
+      max-width: 34%;
+      height: auto;
+      overflow: hidden;
+
+      &:hover {
+          overflow: auto;
+      }
+   }
+
+   .nav-panel {
+      min-width: baselineRem(10);
+   }
+
+   .nav.navList {
+      display: flex;
+      flex-direction: column;
+      box-shadow: none;
+      align-items: flex-start;
+      font-size: rem(1);
+      color: $clr-wizard-sidenav-text;
+      padding-top: $clr_baselineRem_1_5;
+      padding-left: 0;
+      counter-reset: a;
+      white-space: inherit;
+      height: auto;
+   }
+
+   .clr-nav-link {
+      display: block;
+      padding-left: $clr_baselineRem_1_75;
+      position: relative;
+      box-shadow: $clr-wizard-shadow-size 0 0 clr-getColor(light) inset;
+      max-width: 100%;
+
+      &.active {
+         font-weight: 500;
+
+         a {
+            font-weight: 500;
+            box-shadow: none;
+         }
+      }
+
+      &.disabled {
+         pointer-events: none;
+         opacity: 0.4;
+         cursor: not-allowed;
+
+         a {
+            pointer-events: none;
+            opacity: 0.4;
+            cursor: not-allowed;
+         }
+      }
+
+      &.complete {
+         box-shadow: $clr-wizard-shadow-size 0 0 $clr-green inset;
+         transition: box-shadow 0.2s ease-in;
+      }
+
+      &.skipped {
+         display: none;
+      }
+
+      li {
+         list-style: none;
+         flex: 1;
+      }
+
+      a {
+         &:before {
+            content: counter(a); /* Use the counter as content */
+            counter-increment: a; /* Increment the counter by 1 */
+            font-size: rem(18/$clr-rem-denominator);
+            position: absolute;
+            left: 20px;
+         }
+      }
+   }
+
+   .sidenav .nav-link {
+      $clr-toc-fontsize: clr-getTypePropertyValueForDomElement(toc_text, font-size);
+      $navlink-padding-left-right: 3px;
+      $navlink-padding-top-bottom: ($clr-subnav-height - ($clr-toc-fontsize + 2)) / 2;
+
+      display: inline-block;
+      color: $clr-wizard-sidenav-text;
+      line-height: $clr-toc-fontsize + 2;
+      padding: $navlink-padding-top-bottom $navlink-padding-left-right;
+
+      &:before {
+         font-size: rem(18/$clr-rem-denominator);
+      }
+
+      &:hover {
+         box-shadow: none;
+      }
+   }
+
+  &.wizard-md {
+    .content-container {
+      max-height: baselineRem(21);
+    }
+    .nav-panel {
+      min-width: baselineRem(9);
+      max-width: baselineRem(10);
+    }
+  }
+
+  &.wizard-lg {
+    .content-container {
+      max-height: baselineRem(30);
+    }
+    .nav-panel {
+      min-width: baselineRem(10);
+      max-width: baselineRem(12);
+    }
+  }
+
+  &.wizard-xl {
+    .content-container {
+      max-height: 90vh;
+    }
+    .nav-panel {
+      min-width: baselineRem(10);
+      max-width: baselineRem(13);
+    }
+  }
+
+}

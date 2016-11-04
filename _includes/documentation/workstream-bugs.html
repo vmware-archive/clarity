@@ -1,0 +1,28 @@
+{% assign bugs_array = include.workstreams | split: "|" %}
+{% assign ws_array = "ux|ui|core|ng" | split: "|" %}
+
+<div class="component-workstream-bugs">
+    {% for component in site.data.componentlist.list %}
+        {% if page.permalink == component.url %}
+            {% for ws in ws_array %}
+                {% assign ws_status = component[ws] %}
+                {% assign ws_status_msg = '' %}
+                {% assign ws_imgsrc = '' %}
+
+                {% if ws_status > 19 %}
+                    {% capture ws_status_msg %}Clarity {{ ws | upcase }}{% endcapture %}
+                    {% capture ws_imgsrc %}{{ws}}.png{% endcapture %}
+                {% elsif ws_status > 4 %}
+                    {% capture ws_status_msg %}Clarity {{ ws | upcase }} in progress{% endcapture %}
+                    {% capture ws_imgsrc %}{{ws}}_off.png{% endcapture %}
+                {% endif %}
+
+                {% if ws_imgsrc != '' %}
+                    <span class="bug bug-{{ ws }}">
+                        <img src="{{ site.baseurl }}{{site.data.global.images_path}}bugs/{{ ws_imgsrc }}" alt="{{ ws_status_msg }}" title="{{ ws_status_msg }}">
+                    </span>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+</div>

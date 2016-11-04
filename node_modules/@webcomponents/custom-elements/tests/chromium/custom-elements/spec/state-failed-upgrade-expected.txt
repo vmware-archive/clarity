@@ -1,0 +1,6 @@
+CONSOLE ERROR: line 21: Uncaught Error
+CONSOLE ERROR: line 2445: Uncaught Error: assert_unreached: connectedCallback should not be invoked if constructor threw Reached unreachable code
+This is a testharness.js-based test.
+PASS Custom Elements: Custom Element State "Failed" in Upgrades 
+Harness: the test ran to completion.
+

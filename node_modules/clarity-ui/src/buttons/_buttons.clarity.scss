@@ -1,0 +1,273 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../color/color.clarity";
+@import "../utils/helpers.clarity";
+@import "../typography/typography.clarity";
+
+$clr-global-button-properties-map: (
+    default: (
+        background-color: transparent,
+        border-color: $action-blues-dark-midtone,
+        color: $action-blues-dark-midtone,
+        hover-background-color: $action-blues-lightest,
+        hover-color: $action-blues-dark,
+        active-box-shadow-color: $action-blues-light-midtone,
+        active-box-shadow-width-top: 1px,
+        disabled-color: $gray-darker,
+        disabled-background-color: transparent,
+        disabled-border-color: $gray-dark
+    ),
+    primary: (
+        background-color: $action-blues-dark-midtone,
+        border-color: $action-blues-dark-midtone,
+        color: $clr-white,
+        hover-background-color: $action-blues-dark,
+        hover-color: $clr-white,
+        active-box-shadow-color: $action-blues-darkest,
+        active-box-shadow-width-top: 2px,
+        disabled-color: $gray-darker,
+        disabled-background-color: $gray-light-midtone,
+        disabled-border-color: $gray-light-midtone
+    ),
+    success: (
+        background-color: $greens-light-midtone,
+        border-color: $greens-light-midtone,
+        color: $clr-white,
+        hover-background-color: $greens-dark,
+        hover-color: $clr-white,
+        active-box-shadow-color: $greens-darker,
+        active-box-shadow-width-top: 2px,
+        disabled-color: $gray-darker,
+        disabled-background-color: $gray-light-midtone,
+        disabled-border-color: $gray-light-midtone
+    ),
+    danger: (
+        background-color: $reds-light-midtone,
+        border-color: $reds-light-midtone,
+        color: $clr-white,
+        hover-background-color: $reds-dark-midtone,
+        hover-color: $clr-white,
+        active-box-shadow-color: $reds-dark,
+        active-box-shadow-width-top: 2px,
+        disabled-color: $gray-darker,
+        disabled-background-color: $gray-light-midtone,
+        disabled-border-color: $gray-light-midtone
+    ),
+    outline-success: (
+        background-color: transparent,
+        border-color: $greens-dark,
+        color: $greens-dark-midtone,
+        hover-background-color: $greens-lightest,
+        hover-color: $greens-darker,
+        active-box-shadow-color: $clr-green,
+        active-box-shadow-width-top: 1px,
+        disabled-color: $gray-darker,
+        disabled-background-color: transparent,
+        disabled-border-color: $gray-dark
+    ),
+    outline-danger: (
+        background-color: transparent,
+        border-color: $reds-dark-midtone,
+        color: $reds-light-midtone,
+        hover-background-color: $reds-lighter,
+        hover-color: $reds-dark,
+        active-box-shadow-color: $reds-light,
+        active-box-shadow-width-top: 1px,
+        disabled-color: $gray-darker,
+        disabled-background-color: transparent,
+        disabled-border-color: $gray-dark
+    ),
+    link: (
+        background-color: transparent,
+        border-color: transparent,
+        color: $action-blues-dark-midtone,
+        hover-background-color: transparent,
+        hover-color: $action-blues-dark,
+        active-box-shadow-color: transparent,
+        active-box-shadow-width-top: 0,
+        disabled-color: $gray-darker,
+        disabled-background-color: transparent,
+        disabled-border-color: transparent
+    ),
+    inverse: (
+        background-color: transparent,
+        border-color: $clr-white,
+        color: $clr-white,
+        hover-background-color: rgba($clr-white,0.15),
+        hover-color: $clr-white,
+        active-box-shadow-color: rgba($clr-black,0.25),
+        active-box-shadow-width-top: 1px,
+        disabled-color: $clr-white,
+        disabled-background-color: transparent,
+        disabled-border-color: $clr-white
+    )
+);
+
+//Button Variables
+$clr-button-height: $clr_baselineRem_1_5;
+$clr-button-height-sm: $clr_baselineRem_1;
+$clr-button-padding: 0 $clr_baselineRem_0_5;
+
+//Call to Action & Standard Button Appearance
+$clr-button-appearance-map: (
+    standard: (
+        line-height: $clr-button-height-sm - 1,
+        letter-spacing: 0.073em,
+        font-size: rem(11/$clr-rem-denominator),
+        font-weight: 400,
+        height: $clr-button-height-sm,
+        padding: $clr-button-padding
+    ),
+    form: (
+        line-height: $clr-button-height,
+        letter-spacing: 0.12em,
+        font-size: rem(12/$clr-rem-denominator),
+        font-weight: 400,
+        height: $clr-button-height,
+        padding: $clr-button-padding
+    )
+);
+
+@mixin populateButtonProperties($button-type: default, $button-global-map: $clr-global-button-properties-map) {
+    $button-property-map: map-get($button-global-map, $button-type);
+    border-color: map-get($button-property-map,border-color);
+    background-color: map-get($button-property-map,background-color);
+    color: map-get($button-property-map,color);
+
+    //To override the visited state of anchor links styled as buttons
+    &:visited {
+        color: map-get($button-property-map,color);
+    }
+
+    &:hover {
+        background-color: map-get($button-property-map,hover-background-color);
+        color: map-get($button-property-map,hover-color);
+    }
+
+    &:active {
+        box-shadow: 0 map-get($button-property-map,active-box-shadow-width-top) 0 0 map-get($button-property-map,active-box-shadow-color) inset;
+    }
+
+    &.disabled,
+    &:disabled {
+        color: map-get($button-property-map,disabled-color);
+        cursor: not-allowed;
+        background-color: map-get($button-property-map,disabled-background-color);
+        border-color: map-get($button-property-map,disabled-border-color);
+        opacity: 0.4;
+    }
+}
+
+@include exports('buttons.clarity') {
+
+    %btn-nowrap {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    %btn-min-max-widths {
+        min-width: baselineRem(3);
+        max-width: baselineRem(15);
+    }
+
+    %btn-text-properties {
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        vertical-align: middle;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    %btn-default-border-styles {
+        border-radius: $clr-default-borderradius;
+        border-style: solid;
+        border-width: 1px;
+    }
+
+    //Button Default appearance
+    %clr-button {
+        cursor: pointer;
+        display: inline-block;
+        margin: $clr-button-vertical-margin $clr-button-horizontal-margin $clr-button-vertical-margin 0;
+
+        // Overrides a Fix for IOS in BS4 _normalize.scss (~ln 330)
+        // `!important` is to override specificity in this instance
+        // But we wanted to preserve the normalize fix in non-Clarity buttons for iOS
+        -webkit-appearance: none !important;
+    }
+
+    //Button Mixins
+    @mixin generateButton() {
+        @extend %clr-button;
+        @extend %btn-default-border-styles;
+        @extend %btn-min-max-widths;
+        @extend %btn-nowrap;
+        @extend %btn-text-properties;
+    }
+
+    .btn {
+        @include generateButton();
+        @include clr-getStylesFromMap($clr-button-appearance-map,form);
+        @include populateButtonProperties(default);
+
+        //.btn-outline-<state> is the new BS4 naming convention
+        //TODO: we support both the previous one and the new one but we will deprecate the old ones from the example in 0.5.0
+        &.btn-secondary,
+        &.btn-info,
+        &.btn-outline,
+        &.btn-primary-outline,
+        &.btn-secondary-outline,
+        &.btn-outline-primary,
+        &.btn-outline-secondary,
+        &.btn-info-outline {
+            @include populateButtonProperties(default);
+        }
+
+        &.btn-primary {
+            @include populateButtonProperties(primary);
+        }
+
+        &.btn-success {
+            @include populateButtonProperties(success);
+        }
+
+        &.btn-danger,
+        &.btn-warning {
+            @include populateButtonProperties(danger);
+        }
+
+        &.btn-success-outline,
+        &.btn-outline-success {
+            @include populateButtonProperties(outline-success);
+        }
+
+        &.btn-danger-outline,
+        &.btn-outline-danger,
+        &.btn-warning-outline,
+        &.btn-outline-warning {
+            @include populateButtonProperties(outline-danger);
+        }
+
+        &.btn-link {
+            @include populateButtonProperties(link);
+        }
+
+        &.btn-inverse {
+            @include populateButtonProperties(inverse);
+        }
+
+        &.btn-sm {
+            @include clr-getStylesFromMap($clr-button-appearance-map,standard);
+        }
+
+        &.btn-block {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+}

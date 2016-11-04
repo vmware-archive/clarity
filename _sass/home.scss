@@ -1,0 +1,388 @@
+body.layout-home {
+    background-color: #fafafa;
+
+    .main-container {
+        height: auto;
+
+        header {
+            background: none !important; // clarity isn't letting me override this!
+            text-align: center;
+            display: block;
+            padding: 0;
+            position: relative;
+
+            .divider {
+                display: none;
+            }
+
+            .branding {
+                text-align: left;
+                display: block;
+                position: absolute;
+            }
+
+            .header-nav {
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        .content-area {
+            padding: 0;
+        }
+    }
+
+    $clrweb-home-sectionPadding: baselineRem(5);
+    section {
+        padding-top: $clrweb-home-sectionPadding;
+        padding-bottom: $clrweb-home-sectionPadding;
+
+        &.home-hero {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        &.home-cards, &.home-process {
+            padding-top: 0;
+        }
+    }
+}
+
+.home-hero {
+    @include clarityHeaderBackground;
+    height: baselineRem(24);
+    color: #fff;
+
+    .home-hero-content {
+        width: 90%;
+        max-width: 769px;
+        text-align: center;
+        margin: 0 auto;
+
+        & > p {
+            font-size: 18px;
+        }
+    }
+
+    h1 {
+        color: #fff;
+        font-weight: 100;
+        line-height: 1.5em;
+        font-size: baselineRem(1.5);
+        margin-bottom: baselineRem(1);
+        margin-top: baselineRem(2);
+    }
+
+    p {
+        font-weight: 200;
+        font-size: rem(0.875);
+        line-height: baselineRem(1);
+        margin: 0;
+        max-width: 759px;
+    }
+
+    .home-hero-btn {
+        margin: baselineRem(2) 0;
+    }
+
+    .btn-primary {
+        width: baselineRem(12);
+        height: baselineRem(2.5);
+        line-height: baselineRem(2.5);
+        margin: 0;
+        font-weight: 400;
+    }
+
+    .btn-secondary {
+        display: none;
+        color: #fafafa !important;
+        border-color: #fafafa;
+
+        &:hover {
+            color: #004a70 !important;
+            border-color: #e1f1f6;
+        }
+    }
+}
+
+.home-cards {
+    width: 100%;
+    padding-left: baselineRem(3);
+    padding-right: baselineRem(3);
+    max-width: 1152px;
+    margin: 0 auto;
+
+    .home-cards-container {
+        margin-left: baselineRem(-0.5);
+        margin-top: baselineRem(-6);
+    }
+
+    .home-card-wrapper {
+        width: 25%;
+        min-width: baselineRem(10.5);
+        padding-left: baselineRem(0.5);
+        float: left;
+        text-align: right;
+    }
+
+    .home-card {
+        width: baselineRem(10);
+        height: baselineRem(11);
+        padding: baselineRem(1);
+        background: white;
+        border-radius: 3px;
+        border: 1px solid #eee;
+        text-align: left;
+
+        @include clarityWebBoxShadow;
+    }
+
+    .home-card-title {
+        font-size: rem(2);
+        line-height: baselineRem(2);
+        vertical-align: middle;
+        margin: baselineRem(0.5) 0;
+        font-weight: 200;
+        text-align: center;
+    }
+
+    .home-card-bug {
+        text-align: center;
+    }
+
+    p {
+        margin: baselineRem(0.5) 0 baselineRem(1);
+        font-size: rem(0.875);
+        line-height: baselineRem(1);
+    }
+}
+
+.home-process {
+    width: 100%;
+    padding-left: baselineRem(3);
+    padding-right: baselineRem(3);
+    max-width: 1104px;
+    margin: 0 auto;
+
+    h2 {
+        margin-top: 0;
+        text-align: center;
+
+        &::after {
+            display: block;
+            content: ' ';
+            height: 2px;
+            margin: baselineRem(0.5) auto baselineRem(2);
+            background: #00202c;
+            width: baselineRem(3);
+        }
+    }
+}
+
+.home-process, .home-featured-products-container {
+    width: 100%;
+    padding-left: baselineRem(3);
+    padding-right: baselineRem(3);
+    max-width: 1104px;
+    margin: 0 auto;
+
+    h2 {
+        margin-top: 0;
+        text-align: center;
+
+        &::after {
+            display: block;
+            content: ' ';
+            height: 2px;
+            margin: baselineRem(0.5) auto baselineRem(2);
+            background: #00202c;
+            width: baselineRem(3);
+        }
+    }
+}
+
+.home-process-block {
+    height: baselineRem(7);
+
+    .image {
+        min-width: baselineRem(8);
+        padding-top: baselineRem(0.5);
+    }
+
+    h4 {
+        margin-top: 0;
+        margin-bottom: baselineRem(0.5);
+        line-height: baselineRem(2);
+        vertical-align: middle;
+        font-size: rem(1);
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    p {
+        margin-bottom: baselineRem(0.5);
+        margin-top: 0;
+    }
+}
+
+.home-featured-products {
+    background: #fff;
+
+    .product-list {
+        font-size: rem(1);
+        line-height: baselineRem(1.5);
+        margin-top: baselineRem(-0.75);
+        text-align: center;
+
+        a {
+            color: #50266B;
+        }
+    }
+}
+
+@media (max-width: 1144px) {
+
+    body.layout-home section {
+        padding-top: baselineRem(1);
+        padding-bottom: baselineRem(1);
+
+        &.home-featured-products {
+            padding-top: baselineRem(3);
+            padding-bottom: baselineRem(3);
+        }
+    }
+
+    body.layout-home section.home-hero {
+        height: auto;
+    }
+
+    body.layout-home section.home-cards, .home-hero .home-hero-content {
+        padding-bottom: baselineRem(2);
+    }
+
+    .home-cards .home-cards-container {
+        margin: 0;
+    }
+
+    .home-cards .home-card-wrapper {
+        width: 100%;
+        min-width: auto;
+        padding: 0;
+        float: none;
+        text-align: left;
+    }
+
+    .home-cards {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        max-width: none;
+        margin: 0 auto;
+
+        p {
+            max-width: 620px;
+            margin: 0 auto;
+        }
+    }
+
+    .home-cards {
+        .home-card {
+            width: 100%;
+            height: auto;
+            padding: baselineRem(2) baselineRem(1);
+            background: #fff;
+            border-radius: 0;
+            border: 0 none;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            box-shadow: none;
+        }
+
+        .home-card-2, .home-card-4 {
+            background: $clrweb-altGray;
+        }
+    }
+
+    .home-process {
+        padding-left: baselineRem(1);
+        padding-right: baselineRem(1);
+    }
+
+    .home-featured-products-container {
+        padding-left: baselineRem(1);
+        padding-right: baselineRem(1);
+    }
+
+    .home-process-block {
+        padding-bottom: baselineRem(2);
+        height: auto;
+        text-align: center;
+        display: block;
+        margin: 0;
+
+        &:last-child {
+            padding-bottom: 24px;
+        }
+
+        .image {
+            width: 100%;
+            min-width: auto;
+            padding-top: 0;
+            float: none;
+            width: auto;
+            display: inline-block;
+        }
+
+        .body {
+            display: block;
+            vertical-align: top;
+            height: auto;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        h4 {
+            margin-top: baselineRem(0.5);
+            margin-bottom: 0;
+        }
+
+        p {
+            max-width: baselineRem(22.5);
+            margin: 0 auto;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .home-hero {
+        .home-hero-btn {
+            margin: baselineRem(1) 0 baselineRem(0.75);
+        }
+
+        .btn {
+            display: block;
+            $btn_smallHeight: baselineRem(1.75);
+            width: baselineRem(7);
+            height: $btn_smallHeight;
+            line-height: $btn_smallHeight;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .btn-secondary {
+            margin-top: baselineRem(0.75);
+        }
+    }
+}
+
+@media (min-width: 577px) {
+    .layout-home {
+        .home-card-3 img {
+            margin-top: 3px;
+        }
+
+        .home-card-4 img {
+            margin-top: 1px;
+        }
+    }
+}

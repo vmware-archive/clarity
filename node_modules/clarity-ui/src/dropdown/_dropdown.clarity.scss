@@ -1,0 +1,266 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+@import "../utils/layers.clarity";
+@import "../color/color.clarity";
+@import "../typography/typography.clarity";
+
+$dropdown-white: clr-getColor(lightest);
+
+%dropdown-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+%dropdown-toggle-arrow {
+    content: '\f107';
+    font-family: "FontAwesome";
+}
+
+@include exports('dropdown.clarity') {
+    .dropdown {
+        position: relative;
+        display: inline-block;
+
+        .dropdown-toggle {
+            position: relative;
+            margin: 0;
+            white-space: nowrap;
+            cursor: pointer;
+
+            //No margins on any immediate dropdown-toggle children
+            & > * {
+                margin: 0;
+            }
+        }
+
+
+        //Dropdown Arrow
+        .dropdown-toggle {
+            &::after {
+                @extend %dropdown-toggle-arrow;
+            }
+        }
+
+        //Buttons, Font Awesome icons and Anchor Links
+        //get dropdown arrow with position: relative
+        //Font awesome icons have the :after element not used so
+        //we can use that for the dropdown arrow
+        $toggle-afterMargin: $clr_baselineRem_0_25;
+        .dropdown-toggle {
+            &.btn::after, &.fa::after {
+                margin-left: $toggle-afterMargin;
+            }
+
+            //For some strange reason, the pseudo element on font awesome
+            //icons renders outside the .fa container. Need to
+            //mark display: inline for making it appear inside the container
+            &.fa {
+                display: inline;
+            }
+        }
+
+        a.dropdown-toggle {
+            &::after {
+                margin-left: $toggle-afterMargin;
+            }
+
+            &:hover::after,&:active::after {
+                //To make sure that arrow isn't underlined when you hover over the
+                //link. http://stackoverflow.com/a/20405045/3538394
+                display: inline-block;
+                text-decoration: none;
+            }
+        }
+
+        //Dropdown arrow next to Clarity icons needs absolute positioning
+        //We also need to add a margin-right to the icon so that the menu is
+        //aligned with the dropdown arrow
+        .dropdown-toggle {
+            &.clr-icon, &.alert-icon {
+                position: relative;
+                margin-right: $clr_baselineRem_0_75;
+            }
+
+            &.clr-icon:after, &.alert-icon:after {
+                position: absolute;
+                top: 50%;
+                left: calc(100% + 6px); //I have to hard code 6px over here. baselineRem doesnt work in calc
+                transform: translateY(-50%);
+            }
+        }
+
+        //Dropdown Menu
+        .dropdown-menu > * {
+            display: block;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 2px;
+            display: flex;
+            flex-direction: column;
+            background: $dropdown-white;
+            padding: $clr_baselineRem_0_75 0;
+            border: 1px solid clr-getColor(light-midtone);
+            box-shadow: 0 1px 3px rgba(clr-getColor(dark), 0.25);
+            min-width: baselineRem(5);
+            max-width: baselineRem(15);
+            border-radius: $clr-default-borderradius;
+            visibility: hidden;
+            transition: visibility 0.2s ease-in;
+            z-index: map-get($clr-layers, dropdown-menu);
+
+            .dropdown-header {
+                @include clr-getTypePropertiesForDomElement(dropdown_header, (font-size, font-weight, letter-spacing));
+
+                padding: 0 $clr_baselineRem_0_5;
+                margin: 0;
+                color: clr-getColor(darkest);
+
+                @extend %dropdown-content;
+            }
+
+            .dropdown-item {
+                @include clr-getTypePropertiesForDomElement(dropdown_text, (color, font-size, letter-spacing));
+                $adjusted_lineHeight: clr-getTypePropertyValueForDomElement(dropdown_text, line-height) - 1;
+
+                background: transparent;
+                border: 0;
+                color: clr-getTextColor();
+                cursor: pointer;
+                display: block;
+                line-height: $adjusted_lineHeight;
+                margin: 0;
+                padding: 1px $clr_baselineRem_1 0;
+                width: 100%;
+
+                @extend %dropdown-content;
+
+                &:hover,
+                &:focus {
+                    text-decoration: none;
+                    background-color: $gray-light;
+                }
+
+                &.active {
+                    background: $clr-selection-color;
+                    color: $clr-black;
+                }
+
+                &:focus {
+                    outline: 0;
+                }
+
+                &.disabled {
+                    cursor: not-allowed;
+                    opacity: 0.4;
+                    user-select: none;
+                }
+
+                &.disabled:hover {
+                    background: none;
+                }
+
+                &.disabled:active, &.disabled:focus {
+                    background: none;
+                    box-shadow: none;
+                }
+            }
+
+            .dropdown-divider {
+                border-bottom: 1px solid clr-getColor(light);
+                margin: $clr_baselineRem_0_75 0;
+            }
+        }
+
+        &.open .dropdown-menu {
+            visibility: visible;
+        }
+
+        &.bottom-left .dropdown-menu,&.bottom-right .dropdown-menu {
+            top: 100%;
+            bottom: auto;
+            margin: 2px 0 0 0;
+        }
+
+        &.bottom-left .dropdown-menu {
+            left: 0;
+            right: auto;
+        }
+
+        &.bottom-right .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+
+        &.top-left .dropdown-menu, &.top-right .dropdown-menu {
+            top: auto;
+            bottom: 100%;
+            margin: 0 0 2px 0;
+        }
+
+        &.top-left .dropdown-menu {
+            left: 0;
+            right: auto;
+        }
+
+        &.top-right .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+
+        &.left-top .dropdown-menu,&.left-bottom .dropdown-menu {
+            right: 100%;
+            left: auto;
+            margin: 0 2px 0 0;
+        }
+
+        &.left-bottom .dropdown-menu {
+            top: 0;
+            bottom: auto;
+        }
+
+        &.left-top .dropdown-menu {
+            bottom: 0;
+            top: auto;
+        }
+
+        &.right-top .dropdown-menu,&.right-bottom .dropdown-menu {
+            left: 100%;
+            right: auto;
+            margin: 0 0 0 2px;
+        }
+
+        &.right-bottom .dropdown-menu {
+            top: 0;
+            bottom: auto;
+        }
+
+        &.right-top .dropdown-menu {
+            bottom: 0;
+            top: auto;
+        }
+
+        @mixin lineHeightFixForIE {
+            // full line-height pushes button text down...
+            .dropdown-toggle {
+                &.btn::after, &.fa::after {
+                    line-height: $clr_baselineRem_1_5 - 1;
+                }
+            }
+        }
+
+        @include fixForIE10AndUp() {
+            @include lineHeightFixForIE;
+        }
+
+        @include fixForMsEdge() {
+            @include lineHeightFixForIE;
+        }
+    }
+}

@@ -1,0 +1,234 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../color/color.clarity";
+@import "../utils/helpers.clarity";
+@import "../typography/typography.clarity";
+
+$padding-top-bottom: $clr_baselineRem_0_125;
+$padding-left-right: $clr_baselineRem_0_5;
+
+$label-colors: (
+    gray: (
+        background: $gray-dark,
+        font: $gray-lightest
+    ),
+    purple: (
+        background: $action-purples-light-midtone,
+        font: $gray-lightest
+    ),
+    blue: (
+        background: $action-blues-dark,
+        font: $gray-lightest
+    ),
+    orange: (
+        background: $yellows-light-midtone,
+        font: black
+    ),
+    light-blue: (
+        background: $action-blues-lighter,
+        font: black
+    )
+);
+
+@mixin generateLabelStyles($color:gray,$alias:1) {
+    $color-map: map-get($label-colors,$color);
+    &.label-#{$color},&.label-#{$alias} {
+        border: 1px solid map-get($color-map,background);
+    }
+
+    &.clickable.label-#{$color} {
+        &:hover, &:active {
+            text-decoration: none;
+            background: $gray-light;
+        }
+
+        &:active {
+            box-shadow: 0 1px 0 0 map-get($color-map,background) inset;
+            transform: translateY(0.5px);
+        }
+    }
+
+    &.label-#{$color} > .badge {
+        background: map-get($color-map,background);
+        color: map-get($color-map,font)
+    }
+};
+
+@mixin generateBadgeStyles($color:gray,$alias:1) {
+    $color-map: map-get($label-colors,$color);
+    &.badge-#{$color},&.badge-#{$alias} {
+        background: map-get($color-map,background);
+        color: map-get($color-map,font)
+    }
+};
+
+$label-status: (
+    info: (
+        background: $action-blues-lightest,
+        font: $action-blues-dark,
+        border: $action-blues-light
+    ),
+    success: (
+        background: $greens-lightest,
+        font: $greens-dark,
+        border: $greens-light
+    ),
+    warning: (
+        background: $yellows-lighter,
+        font: $gray-darkest,
+        border: $yellows-light
+    ),
+    danger: (
+        background: $reds-lighter,
+        font: $reds-dark,
+        border: $reds-light
+    )
+);
+
+@mixin generateStatusLabelStyles($status:info) {
+    $status-map: map-get($label-status,$status);
+    &.label-#{$status} {
+        background: map-get($status-map,background);
+        color: map-get($status-map,font);
+        border: 1px solid map-get($status-map,border);
+    }
+};
+
+$badge-status: (
+    info: (
+        background: $action-blues-dark-midtone,
+        font: white
+    ),
+    success: (
+        background: $greens-light-midtone,
+        font: black
+    ),
+    warning: (
+        background: $yellows-light,
+        font: black
+    ),
+    danger: (
+        background: $reds-dark-midtone,
+        font: white
+    )
+);
+
+@mixin generateStatusBadgeStyles($status:info) {
+    $status-map: map-get($badge-status,$status);
+    &.badge-#{$status} {
+        background: map-get($status-map,background);
+        color: map-get($status-map,font)
+    }
+}
+
+@include exports('labels.clarity') {
+    //NOTE: Had to use inline-flex, reset line-height to normal, and had to use change a few values
+    //instead of using our baselineRem function. This was done to achieve the desired look
+    //and to align this with our vertical baseline. Not sure why but aligning inline-blocks within inline-blocks
+    //is a bit tricky. I initially used display: inline-block but I wasn't able to align the labels properly.
+    //TODO: I still am unable to align the labels center of the baseline but have managed to aligned it to the
+    //bottom. There are no margins which are influencing this. Need to figure out whats the issue.
+    .label, a.label {
+        //default
+
+        @include clr-getTypePropertiesForDomElement(label_text, (font-size, font-weight, letter-spacing));
+
+        // line-height needed to be adjusted to force center alignment
+        line-height: 11px;
+
+        $color-map: map-get($label-colors, gray);
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 $padding-left-right;
+        border-radius: $clr_baselineRem_0_5;
+        border: 1px solid $gray-dark;
+        height: baselineRem(0.875);
+        margin: 0 $clr_baselineRem_0_25 0 0;
+        white-space: nowrap;
+        color: clr-getTextColor();
+
+        &:visited {
+            color: clr-getTextColor();
+        }
+
+        &:focus, &:hover, &:active {
+            text-decoration: none;
+        }
+
+        &.clickable {
+            &:hover, &:active {
+                background: $gray-light;
+            }
+
+            &:active {
+                box-shadow: 0 1px 0 0 map-get($color-map, background) inset;
+                transform: translateY(0.5px);
+            }
+        }
+
+        @include generateLabelStyles(gray, 1);
+        @include generateLabelStyles(purple, 2);
+        @include generateLabelStyles(blue, 3);
+        @include generateLabelStyles(orange, 4);
+        @include generateLabelStyles(light-blue, 5);
+
+        @include generateStatusLabelStyles(info);
+        @include generateStatusLabelStyles(success);
+        @include generateStatusLabelStyles(warning);
+        @include generateStatusLabelStyles(danger);
+
+        & > .badge {
+            margin: 0 baselineRem(-0.375) 0 $clr_baselineRem_0_25; //-0.375 is -9px. 12px initial label padding plus a negative margin of 9
+        }
+    }
+
+    //NOTE: Had to use inline-flex, reset line-height to normal, and had to use change a few values
+    //instead of using our baselineRem function. This was done to achieve the desired look
+    //and to align this with our vertical baseline. Not sure why but aligning inline-blocks within inline-blocks
+    //is a bit tricky. I initially used display: inline-block but I wasn't able to align the badges properly.
+    //TODO: I still am unable to align the badges center of the baseline but have managed to aligned it to the
+    //bottom. There are no margins which are influencing this. Need to figure out whats the issue.
+    .badge {
+        $color-map: map-get($label-colors, gray);
+        $equiDimensions: rem(15/$clr-rem-denominator);
+        $rem_10: rem(10/$clr-rem-denominator);
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: $equiDimensions;
+        background: map-get($color-map, background);
+        height: $equiDimensions;
+        line-height: normal;
+        border-radius: $rem_10;
+        font-size: $rem_10;
+        padding: 0 4px;
+        margin-right: $clr_baselineRem_0_25;
+        white-space: nowrap;
+        text-align: center;
+        color: $gray-lightest;
+
+        &:visited {
+            color: $gray-lightest;
+        }
+
+        @include generateBadgeStyles(gray, 1);
+        @include generateBadgeStyles(purple, 2);
+        @include generateBadgeStyles(blue, 3);
+        @include generateBadgeStyles(orange, 4);
+        @include generateBadgeStyles(light-blue, 5);
+
+        @include generateStatusBadgeStyles(info);
+        @include generateStatusBadgeStyles(success);
+        @include generateStatusBadgeStyles(danger);
+        @include generateStatusBadgeStyles(warning);
+    }
+
+    @include fixForFirefox() {
+        .label, a.label {
+            // properly aligns labels in firefox...
+            vertical-align: bottom;
+        }
+    }
+}

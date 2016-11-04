@@ -1,0 +1,55 @@
+import {
+    Component,
+    Directive,
+    EventEmitter,
+    Output
+} from "@angular/core";
+
+@Component({
+    selector: "clr-stack-view",
+    template: `
+        <ng-content select="clr-stack-header"></ng-content>
+        <dl class="stack-view"><ng-content></ng-content></dl>
+    `,
+    // Custom elements are inline by default.
+    styles: [`
+        :host { display: block; }
+    `]
+})
+export class StackView {
+
+    /**
+     * Undocumented experimental feature: inline editing.
+     */
+    editable: boolean = false;
+
+    @Output("clrStackSave") save: EventEmitter<void> = new EventEmitter<void>(false);
+
+    private _editMode: boolean = false;
+
+    editingChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
+
+    get editing(): boolean {
+        return this.editable && this._editMode;
+    }
+
+    set editing (value: boolean) {
+        if (this.editable) {
+            this._editMode = value;
+            this.editingChange.emit(value);
+            if (!value) {
+                this.save.emit(null);
+            }
+        }
+    }
+    /**
+     * End of undocumented experimental feature.
+     */
+}
+
+@Directive({selector: "clr-stack-label, clr-stack-content"})
+export class StackViewCustomTags {
+    // No behavior
+    // The only purpose is to "declare" the tag in Angular2
+}
+

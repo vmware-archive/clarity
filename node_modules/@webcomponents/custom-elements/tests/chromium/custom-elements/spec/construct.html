@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<title>Custom Elements: Constructor Tests</title>
+<link rel="help" href="https://html.spec.whatwg.org/multipage/dom.html#elements-in-the-dom">
+<meta name="author" title="Dominic Cooney" href="mailto:dominicc@chromium.org">
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<script src="resources/custom-elements-helpers.js"></script>
+<body>
+<script>
+'use strict';
+
+test_with_window((w) => {
+  assert_throws(TypeError.prototype, () => {
+    w.HTMLElement();
+  }, 'calling the HTMLElement constructor should throw a TypeError');
+}, 'HTMLElement constructor, invoke');
+
+test_with_window((w) => {
+  assert_throws(TypeError.prototype, () => {
+    new w.HTMLElement();
+  }, 'invoking the HTMLElement constructor with a construct call should ' +
+     'throw a TypeError');
+}, 'HTMLElement constructor, construct');
+
+test_with_window((w) => {
+  class X extends w.HTMLElement {}
+  w.customElements.define('a-a', X);
+  assert_throws(TypeError.prototype, () => {
+    X();
+  }, 'calling a custom element constructor should throw a TypeError');
+}, 'Custom element constructor, invoke');
+
+test_with_window((w) => {
+  var num_constructor_invocations = 0;
+  class C extends w.HTMLElement {
+    constructor() {
+      super();
+      num_constructor_invocations++;
+    }
+  }
+  w.customElements.define('a-a', C);
+  let e = new C();
+  assert_true(e instanceof w.HTMLElement,
+              'the element should be an HTMLElement');
+  assert_equals(e.localName,
+                'a-a',
+                'the element tag name should be "a-a"');
+  assert_equals(e.namespaceURI,
+                'http://www.w3.org/1999/xhtml',
+                'the element should be in the HTML namespace');
+  assert_equals(e.prefix,
+                null,
+                'the element name should not have a prefix');
+  assert_equals(e.ownerDocument,
+                w.document,
+                'the element should be owned by the registry\'s associated ' +
+                'document');
+  assert_equals(num_constructor_invocations,
+                1,
+                'the constructor should have been invoked once');
+}, 'Custom element constructor, construct');
+
+test_with_window((w) => {
+  class C extends w.HTMLElement { }
+  class D extends C {}
+  w.customElements.define('a-a', C); // Note: Not D.
+  assert_throws(TypeError.prototype, () => {
+    new D();
+  }, 'constructing a custom element with a new.target with no registry ' +
+     'entry should throw a TypeError');
+
+  assert_throws(TypeError.prototype, () => {
+    Reflect.construct(C, [], 42);
+  }, 'constructing a custom element with a non-object new.target should ' +
+     'throw a TypeError');
+}, 'Custom element constructor, construct invalid new.target');
+</script>

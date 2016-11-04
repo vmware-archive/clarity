@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<script src="spec/resources/custom-elements-helpers.js"></script>
+<body>
+<script>
+'use strict';
+
+test_with_window((w) => {
+  class X extends w.HTMLElement {}
+
+  w.customElements.define('new-old', X);
+  assert_throws(null, () => {
+    w.document.registerElement('new-old', {prototype: X.prototype});
+  }, '"registering" (v0) a name already "defined" should throw');
+
+  w.document.registerElement('old-new', {
+    prototype: Object.create(w.HTMLElement.prototype)
+  });
+  class Y extends w.HTMLElement {}
+  assert_throws(null, () => {
+    w.customElements.define('old-new', Y);
+  }, '"defining" (v1) a name already "registered" (v0) should throw');
+}, 'Overlapping old and new-style custom elements are not allowed');
+</script>

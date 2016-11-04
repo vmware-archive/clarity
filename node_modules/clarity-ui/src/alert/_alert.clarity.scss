@@ -1,0 +1,372 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../color/color.clarity";
+@import "../images/icons.clarity";
+@import "../buttons/buttons.clarity";
+@import "../typography/typography.clarity";
+
+$app-level-alert-color: $clr-white;
+$icon-margin-right: $clr_baselineRem_0_25;
+
+//Regular Alert
+$alert-top-margin: $clr_baselineRem_0_25;
+$alert-min-height: $clr_baselineRem_1_5;
+$alert-font-size: clr-getTypePropertyValueForDomElement(alert_text, font-size);
+$alert-horizontal-padding: $clr_baselineRem_0_5;
+$alert-top-padding: $clr_baselineRem_0_125;
+$alert-bottom-padding: $clr_baselineRem_0_375;
+$alert-item-top-margin: $alert-bottom-padding - $alert-top-padding;
+$alert-item-min-height: $clr-icon-dimension-sm;
+
+//Small Alert
+$alert-sm-min-height: $clr_baselineRem_1;
+$alert-sm-font-size: clr-getTypePropertyValueForDomElement(alert-small_text, font-size);
+$alert-sm-horizontal-padding: $clr_baselineRem_0_25;
+$alert-sm-top-padding: 0;
+$alert-sm-bottom-padding: $clr_baselineRem_0_125;
+$alert-sm-item-top-margin: $alert-sm-bottom-padding - $alert-sm-top-padding;
+$alert-sm-item-min-height: $clr-icon-dimension-sm;
+
+$alert-colors: (
+        info: (
+                background: $action-blues-lightest,
+                font: $action-blues-dark,
+                border: $action-blues-light
+        ),
+        success: (
+                background: $greens-lightest,
+                font: $greens-dark,
+                border: $greens-light
+        ),
+        warning: (
+                background: $yellows-lighter,
+                font: $gray-darkest,
+                border: $yellows-light
+        ),
+        danger: (
+                background: $reds-lighter,
+                font: $reds-dark,
+                border: $reds-light
+        ),
+        app-info: (
+                background: $clr-actionblue,
+                font: $app-level-alert-color,
+                border: none
+        ),
+        app-success: (
+                background: $greens-light-midtone,
+                font: $app-level-alert-color,
+                border: none
+        ),
+        app-warning: (
+                background: $yellows-dark,
+                font: $app-level-alert-color,
+                border: none
+        ),
+        app-danger: (
+                background: $clr-red,
+                font: $app-level-alert-color,
+                border: none
+        )
+);
+
+@mixin generateAlertType($alertType:"info") {
+    $propMap: map-get($alert-colors, $alertType);
+    background: map-get($propMap, background);
+    color: map-get($propMap, font);
+
+    $border-prop: map-get($propMap, border);
+    @if $border-prop != "none" {
+        border: 1px solid $border-prop;
+    } @else {
+        border: none;
+    }
+}
+
+@include exports('alert.clarity') {
+    %icon-styles {
+        display: inline-block;
+        height: $clr-icon-dimension-sm;
+        width: $clr-icon-dimension-sm;
+        padding: 0;
+        margin-right: $clr_baselineRem_0_25;
+        background-size: contain;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+    }
+
+    .alert {
+        @include clr-getTypePropertiesForDomElement(alert_text, (font-size, letter-spacing));
+        line-height: $alert-font-size;
+        position: relative;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        min-height: $alert-min-height;
+        width: auto;
+        padding: $alert-top-padding $alert-horizontal-padding $alert-bottom-padding $alert-horizontal-padding;
+        border-radius: $clr-default-borderradius;
+        margin-top: $alert-top-margin;
+        @include generateAlertType(info);
+
+        &.alert-info {
+            @include generateAlertType(info);
+        }
+
+        &.alert-success {
+            @include generateAlertType(success);
+        }
+
+        &.alert-warning {
+            @include generateAlertType(warning);
+        }
+
+        &.alert-danger {
+            @include generateAlertType(danger);
+        }
+
+        .alert-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            margin-top: $alert-item-top-margin;
+            min-height: $alert-item-min-height;
+
+            //display: inline-block and max-width were specifically added for IE 10.
+            //Flexbox content wouldn't wrap otherwise :(. 98% was just an estimate to distance the text from the
+            //close alert button.
+            span, .alert-text {
+                flex: 1 1 auto;
+                display: inline-block;
+                max-width: 98%;
+                margin-right: $clr_baselineRem_0_5;
+                padding-left: $clr-icon-dimension-sm + $icon-margin-right;
+
+                //TODO: Added 1px padding top to help with the vertical alignment. Figure out why vertical alignment
+                //doesn't work without this.
+                padding-top: 1px;
+
+                &::before {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    content: '';
+                    @extend %icon-styles;
+                }
+            }
+
+            .clr-icon {
+                height: $clr-icon-dimension-sm;
+                width: $clr-icon-dimension-sm;
+                margin-right: $icon-margin-right;
+            }
+
+            .clr-icon + .alert-text {
+                padding-left: 0;
+
+                &::before {
+                    content: none;
+                }
+            }
+
+            .alert-actions {
+                flex: 0 0 auto;
+                white-space: nowrap;
+
+                .dropdown-item {
+                    @include clr-getTypePropertiesForDomElement(dropdown_text, (color, font-size, line-height, letter-spacing));
+                }
+            }
+
+            .alert-action:not(:last-child) {
+                margin-right: $clr_baselineRem_0_5;
+            }
+
+            .alert-action, .dropdown-toggle {
+                color: $action-blues-dark;
+
+                &:active {
+                    color: $action-purples-darker;
+                }
+            }
+        }
+
+        //Icons
+        & > .alert-item > .alert-text::before, &.alert-info > .alert-item > .alert-text::before {
+            background-image: generateInfoIcon();
+        }
+
+        &.alert-success > .alert-item > .alert-text::before {
+            background-image: generateSuccessIcon();
+        }
+
+        &.alert-warning > .alert-item > .alert-text::before {
+            background-image: generateWarningIcon();
+        }
+
+        &.alert-danger > .alert-item > .alert-text::before {
+            background-image: generateErrorIcon();
+        }
+
+        .close {
+            position: absolute;
+            right: $clr_baselineRem_0_5;
+            top: $clr_baselineRem_0_25;
+            z-index: 2; //If I dont add a z-index, .close goes under the alert-item
+        }
+
+        .close ~ .alert-item > .alert-actions {
+            padding-right: $clr_baselineRem_0_5;
+
+            & > .alert-action:last-child {
+                margin-right: $clr_baselineRem_0_5;
+            }
+        }
+
+        &.alert-app-level {
+            margin: 0;
+            border: none;
+            border-radius: 0;
+            max-height: $clr_baselineRem_4;
+            overflow-y: auto;
+            padding-top: 0;
+            padding-bottom: $clr_baselineRem_0_25;
+            @include generateAlertType(app-info);
+
+            &.alert-info {
+                @include generateAlertType(app-info);
+            }
+
+            &.alert-danger {
+                @include generateAlertType(app-danger);
+            }
+
+            &.alert-warning {
+                @include generateAlertType(app-warning);
+            }
+
+            &.alert-success {
+                @include generateAlertType(app-success);
+            }
+
+            .alert-item {
+                justify-content: center;
+                align-items: center;
+                min-height: $clr_baselineRem_1;
+
+                .alert-text {
+                    position: relative;
+                    flex: 0 1 auto;
+
+                    &::before{
+                        top: -1px;
+                    }
+                }
+
+                .btn {
+                    @extend .btn-inverse;
+                    @extend .btn-sm;
+                    margin: 0;
+                }
+            }
+
+            //Icons
+            & > .alert-item > .alert-text::before, &.alert-info > .alert-item > .alert-text::before {
+                background-image: generateInfoIcon($app-level-alert-color);
+            }
+
+            &.alert-success > .alert-item > .alert-text::before {
+                background-image: generateSuccessIcon($app-level-alert-color);
+            }
+
+            &.alert-warning > .alert-item > .alert-text::before {
+                background-image: generateWarningIcon($app-level-alert-color);
+            }
+
+            &.alert-danger > .alert-item > .alert-text::before {
+                background-image: generateErrorIcon($app-level-alert-color);
+            }
+
+            .close {
+                color: $app-level-alert-color;
+                top: 8px;
+                opacity: 0.75;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .alert {
+        &.alert-sm {
+            @include clr-getTypePropertiesForDomElement(alert-small_text, (font-size, letter-spacing));
+            line-height: $alert-sm-font-size;
+
+            min-height: $alert-item-min-height;
+            //Rigth padding same as regular alert to factor in the close button
+            padding: $alert-sm-top-padding $alert-horizontal-padding $alert-sm-bottom-padding $alert-sm-horizontal-padding;
+
+            .alert-item {
+                margin-top: $alert-sm-item-top-margin;
+
+                .alert-text{
+
+                    &::before{
+                        top: 0;
+                    }
+                }
+            }
+
+            .close {
+                font-size: rem(18/$clr-rem-denominator);
+                top: $clr_baselineRem_0_125;
+            }
+        }
+    }
+
+    @media screen and (max-width: map-get($clr-breakpoints, medium)) {
+        .alert {
+            .alert-item {
+                flex-wrap: wrap;
+
+                .alert-text {
+                    flex: 1 0 auto;
+                }
+            }
+
+            .alert-actions {
+                margin-top: $clr_baselineRem_0_125;
+                margin-left: $clr-icon-dimension-sm + $icon-margin-right;
+            }
+        }
+
+        .alert-app-level {
+            .alert-item {
+                .alert-actions {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    //alert padding/margin adjustments
+    //1.cards
+    .card {
+        .alert {
+            $alert-card-horizontal-margin: $clr_baselineRem_0_75;
+            $alert-card-vertical-margin: $clr_baselineRem_0_25;
+
+            margin: $alert-card-vertical-margin $alert-card-horizontal-margin;
+        }
+    }
+
+    //2. Modal
+    .modal {
+        .alert + .modal-header {
+            margin-top: $clr_baselineRem_0_5;
+        }
+    }
+}

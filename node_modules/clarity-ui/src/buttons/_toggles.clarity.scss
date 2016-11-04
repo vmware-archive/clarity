@@ -1,0 +1,124 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+@import "../color/color.clarity";
+
+//Toggle Properties
+$toggle-height: $clr_baselineRem_1;
+$toggle-switch-base-height: $clr_baselineRem_0_75;
+$toggle-switch-base-width: ($clr_baselineRem_1_5 - $clr_baselineRem_0_125);
+$toggle-switch-height: $toggle-switch-base-height - 4;
+
+//Distance between the toggle switch label and the switch (Switch is on the right)
+$toggle-switch-base-left-spacing: $clr_baselineRem_0_375;
+
+//1px extra because we want a 1px distance between the base and the switch
+$toggle-switch-left-spacing: ($toggle-switch-base-width - $toggle-switch-base-left-spacing) + 1px;
+
+
+//Toggle Transition Properties
+$toggle-transition-time: 0.15s;
+$toggle-transition-animation: ease-in;
+
+@include exports('toggles.clarity') {
+    //Remove the default checkbox appearance
+    %custom-checkbox {
+        @include clr-appearance-normal();
+    }
+
+    .toggle-switch {
+        display: inline-block;
+        height: $toggle-height;
+        margin-right: $clr_baselineRem_1;
+        vertical-align: middle;
+        position: relative;
+
+        label {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            height: $toggle-height;
+            margin-right: $clr_baselineRem_2;
+        }
+
+        input[type="checkbox"] {
+            @extend %custom-checkbox;
+
+            position: absolute;
+            top: $clr_baselineRem_0_25;
+            right: $clr_baselineRem_0_25;
+            height: $clr-icon-dimension-sm;
+            width: $clr-icon-dimension-sm;
+            opacity: 0;
+        }
+
+        input[type="checkbox"] + label::before {
+            position: absolute;
+            display: inline-block;
+            content: '';
+            height: $toggle-switch-base-height;
+            width: $toggle-switch-base-width;
+            border: 2px solid;
+            border-radius: $clr_baselineRem_0_375;
+            border-color: clr-getColor(dark-midtone);
+            background-color: clr-getColor(dark-midtone);
+            top: ($toggle-height - $toggle-switch-base-height) / 2;
+            right: -1 * ($toggle-switch-base-width + $toggle-switch-base-left-spacing);
+            transition: $toggle-transition-time $toggle-transition-animation;
+            transition-property: border-color, background-color;
+        }
+
+        input[type="checkbox"]:focus + label::before {
+            @include include-outline-style-form-fields();
+        }
+
+        input[type="checkbox"]:checked + label::before {
+            border-color: clr-getColor(light-midtone, greens);
+            background-color: clr-getColor(light-midtone, greens);
+            transition: $toggle-transition-time $toggle-transition-animation;
+            transition-property: border-color, background-color;
+        }
+
+        //Toggle Switch
+        input[type="checkbox"] + label::after {
+            position: absolute;
+            display: inline-block;
+            content: '';
+            height: $toggle-switch-height;
+            width: $toggle-switch-height;
+            border: 1px solid clr-getColor(lightest);
+            border-radius: 50%;
+            background-color: clr-getColor(lightest);
+            top: ($toggle-height - $toggle-switch-height) / 2;
+            right: -1 * $toggle-switch-left-spacing;
+            transition: right $toggle-transition-time $toggle-transition-animation;
+        }
+
+        input[type="checkbox"]:checked + label::after {
+            right: -1 * ($toggle-switch-base-width + $toggle-switch-base-left-spacing - 2px);
+            transition: right $toggle-transition-time $toggle-transition-animation;
+        }
+
+        &.disabled {
+            label {
+                opacity: 0.4;
+                cursor: not-allowed;
+            }
+
+            input[type="checkbox"]:checked + label::before {
+                border-color: clr-getColor(dark-midtone);
+                background-color: clr-getColor(dark-midtone);
+            }
+        }
+
+        input[type="checkbox"]:disabled + label {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        input[type="checkbox"]:checked:disabled + label::before {
+            border-color: clr-getColor(dark-midtone);
+            background-color: clr-getColor(dark-midtone);
+        }
+    }
+}

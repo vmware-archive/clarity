@@ -1,0 +1,267 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+@import "../color/color.clarity";
+@import "../forms/forms.clarity";
+@import "../typography/typography.clarity";
+
+$clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, font-weight);
+
+@include exports('stack-view.clarity') {
+    .stack-header {
+        font-weight: $clr-stack-font-weight;
+        display: flex;
+        align-items: flex-end;
+
+        .stack-title {
+            display: block;
+            flex: 1 1 auto;
+            padding: $clr_baselineRem_0_25 0;
+        }
+
+        .stack-actions {
+            display: block;
+            flex: 0 0 auto;
+
+            .stack-action {
+                margin: 0 0 $clr_baselineRem_0_25 $clr_baselineRem_0_5;
+
+                &.btn {
+                    min-width: 0;
+                    padding: 0 $clr_baselineRem_0_5;
+                    // Weird negative margin to make the button aligned with the stack view
+                    // in its default state. It then looks unaligned on hover only.
+                    margin-right: -1 * $clr_baselineRem_0_5;
+                }
+            }
+        }
+    }
+
+    .stack-view {
+        @include clr-getTypePropertiesForDomElement(stackview_text, (color, font-size, font-weight, line-height, letter-spacing));
+        margin-top: 0;
+        border: 1px solid $gray-light-midtone;
+        border-radius: $clr-default-borderradius;
+        overflow-y: auto;
+        background-color: $gray-lighter;
+
+        /* this fixes the overflow problem of children elements in a wrapper with a border-radius in Chrome */
+        -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+
+        dd, dt {
+            // One of the caveats of using definition lists here. Browsers automatically style them in unpredictable ways... :(
+            -webkit-margin-start: 0;
+            margin-inline-start: 0;
+            margin-left: 0;
+        }
+
+        .stack-block {
+            display: flex;
+            // Wrapping for nested stack-blocks
+            flex-flow: row wrap;
+            border-bottom: 1px solid $clr-lighter-midtone-gray;
+        }
+
+        // We have to handle potential nested elements, typically for web components
+        > .stack-block:last-child, > :last-child .stack-block:last-of-type {
+            // This way we keep a border-bottom on the last element if the stack view is higher
+            // than the total height of the  blocks it contains, but we do not have a
+            // weird 1px scroll when both heights match exactly.
+            border-bottom: none;
+            box-shadow: 0 1px 0 $clr-lighter-midtone-gray;
+        }
+
+        .stack-block-changed {
+            > .stack-block-label {
+                margin-left: -$clr_baselineRem_0_375;
+            }
+            &::before {
+                content: " ";
+                position: relative;
+                width: 0;
+                height: 0;
+                border-top: $clr_baselineRem_0_375 solid $clr-blue;
+                border-right: $clr_baselineRem_0_375 solid transparent;
+            }
+        }
+
+        .stack-block-label, .stack-block-content {
+            padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
+            background-color: $gray-lighter;
+        }
+
+        .stack-block-label {
+            @include clr-getTypePropertiesForDomElement(stackview_header, (font-size, font-weight, line-height, letter-spacing));
+            color: $gray-darkest;
+
+            // We're doing a non-flexible item.
+            // It's just easier to align and stretch everything vertically this way than with
+            // floats or inline-blocks.
+            flex: 0 0 40%;
+            max-width: 40%;
+
+            &::before {
+                content: "";
+                float: left;
+                font-family: "FontAwesome";
+                font-size: 1.4em;
+                font-weight: normal;
+                line-height: inherit;
+                height: 100%;
+                width: $clr_baselineRem_0_5;
+                margin-right: $clr_baselineRem_0_25;
+                text-align: center;
+                color: $gray-dark-midtone;
+                transition: color 0.2s ease-in-out;
+            }
+        }
+
+        .stack-block-content {
+            flex: 1 1 auto;
+            width: 60%;
+            margin-bottom: 0;
+            font-weight: $clr-stack-font-weight;
+
+            @extend %clr-container;
+        }
+
+        .stack-children {
+            flex: 0 0 auto;
+            width: 100%;
+
+            .stack-block {
+                border-bottom-color: $gray-light;
+            }
+            > .stack-block:last-child, > :last-child .stack-block:last-of-type {
+                // This way we keep a border-bottom on the last element if the stack view is higher
+                // than the total height of the  blocks it contains, but we do not have a
+                // weird 1px scroll when both heights match exactly.
+                border-bottom: none;
+                box-shadow: 0 1px 0 $clr-lighter-midtone-gray;
+            }
+
+            .stack-block-label, .stack-block-content {
+                background-color: $clr-white;
+            }
+
+            .stack-block-label {
+                padding-left: $clr_baselineRem_1;
+            }
+        }
+
+        .stack-block-expandable {
+            > .stack-block-label {
+                cursor: pointer;
+
+                &::before {
+                    content: "\f105";
+                }
+            }
+            > .stack-block-label, > .stack-block-content {
+                transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            }
+
+            &:hover:not(.stack-block-expanded) {
+                > .stack-block-label, > .stack-block-content {
+                    background-color: $gray-light;
+                }
+            }
+        }
+
+        .stack-block-expanded {
+            > .stack-block-label::before {
+                content: "\f107";
+            }
+
+            > .stack-block-label, > .stack-block-content {
+                background-color: $clr-selection-color;
+                color: $clr-black;
+            }
+        }
+
+        /*
+         * Styles specific to inputs used in a stack view
+         */
+        #{$styledInputs}, .select {
+            display: inline-block;
+            vertical-align: top;
+            margin-right: $clr_baselineRem_0_5;
+            // We need to account for the border at the bottom of inputs
+            // Or the stack view blocks all move 1px when going in edit mode.
+            // Inputs are 24px high but 25px total when you include the border.
+            margin-bottom: -1px;
+        }
+
+        // Fix for Firefox and IE, which are throwing line-height for inputs in the air,
+        // like they just don't care.
+        // Yes, hard-coding the height isn't great. Haven't found anything better cross-browser.
+        #{$styledInputs}, .select select {
+            height: $clr_baselineRem_1;
+        }
+
+        .stack-block-expandable > .stack-block-content {
+            #{$styledInputs} {
+                transition: background-size 0.2s ease, border-bottom-color 0.2s ease-in-out;
+            }
+            .select {
+                select {
+                    transition: border-bottom-color 0.2s ease-in-out;
+                }
+                &::after {
+                    transition: color 0.2s ease-in-out;
+                }
+            }
+        }
+        .stack-block-expanded > .stack-block-content {
+            #{$styledInputs} {
+                border-bottom-color: $gray-dark;
+                @include input-border-bottom-animation($action-blues-dark-midtone);
+            }
+
+            .select {
+                select {
+                    border-bottom-color: $gray-dark;
+                }
+
+                &::after {
+                    color: $gray-dark;
+                }
+            }
+        }
+
+        /*
+         * Styles specific to stack views used in a modal
+         */
+        .modal & {
+            height: 55vh;
+            margin-bottom: 0;
+        }
+    }
+
+    @mixin stackViewBrowserAlignmentFix {
+        .stack-view .stack-block-label::before {
+            // properly aligns arrows with labels in firefox, msedge
+            margin-top: -2px;
+        }
+    }
+
+    @include fixForFirefox() {
+        @include stackViewBrowserAlignmentFix;
+    }
+
+    @include fixForIE10AndUp() {
+        .stack-view .stack-block-label::before {
+            margin-top: -1px;
+        }
+    }
+
+    // order here is important because the IE11/MSEdge hack overwrites the previous hack...
+    @include fixForIE11AndUp() {
+        @include stackViewBrowserAlignmentFix;
+    }
+
+    // order here is important because the IE11/MSEdge hack overwrites the previous hack...
+    @include fixForMsEdge() {
+        @include stackViewBrowserAlignmentFix;
+    }
+}

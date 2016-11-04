@@ -1,0 +1,181 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+@import "../color/color.clarity";
+@import "../utils/layers.clarity";
+@import "../typography/typography.clarity";
+
+$tooltip-font-color: clr-getColor(lightest);
+$tooltip-background-color: clr-getColor(black);
+$tooltip-default-width: baselineRem(10);
+$margin-value: $clr_baselineRem_0_25;
+$arrow-height: $clr_baselineRem_0_25;
+$arrow-width: baselineRem(5/24); //I wanted the arrow width to be 9. If I use 4.5/24 it still rounds up to 10.
+$tooltip-adjusted-margin: $margin-value + $arrow-width * 2;
+
+@mixin common-tooltip-styles {
+    @include clr-getTypePropertiesForDomElement(tooltip_text, (font-size, font-weight, letter-spacing));
+
+    background: $tooltip-background-color;
+    border-radius: $clr_baselineRem_0_125;
+    color: $tooltip-font-color;
+    line-height: $clr_baselineRem_0_75;
+    margin: 0; //Resetting any margin that might be applied to span/div elements inside forms
+    padding: $clr_baselineRem_0_375 $clr_baselineRem_0_5;
+    width: $tooltip-default-width;
+}
+
+@mixin vertical-tooltip-generator($dirA:top, $dirB:right) {
+    $oppA: map-get($opp-directions,$dirA);
+    $oppB: map-get($opp-directions,$dirB);
+
+    @include common-tooltip-styles;
+
+    position: absolute;
+    #{$dirA}: auto;
+    #{$oppA}: 100%;
+    #{$oppB}: 50%;
+    #{$dirB}: auto;
+
+    border-#{$oppA}-#{$oppB}-radius: 0;
+    margin-#{$oppA}: $tooltip-adjusted-margin;
+
+    &::before {
+        position: absolute;
+        #{$oppA}: -1 * $arrow-width * 2 + 1;
+        #{$oppB}: 0;
+        #{$dirA}: auto;
+        #{$dirB}: auto;
+        content: '';
+        border-#{$oppB}: $arrow-height solid $tooltip-background-color;
+        border-#{$dirA}: $arrow-width solid $tooltip-background-color;
+        border-#{$dirB}: $arrow-height solid transparent;
+        border-#{$oppA}: $arrow-width solid transparent;
+    }
+}
+
+@mixin horizontal-tooltip-generator($dirA:right) {
+    $oppA: map-get($opp-directions,$dirA);
+
+    position: absolute;
+    #{$dirA}: auto;
+    #{$oppA}: 100%;
+    top: 50%;
+    bottom: auto;
+
+    @include common-tooltip-styles;
+
+    border-top-#{$oppA}-radius: 0;
+    margin-#{$oppA}: $tooltip-adjusted-margin;
+
+    &::before {
+        position: absolute;
+        top: 0;
+        #{$oppA}: -1 * $arrow-width * 2 + 1;
+        bottom: auto;
+        #{$dirA}: auto;
+        content: '';
+        border-top: $arrow-height solid $tooltip-background-color;
+        border-#{$dirA}: $arrow-width solid $tooltip-background-color;
+        border-bottom: $arrow-height solid transparent;
+        border-#{$oppA}: $arrow-width solid transparent;
+    }
+}
+
+@include exports('tooltips.clarity') {
+    .tooltip {
+        display: inline-block;
+        position: relative;
+        text-align: left;
+        overflow: visible;
+
+        & > .tooltip-content {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s linear;
+            z-index: map-get($clr-layers, tooltips);
+        }
+
+        //Needed for IE10. Cannot add styles directly to &:hover::after,&:hover::before before adding styles to &:hover.
+        &:hover {
+            background: url("data:image/svg+xml;charset=UTF-8,%3Csvg+xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22+width%3D%221%22+height%3D%221%22+viewBox%3D%220+0+1+1%22%3E%3Ctitle%3Etransparent+bcg%3C%2Ftitle%3E%3C%2Fsvg%3E");
+        }
+
+        &:hover > .tooltip-content {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        //Tooltip directions
+        //Default Tooltip - Top Right
+        & > .tooltip-content, &.tooltip-top-right > .tooltip-content {
+            @include vertical-tooltip-generator(top, right);
+        }
+
+        &.tooltip-top-left > .tooltip-content {
+            @include vertical-tooltip-generator(top, left);
+        }
+
+        &.tooltip-bottom-right > .tooltip-content {
+            @include vertical-tooltip-generator(bottom, right);
+        }
+
+        &.tooltip-bottom-left > .tooltip-content {
+            @include vertical-tooltip-generator(bottom, left);
+        }
+
+        &.tooltip-right > .tooltip-content {
+            @include horizontal-tooltip-generator(right);
+        }
+
+        &.tooltip-left > .tooltip-content {
+            @include horizontal-tooltip-generator(left);
+        }
+
+        //Tooltips Size
+        &.tooltip-xs > .tooltip-content {
+            width: $clr_baselineRem_3;
+        }
+
+        &.tooltip-sm > .tooltip-content {
+            width: $clr_baselineRem_5;
+        }
+
+        &.tooltip-md > .tooltip-content {
+            width: $tooltip-default-width;
+        }
+
+        &.tooltip-lg > .tooltip-content {
+            width: baselineRem(15);
+        }
+    }
+
+    //Override tooltip margins values for different components.
+
+    //Buttons
+    .tooltip {
+
+        //Default is top right
+        & > .btn + .tooltip-content,
+        &.tooltip-top-right > .btn + .tooltip-content,
+        &.tooltip-top-left > .btn + .tooltip-content {
+            margin-bottom: $tooltip-adjusted-margin - $clr-button-vertical-margin;
+        }
+
+        &.tooltip-bottom-right > .btn + .tooltip-content,
+        &.tooltip-bottom-left > .btn + .tooltip-content {
+            margin-top: $tooltip-adjusted-margin - $clr-button-vertical-margin;
+        }
+
+        &.tooltip-right > .btn + .tooltip-content {
+            margin-left: $tooltip-adjusted-margin - $clr-button-horizontal-margin;
+        }
+    }
+
+    //Icons
+    .tooltip {
+        & > .clr-icon{
+            margin-right: 0;
+        }
+    }
+}

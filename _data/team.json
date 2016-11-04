@@ -1,0 +1,117 @@
+{
+    "IMAGE_PATH": "/team/",
+    "SOCIAL_IMAGE_PATH": "/team/social/",
+    "social": [
+        {
+            "text": "Talk with us on Twitter",
+            "img": "twitter",
+            "url": "https://twitter.com/VMwareClarity"
+        },
+        {
+            "text": "Report an issue",
+            "img": "github",
+            "url": "https://github.com/vmware/clarity/issues"
+        },
+        {
+            "text": "Send us an email",
+            "img": "email",
+            "url": "mailto:clarity@vmware.com"
+        }
+    ],
+    "members": [{
+        "name": "Jehad Affoneh",
+        "role": "Clarity Lead",
+        "blurb": "Jehad started and continues to lead the Clarity project. He is involved in all stages of Clarity development. He loves engaging with designers and developers to understand their use cases and help them build solutions.",
+        "email": "https://twitter.com/jaffoneh",
+        "img":  "affonehj.png",
+        "workstreams": ["UX", "UI"]
+    }, {
+        "name": "Scott Mathis",
+        "role": "Developer/Researcher",
+        "blurb": "Scott contributes to the look and feel of Clarity and works on the code. Scott's our ace researcher and storyteller. He has captured the stories of why we did what we did and the assumptions we've made.",
+        "email": "",
+        "img":  "scott.png",
+        "workstreams": ["UX", "UI"]
+    }, {
+        "name": "Aditya Bhandari",
+        "role": "Developer",
+        "blurb": "Aditya implements clarityUI and Angular components. He often provides feedback and explorations on interactions.",
+        "email": " ",
+        "img":  "adityab.png",
+        "workstreams": ["UI", "CR", "NG"]
+    }, {
+        "name": "Eudes Petonnet-Vincent",
+        "role": "clarityNG Lead",
+        "blurb": "Eudes is the technical lead for Clarity. He spends most of his day working on the overall architecture of clarity-angular as well as building Angular 2 components for Clarity.",
+        "email": " ",
+        "img":  "eudes.png",
+        "workstreams": ["UI", "CR", "NG"]
+    }, {
+        "name": "Yen Ma",
+        "role": "Designer",
+        "blurb": "Yen is focused on all things design for Clarity. She is passionate about exploring new ways to improve and create enjoyable experiences and is a strong advocate for clean, modern, and easy to use products.",
+        "email": " ",
+        "img":  "yen.png",
+        "workstreams": ["UX", "CR"]
+    }, {
+        "name": "Jeeyun Lim",
+        "role": "Developer",
+        "blurb": "Jeeyun is working on clarityCORE, which encompasses various tools for building, developing, and shipping Clarity. She's also creating Clarity's Angular 2 components and making sure that the components are beautiful as well as sensible and functional.",
+        "email": " ",
+        "img":  "jeeyun.png",
+        "workstreams": ["CR","NG"]
+    }, {
+        "name": "Red Dolan",
+        "role": "Designer",
+        "blurb": "Red works on strategy and design interactions for Clarity. He also researches user-driven needs and tests those solutions. Contact him for any Sketch UI Kit or UX-related questions or feedback.",
+        "email": " ",
+        "img":  "red.png",
+        "workstreams": ["UX","CR"]
+    }, {
+        "name": "Lilia Kim",
+        "role": "Visual Designer",
+        "blurb": "Lilia researches what's needed for Clarity and delivers the visual designs.  She works on layout design, component design, and icons.",
+        "email": " ",
+        "img":  "lilia.png",
+        "workstreams": ["UX"]
+    }, {
+        "name": "Etienne Le Sueur",
+        "role": "Developer",
+        "blurb": "Etienne contributes to Clarity’s Angular 2 components.",
+        "email": " ",
+        "img":  "etienne.png",
+        "workstreams": ["CR","NG"]
+    }, {
+        "name": "Shijir Tsogoo",
+        "role": "Developer",
+        "blurb": "Shijir recently graduated from the University of Washington. He creates Angular 2 components for Clarity.",
+        "email": " ",
+        "img": "shijir.png",
+        "workstreams": ["UI", "NG"]
+    }],
+
+    "contributors": [
+        {
+            "name": "Rob Patten",
+            "role": " ",
+            "blurb": "",
+            "email": " ",
+            "img":  "",
+            "workstreams": ["UX"]
+        }, {
+            "name": "Gail Chappell",
+            "role": " ",
+            "blurb": "",
+            "email": " ",
+            "img":  "",
+            "workstreams": ["CR"]
+        }, {
+            "name": "Yu Xin",
+            "role": " ",
+            "blurb": "",
+            "email": " ",
+            "img":  "",
+            "workstreams": ["UX"]
+        }
+    ]
+}

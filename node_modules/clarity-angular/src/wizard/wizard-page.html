@@ -1,0 +1,10 @@
+<section>
+    <label #titleContainer class="text-light">
+        {{title}}
+        <ng-content select=".wizard-page-title"></ng-content>
+    </label>
+
+    <div class="content-wrapper">
+        <ng-content></ng-content>
+    </div>
+</section>

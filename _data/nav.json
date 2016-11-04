@@ -1,0 +1,13 @@
+{
+    "home": {
+        "url": "index.html",
+        "text": "Clarity"
+    },
+
+    "main": [
+        { "url": "get-started", "text": "Get Started" },
+        { "url": "documentation", "text": "Documentation" },
+        { "url": "community", "text": "Community" },
+        { "url": "news", "text": "What's New" }
+    ]
+}

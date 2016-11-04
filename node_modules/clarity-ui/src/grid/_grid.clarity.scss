@@ -1,0 +1,24 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+
+@import "node_modules/bootstrap/scss/mixins/grid";
+@import "node_modules/bootstrap/scss/mixins/grid-framework";
+
+//https://github.com/twbs/bootstrap/issues/17310
+//overriding the mixin to add max width
+@mixin make-col-span($size, $columns: $grid-columns) {
+  @if $enable-flex {
+    flex: 0 0 percentage($size / $columns);
+    max-width: percentage($size / $columns);
+  } @else {
+    width: percentage($size / $columns);
+  }
+}
+
+@import "node_modules/bootstrap/scss/grid";
+.row {
+    &.force-fit {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

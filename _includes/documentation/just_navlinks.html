@@ -1,0 +1,15 @@
+{% for item in site.data.componentlist.list %}
+    {% if item.url and item.noDemo != true and item.type == include.type %}
+        {% if page.permalink == item.url %}
+            {% assign activeClass = ' active' %}
+        {% else %}
+            {% assign activeClass = '' %}
+        {% endif %}
+
+        <li><a class="nav-link{{ activeClass }}" href="{{ site.baseurl }}{{ item.url }}">
+            {{ item.text }}
+            {% if item.isNew %}<span class="new nav-link-tag">New!</span>{% endif %}
+            {% if item.isUpdated %}<span class="updated nav-link-tag">Updated</span>{% endif %}</a>
+        </li>
+    {% endif %}
+{% endfor %}

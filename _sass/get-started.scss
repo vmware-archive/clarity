@@ -1,0 +1,142 @@
+.layout-get-started {
+    .content-area > * {
+        max-width: $clrweb-content-maxwidth;
+    }
+
+    .home-cards .home-cards-container {
+        margin-top: 0;
+        margin-right: baselineRem(-0.5);
+    }
+
+    .home-cards {
+        padding-left: baselineRem(0.5);
+        padding-right: 0;
+        margin: 0;
+
+        .home-card-wrapper {
+            width: 100%;
+            min-width: 0;
+            padding-left: 0;
+            float: none;
+            text-align: left;
+            display: table;
+            padding: baselineRem(1);
+            background: white;
+            border: 1px solid #eee;
+            border-radius: baselineRem(0.125);
+            margin-top: baselineRem(1);
+            height: auto;
+            min-height: baselineRem(6);
+
+            @include clarityWebBoxShadow;
+       }
+    }
+
+    .home-cards .home-card {
+        background: none;
+        width: 100%;
+        text-align: left;
+        height: auto;
+        display: table-row;
+        min-height: baselineRem(4);
+        border: 0 none;
+        box-shadow: none;
+    }
+
+    .home-cards .home-card-bug {
+        text-align: right;
+        width: baselineRem(2);
+        min-height: baselineRem(4);
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .home-cards .home-card-title {
+        font-size: rem(1.75);
+        width: baselineRem(8);
+        min-height: baselineRem(4);
+        text-align: left;
+        padding-left: baselineRem(0.6667);
+
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .home-cards .home-card-text {
+        font-size: rem(0.875);
+        line-height: baselineRem(1);
+        min-height: baselineRem(4);
+
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    hr {
+        margin: baselineRem(2) 0 baselineRem(1);
+        width: 100%;
+        max-width: $clrweb-content-maxwidth;
+        color: #ddd;
+        border: 0 none;
+        border-bottom: baselineRem(0.041667) solid #ddd;
+    }
+
+    ol {
+        padding-left: baselineRem(0.75);
+    }
+
+    .sidenav .nav-group .nav-list {
+        margin-left: 12px;
+    }
+}
+
+@media (max-width: 716px) {
+    .layout-get-started {
+        .home-cards {
+            padding-left: 0;
+        }
+
+        hr {
+            visibility: hidden;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .layout-get-started {
+        .home-cards {
+
+            .home-card-wrapper {
+                display: block;
+            }
+
+            .home-card {
+                width: 100%;
+                text-align: center;
+                display: block;
+            }
+
+            .home-card-bug, .home-card-title, .home-card-text {
+                display: block;
+                text-align: center;
+                min-height: baselineRem(2);
+                width: 100%;
+            }
+
+            .home-card-title {
+                padding-left: 0;
+            }
+
+            .home-card-text {
+                text-align: left;
+            }
+
+            .valign {
+                display: block;
+
+                & > * {
+                    display: block;
+                }
+            }
+        }
+    }
+}

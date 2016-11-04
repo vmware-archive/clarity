@@ -1,0 +1,19 @@
+{% include header/header.html noNav=true %}
+
+    {% if page.title == 'Coming Soon' %}
+        {{ content }}
+    {% else %}
+
+        <table class="fancy-error">
+            <tr class="error-info">
+                <td><p>{{content}}</p></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <a href="{{ site.baseurl }}/index.html" class="btn btn-primary btn-block">Return to homepage</a>
+                </td>
+            </tr>
+        </table>
+    {% endif %}
+
+{% include footer/footer.html %}

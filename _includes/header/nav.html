@@ -1,0 +1,37 @@
+
+    <header class="header header-6">
+        <div class="branding">
+            <a href="{{ site.baseurl }}/index.html" class="logo-and-title">
+                <span class="clr-icon clr-vmw-logo"></span>
+                <span class="title">{{ site.data.global.alt_title }}</span>
+            </a>
+            <a href="javascript://" onclick="ClarityWeb.toggleNav('topnav')" class="sliding-nav-toggle"></a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav">
+            {% for navItem in site.data.nav.main %}
+                {% include header/nav-item.html navUrl=navItem.url navText=navItem.text %}
+            {% endfor %}
+        </div>
+        <div class="phablet-title">
+            {% if page.layout == 'documentation' %}
+                Documentation
+            {% elsif page.layout == 'pattern' %}
+                Patterns
+            {% elsif page.layout == 'get-started' %}
+                Get Started
+            {% elsif page.layout == 'news' %}
+                What's New
+            {% else %}
+                Clarity
+            {% endif %}
+        </div>
+        <div class="settings">
+            {% if page.layout == 'documentation' or page.layout == 'get-started' or page.layout == 'news' %}
+                <a href="javascript://" onclick="ClarityWeb.toggleNav('sidenav')" class="sliding-nav-toggle sliding-sidenav-toggle" title="Secondary Navigation"></a>
+            {% endif %}
+            {% comment %}
+            <a href="javascript://" class="nav-link"><span class="nav-icon fa fa-search"></span></a>
+            {% endcomment %}
+        </div>
+    </header>

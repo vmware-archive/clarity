@@ -1,0 +1,26 @@
+# Site Settings
+title: 'Clarity Design System'
+alt_title: 'Project Clarity'
+url: '//vmware.github.com/clarity' # the base hostname & protocol for your site
+copyright: 'Made with &#9829; in Palo Alto, Seattle, Austin, Paris, and New York'
+
+# Admin Settings
+admin_name: 'Scott Mathis'
+admin_email: 'smathis@vmware.com'
+
+# global links
+email_link: 'mailto:clarity@vmware.com'
+socialcast_link: 'https://vmware-com.socialcast.com/groups/133290-clarity'
+socialcast_request: 'mailto:affonehj@vmware.com'
+
+# Clarity Fileage
+font_awesome_path: '/node_modules/font-awesome/css/font-awesome.min.css'
+clarity_icons_js_path: '/node_modules/clarity-icons/clarity-icons.min.js'
+clarity_icons_css_path: '/node_modules/clarity-icons/clarity-icons.min.css'
+clarity_ui_path: '/node_modules/clarity-ui/clarity-ui.min.css'
+clarity_ng_path: '/node_modules/clarity-angular/clarity-angular.min.js'
+images_path: '/images/'
+
+#template link
+template_link: '/images/sketchTemplates/Clarity-Template-0.5.0.sketch'
+template_readme_link: 'https://git.eng.vmware.com/?p=clarity-design-assets.git;a=blob_plain;f=README.md;hb=HEAD'

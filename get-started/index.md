@@ -279,6 +279,8 @@ The Clarity team welcomes contributions from the community.  See our [contributi
 
 Ongoing work and feature requests are tracked using [GitHub Issues](https://github.com/vmware/clarity/issues){: target='_blank' }. Please feel free to file an issue.
 
+<hr>
+
 
 {: #attributions }
 # Attributions

@@ -40,5 +40,3 @@ Use a badge to show a tally or other quantity. For example, you might overlay a 
 {: .list}
 - For most badges, use the color palette specific to badges and labels.
 - For badges that indicate success, warning, or error, use Stoplight colors.
-
-See the [demo tab]({{ site.baseurl }}/documentation/badges) for badge colors.

@@ -142,7 +142,7 @@ $clr-sidenav-border-color: $clr-light-midtone-gray !default;
                     font-family: "FontAwesome";
                     color: clr-getColor(dark-midtone);
                     content: "\f107";
-                    bottom: 1px;
+                    top: 0;
                     left: $clr_baselineRem_1;
                 }
             }

@@ -25,7 +25,7 @@ Cards are a popular design element, often used to present information in the mai
 
 ### Content -- keep it simple
 
-Cards might contain text, images, data visualizations, or multimedia.  Ensure that the content serves your use case. Keep it simple and legible.  Avoid using too much content, overloading the card with too many actions, and placing links within the content.
+Cards can contain text, images, data visualizations, or multimedia.  Ensure that the content serves your use case. Keep it simple and legible.  Avoid using too much content, overloading the card with too many actions, and placing links within the content.
 
 {% comment %}
 A common strategy is to present key points, and on card click, navigate to more details.  
@@ -39,7 +39,7 @@ Another strategy is to divide card content into horizontal blocks. For example, 
 Users read the content starting at the top, upper left corner, then scan mainly the left sides of the screen.
 {% endcomment %}
 
-Place the primary action, and up to two additional actions, in the card footer, left-aligned.  Left-alignment supports the F-pattern layout.
+Place the primary action, and up to two additional actions, in the card footer, left-aligned.  This placement supports the F-pattern layout.
 
 For more than three actions, replace the right-most action with a menu.  Do not place more than eight items in the menu.
 
@@ -61,6 +61,8 @@ For more than three actions, replace the right-most action with a menu.  Do not 
 
 ### Clickable cards -- be predictable
 
+When the entire card is clickable, the resulting action must:
+
 <ul class="list">
           <li>Not be the primary action.  The primary action is  left-most in the footer.   If clicking elsewhere on the card also initiates the primary action, it might confuse users.</li>
           <li>
@@ -74,25 +76,16 @@ For more than three actions, replace the right-most action with a menu.  Do not 
 <div class="row buttons-modal-gfx">
     <div class="col-xs">
     <span>
-        Progress bars belong at the card top or above the footer,   place them near the triggering action.  Be consistent with progress bar placement within a card group.
+        Progress bars belong at the card top or above the footer,   closest to the triggering action.  Be consistent with progress bar placement within a card group.
     </span>
     </div>
     <div class="col-xs">
     <span>
-         <img src="{{ site.data.global.images_path }}documentation/cards/card_progress.png?{{ site.time | date: '%s%N' }}">
+         <img src="{{ site.baseurl }}{{ site.data.global.images_path }}documentation/cards/card_progress.png?{{ site.time | date: '%s%N' }}">
     </span>
     </div>
 </div>
 
-### Clickable Cards
-
-The action that takes place when the user clicks on the card must:
-
-{: .list}
-- Be an action other than the primary action.  Clarity presents the primary action as a button in the left-most position of the footer.   Clicking elsewhere on the card to initiate the primary action might confuse the user.
-- Be a predictable action with an expected outcome.  Not every card need be clickable.
-
-A common action is to navigate the user to more details.
 
 ### Group cards by theme or element
 
@@ -102,14 +95,12 @@ A common action is to navigate the user to more details.
 - Homogeneous content facilitates scanning -- users  quickly find and compare information of interest.  <!--Objects, applications, and services are typically collected in individual, homogeneous groups.-->
 - Content of varying type often shows "the bigger picture."<!-- --such a collection might show the number of users logged in, recent tasks, alerts, and infrastructure to build.  Cards in heterogeneous groups often don't have associated actions. -->
 
-### Card group layouts include grid and list
+### Use a grid for card layout
 
-{: .list}
-- A grid places cards in fixed rows and columns:  more content in less vertical space means less scrolling. It's easy for users to scan content in this layout. If in doubt, use the grid.
-- A list puts cards in a single column: a good solution for mobile devices or a reduced display.
+A grid places cards in fixed rows and columns:  more content in less vertical space means less scrolling. It's easy for users to scan content in this layout. If in doubt, use the grid.
 
 ### Switching views: cards and datagrids
 
 In homogeneous card groups, consider enabling users to switch between card view and datagrid view. While cards show richer content than a datagrid, a datagrid lists more items at once. 
 
-Toggles for switching between views go in the upper right of the card group. Card group should be the default view.
+Toggles for switching between views go in the upper right of the card group. The card group should be the default view.

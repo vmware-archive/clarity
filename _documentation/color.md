@@ -110,6 +110,6 @@ The stoplight colors are for indicating error conditions, warnings, and successe
 - Stoplight Green, #318700, for positive actions.
 - Stoplight Red, #E62700, for warnings and errors.
 
-### Higlight Colors
+### Highlight Colors
 
 The highlight colors are intended for use in charts, highlighting search results, and badging. These colors stand out against Clarity's primary colors. Don't use highlight colors in large blocks.

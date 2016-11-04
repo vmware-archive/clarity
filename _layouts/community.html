@@ -42,7 +42,12 @@
                             <img src="{{ site.baseurl }}/images{{ site.data.team.IMAGE_PATH }}placeholder.png" alt="Picture of {{ t.name }}">
                         {% endif %}
                         <div class="card-text">
-                            <p class="community-team-name">{{ t.name }}
+                            <p class="community-team-name">
+                                {% if t.twitter %}
+                                    <a href="{{ t.twitter }}" target="_blank">{{ t.name }}</a>
+                                {% else %}
+                                    {{ t.name }}
+                                {% endif %}
                             </p>
                             <p class="community-team-role">{{ t.role }}</p>
                             <p class="community-team-blurb">{{ t.blurb }}</p>

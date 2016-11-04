@@ -17,7 +17,8 @@
         "name": "Jehad Affoneh",
         "role": "Clarity Lead",
         "blurb": "Jehad started and continues to lead the Clarity project. He is involved in all stages of Clarity development. He loves engaging with designers and developers to understand their use cases and help them build solutions.",
-        "email": "https://twitter.com/jaffoneh",
+        "email": "",
+        "twitter": "jaffoneh",
         "img":  "affonehj.png",
         "workstreams": ["UX", "UI"]
     }, {
@@ -32,6 +33,7 @@
         "role": "Developer",
         "blurb": "Aditya implements clarityUI and Angular components. He often provides feedback and explorations on interactions.",
         "email": " ",
+        "twitter": "adityarb",
         "img":  "adityab.png",
         "workstreams": ["UI", "CR", "NG"]
     }, {

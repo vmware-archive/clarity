@@ -3,8 +3,6 @@
 @import 'node_modules/bootstrap/scss/images';
 @import './icons.clarity';
 
-$clr-icon-dimension-sm: rem(1);
-
 @include exports('images.clarity') {
     %icon-styles {
         display: inline-block;

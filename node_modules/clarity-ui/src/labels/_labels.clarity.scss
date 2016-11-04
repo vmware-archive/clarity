@@ -4,34 +4,34 @@
 @import "../utils/helpers.clarity";
 @import "../typography/typography.clarity";
 
-$padding-top-bottom: $clr_baselineRem_0_125;
-$padding-left-right: $clr_baselineRem_0_5;
+$clr-padding-top-bottom: $clr_baselineRem_0_125 !default;
+$clr-padding-left-right: $clr_baselineRem_0_5 !default;
 
-$label-colors: (
+$clr-label-colors: (
     gray: (
-        background: $gray-dark,
-        font: $gray-lightest
+        background: $clr-gray,
+        font: $clr-white
     ),
     purple: (
-        background: $action-purples-light-midtone,
-        font: $gray-lightest
+        background: $clr-action-purple-light-midtone,
+        font: $clr-white
     ),
     blue: (
-        background: $action-blues-dark,
-        font: $gray-lightest
+        background: $clr-action-blue-dark,
+        font: $clr-white
     ),
     orange: (
-        background: $yellows-light-midtone,
-        font: black
+        background: $clr-yellow-light-midtone,
+        font: $clr-black
     ),
     light-blue: (
-        background: $action-blues-lighter,
-        font: black
+        background: $clr-action-blue-lighter,
+        font: $clr-black
     )
-);
+) !default;
 
 @mixin generateLabelStyles($color:gray,$alias:1) {
-    $color-map: map-get($label-colors,$color);
+    $color-map: map-get($clr-label-colors,$color);
     &.label-#{$color},&.label-#{$alias} {
         border: 1px solid map-get($color-map,background);
     }
@@ -55,7 +55,7 @@ $label-colors: (
 };
 
 @mixin generateBadgeStyles($color:gray,$alias:1) {
-    $color-map: map-get($label-colors,$color);
+    $color-map: map-get($clr-label-colors,$color);
     &.badge-#{$color},&.badge-#{$alias} {
         background: map-get($color-map,background);
         color: map-get($color-map,font)
@@ -126,8 +126,6 @@ $badge-status: (
     //instead of using our baselineRem function. This was done to achieve the desired look
     //and to align this with our vertical baseline. Not sure why but aligning inline-blocks within inline-blocks
     //is a bit tricky. I initially used display: inline-block but I wasn't able to align the labels properly.
-    //TODO: I still am unable to align the labels center of the baseline but have managed to aligned it to the
-    //bottom. There are no margins which are influencing this. Need to figure out whats the issue.
     .label, a.label {
         //default
 
@@ -136,11 +134,11 @@ $badge-status: (
         // line-height needed to be adjusted to force center alignment
         line-height: 11px;
 
-        $color-map: map-get($label-colors, gray);
+        $color-map: map-get($clr-label-colors, gray);
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        padding: 0 $padding-left-right;
+        padding: 0 $clr-padding-left-right;
         border-radius: $clr_baselineRem_0_5;
         border: 1px solid $gray-dark;
         height: baselineRem(0.875);
@@ -190,7 +188,7 @@ $badge-status: (
     //TODO: I still am unable to align the badges center of the baseline but have managed to aligned it to the
     //bottom. There are no margins which are influencing this. Need to figure out whats the issue.
     .badge {
-        $color-map: map-get($label-colors, gray);
+        $color-map: map-get($clr-label-colors, gray);
         $equiDimensions: rem(15/$clr-rem-denominator);
         $rem_10: rem(10/$clr-rem-denominator);
 

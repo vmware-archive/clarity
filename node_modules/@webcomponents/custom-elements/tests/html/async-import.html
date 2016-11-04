@@ -1,0 +1,9 @@
+<x-dependency></x-dependency>
+<script>
+  customElements.define('x-dependent', class extends HTMLElement {
+    constructor() {
+      super();
+      this.dependencyMet = window.dependencySatisfied;
+    }
+  });
+</script>

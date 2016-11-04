@@ -4,26 +4,28 @@
 @import "../typography/typography.clarity";
 
 // Backgrounds
-$clr-table-bgcolor: clr-getColor(white);
-$clr-thead-bgcolor: clr-getColor(lighter);
+$clr-table-bgcolor: $clr-white !default;
+$clr-thead-bgcolor: $clr-near-white !default;
 
 // Borders
-$clr-tablerow-bordercolor: clr-getColor(light); // #EEE
-$clr-table-bordercolor: clr-getColor(light-midtone); // #CCC
-$clr-table-borderwidth: 1px;
-$clr-table-borderstyle: $clr-table-borderwidth solid $clr-table-bordercolor;
+$clr-tablerow-bordercolor: $clr-light-gray !default;
+$clr-table-bordercolor: $clr-light-midtone-gray !default;
+$clr-table-borderwidth: 1px !default;
+$clr-table-borderstyle: $clr-table-borderwidth solid $clr-table-bordercolor !default;
 
 // Etc.
 $clr-table-fontsize: clr-getTypePropertyValueForDomElement(table_text, font-size);
-$clr-table-lineheight: rem(1);
-$clr-table-cellpadding: $clr_baselineRem_0_5;
-$clr-table-lineheightPaddingShim: ($clr_baselineRem_1 - $clr-table-lineheight)/2;
+$clr-table-lineheight: rem(1) !default;
+$clr-table-cellpadding: $clr_baselineRem_0_5 !default;
+$clr-table-smallpadding: 0.5 * $clr-table-cellpadding !default;
+
+$clr-table-lineheightPaddingShim: ($clr_baselineRem_1 - $clr-table-lineheight)/2 !default;
 $clr-table-headerLineheightPaddingShim: ($clr_baselineRem_1 - clr-getTypePropertyValueForDomElement(table_header, font-size))/2;
-$clr-table-vertpadding: (($clr-table-cellpadding - $clr-table-borderwidth) * 0.5) + $clr-table-lineheightPaddingShim; // have to account for border...
-$clr-table-smallpadding: 0.5 * $clr-table-cellpadding;
+$clr-table-vertpadding: (($clr-table-cellpadding - $clr-table-borderwidth) * 0.5) + $clr-table-lineheightPaddingShim !default; // have to account for border...
+
 // Border radius of corner cells needs to be slightly less than the table's,
 // To make sure they correctly cover the whole area up to the border.
-$clr-table-cornercellradius: $clr-default-borderradius - 1;
+$clr-table-cornercellradius: $clr-default-borderradius - 1 !default;
 
 // Mixin for basic table styles to be able to reuse them on non-table elements.
 @mixin basic-table($table, $thead, $tbody, $tr, $th, $td) {

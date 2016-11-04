@@ -5,20 +5,20 @@
 @import "../images/icons.clarity";
 @import "../typography/typography.clarity";
 
-$login-background-color: $clr-white;
-$login_width: baselineRem(21);
-$login_icon_size: $clr-icon-dimension-sm;
+$clr-login-background-color: $clr-white !default;
+$clr-login-width: baselineRem(21) !default;
+$clr-login-icon-size: $clr-icon-dimension-sm !default;
 
 @include exports('login.clarity') {
     .login-wrapper {
         display: flex;
         background: generateLoginBackground();
         background-size: cover;
-        background-position: $login_width 0;
+        background-position: $clr-login-width 0;
         background-repeat: no-repeat;
 
         .login {
-            background: $login-background-color;
+            background: $clr-login-background-color;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -26,7 +26,7 @@ $login_icon_size: $clr-icon-dimension-sm;
             padding: $clr_baselineRem_1 $clr_baselineRem_4;
             height: auto;
             min-height: 100vh;
-            width: $login_width;
+            width: $clr-login-width;
 
             .title {
                 @include clr-getTypePropertiesForDomElement(login_productName, (color, font-weight, font-family, font-size, letter-spacing));
@@ -68,24 +68,24 @@ $login_icon_size: $clr-icon-dimension-sm;
                     margin: $clr_baselineRem_0_25 0 0 0;
                     padding: $clr_baselineRem_0_375 $clr_baselineRem_0_5;
                     background: clr-getColor(dark-midtone, reds);
-                    color: $login-background-color;
+                    color: $clr-login-background-color;
                     border-radius: $clr-default-borderradius;
                     line-height: $clr_baselineRem_0_75;
 
                     &:before {
                         display: inline-block; //needed for IE. display: none to display:flex on parent doesnt work
                         content: '';
-                        background: generateErrorIcon($login-background-color);
+                        background: generateErrorIcon($clr-login-background-color);
                         margin: 0 $clr_baselineRem_0_25 0 0;
-                        height: $login_icon_size;
-                        width: $login_icon_size;
+                        height: $clr-login-icon-size;
+                        width: $clr-login-icon-size;
                     }
 
                     &.active {
                         display: flex;
 
                         &:before {
-                            flex: 0 0 $login_icon_size;
+                            flex: 0 0 $clr-login-icon-size;
                         }
                     }
                 }
@@ -122,7 +122,7 @@ $login_icon_size: $clr-icon-dimension-sm;
     @media screen and (max-width: map-get($clr-breakpoints, medium)) {
         .login-wrapper {
             justify-content: center;
-            background: $login-background-color;
+            background: $clr-login-background-color;
 
             .login {
                 width: 100%;

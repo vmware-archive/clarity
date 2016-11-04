@@ -122,7 +122,7 @@ $clr-blue-contrastCache: (
     )
 );
 
-$clr-actionblue-contrastCache: (
+$clr-action-blue-contrastCache: (
     #89cbdf: (
         lightest: ( low: $clr-near-black, default: $clr-near-black, high: $clr-near-black, superHigh: null ),
         darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: null ),
@@ -161,7 +161,7 @@ $clr-actionblue-contrastCache: (
     )
 );
 
-$clr-actionpurple-contrastCache: (
+$clr-action-purple-contrastCache: (
     #9460b8: (
         lightest: ( low: $clr-white, default: $clr-white, high: null, superHigh: null ),
         darkest: ( low: $clr-near-white, default: $clr-white, high: null, superHigh: null ),
@@ -261,8 +261,8 @@ $clr-green-contrastCache: (
 // more readable than a bunch of hex-colors in one assignement.
 $clr-contrastCache: $clr-gray-contrastCache;
 $clr-contrastCache:  map-merge($clr-contrastCache, $clr-blue-contrastCache);
-$clr-contrastCache:  map-merge($clr-contrastCache, $clr-actionblue-contrastCache);
-$clr-contrastCache:  map-merge($clr-contrastCache, $clr-actionpurple-contrastCache);
+$clr-contrastCache:  map-merge($clr-contrastCache, $clr-action-blue-contrastCache);
+$clr-contrastCache:  map-merge($clr-contrastCache, $clr-action-purple-contrastCache);
 $clr-contrastCache:  map-merge($clr-contrastCache, $clr-red-contrastCache);
 $clr-contrastCache:  map-merge($clr-contrastCache, $clr-yellow-contrastCache);
 $clr-contrastCache:  map-merge($clr-contrastCache, $clr-green-contrastCache);

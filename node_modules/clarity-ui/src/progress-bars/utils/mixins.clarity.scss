@@ -1,4 +1,4 @@
-@mixin clr-progress-color($color: $clr-actionblue) {
+@mixin clr-progress-color($color: $clr-action-blue) {
     // for IE...
     color: $color;
 

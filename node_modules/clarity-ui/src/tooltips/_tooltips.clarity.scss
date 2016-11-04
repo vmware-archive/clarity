@@ -5,24 +5,24 @@
 @import "../utils/layers.clarity";
 @import "../typography/typography.clarity";
 
-$tooltip-font-color: clr-getColor(lightest);
-$tooltip-background-color: clr-getColor(black);
-$tooltip-default-width: baselineRem(10);
-$margin-value: $clr_baselineRem_0_25;
-$arrow-height: $clr_baselineRem_0_25;
-$arrow-width: baselineRem(5/24); //I wanted the arrow width to be 9. If I use 4.5/24 it still rounds up to 10.
-$tooltip-adjusted-margin: $margin-value + $arrow-width * 2;
+$clr-tooltip-font-color: $clr-white !default;
+$clr-tooltip-background-color: $clr-black !default;
+$clr-tooltip-default-width: baselineRem(10) !default;
+$margin-value: $clr_baselineRem_0_25 !default;
+$arrow-height: $clr_baselineRem_0_25 !default;
+$arrow-width: baselineRem(5/24) !default; //I wanted the arrow width to be 9. If I use 4.5/24 it still rounds up to 10.
+$clr-tooltip-adjusted-margin: $margin-value + $arrow-width * 2 !default;
 
 @mixin common-tooltip-styles {
     @include clr-getTypePropertiesForDomElement(tooltip_text, (font-size, font-weight, letter-spacing));
 
-    background: $tooltip-background-color;
+    background: $clr-tooltip-background-color;
     border-radius: $clr_baselineRem_0_125;
-    color: $tooltip-font-color;
+    color: $clr-tooltip-font-color;
     line-height: $clr_baselineRem_0_75;
     margin: 0; //Resetting any margin that might be applied to span/div elements inside forms
     padding: $clr_baselineRem_0_375 $clr_baselineRem_0_5;
-    width: $tooltip-default-width;
+    width: $clr-tooltip-default-width;
 }
 
 @mixin vertical-tooltip-generator($dirA:top, $dirB:right) {
@@ -38,7 +38,7 @@ $tooltip-adjusted-margin: $margin-value + $arrow-width * 2;
     #{$dirB}: auto;
 
     border-#{$oppA}-#{$oppB}-radius: 0;
-    margin-#{$oppA}: $tooltip-adjusted-margin;
+    margin-#{$oppA}: $clr-tooltip-adjusted-margin;
 
     &::before {
         position: absolute;
@@ -47,8 +47,8 @@ $tooltip-adjusted-margin: $margin-value + $arrow-width * 2;
         #{$dirA}: auto;
         #{$dirB}: auto;
         content: '';
-        border-#{$oppB}: $arrow-height solid $tooltip-background-color;
-        border-#{$dirA}: $arrow-width solid $tooltip-background-color;
+        border-#{$oppB}: $arrow-height solid $clr-tooltip-background-color;
+        border-#{$dirA}: $arrow-width solid $clr-tooltip-background-color;
         border-#{$dirB}: $arrow-height solid transparent;
         border-#{$oppA}: $arrow-width solid transparent;
     }
@@ -66,7 +66,7 @@ $tooltip-adjusted-margin: $margin-value + $arrow-width * 2;
     @include common-tooltip-styles;
 
     border-top-#{$oppA}-radius: 0;
-    margin-#{$oppA}: $tooltip-adjusted-margin;
+    margin-#{$oppA}: $clr-tooltip-adjusted-margin;
 
     &::before {
         position: absolute;
@@ -75,8 +75,8 @@ $tooltip-adjusted-margin: $margin-value + $arrow-width * 2;
         bottom: auto;
         #{$dirA}: auto;
         content: '';
-        border-top: $arrow-height solid $tooltip-background-color;
-        border-#{$dirA}: $arrow-width solid $tooltip-background-color;
+        border-top: $arrow-height solid $clr-tooltip-background-color;
+        border-#{$dirA}: $arrow-width solid $clr-tooltip-background-color;
         border-bottom: $arrow-height solid transparent;
         border-#{$oppA}: $arrow-width solid transparent;
     }
@@ -142,7 +142,7 @@ $tooltip-adjusted-margin: $margin-value + $arrow-width * 2;
         }
 
         &.tooltip-md > .tooltip-content {
-            width: $tooltip-default-width;
+            width: $clr-tooltip-default-width;
         }
 
         &.tooltip-lg > .tooltip-content {
@@ -159,16 +159,16 @@ $tooltip-adjusted-margin: $margin-value + $arrow-width * 2;
         & > .btn + .tooltip-content,
         &.tooltip-top-right > .btn + .tooltip-content,
         &.tooltip-top-left > .btn + .tooltip-content {
-            margin-bottom: $tooltip-adjusted-margin - $clr-button-vertical-margin;
+            margin-bottom: $clr-tooltip-adjusted-margin - $clr-button-vertical-margin;
         }
 
         &.tooltip-bottom-right > .btn + .tooltip-content,
         &.tooltip-bottom-left > .btn + .tooltip-content {
-            margin-top: $tooltip-adjusted-margin - $clr-button-vertical-margin;
+            margin-top: $clr-tooltip-adjusted-margin - $clr-button-vertical-margin;
         }
 
         &.tooltip-right > .btn + .tooltip-content {
-            margin-left: $tooltip-adjusted-margin - $clr-button-horizontal-margin;
+            margin-left: $clr-tooltip-adjusted-margin - $clr-button-horizontal-margin;
         }
     }
 

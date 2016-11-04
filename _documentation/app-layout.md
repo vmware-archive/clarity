@@ -47,7 +47,7 @@ Two constants of an app built in Clarity are the header and content area. These 
     </div>
     <div class="col-xs-12 col-md-7">
         <h4 style="margin-top:0">Header</h4>
-        The <a href="{{ site.baseurl }}/documentation/header/">header</a> is for branding and app-level elements such as navigation, search, and account settings.
+        The <a href="{{ site.baseurl }}/documentation/header">header</a> is for branding and app-level elements such as navigation, search, and account settings.
 
         <h4>Content Area</h4>
         The content area is where users focus their attention most of the time, gathering information and performing tasks–it is the canvas for your application. As the largest portion of your app, the content area is always visible.
@@ -58,11 +58,11 @@ Two constants of an app built in Clarity are the header and content area. These 
 
 
 ### Layout
-Your layout should reflect the information or workflow of the selected <a href="{{ site.baseurl }}/documentation/navigation/">navigation</a>. When laying out the content, keep the following in mind:
+Your layout should reflect the information or workflow of the selected <a href="{{ site.baseurl }}/documentation/navigation">navigation</a>. When laying out the content, keep the following in mind:
 
 {: .list}
 - The flow of content–how to create a hierarchy and layout that draws attention to the areas of importance
-- The importance of designing to the <a href="{{ site.baseurl }}/documentation/grid/">grid</a>
+- The importance of designing to the <a href="{{ site.baseurl }}/documentation/grid">grid</a>
 - How to aid users in completing their tasks
 - How to handle large amounts of data
 - Responsive design (if that is part of your product's goals)
@@ -80,7 +80,7 @@ For information on navigation components, header, subnav, and sidenav, see [Navi
     </div>
     <div class="col-xs-12 col-md-7">
         <div>
-            <a href="{{ site.baseurl }}/documentation/cards/">Cards</a> are for presenting high-level information and guiding users to related actions and details. Cards might include a combination of text, images, and data visualizations.
+            <a href="{{ site.baseurl }}/documentation/cards">Cards</a> are for presenting high-level information and guiding users to related actions and details. Cards might include a combination of text, images, and data visualizations.
         </div>
         <p>
             Benefits of using cards include:
@@ -101,7 +101,7 @@ For information on navigation components, header, subnav, and sidenav, see [Navi
     </div>
     <div class="col-xs-12 col-md-7">
         <div>
-            <a href="{{ site.baseurl }}/documentation/tables/">Tables</a> and datagrids are for good for managing large amounts of data.  These layouts work well when users need to compare data and perform batch operations.
+            <a href="{{ site.baseurl }}/documentation/tables">Tables</a> and datagrids are for good for managing large amounts of data.  These layouts work well when users need to compare data and perform batch operations.
         </div>
         <p>
             A table is a static view.  A datagrid provides users flexibility in viewing the data, including filtering and sorting.
@@ -120,7 +120,7 @@ For information on navigation components, header, subnav, and sidenav, see [Navi
     </div>
     <div class="col-xs-12 col-md-7">
         <div>
-            <a href="{{ site.baseurl }}/documentation/forms/">Forms</a> are for collecting data from users.  Forms are comprised of other components, including labels, input fields, labels, checkboxes, radio buttons, and text.
+            <a href="{{ site.baseurl }}/documentation/forms">Forms</a> are for collecting data from users.  Forms are comprised of other components, including labels, input fields, labels, checkboxes, radio buttons, and text.
         </div>
         <p>
             A benefit of a form is that users can see what information they must provide. Conversely, too many fields can discourage the user.
@@ -137,7 +137,7 @@ For information on navigation components, header, subnav, and sidenav, see [Navi
     </div>
     <div class="col-xs-12 col-md-8">
         <div>
-            <a href="{{ site.baseurl }}/documentation/tabs/">Tabs</a> appear in a single, non-scrollable row, at the top of the content area.  They are good for breaking content into separate, related views.         
+            <a href="{{ site.baseurl }}/documentation/tabs">Tabs</a> appear in a single, non-scrollable row, at the top of the content area.  They are good for breaking content into separate, related views.         
         </div>
         <p>
             Tabs are not appropriate if users need to compare data across views.
@@ -153,7 +153,7 @@ For information on navigation components, header, subnav, and sidenav, see [Navi
     </div>
     <div class="col-xs-12 col-md-8">
         <div>
-            White space and <a href="{{ site.baseurl }}/documentation/typography/">typography</a> are important elements in conveying hierarchy.  These elements direct users to what they should view next and make the content and data easier to parse. They also helps bring consistency to an app.
+            White space and <a href="{{ site.baseurl }}/documentation/typography">typography</a> are important elements in conveying hierarchy.  These elements direct users to what they should view next and make the content and data easier to parse. They also helps bring consistency to an app.
         </div>
     </div>
 </div>

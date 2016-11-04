@@ -22,5 +22,5 @@ clarity_ng_path: '/node_modules/clarity-angular/clarity-angular.min.js'
 images_path: '/images/'
 
 #template link
-template_link: '/images/sketchTemplates/Clarity-Template-0.5.0.sketch'
+template_link: '/images/sketchTemplates/Clarity-Template-0.6.0.sketch'
 template_readme_link: 'https://git.eng.vmware.com/?p=clarity-design-assets.git;a=blob_plain;f=README.md;hb=HEAD'

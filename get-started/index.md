@@ -112,28 +112,28 @@ Note that in order to design with the Sketch template, the open-source Metropoli
 {: #seedProjectClarity}
 ## Starting With a Clarity Seed Project (Recommended)
 
-For a new project, the best approach is to clone the Clarity seed project and modify it to fit your needs. The seed project is integrated with clarity-ui and clarity-angular, so you don’t need to install Clarity separately. 
+For a new project, the best approach is to clone the Clarity seed project and modify it to fit your needs. The seed project is integrated with clarity-ui and clarity-angular, so you don’t need to install Clarity separately.
 
 <p></p>
 <ol class="list">
 <li>Clone the seed app:
 <pre>
     <code class="clr-code">
-        git@github.com:vmware/clarity-seed.git
+    git@github.com:vmware/clarity-seed.git
     </code>
 </pre>
 </li>
 <li>Install the dependencies:
 <pre>
     <code class="clr-code">
-       npm install
+    npm install
     </code>
 </pre>
 </li>
 <li>Run the seed app:
 <pre>
-	<code class="clr-code">
-       npm start
+    <code class="clr-code">
+    npm start
     </code>
 </pre>
 </li>
@@ -178,21 +178,21 @@ Clarity is published as three separate packages on NPM:
 <li>Install the Clarity Icons package through npm:
 <pre>
     <code class="clr-code">
-       npm install clarity-icons
+    npm install clarity-icons
     </code>
 </pre>
 </li>
-<li>Install the polyfill for Custom Elements: 
+<li>Install the polyfill for Custom Elements:
 <pre>
     <code class="clr-code">
-        npm install github:webcomponents/custom-elements.git#v1.0.0-alpha.3
+    npm install github:webcomponents/custom-elements.git#v1.0.0-alpha.3
     </code>
 </pre>
 </li>
 <li>If your application supports IE10, the polyfill requires the MutationObserver shim to work. If your application does not support IE10, you can skip the following installation:
 <pre>
     <code class="clr-code">
-        npm install mutationobserver-shim@0.3.2
+    npm install mutationobserver-shim@0.3.2
     </code>
 </pre>
 </li>
@@ -200,11 +200,10 @@ Clarity is published as three separate packages on NPM:
 Include clarity-icons.min.css and clarity-icons.min.js in your HTML. Because custom-elements.min.js is dependent on the Custom Elements polyfill, you must include it before clarity-icons.min.js. If your app supports IE10, include mutationobserver.min.js before the polyfill:
 <pre>
     <code class="language-html">
-        &lt;link rel=&quot;stylesheet&quot; href=&quot;path/to/node_modules/clarity-icons/clarity-icons.min.css&quot;&gt;
-        
-   &lt;script src=&quot;path/to/node_modules/mutationobserver-shim/dist/mutationobserver.min.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;path/to/node_modules/clarity-icons/clarity-icons.min.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;path/to/node_modules/clarity-icons/clarity-icons.min.css&quot;&gt;
+    &lt;script src=&quot;path/to/node_modules/mutationobserver-shim/dist/mutationobserver.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js&quot;&gt;&lt;/script&gt
+    &lt;script src=&quot;path/to/node_modules/clarity-icons/clarity-icons.min.js&quot;&gt;&lt;/script&gt;
     </code>
 </pre>
 </li>
@@ -217,22 +216,22 @@ Include clarity-icons.min.css and clarity-icons.min.js in your HTML. Because cus
 <li>Install Clarity UI package through npm:
 <pre>
     <code class="clr-code">
-       npm install clarity-ui
+    npm install clarity-ui
     </code>
 </pre>
 </li>
 <li>Install FontAwesome:
 <pre>
     <code class="clr-code">
-       npm install font-awesome
+    npm install font-awesome
     </code>
 </pre>
 </li>
 <li>Include font-awesome.css and clarity-ui.min.css in your HTML file:
 <pre>
     <code class="language-html">
-	&lt;link rel="stylesheet" href="path/to/node_modules/font-awesome/css/font-awesome.min.css"&gt;
-	&lt;link rel="stylesheet" href="path/to/node_modules/clarity-ui/clarity-ui.min.css"&gt;    
+    &lt;link rel="stylesheet" href="path/to/node_modules/font-awesome/css/font-awesome.min.css"&gt;
+    &lt;link rel="stylesheet" href="path/to/node_modules/clarity-ui/clarity-ui.min.css"&gt;    
 </code>
 </pre>
 </li>
@@ -248,28 +247,28 @@ Include clarity-icons.min.css and clarity-icons.min.js in your HTML. Because cus
 <li>Install the clarity-angular package through npm:
 <pre>
     <code class="clr-code">
-       npm install clarity-angular
+    npm install clarity-angular
     </code>
 </pre>
 </li>
 <li>Install the clarity-angular package through npm:
 <pre>
     <code class="language-html">
-       import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { ClarityModule } from 'clarity-angular';
-import { AppComponent } from './app.component';
+    import { NgModule } from '@angular/core';
+    import { BrowserModule } from '@angular/platform-browser';
+    import { ClarityModule } from 'clarity-angular';
+    import { AppComponent } from './app.component';
 
-@NgModule({
-    imports: [
-        BrowserModule,
-        ClarityModule,
-        ....
-     ],
-     declarations: [ AppComponent ],
-     bootstrap: [ AppComponent ]
-})
-export class AppModule {    }
+    @NgModule({
+        imports: [
+            BrowserModule,
+            ClarityModule,
+            ....
+         ],
+         declarations: [ AppComponent ],
+         bootstrap: [ AppComponent ]
+    })
+    export class AppModule {    }
     </code>
 </pre>
 </li>
@@ -280,7 +279,7 @@ export class AppModule {    }
 
 <pre>
     <code class="clr-code">
-        npm start
+    npm start
     </code>
 </pre>
 

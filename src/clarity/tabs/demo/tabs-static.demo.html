@@ -1,16 +1,16 @@
 <div class="clr-example">
     <ul id="demoTabs" class="nav" role="tablist">
         <li role="presentation" class="nav-item">
-            <a id="tabDashboard" href="javascript://" role="tab" aria-controls="panelDashboard" aria-selected="true"
-               class="nav-link active">Dashboard</a>
+            <button id="tabDashboard" class="btn btn-link nav-link active" aria-controls="panelDashboard"
+                    aria-selected="true" type="button">Dashboard</button>
         </li>
         <li role="presentation" class="nav-item">
-            <a id="tabManagement" href="javascript://" role="tab" aria-controls="panelManagement" aria-selected="false"
-               class="nav-link">Management</a>
+            <button id="tabManagement" class="btn btn-link nav-link" aria-controls="panelManagement"
+                    aria-selected="false" type="button">Management</button>
         </li>
         <li role="presentation" class="nav-item">
-            <a id="tabCloud" href="javascript://" role="tab" aria-controls="panelCloud" aria-selected="false"
-               class="nav-link">Cloud</a>
+            <button id="tabCloud" class="btn btn-link nav-link" aria-controls="panelCloud"
+                    aria-selected="false" type="button">Cloud</button>
         </li>
     </ul>
     <section id="panelDashboard" role="tabpanel" aria-labelledby="tabDashboard">
@@ -26,18 +26,18 @@
 
 <pre>
 <code clr-code-highlight="language-html">
-&lt;ul id=&quot;tabs&quot; class=&quot;nav&quot; role=&quot;tablist&quot;&gt;
+&lt;ul id=&quot;demoTabs&quot; class=&quot;nav&quot; role=&quot;tablist&quot;&gt;
     &lt;li role=&quot;presentation&quot; class=&quot;nav-item&quot;&gt;
-        &lt;a id=&quot;tab1&quot; href=&quot;#&quot; role=&quot;tab&quot; aria-controls=&quot;panel1&quot;
-           aria-selected=&quot;true&quot; class=&quot;nav-link active&quot;&gt;Dashboard&lt;/a&gt;
+        &lt;button id=&quot;tab1&quot; class=&quot;btn btn-link nav-link active&quot; aria-controls=&quot;panel1&quot;
+                aria-selected=&quot;true&quot; type=&quot;button&quot;&gt;Dashboard&lt;/button&gt;
     &lt;/li&gt;
     &lt;li role=&quot;presentation&quot; class=&quot;nav-item&quot;&gt;
-        &lt;a id=&quot;tab2&quot; href=&quot;#&quot; role=&quot;tab&quot; aria-controls=&quot;panel2&quot;
-           aria-selected=&quot;false&quot; class=&quot;nav-link&quot;&gt;Management&lt;/a&gt;
+        &lt;button id=&quot;tab2&quot; class=&quot;btn btn-link nav-link&quot; aria-controls=&quot;panel2&quot;
+                aria-selected=&quot;false&quot; type=&quot;button&quot;&gt;Management&lt;/button&gt;
     &lt;/li&gt;
     &lt;li role=&quot;presentation&quot; class=&quot;nav-item&quot;&gt;
-        &lt;a id=&quot;tab3&quot; href=&quot;#&quot; role=&quot;tab&quot; aria-controls=&quot;panel3&quot;
-           aria-selected=&quot;false&quot; class=&quot;nav-link&quot;&gt;Cloud&lt;/a&gt;
+        &lt;button id=&quot;tab3&quot; class=&quot;btn btn-link nav-link&quot; aria-controls=&quot;panel3&quot;
+                aria-selected=&quot;false&quot; type=&quot;button&quot;&gt;Cloud&lt;/button&gt;
     &lt;/li&gt;
 &lt;/ul&gt;
 &lt;section id=&quot;panel1&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;tab1&quot;&gt;

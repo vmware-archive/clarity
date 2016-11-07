@@ -2,7 +2,7 @@
     <clr-stack-view>
         <clr-stack-header>
             Modal editor
-            <a class="stack-action btn btn-sm btn-link" (click)="editModal = true">Edit</a>
+            <button class="stack-action btn btn-sm btn-link" (click)="editModal = true" type="button">Edit</button>
         </clr-stack-header>
 
         <clr-stack-block *ngFor="let block of blocks">
@@ -46,7 +46,7 @@
 &lt;clr-stack-view&gt;
     &lt;clr-stack-header&gt;
         Modal editor
-        &lt;a class=&quot;stack-action btn btn-sm btn-link&quot; (click)=&quot;editModal = true&quot;&gt;Edit&lt;/a&gt;
+        &lt;button class=&quot;stack-action btn btn-sm btn-link&quot; (click)=&quot;editModal = true&quot; type=&quot;button&quot;&gt;Edit&lt;/button&gt;
     &lt;/clr-stack-header&gt;
 
     &lt;clr-stack-block *ngFor=&quot;let block of blocks&quot;&gt;

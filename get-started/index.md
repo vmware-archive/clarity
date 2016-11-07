@@ -109,149 +109,174 @@ Note that in order to design with the Sketch template, the open-source Metropoli
 - [Download the latest Sketch template]({{ site.baseurl }}{{ site.data.global.template_link }}){: target='_blank' }
 - [Download the Metropolis font](https://github.com/chrismsimpson/Metropolis){: target='_blank' }
 
-{: #seedProject}
-## Using an Angular Seed Project
+{: #seedProjectClarity}
+## Starting With a Clarity Seed Project (Recommended)
 
-Build an Angular 2 app, then install Clarity onto your project.
+For a new project, the best approach is to clone the Clarity seed project and modify it to fit your needs. The seed project is integrated with clarity-ui and clarity-angular, so you don’t need to install Clarity separately. 
 
-### Building an Angular 2 App
-
+<p></p>
 <ol class="list">
-<li>Look at the Angular 2 documentation, starting with [the 5 Min Quickstart](https://angular.io/docs/ts/latest/quickstart.html).</li>
+<li>Clone the seed app:
+<pre>
+    <code class="clr-code">
+        git@github.com:vmware/clarity-seed.git
+    </code>
+</pre>
+</li>
+<li>Install the dependencies:
+<pre>
+    <code class="clr-code">
+       npm install
+    </code>
+</pre>
+</li>
+<li>Run the seed app:
+<pre>
+	<code class="clr-code">
+       npm start
+    </code>
+</pre>
+</li>
+</ol>
+
+{: #seedProjectAngular}
+## Starting With an Angular Seed Project
+
+You can build an Angular 2 app, then install Clarity onto your project.
+
+### Step 1: Build an Angular 2 App
+<p></p>
+<ol class="list">
+<li>Look at the Angular 2 documentation, starting with <a href="https://angular.io/docs/ts/latest/quickstart.html">the 5 Min Quickstart</a>.</li>
 <li>Save and modify the example structure and build, or use one of the Angular seeds:
 <ul class="list">
 <li><a href="https://github.com/angular/angular-cli">https://github.com/angular/angular-cli</a> (in Beta)</li>
 <li><a href="https://github.com/mgechev/angular2-seed">https://github.com/mgechev/angular2-seed</a></li>
-<li><a href="https://github.com/angular/angular2-seed">https://github.com/angular/angular2-seed</a> (in Beta)</li>
+<li><a href="https://github.com/angular/angular2-seed">https://github.com/angular/angular2-seed</a> </li>
 <li><a href="https://github.com/AngularClass/angular2-webpack-starter">https://github.com/AngularClass/angular2-webpack-starter</a></li>
 </ul>
 </li>
 </ol>
 
 {: #installing}
-### Installing Clarity
+### Step 2:  Install Clarity
 
 Clarity is published as three separate packages on NPM:
 
 <a id="clarity_icons"></a>
 <ul class="list">
-<li>
-<a href="https://www.npmjs.com/package/clarity-icons" target="_blank">clarity-icons</a> contains a JavaScript file that generates custom element icons and a style file comprised of the predefined classes for icon color, size, and orientation. You can use this package independently without ClarityUI and ClarityNG.
-</li>
-</ul>
-
-<a id="clarity_ui"></a>
-<ul class="list">
-<li>
-<a href="https://www.npmjs.com/package/clarity-ui" target="_blank">clarity-ui</a> contains the static styles that you can use in any application, even if it doesn’t use Angular. You can expect switching from Bootstrap to Clarity UI to be minimal work. We tried to preserve Bootstrap’s classes and logic. This package depends on  clarity-icons for icon elements.
-</li>
-</ul>
-
-<a id="clarity_ng"></a>
-<ul class="list">
-<li>
-<a href="https://www.npmjs.com/package/clarity-angular" target="_blank">clarity-angular</a> contains the Angular 2 components. This package depends on  clarity-ui for styles.
+<li><b>clarity-icons.</b> Contains the custom element icons.</li>
+<li><b>clarity-ui.</b> Contains the static styles for building HTML components.</li>
+<li><b>clarity-angular.</b> Contains the Angular 2 components. This package depends on clarity-ui for styles.
 </li>
 </ul>
 
 #### Install Clarity Icons
+<p></p>
 
-Clarity Icons are created using Custom Elements V1, which is not currently supported by browsers. However, all major browsers are working toward supporting Custom Elements V1 out-of-the-box. Until browsers support it natively, you can use a polyfill.
-
-Install the polyfill, webcomponents/custom-elements:
-
+<ol class="list">
+<li>Install the Clarity Icons package through npm:
 <pre>
     <code class="clr-code">
-        npm install github:webcomponents/custom-elements.git#v1.0.0-alpha.3 -save
+       npm install clarity-icons
     </code>
 </pre>
-
-If your app supports IE10, the polyfill requires the MutationObserver shim to work. If your app doesn't need to support IE10, you can skip the following installation.
-
+</li>
+<li>Install the polyfill for Custom Elements: 
 <pre>
     <code class="clr-code">
-        npm install mutationobserver-shim@0.3.2 -save
+        npm install github:webcomponents/custom-elements.git#v1.0.0-alpha.3
     </code>
 </pre>
-
-Install the Clarity Icons:
-
+</li>
+<li>If your application supports IE10, the polyfill requires the MutationObserver shim to work. If your application does not support IE10, you can skip the following installation:
 <pre>
     <code class="clr-code">
-        npm install clarity-icons -save
+        npm install mutationobserver-shim@0.3.2
     </code>
 </pre>
-
-Now you can include  <code class="clr-code">clarity-icons.min.css</code> and  <code class="clr-code">clarity-icons.min.js</code>  in your HTML. Because  <code class="clr-code">custom-elements.min.js</code>  is dependent on the Custom Elements V1 polyfill, include it before  <code class="clr-code">clarity-icons.min.js</code> . Also, if your app needs to support IE10, include  <code class="clr-code">mutationobserver.min.js/</code>  before the polyfill.
-
-For example:
-
+</li>
+<li>
+Include clarity-icons.min.css and clarity-icons.min.js in your HTML. Because custom-elements.min.js is dependent on the Custom Elements polyfill, you must include it before clarity-icons.min.js. If your app supports IE10, include mutationobserver.min.js before the polyfill:
 <pre>
     <code class="language-html">
         &lt;link rel=&quot;stylesheet&quot; href=&quot;path/to/node_modules/clarity-icons/clarity-icons.min.css&quot;&gt;
-
-        &lt;script src=&quot;path/to/node_modules/mutationobserver-shim/dist/mutationobserver.min.js&quot;&gt;&lt;/script&gt;
+        
+   &lt;script src=&quot;path/to/node_modules/mutationobserver-shim/dist/mutationobserver.min.js&quot;&gt;&lt;/script&gt;
         &lt;script src=&quot;path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js&quot;&gt;&lt;/script&gt;
         &lt;script src=&quot;path/to/node_modules/clarity-icons/clarity-icons.min.js&quot;&gt;&lt;/script&gt;
     </code>
 </pre>
+</li>
+</ol>
 
 #### Install Clarity UI
 
+<p></p>
+<ol class="list">
+<li>Install Clarity UI package through npm:
 <pre>
     <code class="clr-code">
-        npm install clarity-ui -save
+       npm install clarity-ui
     </code>
 </pre>
-
-Include the <code class="clr-code">clarity-ui.min.css</code> from the package in your HTML file.
-
-For example:
+</li>
+<li>Install FontAwesome:
+<pre>
+    <code class="clr-code">
+       npm install font-awesome
+    </code>
+</pre>
+</li>
+<li>Include font-awesome.css and clarity-ui.min.css in your HTML file:
 <pre>
     <code class="language-html">
-        &lt;link rel=&quot;stylesheet&quot; href=&quot;path/to/node_modules/clarity-icons/clarity-icons.min.css&quot;&gt;
-        &lt;link rel=&quot;stylesheet&quot; href=&quot;path/to/node_modules/clarity-ui/clarity-ui.min.css&quot;&gt;
-
-        &lt;script src=&quot;path/to/node_modules/mutationobserver-shim/dist/mutationobserver.min.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;path/to/node_modules/clarity-icons/clarity-icons.min.js&quot;&gt;&lt;/script&gt;
-    </code>
+	&lt;link rel="stylesheet" href="path/to/node_modules/font-awesome/css/font-awesome.min.css"&gt;
+	&lt;link rel="stylesheet" href="path/to/node_modules/clarity-ui/clarity-ui.min.css"&gt;    
+</code>
 </pre>
+</li>
+<li>Write your HTML with the Clarity CSS class names and markup.</li>
+</ol>
 
 #### Install Clarity Angular
 
+<p></p>
+<ol class="list">
+<li>If you haven't already, complete steps 1 and 2 for installing Clarity UI in the preceding section.
+</li>
+<li>Install the clarity-angular package through npm:
 <pre>
     <code class="clr-code">
-        npm install clarity-angular -save
+       npm install clarity-angular
     </code>
 </pre>
-
-Import the ClarityModule into your application's module.
-
-For example:
-
+</li>
+<li>Install the clarity-angular package through npm:
 <pre>
-<code class="language-typescript">
-    import { NgModule } from '@angular/core';
-    import { BrowserModule } from '@angular/platform-browser';
-    import { ClarityModule } from 'clarity-angular';
-    import { AppComponent } from './app.component';
+    <code class="language-html">
+       import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ClarityModule } from 'clarity-angular';
+import { AppComponent } from './app.component';
 
-    @NgModule({
-        imports: [
-            BrowserModule,
-            ClarityModule,
-            ....
-         ],
-         declarations: [ AppComponent ],
-         bootstrap: [ AppComponent ]
-    })
-    export class AppModule {    }
-</code>
+@NgModule({
+    imports: [
+        BrowserModule,
+        ClarityModule,
+        ....
+     ],
+     declarations: [ AppComponent ],
+     bootstrap: [ AppComponent ]
+})
+export class AppModule {    }
+    </code>
 </pre>
+</li>
+</ol>
 
 
-### Running Your App
+### Step 3: Run Your App
 
 <pre>
     <code class="clr-code">

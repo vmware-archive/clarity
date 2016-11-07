@@ -194,6 +194,6 @@ All elements in Clarity are built in terms of 24px:
 
 ##### Repeat 24px in Your Layout
 
-Calculate the vertical margins and padding between elements using the Clarity baseline.  A multiple 24px can be a whole or half-ratio. Common numbers include:
+Calculate the vertical margins and padding between elements using the Clarity baseline.  A multiple of 24px can be a whole or half-ratio. Common numbers include:
 
 6 px, 12px, 18px, 24px, 30px, 36px, 42px, 48px, 54px, 60px, 66px, 72px  

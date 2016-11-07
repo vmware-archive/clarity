@@ -1,6 +1,4 @@
 (function(win) {
-    //hacked together jQuery clone with minimal DOM class manipulation
-
     win.$clr = (function(){
         var $clr = function(elemSelector){
                 if (typeof elemSelector !== 'string') {

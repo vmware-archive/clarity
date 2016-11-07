@@ -28,7 +28,6 @@
     }
 
     function syncActiveClasses(navLink) {
-        // not a great way to do this...
         var linkToFind = navLink.innerText;
 
         for (var i=0, len=scrollNavCollection.length; i < len; i++) {

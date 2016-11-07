@@ -1,13 +1,11 @@
-.main-container, .home-hero {
+.main-container {
     & > header {
-        // background-image: url(../images/splashBg.png);
-        //background-color: #002538 !important; // clarity is not letting me override this style!
         background-repeat: no-repeat;
         background-position: top center;
         background-size: cover;
 
         .branding > a {
-            height: 60px;
+            height: $bl-2_5;
         }
 
         a {
@@ -26,18 +24,14 @@
     }
 }
 
-.home-hero > header {
-    background: none !important;
-
-    & > .header-nav > .nav-link {
-        &:first-child::before,
-        &:last-child::after {
-            content: none;
-        }
-    }
+header .branding .logo,
+header .branding .clr-icon,
+.header .branding .logo,
+.header .branding .clr-icon {
+    margin-right: $bl-0_5;
 }
 
-.sliding-nav-toggle, .phablet-title {
+.sliding-nav-toggle {
     display: none;
 }
 
@@ -51,7 +45,7 @@
     width: 35%;
     min-width: baselineRem(10);
     padding: 0;
-    padding-right: baselineRem(2);
+    padding-right: $bl-2_0;
     position: fixed;
     top: 0;
     left: 0;
@@ -61,11 +55,11 @@
     h5 {
         color: #565656;
         font-size: 14px;
-        padding-left: 24px;
-        margin-top: 48px;
+        padding-left: $bl-1_0;
+        margin-top: $bl-2_0;
 
         &.furst, &.changelog-hdr {
-            margin-top: 24px;
+            margin-top: $bl-1_0;
         }
     }
 }
@@ -80,7 +74,7 @@
         text-transform: uppercase;
 
         &.first {
-            margin-top: 20px;
+            margin-top: $bl-1_0 - 4;
         }
     }
 }
@@ -88,9 +82,9 @@
 a.close-toggle {
     display: block;
     position: absolute;
-    right: baselineRem(0.75);
-    top: 20px;
-    font-size: 36px;
+    right: $bl-0_75;
+    top: $bl-1_0 - 4;
+    font-size: $bl-1_5;
     color: #f0f0f0;
 
     &:hover, &:focus {
@@ -104,7 +98,7 @@ a.close-toggle {
     margin-right: -100%;
     left: auto;
     right: 0;
-    padding-left: baselineRem(2);
+    padding-left: $bl-2_0;
     padding-right: 0;
 
     a.close-toggle {
@@ -137,10 +131,10 @@ a.close-toggle {
 
     .sliding-nav-logo > .logo-img {
         background-image: url("../images/clarity_logo.svg");
-        height: 36px;
-        width: 36px;
+        height: $bl-1_5;
+        width: $bl-1_5;
         display: inline-block;
-        margin: 12px 0 0 12px;
+        margin: $bl-0_5 0 0 $bl-0_5;
     }
 
     ul.slider-nav {
@@ -165,9 +159,9 @@ a.close-toggle {
             letter-spacing: 0.04em;
             display: block;
             width: 100%;
-            padding: 0 baselineRem(0.5);
+            padding: 0 $bl-0_5;
             display: block;
-            margin: baselineRem(0.75) 0 baselineRem(0.75) baselineRem(0.5);
+            margin: $bl-0_75 0 $bl-0_75 $bl-0_5;
             border-radius: 3px 0 0 3px;
 
             &:hover {
@@ -217,30 +211,23 @@ body.show-sidebar {
     }
 }
 
-.phablet-title {
-    width: 100%;
-    padding: 0 baselineRem(3) 0 baselineRem(2.5);
-    text-align: center;
-    line-height: baselineRem(2.5);
-}
-
 header .branding > a.sliding-nav-toggle {
-    font-size: 24px;
+    font-size: $bl-1_0;
     display: none;
 }
 
+.github-btn {
+    margin-top: $bl-1_0 - 4;
+}
+
 @media (max-width: 1116px) {
-    .main-container, .home-hero {
+    .main-container {
         & > header .branding, & > .header .branding {
             width: auto;
             max-width: none;
             min-width: 0;
-            padding-right: baselineRem(1);
+            padding-right: $bl-1_0;
         }
-    }
-
-    .branding .title {
-        display: none;
     }
 }
 
@@ -256,54 +243,44 @@ header .branding > a.sliding-nav-toggle {
         display: block;
     }
 
-    .main-container, .home-hero {
+    .github-btn {
+        display: none;
+    }
+
+    .main-container {
         & > header {
             .branding {
-                a.logo-and-title {
-                    display: none;
+                .clr-vmw-logo {
+                    visibility: hidden;
+                    margin-right: $bl-0_25;
                 }
 
                 & > a.sliding-nav-toggle {
                     display: block;
-                    width: 36px;
+                    height: $bl-2_5;
+                    width: $bl-1_5;
                     background: url(../images/home/menu.svg) 50% 50% no-repeat;
                     position: absolute;
                     top: -1px;
-                    left: 18px;
+                    left: $bl-0_75;
                 }
             }
 
             .settings {
                 & > a.sliding-sidenav-toggle {
                     display: block;
-                    width: 36px;
+                    width: $bl-1_5;
                     background: url(../images/home/slider.svg) 50% 50% no-repeat;
                     position: absolute;
-                    top: 18px;
+                    top: $bl-0_75;
                     right: 8px;
-                    height: 24px;
+                    height: $bl-1_0;
                 }
             }
         }
     }
 
-    .home-hero {
-        & > header {
-            .branding > a.sliding-nav-toggle {
-                position: relative;
-                margin-top: -2px;
-                margin-left: 12px;
-                top: auto;
-                left: auto;
-            }
-        }
-    }
-
-    .phablet-title {
-        display: block;
-    }
-
-    .main-container, .home-hero {
+    .main-container {
         & > header {
             div.header-nav, .divider, .header-nav {
                 // funkiness of the homepage navbar makes this the path of least resistance
@@ -312,9 +289,9 @@ header .branding > a.sliding-nav-toggle {
         }
     }
 
-    .main-container, .home-hero {
+    .main-container {
         & > header, & > .header {
-            padding: 0 baselineRem(1);
+            padding: 0 $bl-1_0;
 
             .branding {
                 padding-left: 0;

@@ -17,24 +17,31 @@ function ClarityIcon() {
     "use strict";
     return (parentConstructor as any).apply(this, arguments);
 }
+
 (ClarityIcon as any).observedAttributes = ["shape"];
 ClarityIcon.prototype = Object.create(HTMLElement.prototype);
 ClarityIcon.prototype.constructor = ClarityIcon;
-ClarityIcon.prototype.generateIcon = function(shape: string) {
-    if (shape !== this._shape) {
-        this._shape = shape;
-        this.innerHTML = SVG_ICON_TEMPLATES[shape] || SVG_ICON_TEMPLATES["warning"];
+let generateIcon = function (element: any, shape: string) {
+
+    if (shape !== element._shape) {
+        element._shape = shape;
+        element.innerHTML = SVG_ICON_TEMPLATES[shape] || SVG_ICON_TEMPLATES["warning"];
     }
 };
-ClarityIcon.prototype.connectedCallback = function() {
+ClarityIcon.prototype.connectedCallback = function () {
+
     let host = this as HTMLElement;
+
     if (host.hasAttribute("shape")) {
-        this.generateIcon(host.getAttribute("shape"));
+        generateIcon(host, host.getAttribute("shape"));
     }
 };
-ClarityIcon.prototype.attributeChangedCallback = function(attributeName: string, oldValue: string, newValue: string) {
+ClarityIcon.prototype.attributeChangedCallback = function (attributeName: string, oldValue: string, newValue: string) {
+
+    let host = this as HTMLElement;
+
     if (attributeName === "shape") {
-        this.generateIcon(newValue);
+        generateIcon(host, newValue);
     }
 };
 

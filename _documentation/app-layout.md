@@ -132,10 +132,10 @@ For information on navigation components, header, subnav, and sidenav, see [Navi
 ##### Tabs
 
 <div class="row cozy-sm">
-    <div class="col-xs-12 col-md-4">
+    <div class="col-xs-12 col-md-5">
         <img src="{{ site.baseurl }}/images/documentation/app-layout/tabs.png?{{ site.time | date: '%s%N' }}" alt="Tabs"/>
     </div>
-    <div class="col-xs-12 col-md-8">
+    <div class="col-xs-12 col-md-7">
         <div>
             <a href="{{ site.baseurl }}/documentation/tabs">Tabs</a> appear in a single, non-scrollable row, at the top of the content area.  They are good for breaking content into separate, related views.         
         </div>
@@ -148,10 +148,10 @@ For information on navigation components, header, subnav, and sidenav, see [Navi
 ##### White Space and Typography
 
 <div class="row cozy-sm">
-    <div class="col-xs-12 col-md-4">
+    <div class="col-xs-12 col-md-5">
         <img src="{{ site.baseurl }}/images/documentation/app-layout/typography.png?{{ site.time | date: '%s%N' }}" alt="White Space and Typography"/>
     </div>
-    <div class="col-xs-12 col-md-8">
+    <div class="col-xs-12 col-md-7">
         <div>
             White space and <a href="{{ site.baseurl }}/documentation/typography">typography</a> are important elements in conveying hierarchy.  These elements direct users to what they should view next and make the content and data easier to parse. They also helps bring consistency to an app.
         </div>

@@ -40,8 +40,6 @@ This component provides a complete login experience.
 
 To customize the login page, remove the elements you don't need, per your use case. For example, your app may require fewer fields.
 
-Use the provided, Clarity-themed login image. Future Clarity releases will provide additional image choices.
-
 #### Validation
 
 Validation occurs on submit. If the user enters an incorrect user name or password, a validation message appears below the password field.

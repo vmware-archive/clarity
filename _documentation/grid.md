@@ -7,7 +7,7 @@ layout: documentation
 {: .component-summary }
 #### A grid provides a structure of rows and columns for aligning content. Grids are useful because they help create a familiar and easily navigable structure for content.
 
-Clarity uses the [Bootstrap 4 Flex Grid](http://v4-alpha.getbootstrap.com/layout/grid/).  This is a 12-column, responsive grid, per the Bootstrap documentation shown here:
+Clarity uses the [Bootstrap 4 Flex Grid](http://v4-alpha.getbootstrap.com/layout/grid/).  This is a 12-column, responsive grid, per the Bootstrap documentation shown in the following table:
 
 <div class="row">
     <div class="col-xs-12">
@@ -146,6 +146,9 @@ To align columns horizontally within a row, extend the row with one of the follo
     Design guidelines start here...
 {% endcomment %}
 
+#### Usage
+
+
 Clarity recommends that your application layout stay on the grid.  A grid-based approach:
 
 {: .list}
@@ -164,7 +167,7 @@ Don't lock your design into a layout optimized for a large window.
 
 #### Grids and Card Layouts
 
-Designing to a grid is especially important for card layouts.  Cards contains blocks of content and their height and width can vary.  The grid aligns the cards in a way that is easy for users to navigate.
+Designing to a grid is especially important for <a href="{{ site.baseurl }}/documentation/cards">card</a> layouts.  Cards contains blocks of content and their height and width can vary.  The grid aligns the cards in a way that is easy for users to navigate.
 
 #### If You Decide Not to Conform to the Grid
 

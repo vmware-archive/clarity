@@ -117,7 +117,7 @@ Users open a dropdown by clicking its toggle. By default, selecting a menu item 
 
 ### Placement
 
-By default, a dropdown opens from the bottom of the toggle, along the left side.  You can change the placement by using the Clarity direction classes.  See the dropdown demo for the eight direction classes.
+By default, a dropdown opens from the bottom of the toggle, along the left side.  You can change the placement by using one of the eight direction classes.
 
 ### Menu Toggle
 

@@ -202,7 +202,7 @@ Include clarity-icons.min.css and clarity-icons.min.js in your HTML. Because cus
     <code class="language-html">
     &lt;link rel=&quot;stylesheet&quot; href=&quot;path/to/node_modules/clarity-icons/clarity-icons.min.css&quot;&gt;
     &lt;script src=&quot;path/to/node_modules/mutationobserver-shim/dist/mutationobserver.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js&quot;&gt;&lt;/script&gt
+    &lt;script src=&quot;path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js&quot;&gt;&lt;/script&gt;
     &lt;script src=&quot;path/to/node_modules/clarity-icons/clarity-icons.min.js&quot;&gt;&lt;/script&gt;
     </code>
 </pre>

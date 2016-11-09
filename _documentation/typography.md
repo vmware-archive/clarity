@@ -322,14 +322,15 @@ The function returns a specified style value (from <code>$valToGet</code>) from 
     Design guidelines start here...
 {% endcomment %}
 
-### Font
+
+### The Metropolis Font
 
 Metropolis has clear, simple letters with rounded forms.   
 This gives the font a friendly and modern appearance.
 
 <img src="{{ site.baseurl }}{{ site.data.global.images_path }}documentation/typography/Typography-A-Z.png?{{ site.time | date: '%s%N' }}" alt="Metropolis light, regular, medium, and semibold">
 
-### Font Weights
+### Font Weights in Clarity
 
 To maintain a light, clean look, Clarity does not use a weight stronger than semibold.
 

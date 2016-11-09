@@ -123,7 +123,7 @@ Clarity has three navigation components: header, subnav, and sidenav.  These com
 - Adapt to changes in screen size according to predefined breakpoints and grid alignment. This responsiveness helps your app scale from small to large screens.
 -->
 
-### Usage
+### Using the Navigation Patterns
 
 #### Header
 

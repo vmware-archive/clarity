@@ -131,7 +131,7 @@ Use the <code class="clr-code">.alert-sm</code> class with <code class="clr-code
     Design guidelines start here...
 {% endcomment %}
 
-## Standard Alerts
+## Using Standard Alerts
 
 Standard alerts are part of the content area.  These alerts are for notifying users that a particular component or area of the screen needs attention.  Standard alerts have four levels, denoted by color and icon. From most to least severe, they are:
 
@@ -149,7 +149,7 @@ Alert positioning should be contextual to the component or area to which it appl
 
 Base the height of the alert (36 or 24 pixels) on its location.  The larger alert is for use in the application's main content area, modals, and wizards.  The smaller alert is for use in cards.
 
-### Dismissable
+### Closing Alerts
 
 A close button (X) serves as a method for users to acknowledge the alert.  It also allows users to declutter the view. Omit the close button if the alert should be persistent.
 
@@ -159,20 +159,16 @@ Keep the message text short and concise.  If combining multiple messages in a si
 
 ### Stacking Alerts
 
-When showing multiple alerts:
+When showing multiple alerts, stack from most severe to least severe:
 
 <ul class="list">
-    <li>Stack from most severe to least severe:
-    <ul class="list">
-      <li>Error</li>
-      <li>Warning</li>
-      <li>Info</li>
-      <li>Success</li>
-    </ul>
-  </li>
-  <li>Stack up to three alerts.</li>
-  <li>For more than three, consider another pattern, such as displaying the information on another page.</li>
+    <li>Error</li>
+    <li>Warning</li>
+    <li>Info</li>
+    <li>Success</li>
 </ul>
+
+  Stack up to three alerts. For more than three, consider another pattern, such as displaying the information on another page.
 
 ### Actions
 
@@ -191,7 +187,7 @@ Actions in standard alerts are represented by links, and not buttons, because:
 Alerts have their own color palette of red, yellow, green, and blue. They are not styled with Stoplight colors to avoid competition with call-to-action buttons.
 
 
-## App-Level Alerts
+## Using App-Level Alerts
 
 An app-level alert appears at the top of the screen, above the application header.  This alert is reserved for a single, system-level message.
 

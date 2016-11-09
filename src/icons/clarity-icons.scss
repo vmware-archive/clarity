@@ -1,8 +1,6 @@
 @import '../clarity/utils/variables.clarity';
 
-$clr-icon-sm: rem(16/$clr-rem-denominator);
-$clr-icon-md: rem(36/$clr-rem-denominator);
-$clr-icon-lg: rem(72/$clr-rem-denominator);
+$clr-icon-size: rem(16/$clr-rem-denominator);
 
 @mixin setIconColor($clr-icon-color) {
     fill: $clr-icon-color;
@@ -14,22 +12,26 @@ $clr-icon-lg: rem(72/$clr-rem-denominator);
 clr-icon {
     display: inline-block;
     margin: 0;
-    height: $clr-icon-sm;
-    width: $clr-icon-sm;
-    vertical-align: text-top;
+    height: $clr-icon-size;
+    width: $clr-icon-size;
+    vertical-align: middle;
     @include setIconColor(currentColor);
+
+     /* .icon-size-* classes have been deprecated and will be removed in 0.8.0. */
+
     &.icon-size-sm {
-        height: $clr-icon-sm;
-        width: $clr-icon-sm;
+        height: 16px;
+        width: 16px;
     }
     &.icon-size-md {
-        height: $clr-icon-md;
-        width: $clr-icon-md;
+        height: 36px;
+        width: 36px;
     }
     &.icon-size-lg {
-        height: $clr-icon-lg;
-        width: $clr-icon-lg;
+        height: 72px;
+        width: 72px;
     }
+
     &.icon-color-success {
         @include setIconColor($greens-dark-midtone);
     }

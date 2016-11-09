@@ -111,19 +111,19 @@ Use a dropdown menu in a header or other area of the UI, such as a column within
 
 Don't confuse dropdowns with [select boxes]({{ site.baseurl }}/documentation/select-boxes), which also present a list of choices.  Select boxes are for data input within forms whereas dropdowns are for navigating outside of the existing context.
 
-### Behavior
+#### Behavior
 
 Users open a dropdown by clicking its toggle. By default, selecting a menu item or clicking outside the menu dismisses the menu.  You can change this behavior so that the menu remains open on item selection.
 
-### Placement
+#### Placement
 
 By default, a dropdown opens from the bottom of the toggle, along the left side.  You can change the placement by using one of the eight direction classes.
 
-### Menu Toggle
+#### Menu Toggle
 
 The toggle can be a button, text, or icon.  The toggle should identify the collection of actions in the list.  Typically, text is limited to one word.
 
-### Menu Items
+#### Menu Items
 
 {: .list}
 - Order menu items by usage, except for destructive actions, which belong at the bottom.  
@@ -131,7 +131,7 @@ The toggle can be a button, text, or icon.  The toggle should identify the colle
 - Present items as verb phrases, such as "Attach Host Profile."  
 - Keep items short and concise.  Long menu items are truncated from the end and an ellipsis added.
 
-### Disabled
+#### Disabled
 
 Disable a menu item if:
 

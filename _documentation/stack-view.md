@@ -87,18 +87,18 @@ Stack views are designed for use in the main content area and modals.  Use a sta
 - Display related key/value pairs, for example, an object's settings.
 - Progressively disclose data.  This is useful when the set of key/value pairs is large or you want to enable users to reveal more complex or less frequently used data as necessary.
 
-### Enabling Value Editing
+#### Enabling Value Editing
 
 In this pattern, the component includes an Edit button on the top right, which on click opens an editable stack view in a modal.  This design prevents users from accidentally altering a value in the main content area.  Common editing controls include input fields, select boxes, checkboxes, and radio buttons.
 
-### Labels
+#### Labels
 
 {: .list}
 - Provide terse labels that let users know what is under the label.  Try to keep the label to one line.
 - Use noun phrases, sentence-style capitalization, and no ending punctuation.
 - Avoid using icons.
 
-### Highlights and Horizontal lines
+#### Highlights and Horizontal lines
 
 The stack view highlight color (#DDDDDD) differs from the usual Clarity highlight color to make it more distinct.  Expanded sections have a lighter background color to make it easier to parse the hierarchy.
 

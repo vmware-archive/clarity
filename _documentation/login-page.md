@@ -34,7 +34,7 @@ This wrapper contains a validation message. Extend the <code>.active</code> clas
     Design guidelines start here...
 {% endcomment %}
 
-#### Usage
+### Usage
 
 This component provides a complete login experience.
 

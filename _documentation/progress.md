@@ -107,22 +107,22 @@ Clarity has two types of progress bars:
 
 
 
-### Placement
+#### Placement
 
 Progress bars are designed for use in the main content area, [header]({{ site.baseurl }}/documentation/header),  [cards]({{ site.baseurl }}/documentation/cards), and [modals]({{ site.baseurl }}/documentation/modals).  The size of the progress bar adjusts to its container.  Indicate which process is being monitored through placement of the progress bar in the container.
 
 
-### Messaging
+#### Messaging
 
  Use messaging as follows:
 
 {: .list}
 - For a determinate progress bar, use a label to show percentage complete.
 - For an indeterminate progress indicator, add messaging to let the user know the operation is in progress, for example, "Working...," or "Loading update 3 of 7."
-- Keep the messaging minimal and use sentence-style caps.
+- Keep the messaging minimal.
 
 Clarity places the label on the right of the progress bar because the bar fills from left to right.
 
-### Progress Bar Versus Spinner
+#### Progress Bar Versus Spinner
 
 Clarity also has a circular progress indicator, called a [spinner]({{ site.baseurl }}/documentation/spinners), which serves the same use case as an indeterminate progress bar.  Using a spinner or an indeterminate progress bar is a matter of available space and activation point. In many cases, spinners are best because they occupy less space.

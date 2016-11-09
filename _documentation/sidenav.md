@@ -38,9 +38,7 @@ Clarity's sidenav is placed inside the <code class="clr-code">.main-container</c
 {% endcomment %}
 
 ### Usage
-The sidenav is a familiar navigation pattern for users.  The sidenav can fit as many navigation links as needed, scrolling when the content exceeds the viewport.
-
-Use the sidenav:
+The sidenav is a familiar navigation pattern for users.  The sidenav can fit as many navigation links as needed, scrolling when the content exceeds the viewport.  Use the sidenav:
 
 <ul class="list">
 <li>For links secondary to the links in the header or subnav</li>
@@ -50,9 +48,8 @@ Use the sidenav:
 
 The sidenav works best in desktop applications.  
 
-### Links
+#### Grouping Links
+If you group link names under a heading, don't make the heading a link.
 
-<ul class="list">
-<li>If you group link names under a heading, don't make the heading a link.</li>
-<li>Include icons when you want to provide a more appealing visual look than just text.</li>
-</ul>
+#### Using Icons
+Include icons when you want to provide a more appealing visual look than just text.

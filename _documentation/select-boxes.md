@@ -23,21 +23,10 @@ A common strategy is to combine an input field with a select box so that a user 
 
 Don't confuse a select box with a [dropdown menu]({{ site.baseurl }}/documentation/dropdowns).  Select boxes are for setting options and work best in forms.  Dropdowns are for presenting actions and most appropriate in a header.
 
-### Items
+#### Number of List Items
 
 Typically, a select box contains between 3 and 12 items.  For fewer than 3 items or to present choices that are always visible, consider a [radio button]({{ site.baseurl }}/documentation/radios).
 
-<ul class="list">
-<li>
-List the menu items in a logical order.</li>
-<li>Provide a default selection whenever possible.</li>
-</ul>
+#### Label
 
-
-### Labels
-
-<ul class="list">
-<li>
-Provide a brief introductory label that describes the items in the menu.   </li>
-<li>Use sentence-style capitalization for both the label and the menu items.</li>
-</ul>
+A select box requires a brief introductory label that describes the items in the menu. Use sentence-style capitalization for both the label and the menu items.

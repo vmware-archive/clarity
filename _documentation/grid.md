@@ -157,7 +157,7 @@ Clarity recommends that your application layout stay on the grid.  A grid-based 
 - Simplifies layout decisions required of a designer
 - Coordinates the efforts of multiple designers
 
-### Applying the Grid
+#### Applying the Grid
 
 Apply the grid with consideration of content. Some pages might benefit from a three-column layout, where other pages might work best with a two-column layout.
 
@@ -165,10 +165,10 @@ You can vary the column layout within the same page.  This strategy works well f
 
 Don't lock your design into a layout optimized for a large window.
 
-### Grids and Card Layouts
+#### Grids and Card Layouts
 
 Designing to a grid is especially important for <a href="{{ site.baseurl }}/documentation/cards">card</a> layouts.  Cards contains blocks of content and their height and width can vary.  The grid aligns the cards in a way that is easy for users to navigate.
 
-### If You Decide Not to Conform to the Grid
+#### If You Decide Not to Conform to the Grid
 
 Do so with intent. Find a balance between aesthetics and conformity. Keep in mind that elements that are not aligned to the grid draw attention in the same way as color, contrast, and iconography and require more cognitive effort on the part of the user.

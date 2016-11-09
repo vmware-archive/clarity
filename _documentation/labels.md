@@ -37,18 +37,18 @@ Use labels in lists and search results to further qualify the data.   For exampl
 
 Labels also communicate "Warning," "Error," "Success," and "Info" use cases.  These labels are similar to banners and are not clickable.
 
-### Color
+#### Color Palettes
 
-Labels have two color palettes.  For most labels, choose from the standard five-color palette.  For labels that communicate status (info, success, warning, and error) use the blue, green, yellow and red palette.  Both color palettes were designed to easily differentiate labels from buttons.  See the demo tab.
+Labels have two color palettes.  For most labels, choose from the standard five-color palette.  For labels that communicate status (info, success, warning, and error) use the blue, green, yellow and red palette.  Both color palettes were designed to easily differentiate labels from buttons.
 
-### Behavior
+#### Clickable Labels
 
 Use a clickable label to navigate to a page that provides more information than is conveyed in the label text.
 
-### With Badges
+#### Overlaying Badges
 
 You can overlay a [badge]({{ site.baseurl }}/documentation/badges) on a label to provide a count or tally of the items in the label classification.
 
-### Text
+#### Label Text
 
 Keep label text short–never wrap it to the next line.

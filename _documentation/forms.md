@@ -56,7 +56,7 @@ and place the form fields in the grid column classes. To occupy 100% of the colu
 
 Forms guide users through input in a structured, specific order.  Forms are comprised of [text]({{ site.baseurl }}/documentation/typography) and input components such as [checkboxes]({{ site.baseurl }}/documentation/checkboxes), [dropdowns]({{ site.baseurl }}/documentation/dropdowns), [input fields]({{ site.baseurl }}/documentation/input-fields), [radio buttons]({{ site.baseurl }}/documentation/radios), and [toggle switches]({{ site.baseurl }}/documentation/toggle-switches).
 
-### Minimize Scrolling
+#### Minimize Scrolling
 
 For a form that scrolls several pages, consider organizing the content by:
 
@@ -65,13 +65,13 @@ For a form that scrolls several pages, consider organizing the content by:
 - Progressively revealing more complex or less frequently used data.
 - Dividing content into separate pages in a [wizard]({{ site.baseurl }}/documentation/wizards).
 
-### Labels
+#### Labels
 
 Labels appear to the left of a component, moving above the component when the user resizes the window to smaller dimensions.
 
 Labels use sentence caps, with no ending punctuation.
 
-### Placeholder Text
+#### Placeholder Text
 
 Located inside a field, placeholder text can help clarify expected input.  Placeholder text disappears when the user types in the field.
 
@@ -83,18 +83,18 @@ Placeholder text:  SFO, SJO
 
 Placeholder text can replace labels only in simple forms with a few easily-understood fields, see the [login page]({{ site.baseurl }}/documentation/login).
 
-### Disabled Fields
+#### Disabled Fields
 
 Show a disabled field only if the user can take a reasonable action to enable the component.  When disabling a component, also disable all associated elements, such as the component label and explanatory text.
 
-### Button Placement
+#### Button Placement
 
 Button placement depends on form type and where it appears in the UI.  See [buttons]({{ site.baseurl }}/documentation/buttons) for guidelines.
 
-### Validation
+#### Validation
 
 For information on validation, see [input fields]({{ site.baseurl }}/documentation/input-fields).
 
-### Focus and Navigation
+#### Focus and Navigation
 
 Provide auto focus in the first field by default.  Users can then navigate through the form in a logical sequence.

@@ -50,9 +50,9 @@ The classnames used to size spinners are: <code class="clr-code">.spinner-sm</co
     Design guidelines start here...
 {% endcomment %}
 
-### Sizes
+### Usage
 
-Clarity has three sizes of spinners:
+Use the three sizes of spinners as follows:
 
 <table class="table table-noborder">
           <tbody>
@@ -76,14 +76,14 @@ Clarity has three sizes of spinners:
       </table>
 
 
-### Placement
+#### Placement
 
 Place the spinner where you want to focus users' attention when the process completes.
 
-### Label
+#### Label
 
 Optionally, provide a brief description of the process, for example, "Loading ..."
 
-### Spinners Versus Progress Bars
+#### Spinners Versus Progress Bars
 
 Clarity provides a linear, indeterminate [progress bar]({{ site.baseurl }}/documentation/progress) that serves the same use cases as a spinner.  Using a spinner or an indeterminate progress bar is a matter of spacing, visual consistency, and the object the user selected to begin the process.

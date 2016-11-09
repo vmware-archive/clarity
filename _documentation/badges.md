@@ -23,19 +23,19 @@ layout: documentation
 
 Use a badge to show a tally or other quantity. For example, you might overlay a badge on a [label]({{ site.baseurl }}/documentation/labels) or menu item to show a count of that item.
 
-### Placement
+#### Placement
 
 {: .list}
 - Place the badge to the right of the object that it qualifies.
 - To avoid ambiguity, use only one badge per object.
 
-### Numbering
+#### Numbering
 
 {: .list}
 - Use integers only.
 - If the count exceeds 99, use "99+."
 
-### Color
+#### Color
 
 {: .list}
 - For most badges, use the color palette specific to badges and labels.

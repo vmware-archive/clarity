@@ -8,8 +8,10 @@ import {Component} from "@angular/core";
         <h4>Static Styles</h4>
         <ul>
             <li><a [routerLink]="['./styles']">Styles</a></li>
-            <li><a [routerLink]="['./types']">Placement</a></li>
             <li><a [routerLink]="['./sizes']">Sizes</a></li>
+            <li><a [routerLink]="['./cards']">Alerts in Cards</a></li>
+            <li><a [routerLink]="['./modals']">Alerts in Modals</a></li>
+            <li><a [routerLink]="['./content-area']">Alerts in Content Area</a></li>
             <li><a [routerLink]="['./app-level']">App Level Alerts</a></li>
         </ul>
         <router-outlet></router-outlet>

@@ -6,7 +6,9 @@ import {AlertsDemo} from "./alert.demo";
 
 import {AlertStaticDemo} from "./static/alert-static";
 import {AlertStylesDemo} from "./static/alert-styles";
-import {AlertTypesDemo} from "./static/alert-types";
+import {AlertContentAreaDemo} from "./static/alert-content-area";
+import {AlertCardsDemo} from "./static/alert-cards";
+import {AlertModalsDemo} from "./static/alert-modals";
 import {AlertSizesDemo} from "./static/alert-sizes";
 import {AlertAppLevelDemo} from "./static/alert-app-level";
 
@@ -27,7 +29,9 @@ import {AlertAngularCloseEventDemo} from "./angular/alert-angular-close-event";
         AlertsDemo,
         AlertStaticDemo,
         AlertStylesDemo,
-        AlertTypesDemo,
+        AlertContentAreaDemo,
+        AlertCardsDemo,
+        AlertModalsDemo,
         AlertSizesDemo,
         AlertAppLevelDemo,
 
@@ -42,7 +46,9 @@ import {AlertAngularCloseEventDemo} from "./angular/alert-angular-close-event";
         AlertsDemo,
         AlertStaticDemo,
         AlertStylesDemo,
-        AlertTypesDemo,
+        AlertContentAreaDemo,
+        AlertCardsDemo,
+        AlertModalsDemo,
         AlertSizesDemo,
         AlertAppLevelDemo,
 

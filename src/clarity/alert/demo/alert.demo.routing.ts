@@ -4,7 +4,9 @@ import {AlertsDemo} from "./alert.demo";
 
 import {AlertStaticDemo} from "./static/alert-static";
 import {AlertStylesDemo} from "./static/alert-styles";
-import {AlertTypesDemo} from "./static/alert-types";
+import {AlertContentAreaDemo} from "./static/alert-content-area";
+import {AlertCardsDemo} from "./static/alert-cards";
+import {AlertModalsDemo} from "./static/alert-modals";
 import {AlertSizesDemo} from "./static/alert-sizes";
 import {AlertAppLevelDemo} from "./static/alert-app-level";
 
@@ -27,7 +29,9 @@ const ROUTES: Routes = [
                 children: [
                     { path: "", redirectTo: "styles", pathMatch: "full" },
                     { path: "styles", component: AlertStylesDemo },
-                    { path: "types", component: AlertTypesDemo },
+                    { path: "content-area", component: AlertContentAreaDemo },
+                    { path: "cards", component: AlertCardsDemo },
+                    { path: "modals", component: AlertModalsDemo },
                     { path: "sizes", component: AlertSizesDemo },
                     { path: "app-level", component: AlertAppLevelDemo}
                 ]

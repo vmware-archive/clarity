@@ -55,47 +55,35 @@ layout: documentation
     Design guidelines start here...
 {% endcomment %}
 
-### Header
+### Using Headers
 
-At the top of the viewport, the header contains branding, navigation, and other elements. Clarity recommends the following header structure, from left to right:
+The Clarity can include the following elements, placed from left to right:
 
 {: .list}
-- Branding (required)
-- Navigation (optional)
-- Search (optional)
-- Settings (optional)
+- Product identification
+- Navigation
+- Search
+- Settings
 
-![Navigation]({{ site.baseurl }}/images/documentation/header/Navigation_header.png)
+<!--![Navigation]({{ site.baseurl }}/images/documentation/header/Navigation_header.png)-->
 
-#### Branding
-Branding should include your product's logo and name. A minimum of 200 pixels is recommended to avoid crowding the left side of the header.
+#### Product Identification
+A minimum of 200 pixels is recommended to avoid crowding the left side of the header.  Clicking on the product name should return the user to the home page.
 
 #### Navigation
 
-Although users commonly look for app-level navigation in the header, having too many main links can cause navigation to lose its meaning.
+The header works best for two to four links. For less than two, navigation is not needed. For more than four, use the subnav or [sidenav]({{ site.baseurl }}/documentation/sidenav).  Although users commonly look for app-level navigation in the header, having too many main links can cause navigation to lose its meaning.
 
-{: .list}
-- The header works best for two to four links.
-- For less than two, navigation is not needed.
-- For more than four, use the subnav or [sidenav]({{ site.baseurl }}/documentation/sidenav).
 
-##### Text Links
+#### Text Links
 
-The preferred format of navigation links is text because it is generally better understood than icons.
+The preferred format of navigation links is text because it is generally better understood than icons.  Use one to two words per link, with a limit of 16 characters.  Do not wrap text.
 
-{: .list}
-- Use one to two words per link, with a limit of 16 characters.
-- Make sure that the terminology is clear.
-- Use title caps.
-- Do not wrap text.
+#### Icon Links
 
-##### Icon Links
+Ensure that the icons are clearly recognizable, for example, Search. Alternately, include a text label, for example, a cloud icon and the text "Cloud Infrastructure."  You can also provide a tooltip that describes the function of the icon.
 
-{: .list}
-- Ensure that the icons are clearly recognizable, for example, Home.
-- Alternately, include a text label, for example, a cloud icon and the text "Cloud Infrastructure."
-- Provide a tooltip that describes the function of the icon.
-- Don't mix standalone icons with standalone text links.
+Don't mix standalone icons with standalone text links.
 
 #### Search
 
@@ -108,7 +96,7 @@ Consider placement of Search as follows:
 
 For larger screens, include placeholder text in the Search field to give users an example of a search query.
 
-![Search]({{ site.baseurl }}/images/documentation/header/Search_header.png)
+<!--![Search]({{ site.baseurl }}/images/documentation/header/Search_header.png)-->
 
 #### Settings
 
@@ -120,13 +108,10 @@ Headers have their own color palette.  These colors make the header visually rec
 
 ![Header Colors]({{ site.baseurl }}/images/documentation/header/Colors.png)
 
-### Subnav
-Directly below the header, the subnav is recommended for either app-level navigation links or for links secondary to the ones in the header:
+### Using the Subnav
+The subnav is recommended for either app-level navigation links or for links secondary to the ones in the header. For best use of the horizontal space, include five to seven links.  Less than five might leave too much empty space.
 
-{: .list}
-- For best use of the horizontal space, include five to seven links.  Less than five might leave too much empty space.
-- Use text for the link names, not icons.
-- Ensure that the text is clear and concise.
-- Use title caps.
+Use text for the link names, not icons. Ensure that the text is clear and concise.
 
-![Subnav]({{ site.baseurl }}/images/documentation/header/Subnav_header.png)
+<!--
+![Subnav]({{ site.baseurl }}/images/documentation/header/Subnav_header.png)-->

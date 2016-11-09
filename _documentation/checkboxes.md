@@ -15,7 +15,7 @@ layout: documentation
 
 ### Usage
 
-Use a checkbox for yes or no choices, for example "Remember me" on the login page.  For on and off options, use a [toggle switch]({{ site.baseurl }}/documentation/toggle-switches).
+Use a checkbox for yes or no choices, for example "Remember me" on the [login page]({{ site.baseurl }}/documentation/login).  For on and off options, use a [toggle switch]({{ site.baseurl }}/documentation/toggle-switches).
 
 <ul class="list">
 <li>Checkboxes are best for seven or fewer options.</li>

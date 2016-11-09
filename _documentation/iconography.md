@@ -5,7 +5,16 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### Clarity presents pixel perfect and scalable SVG-based icons. This new icon system gives you complete control over the color, orientation, and size with pre-defined class names. Plus, you can access and customize any SVG graphic element inside the icon through standard CSS.
+#### Clarity presents pixel-perfect and scalable SVG-based icons. This new icon system gives you complete control over the color, orientation, and size with pre-defined class names. Plus, you can access and customize any SVG graphic element inside the icon through standard CSS.
+
+<div class="alert alert-info">
+    <div class="alert-item">
+        <span class="alert-text">
+            We are currently working on an icon set.  We will update this page when the icons are ready.
+        </span>
+    </div>
+</div>
+
 
 <clr-iconography-demo></clr-iconography-demo>
 
@@ -170,7 +179,7 @@ You can easily modify the size, the orientation, and the color of your Clarity I
 
 #### Manipulate any SVG graphic element inside the icon
 
-After adding <code class="clr-code">clr-icon</code> in your HTML, try to see what happens to it using a web inspection tool. You will find that SVG elements are injected inside the <code class="clr-code">clr-icon</code> tag that are responsible for drawing the icon.
+After adding <code class="clr-code">clr-icon</code> in your HTML, view it using a web inspection tool. You will find that SVG elements are injected inside the <code class="clr-code">clr-icon</code> tag that are responsible for drawing the icon.
 
 You can individually select any of these SVG graphic elements and stylize them through CSS. For easier access to the individual graphic parts of the icon, there are pre-defined selection classes, <code class="clr-code">.outer-shape</code> and <code class="clr-code">.inner-shape</code>.
 

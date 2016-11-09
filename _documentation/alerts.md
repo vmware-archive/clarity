@@ -161,14 +161,14 @@ Keep the message text short and concise.  If combining multiple messages in a si
 
 When showing multiple alerts, stack from most severe to least severe:
 
-<ul class="list">
+<ol class="list">
     <li>Error</li>
     <li>Warning</li>
     <li>Info</li>
     <li>Success</li>
-</ul>
+</ol>
 
-  Stack up to three alerts. For more than three, consider another pattern, such as displaying the information on another page.
+  Stack up to three alerts. For more than three, consider an alternate pattern, such as displaying the information on another page.
 
 ### Actions
 
@@ -176,11 +176,7 @@ You can display up to two actions in an alert.  For more than two actions, use a
 
 The most common course of action goes at the top of the menu, destructive actions at the bottom.  Avoid placing destructive actions directly in the alert.
 
-Actions in standard alerts are represented by links, and not buttons, because:
-
-{: .list}
-- Links are lighter in appearance
-- Links take up less space than buttons.  One line is 36 pixels tall using links.  With flat buttons, the line is taller to accommodate the button state change.
+Actions in standard alerts are represented by links because  links take up less space than buttons and are light in appearance.  <!-- One line is 36 pixels tall using links.  With flat buttons, the line is taller to accommodate the button state change. -->
 
 ### Color
 

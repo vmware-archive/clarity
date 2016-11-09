@@ -38,7 +38,14 @@ Clarity has error, warning, information, and success alerts denoted by the follo
 
 ### Placement
 
-<clr-alert-demo-types></clr-alert-demo-types>
+#### Alerts in the Content Area
+<clr-alert-demo-content-area></clr-alert-demo-content-area>
+
+#### Alerts in Cards
+<clr-alert-demo-cards></clr-alert-demo-cards>
+
+#### Alerts in Modals
+<clr-alert-demo-modals></clr-alert-demo-modals>
 
 ### Size
 

@@ -43,6 +43,12 @@ and <code class="clr-code">.card-media-description</code>. The description can c
 
 <clr-card-media-block-demo></clr-card-media-block-demo>
 
+#### Alerts in Cards
+
+Cards can contain <a href="{{ site.baseurl }}/documentation/alerts">alerts</a>.
+
+<clr-alert-demo-cards></clr-alert-demo-cards>
+
 #### Lists in Cards
 
 Cards can contain <a href="{{ site.baseurl }}/documentation/lists">lists</a>.

@@ -165,19 +165,19 @@ The following images show one-, two-, and three-button placement.  Avoid using m
 <div class="row buttons-modal-gfx">
     <div class="col-xs-12 col-sm-12 col-md-4">
     <span>
-        <img src="{{ site.data.global.images_path }}documentation/buttons/button_modal_1.png?{{ site.time | date: '%s%N' }}" class="img-fluid cozy-sm" alt="Modal with primary button">
+        <img src="{{ site.baseurl }}{{ site.data.global.images_path }}documentation/buttons/button_modal_1.png?{{ site.time | date: '%s%N' }}" class="img-fluid cozy-sm" alt="Modal with primary button">
         <p>With primary button</p>
         </span>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4">
     <span>
-        <img src="{{ site.data.global.images_path }}documentation/buttons/button_modal_2.png?{{ site.time | date: '%s%N' }}"  class="img-fluid cozy-sm" alt="Modal with primary button">
+        <img src="{{ site.baseurl }}{{ site.data.global.images_path }}documentation/buttons/button_modal_2.png?{{ site.time | date: '%s%N' }}"  class="img-fluid cozy-sm" alt="Modal with primary button">
         <p>With secondary and primary buttons</p>
         </span>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4">
     <span>
-        <img src="{{ site.data.global.images_path }}documentation/buttons/button_modal_3.png?{{ site.time | date: '%s%N' }}"  class="img-fluid cozy-sm" alt="Modal with primary button">
+        <img src="{{ site.baseurl }}{{ site.data.global.images_path }}documentation/buttons/button_modal_3.png?{{ site.time | date: '%s%N' }}"  class="img-fluid cozy-sm" alt="Modal with primary button">
         <p>With tertiary, secondary, and primary buttons</p>
         </span>
     </div>

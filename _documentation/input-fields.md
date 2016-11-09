@@ -41,34 +41,43 @@ You can set the size of the tooltips using these classes:
     Design guidelines start here...
 {% endcomment %}
 
-### Labels
+### Usage
 
-Input fields require a brief label to inform the user about what information belongs in the field.  The label appears to the left of the input field and moves above it when the app is resized smaller.
+#### Labels
+
+Input fields require a brief label to indicate what information belongs in the field.  The label appears to the left of the input field and moves above it when the app is resized smaller.
 
 {: .list}
-- Ensure that the label text is clear.
+- Ensure that the label wording is clear.
 - Keep the text to a single line.
 - Use sentence caps without final punctuation.
 
-### Placeholder Text
+#### Placeholder Text
 
-Text placed inside the field can offer a hint, description, or example format.  Such placeholder text is removed when the user enters text in the field.
+Located inside a field, placeholder text can help clarify expected input.  Placeholder text disappears when the user types in the field.
 
-You can use placeholder text as a replacement for a label, but only if the field's purpose is clear and easily understood.  For example, the login page uses only placeholder text for the user name and password fields.
+Tip: Use the label to show what information goes in the field and placeholder text as a hint, description, or example format:
+
+Label: Airport
+<br>
+Placeholder text:  SFO, SJO
+
+Placeholder text can replace labels only in simple forms with a few easily-understood fields, see the [login page]({{ site.baseurl }}/documentation/login).
+
 
 Placeholder text is not required for every input field.
 
-### Size
+#### Size
 
-For the best user experience, set the width of the text field to a size that covers most use cases.  Also consider localization.  Word length varies between languages.
+For the best user experience, consider localization and keep in mind that word length varies among languages.
 
-### Multiple Input Fields
+#### Multiple Input Fields
 
 A complex form might have multiple input fields, stacked vertically.  Space the input fields evenly, clearly associating labels with the corresponding input fields.
 
-### Validation
+#### Validation
 
- Avoid overlaying the validation tooltip over the data that is being validated. By default, the position of the tooltip is to the top-right of the error icon, pointing to its center. Other positions to consider are:
+ Avoid overlaying the validation tooltip on the data is being validated. By default, the position of the tooltip is to the top-right of the error icon, pointing to its center. Other positions to consider are:
 
 {: .list}
 - Top left
@@ -79,8 +88,8 @@ A complex form might have multiple input fields, stacked vertically.  Space the 
 
 Base the width of the tooltip on the message text.  Choices are 72 px, 120 px, 240 px, and 360 px.  The default is 240 px.
 
-Keep the message text short, but informative.  For example, "The username already exists.  Enter a new name."  Try to keep the text to one line.
+Make the message text short, but informative.  For example, "The username already exists.  Enter a new name."  Try to limit the text to one line.
 
-### Multiline Text Area
+#### Multiline Text Area
 
 Use a multiline text area when a user must enter a long string.  Content wraps when the cursor reaches the right edge and scrolls when it reaches the lower edge.

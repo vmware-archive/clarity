@@ -9,15 +9,15 @@ layout: documentation
 
 #### Basic Card
 
-A <code class="clr-code">.card</code> can contain a <code class="clr-code">.card-header</code>, a
+A <code class="clr-code">.card</code> can contain a <code class="clr-code">.card-header</code>,
 <code class="clr-code">.card-footer</code>, and one or more <code class="clr-code">.card-block</code>s.
 
 <clr-card-layout-demo></clr-card-layout-demo>
 
 #### Clickable Cards
 
-Adding the <code class="clr-code">.clickable</code> class converts the entire
-card into an action.
+Adding the <code class="clr-code">.clickable</code> class makes the entire
+card clickable, initiating a single action.
 
 <clr-card-clickable-demo></clr-card-clickable-demo>
 
@@ -29,7 +29,7 @@ A <code class="clr-code">.card-img</code> can be placed anywhere in the card, or
 
 #### Dropdowns in Cards
 
-Two actions can go in the footer. For more actions, use a
+The footer can contain two actions. For more actions, use a
 <a href="{{ site.baseurl }}/documentation/dropdowns">dropdown</a>.
 
 <clr-card-dropdown-demo></clr-card-dropdown-demo>
@@ -86,10 +86,10 @@ but can be changed to two or four by adding <code class="clr-code">.card-columns
 
 ### Usage
 
-Cards are a popular design element, often used to present information in the main content area. Example use cases include:
+Example use cases for cards include:
 
 {: .list}
-- Presenting objects, services, or content summaries while  providing entry points to more detailed information
+- Presenting objects, services, or content summaries while  providing entry points to more detail
 - Representing applications and initiating actions, such as download
 - Displaying metrics
 
@@ -110,9 +110,9 @@ Another strategy is to divide card content into horizontal blocks. For example, 
 Users read the content starting at the top, upper left corner, then scan mainly the left sides of the screen.
 {% endcomment %}
 
-Place the primary action, and up to two additional actions, in the card footer, left-aligned.  This placement supports the F-pattern layout.
+Place the primary action and a single additional action, if required, in the card footer, left-aligned.  This placement supports the F-pattern layout.
 
-For more than three actions, replace the right-most action with a menu.  Do not place more than eight items in the menu.
+For more than two actions, use a <a href="{{ site.baseurl }}/documentation/dropdowns">dropdown</a>.  Do not place more than eight items in the dropdown menu.
 
 
 <div class="row buttons-modal-gfx">
@@ -132,15 +132,10 @@ For more than three actions, replace the right-most action with a menu.  Do not 
 
 ### Clickable cards -- be predictable
 
-When the entire card is clickable, the resulting action must:
-
-<ul class="list">
-          <li>Not be the primary action.  The primary action is  left-most in the footer.   If clicking elsewhere on the card also initiates the primary action, it might confuse users.</li>
-          <li>
-            Result in an expected outcome.  Not every card need be clickable.
+When the entire card is clickable, the resulting action must be an expected outcome.  A common action is to navigate to more details.
+Not every card need be clickable.
 <!-- A common action is to navigate to more details. -->
-          </li>
-      </ul>
+
 
 ### Progress bars -- be consistent
 

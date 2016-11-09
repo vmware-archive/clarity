@@ -147,7 +147,7 @@ Common uses for modals are:
 - Alert the user to critical information
 - Confirm the consequence of a critical action before proceeding
 
-### Sizes
+#### Sizes
 
 Modals have a default width (576 pixels) and two optional widths: large (864 pixels) and small (288 pixels).
 
@@ -156,7 +156,7 @@ Modals have a default width (576 pixels) and two optional widths: large (864 pix
 - The larger size works well for complex forms and EULAs.  
 - The smaller size is goof for providing more information about a UI element.
 
-### Button Placement
+#### Button Placement
 
 Buttons are right-aligned in the footer, with the primary button in the rightmost position. Right-alignment supports the Z-pattern layout.  
 
@@ -184,23 +184,23 @@ The following images show one-, two-, and three-button placement.  Avoid using m
 </div>
 <p></p>
 
-### Scrolling
+#### Scrolling
 
 Whenever possible, avoid putting so much content in a modal that it scrolls.  In the cases that require scrolling, such as a EULA and license agreement, a scrollbar is visible upon loading. The title and footer remain in place when the user scrolls the content.
 
-### Animation
+#### Animation
 
 Modals support fading animations. The recommended approach is to fade the modal in and out of view from the top.  
 
-### Dismissing Modals
+#### Dismissing Modals
 
 Modals can be dismissed by clicking the X icon in the upper right corner or by clicking a button in the footer. Clicking outside the modal should not dismiss it. Users might accidentally click outside the wizard and lose data.
 
-### Opening a Second Modal
+#### Opening a Second Modal
 
 Avoid displaying a modal on top of another modal.  An exception is opening a file chooser.
 
-### Message Modal
+#### Message Modal
 
 Modals that display a message (information, success, warning, or error) or ask for a confirmation should follow these guidelines:
 

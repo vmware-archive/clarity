@@ -5,11 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary .no-margin }
-#### Designed for use in web and mobile applications, the color palette is primarily based on:
-
-{: .component-summary .cozy .list}
-- Alignment with the use of color in modern web applications
-- Support for accessibility
+#### The Clarity color palette is primarily based on alignment with color use in web applications and support for accessibility.
 
 ### Base Color Palette
 
@@ -94,15 +90,16 @@ The tables below demonstrate expected values for Clarity's color contrast utilit
     Design guidelines start here...
 {% endcomment %}
 
-### Base Colors
+### Color Usage
 
-Clarity has five base colors.  Other colors within the palette are derivatives of a base color, meaning they are complementary in a monochromatic, triad, or quadratic relationship:
+#### Base Colors
+Colors within the Clarity palette are derivatives of the five base colors and are complementary in a monochromatic, triad, or quadratic relationship:
 
 {: .list}
-- The neutral colors are for text and backgrounds. The default text color is #565656.  The default background color is #FAFAFA.
-- The action colors are for clickable items, such as buttons and links. Action Blue, #007CBB, is reserved for buttons and links.
+- Neutral colors are for text and backgrounds. The default text color is #565656.  The default background color is #FAFAFA.
+- Action colors are for clickable items, such as buttons and links. Action Blue, #007CBB, is reserved for buttons and links.
 
-### Stoplight Colors
+#### Stoplight Colors
 
 The stoplight colors are for indicating error conditions, warnings, and successes. Significant colors include:
 
@@ -110,6 +107,6 @@ The stoplight colors are for indicating error conditions, warnings, and successe
 - Stoplight Green, #318700, for positive actions.
 - Stoplight Red, #E62700, for warnings and errors.
 
-### Highlight Colors
+#### Highlight Colors
 
 The highlight colors are intended for use in charts, highlighting search results, and badging. These colors stand out against Clarity's primary colors. Don't use highlight colors in large blocks.

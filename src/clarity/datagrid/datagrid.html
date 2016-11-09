@@ -1,0 +1,36 @@
+<div class="datagrid-wrapper">
+    <div class="datagrid">
+        <div class="datagrid-head">
+            <div class="datagrid-row">
+                <div class="datagrid-column datagrid-select" *ngIf="selection.selectable">
+                    <span class="datagrid-column-title">
+                        <clr-checkbox [(ngModel)]="allSelected"></clr-checkbox>
+                    </span>
+                </div>
+                <ng-content select="clr-dg-column"></ng-content>
+            </div>
+        </div>
+
+        <div class="datagrid-body">
+            <template *ngIf="iterator"
+                      ngFor [ngForOf]="items.displayed" [ngForTrackBy]="items.trackBy"
+                      [ngForTemplate]="iterator.template"></template>
+            <ng-content *ngIf="!iterator"></ng-content>
+        </div>
+    </div>
+    <!--
+        I hate doing this, with these 36px being baselineRem(1.5) hardcoded here,
+        but I don't see a better solution right now.
+    -->
+    <div class="datagrid-placeholder" *ngIf="nbEmptyRows > 0"
+         [style.height]="(36*nbEmptyRows)+'px'"></div>
+    <!--
+        This is not inside the table because there is no good way of having a single column span
+        everything when using custom elements with display:table-cell.
+    -->
+    <ng-content select="clr-dg-footer"></ng-content>
+
+    <div class="datagrid-spinner" *ngIf="loading">
+        <div class="spinner">Loading...</div>
+    </div>
+</div>

@@ -27,7 +27,7 @@ var allSpecFiles = Object.keys(window.__karma__.files)
 var packages = {
     'dist/tests': { defaultExtension: "js" },
     'clarity-angular': { defaultExtension: "js" },
-    'rxjs': { defaultExtension: 'js' }
+    'rxjs': { defaultExtension: 'js', main: 'Rx.js', }
 };
 
 System.config({

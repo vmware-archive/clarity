@@ -20,8 +20,8 @@ $clr-table-cellpadding: $clr_baselineRem_0_5 !default;
 $clr-table-smallpadding: 0.5 * $clr-table-cellpadding !default;
 
 $clr-table-lineheightPaddingShim: ($clr_baselineRem_1 - $clr-table-lineheight)/2 !default;
-$clr-table-headerLineheightPaddingShim: ($clr_baselineRem_1 - clr-getTypePropertyValueForDomElement(table_header, font-size))/2;
-$clr-table-vertpadding: (($clr-table-cellpadding - $clr-table-borderwidth) * 0.5) + $clr-table-lineheightPaddingShim !default; // have to account for border...
+$clr-table-topcellpadding: floor(($clr-table-cellpadding - $clr-table-borderwidth) * 0.5 + $clr-table-lineheightPaddingShim) !default;
+$clr-table-bottomcellpadding: $clr_baselineRem_1_5 - $clr-table-borderwidth - $clr-table-lineheight - $clr-table-topcellpadding !default;
 
 // Border radius of corner cells needs to be slightly less than the table's,
 // To make sure they correctly cover the whole area up to the border.
@@ -46,7 +46,7 @@ $clr-table-cornercellradius: $clr-default-borderradius - 1 !default;
             line-height: $clr-table-lineheight;
 
             border-top: $clr-table-borderwidth solid $clr-tablerow-bordercolor;
-            padding: $clr-table-vertpadding $clr-table-cellpadding;
+            padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
             text-align: center;
             vertical-align: top;
 
@@ -185,9 +185,7 @@ $clr-table-cornercellradius: $clr-default-borderradius - 1 !default;
             border-top: 0 none;
 
             // there's no border so we have to adjust padding to preserve baseline.
-            $clr-noborder-newpadding: $clr-table-vertpadding + ($clr-table-borderwidth/2);
-            padding-top: $clr-noborder-newpadding;
-            padding-bottom: $clr-noborder-newpadding;
+            padding-top: $clr-table-topcellpadding + $clr-table-borderwidth;
 
             &:first-child {
                 border-right: 0 none;
@@ -211,18 +209,18 @@ $clr-table-cornercellradius: $clr-default-borderradius - 1 !default;
     }
 
     .table.table-compact {
-        $clr-compact-vertpadding: $clr-table-lineheightPaddingShim - ($clr-table-borderwidth/2);
-        $clr-compactNoBorder-vertpadding: $clr-table-lineheightPaddingShim;
+        $clr-compact-topcellpadding: floor($clr-table-lineheightPaddingShim - $clr-table-borderwidth * 0.5);
+        $clr-compact-bottomcellpadding: baselineRem(1) - $clr-table-borderwidth - $clr-table-lineheight - $clr-compact-topcellpadding;
 
         th, td {
-            padding-top: $clr-compact-vertpadding;
-            padding-bottom: $clr-compact-vertpadding;
+            padding-top: $clr-compact-topcellpadding;
+            padding-bottom: $clr-compact-bottomcellpadding;
         }
 
-        &.table-no-border {
+        &.table-noborder {
             th, td {
-                padding-top: $clr-compactNoBorder-vertpadding;
-                padding-bottom: $clr-compactNoBorder-vertpadding;
+                padding-top: $clr-compact-topcellpadding + $clr-table-borderwidth;
+                padding-bottom: $clr-compact-bottomcellpadding;
             }
         }
     }

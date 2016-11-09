@@ -1,0 +1,290 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+@import "../utils/layers.clarity";
+@import "../images/icons.clarity";
+@import "../tables/tables.clarity";
+
+@include exports('datagrid.clarity') {
+    .datagrid {
+        display: table;
+    }
+    .datagrid-head {
+        display: table-header-group;
+    }
+    .datagrid-body {
+        display: table-row-group;
+    }
+    .datagrid-column {
+        display: table-cell;
+    }
+    .datagrid-row {
+        display: table-row;
+    }
+    .datagrid-cell {
+        display: table-cell;
+    }
+
+    @include basic-table(".datagrid", ".datagrid-head", ".datagrid-body",
+        ".datagrid-row", ".datagrid-column", ".datagrid-cell");
+
+    $clr-datagrid-icon-size: rem(1);
+
+    .datagrid-wrapper {
+        position: relative;
+
+        .datagrid-spinner {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba($clr-white, 0.6);
+
+            .spinner {
+                // We center the spinner in the datagrid
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+        }
+    }
+
+    .datagrid {
+        // Reset border-radius at the bottom to seamlessly join with the footer
+        border-bottom: 0 none;
+        border-radius: $clr-default-borderradius $clr-default-borderradius 0 0;
+        .datagrid-body:last-child {
+            .datagrid-row:last-child {
+                .datagrid-cell {
+                    &:first-child {
+                        border-radius: 0;
+                    }
+                    &:last-child {
+                        border-radius: 0;
+                    }
+                }
+            }
+        }
+
+        .datagrid-column, .datagrid-cell {
+            text-align: left;
+        }
+
+        .datagrid-column {
+            position: relative;
+            border-bottom: 2px solid $clr-light-midtone-gray;
+            vertical-align: top;
+
+            // Separator between column headers
+            &:not(:last-child)::before {
+                content: "";
+                position: absolute;
+                // Actual formula for top is: cellHeight - borderHeight / 2
+                // which is: baselineRem(1.5 - 1 / 2)
+                top: $clr_baselineRem_0_25;
+                right: 0;
+                height: $clr_baselineRem_1;
+                width: 0;
+                border-left: 1px solid $clr-lighter-midtone-gray;
+            }
+
+            .datagrid-column-title {
+                @include clr-no-styles-button();
+                color: $clr-dark-gray;
+                &:not([disabled]):hover {
+                    text-decoration: underline;
+                }
+            }
+
+            &.asc, &.desc {
+                font-weight: 600;
+
+                &::after {
+                    content: "";
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: $clr-datagrid-icon-size;
+                    height: $clr-datagrid-icon-size;
+                    margin-left: rem(0.25);
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                }
+            }
+
+            &.asc::after {
+                background-image: generateUpArrowIcon($action-blues-dark-midtone);
+            }
+            &.desc::after {
+                background-image: generateDownArrowIcon($action-blues-dark-midtone);
+            }
+
+            .datagrid-filter-toggle {
+                @include clr-no-styles-button();
+                cursor: pointer;
+                float: right;
+                vertical-align: middle;
+                width: $clr-datagrid-icon-size;
+                height: $clr-datagrid-icon-size;
+                margin: 0 rem(0.25);
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-image: generateFilterIcon($gray-dark-midtone);
+
+                &:hover {
+                    background-image: generateFilterIcon($action-blues-dark-midtone);
+                }
+                
+                &.datagrid-filter-open {
+                    background-image: generateFilterIcon($action-blues-dark-midtone);
+                }
+
+                &.datagrid-filtered {
+                    background-image: generateFilterIcon($action-blues-dark-midtone),
+                    generateCircleIcon($action-blues-dark-midtone);
+                }
+
+            }
+
+            .datagrid-filter {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                margin-top: $clr_baselineRem_0_2;
+                background: $clr-white;
+                padding: $clr_baselineRem_0_75;
+                border: 1px solid $gray-light-midtone;
+                box-shadow: 0 1px 3px rgba($gray-dark, 0.25);
+                border-radius: $clr-default-borderradius;
+                font-weight: normal;
+                z-index: map-get($clr-layers, dropdown-menu);
+
+                .datagrid-filter-close-wrapper {
+                    text-align: right;
+
+                    .close {
+                        float: none;
+                    }
+                }
+
+                // FIXME: remove
+                .datagrid-filter-apply {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .datagrid-select {
+            width: 2*$clr-table-cellpadding + $clr-table-lineheight;
+
+            .checkbox label {
+                display: block;
+                // These are the properties in default checkbox styles, so we
+                // have to override these rather than stuff like width and height.
+                min-height: $clr-table-lineheight;
+                padding-left: $clr-table-lineheight;
+
+                &::before, &::after {
+                    top: 0;
+                }
+            }
+        }
+
+        .datagrid-row {
+            &:hover {
+                background-color: $clr-light-gray;
+            }
+
+            &.datagrid-selected {
+                color: $clr-black;
+                background-color: $clr-selection-color;
+            }
+        }
+
+        .datagrid-cell {
+            border-top-color: $clr-lighter-midtone-gray;
+        }
+    }
+
+    .datagrid-placeholder {
+        background: $clr-white;
+        border-top: 1px solid $clr-lighter-midtone-gray;
+        border-left: $clr-table-borderstyle;
+        border-right: $clr-table-borderstyle;
+    }
+
+    .datagrid-foot {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-end;
+        align-items: stretch;
+        width: 100%;
+        height: $clr_baselineRem_1_5;
+        padding: 0 $clr-table-cellpadding;
+        // Account for borders
+        line-height: $clr_baselineRem_1_5 - 3px;
+        font-size: clr-getTypePropertyValueForDomElement(table_header, font-size);
+        background-color: $clr-thead-bgcolor;
+        border: $clr-table-borderstyle;
+        border-top: 2px solid $clr-light-midtone-gray;
+        border-radius: 0 0 $clr-default-borderradius $clr-default-borderradius;
+
+        .pagination {
+            margin-left: $clr_baselineRem_1_5;
+            height: $clr_baselineRem_1_5 - 2px;
+        }
+    }
+
+    // Yes, this is not .datagrid-pagination on purpose.
+    // I've been told to consider a potential separate pagination component.
+    .pagination {
+        list-style: none;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: stretch;
+
+        > * {
+            padding: 0 $clr_baselineRem_0_1;
+            margin-left: $clr_baselineRem_0_3;
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+
+        .pagination-current {
+            font-weight: 600;
+            border-bottom: 2px solid $action-blues-dark-midtone;
+        }
+
+        $clr-pagination-extra-margin: $clr_baselineRem_0_25;
+        .pagination-previous, .pagination-next {
+            display: inline-block;
+            vertical-align: middle;
+            width: $clr-datagrid-icon-size;
+            height: $clr-datagrid-icon-size;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .pagination-previous {
+            margin-right: $clr-pagination-extra-margin;
+            background-image: generateLeftCaretIcon($gray-dark);
+        }
+        .pagination-next {
+            margin-left: $clr-pagination-extra-margin;
+            background-image: generateRightCaretIcon($gray-dark);
+        }
+
+        button {
+            @include clr-no-styles-button();
+            color: $gray-dark;
+            // FIXME: this should be in the general reboot
+            cursor: pointer;
+        }
+    }
+}

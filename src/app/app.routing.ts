@@ -11,6 +11,7 @@ export const APP_ROUTES: Routes  = [
     { path: "checkboxes", loadChildren: "clarity-demos/checkboxes/demo/checkboxes.demo.module" },
     { path: "code-highlight", loadChildren: "clarity-demos/code/demo/code-highlight.demo.module" },
     { path: "color", loadChildren: "clarity-demos/color/demo/color.demo.module" },
+    { path: "datagrid", loadChildren: "clarity-demos/datagrid/demo/datagrid.demo.module" },
     { path: "dropdown", loadChildren: "clarity-demos/dropdown/demo/dropdown.demo.module" },
     { path: "forms", loadChildren: "clarity-demos/forms/demo/forms.demo.module" },
     { path: "grid", loadChildren: "clarity-demos/grid/demo/grid.demo.module" },

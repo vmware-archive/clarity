@@ -54,40 +54,42 @@ and place the form fields in the grid column classes. To occupy 100% of the colu
 
 ### Usage
 
-A form works best for guiding the user through input in a specific order.  Forms are comprised of other components, such as [input fields]({{ site.baseurl }}/documentation/input-fields), [dropdowns]({{ site.baseurl }}/documentation/dropdowns), [checkboxes]({{ site.baseurl }}/documentation/checkboxes), [radio buttons]({{ site.baseurl }}/documentation/radios), [toggle switches]({{ site.baseurl }}/documentation/toggle-switches), and text.
+Forms guide users through input in a structured, specific order.  Forms are comprised of [text]({{ site.baseurl }}/documentation/typography) and input components such as [checkboxes]({{ site.baseurl }}/documentation/checkboxes), [dropdowns]({{ site.baseurl }}/documentation/dropdowns), [input fields]({{ site.baseurl }}/documentation/input-fields), [radio buttons]({{ site.baseurl }}/documentation/radios), and [toggle switches]({{ site.baseurl }}/documentation/toggle-switches).
 
 ### Minimize Scrolling
 
-For a form that scrolls several pages, consider these techniques for organizing the content:
+For a form that scrolls several pages, consider organizing the content by:
 
 {: .list}
-- Group related fields in a form block with a descriptive label.
-- Progressively reveal more complex or less frequently used data.
-- Divide the content into separate pages in a wizard.
+- Grouping related fields in a form block with a descriptive label.
+- Progressively revealing more complex or less frequently used data.
+- Dividing content into separate pages in a [wizard]({{ site.baseurl }}/documentation/wizards).
 
 ### Labels
 
-Labels appear on the left of a component and move above the component when the app is resized to a tall, narrow layout. Labels use sentence caps and no ending punctuation.
+Labels appear to the left of a component, moving above the component when the user resizes the window to smaller dimensions.
+
+Labels use sentence caps, with no ending punctuation.
 
 ### Placeholder Text
 
-Placeholder text can help clarify an input field.  Located inside the field, this text disappears when the user types in the field.
+Located inside a field, placeholder text can help clarify expected input.  Placeholder text disappears when the user types in the field.
 
-A best practice is to use the label to indicate what information goes in the field and placeholder text as an additional hint, description, or example format:
+Tip: Use the label to show what information goes in the field and placeholder text as a hint, description, or example format:
 
 Label: Airport
 <br>
 Placeholder text:  SFO, SJO
 
-Only use placeholder text as a replacement for labels in forms with a small number of easily-understood fields.  The login page does this for the user name and password fields.
+Placeholder text can replace labels only in simple forms with a few easily-understood fields, see the [login page]({{ site.baseurl }}/documentation/login).
 
 ### Disabled Fields
 
-Show a disabled field only if the user can take a reasonable action to enable the component.  When disabling a component, also disable all associated elements, for example, the component label and explanatory text.
+Show a disabled field only if the user can take a reasonable action to enable the component.  When disabling a component, also disable all associated elements, such as the component label and explanatory text.
 
 ### Button Placement
 
-The placement of the button depends on where the form appears in the UI.  See [buttons]({{ site.baseurl }}/documentation/buttons) for guidelines.
+Button placement depends on form type and where it appears in the UI.  See [buttons]({{ site.baseurl }}/documentation/buttons) for guidelines.
 
 ### Validation
 
@@ -95,4 +97,4 @@ For information on validation, see [input fields]({{ site.baseurl }}/documentati
 
 ### Focus and Navigation
 
-Provide auto focus in the first field by default.  Users can then navigate through elements in the form in a logical sequence.
+Provide auto focus in the first field by default.  Users can then navigate through the form in a logical sequence.

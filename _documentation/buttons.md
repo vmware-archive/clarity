@@ -47,7 +47,9 @@ Clarity defines three button styles:
     Design guidelines start here...
 {% endcomment %}
 
-### Styles
+## Using Buttons
+
+### Solid, outline, and flat
 
 <div class="row buttons-modal-gfx">
     <div class="col-xs-12 col-sm-2">
@@ -76,19 +78,46 @@ Clarity defines three button styles:
 </div>
 
 
-### Order and Alignment
+### Alignment is container dependent
 
-In general, the order and alignment of the buttons depends on the container.  Spatial relationships with other elements in the component or space also determine button placement.
+Spatial relationships with other elements in the component or space determine button placement.
 
-{: .list}
-- [Modals]({{ site.baseurl }}/documentation/modals), right-aligned
-- [Wizards]({{ site.baseurl }}/documentation/wizards), right-aligned
-- [Cards]({{ site.baseurl }}/documentation/cards), left-aligned
-- [Content area]({{ site.baseurl }}/documentation/app-layout), left-aligned
+<div class="row buttons-modal-gfx">
+    <div class="col-xs-12 col-sm-2">
+        <a href="{{ site.baseurl }}/documentation/modals">Modals</a>
+    </div>
+    <div class="col-xs-12 col-sm-10">
+        Right-aligned
+    </div>
+</div>
+<div class="row buttons-modal-gfx">
+    <div class="col-xs-12 col-sm-2">
+        <a href="{{ site.baseurl }}/documentation/wizards">Wizards</a>
+    </div>
+    <div class="col-xs-12 col-sm-10">
+        Right-aligned
+    </div>
+</div>
+<div class="row buttons-modal-gfx">
+    <div class="col-xs-12 col-sm-2">
+        <a href="{{ site.baseurl }}/documentation//cards">Cards</a>
+    </div>
+    <div class="col-xs-12 col-sm-10">
+        Left-aligned
+    </div>
+</div>
+<div class="row buttons-modal-gfx">
+    <div class="col-xs-12 col-sm-2">
+        <a href="{{ site.baseurl }}/documentation/app-layout">Content area</a>
+    </div>
+    <div class="col-xs-12 col-sm-10">
+        Left-aligned
+    </div>
+</div>
 
-### Info, Success, and Danger Buttons
 
-Use info, success, and danger buttons to denote the severity of an action.
+
+### Info, success, and danger indicate action severity
 
 <div class="row buttons-modal-gfx">
     <div class="col-xs-12 col-sm-2">
@@ -111,13 +140,11 @@ Use info, success, and danger buttons to denote the severity of an action.
         <button type="submit" class="btn btn-danger">Danger</button>
     </div>
     <div class="col-xs-12 col-sm-10">
-        For a destructive action, such as Delete.  Clarity also uses red for warning buttons.  Although warning messages are often in yellow, this color does not work well for buttons because the light-colored text is not accessible against a yellow background.
+        For a warning or destructive action, such as Delete. Although warning messages are often in yellow, this color does not work well for buttons because the light-colored text is not accessible against a yellow background.
     </div>
 </div>
 
-### Sizes
-
-Base the height of the button on its location in the UI.
+### Size is location dependent
 
 <div class="row buttons-modal-gfx">
     <div class="col-xs-12 col-sm-2">
@@ -126,7 +153,7 @@ Base the height of the button on its location in the UI.
         </button>
     </div>
     <div class="col-xs-12 col-sm-10">
-        The default button height is 36 pixels. Use this size in modals, wizards, and in the content area.
+        Use the default height of 36 pixels in modals, wizards, and in the content area.
     </div>
 </div>
 <div class="row buttons-modal-gfx">
@@ -138,9 +165,9 @@ Base the height of the button on its location in the UI.
     </div>
 </div>
 
-### Block Button
+### The block button
 
-A block button takes up the full width of its container.  A common use of this button is in the Login screen.
+A block button occupies the full width of its container.  A common use of this button is in the Login screen.
 
 
 <div class="row buttons-modal-gfx">
@@ -152,22 +179,16 @@ A block button takes up the full width of its container.  A common use of this b
     </div>
     </div>
 
-### Inverse Button
+### Inverse formatting is for a secondary, outline button
 
-Use inverse styling for a secondary button on a dark background. For information about when to use inverse styling, see the [Color]({{ site.baseurl }}/documentation/color) documentation.
+For information about when to use inverse styling, see the [Color]({{ site.baseurl }}/documentation/color) documentation.
 
-### Labels
+### Clear and concise labels
 
-Write clear and concise button labels:
-
-{: .list}
-- Use a verb or verb phrase that describes the button's action.
-- Limit labels to three words and avoid long words.
+Use a verb or verb phrase that describes the button's action. Limit labels to three words and avoid long words.
 
 Buttons labels use uppercase text.  Buttons can be quite small in an enterprise application, and research shows that uppercase letters are easier to read at smaller font sizes.
 
-{: .list}
-- Normal-sized buttons have labels with font sizes ranging from 10 to 12 points.  
-- Smaller buttons, such as those in datagrids, headers, and navigation components, might use a font size as small as 8 points.
+Labels for normal-sized buttons range from 10 to 12 points.  Smaller buttons, such as those in datagrids, headers, and navigation components, might use as small as 8 points.
 
-For further reading, see [Letter Case and Text Legibility in Normal and Low Vision](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2016788/).
+<!--See [Letter Case and Text Legibility in Normal and Low Vision](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2016788/).-->

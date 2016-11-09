@@ -58,7 +58,7 @@ gulp.task("bundle:clarity:js", ["typescript:clarity"], function() {
             "@angular/*": {
                 build: false
             },
-            "rxjs/*": {
+            "rxjs": {
                 build: false
             }
         },
@@ -154,7 +154,7 @@ gulp.task("bundle:zip", ["bundle:clarity:js", "bundle:demos:js", "sass:static"],
  * Also creates a zip with our css and js deliverables and our definition files
  * for third-party devs, then adds it to the bundles/ folder.
  */
-gulp.task("bundle", ["bundle:icons", "bundle:icons:sfx", "bundle:clarity:js", "bundle:clarity:js:ng1", "bundle:demos:js", "bundle:zip"], function(){});
+gulp.task("bundle", ["bundle:icons", "bundle:icons:sfx", "bundle:clarity:js", "bundle:demos:js", "bundle:zip"], function(){});
 
 /**
  * Watches for changes in the transpiled js files to rebundle them
@@ -177,6 +177,6 @@ gulp.task("bundle:watch", function () {
 
 
     gulp.watch(iconsSources, ["bundle:icons", "bundle:icons:sfx"]);
-    gulp.watch(claritySources, ["bundle:clarity:js", "bundle:clarity:js:ng1"]);
+    gulp.watch(claritySources, ["bundle:clarity:js"]);
     gulp.watch(demosSources, ["bundle:demos:js"]);
 });

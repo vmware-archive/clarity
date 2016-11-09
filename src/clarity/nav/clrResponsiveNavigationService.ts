@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {BehaviorSubject} from "rxjs";
 
 import { ClrResponsiveNavCodes } from "./clrResponsiveNavCodes";
 import { ClrResponsiveNavControlMessage } from "./clrResponsiveNavControlMessage";

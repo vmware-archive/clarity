@@ -27,6 +27,16 @@ $clr-baseline: 24px !default;
     -o-appearance: none;
 }
 
+@mixin clr-no-styles-button {
+    @include clr-appearance-normal();
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+}
+
 //Dropdowns & Tooltips
 $opp-directions: (
     top: bottom,

@@ -193,6 +193,7 @@ $badge-status: (
         $rem_10: rem(10/$clr-rem-denominator);
 
         display: inline-flex;
+        vertical-align: middle;
         align-items: center;
         justify-content: center;
         min-width: $equiDimensions;

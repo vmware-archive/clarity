@@ -91,6 +91,18 @@ describe("Modal", () => {
         flushAndExpectOpen(fixture, true);
     }));
 
+    it("should not open if already opened", fakeAsync(() => {
+        spyOn(getModalInstance(fixture)._openChanged, "emit");
+        getModalInstance(fixture).open();
+        expect(getModalInstance(fixture)._openChanged.emit).not.toHaveBeenCalled();
+    }));
+
+    it("should not close when already closed", fakeAsync(() => {
+        fixture.componentInstance.opened = false;
+        spyOn(getModalInstance(fixture), "close");
+        expect(getModalInstance(fixture).close).not.toHaveBeenCalled();
+    }));
+
     it("offers two-way binding on clrModalOpen", fakeAsync(() => {
         expect(fixture.componentInstance.opened).toBe(true);
         getModalInstance(fixture).close();

@@ -57,7 +57,7 @@ layout: documentation
 
 ### Using Headers
 
-The Clarity can include the following elements, placed from left to right:
+The Clarity header can include the following elements, placed from left to right:
 
 {: .list}
 - Product identification

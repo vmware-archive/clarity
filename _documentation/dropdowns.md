@@ -125,11 +125,7 @@ The toggle can be a button, text, or icon.  The toggle should identify the colle
 
 #### Menu Items
 
-{: .list}
-- Order menu items by usage, except for destructive actions, which belong at the bottom.  
-- Separate groups of related actions with a divider.
-- Present items as verb phrases, such as "Attach Host Profile."  
-- Keep items short and concise.  Long menu items are truncated from the end and an ellipsis added.
+Order menu items by usage, except for destructive actions, which belong at the bottom.   Keep the text short and concise.  Long menu items are truncated from the end and an ellipsis added.
 
 #### Disabled
 

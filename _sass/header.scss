@@ -170,6 +170,14 @@ a.close-toggle {
             margin: baselineRem(0.75) 0 baselineRem(0.75) baselineRem(0.5);
             border-radius: 3px 0 0 3px;
 
+            &.nav-link-header {
+                font-weight: 600;
+
+                &:last-child {
+                    margin-top: baselineRem(1.5);
+                }
+            }
+
             &:hover {
                 color: #000;
                 text-decoration: none;

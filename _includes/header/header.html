@@ -103,11 +103,20 @@
         <div class="sliding-nav sliding-sidenav">
             <ul class="slider-nav">
                 {% if page.layout == 'documentation' %}
+                    {% if page.url == '/documentation/index' %}
+                        {% assign activeClass = ' active' %}
+                    {% else %}
+                        {% assign activeClass = '' %}
+                    {% endif %}
+                    <a class="nav-link nav-link-header{{ activeClass }}" href="{{ site.baseurl }}/documentation">Component Status</a>
+
                     <li><h5 class="documentation-hdr first">Patterns</h5></li>
                     {% include documentation/just_navlinks.html type="pattern" %}
 
                     <li><h5 class="documentation-hdr">Components</h5></li>
                     {% include documentation/just_navlinks.html type="component" %}
+
+                    {% include utility/sketch-tmpl-download.html cssClass="nav-link nav-link-header" linkText="Sketch Templates" %}
                 {% else %}
                     {% if page.layout == 'news'%}
                         {% include news/just_navlinks.html section="current" responsive=true %}

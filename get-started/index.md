@@ -8,7 +8,7 @@ permalink: /get-started/index.html
 
 ### Collaborative, Open, Evolving
 
-The Clarity design system brings user experience, implementation, tools, and guidelines together. Clarity reflects solid design thinking and incorporates best practices from consumer and enterprise software. Patterns and components are tested and tuned for ease of development and user confidence.
+The Clarity Design System brings user experience together with implementation and tools, providing designers and developers with an end-to-end design solution. Clarity combines user experience guidelines and patterns with an HTML and CSS framework. In addition, Clarity provides a set of well-designed and implemented data-bound components built on top of Angular 2, one of the most popular JavaScript frameworks in the industry.
 
 #### Clarity is ...
 

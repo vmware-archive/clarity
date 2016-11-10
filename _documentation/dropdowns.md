@@ -46,17 +46,13 @@ The following classes when extended along with <code>.dropdown</code> will open 
 
 <clr-dropdown-static-positioning-demo></clr-dropdown-static-positioning-demo>
 
-###### 3. Font Awesome icon as the dropdown toggle
-
-<clr-dropdown-static-fontawesome-toggle-demo></clr-dropdown-static-fontawesome-toggle-demo>
-
-###### 4. Clarity icon as the dropdown toggle
+###### 3. Clarity icon as the dropdown toggle
 
 <clr-dropdown-static-icon-toggle-demo></clr-dropdown-static-icon-toggle-demo>
 
-###### 5. Text link as the dropdown toggle
+###### 4. Link Button as the dropdown toggle
 
-<clr-dropdown-static-textlink-toggle-demo></clr-dropdown-static-textlink-toggle-demo>
+<clr-dropdown-static-buttonlink-toggle-demo></clr-dropdown-static-buttonlink-toggle-demo>
 
 ## Angular Component
 
@@ -121,7 +117,7 @@ By default, a dropdown opens from the bottom of the toggle, along the left side.
 
 #### Menu Toggle
 
-The toggle can be a button, text, or icon.  The toggle should identify the collection of actions in the list.  Typically, text is limited to one word.
+Clarity recommends that you use a button for the toggle. The button can contain either text or an icon.
 
 #### Menu Items
 

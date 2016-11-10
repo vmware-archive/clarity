@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### The login page is a predefined form for applications that require authentification.
+#### The login page is a predefined form for applications that require authentication.
 
 Use Clarity's login form by extending the <code>.login</code> classname on <code>form</code> and wrapping it in a container extending the <code>.login-wrapper</code> class.
 

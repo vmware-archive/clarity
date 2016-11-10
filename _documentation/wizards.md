@@ -182,16 +182,16 @@ Use a wizard to present a series of steps for completing a complex workflow, suc
 
 If the user doesn't need to complete the workflow in a predefined order, use a [modal]({{ site.baseurl }}/documentation/modals) instead.
 
-### Size
+#### Size
 
 Base the size of the wizard size on the use case.  Sizes are 576 px, 864 px and 1056 px (default). The best design provides a good balance between white space and the number of elements per page.   Too many controls on a page can be a problem as can too many sparsely-populated pages.
 
-### Title
+#### Title
 
 Typically task-based, the title should summarize the workflow, for example, Create Hardware Profile.
 
 
-### Steps
+#### Steps
 <div class="row buttons-modal-gfx">
     <div class="col-md-6 col-sm-12 flex-xs-middle">
 
@@ -223,7 +223,7 @@ Typically task-based, the title should summarize the workflow, for example, Crea
 </div>
 
 
-### Pages
+#### Pages
 
 <h4>Use the header to set context</h4>
 
@@ -241,46 +241,47 @@ Avoid:
     <li>Putting so much content on a page that it scrolls.</li>
 </ul>
 
-### Button Placement
+#### Button Placement
 
 Buttons in the footer are right-aligned. Right alignment supports the Z-pattern layout.  This puts the primary button in the rightmost position.
+
 
 <table class="table-noborder">
     <tbody>
           <tr>
-              <td class="left" width="40%">First wizard page</td>
+              <td class="left">First wizard page</td>
               <td class="left">
-                <img src="{{ site.baseurl }}{{ site.data.global.images_path }}documentation/wizards/Wizard_buttons_1.png?{{ site.time | date: '%s%N' }}" alt="Buttons on first page of wizard">
+                <img src="{{ site.baseurl }}{{ site.data.global.images_path }}documentation/wizards/Wizard_buttons_1.png?{{ site.time | date: '%s%N' }}" width="70%" height="70%" alt="Buttons on first page of wizard">
               </td>
           </tr>
           <tr>
               <td class="left">Inner wizard pages</td>
               <td class="left">
-                <img src="{{ site.baseurl }}{{ site.data.global.images_path }}documentation/wizards/Wizard_buttons_2.png?{{ site.time | date: '%s%N' }}" alt="Buttons on wizard inner pages">
+                <img src="{{ site.baseurl }}{{ site.data.global.images_path }}documentation/wizards/Wizard_buttons_2.png?{{ site.time | date: '%s%N' }}" width="70%" height="70%" alt="Buttons on wizard inner pages">
               </td>
           </tr>
           <tr>
               <td class="left">Last page</td>
               <td class="left">
-                <img src="{{ site.baseurl }}{{ site.data.global.images_path }}documentation/wizards/Wizard_buttons_3.png?{{ site.time | date: '%s%N' }}" alt="Buttons on final wizard page">
+                <img src="{{ site.baseurl }}{{ site.data.global.images_path }}documentation/wizards/Wizard_buttons_3.png?{{ site.time | date: '%s%N' }}" width="70%" height="70%" alt="Buttons on final wizard page">
               </td>
           </tr>
     </tbody>
 </table>
 
-### Cancel and Close
+#### Cancel and Close
 
 Wizards have both a Close and Cancel button.  The Close button is in the upper right corner as a visual affordance and for accessibility reasons.
 
 Clicking outside the wizard should not dismiss it. Users might accidentally click outside the wizard and lose data.
 
-### Scrolling
+#### Scrolling
 
 Some wizard pages might require scrolling.  The title and buttons remain in place when the content scrolls.
 
 Clarity does not use horizontal lines to define the scrollable area.  This design keeps the UI clean and simple.  Also, a line above the buttons makes it appear as if all content is visible.
 
-### Validation
+#### Validation
 
 Validation of user input can occur at the field level, the page level, and when the user finishes the wizard. This control allows users to complete actions with minimal risk of error or data loss.
 

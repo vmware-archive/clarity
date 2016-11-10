@@ -182,9 +182,9 @@ Use a wizard to present a series of steps for completing a complex workflow, suc
 
 If the user doesn't need to complete the workflow in a predefined order, use a [modal]({{ site.baseurl }}/documentation/modals) instead.
 
-#### Size
+#### Base Wizard size on use case
 
-Base the size of the wizard size on the use case.  Sizes are 576 px, 864 px and 1056 px (default). The best design provides a good balance between white space and the number of elements per page.   Too many controls on a page can be a problem as can too many sparsely-populated pages.
+BSizes are 576 px, 864 px and 1056 px (default). The best design provides a good balance between white space and the number of elements per page.   Overloading a page with too many controls can be a problem as can having  many sparsely-populated pages.
 
 #### Title
 
@@ -214,7 +214,7 @@ Typically task-based, the title should summarize the workflow, for example, Crea
             However, if a user choice results in a change in the number of steps, make the change early in the workflow.  Otherwise, users might lose track of the navigation path.
         </p>
 
-        <h4>Write text that is concise and direct</h4>
+        <h4>Steps titles should be concise and direct</h4>
         <p>
             To help readers scan the text, use sentence-style caps and no ending punctuation. Avoid text that is so long it wraps to the next line.
         </p>
@@ -236,14 +236,15 @@ All text and components should support the goal or purpose of the page.
 Avoid:
 
 <ul class="list">
-    <li>Putting more than one task on a page.  Pages are easier to use when they present only one step of the workflow.</li>
+    <li>Putting more than one task on a page.  Pages are easier to use when they present a single step of the workflow.</li>
     <li>Opening a modal or wizard from within a wizard.  This increases the complexity of the workflow.</li>
     <li>Putting so much content on a page that it scrolls.</li>
 </ul>
 
-#### Button Placement
+#### Buttons are right-aligned, in the footer
 
-Buttons in the footer are right-aligned. Right alignment supports the Z-pattern layout.  This puts the primary button in the rightmost position.
+Right alignment supports the Z-pattern layout.  The primary button is in the rightmost position.
+<p></p>
 
 
 <table class="table-noborder">
@@ -279,7 +280,7 @@ Clicking outside the wizard should not dismiss it. Users might accidentally clic
 
 Some wizard pages might require scrolling.  The title and buttons remain in place when the content scrolls.
 
-Clarity does not use horizontal lines to define the scrollable area.  This design keeps the UI clean and simple.  Also, a line above the buttons makes it appear as if all content is visible.
+Clarity does not use horizontal lines to define the scrollable area.  This  keeps the UI clean and simple.  Also, a line above the buttons makes it appear as if all content is visible.
 
 #### Validation
 

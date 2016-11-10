@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### With tabs, users can easily switch between alternate views.
+#### Tabs divide content into separate views which users navigate between.
 
 ### Static
 
@@ -17,9 +17,9 @@ The stylesheet will hide all the section elements where attribute <code class="c
 
 ###### Accessibility
 
-The active tab should have the attribute <code class="clr-code">aria-selected</code> set to <code class="clr-code">true</code>, and the others false.
+The active tab should have the attribute <code class="clr-code">aria-selected</code> set to <code class="clr-code">true</code>, and the others to false.
 
-The active panel associated with the active tab should have the attribute <code class="clr-code">aria-hidden</code> set to <code class="clr-code">true</code>, and the others <code class="clr-code">false</code>.
+The active panel associated with the active tab should have the attribute <code class="clr-code">aria-hidden</code> set to <code class="clr-code">true</code>, and the others <code class="clr-code">to false</code>.
 
 In addition, each tab should have an aria-controls attribute set to the id of the matching panel and each panel should have an <code class="clr-code">aria-labelledby</code> attribute set to the id of the tab associated with the panel.
 
@@ -29,7 +29,7 @@ In addition, each tab should have an aria-controls attribute set to the id of th
 
 ###### Basic example
 
-The tabs component is generated based on the <code class="clr-code">&lt;clr-tab-link&gt;</code> and <code class="clr-code">&lt;clr-tab-content&gt;</code> sub-components inside the <code class="clr-code">&lt;clr-tabs&gt;</code> tag. The tab links are automatically associated with the the content components in order. If there are more tabs then the content sections, clicking on the extra tabs will set the tab to active, but will only show blank content. If there are more content sections than the tabs, the extra sections will remain invisible since no tab can be selected to activate them.
+The tabs component is generated based on the <code class="clr-code">&lt;clr-tab-link&gt;</code> and <code class="clr-code">&lt;clr-tab-content&gt;</code> sub-components inside the <code class="clr-code">&lt;clr-tabs&gt;</code> tag. The tab links are automatically associated with the content components, in order. If there are more tabs then content sections, clicking on the extra tabs will set the tab to active but  only show blank content. If there are more content sections than tabs, the extra sections will remain invisible since no tab can be selected to activate them.
 
 ###### Accessibility
 
@@ -55,7 +55,7 @@ All attributes associated with accessibility (aria-controls, aria-selected, aria
         <td>false</td>
         <td class="left">
             Used on &lt;clr-tab-content&gt;. If true, will make the content visible. If none of the
-            &lt;clr-tab-content&gt;s is set as active, then the component will initialize the first one as active.
+            &lt;clr-tab-content&gt;s are set as active, then the component will initialize the first one as active.
             Note that while it's possible to set multiple tab contents as active, it is discouraged.
         </td>
     </tr>
@@ -109,7 +109,7 @@ All attributes associated with accessibility (aria-controls, aria-selected, aria
         <td>&lt;TabContent&gt;</td>
         <td>N/A</td>
         <td class="left">
-            When a tab is clicked, an event is emitted with the TabContent whose index matches the selected TabLink.
+            When a tab is clicked, an event  with the TabContent whose index matches the selected TabLink is emitted.
         </td>
     </tr>
     <tr>
@@ -117,7 +117,7 @@ All attributes associated with accessibility (aria-controls, aria-selected, aria
         <td>&lt;number&gt;</td>
         <td>N/A</td>
         <td class="left">
-            When a tab is clicked, an event is emitted with the index of the selected TabLink.
+            When a tab is clicked, an event with the index of the selected TabLink is emitted .
         </td>
     </tr>
     </tbody>
@@ -137,11 +137,9 @@ Avoid using tabs in cards and modals.
 
 ### Presentation
 
-Tabs appear in a single, non scrollable row, above their content.  The width of each tab is dependent on its label.  To ensure that all tabs appear in the container:
+Tabs appear in a single, non-scrollable row, above their content.  The width of each tab is dependent on its label.  
 
-{: .list}
-- Avoid using more than seven tabs.
-- Use one to two words per label.
+To ensure that all tabs appear in the container, avoid using more than seven tabs and limit labels to  one or two words.
 
 ### Content
 
@@ -156,8 +154,8 @@ While the content within tabs is flexible, follow these guidelines for organizat
 ### Labels
 
 {: .list}
-- Ensure that the labels show a clear relationship between the views.
+- Ensure that the labels show a clear relationship between views.
 - Favor nouns over verbs, for example, Settings, Permissions, and Performance.
 - Avoid generic labels such as General or Advanced.
 - Use title-style caps.
-- Avoid using icons in the labels.
+- Avoid using icons in labels.

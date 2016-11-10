@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### Modals are a primary pattern for exchanging information with users.  A modal requires the user to interact with it before the user can continue.
+#### Modals exchange information with users and retain focus until dismissed or a required action has been completed.
 
 <div class="alert alert-warning bump-down">
     <div class="alert-item">
@@ -23,13 +23,13 @@ A static example of a modal with header, body and footer:
 
 ### Sizes
 
-In addition to the default, medium size, Clarity modals come in two optional sizes, large and small. To use an optional size, add <code>modal-sm</code> or <code>modal-lg</code> class to your modal-dialog.
+In addition to the default, medium size, Clarity modals come in two optional sizes: large and small. To use an optional size, add <code>modal-sm</code> or <code>modal-lg</code> class to your modal-dialog.
 
 <clr-modal-sizes-demo></clr-modal-sizes-demo>
 
 ### Modal Backdrop
 
-Here is an example of a backdrop to use behind your modal, when you display it on top of a page:
+Here is an example of a backdrop to use behind your modal, when you display it over a page:
 
 <clr-modal-backdrop-demo></clr-modal-backdrop-demo>
 
@@ -154,7 +154,7 @@ Modals have a default width (576 pixels) and two optional widths: large (864 pix
 {: .list}
 - The default width is best for presenting short, focused tasks, error messages, and confirmations.  
 - The larger size works well for complex forms and EULAs.  
-- The smaller size is goof for providing more information about a UI element.
+- The smaller size is good for providing more information about a UI element.
 
 #### Button Placement
 
@@ -186,7 +186,7 @@ The following images show one-, two-, and three-button placement.  Avoid using m
 
 #### Scrolling
 
-Whenever possible, avoid putting so much content in a modal that it scrolls.  In the cases that require scrolling, such as a EULA and license agreement, a scrollbar is visible upon loading. The title and footer remain in place when the user scrolls the content.
+Avoid putting so much content in a modal that it scrolls.  In the cases that require scrolling, such as a EULA and license agreement, a scrollbar is visible upon loading. The title and footer remain in place when the user scrolls the content.
 
 #### Animation
 

@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### A spinner is a circular progress indicator that provides feedback on an ongoing, user-initiated process.
+#### A spinner is visual indicator of an ongoing, user-initiated process.
 
 Clarity has two types of spinners:
 

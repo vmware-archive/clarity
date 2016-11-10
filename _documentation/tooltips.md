@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### A tooltip provides a short description of a UI element when the user hovers the pointer over it.
+#### A tooltip provides a short description of a UI element.
 
 **.tooltip**
 <div>
@@ -50,7 +50,7 @@ Tooltips support six directions, defined by using one of the following classes w
 
 ### Usage
 
-Use tooltips for actionable icons that do not have text labels, such as the icons in a toolbar.
+Use tooltips for actionable icons that do not have text labels, such as the icons in a toolbar.  A tooltip is visible on hover.
 
 Don't use a tooltip on:
 
@@ -60,11 +60,11 @@ Don't use a tooltip on:
 <li>Textual links.  Ensure that the link describes its destination and is not truncated.</li>
 </ul>
 
-Don't rely on tooltips to meet accessibility requirements.  Rather, ensure that your underlying content is well-structured for accessibility, for example, by using [ARIA roles](https://www.w3.org/TR/2013/WD-wai-aria-practices-20130307/#accessiblewidget).
+Don't rely on tooltips to meet accessibility requirements.  Rather, ensure that your underlying content is well-structured for accessibility, for example, by using ARIA roles.
 
-### Placement
+#### Placement
 
-Choose a tooltip position that ensures the entire toolitp is visible on the screen and that the tooltip does not cover an important UI element.  By default, the positioning for tooltips is to the top-right of the icon, pointing to its center.  
+Choose a tooltip position that ensures the entire tooltip is visible on the screen and that the tooltip does not cover an important UI element.  By default, the positioning for tooltips is to the top-right of the icon, pointing to its center.  
 
 Other positions are:
 
@@ -76,15 +76,15 @@ Other positions are:
 <li>Side right</li>
 </ul>
 
-### Size
+#### Size
 
 Set a width that accommodates the text string.  The default is 240 px.  Other choices are 72 px, 120 px, and 360 px.
 
-### Text
+#### Text
 
 <ul class="list">
-<li>Use a verb phrase to describe the action on the icon, for example, "Edit Settings."</li>
-<li>Use only plain text and be concise.  Tootlips can be a sentence fragment.</li>
-<li>Do not  exceed one line of text. If more detailed information is required, use another form of help.</li>
+<li>Use a verb phrase to describe the action on the icon, for example, "Edit settings."</li>
+<li>Use only plain text and be concise.  Tooltips can be a sentence fragment.</li>
+<li>If more detailed information is required, use another form of help.</li>
 <li>Use sentence-style caps and no ending punctuation.</li>
 </ul>

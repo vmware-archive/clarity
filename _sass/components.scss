@@ -56,7 +56,7 @@
 
     .component-legend-item {
         font-size: 13px;
-        width: 120px;
+        width: baselineRem(5);
         display: inline-block;
 
         span {
@@ -64,7 +64,7 @@
         }
 
         .symbol {
-            width: 18px;
+            width: $bl-0_75;
 
             & > img {
                 margin-top: -3px;
@@ -87,16 +87,16 @@
         div.indent {
             & > h4 {
                 font-size: 28px;
-                line-height: 48px;
+                line-height: $bl-2_0;
                 font-weight: 200;
-                margin-left: -48px;
-                margin-bottom: 12px;
+                margin-left: -1 * $bl-2_0;
+                margin-bottom: $bl-0_5;
             }
 
             & div.code-card {
-                padding-left: 48px;
+                padding-left: $bl-2_0;
                 padding-top: 0;
-                padding-bottom: 36px;
+                padding-bottom: $bl-1_5;
             }
         }
     }
@@ -121,12 +121,12 @@ table.buttons-cmp-table td {
 }
 
 .buttons-modal-gfx {
-    margin-top: 24px;
+    margin-top: $bl-1_0;
 }
 
 .buttons-modal-gfx p {
-    margin-top: 6px;
-    margin-bottom: 18px;
+    margin-top: $bl-0_25;
+    margin-bottom: $bl-0_75;
 }
 
 .main-container {

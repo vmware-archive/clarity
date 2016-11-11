@@ -17,7 +17,7 @@
         </div>
         <div class="hidden-xs-down row">
             {% for item in site.data.team.social %}
-                <div class="col-xs-4">
+                <div class="col-xs-4 col-sm-6 col-lg-4">
                     {% include community/social-card.html socialUrl=item.url blurb=item.text img=item.img %}
                 </div>
             {% endfor %}

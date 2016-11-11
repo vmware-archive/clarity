@@ -1,12 +1,3 @@
-@import './clarityHelpers.scss';
-
-$bl-0_25: baselineRem(0.25);
-$bl-0_5: baselineRem(0.5);
-$bl-0_75: baselineRem(0.75);
-$bl-1_0: baselineRem(1);
-$bl-1_5: baselineRem(1.5);
-$bl-2_0: baselineRem(2);
-
 .layout-news {
     .content-area > section {
         max-width: $clrweb-content-maxwidth;
@@ -114,7 +105,6 @@ ul.whats-new-highlights {
             width: $bl-2_0;
         }
 
-        // card selector is too specific forcing specificity inflation here... --smathis, 2016/06/20
         .description {
             margin-top: 0;
 

@@ -1,118 +1,15 @@
-.jumbo-footer {
-    @include clarityHeaderBackground;
-    background-image: url(../images/footerBg.png);
-    color: #fff;
+footer {
+    padding: $bl-1_0 0;
+
+    .vmware-weblogo {
+        margin: $bl-0_5 0;
+    }
+
+    .copyright {
+        margin-top: $bl-0_25;
+    }
+}
+
+body:not(.layout-home) footer {
     display: none;
-
-    .link-block, .branding {
-        padding: 0;
-        padding-right: baselineRem(3);
-    }
-
-    .link-block {
-        font-size: baselineRem(0.5);
-        line-height: baselineRem(1);
-
-        ul {
-            margin-bottom: 0;
-            margin-left: baselineRem(0.75);
-            padding-left: 0;
-            list-style-position: outside;
-            margin-top: 0;
-        }
-
-        a {
-            color: #fafafa;
-
-            &:hover, &:focus {
-                color: #fff;
-            }
-        }
-    }
-
-    .link-block-title {
-        text-transform: uppercase;
-    }
-
-    .branding {
-        font-size: baselineRem(3);
-        line-height: baselineRem(2);
-        display: table;
-        height: baselineRem(6);
-        font-weight: 200;
-    }
-
-    .footer-title {
-        display: table-cell;
-        vertical-align: middle;
-        height: 100%;
-    }
-}
-
-.jumbo-footer-wrapper {
-    width: 100%;
-    max-width: 1152px;
-    padding: baselineRem(3);
-    padding-right: 0;
-    margin: 0 auto;
-}
-
-.mini-footer {
-    padding: 0 baselineRem(1.5);
-    width: 100%;
-    max-width: 1236px;
-    position: relative;
-    margin: 0 auto;
-    display: none;
-
-    .branding {
-        font-weight: 800;
-    }
-
-    .attribution {
-        text-align: right;
-        font-size: 11px;
-        line-height: baselineRem(1);
-    }
-}
-
-.mini-footer-wrapper {
-    width: 100%;
-    padding: baselineRem(0.5) 0;
-}
-
-.layout-home {
-    .jumbo-footer {
-        display: block;
-    }
-}
-
-@media (max-width: 1144px) {
-    .jumbo-footer-wrapper .col-xs-4:first-child {
-        display: none;
-    }
-
-    .jumbo-footer-wrapper {
-        padding-left: baselineRem(1);
-        padding-right: baselineRem(1);
-    }
-
-    .jumbo-footer .link-block {
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto baselineRem(3);
-        padding: 0;
-        display: block;
-        flex: none;
-        text-align: center;
-    }
-
-    .jumbo-footer .link-block ul {
-        margin: 0;
-        list-style: none;
-    }
-
-    .mini-footer {
-        display: none;
-    }
 }

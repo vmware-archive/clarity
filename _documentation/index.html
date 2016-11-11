@@ -42,7 +42,11 @@ load-components: false
             <tr>
                 <td>
                     {% if item.url %}
-                        <a href="{{ site.baseurl }}/{{item.url}}">{{item.text}}</a>
+                        {% if item.url contains 'http' %}
+                            <a href="{{item.url}}" target="_blank">{{item.text}}</a>
+                        {% else %}
+                            <a href="{{ site.baseurl }}{{item.url}}">{{item.text}}</a>
+                        {% endif %}
                     {% else %}
                         {{ item.text }}
                     {% endif %}

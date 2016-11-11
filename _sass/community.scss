@@ -7,14 +7,14 @@
 
     section {
         width: 100%;
-        padding-left: baselineRem(1);
-        padding-right: baselineRem(1);
+        padding-left: $bl-1_0;
+        padding-right: $bl-1_0;
         max-width: baselineRem(44);
         margin: 0 auto;
-        padding-top: baselineRem(1);
+        padding-top: $bl-1_0;
 
         h3 {
-            margin-bottom: baselineRem(1);
+            margin-bottom: $bl-1_0;
         }
     }
 
@@ -34,7 +34,7 @@
             width: 252px;
             margin: 0 auto;
             height: 192px;
-            padding: 0 baselineRem(1);
+            padding: 0 $bl-1_0;
         }
 
         .card-text {
@@ -58,8 +58,8 @@
 
     .community-team-cards {
         .row {
-            margin-left: -24px;
-            margin-right: -24px;
+            margin-left: -1 * $bl-1_0;
+            margin-right: -1 * $bl-1_0;
         }
 
         .card {
@@ -68,7 +68,7 @@
             border: 0 none;
             box-shadow: none;
             text-align: center;
-            padding: 0 24px;
+            padding: 0 $bl-1_0;
 
             .card-text {
                 margin: 0 0 12px;
@@ -77,7 +77,7 @@
     }
 
     .community-team-name {
-        margin-top: baselineRem(0.5);
+        margin-top: $bl-0_5;
     }
 
     .community-team-role {
@@ -86,7 +86,7 @@
     }
 
     .community-team-blurb {
-        margin-top: baselineRem(0.5);
+        margin-top: $bl-0_5;
         text-align: left;
     }
 }

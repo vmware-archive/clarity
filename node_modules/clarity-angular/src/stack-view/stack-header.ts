@@ -10,10 +10,10 @@ import {StackView} from "./stack-view";
             <span class="stack-actions">
                 <ng-content select=".stack-action"></ng-content>
                 <!-- Undocumented experimental feature: inline editing. -->
-                <a *ngIf="stackView.editable" class="stack-action btn btn-sm btn-link" 
-                   (click)="stackView.editing = !stackView.editing">
-                    Edit
-                </a>
+                <button *ngIf="stackView.editable" class="stack-action btn btn-sm btn-link" 
+                        (click)="stackView.editing = !stackView.editing" type="button">
+                        Edit
+                </button>
                 <!-- End of undocumented experimental feature. -->
             </span>
         </h4>

@@ -97,7 +97,7 @@ $clr-alert-colors: (
 
     .alert {
         @include clr-getTypePropertiesForDomElement(alert_text, (font-size, letter-spacing));
-        line-height: $clr-alert-font-size;
+        line-height: rem(16/$clr-rem-denominator);
         position: relative;
         box-sizing: border-box;
         display: flex;
@@ -128,7 +128,6 @@ $clr-alert-colors: (
         .alert-item {
             position: relative;
             display: flex;
-            align-items: center;
             flex-wrap: nowrap;
             margin-top: $clr-alert-item-top-margin;
             min-height: $clr-alert-item-min-height;
@@ -136,16 +135,13 @@ $clr-alert-colors: (
             //display: inline-block and max-width were specifically added for IE 10.
             //Flexbox content wouldn't wrap otherwise :(. 98% was just an estimate to distance the text from the
             //close alert button.
-            span, .alert-text {
+            span,
+            .alert-text {
                 flex: 1 1 auto;
                 display: inline-block;
                 max-width: 98%;
                 margin-right: $clr_baselineRem_0_5;
                 padding-left: $clr-icon-dimension-sm + $clr-icon-margin-right;
-
-                //TODO: Added 1px padding top to help with the vertical alignment. Figure out why vertical alignment
-                //doesn't work without this.
-                padding-top: 1px;
 
                 &::before {
                     position: absolute;
@@ -183,7 +179,8 @@ $clr-alert-colors: (
                 margin-right: $clr_baselineRem_0_5;
             }
 
-            .alert-action, .dropdown-toggle {
+            .alert-action,
+            .dropdown-toggle {
                 color: $action-blues-dark;
 
                 &:active {
@@ -193,7 +190,8 @@ $clr-alert-colors: (
         }
 
         //Icons
-        & > .alert-item > .alert-text::before, &.alert-info > .alert-item > .alert-text::before {
+        & > .alert-item > .alert-text::before,
+        &.alert-info > .alert-item > .alert-text::before {
             background-image: generateInfoIcon();
         }
 
@@ -272,7 +270,8 @@ $clr-alert-colors: (
             }
 
             //Icons
-            & > .alert-item > .alert-text::before, &.alert-info > .alert-item > .alert-text::before {
+            & > .alert-item > .alert-text::before,
+            &.alert-info > .alert-item > .alert-text::before {
                 background-image: generateInfoIcon($clr-app-level-alert-color);
             }
 
@@ -333,7 +332,7 @@ $clr-alert-colors: (
                 flex-wrap: wrap;
 
                 .alert-text {
-                    flex: 1 0 auto;
+                    flex: 1 0 100%;
                 }
             }
 

@@ -63,12 +63,15 @@ export class Modal implements OnChanges, OnDestroy {
     }
 
     open(): void {
+        if (this._open) {
+            return;
+        }
         this._open = true;
         this._openChanged.emit(true);
     }
 
     close(): void {
-        if (!this.closable) {
+        if (!this.closable || this._open === false) {
             return;
         }
         this._open = false;
@@ -81,7 +84,7 @@ export class Modal implements OnChanges, OnDestroy {
     @HostListener("body:keyup", ["$event.keyCode"])
     globalKeyUp(keyCode: number): void {
         // Close when the user presses escape
-        if (keyCode === 27) {
+        if (this._open && keyCode === 27) {
             this.close();
         }
     }

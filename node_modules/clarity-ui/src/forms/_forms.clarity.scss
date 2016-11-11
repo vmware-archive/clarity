@@ -417,9 +417,9 @@ $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height
             width: $clr-checkbox-radio-height / 2;
             border-left: 2px solid white;
             border-bottom: 2px solid white;
-            transform: rotate(-45deg);
-            top: $clr-checkbox-radio-height / 2;
+            top: ($clr_baselineRem_1 - $clr-checkbox-radio-height) / 2;
             left: $clr-checkbox-radio-height / 4;
+            transform: translate(0, $clr-checkbox-radio-height/4) rotate(-45deg);
         }
 
         input[type="checkbox"]:checked + label::before {

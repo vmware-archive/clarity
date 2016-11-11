@@ -5,3 +5,9 @@
     display: none;
   }
 }
+
+button.nav-link{
+  border-radius: 0;
+  text-transform: capitalize;
+  min-width: 0;
+}

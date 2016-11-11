@@ -177,7 +177,7 @@
             "core": 20,
             "ng": -1,
             "dox": 10,
-            "isNew": true,
+            "isUpdated": true,
             "comments": false
         },
         {
@@ -242,8 +242,7 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "/documentation/progress",
@@ -385,7 +384,6 @@
             "core": 20,
             "ng": -1,
             "dox": 20,
-            "isNew": true,
             "comments": "New Metropolis font included with 0.6.0"
         },
         {

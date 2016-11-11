@@ -69,9 +69,10 @@
             "ux": 20,
             "ui": 20,
             "core": -1,
-            "ng": -1,
+            "ng": 20,
             "dox": 20,
-            "comments": false
+            "isUpdated": true,
+            "comments": "New angular component added"
         },
         {
             "url": "/documentation/code-highlight",
@@ -115,15 +116,16 @@
             "dox": 20
         },
         {
-            "url": false,
+            "url": "/documentation/datagrid",
             "text": "Datagrid",
             "type": "component",
             "ux": 20,
             "ui": 20,
             "core": -1,
-            "ng": 10,
+            "ng": 20,
             "dox": 10,
-            "comments": false
+            "isNew": true,
+            "comments": "New datagrid angular component added"
         },
         {
             "url": "/documentation/dropdowns",
@@ -176,9 +178,9 @@
             "ui": 20,
             "core": 20,
             "ng": -1,
-            "dox": 10,
+            "dox": 20,
             "isUpdated": true,
-            "comments": false
+            "comments": "Clarity Icons replaces Font Awesome; New size attribute added"
         },
         {
             "url": "/documentation/input-fields",

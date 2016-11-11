@@ -5,7 +5,11 @@
 
     .home-cards .home-cards-container {
         margin-top: 0;
-        margin-right: baselineRem(-0.5);
+        margin-right: 0;
+        background: none;
+        box-shadow: none;
+        border: 0 none;
+        padding: 0;
     }
 
     .home-cards {

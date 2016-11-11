@@ -16,14 +16,16 @@ gitLink: https://github.com/vmware/clarity/commit/29c547cde08e6c3add9fa5b40b34c5
 
 hasIcons: true
 isCurrent: true
+# make sure to reset /clarity to site.baseurl when this is no longer the current release
 ---
 
 <h2>Highlights</h2>
+
 <ul class="list-unstyled whats-new-highlights">
     <li>
         <h6>New component: Datagrid</h6>
         <p>
-            Clarity NG now provides a <a href="{{ site.baseurl }}/documentation/datagrid">Datagrid</a> Angular component.
+            Clarity NG now provides a Datagrid Angular component.
             It comes with a first set of features, including sorting, filtering, pagination and multi-selection.
             It supports pre-loaded data as well as server-driven data, where  only the currently displayed items are loaded
             in the browser.
@@ -31,8 +33,9 @@ isCurrent: true
             to that list or change its priorities.
         </p>
         <p>
-            Clarity's Datagrid uses a declarative interface, so you can use it as you would use an HTML table, directly in
-            your templates. Here is a basic example with simple objects:
+            Clarity's Datagrid uses a declarative interface, so you can use it
+            as you would use an HTML table, directly in your templates. Here is
+            a basic example with simple objects:
         </p>
 <pre><code class="language-html">
     &lt;clr-datagrid&gt;
@@ -53,27 +56,26 @@ isCurrent: true
     &lt;/clr-datagrid&gt;
 </code>
 </pre>
+
         <p>
-            For more advanced examples, please read the
-            <a href="{{ site.baseurl }}/documentation/datagrid">full documentation</a> in order.
-            It will walk you from the most basic examples to complex server-driven ones, and combining any of these will let
-            you customize your Datagrid at will.
+            We will have full documentation coming soon for more advanced examples.
         </p>
+
     </li>
-
-
-
 
     <li>
         <h6>Replace Font Awesome with Clarity Icons</h6>
-    <p>
-        Clarity UI now depends on <a href="{{ site.baseurl }}/documentation/iconography">Clarity Icons</a>
-        instead of Font Awesome for iconography.
-    </p>
 
-    <p><b>Breaking Change</b></p>
-    <div>
-        <a href="{{ site.baseurl }}/documentation/dropdowns">Dropdowns</a> Toggles now have an updated markup:
+        <p>
+            Clarity UI now depends on <a href="/clarity/documentation/iconography">Clarity Icons</a>
+            instead of Font Awesome for iconography.
+        </p>
+
+        <p><b>Breaking Change</b></p>
+
+        <div>
+            <a href="/clarity/documentation/dropdowns">Dropdowns</a> Toggles now have an updated markup:
+
 <pre><code class="language-html">
     &lt;button class=&quot;dropdown-toggle btn btn-outline-primary&quot;&gt;
         Dropdown
@@ -81,21 +83,25 @@ isCurrent: true
     &lt;/button&gt;
 </code>
 </pre>
-    </div>
-    <b>Note:</b> Clarity recommends that you use a button for the toggle. The button can contain either text or an icon.
 
-    <p><b>Deprecation</b></p>
-    <div class="alert alert-info">
-        <div class="alert-item">
-            <span class="alert-text">
-                Existing support for font icons in Clarity components is now being deprecated and will be removed in 0.8.0.
-                Clarity recommends using Clarity Icons.
-            </span>
         </div>
-    </div>
-    <p>
-        Use the following markup for using Clarity Icons in Branding, Header Nav and Header Actions:
-    </p>
+
+        <b>Note:</b> Clarity recommends that you use a button for the toggle. The button can contain either text or an icon.
+
+        <p><b>Deprecation</b></p>
+
+        <div class="alert alert-info">
+            <div class="alert-item">
+                <span class="alert-text">
+                    Existing support for font icons in Clarity components is now being deprecated and will be removed in 0.8.0.
+                    Clarity recommends using Clarity Icons.
+                </span>
+            </div>
+        </div>
+
+        <p>
+            Use the following markup for using Clarity Icons in Branding, Header Nav and Header Actions:
+        </p>
 
 <pre><code class="language-html">
     &lt;header class=&quot;header-6&quot;&gt;
@@ -136,12 +142,16 @@ isCurrent: true
 </pre>
 
     <h6>Refactor Angular Dropdown Component</h6>
-    <p>The Angular <a href="{{ site.baseurl }}/documentation/dropdowns">Dropdowns</a> component now uses attribute directives for dropdown toggles and menu items</p>
+
+    <p>The Angular <a href="/clarity/documentation/dropdowns">Dropdowns</a> component now uses attribute directives for dropdown toggles and menu items</p>
+
     <p><b>Breaking Change</b></p>
+
     <ol class="list">
         <li><code class="clr-code">clrDropdownToggle</code> should be used to indicate a dropdown toggle used in the angular dropdown component</li>
         <li><code class="clr-code">clrDropdownItem</code> should be used to indicate a dropdown item in the angular dropdown component</li>
     </ol>
+
 <pre><code class="language-html">
     &lt;clr-dropdown [clrMenuPosition]=&quot;'bottom-right'&quot;&gt;
       &lt;button class=&quot;btn btn-outline-primary&quot; clrDropdownToggle&gt;
@@ -160,5 +170,6 @@ isCurrent: true
     &lt;/clr-dropdown&gt;
 </code>
 </pre>
+
     </li>
 </ul>

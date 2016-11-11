@@ -7,6 +7,6 @@ permalink: /news/index
 
 {% for item in site.news %}
     {% if item.isCurrent and item.hide != true %}
-        {{ item.content | markdownify }}
+{{ item.content }}
     {% endif %}
 {% endfor %}

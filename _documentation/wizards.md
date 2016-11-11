@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### A wizard presents a multi-step workflow that users perform in a recommended sequence.
+##### A wizard presents a multi-step workflow that users perform in a recommended sequence.
 
 ### HTML and Styles
 
@@ -172,10 +172,7 @@ programmatically calling next when the asynchronous validation call returns and 
 </table>
 {% endraw %}
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 Use a wizard to present a series of steps for completing a complex workflow, such as installation. A wizard simplifies the workflow by directing users serially through the tasks.
@@ -194,22 +191,19 @@ Typically task-based, the title should summarize the workflow, for example, Crea
 #### Steps
 <div class="row buttons-modal-gfx">
     <div class="col-md-6 col-sm-12 flex-xs-middle">
-
         <img
             src="{{ site.baseurl }}{{ site.data.global.images_path }}documentation/wizards/New_wizard.png"
             alt="Buttons on inner wizard pages"
             style="max-width:100%;">
-
     </div>
 
-    <div class="col-md-5 offset-md-1 col-sm-12">
+    <div class="col-md-5 offset-md-1 col-sm-12 clrweb-wizardsteps-block">
         <h4>Streamline the number of steps</h4>
         <p>
             A wizard should be at least two steps.  Otherwise, a modal will suffice.  Also, avoid vertical scrolling of steps.  At the default size, the steps scroll at 14 lines.
         </p>
 
-<h4>Non-branching wizards are preferable</h4>
-
+        <h4>Non-branching wizards are preferable</h4>
         <p>
             However, if a user choice results in a change in the number of steps, make the change early in the workflow.  Otherwise, users might lose track of the navigation path.
         </p>
@@ -218,18 +212,17 @@ Typically task-based, the title should summarize the workflow, for example, Crea
         <p>
             To help readers scan the text, use sentence-style caps and no ending punctuation. Avoid text that is so long it wraps to the next line.
         </p>
-
     </div>
 </div>
 
 
 #### Pages
 
-<h4>Use the header to set context</h4>
+###### Use the header to set context
 
 By default, the page header is the same text as the selected step.  If needed, enhance the header text to clarify meaning.
 
-<h4>Ensure content is cohesive</h4>
+###### Ensure content is cohesive
 
 All text and components should support the goal or purpose of the page.  
 
@@ -241,10 +234,9 @@ Avoid:
     <li>Putting so much content on a page that it scrolls.</li>
 </ul>
 
-#### Buttons are right-aligned, in the footer
+###### Buttons are right-aligned, in the footer
 
 Right alignment supports the Z-pattern layout.  The primary button is in the rightmost position.
-<p></p>
 
 
 <table class="table-noborder">
@@ -270,19 +262,19 @@ Right alignment supports the Z-pattern layout.  The primary button is in the rig
     </tbody>
 </table>
 
-#### Cancel and Close
+###### Cancel and Close
 
 Wizards have both a Close and Cancel button.  The Close button is in the upper right corner as a visual affordance and for accessibility reasons.
 
 Clicking outside the wizard should not dismiss it. Users might accidentally click outside the wizard and lose data.
 
-#### Scrolling
+###### Scrolling
 
 Some wizard pages might require scrolling.  The title and buttons remain in place when the content scrolls.
 
 Clarity does not use horizontal lines to define the scrollable area.  This  keeps the UI clean and simple.  Also, a line above the buttons makes it appear as if all content is visible.
 
-#### Validation
+###### Validation
 
 Validation of user input can occur at the field level, the page level, and when the user finishes the wizard. This control allows users to complete actions with minimal risk of error or data loss.
 

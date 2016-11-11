@@ -5,17 +5,17 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### A progress bar is a linear indicator for providing feedback about an ongoing, user-initiated process.
+##### A progress bar is a linear indicator for providing feedback about an ongoing, user-initiated process.
 
 Progress bars consist of an HTML5 progress element inside the block-level element with the <code class="clr-code">.progress</code> classname. The block-level container is necessary due to cross-browser constraints with styling HTML5 progress elements. As browsers improve, the intent is for this container to go away.
 
-<clr-progress-bar-examples-demo></clr-progress-bar-examples-demo>
+<clr-progress-bar-examples-demo class="clrweb-progress-demo"></clr-progress-bar-examples-demo>
 
 ### Indeterminate (Looping) Progress Bars
 
 When the amount of time a task will take is not known, use an indeterminate (or looping) progress bar. These progress bars feature a recurring animation that continues until the task is complete and the progress bar is no longer needed.
 
-<clr-progress-bar-loop-demo></clr-progress-bar-loop-demo>
+<clr-progress-bar-loop-demo class="clrweb-progress-demo"></clr-progress-bar-loop-demo>
 
 ### Color
 
@@ -25,7 +25,7 @@ The default color of the fill bar is Action Blue.  You can change the color as f
 - Green for success
 - Red to indicate danger or warning
 
-<clr-progress-bar-colors-demo></clr-progress-bar-colors-demo>
+<clr-progress-bar-colors-demo class="clrweb-progress-demo"></clr-progress-bar-colors-demo>
 
 ### Animation
 
@@ -35,7 +35,7 @@ Progress bars have options for animation.
 - Use fade animation when you want the progress bar to disappear with a fade.
 - Use flash animation to draw the user's attention when the process has completed.
 
-<clr-progress-bar-animations-demo></clr-progress-bar-animations-demo>
+<clr-progress-bar-animations-demo class="clrweb-progress-demo"></clr-progress-bar-animations-demo>
 
 ### Variations
 The animation, color, and type of a progress bar can be changed by adding or removing CSS classes from the following list of class names.
@@ -51,17 +51,17 @@ The animation, color, and type of a progress bar can be changed by adding or rem
 - **success:** A progress container with the <code class="clr-code">success</code> classname will show up as green.
 
 
-###### Progress Bar in Cards
+### Progress Bar in Cards
 
-<clr-progress-bar-cards-demo></clr-progress-bar-cards-demo>
+<clr-progress-bar-cards-demo class="clrweb-progress-demo"></clr-progress-bar-cards-demo>
 
-###### Static Progress Bar in Cards
+### Static Progress Bar in Cards
 
-<clr-progress-bar-static-cards-demo></clr-progress-bar-static-cards-demo>
+<clr-progress-bar-static-cards-demo class="clrweb-progress-demo"></clr-progress-bar-static-cards-demo>
 
-###### Progress Bar in Sidebar Navigation
+### Progress Bar in Sidebar Navigation
 
-<clr-progress-bar-sidenav-demo></clr-progress-bar-sidenav-demo>
+<clr-progress-bar-sidenav-demo class="clrweb-progress-demo"></clr-progress-bar-sidenav-demo>
 
 ### Static Progress Bars
 
@@ -73,7 +73,7 @@ A static progress bar just shows the defined value. It does not animate and lend
 
 Because there was no way to turn off the animation in IE/Edge’s implementation of the HTML5 progress element, there is a related, though separate, component for static progress bars.
 
-<clr-progress-bar-static-demo></clr-progress-bar-static-demo>
+<clr-progress-bar-static-demo class="clrweb-progress-demo"></clr-progress-bar-static-demo>
 
 {: .list}
 - Instead of a <code>.progress</code> container <code>div</code>, the static progress bar has a <code>.progress-static</code> container <code>div</code>.
@@ -87,16 +87,13 @@ Progress bar blocks allow for <code class="clr-code">label</code> and <code clas
 
 Progress bar groups allow for vertical stacking of elements above and below the progress bar. To create a progress bar group, wrap the <code class="clr-code">.progress</code> and <code class="clr-code">.progress-static</code> element with a <code class="clr-code">.progress-group</code> element.
 
-<clr-progress-bar-inline-demo></clr-progress-bar-inline-demo>
+<clr-progress-bar-inline-demo class="clrweb-progress-demo"></clr-progress-bar-inline-demo>
 
 Progress bar blocks are also available for use inside of Clarity cards.
 
-<clr-progress-bar-inline-cards-demo></clr-progress-bar-inline-cards-demo>
+<clr-progress-bar-inline-cards-demo class="clrweb-progress-demo"></clr-progress-bar-inline-cards-demo>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 Clarity has two types of progress bars:

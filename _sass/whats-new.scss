@@ -6,6 +6,10 @@
             margin-top: 0;
             padding-top: 0;
         }
+
+        h2:first-of-type {
+            margin-top: 24px;
+        }
     }
 
     ul.list {
@@ -26,16 +30,18 @@ ul.whats-new-highlights {
 
         &:first-child {
             margin-top: 0;
-        }
 
-        & > h6:first-child {
-            margin-top: 0;
+            & > h6 {
+                margin-top: 0;
+            }
         }
 
         & > h6 {
             font-weight: normal;
-            font-size: 16px;
+            font-size: 18px;
+            margin-top: $bl-2_0;
             color: #000;
+            margin-bottom: 4px;
         }
     }
 }

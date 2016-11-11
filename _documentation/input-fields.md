@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### Clarity has a single-line input field and a multiline text area.
+##### Clarity has a single-line input field and a multiline text area.
 
 Input fields are composed of a label followed by an <code class="clr-code">input</code> or <code class="clr-code">textarea</code> wrapped in a block element with the <code class="clr-code">.form-group</code> classname applied to it.
 
@@ -37,10 +37,7 @@ You can set the size of the tooltips using these classes:
 
 <clr-forms-demo-validation></clr-forms-demo-validation>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 #### Labels

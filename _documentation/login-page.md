@@ -5,14 +5,13 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### The login page is a predefined form for applications that require authentication.
+##### The login page is a predefined form for applications that require authentication.
 
 Use Clarity's login form by extending the <code>.login</code> classname on <code>form</code> and wrapping it in a container extending the <code>.login-wrapper</code> class.
 
 ###### .title, .subtitle and .trademark
 
 Extend the <code>.title</code> and <code>.subtitle</code> class on labels indicating the product title and subtitle. If your product title has the trademark symbol, make sure to wrap the trademark symbol in a <code>span</code> with the <code>.trademark</code> class on it.
-</div>
 
 ###### .username
 
@@ -30,10 +29,7 @@ This wrapper contains a validation message. Extend the <code>.active</code> clas
 
 <clr-login-demo></clr-login-demo>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 This component provides a complete login experience.

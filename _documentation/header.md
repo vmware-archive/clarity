@@ -5,39 +5,35 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### The header and subnav support app-level information and navigation links.
+##### The header and subnav support app-level information and navigation links.
 
 ### Header
 
-**.header**
-<div>
-    <code class="clr-code">.header</code> is a wrapper around the following four sections:
-</div>
+###### .header
 
+<code class="clr-code">.header</code> is a wrapper around the following four sections:
+
+{: .list}
 - Branding
 - Navigation
 - Search
 - Settings
 
-**.branding**
-<div>
-    <code class="clr-code">.branding</code> contains the product logo and the product title. The logo extends the <code class="clr-code">.clr-icon</code> class and the title extends the <code class="clr-code">.title</code> class.
-</div>
+###### .branding
 
-**.header-nav**
-<div>
-    <code class="clr-code">.header-nav</code> contains the navigation links. Each navigation link extends the <code class="clr-code">.nav-link</code> class. Navigation links can be text or icons.
-</div>
+<code class="clr-code">.branding</code> contains the product logo and the product title. The logo extends the <code class="clr-code">.clr-icon</code> class and the title extends the <code class="clr-code">.title</code> class.
 
-**.search**
-<div>
-    <code class="clr-code">.search</code> is a form containing the search icon and the search input field.
-</div>
+###### .header-nav
 
-**.header-actions**
-<div>
-    <code class="clr-code">.header-actions</code> is a wrapper that contains secondary navigation links. Each navigation link extends the <code class="clr-code">.nav-link</code> class. Navigation links can be text or icons.
-</div>
+<code class="clr-code">.header-nav</code> contains the navigation links. Each navigation link extends the <code class="clr-code">.nav-link</code> class. Navigation links can be text or icons.
+
+###### .search
+
+<code class="clr-code">.search</code> is a form containing the search icon and the search input field.
+
+###### .header-actions
+
+<code class="clr-code">.header-actions</code> is a wrapper that contains secondary navigation links. Each navigation link extends the <code class="clr-code">.nav-link</code> class. Navigation links can be text or icons.
 
 #### Types
 <clr-header-demo-types></clr-header-demo-types>
@@ -51,10 +47,7 @@ layout: documentation
 
 <clr-nav-demo-subnav></clr-nav-demo-subnav>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Using Headers
 
 The Clarity header can include the following elements, placed from left to right:

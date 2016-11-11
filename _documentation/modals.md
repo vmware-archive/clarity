@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### Modals exchange information with users and retain focus until dismissed or a required action has been completed.
+##### Modals exchange information with users and retain focus until dismissed or a required action has been completed.
 
 <div class="alert alert-warning bump-down">
     <div class="alert-item">
@@ -135,10 +135,7 @@ If you want the modal to be closable with a top-right “x” button, but don’
     </tbody>
 </table>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 Common uses for modals are:

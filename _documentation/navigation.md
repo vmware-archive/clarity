@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### A sound navigation layout offers a high degree of discoverability and feedback, letting users know where they are at all times and ensuring they can easily get to where they want to go.
+##### A sound navigation layout offers a high degree of discoverability and feedback, letting users know where they are at all times and ensuring they can easily get to where they want to go.
 
 Clarity has three navigation components: header, subnav, and sidenav.  Following are the possible
 combinations of navigation.
@@ -71,7 +71,7 @@ Clarity provides three levels of navigation represented by the following classna
 **Note:** Responsive navigation requires you to use the following Angular components
 to build the layout of your application:
 
-{: .list .cozy-sm}
+{: .list}
 - <code class="clr-code">clr-main-container</code>
 - <code class="clr-code">clr-header</code>
 
@@ -99,10 +99,7 @@ to build the layout of your application:
 
 <clr-responsive-nav-subnav-sidenav-demo></clr-responsive-nav-subnav-sidenav-demo>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Designing Navigation
 
 When establishing your navigation model, consider:

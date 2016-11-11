@@ -2,10 +2,11 @@
 title: Color
 permalink: /documentation/color
 layout: documentation
+category: documentation-color
 ---
 
 {: .component-summary .no-margin }
-#### The Clarity color palette is primarily based on alignment with color use in web applications and support for accessibility.
+##### The Clarity color palette is primarily based on alignment with color use in web applications and support for accessibility.
 
 ### Base Color Palette
 
@@ -27,14 +28,13 @@ To use these functions, import the <code class="clr-code">[PATH_TO_CLARITY]/src/
 
 The text color functions in Clarity perform a lookup against a customizable set of color contrasts in the color palette. To get a text color, you would use the following SASS function:
 
-#### clr-getTextColor([background], [typeOfText], [fontWeight], [fontSize], [colorOfText])
+##### clr-getTextColor([background], [typeOfText], [fontWeight], [fontSize], [colorOfText])
 
-###### Parameters
+###### background
 
-**background**
 A hex color of the background the text will appear over. Defaults to white. Theoretically, it could handle rgb() or hsl() values but that is untested. rgba() and color strings are likely not going to work.
 
-**typeOfText**
+###### typeOfText
 _(Optional)_ Defaults to "text". Accepted types are:
 
 {: .list}
@@ -49,13 +49,13 @@ _(Optional)_ Defaults to "text". Accepted types are:
 - **black:** Returns black if it is accessible against the background.
 - **white:** Returns white if it is accessible against the background.
 
-**fontWeight**
+###### fontWeight
 _(Optional)_ Defaults to "normal". Accepted types are: bold, thin, and normal.
 
-**fontSize**
+###### fontSize
 _(Optional)_ Defaults to "normal". Accepted types are: big, small, and normal.
 
-**colorOfText**
+###### colorOfText
 _(Optional)_ Defaults to "grays". Determines the family of colors that the text color will be pulled from. Accepted types are:
 
 {: .list}
@@ -86,10 +86,7 @@ The tables below demonstrate expected values for Clarity's color contrast utilit
 
 <clr-color-demo-contrast></clr-color-demo-contrast>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Color Usage
 
 #### Base Colors

@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### Tabs divide content into separate views which users navigate between.
+##### Tabs divide content into separate views which users navigate between.
 
 ### Static
 
@@ -123,10 +123,7 @@ All attributes associated with accessibility (aria-controls, aria-selected, aria
     </tbody>
 </table>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 Use tabs for alternate views within the [sidenav]({{ site.baseurl }}/documentation/sidenav) or main content area.

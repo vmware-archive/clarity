@@ -5,16 +5,13 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### With a select box, users can select one item from a list of values. The selected item is visible when the select box is closed.
+##### With a select box, users can select one item from a list of values. The selected item is visible when the select box is closed.
 
 Select boxes are a <code class="clr-code">select</code> element with its <code class="clr-code">option</code>s wrapped in a block element with the <code class="clr-code">.select</code> classname applied to it. To use a select box within a form, it can be wrapped in another block element with the <code class="clr-code">.form-group</code> classname.
 
 <clr-selects-demo></clr-selects-demo>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 Use a select box for a list of items that a user does not need to see all the time.

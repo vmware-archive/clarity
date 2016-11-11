@@ -5,9 +5,9 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### Datagrids are for organizing large volumes of data that users can scan, compare, and perform actions on.
+##### Datagrids are for organizing large volumes of data that users can scan, compare, and perform actions on.
 
-<clr-datagrid-basic-structure-demo></clr-datagrid-basic-structure-demo>
+<clr-datagrid-basic-structure-demo class="clrweb-datagrid-first-demo"></clr-datagrid-basic-structure-demo>
 
 <clr-datagrid-custom-rendering-demo></clr-datagrid-custom-rendering-demo>
 
@@ -29,6 +29,7 @@ layout: documentation
 
 <clr-datagrid-full-demo></clr-datagrid-full-demo>
 
+{: #guidelines}
 ### Usage
 
 #### For Structured Content

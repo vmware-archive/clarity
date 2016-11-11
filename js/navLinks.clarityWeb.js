@@ -68,24 +68,42 @@
         }
     }
 
+    var throttle = false;
+
     function handleScrollNavHighlighting() {
         var currentY = contentScroller.scrollTop,
-            i = 0,
             len = scrollNavCollection.length,
+            i = len - 1,
             isSafari = navigator.userAgent.toLowerCase().indexOf('safari/') > -1,
-            paddingBetweenSections = isSafari ? -100 : 0;
+            paddingBetweenSections = -140;
 
-        for(; i < len; i++) {
+        if (throttle) {
+            return;
+        }
+
+        throttle = true;
+
+        for(; i > -1; i--) {
             var currentObj = scrollNavCollection[i],
-                previousIndex = ((i - 1) > -1) ? (i - 1) : i;
+                isLastItem = (i === len - 1),
+                isFirstItem = (i === 0),
+                currentObjPos = currentObj.scrollPos + paddingBetweenSections;
 
-            if(currentY + paddingBetweenSections <= currentObj.scrollPos) {
+            if (isLastItem && currentY >= currentObjPos) {
                 showSidebarNavLink(currentObj.linkDOM);
+                throttle = false;
                 break;
             }
 
-            if (i === len - 1 && (currentY + paddingBetweenSections) >= currentObj.scrollPos) {
+            if (isFirstItem && currentY <= currentObjPos) {
                 showSidebarNavLink(currentObj.linkDOM);
+                throttle = false;
+                break;
+            }
+
+            if(currentY >= currentObjPos) {
+                showSidebarNavLink(currentObj.linkDOM);
+                throttle = false;
                 break;
             }
         }

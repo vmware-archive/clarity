@@ -5,30 +5,28 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### An alert is a banner that uses text, color, and an icon to denote the severity of a message.
+##### An alert is a banner that uses text, color, and an icon to denote the severity of a message.
 
-**.alert**
-<div>
-    This class is a wrapper around <code class="clr-code">.alert-item</code> and the
-    <code class="clr-code">.close</code> button. Place the <code class="clr-code">.close</code>
-    button before the alert items.
-</div>
+###### .alert
 
-**.alert-item**
-<div>
-    This class is a wrapper around <code class="clr-code">.alert-text</code> and <code class="clr-code">.alert-actions</code>.
-</div>
+This class is a wrapper around <code class="clr-code">.alert-item</code> and the
+<code class="clr-code">.close</code> button. Place the <code class="clr-code">.close</code>
+button before the alert items.
 
-**.alert-actions**
-<div>
-    <code class="clr-code">.alert-actions</code> can consist of dropdowns or links.
-    Each action should extend the <code class="clr-code">.alert-action</code> class.
-</div>
+###### .alert-item
+
+This class is a wrapper around <code class="clr-code">.alert-text</code> and <code class="clr-code">.alert-actions</code>.
+
+###### .alert-actions
+
+<code class="clr-code">.alert-actions</code> can consist of dropdowns or links.
+Each action should extend the <code class="clr-code">.alert-action</code> class.
 
 ### Types
 
 Clarity has error, warning, information, and success alerts denoted by the following classes:
 
+{: .list}
 - .alert-danger
 - .alert-warning
 - .alert-info
@@ -38,13 +36,13 @@ Clarity has error, warning, information, and success alerts denoted by the follo
 
 ### Placement
 
-#### Alerts in the Content Area
+##### Alerts in the Content Area
 <clr-alert-demo-content-area></clr-alert-demo-content-area>
 
-#### Alerts in Cards
+##### Alerts in Cards
 <clr-alert-demo-cards></clr-alert-demo-cards>
 
-#### Alerts in Modals
+##### Alerts in Modals
 <clr-alert-demo-modals></clr-alert-demo-modals>
 
 ### Size
@@ -55,10 +53,9 @@ Use the <code class="clr-code">.alert-sm</code> class with <code class="clr-code
 
 ### App-Level Alerts
 
-**.alert-app-level**
-<div>
-    This class must be applied with <code class="clr-code">.alert</code> to render an app-level alert.
-</div>
+###### .alert-app-level
+
+This class must be applied with <code class="clr-code">.alert</code> to render an app-level alert.
 
 <clr-alert-demo-app-level></clr-alert-demo-app-level>
 
@@ -134,10 +131,7 @@ Use the <code class="clr-code">.alert-sm</code> class with <code class="clr-code
 
 <clr-alert-app-level-demo-angular></clr-alert-app-level-demo-angular>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ## Using Standard Alerts
 
 Standard alerts are part of the content area.  These alerts are for notifying users that a particular component or area of the screen needs attention.  Standard alerts have four levels, denoted by color and icon. From most to least severe, they are:

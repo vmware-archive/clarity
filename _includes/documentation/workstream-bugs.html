@@ -1,28 +1,42 @@
-{% assign bugs_array = include.workstreams | split: "|" %}
-{% assign ws_array = "ux|ui|core|ng" | split: "|" %}
-
 <div class="component-workstream-bugs">
     {% for component in site.data.componentlist.list %}
         {% if page.permalink == component.url %}
-            {% for ws in ws_array %}
-                {% assign ws_status = component[ws] %}
-                {% assign ws_status_msg = '' %}
-                {% assign ws_imgsrc = '' %}
+            {% assign ui_status = component['ui'] %}
+            {% assign ng_status = component['ng'] %}
+            {% assign in_progress_msg = 'Development in Progress' %}
 
-                {% if ws_status > 19 %}
-                    {% capture ws_status_msg %}Clarity {{ ws | upcase }}{% endcapture %}
-                    {% capture ws_imgsrc %}{{ws}}.png{% endcapture %}
-                {% elsif ws_status > 4 %}
-                    {% capture ws_status_msg %}Clarity {{ ws | upcase }} in progress{% endcapture %}
-                    {% capture ws_imgsrc %}{{ws}}_off.png{% endcapture %}
-                {% endif %}
+            {% if ui_status > 19 %}
+                <span class="bug bug-html">
+                    <img src="{{ site.baseurl }}{{site.data.global.images_path}}bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+                </span>
+                <span class="bug bug-css">
+                    <img src="{{ site.baseurl }}{{site.data.global.images_path}}bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+                </span>
+            {% elsif ui_status > 4 %}
+                <span class="bug bug-html">
+                    <img src="{{ site.baseurl }}{{site.data.global.images_path}}bugs/badge_html5_inprogress.svg" alt="{{ in_progress_msg }}" title="{{ in_progress_msg }}">
+                </span>
+                <span class="bug bug-css">
+                    <img src="{{ site.baseurl }}{{site.data.global.images_path}}bugs/badge_css3_inprogress.svg" alt="{{ in_progress_msg }}" title="{{ in_progress_msg }}">
+                </span>
+            {% else %}
+                <span class="bug bug-html hidden">
+                    <img src="{{ site.baseurl }}{{site.data.global.images_path}}bugs/badge_html5_inprogress.svg" alt="{{ in_progress_msg }}" title="{{ in_progress_msg }}">
+                </span>
+                <span class="bug bug-css hidden">
+                    <img src="{{ site.baseurl }}{{site.data.global.images_path}}bugs/badge_css3_inprogress.svg" alt="{{ in_progress_msg }}" title="{{ in_progress_msg }}">
+                </span>
+            {% endif %}
 
-                {% if ws_imgsrc != '' %}
-                    <span class="bug bug-{{ ws }}">
-                        <img src="{{ site.baseurl }}{{site.data.global.images_path}}bugs/{{ ws_imgsrc }}" alt="{{ ws_status_msg }}" title="{{ ws_status_msg }}">
-                    </span>
-                {% endif %}
-            {% endfor %}
+            {% if ng_status > 19 %}
+                <span class="bug bug-ng">
+                    <img src="{{ site.baseurl }}{{site.data.global.images_path}}bugs/badge_ng.svg" alt="Angular 2" title="Angular 2">
+                </span>
+            {% elsif ng_status > 4 %}
+                <span class="bug bug-ng">
+                    <img src="{{ site.baseurl }}{{site.data.global.images_path}}bugs/badge_ng_inprogress.svg" alt="{{ in_progress_msg }}" title="{{ in_progress_msg }}">
+                </span>
+            {% endif %}
         {% endif %}
     {% endfor %}
 </div>

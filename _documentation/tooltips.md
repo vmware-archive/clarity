@@ -5,24 +5,21 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### A tooltip provides a short description of a UI element.
+##### A tooltip provides a short description of a UI element.
 
-**.tooltip**
-<div>
-    This class wraps an actionable icon followed by the <code class="clr-code">.tooltip-content</code> to be
-    shown on the icon. The content appears when the user hovers over the icon.
-</div>
+###### .tooltip
+This class wraps an actionable icon followed by the <code class="clr-code">.tooltip-content</code> to be
+shown on the icon. The content appears when the user hovers over the icon.
 
-**.tooltip-content**
-<div>
-    This class contains the text that will be shown when the tooltip is visible.
-</div>
+###### .tooltip-content
+This class contains the text that will be shown when the tooltip is visible.
 
 ### Sizes
 
 Tooltips support four sizes, defined by using one of the following classes with the
 <code class="clr-code">.tooltip</code> class:
 
+{: .list}
 - .tooltip-xs
 - .tooltip-sm
 - .tooltip-md
@@ -35,6 +32,7 @@ Tooltips support four sizes, defined by using one of the following classes with 
 Tooltips support six directions, defined by using one of the following classes with the
 <code class="clr-code">.tooltip</code> class:
 
+{: .list}
 - .tooltip-top-right
 - .tooltip-top-left
 - .tooltip-bottom-right
@@ -44,21 +42,17 @@ Tooltips support six directions, defined by using one of the following classes w
 
 <clr-tooltips-directions-demo></clr-tooltips-directions-demo>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 Use tooltips for actionable icons that do not have text labels, such as the icons in a toolbar.  A tooltip is visible on hover.
 
 Don't use a tooltip on:
 
-<ul class="list">
-<li>Components.  Provide a descriptive label and use inline or signpost help for more information.</li>
-<li>Static images.  Use the HTML alt tag to provide information about the image.</li>
-<li>Textual links.  Ensure that the link describes its destination and is not truncated.</li>
-</ul>
+{: .list}
+- **Components.**  Provide a descriptive label and use inline or signpost help for more information.
+- **Static images.**  Use the HTML alt tag to provide information about the image.
+- **Textual links.**  Ensure that the link describes its destination and is not truncated.
 
 Don't rely on tooltips to meet accessibility requirements.  Rather, ensure that your underlying content is well-structured for accessibility, for example, by using ARIA roles.
 
@@ -68,13 +62,12 @@ Choose a tooltip position that ensures the entire tooltip is visible on the scre
 
 Other positions are:
 
-<ul class="list">
-<li>Top left</li>
-<li>Bottom right</li>
-<li>Bottom left</li>
-<li>Side left</li>
-<li>Side right</li>
-</ul>
+{: .list}
+- Top left
+- Bottom right
+- Bottom left
+- Side left
+- Side right
 
 #### Size
 
@@ -82,9 +75,8 @@ Set a width that accommodates the text string.  The default is 240 px.  Other ch
 
 #### Text
 
-<ul class="list">
-<li>Use a verb phrase to describe the action on the icon, for example, "Edit settings."</li>
-<li>Use only plain text and be concise.  Tooltips can be a sentence fragment.</li>
-<li>If more detailed information is required, use another form of help.</li>
-<li>Use sentence-style caps and no ending punctuation.</li>
-</ul>
+{: .list}
+- Use a verb phrase to describe the action on the icon, for example, "Edit settings."
+- Use only plain text and be concise.  Tooltips can be a sentence fragment.
+- If more detailed information is required, use another form of help.
+- Use sentence-style caps and no ending punctuation.

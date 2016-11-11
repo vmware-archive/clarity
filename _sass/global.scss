@@ -1,6 +1,7 @@
 $bl-0_25: baselineRem(0.25);
 $bl-0_5: baselineRem(0.5);
 $bl-0_75: baselineRem(0.75);
+$bl-1_5: baselineRem(1.5);
 $bl-0_833: baselineRem(0.83333);
 $bl-1_0: baselineRem(1);
 $bl-1_5: baselineRem(1.5);
@@ -20,6 +21,10 @@ $clrweb-content-maxwidth: 900px;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
+}
+
+.spacious {
+    margin-top: $bl-2_0;
 }
 
 .cozy {
@@ -172,15 +177,6 @@ a.btn-primary {
     }
 }
 
-// had to remove these from clarity-ui... putting back here
-ul:not(.pagination):not(.nav) {
-    margin-top: $bl-1_0;
-
-    ul {
-        margin-top: 0;
-    }
-}
-
 @media (min-width: 577px) {
     ul#content_tabs {
         .nav .nav-item {
@@ -221,5 +217,56 @@ header .branding .clr-vmw-logo {
 @media (max-width: 769px) {
     html {
         -webkit-overflow-scrolling: touch;
+    }
+}
+
+body {
+    &.layout-documentation, &.layout-get-started, &.layout-news {
+        .main-container .content-container .content-area {
+            padding-left: $bl-1_5;
+            padding-top: $bl-0_75;
+        }
+    }
+}
+
+// custom whitespace changes for website
+
+body {
+    &.layout-documentation, &.layout-get-started, &.layout-news {
+        h2, h3 {
+            margin-top: $bl-4_0;
+        }
+
+        p + h3, div + h3 {
+            margin-top: $bl-3_0;
+        }
+
+        h2 + h3 {
+            margin-top: $bl-1_5;
+        }
+
+        h5 {
+            color: #000;
+            margin-top: $bl-1_5;
+        }
+
+        p + h5 {
+            margin-top: $bl-2_0;
+        }
+
+        h3 + h5,
+        h2 + h5,
+        h3 + h4,
+        h1 + h5 {
+            margin-top: $bl-1_0;
+        }
+
+        h4 {
+            margin-top: 72px;
+        }
+
+        h6 + p {
+            margin-top: $bl-0_25;
+        }
     }
 }

@@ -15,6 +15,9 @@
         {% if include.hasNavLinks == true %}
             <script src="{{ site.baseurl }}/js/navLinks.clarityWeb.js?{{ site.time | date: '%s%N' }}"></script>
         {% endif %}
+        {% if include.hasTabLinks == true %}
+            <script src="{{ site.baseurl }}/js/tabs.clarityWeb.js?{{ site.time | date: '%s%N' }}"></script>
+        {% endif %}
 
     </div> <!-- /.main-container -->
     </body>

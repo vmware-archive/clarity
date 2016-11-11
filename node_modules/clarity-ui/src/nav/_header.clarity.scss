@@ -12,10 +12,12 @@ $clr-header-textColor: clr-getTextColor($clr-header-bgColor, lightest);
 $clr-logo-width: $clr_baselineRem_1_5;
 $clr-nav-icon-size: rem(22/$clr-rem-denominator);
 $clr-header-section-divider-height: 40px;
-$clr-search-icon-width: $clr_baselineRem_1;
+$clr-search-icon-width: 20px;
 $clr-header-divider-opacity: 0.15;
 $clr-header-nav-opactiy: 0.65;
 $clr-header-nav-hover-opacity: 1;
+$clr-header-outline-offset: -5px;
+$clr-header-clarity-icons-size: $clr_baselineRem_1;
 
 @mixin header-section-divider() {
     display: inline-block;
@@ -44,26 +46,45 @@ $clr-header-nav-hover-opacity: 1;
 
 @mixin generate-nav-link-styles() {
     .nav-link {
+        position: relative;
         display: inline-block;
         @include remove-text-decoration();
         @include header-nav-appearance();
 
         //TODO: Remove support for FA
+        .fa,
         .nav-icon,
         .nav-text,
-        .fa {
+        &.nav-icon,
+        &.nav-text {
             line-height: $clr-header-height;
         }
 
-        //nav-icons
+        //Icon fonts support
+        .fa,
         .nav-icon {
             font-size: $clr-nav-icon-size;
-            height: $clr-header-height;
-            width: $clr-header-height;
             text-align: center;
         }
 
+        //nav-icons
+        &.nav-icon,
+        .nav-icon {
+            height: $clr-header-height;
+            width: $clr-header-height;
+        }
+
+        clr-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            height: $clr-header-clarity-icons-size;
+            width: $clr-header-clarity-icons-size;
+        }
+
         //text-link
+        &.nav-text,
         .nav-text {
             padding: 0 $clr_baselineRem_1;
             font-weight: 500;
@@ -80,13 +101,15 @@ $clr-header-nav-hover-opacity: 1;
             opacity: 1;
         }
 
+        &.active.nav-icon,
+        &.active.nav-text,
         &.active .nav-icon,
         &.active .nav-text {
             opacity: 1;
         }
 
         &:focus {
-            outline-offset: -5px; //So that the outline styles aren't hidden becasue of the browser
+            outline-offset: $clr-header-outline-offset; //So that the outline styles aren't hidden becasue of the browser
         }
     }
 }
@@ -98,8 +121,6 @@ $clr-header-nav-hover-opacity: 1;
         align-items: center;
         height: 100%;
     }
-
-
 
     //Background Colors
     header,
@@ -164,14 +185,15 @@ $clr-header-nav-hover-opacity: 1;
                 @include remove-text-decoration();
 
                 &:focus {
-                    outline-offset: -5px; //So that the outline styles aren't hidden becasue of the browser
+                    outline-offset: $clr-header-outline-offset; //So that the outline styles aren't hidden becasue of the browser
                 }
             }
 
             //vmw logo
-            //.logo class will be deprecated
+            //TODO: Deprecate .logo and .clr-icon
             .logo,
-            .clr-icon {
+            .clr-icon,
+            clr-icon {
                 flex-grow: 0;
                 flex-shrink: 0;
                 height: $clr-logo-width;
@@ -196,34 +218,30 @@ $clr-header-nav-hover-opacity: 1;
 
             @include generate-nav-link-styles();
 
-            .nav-link:first-of-type {
-                position: relative;
-
-                &::before {
-                    position: absolute;
-                    content: '';
-                    @include header-section-divider();
-                }
-
-                //Hide the divider if the link is active
-                &.active::before{
-                    display: none;
-                }
-            }
-
+            .nav-link:first-of-type,
             .nav-link:last-of-type {
                 position: relative;
+            }
 
-                &::after {
-                    position: absolute;
-                    content: '';
-                    @include header-section-divider();
-                }
+            .nav-link:first-of-type::before,
+            .nav-link:last-of-type::after {
+                position: absolute;
+                content: '';
+                @include header-section-divider();
+            }
 
-                //Hide the divider if the link is active
-                &.active::before{
-                    display: none;
-                }
+            .nav-link:first-of-type::before {
+                left: 0;
+            }
+
+            .nav-link:last-of-type::after {
+                right: 0;
+            }
+
+            //Hide Divider if nav-link is active
+            .nav-link.active:first-of-type::before,
+            .nav-link.active:last-of-type::after {
+                content: none;
             }
         }
 
@@ -297,21 +315,45 @@ $clr-header-nav-hover-opacity: 1;
 
             @include generate-nav-link-styles();
 
-            //Position the after element (arrow) & menus of dropdowns in headers
-            //TODO: Update this when we start using Clarity Icons
             & > .dropdown {
-                & > .dropdown-toggle {
-                    &::after {
-                        position: absolute;
-                        top: 50%;
-                        right: $clr_baselineRem_0_375;
-                        transform: translateY(-50%);
-                        margin-left: 0;
-                    }
+                $clr-header-action-caret-icon-right-position: $clr_baselineRem_0_5;
 
-                    & > .nav-icon {
-                        padding-right: $clr_baselineRem_0_25;
-                    }
+                .dropdown-toggle.nav-text {
+                    padding: 0 $clr_baselineRem_1;
+                }
+
+                .dropdown-toggle.nav-icon {
+                    width: $clr-header-height;
+                    padding-right: 0;
+                }
+
+                & > .dropdown-toggle {
+                    position: relative;
+                    line-height: $clr-header-height;
+                    height: $clr-header-height;
+                    outline-offset: $clr-header-outline-offset;
+
+                    @include header-nav-appearance();
+                }
+
+                clr-icon {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+
+                    //Dropdown icons are 2px smaller
+                    height: $clr-header-clarity-icons-size - 2;
+                    width: $clr-header-clarity-icons-size - 2;
+                    //2px is the distance between the caret and the icon
+                    right: ($clr-dropdown-caret-icon-dimension + $clr-header-action-caret-icon-right-position + 2px);
+                }
+
+                .dropdown-toggle:not(.btn) clr-icon[shape="caret"] {
+                    left: auto;
+                    right: $clr-header-action-caret-icon-right-position;
+                    height: $clr-dropdown-caret-icon-dimension;
+                    width: $clr-dropdown-caret-icon-dimension;
+                    margin-left: 0;
                 }
 
                 //Pull the dropdown menus of all dropdowns up to compensate
@@ -324,7 +366,7 @@ $clr-header-nav-hover-opacity: 1;
                 //Last Dropdown Menu adjustments so that the menu has some space
                 //between itself and the right end of the browser window
                 &:last-child.bottom-right > .dropdown-menu {
-                    right: 3px;
+                    right: $clr_baselineRem_0_125;
                 }
             }
         }

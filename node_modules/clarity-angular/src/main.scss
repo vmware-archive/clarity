@@ -38,6 +38,7 @@
 @import "./tables/tables.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, typography.clarity
 @import "./tooltips/tooltips.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity
 @import "./forms/forms.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity, icons.clarity
+@import "./datagrid/datagrid.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, layers, icons.clarity, tables.clarity
 @import "./animations/animations.clarity"; // no dependencies on other clarity scss
 @import "./tabs/tabs.clarity"; // no dependencies on other clarity scss
 @import "./wizard/wizard.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity, layers.clarity

@@ -36,7 +36,7 @@ gulp.task('bundle', function(){
         'app':                          { defaultExtension: 'js' },
         'clarity-angular':              { main: "index.js", defaultExtension: 'js' },
         'clarity-demos':                { defaultExtension: "js" },
-        'rxjs':                         { defaultExtension: 'js' }
+        'rxjs':                       { main: 'Rx.js', defaultExtension: 'js' }
     };
 
     builder.config({

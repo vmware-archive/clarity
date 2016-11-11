@@ -3,6 +3,7 @@
 @import "../utils/helpers.clarity";
 @import "../color/color.clarity";
 @import "../typography/typography.clarity";
+@import "../images/icons.clarity";
 
 $clr-sidenav-border-color: $clr-light-midtone-gray !default;
 
@@ -138,12 +139,14 @@ $clr-sidenav-border-color: $clr-light-midtone-gray !default;
 
                 &:after {
                     position: absolute;
-                    font-size: rem(1);
-                    font-family: "FontAwesome";
-                    color: clr-getColor(dark-midtone);
-                    content: "\f107";
-                    top: 0;
+                    content: '';
+                    height: $clr-dropdown-caret-icon-dimension;
+                    width: $clr-dropdown-caret-icon-dimension;
+                    top: ($clr_baselineRem_1 - $clr-dropdown-caret-icon-dimension) / 2;
                     left: $clr_baselineRem_1;
+                    background-image: generateCaretIcon();
+                    @include icon-background-styles();
+                    margin: 0;
                 }
             }
 

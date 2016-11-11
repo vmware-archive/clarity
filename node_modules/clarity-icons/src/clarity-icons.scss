@@ -9,6 +9,12 @@ $clr-icon-size: rem(16/$clr-rem-denominator);
     }
 }
 
+@mixin rotateSVGIcon($deg) {
+    svg{
+        transform: rotate($deg);
+    }
+}
+
 clr-icon {
     display: inline-block;
     margin: 0;
@@ -51,24 +57,16 @@ clr-icon {
         @include setIconColor($clr-action-blue);
     }
     &.icon-orient-up {
-        svg {
-            transform: rotate(0deg);
-        }
+        @include rotateSVGIcon(0deg);
     }
     &.icon-orient-down {
-        svg {
-            transform: rotate(180deg);
-        }
+        @include rotateSVGIcon(180deg);
     }
     &.icon-orient-right {
-        svg {
-            transform: rotate(90deg);
-        }
+        @include rotateSVGIcon(90deg);
     }
     &.icon-orient-left {
-        svg {
-            transform: rotate(270deg);
-        }
+        @include rotateSVGIcon(270deg);
     }
     & > svg {
         height: 100%;
@@ -81,5 +79,4 @@ clr-icon {
         stroke-linejoin: round;
         stroke-miterlimit: 10;
     }
-
 }

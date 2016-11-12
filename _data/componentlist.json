@@ -136,6 +136,7 @@
             "core": -1,
             "ng": 20,
             "dox": 20,
+            "isUpdated": true,
             "comments": false
         },
         {
@@ -168,6 +169,7 @@
             "core": -1,
             "ng": 10,
             "dox": 20,
+            "isUpdated": true,
             "comments": "Search and Header Actions are under implementation"
         },
         {

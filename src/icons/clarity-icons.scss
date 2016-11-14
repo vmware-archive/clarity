@@ -2,9 +2,13 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import '../clarity/utils/variables.clarity';
-
-$clr-icon-size: rem(16/$clr-rem-denominator);
+$clr-icon-size: 16px;
+$clr-icon-color-success: #318700;
+$clr-icon-color-danger: #a32100;
+$clr-icon-color-warning: #e62700;
+$clr-icon-color-info: #007CBB;
+$clr-icon-color-inverse: #FFFFFF;
+$clr-icon-color-highlight: #007CBB;
 
 @mixin setIconColor($clr-icon-color) {
     fill: $clr-icon-color;
@@ -41,35 +45,34 @@ clr-icon {
         height: 72px;
         width: 72px;
     }
-
     &.icon-color-success {
-        @include setIconColor($greens-dark-midtone);
+        @include setIconColor($clr-icon-color-success);
     }
     &.icon-color-danger {
-        @include setIconColor($reds-dark);
+        @include setIconColor($clr-icon-color-danger);
     }
     &.icon-color-warning {
-        @include setIconColor($reds-light-midtone);
+        @include setIconColor($clr-icon-color-warning);
     }
     &.icon-color-info {
-        @include setIconColor($clr-action-blue);
+        @include setIconColor($clr-icon-color-info);
     }
     &.icon-color-inverse {
-        @include setIconColor($clr-white);
+        @include setIconColor($clr-icon-color-inverse);
     }
     &.icon-color-highlight {
-        @include setIconColor($clr-action-blue);
+        @include setIconColor($clr-icon-color-highlight);
     }
-    &.icon-orient-up {
+    &.icon-orient-up, &[shape$=" up"], &[dir="up"] {
         @include rotateSVGIcon(0deg);
     }
-    &.icon-orient-down {
+    &.icon-orient-down, &[shape$=" down"], &[dir="down"] {
         @include rotateSVGIcon(180deg);
     }
-    &.icon-orient-right {
+    &.icon-orient-right, &[shape$=" right"], &[dir="right"] {
         @include rotateSVGIcon(90deg);
     }
-    &.icon-orient-left {
+    &.icon-orient-left, &[shape$=" left"], &[dir="left"] {
         @include rotateSVGIcon(270deg);
     }
     & > svg {
@@ -83,4 +86,6 @@ clr-icon {
         stroke-linejoin: round;
         stroke-miterlimit: 10;
     }
+
+
 }

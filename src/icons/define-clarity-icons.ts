@@ -29,9 +29,11 @@ ClarityIcon.prototype = Object.create(HTMLElement.prototype);
 ClarityIcon.prototype.constructor = ClarityIcon;
 let generateIcon = function (element: any, shape: string) {
 
+    shape = shape.split(/\s/)[0];
+
     if (shape !== element._shape) {
         element._shape = shape;
-        element.innerHTML = SVG_ICON_TEMPLATES[shape] || SVG_ICON_TEMPLATES["warning"];
+        element.innerHTML = SVG_ICON_TEMPLATES[element._shape] || SVG_ICON_TEMPLATES["error"];
     }
 };
 let setIconSize = function (element: any, size: string) {

@@ -137,7 +137,7 @@ describe("Wizard", () => {
         });
 
         it("projects subcomponents", () => {
-            expect(compiled.querySelectorAll("a").length).toEqual(4);
+            expect(compiled.querySelectorAll("button.nav-link").length).toEqual(4);
             expect(compiled.querySelectorAll("section").length).toEqual(4);
         });
 

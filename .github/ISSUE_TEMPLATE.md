@@ -6,6 +6,7 @@ PLEASE FILL OUT THE FOLLOWING. WE MAY CLOSE INCOMPLETE ISSUES.
 ```
 [ ] bug
 [ ] feature request
+[ ] enhancement
 ```
 
 ### Expected behavior
@@ -22,5 +23,7 @@ PLEASE FILL OUT THE FOLLOWING. WE MAY CLOSE INCOMPLETE ISSUES.
 * **Angular version:** 2.0.X
 
 * **Clarity version:** 
+
+* **OS and version:** 
 
 * **Browser:** [all | Chrome XX | Firefox XX | IE XX | Safari XX | Mobile Chrome XX | Android X.X Web Browser | iOS XX Safari | iOS XX UIWebView | iOS XX WKWebView ]

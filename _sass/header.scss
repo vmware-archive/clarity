@@ -255,54 +255,59 @@ header .branding > a.sliding-nav-toggle {
         display: none;
     }
 
-    .main-container {
-        & > header {
-            .branding {
-                .clr-vmw-logo {
-                    visibility: hidden;
-                    margin-right: $bl-0_25;
+    .layout-documentation,
+    .layout-get-started,
+    .layout-community,
+    .layout-news {
+        & > .main-container {
+            & > header {
+                .branding {
+                    .clr-vmw-logo {
+                        visibility: hidden;
+                        margin-right: $bl-0_25;
+                    }
+
+                    & > a.sliding-nav-toggle {
+                        display: block;
+                        height: $bl-2_5;
+                        width: $bl-1_5;
+                        background: url(../images/home/menu.svg) 50% 50% no-repeat;
+                        position: absolute;
+                        top: -1px;
+                        left: $bl-0_75;
+                    }
                 }
 
-                & > a.sliding-nav-toggle {
-                    display: block;
-                    height: $bl-2_5;
-                    width: $bl-1_5;
-                    background: url(../images/home/menu.svg) 50% 50% no-repeat;
-                    position: absolute;
-                    top: -1px;
-                    left: $bl-0_75;
+                .settings {
+                    & > a.sliding-sidenav-toggle {
+                        display: block;
+                        width: $bl-1_5;
+                        background: url(../images/home/slider.svg) 50% 50% no-repeat;
+                        position: absolute;
+                        top: $bl-0_75;
+                        right: 8px;
+                        height: $bl-1_0;
+                    }
                 }
             }
+        }
 
-            .settings {
-                & > a.sliding-sidenav-toggle {
-                    display: block;
-                    width: $bl-1_5;
-                    background: url(../images/home/slider.svg) 50% 50% no-repeat;
-                    position: absolute;
-                    top: $bl-0_75;
-                    right: 8px;
-                    height: $bl-1_0;
+        & > .main-container {
+            & > header {
+                div.header-nav, .divider, .header-nav {
+                    // funkiness of the homepage navbar makes this the path of least resistance
+                    display: none !important;
                 }
             }
         }
-    }
 
-    .main-container {
-        & > header {
-            div.header-nav, .divider, .header-nav {
-                // funkiness of the homepage navbar makes this the path of least resistance
-                display: none !important;
-            }
-        }
-    }
+        & > .main-container {
+            & > header, & > .header {
+                padding: 0 $bl-1_0;
 
-    .main-container {
-        & > header, & > .header {
-            padding: 0 $bl-1_0;
-
-            .branding {
-                padding-left: 0;
+                .branding {
+                    padding-left: 0;
+                }
             }
         }
     }

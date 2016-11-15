@@ -6,111 +6,42 @@ permalink: /get-started/index.html
 {:#introduction}
 # Clarity Design System
 
-### Collaborative, Open, Evolving
+Clarity is an open source project that brings together UX guidelines, an HTML/CSS framework, and Angular 2 components. Clarity is for both designers and developers.
 
-The Clarity Design System brings user experience together with implementation and tools, providing designers and developers with an end-to-end design solution. Clarity combines user experience guidelines and patterns with an HTML and CSS framework. In addition, Clarity provides a set of well-designed and implemented data-bound components built on top of Angular 2, one of the most popular JavaScript frameworks in the industry.
-
-#### Clarity is ...
-
-###### Forward-Looking
-
-Clarity is based on analytics, research, and best practices. A living framework, Clarity embraces continual research and new technologies.  Design principles, workflows, and patterns are always evolving to create the best user experience possible.
-
-###### Engaging
-
-More than an appealing color palette and layout, Clarity design considers interactions, workflows, voice and tone, vertical rhythm, and more. Engaging the user with every interaction is of upmost importance.  It builds trust.
-
-###### Sustainable
-
-Built for today, and tomorrow, Clarity designs are responsive, accessible, and reusable.  Clarity strives for a small footprint, using only the necessary resources. This makes Clarity a good citizen.
-
-###### Focused
-
-Clarity is a good steward of users’ attention. Clarity helps  users attain their goals by reinforcing focus with the consistent use of components, interaction, design, color, and motion. Minimal and clean, Clarity pays attention to the details so that end-users and developers don't have to.
-
-###### Communicative
-
-Disciplined, flexible, precise.  Clarity instills discoverability and feedback, clearly articulating calls to action and highlighting what's immediate.
-
-### More Than a Style Guide
-
-More than a mere style guide or look and feel, Clarity is an open, holistic design system with a dedicated team and a community of developers and designers.  The design system includes:
-
-{: .list}
-- Patterns
-- Components
-- Sample code
-- Guidelines
-- Build environment
-- Accessibility testing
-- Angular 2
-
-
-### Workstreams
-
-The design system is orchestrated across four cross-functional workstreams.
-
-
-
-<section class="home-cards">
-    <div class="home-cards-container clearfix">
-        {% for ws in site.data.workstreams.workstreams %}
-            <div class="home-card-wrapper">
-                <div class="home-card home-card-{{ forloop.index }}">
-                    <div class="home-card-bug">
-                        <div class="valign">
-                            <div>
-                                <img src="{{ site.baseurl }}{{ site.data.global.images_path }}{{ site.data.workstreams.gsImgPath }}{{ ws.gsBug }}" alt="{{ ws.prettyName }}">
-                            </div>
-                        </div>
-                    </div>
-                    <h4 class="home-card-title">
-                        <div class="valign">
-                            <div>{{ ws.name }}</div>
-                        </div>
-                    </h4>
-                    <div class="home-card-text">
-                        <div class="valign">
-                            <div>{{ ws.gsDescription }}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-</section>
-
-<hr>
+Clarity’s designs stem from continuous exploration and research. These designs are built into our HTML/CSS components, which can be used any web UI, regardless of the underlying JavaScript framework. Clarity also offers a set of well-designed and implemented data-bound components built on top of Angular 2, one of the most popular JavaScript frameworks in the industry.
 
 {: #howToUse}
-# How to Use Clarity
+## How to Use Clarity
 
+We offer three approaches for consuming Clarity: UX, UX and UI, and Angular 2.
+
+<!--
 We offer three approaches for consuming Clarity.
 
-###### UX
+### UX
 
-Consuming Clarity at the visual specification level works well for quickly styling applications that must be maintained and yet must move to a modern look and feel.  This limited approach, however, has challenges in staying current with the framework as Clarity evolves.  Anyone who uses the UX path must also have a plan to adopt the UI and NG paths.
+Consuming Clarity at the visual specification level works well for quickly styling applications with a modern look and feel.  This limited approach, however, has challenges in staying current with the framework as Clarity evolves.  If you use the UX path, you'll also need a plan to adopt the UI and NG paths.
 
-###### UX + UI
+### UX + UI
 
-For products that are not Angular based, we recommend using Clarity's HTML and CCS. This tool combination makes Clarity updates more easily available.
+For products that are not Angular based, we recommend using Clarity's HTML and CCS. This approach makes Clarity updates easier to consume.
 
-###### Full Clarity (UX + UI + NG)
+### Full Clarity (UX + UI + NG)
 
 For the most complete integration with Clarity, consume the framework at the Angular 2 level.
 
+-->
+
 {: #sketchTemplate}
-## Using the Clarity Template for Sketch
+### Using the Clarity Template for Sketch
 
-The Clarity Sketch template contains a library of components to help jumpstart your project. The template is versioned alongside other products in Clarity’s ecosystem (Clarity UI, Clarity Angular, Clarity Web). Download the most current version to ensure you have the most up-to-date components.
-
-Note that in order to design with the Sketch template, the open-source Metropolis font by Chris M. Simpson will need to be installed.
+Jumpstart your project with the Clarity Sketch template, a library of components versioned alongside other products in Clarity’s ecosystem. To use with the Sketch template, install the open-source Metropolis font by Chris M. Simpson.  Clarity uses these font weights:  light, regular, semibold, and medium.
 
 - [Download the latest Sketch template]({{ site.baseurl }}{{ site.data.global.template_link }}){: target='_blank' }
 - [Download the Metropolis font](https://github.com/chrismsimpson/Metropolis){: target='_blank' }
 
 {: #seedProjectClarity}
-## Starting With a Clarity Seed Project (Recommended)
+### Starting With a Clarity Seed Project (Recommended)
 
 For a new project, the best approach is to clone the Clarity seed project and modify it to fit your needs. The seed project is integrated with clarity-ui and clarity-angular, so you don’t need to install Clarity separately.
 
@@ -140,11 +71,11 @@ For a new project, the best approach is to clone the Clarity seed project and mo
 </ol>
 
 {: #seedProjectAngular}
-## Starting With an Angular Seed Project
+### Using an Angular Seed Project
 
 You can build an Angular 2 app, then install Clarity onto your project.
 
-### Step 1: Build an Angular 2 App
+#### Step 1: Build an Angular 2 App
 <p></p>
 <ol class="list">
 <li>Look at the Angular 2 documentation, starting with <a href="https://angular.io/docs/ts/latest/quickstart.html">the 5 Min Quickstart</a>.</li>
@@ -159,7 +90,7 @@ You can build an Angular 2 app, then install Clarity onto your project.
 </ol>
 
 {: #installing}
-### Step 2:  Install Clarity
+#### Step 2:  Install Clarity
 
 Clarity is published as three separate packages on NPM:
 
@@ -171,7 +102,7 @@ Clarity is published as three separate packages on NPM:
 </li>
 </ul>
 
-#### Install Clarity Icons
+##### Step 2a: Install Clarity Icons
 <p></p>
 
 <ol class="list">
@@ -209,7 +140,7 @@ Include clarity-icons.min.css and clarity-icons.min.js in your HTML. Because cus
 </li>
 </ol>
 
-#### Install Clarity UI
+##### Step 2b: Install Clarity UI
 
 <p></p>
 <ol class="list">
@@ -238,7 +169,7 @@ Include clarity-icons.min.css and clarity-icons.min.js in your HTML. Because cus
 <li>Write your HTML with the Clarity CSS class names and markup.</li>
 </ol>
 
-#### Install Clarity Angular
+##### Step 2c: Install Clarity Angular
 
 <p></p>
 <ol class="list">
@@ -275,7 +206,7 @@ Include clarity-icons.min.css and clarity-icons.min.js in your HTML. Because cus
 </ol>
 
 
-### Step 3: Run Your App
+#### Step 3: Run Your App
 
 <pre>
     <code class="clr-code">
@@ -294,7 +225,7 @@ Include clarity-icons.min.css and clarity-icons.min.js in your HTML. Because cus
 
 
 {: #contribute_guidelines}
-# Contributing to Clarity
+## Contributing to Clarity
 
 The Clarity team welcomes contributions from the community.  See our [contribution guidelines](https://github.com/vmware/clarity//blob/master/CONTRIBUTING.md){: target='_blank' } on GitHub.
 
@@ -310,7 +241,7 @@ Ongoing work and feature requests are tracked using [GitHub Issues](https://gith
 
 
 {: #attributions }
-# Attributions
+## Attributions
 
 See the [legal attributions](https://github.com/vmware/clarity/blob/master/ATTRIBUTION.md){: target='_blank' } for third party software included in Clarity.
 

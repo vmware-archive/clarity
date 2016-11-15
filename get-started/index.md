@@ -6,7 +6,7 @@ permalink: /get-started/index.html
 {:#introduction}
 # Clarity Design System
 
-Clarity is an open source project that brings together UX guidelines, an HTML/CSS framework, and Angular 2 components. Clarity is for both designers and developers.
+Project Clarity is an open source design system that brings together UX guidelines, an HTML/CSS framework, and Angular 2 components. Clarity is for both designers and developers.
 
 Clarity’s designs stem from continuous exploration and research. These designs are built into our HTML/CSS components, which can be used any web UI, regardless of the underlying JavaScript framework. Clarity also offers a set of well-designed and implemented data-bound components built on top of Angular 2, one of the most popular JavaScript frameworks in the industry.
 

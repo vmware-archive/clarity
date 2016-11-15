@@ -8,7 +8,7 @@
  * when we have the time. This will be very helpful in future refactors due to Angular upgrades, or simply
  * just to avoid leaks since destroying fixtures is automatic with this.
  */
-import {Type} from "@angular/core";
+import {Type, DebugElement} from "@angular/core";
 import {TestBed, ComponentFixture} from "@angular/core/testing";
 import {ClarityModule} from "../clarity.module";
 import {By} from "@angular/platform-browser";
@@ -20,19 +20,25 @@ export class TestContext<D, C> {
     clarityDirective: D;
     clarityElement: any;
 
+    private clarityDebugElement: DebugElement;
+
     constructor(clarityDirectiveType: Type<D>, componentType: Type<C>) {
         this.fixture = TestBed.createComponent(componentType);
         this.fixture.detectChanges();
         this.testComponent = this.fixture.componentInstance;
         this.testElement = this.fixture.nativeElement;
-        let clarityDebugElement = this.fixture.debugElement.query(By.directive(clarityDirectiveType));
-        if (!clarityDebugElement) {
+        this.clarityDebugElement = this.fixture.debugElement.query(By.directive(clarityDirectiveType));
+        if (!this.clarityDebugElement) {
             let componentName = (<any>componentType).name;
             let clarityDirectiveName = (<any>clarityDirectiveType).name;
             throw new Error(`Test component ${componentName} doesn't contain a ${clarityDirectiveName}`);
         }
-        this.clarityDirective = clarityDebugElement.componentInstance;
-        this.clarityElement = clarityDebugElement.nativeElement;
+        this.clarityDirective = this.clarityDebugElement.componentInstance;
+        this.clarityElement = this.clarityDebugElement.nativeElement;
+    }
+
+    getClarityProvider(token: any) {
+        return this.clarityDebugElement.injector.get(token);
     }
 
     /**

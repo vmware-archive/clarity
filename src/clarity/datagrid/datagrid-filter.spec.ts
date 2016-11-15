@@ -3,11 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import {Component, ViewChild} from "@angular/core";
 import {Subject} from "rxjs";
 import {TestContext} from "./helpers.spec";
 import {DatagridFilter} from "./datagrid-filter";
 import {Filters} from "./providers/filters";
+import {CustomFilter} from "./providers/custom-filter";
 import {Filter} from "./interfaces/filter";
 
 export default function(): void {
@@ -80,6 +81,10 @@ export default function(): void {
                 context.detectChanges();
                 expect(context.testComponent.open).toBe(false);
             });
+
+            it("registers itself as a CustomFilter provider", function() {
+                expect(context.testComponent.customFilter).toBe(context.clarityDirective);
+            });
         });
 
         describe("View", function() {
@@ -128,6 +133,8 @@ class TestFilter implements Filter<number> {
     template: `<clr-dg-filter [clrDgFilter]="filter" [(clrDgFilterOpen)]="open">Hello world</clr-dg-filter>`
 })
 class FullTest {
+    @ViewChild(CustomFilter) customFilter: CustomFilter;
+
     filter: Filter<any>;
     open: boolean;
 }

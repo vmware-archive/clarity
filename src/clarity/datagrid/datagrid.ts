@@ -3,8 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {AfterViewInit, OnDestroy, Component, ContentChild, ContentChildren, EventEmitter,
-    Input, Output, QueryList} from "@angular/core";
+import {
+    AfterViewInit, OnDestroy, Component, ContentChild, ContentChildren, EventEmitter,
+    Input, Output, QueryList, AfterContentInit
+} from "@angular/core";
 import {Subscription} from "rxjs";
 
 import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
@@ -24,7 +26,7 @@ import {Sort} from "./providers/sort";
     templateUrl: "./datagrid.html",
     providers: [Selection, Sort, Filters, Page, Items]
 })
-export class Datagrid implements AfterViewInit, OnDestroy {
+export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
 
     constructor(private selection: Selection, private sort: Sort, private filters: Filters,
                 private page: Page, public items: Items) {}
@@ -99,13 +101,6 @@ export class Datagrid implements AfterViewInit, OnDestroy {
     @ContentChild(DatagridItems) public iterator: DatagridItems;
 
     /**
-     * When the datagrid is user-managed without the smart iterator, we get the items displayed
-     * by querying the projected content. This is needed to keep track of the models currently
-     * displayed, typically for selection.
-     */
-    @ContentChildren(DatagridRow) private _rows: QueryList<DatagridRow>;
-
-    /**
      * Array of all selected items
      */
     @Input("clrDgSelected")
@@ -142,13 +137,29 @@ export class Datagrid implements AfterViewInit, OnDestroy {
      * even if the last page has less items than the previous ones
      */
     get nbEmptyRows() {
-        console.log(this._rows.length);
         let rowsDisplayed = 0;
         if (this.items.displayed) {
             rowsDisplayed = this.items.displayed.length;
         }
         // Always leave space for at least 2 rows even if the datagrid isn't paginated
         return Math.max(this.page.size, 2) - rowsDisplayed;
+    }
+
+    /**
+     * When the datagrid is user-managed without the smart iterator, we get the items displayed
+     * by querying the projected content. This is needed to keep track of the models currently
+     * displayed, typically for selection.
+     */
+    @ContentChildren(DatagridRow) private _rows: QueryList<DatagridRow>;
+    ngAfterContentInit() {
+        this._subscriptions.push(this._rows.changes.subscribe(() => {
+            if (!this.items.smart) {
+                this.items.all = this._rows.map((row: DatagridRow) => row.item);
+            }
+        }));
+        if (!this.items.smart) {
+            this.items.all = this._rows.map((row: DatagridRow) => row.item);
+        }
     }
 
     /**
@@ -160,15 +171,6 @@ export class Datagrid implements AfterViewInit, OnDestroy {
         this._subscriptions.push(this.filters.change.subscribe(() => this.triggerRefresh()));
         this._subscriptions.push(this.page.change.subscribe(() => this.triggerRefresh()));
         this._subscriptions.push(this.selection.change.subscribe(s => this.selectedChanged.emit(s)));
-
-        this._subscriptions.push(this._rows.changes.subscribe(() => {
-            if (!this.items.smart) {
-                this.items.all = this._rows.map((row: DatagridRow) => row.item);
-            }
-        }));
-        if (!this.items.smart) {
-            this.items.all = this._rows.map((row: DatagridRow) => row.item);
-        }
     }
     /**
      * Subscriptions to all the services changes

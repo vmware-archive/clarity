@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    Component, Input, ViewChild, ElementRef, Renderer, ChangeDetectorRef, AfterViewInit
+    Component, Input, ViewChild, ElementRef, Renderer, AfterViewInit
 } from "@angular/core";
 import {Observable, Subject} from "rxjs";
 import {Filter} from "../../interfaces/filter";
@@ -23,20 +23,14 @@ import {DatagridFilter} from "../../datagrid-filter";
                 on inputs with NgModel from freaking out because of their host binding changing
                 mid-change detection when the input is destroyed.
             -->
-            <form (submit)="closeContainer()" *ngIf="open">
-                <input #input type="text" name="search" [(ngModel)]="value" />
-                <div>
-                    <button type="submit" class="btn btn-primary btn-sm datagrid-filter-apply">
-                        Filter
-                    </button>
-                </div>
-            </form>
+            <input #input type="text" name="search" [(ngModel)]="value" *ngIf="open"
+                (keyup.enter)="close()" (keyup.escape)="close()"/>
         </clr-dg-filter>
     `
 })
 export class DatagridStringFilter implements CustomFilter, Filter<any>, AfterViewInit {
 
-    constructor(private renderer: Renderer, private _cdr: ChangeDetectorRef) {}
+    constructor(private renderer: Renderer) {}
 
     /**
      * Customizable filter logic based on a search text
@@ -100,6 +94,7 @@ export class DatagridStringFilter implements CustomFilter, Filter<any>, AfterVie
     public set value(value: string) {
         this._rawValue = value;
         this._lowerCaseValue = value.toLowerCase().trim();
+        this._changes.next(value);
     }
 
     /**
@@ -117,11 +112,7 @@ export class DatagridStringFilter implements CustomFilter, Filter<any>, AfterVie
         return this.filter.accepts(item, this.lowerCaseValue);
     };
 
-    /**
-     * Closes the container and applies the filter
-     */
-    public closeContainer() {
+    public close() {
         this.open = false;
-        this._changes.next(this.value);
     }
 }

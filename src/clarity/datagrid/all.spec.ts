@@ -8,9 +8,6 @@
  *
  * The goal is to have the tests properly grouped in the reporter, instead of having them all
  * over the place because we load them asynchronously.
- *
- * We could also check here that we do export publicly all the directives needed to use Stack View,
- * but I don't see a way to do it simply without it being completely irrelevant.
  */
 
 import {addHelpers} from "./helpers.spec";
@@ -24,8 +21,9 @@ import DatagridFilterSpecs from "./datagrid-filter.spec";
 import DatagridColumnSpecs from "./datagrid-column.spec";
 import DatagridItemsSpecs from "./datagrid-items.spec";
 import DatagridRowSpecs from "./datagrid-row.spec";
-import DatagridFooterSpecs from "./datagrid-footer.spec";
 import DatagridPaginationSpecs from "./datagrid-pagination.spec";
+import DatagridFooterSpecs from "./datagrid-footer.spec";
+import DatagridSpecs from "./datagrid.spec";
 import NestedPropertySpec from "./built-in/nested-property.spec";
 import DatagridPropertyComparatorSpecs from "./built-in/comparators/datagrid-property-comparator.spec";
 import DatagridPropertyStringFilterSpecs from "./built-in/filters/datagrid-property-string-filter.spec";
@@ -49,6 +47,7 @@ describe("Datagrid", function() {
         DatagridRowSpecs();
         DatagridPaginationSpecs();
         DatagridFooterSpecs();
+        DatagridSpecs();
     });
     describe("Built-in", function() {
         NestedPropertySpec();

@@ -14,6 +14,10 @@ Clarity is published as three npm packages:
 * __clarity-ui.__ Contains the static styles for building HTML components.
 * __clarity-angular.__ Contains the Angular 2 components. This package depends on clarity-ui for styles.
 
+The easiest way to run a sample Angular 2 application with Clarity is to use the [Clarity Seed](https://github.com/vmware/clarity-seed). 
+
+If you already have an Angular 2 application, you can follow the installation steps below to include and use Clarity in your application.
+
 ### Installing Clarity Icons
 
 1. Install Clarity Icons package through npm:

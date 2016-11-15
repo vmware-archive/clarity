@@ -173,7 +173,7 @@ a.btn-primary {
 }
 
 // had to remove these from clarity-ui... putting back here
-ul:not(.pagination) {
+ul:not(.pagination):not(.nav) {
     margin-top: $bl-1_0;
 
     ul {

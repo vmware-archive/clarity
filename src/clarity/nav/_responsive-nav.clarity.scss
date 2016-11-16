@@ -283,8 +283,10 @@ $clr-transition-style: ease;
                 .header-hamburger-trigger + .branding {
                     padding-left: 0;
 
+                    //deprecate .clr-icon, .logo
                     .clr-icon,
-                    .logo {
+                    .logo,
+                    clr-icon {
                         display: none;
                     }
                 }
@@ -370,11 +372,14 @@ $clr-transition-style: ease;
                             overflow: hidden;
                         }
 
+                        //deprecate .clr-icon, .logo
                         .clr-icon,
-                        .logo {
+                        .logo,
+                        clr-icon {
                             display: inline-block;
                         }
 
+                        clr-icon[shape="vm-bug"],
                         .clr-vmw-logo {
                             background-color: $gray-dark;
                             border-radius: $clr-default-borderradius;

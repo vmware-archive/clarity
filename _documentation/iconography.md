@@ -15,8 +15,20 @@ layout: documentation
     </div>
 </div>
 
+###### 1. Current icon options
+<clr-icon-selection-demo></clr-icon-selection-demo>
 
-<clr-iconography-demo></clr-iconography-demo>
+###### 2. Color options
+<clr-icon-colors-demo></clr-icon-colors-demo>
+
+###### Inverse color option
+<clr-icon-inverse-colors-demo></clr-icon-inverse-colors-demo>
+
+###### 3. Setting the icon size
+<clr-icon-size-demo></clr-icon-size-demo>
+
+###### 4. Orientation options
+<clr-icon-orientation-demo></clr-icon-orientation-demo>
 
 {: #guidelines}
 ### Usage

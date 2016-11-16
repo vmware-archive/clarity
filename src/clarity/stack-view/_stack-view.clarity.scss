@@ -240,30 +240,4 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
         }
     }
 
-    @mixin stackViewBrowserAlignmentFix {
-        .stack-view .stack-block-label::before {
-            // properly aligns arrows with labels in firefox, msedge
-            margin-top: -2px;
-        }
-    }
-
-    @include fixForFirefox() {
-        @include stackViewBrowserAlignmentFix;
-    }
-
-    @include fixForIE10AndUp() {
-        .stack-view .stack-block-label::before {
-            margin-top: -1px;
-        }
-    }
-
-    // order here is important because the IE11/MSEdge hack overwrites the previous hack...
-    @include fixForIE11AndUp() {
-        @include stackViewBrowserAlignmentFix;
-    }
-
-    // order here is important because the IE11/MSEdge hack overwrites the previous hack...
-    @include fixForMsEdge() {
-        @include stackViewBrowserAlignmentFix;
-    }
 }

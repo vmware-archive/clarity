@@ -96,7 +96,7 @@ If you already have an Angular 2 application, you can follow the installation st
     @NgModule({
         imports: [
             BrowserModule,
-            ClarityModule,
+            ClarityModule.forRoot(),
             ....
          ],
          declarations: [ AppComponent ],

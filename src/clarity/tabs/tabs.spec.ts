@@ -52,7 +52,7 @@ describe("Tabs", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [ClarityModule],
+            imports: [ClarityModule.forRoot()],
             declarations: [TestComponent],
             providers: [TabLink, TabContent]
         });

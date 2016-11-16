@@ -122,7 +122,7 @@ describe("Wizard", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [ClarityModule],
+            imports: [ClarityModule.forRoot()],
             declarations: [AdvancedWizard, BasicWizard]
         });
     });

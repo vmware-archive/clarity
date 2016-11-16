@@ -34,7 +34,7 @@ describe("Header", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [ClarityModule],
+            imports: [ClarityModule.forRoot()],
             declarations: [TestComponent]
         });
 

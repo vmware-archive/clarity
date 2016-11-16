@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
 /**
  *  Takes a stream of component files and auto-generates export statements for index.ts.
  *  This module assumes that files in the format of <component>/index.ts represent

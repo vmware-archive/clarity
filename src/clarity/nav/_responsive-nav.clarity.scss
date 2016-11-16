@@ -180,17 +180,19 @@ $clr-transition-style: ease;
 
                 border: none;
                 background: none;
-                color: white;
+                cursor: pointer;
                 font-size: $clr_baselineRem_1;
                 height: $clr-header-height;
                 width: $clr-header-height;
-                padding: 0 0 3px 0; //3px to vertically align the trigger lines. display flex was not working on all browsers.
+                padding: 0 0 4px 0; //4px to vertically align the trigger lines. display flex was not working on all browsers.
                 text-align: center;
                 white-space: nowrap;
 
                 &:focus {
                     outline-offset: -5px; //So that the outline styles aren't hidden because of the browser
                 }
+
+                @include header-nav-appearance();
             }
 
             .header-nav.clr-nav-level-1,

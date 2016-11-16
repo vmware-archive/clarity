@@ -81,18 +81,8 @@ export class Dropdown {
     //called on mouse clicks anywhere in the DOM.
     //Checks to see if the mouseclick happened on the host or outside
     @HostListener("document:click", ["$event.target"])
-    onMouseClick(target: any): void {
+    onMouseClick(): void {
         if (this._open) {
-            let current: any = target; //Get the element in the DOM on which the mouse was clicked
-            let dropdownHost: any = this.elementRef.nativeElement; //Get the current dropdown native HTML element
-
-            //Start checking if current and dropdownHost are equal. If not traverse to the parentNode and check again.
-            while (current) {
-                if (current === dropdownHost) {
-                    return;
-                }
-                current = current.parentNode;
-            }
             this._open = false; //Remove .open from the dropdown
         }
     }

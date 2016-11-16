@@ -25,7 +25,7 @@ describe("TabLink", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [ClarityModule],
+            imports: [ClarityModule.forRoot()],
             declarations: [TestComponent],
             providers: [TABS_DIRECTIVES]
         });

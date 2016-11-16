@@ -28,7 +28,7 @@ describe("WizardStep", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [ClarityModule],
+            imports: [ClarityModule.forRoot()],
             declarations: [TestComponent],
             providers: [Wizard, ScrollingService],
         });

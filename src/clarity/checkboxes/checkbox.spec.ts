@@ -100,7 +100,10 @@ describe("Checkbox", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [ClarityModule, FormsModule],
+            imports: [
+                ClarityModule.forRoot(),
+                FormsModule
+            ],
             declarations: [BasicCheckbox, CheckboxWithNgModel, CheckboxWithLabel, CheckboxWithName, InlineCheckbox,
                 IndeterminateCheckbox]
         });

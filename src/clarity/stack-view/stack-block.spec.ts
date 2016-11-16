@@ -65,7 +65,7 @@ export default function(): void {
         beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [
-                    ClarityModule,
+                    ClarityModule.forRoot(),
                     FormsModule
                 ],
                 declarations: [

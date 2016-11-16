@@ -57,7 +57,7 @@ export function addHelpers(): void {
          */
         this.create = <D, C>(clarityDirective: Type<D>, testComponent: Type<C>, providers: any[] = []) => {
             TestBed.configureTestingModule({
-                imports: [ClarityModule],
+                imports: [ClarityModule.forRoot()],
                 declarations: [testComponent],
                 providers: providers
             });

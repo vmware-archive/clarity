@@ -54,10 +54,13 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
         TABS_DIRECTIVES,
         WIZARD_DIRECTIVES,
         ICON_DIRECTIVES
-    ],
-    providers: [
-        ClrResponsiveNavigationService
     ]
 })
 export class ClarityModule {
+    static forRoot() {
+        return {
+            ngModule: ClarityModule,
+            providers: [ ClrResponsiveNavigationService ]
+        };
+    }
 }

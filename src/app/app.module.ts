@@ -18,7 +18,7 @@ import {ClarityModule} from "../clarity/clarity.module";
         BrowserModule,
         FormsModule,
         ROUTING,
-        ClarityModule
+        ClarityModule.forRoot()
     ],
     declarations: [
         AppComponent,

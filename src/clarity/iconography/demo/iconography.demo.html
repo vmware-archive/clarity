@@ -1,88 +1,9 @@
-<h6>1. Current icon options</h6>
-
-
-<span class="clr-example">
-    <clr-icon shape="info"></clr-icon>
-    <clr-icon shape="success"></clr-icon>
-    <clr-icon shape="warning"></clr-icon>
-    <clr-icon shape="danger"></clr-icon>
-</span>
-
-<pre>
-<code clr-code-highlight="language-html">
-&lt;clr-icon shape=&quot;info&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;success&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;warning&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;danger&quot;&gt;&lt;/clr-icon&gt;
-</code></pre>
-
-<h6>2. Color options</h6>
-<span class="clr-example">
-    <clr-icon shape="info"></clr-icon>
-    <clr-icon shape="info" class="icon-color-highlight"></clr-icon>
-    <clr-icon shape="info" class="icon-color-danger"></clr-icon>
-    <clr-icon shape="info" class="icon-color-warning"></clr-icon>
-    <clr-icon shape="info" class="icon-color-success"></clr-icon>
-    <clr-icon shape="info" class="icon-color-info"></clr-icon>
-</span>
-<pre>
-<code clr-code-highlight="language-html">
-&lt;clr-icon shape=&quot;info&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; class=&quot;icon-color-highlight&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; class=&quot;icon-color-danger&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; class=&quot;icon-color-warning&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; class=&quot;icon-color-success&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; class=&quot;icon-color-info&quot;&gt;&lt;/clr-icon&gt;
-</code></pre>
-
-
-<h6>Inverse color option</h6>
-<span class="clr-example inverse">
-    <clr-icon shape="info" class="icon-color-inverse"></clr-icon>
-</span>
-<pre>
-<code clr-code-highlight="language-html">
-&lt;clr-icon shape=&quot;info&quot; class=&quot;icon-color-inverse&quot;&gt;&lt;/clr-icon&gt;
-</code></pre>
-
-<h6>3. Setting the icon size</h6>
-<span class="clr-example">
-    <clr-icon shape="info" size="12"></clr-icon>
-    <clr-icon shape="info" size="16"></clr-icon>
-    <clr-icon shape="info" size="36"></clr-icon>
-    <clr-icon shape="info" size="48"></clr-icon>
-    <clr-icon shape="info" size="64"></clr-icon>
-    <clr-icon shape="info" size="72"></clr-icon>
-</span>
-
-<pre>
-<code clr-code-highlight="language-html">
-&lt;clr-icon shape=&quot;info&quot; size=&quot;12&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; size=&quot;16&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; size=&quot;48&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; size=&quot;64&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; size=&quot;72&quot;&gt;&lt;/clr-icon&gt;
-</code></pre>
-<div class="alert alert-info">
-    <div class="alert-item">
-        <span class="alert-text">
-            The size attribute overrides the CSS size style.  If you don’t set either the size attribute or the CSS size style, the size defaults to 16 by 16 pixels.
-        </span>
-    </div>
-</div>
-
-<h6>4. Orientation options</h6>
-<span class="clr-example">
-    <clr-icon shape="info" class="icon-orient-up"></clr-icon>
-    <clr-icon shape="info" class="icon-orient-right"></clr-icon>
-    <clr-icon shape="info" class="icon-orient-left"></clr-icon>
-    <clr-icon shape="info" class="icon-orient-down"></clr-icon>
-</span>
-<pre>
-<code clr-code-highlight="language-html">
-&lt;clr-icon shape=&quot;info&quot; class=&quot;icon-orient-up&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; class=&quot;icon-orient-right&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; class=&quot;icon-orient-left&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; class=&quot;icon-orient-down&quot;&gt;&lt;/clr-icon&gt;
-</code></pre>
+<h2>Iconography</h2>
+<ul>
+    <li><a [routerLink]="['./selection']">Icon Selection</a></li>
+    <li><a [routerLink]="['./color-options']">Color Options</a></li>
+    <li><a [routerLink]="['./inverse-color']">Inverse Color</a></li>
+    <li><a [routerLink]="['./size']">Size</a></li>
+    <li><a [routerLink]="['./orientation']">Orientation</a></li>
+</ul>
+<router-outlet></router-outlet>

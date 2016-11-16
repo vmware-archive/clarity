@@ -4,6 +4,9 @@ import {ClarityModule} from "../clarity.module";
 
 @Component({
     template: `
+        <button class="outside-click-test" (click)="outsideButtonClickHandler()">
+            Button to test clicks outside of the dropdown component
+        </button>
         <clr-dropdown [clrMenuPosition]="menuPosition" [clrCloseMenuOnItemClick]="menuClosable">
             <button class="btn btn-primary" type="button" clrDropdownToggle>
                 Dropdown
@@ -20,6 +23,11 @@ import {ClarityModule} from "../clarity.module";
 class TestComponent {
     menuPosition: string = "";
     menuClosable: boolean = true;
+    testCnt: number = 0;
+
+    outsideButtonClickHandler(): void {
+        this.testCnt++;
+    }
 }
 
 describe("Dropdown", () => {
@@ -112,11 +120,18 @@ describe("Dropdown", () => {
 
     it("closes the menu when clicked outside of the host", () => {
         let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+        let outsideButton: HTMLElement = compiled.querySelector(".outside-click-test");
 
+        //check if the dropdown is closed
         expect(compiled.querySelector(".open")).toBeNull();
+
         //click outside the dropdown
-        fixture.nativeElement.click();
+        outsideButton.click();
         fixture.detectChanges();
+
+        //check if the click handler is triggered
+        expect(fixture.componentInstance.testCnt).toEqual(1);
+        //check if the open class is added
         expect(compiled.querySelector(".open")).toBeNull();
 
         //click on the dropdown
@@ -124,9 +139,13 @@ describe("Dropdown", () => {
         fixture.detectChanges();
         expect(compiled.querySelector(".open")).not.toBeNull();
 
-        //click outside again
-        fixture.nativeElement.click();
+        //click outside the dropdown
+        outsideButton.click();
         fixture.detectChanges();
+
+        //check if the click handler is triggered
+        expect(fixture.componentInstance.testCnt).toEqual(2);
+        //check if the open class is added
         expect(compiled.querySelector(".open")).toBeNull();
     });
 

@@ -82,7 +82,7 @@
     {% assign hasSidebar = false %}
 {% endif %}
 
-<body id="body" class="{{ dasherized_title }} {% if page.category %} category-{{ page.category }}{% endif %}{% if page.layout-class %} layout-{{ page.layout-class }}{% else %}layout-{{ page.layout }}{% endif %}">
+<body id="body" class="{{ dasherized_title }} {% if page.category %}category-{{ page.category }}{% endif %} {% if page.layout-class %} layout-{{ page.layout-class }}{% else %}layout-{{ page.layout }}{% endif %}">
     <div class="sliding-nav-wrapper">
         <a class="close-toggle" href="javascript://" onclick="ClarityWeb.toggleNav('topnav')">&times;<span class="sr-only">Close</span></a>
         <div class="sliding-nav">

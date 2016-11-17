@@ -6,7 +6,7 @@ layout: documentation
 
 
 {: .component-summary }
-#### Use Clarity's buttons to submit forms or initiate actions in modals, wizards, or other interactive blocks of content.
+##### Use Clarity's buttons to submit forms or initiate actions in modals, wizards, or other interactive blocks of content.
 
 ### Styles
 
@@ -17,39 +17,36 @@ Clarity defines three button styles:
 - **Outline.** A transparent background with colored border and text. On hover, the button fills with color.
 - **Flat.** Text in Action Blue that fills with a button shape on hover.  
 
-<clr-buttons-demo-real-button></clr-buttons-demo-real-button>
+<clr-buttons-demo-real-button class="clrweb-button-demo"></clr-buttons-demo-real-button>
 
 ### Types
 
-<clr-buttons-demo-primary-button></clr-buttons-demo-primary-button>
+<clr-buttons-demo-primary-button class="clrweb-button-demo"></clr-buttons-demo-primary-button>
 
 {: .indent}
 
-<clr-buttons-demo-secondary-button></clr-buttons-demo-secondary-button>
+<clr-buttons-demo-secondary-button class="clrweb-button-demo"></clr-buttons-demo-secondary-button>
 
 {: .indent}
 
-<clr-buttons-demo-tertiary-button></clr-buttons-demo-tertiary-button>
+<clr-buttons-demo-tertiary-button class="clrweb-button-demo"></clr-buttons-demo-tertiary-button>
 
 ### States
 
-<clr-buttons-demo-button-states></clr-buttons-demo-button-states>
+<clr-buttons-demo-button-states class="clrweb-button-demo"></clr-buttons-demo-button-states>
 
 ### Sizes
 
-<clr-buttons-demo-button-sizes></clr-buttons-demo-button-sizes>
+<clr-buttons-demo-button-sizes class="clrweb-button-demo"></clr-buttons-demo-button-sizes>
 
 ### Inverse
 
-<clr-buttons-demo-inverse-button></clr-buttons-demo-inverse-button>
+<clr-buttons-demo-inverse-button class="clrweb-button-demo"></clr-buttons-demo-inverse-button>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
+{: #guidelines}
+### Using Buttons
 
-## Using Buttons
-
-### Solid, outline, and flat
+#### Solid, outline, and flat
 
 <div class="row buttons-modal-gfx">
     <div class="col-xs-12 col-sm-2">
@@ -78,7 +75,7 @@ Clarity defines three button styles:
 </div>
 
 
-### Alignment is container dependent
+#### Alignment is container dependent
 
 Spatial relationships with other elements in the component or space determine button placement.
 
@@ -117,7 +114,7 @@ Spatial relationships with other elements in the component or space determine bu
 
 
 
-### Info, success, and danger indicate action severity
+#### Info, success, and danger indicate action severity
 
 <div class="row buttons-modal-gfx">
     <div class="col-xs-12 col-sm-2">
@@ -144,7 +141,7 @@ Spatial relationships with other elements in the component or space determine bu
     </div>
 </div>
 
-### Size is location dependent
+#### Size is location dependent
 
 <div class="row buttons-modal-gfx">
     <div class="col-xs-12 col-sm-2">
@@ -165,7 +162,7 @@ Spatial relationships with other elements in the component or space determine bu
     </div>
 </div>
 
-### The block button
+#### The block button
 
 A block button occupies the full width of its container.  A common use of this button is in the Login screen.
 
@@ -179,11 +176,11 @@ A block button occupies the full width of its container.  A common use of this b
     </div>
     </div>
 
-### Inverse formatting is for a secondary, outline button
+#### Inverse formatting is for a secondary, outline button
 
 For information about when to use inverse styling, see the [Color]({{ site.baseurl }}/documentation/color) documentation.
 
-### Clear and concise labels
+#### Clear and concise labels
 
 Use a verb or verb phrase that describes the button's action. Limit labels to three words and avoid long words.
 

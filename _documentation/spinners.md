@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### A spinner is visual indicator of an ongoing, user-initiated process.
+##### A spinner is visual indicator of an ongoing, user-initiated process.
 
 Clarity has two types of spinners:
 
@@ -46,10 +46,7 @@ The classnames used to size spinners are: <code class="clr-code">.spinner-sm</co
 
 <clr-spinner-sizes></clr-spinner-sizes>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 Use the three sizes of spinners as follows:

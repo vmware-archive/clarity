@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### A form is a structured layout of related input components.
+##### A form is a structured layout of related input components.
 
 A container, often a <code class="clr-code">div</code> with a <code class="clr-code">.form-group</code> classname on it, wraps one or more <code class="clr-code">label</code> and <code class="clr-code">input</code> pairs.
 
@@ -48,10 +48,7 @@ and place the form fields in the grid column classes. To occupy 100% of the colu
 
 <clr-forms-demo-grid></clr-forms-demo-grid>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 Forms guide users through input in a structured, specific order.  Forms are comprised of [text]({{ site.baseurl }}/documentation/typography) and input components such as [checkboxes]({{ site.baseurl }}/documentation/checkboxes), [dropdowns]({{ site.baseurl }}/documentation/dropdowns), [input fields]({{ site.baseurl }}/documentation/input-fields), [radio buttons]({{ site.baseurl }}/documentation/radios), and [toggle switches]({{ site.baseurl }}/documentation/toggle-switches).

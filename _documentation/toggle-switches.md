@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### A toggle switch changes on and off states of a single setting.
+##### A toggle switch changes on and off states of a single setting.
 
 To create a toggle switch, wrap an <code class="clr-code">input[type="checkbox"]</code> element and a <code class="clr-code">label</code> element in a block-level wrapper (like a <code class="clr-code">div</code>) with the <code class="clr-code">.toggle-switch</code> classname. To use a toggle without any label, keep the <code class="clr-code">label</code> tag empty.
 The default toggle is gray in its “off” state and green in its “on” state. The user can change states by clicking on either the toggle or its accompanying label.
@@ -19,10 +19,7 @@ When disabled, the toggle appears gray. The user cannot change the state of the 
 
 <clr-toggles-demo></clr-toggles-demo>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 Use a toggle switch when you need the sole options of “on” and “off.”

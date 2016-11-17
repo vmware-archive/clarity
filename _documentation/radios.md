@@ -5,17 +5,13 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### With radio buttons, users can select one option in a group of options.  
+##### With radio buttons, users can select one option in a group of options.  
 
 <clr-radios-demo></clr-radios-demo>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
-{: .list}
 Use radio buttons when you want users to see all available options and the list of options is small.  For mutually exclusive options, consider a [checkbox]({{ site.baseurl }}/documentation/checkboxes) or [toggle switch]({{ site.baseurl }}/documentation/toggle-switches).
 
 {: .list}

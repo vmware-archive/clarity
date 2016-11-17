@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### Clarity uses the geometric sans-serif font, Metropolis.
+##### Clarity uses the geometric sans-serif font, Metropolis.
 
 ### Text Styles
 
@@ -19,25 +19,23 @@ layout: documentation
 
 Clarity includes several SASS variables, collections, mixing, and functions for working with typography. These are described below:
 
-#### Variables
-
-##### $clr-font
+###### $clr-font
 
 This SASS variable points to our default text font, Metropolis.
 
-##### $clr-altFont
+###### $clr-altFont
 
 This SASS variable is only used for our headers (H1..H6). Currently, it also points to Metropolis.
 
-##### $clr-font-size
+###### $clr-font-size
 
 This SASS variable sets our default font size to 14px.
 
-##### $clr-font-weights
+###### $clr-font-weights
 
 This SASS variable contains a collection for the font weights used in Clarity — light, regular, semibold, and bold. The actual weights assigned to these values are 200, 400, 500, and 600 respectively. The default font weight in Clarity is regular/400. The bold font-weight is actually Metropolis semi-bold (600).
 
-##### $clr-elements
+###### $clr-elements
 
 This SASS variable contains a collection that can access all of the font properties for H1 through H6 and P1 through P8 as defined in our typography specs. These properties are returned as a collection which contains nested collections of both common font properties across all screen sizes, as well as breakpoint overrides.
 
@@ -70,7 +68,7 @@ This SASS variable contains a collection that can access all of the font propert
 </code>
 </pre>
 
-##### $clr-typography-dom-to-type-element
+###### $clr-typography-dom-to-type-element
 
 This collection maps Clarity components and DOM containers to their expected type properties in <code>$clr-elements</code>. Use the labels listed in the _Use For_ column of the typography tables above.
 
@@ -78,7 +76,7 @@ This collection maps Clarity components and DOM containers to their expected typ
 
 Clarity uses SASS mixins to make it easier to access the type properties in the variables and collections listed above. The typography mixins return full CSS style definitions. They are intended to be used inside SASS/SCSS style declarations, placeholders, or other mixins.
 
-##### clr-getTypeProperties($element, $whichTypeProperties)
+###### clr-getTypeProperties($element, $whichTypeProperties)
 
 Returns specified styles (from <code>$whichTypeProperties</code> list parameter) for all styles from the designated typographic element (h1..h6 or p1..p8).
 
@@ -145,7 +143,7 @@ Returns specified styles (from <code>$whichTypeProperties</code> list parameter)
 </code>
 </pre>
 
-##### clr-getTypePropertiesForDomElement($element-label, $typePropertiesToGet)
+###### clr-getTypePropertiesForDomElement($element-label, $typePropertiesToGet)
 
 An include that abstracts the clr-getTypeProperties mixin so that users can look up typography based on how it is used in Clarity.
 
@@ -218,7 +216,7 @@ An include that abstracts the clr-getTypeProperties mixin so that users can look
 
 Clarity also includes functions that allow you to access typographic properties to assign them to your own style properties or SASS variables.
 
-##### clr-getTypePropertyValue($element-label, $valToGet)
+###### clr-getTypePropertyValue($element-label, $valToGet)
 
 Returns specified style value (from <code>$valToGet</code>) from styles for the designated typographic element (h1..h6 or p1..p8). Returns an empty string <code>""</code> if the typographic element does not have the style for which it was asked or if it is passed invalid values.
 
@@ -267,7 +265,7 @@ Returns specified style value (from <code>$valToGet</code>) from styles for the 
 </code>
 </pre>
 
-##### clr-getTypePropertyValueForDomElement($element-label, $valToGet)
+###### clr-getTypePropertyValueForDomElement($element-label, $valToGet)
 
 This SASS function serves as an abstraction of the <code>clr-getTypePropertyValue</code> above. It performs a lookup against the <code>$clr-typography-dom-to-type-element</code> map so that users can use more familiar component/DOM element labels (as listed in the tables above) to access style property values.
 
@@ -318,11 +316,7 @@ The function returns a specified style value (from <code>$valToGet</code>) from 
 </code>
 </pre>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
-
+{: #guidelines}
 ### The Metropolis Font
 
 Metropolis has clear, simple letters with rounded forms.   

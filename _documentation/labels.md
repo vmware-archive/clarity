@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### A label is a visual tag that provides additional information about data in the UI.
+##### A label is a visual tag that provides additional information about data in the UI.
 
 ###### 1. Labels (not clickable)
 
@@ -27,10 +27,7 @@ layout: documentation
 
 <clr-labels-with-badges-demo></clr-labels-with-badges-demo>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 Use labels in lists and search results to further qualify the data.   For example, in search results, you might use labels to filter for location ("London" and "Palo Alto").

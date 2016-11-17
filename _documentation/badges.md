@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### A badge overlays a count of items on another component, such as a menu or label.
+##### A badge overlays a count of items on another component, such as a menu or label.
 
 ###### 1. Badges (Color Options)
 
@@ -15,10 +15,7 @@ layout: documentation
 
 <clr-badge-statuses-demo></clr-badge-statuses-demo>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 Use a badge to show a tally or other quantity. For example, you might overlay a badge on a [label]({{ site.baseurl }}/documentation/labels) or menu item to show a count of that item.

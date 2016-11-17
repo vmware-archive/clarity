@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### Clarity presents pixel-perfect and scalable SVG-based icons. This new icon system gives you complete control over the color, orientation, and size with pre-defined class names. Plus, you can access and customize any SVG graphic element inside the icon through standard CSS.
+##### Clarity presents pixel-perfect and scalable SVG-based icons. This new icon system gives you complete control over the color, orientation, and size with pre-defined class names. Plus, you can access and customize any SVG graphic element inside the icon through standard CSS.
 
 <div class="alert alert-info">
     <div class="alert-item">
@@ -18,15 +18,12 @@ layout: documentation
 
 <clr-iconography-demo></clr-iconography-demo>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 Use the <code class="clr-code">clr-icon</code> tag and specify your desired icon shape inside its <code class="clr-code">shape</code> attribute.
 
-**Example:**
+##### Example:
 
 <pre>
     <code clr-code-highlight="language-html">
@@ -46,7 +43,8 @@ You can easily modify the size, the orientation, and the color of your Clarity I
     </code>
 </pre>
 
-#### To modify the size of your icon, choose one of these size classes:
+{: .spacious}
+To modify the size of your icon, choose one of these size classes:
 
 <div class="row">
     <div class="col-xs-12">
@@ -83,7 +81,8 @@ You can easily modify the size, the orientation, and the color of your Clarity I
     </div>
 </div>
 
-#### To modify the orientation of your icon, choose one of these orientation classes:
+{: .spacious}
+To modify the orientation of your icon, choose one of these orientation classes:
 
 <div class="row">
     <div class="col-xs-12">
@@ -124,7 +123,8 @@ You can easily modify the size, the orientation, and the color of your Clarity I
     </div>
 </div>
 
-#### To modify the color of your icon, choose one of these color classes:
+{: .spacious}
+To modify the color of your icon, choose one of these color classes:
 
 <div class="row">
     <div class="col-xs-12">
@@ -177,7 +177,7 @@ You can easily modify the size, the orientation, and the color of your Clarity I
     </div>
 </div>
 
-#### Manipulate any SVG graphic element inside the icon
+##### Manipulate any SVG graphic element inside the icon
 
 After adding <code class="clr-code">clr-icon</code> in your HTML, view it using a web inspection tool. You will find that SVG elements are injected inside the <code class="clr-code">clr-icon</code> tag that are responsible for drawing the icon.
 

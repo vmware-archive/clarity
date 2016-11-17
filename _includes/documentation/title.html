@@ -1,1 +1,15 @@
-<h1>{{ include.title }} {% include documentation/workstream-bugs.html workstreams=include.workstreams %}</h1>
+<h1>{{ include.title }}</h1>
+
+{% include documentation/workstream-bugs.html workstreams=include.workstreams %}
+
+{% unless page.hideTab %}
+<div class="dox-tabs">
+    <ul class="list-unstyled">
+        <li>
+            <a href="javascript://" id="topTabLink" class="clrweb-tablink active"
+               onclick="ClarityWeb.scrollTo('top', this)">Examples &amp; Code</a></li>
+        <li><a href="javascript://" class="clrweb-tablink" id="guidelinesTabLink"
+               onclick="ClarityWeb.scrollTo('#guidelines', this)">Design Guidelines</a></li>
+    </ul>
+</div>
+{% endunless %}

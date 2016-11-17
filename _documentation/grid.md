@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### A grid provides a structure of rows and columns for aligning content. Grids are useful because they help create a familiar and easily navigable structure for content.
+##### A grid provides a structure of rows and columns for aligning content. Grids are useful because they help create a familiar and easily navigable structure for content.
 
 Clarity uses the [Bootstrap 4 Flex Grid](http://v4-alpha.getbootstrap.com/layout/grid/).  This is a 12-column, responsive grid, per the Bootstrap documentation shown in the following table:
 
@@ -142,10 +142,7 @@ To align columns horizontally within a row, extend the row with one of the follo
 
 <clr-grid-demo-horizontal-alignment></clr-grid-demo-horizontal-alignment>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 

@@ -5,15 +5,27 @@
 
 {% include header/header.html clarityNg=we_need_angular %}
 
+{% assign contentAreaClassnames = 'content-area' %}
+{% unless page.isIndexPage %}
+    {% assign contentAreaClassnames = 'content-area dox-content-panel' %}
+{% endunless %}
+
 <div class="content-container">
-    <main class="content-area">
-        <section>
+    <main class="{{ contentAreaClassnames }}">
+        {% unless page.isIndexPage %}
+        <section class="dox-header">
+            {% include documentation/title.html title=page.title workstreams=page.workstreams %}
+        </section>
+        {% endunless %}
+        <section class="dox-content">
             {% if page.load-components == false %}
                 {{content}}
             {% else %}
-                <my-app>
-                    <div class="spinner components-spinner"></div>
-                </my-app>
+                <div class="dox-content-wrapper">
+                    <my-app>
+                        <div class="spinner components-spinner"></div>
+                    </my-app>
+                </div>
             {% endif %}
         </section>
     </main>
@@ -26,7 +38,6 @@
 
 {% unless page.load-components == false %}
     <script type="text/html" id="app-template">
-        {% include documentation/title.html title=page.title workstreams=page.workstreams %}
         <article>{{ content }}</article>
     </script>
 
@@ -52,4 +63,4 @@
     </script>
 {% endunless %}
 
-{% include footer/footer.html %}
+{% include footer/footer.html hasTabLinks=true %}

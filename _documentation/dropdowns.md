@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### A dropdown menu lists actions that users can perform within an application or on a selected object.
+##### A dropdown menu lists actions that users can perform within an application or on a selected object.
 
 ###### .dropdown:
 
@@ -97,10 +97,7 @@ The following classes when extended along with <code>.dropdown</code> will open 
 
 <clr-dropdown-angular-close-item-false-demo></clr-dropdown-angular-close-item-false-demo>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 Use a dropdown menu in a header or other area of the UI, such as a column within a datagrid, to present a set of actions.  Often, these actions navigate to a new location.  For example, you might have a Settings dropdown that changes context to provide logout, account settings, and so on.

@@ -221,28 +221,19 @@ Include clarity-icons.min.css and clarity-icons.min.js in your HTML. Because cus
 {: .bump-down}
 ![Device and Browser Support]({{ site.baseurl }}/images/get-started/device_support.png?{{ site.time | date: '%s%N' }})
 
-<hr>
-
-
 {: #contribute_guidelines}
 ## Contributing to Clarity
 
 The Clarity team welcomes contributions from the community.  See our [contribution guidelines](https://github.com/vmware/clarity//blob/master/CONTRIBUTING.md){: target='_blank' } on GitHub.
-
-<hr>
-
 
 {: #reportingBugs}
 ## Reporting an Issue
 
 Ongoing work and feature requests are tracked using [GitHub Issues](https://github.com/vmware/clarity/issues){: target='_blank' }. Please feel free to file an issue.
 
-<hr>
-
-
 {: #attributions }
 ## Attributions
 
 See the [legal attributions](https://github.com/vmware/clarity/blob/master/ATTRIBUTION.md){: target='_blank' } for third party software included in Clarity.
 
-<div style="visibility: hidden; height: 50vh;">This is a spacer to force sidenav highlighting on scroll</div>
+<div style="visibility: hidden; height: 80vh;">This is a spacer to force sidenav highlighting on scroll</div>

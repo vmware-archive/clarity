@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### A card presents high-level information and can guide the user toward related actions and details.
+##### A card presents high-level information and can guide the user toward related actions and details.
 
 #### Basic Card
 
@@ -82,14 +82,9 @@ Clarity recommends using cards in a <a href="{{ site.baseurl }}/documentation/gr
 Cards can be placed in <code class="clr-code">.card-columns</code>. The default number of columns is three,
 but can be changed to two or four by adding <code class="clr-code">.card-columns-2</code> or <code class="clr-code">.card-columns-4</code>.
 
-<p></p>
-
 <clr-card-masonry-demo></clr-card-masonry-demo>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
-
+{: #guidelines}
 ### Usage
 
 Example use cases for cards include:

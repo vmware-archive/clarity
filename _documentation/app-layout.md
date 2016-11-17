@@ -5,7 +5,7 @@ layout: documentation
 ---
 
 {: .component-summary }
-#### A properly structured layout enforces an optimal, consistent experience across applications.
+##### A properly structured layout enforces an optimal, consistent experience across applications.
 
 ### Layout
 
@@ -33,10 +33,8 @@ layout: documentation
 
 <clr-layout-all-demo></clr-layout-all-demo>
 
-{% comment %}
-    Design guidelines start here...
-{% endcomment %}
 
+{: #guidelines }
 ### Basic Structure
 
 Two constants of an app built in Clarity are the header and content area. These are the blocks upon which you build your app model.
@@ -46,10 +44,10 @@ Two constants of an app built in Clarity are the header and content area. These 
         <img src="{{ site.baseurl }}/images/documentation/app-layout/header_contentarea.png?{{ site.time | date: '%s%N' }}" alt="Header and Content Area"/>
     </div>
     <div class="col-xs-12 col-md-7">
-        <h4 style="margin-top:0">Header</h4>
+        <h5 style="margin-top:0">Header</h5>
         The <a href="{{ site.baseurl }}/documentation/header">header</a> is for branding and app-level elements such as navigation, search, and account settings.
 
-        <h4>Content Area</h4>
+        <h5>Content Area</h5>
         The content area is where users focus their attention most of the time, gathering information and performing tasks–it is the canvas for your application. As the largest portion of your app, the content area is always visible.
     </div>
 </div>
@@ -67,12 +65,12 @@ Your layout should reflect the information or workflow of the selected <a href="
 - How to handle large amounts of data
 - Responsive design (if that is part of your product's goals)
 
-#### Common Layout Patterns
+##### Common Layout Patterns
 
 Content can consist of any of the <a href="{{ site.baseurl }}/documentation/">Clarity components</a>, or no components and just information.  Following are common layout patterns and recommended usage.
 For information on navigation components, header, subnav, and sidenav, see [Navigation]({{ site.baseurl }}/documentation/navigation).
 
-##### Cards
+###### Cards
 
 <div class="row cozy-sm">
     <div class="col-xs-12 col-md-5">
@@ -93,7 +91,7 @@ For information on navigation components, header, subnav, and sidenav, see [Navi
     </div>
 </div>
 
-##### Tables and Datagrids
+###### Tables and Datagrids
 
 <div class="row cozy-sm">
     <div class="col-xs-12 col-md-5">
@@ -112,7 +110,7 @@ For information on navigation components, header, subnav, and sidenav, see [Navi
     </div>
 </div>
 
-##### Forms
+###### Forms
 
 <div class="row cozy-sm">
     <div class="col-xs-12 col-md-5">
@@ -129,7 +127,7 @@ For information on navigation components, header, subnav, and sidenav, see [Navi
     </div>
 </div>
 
-##### Tabs
+###### Tabs
 
 <div class="row cozy-sm">
     <div class="col-xs-12 col-md-5">
@@ -145,7 +143,7 @@ For information on navigation components, header, subnav, and sidenav, see [Navi
     </div>
 </div>
 
-##### White Space and Typography
+###### White Space and Typography
 
 <div class="row cozy-sm">
     <div class="col-xs-12 col-md-5">
@@ -158,7 +156,7 @@ For information on navigation components, header, subnav, and sidenav, see [Navi
     </div>
 </div>
 
-#### Button Placement
+###### Button Placement
 
 In the content area, buttons are left-aligned, with the primary button in the leftmost position.  This placement supports the F-pattern layout.
 
@@ -181,7 +179,7 @@ In the content area, buttons are left-aligned, with the primary button in the le
 
 Vertical rhythm is the repetition of spatial relationships in a design.  A consistent rhythm gives elements a uniform and balanced placement in a design.  The more consistent the design, the easier it is for users to read and understand.
 
-##### The Clarity Baseline is 24px
+###### The Clarity Baseline is 24px
 
 All elements in Clarity are built in terms of 24px:
 
@@ -192,7 +190,7 @@ All elements in Clarity are built in terms of 24px:
 
 <img src="{{ site.baseurl }}{{ site.data.global.images_path }}documentation/app-layout/24_baseline.png?{{ site.time | date: '%s%N' }}" alt="24px Baseline">
 
-##### Repeat 24px in Your Layout
+###### Repeat 24px in Your Layout
 
 Calculate the vertical margins and padding between elements using the Clarity baseline.  A multiple of 24px can be a whole or half-ratio. Common numbers include:
 

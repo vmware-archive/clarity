@@ -164,10 +164,10 @@
             "url": "/documentation/header",
             "text": "Header & Subnav",
             "type": "component",
-            "ux": 10,
-            "ui": 10,
+            "ux": 20,
+            "ui": 20,
             "core": -1,
-            "ng": 10,
+            "ng": 20,
             "dox": 20,
             "isUpdated": true,
             "comments": "Search and Header Actions are under implementation"

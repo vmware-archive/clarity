@@ -51,13 +51,21 @@
                 </a>
             </div>
             <div class="header-actions">
-                <a href="javascript://" class="nav-link nav-icon">
-                    <clr-icon shape="cog"></clr-icon>
-                </a>
+                <clr-dropdown class="dropdown bottom-right">
+                    <button class="nav-icon" clrDropdownToggle>
+                        <clr-icon shape="cog"></clr-icon>
+                        <clr-icon shape="caret" class="icon-orient-down"></clr-icon>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="javascript://" clrDropdownItem>About</a>
+                        <a href="javascript://" clrDropdownItem>Preferences</a>
+                        <a href="javascript://" clrDropdownItem>Log out</a>
+                    </div>
+                </clr-dropdown>
             </div>
         </header>
 
-        <header class="header-6">
+        <header class="header-6 space-below">
             <div class="branding">
                 <a href="javascript://" class="nav-link">
                     <clr-icon shape="vm-bug"></clr-icon>
@@ -78,17 +86,31 @@
                 </label>
             </form>
             <div class="header-actions">
-                <div class="dropdown bottom-right">
-                    <button class="dropdown-toggle nav-icon">
+                <clr-dropdown class="dropdown bottom-right">
+                    <button class="nav-icon" clrDropdownToggle>
                         <clr-icon shape="user"></clr-icon>
                         <clr-icon shape="caret" class="icon-orient-down"></clr-icon>
                     </button>
                     <div class="dropdown-menu">
-                        <a href="javascript://" class="dropdown-item">About</a>
-                        <a href="javascript://" class="dropdown-item">Preferences</a>
-                        <a href="javascript://" class="dropdown-item">Logout</a>
+                        <a href="javascript://" clrDropdownItem>About</a>
+                        <a href="javascript://" clrDropdownItem>Preferences</a>
+                        <a href="javascript://" clrDropdownItem>Log out</a>
                     </div>
-                </div>
+                </clr-dropdown>
+            </div>
+        </header>
+
+        <header class="header-6">
+            <div class="branding">
+                <a href="javascript://" class="nav-link">
+                    <clr-icon shape="vm-bug"></clr-icon>
+                    <span class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div class="header-actions">
+                <a href="javascript://" class="nav-link nav-text">
+                    Log Out
+                </a>
             </div>
         </header>
     </div>
@@ -140,9 +162,17 @@
         &lt;/a&gt;
     &lt;/div&gt;
     &lt;div class=&quot;header-actions&quot;&gt;
-        &lt;a href=&quot;javascript://&quot; class=&quot;nav-link nav-icon&quot;&gt;
-            &lt;clr-icon shape=&quot;cog&quot;&gt;&lt;/clr-icon&gt;
-        &lt;/a&gt;
+        &lt;clr-dropdown class=&quot;dropdown bottom-right&quot;&gt;
+            &lt;button class=&quot;nav-icon&quot; clrDropdownToggle&gt;
+                &lt;clr-icon shape=&quot;cog&quot;&gt;&lt;/clr-icon&gt;
+                &lt;clr-icon shape=&quot;caret&quot; class=&quot;icon-orient-down&quot;&gt;&lt;/clr-icon&gt;
+            &lt;/button&gt;
+            &lt;div class=&quot;dropdown-menu&quot;&gt;
+                &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;About&lt;/a&gt;
+                &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Preferences&lt;/a&gt;
+                &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Log out&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/clr-dropdown&gt;
     &lt;/div&gt;
 &lt;/header&gt;
 
@@ -167,17 +197,31 @@
         &lt;/label&gt;
     &lt;/form&gt;
     &lt;div class=&quot;header-actions&quot;&gt;
-        &lt;div class=&quot;dropdown bottom-right&quot;&gt;
-            &lt;button class=&quot;dropdown-toggle nav-icon&quot;&gt;
+        &lt;clr-dropdown class=&quot;dropdown bottom-right&quot;&gt;
+            &lt;button class=&quot;nav-icon&quot; clrDropdownToggle&gt;
                 &lt;clr-icon shape=&quot;user&quot;&gt;&lt;/clr-icon&gt;
                 &lt;clr-icon shape=&quot;caret&quot; class=&quot;icon-orient-down&quot;&gt;&lt;/clr-icon&gt;
             &lt;/button&gt;
             &lt;div class=&quot;dropdown-menu&quot;&gt;
-                &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot;&gt;About&lt;/a&gt;
-                &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot;&gt;Preferences&lt;/a&gt;
-                &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot;&gt;Logout&lt;/a&gt;
+                &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;About&lt;/a&gt;
+                &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Preferences&lt;/a&gt;
+                &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Log out&lt;/a&gt;
             &lt;/div&gt;
-        &lt;/div&gt;
+        &lt;/clr-dropdown&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;header class=&quot;header-6&quot;&gt;
+    &lt;div class=&quot;branding&quot;&gt;
+        &lt;a href=&quot;javascript://&quot; class=&quot;nav-link&quot;&gt;
+            &lt;clr-icon shape=&quot;vm-bug&quot;&gt;&lt;/clr-icon&gt;
+            &lt;span class=&quot;title&quot;&gt;Project Clarity&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;header-actions&quot;&gt;
+        &lt;a href=&quot;javascript://&quot; class=&quot;nav-link nav-text&quot;&gt;
+            Log Out
+        &lt;/a&gt;
     &lt;/div&gt;
 &lt;/header&gt;
 </code></pre>

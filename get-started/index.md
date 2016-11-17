@@ -109,21 +109,22 @@ Clarity is published as three separate packages on NPM:
 <li>Install the Clarity Icons package through npm:
 <pre>
     <code class="clr-code">
-    npm install clarity-icons
+    npm install clarity-icons --save
     </code>
 </pre>
 </li>
 <li>Install the polyfill for Custom Elements:
 <pre>
     <code class="clr-code">
-    npm install github:webcomponents/custom-elements.git#v1.0.0-alpha.3
+    npm install github:webcomponents/custom-elements.git#v1.0.0-alpha.3 --save
     </code>
 </pre>
 </li>
-<li>If your application supports IE10, the polyfill requires the MutationObserver shim to work. If your application does not support IE10, you can skip the following installation:
+<li>(Optional) If your application supports IE10, the polyfill requires the MutationObserver shim to work. If your 
+application does not support IE10, you can skip the following installation:
 <pre>
     <code class="clr-code">
-    npm install mutationobserver-shim@0.3.2
+    npm install mutationobserver-shim@0.3.2 --save
     </code>
 </pre>
 </li>
@@ -137,6 +138,24 @@ Include clarity-icons.min.css and clarity-icons.min.js in your HTML. Because cus
     &lt;script src=&quot;path/to/node_modules/clarity-icons/clarity-icons.min.js&quot;&gt;&lt;/script&gt;
     </code>
 </pre>
+If your site is built with <a href="https://github.com/angular/angular-cli">angular-cli</a> you can achieve the above by
+ adding the files to the styles array and scripts array in <code class="clr-code">angular-cli.json</code>:
+<pre>
+    <code class="clr-code">
+    "styles": [
+             ...
+             "../node_modules/clarity-icons/clarity-icons.min.css",
+             ...
+     ],
+     "scripts": [
+         ...
+         "../node_modules/mutationobserver-shim/dist/mutationobserver.min.js",
+         "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
+         "../node_modules/clarity-icons/clarity-icons.min.js"
+         ...
+     ]
+    </code>
+</pre>
 </li>
 </ol>
 
@@ -147,23 +166,26 @@ Include clarity-icons.min.css and clarity-icons.min.js in your HTML. Because cus
 <li>Install Clarity UI package through npm:
 <pre>
     <code class="clr-code">
-    npm install clarity-ui
+    npm install clarity-ui --save
     </code>
 </pre>
 </li>
-<li>Install FontAwesome:
-<pre>
-    <code class="clr-code">
-    npm install font-awesome
-    </code>
-</pre>
-</li>
-<li>Include font-awesome.css and clarity-ui.min.css in your HTML file:
+<li>Include clarity-ui.min.css in your HTML file:
 <pre>
     <code class="language-html">
-    &lt;link rel="stylesheet" href="path/to/node_modules/font-awesome/css/font-awesome.min.css"&gt;
     &lt;link rel="stylesheet" href="path/to/node_modules/clarity-ui/clarity-ui.min.css"&gt;    
 </code>
+</pre>
+If your site is built with <a href="https://github.com/angular/angular-cli">angular-cli</a> you can achieve the above by 
+adding the file to the styles array in <code class="clr-code">angular-cli.json</code>:
+<pre>
+    <code class="clr-code">
+    "styles": [
+         ...
+         "../node_modules/clarity-ui/clarity-ui.min.css",
+         ...
+     ]
+    </code>
 </pre>
 </li>
 <li>Write your HTML with the Clarity CSS class names and markup.</li>
@@ -178,7 +200,7 @@ Include clarity-icons.min.css and clarity-icons.min.js in your HTML. Because cus
 <li>Install the clarity-angular package through npm:
 <pre>
     <code class="clr-code">
-    npm install clarity-angular
+    npm install clarity-angular --save
     </code>
 </pre>
 </li>

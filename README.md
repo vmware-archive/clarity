@@ -22,17 +22,18 @@ If you already have an Angular 2 application, you can follow the installation st
 
 1. Install Clarity Icons package through npm:
     ```
-    npm install clarity-icons
+    npm install clarity-icons --save
     ```
 
-2. Install the polyfill for Custom Elements:
+2. Install the polyfill for Custom Elements: 
     ```
-    npm install github:webcomponents/custom-elements.git#v1.0.0-alpha.3
+    npm install github:webcomponents/custom-elements.git#v1.0.0-alpha.3 --save
     ```
 
-3. If your application supports IE10, the polyfill will require the MutationObserver shim to work. If your application doesn't support IE10, you can skip the following installation:
+3. (Optional) If your application supports IE10, the polyfill will require the MutationObserver shim to work. If your 
+application doesn't support IE10, you can skip the following installation:
     ```
-    npm install mutationobserver-shim@0.3.2
+    npm install mutationobserver-shim@0.3.2 --save
     ```
 
 4. Include the clarity-icons.min.css and clarity-icons.min.js in your HTML. As custom-elements.min.js is dependent on the Custom Elements polyfill, make sure to include it before clarity-icons.min.js. Also, if your app needs to support IE10, include the mutationobserver.min.js before the polyfill:
@@ -44,49 +45,56 @@ If you already have an Angular 2 application, you can follow the installation st
     <script src="path/to/node_modules/clarity-icons/clarity-icons.min.js"></script>
     ```
 
+    If your site is built with [angular-cli](https://github.com/angular/angular-cli) you can achieve the above by adding the files to the styles array and 
+    scripts array in `angular-cli.json`:
+    ```
+    "styles": [
+        ...
+        "../node_modules/clarity-icons/clarity-icons.min.css",
+        ...
+    ],
+    "scripts": [
+        ...
+        "../node_modules/mutationobserver-shim/dist/mutationobserver.min.js",
+        "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
+        "../node_modules/clarity-icons/clarity-icons.min.js"
+        ...
+    ]
+    ```
+
 ### Installing Clarity UI
 
 1. Install Clarity UI package through npm:
     ```
-    npm install clarity-ui
+    npm install clarity-ui --save
     ```
 
-2. Install Clarity Icons package through npm:
-    ```
-    npm install clarity-icons
-    ```
-
-3. Include the clarity-ui.min.css and clarity-icons.min.css in your HTML file:
+2. Include the clarity-ui.min.css in your HTML file:
     ```
     <link rel="stylesheet" href="path/to/node_modules/clarity-ui/clarity-ui.min.css">
-    <link rel="stylesheet" href="path/to/node_modules/clarity-icons/clarity-icons.min.css">
     ```
 
-4. Include the clarity-icons.min.js in your HTML file:
+    If your site is built with [angular-cli](https://github.com/angular/angular-cli), you can achieve the above by adding the file to the styles array in 
+    `angular-cli.json`:
     ```
-    <script src="path/to/node_modules/clarity-icons/clarity-icons.min.js"></script>
+    "styles": [
+        ...
+        "../node_modules/clarity-ui/clarity-ui.min.css"
+        ...
+    ]
     ```
 
-5. Write your HTML with the Clarity CSS class names and markup.
+3. Write your HTML with the Clarity CSS class names and markup.
 
 ### Installing Clarity Angular
 
-1. Install Clarity Icons package through npm:
+1. Follow steps above to install Clarity Icons and Clarity UI.
+2. Install the clarity-angular package through npm:
     ```
-    npm install clarity-icons
-    ```
-
-2. Install Clarity UI package through npm:
-    ```
-    npm install clarity-ui
+    npm install clarity-angular --save
     ```
 
-3. Install the clarity-angular package through npm:
-    ```
-    npm install clarity-angular
-    ```
-
-4. Import the ClarityModule into your Angular 2 application's module.  Your application's main module might look like this:
+3. Import the ClarityModule into your Angular 2 application's module.  Your application's main module might look like this:
     ```
     import { NgModule } from '@angular/core';
     import { BrowserModule } from '@angular/platform-browser';

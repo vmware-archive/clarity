@@ -491,7 +491,7 @@ $clr-progress-bgColor: $clr-light-gray !default;
     $clr-progressInline__inCard-height: rem(8/15);
     .card-block .progress-block {
         margin-bottom: $clr_baselineRem_0_5;
-        padding: 0 $clr_baselineRem_0_75;
+        padding: 0;
 
         &:last-child {
             margin-bottom: 0;

@@ -31,6 +31,8 @@ $clr-alert-sm-bottom-padding: $clr_baselineRem_0_125 !default;
 $clr-alert-sm-item-top-margin: $clr-alert-sm-bottom-padding - $clr-alert-sm-top-padding !default;
 $clr-alert-sm-item-min-height: $clr-icon-dimension-sm !default;
 
+$clr-alert-text-line-height: rem(16/$clr-rem-denominator);
+
 $clr-alert-colors: (
         info: (
                 background: $clr-action-blue-lightest,
@@ -101,7 +103,7 @@ $clr-alert-colors: (
 
     .alert {
         @include clr-getTypePropertiesForDomElement(alert_text, (font-size, letter-spacing));
-        line-height: rem(16/$clr-rem-denominator);
+        line-height: $clr-alert-text-line-height;
         position: relative;
         box-sizing: border-box;
         display: flex;
@@ -312,7 +314,7 @@ $clr-alert-colors: (
     .alert {
         &.alert-sm {
             @include clr-getTypePropertiesForDomElement(alert-small_text, (font-size, letter-spacing));
-            line-height: $clr-alert-sm-font-size;
+            line-height: $clr-alert-text-line-height;
 
             min-height: $clr-alert-item-min-height;
             //Rigth padding same as regular alert to factor in the close button

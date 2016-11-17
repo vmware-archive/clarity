@@ -22,6 +22,8 @@ $clr-header-nav-opactiy: 0.65;
 $clr-header-nav-hover-opacity: 1;
 $clr-header-outline-offset: -5px;
 $clr-header-clarity-icons-size: $clr_baselineRem_1;
+$clr-header-dropdown-caret-distance: 2px;
+$clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
 
 @mixin header-section-divider() {
     display: inline-block;
@@ -49,6 +51,16 @@ $clr-header-clarity-icons-size: $clr_baselineRem_1;
 };
 
 @mixin generate-nav-link-styles() {
+    .nav-text {
+        padding: 0 $clr-header-nav-text-horizontal-padding;
+        font-weight: 500;
+    }
+
+    .nav-icon {
+        height: $clr-header-height;
+        width: $clr-header-height;
+    }
+
     .nav-link {
         position: relative;
         display: inline-block;
@@ -71,13 +83,6 @@ $clr-header-clarity-icons-size: $clr_baselineRem_1;
             text-align: center;
         }
 
-        //nav-icons
-        &.nav-icon,
-        .nav-icon {
-            height: $clr-header-height;
-            width: $clr-header-height;
-        }
-
         clr-icon {
             position: absolute;
             top: 50%;
@@ -85,13 +90,6 @@ $clr-header-clarity-icons-size: $clr_baselineRem_1;
             transform: translate(-50%,-50%);
             height: $clr-header-clarity-icons-size;
             width: $clr-header-clarity-icons-size;
-        }
-
-        //text-link
-        &.nav-text,
-        .nav-text {
-            padding: 0 $clr_baselineRem_1;
-            font-weight: 500;
         }
 
         //.nav-text acts like the alt attribute for screens where responsiveness kicks in.
@@ -322,15 +320,6 @@ $clr-header-clarity-icons-size: $clr_baselineRem_1;
             & > .dropdown {
                 $clr-header-action-caret-icon-right-position: $clr_baselineRem_0_5;
 
-                .dropdown-toggle.nav-text {
-                    padding: 0 $clr_baselineRem_1;
-                }
-
-                .dropdown-toggle.nav-icon {
-                    width: $clr-header-height;
-                    padding-right: 0;
-                }
-
                 & > .dropdown-toggle {
                     position: relative;
                     line-height: $clr-header-height;
@@ -349,15 +338,29 @@ $clr-header-clarity-icons-size: $clr_baselineRem_1;
                     height: $clr-header-clarity-icons-size - 2;
                     width: $clr-header-clarity-icons-size - 2;
                     //2px is the distance between the caret and the icon
-                    right: ($clr-dropdown-caret-icon-dimension + $clr-header-action-caret-icon-right-position + 2px);
+                    right: ($clr-dropdown-caret-icon-dimension + $clr-header-action-caret-icon-right-position + $clr-header-dropdown-caret-distance);
                 }
 
-                .dropdown-toggle:not(.btn) clr-icon[shape="caret"] {
+                .dropdown-toggle.nav-icon clr-icon[shape="caret"] {
                     left: auto;
                     right: $clr-header-action-caret-icon-right-position;
                     height: $clr-dropdown-caret-icon-dimension;
                     width: $clr-dropdown-caret-icon-dimension;
                     margin-left: 0;
+                }
+
+                $dropdown-nav-text-dist: $clr-header-nav-text-horizontal-padding + $clr-dropdown-caret-icon-dimension + $clr-header-dropdown-caret-distance;
+                .dropdown-toggle.nav-text {
+                    padding: 0 $dropdown-nav-text-dist 0 $clr-header-nav-text-horizontal-padding;
+
+                    clr-icon[shape="caret"] {
+                        right: $clr-header-nav-text-horizontal-padding;
+                    }
+                }
+
+                .dropdown-toggle.nav-icon {
+                    width: $clr-header-height;
+                    padding-right: 0;
                 }
 
                 //Pull the dropdown menus of all dropdowns up to compensate

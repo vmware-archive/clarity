@@ -1,6 +1,6 @@
 {
   "name": "clarity-all",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "private": true,
   "dependencies": {
     "@angular/common": "2.2.0",

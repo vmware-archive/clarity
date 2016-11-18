@@ -16,7 +16,8 @@ import {Selection} from "./providers/selection";
     `,
     host: {
         "[class.datagrid-row]": "true",
-        "[class.datagrid-selected]": "selected"
+        "[class.datagrid-selected]": "selected",
+        "(click)": "toggleSelection($event.target)"
     }
 })
 export class DatagridRow {
@@ -35,5 +36,15 @@ export class DatagridRow {
     }
     public set selected(value: boolean) {
         this.selection.setSelected(this.item, value);
+    }
+
+    /**
+     * Select / Unselect while click on row
+     */
+    public toggleSelection(element: HTMLElement) {
+        if (this.selection.selectable && element.nodeName !== "INPUT") {
+            this.selected = !this.selected;
+            return false;
+        }
     }
 }

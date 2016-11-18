@@ -58,6 +58,20 @@ export default function(): void {
             expect(selectionProvider.current).toEqual([]);
         });
 
+        it("selects the model when the row is clicked", function () {
+            selectionProvider.selectable = true;
+            context.testComponent.item = {id: 1};
+            context.detectChanges();
+            let row = context.clarityElement;
+            expect(selectionProvider.current).toEqual([]);
+            row.click();
+            context.detectChanges();
+            expect(selectionProvider.current).toEqual([context.testComponent.item]);
+            row.click();
+            context.detectChanges();
+            expect(selectionProvider.current).toEqual([]);
+        });
+
         it("adds the .datagrid-selected class to the host when the row is selected", function() {
             selectionProvider.selectable = true;
             context.testComponent.item = {id: 1};

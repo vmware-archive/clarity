@@ -11,7 +11,7 @@
     "@angular/platform-browser-dynamic": "2.2.0",
     "@angular/router": "3.2.0",
     "@angular/upgrade": "2.2.0",
-    "@webcomponents/custom-elements": "github:webcomponents/custom-elements",
+    "@webcomponents/custom-elements": "1.0.0-alpha.3",
     "angular": "1.5.x",
     "core-js": "^2.4.0",
     "font-awesome": "^4.5.0",

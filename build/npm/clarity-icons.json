@@ -9,7 +9,7 @@
     },
     "peerDependencies": {
         "mutationobserver-shim": "^0.3.2",
-        "@webcomponents/custom-elements": "github:webcomponents/custom-elements.git#v1.0.0-alpha.3"
+        "@webcomponents/custom-elements": "1.0.0-alpha.3"
     },
     //@exclude
     "scripts": {

@@ -71,8 +71,7 @@
             "core": -1,
             "ng": 20,
             "dox": 20,
-            "isUpdated": true,
-            "comments": "New angular component added"
+            "comments": false
         },
         {
             "url": "/documentation/code-highlight",
@@ -136,7 +135,6 @@
             "core": -1,
             "ng": 20,
             "dox": 20,
-            "isUpdated": true,
             "comments": false
         },
         {
@@ -169,7 +167,6 @@
             "core": -1,
             "ng": 20,
             "dox": 20,
-            "isUpdated": true,
             "comments": "Search and Header Actions are under implementation"
         },
         {
@@ -181,8 +178,7 @@
             "core": 20,
             "ng": -1,
             "dox": 20,
-            "isUpdated": true,
-            "comments": "Clarity Icons replaces Font Awesome; New size attribute added"
+            "comments": false
         },
         {
             "url": "/documentation/input-fields",

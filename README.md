@@ -112,7 +112,26 @@ application doesn't support IE10, you can skip the following installation:
     })
     export class AppModule {    }
     ```
-
+    
+    If your application uses [systemjs](https://github.com/systemjs/systemjs), add the clarity-angular configurations
+    . If your application already has packages setting for `rxjs` but doesn't have the `main` file, add it in as shown 
+    below.
+    ```
+    System.config({
+    	...
+    	map: {
+    	   ...
+    	   'clarity-angular': 'node_modules/clarity-angular',
+    	},
+    	packages: {
+            ...
+            'rxjs' : { main: 'Rx.js', defaultExtension: 'js' },
+            'clarity-angular' : { main: './index.js', defaultExtension: 'js' }
+    	}
+    	...
+    });
+    ```
+    
 ## Documentation
 
 For documentation on the Clarity Design System, including a list of components and example usage, see [our website](https://vmware.github.io/clarity).

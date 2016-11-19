@@ -50,7 +50,7 @@ For a new project, the best approach is to clone the Clarity seed project and mo
 <li>Clone the seed app:
 <pre>
     <code class="clr-code">
-    git@github.com:vmware/clarity-seed.git
+    git clone https://github.com/vmware/clarity-seed.git
     </code>
 </pre>
 </li>

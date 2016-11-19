@@ -268,7 +268,7 @@ body.layout-documentation {
     border-top-color: #ccc !important;
 }
 
-@media (max-width: 768) {
+@media (max-width: 768px) {
     .layout-documentation .clrweb-wizardsteps-block {
         h4:first-child {
             margin-top: 24px;
@@ -276,10 +276,29 @@ body.layout-documentation {
     }
 }
 
+@media (max-width: 767px) {
+    .component-workstream-bugs {
+        display: none;
+    }
+}
+
 
 @media (max-width: 991px) {
     .layout-documentation .component-legend-item {
         width: 108px;
+    }
+}
+
+@media (max-width: 415px) {
+    .layout-documentation {
+        h1 {
+            font-size: 28px;
+            line-height: $bl-1_5;
+        }
+
+        h1 + p {
+            margin-top: $bl-0_5;
+        }
     }
 }
 
@@ -303,11 +322,6 @@ body.layout-documentation {
             padding-top: 0;
         }
     }
-
-    .component-workstream-bugs {
-        display: none;
-    }
-
 }
 
 @media (max-width: 991px) {

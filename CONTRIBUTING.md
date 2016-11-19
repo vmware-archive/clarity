@@ -7,6 +7,7 @@ Before you start working with Clarity, please complete the following steps:
 
 - Read our [code of conduct](/CODE_OF_CONDUCT.md).
 - Read our [Developer Certificate of Origin](https://cla.vmware.com/dco). All contributions to this repository must be signed as described on that page. Your signature certifies that you wrote the patch or have the right to pass it on as an open-source patch.
+- Read our [coding guidelines](/CODING_GUIDELINES.md).
 
 ## Contribution Flow
 
@@ -18,6 +19,7 @@ Here are the typical steps in a contributor's workflow:
 - Create a topic branch from where you want to base your work.
 - Setup your local environment to run and build Clarity. See our [build documentation](BUILD.md).
 - Make commits of logical units.
+- Make sure `npm test` passes for each of them.
 - Make sure your commit messages are in the proper format (see below).
 - Push your changes to a topic branch in your fork of the repository.
 - [Submit a pull request](https://help.github.com/articles/about-pull-requests/).
@@ -41,7 +43,8 @@ git remote add upstream https://github.com/vmware/clarity.git
 # Create a topic branch for your changes
 git checkout -b my-new-feature master
 
-# After making the desired changes, commit and push to your fork
+# After making the desired changes, test, commit and push to your fork
+npm test
 git commit -a -s
 git push origin my-new-feature
 ```
@@ -115,7 +118,7 @@ These documents provide guidance creating a well-crafted commit message:
 
 You can submit an issue or a bug to our [GitHub repository](https://github.com/vmware/clarity/issues).  You must provide:
 
-* The link to the reproduction scenario you created using [http://plnkr.com](http://plnkr.com)
+* The link to the reproduction scenario you created using [http://plnkr.co](http://plnkr.co)
 * The version number of Angular
 * The version number of Clarity
 * The browser name and version number

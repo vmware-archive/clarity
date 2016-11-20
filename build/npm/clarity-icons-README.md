@@ -7,7 +7,7 @@
 
 2. Install the polyfill for Custom Elements:
     ```
-    npm install github:webcomponents/custom-elements.git#v1.0.0-alpha.3
+    npm install @webcomponents/custom-elements@1.0.0-alpha.3
     ```
 
 3. If your application supports IE10, the polyfill will require the MutationObserver shim to work. If your application doesn't support IE10, you can skip the following installation:

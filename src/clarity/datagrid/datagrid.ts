@@ -142,7 +142,6 @@ export class Datagrid implements AfterViewInit, OnDestroy {
      * even if the last page has less items than the previous ones
      */
     get nbEmptyRows() {
-        console.log(this._rows.length);
         let rowsDisplayed = 0;
         if (this.items.displayed) {
             rowsDisplayed = this.items.displayed.length;

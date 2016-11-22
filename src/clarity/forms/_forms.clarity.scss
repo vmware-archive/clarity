@@ -9,17 +9,15 @@
 @import "../utils/layers.clarity";
 @import "../images/icons.clarity";
 
-$styledInputs: inputs("text", "password", "number", "email");
+$styledInputs: inputs("text", "password", "number", "email", "url");
 $styledInputs1: inputs("button","submit");
 
 $clr-form-field-border-color: $clr-dark-midtone-gray !default;
 $clr-form-field-background-color: $clr-action-blue-light-midtone !default;
 $clr-form-disabled-background-color: $clr-light-midtone-gray !default;
 $clr-form-field-disabled-color: $clr-gray !default;
-
 $clr-checkbox-radio-height: $clr-icon-dimension-sm !default;
 $clr-form-icon-dim: $clr-icon-dimension-sm !default;
-
 $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height) / 2 !default;
 
 //Standard Clarity Input Bottom Border Animation

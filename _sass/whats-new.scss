@@ -78,6 +78,7 @@ ul.whats-new-highlights {
     margin-top: $bl-0_5;
     padding-bottom: $bl-0_25;
     padding-top: $bl-0_5;
+    position: static;
 
     .summary-blocks {
         &::before, &::after {

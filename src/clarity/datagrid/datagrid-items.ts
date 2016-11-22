@@ -4,15 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {ChangeDetectorRef, Directive, DoCheck, Input, IterableDiffer, IterableDiffers,
-    TemplateRef, TrackByFn} from "@angular/core";
+    TemplateRef, TrackByFn, OnChanges, SimpleChanges} from "@angular/core";
 
 import {Items} from "./providers/items";
 
 @Directive({
     selector: "[clrDgItems][clrDgItemsOf]",
 })
-export class DatagridItems implements DoCheck {
-    private _rawItems: any[];
+export class DatagridItems implements OnChanges, DoCheck {
+    @Input("clrDgItemsOf") private rawItems: any[];
 
     private _differ: IterableDiffer;
 
@@ -21,11 +21,12 @@ export class DatagridItems implements DoCheck {
         _items.smartenUp();
     }
 
-    @Input("clrDgItemsOf")
-    public set items(rawItems: any[]) {
-        this._rawItems = rawItems;
-        if (rawItems) {
-            this._differ = this._differs.find(rawItems).create(this._changeDetector, this.trackBy);
+    ngOnChanges(changes: SimpleChanges): void {
+        if ("rawItems" in changes) {
+            const currentItems = changes["rawItems"].currentValue;
+            if (!this._differ && currentItems) {
+                this._differ = this._differs.find(currentItems).create(this._changeDetector, this.trackBy);
+            }
         }
     }
 
@@ -36,11 +37,11 @@ export class DatagridItems implements DoCheck {
 
     ngDoCheck() {
         if (this._differ) {
-            const changes = this._differ.diff(this._rawItems);
+            const changes = this._differ.diff(this.rawItems);
             if (changes) {
                 // TODO: not very efficient right now,
                 // but premature optimization is the root of all evil.
-                this._items.all = this._rawItems;
+                this._items.all = this.rawItems;
             }
         }
     }

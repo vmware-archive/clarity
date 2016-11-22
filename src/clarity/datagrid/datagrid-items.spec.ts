@@ -48,6 +48,9 @@ export default function(): void {
             this.testComponent.numbers[0] = 6;
             this.fixture.detectChanges();
             expect(this.itemsProvider.displayed).toEqual([6, 2, 3, 4, 5]);
+            this.testComponent.numbers = [];
+            this.fixture.detectChanges();
+            expect(this.itemsProvider.displayed).toEqual([]);
         });
 
         it("receives an input for the trackBy option", function () {

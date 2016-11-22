@@ -19,7 +19,7 @@
 
         <div class="datagrid-body">
             <template *ngIf="iterator"
-                      ngFor [ngForOf]="items.displayed" [ngForTrackBy]="items.trackBy"
+                      ngFor [ngForOf]="items.displayed" [ngForTrackBy]="iterator.trackBy"
                       [ngForTemplate]="iterator.template"></template>
             <ng-content *ngIf="!iterator"></ng-content>
         </div>

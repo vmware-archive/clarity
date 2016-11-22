@@ -115,16 +115,25 @@ export default function(): void {
         });
 
         describe("Iterators", function() {
+            it("projects rows when using ngFor", function () {
+                this.context = this.create(Datagrid, NgForTest);
+                let body = this.context.clarityElement.querySelector(".datagrid-body");
+                expect(body.textContent).toMatch(/1\s*1\s*2\s*4\s*3\s*9/);
+            });
+
             it("uses the rows template when using clrDgItems", function () {
                 this.context = this.create(Datagrid, FullTest);
                 let body = this.context.clarityElement.querySelector(".datagrid-body");
                 expect(body.textContent).toMatch(/1\s*1\s*2\s*4\s*3\s*9/);
             });
 
-            it("projects rows when using ngFor", function () {
-                this.context = this.create(Datagrid, NgForTest);
-                let body = this.context.clarityElement.querySelector(".datagrid-body");
-                expect(body.textContent).toMatch(/1\s*1\s*2\s*4\s*3\s*9/);
+            it("respects the trackBy option when using clrDgItems", function () {
+                this.context = this.create(Datagrid, TrackByTest);
+                let oldFirstRow = this.context.clarityElement.querySelector("clr-dg-row");
+                this.context.testComponent.items = [42];
+                this.context.detectChanges();
+                let newFirstRow = this.context.clarityElement.querySelector("clr-dg-row");
+                expect(newFirstRow).toBe(oldFirstRow);
             });
         });
 
@@ -177,6 +186,28 @@ class FullTest {
 })
 class NgForTest {
     items = [1, 2, 3];
+}
+
+@Component({
+    template: `
+    <clr-datagrid>
+        <clr-dg-column>First</clr-dg-column>
+        <clr-dg-column>Second</clr-dg-column>
+    
+        <clr-dg-row *clrDgItems="let item of items; trackBy: trackByIndex">
+            <clr-dg-cell>{{item}}</clr-dg-cell>
+            <clr-dg-cell>{{item * item}}</clr-dg-cell>
+        </clr-dg-row>
+    
+        <clr-dg-footer>{{items.length}} items</clr-dg-footer>
+    </clr-datagrid>
+`
+})
+class TrackByTest {
+    items = [1, 2, 3];
+    trackByIndex(index: number, item: any) {
+        return index;
+    }
 }
 
 class TestComparator implements Comparator<number> {

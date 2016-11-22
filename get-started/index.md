@@ -35,10 +35,7 @@ For the most complete integration with Clarity, consume the framework at the Ang
 {: #sketchTemplate}
 ### Using the Clarity Template for Sketch
 
-Jumpstart your project with the Clarity Sketch template, a library of components versioned alongside other products in Clarity’s ecosystem. To use with the Sketch template, install the open-source Metropolis font by Chris M. Simpson.  Clarity uses these font weights:  light, regular, semibold, and medium.
-
-- [Download the latest Sketch template]({{ site.baseurl }}{{ site.data.global.template_link }}){: target='_blank' }
-- [Download the Metropolis font](https://github.com/chrismsimpson/Metropolis){: target='_blank' }
+Jumpstart your project with the [Clarity Sketch template]({{ site.baseurl }}{{ site.data.global.template_link }}){: target='_blank' }, a library of components versioned alongside other products in Clarity’s ecosystem. To use with the template, install the [open-source Metropolis font](https://github.com/chrismsimpson/Metropolis){: target='_blank' } by Chris M. Simpson. Clarity uses these font weights: light, regular, semibold, and medium.
 
 {: #seedProjectClarity}
 ### Starting With a Clarity Seed Project (Recommended)
@@ -120,7 +117,7 @@ Clarity is published as three separate packages on NPM:
     </code>
 </pre>
 </li>
-<li>(Optional) If your application supports IE10, the polyfill requires the MutationObserver shim to work. If your 
+<li>(Optional) If your application supports IE10, the polyfill requires the MutationObserver shim to work. If your
 application does not support IE10, you can skip the following installation:
 <pre>
     <code class="clr-code">
@@ -176,7 +173,7 @@ If your site is built with <a href="https://github.com/angular/angular-cli">angu
     &lt;link rel="stylesheet" href="path/to/node_modules/clarity-ui/clarity-ui.min.css"&gt;    
 </code>
 </pre>
-If your site is built with <a href="https://github.com/angular/angular-cli">angular-cli</a> you can achieve the above by 
+If your site is built with <a href="https://github.com/angular/angular-cli">angular-cli</a> you can achieve the above by
 adding the file to the styles array in <code class="clr-code">angular-cli.json</code>:
 <pre>
     <code class="clr-code">

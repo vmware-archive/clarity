@@ -139,8 +139,7 @@ $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height
             & > label {
                 @include clr-getTypePropertiesForDomElement(form_block_label, (font-size, letter-spacing, font-weight));
                 color: $clr-black;
-                text-transform: uppercase;
-                margin-bottom: $clr_baselineRem_1;
+                margin-bottom: $clr_baselineRem_0_25;
             }
         }
 
@@ -619,7 +618,7 @@ $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height
             .form-block {
                 margin: $clr_baselineRem_0_5 0 $clr_baselineRem_1 0;
                 & > label {
-                    margin-bottom: $clr_baselineRem_0_5;
+                    margin-bottom: 0;
                 }
             }
 

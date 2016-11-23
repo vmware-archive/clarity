@@ -14,6 +14,7 @@ import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property
 import {DatagridStringFilter} from "./built-in/filters/datagrid-string-filter";
 import {DatagridItems} from "./datagrid-items";
 import {DatagridRow} from "./datagrid-row";
+import {DatagridPlaceholder} from "./datagrid-placeholder";
 import {State} from "./interfaces/state";
 import {Filters} from "./providers/filters";
 import {Items} from "./providers/items";
@@ -133,17 +134,9 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     }
 
     /**
-     * Number of empty rows to display to ensure we preserve a fixed height on the datagrid,
-     * even if the last page has less items than the previous ones
+     * Custom placeholder detection
      */
-    get nbEmptyRows() {
-        let rowsDisplayed = 0;
-        if (this.items.displayed) {
-            rowsDisplayed = this.items.displayed.length;
-        }
-        // Always leave space for at least 2 rows even if the datagrid isn't paginated
-        return Math.max(this.page.size, 2) - rowsDisplayed;
-    }
+    @ContentChild(DatagridPlaceholder) public placeholder: DatagridPlaceholder;
 
     /**
      * When the datagrid is user-managed without the smart iterator, we get the items displayed

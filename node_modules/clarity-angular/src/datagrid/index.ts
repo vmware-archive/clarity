@@ -14,6 +14,7 @@ import {DatagridFooter} from "./datagrid-footer";
 import {DatagridItems} from "./datagrid-items";
 import {DatagridPagination} from "./datagrid-pagination";
 import {DatagridRow} from "./datagrid-row";
+import {DatagridPlaceholder} from "./datagrid-placeholder";
 
 export * from "./datagrid";
 export * from "./datagrid-column";
@@ -23,6 +24,7 @@ export * from "./datagrid-row";
 export * from "./datagrid-cell";
 export * from "./datagrid-footer";
 export * from "./datagrid-pagination";
+export * from "./datagrid-placeholder";
 
 export * from "./interfaces/state";
 export * from "./interfaces/filter";
@@ -43,6 +45,7 @@ export const DATAGRID_DIRECTIVES: Type<any>[] = [
     DatagridCell,
     DatagridFooter,
     DatagridPagination,
+    DatagridPlaceholder,
 
     // Built-in shortcuts
     DatagridStringFilter

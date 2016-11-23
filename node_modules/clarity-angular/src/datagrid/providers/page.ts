@@ -107,6 +107,9 @@ export class Page {
      * Index of the first item displayed on the current page, starting at 0
      */
     public get firstItem(): number {
+        if (this.size === 0) {
+            return 0;
+        }
         return (this.current - 1) * this.size;
     }
 

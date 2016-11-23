@@ -122,9 +122,9 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 10,
-            "isNew": true,
-            "comments": "New datagrid angular component added"
+            "dox": 20,
+            "isUpdated": true,
+            "comments": "Empty state placeholder added"
         },
         {
             "url": "/documentation/dropdowns",
@@ -178,7 +178,8 @@
             "core": 20,
             "ng": -1,
             "dox": 20,
-            "comments": false
+            "isUpdated": true,
+            "comments": "Clarity Icons core set of 50 icons released!"
         },
         {
             "url": "/documentation/input-fields",
@@ -383,8 +384,7 @@
             "ui": 20,
             "core": 20,
             "ng": -1,
-            "dox": 20,
-            "comments": "New Metropolis font included with 0.6.0"
+            "dox": 20
         },
         {
             "url": "/documentation/wizards",

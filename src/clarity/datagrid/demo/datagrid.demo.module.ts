@@ -21,6 +21,7 @@ import {DatagridServerDrivenDemo} from "./server-driven/server-driven";
 import {DatagridSmartIteratorDemo} from "./smart-iterator/smart-iterator";
 import {DatagridSortingDemo} from "./sorting/sorting";
 import {DatagridStringFilteringDemo} from "./string-filtering/string-filtering";
+import {DatagridPlaceholderDemo} from "./placeholder/placeholder";
 
 import {ColorFilter} from "./utils/color-filter";
 import {Example} from "./utils/example";
@@ -46,6 +47,7 @@ import {Example} from "./utils/example";
         DatagridSmartIteratorDemo,
         DatagridSortingDemo,
         DatagridStringFilteringDemo,
+        DatagridPlaceholderDemo,
         ColorFilter,
         Example
     ],
@@ -62,6 +64,7 @@ import {Example} from "./utils/example";
         DatagridSmartIteratorDemo,
         DatagridSortingDemo,
         DatagridStringFilteringDemo,
+        DatagridPlaceholderDemo
     ]
 })
 export default class ModalDemoModule {

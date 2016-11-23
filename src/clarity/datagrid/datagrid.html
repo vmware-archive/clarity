@@ -24,12 +24,11 @@
             <ng-content *ngIf="!iterator"></ng-content>
         </div>
     </div>
-    <!--
-        I hate doing this, with these 36px being baselineRem(1.5) hardcoded here,
-        but I don't see a better solution right now.
-    -->
-    <div class="datagrid-placeholder" *ngIf="nbEmptyRows > 0"
-         [style.height]="(36*nbEmptyRows)+'px'"></div>
+
+    <!-- Custom placeholder overrides the default empty one -->
+    <ng-content select="clr-dg-placeholder"></ng-content>
+    <clr-dg-placeholder *ngIf="!placeholder"></clr-dg-placeholder>
+
     <!--
         This is not inside the table because there is no good way of having a single column span
         everything when using custom elements with display:table-cell.

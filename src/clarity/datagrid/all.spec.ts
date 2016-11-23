@@ -28,6 +28,7 @@ import NestedPropertySpec from "./built-in/nested-property.spec";
 import DatagridPropertyComparatorSpecs from "./built-in/comparators/datagrid-property-comparator.spec";
 import DatagridPropertyStringFilterSpecs from "./built-in/filters/datagrid-property-string-filter.spec";
 import DatagridStringFilterSpecs from "./built-in/filters/datagrid-string-filter.spec";
+import DatagridPlaceholderSpecs from "./datagrid-placeholder.spec";
 
 describe("Datagrid", function() {
     addHelpers();
@@ -47,6 +48,7 @@ describe("Datagrid", function() {
         DatagridRowSpecs();
         DatagridPaginationSpecs();
         DatagridFooterSpecs();
+        DatagridPlaceholderSpecs();
         DatagridSpecs();
     });
     describe("Built-in", function() {

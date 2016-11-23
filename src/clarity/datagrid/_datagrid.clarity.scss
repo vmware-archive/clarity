@@ -218,6 +218,27 @@
         border-top: 1px solid $clr-lighter-midtone-gray;
         border-left: $clr-table-borderstyle;
         border-right: $clr-table-borderstyle;
+        padding: $clr_baselineRem_0_5;
+
+        &.datagrid-empty {
+            border-top: 0;
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            justify-content: center;
+            font-size: clr-getTypePropertyValueForDomElement(datagrid_placeholder, font-size);
+            color: $clr-dark-midtone-gray;
+
+            .datagrid-placeholder-image {
+                width: $clr_baselineRem_2_5;
+                height: $clr_baselineRem_2_5;
+                margin-bottom: $clr_baselineRem_0_5;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                background-image: generateEmptyDatagridPlaceholder();
+            }
+        }
     }
 
     .datagrid-foot {

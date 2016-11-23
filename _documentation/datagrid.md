@@ -27,6 +27,8 @@ layout: documentation
 
 <clr-datagrid-server-driven-demo></clr-datagrid-server-driven-demo>
 
+<clr-datagrid-placeholder-demo></clr-datagrid-placeholder-demo>
+
 <clr-datagrid-full-demo></clr-datagrid-full-demo>
 
 {: #guidelines}

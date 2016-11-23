@@ -113,7 +113,7 @@ Clarity is published as three separate packages on NPM:
 <li>Install the polyfill for Custom Elements:
 <pre>
     <code class="clr-code">
-    npm install github:webcomponents/custom-elements.git#v1.0.0-alpha.3 --save
+    npm install @webcomponents/custom-elements@1.0.0-alpha.3 --save
     </code>
 </pre>
 </li>

@@ -93,6 +93,6 @@ export class Header implements OnDestroy, OnInit {
     }
 
     ngOnDestroy() {
-        this._subscription.unsubscribe();
+        if (this._subscription) { this._subscription.unsubscribe(); }
     }
 }

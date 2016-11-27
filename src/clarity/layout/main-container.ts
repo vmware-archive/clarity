@@ -63,6 +63,6 @@ export class MainContainer implements OnDestroy, OnInit {
     }
 
     ngOnDestroy() {
-        this._subscription.unsubscribe();
+        if (this._subscription) { this._subscription.unsubscribe(); }
     }
 }

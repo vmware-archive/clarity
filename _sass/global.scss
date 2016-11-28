@@ -220,6 +220,13 @@ header .branding .clr-vmw-logo {
     }
 }
 
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+     // landscape iPad
+    html {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
 body {
     &.layout-documentation, &.layout-get-started, &.layout-news {
         .main-container .content-container .content-area {

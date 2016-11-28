@@ -11,12 +11,11 @@ groups:
       enabled: true
       approve_regex: '^(Approved|:shipit:|:\+1:|LGTM)'
       reject_regex: '^(Rejected|:-1:)'
-    conditions:
-      branches:  # only need to review if merging into master
-        - master
     teams:
       - clarity-maintainers
     conditions:
+      branches:  # only need to review if merging into master
+          - master
       files:
         exclude:  # don't need to review if the PR only changes these files
           - ".pullapprove.yml"  # great for ensuring pullapprove settings are approved

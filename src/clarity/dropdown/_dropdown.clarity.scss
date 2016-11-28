@@ -89,7 +89,6 @@ $dropdown-white: clr-getColor(lightest);
             max-width: baselineRem(15);
             border-radius: $clr-default-borderradius;
             visibility: hidden;
-            transition: visibility 0.2s ease-in;
             z-index: map-get($clr-layers, dropdown-menu);
 
             .dropdown-header {

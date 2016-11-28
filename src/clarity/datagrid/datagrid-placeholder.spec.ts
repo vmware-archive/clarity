@@ -16,8 +16,8 @@ export default function(): void {
     describe("DatagridPlaceholder component", function() {
         describe("Typescript API", function() {
             beforeEach(function() {
-                this.itemsProvider = new Items();
                 this.pageProvider = new Page();
+                this.itemsProvider = new Items(null, null, this.pageProvider);
                 this.component = new DatagridPlaceholder(this.itemsProvider, this.pageProvider);
             });
 

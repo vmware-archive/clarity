@@ -341,7 +341,7 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
                     right: ($clr-dropdown-caret-icon-dimension + $clr-header-action-caret-icon-right-position + $clr-header-dropdown-caret-distance);
                 }
 
-                .dropdown-toggle.nav-icon clr-icon[shape="caret"] {
+                .dropdown-toggle.nav-icon clr-icon[shape^="caret"] {
                     left: auto;
                     right: $clr-header-action-caret-icon-right-position;
                     height: $clr-dropdown-caret-icon-dimension;
@@ -353,7 +353,7 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
                 .dropdown-toggle.nav-text {
                     padding: 0 $dropdown-nav-text-dist 0 $clr-header-nav-text-horizontal-padding;
 
-                    clr-icon[shape="caret"] {
+                    clr-icon[shape^="caret"] {
                         right: $clr-header-nav-text-horizontal-padding;
                     }
                 }

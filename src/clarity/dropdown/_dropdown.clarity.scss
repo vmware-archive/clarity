@@ -35,7 +35,7 @@ $dropdown-white: clr-getColor(lightest);
                 margin: 0;
             }
 
-            clr-icon[shape="caret"] {
+            clr-icon[shape^="caret"] {
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
@@ -48,7 +48,7 @@ $dropdown-white: clr-getColor(lightest);
             &.btn {
                 padding-right: $clr-button-horizontal-padding + $clr-dropdown-caret-icon-dimension + $clr-dropdown-caret-left-margin;
 
-                clr-icon[shape="caret"] {
+                clr-icon[shape^="caret"] {
                     right: $clr-button-horizontal-padding;
                 }
             }
@@ -56,7 +56,7 @@ $dropdown-white: clr-getColor(lightest);
             &:not(.btn) {
                 padding: 0 $clr-dropdown-caret-icon-dimension + $clr-dropdown-caret-left-margin 0 0;
 
-                clr-icon[shape="caret"] {
+                clr-icon[shape^="caret"] {
                     right: 0;
                 }
             }

@@ -15,7 +15,7 @@ import {ClarityModule} from "../clarity.module";
         <clr-dropdown [clrMenuPosition]="menuPosition" [clrCloseMenuOnItemClick]="menuClosable">
             <button class="btn btn-primary" type="button" clrDropdownToggle>
                 Dropdown
-                <clr-icon shape="caret" class="icon-orient-down"></clr-icon>
+                <clr-icon shape="caret down"></clr-icon>
             </button>
             <div class="dropdown-menu">
                 <label class="dropdown-header">Header</label>

@@ -35,7 +35,13 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     /**
      * Freezes the datagrid while data is loading
      */
-    @Input("clrDgLoading") public loading = false;
+    public get loading(): boolean {
+        return this.items.loading;
+    }
+    @Input("clrDgLoading")
+    public set loading(value: boolean) {
+        this.items.loading = value;
+    }
 
     /**
      * Output emitted whenever the data needs to be refreshed, based on user action or external ones

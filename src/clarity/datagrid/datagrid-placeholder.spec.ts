@@ -66,6 +66,12 @@ export default function(): void {
                 expect(context.clarityElement.textContent.trim()).toMatch("");
             });
 
+            it("is empty when the data is loading", function() {
+                itemsProvider.loading = true;
+                context.detectChanges();
+                expect(context.clarityElement.textContent.trim()).toMatch("");
+            });
+
             it("projects content when there are no items", function() {
                 expect(context.clarityElement.textContent.trim()).toMatch("Hello world");
             });

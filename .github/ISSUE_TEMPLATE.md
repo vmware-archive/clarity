@@ -13,7 +13,7 @@ PLEASE FILL OUT THE FOLLOWING. WE MAY CLOSE INCOMPLETE ISSUES.
 <!-- Describe the expected behavior. -->
 
 ### Actual behavior
-<!-- Describe the actual behavior. -->
+<!-- Describe the actual behavior and provide a minimal app that demonstrates the issue. Fork the Clarity Plunker Template here: https://plnkr.co/edit/VPxyl7?p=preview and recreate the issue. Then submit your link with the issue. -->
 
 ### Reproduction of behavior
 <!-- Include a working plunker link reproducing the behavior. -->

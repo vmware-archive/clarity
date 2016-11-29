@@ -15,6 +15,11 @@ export class Items {
     constructor(private _filters: Filters, private _sort: Sort, private _page: Page) {}
 
     /**
+     * Indicates if the data is currently loading
+     */
+    public loading = false;
+
+    /**
      * Subscriptions to the other providers changes.
      */
     private _filtersSub: Subscription;

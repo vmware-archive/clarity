@@ -250,6 +250,8 @@ The Clarity team welcomes contributions from the community.  See our [contributi
 
 Ongoing work and feature requests are tracked using [GitHub Issues](https://github.com/vmware/clarity/issues){: target='_blank' }. Please feel free to file an issue.
 
+When submitting issues please provide a minimal app that demonstrates the issue. Fork the [Clarity Plunker Template](https://plnkr.co/edit/VPxyl7?p=preview){: target='_blank' } and recreate the issue. Then submit your link with the issue.
+
 {: #attributions }
 ## Attributions
 

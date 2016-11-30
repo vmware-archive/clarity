@@ -73,97 +73,152 @@ programmatically calling next when the asynchronous validation call returns and 
     <thead>
     <tr>
         <th class="left">Input/Output</th>
-        <th>Values</th>
-        <th>Default</th>
+        <th class="hidden-xs-down">Values</th>
+        <th class="hidden-xs-down">Default</th>
         <th class="left">Effect</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-        <td class="left">[(clrWizardOpen)]</td>
-        <td>true, false</td>
-        <td>false</td>
+        <td class="left">
+            <b>[(clrWizardOpen)]</b>
+            <div class="hidden-sm-up">Type: Boolean</div>
+            <div class="hidden-sm-up">Default: false</div>
+        </td>
+        <td class="hidden-xs-down">true, false</td>
+        <td class="hidden-xs-down">false</td>
         <td class="left">
             Two-way binding on the state of the wizard: open or closed.
         </td>
     </tr>
     <tr>
-        <td class="left">(clrWizardOpenChanged)</td>
-        <td>true, false</td>
-        <td>N/A</td>
+        <td class="left">
+            <div class="hidden-xs-down"><b>(clrWizardOpenChanged)</b></div>
+            <div class="hidden-sm-up"><b>(clrWizard<br>OpenChanged)</b></div>
+            <div class="hidden-sm-up">Type: Boolean</div>
+        </td>
+        <td class="hidden-xs-down">true, false</td>
+        <td class="hidden-xs-down">N/A</td>
         <td class="left">
             Emits the state of the wizard when a wizard is open or closed.
         </td>
     </tr>
     <tr>
-        <td class="left">[clrWizardSize]</td>
-        <td>"md", "lg", "xl"</td>
-        <td>"xl"</td>
+        <td class="left">
+            <b>[clrWizardSize]</b>
+            <div class="hidden-sm-up">Values: "md", "lg", "xl"</div>
+            <div class="hidden-sm-up">Default: "xl"</div>
+        </td>
+        <td class="hidden-xs-down">"md", "lg", "xl"</td>
+        <td class="hidden-xs-down">"xl"</td>
         <td class="left">Sets the size of the wizard.</td>
     </tr>
     <tr>
-        <td class="left">[clrWizardStepId]</td>
-        <td>&lt;any valid id for html element&gt;</td>
-        <td>auto-generated</td>
         <td class="left">
-            Used on &lt;clr-wizard-step&gt;. If explicitly set, will assign the set id as the id for the
-            element. If not set, the component will auto-generate the id. You can skip or unskip a step in the
+            <b>[clrWizardStepId]</b>
+            <div class="hidden-sm-up">Values:<br>&lt;any valid id for html element&gt;</div>
+            <div class="hidden-sm-up">Default: auto-generated</div>
+        </td>
+        <td class="hidden-xs-down">&lt;any valid id for html element&gt;</td>
+        <td class="hidden-xs-down">auto-generated</td>
+        <td class="left">
+            Used on &lt;clr-wizard-step&gt;. If explicitly set, will assign the
+            set id as the id for the element. If not set, the component will
+            auto-generate the id. You can skip or unskip a step in the
             wizard by passing in the id to wizard's skipTab an unSkipTab methods.
         </td>
     </tr>
 
     <tr>
-        <td class="left">[clrWizardStepIsSkipped]</td>
-        <td>true, false</td>
-        <td>false</td>
         <td class="left">
-            Used on &lt;clr-wizard-step&gt;. If true, the wizard will skip this step and not display it.
+            <div class="hidden-xs-down"><b>[clrWizardStepIsSkipped]</b></div>
+            <div class="hidden-sm-up"><b>[clrWizard<br>StepIsSkipped]</b></div>
+            <div class="hidden-sm-up">Type: Boolean</div>
+            <div class="hidden-sm-up">Default: false</div>
+        </td>
+        <td class="hidden-xs-down">true, false</td>
+        <td class="hidden-xs-down">false</td>
+        <td class="left">
+            Used on &lt;clr-wizard-step&gt;. If true, the wizard will skip this
+            step and not display it.
         </td>
     </tr>
     <tr>
-        <td class="left">[clrWizardPageErrorFlag]</td>
-        <td>true, false</td>
-        <td>false</td>
         <td class="left">
-            Used on &lt;clr-wizard-page&gt;. If true, signifies that there was an error on the wizard page.
+            <div class="hidden-xs-down"><b>[clrWizardPageErrorFlag]</b></div>
+            <div class="hidden-sm-up"><b>[clrWizard<br>PageErrorFlag]</b></div>
+            <div class="hidden-sm-up">Type: Boolean</div>
+            <div class="hidden-sm-up">Default: false</div>
+        </td>
+        <td class="hidden-xs-down">true, false</td>
+        <td class="hidden-xs-down">false</td>
+        <td class="left">
+            Used on &lt;clr-wizard-page&gt;. If true, signifies that there was
+            an error on the wizard page.
         </td>
     </tr>
     <tr>
-        <td class="left">[clrWizardPageIsSkipped]</td>
-        <td>true, false</td>
-        <td>false</td>
         <td class="left">
-            Used on &lt;clr-wizard-page&gt;. If true, the wizard will skip this page and not display it.
+            <div class="hidden-xs-down"><b>[clrWizardPageIsSkipped]</b></div>
+            <div class="hidden-sm-up"><b>[clrWizard<br>PageIsSkipped]</b></div>
+            <div class="hidden-sm-up">Type: Boolean</div>
+            <div class="hidden-sm-up">Default: false</div>
+        </td>
+        <td class="hidden-xs-down">true, false</td>
+        <td class="hidden-xs-down">false</td>
+        <td class="left">
+            Used on &lt;clr-wizard-page&gt;. If true, the wizard will skip this
+            page and not display it.
         </td>
     </tr>
     <tr>
-        <td class="left">[clrWizardPageNextDisabled]</td>
-        <td>true, false</td>
-        <td>false</td>
         <td class="left">
-            Used on &lt;clr-wizard-page&gt;. If true, the wizard's next or finish button will be disabled.
+            <div class="hidden-xs-down"><b>[clrWizardPageNextDisabled]</b></div>
+            <div class="hidden-sm-up"><b>[clrWizard<br>PageNext<br>Disabled]</b></div>
+            <div class="hidden-sm-up">Type: Boolean</div>
+            <div class="hidden-sm-up">Default: false</div>
+        </td>
+        <td class="hidden-xs-down">true, false</td>
+        <td class="hidden-xs-down">false</td>
+        <td class="left">
+            Used on &lt;clr-wizard-page&gt;. If true, the wizard's next or
+            finish button will be disabled.
         </td>
     </tr>
     <tr>
-        <td class="left">(clrWizardPageNextDisabledChanged)</td>
-        <td>any</td>
-        <td>N/A</td>
         <td class="left">
-            Emits the state of the wizard page when the nextDisabled status changes.
+            <div class="hidden-xs-down"><b>(clrWizardPageNextDisabledChanged)</b></div>
+            <div class="hidden-sm-up"><b>(clrWizard<br>PageNext<br>DisabledChanged)</b></div>
+            <div class="hidden-sm-up">Type: Any</div>
+        </td>
+        <td class="hidden-xs-down">any</td>
+        <td class="hidden-xs-down">N/A</td>
+        <td class="left">
+            Emits the state of the wizard page when the nextDisabled status
+            changes.
         </td>
     </tr>
     <tr>
-        <td class="left">(clrWizardPageOnCommit)</td>
-        <td>any</td>
-        <td>N/A</td>
         <td class="left">
-            Emits an event when the next or finish button is clicked on the wizard page.
+            <div class="hidden-xs-down"><b>(clrWizardPageOnCommit)</b></div>
+            <div class="hidden-sm-up"><b>(clrWizardPage<br>OnCommit)</b></div>
+            <div class="hidden-sm-up">Type: Any</div>
+        </td>
+        <td class="hidden-xs-down">any</td>
+        <td class="hidden-xs-down">N/A</td>
+        <td class="left">
+            Emits an event when the next or finish button is clicked on the
+            wizard page.
         </td>
     </tr>
     <tr>
-        <td class="left">(clrWizardPageOnLoad)</td>
-        <td>any</td>
-        <td>N/A</td>
+        <td class="left">
+            <div class="hidden-xs-down"><b>(clrWizardPageOnLoad)</b></div>
+            <div class="hidden-sm-up"><b>(clrWizard<br>PageOnLoad)</b></div>
+            <div class="hidden-sm-up">Type: Any</div>
+        </td>
+        <td class="hidden-xs-down">any</td>
+        <td class="hidden-xs-down">N/A</td>
         <td class="left">
             Emits an event when loading the wizard page.
         </td>

@@ -7,11 +7,11 @@ layout: documentation
 {: .component-summary }
 ##### A grid provides a structure of rows and columns for aligning content. Grids are useful because they help create a familiar and easily navigable structure for content.
 
-Clarity uses the [Bootstrap 4 Flex Grid](http://v4-alpha.getbootstrap.com/layout/grid/).  This is a 12-column, responsive grid, per the Bootstrap documentation shown in the following table:
+Clarity uses the [Bootstrap 4 Flex Grid](http://v4-alpha.getbootstrap.com/layout/grid/).  This is a 12-column, responsive grid, per the Bootstrap documentation shown below:
 
 <div class="row">
     <div class="col-xs-12">
-        <table class="table">
+        <table class="table hidden-xs-down">
             <thead>
                 <tr>
                     <th class="left"></th>
@@ -66,6 +66,73 @@ Clarity uses the [Bootstrap 4 Flex Grid](http://v4-alpha.getbootstrap.com/layout
                 </tr>
             </tbody>
         </table>
+
+        <div class="hidden-sm-up">
+            <p>
+                <b>Grid Behavior</b><br>
+                Horizontal for extra-small (xs). All other breakpoints are
+                collapsed to start, then horizontal above the breakpoint.
+            </p>
+
+            <p>
+                <b>Common Properties</b>
+            </p>
+
+            <ul class="list">
+                <li>Number of columns: 12</li>
+                <li>Gutter width: 24px (12px on the left and right of column)</li>
+                <li>All columns support nesting, offsets, and column order</li>
+            </ul>
+
+            <table class="table-vertical table">
+                <tr>
+                    <th>
+                        Extra small<br>
+                        &lt; 544px
+                    </th>
+                    <td>
+                        <code class="clr-code">.col-xs-</code>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Small<br>
+                        &ge; 544px
+                    </th>
+                    <td>
+                        <code class="clr-code">.col-sm-</code>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Medium<br>
+                        &ge; 768px
+                    </th>
+                    <td>
+                        <code class="clr-code">.col-md-</code>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Large<br>
+                        &ge; 992px
+                    </th>
+                    <td>
+                        <code class="clr-code">.col-lg-</code>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Extra large<br>
+                        &ge; 1200px
+                    </th>
+                    <td>
+                        <code class="clr-code">.col-xl-</code>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
     </div>
 </div>
 

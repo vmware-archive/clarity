@@ -76,7 +76,11 @@ This collection maps Clarity components and DOM containers to their expected typ
 
 Clarity uses SASS mixins to make it easier to access the type properties in the variables and collections listed above. The typography mixins return full CSS style definitions. They are intended to be used inside SASS/SCSS style declarations, placeholders, or other mixins.
 
+{: .hidden-xs-down}
 ###### clr-getTypeProperties($element, $whichTypeProperties)
+
+{: .hidden-sm-up}
+###### clr-getTypeProperties
 
 Returns specified styles (from <code>$whichTypeProperties</code> list parameter) for all styles from the designated typographic element (h1..h6 or p1..p8).
 
@@ -87,23 +91,26 @@ Returns specified styles (from <code>$whichTypeProperties</code> list parameter)
     <thead>
         <tr>
             <th class="left">Parameter</th>
-            <th class="left">Optional</th>
+            <th class="left hidden-xs-down">Optional</th>
             <th class="left">Purpose</th>
-            <th class="left">Default</th>
+            <th class="left hidden-xs-down">Default</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td class="left">$element</td>
-            <td class="left">No</td>
+            <td class="left hidden-xs-down">No</td>
             <td class="left">Key for the typographic properties in the <code class="clr-code">$clr-elements</code> map. <code class="clr-code">h1..h6</code> or <code class="clr-code">p1..p8</code></td>
-            <td class="left">&nbsp;</td>
+            <td class="left hidden-xs-down">&nbsp;</td>
         </tr>
         <tr>
-            <td class="left">$whichTypeProperties</td>
-            <td class="left">Yes</td>
+            <td class="left">
+                $whichTypeProperties
+                <div class="hidden-sm-up">(Optional)</div>
+            </td>
+            <td class="left hidden-xs-down">Yes</td>
             <td class="left">A list of font style properties like <code class="clr-code">(font-weight, line-height)</code>. If empty, all properties will be returned.</td>
-            <td class="left">An empty list</td>
+            <td class="left hidden-xs-down">An empty list</td>
         </tr>
     </tbody>
 </table>
@@ -143,7 +150,11 @@ Returns specified styles (from <code>$whichTypeProperties</code> list parameter)
 </code>
 </pre>
 
+{: .hidden-xs-down}
 ###### clr-getTypePropertiesForDomElement($element-label, $typePropertiesToGet)
+
+{: .hidden-sm-up}
+###### clr-getTypePropertiesForDomElement
 
 An include that abstracts the clr-getTypeProperties mixin so that users can look up typography based on how it is used in Clarity.
 
@@ -154,23 +165,26 @@ An include that abstracts the clr-getTypeProperties mixin so that users can look
     <thead>
         <tr>
             <th class="left">Parameter</th>
-            <th class="left">Optional</th>
+            <th class="left hidden-xs-down">Optional</th>
             <th class="left">Purpose</th>
-            <th class="left">Default</th>
+            <th class="left hidden-xs-down">Default</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td class="left">$element-label</td>
-            <td class="left">No</td>
+            <td class="left hidden-xs-down">No</td>
             <td class="left">Key/label for the element as found in the <code class="clr-code">$clr-typography-dom-to-type-element</code> map. Existing labels can be found in the <em>Use For</em> column of the header and body text tables above.</td>
-            <td class="left">&nbsp;</td>
+            <td class="left hidden-xs-down">&nbsp;</td>
         </tr>
         <tr>
-            <td class="left">$typePropertiesToGet</td>
-            <td class="left">Yes</td>
+            <td class="left">
+                $typePropertiesToGet
+                <div class="hidden-sm-up">(Optional)</div>
+            </td>
+            <td class="left hidden-xs-down">Yes</td>
             <td class="left">A list of font style properties like <code class="clr-code">(font-weight, line-height)</code>. If empty, all properties will be returned.</td>
-            <td class="left">An empty list</td>
+            <td class="left hidden-xs-down">An empty list</td>
         </tr>
     </tbody>
 </table>
@@ -216,7 +230,11 @@ An include that abstracts the clr-getTypeProperties mixin so that users can look
 
 Clarity also includes functions that allow you to access typographic properties to assign them to your own style properties or SASS variables.
 
+{: .hidden-xs-down}
 ###### clr-getTypePropertyValue($element-label, $valToGet)
+
+{:hidden-sm-up}
+###### clr-getTypePropertyValue
 
 Returns specified style value (from <code>$valToGet</code>) from styles for the designated typographic element (h1..h6 or p1..p8). Returns an empty string <code>""</code> if the typographic element does not have the style for which it was asked or if it is passed invalid values.
 
@@ -227,19 +245,19 @@ Returns specified style value (from <code>$valToGet</code>) from styles for the 
     <thead>
         <tr>
             <th class="left">Parameter</th>
-            <th class="left">Optional</th>
+            <th class="left hidden-xs-down">Optional</th>
             <th class="left">Purpose</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td class="left">$element-label</td>
-            <td class="left">No</td>
+            <td class="left hidden-xs-down">No</td>
             <td class="left">Key for the typographic properties in the <code class="clr-code">$clr-elements</code> map. <code class="clr-code">h1..h6</code> or <code class="clr-code">p1..p8</code></td>
         </tr>
         <tr>
             <td class="left">$valToGet</td>
-            <td class="left">No</td>
+            <td class="left hidden-xs-down">No</td>
             <td class="left">A CSS style property from the list of font style properties like <code class="clr-code">font-size</code>, <code class="clr-code">font-weight</code>, etc.</td>
         </tr>
     </tbody>
@@ -265,7 +283,11 @@ Returns specified style value (from <code>$valToGet</code>) from styles for the 
 </code>
 </pre>
 
+{: .hidden-xs-down}
 ###### clr-getTypePropertyValueForDomElement($element-label, $valToGet)
+
+{: .hidden-sm-up}
+###### clr-getTypePropertyValueForDomElement
 
 This SASS function serves as an abstraction of the <code>clr-getTypePropertyValue</code> above. It performs a lookup against the <code>$clr-typography-dom-to-type-element</code> map so that users can use more familiar component/DOM element labels (as listed in the tables above) to access style property values.
 
@@ -278,19 +300,19 @@ The function returns a specified style value (from <code>$valToGet</code>) from 
     <thead>
         <tr>
             <th class="left">Parameter</th>
-            <th class="left">Optional</th>
+            <th class="left hidden-xs-down">Optional</th>
             <th class="left">Purpose</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td class="left">$element-label</td>
-            <td class="left">No</td>
+            <td class="left hidden-xs-down">No</td>
             <td class="left">Key/label for the element as found in the <code class="clr-code">$clr-typography-dom-to-type-element</code> map. Existing labels can be found in the <em>Use For</em> column of the header and body text tables above.</td>
         </tr>
         <tr>
             <td class="left">$valToGet</td>
-            <td class="left">No</td>
+            <td class="left hidden-xs-down">No</td>
             <td class="left">A CSS style property from the list of font style properties like <code class="clr-code">font-size</code>, <code class="clr-code">font-weight</code>, etc.</td>
         </tr>
     </tbody>

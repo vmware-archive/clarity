@@ -62,26 +62,32 @@ The following classes when extended along with <code>.dropdown</code> will open 
     <thead>
         <tr>
             <th class="left">Input</th>
-            <th class="left">Values</th>
-            <th class="left">Default</th>
+            <th class="left hidden-xs-down">Values</th>
+            <th class="left hidden-xs-down">Default</th>
             <th class="left">Effect</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td class="left">clrMenuPosition</td>
             <td class="left">
+                <b>clrMenuPosition</b>
+                <div class="hidden-sm-up">Values:<br>Direction classnames</div>
+                <div class="hidden-sm-up">Default: "bottom-left"</div>
+            </td>
+            <td class="left hidden-xs-down">
                 CSS dropdown menu direction classnames.
             </td>
-            <td class="left">Bottom-left</td>
+            <td class="left hidden-xs-down">Bottom-left</td>
             <td class="left">Sets the direction in which the menu will open.</td>
         </tr>
         <tr>
-            <td class="left">clrCloseMenuOnItemClick</td>
             <td class="left">
-                Boolean
+                <b>clrCloseMenuOnItemClick</b>
+                <div class="hidden-sm-up">Type: Boolean</div>
+                <div class="hidden-sm-up">Default: true</div>
             </td>
-            <td class="left">true</td>
+            <td class="left hidden-xs-down">Boolean</td>
+            <td class="left hidden-xs-down">true</td>
             <td class="left">If true, the menu will close when a dropdown item is clicked</td>
         </tr>
     </tbody>

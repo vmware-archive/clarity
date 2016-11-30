@@ -80,11 +80,13 @@ In the tables below, a hard-coded "expected" value is compared against a value g
 
 <clr-color-demo-luminance></clr-color-demo-luminance>
 
+{: .hide-responsive}
 ### Contrast Test
 
+{: .hide-responsive}
 The tables below demonstrate expected values for Clarity's color contrast utilities.
 
-<clr-color-demo-contrast></clr-color-demo-contrast>
+<clr-color-demo-contrast class="hide-responsive"></clr-color-demo-contrast>
 
 {: #guidelines}
 ### Color Usage

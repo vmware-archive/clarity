@@ -142,31 +142,40 @@ ul.whats-new-highlights {
     border-bottom: 1px solid #ddd;
 }
 
-@mixin responsiveWhatsNewMediaBlocks {
+@media (max-width: 675px) {
     .whats-new-summary {
         .whats-new-mediablock {
             width: 100%;
             margin-bottom: 0;
-            margin-left: 0;
-            padding: $bl-0_25 $bl-0_5;
+            margin: 0 -6px;
+            padding: 6px 0;
+            -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+
+
+            .description {
+                margin-left: 0;
+                width: 100%;
+
+                & > p.title + p {
+                    width: auto;
+                    padding-right: 12px;
+                }
+            }
         }
-    }
-}
 
-@media (min-width: 992px) and (max-width: 1032px) {
-    @include responsiveWhatsNewMediaBlocks;
-}
-
-@media (max-width: 790px) {
-    @include responsiveWhatsNewMediaBlocks;
-}
-
-@media (max-width: 464px) {
-    .whats-new-summary {
         .summary-block {
             float: none;
             padding: $bl-0_25 0;
             margin: 0 (-1 * $bl-0_25);
         }
+    }
+}
+
+// IE10
+@media screen and (min-width:0\0) and (max-width: 675px) {
+    .whats-new-summary .whats-new-mediablock .icon {
+        display: none !important;
     }
 }

@@ -238,7 +238,12 @@ adding the file to the styles array in <code class="clr-code">angular-cli.json</
 ## Device and Browser Support
 
 {: .bump-down}
-![Device and Browser Support]({{ site.baseurl }}/images/get-started/device_support.png?{{ site.time | date: '%s%N' }})
+![Device and Browser Support]({{ site.baseurl }}/images/get-started/device_support.png?{{ site.time | date: '%s%N' }}){: .hidden-sm-down }
+
+{: .hidden-md-up}
+- Internet Explorer 10 &amp; 11
+- MS Edge
+- Latest versions of Chrome, Safari, and Firefox
 
 {: #contribute_guidelines}
 ## Contributing to Clarity

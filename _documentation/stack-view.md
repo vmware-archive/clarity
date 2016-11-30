@@ -42,38 +42,66 @@ from the server.
 
 ###### Options for &lt;clr-stack-block&gt;
 
-{% raw %}
 <table class="table">
-  <thead>
-    <tr>
-      <th class="left">Input/Output</th>
-      <th>Values</th>
-      <th class="left">Default</th>
-      <th class="left">Effect</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="left">[clrSbExpandable]</td>
-      <td>true, false</td>
-      <td class="left">true if and only if &lt;clr-stack-block&gt; children are detected</td>
-      <td class="left">Makes the stack block expandable, even if it doesn’t contain any nested &lt;clr-stack-block&gt;</td>
-    </tr>
-    <tr>
-      <td class="left">[clrSbExpanded]</td>
-      <td>true, false</td>
-      <td class="left">false</td>
-      <td class="left">Two-way binding on the state of the block: expanded or collapsed. Has no effect if the block is not expandable.</td>
-    </tr>
-    <tr>
-      <td class="left">[clrSbNotifyChange]</td>
-      <td>true, false</td>
-      <td class="left">false</td>
-      <td class="left">Shows an updated indicator on the stack block, when set to true.</td>
-    </tr>
-  </tbody>
+    <thead>
+        <tr>
+            <th class="left">Input/Output</th>
+            <th class="hidden-xs-down">Values</th>
+            <th class="left hidden-xs-down">Default</th>
+            <th class="left">Effect</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="left">
+                <b>[clrSbExpandable]</b>
+                <div class="hidden-sm-up">Type: Boolean</div>
+                <div class="hidden-sm-up">
+                    Default:<br>
+                    true if <code
+                    class="clr-code">&lt;clr-stack-block&gt;</code> children
+                    are detected
+                </div>
+            </td>
+            <td class="hidden-xs-down">true, false</td>
+            <td class="left hidden-xs-down">
+                true if and only if
+                <code class="clr-code">&lt;clr-stack-block&gt;</code>
+                children are detected
+            </td>
+            <td class="left">
+                Makes the stack block expandable, even if it doesn’t
+                contain any nested
+                <code class="clr-code">&lt;clr-stack-block&gt;</code>
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <b>[clrSbExpanded]</b>
+                <div class="hidden-sm-up">Type: Boolean</div>
+                <div class="hidden-sm-up">Default: false</div>
+            </td>
+            <td class="hidden-xs-down">true, false</td>
+            <td class="left hidden-xs-down">false</td>
+            <td class="left">
+                Two-way binding on the state of the block: expanded or
+                collapsed. Has no effect if the block is not expandable.
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <b>[clrSbNotifyChange]</b>
+                <div class="hidden-sm-up">Type: Boolean</div>
+                <div class="hidden-sm-up">Default: false</div>
+            </td>
+            <td class="hidden-xs-down">true, false</td>
+            <td class="left hidden-xs-down">false</td>
+            <td class="left">
+                Shows an updated indicator on the stack block, when set to true.
+            </td>
+        </tr>
+    </tbody>
 </table>
-{% endraw %}
 
 {: #guidelines}
 ### Usage

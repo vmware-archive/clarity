@@ -28,6 +28,13 @@ body.layout-home {
             padding: 0;
         }
     }
+
+    .phone-github-btn {
+        display: none;
+        text-align: left;
+        padding-left: 4px;
+        padding-top: 12px;
+    }
 }
 
 .home-hero {
@@ -430,7 +437,7 @@ a.home-contact_link {
 
     .home-cards {
         .home-cards-container {
-            margin-top: -1 * $bl-3_0;
+            margin-top: -1 * $bl-2_0;
 
             & > h1 {
                 margin-bottom: $bl-1_5;
@@ -684,5 +691,28 @@ a.home-contact_link {
 @media (min-width: 767px) and (max-width: 930px) {
     .home-contact-block .xtra {
         display: none;
+    }
+}
+
+@media (max-width: 991px) {
+    body.layout-home .phone-github-btn {
+        display: block;
+    }
+}
+
+@media (max-width: 586px) {
+    body.layout-home {
+        .home-cards {
+            .home-cards-container {
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    body.layout-home .phone-github-btn {
+        text-align: center;
+        padding-left: 0;
     }
 }

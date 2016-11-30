@@ -90,3 +90,10 @@
         text-align: left;
     }
 }
+
+@media (max-width: 544px) {
+    .layout-community section {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

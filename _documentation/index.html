@@ -35,7 +35,11 @@ isIndexPage: true
 <table class="table table-condensed table-component-list bump-down">
     <thead>
         {% for label in labels %}
+            {% if label == 'Core' or label == 'Doc' or label == 'Comments' %}
+            <th class="hidden-xs-down">{{ label }}</th>
+            {% else %}
             <th>{{ label }}</th>
+            {% endif %}
         {% endfor %}
     </thead>
     <tbody>
@@ -58,16 +62,16 @@ isIndexPage: true
                 <td>
                     {% include documentation/component-list-dot.html status=item.ui %}
                 </td>
-                <td>
+                <td class="hidden-xs-down">
                     {% include documentation/component-list-dot.html status=item.core %}
                 </td>
                 <td>
                     {% include documentation/component-list-dot.html status=item.ng %}
                 </td>
-                <td>
+                <td class="hidden-xs-down">
                     {% include documentation/component-list-dot.html status=item.dox %}
                 </td>
-                <td>
+                <td class="hidden-xs-down">
                     {% if item.comments %}
                         {{ item.comments }}
                     {% else %}

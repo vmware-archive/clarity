@@ -25,7 +25,7 @@ Tooltips support four sizes, defined by using one of the following classes with 
 - .tooltip-md
 - .tooltip-lg
 
-<clr-tooltips-sizes-demo></clr-tooltips-sizes-demo>
+<clr-tooltips-sizes-demo class="tooltip-demo"></clr-tooltips-sizes-demo>
 
 ### Directions
 
@@ -40,7 +40,7 @@ Tooltips support six directions, defined by using one of the following classes w
 - .tooltip-right
 - .tooltip-left
 
-<clr-tooltips-directions-demo></clr-tooltips-directions-demo>
+<clr-tooltips-directions-demo class="tooltip-demo"></clr-tooltips-directions-demo>
 
 {: #guidelines}
 ### Usage

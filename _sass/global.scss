@@ -61,6 +61,10 @@ h6.indent + p.indent {
     text-align: center;
 }
 
+.nowrap {
+    white-space: nowrap;
+}
+
 %killListStyles {
     margin: 0;
     list-style: none;
@@ -218,6 +222,12 @@ header .branding .clr-vmw-logo {
     html {
         -webkit-overflow-scrolling: touch;
     }
+
+    body.layout-get-started {
+        h2 {
+            line-height: $bl-1_5;
+        }
+    }
 }
 
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
@@ -274,6 +284,18 @@ body {
 
         h6 + p {
             margin-top: $bl-0_25;
+        }
+    }
+}
+
+@media (max-width: 544px) {
+    .clr-example {
+        max-width: 100%;
+        overflow: scroll;
+
+        & > .main-container {
+            max-width: 100%;
+            overflow: hidden;
         }
     }
 }

@@ -67,42 +67,62 @@ This class must be applied with <code class="clr-code">.alert</code> to render a
     <thead>
         <tr>
             <th class="left">Input</th>
-            <th class="left">Values</th>
-            <th>Default</th>
+            <th class="left hidden-xs-down">Values</th>
+            <th class="hidden-xs-down">Default</th>
             <th class="left">Effect</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td class="left">[clrAlertClosable]</td>
-            <td class="left">true, false</td>
-            <td>true</td>
+            <td class="left">
+                <b>[clrAlertClosable]</b>
+                <div class="hidden-sm-up">Type: Boolean</div>
+                <div class="hidden-sm-up">Default: true</div>
+            </td>
+            <td class="left hidden-xs-down">true, false</td>
+            <td class="hidden-xs-down">true</td>
             <td class="left">If false, the alert will not be closable by clicking on the top-right "x".</td>
         </tr>
         <tr>
-            <td class="left">[(clrAlertClosed)]</td>
-            <td class="left">true, false</td>
-            <td>false</td>
+            <td class="left">
+                <b>[(clrAlertClosed)]</b>
+                <div class="hidden-sm-up">Type: Boolean</div>
+                <div class="hidden-sm-up">Default: false</div>
+            </td>
+            <td class="left hidden-xs-down">true, false</td>
+            <td class="hidden-xs-down">false</td>
             <td class="left">
                 Two-way binding on the state of the alert: opened or closed.
             </td>
         </tr>
         <tr>
-            <td class="left">[clrAlertType]</td>
-            <td class="left">"alert-info", "alert-warning", "alert-success" and "alert-danger"</td>
-            <td>"alert-info"</td>
+            <td class="left">
+                <b>[clrAlertType]</b>
+                <div class="hidden-sm-up">Type: String</div>
+                <div class="hidden-sm-up">Default:<br>"alert-info"</div>
+            </td>
+            <td class="left hidden-xs-down">"alert-info", "alert-warning", "alert-success" and "alert-danger"</td>
+            <td class="hidden-xs-down">"alert-info"</td>
             <td class="left">Sets the type of the alert.</td>
         </tr>
         <tr>
-            <td class="left">[clrAlertSizeSmall]</td>
-            <td class="left">true, false</td>
-            <td>false</td>
+            <td class="left">
+                <b>[clrAlertSizeSmall]</b>
+                <div class="hidden-sm-up">Type: Boolean</div>
+                <div class="hidden-sm-up">Default: false</div>
+            </td>
+            <td class="left hidden-xs-down">true, false</td>
+            <td class="hidden-xs-down">false</td>
             <td class="left">If true, renders a small alert.</td>
         </tr>
         <tr>
-            <td class="left">[clrAlertAppLevel]</td>
-            <td class="left">true, false</td>
-            <td>false</td>
+            <td class="left">
+                <b>[clrAlertAppLevel]</b>
+                <div class="hidden-sm-up">Type: Boolean</div>
+                <div class="hidden-sm-up">Default: false</div>
+            </td>
+            <td class="left hidden-xs-down">true, false</td>
+            <td class="hidden-xs-down">false</td>
             <td class="left">If true, renders an app-level alert.</td>
         </tr>
     </tbody>

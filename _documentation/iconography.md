@@ -33,43 +33,61 @@ layout: documentation
             <tbody>
                 <tr>
                     <th>Color options</th>
-                    <td>Class</td>
+                    <td class="hidden-xs-down">Class</td>
                     <td>Color code</td>
                     <td>Preview</td>
                 </tr>
                 <tr>
-                    <th>Highlight</th>
-                    <td><code class="clr-code">.icon-color-highlight</code></td>
+                    <th>
+                        Highlight
+                        <div class="hidden-sm-up"><code class="clr-code">.icon-color-highlight</code></div>
+                    </th>
+                    <td class="hidden-xs-down"><code class="clr-code">.icon-color-highlight</code></td>
                     <td>#007CBB</td>
                     <td><clr-icon shape="info" size="24" class="icon-color-highlight"></clr-icon></td>
                 </tr>
                 <tr>
-                    <th>Danger</th>
-                    <td><code class="clr-code">.icon-color-danger</code></td>
+                    <th>
+                        Danger
+                        <div class="hidden-sm-up"><code class="clr-code">.icon-color-danger</code></div>
+                    </th>
+                    <td class="hidden-xs-down"><code class="clr-code">.icon-color-danger</code></td>
                     <td>#A32100</td>
                     <td><clr-icon shape="info" size="24" class="icon-color-danger"></clr-icon></td>
                 </tr>
                 <tr>
-                    <th>Warning</th>
-                    <td><code class="clr-code">.icon-color-warning</code></td>
+                    <th>
+                        Warning
+                        <div class="hidden-sm-up"><code class="clr-code">.icon-color-warning</code></div>
+                    </th>
+                    <td class="hidden-xs-down"><code class="clr-code">.icon-color-warning</code></td>
                     <td>#E62700</td>
                     <td><clr-icon shape="info" size="24" class="icon-color-warning"></clr-icon></td>
                 </tr>
                 <tr>
-                    <th>Success</th>
-                    <td><code class="clr-code">.icon-color-success</code></td>
+                    <th>
+                        Success
+                        <div class="hidden-sm-up"><code class="clr-code">.icon-color-success</code></div>
+                    </th>
+                    <td class="hidden-xs-down"><code class="clr-code">.icon-color-success</code></td>
                     <td>#318700</td>
                     <td><clr-icon shape="info" size="24" class="icon-color-success"></clr-icon></td>
                 </tr>
                 <tr>
-                    <th>Info</th>
-                    <td><code class="clr-code">.icon-color-info</code></td>
+                    <th>
+                        Info
+                        <div class="hidden-sm-up"><code class="clr-code">.icon-color-info</code></div>
+                    </th>
+                    <td class="hidden-xs-down"><code class="clr-code">.icon-color-info</code></td>
                     <td>#007CBB</td>
                     <td><clr-icon shape="info" size="24" class="icon-color-info"></clr-icon></td>
                 </tr>
                 <tr>
-                    <th>Inverse</th>
-                    <td><code class="clr-code">.icon-color-inverse</code></td>
+                    <th>
+                        Inverse
+                        <div class="hidden-sm-up"><code class="clr-code">.icon-color-inverse</code></div>
+                    </th>
+                    <td class="hidden-xs-down"><code class="clr-code">.icon-color-inverse</code></td>
                     <td>#FFFFFF</td>
                     <td style="background-color:#414957"><clr-icon shape="info" size="24" class="icon-color-inverse"></clr-icon></td>
                 </tr>

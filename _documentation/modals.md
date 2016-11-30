@@ -47,38 +47,54 @@ Modals and backdrops support fading animations. Clarity recommends using <code>f
     <thead>
         <tr>
             <th class="left">Input/Output</th>
-            <th>Values</th>
-            <th>Default</th>
+            <th class="hidden-xs-down">Values</th>
+            <th class="hidden-xs-down">Default</th>
             <th class="left">Effect</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td class="left">[(clrModalOpen)]</td>
-            <td>true, false</td>
-            <td>false</td>
+            <td class="left">
+                <b>[(clrModalOpen)]</b>
+                <div class="hidden-sm-up">Type: Boolean</div>
+                <div class="hidden-sm-up">Default: false</div>
+            </td>
+            <td class="hidden-xs-down">true, false</td>
+            <td class="hidden-xs-down">false</td>
             <td class="left">
                 Two-way binding on the state of the modal: opened or closed.
             </td>
         </tr>
         <tr>
-            <td class="left">[clrModalSize]</td>
-            <td>"sm", &lt;none&gt;, "lg"</td>
-            <td>&lt;none&gt;</td>
+            <td class="left">
+                <b>[clrModalSize]</b>
+                <div class="hidden-sm-up">Values:<br>"sm", &lt;none&gt;, "lg"</div>
+                <div class="hidden-sm-up">Default: &lt;none&gt;</div>
+            </td>
+            <td class="hidden-xs-down">"sm", &lt;none&gt;, "lg"</td>
+            <td class="hidden-xs-down">&lt;none&gt;</td>
             <td class="left">Sets the size of the modal. &lt;none&gt; is for medium size.</td>
         </tr>
         <tr>
-            <td class="left">[clrModalClosable]</td>
-            <td>true, false</td>
-            <td>true</td>
+            <td class="left">
+                <b>[clrModalClosable]</b>
+                <div class="hidden-sm-up">Type: Boolean</div>
+                <div class="hidden-sm-up">Default: true</div>
+            </td>
+            <td class="hidden-xs-down">true, false</td>
+            <td class="hidden-xs-down">true</td>
             <td class="left">
                 If false, the modal will not be closable by clicking on the mask or on the top-right "x".
             </td>
         </tr>
         <tr>
-            <td class="left">[clrModalStaticBackdrop]</td>
-            <td>true, false</td>
-            <td>false</td>
+            <td class="left">
+                <b>[clrModalStaticBackdrop]</b>
+                <div class="hidden-sm-up">Type: Boolean</div>
+                <div class="hidden-sm-up">Default: false</div>
+            </td>
+            <td class="hidden-xs-down">true, false</td>
+            <td class="hidden-xs-down">false</td>
             <td class="left">If true, the modal will not close when the user clicks outside of the modal.</td>
         </tr>
     </tbody>
@@ -112,22 +128,22 @@ If you want the modal to be closable with a top-right “x” button, but don’
     <thead>
         <tr>
             <th class="left">Method</th>
-            <th>Arguments</th>
-            <th>Return Value</th>
+            <th class="hidden-xs-down">Arguments</th>
+            <th class="hidden-xs-down">Return Value</th>
             <th class="left">Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td class="left">open()</td>
-            <td>N/A</td>
-            <td>N/A</td>
+            <td class="hidden-xs-down">N/A</td>
+            <td class="hidden-xs-down">N/A</td>
             <td class="left">Manually opens the modal.</td>
         </tr>
         <tr>
             <td class="left">close()</td>
-            <td>NA</td>
-            <td>NA</td>
+            <td class="hidden-xs-down">N/A</td>
+            <td class="hidden-xs-down">N/A</td>
             <td class="left">
                 Manually closes the modal if <code>clrModalClosable</code> is not set to <code>false</code>.
             </td>

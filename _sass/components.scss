@@ -262,6 +262,10 @@ body.layout-documentation {
             margin-top: $bl-1_0;
         }
     }
+
+    clr-typography-links h4 {
+        margin-top: $bl-0_75;
+    }
 }
 
 .clrweb-tablink-scrolled.layout-documentation .dox-content {
@@ -282,11 +286,118 @@ body.layout-documentation {
     }
 }
 
-
 @media (max-width: 991px) {
     .layout-documentation .component-legend-item {
         width: 108px;
     }
+}
+
+@media (max-width: 654px) {
+    .hide-responsive {
+        display: none;
+    }
+}
+
+@media (max-width: 612px) {
+    .layout-documentation {
+        img {
+            max-width: 100%;
+        }
+    }
+}
+
+@media (max-width: 544px) {
+    body.layout-documentation {
+        h2 {
+            line-height: $bl-1_5;
+        }
+
+        h4 + p {
+            margin-top: $bl-0_25;
+        }
+
+        .component-legend-item {
+            width: 150px;
+        }
+
+        .clr-icon-selection {
+            padding-top: $bl-0_25;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+         .tooltip-demo {
+             .clr-example.example-center {
+                 min-height: 240px;
+             }
+         }
+
+        .modal.static {
+            padding: 0;
+        }
+
+        clr-datagrid {
+            clr-dg-column, clr-dg-cell {
+                &:nth-child(3){
+                    display: none;
+                }
+            }
+        }
+
+        clr-datagrid-filtering-demo,
+        clr-datagrid-binding-properties-demo,
+        clr-datagrid-string-filtering-demo,
+        clr-datagrid-server-driven-demo,
+        clr-datagrid-sorting-demo {
+            clr-dg-column, clr-dg-cell {
+                &:first-child {
+                    display: none;
+                }
+            }
+        }
+
+        clr-datagrid-pagination-demo {
+            table {
+                max-width: 100%;
+                display: block;
+                overflow: scroll;
+            }
+
+            th, td {
+                padding: 3px 3px 4px;
+                text-align: left;
+            }
+        }
+
+        clr-datagrid-selection-demo,
+        clr-datagrid-full-demo {
+            clr-dg-column, clr-dg-cell {
+                &:nth-child(3){
+                    display: table-cell;
+                }
+
+                &:nth-child(2), &:nth-child(4) {
+                    display: none;
+                }
+            }
+        }
+
+        clr-dropdown-static-icon-toggle-demo {
+            .clr-example.squeeze {
+                padding: 0;
+                text-align: left;
+            }
+        }
+
+        clr-typography-text, clr-typography-headers {
+            td, th {
+                &:last-child, &:nth-child(3) {
+                    display: none;
+                }
+            }
+        }
+    }
+
 }
 
 @media (max-width: 415px) {

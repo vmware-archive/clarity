@@ -41,85 +41,118 @@ All attributes associated with accessibility (aria-controls, aria-selected, aria
 
 <table class="table">
     <thead>
-    <tr>
-        <th class="left">Input/Output</th>
-        <th>Values</th>
-        <th>Default</th>
-        <th class="left">Effect</th>
-    </tr>
+        <tr>
+            <th class="left">Input/Output</th>
+            <th class="hidden-xs-down">Values</th>
+            <th class="hidden-xs-down">Default</th>
+            <th class="left">Effect</th>
+        </tr>
     </thead>
     <tbody>
-    <tr>
-        <td class="left">[clrTabContentActive]</td>
-        <td>true, false</td>
-        <td>false</td>
-        <td class="left">
-            Used on &lt;clr-tab-content&gt;. If true, will make the content visible. If none of the
-            &lt;clr-tab-content&gt;s are set as active, then the component will initialize the first one as active.
-            Note that while it's possible to set multiple tab contents as active, it is discouraged.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">[clrTabContentId]</td>
-        <td>&lt;any valid id for html element&gt;</td>
-        <td>auto-generated</td>
-        <td class="left">
-            Used on &lt;clr-tab-content&gt;. If explicitly set, will assign the set id as the id for the element. If not set,
-            the component will auto-generate the id.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">[clrTabsCurrentTabIndex]</td>
-        <td>&lt;number&gt;</td>
-        <td>-1</td>
-        <td class="left">
-            Returns the index of the current active tab link. If multiple tab links are active, this will return the
-            index of the last active tab link.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">[clrTabLinkActive]</td>
-        <td>true, false</td>
-        <td>false</td>
-        <td class="left">
-            Used on &lt;clr-tab-link&gt;. If true, will highlight the tab as an active tab. If none of the
-            &lt;clr-tab-link&gt;s is set as active, then the component will initialize the first one as active.
-            Note that while it's possible to set multiple tab links as active, it is discouraged.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">[clrTabLinkId]</td>
-        <td>&lt;any valid id for html element&gt;</td>
-        <td>auto-generated</td>
-        <td class="left">
-            Used on &lt;clr-tab-link&gt;. If explicitly set, will assign the set id as the id for the element. If not set,
-            the component will auto-generate the id.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">(clrTabsCurrentTabLinkChanged)</td>
-        <td>&lt;TabLink&gt;</td>
-        <td>N/A</td>
-        <td class="left">
-            When a tab is clicked, an event is emitted with the selected TabLink.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">(clrTabsCurrentTabContentChanged)</td>
-        <td>&lt;TabContent&gt;</td>
-        <td>N/A</td>
-        <td class="left">
-            When a tab is clicked, an event  with the TabContent whose index matches the selected TabLink is emitted.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">(clrTabsCurrentTabIndexChanged)</td>
-        <td>&lt;number&gt;</td>
-        <td>N/A</td>
-        <td class="left">
-            When a tab is clicked, an event with the index of the selected TabLink is emitted .
-        </td>
-    </tr>
+        <tr>
+            <td class="left">
+                <b>[clrTabContentActive]</b>
+                <div class="hidden-sm-up">Type: Boolean</div>
+                <div class="hidden-sm-up">Default: false</div>
+            </td>
+            <td class="hidden-xs-down">true, false</td>
+            <td class="hidden-xs-down">false</td>
+            <td class="left">
+                Used on &lt;clr-tab-content&gt;. If true, will make the content visible. If none of the
+                &lt;clr-tab-content&gt;s are set as active, then the component will initialize the first one as active.
+                Note that while it's possible to set multiple tab contents as active, it is discouraged.
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <b>[clrTabContentId]</b>
+                <div class="hidden-sm-up">Values:<br>&lt;any valid id for html element&gt;</div>
+                <div class="hidden-sm-up">Default: auto-generated</div>
+            </td>
+            <td class="hidden-xs-down">&lt;any valid id for html element&gt;</td>
+            <td class="hidden-xs-down">auto-generated</td>
+            <td class="left">
+                Used on &lt;clr-tab-content&gt;. If explicitly set, will assign the set id as the id for the element. If not set,
+                the component will auto-generate the id.
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <div class="hidden-xs-down"><b>[clrTabsCurrentTabIndex]</b></div>
+                <div class="hidden-sm-up"><b>[clrTabs<br>CurrentTabIndex]</b></div>
+                <div class="hidden-sm-up">Type: Integer</div>
+                <div class="hidden-sm-up">Default: -1</div>
+            </td>
+            <td class="hidden-xs-down">&lt;number&gt;</td>
+            <td class="hidden-xs-down">-1</td>
+            <td class="left">
+                Returns the index of the current active tab link. If multiple tab links are active, this will return the
+                index of the last active tab link.
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <b>[clrTabLinkActive]</b>
+                <div class="hidden-sm-up">Type: Boolean</div>
+                <div class="hidden-sm-up">Default: false</div>
+            </td>
+            <td class="hidden-xs-down">true, false</td>
+            <td class="hidden-xs-down">false</td>
+            <td class="left">
+                Used on &lt;clr-tab-link&gt;. If true, will highlight the tab as an active tab. If none of the
+                &lt;clr-tab-link&gt;s is set as active, then the component will initialize the first one as active.
+                Note that while it's possible to set multiple tab links as active, it is discouraged.
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <b>[clrTabLinkId]</b>
+                <div class="hidden-sm-up">Values:<br>&lt;any valid id for html element&gt;</div>
+                <div class="hidden-sm-up">Default: auto-generated</div>
+            </td>
+            <td class="hidden-xs-down">&lt;any valid id for html element&gt;</td>
+            <td class="hidden-xs-down">auto-generated</td>
+            <td class="left">
+                Used on &lt;clr-tab-link&gt;. If explicitly set, will assign the set id as the id for the element. If not set,
+                the component will auto-generate the id.
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <div class="hidden-xs-down"><b>(clrTabsCurrentTabLinkChanged)</b></div>
+                <div class="hidden-sm-up"><b>(clrTabsCurrent<br>TabLinkChanged)</b></div>
+                <div class="hidden-sm-up">Type: TabLink object</div>
+            </td>
+            <td class="hidden-xs-down">&lt;TabLink&gt;</td>
+            <td class="hidden-xs-down">N/A</td>
+            <td class="left">
+                When a tab is clicked, an event is emitted with the selected TabLink.
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <div class="hidden-xs-down"><b>(clrTabsCurrentTabContentChanged)</b></div>
+                <div class="hidden-sm-up"><b>(clrTabsCurrent<br>TabContentChanged)</b></div>
+                <div class="hidden-sm-up">Type: TabContent object</div>
+            </td>
+            <td class="hidden-xs-down">&lt;TabContent&gt;</td>
+            <td class="hidden-xs-down">N/A</td>
+            <td class="left">
+                When a tab is clicked, an event  with the TabContent whose index matches the selected TabLink is emitted.
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <div class="hidden-xs-down"><b>(clrTabsCurrentTabIndexChanged)</b></div>
+                <div class="hidden-sm-up"><b>(clrTabsCurrent<br>TabIndexChanged)</b></div>
+                <div class="hidden-sm-up">Type: Integer</div>
+            </td>
+            <td class="hidden-xs-down">&lt;number&gt;</td>
+            <td class="hidden-xs-down">N/A</td>
+            <td class="left">
+                When a tab is clicked, an event with the index of the selected TabLink is emitted .
+            </td>
+        </tr>
     </tbody>
 </table>
 

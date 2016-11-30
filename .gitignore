@@ -3,6 +3,7 @@ tmp/
 node_modules/
 typings/
 .idea/
+gemini-report/
 .DS_Store
 .npmrc.clarity
 npm-debug.log

@@ -1,14 +1,48 @@
 language: node_js
 node_js:
   - "6.0"
+env:
+  global:
+    - CXX=g++-4.8
+  matrix:
+    - TEST_SUITE=test
+    - TEST_SUITE=css:test
+    - TEST_SUITE=css:reference
+
+sudo: required
+dist: trusty
 
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
+      - google-chrome
     packages:
       - g++-4.8
-
+      - google-chrome-stable
+  artifacts:
+    paths:
+      - $TRAVIS_BUILD_DIR/screenshots.zip
+      - $TRAVIS_BUILD_DIR/gemini-report/
+      - $TRAVIS_BUILD_DIR/selenium.txt
 cache:
+  apt: true
+  yarn: true
   directories:
-     - ./node_modules
+    - node_modules
+
+before_install:
+  - export CHROME_BIN=/usr/bin/google-chrome
+  - export DISPLAY=:99.0
+
+before_script:
+  - npm install -g gemini
+  - npm install -g selenium-standalone
+  - selenium-standalone install
+  - xvfb-run --server-args="-screen 0, 1600x2400x24" selenium-standalone start > selenium.txt &
+  - sleep 5
+
+script:
+  - gulp $TEST_SUITE # run unit test, css regression, and css reference in parallel
+  - zip -r screenshots gemini/screens/
+

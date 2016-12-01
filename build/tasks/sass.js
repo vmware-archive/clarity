@@ -12,6 +12,8 @@ var autoprefixer = require('gulp-autoprefixer');
 var sass = require("gulp-sass");
 var stylestats = require('gulp-stylestats');
 var runSequence = require('run-sequence');
+var preprocess = require('gulp-preprocess');
+var util = require('gulp-util');
 
 var compressed = { outputStyle: "compressed" };
 var uncompressed = { sourceComments: 'map', errLogToConsole: true, sourceMap: 'sass' };
@@ -36,6 +38,21 @@ var iconFiles = "src/icons/**/*.scss";
 
 var assets = ["src/clarity/img/*.png","src/clarity/img/*.svg"];
 
+/*
+ * Adds the current clarity version to generated css files
+ * Depends on this being in the *.scss files: \/* @echo VERSION *\/
+ * NOTE: for this to work we must generate a loud comment -> /*!
+ */
+// var env = require('gulp-env');
+// var pjson = require('../../package.json'); // Grab the projects package.json w/ version info
+// env.set({BUILD_VERSION: pjson.version});
+var VERSION = `
+/*!
+ * Clarity v${util.env.version} | MIT license | https://github.com/vmware/clarity
+ */
+`;
+// var VERSION = "/*! \n\s*\n\\s*Clarity v" + process.env.BUILD_VERSION + " | MIT license | https://github.com/vmware/clarity \n\\s*/";
+
 /**
  * compiles the .clarity.sass files from the src/ folder to create the bundled clarity css
  * and its sourcemap in the dist/ folder
@@ -46,6 +63,7 @@ gulp.task("sass:static", function(){
     return gulp.src(["src/clarity/main.scss"], {base: "src"})
         // Sourcemaps only for development
         .pipe(prod ? util.noop() : sourcemaps.init())
+        .pipe(preprocess({context: {VERSION: VERSION}}))
         .pipe(sass(prod ? compressed : uncompressed).on("error", sass.logError))
         .pipe(prod ? util.noop() : sourcemaps.write({includeContent: false}))
         .pipe(prod ? util.noop() : sourcemaps.init({loadMaps: true}))
@@ -98,6 +116,7 @@ gulp.task("sass:icons", function(){
     return gulp.src(iconFiles, {base: "src"})
     // Sourcemaps only for development
         .pipe(prod ? util.noop() : sourcemaps.init())
+        .pipe(preprocess({context: {VERSION: VERSION}}))
         .pipe(sass(prod ? compressed : uncompressed).on("error", sass.logError))
         .pipe(prod ? util.noop() : sourcemaps.write({includeContent: false}))
         .pipe(prod ? util.noop() : sourcemaps.init({loadMaps: true}))

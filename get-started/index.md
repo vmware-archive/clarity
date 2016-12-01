@@ -33,9 +33,9 @@ For the most complete integration with Clarity, consume the framework at the Ang
 -->
 
 {: #sketchTemplate}
-### Using the Clarity Template for Sketch
+### Using the Clarity Sketch UI Template
 
-Jumpstart your project with the [Clarity Sketch template]({{ site.baseurl }}{{ site.data.global.template_link }}){: target='_blank' }, a library of components versioned alongside other products in Clarity’s ecosystem. To use with the template, install the [open-source Metropolis font](https://github.com/chrismsimpson/Metropolis){: target='_blank' } by Chris M. Simpson. Clarity uses these font weights: light, regular, semibold, and medium.
+Jumpstart your project with the [Clarity Sketch UI template]({{ site.baseurl }}{{ site.data.global.template_link }}){: target='_blank' }, a library of components versioned alongside other products in Clarity’s ecosystem. To use with the template, install the [open-source Metropolis font](https://github.com/chrismsimpson/Metropolis){: target='_blank' } by Chris M. Simpson. Clarity uses these font weights: light, regular, semibold, and medium.
 
 {: #seedProjectClarity}
 ### Starting With a Clarity Seed Project (Recommended)

@@ -135,6 +135,7 @@
             "core": -1,
             "ng": 20,
             "dox": 20,
+            "isUpdated": true,
             "comments": false
         },
         {
@@ -177,9 +178,7 @@
             "ui": 20,
             "core": 20,
             "ng": -1,
-            "dox": 20,
-            "isUpdated": true,
-            "comments": "Clarity Icons core set of 50 icons released!"
+            "dox": 20
         },
         {
             "url": "/documentation/input-fields",

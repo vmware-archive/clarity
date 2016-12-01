@@ -105,7 +105,7 @@ export const SVG_ICON_TEMPLATES: any = {
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>angle</title>
-                <path class="outer-shape" d="M29,24.5a1,1,0,0,1-.71-.29L18,13.91,7.71,24.21a1,1,0,0,1-1.41-1.41L18,11.09,29.71,22.79A1,1,0,0,1,29,24.5Z"/>
+                <path class="outer-shape" d="M29.52,22.52,18,10.6,6.48,22.52a1.7,1.7,0,0,0,2.45,2.36L18,15.49l9.08,9.39a1.7,1.7,0,0,0,2.45-2.36Z"/>
             </svg>
         `,
 

@@ -458,7 +458,7 @@ $clr-icon-dimension-sm: rem(16/$clr-rem-denominator) !default;
 
 //12. Dropdowns Caret Icon
 $clr-dropdown-caret-icon-dimension: 10px;
-$clr-dropdown-caret-left-margin: $clr_baselineRem_0_25;
+$clr-dropdown-caret-left-margin: 2px;
 
 //BS4 overrides
 $enable-flex: true;

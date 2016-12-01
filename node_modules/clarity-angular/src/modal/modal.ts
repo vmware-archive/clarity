@@ -75,22 +75,12 @@ export class Modal implements OnChanges, OnDestroy {
         this._openChanged.emit(true);
     }
 
+    @HostListener("body:keyup.escape")
     close(): void {
         if (!this.closable || this._open === false) {
             return;
         }
         this._open = false;
         this._openChanged.emit(false);
-    }
-
-    // FIXME: When Angular offers key filtering on global events, this should be replaced by:
-    //  @HostListener("body:keyup.escape")"
-    // on the close() method.
-    @HostListener("body:keyup", ["$event.keyCode"])
-    globalKeyUp(keyCode: number): void {
-        // Close when the user presses escape
-        if (this._open && keyCode === 27) {
-            this.close();
-        }
     }
 }

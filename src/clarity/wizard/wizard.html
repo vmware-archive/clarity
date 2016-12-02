@@ -14,7 +14,7 @@
    <div class="modal-body">
       <div class="content-container">
          <main class="content-area">
-            <button type="button" class="close" aria-label="Close" (click)="close()">
+            <button type="button" class="close" aria-label="Close" (click)="_close($event)">
                <span aria-hidden="true">&times;</span>
             </button>
             <ng-content></ng-content>
@@ -33,7 +33,7 @@
    </div>
 
    <div class="modal-footer">
-      <button class="btn btn-link" (click)="close()">Cancel</button>
+      <button class="btn btn-link" (click)="_close($event)">Cancel</button>
       <button class="btn btn-outline"
             *ngIf="!isFirst" (click)="prev($event)">Back</button>
       <button class="btn btn-primary"

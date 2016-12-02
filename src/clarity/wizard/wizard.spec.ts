@@ -33,7 +33,10 @@ class BasicWizard {
 
 @Component({
     template: `
-    <clr-wizard [(clrWizardOpen)]="open">
+    <clr-wizard 
+        [(clrWizardOpen)]="open"
+         (clrWizardOnCancel)="myOnCancel($event)">
+         
          <div class="wizard-title">
             New Virtual Machine
          </div>
@@ -89,6 +92,7 @@ class AdvancedWizard {
     nextDisabled: boolean = false;
     content1: String = "Content1";
     content3: String = "Content3";
+    hasBeenCanceled = false;
 
     myOnLoad(): void {
         this.content1 = "This Works Better";
@@ -100,6 +104,10 @@ class AdvancedWizard {
 
     myOnCommit(event: any): void {
         event.preventDefault();
+    }
+
+    myOnCancel(event: any): void {
+        this.hasBeenCanceled = true;
     }
 };
 
@@ -117,6 +125,12 @@ describe("Wizard", () => {
     let moveToPrevious: Function = function (el: any): void {
         let back: HTMLElement = el.querySelector(".btn-outline");
         back.click();
+        fixture.detectChanges();
+    };
+
+    let doCancel: Function = function(el: any): void {
+        let cancel: HTMLElement = el.querySelector(".close");
+        cancel.click();
         fixture.detectChanges();
     };
 
@@ -465,6 +479,11 @@ describe("Wizard", () => {
             expect(tab2).toBeDefined();
             expect(tab3).toBeDefined();
             expect(tab4).toBeDefined();
+        });
+
+        it("calls the user-defined onCancel handler when the Cancel button is clicked", () => {
+            doCancel(compiled);
+            expect(fixture.componentInstance.hasBeenCanceled).toBe(true);
         });
     });
 

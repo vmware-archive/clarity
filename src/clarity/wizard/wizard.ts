@@ -10,7 +10,7 @@ import {
     Output,
     EventEmitter,
     QueryList,
-    SimpleChange
+    SimpleChange, HostListener
 } from "@angular/core";
 
 import {Tabs} from "../tabs/tabs";
@@ -46,6 +46,10 @@ export class Wizard extends Tabs {
     // EventEmitter which is emitted on open/close of the wizard.
     @Output("clrWizardOpenChanged") private _openChanged: EventEmitter<boolean> =
         new EventEmitter<boolean>(false);
+
+    // User can bind his event handler for onCancel of the main content
+    @Output("clrWizardOnCancel") onCancel: EventEmitter<any> =
+        new EventEmitter<any>(false);
 
     // Flag to toggle between Next and Finish button
     isLast: boolean = false;
@@ -122,6 +126,17 @@ export class Wizard extends Tabs {
     close(): void {
         this._open = false;
         this._openChanged.emit(false);
+    }
+
+    // _close --
+    //
+    // This is a private function that is called on the click of the close / cancel
+    // button and emits the onCancel event of the active tab.
+    @HostListener("body:keyup.escape")
+    _close(): void {
+        this.onCancel.emit(null);
+
+        this.close();
     }
 
     // _next --

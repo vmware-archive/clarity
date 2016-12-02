@@ -124,6 +124,18 @@ export class Wizard extends Tabs {
         this._openChanged.emit(false);
     }
 
+    // _close --
+    //
+    // This is a private function that is called on the click of the close / cancel
+    // button and emits the onCancel event of the active tab.
+    _close(): void {
+        let i: number = this.currentTabIndex;
+        let page: WizardPage = this.tabContents[i];
+        page.onCancel.emit(null);
+
+        this.close();
+    }
+
     // _next --
     //
     // This is a private function that is called on the click of the next

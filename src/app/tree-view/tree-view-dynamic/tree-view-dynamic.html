@@ -1,0 +1,15 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<clr-tree-node *ngFor="let directory of rootDirectory" [clrTreeNodeExpanded]="directory.expanded">
+    <clr-icon [attr.shape]="directory.icon"></clr-icon>
+    {{directory.name}}
+    <clr-tree-node *ngFor="let file of directory.files">
+        <button class="clr-treenode-link">
+            <clr-icon [attr.shape]="file.icon"></clr-icon>
+            {{file.name}}
+        </button>
+    </clr-tree-node>
+</clr-tree-node>

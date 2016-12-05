@@ -1,0 +1,240 @@
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+@import "../forms/forms.clarity";
+
+$clr-tree-caret-size: 16px;
+$clr-tree-spinner-size: 16px;
+
+$clr-tree-node-touch-target: $clr_baselineRem_1_25;
+$clr-tree-node-children-margin: $clr-tree-node-touch-target - $clr-tree-caret-size / 2 - 1;
+
+$clr-tree-node-touch-target-big: $clr_baselineRem_1_5;
+$clr-tree-node-children-margin-big: $clr-tree-node-touch-target-big - $clr-tree-caret-size / 2 - 1;
+
+$clr-tree-node-touch-target-small: $clr_baselineRem_1;
+$clr-tree-node-children-margin-small: $clr-tree-node-touch-target-small - $clr-tree-caret-size / 2 - 1;
+
+//Checkbox in a TreeNode
+@mixin positionCheckBoxInTree(
+    $touch-target: $clr-tree-node-touch-target,
+    $checkbox-height: $clr-checkbox-radio-height,
+    $checkmark-left-position-offset: 4px) {
+
+    & > clr-checkbox,
+    & > .checkbox {
+        $checkbox-label-center-position: ($touch-target - $checkbox-height) / 2;
+
+        //Positioning
+        left: $touch-target;
+
+        //Display
+        height: $touch-target;
+
+
+        & > label {
+            height: $touch-target;
+            padding-left: $touch-target;
+        }
+
+        //I unfortunately had to do this to accommodate the click target sizing
+        //Checkbox container
+        input[type="checkbox"] + label::before {
+            top: $checkbox-label-center-position;
+            left: $checkbox-label-center-position;
+        }
+
+        //TODO: Apply the same changes in forms.clarity.scss
+        //Checkbox checkmark
+        input[type="checkbox"] + label::after {
+            top: $checkbox-label-center-position;
+            left: $checkbox-label-center-position + $checkmark-left-position-offset;
+        }
+    }
+}
+
+@mixin caret-touch-target($touch-target: $clr-tree-node-touch-target) {
+    height: $touch-target;
+    width: $touch-target;
+}
+
+@mixin spinner-positioning($touch-target: $clr-tree-node-touch-target) {
+    left: ($touch-target - $clr-tree-spinner-size) / 2;
+    top: ($touch-target - $clr-tree-spinner-size) / 2;
+}
+
+@mixin generate-tree-content($touch-target: $clr-tree-node-touch-target) {
+
+    //Tree Node Content
+    .clr-treenode-content {
+
+        //Display
+        line-height: $touch-target;
+        padding-left: $touch-target;
+
+        //Others
+        border-radius: $clr-default-borderradius 0 0 $clr-default-borderradius;
+    }
+
+    clr-checkbox + .clr-treenode-content {
+
+        //Display
+        padding-left: 2 * $touch-target;
+    }
+}
+
+//TreeNode
+clr-tree-node {
+    //Positioning
+    position: relative;
+
+    //Display
+    display: block;
+
+    & > clr-checkbox,
+    & > .checkbox {
+        //Positioning
+        position: absolute;
+
+        //Display
+        display: inline-block;
+    }
+
+    @include positionCheckBoxInTree();
+}
+
+//Caret in Tree Nodes
+.clr-treenode-caret {
+    //Positioning
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    //Display
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    @include caret-touch-target();
+
+    //Others
+    border: 1px solid transparent;
+    background: transparent;
+    color: $gray-dark-midtone;
+    cursor: pointer;
+    outline-offset: -5px;
+
+    clr-icon {
+        vertical-align: middle;
+        height: $clr-tree-caret-size;
+        width: $clr-tree-caret-size;
+    }
+
+    &:hover {
+        color: $clr-black;
+    }
+}
+
+//Spinners in Tree Nodes
+.clr-treenode-spinner {
+
+    //Positioning
+    position: absolute;
+    @include spinner-positioning();
+
+    //display
+    min-height: $clr-tree-spinner-size;
+    min-width: $clr-tree-spinner-size;
+    height: $clr-tree-spinner-size;
+    width: $clr-tree-spinner-size;
+}
+
+//Tree Node Content
+@include generate-tree-content();
+
+
+//Tree Nodes containing TreeNodes are wrapped with this class
+.clr-treenode-children {
+    margin-left: $clr-tree-node-children-margin;
+}
+
+.clr-tree--compact.clr-treenode,
+.clr-tree--compact clr-tree-node {
+    @include positionCheckBoxInTree($clr-tree-node-touch-target-small);
+
+    .clr-treenode-caret {
+        @include caret-touch-target($clr-tree-node-touch-target-small);
+
+        clr-icon {
+            vertical-align: text-top;
+        }
+    }
+
+    .clr-treenode-spinner {
+        @include spinner-positioning($clr-tree-node-touch-target-small);
+    }
+
+    @include generate-tree-content($clr-tree-node-touch-target-small);
+
+    .clr-treenode-children {
+        margin-left: $clr-tree-node-children-margin-small;
+    }
+}
+
+.clr-treenode-link {
+    //Display
+    display: inline-block;
+    line-height: inherit;
+    height: 100%;
+    width: 100%;
+    padding: 0 0 0 4px;
+    margin: 0;
+
+    //Others
+    background: transparent;
+    border-radius: 3px 0 0 3px;
+    border-color: transparent;
+    color: clr-getTextColor();
+    cursor: pointer;
+    text-align: left;
+
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+        color: inherit;
+    }
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        background: #EEEEEE;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+
+    &.active {
+        background: $clr-selection-color;
+        color: $clr-black;
+    }
+}
+
+.clr-treenode-content {
+
+    //Going to create problems with clipping but no other option right now
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    clr-icon {
+
+        //Display
+        height: 16px;
+        width: 16px;
+        margin-right: $clr_baselineRem_0_25;
+        vertical-align: middle;
+
+    }
+
+}

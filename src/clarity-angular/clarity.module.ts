@@ -17,6 +17,7 @@ import {MODAL_DIRECTIVES} from "./modal/index";
 import {NAVIGATION_DIRECTIVES} from "./nav/index";
 import {STACK_VIEW_DIRECTIVES} from "./stack-view/index";
 import {TABS_DIRECTIVES} from "./tabs/index";
+import {TREE_VIEW_DIRECTIVES} from "./tree-view/index";
 import {WIZARD_DIRECTIVES} from "./wizard/index";
 import {ICON_DIRECTIVES} from "./iconography/index";
 
@@ -38,6 +39,7 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
         NAVIGATION_DIRECTIVES,
         STACK_VIEW_DIRECTIVES,
         TABS_DIRECTIVES,
+        TREE_VIEW_DIRECTIVES,
         WIZARD_DIRECTIVES,
         ICON_DIRECTIVES
     ],
@@ -52,6 +54,7 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
         NAVIGATION_DIRECTIVES,
         STACK_VIEW_DIRECTIVES,
         TABS_DIRECTIVES,
+        TREE_VIEW_DIRECTIVES,
         WIZARD_DIRECTIVES,
         ICON_DIRECTIVES
     ]

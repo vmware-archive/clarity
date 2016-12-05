@@ -1,0 +1,29 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<button
+    class="clr-treenode-caret"
+    (click)="toggleExpand()"
+    *ngIf="(isExpandable || hasChildren) && (!loading)">
+    <clr-icon
+        shape="caret"
+        [attr.dir]="caretDirection"></clr-icon>
+</button>
+<span class="clr-treenode-spinner spinner" *ngIf="isExpandable && loading">
+    Loading...
+</span>
+<clr-checkbox
+    *ngIf="selectable"
+    [(ngModel)]="selected"
+    [clrIndeterminate]="indeterminate"></clr-checkbox>
+<div class="clr-treenode-content">
+    <ng-content></ng-content>
+</div>
+<!-- FIXME: remove this string concatenation when boolean states are supported -->
+<div
+    class="clr-treenode-children"
+    [@collapse]="''+!expanded">
+    <ng-content select="clr-tree-node"></ng-content>
+</div>

@@ -46,6 +46,7 @@
 @import "./spinners/spinner.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, icons.clarity
 @import "./stack-view/stack-view.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, forms.clarity
 @import "./tables/tables.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, typography.clarity
+@import "./tree-view/tree-view.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, forms.clarity
 @import "./tooltips/tooltips.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity
 @import "./forms/forms.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity, icons.clarity
 @import "./datagrid/datagrid.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, layers, icons.clarity, tables.clarity

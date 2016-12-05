@@ -36,6 +36,7 @@ export const APP_ROUTES: Routes  = [
     { path: "stack-view", loadChildren: "app/stack-view/stack-view.demo.module" },
     { path: "tables", loadChildren: "app/tables/tables.demo.module" },
     { path: "tabs", loadChildren: "app/tabs/tabs.demo.module" },
+    { path: "tree-view", loadChildren: "app/tree-view/tree-view.demo.module" },
     { path: "toggles", loadChildren: "app/toggles/toggles.demo.module" },
     { path: "tooltips", loadChildren: "app/tooltips/tooltips.demo.module" },
     { path: "typography", loadChildren: "app/typography/typography.demo.module" },

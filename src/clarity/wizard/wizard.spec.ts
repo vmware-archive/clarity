@@ -33,7 +33,7 @@ class BasicWizard {
 
 @Component({
     template: `
-    <clr-wizard [(clrWizardOpen)]="open">
+    <clr-wizard [(clrWizardOpen)]="open" [clrWizardClosable]="false">
          <div class="wizard-title">
             New Virtual Machine
          </div>
@@ -252,6 +252,13 @@ describe("Wizard", () => {
             let primaryButtonText: string = compiled.querySelector(".btn-primary").textContent;
             expect(primaryButtonText).not.toMatch(/NEXT/);
         });
+
+        it("defaults clrWizardClosable to true", () => {
+            let closeButton = compiled.querySelector("button.close");
+            expect(instance.closable).toBe(true);
+            expect(closeButton).not.toBeNull();
+        });
+
     });
 
     describe("Advanced", () => {
@@ -465,6 +472,12 @@ describe("Wizard", () => {
             expect(tab2).toBeDefined();
             expect(tab3).toBeDefined();
             expect(tab4).toBeDefined();
+        });
+
+        it("passes clrWizardClosable false to the modal", () => {
+            let closeButton = compiled.querySelector("button.close");
+            expect(instance.closable).toBe(false);
+            expect(closeButton).toBeNull();
         });
     });
 

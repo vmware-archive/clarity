@@ -43,6 +43,9 @@ export class Wizard extends Tabs {
     // Variable that toggles open/close of the wizard component.
     @Input("clrWizardOpen") private _open: boolean = false;
 
+    // Variable that toggles open/close of the wizard component.
+    @Input("clrWizardClosable") closable: boolean = true;
+
     // EventEmitter which is emitted on open/close of the wizard.
     @Output("clrWizardOpenChanged") private _openChanged: EventEmitter<boolean> =
         new EventEmitter<boolean>(false);

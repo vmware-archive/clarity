@@ -1,0 +1,21 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<button class="btn btn-primary" (click)="wizardClosable.open()">Wizard, Not Closable</button>
+
+<clr-wizard #wizardclos [(clrWizardOpen)]="open" [clrWizardClosable]="false" [clrWizardSize]="'md'">
+    <div class="wizard-title">Wizard Title</div>
+
+    <clr-wizard-step>Step 1</clr-wizard-step>
+    <clr-wizard-step>Step 2</clr-wizard-step>
+    <clr-wizard-step>Step 3</clr-wizard-step>
+
+    <clr-wizard-page>Note that there is no closing &times; icon in the top right.</clr-wizard-page>
+    <clr-wizard-page>Content for step 2</clr-wizard-page>
+    <clr-wizard-page>Content for step 3</clr-wizard-page>
+</clr-wizard>
+
+<clr-example [clrLanguage]="'html'" [clrCode]="html"></clr-example>

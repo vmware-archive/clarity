@@ -65,9 +65,9 @@ $card-children-space-between: $clr_baselineRem_0_5;
             padding: $card-children-padding-vertical $card-children-padding-horizontal;
         }
 
+        .card-subtitle, //TODO: Deprecate in 0.8.0
         .card-header,
-        .card-title,
-        .card-subtitle {
+        .card-title, {
             @include clr-getTypePropertiesForDomElement(card_title, (color, font-size, font-weight, letter-spacing));
         }
 
@@ -174,9 +174,9 @@ $card-children-space-between: $clr_baselineRem_0_5;
         }
 
         .card-title,
-        .card-subtitle,
+        .card-subtitle, //TODO: Deprecate in 0.8.0
         .card-text,
-        .group, //TODO: Deprecate this
+        .group, //TODO: Deprecate in 0.8.0
         .card-media-block,
         .list,
         .list-unstyled {

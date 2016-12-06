@@ -43,6 +43,9 @@ export class Wizard extends Tabs {
     // Variable that toggles open/close of the wizard component.
     @Input("clrWizardOpen") private _open: boolean = false;
 
+    // Variable that toggles open/close of the wizard component.
+    @Input("clrWizardClosable") closable: boolean = true;
+
     // EventEmitter which is emitted on open/close of the wizard.
     @Output("clrWizardOpenChanged") private _openChanged: EventEmitter<boolean> =
         new EventEmitter<boolean>(false);
@@ -125,6 +128,7 @@ export class Wizard extends Tabs {
     // wizard.
     close(): void {
         this._open = false;
+        this.onCancel.emit(null);
         this._openChanged.emit(false);
     }
 
@@ -134,8 +138,6 @@ export class Wizard extends Tabs {
     // button and emits the onCancel event of the active tab.
     @HostListener("body:keyup.escape")
     _close(): void {
-        this.onCancel.emit(null);
-
         this.close();
     }
 

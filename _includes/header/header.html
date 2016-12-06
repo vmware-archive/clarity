@@ -16,9 +16,12 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <base href="/">
-
+    
     <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon">
     <link rel="icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon">
+
+    <script src="{{ site.baseurl }}/node_modules/intl/dist/Intl.min.js"></script>
+    <script src="{{ site.baseurl }}/node_modules/intl/locale-data/jsonp/en.js"></script>
 
     {% if include.clarityNg %}
         {% include header/clarity-ng-scripts.html %}

@@ -14,6 +14,18 @@ node_modules/
 !/node_modules/clarity-angular
 !/node_modules/font-awesome
 
+!/node_modules/intl
+/node_modules/intl/*
+!/node_modules/intl/dist
+/node_modules/intl/dist/*
+!/node_modules/intl/dist/Intl.min.js
+
+!/node_modules/intl/locale-data
+/node_modules/intl/locale-data/*
+!/node_modules/intl/locale-data/jsonp
+/node_modules/intl/locale-data/jsonp/*
+!/node_modules/intl/locale-data/jsonp/en.js
+
 .sass-cache
 .DS_Store
 *.swp

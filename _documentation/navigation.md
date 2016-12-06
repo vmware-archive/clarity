@@ -25,6 +25,8 @@ combinations of navigation.
 ###### 5. Subnav as primary navigation and sidenav as secondary navigation
 <clr-layout-only-subnav-primary></clr-layout-only-subnav-primary>
 
+<a id="responsive_navigation"></a>
+
 ### Responsive Navigation
 
 Clarity provides three levels of navigation represented by the following classnames:

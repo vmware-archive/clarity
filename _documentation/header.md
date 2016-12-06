@@ -38,6 +38,8 @@ layout: documentation
 #### Types
 <clr-header-demo-types></clr-header-demo-types>
 
+For information about responsive headers, see <a href="{{ site.baseurl }}/documentation/navigation#responsive_navigation">Responsive Navigation</a>.
+
 #### Color Options
 <clr-header-demo-colors></clr-header-demo-colors>
 

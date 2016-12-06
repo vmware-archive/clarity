@@ -15,6 +15,7 @@ import {WizardSimple} from "./wizard-simple.demo";
 import {WizardBasic} from "./wizard-basic.demo";
 import {WizardFormValidation} from "./wizard-form-validation.demo";
 import {WizardAsyncValidation} from "./wizard-async-validation.demo";
+import {WizardNotClosable} from "./wizard-not-closable.demo";
 import {CodeExample} from "./code-example";
 import {WizardOptionsDemo} from "./wizard-options.demo";
 
@@ -34,7 +35,8 @@ import {WizardOptionsDemo} from "./wizard-options.demo";
         WizardDemo,
         WizardAngularDemo,
         WizardStaticDemo,
-        WizardOptionsDemo
+        WizardOptionsDemo,
+        WizardNotClosable
     ],
     exports: [
         WizardBasic,
@@ -44,7 +46,8 @@ import {WizardOptionsDemo} from "./wizard-options.demo";
         WizardDemo,
         WizardAngularDemo,
         WizardStaticDemo,
-        WizardOptionsDemo
+        WizardOptionsDemo,
+        WizardNotClosable
     ]
 })
 export default class WizardDemoModule {

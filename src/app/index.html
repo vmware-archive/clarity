@@ -25,6 +25,10 @@
     <script src="node_modules/prismjs/prism.js"></script>
     <script src="node_modules/prismjs/components/prism-typescript.min.js"></script>
 
+    <!-- Polfill for IE10 Date Pipe Intl issue (https://github.com/angular/angular/issues/3333)-->
+    <script src="node_modules/intl/dist/Intl.min.js"></script>
+    <script src="node_modules/intl/locale-data/jsonp/en.js"></script>
+
     <!-- @if NODE_ENV='dev' -->
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="clarity-icons.css">

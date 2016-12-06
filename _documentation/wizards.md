@@ -67,6 +67,14 @@ programmatically calling next when the asynchronous validation call returns and 
 
 <clr-wizard-async-validation></clr-wizard-async-validation>
 
+### Non-Closable Wizard
+
+In some circumstances, you may want to not show the closing &times; icon in the top right 
+of the Wizard modal. You can remove this close &times; icon by setting the 
+<code class="clr-code">clrWizardClosable</code> input to <code class="clr-code">false</code>.
+
+<clr-wizard-not-closable></clr-wizard-not-closable>
+
 ### Options for &lt;clr-wizard&gt;
 {% raw %}
 <table class="table">
@@ -128,7 +136,6 @@ programmatically calling next when the asynchronous validation call returns and 
             wizard by passing in the id to wizard's skipTab an unSkipTab methods.
         </td>
     </tr>
-
     <tr>
         <td class="left">
             <div class="hidden-xs-down"><b>[clrWizardStepIsSkipped]</b></div>
@@ -221,6 +228,15 @@ programmatically calling next when the asynchronous validation call returns and 
         <td class="hidden-xs-down">N/A</td>
         <td class="left">
             Emits an event when loading the wizard page.
+        </td>
+    </tr>
+    <tr>
+        <td class="left">[clrWizardClosable]</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td class="left">
+            If set to false, this will remove the closing &times; element in the top right. This 
+            means that users will need to click the Cancel button to exit the wizard without finishing.
         </td>
     </tr>
     </tbody>

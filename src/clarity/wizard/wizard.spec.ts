@@ -62,7 +62,8 @@ class BasicWizard {
         </clr-wizard-page>
 
         <clr-wizard-page
-               (clrWizardPageOnCommit)="myOnCommit0($event)">
+               (clrWizardPageOnCommit)="myOnCommit0($event)"
+               (clrWizardPageOnCancel)="myOnCancel($event)">
             <div class="tab2"><p>Content2</p></div>
          </clr-wizard-page>
 
@@ -89,6 +90,7 @@ class AdvancedWizard {
     nextDisabled: boolean = false;
     content1: String = "Content1";
     content3: String = "Content3";
+    hasBeenCanceled = false;
 
     myOnLoad(): void {
         this.content1 = "This Works Better";
@@ -100,6 +102,10 @@ class AdvancedWizard {
 
     myOnCommit(event: any): void {
         event.preventDefault();
+    }
+
+    myOnCancel(event: any): void {
+        this.hasBeenCanceled = true;
     }
 };
 
@@ -117,6 +123,12 @@ describe("Wizard", () => {
     let moveToPrevious: Function = function (el: any): void {
         let back: HTMLElement = el.querySelector(".btn-outline");
         back.click();
+        fixture.detectChanges();
+    };
+
+    let doCancel: Function = function(el: any): void {
+        let cancel: HTMLElement = el.querySelector(".btn.btn-link");
+        cancel.click();
         fixture.detectChanges();
     };
 
@@ -384,6 +396,15 @@ describe("Wizard", () => {
             expect(instance.tabContents[1].active).toBe(false);
             expect(instance.tabContents[2].active).toBe(true);
             expect(instance.tabContents[3].active).toBe(false);
+        });
+
+        it("calls the user-defined onCancel handler when the Cancel button is clicked", () => {
+            fixture.detectChanges();
+            doCancel(compiled);
+
+            expect(instance.hasBeenCanceled).toBe(true);
+            spyOn(instance, "_close");
+            expect(instance._close).toHaveBeenCalled();
         });
 
         it("displays error message if clrWizardPageErrorFlag is set to true", () => {

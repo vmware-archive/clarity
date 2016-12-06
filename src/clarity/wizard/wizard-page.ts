@@ -39,6 +39,10 @@ export class WizardPage extends TabContent {
     @Output("clrWizardPageOnCommit") onCommit: EventEmitter<any> =
         new EventEmitter<any>(false);
 
+    // User can bind his event handler for onCancel of the main content
+    @Output("clrWizardPageOnCancel") onCancel: EventEmitter<any> =
+        new EventEmitter<any>(false);
+
     // User can bind his/her event handler for onLoad of the main content
     @Output("clrWizardPageOnLoad") onLoad: EventEmitter<any> = new EventEmitter(false);
 

@@ -11,7 +11,7 @@ import {Wizard} from "./wizard";
 
 @Component({
     template: `
-    <clr-wizard [(clrWizardOpen)]="open">
+    <clr-wizard [(clrWizardOpen)]="open" [clrWizardClosable]="false">
         <div class="wizard-title">Title</div>
         <clr-wizard-step>Tab1</clr-wizard-step>
         <clr-wizard-step>Tab2</clr-wizard-step>
@@ -35,8 +35,7 @@ class BasicWizard {
     template: `
     <clr-wizard 
         [(clrWizardOpen)]="open"
-         (clrWizardOnCancel)="myOnCancel($event)">
-         
+        (clrWizardOnCancel)="myOnCancel($event)">
          <div class="wizard-title">
             New Virtual Machine
          </div>
@@ -266,6 +265,12 @@ describe("Wizard", () => {
             let primaryButtonText: string = compiled.querySelector(".btn-primary").textContent;
             expect(primaryButtonText).not.toMatch(/NEXT/);
         });
+
+        it("passes clrWizardClosable false to the modal", () => {
+            let closeButton = compiled.querySelector("button.close");
+            expect(instance.closable).toBe(false);
+            expect(closeButton).toBeNull();
+        });
     });
 
     describe("Advanced", () => {
@@ -485,6 +490,11 @@ describe("Wizard", () => {
             doCancel(compiled);
             expect(fixture.componentInstance.hasBeenCanceled).toBe(true);
         });
-    });
 
+        it("defaults clrWizardClosable to true", () => {
+            let closeButton = compiled.querySelector("button.close");
+            expect(instance.closable).toBe(true);
+            expect(closeButton).not.toBeNull();
+        });
+    });
 });

@@ -7,16 +7,13 @@
 <clr-modal
       [clrModalOpen]="_open"
       [clrModalSize]="size"
-      [clrModalClosable]="false"
+      [clrModalClosable]="closable"
       [clrModalStaticBackdrop]="true"
       (clrModalOpenChange)="close()">
 
    <div class="modal-body">
       <div class="content-container">
          <main class="content-area">
-            <button type="button" class="close" aria-label="Close" (click)="_close($event)">
-               <span aria-hidden="true">&times;</span>
-            </button>
             <ng-content></ng-content>
          </main>
 

@@ -23,4 +23,5 @@ import {CheckboxesDemo} from "./checkboxes.demo";
     ]
 })
 export default class CheckboxesDemoModule {
+
 }

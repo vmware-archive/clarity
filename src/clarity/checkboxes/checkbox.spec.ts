@@ -18,6 +18,7 @@ abstract class CheckboxTest {
     @ViewChild(Checkbox) checkboxInstance: Checkbox;
 
     checked = false;
+    indeterminate = false;
 }
 
 @Component({
@@ -60,6 +61,14 @@ class CheckboxWithName extends CheckboxTest {
 class InlineCheckbox extends CheckboxTest {
 }
 
+@Component({
+    template: `
+        <clr-checkbox [clrIndeterminate]="true"></clr-checkbox>
+    `
+})
+class IndeterminateCheckbox extends CheckboxTest {
+}
+
 describe("Checkbox", () => {
     let fixture: ComponentFixture<CheckboxTest>;
     let testInstance: CheckboxTest;
@@ -83,10 +92,17 @@ describe("Checkbox", () => {
         expect(checkboxElement.checked).toBe(checked);
     }
 
+    function assertIndeterminate(indeterminate: boolean) {
+        fixture.detectChanges();
+        expect(testInstance.indeterminate).toBe(indeterminate);
+        expect(checkboxInstance.indeterminate).toBe(indeterminate);
+    }
+
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [ClarityModule, FormsModule],
-            declarations: [BasicCheckbox, CheckboxWithNgModel, CheckboxWithLabel, CheckboxWithName, InlineCheckbox]
+            declarations: [BasicCheckbox, CheckboxWithNgModel, CheckboxWithLabel, CheckboxWithName, InlineCheckbox,
+                IndeterminateCheckbox]
         });
     });
 
@@ -109,19 +125,25 @@ describe("Checkbox", () => {
     it("toggles the checked state based on [clrChecked] input", () => {
         createTestComponent(BasicCheckbox);
         assertChecked(false);
+        assertIndeterminate(false);
         fixture.componentInstance.checked = true;
         assertChecked(true);
+        assertIndeterminate(false);
         fixture.componentInstance.checked = false;
         assertChecked(false);
+        assertIndeterminate(false);
     });
 
     it("toggles the checked state based on user actions", () => {
         createTestComponent(BasicCheckbox);
         assertChecked(false);
+        assertIndeterminate(false);
         labelElement.click();
         assertChecked(true);
+        assertIndeterminate(false);
         labelElement.click();
         assertChecked(false);
+        assertIndeterminate(false);
     });
 
     it("applies the given name attribute to the native input", () => {
@@ -132,6 +154,13 @@ describe("Checkbox", () => {
     it("supports inline checkboxes", () => {
         createTestComponent(InlineCheckbox);
         expect(fixture.nativeElement.querySelector(".checkbox-inline")).not.toBeNull();
+    });
+
+    it("supports indeterminate state", () => {
+        createTestComponent(IndeterminateCheckbox);
+        fixture.componentInstance.indeterminate = true;
+        assertIndeterminate(true);
+        assertChecked(false);
     });
 
     describe("ngModel support", () => {

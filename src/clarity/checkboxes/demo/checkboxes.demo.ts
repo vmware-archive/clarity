@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import {Component, Input} from "@angular/core";
 
 @Component({
     selector: "clr-checkboxes-demo",
@@ -14,4 +14,11 @@ import {Component} from "@angular/core";
 
 export class CheckboxesDemo {
 
+    @Input()
+    indeterminateState: boolean = true;
+
+    onToggleIndeterminateState() {
+        event.preventDefault();
+        this.indeterminateState = !this.indeterminateState;
+    }
 }

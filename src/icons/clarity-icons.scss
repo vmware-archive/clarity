@@ -6,8 +6,9 @@
 
 $clr-icon-size: 16px;
 $clr-icon-color-success: #318700;
-$clr-icon-color-danger: #a32100;
+$clr-icon-color-danger: #e62700;
 $clr-icon-color-warning: #e62700;
+$clr-icon-color-error: #e62700;
 $clr-icon-color-info: #007CBB;
 $clr-icon-color-inverse: #FFFFFF;
 $clr-icon-color-highlight: #007CBB;
@@ -49,6 +50,9 @@ clr-icon {
     }
     &.icon-color-success {
         @include setIconColor($clr-icon-color-success);
+    }
+    &.icon-color-error {
+        @include setIconColor($clr-icon-color-error);
     }
     &.icon-color-danger {
         @include setIconColor($clr-icon-color-danger);

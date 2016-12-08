@@ -10,6 +10,7 @@ import {TypographyFontWeightDemo} from "./typography-font-weight";
 import {TypographyHeadersDemo} from "./typography-headers";
 import {TypographyTextDemo} from "./typography-text";
 import {TypographyLinksDemo} from "./typography-links";
+import {TypographyFontCharTestDemo} from "./typography-font-char-test";
 
 const ROUTES: Routes = [
     {
@@ -20,7 +21,8 @@ const ROUTES: Routes = [
             { path: "typography-font-weight", component: TypographyFontWeightDemo },
             { path: "typography-headers", component: TypographyHeadersDemo },
             { path: "typography-text", component: TypographyTextDemo },
-            { path: "typography-links", component: TypographyLinksDemo }
+            { path: "typography-links", component: TypographyLinksDemo },
+            { path: "typography-font-char-test", component: TypographyFontCharTestDemo }
         ]
     }
 ];

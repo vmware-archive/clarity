@@ -12,6 +12,7 @@ import {TypographyFontWeightDemo} from "./typography-font-weight";
 import {TypographyHeadersDemo} from "./typography-headers";
 import {TypographyTextDemo} from "./typography-text";
 import {TypographyLinksDemo} from "./typography-links";
+import {TypographyFontCharTestDemo} from "./typography-font-char-test";
 
 @NgModule({
     imports: [
@@ -24,14 +25,16 @@ import {TypographyLinksDemo} from "./typography-links";
         TypographyFontWeightDemo,
         TypographyHeadersDemo,
         TypographyTextDemo,
-        TypographyLinksDemo
+        TypographyLinksDemo,
+        TypographyFontCharTestDemo
     ],
     exports: [
         TypographyDemo,
         TypographyFontWeightDemo,
         TypographyHeadersDemo,
         TypographyTextDemo,
-        TypographyLinksDemo
+        TypographyLinksDemo,
+        TypographyFontCharTestDemo
     ]
 })
 export default class TypographyDemoModule {

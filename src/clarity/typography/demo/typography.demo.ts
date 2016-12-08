@@ -16,6 +16,7 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./typography-headers']">Headers (H1..H6)</a></li>
             <li><a [routerLink]="['./typography-text']">Body Text and Paragraphs</a></li>
             <li><a [routerLink]="['./typography-links']">Link states</a></li>
+            <li><a [routerLink]="['./typography-font-char-test']">Character Test</a></li>
         </ul>
         <router-outlet></router-outlet>
     `

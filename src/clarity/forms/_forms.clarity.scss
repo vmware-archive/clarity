@@ -224,9 +224,21 @@ $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height
 
             //All children have a top and bottom margin regarless if they are direct descendants or if they are
             //in a grid
-            label, span, #{$styledInputs}, .tooltip-validation, textarea,
-            .select, .checkbox-inline, .radio-inline, .checkbox, .radio,
-            .toggle-switch, button, a, #{$styledInputs1}, .btn {
+            label,
+            span,
+            #{$styledInputs},
+            .tooltip-validation,
+            textarea,
+            .select,
+            .checkbox-inline,
+            .radio-inline,
+            .checkbox,
+            .radio,
+            .toggle-switch,
+            button,
+            a,
+            #{$styledInputs1},
+            .btn {
                 margin-top: $clr_baselineRem_0_25;
                 margin-bottom: $clr_baselineRem_0_25;
             }
@@ -258,33 +270,38 @@ $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height
                 padding-left: 0;
                 margin-bottom: $clr_baselineRem_1;
 
-                & > label:first-of-type {
-                    position: relative;
+                & > label:first-child,
+                & > label:not(:first-child),
+                #{$styledInputs},
+                .tooltip-validation,
+                .select,
+                .toggle-switch,
+                .checkbox,
+                .radio,
+                .checkbox-inline,
+                .radio-inline {
                     flex: 1 1 100%;
+                }
+
+                & > label:first-child {
+                    position: relative;
                     margin: 0 0 $clr_baselineRem_0_5 0;
                 }
 
-                & > label:not(:first-child), span {
+                & > label:not(:first-child),
+                span {
                     margin: $clr_baselineRem_0_5 $clr_baselineRem_0_5 0 0;
-                    width: 80%;
                 }
 
                 #{$styledInputs} {
-                    flex: 1 1 100%;
                     padding: 0 $clr_baselineRem_0_5;
                 }
 
                 .tooltip-validation {
-                    flex: 1 1 100%;
-
                     input {
                         margin: 0;
                         width: 100%;
                     }
-                }
-
-                .select, .toggle-switch, .checkbox, .radio, .checkbox-inline, .radio-inline {
-                    flex: 1 1 100%;
                 }
             }
         }

@@ -13,24 +13,7 @@ Clarity’s designs stem from continuous exploration and research. These designs
 {: #howToUse}
 ## How to Use Clarity
 
-We offer three approaches for consuming Clarity: UX, UX and UI, and Angular 2.
-
-<!--
-We offer three approaches for consuming Clarity.
-
-### UX
-
-Consuming Clarity at the visual specification level works well for quickly styling applications with a modern look and feel.  This limited approach, however, has challenges in staying current with the framework as Clarity evolves.  If you use the UX path, you'll also need a plan to adopt the UI and NG paths.
-
-### UX + UI
-
-For products that are not Angular based, we recommend using Clarity's HTML and CCS. This approach makes Clarity updates easier to consume.
-
-### Full Clarity (UX + UI + NG)
-
-For the most complete integration with Clarity, consume the framework at the Angular 2 level.
-
--->
+We offer three approaches for utilizing Clarity: UX, UX and UI, and Angular 2.
 
 {: #sketchTemplate}
 ### Using the Clarity Sketch UI Template

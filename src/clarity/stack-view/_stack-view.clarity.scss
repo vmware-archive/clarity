@@ -34,6 +34,9 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
                 &.btn {
                     min-width: 0;
                     padding: 0 $clr_baselineRem_0_5;
+                }
+
+                &.btn-link {
                     // Weird negative margin to make the button aligned with the stack view
                     // in its default state. It then looks unaligned on hover only.
                     margin-right: -1 * $clr_baselineRem_0_5;

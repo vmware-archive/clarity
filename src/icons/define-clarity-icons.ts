@@ -3,7 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {SVG_ICON_TEMPLATES} from "./svg-icon-templates";
+import { SVG_ICON_TEMPLATES } from "./svg-icon-templates";
+import { SVG_IMG_ICON_TEMPLATES } from "./svg-img-icon-templates";
 
 let parentConstructor = function () {
     return HTMLElement.apply(this, arguments);
@@ -33,7 +34,13 @@ let generateIcon = function (element: any, shape: string) {
 
     if (shape !== element._shape) {
         element._shape = shape;
-        element.innerHTML = SVG_ICON_TEMPLATES[element._shape] || SVG_ICON_TEMPLATES["error"];
+        element.innerHTML =
+            SVG_ICON_TEMPLATES[element._shape] ||
+            SVG_IMG_ICON_TEMPLATES[element._shape] ||
+            (function () {
+                console.error("Error: '" + shape + "' is not found in the Clarity Icon set.");
+                return SVG_ICON_TEMPLATES["error"];
+            }());
     }
 };
 let setIconSize = function (element: any, size: string) {

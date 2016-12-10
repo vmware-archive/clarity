@@ -3,7 +3,13 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from "@angular/core";
+import { SVG_ICON_TEMPLATES } from "../../../icons/svg-icon-templates";
+
+let iconShapes = Object.keys(SVG_ICON_TEMPLATES);
+let deprecatedIconShapes = ["dashboard-gauge"];
+iconShapes = iconShapes.filter(shape => deprecatedIconShapes.indexOf(shape) === -1);
+
 
 @Component({
     selector: "clr-icon-selection-demo",
@@ -12,4 +18,7 @@ import {Component} from "@angular/core";
     templateUrl: "./icon-selection.demo.html"
 })
 export class IconSelectionDemo {
+
+    shapes: string[] = iconShapes;
+
 }

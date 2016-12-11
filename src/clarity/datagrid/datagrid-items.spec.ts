@@ -20,7 +20,7 @@ export default function(): void {
              * we can't use our usual shortcut, we need to rely on @ViewChild
              */
             TestBed.configureTestingModule({
-                imports: [ClarityModule],
+                imports: [ClarityModule.forRoot()],
                 declarations: [FullTest],
                 providers: [Items, Filters, Sort, Page]
             });

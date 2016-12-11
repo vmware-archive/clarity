@@ -104,7 +104,7 @@ application doesn't support IE10, you can skip the following installation:
     @NgModule({
         imports: [
             BrowserModule,
-            ClarityModule,
+            ClarityModule.forRoot(),
             ....
          ],
          declarations: [ AppComponent ],

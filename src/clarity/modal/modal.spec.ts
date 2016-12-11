@@ -47,7 +47,7 @@ describe("Modal", () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [ClarityModule],
+            imports: [ClarityModule.forRoot()],
             declarations: [TestComponent]
         });
 

@@ -16,6 +16,8 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./form-validation']">Form Validation</a></li>
             <li><a [routerLink]="['./form-compact']">Compact Form</a></li>
             <li><a [routerLink]="['./form-grid']">Forms in a Grid</a></li>
+            <li><a [routerLink]="['./form-template-driven']">Template-Driven Forms</a></li>
+            <li><a [routerLink]="['./form-reactive']">Reactive Forms</a></li>
         </ul>
         <router-outlet></router-outlet>
     `

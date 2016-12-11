@@ -6,11 +6,14 @@
 import {ModuleWithProviders} from "@angular/core/src/metadata/ng_module";
 import {Routes, RouterModule} from "@angular/router";
 import {FormsDemo} from "./forms.demo";
-import {FormFieldsDemo} from "./form-fields";
-import {FormTestDemo} from "./form-test";
-import {FormValidationDemo} from "./form-validation";
-import {FormCompactDemo} from "./form-compact";
-import {FormGridDemo} from "./form-grid";
+import {FormFieldsDemo} from "./form-fields/form-fields";
+import {FormTestDemo} from "./form-test/form-test";
+import {FormValidationDemo} from "./form-validation-static/form-validation";
+import {FormCompactDemo} from "./compact-forms/form-compact";
+import {FormGridDemo} from "./form-grid/form-grid";
+
+import {TemplateDrivenFormsDemo} from "./template-driven-forms/template-driven-forms";
+import {ReactiveFormsDemo} from "./reactive-forms/reactive-forms";
 
 const ROUTES: Routes = [
     {
@@ -22,7 +25,9 @@ const ROUTES: Routes = [
             { path: "form-test", component: FormTestDemo },
             { path: "form-validation", component: FormValidationDemo },
             { path: "form-compact", component: FormCompactDemo },
-            { path: "form-grid", component: FormGridDemo }
+            { path: "form-grid", component: FormGridDemo },
+            { path: "form-template-driven", component: TemplateDrivenFormsDemo },
+            { path: "form-reactive", component: ReactiveFormsDemo }
         ]
     }
 ];

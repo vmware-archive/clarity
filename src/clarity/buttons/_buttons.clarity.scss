@@ -194,7 +194,7 @@ $clr-button-appearance-map: (
 @mixin btn-appearance() {
     cursor: pointer;
     display: inline-block;
-    margin: $clr-button-vertical-margin $clr-button-horizontal-margin $clr-button-vertical-margin 0;
+    // margin: $clr-button-vertical-margin $clr-button-horizontal-margin $clr-button-vertical-margin 0;
 
     // Overrides a Fix for IOS in BS4 _normalize.scss (~ln 330)
     // `!important` is to override specificity in this instance
@@ -257,7 +257,7 @@ $clr-button-appearance-map: (
 
         &.btn-link {
             @include populateButtonProperties(link);
-            margin: $clr-button-vertical-margin 0;
+            padding: 0;
         }
 
         &.btn-inverse {

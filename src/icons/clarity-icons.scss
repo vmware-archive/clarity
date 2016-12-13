@@ -12,6 +12,7 @@ $clr-icon-color-error: #e62700;
 $clr-icon-color-info: #007CBB;
 $clr-icon-color-inverse: #FFFFFF;
 $clr-icon-color-highlight: #007CBB;
+$clr-icon-color-warningYellow: #ffc31a;
 
 @mixin setIconColor($clr-icon-color) {
     fill: $clr-icon-color;
@@ -35,7 +36,7 @@ clr-icon {
     @include setIconColor(currentColor);
 
      /* .icon-size-* classes have been deprecated and will be removed in 0.8.0. */
-
+    // DEPRECATED SIZING
     &.icon-size-sm {
         height: 16px;
         width: 16px;
@@ -48,44 +49,82 @@ clr-icon {
         height: 72px;
         width: 72px;
     }
-    &.icon-color-success {
+
+    // FULL ICON COLOR: .icon-color-* selectors are deprecated
+    &.icon-color-success, 
+    &.is-green, 
+    &.is-success {
         @include setIconColor($clr-icon-color-success);
     }
-    &.icon-color-error {
+
+    &.icon-color-error, 
+    &.is-red, 
+    &.is-error {
         @include setIconColor($clr-icon-color-error);
     }
-    &.icon-color-danger {
+
+    &.icon-color-danger,
+    &.is-danger {
         @include setIconColor($clr-icon-color-danger);
     }
-    &.icon-color-warning {
+
+    &.icon-color-warning,
+    &.is-warning {
         @include setIconColor($clr-icon-color-warning);
     }
-    &.icon-color-info {
+
+    &.icon-color-info,
+    &.is-blue,
+    &.is-info {
         @include setIconColor($clr-icon-color-info);
     }
-    &.icon-color-inverse {
+
+    &.icon-color-inverse,
+    &.is-white,
+    &.is-inverse {
         @include setIconColor($clr-icon-color-inverse);
     }
-    &.icon-color-highlight {
+
+    &.icon-color-highlight,
+    &.is-highlight {
         @include setIconColor($clr-icon-color-highlight);
     }
-    &.icon-orient-up, &[shape$=" up"], &[dir="up"] {
+
+    // ORIENTATION: .icon-orient classes are deprecated
+    &.icon-orient-up, 
+    &[shape$=" up"], 
+    &[dir="up"] {
         @include rotateSVGIcon(0deg);
     }
-    &.icon-orient-down, &[shape$=" down"], &[dir="down"] {
+
+    &.icon-orient-down, 
+    &[shape$=" down"], 
+    &[dir="down"] {
         @include rotateSVGIcon(180deg);
     }
-    &.icon-orient-right, &[shape$=" right"], &[dir="right"] {
+
+    &.icon-orient-right, 
+    &[shape$=" right"], 
+    &[dir="right"] {
         @include rotateSVGIcon(90deg);
     }
-    &.icon-orient-left, &[shape$=" left"], &[dir="left"] {
+
+    &.icon-orient-left, 
+    &[shape$=" left"], 
+    &[dir="left"] {
         @include rotateSVGIcon(270deg);
     }
+
+    .clr-i-badge {
+        @include setIconColor($clr-icon-color-warning);
+    }
+
     & > svg {
         height: 100%;
         width: 100%;
         display: block;
     }
+
     .transparent-fill-stroke {
         fill: none;
         stroke-width: 1.3;
@@ -93,5 +132,106 @@ clr-icon {
         stroke-miterlimit: 10;
     }
 
+    .clr-i-solid, 
+    .clr-i-solid--badged,
+    .clr-i-solid--alerted,
+     {
+        display: none;
+    }
 
+    .clr-i-outline--alerted, 
+    .clr-i-outline--badged{ 
+        &:not(.clr-i-outline) {
+            display: none;
+        }
+    }
+
+    &[class*="has-alert"] {
+        .clr-i-outline--alerted {
+            display: block;
+        }
+
+        .clr-i-outline:not(.clr-i-outline--alerted) {
+            display: none;
+        }
+    }
+
+    &[class*="has-badge"] {
+        .clr-i-outline--badged {
+            display: block;
+        }
+
+        .clr-i-outline:not(.clr-i-outline--badged) {
+            display: none;
+        }
+    }
+
+    &.is-solid {
+        .clr-i-solid {
+            display: block;
+        }
+
+        .clr-i-outline, 
+        .clr-i-outline--badged {
+            display: none;
+        }
+
+        .clr-i-solid--alerted,
+        .clr-i-solid--badged {
+            &:not(.clr-i-solid) {
+                display: none;
+            }
+        }
+    }
+
+    &.is-solid[class*="has-badge"] {
+        .clr-i-solid--badged {
+            display: block;
+        }
+
+        .clr-i-outline, 
+        .clr-i-outline--badged,
+        .clr-i-solid:not(.clr-i-solid--badged) {
+            display: none;
+        }
+    }
+
+    &.is-solid[class*="has-alert"] {
+        .clr-i-solid--alerted {
+            display: block;
+        }
+
+        .clr-i-outline, 
+        .clr-i-outline--alerted,
+        .clr-i-solid:not(.clr-i-solid--alerted) {
+            display: none;
+        }
+    }
+
+    &.has-badge--success {
+        .clr-i-badge {
+            @include setIconColor($clr-icon-color-success);
+        }
+    }
+
+    &.has-badge--error {
+        .clr-i-badge {
+            @include setIconColor($clr-icon-color-error);
+        }
+    }
+
+    &.has-badge--info {
+        .clr-i-badge {
+            @include setIconColor($clr-icon-color-info);
+        }
+    }
+
+    &.has-alert {
+        .clr-i-alert {
+            @include setIconColor(#313131);
+        }
+        .clr-i-alertTriangle {
+            @include setIconColor($clr-icon-color-warningYellow);
+        }
+    }
 }

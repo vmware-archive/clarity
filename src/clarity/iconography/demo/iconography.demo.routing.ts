@@ -11,6 +11,7 @@ import { IconColorsDemo } from "./icon-colors";
 import { IconSizeDemo } from "./icon-size";
 import { IconOrientationDemo } from "./icon-orientation";
 import { IconInverseColorDemo } from "./icon-inverse-color";
+import { IconVariantsDemo } from "./icon-variants";
 
 const ROUTES: Routes = [
     {
@@ -22,7 +23,8 @@ const ROUTES: Routes = [
             { path: "color-options", component: IconColorsDemo },
             { path: "inverse-color", component: IconInverseColorDemo },
             { path: "size", component: IconSizeDemo },
-            { path: "orientation", component: IconOrientationDemo }
+            { path: "orientation", component: IconOrientationDemo },
+            { path: "variants", component: IconVariantsDemo }
         ]
     }
 ];

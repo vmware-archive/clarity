@@ -120,8 +120,8 @@ $clr-button-appearance-map: (
         letter-spacing: 0.073em,
         font-size: rem(11/$clr-rem-denominator),
         font-weight: 400,
-        height: $clr-button-height-sm,
-        padding: $clr-button-padding
+        height: $clr-button-height-sm
+        //padding: $clr-button-padding
     ),
     form: (
         line-height: $clr-button-height,
@@ -210,6 +210,13 @@ $clr-button-appearance-map: (
     @include btn-text-properties();
 }
 
+@mixin applyDynamicPadding() {
+  padding: 0;
+  & + .btn {
+    padding: 0 $clr-button-horizontal-padding
+  }
+}
+
 @include exports('buttons.clarity') {
 
     .btn {
@@ -257,7 +264,7 @@ $clr-button-appearance-map: (
 
         &.btn-link {
             @include populateButtonProperties(link);
-            padding: 0;
+            @include applyDynamicPadding();
         }
 
         &.btn-inverse {

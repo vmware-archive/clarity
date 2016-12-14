@@ -17,6 +17,7 @@ $clr-form-disabled-background-color: $clr-light-midtone-gray !default;
 $clr-form-field-disabled-color: $clr-gray !default;
 $clr-checkbox-radio-height: $clr-icon-dimension-sm !default;
 $clr-form-icon-dim: $clr-icon-dimension-sm !default;
+$clr-indeterminate-checkbox-border-color: $clr-action-blue-light-midtone !default;
 $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height) / 2 !default;
 
 //Standard Clarity Input Bottom Border Animation
@@ -451,12 +452,12 @@ $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height
         }
 
         input[type="checkbox"]:indeterminate + label::before {
-            background: $clr-form-field-background-color;
-            border: none;
+            border: 1px solid $clr-indeterminate-checkbox-border-color;
         }
         input[type="checkbox"]:indeterminate + label::after {
-            display: inline-block;
             border-left: none;
+            border-bottom-color: $clr-indeterminate-checkbox-border-color;
+            display: inline-block;
             transform: translate(0, $clr-checkbox-radio-height/4);
         }
 

@@ -48,10 +48,14 @@
         <div class="form-group">
             <label>Indetermiante Checkbox</label>
             <div class="checkbox-inline">
-                <clr-checkbox type="checkbox" id="checkbox_9" [clrIndeterminate]="indeterminateState"></clr-checkbox>
-                <label for="checkrads_8">
-                    <button class="btn btn-primary" (click)="onToggleIndeterminateState($event)">Toggle Indeterminate State</button>
-                </label>
+                <clr-checkbox type="checkbox" id="checkbox_9" [clrIndeterminate]="indeterminateState">
+                    <div (click)="onToggleIndeterminateState($event)">
+                        Toggle Indeterminate State
+                    </div>
+                    <div>
+                        NOTE: Native checkbox elements must set indeterminate state with JavaScript.
+                    </div>
+                </clr-checkbox>
             </div>
         </div>
     </section>
@@ -98,6 +102,16 @@
             &lt;div class=&quot;checkbox-inline disabled&quot;&gt;
                 &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_8&quot; disabled checked&gt;
                 &lt;label for=&quot;checkrads_8&quot;&gt;A disabled and checked checkbox&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class="form-group"&gt;
+            &lt;label&gt;Indetermiante Checkbox&lt;/label&gt;
+            &lt;div class="checkbox-inline"&gt;
+                &lt;clr-checkbox type="checkbox" id="checkbox_9" [clrIndeterminate]="indeterminateState"&gt;
+                    &lt;span (click)="onToggleIndeterminateState($event)"&gt;
+                        Toggle Indeterminate State
+                        &lt;!--&lt;button class="btn btn-primary btn-sm" (click)="onToggleIndeterminateState($event)"&gt;Toggle Indeterminate State&lt;/button&gt;--&gt;
+                    &lt;/span&gt;
+                &lt;/clr-checkbox&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/section&gt;

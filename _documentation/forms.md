@@ -48,6 +48,21 @@ and place the form fields in the grid column classes. To occupy 100% of the colu
 
 <clr-forms-demo-grid></clr-forms-demo-grid>
 
+## Forms Using Angular 2
+
+Following are examples of using Clarity forms with the
+Template-Driven and Model-Driven/Reactive approaches in Angular 2.
+
+**Note:** For more information see the Angular 2 documentation on
+[Template-Driven Forms](https://angular.io/docs/ts/latest/guide/forms.html)
+and [Model-Driven/Reactive Forms](https://angular.io/docs/ts/latest/cookbook/dynamic-form.html).
+
+#### Example 1. Template-Driven Forms
+<clr-template-driven-forms-demo></clr-template-driven-forms-demo>
+
+#### Example 2. Model-Driven/Reactive Forms
+<clr-reactive-forms-demo></clr-reactive-forms-demo>
+
 {: #guidelines}
 ### Usage
 

@@ -25,6 +25,7 @@ gulp.task("bundle:icons", ["typescript:icons"], function() {
     return builder.bundle("icons/**/*.js", "dist/bundles/define-clarity-icons.min.js", buildOpts)
         .catch(function(err) {
             console.error(err);
+            process.exit(1);
         });
 
 
@@ -48,6 +49,7 @@ gulp.task("bundle:icons:sfx", ["typescript:icons"], function() {
     return builder.buildStatic("icons/**/*.js", "dist/bundles/clarity-icons.min.js", buildOpts)
         .catch(function(err) {
             console.error(err);
+            process.exit(1);
         });
 
 });
@@ -76,6 +78,7 @@ gulp.task("bundle:clarity:js", ["typescript:clarity"], function() {
     return builder.bundle("clarity-angular/**/*.js", "dist/bundles/clarity-angular.min.js", buildOpts)
         .catch(function(err) {
             console.error(err);
+            process.exit(1);
         });
 });
 
@@ -109,6 +112,7 @@ gulp.task("bundle:clarity:js:ng1", ["typescript:clarity"], function() {
     return builder.buildStatic("tmp/clarity-angular/**/*.js", "dist/bundles/angular1/clarity-angular1.min.js", buildOpts)
         .catch(function(err) {
             console.error(err);
+            process.exit(1);
         });
 });
 
@@ -131,6 +135,9 @@ gulp.task("bundle:demos:js", ["typescript:demos"], function() {
         packages: {
             "clarity-demos": {
                 defaultExtension: "js"
+            },
+            "icons": {
+                defaultExtension: "js"
             }
         }
     });
@@ -138,6 +145,7 @@ gulp.task("bundle:demos:js", ["typescript:demos"], function() {
     return builder.bundle("clarity-demos/**/demo/*.js", "dist/bundles/clarity-demos.min.js", buildOpts)
         .catch(function(err) {
             console.error(err);
+            process.exit(1);
         });
 });
 

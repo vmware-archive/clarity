@@ -34,7 +34,7 @@ var demosFiles = "src/clarity/**/demo/**/*.scss";
 
 var appFiles =  "src/app/**/*.scss";
 
-var iconFiles = "src/icons/**/*.scss";
+var iconFiles = "src/clarity-icons/**/*.scss";
 
 var assets = ["src/clarity/img/*.png","src/clarity/img/*.svg"];
 
@@ -108,7 +108,7 @@ gulp.task("sass:app", function(){
 });
 
 /**
- * compiles the icons' sass file from the src/icons folder to the dist/clarity-ui folder.
+ * compiles the icons' sass file from the src/clarity-icons folder to the dist/clarity-ui folder.
  */
 gulp.task("sass:icons", function(){
     var prod = process.env.NODE_ENV==="prod";

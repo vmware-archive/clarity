@@ -18,11 +18,11 @@ gulp.task("bundle:icons", ["typescript:icons"], function() {
     var builder = new Builder("tmp/");
     builder.config({
         packages: {
-            'icons': { defaultExtension: 'js' }
+            'clarity-icons': { defaultExtension: 'js' }
         }
     });
 
-    return builder.bundle("icons/**/*.js", "dist/bundles/define-clarity-icons.min.js", buildOpts)
+    return builder.bundle("clarity-icons/**/*.js", "dist/bundles/define-clarity-icons.min.js", buildOpts)
         .catch(function(err) {
             console.error(err);
             process.exit(1);
@@ -42,11 +42,11 @@ gulp.task("bundle:icons:sfx", ["typescript:icons"], function() {
     var builder = new Builder("tmp/");
     builder.config({
         packages: {
-            'icons': { defaultExtension: 'js' }
+            'clarity-icons': { defaultExtension: 'js' }
         }
     });
 
-    return builder.buildStatic("icons/**/*.js", "dist/bundles/clarity-icons.min.js", buildOpts)
+    return builder.buildStatic("clarity-icons/**/*.js", "dist/bundles/clarity-icons.min.js", buildOpts)
         .catch(function(err) {
             console.error(err);
             process.exit(1);
@@ -136,7 +136,7 @@ gulp.task("bundle:demos:js", ["typescript:demos"], function() {
             "clarity-demos": {
                 defaultExtension: "js"
             },
-            "icons": {
+            "clarity-icons": {
                 defaultExtension: "js"
             }
         }
@@ -175,7 +175,7 @@ gulp.task("bundle", ["bundle:icons", "bundle:icons:sfx", "bundle:clarity:js", "b
  */
 gulp.task("bundle:watch", function () {
 
-    var iconsSources = ["src/icons/**/*.ts"];
+    var iconsSources = ["src/clarity-icons/**/*.ts"];
 
     var claritySources = [
         "src/clarity/**/*.ts",

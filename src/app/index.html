@@ -58,7 +58,7 @@
             // map tells the System loader where to look for things
             var map = {
                 'app':                                  'app',
-                'icons':                                'icons',
+                'clarity-icons':                        'clarity-icons',
                 'rxjs':                                 'node_modules/rxjs',
                 '@angular/core':                        'node_modules/@angular/core/bundles/core.umd.js',
                 '@angular/common':                      'node_modules/@angular/common/bundles/common.umd.js',
@@ -71,7 +71,7 @@
 
             // packages tells the System loader how to load when no filename and/or no extension
             var packages = {
-                'icons':                      { defaultExtension: 'js' },
+                'clarity-icons':                      { defaultExtension: 'js' },
                 'app':                        { defaultExtension: 'js' },
                 'rxjs':                       { main: 'Rx.js', defaultExtension: 'js' },
                 'clarity-angular':            { main: 'index.js', defaultExtension: 'js' },
@@ -89,7 +89,7 @@
       window.addEventListener("load", function() {
 
         System.import('app/boot').then(null, console.error.bind(console));
-        System.import('icons/define-clarity-icons').then(null, console.error.bind(console));
+        System.import('clarity-icons/define-clarity-icons').then(null, console.error.bind(console));
 
       });
     </script>

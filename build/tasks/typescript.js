@@ -28,11 +28,11 @@ var runSequence = require('run-sequence');
  * Clarity Icons
  */
 var iconsSources = [
-    'src/icons/**/*.ts'
+    'src/clarity-icons/**/*.ts'
 ];
 
 gulp.task('typescript:icons', ['triage:typings', 'triage:icons'], function () {
-    return typescriptCompile(['tmp/icons/**/*.ts'], {});
+    return typescriptCompile(['tmp/clarity-icons/**/*.ts'], {});
 });
 
 

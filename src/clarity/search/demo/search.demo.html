@@ -1,0 +1,92 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<form>
+    <section class="form-block">
+        <label>Search</label>
+
+        <p>
+            To used on angular: "&lt;clr-search&gt;&lt;/clr-search&gt;"
+        </p>
+        Proprietes:
+            <pre>      [placeholder] - String
+[(search)] - String
+(searchChange) - String <$event>
+[autoCompleateData] - String[]</pre>
+        <h4>Simple Search</h4>
+
+        <div class="row">
+            <clr-search></clr-search>
+        </div>
+        <pre><code clr-code-highlight="language-html">
+          &lt;clr-search&gt;&lt;/clr-search&gt;
+        </code></pre>
+
+        <h4>Simple Search whit placeholder</h4>
+
+        <div class="row">
+            <clr-search [placeholder]="'Search placeholder'"></clr-search>
+        </div>
+        <pre><code clr-code-highlight="language-html">
+          &lt;clr-search [placeholder]="'Search placeholder'"&gt;&lt;/clr-search&gt;
+        </code></pre>
+
+        <h4>Simple Search and 1 way binding data whit placeholder</h4>
+
+        <div class="row">
+            <clr-search [placeholder]="'Search'" [search]="searchInit"></clr-search>
+        </div>
+
+        <pre>    searchInit = "{{searchInit}}"</pre>
+
+        <pre><code clr-code-highlight="language-html">
+          &lt;clr-search [placeholder]="'Search'" [search]="searchInit"&gt;&lt;/clr-search&gt;
+        </code></pre>
+
+        <h4>Simple Search and 2 way binding whit placeholder</h4>
+        <h5>Separeted events</h5>
+
+        <div class="row">
+            <clr-search [placeholder]="'Search'" [search]="searchDataS"
+                        (searchChange)="searchDataS = $event"></clr-search>
+        </div>
+      <pre>searchDataS = "{{searchDataS}}"</pre>
+        <pre><code clr-code-highlight="language-html">
+          &lt;clr-search
+          [placeholder]="'Search'"
+          [search]="searchDataS"
+          (searchChange)="searchDataS = $event"&gt;&lt;/clr-search&gt;
+        </code></pre>
+
+        <h5>Tougeder events</h5>
+        <div class="row">
+            <clr-search [placeholder]="'Search'" [(search)]="searchDataT"></clr-search>
+        </div><pre>searchDataT = "{{searchDataT}}"</pre>
+        <pre><code clr-code-highlight="language-html">
+          &lt;clr-search [placeholder]="'Search'" [(search)]="searchDataT"&gt;&lt;/clr-search&gt;
+        </code></pre>
+
+
+
+        <h4>Search whit Autocomplete data</h4>
+
+      <p>
+        Suports regular expresion
+      </p>
+
+        <div class="row">
+            <clr-search [placeholder]="'Search'"
+                        [autoCompleateData]="['This is just an array','abc','def','ght','aoit', 'asdddsaaasdasdasd']">
+            </clr-search>
+        </div>
+        <pre><code clr-code-highlight="language-html">
+          &lt;clr-search [placeholder]="'Search'"
+      [autoCompleateData]="['This is just an array','abc','def','ght','aoit', 'asdddsaaasdasdasd']"&gt;
+            &lt;/clr-search&gt;
+        </code></pre>
+
+    </section>
+</form>

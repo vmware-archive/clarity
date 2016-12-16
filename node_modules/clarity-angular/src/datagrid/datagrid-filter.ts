@@ -20,7 +20,7 @@ import {Filters} from "./providers/filters";
     // We register this component as a CustomFilter, for the parent column to detect it.
     providers: [{provide: CustomFilter, useExisting: DatagridFilter}],
     template: `
-        <button class="datagrid-filter-toggle" (click)="toggle()" 
+        <button class="datagrid-filter-toggle" (click)="toggle()"
            [class.datagrid-filter-open]="open" [class.datagrid-filtered]="active"></button>
 
         <div class="datagrid-filter" *ngIf="open">
@@ -30,7 +30,7 @@ import {Filters} from "./providers/filters";
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            
+
             <ng-content></ng-content>
         </div>
     `

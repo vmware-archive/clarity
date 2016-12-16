@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from "@angular/core";
-import { SVG_ICON_TEMPLATES } from "../../../icons/svg-icon-templates";
+import { SVG_ICON_TEMPLATES } from "../../../clarity-icons/svg-icon-templates";
 
 let iconShapes = Object.keys(SVG_ICON_TEMPLATES);
-let deprecatedIconShapes = ["dashboard-gauge"];
+let deprecatedIconShapes = ["danger", "dashboard-gauge"];
 iconShapes = iconShapes.filter(shape => deprecatedIconShapes.indexOf(shape) === -1);
 
 

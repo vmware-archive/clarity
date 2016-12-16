@@ -32,7 +32,7 @@ var claritySources = [
     "!"+upgradeAdapter
 ];
 gulp.task("triage:clarity:main", function(){
-    var sourcesMinusIndex = claritySources.concat("!src/clarity/index.ts"); 
+    var sourcesMinusIndex = claritySources.concat("!src/clarity/index.ts");
     return gulp.src(sourcesMinusIndex, {base: "src/clarity"})
         .pipe(gulp.dest("tmp/clarity-angular"));
 });
@@ -59,11 +59,11 @@ gulp.task("triage:clarity:downgrade", function(){
  * Clarity Icons
  */
 var clarityIconSources = [
-    'src/icons/**/*.ts'
+    'src/clarity-icons/**/*.ts'
 ];
 gulp.task("triage:icons", function(){
-    return gulp.src(clarityIconSources, {base: "src/icons"})
-        .pipe(gulp.dest("tmp/icons"));
+    return gulp.src(clarityIconSources, {base: "src/clarity-icons"})
+        .pipe(gulp.dest("tmp/clarity-icons"));
 });
 
 /**

@@ -248,6 +248,10 @@ export const SVG_ICON_TEMPLATES: any = {
         return this["exclamation-circle"];
     },
 
+    get "danger"() {
+        return this["error"];
+    },
+
     "envelope": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

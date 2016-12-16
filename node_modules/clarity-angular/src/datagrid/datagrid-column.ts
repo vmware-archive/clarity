@@ -16,14 +16,18 @@ import {Sort} from "./providers/sort";
     selector: "clr-dg-column",
     template: `
         <!-- I'm really not happy with that select since it's not very scalable -->
-        <ng-content select="clr-dg-filter, clr-dg-string-filter"></ng-content>
-        
-        <clr-dg-string-filter *ngIf="field && !customFilter" 
-            [clrDgStringFilter]="defaultFieldFilter"></clr-dg-string-filter>
-            
-        <button class="datagrid-column-title" [disabled]="!sortable" (click)="sort()">
-            <ng-content></ng-content>
-        </button>
+        <div class="datagrid-column-flex">
+            <ng-content select="clr-dg-filter, clr-dg-string-filter"></ng-content>
+
+            <clr-dg-string-filter
+                *ngIf="field && !customFilter"
+                [clrDgStringFilter]="defaultFieldFilter"
+            ></clr-dg-string-filter>
+
+            <button class="datagrid-column-title" [disabled]="!sortable" (click)="sort()">
+                <ng-content></ng-content>
+            </button>
+        </div>
     `,
     host: {
         "[class.datagrid-column]": "true"

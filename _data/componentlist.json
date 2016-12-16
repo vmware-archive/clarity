@@ -71,7 +71,8 @@
             "core": -1,
             "ng": 20,
             "dox": 20,
-            "comments": false
+            "comments": false,
+            "isUpdated": true
         },
         {
             "url": "/documentation/code-highlight",
@@ -176,7 +177,8 @@
             "ui": 20,
             "core": 20,
             "ng": -1,
-            "dox": 20
+            "dox": 20,
+            "isNew": true
         },
         {
             "url": "/documentation/input-fields",
@@ -391,8 +393,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         }
     ]
 }

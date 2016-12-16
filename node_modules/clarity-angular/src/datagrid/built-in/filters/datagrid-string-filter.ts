@@ -17,9 +17,9 @@ import {DatagridFilter} from "../../datagrid-filter";
     providers: [{provide: CustomFilter, useExisting: DatagridStringFilter}],
     template: `
         <clr-dg-filter [(clrDgFilterOpen)]="open">
-            <!-- 
+            <!--
                 Even though this *ngIf looks useless because the filter container already has one,
-                it prevents NgControlStatus and other directives automatically added by Angular 
+                it prevents NgControlStatus and other directives automatically added by Angular
                 on inputs with NgModel from freaking out because of their host binding changing
                 mid-change detection when the input is destroyed.
             -->

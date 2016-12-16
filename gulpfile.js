@@ -20,6 +20,7 @@ gulp.task('bundle', function(){
     var map = {
         'app':                                  'app',
         'clarity-angular':                      'node_modules/clarity-angular',
+        'clarity-icons':                        'node_modules/clarity-icons',
         'clarity-demos':                        'node_modules/clarity-demos',
         'rxjs':                                 'node_modules/rxjs',
         '@angular/core':                        'node_modules/@angular/core/bundles/core.umd.js',
@@ -35,8 +36,9 @@ gulp.task('bundle', function(){
     var packages = {
         'app':                          { defaultExtension: 'js' },
         'clarity-angular':              { main: "index.js", defaultExtension: 'js' },
+        'clarity-icons':                { defaultExtension: 'js' },
         'clarity-demos':                { defaultExtension: "js" },
-        'rxjs':                       { main: 'Rx.js', defaultExtension: 'js' }
+        'rxjs':                         { main: 'Rx.js', defaultExtension: 'js' }
     };
 
     builder.config({

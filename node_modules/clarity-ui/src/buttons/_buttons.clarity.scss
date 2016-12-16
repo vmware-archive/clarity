@@ -1,7 +1,6 @@
 // Copyright (c) 2016 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
-
 @import "../utils/variables.clarity";
 @import "../utils/mixins.clarity";
 @import "../color/color.clarity";
@@ -97,9 +96,9 @@ $clr-global-button-properties-map: (
         background-color: transparent,
         border-color: $clr-white,
         color: $clr-white,
-        hover-background-color: rgba($clr-white,0.15),
+        hover-background-color: rgba($clr-white, 0.15),
         hover-color: $clr-white,
-        active-box-shadow-color: rgba($clr-black,0.25),
+        active-box-shadow-color: rgba($clr-black, 0.25),
         active-box-shadow-width-top: 1px,
         disabled-color: $clr-white,
         disabled-background-color: transparent,
@@ -135,30 +134,30 @@ $clr-button-appearance-map: (
 
 @mixin populateButtonProperties($button-type: default, $button-global-map: $clr-global-button-properties-map) {
     $button-property-map: map-get($button-global-map, $button-type);
-    border-color: map-get($button-property-map,border-color);
-    background-color: map-get($button-property-map,background-color);
-    color: map-get($button-property-map,color);
+    border-color: map-get($button-property-map, border-color);
+    background-color: map-get($button-property-map, background-color);
+    color: map-get($button-property-map, color);
 
     //To override the visited state of anchor links styled as buttons
     &:visited {
-        color: map-get($button-property-map,color);
+        color: map-get($button-property-map, color);
     }
 
     &:hover {
-        background-color: map-get($button-property-map,hover-background-color);
-        color: map-get($button-property-map,hover-color);
+        background-color: map-get($button-property-map, hover-background-color);
+        color: map-get($button-property-map, hover-color);
     }
 
     &:active {
-        box-shadow: 0 map-get($button-property-map,active-box-shadow-width-top) 0 0 map-get($button-property-map,active-box-shadow-color) inset;
+        box-shadow: 0 map-get($button-property-map, active-box-shadow-width-top) 0 0 map-get($button-property-map, active-box-shadow-color) inset;
     }
 
     &.disabled,
     &:disabled {
-        color: map-get($button-property-map,disabled-color);
+        color: map-get($button-property-map, disabled-color);
         cursor: not-allowed;
-        background-color: map-get($button-property-map,disabled-background-color);
-        border-color: map-get($button-property-map,disabled-border-color);
+        background-color: map-get($button-property-map, disabled-background-color);
+        border-color: map-get($button-property-map, disabled-border-color);
         opacity: 0.4;
     }
 }
@@ -214,7 +213,7 @@ $clr-button-appearance-map: (
 
     .btn {
         @include generateButton();
-        @include clr-getStylesFromMap($clr-button-appearance-map,form);
+        @include clr-getStylesFromMap($clr-button-appearance-map, form);
         @include populateButtonProperties(default);
 
         //.btn-outline-<state> is the new BS4 naming convention
@@ -265,13 +264,23 @@ $clr-button-appearance-map: (
         }
 
         &.btn-sm {
-            @include clr-getStylesFromMap($clr-button-appearance-map,standard);
+            @include clr-getStylesFromMap($clr-button-appearance-map, standard);
+
+            clr-icon {
+                width: 12px;
+                height: 12px;
+                transform: translate3d(0px, -1px, 0);
+            }
         }
 
         &.btn-block {
             display: block;
             width: 100%;
             max-width: 100%;
+        }
+
+        clr-icon {
+            transform: translate3d(0px, -2px, 0);
         }
     }
 }

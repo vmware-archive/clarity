@@ -1,6 +1,6 @@
 {
   "name": "clarity-web",
-  "version": "0.7.4",
+  "version": "0.7.5-dev",
   "private": true,
   "dependencies": {
     "@angular/common": "2.2.0",
@@ -12,10 +12,10 @@
     "@angular/router": "3.2.0",
     "@angular/upgrade": "2.2.0",
     "@webcomponents/custom-elements": "1.0.0-alpha.3",
-    "clarity-angular": "0.7.4",
-    "clarity-demos": "0.7.4",
-    "clarity-icons": "0.7.4",
-    "clarity-ui": "0.7.4",
+    "clarity-angular": "0.7.5-dev",
+    "clarity-demos": "0.7.5-dev",
+    "clarity-icons": "0.7.5-dev",
+    "clarity-ui": "0.7.5-dev",
     "core-js": "^2.4.0",
     "font-awesome": "^4.5.0",
     "intl": "1.1.0",

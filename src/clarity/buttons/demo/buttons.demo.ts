@@ -20,6 +20,7 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./button-states']">Button States</a></li>
             <li><a [routerLink]="['./button-sizes']">Button Sizes</a></li>
             <li><a [routerLink]="['./toggles']">Toggles</a></li>
+            <li><a [routerLink]="['./icons']">Icons in Buttons</a></li>
             <li><a [routerLink]="['./buttons-test']">Buttons Test</a></li>
         </ul>
         <router-outlet></router-outlet>

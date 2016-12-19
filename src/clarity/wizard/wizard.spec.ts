@@ -106,6 +106,8 @@ class AdvancedWizard {
     }
 
     myOnCancel(event: any): void {
+        console.log("here");
+
         this.hasBeenCanceled = true;
     }
 };

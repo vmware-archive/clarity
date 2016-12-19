@@ -63,4 +63,11 @@ export class ClarityModule {
             providers: [ ClrResponsiveNavigationService ]
         };
     }
+
+    static forChild() {
+        return {
+            ngModule: ClarityModule,
+            providers: []
+        };
+    }
 }

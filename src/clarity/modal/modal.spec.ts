@@ -11,7 +11,6 @@ import {
     tick
 } from "@angular/core/testing";
 import {Component, ViewChild} from "@angular/core";
-import {ScrollingService} from "../main/scrolling-service";
 import {ClarityModule} from "../clarity.module";
 import {Modal} from "./modal";
 
@@ -29,8 +28,7 @@ import {Modal} from "./modal";
                 <button (click)="opened = false">Footer</button>
             </div>
         </clr-modal>
-   `,
-    viewProviders: [ScrollingService]
+   `
 })
 class TestComponent {
     @ViewChild(Modal) modalInstance: Modal;

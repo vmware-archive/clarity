@@ -104,6 +104,21 @@ gemini.suite('buttons', (child) => {
         });
     });
 
+    gemini.suite('button-icons', (child) => {
+        child.setUrl('/buttons/icons')
+            .before((actions, find) => {
+                actions.waitForElementToShow('main.content-area', WAIT_TIME);
+            });
+
+        var classes = [
+            '.btn'
+        ];
+
+        classes.forEach(function(btnClass) {
+            captureButton(btnClass);
+        });
+    });
+
     gemini.suite('toggles', (child) => {
         child.setUrl('/buttons/toggles')
             .before((actions, find) => {

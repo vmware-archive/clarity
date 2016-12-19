@@ -15,6 +15,7 @@ import {ButtonStatesDemo} from "./button-states";
 import {ButtonSizesDemo} from "./button-sizes";
 import {ToggleDemo} from "./toggles";
 import {ButtonsTestDemo} from "./buttons-test";
+import {ButtonsIconsDemo} from "./buttons-icons";
 
 const ROUTES: Routes = [
     {
@@ -30,7 +31,8 @@ const ROUTES: Routes = [
             { path: "button-states", component: ButtonStatesDemo },
             { path: "button-sizes", component: ButtonSizesDemo },
             { path: "toggles", component: ToggleDemo },
-            { path: "buttons-test", component: ButtonsTestDemo }
+            { path: "buttons-test", component: ButtonsTestDemo },
+            { path: "icons", component: ButtonsIconsDemo }
         ]
     }
 ];

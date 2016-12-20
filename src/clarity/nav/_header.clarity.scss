@@ -164,9 +164,9 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
 
         .branding,
         .header-nav,
-        .search-box, //deprecated
+        .search-box, //TODO: deprecate in 0.9.0
         .search,
-        .settings, //deprecated
+        .settings, //TODO: deprecate in 0.9.0
         .header-actions,
         .divider {
             height: $clr-header-height;
@@ -247,7 +247,7 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
             }
         }
 
-        //.search-box - to be deprecated
+        //.search-box - TODO: deprecate in 0.9.0
         .search-box {
             //old search icon
             & > .fa {

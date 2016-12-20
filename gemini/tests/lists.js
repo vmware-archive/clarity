@@ -63,14 +63,14 @@ gemini.suite('lists', (child) => {
             .capture('default');
     });
 
-    gemini.suite('old-lists-in-cards', (child) => {
-        child.setUrl('/lists/old-lists-in-cards')
-            .before((actions, find) => {
-                actions.waitForElementToShow('.card', WAIT_TIME);
-                actions.wait(WAIT_LOAD_TIME);
-            })
-            .setCaptureElements('.row')
-            .capture('default');
-    });
+    // gemini.suite('old-lists-in-cards', (child) => {
+    //     child.setUrl('/lists/old-lists-in-cards')
+    //         .before((actions, find) => {
+    //             actions.waitForElementToShow('.card', WAIT_TIME);
+    //             actions.wait(WAIT_LOAD_TIME);
+    //         })
+    //         .setCaptureElements('.row')
+    //         .capture('default');
+    // });
 
 });

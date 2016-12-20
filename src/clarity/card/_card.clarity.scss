@@ -65,7 +65,6 @@ $card-children-space-between: $clr_baselineRem_0_5;
             padding: $card-children-padding-vertical $card-children-padding-horizontal;
         }
 
-        .card-subtitle, //TODO: Deprecate in 0.8.0
         .card-header,
         .card-title, {
             @include clr-getTypePropertiesForDomElement(card_title, (color, font-size, font-weight, letter-spacing));
@@ -99,15 +98,6 @@ $card-children-space-between: $clr_baselineRem_0_5;
             }
         }
 
-        //Buttons
-        //Card Link - TODO: Deprecate this
-        .card-link {
-            @include generateButton();
-            @include clr-getStylesFromMap($clr-button-appearance-map,standard);
-            @include populateButtonProperties(link);
-        }
-
-        .card-link, //TODO: Deprecate this
         .btn-link {
             min-width: 0;
 
@@ -145,24 +135,17 @@ $card-children-space-between: $clr_baselineRem_0_5;
             }
         }
 
-        //Hide card dividers and just show the border bottom of card-header and card-block
-        .card-header + .card-divider,
-        .card-block + .card-divider {
-            display: none;
-        }
+        //TODO: Decide if we want to deprecate this or not in 0.9.0
+        //because there are some cases where dividers could be used inside of .card-blocks
+        //to organize info
 
-        //TODO: Deprecate this
         //Use border-bottom directly on card header and card block to simplify the layout
+        //Card dividers should only be used inside of a .card-block
         .card-divider {
             display: block;
             border-bottom: 1px solid $card-light;
         }
 
-        //TODO: Deprecate this
-        //NOTE: We have a card-divider in a card block only because
-        //in the previous layout the divider was always present in the card block
-        //as there was no footer. Once we deprecate the divider, the bottom border on headers,
-        //blocks and footers will act as dividers
         &.card-block,
         .card-block {
             .card-divider {
@@ -173,10 +156,14 @@ $card-children-space-between: $clr_baselineRem_0_5;
             }
         }
 
+        //Hide card dividers and just show the border bottom of card-header and card-block
+        .card-header + .card-divider,
+        .card-block + .card-divider {
+            display: none;
+        }
+
         .card-title,
-        .card-subtitle, //TODO: Deprecate in 0.8.0
         .card-text,
-        .group, //TODO: Deprecate in 0.8.0
         .card-media-block,
         .list,
         .list-unstyled {
@@ -184,11 +171,9 @@ $card-children-space-between: $clr_baselineRem_0_5;
         }
 
         //Card Media Block
-        .group, //TODO: Deprecate this in 0.8.0
         .card-media-block {
             display: flex;
 
-            .icon, //TODO: Deprecate this in 0.8.0
             .card-media-image {
                 $card-media-image-size: $clr_baselineRem_2_5;
                 display: inline-block; //to make sure IE10 respects the max-height and max-width
@@ -199,19 +184,17 @@ $card-children-space-between: $clr_baselineRem_0_5;
                 max-width: $card-media-image-size;
             }
 
-            .description, //TODO: Deprecate this in 0.8.0
             .card-media-description {
                 display: flex;
                 flex-direction: column;
                 margin: 0 0 0 $clr_baselineRem_0_5;
             }
 
-            .title, //TODO: Deprecate this in 0.8.0
             .card-media-title {
                 display: inline-block;
             }
 
-            span, //TODO: Deprecate this in 0.8.0
+            span,
             .card-media-text {
                 display: inline-block;
             }
@@ -219,7 +202,6 @@ $card-children-space-between: $clr_baselineRem_0_5;
             &.wrap {
                 flex-direction: column;
 
-                .description,
                 .card-media-description {
                     margin: $clr_baselineRem_0_25 0 0 0;
                 }
@@ -297,66 +279,6 @@ $card-children-space-between: $clr_baselineRem_0_5;
                 //To fix the flickering issue with clickable card transition
                 //http://stackoverflow.com/questions/3461441/prevent-flicker-on-webkit-transition-of-webkit-transform
                 backface-visibility: hidden;
-            }
-        }
-    }
-
-    //TODO: Deprecate in 0.7.0
-    .card{
-        .card-overflow-menu {
-            display: inline-block;
-            position: relative;
-            margin: 0 $clr-button-horizontal-margin 0 0;
-
-            & > .card-link {
-                position: relative;
-                padding-right: 15px; //15px because the arrow icon is 15px in width
-
-                &::after {
-                    position: absolute;
-                    font-family: "FontAwesome";
-                    content: "\f107";
-                    font-size: $card-text-fontsize;
-                    right: 2px;
-                    top: 0;
-                }
-            }
-
-            .menu {
-                display: none;
-                z-index: 2;
-                position: absolute;
-                background: clr-getColor(lightest);
-                padding: $clr_baselineRem_0_5 0;
-                min-width: baselineRem(6);
-                border-radius: $clr-default-borderradius;
-                @extend %card-border-appearance;
-                bottom: $clr_baselineRem_1;
-                left: -1 * $clr_baselineRem_0_5;
-                overflow-y: auto;
-
-                .menu-item {
-                    padding: 0 $clr_baselineRem_1;
-                    color: clr-getTextColor();
-                    font-size: $card-text-fontsize;
-                    text-decoration: none;
-                    display: inline-block;
-                    width: 100%;
-                    cursor: pointer;
-                    white-space: nowrap;
-
-                    &:hover {
-                        background: rgba(154, 154, 154, .15);
-                    }
-                }
-            }
-
-            &.active .menu {
-                display: block;
-            }
-
-            &.active .card-link::after {
-                transform: rotate(180deg);
             }
         }
     }

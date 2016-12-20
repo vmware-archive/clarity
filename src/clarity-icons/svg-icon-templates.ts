@@ -248,10 +248,6 @@ export const SVG_ICON_TEMPLATES: any = {
         return this["exclamation-circle"];
     },
 
-    get "danger"() {
-        return this["error"];
-    },
-
     "envelope": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -608,10 +604,6 @@ export const SVG_ICON_TEMPLATES: any = {
                 <path class="clr-i-outline clr-i-outline-path-2" d="M18,2.5A16.49,16.49,0,0,0,5.43,29.65l.3.35H30.33l.3-.35A16.49,16.49,0,0,0,18,2.5ZM29.39,28H6.67a14.51,14.51,0,0,1-3.1-8H6.81V18H3.58a14.44,14.44,0,0,1,4-9.08L9.72,11,11.13,9.6l-2-2a14.41,14.41,0,0,1,7.88-3V8h2V4.55A14.5,14.5,0,0,1,32.48,18H29v2h3.49A14.51,14.51,0,0,1,29.39,28Z"/>
             </svg>
         `,
-
-    get "dashboard-gauge"() {
-        return this["dashboard"];
-    },
 
     "bookmark": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"

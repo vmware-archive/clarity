@@ -7,8 +7,8 @@ import { Component } from "@angular/core";
 import { SVG_ICON_TEMPLATES } from "../../clarity-icons/svg-icon-templates";
 
 let iconShapes = Object.keys(SVG_ICON_TEMPLATES);
-let deprecatedIconShapes = ["danger", "dashboard-gauge"];
-iconShapes = iconShapes.filter(shape => deprecatedIconShapes.indexOf(shape) === -1);
+let nonAllowedShapes = ["vm-bug"];
+iconShapes = iconShapes.filter(shape => nonAllowedShapes.indexOf(shape) === -1);
 
 
 @Component({

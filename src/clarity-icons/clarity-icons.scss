@@ -22,7 +22,7 @@ $clr-icon-color-warningYellow: #ffc31a;
 }
 
 @mixin rotateSVGIcon($deg) {
-    svg{
+    svg {
         transform: rotate($deg);
     }
 }
@@ -35,82 +35,51 @@ clr-icon {
     vertical-align: middle;
     @include setIconColor(currentColor);
 
-     /* .icon-size-* classes have been deprecated and will be removed in 0.8.0. */
-    // DEPRECATED SIZING
-    &.icon-size-sm {
-        height: 16px;
-        width: 16px;
-    }
-    &.icon-size-md {
-        height: 36px;
-        width: 36px;
-    }
-    &.icon-size-lg {
-        height: 72px;
-        width: 72px;
-    }
-
-    // FULL ICON COLOR: .icon-color-* selectors are deprecated
-    &.icon-color-success, 
-    &.is-green, 
+    &.is-green,
     &.is-success {
         @include setIconColor($clr-icon-color-success);
     }
 
-    &.icon-color-error, 
-    &.is-red, 
+    &.is-red,
+    &.is-danger,
     &.is-error {
         @include setIconColor($clr-icon-color-error);
     }
 
-    &.icon-color-danger,
-    &.is-danger {
-        @include setIconColor($clr-icon-color-danger);
-    }
-
-    &.icon-color-warning,
     &.is-warning {
         @include setIconColor($clr-icon-color-warning);
     }
 
-    &.icon-color-info,
     &.is-blue,
     &.is-info {
         @include setIconColor($clr-icon-color-info);
     }
 
-    &.icon-color-inverse,
     &.is-white,
     &.is-inverse {
         @include setIconColor($clr-icon-color-inverse);
     }
 
-    &.icon-color-highlight,
     &.is-highlight {
         @include setIconColor($clr-icon-color-highlight);
     }
 
-    // ORIENTATION: .icon-orient classes are deprecated
-    &.icon-orient-up, 
-    &[shape$=" up"], 
+    &[shape$=" up"],
     &[dir="up"] {
         @include rotateSVGIcon(0deg);
     }
 
-    &.icon-orient-down, 
-    &[shape$=" down"], 
+    &[shape$=" down"],
     &[dir="down"] {
         @include rotateSVGIcon(180deg);
     }
 
-    &.icon-orient-right, 
-    &[shape$=" right"], 
+    &[shape$=" right"],
     &[dir="right"] {
         @include rotateSVGIcon(90deg);
     }
 
-    &.icon-orient-left, 
-    &[shape$=" left"], 
+    &[shape$=" left"],
     &[dir="left"] {
         @include rotateSVGIcon(270deg);
     }
@@ -132,15 +101,14 @@ clr-icon {
         stroke-miterlimit: 10;
     }
 
-    .clr-i-solid, 
+    .clr-i-solid,
     .clr-i-solid--badged,
-    .clr-i-solid--alerted,
-     {
+    .clr-i-solid--alerted {
         display: none;
     }
 
-    .clr-i-outline--alerted, 
-    .clr-i-outline--badged{ 
+    .clr-i-outline--alerted,
+    .clr-i-outline--badged {
         &:not(.clr-i-outline) {
             display: none;
         }
@@ -171,7 +139,7 @@ clr-icon {
             display: block;
         }
 
-        .clr-i-outline, 
+        .clr-i-outline,
         .clr-i-outline--badged {
             display: none;
         }
@@ -189,7 +157,7 @@ clr-icon {
             display: block;
         }
 
-        .clr-i-outline, 
+        .clr-i-outline,
         .clr-i-outline--badged,
         .clr-i-solid:not(.clr-i-solid--badged) {
             display: none;
@@ -201,7 +169,7 @@ clr-icon {
             display: block;
         }
 
-        .clr-i-outline, 
+        .clr-i-outline,
         .clr-i-outline--alerted,
         .clr-i-solid:not(.clr-i-solid--alerted) {
             display: none;

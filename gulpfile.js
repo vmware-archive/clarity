@@ -14,9 +14,9 @@ var util = require('gulp-util');
  * Check for prod flag during gulp task executions
  */
 if(util.env.prod){
-  env.set({NODE_ENV: "prod"});
+    env.set({NODE_ENV: "prod"});
 } else {
-  env.set({NODE_ENV: "dev"});
+    env.set({NODE_ENV: "dev"});
 }
 
 requireDir('./build/tasks', {recurse: true});
@@ -28,8 +28,9 @@ gulp.task('build', function (callback) {
     var prod = process.env.NODE_ENV==="prod";
     return runSequence(
         'clean',
-        'sass',
-        prod ? ['typescript', 'html', 'bundle'] : ['typescript', 'html'],
+        prod ?
+            ['sass','typescript', 'html', 'bundle'] :
+            ['sass','typescript', 'html'],
         callback
     );
 });
@@ -82,7 +83,10 @@ gulp.task("npm:prepare", function(callback) {
     env.set({NODE_ENV: "prod"}); // The build is in production mode
     return runSequence(
         'build',
+        'aot',
         'npm:all',
         callback
     );
 });
+
+

@@ -114,19 +114,18 @@ application doesn't support IE10, you can skip the following installation:
     ```
     
     If your application uses [systemjs](https://github.com/systemjs/systemjs), add the clarity-angular configurations
-    . If your application already has packages setting for `rxjs` but doesn't have the `main` file, add it in as shown 
-    below.
+    as in the example below. If your application already has packages setting for `rxjs` but doesn't have the `main`
+    file, add it in.
     ```
     System.config({
     	...
     	map: {
     	   ...
-    	   'clarity-angular': 'node_modules/clarity-angular',
+    	   'clarity-angular': 'node_modules/clarity-angular/clarity-angular.umd.js',
     	},
     	packages: {
             ...
             'rxjs' : { main: 'Rx.js', defaultExtension: 'js' },
-            'clarity-angular' : { main: './index.js', defaultExtension: 'js' }
     	}
     	...
     });

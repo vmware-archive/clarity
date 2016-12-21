@@ -3,6 +3,7 @@ tmp/
 node_modules/
 typings/
 .idea/
+aot-compiled/
 gemini-report/
 .DS_Store
 .npmrc.clarity

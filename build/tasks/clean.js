@@ -12,8 +12,9 @@ var del = require("del");
  */
 gulp.task("clean", function () {
 	return del([
-		"dist/*",
-		"tmp/"
+		"aot-compiled",
+		"dist",
+		"tmp"
 	]);
 });
 
@@ -22,6 +23,6 @@ gulp.task("clean", function () {
  */
 gulp.task("clean:tmp", function () {
 	return del([
-		"tmp/"
+		"tmp"
 	]);
 });

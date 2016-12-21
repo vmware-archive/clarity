@@ -34,5 +34,5 @@ gulp.task("html", ["html:index", "html:app"], function(){});
  */
 gulp.task("html:watch", function () {
 	gulp.watch(indexFiles, ["html:index"]);
-	gulp.watch(appFiles, ["html:app"]);
+    gulp.watch(appFiles, ["html:app"]);
 });

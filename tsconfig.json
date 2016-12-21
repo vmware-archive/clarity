@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "declaration": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": [ "es2015", "dom" ],
+    "removeComments": false,
+    "noImplicitAny": true,
+    "types": [
+      "jasmine"
+    ]
+  },
+  "exclude": [
+    "node_modules/*",
+    "compiled/*"
+  ]
+}

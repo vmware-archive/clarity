@@ -11,7 +11,7 @@ import { ROUTING } from "./app.routing";
 
 import { AppComponent } from "./app.component";
 import { LandingComponent } from "./landing.component";
-import {ClarityModule} from "../clarity/clarity.module";
+import { ClarityModule } from "../clarity-angular";
 
 @NgModule({
     imports: [

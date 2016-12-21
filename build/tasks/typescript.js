@@ -8,12 +8,12 @@ var gulp = require('gulp');
 var tslint = require('gulp-tslint');
 var typescriptCompile = require('./../compile-ts');
 var runSequence = require('run-sequence');
-
+var absoluteRequires = require("../absolute-requires");
+var renameFolder = require("../rename-folder");
 /**
  * The tasks in this file are used to compile five logical groups of ts files:
  *  - Icons
  *  - Clarity components
- *  - Demo components
  *  - Test files
  *  - Sample application
  *
@@ -27,12 +27,11 @@ var runSequence = require('run-sequence');
 /**
  * Clarity Icons
  */
-var iconsSources = [
-    'src/clarity-icons/**/*.ts'
-];
+var iconsSources = [ 'src/clarity-icons/**/*.ts'];
 
-gulp.task('typescript:icons', ['triage:typings', 'triage:icons'], function () {
-    return typescriptCompile(['tmp/clarity-icons/**/*.ts'], {});
+gulp.task('typescript:icons', function () {
+    return typescriptCompile(iconsSources, {})
+        .pipe(gulp.dest("dist"));
 });
 
 
@@ -40,97 +39,90 @@ gulp.task('typescript:icons', ['triage:typings', 'triage:icons'], function () {
  * Clarity components
  */
 var claritySources = [
-    'src/clarity/**/*.ts',
-    '!src/clarity/**/*.spec.ts',
-    '!src/clarity/**/*.mock.ts',
-    'src/clarity/**/*.html',
-    '!src/clarity/**/demo/**'
+    'src/clarity-angular/**/*.ts',
+    '!src/clarity-angular/**/*.spec.ts',
+    '!src/clarity-angular/**/*.mock.ts'
 ];
 
-gulp.task('typescript:clarity', ['triage:typings', 'triage:clarity', 'triage:icons'], function () {
-    return typescriptCompile(['tmp/clarity-angular/**/*.ts'], { // triage will generate these
+gulp.task('typescript:clarity', function () {
+    return typescriptCompile(claritySources, {
         inlineTemplates: true
-    });
-});
-
-/**
- * Demo components
- */
-var demosSources = [
-    'src/clarity/**/demo/**/*.ts',
-    'src/clarity/**/demo/**/*.html'
-];
-
-gulp.task('typescript:demos', ['triage:typings', 'triage:clarity', 'triage:demos', 'triage:icons'], function () {
-    return typescriptCompile(['tmp/clarity-demos/**/*.ts'], { // triage will generate these
-        inlineTemplates: true
-    });
+    })
+    .pipe(gulp.dest("dist"));
 });
 
 /**
  * Tests
  */
-var testsSources = ['src/clarity/**/*.spec.ts', 'src/clarity/**/*.mock.ts', 'src/testing/**/*.ts'];
+var testsSources = ['src/clarity-angular/**/*.spec.ts', 'src/clarity-angular/**/*.mock.ts'];
 
-gulp.task('typescript:tests', ['triage:typings', 'triage:clarity', 'triage:tests'], function () {
-    return typescriptCompile(['tmp/tests/**/*.ts'], { // triage will generate these
+gulp.task('typescript:tests', function () {
+    return typescriptCompile(testsSources, {
         inlineTemplates: false,
         internal: true
-    });
+    })
+    .pipe(absoluteRequires({
+        pattern: /\.\.?\/.*(mock|spec)/,
+        rename: {
+            "clarity-angular": "tests"
+        }
+    }))
+    // The requires remaining are all actual clarity classes
+    .pipe(absoluteRequires({}))
+    .pipe(renameFolder({"clarity-angular": "tests"}))
+    .pipe(gulp.dest("dist"));
 });
 
 
 /**
  * Sample application
  */
-var appSources = ['src/app/**/*.ts', '!src/app/routes.ts'];
+var appSources = ['src/app/**/*.ts'];
 
-gulp.task('typescript:app', ['triage:typings', 'triage:clarity', 'triage:demos', 'triage:icons', 'triage:app'], function () {
-    return typescriptCompile(['tmp/app/**/*.ts'], { // triage will generate these
+gulp.task('typescript:app', function () {
+    return typescriptCompile(appSources, {
         inlineTemplates: false,
         internal: true
-    });
+    })
+    .pipe(absoluteRequires({
+        parentOnly: true
+    }))
+    .pipe(gulp.dest("dist"));
 });
 
 /**
  * Watches for changes in ts files (or files that will be inlined in typescript)
  * to retrigger typescript compilation.
  */
+var clarityHtmlFiles = ["src/clarity-angular/**/*.html"];
 gulp.task('typescript:clarity:watch', function () {
-    gulp.watch(claritySources, function () {
-        return runSequence('tslint:watch', 'typescript:clarity');
+    gulp.watch(claritySources.concat(clarityHtmlFiles), function () {
+        return runSequence('tslint:clarity:no-error', 'typescript:clarity');
     });
 });
 
 gulp.task('typescript:icons:watch', function () {
     gulp.watch(iconsSources, function () {
-        return runSequence('tslint:watch', 'typescript:icons');
+        return runSequence('tslint:icons:no-error', 'typescript:icons');
     });
-});
-
-gulp.task('typescript:demos:watch', function () {
-    gulp.watch(demosSources, function () {
-        return runSequence('tslint:watch', 'typescript:demos');
-    });
-
 });
 
 gulp.task('typescript:tests:watch', function () {
     gulp.watch(testsSources, function () {
-        return runSequence('tslint:watch', 'typescript:tests');
+        return runSequence('tslint:tests:no-error', 'typescript:tests');
     });
 });
 
 gulp.task('typescript:app:watch', function () {
     gulp.watch(appSources, function () {
-        return runSequence('tslint:watch', 'typescript:app');
+        return runSequence('tslint:app:no-error', 'typescript:app');
     });
 });
 
 gulp.task('typescript', function (callback) {
     return runSequence(
         'tslint',
-        ['typescript:clarity', 'typescript:demos', 'typescript:icons', 'typescript:app', 'typescript:tests'],
+        ['typescript:clarity', 'typescript:icons', 'typescript:app', 'typescript:tests'],
         callback
     );
 });
@@ -138,7 +130,6 @@ gulp.task('typescript', function (callback) {
 gulp.task('typescript:watch', [
     'typescript:clarity:watch',
     'typescript:icons:watch',
-    'typescript:demos:watch',
     'typescript:app:watch',
     'typescript:tests:watch'
 ], function () {});

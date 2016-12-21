@@ -1,0 +1,18 @@
+// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import "../../clarity-angular/color/color.clarity";
+@import "../../clarity-angular/utils/variables.clarity";
+@import "../../clarity-angular/utils/mixins.clarity";
+@import "../../clarity-angular/utils/helpers.clarity";
+@import "../_utils/code";
+
+
+.clr-example{
+    header{
+        &.space-below{
+            margin-bottom: 24px;
+        }
+    }
+}

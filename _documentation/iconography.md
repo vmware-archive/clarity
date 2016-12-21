@@ -39,57 +39,80 @@ layout: documentation
                 </tr>
                 <tr>
                     <th>
-                        Highlight
-                        <div class="hidden-sm-up"><code class="clr-code">.icon-color-highlight</code></div>
+                        <div class="hidden-xs-down">
+                            Highlight
+                        </div>
+                        <div class="hidden-sm-up"><code class="clr-code"><div>.is-highlight</div><div>.is-blue</div></code></div>
                     </th>
-                    <td class="hidden-xs-down"><code class="clr-code">.icon-color-highlight</code></td>
+                    <td class="hidden-xs-down"><code class="clr-code"><div>.is-highlight</div><div>.is-blue</div></code></td>
                     <td>#007CBB</td>
-                    <td><clr-icon shape="info" size="24" class="icon-color-highlight"></clr-icon></td>
+                    <td><clr-icon shape="info" size="24" class="is-highlight"></clr-icon></td>
                 </tr>
                 <tr>
                     <th>
-                        Danger
-                        <div class="hidden-sm-up"><code class="clr-code">.icon-color-danger</code></div>
+                        <div class="hidden-xs-down">
+                            Danger
+                        </div>
+                        <div class="hidden-sm-up"><code class="clr-code"><div>.is-danger</div><div>.is-red</div></code></div>
                     </th>
-                    <td class="hidden-xs-down"><code class="clr-code">.icon-color-danger</code></td>
-                    <td>#A32100</td>
-                    <td><clr-icon shape="info" size="24" class="icon-color-danger"></clr-icon></td>
-                </tr>
-                <tr>
-                    <th>
-                        Warning
-                        <div class="hidden-sm-up"><code class="clr-code">.icon-color-warning</code></div>
-                    </th>
-                    <td class="hidden-xs-down"><code class="clr-code">.icon-color-warning</code></td>
+                    <td class="hidden-xs-down"><code class="clr-code"><div>.is-danger</div><div>.is-red</div></code></td>
                     <td>#E62700</td>
-                    <td><clr-icon shape="info" size="24" class="icon-color-warning"></clr-icon></td>
+                    <td><clr-icon shape="info" size="24" class="is-danger"></clr-icon></td>
                 </tr>
                 <tr>
                     <th>
-                        Success
-                        <div class="hidden-sm-up"><code class="clr-code">.icon-color-success</code></div>
+                        <div class="hidden-xs-down">
+                            Error
+                        </div>
+                        <div class="hidden-sm-up"><code class="clr-code"><div>.is-error</div><div>.is-red</div></code></div>
                     </th>
-                    <td class="hidden-xs-down"><code class="clr-code">.icon-color-success</code></td>
+                    <td class="hidden-xs-down"><code class="clr-code"><div>.is-error</div><div>.is-red</div></code></td>
+                    <td>#E62700</td>
+                    <td><clr-icon shape="info" size="24" class="is-error"></clr-icon></td>
+                </tr>                
+                <tr>
+                    <th>
+                        <div class="hidden-xs-down">
+                            Warning
+                        </div>
+                        <div class="hidden-sm-up"><code class="clr-code"><div>.is-warning</div><div>.is-red</div></code></div>
+                    </th>
+                    <td class="hidden-xs-down"><code class="clr-code"><div>.is-warning</div><div>.is-red</div></code></td>
+                    <td>#E62700</td>
+                    <td><clr-icon shape="info" size="24" class="is-warning"></clr-icon></td>
+                </tr>
+                <tr>
+                    <th>
+                        <div class="hidden-xs-down">
+                            Success
+                        </div>
+                        <div class="hidden-sm-up"><code class="clr-code"><div>.is-success</div><div>.is-green</div></code></div>
+                    </th>
+                    <td class="hidden-xs-down"><code class="clr-code"><div>.is-success</div><div>.is-green</div></code></td>
                     <td>#318700</td>
-                    <td><clr-icon shape="info" size="24" class="icon-color-success"></clr-icon></td>
+                    <td><clr-icon shape="info" size="24" class="is-success"></clr-icon></td>
                 </tr>
                 <tr>
                     <th>
-                        Info
-                        <div class="hidden-sm-up"><code class="clr-code">.icon-color-info</code></div>
+                        <div class="hidden-xs-down">
+                            Info
+                        </div>
+                        <div class="hidden-sm-up"><code class="clr-code"><div>.is-info</div><div>.is-blue</div></code></div>
                     </th>
-                    <td class="hidden-xs-down"><code class="clr-code">.icon-color-info</code></td>
+                    <td class="hidden-xs-down"><code class="clr-code"><div>.is-info</div><div>.is-blue</div></code></td>
                     <td>#007CBB</td>
-                    <td><clr-icon shape="info" size="24" class="icon-color-info"></clr-icon></td>
+                    <td><clr-icon shape="info" size="24" class="is-info"></clr-icon></td>
                 </tr>
                 <tr>
                     <th>
-                        Inverse
-                        <div class="hidden-sm-up"><code class="clr-code">.icon-color-inverse</code></div>
+                        <div class="hidden-xs-down">
+                            Inverse
+                        </div>
+                        <div class="hidden-sm-up"><code class="clr-code"><div>.is-inverse</div><div>.is-white</div></code></div>
                     </th>
-                    <td class="hidden-xs-down"><code class="clr-code">.icon-color-inverse</code></td>
+                    <td class="hidden-xs-down"><code class="clr-code"><div>.is-inverse</div><div>.is-white</div></code></td>
                     <td>#FFFFFF</td>
-                    <td style="background-color:#414957"><clr-icon shape="info" size="24" class="icon-color-inverse"></clr-icon></td>
+                    <td style="background-color:#414957"><clr-icon shape="info" size="24" class="is-inverse"></clr-icon></td>
                 </tr>
             </tbody>
         </table>

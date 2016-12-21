@@ -5,7 +5,7 @@
  */
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import {NgModule} from "@angular/core";
+import { ModuleWithProviders, NgModule } from "@angular/core";
 
 import {ALERT_DIRECTIVES} from "./alert/index";
 import {CHECKBOX_DIRECTIVES} from "./checkboxes/index";
@@ -57,14 +57,14 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
     ]
 })
 export class ClarityModule {
-    static forRoot() {
+    static forRoot(): ModuleWithProviders {
         return {
             ngModule: ClarityModule,
             providers: [ ClrResponsiveNavigationService ]
         };
     }
 
-    static forChild() {
+    static forChild(): ModuleWithProviders {
         return {
             ngModule: ClarityModule,
             providers: []

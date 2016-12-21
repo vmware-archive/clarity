@@ -66,7 +66,7 @@ $card-children-space-between: $clr_baselineRem_0_5;
         }
 
         .card-header,
-        .card-title, {
+        .card-title {
             @include clr-getTypePropertiesForDomElement(card_title, (color, font-size, font-weight, letter-spacing));
         }
 
@@ -104,7 +104,7 @@ $card-children-space-between: $clr_baselineRem_0_5;
             //NOTE: Set left and right padding of link buttons to 0. aligning these buttons
             //without removing the paddings is a huge task and leads to a brittle card css
             //plus the alignment doesn't work in all the cases
-            padding: 0;
+            //padding: 0;
         }
 
         &.card-block,

@@ -19,3 +19,5 @@ declare var customElements: CustomElements;
 declare interface CustomElements {
     define: any;
 }
+
+interface Window { ClarityIcons: any; }

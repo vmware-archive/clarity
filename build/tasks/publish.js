@@ -20,17 +20,11 @@ var npmFolder = "dist/npm/";
  */
 
 gulp.task("npm:icons:bundles", function () {
-    return es.merge(
-        gulp.src([
-            "dist/bundles/clarity-icons.min.js",
-            "dist/bundles/clarity-icons.min.css",
-            "dist/bundles/define-clarity-icons.min.js"
-        ], {base: "dist/bundles/"}),
-        gulp.src([
-            "dist/clarity-icons/**/*.js",
-            "dist/clarity-icons/**/*.d.ts"
-        ]))
-        .pipe(gulp.dest(npmFolder + "/clarity-icons"));
+    return gulp.src([
+        "dist/bundles/clarity-icons.min.js",
+        "dist/bundles/clarity-icons.min.css",
+        "dist/clarity-icons/svg-icon-templates.js"
+    ]).pipe(gulp.dest(npmFolder + "/clarity-icons"));
 });
 
 /**
@@ -103,6 +97,7 @@ gulp.task("npm:ui:readme", function () {
         .pipe(rename("README.md"))
         .pipe(gulp.dest(npmFolder + "/clarity-ui"));
 });
+
 
 gulp.task("npm:ui", ["npm:ui:bundles", "npm:ui:sources", "npm:ui:package", "npm:ui:readme"], function () {});
 

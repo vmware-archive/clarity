@@ -4,7 +4,20 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { SVG_ICON_TEMPLATES } from "./svg-icon-templates";
-import { SVG_IMG_ICON_TEMPLATES } from "./svg-img-icon-templates";
+import { IconTemplate } from "./interfaces/icon-template";
+import { UserIcons } from "./extend-clarity-icons";
+
+
+/* CLARTIYICONS GLOBAL OBJECT */
+
+let userIcons: UserIcons = new UserIcons();
+let userIconsExtendedShapes: IconTemplate = userIcons.getExtendedShapes();
+
+//Setting a global object called "ClarityIcons" to expose the "userIcons".
+window.ClarityIcons = userIcons;
+
+
+/* CLR-ICON CUSTOM ELEMENT */
 
 let parentConstructor = function () {
     return HTMLElement.apply(this, arguments);
@@ -19,66 +32,73 @@ if (typeof Reflect === "object") {
     };
 }
 
-function ClarityIcon() {
+function ClarityIconElement() {
     "use strict";
     return (parentConstructor as any).apply(this, arguments);
 }
 
-(ClarityIcon as any).observedAttributes = ["shape", "size"];
+(ClarityIconElement as any).observedAttributes = [ "shape", "size" ];
 
-ClarityIcon.prototype = Object.create(HTMLElement.prototype);
-ClarityIcon.prototype.constructor = ClarityIcon;
-let generateIcon = function (element: any, shape: string) {
+ClarityIconElement.prototype = Object.create(HTMLElement.prototype);
+ClarityIconElement.prototype.constructor = ClarityIconElement;
+let generateIcon =
+    function (element: any, shape: string) {
 
-    shape = shape.split(/\s/)[0];
+        shape = shape.split(/\s/)[ 0 ];
 
-    if (shape !== element._shape) {
-        element._shape = shape;
-        element.innerHTML =
-            SVG_ICON_TEMPLATES[element._shape] ||
-            SVG_IMG_ICON_TEMPLATES[element._shape] ||
-            (function () {
-                console.error("Error: '" + shape + "' is not found in the Clarity Icon set.");
-                return SVG_ICON_TEMPLATES["error"];
-            }());
-    }
-};
-let setIconSize = function (element: any, size: string) {
+        if (shape !== element._shape) {
+            element._shape = shape;
 
-    if (!Number(size) || Number(size) < 0) {
+            element.innerHTML =
+                userIconsExtendedShapes[ element._shape ] ||
+                SVG_ICON_TEMPLATES[ element._shape ] ||
+                (function () {
+                    console.error("Error: '" + shape + "' is not found in the Clarity Icon set.");
+                    return SVG_ICON_TEMPLATES[ "error" ];
+                }());
+        }
+    };
+let setIconSize =
+    function (element: any, size: string) {
 
-        element.style.width = null; // fallback to the original stylesheet value
-        element.style.height = null; // fallback to the original stylesheet value
-    } else {
+        if (!Number(size) || Number(size) < 0) {
 
-        element.style.width = size + "px";
-        element.style.height = size + "px";
-    }
+            element.style.width = null; // fallback to the original stylesheet value
+            element.style.height = null; // fallback to the original stylesheet value
+        } else {
 
-};
-ClarityIcon.prototype.connectedCallback = function () {
+            element.style.width = size + "px";
+            element.style.height = size + "px";
+        }
 
-    let host = this as HTMLElement;
+    };
+ClarityIconElement.prototype.connectedCallback =
+    function () {
 
-    if (host.hasAttribute("shape")) {
-        generateIcon(host, host.getAttribute("shape"));
-    }
-    if (host.hasAttribute("size")) {
-        setIconSize(host, host.getAttribute("size"));
-    }
-};
-ClarityIcon.prototype.attributeChangedCallback = function (attributeName: string, oldValue: string, newValue: string) {
+        let host = this as HTMLElement;
 
-    let host = this as HTMLElement;
+        if (host.hasAttribute("shape")) {
+            generateIcon(host, host.getAttribute("shape"));
+        }
+        if (host.hasAttribute("size")) {
+            setIconSize(host, host.getAttribute("size"));
+        }
+    };
+ClarityIconElement.prototype.attributeChangedCallback =
+    function (attributeName: string, oldValue: string, newValue: string) {
 
-    if (attributeName === "shape") {
-        generateIcon(host, newValue);
-    }
-    if (attributeName === "size") {
-        setIconSize(host, newValue);
-    }
+        let host = this as HTMLElement;
+
+        if (attributeName === "shape") {
+            generateIcon(host, newValue);
+        }
+        if (attributeName === "size") {
+            setIconSize(host, newValue);
+        }
 
 
-};
+    };
 
-customElements.define("clr-icon", ClarityIcon);
+customElements.define("clr-icon", ClarityIconElement);
+
+

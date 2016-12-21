@@ -11,7 +11,6 @@ var util = require('gulp-util');
 var autoprefixer = require('gulp-autoprefixer');
 var sass = require("gulp-sass");
 var stylestats = require('gulp-stylestats');
-var runSequence = require('run-sequence');
 var preprocess = require('gulp-preprocess');
 var util = require('gulp-util');
 
@@ -19,24 +18,19 @@ var compressed = { outputStyle: "compressed" };
 var uncompressed = { sourceComments: 'map', errLogToConsole: true, sourceMap: 'sass' };
 
 var clarityStaticFiles = [
-    "src/clarity/utils/*.clarity.scss",
-    "src/clarity/**/*.clarity.scss",
-    "src/clarity/main.scss"
+    "src/clarity-angular/utils/*.clarity.scss",
+    "src/clarity-angular/**/*.clarity.scss",
+    "src/clarity-angular/main.scss"
 ];
 
 var clarityFiles = [
-    "src/clarity/**/*.scss",
-    "!src/clarity/**/demo/**/*.scss",
-    "!src/clarity/**/*.clarity.scss"
+    "src/clarity-angular/**/*.scss",
+    "!src/clarity-angular/**/*.clarity.scss"
 ];
-
-var demosFiles = "src/clarity/**/demo/**/*.scss";
 
 var appFiles =  "src/app/**/*.scss";
 
 var iconFiles = "src/clarity-icons/**/*.scss";
-
-var assets = ["src/clarity/img/*.png","src/clarity/img/*.svg"];
 
 /*
  * Adds the current clarity version to generated css files
@@ -60,7 +54,7 @@ var VERSION = `
 gulp.task("sass:static", function(){
     var prod = process.env.NODE_ENV==="prod";
 
-    return gulp.src(["src/clarity/main.scss"], {base: "src"})
+    return gulp.src(["src/clarity-angular/main.scss"], {base: "src"})
         // Sourcemaps only for development
         .pipe(prod ? util.noop() : sourcemaps.init())
         .pipe(preprocess({context: {VERSION: VERSION}}))
@@ -89,14 +83,14 @@ gulp.task("sass:clarity", function(){
     			browsers: ['last 3 versions','ie 10','ie 11','> 5%','Firefox > 35','Chrome > 35'],
     			cascade: false
     		}))
-        .pipe(gulp.dest("tmp/clarity-angular"));
+        .pipe(gulp.dest("dist/clarity"));
 });
 
 /**
  * compiles the app's sass files from the src/ folder to the dist/ folder.
  */
 gulp.task("sass:app", function(){
-    return gulp.src(appFiles, {base: "src"})
+    return gulp.src(appFiles, {base: "src/app"})
         .pipe(sourcemaps.init())
         .pipe(sass(uncompressed).on("error", sass.logError))
         .pipe(autoprefixer({
@@ -104,7 +98,7 @@ gulp.task("sass:app", function(){
             cascade: false
         }))
         .pipe(sourcemaps.write(".", {sourceRoot: "/src"}))
-        .pipe(gulp.dest("dist"));
+        .pipe(gulp.dest("dist/app"));
 });
 
 /**
@@ -130,31 +124,10 @@ gulp.task("sass:icons", function(){
 });
 
 /**
- * compiles the demos' sass files from the src/ folder to the dist/ folder.
- */
-gulp.task("sass:demos", function(){
-    return gulp.src(demosFiles, {base: "src/clarity"})
-        .pipe(sass(compressed).on("error", sass.logError))
-        .pipe(autoprefixer({
-    			browsers: ['last 3 versions','ie 10','ie 11','> 5%','Firefox > 35','Chrome > 35'],
-    			cascade: false
-    		}))
-        .pipe(gulp.dest("tmp/clarity-demos"));
-});
-
-/**
- * Moves images to dist
- */
-gulp.task("images", function(){
-    return gulp.src(assets)
-        .pipe(gulp.dest("dist/img"));
-});
-
-/**
  * compiles all sass files, puts them in the tmp/ folder for other build tasks,
  * and puts the deliverable css in the dist/ folder.
  */
-gulp.task("sass", ["sass:static", "sass:clarity", "sass:app", "sass:demos", "sass:icons",  "images"], function(){});
+gulp.task("sass", ["sass:static", "sass:clarity", "sass:app", "sass:icons"], function(){});
 
 /**
  * watches for changes in scss files to retrigger sass compilation, and subsequently compiles relevant ts files
@@ -167,13 +140,7 @@ gulp.task("sass:watch", function () {
 
     gulp.watch(iconFiles, ["sass:icons"]);
 
-    gulp.watch(clarityFiles, function(){
-        return runSequence("sass:clarity", "typescript:clarity");
-    });
-
-    gulp.watch(demosFiles, function(){
-        return runSequence("sass:demos", "typescript:demos");
-    });
+    gulp.watch(clarityFiles,["sass:clarity"]);
 
 });
 

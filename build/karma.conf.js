@@ -61,7 +61,7 @@ module.exports = function (config) {
             { pattern: 'node_modules/prismjs/components/prism-typescript.min.js', included: true, watched: false}
         ],
 
-        exclude: [],
+        exclude: [ 'node_modules/**/*spec.js' ],
         preprocessors: {},
         reporters: ['progress'],
 

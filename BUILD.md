@@ -35,6 +35,11 @@ or SCSS sources, so debugging should work seamlessly in all development-appropri
 With the `--prod` flag, the sample application is wired to use Clarity's minified production 
 bundles.
 
+##### `gulp aot`
+This task uses the ngc to compile clarity-angular components into es5 es2015 format, and additionally
+produces the umd bundle file. This happens out of band from the development compilation. In other words,
+this task compiles the ts files from our src directly into es5 es2015 javascript files.
+
 ##### `gulp test`
 Runs all the unit tests found in `*.spec.ts` files in the clarity source folder, and outputs 
 detailed results in the console. Note that tests are always run in "production mode", on the 
@@ -49,8 +54,11 @@ Removes all build artifacts. Don't worry about calling this yourself all the tim
 described before this already do it for you before running. Just use it when you want for some 
 reason to clean the project without rebuilding.
 
-##### TODO: tasks for linting and formatting
-These are wired in, but not configured yet.
+##### `gulp tslint`
+This gulp task runs tslint using the config file `build/tslint.json`. When initially running the app,
+each subtask `tslint:*` will run and halt the process if tslint fails. For each subtask `tslint:*`,
+there's a corresponding `tslint:*:no-error` task that is run when a watch task detects a change in
+the ts file. These `no-error` tasks output the tslint errors on console but doesn't halt the process.
 
 Under the hood
 --------------
@@ -68,53 +76,40 @@ The build process itself uses 3 folders:
 * `dist/` (not version controlled): This is where we output the sample app, transpiled tests, 
   sourcemaps and all clarity deliverables. Basically everything. Because of that, it is itself 
   divided into several subfolders:
-  * `app/`: The sample app.
-  * `clarity-angular/`: When building for development, this will contain the clarity components 
-    themselves, excluding the demo components. When building for production, this folder will 
-    not be created, since the components will be declared in `bundles/clarity-angular.min.js`.
-  * `clarity-demos`: When building for development, this will contain the clarity demo components 
-    that were under the demo subfolder of each component. When building for production, this folder 
-    will not be created, since the components will be declared in `bundles/clarity-demos.min.js`.    
+  * `app/`: The sample app that contains demo components for development and testing.
   * `bundles/`: As the name suggest, this is where the production deliverables end up. When 
     running tests or the sample application in production mode, these bundles will actually be 
     referenced and used directly by other files in `dist/`, to really test the final product.
-  * `tests/`: The name says it all.
+  * `clarity-angular/`: This will contain the clarity components compiled in commonjs format. Note that
+    this version is not what gets ultimately packaged into the npm package. We package the compiled version
+    produced by the `aot` gulp task so that Clarity components are AoT ready.
+  * `clarity-icons/`: This will contain the compiled js files and d.ts files from clarity icons. 
   * `npm/`: When publishing to the NPM registry, this will contain the various packages we 
     currently publish, pre-compiled and trimmed of all development tools. At the moment, we produce
     three packages:
+    * `clarity-icons`: clarity icons package
     * `clarity-ui`: pure static styles
     * `clarity-angular`: contains the Angular 2 components and depends on `clarity-ui` for look-and-feel
-    * `clarity-demos`: contains demo components that contain the Angular 2 components
+  * `tests/`: The name says it all.
 
 #### The process itself
 
 ##### Clean
 We simply clean up the project before building anything.
 
-##### Auto-discovery of demos
-Before anything gets compiled, we scan `src/clarity/` for folders named `demo/`. For each of 
-these folders, if it contains a file named `*.demo.ts` exporting a component, we create a route 
-for it and add it to `app/routes.js`. This is done so that simply creating a `demo/` folder for a
- component will automatically add it to the demo, with its own navigation link.
-
 ##### HTML
-* All the HTML files for the sample application are copied to the `dist/` folder, respecting 
+* All the HTML files for the sample application are copied to the `dist/app` folder, respecting 
   their path relative to `src/`. Only `index.html` is processed to produce different files based 
   on the environment, dev or prod.
-* All the HTML files for the demos are copied to the `dist/demos/` folder, respecting their path 
-  relative to `src/clarity/`.
-* The HTML files for clarity components are moved to `tmp/` to be inlined in the Typescript 
-  declarations of the components (see below).
+* The HTML files for clarity components are inlined and compiled into the js.
 
 ##### Sass
 * All the SCSS files for the sample application are compiled with Sass and moved to `dist/`, once
  again respecting their path relative to `src/`.
-* All the SCSS files for the demos are compiled with Sass and moved to `dist/demos/`, once again 
-  respecting their path relative to `src/clarity/`.
 * All `*.clarity.scss` files found in `src/clarity/` are compiled by Sass into a minified bundle 
   and moved to `dist/` or `dist/bundles/`, depending on the environment.
-* All other SCSS files in `src/clarity/` are considered to be behaviour-driven styles, so they 
-  are compiled by Sass and moved to `tmp/` too, to be inlined in the Typescript declarations of the
+* All other SCSS files in `src/clarity-angular/` are considered to be behaviour-driven styles, so they 
+  are compiled by Sass and inlined in the Typescript declarations of the
   components (see below).
 * Every single CSS file output by Sass goes through Autoprefixer, before potential inlining or 
   bundling.
@@ -123,17 +118,10 @@ for it and add it to `app/routes.js`. This is done so that simply creating a `de
 * All the Typescript files for the sample application are transpiled to ES5 and moved to `dist/`,
   respecting their path relative to `src/`. This means templates and styles should use relative 
   paths, they will still be in the same place after the build.
-* All the Typescript files for clarity components excluding the demo components (which means 
-  all Typescript files in `src/clarity/` that are not `*.spec.ts`, `*.mock.ts` or under the `demo`
-  directories) are first moved to `tmp/clarity-angular`, next to their templates and compiled styles. 
-  Similarly, all the Typescript files for the demo components are first moved to `tmp/clarity-demos`.
-  In the case of demo components, we then convert the relative path import for the components into
-  absolute paths. After that, we inline said templates and styles in the `@Component` decorator. 
-  We then transpile them to ES5, and move them directly to `dist/clarity-angular/` and 
-  `dist/clarity-demos` if we are building for a dev environment. This way, each component fits neatly 
+* All the Typescript files for clarity components are inlined, transpiled to ES5, and moved to 
+  `dist/clarity-angular/`. This way, each component fits neatly 
   into a single Javascript file, without external HTML or CSS. Also note that during this 
-  transpilation, we produce Typescript declaration files (`*.d.ts`) for each of these components 
-  and move them to `tmp/definitions`.
+  transpilation, we produce Typescript declaration files (`*.d.ts`) for each of these components.
 * All `*.spec.ts` and `*.mock.ts` files, containing the unit tests and mocks for Clarity's 
   components, are transpiled to ES5 and moved to `dist/tests/`.
 

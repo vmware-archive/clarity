@@ -9,16 +9,18 @@ var tslint = require('gulp-tslint');
 var format = require('gulp-clang-format');
 var clangFormat = require('clang-format');
 
-gulp.task('tslint', function(){
-	return gulp.src(['src/**/*.ts', '!src/clarity/angular1/**/*.ts'])
+var iconsSources = [ 'src/icons/**/*.ts'];
+
+gulp.task('tslint:icons', function(){
+	return gulp.src(iconsSources)
 		.pipe(tslint({
 			configuration: 'build/tslint.json'
 		}))
 		.pipe(tslint.report('verbose'));
 });
 
-gulp.task('tslint:watch', function(){
-	return gulp.src(['src/**/*.ts', '!src/clarity/angular1/**/*.ts'])
+gulp.task('tslint:icons:no-error', function(){
+	return gulp.src(iconsSources)
 		.pipe(tslint({
 			configuration: 'build/tslint.json'
 		}))
@@ -26,6 +28,73 @@ gulp.task('tslint:watch', function(){
 			emitError: false
 		}));
 });
+
+var claritySources = [
+    'src/clarity-angular/**/*.ts',
+    '!src/clarity-angular/**/*.spec.ts',
+    '!src/clarity-angular/**/*.mock.ts',
+    '!src/clarity-angular/angular1/**/*.ts'
+];
+
+gulp.task('tslint:clarity', function(){
+    return gulp.src(claritySources)
+        .pipe(tslint({
+            configuration: 'build/tslint.json'
+        }))
+        .pipe(tslint.report('verbose'));
+});
+
+gulp.task('tslint:clarity:no-error', function(){
+    return gulp.src(claritySources)
+        .pipe(tslint({
+            configuration: 'build/tslint.json'
+        }))
+        .pipe(tslint.report('verbose', {
+            emitError: false
+        }));
+});
+
+var testsSources = ['src/clarity-angular/**/*.spec.ts', 'src/clarity-angular/**/*.mock.ts'];
+
+gulp.task('tslint:tests', function(){
+    return gulp.src(testsSources)
+        .pipe(tslint({
+            configuration: 'build/tslint.json'
+        }))
+        .pipe(tslint.report('verbose'));
+});
+
+gulp.task('tslint:tests:no-error', function(){
+    return gulp.src(testsSources)
+        .pipe(tslint({
+            configuration: 'build/tslint.json'
+        }))
+        .pipe(tslint.report('verbose', {
+            emitError: false
+        }));
+});
+
+var appSources = ['src/app/**/*.ts'];
+
+gulp.task('tslint:app', function(){
+    return gulp.src(appSources)
+        .pipe(tslint({
+            configuration: 'build/tslint.json'
+        }))
+        .pipe(tslint.report('verbose'));
+});
+
+gulp.task('tslint:app:no-error', function(){
+    return gulp.src(appSources)
+        .pipe(tslint({
+            configuration: 'build/tslint.json'
+        }))
+        .pipe(tslint.report('verbose', {
+            emitError: false
+        }));
+});
+
+gulp.task("tslint", ["tslint:clarity", "tslint:app", "tslint:icons", "tslint:tests"], function(){});
 
 /**
  Warns if the typescript formatting is valid or not

@@ -33,30 +33,31 @@
 </div>
 
 <pre>
-<code ngNonBindable clr-code-highlight="language-html">
-&lt;clr-stack-view&gt;
-    &lt;clr-stack-header&gt;
-        Lazily loaded children
-        &lt;button class=&quot;stack-action btn btn-sm btn-link&quot; (click)=&quot;resetChildren()&quot; type=&quot;button&quot;&gt;Reset&lt;/button&gt;
-    &lt;/clr-stack-header&gt;
+    <code ngNonBindable clr-code-highlight="language-html">
+    &lt;clr-stack-view&gt;
+        &lt;clr-stack-header&gt;
+            Lazily loaded children
+            &lt;button class=&quot;stack-action btn btn-sm btn-link&quot; (click)=&quot;resetChildren()&quot; type=&quot;button&quot;&gt;Reset&lt;/button&gt;
+        &lt;/clr-stack-header&gt;
 
-    &lt;clr-stack-block [clrSbExpandable]=&quot;true&quot; (clrSbExpandedChange)=&quot;fetchChildren()&quot;&gt;
-        &lt;clr-stack-label&gt;Label 1&lt;/clr-stack-label&gt;
-        &lt;clr-stack-content&gt;Content 1&lt;/clr-stack-content&gt;
+        &lt;clr-stack-block [clrSbExpandable]=&quot;true&quot; (clrSbExpandedChange)=&quot;fetchChildren()&quot;&gt;
+            &lt;clr-stack-label&gt;Label 1&lt;/clr-stack-label&gt;
+            &lt;clr-stack-content&gt;Content 1&lt;/clr-stack-content&gt;
 
-        &lt;clr-stack-block *ngIf=&quot;children.length == 0&quot;&gt;
-            &lt;div&gt;Loading...&lt;/div&gt;
+            &lt;clr-stack-block *ngIf=&quot;children.length == 0&quot;&gt;
+                &lt;div&gt;Loading...&lt;/div&gt;
+            &lt;/clr-stack-block&gt;
+
+            &lt;clr-stack-block *ngFor=&quot;let child of children&quot;&gt;
+                &lt;clr-stack-label&gt;{{child.title}}&lt;/clr-stack-label&gt;
+                &lt;clr-stack-content&gt;{{child.content}}&lt;/clr-stack-content&gt;
+            &lt;/clr-stack-block&gt;
         &lt;/clr-stack-block&gt;
 
-        &lt;clr-stack-block *ngFor=&quot;let child of children&quot;&gt;
-            &lt;clr-stack-label&gt;{{child.title}}&lt;/clr-stack-label&gt;
-            &lt;clr-stack-content&gt;{{child.content}}&lt;/clr-stack-content&gt;
+        &lt;clr-stack-block&gt;
+            &lt;clr-stack-label&gt;Label 2&lt;/clr-stack-label&gt;
+            &lt;clr-stack-content&gt;Content 2&lt;/clr-stack-content&gt;
         &lt;/clr-stack-block&gt;
-    &lt;/clr-stack-block&gt;
-
-    &lt;clr-stack-block&gt;
-        &lt;clr-stack-label&gt;Label 2&lt;/clr-stack-label&gt;
-        &lt;clr-stack-content&gt;Content 2&lt;/clr-stack-content&gt;
-    &lt;/clr-stack-block&gt;
-&lt;/clr-stack-view&gt;
-</code></pre>
+    &lt;/clr-stack-view&gt;
+    </code>
+</pre>

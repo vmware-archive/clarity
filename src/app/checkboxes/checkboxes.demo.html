@@ -62,58 +62,59 @@
 </form>
 
 <pre>
-<code clr-code-highlight="language-html">
-&lt;form&gt;
-    &lt;section class=&quot;form-block&quot;&gt;
-        &lt;label&gt;Checkboxes&lt;/label&gt;
-        &lt;div class=&quot;form-group&quot;&gt;
-            &lt;label&gt;Default/Stacked checkbox group&lt;/label&gt;
-            &lt;div class=&quot;checkbox&quot;&gt;
-                &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_1&quot;&gt;
-                &lt;label for=&quot;checkrads_1&quot;&gt;Checkbox 1&lt;/label&gt;
+    <code clr-code-highlight="language-html">
+    &lt;form&gt;
+        &lt;section class=&quot;form-block&quot;&gt;
+            &lt;label&gt;Checkboxes&lt;/label&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Default/Stacked checkbox group&lt;/label&gt;
+                &lt;div class=&quot;checkbox&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_1&quot;&gt;
+                    &lt;label for=&quot;checkrads_1&quot;&gt;Checkbox 1&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;checkbox&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_2&quot; checked&gt;
+                    &lt;label for=&quot;checkrads_2&quot;&gt;Checkbox 2&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;checkbox disabled&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_3&quot; disabled&gt;
+                    &lt;label for=&quot;checkrads_3&quot;&gt;A disabled and unchecked checkbox&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;checkbox disabled&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_4&quot; disabled checked&gt;
+                    &lt;label for=&quot;checkrads_4&quot;&gt;A disabled and checked checkbox&lt;/label&gt;
+                &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class=&quot;checkbox&quot;&gt;
-                &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_2&quot; checked&gt;
-                &lt;label for=&quot;checkrads_2&quot;&gt;Checkbox 2&lt;/label&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Inline checkbox group&lt;/label&gt;
+                &lt;div class=&quot;checkbox-inline&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_5&quot;&gt;
+                    &lt;label for=&quot;checkrads_5&quot;&gt;Checkbox 1&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;checkbox-inline&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_6&quot; checked&gt;
+                    &lt;label for=&quot;checkrads_6&quot;&gt;Checkbox 2&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;checkbox-inline disabled&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_7&quot; disabled&gt;
+                    &lt;label for=&quot;checkrads_7&quot;&gt;A disabled and unchecked checkbox&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;checkbox-inline disabled&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_8&quot; disabled checked&gt;
+                    &lt;label for=&quot;checkrads_8&quot;&gt;A disabled and checked checkbox&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class="form-group"&gt;
+                &lt;label&gt;Indetermiante Checkbox&lt;/label&gt;
+                &lt;div class="checkbox-inline"&gt;
+                    &lt;clr-checkbox type="checkbox" id="checkbox_9" [clrIndeterminate]="indeterminateState"&gt;
+                        &lt;span (click)="onToggleIndeterminateState($event)"&gt;
+                            Toggle Indeterminate State
+                            &lt;!--&lt;button class="btn btn-primary btn-sm" (click)="onToggleIndeterminateState($event)"&gt;Toggle Indeterminate State&lt;/button&gt;--&gt;
+                        &lt;/span&gt;
+                    &lt;/clr-checkbox&gt;
+                &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class=&quot;checkbox disabled&quot;&gt;
-                &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_3&quot; disabled&gt;
-                &lt;label for=&quot;checkrads_3&quot;&gt;A disabled and unchecked checkbox&lt;/label&gt;
-            &lt;/div&gt;
-            &lt;div class=&quot;checkbox disabled&quot;&gt;
-                &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_4&quot; disabled checked&gt;
-                &lt;label for=&quot;checkrads_4&quot;&gt;A disabled and checked checkbox&lt;/label&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;form-group&quot;&gt;
-            &lt;label&gt;Inline checkbox group&lt;/label&gt;
-            &lt;div class=&quot;checkbox-inline&quot;&gt;
-                &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_5&quot;&gt;
-                &lt;label for=&quot;checkrads_5&quot;&gt;Checkbox 1&lt;/label&gt;
-            &lt;/div&gt;
-            &lt;div class=&quot;checkbox-inline&quot;&gt;
-                &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_6&quot; checked&gt;
-                &lt;label for=&quot;checkrads_6&quot;&gt;Checkbox 2&lt;/label&gt;
-            &lt;/div&gt;
-            &lt;div class=&quot;checkbox-inline disabled&quot;&gt;
-                &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_7&quot; disabled&gt;
-                &lt;label for=&quot;checkrads_7&quot;&gt;A disabled and unchecked checkbox&lt;/label&gt;
-            &lt;/div&gt;
-            &lt;div class=&quot;checkbox-inline disabled&quot;&gt;
-                &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_8&quot; disabled checked&gt;
-                &lt;label for=&quot;checkrads_8&quot;&gt;A disabled and checked checkbox&lt;/label&gt;
-            &lt;/div&gt;
-            &lt;div class="form-group"&gt;
-            &lt;label&gt;Indetermiante Checkbox&lt;/label&gt;
-            &lt;div class="checkbox-inline"&gt;
-                &lt;clr-checkbox type="checkbox" id="checkbox_9" [clrIndeterminate]="indeterminateState"&gt;
-                    &lt;span (click)="onToggleIndeterminateState($event)"&gt;
-                        Toggle Indeterminate State
-                        &lt;!--&lt;button class="btn btn-primary btn-sm" (click)="onToggleIndeterminateState($event)"&gt;Toggle Indeterminate State&lt;/button&gt;--&gt;
-                    &lt;/span&gt;
-                &lt;/clr-checkbox&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/section&gt;
-&lt;/form&gt;
-</code></pre>
+        &lt;/section&gt;
+    &lt;/form&gt;
+    </code>
+</pre>

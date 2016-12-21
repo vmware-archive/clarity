@@ -48,45 +48,46 @@
 </div>
 
 <pre>
-<code ngNonBindable clr-code-highlight="language-html">
-&lt;clr-stack-view&gt;
-    &lt;clr-stack-header&gt;
-        Modal editor
-        &lt;button class=&quot;stack-action btn btn-sm btn-link&quot; (click)=&quot;editModal = true&quot; type=&quot;button&quot;&gt;Edit&lt;/button&gt;
-    &lt;/clr-stack-header&gt;
+    <code ngNonBindable clr-code-highlight="language-html">
+    &lt;clr-stack-view&gt;
+        &lt;clr-stack-header&gt;
+            Modal editor
+            &lt;button class=&quot;stack-action btn btn-sm btn-link&quot; (click)=&quot;editModal = true&quot; type=&quot;button&quot;&gt;Edit&lt;/button&gt;
+        &lt;/clr-stack-header&gt;
 
-    &lt;clr-stack-block *ngFor=&quot;let block of blocks&quot;&gt;
-        &lt;clr-stack-label&gt;{{block.title}}&lt;/clr-stack-label&gt;
-        &lt;clr-stack-content&gt;{{block.content}}&lt;/clr-stack-content&gt;
+        &lt;clr-stack-block *ngFor=&quot;let block of blocks&quot;&gt;
+            &lt;clr-stack-label&gt;{{block.title}}&lt;/clr-stack-label&gt;
+            &lt;clr-stack-content&gt;{{block.content}}&lt;/clr-stack-content&gt;
 
-        &lt;clr-stack-block *ngFor=&quot;let child of block.children&quot;&gt;
-            &lt;clr-stack-label&gt;{{child.title}}&lt;/clr-stack-label&gt;
-            &lt;clr-stack-content&gt;{{child.content}}&lt;/clr-stack-content&gt;
-        &lt;/clr-stack-block&gt;
-    &lt;/clr-stack-block&gt;
-&lt;/clr-stack-view&gt;
-
-&lt;clr-modal [(clrModalOpen)]=&quot;editModal&quot;&gt;
-    &lt;h3 class=&quot;modal-title&quot;&gt;Edit mode&lt;/h3&gt;
-    &lt;div class=&quot;modal-body&quot;&gt;
-        &lt;clr-stack-view&gt;
-            &lt;clr-stack-block *ngFor=&quot;let block of blocks&quot;&gt;
-                &lt;clr-stack-label&gt;{{block.title}}&lt;/clr-stack-label&gt;
-                &lt;clr-stack-content&gt;
-                    &lt;input type=&quot;text&quot; [(ngModel)]=&quot;block.content&quot;/&gt;
-                &lt;/clr-stack-content&gt;
-
-                &lt;clr-stack-block *ngFor=&quot;let child of block.children&quot;&gt;
-                    &lt;clr-stack-label&gt;{{child.title}}&lt;/clr-stack-label&gt;
-                    &lt;clr-stack-content&gt;
-                        &lt;input type=&quot;text&quot; [(ngModel)]=&quot;child.content&quot;/&gt;
-                    &lt;/clr-stack-content&gt;
-                &lt;/clr-stack-block&gt;
+            &lt;clr-stack-block *ngFor=&quot;let child of block.children&quot;&gt;
+                &lt;clr-stack-label&gt;{{child.title}}&lt;/clr-stack-label&gt;
+                &lt;clr-stack-content&gt;{{child.content}}&lt;/clr-stack-content&gt;
             &lt;/clr-stack-block&gt;
-        &lt;/clr-stack-view&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;modal-footer&quot;&gt;
-        &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; (click)=&quot;editModal = false&quot;&gt;Done&lt;/button&gt;
-    &lt;/div&gt;
-&lt;/clr-modal&gt;
-</code></pre>
+        &lt;/clr-stack-block&gt;
+    &lt;/clr-stack-view&gt;
+
+    &lt;clr-modal [(clrModalOpen)]=&quot;editModal&quot;&gt;
+        &lt;h3 class=&quot;modal-title&quot;&gt;Edit mode&lt;/h3&gt;
+        &lt;div class=&quot;modal-body&quot;&gt;
+            &lt;clr-stack-view&gt;
+                &lt;clr-stack-block *ngFor=&quot;let block of blocks&quot;&gt;
+                    &lt;clr-stack-label&gt;{{block.title}}&lt;/clr-stack-label&gt;
+                    &lt;clr-stack-content&gt;
+                        &lt;input type=&quot;text&quot; [(ngModel)]=&quot;block.content&quot;/&gt;
+                    &lt;/clr-stack-content&gt;
+
+                    &lt;clr-stack-block *ngFor=&quot;let child of block.children&quot;&gt;
+                        &lt;clr-stack-label&gt;{{child.title}}&lt;/clr-stack-label&gt;
+                        &lt;clr-stack-content&gt;
+                            &lt;input type=&quot;text&quot; [(ngModel)]=&quot;child.content&quot;/&gt;
+                        &lt;/clr-stack-content&gt;
+                    &lt;/clr-stack-block&gt;
+                &lt;/clr-stack-block&gt;
+            &lt;/clr-stack-view&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;modal-footer&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; (click)=&quot;editModal = false&quot;&gt;Done&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/clr-modal&gt;
+    </code>
+</pre>

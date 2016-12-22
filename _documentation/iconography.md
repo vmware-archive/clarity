@@ -7,20 +7,93 @@ layout: documentation
 {: .component-summary }
 ##### Clarity presents pixel-perfect and scalable SVG-based icons. This new icon system gives you complete control over the color, orientation, and size. Additionally, you can access and customize any SVG graphic element inside the icon through standard CSS.
 
-##### 1. Current icon options
+##### Current icon options
 <clr-icon-selection-demo></clr-icon-selection-demo>
 
-##### 2. Color options
+##### Color options
 <clr-icon-colors-demo></clr-icon-colors-demo>
 
 ##### Inverse color option
 <clr-icon-inverse-colors-demo></clr-icon-inverse-colors-demo>
 
-##### 3. Setting the icon size
+##### Setting the icon size
 <clr-icon-size-demo></clr-icon-size-demo>
 
-##### 4. Orientation options
+##### Orientation options
 <clr-icon-orientation-demo></clr-icon-orientation-demo>
+
+##### Icon Variants
+
+Clarity Icons comes with variations of each icon where applicable. Variations include:
+
+- **Badged icons**  which of a small dot in the top right corner
+- **Alerted icons** which of a triangle in the top right corner
+- **Solid icons** which are filled in, as opposed to the outlined look of the default icons
+- **Combinations** such as solid + badged and alerted + badged
+
+<p>
+    <clr-icon shape="user" size="36"></clr-icon>
+    <clr-icon shape="user" class="has-alert" size="36"></clr-icon>
+    <clr-icon shape="user" class="has-badge" size="36"></clr-icon>
+    <clr-icon shape="user" class="is-solid" size="36"></clr-icon>
+    <clr-icon shape="user" class="is-solid has-alert" size="36"></clr-icon>
+    <clr-icon shape="user" class="is-solid has-badge" size="36"></clr-icon>
+    <clr-icon shape="user" class="is-solid has-badge--success" size="36"></clr-icon>
+</p>
+
+Displaying an icon variant only requires adding a CSS class to your <code class="clr-code">clr-icon</code> element. Applicable classes are listed below.
+
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="left">Class name</th>
+                    <th class="left">What it does</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left"><code class="clr-code">.is-solid</code></td>
+                    <td class="left">Replaces the default outlined style of the icon with a filled-in solid version for icons that have a solid version.</td>
+                </tr>
+                <tr>
+                    <td class="left"><code class="clr-code">.has-alert</code></td>
+                    <td class="left">Causes a small yellow triangle to appear in the top right corner of an icon that supports it.</td>
+                </tr>
+                <tr>
+                    <td class="left"><code class="clr-code">.has-badge</code></td>
+                    <td class="left">Causes a small dot to appear in the top right corner of an icon that supports badging. By default, this dot is red.</td>
+                </tr>
+                <tr>
+                    <td class="left"><code class="clr-code">.has-badge--success</code></td>
+                    <td class="left">Causes a small green dot to appear in the top right corner of an icon that supports badging.</td>
+                </tr>
+                <tr>
+                    <td class="left"><code class="clr-code">.has-badge--error</code></td>
+                    <td class="left">Causes a small red dot to appear in the top right corner of an icon that supports badging.</td>
+                </tr>
+                <tr>
+                    <td class="left"><code class="clr-code">.has-badge--info</code></td>
+                    <td class="left">Causes a small blue dot to appear in the top right corner of an icon that supports badging.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<pre>
+    <code class="language-html">
+    &lt;clr-icon shape=&quot;user&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+    &lt;clr-icon shape=&quot;user&quot; class=&quot;has-alert&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+    &lt;clr-icon shape=&quot;user&quot; class=&quot;has-badge&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+    &lt;clr-icon shape=&quot;user&quot; class=&quot;is-solid&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+    &lt;clr-icon shape=&quot;user&quot; class=&quot;is-solid has-alert&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+    &lt;clr-icon shape=&quot;user&quot; class=&quot;is-solid has-badge&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+    &lt;clr-icon shape=&quot;user&quot; class=&quot;is-solid has-badge--success&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+    </code>
+</pre>
+
 
 {: #guidelines}
 ### Usage

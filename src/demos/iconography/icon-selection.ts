@@ -12,3 +12,30 @@ import {Component} from "@angular/core";
 })
 export class IconSelectionDemo {
 }
+
+/* 
+
+--- TODO: When we have things been imported as expected, reinstate the dynamic rendering of icons...
+
+import { Component } from "@angular/core";
+import { SVG_ICON_TEMPLATES } from "../../clarity-icons/svg-icon-templates";
+
+let iconShapes = Object.keys(SVG_ICON_TEMPLATES);
+let nonAllowedShapes = ["vm-bug"];
+iconShapes = iconShapes.filter(shape => nonAllowedShapes.indexOf(shape) === -1);
+
+
+@Component({
+    moduleId: module.id,
+    selector: "clr-icon-selection-demo",
+    // Note the .css extension here, not .scss. That's the best we can have at the moment.
+    styleUrls: ["./iconography.demo.css"],
+    templateUrl: "./icon-selection.demo.html"
+})
+export class IconSelectionDemo {
+
+    shapes: string[] = iconShapes;
+
+}
+
+*/

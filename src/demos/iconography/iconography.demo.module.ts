@@ -11,6 +11,7 @@ import { IconColorsDemo } from "./icon-colors";
 import { IconSizeDemo } from "./icon-size";
 import { IconOrientationDemo } from "./icon-orientation";
 import { IconInverseColorDemo } from "./icon-inverse-color";
+import { IconVariantsDemo } from "./icon-variants";
 
 @NgModule({
     imports: [
@@ -22,14 +23,16 @@ import { IconInverseColorDemo } from "./icon-inverse-color";
         IconOrientationDemo,
         IconSelectionDemo,
         IconSizeDemo,
-        IconInverseColorDemo
+        IconInverseColorDemo,
+        IconVariantsDemo
     ],
     exports: [
         IconColorsDemo,
         IconOrientationDemo,
         IconSelectionDemo,
         IconSizeDemo,
-        IconInverseColorDemo
+        IconInverseColorDemo,
+        IconVariantsDemo
     ],
     // schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

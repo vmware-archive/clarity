@@ -6,8 +6,7 @@
         "notDoing": -1
     },
 
-    "list": [
-        {
+    "list": [{
             "url": "app-layout",
             "text": "Application Layout",
             "type": "pattern",
@@ -15,8 +14,7 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "alerts",
@@ -26,8 +24,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "badges",
@@ -37,8 +34,7 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "buttons",
@@ -48,8 +44,7 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "cards",
@@ -59,8 +54,7 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "checkboxes",
@@ -71,7 +65,7 @@
             "core": -1,
             "ng": 20,
             "dox": 20,
-            "comments": false
+            "isUpdated": true
         },
         {
             "url": "code-highlight",
@@ -81,8 +75,7 @@
             "ui": -1,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "/get-started#howToUse",
@@ -122,9 +115,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "isUpdated": true,
-            "comments": "Empty state placeholder added"
+            "dox": 20
         },
         {
             "url": "dropdowns",
@@ -134,9 +125,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "isUpdated": true,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "forms",
@@ -146,8 +135,7 @@
             "ui": 20,
             "core": -1,
             "ng": 10,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "grid",
@@ -178,7 +166,8 @@
             "ui": 20,
             "core": 20,
             "ng": -1,
-            "dox": 20
+            "dox": 20,
+            "isNew": true
         },
         {
             "url": "input-fields",
@@ -188,8 +177,7 @@
             "ui": 20,
             "core": -1,
             "ng": 10,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "labels",
@@ -199,8 +187,7 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "lists",
@@ -210,8 +197,7 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "login",
@@ -231,8 +217,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "navigation",
@@ -252,8 +237,7 @@
             "ui": 20,
             "core": -1,
             "ng": 5,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "radios",
@@ -263,19 +247,17 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
-            "url": false,
+            "url": null,
             "text": "Search",
             "type": "component",
             "ux": 10,
             "ui": 10,
             "core": -1,
             "ng": 10,
-            "dox": 10,
-            "comments": false
+            "dox": 10
         },
         {
             "url": "select-boxes",
@@ -285,11 +267,10 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
-            "url": false,
+            "url": null,
             "text": "Signpost",
             "type": "component",
             "ux": 20,
@@ -307,8 +288,7 @@
             "ui": 20,
             "core": -1,
             "ng": 10,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "spinners",
@@ -339,8 +319,7 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "tabs",
@@ -350,8 +329,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "toggle-switches",
@@ -361,8 +339,7 @@
             "ui": 20,
             "core": -1,
             "ng": 5,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "tooltips",
@@ -372,8 +349,7 @@
             "ui": 20,
             "core": -1,
             "ng": 5,
-            "dox": 20,
-            "comments": false
+            "dox": 20
         },
         {
             "url": "typography",

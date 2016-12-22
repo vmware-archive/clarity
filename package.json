@@ -76,6 +76,6 @@
     "test": "gulp test",
     "test:watch": "gulp test:watch",
     "prepublish:all": "gulp npm:prepare --version $npm_package_version",
-    "publish:all": "npm publish dist/npm/clarity-ui; npm publish dist/npm/clarity-angular; npm publish dist/npm/clarity-icons; npm publish dist/npm/clarity-demos"
+    "publish:all": "npm publish dist/npm/clarity-ui; npm publish dist/npm/clarity-angular; npm publish dist/npm/clarity-icons"
   }
 }

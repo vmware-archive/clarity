@@ -3,8 +3,6 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ViewChild} from "@angular/core";
-import {StackBlock} from "clarity-angular/stack-view/stack-block";
 
 export class StackViewNgDemo {
     /*
@@ -29,7 +27,6 @@ export class StackViewNgDemo {
     /*
      * Lazy loading demo
      */
-    @ViewChild("lazyBlock") lazyBlock: StackBlock;
     children: any[] = [];
 
     fetchChildren(): void {
@@ -43,10 +40,5 @@ export class StackViewNgDemo {
                 { title: "Sub-label 3", content: "Sub-content 3"},
             ];
         }, 2000);
-    }
-
-    resetChildren(): void {
-        this.lazyBlock.expanded = false;
-        this.children = [];
     }
 }

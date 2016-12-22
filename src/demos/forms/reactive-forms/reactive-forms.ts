@@ -30,7 +30,6 @@ export class ReactiveFormsDemo {
 
     onSubmit() {
         this.submitted = true;
-        console.log(this.employeeAddressForm.value);
     }
 
     addNewEmployeeAddress() {

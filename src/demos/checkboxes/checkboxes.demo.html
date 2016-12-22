@@ -45,6 +45,17 @@
                 <label for="checkrads_8">A disabled and checked checkbox</label>
             </div>
         </div>
+        <div class="form-group">
+            <label>Indeterminate Checkbox</label>
+            <div class="checkbox-inline">
+                <clr-checkbox type="checkbox" id="checkrads_9" [clrIndeterminate]="indeterminateState"></clr-checkbox>
+                <label for="checkrads_9">
+                    <button class="btn btn-primary" (click)="onToggleIndeterminateState($event)">
+                        Toggle Indeterminate State
+                    </button>
+                </label>
+            </div>
+        </div>
     </section>
 </form>
 

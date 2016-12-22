@@ -1,0 +1,80 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Add SASS mixin to target problematic browsers</h6>
+        <p>
+            The <code class="clr-code">fixForFirefox</code>, <code class="clr-code">fixForMsEdge</code>,
+            <code class="clr-code">fixForIE10AndUp</code>, and <code class="clr-code">fixForIE11AndUp</code> SASS mixins were added to <code class="clr-code">clarity/utils/helpers.clarity.scss</code>. These mixins allow us to target CSS fixes to specific
+            browsers.
+        </p>
+    </li>
+</ul>
+
+<h2>Breaking Changes</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li breaking-change>
+        <h6>Update Clarity to use BS4 alpha 3</h6>
+        <p>
+            Clarity has been upgraded to use BS4 Alpha 3. This allows users of Clarity to take advantage of the new BS for functionality with the flex box grid. With Alpha 3, BS4 rewrote some of the classnames related to their grid. Users of Clarity who were using
+            Push, pull, offset classes May need to replace the old class names with the new format. More information is available in the
+            <a href="http://v4-alpha.getbootstrap.com/layout/grid/#example-offsetting-columns" target="_blank">BS4 documentation</a>.
+        </p>
+    </li>
+    <li breaking-change>
+        <h6>Cleanup baselineRem() and rpx() SASS function calls</h6>
+        <p>
+            The <code class="clr-code">rpx()</code> SASS function has been removed from Clarity. Make sure to replace it with a measurement in pixels. For example, <code class="clr-code">padding-top: rpx(2)</code> would become <code class="clr-code">padding-top: 2px</code>.
+        </p>
+    </li>
+    <li breaking-change>
+        <h6>Typography updates - Implementation: HTML/CSS</h6>
+        <p>
+            Clarity's typography has been completely redone. It is imperative that all applications upgrading to 0.4.0 verify any customizations they had previously made to Clarity's font specs. Our own internal upgrades involved minimal changes to existing CSS overrides.
+            Nevertheless, Clarity strongly advises all users to visually check their applications after upgrading.
+        </p>
+        <p>
+            More information on SASS/SCSS convenience functions that have been added to Clarity to assist with the use of typography can be found in the typography documentation.
+        </p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Vertical alignment issue with the labels in Firefox
+    </li>
+    <li bug-fix>
+        Row arrow alignment issue with stack views in Firefox and IE
+    </li>
+    <li bug-fix>
+        Toggle switch alignment issue in Firefox and MSEdge
+    </li>
+    <li bug-fix>
+        Vertical alignment issue with buttons in IE (not Edge)
+    </li>
+    <li bug-fix>
+        Fixed a padding issue with text fields in IE10
+    </li>
+    <li bug-fix>
+        Hex code display in color contrast demo is not visible in IE10
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>
+        Add TSLint to Clarity
+    </li>
+    <li>
+        Optimize base64 Clarity fonts
+    </li>
+    <li>
+        Address additional cases for tabs including multi-level, scrolling, and usage in different areas like wizards and modals
+    </li>
+    <li>
+        Dropdowns Refactor - Add classes on the host element instead of nesting them
+    </li>
+    <li>
+        Upgrade website to 0.4.0
+    </li>
+</ul>

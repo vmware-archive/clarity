@@ -1,0 +1,7 @@
+$clr-font-size: 16px;
+$clr-rem-denominator: 16;
+$clr-baseline: 24px;
+
+@function baselineRem($multiplier) {
+    @return $multiplier * $clr-baseline;
+}

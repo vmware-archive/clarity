@@ -1,0 +1,79 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Upgrade Clarity Seed to Angular 2.0.0</h6>
+        <h6>Upgrade Clarity to Angular 2.0.0</h6>
+        <p style="margin-top: 24px">
+            Clarity 0.5.0 is in Angular 2.0.0 Final!
+        </p>
+        <p>
+            Here are the recommended version numbers you could use in your package.json:
+        </p>
+        <pre>
+    <code class="language-js">
+    "dependencies": {{ '{' }}
+        "@angular/common": "2.0.0",
+        "@angular/compiler": "2.0.0",
+        "@angular/core": "2.0.0",
+        "@angular/forms": "2.0.0",
+        "@angular/http": "2.0.0",
+        "@angular/platform-browser": "2.0.0",
+        "@angular/platform-browser-dynamic": "2.0.0",
+        "@angular/router": "3.0.0",
+        "@angular/upgrade": "2.0.0",
+        ...
+    {{ '}' }}
+</code></pre>
+        <p>
+            Declaring directives and pipes in components has been deprecated. That means you will no longer import Clarity directives in the components as you have done with previous versions like this:
+        </p>
+        <pre>
+    <code class="language-js">
+    import {{ '{' }}SOME_CLARITY_DIRECTIVE{{ '}' }} from "clarity-angular";
+    @Component({{ '{' }}
+        ...
+        directives: [SOME_CLARITY_DIRECTIVE],
+        ...
+    {{ '}' }});
+
+    export class YourComponent {{ '{' }}        {{ '}' }}
+</code></pre>
+
+        <p>
+            Instead, now an application that consumes Clarity should at least have one app-level module like below:
+        </p>
+
+        <pre>
+    <code class="language-js">
+    import {{ '{' }} NgModule {{ '}' }} from '@angular/core';
+    import {{ '{' }} BrowserModule {{ '}' }} from '@angular/platform-browser';
+    import {{ '{' }} ClarityModule {{ '}' }} from 'clarity-angular';
+    import {{ '{' }} AppComponent {{ '}' }} from './app.component';
+
+    @NgModule({{ '{' }}
+        imports: [
+            BrowserModule,
+            ClarityModule,
+            ....(other modules from Angular or 3rd parties for your app)
+        ],
+        declarations: [ AppComponent ],
+        bootstrap: [ AppComponent ]
+    {{ '}' }})
+
+    export class AppModule {{ '{' }}
+    {{ '}' }}
+</code></pre>
+
+        <p>
+            Your dependencies (components, directives, pipes, services, etc) should be declared and exported through modules.
+            <a href="https://angular.io/docs/ts/latest/guide/ngmodule.html" target="_blank">Read more about NgModule.</a>
+        </p>
+        <p>
+            You can check out the latest version of Clarity seed to get a sample setup with the new module, routers, and testing setup. You can also check out <a href="https://github.com/juliemr/ng2-test-seed" target="_blank">this
+            excellent seed that covers basic unit tests using TestBed.</a>
+        </p>
+        <p>
+            Please refer to <a href="https://github.com/angular/angular/blob/master/CHANGELOG.md" target="_blank">Angular's CHANGELOG for a complete list of breaking changes</a> that might impact your application.
+        </p>
+    </li>
+</ul>

@@ -1,0 +1,176 @@
+<article>
+    <h5 class="component-summary" id="use-claritys-buttons-to-submit-forms-or-initiate-actions-in-modals-wizards-or-other-interactive-blocks-of-content">Use Clarity’s buttons to submit forms or initiate actions in modals, wizards, or other interactive blocks of content.</h5>
+
+    <h3 id="styles">Styles</h3>
+
+    <p>Clarity defines three button styles:</p>
+
+    <ul class="list">
+        <li><strong>Solid.</strong> A solid background with light text. These buttons are prominent on the page.</li>
+        <li><strong>Outline.</strong> A transparent background with colored border and text. On hover, the button fills with color.</li>
+        <li><strong>Flat.</strong> Text in Action Blue that fills with a button shape on hover.</li>
+    </ul>
+
+    <clr-buttons-demo-real-button class="clrweb-button-demo"></clr-buttons-demo-real-button>
+
+    <h3 id="types">Types</h3>
+
+    <clr-buttons-demo-primary-button class="clrweb-button-demo"></clr-buttons-demo-primary-button>
+
+    <clr-buttons-demo-secondary-button class="clrweb-button-demo indent"></clr-buttons-demo-secondary-button>
+
+    <clr-buttons-demo-tertiary-button class="clrweb-button-demo indent"></clr-buttons-demo-tertiary-button>
+
+    <h3 id="states">States</h3>
+
+    <clr-buttons-demo-button-states class="clrweb-button-demo"></clr-buttons-demo-button-states>
+
+    <h3 id="sizes">Sizes</h3>
+
+    <clr-buttons-demo-button-sizes class="clrweb-button-demo"></clr-buttons-demo-button-sizes>
+
+    <h3 id="inverse">Inverse</h3>
+
+    <clr-buttons-demo-inverse-button class="clrweb-button-demo"></clr-buttons-demo-inverse-button>
+
+    <h3 id="guidelines">Using Buttons</h3>
+
+    <h4 id="solid-outline-and-flat">Solid, outline, and flat</h4>
+
+    <div class="row buttons-modal-gfx">
+        <div class="col-xs-12 col-sm-2">
+            <button type="submit" class="btn btn-primary">Solid</button>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            For the preferred or default action. One solid button per component.
+        </div>
+    </div>
+    <div class="row buttons-modal-gfx">
+        <div class="col-xs-12 col-sm-2">
+            <button type="submit" class="btn btn-outline">Outline</button>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            For a neutral or negative action, next to a solid button, or when actions are equivalent.
+        </div>
+    </div>
+    <div class="row buttons-modal-gfx">
+        <div class="col-xs-12 col-sm-2">
+            <button type="submit" class="btn btn-link">Flat</button>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            For lower priority actions (More Information or Don't Remind Me Again). Also when actions are equivalent and space is limited (toolbars and cards).
+        </div>
+    </div>
+
+    <h4 id="alignment-is-container-dependent">Alignment is container dependent</h4>
+
+    <p>Spatial relationships with other elements in the component or space determine button placement.</p>
+
+    <div class="row buttons-modal-gfx">
+        <div class="col-xs-12 col-sm-2">
+            <a routerLink="/documentation/modals">Modals</a>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            Right-aligned
+        </div>
+    </div>
+    <div class="row buttons-modal-gfx">
+        <div class="col-xs-12 col-sm-2">
+            <a routerLink="/documentation/wizards">Wizards</a>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            Right-aligned
+        </div>
+    </div>
+    <div class="row buttons-modal-gfx">
+        <div class="col-xs-12 col-sm-2">
+            <a routerLink="/documentation//cards">Cards</a>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            Left-aligned
+        </div>
+    </div>
+    <div class="row buttons-modal-gfx">
+        <div class="col-xs-12 col-sm-2">
+            <a routerLink="/documentation/app-layout">Content area</a>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            Left-aligned
+        </div>
+    </div>
+
+    <h4 id="info-success-and-danger-indicate-action-severity">Info, success, and danger indicate action severity</h4>
+
+    <div class="row buttons-modal-gfx">
+        <div class="col-xs-12 col-sm-2">
+            <button type="submit" class="btn btn-outline">Info</button>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            For displaying more detailed information. Typically an outline button.
+        </div>
+    </div>
+    <div class="row buttons-modal-gfx">
+        <div class="col-xs-12 col-sm-2">
+            <button type="submit" class="btn btn-success">Success</button>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            For the last step (and preferred action) in a multi-step workflow.
+        </div>
+    </div>
+    <div class="row buttons-modal-gfx">
+        <div class="col-xs-12 col-sm-2">
+            <button type="submit" class="btn btn-danger">Danger</button>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            For a warning or destructive action, such as Delete. Although warning messages are often in yellow, this color does not work well for buttons because the light-colored text is not accessible against a yellow background.
+        </div>
+    </div>
+
+    <h4 id="size-is-location-dependent">Size is location dependent</h4>
+
+    <div class="row buttons-modal-gfx">
+        <div class="col-xs-12 col-sm-2">
+            <button type="submit" class="btn btn-primary">
+        Default
+      </button>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            Use the default height of 36 pixels in modals, wizards, and in the content area.
+        </div>
+    </div>
+    <div class="row buttons-modal-gfx">
+        <div class="col-xs-12 col-sm-2">
+            <button type="submit" class="btn btn-sm">Compact</button>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            Use the compact button, 24 pixels in height, in datagrids, tables, cards, inline, and other areas not large enough to accommodate the default size.
+        </div>
+    </div>
+
+    <h4 id="the-block-button">The block button</h4>
+
+    <p>A block button occupies the full width of its container. A common use of this button is in the Login screen.</p>
+
+    <div class="row buttons-modal-gfx">
+        <div class="col-xs">
+            <span>
+        <p align="center"><button type="submit" class="btn btn-primary btn-block">Block</button></p>
+        </span>
+
+        </div>
+    </div>
+
+    <h4 id="inverse-formatting-is-for-a-secondary-outline-button">Inverse formatting is for a secondary, outline button</h4>
+
+    <p>For information about when to use inverse styling, see the <a routerLink="/documentation/color">Color</a> documentation.</p>
+
+    <h4 id="clear-and-concise-labels">Clear and concise labels</h4>
+
+    <p>Use a verb or verb phrase that describes the button’s action. Limit labels to three words and avoid long words.</p>
+
+    <p>Buttons labels use uppercase text. Buttons can be quite small in an enterprise application, and research shows that uppercase letters are easier to read at smaller font sizes.</p>
+
+    <p>Labels for normal-sized buttons range from 10 to 12 points. Smaller buttons, such as those in datagrids, headers, and navigation components, might use as small as 8 points.</p>
+
+    <!--See [Letter Case and Text Legibility in Normal and Low Vision](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2016788/).-->
+</article>

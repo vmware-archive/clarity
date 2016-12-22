@@ -1,0 +1,17 @@
+.github-btn {
+  margin-top: $bl-1_0 - 4;
+}
+
+@media screen and (max-width: map-get($clr-breakpoints, medium)) {
+  .github-btn {
+    display: none;
+  }
+}
+
+#home-link {
+  display: none;
+
+  .open-hamburger-menu & {
+    display: inline-block;
+  }
+}

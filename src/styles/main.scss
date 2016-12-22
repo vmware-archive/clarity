@@ -1,0 +1,20 @@
+@import '~clarity-ui/src/main';
+
+$clrweb-altGray: #f3f5f8;
+
+
+@import 'clarityHelpers.scss';
+@import 'global.scss';
+
+@import 'syntax-highlighting.scss';
+@import 'header.scss';
+@import 'footer.scss';
+@import 'home.scss';
+@import 'get-started.scss';
+@import 'whats-new.scss';
+@import 'components.scss';
+@import 'community.scss';
+@import 'tabs.scss';
+@import "code";
+
+@import 'error-pages.scss';

@@ -1,0 +1,81 @@
+
+<article><h5 class="component-summary" id="a-tooltip-provides-a-short-description-of-a-ui-element">A tooltip provides a short description of a UI element.</h5>
+
+  <h6 id="tooltip">.tooltip</h6>
+  <p>This class wraps an actionable icon followed by the <code class="clr-code">.tooltip-content</code> to be
+    shown on the icon. The content appears when the user hovers over the icon.</p>
+
+  <h6 id="tooltip-content">.tooltip-content</h6>
+  <p>This class contains the text that will be shown when the tooltip is visible.</p>
+
+  <h3 id="sizes">Sizes</h3>
+
+  <p>Tooltips support four sizes, defined by using one of the following classes with the
+    <code class="clr-code">.tooltip</code> class:</p>
+
+  <ul class="list">
+    <li>.tooltip-xs</li>
+    <li>.tooltip-sm</li>
+    <li>.tooltip-md</li>
+    <li>.tooltip-lg</li>
+  </ul>
+
+  <clr-tooltips-sizes-demo class="tooltip-demo"></clr-tooltips-sizes-demo>
+
+  <h3 id="directions">Directions</h3>
+
+  <p>Tooltips support six directions, defined by using one of the following classes with the
+    <code class="clr-code">.tooltip</code> class:</p>
+
+  <ul class="list">
+    <li>.tooltip-top-right</li>
+    <li>.tooltip-top-left</li>
+    <li>.tooltip-bottom-right</li>
+    <li>.tooltip-top-left</li>
+    <li>.tooltip-right</li>
+    <li>.tooltip-left</li>
+  </ul>
+
+  <clr-tooltips-directions-demo class="tooltip-demo"></clr-tooltips-directions-demo>
+
+  <h3 id="guidelines">Usage</h3>
+
+  <p>Use tooltips for actionable icons that do not have text labels, such as the icons in a toolbar.  A tooltip is visible on hover.</p>
+
+  <p>Don’t use a tooltip on:</p>
+
+  <ul class="list">
+    <li><strong>Components.</strong>  Provide a descriptive label and use inline or signpost help for more information.</li>
+    <li><strong>Static images.</strong>  Use the HTML alt tag to provide information about the image.</li>
+    <li><strong>Textual links.</strong>  Ensure that the link describes its destination and is not truncated.</li>
+  </ul>
+
+  <p>Don’t rely on tooltips to meet accessibility requirements.  Rather, ensure that your underlying content is well-structured for accessibility, for example, by using ARIA roles.</p>
+
+  <h4 id="placement">Placement</h4>
+
+  <p>Choose a tooltip position that ensures the entire tooltip is visible on the screen and that the tooltip does not cover an important UI element.  By default, the positioning for tooltips is to the top-right of the icon, pointing to its center.</p>
+
+  <p>Other positions are:</p>
+
+  <ul class="list">
+    <li>Top left</li>
+    <li>Bottom right</li>
+    <li>Bottom left</li>
+    <li>Side left</li>
+    <li>Side right</li>
+  </ul>
+
+  <h4 id="size">Size</h4>
+
+  <p>Set a width that accommodates the text string.  The default is 240 px.  Other choices are 72 px, 120 px, and 360 px.</p>
+
+  <h4 id="text">Text</h4>
+
+  <ul class="list">
+    <li>Use a verb phrase to describe the action on the icon, for example, “Edit settings.”</li>
+    <li>Use only plain text and be concise.  Tooltips can be a sentence fragment.</li>
+    <li>If more detailed information is required, use another form of help.</li>
+    <li>Use sentence-style caps and no ending punctuation.</li>
+  </ul>
+</article>

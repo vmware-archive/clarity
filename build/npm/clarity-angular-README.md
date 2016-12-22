@@ -25,7 +25,7 @@
     @NgModule({
         imports: [
             BrowserModule,
-            ClarityModule,
+            ClarityModule.forRoot(),
             ....
          ],
          declarations: [ AppComponent ],

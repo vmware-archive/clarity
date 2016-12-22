@@ -12,6 +12,13 @@ export default {
         '@angular/platform-browser',
         'rxjs'
     ],
+    globals: {
+        '@angular/core' : 'ng.core',
+        '@angular/common' : 'ng.common',
+        '@angular/forms' : 'ng.forms',
+        '@angular/platform-browser' : 'ng.platformBrowser',
+        'rxjs' : 'rxjs'
+    },
     plugins: [
         buble()
     ],

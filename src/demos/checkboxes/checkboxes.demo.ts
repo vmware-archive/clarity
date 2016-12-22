@@ -12,4 +12,11 @@ import {Component} from "@angular/core";
 
 export class CheckboxesDemo {
 
+    indeterminateState: boolean = true;
+
+    onToggleIndeterminateState() {
+        event.preventDefault();
+        this.indeterminateState = !this.indeterminateState;
+    }
+
 }

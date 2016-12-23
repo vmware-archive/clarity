@@ -1,17 +1,14 @@
 .layout-news {
-    .content-area > section {
+    .content-area>section {
         max-width: $clrweb-content-maxwidth;
-
         &:first-child {
             margin-top: 0;
             padding-top: 0;
         }
-
         h2:first-of-type {
             margin-top: 24px;
         }
     }
-
     ul.list {
         margin-top: 4px;
         margin-left: 1.3em;
@@ -20,23 +17,18 @@
 
 ul.whats-new-highlights {
     margin-top: $bl-0_5;
-
-    h6 + p {
+    h6+p {
         margin-top: 0;
     }
-
-    & > li {
+    &>li {
         margin-top: $bl-1_0;
-
         &:first-child {
             margin-top: 0;
-
-            & > h6 {
+            &>h6 {
                 margin-top: 0;
             }
         }
-
-        & > h6 {
+        &>h6 {
             font-weight: normal;
             font-size: 18px;
             margin-top: $bl-2_0;
@@ -50,12 +42,10 @@ ul.whats-new-highlights {
     h2 {
         margin-top: $bl-1_5;
     }
-
     h4 {
         margin-top: $bl-1_0;
     }
-
-    h2 + h4 {
+    h2+h4 {
         margin-top: $bl-0_25;
     }
 }
@@ -79,58 +69,49 @@ ul.whats-new-highlights {
     padding-bottom: $bl-0_25;
     padding-top: $bl-0_5;
     position: static;
-
     .summary-blocks {
-        &::before, &::after {
+        &::before,
+        &::after {
             display: table;
             clear: both;
             content: ''
         }
     }
-
     .summary-block {
         float: left;
         margin-right: $bl-0_75;
     }
-
     .summary-block-title {
         @extend %block-title-styles;
     }
-
     .summary-block-details {
         @extend %block-content-styles;
-
-        & > .count {
+        &>.count {
             font-weight: 600;
         }
     }
-
     .whats-new-mediablock {
         width: baselineRem(8);
         margin-bottom: 0;
         display: inline-flex;
-
         .icon {
             height: $bl-2_0;
             width: $bl-2_0;
         }
-
         .description {
             margin-top: 0;
-
-            & > .title {
+            margin-left: $bl-0_25;
+            &>.title {
                 @extend %block-title-styles;
             }
-
-            & > p.title + p {
+            &>p.title+p {
                 @extend %block-content-styles;
-                font-size: baselineRem(0.58333);
+                font-size: $bl-0_5;
                 width: baselineRem(5);
             }
         }
     }
 }
-
 
 .breaking-change-alert {
     margin-top: $bl-0_5;

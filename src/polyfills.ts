@@ -16,10 +16,8 @@ import 'core-js/es6/set';
 import 'core-js/es6/reflect';
 
 import 'core-js/es7/reflect';
-import 'zone.js/dist/zone';
 
 import 'intl';
 import 'intl/locale-data/jsonp/en';
-import 'web-animations-js';
-import 'mutationobserver-shim';
-import '@webcomponents/custom-elements';
+
+import 'zone.js/dist/zone';

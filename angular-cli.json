@@ -17,6 +17,7 @@
       "prefix": "",
       "mobile": false,
       "styles": [
+        "../node_modules/clarity-ui/clarity-ui.min.css",
         "../node_modules/prismjs/themes/prism-solarizedlight.css",
         "../node_modules/clarity-icons/clarity-icons.min.css",
         "styles/main.scss"

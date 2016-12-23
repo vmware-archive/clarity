@@ -5,11 +5,8 @@
         <p>
             Clarity-Angular now supports
             <a href="https://angular.io/docs/ts/latest/cookbook/aot-compiler.html">Ahead-of-Time (AoT)
-            compilation</a>. Starting with 0.8.0, the clarity-angular npm package contains
-            the files in es5 es2015 format that can be compiled with ngc compiler.
-            In addition, the package contains clarity-angular.umd.js file. If your application
-            is setup using systemJS, please update your systemJS configuration to point to the
-            clarity-angular.umd.js file as shown in the
+            compilation</a>. Starting with 0.8.0, the clarity-angular npm package contains the files in es5 es2015 format that can be compiled with ngc compiler. In addition, the package contains clarity-angular.umd.js file. If your application
+            is setup using systemJS, please update your systemJS configuration to point to the clarity-angular.umd.js file as shown in the
             <a href="https://github.com/vmware/clarity/blob/master/README.md">README</a>.
         </p>
     </li>
@@ -24,7 +21,7 @@
     <li>
         <h6>Adding your own icons to ClarityIcons</h6>
         <p>
-            Using the newly released ClarityIcons API, you can now add your own icons to the publically available ClarityIcons architecture. Use the following call in your application to add your icon to our library in your application:
+            Using the newly released ClarityIcons API, you can now add your own icons to the publically available ClarityIcons architecture. Use the following call to add your icon to our library in your application:
         </p>
         <pre>
     <code clr-code-highlight="language-typescript">
@@ -91,11 +88,8 @@
         <h6>Added forRoot() and forChild() to ClarityModule</h6>
         <p>
             Added <code class="clr-code">forRoot()</code> and
-            <code class="clr-code">forChild()</code> methods
-            on <code class="clr-code">ClarityModule</code> to prevent reimport of services in lazy loaded
-            feature modules. Click
-            <a href="https://angular.io/docs/ts/latest/cookbook/ngmodule-faq.html#!#!23q-for-root">here</a>
-            for more information. Clarity Module should now be imported as follows:
+            <code class="clr-code">forChild()</code> methods on <code class="clr-code">ClarityModule</code> to prevent reimport of services in lazy loaded feature modules. Click
+            <a href="https://angular.io/docs/ts/latest/cookbook/ngmodule-faq.html#!#!23q-for-root">here</a> for more information. Clarity Module should now be imported as follows:
         </p>
         <pre>
     <code clr-code-highlight="language-typescript">
@@ -121,8 +115,7 @@
 <h2>Bug Fixes</h2>
 <ul class="list">
     <li bug-fix>
-        Upgraded Clarity font to Metropolis Release 8
-        and removed subsetting to support latin extended characters.
+        Upgraded Clarity font to Metropolis Release 8 and removed subsetting to support latin extended characters.
     </li>
 </ul>
 

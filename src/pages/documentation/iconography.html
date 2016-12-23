@@ -1,6 +1,7 @@
 <article>
     <h5 class="component-summary" id="clarity-presents-pixel-perfect-and-scalable-svg-based-icons-this-new-icon-system-gives-you-complete-control-over-the-color-orientation-and-size-additionally-you-can-access-and-customize-any-svg-graphic-element-inside-the-icon-through-standard-css">Clarity presents pixel-perfect and scalable SVG-based icons. This new icon system gives you complete control over the color, orientation, and size. Additionally, you can access and customize any SVG graphic element inside the icon through standard
-        CSS.</h5>
+        CSS.
+    </h5>
 
     <h5 id="current-icon-options">Current icon options</h5>
     <clr-icon-selection-demo></clr-icon-selection-demo>
@@ -109,67 +110,67 @@
                     <tr>
                         <th>
                             Highlight
-                            <div class="hidden-sm-up"><code class="clr-code">.icon-color-highlight</code></div>
+                            <div class="hidden-sm-up"><code class="clr-code">.is-highlight</code></div>
                         </th>
-                        <td class="hidden-xs-down"><code class="clr-code">.icon-color-highlight</code></td>
+                        <td class="hidden-xs-down"><code class="clr-code">.is-highlight</code></td>
                         <td>#007CBB</td>
                         <td>
-                            <clr-icon shape="info" size="24" class="icon-color-highlight"></clr-icon>
+                            <clr-icon shape="info" size="24" class="is-highlight"></clr-icon>
                         </td>
                     </tr>
                     <tr>
                         <th>
                             Danger
-                            <div class="hidden-sm-up"><code class="clr-code">.icon-color-danger</code></div>
+                            <div class="hidden-sm-up"><code class="clr-code">.is-danger</code></div>
                         </th>
-                        <td class="hidden-xs-down"><code class="clr-code">.icon-color-danger</code></td>
+                        <td class="hidden-xs-down"><code class="clr-code">.is-danger</code></td>
                         <td>#A32100</td>
                         <td>
-                            <clr-icon shape="info" size="24" class="icon-color-danger"></clr-icon>
+                            <clr-icon shape="info" size="24" class="is-danger"></clr-icon>
                         </td>
                     </tr>
                     <tr>
                         <th>
                             Warning
-                            <div class="hidden-sm-up"><code class="clr-code">.icon-color-warning</code></div>
+                            <div class="hidden-sm-up"><code class="clr-code">.is-warning</code></div>
                         </th>
-                        <td class="hidden-xs-down"><code class="clr-code">.icon-color-warning</code></td>
+                        <td class="hidden-xs-down"><code class="clr-code">.is-warning</code></td>
                         <td>#E62700</td>
                         <td>
-                            <clr-icon shape="info" size="24" class="icon-color-warning"></clr-icon>
+                            <clr-icon shape="info" size="24" class="is-warning"></clr-icon>
                         </td>
                     </tr>
                     <tr>
                         <th>
                             Success
-                            <div class="hidden-sm-up"><code class="clr-code">.icon-color-success</code></div>
+                            <div class="hidden-sm-up"><code class="clr-code">.is-success</code></div>
                         </th>
-                        <td class="hidden-xs-down"><code class="clr-code">.icon-color-success</code></td>
+                        <td class="hidden-xs-down"><code class="clr-code">.is-success</code></td>
                         <td>#318700</td>
                         <td>
-                            <clr-icon shape="info" size="24" class="icon-color-success"></clr-icon>
+                            <clr-icon shape="info" size="24" class="is-success"></clr-icon>
                         </td>
                     </tr>
                     <tr>
                         <th>
                             Info
-                            <div class="hidden-sm-up"><code class="clr-code">.icon-color-info</code></div>
+                            <div class="hidden-sm-up"><code class="clr-code">.is-info</code></div>
                         </th>
-                        <td class="hidden-xs-down"><code class="clr-code">.icon-color-info</code></td>
+                        <td class="hidden-xs-down"><code class="clr-code">.is-info</code></td>
                         <td>#007CBB</td>
                         <td>
-                            <clr-icon shape="info" size="24" class="icon-color-info"></clr-icon>
+                            <clr-icon shape="info" size="24" class="is-info"></clr-icon>
                         </td>
                     </tr>
                     <tr>
                         <th>
                             Inverse
-                            <div class="hidden-sm-up"><code class="clr-code">.icon-color-inverse</code></div>
+                            <div class="hidden-sm-up"><code class="clr-code">.is-inverse</code></div>
                         </th>
-                        <td class="hidden-xs-down"><code class="clr-code">.icon-color-inverse</code></td>
+                        <td class="hidden-xs-down"><code class="clr-code">.is-inverse</code></td>
                         <td>#FFFFFF</td>
                         <td style="background-color:#414957">
-                            <clr-icon shape="info" size="24" class="icon-color-inverse"></clr-icon>
+                            <clr-icon shape="info" size="24" class="is-inverse"></clr-icon>
                         </td>
                     </tr>
                 </tbody>
@@ -221,13 +222,61 @@
         </div>
     </div>
 
-    <h6 id="manipulate-any-svg-graphic-element-inside-the-icon">Manipulate any SVG graphic element inside the icon</h6>
+    <h6 id="manipulate-any-svg-graphic-element-inside-the-icon">Manipulate any SVG graphic element inside the icon with CSS</h6>
 
-    <p>After adding <code class="clr-code">clr-icon</code> in your HTML, view it using a web inspection tool. You will find that SVG elements are injected inside the <code class="clr-code">clr-icon</code> tag that are responsible for drawing the icon.</p>
+    <p>
+        After adding <code class="clr-code">clr-icon</code> in your HTML, view it using a web inspection tool. You will find that SVG elements are injected inside the <code class="clr-code">clr-icon</code> tag that are responsible for drawing the icon.
+    </p>
 
-    <p>You can individually select any of these SVG graphic elements and stylize them through CSS. For easier access to the individual graphic parts of the icon, there are pre-defined selection classes, <code class="clr-code">.outer-shape</code> and
-        <code
-            class="clr-code">.inner-shape</code>.</p>
+    <p>
+        You can individually select any of these SVG graphic elements and stylize them through CSS. For easier access to the individual graphic parts of the icon, each piece of the glyph has a unique number identifier. For example,
+        <code class="clr-code">.clr-i-outline-path-3</code> targets the third path in the outlined version of an icon.
+    </p>
 
-    <p>To select the enclosing path/stroke, use <code class="clr-code">.outer-shape</code> class. For a shape within the enclosing path/stroke, use <code class="clr-code">.inner-shape</code> class.</p>
+    <p>
+        There are also a couple of common CSS classes that can help you target common elements.
+        <code class="clr-code">.clr-i-badge</code> targets the round dot in badged icons. Likewise, <code class="clr-code">.clr-i-alert</code> targets the yellow triangle in alerted icons. Both of these classes work across solid and outlined icons.
+    </p>
+
+    <h3 id="clarity-icons-api">Clarity Icons API</h3>
+
+    <p>
+        Clarity Icons features a namespaced core of functionality that is publicly accessible off of the browser's <code class="clr-code">window</code> object. This "API" is available at
+        <code class="clr-code">window.ClarityIcons</code> and provides two useful pieces of functionality.
+    </p>
+
+    <h5>Adding custom icons to ClarityIcons</h5>
+    <p>
+        The ClarityIcons API enables you to add your own icons to the publically available ClarityIcons architecture. Use the following call to add your icon to our library in your application:
+    </p>
+    <pre>
+    <code clr-code-highlight="language-typescript">
+    ClarityIcons.add({{'{'}}"shapeNameGoesHere": &quot;&lt;svg ... &gt;[your SVG code goes here]&lt;/svg&gt;&quot;{{'}'}});
+    </code></pre>
+    <p>
+        This API method will assign your SVG markup to the named shape it is sent. The icon can then be retrieved like in your application like any other icon in the ClarityIcons library.
+    </p>
+    <pre>
+    <code clr-code-highlight="language-typescript">
+    &lt;clr-icon shape=&quot;shapeNameGoesHere&quot;&gt;&lt;/clr-icon&gt;
+    </code></pre>
+
+    <h5>Creating custom aliases for ClarityIcons</h5>
+    <p>
+        The Clarity Icons API can create aliases for the icons in your application with a single API call:
+    </p>
+    <pre>
+    <code clr-code-highlight="language-typescript">
+    ClarityIcons.alias({{'{'}}"bell": ["alarm", "oh-noehz"]{{'}'}});
+    </code></pre>
+    <p>
+        The above method call will assign "alarm" and "oh-noehz" names to the existing "bell" icon shape. Now you can use the "bell" icon with any of the new names you have assigned it.
+    </p>
+    <pre>
+    <code clr-code-highlight="language-html">
+    &lt;clr-icon shape=&quot;bell&quot;&gt;&lt;/clr-icon&gt;
+    &lt;clr-icon shape=&quot;alarm&quot;&gt;&lt;/clr-icon&gt;
+    &lt;clr-icon shape=&quot;oh-noehz&quot;&gt;&lt;/clr-icon&gt;
+    </code></pre>
+
 </article>

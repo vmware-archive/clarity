@@ -39,53 +39,51 @@
         <div style="margin-top: 24px">
             This is a simplified version of what the markup renders to in the browser:
             <h6>Until 0.4.0:</h6>
-            <pre>
-    <code class="language-html">
-        &lt;clr-tabs&gt;
-            &lt;ul class=&quot;nav&quot; role=&quot;tablist&quot;&gt;
-                &lt;clr-tab-link&gt;
-                    &lt;li class=&quot;nav-item&quot; role=&quot;presentation&quot;&gt;
-                    &lt;a class=&quot;nav-link active&quot; href=&quot;#&quot;
-                        role=&quot;tab&quot; id=&quot;clr-tabs-0-tab-0&quot;
-                        aria-selected=&quot;true&quot; aria-controls=&quot;clr-tabs-0-content-0&quot;&gt;
-                        ...
-                    &lt;/a&gt;
-                    &lt;/li&gt;
-                &lt;/clr-tab-link&gt;
+            <pre><code clr-code-highlight="language-html">
+&lt;clr-tabs&gt;
+    &lt;ul class=&quot;nav&quot; role=&quot;tablist&quot;&gt;
+        &lt;clr-tab-link&gt;
+            &lt;li class=&quot;nav-item&quot; role=&quot;presentation&quot;&gt;
+            &lt;a class=&quot;nav-link active&quot; href=&quot;#&quot;
+                role=&quot;tab&quot; id=&quot;clr-tabs-0-tab-0&quot;
+                aria-selected=&quot;true&quot; aria-controls=&quot;clr-tabs-0-content-0&quot;&gt;
                 ...
-            &lt;/ul&gt;
-            &lt;clr-tab-content&gt;
-                &lt;section role=&quot;tabpanel&quot; id=&quot;clr-tabs-0-content-0&quot; aria-hidden=&quot;false&quot; aria-labelledby=&quot;clr-tabs-0-tab-0&quot;&gt;
-                ...
-                &lt;/section&gt;
-            &lt;/clr-tab-content&gt;
-            ...
-        &lt;/clr-tabs&gt;
+            &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/clr-tab-link&gt;
+        ...
+    &lt;/ul&gt;
+    &lt;clr-tab-content&gt;
+        &lt;section role=&quot;tabpanel&quot; id=&quot;clr-tabs-0-content-0&quot; aria-hidden=&quot;false&quot; aria-labelledby=&quot;clr-tabs-0-tab-0&quot;&gt;
+        ...
+        &lt;/section&gt;
+    &lt;/clr-tab-content&gt;
+    ...
+&lt;/clr-tabs&gt;
 </code></pre>
             <h6>In 0.4.1:</h6>
-            <pre>
-    <code class="language-html">
-        &lt;clr-tabs&gt;
-            &lt;ul class=&quot;nav&quot; role=&quot;tablist&quot;&gt;
-                &lt;clr-tab-link class=&quot;nav-item
-                active&quot; role=&quot;presentation&quot;
-                id=&quot;link1&quot; aria-selected=&quot;true&quot;
-                aria-controls=&quot;content1&quot;&gt;
-                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot; role=&quot;tab&quot;&gt;
-                    ...
-                    &lt;/a&gt;
-                &lt;/clr-tab-link&gt;
-            &lt;/ul&gt;
-            &lt;clr-tab-content role=&quot;tabpanel&quot;
-                id=&quot;content1&quot; aria-hidden=&quot;false&quot;
-                aria-labelledby=&quot;link1&quot;
-                data-hidden=&quot;false&quot;
-                class=&quot;active&quot;&gt;
-                &lt;section&gt;
-                ...
-                &lt;/section&gt;
-            &lt;/clr-tab-content&gt;
-        &lt;/clr-tabs&gt;
+            <pre><code clr-code-highlight="language-html">
+&lt;clr-tabs&gt;
+    &lt;ul class=&quot;nav&quot; role=&quot;tablist&quot;&gt;
+        &lt;clr-tab-link class=&quot;nav-item
+        active&quot; role=&quot;presentation&quot;
+        id=&quot;link1&quot; aria-selected=&quot;true&quot;
+        aria-controls=&quot;content1&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;#&quot; role=&quot;tab&quot;&gt;
+            ...
+            &lt;/a&gt;
+        &lt;/clr-tab-link&gt;
+    &lt;/ul&gt;
+    &lt;clr-tab-content role=&quot;tabpanel&quot;
+        id=&quot;content1&quot; aria-hidden=&quot;false&quot;
+        aria-labelledby=&quot;link1&quot;
+        data-hidden=&quot;false&quot;
+        class=&quot;active&quot;&gt;
+        &lt;section&gt;
+        ...
+        &lt;/section&gt;
+    &lt;/clr-tab-content&gt;
+&lt;/clr-tabs&gt;
 </code></pre>
         </div>
     </li>

@@ -23,36 +23,32 @@
         <p>
             Using the newly released ClarityIcons API, you can now add your own icons to the publically available ClarityIcons architecture. Use the following call to add your icon to our library in your application:
         </p>
-        <pre>
-    <code clr-code-highlight="language-typescript">
-    ClarityIcons.add({{'{'}}"shapeNameGoesHere": &quot;&lt;svg ... &gt;[your SVG code goes here]&lt;/svg&gt;&quot;{{'}'}});
-    </code></pre>
+        <pre><code clr-code-highlight="language-typescript">
+ClarityIcons.add({{'{'}}"shapeNameGoesHere": &quot;&lt;svg ... &gt;[your SVG code goes here]&lt;/svg&gt;&quot;{{'}'}});
+</code></pre>
         <p>
             This API method will assign your SVG markup to the named shape you sent it. It can then be retrieved like in your application like any other icon in the ClarityIcons library.
         </p>
-        <pre>
-    <code clr-code-highlight="language-typescript">
-    &lt;clr-icon shape=&quot;shapeNameGoesHere&quot;&gt;&lt;/clr-icon&gt;
-    </code></pre>
+        <pre><code clr-code-highlight="language-typescript">
+&lt;clr-icon shape=&quot;shapeNameGoesHere&quot;&gt;&lt;/clr-icon&gt;
+</code></pre>
     </li>
     <li>
         <h6>Creating custom aliases for ClarityIcons</h6>
         <p>
             You can now create aliases for the icons in your application with a single API call:
         </p>
-        <pre>
-    <code clr-code-highlight="language-typescript">
-    ClarityIcons.alias({{'{'}}"bell": ["alarm", "oh-noehz"]{{'}'}});
-    </code></pre>
+        <pre><code clr-code-highlight="language-typescript">
+ClarityIcons.alias({{'{'}}"bell": ["alarm", "oh-noehz"]{{'}'}});
+</code></pre>
         <p>
             The above alias method call will assign "alarm" and "oh-noehz" names to the existing "bell" icon shape. Now you can use the "bell" icon with any of the new names you have assigned it.
         </p>
-        <pre>
-    <code clr-code-highlight="language-html">
-    &lt;clr-icon shape=&quot;bell&quot;&gt;&lt;/clr-icon&gt;
-    &lt;clr-icon shape=&quot;alarm&quot;&gt;&lt;/clr-icon&gt;
-    &lt;clr-icon shape=&quot;oh-noehz&quot;&gt;&lt;/clr-icon&gt;
-    </code></pre>
+        <pre><code clr-code-highlight="language-html">
+&lt;clr-icon shape=&quot;bell&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;alarm&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;oh-noehz&quot;&gt;&lt;/clr-icon&gt;
+</code></pre>
     </li>
     <li>
         <h6>Added new icons in Clarity Icons</h6>
@@ -66,20 +62,19 @@
         <h6>Implemented variant icons for existing icon set</h6>
         <p>The architecture introduced in 0.7.5 to allow for solid, badged, and alerted icon variants has been extended to all applicable icons in Clarity.</p>
         <p>Use the following classnames with your <code class="clr-code">clr-icon</code> elements.</p>
-        <pre>
-    <code clr-code-highlight="language-html">
-    &lt;clr-icon shape=&quot;...&quot;&gt;&lt;/clr-icon&gt;
-    &lt;clr-icon shape=&quot;...&quot; class=&quot;has-badge&quot;&gt;&lt;/clr-icon&gt;
-    &lt;clr-icon shape=&quot;...&quot; class=&quot;has-badge--success&quot;&gt;&lt;/clr-icon&gt;
-    &lt;clr-icon shape=&quot;...&quot; class=&quot;has-badge--error&quot;&gt;&lt;/clr-icon&gt;
-    &lt;clr-icon shape=&quot;...&quot; class=&quot;has-badge--info&quot;&gt;&lt;/clr-icon&gt;
-    &lt;clr-icon shape=&quot;...&quot; class=&quot;has-alert&quot;&gt;&lt;/clr-icon&gt;
-    &lt;clr-icon shape=&quot;...&quot; class=&quot;is-solid&quot;&gt;&lt;/clr-icon&gt;
-    &lt;clr-icon shape=&quot;...&quot; class=&quot;is-solid has-badge--success&quot;&gt;&lt;/clr-icon&gt;
-    &lt;clr-icon shape=&quot;...&quot; class=&quot;is-solid has-badge--error&quot;&gt;&lt;/clr-icon&gt;
-    &lt;clr-icon shape=&quot;...&quot; class=&quot;is-solid has-badge--info&quot;&gt;&lt;/clr-icon&gt;
-    &lt;clr-icon shape=&quot;...&quot; class=&quot;is-solid has-alert&quot;&gt;&lt;/clr-icon&gt;
-    </code></pre>
+        <pre><code clr-code-highlight="language-html">
+&lt;clr-icon shape=&quot;...&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;has-badge&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;has-badge--success&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;has-badge--error&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;has-badge--info&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;has-alert&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;is-solid&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;is-solid has-badge--success&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;is-solid has-badge--error&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;is-solid has-badge--info&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;is-solid has-alert&quot;&gt;&lt;/clr-icon&gt;
+</code></pre>
         <p>Check out our <a routerLink="/documentation/iconography">icon documentation</a> for more.</p>
     </li>
 
@@ -91,24 +86,23 @@
             <code class="clr-code">forChild()</code> methods on <code class="clr-code">ClarityModule</code> to prevent reimport of services in lazy loaded feature modules. Click
             <a href="https://angular.io/docs/ts/latest/cookbook/ngmodule-faq.html#!#!23q-for-root">here</a> for more information. Clarity Module should now be imported as follows:
         </p>
-        <pre>
-    <code clr-code-highlight="language-typescript">
-    import {{ '{' }} NgModule {{ '}' }} from '@angular/core';
-    import {{ '{' }} BrowserModule {{ '}' }} from '@angular/platform-browser';
-    import {{ '{' }} ClarityModule {{ '}' }} from 'clarity-angular';
-    import {{ '{' }} AppComponent {{ '}' }} from './app.component';
+        <pre><code clr-code-highlight="language-typescript">
+import {{ '{' }} NgModule {{ '}' }} from '@angular/core';
+import {{ '{' }} BrowserModule {{ '}' }} from '@angular/platform-browser';
+import {{ '{' }} ClarityModule {{ '}' }} from 'clarity-angular';
+import {{ '{' }} AppComponent {{ '}' }} from './app.component';
 
-    @NgModule({{ '{' }}
-        imports: [
-            BrowserModule,
-            ClarityModule.forRoot(),
-            ....
-         ],
-         declarations: [ AppComponent ],
-         bootstrap: [ AppComponent ]
-    {{ '}' }})
-    export class AppModule {{ '{' }}    {{ '}' }}
-    </code></pre>
+@NgModule({{ '{' }}
+    imports: [
+        BrowserModule,
+        ClarityModule.forRoot(),
+        ....
+        ],
+        declarations: [ AppComponent ],
+        bootstrap: [ AppComponent ]
+{{ '}' }})
+export class AppModule {{ '{' }}    {{ '}' }}
+</code></pre>
     </li>
 </ul>
 

@@ -1,18 +1,15 @@
 //Styles for Clarity Demos
-.clr-example{
+.clr-example {
     margin-top: baselineRem(1);
-
-    .main-container{
+    .main-container {
         height: auto;
         padding-top: 0;
         background: $gray-lightest;
-
-        .content-area{
+        .content-area {
             overflow-y: hidden;
         }
     }
-
-    &.squeeze{
+    &.squeeze {
         padding: $clr_baselineRem_2;
     }
 }
@@ -49,6 +46,10 @@
 //Overriding PrismJS styles. This is in code.scss and not in code.clarity.scss because
 //we don't want to override the background in case someone chooses to use
 //another PrismJS theme.
-:not(pre) > code[class*="language-"], pre[class*="language-"], pre, code[class*="language-"]{
+:not(pre)>code[class*="language-"],
+pre[class*="language-"],
+pre,
+code[class*="language-"] {
     background: transparent;
+    padding: 0 0 $clr_baselineRem_1 $clr_baselineRem_1;
 }

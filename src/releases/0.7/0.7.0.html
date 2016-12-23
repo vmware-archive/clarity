@@ -11,25 +11,24 @@
         <p>
             Clarity's Datagrid uses a declarative interface, so you can use it as you would use an HTML table, directly in your templates. Here is a basic example with simple objects:
         </p>
-        <pre><code class="language-html">
-    &lt;clr-datagrid&gt;
-        &lt;{{ 'clr-dg-column [clrDgField]' }}=&quot;'id'&quot;&gt;User ID&lt;/clr-dg-column&gt;
-        &lt;{{ 'clr-dg-column [clrDgField]' }}=&quot;'name'&quot;&gt;Name&lt;/clr-dg-column&gt;
-        &lt;{{ 'clr-dg-column [clrDgField]' }}=&quot;'creation'&quot;&gt;Creation date&lt;/clr-dg-column&gt;
-        &lt;{{ 'clr-dg-row *clrDgItems='}}&quot;{{'let user of users'}}&quot;&gt;
-            &lt;{{'clr-dg-cell'}}&gt;{{ '{{ ' }}{{ 'user.id' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
-            &lt;{{'clr-dg-cell'}}&gt;{{ '{{ ' }}{{ 'user.name' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
-            &lt;{{'clr-dg-cell'}}&gt;{{ '{{ ' }}{{ 'user.creation | date' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
-        &lt;/clr-dg-row&gt;
+        <pre><code clr-code-highlight="language-html">
+&lt;clr-datagrid&gt;
+    &lt;{{ 'clr-dg-column [clrDgField]' }}=&quot;'id'&quot;&gt;User ID&lt;/clr-dg-column&gt;
+    &lt;{{ 'clr-dg-column [clrDgField]' }}=&quot;'name'&quot;&gt;Name&lt;/clr-dg-column&gt;
+    &lt;{{ 'clr-dg-column [clrDgField]' }}=&quot;'creation'&quot;&gt;Creation date&lt;/clr-dg-column&gt;
+    &lt;{{ 'clr-dg-row *clrDgItems='}}&quot;{{'let user of users'}}&quot;&gt;
+        &lt;{{'clr-dg-cell'}}&gt;{{ '{{ ' }}{{ 'user.id' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
+        &lt;{{'clr-dg-cell'}}&gt;{{ '{{ ' }}{{ 'user.name' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
+        &lt;{{'clr-dg-cell'}}&gt;{{ '{{ ' }}{{ 'user.creation | date' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
+    &lt;/clr-dg-row&gt;
 
-        &lt;{{'clr-dg-footer'}}&gt;
-            {{ '{{ ' }}{{ 'pagination.firstItem + 1' }}{{ ' }' }}{{ '}' }} - {{ '{{ ' }}{{ 'pagination.lastItem + 1' }}{{ ' }' }}{{ '}' }}
-            of {{ '{{ ' }}{{ 'pagination.totalItems' }}{{ ' }' }}{{ '}' }}
-            &lt;{{'clr-dg-pagination #pagination [clrDgPageSize]'}}=&quot;10&quot;&gt;&lt;/clr-dg-pagination&gt;
-        &lt;/clr-dg-footer&gt;
-    &lt;/clr-datagrid&gt;
-</code>
-</pre>
+    &lt;{{'clr-dg-footer'}}&gt;
+        {{ '{{ ' }}{{ 'pagination.firstItem + 1' }}{{ ' }' }}{{ '}' }} - {{ '{{ ' }}{{ 'pagination.lastItem + 1' }}{{ ' }' }}{{ '}' }}
+        of {{ '{{ ' }}{{ 'pagination.totalItems' }}{{ ' }' }}{{ '}' }}
+        &lt;{{'clr-dg-pagination #pagination [clrDgPageSize]'}}=&quot;10&quot;&gt;&lt;/clr-dg-pagination&gt;
+    &lt;/clr-dg-footer&gt;
+&lt;/clr-datagrid&gt;
+</code></pre>
 
         <p>
             We will have full documentation coming soon for more advanced examples.
@@ -53,13 +52,12 @@
 
         <p><a routerLink="/documentation/dropdowns">Dropdowns</a> Toggles now have an updated markup:</p>
 
-        <pre><code class="language-html">
-    &lt;button class=&quot;dropdown-toggle btn btn-outline-primary&quot;&gt;
-        Dropdown
-        &lt;clr-icon shape=&quot;caret&quot; class=&quot;icon-orient-down&quot;&gt;&lt;/clr-icon&gt;
-    &lt;/button&gt;
-</code>
-</pre>
+        <pre><code clr-code-highlight="language-html">
+&lt;button class=&quot;dropdown-toggle btn btn-outline-primary&quot;&gt;
+    Dropdown
+    &lt;clr-icon shape=&quot;caret&quot; class=&quot;icon-orient-down&quot;&gt;&lt;/clr-icon&gt;
+&lt;/button&gt;
+</code></pre>
 
         <p><b>Note:</b> Clarity recommends that you use a button for the toggle. The button can contain either text or an icon.</p>
 
@@ -78,43 +76,42 @@
             Use the following markup for using Clarity Icons in Branding, Header Nav and Header Actions:
         </p>
 
-        <pre><code class="language-html">
-    &lt;header class=&quot;header-6&quot;&gt;
-      &lt;div class=&quot;branding&quot;&gt;
-          &lt;a href=&quot;javascript://&quot; class=&quot;nav-link&quot;&gt;
-              &lt;clr-icon shape=&quot;vm-bug&quot;&gt;&lt;/clr-icon&gt;
-              &lt;span class=&quot;title&quot;&gt;Project Clarity&lt;/span&gt;
-          &lt;/a&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;header-nav&quot;&gt;
-          &lt;a href=&quot;javascript://&quot; class=&quot;nav-link nav-icon&quot;&gt;
-              &lt;clr-icon shape=&quot;cloud&quot;&gt;&lt;/clr-icon&gt;
-          &lt;/a&gt;
-          &lt;a href=&quot;javascript://&quot; class=&quot;active nav-link nav-icon&quot;&gt;
-              &lt;clr-icon shape=&quot;folder&quot;&gt;&lt;/clr-icon&gt;
-          &lt;/a&gt;
-      &lt;/div&gt;
-      &lt;form class=&quot;search&quot;&gt;
-          &lt;label for=&quot;search_input&quot;&gt;
-              &lt;input id=&quot;search_input&quot; type=&quot;text&quot; placeholder=&quot;Search for keywords...&quot;&gt;
-          &lt;/label&gt;
-      &lt;/form&gt;
-      &lt;div class=&quot;header-actions&quot;&gt;
-          &lt;div class=&quot;dropdown bottom-right&quot;&gt;
-              &lt;button class=&quot;dropdown-toggle nav-icon&quot;&gt;
-                  &lt;clr-icon shape=&quot;user&quot;&gt;&lt;/clr-icon&gt;
-                  &lt;clr-icon shape=&quot;caret&quot; class=&quot;icon-orient-down&quot;&gt;&lt;/clr-icon&gt;
-              &lt;/button&gt;
-              &lt;div class=&quot;dropdown-menu&quot;&gt;
-                  &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot;&gt;About&lt;/a&gt;
-                  &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot;&gt;Preferences&lt;/a&gt;
-                  &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot;&gt;Logout&lt;/a&gt;
-              &lt;/div&gt;
-          &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/header&gt;
-</code>
-</pre>
+        <pre><code clr-code-highlight="language-html">
+&lt;header class=&quot;header-6&quot;&gt;
+    &lt;div class=&quot;branding&quot;&gt;
+        &lt;a href=&quot;javascript://&quot; class=&quot;nav-link&quot;&gt;
+            &lt;clr-icon shape=&quot;vm-bug&quot;&gt;&lt;/clr-icon&gt;
+            &lt;span class=&quot;title&quot;&gt;Project Clarity&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;header-nav&quot;&gt;
+        &lt;a href=&quot;javascript://&quot; class=&quot;nav-link nav-icon&quot;&gt;
+            &lt;clr-icon shape=&quot;cloud&quot;&gt;&lt;/clr-icon&gt;
+        &lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; class=&quot;active nav-link nav-icon&quot;&gt;
+            &lt;clr-icon shape=&quot;folder&quot;&gt;&lt;/clr-icon&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;form class=&quot;search&quot;&gt;
+        &lt;label for=&quot;search_input&quot;&gt;
+            &lt;input id=&quot;search_input&quot; type=&quot;text&quot; placeholder=&quot;Search for keywords...&quot;&gt;
+        &lt;/label&gt;
+    &lt;/form&gt;
+    &lt;div class=&quot;header-actions&quot;&gt;
+        &lt;div class=&quot;dropdown bottom-right&quot;&gt;
+            &lt;button class=&quot;dropdown-toggle nav-icon&quot;&gt;
+                &lt;clr-icon shape=&quot;user&quot;&gt;&lt;/clr-icon&gt;
+                &lt;clr-icon shape=&quot;caret&quot; class=&quot;icon-orient-down&quot;&gt;&lt;/clr-icon&gt;
+            &lt;/button&gt;
+            &lt;div class=&quot;dropdown-menu&quot;&gt;
+                &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot;&gt;About&lt;/a&gt;
+                &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot;&gt;Preferences&lt;/a&gt;
+                &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot;&gt;Logout&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+</code></pre>
     </li>
 
 
@@ -132,24 +129,23 @@
             <li><code class="clr-code">clrDropdownItem</code> should be used to indicate a dropdown item in the angular dropdown component</li>
         </ol>
 
-        <pre><code class="language-html">
-    &lt;clr-dropdown [clrMenuPosition]=&quot;'bottom-right'&quot;&gt;
-      &lt;button class=&quot;btn btn-outline-primary&quot; clrDropdownToggle&gt;
-          Dropdown
-          &lt;clr-icon shape=&quot;caret&quot; class=&quot;icon-orient-down&quot;&gt;&lt;/clr-icon&gt;
-      &lt;/button&gt;
-      &lt;div class=&quot;dropdown-menu&quot;&gt;
-          &lt;label class=&quot;dropdown-header&quot;&gt;Dropdown header&lt;/label&gt;
-          &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Action 1&lt;/a&gt;
-          &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Action 2&lt;/a&gt;
-          &lt;a href=&quot;javascript://&quot; class=&quot;disabled&quot; clrDropdownItem&gt;Disabled Action&lt;/a&gt;
-          &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
-          &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Link 1&lt;/a&gt;
-          &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Link 2&lt;/a&gt;
-      &lt;/div&gt;
-    &lt;/clr-dropdown&gt;
-</code>
-</pre>
+        <pre><code clr-code-highlight="language-html">
+&lt;clr-dropdown [clrMenuPosition]=&quot;'bottom-right'&quot;&gt;
+    &lt;button class=&quot;btn btn-outline-primary&quot; clrDropdownToggle&gt;
+        Dropdown
+        &lt;clr-icon shape=&quot;caret&quot; class=&quot;icon-orient-down&quot;&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+    &lt;div class=&quot;dropdown-menu&quot;&gt;
+        &lt;label class=&quot;dropdown-header&quot;&gt;Dropdown header&lt;/label&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Action 1&lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Action 2&lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; class=&quot;disabled&quot; clrDropdownItem&gt;Disabled Action&lt;/a&gt;
+        &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Link 1&lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Link 2&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/clr-dropdown&gt;
+</code></pre>
 
     </li>
 </ul>

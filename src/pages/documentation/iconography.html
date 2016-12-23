@@ -1,5 +1,5 @@
 <article>
-    <h5 class="component-summary" id="clarity-presents-pixel-perfect-and-scalable-svg-based-icons-this-new-icon-system-gives-you-complete-control-over-the-color-orientation-and-size-additionally-you-can-access-and-customize-any-svg-graphic-element-inside-the-icon-through-standard-css">Clarity presents pixel-perfect and scalable SVG-based icons. This new icon system gives you complete control over the color, orientation, and size. Additionally, you can access and customize any SVG graphic element inside the icon through standard
+    <h5 class="component-summary" id="clarity-svg-based-icons">Clarity presents pixel-perfect and scalable SVG-based icons. This new icon system gives you complete control over the color, orientation, and size. Additionally, you can access and customize any SVG graphic element inside the icon through standard
         CSS.
     </h5>
 
@@ -80,17 +80,15 @@
         </div>
     </div>
 
-    <pre>
-      <code clr-code-highlight="language-html">
-      &lt;clr-icon shape=&quot;user&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
-      &lt;clr-icon shape=&quot;user&quot; class=&quot;has-alert&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
-      &lt;clr-icon shape=&quot;user&quot; class=&quot;has-badge&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
-      &lt;clr-icon shape=&quot;user&quot; class=&quot;is-solid&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
-      &lt;clr-icon shape=&quot;user&quot; class=&quot;is-solid has-alert&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
-      &lt;clr-icon shape=&quot;user&quot; class=&quot;is-solid has-badge&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
-      &lt;clr-icon shape=&quot;user&quot; class=&quot;is-solid has-badge--success&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
-      </code>
-  </pre>
+    <pre><code clr-code-highlight="language-html">
+&lt;clr-icon shape=&quot;user&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;user&quot; class=&quot;has-alert&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;user&quot; class=&quot;has-badge&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;user&quot; class=&quot;is-solid&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;user&quot; class=&quot;is-solid has-alert&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;user&quot; class=&quot;is-solid has-badge&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;user&quot; class=&quot;is-solid has-badge--success&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+</code></pre>
 
 
     <h3 id="guidelines">Usage</h3>
@@ -249,34 +247,30 @@
     <p>
         The ClarityIcons API enables you to add your own icons to the publically available ClarityIcons architecture. Use the following call to add your icon to our library in your application:
     </p>
-    <pre>
-    <code clr-code-highlight="language-typescript">
-    ClarityIcons.add({{'{'}}"shapeNameGoesHere": &quot;&lt;svg ... &gt;[your SVG code goes here]&lt;/svg&gt;&quot;{{'}'}});
-    </code></pre>
+    <pre><code clr-code-highlight="language-typescript">
+ClarityIcons.add({{'{'}}"shapeNameGoesHere": &quot;&lt;svg ... &gt;[your SVG code goes here]&lt;/svg&gt;&quot;{{'}'}});
+</code></pre>
     <p>
         This API method will assign your SVG markup to the named shape it is sent. The icon can then be retrieved like in your application like any other icon in the ClarityIcons library.
     </p>
-    <pre>
-    <code clr-code-highlight="language-typescript">
-    &lt;clr-icon shape=&quot;shapeNameGoesHere&quot;&gt;&lt;/clr-icon&gt;
-    </code></pre>
+    <pre><code clr-code-highlight="language-typescript">
+&lt;clr-icon shape=&quot;shapeNameGoesHere&quot;&gt;&lt;/clr-icon&gt;
+</code></pre>
 
     <h5>Creating custom aliases for ClarityIcons</h5>
     <p>
         The Clarity Icons API can create aliases for the icons in your application with a single API call:
     </p>
-    <pre>
-    <code clr-code-highlight="language-typescript">
-    ClarityIcons.alias({{'{'}}"bell": ["alarm", "oh-noehz"]{{'}'}});
-    </code></pre>
+    <pre><code clr-code-highlight="language-typescript">
+ClarityIcons.alias({{'{'}}"bell": ["alarm", "oh-noehz"]{{'}'}});
+</code></pre>
     <p>
         The above method call will assign "alarm" and "oh-noehz" names to the existing "bell" icon shape. Now you can use the "bell" icon with any of the new names you have assigned it.
     </p>
-    <pre>
-    <code clr-code-highlight="language-html">
-    &lt;clr-icon shape=&quot;bell&quot;&gt;&lt;/clr-icon&gt;
-    &lt;clr-icon shape=&quot;alarm&quot;&gt;&lt;/clr-icon&gt;
-    &lt;clr-icon shape=&quot;oh-noehz&quot;&gt;&lt;/clr-icon&gt;
-    </code></pre>
+    <pre><code clr-code-highlight="language-html">
+&lt;clr-icon shape=&quot;bell&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;alarm&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;oh-noehz&quot;&gt;&lt;/clr-icon&gt;
+</code></pre>
 
 </article>

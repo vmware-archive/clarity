@@ -9,59 +9,56 @@
         <p>
             Here are the recommended version numbers you could use in your package.json:
         </p>
-        <pre>
-    <code class="language-js">
-    "dependencies": {{ '{' }}
-        "@angular/common": "2.0.0",
-        "@angular/compiler": "2.0.0",
-        "@angular/core": "2.0.0",
-        "@angular/forms": "2.0.0",
-        "@angular/http": "2.0.0",
-        "@angular/platform-browser": "2.0.0",
-        "@angular/platform-browser-dynamic": "2.0.0",
-        "@angular/router": "3.0.0",
-        "@angular/upgrade": "2.0.0",
-        ...
-    {{ '}' }}
+        <pre><code clr-code-highlight="language-js">
+"dependencies": {{ '{' }}
+    "@angular/common": "2.0.0",
+    "@angular/compiler": "2.0.0",
+    "@angular/core": "2.0.0",
+    "@angular/forms": "2.0.0",
+    "@angular/http": "2.0.0",
+    "@angular/platform-browser": "2.0.0",
+    "@angular/platform-browser-dynamic": "2.0.0",
+    "@angular/router": "3.0.0",
+    "@angular/upgrade": "2.0.0",
+    ...
+{{ '}' }}
 </code></pre>
         <p>
             Declaring directives and pipes in components has been deprecated. That means you will no longer import Clarity directives in the components as you have done with previous versions like this:
         </p>
-        <pre>
-    <code class="language-js">
-    import {{ '{' }}SOME_CLARITY_DIRECTIVE{{ '}' }} from "clarity-angular";
-    @Component({{ '{' }}
-        ...
-        directives: [SOME_CLARITY_DIRECTIVE],
-        ...
-    {{ '}' }});
+        <pre><code clr-code-highlight="language-js">
+import {{ '{' }}SOME_CLARITY_DIRECTIVE{{ '}' }} from "clarity-angular";
+@Component({{ '{' }}
+    ...
+    directives: [SOME_CLARITY_DIRECTIVE],
+    ...
+{{ '}' }});
 
-    export class YourComponent {{ '{' }}        {{ '}' }}
+export class YourComponent {{ '{' }}        {{ '}' }}
 </code></pre>
 
         <p>
             Instead, now an application that consumes Clarity should at least have one app-level module like below:
         </p>
 
-        <pre>
-    <code class="language-js">
-    import {{ '{' }} NgModule {{ '}' }} from '@angular/core';
-    import {{ '{' }} BrowserModule {{ '}' }} from '@angular/platform-browser';
-    import {{ '{' }} ClarityModule {{ '}' }} from 'clarity-angular';
-    import {{ '{' }} AppComponent {{ '}' }} from './app.component';
+        <pre><code clr-code-highlight="language-js">
+import {{ '{' }} NgModule {{ '}' }} from '@angular/core';
+import {{ '{' }} BrowserModule {{ '}' }} from '@angular/platform-browser';
+import {{ '{' }} ClarityModule {{ '}' }} from 'clarity-angular';
+import {{ '{' }} AppComponent {{ '}' }} from './app.component';
 
-    @NgModule({{ '{' }}
-        imports: [
-            BrowserModule,
-            ClarityModule,
-            ....(other modules from Angular or 3rd parties for your app)
-        ],
-        declarations: [ AppComponent ],
-        bootstrap: [ AppComponent ]
-    {{ '}' }})
+@NgModule({{ '{' }}
+    imports: [
+        BrowserModule,
+        ClarityModule,
+        ....(other modules from Angular or 3rd parties for your app)
+    ],
+    declarations: [ AppComponent ],
+    bootstrap: [ AppComponent ]
+{{ '}' }})
 
-    export class AppModule {{ '{' }}
-    {{ '}' }}
+export class AppModule {{ '{' }}
+{{ '}' }}
 </code></pre>
 
         <p>

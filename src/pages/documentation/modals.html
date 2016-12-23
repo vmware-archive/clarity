@@ -1,223 +1,224 @@
+<article>
+    <h5 class="component-summary" id="modals-exchange-information-with-users-and-retain-focus-until-dismissed-or-a-required-action-has-been-completed">Modals exchange information with users and retain focus until dismissed or a required action has been completed.</h5>
 
-<article><h5 class="component-summary" id="modals-exchange-information-with-users-and-retain-focus-until-dismissed-or-a-required-action-has-been-completed">Modals exchange information with users and retain focus until dismissed or a required action has been completed.</h5>
-
-  <div class="alert alert-warning bump-down">
-    <div class="alert-item">
-        <span class="alert-text">
+    <div class="alert alert-warning bump-down">
+        <div class="alert-item">
+            <span class="alert-text">
             IE fix: When the modal dialog is open, extend the <code class="clr-code">.no-scrolling</code> class on the
             <code class="clr-code">body</code> tag so that the content behind the backdrop does not scroll.
             Remove the class when the modal dialog is closed.
         </span>
+        </div>
     </div>
-  </div>
 
-  <p>A static example of a modal with header, body and footer:</p>
+    <p>A static example of a modal with header, body and footer:</p>
 
-  <clr-modal-static-demo></clr-modal-static-demo>
+    <clr-modal-static-demo></clr-modal-static-demo>
 
-  <h3 id="sizes">Sizes</h3>
+    <h3 id="sizes">Sizes</h3>
 
-  <p>In addition to the default, medium size, Clarity modals come in two optional sizes: large and small. To use an optional size, add <code>modal-sm</code> or <code>modal-lg</code> class to your modal-dialog.</p>
+    <p>In addition to the default, medium size, Clarity modals come in two optional sizes: large and small. To use an optional size, add <code>modal-sm</code> or <code>modal-lg</code> class to your modal-dialog.</p>
 
-  <clr-modal-sizes-demo></clr-modal-sizes-demo>
+    <clr-modal-sizes-demo></clr-modal-sizes-demo>
 
-  <h3 id="modal-backdrop">Modal Backdrop</h3>
+    <h3 id="modal-backdrop">Modal Backdrop</h3>
 
-  <p>Here is an example of a backdrop to use behind your modal, when you display it over a page:</p>
+    <p>Here is an example of a backdrop to use behind your modal, when you display it over a page:</p>
 
-  <clr-modal-backdrop-demo></clr-modal-backdrop-demo>
+    <clr-modal-backdrop-demo></clr-modal-backdrop-demo>
 
-  <h3 id="animation">Animation</h3>
+    <h3 id="animation">Animation</h3>
 
-  <p>Modals and backdrops support fading animations. Clarity recommends using <code>fadeDown</code> on the <code>modal-dialog</code> and <code>fade</code> on the <code>modal-backdrop</code>. These animations hide the modal and backdrop by default. Adding or removing the <code>in</code> class animates the modal or backdrop in or out, respectively.</p>
+    <p>Modals and backdrops support fading animations. Clarity recommends using <code>fadeDown</code> on the <code>modal-dialog</code> and <code>fade</code> on the <code>modal-backdrop</code>. These animations hide the modal and backdrop by default. Adding
+        or removing the <code>in</code> class animates the modal or backdrop in or out, respectively.</p>
 
-  <clr-modal-animation-demo></clr-modal-animation-demo>
+    <clr-modal-animation-demo></clr-modal-animation-demo>
 
-  <h2 id="angular-component">Angular Component</h2>
+    <h2 id="angular-component">Angular Component</h2>
 
-  <h3 id="summary-of-options">Summary of Options</h3>
+    <h3 id="summary-of-options">Summary of Options</h3>
 
-  <table class="table">
-    <thead>
-    <tr>
-      <th class="left">Input/Output</th>
-      <th class="hidden-xs-down">Values</th>
-      <th class="hidden-xs-down">Default</th>
-      <th class="left">Effect</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td class="left">
-        <b>[(clrModalOpen)]</b>
-        <div class="hidden-sm-up">Type: Boolean</div>
-        <div class="hidden-sm-up">Default: false</div>
-      </td>
-      <td class="hidden-xs-down">true, false</td>
-      <td class="hidden-xs-down">false</td>
-      <td class="left">
-        Two-way binding on the state of the modal: opened or closed.
-      </td>
-    </tr>
-    <tr>
-      <td class="left">
-        <b>[clrModalSize]</b>
-        <div class="hidden-sm-up">Values:<br />"sm", &lt;none&gt;, "lg"</div>
-        <div class="hidden-sm-up">Default: &lt;none&gt;</div>
-      </td>
-      <td class="hidden-xs-down">"sm", &lt;none&gt;, "lg"</td>
-      <td class="hidden-xs-down">&lt;none&gt;</td>
-      <td class="left">Sets the size of the modal. &lt;none&gt; is for medium size.</td>
-    </tr>
-    <tr>
-      <td class="left">
-        <b>[clrModalClosable]</b>
-        <div class="hidden-sm-up">Type: Boolean</div>
-        <div class="hidden-sm-up">Default: true</div>
-      </td>
-      <td class="hidden-xs-down">true, false</td>
-      <td class="hidden-xs-down">true</td>
-      <td class="left">
-        If false, the modal will not be closable by clicking on the mask or on the top-right "x".
-      </td>
-    </tr>
-    <tr>
-      <td class="left">
-        <b>[clrModalStaticBackdrop]</b>
-        <div class="hidden-sm-up">Type: Boolean</div>
-        <div class="hidden-sm-up">Default: false</div>
-      </td>
-      <td class="hidden-xs-down">true, false</td>
-      <td class="hidden-xs-down">false</td>
-      <td class="left">If true, the modal will not close when the user clicks outside of the modal.</td>
-    </tr>
-    </tbody>
-  </table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="left">Input/Output</th>
+                <th class="hidden-xs-down">Values</th>
+                <th class="hidden-xs-down">Default</th>
+                <th class="left">Effect</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="left">
+                    <b>[(clrModalOpen)]</b>
+                    <div class="hidden-sm-up">Type: Boolean</div>
+                    <div class="hidden-sm-up">Default: false</div>
+                </td>
+                <td class="hidden-xs-down">true, false</td>
+                <td class="hidden-xs-down">false</td>
+                <td class="left">
+                    Two-way binding on the state of the modal: opened or closed.
+                </td>
+            </tr>
+            <tr>
+                <td class="left">
+                    <b>[clrModalSize]</b>
+                    <div class="hidden-sm-up">Values:<br />"sm", &lt;none&gt;, "lg"</div>
+                    <div class="hidden-sm-up">Default: &lt;none&gt;</div>
+                </td>
+                <td class="hidden-xs-down">"sm", &lt;none&gt;, "lg"</td>
+                <td class="hidden-xs-down">&lt;none&gt;</td>
+                <td class="left">Sets the size of the modal. &lt;none&gt; is for medium size.</td>
+            </tr>
+            <tr>
+                <td class="left">
+                    <b>[clrModalClosable]</b>
+                    <div class="hidden-sm-up">Type: Boolean</div>
+                    <div class="hidden-sm-up">Default: true</div>
+                </td>
+                <td class="hidden-xs-down">true, false</td>
+                <td class="hidden-xs-down">true</td>
+                <td class="left">
+                    If false, the modal will not be closable by clicking on the mask or on the top-right "x".
+                </td>
+            </tr>
+            <tr>
+                <td class="left">
+                    <b>[clrModalStaticBackdrop]</b>
+                    <div class="hidden-sm-up">Type: Boolean</div>
+                    <div class="hidden-sm-up">Default: false</div>
+                </td>
+                <td class="hidden-xs-down">true, false</td>
+                <td class="hidden-xs-down">false</td>
+                <td class="left">If true, the modal will not close when the user clicks outside of the modal.</td>
+            </tr>
+        </tbody>
+    </table>
 
-  <h4 id="examples">Examples</h4>
+    <h4 id="examples">Examples</h4>
 
-  <clr-modal-angular-show-demo></clr-modal-angular-show-demo>
+    <clr-modal-angular-show-demo></clr-modal-angular-show-demo>
 
-  <h6 id="clrmodalsize">1. clrModalSize</h6>
+    <h6 id="clrmodalsize">1. clrModalSize</h6>
 
-  <p>The Angular component offers the same optional sizes as the static styles through the <code>clrModalSize</code> input. The default, empty size is medium.</p>
+    <p>The Angular component offers the same optional sizes as the static styles through the <code>clrModalSize</code> input. The default, empty size is medium.</p>
 
-  <clr-modal-angular-size-demo></clr-modal-angular-size-demo>
+    <clr-modal-angular-size-demo></clr-modal-angular-size-demo>
 
-  <h6 id="clrmodalclosable">2. clrModalClosable</h6>
+    <h6 id="clrmodalclosable">2. clrModalClosable</h6>
 
-  <p>If you don’t want your modal to be closable by clicking on the top-right “x” or on the mask, you can do so with the <code>clrModalClosable</code> input. The default value is <code>true</code>. You can still close the modal if one of <em>your</em> components modifies the value bound to <code>clrModalOpen</code>.</p>
+    <p>If you don’t want your modal to be closable by clicking on the top-right “x” or on the mask, you can do so with the <code>clrModalClosable</code> input. The default value is <code>true</code>. You can still close the modal if one of <em>your</em>        components modifies the value bound to <code>clrModalOpen</code>.</p>
 
-  <clr-modal-angular-not-closable-demo></clr-modal-angular-not-closable-demo>
+    <clr-modal-angular-not-closable-demo></clr-modal-angular-not-closable-demo>
 
-  <h6 id="clrmodalstaticbackdrop">3. clrModalStaticBackdrop</h6>
+    <h6 id="clrmodalstaticbackdrop">3. clrModalStaticBackdrop</h6>
 
-  <p>If you want the modal to be closable with a top-right “x” button, but don’t want a click on the backdrop to close it, use the <code>clrModalStaticBackdrop</code>. If <code>true</code>, clicks on the background are ignored.  The default value is <code>false</code>.</p>
+    <p>If you want the modal to be closable with a top-right “x” button, but don’t want a click on the backdrop to close it, use the <code>clrModalStaticBackdrop</code>. If <code>true</code>, clicks on the background are ignored. The default value is <code>false</code>.</p>
 
-  <clr-modal-angular-static-backdrop-demo></clr-modal-angular-static-backdrop-demo>
+    <clr-modal-angular-static-backdrop-demo></clr-modal-angular-static-backdrop-demo>
 
-  <h3 id="api-reference">API Reference</h3>
+    <h3 id="api-reference">API Reference</h3>
 
-  <table class="table">
-    <thead>
-    <tr>
-      <th class="left">Method</th>
-      <th class="hidden-xs-down">Arguments</th>
-      <th class="hidden-xs-down">Return Value</th>
-      <th class="left">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td class="left">open()</td>
-      <td class="hidden-xs-down">N/A</td>
-      <td class="hidden-xs-down">N/A</td>
-      <td class="left">Manually opens the modal.</td>
-    </tr>
-    <tr>
-      <td class="left">close()</td>
-      <td class="hidden-xs-down">N/A</td>
-      <td class="hidden-xs-down">N/A</td>
-      <td class="left">
-        Manually closes the modal if <code>clrModalClosable</code> is not set to <code>false</code>.
-      </td>
-    </tr>
-    </tbody>
-  </table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="left">Method</th>
+                <th class="hidden-xs-down">Arguments</th>
+                <th class="hidden-xs-down">Return Value</th>
+                <th class="left">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="left">open()</td>
+                <td class="hidden-xs-down">N/A</td>
+                <td class="hidden-xs-down">N/A</td>
+                <td class="left">Manually opens the modal.</td>
+            </tr>
+            <tr>
+                <td class="left">close()</td>
+                <td class="hidden-xs-down">N/A</td>
+                <td class="hidden-xs-down">N/A</td>
+                <td class="left">
+                    Manually closes the modal if <code>clrModalClosable</code> is not set to <code>false</code>.
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-  <h3 id="guidelines">Usage</h3>
+    <h3 id="guidelines">Usage</h3>
 
-  <p>Common uses for modals are:</p>
+    <p>Common uses for modals are:</p>
 
-  <ul>
-    <li>Gather data from the user</li>
-    <li>Alert the user to critical information</li>
-    <li>Confirm the consequence of a critical action before proceeding</li>
-  </ul>
+    <ul>
+        <li>Gather data from the user</li>
+        <li>Alert the user to critical information</li>
+        <li>Confirm the consequence of a critical action before proceeding</li>
+    </ul>
 
-  <h4 id="sizes-1">Sizes</h4>
+    <h4 id="sizes-1">Sizes</h4>
 
-  <p>Modals have a default width (576 pixels) and two optional widths: large (864 pixels) and small (288 pixels).</p>
+    <p>Modals have a default width (576 pixels) and two optional widths: large (864 pixels) and small (288 pixels).</p>
 
-  <ul class="list">
-    <li>The default width is best for presenting short, focused tasks, error messages, and confirmations.</li>
-    <li>The larger size works well for complex forms and EULAs.</li>
-    <li>The smaller size is good for providing more information about a UI element.</li>
-  </ul>
+    <ul class="list">
+        <li>The default width is best for presenting short, focused tasks, error messages, and confirmations.</li>
+        <li>The larger size works well for complex forms and EULAs.</li>
+        <li>The smaller size is good for providing more information about a UI element.</li>
+    </ul>
 
-  <h4 id="button-placement">Button Placement</h4>
+    <h4 id="button-placement">Button Placement</h4>
 
-  <p>Buttons are right-aligned in the footer, with the primary button in the rightmost position. Right-alignment supports the Z-pattern layout.</p>
+    <p>Buttons are right-aligned in the footer, with the primary button in the rightmost position. Right-alignment supports the Z-pattern layout.</p>
 
-  <p>The following images show one-, two-, and three-button placement.  Avoid using more than three buttons.</p>
+    <p>The following images show one-, two-, and three-button placement. Avoid using more than three buttons.</p>
 
-  <div class="row buttons-modal-gfx">
-    <div class="col-xs-12 col-sm-12 col-md-4">
-    <span>
+    <div class="row buttons-modal-gfx">
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            <span>
         <img src="assets/images/documentation/buttons/button_modal_1.png?1481774383484051000" class="img-fluid cozy-sm" alt="Modal with primary button" />
         <p>With primary button</p>
         </span>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-4">
-    <span>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            <span>
         <img src="assets/images/documentation/buttons/button_modal_2.png?1481774383484051000" class="img-fluid cozy-sm" alt="Modal with primary button" />
         <p>With secondary and primary buttons</p>
         </span>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-4">
-    <span>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            <span>
         <img src="assets/images/documentation/buttons/button_modal_3.png?1481774383484051000" class="img-fluid cozy-sm" alt="Modal with primary button" />
         <p>With tertiary, secondary, and primary buttons</p>
         </span>
+        </div>
     </div>
-  </div>
-  <p></p>
+    <p></p>
 
-  <h4 id="scrolling">Scrolling</h4>
+    <h4 id="scrolling">Scrolling</h4>
 
-  <p>Avoid putting so much content in a modal that it scrolls.  In the cases that require scrolling, such as a EULA and license agreement, a scrollbar is visible upon loading. The title and footer remain in place when the user scrolls the content.</p>
+    <p>Avoid putting so much content in a modal that it scrolls. In the cases that require scrolling, such as a EULA and license agreement, a scrollbar is visible upon loading. The title and footer remain in place when the user scrolls the content.</p>
 
-  <h4 id="animation-1">Animation</h4>
+    <h4 id="animation-1">Animation</h4>
 
-  <p>Modals support fading animations. The recommended approach is to fade the modal in and out of view from the top.</p>
+    <p>Modals support fading animations. The recommended approach is to fade the modal in and out of view from the top.</p>
 
-  <h4 id="dismissing-modals">Dismissing Modals</h4>
+    <h4 id="dismissing-modals">Dismissing Modals</h4>
 
-  <p>Modals can be dismissed by clicking the X icon in the upper right corner or by clicking a button in the footer. Clicking outside the modal should not dismiss it. Users might accidentally click outside the wizard and lose data.</p>
+    <p>Modals can be dismissed by clicking the X icon in the upper right corner or by clicking a button in the footer. Clicking outside the modal should not dismiss it. Users might accidentally click outside the wizard and lose data.</p>
 
-  <h4 id="opening-a-second-modal">Opening a Second Modal</h4>
+    <h4 id="opening-a-second-modal">Opening a Second Modal</h4>
 
-  <p>Avoid displaying a modal on top of another modal.  An exception is opening a file chooser.</p>
+    <p>Avoid displaying a modal on top of another modal. An exception is opening a file chooser.</p>
 
-  <h4 id="message-modal">Message Modal</h4>
+    <h4 id="message-modal">Message Modal</h4>
 
-  <p>Modals that display a message (information, success, warning, or error) or ask for a confirmation should follow these guidelines:</p>
+    <p>Modals that display a message (information, success, warning, or error) or ask for a confirmation should follow these guidelines:</p>
 
-  <ul class="list">
-    <li>Use a short statement or direct question for the title.</li>
-    <li>Don’t start questions with “Are you sure…?” or “Do you want to…”</li>
-    <li>Use sentence caps for the title.</li>
-    <li>Use a single primary button for information, success, warning, and error messages.</li>
-    <li>For a confirmation, use a primary and secondary button, and preselect the least destructive response.</li>
-  </ul>
+    <ul class="list">
+        <li>Use a short statement or direct question for the title.</li>
+        <li>Don’t start questions with “Are you sure…?” or “Do you want to…”</li>
+        <li>Use sentence caps for the title.</li>
+        <li>Use a single primary button for information, success, warning, and error messages.</li>
+        <li>For a confirmation, use a primary and secondary button, and preselect the least destructive response.</li>
+    </ul>
 </article>

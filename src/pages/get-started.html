@@ -1,5 +1,4 @@
-<h1 id="introduction">
-    Clarity Design System</h1>
+<h1 id="introduction">Clarity Design System</h1>
 
 <p>Project Clarity is an open source design system that brings together UX guidelines, an HTML/CSS framework, and Angular 2 components. Clarity is for both designers and developers.</p>
 
@@ -22,22 +21,19 @@
 <p></p>
 <ol class="list">
     <li>Clone the seed app:
-        <pre>    <code class="clr-code">
-    git clone https://github.com/vmware/clarity-seed.git
-    </code>
-</pre>
+        <pre><code class="clr-code">
+git clone https://github.com/vmware/clarity-seed.git
+</code></pre>
     </li>
     <li>Install the dependencies:
-        <pre>    <code class="clr-code">
-    npm install
-    </code>
-</pre>
+        <pre><code class="clr-code">
+npm install
+</code></pre>
     </li>
     <li>Run the seed app:
-        <pre>    <code class="clr-code">
-    npm start
-    </code>
-</pre>
+        <pre><code class="clr-code">
+npm start
+</code></pre>
     </li>
 </ol>
 
@@ -78,50 +74,44 @@
 
 <ol class="list">
     <li>Install the Clarity Icons package through npm:
-        <pre>    <code class="clr-code">
-    npm install clarity-icons --save
-    </code>
-</pre>
+        <pre><code class="clr-code">
+npm install clarity-icons --save
+</code></pre>
     </li>
     <li>Install the polyfill for Custom Elements:
-        <pre>    <code class="clr-code">
-    npm install @webcomponents/custom-elements@1.0.0-alpha.3 --save
-    </code>
-</pre>
+        <pre><code class="clr-code">
+npm install @webcomponents/custom-elements@1.0.0-alpha.3 --save
+</code></pre>
     </li>
     <li>(Optional) If your application supports IE10, the polyfill requires the MutationObserver shim to work. If your application does not support IE10, you can skip the following installation:
-        <pre>    <code class="clr-code">
-    npm install mutationobserver-shim@0.3.2 --save
-    </code>
-</pre>
+        <pre><code class="clr-code">
+npm install mutationobserver-shim@0.3.2 --save
+</code></pre>
     </li>
     <li>
         Include clarity-icons.min.css and clarity-icons.min.js in your HTML. Because custom-elements.min.js is dependent on the Custom Elements polyfill, you must include it before clarity-icons.min.js. If your app supports IE10, include mutationobserver.min.js
         before the polyfill:
 
-        <pre>
-<code clr-code-highlight="language-html">
-    &lt;link rel="stylesheet" href="path/to/node_modules/clarity-icons/clarity-icons.min.css"&gt;
-    &lt;script src="path/to/node_modules/mutationobserver-shim/dist/mutationobserver.min.js"&gt;&lt;/script&gt;
-    &lt;script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"&gt;&lt;/script&gt;
-    &lt;script src="path/to/node_modules/clarity-icons/clarity-icons.min.js"&gt;&lt;/script&gt;
-</code>
-</pre> If your site is built with <a href="https://github.com/angular/angular-cli">angular-cli</a> you can achieve the above by adding the files to the styles array and scripts array in <code class="clr-code">angular-cli.json</code>:
-        <pre>    <code class="clr-code" clr-code-highlight="language-javascript">
-    "styles": [
-             ...
-             "../node_modules/clarity-icons/clarity-icons.min.css",
-             ...
-     ],
-     "scripts": [
-         ...
-         "../node_modules/mutationobserver-shim/dist/mutationobserver.min.js",
-         "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-         "../node_modules/clarity-icons/clarity-icons.min.js"
-         ...
-     ]
-    </code>
-</pre>
+        <pre><code clr-code-highlight="language-html">
+&lt;link rel="stylesheet" href="path/to/node_modules/clarity-icons/clarity-icons.min.css"&gt;
+&lt;script src="path/to/node_modules/mutationobserver-shim/dist/mutationobserver.min.js"&gt;&lt;/script&gt;
+&lt;script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"&gt;&lt;/script&gt;
+&lt;script src="path/to/node_modules/clarity-icons/clarity-icons.min.js"&gt;&lt;/script&gt;
+</code></pre> If your site is built with <a href="https://github.com/angular/angular-cli">angular-cli</a> you can achieve the above by adding the files to the styles array and scripts array in <code class="clr-code">angular-cli.json</code>:
+        <pre><code clr-code-highlight="language-javascript">
+"styles": [
+        ...
+        "../node_modules/clarity-icons/clarity-icons.min.css",
+        ...
+],
+"scripts": [
+    ...
+    "../node_modules/mutationobserver-shim/dist/mutationobserver.min.js",
+    "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
+    "../node_modules/clarity-icons/clarity-icons.min.js"
+    ...
+]
+</code></pre>
     </li>
 </ol>
 
@@ -130,24 +120,21 @@
 <p></p>
 <ol class="list">
     <li>Install Clarity UI package through npm:
-        <pre>    <code class="clr-code">
-    npm install clarity-ui --save
-    </code>
-</pre>
+        <pre><code class="clr-code">
+npm install clarity-ui --save
+</code></pre>
     </li>
     <li>Include clarity-ui.min.css in your HTML file:
-        <pre>    <code clr-code-highlight="language-html">
-    &lt;link rel="stylesheet" href="path/to/node_modules/clarity-ui/clarity-ui.min.css"&gt;
-</code>
-</pre> If your site is built with <a href="https://github.com/angular/angular-cli">angular-cli</a> you can achieve the above by adding the file to the styles array in <code class="clr-code">angular-cli.json</code>:
-        <pre>    <code clr-code-highlight="language-javascript">
-    "styles": [
-         ...
-         "../node_modules/clarity-ui/clarity-ui.min.css",
-         ...
-     ]
-    </code>
-</pre>
+        <pre><code clr-code-highlight="language-html">
+&lt;link rel="stylesheet" href="path/to/node_modules/clarity-ui/clarity-ui.min.css"&gt;
+</code></pre> If your site is built with <a href="https://github.com/angular/angular-cli">angular-cli</a> you can achieve the above by adding the file to the styles array in <code class="clr-code">angular-cli.json</code>:
+        <pre><code clr-code-highlight="language-javascript">
+"styles": [
+    ...
+    "../node_modules/clarity-ui/clarity-ui.min.css",
+    ...
+]
+</code></pre>
     </li>
     <li>Write your HTML with the Clarity CSS class names and markup.</li>
 </ol>
@@ -159,39 +146,36 @@
     <li>If you haven't already, complete steps 1 and 2 for installing Clarity UI in the preceding section.
     </li>
     <li>Install the clarity-angular package through npm:
-        <pre>    <code class="clr-code">
-    npm install clarity-angular --save
-    </code>
-</pre>
+        <pre><code class="clr-code">
+npm install clarity-angular --save
+</code></pre>
     </li>
     <li>Install the clarity-angular package through npm:
-        <pre>    <code clr-code-highlight="language-javascript">
-    import {{  '{'  }} NgModule {{ '}' }} from '@angular/core';
-    import {{  '{'  }} BrowserModule {{ '}' }} from '@angular/platform-browser';
-    import {{  '{'  }} ClarityModule {{ '}' }} from 'clarity-angular';
-    import {{  '{'  }} AppComponent {{ '}' }} from './app.component';
+        <pre><code clr-code-highlight="language-javascript">
+import {{  '{'  }} NgModule {{ '}' }} from '@angular/core';
+import {{  '{'  }} BrowserModule {{ '}' }} from '@angular/platform-browser';
+import {{  '{'  }} ClarityModule {{ '}' }} from 'clarity-angular';
+import {{  '{'  }} AppComponent {{ '}' }} from './app.component';
 
-    @NgModule({{  '{'  }}
-        imports: [
-            BrowserModule,
-            ClarityModule.forChild(),
-            ....
-         ],
-         declarations: [ AppComponent ],
-         bootstrap: [ AppComponent ]
-    {{ '}' }})
-    export class AppModule {{  '{'  }}    {{ '}' }}
-    </code>
-</pre>
+@NgModule({{  '{'  }}
+    imports: [
+        BrowserModule,
+        ClarityModule.forChild(),
+        ....
+        ],
+        declarations: [ AppComponent ],
+        bootstrap: [ AppComponent ]
+{{ '}' }})
+export class AppModule {{  '{'  }}    {{ '}' }}
+</code></pre>
     </li>
 </ol>
 
 <h4 id="step-3-run-your-app">Step 3: Run Your App</h4>
 
-<pre>    <code class="clr-code">
-    npm start
-    </code>
-</pre>
+<pre><code class="clr-code">
+npm start
+</code></pre>
 
 <h2 id="browserSupport">Device and Browser Support</h2>
 

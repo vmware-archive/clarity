@@ -35,34 +35,32 @@
     <p>This SASS variable contains a collection that can access all of the font properties for H1 through H6 and P1 through P8 as defined in our typography specs. These properties are returned as a collection which contains nested collections of both common
         font properties across all screen sizes, as well as breakpoint overrides.</p>
 
-    <pre>
-<code class="language-scss">
-    // passing element label to map-get
-    map-get($clr-elements, h3);
+    <pre><code clr-code-highlight="language-scss">
+// passing element label to map-get
+map-get($clr-elements, h3);
 
-    // returns nested map of common properties and breakpoint overrides
-    //  (
-    //      clr-common: (
-    //          font-weight: …,
-    //          letter-spacing: …,
-    //          font-family: …,
-    //          line-height: …,
-    //      ),
-    //      small: (
-    //          letter-spacing: [breakpoint override]
-    //      ),
-    //      medium: (
-    //          letter-spacing: [breakpoint override]
-    //      ),
-    //      large: (
-    //          letter-spacing: [breakpoint override]
-    //      ),
-    //      xlarge: (
-    //          letter-spacing: [breakpoint override]
-    //      )
-    //  );
-</code>
-</pre>
+// returns nested map of common properties and breakpoint overrides
+//  (
+//      clr-common: (
+//          font-weight: …,
+//          letter-spacing: …,
+//          font-family: …,
+//          line-height: …,
+//      ),
+//      small: (
+//          letter-spacing: [breakpoint override]
+//      ),
+//      medium: (
+//          letter-spacing: [breakpoint override]
+//      ),
+//      large: (
+//          letter-spacing: [breakpoint override]
+//      ),
+//      xlarge: (
+//          letter-spacing: [breakpoint override]
+//      )
+//  );
+</code></pre>
 
     <h6 id="clr-typography-dom-to-type-element">$clr-typography-dom-to-type-element</h6>
 
@@ -113,37 +111,33 @@
 
     <h6 id="example">Example</h6>
 
-    <pre>
-<code class="language-scss">
+    <pre><code clr-code-highlight="language-scss">
+// passing type property list
+.my-styles {{'{'}}
+    @include clr-getTypeProperties(p1, (font-weight, font-size));
+{{'}'}};
 
-    // passing type property list
-    .my-styles {{'{'}}
-        @include clr-getTypeProperties(p1, (font-weight, font-size));
-    {{'}'}};
+//  renders as...
+//  .my-styles {{'{'}}
+//      font-weight: 400;
+//      font-size: 14px;
+//  {{'}'}};
 
-    //  renders as...
-    //  .my-styles {{'{'}}
-    //      font-weight: 400;
-    //      font-size: 14px;
-    //  {{'}'}};
+// passing no type property list
+.all-my-styles {{'{'}}
+    @include clr-getTypeProperties(p8);
+{{'}'}};
 
-    // passing no type property list
-    .all-my-styles {{'{'}}
-        @include clr-getTypeProperties(p8);
-    {{'}'}};
-
-    //  renders as...
-    //  .all-my-styles {{'{'}}
-    //      font-weight: 400;
-    //      font-size: 10px;
-    //      letter-spacing: 0.03em;
-    //      line-height: 12px;
-    //      margin-top: 24px;
-    //      margin-bottom: 0;
-    //  {{'}'}};
-
-</code>
-</pre>
+//  renders as...
+//  .all-my-styles {{'{'}}
+//      font-weight: 400;
+//      font-size: 10px;
+//      letter-spacing: 0.03em;
+//      line-height: 12px;
+//      margin-top: 24px;
+//      margin-bottom: 0;
+//  {{'}'}};
+</code></pre>
 
     <h6 class="hidden-xs-down" id="clr-gettypepropertiesfordomelementelement-label-typepropertiestoget">clr-getTypePropertiesForDomElement($element-label, $typePropertiesToGet)</h6>
 
@@ -185,38 +179,34 @@
 
     <h6 id="example-1">Example</h6>
 
-    <pre>
-<code class="language-scss">
+    <pre><code clr-code-highlight="language-scss">
+// passing type property list
+.sidenav-styles {{'{'}}
+    @include clr-getTypePropertiesForDomElement(p1, (font-weight, font-size));
+{{'}'}};
 
-    // passing type property list
-    .sidenav-styles {{'{'}}
-        @include clr-getTypePropertiesForDomElement(p1, (font-weight, font-size));
-    {{'}'}};
+//  renders as...
+//  .sidenav-styles {{'{'}}
+//      font-weight: 400;
+//      font-size: 14px;
+//      letter-spacing: 0.01em;
+//  {{'}'}};
 
-    //  renders as...
-    //  .sidenav-styles {{'{'}}
-    //      font-weight: 400;
-    //      font-size: 14px;
-    //      letter-spacing: 0.01em;
-    //  {{'}'}};
+// passing no type property list
+.small-text-styles {{'{'}}
+    @include clr-getTypeProperties(label_text);
+{{'}'}};
 
-    // passing no type property list
-    .small-text-styles {{'{'}}
-        @include clr-getTypeProperties(label_text);
-    {{'}'}};
-
-    //  renders as...
-    //  .small-text-styles {{'{'}}
-    //      font-weight: 400;
-    //      font-size: 11px;
-    //      letter-spacing: 0.03em;
-    //      line-height: 12px;
-    //      margin-top: 24px;
-    //      margin-bottom: 0;
-    //  {{'}'}};
-
-</code>
-</pre>
+//  renders as...
+//  .small-text-styles {{'{'}}
+//      font-weight: 400;
+//      font-size: 11px;
+//      letter-spacing: 0.03em;
+//      line-height: 12px;
+//      margin-top: 24px;
+//      margin-bottom: 0;
+//  {{'}'}};
+</code></pre>
 
     <h4 id="functions">Functions</h4>
 
@@ -257,22 +247,18 @@
 
     <h6 id="example-2">Example</h6>
 
-    <pre>
-<code class="language-scss">
+    <pre><code clr-code-highlight="language-scss">
+// passing type property list
+$myCustomVar: clr-getTypePropertyValue(p1, font-size);
+.my-style {{'{'}}
+    font-size: $myCustomVar;
+{{'}'}};
 
-    // passing type property list
-    $myCustomVar: clr-getTypePropertyValue(p1, font-size);
-    .my-style {{'{'}}
-        font-size: $myCustomVar;
-    {{'}'}};
-
-    //  renders as...
-    //  .my-style {{'{'}}
-    //      font-size: 14px;
-    //  {{'}'}};
-
-</code>
-</pre>
+//  renders as...
+//  .my-style {{'{'}}
+//      font-size: 14px;
+//  {{'}'}};
+</code></pre>
 
     <h6 class="hidden-xs-down" id="clr-gettypepropertyvaluefordomelementelement-label-valtoget">clr-getTypePropertyValueForDomElement($element-label, $valToGet)</h6>
 
@@ -311,22 +297,18 @@
 
     <h6 id="example-3">Example</h6>
 
-    <pre>
-<code class="language-scss">
+    <pre><code clr-code-highlight="language-scss">
+// passing type property list
+$myCustomVar: clr-getTypePropertyValueForDomElement(table_header, font-weight);
+.my-style {{'{'}}
+    font-weight: $myCustomVar;
+{{'}'}};
 
-    // passing type property list
-    $myCustomVar: clr-getTypePropertyValueForDomElement(table_header, font-weight);
-    .my-style {{'{'}}
-        font-weight: $myCustomVar;
-    {{'}'}};
-
-    //  renders as...
-    //  .my-style {{'{'}}
-    //      font-weight: 600;
-    //  {{'}'}};
-
-</code>
-</pre>
+//  renders as...
+//  .my-style {{'{'}}
+//      font-weight: 600;
+//  {{'}'}};
+</code></pre>
 
     <h3 id="guidelines">The Metropolis Font</h3>
 

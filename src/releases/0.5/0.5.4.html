@@ -6,11 +6,11 @@
             Clarity presents pixel perfect and scalable SVG-based icons. This new icon system gives you complete control over the color, orientation, and visibility all the way down to individual paths in the icon through standard CSS. Multi-colored icons are as
             easy as setting fill and stroke colors in your styles! Clarity Icons comes with a set of predefined color treatments as CSS classnames that you can use in your HTML right away with more icons and styles on the way.
         </p>
-        <pre><code class="language-html">
-        &lt;clr-icon shape=&quot;info&quot; class=&quot;icon-size-[sm/md/lg]&quot;&gt;&lt;/clr-icon&gt;
-        &lt;clr-icon shape=&quot;info&quot; class=&quot;icon-orient-[up/right/down/left]&quot;&gt;&lt;/clr-icon&gt;
-        &lt;clr-icon shape=&quot;info&quot; class=&quot;icon-color&mdash;[highlight/inverse/success/danger/warning/info]&quot;&gt;&lt;/clr-icon&gt;
-    </code></pre>
+        <pre><code clr-code-highlight="language-html">
+&lt;clr-icon shape=&quot;info&quot; class=&quot;icon-size-[sm/md/lg]&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;info&quot; class=&quot;icon-orient-[up/right/down/left]&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;info&quot; class=&quot;icon-color&mdash;[highlight/inverse/success/danger/warning/info]&quot;&gt;&lt;/clr-icon&gt;
+</code></pre>
     </li>
     <li new-component>
         <h6>Responsive Navigation</h6>
@@ -18,25 +18,25 @@
             Clarity Navigation is now responsive! You can make up to two levels of navigation responsive. Add the <code class="clr-code">clr-nav-level</code> input to your navigation level and assign it a value of <code class="clr-code">1</code> for primary
             navigation and <code class="clr-code">2</code> for secondary navigation.
         </p>
-        <pre><code class="language-html">
-        &lt;clr-main-container&gt;
-        &lt;clr-header&gt;
+        <pre><code clr-code-highlight="language-html">
+&lt;clr-main-container&gt;
+    &lt;clr-header&gt;
+        ...
+        &lt;div class=&quot;header-nav&quot; [clr-nav-level]=&quot;1&quot;&gt;
             ...
-            &lt;div class=&quot;header-nav&quot; [clr-nav-level]=&quot;1&quot;&gt;
-                ...
-            &lt;/div&gt;
-            ...
-        &lt;/clr-header&gt;
-        &lt;div class=&quot;content-container&quot;&gt;
-            &lt;main class=&quot;content-area&quot;&gt;
-                ...
-            &lt;/main&gt;
-            &lt;nav class=&quot;sidenav&quot; [clr-nav-level]=&quot;2&quot;&gt;
-                ...
-            &lt;/nav&gt;
         &lt;/div&gt;
-    &lt;/clr-main-container&gt;
-    </code></pre>
+        ...
+    &lt;/clr-header&gt;
+    &lt;div class=&quot;content-container&quot;&gt;
+        &lt;main class=&quot;content-area&quot;&gt;
+            ...
+        &lt;/main&gt;
+        &lt;nav class=&quot;sidenav&quot; [clr-nav-level]=&quot;2&quot;&gt;
+            ...
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/clr-main-container&gt;
+</code></pre>
     </li>
     <li>
         <h6>Login Form Updates</h6>

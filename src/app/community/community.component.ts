@@ -12,5 +12,5 @@ const CONTRIBUTORS = require("../../community/contributors.json");
 export class CommunityComponent {
   team: any[] = CLARITYTEAM.members;
   contributors: string[] = CONTRIBUTORS.contributors;
-  teamImgUrl: string = "/assets/images/team/";
+  teamImgUrl: string = "assets/images/team/";
 }

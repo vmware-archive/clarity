@@ -1,9 +1,9 @@
-<main id="content-area" class="content-area">
+<main id="content-area" class="content-area" hash-listener #scrollable>
   ${content}
 </main>
 <nav class="sidenav" [clr-nav-level]="2">
   <section class="sidenav-content">
-    <section class="nav-group">
+    <section class="nav-group" [scrollspy]="scrollable">
       <label><a class="nav-link active" routerLink="." fragment="introduction">Clarity Design System</a></label>
       <label class="bump-down"><a class="nav-link" routerLink="." fragment="howToUse">How to Use Clarity</a></label>
       <ul class="nav-list">

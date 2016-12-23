@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import {AnchorLinksHandler} from "./utils/anchor-links-handler.service";
 
 @NgModule({
   declarations: [
@@ -24,8 +23,7 @@ import {AnchorLinksHandler} from "./utils/anchor-links-handler.service";
     AppRoutingModule
   ],
   providers: [
-    Title,
-    AnchorLinksHandler
+    Title
   ],
   bootstrap: [AppComponent]
 })

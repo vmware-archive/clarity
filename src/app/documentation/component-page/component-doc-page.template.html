@@ -20,15 +20,14 @@
   </div>
 
   <div class="dox-tabs">
-    <ul class="list-unstyled">
-      <!-- TODO handle scrolling and .active class -->
-      <li><a routerLink="." fragment="top" id="topTabLink" class="clrweb-tablink">Examples &amp; Code</a></li>
+    <ul class="list-unstyled" [scrollspy]="scrollable">
+      <li><a routerLink="." fragment="top" id="topTabLink" class="clrweb-tablink active">Examples &amp; Code</a></li>
       <li><a routerLink="." fragment="guidelines" class="clrweb-tablink" id="guidelinesTabLink">Design Guidelines</a></li>
     </ul>
   </div>
 </section>
 
-<section class="dox-content">
+<section class="dox-content" hash-listener #scrollable>
   <div class="dox-content-wrapper">
     <a id="top"></a>
     ${content}

@@ -11,8 +11,7 @@
         <clr-tab-link>Cloud</clr-tab-link>
 
         <clr-tab-content [clrTabContentId]="'content1'" [clrTabContentActive]="true">
-            <p>Content for Dashboard tab. Here is a <a href="javascript://">link</a> that can be accessed via clicking
-                or through keyboard via tabbing.</p>
+            <p>Content for Dashboard tab. Here is a <a href="javascript://">link</a> that can be accessed via clicking or through keyboard via tabbing.</p>
         </clr-tab-content>
         <clr-tab-content>
             <p>Content for Management tab.</p>
@@ -23,8 +22,7 @@
     </clr-tabs>
 </div>
 
-<pre>
-<code clr-code-highlight="language-html">
+<pre><code clr-code-highlight="language-html">
     &lt;clr-tabs (clrTabsCurrentTabLinkChanged)="onTabSelected($event)"
               (clrTabsCurrentTabIndexChanged)="onTabIndexChanged($event)"
               (clrTabsCurrentTabContentChanged)="onTabContentActivated($event)"&gt;

@@ -1,3 +1,18 @@
+@mixin clrwebMakeFlexbox($alignItems: false) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    @if $alignItems {
+        -webkit-box-align: $alignItems;
+        -ms-flex-align: $alignItems;
+        align-items: $alignItems;
+    }
+}
+
 .component-workstream-bugs {
     position: absolute;
     top: $bl-1_0;
@@ -28,8 +43,12 @@
     }
 }
 
+.alert+.component-summary:not(.no-margin) {
+    margin-top: $bl-2_0 - 4;
+}
+
 .layout-documentation {
-    .content-area>section {
+    .content-area section {
         max-width: $clrweb-content-maxwidth;
     }
     img {
@@ -151,6 +170,7 @@ body.layout-documentation {
         flex: 0 0 108px;
         padding-left: $bl-1_5;
         position: relative;
+        border-bottom: 1px solid #CCC;
     }
     .dox-content-panel .dox-content {
         -ms-flex: 1 1 auto;
@@ -334,5 +354,171 @@ body.layout-documentation {
         h4 {
             margin-top: 0;
         }
+    }
+}
+
+.clrweb-DoxMedia {
+    width: 100%;
+    margin-top: $bl-1_0;
+    &-block {
+        min-height: 145px;
+        background: #eee;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 24px;
+    }
+    &-img {
+        margin: 0 auto;
+        >* {
+            margin: 0;
+        }
+        >img {
+            width: auto;
+            max-width: 100%;
+        }
+    }
+    &-text {
+        padding-bottom: $bl-1_0;
+    }
+    &.is-dont-block &-text,
+    &.is-do-block &-text {
+        position: relative;
+        &::before {
+            content: ' ';
+            display: block;
+            width: 100%;
+            background: #318700;
+            height: 8px;
+            position: absolute;
+            top: -20px;
+            left: 0;
+        }
+    }
+    &.is-dont-block &-text::before {
+        background: #E62700;
+    }
+    &.is-do-block &-do-dont {
+        color: #318700;
+    }
+    &.is-dont-block &-do-dont {
+        color: #E62700;
+    }
+}
+
+.clrweb-DoxVersusBox {
+    width: 100%;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    margin-top: $bl-2_0;
+    @include clrwebMakeFlexbox;
+    &-items {
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        @include clrwebMakeFlexbox;
+    }
+    &-pin {
+        -ms-flex: 0 0 (3 * $bl-1_0);
+        flex: 0 0 (3 * $bl-1_0);
+        min-height: 4 * $bl-1_0;
+        background: #eee;
+        @include clrwebMakeFlexbox(center);
+        clr-icon {
+            height: $bl-1_0;
+            width: $bl-1_0;
+            color: #853FB3;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+    &-vsWrapper {
+        -ms-flex: 0 0 $bl-2_0;
+        flex: 0 0 $bl-2_0;
+        @include clrwebMakeFlexbox(center);
+    }
+    &-itemWrapper {
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: $bl-1_0;
+        @include clrwebMakeFlexbox(center);
+    }
+    &-vs {
+        $vs-dimension: $bl-1_5;
+        height: $vs-dimension;
+        width: $vs-dimension;
+        display: block;
+        background: #853FB3;
+        color: #fff;
+        line-height: $vs-dimension;
+        border-radius: 49%;
+        font-size: 14px;
+        font-weight: 100;
+        letter-spacing: 0.02em;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    &-item p {
+        margin: 0;
+    }
+}
+
+.clrweb-DoxBookmark {
+    @include clrwebMakeFlexbox(top);
+    >* {
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        margin: 0;
+    }
+    &-bookmark {
+        -ms-flex: 0 0 $bl-1_0;
+        flex: 0 0 $bl-1_0;
+        text-align: left;
+    }
+    [shape="bookmark"] {
+        width: 26px;
+        margin-left: -5px;
+        height: 26px;
+    }
+}
+
+.clrweb-Img {
+    width: 100%;
+}
+
+.clrweb-Img--popout {
+    margin-left: -4.3%;
+}
+
+@media screen and (max-width: 576px) {
+    .clrweb-DoxVersusBox {
+        &-items {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+        }
+        &-vs {
+            margin: 0;
+            margin-left: $bl-1_0;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .clrweb-DoxBookmark {
+        margin-top: $bl-0_5;
+    }
+    .clrweb-Img {
+        margin-top: $bl-1_0;
+    }
+    .clrweb-Img--popout {
+        margin-left: 0;
     }
 }

@@ -21,6 +21,10 @@ for (let component of COMPONENTS.list) {
     class DocComponent {
       title = component.text;
 
+      get useNewLayout() {
+        return !!component.newLayout;
+      }
+
       get uiDone() {
         return component.ui > 19;
       }

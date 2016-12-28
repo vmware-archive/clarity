@@ -38,6 +38,7 @@
         },
         {
             "url": "buttons",
+            "newLayout": true,
             "text": "Buttons",
             "type": "component",
             "ux": 20,

@@ -118,7 +118,7 @@ These documents provide guidance creating a well-crafted commit message:
 
 You can submit an issue or a bug to our [GitHub repository](https://github.com/vmware/clarity/issues).  You must provide:
 
-* The link to the reproduction scenario you created using the [Clarity Plunker Template](https://plnkr.co/edit/VPxyl7?p=preview)
+* The link to the reproduction scenario you created using the [Clarity Plunker Template](https://plnkr.co/edit/8TwwdL?p=preview)
 * The version number of Angular
 * The version number of Clarity
 * The browser name and version number

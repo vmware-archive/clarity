@@ -148,4 +148,4 @@ The Clarity project team welcomes contributions from the community. For more det
 
 If you find a bug or want to request a new feature, please open a [GitHub issue](https://github.com/vmware/clarity/issues).
 If possible please provide a minimal demo illustrating the issue with https://plunkr.co
-- Fork the [Clarity Plunker Template](https://plnkr.co/edit/VPxyl7?p=preview) and submit your link with the issue.
+- Fork the [Clarity Plunker Template](https://plnkr.co/edit/8TwwdL?p=preview and submit your link with the issue.

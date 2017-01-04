@@ -22,11 +22,11 @@
         &.hidden {
             visibility: hidden;
         }
-        &>img {
+        & > img {
             height: $bl-1_0 + 1;
         }
     }
-    .bug-ng>img {
+    .bug-ng > img {
         height: $bl-1_0 + 2;
     }
 }
@@ -38,12 +38,12 @@
         margin-bottom: $bl-0_5 + 3;
         margin-top: $bl-0_25 + 2;
     }
-    &+p {
+    & + p {
         margin-top: $bl-1_0 - 2;
     }
 }
 
-.alert+.component-summary:not(.no-margin) {
+.alert + .component-summary:not(.no-margin) {
     margin-top: $bl-2_0 - 4;
 }
 
@@ -87,7 +87,7 @@
         }
         .symbol {
             width: $bl-0_75;
-            &>img {
+            & > img {
                 margin-top: -3px;
             }
         }
@@ -103,7 +103,7 @@
 .page-typography {
     clr-typography-demo {
         div.indent {
-            &>h4 {
+            & > h4 {
                 font-size: 28px;
                 line-height: $bl-2_0;
                 font-weight: 200;
@@ -127,7 +127,7 @@
 }
 
 .page-stack-view {
-    h3+.alert {
+    h3 + .alert {
         margin-top: 16px;
     }
 }
@@ -147,7 +147,7 @@ table.buttons-cmp-table td {
 }
 
 .main-container {
-    .header>.header-nav>.nav-link:last-child::after {
+    .header > .header-nav > .nav-link:last-child::after {
         content: none;
     }
 }
@@ -219,16 +219,18 @@ body.layout-documentation {
             }
         }
     }
-    .component-summary+h3 {
+    .component-summary + h3 {
         margin-top: $bl-2_0;
     }
     .clrweb-button-demo,
     .clrweb-stackview-demo {
         h4 {
             font-size: 16px;
-            margin-top: $bl-1_0 + 4;
             margin-bottom: $bl-0_25;
         }
+    }
+    h3 + .clrweb-button-demo > h4:first-child {
+        margin-top: $bl-1_5;
     }
     .clrweb-datagrid-first-demo {
         h2 {
@@ -245,6 +247,10 @@ body.layout-documentation {
         h4:first-child {
             margin-top: $bl-1_0;
         }
+    }
+    h3#examples {
+        border-top: 1px solid #ccc;
+        padding-top: 116px;
     }
 }
 
@@ -278,7 +284,7 @@ body.layout-documentation {
             font-size: 28px;
             line-height: $bl-1_5;
         }
-        h1+p {
+        h1 + p {
             margin-top: $bl-0_5;
         }
     }
@@ -377,10 +383,10 @@ body.layout-documentation {
     }
     &-img {
         margin: 0 auto;
-        >* {
+        > * {
             margin: 0;
         }
-        >img {
+        > img {
             width: auto;
             max-width: 100%;
         }
@@ -471,7 +477,7 @@ body.layout-documentation {
 
 .clrweb-DoxBookmark {
     @include clrwebMakeFlexbox(top);
-    >* {
+    > * {
         -ms-flex: 1 1 auto;
         flex: 1 1 auto;
         margin: 0;

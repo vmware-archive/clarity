@@ -9,9 +9,7 @@ $bl-2_0: baselineRem(2);
 $bl-2_5: baselineRem(2.5);
 $bl-3_0: baselineRem(3);
 $bl-4_0: baselineRem(4);
-
 $clrweb-content-maxwidth: 900px;
-
 @mixin clarityWebBoxShadow {
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.12);
 }
@@ -46,7 +44,6 @@ body p.squish {
 body ol.indent {
     padding-left: $bl-2_0;
     margin-top: $bl-1_0;
-
     & li {
         padding-bottom: $bl-0_5;
     }
@@ -82,35 +79,33 @@ h6.indent + p.indent {
     }
 }
 
-.sidenav, .slider-nav {
-
+.sidenav,
+.slider-nav {
     .nav-group label {
         font-weight: bold;
         display: block;
         width: 100%;
     }
-
     .nav-group label > a {
         color: inherit;
         text-decoration: none;
         padding-left: $bl-0_5;
-
-
-        &:hover, &:active, &:focus {
+        &:hover,
+        &:active,
+        &:focus {
             color: inherit;
             text-decoration: none;
             background: #eee;
         }
-
         &.active {
             background: #D9E4EA;
-
-            &:hover, &:active, &:focus {
+            &:hover,
+            &:active,
+            &:focus {
                 background: #D9E4EA;
             }
         }
     }
-
     a.nav-link {
         & > .nav-link-tag {
             color: #313131;
@@ -120,11 +115,9 @@ h6.indent + p.indent {
             font-weight: 400;
             vertical-align: top;
             letter-spacing: 0.02em;
-
             &.new {
                 color: #7e00b4;
             }
-
             &.updated {
                 color: #0094d2;
             }
@@ -142,7 +135,6 @@ h6.indent + p.indent {
 
 .valign {
     display: table;
-
     & > * {
         display: table-cell;
         vertical-align: middle;
@@ -152,12 +144,16 @@ h6.indent + p.indent {
 //Overriding PrismJS styles. This is in code.scss and not in code.clarity.scss because
 //we don't want to override the background in case someone chooses to use
 //another PrismJS theme.
-:not(pre) > code[class*="language-"], pre[class*="language-"], pre, code[class*="language-"]{
+:not(pre) > code[class*="language-"],
+pre[class*="language-"],
+pre,
+code[class*="language-"] {
     background: transparent;
 }
 
 @media (max-width: 991px) {
-    body.layout-get-started, body.layout-components {
+    body.layout-get-started,
+    body.layout-components {
         .content-area > section {
             width: 100%;
             padding-left: 0;
@@ -167,8 +163,10 @@ h6.indent + p.indent {
 
 a.btn-primary {
     color: #fafafa;
-
-    &:hover, &:active, &:visited, &:focus {
+    &:hover,
+    &:active,
+    &:visited,
+    &:focus {
         color: #fff;
     }
 }
@@ -193,7 +191,6 @@ body:not(.layout-home) {
     .content-area section:first-of-type h1 {
         margin-top: -1 * $bl-0_25;
     }
-
     .main-container .content-container .content-area {
         padding-bottom: $bl-3_0;
     }
@@ -209,7 +206,6 @@ body:not(.layout-home) {
     margin-right: $bl-0_5 - 1;
 }
 
-
 @media (max-width: 769px) {
     html {
         -webkit-overflow-scrolling: touch;
@@ -217,14 +213,16 @@ body:not(.layout-home) {
 }
 
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
-     // landscape iPad
+    // landscape iPad
     html {
         -webkit-overflow-scrolling: touch;
     }
 }
 
 body {
-    &.layout-documentation, &.layout-get-started, &.layout-news {
+    &.layout-documentation,
+    &.layout-get-started,
+    &.layout-news {
         .main-container .content-container .content-area {
             padding-left: $bl-1_5;
             padding-top: $bl-0_75;
@@ -233,43 +231,43 @@ body {
 }
 
 // custom whitespace changes for website
-
 body {
-    &.layout-documentation, &.layout-get-started, &.layout-news {
-        h2, h3 {
-            margin-top: $bl-4_0;
+    &.layout-documentation,
+    &.layout-get-started,
+    &.layout-news {
+        h2,
+        h3 {
+            margin-top: 120px;
         }
-
-        p + h3, div + h3 {
-            margin-top: $bl-3_0;
-        }
-
         h2 + h3 {
             margin-top: $bl-1_5;
         }
-
         h5 {
             color: #000;
-            margin-top: $bl-1_5;
+            margin-top: 72px;
         }
-
-        p + h5 {
-            margin-top: $bl-2_0;
+        h4 {
+            margin-top: 72px;
         }
-
+        h6 {
+            margin-top: 48px;
+        }
+        h5 + h6 {
+            margin-top: 36px;
+        }
         h3 + h5,
         h2 + h5,
         h3 + h4,
         h1 + h5 {
             margin-top: $bl-1_0;
         }
-
-        h4 {
-            margin-top: 72px;
-        }
-
         h6 + p {
             margin-top: $bl-0_25;
+        }
+        pre {
+            // TODO: move this into the background style of the code-highlight 
+            // component...
+            background: #FFF !important;
         }
     }
 }

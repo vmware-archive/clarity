@@ -2,6 +2,8 @@ import {Component, ElementRef, OnInit, Renderer} from '@angular/core';
 import {Router, NavigationEnd} from "@angular/router";
 import { Title } from '@angular/platform-browser';
 
+declare let ga:Function;
+
 const PRODUCT_TITLE = require('../settings/global.json').alt_title;
 
 @Component({
@@ -20,6 +22,11 @@ export class AppComponent implements OnInit {
         this.bodyClasses.forEach(className => this.renderer.setElementClass(this.el.nativeElement, className, true));
 
         this.updateBrowserTitle();
+
+        // ga may not exist if we aren't on the actual site
+        if (typeof ga !== "undefined") {
+          ga('send', 'pageview', change.urlAfterRedirects);
+        }
       }
     });
   }

@@ -8,7 +8,7 @@
 @import "../utils/layers.clarity";
 @import "../images/icons.clarity";
 
-$styledInputs: inputs("text", "password", "number", "email", "url");
+$styledInputs: inputs("text", "password", "number", "email", "url", "tel", "date");
 $styledInputs1: inputs("button", "submit");
 
 $clr-form-field-border-color: $clr-dark-midtone-gray !default;

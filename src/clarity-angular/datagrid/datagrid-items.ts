@@ -31,9 +31,9 @@ export class DatagridItems implements OnChanges, DoCheck {
     }
 
     /**
-     * Tracking function to identify objects. Angular's default is reference equality.
+     * Tracking function to identify objects. Default is reference equality.
      */
-    @Input("clrDgItemsTrackBy") public trackBy: TrackByFn;
+    @Input("clrDgItemsTrackBy") public trackBy: TrackByFn = (index: number, item: any) => item;
 
     ngDoCheck() {
         if (this._differ) {

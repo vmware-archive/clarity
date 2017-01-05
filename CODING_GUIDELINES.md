@@ -13,6 +13,8 @@ which you extend later, leads to blocking issues that users can't work around.
 
 ## SCSS styles
 
+- Variables should use the 'clr' prefix in kebab case (e.g. `$clr-alert-top-margin`), unless they are very local 
+variables confined to a specific block of code. 
 - No hard-coded colors, always use the existing helpers and variables.
 - Always respect our baseline for vertical rhythm.
 
@@ -24,6 +26,10 @@ if said text can contain HTML tags or interpolation.
 
 ## Typescript code
 
+- All of the components, directives, inputs and outputs must use the `clr` prefix to avoid conflicts with other 
+components and directives. The general convention for selectors is `clr-[component-name]` in kebab case (e.g. 
+`clr-modal`). The general convention for inputs and outputs is `clr[ComponentName][Attribute]` in camel case (e.g. 
+`clrModalSize`). 
 - No HTTP requests. Handling them ourselves makes our user's unit tests very hard to write, 
 and it also forces their server to conform to our object format.
 - Full unit testing coverage.

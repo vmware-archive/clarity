@@ -3,18 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { SVG_ICON_TEMPLATES } from "./svg-icon-templates";
 import { IconTemplate } from "./interfaces/icon-template";
-import { UserIcons } from "./extend-clarity-icons";
-
+import { ClarityIconsApi } from "./extend-clarity-icons";
 
 /* CLARTIYICONS GLOBAL OBJECT */
 
-let userIcons: UserIcons = new UserIcons();
-let userIconsExtendedShapes: IconTemplate = userIcons.getExtendedShapes();
+let ClrIconsApi: ClarityIconsApi = new ClarityIconsApi();
+let allClrIconsShapes: IconTemplate = ClrIconsApi.get();
 
 //Setting a global object called "ClarityIcons" to expose the "userIcons".
-window.ClarityIcons = userIcons;
+window.ClarityIcons = ClrIconsApi;
 
 
 /* CLR-ICON CUSTOM ELEMENT */
@@ -50,11 +48,10 @@ let generateIcon =
             element._shape = shape;
 
             element.innerHTML =
-                userIconsExtendedShapes[ element._shape ] ||
-                SVG_ICON_TEMPLATES[ element._shape ] ||
+                allClrIconsShapes[ shape ] ||
                 (function () {
-                    console.error("Error: '" + shape + "' is not found in the Clarity Icon set.");
-                    return SVG_ICON_TEMPLATES[ "error" ];
+                    console.error(`'${shape}' is not found in the Clarity Icons set.`);
+                    return allClrIconsShapes[ "error" ];
                 }());
         }
     };

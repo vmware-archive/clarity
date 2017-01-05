@@ -1,16 +1,24 @@
 {
-    "current": "0.8.0",
+    "current": "0.8.1",
     "all": {
+        "0.8.1": {
+            "date": "Jan 5, 2017",
+            "sketch": "0.7.3",
+            "commit": "a5139dac9abd276ba62e21a0725e0de720ade3a7"
+        },
         "0.8.0": {
             "date": "Dec 22, 2016",
             "sketch": "0.7.3",
-            "commit": null
+            "commit": "3c724fca53be645955d6ac621ec45bc4041e533b"
         },
 
 
 
-
-
+        "0.7.6": {
+            "date": "Jan 5, 2017",
+            "sketch": "0.7.3",
+            "commit": "2979224414ca222aa2dc8f064c98ed176a0adeaf"
+        },
         "0.7.5": {
             "date": "Dec 16, 2016",
             "sketch": "0.7.3",

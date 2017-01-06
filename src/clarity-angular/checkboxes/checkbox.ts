@@ -58,7 +58,9 @@ export class Checkbox implements ControlValueAccessor {
 
     public set checked(value: boolean) {
         if (value !== this._checked) {
+            this.indeterminate = false;
             this._checked = value;
+            this.change.emit(this.checked);
         }
     }
 
@@ -70,9 +72,11 @@ export class Checkbox implements ControlValueAccessor {
 
     @Input("clrIndeterminate")
     public set indeterminate(value: boolean) {
-        this.checked = false;
-        this._indeterminate = value;
-        this.indeterminateChange.emit(this._indeterminate);
+        if (this._indeterminate !== value) {
+            this.checked = false;
+            this._indeterminate = value;
+            this.indeterminateChange.emit(this._indeterminate);
+        }
     }
 
     @Output("clrIndeterminateChange")
@@ -82,14 +86,17 @@ export class Checkbox implements ControlValueAccessor {
     public change = new EventEmitter<boolean>(false);
 
     public toggle() {
-        this._indeterminate = false;
         this.checked = !this.checked;
         this.onChangeCallback(this.checked);
-        this.change.emit(this.checked);
     }
 
     writeValue(value: any): void {
-        this.checked = !!value;
+        if (value === null) {
+            value = false;
+        }
+        if (value !== this.checked) {
+            this.checked = value;
+        }
     }
 
     /*

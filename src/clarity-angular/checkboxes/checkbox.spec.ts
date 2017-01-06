@@ -63,7 +63,7 @@ class InlineCheckbox extends CheckboxTest {
 
 @Component({
     template: `
-        <clr-checkbox [clrIndeterminate]="true"></clr-checkbox>
+        <clr-checkbox [(clrIndeterminate)]="indeterminate" [(clrChecked)]="checked"></clr-checkbox>
     `
 })
 class IndeterminateCheckbox extends CheckboxTest {
@@ -96,6 +96,7 @@ describe("Checkbox", () => {
         fixture.detectChanges();
         expect(testInstance.indeterminate).toBe(indeterminate);
         expect(checkboxInstance.indeterminate).toBe(indeterminate);
+        expect(checkboxElement.indeterminate).toBe(indeterminate);
     }
 
     beforeEach(() => {
@@ -163,7 +164,22 @@ describe("Checkbox", () => {
         createTestComponent(IndeterminateCheckbox);
         fixture.componentInstance.indeterminate = true;
         assertIndeterminate(true);
+        fixture.componentInstance.indeterminate = false;
+        assertIndeterminate(false);
         assertChecked(false);
+    });
+
+    it("sets indeterminate state to false when the checked state is toggled by user actions", () => {
+        createTestComponent(IndeterminateCheckbox);
+        fixture.componentInstance.indeterminate = true;
+        assertIndeterminate(true);
+        assertChecked(false);
+        labelElement.click();
+        assertChecked(true);
+        assertIndeterminate(false);
+        labelElement.click();
+        assertChecked(false);
+        assertIndeterminate(false);
     });
 
     describe("ngModel support", () => {

@@ -23,7 +23,9 @@ gulp.task("npm:icons:bundles", function () {
     return gulp.src([
         "dist/bundles/clarity-icons.min.js",
         "dist/bundles/clarity-icons.min.css",
-        "dist/clarity-icons/svg-icon-templates.js"
+        "dist/clarity-icons/**/*.ts",
+        "dist/clarity-icons/**/*.js",
+        "!dist/clarity-icons/interfaces/**/*.js"
     ]).pipe(gulp.dest(npmFolder + "/clarity-icons"));
 });
 

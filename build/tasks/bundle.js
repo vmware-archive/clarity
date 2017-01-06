@@ -8,29 +8,6 @@ var gulp = require("gulp");
 var Builder = require("systemjs-builder");
 var zip = require('gulp-zip');
 
-
-/**
- * Bundles the compiled icon js files into define-clarity-icons.min.js
- */
-gulp.task("bundle:icons", ["typescript:icons"], function() {
-    var buildOpts = { minify: true, mangle: false, normalize: true };
-
-    var builder = new Builder("dist/");
-    builder.config({
-        packages: {
-            'clarity-icons': { defaultExtension: 'js' }
-        }
-    });
-
-    return builder.bundle("clarity-icons/**/*.js", "dist/bundles/define-clarity-icons.min.js", buildOpts)
-        .catch(function(err) {
-            console.error(err);
-            process.exit(1);
-        });
-
-
-});
-
 /**
  * Bundles the compiled icon js files into self-executing clarity-icons.min.js,
  * which will be used for publishing clarity icons as an independent package
@@ -42,7 +19,7 @@ gulp.task("bundle:icons:sfx", ["typescript:icons"], function() {
     var builder = new Builder("dist/");
     builder.config({
         packages: {
-            'clarity-icons': { defaultExtension: 'js' }
+            'clarity-icons': { main: 'index.js', defaultExtension: 'js' }
         }
     });
 
@@ -130,7 +107,7 @@ gulp.task("bundle:zip", ["bundle:clarity:js", "sass:static"], function() {
  * Also creates a zip with our css and js deliverables and our definition files
  * for third-party devs, then adds it to the bundles/ folder.
  */
-gulp.task("bundle", ["bundle:icons", "bundle:icons:sfx", "bundle:clarity:js", "bundle:zip"], function(){});
+gulp.task("bundle", ["bundle:icons:sfx", "bundle:clarity:js", "bundle:zip"], function(){});
 
 /**
  * Watches for changes in the transpiled js files to rebundle them

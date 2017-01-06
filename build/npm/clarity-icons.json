@@ -3,7 +3,8 @@
     "version": "/* @echo VERSION */",
     "description": "Custom Element Icons for Clarity",
     "homepage": "https://vmware.github.io/clarity/",
-    "main": "clarity-icons.min.js",
+    "main": "index.js",
+    "types": "index.d.ts",
     "repository" : {
         "type" : "git",
         "url" : "ssh://git@git.eng.vmware.com/clarity.git"

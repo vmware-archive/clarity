@@ -4,16 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { IconTemplate } from "./interfaces/icon-template";
-import { ClarityIconsApi } from "./extend-clarity-icons";
+import { ClarityIconsApi } from "./clarity-icons-api";
 
-/* CLARTIYICONS GLOBAL OBJECT */
-
-let ClrIconsApi: ClarityIconsApi = new ClarityIconsApi();
-let allClrIconsShapes: IconTemplate = ClrIconsApi.get();
-
-//Setting a global object called "ClarityIcons" to expose the "userIcons".
-window.ClarityIcons = ClrIconsApi;
-
+let allClrIconsShapes: IconTemplate = ClarityIconsApi.instance.get();
 
 /* CLR-ICON CUSTOM ELEMENT */
 
@@ -30,7 +23,7 @@ if (typeof Reflect === "object") {
     };
 }
 
-function ClarityIconElement() {
+export function ClarityIconElement() {
     "use strict";
     return (parentConstructor as any).apply(this, arguments);
 }
@@ -38,7 +31,9 @@ function ClarityIconElement() {
 (ClarityIconElement as any).observedAttributes = [ "shape", "size" ];
 
 ClarityIconElement.prototype = Object.create(HTMLElement.prototype);
+
 ClarityIconElement.prototype.constructor = ClarityIconElement;
+
 let generateIcon =
     function (element: any, shape: string) {
 
@@ -55,6 +50,7 @@ let generateIcon =
                 }());
         }
     };
+
 let setIconSize =
     function (element: any, size: string) {
 
@@ -69,6 +65,7 @@ let setIconSize =
         }
 
     };
+
 ClarityIconElement.prototype.connectedCallback =
     function () {
 
@@ -81,6 +78,7 @@ ClarityIconElement.prototype.connectedCallback =
             setIconSize(host, host.getAttribute("size"));
         }
     };
+
 ClarityIconElement.prototype.attributeChangedCallback =
     function (attributeName: string, oldValue: string, newValue: string) {
 
@@ -95,7 +93,5 @@ ClarityIconElement.prototype.attributeChangedCallback =
 
 
     };
-
-customElements.define("clr-icon", ClarityIconElement);
 
 

@@ -12,6 +12,22 @@ let ALL_ICON_TEMPLATES: IconTemplate = Object.assign({}, SVG_ICON_TEMPLATES);
 
 export class ClarityIconsApi {
 
+    private static singleInstance: ClarityIconsApi;
+
+    protected constructor(){}
+
+    static get instance(): ClarityIconsApi {
+
+        if (!ClarityIconsApi.singleInstance) {
+
+            ClarityIconsApi.singleInstance = new ClarityIconsApi();
+
+        }
+
+        return ClarityIconsApi.singleInstance;
+
+    }
+
     private validateName(name: string): boolean {
 
         if (name.length === 0) {
@@ -56,6 +72,23 @@ export class ClarityIconsApi {
 
     }
 
+    private setIconAliases(templates: IconTemplate, shapeName: string, aliasNames: string[]): void {
+        for (let aliasName of aliasNames) {
+
+            if (this.validateName(aliasName)) {
+                Object.defineProperty(templates, aliasName, {
+                    get: function () {
+                        return templates[ shapeName ];
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+            }
+
+        }
+
+    }
+
     add(icons: IconTemplate): void {
 
         for (let shapeName in icons) {
@@ -84,23 +117,6 @@ export class ClarityIconsApi {
         }
 
         return ALL_ICON_TEMPLATES[ shapeName ];
-
-    }
-
-    private setIconAliases(templates: IconTemplate, shapeName: string, aliasNames: string[]): void {
-        for (let aliasName of aliasNames) {
-
-            if (this.validateName(aliasName)) {
-                Object.defineProperty(templates, aliasName, {
-                    get: function () {
-                        return templates[ shapeName ];
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
-            }
-
-        }
 
     }
 
@@ -133,8 +149,8 @@ export class ClarityIconsApi {
 
     }
 
-
 }
+
 
 
 

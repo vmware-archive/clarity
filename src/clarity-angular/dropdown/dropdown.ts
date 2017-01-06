@@ -38,10 +38,9 @@ const menuPositions: string[] = [
 export class Dropdown {
 
     @HostBinding("class.open")
-    @Input("clrDropdownMenuOpen")
-    private _open: boolean = false;
+    @Input("clrDropdownMenuOpen") _open: boolean = false;
 
-    @Output("clrDropdownMenuOpenChange") private _openChanged: EventEmitter<boolean> = new EventEmitter<boolean>(false);
+    @Output("clrDropdownMenuOpenChange") _openChanged: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
     @Input("clrCloseMenuOnItemClick") isMenuClosable: boolean = true;
 

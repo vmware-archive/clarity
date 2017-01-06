@@ -36,7 +36,7 @@ let latestId = 0;
 export class Checkbox implements ControlValueAccessor {
     // If our host has an ID attribute, we use this instead of our index.
     @Input("id")
-    private _id: string = (latestId++).toString();
+    _id: string = (latestId++).toString();
 
     public get id() {
         return `clr-checkbox-${this._id}`;
@@ -50,7 +50,7 @@ export class Checkbox implements ControlValueAccessor {
     @Input("clrInline") public inline = false;
 
     @Input("clrChecked")
-    private _checked = false;
+    _checked = false;
 
     public get checked() {
         return this._checked;

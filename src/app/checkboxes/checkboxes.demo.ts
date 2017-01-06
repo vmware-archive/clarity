@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, Input} from "@angular/core";
+import {Component} from "@angular/core";
 
 @Component({
     moduleId: module.id,
@@ -15,11 +15,9 @@ import {Component, Input} from "@angular/core";
 
 export class CheckboxesDemo {
 
-    @Input()
     indeterminateState: boolean = true;
 
     onToggleIndeterminateState() {
-        event.preventDefault();
         this.indeterminateState = !this.indeterminateState;
     }
 }

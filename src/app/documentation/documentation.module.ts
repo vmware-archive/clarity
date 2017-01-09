@@ -8,6 +8,7 @@ import { DocumentationRoutingModule } from './documentation-routing.module';
 import { DocumentationComponent } from "./documentation.component";
 import {DocumentationNavLinksComponent} from "./documentation-nav-links.component";
 import {ComponentStatusComponent} from "./component-status/component-status.component";
+import {NewLayoutAlertComponent} from "./utils/new-layout-alert.component";
 import {StatusDotComponent} from "./component-status/status-dot.component";
 import {ALL_DOCS} from "./component-page/component-doc-pages";
 import {DemosModule} from "../../demos/demos.module";
@@ -18,6 +19,7 @@ import {DemosModule} from "../../demos/demos.module";
     DocumentationNavLinksComponent,
     ComponentStatusComponent,
     StatusDotComponent,
+    NewLayoutAlertComponent,
     ...ALL_DOCS.map(({component}) => component)
   ],
   imports: [

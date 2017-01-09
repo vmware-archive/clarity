@@ -9,6 +9,9 @@ import {ClarityModule} from 'clarity-angular';
 
 
 import {ModalStaticDemo} from "./modal-static";
+import {ModalStyleDesignDemo} from "./modal-style-design";
+import {ModalSizeDesignDemo} from "./modal-size-design";
+import {ModalAnimationDesignDemo} from "./modal-animation-design";
 import {ModalAngularNotClosableDemo} from "./modal-angular-not-closable";
 import {ModalAngularShowDemo} from "./modal-angular-show";
 import {ModalAngularSizeDemo} from "./modal-angular-size";
@@ -25,6 +28,9 @@ import {ModalSizesDemo} from "./modal-sizes";
     ],
     declarations: [
         ModalStaticDemo,
+        ModalStyleDesignDemo,
+        ModalSizeDesignDemo,
+        ModalAnimationDesignDemo,
         ModalAngularNotClosableDemo,
         ModalAngularShowDemo,
         ModalAngularSizeDemo,
@@ -35,6 +41,9 @@ import {ModalSizesDemo} from "./modal-sizes";
     ],
     exports: [
         ModalStaticDemo,
+        ModalStyleDesignDemo,
+        ModalSizeDesignDemo,
+        ModalAnimationDesignDemo,
         ModalAngularNotClosableDemo,
         ModalAngularShowDemo,
         ModalAngularSizeDemo,

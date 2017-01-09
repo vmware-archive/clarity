@@ -270,4 +270,10 @@ body {
             background: #FFF !important;
         }
     }
+    .btn.no-margin {
+        padding: 0;
+        margin: 0;
+        width: auto;
+        min-width: auto;
+    }
 }

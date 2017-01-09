@@ -7,12 +7,11 @@
 $clr-icon-size: 16px;
 $clr-icon-color-success: #318700;
 $clr-icon-color-danger: #e62700;
-$clr-icon-color-warning: #e62700;
+$clr-icon-color-warning: #fac400;
 $clr-icon-color-error: #e62700;
 $clr-icon-color-info: #007CBB;
 $clr-icon-color-inverse: #FFFFFF;
 $clr-icon-color-highlight: #007CBB;
-$clr-icon-color-warningYellow: #fac400;
 @mixin setIconColor($clr-icon-color) {
     fill: $clr-icon-color;
     .transparent-fill-stroke {
@@ -165,7 +164,7 @@ clr-icon {
     }
     &.has-alert {
         .clr-i-alert {
-            @include setIconColor($clr-icon-color-warningYellow);
+            @include setIconColor($clr-icon-color-warning);
         }
     }
 }

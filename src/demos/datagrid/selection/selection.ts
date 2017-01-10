@@ -8,7 +8,7 @@ import {Component} from "@angular/core";
 import {Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
 
-const EXAMPLE = `
+const MAIN_EXAMPLE = `
 <clr-datagrid [(clrDgSelected)]="selected">
     <-- ... -->
     <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
@@ -20,6 +20,12 @@ const EXAMPLE = `
 Selected users: <span *ngFor="let user of selected">{{user.name}}</span>
 `;
 
+const SINGLE_ROW_EXAMPLE = `
+<clr-dg-row *clrDgItems="let item of items" [clrDgItem]="item" [(clrDgSelected)]="item.selected">
+    <-- ... -->
+</clr-dg-row>
+`;
+
 @Component({
     selector: "clr-datagrid-selection-demo",
     providers: [Inventory],
@@ -27,7 +33,8 @@ Selected users: <span *ngFor="let user of selected">{{user.name}}</span>
     styleUrls: ["../datagrid.demo.scss"]
 })
 export class DatagridSelectionDemo {
-    example = EXAMPLE;
+    mainExample = MAIN_EXAMPLE;
+    singleRowExample = SINGLE_ROW_EXAMPLE;
     users: User[];
     selected: User[] = [];
 

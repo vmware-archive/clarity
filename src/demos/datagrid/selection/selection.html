@@ -55,4 +55,12 @@
     <clr-dg-footer>{{users.length}} users</clr-dg-footer>
 </clr-datagrid>
 
-<clr-example [clrCode]="example" clrLanguage="html"></clr-example>
+<clr-example [clrCode]="mainExample" clrLanguage="html"></clr-example>
+
+<p>
+    If you need an easier access to the selected state of a row, without having to go through the entire array,
+    we also provide a boolean <code class="clr-code">[(clrDgSelected)]</code> two-way binding on the
+    <code class="clr-code">&lt;clr-dg-row&gt;</code> itself. For instance, when your model itself tracks if items are
+    selected, you can simply write:
+</p>
+<clr-example [clrCode]="singleRowExample" clrLanguage="html"></clr-example>

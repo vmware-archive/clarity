@@ -9,7 +9,7 @@ var tslint = require('gulp-tslint');
 var format = require('gulp-clang-format');
 var clangFormat = require('clang-format');
 
-var iconsSources = [ 'src/icons/**/*.ts'];
+var iconsSources = [ 'src/clarity-icons/**/*.ts'];
 
 gulp.task('tslint:icons', function(){
 	return gulp.src(iconsSources)
@@ -54,7 +54,7 @@ gulp.task('tslint:clarity:no-error', function(){
         }));
 });
 
-var testsSources = ['src/clarity-angular/**/*.spec.ts', 'src/clarity-angular/**/*.mock.ts'];
+var testsSources = ['src/clarity-angular/**/*.spec.ts', 'src/clarity-icons/**/*.spec.ts', 'src/clarity-angular/**/*.mock.ts'];
 
 gulp.task('tslint:tests', function(){
     return gulp.src(testsSources)

@@ -19,6 +19,7 @@ module.exports = function (config) {
             // Polyfills for older browsers
             'node_modules/core-js/client/shim.min.js',
             'node_modules/web-animations-js/web-animations.min.js',
+            'node_modules/@webcomponents/custom-elements/custom-elements.min.js',
 
             // System.js for module loading
             'node_modules/systemjs/dist/system-polyfills.js',
@@ -45,11 +46,13 @@ module.exports = function (config) {
             { pattern: 'build/karma-test-shim.js', included: true, watched: false },
 
             // Clarity's bundles
+            { pattern: dist + 'bundles/clarity-icons.min.js', included: true, watched: true },
             { pattern: dist + 'bundles/clarity-ui.min.css', included: true, watched: true },
             { pattern: dist + 'bundles/clarity-angular.min.js', included: true, watched: true },
 
             // Test files
             { pattern: dist + 'tests/**/*.js', included: false, watched: true },
+            { pattern: dist + 'clarity-icons/**/*.js', included: false, watched: true },
 
             // Paths to support debugging with source maps in dev tools
             { pattern: src + '**/*.ts', included: false, watched: true },

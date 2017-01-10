@@ -7,13 +7,14 @@
 import { IconTemplate } from "./interfaces/icon-template";
 import { IconAlias } from "./interfaces/icon-alias";
 
-let IconSources: IconTemplate = {};
+let iconShapeSources: IconTemplate = {};
 
 export class ClarityIconsApi {
 
     private static singleInstance: ClarityIconsApi;
 
-    protected constructor(){}
+    private constructor() {
+    }
 
     static get instance(): ClarityIconsApi {
 
@@ -65,7 +66,12 @@ export class ClarityIconsApi {
 
         if (this.validateName(shapeName) && this.validateTemplate(trimmedShapeTemplate)) {
 
-            IconSources[ shapeName ] = trimmedShapeTemplate;
+            //if the shape name exists, delete it.
+            if (iconShapeSources[ shapeName ]) {
+                delete iconShapeSources[ shapeName ];
+            }
+
+            iconShapeSources[ shapeName ] = trimmedShapeTemplate;
 
         }
 
@@ -88,7 +94,15 @@ export class ClarityIconsApi {
 
     }
 
-    add(icons: IconTemplate): void {
+    add(icons?: IconTemplate): void {
+
+        if (typeof icons !== "object") {
+
+            throw new Error(
+                `The argument must be an object literal passed in the following pattern: 
+                { "shape-name": "shape-template" }`
+            );
+        }
 
         for (let shapeName in icons) {
 
@@ -100,13 +114,11 @@ export class ClarityIconsApi {
 
     }
 
-
     get(shapeName?: string): any {
 
         //if shapeName is not given, return all icon templates.
-
         if (!shapeName) {
-            return IconSources;
+            return iconShapeSources;
         }
 
         if (typeof shapeName !== "string") {
@@ -115,29 +127,37 @@ export class ClarityIconsApi {
 
         //if shapeName doesn't exist in the icons templates, throw an error.
 
-        if (!IconSources[ shapeName ]) {
+        if (!iconShapeSources[ shapeName ]) {
             throw new Error(`'${shapeName}' is not found in the Clarity Icons set.`);
         }
 
-        return IconSources[ shapeName ];
+        return iconShapeSources[ shapeName ];
 
     }
 
-    alias(aliases: IconAlias): void {
+    alias(aliases?: IconAlias): void {
+
+        if (typeof aliases !== "object") {
+
+            throw new Error(
+                `The argument must be an object literal passed in the following pattern: 
+                { "shape-name": ["alias-name", ...] }`
+            );
+        }
 
         for (let shapeName in aliases) {
 
             if (aliases.hasOwnProperty(shapeName)) {
 
-                if (IconSources.hasOwnProperty(shapeName)) {
-                    //set an alias to the icon if it exists in IconSources.
+                if (iconShapeSources.hasOwnProperty(shapeName)) {
+                    //set an alias to the icon if it exists in iconShapeSources.
 
-                    this.setIconAliases(IconSources, shapeName, aliases[ shapeName ]);
+                    this.setIconAliases(iconShapeSources, shapeName, aliases[ shapeName ]);
 
-                } else if (IconSources.hasOwnProperty(shapeName)) {
-                    //set an alias to the icon if it exists in IconSources.
+                } else if (iconShapeSources.hasOwnProperty(shapeName)) {
+                    //set an alias to the icon if it exists in iconShapeSources.
 
-                    this.setIconAliases(IconSources, shapeName, aliases[ shapeName ]);
+                    this.setIconAliases(iconShapeSources, shapeName, aliases[ shapeName ]);
 
                 } else {
 

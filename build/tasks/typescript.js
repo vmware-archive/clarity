@@ -27,7 +27,10 @@ var renameFolder = require("../rename-folder");
 /**
  * Clarity Icons
  */
-var iconsSources = [ 'src/clarity-icons/**/*.ts'];
+var iconsSources = [
+    'src/clarity-icons/**/*.ts',
+    '!src/clarity-icons/**/*.spec.ts'
+];
 
 gulp.task('typescript:icons', function () {
     return typescriptCompile(iconsSources, {})
@@ -54,7 +57,10 @@ gulp.task('typescript:clarity', function () {
 /**
  * Tests
  */
-var testsSources = ['src/clarity-angular/**/*.spec.ts', 'src/clarity-angular/**/*.mock.ts'];
+var testsSources = [
+    'src/clarity-angular/**/*.spec.ts',
+    'src/clarity-angular/**/*.mock.ts'
+];
 
 gulp.task('typescript:tests', function () {
     return typescriptCompile(testsSources, {
@@ -71,6 +77,27 @@ gulp.task('typescript:tests', function () {
     .pipe(absoluteRequires({}))
     .pipe(renameFolder({"clarity-angular": "tests"}))
     .pipe(gulp.dest("dist"));
+});
+
+var testsIconSources = [
+    'src/clarity-icons/**/*.spec.ts',
+];
+
+gulp.task('typescript:tests:icons', function () {
+    return typescriptCompile(testsIconSources, {
+        inlineTemplates: false,
+        internal: true
+    })
+        .pipe(absoluteRequires({
+            pattern: /\.\.?\/.*(mock|spec)/,
+            rename: {
+                "clarity-icons": "tests"
+            }
+        }))
+        // The requires remaining are all actual clarity classes
+        .pipe(absoluteRequires({}))
+        .pipe(renameFolder({"clarity-icons": "tests"}))
+        .pipe(gulp.dest("dist"));
 });
 
 
@@ -113,6 +140,12 @@ gulp.task('typescript:tests:watch', function () {
     });
 });
 
+gulp.task('typescript:tests:icons:watch', function () {
+    gulp.watch(testsIconSources, function () {
+        return runSequence('tslint:tests:no-error', 'typescript:tests:icons');
+    });
+});
+
 gulp.task('typescript:app:watch', function () {
     gulp.watch(appSources, function () {
         return runSequence('tslint:app:no-error', 'typescript:app');
@@ -122,7 +155,7 @@ gulp.task('typescript:app:watch', function () {
 gulp.task('typescript', function (callback) {
     return runSequence(
         'tslint',
-        ['typescript:clarity', 'typescript:icons', 'typescript:app', 'typescript:tests'],
+        ['typescript:clarity', 'typescript:icons', 'typescript:app', 'typescript:tests', 'typescript:tests:icons'],
         callback
     );
 });
@@ -130,6 +163,7 @@ gulp.task('typescript', function (callback) {
 gulp.task('typescript:watch', [
     'typescript:clarity:watch',
     'typescript:icons:watch',
+    'typescript:tests:icons:watch',
     'typescript:app:watch',
     'typescript:tests:watch'
 ], function () {});

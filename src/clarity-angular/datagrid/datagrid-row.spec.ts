@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-import {TestBed} from "@angular/core/testing";
+import {TestBed, fakeAsync, tick} from "@angular/core/testing";
 import {TestContext} from "./helpers.spec";
 import {DatagridRow} from "./datagrid-row";
 import {Selection} from "./providers/selection";
@@ -66,12 +66,34 @@ export default function(): void {
             context.detectChanges();
             expect(context.clarityElement.classList.contains("datagrid-selected")).toBeTruthy();
         });
+
+        it("offers two-way binding on the selected state of the row", fakeAsync(function () {
+            selectionProvider.selectable = true;
+            context.testComponent.item = {id: 1};
+            flushAndAssertSelected(false);
+            // Input
+            context.testComponent.selected = true;
+            flushAndAssertSelected(true);
+            // Output
+            context.clarityElement.querySelector("input[type='checkbox']").click();
+            flushAndAssertSelected(false);
+        }));
+
+        function flushAndAssertSelected(selected: boolean) {
+            context.detectChanges();
+            // ngModel is asynchronous, we need an extra change detection
+            tick();
+            context.detectChanges();
+            expect(context.testComponent.selected).toBe(selected);
+            expect(context.clarityDirective.selected).toBe(selected);
+        }
     });
 }
 
 @Component({
-    template: `<clr-dg-row [clrDgItem]="item">Hello world</clr-dg-row>`
+    template: `<clr-dg-row [clrDgItem]="item" [(clrDgSelected)]="selected">Hello world</clr-dg-row>`
 })
 class FullTest {
     item: any;
+    selected = false;
 }

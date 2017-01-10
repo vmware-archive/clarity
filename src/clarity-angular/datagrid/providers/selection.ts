@@ -12,7 +12,7 @@ import {Items} from "./items";
 export class Selection {
     constructor(private _items: Items) {
         this._itemsSub = _items.change.subscribe(() => {
-            if (!this._selectable) {
+            if (!this._selectable || this.debounce) {
                 return;
             }
             /* TODO */
@@ -20,6 +20,11 @@ export class Selection {
             this.emitChange();
         });
     }
+
+    /**
+     * Ignore items changes in the same change detection cycle.
+     */
+    private debounce = false;
 
     /**
      * Subscriptions to the other providers changes.
@@ -58,6 +63,9 @@ export class Selection {
     public set current(value: any[]) {
         this._current = value;
         this.emitChange();
+        // Ignore items changes in the same change detection cycle.
+        this.debounce = true;
+        setTimeout(() => this.debounce = false);
     }
 
     /**

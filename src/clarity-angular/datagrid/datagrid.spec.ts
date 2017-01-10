@@ -41,6 +41,14 @@ export default function(): void {
                 expect(context.testComponent.selected).toEqual([2, 1]);
             });
 
+            it("allows to set pre-selected items when initializing the full list of items", function() {
+                let selection: Selection = context.getClarityProvider(Selection);
+                context.testComponent.items = [4, 5, 6];
+                context.testComponent.selected = [5];
+                context.detectChanges();
+                expect(selection.current).toEqual([5]);
+            });
+
             describe("clrDgRefresh output", function() {
                 it("emits once when the datagrid is ready", function() {
                     expect(context.testComponent.nbRefreshed).toBe(1);

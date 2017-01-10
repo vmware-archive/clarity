@@ -60,6 +60,12 @@ each subtask `tslint:*` will run and halt the process if tslint fails. For each 
 there's a corresponding `tslint:*:no-error` task that is run when a watch task detects a change in
 the ts file. These `no-error` tasks output the tslint errors on console but doesn't halt the process.
 
+##### `gulp sample`
+This gulp task assumes that npm packages have been produced under the `dist/npm` folder to be published, 
+and that they are locally installed. We recommend that you run `npm run sample-app` instead, which will
+locally install the packages that exist under the `dist/npm` folder as a pre-step. 
+This task starts up a simple web application to test consuming of our npm packages in an AoT compiled application.
+
 Under the hood
 --------------
 All the build-related scripts and the various configuration files needed can be found in the 
@@ -84,6 +90,8 @@ The build process itself uses 3 folders:
     this version is not what gets ultimately packaged into the npm package. We package the compiled version
     produced by the `aot` gulp task so that Clarity components are AoT ready.
   * `clarity-icons/`: This will contain the compiled js files and d.ts files from clarity icons. 
+  * `sample-app/`: This will contain a simple application with no router to test consuming of our 
+    npm packages in an AoT compiled application. 
   * `npm/`: When publishing to the NPM registry, this will contain the various packages we 
     currently publish, pre-compiled and trimmed of all development tools. At the moment, we produce
     three packages:

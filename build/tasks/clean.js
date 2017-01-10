@@ -26,3 +26,12 @@ gulp.task("clean:tmp", function () {
 		"tmp"
 	]);
 });
+
+/**
+ * Cleans out the sample-app
+ */
+gulp.task("clean:sample-app", function () {
+    return del([
+        "src/sample-app/aot-compiled"
+    ]);
+});

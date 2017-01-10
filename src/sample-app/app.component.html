@@ -1,0 +1,68 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<clr-main-container>
+    <clr-header>
+        <div class="branding">
+            <a href="#" class="nav-link">
+                <clr-icon shape="vm-bug"></clr-icon>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="header-nav" [clr-nav-level]="1">
+            <a class="active nav-link" href="javascript://"><span class="nav-text">Components</span></a>
+            <a class="nav-link" href="javascript://"><span class="nav-text">Patterns</span></a>
+        </div>
+        <form class="search">
+            <label for="search_input">
+                <input id="search_input" type="text" placeholder="Search for Components...">
+            </label>
+        </form>
+        <div class="header-actions">
+            <clr-dropdown [clrMenuPosition]="'bottom-right'">
+                <button class="nav-icon" clrDropdownToggle>
+                    <clr-icon shape="cog"></clr-icon>
+                    <clr-icon shape="caret down"></clr-icon>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="javascript://" clrDropdownItem>About</a>
+                    <a href="javascript://" clrDropdownItem>Preferences</a>
+                    <a href="javascript://" clrDropdownItem>Log out</a>
+                </div>
+            </clr-dropdown>
+        </div>
+    </clr-header>
+    <div class="content-container">
+        <main class="content-area">
+            <clr-tabs>
+                <clr-tab-link [clrTabLinkId]="'link1'" [clrTabLinkActive]="true">Dashboard</clr-tab-link>
+                <clr-tab-link>Management</clr-tab-link>
+                <clr-tab-link>Cloud</clr-tab-link>
+
+                <clr-tab-content [clrTabContentId]="'content1'" [clrTabContentActive]="true">
+                    <clr-alert [clrAlertType]="'alert-success'" (clrAlertClosedChange)="onClose()">
+                        <div class="alert-item">
+                          <span class="alert-text">
+                              This alert indicates a success!
+                          </span>
+                        </div>
+                    </clr-alert>
+                    <p>Content for Dashboard tab. Here is a <a href="javascript://">link</a> that can be accessed via clicking
+                        or through keyboard via tabbing.</p>
+                    <clr-checkbox type="checkbox" id="checkbox_9" [(clrIndeterminate)]="indeterminateState">
+                        Indeterminate Checkbox.
+                    </clr-checkbox>
+                </clr-tab-content>
+                <clr-tab-content>
+                    <p>Content for Management tab.</p>
+                </clr-tab-content>
+                <clr-tab-content>
+                    <p>Content for Cloud tab.</p>
+                </clr-tab-content>
+            </clr-tabs>
+
+        </main>
+    </div>
+</clr-main-container>

@@ -27,3 +27,20 @@ gulp.task("live", function() {
 		files: ["dist/**/*"]
 	});
 });
+
+gulp.task("live:sample-app", function() {
+    browserSync.init({
+        server: {
+            baseDir: "./dist/sample-app/",
+            routes: {
+                "/node_modules": "./node_modules"
+            },
+            // Necessary middleware for a single-page application with client-side routing
+            middleware: [
+                historyApiFallback({ index: "./index.html" })
+            ]
+        },
+        files: ["dist/sample-app/index.html","dist/sample-app/dist/build.js"]
+    });
+});
+

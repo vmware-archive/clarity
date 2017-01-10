@@ -33,6 +33,11 @@ gulp.task("html:assets", function () {
 		.pipe(gulp.dest("dist"));
 });
 
+gulp.task("html:sample-app", function(){
+    return gulp.src(["src/sample-app/index.html"], {base: "src"})
+        .pipe(gulp.dest("dist"));
+});
+
 gulp.task("html", ["html:index", "html:app", "html:assets"], function(){});
 
 /**

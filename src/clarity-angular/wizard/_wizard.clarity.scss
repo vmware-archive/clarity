@@ -7,16 +7,18 @@
 @import "../utils/helpers.clarity";
 @import "../color/color.clarity";
 @import "../utils/layers.clarity";
+@import "../typography/typography.clarity";
 
 // Backgrounds
 $clr-wizard-main-bgcolor: clr-getColor(1);
 $clr-wizard-sidenav-bgcolor: clr-getColor(2);
 $clr-wizard-default-space: $clr_baselineRem_1;
+$clr-wizard-main-textColor: clr-getTextColor($clr-wizard-main-bgcolor);
 $clr-wizard-sidenav-text: clr-getTextColor($clr-wizard-sidenav-bgcolor, text);
+$clr-wizard-title-text: clr-getTextColor($clr-wizard-sidenav-bgcolor, darkest);
 $clr-wizard-shadow-size: 4px;
 
 .clr-wizard {
-
     &.main-container { // this is a hack that needs to be removed after we remove wizard's style dependency on layout/nav
         display: inline;
         height: 0;
@@ -93,11 +95,30 @@ $clr-wizard-shadow-size: 4px;
         form {
             padding-top: 0;
         }
+
+        .content-heading {
+            margin: 0;
+            font-size: rem(16/$clr-rem-denominator);
+            margin-top: $clr_baselineRem_1;
+            line-height: $clr_baselineRem_1;
+            font-weight: 400;
+            color: $clr-wizard-main-textColor;
+        }
+
+        & > *:first-child {
+            margin-top: 0;
+        }
     }
 
-    .text-light, .wizard-title {
+    .text-light {
+        font-size: rem(18/$clr-rem-denominator);
+        color: $clr-wizard-title-text;
+        line-height: $clr-wizard-default-space;
+    }
+
+    .wizard-title {
         font-size: rem(22/$clr-rem-denominator);
-        color: $clr-wizard-sidenav-text;
+        color: $clr-wizard-title-text;
         line-height: $clr-wizard-default-space;
     }
 
@@ -119,6 +140,8 @@ $clr-wizard-shadow-size: 4px;
         display: block;
         padding: $clr-wizard-default-space 0 $clr-wizard-default-space $clr-wizard-default-space;
         background-color: $clr-wizard-sidenav-bgcolor;
+        // custom color in the invision comp...
+        border-color: #e4e4e4;
         width: 34%;
         max-width: 34%;
         height: auto;
@@ -168,9 +191,10 @@ $clr-wizard-shadow-size: 4px;
                 height: $clr-baselineRem_1_5;
             }
 
-            a {
+            a, .nav-link {
                 font-weight: 500;
                 box-shadow: none;
+                color: $clr-black;
             }
         }
 
@@ -209,11 +233,13 @@ $clr-wizard-shadow-size: 4px;
                 left: $clr_baselineRem_0_5;
             }
         }
+
         button {
             position: relative;
             width: 100%;
             margin: 0;
             text-align: left;
+
             &:before {
                 content: counter(a); /* Use the counter as content */
                 counter-increment: a; /* Increment the counter by 1 */
@@ -229,7 +255,6 @@ $clr-wizard-shadow-size: 4px;
         $navlink-padding-right: 3px;
         $navlink-padding-left: $clr-baselineRem_1_5;
         $navlink-padding-top-bottom: ($clr-subnav-height - ($clr-toc-fontsize + 2)) / 2;
-
         display: inline-block;
         color: $clr-wizard-sidenav-text;
         line-height: $clr-toc-fontsize + 2;
@@ -253,6 +278,7 @@ $clr-wizard-shadow-size: 4px;
         .content-container {
             max-height: baselineRem(21);
         }
+
         .nav-panel {
             min-width: baselineRem(9);
             max-width: baselineRem(10);
@@ -263,6 +289,7 @@ $clr-wizard-shadow-size: 4px;
         .content-container {
             max-height: baselineRem(30);
         }
+
         .nav-panel {
             min-width: baselineRem(10);
             max-width: baselineRem(12);
@@ -273,10 +300,10 @@ $clr-wizard-shadow-size: 4px;
         .content-container {
             max-height: 90vh;
         }
+
         .nav-panel {
             min-width: baselineRem(10);
             max-width: baselineRem(13);
         }
     }
-
 }

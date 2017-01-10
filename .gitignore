@@ -13,3 +13,4 @@ npm-debug.log
 _site/
 js/
 .vscode
+.stylelintrc

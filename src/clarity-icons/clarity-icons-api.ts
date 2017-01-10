@@ -6,9 +6,8 @@
 
 import { IconTemplate } from "./interfaces/icon-template";
 import { IconAlias } from "./interfaces/icon-alias";
-import { SVG_ICON_TEMPLATES } from "./svg-icon-templates";
 
-let ALL_ICON_TEMPLATES: IconTemplate = Object.assign({}, SVG_ICON_TEMPLATES);
+let IconSources: IconTemplate = {};
 
 export class ClarityIconsApi {
 
@@ -66,7 +65,7 @@ export class ClarityIconsApi {
 
         if (this.validateName(shapeName) && this.validateTemplate(trimmedShapeTemplate)) {
 
-            ALL_ICON_TEMPLATES[ shapeName ] = trimmedShapeTemplate;
+            IconSources[ shapeName ] = trimmedShapeTemplate;
 
         }
 
@@ -107,16 +106,20 @@ export class ClarityIconsApi {
         //if shapeName is not given, return all icon templates.
 
         if (!shapeName) {
-            return ALL_ICON_TEMPLATES;
+            return IconSources;
+        }
+
+        if (typeof shapeName !== "string") {
+            throw new TypeError("Only string argument is allowed in this method.");
         }
 
         //if shapeName doesn't exist in the icons templates, throw an error.
 
-        if (!ALL_ICON_TEMPLATES[ shapeName ]) {
+        if (!IconSources[ shapeName ]) {
             throw new Error(`'${shapeName}' is not found in the Clarity Icons set.`);
         }
 
-        return ALL_ICON_TEMPLATES[ shapeName ];
+        return IconSources[ shapeName ];
 
     }
 
@@ -126,15 +129,15 @@ export class ClarityIconsApi {
 
             if (aliases.hasOwnProperty(shapeName)) {
 
-                if (ALL_ICON_TEMPLATES.hasOwnProperty(shapeName)) {
-                    //set an alias to the icon if it exists in ALL_ICON_TEMPLATES.
+                if (IconSources.hasOwnProperty(shapeName)) {
+                    //set an alias to the icon if it exists in IconSources.
 
-                    this.setIconAliases(ALL_ICON_TEMPLATES, shapeName, aliases[ shapeName ]);
+                    this.setIconAliases(IconSources, shapeName, aliases[ shapeName ]);
 
-                } else if (ALL_ICON_TEMPLATES.hasOwnProperty(shapeName)) {
-                    //set an alias to the icon if it exists in ALL_ICON_TEMPLATES.
+                } else if (IconSources.hasOwnProperty(shapeName)) {
+                    //set an alias to the icon if it exists in IconSources.
 
-                    this.setIconAliases(ALL_ICON_TEMPLATES, shapeName, aliases[ shapeName ]);
+                    this.setIconAliases(IconSources, shapeName, aliases[ shapeName ]);
 
                 } else {
 

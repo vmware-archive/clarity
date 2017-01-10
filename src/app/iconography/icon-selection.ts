@@ -4,22 +4,38 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from "@angular/core";
-import { SVG_ICON_TEMPLATES } from "../../clarity-icons/svg-icon-templates";
+import { CoreShapes } from "../../clarity-icons/shapes/core-shapes";
+import { BasicShapes } from "../../clarity-icons/shapes/basic-shapes";
+import { SocialShapes } from "../../clarity-icons/shapes/social-shapes";
+import { TechnologyShapes } from "../../clarity-icons/shapes/technology-shapes";
 
-let iconShapes = Object.keys(SVG_ICON_TEMPLATES);
-let nonAllowedShapes = ["vm-bug"];
-iconShapes = iconShapes.filter(shape => nonAllowedShapes.indexOf(shape) === -1);
+
+let coreShapes = Object.keys(CoreShapes);
+let basicShapes = Object.keys(BasicShapes);
+let socialShapes = Object.keys(SocialShapes);
+let technologyShapes = Object.keys(TechnologyShapes);
 
 
 @Component({
     moduleId: module.id,
     selector: "clr-icon-selection-demo",
     // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./iconography.demo.css"],
+    styleUrls: [ "./iconography.demo.css" ],
     templateUrl: "./icon-selection.demo.html"
 })
 export class IconSelectionDemo {
 
-    shapes: string[] = iconShapes;
+    hideShapesFromCore: string[] = [ "vm-bug" ];
+
+    coreShapes: string[] = coreShapes.filter((shape) => {
+        return this.hideShapesFromCore.indexOf(shape) === -1;
+    });
+
+    basicShapes: string[] = basicShapes;
+
+    socialShapes: string[] = socialShapes;
+
+    technologyShapes: string[] = technologyShapes;
+
 
 }

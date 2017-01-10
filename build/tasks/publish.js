@@ -21,12 +21,25 @@ var npmFolder = "dist/npm/";
 
 gulp.task("npm:icons:bundles", function () {
     return gulp.src([
-        "dist/bundles/clarity-icons.min.js",
         "dist/bundles/clarity-icons.min.css",
+        "dist/bundles/clarity-icons.min.js",
+        "dist/bundles/clarity-icons-lite.umd.js",
         "dist/clarity-icons/**/*.ts",
         "dist/clarity-icons/**/*.js",
+        "!dist/clarity-icons/clarity-icons-sfx.js",
+        "!dist/clarity-icons/clarity-icons-sfx.d.ts",
         "!dist/clarity-icons/interfaces/**/*.js"
     ]).pipe(gulp.dest(npmFolder + "/clarity-icons"));
+});
+
+/**
+ * Preparing the clarity-icons shapes package
+ */
+
+gulp.task("npm:icons:shapes", function () {
+    return gulp.src([
+        "dist/bundles/*-shapes.umd.js",
+    ]).pipe(gulp.dest(npmFolder + "/clarity-icons/shapes"));
 });
 
 /**
@@ -57,7 +70,7 @@ gulp.task("npm:icons:readme", function () {
         .pipe(gulp.dest(npmFolder + "/clarity-icons"));
 });
 
-gulp.task("npm:icons", ["npm:icons:bundles", "npm:icons:sources", "npm:icons:package", "npm:icons:readme"], function () {});
+gulp.task("npm:icons", ["npm:icons:bundles", "npm:icons:shapes", "npm:icons:sources", "npm:icons:package", "npm:icons:readme"], function () {});
 
 /**
  * Preparing the clarity-ui package

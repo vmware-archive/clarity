@@ -22,9 +22,12 @@ var npmFolder = "dist/npm/";
 gulp.task("npm:icons:bundles", function () {
     return gulp.src([
         "dist/bundles/clarity-icons.min.js",
+        "dist/bundles/clarity-icons-lite.min.js",
         "dist/bundles/clarity-icons.min.css",
         "dist/clarity-icons/**/*.ts",
         "dist/clarity-icons/**/*.js",
+        "!dist/clarity-icons/clarity-icons-sfx.js",
+        "!dist/clarity-icons/clarity-icons-sfx.d.ts",
         "!dist/clarity-icons/interfaces/**/*.js"
     ]).pipe(gulp.dest(npmFolder + "/clarity-icons"));
 });

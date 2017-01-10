@@ -94,4 +94,3 @@ ClarityIconElement.prototype.attributeChangedCallback =
 
     };
 
-

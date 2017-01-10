@@ -8,19 +8,23 @@ h6 {
 }
 
 .clr-icon-selection {
-    padding: $clr_baselineRem_1;
-    .clr-icon-item {
-        padding: $clr_baselineRem_0_5 $clr_baselineRem_0_25;
-        white-space: nowrap;
-        clr-icon {
-            width: 24px;
-            height: 24px;
-            margin: 0 $clr_baselineRem_0_5;
-        }
-        span.icon-shape-name {
-            white-space: nowrap
+
+    .clr-icon-collection {
+        padding: $clr_baselineRem_1;
+        .clr-icon-item {
+            padding: $clr_baselineRem_0_5 $clr_baselineRem_0_25;
+            white-space: nowrap;
+            clr-icon {
+                width: 24px;
+                height: 24px;
+                margin: 0 $clr_baselineRem_0_5;
+            }
+            span.icon-shape-name {
+                white-space: nowrap
+            }
         }
     }
+
 }
 
 .clr-example {

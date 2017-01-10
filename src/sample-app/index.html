@@ -1,0 +1,31 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/">
+    <title>Clarity Sample App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/clarity-icons/clarity-icons.min.css">
+    <link rel="stylesheet" href="node_modules/clarity-ui/clarity-ui.min.css">
+
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/web-animations-js/web-animations.min.js"></script>
+    <script src="node_modules/mutationobserver-shim/dist/mutationobserver.min.js"></script>
+    <script src="node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
+    <script src="node_modules/clarity-icons/clarity-icons.min.js"></script>
+    <script>window.module = 'aot';</script>
+</head>
+
+<body>
+<my-app>Loading...</my-app>
+<script src="dist/build.js"></script>
+</body>
+</html>

@@ -5,6 +5,7 @@ typings/
 .idea/
 aot-compiled/
 gemini-report/
+src/sample-app/aot-compiled/
 .DS_Store
 .npmrc.clarity
 npm-debug.log

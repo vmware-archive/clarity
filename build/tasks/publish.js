@@ -24,6 +24,7 @@ gulp.task("npm:icons:bundles", function () {
         "dist/bundles/clarity-icons.min.css",
         "dist/bundles/clarity-icons.min.js",
         "dist/bundles/clarity-icons-lite.umd.js",
+        "!dist/clarity-icons/**/*.spec.ts",
         "dist/clarity-icons/**/*.ts",
         "dist/clarity-icons/**/*.js",
         "!dist/clarity-icons/clarity-icons-sfx.js",

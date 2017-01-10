@@ -4,7 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export const CoreShapes: any = {
+/* tslint:disable:max-line-length */
+const coreShapes: any = {
 
 
     "home": `
@@ -300,3 +301,5 @@ export const CoreShapes: any = {
         `
 
 };
+
+export { coreShapes as CoreShapes };

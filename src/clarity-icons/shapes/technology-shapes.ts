@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-
-export const TechnologyShapes: any = {
+/* tslint:disable:max-line-length */
+const technologyShapes: any = {
 
 
     "line-chart": `
@@ -138,5 +138,7 @@ export const TechnologyShapes: any = {
 
 if (window.hasOwnProperty("ClarityIcons")) {
 
-    window[ "ClarityIcons" ].add(TechnologyShapes);
+    window[ "ClarityIcons" ].add(technologyShapes);
 }
+
+export { technologyShapes as TechnologyShapes };

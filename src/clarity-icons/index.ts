@@ -8,21 +8,20 @@ import { ClarityIconElement } from "./clarity-icons-element";
 import { CoreShapes } from "./shapes/core-shapes";
 
 
-export const ClarityIcons: ClarityIconsApi = ClarityIconsApi.instance;
+const clarityIcons: ClarityIconsApi = ClarityIconsApi.instance;
 
-ClarityIcons.add(CoreShapes);
-
+clarityIcons.add(CoreShapes);
 
 //check if there is a global object called "ClarityIcons"
 if (!window.hasOwnProperty("ClarityIcons")) {
 
     //Setting a global object called "ClarityIcons" to expose the ClarityIconsApi.
-    window.ClarityIcons = ClarityIcons;
+    window.ClarityIcons = clarityIcons;
 
     //Defining clr-icon custom element
     customElements.define("clr-icon", ClarityIconElement);
 
 }
 
-
+export { clarityIcons as ClarityIcons };
 

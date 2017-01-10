@@ -4,7 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export const BasicShapes: any = {
+/* tslint:disable:max-line-length */
+export const basicShapes: any = {
 
     "pencil": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
@@ -400,5 +401,7 @@ export const BasicShapes: any = {
 
 if (window.hasOwnProperty("ClarityIcons")) {
 
-    window[ "ClarityIcons" ].add(BasicShapes);
+    window[ "ClarityIcons" ].add(basicShapes);
 }
+
+export { basicShapes as BasicShapes };

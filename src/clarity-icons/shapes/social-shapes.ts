@@ -4,7 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export const SocialShapes: any = {
+/* tslint:disable:max-line-length */
+const socialShapes: any = {
 
     "map-marker": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-badge has-solid"
@@ -264,5 +265,7 @@ export const SocialShapes: any = {
 
 if (window.hasOwnProperty("ClarityIcons")) {
 
-    window[ "ClarityIcons" ].add(SocialShapes);
+    window[ "ClarityIcons" ].add(socialShapes);
 }
+
+export { socialShapes as SocialShapes };

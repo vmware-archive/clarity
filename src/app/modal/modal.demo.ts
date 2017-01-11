@@ -14,6 +14,7 @@ import {Component} from "@angular/core";
 
         <ul>
             <li><a [routerLink]="['./static']">Modal Styles</a></li>
+            <li><a [routerLink]="['./old-close-button']">Old Close Buttons</a></li>
             <li><a [routerLink]="['./sizes']">Modal Sizes</a></li>
             <li><a [routerLink]="['./backdrop']">Modal Backdrop</a></li>
             <li><a [routerLink]="['./animation']">Animation</a></li>

@@ -7,15 +7,27 @@
 @import "node_modules/bootstrap/scss/close";
 
 @include exports('close.clarity') {
+    $close-color--normal: $gray-dark;
+    $close-color--hover: $clr-black;
+
     .close {
+        transition: color linear 0.2s;
         font-weight: 200;
         text-shadow: none;
-        color: $gray-dark;
-        opacity: 0.7;
+        color: $close-color--normal;
+        opacity: 1;
 
-        &:hover {
-            color: $clr-black;
+        clr-icon {
+            fill: $close-color--normal
+        }
+
+        &:focus, &:hover, &:active {
             opacity: 1;
+            color: $close-color--hover;
+
+            clr-icon {
+                fill: $close-color--hover;
+            }
         }
 
         &:focus {

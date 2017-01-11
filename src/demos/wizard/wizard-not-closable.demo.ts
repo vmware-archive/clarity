@@ -23,7 +23,7 @@ export class WizardNotClosable {
     <clr-wizard-step>Step 2</clr-wizard-step>
     <clr-wizard-step>Step 3</clr-wizard-step>
 
-    <clr-wizard-page>Note that there is no closing &times; icon in the top right.</clr-wizard-page>
+    <clr-wizard-page>Note that there is no closing <clr-icon shape="close"></clr-icon> icon in the top right.</clr-wizard-page>
     <clr-wizard-page>Content for step 2</clr-wizard-page>
     <clr-wizard-page>Content for step 3</clr-wizard-page>
 </clr-wizard>

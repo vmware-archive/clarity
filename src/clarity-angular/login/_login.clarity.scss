@@ -67,6 +67,16 @@ $clr-login-icon-size: $clr-icon-dimension-sm !default;
                     margin: $clr_baselineRem_0_25 0 $clr_baselineRem_0_25 0;
                 }
 
+                .tooltip-validation {
+                    margin-top: $clr_baselineRem_0_25;
+                }
+
+                .tooltip-validation .username,
+                .tooltip-validation .password {
+                    width: 100%;
+                    margin-top: 0; //Since the top margin is now handled by the tooltip itself
+                }
+
                 .error {
                     display: none;
                     margin: $clr_baselineRem_0_25 0 0 0;

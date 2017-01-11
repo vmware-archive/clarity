@@ -80,6 +80,7 @@ $clr-modal-xl-width: baselineRem(48) !default;
             // it doesn't mess up the modal's proportions.
             max-height: 55vh;
             overflow-y: auto;
+            overflow-x: hidden;
 
             @extend %clr-container;
         }

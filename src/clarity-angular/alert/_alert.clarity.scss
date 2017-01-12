@@ -8,7 +8,6 @@
 @import "../images/icons.clarity";
 @import "../buttons/buttons.clarity";
 @import "../typography/typography.clarity";
-
 $clr-app-level-alert-color: $clr-white !default;
 $clr-icon-margin-right: $clr_baselineRem_0_25 !default;
 
@@ -30,8 +29,7 @@ $clr-alert-sm-top-padding: 0 !default;
 $clr-alert-sm-bottom-padding: $clr_baselineRem_0_125 !default;
 $clr-alert-sm-item-top-margin: $clr-alert-sm-bottom-padding - $clr-alert-sm-top-padding !default;
 $clr-alert-sm-item-min-height: $clr-icon-dimension-sm !default;
-
-$clr-alert-text-line-height: rem(16/$clr-rem-denominator);
+$clr-alert-text-line-height: rem(16 / $clr-rem-denominator);
 
 $clr-alert-colors: (
         info: (
@@ -76,15 +74,17 @@ $clr-alert-colors: (
         )
 ) !default;
 
-@mixin generateAlertType($alertType:"info") {
+@mixin generateAlertType($alertType: "info") {
     $propMap: map-get($clr-alert-colors, $alertType);
     background: map-get($propMap, background);
     color: map-get($propMap, font);
-
     $border-prop: map-get($propMap, border);
+
     @if $border-prop != "none" {
         border: 1px solid $border-prop;
-    } @else {
+    }
+
+    @else {
         border: none;
     }
 }
@@ -113,6 +113,7 @@ $clr-alert-colors: (
         padding: $clr-alert-top-padding $clr-alert-horizontal-padding $clr-alert-bottom-padding $clr-alert-horizontal-padding;
         border-radius: $clr-default-borderradius;
         margin-top: $clr-alert-top-margin;
+
         @include generateAlertType(info);
 
         &.alert-info {
@@ -154,6 +155,7 @@ $clr-alert-colors: (
                     top: 0;
                     left: 0;
                     content: '';
+
                     @extend %icon-styles;
                 }
             }
@@ -221,9 +223,19 @@ $clr-alert-colors: (
 
         .close {
             position: absolute;
-            right: $clr_baselineRem_0_5;
+            right: $clr_baselineRem_0_25 - 1;
             top: $clr_baselineRem_0_25;
-            z-index: 2; //If I dont add a z-index, .close goes under the alert-item
+            z-index: 2;
+            //If I dont add a z-index, .close goes under the alert-item
+            width: $clr_baselineRem_1;
+            height: $clr_baselineRem_1 - 2;
+
+            clr-icon {
+                $alert-close-icon-dims: $clr_baselineRem_0_5 + ($clr_baselineRem_0_5 / 3);
+                margin-top: -3px;
+                height: $alert-close-icon-dims;
+                width: $alert-close-icon-dims;
+            }
         }
 
         .close ~ .alert-item > .alert-actions {
@@ -242,6 +254,7 @@ $clr-alert-colors: (
             overflow-y: auto;
             padding-top: 0;
             padding-bottom: $clr_baselineRem_0_25;
+
             @include generateAlertType(app-info);
 
             &.alert-info {
@@ -269,7 +282,7 @@ $clr-alert-colors: (
                     position: relative;
                     flex: 0 1 auto;
 
-                    &::before{
+                    &::before {
                         top: -1px;
                     }
                 }
@@ -301,10 +314,16 @@ $clr-alert-colors: (
 
             .close {
                 color: $clr-app-level-alert-color;
-                top: 8px;
-                opacity: 0.75;
+                top: 7px;
+                opacity: 0.8;
 
-                &:hover {
+                clr-icon {
+                    fill: $clr-app-level-alert-color;
+                }
+
+                &:focus,
+                &:hover,
+                &:active {
                     opacity: 1;
                 }
             }
@@ -315,7 +334,6 @@ $clr-alert-colors: (
         &.alert-sm {
             @include clr-getTypePropertiesForDomElement(alert-small_text, (font-size, letter-spacing));
             line-height: $clr-alert-text-line-height;
-
             min-height: $clr-alert-item-min-height;
             //Rigth padding same as regular alert to factor in the close button
             padding: $clr-alert-sm-top-padding $clr-alert-horizontal-padding $clr-alert-sm-bottom-padding $clr-alert-sm-horizontal-padding;
@@ -323,9 +341,8 @@ $clr-alert-colors: (
             .alert-item {
                 margin-top: $clr-alert-sm-item-top-margin;
 
-                .alert-text{
-
-                    &::before{
+                .alert-text {
+                    &::before {
                         top: 0;
                     }
                 }
@@ -333,7 +350,8 @@ $clr-alert-colors: (
 
             .close {
                 font-size: rem(18/$clr-rem-denominator);
-                top: $clr_baselineRem_0_125;
+                top: 0;
+                right: -1px;
             }
         }
     }

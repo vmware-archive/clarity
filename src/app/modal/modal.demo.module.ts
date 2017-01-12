@@ -10,6 +10,7 @@ import {ROUTING} from "./modal.demo.routing";
 
 import {ModalDemo} from "./modal.demo";
 import {ModalStaticDemo} from "./modal-static";
+import {ModalStaticOldDemo} from "./modal-static-old";
 import {ModalAngularNotClosableDemo} from "./modal-angular-not-closable";
 import {ModalAngularShowDemo} from "./modal-angular-show";
 import {ModalAngularSizeDemo} from "./modal-angular-size";
@@ -28,6 +29,7 @@ import {ModalSizesDemo} from "./modal-sizes";
     declarations: [
         ModalDemo,
         ModalStaticDemo,
+        ModalStaticOldDemo,
         ModalAngularNotClosableDemo,
         ModalAngularShowDemo,
         ModalAngularSizeDemo,
@@ -39,6 +41,7 @@ import {ModalSizesDemo} from "./modal-sizes";
     exports: [
         ModalDemo,
         ModalStaticDemo,
+        ModalStaticOldDemo,
         ModalAngularNotClosableDemo,
         ModalAngularShowDemo,
         ModalAngularSizeDemo,

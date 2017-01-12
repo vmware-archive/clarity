@@ -58,6 +58,11 @@ $clr-wizard-shadow-size: 4px;
                 margin: $clr_baselineRem_0_5 $clr_baselineRem_0_5;
                 height: $clr_baselineRem_1_5;
                 width: $clr_baselineRem_1_5;
+
+                clr-icon {
+                    height: $clr_baselineRem_1;
+                    width: $clr_baselineRem_1;
+                }
             }
 
             section {
@@ -191,7 +196,8 @@ $clr-wizard-shadow-size: 4px;
                 height: $clr-baselineRem_1_5;
             }
 
-            a, .nav-link {
+            a,
+            .nav-link {
                 font-weight: 500;
                 box-shadow: none;
                 color: $clr-black;

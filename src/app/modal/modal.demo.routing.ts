@@ -8,6 +8,7 @@ import {Routes, RouterModule} from "@angular/router";
 
 import {ModalDemo} from "./modal.demo";
 import {ModalStaticDemo} from "./modal-static";
+import {ModalStaticOldDemo} from "./modal-static-old";
 import {ModalAngularNotClosableDemo} from "./modal-angular-not-closable";
 import {ModalAngularShowDemo} from "./modal-angular-show";
 import {ModalAngularSizeDemo} from "./modal-angular-size";
@@ -23,6 +24,7 @@ const ROUTES: Routes = [
         children: [
             { path: "", redirectTo: "static", pathMatch: "full" },
             { path: "static", component: ModalStaticDemo },
+            { path: "old-close-button", component: ModalStaticOldDemo },
             { path: "dynamic-show", component: ModalAngularShowDemo },
             { path: "dynamic-sizing", component: ModalAngularSizeDemo },
             { path: "static-backdrop", component: ModalAngularStaticBackdropDemo },

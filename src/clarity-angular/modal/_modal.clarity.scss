@@ -72,6 +72,13 @@ $clr-modal-xl-width: baselineRem(48) !default;
             .close {
                 margin-top: 0;
                 font-size: rem(26/$clr-rem-denominator);
+                line-height: $clr_baselineRem_1;
+
+                clr-icon {
+                    // per measurement, this results in an icon that is 16x16...
+                    width: $clr_baselineRem_1;
+                    height: $clr_baselineRem_1;
+                }
             }
         }
 

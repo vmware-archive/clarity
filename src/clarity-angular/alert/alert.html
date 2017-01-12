@@ -11,7 +11,7 @@
     [class.alert-sm]="isSmall"
     [class.alert-app-level]="isAppLevel">
     <button type="button" class="close" aria-label="Close" *ngIf="closable" (click)="close()">
-        <span aria-hidden="true">&times;</span>
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
     </button>
     <ng-content select=".alert-item"></ng-content>
 </div>

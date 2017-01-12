@@ -27,7 +27,7 @@ import {Filters} from "./providers/filters";
             <!-- FIXME: this whole filter part needs a final design before we can try to have a cleaner DOM -->
             <div class="datagrid-filter-close-wrapper">
                 <button type="button" class="close" aria-label="Close" (click)="open = false">
-                    <span aria-hidden="true">&times;</span>
+                    <clr-icon aria-hidden="true" shape="close"></clr-icon>
                 </button>
             </div>
 

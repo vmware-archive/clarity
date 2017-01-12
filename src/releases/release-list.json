@@ -1,6 +1,11 @@
 {
-    "current": "0.8.1",
+    "current": "0.8.2",
     "all": {
+        "0.8.2": {
+            "date": "Jan 12, 2017",
+            "sketch": "0.7.3",
+            "commit": "b4b7093d09e55d706ea1ae4298b5a1dc2ed868c6"
+        },
         "0.8.1": {
             "date": "Jan 5, 2017",
             "sketch": "0.7.3",

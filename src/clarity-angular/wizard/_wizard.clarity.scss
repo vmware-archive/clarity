@@ -81,6 +81,13 @@ $clr-wizard-shadow-size: 4px;
         height: 100%;
         padding-bottom: $clr-wizard-default-space;
 
+        section > label.text-light {
+            // extremely specific here b/c we don't have this component classed well
+            padding-right: $clr_baselineRem_1 - 2;
+            display: block;
+            margin-top: 1px;
+        }
+
         &[aria-hidden="false"] {
             display: flex;
             flex-direction: column;
@@ -125,6 +132,7 @@ $clr-wizard-shadow-size: 4px;
         font-size: rem(22/$clr-rem-denominator);
         color: $clr-wizard-title-text;
         line-height: $clr-wizard-default-space;
+        padding-right: $clr_baselineRem_0_5;
     }
 
     .no-left-padding {

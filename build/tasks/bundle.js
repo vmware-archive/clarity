@@ -12,19 +12,38 @@ var zip = require('gulp-zip');
  * Bundles the compiled icon js files into self-executing clarity-icons.min.js,
  * which will be used for publishing clarity icons as an independent package
  */
-gulp.task("bundle:icons:sfx", ["typescript:icons"], function() {
+gulp.task("bundle:icons:sfx", ["typescript:icons"], function () {
 
-    var buildOpts = { minify: true, mangle: false, normalize: true };
+    var buildOpts = {minify: true, mangle: false, normalize: true};
 
     var builder = new Builder("dist/");
     builder.config({
         packages: {
-            'clarity-icons': { main: 'index.js', defaultExtension: 'js' }
+            'clarity-icons': {main: 'index.js', defaultExtension: 'js'}
         }
     });
 
-    return builder.buildStatic("clarity-icons/**/*.js", "dist/bundles/clarity-icons.min.js", buildOpts)
-        .catch(function(err) {
+    return builder.buildStatic("clarity-icons/clarity-icons-sfx.js", "dist/bundles/clarity-icons.min.js", buildOpts)
+        .catch(function (err) {
+            console.error(err);
+            process.exit(1);
+        });
+
+});
+
+gulp.task("bundle:icons-lite:sfx", ["typescript:icons"], function () {
+
+    var buildOpts = {minify: true, mangle: false, normalize: true};
+
+    var builder = new Builder("dist/");
+    builder.config({
+        packages: {
+            'clarity-icons': {main: 'index.js', defaultExtension: 'js'}
+        }
+    });
+
+    return builder.buildStatic("clarity-icons/index.js", "dist/bundles/clarity-icons-lite.min.js", buildOpts)
+        .catch(function (err) {
             console.error(err);
             process.exit(1);
         });
@@ -34,22 +53,22 @@ gulp.task("bundle:icons:sfx", ["typescript:icons"], function() {
 /**
  * Bundles the compiled js files into clarity.min.js
  */
-gulp.task("bundle:clarity:js", ["typescript:clarity"], function() {
-    var buildOpts = { minify: true, mangle: false, normalize: true };
+gulp.task("bundle:clarity:js", ["typescript:clarity"], function () {
+    var buildOpts = {minify: true, mangle: false, normalize: true};
 
     var builder = new Builder("dist/");
     builder.config({
         meta: {
-            "@angular/*"    : { build: false },
-            "rxjs"          : { build: false }
+            "@angular/*": {build: false},
+            "rxjs": {build: false}
         },
         packages: {
-            'clarity-angular': { main: 'index.js', defaultExtension: 'js' }
+            'clarity-angular': {main: 'index.js', defaultExtension: 'js'}
         }
     });
 
     return builder.bundle("clarity-angular/**/*.js", "dist/bundles/clarity-angular.min.js", buildOpts)
-        .catch(function(err) {
+        .catch(function (err) {
             console.error(err);
             process.exit(1);
         });
@@ -58,32 +77,32 @@ gulp.task("bundle:clarity:js", ["typescript:clarity"], function() {
 /**
  * Specific ng1-compatible bundle for Angular 1 applications. Do not publicize.
  */
-gulp.task("bundle:clarity:js:ng1", ["typescript:clarity"], function() {
-    var buildOpts = { minify: true, mangle: false, runtime: false };
+gulp.task("bundle:clarity:js:ng1", ["typescript:clarity"], function () {
+    var buildOpts = {minify: true, mangle: false, runtime: false};
 
     var packages = {
-        'tmp/clarity-angular':  { defaultExtension: 'js' },
-        'rxjs':                 { defaultExtension: 'js' }
+        'tmp/clarity-angular': {defaultExtension: 'js'},
+        'rxjs': {defaultExtension: 'js'}
     };
 
     var builder = new Builder();
     builder.config({
         // We bundle both Angular and RxJS with us.
         map: {
-            'rxjs':                                 'node_modules/rxjs',
-            '@angular/core':                        'node_modules/@angular/core/bundles/core.umd.js',
-            '@angular/common':                      'node_modules/@angular/common/bundles/common.umd.js',
-            '@angular/compiler':                    'node_modules/@angular/compiler/bundles/compiler.umd.js',
-            '@angular/platform-browser':            'node_modules/@angular/platform-browser/bundles/platform-browser.umd.js',
-            '@angular/platform-browser-dynamic':    'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
-            '@angular/router':                      'node_modules/@angular/router/bundles/router.umd.js',
-            '@angular/forms':                       'node_modules/@angular/forms/bundles/forms.umd.js'
+            'rxjs': 'node_modules/rxjs',
+            '@angular/core': 'node_modules/@angular/core/bundles/core.umd.js',
+            '@angular/common': 'node_modules/@angular/common/bundles/common.umd.js',
+            '@angular/compiler': 'node_modules/@angular/compiler/bundles/compiler.umd.js',
+            '@angular/platform-browser': 'node_modules/@angular/platform-browser/bundles/platform-browser.umd.js',
+            '@angular/platform-browser-dynamic': 'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+            '@angular/router': 'node_modules/@angular/router/bundles/router.umd.js',
+            '@angular/forms': 'node_modules/@angular/forms/bundles/forms.umd.js'
         },
         packages: packages
     });
 
     return builder.buildStatic("tmp/clarity-angular/**/*.js", "dist/bundles/angular1/clarity-angular1.min.js", buildOpts)
-        .catch(function(err) {
+        .catch(function (err) {
             console.error(err);
             process.exit(1);
         });
@@ -92,7 +111,7 @@ gulp.task("bundle:clarity:js:ng1", ["typescript:clarity"], function() {
 /**
  * Compresses our deliverables and definition files for third-party devs.
  */
-gulp.task("bundle:zip", ["bundle:clarity:js", "sass:static"], function() {
+gulp.task("bundle:zip", ["bundle:clarity:js", "sass:static"], function () {
     return gulp.src([
         "dist/bundles/clarity-ui.min.css",
         "dist/bundles/clarity-angular.min.js",
@@ -107,7 +126,8 @@ gulp.task("bundle:zip", ["bundle:clarity:js", "sass:static"], function() {
  * Also creates a zip with our css and js deliverables and our definition files
  * for third-party devs, then adds it to the bundles/ folder.
  */
-gulp.task("bundle", ["bundle:icons:sfx", "bundle:clarity:js", "bundle:zip"], function(){});
+gulp.task("bundle", ["bundle:icons:sfx", "bundle:icons-lite:sfx", "bundle:clarity:js", "bundle:zip"], function () {
+});
 
 /**
  * Watches for changes in the transpiled js files to rebundle them
@@ -125,6 +145,7 @@ gulp.task("bundle:watch", function () {
         "!src/**/*.clarity.scss"
     ];
 
-    gulp.watch(iconsSources, ["bundle:icons", "bundle:icons:sfx"]);
+    gulp.watch(iconsSources, ["bundle:icons:sfx", "bundle:icons-lite:sfx"]);
     gulp.watch(claritySources, ["bundle:clarity:js"]);
+
 });

@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -8,19 +8,347 @@ $clr-wizard-sidenav-bgcolor: clr-getColor(2);
 $clr-wizard-default-space: $clr_baselineRem_1;
 $clr-wizard-main-textColor: clr-getTextColor($clr-wizard-main-bgcolor);
 $clr-wizard-sidenav-text: clr-getTextColor($clr-wizard-sidenav-bgcolor, text);
+$clr-wizard-sidenav-text--active: clr-getTextColor($clr-wizard-sidenav-bgcolor, darkest);
 $clr-wizard-title-text: clr-getTextColor($clr-wizard-sidenav-bgcolor, darkest);
-$clr-wizard-shadow-size: 4px;
+$clr-wizard-stepnav-border-size: 4px;
+$clr-wizard-stepnav-border-color: clr-getColor(3);
+$clr-wizard-stepnav-border-color--active: $clr-green;
+$clr-wizard-footer-height: 84px;
+$clr-wizard-stepnav-active-bgcolor: #D9E4EA;
+$clr-wizard-header-action-color: clr-getTextColor($clr-wizard-main-bgcolor, hoverable);;
+$clr-wizard-header-action-color--hovered: clr-getTextColor($clr-wizard-sidenav-bgcolor, darkest);
+$clr-wizard-box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.2);
+
+// NOTE THAT THE MIN-WIDTH OF THE BUTTONS WILL PUSH OUT THE DIALOG IF 
+// SET UP IMPROPERLY. THIS IS A KNOWN ISSUE AND USERS SHOULD USE THEIR 
+// BEST JUDGMENT WITH BUTTONS IN THE WIZARD. NO MORE THAN THREE...
+// IT'S AN ISSUE WITH THE NUMBER OF BUTTONS, NOT THE LENGTH OF THE TEXT
+// INSIDE THE BUTTONS
 
 .clr-wizard {
-    &.main-container { // this is a hack that needs to be removed after we remove wizard's style dependency on layout/nav
-        display: inline;
-        height: 0;
+
+    .modal-dialog {
+        // removed for IE10... maybe remove altogether? or only remove for IE10?
+        // position: static;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: $clr-wizard-box-shadow;
+        height: 50%;
+        max-height: 100%;
+    }
+
+    .modal-content {
+        border-radius: 0 $clr-default-borderradius $clr-default-borderradius 0;
+        box-shadow: none;
+        padding: 0;
+        flex: 2 2 auto;
+        width: 66%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-direction: column;
     }
 
     .modal-header {
-        position: absolute;
-        right: $clr-wizard-default-space;
-        top: $clr-wizard-default-space;
+        padding: 0;
+        flex: 0 0 auto;
+        width: 100%;
+        // right padding nudged a bit to better align icons
+        padding: $clr-wizard-default-space ($clr-wizard-default-space - 5) 0 $clr-wizard-default-space;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .modal-title {
+        color: $clr-wizard-title-text;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .modal-body {
+        flex: 1 1 auto;
+        color: $clr-wizard-main-textColor;
+        width: 100%;
+    }
+
+    .modal-footer {
+        padding: 0;
+        display: block;
+        padding-top: $clr-wizard-default-space;
+        height: $clr-wizard-footer-height;
+        min-height: $clr-wizard-footer-height;
+        max-height: $clr-wizard-footer-height;
+        width: 100%;
+        flex: 0 0 $clr-wizard-footer-height;
+    }
+
+    .clr-wizard-btn {
+        margin: 0;
+        max-width: 100%;
+        display: block;
+    }
+
+    .modal-title-text {
+        display: inline-block;
+        flex: 0 1 auto;
+        width: 100%;
+    }
+
+    .modal-header-actions-wrapper {
+        flex: 1 0 auto;
+        padding-left: 12px;
+        padding-right: 4px;
+    }
+
+    .clr-wizard-header-action {
+        width: $clr-wizard-default-space;
+        height: $clr-wizard-default-space;
+        padding: 0;
+        margin: 0;
+        min-width: $clr-wizard-default-space;
+        line-height: $clr-wizard-default-space;
+        font-size: $clr-wizard-default-space + 2;
+        color: $clr-wizard-header-action-color;
+        transition: color linear 0.2s;
+
+        & a {
+            color: $clr-wizard-header-action-color;
+        }
+
+        &:hover, &:active, &:focus {
+            color: $clr-wizard-header-action-color--hovered;
+        }
+
+        clr-icon {
+            $clr-wizard-header-action-icon-dim: ($clr-wizard-default-space - 2);
+            height: $clr-wizard-header-action-icon-dim;
+            width: $clr-wizard-header-action-icon-dim;
+        }
+    }
+
+    .clr-wizard-stepnav-wrapper {
+        flex: 1 1 auto;
+        width: 34%;
+        max-width: 34%;
+        display: block;
+        order: -1;
+        // TODO: test with many, many stepnav items!
+        overflow: hidden;
+        overflow-y: auto;
+        padding-bottom: $clr-wizard-default-space;
+        line-height: $clr-wizard-default-space;
+        border-right: 1px solid #e4e4e4;
+        height: 100%;
+        background-color: $clr-wizard-sidenav-bgcolor;
+        border-radius: $clr-default-borderradius 0 0 $clr-default-borderradius;
+    }
+
+    .clr-wizard-stepnav {
+        padding-left: $clr-wizard-default-space;
+        display: block; 
+        font-size: 14px;
+        color: $clr-wizard-sidenav-text;
+        // TODO: ??? - THIS IS THE CURRENT WHITESPACE
+        // padding-top: 36px;
+        width: 100%;
+    }
+
+    // TODO: PUT IN STYLES FOR NAV-LINKS, THEN REMOVE DEPENDENCY ON NAV STYLES
+    .clr-wizard-stepnav-list {
+        display: block;
+        box-shadow: none;
+        counter-reset: a;
+        white-space: nowrap;
+        height: auto;
+        list-style-type: none;
+        margin: 0;
+        width: 100%;
+    }
+
+    .clr-wizard-stepnav-item {
+        display: block;
+        box-shadow: $clr-wizard-stepnav-border-size 0 0 $clr-wizard-stepnav-border-color inset;
+        margin: 0 0 -1px 0;
+        padding: 6px 0;
+        padding-left: 8px;
+        color: $clr-wizard-sidenav-text;
+        font-weight: 400;
+
+        &.active {
+            color: $clr-wizard-sidenav-text--active;
+            font-weight: 500;
+
+            .clr-wizard-stepnav-link {
+                background-color: $clr-wizard-stepnav-active-bgcolor;
+                border-radius: $clr-default-borderradius 0 0 $clr-default-borderradius;
+            }
+        }
+
+        &.complete {
+            box-shadow: $clr-wizard-stepnav-border-size 0 0 $clr-wizard-stepnav-border-color--active inset;
+            transition: box-shadow 0.2s ease-in;
+        }
+    }
+
+    .clr-wizard-stepnav-link {
+        width: 100%;
+        display: inline-block;
+        color: inherit;
+        line-height: 16px;
+        padding: 10px 3px 10px 10px;
+        font-size: 14px;
+        font-weight: inherit;
+        letter-spacing: normal;
+        text-align: left;
+        text-transform: none;
+        margin: 0;
+
+        &::before {
+            content: counter(a);
+            counter-increment: a;
+            padding-right: 7px;
+            min-width: 15px;
+        }
+    }
+
+    .clr-wizard-title {
+        color: $clr-wizard-title-text;
+        margin-top: 0;
+        padding-top: $clr-wizard-default-space;
+        padding-left: $clr-wizard-default-space;
+        padding-right: $clr-wizard-default-space * 0.5;
+        padding-bottom: $clr-wizard-default-space;
+    }
+
+    // normal modal ignores this. wizard needs it so the nav and content
+    // will take up the full height of the modal...
+    .modal-content-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex: 1 1 100%;
+        width: 100%;
+        height: 100%;
+    }
+
+    .clr-wizard-footer-buttons {
+        text-align: right;
+        padding-right: $clr-wizard-default-space;
+        margin: 0;
+    }
+
+    .clr-wizard-footer-buttons-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+    }
+
+    .clr-wizard-btn-wrapper {
+        flex: 0 1 auto;
+        min-width: 84px;
+        padding-left: 12px;
+    }
+
+    .clr-wizard-btn-wrapper[aria-hidden="true"] {
+        display: none;
+    }
+
+    .clr-wizard-btn.btn-link {
+        // extra padding around flat buttons in wizard is not necessary
+        padding: 0;
+    }
+
+    .clr-wizard-content {
+        display: block;
+    }
+
+    .clr-wizard-page:not([aria-hidden="true"]) {
+        padding: $clr-wizard-default-space;
+        padding-left: $clr-wizard-default-space;
+        display: block;
+    }
+}
+
+$clr-wizard-all-dialog-min-width: baselineRem(10);
+$clr-wizard-all-dialog-min-height: baselineRem(17.5);
+
+$clr-wizard-md-nav-min-width: baselineRem(9);
+$clr-wizard-md-nav-max-width: baselineRem(10);
+$clr-wizard-md-dialog-max-height: baselineRem(21);
+
+$clr-wizard-lg-nav-min-width: $clr-wizard-all-dialog-min-width;
+$clr-wizard-lg-nav-max-width: baselineRem(12);
+$clr-wizard-lg-dialog-max-height: baselineRem(30);
+
+$clr-wizard-xl-nav-min-width: $clr-wizard-all-dialog-min-width;
+$clr-wizard-xl-nav-max-width: baselineRem(13);
+$clr-wizard-xl-dialog-max-height: 75vh;
+
+.clr-wizard {
+
+    // sizing stuff is here
+    .modal-dialog {
+        height: 75vh;
+    }
+
+    .modal-body {
+        // overriding forced style on .modal
+        max-height: 100%;
+    }
+
+    &.wizard-md {
+
+        .modal-dialog {
+            min-height: $clr-wizard-all-dialog-min-height;
+            max-height: $clr-wizard-md-dialog-max-height;
+        }
+
+        .modal-content, .clr-wizard-stepnav-wrapper {
+            max-height: $clr-wizard-md-dialog-max-height;
+        }
+
+        .clr-wizard-stepnav-wrapper {
+            min-width: $clr-wizard-md-nav-min-width;
+            max-width: $clr-wizard-md-nav-max-width;
+        }
+    }
+
+    &.wizard-lg {
+        .modal-dialog {
+            min-height: $clr-wizard-all-dialog-min-height;
+            max-height: $clr-wizard-lg-dialog-max-height;
+        }
+
+        .modal-content, .clr-wizard-stepnav-wrapper {
+            max-height: $clr-wizard-lg-dialog-max-height;
+        }
+
+        .nav-panel, .clr-wizard-stepnav-wrapper {
+            min-width: $clr-wizard-lg-nav-min-width;
+            max-width: $clr-wizard-lg-nav-max-width;
+        }
+    }
+
+    &.wizard-xl {
+        .modal-dialog {
+            height: $clr-wizard-xl-dialog-max-height;
+        }
+
+        .modal-content, .clr-wizard-stepnav-wrapper {
+            max-height: $clr-wizard-xl-dialog-max-height;
+        }
+
+        .nav-panel, .clr-wizard-stepnav-wrapper {
+            min-width: $clr-wizard-xl-nav-min-width;
+            max-width: $clr-wizard-xl-nav-max-width;
+        }
     }
 
     .spinner {
@@ -28,289 +356,235 @@ $clr-wizard-shadow-size: 4px;
         position: absolute;
         top: 40%;
     }
+}
 
-    .modal-dialog .modal-content .modal-body {
-        max-height: none;
-        overflow-y: hidden;
-
-        .content-area {
-            background-color: $clr-wizard-main-bgcolor;
-            padding-bottom: 0;
-            margin-bottom: baselineRem(3.5);
-            padding-top: $clr-wizard-default-space;
-
-            &:hover {
-                overflow: auto;
-            }
-
-            > .close {
-                position: absolute;
-                right: 0;
-                top: 0;
-                display: inline-block;
-                margin: $clr_baselineRem_0_5 $clr_baselineRem_0_5;
-                height: $clr_baselineRem_1_5;
-                width: $clr_baselineRem_1_5;
-
-                clr-icon {
-                    height: $clr_baselineRem_1;
-                    width: $clr_baselineRem_1;
-                }
-            }
-
-            section {
-                height: 100%;
-            }
-        }
-    }
-
-    .content-container {
-        padding-top: 0;
-        background-color: $clr-wizard-main-bgcolor;
-        height: 75vh;
-    }
-
-    .clr-nav-content {
-        height: 100%;
-        padding-bottom: $clr-wizard-default-space;
-
-        section > label.text-light {
-            // extremely specific here b/c we don't have this component classed well
-            padding-right: $clr_baselineRem_1 - 2;
-            display: block;
-            margin-top: 1px;
-        }
-
-        &[aria-hidden="false"] {
-            display: flex;
-            flex-direction: column;
-
-            .content-wrapper {
-                display: flex;
-                flex: 1 1 auto;
-                flex-direction: column;
-            }
-        }
-    }
-
-    .content-wrapper {
-        margin-top: $clr-wizard-default-space;
-        padding-bottom: $clr-wizard-default-space;
-
-        form {
-            padding-top: 0;
-        }
-
-        .content-heading {
-            margin: 0;
-            font-size: rem(16/$clr-rem-denominator);
-            margin-top: $clr_baselineRem_1;
-            line-height: $clr_baselineRem_1;
-            font-weight: 400;
-            color: $clr-wizard-main-textColor;
-        }
+.clr-wizard-page {
+    & > *:first-child {
+        margin-top: 0;
 
         & > *:first-child {
             margin-top: 0;
         }
     }
 
-    .text-light {
-        font-size: rem(18/$clr-rem-denominator);
-        color: $clr-wizard-title-text;
-        line-height: $clr-wizard-default-space;
-    }
+    & > form:first-child {
+        padding-top: 0;
 
-    .wizard-title {
-        font-size: rem(22/$clr-rem-denominator);
-        color: $clr-wizard-title-text;
-        line-height: $clr-wizard-default-space;
-        padding-right: $clr_baselineRem_0_5;
-    }
-
-    .no-left-padding {
-        padding-left: 0;
-    }
-
-    .modal-content {
-        padding: 1px;
-    }
-
-    .modal-footer {
-        position: absolute;
-        bottom: $clr-wizard-default-space;
-        right: $clr-wizard-default-space;
-    }
-
-    .sidenav {
-        display: block;
-        padding: $clr-wizard-default-space 0 $clr-wizard-default-space $clr-wizard-default-space;
-        background-color: $clr-wizard-sidenav-bgcolor;
-        // custom color in the invision comp...
-        border-color: #e4e4e4;
-        width: 34%;
-        max-width: 34%;
-        height: auto;
-        overflow: hidden;
-
-        &:hover {
-            overflow: auto;
+        & > .form-block:first-child {
+            margin-top: 0;
         }
     }
 
-    .nav-panel {
-        min-width: baselineRem(10);
-    }
+}
 
-    .nav.navList {
-        display: flex;
-        flex-direction: column;
+.clr-wizard--ghosted {
+    $clr-wizard-ghost-wrapper-width: baselineRem(2);
+    $clr-wizard-ghost-panel-width: baselineRem(1);
+    $clr-wizard-ghost-wrapper-padding: baselineRem(1);
+    $clr-wizard-ghost-shadow: $clr-wizard-box-shadow;
+
+    .modal-dialog {
+        display: block;
         box-shadow: none;
-        align-items: flex-start;
-        font-size: rem(1);
-        color: $clr-wizard-sidenav-text;
-        padding-top: $clr_baselineRem_1_5;
-        padding-left: 0;
-        counter-reset: a;
-        white-space: inherit;
-        height: auto;
     }
 
-    .clr-nav-link {
+    .modal-outer-wrapper {
+        position: static;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        max-height: 100%;
+        box-shadow: none;
+        flex-direction: row;
+    }
+
+    .modal-content-wrapper {
+        box-shadow: $clr-wizard-ghost-shadow;
+    }
+
+    // ghosties!
+    .modal-ghost-wrapper {
         display: block;
+        flex: 0 0 $clr-wizard-ghost-wrapper-width;
+        height: 100%;
         position: relative;
-        box-shadow: $clr-wizard-shadow-size 0 0 clr-getColor(light) inset;
-        padding: $clr-baselineRem_0_25 0;
-        width: 100%;
-
-        &.active {
-            font-weight: 500;
-
-            &:before {
-                content: "";
-                position: absolute;
-                right: 0;
-                top: $clr-baselineRem_0_25;
-                background-color: $clr-selection-color;
-                border-radius: $clr-default-borderradius 0 0 $clr-default-borderradius;
-                width: calc(100% - 8px);
-                height: $clr-baselineRem_1_5;
-            }
-
-            a,
-            .nav-link {
-                font-weight: 500;
-                box-shadow: none;
-                color: $clr-black;
-            }
-        }
-
-        &.disabled {
-            pointer-events: none;
-            opacity: 0.4;
-            cursor: not-allowed;
-
-            a {
-                pointer-events: none;
-                opacity: 0.4;
-                cursor: not-allowed;
-            }
-        }
-
-        &.complete {
-            box-shadow: $clr-wizard-shadow-size 0 0 $clr-green inset;
-            transition: box-shadow 0.2s ease-in;
-        }
-
-        &.skipped {
-            display: none;
-        }
-
-        li {
-            list-style: none;
-            flex: 1;
-        }
-
-        a {
-            &:before {
-                content: counter(a); /* Use the counter as content */
-                counter-increment: a; /* Increment the counter by 1 */
-                font-size: rem(14/$clr-rem-denominator);
-                position: absolute;
-                left: $clr_baselineRem_0_5;
-            }
-        }
-
-        button {
-            position: relative;
-            width: 100%;
-            margin: 0;
-            text-align: left;
-
-            &:before {
-                content: counter(a); /* Use the counter as content */
-                counter-increment: a; /* Increment the counter by 1 */
-                font-size: rem(14/$clr-rem-denominator);
-                position: absolute;
-                left: 16px;
-            }
-        }
     }
 
-    .sidenav .nav-link {
-        $clr-toc-fontsize: clr-getTypePropertyValueForDomElement(toc_text, font-size);
-        $navlink-padding-right: 3px;
-        $navlink-padding-left: $clr-baselineRem_1_5;
-        $navlink-padding-top-bottom: ($clr-subnav-height - ($clr-toc-fontsize + 2)) / 2;
-        display: inline-block;
-        color: $clr-wizard-sidenav-text;
-        line-height: $clr-toc-fontsize + 2;
-        padding: $navlink-padding-top-bottom $navlink-padding-right $navlink-padding-top-bottom $navlink-padding-left;
-
-        &:before {
-            font-size: rem(14/$clr-rem-denominator);
-        }
-
-        &:hover {
-            box-shadow: none;
-        }
-
-        &:focus {
-            color: $clr-action-blue;
-            box-shadow: none;
-        }
+    .modal-ghost {
+        position: absolute;
+        top: $clr-wizard-ghost-wrapper-padding;
+        bottom: $clr-wizard-ghost-wrapper-padding;
+        background: #bbb;
+        width: $clr-wizard-ghost-panel-width;
+        border-radius: 0 $clr-default-borderradius $clr-default-borderradius 0;
+        left: (-1 * $clr-wizard-ghost-panel-width);
+        box-shadow: $clr-wizard-ghost-shadow;
+        z-index: -1;
     }
 
+    .modal-ghost-2 {
+        top: (2 * $clr-wizard-ghost-wrapper-padding);
+        bottom: (2 * $clr-wizard-ghost-wrapper-padding);
+        background: #9a9a9a;
+        z-index: -2;
+    }
+
+    $clr-wizard-ghost-dialog-default-width: $clr-modal-md-width + $clr-wizard-ghost-wrapper-width;
+
+    .modal-dialog, .modal-outer-wrapper {
+        width: $clr-wizard-ghost-dialog-default-width;
+    }
+
+    .modal-content-wrapper {
+        width: $clr-modal-md-width;
+    }
+
+    // sizing edits from ghosts
     &.wizard-md {
-        .content-container {
-            max-height: baselineRem(21);
+        .modal-dialog, .modal-outer-wrapper {
+            width: $clr-wizard-ghost-dialog-default-width;
         }
 
-        .nav-panel {
-            min-width: baselineRem(9);
-            max-width: baselineRem(10);
+        .modal-outer-wrapper {
+            min-height: $clr-wizard-all-dialog-min-height;
+        }
+
+        .modal-content-wrapper {
+            width: $clr-modal-md-width;
         }
     }
 
     &.wizard-lg {
-        .content-container {
-            max-height: baselineRem(30);
+        .modal-dialog, .modal-outer-wrapper {
+            width: $clr-modal-lg-width + $clr-wizard-ghost-wrapper-width;
         }
 
-        .nav-panel {
-            min-width: baselineRem(10);
-            max-width: baselineRem(12);
+        .modal-outer-wrapper {
+            min-height: $clr-wizard-all-dialog-min-height;
+        }
+
+        .modal-content-wrapper {
+            width: $clr-modal-lg-width;
         }
     }
 
     &.wizard-xl {
-        .content-container {
-            max-height: 90vh;
+        .modal-dialog, .modal-outer-wrapper {
+            width: $clr-modal-xl-width + $clr-wizard-ghost-wrapper-width;
         }
 
-        .nav-panel {
-            min-width: baselineRem(10);
-            max-width: baselineRem(13);
+        .modal-outer-wrapper {
+            max-height: $clr-wizard-xl-dialog-max-height;
         }
+
+        .modal-content-wrapper {
+            width: $clr-modal-xl-width;
+        }
+    }
+}
+
+.clr-wizard--inline {
+    display: block;
+    width: 100%;
+    // you will want to set a fixed width and height for these static wizards
+    // otherwise, you'll get some minor jumping along the right edge when it is
+    // closed...
+
+    clr-modal {
+        height: 100%;
+        width: 100%;
+        display: block;
+    }
+
+    .modal {
+        padding: 0;
+        position: static;
+        height: 100%;
+        max-height: 100%;
+
+        .content-container {
+            height: 100%;
+
+            .nav-panel {
+                width: 99%;
+                height: 99%; 
+            }
+        }
+
+        .modal-outer-wrapper {
+            align-items: stretch;
+            width: 100%;
+        }
+
+        .modal-content {
+            box-shadow: none; 
+        }
+
+        .modal-dialog {
+            min-height: 100%;
+            height: 100%;
+            width: 100%;
+            z-index: auto; 
+        }
+    }
+
+    .modal-body {
+        height: 100%; 
+    }
+
+    .modal-header .close {
+        display: none;
+    }
+
+    .nav.navList {
+        padding-top: 0; 
+    }
+
+    .modal-dialog .modal-content .modal-body .content-area {
+        overflow-y: auto; 
+    }
+
+    .modal-backdrop {
+        height: 0;
+        width: 0;
+        display: none;
+    }
+
+    .modal-content-wrapper {
+        align-items: stretch;
+        height: 100%;
+    }
+
+    .modal-ghost-wrapper {
+        display: none;
+    }
+
+    .clr-wizard-stepnav-wrapper, &.clr-wizard .modal-content {
+        min-height: 100%;
+        height: auto;
+        max-height: 100%; 
+    }
+}
+
+.clr-wizard--no-shadow {
+    .modal-content-wrapper, .modal-dialog {
+        box-shadow: none;
+    }
+}
+
+.clr-wizard--no-title {
+    .clr-wizard-title {
+        display: none;
+    }
+
+    .clr-wizard-stepnav {
+        padding-top: baselineRem(1);
+    }
+}
+
+@media screen {
+    .clr-wizard-page[aria-hidden="true"] {
+        display: none;
     }
 }

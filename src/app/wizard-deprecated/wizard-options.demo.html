@@ -1,0 +1,125 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h3>Summary of Options</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th class="left">Input/Output</th>
+        <th>Values</th>
+        <th>Default</th>
+        <th class="left">Effect</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="left">[(clrWizardOpen)]</td>
+        <td>true, false</td>
+        <td>false</td>
+        <td class="left">
+            Two-way binding on the state of the wizard: open or closed.
+        </td>
+    </tr>
+    <tr>
+        <td class="left">(clrWizardOpenChanged)</td>
+        <td>true, false</td>
+        <td>N/A</td>
+        <td class="left">
+            Emits the state of the wizard when a wizard is open or closed.
+        </td>
+    </tr>
+    <tr>
+        <td class="left">(clrWizardOnCancel)</td>
+        <td>any</td>
+        <td>N/A</td>
+        <td class="left">
+            Emits an event when the close or cancel button is clicked on the wizard page.
+        </td>
+    </tr>
+    <tr>
+        <td class="left">[clrWizardSize]</td>
+        <td>"md", "lg", "xl"</td>
+        <td>"xl"</td>
+        <td class="left">Sets the size of the wizard.</td>
+    </tr>
+    <tr>
+        <td class="left">[clrWizardStepId]</td>
+        <td>&lt;any valid id for html element&gt;</td>
+        <td>auto-generated</td>
+        <td class="left">
+            Used on &lt;clr-wizard-step&gt;. If explicitly set, will assign the set id as the id for the
+            element. If not set, the component will auto-generate the id. You can skip or unskip a step in the
+            wizard by passing in the id to wizard's skipTab an unSkipTab methods.
+        </td>
+    </tr>
+
+    <tr>
+        <td class="left">[clrWizardStepIsSkipped]</td>
+        <td>true, false</td>
+        <td>false</td>
+        <td class="left">
+            Used on &lt;clr-wizard-step&gt;. If true, the wizard will skip this step and not display it.
+        </td>
+    </tr>
+    <tr>
+        <td class="left">[clrWizardPageErrorFlag]</td>
+        <td>true, false</td>
+        <td>false</td>
+        <td class="left">
+            Used on &lt;clr-wizard-page&gt;. If true, signifies that there was an error on the wizard page.
+        </td>
+    </tr>
+    <tr>
+        <td class="left">[clrWizardPageIsSkipped]</td>
+        <td>true, false</td>
+        <td>false</td>
+        <td class="left">
+            Used on &lt;clr-wizard-page&gt;. If true, the wizard will skip this page and not display it.
+        </td>
+    </tr>
+    <tr>
+        <td class="left">[clrWizardPageNextDisabled]</td>
+        <td>true, false</td>
+        <td>false</td>
+        <td class="left">
+            Used on &lt;clr-wizard-page&gt;. If true, the wizard's next or finish button will be disabled.
+        </td>
+    </tr>
+    <tr>
+        <td class="left">(clrWizardPageNextDisabledChanged)</td>
+        <td>any</td>
+        <td>N/A</td>
+        <td class="left">
+            Emits the state of the wizard page when the nextDisabled status changes.
+        </td>
+    </tr>
+    <tr>
+        <td class="left">(clrWizardPageOnCommit)</td>
+        <td>any</td>
+        <td>N/A</td>
+        <td class="left">
+            Emits an event when the next or finish button is clicked on the wizard page.
+        </td>
+    </tr>
+    <tr>
+        <td class="left">(clrWizardPageOnLoad)</td>
+        <td>any</td>
+        <td>N/A</td>
+        <td class="left">
+            Emits an event when loading the wizard page.
+        </td>
+    </tr>
+    <tr>
+        <td class="left">[clrWizardClosable]</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td class="left">
+            If set to false, this will remove the closing &times; element in the top right. This 
+            means that users will need to click the Cancel button to exit the wizard without finishing.
+        </td>
+    </tr>
+    </tbody>
+</table>

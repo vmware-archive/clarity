@@ -1,41 +1,50 @@
 <!--
-  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
-  ~ This software is released under MIT license.
-  ~ The full license information can be found in LICENSE in the root directory of this project.
-  -->
+~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+~ This software is released under MIT license.
+~ The full license information can be found in LICENSE in the root directory of this project.
+-->
 
-<clr-modal
-      [clrModalOpen]="_open"
-      [clrModalSize]="size"
-      [clrModalClosable]="closable"
-      [clrModalStaticBackdrop]="true"
-      (clrModalOpenChange)="close()">
+<clr-modal 
+    [clrModalOpen]="_open"
+    [clrModalSize]="size"
+    [clrModalClosable]="closable"
+    [clrModalStaticBackdrop]="true"
+    (clrModalOpenChange)="cancel()"
+    [clrModalSkipAnimation]="stopModalAnimations"
+    [clrModalGhostPageState]="ghostPageState"
+    [clrModalOverrideScrollService]="isStatic">
 
-   <div class="modal-body">
-      <div class="content-container">
-         <main class="content-area">
-            <ng-content></ng-content>
-         </main>
+    <nav class="modal-nav clr-wizard-stepnav-wrapper">
+        <h3 class="clr-wizard-title"><ng-content select="clr-wizard-title"></ng-content></h3>
+        <clr-wizard-stepnav></clr-wizard-stepnav>
+    </nav>
 
-         <nav class="nav-panel sidenav">
-            <div class="text-light">
-               <ng-content select=".wizard-title"></ng-content>
+    <h3 class="modal-title">
+        <span class="modal-title-text"><template [ngTemplateOutlet]="navService.currentPageTitle"></template></span>
+
+        <div class="modal-header-actions-wrapper" *ngIf="headerActionService.displayHeaderActionsWrapper">
+            <div *ngIf="headerActionService.showWizardHeaderActions">
+                <ng-content select="clr-wizard-header-action"></ng-content>
             </div>
+            <div *ngIf="headerActionService.currentPageHasHeaderActions">
+                <template [ngTemplateOutlet]="navService.currentPage.headerActions"></template>
+            </div>
+        </div>
+    </h3>
 
-            <ol class="nav navList" role="tablist">
-               <ng-content select="clr-wizard-step"></ng-content>
-            </ol>
-         </nav>
-      </div>
-   </div>
-
-   <div class="modal-footer">
-      <button class="btn btn-link" (click)="_close($event)">Cancel</button>
-      <button class="btn btn-outline"
-            *ngIf="!isFirst" (click)="prev($event)">Back</button>
-      <button class="btn btn-primary"
-            [class.disabled]="currentPage?.nextDisabled"
-            (click)="_next($event)">{{isLast? 'Finish' : 'Next'}}</button>
-   </div>
-
+    <div class="modal-body">
+        <main clr-wizard-pages-wrapper class="clr-wizard-content">
+            <ng-content></ng-content>
+        </main>
+    </div>
+    <div class="modal-footer clr-wizard-footer">
+        <div class="clr-wizard-footer-buttons">
+            <div *ngIf="!navService.currentPage.hasButtons" class="clr-wizard-footer-buttons-wrapper">
+                <ng-content select="clr-wizard-button"></ng-content>
+            </div>
+            <div *ngIf="navService.currentPage.hasButtons" class="clr-wizard-footer-buttons-wrapper">
+                <template [ngTemplateOutlet]="navService.currentPage.buttons"></template>
+            </div>
+        </div>
+    </div>
 </clr-modal>

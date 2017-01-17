@@ -1,14 +1,15 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {Component, QueryList, ViewChildren} from "@angular/core";
 import {ScrollingService} from "../main/scrolling-service";
 import {ClarityModule} from "../clarity.module";
 import {WizardStep} from "./wizard-step";
-import {Wizard} from "./wizard";
+import {WizardDeprecated} from "./wizard";
 
 @Component({
     template: `
@@ -30,7 +31,7 @@ describe("WizardStep", () => {
         TestBed.configureTestingModule({
             imports: [ClarityModule.forRoot()],
             declarations: [TestComponent],
-            providers: [Wizard, ScrollingService],
+            providers: [WizardDeprecated, ScrollingService],
         });
 
         fixture = TestBed.createComponent(TestComponent);

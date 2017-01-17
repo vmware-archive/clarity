@@ -1,8 +1,9 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 export * from "./clarity.module";
 export * from "./alert/index";
 export * from "./checkboxes/index";
@@ -16,6 +17,7 @@ export * from "./nav/index";
 export * from "./stack-view/index";
 export * from "./tabs/index";
 export * from "./tooltips/index";
+export * from "./wizard-deprecated/index";
 export * from "./wizard/index";
 export * from "./animations/collapse/index";
 export * from "./animations/fade/index";

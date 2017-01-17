@@ -36,15 +36,6 @@ $opp-directions: (
     right: left
 );
 
-%clr-container {
-    & > :first-child {
-        margin-top: 0;
-    }
-    & > :last-child {
-        margin-bottom: 0;
-    }
-}
-
 @mixin fixForFirefox() {
     @-moz-document url-prefix() {
         @content;

@@ -1,125 +1,194 @@
 <!--
-  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<h3>Summary of Options</h3>
-<table class="table">
-    <thead>
-    <tr>
-        <th class="left">Input/Output</th>
-        <th>Values</th>
-        <th>Default</th>
-        <th class="left">Effect</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td class="left">[(clrWizardOpen)]</td>
-        <td>true, false</td>
-        <td>false</td>
-        <td class="left">
-            Two-way binding on the state of the wizard: open or closed.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">(clrWizardOpenChanged)</td>
-        <td>true, false</td>
-        <td>N/A</td>
-        <td class="left">
-            Emits the state of the wizard when a wizard is open or closed.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">(clrWizardOnCancel)</td>
-        <td>any</td>
-        <td>N/A</td>
-        <td class="left">
-            Emits an event when the close or cancel button is clicked on the wizard page.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">[clrWizardSize]</td>
-        <td>"md", "lg", "xl"</td>
-        <td>"xl"</td>
-        <td class="left">Sets the size of the wizard.</td>
-    </tr>
-    <tr>
-        <td class="left">[clrWizardStepId]</td>
-        <td>&lt;any valid id for html element&gt;</td>
-        <td>auto-generated</td>
-        <td class="left">
-            Used on &lt;clr-wizard-step&gt;. If explicitly set, will assign the set id as the id for the
-            element. If not set, the component will auto-generate the id. You can skip or unskip a step in the
-            wizard by passing in the id to wizard's skipTab an unSkipTab methods.
-        </td>
-    </tr>
+<button class="btn btn-primary" (click)="wizardMedium.open()">Medium Wizard</button>
+<button class="btn btn-outline" (click)="funkyOpen()">Open at Step 3 or Step 1</button>
 
-    <tr>
-        <td class="left">[clrWizardStepIsSkipped]</td>
-        <td>true, false</td>
-        <td>false</td>
-        <td class="left">
-            Used on &lt;clr-wizard-step&gt;. If true, the wizard will skip this step and not display it.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">[clrWizardPageErrorFlag]</td>
-        <td>true, false</td>
-        <td>false</td>
-        <td class="left">
-            Used on &lt;clr-wizard-page&gt;. If true, signifies that there was an error on the wizard page.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">[clrWizardPageIsSkipped]</td>
-        <td>true, false</td>
-        <td>false</td>
-        <td class="left">
-            Used on &lt;clr-wizard-page&gt;. If true, the wizard will skip this page and not display it.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">[clrWizardPageNextDisabled]</td>
-        <td>true, false</td>
-        <td>false</td>
-        <td class="left">
-            Used on &lt;clr-wizard-page&gt;. If true, the wizard's next or finish button will be disabled.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">(clrWizardPageNextDisabledChanged)</td>
-        <td>any</td>
-        <td>N/A</td>
-        <td class="left">
-            Emits the state of the wizard page when the nextDisabled status changes.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">(clrWizardPageOnCommit)</td>
-        <td>any</td>
-        <td>N/A</td>
-        <td class="left">
-            Emits an event when the next or finish button is clicked on the wizard page.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">(clrWizardPageOnLoad)</td>
-        <td>any</td>
-        <td>N/A</td>
-        <td class="left">
-            Emits an event when loading the wizard page.
-        </td>
-    </tr>
-    <tr>
-        <td class="left">[clrWizardClosable]</td>
-        <td>boolean</td>
-        <td>true</td>
-        <td class="left">
-            If set to false, this will remove the closing &times; element in the top right. This 
-            means that users will need to click the Cancel button to exit the wizard without finishing.
-        </td>
-    </tr>
-    </tbody>
-</table>
+<!--
+<button class="btn btn-primary" (click)="wizardLarge.open()">Large Wizard</button>
+<button class="btn btn-primary" (click)="wizardDefault.open()">Default Wizard</button>
+-->
+
+<clr-wizard #wizardmd 
+    [(clrWizardOpen)]="open"
+    [clrWizardSize]="'lg'"
+    (clrWizardCurrentPageChanged)="handlePageChange()"
+    (clrWizardOnFinish)="doReset()"
+    (clrWizardOnCancel)="doCancel()"
+    (clrWizardAltCancel)="wizardLevelCustomCancel()" 
+    (clrWizardOnReset)="notifyReset()"
+    [clrWizardShowGhostPages]="true"
+    >
+<!--
+    [clrWizardPreventModalAnimation]="true"
+    class="clr-wizard--inline clr-wizard--no-shadow clr-wizard--no-title" 
+-->
+<!-- TOREMOVE: WE DON'T NEED AN ONRESET/AFTER RESET OUTPUT -->
+    <!-- THROW THE FOLLOWING LINE UP IN THE WIZARD DECLARATION TO TEST WIZARD-LVL ALTCANCEL -->
+    <clr-wizard-title>
+        My 5th Level Wizard
+    </clr-wizard-title>
+
+    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Fait Accompli</clr-wizard-button>
+
+    <clr-wizard-header-action (actionClicked)="headerActionClicked($event)">
+        <clr-icon shape="cloud" class="is-solid"></clr-icon>
+    </clr-wizard-header-action>
+
+    <clr-wizard-page 
+        (clrWizardPageDanger)="handleDangerClick($event)"
+        (clrWizardPagePrevious)="highVoltage()">
+
+        <template pageTitle>Longer Title for Page {{ 3 - 2 }} Longer Title for Page {{ 3 - 2 }} Longer Title for Page</template> <!-- mandatory -->
+        <template pageNavTitle>Title for Page 1</template> <!-- optional -->
+
+        <p>Content for step 1</p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, 
+            officiis rem id explicabo incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur 
+            quas! Quaerat explicabo expedita placeat vero.
+        </p>
+        <p>
+            <label>
+                <input #forceReset type="checkbox" name="forceReset" [(ngModel)]="model.forceReset">
+                Force reset on close
+            </label>
+        </p>
+
+        <!-- CUSTOME HDR ACTIONS GO HERE -->
+        <template pageHeaderActions>
+            <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="bell">
+                <clr-icon shape="bell" class="has-badge"></clr-icon>
+            </clr-wizard-header-action>
+            <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="warning">
+                <clr-icon shape="warning"></clr-icon>
+            </clr-wizard-header-action>
+        </template>
+
+        <!-- CUSTOME BUTTONS GO HERE -->
+        <template pageButtons>
+            <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+            <clr-wizard-button [type]="'previous'">Previous</clr-wizard-button>
+            <clr-wizard-button [type]="'danger'">Doitbad</clr-wizard-button>
+        </template>
+    </clr-wizard-page>
+
+    <clr-wizard-page *ngIf="doTestHere()" (clrWizardPageCustomButton)="doCustomClick($event)">
+
+        <template pageTitle>Title for Page {{ 4/2 }}</template> <!-- mandatory -->
+
+        <p>Content for step 2</p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, 
+            officiis rem id explicabo incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur 
+            quas! Quaerat explicabo expedita placeat vero.
+        </p>
+        <div class="form-group">
+            <label for="formFields_1">Put a number in here:</label>
+            <input #stepTwoInput type="text" id="formFields_1" placeholder="Number?" [(ngModel)]="model.myNumber">
+        </div>
+        <p>
+            <label>
+                <input #okToGo type="checkbox" name="okToGo" [(ngModel)]="model.okToClick">
+                Enable move to next page
+            </label>
+        </p>
+
+        <!-- CUSTOME BUTTONS GO HERE -->
+        <template pageButtons>
+            <clr-wizard-button [type]="'cancel'">Soy un perdidor Soy un perdidor</clr-wizard-button>
+            <clr-wizard-button [type]="'previous'">Fait InterruptidInterruptid</clr-wizard-button>
+            <clr-wizard-button [type]="'custom-next'">LOLZ</clr-wizard-button>
+        </template>
+
+    </clr-wizard-page>
+
+    <clr-wizard-page *ngIf="showStepThree">
+        <template pageTitle>If you see this, something is badwrong</template> <!-- mandatory -->
+        <!-- template pageNavTitle>Step 3 Shouldn't be</template --> <!-- optional -->
+
+        <p>Content for step 3</p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, 
+            officiis rem id explicabo incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur 
+            quas! Quaerat explicabo expedita placeat vero.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, 
+            officiis rem id explicabo incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur 
+            quas! Quaerat explicabo expedita placeat vero.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, 
+            officiis rem id explicabo incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur 
+            quas! Quaerat explicabo expedita placeat vero.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, 
+            officiis rem id explicabo incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur 
+            quas! Quaerat explicabo expedita placeat vero.
+        </p>
+    </clr-wizard-page>
+
+    <clr-wizard-page #myPage [clrWizardPageNextDisabled]="!stepFourIsReady"
+        [clrWizardPagePreventDefaultCancel]="true"
+        (clrWizardPageOnCancel)="stepThreeCustomCancel()"
+        (clrWizardPageCustomButton)="doCustomClick($event)">
+        <template pageTitle>This tests if the page jumping completed thing works</template> <!-- mandatory -->
+        <!-- template pageNavTitle>Test Page Jumping</template --> <!-- optional -->
+
+        <p *ngIf="stepFourIsReady">I am ready to go!</p>
+        <p *ngIf="!stepFourIsReady">I am <i>not</i> ready to go! Go back to step 2 and put a number in.</p>
+
+        <template pageButtons>
+            <clr-wizard-button [type]="'custom-previous'">Custom Back</clr-wizard-button>
+            <clr-wizard-button [type]="'next'">FFwd</clr-wizard-button>
+        </template>
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <template pageTitle>Longer Title for Last Step</template> <!-- mandatory -->
+        <template pageNavTitle>Last Step</template> <!-- optional -->
+
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, 
+            officiis rem id explicabo incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur 
+            quas! Quaerat explicabo expedita placeat vero.
+        </p>
+    </clr-wizard-page>
+</clr-wizard>
+
+<!--
+<clr-wizard #wizardlg [(clrWizardOpen)]="open" [clrWizardSize]="'lg'">
+    <div class="wizard-title">Wizard Title</clr-wizard-page>
+
+    <clr-wizard-step>Step 1</clr-wizard-step>
+    <clr-wizard-step>Step 2</clr-wizard-step>
+    <clr-wizard-step>Step 3</clr-wizard-step>
+
+    <clr-wizard-page>Content for step 1</clr-wizard-page>
+    <clr-wizard-page>Content for step 2</clr-wizard-page>
+    <clr-wizard-page>Content for step 3</clr-wizard-page>
+</clr-wizard>
+
+<clr-wizard #wizardxl [(clrWizardOpen)]="open">
+    <div class="wizard-title">Wizard Title</div>
+
+    <clr-wizard-step>Step 1</clr-wizard-step>
+    <clr-wizard-step>Step 2</clr-wizard-step>
+    <clr-wizard-step>Step 3</clr-wizard-step>
+
+    <clr-wizard-page>Content for step 1</clr-wizard-page>
+    <clr-wizard-page>Content for step 2</clr-wizard-page>
+    <clr-wizard-page>Content for step 3</clr-wizard-page>
+</clr-wizard>
+-->
+
+<!--<clr-example [clrLanguage]="'typescript'" [clrCode]="code"></clr-example>
+<clr-example [clrLanguage]="'html'" [clrCode]="html"></clr-example>-->

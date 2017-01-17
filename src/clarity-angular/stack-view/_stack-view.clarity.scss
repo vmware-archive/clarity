@@ -117,7 +117,12 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
             margin-bottom: 0;
             font-weight: $clr-stack-font-weight;
 
-            @extend %clr-container;
+            & > :first-child {
+                margin-top: 0;
+            }
+            & > :last-child {
+                margin-bottom: 0;
+            }
         }
 
         .stack-children {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -20,6 +20,7 @@ import {STACK_VIEW_DIRECTIVES} from "./stack-view/index";
 import {TABS_DIRECTIVES} from "./tabs/index";
 import {TOOLTIP_DIRECTIVES} from "./tooltips/index";
 import {TREE_VIEW_DIRECTIVES} from "./tree-view/index";
+import {OLD_WIZARD_DIRECTIVES} from "./wizard-deprecated/index";
 import {WIZARD_DIRECTIVES} from "./wizard/index";
 import {ICON_DIRECTIVES} from "./iconography/index";
 
@@ -44,6 +45,7 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
         TABS_DIRECTIVES,
         TOOLTIP_DIRECTIVES,
         TREE_VIEW_DIRECTIVES,
+        OLD_WIZARD_DIRECTIVES,
         WIZARD_DIRECTIVES,
         ICON_DIRECTIVES
     ],
@@ -60,6 +62,7 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
         TABS_DIRECTIVES,
         TOOLTIP_DIRECTIVES,
         TREE_VIEW_DIRECTIVES,
+        OLD_WIZARD_DIRECTIVES,
         WIZARD_DIRECTIVES,
         ICON_DIRECTIVES
     ]

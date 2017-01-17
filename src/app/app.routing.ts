@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -40,7 +40,8 @@ export const APP_ROUTES: Routes  = [
     { path: "toggles", loadChildren: "app/toggles/toggles.demo.module" },
     { path: "tooltips", loadChildren: "app/tooltips/tooltips.demo.module" },
     { path: "typography", loadChildren: "app/typography/typography.demo.module" },
-    { path: "wizard", loadChildren: "app/wizard/wizard.demo.module" }
+    { path: "wizard", loadChildren: "app/wizard/wizard.demo.module" },
+    { path: "wizard-deprecated", loadChildren: "app/wizard-deprecated/wizard.demo.module" },
 ];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);

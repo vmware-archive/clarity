@@ -1,0 +1,66 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<button class="btn btn-primary" (click)="wizard.open()">Open Wizard</button>
+
+<clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardShowGhostPages]="true"
+    [clrWizardSize]="'lg'">
+    <clr-wizard-title>Ghost Pages</clr-wizard-title>
+
+    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+    <clr-wizard-page>
+        <template pageTitle>Title for page 1</template> <!-- mandatory -->
+        <template pageNavTitle>Step 1</template> <!-- optional -->
+
+        <form #pageTypesForm="ngForm">
+            <section class="form-block">
+                <label>Which pages should I show?</label>
+                <div class="form-group">
+                <label for="typesOfPages">Page categories</label>
+                    <div class="select">
+                        <select id="typesOfPages"
+                            name="typesOfPages"
+                            [(ngModel)]="model.typesOfPages">
+                            <option value="Default">Select pages you want to show...</option>
+                            <option *ngFor="let type of typesOfPages" [value]="type">{{type}}</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+        </form>
+    </clr-wizard-page>
+
+    <clr-wizard-page *ngIf="showEvenPages">
+        <template pageTitle>Title for page 2</template> <!-- mandatory -->
+        <template pageNavTitle>Step 2</template> <!-- optional -->
+        <p>Content for step 2</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page *ngIf="showPageThree">
+        <template pageTitle>Title for page 3</template> <!-- mandatory -->
+        <template pageNavTitle>Step 3</template> <!-- optional -->
+        <p>Content for step 3</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page *ngIf="showEvenPages">
+        <template pageTitle>Title for page 4</template> <!-- mandatory -->
+        <template pageNavTitle>Step 4</template> <!-- optional -->
+        <p>Content for step 4</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page *ngIf="showPageFive">
+        <template pageTitle>Title for page 5</template> <!-- mandatory -->
+        <template pageNavTitle>Step 5</template> <!-- optional -->
+        <p>Content for step 5</p>
+    </clr-wizard-page>
+</clr-wizard>
+
+<clr-example [clrLanguage]="'typescript'" [clrCode]="code"></clr-example>
+<clr-example [clrLanguage]="'html'" [clrCode]="html"></clr-example>

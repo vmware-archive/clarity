@@ -14,13 +14,15 @@ let latestId = 0;
 @Component({
     selector: "clr-checkbox",
     template: `
-        <input type="checkbox" [id]="id" [name]="name" [checked]="checked" [indeterminate]="indeterminate" 
+        <input type="checkbox" [id]="id" [name]="name" [checked]="checked" 
+               [indeterminate]="indeterminate" [disabled]="disabled"
                (change)="toggle()" (blur)="touch()">
         <label [attr.for]="id"><ng-content></ng-content></label>
     `,
     host: {
         "[class.checkbox]": "!inline",
-        "[class.checkbox-inline]": "inline"
+        "[class.checkbox-inline]": "inline",
+        "[class.disabled]": "disabled"
     },
     /*
      * This provider lets us declare our checkbox as a ControlValueAccessor,
@@ -45,6 +47,10 @@ export class Checkbox implements ControlValueAccessor {
     // If our host has a name attribute, we apply it to the checkbox.
     @Input("name")
     public name: string = null;
+
+    // If the host is disabled we apply it to the checkbox
+    @Input("clrDisabled")
+    public disabled: boolean = false;
 
     // Support for inline checkboxes, adds the necessary class to the host
     @Input("clrInline") public inline = false;

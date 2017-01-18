@@ -5,18 +5,24 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
+import {FormsModule} from "@angular/forms";
 import {ClarityModule} from "../../clarity-angular";
 import {ROUTING} from "./checkboxes.demo.routing";
 import {CheckboxesDemo} from "./checkboxes.demo";
+import {Status} from "./data/status";
 
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
         ClarityModule,
         ROUTING
     ],
     declarations: [
         CheckboxesDemo
+    ],
+    providers: [
+        Status
     ],
     exports: [
         CheckboxesDemo

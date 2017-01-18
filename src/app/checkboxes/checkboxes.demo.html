@@ -49,21 +49,54 @@
             <label>Indeterminate Checkbox</label>
             <div class="checkbox-inline">
                 <clr-checkbox type="checkbox" id="checkbox_9" [(clrIndeterminate)]="indeterminateState">
-                    Indeterminate Checkbox.
+                    Clarity indeterminate checkbox
                 </clr-checkbox>
                 <div>
-                    <div>
-                        <b>NOTE:</b> Native checkbox elements must set indeterminate state with JavaScript.
-                    </div>
                     <button class="btn btn-sm" (click)="onToggleIndeterminateState($event)" type="button">
                         Toggle Indeterminate State
                     </button>
+                </div>
+                <div class="checkbox-inline">
+                    <input type="checkbox"
+                           id="checkrads_10"
+                           [indeterminate]="nativeIndeterminateState">
+                    <label for="checkrads_10">Native indeterminate checkbox</label>
+                    <div>
+                        <b>NOTE:</b> Native checkbox elements must set indeterminate state with JavaScript.
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 </form>
 
+<form #form="ngForm" novalidate>
+    <section class="form-block">
+        <div class="form-group">
+            <label>With ngForm & ngModel</label>
+            <clr-checkbox
+                    name="termsCheckbox"
+                    id="checkrads_11"
+                    [clrInline]="true"
+                    [(ngModel)]="termsAgreement">
+                I agree to the terms and conditions. {{ form.value | json }}
+            </clr-checkbox>
+        </div>
+    </section>
+</form>
+
+<form>
+    <section class="form-block">
+        <div class="form-group">
+            <label>With a list of objects</label>
+            <clr-checkbox *ngFor="let item of list"
+                          [(clrChecked)]="item.running"
+                          [clrDisabled]="item.disabled">
+                {{ item.disabled ? ' is disabled.' : (item.running ? ' is running.' : 'is off.') }}
+            </clr-checkbox>
+        </div>
+    </section>
+</form>
 <pre>
     <code clr-code-highlight="language-html">
     &lt;form&gt;
@@ -106,22 +139,56 @@
                     &lt;input type=&quot;checkbox&quot; id=&quot;checkrads_8&quot; disabled checked&gt;
                     &lt;label for=&quot;checkrads_8&quot;&gt;A disabled and checked checkbox&lt;/label&gt;
                 &lt;/div&gt;
-                 &lt;div class=&quot;form-group&quot;&gt;
+                &lt;div class="form-group"&gt;
                     &lt;label&gt;Indeterminate Checkbox&lt;/label&gt;
-                    &lt;div class=&quot;checkbox-inline&quot;&gt;
-                        &lt;clr-checkbox type=&quot;checkbox&quot; id=&quot;checkbox_9&quot; [(clrIndeterminate)]=&quot;indeterminateState&quot;&gt;
-                            Indeterminate Checkbox.
+                    &lt;div class="checkbox-inline"&gt;
+                        &lt;clr-checkbox type="checkbox" id="checkbox_9" [(clrIndeterminate)]="indeterminateState"&gt;
+                            Clarity indeterminate checkbox
                         &lt;/clr-checkbox&gt;
                         &lt;div&gt;
-                            &lt;div&gt;
-                                &lt;b&gt;NOTE:&lt;/b&gt; Native checkbox elements must set indeterminate state with JavaScript.
-                            &lt;/div&gt;
-                            &lt;button class=&quot;btn btn-sm&quot; (click)=&quot;onToggleIndeterminateState($event)&quot; type=&quot;button&quot;&gt;
+                            &lt;button class="btn btn-sm" (click)="onToggleIndeterminateState($event)" type="button"&gt;
                                 Toggle Indeterminate State
                             &lt;/button&gt;
                         &lt;/div&gt;
+                        &lt;div class="checkbox-inline"&gt;
+                            &lt;input type="checkbox"
+                                   id="checkrads_10"
+                                   [indeterminate]="nativeIndeterminateState"&gt;
+                            &lt;label for="checkrads_10"&gt;Native indeterminate checkbox&lt;/label&gt;
+                            &lt;div&gt;
+                                &lt;b&gt;NOTE:&lt;/b&gt; Native checkbox elements must set indeterminate state with JavaScript.
+                            &lt;/div&gt;
+                        &lt;/div&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/form&gt;
+    &lt;form #form="ngForm" novalidate&gt;
+        &lt;section class="form-block"&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;With ngForm & ngModel&lt;/label&gt;
+                &lt;clr-checkbox
+                        name="termsCheckbox"
+                        class="checkbox-inline"
+                        id="checkrads_11"
+                        [clrInline]="true"
+                        [(ngModel)]="termsAgreement"&gt;
+                    I agree to the terms and conditions. {{ "{{ form.value | json \}\}" }}
+                &lt;/clr-checkbox&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/form&gt;
+    &lt;form&gt;
+        &lt;section class="form-block"&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;With a list of objects&lt;/label&gt;
+                &lt;clr-checkbox
+                        *ngFor="let item of list"
+                        [(clrChecked)]="item.running"
+                        [clrDisabled]="item.disabled"&gt;
+                            {{ "{{ item.ip \}\} \{\{ item.disabled ? ' Is disabled' : '' \}\}" }}
+                &lt;/clr-checkbox&gt;
+            &lt;/div&gt;
         &lt;/section&gt;
     &lt;/form&gt;
     </code>

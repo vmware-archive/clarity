@@ -4,6 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
+import {Status} from "./data/status";
+import {Server} from "./data/server";
 
 @Component({
     moduleId: module.id,
@@ -14,8 +16,14 @@ import {Component} from "@angular/core";
 })
 
 export class CheckboxesDemo {
-
+    list: Server[];
     indeterminateState: boolean = true;
+    nativeIndeterminateState: boolean = true;
+    termsAgreement: boolean = true;
+
+    constructor(private status: Status) {
+        this.list = status.fetch();
+    }
 
     onToggleIndeterminateState() {
         this.indeterminateState = !this.indeterminateState;

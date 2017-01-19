@@ -79,6 +79,18 @@ export default function(): void {
             flushAndAssertSelected(false);
         }));
 
+        it("supports selected rows even if the datagrid isn't selectable", fakeAsync(function () {
+            expect(selectionProvider.selectable).toBe(false);
+            expect(context.testComponent.item).toBeUndefined();
+            expect(context.clarityDirective.selected).toBe(false);
+            context.testComponent.selected = true;
+            context.detectChanges();
+            expect(context.clarityDirective.selected).toBe(true);
+            context.testComponent.selected = false;
+            context.detectChanges();
+            expect(context.clarityDirective.selected).toBe(false);
+        }));
+
         function flushAndAssertSelected(selected: boolean) {
             context.detectChanges();
             // ngModel is asynchronous, we need an extra change detection

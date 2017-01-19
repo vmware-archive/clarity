@@ -1,41 +1,35 @@
-/*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
- * This software is released under MIT license.
- * The full license information can be found in LICENSE in the root directory of this project.
- */
-import {Component} from "@angular/core";
+import { Component } from "@angular/core";
+import { CoreShapes } from "clarity-icons/shapes/core-shapes";
+import { BasicShapes } from "clarity-icons/shapes/basic-shapes";
+import { SocialShapes } from "clarity-icons/shapes/social-shapes";
+import { TechnologyShapes } from "clarity-icons/shapes/technology-shapes";
+
+
+let coreShapes = Object.keys(CoreShapes);
+let basicShapes = Object.keys(BasicShapes);
+let socialShapes = Object.keys(SocialShapes);
+let technologyShapes = Object.keys(TechnologyShapes);
+
 
 @Component({
     selector: "clr-icon-selection-demo",
+    // Note the .css extension here, not .scss. That's the best we can have at the moment.
     styleUrls: ["./iconography.demo.scss"],
     templateUrl: "./icon-selection.demo.html"
 })
 export class IconSelectionDemo {
-}
 
-/* 
+    hideShapesFromCore: string[] = [ "vm-bug" ];
 
---- TODO: When we have things been imported as expected, reinstate the dynamic rendering of icons...
+    coreShapes: string[] = coreShapes.filter((shape) => {
+        return this.hideShapesFromCore.indexOf(shape) === -1;
+    });
 
-import { Component } from "@angular/core";
-import { SVG_ICON_TEMPLATES } from "../../clarity-icons/svg-icon-templates";
+    basicShapes: string[] = basicShapes;
 
-let iconShapes = Object.keys(SVG_ICON_TEMPLATES);
-let nonAllowedShapes = ["vm-bug"];
-iconShapes = iconShapes.filter(shape => nonAllowedShapes.indexOf(shape) === -1);
+    socialShapes: string[] = socialShapes;
 
+    technologyShapes: string[] = technologyShapes;
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-icon-selection-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./iconography.demo.css"],
-    templateUrl: "./icon-selection.demo.html"
-})
-export class IconSelectionDemo {
-
-    shapes: string[] = iconShapes;
 
 }
-
-*/

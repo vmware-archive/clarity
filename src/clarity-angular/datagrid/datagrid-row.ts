@@ -27,15 +27,24 @@ export class DatagridRow {
 
     constructor(private selection: Selection) {}
 
+    private _selected = false;
     /**
      * Indicates if the row is selected
      */
     public get selected() {
-        return this.selection.isSelected(this.item);
+        if (this.selection.selectable) {
+            return this.selection.isSelected(this.item);
+        } else {
+            return this._selected;
+        }
     }
     @Input("clrDgSelected")
     public set selected(value: boolean) {
-        this.selection.setSelected(this.item, value);
+        if (this.selection.selectable) {
+            this.selection.setSelected(this.item, value);
+        } else {
+            this._selected = value;
+        }
     }
 
     @Output("clrDgSelectedChange") selectedChanged = new EventEmitter<boolean>(false);

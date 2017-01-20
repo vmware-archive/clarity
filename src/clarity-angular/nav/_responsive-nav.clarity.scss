@@ -292,6 +292,11 @@ $clr-transition-style: ease;
                         display: none;
                     }
                 }
+
+                .branding + .header-overflow-trigger,
+                .header-nav + .header-overflow-trigger {
+                    margin-left: auto;
+                }
             }
         }
 

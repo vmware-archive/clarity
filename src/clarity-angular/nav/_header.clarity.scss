@@ -363,7 +363,7 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
                 //Pull the dropdown menus of all dropdowns up to compensate
                 //for the height of the header.
                 &.bottom-right > .dropdown-menu,
-                &.bottom-left > .dropdown-menu, {
+                &.bottom-left > .dropdown-menu {
                     top: 85%;
                 }
 

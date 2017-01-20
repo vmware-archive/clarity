@@ -4,8 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-import {Server} from "./data/server";
-import {Status} from "./data/status";
 
 @Component({
     selector: "clr-checkboxes-demo",
@@ -14,16 +12,10 @@ import {Status} from "./data/status";
 
 export class CheckboxesDemo {
 
-    list: Server[];
     indeterminateState: boolean = true;
-    nativeIndeterminateState: boolean = true;
-    termsAgreement: boolean = true;
-
-    constructor(private status: Status) {
-        this.list = status.fetch();
-    }
 
     onToggleIndeterminateState() {
+        event.preventDefault();
         this.indeterminateState = !this.indeterminateState;
     }
 

@@ -91,7 +91,7 @@ gulp.task("bundle:clarity:js", ["typescript:clarity"], function () {
     builder.config({
         meta: {
             "@angular/*": {build: false},
-            "rxjs": {build: false}
+            "rxjs*": {build: false}
         },
         packages: {
             'clarity-angular': {main: 'index.js', defaultExtension: 'js'}
@@ -113,7 +113,7 @@ gulp.task("bundle:clarity:js:ng1", ["typescript:clarity"], function () {
 
     var packages = {
         'tmp/clarity-angular': {defaultExtension: 'js'},
-        'rxjs': {defaultExtension: 'js'}
+        'rxjs*': {defaultExtension: 'js'}
     };
 
     var builder = new Builder();

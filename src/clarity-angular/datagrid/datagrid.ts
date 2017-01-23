@@ -7,7 +7,7 @@ import {
     AfterViewInit, OnDestroy, Component, ContentChild, ContentChildren, EventEmitter,
     Input, Output, QueryList, AfterContentInit
 } from "@angular/core";
-import {Subscription} from "rxjs";
+import {Subscription} from "rxjs/Subscription";
 
 import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
 import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";

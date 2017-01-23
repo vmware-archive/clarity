@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-import {Subject} from "rxjs";
+import {Subject} from "rxjs/Subject";
 import {TestContext} from "./helpers.spec";
 import {Datagrid} from "./datagrid";
 import {State} from "./interfaces/state";

@@ -9,7 +9,7 @@ import {
     OnDestroy,
     OnInit
 } from "@angular/core";
-import {Subscription} from "rxjs";
+import {Subscription} from "rxjs/Subscription";
 
 import { ClrResponsiveNavigationService } from "./clrResponsiveNavigationService";
 import { ClrResponsiveNavCodes } from "./clrResponsiveNavCodes";

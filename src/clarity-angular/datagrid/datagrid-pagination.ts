@@ -6,7 +6,7 @@
 import {Component, Input, Output, EventEmitter, OnDestroy} from "@angular/core";
 
 import {Page} from "./providers/page";
-import {Subscription} from "rxjs";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     selector: "clr-dg-pagination",

@@ -6,7 +6,8 @@
 import {
     Component, Input, ViewChild, ElementRef, Renderer, AfterViewInit
 } from "@angular/core";
-import {Observable, Subject} from "rxjs";
+import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/Subject";
 import {Filter} from "../../interfaces/filter";
 import {StringFilter} from "../../interfaces/string-filter";
 import {CustomFilter} from "../../providers/custom-filter";

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Injectable} from "@angular/core";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
 
 import { ClrResponsiveNavCodes } from "./clrResponsiveNavCodes";
 import { ClrResponsiveNavControlMessage } from "./clrResponsiveNavControlMessage";

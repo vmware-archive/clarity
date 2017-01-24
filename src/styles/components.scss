@@ -422,7 +422,8 @@ _:-ms-fullscreen,
         }
     }
     &.is-dont-block &-text,
-    &.is-do-block &-text {
+    &.is-do-block &-text,
+    &.is-warn-block &-text{
         position: relative;
         h6 {
             margin-top: $bl-1_0;
@@ -441,11 +442,17 @@ _:-ms-fullscreen,
     &.is-dont-block &-text::before {
         background: #E62700;
     }
+    &.is-warn-block &-text::before {
+        background: #EB8D00;
+    }
     &.is-do-block &-do-dont {
         color: #318700;
     }
     &.is-dont-block &-do-dont {
         color: #E62700;
+    }
+    &.is-warn-block &-warn {
+        color: #EB8D00;
     }
 }
 

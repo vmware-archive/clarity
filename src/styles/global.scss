@@ -11,7 +11,7 @@ $bl-3_0: baselineRem(3);
 $bl-4_0: baselineRem(4);
 $clrweb-content-maxwidth: 900px;
 @mixin clarityWebBoxShadow {
-    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 3px 0 0 #d7d7d7;
 }
 
 @mixin clarityHeaderBackground {
@@ -204,6 +204,7 @@ body:not(.layout-home) {
 .header .branding .clarity-logo {
     background-image: url(../assets/images/clarity_logo.svg);
     margin-right: $bl-0_5 - 1;
+    min-idth: none;;
 }
 
 @media (max-width: 769px) {
@@ -276,4 +277,8 @@ body {
         width: auto;
         min-width: auto;
     }
+}
+
+.margin-top-24 {
+    margin-top: 24px;
 }

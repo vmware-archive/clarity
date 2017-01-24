@@ -152,8 +152,9 @@
         },
         {
             "url": "header",
-            "text": "Header & Subnav",
+            "text": "Header",
             "type": "component",
+            "newLayout": true,
             "ux": 20,
             "ui": 20,
             "core": -1,

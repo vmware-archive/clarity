@@ -49,8 +49,7 @@ $clr-active-nav-link-shadow: 0 -3px 0 $action-blues-dark-midtone inset;
             }
 
             &:hover,
-            &.active,
-            &:focus {
+            &.active {
                 box-shadow: $clr-active-nav-link-shadow;
                 transition: box-shadow 0.2s ease-in;
                 outline: 0; //box-shadow above will ensure that the links are accessible.

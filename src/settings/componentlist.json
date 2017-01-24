@@ -334,6 +334,18 @@
             "dox": 20
         },
         {
+            "url": "tree-view",
+            "text": "Tree View",
+            "type": "component",
+            "newLayout": true,
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20,
+            "isNew": true
+        },
+        {
             "url": "toggle-switches",
             "text": "Toggle Switches",
             "type": "component",

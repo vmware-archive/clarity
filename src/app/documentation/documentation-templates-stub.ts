@@ -31,6 +31,7 @@ export const TEMPLATES = {
   "stack-view": require("../../pages/documentation/stack-view.html"),
   "tables": require("../../pages/documentation/tables.html"),
   "tabs": require("../../pages/documentation/tabs.html"),
+  "tree-view": require("../../pages/documentation/tree-view.html"),
   "toggle-switches": require("../../pages/documentation/toggle-switches.html"),
   "tooltips": require("../../pages/documentation/tooltips.html"),
   "typography": require("../../pages/documentation/typography.html"),

@@ -31,6 +31,7 @@ import TogglesDemoModule from "./toggles/toggles.demo.module";
 import TooltipsDemoModule from "./tooltips/tooltips.demo.module";
 import TypographyDemoModule from "./typography/typography.demo.module";
 import WizardDemoModule from "./wizard/wizard.demo.module";
+import TreeDemoModule from "./tree-view/tree-view.demo.module";
 
 @NgModule({
   exports: [
@@ -61,6 +62,7 @@ import WizardDemoModule from "./wizard/wizard.demo.module";
     StackViewDemoModule,
     TablesDemoModule,
     TabsDemoModule,
+    TreeDemoModule,
     TogglesDemoModule,
     TooltipsDemoModule,
     TypographyDemoModule,

@@ -411,6 +411,9 @@ _:-ms-fullscreen,
             width: auto;
             max-width: 100%;
         }
+        &.is-left-aligned {
+            text-align: left;
+        }
     }
     &-text {
         padding-bottom: $bl-1_0;
@@ -618,4 +621,20 @@ clr-modal-style-design-demo {
     .clr-example .modal.static {
         padding: 0;
     }
+}
+
+.has-h4-margin {
+    margin-top: 72px;
+}
+
+.has-h6-margin {
+    margin-top: 48px;
+}
+
+.has-margin-top-b2 {
+    margin-top: 48px;
+}
+
+.clr-demo {
+    margin-top: 24px;
 }

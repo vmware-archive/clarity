@@ -2,6 +2,7 @@
  * This is a sad hack until we figure out a way to do dynamic requires with angular-cli.
  * It works fine with webpack, but angular-cli breaks them. See https://github.com/angular/angular-cli/issues/3306
  */
+//noinspection TsLint
 export const TEMPLATES = {
   "app-layout": require("../../pages/documentation/app-layout.html"),
   "alerts": require("../../pages/documentation/alerts.html"),

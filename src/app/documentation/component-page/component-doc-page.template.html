@@ -1,6 +1,9 @@
 <div class="dox-wrapper dox-header" [class.new-component-layout]="useNewLayout">
     <section>
         <h1>{{title}}</h1>
+        <h5 *ngIf="description">
+            {{ description }}
+        </h5>
 
         <div *ngIf="!useNewLayout" class="component-workstream-bugs">
             <span class="bug bug-html" [class.hidden]="!uiDone && !uiInProgress">
@@ -22,12 +25,80 @@
 
         <div class="dox-tabs">
             <ul class="list-unstyled" [scrollspy]="scrollable">
-                <li *ngIf="!useNewLayout"><a routerLink="." fragment="top" id="topTabLink" class="clrweb-tablink active">Examples &amp; Code</a></li>
-                <li *ngIf="!useNewLayout"><a routerLink="." fragment="guidelines" class="clrweb-tablink" id="guidelinesTabLink">Design Guidelines</a></li>
-                <li *ngIf="useNewLayout"><a routerLink="." fragment="top" id="topTabLink" class="clrweb-tablink active" id="guidelinesTabLink">Design Guidelines</a></li>
-                <li *ngIf="useNewLayout"><a routerLink="." fragment="examples" class="clrweb-tablink">Code & Examples</a></li>
+                <li *ngIf="!useNewLayout">
+                    <a routerLink="."
+                       routerLinkActive="active"
+                       fragment="top"
+                       id="topTabLink"
+                       class="clrweb-tablink">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <li *ngIf="!useNewLayout">
+                    <a routerLink="."
+                       routerLinkActive="active"
+                       fragment="guidelines"
+                       class="clrweb-tablink"
+                       id="guidelinesTabLink">
+                        Design Guidelines
+                    </a>
+                </li>
+                <li *ngIf="useNewLayout">
+                    <a routerLink="."
+                       routerLinkActive="active"
+                       fragment="top"
+                       id="topTabLink"
+                       class="clrweb-tablink">
+                        Design Guidelines
+                    </a>
+                </li>
+                <li *ngIf="useNewLayout">
+                    <a routerLink="."
+                       routerLinkActive="active"
+                       fragment="examples"
+                       class="clrweb-tablink"
+                       id="guidelinesTabLink">
+                        Code &amp; Examples
+                    </a>
+                </li>
             </ul>
         </div>
+        <!--<div class="dox-tabs">-->
+            <!--<ul class="list-unstyled" [scrollspy]="scrollable">-->
+                <!--<li *ngIf="!useNewLayout">-->
+                    <!--<a routerLink="."-->
+                       <!--fragment="top"-->
+                       <!--id="topTabLink"-->
+                       <!--class="clrweb-tablink active">-->
+                        <!--Code & Examples-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li *ngIf="!useNewLayout">-->
+                    <!--<a routerLink="."-->
+                       <!--fragment="guidelines"-->
+                       <!--class="clrweb-tablink"-->
+                       <!--id="guidelinesTabLink">-->
+                        <!--Design Guidelines-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li *ngIf="useNewLayout">-->
+                    <!--<a routerLink="."-->
+                       <!--fragment="top"-->
+                       <!--id="topTabLink"-->
+                       <!--class="clrweb-tablink active"-->
+                       <!--id="guidelinesTabLink">-->
+                        <!--Design Guidelines-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li *ngIf="useNewLayout">-->
+                    <!--<a routerLink="."-->
+                       <!--fragment="examples"-->
+                       <!--class="clrweb-tablink">-->
+                        <!--Code & Examples-->
+                    <!--</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
     </section>
 </div>
 

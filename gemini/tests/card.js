@@ -20,7 +20,11 @@ gemini.suite('card', (child) => {
                 actions.wait(WAIT_LOAD_TIME);
             })
             .setCaptureElements('.clr-example')
-            .capture('default');
+            .capture('default')
+            .capture('hovered', (actions, find) => {
+                actions.mouseMove(find('.card'));
+                actions.wait(WAIT_TIME);
+            });
     });
 
     gemini.suite('dropdown', (child) => {

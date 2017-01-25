@@ -5,11 +5,11 @@
  */
 
 import { ClarityIcons } from "./index";
-import { BasicShapes } from "./shapes/basic-shapes";
+import { EssentialShapes } from "./shapes/essential-shapes";
 import { SocialShapes } from "./shapes/social-shapes";
 import { TechnologyShapes } from "./shapes/technology-shapes";
 
-ClarityIcons.add(BasicShapes);
+ClarityIcons.add(EssentialShapes);
 ClarityIcons.add(SocialShapes);
 ClarityIcons.add(TechnologyShapes);
 

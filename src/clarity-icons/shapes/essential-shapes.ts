@@ -3,9 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-/* TODO: BasicShapes is deprecated, so is this task and will be removed in 0.9.0 */
+
 /* tslint:disable:max-line-length */
-export const basicShapes: any = {
+export const essentialShapes: any = {
 
     "pencil": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
@@ -785,7 +785,7 @@ export const basicShapes: any = {
 
 if (window.hasOwnProperty("ClarityIcons")) {
 
-    window[ "ClarityIcons" ].add(basicShapes);
+    window[ "ClarityIcons" ].add(essentialShapes);
 }
 
-export { basicShapes as BasicShapes };
+export { essentialShapes as EssentialShapes };

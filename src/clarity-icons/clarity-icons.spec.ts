@@ -6,7 +6,7 @@
 
 import { ClarityIcons } from "./index";
 import { CoreShapes } from "./shapes/core-shapes";
-import { BasicShapes } from "./shapes/basic-shapes";
+import { EssentialShapes } from "./shapes/essential-shapes";
 
 describe("ClarityIcons", () => {
 
@@ -48,17 +48,17 @@ describe("ClarityIcons", () => {
             expect(ClarityIcons.get("check").trim()).toEqual(CoreShapes[ "check" ].trim());
         });
 
-        it("should return all icons when no argument is passed in passed after including BasicShapes", () => {
+        it("should return all icons when no argument is passed in passed after including EssentialShapes", () => {
 
-            ClarityIcons.add(BasicShapes);
-            let currentAllShapes = Object.assign({}, CoreShapes, BasicShapes);
+            ClarityIcons.add(EssentialShapes);
+            let currentAllShapes = Object.assign({}, CoreShapes, EssentialShapes);
 
             testAllShapes(currentAllShapes);
         });
 
-        it("should return BasicShapes['pencil'] when 'pencil' is passed in after including BasicShapes", () => {
+        it("should return EssentialShapes['pencil'] when 'pencil' is passed in after including EssentialShapes", () => {
 
-            expect(ClarityIcons.get("pencil").trim()).toEqual(BasicShapes[ "pencil" ].trim());
+            expect(ClarityIcons.get("pencil").trim()).toEqual(EssentialShapes[ "pencil" ].trim());
         });
 
         it("should throw an error if the requested shape doesn't exist", () => {

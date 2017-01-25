@@ -5,13 +5,13 @@
  */
 import { Component } from "@angular/core";
 import { CoreShapes } from "../../clarity-icons/shapes/core-shapes";
-import { BasicShapes } from "../../clarity-icons/shapes/basic-shapes";
+import { EssentialShapes } from "../../clarity-icons/shapes/essential-shapes";
 import { SocialShapes } from "../../clarity-icons/shapes/social-shapes";
 import { TechnologyShapes } from "../../clarity-icons/shapes/technology-shapes";
 
 
 let coreShapes = Object.keys(CoreShapes);
-let basicShapes = Object.keys(BasicShapes);
+let essentialShapes = Object.keys(EssentialShapes);
 let socialShapes = Object.keys(SocialShapes);
 let technologyShapes = Object.keys(TechnologyShapes);
 
@@ -31,7 +31,7 @@ export class IconSelectionDemo {
         return this.hideShapesFromCore.indexOf(shape) === -1;
     });
 
-    basicShapes: string[] = basicShapes;
+    essentialShapes: string[] = essentialShapes;
 
     socialShapes: string[] = socialShapes;
 

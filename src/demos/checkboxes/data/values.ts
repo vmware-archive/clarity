@@ -11,26 +11,31 @@ export const SERVERS: Server[] = [
         ip: "192.168.1.42",
         running: false,
         name: "Crystal View",
-        disabled: true
+        disabled: true,
+        inline: true
     }, {
         ip: "192.268.1.19",
         running: true,
         name: "Turbulent Foam",
-        disabled: false
+        disabled: false,
+        inline: true
     }, {
         ip: "192.268.1.11",
         running: false,
         name: "Bright Sunshine",
-        disabled: false
+        disabled: false,
+        inline: false
     }, {
         ip: "192.268.1.3",
         running: true,
         name: "Scary Numbers",
-        disabled: true
+        disabled: true,
+        inline: false
     }, {
         ip: "192.268.1.180",
         running: false,
         name: "Loud Silence",
-        disabled: false
+        disabled: false,
+        inline: false
     },
 ];

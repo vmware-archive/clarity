@@ -11,6 +11,7 @@ import {ClarityModule} from 'clarity-angular';
 import {CheckboxesDemo} from "./checkboxes.demo";
 
 import {Status} from "./data/status";
+import {Example} from "./utils/example";
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import {Status} from "./data/status";
         ClarityModule.forChild(),
     ],
     declarations: [
-        CheckboxesDemo
+        CheckboxesDemo,
+        Example
     ],
     providers: [
         Status

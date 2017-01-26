@@ -7,6 +7,117 @@ import {Component} from "@angular/core";
 import {Server} from "./data/server";
 import {Status} from "./data/status";
 
+const EXAMPLE_CLARITY_CHECKBOX = `
+<form>
+        <section class="form-block">
+            <div class="form-group">
+                <label>Angular Checkbox</label>
+                <clr-checkbox [clrChecked]="true">
+                    Clarity checkbox
+                </clr-checkbox>
+            </div>
+        </section>
+    </form>
+`;
+
+const EXAMPLE_CLARITY_INDETERMINATE = `
+<form>
+        <section class="form-block">
+            <div class="form-group">
+                <label>Indeterminate Checkbox</label>
+                <clr-checkbox [(clrIndeterminate)]="indeterminateState">
+                    Clarity indeterminate checkbox
+                </clr-checkbox>
+                <div>
+                    <button class="btn btn-sm" (click)="onToggleIndeterminateState($event)" type="button">
+                        Toggle Indeterminate State
+                    </button>
+                </div>
+            </div>
+        </section>
+    </form>
+`;
+
+const EXAMPLE_NATIVE_INDETERMINATE = `
+<form>
+        <section class="form-block">
+            <div class="form-group">
+                <label>Native Indeterminate Checkbox</label>
+                <div class="checkbox">
+                    <input type="checkbox"
+                           id="checkrads_10"
+                           [indeterminate]="nativeIndeterminateState">
+                    <label for="checkrads_10">Native indeterminate checkbox</label>
+                </div>
+            </div>
+        </section>
+    </form>
+`;
+
+const EXAMPLE_NG_FORM = `
+<form #form="ngForm" novalidate>
+        <section class="form-block">
+            <div class="form-group">
+                <label>With ngForm & ngModel</label>
+                <clr-checkbox
+                        name="termsCheckbox"
+                        id="checkrads_11"
+                        [(ngModel)]="termsAgreement">
+                    I agree to the terms and conditions.
+                </clr-checkbox>
+                <div>
+                    Value of termsAgreement: {{termsAgreement}}
+                </div>
+            </div>
+        </section>
+    </form>
+`;
+
+const EXAMPLE = `
+<form>
+        <section class="form-block">
+            <div class="form-group">
+                <label>With a list of objects</label>
+                <clr-checkbox *ngFor="let item of list"
+                    [(clrChecked)]="item.running"
+                    [clrDisabled]="item.disabled">
+                    {{ item.name }} @ {{item.ip}} {{ item.disabled ? ' is disabled.' : (item.running ? ' is running.' : 'is off.') }}
+                </clr-checkbox>
+            </div>
+        </section>
+    </form>
+`;
+
+const EXAMPLE_INLINE = `
+<form>
+        <section class="form-block">
+            <div class="form-group">
+                <label>Inline Checkboxes</label>
+                <clr-checkbox
+                        [clrChecked]="true"
+                        [clrInline]="true">
+                    Inline checkbox 1
+                </clr-checkbox>
+                <clr-checkbox
+                        [clrChecked]="true"
+                        [clrInline]="true">
+                    Inline checkbox 2
+                </clr-checkbox>
+                <clr-checkbox
+                        [clrChecked]="true"
+                        [clrInline]="true">
+                    Inline checkbox 3
+                </clr-checkbox>
+            </div>
+        </section>
+    </form>
+`;
+
+
+
+
+
+
 @Component({
     selector: "clr-checkboxes-demo",
     templateUrl: "./checkboxes.demo.html"
@@ -26,5 +137,12 @@ export class CheckboxesDemo {
     onToggleIndeterminateState() {
         this.indeterminateState = !this.indeterminateState;
     }
+
+    example_clarity_checkbox = EXAMPLE_CLARITY_CHECKBOX;
+    example_indeterminate_checkbox = EXAMPLE_CLARITY_INDETERMINATE;
+    example_native_indeterminate = EXAMPLE_NATIVE_INDETERMINATE;
+    example_ng_form = EXAMPLE_NG_FORM;
+    example = EXAMPLE;
+    example_inline = EXAMPLE_INLINE;
 
 }

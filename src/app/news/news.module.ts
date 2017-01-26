@@ -9,6 +9,7 @@ import {RELEASE_ROUTES} from "./release-page/release-pages";
 import {BreakingChange} from './counters/breaking-change.directive';
 import {BugFix} from "./counters/bug-fix.directive";
 import {NewComponent} from "./counters/new-component.directive";
+import { componentList } from "../utils/component-list";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import {NewComponent} from "./counters/new-component.directive";
     BreakingChange,
     BugFix,
     NewComponent,
-    ...RELEASE_ROUTES.map(({component}) => component),
+    RELEASE_ROUTES.map(componentList),
   ],
   imports: [
     CommonModule,

@@ -12,6 +12,7 @@ import {NewLayoutAlertComponent} from "./utils/new-layout-alert.component";
 import {StatusDotComponent} from "./component-status/status-dot.component";
 import {ALL_DOCS} from "./component-page/component-doc-pages";
 import {DemosModule} from "../../demos/demos.module";
+import { componentList } from "../utils/component-list";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import {DemosModule} from "../../demos/demos.module";
     ComponentStatusComponent,
     StatusDotComponent,
     NewLayoutAlertComponent,
-    ...ALL_DOCS.map(({component}) => component)
+    ALL_DOCS.map(componentList)
   ],
   imports: [
     CommonModule,

@@ -103,6 +103,13 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     }
 
     /**
+     * Public method to re-trigger the computation of displayed items manually
+     */
+    public dataChanged() {
+        this.items.refresh();
+    }
+
+    /**
      * We grab the smart iterator from projected content
      */
     @ContentChild(DatagridItems) public iterator: DatagridItems;

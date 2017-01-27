@@ -70,6 +70,15 @@ export class Items {
     }
 
     /**
+     * Manually recompute the list of displayed items
+     */
+    public refresh() {
+        if (this.smart) {
+            this._filterItems();
+        }
+    }
+
+    /**
      * Internal temporary step, which we preserve to avoid re-filtering or re-sorting if not necessary
      */
     private _filtered: any[];

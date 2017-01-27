@@ -2,18 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-//Because the "rem" unit does not work on pseudo-elements in IE,
-//we use a function to compute "rem" to "px" with Sass.
-
-$clr-baseline: 24px !default;
-
-@function rem($remSize) {
-    @return $remSize * $clr-font-size;
-};
-
-@function baselineRem($remSize) {
-    @return $remSize * $clr-baseline;
-}
 
 //Get a selector for all the input types specified
 @function inputs($types...) {

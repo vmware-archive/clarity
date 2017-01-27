@@ -6,6 +6,12 @@
 @import "./helpers.clarity";
 @import "../color/color.clarity";
 
+$clr-baseline: 24px !default;
+
+@function baselineRem($remSize) {
+  @return $remSize * $clr-baseline;
+}
+
 //BaselineRem Variables
 $clr_baselineRem_0_1: baselineRem(0.1);
 $clr_baselineRem_0_125: baselineRem(0.125);
@@ -47,6 +53,15 @@ $clr-kerning-lotsatext: normal !default; // 14px, but a lot of it
 $clr-kerning-smalltext: normal !default; // 14px-12px
 $clr-kerning-bigtext: 0.01em !default; // some types of 16px over dark background
 $clr-kerning-tinytext: 0.03em !default; // 11px and lower
+
+
+//Because the "rem" unit does not work on pseudo-elements in IE,
+//we use a function to compute "rem" to "px" with Sass.
+@function rem($remSize) {
+  @return $remSize * $clr-font-base-size * 1px;
+};
+
+
 
 $clr-font-weights: (
     light: 200,

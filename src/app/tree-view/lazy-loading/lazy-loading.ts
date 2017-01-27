@@ -5,11 +5,65 @@
  */
 import {Component, ViewChild} from "@angular/core";
 
-import {TreeNode} from "../../../clarity-angular/tree-view/tree-node";
+import {TreeNode} from "clarity-angular/tree-view/tree-node";
 
-import "clarity-icons/shapes/essential-shapes";
+import "clarity-icons/shapes/basic-shapes";
 import "clarity-icons/shapes/technology-shapes";
 import "clarity-icons/shapes/social-shapes";
+
+const EXAMPLE_HTML = `
+<clr-tree-node [clrTreeNodeExpanded]="true">
+        <clr-icon shape="folder"></clr-icon>
+        Desktop
+        <clr-tree-node
+                #lazyTreeNode
+                [clrTreeNodeExpandable]="true"
+                (clrTreeNodeExpandedChange)="fetchFiles()"
+                [clrTreeNodeLoading]="loading">
+            <clr-icon [attr.shape]="dirShape"></clr-icon>
+            {{dirName}}
+    
+            <clr-tree-node *ngFor="let file of files">
+                <clr-icon [attr.shape]="file.icon"></clr-icon>
+                {{file.name}}
+            </clr-tree-node>
+        </clr-tree-node>
+        <clr-tree-node [clrTreeNodeExpanded]="true">
+            <clr-icon shape="folder"></clr-icon>
+            Files
+            <clr-tree-node>
+                <clr-icon shape="file"></clr-icon>
+                Cover-Letter.doc
+            </clr-tree-node>
+            <clr-tree-node>
+                <clr-icon shape="file"></clr-icon>
+                Notes.txt
+            </clr-tree-node>
+            <clr-tree-node>
+                <clr-icon shape="file"></clr-icon>
+                Resume.doc
+            </clr-tree-node>
+        </clr-tree-node>
+    </clr-tree-node>
+`;
+
+const EXAMPLE_TS = `
+    export class TreeNodeLazyLoadingDemo {
+        loading: boolean = false;
+    
+        fetchFiles() {
+            if (this.files.length > 0) {
+                return;
+            }
+            this.loading = true;
+            
+            //Fetch files from the server
+            
+            //After data is retrieved
+            this.loading = false;
+        }
+    }
+`;
 
 @Component({
     moduleId: module.id,
@@ -19,7 +73,11 @@ import "clarity-icons/shapes/social-shapes";
     templateUrl: "./lazy-loading.html"
 })
 export class TreeNodeLazyLoadingDemo {
+    exampleHTML = EXAMPLE_HTML;
+    exampleTS = EXAMPLE_TS;
+
     dirName: string = "Applications";
+    dirShape: string = "folder";
     files: any[] = [];
     loading: boolean = false;
 

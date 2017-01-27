@@ -4,17 +4,41 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<clr-tree-node
-    #lazyTreeNode
-    [clrTreeNodeExpandable]="true"
-    (clrTreeNodeExpandedChange)="fetchFiles()"
-    [clrTreeNodeLoading]="loading">
-    {{dirName}}
+<clr-tree-node [clrTreeNodeExpanded]="true">
+    <clr-icon shape="folder"></clr-icon>
+    Desktop
+    <clr-tree-node
+            #lazyTreeNode
+            [clrTreeNodeExpandable]="true"
+            (clrTreeNodeExpandedChange)="fetchFiles()"
+            [clrTreeNodeLoading]="loading">
+        <clr-icon [attr.shape]="dirShape"></clr-icon>
+        {{dirName}}
 
-    <clr-tree-node *ngFor="let file of files">
-        <clr-icon [attr.shape]="file.icon"></clr-icon>
-        {{file.name}}
+        <clr-tree-node *ngFor="let file of files">
+            <clr-icon [attr.shape]="file.icon"></clr-icon>
+            {{file.name}}
+        </clr-tree-node>
+    </clr-tree-node>
+    <clr-tree-node [clrTreeNodeExpanded]="true">
+        <clr-icon shape="folder"></clr-icon>
+        Files
+        <clr-tree-node>
+            <clr-icon shape="file"></clr-icon>
+            Cover-Letter.doc
+        </clr-tree-node>
+        <clr-tree-node>
+            <clr-icon shape="file"></clr-icon>
+            Notes.txt
+        </clr-tree-node>
+        <clr-tree-node>
+            <clr-icon shape="file"></clr-icon>
+            Resume.doc
+        </clr-tree-node>
     </clr-tree-node>
 </clr-tree-node>
 
 <button class="btn btn-sm" type="button" (click)="onReset()">Reset Results</button>
+
+<clr-example [clrCode]="exampleHTML" clrLanguage="html"></clr-example>
+<clr-example [clrCode]="exampleTS" clrLanguage="typescript"></clr-example>

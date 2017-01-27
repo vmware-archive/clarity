@@ -136,6 +136,39 @@ export default function(): void {
             expect(latestDisplayed).toEqual([42]);
             expect(nbChanges).toBe(6);
         });
+
+        describe("manual refresh", function() {
+            beforeEach(function() {
+                this.users = [{name: "hello"}, {name: "world"}];
+                this.itemsInstance.smartenUp();
+                this.itemsInstance.all = this.users;
+            });
+
+            it("forces refiltering", function() {
+                let filter = new NameFilter();
+                this.filtersInstance.add(filter);
+                filter.search("o");
+                this.users[0].name = "zzz";
+                expect(this.itemsInstance.displayed).toEqual([{name: "zzz"}, {name: "world"}]);
+                this.itemsInstance.refresh();
+                expect(this.itemsInstance.displayed).toEqual([{name: "world"}]);
+            });
+
+            it("forces resorting", function() {
+                let comparator = new NameComparator();
+                this.sortInstance.toggle(comparator);
+                this.users[0].name = "zzz";
+                expect(this.itemsInstance.displayed).toEqual([{name: "zzz"}, {name: "world"}]);
+                this.itemsInstance.refresh();
+                expect(this.itemsInstance.displayed).toEqual([{name: "world"}, {name: "zzz"}]);
+            });
+
+            /*
+             * No need to test pagination, the only way it would change is due to data mutation
+             * is if the filters themselves changed, which we already tested
+             */
+        });
+
     });
 };
 
@@ -161,5 +194,29 @@ class EvenFilter implements Filter<number> {
 class TestComparator implements Comparator<number> {
     compare(a: number, b: number): number {
         return a - b;
+    }
+}
+
+class NameFilter implements Filter<any> {
+    private _search = "";
+    public search(value: string) {
+        this._search = value;
+        this.changes.next(value);
+    }
+
+    isActive(): boolean {
+        return this._search.length > 0;
+    };
+
+    changes = new Subject<string>();
+
+    accepts(user: any): boolean {
+        return user.name.includes(this._search);
+    };
+}
+
+class NameComparator implements Comparator<any> {
+    compare(a: any, b: any): number {
+        return (a.name < b.name) ? -1 : 1;
     }
 }

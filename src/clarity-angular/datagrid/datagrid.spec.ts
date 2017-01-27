@@ -12,11 +12,30 @@ import {Selection} from "./providers/selection";
 import {Sort} from "./providers/sort";
 import {Filters} from "./providers/filters";
 import {Page} from "./providers/page";
+import {Items} from "./providers/items";
 import {Comparator} from "./interfaces/comparator";
 import {Filter} from "./interfaces/filter";
 
 export default function(): void {
     describe("Datagrid component", function() {
+        describe("Typescript API", function() {
+            let context: TestContext<Datagrid, FullTest>;
+
+            beforeEach(function () {
+                context = this.create(Datagrid, FullTest);
+            });
+
+            it("allows to manually force a refresh of displayed items when data mutates", function() {
+                let items: Items = context.getClarityProvider(Items);
+                let refreshed = false;
+                items.change.subscribe(() => refreshed = true);
+                expect(refreshed).toBe(false);
+                context.clarityDirective.dataChanged();
+                expect(refreshed).toBe(true);
+            });
+
+        });
+
         describe("Template API", function() {
             let context: TestContext<Datagrid, FullTest>;
 

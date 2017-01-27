@@ -5,6 +5,22 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE_HTML = `
+<clr-tree-node [(clrTreeNodeExpanded)]="expanded">
+        {{expanded ? "I am expanded" : "I am collapsed"}}
+    
+        <clr-tree-node>
+            Child Tree Node
+        </clr-tree-node>
+    </clr-tree-node>
+`;
+
+const EXAMPLE_TS = `
+export class TreeNodeLabelChangeOnExpandDemo {
+        expanded: boolean = true;
+    }
+`;
+
 @Component({
     moduleId: module.id,
     selector: "clr-tree-node-label-change-expand-demo",
@@ -13,5 +29,8 @@ import {Component} from "@angular/core";
     templateUrl: "./label-change-on-expand.html"
 })
 export class TreeNodeLabelChangeOnExpandDemo {
-    expanded: boolean = false;
+    exampleHTML = EXAMPLE_HTML;
+    exampleTS = EXAMPLE_TS;
+
+    expanded: boolean = true;
 }

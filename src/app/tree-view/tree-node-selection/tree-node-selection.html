@@ -3,25 +3,36 @@
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
-<clr-tree [(clrTreeSelected)]="selection">
-    <clr-tree-node [clrTreeModel]="'Home'">
-        Home
-        <clr-tree-node [clrTreeModel]="'Documents'">
-            Documents
-            <clr-tree-node [clrTreeModel]="'doc1'">Document1.txt</clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'doc2'">Document2.txt</clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'doc3'">Document3.txt</clr-tree-node>
-        </clr-tree-node>
-
+<div class="clr-example">
+    <clr-tree
+            [(clrTreeSelected)]="selection">
         <clr-tree-node
-                [clrTreeModel]="'Pictures'"
-                [clrTreeNodeSelected]="picturesNodeSelection">
-            Pictures
-            <clr-tree-node [clrTreeModel]="'pic1'">pic1.png</clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'pic2'">pic2.png</clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'pic3'">pic3.png</clr-tree-node>
-        </clr-tree-node>
-    </clr-tree-node>
-</clr-tree>
+                [clrTreeModel]="'Home'"
+                [clrTreeNodeExpanded]="true">
+            Home
+            <clr-tree-node
+                    [clrTreeModel]="'Documents'"
+                    [clrTreeNodeExpanded]="true">
+                Documents
+                <clr-tree-node [clrTreeModel]="'doc1'">Document1.txt</clr-tree-node>
+                <clr-tree-node [clrTreeModel]="'doc2'">Document2.txt</clr-tree-node>
+                <clr-tree-node [clrTreeModel]="'doc3'">Document3.txt</clr-tree-node>
+            </clr-tree-node>
 
-<button class="btn btn-sm" type="button" (click)="togglePicturesSelection()">Toggle Pictures</button>
+            <clr-tree-node
+                    [clrTreeNodeExpanded]="true"
+                    [clrTreeModel]="'Pictures'"
+                    [clrTreeNodeSelected]="picturesNodeSelection">
+                Pictures
+                <clr-tree-node [clrTreeModel]="'pic1'">pic1.png</clr-tree-node>
+                <clr-tree-node [clrTreeModel]="'pic2'">pic2.png</clr-tree-node>
+                <clr-tree-node [clrTreeModel]="'pic3'">pic3.png</clr-tree-node>
+            </clr-tree-node>
+        </clr-tree-node>
+    </clr-tree>
+
+    <button class="btn btn-sm" type="button" (click)="togglePicturesSelection()">Toggle Pictures</button>
+</div>
+
+<clr-example [clrCode]="exampleHTML" clrLanguage="html"></clr-example>
+<clr-example [clrCode]="exampleTS" clrLanguage="typescript"></clr-example>

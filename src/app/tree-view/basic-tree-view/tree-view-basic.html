@@ -57,10 +57,13 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-8">
         <pre *ngIf="displaySelection.length < 3" class="example-display-json">
-<em>No nodes selected</em>
+    <em>No nodes selected</em>
         </pre>
         <pre class="example-display-json" *ngIf="displaySelection.length > 2">
 {{displaySelection}}
         </pre>
     </div>
 </div>
+
+<clr-example [clrCode]="exampleHTML" clrLanguage="html"></clr-example>
+<clr-example [clrCode]="exampleTS" clrLanguage="typescript"></clr-example>

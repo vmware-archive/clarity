@@ -2,8 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../_utils/code";
-
 .example-margin-bottom {
     margin-bottom: 24px;
 }
@@ -20,24 +18,10 @@
 }
 
 .example-display-json {
+    padding: 12px;
     margin: 0;
     max-height: 480px;
-    height: 100%;
+    height: 480px;
     overflow-y: auto;
     overflow-x: hidden;
-    font-size: 10px;
-    line-height: 12px;
-    padding: 12px;
-    border: none;
-    background: $clr-white;
-}
-
-@media screen and (max-width: map-get($clr-breakpoints, small)) {
-    .example-display-json {
-        margin-top: 24px;
-    }
-}
-
-.example-beatles-tree {
-    margin-top: 24px;
 }

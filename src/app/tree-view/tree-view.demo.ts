@@ -15,12 +15,14 @@ import {Component} from "@angular/core";
 
         <ul>
             <li><a [routerLink]="['./basic-tree-node']">Basic Tree Node Structure</a></li>
+            <li><a [routerLink]="['./basic-tree-node-dm']">Basic Tree Node Structure - Dunder Mifflin</a></li>
             <li><a [routerLink]="['./basic-tree-view']">Basic Tree View Structure</a></li>
             <li><a [routerLink]="['./tree-view-dynamic']">Dynamic Tree View</a></li>
             <li><a [routerLink]="['./lazy-loading']">Lazy Loading</a></li>
             <li><a [routerLink]="['./tree-node-label-change-expand']">Label Change on Expand</a></li>
             <li><a [routerLink]="['./tree-view-compact']">Compact Tree</a></li>
             <li><a [routerLink]="['./tree-node-selection']">Tree Node Selection</a></li>
+            <li><a [routerLink]="['./tree-selection-code-snippet']">Tree Selection Code Snippet</a></li>
             <li><a [routerLink]="['./tree-node-routing']">Tree Node Routing</a></li>
             <li><a [routerLink]="['./tree-node-prepopulate']">Pre-populating Trees</a></li>
         </ul>

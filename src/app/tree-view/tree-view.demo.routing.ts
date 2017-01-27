@@ -19,6 +19,8 @@ import {TreeNodeRoutingRubberSoulDemo} from "./tree-node-routing/tree-node-routi
 import {TreeNodeRoutingAbbeyRoadDemo} from "./tree-node-routing/tree-node-routing-abbey-road";
 import {TreeNodeRoutingRevolverDemo} from "./tree-node-routing/tree-node-routing-revolver";
 import {TreeViewPrepopulateDemo} from "./tree-view-prepopulate/tree-view-prepopulate";
+import {TreeSelectionCodeSnippetDemo} from "./tree-selection-code-snippet/tree-selection-code-snippet";
+import {TreeNodeBasicStructureDMDemo} from "./basic-tree-node-DM/tree-node-basic-DM";
 
 const ROUTES: Routes = [
     {
@@ -27,12 +29,14 @@ const ROUTES: Routes = [
         children: [
             { path: "", redirectTo: "basic-tree-node", pathMatch: "full" },
             { path: "basic-tree-node", component: TreeNodeBasicStructureDemo },
+            { path: "basic-tree-node-dm", component: TreeNodeBasicStructureDMDemo },
             { path: "basic-tree-view", component: TreeViewBasicStructureDemo },
             { path: "lazy-loading", component: TreeNodeLazyLoadingDemo },
             { path: "tree-view-dynamic", component: TreeViewDynamicDemo },
             { path: "tree-node-label-change-expand", component: TreeNodeLabelChangeOnExpandDemo},
             { path: "tree-view-compact", component: TreeViewCompactDemo},
             { path: "tree-node-selection", component: TreeNodeSelectionDemo},
+            { path: "tree-selection-code-snippet", component: TreeSelectionCodeSnippetDemo},
             {
                 path: "tree-node-routing",
                 component: TreeNodeRoutingDemo,

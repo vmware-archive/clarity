@@ -21,6 +21,9 @@ import {TreeNodeRoutingRubberSoulDemo} from "./tree-node-routing/tree-node-routi
 import {TreeNodeRoutingAbbeyRoadDemo} from "./tree-node-routing/tree-node-routing-abbey-road";
 import {TreeNodeRoutingRevolverDemo} from "./tree-node-routing/tree-node-routing-revolver";
 import {TreeViewPrepopulateDemo} from "./tree-view-prepopulate/tree-view-prepopulate";
+import {TreeNodeBasicStructureDMDemo} from "./basic-tree-node-DM/tree-node-basic-DM";
+import {Example} from "./utils/example";
+import {TreeSelectionCodeSnippetDemo} from "./tree-selection-code-snippet/tree-selection-code-snippet";
 
 @NgModule({
     imports: [
@@ -31,27 +34,32 @@ import {TreeViewPrepopulateDemo} from "./tree-view-prepopulate/tree-view-prepopu
     declarations: [
         TreeViewDemo,
         TreeNodeBasicStructureDemo,
+        TreeNodeBasicStructureDMDemo,
         TreeViewBasicStructureDemo,
         TreeViewDynamicDemo,
         TreeNodeLazyLoadingDemo,
         TreeNodeLabelChangeOnExpandDemo,
         TreeViewCompactDemo,
         TreeNodeSelectionDemo,
+        TreeSelectionCodeSnippetDemo,
         TreeNodeRoutingDemo,
         TreeNodeRoutingRubberSoulDemo,
         TreeNodeRoutingAbbeyRoadDemo,
         TreeNodeRoutingRevolverDemo,
-        TreeViewPrepopulateDemo
+        TreeViewPrepopulateDemo,
+        Example
     ],
     exports: [
         TreeViewDemo,
         TreeNodeBasicStructureDemo,
+        TreeNodeBasicStructureDMDemo,
         TreeViewBasicStructureDemo,
         TreeViewDynamicDemo,
         TreeNodeLazyLoadingDemo,
         TreeNodeLabelChangeOnExpandDemo,
         TreeViewCompactDemo,
         TreeNodeSelectionDemo,
+        TreeSelectionCodeSnippetDemo,
         TreeNodeRoutingDemo,
         TreeNodeRoutingRubberSoulDemo,
         TreeNodeRoutingAbbeyRoadDemo,

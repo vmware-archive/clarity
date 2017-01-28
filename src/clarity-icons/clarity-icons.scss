@@ -72,18 +72,12 @@ clr-icon {
         @include rotateSVGIcon(270deg);
     }
     .clr-i-badge {
-        @include setIconColor($clr-icon-color-warning);
+        @include setIconColor($clr-icon-color-danger);
     }
     &>svg {
         height: 100%;
         width: 100%;
         display: block;
-    }
-    .transparent-fill-stroke {
-        fill: none;
-        stroke-width: 1.3;
-        stroke-linejoin: round;
-        stroke-miterlimit: 10;
     }
     .clr-i-solid,
     .clr-i-solid--badged,

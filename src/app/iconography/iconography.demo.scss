@@ -3,11 +3,30 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 @import "../_utils/code";
 
-h6 {
-    margin-top: $clr_baselineRem_1_25;
-}
-
 .clr-icon-selection {
+
+    .clr-icon-preview-settings {
+        padding: $clr_baselineRem_0_5 $clr_baselineRem_1_5 0;
+
+        .clr-solid-checkbox {
+            .toggle-switch {
+                margin-right: $clr_baselineRem_0_5;
+            }
+        }
+
+        .clr-variant-radios {
+            & > label {
+                padding-right: $clr_baselineRem_0_25;
+            }
+            .radio-inline {
+                display: inline-block;
+                padding-right: $clr_baselineRem_0_25;
+                &:last-child {
+                    padding-right: $clr_baselineRem_0_5;
+                }
+            }
+        }
+    }
 
     .clr-icon-collection {
         padding: $clr_baselineRem_1;

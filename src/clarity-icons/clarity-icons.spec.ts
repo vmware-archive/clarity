@@ -6,7 +6,11 @@
 
 import { ClarityIcons } from "./index";
 import { CoreShapes } from "./shapes/core-shapes";
+import { BasicShapes } from "./shapes/basic-shapes";
 import { EssentialShapes } from "./shapes/essential-shapes";
+import { SocialShapes } from "./shapes/social-shapes";
+import { TechnologyShapes } from "./shapes/technology-shapes";
+
 
 describe("ClarityIcons", () => {
 
@@ -294,55 +298,137 @@ describe("ClarityIcons", () => {
 
         });
 
-        describe("ClarityIcon Custom Element", () => {
 
-            beforeEach(() => {
-                spyOn(console, "error");
-            });
+    });
 
-            it("should insert the SVG markup", () => {
+    describe("ClarityIcon Custom Element", () => {
 
-                let clarityIcon = document.createElement("clr-icon");
-                clarityIcon.setAttribute("shape", "home");
+        beforeEach(() => {
+            spyOn(console, "error");
+        });
 
-                let divSampleElement = document.createElement("div");
-                divSampleElement.innerHTML = ClarityIcons.get("home");
+        it("should insert the SVG markup", () => {
 
-                let clarityIconInnerHTML = clarityIcon.innerHTML;
+            let clarityIcon = document.createElement("clr-icon");
+            clarityIcon.setAttribute("shape", "home");
 
-                expect(clarityIconInnerHTML).toBe(divSampleElement.innerHTML);
+            let divSampleElement = document.createElement("div");
+            divSampleElement.innerHTML = ClarityIcons.get("home");
 
-            });
+            let clarityIconInnerHTML = clarityIcon.innerHTML;
 
-            it("should insert the SVG markup of error icon if the shape doesn't exist", () => {
-
-                let clarityIcon = document.createElement("clr-icon");
-                let nonExistingShape = "non-existing-shape";
-
-                clarityIcon.setAttribute("shape", nonExistingShape);
-                let clarityIconInnerHTML = clarityIcon.innerHTML;
-
-                let divSampleElement = document.createElement("div");
-                divSampleElement.innerHTML = ClarityIcons.get("error");
-
-                expect(clarityIconInnerHTML).toBe(divSampleElement.innerHTML);
-                expect(console.error).toHaveBeenCalled();
-
-            });
-
-            it("should control a size of an icon through size attribute", () => {
-
-                let clarityIcon = document.createElement("clr-icon");
-                clarityIcon.setAttribute("shape", "home");
-                clarityIcon.setAttribute("size", "25");
-
-                expect(clarityIcon.style.width).toBe("25px");
-                expect(clarityIcon.style.height).toBe("25px");
-
-            });
+            expect(clarityIconInnerHTML).toBe(divSampleElement.innerHTML);
 
         });
 
+        it("should insert the SVG markup of error icon if the shape doesn't exist", () => {
+
+            let clarityIcon = document.createElement("clr-icon");
+            let nonExistingShape = "non-existing-shape";
+
+            clarityIcon.setAttribute("shape", nonExistingShape);
+            let clarityIconInnerHTML = clarityIcon.innerHTML;
+
+            let divSampleElement = document.createElement("div");
+            divSampleElement.innerHTML = ClarityIcons.get("error");
+
+            expect(clarityIconInnerHTML).toBe(divSampleElement.innerHTML);
+            expect(console.error).toHaveBeenCalled();
+
+        });
+
+        it("should control a size of an icon through size attribute", () => {
+
+            let clarityIcon = document.createElement("clr-icon");
+            clarityIcon.setAttribute("shape", "home");
+            clarityIcon.setAttribute("size", "25");
+
+            expect(clarityIcon.style.width).toBe("25px");
+            expect(clarityIcon.style.height).toBe("25px");
+
+        });
+
+    });
+
+    describe("SVG Icon Markups", () => {
+
+        let testIconStyles = (shapes: any, exceptions?: string[]) => {
+
+            let allShapes = Object.keys(shapes);
+
+            if (exceptions && exceptions.length > 0) {
+
+                allShapes = allShapes.filter((shape) => {
+                    if (exceptions.indexOf(shape) === -1) {
+                        return shape;
+                    }
+                });
+
+            }
+
+            for (let shapeName in allShapes) {
+
+                if (allShapes.hasOwnProperty(shapeName)) {
+
+                    let template: string = allShapes[ shapeName ];
+
+                    expect(template.includes("fill=")).toBe(false);
+                    expect(template.includes("style=")).toBe(false);
+
+                }
+            }
+
+        };
+
+        it("CoreShapes should not include fill attribute", () => {
+
+            testIconStyles(CoreShapes, [ "vm-bug" ]);
+        });
+
+        it("BasicShapes should not include fill attribute", () => {
+
+            testIconStyles(BasicShapes);
+        });
+
+        it("EssentialShapes should not include fill attribute", () => {
+
+            testIconStyles(EssentialShapes);
+        });
+
+        it("SocialShapes should not include fill attribute", () => {
+
+
+            testIconStyles(SocialShapes);
+        });
+
+        it("TechnologyShapes should not include fill attribute", () => {
+
+            testIconStyles(TechnologyShapes);
+        });
+
+        it("No two shapes should have the same name unless their templates are identical", () => {
+
+            let allShapeTemplates: any = [ CoreShapes, EssentialShapes, SocialShapes, TechnologyShapes ];
+            let shapesTested: any = {};
+            let removeSpacesBreaks = (template: string): string => {
+                return template.replace(/\n|\r/g, "").replace(/\s/g, "");
+            };
+
+            allShapeTemplates.map((shapeTemplates: any) => {
+                for (let shapeName in shapeTemplates) {
+                    if (shapeTemplates.hasOwnProperty(shapeName)) {
+
+                        if (!shapesTested.hasOwnProperty(shapeName)) {
+                            shapesTested[ shapeName ] = shapeTemplates[ shapeName ];
+                        } else {
+                            expect(removeSpacesBreaks(shapeTemplates[ shapeName ]))
+                                .toBe(removeSpacesBreaks(shapesTested[ shapeName ]));
+                        }
+                    }
+                }
+            });
+
+        });
 
     });
 

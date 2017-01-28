@@ -1,10 +1,43 @@
 <div class="clr-icon-selection">
 
     <section>
+        <h5>Preview Settings</h5>
+        <div class="row clr-icon-preview-settings">
+
+            <div class="form-group clr-solid-checkbox">
+                <div class="toggle-switch">
+                    <input type="checkbox" id="solidCheckBox" (change)="onChangeSolid($event)">
+                    <label for="solidCheckBox">Solid:</label>
+                </div>
+            </div>
+            <div class="form-group clr-variant-radios" (change)="onChangeStatus($event)">
+                <label>Decoration:</label>
+                <div class="radio-inline">
+                    <input type="radio" id="noneRadio" name="notificationType" checked>
+                    <label for="noneRadio">none</label>
+                </div>
+                <div class="radio-inline">
+                    <input type="radio" id="badgeRadio" name="notificationType">
+                    <label for="badgeRadio">badge</label>
+
+                </div>
+                <div class="radio-inline">
+                    <input type="radio" id="alertRadio" name="notificationType">
+                    <label for="alertRadio">alert</label>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+    <section>
         <h5>Core Shapes</h5>
         <div class="row clr-icon-collection">
             <div *ngFor="let shape of coreShapes" class="clr-icon-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <clr-icon [attr.shape]="shape"></clr-icon><span class="icon-shape-name">{{shape}}</span>
+                <clr-icon [attr.shape]="shape" [ngClass]="previewClasses"></clr-icon>
+                <span class="icon-shape-name">{{shape}}</span>
             </div>
         </div>
     </section>
@@ -13,7 +46,8 @@
         <h5>Essential Shapes</h5>
         <div class="row clr-icon-collection">
             <div *ngFor="let shape of essentialShapes" class="clr-icon-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <clr-icon [attr.shape]="shape"></clr-icon><span class="icon-shape-name">{{shape}}</span>
+                <clr-icon [attr.shape]="shape" [ngClass]="previewClasses"></clr-icon>
+                <span class="icon-shape-name">{{shape}}</span>
             </div>
         </div>
     </section>
@@ -22,7 +56,8 @@
         <h5>Social Shapes</h5>
         <div class="row clr-icon-collection">
             <div *ngFor="let shape of socialShapes" class="clr-icon-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <clr-icon [attr.shape]="shape"></clr-icon><span class="icon-shape-name">{{shape}}</span>
+                <clr-icon [attr.shape]="shape" [ngClass]="previewClasses"></clr-icon>
+                <span class="icon-shape-name">{{shape}}</span>
             </div>
         </div>
     </section>
@@ -31,7 +66,8 @@
         <h5>Technology Shapes</h5>
         <div class="row clr-icon-collection">
             <div *ngFor="let shape of technologyShapes" class="clr-icon-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <clr-icon [attr.shape]="shape"></clr-icon><span class="icon-shape-name">{{shape}}</span>
+                <clr-icon [attr.shape]="shape" [ngClass]="previewClasses"></clr-icon>
+                <span class="icon-shape-name">{{shape}}</span>
             </div>
         </div>
     </section>

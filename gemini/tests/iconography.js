@@ -53,4 +53,14 @@ gemini.suite('iconography', (child) => {
             .capture('default');
     });
 
+    gemini.suite('variants', (child) => {
+        child.setUrl('/iconography/variants')
+            .before((actions, find) => {
+                actions.waitForElementToShow('.clr-example', WAIT_TIME);
+                actions.wait(WAIT_LOAD_TIME);
+            })
+            .setCaptureElements('.clr-example')
+            .capture('default');
+    });
+
 });

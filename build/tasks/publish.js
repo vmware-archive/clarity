@@ -9,6 +9,7 @@ var rename = require('gulp-rename');
 var preprocess = require('gulp-preprocess');
 var util = require('gulp-util');
 var es = require('event-stream');
+var replace = require('gulp-replace');
 
 // All packages share the same version number.
 var VERSION = util.env.version;
@@ -94,6 +95,7 @@ gulp.task("npm:ui:sources", function () {
         "src/clarity-angular/main.scss",
         "src/clarity-angular/**/*.clarity.scss"
     ])
+        .pipe(replace('node_modules/bootstrap', '~bootstrap'))
         .pipe(gulp.dest(npmFolder + "/clarity-ui/src"));
 });
 

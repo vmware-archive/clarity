@@ -64,7 +64,7 @@ gemini.suite('tree-view', (child) => {
             .capture('default');
         });
 
-        gemini.suite('Tree Node Checked|Unchecked', (child) => {
+        gemini.suite('Tree Node Toggle Selection', (child) => {
             child.setUrl('/tree-view/tree-node-selection')
             .before((actions, find) => {
                 actions.wait(WAIT_TIME);

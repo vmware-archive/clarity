@@ -14,10 +14,46 @@ let technologyShapes = Object.keys(TechnologyShapes);
 @Component({
     selector: "clr-icon-selection-demo",
     // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./iconography.demo.scss"],
+    styleUrls: [ "./iconography.demo.scss" ],
     templateUrl: "./icon-selection.demo.html"
 })
 export class IconSelectionDemo {
+
+
+    previewClasses: any = {
+        "is-solid": false,
+        "has-alert": false,
+        "has-badge": false
+    };
+
+
+    onChangeSolid(event: any): void {
+
+        this.previewClasses[ "is-solid" ] = event.target.checked;
+    }
+
+    onChangeStatus(event: any): void {
+
+        let radioId = event.target.getAttribute("id");
+
+        if (radioId === "alertRadio") {
+
+            this.previewClasses[ "has-badge" ] = false;
+            this.previewClasses[ "has-alert" ] = true;
+
+        } else if ((radioId === "badgeRadio")) {
+
+            this.previewClasses[ "has-alert" ] = false;
+            this.previewClasses[ "has-badge" ] = true;
+
+        } else {
+
+            this.previewClasses[ "has-alert" ] = false;
+            this.previewClasses[ "has-badge" ] = false;
+
+        }
+    }
+
 
     hideShapesFromCore: string[] = [ "vm-bug" ];
 

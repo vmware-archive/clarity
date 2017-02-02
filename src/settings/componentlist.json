@@ -34,7 +34,8 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20
+            "dox": 20,
+            "newLayout": true
         },
         {
             "url": "buttons",
@@ -191,7 +192,8 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20
+            "dox": 20,
+            "newLayout": true
         },
         {
             "url": "lists",

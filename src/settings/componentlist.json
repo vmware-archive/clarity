@@ -45,7 +45,8 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "cards",
@@ -55,7 +56,8 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "checkboxes",
@@ -65,8 +67,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "code-highlight",
@@ -116,7 +117,8 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "dropdowns",
@@ -342,8 +344,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "isNew": true
+            "dox": 20
         },
         {
             "url": "toggle-switches",

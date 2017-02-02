@@ -34,11 +34,11 @@
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
+    "@angular/cli": "latest",
     "@angular/compiler-cli": "2.4.5",
     "@types/jasmine": "^2.2.30",
     "@types/node": "^6.0.42",
     "@webcomponents/custom-elements": "^1.0.0-alpha.3",
-    "angular-cli": "1.0.0-beta.28.3",
     "codelyzer": "~1.0.0-beta.3",
     "intl": "1.1.0",
     "jasmine-core": "2.4.1",

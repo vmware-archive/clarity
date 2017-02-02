@@ -113,6 +113,52 @@ const EXAMPLE_INLINE = `
     </form>
 `;
 
+const EXAMPLE_STATIC = `
+<form>
+        <section class="form-block">
+            <label>Static Checkboxes</label>
+            <div class="form-group">
+                <label>Default/Stacked checkbox group</label>
+                <div class="checkbox">
+                    <input type="checkbox" id="checkrads_1">
+                    <label for="checkrads_1">Checkbox 1</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="checkrads_2" checked>
+                    <label for="checkrads_2">Checkbox 2</label>
+                </div>
+                <div class="checkbox disabled">
+                    <input type="checkbox" id="checkrads_3" disabled>
+                    <label for="checkrads_3">A disabled and unchecked checkbox</label>
+                </div>
+                <div class="checkbox disabled">
+                    <input type="checkbox" id="checkrads_4" disabled checked>
+                    <label for="checkrads_4">A disabled and checked checkbox</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Inline checkbox group</label>
+                <div class="checkbox-inline">
+                    <input type="checkbox" id="checkrads_5">
+                    <label for="checkrads_5">Checkbox 1</label>
+                </div>
+                <div class="checkbox-inline">
+                    <input type="checkbox" id="checkrads_6" checked>
+                    <label for="checkrads_6">Checkbox 2</label>
+                </div>
+                <div class="checkbox-inline disabled">
+                    <input type="checkbox" id="checkrads_7" disabled>
+                    <label for="checkrads_7">A disabled and unchecked checkbox</label>
+                </div>
+                <div class="checkbox-inline disabled">
+                    <input type="checkbox" id="checkrads_8" disabled checked>
+                    <label for="checkrads_8">A disabled and checked checkbox</label>
+                </div>
+            </div>
+        </section>
+    </form>
+`;
+
 
 
 
@@ -144,5 +190,6 @@ export class CheckboxesDemo {
     example_ng_form = EXAMPLE_NG_FORM;
     example = EXAMPLE;
     example_inline = EXAMPLE_INLINE;
+    example_static = EXAMPLE_STATIC;
 
 }

@@ -62,6 +62,13 @@ export class Sort {
     }
 
     /**
+     * Clears the current sorting order
+     */
+    public clear() {
+        this.comparator = null;
+    }
+
+    /**
      * Compares two objects according to the current comparator
      */
     public compare(a: any, b: any): number {

@@ -3,7 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {AfterViewInit, ChangeDetectorRef, Component, ContentChild, HostBinding, Input} from "@angular/core";
+import {
+    AfterViewInit, ChangeDetectorRef, Component, ContentChild, HostBinding, Input, Output, EventEmitter
+} from "@angular/core";
+import {Subscription} from "rxjs";
 
 import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
 import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
@@ -34,7 +37,23 @@ import {Sort} from "./providers/sort";
     }
 })
 export class DatagridColumn implements AfterViewInit {
-    constructor(private _sort: Sort, private _cdr: ChangeDetectorRef) {}
+    constructor(private _sort: Sort, private _cdr: ChangeDetectorRef) {
+        this._sortSubscription = _sort.change.subscribe(sort => {
+            // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
+            if (this.sorted && sort.comparator !== this.sortBy) {
+                this._sorted = false;
+                this.sortedChange.emit(false);
+            }
+        });
+    }
+
+    /**
+     * Subscription to the sort service changes
+     */
+    private _sortSubscription: Subscription;
+    ngOnDestroy() {
+        this._sortSubscription.unsubscribe();
+    }
 
     ngAfterViewInit() {
         /*
@@ -57,20 +76,33 @@ export class DatagridColumn implements AfterViewInit {
     }
 
     /**
+     * Indicates if the column is currently sorted
+     */
+    private _sorted = false;
+    public get sorted() {
+        return this._sorted;
+    }
+    @Input("clrDgSorted")
+    public set sorted(value: boolean) {
+        if (!value && this.sorted) {
+            this._sorted = false;
+            this._sort.clear();
+        } else if (value && !this.sorted) {
+            this.sort();
+        }
+    };
+    @Output("clrDgSortedChange") public sortedChange = new EventEmitter<boolean>();
+
+    /**
      * Sorts the datagrid based on this column
      */
     public sort() {
         if (!this.sortable) {
             return;
         }
+        this._sorted = true;
         this._sort.toggle(this.sortBy);
-    }
-
-    /**
-     * Indicates if the column is currently sorted
-     */
-    public get sorted() {
-        return this.sortable && this.sortBy && this._sort.comparator === this.sortBy;
+        this.sortedChange.emit(true);
     }
 
     /**

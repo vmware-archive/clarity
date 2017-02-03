@@ -20,6 +20,7 @@ import {EXAMPLES} from "./examples";
 export class DatagridSortingDemo {
     examples = EXAMPLES;
     users: User[];
+    sorted: boolean;
 
     pokemonComparator = new PokemonComparator();
 

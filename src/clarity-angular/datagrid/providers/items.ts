@@ -51,7 +51,15 @@ export class Items {
          * An observer up the chain re-triggers all the operations that follow it.
          */
         this._filtersSub = this._filters.change.subscribe(() => this._filterItems());
-        this._sortSub = this._sort.change.subscribe(() => this._sortItems());
+        this._sortSub = this._sort.change.subscribe(() => {
+            // Special case, if the datagrid went from sorted to unsorted, we have to re-filter
+            // to get the original order back
+            if (!this._sort.comparator) {
+                this._filterItems();
+            } else {
+                this._sortItems();
+            }
+        });
         this._pageSub = this._page.change.subscribe(() => this._changePage());
     }
 

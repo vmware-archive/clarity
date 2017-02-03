@@ -103,6 +103,18 @@ export default function(): void {
                 expect(this.context.clarityDirective.field).toBe("test");
             });
 
+            it("offers two-way binding on the sorted state", function () {
+                this.context = this.create(DatagridColumn, SimpleTest, [Sort, Filters]);
+                this.comparator = new TestComparator();
+                this.context.testComponent.comparator = this.comparator;
+                this.context.testComponent.sorted = true;
+                this.context.detectChanges();
+                expect(this.context.clarityDirective.sorted).toBe(true);
+                this.context.getClarityProvider(Sort).clear();
+                this.context.detectChanges();
+                expect(this.context.testComponent.sorted).toBe(false);
+            });
+
             it("accepts a custom filter in the projected content", function() {
                 this.context = this.create(DatagridColumn, FilterTest, [Sort, Filters]);
                 expect(TestBed.get(Filters).getActiveFilters()).toEqual([this.context.testComponent.filter]);
@@ -254,7 +266,8 @@ class TestStringFilter implements StringFilter<string> {
     template: `
         <clr-dg-column
             [clrDgSortBy]="comparator"
-            [clrDgField]="field">
+            [clrDgField]="field"
+            [(clrDgSorted)]="sorted">
             Hello world
         </clr-dg-column>
     `
@@ -262,6 +275,7 @@ class TestStringFilter implements StringFilter<string> {
 class SimpleTest {
     comparator: Comparator<any>;
     field: string;
+    sorted = false;
 }
 
 @Component({

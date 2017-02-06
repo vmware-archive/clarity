@@ -5,23 +5,25 @@
   -->
 
 <div class="datagrid-wrapper">
-    <div class="datagrid">
-        <div class="datagrid-head">
-            <div class="datagrid-row">
-                <div class="datagrid-column datagrid-select" *ngIf="selection.selectable">
+    <div class="datagrid-content-wrapper">
+        <div class="datagrid">
+            <div class="datagrid-head">
+                <div class="datagrid-row">
+                    <div class="datagrid-column datagrid-select" *ngIf="selection.selectable">
                     <span class="datagrid-column-title">
                         <clr-checkbox [(ngModel)]="allSelected"></clr-checkbox>
                     </span>
+                    </div>
+                    <ng-content select="clr-dg-column"></ng-content>
                 </div>
-                <ng-content select="clr-dg-column"></ng-content>
             </div>
-        </div>
 
-        <div class="datagrid-body">
-            <template *ngIf="iterator"
-                      ngFor [ngForOf]="items.displayed" [ngForTrackBy]="iterator.trackBy"
-                      [ngForTemplate]="iterator.template"></template>
-            <ng-content *ngIf="!iterator"></ng-content>
+            <div class="datagrid-body">
+                <template *ngIf="iterator"
+                          ngFor [ngForOf]="items.displayed" [ngForTrackBy]="iterator.trackBy"
+                          [ngForTemplate]="iterator.template"></template>
+                <ng-content *ngIf="!iterator"></ng-content>
+            </div>
         </div>
     </div>
 

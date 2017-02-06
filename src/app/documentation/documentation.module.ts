@@ -28,7 +28,7 @@ import { componentList } from "../utils/component-list";
     FormsModule,
     UtilsModule,
     DocumentationRoutingModule,
-    ClarityModule.forChild(),
+    ClarityModule.forRoot(),
     DemosModule
   ],
   providers: []

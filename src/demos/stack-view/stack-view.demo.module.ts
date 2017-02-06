@@ -15,7 +15,7 @@ import {StackViewStaticDemo} from "./stack-view-static";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
         FormsModule,
     ],
     declarations: [

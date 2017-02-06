@@ -14,7 +14,7 @@ import {BadgeStatusesDemo} from "./badge-statuses";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         BadgeColorsDemo,

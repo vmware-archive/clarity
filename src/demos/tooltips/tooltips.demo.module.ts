@@ -16,7 +16,7 @@ import {TooltipsButtonsDemo} from "./tooltips-buttons";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         TooltipsSizesDemo,

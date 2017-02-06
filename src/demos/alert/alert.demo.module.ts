@@ -23,7 +23,7 @@ import {AlertAngularCloseEventDemo} from "./angular/alert-angular-close-event";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         AlertStylesDemo,

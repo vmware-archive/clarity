@@ -17,7 +17,7 @@ import {Example} from "./utils/example";
     imports: [
         CommonModule,
         FormsModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         CheckboxesDemo,

@@ -21,7 +21,7 @@ import {ButtonsIconsDemo} from "./buttons-icons";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         RealButtonDemo,

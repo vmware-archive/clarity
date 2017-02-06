@@ -21,7 +21,7 @@ import {GridItemsVerticalAlignmentDemo} from "./grid-items-vertical-alignment";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         GridAutoLayout1Demo,

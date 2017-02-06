@@ -19,7 +19,7 @@ import {ResponsiveNav2Demo} from "./responsive-nav2";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         NavsDemo,

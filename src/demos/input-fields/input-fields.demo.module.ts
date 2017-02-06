@@ -11,7 +11,7 @@ import {InputFieldsDemo} from "./input-fields.demo";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         InputFieldsDemo

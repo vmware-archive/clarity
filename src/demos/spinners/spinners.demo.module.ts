@@ -13,7 +13,7 @@ import {SpinnerTypesDemo} from "./spinner-types";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         SpinnerSizesDemo,

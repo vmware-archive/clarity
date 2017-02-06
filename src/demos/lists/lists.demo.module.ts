@@ -18,7 +18,7 @@ import {OldListsInCardsDemo} from "./old-lists-in-cards";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         ListsUlDemo,

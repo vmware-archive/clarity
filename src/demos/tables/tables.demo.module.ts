@@ -20,7 +20,7 @@ import {TablesWidthDemo} from "./tables-width";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         TablesBasicDemo,

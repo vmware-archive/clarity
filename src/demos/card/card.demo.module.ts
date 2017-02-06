@@ -20,7 +20,7 @@ import {CardListGroupDemo} from "./card-list-group";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         CardOldDemo,

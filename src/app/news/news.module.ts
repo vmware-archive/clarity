@@ -21,7 +21,7 @@ import { componentList } from "../utils/component-list";
   ],
   imports: [
     CommonModule,
-    ClarityModule.forChild(),
+    ClarityModule.forRoot(),
     UtilsModule,
     NewsRoutingModule
   ],

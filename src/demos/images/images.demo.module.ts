@@ -12,7 +12,7 @@ import {ImagesDemo} from "./images.demo";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         ImagesDemo

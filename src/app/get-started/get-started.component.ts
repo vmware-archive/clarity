@@ -13,7 +13,7 @@ const NG_MODULE_EXAMPLE = `
     @NgModule({
         imports: [
             BrowserModule,
-            ClarityModule.forChild(),
+            ClarityModule.forRoot(),
             ...
          ],
          declarations: [ AppComponent ],

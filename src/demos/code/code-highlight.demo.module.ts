@@ -12,7 +12,7 @@ import {CodeHighlightSnippetDemo} from "./code-highlight-snippet";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         CodeHighlightImportsDemo,

@@ -19,7 +19,7 @@ import {DropdownAngularCloseItemFalseDemo} from "./dropdown-angular-close-item-f
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         DropdownStaticDefaultDemo,

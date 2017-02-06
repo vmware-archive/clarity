@@ -12,7 +12,7 @@ import {TogglesDemo} from "./toggles.demo";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         TogglesDemo

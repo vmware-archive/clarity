@@ -21,7 +21,7 @@ import {WizardOptionsDemo} from "./wizard-options.demo";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
         FormsModule,
     ],
     declarations: [

@@ -12,7 +12,7 @@ import {RadiosDemo} from "./radios.demo";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         RadiosDemo

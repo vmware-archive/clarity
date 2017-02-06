@@ -16,7 +16,7 @@ import {ColorContrastDemo} from "./color-contrast";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         ColorPaletteBaseDemo,

@@ -12,7 +12,7 @@ import {LoginDemo} from "./login.demo";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule.forRoot(),
     ],
     declarations: [
         LoginDemo

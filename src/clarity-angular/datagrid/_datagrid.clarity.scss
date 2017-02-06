@@ -10,8 +10,12 @@
 @import "../tables/tables.clarity";
 
 @include exports('datagrid.clarity') {
+    @include basic-table(".datagrid", ".datagrid-head", ".datagrid-body",
+        ".datagrid-row", ".datagrid-column", ".datagrid-cell");
+
     .datagrid {
         display: table;
+        max-width: none; // override the basic-table's style of max-width: 100%
     }
     .datagrid-head {
         display: table-header-group;
@@ -29,10 +33,12 @@
         display: table-cell;
     }
 
-    @include basic-table(".datagrid", ".datagrid-head", ".datagrid-body",
-        ".datagrid-row", ".datagrid-column", ".datagrid-cell");
-
     $clr-datagrid-icon-size: rem(1);
+
+    .datagrid-content-wrapper {
+        display: block;
+        overflow: auto;
+    }
 
     .datagrid-wrapper {
         position: relative;

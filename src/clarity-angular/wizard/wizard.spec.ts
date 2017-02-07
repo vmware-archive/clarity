@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {ComponentFixture, TestBed, fakeAsync, tick} from "@angular/core/testing";
 import {Component, ViewChild} from "@angular/core";
 import {ScrollingService} from "../main/scrolling-service";
 import {ClarityModule} from "../clarity.module";
@@ -131,6 +131,7 @@ describe("Wizard", () => {
         let cancel: HTMLElement = el.querySelector(".close");
         cancel.click();
         fixture.detectChanges();
+        tick();
     };
 
     beforeEach(() => {
@@ -486,10 +487,10 @@ describe("Wizard", () => {
             expect(tab4).toBeDefined();
         });
 
-        it("calls the user-defined onCancel handler when the Cancel button is clicked", () => {
+        it("calls the user-defined onCancel handler when the Cancel button is clicked", fakeAsync(() => {
             doCancel(compiled);
             expect(fixture.componentInstance.hasBeenCanceled).toBe(true);
-        });
+        }));
 
         it("defaults clrWizardClosable to true", () => {
             let closeButton = compiled.querySelector("button.close");

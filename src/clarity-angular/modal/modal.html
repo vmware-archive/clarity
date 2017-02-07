@@ -7,7 +7,8 @@
 
 <div class="modal" *ngIf="_open">
     <!--fixme: revisit when ngClass works with exit animation-->
-    <div [@fadeDown] class="modal-dialog"
+    <div [@fadeDown] (@fadeDown.done)="fadeDone($event)"
+         class="modal-dialog"
          [class.modal-sm]="size == 'sm'"
          [class.modal-lg]="size == 'lg'"
          [class.modal-xl]="size == 'xl'"

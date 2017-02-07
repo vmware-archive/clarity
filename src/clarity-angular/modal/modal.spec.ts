@@ -109,6 +109,10 @@ describe("Modal", () => {
     it("offers two-way binding on clrModalOpen", fakeAsync(() => {
         expect(fixture.componentInstance.opened).toBe(true);
         getModalInstance(fixture).close();
+        fixture.detectChanges();
+        // We make sure to wait for the animation to be over before emitting the output
+        expect(fixture.componentInstance.opened).toBe(true);
+        tick();
         expect(fixture.componentInstance.opened).toBe(false);
     }));
 

@@ -29,7 +29,7 @@ gulp.task('build', function (callback) {
     return runSequence(
         'clean',
         prod ?
-            ['sass','typescript', 'html', 'bundle'] :
+            ['sass','typescript', 'html', 'bundle', 'svg'] :
             ['sass','typescript', 'html'],
         callback
     );

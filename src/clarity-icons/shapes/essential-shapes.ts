@@ -940,7 +940,7 @@ export const essentialShapes: any = {
 };
 
 
-if (window.hasOwnProperty("ClarityIcons")) {
+if (typeof window !== "undefined" && window.hasOwnProperty("ClarityIcons")) {
 
     window[ "ClarityIcons" ].add(essentialShapes);
 }

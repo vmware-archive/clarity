@@ -306,6 +306,38 @@ const coreShapes: any = {
                 <path class="clr-i-solid--alerted clr-i-solid-path-2--alerted clr-i-alert" d="M26.85,1.14,21.13,11A1.28,1.28,0,0,0,22.23,13H33.68A1.28,1.28,0,0,0,34.78,11L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z"/>
             </svg>
         `,
+    "ellipses-vertical": `
+            <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-badge"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>ellipses-vertical</title>
+
+                <circle cx="18" cy="8.18" r="2.18" class="clr-i-outline clr-i-outline-path-1"/>
+                <circle cx="18" cy="18" r="2.18" class="clr-i-outline clr-i-outline-path-2"/>
+                <circle cx="18" cy="27.82" r="2.18" class="clr-i-outline clr-i-outline-path-3"/>
+                
+                <circle cx="18" cy="8.18" r="2.18" class="clr-i-outline--badged clr-i-outline-path-1--badged"/>
+                <circle cx="18" cy="18" r="2.18" class="clr-i-outline--badged clr-i-outline-path-2--badged"/>
+                <circle cx="18" cy="27.82" r="2.18" class="clr-i-outline--badged clr-i-outline-path-3--badged"/>
+                <circle cx="30" cy="6" r="5" class="clr-i-outline--badged clr-i-outline-path-4--badged clr-i-badge"/>
+
+            </svg>
+        `,
+    "ellipses-horizontal": `
+            <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-badge"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>ellipses-horizontal</title>
+
+                <circle cx="27.82" cy="22.18" r="2.18" class="clr-i-outline clr-i-outline-path-1"/>
+                <circle cx="18" cy="22.18" r="2.18" class="clr-i-outline clr-i-outline-path-2"/>
+                <circle cx="8.18" cy="22.18" r="2.18" class="clr-i-outline clr-i-outline-path-3"/>
+                
+                <circle cx="27.82" cy="22.18" r="2.18" class="clr-i-outline--badged clr-i-outline-path-1--badged"/>
+                <circle cx="18" cy="22.18" r="2.18" class="clr-i-outline--badged clr-i-outline-path-2--badged"/>
+                <circle cx="8.18" cy="22.18" r="2.18" class="clr-i-outline--badged clr-i-outline-path-3--badged"/>
+                <circle cx="30" cy="6" r="5" class="clr-i-outline--badged clr-i-outline-path-4--badged clr-i-badge"/>
+
+            </svg>
+        `,
 
     "vm-bug": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"

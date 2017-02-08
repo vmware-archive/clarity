@@ -31,6 +31,7 @@
     "@types/selenium-webdriver": "^2.53.33",
     "bootstrap": "4.0.0-alpha.5",
     "browser-sync": "^2.11.2",
+    "cheerio": "^0.22.0",
     "clang-format": "^1.0.37",
     "connect-history-api-fallback": "^1.2.0",
     "del": "^2.2.0",

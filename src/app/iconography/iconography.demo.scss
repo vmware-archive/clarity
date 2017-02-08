@@ -3,45 +3,50 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 @import "../_utils/code";
 
+
 .clr-icon-selection {
 
-    .clr-icon-preview-settings {
-        padding: $clr_baselineRem_0_5 $clr_baselineRem_1_5 0;
+    section {
 
-        .clr-solid-checkbox {
-            .toggle-switch {
-                margin-right: $clr_baselineRem_0_5;
-            }
-        }
+        .clr-icon-preview-settings {
+            padding: $clr_baselineRem_0_5 $clr_baselineRem_1_5;
 
-        .clr-variant-radios {
-            & > label {
-                padding-right: $clr_baselineRem_0_25;
+            .clr-solid-checkbox {
+                .toggle-switch {
+                    margin-right: $clr_baselineRem_0_5;
+                }
             }
-            .radio-inline {
-                display: inline-block;
-                padding-right: $clr_baselineRem_0_25;
-                &:last-child {
-                    padding-right: $clr_baselineRem_0_5;
+
+            .clr-variant-radios {
+                & > label {
+                    padding-right: $clr_baselineRem_0_25;
+                }
+                .radio-inline {
+                    display: inline-block;
+                    padding-right: $clr_baselineRem_0_25;
+                    &:last-child {
+                        padding-right: $clr_baselineRem_0_5;
+                    }
                 }
             }
         }
-    }
 
-    .clr-icon-collection {
-        padding: $clr_baselineRem_1;
-        .clr-icon-item {
-            padding: $clr_baselineRem_0_5 $clr_baselineRem_0_25;
-            white-space: nowrap;
-            clr-icon {
-                width: 24px;
-                height: 24px;
-                margin: 0 $clr_baselineRem_0_5;
-            }
-            span.icon-shape-name {
-                white-space: nowrap
+        .clr-icon-collection {
+            padding: $clr_baselineRem_1;
+            .clr-icon-item {
+                padding: $clr_baselineRem_0_5 $clr_baselineRem_0_25;
+                white-space: nowrap;
+                clr-icon {
+                    width: 24px;
+                    height: 24px;
+                    margin: 0 $clr_baselineRem_0_5;
+                }
+                span.icon-shape-name {
+                    white-space: nowrap
+                }
             }
         }
+
     }
 
 }

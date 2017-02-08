@@ -25,6 +25,13 @@ let technologyShapes = Object.keys(TechnologyShapes);
 })
 export class IconSelectionDemo {
 
+    commonPath = "clarity-icons/shapes/svg-source/";
+    coreSetLink = this.commonPath + "core-shapes.zip";
+    essentialSetLink = this.commonPath + "essential-shapes.zip";
+    socialSetLink = this.commonPath + "social-shapes.zip";
+    technologySetLink = this.commonPath + "technology-shapes.zip";
+    allSetsLink = this.commonPath + "all-shapes.zip";
+
 
     previewClasses: any = {
         "is-solid": false,

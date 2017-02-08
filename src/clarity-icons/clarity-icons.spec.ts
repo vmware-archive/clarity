@@ -26,7 +26,7 @@ describe("ClarityIcons", () => {
 
         let testAllShapes = (expectedShapes: any) => {
 
-            expect(Object.keys(ClarityIcons.get())).toEqual(Object.keys(expectedShapes));
+            expect(Object.keys(ClarityIcons.get()).length).toEqual(Object.keys(expectedShapes).length);
 
             for (let shape in expectedShapes) {
 

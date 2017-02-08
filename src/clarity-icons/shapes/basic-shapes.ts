@@ -6,7 +6,7 @@
 /* TODO: BasicShapes is deprecated and will be removed in 0.9.0 */
 import { essentialShapes } from "./essential-shapes";
 
-if (window.hasOwnProperty("ClarityIcons")) {
+if (typeof window !== "undefined" && window.hasOwnProperty("ClarityIcons")) {
 
     window[ "ClarityIcons" ].add(essentialShapes);
 }

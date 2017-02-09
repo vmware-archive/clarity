@@ -36,7 +36,9 @@ import {Filters} from "./providers/filters";
     `
 })
 export class DatagridFilter implements CustomFilter, OnDestroy {
-    constructor(private _filters: Filters) {}
+    constructor(private _filters: Filters) {
+        console.log("constructor: dg-filter");
+    }
 
     /**
      * Tracks whether the filter dropdown is open or not
@@ -45,6 +47,7 @@ export class DatagridFilter implements CustomFilter, OnDestroy {
     public get open() {
         return this._open;
     }
+
     @Input("clrDgFilterOpen")
     public set open(open: boolean) {
         let boolOpen = !!open;
@@ -53,6 +56,7 @@ export class DatagridFilter implements CustomFilter, OnDestroy {
             this.openChanged.emit(boolOpen);
         }
     }
+
     @Output("clrDgFilterOpenChange") public openChanged = new EventEmitter<boolean>(false);
 
     /**
@@ -62,8 +66,10 @@ export class DatagridFilter implements CustomFilter, OnDestroy {
     public get filter(): Filter<any> {
         return this._filter;
     }
+
     @Input("clrDgFilter")
     public set filter(filter: Filter<any>) {
+        console.log("Setting datagrid-filter filter prop", filter);
         // If we previously had another filter, we unregister it
         if (this._unregister) {
             this._unregister();
@@ -79,6 +85,7 @@ export class DatagridFilter implements CustomFilter, OnDestroy {
      * Function to unregister the filter on clean-up
      */
     private _unregister: () => void;
+
     ngOnDestroy(): void {
         if (this._unregister) {
             this._unregister();
@@ -89,6 +96,7 @@ export class DatagridFilter implements CustomFilter, OnDestroy {
      * Indicates if the filter is currently active
      */
     public get active() {
+        console.log("Active?", this.filter);
         return !!this.filter && this.filter.isActive();
     }
 

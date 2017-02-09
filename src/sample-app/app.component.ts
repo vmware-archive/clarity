@@ -3,16 +3,46 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from '@angular/core';
+import {Component} from "@angular/core";
 
 @Component({
-    selector: 'my-app',
-    templateUrl: './app.component.html',
+    selector: "my-app",
+    templateUrl: "./app.component.html",
 })
 export class AppComponent  {
-    name = 'world';
+    name = "world";
     closeMessage: string = "";
     indeterminateState: boolean = true;
+    myFilterColumn = "Test";
+    myFilterValue = "M";
+    users = [
+        {
+            name: "Matt",
+            pokemon: {
+                name: "Pikachu"
+            }
+        }, {
+            name: "Julie",
+            pokemon: {
+                name: "Bronze"
+            }
+        }, {
+            name: "Hannah",
+            pokemon: {
+                name: "Peaches"
+            }
+        }, {
+            name: "Coco",
+            pokemon: {
+                name: "Sunset"
+            }
+        }, {
+            name: "Lee",
+            pokemon: {
+                name: "Bobo"
+            }
+        }
+    ];
 
     onClose(): void {
         this.closeMessage = "The alert has been closed";

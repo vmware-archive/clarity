@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    Component, Input, ViewChild, ElementRef, Renderer, AfterViewInit
+    Component, Input, ViewChild, ElementRef, Renderer, AfterViewInit, EventEmitter, Output
 } from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
@@ -64,6 +64,10 @@ export class DatagridStringFilter implements CustomFilter, Filter<any>, AfterVie
                 });
             }
         });
+
+        if (this.value) { // this._changes needs a kick when a pre-filter value is supplied.
+            this._changes.next(this.value);
+        }
     }
 
     /**
@@ -92,11 +96,20 @@ export class DatagridStringFilter implements CustomFilter, Filter<any>, AfterVie
     /**
      * Common setter for the input value
      */
+    @Input("clrFilterValue")
     public set value(value: string) {
-        this._rawValue = value;
-        this._lowerCaseValue = value.toLowerCase().trim();
-        this._changes.next(value);
+        if (!value) {
+            value = "";
+        }
+        if (value !== this._rawValue) {
+            this._rawValue = value;
+            this._lowerCaseValue = value.toLowerCase().trim();
+            this._changes.next(value);
+            this.filterValueChange.emit(value);
+        }
     }
+
+    @Output("clrFilterValueChange") filterValueChange = new EventEmitter();
 
     /**
      * Indicates if the filter is currently active, meaning the input is not empty

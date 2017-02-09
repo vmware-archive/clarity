@@ -40,5 +40,32 @@ class MyComponent {
     Pokemon
     <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter"></clr-dg-string-filter>
 </clr-dg-column>
+`,
+
+    stringPreFilterTS: `
+import ...
+
+@Component({
+    ...
+})
+export class DatagridStringFilteringDemo {
+    ...
+    myFilterValue1 = "A";
+    myFilterValue2 = "M";
+    ...
+`,
+    stringPreFilterHTML: `
+...
+    <clr-dg-column
+            [clrDgField]="'name'"
+            [(clrFilterValue)]="myFilterValue1">Name
+    </clr-dg-column>
+    <clr-dg-column>
+        Pokemon
+        <clr-dg-string-filter
+                [clrDgStringFilter]="pokemonFilter"
+                [(clrFilterValue)]="myFilterValue2"></clr-dg-string-filter>
+    </clr-dg-column>
+...
 `
 };

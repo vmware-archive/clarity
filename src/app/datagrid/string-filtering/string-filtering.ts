@@ -22,6 +22,12 @@ export class DatagridStringFilteringDemo {
     users: User[];
 
     pokemonFilter = new PokemonFilter();
+    myFilterValue1 = "A";
+    myFilterValue2 = "M";
+
+    debugColValue = "M";
+    debugColField = "name";
+
 
     constructor(private inventory: Inventory) {
         inventory.size = 10;

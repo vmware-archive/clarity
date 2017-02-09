@@ -25,6 +25,7 @@ import {Sort} from "./providers/sort";
             <clr-dg-string-filter
                 *ngIf="field && !customFilter"
                 [clrDgStringFilter]="defaultFieldFilter"
+                [(clrFilterValue)]="filterValue"
             ></clr-dg-string-filter>
 
             <button class="datagrid-column-title" [disabled]="!sortable" (click)="sort()">
@@ -51,6 +52,7 @@ export class DatagridColumn implements AfterViewInit {
      * Subscription to the sort service changes
      */
     private _sortSubscription: Subscription;
+
     ngOnDestroy() {
         this._sortSubscription.unsubscribe();
     }
@@ -82,6 +84,7 @@ export class DatagridColumn implements AfterViewInit {
     public get sorted() {
         return this._sorted;
     }
+
     @Input("clrDgSorted")
     public set sorted(value: boolean) {
         if (!value && this.sorted) {
@@ -91,6 +94,7 @@ export class DatagridColumn implements AfterViewInit {
             this.sort();
         }
     };
+
     @Output("clrDgSortedChange") public sortedChange = new EventEmitter<boolean>();
 
     /**
@@ -155,4 +159,20 @@ export class DatagridColumn implements AfterViewInit {
             }
         }
     }
+
+    private _filterValue: string;
+    public get filterValue() {
+        return this._filterValue;
+    }
+
+    @Input("clrFilterValue")
+    public set filterValue(newValue: string) {
+        if (newValue !== this._filterValue) {
+            this._filterValue = newValue;
+            this.filterValueChange.emit(newValue);
+        }
+    }
+
+    @Output("clrFilterValueChange") filterValueChange = new EventEmitter();
+
 }

@@ -34,7 +34,7 @@ var packages = {
     'dist/tests': { defaultExtension: "js" },
     'clarity-angular': { defaultExtension: "js" },
     'clarity-icons': { defaultExtension: 'js' },
-    'rxjs': { defaultExtension: 'js', main: 'Rx.js'}
+    'rxjs': { defaultExtension: 'js'}
 };
 
 System.config({

@@ -12,6 +12,7 @@ import {CHECKBOX_DIRECTIVES} from "./checkboxes/index";
 import {CODE_HIGHLIGHT_DIRECTIVES} from "./code/index";
 import {DATAGRID_DIRECTIVES} from "./datagrid/index";
 import {DROPDOWN_DIRECTIVES} from "./dropdown/index";
+import {INPUT_FIELDS_DIRECTIVES} from "./input-fields/index";
 import {LAYOUT_DIRECTIVES} from "./layout/index";
 import {MODAL_DIRECTIVES} from "./modal/index";
 import {NAVIGATION_DIRECTIVES} from "./nav/index";
@@ -34,6 +35,7 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
         CODE_HIGHLIGHT_DIRECTIVES,
         DATAGRID_DIRECTIVES,
         DROPDOWN_DIRECTIVES,
+        INPUT_FIELDS_DIRECTIVES,
         LAYOUT_DIRECTIVES,
         MODAL_DIRECTIVES,
         NAVIGATION_DIRECTIVES,
@@ -49,6 +51,7 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
         CODE_HIGHLIGHT_DIRECTIVES,
         DATAGRID_DIRECTIVES,
         DROPDOWN_DIRECTIVES,
+        INPUT_FIELDS_DIRECTIVES,
         LAYOUT_DIRECTIVES,
         MODAL_DIRECTIVES,
         NAVIGATION_DIRECTIVES,

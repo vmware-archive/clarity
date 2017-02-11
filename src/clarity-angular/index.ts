@@ -10,6 +10,7 @@ export * from "./code/index";
 export * from "./dropdown/index";
 export * from "./datagrid/index";
 export * from "./iconography/index";
+export * from "./input-fields/index";
 export * from "./layout/index";
 export * from "./modal/index";
 export * from "./nav/index";

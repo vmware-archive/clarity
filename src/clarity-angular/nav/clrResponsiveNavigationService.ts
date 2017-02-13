@@ -4,23 +4,31 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Injectable} from "@angular/core";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
 
 import { ClrResponsiveNavCodes } from "./clrResponsiveNavCodes";
 import { ClrResponsiveNavControlMessage } from "./clrResponsiveNavControlMessage";
+import { Subject } from "rxjs/Subject";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class ClrResponsiveNavigationService {
     public responsiveNavList: number[] = [];
-    public registerNavSubject: BehaviorSubject<number[]>
-        = new BehaviorSubject<number[]>([]);
-    public controlNavSubject: BehaviorSubject<ClrResponsiveNavControlMessage>
-        = new BehaviorSubject<ClrResponsiveNavControlMessage>(
-                new ClrResponsiveNavControlMessage(
-                    ClrResponsiveNavCodes.NAV_CLOSE_ALL,
-                    -999
-                )
-            );
+    private registerNavSubject: Subject<number[]>
+        = new Subject<number[]>();
+    private controlNavSubject: Subject<ClrResponsiveNavControlMessage>
+        = new Subject<ClrResponsiveNavControlMessage>();
+
+    get registeredNavs(): Observable<number[]> {
+        return this.registerNavSubject.asObservable();
+    }
+
+    get navControl(): Observable<ClrResponsiveNavControlMessage> {
+        return this.controlNavSubject.asObservable();
+    }
+
+    constructor() {
+        this.closeAllNavs(); //We start with all navs closed
+    }
 
     registerNav(navLevel: number): void {
         if (!navLevel || this.isNavRegistered(navLevel)) {

@@ -5,7 +5,6 @@
  */
 import {
     Component,
-    ElementRef,
     OnDestroy,
     OnInit
 } from "@angular/core";
@@ -40,12 +39,11 @@ export class Header implements OnDestroy, OnInit {
     public isNavLevel2OnPage: boolean = false;
 
     constructor(
-        private elRef: ElementRef,
         private responsiveNavService: ClrResponsiveNavigationService
     ) {}
 
     ngOnInit() {
-        this._subscription = this.responsiveNavService.registerNavSubject.subscribe({
+        this._subscription = this.responsiveNavService.registeredNavs.subscribe({
             next: (navLevelList: number[]) => {
                 this.initializeNavTriggers(navLevelList);
             }

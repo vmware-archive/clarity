@@ -64,6 +64,10 @@ export default function(): void {
         });
 
         it("doesn't close the menu when an action menu item container is clicked", () => {
+            // should open when the ellipses icon is clicked
+            toggle.click();
+            context.detectChanges();
+
             let actionOverflowMenu: HTMLElement = context.clarityElement.querySelector(".datagrid-action-overflow");
             actionOverflowMenu.click();
             context.detectChanges();
@@ -71,6 +75,10 @@ export default function(): void {
         });
 
         it("closes the menu when an action menu item is clicked", () => {
+            // should open when the ellipses icon is clicked
+            toggle.click();
+            context.detectChanges();
+
             let actionItem: HTMLElement = context.clarityElement.querySelector(".action-item");
             actionItem.click();
             context.detectChanges();
@@ -94,7 +102,7 @@ export default function(): void {
             This is an area outside of the action overflow
         </div>
         <clr-dg-action-overflow [(clrDgActionOverflowOpen)]="open">
-            <a class="action-item" href="#">Hello world</a>
+            <button class="action-item">Hello world</button>
         </clr-dg-action-overflow>`
 })
 class SimpleTest {

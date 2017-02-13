@@ -28,25 +28,33 @@ describe("NavLevel1Directive", () => {
 
     it("#registers nav on init. sends the registration code on registerNavSubject in the service", () => {
         service.registerNav(ClrResponsiveNavCodes.NAV_LEVEL_1);
-        expect(service.registerNavSubject.getValue()[0]).toBe(ClrResponsiveNavCodes.NAV_LEVEL_1);
+        service.registeredNavs.subscribe(navArray => {
+            expect(navArray[0]).toBe(ClrResponsiveNavCodes.NAV_LEVEL_1);
+        });
     });
 
     it("#sends the open code on controlNavSubject in the service when open() is called", () => {
         navLevel.open();
-        expect(service.controlNavSubject.getValue().controlCode).toBe(
-            ClrResponsiveNavCodes.NAV_OPEN
-        );
+        service.navControl.subscribe(controlMessage => {
+            expect(controlMessage.controlCode).toBe(
+                ClrResponsiveNavCodes.NAV_OPEN
+            );
+        });
     });
 
     it("#sends the close code on controlNavSubject when close() is called", () => {
         navLevel.close();
-        expect(service.controlNavSubject.getValue().controlCode).toBe(
-            ClrResponsiveNavCodes.NAV_CLOSE
-        );
+        service.navControl.subscribe(controlMessage => {
+            expect(controlMessage.controlCode).toBe(
+                ClrResponsiveNavCodes.NAV_CLOSE
+            );
+        });
     });
 
     it("#unregisters itself from the registerNavSubject when ngOnDestroy() is called", () => {
         navLevel.ngOnDestroy();
-        expect(service.registerNavSubject.getValue().length).toBe(0);
+        service.registeredNavs.subscribe(navArray => {
+            expect(navArray.length).toBe(0);
+        });
     });
 });

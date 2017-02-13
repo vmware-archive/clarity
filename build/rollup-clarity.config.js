@@ -12,7 +12,7 @@ export default {
         '@angular/platform-browser',
         'rxjs',
         'rxjs/Subject',
-        'rxjs/BehaviorSubject'
+        'rxjs/Observable'
     ],
     globals: {
         '@angular/core' : 'ng.core',
@@ -21,7 +21,7 @@ export default {
         '@angular/platform-browser' : 'ng.platformBrowser',
         'rxjs' : 'rxjs',
         'rxjs/Subject' : 'rxjs.Subject',
-        'rxjs/BehaviorSubject' : 'rxjs/BehaviorSubject'
+        'rxjs/Observable' : 'rxjs/Observable'
     },
     plugins: [
         buble()

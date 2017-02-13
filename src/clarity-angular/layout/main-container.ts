@@ -32,7 +32,7 @@ export class MainContainer implements OnDestroy, OnInit {
 
     ngOnInit() {
         this._classList = this.elRef.nativeElement.classList;
-        this._subscription = this.responsiveNavService.controlNavSubject.subscribe({
+        this._subscription = this.responsiveNavService.navControl.subscribe({
             next: (message: ClrResponsiveNavControlMessage) => {
                 this.processMessage(message);
             }

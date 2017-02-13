@@ -9,6 +9,7 @@
 @import "../utils/layers.clarity";
 
 @include exports('layout.clarity') {
+
     .main-container {
         display: flex;
         flex-direction: column;
@@ -20,13 +21,26 @@
             overflow-x: hidden;
         }
 
-        header, .header {
+        header,
+        .header {
             flex: 0 0 $clr-header-height;
         }
 
         .sub-nav,
         .subnav {
             flex: 0 0 $clr-subnav-height;
+        }
+
+        //This is a utility class which mimics the main-container class
+        //and occupies the remaining space inside of the main-container
+        //after the header just in case our users app layout requires
+        //that the .subnav and the .content-container be inside of an
+        //angular component
+        .u-main-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+            overflow: hidden; //IE 10 doesn't like it if we don't use this
         }
 
         .content-container {

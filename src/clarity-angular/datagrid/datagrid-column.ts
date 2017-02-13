@@ -92,7 +92,7 @@ export class DatagridColumn implements AfterViewInit {
     /**
      * A custom filter for this column that can be provided in the projected content
      */
-    private customFilter = false;
+    public customFilter = false;
     @ContentChild(CustomFilter)
     public set projectedFilter(custom: any) {
         if (custom) {

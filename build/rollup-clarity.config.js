@@ -10,14 +10,18 @@ export default {
         '@angular/common',
         '@angular/forms',
         '@angular/platform-browser',
-        'rxjs'
+        'rxjs',
+        'rxjs/Subject',
+        'rxjs/BehaviorSubject'
     ],
     globals: {
         '@angular/core' : 'ng.core',
         '@angular/common' : 'ng.common',
         '@angular/forms' : 'ng.forms',
         '@angular/platform-browser' : 'ng.platformBrowser',
-        'rxjs' : 'rxjs'
+        'rxjs' : 'rxjs',
+        'rxjs/Subject' : 'rxjs.Subject',
+        'rxjs/BehaviorSubject' : 'rxjs/BehaviorSubject'
     },
     plugins: [
         buble()

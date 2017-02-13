@@ -5,12 +5,16 @@
  */
 import {Component, Input, Output, EventEmitter} from "@angular/core";
 import {Selection} from "./providers/selection";
+import {RowActionService} from "./providers/row-action-service";
 
 @Component({
     selector: "clr-dg-row",
     template: `
         <clr-dg-cell *ngIf="selection.selectable" class="datagrid-select">
             <clr-checkbox [ngModel]="selected" (ngModelChange)="toggle($event)"></clr-checkbox>
+        </clr-dg-cell>
+        <clr-dg-cell *ngIf="rowActionService.actionableCount > 0" class="datagrid-single-select">
+            <ng-content select="clr-dg-action-overflow"></ng-content>
         </clr-dg-cell>
         <ng-content></ng-content>
     `,
@@ -20,12 +24,13 @@ import {Selection} from "./providers/selection";
     }
 })
 export class DatagridRow {
+
     /**
      * Model of the row, to use for selection
      */
     @Input("clrDgItem") item: any;
 
-    constructor(private selection: Selection) {}
+    constructor(public selection: Selection, public rowActionService: RowActionService) {}
 
     private _selected = false;
     /**

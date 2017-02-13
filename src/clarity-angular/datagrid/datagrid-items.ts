@@ -12,7 +12,7 @@ import {Items} from "./providers/items";
     selector: "[clrDgItems][clrDgItemsOf]",
 })
 export class DatagridItems implements OnChanges, DoCheck {
-    @Input("clrDgItemsOf") private rawItems: any[];
+    @Input("clrDgItemsOf") public rawItems: any[];
 
     private _differ: IterableDiffer;
 

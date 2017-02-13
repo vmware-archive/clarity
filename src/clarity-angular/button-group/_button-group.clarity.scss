@@ -4,3 +4,26 @@
 
 @import "../utils/variables.clarity";
 @import "../utils/mixins.clarity";
+
+@include exports('button-group.clarity') {
+
+  $clr_btn-group-right-margin: baselineRem(5/24);
+
+  .btn-group {
+
+    .btn {
+      margin-right: -$clr_btn-group-right-margin;
+    }
+
+    .btn:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .btn:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+  }
+}

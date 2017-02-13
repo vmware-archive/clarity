@@ -9,37 +9,8 @@ gemini.suite('datagrid', (child) => {
     //             actions.waitForElementToShow('main.content-area', WAIT_TIME);
     //             actions.wait(WAIT_LOAD_TIME);
     //         })
-    //         .setCaptureElements('main.content-area')
-    //         .capture('default');
-    // });
-    //
-    // gemini.suite('custom-rendering', (child) => {
-    //     child.setUrl('/datagrid/custom-rendering')
-    //         .before((actions, find) => {
-    //             actions.waitForElementToShow('main.content-area', WAIT_TIME);
-    //             actions.wait(WAIT_LOAD_TIME);
-    //         })
-    //         .setCaptureElements('main.content-area')
-    //         .capture('default');
-    // });
-    //
-    // gemini.suite('smart-iterator', (child) => {
-    //     child.setUrl('/datagrid/smart-iterator')
-    //         .before((actions, find) => {
-    //             actions.waitForElementToShow('main.content-area', WAIT_TIME);
-    //             actions.wait(WAIT_LOAD_TIME);
-    //         })
-    //         .setCaptureElements('main.content-area')
-    //         .capture('default');
-    // });
-    //
-    // gemini.suite('binding-properties', (child) => {
-    //     child.setUrl('/datagrid/binding-properties')
-    //         .before((actions, find) => {
-    //             actions.waitForElementToShow('main.content-area', WAIT_TIME);
-    //             actions.wait(WAIT_LOAD_TIME);
-    //         })
-    //         .setCaptureElements('main.content-area')
+    //         .setCaptureElements('.datagrid-wrapper')
+    //         .ignoreElements({ every: '.datagrid-cell'})
     //         .capture('default');
     // });
     //
@@ -48,8 +19,13 @@ gemini.suite('datagrid', (child) => {
     //         .before((actions, find) => {
     //             actions.waitForElementToShow('main.content-area', WAIT_TIME);
     //             actions.wait(WAIT_LOAD_TIME);
+    //             actions.executeJS(function(window) {
+    //                 document.getElementsByClassName('datagrid-wrapper')[0].scrollIntoView();
+    //             });
+    //             actions.click(find('.datagrid-column-title:not(:disabled)'));
     //         })
-    //         .setCaptureElements('main.content-area')
+    //         .setCaptureElements('.datagrid-wrapper')
+    //         .ignoreElements({ every: '.datagrid-cell'})
     //         .capture('default');
     // });
     //
@@ -58,8 +34,13 @@ gemini.suite('datagrid', (child) => {
     //         .before((actions, find) => {
     //             actions.waitForElementToShow('main.content-area', WAIT_TIME);
     //             actions.wait(WAIT_LOAD_TIME);
+    //             actions.executeJS(function(window) {
+    //                 document.getElementsByClassName('datagrid-wrapper')[0].scrollIntoView();
+    //             });
+    //             actions.click(find('.datagrid-filter-toggle'));
+    //
     //         })
-    //         .setCaptureElements('main.content-area')
+    //         .setCaptureElements('.datagrid-filter')
     //         .capture('default');
     // });
     //
@@ -68,8 +49,13 @@ gemini.suite('datagrid', (child) => {
     //         .before((actions, find) => {
     //             actions.waitForElementToShow('main.content-area', WAIT_TIME);
     //             actions.wait(WAIT_LOAD_TIME);
+    //             actions.executeJS(function(window) {
+    //                 document.getElementsByClassName('datagrid-wrapper')[0].scrollIntoView();
+    //             });
+    //             actions.click(find('.datagrid-filter-toggle'));
     //         })
-    //         .setCaptureElements('main.content-area')
+    //         .setCaptureElements('.datagrid-wrapper')
+    //         .ignoreElements({ every: '.datagrid-cell'})
     //         .capture('default');
     // });
     //
@@ -78,9 +64,21 @@ gemini.suite('datagrid', (child) => {
     //         .before((actions, find) => {
     //             actions.waitForElementToShow('main.content-area', WAIT_TIME);
     //             actions.wait(WAIT_LOAD_TIME);
+    //             actions.executeJS(function(window) {
+    //                 document.getElementsByClassName('datagrid-wrapper')[0].scrollIntoView();
+    //             });
     //         })
-    //         .setCaptureElements('main.content-area')
-    //         .capture('default');
+    //         .setCaptureElements('.datagrid-wrapper')
+    //         .ignoreElements({ every: '.datagrid-cell'})
+    //         .capture('default')
+    //         .capture('page-2', function(actions, find) {
+    //             actions.click(find('.pagination button'));
+    //             actions.wait(WAIT_LOAD_TIME);
+    //         })
+    //         .capture('page-next', function(actions, find) {
+    //             actions.click(find('.pagination .pagination-next'));
+    //             actions.wait(WAIT_LOAD_TIME);
+    //         });
     // });
     //
     // gemini.suite('selection', (child) => {
@@ -88,19 +86,25 @@ gemini.suite('datagrid', (child) => {
     //         .before((actions, find) => {
     //             actions.waitForElementToShow('main.content-area', WAIT_TIME);
     //             actions.wait(WAIT_LOAD_TIME);
+    //             actions.executeJS(function(window) {
+    //                 document.getElementsByClassName('datagrid-wrapper')[0].scrollIntoView();
+    //             });
     //         })
-    //         .setCaptureElements('main.content-area')
-    //         .capture('default');
-    // });
-    //
-    // gemini.suite('server-driven', (child) => {
-    //     child.setUrl('/datagrid/server-driven')
-    //         .before((actions, find) => {
-    //             actions.waitForElementToShow('main.content-area', WAIT_TIME);
+    //         .setCaptureElements('.datagrid-wrapper')
+    //         .ignoreElements({ every: '.datagrid-cell:not(.datagrid-select):not(.datagrid-row-actions)'})
+    //         .capture('default')
+    //         .capture('click-one', function(actions, find) {
+    //             actions.click(find('.datagrid-cell .checkbox'));
     //             actions.wait(WAIT_LOAD_TIME);
     //         })
-    //         .setCaptureElements('main.content-area')
-    //         .capture('default');
+    //         .capture('click-all', function(actions, find) {
+    //             actions.click(find('.datagrid-column-title .checkbox'));
+    //             actions.wait(WAIT_LOAD_TIME);
+    //         })
+    //         .capture('single-row', function(actions, find) {
+    //             actions.click(find('.datagrid-row-actions clr-icon'));
+    //             actions.wait(WAIT_LOAD_TIME);
+    //         });
     // });
     //
     // gemini.suite('placeholder', (child) => {
@@ -108,18 +112,12 @@ gemini.suite('datagrid', (child) => {
     //         .before((actions, find) => {
     //             actions.waitForElementToShow('main.content-area', WAIT_TIME);
     //             actions.wait(WAIT_LOAD_TIME);
+    //             actions.executeJS(function(window) {
+    //                 document.getElementsByClassName('datagrid-wrapper')[0].scrollIntoView();
+    //             });
     //         })
-    //         .setCaptureElements('main.content-area')
+    //         .setCaptureElements('.datagrid-wrapper')
     //         .capture('default');
     // });
     //
-    // gemini.suite('full', (child) => {
-    //     child.setUrl('/datagrid/full')
-    //         .before((actions, find) => {
-    //             actions.waitForElementToShow('main.content-area', WAIT_TIME);
-    //             actions.wait(WAIT_LOAD_TIME);
-    //         })
-    //         .setCaptureElements('main.content-area')
-    //         .capture('default');
-    // });
 });

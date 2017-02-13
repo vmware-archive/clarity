@@ -12,6 +12,7 @@ import {Items} from "./providers/items";
 import {Filters} from "./providers/filters";
 import {Sort} from "./providers/sort";
 import {Page} from "./providers/page";
+import {RowActionService} from "./providers/row-action-service";
 
 export default function(): void {
     describe("DatagridRow component", function() {
@@ -20,7 +21,7 @@ export default function(): void {
         let selectionProvider: Selection;
 
         beforeEach(function () {
-            context = this.create(DatagridRow, FullTest, [Selection, Items, Filters, Sort, Page]);
+            context = this.create(DatagridRow, FullTest, [Selection, Items, Filters, Sort, Page, RowActionService]);
             selectionProvider = TestBed.get(Selection);
         });
 

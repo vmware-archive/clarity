@@ -6,6 +6,7 @@
 
 <div class="datagrid-wrapper">
     <div class="datagrid-content-wrapper">
+        <ng-content select="clr-dg-action-bar"></ng-content>
         <div class="datagrid">
             <div class="datagrid-head">
                 <div class="datagrid-row">
@@ -14,16 +15,17 @@
                         <clr-checkbox [(ngModel)]="allSelected"></clr-checkbox>
                     </span>
                     </div>
+                    <!-- header for single row action; only display if we have at least one actionable row in datagrid -->
+                    <div class="datagrid-column datagrid-row-actions" *ngIf="rowActionService.actionableCount > 0"></div>
                     <ng-content select="clr-dg-column"></ng-content>
                 </div>
             </div>
 
-            <div class="datagrid-body">
-                <template *ngIf="iterator"
-                          ngFor [ngForOf]="items.displayed" [ngForTrackBy]="iterator.trackBy"
-                          [ngForTemplate]="iterator.template"></template>
-                <ng-content *ngIf="!iterator"></ng-content>
-            </div>
+        <div class="datagrid-body">
+            <template *ngIf="iterator"
+                      ngFor [ngForOf]="items.displayed" [ngForTrackBy]="iterator.trackBy"
+                      [ngForTemplate]="iterator.template"></template>
+            <ng-content *ngIf="!iterator"></ng-content>
         </div>
     </div>
 

@@ -7,6 +7,8 @@ import {Type} from "@angular/core";
 
 import {DatagridStringFilter} from "./built-in/filters/datagrid-string-filter";
 import {Datagrid} from "./datagrid";
+import {DatagridActionBar} from "./datagrid-action-bar";
+import {DatagridActionOverflow} from "./datagrid-action-overflow";
 import {DatagridCell} from "./datagrid-cell";
 import {DatagridColumn} from "./datagrid-column";
 import {DatagridFilter} from "./datagrid-filter";
@@ -17,6 +19,8 @@ import {DatagridRow} from "./datagrid-row";
 import {DatagridPlaceholder} from "./datagrid-placeholder";
 
 export * from "./datagrid";
+export * from "./datagrid-action-bar";
+export * from "./datagrid-action-overflow";
 export * from "./datagrid-column";
 export * from "./datagrid-filter";
 export * from "./datagrid-items";
@@ -38,6 +42,8 @@ export * from "./built-in/comparators/datagrid-property-comparator";
 export const DATAGRID_DIRECTIVES: Type<any>[] = [
     // Core
     Datagrid,
+    DatagridActionBar,
+    DatagridActionOverflow,
     DatagridColumn,
     DatagridFilter,
     DatagridItems,

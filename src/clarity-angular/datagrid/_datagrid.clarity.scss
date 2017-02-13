@@ -34,6 +34,7 @@
     }
 
     $clr-datagrid-icon-size: rem(1);
+    $clr-datagrid-action-arrow-size: $clr_baselineRem_0_25;
 
     .datagrid-content-wrapper {
         display: block;
@@ -220,6 +221,11 @@
             }
         }
 
+        .datagrid-row-actions {
+            width: $clr-table-cellpadding + $clr-table-lineheight;
+            cursor: pointer;
+        }
+
         .datagrid-row {
             &:hover {
                 background-color: $clr-light-gray;
@@ -229,10 +235,103 @@
                 color: $clr-black;
                 background-color: $clr-selection-color;
             }
+
+            .datagrid-action-overflow {
+                position: absolute;
+                left: 100%;
+                transform: translateY(-50%);
+                margin-top: -1 * ($clr-datagrid-icon-size / 2);
+                background: $clr-white;
+                padding: $clr_baselineRem_0_25 $clr_baselineRem_0_25;
+                border: 1px solid $gray-light-midtone;
+                box-shadow: 0 1px 3px rgba($gray-dark, 0.25);
+                border-radius: $clr-default-borderradius;
+                font-weight: normal;
+                z-index: map-get($clr-layers, dropdown-menu);
+                white-space: nowrap;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right: 100%;
+                    width: 0;
+                    height: 0;
+                    margin-top: -1 * $clr-datagrid-action-arrow-size;
+                    border-right: $clr-datagrid-action-arrow-size solid $gray-light-midtone;
+                    border-top: $clr-datagrid-action-arrow-size solid transparent;
+                    border-bottom: $clr-datagrid-action-arrow-size solid transparent;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right: 100%;
+                    width: 0;
+                    height: 0;
+                    margin-top: -1 * $clr-datagrid-action-arrow-size + 1;
+                    border-right: $clr-datagrid-action-arrow-size - 1 solid $clr-white;
+                    border-top: $clr-datagrid-action-arrow-size - 1 solid transparent;
+                    border-bottom: $clr-datagrid-action-arrow-size - 1 solid transparent;
+                }
+
+                .action-item {
+                    @include clr-getTypePropertiesForDomElement(dropdown_text, (color, font-size, letter-spacing));
+                    $adjusted_lineHeight: clr-getTypePropertyValueForDomElement(dropdown_text, line-height) - 1;
+
+                    background: transparent;
+                    border: 0;
+                    color: clr-getTextColor();
+                    cursor: pointer;
+                    display: block;
+                    line-height: $adjusted_lineHeight;
+                    margin: 0;
+                    padding: 1px $clr_baselineRem_1 0;
+                    text-align: left;
+                    width: 100%;
+
+                    &:hover,
+                    &:focus {
+                        text-decoration: none;
+                        background-color: $gray-light;
+                    }
+
+                    &.active {
+                        background: $clr-selection-color;
+                        color: $clr-black;
+                    }
+
+                    &:focus {
+                        outline: 0;
+                    }
+
+                    &.disabled {
+                        cursor: not-allowed;
+                        opacity: 0.4;
+                        user-select: none;
+                    }
+
+                    &.disabled:hover {
+                        background: none;
+                    }
+
+                    &.disabled:active,
+                    &.disabled:focus {
+                        background: none;
+                        box-shadow: none;
+                    }
+                }
+            }
+
+            .datagrid-action-toggle {
+                cursor: pointer;
+            }
         }
 
         .datagrid-cell {
             border-top-color: $clr-lighter-midtone-gray;
+            position: relative;
         }
     }
 
@@ -262,6 +361,16 @@
                 background-image: generateEmptyDatagridPlaceholder();
             }
         }
+    }
+
+    .datagrid-action-bar {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: stretch;
+        width: 100%;
+        min-height: $clr_baselineRem_1_5;
+        line-height: $clr_baselineRem_1_5 - 3px;
+        margin-bottom: -$clr_baselineRem_1;
     }
 
     .datagrid-foot {

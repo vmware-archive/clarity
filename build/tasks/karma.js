@@ -28,9 +28,8 @@ gulp.task('karma:verbose', function (done) {
 	new Server({
 		configFile: configFile,
 		reporters: ['mocha']
-	}, function() {
-		// Ignore possible errors, the log should be enough when using :verbose
-		done();
+    }, function(exitStatus) {
+        done(exitStatus ? new Error("There are failing unit tests") : undefined);
 	}).start();
 });
 

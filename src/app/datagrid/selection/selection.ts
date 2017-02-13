@@ -31,10 +31,29 @@ export class DatagridSelectionDemo {
     example = EXAMPLE;
     users: User[];
     selected: User[] = [];
+    toAdd: User[] = [];
+    toDelete: User[] = [];
+    toEdit: User;
 
     constructor(private inventory: Inventory) {
         inventory.size = 10;
         inventory.reset();
         this.users = inventory.all;
+    }
+
+    onDelete(user: User) {
+        if (user) {
+            this.toDelete = [ user ];
+        } else {
+            this.toDelete = this.selected.slice();
+        }
+    }
+
+    onEdit(user: User) {
+        this.toEdit = user;
+    }
+
+    onAdd() {
+        this.toAdd = this.selected.slice();
     }
 }

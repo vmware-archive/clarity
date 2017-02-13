@@ -16,6 +16,8 @@ import FiltersProviderSpecs from "./providers/filters.spec";
 import PageProviderSpecs from "./providers/page.spec";
 import ItemsProviderSpecs from "./providers/items.spec";
 import SelectionProviderSpecs from "./providers/selection.spec";
+import DatagridActionBarSpecs from "./datagrid-action-bar.spec";
+import DatagridActionOverflowSpecs from "./datagrid-action-overflow.spec";
 import DatagridCellSpecs from "./datagrid-cell.spec";
 import DatagridFilterSpecs from "./datagrid-filter.spec";
 import DatagridColumnSpecs from "./datagrid-column.spec";
@@ -41,6 +43,8 @@ describe("Datagrid", function() {
         SelectionProviderSpecs();
     });
     describe("Components", function() {
+        DatagridActionBarSpecs();
+        DatagridActionOverflowSpecs();
         DatagridCellSpecs();
         DatagridFilterSpecs();
         DatagridColumnSpecs();

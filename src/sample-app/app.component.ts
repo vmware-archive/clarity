@@ -17,4 +17,32 @@ export class AppComponent  {
     onClose(): void {
         this.closeMessage = "The alert has been closed";
     }
+
+    users: any[];
+    selected: any[] = [];
+    toAdd: any[] = [];
+    toDelete: any[] = [];
+    toEdit: any;
+
+    constructor() {
+        this.users = [
+            { name: "alice" },
+            { name: "bob" },
+            { name: "carol" },
+        ];
+    }
+
+    onDelete() {
+        this.toDelete = this.selected.slice();
+        return false;
+    }
+
+    onEdit() {
+        this.toEdit = this.selected[0];
+        return false;
+    }
+
+    onAdd() {
+        this.toAdd = this.selected.slice();
+    }
 }

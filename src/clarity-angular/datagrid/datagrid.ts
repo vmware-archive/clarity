@@ -21,16 +21,17 @@ import {Items} from "./providers/items";
 import {Page} from "./providers/page";
 import {Selection} from "./providers/selection";
 import {Sort} from "./providers/sort";
+import {RowActionService} from "./providers/row-action-service";
 
 @Component({
     selector: "clr-datagrid",
     templateUrl: "./datagrid.html",
-    providers: [Selection, Sort, Filters, Page, Items]
+    providers: [Selection, Sort, Filters, Page, RowActionService, Items]
 })
 export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
 
-    constructor(private selection: Selection, private sort: Sort, private filters: Filters,
-                private page: Page, public items: Items) {}
+    constructor(public selection: Selection, private sort: Sort, private filters: Filters,
+                private page: Page, public rowActionService: RowActionService, public items: Items) {}
 
     /**
      * Freezes the datagrid while data is loading
@@ -156,15 +157,15 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
      * by querying the projected content. This is needed to keep track of the models currently
      * displayed, typically for selection.
      */
-    @ContentChildren(DatagridRow) private _rows: QueryList<DatagridRow>;
+    @ContentChildren(DatagridRow) public rows: QueryList<DatagridRow>;
     ngAfterContentInit() {
-        this._subscriptions.push(this._rows.changes.subscribe(() => {
+        this._subscriptions.push(this.rows.changes.subscribe(() => {
             if (!this.items.smart) {
-                this.items.all = this._rows.map((row: DatagridRow) => row.item);
+                this.items.all = this.rows.map((row: DatagridRow) => row.item);
             }
         }));
         if (!this.items.smart) {
-            this.items.all = this._rows.map((row: DatagridRow) => row.item);
+            this.items.all = this.rows.map((row: DatagridRow) => row.item);
         }
     }
 

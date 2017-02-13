@@ -46,12 +46,12 @@ export class DatagridStringFilter implements CustomFilter, Filter<any>, AfterVie
     /**
      * We need the actual input element to automatically focus on it
      */
-    @ViewChild("input") private input: ElementRef;
+    @ViewChild("input") public input: ElementRef;
 
     /**
      * We grab the DatagridFilter we wrap to register this StringFilter to it.
      */
-    @ViewChild(DatagridFilter) private filterContainer: DatagridFilter;
+    @ViewChild(DatagridFilter) public filterContainer: DatagridFilter;
     ngAfterViewInit() {
         this.filterContainer.filter = this;
 

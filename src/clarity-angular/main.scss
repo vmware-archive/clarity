@@ -22,6 +22,7 @@
 @import "./images/images.clarity"; // depends on variables.clarity, mixins.clarity, icons.clarity
 @import "./typography/typography.clarity"; // depends on colors.clarity, color.clarity, variables.clarity, utilities.clarity
 @import "./buttons/buttons.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity
+@import "./button-group/button-group.clarity"; // depends on variables.clarity, mixins.clarity
 @import "./alert/alert.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, icons.clarity, buttons.clarity
 @import "./buttons/toggles.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
 @import "./list-group/list-group.clarity"; // depends on variables.clarity, mixins.clarity

@@ -105,14 +105,27 @@ $clr-tooltip-adjusted-margin: $margin-value + $arrow-width * 2 !default;
             background: url("data:image/svg+xml;charset=UTF-8,%3Csvg+xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22+width%3D%221%22+height%3D%221%22+viewBox%3D%220+0+1+1%22%3E%3Ctitle%3Etransparent+bcg%3C%2Ftitle%3E%3C%2Fsvg%3E");
         }
 
-        &:hover > .tooltip-content {
+        &:hover > .tooltip-content,
+        &:focus > .tooltip-content {
             visibility: visible;
             opacity: 1;
         }
 
+        &:focus {
+            outline: 0;
+        }
+
+        &:focus > :first-child {
+            outline-offset: 1px;
+            outline-width: 1px;
+            outline-color: rgb(59, 153, 252); //Color that Chrome uses
+            outline-style: solid;
+        }
+
         //Tooltip directions
         //Default Tooltip - Top Right
-        & > .tooltip-content, &.tooltip-top-right > .tooltip-content {
+        & > .tooltip-content,
+        &.tooltip-top-right > .tooltip-content {
             @include vertical-tooltip-generator(top, right);
         }
 

@@ -306,10 +306,11 @@ const coreShapes: any = {
                 <path class="clr-i-solid--alerted clr-i-solid-path-2--alerted clr-i-alert" d="M26.85,1.14,21.13,11A1.28,1.28,0,0,0,22.23,13H33.68A1.28,1.28,0,0,0,34.78,11L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z"/>
             </svg>
         `,
-    "ellipses-vertical": `
+
+    "ellipsis-vertical": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-badge"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>ellipses-vertical</title>
+                <title>ellipsis-vertical</title>
 
                 <circle cx="18" cy="8.18" r="2.18" class="clr-i-outline clr-i-outline-path-1"/>
                 <circle cx="18" cy="18" r="2.18" class="clr-i-outline clr-i-outline-path-2"/>
@@ -322,10 +323,16 @@ const coreShapes: any = {
 
             </svg>
         `,
-    "ellipses-horizontal": `
+
+    /*TODO: ellispes-vertical is deprecated and will be removed in 0.9.0*/
+    get "ellipses-vertical"() {
+        return this[ "ellipsis-vertical" ];
+    },
+
+    "ellipsis-horizontal": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-badge"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>ellipses-horizontal</title>
+                <title>ellipsis-horizontal</title>
 
                 <circle cx="27.82" cy="22.18" r="2.18" class="clr-i-outline clr-i-outline-path-1"/>
                 <circle cx="18" cy="22.18" r="2.18" class="clr-i-outline clr-i-outline-path-2"/>
@@ -338,6 +345,11 @@ const coreShapes: any = {
 
             </svg>
         `,
+
+    /*TODO: ellispes-horizontal is deprecated and will be removed in 0.9.0*/
+    get "ellipses-horizontal"() {
+        return this[ "ellipsis-horizontal" ];
+    },
 
     "vm-bug": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"

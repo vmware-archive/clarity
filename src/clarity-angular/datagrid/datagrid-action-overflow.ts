@@ -9,7 +9,7 @@ import {RowActionService} from "./providers/row-action-service";
 @Component({
     selector: "clr-dg-action-overflow",
     template: `
-        <clr-icon shape="ellipses-vertical" class="datagrid-action-toggle" (click)="toggle()"></clr-icon>
+        <clr-icon shape="ellipsis-vertical" class="datagrid-action-toggle" (click)="toggle()"></clr-icon>
         <div class="datagrid-action-overflow" *ngIf="open">
             <ng-content></ng-content>
         </div>

@@ -364,12 +364,13 @@
     }
 
     .datagrid-action-bar {
+        padding: $clr_baselineRem_0_125;
         display: flex;
         flex-flow: row nowrap;
         align-items: stretch;
         width: 100%;
-        min-height: $clr_baselineRem_1_5;
-        line-height: $clr_baselineRem_1_5 - 3px;
+        min-height: $clr_baselineRem_1_75;
+        line-height: $clr_baselineRem_1_75 - 3px;
         margin-bottom: -$clr_baselineRem_1;
     }
 

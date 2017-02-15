@@ -7,17 +7,18 @@
 
 @include exports('button-group.clarity') {
 
-  $clr_btn-group-right-margin: baselineRem(5/24);
-
   .btn-group {
 
+    display: flex;
+
     .btn {
-      margin-right: -$clr_btn-group-right-margin;
+      margin-right: 0;
     }
 
     .btn:not(:last-child) {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
+      border-right: none; /* Prevent double borders */
     }
 
     .btn:not(:first-child) {

@@ -1,4 +1,4 @@
-import { Directive, Input, TemplateRef, ViewContainerRef } from "@angular/core";
+import {Directive, EmbeddedViewRef, Input, TemplateRef, ViewContainerRef} from "@angular/core";
 import {PopoverOptions, Point, Popover} from "./popover";
 
 let openCount: number = 0;
@@ -22,7 +22,6 @@ export class PopoverDirective {
         if (open) {
             if (openCount === 0) {
                 this.createPopover();
-
             } else {
                 waiting.push(() => {
                     this.createPopover();
@@ -40,7 +39,14 @@ export class PopoverDirective {
     }
 
     createPopover() {
-        let embeddedViewRef = this.viewContainer.createEmbeddedView(this.templateRef);
+        let embeddedViewRef: EmbeddedViewRef<any>
+            = <EmbeddedViewRef<any>>this.viewContainer.createEmbeddedView(this.templateRef);
+
+        //TODO: Not sure of the risks associated with using this. Find an alternative.
+        //Needed for find the correct height and width of dynamically created views
+        //inside of the popover. For Eg: Button Groups
+        embeddedViewRef.detectChanges();
+
         this._popoverInstance = new Popover(embeddedViewRef.rootNodes[0]);
         this._popoverInstance.anchor(
             this.anchorElem, this.anchorPoint, this.popoverPoint, this.popoverOptions);

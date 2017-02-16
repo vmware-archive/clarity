@@ -1,0 +1,25 @@
+<ng-container *ngFor="let inlineButton of inlineButtons">
+    <template [ngTemplateOutlet]="inlineButton.templateRef"></template>
+</ng-container>
+<ng-container *ngIf="menuButtons.length > 0">
+    <div
+        class="btn-group-overflow open"
+        [ngClass]="menuPosition"
+        #anchor>
+        <button
+            class="btn dropdown-toggle"
+            (click)="toggleMenu()">
+            <clr-icon shape="ellipsis-horizontal"></clr-icon>
+        </button>
+        <div
+            class="dropdown-menu"
+            *clrPopover="openMenu; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint;">
+            <template [ngTemplateOutlet]="ref"></template>
+        </div>
+    </div>
+</ng-container>
+<template #ref>
+    <ng-container *ngFor="let menuButton of menuButtons">
+        <template [ngTemplateOutlet]="menuButton.templateRef"></template>
+    </ng-container>
+</template>

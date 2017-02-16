@@ -17,14 +17,14 @@ export class DatagridPropertyComparator implements Comparator<any> {
     public compare(a: any, b: any): number {
         let propA = this.nestedProp.getPropValue(a);
         let propB = this.nestedProp.getPropValue(b);
-        if (typeof propA === "undefined") {
-            if (typeof propB === "undefined") {
+        if (typeof propA === "undefined" || propA === null) {
+            if (typeof propB === "undefined" || propB === null) {
                 return 0;
             } else {
                 return 1;
             }
         } else {
-            if (typeof propB === "undefined") {
+            if (typeof propB === "undefined" || propB === null) {
                 return -1;
             } else if (propA < propB) {
                 return -1;

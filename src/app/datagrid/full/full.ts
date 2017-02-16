@@ -40,6 +40,8 @@ export class DatagridFullDemo {
     loading = true;
     total: number;
 
+    nameFilter = "d";
+
     pokemonComparator = new PokemonComparator();
     pokemonFilter = new PokemonFilter();
 

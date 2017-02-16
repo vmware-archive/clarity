@@ -15,4 +15,12 @@ import {Component} from "@angular/core";
     }
 })
 export class DatagridFooter {
+
+    ngAfterContentInit() {
+        console.log("Footer content init");
+    }
+
+    ngAfterViewInit() {
+        console.log("Footer view init");
+    }
 }

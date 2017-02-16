@@ -5,7 +5,6 @@
  */
 import {Injectable} from "@angular/core";
 import {Subject} from "rxjs/Subject";
-import {Subscription} from "rxjs/Subscription";
 import {Observable} from "rxjs/Observable";
 
 import {Filter} from "../interfaces/filter";
@@ -25,7 +24,7 @@ export class Filters {
     /**
      * List of all filters, whether they're active or not
      */
-    private _all: FilterWithSub[] = [];
+    private _all: RegisteredFilter<any>[] = [];
 
     /**
      * Tests if at least one filter is currently active
@@ -57,14 +56,15 @@ export class Filters {
     /**
      * Registers a filter, and returns a deregistration function
      */
-    public add(filter: Filter<any>): () => void {
+    public add<F extends Filter<any>>(filter: F): RegisteredFilter<F> {
         let index = this._all.length;
         let subscription = filter.changes.subscribe(() => this._change.next([filter]));
-        this._all.push({filter, subscription});
-        return () => {
+        let registered = new RegisteredFilter(filter, () => {
             subscription.unsubscribe();
             this._all.splice(index, 1);
-        };
+        });
+        this._all.push(registered);
+        return registered;
     }
 
     /**
@@ -80,7 +80,7 @@ export class Filters {
     }
 }
 
-interface FilterWithSub {
-    filter: Filter<any>;
-    subscription: Subscription;
+export class RegisteredFilter<F extends Filter<any>> {
+
+    constructor(public filter: F, public unregister: () => void) {}
 }

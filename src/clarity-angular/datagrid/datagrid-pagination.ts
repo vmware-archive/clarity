@@ -137,4 +137,12 @@ export class DatagridPagination implements OnDestroy {
     public get lastItem(): number {
         return this.page.lastItem;
     }
+
+    ngAfterContentInit() {
+        console.log("Pagination content init");
+    }
+
+    ngAfterViewInit() {
+        console.log("Pagination view init");
+    }
 }

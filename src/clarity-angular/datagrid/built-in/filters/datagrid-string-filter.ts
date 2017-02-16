@@ -6,37 +6,46 @@
 import {
     Component, Input, ViewChild, ElementRef, Renderer, AfterViewInit, EventEmitter, Output
 } from "@angular/core";
-import {Observable} from "rxjs/Observable";
-import {Subject} from "rxjs/Subject";
-import {Filter} from "../../interfaces/filter";
 import {StringFilter} from "../../interfaces/string-filter";
 import {CustomFilter} from "../../providers/custom-filter";
 import {DatagridFilter} from "../../datagrid-filter";
+import {StringFilterImpl} from "./string-filter-impl";
+import {FilterRegisterer} from "../../utils/filter-registerer";
+import {Filters, RegisteredFilter} from "../../providers/filters";
 
 @Component({
     selector: "clr-dg-string-filter",
     providers: [{provide: CustomFilter, useExisting: DatagridStringFilter}],
     template: `
-        <clr-dg-filter [(clrDgFilterOpen)]="open">
+        <clr-dg-filter [clrDgFilter]="registered" [(clrDgFilterOpen)]="open">
             <!--
                 Even though this *ngIf looks useless because the filter container already has one,
                 it prevents NgControlStatus and other directives automatically added by Angular
                 on inputs with NgModel from freaking out because of their host binding changing
                 mid-change detection when the input is destroyed.
             -->
-            <input #input type="text" name="search" [(ngModel)]="value" *ngIf="open"
+            <input #input type="text" name="search" [(ngModel)]="filter.value" *ngIf="open"
                 (keyup.enter)="close()" (keyup.escape)="close()"/>
         </clr-dg-filter>
     `
 })
-export class DatagridStringFilter implements CustomFilter, Filter<any>, AfterViewInit {
+export class DatagridStringFilter extends FilterRegisterer<StringFilterImpl>
+    implements CustomFilter, AfterViewInit {
 
-    constructor(private renderer: Renderer) {}
+    constructor(private renderer: Renderer, filters: Filters) {
+        super(filters);
+    }
 
     /**
      * Customizable filter logic based on a search text
      */
-    @Input("clrDgStringFilter") public filter: StringFilter<any>;
+    @Input("clrDgStringFilter") set customStringFilter(value: StringFilter<any>) {
+        if (value instanceof RegisteredFilter) {
+            this.filter = <any>value;
+        } else {
+            this.filter = new StringFilterImpl(value);
+        }
+    }
 
     /**
      * Indicates if the filter dropdown is open
@@ -53,8 +62,6 @@ export class DatagridStringFilter implements CustomFilter, Filter<any>, AfterVie
      */
     @ViewChild(DatagridFilter) public filterContainer: DatagridFilter;
     ngAfterViewInit() {
-        this.filterContainer.filter = this;
-
         this.filterContainer.openChanged.subscribe((open: boolean) => {
             if (open) {
                 // We need the timeout because at the time this executes, the input isn't
@@ -65,66 +72,28 @@ export class DatagridStringFilter implements CustomFilter, Filter<any>, AfterVie
             }
         });
 
-        if (this.value) { // this._changes needs a kick when a pre-filter value is supplied.
-            this._changes.next(this.value);
+        if (this.filter.value) { // this._changes needs a kick when a pre-filter value is supplied.
+            console.log("StringFilter View init");
+            // this._changes.next(this.value);
         }
     }
 
-    /**
-     * The Observable required as part of the Filter interface
-     */
-    private _changes = new Subject<string>();
-    // We do not want to expose the Subject itself, but the Observable which is read-only
-    public get changes(): Observable<string> {
-        return this._changes.asObservable();
-    };
-
-    /**
-     * Raw input value
-     */
-    private _rawValue: string = "";
-    public get value(): string {
-        return this._rawValue;
-    }
-    /**
-     * Input value converted to lowercase
-     */
-    private _lowerCaseValue: string = "";
-    public get lowerCaseValue() {
-        return this._lowerCaseValue;
-    }
     /**
      * Common setter for the input value
      */
     @Input("clrFilterValue")
     public set value(value: string) {
+        console.log("StringFilter, setting value to", value);
         if (!value) {
             value = "";
         }
-        if (value !== this._rawValue) {
-            this._rawValue = value;
-            this._lowerCaseValue = value.toLowerCase().trim();
-            this._changes.next(value);
+        if (value !== this.filter.value) {
+            this.filter.value = value;
             this.filterValueChange.emit(value);
         }
     }
 
     @Output("clrFilterValueChange") filterValueChange = new EventEmitter();
-
-    /**
-     * Indicates if the filter is currently active, meaning the input is not empty
-     */
-    public isActive(): boolean {
-        return !!this.value;
-    }
-
-    /**
-     * Tests if an item matches a search text
-     */
-    public accepts(item: any): boolean {
-        // We always test with the lowercase value of the input, to stay case insensitive
-        return this.filter.accepts(item, this.lowerCaseValue);
-    };
 
     public close() {
         this.open = false;

@@ -32,56 +32,19 @@ export default function (): void {
         it("receives an input for the filter value", function () {
             context.testComponent.filterValue = "M";
             context.detectChanges();
-            expect(context.clarityDirective.value).toBe("M");
+            expect(context.clarityDirective.filter.value).toBe("M");
         });
 
         it("receives an input for the filter logic", function () {
             context.testComponent.filter = filter;
             context.detectChanges();
-            expect(context.clarityDirective.filter).toBe(filter);
+            expect(context.clarityDirective.filter.filterFn).toBe(filter);
         });
 
-        it("updates the lowercase value when the raw value changes", function () {
-            expect(context.clarityDirective.value).toBe("");
-            expect(context.clarityDirective.lowerCaseValue).toBe("");
-            context.clarityDirective.value = "TEST";
-            expect(context.clarityDirective.value).toBe("TEST");
-            expect(context.clarityDirective.lowerCaseValue).toBe("test");
-        });
-
-        it("becomes active when the value isn't empty", function () {
-            expect(context.clarityDirective.isActive()).toBe(false);
-            context.clarityDirective.value = "test";
-            console.log("Should be true: ", context.clarityDirective.value);
-            expect(context.clarityDirective.isActive()).toBe(true);
-            context.clarityDirective.value = "";
-            console.log("Should be false: ", context.clarityDirective.value);
-            expect(context.clarityDirective.isActive()).toBe(false);
-        });
-
-        it("filters according to the StringFilter provided", function () {
-            context.clarityDirective.filter = filter;
-            expect(context.clarityDirective.accepts("test")).toBe(false);
-            context.clarityDirective.value = "tes";
-            expect(context.clarityDirective.accepts("test")).toBe(false);
-            context.clarityDirective.value = "test";
-            expect(context.clarityDirective.accepts("test")).toBe(true);
-            context.clarityDirective.value = "tests";
-            expect(context.clarityDirective.accepts("test")).toBe(false);
-        });
-
-        it("ignores case when filtering", function () {
-            context.clarityDirective.filter = filter;
-            context.clarityDirective.value = "TEST";
-            expect(context.clarityDirective.accepts("test")).toBe(true);
-            context.clarityDirective.value = "test";
-            expect(context.clarityDirective.accepts("TEST")).toBe(true);
-        });
-
-        it("registers itself as a filter", function () {
+        it("registers a filter", function () {
             context.clarityDirective.value = "test";
             expect(filtersInstance.getActiveFilters().length).toBe(1);
-            expect(filtersInstance.getActiveFilters()[0]).toBe(context.clarityDirective);
+            expect(filtersInstance.getActiveFilters()[0]).toBe(context.clarityDirective.filter);
         });
 
         it("registers itself as a CustomFilter provider", function () {
@@ -126,24 +89,24 @@ export default function (): void {
 
         xit("exposes an Observable to follow filter changes", fakeAsync(function () {
             // TODO
-            let nbChanges = 0;
-            let latestInput: string;
-            context.clarityDirective.changes.subscribe((search: string) => {
-                nbChanges++;
-                latestInput = search;
-            });
-            openFilter();
-            let input = context.clarityElement.querySelector("input[type='text']");
-            input.value = "t";
-            context.detectChanges();
-            expect(latestInput).toBe("t");
-            input.value = "test";
-            context.detectChanges();
-            expect(latestInput).toBe("test");
-            input.value = "tes";
-            context.detectChanges();
-            expect(latestInput).toBe("tes");
-            expect(nbChanges).toBe(3);
+            // let nbChanges = 0;
+            // let latestInput: string;
+            // context.clarityDirective.changes.subscribe((search: string) => {
+            //     nbChanges++;
+            //     latestInput = search;
+            // });
+            // openFilter();
+            // let input = context.clarityElement.querySelector("input[type='text']");
+            // input.value = "t";
+            // context.detectChanges();
+            // expect(latestInput).toBe("t");
+            // input.value = "test";
+            // context.detectChanges();
+            // expect(latestInput).toBe("test");
+            // input.value = "tes";
+            // context.detectChanges();
+            // expect(latestInput).toBe("tes");
+            // expect(nbChanges).toBe(3);
         }));
     });
 }

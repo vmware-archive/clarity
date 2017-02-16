@@ -11,22 +11,23 @@ import {Subscription} from "rxjs";
 import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
 import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
 import {Comparator} from "./interfaces/comparator";
-import {StringFilter} from "./interfaces/string-filter";
 import {CustomFilter} from "./providers/custom-filter";
 import {Sort} from "./providers/sort";
+import {FilterRegisterer} from "./utils/filter-registerer";
+import {Filters} from "./providers/filters";
+import {StringFilterImpl} from "./built-in/filters/string-filter-impl";
 
 @Component({
     selector: "clr-dg-column",
     template: `
-        <!-- I'm really not happy with that select since it's not very scalable -->
         <div class="datagrid-column-flex">
+            <!-- I'm really not happy with that select since it's not very scalable -->
             <ng-content select="clr-dg-filter, clr-dg-string-filter"></ng-content>
 
             <clr-dg-string-filter
                 *ngIf="field && !customFilter"
-                [clrDgStringFilter]="defaultFieldFilter"
-                [(clrFilterValue)]="filterValue"
-            ></clr-dg-string-filter>
+                [clrDgStringFilter]="registered"
+                [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
 
             <button class="datagrid-column-title" [disabled]="!sortable" (click)="sort()">
                 <ng-content></ng-content>
@@ -37,8 +38,9 @@ import {Sort} from "./providers/sort";
         "[class.datagrid-column]": "true"
     }
 })
-export class DatagridColumn implements AfterViewInit {
-    constructor(private _sort: Sort, private _cdr: ChangeDetectorRef) {
+export class DatagridColumn extends FilterRegisterer<StringFilterImpl> implements AfterViewInit {
+    constructor(private _sort: Sort, private _cdr: ChangeDetectorRef, filters: Filters) {
+        super(filters);
         this._sortSubscription = _sort.change.subscribe(sort => {
             // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
             if (this.sorted && sort.comparator !== this.sortBy) {
@@ -61,8 +63,11 @@ export class DatagridColumn implements AfterViewInit {
         /*
          * Several bindings in our template and on the host depend on ContentChildren and
          * ViewChildren, so we need to re-trigger change detection once everything is ready.
+         *
+         * TODO: check if still needed?
          */
-        this._cdr.detectChanges();
+        // this._cdr.detectChanges();
+        console.log("Column View init");
     }
 
     /**
@@ -132,14 +137,10 @@ export class DatagridColumn implements AfterViewInit {
     @ContentChild(CustomFilter)
     public set projectedFilter(custom: any) {
         if (custom) {
+            this.deleteFilter();
             this.customFilter = true;
         }
     }
-
-    /**
-     * Default property filter when using the object property shortcut
-     */
-    private defaultFieldFilter: StringFilter<any>;
 
     /*
      * Simple object property shortcut, activates both sorting and filtering
@@ -153,22 +154,27 @@ export class DatagridColumn implements AfterViewInit {
     public set field(field: string) {
         if (typeof field === "string") {
             this._field = field;
-            this.defaultFieldFilter = new DatagridPropertyStringFilter(field);
+            if (!this.customFilter) {
+                this.filter = new StringFilterImpl(new DatagridPropertyStringFilter(field));
+            }
             if (!this.sortBy) {
                 this.sortBy = new DatagridPropertyComparator(field);
             }
         }
     }
 
-    private _filterValue: string;
     public get filterValue() {
-        return this._filterValue;
+        return this.filter.value;
     }
-
     @Input("clrFilterValue")
     public set filterValue(newValue: string) {
-        if (newValue !== this._filterValue) {
-            this._filterValue = newValue;
+        if (!this.filter) { return; }
+        console.log("Column, setting value to", newValue);
+        if (!newValue) {
+            newValue = "";
+        }
+        if (newValue !== this.filter.value) {
+            this.filter.value = newValue;
             this.filterValueChange.emit(newValue);
         }
     }

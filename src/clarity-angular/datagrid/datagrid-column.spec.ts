@@ -20,13 +20,15 @@ export default function (): void {
     describe("DatagridColumn component", function () {
         describe("Typescript API", function () {
             let sortService: Sort;
+            let filtersService: Filters;
             let comparator: TestComparator;
             let component: DatagridColumn;
 
             beforeEach(function () {
                 sortService = new Sort();
+                filtersService = new Filters();
                 comparator = new TestComparator();
-                component = new DatagridColumn(sortService, null);
+                component = new DatagridColumn(sortService, null, filtersService);
             });
 
             it("receives a comparator to sort the column", function () {
@@ -103,7 +105,7 @@ export default function (): void {
                 expect(this.context.clarityDirective.field).toBe("test");
             });
 
-            fit("receives an input for the property filter value", function () {
+            it("receives an input for the property filter value", function () {
                 this.context = this.create(DatagridColumn, PreFilterTest, [Sort, Filters]);
                 this.context.testComponent.field = "test";
                 this.context.testComponent.filterValue = "M";
@@ -141,7 +143,7 @@ export default function (): void {
 
             it("accepts a custom string filter in the projected content", function () {
                 this.context = this.create(DatagridColumn, StringFilterTest, [Sort, Filters]);
-                this.stringFilter = this.context.testComponent.stringFilter;
+                this.stringFilter = this.context.testComponent.stringFilter.filter;
                 // We make the filter active to see if the Filters provider knows about it
                 this.stringFilter.value = "hello";
                 this.context.detectChanges();
@@ -170,7 +172,7 @@ export default function (): void {
                 this.context = this.create(DatagridColumn, StringFilterTest, [Sort, Filters]);
                 this.context.testComponent.field = "test";
                 this.context.detectChanges();
-                this.stringFilter = this.context.testComponent.stringFilter;
+                this.stringFilter = this.context.testComponent.stringFilter.filter;
                 // We make the filter active to see if the Filters provider knows about it
                 this.stringFilter.value = "hello";
                 this.context.detectChanges();

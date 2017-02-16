@@ -74,13 +74,13 @@ export default function(): void {
 
         it("offers a way to unregister a filter", function() {
             let filter = new EvenFilter();
-            let unregister = this.filtersInstance.add(filter);
+            let registeredFilter = this.filtersInstance.add(filter);
             let nbChanges = 0;
             this.filtersInstance.change.subscribe(() => nbChanges++);
             filter.toggle();
             expect(this.filtersInstance.getActiveFilters()).toEqual([filter]);
             expect(nbChanges).toBe(1);
-            unregister();
+            registeredFilter.unregister();
             expect(this.filtersInstance.getActiveFilters()).toEqual([]);
             filter.toggle();
             expect(nbChanges).toBe(1);

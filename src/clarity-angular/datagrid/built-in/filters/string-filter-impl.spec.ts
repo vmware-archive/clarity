@@ -1,0 +1,60 @@
+/*
+ * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+import {StringFilterImpl} from "./string-filter-impl";
+import {StringFilter} from "../../interfaces/string-filter";
+
+export default function(): void {
+    describe("StringFilterImpl", function() {
+        let stringFilter: TestFilter;
+        let fullFilter: StringFilterImpl;
+
+        beforeEach(function () {
+            stringFilter = new TestFilter();
+            fullFilter = new StringFilterImpl(this.stringFilter);
+        });
+
+        it("updates the lowercase value when the raw value changes", function () {
+            expect(fullFilter.value).toBe("");
+            expect(fullFilter.lowerCaseValue).toBe("");
+            fullFilter.value = "TEST";
+            expect(fullFilter.value).toBe("TEST");
+            expect(fullFilter.lowerCaseValue).toBe("test");
+        });
+
+        it("becomes active when the value isn't empty", function () {
+            expect(fullFilter.isActive()).toBe(false);
+            fullFilter.value = "test";
+            console.log("Should be true: ", fullFilter.value);
+            expect(fullFilter.isActive()).toBe(true);
+            fullFilter.value = "";
+            console.log("Should be false: ", fullFilter.value);
+            expect(fullFilter.isActive()).toBe(false);
+        });
+
+        it("filters according to the StringFilter provided", function () {
+            expect(fullFilter.accepts("test")).toBe(false);
+            fullFilter.value = "tes";
+            expect(fullFilter.accepts("test")).toBe(false);
+            fullFilter.value = "test";
+            expect(fullFilter.accepts("test")).toBe(true);
+            fullFilter.value = "tests";
+            expect(fullFilter.accepts("test")).toBe(false);
+        });
+
+        it("ignores case when filtering", function () {
+            fullFilter.value = "TEST";
+            expect(fullFilter.accepts("test")).toBe(true);
+            fullFilter.value = "test";
+            expect(fullFilter.accepts("TEST")).toBe(true);
+        });
+    });
+};
+
+class TestFilter implements StringFilter<string> {
+    accepts(item: string, search: string) {
+        return item.toLowerCase() === search;
+    };
+}

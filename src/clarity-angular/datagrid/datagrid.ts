@@ -178,6 +178,8 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
         this._subscriptions.push(this.filters.change.subscribe(() => this.triggerRefresh()));
         this._subscriptions.push(this.page.change.subscribe(() => this.triggerRefresh()));
         this._subscriptions.push(this.selection.change.subscribe(s => this.selectedChanged.emit(s)));
+
+        console.log("Datagrid view ready");
     }
     /**
      * Subscriptions to all the services changes

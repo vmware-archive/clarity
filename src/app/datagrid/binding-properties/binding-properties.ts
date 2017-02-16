@@ -41,6 +41,8 @@ export class DatagridBindingPropertiesDemo {
     example = EXAMPLE;
     users: User[];
 
+    nameFilter = "d";
+
     constructor(private inventory: Inventory) {
         inventory.size = 10;
         inventory.reset();

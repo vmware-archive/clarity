@@ -3,11 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, EventEmitter, Input, OnDestroy, Output} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 
 import {Filter} from "./interfaces/filter";
 import {CustomFilter} from "./providers/custom-filter";
 import {Filters} from "./providers/filters";
+import {FilterRegisterer} from "./utils/filter-registerer";
 
 
 /**
@@ -35,9 +36,9 @@ import {Filters} from "./providers/filters";
         </div>
     `
 })
-export class DatagridFilter implements CustomFilter, OnDestroy {
-    constructor(private _filters: Filters) {
-        console.log("constructor: dg-filter");
+export class DatagridFilter extends FilterRegisterer<Filter<any>> implements CustomFilter {
+    constructor(_filters: Filters) {
+        super(_filters);
     }
 
     /**
@@ -59,44 +60,16 @@ export class DatagridFilter implements CustomFilter, OnDestroy {
 
     @Output("clrDgFilterOpenChange") public openChanged = new EventEmitter<boolean>(false);
 
-    /**
-     * Customizable filter logic
-     */
-    private _filter: Filter<any>;
-    public get filter(): Filter<any> {
-        return this._filter;
-    }
 
     @Input("clrDgFilter")
-    public set filter(filter: Filter<any>) {
-        console.log("Setting datagrid-filter filter prop", filter);
-        // If we previously had another filter, we unregister it
-        if (this._unregister) {
-            this._unregister();
-            delete this._unregister;
-        }
-        this._filter = filter;
-        if (typeof filter !== "undefined") {
-            this._unregister = this._filters.add(filter);
-        }
+    public set customFilter(filter: Filter<any>) {
+        this.filter = filter;
     };
-
-    /**
-     * Function to unregister the filter on clean-up
-     */
-    private _unregister: () => void;
-
-    ngOnDestroy(): void {
-        if (this._unregister) {
-            this._unregister();
-        }
-    }
 
     /**
      * Indicates if the filter is currently active
      */
     public get active() {
-        console.log("Active?", this.filter);
         return !!this.filter && this.filter.isActive();
     }
 

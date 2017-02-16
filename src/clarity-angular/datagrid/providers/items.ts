@@ -68,6 +68,7 @@ export class Items {
      */
     private _all: any[];
     public set all(items: any[]) {
+        console.log("Setting all items");
         if (this.smart) {
             this._all = items;
             this._filterItems();
@@ -123,6 +124,7 @@ export class Items {
      * Filters items from the raw list
      */
     private _filterItems() {
+        console.log("Filtering items");
         if (this.uninitialized) { return; }
         if (this._filters.hasActiveFilters()) {
             this._filtered = this._all.filter((item) => this._filters.accepts(item));

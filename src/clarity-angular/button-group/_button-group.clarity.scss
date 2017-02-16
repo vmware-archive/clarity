@@ -4,24 +4,89 @@
 
 @include exports('button-group.clarity') {
 
-  .btn-group {
+    .btn-group {
+        display: inline-flex;
+        margin-right: $clr_baselineRem_0_5;
 
-    display: flex;
+        .btn {
+            margin: 0;
 
-    .btn {
-      margin-right: 0;
+            &:not(:first-child) {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            &:not(:last-child) {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+
+        &.btn-primary .btn:not(:last-child),
+        &.btn-success .btn:not(:last-child),
+        &.btn-danger .btn:not(:last-child),
+        &.btn-warning .btn:not(:last-child) {
+            margin: 0 1px 0 0;
+        }
+
+        //I couldn't reduce the nesting here :-(
+        //TODO: Try to reduce the nesting here later.
+        &.btn-primary .dropdown-menu .btn,
+        &.btn-success .dropdown-menu .btn,
+        &.btn-danger .dropdown-menu .btn,
+        &.btn-warning .dropdown-menu .btn {
+            margin: 0;
+        }
+
+        > .btn-group-overflow {
+            position: relative;
+        }
+
+        > .btn-group-overflow:last-child:not(:first-child) > .btn:first-child {
+            border-radius: 0 $clr-default-borderradius $clr-default-borderradius 0;
+        }
+
+        > .btn-group-overflow:last-child:first-child > .btn:first-child {
+            border-radius: $clr-default-borderradius;
+        }
+
+        //To avoid double borders
+        .btn + .btn {
+            border-left: none;
+        }
+
+        .btn + .btn-group-overflow {
+            .btn {
+                border-left: none;
+            }
+        }
+
+        //Flat Icon Buttons
+        &.btn-icon-link {
+
+            &.btn-link .btn {
+                min-width: 0;
+            }
+        }
+
+        //Icons and their corresponding title
+        .clr-icon-title {
+            display: none;
+            text-transform: none;
+        }
+
+        .dropdown-toggle {
+            display: block;
+        }
+
+        .dropdown-menu {
+            clr-icon {
+                display: none;
+            }
+
+            .clr-icon-title {
+                display: inline;
+            }
+        }
     }
-
-    .btn:not(:last-child) {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      border-right: none; /* Prevent double borders */
-    }
-
-    .btn:not(:first-child) {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-
-  }
 }

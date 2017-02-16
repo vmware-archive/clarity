@@ -60,174 +60,200 @@ $dropdown-white: clr-getColor(lightest);
             border: none;
             cursor: pointer;
         }
+    }
 
-        //Dropdown Menu
-        .dropdown-menu > * {
-            display: block;
-            white-space: nowrap;
-        }
+    //Dropdown Menu
+    .dropdown-menu > * {
+        display: block;
+        white-space: nowrap;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        margin-top: 2px;
+        display: flex;
+        flex-direction: column;
+        background: $dropdown-white;
+        padding: $clr_baselineRem_0_75 0;
+        border: 1px solid clr-getColor(light-midtone);
+        box-shadow: 0 1px 3px rgba(clr-getColor(dark), 0.25);
+        min-width: baselineRem(5);
+        max-width: baselineRem(15);
+        border-radius: $clr-default-borderradius;
+        visibility: hidden;
+        z-index: map-get($clr-layers, dropdown-menu);
 
         .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            margin-top: 2px;
-            display: flex;
-            flex-direction: column;
-            background: $dropdown-white;
-            padding: $clr_baselineRem_0_75 0;
-            border: 1px solid clr-getColor(light-midtone);
-            box-shadow: 0 1px 3px rgba(clr-getColor(dark), 0.25);
-            min-width: baselineRem(5);
-            max-width: baselineRem(15);
-            border-radius: $clr-default-borderradius;
-            visibility: hidden;
-            z-index: map-get($clr-layers, dropdown-menu);
+            // TODO: this is a hack to prevent breaking changes as we implement
+            // the popover directive. Remove this after the < 0.9.0 markup for
+            // dropdown (angular component) is deprecated.
 
-            .dropdown-menu {
-                // TODO: this is a hack to prevent breaking changes as we implement
-                // the popover directive. Remove this after the < 0.9.0 markup for
-                // dropdown (angular component) is deprecated.
+            position: static;
+            margin: 0;
+            padding: 0;
+            border: none;
+            box-shadow: none;
+        }
 
-                position: static;
-                margin: 0;
-                padding: 0;
-                border: none;
+        .dropdown-header {
+            @include clr-getTypePropertiesForDomElement(dropdown_header, (font-size, font-weight, letter-spacing));
+
+            padding: 0 $clr_baselineRem_0_5;
+            margin: 0;
+            color: clr-getColor(darkest);
+
+            @extend %dropdown-content;
+        }
+
+        .btn,
+        .btn-secondary,
+        .btn-info,
+        .btn-outline,
+        .btn-outline-primary,
+        .btn-outline-secondary,
+        .btn-outline-warning,
+        .btn-outline-danger,
+        .btn-outline-success,
+        .btn-danger,
+        .btn-primary,
+        .btn-warning,
+        .btn-success,
+        .btn-link,
+        .dropdown-item {
+            @include clr-getTypePropertiesForDomElement(dropdown_text, (font-size, letter-spacing, font-weight));
+            $adjusted_lineHeight: clr-getTypePropertyValueForDomElement(dropdown_text, line-height);
+            $dropdown-text-color: clr-getTextColor();
+
+            background: transparent;
+            border: 0;
+            color: $dropdown-text-color;
+            cursor: pointer;
+            display: block;
+            height: $adjusted_lineHeight;
+            line-height: $adjusted_lineHeight;
+            margin: 0;
+            padding: 1px $clr_baselineRem_1 0;
+            width: 100%;
+            text-transform: none;
+
+            @extend %dropdown-content;
+
+            &:hover,
+            &:focus {
+                background-color: $gray-light;
+                color: $dropdown-text-color;
+                text-decoration: none;
+            }
+
+            &.active {
+                background: $clr-selection-color;
+                color: $clr-black;
+            }
+
+            &:active {
                 box-shadow: none;
             }
 
-            .dropdown-header {
-                @include clr-getTypePropertiesForDomElement(dropdown_header, (font-size, font-weight, letter-spacing));
-
-                padding: 0 $clr_baselineRem_0_5;
-                margin: 0;
-                color: clr-getColor(darkest);
-
-                @extend %dropdown-content;
+            &:focus {
+                outline: 0;
             }
 
-            .dropdown-item {
-                @include clr-getTypePropertiesForDomElement(dropdown_text, (color, font-size, letter-spacing));
-                $adjusted_lineHeight: clr-getTypePropertyValueForDomElement(dropdown_text, line-height) - 1;
-
-                background: transparent;
-                border: 0;
-                color: clr-getTextColor();
-                cursor: pointer;
-                display: block;
-                line-height: $adjusted_lineHeight;
-                margin: 0;
-                padding: 1px $clr_baselineRem_1 0;
-                width: 100%;
-
-                @extend %dropdown-content;
-
-                &:hover,
-                &:focus {
-                    text-decoration: none;
-                    background-color: $gray-light;
-                }
-
-                &.active {
-                    background: $clr-selection-color;
-                    color: $clr-black;
-                }
-
-                &:focus {
-                    outline: 0;
-                }
-
-                &.disabled {
-                    cursor: not-allowed;
-                    opacity: 0.4;
-                    user-select: none;
-                }
-
-                &.disabled:hover {
-                    background: none;
-                }
-
-                &.disabled:active,
-                &.disabled:focus {
-                    background: none;
-                    box-shadow: none;
-                }
+            &.disabled {
+                cursor: not-allowed;
+                opacity: 0.4;
+                user-select: none;
             }
 
-            .dropdown-divider {
-                border-bottom: 1px solid clr-getColor(light);
-                margin: $clr_baselineRem_0_75 0;
+            &.disabled:hover {
+                background: none;
+            }
+
+            &.disabled:active,
+            &.disabled:focus {
+                background: none;
+                box-shadow: none;
             }
         }
 
+        .dropdown-divider {
+            border-bottom: 1px solid clr-getColor(light);
+            margin: $clr_baselineRem_0_75 0;
+        }
+    }
+
+    //Directions
+    .btn-group-overflow,
+    .dropdown {
         &.open .dropdown-menu {
             visibility: visible;
         }
 
-        &.bottom-left .dropdown-menu,
-        &.bottom-right .dropdown-menu {
+        &.bottom-left > .dropdown-menu,
+        &.bottom-right > .dropdown-menu {
             top: 100%;
             bottom: auto;
             margin: 2px 0 0 0;
         }
 
-        &.bottom-left .dropdown-menu {
+        &.bottom-left > .dropdown-menu {
             left: 0;
             right: auto;
         }
 
-        &.bottom-right .dropdown-menu {
+        &.bottom-right > .dropdown-menu {
             right: 0;
             left: auto;
         }
 
-        &.top-left .dropdown-menu,
-        &.top-right .dropdown-menu {
+        &.top-left > .dropdown-menu,
+        &.top-right > .dropdown-menu {
             top: auto;
             bottom: 100%;
             margin: 0 0 2px 0;
         }
 
-        &.top-left .dropdown-menu {
+        &.top-left > .dropdown-menu {
             left: 0;
             right: auto;
         }
 
-        &.top-right .dropdown-menu {
+        &.top-right > .dropdown-menu {
             right: 0;
             left: auto;
         }
 
-        &.left-top .dropdown-menu,
-        &.left-bottom .dropdown-menu {
+        &.left-top > .dropdown-menu,
+        &.left-bottom > .dropdown-menu {
             right: 100%;
             left: auto;
             margin: 0 2px 0 0;
         }
 
-        &.left-bottom .dropdown-menu {
+        &.left-bottom > .dropdown-menu {
             top: 0;
             bottom: auto;
         }
 
-        &.left-top .dropdown-menu {
+        &.left-top > .dropdown-menu {
             bottom: 0;
             top: auto;
         }
 
-        &.right-top .dropdown-menu,
-        &.right-bottom .dropdown-menu {
+        &.right-top > .dropdown-menu,
+        &.right-bottom > .dropdown-menu {
             left: 100%;
             right: auto;
             margin: 0 0 0 2px;
         }
 
-        &.right-bottom .dropdown-menu {
+        &.right-bottom > .dropdown-menu {
             top: 0;
             bottom: auto;
         }
 
-        &.right-top .dropdown-menu {
+        &.right-top > .dropdown-menu {
             bottom: 0;
             top: auto;
         }

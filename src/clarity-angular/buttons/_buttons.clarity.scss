@@ -13,7 +13,9 @@ $clr-global-button-properties-map: (
         active-box-shadow-width-top: 1px,
         disabled-color: $gray-darker,
         disabled-background-color: transparent,
-        disabled-border-color: $gray-dark
+        disabled-border-color: $gray-dark,
+        checked-background-color: $action-blues-dark-midtone,
+        checked-color: $clr-white
     ),
     primary: (
         background-color: $action-blues-dark-midtone,
@@ -25,7 +27,9 @@ $clr-global-button-properties-map: (
         active-box-shadow-width-top: 2px,
         disabled-color: $gray-darker,
         disabled-background-color: $gray-light-midtone,
-        disabled-border-color: $gray-light-midtone
+        disabled-border-color: $gray-light-midtone,
+        checked-background-color: $action-blues-dark,
+        checked-color: $clr-white
     ),
     success: (
         background-color: $greens-light-midtone,
@@ -37,7 +41,9 @@ $clr-global-button-properties-map: (
         active-box-shadow-width-top: 2px,
         disabled-color: $gray-darker,
         disabled-background-color: $gray-light-midtone,
-        disabled-border-color: $gray-light-midtone
+        disabled-border-color: $gray-light-midtone,
+        checked-background-color: $greens-dark,
+        checked-color: $clr-white
     ),
     danger: (
         background-color: $reds-light-midtone,
@@ -49,7 +55,9 @@ $clr-global-button-properties-map: (
         active-box-shadow-width-top: 2px,
         disabled-color: $gray-darker,
         disabled-background-color: $gray-light-midtone,
-        disabled-border-color: $gray-light-midtone
+        disabled-border-color: $gray-light-midtone,
+        checked-background-color: $reds-dark-midtone,
+        checked-color: $clr-white
     ),
     outline-success: (
         background-color: transparent,
@@ -61,7 +69,9 @@ $clr-global-button-properties-map: (
         active-box-shadow-width-top: 1px,
         disabled-color: $gray-darker,
         disabled-background-color: transparent,
-        disabled-border-color: $gray-dark
+        disabled-border-color: $gray-dark,
+        checked-background-color: $greens-dark,
+        checked-color: $clr-white
     ),
     outline-danger: (
         background-color: transparent,
@@ -73,7 +83,9 @@ $clr-global-button-properties-map: (
         active-box-shadow-width-top: 1px,
         disabled-color: $gray-darker,
         disabled-background-color: transparent,
-        disabled-border-color: $gray-dark
+        disabled-border-color: $gray-dark,
+        checked-background-color: $reds-dark-midtone,
+        checked-color: $clr-white
     ),
     link: (
         background-color: transparent,
@@ -85,7 +97,9 @@ $clr-global-button-properties-map: (
         active-box-shadow-width-top: 0,
         disabled-color: $gray-darker,
         disabled-background-color: transparent,
-        disabled-border-color: transparent
+        disabled-border-color: transparent,
+        checked-background-color: transparent,
+        checked-color: $action-blues-dark
     ),
     inverse: (
         background-color: transparent,
@@ -97,7 +111,9 @@ $clr-global-button-properties-map: (
         active-box-shadow-width-top: 1px,
         disabled-color: $clr-white,
         disabled-background-color: transparent,
-        disabled-border-color: $clr-white
+        disabled-border-color: $clr-white,
+        checked-background-color: rgba($clr-white, 0.15),
+        checked-color: $clr-white
     )
 );
 
@@ -137,7 +153,7 @@ $clr-button-appearance-map: (
     &:visited {
         color: map-get($button-property-map, color);
     }
-
+    
     &:hover {
         background-color: map-get($button-property-map, hover-background-color);
         color: map-get($button-property-map, hover-color);
@@ -154,6 +170,18 @@ $clr-button-appearance-map: (
         background-color: map-get($button-property-map, disabled-background-color);
         border-color: map-get($button-property-map, disabled-border-color);
         opacity: 0.4;
+    }
+}
+
+@mixin btn-checked-styles($button-type: default, $type: checkbox ,$button-global-map: $clr-global-button-properties-map) {
+    $button-property-map: map-get($button-global-map, $button-type);
+
+    $background-color: map-get($button-property-map, checked-background-color);
+    $color: map-get($button-property-map, checked-color);
+
+    input[type="#{$type}"]:checked + label {
+        background-color: $background-color;
+        color: $color;
     }
 }
 
@@ -181,14 +209,12 @@ $clr-button-appearance-map: (
 
 @mixin btn-default-border-styles() {
     border-radius: $clr-default-borderradius;
-    border-style: solid;
-    border-width: 1px;
+    border: 1px solid;
 }
 
 @mixin btn-appearance() {
     cursor: pointer;
     display: inline-block;
-    margin: $clr-button-vertical-margin $clr-button-horizontal-margin $clr-button-vertical-margin 0;
 
     // Overrides a Fix for IOS in BS4 _normalize.scss (~ln 330)
     // `!important` is to override specificity in this instance
@@ -210,6 +236,162 @@ $clr-button-appearance-map: (
         @include generateButton();
         @include clr-getStylesFromMap($clr-button-appearance-map, form);
         @include populateButtonProperties(default);
+    }
+
+    //Clarity Buttons
+    .btn-group > .btn,
+    .btn {
+        clr-icon {
+            transform: translate3d(0px, -2px, 0);
+        }
+    }
+
+    //.btn-outline-<state> is the new BS4 naming convention
+    //TODO: we support both the previous one and the new one but we will deprecate the old ones from the example in 0.5.0
+
+    .btn.btn-secondary,
+    .btn.btn-info,
+    .btn.btn-outline,
+    .btn.btn-primary-outline,
+    .btn.btn-secondary-outline,
+    .btn.btn-outline-primary,
+    .btn.btn-outline-secondary,
+    .btn.btn-info-outline,
+    .btn-secondary .btn,
+    .btn-info .btn,
+    .btn-outline .btn,
+    .btn-primary-outline .btn,
+    .btn-secondary-outline .btn,
+    .btn-outline-primary .btn,
+    .btn-outline-secondary .btn,
+    .btn-info-outline .btn{
+        @include populateButtonProperties(default);
+    }
+
+    .btn.btn-primary,
+    .btn-primary .btn {
+        @include populateButtonProperties(primary);
+    }
+
+    .btn.btn-success,
+    .btn-success .btn {
+        @include populateButtonProperties(success);
+    }
+
+    .btn.btn-danger,
+    .btn.btn-warning,
+    .btn-danger .btn,
+    .btn-warning .btn {
+        @include populateButtonProperties(danger);
+    }
+
+    .btn.btn-success-outline,
+    .btn.btn-outline-success,
+    .btn-success-outline .btn,
+    .btn-outline-success .btn {
+        @include populateButtonProperties(outline-success);
+    }
+
+    .btn.btn-danger-outline,
+    .btn.btn-outline-danger,
+    .btn.btn-warning-outline,
+    .btn.btn-outline-warning,
+    .btn-danger-outline .btn,
+    .btn-outline-danger .btn,
+    .btn-warning-outline .btn,
+    .btn-outline-warning .btn {
+        @include populateButtonProperties(outline-danger);
+    }
+
+    .btn.btn-link,
+    .btn-link .btn {
+        @include populateButtonProperties(link);
+    }
+
+    .btn.btn-inverse,
+    .btn-inverse .btn {
+        @include populateButtonProperties(inverse);
+    }
+
+    .btn.btn-sm,
+    .btn-sm .btn {
+        @include clr-getStylesFromMap($clr-button-appearance-map, standard);
+    }
+
+    .btn-block {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    //Current Margins - We might be getting rid of this in 0.9.0
+    .btn {
+        margin: $clr-button-vertical-margin $clr-button-horizontal-margin $clr-button-vertical-margin 0;
+
+        &.btn-link {
+            margin: $clr-button-vertical-margin 0;
+        }
+    }
+
+    //Small Icon Button
+    .btn-sm:not(.btn-link) {
+        clr-icon {
+            width: 12px;
+            height: 12px;
+            transform: translate3d(0px, -1px, 0);
+        }
+    }
+
+    //Overflow
+    .btn-group {
+        &.btn-primary .dropdown-toggle,
+        &.btn-success .dropdown-toggle,
+        &.btn-warning .dropdown-toggle,
+        &.btn-danger .dropdown-toggle{
+            @include populateButtonProperties(primary);
+        }
+
+        &.btn-link .dropdown-toggle {
+            @include populateButtonProperties(link);
+        }
+
+        &.btn-sm .btn-group-overflow > .dropdown-toggle {
+            @include clr-getStylesFromMap($clr-button-appearance-map, standard);
+        }
+    }
+
+    //Checkboxes styled as Buttons
+    //Radio Buttons styled as Buttons
+    .checkbox.btn,
+    .checkbox-inline.btn,
+    .radio.btn,
+    .radio-inline.btn {
+        padding: 0;
+
+        label {
+            padding: 0 12px
+        }
+    }
+
+    .checkbox.btn,
+    .checkbox-inline.btn {
+        input[type="checkbox"] + label::before,
+        input[type="checkbox"] + label::after {
+            content: none;
+        }
+    }
+
+    .radio.btn,
+    .radio-inline.btn {
+        input[type="radio"] + label::before,
+        input[type="radio"] + label::after {
+            content: none;
+        }
+    }
+
+    .checkbox.btn,
+    .checkbox-inline.btn {
+        @include btn-checked-styles();
 
         //.btn-outline-<state> is the new BS4 naming convention
         //TODO: we support both the previous one and the new one but we will deprecate the old ones from the example in 0.5.0
@@ -221,61 +403,91 @@ $clr-button-appearance-map: (
         &.btn-outline-primary,
         &.btn-outline-secondary,
         &.btn-info-outline {
-            @include populateButtonProperties(default);
+            @include btn-checked-styles();
         }
 
         &.btn-primary {
-            @include populateButtonProperties(primary);
+            @include btn-checked-styles(primary);
         }
 
         &.btn-success {
-            @include populateButtonProperties(success);
+            @include btn-checked-styles(success);
         }
 
         &.btn-danger,
         &.btn-warning {
-            @include populateButtonProperties(danger);
+            @include btn-checked-styles(danger);
         }
 
         &.btn-success-outline,
         &.btn-outline-success {
-            @include populateButtonProperties(outline-success);
+            @include btn-checked-styles(outline-success);
         }
 
         &.btn-danger-outline,
         &.btn-outline-danger,
         &.btn-warning-outline,
         &.btn-outline-warning {
-            @include populateButtonProperties(outline-danger);
+            @include btn-checked-styles(outline-danger);
         }
 
         &.btn-link {
-            @include populateButtonProperties(link);
-            margin: $clr-button-vertical-margin 0;
+            @include btn-checked-styles(link);
         }
 
         &.btn-inverse {
-            @include populateButtonProperties(inverse);
+            @include btn-checked-styles(inverse);
+        }
+    }
+
+    .radio.btn,
+    .radio.btn {
+        @include btn-checked-styles(default, radio);
+
+        //.btn-outline-<state> is the new BS4 naming convention
+        //TODO: we support both the previous one and the new one but we will deprecate the old ones from the example in 0.5.0
+        &.btn-secondary,
+        &.btn-info,
+        &.btn-outline,
+        &.btn-primary-outline,
+        &.btn-secondary-outline,
+        &.btn-outline-primary,
+        &.btn-outline-secondary,
+        &.btn-info-outline {
+            @include btn-checked-styles(default, radio);
         }
 
-        &.btn-sm {
-            @include clr-getStylesFromMap($clr-button-appearance-map, standard);
-
-            clr-icon {
-                width: 12px;
-                height: 12px;
-                transform: translate3d(0px, -1px, 0);
-            }
+        &.btn-primary {
+            @include btn-checked-styles(primary, radio);
         }
 
-        &.btn-block {
-            display: block;
-            width: 100%;
-            max-width: 100%;
+        &.btn-success {
+            @include btn-checked-styles(success, radio);
         }
 
-        clr-icon {
-            transform: translate3d(0px, -2px, 0);
+        &.btn-danger,
+        &.btn-warning {
+            @include btn-checked-styles(danger, radio);
+        }
+
+        &.btn-success-outline,
+        &.btn-outline-success {
+            @include btn-checked-styles(outline-success, radio);
+        }
+
+        &.btn-danger-outline,
+        &.btn-outline-danger,
+        &.btn-warning-outline,
+        &.btn-outline-warning {
+            @include btn-checked-styles(outline-danger, radio);
+        }
+
+        &.btn-link {
+            @include btn-checked-styles(link, radio);
+        }
+
+        &.btn-inverse {
+            @include btn-checked-styles(inverse, radio);
         }
     }
 }

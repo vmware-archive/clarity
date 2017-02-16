@@ -11,18 +11,9 @@ import {
     Input,
     Output
 } from "@angular/core";
-import {Point} from "../popover/popover";
 
-const menuPositions: string[] = [
-        "bottom-left",
-        "bottom-right",
-        "top-left",
-        "top-right",
-        "left-bottom",
-        "left-top",
-        "right-bottom",
-        "right-top"
-    ];
+import {Point} from "../popover/popover";
+import {menuPositions} from "./menu-positions";
 
 // TODO: the ng-content inside the dropdown-menu should ideally just be
 // <ng-content select="clr-dropdown-menu"></ng-content>. Remove .dropdown-menu in 1.0?
@@ -30,9 +21,9 @@ const menuPositions: string[] = [
     selector: "clr-dropdown",
     template: `
         <ng-content select="[clrDropdownToggle]"></ng-content>
-        <div class="dropdown-menu" *clrPopover="open; anchor: anchor; anchorPoint: anchorPoint; 
+        <div class="dropdown-menu" *clrPopover="open; anchor: anchor; anchorPoint: anchorPoint;
             popoverPoint: popoverPoint;">
-            <ng-content select="[clr-dropdown-menu, .dropdown-menu]"></ng-content> 
+            <ng-content select="[clr-dropdown-menu, .dropdown-menu]"></ng-content>
         </div>
     `,
     host: {

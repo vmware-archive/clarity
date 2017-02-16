@@ -24,6 +24,7 @@ import {WIZARD_DIRECTIVES} from "./wizard/index";
 import {ICON_DIRECTIVES} from "./iconography/index";
 
 import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationService";
+import {BUTTON_GROUP_DIRECTIVES} from "./button-group/index";
 
 @NgModule({
     imports: [
@@ -45,7 +46,8 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
         TOOLTIP_DIRECTIVES,
         TREE_VIEW_DIRECTIVES,
         WIZARD_DIRECTIVES,
-        ICON_DIRECTIVES
+        ICON_DIRECTIVES,
+        BUTTON_GROUP_DIRECTIVES
     ],
     exports: [
         ALERT_DIRECTIVES,
@@ -61,7 +63,8 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
         TOOLTIP_DIRECTIVES,
         TREE_VIEW_DIRECTIVES,
         WIZARD_DIRECTIVES,
-        ICON_DIRECTIVES
+        ICON_DIRECTIVES,
+        BUTTON_GROUP_DIRECTIVES
     ]
 })
 export class ClarityModule {

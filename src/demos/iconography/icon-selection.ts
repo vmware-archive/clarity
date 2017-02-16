@@ -57,13 +57,17 @@ export class IconSelectionDemo {
     }
 
 
-    hideShapesFromCore: string[] = [ "vm-bug" ];
+    hideShapesFromCore: string[] = [ "vm-bug", "ellipses-horizontal", "ellipses-vertical" ];
 
     coreShapes: string[] = coreShapes.filter((shape) => {
         return this.hideShapesFromCore.indexOf(shape) === -1;
     });
 
-    essentialShapes: string[] = essentialShapes;
+    hideShapesFromEssential: string[] = [ "ellipses-horizontal", "ellipses-vertical" ];
+
+    essentialShapes: string[] = essentialShapes.filter((shape) => {
+        return this.hideShapesFromEssential.indexOf(shape) === -1;
+    });
 
     socialShapes: string[] = socialShapes;
 

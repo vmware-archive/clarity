@@ -30,10 +30,25 @@ Selected users: <span *ngFor="let user of selected">{{user.name}}</span>
 export class DatagridSelectionDemo {
     example = EXAMPLE;
     users: User[];
-    selected: User[] = [];
+    _selected: User[] = [];
     toAdd: User[] = [];
     toDelete: User[] = [];
     toEdit: User;
+
+    get selected() {
+        return this._selected;
+    }
+
+    set selected(selection: User[]) {
+        this._selected = selection;
+        this.cleanUp();
+    }
+
+    cleanUp(): void {
+        this.toAdd = [];
+        this.toDelete = [];
+        this.toEdit = null;
+    }
 
     constructor(private inventory: Inventory) {
         inventory.size = 10;
@@ -42,6 +57,7 @@ export class DatagridSelectionDemo {
     }
 
     onDelete(user: User) {
+        this.cleanUp();
         if (user) {
             this.toDelete = [ user ];
         } else {
@@ -50,10 +66,16 @@ export class DatagridSelectionDemo {
     }
 
     onEdit(user: User) {
-        this.toEdit = user;
+        this.cleanUp();
+        if (user) {
+            this.toEdit = user;
+        } else {
+            this.toEdit = this.selected[0];
+        }
     }
 
     onAdd() {
+        this.cleanUp();
         this.toAdd = this.selected.slice();
     }
 }

@@ -3,6 +3,7 @@
  * It works fine with webpack, but angular-cli breaks them. See https://github.com/angular/angular-cli/issues/3306
  */
 export const TEMPLATES = {
+  "0.8.7": require("./0.8/0.8.7.html"),
   "0.8.6": require("./0.8/0.8.6.html"),
   "0.8.5": require("./0.8/0.8.5.html"),
   "0.8.4": require("./0.8/0.8.4.html"),

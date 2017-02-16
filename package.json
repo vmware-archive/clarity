@@ -1,6 +1,6 @@
 {
   "name": "clarity",
-  "version": "0.8.6",
+  "version": "0.8.7",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
@@ -34,7 +34,7 @@
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
-    "@angular/cli": "^1.0.0-beta.30",
+    "@angular/cli": "1.0.0-beta.30",
     "@angular/compiler-cli": "2.4.5",
     "@types/jasmine": "^2.2.30",
     "@types/node": "^6.0.42",

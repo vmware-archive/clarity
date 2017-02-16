@@ -28,6 +28,13 @@ export default function(): void {
             expect(this.comparator.compare({}, {})).toBe(0);
         });
 
+        it("considers null greater than everything", function() {
+            this.comparator = new DatagridPropertyComparator("a");
+            expect(this.comparator.compare({a: 42}, {a: null})).toBeLessThan(0);
+            expect(this.comparator.compare({a: null}, {a: 42})).toBeGreaterThan(0);
+            expect(this.comparator.compare({a: null}, {a: null})).toBe(0);
+        });
+
         it("supports nested properties", function() {
             this.comparator = new DatagridPropertyComparator("a.b");
             expect(this.comparator.compare({a: {b: 1}}, {a: {b: 10}})).toBeLessThan(0);

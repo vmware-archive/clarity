@@ -1,0 +1,15 @@
+<h4>Toggle Overflow Menu</h4>
+
+<div class="clr-example">
+    <clr-button-group class="btn-primary">
+        <clr-button>1</clr-button>
+        <clr-button [clrInMenu]="hide">2</clr-button>
+        <clr-button>3</clr-button>
+        <clr-button>4</clr-button>
+        <clr-button>5</clr-button>
+    </clr-button-group>
+
+    <button class="btn" (click)="toggleHide()">
+        {{hide ? "Hide" : "Show"}}
+    </button>
+</div>

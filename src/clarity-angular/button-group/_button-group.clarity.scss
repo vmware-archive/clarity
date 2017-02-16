@@ -7,24 +7,86 @@
 
 @include exports('button-group.clarity') {
 
-  .btn-group {
+    .btn-group {
+        display: flex;
+        margin-right: $clr_baselineRem_0_5;
 
-    display: flex;
+        .btn {
+            margin: 0;
+        }
 
-    .btn {
-      margin-right: 0;
+        .btn:not(:first-child) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .btn:not(:last-child) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &.btn-primary .btn:not(:last-child),
+        &.btn-success .btn:not(:last-child),
+        &.btn-danger .btn:not(:last-child),
+        &.btn-warning .btn:not(:last-child) {
+            margin: 0 1px 0 0;
+        }
+
+        > .btn-group-overflow {
+            position: relative;
+        }
+
+        > .btn-group-overflow:last-child:not(:first-child) > .btn:first-child {
+            border-radius: 0 $clr-default-borderradius $clr-default-borderradius 0;
+        }
+
+        > .btn-group-overflow:last-child:first-child > .btn:first-child {
+            border-radius: $clr-default-borderradius;
+        }
+
+        .dropdown-toggle > clr-icon[shape^="ellipsis-horizontal"] {
+            height: $clr_baselineRem_1;
+            width: $clr_baselineRem_1;
+        }
+
+        //To avoid double borders
+        .btn + .btn {
+            border-left: none;
+        }
+
+        .btn + .btn-group-overflow {
+            .btn {
+                border-left: none;
+            }
+        }
+
+        //Flat Icon Buttons
+        &.btn-group-icon {
+
+            &.btn-link .btn {
+                min-width: 0;
+            }
+
+            .dropdown-toggle > clr-icon[shape^="ellipsis-horizontal"] {
+                height: $clr-icon-dimension-sm;
+                width: $clr-icon-dimension-sm;
+            }
+        }
+
+        //Icons and their corresponding title
+        .clr-icon-title {
+            display: none;
+            text-transform: none;
+        }
+
+        .dropdown-menu {
+            clr-icon {
+                display: none;
+            }
+
+            .clr-icon-title {
+                display: inline;
+            }
+        }
     }
-
-    .btn:not(:last-child) {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      border-right: none; /* Prevent double borders */
-    }
-
-    .btn:not(:first-child) {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-
-  }
 }

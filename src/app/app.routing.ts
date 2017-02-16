@@ -11,6 +11,7 @@ export const APP_ROUTES: Routes  = [
     { path: "", component: LandingComponent },
     { path: "alert", loadChildren: "app/alert/alert.demo.module" },
     { path: "badges", loadChildren: "app/badges/badges.demo.module" },
+    { path: "button-group", loadChildren: "app/button-group/button-group.demo.module" },
     { path: "buttons", loadChildren: "app/buttons/buttons.demo.module" },
     { path: "card", loadChildren: "app/card/card.demo.module" },
     { path: "checkboxes", loadChildren: "app/checkboxes/checkboxes.demo.module" },

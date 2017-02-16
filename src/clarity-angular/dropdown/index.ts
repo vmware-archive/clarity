@@ -11,6 +11,7 @@ import { DropdownItem } from "./dropdown-item";
 export * from "./dropdown";
 export * from "./dropdown-toggle";
 export * from "./dropdown-item";
+export * from "./menu-positions";
 
 export const DROPDOWN_DIRECTIVES: Type<any>[] = [
     Dropdown,

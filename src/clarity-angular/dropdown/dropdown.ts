@@ -13,17 +13,7 @@ import {
     Output,
     Renderer
 } from "@angular/core";
-
-const menuPositions: string[] = [
-        "bottom-left",
-        "bottom-right",
-        "top-left",
-        "top-right",
-        "left-bottom",
-        "left-top",
-        "right-bottom",
-        "right-top"
-    ];
+import {menuPositions} from "./menu-positions";
 
 @Component({
     selector: "clr-dropdown",

@@ -14,6 +14,7 @@ import {DatagridFilteringDemo} from "./filtering/filtering";
 import {DatagridFullDemo} from "./full/full";
 import {DatagridPaginationDemo} from "./pagination/pagination";
 import {DatagridSelectionDemo} from "./selection/selection";
+import {DatagridSelectionSingleDemo} from "./selection-single/selection-single";
 import {DatagridServerDrivenDemo} from "./server-driven/server-driven";
 import {DatagridSmartIteratorDemo} from "./smart-iterator/smart-iterator";
 import {DatagridSortingDemo} from "./sorting/sorting";
@@ -35,6 +36,7 @@ const ROUTES: Routes = [
             {path: "string-filtering", component: DatagridStringFilteringDemo},
             {path: "pagination", component: DatagridPaginationDemo},
             {path: "selection", component: DatagridSelectionDemo},
+            {path: "selection-single", component: DatagridSelectionSingleDemo},
             {path: "server-driven", component: DatagridServerDrivenDemo},
             {path: "placeholder", component: DatagridPlaceholderDemo},
             {path: "full", component: DatagridFullDemo},

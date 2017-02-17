@@ -37,32 +37,32 @@
     entering the exact number of the pokemon he's interested in.
 </p>
 
-<!--<clr-datagrid>-->
-    <!--<clr-dg-column>User ID</clr-dg-column>-->
-    <!--<clr-dg-column>Name-->
-    <!--</clr-dg-column>-->
-    <!--<clr-dg-column>Creation date</clr-dg-column>-->
-    <!--<clr-dg-column>-->
-        <!--Pokemon-->
-        <!--<clr-dg-string-filter-->
-                <!--[clrDgStringFilter]="pokemonFilter"></clr-dg-string-filter>-->
-    <!--</clr-dg-column>-->
-    <!--<clr-dg-column>Favorite color</clr-dg-column>-->
+<clr-datagrid>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name
+    </clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>
+        Pokemon
+        <clr-dg-string-filter
+                [clrDgStringFilter]="pokemonFilter"></clr-dg-string-filter>
+    </clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
 
-    <!--<clr-dg-row *clrDgItems="let user of users">-->
-        <!--<clr-dg-cell>{{user.id}}</clr-dg-cell>-->
-        <!--<clr-dg-cell>{{user.name}}</clr-dg-cell>-->
-        <!--<clr-dg-cell>{{user.creation | date}}</clr-dg-cell>-->
-        <!--<clr-dg-cell>-->
-            <!--{{user.pokemon.name}} <span class="badge badge-5">#{{user.pokemon.number}}</span>-->
-        <!--</clr-dg-cell>-->
-        <!--<clr-dg-cell>-->
-            <!--<span class="color-square" [style.backgroundColor]="user.color"></span>-->
-        <!--</clr-dg-cell>-->
-    <!--</clr-dg-row>-->
+    <clr-dg-row *clrDgItems="let user of users">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            {{user.pokemon.name}} <span class="badge badge-5">#{{user.pokemon.number}}</span>
+        </clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
 
-    <!--<clr-dg-footer>{{users.length}} users</clr-dg-footer>-->
-<!--</clr-datagrid>-->
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
 
 <clr-example [clrCode]="examples.stringFilterTS" clrLanguage="typescript"></clr-example>
 <clr-example [clrCode]="examples.stringFilterHTML" clrLanguage="html"></clr-example>
@@ -86,49 +86,31 @@
 </ul>
 
 
-<!--<clr-datagrid>-->
-    <!--<clr-dg-column-->
-            <!--[clrDgField]="'name'"-->
-            <!--[(clrFilterValue)]="myFilterValue1">Name-->
-    <!--</clr-dg-column>-->
-    <!--<clr-dg-column>-->
-        <!--Pokemon-->
-        <!--<clr-dg-string-filter-->
-                <!--[clrDgStringFilter]="pokemonFilter"-->
-                <!--[(clrFilterValue)]="myFilterValue2"></clr-dg-string-filter>-->
-    <!--</clr-dg-column>-->
+<button class="btn btn-outline" (click)="displayFilter = !displayFilter">Toggle Pokemon Filter</button>
 
-    <!--<clr-dg-row *clrDgItems="let user of users">-->
-        <!--<clr-dg-cell>{{user.name}}</clr-dg-cell>-->
-         <!--<clr-dg-cell>-->
-            <!--{{user.pokemon.name}} <span class="badge badge-5">#{{user.pokemon.number}}</span>-->
-        <!--</clr-dg-cell>-->
-    <!--</clr-dg-row>-->
-
-    <!--<clr-dg-footer>{{users.length}} users</clr-dg-footer>-->
-<!--</clr-datagrid>-->
-
-<hr>
-<h3>Debugging dev issue</h3>
 <clr-datagrid>
     <clr-dg-column
-            [clrDgField]="debugColField"
-            [(clrFilterValue)]="debugColValue">Name
+            [clrDgField]="'name'"
+            [(clrFilterValue)]="myFilterValue1">Name
     </clr-dg-column>
     <clr-dg-column>
         Pokemon
+        <clr-dg-string-filter
+                *ngIf="displayFilter"
+                [clrDgStringFilter]="pokemonFilter"
+                [(clrFilterValue)]="myFilterValue2"></clr-dg-string-filter>
     </clr-dg-column>
 
     <clr-dg-row *clrDgItems="let user of users">
         <clr-dg-cell>{{user.name}}</clr-dg-cell>
-        <clr-dg-cell>
+         <clr-dg-cell>
             {{user.pokemon.name}} <span class="badge badge-5">#{{user.pokemon.number}}</span>
         </clr-dg-cell>
     </clr-dg-row>
 
     <clr-dg-footer>{{users.length}} users</clr-dg-footer>
 </clr-datagrid>
-<hr>
+
 
 <clr-example [clrCode]="examples.stringPreFilterTS" clrLanguage="typescript"></clr-example>
 <clr-example [clrCode]="examples.stringPreFilterHTML" clrLanguage="html"></clr-example>

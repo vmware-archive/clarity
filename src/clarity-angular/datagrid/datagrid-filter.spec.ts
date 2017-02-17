@@ -7,19 +7,19 @@ import {Component, ViewChild} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {TestContext} from "./helpers.spec";
 import {DatagridFilter} from "./datagrid-filter";
-import {Filters} from "./providers/filters";
+import {FiltersProvider} from "./providers/filters";
 import {CustomFilter} from "./providers/custom-filter";
 import {Filter} from "./interfaces/filter";
 
 export default function(): void {
     describe("DatagridFilter component", function() {
         describe("Typescript API", function() {
-            let filterService: Filters;
+            let filterService: FiltersProvider;
             let filter: TestFilter;
             let component: DatagridFilter;
 
             beforeEach(function() {
-                filterService = new Filters();
+                filterService = new FiltersProvider();
                 filter = new TestFilter();
                 component = new DatagridFilter(filterService);
             });
@@ -34,14 +34,14 @@ export default function(): void {
                 expect(component.open).toBe(true);
             });
 
-            it("registers to the Filters provider", function() {
+            it("registers to the FiltersProvider provider", function() {
                 expect(filterService.getActiveFilters()).toEqual([]);
-                component.filter = filter;
+                component.customFilter = filter;
                 expect(filterService.getActiveFilters()).toEqual([filter]);
             });
 
             it("unregisters when destroyed", function() {
-                component.filter = filter;
+                component.customFilter = filter;
                 expect(filterService.getActiveFilters()).toEqual([filter]);
                 component.ngOnDestroy();
                 expect(filterService.getActiveFilters()).toEqual([]);
@@ -49,7 +49,7 @@ export default function(): void {
 
             it("detects if the filter is active", function() {
                 expect(component.active).toEqual(false);
-                component.filter = filter;
+                component.customFilter = filter;
                 expect(component.active).toEqual(true);
                 filter.active = false;
                 expect(component.active).toEqual(false);
@@ -63,7 +63,7 @@ export default function(): void {
 
             beforeEach(function () {
                 filter = new TestFilter();
-                context = this.create(DatagridFilter, FullTest, [Filters]);
+                context = this.create(DatagridFilter, FullTest, [FiltersProvider]);
             });
 
             it("receives an input for the filter logic", function () {
@@ -91,7 +91,7 @@ export default function(): void {
             let context: TestContext<DatagridFilter, FullTest>;
 
             beforeEach(function () {
-                context = this.create(DatagridFilter, FullTest, [Filters]);
+                context = this.create(DatagridFilter, FullTest, [FiltersProvider]);
             });
 
             it("projects content into the dropdown", function() {

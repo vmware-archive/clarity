@@ -7,7 +7,7 @@ import {Subject} from "rxjs/Subject";
 import {Items} from "./items";
 import {Filter} from "../interfaces/filter";
 import {Comparator} from "../interfaces/comparator";
-import {Filters} from "./filters";
+import {FiltersProvider} from "./filters";
 import {Sort} from "./sort";
 import {Page} from "./page";
 
@@ -21,7 +21,7 @@ export default function(): void {
         }
 
         beforeEach(function() {
-            this.filtersInstance = new Filters();
+            this.filtersInstance = new FiltersProvider();
             this.evenFilter = new EvenFilter();
             this.filtersInstance.add(this.evenFilter);
             this.sortInstance = new Sort();

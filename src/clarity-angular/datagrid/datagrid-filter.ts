@@ -7,8 +7,8 @@ import {Component, EventEmitter, Input, Output} from "@angular/core";
 
 import {Filter} from "./interfaces/filter";
 import {CustomFilter} from "./providers/custom-filter";
-import {Filters} from "./providers/filters";
-import {FilterRegisterer} from "./utils/filter-registerer";
+import {FiltersProvider, RegisteredFilter} from "./providers/filters";
+import {DatagridFilterRegistrar} from "./utils/datagrid-filter-registrar";
 
 
 /**
@@ -36,8 +36,8 @@ import {FilterRegisterer} from "./utils/filter-registerer";
         </div>
     `
 })
-export class DatagridFilter extends FilterRegisterer<Filter<any>> implements CustomFilter {
-    constructor(_filters: Filters) {
+export class DatagridFilter extends DatagridFilterRegistrar<Filter<any>> implements CustomFilter {
+    constructor(_filters: FiltersProvider) {
         super(_filters);
     }
 
@@ -62,8 +62,8 @@ export class DatagridFilter extends FilterRegisterer<Filter<any>> implements Cus
 
 
     @Input("clrDgFilter")
-    public set customFilter(filter: Filter<any>) {
-        this.filter = filter;
+    public set customFilter(filter: Filter<any> | RegisteredFilter<Filter<any>>) {
+        this.setFilter(filter);
     };
 
     /**

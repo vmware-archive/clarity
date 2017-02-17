@@ -10,7 +10,7 @@ import {Observable} from "rxjs/Observable";
 import {Filter} from "../interfaces/filter";
 
 @Injectable()
-export class Filters {
+export class FiltersProvider {
     /**
      * This subject is the list of filters that changed last, not the whole list.
      * We emit a list rather than just one filter to allow batch changes to several at once.
@@ -59,9 +59,15 @@ export class Filters {
     public add<F extends Filter<any>>(filter: F): RegisteredFilter<F> {
         let index = this._all.length;
         let subscription = filter.changes.subscribe(() => this._change.next([filter]));
+        let hasUnregistered = false;
         let registered = new RegisteredFilter(filter, () => {
+            if (hasUnregistered) { return; }
             subscription.unsubscribe();
             this._all.splice(index, 1);
+            if (filter.isActive()) {
+                this._change.next([]);
+            }
+            hasUnregistered = true;
         });
         this._all.push(registered);
         return registered;
@@ -81,6 +87,5 @@ export class Filters {
 }
 
 export class RegisteredFilter<F extends Filter<any>> {
-
     constructor(public filter: F, public unregister: () => void) {}
 }

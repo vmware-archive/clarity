@@ -14,13 +14,4 @@ import {Component} from "@angular/core";
         "[class.datagrid-foot]": "true",
     }
 })
-export class DatagridFooter {
-
-    ngAfterContentInit() {
-        console.log("Footer content init");
-    }
-
-    ngAfterViewInit() {
-        console.log("Footer view init");
-    }
-}
+export class DatagridFooter { }

@@ -9,9 +9,9 @@ import {
 import {StringFilter} from "../../interfaces/string-filter";
 import {CustomFilter} from "../../providers/custom-filter";
 import {DatagridFilter} from "../../datagrid-filter";
-import {StringFilterImpl} from "./string-filter-impl";
-import {FilterRegisterer} from "../../utils/filter-registerer";
-import {Filters, RegisteredFilter} from "../../providers/filters";
+import {DatagridStringFilterImpl} from "./datagrid-string-filter-impl";
+import {DatagridFilterRegistrar} from "../../utils/datagrid-filter-registrar";
+import {FiltersProvider, RegisteredFilter} from "../../providers/filters";
 
 @Component({
     selector: "clr-dg-string-filter",
@@ -24,26 +24,27 @@ import {Filters, RegisteredFilter} from "../../providers/filters";
                 on inputs with NgModel from freaking out because of their host binding changing
                 mid-change detection when the input is destroyed.
             -->
-            <input #input type="text" name="search" [(ngModel)]="filter.value" *ngIf="open"
+            <input #input type="text" name="search" [(ngModel)]="value" *ngIf="open"
                 (keyup.enter)="close()" (keyup.escape)="close()"/>
         </clr-dg-filter>
     `
 })
-export class DatagridStringFilter extends FilterRegisterer<StringFilterImpl>
+export class DatagridStringFilter extends DatagridFilterRegistrar<DatagridStringFilterImpl>
     implements CustomFilter, AfterViewInit {
 
-    constructor(private renderer: Renderer, filters: Filters) {
+    constructor(private renderer: Renderer, filters: FiltersProvider) {
         super(filters);
     }
 
     /**
      * Customizable filter logic based on a search text
      */
-    @Input("clrDgStringFilter") set customStringFilter(value: StringFilter<any>) {
+    @Input("clrDgStringFilter") set customStringFilter(value: StringFilter<any>
+        | RegisteredFilter<DatagridStringFilterImpl>) {
         if (value instanceof RegisteredFilter) {
-            this.filter = <any>value;
+            this.setFilter(value);
         } else {
-            this.filter = new StringFilterImpl(value);
+            this.setFilter(new DatagridStringFilterImpl(value));
         }
     }
 
@@ -71,19 +72,17 @@ export class DatagridStringFilter extends FilterRegisterer<StringFilterImpl>
                 });
             }
         });
-
-        if (this.filter.value) { // this._changes needs a kick when a pre-filter value is supplied.
-            console.log("StringFilter View init");
-            // this._changes.next(this.value);
-        }
     }
 
     /**
      * Common setter for the input value
      */
+    public get value() {
+        return this.filter.value;
+    }
     @Input("clrFilterValue")
     public set value(value: string) {
-        console.log("StringFilter, setting value to", value);
+        if (!this.filter) { return; }
         if (!value) {
             value = "";
         }

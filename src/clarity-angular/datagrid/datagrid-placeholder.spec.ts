@@ -10,7 +10,7 @@ import {DatagridPlaceholder} from "./datagrid-placeholder";
 import {Items} from "./providers/items";
 import {Page} from "./providers/page";
 import {Sort} from "./providers/sort";
-import {Filters} from "./providers/filters";
+import {FiltersProvider} from "./providers/filters";
 
 export default function(): void {
     describe("DatagridPlaceholder component", function() {
@@ -55,7 +55,7 @@ export default function(): void {
             let pageProvider: Page;
 
             beforeEach(function() {
-                context = this.create(DatagridPlaceholder, SimpleTest, [Items, Page, Sort, Filters]);
+                context = this.create(DatagridPlaceholder, SimpleTest, [Items, Page, Sort, FiltersProvider]);
                 itemsProvider = TestBed.get(Items);
                 pageProvider = TestBed.get(Page);
             });

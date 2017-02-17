@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    AfterViewInit, ChangeDetectorRef, Component, ContentChild, HostBinding, Input, Output, EventEmitter
+    Component, ContentChild, HostBinding, Input, Output, EventEmitter
 } from "@angular/core";
 import {Subscription} from "rxjs";
 
@@ -13,9 +13,9 @@ import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property
 import {Comparator} from "./interfaces/comparator";
 import {CustomFilter} from "./providers/custom-filter";
 import {Sort} from "./providers/sort";
-import {FilterRegisterer} from "./utils/filter-registerer";
-import {Filters} from "./providers/filters";
-import {StringFilterImpl} from "./built-in/filters/string-filter-impl";
+import {DatagridFilterRegistrar} from "./utils/datagrid-filter-registrar";
+import {FiltersProvider} from "./providers/filters";
+import {DatagridStringFilterImpl} from "./built-in/filters/datagrid-string-filter-impl";
 
 @Component({
     selector: "clr-dg-column",
@@ -38,8 +38,8 @@ import {StringFilterImpl} from "./built-in/filters/string-filter-impl";
         "[class.datagrid-column]": "true"
     }
 })
-export class DatagridColumn extends FilterRegisterer<StringFilterImpl> implements AfterViewInit {
-    constructor(private _sort: Sort, private _cdr: ChangeDetectorRef, filters: Filters) {
+export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilterImpl> {
+    constructor(private _sort: Sort, filters: FiltersProvider) {
         super(filters);
         this._sortSubscription = _sort.change.subscribe(sort => {
             // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
@@ -57,17 +57,6 @@ export class DatagridColumn extends FilterRegisterer<StringFilterImpl> implement
 
     ngOnDestroy() {
         this._sortSubscription.unsubscribe();
-    }
-
-    ngAfterViewInit() {
-        /*
-         * Several bindings in our template and on the host depend on ContentChildren and
-         * ViewChildren, so we need to re-trigger change detection once everything is ready.
-         *
-         * TODO: check if still needed?
-         */
-        // this._cdr.detectChanges();
-        console.log("Column View init");
     }
 
     /**
@@ -155,7 +144,7 @@ export class DatagridColumn extends FilterRegisterer<StringFilterImpl> implement
         if (typeof field === "string") {
             this._field = field;
             if (!this.customFilter) {
-                this.filter = new StringFilterImpl(new DatagridPropertyStringFilter(field));
+                this.setFilter(new DatagridStringFilterImpl(new DatagridPropertyStringFilter(field)));
             }
             if (!this.sortBy) {
                 this.sortBy = new DatagridPropertyComparator(field);
@@ -169,7 +158,6 @@ export class DatagridColumn extends FilterRegisterer<StringFilterImpl> implement
     @Input("clrFilterValue")
     public set filterValue(newValue: string) {
         if (!this.filter) { return; }
-        console.log("Column, setting value to", newValue);
         if (!newValue) {
             newValue = "";
         }

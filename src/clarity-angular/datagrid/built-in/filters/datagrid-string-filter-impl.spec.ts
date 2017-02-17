@@ -3,17 +3,17 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {StringFilterImpl} from "./string-filter-impl";
+import {DatagridStringFilterImpl} from "./datagrid-string-filter-impl";
 import {StringFilter} from "../../interfaces/string-filter";
 
 export default function(): void {
-    describe("StringFilterImpl", function() {
+    describe("DatagridStringFilterImpl", function() {
         let stringFilter: TestFilter;
-        let fullFilter: StringFilterImpl;
+        let fullFilter: DatagridStringFilterImpl;
 
         beforeEach(function () {
             stringFilter = new TestFilter();
-            fullFilter = new StringFilterImpl(this.stringFilter);
+            fullFilter = new DatagridStringFilterImpl(this.stringFilter);
         });
 
         it("updates the lowercase value when the raw value changes", function () {
@@ -27,10 +27,8 @@ export default function(): void {
         it("becomes active when the value isn't empty", function () {
             expect(fullFilter.isActive()).toBe(false);
             fullFilter.value = "test";
-            console.log("Should be true: ", fullFilter.value);
             expect(fullFilter.isActive()).toBe(true);
             fullFilter.value = "";
-            console.log("Should be false: ", fullFilter.value);
             expect(fullFilter.isActive()).toBe(false);
         });
 

@@ -8,13 +8,13 @@ import {Subject} from "rxjs/Subject";
 import {Subscription} from "rxjs/Subscription";
 import {Observable} from "rxjs/Observable";
 
-import {Filters} from "./filters";
+import {FiltersProvider} from "./filters";
 import {Page} from "./page";
 import {Sort} from "./sort";
 
 @Injectable()
 export class Items {
-    constructor(private _filters: Filters, private _sort: Sort, private _page: Page) {}
+    constructor(private _filters: FiltersProvider, private _sort: Sort, private _page: Page) {}
 
     /**
      * Indicates if the data is currently loading
@@ -68,7 +68,6 @@ export class Items {
      */
     private _all: any[];
     public set all(items: any[]) {
-        console.log("Setting all items");
         if (this.smart) {
             this._all = items;
             this._filterItems();
@@ -121,10 +120,9 @@ export class Items {
     }
 
     /**
-     * Filters items from the raw list
+     * FiltersProvider items from the raw list
      */
     private _filterItems() {
-        console.log("Filtering items");
         if (this.uninitialized) { return; }
         if (this._filters.hasActiveFilters()) {
             this._filtered = this._all.filter((item) => this._filters.accepts(item));

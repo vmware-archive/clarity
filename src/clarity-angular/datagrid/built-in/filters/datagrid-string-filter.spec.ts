@@ -3,20 +3,22 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import {Component, ViewChild} from "@angular/core";
 import {TestBed, tick, fakeAsync} from "@angular/core/testing";
 import {TestContext} from "../../helpers.spec";
 import {DatagridStringFilter} from "./datagrid-string-filter";
-import {Filters} from "../../providers/filters";
+import {FiltersProvider} from "../../providers/filters";
 import {CustomFilter} from "../../providers/custom-filter";
 import {StringFilter} from "../../interfaces/string-filter";
+import {DatagridStringFilterImpl} from "./datagrid-string-filter-impl";
 
 export default function (): void {
     describe("DatagridStringFilter component", function () {
         // Until we can properly type "this"
         let context: TestContext<DatagridStringFilter, FullTest>;
         let filter: TestFilter;
-        let filtersInstance: Filters;
+        let filtersInstance: FiltersProvider;
 
         function openFilter() {
             context.clarityElement.querySelector(".datagrid-filter-toggle").click();
@@ -25,14 +27,21 @@ export default function (): void {
 
         beforeEach(function () {
             filter = new TestFilter();
-            context = this.create(DatagridStringFilter, FullTest, [Filters]);
-            filtersInstance = TestBed.get(Filters);
+            context = this.create(DatagridStringFilter, FullTest, [FiltersProvider]);
+            filtersInstance = TestBed.get(FiltersProvider);
         });
 
         it("receives an input for the filter value", function () {
             context.testComponent.filterValue = "M";
             context.detectChanges();
             expect(context.clarityDirective.filter.value).toBe("M");
+        });
+
+        it("wires the RegisteredFilter correctly", function () {
+            let test = new DatagridStringFilterImpl(new TestFilter());
+            context.testComponent.filter = filter;
+            context.detectChanges();
+            expect(context.clarityDirective.filter.filterFn).toEqual(test.filterFn);
         });
 
         it("receives an input for the filter logic", function () {
@@ -67,14 +76,12 @@ export default function (): void {
         }));
 
         it("offers two way binding on the filtered state", function () {
-            //
-            console.log("testing filtered state");
-            // initialize a new dg-column with clrFilterValue
-            // test that the value is used to init the dg-col
-            // change the filter value
-            // test that the changed value is correct
-
-            // NOTE: this should fail if you comment out line #68 in datagrid-string-filter.ts
+            context.testComponent.filterValue = "M";
+            context.detectChanges();
+            expect(context.clarityDirective.value).toBe("M");
+            context.clarityDirective.value = "t";
+            context.detectChanges();
+            expect(context.testComponent.filterValue).toBe("t");
         });
 
         xit("closes when the user presses Enter in the input", function () {
@@ -86,28 +93,6 @@ export default function (): void {
             // TODO
             openFilter();
         });
-
-        xit("exposes an Observable to follow filter changes", fakeAsync(function () {
-            // TODO
-            // let nbChanges = 0;
-            // let latestInput: string;
-            // context.clarityDirective.changes.subscribe((search: string) => {
-            //     nbChanges++;
-            //     latestInput = search;
-            // });
-            // openFilter();
-            // let input = context.clarityElement.querySelector("input[type='text']");
-            // input.value = "t";
-            // context.detectChanges();
-            // expect(latestInput).toBe("t");
-            // input.value = "test";
-            // context.detectChanges();
-            // expect(latestInput).toBe("test");
-            // input.value = "tes";
-            // context.detectChanges();
-            // expect(latestInput).toBe("tes");
-            // expect(nbChanges).toBe(3);
-        }));
     });
 }
 

@@ -7,7 +7,7 @@ import {Component, ViewChild} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
 import {DatagridItems} from "./datagrid-items";
 import {Items} from "./providers/items";
-import {Filters} from "./providers/filters";
+import {FiltersProvider} from "./providers/filters";
 import {Sort} from "./providers/sort";
 import {Page} from "./providers/page";
 import {ClarityModule} from "../clarity.module";
@@ -22,7 +22,7 @@ export default function(): void {
             TestBed.configureTestingModule({
                 imports: [ClarityModule.forRoot()],
                 declarations: [FullTest],
-                providers: [Items, Filters, Sort, Page]
+                providers: [Items, FiltersProvider, Sort, Page]
             });
             this.fixture = TestBed.createComponent(FullTest);
             this.fixture.detectChanges();

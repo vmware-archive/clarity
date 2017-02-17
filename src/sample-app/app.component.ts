@@ -13,36 +13,6 @@ export class AppComponent  {
     name = "world";
     closeMessage: string = "";
     indeterminateState: boolean = true;
-    myFilterColumn = "Test";
-    myFilterValue = "M";
-    users = [
-        {
-            name: "Matt",
-            pokemon: {
-                name: "Pikachu"
-            }
-        }, {
-            name: "Julie",
-            pokemon: {
-                name: "Bronze"
-            }
-        }, {
-            name: "Hannah",
-            pokemon: {
-                name: "Peaches"
-            }
-        }, {
-            name: "Coco",
-            pokemon: {
-                name: "Sunset"
-            }
-        }, {
-            name: "Lee",
-            pokemon: {
-                name: "Bobo"
-            }
-        }
-    ];
 
     onClose(): void {
         this.closeMessage = "The alert has been closed";

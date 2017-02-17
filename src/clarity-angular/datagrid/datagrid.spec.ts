@@ -10,7 +10,7 @@ import {Datagrid} from "./datagrid";
 import {State} from "./interfaces/state";
 import {Selection} from "./providers/selection";
 import {Sort} from "./providers/sort";
-import {Filters} from "./providers/filters";
+import {FiltersProvider} from "./providers/filters";
 import {Page} from "./providers/page";
 import {Items} from "./providers/items";
 import {Comparator} from "./interfaces/comparator";
@@ -82,7 +82,7 @@ export default function(): void {
 
                 it("emits once when the filters change", function() {
                     context.testComponent.nbRefreshed = 0;
-                    let filters: Filters = context.getClarityProvider(Filters);
+                    let filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
                     let filter = new TestFilter();
                     filters.add(filter);
                     filter.changes.next(true);
@@ -102,7 +102,7 @@ export default function(): void {
                     let comparator = new TestComparator();
                     let sort: Sort = context.getClarityProvider(Sort);
                     sort.toggle(comparator);
-                    let filters: Filters = context.getClarityProvider(Filters);
+                    let filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
                     let filter = new TestFilter();
                     filters.add(filter);
                     let page: Page = context.getClarityProvider(Page);

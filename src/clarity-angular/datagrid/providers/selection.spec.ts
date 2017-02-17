@@ -7,7 +7,7 @@ import {Selection} from "./selection";
 import {Items} from "./items";
 import {TestBed} from "@angular/core/testing";
 import {Sort} from "./sort";
-import {Filters} from "./filters";
+import {FiltersProvider} from "./filters";
 import {Page} from "./page";
 
 const numberSort = (a: number, b: number) => a - b;
@@ -16,7 +16,7 @@ export default function(): void {
     describe("Selection provider", function() {
         beforeEach(function() {
             TestBed.configureTestingModule({
-                providers: [Selection, Sort, Filters, Page, Items]
+                providers: [Selection, Sort, FiltersProvider, Page, Items]
             });
 
             this.selectionInstance = TestBed.get(Selection);

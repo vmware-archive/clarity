@@ -16,7 +16,7 @@ import {DatagridItems} from "./datagrid-items";
 import {DatagridRow} from "./datagrid-row";
 import {DatagridPlaceholder} from "./datagrid-placeholder";
 import {State} from "./interfaces/state";
-import {Filters} from "./providers/filters";
+import {FiltersProvider} from "./providers/filters";
 import {Items} from "./providers/items";
 import {Page} from "./providers/page";
 import {Selection} from "./providers/selection";
@@ -26,11 +26,11 @@ import {RowActionService} from "./providers/row-action-service";
 @Component({
     selector: "clr-datagrid",
     templateUrl: "./datagrid.html",
-    providers: [Selection, Sort, Filters, Page, RowActionService, Items]
+    providers: [Selection, Sort, FiltersProvider, Page, RowActionService, Items]
 })
 export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
 
-    constructor(public selection: Selection, private sort: Sort, private filters: Filters,
+    constructor(private selection: Selection, private sort: Sort, private filters: FiltersProvider,
                 private page: Page, public rowActionService: RowActionService, public items: Items) {}
 
     /**
@@ -173,13 +173,12 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
      * Our setup happens in the view of some of our components, so we wait for it to be done before starting
      */
     ngAfterViewInit() {
+        // TODO: determine if we can get rid of provider wiring in view init so that subscriptions can be done earlier
         this.triggerRefresh();
         this._subscriptions.push(this.sort.change.subscribe(() => this.triggerRefresh()));
         this._subscriptions.push(this.filters.change.subscribe(() => this.triggerRefresh()));
         this._subscriptions.push(this.page.change.subscribe(() => this.triggerRefresh()));
         this._subscriptions.push(this.selection.change.subscribe(s => this.selectedChanged.emit(s)));
-
-        console.log("Datagrid view ready");
     }
     /**
      * Subscriptions to all the services changes

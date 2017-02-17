@@ -9,7 +9,7 @@ import {TestContext} from "./helpers.spec";
 import {DatagridActionBar} from "./datagrid-action-bar";
 import {Selection} from "./providers/selection";
 import {Items} from "./providers/items";
-import {Filters} from "./providers/filters";
+import {FiltersProvider} from "./providers/filters";
 import {Sort} from "./providers/sort";
 import {Page} from "./providers/page";
 
@@ -19,7 +19,7 @@ export default function(): void {
         let selectionProvider: Selection;
 
         beforeEach(function() {
-            context = this.create(DatagridActionBar, SimpleTest, [Selection, Items, Filters, Sort, Page]);
+            context = this.create(DatagridActionBar, SimpleTest, [Selection, Items, FiltersProvider, Sort, Page]);
             selectionProvider = TestBed.get(Selection);
         });
 

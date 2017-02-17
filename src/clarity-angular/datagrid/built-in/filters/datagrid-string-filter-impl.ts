@@ -3,7 +3,7 @@ import {Subject} from "rxjs/Subject";
 import {Filter} from "../../interfaces/filter";
 import {StringFilter} from "../../interfaces/string-filter";
 
-export class StringFilterImpl implements Filter<any> {
+export class DatagridStringFilterImpl implements Filter<any> {
 
     constructor(public filterFn: StringFilter<any>) {}
 

@@ -32,7 +32,7 @@ import DatagridPropertyStringFilterSpecs from "./built-in/filters/datagrid-prope
 import DatagridStringFilterSpecs from "./built-in/filters/datagrid-string-filter.spec";
 import DatagridPlaceholderSpecs from "./datagrid-placeholder.spec";
 
-fdescribe("Datagrid", function() {
+describe("Datagrid", function() {
     addHelpers();
 
     describe("Providers", function() {

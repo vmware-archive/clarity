@@ -5,18 +5,13 @@
  */
 import {StringFilter} from "../../interfaces/string-filter";
 import {NestedProperty} from "../nested-property";
-import {OnInit} from "@angular/core";
 
-export class DatagridPropertyStringFilter implements StringFilter<any>, OnInit {
+export class DatagridPropertyStringFilter implements StringFilter<any> {
 
     private nestedProp: NestedProperty;
 
     constructor(public prop: string, public exact = false) {
         this.nestedProp = new NestedProperty(prop);
-    }
-
-    ngOnInit() {
-        this.nestedProp = new NestedProperty(this.prop);
     }
 
     accepts(item: any, search: string): boolean {

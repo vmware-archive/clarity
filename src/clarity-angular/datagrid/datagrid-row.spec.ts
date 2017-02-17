@@ -9,7 +9,7 @@ import {TestContext} from "./helpers.spec";
 import {DatagridRow} from "./datagrid-row";
 import {Selection} from "./providers/selection";
 import {Items} from "./providers/items";
-import {Filters} from "./providers/filters";
+import {FiltersProvider} from "./providers/filters";
 import {Sort} from "./providers/sort";
 import {Page} from "./providers/page";
 import {RowActionService} from "./providers/row-action-service";
@@ -21,7 +21,8 @@ export default function(): void {
         let selectionProvider: Selection;
 
         beforeEach(function () {
-            context = this.create(DatagridRow, FullTest, [Selection, Items, Filters, Sort, Page, RowActionService]);
+            context = this.create(DatagridRow, FullTest, [Selection, Items, FiltersProvider, Sort, Page,
+                RowActionService]);
             selectionProvider = TestBed.get(Selection);
         });
 

@@ -7,7 +7,7 @@ import {Component} from "@angular/core";
 import {TestBed, fakeAsync, tick} from "@angular/core/testing";
 import {TestContext} from "./helpers.spec";
 import {DatagridRow} from "./datagrid-row";
-import {Selection} from "./providers/selection";
+import {Selection, SelectionType} from "./providers/selection";
 import {Items} from "./providers/items";
 import {FiltersProvider} from "./providers/filters";
 import {Sort} from "./providers/sort";
@@ -40,14 +40,28 @@ export default function(): void {
             expect(context.clarityDirective.item).toBe(context.testComponent.item);
         });
 
-        it("doesn't display a checkbox when not selectable", function () {
-            selectionProvider.selectable = false;
+        it("doesn't display a checkbox unless selection type is multi", function () {
+            selectionProvider.selectionType = SelectionType.None;
+            context.detectChanges();
+            expect(context.clarityElement.querySelector("input[type='checkbox']")).toBeNull();
+
+            selectionProvider.selectionType = SelectionType.Single;
             context.detectChanges();
             expect(context.clarityElement.querySelector("input[type='checkbox']")).toBeNull();
         });
 
+        it("doesn't display a radio button unless selection type is single", function () {
+            selectionProvider.selectionType = SelectionType.None;
+            context.detectChanges();
+            expect(context.clarityElement.querySelector("input[type='radio']")).toBeNull();
+
+            selectionProvider.selectionType = SelectionType.Multi;
+            context.detectChanges();
+            expect(context.clarityElement.querySelector("input[type='radio']")).toBeNull();
+        });
+
         it("selects the model when the checkbox is clicked", function () {
-            selectionProvider.selectable = true;
+            selectionProvider.selectionType = SelectionType.Multi;
             context.testComponent.item = {id: 1};
             context.detectChanges();
             let checkbox = context.clarityElement.querySelector("input[type='checkbox']");
@@ -60,8 +74,19 @@ export default function(): void {
             expect(selectionProvider.current).toEqual([]);
         });
 
+        it("selects the model when the radio button is clicked", function () {
+            selectionProvider.selectionType = SelectionType.Single;
+            context.testComponent.item = {id: 1};
+            context.detectChanges();
+            let radio = context.clarityElement.querySelector("input[type='radio']");
+            expect(selectionProvider.currentSingle).toBeUndefined();
+            radio.click();
+            context.detectChanges();
+            expect(selectionProvider.currentSingle).toEqual(context.testComponent.item);
+        });
+
         it("adds the .datagrid-selected class to the host when the row is selected", function() {
-            selectionProvider.selectable = true;
+            selectionProvider.selectionType = SelectionType.Multi;
             context.testComponent.item = {id: 1};
             context.detectChanges();
             context.clarityDirective.selected = true;
@@ -70,7 +95,7 @@ export default function(): void {
         });
 
         it("offers two-way binding on the selected state of the row", fakeAsync(function () {
-            selectionProvider.selectable = true;
+            selectionProvider.selectionType = SelectionType.Multi;
             context.testComponent.item = {id: 1};
             flushAndAssertSelected(false);
             // Input
@@ -82,7 +107,7 @@ export default function(): void {
         }));
 
         it("supports selected rows even if the datagrid isn't selectable", fakeAsync(function () {
-            expect(selectionProvider.selectable).toBe(false);
+            selectionProvider.selectionType = SelectionType.None;
             expect(context.testComponent.item).toBeUndefined();
             expect(context.clarityDirective.selected).toBe(false);
             context.testComponent.selected = true;

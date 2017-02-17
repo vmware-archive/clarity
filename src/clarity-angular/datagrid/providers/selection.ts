@@ -10,9 +10,20 @@ import {Observable} from "rxjs/Observable";
 
 import {Items} from "./items";
 
+let nbSelection: number = 0;
+
+export enum SelectionType {
+    None,
+    Single,
+    Multi
+}
+
 @Injectable()
 export class Selection {
+    public id: string;
+
     constructor(private _items: Items) {
+        this.id = "clr-dg-selection" + (nbSelection++);
         this._itemsSub = _items.change.subscribe(() => {
             if (!this._selectable || this.debounce) {
                 return;
@@ -23,6 +34,22 @@ export class Selection {
         });
     }
 
+    private _selectionType: SelectionType = SelectionType.None;
+    public get selectionType(): SelectionType {
+        return this._selectionType;
+    }
+    public set selectionType(value: SelectionType) {
+        if (value === this.selectionType) { return; }
+        this._selectionType = value;
+        if (value === SelectionType.None) {
+            delete this.current;
+        } else {
+            this.current = [];
+        }
+    }
+    private get _selectable(): boolean {
+        return (this._selectionType === SelectionType.Multi) || (this._selectionType === SelectionType.Single);
+    }
     /**
      * Ignore items changes in the same change detection cycle.
      */
@@ -40,19 +67,19 @@ export class Selection {
     }
 
     /**
-     * Indicates if the datagrid's rows are selectable
+     * The current selection in single selection type
      */
-    private _selectable = false;
-    public get selectable(): boolean {
-        return this._selectable;
+    private _currentSingle: any;
+    public get currentSingle(): any {
+        return this._currentSingle;
     }
-    public set selectable(value: boolean) {
-        this._selectable = value;
-        if (!value) {
-            delete this.current;
-        } else if (!this.current) {
-            this.current = [];
-        }
+    public set currentSingle(value: any) {
+        if (value === this._currentSingle) { return; }
+        this._currentSingle = value;
+        this.emitChange();
+        // Ignore items changes in the same change detection cycle.
+        this.debounce = true;
+        setTimeout(() => this.debounce = false);
     }
 
     /**
@@ -73,12 +100,16 @@ export class Selection {
     /**
      * The Observable that lets other classes subscribe to selection changes
      */
-    private _change = new Subject<any[]>();
+    private _change = new Subject<any[] | any>();
     private emitChange() {
-        this._change.next(this.current);
+        if (this._selectionType === SelectionType.Single) {
+            this._change.next(this.currentSingle);
+        } else if (this._selectionType === SelectionType.Multi) {
+            this._change.next(this.current);
+        }
     }
     // We do not want to expose the Subject itself, but the Observable which is read-only
-    public get change(): Observable<any[]> {
+    public get change(): Observable<any[] | any> {
         return this._change.asObservable();
     };
 
@@ -86,23 +117,36 @@ export class Selection {
      * Checks if an item is currently selected
      */
     public isSelected(item: any): boolean {
-        return this._selectable && this.current.indexOf(item) >= 0;
+        if (this._selectionType === SelectionType.Single) {
+            return this.currentSingle === item;
+        } else if (this._selectionType === SelectionType.Multi) {
+            return this.current.indexOf(item) >= 0;
+        }
+        return false;
     }
 
     /**
      * Selects or deselects an item
      */
     public setSelected(item: any, selected: boolean) {
-        if (!this._selectable) {
-            return;
-        }
-        let index = this.current.indexOf(item);
-        if (index >= 0 && !selected) {
-            this.current.splice(index, 1);
-            this.emitChange();
-        } else if (index < 0 && selected) {
-            this.current.push(item);
-            this.emitChange();
+        switch (this._selectionType) {
+            case SelectionType.None:
+                break;
+            case SelectionType.Single:
+                // in single selection, set currentSingle method should be used
+                break;
+            case SelectionType.Multi:
+                let index = this.current.indexOf(item);
+                if (index >= 0 && !selected) {
+                    this.current.splice(index, 1);
+                    this.emitChange();
+                } else if (index < 0 && selected) {
+                    this.current.push(item);
+                    this.emitChange();
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -110,7 +154,7 @@ export class Selection {
      * Checks if all currently displayed items are selected
      */
     public isAllSelected(): boolean {
-        if (!this._selectable || !this._items.displayed) {
+        if ((this._selectionType !== SelectionType.Multi) || !this._items.displayed) {
             return false;
         }
         let nbDisplayed = this._items.displayed.length;
@@ -121,7 +165,7 @@ export class Selection {
      * Selects or deselects all currently displayed items
      */
     public toggleAll() {
-        if (!this._selectable) {
+        if (this._selectionType === SelectionType.None || this._selectionType === SelectionType.Single) {
             return;
         }
         /*

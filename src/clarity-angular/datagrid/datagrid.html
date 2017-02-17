@@ -10,10 +10,16 @@
         <div class="datagrid">
             <div class="datagrid-head">
                 <div class="datagrid-row">
-                    <div class="datagrid-column datagrid-select" *ngIf="selection.selectable">
-                    <span class="datagrid-column-title">
-                        <clr-checkbox [(ngModel)]="allSelected"></clr-checkbox>
-                    </span>
+                    <!-- header for datagrid where you can select multiple rows -->
+                    <div class="datagrid-column datagrid-select"
+                         *ngIf="selection.selectionType === SELECTION_TYPE.Multi">
+                        <span class="datagrid-column-title">
+                            <clr-checkbox [(ngModel)]="allSelected"></clr-checkbox>
+                        </span>
+                    </div>
+                    <!-- header for datagrid where you can select one row only -->
+                    <div class="datagrid-column datagrid-select"
+                         *ngIf="selection.selectionType === SELECTION_TYPE.Single">
                     </div>
                     <!-- header for single row action; only display if we have at least one actionable row in datagrid -->
                     <div class="datagrid-column datagrid-row-actions" *ngIf="rowActionService.actionableCount > 0"></div>

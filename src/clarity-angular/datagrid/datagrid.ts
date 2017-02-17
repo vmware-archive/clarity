@@ -19,7 +19,7 @@ import {State} from "./interfaces/state";
 import {FiltersProvider} from "./providers/filters";
 import {Items} from "./providers/items";
 import {Page} from "./providers/page";
-import {Selection} from "./providers/selection";
+import {Selection, SelectionType} from "./providers/selection";
 import {Sort} from "./providers/sort";
 import {RowActionService} from "./providers/row-action-service";
 
@@ -32,6 +32,9 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
 
     constructor(private selection: Selection, private sort: Sort, private filters: FiltersProvider,
                 private page: Page, public rowActionService: RowActionService, public items: Items) {}
+
+    /* reference to the enum so that template can access */
+    public SELECTION_TYPE = SelectionType;
 
     /**
      * Freezes the datagrid while data is loading
@@ -121,11 +124,23 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     @Input("clrDgSelected")
     set selected(value: any[]) {
         if (value) {
-            this.selection.selectable = true;
+            this.selection.selectionType = SelectionType.Multi;
         }
         this.selection.current = value;
     }
     @Output("clrDgSelectedChange") selectedChanged = new EventEmitter<any[]>(false);
+
+    /**
+     * Selected item in single-select mode
+     */
+    @Input("clrDgSingleSelected")
+    set singleSelected(value: any) {
+        this.selection.selectionType = SelectionType.Single;
+        if (value) {
+            this.selection.currentSingle = value;
+        }
+    }
+    @Output("clrDgSingleSelectedChange") singleSelectedChanged = new EventEmitter<any>(false);
 
     /**
      * Indicates if all currently displayed items are selected
@@ -178,7 +193,13 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
         this._subscriptions.push(this.sort.change.subscribe(() => this.triggerRefresh()));
         this._subscriptions.push(this.filters.change.subscribe(() => this.triggerRefresh()));
         this._subscriptions.push(this.page.change.subscribe(() => this.triggerRefresh()));
-        this._subscriptions.push(this.selection.change.subscribe(s => this.selectedChanged.emit(s)));
+        this._subscriptions.push(this.selection.change.subscribe(s => {
+            if (this.selection.selectionType === SelectionType.Single) {
+                this.singleSelectedChanged.emit(s);
+            } else if (this.selection.selectionType === SelectionType.Multi) {
+                this.selectedChanged.emit(s);
+            }
+        }));
     }
     /**
      * Subscriptions to all the services changes

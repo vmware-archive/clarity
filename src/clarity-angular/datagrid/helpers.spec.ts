@@ -33,7 +33,7 @@ export class TestContext<D, C> {
             let clarityDirectiveName = (<any>clarityDirectiveType).name;
             throw new Error(`Test component ${componentName} doesn't contain a ${clarityDirectiveName}`);
         }
-        this.clarityDirective = this.clarityDebugElement.componentInstance;
+        this.clarityDirective = this.clarityDebugElement.injector.get(clarityDirectiveType);
         this.clarityElement = this.clarityDebugElement.nativeElement;
     }
 

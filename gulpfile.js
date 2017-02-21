@@ -55,6 +55,7 @@ gulp.task("serve", function (callback) {
  */
 gulp.task("test", function (callback) {
     env.set({NODE_ENV: "prod"}); // We only run tests in production mode for now
+    env.set({TESTING: true});
     return runSequence(
         'build',
         'karma:verbose',
@@ -69,6 +70,7 @@ gulp.task("test", function (callback) {
  */
 gulp.task("test:watch", function(callback) {
     env.set({NODE_ENV: "prod"}); // We only run tests in production mode for now
+    env.set({TESTING: true});
     return runSequence(
         'build',
         ['sass:watch', 'typescript:watch', 'html:watch', 'bundle:watch'],

@@ -6,7 +6,7 @@
 
 .color-square {
     display: inline-block;
-    vertical-align: text-bottom;
+    vertical-align: bottom;
     height: 14px;
     width: 14px;
     border: 1px solid black;
@@ -29,7 +29,7 @@
 }
 
 .lorem-ipsum {
-    max-width: 300px;
+    width: 300px;
 }
 
 .username-list {
@@ -41,4 +41,8 @@
     .username:last-child::after {
         content: ".";
     }
+}
+
+#vertical-scrolling {
+    height: 500px;
 }

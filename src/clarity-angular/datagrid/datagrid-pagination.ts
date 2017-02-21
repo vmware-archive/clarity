@@ -35,6 +35,8 @@ import {Subscription} from "rxjs/Subscription";
             </li>
         </ul>
     `,
+    // IE10 comes to pollute even our components declaration
+    styles: [`:host { display: block; }`]
 })
 export class DatagridPagination implements OnDestroy {
     constructor(public page: Page) {

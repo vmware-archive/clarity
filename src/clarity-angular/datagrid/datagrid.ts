@@ -22,11 +22,15 @@ import {Page} from "./providers/page";
 import {Selection, SelectionType} from "./providers/selection";
 import {Sort} from "./providers/sort";
 import {RowActionService} from "./providers/row-action-service";
+import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 @Component({
     selector: "clr-datagrid",
     templateUrl: "./datagrid.html",
-    providers: [Selection, Sort, FiltersProvider, Page, RowActionService, Items]
+    providers: [Selection, Sort, FiltersProvider, Page, RowActionService, Items, DatagridRenderOrganizer],
+    host: {
+        "[class.datagrid-container]": "true"
+    }
 })
 export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
 
@@ -172,8 +176,11 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
      * by querying the projected content. This is needed to keep track of the models currently
      * displayed, typically for selection.
      */
-    @ContentChildren(DatagridRow) public rows: QueryList<DatagridRow>;
+    @ContentChildren(DatagridRow) rows: QueryList<DatagridRow>;
+
     ngAfterContentInit() {
+        // TODO: Move all this to ngOnInit() once https://github.com/angular/angular/issues/12818 goes in.
+        // And when we do that, remove the manual step for each one.
         this._subscriptions.push(this.rows.changes.subscribe(() => {
             if (!this.items.smart) {
                 this.items.all = this.rows.map((row: DatagridRow) => row.item);
@@ -201,8 +208,9 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
             }
         }));
     }
+
     /**
-     * Subscriptions to all the services changes
+     * Subscriptions to all the services and queries changes
      */
     private _subscriptions: Subscription[] = [];
     ngOnDestroy() {

@@ -74,7 +74,7 @@
                 </clr-datagrid-color-filter-demo>
             </clr-dg-filter>
         </clr-dg-column>
-        <clr-dg-column *ngIf="loremIpsumColumn">Multi-line text</clr-dg-column>
+        <clr-dg-column class="lorem-ipsum" *ngIf="loremIpsumColumn">Multi-line text</clr-dg-column>
 
         <clr-dg-placeholder>No users found</clr-dg-placeholder>
         <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
@@ -85,7 +85,7 @@
             <clr-dg-cell>
                 <span class="color-square" [style.backgroundColor]="user.color"></span>
             </clr-dg-cell>
-            <clr-dg-cell class="lorem-ipsum" *ngIf="loremIpsumColumn">
+            <clr-dg-cell *ngIf="loremIpsumColumn">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor tellus,
                 tincidunt eget mauris molestie, ullamcorper facilisis lacus. Vivamus sagittis
                 suscipit libero, et tristique justo consectetur eget.
@@ -112,7 +112,7 @@
                 </clr-datagrid-color-filter-demo>
             </clr-dg-filter>
         </clr-dg-column>
-        <clr-dg-column *ngIf="loremIpsumColumn">Multi-line text</clr-dg-column>
+        <clr-dg-column class="lorem-ipsum" *ngIf="loremIpsumColumn">Multi-line text</clr-dg-column>
 
         <clr-dg-placeholder>No users found</clr-dg-placeholder>
         <clr-dg-row *ngFor="let user of users" [clrDgItem]="user">
@@ -123,7 +123,7 @@
             <clr-dg-cell>
                 <span class="color-square" [style.backgroundColor]="user.color"></span>
             </clr-dg-cell>
-            <clr-dg-cell class="lorem-ipsum" *ngIf="loremIpsumColumn">
+            <clr-dg-cell *ngIf="loremIpsumColumn">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor tellus,
                 tincidunt eget mauris molestie, ullamcorper facilisis lacus. Vivamus sagittis
                 suscipit libero, et tristique justo consectetur eget.

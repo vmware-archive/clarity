@@ -9,10 +9,11 @@ import {Selection} from "./providers/selection";
 @Component({
     selector: "clr-dg-action-bar",
     template: `
-        <div class="datagrid-action-bar">
-            <ng-content *ngIf="selection.current && selection.current.length > 0"></ng-content>
-        </div>
-    `
+        <ng-content *ngIf="selection.current && selection.current.length > 0"></ng-content>
+    `,
+    host: {
+        "[class.datagrid-action-bar]": "true"
+    }
 })
 export class DatagridActionBar {
 

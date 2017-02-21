@@ -3,22 +3,51 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, EventEmitter, HostListener, Input, Output, ElementRef, OnDestroy} from "@angular/core";
+import {
+    Component, EventEmitter, HostListener, Input, Output, ElementRef, OnDestroy, ViewChildren, QueryList, AfterViewInit
+} from "@angular/core";
+import {Subscription} from "rxjs/Subscription";
 import {RowActionService} from "./providers/row-action-service";
+import {Popover, Direction} from "../popover/popover";
 
 @Component({
     selector: "clr-dg-action-overflow",
     template: `
         <clr-icon shape="ellipsis-vertical" class="datagrid-action-toggle" (click)="toggle()"></clr-icon>
-        <div class="datagrid-action-overflow" *ngIf="open">
+        <div #menu class="datagrid-action-overflow" *ngIf="open">
             <ng-content></ng-content>
         </div>
     `
 })
-export class DatagridActionOverflow implements OnDestroy {
+export class DatagridActionOverflow implements OnDestroy, AfterViewInit {
 
     constructor(private elementRef: ElementRef, private rowActionService: RowActionService) {
         rowActionService.register();
+    }
+
+    private position: Popover;
+
+    @ViewChildren("menu") menu: QueryList<ElementRef>;
+
+    ngAfterViewInit() {
+        this._menuSubscription = this.menu.changes.subscribe(() => {
+            if (this.menu.length > 0) {
+                this.rowActionService.open(() => {
+                    this.position = new Popover(this.menu.first.nativeElement);
+                    this.position.anchor(this.elementRef.nativeElement, Direction.RIGHT, {userAnchorParent: true});
+                });
+            } else {
+                this.position.destroy();
+                delete this.position;
+                this.rowActionService.close();
+            }
+        });
+    }
+
+    private _menuSubscription: Subscription;
+    ngOnDestroy() {
+        this._menuSubscription.unsubscribe();
+        this.rowActionService.deregister();
     }
 
     /**
@@ -43,10 +72,6 @@ export class DatagridActionOverflow implements OnDestroy {
      */
     public toggle() {
         this.open = !this.open;
-    }
-
-    ngOnDestroy() {
-        this.rowActionService.deregister();
     }
 
     //called on mouse clicks anywhere in the DOM.

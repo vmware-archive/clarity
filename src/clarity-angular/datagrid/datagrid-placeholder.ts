@@ -13,6 +13,8 @@ import {Page} from "./providers/page";
         <!--
             I hate doing this, with these 36px being baselineRem(1.5) hardcoded here,
             but I don't see a better solution right now.
+            
+            TODO: with the new flexbox layout, it might be possible to get rid of this!
         -->
         <div class="datagrid-placeholder" [style.min-height]="(36*nbEmptyRows)+'px'"
             *ngIf="nbEmptyRows > 0" [class.datagrid-empty]="emptyDatagrid">
@@ -20,7 +22,9 @@ import {Page} from "./providers/page";
             <ng-content *ngIf="emptyDatagrid"></ng-content>
         </div>
     `,
-    styles: [`:host { display: block; }`]
+    host: {
+        "[class.datagrid-placeholder-container]": "true"
+    }
 })
 export class DatagridPlaceholder {
     constructor(private items: Items, private page: Page) {}

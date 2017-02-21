@@ -6,13 +6,14 @@
 import {Component} from "@angular/core";
 import {TestContext} from "./helpers.spec";
 import {DatagridCell} from "./datagrid-cell";
+import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 export default function(): void {
     describe("DatagridCell component", function() {
         let context: TestContext<DatagridCell, SimpleTest>;
 
         beforeEach(function() {
-            context = this.create(DatagridCell, SimpleTest);
+            context = this.create(DatagridCell, SimpleTest, [DatagridRenderOrganizer]);
         });
 
         it("projects content", function() {

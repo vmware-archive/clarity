@@ -47,12 +47,16 @@ var VERSION = `
 `;
 // var VERSION = "/*! \n\s*\n\\s*Clarity v" + process.env.BUILD_VERSION + " | MIT license | https://github.com/vmware/clarity \n\\s*/";
 
+var SUPPORTED_BROWSERS = ['last 3 versions','ie 10','ie 11','> 5%','Firefox > 35','Chrome > 35'];
 /**
  * compiles the .clarity.sass files from the src/ folder to create the bundled clarity css
  * and its sourcemap in the dist/ folder
  */
 gulp.task("sass:static", function(){
     var prod = process.env.NODE_ENV==="prod";
+    if (process.env.TESTING) {
+        SUPPORTED_BROWSERS.push('safari >= 4');
+    }
 
     return gulp.src(["src/clarity-angular/main.scss"], {base: "src"})
         // Sourcemaps only for development
@@ -62,7 +66,7 @@ gulp.task("sass:static", function(){
         .pipe(prod ? util.noop() : sourcemaps.write({includeContent: false}))
         .pipe(prod ? util.noop() : sourcemaps.init({loadMaps: true}))
         .pipe(autoprefixer({
-                browsers: ['last 3 versions','ie 10','ie 11','> 5%','Firefox > 35','Chrome > 35'],
+                browsers: SUPPORTED_BROWSERS,
     			cascade: false
     		}))
         .pipe(concat(prod ? 'clarity-ui.min.css' : 'clarity-ui.css'))

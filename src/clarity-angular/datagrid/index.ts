@@ -18,6 +18,14 @@ import {DatagridPagination} from "./datagrid-pagination";
 import {DatagridRow} from "./datagrid-row";
 import {DatagridPlaceholder} from "./datagrid-placeholder";
 
+import {DatagridMainRenderer} from "./render/main-renderer";
+import {DatagridTableRenderer} from "./render/table-renderer";
+import {DatagridHeaderRenderer} from "./render/header-renderer";
+import {DatagridHeadRenderer} from "./render/head-renderer";
+import {DatagridBodyRenderer} from "./render/body-renderer";
+import {DatagridRowRenderer} from "./render/row-renderer";
+import {DatagridCellRenderer} from "./render/cell-renderer";
+
 export * from "./datagrid";
 export * from "./datagrid-action-bar";
 export * from "./datagrid-action-overflow";
@@ -52,6 +60,15 @@ export const DATAGRID_DIRECTIVES: Type<any>[] = [
     DatagridFooter,
     DatagridPagination,
     DatagridPlaceholder,
+
+    // Renderers
+    DatagridMainRenderer,
+    DatagridTableRenderer,
+    DatagridHeadRenderer,
+    DatagridHeaderRenderer,
+    DatagridBodyRenderer,
+    DatagridRowRenderer,
+    DatagridCellRenderer,
 
     // Built-in shortcuts
     DatagridStringFilter

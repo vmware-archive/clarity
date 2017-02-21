@@ -26,7 +26,16 @@ import DatagridRowSpecs from "./datagrid-row.spec";
 import DatagridPaginationSpecs from "./datagrid-pagination.spec";
 import DatagridFooterSpecs from "./datagrid-footer.spec";
 import DatagridSpecs from "./datagrid.spec";
-import NestedPropertySpec from "./built-in/nested-property.spec";
+import DomAdapterSpecs from "./render/dom-adapter.spec";
+import DatagridRenderOrganizerSpecs from "./render/render-organizer.spec";
+import DatagridCellRendererSpecs from "./render/cell-renderer.spec";
+import DatagridRowRendererSpecs from "./render/row-renderer.spec";
+import DatagridBodyRendererSpecs from "./render/body-renderer.spec";
+import DatagridHeaderRendererSpecs from "./render/header-renderer.spec";
+import DatagridHeadRendererSpecs from "./render/head-renderer.spec";
+import DatagridTableRendererSpecs from "./render/table-renderer.spec";
+import DatagridMainRendererSpecs from "./render/main-renderer.spec";
+import NestedPropertySpecs from "./built-in/nested-property.spec";
 import DatagridPropertyComparatorSpecs from "./built-in/comparators/datagrid-property-comparator.spec";
 import DatagridPropertyStringFilterSpecs from "./built-in/filters/datagrid-property-string-filter.spec";
 import DatagridStringFilterSpecs from "./built-in/filters/datagrid-string-filter.spec";
@@ -55,8 +64,19 @@ describe("Datagrid", function() {
         DatagridPlaceholderSpecs();
         DatagridSpecs();
     });
+    describe("Render", function() {
+        DomAdapterSpecs();
+        DatagridRenderOrganizerSpecs();
+        DatagridCellRendererSpecs();
+        DatagridRowRendererSpecs();
+        DatagridBodyRendererSpecs();
+        DatagridHeaderRendererSpecs();
+        DatagridHeadRendererSpecs();
+        DatagridTableRendererSpecs();
+        DatagridMainRendererSpecs();
+    });
     describe("Built-in", function() {
-        NestedPropertySpec();
+        NestedPropertySpecs();
         DatagridPropertyComparatorSpecs();
         DatagridPropertyStringFilterSpecs();
         DatagridStringFilterSpecs();

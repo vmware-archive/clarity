@@ -4,10 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
+import {TestBed} from "@angular/core/testing";
 import {TestContext} from "./helpers.spec";
 import {DatagridActionOverflow} from "./datagrid-action-overflow";
 import {RowActionService} from "./providers/row-action-service";
-import {TestBed} from "@angular/core/testing";
+import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 export default function(): void {
     describe("DatagridActionOverflow component", function() {
@@ -16,7 +17,7 @@ export default function(): void {
         let toggle: HTMLElement;
 
         beforeEach(function() {
-            context = this.create(DatagridActionOverflow, SimpleTest, [RowActionService]);
+            context = this.create(DatagridActionOverflow, SimpleTest, [RowActionService, DatagridRenderOrganizer]);
             rowActionServiceProvider = TestBed.get(RowActionService);
             toggle = context.clarityElement.querySelector("clr-icon");
         });

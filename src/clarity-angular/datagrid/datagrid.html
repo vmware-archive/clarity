@@ -4,30 +4,29 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<div class="datagrid-wrapper">
-    <div class="datagrid-content-wrapper">
-        <ng-content select="clr-dg-action-bar"></ng-content>
-        <div class="datagrid">
-            <div class="datagrid-head">
-                <div class="datagrid-row">
-                    <!-- header for datagrid where you can select multiple rows -->
-                    <div class="datagrid-column datagrid-select"
-                         *ngIf="selection.selectionType === SELECTION_TYPE.Multi">
+<ng-content select="clr-dg-action-bar"></ng-content>
+<div class="datagrid">
+    <div clrDgTableWrapper class="datagrid-table-wrapper">
+        <div clrDgHead class="datagrid-head">
+            <div class="datagrid-row">
+                <!-- header for datagrid where you can select multiple rows -->
+                <div class="datagrid-column datagrid-select"
+                     *ngIf="selection.selectionType === SELECTION_TYPE.Multi">
                         <span class="datagrid-column-title">
                             <clr-checkbox [(ngModel)]="allSelected"></clr-checkbox>
                         </span>
-                    </div>
-                    <!-- header for datagrid where you can select one row only -->
-                    <div class="datagrid-column datagrid-select"
-                         *ngIf="selection.selectionType === SELECTION_TYPE.Single">
-                    </div>
-                    <!-- header for single row action; only display if we have at least one actionable row in datagrid -->
-                    <div class="datagrid-column datagrid-row-actions" *ngIf="rowActionService.actionableCount > 0"></div>
-                    <ng-content select="clr-dg-column"></ng-content>
                 </div>
+                <!-- header for datagrid where you can select one row only -->
+                <div class="datagrid-column datagrid-select"
+                     *ngIf="selection.selectionType === SELECTION_TYPE.Single">
+                </div>
+                <!-- header for single row action; only display if we have at least one actionable row in datagrid -->
+                <div class="datagrid-column datagrid-row-actions" *ngIf="rowActionService.actionableCount > 0"></div>
+                <ng-content select="clr-dg-column"></ng-content>
             </div>
+        </div>
 
-        <div class="datagrid-body">
+        <div clrDgBody class="datagrid-body">
             <template *ngIf="iterator"
                       ngFor [ngForOf]="items.displayed" [ngForTrackBy]="iterator.trackBy"
                       [ngForTemplate]="iterator.template"></template>

@@ -3,6 +3,7 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @import "node_modules/bootstrap/scss/mixins";
+@import "../color/color.clarity";
 
 //Generates styles for elements with different styles in different cases from its corresponding map
 @mixin clr-getStylesFromMap($element-map,$element) {

@@ -17,20 +17,21 @@
 
 @import "./typography/fonts.clarity"; // no dependencies on other clarity scss
 
-@import "./utils/normalize.clarity"; // no dependencies on other clarity scss
-@import "./media/media.clarity"; //depends on variables.clarity
 @import "./images/icons.clarity"; // depeonds on variables.clarity
-@import "./utils/utilities.clarity"; // depends on variables.clarity, mixins.clarity
-@import "./images/images.clarity"; // depends on variables.clarity, mixins.clarity, icons.clarity
-@import "./typography/typography.clarity"; // depends on colors.clarity, color.clarity, variables.clarity, utilities.clarity
 
 /** Start BS4 **/
+@import "./utils/utilities.clarity"; // no dependencies on other clarity scss
+@import "./images/images.clarity"; // depends on variables.clarity, mixins.clarity, icons.clarity
+@import "./utils/normalize.clarity"; // no dependencies on other clarity scss
+@import "./media/media.clarity"; //no dependencies on other clarity scss
 @import "./responsive-embed/responsive-embed.clarity"; // no dependencies on other clarity scss
 @import "./list-group/list-group.clarity"; // no dependencies on other clarity scss
 @import "./navbar/navbar.clarity"; // no dependencies on other clarity scss
 @import "./custom-forms/custom-forms.clarity"; // depends on variables.clarity, mixins.clarity
 @import "./grid/grid.clarity"; // depends on variables.clarity, mixins.clarity
 /** End BS4 **/
+
+@import "./typography/typography.clarity"; // depends on colors.clarity, color.clarity, variables.clarity, utilities.clarity
 
 @import "./animations/animations.clarity"; // no dependencies on other clarity scss
 

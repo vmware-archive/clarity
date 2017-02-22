@@ -1,38 +1,14 @@
 // Copyright (c) 2016 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
-@import "../utils/variables.clarity";
+@import "./utils/form-variables";
 @import "../utils/mixins.clarity";
 @import "../utils/helpers.clarity";
 @import "../color/color.clarity";
 @import "../utils/layers.clarity";
 @import "../images/icons.clarity";
-
-$styledInputs: inputs("text", "password", "number", "email", "url", "tel", "date");
-$styledInputs1: inputs("button", "submit");
-
-$clr-form-field-border-color: $clr-dark-midtone-gray !default;
-$clr-form-field-background-color: $clr-action-blue-light-midtone !default;
-$clr-form-disabled-background-color: $clr-light-midtone-gray !default;
-$clr-form-field-disabled-color: $clr-gray !default;
-$clr-checkbox-radio-height: $clr-icon-dimension-sm !default;
-$clr-form-icon-dim: $clr-icon-dimension-sm !default;
-$clr-indeterminate-checkbox-border-color: $clr-action-blue-light-midtone !default;
-$clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height) / 2 !default;
-
-//Standard Clarity Input Bottom Border Animation
-@mixin input-border-bottom-animation($border-color: clr-getColor(light-midtone,action-blues)) {
-    // Border-bottom animation on focus
-    background: linear-gradient(to bottom, transparent 95%, $border-color 95%);
-    background-repeat: no-repeat;
-    background-size: 0% 100%;
-    transition: background-size 0.2s ease;
-
-    &:focus {
-        border-bottom: 1px solid $border-color;
-        background-size: 100% 100%;
-    }
-}
+@import "../typography/typography.clarity";
+@import "./utils/mixins";
 
 //Validation Tooltips Arrow Color
 @mixin vertical-tooltip-arrow-color($dirA:top,$dirB:right,$color:#000000) {
@@ -67,65 +43,12 @@ $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height
 }
 
 @include exports('forms.clarity') {
-    //Styling for #styledInputs and select
-    %custom-inputs {
-        @include clr-appearance-normal();
-        margin: 0;
-        padding: 0;
-        border: none;
-        border-radius: 0;
-        box-shadow: none;
-        background: none;
-        height: $clr_baselineRem_1;
-
-        &:focus {
-            outline: 0;
-        }
-    }
-
-    %clr-form-fields-appearance {
-        display: inline-block;
-        border-bottom: 1px solid $clr-form-field-border-color;
-        min-width: $clr_baselineRem_2_5;
-    }
-
-    %checkbox-radio-input-styles {
-        position: absolute;
-        height: $clr-checkbox-radio-height;
-        width: $clr-checkbox-radio-height;
-        top: $clr-custom-checkbox-radio-top;
-        left: 0;
-        opacity: 0;
-    }
-
-    %checkbox-radio-label-styles {
-        display: inline-block;
-        min-height: $clr_baselineRem_1;
-        position: relative;
-        cursor: pointer;
-        padding-left: $clr-checkbox-radio-height + $clr_baselineRem_0_25;
-    }
-
-    %checkbox-radio-shared-inactive {
-        position: absolute;
-        content: '';
-        left: 0;
-        top: $clr-custom-checkbox-radio-top;
-        display: inline-block;
-        height: $clr-checkbox-radio-height;
-        width: $clr-checkbox-radio-height;
-        border: 1px solid $clr-form-field-border-color;
-    }
-
-    %form-fields-disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
 
     // added `.form` class because we may not always have proper HTML with form fields within a form.
     // there may be weird cases where we have form fields inside a div or li tag with no wrapping form.
     // that's bad, i know. but webdevs do it.
-    form, .form {
+    form,
+    .form {
         padding-top: $clr_baselineRem_0_5;
 
         label, span {
@@ -255,7 +178,11 @@ $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height
                 }
             }
 
-            .radio, .checkbox, .radio-inline, .checkbox-inline, .toggle-switch {
+            .radio,
+            .checkbox,
+            .radio-inline,
+            .checkbox-inline,
+            .toggle-switch {
                 label {
                     margin-top: 0;
                     margin-bottom: 0;
@@ -304,232 +231,6 @@ $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height
                     }
                 }
             }
-        }
-    }
-
-    #{$styledInputs} {
-        @extend %custom-inputs;
-        @extend %clr-form-fields-appearance;
-        @include input-border-bottom-animation();
-        padding: 0 $clr_baselineRem_0_25;
-    }
-
-    #{$styledInputs},
-    #{$styledInputs1},
-    textarea {
-        &:disabled {
-            @extend %form-fields-disabled;
-        }
-    }
-
-    textarea {
-        resize: vertical;
-        width: 100%;
-        border: 1px solid $gray-light-midtone;
-        border-radius: $clr-default-borderradius;
-        padding: $clr_baselineRem_0_5 $clr_baselineRem_0_25;
-
-        &:focus {
-            @include include-outline-style-form-fields();
-        }
-    }
-
-    .select {
-        position: relative;
-        $select-hover-background: rgba(221, 221, 221, 0.5);
-        $select-after-color: $gray-dark-midtone;
-        $select-after-hover-color: $gray-dark;
-        height: $clr_baselineRem_1;
-
-        select {
-            @extend %custom-inputs;
-            @extend %clr-form-fields-appearance;
-            @include input-border-bottom-animation();
-
-            position: relative;
-            padding: 0 ($clr-dropdown-caret-icon-dimension + 2 * $clr_baselineRem_0_25) 0 $clr_baselineRem_0_25;
-            cursor: pointer;
-            width: 100%;
-            //Moves the :after pseudo element (arrow) to the back so that clicking over it activates
-            //the dropdown.
-            z-index: map-get($clr-layers, select-box);
-
-            &:hover,
-            &:active {
-                border-color: $select-hover-background;
-                background: $select-hover-background;
-            }
-
-            &:disabled {
-                @extend %form-fields-disabled;
-            }
-        }
-
-        //Remove default arrow from IE
-        select::-ms-expand {
-            display: none;
-        }
-
-        //Selectbox custom arrow
-        &::after {
-            position: absolute;
-            content: '';
-            height: $clr-dropdown-caret-icon-dimension;
-            width: $clr-dropdown-caret-icon-dimension;
-            top: ($clr_baselineRem_1 - $clr-dropdown-caret-icon-dimension) / 2;
-            right: $clr_baselineRem_0_25;
-            background-image: generateCaretIcon();
-            @include icon-background-styles();
-            margin: 0;
-        }
-
-        &:hover::after {
-            color: $select-after-hover-color;
-        }
-
-        &.disabled {
-            @extend %form-fields-disabled;
-
-            &:hover::after {
-                color: $select-after-color;
-            }
-        }
-
-        &.disabled > select, select:disabled {
-            @extend %form-fields-disabled;
-
-            &:hover {
-                background: none;
-                border-color: $clr-form-field-border-color;
-            }
-        }
-    }
-
-    .checkbox, .checkbox-inline {
-        position: relative;
-
-        //Hide the default checkbox behind the pseudo elements
-        //Opacity is set to 0 so that the input remains accessible
-        input[type="checkbox"] {
-            @extend %checkbox-radio-input-styles;
-        }
-
-        label {
-            @extend %checkbox-radio-label-styles;
-        }
-
-        //Checkbox base
-        input[type="checkbox"] + label::before {
-            @extend %checkbox-radio-shared-inactive;
-            border-radius: $clr-default-borderradius;
-        }
-
-        input[type="checkbox"]:focus + label::before {
-            @include include-outline-style-form-fields();
-        }
-
-        //Checkmark
-        input[type="checkbox"] + label::after {
-            position: absolute;
-            content: '';
-            display: none;
-            height: ($clr-checkbox-radio-height / 4 + 1);
-            width: $clr-checkbox-radio-height / 2;
-            border-left: 2px solid white;
-            border-bottom: 2px solid white;
-            top: ($clr_baselineRem_1 - $clr-checkbox-radio-height) / 2;
-            left: $clr-checkbox-radio-height / 4;
-            transform: translate(0, $clr-checkbox-radio-height/4) rotate(-45deg);
-        }
-
-        input[type="checkbox"]:checked + label::before {
-            background: $clr-form-field-background-color;
-            border: none;
-        }
-
-        input[type="checkbox"]:checked + label::after {
-            display: inline-block;
-        }
-
-        input[type="checkbox"]:indeterminate + label::before {
-            border: 1px solid $clr-indeterminate-checkbox-border-color;
-        }
-        input[type="checkbox"]:indeterminate + label::after {
-            border-left: none;
-            border-bottom-color: $clr-indeterminate-checkbox-border-color;
-            display: inline-block;
-            transform: translate(0, $clr-checkbox-radio-height/4);
-        }
-
-        &.disabled {
-            label {
-                @extend %form-fields-disabled;
-            }
-
-            input[type="checkbox"]:checked + label::before {
-                background-color: $clr-form-disabled-background-color;
-            }
-
-            input[type="checkbox"]:checked + label::after {
-                $disabled-border-style: 2px solid $clr-form-field-disabled-color;
-                border-left: $disabled-border-style;
-                border-bottom: $disabled-border-style;
-            }
-        }
-    }
-
-    .radio, .radio-inline {
-        position: relative;
-
-        //Hide the default radio
-        input[type="radio"] {
-            @extend %checkbox-radio-input-styles;
-        }
-
-        label {
-            @extend %checkbox-radio-label-styles;
-        }
-
-        //Radio button base
-        input[type="radio"] + label::before {
-            @extend %checkbox-radio-shared-inactive;
-            border-radius: 50%;
-        }
-
-        //Checked Radio Styles
-        input[type="radio"]:checked + label::before {
-            box-shadow: inset 0 0 0 $clr_baselineRem_0_25 $clr-form-field-background-color;
-            border: none;
-        }
-
-        //Outline color for unchecked radios
-        input[type="radio"]:focus + label::before {
-            outline: 0;
-            box-shadow: 0 0 $clr-outline-blur $clr-outline-spread $clr-outline-color;
-        }
-
-        //Outline color for checked radios
-        input[type="radio"]:focus:checked + label::before {
-            outline: 0;
-            box-shadow: inset 0 0 0 $clr_baselineRem_0_25 $clr-form-field-background-color,
-            0 0 $clr-outline-blur $clr-outline-spread $clr-outline-color;
-        }
-
-        &.disabled {
-            label {
-                @extend %form-fields-disabled;
-            }
-
-            input[type="radio"]:checked + label::before {
-                background-color: $clr-form-disabled-background-color;
-                box-shadow: inset 0 0 0 $clr_baselineRem_0_25 $clr-form-field-disabled-color;
-            }
-        }
-    }
-
-    .toggle-switch {
-        label {
-            margin-bottom: 0;
         }
     }
 
@@ -638,7 +339,8 @@ $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height
         }
     }
 
-    form, .form {
+    form,
+    .form {
         &.compact {
             .form-block {
                 margin: $clr_baselineRem_0_5 0 $clr_baselineRem_1 0;

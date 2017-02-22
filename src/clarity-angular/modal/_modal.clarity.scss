@@ -14,119 +14,122 @@ $clr-modal-md-width: baselineRem(24) !default;
 $clr-modal-lg-width: baselineRem(36) !default;
 $clr-modal-xl-width: baselineRem(48) !default;
 
-.modal {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: map-get($clr-layers, modal);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: $clr_baselineRem_2;
 
-    @media screen and (max-width: map-get($clr-breakpoints, small)) {
-        padding: $clr_baselineRem_0_5;
-    }
-}
+@include exports("modal.clarity") {
+    .modal {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: map-get($clr-layers, modal);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: $clr_baselineRem_2;
 
-.modal-dialog {
-    position: relative;
-    z-index: map-get($clr-layers, modal);
-    width: $clr-modal-md-width;
-    max-width: 100%;
-
-    &.modal-sm {
-        width: $clr-modal-sm-width;
+        @media screen and (max-width: map-get($clr-breakpoints, small)) {
+            padding: $clr_baselineRem_0_5;
+        }
     }
 
-    &.modal-lg {
-        width: $clr-modal-lg-width;
-    }
+    .modal-dialog {
+        position: relative;
+        z-index: map-get($clr-layers, modal);
+        width: $clr-modal-md-width;
+        max-width: 100%;
 
-    &.modal-xl {
-        width: $clr-modal-xl-width;
-    }
+        &.modal-sm {
+            width: $clr-modal-sm-width;
+        }
 
-    $modal-boxshadow-y: 1px;
-    $modal-boxshadow-spread: 2px;
+        &.modal-lg {
+            width: $clr-modal-lg-width;
+        }
 
-    .modal-content {
-        padding: $clr-modal-content-padding-top $clr-modal-content-padding-right $clr-modal-content-padding-bottom $clr-modal-content-padding-left;
-        background-color: clr-getColor(lightest);
-        border-radius: $clr-default-borderradius;
-        box-shadow: 0 $modal-boxshadow-y $modal-boxshadow-spread $modal-boxshadow-spread rgba(0, 0, 0, 0.2);
+        &.modal-xl {
+            width: $clr-modal-xl-width;
+        }
 
-        .modal-header {
-            border-bottom: none;
-            padding: 0 0 $clr_baselineRem_1 0;
+        $modal-boxshadow-y: 1px;
+        $modal-boxshadow-spread: 2px;
 
-            .modal-title {
-                @include clr-getTypePropertiesForDomElement(modal_header, (color, font-size, font-family, font-weight, line-height, letter-spacing));
-                margin: 0;
-                padding: 0;
+        .modal-content {
+            padding: $clr-modal-content-padding-top $clr-modal-content-padding-right $clr-modal-content-padding-bottom $clr-modal-content-padding-left;
+            background-color: clr-getColor(lightest);
+            border-radius: $clr-default-borderradius;
+            box-shadow: 0 $modal-boxshadow-y $modal-boxshadow-spread $modal-boxshadow-spread rgba(0, 0, 0, 0.2);
+
+            .modal-header {
+                border-bottom: none;
+                padding: 0 0 $clr_baselineRem_1 0;
+
+                .modal-title {
+                    @include clr-getTypePropertiesForDomElement(modal_header, (color, font-size, font-family, font-weight, line-height, letter-spacing));
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .close {
+                    margin-top: 0;
+                    font-size: rem(26/$clr-rem-denominator);
+                    line-height: $clr_baselineRem_1;
+
+                    clr-icon {
+                        // per measurement, this results in an icon that is 16x16...
+                        width: $clr_baselineRem_1;
+                        height: $clr_baselineRem_1;
+                    }
+                }
             }
 
-            .close {
-                margin-top: 0;
-                font-size: rem(26/$clr-rem-denominator);
-                line-height: $clr_baselineRem_1;
+            .modal-body {
+                // This doesn't do much, but at least with several paragraphs in the content
+                // it doesn't mess up the modal's proportions.
+                max-height: 55vh;
+                overflow-y: auto;
+                overflow-x: hidden;
 
-                clr-icon {
-                    // per measurement, this results in an icon that is 16x16...
-                    width: $clr_baselineRem_1;
-                    height: $clr_baselineRem_1;
+                @extend %clr-container;
+            }
+
+            .modal-footer {
+                display: flex;
+                justify-content: flex-end;
+                padding: $clr_baselineRem_1 0 0 0;
+
+                .btn {
+                    //switched right margin to left because footer is right aligned
+                    margin: 0 0 0 $clr_baselineRem_0_5;
                 }
             }
         }
 
-        .modal-body {
-            // This doesn't do much, but at least with several paragraphs in the content
-            // it doesn't mess up the modal's proportions.
-            max-height: 55vh;
-            overflow-y: auto;
-            overflow-x: hidden;
+        @media screen and (max-width: map-get($clr-breakpoints, small)) {
+            .modal-content {
+                padding: $clr_baselineRem_0_5 0 $clr_baselineRem_0_5 $clr_baselineRem_1;
 
-            @extend %clr-container;
-        }
+                .modal-header {
+                    padding: 0 $clr_baselineRem_1 $clr_baselineRem_0_5 0;
+                }
 
-        .modal-footer {
-            display: flex;
-            justify-content: flex-end;
-            padding: $clr_baselineRem_1 0 0 0;
-
-            .btn {
-                //switched right margin to left because footer is right aligned
-                margin: 0 0 0 $clr_baselineRem_0_5;
+                .modal-footer {
+                    padding: $clr_baselineRem_0_5 $clr_baselineRem_1 0 0;
+                }
             }
         }
     }
 
-    @media screen and (max-width: map-get($clr-breakpoints, small)) {
-        .modal-content {
-            padding: $clr_baselineRem_0_5 0 $clr_baselineRem_0_5 $clr_baselineRem_1;
-
-            .modal-header {
-                padding: 0 $clr_baselineRem_1 $clr_baselineRem_0_5 0;
-            }
-
-            .modal-footer {
-                padding: $clr_baselineRem_0_5 $clr_baselineRem_1 0 0;
-            }
-        }
+    .modal-backdrop {
+        $clr-backdrop-opacity: 0.85;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: clr-getColor(darkest);
+        opacity: $clr-backdrop-opacity;
+        z-index: map-get($clr-layers, modal-bg);
     }
-}
-
-.modal-backdrop {
-    $clr-backdrop-opacity: 0.85;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-color: clr-getColor(darkest);
-    opacity: $clr-backdrop-opacity;
-    z-index: map-get($clr-layers, modal-bg);
 }

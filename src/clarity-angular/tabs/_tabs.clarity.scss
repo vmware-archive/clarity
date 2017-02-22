@@ -5,6 +5,12 @@
 @import "../utils/mixins.clarity";
 
 @include exports('tabs.clarity') {
+  @media screen {
+    section[aria-hidden="true"] {
+      display: none;
+    }
+  }
+
   [data-hidden="true"] {
     display: none;
   }

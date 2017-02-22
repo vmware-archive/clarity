@@ -47,7 +47,11 @@
 @import "./tables/tables.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, typography.clarity
 @import "./tree-view/tree-view.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, forms.clarity
 @import "./tooltips/tooltips.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity
-@import "./forms/forms.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity, icons.clarity
+@import "./forms/inputs.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
+@import "./forms/checkbox.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
+@import "./forms/radio.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
+@import "./forms/select.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity, icons.clarity, images.clarity
+@import "./forms/forms.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
 @import "./datagrid/datagrid.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, layers, icons.clarity, tables.clarity
 @import "./animations/animations.clarity"; // no dependencies on other clarity scss
 @import "./tabs/tabs.clarity"; // no dependencies on other clarity scss

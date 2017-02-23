@@ -108,6 +108,9 @@ export class Page {
      * Index of the first item displayed on the current page, starting at 0
      */
     public get firstItem(): number {
+        if (this.totalItems === 0) {
+            return -1;
+        }
         if (this.size === 0) {
             return 0;
         }
@@ -118,6 +121,9 @@ export class Page {
      * Index of the last item displayed on the current page, starting at 0
      */
     public get lastItem(): number {
+        if (this.totalItems === 0) {
+            return -1;
+        }
         if (this.size === 0) {
             return this.totalItems - 1;
         }

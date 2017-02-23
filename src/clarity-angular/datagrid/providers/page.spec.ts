@@ -25,6 +25,13 @@ export default function(): void {
             expect(this.pageInstance.last).toBe(5);
         });
 
+        it("has firstItem and lastItem -1 when totalItems are 0", function() {
+            this.pageInstance.size = 10;
+            this.pageInstance.totalItems = 0;
+            expect(this.pageInstance.firstItem).toBe(-1);
+            expect(this.pageInstance.firstItem).toBe(-1);
+        });
+
         it("computes the indexes of the first and last displayed items", function() {
             this.pageInstance.size = 10;
             this.pageInstance.totalItems = 42;

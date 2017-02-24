@@ -6,7 +6,7 @@ $clr-nav-shadow: 0 -1px 0 $gray-light-midtone inset;
 $clr-active-nav-link-shadow: 0 -3px 0 $action-blues-dark-midtone inset;
 
 @include exports('nav.clarity') {
-    .nav {
+    .nav {  // is a ul this may not work the way I expected it to.
         display: flex; //For the elements inside the nav
         height: $clr-subnav-height;
         list-style-type: none;

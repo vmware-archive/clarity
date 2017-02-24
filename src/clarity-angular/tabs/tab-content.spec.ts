@@ -18,25 +18,27 @@ class TestComponent {
     @ViewChildren(TabContent) tabContentChildren: QueryList<TabContent>;
 }
 
-describe("TabContent", () => {
-    let fixture: ComponentFixture<any>;
-    let compiled: any;
+export default function (): void {
+    describe("TabContent", () => {
+        let fixture: ComponentFixture<any>;
+        let compiled: any;
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [ClarityModule.forRoot()],
-            declarations: [TestComponent]
+        beforeEach(() => {
+            TestBed.configureTestingModule({
+                imports: [ClarityModule.forRoot()],
+                declarations: [TestComponent]
+            });
+            fixture = TestBed.createComponent(TestComponent);
+            fixture.detectChanges();
+            compiled = fixture.nativeElement;
         });
-        fixture = TestBed.createComponent(TestComponent);
-        fixture.detectChanges();
-        compiled = fixture.nativeElement;
+
+        it("initializes the correct property values", () => {
+            let tabContents: TabContent[] = fixture.componentInstance.tabContentChildren.toArray();
+
+            expect(tabContents[0].active).toEqual(true);
+            expect(tabContents[1].active).toEqual(false);
+        });
+
     });
-
-    it("initializes the correct property values", () => {
-        let tabContents: TabContent[] = fixture.componentInstance.tabContentChildren.toArray();
-
-        expect(tabContents[0].active).toEqual(true);
-        expect(tabContents[1].active).toEqual(false);
-    });
-
-});
+}

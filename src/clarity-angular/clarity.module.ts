@@ -56,7 +56,7 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
         TABS_DIRECTIVES,
         TREE_VIEW_DIRECTIVES,
         WIZARD_DIRECTIVES,
-        ICON_DIRECTIVES
+        ICON_DIRECTIVES,
     ]
 })
 export class ClarityModule {

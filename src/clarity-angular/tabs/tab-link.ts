@@ -34,5 +34,4 @@ export class TabLink {
         this.tabs.selectTab(this);
         return false; // so that browser doesn't navigate to the href of the anchor tag
     }
-
 }

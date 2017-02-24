@@ -16,7 +16,5 @@ import {Selection} from "./providers/selection";
     }
 })
 export class DatagridActionBar {
-
     constructor(public selection: Selection) {}
-
 }

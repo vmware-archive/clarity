@@ -1,0 +1,181 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+    <h4>Vertical Tabs with No Navigation Group Headers</h4>
+    <clr-vtabs (clrVTabsNavChange)="handleVTabsNavChange($event)">
+        <clr-vtabs-nav-link>The Gunslinger</clr-vtabs-nav-link>
+        <clr-vtabs-nav-link [clrActivatedNavLink]="true">The Wastelands</clr-vtabs-nav-link>
+        <clr-vtabs-nav-link>Mid-World</clr-vtabs-nav-link>
+        <clr-vtabs-nav-link>End-world</clr-vtabs-nav-link>
+        <clr-vtabs-content>
+            <p>The Gunslinger Content</p>
+            <p>The <a href="javascript://">man in black</a> fled across the desert, and the gunslinger followed.</p>
+        </clr-vtabs-content>
+        <clr-vtabs-content>
+            <p>The Wastelands Content</p>
+            <p>"All is silent in the halls of the dead."Eddie heard himself in a falling,
+                fainting voice. "All is forgotten in the stone halls of the dead. Behold the stairways which stand in
+                darkness; behold the <a href="javascript://">rooms of ruin</a>. These are the halls of the dead where
+                spiders spin and the great
+                circuits fall quiet, one by one.</p>
+        </clr-vtabs-content>
+        <clr-vtabs-content>
+            <p>Mid-World Content</p>
+        </clr-vtabs-content>
+        <clr-vtabs-content>
+            <p>End-world Content</p>
+        </clr-vtabs-content>
+    </clr-vtabs>
+
+    <pre>
+    <code clr-code-highlight="language-html">
+        &lt;clr-vtabs (clrVTabsNavChange)="handleVTabsNavChange($event)"&gt;
+            &lt;clr-vtabs-nav-link&gt;The Gunslinger&lt;/clr-vtabs-nav-link&gt;
+            &lt;clr-vtabs-nav-link [clrActivatedNavLink]="true"&gt;The Wastelands&lt;/clr-vtabs-nav-link&gt;
+            &lt;clr-vtabs-nav-link&gt;Mid-World&lt;/clr-vtabs-nav-link&gt;
+            &lt;clr-vtabs-nav-link&gt;End-world&lt;/clr-vtabs-nav-link&gt;
+            &lt;clr-vtabs-content&gt;
+                &lt;p&gt;The Gunslinger Content&lt;/p&gt;
+                &lt;p&gt;The &lt;a href="javascript://"&gt;man in black&lt;/a&gt; fled across the desert, and the gunslinger followed.&lt;/p&gt;
+            &lt;/clr-vtabs-content&gt;
+            &lt;clr-vtabs-content&gt;
+                &lt;p&gt;The Wastelands Content&lt;/p&gt;
+                &lt;p&gt;"All is silent in the halls of the dead."Eddie heard himself in a falling,
+                    fainting voice. "All is forgotten in the stone halls of the dead. Behold the stairways which stand in
+                    darkness; behold the &lt;a href="javascript://"&gt;rooms of ruin&lt;/a&gt;. These are the halls of the dead where
+                    spiders spin and the great
+                    circuits fall quiet, one by one.&lt;/p&gt;
+            &lt;/clr-vtabs-content&gt;
+            &lt;clr-vtabs-content&gt;
+                &lt;p&gt;Mid-World Content&lt;/p&gt;
+            &lt;/clr-vtabs-content&gt;
+            &lt;clr-vtabs-content&gt;
+                &lt;p&gt;End-world Content&lt;/p&gt;
+            &lt;/clr-vtabs-content&gt;
+        &lt;/clr-vtabs&gt;
+    </code>
+</pre>
+
+    <h4>Vertical Tabs with Navigation Group Headers</h4>
+    <clr-vtabs (clrVTabsContentChange)="handleVTabsContentChange($event)">
+        <clr-vtabs-nav-group>
+            <label class="nav-group-header">Books</label>
+            <clr-vtabs-nav-link>The Gunslinger</clr-vtabs-nav-link>
+            <clr-vtabs-nav-link>The Wastelands</clr-vtabs-nav-link>
+        </clr-vtabs-nav-group>
+        <clr-vtabs-nav-group>
+            <clr-vtabs-nav-link>Mid-World</clr-vtabs-nav-link>
+            <clr-vtabs-nav-link>End-world</clr-vtabs-nav-link>
+        </clr-vtabs-nav-group>
+        <clr-vtabs-content>
+            <p>The Gunslinger Content</p>
+            <p>The <a href="javascript://">man in black</a> fled across the desert, and the gunslinger followed.</p>
+        </clr-vtabs-content>
+        <clr-vtabs-content>
+            <p>The Wastelands Content</p>
+            <p>"All is silent in the halls of the dead."Eddie heard himself in a falling,
+                fainting voice. "All is forgotten in the stone halls of the dead. Behold the stairways which stand in
+                darkness; behold the <a href="javascript://">rooms of ruin</a>. These are the halls of the dead where
+                spiders spin and the great
+                circuits fall quiet, one by one.</p>
+        </clr-vtabs-content>
+        <clr-vtabs-content>
+            <p>Mid-World Content</p>
+        </clr-vtabs-content>
+        <clr-vtabs-content>
+            <p>End-world Content</p>
+        </clr-vtabs-content>
+    </clr-vtabs>
+
+    <pre>
+    <code clr-code-highlight="language-html">
+       &lt;clr-vtabs (clrVTabsContentChange)="handleVTabsContentChange($event)"&gt;
+            &lt;clr-vtabs-nav-group&gt;
+                &lt;label class="nav-group-header"&gt;Books&lt;/label&gt;
+                &lt;clr-vtabs-nav-link&gt;The Gunslinger&lt;/clr-vtabs-nav-link&gt;
+                &lt;clr-vtabs-nav-link&gt;The Wastelands&lt;/clr-vtabs-nav-link&gt;
+            &lt;/clr-vtabs-nav-group&gt;
+            &lt;clr-vtabs-nav-group&gt;
+                &lt;clr-vtabs-nav-link&gt;Mid-World&lt;/clr-vtabs-nav-link&gt;
+                &lt;clr-vtabs-nav-link&gt;End-world&lt;/clr-vtabs-nav-link&gt;
+            &lt;/clr-vtabs-nav-group&gt;
+            &lt;clr-vtabs-content&gt;
+                &lt;p&gt;The Gunslinger Content&lt;/p&gt;
+                &lt;p&gt;The &lt;a href="javascript://"&gt;man in black&lt;/a&gt; fled across the desert, and the gunslinger followed.&lt;/p&gt;
+            &lt;/clr-vtabs-content&gt;
+            &lt;clr-vtabs-content&gt;
+                &lt;p&gt;The Wastelands Content&lt;/p&gt;
+                &lt;p&gt;"All is silent in the halls of the dead."Eddie heard himself in a falling,
+                    fainting voice. "All is forgotten in the stone halls of the dead. Behold the stairways which stand in
+                    darkness; behold the &lt;a href="javascript://"&gt;rooms of ruin&lt;/a&gt;. These are the halls of the dead where
+                    spiders spin and the great
+                    circuits fall quiet, one by one.&lt;/p&gt;
+            &lt;/clr-vtabs-content&gt;
+            &lt;clr-vtabs-content&gt;
+                &lt;p&gt;Mid-World Content&lt;/p&gt;
+            &lt;/clr-vtabs-content&gt;
+            &lt;clr-vtabs-content&gt;
+                &lt;p&gt;End-world Content&lt;/p&gt;
+            &lt;/clr-vtabs-content&gt;
+        &lt;/clr-vtabs&gt;
+    </code>
+    </pre>
+
+    <h4>Vertical Tabs with Navigation Groups Headers (Reversed)</h4>
+    <clr-vtabs [clrReversed]="true">
+        <clr-vtabs-nav-group>
+            <label class="nav-group-header">Books</label>
+            <clr-vtabs-nav-link>The Gunslinger</clr-vtabs-nav-link>
+            <clr-vtabs-nav-link>The Wastelands</clr-vtabs-nav-link>
+        </clr-vtabs-nav-group>
+        <clr-vtabs-nav-group>
+            <clr-vtabs-nav-link [clrActivatedNavLink]="true">Mid-World</clr-vtabs-nav-link>
+            <clr-vtabs-nav-link>End-world</clr-vtabs-nav-link>
+        </clr-vtabs-nav-group>
+        <clr-vtabs-content>
+            <p>The Gunslinger Content</p>
+        </clr-vtabs-content>
+        <clr-vtabs-content>
+            <p>The Wastelands Content</p>
+        </clr-vtabs-content>
+        <clr-vtabs-content>
+            <p>Mid-World Content</p>
+        </clr-vtabs-content>
+        <clr-vtabs-content>
+            <p>End-world Content</p>
+        </clr-vtabs-content>
+    </clr-vtabs>
+
+    <pre>
+    <code clr-code-highlight="language-html">
+        &lt;clr-vtabs [clrReversed]="true"&gt;
+            &lt;clr-vtabs-nav-group&gt;
+                &lt;label class="nav-group-header"&gt;Books&lt;/label&gt;
+                &lt;clr-vtabs-nav-link&gt;The Gunslinger&lt;/clr-vtabs-nav-link&gt;
+                &lt;clr-vtabs-nav-link&gt;The Wastelands&lt;/clr-vtabs-nav-link&gt;
+            &lt;/clr-vtabs-nav-group&gt;
+            &lt;clr-vtabs-nav-group&gt;
+                &lt;clr-vtabs-nav-link [clrActivatedNavLink]="true"&gt;Mid-World&lt;/clr-vtabs-nav-link&gt;
+                &lt;clr-vtabs-nav-link&gt;End-world&lt;/clr-vtabs-nav-link&gt;
+            &lt;/clr-vtabs-nav-group&gt;
+            &lt;clr-vtabs-content&gt;
+                &lt;p&gt;The Gunslinger Content&lt;/p&gt;
+            &lt;/clr-vtabs-content&gt;
+            &lt;clr-vtabs-content&gt;
+                &lt;p&gt;The Wastelands Content&lt;/p&gt;
+            &lt;/clr-vtabs-content&gt;
+            &lt;clr-vtabs-content&gt;
+                &lt;p&gt;Mid-World Content&lt;/p&gt;
+            &lt;/clr-vtabs-content&gt;
+            &lt;clr-vtabs-content&gt;
+                &lt;p&gt;End-world Content&lt;/p&gt;
+            &lt;/clr-vtabs-content&gt;
+        &lt;/clr-vtabs&gt;
+    </code>
+    </pre>
+</div>
+

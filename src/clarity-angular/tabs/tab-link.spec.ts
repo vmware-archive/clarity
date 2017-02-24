@@ -19,31 +19,33 @@ class TestComponent {
     @ViewChildren(TabLink) tabLinkChildren: QueryList<TabLink>;
 }
 
-describe("TabLink", () => {
-    let fixture: ComponentFixture<any>;
-    let compiled: any;
+export default function (): void {
+    describe("TabLink", () => {
+        let fixture: ComponentFixture<any>;
+        let compiled: any;
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [ClarityModule.forRoot()],
-            declarations: [TestComponent],
-            providers: [TABS_DIRECTIVES]
+        beforeEach(() => {
+            TestBed.configureTestingModule({
+                imports: [ClarityModule.forRoot()],
+                declarations: [TestComponent],
+                providers: [TABS_DIRECTIVES]
+            });
+
+            fixture = TestBed.createComponent(TestComponent);
+            fixture.detectChanges();
+            compiled = fixture.nativeElement;
         });
 
-        fixture = TestBed.createComponent(TestComponent);
-        fixture.detectChanges();
-        compiled = fixture.nativeElement;
-    });
+        it("has the correct css classes", () => {
+            expect(compiled.querySelector(".nav-item")).not.toBeNull();
+            expect(compiled.querySelector(".nav-link")).not.toBeNull();
+        });
 
-    it("has the correct css classes", () => {
-        expect(compiled.querySelector(".nav-item")).not.toBeNull();
-        expect(compiled.querySelector(".nav-link")).not.toBeNull();
-    });
+        it("initializes the correct property values", () => {
+            let tabLinks: TabLink[] = fixture.componentInstance.tabLinkChildren.toArray();
 
-    it("initializes the correct property values", () => {
-        let tabLinks: TabLink[] = fixture.componentInstance.tabLinkChildren.toArray();
-
-        expect(tabLinks[0].active).toEqual(true);
-        expect(tabLinks[1].active).toEqual(false);
+            expect(tabLinks[0].active).toEqual(true);
+            expect(tabLinks[1].active).toEqual(false);
+        });
     });
-});
+}

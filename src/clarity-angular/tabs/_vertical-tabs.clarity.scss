@@ -1,0 +1,84 @@
+// Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import "../utils/variables.clarity";
+@import "../utils/mixins.clarity";
+@import "../utils/helpers.clarity";
+@import "../color/color.clarity";
+@import "../typography/typography.clarity";
+@import "../images/icons.clarity";
+
+
+.vtabs {
+    display: flex;
+    flex-direction: row;
+
+    &.is-reversed {
+        flex-direction: row-reverse;
+    }
+
+    &-nav {
+        flex: 0 180px;
+        padding-right: 12px;
+    }
+
+    &-content {
+        flex: 1;
+    }
+
+    .nav-group {
+        $navlink-padding: 4px;
+        color: $gray-dark;
+        margin-top: 24px;
+
+        .nav-group-header {
+            @include clr-getTypePropertiesForDomElement(nav_group_header, (font-size, font-weight));
+            padding-left: 9px;
+        }
+
+        .nav-list {
+            list-style-type: none;
+            .nav-link {
+                display: inline-block;
+                width: 100%;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    color: inherit;
+                }
+
+                &:hover {
+                    background-color: $gray-light;
+                    color: $clr-black;
+                    outline: 0;
+                    transition: 0.2s ease-in;
+                    cursor: pointer;
+                }
+                &.active {
+                    background-color: $gray-light;
+                    box-shadow: 3px 0 0 0 $action-blues-dark-midtone inset;
+                    color: $clr-black;
+                    outline: 0;
+                    transition: box-shadow 0.2s ease-in;
+                }
+
+                &:hover,
+                &:focus,
+                &:active,
+                &.active {
+                    text-decoration: none;
+                }
+
+                .btn.btn-link { // Overrides for vertical tabs specific style
+                    height: 24px;
+                    line-height: 24px;
+                    text-transform: capitalize;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

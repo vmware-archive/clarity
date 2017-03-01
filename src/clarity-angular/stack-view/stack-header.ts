@@ -30,7 +30,7 @@ import {StackView} from "./stack-view";
 })
 export class StackHeader {
 
-    constructor(private stackView: StackView) {
+    constructor(public stackView: StackView) {
     }
 
 }

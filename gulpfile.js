@@ -58,6 +58,7 @@ gulp.task("test", function (callback) {
     return runSequence(
         'build',
         'karma:verbose',
+        'aot:test',
         callback
     );
 });

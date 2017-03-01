@@ -30,7 +30,7 @@ import {RowActionService} from "./providers/row-action-service";
 })
 export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
 
-    constructor(private selection: Selection, private sort: Sort, private filters: FiltersProvider,
+    constructor(public selection: Selection, private sort: Sort, private filters: FiltersProvider,
                 private page: Page, public rowActionService: RowActionService, public items: Items) {}
 
     /* reference to the enum so that template can access */

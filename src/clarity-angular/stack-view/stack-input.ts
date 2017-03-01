@@ -26,7 +26,7 @@ import {StackView} from "./stack-view";
 export class StackInput extends StackControl {
     type: string = "text";
 
-    constructor(stackView: StackView) {
+    constructor(public stackView: StackView) {
         super(stackView);
     }
 }

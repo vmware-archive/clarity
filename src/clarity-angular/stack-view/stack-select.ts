@@ -28,7 +28,7 @@ import {StackView} from "./stack-view";
 })
 export class StackSelect extends StackControl {
 
-    constructor(stackView: StackView) {
+    constructor(public stackView: StackView) {
         super(stackView);
     }
 }

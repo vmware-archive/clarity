@@ -18,6 +18,7 @@ import {EXAMPLES} from "./examples";
 export class DatagridFilteringDemo {
     examples = EXAMPLES;
     users: User[];
+    myFilterValue = "A";
 
     constructor(private inventory: Inventory) {
         inventory.size = 10;

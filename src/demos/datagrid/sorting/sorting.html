@@ -62,6 +62,11 @@
     </div>
 </div>
 <p>
+    <code class="clr-code">&lt;clr-dg-column&gt;</code> also offers a <code class="clr-code">[(clrDgSorted)]</code>
+    two-way binding to dynamically force a column to be sorted or not, typically on initialization. It also lets
+    consumers know if a column is sorted or not.
+</p>
+<p>
     In our example, everyone knows pokemons should not be sorted lexicographically, but according
     to Pok&eacute;dex number.
 </p>
@@ -71,7 +76,8 @@
     <clr-dg-column>Name</clr-dg-column>
     <clr-dg-column>Creation date</clr-dg-column>
     <clr-dg-column [clrDgField]="'pokemon.name'"
-                   [clrDgSortBy]="pokemonComparator">Pokemon</clr-dg-column>
+                   [clrDgSortBy]="pokemonComparator">Pokemon
+    </clr-dg-column>
     <clr-dg-column>Favorite color</clr-dg-column>
 
     <clr-dg-row *clrDgItems="let user of users">

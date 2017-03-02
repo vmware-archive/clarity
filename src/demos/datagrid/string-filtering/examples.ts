@@ -33,12 +33,15 @@ class MyComponent {
     private pokemonFilter = new PokemonFilter();
 }
 `,
-
     stringFilterHTML: `
 <-- In the columns declaration -->
 <clr-dg-column>
     Pokemon
     <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter"></clr-dg-string-filter>
 </clr-dg-column>
+`,
+    stringFilterPresetHTML: `
+<-- Using clrFilterValue declaration -->
+    <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter" [(clrFilterValue)]="myFilterValue"></clr-dg-string-filter>
 `
 };

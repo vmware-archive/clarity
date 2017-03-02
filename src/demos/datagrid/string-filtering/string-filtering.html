@@ -65,6 +65,40 @@
 <clr-example [clrCode]="examples.stringFilterTS" clrLanguage="typescript"></clr-example>
 <clr-example [clrCode]="examples.stringFilterHTML" clrLanguage="html"></clr-example>
 
+<h4>String filter with preset value</h4>
+
+<p>
+    You can use a preset filter with string filters to initialze the data grid to a specific state.
+    <code class="clr-code">[(clrFilterValue)]</code> can be pre-set.
+</p>
+
+<clr-example [clrCode]="examples.stringFilterPresetHTML" clrLanguage="html"></clr-example>
+
+<clr-datagrid>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>
+        Pokemon
+        <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter" [(clrFilterValue)]="myFilterValue"></clr-dg-string-filter>
+    </clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            {{user.pokemon.name}} <span class="badge badge-5">#{{user.pokemon.number}}</span>
+        </clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
 <div class="alert alert-info">
     <div class="alert-item">
         <span class="alert-text">

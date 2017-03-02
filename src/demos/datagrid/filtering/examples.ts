@@ -108,5 +108,11 @@ class ColorFilter implements Filter<User> {
         <color-filter #colorFilter></color-filter>
     </clr-dg-filter>
 </clr-dg-column>
+`,
+    stringFilterColumnPresetHTML: `
+<-- Using clrFilterValue declaration -->
+<clr-dg-column [clrDgField]="'name'" [(clrFilterValue)]="myFilterValue">
+    Name
+</clr-dg-column>
 `
 };

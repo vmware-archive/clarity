@@ -24,8 +24,6 @@ $clr-sidenav-border-color: $clr-light-midtone-gray !default;
 
 @include exports('sidenav.clarity') {
 
-
-
     .sidenav {
         @include clr-getTypePropertiesForDomElement(sidenav_text, (line-height));
 
@@ -35,37 +33,6 @@ $clr-sidenav-border-color: $clr-light-midtone-gray !default;
         border-right: 1px solid $clr-sidenav-border-color;
         display: flex;
         flex-direction: column;
-
-        .sidenav-header {
-            flex: 0 0 auto;
-            height: $clr_baselineRem_2;
-            padding-left: $clr_baselineRem_1_5;
-            width: 100%;
-            border-bottom: 1px solid $clr-sidenav-border-color;
-
-            .select {
-                width: 100%;
-                font-weight: 600;
-                line-height: $clr_baselineRem_2;
-
-                select {
-                    padding: 0; //Padding 0 as there is no border bottom in the sidenav
-                    border: none;
-                }
-
-                //Adjust the selectbox arrow since padding has been set to 0 above;
-                //TODO: Replace with SVG or a pseudo element
-                &::after {
-                    position: absolute;
-                    bottom: 0.5px;
-                    right: $clr_baselineRem_1;
-                }
-
-                select:hover {
-                    background: none;
-                }
-            }
-        }
 
         .sidenav-content {
             flex: 1 1 auto;
@@ -100,7 +67,6 @@ $clr-sidenav-border-color: $clr-light-midtone-gray !default;
 
             @include clr-getTypePropertiesForDomElement(sidenav_text, (color, font-size, font-weight, letter-spacing));
 
-            position: relative;
             margin-top: $clr_baselineRem_1;
             width: 100%;
 
@@ -133,21 +99,23 @@ $clr-sidenav-border-color: $clr-light-midtone-gray !default;
             }
         }
 
-        //TODO: Style Collapsible lists differently
         .collapsible {
+            $clr-sidenav-caret-xOffset: baselineRem(8/24);
+            $clr-sidenav-caret-yOffset: baselineRem(7/24);
+            $clr-sidenav-caret-label-padding: baselineRem(32/24);
+
             label {
                 cursor: pointer;
-                position: relative;
                 display: inline-block;
                 width: 100%;
+                padding: 0 0 0 $clr-sidenav-caret-label-padding;
 
                 &:after {
-                    position: absolute;
                     content: '';
+                    float: left;
                     height: $clr-dropdown-caret-icon-dimension;
                     width: $clr-dropdown-caret-icon-dimension;
-                    top: ($clr_baselineRem_1 - $clr-dropdown-caret-icon-dimension) / 2;
-                    left: $clr_baselineRem_1;
+                    transform: translateX(-1 * $clr-sidenav-caret-xOffset) translateY($clr-sidenav-caret-yOffset);
                     background-image: generateCaretIcon();
                     @include icon-background-styles();
                     margin: 0;
@@ -167,7 +135,7 @@ $clr-sidenav-border-color: $clr-light-midtone-gray !default;
             }
 
             input[type="checkbox"]:checked ~ label:after {
-                transform: rotate(-90deg);
+                transform: rotate(-90deg) translateX(-1 * $clr-sidenav-caret-yOffset) translateY(-1 * $clr-sidenav-caret-xOffset);
             }
         }
     }

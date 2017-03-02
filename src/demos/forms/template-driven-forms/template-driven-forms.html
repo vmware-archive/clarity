@@ -7,7 +7,7 @@
     <section class="form-block">
         <label>Add Employee Information</label>
         <div class="form-group">
-            <label for="empFirstName">First Name</label>
+            <label for="empFirstName">First name</label>
             <label for="empFirstName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="firstNameInput.invalid && (firstNameInput.dirty || firstNameInput.touched)">
                 <input type="text" id="empFirstName" placeholder="Enter first name"
                     required
@@ -20,7 +20,7 @@
             </label>
         </div>
         <div class="form-group">
-            <label for="empLastName">Last Name</label>
+            <label for="empLastName">Last name</label>
             <label for="empLastName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)">
                 <input type="text" id="empLastName" placeholder="Enter last name"
                     required
@@ -33,7 +33,7 @@
             </label>
         </div>
         <div class="form-group">
-            <label for="empType">Employee Type</label>
+            <label for="empType">Employee type</label>
             <div class="select">
                 <select id="empType" name="employeeType" [(ngModel)]="model.employeeType">
                     <option value="Default">Select Employee Type...</option>
@@ -62,15 +62,15 @@
                         <td class="left">{{model.id}}</td>
                     </tr>
                     <tr>
-                        <td class="left">First Name</td>
+                        <td class="left">First name</td>
                         <td class="left">{{model.firstName}}</td>
                     </tr>
                     <tr>
-                        <td class="left">Last Name</td>
+                        <td class="left">Last name</td>
                         <td class="left">{{model.lastName}}</td>
                     </tr>
                     <tr>
-                        <td class="left">Employee Type</td>
+                        <td class="left">Employee type</td>
                         <td class="left">{{model.employeeType}}</td>
                     </tr>
                 </tbody>

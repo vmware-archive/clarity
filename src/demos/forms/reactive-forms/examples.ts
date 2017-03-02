@@ -34,7 +34,7 @@ export class ReactiveFormsDemo {
     <section class="form-block">
         <label>Add Employee Address</label>
         <div class="form-group">
-            <label for="empFullName">Full Name</label>
+            <label for="empFullName">Full name</label>
             <label for="empFullName"
                 aria-haspopup="true"
                 role="tooltip"
@@ -50,7 +50,7 @@ export class ReactiveFormsDemo {
         </div>
         <div formGroupName="address">
             <div class="form-group">
-                <label for="empPostalCode">Postal Code</label>
+                <label for="empPostalCode">Postal code</label>
                 <label for="empPostalCode"
                     aria-haspopup="true"
                     role="tooltip"

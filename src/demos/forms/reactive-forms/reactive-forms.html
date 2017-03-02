@@ -8,7 +8,7 @@
     <section class="form-block">
         <label>Add Employee Address</label>
         <div class="form-group">
-            <label for="empFullName">Full Name</label>
+            <label for="empFullName">Full name</label>
             <label for="empFullName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="employeeAddressForm.get('fullName').invalid
                     && (employeeAddressForm.get('fullName').dirty || employeeAddressForm.get('fullName').touched)">
                 <input id="empFullName" type="text"
@@ -20,7 +20,7 @@
         </div>
         <div formGroupName="address">
             <div class="form-group">
-                <label for="empPostalCode">Postal Code</label>
+                <label for="empPostalCode">Postal code</label>
                 <label for="empPostalCode" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="employeeAddressForm.get('address').get('postalCode').invalid
                         && (employeeAddressForm.get('address').get('postalCode').dirty ||
                         employeeAddressForm.get('address').get('postalCode').touched)">
@@ -61,11 +61,11 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="left">Full Name</td>
+                        <td class="left">Full name</td>
                         <td class="left">{{employeeAddressForm.get('fullName').value}}</td>
                     </tr>
                     <tr>
-                        <td class="left">Postal Code</td>
+                        <td class="left">Postal code</td>
                         <td class="left">{{employeeAddressForm.get('address').get('postalCode').value}}</td>
                     </tr>
                     <tr>

@@ -9,7 +9,7 @@ export const EXAMPLES = {
     <section class="form-block">
         <label>Add Employee Information</label>
         <div class="form-group">
-            <label for="empFirstName">First Name</label>
+            <label for="empFirstName">First name</label>
             <label for="empFirstName"
                 aria-haspopup="true"
                 role="tooltip"
@@ -26,7 +26,7 @@ export const EXAMPLES = {
             </label>
         </div>
         <div class="form-group">
-            <label for="empLastName">Last Name</label>
+            <label for="empLastName">Last name</label>
             <label for="empLastName"
                 aria-haspopup="true"
                 role="tooltip"
@@ -43,7 +43,7 @@ export const EXAMPLES = {
             </label>
         </div>
         <div class="form-group">
-            <label for="empType">Employee Type</label>
+            <label for="empType">Employee type</label>
             <div class="select">
                 <select id="empType"
                     name="employeeType"

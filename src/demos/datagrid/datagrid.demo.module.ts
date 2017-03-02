@@ -17,6 +17,7 @@ import {DatagridFilteringDemo} from "./filtering/filtering";
 import {DatagridFullDemo} from "./full/full";
 import {DatagridPaginationDemo} from "./pagination/pagination";
 import {DatagridSelectionDemo} from "./selection/selection";
+import {DatagridSelectionSingleDemo} from "./single-selection/single-selection";
 import {DatagridServerDrivenDemo} from "./server-driven/server-driven";
 import {DatagridSingleActionDemo} from "./single-action/single-action";
 import {DatagridSmartIteratorDemo} from "./smart-iterator/smart-iterator";
@@ -43,6 +44,7 @@ import {Example} from "./utils/example";
         DatagridFullDemo,
         DatagridPaginationDemo,
         DatagridSelectionDemo,
+        DatagridSelectionSingleDemo,
         DatagridServerDrivenDemo,
         DatagridSingleActionDemo,
         DatagridSmartIteratorDemo,
@@ -61,8 +63,10 @@ import {Example} from "./utils/example";
         DatagridFullDemo,
         DatagridPaginationDemo,
         DatagridSelectionDemo,
+        DatagridSelectionSingleDemo,
         DatagridServerDrivenDemo,
         DatagridSingleActionDemo,
+        DatagridSelectionSingleDemo,
         DatagridSmartIteratorDemo,
         DatagridSortingDemo,
         DatagridStringFilteringDemo,

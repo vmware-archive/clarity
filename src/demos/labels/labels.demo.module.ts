@@ -17,7 +17,7 @@ import {LabelsDefaultDemo} from "./labels-default";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forRoot(),
+        ClarityModule.forChild(),
     ],
     declarations: [
         LabelsWithBadgesDemo,

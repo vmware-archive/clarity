@@ -24,7 +24,7 @@ import {ModalSizesDemo} from "./modal-sizes";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forRoot(),
+        ClarityModule.forChild(),
     ],
     declarations: [
         ModalStaticDemo,

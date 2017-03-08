@@ -33,7 +33,7 @@ import {Example} from "./utils/example";
     imports: [
         CommonModule,
         FormsModule,
-        ClarityModule.forRoot(),
+        ClarityModule.forChild(),
     ],
     declarations: [
         DatagridBasicStructureDemo,

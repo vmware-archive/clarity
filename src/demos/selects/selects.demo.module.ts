@@ -12,7 +12,7 @@ import {SelectsDemo} from "./selects.demo";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forRoot(),
+        ClarityModule.forChild(),
     ],
     declarations: [
         SelectsDemo

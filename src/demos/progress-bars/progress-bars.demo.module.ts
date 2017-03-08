@@ -21,7 +21,7 @@ import {OldProgressBarCardsDemo} from "./old-progress-bar-cards";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forRoot(),
+        ClarityModule.forChild(),
     ],
     declarations: [
         ProgressBarExamplesDemo,

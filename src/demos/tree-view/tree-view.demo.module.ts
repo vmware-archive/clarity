@@ -24,7 +24,7 @@ import {TreeSelectionCodeSnippetDemo} from "./tree-selection-code-snippet/tree-s
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forRoot()
+        ClarityModule.forChild()
     ],
     declarations: [
         TreeNodeBasicStructureDemo,

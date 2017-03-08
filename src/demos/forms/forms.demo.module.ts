@@ -23,7 +23,7 @@ import {Example} from "./utils/example";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forRoot(),
+        ClarityModule.forChild(),
         FormsModule,
         ReactiveFormsModule
     ],

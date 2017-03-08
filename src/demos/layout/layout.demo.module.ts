@@ -18,7 +18,7 @@ import {LayoutAdditionalSectionsDemo} from "./layout-additional-sections";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forRoot(),
+        ClarityModule.forChild(),
     ],
     declarations: [
         LayoutAllDemo,

@@ -13,7 +13,7 @@ import {TabsAngularDemo} from "./tabs-angular";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forRoot(),
+        ClarityModule.forChild(),
     ],
     declarations: [
         TabsStaticDemo,

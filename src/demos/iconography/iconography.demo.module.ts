@@ -16,7 +16,7 @@ import { IconVariantsDemo } from "./icon-variants";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forRoot(),
+        ClarityModule.forChild(),
     ],
     declarations: [
         IconColorsDemo,

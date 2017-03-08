@@ -16,7 +16,7 @@ import {TypographyFontCharTestDemo} from "./typography-font-char-test";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forRoot(),
+        ClarityModule.forChild(),
     ],
     declarations: [
         TypographyFontWeightDemo,

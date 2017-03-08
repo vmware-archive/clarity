@@ -15,6 +15,7 @@ import {SubNavDemo} from "./sub-nav";
 import {HeaderTypesOldDemo} from "./header-types-old";
 import {ResponsiveNav1Demo} from "./responsive-nav1";
 import {ResponsiveNav2Demo} from "./responsive-nav2";
+import {HeaderLinksDemo} from "./header-links";
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import {ResponsiveNav2Demo} from "./responsive-nav2";
         SidenavDemo,
         HeaderColorsDemo,
         HeaderTypesDemo,
+        HeaderLinksDemo,
         SubNavDemo,
         HeaderTypesOldDemo,
         ResponsiveNav1Demo,
@@ -36,6 +38,7 @@ import {ResponsiveNav2Demo} from "./responsive-nav2";
         SidenavDemo,
         HeaderColorsDemo,
         HeaderTypesDemo,
+        HeaderLinksDemo,
         SubNavDemo,
         ResponsiveNav1Demo,
         ResponsiveNav2Demo

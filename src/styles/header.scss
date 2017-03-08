@@ -17,65 +17,6 @@ $bl-3_0: baselineRem(3);
 }
 
 .header-dox {
-    header { // Overrides to match the comps
-        clr-icon {
-            &:not([shape^=caret]) {
-                width: 22px;
-                height: 22px;
-            }
-            &[shape^=caret] {
-                width: 12px;
-                height: 12px;
-            }
-        }
-
-        .branding {
-            clr-icon {
-                width: 36px;
-                height: 36px;
-            }
-        }
-    }
-
-    .header-nav { // Overrides to match the comps
-        a:first-of-type {
-            &:before {
-                position: absolute;
-                left: 1px;
-                content: "";
-                display: inline-block;
-                background: #fafafa;
-                opacity: .15;
-                height: 40px;
-                width: 1px;
-                top: 10px;
-            }
-        }
-
-    }
-    .header-actions { // Overrides to match the comps
-        button {
-            background-color: inherit;
-            border: none;
-            color: #9a9a9a;
-            position: relative;
-
-            &:nth-last-of-type(2) {
-                &:after {
-                    position: absolute;
-                    right: 0px;
-                    content: "";
-                    display: inline-block;
-                    background: #fafafa;
-                    opacity: .15;
-                    height: 40px;
-                    width: 1px;
-                    top: 10px;
-                }
-            }
-        }
-
-    }
 
     // Image positioning in the right column.
     &__media-container {

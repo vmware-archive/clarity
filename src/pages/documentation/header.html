@@ -24,14 +24,16 @@
                             </a>
                         </div>
                         <div class="header-actions">
-                            <button class="nav-icon">
-                                <clr-icon shape="cog"></clr-icon>
-                                <clr-icon shape="caret down"></clr-icon>
-                            </button>
-                            <div class="dropdown-menu" *ngIf="false">
-                                <a href="javascript://">About</a>
-                                <a href="javascript://">Preferences</a>
-                                <a href="javascript://">Log out</a>
+                            <div class="dropdown">
+                                <button class="nav-icon dropdown-toggle">
+                                    <clr-icon shape="cog"></clr-icon>
+                                    <clr-icon shape="caret down"></clr-icon>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="javascript://">About</a>
+                                    <a href="javascript://">Preferences</a>
+                                    <a href="javascript://">Log out</a>
+                                </div>
                             </div>
                         </div>
                     </header>
@@ -129,11 +131,11 @@
                         </form>
                         <div class="header-actions">
                             <div class="dropdown">
-                                <button class="nav-icon">
+                                <button class="nav-icon dropdown-toggle">
                                     <clr-icon shape="cog"></clr-icon>
                                     <clr-icon shape="caret down"></clr-icon>
                                 </button>
-                                <div class="dropdown-menu" *ngIf="false">
+                                <div class="dropdown-menu">
                                     <a href="javascript://">About</a>
                                     <a href="javascript://">Preferences</a>
                                     <a href="javascript://">Log out</a>
@@ -173,14 +175,16 @@
                             </label>
                         </form>
                         <div class="header-actions">
-                            <button class="nav-icon">
-                                <clr-icon shape="cog"></clr-icon>
-                                <clr-icon shape="caret down"></clr-icon>
-                            </button>
-                            <div class="dropdown-menu" *ngIf="false">
-                                <a href="javascript://">About</a>
-                                <a href="javascript://">Preferences</a>
-                                <a href="javascript://">Log out</a>
+                            <div class="dropdown">
+                                <button class="nav-icon dropdown-toggle">
+                                    <clr-icon shape="cog"></clr-icon>
+                                    <clr-icon shape="caret down"></clr-icon>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="javascript://">About</a>
+                                    <a href="javascript://">Preferences</a>
+                                    <a href="javascript://">Log out</a>
+                                </div>
                             </div>
                         </div>
                     </header>
@@ -197,41 +201,7 @@
         <div class="col-xs-12 col-no-padding">
             <div class="clrweb-DocMedia-block">
                 <div class="header-demo">
-                    <header class="header-6">
-                        <div class="branding">
-                            <a class="logo-and-title">
-                                <clr-icon shape="file"></clr-icon>
-                                <span class="title">Note App</span>
-                            </a>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="header-nav">
-                            <a href="javascript://" class="nav-link">
-                                <span class="nav-text">Notes</span>
-                            </a>
-                            <a href="javascript://" class="active nav-link">
-                                <span class="nav-text">Shared Notes</span>
-                            </a>
-                        </div>
-
-                        <div class="header-actions">
-
-                        </div>
-                        <div class="header-actions">
-                            <button class="nav-icon">
-                                <clr-icon shape="search"></clr-icon>
-                            </button>
-                            <button class="nav-icon">
-                                <clr-icon shape="cog"></clr-icon>
-                                <clr-icon shape="caret down"></clr-icon>
-                            </button>
-                            <div class="dropdown-menu" *ngIf="false">
-                                <a href="javascript://">About</a>
-                                <a href="javascript://">Preferences</a>
-                                <a href="javascript://">Log out</a>
-                            </div>
-                        </div>
-                    </header>
+                    <img class="clrweb-Img" src="assets/images/documentation/header/header_05.svg" alt="">
                 </div>
             </div>
         </div>
@@ -261,47 +231,7 @@
         <div class="col-xs-12 col-no-padding">
             <div class="clrweb-DocMedia-block">
                 <div class="header-demo">
-                    <header class="header-6">
-                        <div class="branding">
-                            <a class="logo-and-title">
-                                <clr-icon shape="file"></clr-icon>
-                                <span class="title">Note App</span>
-                            </a>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="header-nav">
-                            <a href="javascript://" class="nav-link">
-                                <span class="nav-text">Notes</span>
-                            </a>
-                            <a href="javascript://" class="active nav-link">
-                                <span class="nav-text">Shared Notes</span>
-                            </a>
-                        </div>
-
-                        <div class="header-actions">
-
-                        </div>
-                        <div class="header-actions">
-                            <button class="nav-icon">
-                                <clr-icon shape="cog"></clr-icon>
-                                <clr-icon shape="caret down"></clr-icon>
-                            </button>
-                            <div class="dropdown-menu" *ngIf="false">
-                                <a href="javascript://">About</a>
-                                <a href="javascript://">Preferences</a>
-                                <a href="javascript://">Log out</a>
-                            </div>
-                            <button class="nav-icon">
-                                <clr-icon shape="user"></clr-icon>
-                                <clr-icon shape="caret down"></clr-icon>
-                            </button>
-                            <div class="dropdown-menu" *ngIf="false">
-                                <a href="javascript://">About</a>
-                                <a href="javascript://">Preferences</a>
-                                <a href="javascript://">Log out</a>
-                            </div>
-                        </div>
-                    </header>
+                    <img class="clrweb-Img" src="assets/images/documentation/header/header_06.svg" alt="">
                 </div>
             </div>
         </div>
@@ -313,12 +243,7 @@
 
     <h3 id="examples">Code &amp; Examples</h3>
 
-    <p>The header and subnav support app-level information and navigation links:</p>
-
-
-    <h3 id="header">
-
-    </h3>
+    <p>The header and subnav support app-level information and navigation links.</p>
 
     <h6 id="header-1">
         .header
@@ -340,15 +265,20 @@
     </h6>
 
     <p>
-        <code class="clr-code">.branding</code>contains the product logo and the product title. The logo extends the
+        <code class="clr-code">.branding</code> contains the product logo and the product title. The logo extends the
         <code class="clr-code">.clr-icon</code> class and the title extends the <code class="clr-code">.title</code>
         class.
     </p>
 
     <h6 id="header-nav">.header-nav</h6>
 
-    <p><code class="clr-code">.header-nav</code> contains the navigation links. Each navigation link extends the
-        <code class="clr-code">.nav-link</code> class. Navigation links can be text or icons.</p>
+    <p>
+        <code class="clr-code">.header-nav</code> contains the navigation links.
+        Each navigation link extends the <code class="clr-code">.nav-link</code> class along with the
+        <code class="clr-code">.nav-text</code> class for text links and the <code class="clr-code">.nav-icon</code> class icon links.
+    </p>
+
+    <clr-header-demo-links></clr-header-demo-links>
 
     <h6 id="search">
         .search

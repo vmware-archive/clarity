@@ -54,6 +54,16 @@
 
     <clr-wizard-not-closable></clr-wizard-not-closable>
 
+    <h3 id="two-way-binding">Two-way Binding on Wizard Open/Close</h3>
+
+    <p>The current wizard was written early on in Angular 2's release. Due to some confusion around two-way binding
+        conventions in standard Angular, a naming convention was created with the current wizard that prevents 
+        standard two-way binding.</p>
+    <p>In short, trying to bind to <code class="clr-code">[(clrWizardOpen)]</code> will not work as expected.</p>
+    <p>The workaround is to bind to the input <code class="clr-code">[clrWizardOpen]</code> and the
+        output <code class="clr-code">(clrWizardOpenChanged)</code> separately for now.</p>
+    <p>This has been corrected in a refactoring of the wizard that is scheduled to be released in 0.9.</p>
+
     <h3 id="options-for-ltclr-wizardgt">Options for &lt;clr-wizard&gt;</h3>
 
     <table class="table">

@@ -16,6 +16,7 @@ import {DropdownStaticIconToggleDemo} from "./dropdown-static-icon-toggle";
 import {DropdownStaticButtonLinkToggleDemo} from "./dropdown-static-buttonlink-toggle";
 import {DropdownAngularPositioningDemo} from "./dropdown-angular-positioning";
 import {DropdownAngularCloseItemFalseDemo} from "./dropdown-angular-close-item-false";
+import {DropdownHeaderDemo} from "./dropdown-header";
 
 @NgModule({
     imports: [
@@ -31,7 +32,8 @@ import {DropdownAngularCloseItemFalseDemo} from "./dropdown-angular-close-item-f
         DropdownStaticIconToggleDemo,
         DropdownStaticButtonLinkToggleDemo,
         DropdownAngularPositioningDemo,
-        DropdownAngularCloseItemFalseDemo
+        DropdownAngularCloseItemFalseDemo,
+        DropdownHeaderDemo
     ],
     exports: [
         DropdownDemo,
@@ -40,7 +42,8 @@ import {DropdownAngularCloseItemFalseDemo} from "./dropdown-angular-close-item-f
         DropdownStaticIconToggleDemo,
         DropdownStaticButtonLinkToggleDemo,
         DropdownAngularPositioningDemo,
-        DropdownAngularCloseItemFalseDemo
+        DropdownAngularCloseItemFalseDemo,
+        DropdownHeaderDemo
     ]
 })
 export default class DropdownDemoModule {

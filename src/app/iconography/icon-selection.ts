@@ -74,7 +74,7 @@ export class IconSelectionDemo {
         return this.hideShapesFromCore.indexOf(shape) === -1;
     });
 
-    hideShapesFromEssential: string[] = [ "ellipses-horizontal", "ellipses-vertical" ];
+    hideShapesFromEssential: string[] = [ "ellipses-horizontal", "ellipses-vertical", "network" ];
 
     essentialShapes: string[] = essentialShapes.filter((shape) => {
         return this.hideShapesFromEssential.indexOf(shape) === -1;
@@ -82,7 +82,13 @@ export class IconSelectionDemo {
 
     socialShapes: string[] = socialShapes;
 
-    technologyShapes: string[] = technologyShapes;
+    hideShapesFromTechnology: string[] = [ "app"];
+
+    technologyShapes: string[] = technologyShapes.filter((shape) => {
+        return this.hideShapesFromTechnology.indexOf(shape) === -1;
+    });
+
+
 
 
 }

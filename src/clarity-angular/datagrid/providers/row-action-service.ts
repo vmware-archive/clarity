@@ -3,6 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import {Injectable} from "@angular/core";
 import {DatagridRenderOrganizer} from "../render/render-organizer";
 
@@ -12,21 +13,9 @@ export class RowActionService {
     constructor(private renderOrganizer: DatagridRenderOrganizer) {}
 
     /**
-     * a value of 0 means no rows with action
+     * false means no rows with action
      */
-    private _actionableCount = 0;
-    public get actionableCount(): number {
-        return this._actionableCount;
-    }
-
-    public register() {
-        this._actionableCount++;
-    }
-
-    public deregister() {
-        this._actionableCount--;
-    }
-
+    public hasActionableRow: boolean  = false;
     /*
      * Ad-hoc dirty lock, handling only a single pending action
      */

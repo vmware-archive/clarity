@@ -21,7 +21,7 @@
                      *ngIf="selection.selectionType === SELECTION_TYPE.Single">
                 </div>
                 <!-- header for single row action; only display if we have at least one actionable row in datagrid -->
-                <div class="datagrid-column datagrid-row-actions" *ngIf="rowActionService.actionableCount > 0"></div>
+                <div class="datagrid-column datagrid-row-actions" *ngIf="rowActionService.hasActionableRow"></div>
                 <ng-content select="clr-dg-column"></ng-content>
             </div>
         </div>

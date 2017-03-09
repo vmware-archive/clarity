@@ -3,29 +3,30 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
-import {Subject} from "rxjs/Subject";
-import {TestContext} from "./helpers.spec";
-import {Datagrid} from "./datagrid";
-import {State} from "./interfaces/state";
-import {Selection} from "./providers/selection";
-import {Sort} from "./providers/sort";
-import {FiltersProvider} from "./providers/filters";
-import {Page} from "./providers/page";
-import {Items} from "./providers/items";
-import {Comparator} from "./interfaces/comparator";
-import {Filter} from "./interfaces/filter";
+import { Component } from "@angular/core";
+import { Subject } from "rxjs/Subject";
+import { TestContext } from "./helpers.spec";
+import { Datagrid } from "./datagrid";
+import { State } from "./interfaces/state";
+import { Selection } from "./providers/selection";
+import { Sort } from "./providers/sort";
+import { FiltersProvider } from "./providers/filters";
+import { Page } from "./providers/page";
+import { Items } from "./providers/items";
+import { Comparator } from "./interfaces/comparator";
+import { Filter } from "./interfaces/filter";
+import { RowActionService } from "./providers/row-action-service";
 
-export default function(): void {
-    describe("Datagrid component", function() {
-        describe("Typescript API", function() {
+export default function (): void {
+    describe("Datagrid component", function () {
+        describe("Typescript API", function () {
             let context: TestContext<Datagrid, FullTest>;
 
             beforeEach(function () {
                 context = this.create(Datagrid, FullTest);
             });
 
-            it("allows to manually force a refresh of displayed items when data mutates", function() {
+            it("allows to manually force a refresh of displayed items when data mutates", function () {
                 let items: Items = context.getClarityProvider(Items);
                 let refreshed = false;
                 items.change.subscribe(() => refreshed = true);
@@ -36,51 +37,51 @@ export default function(): void {
 
         });
 
-        describe("Template API", function() {
+        describe("Template API", function () {
             let context: TestContext<Datagrid, FullTest>;
 
             beforeEach(function () {
                 context = this.create(Datagrid, FullTest);
             });
 
-            it("receives an input for the loading state", function() {
+            it("receives an input for the loading state", function () {
                 expect(context.clarityDirective.loading).toBe(false);
                 context.testComponent.loading = true;
                 context.detectChanges();
                 expect(context.clarityDirective.loading).toBe(true);
             });
 
-            it("offers two-way binding on the currently selected items", function() {
+            it("offers two-way binding on the currently selected items", function () {
                 let selection: Selection = context.getClarityProvider(Selection);
-                context.testComponent.selected = [2];
+                context.testComponent.selected = [ 2 ];
                 context.detectChanges();
-                expect(selection.current).toEqual([2]);
+                expect(selection.current).toEqual([ 2 ]);
                 selection.setSelected(1, true);
                 context.detectChanges();
-                expect(context.testComponent.selected).toEqual([2, 1]);
+                expect(context.testComponent.selected).toEqual([ 2, 1 ]);
             });
 
-            it("allows to set pre-selected items when initializing the full list of items", function() {
+            it("allows to set pre-selected items when initializing the full list of items", function () {
                 let selection: Selection = context.getClarityProvider(Selection);
-                context.testComponent.items = [4, 5, 6];
-                context.testComponent.selected = [5];
+                context.testComponent.items = [ 4, 5, 6 ];
+                context.testComponent.selected = [ 5 ];
                 context.detectChanges();
-                expect(selection.current).toEqual([5]);
+                expect(selection.current).toEqual([ 5 ]);
             });
 
-            describe("clrDgRefresh output", function() {
-                it("emits once when the datagrid is ready", function() {
+            describe("clrDgRefresh output", function () {
+                it("emits once when the datagrid is ready", function () {
                     expect(context.testComponent.nbRefreshed).toBe(1);
                 });
 
-                it("emits once when the sort order changes", function() {
+                it("emits once when the sort order changes", function () {
                     context.testComponent.nbRefreshed = 0;
                     let sort: Sort = context.getClarityProvider(Sort);
                     sort.toggle(new TestComparator());
                     expect(context.testComponent.nbRefreshed).toBe(1);
                 });
 
-                it("emits once when the filters change", function() {
+                it("emits once when the filters change", function () {
                     context.testComponent.nbRefreshed = 0;
                     let filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
                     let filter = new TestFilter();
@@ -89,15 +90,15 @@ export default function(): void {
                     expect(context.testComponent.nbRefreshed).toBe(1);
                 });
 
-                it("emits once when the page changes", function() {
+                it("emits once when the page changes", function () {
                     context.testComponent.nbRefreshed = 0;
                     let page: Page = context.getClarityProvider(Page);
                     page.current = 2;
                     expect(context.testComponent.nbRefreshed).toBe(1);
                 });
 
-                it("emits the complete state of the datagrid", function() {
-                    context.testComponent.items = [1, 2, 3, 4, 5, 6];
+                it("emits the complete state of the datagrid", function () {
+                    context.testComponent.items = [ 1, 2, 3, 4, 5, 6 ];
                     context.detectChanges();
                     let comparator = new TestComparator();
                     let sort: Sort = context.getClarityProvider(Sort);
@@ -118,13 +119,13 @@ export default function(): void {
                             by: comparator,
                             reverse: false,
                         },
-                        filters: [filter]
+                        filters: [ filter ]
                     });
                 });
             });
         });
 
-        describe("View basics", function() {
+        describe("View basics", function () {
             let context: TestContext<Datagrid, FullTest>;
 
             beforeEach(function () {
@@ -141,7 +142,7 @@ export default function(): void {
             });
         });
 
-        describe("Iterators", function() {
+        describe("Iterators", function () {
             it("projects rows when using ngFor", function () {
                 this.context = this.create(Datagrid, NgForTest);
                 let body = this.context.clarityElement.querySelector(".datagrid-body");
@@ -157,11 +158,57 @@ export default function(): void {
             it("respects the trackBy option when using clrDgItems", function () {
                 this.context = this.create(Datagrid, TrackByTest);
                 let oldFirstRow = this.context.clarityElement.querySelector("clr-dg-row");
-                this.context.testComponent.items = [42];
+                this.context.testComponent.items = [ 42 ];
                 this.context.detectChanges();
                 let newFirstRow = this.context.clarityElement.querySelector("clr-dg-row");
                 expect(newFirstRow).toBe(oldFirstRow);
             });
+        });
+
+        describe("Actionable rows", function () {
+            let context: TestContext<Datagrid, ActionableRowTest>;
+            let rowActionService: RowActionService;
+            let headActionOverflowCell: HTMLElement;
+            let actionOverflowCell: HTMLElement[];
+            let actionOverflow: HTMLElement[];
+
+            it("it has cells for action overflows if there is at least one of them.", function () {
+                context = this.create(Datagrid, ActionableRowTest);
+                rowActionService = context.getClarityProvider(RowActionService);
+                context.detectChanges();
+                expect(rowActionService.hasActionableRow).toBe(true);
+                let datagridHead = context.clarityElement.querySelector(".datagrid-head");
+                headActionOverflowCell = datagridHead.querySelector(".datagrid-column.datagrid-row-actions");
+                actionOverflowCell = context.clarityElement.querySelectorAll("clr-dg-cell.datagrid-row-actions");
+                actionOverflow = context.clarityElement.querySelectorAll("clr-dg-action-overflow");
+                expect(headActionOverflowCell).not.toBeNull();
+                expect(actionOverflowCell.length).toEqual(3);
+                expect(actionOverflow.length).toEqual(3);
+            });
+
+            it("it has no cells for action overflows if there is none of them.", function () {
+                context = this.create(Datagrid, ActionableRowTest);
+                rowActionService = context.getClarityProvider(RowActionService);
+                context.testComponent.showIfGreaterThan = 10;
+                /*
+                 * TODO: We need to investigate if we really need two change detections here.
+                 * At this point, it seems that we need two change detections as one is for the action of removing
+                 * action overflows themselves and this action will be listened to
+                 * by their QueryList and update the service.
+                 * Consequently, the service will require another change detection for updating the host cells.
+                 * */
+                context.detectChanges();
+                context.detectChanges();
+                actionOverflow = context.clarityElement.querySelectorAll("clr-dg-action-overflow");
+                expect(actionOverflow.length).toEqual(0);
+                expect(rowActionService.hasActionableRow).toBe(false);
+                let datagridHead = context.clarityElement.querySelector(".datagrid-head");
+                headActionOverflowCell = datagridHead.querySelector(".datagrid-column.datagrid-row-actions");
+                actionOverflowCell = context.clarityElement.querySelectorAll("clr-dg-cell.datagrid-single-select");
+                expect(headActionOverflowCell).toBeNull();
+                expect(actionOverflowCell.length).toEqual(0);
+            });
+
         });
 
     });
@@ -183,13 +230,14 @@ export default function(): void {
 `
 })
 class FullTest {
-    items = [1, 2, 3];
+    items = [ 1, 2, 3 ];
 
     loading = false;
     selected: number[];
 
     nbRefreshed = 0;
     latestState: State;
+
     refresh(state: State) {
         this.nbRefreshed++;
         this.latestState = state;
@@ -212,7 +260,7 @@ class FullTest {
 `
 })
 class NgForTest {
-    items = [1, 2, 3];
+    items = [ 1, 2, 3 ];
 }
 
 @Component({
@@ -231,10 +279,36 @@ class NgForTest {
 `
 })
 class TrackByTest {
-    items = [1, 2, 3];
+    items = [ 1, 2, 3 ];
+
     trackByIndex(index: number, item: any) {
         return index;
     }
+}
+
+@Component({
+    template: `
+    <clr-datagrid>
+        <clr-dg-column>First</clr-dg-column>
+        <clr-dg-column>Second</clr-dg-column>
+    
+        <clr-dg-row *clrDgItems="let item of items;" [clrDgItem]="item">
+        
+            <clr-dg-action-overflow *ngIf="item > showIfGreaterThan">
+                <button class="action-item">Edit</button>
+            </clr-dg-action-overflow>
+                
+            <clr-dg-cell>{{item}}</clr-dg-cell>
+            <clr-dg-cell>{{item * item}}</clr-dg-cell>
+        </clr-dg-row>
+    
+        <clr-dg-footer>{{items.length}} items</clr-dg-footer>
+    </clr-datagrid>
+`
+})
+class ActionableRowTest {
+    items = [ 1, 2, 3 ];
+    showIfGreaterThan = 0;
 }
 
 class TestComparator implements Comparator<number> {

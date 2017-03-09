@@ -7,6 +7,8 @@ import {Component, Input, Output, EventEmitter} from "@angular/core";
 import {Selection, SelectionType} from "./providers/selection";
 import {RowActionService} from "./providers/row-action-service";
 
+let nbRow: number = 0;
+
 @Component({
     selector: "clr-dg-row",
     template: `
@@ -14,7 +16,11 @@ import {RowActionService} from "./providers/row-action-service";
             <clr-checkbox [ngModel]="selected" (ngModelChange)="toggle($event)"></clr-checkbox>
         </clr-dg-cell>
         <clr-dg-cell *ngIf="selection.selectionType === SELECTION_TYPE.Single" class="datagrid-select">
-            <input type="radio" [name]="selection.id + '-radio'" [value]="item" [(ngModel)]="selection.currentSingle">
+            <div class="radio">
+                <input type="radio" [id]="id"  [name]="selection.id + '-radio'" [value]="item" 
+                    [(ngModel)]="selection.currentSingle">    
+                <label for="{{id}}"></label>
+            </div>
         </clr-dg-cell>
         <clr-dg-cell *ngIf="rowActionService.actionableCount > 0" class="datagrid-row-actions">
             <ng-content select="clr-dg-action-overflow"></ng-content>
@@ -26,8 +32,9 @@ import {RowActionService} from "./providers/row-action-service";
         "[class.datagrid-selected]": "selected"
     }
 })
-
 export class DatagridRow {
+    public id: string;
+
     /* reference to the enum so that template can access */
     public SELECTION_TYPE = SelectionType;
 
@@ -36,7 +43,9 @@ export class DatagridRow {
      */
     @Input("clrDgItem") item: any;
 
-    constructor(public selection: Selection, public rowActionService: RowActionService) {}
+    constructor (public selection: Selection, public rowActionService: RowActionService) {
+        this.id = "clr-dg-row" + (nbRow++);
+    }
 
     private _selected = false;
     /**

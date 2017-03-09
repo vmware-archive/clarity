@@ -259,6 +259,7 @@
             // IE10 needs this
             max-width: $clr-datagrid-select-column-size;
 
+            .radio label,
             .checkbox label {
                 display: block;
                 // These are the properties in default checkbox styles, so we

@@ -22,6 +22,10 @@
             @include checkbox-radio-label-styles($clr_baselineRem_1, $clr-checkbox-radio-height + $clr_baselineRem_0_25);
         }
 
+        label:empty {
+            padding-left: 0;
+        }
+
         //Radio button base
         input[type="radio"] + label::before {
             @include checkbox-radio-shared-inactive($clr-checkbox-radio-height, $clr-custom-checkbox-radio-top, 0, $clr-form-field-border-color);

@@ -4,11 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    Component, EventEmitter, HostListener, Input, Output, ElementRef, OnDestroy, ViewChildren, QueryList, AfterViewInit
+    Component, EventEmitter, HostListener, Input, Output, ElementRef, ViewChildren, QueryList, AfterViewInit, OnDestroy
 } from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 import {RowActionService} from "./providers/row-action-service";
 import {Popover, Direction} from "../popover/popover";
+
 
 @Component({
     selector: "clr-dg-action-overflow",
@@ -19,11 +20,10 @@ import {Popover, Direction} from "../popover/popover";
         </div>
     `
 })
+
 export class DatagridActionOverflow implements OnDestroy, AfterViewInit {
 
-    constructor(private elementRef: ElementRef, private rowActionService: RowActionService) {
-        rowActionService.register();
-    }
+    constructor(private elementRef: ElementRef, private rowActionService: RowActionService) {}
 
     private position: Popover;
 
@@ -47,7 +47,6 @@ export class DatagridActionOverflow implements OnDestroy, AfterViewInit {
     private _menuSubscription: Subscription;
     ngOnDestroy() {
         this._menuSubscription.unsubscribe();
-        this.rowActionService.deregister();
     }
 
     /**
@@ -57,6 +56,7 @@ export class DatagridActionOverflow implements OnDestroy, AfterViewInit {
     public get open() {
         return this._open;
     }
+
     @Input("clrDgActionOverflowOpen")
     public set open(open: boolean) {
         let boolOpen = !!open;
@@ -65,6 +65,7 @@ export class DatagridActionOverflow implements OnDestroy, AfterViewInit {
             this.openChanged.emit(boolOpen);
         }
     }
+
     @Output("clrDgActionOverflowOpenChange") public openChanged = new EventEmitter<boolean>(false);
 
     /**
@@ -76,7 +77,7 @@ export class DatagridActionOverflow implements OnDestroy, AfterViewInit {
 
     //called on mouse clicks anywhere in the DOM.
     //Checks to see if the mouseclick happened on the host or outside
-    @HostListener("document:click", ["$event.target"])
+    @HostListener("document:click", [ "$event.target" ])
     onMouseClick(target: any): void {
         if (this._open) {
             let current: any = target; //Get the element in the DOM on which the mouse was clicked

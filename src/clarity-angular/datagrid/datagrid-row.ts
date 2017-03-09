@@ -3,9 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, Input, Output, EventEmitter} from "@angular/core";
-import {Selection, SelectionType} from "./providers/selection";
-import {RowActionService} from "./providers/row-action-service";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Selection, SelectionType } from "./providers/selection";
+import { RowActionService } from "./providers/row-action-service";
 
 let nbRow: number = 0;
 
@@ -22,7 +22,7 @@ let nbRow: number = 0;
                 <label for="{{id}}"></label>
             </div>
         </clr-dg-cell>
-        <clr-dg-cell *ngIf="rowActionService.actionableCount > 0" class="datagrid-row-actions">
+        <clr-dg-cell *ngIf="rowActionService.hasActionableRow" class="datagrid-row-actions">
             <ng-content select="clr-dg-action-overflow"></ng-content>
         </clr-dg-cell>
         <ng-content></ng-content>
@@ -58,6 +58,7 @@ export class DatagridRow {
             return this.selection.isSelected(this.item);
         }
     }
+
     @Input("clrDgSelected")
     public set selected(value: boolean) {
         if (this.selection.selectionType === SelectionType.None) {

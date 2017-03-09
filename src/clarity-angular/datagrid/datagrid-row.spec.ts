@@ -3,6 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import {Component} from "@angular/core";
 import {TestBed, fakeAsync, tick} from "@angular/core/testing";
 import {TestContext} from "./helpers.spec";
@@ -17,6 +18,7 @@ import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 export default function(): void {
     describe("DatagridRow component", function() {
+
         // Until we can properly type "this"
         let context: TestContext<DatagridRow, FullTest>;
         let selectionProvider: Selection;
@@ -24,19 +26,20 @@ export default function(): void {
         beforeEach(function () {
             context = this.create(DatagridRow, FullTest,
                 [Selection, Items, FiltersProvider, Sort, Page, RowActionService, DatagridRenderOrganizer]);
+
             selectionProvider = TestBed.get(Selection);
         });
 
-        it("projects content", function() {
+        it("projects content", function () {
             expect(context.clarityElement.textContent.trim()).toMatch("Hello world");
         });
 
-        it("adds the .datagrid-row class to the host", function() {
+        it("adds the .datagrid-row class to the host", function () {
             expect(context.clarityElement.classList.contains("datagrid-row")).toBeTruthy();
         });
 
         it("receives an input for the row's modal", function () {
-            context.testComponent.item = {id: 1};
+            context.testComponent.item = { id: 1 };
             context.detectChanges();
             expect(context.clarityDirective.item).toBe(context.testComponent.item);
         });
@@ -63,13 +66,13 @@ export default function(): void {
 
         it("selects the model when the checkbox is clicked", function () {
             selectionProvider.selectionType = SelectionType.Multi;
-            context.testComponent.item = {id: 1};
+            context.testComponent.item = { id: 1 };
             context.detectChanges();
             let checkbox = context.clarityElement.querySelector("input[type='checkbox']");
             expect(selectionProvider.current).toEqual([]);
             checkbox.click();
             context.detectChanges();
-            expect(selectionProvider.current).toEqual([context.testComponent.item]);
+            expect(selectionProvider.current).toEqual([ context.testComponent.item ]);
             checkbox.click();
             context.detectChanges();
             expect(selectionProvider.current).toEqual([]);
@@ -77,7 +80,7 @@ export default function(): void {
 
         it("selects the model when the radio button is clicked", function () {
             selectionProvider.selectionType = SelectionType.Single;
-            context.testComponent.item = {id: 1};
+            context.testComponent.item = { id: 1 };
             context.detectChanges();
             let radio = context.clarityElement.querySelector("input[type='radio']");
             expect(selectionProvider.currentSingle).toBeUndefined();
@@ -86,9 +89,9 @@ export default function(): void {
             expect(selectionProvider.currentSingle).toEqual(context.testComponent.item);
         });
 
-        it("adds the .datagrid-selected class to the host when the row is selected", function() {
+        it("adds the .datagrid-selected class to the host when the row is selected", function () {
             selectionProvider.selectionType = SelectionType.Multi;
-            context.testComponent.item = {id: 1};
+            context.testComponent.item = { id: 1 };
             context.detectChanges();
             context.clarityDirective.selected = true;
             context.detectChanges();
@@ -97,7 +100,7 @@ export default function(): void {
 
         it("offers two-way binding on the selected state of the row", fakeAsync(function () {
             selectionProvider.selectionType = SelectionType.Multi;
-            context.testComponent.item = {id: 1};
+            context.testComponent.item = { id: 1 };
             flushAndAssertSelected(false);
             // Input
             context.testComponent.selected = true;

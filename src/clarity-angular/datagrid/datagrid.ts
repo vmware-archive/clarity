@@ -23,6 +23,10 @@ import {Selection, SelectionType} from "./providers/selection";
 import {Sort} from "./providers/sort";
 import {RowActionService} from "./providers/row-action-service";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
+import {DatagridActionOverflow} from "./datagrid-action-overflow";
+
+
+
 
 @Component({
     selector: "clr-datagrid",
@@ -35,7 +39,8 @@ import {DatagridRenderOrganizer} from "./render/render-organizer";
 export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
 
     constructor(public selection: Selection, private sort: Sort, private filters: FiltersProvider,
-                private page: Page, public rowActionService: RowActionService, public items: Items) {}
+                private page: Page, public items: Items, public rowActionService: RowActionService) {
+    }
 
     /* reference to the enum so that template can access */
     public SELECTION_TYPE = SelectionType;
@@ -46,6 +51,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     public get loading(): boolean {
         return this.items.loading;
     }
+
     @Input("clrDgLoading")
     public set loading(value: boolean) {
         this.items.loading = value;
@@ -132,6 +138,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
         }
         this.selection.current = value;
     }
+
     @Output("clrDgSelectedChange") selectedChanged = new EventEmitter<any[]>(false);
 
     /**
@@ -144,6 +151,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
             this.selection.currentSingle = value;
         }
     }
+
     @Output("clrDgSingleSelectedChange") singleSelectedChanged = new EventEmitter<any>(false);
 
     /**
@@ -176,18 +184,39 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
      * by querying the projected content. This is needed to keep track of the models currently
      * displayed, typically for selection.
      */
+
     @ContentChildren(DatagridRow) rows: QueryList<DatagridRow>;
+
+    /**
+     * We get deep nested DatagridActionOverflow children components, listen to the changes in them,
+     * and figure out if the datagrid has at least one actionable row.
+     */
+    @ContentChildren(DatagridActionOverflow, { descendants: true }) public actionableRows: QueryList<DatagridRow>;
 
     ngAfterContentInit() {
         // TODO: Move all this to ngOnInit() once https://github.com/angular/angular/issues/12818 goes in.
         // And when we do that, remove the manual step for each one.
+        this._subscriptions.push(this.actionableRows.changes.subscribe(() => {
+            /*if at least one row has actionable overflow, show a placeholder cell in every other row.*/
+            this.rowActionService.hasActionableRow = this.actionableRows.length > 0;
+
+        }));
+
+        this.rowActionService.hasActionableRow = this.actionableRows.length > 0;
+
         this._subscriptions.push(this.rows.changes.subscribe(() => {
+
             if (!this.items.smart) {
+
                 this.items.all = this.rows.map((row: DatagridRow) => row.item);
+
             }
         }));
+
         if (!this.items.smart) {
+
             this.items.all = this.rows.map((row: DatagridRow) => row.item);
+
         }
     }
 
@@ -213,6 +242,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
      * Subscriptions to all the services and queries changes
      */
     private _subscriptions: Subscription[] = [];
+
     ngOnDestroy() {
         this._subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
     }

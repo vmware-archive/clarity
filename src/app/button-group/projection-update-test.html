@@ -1,0 +1,99 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Update Content Projection</h4>
+
+<h6>Toggle from the Button Group View</h6>
+<div class="clr-example">
+    <clr-button-group>
+            <clr-button class="btn" *ngIf="show">1</clr-button>
+        <clr-button class="btn">2</clr-button>
+        <clr-button class="btn">3</clr-button>
+        <clr-button class="btn">4</clr-button>
+        <clr-button class="btn" [clrInMenu]="true">5</clr-button>
+        <clr-button class="btn" [clrInMenu]="true">6</clr-button>
+    </clr-button-group>
+</div>
+<button class="btn" (click)="toggleShow()">
+    Toggle
+</button>
+
+<h6>Toggle from the Overflow Menu View</h6>
+<div class="clr-example">
+    <clr-button-group>
+        <clr-button class="btn">1</clr-button>
+        <clr-button class="btn" [clrInMenu]="true" *ngIf="show1">2</clr-button>
+        <clr-button class="btn" [clrInMenu]="true">3</clr-button>
+        <clr-button class="btn">4</clr-button>
+        <clr-button class="btn">5</clr-button>
+        <clr-button class="btn">6</clr-button>
+    </clr-button-group>
+</div>
+<button class="btn" (click)="toggleShow1()">
+    Toggle
+</button>
+
+<h6>Toggle the only button from the Button Group View</h6>
+<div class="clr-example">
+    <clr-button-group>
+        <clr-button class="btn" *ngIf="show2">1</clr-button>
+        <clr-button class="btn" [clrInMenu]="true">2</clr-button>
+        <clr-button class="btn" [clrInMenu]="true">3</clr-button>
+        <clr-button class="btn" [clrInMenu]="true">4</clr-button>
+        <clr-button class="btn" [clrInMenu]="true">5</clr-button>
+        <clr-button class="btn" [clrInMenu]="true">6</clr-button>
+    </clr-button-group>
+</div>
+<button class="btn" (click)="toggleShow2()">
+    Toggle
+</button>
+
+<h6>Toggle the only button from the Overflow Menu View</h6>
+<div class="clr-example">
+    <clr-button-group>
+        <clr-button class="btn">1</clr-button>
+        <clr-button class="btn">2</clr-button>
+        <clr-button class="btn">3</clr-button>
+        <clr-button class="btn">4</clr-button>
+        <clr-button class="btn">5</clr-button>
+        <clr-button class="btn" [clrInMenu]="true" *ngIf="show3">6</clr-button>
+    </clr-button-group>
+</div>
+<button class="btn" (click)="toggleShow3()">
+    Toggle
+</button>
+
+<h6>Toggle from both the Views</h6>
+<div class="clr-example">
+    <clr-button-group>
+        <clr-button class="btn">1</clr-button>
+        <clr-button class="btn">2</clr-button>
+            <clr-button class="btn" *ngIf="show4">3</clr-button>
+        <clr-button class="btn">4</clr-button>
+        <clr-button class="btn" [clrInMenu]="true">5</clr-button>
+        <clr-button class="btn" [clrInMenu]="true" *ngIf="show4">6</clr-button>
+    </clr-button-group>
+</div>
+<button class="btn" (click)="toggleShow4()">
+    Toggle
+</button>
+
+<h6>Toggle All</h6>
+<div class="clr-example">
+    <clr-button-group>
+        <ng-container *ngIf="show5">
+            <clr-button class="btn">1</clr-button>
+            <clr-button class="btn">2</clr-button>
+            <clr-button class="btn">3</clr-button>
+            <clr-button class="btn" [clrInMenu]="true">4</clr-button>
+            <clr-button class="btn" [clrInMenu]="true">5</clr-button>
+            <clr-button class="btn" [clrInMenu]="true">6</clr-button>
+        </ng-container>
+    </clr-button-group>
+</div>
+<button class="btn" (click)="toggleShow5()">
+    Toggle
+</button>

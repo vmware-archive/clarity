@@ -16,6 +16,9 @@
         height: 100vh;
         background: $gray-lighter;
 
+        //Needed for Firefox
+        overflow: hidden;
+
         .alert.alert-app-level {
             flex: 0 0 auto;
             overflow-x: hidden;

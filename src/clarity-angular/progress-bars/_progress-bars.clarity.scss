@@ -2,16 +2,7 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "node_modules/bootstrap/scss/variables";
-@import "node_modules/bootstrap/scss/mixins/border-radius";
-@import "node_modules/bootstrap/scss/mixins";
-@import "node_modules/bootstrap/scss/progress";
-@import "../color/color.clarity";
-@import "../utils/variables.clarity";
-@import "../utils/helpers.clarity";
-@import "../utils/mixins.clarity";
 @import "./utils/mixins.clarity";
-@import "../card/card.clarity";
 
 $clr-progress-defaultBarColor: $clr-action-blue !default;
 $clr-progress-bgColor: $clr-light-gray !default;

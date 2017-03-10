@@ -2,9 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../../clarity-angular/utils/colors.clarity";
-@import "../../clarity-angular/color/utils/helpers.clarity";
-@import "../../clarity-angular/color/color.clarity";
 @import "./color-shared.demo";
 
 $clrdemo-colormaps: ($clr-base-colors, $clr-grays, $clr-action-blues, $clr-action-purples, $clr-reds, $clr-yellows, $clr-greens);

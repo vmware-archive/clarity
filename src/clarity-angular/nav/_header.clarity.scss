@@ -2,14 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../utils/variables.clarity";
-@import "../utils/mixins.clarity";
-@import "../utils/helpers.clarity";
-@import "../utils/layers.clarity";
-@import "../color/color.clarity";
-@import "../typography/typography.clarity";
-@import "../images/icons.clarity";
-
 // variables here...
 $clr-header-bgColor: $gray-darkest !default;
 $clr-header-textColor: clr-getTextColor($clr-header-bgColor, lightest);

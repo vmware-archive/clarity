@@ -2,12 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../utils/colors.clarity";
-@import "../utils/mixins.clarity";
-@import "../utils/variables.clarity";
-@import "../utils/utilities.clarity";
-@import "../color/color.clarity";
-
 @function clr-mergeCommonKeys($elMap: (), $valMap: ()) {
     @return map-merge(map-get($elMap, $clr-typography-commonmap-key), $valMap);
 }

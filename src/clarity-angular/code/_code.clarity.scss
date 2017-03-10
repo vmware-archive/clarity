@@ -2,11 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../utils/variables.clarity";
-@import "../utils/mixins.clarity";
-@import "../utils/helpers.clarity";
-@import "node_modules/bootstrap/scss/code";
-
 @include exports('code.clarity') {
     //Styles for Clarity Code Snippets
     pre, pre[class*="language-"] {

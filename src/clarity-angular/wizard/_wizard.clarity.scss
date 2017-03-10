@@ -2,13 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../utils/variables.clarity";
-@import "../utils/mixins.clarity";
-@import "../utils/helpers.clarity";
-@import "../color/color.clarity";
-@import "../utils/layers.clarity";
-@import "../typography/typography.clarity";
-
 // Backgrounds
 $clr-wizard-main-bgcolor: clr-getColor(1);
 $clr-wizard-sidenav-bgcolor: clr-getColor(2);

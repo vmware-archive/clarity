@@ -2,13 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../utils/variables.clarity";
-@import "../utils/mixins.clarity";
-@import "../utils/helpers.clarity";
-@import "../color/color.clarity";
-@import "../utils/layers.clarity";
-@import "../typography/typography.clarity";
-
 $clr-modal-sm-width: baselineRem(12) !default;
 $clr-modal-md-width: baselineRem(24) !default;
 $clr-modal-lg-width: baselineRem(36) !default;

@@ -477,4 +477,11 @@ $clr-dropdown-caret-left-margin: 2px;
 
 //BS4 overrides
 $enable-flex: true;
-$grid-gutter-width: $clr_baselineRem_1;
+$grid-gutter-width-base: $clr_baselineRem_1;
+$grid-gutter-widths: (
+  xs: $grid-gutter-width-base,
+  sm: $grid-gutter-width-base,
+  md: $grid-gutter-width-base,
+  lg: $grid-gutter-width-base,
+  xl: $grid-gutter-width-base
+);

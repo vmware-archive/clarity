@@ -5,9 +5,12 @@
 @import "../_utils/code";
 
 .clr-example {
-    text-align: center;
 
     &.demo-menu-height{
         height: 336px;
+    }
+
+    &.dropdown-demo {
+        text-align: center;
     }
 }

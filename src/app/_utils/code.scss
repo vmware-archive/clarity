@@ -2,11 +2,34 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../../clarity-angular/utils/variables.clarity";
+/* Vendor */
+
+@import "../../clarity-angular/utils/vendor/decimalRounding.clarity";
+@import "../../clarity-angular/utils/vendor/mathPow.clarity";
+
+/* End Vendor */
+
+
+
+/* Clarity - Begin Part 1 */
+
 @import "../../clarity-angular/utils/mixins.clarity";
 @import "../../clarity-angular/utils/helpers.clarity";
-@import "../../clarity-angular/utils/colors.clarity";
+//@import "./utils/normalize.clarity"; //Deleted
+
+//Color
+@import "../../clarity-angular/color/utils/colors.clarity";
+@import "../../clarity-angular/color/utils/contrast-cache.clarity";
+@import "../../clarity-angular/color/utils/helpers.clarity";
+@import "../../clarity-angular/color/color.clarity"; // depends on colors.clarity, helper.clarity, contrast-cache.clarity
+
+//Layer - z-indices
 @import "../../clarity-angular/utils/layers.clarity";
+
+//Variables
+@import "../../clarity-angular/utils/variables.clarity"; // depends on helpers.clarity, color.clarity
+
+/* Clarity - End Part 1 */
 
 //Styles for Clarity Demos
 .clr-example{

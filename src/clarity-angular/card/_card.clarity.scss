@@ -2,14 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../utils/variables.clarity";
-@import "../utils/mixins.clarity";
-@import "../color/color.clarity";
-@import "../utils/helpers.clarity";
-@import "../typography/typography.clarity";
-@import "../list-group/list-group.clarity";
-@import "../buttons/buttons.clarity";
-
 $card-action-blue: clr-getColor(light-midtone,action-blues);
 $card-light: $gray-light;
 $card-text-fontsize: clr-getTypePropertyValueForDomElement(card_text, font-size);
@@ -67,7 +59,7 @@ $card-children-space-between: $clr_baselineRem_0_5;
         }
 
         .card-header,
-        .card-title, {
+        .card-title {
             @include clr-getTypePropertiesForDomElement(card_title, (color, font-size, font-weight, letter-spacing));
         }
 

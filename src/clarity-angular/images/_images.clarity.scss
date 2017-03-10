@@ -2,11 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import '../utils/variables.clarity';
-@import '../utils/mixins.clarity';
-@import 'node_modules/bootstrap/scss/images';
-@import './icons.clarity';
-
 @mixin icon-background-styles() {
     background-repeat: no-repeat;
     background-size: contain;

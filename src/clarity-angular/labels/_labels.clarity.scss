@@ -2,12 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../utils/variables.clarity";
-@import "../utils/mixins.clarity";
-@import "../color/color.clarity";
-@import "../utils/helpers.clarity";
-@import "../typography/typography.clarity";
-
 $clr-padding-top-bottom: $clr_baselineRem_0_125 !default;
 $clr-padding-left-right: $clr_baselineRem_0_5 !default;
 

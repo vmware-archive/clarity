@@ -2,13 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../utils/variables.clarity";
-@import "../utils/mixins.clarity";
-@import "../utils/helpers.clarity";
-@import "../utils/layers.clarity";
-@import "../color/color.clarity";
-@import "../typography/typography.clarity";
-
 // TODO: would be nice to key text color in subnav off of the bgColor...
 $clr-subnav-bgColor: $gray-lightest !default;
 $clr-nav-shadow: 0 -1px 0 $gray-light-midtone inset;

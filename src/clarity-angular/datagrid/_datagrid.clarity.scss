@@ -2,13 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../utils/variables.clarity";
-@import "../utils/mixins.clarity";
-@import "../utils/helpers.clarity";
-@import "../utils/layers.clarity";
-@import "../images/icons.clarity";
-@import "../tables/tables.clarity";
-
 @include exports('datagrid.clarity') {
     @include basic-table(".datagrid", ".datagrid-head", ".datagrid-body",
         ".datagrid-row", ".datagrid-column", ".datagrid-cell");

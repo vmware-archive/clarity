@@ -2,15 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "./utils/form-variables.clarity";
-@import "../utils/mixins.clarity";
-@import "../utils/helpers.clarity";
-@import "../color/color.clarity";
-@import "../utils/layers.clarity";
-@import "../images/images.clarity";
-@import "../images/icons.clarity";
-@import "./utils/mixins.clarity";
-
 @include exports("select.clarity") {
     .select {
         position: relative;

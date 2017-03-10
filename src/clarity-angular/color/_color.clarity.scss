@@ -2,12 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../utils/colors.clarity";
-@import "../utils/contrast-cache.clarity";
-@import "./utils/helpers.clarity";
-@import "../utils/vendor/decimalRounding.clarity";
-@import "../utils/vendor/mathPow.clarity";
-
 @function clr-getColor($colorIndexOrBase: base, $colorType: grays) {
     $colorMap: _clr-lookupColorMap($colorType);
 

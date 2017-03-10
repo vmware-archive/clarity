@@ -2,11 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../utils/variables.clarity";
-@import "../utils/mixins.clarity";
-@import "../color/color.clarity";
-@import "../utils/helpers.clarity";
-
 @include exports('reboot.clarity') {
     // Customizing BS4 reboot file below from Bootstrap 4.0.0-alpha.3
     // Styles taken directly from BS4 reboot file.

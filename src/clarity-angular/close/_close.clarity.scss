@@ -2,10 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../utils/variables.clarity";
-@import "../utils/mixins.clarity";
-@import "node_modules/bootstrap/scss/close";
-
 @include exports('close.clarity') {
     $close-color--normal: $gray-dark;
     $close-color--hover: $clr-black;

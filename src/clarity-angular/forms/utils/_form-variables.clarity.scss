@@ -2,8 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../../utils/variables.clarity";
-
 $clr-checkbox-radio-height: $clr-icon-dimension-sm !default;
 $clr-indeterminate-checkbox-border-color: $clr-action-blue-light-midtone !default;
 $clr-custom-checkbox-radio-top: ($clr_baselineRem_1 - $clr-checkbox-radio-height) / 2 !default;

@@ -170,33 +170,26 @@ const coreShapes: any = {
     },
 
     "user": `
-            <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-alert can-badge has-solid"
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>user</title>
-
-                <path class="clr-i-outline clr-i-outline-path-1" d="M18,17.17a6.81,6.81,0,1,1,6.81-6.81A6.81,6.81,0,0,1,18,17.17ZM18,5.55a4.81,4.81,0,1,0,4.81,4.81A4.81,4.81,0,0,0,18,5.55Z"/>
-                <path class="clr-i-outline clr-i-outline-path-2" d="M28.76,32.45H7.24a2,2,0,0,1-1.94-2V24.65A1,1,0,0,1,5.5,24,16.08,16.08,0,0,1,18,18.55,15.9,15.9,0,0,1,30.5,24a1,1,0,0,1,.2.6v5.88A2,2,0,0,1,28.76,32.45ZM7.3,25v5.47l21.4,0V25A14.14,14.14,0,0,0,18,20.55,14.44,14.44,0,0,0,7.3,25Z"/>
-
-                <path class="clr-i-outline--alerted clr-i-outline-path-1--alerted" d="M26.46,32.45H4.94a2,2,0,0,1-1.94-2V24.65A1,1,0,0,1,3.21,24a16.08,16.08,0,0,1,12.53-5.49A15.9,15.9,0,0,1,28.2,24a1,1,0,0,1,.2.6v5.88A2,2,0,0,1,26.46,32.45ZM5,25v5.47l21.4,0V25a14.14,14.14,0,0,0-10.67-4.42A14.44,14.44,0,0,0,5,25Z"/>
-                <path class="clr-i-outline--alerted clr-i-outline-path-2--alerted" d="M19.19,13.64A4.81,4.81,0,1,1,20,8.18l1.13-2a6.81,6.81,0,1,0-.36,8.71A3.68,3.68,0,0,1,19.19,13.64Z"/>
-                <path class="clr-i-outline--alerted clr-i-outline-path-3--alerted clr-i-alert" d="M26.85,1l-5.72,9.91a1.28,1.28,0,0,0,1.1,1.91H33.68a1.28,1.28,0,0,0,1.1-1.91L29.06,1A1.28,1.28,0,0,0,26.85,1Z"/>
-
-                <path class="clr-i-outline--badged clr-i-outline-path-1--badged" d="M28.76,32.45H7.24a2,2,0,0,1-1.94-2V24.65A1,1,0,0,1,5.51,24,16.08,16.08,0,0,1,18,18.55,15.9,15.9,0,0,1,30.5,24a1,1,0,0,1,.2.6v5.88A2,2,0,0,1,28.76,32.45ZM7.3,25v5.47l21.4,0V25A14.14,14.14,0,0,0,18,20.55,14.44,14.44,0,0,0,7.3,25Z"/>
-                <path class="clr-i-outline--badged clr-i-outline-path-2--badged" d="M22.5,5.86c0-.19,0-.38,0-.56a6.8,6.8,0,1,0,2.21,5.91A7.47,7.47,0,0,1,22.5,5.86ZM18,15.17a4.81,4.81,0,1,1,4.81-4.81A4.81,4.81,0,0,1,18,15.17Z"/>
-                <circle class="clr-i-outline--badged clr-i-outline-path-3--badged clr-i-badge" cx="30" cy="5.86" r="5"/>
-
-                <path class="clr-i-solid clr-i-solid-path-1" d="M30.5,24A15.9,15.9,0,0,0,18,18.55,16.08,16.08,0,0,0,5.5,24a1,1,0,0,0-.21.61v5.84a2,2,0,0,0,1.94,2H28.76a2,2,0,0,0,1.94-2V24.61A1,1,0,0,0,30.5,24Z"/>
-                <circle class="clr-i-solid clr-i-solid-path-2" cx="17.99" cy="10.36" r="6.81"/>
-
-                <path class="clr-i-solid--alerted clr-i-solid-path-1--alerted" d="M30.5,24A15.9,15.9,0,0,0,18,18.55,16.08,16.08,0,0,0,5.5,24a1,1,0,0,0-.21.61v5.84a2,2,0,0,0,1.94,2H28.76a2,2,0,0,0,1.94-2V24.61A1,1,0,0,0,30.5,24Z"/>
-                <path class="clr-i-solid--alerted clr-i-solid-path-2--alerted" d="M18,17.17a6.77,6.77,0,0,0,4.56-1.77h-.32A3.68,3.68,0,0,1,19,9.89l2.91-5a6.8,6.8,0,1,0-4,12.33Z"/>
-                <path class="clr-i-solid--alerted clr-i-solid-path-3--alerted clr-i-alert" d="M26.85,1.14,21.13,11A1.28,1.28,0,0,0,22.23,13H33.68A1.28,1.28,0,0,0,34.78,11L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z"/>
-
-                <path class="clr-i-solid--badged clr-i-solid-path-1--badged" d="M30.5,24A15.9,15.9,0,0,0,18,18.55,16.08,16.08,0,0,0,5.5,24a1,1,0,0,0-.21.61v5.84a2,2,0,0,0,1.94,2H28.76a2,2,0,0,0,1.94-2V24.61A1,1,0,0,0,30.5,24Z"/>
-                <path class="clr-i-solid--badged clr-i-solid-path-2--badged" d="M18,17.17a6.81,6.81,0,0,0,6.73-5.84A7.47,7.47,0,0,1,22.5,6c0-.23,0-.47,0-.7A6.8,6.8,0,1,0,18,17.17Z"/>
-                <circle class="clr-i-solid--badged clr-i-solid-path-3--badged clr-i-badge" cx="30" cy="6" r="5"/>
-            </svg>
-        `,
+        <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="can-alert can-badge has-solid">		
+            <title>user</title>
+    
+            <path d="M18,17a7,7,0,1,0-7-7A7,7,0,0,0,18,17ZM18,5a5,5,0,1,1-5,5A5,5,0,0,1,18,5Z" class="clr-i-outline clr-i-outline-path-1" />
+            <path d="M30.47,24.37a17.16,17.16,0,0,0-24.93,0A2,2,0,0,0,5,25.74V31a2,2,0,0,0,2,2H29a2,2,0,0,0,2-2V25.74A2,2,0,0,0,30.47,24.37ZM29,31H7V25.73a15.17,15.17,0,0,1,22,0h0Z" class="clr-i-outline clr-i-outline-path-2" />
+            <path d="M30.47,24.37a17.16,17.16,0,0,0-24.93,0A2,2,0,0,0,5,25.74V31a2,2,0,0,0,2,2H29a2,2,0,0,0,2-2V25.74A2,2,0,0,0,30.47,24.37ZM29,31H7V25.73a15.17,15.17,0,0,1,22,0h0Z" class="clr-i-outline--alerted clr-i-outline-path-1--alerted" />
+            <path d="M18,17a7,7,0,0,0,4.45-1.6h-.22A3.68,3.68,0,0,1,20,14.6a5,5,0,1,1,1.24-8.42l1-1.76A7,7,0,1,0,18,17Z" class="clr-i-outline--alerted clr-i-outline-path-2--alerted" />
+            <path d="M26.85,1.14,21.13,11A1.28,1.28,0,0,0,22.23,13H33.68A1.28,1.28,0,0,0,34.78,11L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z"  class="clr-i-outline--alerted clr-i-outline-path-3--alerted clr-i-alert" />
+            <path d="M30.47,24.37a17.16,17.16,0,0,0-24.93,0A2,2,0,0,0,5,25.74V31a2,2,0,0,0,2,2H29a2,2,0,0,0,2-2V25.74A2,2,0,0,0,30.47,24.37ZM29,31H7V25.73a15.17,15.17,0,0,1,22,0h0Z" class="clr-i-outline--badged clr-i-outline-path-1--badged" />
+            <path d="M18,17a7,7,0,0,0,6.85-5.56,7.4,7.4,0,0,1-2.24-6.69A7,7,0,1,0,18,17ZM18,5a5,5,0,1,1-5,5A5,5,0,0,1,18,5Z" class="clr-i-outline--badged clr-i-outline-path-2--badged" />
+            <circle cx="30" cy="6" r="5"  class="clr-i-outline--badged clr-i-outline-path-3--badged clr-i-badge" />
+            <path d="M30.61,24.52a17.16,17.16,0,0,0-25.22,0,1.51,1.51,0,0,0-.39,1v6A1.5,1.5,0,0,0,6.5,33h23A1.5,1.5,0,0,0,31,31.5v-6A1.51,1.51,0,0,0,30.61,24.52Z" class="clr-i-solid clr-i-solid-path-1" />
+            <circle cx="18" cy="10" r="7" class="clr-i-solid clr-i-solid-path-2" />
+            <path d="M30.61,24.52a17.16,17.16,0,0,0-25.22,0,1.51,1.51,0,0,0-.39,1v6A1.5,1.5,0,0,0,6.5,33h23A1.5,1.5,0,0,0,31,31.5v-6A1.51,1.51,0,0,0,30.61,24.52Z" class="clr-i-solid--alerted clr-i-solid-path-1--alerted" />
+            <path d="M18,17a7,7,0,0,0,4.45-1.6h-.22A3.68,3.68,0,0,1,19,9.89l3.16-5.47A7,7,0,1,0,18,17Z" class="clr-i-solid--alerted clr-i-solid-path-2--alerted" />
+            <path d="M26.85,1.14,21.13,11A1.28,1.28,0,0,0,22.23,13H33.68A1.28,1.28,0,0,0,34.78,11L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z"  class="clr-i-solid--alerted clr-i-solid-path-3--alerted clr-i-alert" />
+            <path d="M30.61,24.52a17.16,17.16,0,0,0-25.22,0,1.51,1.51,0,0,0-.39,1v6A1.5,1.5,0,0,0,6.5,33h23A1.5,1.5,0,0,0,31,31.5v-6A1.51,1.51,0,0,0,30.61,24.52Z" class="clr-i-solid--badged clr-i-solid-path-1--badged" />
+            <path d="M18,17a7,7,0,0,0,6.85-5.56,7.4,7.4,0,0,1-2.24-6.69A7,7,0,1,0,18,17Z" class="clr-i-solid--badged clr-i-solid-path-2--badged" />
+            <circle cx="30" cy="6" r="5"  class="clr-i-solid--badged clr-i-solid-path-3--badged clr-i-badge" />
+        </svg>`,
 
     get "avatar"() {
         return this[ "user" ];
@@ -309,44 +302,36 @@ const coreShapes: any = {
             </svg>
         `,
 
+    "ellipsis-horizontal": `
+        <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="can-badge">		
+            <title>ellipsis-horizontal</title>
+    
+            <circle cx="31.1" cy="18" r="2.9" class="clr-i-outline clr-i-outline-path-1" />
+            <circle cx="18" cy="18" r="2.9" class="clr-i-outline clr-i-outline-path-2" />
+            <circle cx="4.9" cy="18" r="2.9" class="clr-i-outline clr-i-outline-path-3" />
+            <circle cx="31.1" cy="18" r="2.9" class="clr-i-outline--badged clr-i-outline-path-1--badged" />
+            <circle cx="18" cy="18" r="2.9" class="clr-i-outline--badged clr-i-outline-path-2--badged" />
+            <circle cx="4.9" cy="18" r="2.9" class="clr-i-outline--badged clr-i-outline-path-3--badged" />
+            <circle cx="30" cy="6" r="5"  class="clr-i-outline--badged clr-i-outline-path-4--badged clr-i-badge" />
+        </svg>`,
+
     "ellipsis-vertical": `
-            <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-badge"
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>ellipsis-vertical</title>
-
-                <circle cx="18" cy="8.18" r="2.18" class="clr-i-outline clr-i-outline-path-1"/>
-                <circle cx="18" cy="18" r="2.18" class="clr-i-outline clr-i-outline-path-2"/>
-                <circle cx="18" cy="27.82" r="2.18" class="clr-i-outline clr-i-outline-path-3"/>
-                
-                <circle cx="18" cy="8.18" r="2.18" class="clr-i-outline--badged clr-i-outline-path-1--badged"/>
-                <circle cx="18" cy="18" r="2.18" class="clr-i-outline--badged clr-i-outline-path-2--badged"/>
-                <circle cx="18" cy="27.82" r="2.18" class="clr-i-outline--badged clr-i-outline-path-3--badged"/>
-                <circle cx="30" cy="6" r="5" class="clr-i-outline--badged clr-i-outline-path-4--badged clr-i-badge"/>
-
-            </svg>
-        `,
+        <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="can-badge">		
+            <title>ellipsis-vertical</title>
+    
+            <circle cx="18" cy="4.9" r="2.9" class="clr-i-outline clr-i-outline-path-1" />
+            <circle cx="18" cy="18" r="2.9" class="clr-i-outline clr-i-outline-path-2" />
+            <circle cx="18" cy="31.1" r="2.9" class="clr-i-outline clr-i-outline-path-3" />
+            <circle cx="18" cy="4.9" r="2.9" class="clr-i-outline--badged clr-i-outline-path-1--badged" />
+            <circle cx="18" cy="18" r="2.9" class="clr-i-outline--badged clr-i-outline-path-2--badged" />
+            <circle cx="18" cy="31.1" r="2.9" class="clr-i-outline--badged clr-i-outline-path-3--badged" />
+            <circle cx="30" cy="6" r="5"  class="clr-i-outline--badged clr-i-outline-path-4--badged clr-i-badge" />
+        </svg>`,
 
     /*TODO: ellispes-vertical is deprecated and will be removed in 0.9.0*/
     get "ellipses-vertical"() {
         return this[ "ellipsis-vertical" ];
     },
-
-    "ellipsis-horizontal": `
-            <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-badge"
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>ellipsis-horizontal</title>
-
-                <circle cx="27.82" cy="18" r="2.18" class="clr-i-outline clr-i-outline-path-1" />
-                <circle cx="18" cy="18" r="2.18" class="clr-i-outline clr-i-outline-path-2" />
-                <circle cx="8.18" cy="18" r="2.18" class="clr-i-outline clr-i-outline-path-3" />
-                        
-                <circle cx="27.82" cy="18" r="2.18" class="clr-i-outline--badged clr-i-outline-path-1--badged" />
-                <circle cx="18" cy="18" r="2.18" class="clr-i-outline--badged clr-i-outline-path-2--badged" />
-                <circle cx="8.18" cy="18" r="2.18" class="clr-i-outline--badged clr-i-outline-path-3--badged" />
-                <circle cx="30" cy="6" r="5"  class="clr-i-outline--badged clr-i-outline-path-4--badged clr-i-badge" />
-
-            </svg>
-        `,
 
     /*TODO: ellispes-horizontal is deprecated and will be removed in 0.9.0*/
     get "ellipses-horizontal"() {

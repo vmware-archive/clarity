@@ -278,45 +278,36 @@ export const essentialShapes: any = {
             <path d="M11.11,19.06a7.07,7.07,0,0,0,4.11,6.41l1.09-1.74a5,5,0,1,1,5.22-8.39l1.09-1.76a7.06,7.06,0,0,0-11.51,5.48Z" class="clr-i-solid clr-i-solid-path-2"/>
         </svg>`,
 
+    "ellipsis-horizontal": `
+        <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="can-badge">		
+            <title>ellipsis-horizontal</title>
+    
+            <circle cx="31.1" cy="18" r="2.9" class="clr-i-outline clr-i-outline-path-1" />
+            <circle cx="18" cy="18" r="2.9" class="clr-i-outline clr-i-outline-path-2" />
+            <circle cx="4.9" cy="18" r="2.9" class="clr-i-outline clr-i-outline-path-3" />
+            <circle cx="31.1" cy="18" r="2.9" class="clr-i-outline--badged clr-i-outline-path-1--badged" />
+            <circle cx="18" cy="18" r="2.9" class="clr-i-outline--badged clr-i-outline-path-2--badged" />
+            <circle cx="4.9" cy="18" r="2.9" class="clr-i-outline--badged clr-i-outline-path-3--badged" />
+            <circle cx="30" cy="6" r="5"  class="clr-i-outline--badged clr-i-outline-path-4--badged clr-i-badge" />
+        </svg>`,
+
     "ellipsis-vertical": `
-            <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-badge"
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>ellipsis-vertical</title>
-
-                <circle cx="18" cy="8.18" r="2.18" class="clr-i-outline clr-i-outline-path-1"/>
-                <circle cx="18" cy="18" r="2.18" class="clr-i-outline clr-i-outline-path-2"/>
-                <circle cx="18" cy="27.82" r="2.18" class="clr-i-outline clr-i-outline-path-3"/>
-                
-                <circle cx="18" cy="8.18" r="2.18" class="clr-i-outline--badged clr-i-outline-path-1--badged"/>
-                <circle cx="18" cy="18" r="2.18" class="clr-i-outline--badged clr-i-outline-path-2--badged"/>
-                <circle cx="18" cy="27.82" r="2.18" class="clr-i-outline--badged clr-i-outline-path-3--badged"/>
-                <circle cx="30" cy="6" r="5" class="clr-i-outline--badged clr-i-outline-path-4--badged clr-i-badge"/>
-
-            </svg>
-        `,
+        <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="can-badge">		
+            <title>ellipsis-vertical</title>
+    
+            <circle cx="18" cy="4.9" r="2.9" class="clr-i-outline clr-i-outline-path-1" />
+            <circle cx="18" cy="18" r="2.9" class="clr-i-outline clr-i-outline-path-2" />
+            <circle cx="18" cy="31.1" r="2.9" class="clr-i-outline clr-i-outline-path-3" />
+            <circle cx="18" cy="4.9" r="2.9" class="clr-i-outline--badged clr-i-outline-path-1--badged" />
+            <circle cx="18" cy="18" r="2.9" class="clr-i-outline--badged clr-i-outline-path-2--badged" />
+            <circle cx="18" cy="31.1" r="2.9" class="clr-i-outline--badged clr-i-outline-path-3--badged" />
+            <circle cx="30" cy="6" r="5"  class="clr-i-outline--badged clr-i-outline-path-4--badged clr-i-badge" />
+        </svg>`,
 
     /*TODO: ellispes-vertical is deprecated and will be removed in 0.9.0*/
     get "ellipses-vertical"() {
         return this[ "ellipsis-vertical" ];
     },
-
-
-    "ellipsis-horizontal": `
-            <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-badge"
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>ellipsis-horizontal</title>
-
-                <circle cx="27.82" cy="18" r="2.18" class="clr-i-outline clr-i-outline-path-1" />
-                <circle cx="18" cy="18" r="2.18" class="clr-i-outline clr-i-outline-path-2" />
-                <circle cx="8.18" cy="18" r="2.18" class="clr-i-outline clr-i-outline-path-3" />
-                        
-                <circle cx="27.82" cy="18" r="2.18" class="clr-i-outline--badged clr-i-outline-path-1--badged" />
-                <circle cx="18" cy="18" r="2.18" class="clr-i-outline--badged clr-i-outline-path-2--badged" />
-                <circle cx="8.18" cy="18" r="2.18" class="clr-i-outline--badged clr-i-outline-path-3--badged" />
-                <circle cx="30" cy="6" r="5"  class="clr-i-outline--badged clr-i-outline-path-4--badged clr-i-badge" />
-
-            </svg>
-        `,
 
     /*TODO: ellispes-horizontal is deprecated and will be removed in 0.9.0*/
     get "ellipses-horizontal"() {
@@ -1399,21 +1390,27 @@ export const essentialShapes: any = {
             <path d="M24.84,26.23a1,1,0,0,0-1.4.29,16.6,16.6,0,0,1-3.51,3.77c-.33.25-1.56,1.2-2.08,1-.36-.11-.15-.82-.08-1.12l.53-1.57c.22-.64,4.05-12,4.47-13.3.62-1.9.35-3.77-2.48-3.32-.77.08-8.58,1.09-8.72,1.1a1,1,0,0,0,.13,2s3-.39,3.33-.42a.88.88,0,0,1,.85.44,2.47,2.47,0,0,1-.07,1.71c-.26,1-4.37,12.58-4.5,13.25a2.78,2.78,0,0,0,1.18,3,5,5,0,0,0,3.08.83h0a8.53,8.53,0,0,0,3.09-.62c2.49-1,5.09-3.66,6.46-5.75A1,1,0,0,0,24.84,26.23Z" class="clr-i-solid clr-i-solid-path-2" />
         </svg>`,
 
-
     "mobile": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="has-solid">		
             <title>mobile</title>
     
-            <path d="M26,34H10a3,3,0,0,1-3-3V5a3,3,0,0,1,3-3H26a3,3,0,0,1,3,3V31A3,3,0,0,1,26,34ZM10,4A1,1,0,0,0,9,5V31a1,1,0,0,0,1,1H26a1,1,0,0,0,1-1V5a1,1,0,0,0-1-1Z" class="clr-i-outline clr-i-outline-path-1" />
-            <rect x="10.17" y="6" width="15.67" height="1.6" class="clr-i-outline clr-i-outline-path-2" />
-            <rect x="10.17" y="26" width="15.67" height="1.6" class="clr-i-outline clr-i-outline-path-3" />
-            <circle cx="18.04" cy="29.79" r="1.38" class="clr-i-outline clr-i-outline-path-4" />
-            <path d="M27,2H9A2,2,0,0,0,7,4V32a2,2,0,0,0,2,2H27a2,2,0,0,0,2-2V4A2,2,0,0,0,27,2ZM18,31.17a1.38,1.38,0,1,1,1.38-1.37A1.37,1.37,0,0,1,18,31.17Zm9-3.58H9V26H27ZM27,7H9V5.42H27Z" class="clr-i-solid clr-i-solid-path-1" />
+            <path d="M25,4H11A2,2,0,0,0,9,6V30a2,2,0,0,0,2,2H25a2,2,0,0,0,2-2V6A2,2,0,0,0,25,4ZM11,6H25V24H11Zm0,24V26H25v4Z" class="clr-i-outline clr-i-outline-path-1" />
+            <rect x="17" y="27" width="2" height="2" class="clr-i-outline clr-i-outline-path-2" />
+            <path d="M25,4H11A2,2,0,0,0,9,6V30a2,2,0,0,0,2,2H25a2,2,0,0,0,2-2V6A2,2,0,0,0,25,4ZM19,30H17V28h2Zm-8-4V6H25V26Z" class="clr-i-solid clr-i-solid-path-1" />
         </svg>`,
 
     get "mobile-phone"() {
         return this[ "mobile" ];
     },
+
+    "tablet": `
+        <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="has-solid">		
+            <title>tablet</title>
+
+            <rect x="17" y="29" width="2" height="2" class="clr-i-outline clr-i-outline-path-1" />
+            <path d="M30,2H6A2,2,0,0,0,4,4V32a2,2,0,0,0,2,2H30a2,2,0,0,0,2-2V4A2,2,0,0,0,30,2Zm0,2V26.38H6V4ZM6,32V28H30v4Z" class="clr-i-outline clr-i-outline-path-2" />
+            <path d="M30,2H6A2,2,0,0,0,4,4V32a2,2,0,0,0,2,2H30a2,2,0,0,0,2-2V4A2,2,0,0,0,30,2ZM19,32H17V30h2ZM6,28V4H30V28Z" class="clr-i-solid clr-i-solid-path-1" />
+        </svg>`,
 
     "no-access": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="has-solid">		
@@ -1423,7 +1420,6 @@ export const essentialShapes: any = {
             <path d="M27.15,15H8.85A1.85,1.85,0,0,0,7,16.85v2.29A1.85,1.85,0,0,0,8.85,21H27.15A1.85,1.85,0,0,0,29,19.15V16.85A1.85,1.85,0,0,0,27.15,15Zm.25,4.15a.25.25,0,0,1-.25.25H8.85a.25.25,0,0,1-.25-.25V16.85a.25.25,0,0,1,.25-.25H27.15a.25.25,0,0,1,.25.25Z" class="clr-i-outline clr-i-outline-path-2" />
             <path d="M18,2A16,16,0,1,0,34,18,16,16,0,0,0,18,2ZM29.15,20H6.85A.85.85,0,0,1,6,19.15V16.85A.85.85,0,0,1,6.85,16H29.15a.85.85,0,0,1,.85.85v2.29A.85.85,0,0,1,29.15,20Z" class="clr-i-solid clr-i-solid-path-1" />
         </svg>`,
-
 
     "organization": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="has-solid">		
@@ -1442,6 +1438,63 @@ export const essentialShapes: any = {
     get "flow-chart"() {
         return this[ "organization" ];
     },
+
+    "credit-card": `
+        <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="has-solid">		
+            <title>credit-card</title>
+    
+            <path d="M32,6H4A2,2,0,0,0,2,8V28a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V8A2,2,0,0,0,32,6Zm0,2,0,12H4L4,8ZM4,28V24H32v4Z" class="clr-i-outline clr-i-outline-path-1" />
+            <rect x="7" y="3" width="22" height="30" rx="0.96" ry="0.96" transform="translate(36) rotate(90)" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="2" class="clr-i-solid clr-i-solid-path-1" />
+            <path d="M32,6H4A2,2,0,0,0,2,8V28a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V8A2,2,0,0,0,32,6Zm0,18H4V20H32Z" class="clr-i-solid clr-i-solid-path-2" />
+        </svg>`,
+
+    "balance": `
+        <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <title>balance</title>
+            
+            <path d="M24,33H12a1,1,0,0,1,0-2H24a1,1,0,0,1,0,2Z" class="clr-i-outline clr-i-outline-path-1" />
+            <rect x="17" y="9" width="2" height="22.5" class="clr-i-outline clr-i-outline-path-2" />
+            <path d="M28,7H8A1,1,0,0,1,8,5H28a1,1,0,0,1,0,2Z" class="clr-i-outline clr-i-outline-path-3" />
+            <path d="M26.93,24.79a7.23,7.23,0,0,1-5.81-2.89l-.6-.8,1.59-1.21.6.8a5.28,5.28,0,0,0,8.42,0l.6-.8,1.59,1.21-.6.8A7.23,7.23,0,0,1,26.93,24.79Z" class="clr-i-outline clr-i-outline-path-4" />
+            <path d="M30.51,19.25a.8.8,0,0,1-.73-.48L26.93,12.2l-2.85,6.57a.8.8,0,0,1-1.47-.64L26.2,9.87a.83.83,0,0,1,1.47,0l3.58,8.26a.8.8,0,0,1-.73,1.12Z" class="clr-i-outline clr-i-outline-path-5" />
+            <path d="M9.68,24.79A7.23,7.23,0,0,1,3.88,21.9l-.6-.8L4.86,19.9l.6.8a5.28,5.28,0,0,0,8.42,0l.6-.8,1.59,1.21-.6.8A7.23,7.23,0,0,1,9.68,24.79Z" class="clr-i-outline clr-i-outline-path-6" />
+            <path d="M13.26,19.25a.8.8,0,0,1-.73-.48L9.68,12.2,6.84,18.77a.8.8,0,0,1-1.47-.64L8.95,9.87a.83.83,0,0,1,1.47,0L14,18.13a.8.8,0,0,1-.73,1.12Z" class="clr-i-outline clr-i-outline-path-7" />
+        </svg>`,
+
+    "id-badge": `
+        <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="can-alert can-badge has-solid">		
+            <title>id-badge</title>
+    
+            <path d="M18,22a4.23,4.23,0,1,0-4.23-4.23A4.23,4.23,0,0,0,18,22Zm0-6.86a2.63,2.63,0,1,1-2.63,2.63A2.63,2.63,0,0,1,18,15.14Z" class="clr-i-outline clr-i-outline-path-1" />
+            <path d="M22,4a2,2,0,0,0-2-2H16a2,2,0,0,0-2,2v7h8ZM20,9H16V4h4Z" class="clr-i-outline clr-i-outline-path-2" />
+            <path d="M26,30V27.7a1.12,1.12,0,0,0-.26-.73A9.9,9.9,0,0,0,18,23.69,9.9,9.9,0,0,0,10.26,27a1.13,1.13,0,0,0-.26.73V30h1.6V27.87A8.33,8.33,0,0,1,18,25.29a8.33,8.33,0,0,1,6.4,2.59V30Z" class="clr-i-outline clr-i-outline-path-3" />
+            <path d="M28,6H24V8h4V32H8V8h4V6H8A2,2,0,0,0,6,8V32a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V8A2,2,0,0,0,28,6Z" class="clr-i-outline clr-i-outline-path-4" />
+            <path d="M18,22a4.23,4.23,0,1,0-4.23-4.23A4.23,4.23,0,0,0,18,22Zm0-6.86a2.63,2.63,0,1,1-2.63,2.63A2.63,2.63,0,0,1,18,15.14Z" class="clr-i-outline--alerted clr-i-outline-path-1--alerted" />
+            <path d="M10.26,27a1.13,1.13,0,0,0-.26.73V30h1.6V27.87A8.33,8.33,0,0,1,18,25.29a8.33,8.33,0,0,1,6.4,2.59V30H26V27.7a1.12,1.12,0,0,0-.26-.73A9.9,9.9,0,0,0,18,23.69,9.9,9.9,0,0,0,10.26,27Z" class="clr-i-outline--alerted clr-i-outline-path-2--alerted" />
+            <path d="M19,9.89,19.56,9H16V4h4V8.24l2-3.46V4a2,2,0,0,0-2-2H16a2,2,0,0,0-2,2v7h4.64A3.66,3.66,0,0,1,19,9.89Z" class="clr-i-outline--alerted clr-i-outline-path-3--alerted" />
+            <path d="M28,15.4V32H8V8h4V6H8A2,2,0,0,0,6,8V32a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V15.4Z" class="clr-i-outline--alerted clr-i-outline-path-4--alerted" />
+            <path d="M26.85,1.14,21.13,11A1.28,1.28,0,0,0,22.23,13H33.68A1.28,1.28,0,0,0,34.78,11L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z"  class="clr-i-outline--alerted clr-i-outline-path-5--alerted clr-i-alert" />
+            <path d="M18,22a4.23,4.23,0,1,0-4.23-4.23A4.23,4.23,0,0,0,18,22Zm0-6.86a2.63,2.63,0,1,1-2.63,2.63A2.63,2.63,0,0,1,18,15.14Z" class="clr-i-outline--badged clr-i-outline-path-1--badged" />
+            <path d="M22,4a2,2,0,0,0-2-2H16a2,2,0,0,0-2,2v7h8ZM20,9H16V4h4Z" class="clr-i-outline--badged clr-i-outline-path-2--badged" />
+            <path d="M10.26,27a1.13,1.13,0,0,0-.26.73V30h1.6V27.87A8.33,8.33,0,0,1,18,25.29a8.33,8.33,0,0,1,6.4,2.59V30H26V27.7a1.12,1.12,0,0,0-.26-.73A9.9,9.9,0,0,0,18,23.69,9.9,9.9,0,0,0,10.26,27Z" class="clr-i-outline--badged clr-i-outline-path-3--badged" />
+            <path d="M28,13.22V32H8V8h4V6H8A2,2,0,0,0,6,8V32a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V13.5A7.49,7.49,0,0,1,28,13.22Z" class="clr-i-outline--badged clr-i-outline-path-4--badged" />
+            <circle cx="30" cy="6" r="5"  class="clr-i-outline--badged clr-i-outline-path-5--badged clr-i-badge" />
+            <circle cx="18" cy="17.77" r="4.23" class="clr-i-solid clr-i-solid-path-1" />
+            <path d="M21,4a2,2,0,0,0-2-2H17a2,2,0,0,0-2,2v6h6Z" class="clr-i-solid clr-i-solid-path-2" />
+            <path d="M10.26,27a1.13,1.13,0,0,0-.26.73V30H26V27.7a1.12,1.12,0,0,0-.26-.73A9.9,9.9,0,0,0,18,23.69,9.9,9.9,0,0,0,10.26,27Z" class="clr-i-solid clr-i-solid-path-3" />
+            <path d="M28,6H23V8h5V32H8V8h5V6H8A2,2,0,0,0,6,8V32a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V8A2,2,0,0,0,28,6Z" class="clr-i-solid clr-i-solid-path-4" />
+            <path d="M19,9.89,21,6.5V4a2,2,0,0,0-2-2H17a2,2,0,0,0-2,2v6h4Z" class="clr-i-solid--alerted clr-i-solid-path-1--alerted" />
+            <circle cx="18" cy="17.77" r="4.23" class="clr-i-solid--alerted clr-i-solid-path-2--alerted" />
+            <path d="M10.26,27a1.13,1.13,0,0,0-.26.73V30H26V27.7a1.12,1.12,0,0,0-.26-.73A9.9,9.9,0,0,0,18,23.69,9.9,9.9,0,0,0,10.26,27Z" class="clr-i-solid--alerted clr-i-solid-path-3--alerted" />
+            <path d="M28,15.4V32H8V8h5V6H8A2,2,0,0,0,6,8V32a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V15.4Z" class="clr-i-solid--alerted clr-i-solid-path-4--alerted" />
+            <path d="M26.85,1.14,21.13,11A1.28,1.28,0,0,0,22.23,13H33.68A1.28,1.28,0,0,0,34.78,11L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z"  class="clr-i-solid--alerted clr-i-solid-path-5--alerted clr-i-alert" />
+            <circle cx="18" cy="17.77" r="4.23" class="clr-i-solid--badged clr-i-solid-path-1--badged" />
+            <path d="M21,4a2,2,0,0,0-2-2H17a2,2,0,0,0-2,2v6h6Z" class="clr-i-solid--badged clr-i-solid-path-2--badged" />
+            <path d="M10.26,27a1.13,1.13,0,0,0-.26.73V30H26V27.7a1.12,1.12,0,0,0-.26-.73A9.9,9.9,0,0,0,18,23.69,9.9,9.9,0,0,0,10.26,27Z" class="clr-i-solid--badged clr-i-solid-path-3--badged" />
+            <path d="M28,13.22V32H8V8h5V6H8A2,2,0,0,0,6,8V32a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V13.5A7.49,7.49,0,0,1,28,13.22Z" class="clr-i-solid--badged clr-i-solid-path-4--badged" />
+            <circle cx="30" cy="6" r="5"  class="clr-i-solid--badged clr-i-solid-path-5--badged clr-i-badge" />
+        </svg>`
+
 
 
 };

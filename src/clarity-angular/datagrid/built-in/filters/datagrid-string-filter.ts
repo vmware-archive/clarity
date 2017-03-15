@@ -44,7 +44,7 @@ export class DatagridStringFilter extends DatagridFilterRegistrar<DatagridString
         if (value instanceof RegisteredFilter) {
             this.setFilter(value);
         } else {
-            this.setFilter(new DatagridStringFilterImpl(value));
+            this.setFilter(new DatagridStringFilterImpl(<StringFilter<any>>value));
         }
     }
 

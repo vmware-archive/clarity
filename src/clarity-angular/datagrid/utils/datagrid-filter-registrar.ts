@@ -18,7 +18,7 @@ export abstract class DatagridFilterRegistrar<F extends Filter<any>> implements 
         if (filter instanceof RegisteredFilter) {
             this.registered = <RegisteredFilter<F>>filter;
         } else if (filter) {
-            this.registered = this.filters.add(filter);
+            this.registered = this.filters.add(<F>filter);
         }
     };
 

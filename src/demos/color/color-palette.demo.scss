@@ -1,10 +1,9 @@
 // Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
-@import "~clarity-ui/src/utils/colors.clarity";
-@import "~clarity-ui/src/utils/helpers.clarity";
-@import "~clarity-ui/src/color/color.clarity";
+
 @import "./color-shared.demo";
+
 $clrdemo-colormaps: ($clr-base-colors, $clr-grays, $clr-action-blues, $clr-action-purples, $clr-reds, $clr-yellows, $clr-greens);
 .card-block {
     padding-bottom: 0;

@@ -70,6 +70,9 @@ export class FiltersProvider {
             hasUnregistered = true;
         });
         this._all.push(registered);
+        if (filter.isActive()) {
+            this._change.next([filter]);
+        }
         return registered;
     }
 

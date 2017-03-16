@@ -112,10 +112,11 @@ export default function(): void {
             this.filtersInstance.add(filter);
             let registeredFilterTest = this.filtersInstance.add(filter2);
             this.filtersInstance.add(filter3);
+            expect(nbChanges).toBe(3);
 
             registeredFilterTest.unregister();
             registeredFilterTest.unregister();
-            expect(nbChanges).toBe(1);
+            expect(nbChanges).toBe(4);
 
             let filters = this.filtersInstance.getActiveFilters();
             expect(filters.length).toBe(2);

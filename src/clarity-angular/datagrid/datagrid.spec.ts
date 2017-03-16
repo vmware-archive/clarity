@@ -89,7 +89,6 @@ export default function (): void {
                     let filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
                     let filter = new TestFilter();
                     filters.add(filter);
-                    filter.changes.next(true);
                     expect(context.testComponent.nbRefreshed).toBe(1);
                 });
 
@@ -134,9 +133,7 @@ export default function (): void {
                     let builtinStringFilter = new DatagridStringFilterImpl(new DatagridPropertyStringFilter("test"));
                     builtinStringFilter.value = "1234";
                     filters.add(customFilter); // custom filter
-                    console.log(testStringFilter.isActive());
                     filters.add(testStringFilter); // custom StringFilter ??
-                    console.log(builtinStringFilter.isActive());
                     filters.add(builtinStringFilter);
                     expect(context.testComponent.latestState.filters).toEqual([
                         customFilter,

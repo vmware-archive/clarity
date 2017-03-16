@@ -16,6 +16,9 @@ import { Items } from "./providers/items";
 import { Comparator } from "./interfaces/comparator";
 import { Filter } from "./interfaces/filter";
 import { RowActionService } from "./providers/row-action-service";
+import { StringFilter } from "./interfaces/string-filter";
+import { DatagridStringFilterImpl } from "./built-in/filters/datagrid-string-filter-impl";
+import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
 
 export default function (): void {
     describe("Datagrid component", function () {
@@ -121,6 +124,28 @@ export default function (): void {
                         },
                         filters: [ filter ]
                     });
+                });
+
+                it("emits the correct data for all filter types", function () {
+                    let filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
+                    let customFilter = new TestFilter();
+                    let testStringFilter = new DatagridStringFilterImpl(new TestStringFilter());
+                    testStringFilter.value = "whatever";
+                    let builtinStringFilter = new DatagridStringFilterImpl(new DatagridPropertyStringFilter("test"));
+                    builtinStringFilter.value = "1234";
+                    filters.add(customFilter); // custom filter
+                    console.log(testStringFilter.isActive());
+                    filters.add(testStringFilter); // custom StringFilter ??
+                    console.log(builtinStringFilter.isActive());
+                    filters.add(builtinStringFilter);
+                    expect(context.testComponent.latestState.filters).toEqual([
+                        customFilter,
+                        testStringFilter,
+                        {
+                            property: "test",
+                            value: "1234"
+                        }
+                    ]);
                 });
             });
         });
@@ -327,4 +352,10 @@ class TestFilter implements Filter<number> {
     };
 
     changes = new Subject<boolean>();
+}
+
+class TestStringFilter implements StringFilter<number> {
+    accepts(item: number, search: string) {
+        return true;
+    };
 }

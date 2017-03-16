@@ -11,7 +11,6 @@ import {Subscription} from "rxjs/Subscription";
 
 import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
 import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
-import {DatagridStringFilter} from "./built-in/filters/datagrid-string-filter";
 import {DatagridItems} from "./datagrid-items";
 import {DatagridRow} from "./datagrid-row";
 import {DatagridPlaceholder} from "./datagrid-placeholder";
@@ -24,6 +23,7 @@ import {Sort} from "./providers/sort";
 import {RowActionService} from "./providers/row-action-service";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 import {DatagridActionOverflow} from "./datagrid-action-overflow";
+import {DatagridStringFilterImpl} from "./built-in/filters/datagrid-string-filter-impl";
 
 
 
@@ -96,8 +96,8 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
         if (activeFilters.length > 0) {
             state.filters = [];
             for (let filter of activeFilters) {
-                if (filter instanceof DatagridStringFilter) {
-                    let stringFilter = (<DatagridStringFilter>filter).filter;
+                if (filter instanceof DatagridStringFilterImpl) {
+                    let stringFilter = (<DatagridStringFilterImpl>filter).filterFn;
                     if (stringFilter instanceof DatagridPropertyStringFilter) {
                         /*
                          * Special case again for the default object property filter,
@@ -105,7 +105,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
                          */
                         state.filters.push({
                             property: (<DatagridPropertyStringFilter>stringFilter).prop,
-                            value: (<DatagridStringFilter>filter).value
+                            value: (<DatagridStringFilterImpl>filter).value
                         });
                         continue;
                     }

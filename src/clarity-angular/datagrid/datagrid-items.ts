@@ -25,15 +25,15 @@ export class DatagridItems implements OnChanges, DoCheck {
         if ("rawItems" in changes) {
             const currentItems = changes["rawItems"].currentValue;
             if (!this._differ && currentItems) {
-                this._differ = this._differs.find(currentItems).create(this._changeDetector, this.trackBy);
+                this._differ = this._differs.find(currentItems).create(this._changeDetector, this._items.trackBy);
             }
         }
     }
 
-    /**
-     * Tracking function to identify objects. Default is reference equality.
-     */
-    @Input("clrDgItemsTrackBy") public trackBy: TrackByFn = (index: number, item: any) => item;
+    @Input("clrDgItemsTrackBy")
+    set trackBy(value: TrackByFn) {
+        this._items.trackBy = value;
+    }
 
     ngDoCheck() {
         if (this._differ) {

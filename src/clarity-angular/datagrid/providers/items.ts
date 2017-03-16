@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Injectable} from "@angular/core";
+import {Injectable, TrackByFn} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {Subscription} from "rxjs/Subscription";
 import {Observable} from "rxjs/Observable";
@@ -20,6 +20,12 @@ export class Items {
      * Indicates if the data is currently loading
      */
     public loading = false;
+
+    //TODO: Verify that trackBy is registered for the *ngFor case too
+    /**
+     * Tracking function to identify objects. Default is reference equality.
+     */
+    public trackBy: TrackByFn = (index: number, item: any) => item;
 
     /**
      * Subscriptions to the other providers changes.
@@ -70,6 +76,7 @@ export class Items {
     public set all(items: any[]) {
         if (this.smart) {
             this._all = items;
+            this.emitAllChanges();
             this._filterItems();
         } else {
             this._displayed = items;
@@ -110,6 +117,17 @@ export class Items {
     // We do not want to expose the Subject itself, but the Observable which is read-only
     public get change(): Observable<any[]> {
         return this._change.asObservable();
+    };
+
+    private _allChanges = new Subject<any[]>();
+    private emitAllChanges(): void {
+        if (this.smart) {
+            this._allChanges.next(this._all);
+        }
+    }
+
+    public get allChanges(): Observable<any[]> {
+        return this._allChanges.asObservable();
     };
 
     /**

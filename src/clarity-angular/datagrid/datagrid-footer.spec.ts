@@ -6,13 +6,20 @@
 import {Component} from "@angular/core";
 import {TestContext} from "./helpers.spec";
 import {DatagridFooter} from "./datagrid-footer";
+import {Selection, SelectionType} from "./providers/selection";
+import {FiltersProvider} from "./providers/filters";
+import {Items} from "./providers/items";
+import {Sort} from "./providers/sort";
+import {Page} from "./providers/page";
+
+const PROVIDERS_NEEDED = [Selection, Items, FiltersProvider, Sort, Page];
 
 export default function(): void {
     describe("DatagridFooter component", function() {
         let context: TestContext<DatagridFooter, SimpleTest>;
 
         beforeEach(function() {
-            context = this.create(DatagridFooter, SimpleTest);
+            context = this.create(DatagridFooter, SimpleTest, PROVIDERS_NEEDED);
         });
 
         it("projects content", function() {
@@ -21,6 +28,49 @@ export default function(): void {
 
         it("adds the .datagrid-cell class to the host", function() {
             expect(context.clarityElement.classList.contains("datagrid-foot")).toBeTruthy();
+        });
+
+        it("does not show the selection details when selection type is None", function() {
+            let clarityDirectiveSelection: Selection = context.clarityDirective.selection;
+            clarityDirectiveSelection.selectionType = SelectionType.None;
+
+            context.detectChanges();
+
+            expect(context.clarityElement.querySelector(".datagrid-footer-select")).toBeNull();
+        });
+
+        it("does not show the selection details when selection type is single", function() {
+            let clarityDirectiveSelection: Selection = context.clarityDirective.selection;
+            clarityDirectiveSelection.selectionType = SelectionType.Single;
+            clarityDirectiveSelection.current.push(1);
+
+            context.detectChanges();
+
+            expect(context.clarityElement.querySelector(".datagrid-footer-select")).toBeNull();
+        });
+
+        it("shows the selection details when more than one item is selected", function() {
+            let clarityDirectiveSelection: Selection = context.clarityDirective.selection;
+            clarityDirectiveSelection.selectionType = SelectionType.Multi;
+            clarityDirectiveSelection.current.push(1);
+
+            context.detectChanges();
+
+            expect(context.clarityElement.querySelector(".datagrid-footer-select")).not.toBeNull();
+            expect(context.clarityElement.querySelector(".datagrid-footer-select").textContent).toMatch("1");
+
+
+            clarityDirectiveSelection.current.push(1);
+            context.detectChanges();
+
+            expect(context.clarityElement.querySelector(".datagrid-footer-select")).not.toBeNull();
+            expect(context.clarityElement.querySelector(".datagrid-footer-select").textContent).toMatch("2");
+
+            clarityDirectiveSelection.current = [];
+
+            context.detectChanges();
+
+            expect(context.clarityElement.querySelector(".datagrid-footer-select")).toBeNull();
         });
     });
 }

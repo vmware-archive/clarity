@@ -269,6 +269,28 @@
             }
         }
 
+        .datagrid-footer-select.checkbox {
+            line-height: inherit;
+            flex: 1 1 100%;
+
+            label {
+                color: unset;
+                cursor: default;
+                opacity: 1;
+            }
+
+            input[type="checkbox"] + label {
+                &::before, &::after {
+                    top: 8px;
+                }
+
+                &::after {
+                    border-left-color: $clr-white;
+                    border-bottom-color: $clr-white;
+                }
+            }
+        }
+
         .datagrid-row-actions {
             flex: 0 0 $clr-datagrid-select-column-size;
             // IE10 needs this

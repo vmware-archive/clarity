@@ -54,10 +54,10 @@ export default function(): void {
         });
 
         it("receives an input for the trackBy option", function () {
-            expect(this.clarityDirective.trackBy).toBeUndefined();
+            expect(this.itemsProvider.trackBy).toBeUndefined();
             this.testComponent.trackBy = (index: number, item: any) => index;
             this.fixture.detectChanges();
-            expect(this.clarityDirective.trackBy).toBe(this.testComponent.trackBy);
+            expect(this.itemsProvider.trackBy).toBe(this.testComponent.trackBy);
         });
     });
 }

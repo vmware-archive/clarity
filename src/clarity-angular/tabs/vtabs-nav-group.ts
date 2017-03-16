@@ -16,6 +16,7 @@ import {Component} from "@angular/core";
     template: `
         <div class="nav-group">
             <ng-content select="label"></ng-content>
+            
             <ul class="nav-list" role="tablist">              
                 <ng-content select="clr-vtabs-nav-link"></ng-content>
              </ul>

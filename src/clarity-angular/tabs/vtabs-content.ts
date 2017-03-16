@@ -13,10 +13,13 @@ import {Component} from "@angular/core";
 @Component({
     selector: "clr-vtabs-content",
     template: `
-        <section class="vtabs-content" *ngIf="activated" role="tabpanel">
-            <ng-content></ng-content>
-        </section>
-`
+            <ng-content *ngIf="activated"></ng-content>
+    `,
+    host: {
+        "[class.vtabs-content]": "true",
+        "[class.active]": "activated",
+        "role": "tabpanel"
+    }
 })
 
 export class VTabsContent {

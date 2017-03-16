@@ -3,12 +3,13 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Injectable} from "@angular/core";
+import {Injectable, TrackByFn} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {Subscription} from "rxjs/Subscription";
 import {Observable} from "rxjs/Observable";
 
 import {Items} from "./items";
+import {FiltersProvider} from "./filters";
 
 let nbSelection: number = 0;
 
@@ -22,16 +23,45 @@ export enum SelectionType {
 export class Selection {
     public id: string;
 
-    constructor(private _items: Items) {
+    constructor(private _items: Items, private _filters: FiltersProvider) {
         this.id = "clr-dg-selection" + (nbSelection++);
-        this._itemsSub = _items.change.subscribe(() => {
-            if (!this._selectable || this.debounce) {
+
+        this._filtersSub = this._filters.change.subscribe(() => {
+            if (!this._selectable) {
                 return;
             }
-            /* TODO */
-            this.current.length = 0;
-            this.emitChange();
+            this.clearSelection();
         });
+
+        this._itemsSub = this._items.allChanges.subscribe((updatedItems) => {
+            if (!this._selectable) {
+                return;
+            }
+            let leftOver: any[];
+            if (this._items.trackBy) {
+                let trackBy: TrackByFn = this._items.trackBy;
+                let updatedTracked: any[] = updatedItems.map((item, index) => trackBy(index, item));
+                leftOver = this.current.filter((selected, index) => {
+                    return updatedTracked.indexOf(trackBy(index, selected)) > -1;
+                });
+            } else {
+                leftOver = this.current.filter(selected => updatedItems.indexOf(selected) > -1);
+            }
+            if (this.current.length !== leftOver.length) {
+                //TODO: Discussed this with Eudes and this is fine for now.
+                //But we need to figure out a different pattern for the
+                //child triggering the parent change detection problem.
+                //Using setTimeout for now to fix this.
+                setTimeout(() => {
+                    this.current = leftOver;
+                }, 0);
+            }
+        });
+    }
+
+    public clearSelection(): void {
+        this.current.length = 0;
+        this.emitChange();
     }
 
     private _selectionType: SelectionType = SelectionType.None;
@@ -53,17 +83,21 @@ export class Selection {
     /**
      * Ignore items changes in the same change detection cycle.
      */
-    private debounce = false;
+    private debounce: boolean = false;
 
     /**
      * Subscriptions to the other providers changes.
      */
     private _itemsSub: Subscription;
+    private _filtersSub: Subscription;
+
+
     /**
      * Cleans up our subscriptions to other providers
      */
     public destroy() {
         this._itemsSub.unsubscribe();
+        this._filtersSub.unsubscribe();
     }
 
     /**
@@ -157,8 +191,13 @@ export class Selection {
         if ((this._selectionType !== SelectionType.Multi) || !this._items.displayed) {
             return false;
         }
+        let displayedItems: any[] = this._items.displayed;
         let nbDisplayed = this._items.displayed.length;
-        return nbDisplayed > 0 && this.current.length === nbDisplayed;
+        if (nbDisplayed < 1) {
+            return false;
+        }
+        let temp: any[] = displayedItems.filter(item => this.current.indexOf(item) > -1);
+        return temp.length === displayedItems.length;
     }
 
     /**

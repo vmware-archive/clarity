@@ -4,20 +4,31 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    Component, ContentChild, HostBinding, Input, Output, EventEmitter, ElementRef, ViewChild
+    Component,
+    ContentChild,
+    HostBinding,
+    Input,
+    Output,
+    EventEmitter,
+    ElementRef,
+    ViewChild
 } from "@angular/core";
 import {Subscription} from "rxjs";
 
-import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
-import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
-import {Comparator} from "./interfaces/comparator";
-import {CustomFilter} from "./providers/custom-filter";
-import {Sort} from "./providers/sort";
-import {DatagridFilterRegistrar} from "./utils/datagrid-filter-registrar";
-import {FiltersProvider} from "./providers/filters";
-import {DatagridStringFilterImpl} from "./built-in/filters/datagrid-string-filter-impl";
-import {SortOrder} from "./interfaces/sort-order";
-import {DragDispatcher} from "./providers/drag-dispatcher";
+import { DatagridPropertyComparator } from "./built-in/comparators/datagrid-property-comparator";
+import { DatagridPropertyStringFilter } from "./built-in/filters/datagrid-property-string-filter";
+import { Comparator } from "./interfaces/comparator";
+import { CustomFilter } from "./providers/custom-filter";
+import { Sort } from "./providers/sort";
+import { DatagridFilterRegistrar } from "./utils/datagrid-filter-registrar";
+import { FiltersProvider } from "./providers/filters";
+import { DatagridStringFilterImpl } from "./built-in/filters/datagrid-string-filter-impl";
+import { SortOrder } from "./interfaces/sort-order";
+import { DragDispatcher } from "./providers/drag-dispatcher";
+import { DatagridHideableColumn } from "./datagrid-hideable-column";
+
+let nbCount: number = 0;
+
 
 @Component({
     selector: "clr-dg-column",
@@ -27,9 +38,9 @@ import {DragDispatcher} from "./providers/drag-dispatcher";
             <ng-content select="clr-dg-filter, clr-dg-string-filter"></ng-content>
 
             <clr-dg-string-filter
-                *ngIf="field && !customFilter"
-                [clrDgStringFilter]="registered"
-                [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
+                    *ngIf="field && !customFilter"
+                    [clrDgStringFilter]="registered"
+                    [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
 
             <ng-template #columnTitle><ng-content></ng-content></ng-template>
             
@@ -48,10 +59,13 @@ import {DragDispatcher} from "./providers/drag-dispatcher";
         </div>
     `,
     host: {
-        "[class.datagrid-column]": "true"
+        "[class.datagrid-column]": "true",
+        "[class.datagrid-column--hidden]": "hidden"
     }
 })
+
 export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilterImpl> {
+
     constructor(private _sort: Sort, filters: FiltersProvider, private _dragDispatcher: DragDispatcher) {
         super(filters);
         this._sortSubscription = _sort.change.subscribe(sort => {
@@ -67,6 +81,36 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
             }
             // deprecated: to be removed - END
         });
+
+        this.columnId = "dg-col-" + nbCount.toString(); // Approximate a GUID
+        nbCount++;
+        // put index here
+    }
+
+    /**
+     * @property columnId
+     *
+     * @description
+     * A DatagridColumn class variable that holds the number of DatagridColumn instances for a Datagrid.
+     * It is used to generate a unique id for the DatagridColumn instance.
+     *
+     * @type {string}
+     */
+    public columnId: string;
+
+    /**
+     * @property hidden
+     *
+     * @description
+     * A property that allows the column to be hidden / shown with css
+     * Note the default allows the DatagridColumn to have an *ngIf on it. (EHCAIWC - will occur if its not initialized)
+     *
+     * @default false
+     *
+     * @type boolean
+     */
+    public get hidden(): boolean {
+        return !!this.hideable && this.hideable.hidden;
     }
 
     @ViewChild("columnHandle") set handleElRef(value: ElementRef) {
@@ -269,4 +313,15 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
 
     @Output("clrFilterValueChange") filterValueChange = new EventEmitter();
 
+    /***********
+     *
+     * @property hideable
+     *
+     * @description
+     * When a column is hideable this is defined with an instance of DatagridHideableColumn.
+     * When its not hideable should be undefined.
+     *
+     * @type {DatagridHideableColumn}
+     */
+    public hideable: DatagridHideableColumn;
 }

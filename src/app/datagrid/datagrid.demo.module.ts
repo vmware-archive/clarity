@@ -27,6 +27,7 @@ import {DatagridScrollingDemo} from "./scrolling/scrolling";
 import {DatagridColumnSizingDemo} from "./column-sizing/column-sizing";
 import {DatagridExpandableRowsDemo} from "./expandable-rows/expandable-rows";
 import {DatagridPreserveSelectionDemo} from "./preserve-selection/preserve-selection";
+import {DatagridHideShowDemo} from "./hide-show-columns/hide-show";
 
 import {ColorFilter} from "./utils/color-filter";
 import {Example} from "./utils/example";
@@ -51,6 +52,7 @@ import {DatagridTestCasesAsyncDemo} from "./test-cases-async/test-cases-async";
         DatagridCustomRenderingDemo,
         DatagridFilteringDemo,
         DatagridFullDemo,
+        DatagridHideShowDemo,
         DatagridPaginationDemo,
         DatagridPaginationScrollingDemo,
         DatagridSelectionDemo,

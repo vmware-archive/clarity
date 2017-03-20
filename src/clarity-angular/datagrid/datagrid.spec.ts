@@ -20,7 +20,8 @@ import { StringFilter } from "./interfaces/string-filter";
 import { DatagridStringFilterImpl } from "./built-in/filters/datagrid-string-filter-impl";
 import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
 import {GlobalExpandableRows} from "./providers/global-expandable-rows";
-import {DatagridRenderOrganizer} from "./render/render-organizer";
+import { DatagridRenderOrganizer } from "./render/render-organizer";
+import { HideableColumnService } from "./providers/hideable-column.service";
 
 export default function (): void {
     describe("Datagrid component", function () {
@@ -28,7 +29,7 @@ export default function (): void {
             let context: TestContext<Datagrid, FullTest>;
 
             beforeEach(function () {
-                context = this.create(Datagrid, FullTest);
+                context = this.create(Datagrid, FullTest, [HideableColumnService]);
             });
 
             it("allows to manually force a refresh of displayed items when data mutates", function () {
@@ -57,7 +58,7 @@ export default function (): void {
             let context: TestContext<Datagrid, FullTest>;
 
             beforeEach(function () {
-                context = this.create(Datagrid, FullTest);
+                context = this.create(Datagrid, FullTest,  [HideableColumnService]);
             });
 
             it("receives an input for the loading state", function () {
@@ -164,7 +165,7 @@ export default function (): void {
             let context: TestContext<Datagrid, FullTest>;
 
             beforeEach(function () {
-                context = this.create(Datagrid, FullTest);
+                context = this.create(Datagrid, FullTest,  [HideableColumnService]);
             });
 
             it("projects columns in the header", function () {
@@ -179,19 +180,19 @@ export default function (): void {
 
         describe("Iterators", function () {
             it("projects rows when using ngFor", function () {
-                this.context = this.create(Datagrid, NgForTest);
+                this.context = this.create(Datagrid, NgForTest,  [HideableColumnService]);
                 let body = this.context.clarityElement.querySelector(".datagrid-body");
                 expect(body.textContent).toMatch(/1\s*1\s*2\s*4\s*3\s*9/);
             });
 
             it("uses the rows template when using clrDgItems", function () {
-                this.context = this.create(Datagrid, FullTest);
+                this.context = this.create(Datagrid, FullTest,  [HideableColumnService]);
                 let body = this.context.clarityElement.querySelector(".datagrid-body");
                 expect(body.textContent).toMatch(/1\s*1\s*2\s*4\s*3\s*9/);
             });
 
             it("respects the trackBy option when using clrDgItems", function () {
-                this.context = this.create(Datagrid, TrackByTest);
+                this.context = this.create(Datagrid, TrackByTest,  [HideableColumnService]);
                 let oldFirstRow = this.context.clarityElement.querySelector("clr-dg-row");
                 this.context.testComponent.items = [ 42 ];
                 this.context.detectChanges();
@@ -208,7 +209,7 @@ export default function (): void {
             let actionOverflow: HTMLElement[];
 
             it("it has cells for action overflows if there is at least one of them.", function () {
-                context = this.create(Datagrid, ActionableRowTest);
+                context = this.create(Datagrid, ActionableRowTest,  [HideableColumnService]);
                 rowActionService = context.getClarityProvider(RowActionService);
                 context.detectChanges();
                 expect(rowActionService.hasActionableRow).toBe(true);
@@ -222,7 +223,7 @@ export default function (): void {
             });
 
             it("it has no cells for action overflows if there is none of them.", function () {
-                context = this.create(Datagrid, ActionableRowTest);
+                context = this.create(Datagrid, ActionableRowTest, [HideableColumnService]);
                 rowActionService = context.getClarityProvider(RowActionService);
                 context.testComponent.showIfGreaterThan = 10;
                 /*
@@ -248,7 +249,7 @@ export default function (): void {
 
         describe("Expandable rows", function () {
             it("detects if there is at least one expandable row", function () {
-                let context = this.create(Datagrid, ExpandableRowTest);
+                let context = this.create(Datagrid, ExpandableRowTest, [HideableColumnService]);
                 let globalExpandableRows: GlobalExpandableRows = context.getClarityProvider(GlobalExpandableRows);
                 /*
                  * Why do we need an extra change detection here? See actionable rows solution above, same issue.

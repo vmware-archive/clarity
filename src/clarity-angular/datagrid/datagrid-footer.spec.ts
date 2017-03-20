@@ -11,8 +11,9 @@ import {FiltersProvider} from "./providers/filters";
 import {Items} from "./providers/items";
 import {Sort} from "./providers/sort";
 import {Page} from "./providers/page";
+import { HideableColumnService } from "./providers/hideable-column.service";
 
-const PROVIDERS_NEEDED = [Selection, Items, FiltersProvider, Sort, Page];
+const PROVIDERS_NEEDED = [Selection, Items, FiltersProvider, Sort, Page, HideableColumnService];
 
 export default function(): void {
     describe("DatagridFooter component", function() {

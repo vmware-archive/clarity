@@ -14,6 +14,7 @@ import {Page} from "./providers/page";
 import {RowActionService} from "./providers/row-action-service";
 import {RowExpand} from "./providers/row-expand";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
+import { HideableColumnService } from "./providers/hideable-column.service";
 
 export default function(): void {
     describe("DatagridRowDetail component", function() {
@@ -21,7 +22,8 @@ export default function(): void {
 
         beforeEach(function() {
             context = this.create(DatagridRowDetail, FullTest,
-                [Selection, Items, FiltersProvider, Sort, Page, RowActionService, RowExpand, DatagridRenderOrganizer]);
+                [Selection, Items, FiltersProvider, Sort, Page, RowActionService, RowExpand, DatagridRenderOrganizer,
+                    HideableColumnService]);
         });
 
         it("projects content", function() {

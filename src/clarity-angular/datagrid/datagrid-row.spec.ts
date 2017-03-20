@@ -19,9 +19,11 @@ import {DatagridRenderOrganizer} from "./render/render-organizer";
 import {DomAdapter} from "./render/dom-adapter";
 import {RowExpand} from "./providers/row-expand";
 import {LoadingListener} from "../loading/loading-listener";
+import { HideableColumnService } from "./providers/hideable-column.service";
+import { DatagridHideableColumn } from "./datagrid-hideable-column";
 
 const PROVIDERS = [Selection, Items, FiltersProvider, Sort, Page, RowActionService,
-    GlobalExpandableRows, DatagridRenderOrganizer, DomAdapter];
+    GlobalExpandableRows, DatagridRenderOrganizer, DomAdapter, HideableColumnService];
 
 export default function(): void {
     describe("DatagridRow component", function() {
@@ -242,6 +244,31 @@ export default function(): void {
                 context.detectChanges();
             }
         });
+
+        describe("Hide/Show", function() {
+            let context: TestContext<DatagridRow, ExpandTest>;
+            let hideableColumnService: HideableColumnService;
+
+            beforeEach(function () {
+                context = this.create(DatagridRow, HideShowTest, PROVIDERS);
+                hideableColumnService = context.getClarityProvider(HideableColumnService);
+            });
+
+            it("should update cells for columns", function () {
+                // TODO: ffigure out how to test for cell changes and make sure updateCellsForColumns is called
+                spyOn(context.clarityDirective, "updateCellsForColumns");
+                hideableColumnService = context.getClarityProvider(HideableColumnService);
+
+                let hiddenColumns: DatagridHideableColumn[] = [
+                    new DatagridHideableColumn(null, "dg-col-0", false),
+                    new DatagridHideableColumn(null, "dg-col-1", true)
+                ];
+
+                hideableColumnService.updateColumnList(hiddenColumns);
+                expect(context.clarityDirective.updateCellsForColumns).toHaveBeenCalled();
+
+            });
+        });
     });
 }
 
@@ -265,3 +292,12 @@ class FullTest {
 class ExpandTest {
     expanded = false;
 }
+
+@Component({
+    template: `
+        <clr-dg-row>
+            <clr-dg-cell>ID</clr-dg-cell>
+            <clr-dg-cell>Name</clr-dg-cell>
+        </clr-dg-row>`
+})
+class HideShowTest { }

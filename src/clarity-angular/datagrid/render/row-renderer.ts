@@ -3,24 +3,21 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Directive, ContentChildren, QueryList, OnDestroy, AfterViewInit, AfterContentInit} from "@angular/core";
-import {Subscription} from "rxjs/Subscription";
-import {DatagridRenderOrganizer} from "./render-organizer";
-import {DatagridCellRenderer} from "./cell-renderer";
+import { Directive, ContentChildren, QueryList, AfterContentInit } from "@angular/core";
+import { Subscription } from "rxjs/Subscription";
+import { DatagridRenderOrganizer } from "./render-organizer";
+import { DatagridCellRenderer } from "./cell-renderer";
 
 @Directive({
     selector: "clr-dg-row, clr-dg-row-detail"
 })
-export class DatagridRowRenderer implements OnDestroy, AfterContentInit, AfterViewInit {
+export class DatagridRowRenderer implements AfterContentInit {
 
     constructor(private organizer: DatagridRenderOrganizer) {
         this.subscription = organizer.alignColumns.subscribe(() => this.setWidths());
     }
 
     private subscription: Subscription;
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
-    }
 
     @ContentChildren(DatagridCellRenderer) cells: QueryList<DatagridCellRenderer>;
 

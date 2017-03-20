@@ -4,7 +4,7 @@
 
 @include exports('datagrid.clarity') {
     @include basic-table(".datagrid", ".datagrid-head", ".datagrid-body",
-        ".datagrid-row", ".datagrid-column", ".datagrid-cell");
+            ".datagrid-row", ".datagrid-column", ".datagrid-cell");
 
     $clr-datagrid-icon-size: rem(1);
     $clr-datagrid-action-arrow-size: $clr_baselineRem_0_25;
@@ -61,12 +61,20 @@
         &.datagrid-fixed-width {
             flex: 0 0 auto;
         }
+
+        &--hidden {
+            display: none;
+        }
     }
 
     .datagrid-cell {
         flex: 1 1 auto;
         &.datagrid-fixed-width {
             flex: 0 0 auto;
+        }
+
+        &--hidden {
+            display: none;
         }
     }
 
@@ -339,7 +347,12 @@
         .datagrid-foot-select.checkbox {
             display: block;
             line-height: inherit;
-            flex: 1 1 100%;
+            flex: 1 1 $clr_baselineRem_1_5 - 2px;
+
+            // Has a possible sibling in the .column-switch-wrapper
+            + .column-switch-wrapper {
+                margin-left: 2px;
+            }
 
             label {
                 color: unset;
@@ -584,6 +597,83 @@
         .pagination {
             margin-left: $clr_baselineRem_1_5;
             height: $clr_baselineRem_1_5 - 2px;
+        }
+
+        .column-switch-wrapper {
+            // Has a possible sibling in the .datagrid-foot-select.checkbox container
+            flex: 1 1 $clr_baselineRem_1;
+
+            .column-toggle--action {
+
+                // I'm overriding .btn/.btn-link here but am not confident this is the correct way to do it.
+                min-width: $clr_baselineRem_0_75;
+                padding-left: 0;
+                padding-right: 0;
+
+                clr-icon {
+                    color: $clr-dark-midtone-gray;
+                    &:hover {
+                        color: $clr-action-blue;
+                    }
+
+                    &--active, .active {
+                        color: $clr-action-blue;
+                    }
+                }
+            }
+
+            .column-switch {
+                border-radius: $clr-default-borderradius;
+                padding: $clr_baselineRem_0_75;
+                background-color: $clr-white;
+                border: 1px solid $clr-light-midtone-gray;
+                box-shadow: 0 1px 3px rgba(116, 116, 116, 0.25);
+                width: 250px;
+                display: flex;
+                flex-direction: column;
+
+                .switch-header {
+                    display: flex;
+                    justify-content: space-between;
+                    font-weight: clr-getTypePropertyValueForDomElement(datagrid_column_toggle_title, font-weight);
+                    font-size: clr-getTypePropertyValueForDomElement(datagrid_column_toggle_title, font-size);
+                    padding-bottom: $clr_baselineRem_0_5;
+
+                    button {
+                        min-width: $clr_baselineRem_0_75;
+                        margin: 0;
+                        padding: 0;
+                        color: $clr-dark-midtone-gray;
+
+                        &:hover {
+                            color: $clr-action-blue;
+                        }
+                    }
+                }
+
+                .switch-content {
+                    max-height: 300px;
+                    overflow-y: auto;
+                    min-height: 25px; // prevents scrollbars in IE.
+
+                    li {
+                        line-height: $clr_baselineRem_1;
+                        padding-left: 2px; // Hack that doesn't fix issue #539. TODO: Fix issue #539.
+                    }
+                }
+
+                .switch-footer {
+                    .btn {
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    .action-right {
+                        display: flex;
+                        justify-content: flex-end
+                    }
+                }
+            }
         }
     }
 

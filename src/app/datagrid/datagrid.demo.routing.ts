@@ -27,6 +27,7 @@ import {DatagridExpandableRowsDemo} from "./expandable-rows/expandable-rows";
 import {DatagridPaginationScrollingDemo} from "./pagination-scrolling/pagination-scrolling";
 import {DatagridTestCasesDemo} from "./test-cases/test-cases";
 import {DatagridTestCasesAsyncDemo} from "./test-cases-async/test-cases-async";
+import {DatagridHideShowDemo} from "./hide-show-columns/hide-show";
 
 const ROUTES: Routes = [
     {
@@ -53,7 +54,8 @@ const ROUTES: Routes = [
             {path: "expandable-rows", component: DatagridExpandableRowsDemo},
             {path: "full", component: DatagridFullDemo},
             {path: "test-cases", component: DatagridTestCasesDemo},
-            {path: "test-cases-async", component: DatagridTestCasesAsyncDemo}
+            {path: "test-cases-async", component: DatagridTestCasesAsyncDemo},
+            {path: "hide-show", component: DatagridHideShowDemo}
         ]
     }
 ];

@@ -18,9 +18,11 @@ import { DatagridStringFilter } from "./built-in/filters/datagrid-string-filter"
 import { DatagridRenderOrganizer } from "./render/render-organizer";
 import { DomAdapter } from "./render/dom-adapter";
 import { SortOrder } from "./interfaces/sort-order";
-import {DragDispatcher} from "./providers/drag-dispatcher";
+import { DragDispatcher } from "./providers/drag-dispatcher";
+import { DatagridHideableColumnDirective } from "./datagrid-hidable-column.directive";
+import { DatagridHideableColumn } from "./datagrid-hideable-column";
 
-const PROVIDERS_NEEDED = [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher];
+const PROVIDERS_NEEDED = [ Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher ];
 
 export default function (): void {
     describe("DatagridColumn component", function () {
@@ -36,6 +38,11 @@ export default function (): void {
                 filtersService = new FiltersProvider();
                 comparator = new TestComparator();
                 component = new DatagridColumn(sortService, filtersService, dragDispatcherService);
+            });
+
+            it("has an id for identification", function () {
+                expect(component.columnId).toBeDefined();
+                expect(component.columnId).toEqual(jasmine.any(String));
             });
 
             it("receives a comparator to sort the column", function () {
@@ -180,7 +187,7 @@ export default function (): void {
 
             it("accepts a custom filter in the projected content", function () {
                 this.context = this.create(DatagridColumn, FilterTest, PROVIDERS_NEEDED);
-                expect(TestBed.get(FiltersProvider).getActiveFilters()).toEqual([this.context.testComponent.filter]);
+                expect(TestBed.get(FiltersProvider).getActiveFilters()).toEqual([ this.context.testComponent.filter ]);
             });
 
             it("accepts a custom string filter in the projected content", function () {
@@ -189,7 +196,7 @@ export default function (): void {
                 // We make the filter active to see if the FiltersProvider provider knows about it
                 this.stringFilter.value = "hello";
                 this.context.detectChanges();
-                expect(TestBed.get(FiltersProvider).getActiveFilters()).toEqual([this.stringFilter]);
+                expect(TestBed.get(FiltersProvider).getActiveFilters()).toEqual([ this.stringFilter ]);
             });
 
             it("prioritizes custom comparators over the default property name one", function () {
@@ -207,7 +214,7 @@ export default function (): void {
                 this.context.testComponent.field = "test";
                 this.context.detectChanges();
                 expect(this.context.clarityElement.querySelectorAll("clr-dg-filter").length).toBe(1);
-                expect(TestBed.get(FiltersProvider).getActiveFilters()).toEqual([this.context.testComponent.filter]);
+                expect(TestBed.get(FiltersProvider).getActiveFilters()).toEqual([ this.context.testComponent.filter ]);
             });
 
             it("prioritizes custom string filters over the default property name one", function () {
@@ -219,7 +226,7 @@ export default function (): void {
                 this.stringFilter.value = "hello";
                 this.context.detectChanges();
                 expect(this.context.clarityElement.querySelectorAll("clr-dg-filter").length).toBe(1);
-                expect(TestBed.get(FiltersProvider).getActiveFilters()).toEqual([this.stringFilter]);
+                expect(TestBed.get(FiltersProvider).getActiveFilters()).toEqual([ this.stringFilter ]);
             });
         });
 
@@ -272,6 +279,13 @@ export default function (): void {
                 expect(context.clarityElement.classList.contains("asc")).toBeFalsy();
                 expect(context.clarityElement.classList.contains("desc")).toBeTruthy();
             });
+
+            it("adds the .datagrid-column--hidden when not visible", function () {
+
+                context.clarityDirective.hideable = new DatagridHideableColumn(null, "dg-col-0", true);
+                context.detectChanges();
+                expect(context.clarityElement.classList.contains("datagrid-column--hidden")).toBeTruthy();
+            });
         });
 
         describe("View filters", function () {
@@ -315,11 +329,22 @@ export default function (): void {
                 expect(activeFiltersTest.length).toBe(2);
             });
         });
+
+        describe("View hideability", function () {
+            it("is hideable when there is a HideableColumnDirective", function () {
+                this.context = this.create(DatagridColumn, HideableTest, PROVIDERS_NEEDED);
+                expect(this.context.clarityDirective.hideable).toBeTruthy();
+            });
+            it("takes an input for the dgHideableColumnDirective", function () {
+                this.context = this.create(DatagridColumn, HideableTest, PROVIDERS_NEEDED);
+                expect(this.context.clarityDirective.hidden).toEqual(false);
+            });
+        });
     });
 }
 
 class TestComparator implements Comparator<number> {
-    compare(a: number, b: number): number {
+    compare( a: number, b: number ): number {
         return 0;
     }
 }
@@ -329,7 +354,7 @@ class TestFilter implements Filter<number> {
         return true;
     };
 
-    accepts(n: number): boolean {
+    accepts( n: number ): boolean {
         return true;
     };
 
@@ -337,7 +362,7 @@ class TestFilter implements Filter<number> {
 }
 
 class TestStringFilter implements StringFilter<string> {
-    accepts(s: string, search: string): boolean {
+    accepts( s: string, search: string ): boolean {
         return true;
     }
 }
@@ -345,9 +370,9 @@ class TestStringFilter implements StringFilter<string> {
 @Component({
     template: `
         <clr-dg-column
-            [clrDgSortBy]="comparator"
-            [clrDgField]="field"
-            [(clrDgSorted)]="sorted">
+                [clrDgSortBy]="comparator"
+                [clrDgField]="field"
+                [(clrDgSorted)]="sorted">
             Hello world
         </clr-dg-column>
     `
@@ -361,9 +386,9 @@ class SimpleDeprecatedTest {
 @Component({
     template: `
         <clr-dg-column
-            [clrDgSortBy]="comparator"
-            [clrDgField]="field"
-            [(clrDgSortOrder)]="sortOrder">
+                [clrDgSortBy]="comparator"
+                [clrDgField]="field"
+                [(clrDgSortOrder)]="sortOrder">
             Hello world
         </clr-dg-column>
     `
@@ -422,7 +447,7 @@ class PreFilterTest {
         <clr-dg-column>
             Column Title
             <clr-dg-string-filter *ngIf="show" [(clrFilterValue)]="filterValue"
-                                               [clrDgStringFilter]="filter"></clr-dg-string-filter>
+                                  [clrDgStringFilter]="filter"></clr-dg-string-filter>
         </clr-dg-column>
     `
 })
@@ -430,5 +455,18 @@ class UnregisterTest {
     show: boolean;
     filter = new TestStringFilter();
     filterValue = "M";
+}
+
+@Component({
+    template: `
+        <clr-dg-column>
+            <ng-container *clrDgHideableColumn="{hidden: false}">
+                Name
+            </ng-container>
+        </clr-dg-column>`
+})
+
+class HideableTest {
+    @ViewChild(DatagridHideableColumnDirective) dgHideable: DatagridHideableColumnDirective;
 }
 

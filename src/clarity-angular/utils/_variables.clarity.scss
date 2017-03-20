@@ -16,6 +16,7 @@ $clr_baselineRem_0_25: baselineRem(0.25);
 $clr_baselineRem_0_3: baselineRem(0.3);
 $clr_baselineRem_0_375: baselineRem(0.375);
 $clr_baselineRem_0_5: baselineRem(0.5);
+$clr_baselineRem_0_72: baselineRem(0.72);
 $clr_baselineRem_0_75: baselineRem(0.75);
 $clr_baselineRem_1: baselineRem(1);
 $clr_baselineRem_1_25: baselineRem(1.25);
@@ -346,6 +347,7 @@ $clr-typography-dom-to-type-element: (
     card_text: p1,
     card_title: h4,
     datagrid_placeholder: h5,
+    datagrid_column_toggle_title: h5,
     dropdown_text: p1,
     dropdown_header: p4,
     form_block_label: h5,

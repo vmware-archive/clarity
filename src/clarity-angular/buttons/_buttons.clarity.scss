@@ -153,7 +153,7 @@ $clr-button-appearance-map: (
     &:visited {
         color: map-get($button-property-map, color);
     }
-    
+
     &:hover {
         background-color: map-get($button-property-map, hover-background-color);
         color: map-get($button-property-map, hover-color);

@@ -7,40 +7,49 @@ import {
     AfterViewInit, OnDestroy, Component, ContentChild, ContentChildren, EventEmitter,
     Input, Output, QueryList, AfterContentInit
 } from "@angular/core";
-import {Subscription} from "rxjs/Subscription";
+import { Subscription } from "rxjs/Subscription";
 
-import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
-import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
-import {DatagridItems} from "./datagrid-items";
-import {DatagridRow} from "./datagrid-row";
-import {DatagridPlaceholder} from "./datagrid-placeholder";
-import {DatagridIfExpanded} from "./datagrid-if-expanded";
-import {State} from "./interfaces/state";
-import {FiltersProvider} from "./providers/filters";
-import {Items} from "./providers/items";
-import {Page} from "./providers/page";
-import {Selection, SelectionType} from "./providers/selection";
-import {Sort} from "./providers/sort";
-import {RowActionService} from "./providers/row-action-service";
-import {GlobalExpandableRows} from "./providers/global-expandable-rows";
-import {DatagridRenderOrganizer} from "./render/render-organizer";
-import {DatagridActionOverflow} from "./datagrid-action-overflow";
-import {DatagridStringFilterImpl} from "./built-in/filters/datagrid-string-filter-impl";
+import { DatagridPropertyComparator } from "./built-in/comparators/datagrid-property-comparator";
+import { DatagridPropertyStringFilter } from "./built-in/filters/datagrid-property-string-filter";
+import { DatagridItems } from "./datagrid-items";
+import { DatagridRow } from "./datagrid-row";
+import { DatagridPlaceholder } from "./datagrid-placeholder";
+import { DatagridIfExpanded } from "./datagrid-if-expanded";
+import { State } from "./interfaces/state";
+import { FiltersProvider } from "./providers/filters";
+import { Items } from "./providers/items";
+import { Page } from "./providers/page";
+import { Selection, SelectionType } from "./providers/selection";
+import { Sort } from "./providers/sort";
+import { RowActionService } from "./providers/row-action-service";
+import { GlobalExpandableRows } from "./providers/global-expandable-rows";
+import { DatagridRenderOrganizer } from "./render/render-organizer";
+import { DatagridActionOverflow } from "./datagrid-action-overflow";
+import { DatagridStringFilterImpl } from "./built-in/filters/datagrid-string-filter-impl";
+import { HideableColumnService } from "./providers/hideable-column.service";
+import { DatagridColumn } from "./datagrid-column";
 
 @Component({
     selector: "clr-datagrid",
     templateUrl: "./datagrid.html",
-    providers: [Selection, Sort, FiltersProvider, Page, Items, DatagridRenderOrganizer,
-        RowActionService, GlobalExpandableRows],
+    providers: [ Selection, Sort, FiltersProvider, Page, Items, DatagridRenderOrganizer,
+        RowActionService, GlobalExpandableRows, HideableColumnService ],
     host: {
         "[class.datagrid-host]": "true"
     }
 })
 export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
 
-    constructor(public selection: Selection, private sort: Sort, private filters: FiltersProvider,
-                private page: Page, public items: Items, public rowActionService: RowActionService,
-                public expandableRows: GlobalExpandableRows, private organizer: DatagridRenderOrganizer) {}
+    constructor(private columnService: HideableColumnService,
+                private filters: FiltersProvider,
+                private organizer: DatagridRenderOrganizer,
+                private page: Page,
+                private sort: Sort,
+                public items: Items,
+                public expandableRows: GlobalExpandableRows,
+                public selection: Selection,
+                public rowActionService: RowActionService) {
+    }
 
     /* reference to the enum so that template can access */
     public SELECTION_TYPE = SelectionType;
@@ -53,7 +62,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     }
 
     @Input("clrDgLoading")
-    public set loading(value: boolean) {
+    public set loading( value: boolean ) {
         this.items.loading = value;
     }
 
@@ -67,15 +76,15 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
      */
     private triggerRefresh() {
         let state: State = {};
-        if (this.page.size > 0) {
+        if ( this.page.size > 0 ) {
             state.page = {
                 from: this.page.firstItem,
                 to: this.page.lastItem,
                 size: this.page.size
             };
         }
-        if (this.sort.comparator) {
-            if (this.sort.comparator instanceof DatagridPropertyComparator) {
+        if ( this.sort.comparator ) {
+            if ( this.sort.comparator instanceof DatagridPropertyComparator ) {
                 /*
                  * Special case for the default object property comparator,
                  * we give the property name instead of the actual comparator.
@@ -93,12 +102,12 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
         }
 
         let activeFilters = this.filters.getActiveFilters();
-        if (activeFilters.length > 0) {
+        if ( activeFilters.length > 0 ) {
             state.filters = [];
-            for (let filter of activeFilters) {
-                if (filter instanceof DatagridStringFilterImpl) {
+            for ( let filter of activeFilters ) {
+                if ( filter instanceof DatagridStringFilterImpl ) {
                     let stringFilter = (<DatagridStringFilterImpl>filter).filterFn;
-                    if (stringFilter instanceof DatagridPropertyStringFilter) {
+                    if ( stringFilter instanceof DatagridPropertyStringFilter ) {
                         /*
                          * Special case again for the default object property filter,
                          * we give the property name instead of the full filter object.
@@ -132,8 +141,8 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
      * Array of all selected items
      */
     @Input("clrDgSelected")
-    set selected(value: any[]) {
-        if (value) {
+    set selected( value: any[] ) {
+        if ( value ) {
             this.selection.selectionType = SelectionType.Multi;
         } else {
             this.selection.selectionType = SelectionType.None;
@@ -147,9 +156,9 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
      * Selected item in single-select mode
      */
     @Input("clrDgSingleSelected")
-    set singleSelected(value: any) {
+    set singleSelected( value: any ) {
         this.selection.selectionType = SelectionType.Single;
-        if (value) {
+        if ( value ) {
             this.selection.currentSingle = value;
         }
     }
@@ -167,7 +176,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
      * Selects/deselects all currently displayed items
      * @param value
      */
-    public set allSelected(value: boolean) {
+    public set allSelected( value: boolean ) {
         /*
          * This is a setter but we ignore the value.
          * It's strange, but it lets us have an indeterminate state where only
@@ -180,6 +189,11 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
      * Custom placeholder detection
      */
     @ContentChild(DatagridPlaceholder) public placeholder: DatagridPlaceholder;
+
+    /**
+     * Hideable Column data source / detection.
+     */
+    @ContentChildren(DatagridColumn) public columns: QueryList<DatagridColumn>;
 
     /**
      * When the datagrid is user-managed without the smart iterator, we get the items displayed
@@ -198,7 +212,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     /**
      * We grab all details for expandable rows to determine if we need the extra cell for carets or not
      */
-    @ContentChildren(DatagridIfExpanded, {descendants: true}) details: QueryList<DatagridIfExpanded>;
+    @ContentChildren(DatagridIfExpanded, { descendants: true }) details: QueryList<DatagridIfExpanded>;
 
     ngAfterContentInit() {
         // TODO: Move all this to ngOnInit() once https://github.com/angular/angular/issues/12818 goes in.
@@ -216,12 +230,12 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
         this.expandableRows.hasExpandableRow = this.details.length > 0;
 
         this._subscriptions.push(this.rows.changes.subscribe(() => {
-            if (!this.items.smart) {
-                this.items.all = this.rows.map((row: DatagridRow) => row.item);
+            if ( !this.items.smart ) {
+                this.items.all = this.rows.map(( row: DatagridRow ) => row.item);
             }
         }));
-        if (!this.items.smart) {
-            this.items.all = this.rows.map((row: DatagridRow) => row.item);
+        if ( !this.items.smart ) {
+            this.items.all = this.rows.map(( row: DatagridRow ) => row.item);
         }
     }
 
@@ -235,12 +249,20 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
         this._subscriptions.push(this.filters.change.subscribe(() => this.triggerRefresh()));
         this._subscriptions.push(this.page.change.subscribe(() => this.triggerRefresh()));
         this._subscriptions.push(this.selection.change.subscribe(s => {
-            if (this.selection.selectionType === SelectionType.Single) {
+            if ( this.selection.selectionType === SelectionType.Single ) {
                 this.singleSelectedChanged.emit(s);
-            } else if (this.selection.selectionType === SelectionType.Multi) {
+            } else if ( this.selection.selectionType === SelectionType.Multi ) {
                 this.selectedChanged.emit(s);
             }
         }));
+        this._subscriptions.push(
+            this.columns.changes.subscribe(( columns: DatagridColumn[] ) => {
+                this.columnService.updateColumnList(this.columns.map(col => col.hideable));
+            })
+        );
+
+        // Get ColumnService ready for HideableColumns.
+        this.columnService.updateColumnList(this.columns.map(col => col.hideable));
     }
 
     /**
@@ -249,7 +271,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     private _subscriptions: Subscription[] = [];
 
     ngOnDestroy() {
-        this._subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
+        this._subscriptions.forEach(( sub: Subscription ) => sub.unsubscribe());
     }
 
     resize(): void {

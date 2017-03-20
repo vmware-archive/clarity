@@ -46,6 +46,10 @@ import DatagridPropertyComparatorSpecs from "./built-in/comparators/datagrid-pro
 import DatagridPropertyStringFilterSpecs from "./built-in/filters/datagrid-property-string-filter.spec";
 import DatagridStringFilterSpecs from "./built-in/filters/datagrid-string-filter.spec";
 import DatagridPlaceholderSpecs from "./datagrid-placeholder.spec";
+import DatagridHideableColumnServiceSpecs from "./providers/hideable-column.service.spec";
+import DatagridHideableColumnSpec from "./datagrid-hideable-column.spec";
+import DatagridColumnToggle from "./datagrid-column-toggle.spec";
+import DatagridHideableColumnDirectiveSpec from "./datagrid-hideable-column.directive.spec";
 
 describe("Datagrid", function() {
     addHelpers();
@@ -57,6 +61,7 @@ describe("Datagrid", function() {
         ItemsProviderSpecs();
         SelectionProviderSpecs();
         RowExpandProviderSpecs();
+        DatagridHideableColumnServiceSpecs();
     });
     describe("Components", function() {
         DatagridActionBarSpecs();
@@ -72,6 +77,9 @@ describe("Datagrid", function() {
         DatagridFooterSpecs();
         DatagridPlaceholderSpecs();
         DatagridSpecs();
+        DatagridHideableColumnSpec();
+        DatagridColumnToggle();
+        DatagridHideableColumnDirectiveSpec();
     });
     describe("Render", function() {
         DomAdapterSpecs();

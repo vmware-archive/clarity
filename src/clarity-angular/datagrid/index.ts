@@ -5,20 +5,21 @@
  */
 import { Type } from "@angular/core";
 
-import { DatagridStringFilter } from "./built-in/filters/datagrid-string-filter";
-import { Datagrid } from "./datagrid";
-import { DatagridActionBar } from "./datagrid-action-bar";
-import { DatagridActionOverflow } from "./datagrid-action-overflow";
-import { DatagridCell } from "./datagrid-cell";
-import { DatagridColumn } from "./datagrid-column";
-import { DatagridFilter } from "./datagrid-filter";
-import { DatagridFooter } from "./datagrid-footer";
-import { DatagridItems } from "./datagrid-items";
-import { DatagridPagination } from "./datagrid-pagination";
-import { DatagridRow } from "./datagrid-row";
+import {DatagridStringFilter} from "./built-in/filters/datagrid-string-filter";
+import {Datagrid} from "./datagrid";
+import {DatagridActionBar} from "./datagrid-action-bar";
+import {DatagridActionOverflow} from "./datagrid-action-overflow";
+import {DatagridCell} from "./datagrid-cell";
+import {DatagridColumn} from "./datagrid-column";
+import {DatagridColumnToggle} from "./datagrid-column-toggle";
+import {DatagridFilter} from "./datagrid-filter";
+import {DatagridFooter} from "./datagrid-footer";
+import {DatagridItems} from "./datagrid-items";
+import {DatagridPagination} from "./datagrid-pagination";
+import {DatagridRow} from "./datagrid-row";
 import {DatagridIfExpanded} from "./datagrid-if-expanded";
 import {DatagridRowDetail} from "./datagrid-row-detail";
-import { DatagridPlaceholder } from "./datagrid-placeholder";
+import {DatagridPlaceholder} from "./datagrid-placeholder";
 
 import { DatagridMainRenderer } from "./render/main-renderer";
 import { DatagridTableRenderer } from "./render/table-renderer";
@@ -32,10 +33,14 @@ import { DatagridCellRenderer } from "./render/cell-renderer";
 
 import {DatagridRowExpandAnimation} from "./animation-hack/row-expand-animation";
 
+import {DatagridHideableColumnDirective} from "./datagrid-hidable-column.directive";
+
 export * from "./datagrid";
 export * from "./datagrid-action-bar";
 export * from "./datagrid-action-overflow";
 export * from "./datagrid-column";
+export * from "./datagrid-column-toggle";
+export * from "./datagrid-hidable-column.directive";
 export * from "./datagrid-filter";
 export * from "./datagrid-items";
 export * from "./datagrid-row";
@@ -62,6 +67,8 @@ export const DATAGRID_DIRECTIVES: Type<any>[] = [
     DatagridActionBar,
     DatagridActionOverflow,
     DatagridColumn,
+    DatagridColumnToggle,
+    DatagridHideableColumnDirective,
     DatagridFilter,
     DatagridItems,
     DatagridRow,

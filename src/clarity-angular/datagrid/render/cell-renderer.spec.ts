@@ -8,6 +8,7 @@ import {TestContext} from "../helpers.spec";
 import {DatagridCellRenderer} from "./cell-renderer";
 import {DatagridRenderOrganizer} from "./render-organizer";
 import {MockDatagridRenderOrganizer, MOCK_ORGANIZER_PROVIDER} from "./render-organizer.mock";
+import { HideableColumnService } from "../providers/hideable-column.service";
 
 export default function(): void {
     describe("DatagridCellRenderer directive", function() {
@@ -15,7 +16,7 @@ export default function(): void {
         let organizer: MockDatagridRenderOrganizer;
 
         beforeEach(function() {
-            context = this.create(DatagridCellRenderer, SimpleTest, [MOCK_ORGANIZER_PROVIDER]);
+            context = this.create(DatagridCellRenderer, SimpleTest, [MOCK_ORGANIZER_PROVIDER, HideableColumnService]);
             organizer = context.getClarityProvider(DatagridRenderOrganizer);
         });
 

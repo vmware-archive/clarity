@@ -3,11 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Injectable} from "@angular/core";
-import {Subject} from "rxjs/Subject";
-import {Observable} from "rxjs/Observable";
+import { Injectable } from "@angular/core";
+import { Subject } from "rxjs/Subject";
+import { Observable } from "rxjs/Observable";
 
-import {Comparator} from "../interfaces/comparator";
+import { Comparator } from "../interfaces/comparator";
 
 @Injectable()
 export class Sort {
@@ -48,15 +48,24 @@ export class Sort {
     };
 
     /**
-     * Sets a comparator as the current one, or toggles reverse if the comparator is already used.
+     * Sets a comparator as the current one, or toggles reverse if the comparator is already used. The
+     * optional forceReverse input parameter allows to override that toggling behavior by sorting in
+     * reverse order if `true`.
+     *
+     * @param {Comparator<any>} sortBy the comparator to use for sorting
+     * @param {boolean} [forceReverse] `true` to force sorting descendingly
+     *
+     * @memberof Sort
      */
-    public toggle(sortBy: Comparator<any>) {
+    public toggle(sortBy: Comparator<any>, forceReverse?: boolean) {
         // We modify private properties directly, to batch the change event
         if (this.comparator === sortBy) {
-            this._reverse = !this._reverse;
+            this._reverse = typeof forceReverse !== "undefined"
+                ? forceReverse || !this._reverse
+                : !this._reverse;
         } else {
             this._comparator = sortBy;
-            this._reverse = false;
+            this._reverse = typeof forceReverse !== "undefined" ? forceReverse : false;
         }
         this.emitChange();
     }

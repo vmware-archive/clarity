@@ -4,13 +4,15 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<div *ngFor="let example of examples" class="progbar-examples">
-    <h4>{{example.title}}</h4>
-    <div [ngClass]="example.cssClassnames()">
-        <progress value="{{example.value}}" max="100" [attr.data-displayval]="example.value + '%'"></progress>
-        <span *ngIf="example.isLabeled">{{example.value}}%</span>
+<div class="clr-example">
+    <div *ngFor="let example of examples" class="progbar-examples">
+        <h4>{{example.title}}</h4>
+        <div [ngClass]="example.cssClassnames()">
+            <progress value="{{example.value}}" max="100" [attr.data-displayval]="example.value + '%'"></progress>
+            <span *ngIf="example.isLabeled">{{example.value}}%</span>
+        </div>
+        <p><button class="btn btn-outline" (click)="example.start()" [ngClass]="example.demoId">Show</button></p>
     </div>
-    <p><button class="btn btn-outline" (click)="example.start()">Show</button></p>
 </div>
 
 <pre>

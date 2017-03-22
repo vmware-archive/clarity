@@ -9,7 +9,7 @@
     <div [ngClass]="type.cssClassnames()">
         <progress value="{{type.value}}" max="100" [attr.data-displayval]="type.value + '%'"></progress>
     </div>
-    <p><button class="btn btn-outline" (click)="type.start()">Show</button></p>
+    <p><button class="btn btn-outline" (click)="type.start()" [ngClass]="type.demoId">Show</button></p>
 </div>
 
 <pre>

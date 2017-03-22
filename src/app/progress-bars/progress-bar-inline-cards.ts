@@ -27,9 +27,16 @@ export class ProgressBarInlineCardsDemo implements OnInit {
         this.value3 = this.getNewValue();
     }
 
+    //For CSS Regression Tests
+    setInitialValues(): void {
+        this.value1 = 55;
+        this.value2 = 55;
+        this.value3 = 55;
+    }
+
     ngOnInit(): void {
         setTimeout(() => {
-            this.setNewValues();
+            this.setInitialValues();
         }, 500);
     }
 }

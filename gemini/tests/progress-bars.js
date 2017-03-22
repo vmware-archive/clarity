@@ -112,5 +112,60 @@ gemini.suite('progress-bar', (child) => {
     //         .setCaptureElements('main.content-area')
     //         .capture('default');
     // });
+
+    gemini.suite('progress-bar-examples', (child) => {
+        child.setUrl('/progress-bars/progress-bar-examples')
+            .before((actions, find) => {
+                actions.waitForElementToShow('main.content-area', WAIT_TIME);
+                actions.wait(WAIT_LOAD_TIME);
+            })
+            .setCaptureElements('.clr-example')
+            .capture('default')
+            .capture('click the 1st show button', function(actions, find) {
+                this.showButton = find('.prog-example-toggle-0');
+                actions.click(this.showButton);
+                actions.wait(2000);
+            })
+            .capture('click the 2nd show button', function(actions, find) {
+                this.showButton = find('.prog-example-toggle-1');
+                actions.click(this.showButton);
+                actions.wait(2000);
+            })
+            .capture('click the 3rd show button', function(actions, find) {
+                this.showButton = find('.prog-example-toggle-2');
+                actions.click(this.showButton);
+                actions.wait(2000);
+            });
+    });
+
+    gemini.suite('progress-bar-cards', (child) => {
+        child.setUrl('/progress-bars/progress-bar-cards')
+            .before((actions, find) => {
+                actions.waitForElementToShow('main.content-area', WAIT_TIME);
+                actions.wait(WAIT_LOAD_TIME);
+            })
+            .setCaptureElements('.clr-example')
+            .capture('default');
+    });
+
+    gemini.suite('progress-bar-static', (child) => {
+        child.setUrl('/progress-bars/progress-bar-static')
+            .before((actions, find) => {
+                actions.waitForElementToShow('main.content-area', WAIT_TIME);
+                actions.wait(WAIT_LOAD_TIME);
+            })
+            .setCaptureElements('.clr-example')
+            .capture('default');
+    });
+
+    gemini.suite('progress-bar-inline-cards', (child) => {
+        child.setUrl('/progress-bars/progress-bar-inline-cards')
+            .before((actions, find) => {
+                actions.waitForElementToShow('main.content-area', WAIT_TIME);
+                actions.wait(WAIT_LOAD_TIME);
+            })
+            .setCaptureElements('.clr-example')
+            .capture('default');
+    });
     
 });

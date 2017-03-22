@@ -9,6 +9,8 @@
     $clr-datagrid-icon-size: rem(1);
     $clr-datagrid-action-arrow-size: $clr_baselineRem_0_25;
     $clr-datagrid-select-column-size: 2*$clr-table-cellpadding + $clr-table-lineheight;
+    $clr-datagrid-filter-padding: $clr_baselineRem_0_75;
+    $clr-datagrid-filter-top-margin: $clr_baselineRem_0_2;
 
     .datagrid-container {
         display: flex;
@@ -39,6 +41,11 @@
         min-height: 0;
         // IE10 (maybe later versions too) needs this
         overflow: hidden;
+
+        &.has-filter {
+            // space for (filter padding + 2 * 24 (close button + input field) + margin top + Header height + 1px for vertical rhythm)
+            min-height: $clr-datagrid-filter-padding * 2 + $clr_baselineRem_2 + $clr-datagrid-filter-top-margin + $clr_baselineRem_1_5 + 1;
+        }
     }
     .datagrid-body {
         flex: 1 1 auto;
@@ -223,9 +230,9 @@
                 position: absolute;
                 top: 100%;
                 right: 0;
-                margin-top: $clr_baselineRem_0_2;
+                margin-top: $clr-datagrid-filter-top-margin;
                 background: $clr-white;
-                padding: $clr_baselineRem_0_75;
+                padding: $clr-datagrid-filter-padding;
                 border: 1px solid $gray-light-midtone;
                 box-shadow: 0 1px 3px rgba($gray-dark, 0.25);
                 border-radius: $clr-default-borderradius;
@@ -234,6 +241,7 @@
 
                 .datagrid-filter-close-wrapper {
                     text-align: right;
+                    height: $clr_baselineRem_1;
 
                     .close {
                         float: none;

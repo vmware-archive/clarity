@@ -6,7 +6,7 @@
 
 <ng-content select="clr-dg-action-bar"></ng-content>
 <div class="datagrid">
-    <div clrDgTableWrapper class="datagrid-table-wrapper">
+    <div clrDgTableWrapper class="datagrid-table-wrapper" [class.has-filter]="hasFilters()">
         <div clrDgHead class="datagrid-head">
             <div class="datagrid-row">
                 <!-- header for datagrid where you can select multiple rows -->
@@ -36,7 +36,7 @@
 
     <!-- Custom placeholder overrides the default empty one -->
     <ng-content select="clr-dg-placeholder"></ng-content>
-    <clr-dg-placeholder *ngIf="!placeholder"></clr-dg-placeholder>
+    <clr-dg-placeholder *ngIf="!placeholder && items.displayed.length == 0"></clr-dg-placeholder>
 
     <!--
         This is not inside the table because there is no good way of having a single column span

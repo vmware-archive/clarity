@@ -116,6 +116,10 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
         this.refresh.emit(state);
     }
 
+    public hasFilters(): boolean {
+        return this.filters.getActiveFilters().length > 0 ? true : false;
+    }
+
     /**
      * Public method to re-trigger the computation of displayed items manually
      */

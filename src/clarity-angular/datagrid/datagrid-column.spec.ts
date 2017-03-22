@@ -3,20 +3,21 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, ViewChild} from "@angular/core";
-import {Subject} from "rxjs/Subject";
-import {TestContext} from "./helpers.spec";
-import {DatagridColumn} from "./datagrid-column";
-import {Sort} from "./providers/sort";
-import {Comparator} from "./interfaces/comparator";
-import {FiltersProvider} from "./providers/filters";
-import {Filter} from "./interfaces/filter";
-import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
-import {StringFilter} from "./interfaces/string-filter";
-import {TestBed} from "@angular/core/testing";
-import {DatagridStringFilter} from "./built-in/filters/datagrid-string-filter";
-import {DatagridRenderOrganizer} from "./render/render-organizer";
-import {DomAdapter} from "./render/dom-adapter";
+import { Component, ViewChild } from "@angular/core";
+import { Subject } from "rxjs/Subject";
+import { TestContext } from "./helpers.spec";
+import { DatagridColumn } from "./datagrid-column";
+import { Sort } from "./providers/sort";
+import { Comparator } from "./interfaces/comparator";
+import { FiltersProvider } from "./providers/filters";
+import { Filter } from "./interfaces/filter";
+import { DatagridPropertyComparator } from "./built-in/comparators/datagrid-property-comparator";
+import { StringFilter } from "./interfaces/string-filter";
+import { TestBed } from "@angular/core/testing";
+import { DatagridStringFilter } from "./built-in/filters/datagrid-string-filter";
+import { DatagridRenderOrganizer } from "./render/render-organizer";
+import { DomAdapter } from "./render/dom-adapter";
+import { SortOrder } from "./interfaces/sort-order";
 
 const PROVIDERS_NEEDED = [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter];
 
@@ -67,6 +68,26 @@ export default function (): void {
                 expect(component.sorted).toBe(true);
             });
 
+            it("sorts according to the optional input parameter", function () {
+                component.sortBy = comparator;
+                expect(component.sortOrder).toBe(SortOrder.Unsorted);
+                component.sort(true);
+                expect(component.sortOrder).toBe(SortOrder.Desc);
+                component.sort(true);
+                expect(component.sortOrder).toBe(SortOrder.Desc);
+                component.sort(false);
+                expect(component.sortOrder).toBe(SortOrder.Asc);
+            });
+
+            it("knows the column current sorting order", function () {
+                component.sortBy = comparator;
+                expect(component.sortOrder).toBe(SortOrder.Unsorted);
+                component.sort();
+                expect(component.sortOrder).toBe(SortOrder.Asc);
+                component.sort();
+                expect(component.sortOrder).toBe(SortOrder.Desc);
+            });
+
             it("knows if the column is currently sorted in ascending order", function () {
                 component.sortBy = comparator;
                 expect(component.asc).toBe(false);
@@ -93,8 +114,8 @@ export default function (): void {
             });
         });
 
-        describe("Template API", function() {
-            it("receives an input for the comparator", function() {
+        describe("Template API", function () {
+            it("receives an input for the comparator", function () {
                 this.context = this.create(DatagridColumn, SimpleTest, PROVIDERS_NEEDED);
                 this.comparator = new TestComparator();
                 this.context.testComponent.comparator = this.comparator;
@@ -102,7 +123,7 @@ export default function (): void {
                 expect(this.context.clarityDirective.sortBy).toBe(this.comparator);
             });
 
-            it("receives an input for the property name", function() {
+            it("receives an input for the property name", function () {
                 this.context = this.create(DatagridColumn, SimpleTest, PROVIDERS_NEEDED);
                 this.context.testComponent.field = "test";
                 this.context.detectChanges();
@@ -118,7 +139,7 @@ export default function (): void {
             });
 
             it("offers two-way binding on the sorted state", function () {
-                this.context = this.create(DatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+                this.context = this.create(DatagridColumn, SimpleDeprecatedTest, PROVIDERS_NEEDED);
                 this.comparator = new TestComparator();
                 this.context.testComponent.comparator = this.comparator;
                 this.context.testComponent.sorted = true;
@@ -127,6 +148,21 @@ export default function (): void {
                 this.context.getClarityProvider(Sort).clear();
                 this.context.detectChanges();
                 expect(this.context.testComponent.sorted).toBe(false);
+            });
+
+            it("offers two-way binding on the sortOrder state", function () {
+                this.context = this.create(DatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+                this.comparator = new TestComparator();
+                this.context.testComponent.comparator = this.comparator;
+                this.context.testComponent.sortOrder = SortOrder.Desc;
+                this.context.detectChanges();
+                expect(this.context.clarityDirective.sortOrder).toBe(SortOrder.Desc); //dg col instance
+                this.context.getClarityProvider(Sort).clear();
+                this.context.detectChanges();
+                expect(this.context.testComponent.sortOrder).toBe(SortOrder.Unsorted);
+                this.context.clarityDirective.sortOrder = SortOrder.Asc;
+                this.context.detectChanges();
+                expect(this.context.testComponent.sortOrder).toBe(SortOrder.Asc);
             });
 
             it("offers two way binding on the filtered state", function () {
@@ -205,14 +241,17 @@ export default function (): void {
                 expect(title.disabled).toBe(true);
                 title.click();
                 context.detectChanges();
-                expect(context.clarityDirective.sorted).toBe(false);
+                expect(context.clarityDirective.sortOrder).toBe(SortOrder.Unsorted);
 
                 context.testComponent.comparator = new TestComparator();
                 context.detectChanges();
                 expect(title.disabled).toBe(false);
                 title.click();
                 context.detectChanges();
-                expect(context.clarityDirective.sorted).toBe(true);
+                expect(context.clarityDirective.sortOrder).toBe(SortOrder.Asc);
+                title.click();
+                context.detectChanges();
+                expect(context.clarityDirective.sortOrder).toBe(SortOrder.Desc);
             });
 
             it("adds the .asc class to the host when sorted in ascending order", function () {
@@ -311,10 +350,26 @@ class TestStringFilter implements StringFilter<string> {
         </clr-dg-column>
     `
 })
-class SimpleTest {
+class SimpleDeprecatedTest {
     comparator: Comparator<any>;
     field: string;
     sorted = false;
+}
+
+@Component({
+    template: `
+        <clr-dg-column
+            [clrDgSortBy]="comparator"
+            [clrDgField]="field"
+            [(clrDgSortOrder)]="sortOrder">
+            Hello world
+        </clr-dg-column>
+    `
+})
+class SimpleTest {
+    comparator: Comparator<any>;
+    field: string;
+    sortOrder = SortOrder.Unsorted;
 }
 
 @Component({

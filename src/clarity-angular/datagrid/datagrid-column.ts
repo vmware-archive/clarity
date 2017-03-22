@@ -6,16 +6,17 @@
 import {
     Component, ContentChild, HostBinding, Input, Output, EventEmitter
 } from "@angular/core";
-import {Subscription} from "rxjs";
+import { Subscription } from "rxjs";
 
-import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
-import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
-import {Comparator} from "./interfaces/comparator";
-import {CustomFilter} from "./providers/custom-filter";
-import {Sort} from "./providers/sort";
-import {DatagridFilterRegistrar} from "./utils/datagrid-filter-registrar";
-import {FiltersProvider} from "./providers/filters";
-import {DatagridStringFilterImpl} from "./built-in/filters/datagrid-string-filter-impl";
+import { DatagridPropertyComparator } from "./built-in/comparators/datagrid-property-comparator";
+import { DatagridPropertyStringFilter } from "./built-in/filters/datagrid-property-string-filter";
+import { Comparator } from "./interfaces/comparator";
+import { CustomFilter } from "./providers/custom-filter";
+import { Sort } from "./providers/sort";
+import { DatagridFilterRegistrar } from "./utils/datagrid-filter-registrar";
+import { FiltersProvider } from "./providers/filters";
+import { DatagridStringFilterImpl } from "./built-in/filters/datagrid-string-filter-impl";
+import { SortOrder } from "./interfaces/sort-order";
 
 @Component({
     selector: "clr-dg-column",
@@ -43,10 +44,16 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
         super(filters);
         this._sortSubscription = _sort.change.subscribe(sort => {
             // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
+            if (this.sortOrder !== SortOrder.Unsorted && sort.comparator !== this.sortBy) {
+                this._sortOrder = SortOrder.Unsorted;
+                this.sortOrderChange.emit(this._sortOrder);
+            }
+            // deprecated: to be removed - START
             if (this.sorted && sort.comparator !== this.sortBy) {
                 this._sorted = false;
                 this.sortedChange.emit(false);
             }
+            // deprecated: to be removed - END
         });
     }
 
@@ -71,14 +78,20 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
         return !!this.sortBy;
     }
 
+    // deprecated: to be removed - START
     /**
      * Indicates if the column is currently sorted
+     *
+     * @deprecated This will be removed soon, in favor of the sortOrder mechanism
      */
     private _sorted = false;
     public get sorted() {
         return this._sorted;
     }
 
+    /**
+     * @deprecated This will be removed soon, in favor of the sortOrder mechanism
+     */
     @Input("clrDgSorted")
     public set sorted(value: boolean) {
         if (!value && this.sorted) {
@@ -87,20 +100,64 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
         } else if (value && !this.sorted) {
             this.sort();
         }
+    }
+
+    /**
+     * @deprecated This will be removed soon, in favor of the sortOrder mechanism
+     */
+    @Output("clrDgSortedChange") public sortedChange = new EventEmitter<boolean>();
+
+    // deprecated: to be removed - END
+
+    /**
+     * Indicates how the column is currently sorted
+     */
+    private _sortOrder: SortOrder = SortOrder.Unsorted;
+    public get sortOrder() {
+        return this._sortOrder;
+    }
+
+    @Input("clrDgSortOrder")
+    public set sortOrder(value: SortOrder) {
+        // only if the incoming order is different from the current one
+        if (this._sortOrder === value) {
+            return;
+        }
+
+        switch (value) {
+            // the Unsorted case happens when the current state is either Asc or Desc
+            default: case SortOrder.Unsorted:
+                this._sort.clear();
+                break;
+            case SortOrder.Asc:
+                this.sort(false);
+                break;
+            case SortOrder.Desc:
+                this.sort(true);
+                break;
+        }
     };
 
-    @Output("clrDgSortedChange") public sortedChange = new EventEmitter<boolean>();
+    @Output("clrDgSortOrderChange") public sortOrderChange = new EventEmitter<SortOrder>();
 
     /**
      * Sorts the datagrid based on this column
      */
-    public sort() {
+    public sort(reverse?: boolean) {
         if (!this.sortable) {
             return;
         }
+
+        this._sort.toggle(this.sortBy, reverse);
+
+        // setting the private variable to not retrigger the setter logic
+        this._sortOrder = this._sort.reverse ? SortOrder.Desc : SortOrder.Asc;
+        this.sortOrderChange.emit(this._sortOrder);
+
+        // deprecated: to be removed - START
         this._sorted = true;
-        this._sort.toggle(this.sortBy);
         this.sortedChange.emit(true);
+        // deprecated: to be removed - END
     }
 
     /**
@@ -108,7 +165,13 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
      */
     @HostBinding("class.asc")
     public get asc() {
-        return this.sorted && !this._sort.reverse;
+        // deprecated: if condition to be removed - START
+        if (typeof this.sortOrder === "undefined") {
+            return this.sorted && !this._sort.reverse;
+        } else {
+            return this.sortOrder === SortOrder.Asc;
+        }
+        // deprecated: if condition to be removed - END
     }
 
     /**
@@ -116,7 +179,13 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
      */
     @HostBinding("class.desc")
     public get desc() {
-        return this.sorted && this._sort.reverse;
+        // deprecated: if condition to be removed - START
+        if (typeof this.sortOrder === "undefined") {
+            return this.sorted && this._sort.reverse;
+        } else {
+            return this.sortOrder === SortOrder.Desc;
+        }
+        // deprecated: if condition to be removed - END
     }
 
     /**

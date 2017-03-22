@@ -4,28 +4,30 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<div class="progbar-examples">
-    <h4>Static Progress Bar</h4>
-    <div class="progress-static">
-        <div class="progress-meter" [attr.data-value]="staticProgbarValue" [attr.data-displayval]="staticProgbarValue + '%'"></div>
-    </div>
+<div class="clr-example">
+    <div class="progbar-examples">
+        <h4>Static Progress Bar</h4>
+        <div class="progress-static">
+            <div class="progress-meter" [attr.data-value]="staticProgbarValue" [attr.data-displayval]="staticProgbarValue + '%'"></div>
+        </div>
 
-    <h4>Labeled, Static Progress Bar</h4>
-    <div class="progress-static labeled">
-        <div class="progress-meter" [attr.data-value]="staticLabeledProgbarValue" [attr.data-displayval]="staticLabeledProgbarValue + '%'"></div>
-        <span>{{staticLabeledProgbarValue}}%</span>
-    </div>
+        <h4>Labeled, Static Progress Bar</h4>
+        <div class="progress-static labeled">
+            <div class="progress-meter" [attr.data-value]="staticLabeledProgbarValue" [attr.data-displayval]="staticLabeledProgbarValue + '%'"></div>
+            <span>{{staticLabeledProgbarValue}}%</span>
+        </div>
 
-    <h4>Red Static Progress Bar</h4>
-    <div class="progress-static danger">
-        <div class="progress-meter" [attr.data-value]="staticDangerValue"></div>
-    </div>
+        <h4>Red Static Progress Bar</h4>
+        <div class="progress-static danger">
+            <div class="progress-meter" [attr.data-value]="staticDangerValue"></div>
+        </div>
 
-    <h4>Green Static Progress Bar</h4>
-    <div class="progress-static success">
-        <div class="progress-meter" [attr.data-value]="staticSuccessValue"></div>
+        <h4>Green Static Progress Bar</h4>
+        <div class="progress-static success">
+            <div class="progress-meter" [attr.data-value]="staticSuccessValue"></div>
+        </div>
+        <p><button class="btn btn-outline" (click)="setNewValues()">Load New Values</button></p>
     </div>
-    <p><button class="btn btn-outline" (click)="setNewValues()">Load New Values</button></p>
 </div>
 
 <pre>

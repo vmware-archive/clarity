@@ -29,9 +29,17 @@ export class ProgressBarStaticDemo implements OnInit {
         this.staticSuccessValue = this.getNewValue();
     }
 
+    //For CSS Regression Tests
+    setInitialValues(): void {
+        this.staticProgbarValue = 55;
+        this.staticLabeledProgbarValue = 55;
+        this.staticDangerValue = 55;
+        this.staticSuccessValue = 55;
+    }
+
     ngOnInit(): void {
         setTimeout(() => {
-            this.setNewValues();
+            this.setInitialValues();
         }, 800);
     }
 }

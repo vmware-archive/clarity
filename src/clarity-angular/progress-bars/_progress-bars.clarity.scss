@@ -40,6 +40,9 @@ $clr-progress-bgColor: $clr-light-gray !default;
         max-height: rem(1);
         min-height: rem(0.3);
         overflow: hidden;
+
+        display: block;
+        width: 100%;
     }
 
     // lame, i know. but this is the only way to override progress default stylings

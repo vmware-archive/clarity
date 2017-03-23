@@ -8,7 +8,6 @@
         $select-hover-background: rgba(221, 221, 221, 0.5);
         $select-after-color: $gray-dark-midtone;
         $select-after-hover-color: $gray-dark;
-        height: $clr_baselineRem_1;
 
         select {
             @include custom-inputs($clr-baselineRem_1);
@@ -72,6 +71,30 @@
                 background: none;
                 border-color: $clr-form-field-border-color;
             }
+        }
+
+        //Multiple Select
+        &.multiple::after {
+            content: none;
+        }
+    }
+
+    //Multiple Select
+    select[multiple] {
+        $clr-multiple-select-background: $clr-white;
+        $clr-multiple-select-border-color: $gray-light-midtone;
+
+        padding: $clr-baselineRem_0_25;
+        background: $clr-multiple-select-background;
+        border: 1px solid $clr-multiple-select-border-color;
+        border-radius: $clr-default-borderradius;
+        height: auto;
+        min-width: $clr_baselineRem_5;
+
+        &:hover,
+        &:active {
+            background: $clr-multiple-select-background;
+            border-color: $clr-multiple-select-border-color;
         }
     }
 }

@@ -1,5 +1,5 @@
 var WAIT_TIME = 5000;
-var WAIT_LOAD_TIME = 1000;
+var WAIT_LOAD_TIME = 5000;
 
 gemini.suite('progress-bar', (child) => {
 
@@ -131,11 +131,6 @@ gemini.suite('progress-bar', (child) => {
                 actions.click(this.showButton);
                 actions.wait(2000);
             })
-            .capture('click the 3rd show button', function(actions, find) {
-                this.showButton = find('.prog-example-toggle-2');
-                actions.click(this.showButton);
-                actions.wait(2000);
-            });
     });
 
     gemini.suite('progress-bar-cards', (child) => {

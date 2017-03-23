@@ -42,10 +42,9 @@ before_script:
   - xvfb-run --server-args="-screen 0, 1600x2400x24" selenium-standalone start > selenium.txt &
   - sleep 5
 
-instsall:
+install:
   - npm install
 
 script:
   - gulp $TEST_SUITE # run unit test, css regression, and css reference in parallel
   - zip -r screenshots gemini/screens/
-

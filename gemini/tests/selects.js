@@ -7,6 +7,6 @@ gemini.suite('selects', (child) => {
             actions.waitForElementToShow('.form-block', WAIT_TIME);
             actions.wait(WAIT_LOAD_TIME);
         })
-        .setCaptureElements('.form-block')
+        .setCaptureElements('.test-select')
         .capture('default');
 });

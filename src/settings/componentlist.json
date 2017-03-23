@@ -168,8 +168,7 @@
             "ui": 20,
             "core": 20,
             "ng": -1,
-            "dox": 20,
-            "isNew": true
+            "dox": 20
         },
         {
             "url": "input-fields",

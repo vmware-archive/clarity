@@ -31,4 +31,18 @@ gemini.suite('tooltips', (child) => {
             });
     });
 
+    gemini.suite('angular', (child) => {
+        child.setUrl('/tooltips/angular')
+            .before((actions, find) => {
+                actions.waitForElementToShow('.clr-example', WAIT_TIME);
+                actions.wait(WAIT_LOAD_TIME);
+            })
+            .setCaptureElements('.clr-example')
+            .capture('default')
+            .capture('hover', function(actions, find) {
+                actions.mouseMove(find('.tooltip'));
+                actions.wait(WAIT_TIME);
+            });
+    });
+
 });

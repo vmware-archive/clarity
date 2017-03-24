@@ -25,9 +25,6 @@ import {DatagridRenderOrganizer} from "./render/render-organizer";
 import {DatagridActionOverflow} from "./datagrid-action-overflow";
 import {DatagridStringFilterImpl} from "./built-in/filters/datagrid-string-filter-impl";
 
-
-
-
 @Component({
     selector: "clr-datagrid",
     templateUrl: "./datagrid.html",

@@ -13,6 +13,7 @@ import {TooltipsDirectionsDemo} from "./tooltips-directions";
 import {TooltipsIconDemo} from "./tooltips-icons";
 import {TooltipsTextDemo} from "./tooltips-text";
 import {TooltipsButtonsDemo} from "./tooltips-buttons";
+import {TooltipsAngularDemo} from "./tooltips-angular";
 
 @NgModule({
     imports: [
@@ -24,6 +25,7 @@ import {TooltipsButtonsDemo} from "./tooltips-buttons";
         TooltipsDemo,
         TooltipsSizesDemo,
         TooltipsDirectionsDemo,
+        TooltipsAngularDemo,
         TooltipsIconDemo,
         TooltipsTextDemo,
         TooltipsButtonsDemo
@@ -32,6 +34,7 @@ import {TooltipsButtonsDemo} from "./tooltips-buttons";
         TooltipsDemo,
         TooltipsSizesDemo,
         TooltipsDirectionsDemo,
+        TooltipsAngularDemo,
         TooltipsIconDemo,
         TooltipsTextDemo,
         TooltipsButtonsDemo

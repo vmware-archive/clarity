@@ -84,6 +84,18 @@ $dropdown-white: clr-getColor(lightest);
             visibility: hidden;
             z-index: map-get($clr-layers, dropdown-menu);
 
+            .dropdown-menu {
+                // TODO: this is a hack to prevent breaking changes as we implement
+                // the popover directive. Remove this after the < 0.9.0 markup for
+                // dropdown (angular component) is deprecated.
+
+                position: static;
+                margin: 0;
+                padding: 0;
+                border: none;
+                box-shadow: none;
+            }
+
             .dropdown-header {
                 @include clr-getTypePropertiesForDomElement(dropdown_header, (font-size, font-weight, letter-spacing));
 

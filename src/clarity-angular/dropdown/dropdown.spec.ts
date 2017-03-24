@@ -4,8 +4,166 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {Component} from "@angular/core";
+import {Component, ViewChild} from "@angular/core";
 import {ClarityModule} from "../clarity.module";
+import {Point} from "../popover/popover";
+import {Dropdown} from "./dropdown";
+
+export default function(): void {
+
+    describe("Dropdown", () => {
+        let fixture: ComponentFixture<any>;
+        let compiled: any;
+
+        beforeEach(() => {
+            TestBed.configureTestingModule({
+                imports: [ClarityModule.forRoot()],
+                declarations: [TestComponent]
+            });
+
+            fixture = TestBed.createComponent(TestComponent);
+            fixture.detectChanges();
+            compiled = fixture.nativeElement;
+        });
+
+        afterEach(() => {
+            fixture.destroy();
+        });
+
+        it("projects content", () => {
+            expect(compiled.textContent).toMatch(/Dropdown/);
+        });
+
+        it("adds the .dropdown class on clr-dropdown", () => {
+            expect(compiled.querySelector(".dropdown")).not.toBeNull();
+        });
+
+        it("adds the .open class on clr-dropdown", () => {
+            expect(compiled.querySelector(".open")).not.toBeNull();
+        });
+
+        it("adds the .dropdown-toggle class on clrDropdownToggle", () => {
+            let dropdownToggle: HTMLElement = compiled.querySelector("[clrDropdownToggle]");
+            expect(dropdownToggle.classList.contains(".dropdown-toggle"));
+        });
+
+        it("adds the .dropdown-item class on clrDropdownItem", () => {
+            let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+            dropdownToggle.click();
+            //detect the click
+            fixture.detectChanges();
+
+            let dropdownItem: HTMLElement = compiled.querySelector("[clrDropdownItem]");
+            expect(dropdownItem.classList.contains(".dropdown-item"));
+        });
+
+        it("supports clrMenuDirection option", () => {
+            let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+            dropdownToggle.click();
+            //detect the click
+            fixture.detectChanges();
+
+            //Default is bottom-left since menuPosition is set to ""
+            expect(fixture.componentInstance.dropdownInstance.anchorPoint).toEqual(Point.BOTTOM_LEFT);
+            expect(fixture.componentInstance.dropdownInstance.popoverPoint).toEqual(Point.LEFT_TOP);
+
+            fixture.componentInstance.menuPosition = "bottom-right";
+            fixture.detectChanges();
+            expect(fixture.componentInstance.dropdownInstance.anchorPoint).toEqual(Point.BOTTOM_RIGHT);
+            expect(fixture.componentInstance.dropdownInstance.popoverPoint).toEqual(Point.RIGHT_TOP);
+
+            fixture.componentInstance.menuPosition = "top-right";
+            fixture.detectChanges();
+            expect(fixture.componentInstance.dropdownInstance.anchorPoint).toEqual(Point.TOP_RIGHT);
+            expect(fixture.componentInstance.dropdownInstance.popoverPoint).toEqual(Point.RIGHT_BOTTOM);
+        });
+
+        it("toggles the menu when clicked on the host", () => {
+            let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+
+            expect(compiled.querySelector(".dropdown-item")).toBeNull();
+            dropdownToggle.click();
+            //detect the click
+            fixture.detectChanges();
+            expect(compiled.querySelector(".dropdown-item")).not.toBeNull();
+
+            //click the dropdown toggle again to close the menu
+            dropdownToggle.click();
+            //detect the click
+            fixture.detectChanges();
+            expect(compiled.querySelector(".dropdown-item")).toBeNull();
+        });
+
+        it("closes the menu when clicked outside of the host", () => {
+            let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+            let outsideButton: HTMLElement = compiled.querySelector(".outside-click-test");
+
+            //check if the dropdown is closed
+            expect(compiled.querySelector(".dropdown-item")).toBeNull();
+
+            //click outside the dropdown
+            outsideButton.click();
+            fixture.detectChanges();
+
+            //check if the click handler is triggered
+            expect(fixture.componentInstance.testCnt).toEqual(1);
+            //check if the open class is added
+            expect(compiled.querySelector(".dropdown-item")).toBeNull();
+
+            //click on the dropdown
+            dropdownToggle.click();
+            fixture.detectChanges();
+            expect(compiled.querySelector(".dropdown-item")).not.toBeNull();
+
+            //click outside the dropdown
+            outsideButton.click();
+            fixture.detectChanges();
+
+            //check if the click handler is triggered
+            expect(fixture.componentInstance.testCnt).toEqual(2);
+            //check if the open class is added
+            expect(compiled.querySelector(".dropdown-item")).toBeNull();
+        });
+
+        it("supports clrMenuClosable option. Closes the dropdown menu when clrMenuClosable is set to true", () => {
+            let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+            dropdownToggle.click();
+            fixture.detectChanges();
+
+            let dropdownItem: HTMLElement = compiled.querySelector(".dropdown-item");
+
+            dropdownItem.click();
+            fixture.detectChanges();
+            expect(compiled.querySelector(".dropdown-item")).toBeNull();
+
+            fixture.componentInstance.menuClosable = false;
+            dropdownToggle.click();
+            fixture.detectChanges();
+            expect(compiled.querySelector(".dropdown-item")).not.toBeNull();
+
+            dropdownItem.click();
+            fixture.detectChanges();
+            expect(compiled.querySelector(".dropdown-item")).not.toBeNull();
+        });
+
+        it("does not close the menu when a disabled item is clicked", () => {
+            let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+            dropdownToggle.click();
+            fixture.detectChanges();
+
+            let disabledDropdownItem: HTMLElement  =  compiled.querySelector(".dropdown-item.disabled");
+            let dropdownItem: HTMLElement  =  compiled.querySelector(".dropdown-item");
+
+            disabledDropdownItem.click();
+            fixture.detectChanges();
+            expect(compiled.querySelector(".dropdown-item")).not.toBeNull();
+
+            dropdownItem.click();
+            fixture.detectChanges();
+            expect(compiled.querySelector(".dropdown-item")).toBeNull();
+        });
+    });
+}
 
 @Component({
     template: `
@@ -17,15 +175,17 @@ import {ClarityModule} from "../clarity.module";
                 Dropdown
                 <clr-icon shape="caret down"></clr-icon>
             </button>
-            <div class="dropdown-menu">
+            <clr-dropdown-menu>
                 <label class="dropdown-header">Header</label>
                 <a href="javascript://" clrDropdownItem>Item</a>
                 <a href="javascript://" class="disabled" clrDropdownItem>Disabled Item</a>
-            </div>
+            </clr-dropdown-menu>
         </clr-dropdown>
    `
 })
 class TestComponent {
+    @ViewChild(Dropdown) dropdownInstance: Dropdown;
+
     menuPosition: string = "";
     menuClosable: boolean = true;
     testCnt: number = 0;
@@ -34,164 +194,3 @@ class TestComponent {
         this.testCnt++;
     }
 }
-
-describe("Dropdown", () => {
-    let fixture: ComponentFixture<any>;
-    let compiled: any;
-
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [ClarityModule.forRoot()],
-            declarations: [TestComponent]
-        });
-
-        fixture = TestBed.createComponent(TestComponent);
-        fixture.detectChanges();
-        compiled = fixture.nativeElement;
-    });
-
-    afterEach(() => {
-        fixture.destroy();
-    });
-
-    it("projects content", () => {
-        expect(compiled.textContent).toMatch(/Dropdown/);
-        expect(compiled.textContent).toMatch(/Header/);
-        expect(compiled.textContent).toMatch(/Item/);
-    });
-
-    it("adds the .dropdown class on clr-dropdown", () => {
-        expect(compiled.querySelector(".dropdown")).not.toBeNull();
-    });
-
-    it("adds the .dropdown-toggle class on clrDropdownToggle", () => {
-        let dropdownToggle: HTMLElement = compiled.querySelector("[clrDropdownToggle]");
-        expect(dropdownToggle.classList.contains(".dropdown-toggle"));
-    });
-
-    it("adds the .dropdown-item class on clrDropdownItem", () => {
-        let dropdownToggle: HTMLElement = compiled.querySelector("[clrDropdownItem]");
-        expect(dropdownToggle.classList.contains(".dropdown-item"));
-    });
-
-    it("supports clrMenuDirection option", () => {
-        //Default is bottom-left since menuPosition is set to ""
-        expect(compiled.querySelector(".bottom-left")).not.toBeNull();
-        expect(compiled.querySelector(".top-right")).toBeNull();
-        expect(compiled.querySelector(".top-left")).toBeNull();
-        expect(compiled.querySelector(".right-top")).toBeNull();
-        expect(compiled.querySelector(".right-bottom")).toBeNull();
-        expect(compiled.querySelector(".left-top")).toBeNull();
-        expect(compiled.querySelector(".left-bottom")).toBeNull();
-
-        fixture.componentInstance.menuPosition = "bottom-right";
-        fixture.detectChanges();
-        expect(compiled.querySelector(".bottom-right")).not.toBeNull();
-        expect(compiled.querySelector(".bottom-left")).toBeNull();
-        expect(compiled.querySelector(".top-right")).toBeNull();
-        expect(compiled.querySelector(".top-left")).toBeNull();
-        expect(compiled.querySelector(".right-top")).toBeNull();
-        expect(compiled.querySelector(".right-bottom")).toBeNull();
-        expect(compiled.querySelector(".left-top")).toBeNull();
-        expect(compiled.querySelector(".left-bottom")).toBeNull();
-
-        fixture.componentInstance.menuPosition = "top-right";
-        fixture.detectChanges();
-        expect(compiled.querySelector(".top-right")).not.toBeNull();
-        expect(compiled.querySelector(".bottom-right")).toBeNull();
-        expect(compiled.querySelector(".bottom-left")).toBeNull();
-        expect(compiled.querySelector(".top-left")).toBeNull();
-        expect(compiled.querySelector(".right-top")).toBeNull();
-        expect(compiled.querySelector(".right-bottom")).toBeNull();
-        expect(compiled.querySelector(".left-top")).toBeNull();
-        expect(compiled.querySelector(".left-bottom")).toBeNull();
-    });
-
-    it("toggles the menu when clicked on the host", () => {
-        let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
-
-        expect(compiled.querySelector(".open")).toBeNull();
-        dropdownToggle.click();
-        //detect the click
-        fixture.detectChanges();
-        expect(compiled.querySelector(".open")).not.toBeNull();
-
-        //click the dropdown toggle again to close the menu
-        dropdownToggle.click();
-        //detect the click
-        fixture.detectChanges();
-        expect(compiled.querySelector(".open")).toBeNull();
-    });
-
-    it("closes the menu when clicked outside of the host", () => {
-        let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
-        let outsideButton: HTMLElement = compiled.querySelector(".outside-click-test");
-
-        //check if the dropdown is closed
-        expect(compiled.querySelector(".open")).toBeNull();
-
-        //click outside the dropdown
-        outsideButton.click();
-        fixture.detectChanges();
-
-        //check if the click handler is triggered
-        expect(fixture.componentInstance.testCnt).toEqual(1);
-        //check if the open class is added
-        expect(compiled.querySelector(".open")).toBeNull();
-
-        //click on the dropdown
-        dropdownToggle.click();
-        fixture.detectChanges();
-        expect(compiled.querySelector(".open")).not.toBeNull();
-
-        //click outside the dropdown
-        outsideButton.click();
-        fixture.detectChanges();
-
-        //check if the click handler is triggered
-        expect(fixture.componentInstance.testCnt).toEqual(2);
-        //check if the open class is added
-        expect(compiled.querySelector(".open")).toBeNull();
-    });
-
-    it("supports clrMenuClosable option. Closes the dropdown menu when clrMenuClosable is set to true", () => {
-        let dropdownToggle: HTMLElement  = compiled.querySelector(".dropdown-toggle");
-        let dropdownItem: HTMLElement  = compiled.querySelector(".dropdown-item");
-
-        dropdownToggle.click();
-        fixture.detectChanges();
-        expect(compiled.querySelector(".open")).not.toBeNull();
-
-        dropdownItem.click();
-        fixture.detectChanges();
-        expect(compiled.querySelector(".open")).toBeNull();
-
-        fixture.componentInstance.menuClosable = false;
-        dropdownToggle.click();
-        fixture.detectChanges();
-        expect(compiled.querySelector(".open")).not.toBeNull();
-
-        dropdownItem.click();
-        fixture.detectChanges();
-        expect(compiled.querySelector(".open")).not.toBeNull();
-    });
-
-
-    it("does not close the menu when a disabled item is clicked", () => {
-        let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
-        let dropdownItem: HTMLElement  = compiled.querySelector(".dropdown-item");
-        let disabledDropdownItem: HTMLElement  = compiled.querySelector(".dropdown-item.disabled");
-
-        dropdownToggle.click();
-        fixture.detectChanges();
-        expect(compiled.querySelector(".open")).not.toBeNull();
-
-        disabledDropdownItem.click();
-        fixture.detectChanges();
-        expect(compiled.querySelector(".open")).not.toBeNull();
-
-        dropdownItem.click();
-        fixture.detectChanges();
-        expect(compiled.querySelector(".open")).toBeNull();
-    });
-});

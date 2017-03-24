@@ -50,7 +50,17 @@ gemini.suite('dropdown', (child) => {
                 actions.wait(WAIT_LOAD_TIME);
             })
             .setCaptureElements('.clr-example')
-            .capture('default');
+            .capture('default')
+            .capture('deprecated-clicked', function(actions, find) {
+                this.deprecated = find('#deprecated');
+                actions.click(this.deprecated);
+                actions.wait(WAIT_TIME);
+            })
+            .capture('current-clicked', function(actions, find) {
+                this.current = find('#current');
+                actions.click(this.current);
+                actions.wait(WAIT_TIME);
+            });
     });
 
     gemini.suite('multi-click', (child) => {

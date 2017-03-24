@@ -11,6 +11,7 @@ import {TooltipsDirectionsDemo} from "./tooltips-directions";
 import {TooltipsIconDemo} from "./tooltips-icons";
 import {TooltipsTextDemo} from "./tooltips-text";
 import {TooltipsButtonsDemo} from "./tooltips-buttons";
+import {TooltipsAngularDemo} from "./tooltips-angular";
 
 const ROUTES: Routes = [
     {
@@ -20,6 +21,7 @@ const ROUTES: Routes = [
             { path: "", redirectTo: "sizes", pathMatch: "full" },
             { path: "sizes", component: TooltipsSizesDemo },
             { path: "directions", component: TooltipsDirectionsDemo },
+            { path: "angular", component: TooltipsAngularDemo },
             { path: "icon-tooltips", component: TooltipsIconDemo },
             { path: "text-tooltips", component: TooltipsTextDemo },
             { path: "button-tooltips", component: TooltipsButtonsDemo }

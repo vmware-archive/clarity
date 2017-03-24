@@ -10,6 +10,7 @@ gemini.suite('navigation', (child) => {
                 actions.wait(WAIT_LOAD_TIME);
             })
             .setCaptureElements('.clr-example .main-container')
+            .ignoreElements('pre')
             .capture('default');
     });
 

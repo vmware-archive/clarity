@@ -15,8 +15,10 @@ import {DROPDOWN_DIRECTIVES} from "./dropdown/index";
 import {LAYOUT_DIRECTIVES} from "./layout/index";
 import {MODAL_DIRECTIVES} from "./modal/index";
 import {NAVIGATION_DIRECTIVES} from "./nav/index";
+import {POPOVER_DIRECTIVES} from "./popover/index";
 import {STACK_VIEW_DIRECTIVES} from "./stack-view/index";
 import {TABS_DIRECTIVES} from "./tabs/index";
+import {TOOLTIP_DIRECTIVES} from "./tooltips/index";
 import {TREE_VIEW_DIRECTIVES} from "./tree-view/index";
 import {WIZARD_DIRECTIVES} from "./wizard/index";
 import {ICON_DIRECTIVES} from "./iconography/index";
@@ -37,8 +39,10 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
         LAYOUT_DIRECTIVES,
         MODAL_DIRECTIVES,
         NAVIGATION_DIRECTIVES,
+        POPOVER_DIRECTIVES,
         STACK_VIEW_DIRECTIVES,
         TABS_DIRECTIVES,
+        TOOLTIP_DIRECTIVES,
         TREE_VIEW_DIRECTIVES,
         WIZARD_DIRECTIVES,
         ICON_DIRECTIVES
@@ -54,6 +58,7 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
         NAVIGATION_DIRECTIVES,
         STACK_VIEW_DIRECTIVES,
         TABS_DIRECTIVES,
+        TOOLTIP_DIRECTIVES,
         TREE_VIEW_DIRECTIVES,
         WIZARD_DIRECTIVES,
         ICON_DIRECTIVES

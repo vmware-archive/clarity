@@ -7,12 +7,11 @@ import {
     Component,
     ElementRef,
     EventEmitter,
-    HostBinding,
     HostListener,
     Input,
-    Output,
-    Renderer
+    Output
 } from "@angular/core";
+import {Point} from "../popover/popover";
 
 const menuPositions: string[] = [
         "bottom-left",
@@ -25,19 +24,24 @@ const menuPositions: string[] = [
         "right-top"
     ];
 
+// TODO: the ng-content inside the dropdown-menu should ideally just be
+// <ng-content select="clr-dropdown-menu"></ng-content>. Remove .dropdown-menu in 1.0?
 @Component({
     selector: "clr-dropdown",
     template: `
         <ng-content select="[clrDropdownToggle]"></ng-content>
-        <ng-content></ng-content>
+        <div class="dropdown-menu" *clrPopover="open; anchor: anchor; anchorPoint: anchorPoint; 
+            popoverPoint: popoverPoint;">
+            <ng-content select="[clr-dropdown-menu, .dropdown-menu]"></ng-content> 
+        </div>
     `,
     host: {
-        "[class.dropdown]" : "true"
+        "[class.dropdown]" : "true",
+        "[class.open]" : "true" // always set to true; clrPopover will remove it from DOM when not open
     }
 })
 export class Dropdown {
 
-    @HostBinding("class.open")
     @Input("clrDropdownMenuOpen") _open: boolean = false;
 
     @Output("clrDropdownMenuOpenChange") _openChanged: EventEmitter<boolean> = new EventEmitter<boolean>(false);
@@ -45,6 +49,13 @@ export class Dropdown {
     @Input("clrCloseMenuOnItemClick") isMenuClosable: boolean = true;
 
     private _menuPosition: string;
+    public anchorPoint: Point = Point.BOTTOM_LEFT; // default if menuPosition isn't set
+    public popoverPoint: Point = Point.LEFT_TOP; // default if menuPosition isn't set
+    public anchor: any; // host element is the anchor
+
+    constructor(public elementRef: ElementRef) {
+        this.anchor = elementRef.nativeElement;
+    }
 
     @Input("clrMenuPosition")
     set menuPosition(pos: string) {
@@ -53,20 +64,45 @@ export class Dropdown {
         } else {
             this._menuPosition = "bottom-left";
         }
-        this.removeExistingDirectionClass();
-        this.renderer.setElementClass(this.elementRef.nativeElement, this._menuPosition, true);
-    }
-
-    removeExistingDirectionClass(): void {
-        let currentClassList: DOMTokenList = this.elementRef.nativeElement.classList;
-        menuPositions.forEach((direction: string) => {
-            if (currentClassList.contains(direction)) {
-                currentClassList.toggle(direction);
-            }
-        });
-    }
-
-    constructor(private elementRef: ElementRef, private renderer: Renderer) {
+        // set the popover values based on menu position
+        switch (this._menuPosition) {
+            case ("top-right"):
+                this.anchorPoint = Point.TOP_RIGHT;
+                this.popoverPoint = Point.RIGHT_BOTTOM;
+                break;
+            case ("top-left"):
+                this.anchorPoint = Point.TOP_LEFT;
+                this.popoverPoint = Point.LEFT_BOTTOM;
+                break;
+            case ("bottom-right"):
+                this.anchorPoint = Point.BOTTOM_RIGHT;
+                this.popoverPoint = Point.RIGHT_TOP;
+                break;
+            case ("bottom-left"):
+                this.anchorPoint = Point.BOTTOM_LEFT;
+                this.popoverPoint = Point.LEFT_TOP;
+                break;
+            case ("right-top"):
+                this.anchorPoint = Point.RIGHT_TOP;
+                this.popoverPoint = Point.LEFT_TOP;
+                break;
+            case ("right-bottom"):
+                this.anchorPoint = Point.RIGHT_BOTTOM;
+                this.popoverPoint = Point.LEFT_BOTTOM;
+                break;
+            case ("left-top"):
+                this.anchorPoint = Point.LEFT_TOP;
+                this.popoverPoint = Point.RIGHT_TOP;
+                break;
+            case ("left-bottom"):
+                this.anchorPoint = Point.LEFT_BOTTOM;
+                this.popoverPoint = Point.RIGHT_BOTTOM;
+                break;
+            default:
+                this.anchorPoint = Point.BOTTOM_LEFT;
+                this.popoverPoint = Point.LEFT_TOP;
+                break;
+        }
     }
 
     toggleDropdown(): void {

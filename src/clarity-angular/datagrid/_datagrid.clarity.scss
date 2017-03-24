@@ -80,10 +80,14 @@
     $clr-datagrid-icon-size: rem(1);
 
     .datagrid {
-        position: relative;
         flex: 1 1 auto;
         width: auto; // override the basic table's style of width: 100%
         max-width: none; // override the basic table's style of max-width: 100%
+
+        &.loading {
+            // this allows for the spinner to be centered relative to .datagrid-container
+            position: relative;
+        }
 
         .datagrid-spinner {
             position: absolute;
@@ -127,7 +131,6 @@
         }
 
         .datagrid-column {
-            position: relative;
             vertical-align: top;
             background: none;
             border-bottom: 0;
@@ -286,6 +289,7 @@
                 position: absolute;
                 background: $clr-white;
                 padding: $clr_baselineRem_0_25 $clr_baselineRem_0_25;
+                margin-left: $clr_baselineRem_0_25;
                 border: 1px solid $gray-light-midtone;
                 box-shadow: 0 1px 3px rgba($gray-dark, 0.25);
                 border-radius: $clr-default-borderradius;

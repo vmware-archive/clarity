@@ -5,7 +5,7 @@
   -->
 
 <ng-content select="clr-dg-action-bar"></ng-content>
-<div class="datagrid">
+<div class="datagrid" [class.loading]="loading">
     <div clrDgTableWrapper class="datagrid-table-wrapper">
         <div clrDgHead class="datagrid-head">
             <div class="datagrid-row">

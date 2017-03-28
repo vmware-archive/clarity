@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,6 +16,7 @@ import FiltersProviderSpecs from "./providers/filters.spec";
 import PageProviderSpecs from "./providers/page.spec";
 import ItemsProviderSpecs from "./providers/items.spec";
 import SelectionProviderSpecs from "./providers/selection.spec";
+import RowExpandProviderSpecs from "./providers/row-expand.spec";
 import DatagridActionBarSpecs from "./datagrid-action-bar.spec";
 import DatagridActionOverflowSpecs from "./datagrid-action-overflow.spec";
 import DatagridCellSpecs from "./datagrid-cell.spec";
@@ -23,6 +24,8 @@ import DatagridFilterSpecs from "./datagrid-filter.spec";
 import DatagridColumnSpecs from "./datagrid-column.spec";
 import DatagridItemsSpecs from "./datagrid-items.spec";
 import DatagridRowSpecs from "./datagrid-row.spec";
+import DatagridRowDetailSpecs from "./datagrid-row-detail.spec";
+import DatagridIfExpandedSpecs from "./datagrid-if-expanded.spec";
 import DatagridPaginationSpecs from "./datagrid-pagination.spec";
 import DatagridFooterSpecs from "./datagrid-footer.spec";
 import DatagridSpecs from "./datagrid.spec";
@@ -30,11 +33,13 @@ import DomAdapterSpecs from "./render/dom-adapter.spec";
 import DatagridRenderOrganizerSpecs from "./render/render-organizer.spec";
 import DatagridCellRendererSpecs from "./render/cell-renderer.spec";
 import DatagridRowRendererSpecs from "./render/row-renderer.spec";
+import DatagridRowMasterRendererSpecs from "./render/row-master-renderer.spec";
 import DatagridBodyRendererSpecs from "./render/body-renderer.spec";
 import DatagridHeaderRendererSpecs from "./render/header-renderer.spec";
 import DatagridHeadRendererSpecs from "./render/head-renderer.spec";
 import DatagridTableRendererSpecs from "./render/table-renderer.spec";
 import DatagridMainRendererSpecs from "./render/main-renderer.spec";
+import DatagridRowExpandAnimationSpecs from "./animation-hack/row-expand-animation.spec";
 import NestedPropertySpecs from "./built-in/nested-property.spec";
 import DatagridPropertyComparatorSpecs from "./built-in/comparators/datagrid-property-comparator.spec";
 import DatagridPropertyStringFilterSpecs from "./built-in/filters/datagrid-property-string-filter.spec";
@@ -50,6 +55,7 @@ describe("Datagrid", function() {
         PageProviderSpecs();
         ItemsProviderSpecs();
         SelectionProviderSpecs();
+        RowExpandProviderSpecs();
     });
     describe("Components", function() {
         DatagridActionBarSpecs();
@@ -59,6 +65,8 @@ describe("Datagrid", function() {
         DatagridColumnSpecs();
         DatagridItemsSpecs();
         DatagridRowSpecs();
+        DatagridRowDetailSpecs();
+        DatagridIfExpandedSpecs();
         DatagridPaginationSpecs();
         DatagridFooterSpecs();
         DatagridPlaceholderSpecs();
@@ -69,11 +77,13 @@ describe("Datagrid", function() {
         DatagridRenderOrganizerSpecs();
         DatagridCellRendererSpecs();
         DatagridRowRendererSpecs();
+        DatagridRowMasterRendererSpecs();
         DatagridBodyRendererSpecs();
         DatagridHeaderRendererSpecs();
         DatagridHeadRendererSpecs();
         DatagridTableRendererSpecs();
         DatagridMainRendererSpecs();
+        DatagridRowExpandAnimationSpecs();
     });
     describe("Built-in", function() {
         NestedPropertySpecs();

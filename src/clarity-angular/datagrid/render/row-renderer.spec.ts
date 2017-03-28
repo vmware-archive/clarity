@@ -1,21 +1,25 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
 import {TestContext} from "../helpers.spec";
 import {DatagridRowRenderer} from "./row-renderer";
+import {DatagridCellRenderer} from "./cell-renderer";
 import {DatagridRenderOrganizer} from "./render-organizer";
 import {MockDatagridRenderOrganizer, MOCK_ORGANIZER_PROVIDER} from "./render-organizer.mock";
-import {DatagridCellRenderer} from "./cell-renderer";
+import {DomAdapter} from "./dom-adapter";
 import {Selection} from "../providers/selection";
 import {Items} from "../providers/items";
 import {FiltersProvider} from "../providers/filters";
 import {Sort} from "../providers/sort";
 import {Page} from "../providers/page";
 import {RowActionService} from "../providers/row-action-service";
+import {GlobalExpandableRows} from "../providers/global-expandable-rows";
 
+const PROVIDERS = [Selection, Items, FiltersProvider, Sort, Page, RowActionService,
+    GlobalExpandableRows, MOCK_ORGANIZER_PROVIDER, DomAdapter];
 export default function(): void {
     describe("DatagridRowRenderer directive", function() {
         let context: TestContext<DatagridRowRenderer, SimpleTest>;
@@ -23,8 +27,7 @@ export default function(): void {
         let cellWidthSpy: jasmine.Spy;
 
         beforeEach(function() {
-            context = this.create(DatagridRowRenderer, SimpleTest,
-                [Selection, Items, FiltersProvider, Sort, Page, RowActionService, MOCK_ORGANIZER_PROVIDER]);
+            context = this.create(DatagridRowRenderer, SimpleTest, PROVIDERS);
             organizer = context.getClarityProvider(DatagridRenderOrganizer);
             organizer.widths = [{px: 42, strict: false}, {px: 24, strict: true}];
             cellWidthSpy = spyOn(DatagridCellRenderer.prototype, "setWidth");
@@ -49,6 +52,12 @@ export default function(): void {
             context.detectChanges();
             expect(cellWidthSpy.calls.allArgs()).toEqual([[false, 42], [true, 24]]);
         });
+
+        it("sets the size of cells when they change dynamically", function() {
+            context.testComponent.world = false;
+            context.detectChanges();
+            expect(cellWidthSpy.calls.allArgs()).toEqual([[false, 42], [true, 24]]);
+        });
     });
 }
 
@@ -56,10 +65,12 @@ export default function(): void {
     template: `
         <clr-dg-row *ngIf="show">
             <clr-dg-cell>Hello</clr-dg-cell>
-            <clr-dg-cell>World</clr-dg-cell>
+            <clr-dg-cell *ngIf="world">World</clr-dg-cell>
+            <clr-dg-cell *ngIf="!world">Clarity</clr-dg-cell>
         </clr-dg-row>
     `
 })
 class SimpleTest {
     show = true;
+    world = true;
 }

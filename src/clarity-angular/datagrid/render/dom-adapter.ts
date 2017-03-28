@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -28,5 +28,9 @@ export class DomAdapter {
 
     scrollWidth(element: any) {
         return element.scrollWidth || 0;
+    }
+
+    computedHeight(element: any) {
+        return parseInt(getComputedStyle(element).getPropertyValue("height"), 10);
     }
 }

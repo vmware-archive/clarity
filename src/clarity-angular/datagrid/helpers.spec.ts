@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -59,6 +59,15 @@ export function addHelpers(): void {
             TestBed.configureTestingModule({
                 imports: [ClarityModule.forRoot()],
                 declarations: [testComponent],
+                providers: providers
+            });
+            return this._context = new TestContext<D, C>(clarityDirective, testComponent);
+        };
+
+        this.createOnly = <D, C>(clarityDirective: Type<D>, testComponent: Type<C>,
+                                 providers: any[] = [], extraDirectives: Type<any>[] = []) => {
+            TestBed.configureTestingModule({
+                declarations: [clarityDirective, testComponent, ...extraDirectives],
                 providers: providers
             });
             return this._context = new TestContext<D, C>(clarityDirective, testComponent);

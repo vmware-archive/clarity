@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -23,6 +23,7 @@ import {DatagridPlaceholderDemo} from "./placeholder/placeholder";
 import {DatagridScrollingDemo} from "./scrolling/scrolling";
 import {DatagridColumnSizingDemo} from "./column-sizing/column-sizing";
 import {DatagridPreserveSelectionDemo} from "./preserve-selection/preserve-selection";
+import {DatagridExpandableRowsDemo} from "./expandable-rows/expandable-rows";
 
 const ROUTES: Routes = [
     {
@@ -45,6 +46,7 @@ const ROUTES: Routes = [
             {path: "placeholder", component: DatagridPlaceholderDemo},
             {path: "scrolling", component: DatagridScrollingDemo},
             {path: "column-sizing", component: DatagridColumnSizingDemo},
+            {path: "expandable-rows", component: DatagridExpandableRowsDemo},
             {path: "full", component: DatagridFullDemo},
         ]
     }

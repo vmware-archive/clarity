@@ -21,3 +21,4 @@ export * from "./animations/collapse/index";
 export * from "./animations/fade/index";
 export * from "./animations/fade-slide/index";
 export * from "./animations/slide/index";
+export * from "./loading/index";

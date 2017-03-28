@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,122 +14,234 @@ import {FiltersProvider} from "./providers/filters";
 import {Sort} from "./providers/sort";
 import {Page} from "./providers/page";
 import {RowActionService} from "./providers/row-action-service";
+import {GlobalExpandableRows} from "./providers/global-expandable-rows";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
+import {DomAdapter} from "./render/dom-adapter";
+import {RowExpand} from "./providers/row-expand";
+import {LoadingListener} from "../loading/loading-listener";
+
+const PROVIDERS = [Selection, Items, FiltersProvider, Sort, Page, RowActionService,
+    GlobalExpandableRows, DatagridRenderOrganizer, DomAdapter];
 
 export default function(): void {
     describe("DatagridRow component", function() {
 
-        // Until we can properly type "this"
-        let context: TestContext<DatagridRow, FullTest>;
-        let selectionProvider: Selection;
+        describe("View", function() {
+            // Until we can properly type "this"
+            let context: TestContext<DatagridRow, FullTest>;
 
-        beforeEach(function () {
-            context = this.create(DatagridRow, FullTest,
-                [Selection, Items, FiltersProvider, Sort, Page, RowActionService, DatagridRenderOrganizer]);
+            beforeEach(function () {
+                context = this.create(DatagridRow, FullTest, PROVIDERS);
+            });
 
-            selectionProvider = TestBed.get(Selection);
+            it("projects content", function () {
+                expect(context.clarityElement.textContent.trim()).toMatch("Hello world");
+            });
+
+            it("adds the .datagrid-row class to the host", function () {
+                expect(context.clarityElement.classList.contains("datagrid-row")).toBeTruthy();
+            });
+
+            it("receives an input for the row's modal", function () {
+                context.testComponent.item = { id: 1 };
+                context.detectChanges();
+                expect(context.clarityDirective.item).toBe(context.testComponent.item);
+            });
+
+            it("displays an empty cell when one of the rows is expandable", function () {
+                expect(context.clarityElement.querySelector(".datagrid-fixed-column")).toBeNull();
+                context.getClarityProvider(GlobalExpandableRows).hasExpandableRow = true;
+                context.detectChanges();
+                expect(context.clarityElement.querySelector(".datagrid-fixed-column")).not.toBeNull();
+            });
         });
 
-        it("projects content", function () {
-            expect(context.clarityElement.textContent.trim()).toMatch("Hello world");
+        describe("Selection", function() {
+            // Until we can properly type "this"
+            let context: TestContext<DatagridRow, FullTest>;
+            let selectionProvider: Selection;
+
+            beforeEach(function () {
+                context = this.create(DatagridRow, FullTest, PROVIDERS);
+                selectionProvider = TestBed.get(Selection);
+            });
+
+            it("doesn't display a checkbox unless selection type is multi", function () {
+                selectionProvider.selectionType = SelectionType.None;
+                context.detectChanges();
+                expect(context.clarityElement.querySelector("input[type='checkbox']")).toBeNull();
+
+                selectionProvider.selectionType = SelectionType.Single;
+                context.detectChanges();
+                expect(context.clarityElement.querySelector("input[type='checkbox']")).toBeNull();
+            });
+
+            it("doesn't display a radio button unless selection type is single", function () {
+                selectionProvider.selectionType = SelectionType.None;
+                context.detectChanges();
+                expect(context.clarityElement.querySelector("input[type='radio']")).toBeNull();
+
+                selectionProvider.selectionType = SelectionType.Multi;
+                context.detectChanges();
+                expect(context.clarityElement.querySelector("input[type='radio']")).toBeNull();
+            });
+
+            it("selects the model when the checkbox is clicked", function () {
+                selectionProvider.selectionType = SelectionType.Multi;
+                context.testComponent.item = {id: 1};
+                context.detectChanges();
+                let checkbox = context.clarityElement.querySelector("input[type='checkbox']");
+                expect(selectionProvider.current).toEqual([]);
+                checkbox.click();
+                context.detectChanges();
+                expect(selectionProvider.current).toEqual([context.testComponent.item]);
+                checkbox.click();
+                context.detectChanges();
+                expect(selectionProvider.current).toEqual([]);
+            });
+
+            it("selects the model when the radio button is clicked", function () {
+                selectionProvider.selectionType = SelectionType.Single;
+                context.testComponent.item = {id: 1};
+                context.detectChanges();
+                let radio = context.clarityElement.querySelector("input[type='radio']");
+                expect(selectionProvider.currentSingle).toBeUndefined();
+                radio.click();
+                context.detectChanges();
+                expect(selectionProvider.currentSingle).toEqual(context.testComponent.item);
+            });
+
+            it("adds the .datagrid-selected class to the host when the row is selected", function () {
+                selectionProvider.selectionType = SelectionType.Multi;
+                context.testComponent.item = {id: 1};
+                context.detectChanges();
+                context.clarityDirective.selected = true;
+                context.detectChanges();
+                expect(context.clarityElement.classList.contains("datagrid-selected")).toBeTruthy();
+            });
+
+            it("offers two-way binding on the selected state of the row", fakeAsync(function () {
+                selectionProvider.selectionType = SelectionType.Multi;
+                context.testComponent.item = {id: 1};
+                flushAndAssertSelected(false);
+                // Input
+                context.testComponent.selected = true;
+                flushAndAssertSelected(true);
+                // Output
+                context.clarityElement.querySelector("input[type='checkbox']").click();
+                flushAndAssertSelected(false);
+            }));
+
+            it("supports selected rows even if the datagrid isn't selectable", fakeAsync(function () {
+                selectionProvider.selectionType = SelectionType.None;
+                expect(context.testComponent.item).toBeUndefined();
+                expect(context.clarityDirective.selected).toBe(false);
+                context.testComponent.selected = true;
+                context.detectChanges();
+                expect(context.clarityDirective.selected).toBe(true);
+                context.testComponent.selected = false;
+                context.detectChanges();
+                expect(context.clarityDirective.selected).toBe(false);
+            }));
+
+            function flushAndAssertSelected(selected: boolean) {
+                context.detectChanges();
+                // ngModel is asynchronous, we need an extra change detection
+                tick();
+                context.detectChanges();
+                expect(context.testComponent.selected).toBe(selected);
+                expect(context.clarityDirective.selected).toBe(selected);
+            }
         });
 
-        it("adds the .datagrid-row class to the host", function () {
-            expect(context.clarityElement.classList.contains("datagrid-row")).toBeTruthy();
+        describe("Expand/Collapse", function() {
+            // Until we can properly type "this"
+            let context: TestContext<DatagridRow, ExpandTest>;
+            let expand: RowExpand;
+
+            beforeEach(function () {
+                context = this.create(DatagridRow, ExpandTest, PROVIDERS);
+                // This is the datagrid's job, so we handle it manually for the tests.
+                context.getClarityProvider(GlobalExpandableRows).hasExpandableRow = true;
+                context.detectChanges();
+                expand = context.getClarityProvider(RowExpand);
+            });
+
+            it("registers a LoadingListener", function () {
+                expect(context.getClarityProvider(LoadingListener)).toBeTruthy();
+            });
+
+            it("displays a clickable caret when the row is expandable", function () {
+                expect(context.clarityElement.querySelector("button clr-icon[shape^=caret]")).not.toBeNull();
+            });
+
+            it("displays a spinner instead of the caret when the details are loading", function () {
+                expect(context.clarityElement.querySelector(".spinner")).toBeNull();
+                expand.loading = true;
+                context.detectChanges();
+                expect(context.clarityElement.querySelector(".spinner")).not.toBeNull();
+            });
+
+            it("doesn't display the details when collapsed", function() {
+                expect(context.clarityElement.textContent).toMatch("Hello world");
+                expect(context.clarityElement.textContent).not.toMatch("Detail");
+                expand.replace = true;
+                context.detectChanges();
+                expect(context.clarityElement.textContent).toMatch("Hello world");
+                expect(context.clarityElement.textContent).not.toMatch("Detail");
+            });
+
+            // FIXME: PhantomJS being a d***
+            xit("displays both the row and the details when expanded and not replacing", fakeAsync(function () {
+                expand.expanded = true;
+                tick();
+                context.detectChanges();
+                expect(context.clarityElement.textContent).toMatch("Hello world");
+                expect(context.clarityElement.textContent).toMatch("Detail");
+            }));
+
+            xit("displays only the details when expanded and replacing", fakeAsync(function () {
+                expand.replace = true;
+                expand.expanded = true;
+                tick();
+                context.detectChanges();
+                expect(context.clarityElement.textContent).not.toMatch("Hello world");
+                expect(context.clarityElement.textContent).toMatch("Detail");
+            }));
+
+            it("doesn't display the details while loading", fakeAsync(function() {
+                expand.expanded = true;
+                expand.loading = true;
+                tick();
+                context.detectChanges();
+                expect(context.clarityElement.textContent).not.toMatch("Detail");
+            }));
+
+            xit("expands and collapses when the caret is clicked", fakeAsync(function () {
+                let caret = context.clarityElement.querySelector(".datagrid-expandable-caret button");
+                caret.click();
+                flushAnimations();
+                expect(expand.expanded).toBe(true);
+                caret.click();
+                flushAnimations();
+                expect(expand.expanded).toBe(false);
+            }));
+
+            xit("offers 2-way binding on the expanded state of the row", fakeAsync(function () {
+                context.testComponent.expanded = true;
+                flushAnimations();
+                expect(context.clarityDirective.expanded).toBe(true);
+                context.clarityElement.querySelector(".datagrid-expandable-caret button").click();
+                flushAnimations();
+                expect(context.testComponent.expanded).toBe(false);
+            }));
+
+            function flushAnimations() {
+                context.detectChanges();
+                tick();
+                context.detectChanges();
+            }
         });
-
-        it("receives an input for the row's modal", function () {
-            context.testComponent.item = { id: 1 };
-            context.detectChanges();
-            expect(context.clarityDirective.item).toBe(context.testComponent.item);
-        });
-
-        it("doesn't display a checkbox unless selection type is multi", function () {
-            selectionProvider.selectionType = SelectionType.None;
-            context.detectChanges();
-            expect(context.clarityElement.querySelector("input[type='checkbox']")).toBeNull();
-
-            selectionProvider.selectionType = SelectionType.Single;
-            context.detectChanges();
-            expect(context.clarityElement.querySelector("input[type='checkbox']")).toBeNull();
-        });
-
-        it("doesn't display a radio button unless selection type is single", function () {
-            selectionProvider.selectionType = SelectionType.None;
-            context.detectChanges();
-            expect(context.clarityElement.querySelector("input[type='radio']")).toBeNull();
-
-            selectionProvider.selectionType = SelectionType.Multi;
-            context.detectChanges();
-            expect(context.clarityElement.querySelector("input[type='radio']")).toBeNull();
-        });
-
-        it("selects the model when the checkbox is clicked", function () {
-            selectionProvider.selectionType = SelectionType.Multi;
-            context.testComponent.item = { id: 1 };
-            context.detectChanges();
-            let checkbox = context.clarityElement.querySelector("input[type='checkbox']");
-            expect(selectionProvider.current).toEqual([]);
-            checkbox.click();
-            context.detectChanges();
-            expect(selectionProvider.current).toEqual([ context.testComponent.item ]);
-            checkbox.click();
-            context.detectChanges();
-            expect(selectionProvider.current).toEqual([]);
-        });
-
-        it("selects the model when the radio button is clicked", function () {
-            selectionProvider.selectionType = SelectionType.Single;
-            context.testComponent.item = { id: 1 };
-            context.detectChanges();
-            let radio = context.clarityElement.querySelector("input[type='radio']");
-            expect(selectionProvider.currentSingle).toBeUndefined();
-            radio.click();
-            context.detectChanges();
-            expect(selectionProvider.currentSingle).toEqual(context.testComponent.item);
-        });
-
-        it("adds the .datagrid-selected class to the host when the row is selected", function () {
-            selectionProvider.selectionType = SelectionType.Multi;
-            context.testComponent.item = { id: 1 };
-            context.detectChanges();
-            context.clarityDirective.selected = true;
-            context.detectChanges();
-            expect(context.clarityElement.classList.contains("datagrid-selected")).toBeTruthy();
-        });
-
-        it("offers two-way binding on the selected state of the row", fakeAsync(function () {
-            selectionProvider.selectionType = SelectionType.Multi;
-            context.testComponent.item = { id: 1 };
-            flushAndAssertSelected(false);
-            // Input
-            context.testComponent.selected = true;
-            flushAndAssertSelected(true);
-            // Output
-            context.clarityElement.querySelector("input[type='checkbox']").click();
-            flushAndAssertSelected(false);
-        }));
-
-        it("supports selected rows even if the datagrid isn't selectable", fakeAsync(function () {
-            selectionProvider.selectionType = SelectionType.None;
-            expect(context.testComponent.item).toBeUndefined();
-            expect(context.clarityDirective.selected).toBe(false);
-            context.testComponent.selected = true;
-            context.detectChanges();
-            expect(context.clarityDirective.selected).toBe(true);
-            context.testComponent.selected = false;
-            context.detectChanges();
-            expect(context.clarityDirective.selected).toBe(false);
-        }));
-
-        function flushAndAssertSelected(selected: boolean) {
-            context.detectChanges();
-            // ngModel is asynchronous, we need an extra change detection
-            tick();
-            context.detectChanges();
-            expect(context.testComponent.selected).toBe(selected);
-            expect(context.clarityDirective.selected).toBe(selected);
-        }
     });
 }
 
@@ -139,4 +251,17 @@ export default function(): void {
 class FullTest {
     item: any;
     selected = false;
+}
+
+@Component({
+    template: `
+        <clr-dg-row [(clrDgExpanded)]="expanded">
+            Hello world
+            <clr-dg-row-detail *clrIfExpanded>
+                Detail
+            </clr-dg-row-detail>
+        </clr-dg-row>`
+})
+class ExpandTest {
+    expanded = false;
 }

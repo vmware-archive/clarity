@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -25,10 +25,13 @@ import {DatagridStringFilteringDemo} from "./string-filtering/string-filtering";
 import {DatagridPlaceholderDemo} from "./placeholder/placeholder";
 import {DatagridScrollingDemo} from "./scrolling/scrolling";
 import {DatagridColumnSizingDemo} from "./column-sizing/column-sizing";
+import {DatagridExpandableRowsDemo} from "./expandable-rows/expandable-rows";
+import {DatagridPreserveSelectionDemo} from "./preserve-selection/preserve-selection";
 
 import {ColorFilter} from "./utils/color-filter";
 import {Example} from "./utils/example";
-import {DatagridPreserveSelectionDemo} from "./preserve-selection/preserve-selection";
+import {FakeLoader} from "./expandable-rows/fake-loader";
+import {DetailWrapper} from "./expandable-rows/detail-wrapper";
 
 
 @NgModule({
@@ -56,8 +59,11 @@ import {DatagridPreserveSelectionDemo} from "./preserve-selection/preserve-selec
         DatagridPlaceholderDemo,
         DatagridScrollingDemo,
         DatagridColumnSizingDemo,
+        DatagridExpandableRowsDemo,
         ColorFilter,
-        Example
+        Example,
+        FakeLoader,
+        DetailWrapper
     ],
     exports: [
         DatagridDemo,
@@ -76,7 +82,8 @@ import {DatagridPreserveSelectionDemo} from "./preserve-selection/preserve-selec
         DatagridStringFilteringDemo,
         DatagridPlaceholderDemo,
         DatagridScrollingDemo,
-        DatagridColumnSizingDemo
+        DatagridColumnSizingDemo,
+        DatagridExpandableRowsDemo
     ]
 })
 export default class DatagridDemoModule {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,6 +14,7 @@ import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property
 import {DatagridItems} from "./datagrid-items";
 import {DatagridRow} from "./datagrid-row";
 import {DatagridPlaceholder} from "./datagrid-placeholder";
+import {DatagridIfExpanded} from "./datagrid-if-expanded";
 import {State} from "./interfaces/state";
 import {FiltersProvider} from "./providers/filters";
 import {Items} from "./providers/items";
@@ -21,6 +22,7 @@ import {Page} from "./providers/page";
 import {Selection, SelectionType} from "./providers/selection";
 import {Sort} from "./providers/sort";
 import {RowActionService} from "./providers/row-action-service";
+import {GlobalExpandableRows} from "./providers/global-expandable-rows";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 import {DatagridActionOverflow} from "./datagrid-action-overflow";
 import {DatagridStringFilterImpl} from "./built-in/filters/datagrid-string-filter-impl";
@@ -28,16 +30,17 @@ import {DatagridStringFilterImpl} from "./built-in/filters/datagrid-string-filte
 @Component({
     selector: "clr-datagrid",
     templateUrl: "./datagrid.html",
-    providers: [Selection, Sort, FiltersProvider, Page, RowActionService, Items, DatagridRenderOrganizer],
+    providers: [Selection, Sort, FiltersProvider, Page, Items, DatagridRenderOrganizer,
+        RowActionService, GlobalExpandableRows],
     host: {
-        "[class.datagrid-container]": "true"
+        "[class.datagrid-host]": "true"
     }
 })
 export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
 
     constructor(public selection: Selection, private sort: Sort, private filters: FiltersProvider,
-                private page: Page, public items: Items, public rowActionService: RowActionService) {
-    }
+                private page: Page, public items: Items, public rowActionService: RowActionService,
+                public expandableRows: GlobalExpandableRows) {}
 
     /* reference to the enum so that template can access */
     public SELECTION_TYPE = SelectionType;
@@ -132,6 +135,8 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     set selected(value: any[]) {
         if (value) {
             this.selection.selectionType = SelectionType.Multi;
+        } else {
+            this.selection.selectionType = SelectionType.None;
         }
         this.selection.current = value;
     }
@@ -190,30 +195,33 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
      */
     @ContentChildren(DatagridActionOverflow, { descendants: true }) public actionableRows: QueryList<DatagridRow>;
 
+    /**
+     * We grab all details for expandable rows to determine if we need the extra cell for carets or not
+     */
+    @ContentChildren(DatagridIfExpanded, {descendants: true}) details: QueryList<DatagridIfExpanded>;
+
     ngAfterContentInit() {
         // TODO: Move all this to ngOnInit() once https://github.com/angular/angular/issues/12818 goes in.
         // And when we do that, remove the manual step for each one.
         this._subscriptions.push(this.actionableRows.changes.subscribe(() => {
             /*if at least one row has actionable overflow, show a placeholder cell in every other row.*/
             this.rowActionService.hasActionableRow = this.actionableRows.length > 0;
-
         }));
-
         this.rowActionService.hasActionableRow = this.actionableRows.length > 0;
 
+        this._subscriptions.push(this.details.changes.subscribe(() => {
+            /* if at least one row is expandable, show a placeholder cell in every other row.*/
+            this.expandableRows.hasExpandableRow = this.details.length > 0;
+        }));
+        this.expandableRows.hasExpandableRow = this.details.length > 0;
+
         this._subscriptions.push(this.rows.changes.subscribe(() => {
-
             if (!this.items.smart) {
-
                 this.items.all = this.rows.map((row: DatagridRow) => row.item);
-
             }
         }));
-
         if (!this.items.smart) {
-
             this.items.all = this.rows.map((row: DatagridRow) => row.item);
-
         }
     }
 

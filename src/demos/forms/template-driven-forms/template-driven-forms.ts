@@ -12,7 +12,6 @@ import {EXAMPLES} from "./examples";
 @Component({
     selector: "clr-template-driven-forms-demo",
     // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: [ ],
     templateUrl: "./template-driven-forms.html"
 })
 export class TemplateDrivenFormsDemo {

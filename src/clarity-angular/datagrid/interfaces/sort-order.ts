@@ -11,7 +11,7 @@
  * @export
  * @enum {number}
  */
-export const enum SortOrder {
+export enum SortOrder {
     Unsorted = 0,
     Asc = 1,
     Desc = -1

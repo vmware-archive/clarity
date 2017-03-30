@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -7,35 +7,31 @@
 <h2>Custom sort</h2>
 
 <p>
-    Sometimes, the natural sort order for a property is not the relevant one. Sometimes, a column
-    is not even a property on your model but is dynamically generated instead. In these cases,
-    you might want to specify a custom comparator to sort the column according to your needs.
-    This can be done by providing a comparator through the
+    Sometimes, the natural sort order for a property is not the relevant one. Sometimes, a column is not even a property on your
+    model but is dynamically generated instead. In these cases, you might want to specify a custom comparator to sort the
+    column according to your needs. This can be done by providing a comparator through the
     <code class="clr-code">[clrDgSortBy]</code> input, whether or not your column is declared as a
     <code class="clr-code">clrDgField</code>, and will always take precedence over it if it is.
 </p>
 <p>
-    A comparator is just an object that implements a <code class="clr-code">compare</code> method
-    that could be given as parameter to Javascript's native
-    <code class="clr-code">Array.sort()</code> function. In other words, if a and b are two
-    elements being compared, then:
+    A comparator is just an object that implements a <code class="clr-code">compare</code> method that could be given as
+    parameter to Javascript's native
+    <code class="clr-code">Array.sort()</code> function. In other words, if a and b are two elements being compared, then:
 </p>
 <ul>
     <li>
         if compare(a, b) is less than 0, a comes first,
     </li>
     <li>
-        if compare(a, b) returns 0, leave a and b unchanged with respect to each other, but
-        sorted with respect to all other items,
+        if compare(a, b) returns 0, leave a and b unchanged with respect to each other, but sorted with respect to all other items,
     </li>
     <li>
         if compare(a, b) is greater than 0, b comes first.
     </li>
 </ul>
 <p>
-    The safest way to check that your types comply with our API is to have your comparator be an
-    instance of a class that implement the <code class="clr-code">Comparator</code> interface
-    provided by Clarity.
+    The safest way to check that your types comply with our API is to have your comparator be an instance of a class that implement
+    the <code class="clr-code">Comparator</code> interface provided by Clarity.
 </p>
 <div class="alert alert-info">
     <div class="alert-item">
@@ -62,25 +58,66 @@
     </div>
 </div>
 <p>
-    <code class="clr-code">&lt;clr-dg-column&gt;</code> also offers a <code class="clr-code">[(clrDgSorted)]</code>
-    two-way binding to dynamically force a column to be sorted or not, typically on initialization. It also lets
-    consumers know if a column is sorted or not.
-</p>
-<p>
-    In our example, everyone knows pokemons should not be sorted lexicographically, but according
-    to Pok&eacute;dex number.
+    In our example, everyone knows pokemons should not be sorted lexicographically, but according to Pok&eacute;dex number.
 </p>
 
+<p>
+    The datagrid is currently <b>{{sortOrder !== 0 ? "" : "not"}}</b> sorted<b>{{sortOrder === 1 ? " ascendingly" : sortOrder
+    === -1 ? " descendingly" : ""}}</b>.
+</p>
+<p>
+    <button class="btn btn-secondary" (click)="sortOrder = 1" [disabled]="sortOrder === 1">
+        Sort ascendingly
+    </button>
+    <button class="btn btn-secondary" (click)="sortOrder = -1" [disabled]="sortOrder === -1">
+        Sort descendingly
+    </button>
+    <button class="btn btn-secondary" (click)="sortOrder = 0" [disabled]="sortOrder === 0">
+        Clear sort
+    </button>
+</p>
 <clr-datagrid>
     <clr-dg-column>User ID</clr-dg-column>
     <clr-dg-column>Name</clr-dg-column>
     <clr-dg-column>Creation date</clr-dg-column>
-    <clr-dg-column [clrDgField]="'pokemon.name'"
-                   [clrDgSortBy]="pokemonComparator">Pokemon
-    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'pokemon.name'" [clrDgSortBy]="pokemonComparator" [(clrDgSortOrder)]="sortOrder">Pokemon</clr-dg-column>
     <clr-dg-column>Favorite color</clr-dg-column>
 
     <clr-dg-row *clrDgItems="let user of users">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            {{user.pokemon.name}} <span class="badge badge-5">#{{user.pokemon.number}}</span>
+        </clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<clr-example [clrCode]="examples.sortingTS" clrLanguage="typescript"></clr-example>
+<clr-example [clrCode]="examples.sortingHTML" clrLanguage="html"></clr-example>
+
+<p>
+    The following example is showcasing the deprecated way of sorting pokemons. This will be removed in the next major release.
+</p>
+<p>
+    The datagrid is currently {{sorted ? "" : "not"}} sorted.
+    <button class="btn btn-secondary" (click)="sorted = !sorted">
+        {{sorted ? "Clear sort" : "Sort"}}
+    </button>
+</p>
+<clr-datagrid>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column [clrDgField]="'pokemon.name'" [clrDgSortBy]="pokemonComparator" [(clrDgSorted)]="sorted">Pokemon</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of usersDeprecated">
         <clr-dg-cell>{{user.id}}</clr-dg-cell>
         <clr-dg-cell>{{user.name}}</clr-dg-cell>
         <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>

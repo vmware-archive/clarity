@@ -10,7 +10,7 @@
             Dropdown
             <clr-icon shape="caret down"></clr-icon>
         </button>
-        <div class="dropdown-menu">
+        <clr-dropdown-menu>
             <label class="dropdown-header">Dropdown header</label>
             <a href="javascript://" clrDropdownItem>Action 1</a>
             <a href="javascript://" clrDropdownItem>Action 2</a>
@@ -18,17 +18,17 @@
             <div class="dropdown-divider"></div>
             <a href="javascript://" clrDropdownItem>Link 1</a>
             <a href="javascript://" clrDropdownItem>Link 2</a>
-        </div>
+        </clr-dropdown-menu>
     </clr-dropdown>
 </div>
 
 <pre><code clr-code-highlight="language-html">
-&lt;clr-dropdown [clrMenuPosition]=&quot;'top-left'&quot;&gt;
+&lt;clr-dropdown clrMenuPosition=&quot;top-left&quot;&gt;
     &lt;button class=&quot;btn btn-outline-primary&quot; clrDropdownToggle&gt;
         Dropdown
         &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
     &lt;/button&gt;
-    &lt;div class=&quot;dropdown-menu&quot;&gt;
+    &lt;clr-dropdown-menu&gt;
         &lt;label class=&quot;dropdown-header&quot;&gt;Dropdown header&lt;/label&gt;
         &lt;a href=&quot;...&quot; clrDropdownItem&gt;Action 1&lt;/a&gt;
         &lt;a href=&quot;...&quot; clrDropdownItem&gt;Action 2&lt;/a&gt;
@@ -36,6 +36,6 @@
         &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
         &lt;a href=&quot;...&quot; clrDropdownItem&gt;Link 1&lt;/a&gt;
         &lt;a href=&quot;...&quot; clrDropdownItem&gt;Link 2&lt;/a&gt;
-    &lt;/div&gt;
+    &lt;/clr-dropdown-menu&gt;
 &lt;/clr-dropdown&gt;
 </code></pre>

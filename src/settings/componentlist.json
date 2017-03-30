@@ -116,7 +116,8 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "dropdowns",
@@ -126,7 +127,8 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "forms",
@@ -158,7 +160,7 @@
             "core": -1,
             "ng": 20,
             "dox": 20,
-            "comments": "Search and Header Actions are under implementation"
+            "comments": ""
         },
         {
             "url": "iconography",
@@ -256,11 +258,11 @@
             "url": null,
             "text": "Search",
             "type": "component",
-            "ux": 10,
-            "ui": 10,
+            "ux": 5,
+            "ui": 5,
             "core": -1,
-            "ng": 10,
-            "dox": 10
+            "ng": 5,
+            "dox": 5
         },
         {
             "url": "select-boxes",
@@ -270,18 +272,19 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": null,
             "text": "Signpost",
             "type": "component",
             "ux": 20,
-            "ui": 10,
+            "ui": 5,
             "core": -1,
-            "ng": 10,
+            "ng": 5,
             "dox": 5,
-            "comments": "Signpost is in development"
+            "comments": ""
         },
         {
             "url": "sidenav",
@@ -312,7 +315,7 @@
             "core": -1,
             "ng": 20,
             "dox": 20,
-            "comments": "Requires the Web Animations API"
+            "comments": ""
         },
         {
             "url": "tables",
@@ -362,8 +365,9 @@
             "ux": 20,
             "ui": 20,
             "core": -1,
-            "ng": 5,
-            "dox": 20
+            "ng": 20,
+            "dox": 20,
+            "isNew": true
         },
         {
             "url": "typography",

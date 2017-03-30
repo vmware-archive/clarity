@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-
 import {Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
+import {SortOrder} from "clarity-angular";
 import {PokemonComparator} from "../utils/pokemon-comparator";
 import {EXAMPLES} from "./examples";
 
@@ -19,6 +19,10 @@ import {EXAMPLES} from "./examples";
 export class DatagridSortingDemo {
     examples = EXAMPLES;
     users: User[];
+    usersDeprecated: User[];
+    sortOrder: SortOrder = SortOrder.Unsorted;
+    sorted: boolean = false;
+
 
     pokemonComparator = new PokemonComparator();
 
@@ -26,5 +30,6 @@ export class DatagridSortingDemo {
         inventory.size = 10;
         inventory.reset();
         this.users = inventory.all;
+        this.usersDeprecated = inventory.all;
     }
 }

@@ -57,7 +57,7 @@
 
 <clr-datagrid [(clrDgSelected)]="selected">
     <clr-dg-action-bar>
-        <div class="btn-group" role="group" aria-label="Available Actions">
+        <div class="btn-group" role="group" aria-label="Available Actions" *ngIf="selected.length > 0">
             <button type="button" class="btn btn-sm btn-secondary" (click)="onAdd()"><clr-icon shape="plus"></clr-icon> Add
                 to
                 group</button>

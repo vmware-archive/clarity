@@ -8,7 +8,6 @@ import { Component } from "@angular/core";
 import { PageCollectionService } from "./providers/page-collection";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-stepnav",
     template: `
         <ol class="clr-wizard-stepnav-list" role="tablist">

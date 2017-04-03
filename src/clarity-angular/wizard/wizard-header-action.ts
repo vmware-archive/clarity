@@ -14,7 +14,6 @@ import {
 let wizardHeaderActionIndex = 0;
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-header-action",
     template: `
         <button class="btn clr-wizard-header-action btn-link"

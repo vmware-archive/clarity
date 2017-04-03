@@ -10,7 +10,6 @@ import { WizardNavigationService } from "./providers/wizard-navigation";
 import { PageCollectionService } from "./providers/page-collection";
 
 @Component({
-    moduleId: module.id,
     selector: "[clr-wizard-stepnav-item]",
     template: `
         <button type="button" class="btn btn-link clr-wizard-stepnav-link" (click)="click()">

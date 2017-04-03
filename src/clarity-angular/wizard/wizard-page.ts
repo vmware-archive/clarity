@@ -27,7 +27,6 @@ import { WizardPageHeaderActionsDirective } from "./directives/page-header-actio
 let wizardPageIndex = 0;
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-page",
     template: "<ng-content></ng-content>",
     host: {

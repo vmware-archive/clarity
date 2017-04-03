@@ -31,7 +31,6 @@ export const CUSTOM_BUTTON_TYPES: any = {
 };
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-button",
     template: `
         <button class="btn clr-wizard-btn"

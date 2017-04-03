@@ -1,0 +1,86 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+    <div class="btn-group">
+        <div class="checkbox btn">
+            <input type="checkbox" id="btn-demo-check-1">
+            <label for="btn-demo-check-1">Apples</label>
+        </div>
+        <div class="checkbox btn">
+            <input type="checkbox" id="btn-demo-check-2" checked>
+            <label for="btn-demo-check-2">Oranges</label>
+        </div>
+        <div class="checkbox btn">
+            <input type="checkbox" id="btn-demo-check-3">
+            <label for="btn-demo-check-3">Kiwis</label>
+        </div>
+        <div class="checkbox btn">
+            <input type="checkbox" id="btn-demo-check-4" checked>
+            <label for="btn-demo-check-4">Pears</label>
+        </div>
+    </div>
+</div>
+
+<pre>
+    <code [clr-code-highlight]="'language-html'">
+    &lt;div class=&quot;btn-group&quot;&gt;
+        &lt;div class=&quot;checkbox btn&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;btn-demo-check-1&quot;&gt;
+            &lt;label for=&quot;btn-demo-check-1&quot;&gt;Apples&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;checkbox btn&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;btn-demo-check-2&quot; checked&gt;
+            &lt;label for=&quot;btn-demo-check-2&quot;&gt;Oranges&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;checkbox btn&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;btn-demo-check-3&quot;&gt;
+            &lt;label for=&quot;btn-demo-check-3&quot;&gt;Kiwis&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;checkbox btn&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;btn-demo-check-4 checked&quot;&gt;
+            &lt;label for=&quot;btn-demo-check-4&quot;&gt;Pears&lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    </code>
+</pre>
+
+<h5>Angular Checkboxes</h5>
+<div class="clr-example" id="btn-group-test-2">
+    <div class="btn-group">
+        <clr-checkbox type="checkbox" class="btn" [clrChecked]="true">
+            Apples
+        </clr-checkbox>
+        <clr-checkbox type="checkbox" class="btn">
+            Oranges
+        </clr-checkbox>
+        <clr-checkbox type="checkbox" class="btn">
+            Kiwis
+        </clr-checkbox>
+        <clr-checkbox type="checkbox" class="btn">
+            Pears
+        </clr-checkbox>
+    </div>
+</div>
+
+<pre>
+    <code [clr-code-highlight]="'language-html'">
+    &lt;div class=&quot;btn-group&quot;&gt;
+        &lt;clr-checkbox type=&quot;checkbox&quot; class=&quot;btn&quot; [clrChecked]=&quot;true&quot;&gt;
+            Apples
+        &lt;/clr-checkbox&gt;
+        &lt;clr-checkbox type=&quot;checkbox&quot; class=&quot;btn&quot;&gt;
+            Oranges
+        &lt;/clr-checkbox&gt;
+        &lt;clr-checkbox type=&quot;checkbox&quot; class=&quot;btn&quot;&gt;
+            Kiwis
+        &lt;/clr-checkbox&gt;
+        &lt;clr-checkbox type=&quot;checkbox&quot; class=&quot;btn&quot;&gt;
+            Pears
+        &lt;/clr-checkbox&gt;
+    &lt;/div&gt;
+    </code>
+</pre>

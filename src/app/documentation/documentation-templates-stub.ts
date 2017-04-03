@@ -8,6 +8,7 @@ export const TEMPLATES = {
   "alerts": require("../../pages/documentation/alerts.html"),
   "badges": require("../../pages/documentation/badges.html"),
   "buttons": require("../../pages/documentation/buttons.html"),
+  "button-group": require("../../pages/documentation/button-group.html"),
   "cards": require("../../pages/documentation/cards.html"),
   "checkboxes": require("../../pages/documentation/checkboxes.html"),
   "code-highlight": require("../../pages/documentation/code-highlight.html"),

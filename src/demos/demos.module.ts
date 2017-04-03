@@ -3,6 +3,7 @@ import {NgModule} from "@angular/core";
 import AlertDemoModule from "./alert/alert.demo.module";
 import BadgesDemoModule from "./badges/badges.demo.module";
 import ButtonsDemoModule from "./buttons/buttons.demo.module";
+import ButtonGroupDemoModule from "./button-group/button-group.demo.module";
 import CardDemoModule from "./card/card.demo.module";
 import CheckboxesDemoModule from "./checkboxes/checkboxes.demo.module";
 import CodeDemoModule from "./code/code-highlight.demo.module";
@@ -38,6 +39,7 @@ import TreeDemoModule from "./tree-view/tree-view.demo.module";
     AlertDemoModule,
     BadgesDemoModule,
     ButtonsDemoModule,
+    ButtonGroupDemoModule,
     CardDemoModule,
     CheckboxesDemoModule,
     CodeDemoModule,

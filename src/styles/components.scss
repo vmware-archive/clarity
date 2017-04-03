@@ -383,6 +383,13 @@ _:-ms-fullscreen,
         align-items: center;
         padding: 24px;
         width: 100%;
+
+        &.not-centered {
+            -webkit-box-align: baseline;
+            -ms-flex-align: baseline;
+            align-items: baseline;
+        }
+
         &.is-colorblock {
             background: #853FB3;
             color: #fff;

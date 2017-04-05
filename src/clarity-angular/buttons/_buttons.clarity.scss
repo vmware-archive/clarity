@@ -393,6 +393,10 @@ $clr-button-appearance-map: (
     .checkbox-inline.btn {
         @include btn-checked-styles();
 
+        label {
+            width: 100%;
+        }
+
         //.btn-outline-<state> is the new BS4 naming convention
         //TODO: we support both the previous one and the new one but we will deprecate the old ones from the example in 0.5.0
         &.btn-secondary,
@@ -443,6 +447,10 @@ $clr-button-appearance-map: (
     .radio.btn,
     .radio.btn {
         @include btn-checked-styles(default, radio);
+
+        label {
+            width: 100%;
+        }
 
         //.btn-outline-<state> is the new BS4 naming convention
         //TODO: we support both the previous one and the new one but we will deprecate the old ones from the example in 0.5.0

@@ -24,6 +24,16 @@ gemini.suite('button-group', (child) => {
             .capture('default');
     });
 
+    gemini.suite('basic-structure flat with overflow menu', (child) => {
+        child
+            .setUrl('/button-group/static/basic-structure')
+            .before((actions, find) => {
+                actions.waitForElementToShow('#btn-group-test-3', WAIT_TIME);
+            })
+            .setCaptureElements('#btn-group-test-3')
+            .capture('default');
+    });
+
     //Checkboxes
     gemini.suite('checkboxes', (child) => {
         child

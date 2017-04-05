@@ -61,6 +61,11 @@
             }
         }
 
+        //Flat Buttons
+        &.btn-link .dropdown-toggle {
+            min-width: 0;
+        }
+
         //Flat Icon Buttons
         &.btn-icon-link {
 

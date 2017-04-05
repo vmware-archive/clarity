@@ -5,6 +5,7 @@
 export const TEMPLATES = {
   '0.9.0-alpha.2': require('./0.9/0.9.0-alpha.2.html'),
 
+  '0.8.14': require('./0.8/0.8.14.html'),
   '0.8.13': require('./0.8/0.8.13.html'),
   '0.8.12': require('./0.8/0.8.12.html'),
   '0.8.11': require('./0.8/0.8.11.html'),

@@ -123,7 +123,6 @@ $dropdown-white: clr-getColor(lightest);
         .btn-link,
         .dropdown-item {
             @include clr-getTypePropertiesForDomElement(dropdown_text, (font-size, letter-spacing, font-weight));
-            $adjusted_lineHeight: clr-getTypePropertyValueForDomElement(dropdown_text, line-height);
             $dropdown-text-color: clr-getTextColor();
 
             background: transparent;
@@ -131,8 +130,6 @@ $dropdown-white: clr-getColor(lightest);
             color: $dropdown-text-color;
             cursor: pointer;
             display: block;
-            height: $adjusted_lineHeight;
-            line-height: $adjusted_lineHeight;
             margin: 0;
             padding: 1px $clr_baselineRem_1 0;
             width: 100%;
@@ -174,6 +171,22 @@ $dropdown-white: clr-getColor(lightest);
             &.disabled:focus {
                 background: none;
                 box-shadow: none;
+            }
+        }
+
+        .btn,
+        .dropdown-item {
+            $adjusted_lineHeight: $clr_baselineRem_1_25;
+            height: $adjusted_lineHeight;
+            line-height: $adjusted_lineHeight;
+        }
+
+        @media screen and (max-width: map-get($clr-breakpoints, small)) {
+            .btn,
+            .dropdown-item {
+                $adjusted_lineHeight: $clr_baselineRem_1_5;
+                height: $adjusted_lineHeight;
+                line-height: $adjusted_lineHeight;
             }
         }
 

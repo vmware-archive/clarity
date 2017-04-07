@@ -47,7 +47,7 @@ export class Wizard extends Tabs {
     @Input("clrWizardClosable") closable: boolean = true;
 
     // EventEmitter which is emitted on open/close of the wizard.
-    @Output("clrWizardOpenChanged") _openChanged: EventEmitter<boolean> =
+    @Output("clrWizardOpenChange") _openChange: EventEmitter<boolean> =
         new EventEmitter<boolean>(false);
 
     // User can bind his event handler for onCancel of the main content
@@ -119,7 +119,7 @@ export class Wizard extends Tabs {
     // wizard.
     open(): void {
         this._open = true;
-        this._openChanged.emit(true);
+        this._openChange.emit(true);
     }
 
     // close --
@@ -129,7 +129,7 @@ export class Wizard extends Tabs {
     close(): void {
         this._open = false;
         this.onCancel.emit(null);
-        this._openChanged.emit(false);
+        this._openChange.emit(false);
     }
 
     // _close --

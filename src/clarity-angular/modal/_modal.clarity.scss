@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -51,64 +51,70 @@ $clr-modal-xl-width: baselineRem(48) !default;
         background-color: clr-getColor(lightest);
         border-radius: $clr-default-borderradius;
         box-shadow: 0 $modal-boxshadow-y $modal-boxshadow-spread $modal-boxshadow-spread rgba(0, 0, 0, 0.2);
-
-        .modal-header {
-            border-bottom: none;
-            padding: 0 0 $clr_baselineRem_1 0;
-
-            .modal-title {
-                @include clr-getTypePropertiesForDomElement(modal_header, (color, font-size, font-family, font-weight, line-height, letter-spacing));
-                margin: 0;
-                padding: 0;
-            }
-
-            .close {
-                margin-top: 0;
-                font-size: rem(26/$clr-rem-denominator);
-                line-height: $clr_baselineRem_1;
-
-                clr-icon {
-                    // per measurement, this results in an icon that is 16x16...
-                    width: $clr_baselineRem_1;
-                    height: $clr_baselineRem_1;
-                }
-            }
-        }
-
-        .modal-body {
-            // This doesn't do much, but at least with several paragraphs in the content
-            // it doesn't mess up the modal's proportions.
-            max-height: 55vh;
-            overflow-y: auto;
-            overflow-x: hidden;
-
-            @extend %clr-container;
-        }
-
-        .modal-footer {
-            display: flex;
-            justify-content: flex-end;
-            padding: $clr_baselineRem_1 0 0 0;
-
-            .btn {
-                //switched right margin to left because footer is right aligned
-                margin: 0 0 0 $clr_baselineRem_0_5;
-            }
-        }
     }
 
-    @media screen and (max-width: map-get($clr-breakpoints, small)) {
-        .modal-content {
-            padding: $clr_baselineRem_0_5 0 $clr_baselineRem_0_5 $clr_baselineRem_1;
+}
 
-            .modal-header {
-                padding: 0 $clr_baselineRem_1 $clr_baselineRem_0_5 0;
-            }
+.modal-header {
+    border-bottom: none;
+    padding: 0 0 $clr_baselineRem_1 0;
 
-            .modal-footer {
-                padding: $clr_baselineRem_0_5 $clr_baselineRem_1 0 0;
-            }
+    .modal-title {
+        @include clr-getTypePropertiesForDomElement(modal_header, (color, font-size, font-family, font-weight, line-height, letter-spacing));
+        margin: 0;
+        padding: 0;
+    }
+
+    .close {
+        margin-top: 0;
+        font-size: rem(26/$clr-rem-denominator);
+        line-height: $clr_baselineRem_1;
+
+        clr-icon {
+            // per measurement, this results in an icon that is 16x16...
+            width: $clr_baselineRem_1;
+            height: $clr_baselineRem_1;
         }
+    }
+}
+
+.modal-body {
+    // This doesn't do much, but at least with several paragraphs in the content
+    // it doesn't mess up the modal's proportions.
+    max-height: 55vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    & > :first-child {
+        margin-top: 0;
+    }
+    & > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: $clr_baselineRem_1 0 0 0;
+
+    .btn {
+        //switched right margin to left because footer is right aligned
+        margin: 0 0 0 $clr_baselineRem_0_5;
+    }
+}
+
+@media screen and (max-width: map-get($clr-breakpoints, small)) {
+    .modal-content {
+        padding: $clr_baselineRem_0_5 0 $clr_baselineRem_0_5 $clr_baselineRem_1;
+    }
+
+    .modal-header {
+        padding: 0 $clr_baselineRem_1 $clr_baselineRem_0_5 0;
+    }
+
+    .modal-footer {
+        padding: $clr_baselineRem_0_5 $clr_baselineRem_1 0 0;
     }
 }
 
@@ -122,4 +128,18 @@ $clr-modal-xl-width: baselineRem(48) !default;
     background-color: clr-getColor(darkest);
     opacity: $clr-backdrop-opacity;
     z-index: map-get($clr-layers, modal-bg);
+}
+
+// modal-nav is only used in wizards
+.modal .modal-nav {
+    display: none;
+}
+
+.modal-outer-wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+.modal-ghost-wrapper {
+    display: none;
 }

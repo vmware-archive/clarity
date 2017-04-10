@@ -1,17 +1,16 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import {Component} from "@angular/core";
 
 @Component({
     moduleId: module.id,
-    selector: "clr-wizard-demo-angular",
+    selector: "clr-wizard-demo-static",
     styleUrls: ["./wizard.demo.css"],
-    templateUrl: "./wizard-angular.demo.html"
+    templateUrl: "./wizard-static.demo.html"
 })
-
-export class WizardAngularDemo {
-
+export class WizardStaticDemo {
 }

@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import {Component, Input, ElementRef, forwardRef, Inject} from "@angular/core";
 import {TabLink} from "../tabs/tab-link";
-import {Wizard} from "./wizard";
+import {WizardDeprecated} from "./wizard";
 
 @Component({
     selector: "clr-wizard-step",
@@ -36,7 +37,9 @@ export class WizardStep extends TabLink {
     // input variable, optional, to set the id of the component
     @Input("clrWizardStepId") id: string;
 
-    constructor(@Inject(forwardRef(() => Wizard)) private wizard: Wizard, private elementRef: ElementRef) {
+    constructor(
+        @Inject(forwardRef(() => WizardDeprecated)) private wizard: WizardDeprecated,
+        private elementRef: ElementRef) {
         super(wizard);
     }
 

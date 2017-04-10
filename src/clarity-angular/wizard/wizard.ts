@@ -1,8 +1,9 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import {
     Component,
     ContentChildren,
@@ -10,238 +11,299 @@ import {
     Output,
     EventEmitter,
     QueryList,
-    SimpleChange, HostListener
+    OnInit,
+    OnDestroy,
+    AfterContentInit,
+    DoCheck,
+    IterableDiffers,
+    ElementRef
 } from "@angular/core";
+import { Subscription } from "rxjs/Subscription";
+import { WizardPage } from "./wizard-page";
+import { WizardHeaderAction } from "./wizard-header-action";
 
-import {Tabs} from "../tabs/tabs";
-import {WizardStep} from "./wizard-step";
-import {WizardPage} from "./wizard-page";
-import {ScrollingService} from "../main/scrolling-service";
+import { GHOST_PAGE_ANIMATION } from "../modal/utils/ghost-page-animations";
 
-let nbWizardComponents: number = 0;
+// providers
+import { WizardNavigationService } from "./providers/wizard-navigation";
+import { PageCollectionService } from "./providers/page-collection";
+import { ButtonHubService } from "./providers/button-hub";
+import { HeaderActionService } from "./providers/header-actions";
 
 @Component({
     selector: "clr-wizard",
-    viewProviders: [ScrollingService],
+    providers: [ WizardNavigationService, PageCollectionService, ButtonHubService, HeaderActionService ],
     templateUrl: "./wizard.html",
     host: {
         "[class.clr-wizard]": "true",
-        "[class.main-container]": "true",
         "[class.wizard-md]": "size == 'md'",
         "[class.wizard-lg]": "size == 'lg'",
-        "[class.wizard-lx]": "size == 'lx'"
+        "[class.wizard-xl]": "size == 'xl'",
+        "[class.lastPage]": "navService.currentPageIsLast",
+        "[class.clr-wizard--ghosted]": "showGhostPages"
     }
 })
-export class Wizard extends Tabs {
-    id: string;
+export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
 
-    @ContentChildren(WizardStep) wizardStepChildren: QueryList<WizardStep>;
-    @ContentChildren(WizardPage) wizardPageChildren: QueryList<WizardPage>;
+    constructor(public navService: WizardNavigationService,
+                public pageCollection: PageCollectionService,
+                public buttonService: ButtonHubService,
+                public headerActionService: HeaderActionService,
+                private elementRef: ElementRef,
+                private differs: IterableDiffers) {
 
+        this.goNextSubscription = this.navService.movedToNextPage.subscribe(() => {
+            this.onMoveNext.emit();
+        });
+
+        this.goPreviousSubscription = this.navService.movedToPreviousPage.subscribe(() => {
+            this.onMovePrevious.emit();
+        });
+
+        this.cancelSubscription = this.navService.notifyWizardCancel.subscribe(() => {
+            let currentPage = this.navService.currentPage;
+
+            currentPage.pageOnCancel.emit();
+            this.onCancel.emit();
+
+            if (!this.stopCancel && !currentPage.preventDefault && !currentPage.stopCancel) {
+                this.close();
+                // SPECME
+            }
+        });
+
+        this.wizardFinishedSubscription = this.navService.wizardFinished.subscribe(() => {
+            this.deactivateGhostPages();
+            this.wizardFinished.emit();
+            this.close();
+        });
+
+        this.differ = differs.find([]).create(null);
+    }
+
+    differ: any;
+
+    // LEGACY: Naming convention matches old wizard
     @Input("clrWizardSize") size: string = "xl"; // xl is the default size
 
-    // Variable that toggles open/close of the wizard component.
-    @Input("clrWizardOpen") _open: boolean = false;
+    // can activate showing or hiding the ghost page effect
+    // defaults to false
+    @Input("clrWizardShowGhostPages") showGhostPages: boolean = false;
 
     // Variable that toggles open/close of the wizard component.
+    // LEGACY: Naming convention matches old wizard
     @Input("clrWizardClosable") closable: boolean = true;
 
+    // Variable that toggles open/close of the wizard component.
+    // LEGACY: Naming convention matches old wizard
+    @Input("clrWizardOpen") _open: boolean = false;
+
+// TODOCUMENT: HERE IS HOW THE TWO-WAY BINDING HAPPENS...
+// <clr-wizard [(clrWizardOpen)]="something"...?
+// <clr-wizard [clrWizardOpen]="something" (clrWizardOpenChange)="doSomehtign($event)" ...?
+
+// TOBREAK: THIS WAS CHANGED FROM "OPENCHANGED" TO "OPENCHANGE"
     // EventEmitter which is emitted on open/close of the wizard.
-    @Output("clrWizardOpenChanged") _openChanged: EventEmitter<boolean> =
+    @Output("clrWizardOpenChange") _openChanged: EventEmitter<boolean> =
         new EventEmitter<boolean>(false);
 
     // User can bind his event handler for onCancel of the main content
+    // LEGACY: Naming convention matches old wizard
     @Output("clrWizardOnCancel") onCancel: EventEmitter<any> =
         new EventEmitter<any>(false);
 
-    // Flag to toggle between Next and Finish button
-    isLast: boolean = false;
+// done
+    @Output("clrWizardOnFinish") wizardFinished: EventEmitter<any> =
+        new EventEmitter<any>(false);
 
-    // Flag to hide/show back button
-    isFirst: boolean = true;
+    @Output("clrWizardOnReset") onReset: EventEmitter<any> =
+        new EventEmitter<any>(false);
+
+    @ContentChildren(WizardPage) public pages: QueryList<WizardPage>;
+    @ContentChildren(WizardHeaderAction) public headerActions: QueryList<WizardHeaderAction>;
+
+// done
+    @Output("clrWizardCurrentPageChanged") currentPageChanged: EventEmitter<any> =
+        new EventEmitter<any>(false);
+
+    @Output("clrWizardOnNext") onMoveNext: EventEmitter<any> =
+        new EventEmitter<any>(false);
+
+    @Output("clrWizardOnPrevious") onMovePrevious: EventEmitter<any> =
+        new EventEmitter<any>(false);
+
+    @Input("clrWizardPreventDefaultCancel") stopCancel: boolean = false;
+
+    @Input("clrWizardPreventModalAnimation") _stopModalAnimations: boolean = false;
+    public get stopModalAnimations(): string {
+        if (this._stopModalAnimations) {
+            return "true";
+        }
+        return "false";
+    }
+
+    public ngOnInit(): void {
+        let navService = this.navService;
+
+        this.currentPageSubscription = navService.currentPageChanged.subscribe((page: WizardPage) => {
+            this.setGhostPages();
+            this.currentPageChanged.emit();
+        });
+    }
+
+    private goNextSubscription: Subscription;
+    private goPreviousSubscription: Subscription;
+    private cancelSubscription: Subscription;
+    private currentPageSubscription: Subscription;
+    private wizardFinishedSubscription: Subscription;
+
+    ngOnDestroy() {
+        this.goNextSubscription.unsubscribe();
+        this.goPreviousSubscription.unsubscribe();
+        this.cancelSubscription.unsubscribe();
+        this.currentPageSubscription.unsubscribe();
+        this.wizardFinishedSubscription.unsubscribe();
+    }
+
+    public ngAfterContentInit() {
+        this.pageCollection.pages = this.pages;
+        this.navService.wizardHasAltCancel = this.stopCancel;
+        this.headerActionService.wizardHeaderActions = this.headerActions;
+        if (this.showGhostPages) {
+            this.navService.hideWizardGhostPages = false;
+            this.deactivateGhostPages();
+        }
+    }
+
+    public ngDoCheck() {
+        let changes = this.differ.diff(this.pages);
+        if (changes) {
+            changes.forEachAddedItem((r: any) => {
+                this.navService.updateNavigation();
+            });
+            changes.forEachRemovedItem((r: any) => {
+                this.navService.updateNavigation();
+            });
+        }
+    }
+
+    public get isStatic(): boolean {
+        return this.elementRef.nativeElement.classList.contains("clr-wizard--inline");
+        // SPECME
+    }
 
     // The current page
-    currentPage: WizardPage = null;
-
-    constructor(private _scrollingService: ScrollingService) {
-        super();
-        this.id = "clr-wizard-" + (nbWizardComponents++);
+    public get currentPage(): WizardPage {
+        return this.navService.currentPage;
     }
 
-    //Detect when _open is set to true and set no-scrolling to true
-    ngOnChanges(changes: {[propName: string]: SimpleChange}): void {
-        if (changes && changes.hasOwnProperty("_open")) {
-            if (changes["_open"].currentValue) {
-                this._scrollingService.stopScrolling();
-            } else {
-                this._scrollingService.resumeScrolling();
-            }
-        }
+    // LEGACY: convenience function to match legacy API
+    public get isLast(): boolean {
+        return this.navService.currentPageIsLast;
     }
 
-    ngAfterContentInit(): void {
-        // set the tab content's title to match the tab link's title
-        this.wizardPageChildren.forEach((wizardPage: WizardPage, index: number): void => {
-            let children: WizardStep[] = this.wizardStepChildren.toArray();
-            if (children[index] && !wizardPage.hasProjectedTitleContent) {
-                wizardPage.title = children[index].title;
-            }
-        });
-
-        // override superclass' children to setup the proper linked relationship between
-        // tabs and contents
-        super.overrideTabLinkChildren(this.wizardStepChildren);
-        super.overrideTabContentChildren(this.wizardPageChildren);
-
-        // set first step of the wizard as active/current one
-        if (this.tabLinks.length > 0) {
-            this.selectTab(this.tabLinks[0] as WizardStep);
-        }
+    // LEGACY: convenience function to match legacy API
+    public get isFirst(): boolean {
+        return this.navService.currentPageIsFirst;
     }
 
-    // returns only tabLinks that are not skipped
-    get tabLinks(): WizardStep[] {
-        return this.wizardStepChildren.filter((wizardStep: WizardStep) => {
-            return !wizardStep.isSkipped;
-        });
-    }
-
-    // returns only tabContents that are not skipped
-    get tabContents(): WizardPage[] {
-        return this.wizardPageChildren.filter((wizardPage: WizardPage) => {
-            return !wizardPage.isSkipped;
-        });
-    }
-
-    // open --
-    //
     // This is a public function that can be used to programmatically open the
     // wizard.
-    open(): void {
+    // LEGACY: Naming convention matches old wizard
+    public open(): void {
+        let navService = this.navService;
+
         this._open = true;
+        if (!this.currentPage) {
+            navService.setFirstPageCurrent();
+        }
+
+        this.setGhostPages();
         this._openChanged.emit(true);
     }
 
-    // close --
-    //
     // This is a public function that can be used to programmatically close the
     // wizard.
-    close(): void {
+    // LEGACY: Naming convention matches old wizard
+    public close(): void {
         this._open = false;
-        this.onCancel.emit(null);
+        this.deactivateGhostPages();
         this._openChanged.emit(false);
     }
 
-    // _close --
-    //
-    // This is a private function that is called on the click of the close / cancel
-    // button and emits the onCancel event of the active tab.
-    @HostListener("body:keyup.escape")
-    _close(event?: any): void {
-        this.close();
+    // Convenience function that can be used to programmatically toggle the
+    // wizard.
+    public toggle(value: boolean): void {
+        if (value) {
+            this.open();
+        } else {
+            this.close();
+        }
     }
 
-    // _next --
-    //
-    // This is a private function that is called on the click of the next
-    // button and emits the onCommit event of the active tab.
-    _next(event?: any): void {
-        let totalSteps: number = this.tabLinks.length - 1;
-        let i: number = this.currentTabIndex;
-        let page: WizardPage = this.tabContents[i];
-        if (!page.nextDisabled) {
-            page.onCommit.emit(null);
+    // prev -- DEPRECATED
+    // calls previous(); kept here to avoid breaking change where unnecessary
+    // LEGACY: Naming convention matches old wizard
+    public prev(): void {
+        this.previous();
+    }
 
-            if (!page.preventDefault) {
-                // If no handler for finish button, then close wizard on click
-                // of finish by default
-                if (totalSteps === i) {
-                    this.close();
-                } else {
-                    this.next();
-                }
+    // the following are convenience functions that are carried over from an older
+    // implementation of the wizard. They have been preserved so as not to create
+    // a breaking change.
+    public previous(): void {
+        this.navService.previous();
+    }
+
+    // LEGACY: Naming convention matches old wizard
+    public next(): void {
+        this.navService.next();
+    }
+
+    public finish(): void {
+        this.navService.finish();
+    }
+
+    public cancel(): void {
+        this.navService.cancel();
+    }
+
+    public goTo(pageId: string): void {
+        if (!pageId) {
+            return;
+        }
+
+        this.navService.goTo(pageId);
+    }
+
+    public reset() {
+        this.pageCollection.reset();
+        this.navService.setFirstPageCurrent();
+        this.onReset.next();
+    }
+
+    public get ghostPageState(): string {
+        return this.navService.wizardGhostPageState;
+    }
+
+    public deactivateGhostPages(): void {
+        this.setGhostPages("deactivate");
+    }
+
+    public setGhostPages(deactivateOrNot: string = ""): void {
+        let navService = this.navService;
+        let ghostpageStates = GHOST_PAGE_ANIMATION.STATES;
+
+        if (this.showGhostPages) {
+            if (deactivateOrNot === "deactivate") {
+                navService.wizardGhostPageState = ghostpageStates.NO_PAGES;
+            } else if (navService.currentPageIsLast) {
+                navService.wizardGhostPageState = ghostpageStates.LAST_PAGE;
+            } else if (navService.currentPageIsNextToLast) {
+                navService.wizardGhostPageState = ghostpageStates.NEXT_TO_LAST_PAGE;
+            } else {
+                navService.wizardGhostPageState = ghostpageStates.ALL_PAGES;
             }
         }
-    }
-
-    // next --
-    //
-    // When called, after successful validation, the wizard will move to the
-    // next page.
-    // This is a public function that can be used to programmatically advance
-    // the user to the next page.
-    next(): void {
-        let i: number = this.currentTabIndex;
-        let totalSteps: number = this.tabLinks.length - 1;
-        let page: WizardPage = this.tabContents[i];
-
-        // Call the onCommit or the Validation function of that step, and if it
-        // returns true, continue to the next step.
-        if (i < totalSteps && !page.nextDisabled) {
-            let wizardStep: WizardStep = this.tabLinks[i];
-            let nextStep: WizardStep = this.tabLinks[i + 1];
-            wizardStep.isCompleted = true;
-            this.selectTab(nextStep);
-        }
-    }
-
-    // prev --
-    //
-    // When called, the wizard will move to the prev page.
-    // This is a public function that can be used to programmatically go back
-    // to the previous step.
-    prev(): void {
-        let i: number = this.currentTabIndex;
-
-        if (i > 0) {
-            let wizardStep: WizardStep = this.tabLinks[i];
-            let prevStep: WizardStep = this.tabLinks[i - 1];
-            wizardStep.isCompleted = false;
-            prevStep.isCompleted = false;
-            this.selectTab(prevStep);
-        }
-    }
-
-    // selectTab --
-    //
-    // Base class function overridden to call the onLoad event emitter
-    selectTab(wizardNav: WizardStep): void {
-        super.selectTab(wizardNav);
-
-        let page: WizardPage = this.currentTabContent as WizardPage;
-        this.currentPage = page;
-        page.onLoad.emit(false);
-
-        // Toggles next and finish button
-        let totalSteps: number = this.tabLinks.length - 1;
-        this.isLast = this.currentTabIndex === totalSteps;
-        this.isFirst = this.currentTabIndex === 0;
-    }
-
-    // skipTab --
-    //
-    // Public function to skip a Tab given its uniqueId
-    skipTab(tabId: string): void {
-        this._setTabIsSkipped(tabId, true);
-    }
-
-    // unSkipTab --
-    //
-    // Public function to unSkip a tab given its uniqueId
-    unSkipTab(tabId: string): void {
-        this._setTabIsSkipped(tabId, false);
-    }
-
-    _setTabIsSkipped(tabId: string, isSkipped: boolean): void {
-        this.wizardStepChildren.forEach((wizardStep: WizardStep, index: number) => {
-            if (wizardStep.id === tabId) {
-                wizardStep.isSkipped = isSkipped;
-                // set the isSkipped property of the matching content if it exists
-                if (index < this.wizardPageChildren.length) {
-                    let children: WizardPage[] = this.wizardPageChildren.toArray();
-                    children[index].isSkipped = isSkipped;
-                }
-            }
-        });
     }
 }

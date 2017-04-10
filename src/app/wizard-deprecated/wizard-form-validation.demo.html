@@ -1,0 +1,42 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<button class="btn btn-primary" (click)="wizard.open()">Wizard with Form Validation</button>
+
+<clr-wizard-deprecated #wizard [(clrWizardOpen)]="open">
+    <div class="wizard-title">
+        Wizard Title
+    </div>
+
+    <clr-wizard-step>Form with validation</clr-wizard-step>
+    <clr-wizard-step>Wizard complete</clr-wizard-step>
+
+    <clr-wizard-page-deprecated [clrWizardPageNextDisabled]="!myForm.form.valid">
+        <form #myForm="ngForm">
+            <section class="form-block">
+                <label>My Form</label>
+                <div class="form-group">
+                    <label>Name</label>
+                    <label for="nameInput" aria-haspopup="true" role="tooltip"
+                           [class.invalid]="name.touched && !name.valid"
+                           class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
+                        <input type="text" id="nameInput" required [(ngModel)]="model.name" name="name" #name="ngModel">
+                        <span class="tooltip-content">
+                          This field cannot be empty!
+                      </span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="favInput">Favorite food</label>
+                    <input type="text" id="favInput" [(ngModel)]="model.favorite" name="favorite">
+                </div>
+            </section>
+        </form>
+    </clr-wizard-page-deprecated>
+    <clr-wizard-page-deprecated>
+        Congratulations! You are done with this wizard.
+    </clr-wizard-page-deprecated>
+</clr-wizard-deprecated>

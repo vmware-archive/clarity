@@ -11,11 +11,11 @@ import {ButtonInGroupService} from "./providers/buttonInGroup.service";
 @Component({
     selector: "clr-button",
     template: `
-        <template #buttonProjectedRef>
+        <ng-template #buttonProjectedRef>
             <button [class]="classNames" (click)="emitClick()">
                 <ng-content></ng-content>
             </button>
-        </template>
+        </ng-template>
     `
 })
 export class Button {

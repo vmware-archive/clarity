@@ -80,33 +80,33 @@ export class WizardCustomButtonsDemo {
     <clr-wizard-button [type]="'finish'">Default</clr-wizard-button>
 
     <clr-wizard-page>
-        <template clrPageTitle>Page 1 with default buttons</template>
-        <template clrPageNavTitle>Default buttons</template>
+        <ng-template clrPageTitle>Page 1 with default buttons</ng-template>
+        <ng-template clrPageNavTitle>Default buttons</ng-template>
         ...
     </clr-wizard-page>
 
     <clr-wizard-page (clrWizardPageCustomButton)="doCustomClick($event)">
 
-        <template clrPageTitle>Page 2 with custom buttons</template>
-        <template clrPageNavTitle>Custom buttons</template>
+        <ng-template clrPageTitle>Page 2 with custom buttons</ng-template>
+        <ng-template clrPageNavTitle>Custom buttons</ng-template>
         ...
 
-        <template clrPageButtons>
+        <ng-template clrPageButtons>
             <clr-wizard-button [type]="'cancel'">Page Override</clr-wizard-button>
             <clr-wizard-button [type]="'custom-previous'">Custom</clr-wizard-button>
             <clr-wizard-button [type]="'custom-next'">Custom</clr-wizard-button>
-        </template>
+        </ng-template>
     </clr-wizard-page>
 
     <clr-wizard-page>
-        <template clrPageTitle>Page 3 with default buttons</template>
-        <template clrPageNavTitle>Default buttons</template>
+        <ng-template clrPageTitle>Page 3 with default buttons</ng-template>
+        <ng-template clrPageNavTitle>Default buttons</ng-template>
         ...
     </clr-wizard-page>
 
     <clr-wizard-page (clrWizardPageCustomButton)="doCustomClick($event)">
-        <template clrPageTitle>Page 4 with custom finish</template>
-        <template clrPageNavTitle>Custom buttons</template>
+        <ng-template clrPageTitle>Page 4 with custom finish</ng-template>
+        <ng-template clrPageNavTitle>Custom buttons</ng-template>
 
         <p *ngIf="!showWarning">
             ...
@@ -118,11 +118,11 @@ export class WizardCustomButtonsDemo {
             </button>
         </p>
 
-        <template clrPageButtons>
+        <ng-template clrPageButtons>
             <clr-wizard-button [type]="'cancel'">Page Override</clr-wizard-button>
             <clr-wizard-button [type]="'previous'">Page Override</clr-wizard-button>
             <clr-wizard-button [type]="'custom-danger'">Custom</clr-wizard-button>
-        </template>
+        </ng-template>
     </clr-wizard-page>
 </clr-wizard>
 `;

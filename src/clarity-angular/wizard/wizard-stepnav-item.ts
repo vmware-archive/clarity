@@ -13,7 +13,7 @@ import { PageCollectionService } from "./providers/page-collection";
     selector: "[clr-wizard-stepnav-item]",
     template: `
         <button type="button" class="btn btn-link clr-wizard-stepnav-link" (click)="click()">
-            <template [ngTemplateOutlet]="page.navTitle"></template>
+            <ng-template [ngTemplateOutlet]="page.navTitle"></ng-template>
         </button>
     `,
     host: {

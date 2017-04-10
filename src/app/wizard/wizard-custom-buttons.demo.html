@@ -18,8 +18,8 @@
     <clr-wizard-button [type]="'finish'">Default</clr-wizard-button>
 
     <clr-wizard-page>
-        <template clrPageTitle>Page 1 with default buttons</template> <!-- mandatory -->
-        <template clrPageNavTitle>Default buttons</template> <!-- optional -->
+        <ng-template clrPageTitle>Page 1 with default buttons</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>Default buttons</ng-template> <!-- optional -->
 
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, 
@@ -46,8 +46,8 @@
     <clr-wizard-page 
         (clrWizardPageCustomButton)="doCustomClick($event)">
 
-        <template clrPageTitle>Page 2 with custom buttons</template> <!-- mandatory -->
-        <template clrPageNavTitle>Custom buttons</template> <!-- optional -->
+        <ng-template clrPageTitle>Page 2 with custom buttons</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>Custom buttons</ng-template> <!-- optional -->
 
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, 
@@ -75,16 +75,16 @@
             quas! Quaerat explicabo expedita placeat vero.
         </p>
 
-        <template clrPageButtons>
+        <ng-template clrPageButtons>
             <clr-wizard-button [type]="'cancel'">Page Override</clr-wizard-button>
             <clr-wizard-button [type]="'custom-previous'">Custom</clr-wizard-button>
             <clr-wizard-button [type]="'custom-next'">Custom</clr-wizard-button>
-        </template>
+        </ng-template>
     </clr-wizard-page>
 
     <clr-wizard-page>
-        <template clrPageTitle>Page 3 with default buttons</template> <!-- mandatory -->
-        <template clrPageNavTitle>Default buttons</template> <!-- optional -->
+        <ng-template clrPageTitle>Page 3 with default buttons</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>Default buttons</ng-template> <!-- optional -->
 
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, 
@@ -111,8 +111,8 @@
     <clr-wizard-page 
         (clrWizardPageCustomButton)="doCustomClick($event)">
 
-        <template clrPageTitle>Page 4 with custom finish</template> <!-- mandatory -->
-        <template clrPageNavTitle>Custom buttons</template> <!-- optional -->
+        <ng-template clrPageTitle>Page 4 with custom finish</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>Custom buttons</ng-template> <!-- optional -->
 
         <p *ngIf="!showWarning">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, 
@@ -126,11 +126,11 @@
             </button>
         </p>
 
-        <template clrPageButtons>
+        <ng-template clrPageButtons>
             <clr-wizard-button [type]="'cancel'">Page Override</clr-wizard-button>
             <clr-wizard-button [type]="'previous'">Page Override</clr-wizard-button>
             <clr-wizard-button [type]="'custom-danger'">Custom</clr-wizard-button>
-        </template>
+        </ng-template>
     </clr-wizard-page>
 </clr-wizard>
 

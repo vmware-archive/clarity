@@ -54,8 +54,8 @@ export class WizardSkipPageDemo {
     <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
 
     <clr-wizard-page>
-        <template clrPageTitle>Title for page 1</template>
-        <template clrPageNavTitle>Step 1</template>
+        <ng-template clrPageTitle>Title for page 1</ng-template>
+        <ng-template clrPageNavTitle>Step 1</ng-template>
         ...
         <p>
             <button class="btn btn-secondary" (click)="wizard.toggleStepTwo()">
@@ -66,14 +66,14 @@ export class WizardSkipPageDemo {
     </clr-wizard-page>
 
     <clr-wizard-page *ngIf="!skipStepTwo">
-        <template clrPageTitle>Title for page 2</template>
-        <template clrPageNavTitle>Step 2</template>
+        <ng-template clrPageTitle>Title for page 2</ng-template>
+        <ng-template clrPageNavTitle>Step 2</ng-template>
         ...
     </clr-wizard-page>
 
     <clr-wizard-page>
-        <template clrPageTitle>Title for page 3</template>
-        <template clrPageNavTitle>Step 3</template>
+        <ng-template clrPageTitle>Title for page 3</ng-template>
+        <ng-template clrPageNavTitle>Step 3</ng-template>
         <p *ngIf="skipStepTwo">Page 3 is the last page because we skipped page 2.</p>
         <p *ngIf="!skipStepTwo">Now our wizard has three pages/steps.</p>
     </clr-wizard-page>

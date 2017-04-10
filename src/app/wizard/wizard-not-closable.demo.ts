@@ -40,12 +40,12 @@ export class WizardNotClosableDemo {
     <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
 
     <clr-wizard-page>
-        <template clrPageTitle>Page 1</template>
+        <ng-template clrPageTitle>Page 1</ng-template>
         ...
     </clr-wizard-page>
 
     <clr-wizard-page>
-        <template clrPageTitle>Page 2</template>
+        <ng-template clrPageTitle>Page 2</ng-template>
         ...
     </clr-wizard-page>
 </clr-wizard>

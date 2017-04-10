@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {transition, style, animate, AnimationMetadata} from "@angular/core";
+import {transition, style, animate, AnimationMetadata} from "@angular/animations";
 
 export function slide(direction: string): AnimationMetadata[] {
     "use strict";

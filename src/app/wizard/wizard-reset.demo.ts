@@ -97,7 +97,7 @@ export class WizardResetDemo implements OnInit {
     <clr-wizard-button [type]="'finish'">OK</clr-wizard-button>
 
     <clr-wizard-page>
-        <template clrPageTitle>Page 1</template>
+        <ng-template clrPageTitle>Page 1</ng-template>
         <p>Check below if you want the wizard to reset when it finishes or closes.</p>
         <p>
             <label>
@@ -108,7 +108,7 @@ export class WizardResetDemo implements OnInit {
     </clr-wizard-page>
 
     <clr-wizard-page>
-        <template clrPageTitle>Page 2</template>
+        <ng-template clrPageTitle>Page 2</ng-template>
         <div class="form-group">
             <label for="formFields_1">What is your favorite color?</label>
             <input #stepTwoInput type="text" id="formFields_1" placeholder="Color?" [(ngModel)]="model.favoriteColor">
@@ -116,7 +116,7 @@ export class WizardResetDemo implements OnInit {
     </clr-wizard-page>
 
     <clr-wizard-page>
-        <template clrPageTitle>Page 3</template>
+        <ng-template clrPageTitle>Page 3</ng-template>
         <div class="form-group">
             <label for="formFields_2">What is your favorite ice cream?</label>
             <input #stepThreeInput type="text" id="formFields_2" placeholder="Flavor?"
@@ -125,7 +125,7 @@ export class WizardResetDemo implements OnInit {
     </clr-wizard-page>
 
     <clr-wizard-page>
-        <template clrPageTitle>Page 4</template>
+        <ng-template clrPageTitle>Page 4</ng-template>
         <div class="form-group">
             <label for="formFields_3">What is your lucky number?</label>
             <input #stepFourInput type="number" id="formFields_3" placeholder="Lucky number?"

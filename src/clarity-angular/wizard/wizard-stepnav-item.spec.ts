@@ -27,7 +27,7 @@ let fakeOutPage = new MockPage(pageIndex);
 @Component({
     template: `
         <div clr-wizard-stepnav-item [page]="page"></div>
-        <template clrPageNavTitle>This is my {{ projector }}</template>
+        <ng-template clrPageNavTitle>This is my {{ projector }}</ng-template>
     `
 })
 class TestComponent implements AfterContentInit {

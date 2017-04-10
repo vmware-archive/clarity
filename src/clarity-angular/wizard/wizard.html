@@ -21,14 +21,16 @@
     </nav>
 
     <h3 class="modal-title">
-        <span class="modal-title-text"><template [ngTemplateOutlet]="navService.currentPageTitle"></template></span>
+        <span class="modal-title-text">
+            <ng-template [ngTemplateOutlet]="navService.currentPageTitle"></ng-template>
+        </span>
 
         <div class="modal-header-actions-wrapper" *ngIf="headerActionService.displayHeaderActionsWrapper">
             <div *ngIf="headerActionService.showWizardHeaderActions">
                 <ng-content select="clr-wizard-header-action"></ng-content>
             </div>
             <div *ngIf="headerActionService.currentPageHasHeaderActions">
-                <template [ngTemplateOutlet]="navService.currentPage.headerActions"></template>
+                <ng-template [ngTemplateOutlet]="navService.currentPage.headerActions"></ng-template>
             </div>
         </div>
     </h3>
@@ -44,7 +46,7 @@
                 <ng-content select="clr-wizard-button"></ng-content>
             </div>
             <div *ngIf="navService.currentPage.hasButtons" class="clr-wizard-footer-buttons-wrapper">
-                <template [ngTemplateOutlet]="navService.currentPage.buttons"></template>
+                <ng-template [ngTemplateOutlet]="navService.currentPage.buttons"></ng-template>
             </div>
         </div>
     </div>

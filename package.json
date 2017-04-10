@@ -3,16 +3,17 @@
   "version": "0.9.0",
   "private": true,
   "dependencies": {
-    "@angular/common": "2.4.1",
-    "@angular/compiler": "2.4.1",
-    "@angular/compiler-cli": "2.4.1",
-    "@angular/core": "2.4.1",
-    "@angular/forms": "2.4.1",
-    "@angular/platform-browser": "2.4.1",
-    "@angular/platform-browser-dynamic": "2.4.1",
-    "@angular/platform-server": "2.4.1",
-    "@angular/router": "3.4.1",
-    "@angular/upgrade": "2.4.1",
+    "@angular/animations": "^4.0.1",
+    "@angular/common": "^4.0.1",
+    "@angular/compiler": "^4.0.1",
+    "@angular/compiler-cli": "^4.0.1",
+    "@angular/core": "^4.0.1",
+    "@angular/forms": "^4.0.1",
+    "@angular/platform-browser": "^4.0.1",
+    "@angular/platform-browser-dynamic": "^4.0.1",
+    "@angular/platform-server": "^4.0.1",
+    "@angular/router": "^4.0.1",
+    "@angular/upgrade": "^4.0.1",
     "@webcomponents/custom-elements": "1.0.0-alpha.3",
     "angular": "1.5.x",
     "core-js": "^2.4.0",
@@ -23,7 +24,7 @@
     "rxjs": "^5.0.1",
     "systemjs": "0.19.40",
     "web-animations-js": "^2.2.1",
-    "zone.js": "^0.7.2"
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@types/jasmine": "2.5.40",
@@ -49,7 +50,7 @@
     "gulp-sass": "^2.2.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-stylestats": "^1.2.1",
-    "gulp-tslint": "^4.3.4",
+    "gulp-tslint": "^7.1.0",
     "gulp-typescript": "2.13.0",
     "gulp-util": "^3.0.7",
     "gulp-zip": "^3.1.0",
@@ -70,8 +71,8 @@
     "run-sequence": "^1.1.5",
     "systemjs-builder": "^0.15.13",
     "through2": "^2.0.1",
-    "tslint": "3.7.0-dev.5",
-    "typescript": "2.0.x"
+    "tslint": "^4.0.0",
+    "typescript": "~2.2.0"
   },
   "scripts": {
     "start": "gulp serve",

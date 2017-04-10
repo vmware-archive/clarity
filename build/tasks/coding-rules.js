@@ -14,17 +14,19 @@ var iconsSources = [ 'src/clarity-icons/**/*.ts'];
 gulp.task('tslint:icons', function(){
 	return gulp.src(iconsSources)
 		.pipe(tslint({
-			configuration: 'build/tslint.json'
+			configuration: 'build/tslint.json',
+            formatter: 'verbose'
 		}))
-		.pipe(tslint.report('verbose'));
+		.pipe(tslint.report());
 });
 
 gulp.task('tslint:icons:no-error', function(){
 	return gulp.src(iconsSources)
 		.pipe(tslint({
-			configuration: 'build/tslint.json'
+			configuration: 'build/tslint.json',
+            formatter: 'verbose'
 		}))
-		.pipe(tslint.report('verbose', {
+		.pipe(tslint.report({
 			emitError: false
 		}));
 });
@@ -39,17 +41,19 @@ var claritySources = [
 gulp.task('tslint:clarity', function(){
     return gulp.src(claritySources)
         .pipe(tslint({
-            configuration: 'build/tslint.json'
+            configuration: 'build/tslint.json',
+            formatter: 'verbose'
         }))
-        .pipe(tslint.report('verbose'));
+        .pipe(tslint.report());
 });
 
 gulp.task('tslint:clarity:no-error', function(){
     return gulp.src(claritySources)
         .pipe(tslint({
-            configuration: 'build/tslint.json'
+            configuration: 'build/tslint.json',
+            formatter: 'verbose'
         }))
-        .pipe(tslint.report('verbose', {
+        .pipe(tslint.report({
             emitError: false
         }));
 });
@@ -59,17 +63,19 @@ var testsSources = ['src/clarity-angular/**/*.spec.ts', 'src/clarity-icons/**/*.
 gulp.task('tslint:tests', function(){
     return gulp.src(testsSources)
         .pipe(tslint({
-            configuration: 'build/tslint.json'
+            configuration: 'build/tslint.json',
+            formatter: 'verbose'
         }))
-        .pipe(tslint.report('verbose'));
+        .pipe(tslint.report());
 });
 
 gulp.task('tslint:tests:no-error', function(){
     return gulp.src(testsSources)
         .pipe(tslint({
-            configuration: 'build/tslint.json'
+            configuration: 'build/tslint.json',
+            formatter: 'verbose'
         }))
-        .pipe(tslint.report('verbose', {
+        .pipe(tslint.report({
             emitError: false
         }));
 });
@@ -79,17 +85,19 @@ var appSources = ['src/app/**/*.ts'];
 gulp.task('tslint:app', function(){
     return gulp.src(appSources)
         .pipe(tslint({
-            configuration: 'build/tslint.json'
+            configuration: 'build/tslint.json',
+            formatter: 'verbose'
         }))
-        .pipe(tslint.report('verbose'));
+        .pipe(tslint.report());
 });
 
 gulp.task('tslint:app:no-error', function(){
     return gulp.src(appSources)
         .pipe(tslint({
-            configuration: 'build/tslint.json'
+            configuration: 'build/tslint.json',
+            formatter: 'verbose'
         }))
-        .pipe(tslint.report('verbose', {
+        .pipe(tslint.report({
             emitError: false
         }));
 });

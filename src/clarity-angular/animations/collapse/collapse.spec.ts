@@ -6,18 +6,18 @@
 import {
     AnimationAnimateMetadata,
     AnimationMetadata,
-    AnimationStateDeclarationMetadata,
-    AnimationStateTransitionMetadata,
+    AnimationStateMetadata,
+    AnimationTransitionMetadata,
     AnimationStyleMetadata,
     style
-} from "@angular/core";
+} from "@angular/animations";
 import {collapse} from "./index";
 
 describe("Collapse", () => {
     let myCollapse: AnimationMetadata[] = collapse();
-    let state: AnimationStateDeclarationMetadata = myCollapse[0] as AnimationStateDeclarationMetadata;
-    let transition1: AnimationStateTransitionMetadata = myCollapse[1] as AnimationStateTransitionMetadata;
-    let transition2: AnimationStateTransitionMetadata = myCollapse[2] as AnimationStateTransitionMetadata;
+    let state: AnimationStateMetadata = myCollapse[0] as AnimationStateMetadata;
+    let transition1: AnimationTransitionMetadata = myCollapse[1] as AnimationTransitionMetadata;
+    let transition2: AnimationTransitionMetadata = myCollapse[2] as AnimationTransitionMetadata;
 
     it("should return an array of AnimationMetadata", () => {
         expect(myCollapse.length).toEqual(3);
@@ -28,22 +28,22 @@ describe("Collapse", () => {
     });
 
     it("should contain a transition for true => false", () => {
-        expect(transition1.stateChangeExpr).toEqual("true => false");
+        expect(transition1.expr).toEqual("true => false");
     });
 
     it("should contain a transition for false => true", () => {
-        expect(transition2.stateChangeExpr).toEqual("false => true");
+        expect(transition2.expr).toEqual("false => true");
     });
 
     it("should contain a transition with height of * and timing of 0.2s ease-in-out for true => false", () => {
-        let step1: AnimationAnimateMetadata = (transition1.steps as any)._steps[0];
+        let step1: AnimationAnimateMetadata = (transition1.animation as any)[0];
 
         expect(step1.styles).toEqual(style({"height": "*", "overflow-y": "hidden"}));
     });
 
     it("should contain a transition with height of * and timing of 0.2s ease-in-out for false => true", () => {
-        let step1: AnimationStyleMetadata = (transition2.steps as any)._steps[0];
-        let step2: AnimationAnimateMetadata = (transition2.steps as any)._steps[1];
+        let step1: AnimationStyleMetadata = (transition2.animation as any)[0];
+        let step2: AnimationAnimateMetadata = (transition2.animation as any)[1];
 
         expect(step1).toEqual(style({"height": "*", "overflow-y": "hidden"}));
         expect(step2.timings).toEqual("0.2s ease-in-out");

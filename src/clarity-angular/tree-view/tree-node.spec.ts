@@ -9,6 +9,7 @@ import {Component, ViewChild} from "@angular/core";
 import {ClarityModule} from "../clarity.module";
 import {TreeNode} from "./tree-node";
 import {TreeView} from "./tree-view";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 export default function(): void {
     "use strict";
@@ -19,7 +20,8 @@ export default function(): void {
         beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [
-                    ClarityModule.forRoot()
+                    ClarityModule.forRoot(),
+                    NoopAnimationsModule
                 ],
                 declarations: [
                     BasicTreeNodeTestComponent,
@@ -302,7 +304,7 @@ export default function(): void {
                 expect(componentInstance.a2Node.selected).toBe(true);
             });
 
-            it("emits a change event after tree node selection", (done) => {
+            it("emits a change event after tree node selection", (done: any) => {
                 //Had to use done() instead of tick() here because
                 //tick() was giving a timers still in queue issue
                 //For more info visit: https://github.com/angular/angular/issues/10127
@@ -453,7 +455,7 @@ export default function(): void {
                 fixture.detectChanges();
             });
 
-            it("Selecting child selects the parent", (done) => {
+            it("Selecting child selects the parent", (done: any) => {
                 let componentInstance = fixture.componentInstance;
 
                 componentInstance.child = true;
@@ -466,7 +468,7 @@ export default function(): void {
                 });
             });
 
-            it("Selecting parent selects the child", (done) => {
+            it("Selecting parent selects the child", (done: any) => {
                 let componentInstance = fixture.componentInstance;
 
                 componentInstance.parent = true;

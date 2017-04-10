@@ -178,24 +178,24 @@ export default function(): void {
                     <clr-icon shape="cloud" class="is-solid"></clr-icon>
                 </clr-wizard-header-action>
                 <clr-wizard-page>
-                    <template clrPageTitle>Longer Title for Page 1</template>
+                    <ng-template clrPageTitle>Longer Title for Page 1</ng-template>
                     <p>Content for step 1</p>
                     <!-- CUSTOME HDR ACTIONS GO HERE -->
-                    <template clrPageHeaderActions>
+                    <ng-template clrPageHeaderActions>
                         <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="bell">
                             <clr-icon shape="bell" class="has-badge"></clr-icon>
                         </clr-wizard-header-action>
                         <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="warning">
                             <clr-icon shape="warning"></clr-icon>
                         </clr-wizard-header-action>
-                    </template>
+                    </ng-template>
                 </clr-wizard-page>
                 <clr-wizard-page>
-                    <template clrPageTitle>Title for Page 2</template>
+                    <ng-template clrPageTitle>Title for Page 2</ng-template>
                     <p>Content for step 2</p>
                 </clr-wizard-page>
                 <clr-wizard-page>
-                    <template clrPageTitle>Title for Page 3</template>
+                    <ng-template clrPageTitle>Title for Page 3</ng-template>
                     <p>Content for step 3</p>
                 </clr-wizard-page>
             </clr-wizard>

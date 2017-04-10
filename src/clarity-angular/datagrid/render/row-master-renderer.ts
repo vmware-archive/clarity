@@ -16,7 +16,7 @@ import {DatagridRenderOrganizer} from "./render-organizer";
 @Component({
     selector: "clr-dg-row-master",
     template: `
-        <template #projected><ng-content></ng-content></template>
+        <ng-template #projected><ng-content></ng-content></ng-template>
         <ng-container #inside></ng-container>
     `,
     host: {

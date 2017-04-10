@@ -45,8 +45,8 @@
         (clrWizardPageDanger)="handleDangerClick($event)"
         (clrWizardPagePrevious)="highVoltage()">
 
-        <template clrPageTitle>Longer Title for Page {{ 3 - 2 }} Longer Title for Page {{ 3 - 2 }} Longer Title for Page</template> <!-- mandatory -->
-        <template clrPageNavTitle>Title for Page 1</template> <!-- optional -->
+        <ng-template clrPageTitle>Longer Title for Page {{ 3 - 2 }} Longer Title for Page {{ 3 - 2 }} Longer Title for Page</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>Title for Page 1</ng-template> <!-- optional -->
 
         <p>Content for step 1</p>
         <p>
@@ -62,26 +62,26 @@
         </p>
 
         <!-- CUSTOME HDR ACTIONS GO HERE -->
-        <template clrPageHeaderActions>
+        <ng-template clrPageHeaderActions>
             <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="bell">
                 <clr-icon shape="bell" class="has-badge"></clr-icon>
             </clr-wizard-header-action>
             <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="warning">
                 <clr-icon shape="warning"></clr-icon>
             </clr-wizard-header-action>
-        </template>
+        </ng-template>
 
         <!-- CUSTOME BUTTONS GO HERE -->
-        <template clrPageButtons>
+        <ng-template clrPageButtons>
             <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
             <clr-wizard-button [type]="'previous'">Previous</clr-wizard-button>
             <clr-wizard-button [type]="'danger'">Doitbad</clr-wizard-button>
-        </template>
+        </ng-template>
     </clr-wizard-page>
 
     <clr-wizard-page *ngIf="doTestHere()" (clrWizardPageCustomButton)="doCustomClick($event)">
 
-        <template clrPageTitle>Title for Page {{ 4/2 }}</template> <!-- mandatory -->
+        <ng-template clrPageTitle>Title for Page {{ 4/2 }}</ng-template> <!-- mandatory -->
 
         <p>Content for step 2</p>
         <p>
@@ -101,16 +101,16 @@
         </p>
 
         <!-- CUSTOME BUTTONS GO HERE -->
-        <template clrPageButtons>
+        <ng-template clrPageButtons>
             <clr-wizard-button [type]="'cancel'">Soy un perdidor Soy un perdidor</clr-wizard-button>
             <clr-wizard-button [type]="'previous'">Fait InterruptidInterruptid</clr-wizard-button>
             <clr-wizard-button [type]="'custom-next'">LOLZ</clr-wizard-button>
-        </template>
+        </ng-template>
 
     </clr-wizard-page>
 
     <clr-wizard-page *ngIf="showStepThree">
-        <template clrPageTitle>If you see this, something is badwrong</template> <!-- mandatory -->
+        <ng-template clrPageTitle>If you see this, something is badwrong</ng-template> <!-- mandatory -->
         <!-- template clrPageNavTitle>Step 3 Shouldn't be</template --> <!-- optional -->
 
         <p>Content for step 3</p>
@@ -140,21 +140,21 @@
         [clrWizardPagePreventDefaultCancel]="true"
         (clrWizardPageOnCancel)="stepThreeCustomCancel()"
         (clrWizardPageCustomButton)="doCustomClick($event)">
-        <template clrPageTitle>This tests if the page jumping completed thing works</template> <!-- mandatory -->
+        <ng-template clrPageTitle>This tests if the page jumping completed thing works</ng-template> <!-- mandatory -->
         <!-- template clrPageNavTitle>Test Page Jumping</template --> <!-- optional -->
 
         <p *ngIf="stepFourIsReady">I am ready to go!</p>
         <p *ngIf="!stepFourIsReady">I am <i>not</i> ready to go! Go back to step 2 and put a number in.</p>
 
-        <template clrPageButtons>
+        <ng-template clrPageButtons>
             <clr-wizard-button [type]="'custom-previous'">Custom Back</clr-wizard-button>
             <clr-wizard-button [type]="'next'">FFwd</clr-wizard-button>
-        </template>
+        </ng-template>
     </clr-wizard-page>
 
     <clr-wizard-page>
-        <template clrPageTitle>Longer Title for Last Step</template> <!-- mandatory -->
-        <template clrPageNavTitle>Last Step</template> <!-- optional -->
+        <ng-template clrPageTitle>Longer Title for Last Step</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>Last Step</ng-template> <!-- optional -->
 
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, 

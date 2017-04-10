@@ -69,32 +69,32 @@ export class WizardGhostsDemo {
     <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
 
     <clr-wizard-page>
-        <template clrPageTitle>Title for page 1</template>
-        <template clrPageNavTitle>Step 1</template>
+        <ng-template clrPageTitle>Title for page 1</ng-template>
+        <ng-template clrPageNavTitle>Step 1</ng-template>
         ...
     </clr-wizard-page>
 
     <clr-wizard-page *ngIf="showEvenPages">
-        <template clrPageTitle>Title for page 2</template>
-        <template clrPageNavTitle>Step 2</template>
+        <ng-template clrPageTitle>Title for page 2</ng-template>
+        <ng-template clrPageNavTitle>Step 2</ng-template>
         ...
     </clr-wizard-page>
 
     <clr-wizard-page *ngIf="showPageThree">
-        <template clrPageTitle>Title for page 3</template>
-        <template clrPageNavTitle>Step 3</template>
+        <ng-template clrPageTitle>Title for page 3</ng-template>
+        <ng-template clrPageNavTitle>Step 3</ng-template>
         ...
     </clr-wizard-page>
 
     <clr-wizard-page *ngIf="showEvenPages">
-        <template clrPageTitle>Title for page 4</template>
-        <template clrPageNavTitle>Step 4</template>
+        <ng-template clrPageTitle>Title for page 4</ng-template>
+        <ng-template clrPageNavTitle>Step 4</ng-template>
         ...
     </clr-wizard-page>
 
     <clr-wizard-page *ngIf="showPageFive">
-        <template clrPageTitle>Title for page 5</template>
-        <template clrPageNavTitle>Step 5</template>
+        <ng-template clrPageTitle>Title for page 5</ng-template>
+        <ng-template clrPageNavTitle>Step 5</ng-template>
         ...
     </clr-wizard-page>
 </clr-wizard>

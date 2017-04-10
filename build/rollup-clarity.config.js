@@ -6,6 +6,7 @@ export default {
     format: 'umd',
     moduleName: 'ng.clarity',
     external: [
+        '@angular/animations',
         '@angular/core',
         '@angular/common',
         '@angular/forms',
@@ -15,6 +16,7 @@ export default {
         'rxjs/Observable'
     ],
     globals: {
+        '@angular/animations' : 'ng.animations',
         '@angular/core' : 'ng.core',
         '@angular/common' : 'ng.common',
         '@angular/forms' : 'ng.forms',

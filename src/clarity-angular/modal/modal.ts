@@ -11,14 +11,16 @@ import {
     HostListener,
     OnChanges,
     OnDestroy,
-    SimpleChange,
+    SimpleChange
+} from "@angular/core";
+import {
     animate,
+    state,
     style,
     transition,
     trigger,
-    AnimationTransitionEvent,
-    state
-} from "@angular/core";
+    AnimationEvent
+} from "@angular/animations";
 
 import {ScrollingService} from "../main/scrolling-service";
 import { GHOST_PAGE_ANIMATION } from "./utils/ghost-page-animations";
@@ -170,10 +172,13 @@ export class Modal implements OnChanges, OnDestroy {
             return;
         }
         this._open = false;
+        // todo: remove this after animation bug is fixed https://github.com/angular/angular/issues/15798
+        // this was handled by the fadeDone event below, but that AnimationEvent is not firing in Angular 4.0.
+        this._openChanged.emit(false);
         // SPECME
     }
 
-    fadeDone(e: AnimationTransitionEvent) {
+    fadeDone(e: AnimationEvent) {
         if (e.toState === "void") {
             this._openChanged.emit(false);
         }

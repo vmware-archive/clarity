@@ -3,8 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ChangeDetectorRef, Directive, DoCheck, Input, IterableDiffer, IterableDiffers,
-    TemplateRef, TrackByFn, OnChanges, SimpleChanges} from "@angular/core";
+import {
+    Directive, DoCheck, Input, IterableDiffer, IterableDiffers,
+    TemplateRef, TrackByFunction, OnChanges, SimpleChanges
+} from "@angular/core";
 
 import {Items} from "./providers/items";
 
@@ -14,10 +16,9 @@ import {Items} from "./providers/items";
 export class DatagridItems implements OnChanges, DoCheck {
     @Input("clrDgItemsOf") public rawItems: any[];
 
-    private _differ: IterableDiffer;
+    private _differ: IterableDiffer<any>;
 
-    constructor(public template: TemplateRef<any>, private _differs: IterableDiffers,
-                private _changeDetector: ChangeDetectorRef, private _items: Items) {
+    constructor(public template: TemplateRef<any>, private _differs: IterableDiffers, private _items: Items) {
         _items.smartenUp();
     }
 
@@ -25,13 +26,13 @@ export class DatagridItems implements OnChanges, DoCheck {
         if ("rawItems" in changes) {
             const currentItems = changes["rawItems"].currentValue;
             if (!this._differ && currentItems) {
-                this._differ = this._differs.find(currentItems).create(this._changeDetector, this._items.trackBy);
+                this._differ = this._differs.find(currentItems).create(this._items.trackBy);
             }
         }
     }
 
     @Input("clrDgItemsTrackBy")
-    set trackBy(value: TrackByFn) {
+    set trackBy(value: TrackByFunction<any>) {
         this._items.trackBy = value;
     }
 

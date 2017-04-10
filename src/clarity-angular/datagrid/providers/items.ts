@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Injectable, TrackByFn} from "@angular/core";
+import {Injectable, TrackByFunction} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {Subscription} from "rxjs/Subscription";
 import {Observable} from "rxjs/Observable";
@@ -25,7 +25,7 @@ export class Items {
     /**
      * Tracking function to identify objects. Default is reference equality.
      */
-    public trackBy: TrackByFn = (index: number, item: any) => item;
+    public trackBy: TrackByFunction<any> = (index: number, item: any) => item;
 
     /**
      * Subscriptions to the other providers changes.

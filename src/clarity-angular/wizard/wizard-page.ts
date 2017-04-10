@@ -74,7 +74,7 @@ export class WizardPage implements OnInit {
         }
     }
 
-    // Emitter for Next button and readyToComplete state changes. 
+    // Emitter for Next button and readyToComplete state changes.
     // Need to manually call it. Not automagically called.
 // TOBREAK: Naming convention does not match old wizard; supports default two-way binding instead
     @Output("clrWizardPageNextDisabledChange") nextStepDisabledChange: EventEmitter <boolean> =
@@ -97,11 +97,11 @@ export class WizardPage implements OnInit {
     @Output("clrWizardPagePreviousDisabledChange") public previousStepDisabledChange: EventEmitter <boolean> =
         new EventEmitter();
 
-    // overrides all actions from the page level, so you can use an alternate function for 
+    // overrides all actions from the page level, so you can use an alternate function for
     // validation or data-munging with an onCommit or onCancel
     @Input("clrWizardPagePreventDefault") public preventDefault: boolean = false;
 
-    // overrides cancel from the page level, so you can use an alternate function for 
+    // overrides cancel from the page level, so you can use an alternate function for
     // validation or data-munging with clrWizardPageOnCancel
     private _stopCancel = false;
     public get stopCancel(): boolean {
@@ -174,8 +174,8 @@ export class WizardPage implements OnInit {
     public get completed(): boolean {
         return this._complete && this.readyToComplete;
 
-        // FOR V2: UNWIND COMPLETED, READYTOCOMPLETE, AND ERRORS 
-        // SUCH THAT ERRORS IS ITS OWN INPUT. IF A STEP IS 
+        // FOR V2: UNWIND COMPLETED, READYTOCOMPLETE, AND ERRORS
+        // SUCH THAT ERRORS IS ITS OWN INPUT. IF A STEP IS
         // INCOMPLETE AND ERRORED, ERRORED WILL NOT SHOW.
         // FIRST QUESTION: AM I GREY OR COLORED?
         // SECOND QUESTION: AM I GREEN OR RED?

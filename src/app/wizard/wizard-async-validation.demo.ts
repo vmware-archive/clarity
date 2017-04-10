@@ -22,7 +22,7 @@ export class WizardAsyncValidation {
     errorFlag: boolean = false;
 
     // have to define doCancel because page will prevent doCancel from working
-    // if the page had a previous button, you would need to call 
+    // if the page had a previous button, you would need to call
     // this.wizard.previous() manually as well...
     doCancel(): void {
         this.wizard.close();
@@ -94,7 +94,7 @@ export class WizardAsyncValidation {
         clrWizardPagePreventDefault="true"
         (clrWizardPageOnCommit)="onCommit()"
         (clrWizardPageOnCancel)="doCancel()">
-        <template clrPageTitle>Form with async validation</template>
+        <ng-template clrPageTitle>Form with async validation</ng-template>
 
         <div class="spinner" *ngIf="loadingFlag">
             Loading...

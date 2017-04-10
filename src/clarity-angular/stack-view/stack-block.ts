@@ -11,13 +11,16 @@ import {
     Output,
     OnInit,
     Optional,
-    SkipSelf,
+    SkipSelf
+} from "@angular/core";
+
+import {
     animate,
     state,
     style,
     transition,
     trigger
-} from "@angular/core";
+} from "@angular/animations";
 
 @Component({
     selector: "clr-stack-block",

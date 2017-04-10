@@ -12,6 +12,7 @@ import { Type, DebugElement } from "@angular/core";
 import { TestBed, ComponentFixture } from "@angular/core/testing";
 import { ClarityModule } from "../../clarity.module";
 import { By } from "@angular/platform-browser";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 export class TestContext<D, C> {
     fixture: ComponentFixture<C>;
@@ -57,7 +58,7 @@ export function addHelpers(): void {
          */
         this.create = <D, C>(clarityDirective: Type<D>, testComponent: Type<C>, providers: any[] = []) => {
             TestBed.configureTestingModule({
-                imports: [ClarityModule.forRoot()],
+                imports: [ClarityModule.forRoot(), NoopAnimationsModule],
                 declarations: [testComponent],
                 providers: providers
             });

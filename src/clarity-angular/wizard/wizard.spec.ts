@@ -155,8 +155,8 @@ describe("Wizard", () => {
     // Inputs, Outputs, and initialization of component based on content-children
     describe("Template API", () => {
         describe("Overriding modal animation", () => {
-        // Make sure that stopModalAnimations returns false when 
-        // clrWizardPreventModalAnimation input is set 
+        // Make sure that stopModalAnimations returns false when
+        // clrWizardPreventModalAnimation input is set
         // validate default is false as well
             it("true is true", () => {
                 expect(true).toBe(true);
@@ -298,12 +298,12 @@ describe("Wizard", () => {
 // TODO: ADD TO WIZARD TESTS... PART OF TEMPLATE API^^^
 // On setup make sure pageCollection.pages is set, make sure it gets updated when wizard.pages is
 // On setup make sure navService.wizardHasAltCancel is set to wizard.stopCancel -- test dynamically too
-// On setup make sure headerActionService.wizardHeaderActions is set to wizard.headerActions -- 
+// On setup make sure headerActionService.wizardHeaderActions is set to wizard.headerActions --
 // test it also gets updated
 // On setup test that navService.hideWizardGhostPages gets set as expected
 
     describe("View and Behavior", () => {
-// TODO: SPLIT THESE TESTS. 
+// TODO: SPLIT THESE TESTS.
 // IF USER GIVES ME AN INPUT, DOES MY CONTROLLER HAVE THE RIGHT VALUE? <= TEMPLATE API
 // THEN SEPARATE TEST TO MAKE SURE THAT THE RESULT IN VIEW IS AS EXPECTED <= VIEW TESTS
         describe("Sizing", () => {
@@ -459,7 +459,7 @@ describe("Wizard", () => {
 
 // @Component({
 //     template: `
-//     <clr-wizard 
+//     <clr-wizard
 //         [(clrWizardOpen)]="open"
 //         (clrWizardOnCancel)="myOnCancel($event)">
 //          <div class="wizard-title">

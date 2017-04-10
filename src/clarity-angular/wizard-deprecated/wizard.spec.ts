@@ -9,6 +9,7 @@ import {Component, ViewChild} from "@angular/core";
 import {ScrollingService} from "../main/scrolling-service";
 import {ClarityModule} from "../clarity.module";
 import {WizardDeprecated} from "./wizard";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 @Component({
     template: `
@@ -137,7 +138,7 @@ describe("Wizard", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [ClarityModule.forRoot()],
+            imports: [ClarityModule.forRoot(), NoopAnimationsModule],
             declarations: [AdvancedWizard, BasicWizard]
         });
     });

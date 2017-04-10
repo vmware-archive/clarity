@@ -16,8 +16,8 @@
     <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
 
     <clr-wizard-page>
-        <template clrPageTitle>Title for page 1</template> <!-- mandatory -->
-        <template clrPageNavTitle>Step 1</template> <!-- optional -->
+        <ng-template clrPageTitle>Title for page 1</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>Step 1</ng-template> <!-- optional -->
 
         <form #pageTypesForm="ngForm">
             <section class="form-block">
@@ -38,14 +38,14 @@
     </clr-wizard-page>
 
     <clr-wizard-page *ngIf="showEvenPages">
-        <template clrPageTitle>Title for page 2</template> <!-- mandatory -->
-        <template clrPageNavTitle>Step 2</template> <!-- optional -->
+        <ng-template clrPageTitle>Title for page 2</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>Step 2</ng-template> <!-- optional -->
         <p>Content for step 2</p>
     </clr-wizard-page>
 
     <clr-wizard-page *ngIf="showPageThree">
-        <template clrPageTitle>Title for page 3</template> <!-- mandatory -->
-        <template clrPageNavTitle>Step 3</template> <!-- optional -->
+        <ng-template clrPageTitle>Title for page 3</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>Step 3</ng-template> <!-- optional -->
         <form #pageTypesForm="ngForm">
             <section class="form-block">
                 <label>Which pages should I show?</label>
@@ -65,14 +65,14 @@
     </clr-wizard-page>
 
     <clr-wizard-page *ngIf="showEvenPages">
-        <template clrPageTitle>Title for page 4</template> <!-- mandatory -->
-        <template clrPageNavTitle>Step 4</template> <!-- optional -->
+        <ng-template clrPageTitle>Title for page 4</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>Step 4</ng-template> <!-- optional -->
         <p>Content for step 4</p>
     </clr-wizard-page>
 
     <clr-wizard-page *ngIf="showPageFive">
-        <template clrPageTitle>Title for page 5</template> <!-- mandatory -->
-        <template clrPageNavTitle>Step 5</template> <!-- optional -->
+        <ng-template clrPageTitle>Title for page 5</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>Step 5</ng-template> <!-- optional -->
         <p>Content for step 5</p>
     </clr-wizard-page>
 </clr-wizard>

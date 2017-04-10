@@ -178,7 +178,7 @@ export class PageCollectionService {
         page.onCommit.emit(page.id);
     }
 
-    // used by the navService to navigate back to first possible step after 
+    // used by the navService to navigate back to first possible step after
     // pages are reset
     private _pagesReset = new Subject<boolean>();
     public get pagesReset(): Observable<boolean> {

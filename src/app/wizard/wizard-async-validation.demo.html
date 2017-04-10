@@ -18,7 +18,7 @@
         clrWizardPagePreventDefault="true"
         (clrWizardPageOnCommit)="onCommit()"
         (clrWizardPageOnCancel)="doCancel()">
-        <template clrPageTitle>Form with async validation</template> <!-- mandatory -->
+        <ng-template clrPageTitle>Form with async validation</ng-template> <!-- mandatory -->
 
         <div class="spinner" *ngIf="loadingFlag">
             Loading...
@@ -45,7 +45,7 @@
         </form>
     </clr-wizard-page>
     <clr-wizard-page>
-        <template clrPageTitle>Wizard complete</template> <!-- mandatory -->
+        <ng-template clrPageTitle>Wizard complete</ng-template> <!-- mandatory -->
         <p>Congratulations! Now you know the answer to life, the universe and everything!</p>
     </clr-wizard-page>
 </clr-wizard>

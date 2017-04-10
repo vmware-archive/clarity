@@ -17,6 +17,7 @@ import { PageCollectionMock } from "./providers/page-collection.mock";
 import { MockPage } from "./wizard-page.mock";
 import { Alert } from "../alert/alert";
 import { WizardButton } from "./wizard-button";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 
 class MyPageCollectionMock extends PageCollectionMock {
     public previousPage: MockPage;
@@ -32,19 +33,19 @@ class MyPageCollectionMock extends PageCollectionMock {
 @Component({
     template: `
         <clr-wizard-page>
-            <template clrPageTitle>Mandatory Title</template>
+            <ng-template clrPageTitle>Mandatory Title</ng-template>
             Hello moto
         </clr-wizard-page>
         <clr-wizard-page>
-            <template clrPageTitle>Mandatory Title</template>
-            <template clrPageNavTitle>Optional nav title</template>
-            <template clrPageHeaderActions>
+            <ng-template clrPageTitle>Mandatory Title</ng-template>
+            <ng-template clrPageNavTitle>Optional nav title</ng-template>
+            <ng-template clrPageHeaderActions>
                 <clr-wizard-header-action id="fhtagn">hi</clr-wizard-header-action>
-            </template>
+            </ng-template>
             Other wizard page needed as competition in tests
-            <template clrPageButtons>
+            <ng-template clrPageButtons>
                 <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-            </template>
+            </ng-template>
         </clr-wizard-page>
     `
 })
@@ -95,7 +96,7 @@ export default function(): void {
         describe("Typescript API", () => {
             beforeEach(() => {
                 TestBed.configureTestingModule({
-                    imports: [ ClarityModule.forRoot() ],
+                    imports: [ ClarityModule.forRoot(), NoopAnimationsModule ],
                     declarations: [ TypescriptTestComponent ],
                     providers: [
                         WizardNavigationService,
@@ -375,16 +376,16 @@ export default function(): void {
                     [(clrWizardPagePreviousDisabled)]="navTestPreviousDisabled"
                     [(clrWizardPagePreventDefaultCancel)]="navStopCancel"
                 >
-                    <template clrPageTitle>Tests of page nav inputs and outputs</template>
+                    <ng-template clrPageTitle>Tests of page nav inputs and outputs</ng-template>
                 </clr-wizard-page>
                 <clr-wizard-page #lifecycle>
-                    <template clrPageTitle>Tests for lifecycle outputs and event handlers</template>
+                    <ng-template clrPageTitle>Tests for lifecycle outputs and event handlers</ng-template>
                 </clr-wizard-page>
                 <clr-wizard-page #other
                     [id]="testId"
                     (clrWizardPageOnLoad)="onLoadCheck($event)"
                 >
-                    <template clrPageTitle>Other template API tests</template>
+                    <ng-template clrPageTitle>Other template API tests</ng-template>
                 </clr-wizard-page>
             `
         })
@@ -440,7 +441,7 @@ export default function(): void {
         describe("Template API", () => {
             beforeEach(() => {
                 TestBed.configureTestingModule({
-                    imports: [ ClarityModule.forRoot() ],
+                    imports: [ ClarityModule.forRoot(), NoopAnimationsModule ],
                     declarations: [ TemplateTestComponent ],
                     providers: [
                         WizardNavigationService,
@@ -688,52 +689,52 @@ export default function(): void {
                 <clr-wizard-page #viewTestWizardPageOne [id]="testId"
                     [clrWizardPagePreventDefaultCancel]="preventCancel"
                 >
-                    <template clrPageTitle>View Page 1</template>
+                    <ng-template clrPageTitle>View Page 1</ng-template>
 
-                    <template clrPageHeaderActions>
+                    <ng-template clrPageHeaderActions>
                         <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="bell">
                             <clr-icon shape="bell" class="has-badge"></clr-icon>
                         </clr-wizard-header-action>
                         <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="warning">
                             <clr-icon shape="warning"></clr-icon>
                         </clr-wizard-header-action>
-                    </template>
+                    </ng-template>
 
-                    <template clrPageButtons>
+                    <ng-template clrPageButtons>
                         <clr-wizard-button [type]="'cancel'" class="clrtest-page-cancel"
                             #pageCancelBtn>Cancel</clr-wizard-button>
                         <clr-wizard-button [type]="'previous'"
                             class="clrtest-page-previous-1">Previous</clr-wizard-button>
                         <clr-wizard-button [type]="'danger'">Caution</clr-wizard-button>
-                    </template>
+                    </ng-template>
                 </clr-wizard-page>
 
                 <clr-wizard-page #viewTestWizardPageTwo
                     [(clrWizardPagePreviousDisabled)]="disablePrevious">
-                    <template clrPageTitle>View Page 2</template>
+                    <ng-template clrPageTitle>View Page 2</ng-template>
                     <p>{{projector}}</p>
                 </clr-wizard-page>
 
                 <clr-wizard-page #viewTestWizardPageThree
                     [(clrWizardPagePreviousDisabled)]="disablePrevious">
-                    <template clrPageTitle>View Page 3</template>
-                    <template clrPageNavTitle>short title</template>
+                    <ng-template clrPageTitle>View Page 3</ng-template>
+                    <ng-template clrPageNavTitle>short title</ng-template>
                     <p *ngIf="!asyncLoaded">Loading...</p>
                     <p *ngIf="asyncLoaded">{{asyncContent}}</p>
 
-                    <template clrPageButtons>
+                    <ng-template clrPageButtons>
                         <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
                         <clr-wizard-button [type]="'previous'" #pagePreviousBtn
                             class="clrtest-page-previous-2">Previous</clr-wizard-button>
                         <clr-wizard-button [type]="'danger'">Danger</clr-wizard-button>
-                    </template>
+                    </ng-template>
                 </clr-wizard-page>
 
                 <clr-wizard-page #viewTestWizardPageFour
                     [clrWizardPagePreventDefaultCancel]="preventCancel"
                     (clrWizardPageOnCancel)="altCancel()"
                 >
-                    <template clrPageTitle>View Page 4</template>
+                    <ng-template clrPageTitle>View Page 4</ng-template>
                     <clr-alert [clrAlertClosable]="false">
                         <div class="alert-item">
                             <span class="alert-text">
@@ -787,7 +788,7 @@ export default function(): void {
         xdescribe("View and Behavior", () => {
             beforeEach(() => {
                 TestBed.configureTestingModule({
-                    imports: [ ClarityModule.forRoot() ],
+                    imports: [ ClarityModule.forRoot(), NoopAnimationsModule ],
                     declarations: [ ViewTestComponent ],
                     providers: [ WizardNavigationService, PageCollectionService, ButtonHubService ]
                 });

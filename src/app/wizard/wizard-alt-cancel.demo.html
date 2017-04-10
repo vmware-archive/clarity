@@ -20,13 +20,13 @@
     <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
 
     <clr-wizard-page>
-        <template clrPageTitle>Wizard level alt-cancel</template>
+        <ng-template clrPageTitle>Wizard level alt-cancel</ng-template>
         <p>Content for step 1</p>
     </clr-wizard-page>
 
     <clr-wizard-page (clrWizardPageOnCancel)="pageCustomCancel()"
         [clrWizardPagePreventDefaultCancel]="true">
-        <template clrPageTitle>Page level alt-cancel</template> <!-- mandatory -->
+        <ng-template clrPageTitle>Page level alt-cancel</ng-template> <!-- mandatory -->
         <p *ngIf="!showCancelConfirm">Content for step 2</p>
         <p *ngIf="showCancelConfirm">
             <button type="submit" class="btn btn-danger" (click)="doPageCancel()">

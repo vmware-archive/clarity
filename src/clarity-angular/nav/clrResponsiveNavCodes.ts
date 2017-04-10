@@ -5,16 +5,16 @@
  */
 
 export class ClrResponsiveNavCodes {
-    public static get NAV_LEVEL_1(): number { return 1; }
-    public static get NAV_LEVEL_2(): number { return 2; }
-    public static get NAV_CLOSE_ALL(): string { return "NAV_CLOSE_ALL"; }
-    public static get NAV_OPEN(): string { return "NAV_OPEN"; }
-    public static get NAV_CLOSE(): string { return "NAV_CLOSE"; }
-    public static get NAV_TOGGLE(): string { return "NAV_TOGGLE"; }
-    public static get NAV_CLASS_HAMBURGER_MENU(): string { return "open-hamburger-menu"; }
-    public static get NAV_CLASS_OVERFLOW_MENU(): string { return "open-overflow-menu"; }
-    public static get NAV_CLASS_TRIGGER_1(): string { return "header-hamburger-trigger"; }
-    public static get NAV_CLASS_TRIGGER_2(): string { return "header-overflow-trigger"; }
-    public static get NAV_CLASS_LEVEL_1(): string { return "clr-nav-level-1"; }
-    public static get NAV_CLASS_LEVEL_2(): string { return "clr-nav-level-2"; }
+    public static NAV_LEVEL_1: number = 1;
+    public static NAV_LEVEL_2: number = 2;
+    public static NAV_CLOSE_ALL: string = "NAV_CLOSE_ALL";
+    public static NAV_OPEN: string = "NAV_OPEN";
+    public static NAV_CLOSE: string = "NAV_CLOSE";
+    public static NAV_TOGGLE: string = "NAV_TOGGLE";
+    public static NAV_CLASS_HAMBURGER_MENU: string = "open-hamburger-menu";
+    public static NAV_CLASS_OVERFLOW_MENU: string = "open-overflow-menu";
+    public static NAV_CLASS_TRIGGER_1: string = "header-hamburger-trigger";
+    public static NAV_CLASS_TRIGGER_2: string = "header-overflow-trigger";
+    public static NAV_CLASS_LEVEL_1: string = "clr-nav-level-1";
+    public static NAV_CLASS_LEVEL_2: string = "clr-nav-level-2";
 }

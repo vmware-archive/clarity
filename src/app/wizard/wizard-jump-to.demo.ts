@@ -79,27 +79,27 @@ export class WizardJumpToDemo {
     <clr-wizard-button [type]="'finish'">Done</clr-wizard-button>
 
     <clr-wizard-page>
-        <template clrPageTitle>Page 1</template>
+        <ng-template clrPageTitle>Page 1</ng-template>
         ...
     </clr-wizard-page>
 
     <clr-wizard-page>
-        <template clrPageTitle>Page 2</template>
+        <ng-template clrPageTitle>Page 2</ng-template>
         ...
     </clr-wizard-page>
 
     <clr-wizard-page #pageThree>
-        <template clrPageTitle>Page 3</template>
+        <ng-template clrPageTitle>Page 3</ng-template>
         ...
     </clr-wizard-page>
 
     <clr-wizard-page>
-        <template clrPageTitle>Page 4</template>
+        <ng-template clrPageTitle>Page 4</ng-template>
         ...
     </clr-wizard-page>
 
     <clr-wizard-page #pageFive>
-        <template clrPageTitle>Page 5</template>
+        <ng-template clrPageTitle>Page 5</ng-template>
         ...
     </clr-wizard-page>
 </clr-wizard>

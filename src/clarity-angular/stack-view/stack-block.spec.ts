@@ -9,6 +9,7 @@ import {FormsModule} from "@angular/forms";
 import {ClarityModule} from "../clarity.module";
 import {StackBlock} from "./stack-block";
 import {StackView} from "./stack-view";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 @Component({
     template: `
@@ -66,6 +67,7 @@ export default function(): void {
             TestBed.configureTestingModule({
                 imports: [
                     ClarityModule.forRoot(),
+                    NoopAnimationsModule,
                     FormsModule
                 ],
                 declarations: [

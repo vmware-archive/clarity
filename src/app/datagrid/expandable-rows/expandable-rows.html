@@ -58,8 +58,8 @@
         <!--<detail-wrapper *clrIfExpanded ngProjectAs="clr-dg-row-detail" class="datagrid-row-flex"></detail-wrapper>-->
 
         <clr-dg-row-detail *clrIfExpanded [clrDgReplace]="replace">
-            <template [clrFakeLoader]="slowLoad" clrLoading>
-                <template [ngIf]="detail === 'default'">
+            <ng-template [clrFakeLoader]="slowLoad" clrLoading>
+                <ng-template [ngIf]="detail === 'default'">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed
                     quam. Proin rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget,
                     pellentesque sed arcu. Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra. Aenean
@@ -68,16 +68,16 @@
                     ipsum tincidunt velit pellentesque rhoncus. Morbi faucibus ut ipsum at malesuada. Nam vestibulum felis
                     sit amet metus finibus hendrerit. Fusce faucibus odio eget ex vulputate rhoncus. Fusce nec aliquam leo,
                     at suscipit diam.
-                </template>
+                </ng-template>
 
-                <template [ngIf]="detail === 'columns'">
+                <ng-template [ngIf]="detail === 'columns'">
                     <clr-dg-cell>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</clr-dg-cell>
                     <clr-dg-cell>Proin in neque in ante placerat mattis id sed quam.</clr-dg-cell>
                     <clr-dg-cell>Proin rhoncus lacus et tempor dignissim.</clr-dg-cell>
                     <clr-dg-cell>Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.</clr-dg-cell>
                     <clr-dg-cell>Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra.</clr-dg-cell>
-                </template>
-            </template>
+                </ng-template>
+            </ng-template>
         </clr-dg-row-detail>
     </clr-dg-row>
 

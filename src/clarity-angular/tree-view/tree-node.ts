@@ -12,13 +12,16 @@ import {
     Output,
     QueryList,
     Optional,
-    SkipSelf,
+    SkipSelf
+} from "@angular/core";
+
+import {
     trigger,
     animate,
     state,
     style,
     transition
-} from "@angular/core";
+} from "@angular/animations";
 
 import {AbstractTreeSelection} from "./abstract-tree-selection";
 import {TreeSelectionService} from "./providers/treeSelection.service";

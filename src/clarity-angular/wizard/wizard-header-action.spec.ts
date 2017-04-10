@@ -68,7 +68,7 @@ export default function(): void {
             describe("id", () => {
                 it("should return an indexed id if none is specified", () => {
                     let haToTest = testComponent.plainDefaultHA;
-                    // placement here is important b/c the index updates at a 
+                    // placement here is important b/c the index updates at a
                     // global level to avoid id conflicts...
                     expect(haToTest.id).toBe("clr-wizard-header-action-0");
                 });

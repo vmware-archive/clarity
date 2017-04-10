@@ -95,15 +95,15 @@ export default function(): void {
                     <clr-icon shape="cloud" class="is-solid"></clr-icon>
                 </clr-wizard-header-action>
                 <clr-wizard-page>
-                    <template clrPageTitle>Title for Page 1</template>
+                    <ng-template clrPageTitle>Title for Page 1</ng-template>
                     <p>Content for step 1</p>
                 </clr-wizard-page>
                 <clr-wizard-page>
-                    <template clrPageTitle>Title for Page 2</template>
+                    <ng-template clrPageTitle>Title for Page 2</ng-template>
                     <p>Content for step 2</p>
                 </clr-wizard-page>
                 <clr-wizard-page>
-                    <template clrPageTitle>Title for Page 3</template>
+                    <ng-template clrPageTitle>Title for Page 3</ng-template>
                     <p>Content for step 3</p>
                 </clr-wizard-page>
             </clr-wizard>

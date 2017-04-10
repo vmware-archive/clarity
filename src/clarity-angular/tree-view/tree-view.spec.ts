@@ -8,6 +8,7 @@ import {ComponentFixture, TestBed, fakeAsync, tick} from "@angular/core/testing"
 import {Component, ViewChild} from "@angular/core";
 import {ClarityModule} from "../clarity.module";
 import {TreeNode} from "./tree-node";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 @Component({
     template: `
@@ -111,7 +112,8 @@ export default function(): void {
         beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [
-                    ClarityModule.forRoot()
+                    ClarityModule.forRoot(),
+                    NoopAnimationsModule
                 ],
                 declarations: [
                     PrePopulateTreeTestComponent,

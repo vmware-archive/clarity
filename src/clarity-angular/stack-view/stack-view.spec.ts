@@ -7,6 +7,7 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {Component} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {ClarityModule} from "../clarity.module";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 @Component({
     template: `
@@ -32,7 +33,8 @@ export default function(): void {
             TestBed.configureTestingModule({
                 imports: [
                     ClarityModule.forRoot(),
-                    FormsModule
+                    FormsModule,
+                    NoopAnimationsModule
                 ],
                 declarations: [TestComponent]
             });

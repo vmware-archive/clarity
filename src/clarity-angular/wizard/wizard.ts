@@ -259,7 +259,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
         this.navService.cancel();
     }
 
-    // need to bust out some logic here because the modal openChange event is 
+    // need to bust out some logic here because the modal openChange event is
     // messing up alt-cancel routines
     public modalCancel(): void {
         this.checkAndCancel();

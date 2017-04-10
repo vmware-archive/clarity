@@ -44,20 +44,20 @@ let nbRow: number = 0;
             </clr-dg-cell>
             <ng-content  *ngIf="!expand.replace || !expand.expanded || expand.loading"></ng-content>
             
-            <template *ngIf="expand.replace && expand.expanded && !expand.loading" 
-                [ngTemplateOutlet]="detail"></template>
+            <ng-template *ngIf="expand.replace && expand.expanded && !expand.loading" 
+                [ngTemplateOutlet]="detail"></ng-template>
         </clr-dg-row-master>
         
-        <template *ngIf="!expand.replace && expand.expanded && !expand.loading"
-            [ngTemplateOutlet]="detail"></template>
+        <ng-template *ngIf="!expand.replace && expand.expanded && !expand.loading"
+            [ngTemplateOutlet]="detail"></ng-template>
         
         <!-- 
             We need the "project into template" hack because we need this in 2 different places
             depending on whether the details replace the row or not.
         -->
-        <template #detail>
+        <ng-template #detail>
             <ng-content select="clr-dg-row-detail"></ng-content>
-        </template>
+        </ng-template>
     `,
     host: {
         "[class.datagrid-row]": "true",

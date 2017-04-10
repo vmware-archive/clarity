@@ -197,7 +197,9 @@ export default function(): void {
                 </clr-dg-pagination>`
 })
 class FullTest {
-    current: number;
+    // this value needs to be initialized; otherwise, when you call a setter for size, the page number is set
+    // mid-cycle and throws an error.
+    current: number = 1;
     size: number;
     total: number;
     last: number;

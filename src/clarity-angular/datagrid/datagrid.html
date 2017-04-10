@@ -37,9 +37,9 @@
         </div>
 
         <div clrDgBody class="datagrid-body">
-            <template *ngIf="iterator"
+            <ng-template *ngIf="iterator"
                       ngFor [ngForOf]="items.displayed" [ngForTrackBy]="items.trackBy"
-                      [ngForTemplate]="iterator.template"></template>
+                      [ngForTemplate]="iterator.template"></ng-template>
             <ng-content *ngIf="!iterator"></ng-content>
         </div>
     </div>

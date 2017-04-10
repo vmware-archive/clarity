@@ -1,5 +1,5 @@
 <ng-container *ngFor="let inlineButton of inlineButtons">
-    <template [ngTemplateOutlet]="inlineButton.templateRef"></template>
+    <ng-template [ngTemplateOutlet]="inlineButton.templateRef"></ng-template>
 </ng-container>
 <ng-container *ngIf="menuButtons.length > 0">
     <div
@@ -14,12 +14,12 @@
         <div
             class="dropdown-menu"
             *clrPopover="openMenu; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint;">
-            <template [ngTemplateOutlet]="ref"></template>
+            <ng-template [ngTemplateOutlet]="ref"></ng-template>
         </div>
     </div>
 </ng-container>
-<template #ref>
+<ng-template #ref>
     <ng-container *ngFor="let menuButton of menuButtons">
-        <template [ngTemplateOutlet]="menuButton.templateRef"></template>
+        <ng-template [ngTemplateOutlet]="menuButton.templateRef"></ng-template>
     </ng-container>
-</template>
+</ng-template>

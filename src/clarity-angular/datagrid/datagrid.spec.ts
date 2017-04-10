@@ -364,9 +364,9 @@ class ActionableRowTest {
         <clr-dg-row *clrDgItems="let item of items;" [clrDgItem]="item">
             <clr-dg-cell>{{item}}</clr-dg-cell>
             <clr-dg-cell>{{item * item}}</clr-dg-cell>
-            <template [ngIf]="expandable">
+            <ng-template [ngIf]="expandable">
                 <clr-dg-row-detail *clrIfExpanded>Detail</clr-dg-row-detail>
-            </template>
+            </ng-template>
         </clr-dg-row>
     
         <clr-dg-footer>{{items.length}} items</clr-dg-footer>

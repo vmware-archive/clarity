@@ -51,7 +51,7 @@ export class WizardFormValidation {
     <clr-wizard-button [type]="'finish'">Done</clr-wizard-button>
 
     <clr-wizard-page [clrWizardPageNextDisabled]="name.pristine || !formPageOne.valid">
-        <template clrPageTitle>Form with validation</template> <!-- mandatory -->
+        <ng-template clrPageTitle>Form with validation</ng-template> <!-- mandatory -->
         <form #formPageOne="ngForm">
             <section class="form-block">
                 <label>Enter a name and favorite food</label>
@@ -73,10 +73,10 @@ export class WizardFormValidation {
     </clr-wizard-page>
 
     <clr-wizard-page [clrWizardPageNextDisabled]="number.pristine || !formPageTwo.valid">
-        <template clrPageTitle>We need a number</template> <!-- mandatory -->
-        <template clrPageNavTitle>
+        <ng-template clrPageTitle>We need a number</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>
             Enter a number
-        </template> <!-- optional -->
+        </ng-template> <!-- optional -->
         <form #formPageTwo="ngForm">
             <section class="form-block">
                 <label>Please your lucky number!</label>
@@ -97,15 +97,15 @@ export class WizardFormValidation {
     </clr-wizard-page>
 
     <clr-wizard-page [clrWizardPageNextDisabled]="!formPageOne.valid || !formPageTwo.valid">
-        <template clrPageTitle>Title for page 3</template> <!-- mandatory -->
-        <template clrPageNavTitle>
+        <ng-template clrPageTitle>Title for page 3</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>
             <span *ngIf="formPageOne.valid && formPageTwo.valid">
                 Ready to go!
             </span>
             <span *ngIf="!formPageOne.valid || !formPageTwo.valid">
                 Not ready yet
             </span>
-        </template> <!-- optional -->
+        </ng-template> <!-- optional -->
 
         <div *ngIf="formPageOne.valid && formPageTwo.valid">
             <p>Congratulations! You are done with this wizard.</p>

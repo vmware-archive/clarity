@@ -12,4 +12,8 @@ import {Component} from "@angular/core";
     styleUrls: ["../../button-group.demo.css"]
 })
 export class BasicButtonGroupDemo {
+
+    handleClick(id: number): void {
+        console.log(`Button ${id} clicked!`);
+    }
 }

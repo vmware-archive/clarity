@@ -97,15 +97,40 @@ export default function(): void {
             buttons[2].inMenu = true;
             expect(mockButton.inMenu).toBe(true);
         });
+
+        it("emits a click event", () => {
+
+            expect(fixture.componentInstance.flag).toBe(false);
+
+            let btn: any = fixture.nativeElement.querySelector("#testBtn");
+
+            btn.click();
+
+            fixture.detectChanges();
+
+            expect(fixture.componentInstance.flag).toBe(true);
+
+            btn.click();
+
+            fixture.detectChanges();
+
+            expect(fixture.componentInstance.flag).toBe(false);
+        });
     });
 };
 
 @Component({
     template: `
-        <clr-button>Test 1</clr-button>
+        <clr-button id="testBtn" (click)="toggleClick()">Test 1</clr-button>
         <clr-button [clrInMenu]="true">Test 2</clr-button>
         <clr-button [clrInMenu]="true" class="btn btn-primary">Test 3</clr-button>
     `
 })
 class TestButtonComponent {
+
+    flag: boolean = false;
+
+    toggleClick(): void {
+        this.flag = !this.flag;
+    }
 }

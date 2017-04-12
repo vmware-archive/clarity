@@ -118,11 +118,13 @@ export class Modal implements OnChanges, OnDestroy {
     @Input("clrModalClosable") closable: boolean = true;
     @Input("clrModalSize") size: string;
     @Input("clrModalStaticBackdrop") staticBackdrop: boolean = false;
-    @Input("clrModalSkipAnimation") skipAnimation: boolean = false;
+    @Input("clrModalSkipAnimation") skipAnimation: string = "false";
 
     // presently this is only used by wizards
     @Input("clrModalGhostPageState") ghostPageState: string = "hidden";
     @Input("clrModalOverrideScrollService") bypassScrollService: boolean = false;
+    @Input("clrModalPreventClose") stopClose: boolean = false;
+    @Output("clrModalAlternateClose") altClose: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
     constructor(private _scrollingService: ScrollingService) {
     }
@@ -151,7 +153,7 @@ export class Modal implements OnChanges, OnDestroy {
     }
 
     open(): void {
-        if (this._open) {
+        if (this._open === true) {
             return;
         }
         this._open = true;
@@ -160,10 +162,15 @@ export class Modal implements OnChanges, OnDestroy {
 
     @HostListener("body:keyup.escape")
     close(): void {
+        if (this.stopClose) {
+            this.altClose.emit(false);
+            return;
+        }
         if (!this.closable || this._open === false) {
             return;
         }
         this._open = false;
+        // SPECME
     }
 
     fadeDone(e: AnimationTransitionEvent) {

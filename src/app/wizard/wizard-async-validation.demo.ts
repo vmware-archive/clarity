@@ -21,6 +21,13 @@ export class WizardAsyncValidation {
     loadingFlag: boolean = false;
     errorFlag: boolean = false;
 
+    // have to define doCancel because page will prevent doCancel from working
+    // if the page had a previous button, you would need to call 
+    // this.wizard.previous() manually as well...
+    doCancel(): void {
+        this.wizard.close();
+    }
+
     onCommit(): void {
         let value: any = this.formData.value;
         this.loadingFlag = true;
@@ -50,6 +57,13 @@ export class WizardAsyncValidation {
     loadingFlag: boolean = false;
     errorFlag: boolean = false;
 
+    // have to define doCancel because page will prevent doCancel from working
+    // if the page had a previous button, you would need to call 
+    // this.wizard.previous() manually as well...
+    doCancel(): void {
+        this.wizard.close();
+    }
+
     onCommit(): void {
         let value: any = this.formData.value;
         this.loadingFlag = true;
@@ -76,8 +90,12 @@ export class WizardAsyncValidation {
     <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
     <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
 
-    <clr-wizard-page [clrWizardPagePreventDefault]="true" (clrWizardPageOnCommit)="onCommit()">
+    <clr-wizard-page
+        clrWizardPagePreventDefault="true"
+        (clrWizardPageOnCommit)="onCommit()"
+        (clrWizardPageOnCancel)="doCancel()">
         <template clrPageTitle>Form with async validation</template>
+
         <div class="spinner" *ngIf="loadingFlag">
             Loading...
         </div>
@@ -103,7 +121,6 @@ export class WizardAsyncValidation {
         </form>
     </clr-wizard-page>
     <clr-wizard-page>
-        <template clrPageTitle>Wizard complete</template>
         ...
     </clr-wizard-page>
 </clr-wizard>

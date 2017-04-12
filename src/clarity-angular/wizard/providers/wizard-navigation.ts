@@ -92,9 +92,12 @@ export class WizardNavigationService implements OnDestroy {
         });
 
         this.cancelButtonSubscription = this.buttonService.cancelBtnClicked.subscribe(() => {
-            if (!this.currentPage.preventDefault) {
+            if (this.currentPage.preventDefault) {
+                this.currentPage.pageOnCancel.emit(this.currentPage);
+            } else {
                 this.cancel();
             }
+            // SPECME
         });
 
         this.pagesResetSubscription = this.pageCollection.pagesReset.subscribe(() => {

@@ -19,24 +19,18 @@ export class WizardAltCancelDemo {
 
     public showCancelConfirm: boolean = false;
 
-    private alreadyCancelled: boolean = false;
-
     public pageCustomCancel(): void {
         this.showCancelConfirm = true;
     }
 
     public doPageCancel() {
-        // catches cancel when it falls through to wizard
-        this.alreadyCancelled = true;
+        this.showCancelConfirm = false;
         this.wizard.close();
     }
 
     public doCancel() {
-        if (this.alreadyCancelled) {
-            // resets for next trip through
-            this.alreadyCancelled = false;
-        } else if (confirm("Do you really, really want to close the wizard?")) {
-            this.alreadyCancelled = true;
+        if (confirm("Do you really, really want to close the wizard?")) {
+            this.showCancelConfirm = false;
             this.wizard.close();
         }
     }
@@ -50,35 +44,29 @@ import { Wizard } from "../../clarity-angular/wizard/wizard";
 })
 export class WizardAltCancelDemo {
     @ViewChild("wizard") wizard: Wizard;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
 
     public showCancelConfirm: boolean = false;
-
-    private alreadyCancelled: boolea false;
 
     public pageCustomCancel(): void {
         this.showCancelConfirm = true;
     }
 
     public doPageCancel() {
-        // catches cancel when it falls through to wizard
-        this.alreadyCancelled = true;
+        this.showCancelConfirm = false;
         this.wizard.close();
     }
 
     public doCancel() {
-        if (this.alreadyCancelled) {
-            // resets for next trip through
-            this.alreadyCancelled = false;
-        } else if (confirm("Do you really, really want to close the wizard?")) {
-            this.alreadyCancelled = true;
+        if (confirm("Do you really, really want to close the wizard?")) {
+            this.showCancelConfirm = false;
             this.wizard.close();
         }
     }
+}
 `;
 
     html: string = `
-<clr-wizard #wizard (clrWizardOnCancel)="doCancel()" [clrWizardPreventDefaultCancel]="true">
+<clr-wizard #wizard [(clrWizardOpen)]="open" (clrWizardOnCancel)="doCancel()" [clrWizardPreventDefaultCancel]="true">
     <clr-wizard-title>Wizard with alternate cancel</clr-wizard-title>
 
     <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
@@ -90,9 +78,7 @@ export class WizardAltCancelDemo {
         ...
     </clr-wizard-page>
 
-    <clr-wizard-page (clrWizardPageOnCancel)="pageCustomCancel()"
-        [clrWizardPagePreventDefaultCancel]="true">
-        <template clrPageTitle>Page level alt-cancel</template>
+    <clr-wizard-page (clrWizardPageOnCancel)="pageCustomCancel()" [clrWizardPagePreventDefaultCancel]="true">
         ...
     </clr-wizard-page>
 </clr-wizard>

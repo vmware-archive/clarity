@@ -5,14 +5,14 @@
  */
 
 
-import {Component, ViewChild, TemplateRef, Input, SkipSelf, Optional} from "@angular/core";
+import {Component, ViewChild, TemplateRef, Input, SkipSelf, Optional, EventEmitter, Output} from "@angular/core";
 import {ButtonInGroupService} from "./providers/buttonInGroup.service";
 
 @Component({
     selector: "clr-button",
     template: `
         <template #buttonProjectedRef>
-            <button [class]="classNames">
+            <button [class]="classNames" (click)="emitClick()">
                 <ng-content></ng-content>
             </button>
         </template>
@@ -37,7 +37,7 @@ export class Button {
         value = !!value;
         if (this._inMenu !== value) {
             this._inMenu = value;
-            //We check if the servive flag is enabled
+            //We check if the service flag is enabled
             //and if the service exists because the service is optional
             if (this._enableService && this.buttonInGroupService) {
                 this.buttonInGroupService.updateButtonGroup(this);
@@ -56,6 +56,12 @@ export class Button {
         if (value) {
             this._classNames = value;
         }
+    }
+
+    @Output("click") _click: EventEmitter<boolean> = new EventEmitter<boolean>(false);
+
+    emitClick(): void {
+        this._click.emit(true);
     }
 
     ngAfterViewInit() {

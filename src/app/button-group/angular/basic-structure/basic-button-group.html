@@ -32,13 +32,13 @@
 
 <div class="clr-example">
     <clr-button-group class="btn-primary">
-        <clr-button>1</clr-button>
-        <clr-button>2</clr-button>
-        <clr-button>3</clr-button>
-        <clr-button>4</clr-button>
-        <clr-button [clrInMenu]="true">6</clr-button>
-        <clr-button [clrInMenu]="true">7</clr-button>
-        <clr-button [clrInMenu]="true">8</clr-button>
+        <clr-button (click)="handleClick(1)">1</clr-button>
+        <clr-button (click)="handleClick(2)">2</clr-button>
+        <clr-button (click)="handleClick(3)">3</clr-button>
+        <clr-button (click)="handleClick(4)">4</clr-button>
+        <clr-button [clrInMenu]="true" (click)="handleClick(5)">5</clr-button>
+        <clr-button [clrInMenu]="true" (click)="handleClick(6)">6</clr-button>
+        <clr-button [clrInMenu]="true" (click)="handleClick(7)">7</clr-button>
     </clr-button-group>
 </div>
 
@@ -49,9 +49,9 @@
         &lt;clr-button&gt;2&lt;/clr-button&gt;
         &lt;clr-button&gt;3&lt;/clr-button&gt;
         &lt;clr-button&gt;4&lt;/clr-button&gt;
+        &lt;clr-button [clrInMenu]=&quot;true&quot;&gt;5&lt;/clr-button&gt;
         &lt;clr-button [clrInMenu]=&quot;true&quot;&gt;6&lt;/clr-button&gt;
         &lt;clr-button [clrInMenu]=&quot;true&quot;&gt;7&lt;/clr-button&gt;
-        &lt;clr-button [clrInMenu]=&quot;true&quot;&gt;8&lt;/clr-button&gt;
     &lt;/clr-button-group&gt;
     </code>
 </pre>

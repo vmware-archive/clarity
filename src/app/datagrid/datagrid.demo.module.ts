@@ -28,6 +28,7 @@ import {DatagridColumnSizingDemo} from "./column-sizing/column-sizing";
 
 import {ColorFilter} from "./utils/color-filter";
 import {Example} from "./utils/example";
+import {DatagridPreserveSelectionDemo} from "./preserve-selection/preserve-selection";
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import {Example} from "./utils/example";
         DatagridPaginationDemo,
         DatagridSelectionDemo,
         DatagridSelectionSingleDemo,
+        DatagridPreserveSelectionDemo,
         DatagridServerDrivenDemo,
         DatagridSmartIteratorDemo,
         DatagridSortingDemo,
@@ -67,6 +69,7 @@ import {Example} from "./utils/example";
         DatagridPaginationDemo,
         DatagridSelectionDemo,
         DatagridSelectionSingleDemo,
+        DatagridPreserveSelectionDemo,
         DatagridServerDrivenDemo,
         DatagridSmartIteratorDemo,
         DatagridSortingDemo,

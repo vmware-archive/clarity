@@ -1,0 +1,30 @@
+<clr-datagrid [(clrDgSelected)]="selected">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'" [(clrFilterValue)]="nameFilter">Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users;trackBy:trackByFn" [clrDgItem]="user">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{pagination.totalItems}} users
+        <clr-dg-pagination
+            #pagination
+            [clrDgPageSize]="currentPageSize"
+            [clrDgTotalItems]="pagination.totalItems"></clr-dg-pagination>
+    </clr-dg-footer>
+</clr-datagrid>
+
+<div style="margin-top: 24px">
+    <button class="btn" (click)="updateInventorySize()">
+        Update Inventory Size
+    </button>
+</div>

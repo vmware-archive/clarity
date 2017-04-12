@@ -14,7 +14,10 @@
     <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
     <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
 
-    <clr-wizard-page [clrWizardPagePreventDefault]="true" (clrWizardPageOnCommit)="onCommit()">
+    <clr-wizard-page
+        clrWizardPagePreventDefault="true"
+        (clrWizardPageOnCommit)="onCommit()"
+        (clrWizardPageOnCancel)="doCancel()">
         <template clrPageTitle>Form with async validation</template> <!-- mandatory -->
 
         <div class="spinner" *ngIf="loadingFlag">

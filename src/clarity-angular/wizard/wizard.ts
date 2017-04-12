@@ -61,15 +61,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
         });
 
         this.cancelSubscription = this.navService.notifyWizardCancel.subscribe(() => {
-            let currentPage = this.navService.currentPage;
-
-            currentPage.pageOnCancel.emit();
-            this.onCancel.emit();
-
-            if (!this.stopCancel && !currentPage.preventDefault && !currentPage.stopCancel) {
-                this.close();
-                // SPECME
-            }
+            this.checkAndCancel();
         });
 
         this.wizardFinishedSubscription = this.navService.wizardFinished.subscribe(() => {
@@ -212,7 +204,6 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     // LEGACY: Naming convention matches old wizard
     public open(): void {
         let navService = this.navService;
-
         this._open = true;
         if (!this.currentPage) {
             navService.setFirstPageCurrent();
@@ -266,6 +257,29 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
 
     public cancel(): void {
         this.navService.cancel();
+    }
+
+    // need to bust out some logic here because the modal openChange event is 
+    // messing up alt-cancel routines
+    public modalCancel(): void {
+        this.checkAndCancel();
+        // SPECME
+    }
+
+    public checkAndCancel(): void {
+        let currentPage = this.currentPage;
+        let currentPageHasOverrides = currentPage.stopCancel || currentPage.preventDefault;
+
+        currentPage.pageOnCancel.emit();
+        if (!currentPageHasOverrides) {
+            this.onCancel.emit();
+        }
+        // SPECME
+
+        if (!this.stopCancel && !currentPageHasOverrides) {
+            this.close();
+        }
+        // SPECME
     }
 
     public goTo(pageId: string): void {

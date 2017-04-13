@@ -52,9 +52,16 @@
         display: flex;
         flex-flow: row nowrap;
     }
-    .datagrid-column, .datagrid-cell {
+    .datagrid-column {
+        display: flex;
         flex: 1 1 auto;
+        &.datagrid-fixed-width {
+            flex: 0 0 auto;
+        }
+    }
 
+    .datagrid-cell {
+        flex: 1 1 auto;
         &.datagrid-fixed-width {
             flex: 0 0 auto;
         }
@@ -139,30 +146,44 @@
             background: none;
             border-bottom: 0;
 
-            // Separator between column headers
-            &:not(:last-child)::before {
-                content: "";
-                position: absolute;
-                // Actual formula for top is: cellHeight - borderHeight / 2
-                // which is: baselineRem(1.5 - 1 / 2)
-                top: 0;
-                right: 0;
-                bottom: 0;
-                width: 1px;
-                margin: $clr_baselineRem_0_25 0;
-                background-color: $clr-lighter-midtone-gray;
-            }
-
             .datagrid-column-title {
                 @include clr-no-styles-button();
                 color: $clr-dark-gray;
                 &:not([disabled]):hover {
                     text-decoration: underline;
                 }
+                text-align: left;
+                flex: 1 1 auto;
+                align-self: flex-start;
+            }
+
+            .datagrid-column-separator {
+                position: relative;
+                flex: 0 0 auto;
+                width: 1px;
+                order: 100;
+                margin-left: auto;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    height: calc(100% + #{$clr-baselineRem_0_5 - 1});
+                    width: 1px;
+                    top: -$clr-baselineRem_0_25 + 1;
+                    left: $clr-baselineRem_0_5;
+                    background-color: $clr-lighter-midtone-gray;
+                }
+            }
+
+            &:last-child {
+                .datagrid-column-separator {
+                    display: none;
+                }
             }
 
             .datagrid-column-flex {
                 display: flex;
+                flex: 1 1 auto;
             }
 
             clr-dg-filter,
@@ -305,6 +326,7 @@
         .datagrid-expandable-caret {
             $horizontalPadding: ($clr-datagrid-fixed-column-size - $clr_baselineRem_1_25) / 2;
             padding: ($clr_baselineRem_0_125 - 1) $horizontalPadding $clr_baselineRem_0_125;
+
             text-align: center;
 
             button {
@@ -323,6 +345,10 @@
 
             .spinner {
                 margin-top: $clr_baselineRem_0_25;
+            }
+
+            &.datagrid-column {
+                padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
             }
         }
 
@@ -437,7 +463,7 @@
                     padding-top: 0;
                 }
 
-                .datagrid-cell  {
+                .datagrid-cell {
                     padding-top: 0;
                 }
             }
@@ -454,8 +480,8 @@
     }
 
     .datagrid-placeholder-container {
-      display: block;
-      flex: 1 1 auto;
+        display: block;
+        flex: 1 1 auto;
     }
 
     .datagrid-placeholder {

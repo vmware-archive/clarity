@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,6 +16,8 @@ import { DatagridFooter } from "./datagrid-footer";
 import { DatagridItems } from "./datagrid-items";
 import { DatagridPagination } from "./datagrid-pagination";
 import { DatagridRow } from "./datagrid-row";
+import {DatagridIfExpanded} from "./datagrid-if-expanded";
+import {DatagridRowDetail} from "./datagrid-row-detail";
 import { DatagridPlaceholder } from "./datagrid-placeholder";
 
 import { DatagridMainRenderer } from "./render/main-renderer";
@@ -24,7 +26,10 @@ import { DatagridHeaderRenderer } from "./render/header-renderer";
 import { DatagridHeadRenderer } from "./render/head-renderer";
 import { DatagridBodyRenderer } from "./render/body-renderer";
 import { DatagridRowRenderer } from "./render/row-renderer";
+import {DatagridRowMasterRenderer} from "./render/row-master-renderer";
 import { DatagridCellRenderer } from "./render/cell-renderer";
+
+import {DatagridRowExpandAnimation} from "./animation-hack/row-expand-animation";
 
 export * from "./datagrid";
 export * from "./datagrid-action-bar";
@@ -33,6 +38,8 @@ export * from "./datagrid-column";
 export * from "./datagrid-filter";
 export * from "./datagrid-items";
 export * from "./datagrid-row";
+export * from "./datagrid-if-expanded";
+export * from "./datagrid-row-detail";
 export * from "./datagrid-cell";
 export * from "./datagrid-footer";
 export * from "./datagrid-pagination";
@@ -57,6 +64,8 @@ export const DATAGRID_DIRECTIVES: Type<any>[] = [
     DatagridFilter,
     DatagridItems,
     DatagridRow,
+    DatagridIfExpanded,
+    DatagridRowDetail,
     DatagridCell,
     DatagridFooter,
     DatagridPagination,
@@ -69,7 +78,11 @@ export const DATAGRID_DIRECTIVES: Type<any>[] = [
     DatagridHeaderRenderer,
     DatagridBodyRenderer,
     DatagridRowRenderer,
+    DatagridRowMasterRenderer,
     DatagridCellRenderer,
+
+    // Animation hack
+    DatagridRowExpandAnimation,
 
     // Built-in shortcuts
     DatagridStringFilter

@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -8,9 +8,9 @@
 
     $clr-datagrid-icon-size: rem(1);
     $clr-datagrid-action-arrow-size: $clr_baselineRem_0_25;
-    $clr-datagrid-select-column-size: 2*$clr-table-cellpadding + $clr-table-lineheight;
+    $clr-datagrid-fixed-column-size: 2*$clr-table-cellpadding + $clr-table-lineheight;
 
-    .datagrid-container {
+    .datagrid-host {
         display: flex;
         flex-flow: column nowrap;
         width: 100%;
@@ -28,7 +28,7 @@
         // IE10 (maybe later versions too) needs this
         overflow: hidden;
     }
-    .datagrid-head, .datagrid-body, .datagrid-column, .datagrid-cell {
+    .datagrid-head, .datagrid-body, .datagrid-row, .datagrid-column, .datagrid-cell {
         display: block;
     }
     .datagrid-table-wrapper {
@@ -47,7 +47,8 @@
     .datagrid-head {
         flex: 0 0 auto;
     }
-    .datagrid-row {
+    .datagrid-row-flex {
+        flex: 1 1 auto;
         display: flex;
         flex-flow: row nowrap;
     }
@@ -78,6 +79,9 @@
         }
         .datagrid-row {
             display: table-row;
+        }
+        .datagrid-row-master {
+            display: none;
         }
         .datagrid-column, .datagrid-cell {
             display: table-cell;
@@ -130,7 +134,7 @@
 
         .datagrid-head {
             background-color: $clr-thead-bgcolor;
-            border-bottom: 2px solid $clr-light-midtone-gray;
+            border-bottom: 2*$clr-table-borderwidth solid $clr-light-midtone-gray;
         }
 
         .datagrid-column, .datagrid-cell {
@@ -271,11 +275,13 @@
             }
         }
 
-        .datagrid-select {
-            flex: 0 0 $clr-datagrid-select-column-size;
+        .datagrid-fixed-column {
+            flex: 0 0 $clr-datagrid-fixed-column-size;
             // IE10 needs this
-            max-width: $clr-datagrid-select-column-size;
+            max-width: $clr-datagrid-fixed-column-size;
+        }
 
+        .datagrid-select {
             .radio label,
             .checkbox label {
                 display: block;
@@ -320,7 +326,6 @@
         .datagrid-expandable-caret {
             $horizontalPadding: ($clr-datagrid-fixed-column-size - $clr_baselineRem_1_25) / 2;
             padding: ($clr_baselineRem_0_125 - 1) $horizontalPadding $clr_baselineRem_0_125;
-
             text-align: center;
 
             button {
@@ -347,6 +352,12 @@
         }
 
         .datagrid-body .datagrid-row {
+            border-top: $clr-table-borderwidth solid $clr-lighter-midtone-gray;
+
+            &:first-child {
+                border-top: 0;
+            }
+
             &:hover {
                 background-color: $clr-light-gray;
             }
@@ -458,7 +469,12 @@
         }
 
         .datagrid-cell {
-            border-top-color: $clr-lighter-midtone-gray;
+            border-top: 0;
+        }
+
+        .datagrid-container {
+            font-size: $clr-table-fontsize;
+            padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
         }
     }
 

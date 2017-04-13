@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -19,6 +19,7 @@ import { RowActionService } from "./providers/row-action-service";
 import { StringFilter } from "./interfaces/string-filter";
 import { DatagridStringFilterImpl } from "./built-in/filters/datagrid-string-filter-impl";
 import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
+import {GlobalExpandableRows} from "./providers/global-expandable-rows";
 
 export default function (): void {
     describe("Datagrid component", function () {
@@ -233,6 +234,27 @@ export default function (): void {
 
         });
 
+        describe("Expandable rows", function () {
+            it("detects if there is at least one expandable row", function () {
+                let context = this.create(Datagrid, ExpandableRowTest);
+                let globalExpandableRows: GlobalExpandableRows = context.getClarityProvider(GlobalExpandableRows);
+                /*
+                 * Why do we need an extra change detection here? See actionable rows solution above, same issue.
+                 * Not losing time on this right now.
+                 */
+                context.detectChanges();
+                expect(globalExpandableRows.hasExpandableRow).toBe(true);
+                expect(context.clarityElement.querySelector(".datagrid-column.datagrid-expandable-caret"))
+                    .not.toBeNull();
+                context.testComponent.expandable = false;
+                // Same here, why do we need an extra change detection?
+                context.detectChanges();
+                context.detectChanges();
+                expect(globalExpandableRows.hasExpandableRow).toBe(false);
+                expect(context.clarityElement.querySelector(".datagrid-column.datagrid-expandable-caret")).toBeNull();
+            });
+        });
+
     });
 }
 
@@ -329,8 +351,31 @@ class TrackByTest {
 `
 })
 class ActionableRowTest {
-    items = [ 1, 2, 3 ];
+    items = [1, 2, 3];
     showIfGreaterThan = 0;
+}
+
+@Component({
+    template: `
+    <clr-datagrid>
+        <clr-dg-column>First</clr-dg-column>
+        <clr-dg-column>Second</clr-dg-column>
+    
+        <clr-dg-row *clrDgItems="let item of items;" [clrDgItem]="item">
+            <clr-dg-cell>{{item}}</clr-dg-cell>
+            <clr-dg-cell>{{item * item}}</clr-dg-cell>
+            <template [ngIf]="expandable">
+                <clr-dg-row-detail *clrIfExpanded>Detail</clr-dg-row-detail>
+            </template>
+        </clr-dg-row>
+    
+        <clr-dg-footer>{{items.length}} items</clr-dg-footer>
+    </clr-datagrid>
+`
+})
+class ExpandableRowTest {
+    items = [ 1, 2, 3 ];
+    expandable = true;
 }
 
 class TestComparator implements Comparator<number> {

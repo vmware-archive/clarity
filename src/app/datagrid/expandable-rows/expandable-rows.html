@@ -1,0 +1,87 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Expandable rows</h2>
+
+<form>
+    <div class="form-group">
+        <label>Type of detail</label>
+        <div class="radio-inline">
+            <input type="radio" name="detail" id="detail-default" value="default" [(ngModel)]="detail">
+            <label for="detail-default">Default</label>
+        </div>
+        <div class="radio-inline">
+            <input type="radio" name="detail" id="detail-columns" value="columns" [(ngModel)]="detail">
+            <label for="detail-columns">Columns</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="checkbox-inline">
+            <input type="checkbox" name="replace" id="replace" [(ngModel)]="replace">
+            <label for="replace">Replace row</label>
+        </div>
+        <div class="checkbox-inline">
+            <input type="checkbox" name="fixed-height" id="fixed-height" [(ngModel)]="fixedHeight">
+            <label for="fixed-height">Fixed height</label>
+        </div>
+        <div class="checkbox-inline">
+            <input type="checkbox" name="selectable" id="selectable" [(ngModel)]="selectable">
+            <label for="selectable">Selectable</label>
+        </div>
+        <div class="checkbox-inline">
+            <input type="checkbox" name="slow-load" id="slow-load" [(ngModel)]="slowLoad">
+            <label for="slow-load">Slow load</label>
+        </div>
+    </div>
+</form>
+
+<clr-datagrid [style.height.px]="fixedHeight ? 458 : null" [(clrDgSelected)]="selected">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
+    <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
+    <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+
+        <!-- Example using a wrapper component -->
+        <!--<detail-wrapper *clrIfExpanded ngProjectAs="clr-dg-row-detail" class="datagrid-row-flex"></detail-wrapper>-->
+
+        <clr-dg-row-detail *clrIfExpanded [clrDgReplace]="replace">
+            <template [clrFakeLoader]="slowLoad" clrLoading>
+                <template [ngIf]="detail === 'default'">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed
+                    quam. Proin rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget,
+                    pellentesque sed arcu. Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra. Aenean
+                    sagittis nibh lacus, in eleifend urna ultrices et. Mauris porttitor nisi nec velit pharetra porttitor.
+                    Vestibulum vulputate sollicitudin dolor ut tincidunt. Phasellus vitae blandit felis. Nullam posuere
+                    ipsum tincidunt velit pellentesque rhoncus. Morbi faucibus ut ipsum at malesuada. Nam vestibulum felis
+                    sit amet metus finibus hendrerit. Fusce faucibus odio eget ex vulputate rhoncus. Fusce nec aliquam leo,
+                    at suscipit diam.
+                </template>
+
+                <template [ngIf]="detail === 'columns'">
+                    <clr-dg-cell>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</clr-dg-cell>
+                    <clr-dg-cell>Proin in neque in ante placerat mattis id sed quam.</clr-dg-cell>
+                    <clr-dg-cell>Proin rhoncus lacus et tempor dignissim.</clr-dg-cell>
+                    <clr-dg-cell>Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.</clr-dg-cell>
+                    <clr-dg-cell>Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra.</clr-dg-cell>
+                </template>
+            </template>
+        </clr-dg-row-detail>
+    </clr-dg-row>
+
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+

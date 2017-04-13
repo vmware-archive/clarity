@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -42,6 +42,14 @@ export default function(): void {
             if (/PhantomJS/.test(window.navigator.userAgent)) {
                 expect(this.domAdapter.scrollBarWidth(this.element)).toBeGreaterThan(0);
             }
+        });
+
+        it("computes the height of an element", function(this: UserContext) {
+            let child = document.createElement("div");
+            child.style.width = "10px";
+            child.style.height = "1234px";
+            this.element.replaceChild(child, this.element.firstChild);
+            expect(this.domAdapter.computedHeight(this.element)).toBe(1234);
         });
 
         describe("user-defined width", function() {

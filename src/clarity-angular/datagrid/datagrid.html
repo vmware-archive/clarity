@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -8,9 +8,9 @@
 <div class="datagrid" [class.loading]="loading">
     <div clrDgTableWrapper class="datagrid-table-wrapper">
         <div clrDgHead class="datagrid-head">
-            <div class="datagrid-row">
+            <div class="datagrid-row datagrid-row-flex">
                 <!-- header for datagrid where you can select multiple rows -->
-                <div class="datagrid-column datagrid-select"
+                <div class="datagrid-column datagrid-select datagrid-fixed-column"
                      *ngIf="selection.selectionType === SELECTION_TYPE.Multi">
                         <span class="datagrid-column-title">
                             <clr-checkbox [(ngModel)]="allSelected"></clr-checkbox>
@@ -18,7 +18,7 @@
                         <div class="datagrid-column-separator"></div>
                 </div>
                 <!-- header for datagrid where you can select one row only -->
-                <div class="datagrid-column datagrid-select"
+                <div class="datagrid-column datagrid-select datagrid-fixed-column"
                      *ngIf="selection.selectionType === SELECTION_TYPE.Single">
                     <div class="datagrid-column-separator"></div>
                 </div>

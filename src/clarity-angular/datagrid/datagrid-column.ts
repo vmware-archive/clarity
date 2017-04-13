@@ -33,6 +33,7 @@ import { SortOrder } from "./interfaces/sort-order";
             <button class="datagrid-column-title" [disabled]="!sortable" (click)="sort()">
                 <ng-content></ng-content>
             </button>
+            <div class="datagrid-column-separator"></div>        
         </div>
     `,
     host: {

@@ -73,6 +73,11 @@ $clr-progress-bgColor: $clr-light-gray !default;
                 background-image: none;
             }
 
+            &[value="0"]::-webkit-progress-value  {
+                // Prevent transition when resetting back to zero.
+                transition: none;
+            }
+
             &::-webkit-progress-bar {
                 background-color: $clr-progress-bgColor;
                 border-radius: 0;
@@ -156,6 +161,11 @@ $clr-progress-bgColor: $clr-light-gray !default;
 
         &::-webkit-progress-value {
             transition: $clr-progress-transition;
+        }
+
+        &[value="0"]::-webkit-progress-value  {
+            // Prevent transition when resetting back to zero.
+            transition: none;
         }
 
         &::-moz-progress-bar {

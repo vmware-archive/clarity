@@ -25,6 +25,18 @@ $clr-icon-color-highlight: #007CBB;
     }
 }
 
+@mixin flipSVGIcon($direction) {
+    @if $direction == 'horizontal' {
+        svg {
+            transform: scale(-1) rotateX(180deg);
+        }
+    } @else if $direction == 'vertical' {
+        svg {
+            transform: scale(-1) rotateY(180deg);
+        }
+    }
+}
+
 clr-icon {
     display: inline-block;
     margin: 0;
@@ -70,6 +82,12 @@ clr-icon {
     &[shape$=" left"],
     &[dir="left"] {
         @include rotateSVGIcon(270deg);
+    }
+    &[flip="horizontal"] {
+        @include flipSVGIcon('horizontal');
+    }
+    &[flip="vertical"] {
+        @include flipSVGIcon('vertical');
     }
     .clr-i-badge {
         @include setIconColor($clr-icon-color-danger);

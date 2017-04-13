@@ -1,5 +1,20 @@
 <h2>Highlights</h2>
 <ul class="list-unstyled whats-new-highlights">
+    <li breaking-change>
+        <h6>Upgrade to Angular 4</h6>
+        <p>
+            Clarity-angular is now compatible with Angular 4. Please note that Angular 4 requires TypeScript version 2.1 or newer. 
+        </p>
+        <p>
+            For a full list of breaking changes for Angular 4, please refer to their <a href="https://github.com/angular/angular/blob/master/CHANGELOG.md" target="_blank">release notes</a>.
+        </p>
+        <p>
+            After upgrading to Clarity 0.9.0, please add the <code class="clr-code">BrowserAnimationsModule</code> in your module in order for our components with animations to work properly. Similarly, if you have unit tests with those components, plaase add the <code class="clr-code">NoopAnimationsModule</code> in your test module.
+        </p>
+        <p>
+            This is the minimal set of changes you have to make to use clarity-angular 0.9.0. Depending on your own project's dependencies, you might have to upgrade other packages.
+        </p>
+    </li>
     <li>
         <h6>Updates to the Datagrid Selection Behavior</h6>
         <p>
@@ -10,9 +25,45 @@
         <li>The data is updated, provided the smart iterator is used in the datagrid</li>
         </ul>
     </li>
+    <li>
+        <h6>Expandable rows for Datagrid</h6>
+        <p>
+            This feature can be used when a Datagrid row has additional data or details
+            that can be shown when interacting with the row. It supports many options, including:
+        </p>
+        <ul class="list">
+            <li>Overall details for the row</li>
+            <li>Per-cell details</li>
+            <li>Replacing the original row rather than expand under it</li>
+            <li>Lazy-loading of details</li>
+        </ul>
+        <p>Here is an example of how to make a row expandable:</p>
+        <pre><code clr-code-highlight="language-html">
+        &lt;clr-dg-row *clrDgItems=&quot;let user of users&quot;&gt;
+        &lt;clr-dg-cell&gt;{{'{'}}{{'{'}}user.id{{'}'}}{{'}'}}&lt;/clr-dg-cell&gt;
+        &lt;clr-dg-cell&gt;{{'{'}}{{'{'}}user.name{{'}'}}{{'}'}}&lt;/clr-dg-cell&gt;
+
+        &lt;clr-dg-row-detail *clrIfExpanded&gt;
+        This user likes ducks.
+        &lt;/clr-dg-row-detail&gt;
+        &lt;/clr-dg-row&gt;
+        </code></pre>
+
+        <p>
+        If you include the same amount of <code class="clr-code">&lt;clr-dg-cell&gt;</code>
+        elements in the row details as anywhere else in the datagrid, they will properly align
+        as a way to display details for each cell individually.
+        Details are only instantiated when the row becomes expanded, so they are naturally lazy loaded: just make any AJAX
+        call you need in the constructor or <code class="clr-code">ngOnInit()</code> of the component you put inside the
+        <code class="clr-code">*clrIfExpanded</code> structural directive.
+        To notify us that you want a spinner to be displayed while lazy loading, just include a
+        <code class="clr-code">[clrLoading]="myLoadingBoolean"</code> anywhere inside the details or even the row itself.
+        As long as <code class="clr-code">myLoadingBoolean</code> is true, a spinner will be displayed.
+        </p>
+    </li>
 </ul>
 
-<h2>Wizard refactor</h2>
+<h2>Introducing the new Clarity wizard!</h2>
 <ul class="list-unstyled whats-new-highlights">
     <li>
         <h6>Clarity wizard (beta)</h6>

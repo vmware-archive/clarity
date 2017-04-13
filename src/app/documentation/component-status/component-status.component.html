@@ -25,7 +25,7 @@
       </span>
   </p>
 
-  <table class="table table-condensed table-component-list bump-down">
+  <table class="table table-condensed table-component-list bump-down" style="max-width: 580px">
       <thead>
         <th>Item</th>
         <th>UX</th>
@@ -33,7 +33,6 @@
         <th class="hidden-xs-down">Core</th>
         <th>NG</th>
         <th class="hidden-xs-down">Docs</th>
-        <th class="hidden-xs-down">Comments</th>
       </thead>
       <tbody>
         <tr *ngFor="let item of components">
@@ -55,9 +54,6 @@
           </td>
           <td class="hidden-xs-down">
             <status-dot [status]="item.dox"></status-dot>
-          </td>
-          <td class="hidden-xs-down">
-            {{ item.comments }}
           </td>
         </tr>
       </tbody>

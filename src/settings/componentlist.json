@@ -57,8 +57,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "isNew": true
+            "dox": 20
         },
         {
             "url": "cards",
@@ -95,7 +94,7 @@
             "text": "Clarity Build",
             "ux": -1,
             "ui": -1,
-            "core": 10,
+            "core": 20,
             "ng": -1,
             "dox": 20,
             "noDemo": true
@@ -121,6 +120,17 @@
             "dox": 20
         },
         {
+            "url": null,
+            "text": "Datepicker",
+            "type": "component",
+            "ux": 20,
+            "ui": 5,
+            "core": -1,
+            "ng": 5,
+            "dox": 5,
+            "isUpdated": true
+        },
+        {
             "url": "datagrid",
             "text": "Datagrid",
             "type": "component",
@@ -128,7 +138,8 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "dropdowns",
@@ -189,7 +200,7 @@
             "ux": 20,
             "ui": 20,
             "core": -1,
-            "ng": 10,
+            "ng": 5,
             "dox": 20
         },
         {
@@ -224,6 +235,16 @@
             "dox": 20
         },
         {
+            "url": null,
+            "text": "Masked Inputs",
+            "type": "component",
+            "ux": 20,
+            "ui": 10,
+            "core": -1,
+            "ng": 5,
+            "dox": 5
+        },
+        {
             "url": "modals",
             "text": "Modals",
             "type": "component",
@@ -245,6 +266,26 @@
             "dox": 20
         },
         {
+            "url": null,
+            "text": "Nested Menus",
+            "type": "component",
+            "ux": 20,
+            "ui": 5,
+            "core": -1,
+            "ng": 5,
+            "dox": 5
+        },
+        {
+            "url": null,
+            "text": "Notifications/Toasts",
+            "type": "component",
+            "ux": 10,
+            "ui": 5,
+            "core": -1,
+            "ng": 5,
+            "dox": 5
+        },
+        {
             "url": "progress",
             "text": "Progress Bars",
             "type": "component",
@@ -261,14 +302,14 @@
             "ux": 20,
             "ui": 20,
             "core": -1,
-            "ng": -1,
+            "ng": 5,
             "dox": 20
         },
         {
             "url": null,
             "text": "Search",
             "type": "component",
-            "ux": 5,
+            "ux": 20,
             "ui": 5,
             "core": -1,
             "ng": 5,
@@ -278,10 +319,20 @@
             "url": "select-boxes",
             "text": "Select Boxes",
             "type": "component",
-            "ux": 10,
+            "ux": 20,
             "ui": 20,
             "core": -1,
             "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "sidenav",
+            "text": "Sidenav",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 10,
             "dox": 20
         },
         {
@@ -296,23 +347,13 @@
             "comments": ""
         },
         {
-            "url": "sidenav",
-            "text": "Sidenav",
-            "type": "component",
-            "ux": 20,
-            "ui": 20,
-            "core": -1,
-            "ng": 10,
-            "dox": 20
-        },
-        {
             "url": "spinners",
             "text": "Spinners",
             "type": "component",
             "ux": 20,
             "ui": 20,
             "core": -1,
-            "ng": -1,
+            "ng": 5,
             "dox": 20
         },
         {
@@ -386,6 +427,16 @@
             "core": 20,
             "ng": -1,
             "dox": 20
+        },
+        {
+            "url": null,
+            "text": "Vertical Tabs",
+            "type": "component",
+            "ux": 20,
+            "ui": 10,
+            "core": -1,
+            "ng": 10,
+            "dox": 5
         },
         {
             "url": "wizards",

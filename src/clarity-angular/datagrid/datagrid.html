@@ -41,12 +41,12 @@
                       ngFor [ngForOf]="items.displayed" [ngForTrackBy]="items.trackBy"
                       [ngForTemplate]="iterator.template"></ng-template>
             <ng-content *ngIf="!iterator"></ng-content>
+
+            <!-- Custom placeholder overrides the default empty one -->
+            <ng-content select="clr-dg-placeholder"></ng-content>
+            <clr-dg-placeholder *ngIf="!placeholder"></clr-dg-placeholder>
         </div>
     </div>
-
-    <!-- Custom placeholder overrides the default empty one -->
-    <ng-content select="clr-dg-placeholder"></ng-content>
-    <clr-dg-placeholder *ngIf="!placeholder"></clr-dg-placeholder>
 
     <!--
         This is not inside the table because there is no good way of having a single column span

@@ -24,6 +24,9 @@ import {DatagridScrollingDemo} from "./scrolling/scrolling";
 import {DatagridColumnSizingDemo} from "./column-sizing/column-sizing";
 import {DatagridPreserveSelectionDemo} from "./preserve-selection/preserve-selection";
 import {DatagridExpandableRowsDemo} from "./expandable-rows/expandable-rows";
+import {DatagridPaginationScrollingDemo} from "./pagination-scrolling/pagination-scrolling";
+import {DatagridTestCasesDemo} from "./test-cases/test-cases";
+import {DatagridTestCasesAsyncDemo} from "./test-cases-async/test-cases-async";
 
 const ROUTES: Routes = [
     {
@@ -39,6 +42,7 @@ const ROUTES: Routes = [
             {path: "filtering", component: DatagridFilteringDemo},
             {path: "string-filtering", component: DatagridStringFilteringDemo},
             {path: "pagination", component: DatagridPaginationDemo},
+            {path: "pagination-scrolling", component: DatagridPaginationScrollingDemo},
             {path: "selection", component: DatagridSelectionDemo},
             {path: "selection-single", component: DatagridSelectionSingleDemo},
             {path: "preserve-selection", component: DatagridPreserveSelectionDemo},
@@ -48,6 +52,8 @@ const ROUTES: Routes = [
             {path: "column-sizing", component: DatagridColumnSizingDemo},
             {path: "expandable-rows", component: DatagridExpandableRowsDemo},
             {path: "full", component: DatagridFullDemo},
+            {path: "test-cases", component: DatagridTestCasesDemo},
+            {path: "test-cases-async", component: DatagridTestCasesAsyncDemo}
         ]
     }
 ];

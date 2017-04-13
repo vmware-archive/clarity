@@ -28,25 +28,6 @@ export default function(): void {
                 this.itemsProvider.all = [];
                 expect(this.component.emptyDatagrid).toBe(true);
             });
-
-            it("counts the numbers of empty rows needed to complete the page", function() {
-                this.pageProvider.size = 10;
-                expect(this.component.nbEmptyRows).toBe(10);
-                this.itemsProvider.all = new Array(3);
-                expect(this.component.nbEmptyRows).toBe(7);
-                this.itemsProvider.all = new Array(10);
-                expect(this.component.nbEmptyRows).toBeLessThanOrEqual(0);
-                this.itemsProvider.all = new Array(42);
-                expect(this.component.nbEmptyRows).toBeLessThanOrEqual(0);
-            });
-
-            it("always leaves space for at least 2 rows", function() {
-                expect(this.component.nbEmptyRows).toBe(2);
-                this.pageProvider.size = 1;
-                expect(this.component.nbEmptyRows).toBe(2);
-                this.itemsProvider.all = new Array(1);
-                expect(this.component.nbEmptyRows).toBe(1);
-            });
         });
 
         describe("View", function() {
@@ -76,20 +57,11 @@ export default function(): void {
                 expect(context.clarityElement.textContent.trim()).toMatch("Hello world");
             });
 
-            it("has height 0 when no empty rows are needed", function() {
+            it("has height 1px (which acts as a bottom border for the last row)" +
+                "when no empty rows are needed", function() {
                 itemsProvider.all = new Array(2);
                 context.detectChanges();
-                expect(context.clarityElement.scrollHeight).toBe(0);
-            });
-
-            // Yuck. But hey, if we're hard-coding a height, we might as well make sure it we don't mess it up.
-            it("adds 36px to its height for each row needed", function() {
-                pageProvider.size = 10;
-                context.detectChanges();
-                expect(context.clarityElement.scrollHeight).toBe(360);
-                itemsProvider.all = new Array(9);
-                context.detectChanges();
-                expect(context.clarityElement.scrollHeight).toBe(36);
+                expect(context.clarityElement.scrollHeight).toBe(1);
             });
         });
     });

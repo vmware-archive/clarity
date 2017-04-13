@@ -32,6 +32,9 @@ import {ColorFilter} from "./utils/color-filter";
 import {Example} from "./utils/example";
 import {FakeLoader} from "./expandable-rows/fake-loader";
 import {DetailWrapper} from "./expandable-rows/detail-wrapper";
+import {DatagridPaginationScrollingDemo} from "./pagination-scrolling/pagination-scrolling";
+import {DatagridTestCasesDemo} from "./test-cases/test-cases";
+import {DatagridTestCasesAsyncDemo} from "./test-cases-async/test-cases-async";
 
 
 @NgModule({
@@ -49,6 +52,7 @@ import {DetailWrapper} from "./expandable-rows/detail-wrapper";
         DatagridFilteringDemo,
         DatagridFullDemo,
         DatagridPaginationDemo,
+        DatagridPaginationScrollingDemo,
         DatagridSelectionDemo,
         DatagridSelectionSingleDemo,
         DatagridPreserveSelectionDemo,
@@ -60,6 +64,8 @@ import {DetailWrapper} from "./expandable-rows/detail-wrapper";
         DatagridScrollingDemo,
         DatagridColumnSizingDemo,
         DatagridExpandableRowsDemo,
+        DatagridTestCasesDemo,
+        DatagridTestCasesAsyncDemo,
         ColorFilter,
         Example,
         FakeLoader,
@@ -73,6 +79,7 @@ import {DetailWrapper} from "./expandable-rows/detail-wrapper";
         DatagridFilteringDemo,
         DatagridFullDemo,
         DatagridPaginationDemo,
+        DatagridPaginationScrollingDemo,
         DatagridSelectionDemo,
         DatagridSelectionSingleDemo,
         DatagridPreserveSelectionDemo,
@@ -83,7 +90,9 @@ import {DetailWrapper} from "./expandable-rows/detail-wrapper";
         DatagridPlaceholderDemo,
         DatagridScrollingDemo,
         DatagridColumnSizingDemo,
-        DatagridExpandableRowsDemo
+        DatagridExpandableRowsDemo,
+        DatagridTestCasesDemo,
+        DatagridTestCasesAsyncDemo
     ]
 })
 export default class DatagridDemoModule {

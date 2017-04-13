@@ -26,6 +26,7 @@ export class Page {
             // We always emit an event even if the current page index didn't change, because
             // the size changing means the items inside the page are different
             this._change.next(this._current);
+            this._sizeChange.next(this._size);
         }
     }
 
@@ -71,6 +72,12 @@ export class Page {
     public get change(): Observable<number> {
         return this._change.asObservable();
     };
+
+    private _sizeChange = new Subject<number>();
+
+    public get sizeChange(): Observable<number> {
+        return this._sizeChange.asObservable();
+    }
 
     /**
      * Current page

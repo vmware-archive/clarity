@@ -23,10 +23,8 @@
         flex-flow: column nowrap;
         align-self: flex-start;
         min-width: 100%;
-        // Firefox needs this
-        min-height: 0;
-        // IE10 (maybe later versions too) needs this
-        overflow: hidden;
+        // IE & Firefox needs this
+        min-height: 1px;
     }
     .datagrid-head, .datagrid-body, .datagrid-row, .datagrid-column, .datagrid-cell {
         display: block;
@@ -35,14 +33,19 @@
         flex: 1 1 auto;
         display: flex;
         flex-flow: column nowrap;
-        // Firefox needs this
-        min-height: 0;
-        // IE10 (maybe later versions too) needs this
-        overflow: hidden;
+        // IE & Firefox needs this
+        min-height: 1px;
     }
     .datagrid-body {
         flex: 1 1 auto;
         overflow-y: auto;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+
+        display: flex;
+        flex-direction: column;
+
+        //TODO: Use the spinner min height mixin. The mixin needs to be fixed before it can be used.
+        min-height: $clr-baselineRem_3;
     }
     .datagrid-head {
         flex: 0 0 auto;
@@ -87,6 +90,9 @@
             display: table-cell;
         }
         .datagrid-column-separator {
+            display: none;
+        }
+        .datagrid-placeholder-container {
             display: none;
         }
     }
@@ -139,8 +145,6 @@
             background-color: $clr-thead-bgcolor;
             border-bottom: 2*$clr-table-borderwidth solid $clr-light-midtone-gray;
         }
-
-
 
         .datagrid-column, .datagrid-cell {
             text-align: left;
@@ -310,7 +314,6 @@
             }
         }
 
-
         .datagrid-fixed-column {
             flex: 0 0 $clr-datagrid-fixed-column-size;
             // IE10 needs this
@@ -392,6 +395,7 @@
 
         .datagrid-body .datagrid-row {
             border-top: $clr-table-borderwidth solid $clr-lighter-midtone-gray;
+            flex-shrink: 0;
 
             &:first-child {
                 border-top: 0;
@@ -518,17 +522,19 @@
     }
 
     .datagrid-placeholder-container {
-        display: block;
         flex: 1 1 auto;
+        display: flex;
+        justify-content: center;
     }
 
     .datagrid-placeholder {
         background: $clr-white;
         border-top: 1px solid $clr-lighter-midtone-gray;
-        padding: $clr_baselineRem_0_5;
+        width: 100%;
 
         &.datagrid-empty {
             border-top: 0;
+            padding: $clr_baselineRem_0_5;
             display: flex;
             flex-flow: column nowrap;
             align-items: center;

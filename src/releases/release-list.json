@@ -7,6 +7,11 @@
             "commit": "3ba64d11eb715d223cdd5b4a10ffa068f9458000"
         },
 
+        "0.8.15": {
+            "date": "April 13, 2017",
+            "sketch": "0.8.9",
+            "commit": "9b393b0710966ce7613e524c61315a99f6602f8f"
+        },
         "0.8.14": {
             "date": "April 6, 2017",
             "sketch": "0.8.9",

@@ -6,7 +6,7 @@
 
 <button class="btn btn-primary" (click)="wizard.open()">Wizard with Form Validation</button>
 
-<clr-wizard #wizard [(clrWizardOpen)]="open">
+<clr-wizard-deprecated #wizard [(clrWizardOpen)]="open">
     <div class="wizard-title">
         Wizard Title
     </div>
@@ -14,7 +14,7 @@
     <clr-wizard-step>Form with validation</clr-wizard-step>
     <clr-wizard-step>Wizard complete</clr-wizard-step>
 
-    <clr-wizard-page [clrWizardPageNextDisabled]="!myForm.form.valid">
+    <clr-wizard-page-deprecated [clrWizardPageNextDisabled]="!myForm.form.valid">
         <form #myForm="ngForm">
             <section class="form-block">
                 <label>My Form</label>
@@ -35,11 +35,11 @@
                 </div>
             </section>
         </form>
-    </clr-wizard-page>
-    <clr-wizard-page>
+    </clr-wizard-page-deprecated>
+    <clr-wizard-page-deprecated>
         Congratulations! You are done with this wizard.
-    </clr-wizard-page>
-</clr-wizard>
+    </clr-wizard-page-deprecated>
+</clr-wizard-deprecated>
 
 <clr-example [clrLanguage]="'typescript'" [clrCode]="code"></clr-example>
 <clr-example [clrLanguage]="'html'" [clrCode]="html"></clr-example>

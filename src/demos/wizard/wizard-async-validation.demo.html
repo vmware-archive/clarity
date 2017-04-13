@@ -6,7 +6,7 @@
 
 <button class="btn btn-primary" (click)="wizard.open()">Wizard with Async Validation</button>
 
-<clr-wizard #wizard [(clrWizardOpen)]="open">
+<clr-wizard-deprecated #wizard [(clrWizardOpen)]="open">
     <div class="wizard-title">
         Wizard Title
     </div>
@@ -14,7 +14,7 @@
     <clr-wizard-step>Async validation</clr-wizard-step>
     <clr-wizard-step>Wizard complete</clr-wizard-step>
 
-    <clr-wizard-page [clrWizardPagePreventDefault]="true" (clrWizardPageOnCommit)="onCommit()">
+    <clr-wizard-page-deprecated [clrWizardPagePreventDefault]="true" (clrWizardPageOnCommit)="onCommit()">
         <div class="spinner" *ngIf="loadingFlag">
             Loading...
         </div>
@@ -38,11 +38,11 @@
                 </div>
             </section>
         </form>
-    </clr-wizard-page>
-    <clr-wizard-page>
+    </clr-wizard-page-deprecated>
+    <clr-wizard-page-deprecated>
         Congratulations! Now you know the answer to life, the universe and everything!
-    </clr-wizard-page>
-</clr-wizard>
+    </clr-wizard-page-deprecated>
+</clr-wizard-deprecated>
 
 <clr-example [clrLanguage]="'typescript'" [clrCode]="code"></clr-example>
 <clr-example [clrLanguage]="'html'" [clrCode]="html"></clr-example>

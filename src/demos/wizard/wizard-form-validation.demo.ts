@@ -4,14 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ViewChild} from "@angular/core";
-import {Wizard} from "clarity-angular";
+import {WizardDeprecated} from "clarity-angular";
 
 @Component({
     selector: "clr-wizard-form-validation",
     templateUrl: "./wizard-form-validation.demo.html"
 })
 export class WizardFormValidation {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: WizardDeprecated;
 
     model = {
         name: "",
@@ -20,13 +20,13 @@ export class WizardFormValidation {
 
     code: string = `
 import {Component, ViewChild} from "@angular/core";
-import {Wizard} from "clarity-angular";
+import {WizardDeprecated} from "clarity-angular";
 
 @Component({
     ...
 })
 export class WizardFormValidation {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: WizardDeprecated;
     open: boolean = false;
 
     model = {
@@ -37,7 +37,7 @@ export class WizardFormValidation {
     `;
 
     html: string = `
-<clr-wizard #wizard [(clrWizardOpen)]="open">
+<clr-wizard-deprecated #wizard [(clrWizardOpen)]="open">
     <div class="wizard-title">
         Wizard Title
     </div>
@@ -45,7 +45,7 @@ export class WizardFormValidation {
     <clr-wizard-step>Form with validation</clr-wizard-step>
     <clr-wizard-step>Wizard complete</clr-wizard-step>
 
-    <clr-wizard-page [clrWizardPageNextDisabled]="!myForm.form.valid">
+    <clr-wizard-page-deprecated [clrWizardPageNextDisabled]="!myForm.form.valid">
         <form #myForm="ngForm">
             <section class="form-block">
                 <label>My Form</label>
@@ -66,10 +66,10 @@ export class WizardFormValidation {
                 </div>
             </section>
         </form>
-    </clr-wizard-page>
-    <clr-wizard-page>
+    </clr-wizard-page-deprecated>
+    <clr-wizard-page-deprecated>
         Congratulations! You are done with this wizard.
-    </clr-wizard-page>
-</clr-wizard>
+    </clr-wizard-page-deprecated>
+</clr-wizard-deprecated>
     `;
 }

@@ -4,14 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ViewChild} from "@angular/core";
-import {Wizard} from "clarity-angular";
+import {WizardDeprecated} from "clarity-angular";
 
 @Component({
     selector: "clr-wizard-async-validation",
     templateUrl: "./wizard-async-validation.demo.html"
 })
 export class WizardAsyncValidation {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: WizardDeprecated;
     @ViewChild("myForm") formData: any;
 
     loadingFlag: boolean = false;
@@ -34,7 +34,7 @@ export class WizardAsyncValidation {
 
     code: string = `
 import {Component, ViewChild} from "@angular/core";
-import {Wizard} from "clarity-angular";
+import {WizardDeprecated} from "clarity-angular";
 import {MyValidationService} from "service/my-validation";
 
 @Component({
@@ -42,7 +42,7 @@ import {MyValidationService} from "service/my-validation";
     providers: [MyValidationService]
 })
 export class WizardAsyncValidation {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: WizardDeprecated;
     @ViewChild("myForm") formData: any;
 
     open: boolean = false;
@@ -71,7 +71,7 @@ export class WizardAsyncValidation {
     `;
 
     html: string = `
-<clr-wizard #wizard [(clrWizardOpen)]="open">
+<clr-wizard-deprecated #wizard [(clrWizardOpen)]="open">
     <div class="wizard-title">
         Wizard Title
     </div>
@@ -79,7 +79,7 @@ export class WizardAsyncValidation {
     <clr-wizard-step>Async validation</clr-wizard-step>
     <clr-wizard-step>Wizard complete</clr-wizard-step>
 
-    <clr-wizard-page [clrWizardPagePreventDefault]="true" (clrWizardPageOnCommit)="onCommit()">
+    <clr-wizard-page-deprecated [clrWizardPagePreventDefault]="true" (clrWizardPageOnCommit)="onCommit()">
         <div class="spinner" *ngIf="loadingFlag">
             Loading...
         </div>
@@ -103,11 +103,11 @@ export class WizardAsyncValidation {
                 </div>
             </section>
         </form>
-    </clr-wizard-page>
-    <clr-wizard-page>
+    </clr-wizard-page-deprecated>
+    <clr-wizard-page-deprecated>
         Congratulations! Now you know the answer to life, the universe and everything!
-    </clr-wizard-page>
-</clr-wizard>
+    </clr-wizard-page-deprecated>
+</clr-wizard-deprecated>
 `;
 
 }

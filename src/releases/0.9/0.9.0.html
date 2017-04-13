@@ -38,16 +38,15 @@
             <li>Lazy-loading of details</li>
         </ul>
         <p>Here is an example of how to make a row expandable:</p>
-        <pre><code clr-code-highlight="language-html">
-        &lt;clr-dg-row *clrDgItems=&quot;let user of users&quot;&gt;
-        &lt;clr-dg-cell&gt;{{'{'}}{{'{'}}user.id{{'}'}}{{'}'}}&lt;/clr-dg-cell&gt;
-        &lt;clr-dg-cell&gt;{{'{'}}{{'{'}}user.name{{'}'}}{{'}'}}&lt;/clr-dg-cell&gt;
+        <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-dg-row *clrDgItems=&quot;let user of users&quot;&gt;
+    &lt;clr-dg-cell&gt;{{user.id}}&lt;/clr-dg-cell&gt;
+    &lt;clr-dg-cell&gt;{{user.name}}&lt;/clr-dg-cell&gt;
 
-        &lt;clr-dg-row-detail *clrIfExpanded&gt;
+    &lt;clr-dg-row-detail *clrIfExpanded&gt;
         This user likes ducks.
-        &lt;/clr-dg-row-detail&gt;
-        &lt;/clr-dg-row&gt;
-        </code></pre>
+    &lt;/clr-dg-row-detail&gt;
+&lt;/clr-dg-row&gt;</code></pre>
 
         <p>
         If you include the same amount of <code class="clr-code">&lt;clr-dg-cell&gt;</code>

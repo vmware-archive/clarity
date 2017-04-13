@@ -24,9 +24,11 @@ import {DatagridSmartIteratorDemo} from "./smart-iterator/smart-iterator";
 import {DatagridSortingDemo} from "./sorting/sorting";
 import {DatagridStringFilteringDemo} from "./string-filtering/string-filtering";
 import {DatagridPlaceholderDemo} from "./placeholder/placeholder";
+import {DatagridExpandableRowsDemo} from "./expandable-rows/expandable-rows";
 
 import {ColorFilter} from "./utils/color-filter";
 import {Example} from "./utils/example";
+import {FakeLoader} from "./expandable-rows/fake-loader";
 
 
 @NgModule({
@@ -51,8 +53,10 @@ import {Example} from "./utils/example";
         DatagridSortingDemo,
         DatagridStringFilteringDemo,
         DatagridPlaceholderDemo,
+        DatagridExpandableRowsDemo,
         ColorFilter,
-        Example
+        Example,
+        FakeLoader
     ],
     exports: [
         DatagridBasicStructureDemo,
@@ -70,7 +74,8 @@ import {Example} from "./utils/example";
         DatagridSmartIteratorDemo,
         DatagridSortingDemo,
         DatagridStringFilteringDemo,
-        DatagridPlaceholderDemo
+        DatagridPlaceholderDemo,
+        DatagridExpandableRowsDemo
     ]
 })
 export default class ModalDemoModule {

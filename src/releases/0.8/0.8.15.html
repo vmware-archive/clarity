@@ -22,8 +22,8 @@
         <p>Here is an example of how to make a row expandable:</p>
         <pre><code clr-code-highlight="language-html">
         &lt;clr-dg-row *clrDgItems=&quot;let user of users&quot;&gt;
-        &lt;clr-dg-cell&gt;{{'{{'}}user.id{{'}}'}}&lt;/clr-dg-cell&gt;
-        &lt;clr-dg-cell&gt;{{'{{'}}user.name{{'}}'}}&lt;/clr-dg-cell&gt;
+        &lt;clr-dg-cell&gt;{{'{'}}{{'{'}}user.id{{'}'}}{{'}'}}&lt;/clr-dg-cell&gt;
+        &lt;clr-dg-cell&gt;{{'{'}}{{'{'}}user.name{{'}'}}{{'}'}}&lt;/clr-dg-cell&gt;
 
         &lt;clr-dg-row-detail *clrIfExpanded&gt;
         This user likes ducks.

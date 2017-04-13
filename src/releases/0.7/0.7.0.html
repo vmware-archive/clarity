@@ -17,14 +17,14 @@
     &lt;{{ 'clr-dg-column [clrDgField]' }}=&quot;'name'&quot;&gt;Name&lt;/clr-dg-column&gt;
     &lt;{{ 'clr-dg-column [clrDgField]' }}=&quot;'creation'&quot;&gt;Creation date&lt;/clr-dg-column&gt;
     &lt;{{ 'clr-dg-row *clrDgItems='}}&quot;{{'let user of users'}}&quot;&gt;
-        &lt;{{'clr-dg-cell'}}&gt;{{ '{{ ' }}{{ 'user.id' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
-        &lt;{{'clr-dg-cell'}}&gt;{{ '{{ ' }}{{ 'user.name' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
-        &lt;{{'clr-dg-cell'}}&gt;{{ '{{ ' }}{{ 'user.creation | date' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
+        &lt;{{'clr-dg-cell'}}&gt;{{ '{ ' }}{{ '{ ' }}{{ 'user.id' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
+        &lt;{{'clr-dg-cell'}}&gt;{{ '{ ' }}{{ '{ ' }}{{ 'user.name' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
+        &lt;{{'clr-dg-cell'}}&gt;{{ '{ ' }}{{ '{ ' }}{{ 'user.creation | date' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
     &lt;/clr-dg-row&gt;
 
     &lt;{{'clr-dg-footer'}}&gt;
-        {{ '{{ ' }}{{ 'pagination.firstItem + 1' }}{{ ' }' }}{{ '}' }} - {{ '{{ ' }}{{ 'pagination.lastItem + 1' }}{{ ' }' }}{{ '}' }}
-        of {{ '{{ ' }}{{ 'pagination.totalItems' }}{{ ' }' }}{{ '}' }}
+        {{ '{ ' }}{{ '{ ' }}{{ 'pagination.firstItem + 1' }}{{ ' }' }}{{ '}' }} - {{ '{ ' }}{{ '{ ' }}{{ 'pagination.lastItem + 1' }}{{ ' }' }}{{ '}' }}
+        of {{ '{ ' }}{{ '{ ' }}{{ 'pagination.totalItems' }}{{ ' }' }}{{ '}' }}
         &lt;{{'clr-dg-pagination #pagination [clrDgPageSize]'}}=&quot;10&quot;&gt;&lt;/clr-dg-pagination&gt;
     &lt;/clr-dg-footer&gt;
 &lt;/clr-datagrid&gt;

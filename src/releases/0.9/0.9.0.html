@@ -1,16 +1,30 @@
 <h2>Highlights</h2>
 <ul class="list-unstyled whats-new-highlights">
     <li>
-        <h6>Clarity wizard refactor/rewrite</h6>
+        <h6>Updates to the Datagrid Selection Behavior</h6>
         <p>
-            0.9.0 will include the new and improved wizard component for
+        Datagrid selection is now preserved when:
+        </p>
+        <ul class="list">
+        <li>The user navigates to a different page in the datagrid</li>
+        <li>The data is updated, provided the smart iterator is used in the datagrid</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>Wizard refactor</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Clarity wizard (beta)</h6>
+        <p>
+            0.9.0 introduces the beta version of the new and improved wizard component for
             Clarity Angular. This wizard component has been rebuilt from
-            the ground with an eye towards preserving as much of the old
+            the ground up with an eye towards preserving as much of the old
             API as possible to limit breaking changes, learning curves,
             and migration complexity.
         </p>
         <p>
-            The 0.9.0-alpha release gives our users a preview of the new
+            The beta wizard gives our users early access to the new
             wizard so they can gauge the impact of the changes on their
             applications.
         </p>
@@ -96,20 +110,20 @@
     &lt;clr-wizard-button type="finish"&gt;Finish&lt;/clr-wizard-button&gt;
 
     &lt;clr-wizard-page&gt;
-        &lt;template pageTitle&gt;Title for page 1&lt;/template&gt;
-        &lt;template pageNavTitle&gt;Step 1&lt;/template&gt;
+        &lt;template clrPageTitle&gt;Title for page 1&lt;/template&gt;
+        &lt;template clrPageNavTitle&gt;Step 1&lt;/template&gt;
         Content for step 1
     &lt;/clr-wizard-page&gt;
 
     &lt;clr-wizard-page&gt;
-        &lt;template pageTitle&gt;Title for page 2&lt;/template&gt;
-        &lt;template pageNavTitle&gt;Step 2&lt;/template&gt;
+        &lt;template clrPageTitle&gt;Title for page 2&lt;/template&gt;
+        &lt;template clrPageNavTitle&gt;Step 2&lt;/template&gt;
         Content for step 2
     &lt;/clr-wizard-page&gt;
 
     &lt;clr-wizard-page&gt;
-        &lt;template pageTitle&gt;Title for page 3&lt;/template&gt;
-        &lt;template pageNavTitle&gt;Step 3&lt;/template&gt;
+        &lt;template clrPageTitle&gt;Title for page 3&lt;/template&gt;
+        &lt;template clrPageNavTitle&gt;Step 3&lt;/template&gt;
         Content for step 3
     &lt;/clr-wizard-page&gt;
 &lt;/clr-wizard&gt;
@@ -139,8 +153,8 @@
                 class="clr-code">clr-wizard-page</code> relied on a very
                 specific and non-intuitive DOM and classname combination.
                 Wrapping this into a <code class="clr-code">&lt;template
-                pageTitle&gt;</code> makes it easier
-                to manage your DOM structure and also allows one element
+                clrPageTitle&gt;</code> makes it easier
+                to manage your DOM structure and allows one element
                 to reflect both the page title and the title in the nav.
             </li>
             <li>
@@ -159,28 +173,42 @@
 
         <p>&nbsp;</p>
 
-        <h6>Using the old wizard in 0.9.0-alpha</h6>
+        <h6>Using the old wizard in 0.9.0</h6>
         <p>
              If you need time to update your old wizards to the new 0.9.0 wizards, 
-             Clarity's 0.9.0-alpha release has you covered. All you need to do is 
-             take your old wizard declarations for wizards and pages and change them
+             Clarity has you covered. All you need to do is 
+             take your old declarations for wizards and wizard pages and change them
              to <code class="clr-code">clr-wizard-deprecated</code> and
              <code class="clr-code">clr-wizard-page-deprecated</code>.
         </p>
         <p>
-             The objects/classes have likewise been named to <code
+             The objects/classes have likewise been renamed to <code
              class="clr-code">WizardDeprecated</code> and <code
              class="clr-code">WizardPageDeprecated</code>, in the event your TypeScript
              build or UMD complains.
         </p>
         <p>
-             No other changes are necessary to keep your old wizards in 0.9.0-alpha.
+             No other changes are necessary to keep your old 0.8 wizards in 0.9.0.
         </p>
         <p>
-             But note that we are planning to completely remove the old wizards when
-             0.9.0 is officially released.
+             But note that we are planning to completely remove the old wizards in
+             0.10.0.
         </p>
 
+        <p>&nbsp;</p>
+
+        <h6>A note about IE10</h6>
+        <p>
+             At present, the new wizard will not work in IE10. There are known
+             issues with the new wizard in IE10 that we are waiting to resolved
+             until after the Clarity team has determined if it will continue
+             support for IE10 beyond 0.9.
+        </p>
+        <p>
+            For the time being, use the deprecated 0.8 wizard to continue IE10
+            support and please make sure to let the Clarity team know if
+            continued IE10 support is important for your product.
+        </p>
     </li>
 </ul>
 
@@ -282,7 +310,7 @@
 <ul>
     <li>
         The <code class="clr-code">wizard.prev()</code> convenience function
-        has been deprecated. We recommend that the <code
+        has been deprecated. We recommend that <code
         class="clr-code">wizard.previous()</code> be used instead. <code
         class="clr-code">wizard.prev()</code> still works with the 0.9.0 wizard,
         however. But support for it will be dropped in the future.
@@ -290,34 +318,24 @@
 </ul>
 
 <h2>Known Issues</h2>
-<p>The alpha version of the wizard has several known issues including:</p>
+<p>The beta version of the wizard has the following known issues:</p>
 <ul>
     <li>IE10 browser support</li>
     <li>
-        The page collection properly syncing up after pages have been added to
-        or removed from the wizard with ngIf
-    </li>
-    <li>
-        And unpredictable conflict when there is an alt-cancel routine at
+        An unpredictable conflict when there is an alt-cancel routine at
         the wizard and page level.
     </li>
 </ul>
-<p>
-    Please keep an eye on the 
-    <a href="https://github.com/vmware/clarity/issues/156">github issue</a> and
-    <a href="https://github.com/vmware/clarity/pull/657">pull request</a> for
-    updates and progress reports.
-</p>
 
 <h2>New Features</h2>
 <p>
-    The new wizard  arrives with  improved capabilities and new functionality.
+    The new wizard arrives with improved capabilities and new functionality.
     While we are committed to providing as much documentation as we can, there is
     no way that we could document all the features of the new wizard before the 0.9.0
     release.
 </p>
 <p>
-     For undocumented features and for all features throughout 0.9.0-alpha,
+     For undocumented features,
      the best source of truth is the demo app within
      the Clarity sourcecode. All new features are presented there for the time being
      with demonstrations highlighting their use.
@@ -358,7 +376,22 @@
     </li>
 </ul>
 
-<p>
-    Header actions and ghost pages are two features with known issues that may not be resolved
-    before 0.9.0 is finalized. Please consider those features experimental at this time.
-</p>
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Fixed the click event listener for buttons inside of a button group.
+    </li>
+    <li bug-fix>
+        Fixed animation to value 0 in progress bars in webkit.
+    </li>
+    <li bug-fix>
+        Separators for clr-dg-column components have been correctly positioned.
+    </li>
+</ul>
+
+<h2>Other changes</h2>
+<ul class="list">
+    <li bug-fix>
+        Dropdown Items line-height has been updated to 30px on larger screens and 36px on smaller screens.
+    </li>
+</ul>

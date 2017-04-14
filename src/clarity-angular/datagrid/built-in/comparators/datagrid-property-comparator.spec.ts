@@ -12,6 +12,8 @@ export default function(): void {
             expect(this.comparator.compare({a: "aaa"}, {a: "abc"})).toBeLessThan(0);
             expect(this.comparator.compare({a: "aaa"}, {a: "aaa"})).toBe(0);
             expect(this.comparator.compare({a: "bbb"}, {a: "abc"})).toBeGreaterThan(0);
+            expect(this.comparator.compare({a: "AAA"}, {a: "aaa"})).toBe(0);
+            expect(this.comparator.compare({a: "aBc"}, {a: "abc"})).toBe(0);
         });
 
         it("compares integers", function() {
@@ -33,6 +35,8 @@ export default function(): void {
             expect(this.comparator.compare({a: 42}, {a: null})).toBeLessThan(0);
             expect(this.comparator.compare({a: null}, {a: 42})).toBeGreaterThan(0);
             expect(this.comparator.compare({a: null}, {a: null})).toBe(0);
+            expect(this.comparator.compare({a: null}, {a: "aaa"})).toBeGreaterThan(0);
+            expect(this.comparator.compare({a: null}, {a: "AAA"})).toBeGreaterThan(0);
         });
 
         it("supports nested properties", function() {

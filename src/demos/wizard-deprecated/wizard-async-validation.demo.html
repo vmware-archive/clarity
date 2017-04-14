@@ -1,25 +1,20 @@
 <!--
-  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<button class="btn btn-primary" (click)="wizard.open()">Wizard + Async Form Validation</button>
+<button class="btn btn-primary" (click)="wizard.open()">Wizard with Async Validation</button>
 
-<clr-wizard #wizard [(clrWizardOpen)]="open">
-    <clr-wizard-title>Async validation</clr-wizard-title>
+<clr-wizard-deprecated #wizard [(clrWizardOpen)]="open">
+    <div class="wizard-title">
+        Wizard Title
+    </div>
 
-    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
-    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+    <clr-wizard-step>Async validation</clr-wizard-step>
+    <clr-wizard-step>Wizard complete</clr-wizard-step>
 
-    <clr-wizard-page
-        clrWizardPagePreventDefault="true"
-        (clrWizardPageOnCommit)="onCommit()"
-        (clrWizardPageOnCancel)="doCancel()">
-        <ng-template clrPageTitle>Form with async validation</ng-template> <!-- mandatory -->
-
+    <clr-wizard-page-deprecated [clrWizardPagePreventDefault]="true" (clrWizardPageOnCommit)="onCommit()">
         <div class="spinner" *ngIf="loadingFlag">
             Loading...
         </div>
@@ -43,12 +38,11 @@
                 </div>
             </section>
         </form>
-    </clr-wizard-page>
-    <clr-wizard-page>
-        <ng-template clrPageTitle>Wizard complete</ng-template> <!-- mandatory -->
-        <p>Congratulations! Now you know the answer to life, the universe and everything!</p>
-    </clr-wizard-page>
-</clr-wizard>
+    </clr-wizard-page-deprecated>
+    <clr-wizard-page-deprecated>
+        Congratulations! Now you know the answer to life, the universe and everything!
+    </clr-wizard-page-deprecated>
+</clr-wizard-deprecated>
 
 <clr-example [clrLanguage]="'typescript'" [clrCode]="code"></clr-example>
 <clr-example [clrLanguage]="'html'" [clrCode]="html"></clr-example>

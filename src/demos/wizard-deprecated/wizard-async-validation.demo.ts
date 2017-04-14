@@ -1,32 +1,21 @@
 /*
- * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-
-import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "clarity-angular";
-import { CodeHighlight } from "clarity-angular";
+import {Component, ViewChild} from "@angular/core";
+import {WizardDeprecated} from "clarity-angular";
 
 @Component({
-    moduleId: module.id,
-    selector: "clr-wizard-async-validation",
+    selector: "clr-wizard-deprecated-async-validation",
     templateUrl: "./wizard-async-validation.demo.html"
 })
-export class WizardAsyncValidation {
-    @ViewChild("wizard") wizard: Wizard;
+export class WizardDeprecatedAsyncValidation {
+    @ViewChild("wizard") wizard: WizardDeprecated;
     @ViewChild("myForm") formData: any;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
 
     loadingFlag: boolean = false;
     errorFlag: boolean = false;
-
-    // have to define doCancel because page will prevent doCancel from working
-    // if the page had a previous button, you would need to call
-    // this.wizard.previous() manually as well...
-    doCancel(): void {
-        this.wizard.close();
-    }
 
     onCommit(): void {
         let value: any = this.formData.value;
@@ -44,58 +33,53 @@ export class WizardAsyncValidation {
     }
 
     code: string = `
-import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
+import {Component, ViewChild} from "@angular/core";
+import {WizardDeprecated} from "clarity-angular";
+import {MyValidationService} from "service/my-validation";
 
 @Component({
     ...
+    providers: [MyValidationService]
 })
-export class WizardAsyncValidation {
-    @ViewChild("wizard") wizard: Wizard;
+export class WizardDeprecatedAsyncValidation {
+    @ViewChild("wizard") wizard: WizardDeprecated;
     @ViewChild("myForm") formData: any;
 
+    open: boolean = false;
     loadingFlag: boolean = false;
     errorFlag: boolean = false;
-
-    // have to define doCancel because page will prevent doCancel from working
-    // if the page had a previous button, you would need to call 
-    // this.wizard.previous() manually as well...
-    doCancel(): void {
-        this.wizard.close();
-    }
 
     onCommit(): void {
         let value: any = this.formData.value;
         this.loadingFlag = true;
         this.errorFlag = false;
 
-        setTimeout(() => {
-            if (value.answer === "42") {
-                this.wizard.next();
-            } else {
-                this.errorFlag = true;
-            }
-            this.loadingFlag = false;
-        }, 1000);
+        MyValidationService.validate(this.formData.value)
+            .subscribe(
+                data => {
+                    this.loadingFlag = false;
+                    // on passing validation, programmatically call next to move to next step
+                    this.wizard.next(); 
+                },
+                error => {
+                    this.loadingFlag = false;
+                    this.errorFlag = true;
+                }
+            );
     }
 }
-`;
+    `;
 
     html: string = `
-<clr-wizard #wizard [(clrWizardOpen)]="open">
-    <clr-wizard-title>Async validation</clr-wizard-title>
+<clr-wizard-deprecated #wizard [(clrWizardOpen)]="open">
+    <div class="wizard-title">
+        Wizard Title
+    </div>
 
-    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
-    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+    <clr-wizard-step>Async validation</clr-wizard-step>
+    <clr-wizard-step>Wizard complete</clr-wizard-step>
 
-    <clr-wizard-page
-        clrWizardPagePreventDefault="true"
-        (clrWizardPageOnCommit)="onCommit()"
-        (clrWizardPageOnCancel)="doCancel()">
-        <ng-template clrPageTitle>Form with async validation</ng-template>
-
+    <clr-wizard-page-deprecated [clrWizardPagePreventDefault]="true" (clrWizardPageOnCommit)="onCommit()">
         <div class="spinner" *ngIf="loadingFlag">
             Loading...
         </div>
@@ -119,10 +103,11 @@ export class WizardAsyncValidation {
                 </div>
             </section>
         </form>
-    </clr-wizard-page>
-    <clr-wizard-page>
-        ...
-    </clr-wizard-page>
-</clr-wizard>
+    </clr-wizard-page-deprecated>
+    <clr-wizard-page-deprecated>
+        Congratulations! Now you know the answer to life, the universe and everything!
+    </clr-wizard-page-deprecated>
+</clr-wizard-deprecated>
 `;
+
 }

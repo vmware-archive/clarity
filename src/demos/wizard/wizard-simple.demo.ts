@@ -1,98 +1,82 @@
 /*
- * Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, ViewChild} from "@angular/core";
-import {WizardDeprecated} from "clarity-angular";
+
+import { Component, ViewChild } from "@angular/core";
+import { Wizard } from "clarity-angular";
 
 @Component({
+    moduleId: module.id,
     selector: "clr-wizard-simple",
     templateUrl: "./wizard-simple.demo.html"
 })
 export class WizardSimple {
-    @ViewChild("wizard") wizard: WizardDeprecated;
-    stepToSkip: string = "step2";
+    @ViewChild("wizard") wizard: Wizard;
+    skipStepTwo: boolean = true;
+    _open: boolean = false;
 
-    onChangeStepToSkip(tabId: string): void {
-        if (tabId === "step2") {
-            this.wizard.skipTab(tabId);
-            this.wizard.unSkipTab("step3");
-        } else {
-            this.wizard.skipTab(tabId);
-            this.wizard.unSkipTab("step2");
-        }
+    toggleStepTwo() {
+        this.skipStepTwo = !this.skipStepTwo;
+    }
+
+    open() {
+        this._open = !this.open;
     }
 
     code: string = `
-import {Component, ViewChild} from "@angular/core";
-import {WizardDeprecated} from "clarity-angular";
-
 @Component({
     ...
 })
 export class WizardSimple {
-    @ViewChild("wizard") wizard: WizardDeprecated;
+    @ViewChild("wizard") wizard: Wizard;
+    skipStepTwo: boolean = true;
+    _open: boolean = false;
 
-    stepToSkip: string = "step2";
+    toggleStepTwo() {
+        this.skipStepTwo = !this.skipStepTwo;
+    }
 
-    onChangeStepToSkip(tabId: string): void {
-        if (tabId === "step2") {
-            this.wizard.skipTab(tabId);
-            this.wizard.unSkipTab("step3");
-        } else {
-            this.wizard.skipTab(tabId);
-            this.wizard.unSkipTab("step2");
-        }
+    open() {
+        this._open = !this.open;
     }
 }
     `;
 
     html: string = `
-<clr-wizard-deprecated #wizard [(clrWizardOpen)]="open">
-    <div class="wizard-title">Wizard Title</div>
+<clr-wizard #wizard [(clrWizardOpen)]="_open">
+    <clr-wizard-title>Skipping Page Two</clr-wizard-title>
 
-    <clr-wizard-step>Step 1</clr-wizard-step>
+    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
 
-    <clr-wizard-step
-            [clrWizardStepId]="'step2'"
-            [clrWizardStepIsSkipped]="true">
-        Step 2
-    </clr-wizard-step>
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Title for page 1</ng-template>
+        <ng-template clrPageNavTitle>Step 1</ng-template>
+        ...
+        <p>
+            <button class="btn btn-secondary" (click)="wizard.toggleStepTwo()">
+                <span *ngIf="skipStepTwo">Show Page 2</span>
+                <span *ngIf="!skipStepTwo">Hide Page 2</span>
+            </button>
+        </p>
+    </clr-wizard-page>
 
-    <clr-wizard-step [clrWizardStepId]="'step3'">
-        Step 3
-    </clr-wizard-step>
+    <clr-wizard-page *ngIf="!skipStepTwo">
+        <ng-template clrPageTitle>Title for page 2</ng-template>
+        <ng-template clrPageNavTitle>Step 2</ng-template>
+        ...
+    </clr-wizard-page>
 
-    <clr-wizard-page-deprecated>
-        <form #myForm="ngForm"
-              (change)="onChangeStepToSkip(stepToSkip)">
-            <section class="form-block">
-                <p>
-                    Select the step to skip
-                </p>
-                <div class="form-group validated-input ">
-                    <label for="selectStepToSkip">Step</label>
-                    <div class="select">
-                        <select id="selectStepToSkip" [(ngModel)]="stepToSkip" name="stepToSkip">
-                            <option value="step2" selected>Step 2</option>
-                            <option value="step3">Step 3</option>
-                        </select>
-                    </div>
-                </div>
-            </section>
-        </form>
-    </clr-wizard-page-deprecated>
-
-    <clr-wizard-page [clrWizardPageIsSkipped]="true">
-        <div class="wizard-page-title">My custom title for step 2</div>
-        Step 2 is your last step, because you opted to skip step 3.
-    </clr-wizard-page-deprecated>
-
-    <clr-wizard-page-deprecated>
-        We went straight to Step 3, because you opted to skip step 2.
-    </clr-wizard-page-deprecated>
-</clr-wizard-deprecated>
-    `;
-
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Title for page 3</ng-template>
+        <ng-template clrPageNavTitle>Step 3</ng-template>
+        <p *ngIf="skipStepTwo">Page 3 is the last page because we skipped page 2.</p>
+        <p *ngIf="!skipStepTwo">Now our wizard has three pages/steps.</p>
+    </clr-wizard-page>
+</clr-wizard>
+`;
 }

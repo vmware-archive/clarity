@@ -448,6 +448,16 @@
             "core": -1,
             "ng": 20,
             "dox": 20
+        },
+        {
+            "url": "wizard-deprecated",
+            "text": "Wizards (0.8 and earlier)",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
         }
     ]
 }

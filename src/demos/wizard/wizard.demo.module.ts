@@ -5,10 +5,9 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from 'clarity-angular';
+import {ClarityModule} from "clarity-angular";
 import {FormsModule} from "@angular/forms";
 
-import {WizardAngularDemo} from "./wizard-angular";
 import {WizardStaticDemo} from "./wizard-static.demo";
 import {WizardSimple} from "./wizard-simple.demo";
 import {WizardBasic} from "./wizard-basic.demo";
@@ -17,6 +16,15 @@ import {WizardAsyncValidation} from "./wizard-async-validation.demo";
 import {WizardNotClosable} from "./wizard-not-closable.demo";
 import {CodeExample} from "./code-example";
 import {WizardOptionsDemo} from "./wizard-options.demo";
+import { WizardNestedDirectiveDemo } from "./wizard-nested-directives.demo";
+import { WizardTitlesDemo } from "./wizard-titles.demo";
+import { WizardDefaultButtonsDemo } from "./wizard-buttons.demo";
+import { WizardCustomButtonsDemo } from "./wizard-custom-buttons.demo";
+import { WizardResetDemo } from "./wizard-reset.demo";
+import { WizardAltCancelDemo } from "./wizard-alt-cancel.demo";
+import { WizardNoCancel } from "./wizard-no-cancel.demo";
+import { WizardJumpToDemo } from "./wizard-jump-to.demo";
+import { WizardAsyncCompletion } from "./wizard-async-completion.demo";
 
 @NgModule({
     imports: [
@@ -30,20 +38,36 @@ import {WizardOptionsDemo} from "./wizard-options.demo";
         WizardSimple,
         WizardFormValidation,
         WizardAsyncValidation,
-        WizardAngularDemo,
         WizardStaticDemo,
         WizardOptionsDemo,
-        WizardNotClosable
+        WizardNotClosable,
+        WizardNestedDirectiveDemo,
+        WizardTitlesDemo,
+        WizardDefaultButtonsDemo,
+        WizardCustomButtonsDemo,
+        WizardResetDemo,
+        WizardAltCancelDemo,
+        WizardNoCancel,
+        WizardJumpToDemo,
+        WizardAsyncCompletion
     ],
     exports: [
         WizardBasic,
         WizardSimple,
         WizardFormValidation,
         WizardAsyncValidation,
-        WizardAngularDemo,
         WizardStaticDemo,
         WizardOptionsDemo,
-        WizardNotClosable
+        WizardNotClosable,
+        WizardNestedDirectiveDemo,
+        WizardTitlesDemo,
+        WizardDefaultButtonsDemo,
+        WizardCustomButtonsDemo,
+        WizardResetDemo,
+        WizardAltCancelDemo,
+        WizardNoCancel,
+        WizardJumpToDemo,
+        WizardAsyncCompletion
     ]
 })
 export default class WizardDemoModule {

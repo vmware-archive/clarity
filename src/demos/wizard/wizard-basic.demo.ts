@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ViewChild} from "@angular/core";
-import {WizardDeprecated} from "clarity-angular";
+import {Wizard} from "clarity-angular";
 import {CodeHighlight} from "clarity-angular";
 
 @Component({
@@ -12,38 +12,101 @@ import {CodeHighlight} from "clarity-angular";
     templateUrl: "./wizard-basic.demo.html"
 })
 export class WizardBasic {
-    @ViewChild("wizardmd") wizardMedium: WizardDeprecated;
-    @ViewChild("wizardlg") wizardLarge: WizardDeprecated;
-    @ViewChild("wizardxlg") wizardDefault: WizardDeprecated;
+    @ViewChild("wizardmd") wizardMedium: Wizard;
+    @ViewChild("wizardlg") wizardLarge: Wizard;
+    @ViewChild("wizardxl") wizardExtraLarge: Wizard;
     @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
 
-    code: string = `
-import {Component, ViewChild} from "@angular/core";
-import {WizardDeprecated} from "clarity-angular";
+    mdOpen: boolean = false;
+    lgOpen: boolean = false;
+    xlOpen: boolean = false;
+
+    code: string = `import {Component, ViewChild} from "@angular/core";
+import {Wizard} from "clarity-angular";
 
 @Component({
     ...
 })
-export class WizardSimple {
-    @ViewChild("wizard") wizard: WizardDeprecated;
-    open: boolean = false; // you can open the wizard by setting this variable to true
+export class WizardBasic {
+    @ViewChild("wizardmd") wizardMedium: Wizard;
+    @ViewChild("wizardlg") wizardLarge: Wizard;
+    @ViewChild("wizardxl") wizardExtraLarge: Wizard;
 
-    // you can also open the wizard programmatically here by calling wizard.open()
+    mdOpen: boolean = false;
+    lgOpen: boolean = false;
+    xlOpen: boolean = false;
+`;
 
-}
-    `;
+    html: string = `<clr-wizard #wizardmd [(clrWizardOpen)]="mdOpen" clrWizardSize="md">
+    <clr-wizard-title>Medium-Sized Wizard</clr-wizard-title>
 
-    html: string = `
-<clr-wizard-deprecated #wizard [(clrWizardOpen)]="open" [clrWizardSize]="'lg'">
-    <div class="wizard-title">Wizard Title</div>
+    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
 
-    <clr-wizard-step>Step 1</clr-wizard-step>
-    <clr-wizard-step>Step 2</clr-wizard-step>
-    <clr-wizard-step>Step 3</clr-wizard-step>
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 1</ng-template>
+        ...
+    </clr-wizard-page>
 
-    <clr-wizard-page-deprecated>Content for step 1</clr-wizard-page-deprecated>
-    <clr-wizard-page-deprecated>Content for step 2</clr-wizard-page-deprecated>
-    <clr-wizard-page-deprecated>Content for step 3</clr-wizard-page-deprecated>
-</clr-wizard-deprecated>
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 2</ng-template>
+        ...
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 3</ng-template>
+        ...
+    </clr-wizard-page>
+</clr-wizard>
+
+<clr-wizard #wizardlg [(clrWizardOpen)]="lgOpen" clrWizardSize="lg">
+    <clr-wizard-title>Large-Sized Wizard</clr-wizard-title>
+
+    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 1</ng-template>
+        ...
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 2</ng-template>
+        ...
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 3</ng-template>
+        ...
+    </clr-wizard-page>
+</clr-wizard>
+
+<clr-wizard #wizardxl [(clrWizardOpen)]="xlOpen">
+    <clr-wizard-title>XL Wizard (Default)</clr-wizard-title>
+
+    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 1</ng-template>
+        ...
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 2</ng-template>
+        ...
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 3</ng-template>
+        ...
+    </clr-wizard-page>
+</clr-wizard>
 `;
 }

@@ -37,5 +37,6 @@ export const TEMPLATES = {
   "toggle-switches": require("../../pages/documentation/toggle-switches.html"),
   "tooltips": require("../../pages/documentation/tooltips.html"),
   "typography": require("../../pages/documentation/typography.html"),
-  "wizards": require("../../pages/documentation/wizards.html")
+  "wizards": require("../../pages/documentation/wizards.html"),
+  "wizard-deprecated": require("../../pages/documentation/wizard-deprecated.html")
 };

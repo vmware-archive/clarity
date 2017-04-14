@@ -8,7 +8,7 @@ import {Subscription} from "rxjs/Subscription";
 import {DomAdapter} from "./dom-adapter";
 import {DatagridRenderOrganizer} from "./render-organizer";
 import {DatagridHeaderRenderer} from "./header-renderer";
-import {DatagridRowRenderer} from "./row-renderer";
+import {Items} from "../providers/items";
 
 @Directive({
     selector: "clr-datagrid",
@@ -16,18 +16,12 @@ import {DatagridRowRenderer} from "./row-renderer";
 })
 export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, OnDestroy {
 
-    constructor(private organizer: DatagridRenderOrganizer) {
+    constructor(private organizer: DatagridRenderOrganizer, private items: Items) {
         this._subscriptions.push(organizer.computeWidths.subscribe(() => this.computeHeadersWidth()));
     }
 
     @ContentChildren(DatagridHeaderRenderer) public headers: QueryList<DatagridHeaderRenderer>;
-    @ContentChildren(DatagridRowRenderer) public rows: QueryList<DatagridRowRenderer>;
 
-    /*
-     * Are directives even allowed to do that?
-     * It works because it's always attached on the same element as a component since they share the same selector,
-     * but it feels like cheating.
-     */
     ngAfterContentInit() {
 
         this._subscriptions.push(this.headers.changes.subscribe(() => {
@@ -35,14 +29,14 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, On
             this.columnsSizesStable = false;
             this.stabilizeColumns();
         }));
-
-        this._subscriptions.push(this.rows.changes.subscribe(() => {
-            this.stabilizeColumns();
-        }));
     }
 
     ngAfterViewInit() {
         this.stabilizeColumns();
+
+        this._subscriptions.push(this.items.change.subscribe(() => {
+            this.stabilizeColumns();
+        }));
     }
 
     private _subscriptions: Subscription[] = [];
@@ -94,7 +88,7 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, On
             return;
         }
         // No point resizing if there are no rows, we wait until they are actually loaded.
-        if (this.rows.length > 0) {
+        if (this.items.displayed.length > 0) {
             this.organizer.resize();
             this.columnsSizesStable = true;
         }

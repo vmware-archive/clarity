@@ -36,7 +36,7 @@ export default function(): void {
 
         it("starts uninitialized", function() {
             expect(this.itemsInstance.smart).toBe(false);
-            expect(this.itemsInstance.displayed).toBeUndefined();
+            expect(this.itemsInstance.displayed.length).toBe(0);
         });
 
         it("doesn't process the items at all if not smart", function() {

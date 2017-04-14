@@ -76,7 +76,7 @@ export default function(): void {
 
             it("does not trigger the render process until the rows are loaded", function() {
                 expect(resizeSpy.calls.count()).toBe(0);
-                context.testComponent.rowsReady = true;
+                context.testComponent.projected = true;
                 context.detectChanges();
                 expect(resizeSpy.calls.count()).toBe(1);
             });
@@ -85,12 +85,19 @@ export default function(): void {
                 context.testComponent.secondColumn = false;
                 context.detectChanges();
                 expect(resizeSpy.calls.count()).toBe(0);
-                context.testComponent.rowsReady = true;
+                context.testComponent.projected = true;
                 context.detectChanges();
                 expect(resizeSpy.calls.count()).toBe(1);
                 context.testComponent.secondColumn = true;
                 context.detectChanges();
                 expect(resizeSpy.calls.count()).toBe(2);
+            });
+
+            it("triggers the render process if the rows are given through *clrDgItems", function() {
+                expect(resizeSpy.calls.count()).toBe(0);
+                context.testComponent.clrDgItems = [1];
+                context.detectChanges();
+                expect(resizeSpy.calls.count()).toBe(1);
             });
         });
 
@@ -168,16 +175,23 @@ class StaticTest {
         <clr-datagrid>
             <clr-dg-column>AAA</clr-dg-column>
             <clr-dg-column *ngIf="secondColumn">AAA</clr-dg-column>
-            <clr-dg-row *ngIf="rowsReady">
+            <clr-dg-row *ngIf="projected">
                 <clr-dg-cell>BBB</clr-dg-cell>
                 <clr-dg-cell>BBB</clr-dg-cell>
             </clr-dg-row>
+            <ng-template [ngIf]="clrDgItems.length > 0">
+                <clr-dg-row *clrDgItems="let n of clrDgItems">
+                    <clr-dg-cell>BBB</clr-dg-cell>
+                    <clr-dg-cell>BBB</clr-dg-cell>
+                </clr-dg-row>
+            </ng-template>
         </clr-datagrid>
     `
 })
 class DynamicTest {
     secondColumn = true;
-    rowsReady = false;
+    projected = false;
+    clrDgItems: number[] = [];
 }
 
 @Component({

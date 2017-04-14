@@ -101,7 +101,7 @@ export class Items {
     /**
      * List of items currently displayed
      */
-    private _displayed: any[];
+    private _displayed: any[] = [];
     public get displayed(): any[] {
         // Ideally we could return an immutable array, but we don't have it in Clarity yet.
         return this._displayed;

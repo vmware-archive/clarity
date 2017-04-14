@@ -17,9 +17,10 @@ PLEASE FILL OUT THE FOLLOWING. WE MAY CLOSE INCOMPLETE ISSUES.
 
 ### Reproduction of behavior
 <!-- Include a working plunker link reproducing the behavior. -->
-<!-- Clarity Plunker Tempplates -->
-<!-- Clarity Version: [Latest](https://plnkr.co/8TwwdL) -->
-<!-- Clarity Version: [0.7.6](https://plnkr.co/iWrQNL) -->
+<!-- Clarity Plunker Templates -->
+* Include a link to the reproduction scenario you created by forking one of the Clarity Plunker Templates:
+<!-- Clarity Version: [Latest - 0.9.x](https://plnkr.co/uNwwZe) -->
+<!-- Clarity Version: [Legacy - 0.8.15](https://plnkr.co/8TwwdL) -->
 
 ### Environment details
 

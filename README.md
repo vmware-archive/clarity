@@ -142,6 +142,6 @@ The Clarity project team welcomes contributions from the community. For more det
 ## Feedback
 
 If you find a bug or want to request a new feature, please open a [GitHub issue](https://github.com/vmware/clarity/issues).
-If possible please provide a minimal demo illustrating the issue by forking one of the Clarity Plunker Templates 
-- Clarity Version: [Latest](https://plnkr.co/8TwwdL)
-- Clarity Version: [0.7.6](https://plnkr.co/iWrQNL)
+* Include a link to the reproduction scenario you created by forking one of the Clarity Plunker Templates:
+  - Clarity Version: [Latest - 0.9.x](https://plnkr.co/uNwwZe)
+  - Clarity Version: [Legacy - 0.8.15](https://plnkr.co/8TwwdL)

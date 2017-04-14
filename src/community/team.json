@@ -15,7 +15,7 @@
     }, {
         "name": "Eudes Petonnet-Vincent",
         "role": "clarityNG Lead",
-        "blurb": "Eudes is the technical lead for Clarity. He spends most of his day working on the overall architecture of clarity-angular as well as building Angular 2 components for Clarity.",
+        "blurb": "Eudes is the technical lead for Clarity. He spends most of his day working on the overall architecture of clarity-angular as well as building Angular components for Clarity.",
         "twitter": "EudesPV",
         "img": "eudes.png",
         "workstreams": ["UI", "CR", "NG"]
@@ -35,7 +35,7 @@
     }, {
         "name": "Jeeyun Lim",
         "role": "Developer",
-        "blurb": "Jeeyun is working on clarityCORE, which encompasses various tools for building, developing, and shipping Clarity. She's also creating Clarity's Angular 2 components and making sure that the components are beautiful as well as sensible and functional.",
+        "blurb": "Jeeyun is working on clarityCORE, which encompasses various tools for building, developing, and shipping Clarity. She's also creating Clarity's Angular components and making sure that the components are beautiful as well as sensible and functional.",
         "img": "jeeyun.png",
         "workstreams": ["CR", "NG"]
     }, {
@@ -54,7 +54,7 @@
     }, {
         "name": "Shijir Tsogoo",
         "role": "Developer",
-        "blurb": "Shijir recently graduated from the University of Washington. He creates Angular 2 components for Clarity.",
+        "blurb": "Shijir recently graduated from the University of Washington. He creates Angular components for Clarity.",
         "img": "shijir.png",
         "workstreams": ["UI", "NG"]
     }, {

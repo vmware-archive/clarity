@@ -20,7 +20,7 @@ PLEASE FILL OUT THE FOLLOWING. WE MAY CLOSE INCOMPLETE ISSUES.
 
 ### Environment details
 
-* **Angular version:** 2.0.X
+* **Angular version:** 2.0.X | 4.0.X
 
 * **Clarity version:** 
 

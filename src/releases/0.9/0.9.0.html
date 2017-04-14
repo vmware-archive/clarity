@@ -114,16 +114,16 @@
             </li>
             <li>
                 Each wizard page must contain a <code
-                class="clr-code">&lt;template pageTitle&gt;</code> element. This
+                class="clr-code">&lt;ng-template pageTitle&gt;</code> element. This
                 element serves as both the page title as well as the text of the
                 nav element associated with the page. Optionally, a
-                <code class="clr-code">&lt;template pageNavTitle&gt;</code> element
+                <code class="clr-code">&lt;ng-template pageNavTitle&gt;</code> element
                 can be included to give alternate nav text if the page title
                 is too long. If your 0.8 wizard has a <code
                 class="clr-code">clr-wizard-step</code> title that is different
                 from your page title, then you should probably move the text in
                 your <code class="clr-code">clr-wizard-step</code> to a
-                <code class="clr-code">&lt;template pageNavTitle&gt;</code> element
+                <code class="clr-code">&lt;ng-template pageNavTitle&gt;</code> element
                 inside your <code class="clr-code">clr-wizard-page</code>.
             </li>
             <li>
@@ -160,20 +160,20 @@
     &lt;clr-wizard-button type="finish"&gt;Finish&lt;/clr-wizard-button&gt;
 
     &lt;clr-wizard-page&gt;
-        &lt;template clrPageTitle&gt;Title for page 1&lt;/template&gt;
-        &lt;template clrPageNavTitle&gt;Step 1&lt;/template&gt;
+        &lt;ng-template clrPageTitle&gt;Title for page 1&lt;/ng-template&gt;
+        &lt;ng-template clrPageNavTitle&gt;Step 1&lt;/ng-template&gt;
         Content for step 1
     &lt;/clr-wizard-page&gt;
 
     &lt;clr-wizard-page&gt;
-        &lt;template clrPageTitle&gt;Title for page 2&lt;/template&gt;
-        &lt;template clrPageNavTitle&gt;Step 2&lt;/template&gt;
+        &lt;ng-template clrPageTitle&gt;Title for page 2&lt;/ng-template&gt;
+        &lt;ng-template clrPageNavTitle&gt;Step 2&lt;/ng-template&gt;
         Content for step 2
     &lt;/clr-wizard-page&gt;
 
     &lt;clr-wizard-page&gt;
-        &lt;template clrPageTitle&gt;Title for page 3&lt;/template&gt;
-        &lt;template clrPageNavTitle&gt;Step 3&lt;/template&gt;
+        &lt;ng-template clrPageTitle&gt;Title for page 3&lt;/ng-template&gt;
+        &lt;ng-template clrPageNavTitle&gt;Step 3&lt;/ng-template&gt;
         Content for step 3
     &lt;/clr-wizard-page&gt;
 &lt;/clr-wizard&gt;
@@ -202,7 +202,7 @@
                 Previously the title of a <code 
                 class="clr-code">clr-wizard-page</code> relied on a very
                 specific and non-intuitive DOM and classname combination.
-                Wrapping this into a <code class="clr-code">&lt;template
+                Wrapping this into a <code class="clr-code">&lt;ng-template
                 clrPageTitle&gt;</code> makes it easier
                 to manage your DOM structure and allows one element
                 to reflect both the page title and the title in the nav.

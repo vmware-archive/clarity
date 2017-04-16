@@ -177,4 +177,15 @@ gemini.suite('button-group', (child) => {
         .setCaptureElements('#btn-group-test-3')
         .capture('default');
     });
+
+    //Basic Structure
+    gemini.suite('cards', (child) => {
+        child
+            .setUrl('/button-group/static/cards')
+            .before((actions, find) => {
+            actions.waitForElementToShow('#btn-group-test-1', WAIT_TIME);
+        })
+        .setCaptureElements('#btn-group-test-1')
+        .capture('default');
+    });
 });

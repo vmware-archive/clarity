@@ -30,6 +30,7 @@ import {ProjectionUpdateTest3Demo} from "./angular/projection-update-test-3/proj
 import {ProjectionUpdateTest2Demo} from "./angular/projection-update-test-2/projection-update-test-2";
 import {StaticMenuDirectionsDemo} from "./static/menu-directions/menu-directions";
 import {IconButtonGroupDemo} from "./angular/icon-buttons/icon-button-group";
+import {ButtonGroupCardsDemo} from "./static/cards/button-group-cards";
 
 const ROUTES: Routes = [
     {
@@ -48,7 +49,8 @@ const ROUTES: Routes = [
                     { path: "icons", component: ButtonGroupIconsDemo },
                     { path: "icons-with-text", component: ButtonGroupIconsTextDemo },
                     { path: "checkboxes", component: ButtonGroupCheckboxesDemo },
-                    { path: "radios", component: ButtonGroupRadiosDemo }
+                    { path: "radios", component: ButtonGroupRadiosDemo },
+                    { path: "cards", component: ButtonGroupCardsDemo }
                 ]
             },
             {

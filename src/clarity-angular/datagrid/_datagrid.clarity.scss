@@ -296,7 +296,8 @@
             }
         }
 
-        .datagrid-footer-select.checkbox {
+        .datagrid-foot-select.checkbox {
+            display: block;
             line-height: inherit;
             flex: 1 1 100%;
 
@@ -540,6 +541,11 @@
             margin-left: $clr_baselineRem_1_5;
             height: $clr_baselineRem_1_5 - 2px;
         }
+    }
+
+    .datagrid-foot-description {
+        display: block;
+        white-space: nowrap;
     }
 
     // Yes, this is not .datagrid-pagination on purpose.

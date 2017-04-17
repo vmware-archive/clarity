@@ -20,6 +20,7 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./icons-with-text']">Icons with Text</a></li>
             <li><a [routerLink]="['./checkboxes']">Checkboxes</a></li>
             <li><a [routerLink]="['./radios']">Radios</a></li>
+            <li><a [routerLink]="['./cards']">Cards</a></li>
         </ul>
         <router-outlet></router-outlet>
     `

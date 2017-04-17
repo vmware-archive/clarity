@@ -33,6 +33,7 @@ import {ButtonGroupStaticDemo} from "./static/button-group-static";
 import {ButtonGroupAngularDemo} from "./angular/button-group-angular";
 import {ButtonGroupDemo} from "./button-group.demo";
 import {StaticMenuDirectionsDemo} from "./static/menu-directions/menu-directions";
+import {ButtonGroupCardsDemo} from "./static/cards/button-group-cards";
 
 @NgModule({
     imports: [
@@ -64,6 +65,7 @@ import {StaticMenuDirectionsDemo} from "./static/menu-directions/menu-directions
         ButtonGroupIconsTextDemo,
         ButtonGroupTypes,
         StaticMenuDirectionsDemo,
+        ButtonGroupCardsDemo,
 
         ButtonGroupStaticDemo,
         ButtonGroupAngularDemo,
@@ -93,6 +95,7 @@ import {StaticMenuDirectionsDemo} from "./static/menu-directions/menu-directions
         ButtonGroupIconsTextDemo,
         ButtonGroupTypes,
         StaticMenuDirectionsDemo,
+        ButtonGroupCardsDemo,
 
         ButtonGroupStaticDemo,
         ButtonGroupAngularDemo,

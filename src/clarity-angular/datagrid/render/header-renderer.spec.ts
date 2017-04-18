@@ -27,50 +27,50 @@ export default function(): void {
         });
 
         it("computes and sets the width of a column based on its scrollWidth", function() {
-            domAdapter._scrollWidth = 42;
-            expect(context.clarityDirective.computeWidth()).toBe(42);
-            expect(context.clarityElement.style.width).toBe("42px");
+            domAdapter._scrollWidth = 123;
+            expect(context.clarityDirective.computeWidth()).toBe(123);
+            expect(context.clarityElement.style.width).toBe("123px");
         });
 
         it("resets the column to default width when notified", function() {
-            domAdapter._scrollWidth = 42;
+            domAdapter._scrollWidth = 123;
             context.clarityDirective.computeWidth();
-            expect(context.clarityElement.style.width).toBe("42px");
+            expect(context.clarityElement.style.width).toBe("123px");
             organizer.clearWidths.next();
             expect(context.clarityElement.style.width).toBeFalsy();
         });
 
         it("sets a strict column width upon clearing when the user declared one", function() {
-            domAdapter._userDefinedWidth = 42;
+            domAdapter._userDefinedWidth = 123;
             organizer.clearWidths.next();
-            expect(context.clarityDirective.strictWidth).toBe(42);
+            expect(context.clarityDirective.strictWidth).toBe(123);
             domAdapter._userDefinedWidth = 0;
             organizer.clearWidths.next();
             expect(context.clarityDirective.strictWidth).toBeUndefined();
         });
 
         it("does not remove the width defined by the user", function() {
-            context.clarityElement.style.width = "42px";
-            domAdapter._userDefinedWidth = 42;
+            context.clarityElement.style.width = "123px";
+            domAdapter._userDefinedWidth = 123;
             organizer.clearWidths.next();
-            expect(context.clarityElement.style.width).toBe("42px");
+            expect(context.clarityElement.style.width).toBe("123px");
             // One extra cycle to be sure, because clearing widths before computing them
             // might have a special case handling
             context.clarityDirective.computeWidth();
-            expect(context.clarityElement.style.width).toBe("42px");
+            expect(context.clarityElement.style.width).toBe("123px");
             organizer.clearWidths.next();
-            expect(context.clarityElement.style.width).toBe("42px");
+            expect(context.clarityElement.style.width).toBe("123px");
         });
 
         it("does not set the width when the user declared a strict one", function() {
-            domAdapter._scrollWidth = 42;
+            domAdapter._scrollWidth = 123;
             context.clarityDirective.strictWidth = 24;
             expect(context.clarityDirective.computeWidth()).toBe(24);
             expect(context.clarityElement.style.width).toBeFalsy();
             expect(context.clarityElement.classList).toContain("datagrid-fixed-width");
             delete context.clarityDirective.strictWidth;
-            expect(context.clarityDirective.computeWidth()).toBe(42);
-            expect(context.clarityElement.style.width).toBe("42px");
+            expect(context.clarityDirective.computeWidth()).toBe(123);
+            expect(context.clarityElement.style.width).toBe("123px");
             expect(context.clarityElement.classList).not.toContain("datagrid-fixed-width");
         });
     });

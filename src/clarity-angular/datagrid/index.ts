@@ -25,6 +25,7 @@ import { DatagridTableRenderer } from "./render/table-renderer";
 import { DatagridHeaderRenderer } from "./render/header-renderer";
 import { DatagridHeadRenderer } from "./render/head-renderer";
 import { DatagridBodyRenderer } from "./render/body-renderer";
+import { DatagridColumnResizer } from "./render/column-resizer";
 import { DatagridRowRenderer } from "./render/row-renderer";
 import {DatagridRowMasterRenderer} from "./render/row-master-renderer";
 import { DatagridCellRenderer } from "./render/cell-renderer";
@@ -77,6 +78,7 @@ export const DATAGRID_DIRECTIVES: Type<any>[] = [
     DatagridHeadRenderer,
     DatagridHeaderRenderer,
     DatagridBodyRenderer,
+    DatagridColumnResizer,
     DatagridRowRenderer,
     DatagridRowMasterRenderer,
     DatagridCellRenderer,

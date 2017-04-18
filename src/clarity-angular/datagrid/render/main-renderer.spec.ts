@@ -115,24 +115,24 @@ export default function(): void {
             });
 
             it("uses headers content to compute columns width", function() {
-                context.testComponent.firstHeader = "ZZZZZZ";
+                context.testComponent.firstHeader = "ZZZZZZ ZZZZZZ ZZZZZZ ZZZZZZ";
                 context.detectChanges();
                 organizer.resize();
                 expect(organizer.widths[0].px).toBeGreaterThan(organizer.widths[1].px);
                 context.testComponent.firstHeader = "AAA";
-                context.testComponent.secondHeader = "ZZZZZZ";
+                context.testComponent.secondHeader = "ZZZZZZ ZZZZZZ ZZZZZZ ZZZZZZ";
                 context.detectChanges();
                 organizer.resize();
                 expect(organizer.widths[0].px).toBeLessThan(organizer.widths[1].px);
             });
 
             it("uses cells content to compute columns width", function() {
-                context.testComponent.firstCell = "ZZZZZZ";
+                context.testComponent.firstCell = "ZZZZZZ ZZZZZZ ZZZZZZ ZZZZZZ";
                 context.detectChanges();
                 organizer.resize();
                 expect(organizer.widths[0].px).toBeGreaterThan(organizer.widths[1].px);
                 context.testComponent.firstCell = "AAA";
-                context.testComponent.secondCell = "ZZZZZZ";
+                context.testComponent.secondCell = "ZZZZZZ ZZZZZZ ZZZZZZ ZZZZZZ";
                 context.detectChanges();
                 organizer.resize();
                 expect(organizer.widths[0].px).toBeLessThan(organizer.widths[1].px);

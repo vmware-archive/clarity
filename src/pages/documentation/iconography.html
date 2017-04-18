@@ -247,7 +247,7 @@
         The ClarityIcons API enables you to add your own icons to the publically available ClarityIcons architecture. Use the following call to add your icon to our library in your application:
     </p>
     <pre><code clr-code-highlight="language-typescript">
-ClarityIcons.add({{'{'}}"shapeNameGoesHere": &quot;&lt;svg ... &gt;[your SVG code goes here]&lt;/svg&gt;&quot;{{'}'}});
+ClarityIcons.add(&#123;"shapeNameGoesHere": &quot;&lt;svg ... &gt;[your SVG code goes here]&lt;/svg&gt;&quot;&#125;);
 </code></pre>
     <p>
         This API method will assign your SVG markup to the named shape it is sent. The icon can then be retrieved like in your application like any other icon in the ClarityIcons library.
@@ -261,7 +261,7 @@ ClarityIcons.add({{'{'}}"shapeNameGoesHere": &quot;&lt;svg ... &gt;[your SVG cod
         The Clarity Icons API can create aliases for the icons in your application with a single API call:
     </p>
     <pre><code clr-code-highlight="language-typescript">
-ClarityIcons.alias({{'{'}}"bell": ["alarm", "oh-noehz"]{{'}'}});
+ClarityIcons.alias(&#123;"bell": ["alarm", "oh-noehz"]&#125;);
 </code></pre>
     <p>
         The above method call will assign "alarm" and "oh-noehz" names to the existing "bell" icon shape. Now you can use the "bell" icon with any of the new names you have assigned it.

@@ -113,6 +113,18 @@ npm install mutationobserver-shim@0.3.2 --save
 ]
 </code></pre>
     </li>
+    <li>
+        (Optional) If you load Clarity Icons by importing it in Typescript, you can load the shape sets modularly:
+        <pre><code clr-code-highlight="language-typescript">
+import 'clarity-icons';
+</code></pre> Unlike loading <code class="clr-code">clarity-icons.min.js</code> in a <code class="clr-code">script</code> tag, the pattern above won't load all shape sets, but only Core Shapes. Thus, you can load additional sets on demand when you need shapes from those sets. For example, if I need to use
+        <code class="clr-code">play</code> icon, which happens to be in the set of Essential Shapes, I would want to import <code class="clr-code">essential-shapes</code> as well:
+        <pre><code clr-code-highlight="language-typescript">
+import 'clarity-icons';
+import 'clarity-icons/shapes/essential-shapes';
+</code></pre>
+
+    </li>
 </ol>
 
 <h5 id="step-2b-install-clarity-ui">Step 2b: Install Clarity UI</h5>

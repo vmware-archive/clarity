@@ -23,6 +23,7 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, On
     @ContentChildren(DatagridHeaderRenderer) public headers: QueryList<DatagridHeaderRenderer>;
 
     ngAfterContentInit() {
+
         this._subscriptions.push(this.headers.changes.subscribe(() => {
             // TODO: only re-stabilize if a column was added or removed. Reordering is fine.
             this.columnsSizesStable = false;
@@ -39,6 +40,7 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, On
     }
 
     private _subscriptions: Subscription[] = [];
+
     ngOnDestroy() {
         this._subscriptions.forEach(sub => sub.unsubscribe());
     }
@@ -47,7 +49,25 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, On
      * Makes each header compute its width.
      */
     private computeHeadersWidth() {
+
+        let nbColumns: number = this.headers.length;
+        let allStrict = true;
+
         this.headers.forEach((header, index) => {
+
+            // On the last header column check whether all columns have strict widths.
+            // If all columns have strict widths, remove the strict width from the last column and make it the column's
+            // minimum width so that when all previous columns shrink, it will get a flexible width and cover the empty
+            // gap in the Datagrid.
+
+            if (!header.strictWidth) {
+                allStrict = false;
+            }
+
+            if (nbColumns === index + 1 && allStrict) {
+                header.strictWidth = 0;
+            }
+
             let width = header.computeWidth();
             this.organizer.widths[index] = {px: width, strict: !!header.strictWidth};
         });
@@ -64,7 +84,9 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, On
      * Triggers a whole re-rendring cycle to set column sizes, if needed.
      */
     private stabilizeColumns() {
-        if (this.columnsSizesStable) { return; }
+        if (this.columnsSizesStable) {
+            return;
+        }
         // No point resizing if there are no rows, we wait until they are actually loaded.
         if (this.items.displayed.length > 0) {
             this.organizer.resize();

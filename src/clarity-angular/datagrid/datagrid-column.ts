@@ -4,19 +4,20 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    Component, ContentChild, HostBinding, Input, Output, EventEmitter
+    Component, ContentChild, HostBinding, Input, Output, EventEmitter, ElementRef, ViewChild
 } from "@angular/core";
-import { Subscription } from "rxjs";
+import {Subscription} from "rxjs";
 
-import { DatagridPropertyComparator } from "./built-in/comparators/datagrid-property-comparator";
-import { DatagridPropertyStringFilter } from "./built-in/filters/datagrid-property-string-filter";
-import { Comparator } from "./interfaces/comparator";
-import { CustomFilter } from "./providers/custom-filter";
-import { Sort } from "./providers/sort";
-import { DatagridFilterRegistrar } from "./utils/datagrid-filter-registrar";
-import { FiltersProvider } from "./providers/filters";
-import { DatagridStringFilterImpl } from "./built-in/filters/datagrid-string-filter-impl";
-import { SortOrder } from "./interfaces/sort-order";
+import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
+import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
+import {Comparator} from "./interfaces/comparator";
+import {CustomFilter} from "./providers/custom-filter";
+import {Sort} from "./providers/sort";
+import {DatagridFilterRegistrar} from "./utils/datagrid-filter-registrar";
+import {FiltersProvider} from "./providers/filters";
+import {DatagridStringFilterImpl} from "./built-in/filters/datagrid-string-filter-impl";
+import {SortOrder} from "./interfaces/sort-order";
+import {DragDispatcher} from "./providers/drag-dispatcher";
 
 @Component({
     selector: "clr-dg-column",
@@ -30,10 +31,20 @@ import { SortOrder } from "./interfaces/sort-order";
                 [clrDgStringFilter]="registered"
                 [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
 
-            <button class="datagrid-column-title" [disabled]="!sortable" (click)="sort()">
-                <ng-content></ng-content>
+            <template #columnTitle><ng-content></ng-content></template>
+            
+            <button class="datagrid-column-title" *ngIf="sortable" (click)="sort()">
+               <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
             </button>
-            <div class="datagrid-column-separator"></div>        
+            
+            <span class="datagrid-column-title" *ngIf="!sortable">
+               <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
+            </span>
+            
+            <div class="datagrid-column-separator">
+                <button #columnHandle class="datagrid-column-handle" tabindex="-1"></button>
+                <div #columnHandleTracker class="datagrid-column-handle-tracker"></div>
+            </div>        
         </div>
     `,
     host: {
@@ -41,7 +52,7 @@ import { SortOrder } from "./interfaces/sort-order";
     }
 })
 export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilterImpl> {
-    constructor(private _sort: Sort, filters: FiltersProvider) {
+    constructor(private _sort: Sort, filters: FiltersProvider, private _dragDispatcher: DragDispatcher) {
         super(filters);
         this._sortSubscription = _sort.change.subscribe(sort => {
             // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
@@ -57,6 +68,14 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
             // deprecated: to be removed - END
         });
     }
+
+    @ViewChild("columnHandle") set handleElRef(value: ElementRef) {
+        this._dragDispatcher.handleRef = value;
+    };
+
+    @ViewChild("columnHandleTracker") set handleTrackerElRef(value: ElementRef) {
+        this._dragDispatcher.handleTrackerRef = value;
+    };
 
     /**
      * Subscription to the sort service changes
@@ -127,7 +146,8 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
 
         switch (value) {
             // the Unsorted case happens when the current state is either Asc or Desc
-            default: case SortOrder.Unsorted:
+            default:
+            case SortOrder.Unsorted:
                 this._sort.clear();
                 break;
             case SortOrder.Asc:
@@ -193,6 +213,7 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
      * A custom filter for this column that can be provided in the projected content
      */
     public customFilter = false;
+
     @ContentChild(CustomFilter)
     public set projectedFilter(custom: any) {
         if (custom) {
@@ -209,6 +230,7 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
     public get field() {
         return this._field;
     }
+
     @Input("clrDgField")
     public set field(field: string) {
         if (typeof field === "string") {
@@ -225,9 +247,12 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
     public get filterValue() {
         return this.filter.value;
     }
+
     @Input("clrFilterValue")
     public set filterValue(newValue: string) {
-        if (!this.filter) { return; }
+        if (!this.filter) {
+            return;
+        }
         if (!newValue) {
             newValue = "";
         }

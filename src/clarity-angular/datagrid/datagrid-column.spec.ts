@@ -18,14 +18,16 @@ import { DatagridStringFilter } from "./built-in/filters/datagrid-string-filter"
 import { DatagridRenderOrganizer } from "./render/render-organizer";
 import { DomAdapter } from "./render/dom-adapter";
 import { SortOrder } from "./interfaces/sort-order";
+import {DragDispatcher} from "./providers/drag-dispatcher";
 
-const PROVIDERS_NEEDED = [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter];
+const PROVIDERS_NEEDED = [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher];
 
 export default function (): void {
     describe("DatagridColumn component", function () {
         describe("Typescript API", function () {
             let sortService: Sort;
             let filtersService: FiltersProvider;
+            let dragDispatcherService: DragDispatcher;
             let comparator: TestComparator;
             let component: DatagridColumn;
 
@@ -33,7 +35,7 @@ export default function (): void {
                 sortService = new Sort();
                 filtersService = new FiltersProvider();
                 comparator = new TestComparator();
-                component = new DatagridColumn(sortService, filtersService);
+                component = new DatagridColumn(sortService, filtersService, dragDispatcherService);
             });
 
             it("receives a comparator to sort the column", function () {
@@ -237,15 +239,15 @@ export default function (): void {
             });
 
             it("displays a clickable column title to sort if the column is sortable", function () {
-                let title = context.clarityElement.querySelector("button.datagrid-column-title");
-                expect(title.disabled).toBe(true);
+                let title = context.clarityElement.querySelector(".datagrid-column-title");
+                expect(title.tagName).toBe("SPAN");
                 title.click();
                 context.detectChanges();
                 expect(context.clarityDirective.sortOrder).toBe(SortOrder.Unsorted);
-
                 context.testComponent.comparator = new TestComparator();
                 context.detectChanges();
-                expect(title.disabled).toBe(false);
+                title = context.clarityElement.querySelector(".datagrid-column-title");
+                expect(title.tagName).toBe("BUTTON");
                 title.click();
                 context.detectChanges();
                 expect(context.clarityDirective.sortOrder).toBe(SortOrder.Asc);

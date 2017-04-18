@@ -86,6 +86,9 @@
         .datagrid-column, .datagrid-cell {
             display: table-cell;
         }
+        .datagrid-column-separator {
+            display: none;
+        }
     }
 
     $clr-datagrid-icon-size: rem(1);
@@ -137,8 +140,14 @@
             border-bottom: 2*$clr-table-borderwidth solid $clr-light-midtone-gray;
         }
 
+
+
         .datagrid-column, .datagrid-cell {
             text-align: left;
+        }
+
+        clr-dg-column {
+            min-width: $clr_baselineRem_4;
         }
 
         .datagrid-column {
@@ -149,16 +158,18 @@
             .datagrid-column-title {
                 @include clr-no-styles-button();
                 color: $clr-dark-gray;
-                &:not([disabled]):hover {
-                    text-decoration: underline;
-                }
                 text-align: left;
                 flex: 1 1 auto;
                 align-self: flex-start;
             }
 
+            button.datagrid-column-title:hover {
+                text-decoration: underline;
+            }
+
             .datagrid-column-separator {
                 position: relative;
+                left: $clr-baselineRem_0_5;
                 flex: 0 0 auto;
                 width: 1px;
                 order: 100;
@@ -170,8 +181,32 @@
                     height: calc(100% + #{$clr-baselineRem_0_5 - 1});
                     width: 1px;
                     top: -$clr-baselineRem_0_25 + 1;
-                    left: $clr-baselineRem_0_5;
+                    left: 0;
                     background-color: $clr-lighter-midtone-gray;
+                }
+
+                .datagrid-column-handle {
+                    @include clr-no-styles-button();
+                    display: block;
+                    position: absolute;
+                    width: $clr-baselineRem_0_5+1;
+                    right: -$clr-baselineRem_0_25;
+                    top: -$clr-baselineRem_0_25;
+                    cursor: col-resize;
+                    height: calc(100% + #{$clr-baselineRem_0_5 - 1});
+                    z-index: map-get($clr-layers, dropdown-menu);
+                }
+                .datagrid-column-handle-tracker {
+                    position: absolute;
+                    right: 0;
+                    top: -$clr-baselineRem_0_5;
+                    display: none;
+                    width: 0;
+                    height: 100vh;
+                    border-right: 1px dotted $clr-action-blue-lighter;
+                }
+                .exceeded-max {
+                    border-right: 1px dotted rgba($clr-red-light-midtone, 0.3);
                 }
             }
 
@@ -274,6 +309,7 @@
                 }
             }
         }
+
 
         .datagrid-fixed-column {
             flex: 0 0 $clr-datagrid-fixed-column-size;
@@ -603,5 +639,6 @@
         padding: 0 !important;
         width: 0;
         flex: 0 0 auto !important;
+        min-width: 0 !important;
     }
 }

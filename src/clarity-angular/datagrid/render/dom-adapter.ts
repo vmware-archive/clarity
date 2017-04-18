@@ -33,4 +33,16 @@ export class DomAdapter {
     computedHeight(element: any) {
         return parseInt(getComputedStyle(element).getPropertyValue("height"), 10);
     }
+
+    clientRectRight(element: any): number {
+        return parseInt(element.getBoundingClientRect().right, 10);
+    }
+
+    clientRectWidth(element: any): number {
+        return parseInt(element.getBoundingClientRect().width, 10);
+    }
+
+    minWidth(element: any): number {
+        return parseInt(getComputedStyle(element).getPropertyValue("min-width"), 10);
+    }
 }

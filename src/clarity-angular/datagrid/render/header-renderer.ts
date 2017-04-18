@@ -8,37 +8,49 @@ import {Subscription} from "rxjs/Subscription";
 import {DomAdapter} from "./dom-adapter";
 import {STRICT_WIDTH_CLASS} from "./constants";
 import {DatagridRenderOrganizer} from "./render-organizer";
+import {DatagridColumnResizer} from "./column-resizer";
 
 @Directive({
     selector: "clr-dg-column"
 })
 export class DatagridHeaderRenderer implements OnDestroy {
 
-    constructor(private el: ElementRef, private renderer: Renderer, private domAdapter: DomAdapter,
-                organizer: DatagridRenderOrganizer) {
+
+    constructor(private el: ElementRef,
+                private renderer: Renderer,
+                private organizer: DatagridRenderOrganizer,
+                private domAdapter: DomAdapter,
+                private columnResizer: DatagridColumnResizer) {
+
         this.subscription = organizer.clearWidths.subscribe(() => this.clearWidth());
     }
 
     private subscription: Subscription;
+
+    /**
+     * Indicates if the column has a strict width, so it doesn't shrink or expand based on the content.
+     */
+    public strictWidth: number;
+    private widthSet: boolean = false;
+
+
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
 
-    /**
-     * Indicates if the column has a strict width, so it doesn't grow or shrink
-     */
-    public strictWidth: number;
-
-    private widthSet = false;
-
     private clearWidth() {
-        this.renderer.setElementClass(this.el.nativeElement, STRICT_WIDTH_CLASS, false);
-        // We only clear if we set the width ourselves, otherwise we risk clearing consumer styles.
-        if (this.widthSet) {
+
+        // remove the width only if we set it, and it is not changed by dragging.
+        if (this.widthSet && !this.columnResizer.columnResizeBy) {
             this.renderer.setElementStyle(this.el.nativeElement, "width", null);
-            this.widthSet = false;
         }
-        let strictWidth = this.domAdapter.userDefinedWidth(this.el.nativeElement);
+
+        let strictWidth: number = this.domAdapter.userDefinedWidth(this.el.nativeElement);
+
+        if (this.columnResizer.columnResizeBy) {
+            strictWidth = this.columnResizer.columnRectWidth + this.columnResizer.columnResizeBy;
+        }
+
         if (strictWidth) {
             this.strictWidth = strictWidth;
         } else {
@@ -47,16 +59,27 @@ export class DatagridHeaderRenderer implements OnDestroy {
     }
 
     public computeWidth(): number {
-        if (this.strictWidth) {
-            // We do NOT set the width here, since we know the user already provided it.
-            this.renderer.setElementClass(this.el.nativeElement, STRICT_WIDTH_CLASS, true);
-            return this.strictWidth;
-        } else {
-            let width = this.domAdapter.scrollWidth(this.el.nativeElement);
-            this.renderer.setElementClass(this.el.nativeElement, STRICT_WIDTH_CLASS, false);
+
+        let width: number = this.strictWidth;
+
+        this.renderer.setElementClass(this.el.nativeElement, STRICT_WIDTH_CLASS, !!width);
+
+        if (this.columnResizer.columnResizeBy) {
+            this.renderer.setElementStyle(this.el.nativeElement, "width", width + "px");
+            this.columnResizer.columnResizeBy = 0;
+            this.widthSet = false;
+        }
+
+        if (!width) {
+
+            width = this.domAdapter.scrollWidth(this.el.nativeElement);
+
             this.renderer.setElementStyle(this.el.nativeElement, "width", width + "px");
             this.widthSet = true;
-            return width;
         }
+        return width;
     }
+
+
 }
+

@@ -77,7 +77,7 @@ module.exports = function (config) {
             pageTitle: 'Unit Tests',
             subPageTitle: __dirname
         },
-
+        browserNoActivityTimeout: 100000,
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,

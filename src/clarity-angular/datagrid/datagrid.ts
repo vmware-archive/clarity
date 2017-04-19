@@ -40,7 +40,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
 
     constructor(public selection: Selection, private sort: Sort, private filters: FiltersProvider,
                 private page: Page, public items: Items, public rowActionService: RowActionService,
-                public expandableRows: GlobalExpandableRows) {}
+                public expandableRows: GlobalExpandableRows, private organizer: DatagridRenderOrganizer) {}
 
     /* reference to the enum so that template can access */
     public SELECTION_TYPE = SelectionType;
@@ -250,5 +250,9 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
 
     ngOnDestroy() {
         this._subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
+    }
+
+    resize(): void {
+        this.organizer.resize();
     }
 }

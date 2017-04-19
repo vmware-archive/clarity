@@ -1058,7 +1058,7 @@ export const essentialShapes: any = {
             <circle cx="30" cy="6" r="5"  class="clr-i-solid--badged clr-i-solid-path-2--badged clr-i-badge" />
         </svg>`,
 
-    /*TODO: network is deprecated and will be removed in 0.9.0*/
+    /*TODO: network is deprecated and will be removed in 0.10.0*/
 
     "network": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="has-solid">		

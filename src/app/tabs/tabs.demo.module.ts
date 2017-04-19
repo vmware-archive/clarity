@@ -10,6 +10,8 @@ import {ROUTING} from "./tabs.demo.routing";
 import {TabsDemo} from "./tabs.demo";
 import {TabsStaticDemo} from "./tabs-static";
 import {TabsAngularDemo} from "./tabs-angular";
+import {VTabsStaticDemo} from "./vtabs-static";
+import {VTabsAngularDemo} from "./vtabs-angular";
 
 @NgModule({
     imports: [
@@ -20,12 +22,16 @@ import {TabsAngularDemo} from "./tabs-angular";
     declarations: [
         TabsDemo,
         TabsStaticDemo,
-        TabsAngularDemo
+        TabsAngularDemo,
+        VTabsStaticDemo,
+        VTabsAngularDemo
     ],
     exports: [
         TabsDemo,
         TabsStaticDemo,
-        TabsAngularDemo
+        TabsAngularDemo,
+        VTabsStaticDemo,
+        VTabsAngularDemo
     ]
 })
 export default class TabsDemoModule {

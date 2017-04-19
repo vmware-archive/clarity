@@ -178,8 +178,9 @@
 // no dependencies on other clarity scss
 @import "./animations/animations.clarity";
 
-//Tabs
+//Tabs & Vertical Tabs
 @import "./tabs/tabs.clarity"; // no dependencies on other clarity scss
+@import "./tabs/vertical-tabs.clarity"; // TODO - notes here
 
 //Wizards
 // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity, layers.clarity

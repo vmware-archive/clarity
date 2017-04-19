@@ -20,6 +20,7 @@ import { StringFilter } from "./interfaces/string-filter";
 import { DatagridStringFilterImpl } from "./built-in/filters/datagrid-string-filter-impl";
 import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
 import {GlobalExpandableRows} from "./providers/global-expandable-rows";
+import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 export default function (): void {
     describe("Datagrid component", function () {
@@ -37,6 +38,17 @@ export default function (): void {
                 expect(refreshed).toBe(false);
                 context.clarityDirective.dataChanged();
                 expect(refreshed).toBe(true);
+            });
+
+            it("allows to manually resize the datagrid", function() {
+                let organizer: DatagridRenderOrganizer = context.getClarityProvider(DatagridRenderOrganizer);
+                let resizeDone: boolean = false;
+                organizer.done.subscribe(() => {
+                    resizeDone = true;
+                });
+                expect(resizeDone).toBe(false);
+                context.clarityDirective.resize();
+                expect(resizeDone).toBe(true);
             });
 
         });

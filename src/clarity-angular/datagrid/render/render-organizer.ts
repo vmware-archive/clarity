@@ -36,6 +36,11 @@ export class DatagridRenderOrganizer {
     public scrollbar = new Subject<any>();
     public scrollbarWidth = new Subject<number>();
 
+    protected _done = new Subject<any>();
+    public get done(): Observable<any> {
+        return this._done.asObservable();
+    }
+
     public resize() {
         this.widths.length = 0;
         this._clearWidths.next();
@@ -44,6 +49,7 @@ export class DatagridRenderOrganizer {
         this._tableMode.next(false);
         this._alignColumns.next();
         this.scrollbar.next();
+        this._done.next();
     }
 
 }

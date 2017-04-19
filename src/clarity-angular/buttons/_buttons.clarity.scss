@@ -373,7 +373,8 @@ $clr-button-appearance-map: (
             //refer: http://stackoverflow.com/a/32196680/3538394
             display: inline-table;
 
-            padding: 0 12px
+            line-height: inherit;
+            padding: 0 12px;
         }
     }
 

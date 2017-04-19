@@ -22,7 +22,7 @@
     width: $height;
 }
 
-@mixin checkbox-radio-label-styles($min-height, $padding-left) {
+@mixin checkbox-radio-label-styles($min-height, $padding-left, $line-height: $clr_baselineRem_1) {
     //Positioning
     position: relative;
 
@@ -31,6 +31,7 @@
     min-height: $min-height;
     padding-left: $padding-left;
     cursor: pointer;
+    line-height: $line-height;
 }
 
 @mixin checkbox-radio-shared-inactive($height, $top, $left, $border-color) {

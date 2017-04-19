@@ -3,6 +3,14 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @include exports('checkbox.clarity') {
+    .checkbox {
+        display: block;
+    }
+
+    .checkbox-inline {
+        display: inline-block;
+    }
+
     .checkbox,
     .checkbox-inline {
         position: relative;

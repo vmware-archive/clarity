@@ -4,6 +4,14 @@
 
 @include exports('radio.clarity') {
 
+    .radio {
+        display: block;
+    }
+
+    .radio-inline {
+        display: inline-block;
+    }
+
     .radio,
     .radio-inline {
         position: relative;

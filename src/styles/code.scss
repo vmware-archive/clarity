@@ -48,8 +48,7 @@
 //another PrismJS theme.
 :not(pre)>code[class*="language-"],
 pre[class*="language-"],
-pre,
-code[class*="language-"] {
+pre {
     background: transparent;
     padding: 0 0 $clr_baselineRem_1 $clr_baselineRem_1;
 }

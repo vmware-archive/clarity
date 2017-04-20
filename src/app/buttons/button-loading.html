@@ -1,0 +1,17 @@
+
+<!--
+  ~ Copyright (c) 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Loading Buttons</h4>
+<button [clrLoading]="validateLoading" class="btn btn-info-outline" (click)="validateDemo()">Validate</button>
+<button [clrLoading]="submitLoading" type="submit" class="btn btn-success-outline" (click)="submitDemo()">Submit</button>
+
+<pre>
+    <code clr-code-highlight="language-html">
+    &lt;button [clrLoading]=&quot;validateLoading&quot; class=&quot;btn btn-info-outline&quot;&gt;Validate&lt;/button&gt;
+    &lt;button [clrLoading]=&quot;submitLoading&quot; type=&quot;submit&quot; class=&quot;btn btn-success-outline&quot;&gt;Success&lt;/button&gt;
+    </code>
+</pre>

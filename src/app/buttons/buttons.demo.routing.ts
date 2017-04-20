@@ -12,6 +12,7 @@ import {SecondaryButtonDemo} from "./secondary-button";
 import {TertiaryButtonDemo} from "./tertiary-button";
 import {InverseButtonDemo} from "./inverse-button";
 import {ButtonStatesDemo} from "./button-states";
+import {ButtonLoadingDemo} from "./button-loading";
 import {ButtonSizesDemo} from "./button-sizes";
 import {ToggleDemo} from "./toggles";
 import {ButtonsTestDemo} from "./buttons-test";
@@ -29,6 +30,7 @@ const ROUTES: Routes = [
             { path: "tertiary-button", component: TertiaryButtonDemo },
             { path: "inverse-button", component: InverseButtonDemo },
             { path: "button-states", component: ButtonStatesDemo },
+            { path: "button-loading", component: ButtonLoadingDemo },
             { path: "button-sizes", component: ButtonSizesDemo },
             { path: "toggles", component: ToggleDemo },
             { path: "buttons-test", component: ButtonsTestDemo },

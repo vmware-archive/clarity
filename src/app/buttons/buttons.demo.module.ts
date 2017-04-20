@@ -14,6 +14,7 @@ import {SecondaryButtonDemo} from "./secondary-button";
 import {TertiaryButtonDemo} from "./tertiary-button";
 import {InverseButtonDemo} from "./inverse-button";
 import {ButtonStatesDemo} from "./button-states";
+import {ButtonLoadingDemo} from "./button-loading";
 import {ButtonSizesDemo} from "./button-sizes";
 import {ToggleDemo} from "./toggles";
 import {ButtonsTestDemo} from "./buttons-test";
@@ -33,6 +34,7 @@ import {ButtonsIconsDemo} from "./buttons-icons";
         TertiaryButtonDemo,
         InverseButtonDemo,
         ButtonStatesDemo,
+        ButtonLoadingDemo,
         ButtonSizesDemo,
         ToggleDemo,
         ButtonsTestDemo,
@@ -46,6 +48,7 @@ import {ButtonsIconsDemo} from "./buttons-icons";
         TertiaryButtonDemo,
         InverseButtonDemo,
         ButtonStatesDemo,
+        ButtonLoadingDemo,
         ButtonSizesDemo,
         ToggleDemo,
         ButtonsTestDemo,

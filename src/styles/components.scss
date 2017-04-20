@@ -16,7 +16,7 @@
 .component-workstream-bugs {
     position: absolute;
     top: $bl-1_0;
-    right: 0;
+    right: $bl-1_0;
     width: 86px;
     .bug {
         &.hidden {

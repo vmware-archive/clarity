@@ -37,7 +37,7 @@ let nbRow: number = 0;
                 class="datagrid-expandable-caret datagrid-fixed-column">
                 <ng-container *ngIf="expand.expandable">
                     <button (click)="toggleExpand()" *ngIf="!expand.loading">
-                        <clr-icon shape="caret" [dir]="expand.expanded?'down':'right'"></clr-icon>
+                        <clr-icon shape="caret" [attr.dir]="expand.expanded?'down':'right'"></clr-icon>
                     </button>
                     <div class="spinner spinner-sm" *ngIf="expand.loading"></div>
                 </ng-container>

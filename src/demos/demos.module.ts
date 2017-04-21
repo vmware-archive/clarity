@@ -32,6 +32,7 @@ import TogglesDemoModule from "./toggles/toggles.demo.module";
 import TooltipsDemoModule from "./tooltips/tooltips.demo.module";
 import TypographyDemoModule from "./typography/typography.demo.module";
 import WizardDemoModule from "./wizard/wizard.demo.module";
+import WizardDeprecatedDemoModule from "./wizard-deprecated/wizard.demo.module";
 import TreeDemoModule from "./tree-view/tree-view.demo.module";
 
 @NgModule({
@@ -68,7 +69,8 @@ import TreeDemoModule from "./tree-view/tree-view.demo.module";
     TogglesDemoModule,
     TooltipsDemoModule,
     TypographyDemoModule,
-    WizardDemoModule
+    WizardDemoModule,
+    WizardDeprecatedDemoModule
   ]
 })
 export class DemosModule { }

@@ -3,23 +3,22 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "clarity-angular";
-import { CodeHighlight } from "clarity-angular";
+import { Wizard, WizardPage } from "clarity-angular";
 
 @Component({
-    moduleId: module.id,
-    selector: "clr-wizard-async-validation",
-    templateUrl: "./wizard-async-validation.demo.html"
+  selector: "clr-wizard-async-completion",
+  templateUrl: "./wizard-async-completion.demo.html"
 })
-export class WizardAsyncValidation {
+export class WizardAsyncCompletion {
     @ViewChild("wizard") wizard: Wizard;
     @ViewChild("myForm") formData: any;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild("myFinishPage") finishPage: WizardPage;
 
     loadingFlag: boolean = false;
     errorFlag: boolean = false;
+    checked = false;
+    finished = false;
 
     // have to define doCancel because page will prevent doCancel from working
     // if the page had a previous button, you would need to call
@@ -28,17 +27,43 @@ export class WizardAsyncValidation {
         this.wizard.close();
     }
 
+    get showCongrats(): boolean {
+      return !this.errorFlag && this.checked;
+    }
+
+    resetFinalPage(): void {
+      this.loadingFlag = false;
+      this.errorFlag = false;
+      this.checked = false;
+    }
+
+    goBack(): void {
+      this.wizard.previous();
+    }
+
+    doFinish(): void {
+      this.wizard.finish();
+      this.resetFinalPage();
+    }
+
     onCommit(): void {
         let value: any = this.formData.value;
         this.loadingFlag = true;
         this.errorFlag = false;
 
+        if (this.finished) {
+          this.doFinish();
+          return;
+        }
+
         setTimeout(() => {
             if (value.answer === "42") {
-                this.wizard.next();
+              this.finished = true;
             } else {
+                this.finishPage.completed = false;
                 this.errorFlag = true;
             }
+            this.checked = true;
             this.loadingFlag = false;
         }, 1000);
     }

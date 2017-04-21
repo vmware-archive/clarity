@@ -28,22 +28,22 @@ $clr-alert-text-line-height: rem(16 / $clr-rem-denominator);
 $clr-alert-colors: (
         info: (
                 background: $clr-action-blue-lightest,
-                font: $clr-action-blue-dark,
+                font: $clr-dark-gray,
                 border: $clr-action-blue-light
         ),
         success: (
                 background: $clr-green-lightest,
-                font: $clr-green-dark,
+                font: $clr-dark-gray,
                 border: $clr-green
         ),
         warning: (
                 background: $clr-yellow-lighter,
-                font: $clr-near-black,
+                font: $clr-dark-gray,
                 border: $clr-yellow
         ),
         danger: (
                 background: $clr-red-lighter,
-                font: $clr-red-dark,
+                font: $clr-dark-gray,
                 border: $clr-red-light
         ),
         app-info: (
@@ -183,7 +183,7 @@ $clr-alert-colors: (
 
             .alert-action,
             .dropdown-toggle {
-                color: $action-blues-dark;
+                color: $clr-dark-gray;
 
                 &:active {
                     color: $action-purples-darker;

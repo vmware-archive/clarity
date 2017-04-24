@@ -55,6 +55,185 @@ class TypescriptTestComponent {
 
 @Component({
     template: `
+        <clr-wizard-page #nav
+            [(clrWizardPageNextDisabled)]="navTestNextDisabled"
+            [(clrWizardPagePreviousDisabled)]="navTestPreviousDisabled"
+            [(clrWizardPagePreventDefaultCancel)]="navStopCancel"
+        >
+            <ng-template clrPageTitle>Tests of page nav inputs and outputs</ng-template>
+        </clr-wizard-page>
+        <clr-wizard-page #lifecycle>
+            <ng-template clrPageTitle>Tests for lifecycle outputs and event handlers</ng-template>
+        </clr-wizard-page>
+        <clr-wizard-page #other
+            [id]="testId"
+            (clrWizardPageOnLoad)="onLoadCheck($event)"
+        >
+            <ng-template clrPageTitle>Other template API tests</ng-template>
+        </clr-wizard-page>
+    `
+})
+class TemplateTestComponent {
+    @ViewChild("nav") navigationTemplateTester: WizardPage;
+    @ViewChild("lifecycle") lifecycleTemplateTester: WizardPage;
+    @ViewChild("other") otherTemplateTester: WizardPage;
+
+    public navTwoWayBindingPassed: boolean = false;
+    public testId = "ohai";
+
+    private _navTestNextDisabled: boolean = false;
+    public get navTestNextDisabled(): boolean {
+        return this._navTestNextDisabled;
+    }
+    public set navTestNextDisabled(val: boolean) {
+        if (val !== this._navTestNextDisabled) {
+            this.navTwoWayBindingPassed = true;
+            this._navTestNextDisabled = val;
+        }
+    }
+
+    private _navTestPreviousDisabled: boolean = true;
+    public get navTestPreviousDisabled(): boolean {
+        return this._navTestPreviousDisabled;
+    }
+    public set navTestPreviousDisabled(val: boolean) {
+        if (val !== this._navTestPreviousDisabled) {
+            this.navTwoWayBindingPassed = true;
+            this._navTestPreviousDisabled = val;
+        }
+    }
+
+    private _navStopCancel: boolean = false;
+    public get navStopCancel(): boolean {
+        return this._navStopCancel;
+    }
+    public set navStopCancel(val: boolean) {
+        this.navTwoWayBindingPassed = true;
+        this._navStopCancel = val;
+    }
+
+    public loadedPageId = "";
+    public onLoadCheck(pageId: string): void {
+        this.loadedPageId = pageId;
+    }
+}
+
+@Component({
+    template: `
+    <clr-wizard #viewTestWizard [(clrWizardOpen)]="open">
+        <clr-wizard-title>Wizard for Wizard Page View Tests</clr-wizard-title>
+
+        <clr-wizard-button [type]="'cancel'" #wizardCancelBtn
+            class="clr-test-wizard-cancel">Cancel</clr-wizard-button>
+        <clr-wizard-button [type]="'previous'" class="clrtest-wizard-previous"
+            #wizardPreviousBtn>Back</clr-wizard-button>
+        <clr-wizard-button [type]="'custom-custom'"
+            class="clrtest-wizard-custom">Custom</clr-wizard-button>
+        <clr-wizard-button [type]="'next'"
+            class="clrtest-wizard-next">Next</clr-wizard-button>
+        <clr-wizard-button [type]="'danger'"
+            class="clrtest-wizard-danger">Danger</clr-wizard-button>
+        <clr-wizard-button [type]="'finish'"
+            class="clrtest-wizard-finish">Finish</clr-wizard-button>
+
+        <clr-wizard-header-action (actionClicked)="headerActionClicked($event)">
+            <clr-icon shape="cloud" class="is-solid"></clr-icon>
+        </clr-wizard-header-action>
+
+        <clr-wizard-page #viewTestWizardPageOne [id]="testId"
+            [clrWizardPagePreventDefaultCancel]="preventCancel"
+        >
+            <ng-template clrPageTitle>View Page 1</ng-template>
+
+            <ng-template clrPageHeaderActions>
+                <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="bell">
+                    <clr-icon shape="bell" class="has-badge"></clr-icon>
+                </clr-wizard-header-action>
+                <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="warning">
+                    <clr-icon shape="warning"></clr-icon>
+                </clr-wizard-header-action>
+            </ng-template>
+
+            <ng-template clrPageButtons>
+                <clr-wizard-button [type]="'cancel'" class="clrtest-page-cancel"
+                    #pageCancelBtn>Cancel</clr-wizard-button>
+                <clr-wizard-button [type]="'previous'"
+                    class="clrtest-page-previous-1">Previous</clr-wizard-button>
+                <clr-wizard-button [type]="'danger'">Caution</clr-wizard-button>
+            </ng-template>
+        </clr-wizard-page>
+
+        <clr-wizard-page #viewTestWizardPageTwo
+            [(clrWizardPagePreviousDisabled)]="disablePrevious">
+            <ng-template clrPageTitle>View Page 2</ng-template>
+            <p>{{projector}}</p>
+        </clr-wizard-page>
+
+        <clr-wizard-page #viewTestWizardPageThree
+            [(clrWizardPagePreviousDisabled)]="disablePrevious">
+            <ng-template clrPageTitle>View Page 3</ng-template>
+            <ng-template clrPageNavTitle>short title</ng-template>
+            <p *ngIf="!asyncLoaded">Loading...</p>
+            <p *ngIf="asyncLoaded">{{asyncContent}}</p>
+
+            <ng-template clrPageButtons>
+                <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+                <clr-wizard-button [type]="'previous'" #pagePreviousBtn
+                    class="clrtest-page-previous-2">Previous</clr-wizard-button>
+                <clr-wizard-button [type]="'danger'">Danger</clr-wizard-button>
+            </ng-template>
+        </clr-wizard-page>
+
+        <clr-wizard-page #viewTestWizardPageFour
+            [clrWizardPagePreventDefaultCancel]="preventCancel"
+            (clrWizardPageOnCancel)="altCancel()"
+        >
+            <ng-template clrPageTitle>View Page 4</ng-template>
+            <clr-alert [clrAlertClosable]="false">
+                <div class="alert-item">
+                    <span class="alert-text">
+                        i believe the answer is {{innerProjector/2}}
+                    </span>
+                </div>
+            </clr-alert>
+        </clr-wizard-page>
+    </clr-wizard>
+    `
+})
+class ViewTestComponent {
+    @ViewChild("viewTestWizard") testWizard: Wizard;
+    @ViewChild("viewTestWizardPageOne") pageOne: WizardPage;
+    @ViewChild("viewTestWizardPageTwo") pageTwo: WizardPage;
+    @ViewChild("viewTestWizardPageThree") pageThree: WizardPage;
+    @ViewChild("viewTestWizardPageFour") pageFour: WizardPage;
+    @ViewChild("wizardPreviousBtn") wizardPreviousBtn: WizardButton;
+    @ViewChild("pagePreviousBtn") pagePreviousBtn: WizardButton;
+    @ViewChild("wizardCancelBtn") wizardCancelBtn: WizardButton;
+    @ViewChild("pageCancelBtn") pageCancelBtn: WizardButton;
+
+    public projector = "my projected content";
+    public innerProjector = 12;
+    public asyncLoaded = false;
+    public asyncContent = "";
+    // wizard has to init to open or all the pages are hidden inside modal
+    public open = true;
+    public loadAsync(): void {
+        setTimeout(() => {
+            this.asyncLoaded = true;
+            this.asyncContent = "better late than never";
+        }, 100);
+    }
+    public testId = "ohai";
+    public disablePrevious = false;
+    public preventCancel = false;
+    public altCancelRan = false;
+    public altCancel() {
+        this.altCancelRan = true;
+    }
+}
+
+@Component({
+    template: `
         <clr-wizard-page
             (clrWizardPageOnLoad)="myOnLoad()"
             [clrWizardPageNextDisabled]="nextDisabled">
@@ -83,6 +262,7 @@ class TestComponent {
         event.preventDefault();
     }
 }
+
 export default function(): void {
     describe("WizardPage", () => {
         let fixture: ComponentFixture<any>;
@@ -369,71 +549,6 @@ export default function(): void {
             });
         });
 
-        @Component({
-            template: `
-                <clr-wizard-page #nav
-                    [(clrWizardPageNextDisabled)]="navTestNextDisabled"
-                    [(clrWizardPagePreviousDisabled)]="navTestPreviousDisabled"
-                    [(clrWizardPagePreventDefaultCancel)]="navStopCancel"
-                >
-                    <ng-template clrPageTitle>Tests of page nav inputs and outputs</ng-template>
-                </clr-wizard-page>
-                <clr-wizard-page #lifecycle>
-                    <ng-template clrPageTitle>Tests for lifecycle outputs and event handlers</ng-template>
-                </clr-wizard-page>
-                <clr-wizard-page #other
-                    [id]="testId"
-                    (clrWizardPageOnLoad)="onLoadCheck($event)"
-                >
-                    <ng-template clrPageTitle>Other template API tests</ng-template>
-                </clr-wizard-page>
-            `
-        })
-        class TemplateTestComponent {
-            @ViewChild("nav") navigationTemplateTester: WizardPage;
-            @ViewChild("lifecycle") lifecycleTemplateTester: WizardPage;
-            @ViewChild("other") otherTemplateTester: WizardPage;
-
-            public navTwoWayBindingPassed: boolean = false;
-            public testId = "ohai";
-
-            private _navTestNextDisabled: boolean = false;
-            public get navTestNextDisabled(): boolean {
-                return this._navTestNextDisabled;
-            }
-            public set navTestNextDisabled(val: boolean) {
-                if (val !== this._navTestNextDisabled) {
-                    this.navTwoWayBindingPassed = true;
-                    this._navTestNextDisabled = val;
-                }
-            }
-
-            private _navTestPreviousDisabled: boolean = true;
-            public get navTestPreviousDisabled(): boolean {
-                return this._navTestPreviousDisabled;
-            }
-            public set navTestPreviousDisabled(val: boolean) {
-                if (val !== this._navTestPreviousDisabled) {
-                    this.navTwoWayBindingPassed = true;
-                    this._navTestPreviousDisabled = val;
-                }
-            }
-
-            private _navStopCancel: boolean = false;
-            public get navStopCancel(): boolean {
-                return this._navStopCancel;
-            }
-            public set navStopCancel(val: boolean) {
-                this.navTwoWayBindingPassed = true;
-                this._navStopCancel = val;
-            }
-
-            public loadedPageId = "";
-            public onLoadCheck(pageId: string): void {
-                this.loadedPageId = pageId;
-            }
-        }
-
         let templateTestComponent: TemplateTestComponent;
         let lifecycleWizardPage: WizardPage;
         let navWizardPage: WizardPage;
@@ -586,8 +701,6 @@ export default function(): void {
                 });
             });
 
-            // TODO: HAVE TO VERIFY ALT-CANCEL PATH VIA THE WIZARD... PAGE DOESN'T HANDLE CLOSE/CANCEL
-
             // TODO: HAVE TO TEST ONCOMMIT AS PART OF PAGE-COLLECTION B/C IT IS ONLY USED THERE
             // JUST MAKE SURE IT PASSES THE PAGE.ID...
 
@@ -596,6 +709,7 @@ export default function(): void {
                     let emitSpy = spyOn(otherWizardPage.onLoad, "emit").and.callThrough();
                     expect(templateTestComponent.loadedPageId).not.toBe(otherWizardPage.id,
                         "other wizard page should not be the current page starting out");
+                    emitSpy.calls.reset();
                     otherWizardPage.makeCurrent();
                     fixture.detectChanges();
                     expect(emitSpy).toHaveBeenCalledWith(otherWizardPage.id);
@@ -663,120 +777,6 @@ export default function(): void {
                 });
             });
         });
-
-        @Component({
-            template: `
-            <clr-wizard #viewTestWizard [(clrWizardOpen)]="open">
-                <clr-wizard-title>Wizard for Wizard Page View Tests</clr-wizard-title>
-
-                <clr-wizard-button [type]="'cancel'" #wizardCancelBtn
-                    class="clr-test-wizard-cancel">Cancel</clr-wizard-button>
-                <clr-wizard-button [type]="'previous'" class="clrtest-wizard-previous"
-                    #wizardPreviousBtn>Back</clr-wizard-button>
-                <clr-wizard-button [type]="'custom-custom'"
-                    class="clrtest-wizard-custom">Custom</clr-wizard-button>
-                <clr-wizard-button [type]="'next'"
-                    class="clrtest-wizard-next">Next</clr-wizard-button>
-                <clr-wizard-button [type]="'danger'"
-                    class="clrtest-wizard-danger">Danger</clr-wizard-button>
-                <clr-wizard-button [type]="'finish'"
-                    class="clrtest-wizard-finish">Finish</clr-wizard-button>
-
-                <clr-wizard-header-action (actionClicked)="headerActionClicked($event)">
-                    <clr-icon shape="cloud" class="is-solid"></clr-icon>
-                </clr-wizard-header-action>
-
-                <clr-wizard-page #viewTestWizardPageOne [id]="testId"
-                    [clrWizardPagePreventDefaultCancel]="preventCancel"
-                >
-                    <ng-template clrPageTitle>View Page 1</ng-template>
-
-                    <ng-template clrPageHeaderActions>
-                        <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="bell">
-                            <clr-icon shape="bell" class="has-badge"></clr-icon>
-                        </clr-wizard-header-action>
-                        <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="warning">
-                            <clr-icon shape="warning"></clr-icon>
-                        </clr-wizard-header-action>
-                    </ng-template>
-
-                    <ng-template clrPageButtons>
-                        <clr-wizard-button [type]="'cancel'" class="clrtest-page-cancel"
-                            #pageCancelBtn>Cancel</clr-wizard-button>
-                        <clr-wizard-button [type]="'previous'"
-                            class="clrtest-page-previous-1">Previous</clr-wizard-button>
-                        <clr-wizard-button [type]="'danger'">Caution</clr-wizard-button>
-                    </ng-template>
-                </clr-wizard-page>
-
-                <clr-wizard-page #viewTestWizardPageTwo
-                    [(clrWizardPagePreviousDisabled)]="disablePrevious">
-                    <ng-template clrPageTitle>View Page 2</ng-template>
-                    <p>{{projector}}</p>
-                </clr-wizard-page>
-
-                <clr-wizard-page #viewTestWizardPageThree
-                    [(clrWizardPagePreviousDisabled)]="disablePrevious">
-                    <ng-template clrPageTitle>View Page 3</ng-template>
-                    <ng-template clrPageNavTitle>short title</ng-template>
-                    <p *ngIf="!asyncLoaded">Loading...</p>
-                    <p *ngIf="asyncLoaded">{{asyncContent}}</p>
-
-                    <ng-template clrPageButtons>
-                        <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-                        <clr-wizard-button [type]="'previous'" #pagePreviousBtn
-                            class="clrtest-page-previous-2">Previous</clr-wizard-button>
-                        <clr-wizard-button [type]="'danger'">Danger</clr-wizard-button>
-                    </ng-template>
-                </clr-wizard-page>
-
-                <clr-wizard-page #viewTestWizardPageFour
-                    [clrWizardPagePreventDefaultCancel]="preventCancel"
-                    (clrWizardPageOnCancel)="altCancel()"
-                >
-                    <ng-template clrPageTitle>View Page 4</ng-template>
-                    <clr-alert [clrAlertClosable]="false">
-                        <div class="alert-item">
-                            <span class="alert-text">
-                                i believe the answer is {{innerProjector/2}}
-                            </span>
-                        </div>
-                    </clr-alert>
-                </clr-wizard-page>
-            </clr-wizard>
-            `
-        })
-        class ViewTestComponent {
-            @ViewChild("viewTestWizard") testWizard: Wizard;
-            @ViewChild("viewTestWizardPageOne") pageOne: WizardPage;
-            @ViewChild("viewTestWizardPageTwo") pageTwo: WizardPage;
-            @ViewChild("viewTestWizardPageThree") pageThree: WizardPage;
-            @ViewChild("viewTestWizardPageFour") pageFour: WizardPage;
-            @ViewChild("wizardPreviousBtn") wizardPreviousBtn: WizardButton;
-            @ViewChild("pagePreviousBtn") pagePreviousBtn: WizardButton;
-            @ViewChild("wizardCancelBtn") wizardCancelBtn: WizardButton;
-            @ViewChild("pageCancelBtn") pageCancelBtn: WizardButton;
-
-            public projector = "my projected content";
-            public innerProjector = 12;
-            public asyncLoaded = false;
-            public asyncContent = "";
-            // wizard has to init to open or all the pages are hidden inside modal
-            public open = true;
-            public loadAsync(): void {
-                setTimeout(() => {
-                    this.asyncLoaded = true;
-                    this.asyncContent = "better late than never";
-                }, 100);
-            }
-            public testId = "ohai";
-            public disablePrevious = false;
-            public preventCancel = false;
-            public altCancelRan = false;
-            public altCancel() {
-                this.altCancelRan = true;
-            }
-        }
 
         let viewTestComponent: ViewTestComponent;
         let allTestPages: DebugElement[];

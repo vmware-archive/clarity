@@ -143,7 +143,7 @@ export class WizardNavigationService implements OnDestroy {
 
     public setCurrentPage(page: WizardPage): void {
         this.currentPage = page;
-// TODO: emit page onload here
+        page.onLoad.emit(page.id);
         this._currentChanged.next(page);
     }
 

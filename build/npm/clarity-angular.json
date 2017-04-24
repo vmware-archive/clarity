@@ -4,7 +4,7 @@
     "description": "Angular 2 components for Clarity",
     "homepage": "https://vmware.github.io/clarity/",
     "main": "clarity-angular.umd.js",
-    "jsnext:main": "index.js",
+    "module": "index.js",
     "repository" : {
         "type" : "git",
         "url" : "git@github.com:vmware/clarity.git"

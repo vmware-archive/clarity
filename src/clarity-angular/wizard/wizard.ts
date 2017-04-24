@@ -65,7 +65,6 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
         });
 
         this.wizardFinishedSubscription = this.navService.wizardFinished.subscribe(() => {
-            this.deactivateGhostPages();
             this.wizardFinished.emit();
             this.close();
         });

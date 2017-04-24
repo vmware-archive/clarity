@@ -4,20 +4,18 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component} from "@angular/core";
-import {PageCollectionService} from "./page-collection";
-import {Wizard} from "../wizard";
-import {TestContext} from "../../utils/testing/helpers.spec";
+import { Component } from "@angular/core";
+import { PageCollectionService } from "./page-collection";
+import { Wizard } from "../wizard";
+import { TestContext } from "../../utils/testing/helpers.spec";
 
 export default function(): void {
 
     describe("Page Collection Service", function() {
 
         describe("With pages", function() {
-
             let context: TestContext<Wizard, PageCollectionTest>;
             let pageCollectionService: PageCollectionService;
-
 
             beforeEach(function() {
                 context = this.create(Wizard, PageCollectionTest);
@@ -26,29 +24,25 @@ export default function(): void {
             });
 
             it(".pagesAsArray should return the array of wizard pages", function() {
-
                 expect(pageCollectionService.pagesAsArray).toEqual(context.clarityDirective.pages.toArray());
             });
 
             it(".pagesCount should return correct number of pages", function() {
-
                 expect(pageCollectionService.pagesCount).toEqual(5);
             });
 
             it(".lastPage should return the last wizard page", function() {
-
                 expect(pageCollectionService.lastPage.id).toEqual(context.clarityDirective.pages.last.id);
             });
 
             it(".firstPage should return the first wizard page", function() {
-
                 expect(pageCollectionService.firstPage.id).toEqual(context.clarityDirective.pages.first.id);
             });
 
 
             it(".getPageById() should return the wizard page with a matching id", function() {
 
-                /*checkResults() method is tested here as well*/
+                // checkResults() method is tested here as well
                 let firstPageId = context.clarityDirective.pages.first.id;
                 let firstPageIdNumber = firstPageId.match(/\d+/)[0];
                 let lastPageId = context.clarityDirective.pages.last.id;
@@ -70,26 +64,20 @@ export default function(): void {
             });
 
             it(".getPageByIndex() should return the index of the wizard page", function() {
-
-
                 expect(pageCollectionService.getPageByIndex(0)).toEqual(pageCollectionService.firstPage);
                 expect(pageCollectionService.getPageByIndex(4)).toEqual(pageCollectionService.lastPage);
 
                 expect(function() {
                     pageCollectionService.getPageByIndex(-20);
-                }).toThrowError("Cannot retrieve page with index of -20.");
+                }).toThrowError("Cannot retrieve page with index of -20");
 
                 expect(function() {
                     pageCollectionService.getPageByIndex(10);
                 }).toThrowError("Page index is greater than length of pages array.");
-
-
             });
 
             it(".getPageIndex() should return the index of a wizard page", function() {
-
                 expect(pageCollectionService.getPageIndex(pageCollectionService.firstPage)).toBe(0);
-
             });
 
             it(".pageRange() should return the range of wizard pages", function() {
@@ -171,18 +159,14 @@ export default function(): void {
                 expect(pageCollectionService.getStepItemIdForPage(pageCollectionService.lastPage))
                     .toBe(lastPageStepId);
 
-
             });
 
             it(".commitPage() should set the page's completed property to true", function() {
-
                 let secondPage = pageCollectionService.getPageByIndex(2);
-                spyOn(secondPage.primaryButtonClicked, "emit");
                 spyOn(secondPage.onCommit, "emit");
 
                 pageCollectionService.commitPage(secondPage);
 
-                expect(secondPage.primaryButtonClicked.emit).toHaveBeenCalled();
                 expect(secondPage.onCommit.emit).toHaveBeenCalled();
                 expect(secondPage.completed).toBe(true);
             });
@@ -197,81 +181,10 @@ export default function(): void {
 
                 expect(pageCollectionService.firstPage.completed).toBe(false);
                 expect(pageCollectionService.lastPage.completed).toBe(false);
+
             });
         });
-
-        xdescribe("With no pages", function() {
-
-            /*
-            * TODO:
-            * When no pages are found in the wizard, this.currentPage is undefined error occurs in several places.
-            * If we want to test the cases of wizard with no pages,
-            * we need to check if currentPage is defined it wherever it's used.
-            * Or we can require users to include at least one page to use
-            * */
-
-            let context: TestContext<Wizard, PageCollectionNoPagesTest>;
-            let pageCollectionService: PageCollectionService;
-
-            beforeEach(function() {
-                context = this.create(Wizard, PageCollectionNoPagesTest);
-                pageCollectionService = context.getClarityProvider(PageCollectionService);
-                context.detectChanges();
-            });
-
-            it(".pagesAsArray should return the array of wizard pages", function() {
-
-                expect(pageCollectionService.pagesAsArray).toEqual(0);
-            });
-            it(".pagesCount should return correct number of pages", function() {
-
-                expect(pageCollectionService.pagesCount).toEqual(0);
-            });
-
-            it(".lastPage should return the last wizard page", function() {
-
-                expect(pageCollectionService.lastPage).toBeUndefined();
-            });
-
-            it(".firstPage should return the first wizard page", function() {
-
-                expect(pageCollectionService.firstPage).toBeUndefined();
-            });
-
-
-            it(".getPageById() should return the wizard page with a matching id", function() {
-
-                expect(function() {
-                    pageCollectionService.getPageById("clr-wizard-ne-page-0");
-                }).toThrowError("No page can be found with the id clr-wizard-ne-page-0.");
-            });
-
-
-            it(".getPageIndex() should return the index of a wizard page", function() {
-
-                expect(function() {
-                    pageCollectionService.getPageIndex(pageCollectionService.firstPage);
-                }).toThrowError("Requested page cannot be found in collection of pages.");
-            });
-
-
-            it(".getPreviousPage() should return the previous page of the current page", function() {
-
-                expect(function() {
-                    pageCollectionService.getPreviousPage(pageCollectionService.getPageByIndex(2));
-                }).toThrowError("Requested page cannot be found in collection of pages.");
-            });
-
-            it(".getNextPage() should return the next page of the current page", function() {
-
-                expect(function() {
-                    pageCollectionService.getNextPage(pageCollectionService.getPageByIndex(2));
-                }).toThrowError("Requested page cannot be found in collection of pages.");
-            });
-        });
-
     });
-
 }
 
 @Component({
@@ -322,8 +235,6 @@ class PageCollectionTest {
         // console.log("header action clicked!");
     };
 }
-
-
 
 @Component({
     template: `

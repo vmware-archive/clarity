@@ -78,6 +78,7 @@ export class WizardNavigationService implements OnDestroy {
 
         this.finishButtonSubscription = this.buttonService.finishBtnClicked.subscribe(() => {
             let currentPage = this.currentPage;
+
             if (currentPage.readyToComplete && this.currentPageIsLast) {
                 if (currentPage.preventDefault) {
                     this.pageCollection.commitPage(currentPage);
@@ -126,6 +127,10 @@ export class WizardNavigationService implements OnDestroy {
     public navServiceLoaded = false;
 
     public get currentPageTitle(): TemplateRef<any> {
+        // when the querylist of pages is empty. this is the first place it fails...
+        if (!this.currentPage) {
+            throw new Error("Current page does not exist. QueryList of pages is probably empty and should not be.");
+        }
         return this.currentPage.title;
     }
 
@@ -193,6 +198,7 @@ export class WizardNavigationService implements OnDestroy {
     }
 
     public finish(): void {
+        console.log("kthxbye");
         let currentPage = this.currentPage;
         if (!currentPage.readyToComplete) {
             return;
@@ -207,7 +213,6 @@ export class WizardNavigationService implements OnDestroy {
             this.pageCollection.commitPage(currentPage);
         }
         this._wizardFinished.next();
-
     }
 
     // When called, the wizard will move to the prev page.
@@ -305,8 +310,6 @@ export class WizardNavigationService implements OnDestroy {
     }
 
     // used to reset to the first page
-// SPECME: TEST FOR IF ARRAY OF PAGES CHANGE AFTER RESET HAPPENS
-// ID...
 // TODO?: EASIEST WAY TO SOLVE IS TO HAVE A GENERIC INPUT TO RESET TO A SPECIFIC ID
     public setFirstPageCurrent(): void {
         this.setCurrentPage(this.pageCollection.pagesAsArray[0]);

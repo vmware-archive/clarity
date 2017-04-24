@@ -127,7 +127,7 @@ export class ColorPalette {
                 { value: "#cccccc", text: "dark" },
                 { value: "#dddddd", text: "dark" },
                 { value: "#eeeeee", text: "dark" },
-                { value: "#fafafa", text: "dark" },
+                { value: "#fafafa", text: "dark", corePalette: true },
                 { value: "#ffffff", text: "dark" }
             ]
         }

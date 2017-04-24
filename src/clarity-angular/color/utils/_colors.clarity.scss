@@ -179,9 +179,9 @@ $clr-red-textColorMap: _buildTextColorMap($clr-red-textColorOverrides, $clr-red-
 $clr-reds: (label: stoplight-red, base: $clr-red, hex-colors: $clr-red-list, text-colors: $clr-red-textColorMap);
 
 
-$clr-yellow-lightest: #f9f0e1 !default;
+$clr-yellow-lightest: #FFFADC !default;
 $clr-yellow-lighter: #feecb5 !default;
-$clr-yellow: #efd603 !default;
+$clr-yellow: #FFDC0B !default;
 $clr-yellow-light-midtone: #eb8d00 !default;
 $clr-yellow-dark-midtone: #ce5c00 !default;
 $clr-yellow-dark: #c25400 !default;

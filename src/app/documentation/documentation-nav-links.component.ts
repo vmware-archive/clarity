@@ -5,7 +5,7 @@ const COMPONENTS = require("../../settings/componentlist.json");
 @Component({
   selector: "documentation-nav-links",
   template: `
-    <ng-template ngFor let-component [ngForOf]="components">
+    <ng-container *ngFor="let component of components">
       <li *ngIf="component.url && !component.noDemo && component.type == type">
         <a class="nav-link" [routerLink]="component.url" routerLinkActive="active">
           {{component.text}}
@@ -13,7 +13,7 @@ const COMPONENTS = require("../../settings/componentlist.json");
           <span *ngIf="component.isUpdated" class="updated nav-link-tag">Updated</span>
         </a>
       </li>
-    </ng-template>
+    </ng-container>
   `,
 })
 export class DocumentationNavLinksComponent {

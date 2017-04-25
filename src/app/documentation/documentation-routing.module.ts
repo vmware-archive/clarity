@@ -1,5 +1,5 @@
-import {NgModule}             from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule}             from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
 
 import {DocumentationComponent} from "./documentation.component";
 import {ComponentStatusComponent} from "./component-status/component-status.component";

@@ -1,7 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input} from "@angular/core";
 
 @Component({
-  selector: 'status-dot',
+  selector: "status-dot",
   template: `
     <img src="assets/images/documentation/status/{{image}}.svg" title="{{message}}" alt="{{message}}">
   `,

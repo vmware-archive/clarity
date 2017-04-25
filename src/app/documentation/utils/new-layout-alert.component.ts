@@ -1,7 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component} from "@angular/core";
 
 @Component({
-  selector: 'clrweb-new-layout-alert',
+  selector: "clrweb-new-layout-alert",
   template: `
     <div class="alert alert-info">
         <div class="alert-item">

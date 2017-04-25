@@ -1,9 +1,9 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input} from "@angular/core";
 
 const COMPONENTS = require("../../settings/componentlist.json");
 
 @Component({
-  selector: 'documentation-nav-links',
+  selector: "documentation-nav-links",
   template: `
     <ng-template ngFor let-component [ngForOf]="components">
       <li *ngIf="component.url && !component.noDemo && component.type == type">

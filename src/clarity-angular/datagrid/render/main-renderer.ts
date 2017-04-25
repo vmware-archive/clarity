@@ -3,22 +3,37 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Directive, ContentChildren, QueryList, AfterContentInit, AfterViewInit, OnDestroy} from "@angular/core";
+import {
+    Directive, ContentChildren, QueryList, AfterContentInit, AfterViewInit, OnDestroy,
+    ElementRef, Renderer, AfterViewChecked
+} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 import {DomAdapter} from "./dom-adapter";
 import {DatagridRenderOrganizer} from "./render-organizer";
 import {DatagridHeaderRenderer} from "./header-renderer";
 import {Items} from "../providers/items";
+import {Page} from "../providers/page";
 
 @Directive({
     selector: "clr-datagrid",
     providers: [DomAdapter]
 })
-export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, OnDestroy {
+export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, AfterViewChecked, OnDestroy {
 
-    constructor(private organizer: DatagridRenderOrganizer, private items: Items) {
-        this._subscriptions.push(organizer.computeWidths.subscribe(() => this.computeHeadersWidth()));
-    }
+    constructor(
+        private organizer: DatagridRenderOrganizer,
+        private items: Items,
+        private page: Page,
+        private domAdapter: DomAdapter,
+        private el: ElementRef,
+        private renderer: Renderer) {
+            this._subscriptions.push(organizer.computeWidths.subscribe(() => this.computeHeadersWidth()));
+            this._subscriptions.push(this.page.sizeChange.subscribe(() => {
+                if (this._heightSet) {
+                    this.resetDatagridHeight();
+                }
+            }));
+        }
 
     @ContentChildren(DatagridHeaderRenderer) public headers: QueryList<DatagridHeaderRenderer>;
 
@@ -37,6 +52,44 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, On
         this._subscriptions.push(this.items.change.subscribe(() => {
             this.stabilizeColumns();
         }));
+    }
+
+    ngAfterViewChecked() {
+        if (this.shouldComputeHeight()) {
+            this.computeDatagridHeight();
+        }
+    }
+
+    private _heightSet: boolean = false;
+
+    private shouldComputeHeight(): boolean {
+        if (!this._heightSet && this.page.size > 0) {
+            if (this.items.displayed.length === this.page.size) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Computes the height of the datagrid.
+     *
+     * NOTE: We had to choose to set the height instead of the min-height because
+     * IE 11 requires the height on the parent for the children flex grow/shrink properties to work.
+     * When we used min-height, 1 1 auto doesn't used to work in IE11 :-(
+     * But this doesn't affect the fix. It works in both fixed & variable height datagrids.
+     *
+     * Refer: http://stackoverflow.com/questions/24396205/flex-grow-not-working-in-internet-explorer-11-0
+     */
+    private computeDatagridHeight() {
+        let value: number = this.domAdapter.computedHeight(this.el.nativeElement);
+        this.renderer.setElementStyle(this.el.nativeElement, "height", value + "px");
+        this._heightSet = true;
+    }
+
+    private resetDatagridHeight() {
+        this.renderer.setElementStyle(this.el.nativeElement, "height", "");
+        this._heightSet = false;
     }
 
     private _subscriptions: Subscription[] = [];

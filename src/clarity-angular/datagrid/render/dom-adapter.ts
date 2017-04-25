@@ -30,7 +30,7 @@ export class DomAdapter {
         return element.scrollWidth || 0;
     }
 
-    computedHeight(element: any) {
+    computedHeight(element: any): number {
         return parseInt(getComputedStyle(element).getPropertyValue("height"), 10);
     }
 

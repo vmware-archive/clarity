@@ -179,12 +179,12 @@ class StaticTest {
                 <clr-dg-cell>BBB</clr-dg-cell>
                 <clr-dg-cell>BBB</clr-dg-cell>
             </clr-dg-row>
-            <ng-template [ngIf]="clrDgItems.length > 0">
+            <template [ngIf]="clrDgItems.length > 0">
                 <clr-dg-row *clrDgItems="let n of clrDgItems">
                     <clr-dg-cell>BBB</clr-dg-cell>
                     <clr-dg-cell>BBB</clr-dg-cell>
                 </clr-dg-row>
-            </ng-template>
+            </template>
         </clr-datagrid>
     `
 })

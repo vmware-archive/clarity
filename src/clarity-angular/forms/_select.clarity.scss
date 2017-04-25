@@ -80,11 +80,11 @@
     }
 
     //Multiple Select
-    select[multiple] {
+    select[multiple], select[size] {
         $clr-multiple-select-background: $clr-white;
         $clr-multiple-select-border-color: $gray-light-midtone;
 
-        padding: $clr-baselineRem_0_25;
+        padding: 0;
         background: $clr-multiple-select-background;
         border: 1px solid $clr-multiple-select-border-color;
         border-radius: $clr-default-borderradius;
@@ -95,6 +95,9 @@
         &:active {
             background: $clr-multiple-select-background;
             border-color: $clr-multiple-select-border-color;
+        }
+        option {
+            padding: $clr-baselineRem_0_125 $clr-baselineRem_0_25;
         }
     }
 }

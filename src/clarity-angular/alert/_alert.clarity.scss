@@ -13,7 +13,7 @@ $clr-alert-horizontal-padding: $clr_baselineRem_0_5 !default;
 $clr-alert-top-padding: $clr_baselineRem_0_125 !default;
 $clr-alert-bottom-padding: $clr_baselineRem_0_375 !default;
 $clr-alert-item-top-margin: $clr-alert-bottom-padding - $clr-alert-top-padding !default;
-$clr-alert-item-min-height: $clr-icon-dimension-sm !default;
+$clr-alert-item-min-height: $clr-alert-icon-dimension-sm !default;
 
 //Small Alert
 $clr-alert-sm-min-height: $clr_baselineRem_1 !default;
@@ -22,28 +22,28 @@ $clr-alert-sm-horizontal-padding: $clr_baselineRem_0_25 !default;
 $clr-alert-sm-top-padding: 0 !default;
 $clr-alert-sm-bottom-padding: $clr_baselineRem_0_125 !default;
 $clr-alert-sm-item-top-margin: $clr-alert-sm-bottom-padding - $clr-alert-sm-top-padding !default;
-$clr-alert-sm-item-min-height: $clr-icon-dimension-sm !default;
-$clr-alert-text-line-height: rem(16 / $clr-rem-denominator);
+$clr-alert-sm-item-min-height: $clr-alert-icon-dimension-sm !default;
+$clr-alert-text-line-height: rem(18 / $clr-rem-denominator);
 
 $clr-alert-colors: (
         info: (
                 background: $clr-action-blue-lightest,
-                font: $clr-action-blue-dark,
+                font: $clr-dark-gray,
                 border: $clr-action-blue-light
         ),
         success: (
                 background: $clr-green-lightest,
-                font: $clr-green-dark,
+                font: $clr-dark-gray,
                 border: $clr-green
         ),
         warning: (
                 background: $clr-yellow-lighter,
-                font: $clr-near-black,
+                font: $clr-dark-gray,
                 border: $clr-yellow
         ),
         danger: (
                 background: $clr-red-lighter,
-                font: $clr-red-dark,
+                font: $clr-dark-gray,
                 border: $clr-red-light
         ),
         app-info: (
@@ -86,8 +86,8 @@ $clr-alert-colors: (
 @include exports('alert.clarity') {
     %icon-styles {
         display: inline-block;
-        height: $clr-icon-dimension-sm;
-        width: $clr-icon-dimension-sm;
+        height: $clr-alert-icon-dimension-sm;
+        width: $clr-alert-icon-dimension-sm;
         padding: 0;
         margin-right: $clr_baselineRem_0_25;
         background-size: contain;
@@ -142,7 +142,7 @@ $clr-alert-colors: (
                 display: inline-block;
                 max-width: 98%;
                 margin-right: $clr_baselineRem_0_5;
-                padding-left: $clr-icon-dimension-sm + $clr-icon-margin-right;
+                padding-left: $clr-alert-icon-dimension-sm + $clr-icon-margin-right;
 
                 &::before {
                     position: absolute;
@@ -155,8 +155,8 @@ $clr-alert-colors: (
             }
 
             .clr-icon {
-                height: $clr-icon-dimension-sm;
-                width: $clr-icon-dimension-sm;
+                height: $clr-alert-icon-dimension-sm;
+                width: $clr-alert-icon-dimension-sm;
                 margin-right: $clr-icon-margin-right;
             }
 
@@ -183,7 +183,7 @@ $clr-alert-colors: (
 
             .alert-action,
             .dropdown-toggle {
-                color: $action-blues-dark;
+                color: $clr-dark-gray;
 
                 &:active {
                     color: $action-purples-darker;
@@ -222,7 +222,7 @@ $clr-alert-colors: (
             z-index: 2;
             //If I dont add a z-index, .close goes under the alert-item
             width: $clr_baselineRem_1;
-            height: $clr_baselineRem_1 - 2;
+            height: $clr_baselineRem_1;
 
             clr-icon {
                 $alert-close-icon-dims: $clr_baselineRem_0_5 + ($clr_baselineRem_0_5 / 3);
@@ -362,7 +362,7 @@ $clr-alert-colors: (
 
             .alert-actions {
                 margin-top: $clr_baselineRem_0_125;
-                margin-left: $clr-icon-dimension-sm + $clr-icon-margin-right;
+                margin-left: $clr-alert-icon-dimension-sm + $clr-icon-margin-right;
             }
         }
 

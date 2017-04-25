@@ -8,7 +8,8 @@
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
-    "e2e": "protractor"
+    "e2e": "protractor",
+    "deploy": "ng build --bh /clarity/ && gulp deploy"
   },
   "private": true,
   "dependencies": {
@@ -41,6 +42,8 @@
     "@types/node": "^6.0.42",
     "@webcomponents/custom-elements": "^1.0.0-alpha.3",
     "codelyzer": "~2.0.0-beta.4",
+    "gh-pages": "^0.12.0",
+    "gulp": "^3.9.1",
     "intl": "1.1.0",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",

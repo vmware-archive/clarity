@@ -21,14 +21,15 @@ import {Component, ViewEncapsulation} from "@angular/core";
                 <li><a [routerLink]="['./async-validation']">Async validation</a></li>
                 <li><a [routerLink]="['./not-closable']">Not closable</a></li>
                 <li><a [routerLink]="['./ghost-pages']">Ghost pages</a></li>
+                <li><a [routerLink]="['./custom-buttons']">Custom buttons</a></li>
             </ul>
         </div>
         <div class="col-xs-12 col-sm-6">
             <ul>
-                <li><a [routerLink]="['./custom-buttons']">Custom buttons</a></li>
                 <li><a [routerLink]="['./reset']">Reset on cancel/finish</a></li>
                 <li><a [routerLink]="['./header-actions']">Header actions</a></li>
                 <li><a [routerLink]="['./alt-cancel']">Alt cancel</a></li>
+                <li><a [routerLink]="['./alt-next']">Alt next</a></li>
                 <li><a [routerLink]="['./inline']">Inline/static wizard</a></li>
                 <li><a [routerLink]="['./jump-to']">Jump-to page</a></li>
             </ul>

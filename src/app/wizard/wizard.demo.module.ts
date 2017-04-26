@@ -23,6 +23,7 @@ import { WizardHeaderActionsDemo } from "./wizard-header-actions.demo";
 import { WizardAltCancelDemo } from "./wizard-alt-cancel.demo";
 import { WizardInlineDemo } from "./wizard-inline.demo";
 import { WizardJumpToDemo } from "./wizard-jump-to.demo";
+import { WizardAltNextDemo } from "./wizard-alt-next.demo";
 
 @NgModule({
     imports: [
@@ -45,7 +46,8 @@ import { WizardJumpToDemo } from "./wizard-jump-to.demo";
         WizardAltCancelDemo,
         WizardInlineDemo,
         WizardJumpToDemo,
-        CodeExample
+        CodeExample,
+        WizardAltNextDemo
     ],
     exports: [
         WizardBasicDemo,
@@ -61,7 +63,8 @@ import { WizardJumpToDemo } from "./wizard-jump-to.demo";
         WizardInlineDemo,
         WizardResetDemo,
         WizardJumpToDemo,
-        CodeExample
+        CodeExample,
+        WizardAltNextDemo
     ]
 })
 export default class WizardDemoModule {

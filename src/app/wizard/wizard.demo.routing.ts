@@ -18,6 +18,7 @@ import { WizardHeaderActionsDemo } from "./wizard-header-actions.demo";
 import { WizardAltCancelDemo } from "./wizard-alt-cancel.demo";
 import { WizardInlineDemo } from "./wizard-inline.demo";
 import { WizardJumpToDemo } from "./wizard-jump-to.demo";
+import { WizardAltNextDemo } from "./wizard-alt-next.demo";
 
 const ROUTES: Routes = [
     {
@@ -36,7 +37,8 @@ const ROUTES: Routes = [
             { path: "alt-cancel", component: WizardAltCancelDemo },
             { path: "inline", component: WizardInlineDemo },
             { path: "jump-to", component: WizardJumpToDemo },
-            { path: "reset", component: WizardResetDemo }
+            { path: "reset", component: WizardResetDemo },
+            { path: "alt-next", component: WizardAltNextDemo }
         ]
     }
 ];

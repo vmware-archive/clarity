@@ -119,6 +119,21 @@ export class WizardPage implements OnInit {
     @Output("clrWizardPagePreventDefaultCancelChange") stopCancelChange: EventEmitter <boolean> =
         new EventEmitter();
 
+    // overrides next from the page level, so you can use an alternate function for
+    // validation or data-munging with clrWizardPageOnNext
+    private _stopNext = false;
+    public get stopNext(): boolean {
+        return this._stopNext;
+    }
+    @Input("clrWizardPagePreventDefaultNext")
+    public set stopNext(val: boolean) {
+        let valBool = !!val;
+        if (valBool !== this._stopNext) {
+            this._stopNext = valBool;
+        }
+        // SPECME
+    }
+
 // TODO: SHOULD USE A CUSTOM BUTTON INSTEAD. NOTE BREAKING CHANGE...
     // User can bind an event handler for onCommit of the main content
     // LEGACY: Naming convention matches old wizard

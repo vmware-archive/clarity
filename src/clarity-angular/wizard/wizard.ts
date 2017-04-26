@@ -66,7 +66,10 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
 
         this.wizardFinishedSubscription = this.navService.wizardFinished.subscribe(() => {
             this.wizardFinished.emit();
-            this.close();
+            if (!this.stopNext) {
+                this.forceFinish();
+            }
+            // SPECME
         });
 
         this.differ = differs.find([]).create(null);
@@ -123,6 +126,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     @Output("clrWizardOnPrevious") onMovePrevious: EventEmitter<any> =
         new EventEmitter<any>(false);
 
+    @Input("clrWizardPreventDefaultNext") stopNext: boolean = false;
+
     @Input("clrWizardPreventDefaultCancel") stopCancel: boolean = false;
 
     @Input("clrWizardPreventModalAnimation") _stopModalAnimations: boolean = false;
@@ -159,6 +164,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     public ngAfterContentInit() {
         this.pageCollection.pages = this.pages;
         this.navService.wizardHasAltCancel = this.stopCancel;
+        this.navService.wizardHasAltNext = this.stopNext;
         this.headerActionService.wizardHeaderActions = this.headerActions;
         if (this.showGhostPages) {
             this.navService.hideWizardGhostPages = false;
@@ -252,6 +258,23 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
 
     public finish(): void {
         this.navService.finish();
+    }
+
+    // does the work of finishing up the wizard and closing it but
+    // doesn't do the checks and emissions that other paths do.
+    // good for a last step in an alternate workflow
+    public forceFinish(): void {
+        this.deactivateGhostPages();
+        this.close();
+        // SPECME
+    }
+
+    // does the work of moving the wizard to the next page in the
+    // flow without the checks and emissions needed elsewhere.
+    // good for moving to the next page in an alternate workflow
+    public forceNext(): void {
+        this.navService.forceNext();
+        // SPECME
     }
 
     public cancel(): void {

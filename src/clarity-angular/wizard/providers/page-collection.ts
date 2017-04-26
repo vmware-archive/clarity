@@ -172,8 +172,15 @@ export class PageCollectionService {
     }
 
     public commitPage(page: WizardPage) {
+        let pageHasOverrides = page.stopNext || page.preventDefault;
         page.completed = true;
-        page.onCommit.emit(page.id);
+
+        if (!pageHasOverrides) {
+            // prevent loop of event emission; alternate flows work off
+            // of event emitters this is how they break that cycle.
+            page.onCommit.emit(page.id);
+        }
+        //SPECME
     }
 
     // used by the navService to navigate back to first possible step after

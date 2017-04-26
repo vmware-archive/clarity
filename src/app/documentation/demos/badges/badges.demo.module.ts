@@ -10,20 +10,25 @@ import {ClarityModule} from 'clarity-angular';
 
 import {BadgeColorsDemo} from "./badge-colors";
 import {BadgeStatusesDemo} from "./badge-statuses";
+import {BadgesDemo} from "./badges.demo";
+import {DocWrapper} from "../_doc-wrapper/doc-wrapper";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
         CommonModule,
         ClarityModule.forChild(),
+        UtilsModule
     ],
     declarations: [
+        DocWrapper,
         BadgeColorsDemo,
-        BadgeStatusesDemo
+        BadgeStatusesDemo,
+        BadgesDemo
     ],
     exports: [
-        BadgeColorsDemo,
-        BadgeStatusesDemo
+        BadgesDemo
     ]
 })
-export default class BadgesDemoModule {
+export class BadgesDemoModule {
 }

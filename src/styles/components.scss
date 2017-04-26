@@ -179,6 +179,9 @@ body.layout-documentation {
         width: 100%;
         max-width: 100%;
         border-top: 1px solid transparent;
+        height: 100%;
+        padding-bottom: $bl-4_0;
+
         .dox-content-wrapper {
             padding-left: $bl-1_5;
             padding-top: $bl-0_25;

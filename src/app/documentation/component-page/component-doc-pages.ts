@@ -1,3 +1,4 @@
+/*
 import {Component} from "@angular/core";
 import {TEMPLATES} from "../documentation-templates-stub";
 
@@ -52,3 +53,4 @@ for (let component of COMPONENTS.list) {
     });
   }
 }
+*/

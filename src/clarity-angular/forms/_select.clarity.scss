@@ -80,7 +80,7 @@
     }
 
     //Multiple Select
-    select[multiple] {
+    select[multiple],select[size] {
         $clr-multiple-select-background: $clr-white;
         $clr-multiple-select-border-color: $gray-light-midtone;
 

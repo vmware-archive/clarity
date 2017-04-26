@@ -314,6 +314,65 @@
 
     <clr-wizard-no-cancel></clr-wizard-no-cancel>
 
+    <h3 id="alternative-cancel">Providing an alternative next for the wizard</h3>
+
+    <p>
+        Just like with <code class="clr-code">clrWizardPreventDefaultCancel</code>,
+        the Clarity wizard allows users to override the default primary button actions at
+        both the page and wizard level. This includes danger, finish, and next buttons.
+    </p>
+    <p>
+        The use case for this is when you want the wizard to validate its contents
+        whenever the next button is clicked. It is less overt than manipulating the
+        <code class="clr-code">clrWizardPageNextDisabled</code> to enable or disable
+        a wizard page's primary buttons, as demonstrated in the form validation example above.
+    </p>
+    <p>
+        Overriding next, finish, and danger buttons at the wizard level involves setting
+        the <code class="clr-code">clrWizardPreventDefaultNext</code>
+        input to true. This prevents the wizard from executing the built-in methods that finish
+        the wizard and move the wizard to the next page.
+    </p>
+    <p>
+        Using <code class="clr-code">clrWizardPreventDefaultNext</code> requires that you handle
+        the <code class="clr-code">clrWizardOnNext</code> and
+        <code class="clr-code">clrWizardOnFinish</code> event emitters in your host component's
+        code. These routines will need to call
+        <code class="clr-code">wizard.forceNext()</code> and
+        <code class="clr-code">wizard.forceFinish()</code>, respectively.
+        <code class="clr-code">forceNext()</code> and <code class="clr-code">forceFinish()</code>
+        perform the work of finishing the wizard and moving it to the next page without the
+        checks and event emissions involved with calling the default
+        <code class="clr-code">next()</code> and <code class="clr-code">finish()</code>
+        methods in the wizard.
+    </p>
+    <p>
+        You can override the primary button actions at a page level by using the
+        <code class="clr-code">clrWizardPagePreventDefaultNext</code>
+        input.
+    </p>
+    <p>
+        As with wizard level overrides, you will need to provide an event handler for
+        the <code class="clr-code">clrWizardPageNext</code> and
+        <code class="clr-code">clrWizardPageFinish</code> outputs. If your specific page
+        does not have a finish button, there is no need to handle
+        the <code class="clr-code">clrWizardPageFinish</code> event. The same holds true
+        for wizard pages that do not have next buttons.
+    </p>
+    <p>
+        Also similar to the output routines at the wizard level, your page-level methods will
+        need to manually call the <code class="clr-code">wizard.forceNext()</code> and
+        <code class="clr-code">wizard.forceFinish()</code> methods to bring that functionality
+        back to the overridden page.
+    </p>
+    <p>
+        Just like with the cancel overrides, the page level override is used in place of the
+        wizard level override when a specific page has them both set. The example
+        below shows how this happens.
+    </p>
+
+    <clr-wizard-alt-next></clr-wizard-alt-next>
+
     <h3 id="non-closable-wizard">Non-Closable Wizard</h3>
 
     <p>In some circumstances, you may want to not show the closing × icon in the top right of the Wizard modal. You can remove this close × icon by setting the

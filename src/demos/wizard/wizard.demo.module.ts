@@ -22,6 +22,7 @@ import { WizardDefaultButtonsDemo } from "./wizard-buttons.demo";
 import { WizardCustomButtonsDemo } from "./wizard-custom-buttons.demo";
 import { WizardResetDemo } from "./wizard-reset.demo";
 import { WizardAltCancelDemo } from "./wizard-alt-cancel.demo";
+import { WizardAltNextDemo } from "./wizard-alt-next.demo";
 import { WizardNoCancel } from "./wizard-no-cancel.demo";
 import { WizardJumpToDemo } from "./wizard-jump-to.demo";
 import { WizardAsyncCompletion } from "./wizard-async-completion.demo";
@@ -47,6 +48,7 @@ import { WizardAsyncCompletion } from "./wizard-async-completion.demo";
         WizardCustomButtonsDemo,
         WizardResetDemo,
         WizardAltCancelDemo,
+        WizardAltNextDemo,
         WizardNoCancel,
         WizardJumpToDemo,
         WizardAsyncCompletion
@@ -65,6 +67,7 @@ import { WizardAsyncCompletion } from "./wizard-async-completion.demo";
         WizardCustomButtonsDemo,
         WizardResetDemo,
         WizardAltCancelDemo,
+        WizardAltNextDemo,
         WizardNoCancel,
         WizardJumpToDemo,
         WizardAsyncCompletion

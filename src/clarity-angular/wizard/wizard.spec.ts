@@ -298,6 +298,7 @@ describe("Wizard", () => {
 // TODO: ADD TO WIZARD TESTS... PART OF TEMPLATE API^^^
 // On setup make sure pageCollection.pages is set, make sure it gets updated when wizard.pages is
 // On setup make sure navService.wizardHasAltCancel is set to wizard.stopCancel -- test dynamically too
+// On setup make sure navService.wizardHasAltNext is set to wizard.stopNext -- test dynamically too
 // On setup make sure headerActionService.wizardHeaderActions is set to wizard.headerActions --
 // test it also gets updated
 // On setup test that navService.hideWizardGhostPages gets set as expected

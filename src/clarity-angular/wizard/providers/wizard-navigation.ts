@@ -37,55 +37,15 @@ export class WizardNavigationService implements OnDestroy {
         });
 
         this.nextButtonSubscription = this.buttonService.nextBtnClicked.subscribe(() => {
-            let currentPage = this.currentPage;
-            if (!this.currentPageIsLast && currentPage.readyToComplete) {
-                currentPage.primaryButtonClicked.emit("next");
-                currentPage.nextButtonClicked.emit(currentPage);
-                if (currentPage.preventDefault) {
-                    this.pageCollection.commitPage(currentPage);
-                } else {
-                    this.next();
-                }
-            }
+            this.checkAndCommitCurrentPage("next");
         });
 
         this.dangerButtonSubscription = this.buttonService.dangerBtnClicked.subscribe(() => {
-            let currentPage: WizardPage = this.currentPage;
-
-            if (!currentPage.readyToComplete) {
-                return;
-            }
-
-            // because we made it past the guard up there ^ we know the current page is ready
-            if (this.currentPageIsLast) {
-                currentPage.primaryButtonClicked.emit("danger");
-                currentPage.dangerButtonClicked.emit(currentPage);
-                if (currentPage.preventDefault) {
-                    this.pageCollection.commitPage(currentPage);
-                } else {
-                    this.finish();
-                }
-            } else {
-                currentPage.primaryButtonClicked.emit("danger");
-                currentPage.dangerButtonClicked.emit(currentPage);
-                if (currentPage.preventDefault) {
-                    this.pageCollection.commitPage(currentPage);
-                } else {
-                    this.next();
-                }
-            }
+            this.checkAndCommitCurrentPage("danger");
         });
 
         this.finishButtonSubscription = this.buttonService.finishBtnClicked.subscribe(() => {
-            let currentPage = this.currentPage;
-
-            if (currentPage.readyToComplete && this.currentPageIsLast) {
-                if (currentPage.preventDefault) {
-                    this.pageCollection.commitPage(currentPage);
-                } else {
-                    this.finish();
-                }
-            }
+            this.checkAndCommitCurrentPage("finish");
         });
 
         this.customButtonSubscription = this.buttonService.customBtnClicked.subscribe((type: string) => {
@@ -169,50 +129,100 @@ export class WizardNavigationService implements OnDestroy {
     // This is a public function that can be used to programmatically advance
     // the user to the next page.
     public next(): void {
-        let currentPage = this.currentPage;
-        let nextPage: WizardPage;
-
         if (this.currentPageIsLast) {
             this.finish();
         }
 
+        this.forceNext();
+
+        if (!this.wizardHasAltNext) {
+            this._movedToNextPage.next(true);
+        }
+        // SPECME
+    }
+
+    public forceNext(): void {
+        let currentPage: WizardPage = this.currentPage;
+        let nextPage: WizardPage = this.pageCollection.getNextPage(currentPage);
+
+        // catch errant null or undefineds that creep in
+        if (!nextPage) {
+            throw new Error("The wizard has no next page to go to.");
+        }
+
+        if (!currentPage.completed) {
+            // this is a state that alt next flows can get themselves in...
+            this.pageCollection.commitPage(currentPage);
+        }
+        this.setCurrentPage(nextPage);
+        // SPECME
+    }
+
+    public checkAndCommitCurrentPage(buttonType: string): void {
+        let currentPage: WizardPage = this.currentPage;
+        let iAmTheLastPage: boolean;
+
+        let isNext: boolean;
+        let isDanger: boolean;
+        let isDangerNext: boolean;
+        let isDangerFinish: boolean;
+        let isFinish: boolean;
+
         if (!currentPage.readyToComplete) {
             return;
         }
 
-        if (!currentPage.preventDefault) {
-            // when preventDefault is enacted, this is called manually
-            // after an onCommit. put check in here to avoid duplicate
-            // onCommit calls
-            this.pageCollection.commitPage(currentPage);
-        }
-        nextPage = this.pageCollection.getNextPage(currentPage);
+        iAmTheLastPage = this.currentPageIsLast;
 
-        // catch errant null or undefineds that creep in
-        if (nextPage) {
-            this.setCurrentPage(nextPage);
-            this._movedToNextPage.next(true);
-        } else {
-            throw new Error("The wizard has no next page to go to.");
+        isNext = buttonType === "next";
+        isDanger = buttonType === "danger";
+        isDangerNext = isDanger && !iAmTheLastPage;
+        isDangerFinish = isDanger && iAmTheLastPage;
+        isFinish = buttonType === "finish" || isDangerFinish;
+
+        if (isFinish && !iAmTheLastPage) {
+            return;
         }
+
+        currentPage.primaryButtonClicked.emit(buttonType);
+
+        if (isFinish) {
+            currentPage.finishButtonClicked.emit(currentPage);
+        } else if (isDanger) {
+            currentPage.dangerButtonClicked.emit();
+        } else if (isNext) {
+            currentPage.nextButtonClicked.emit();
+        }
+
+        if (currentPage.stopNext || currentPage.preventDefault) {
+            currentPage.onCommit.emit(currentPage.id);
+            return;
+        }
+
+        if (this.wizardHasAltNext) {
+            if (isFinish || isDangerFinish) {
+                this._wizardFinished.next();
+            } else if (isNext || isDangerNext) {
+                this._movedToNextPage.next(true);
+            }
+            return;
+        }
+
+        // all the alt paths have early returned. mark page as
+        // completed.
+        this.pageCollection.commitPage(currentPage);
+
+        if (isFinish || isDangerFinish) {
+            this.finish();
+        } else if (isNext || isDangerNext) {
+            this.next();
+        }
+        // SPECME
     }
 
     public finish(): void {
-        console.log("kthxbye");
-        let currentPage = this.currentPage;
-        if (!currentPage.readyToComplete) {
-            return;
-        }
-
-        currentPage.primaryButtonClicked.emit("finish");
-        currentPage.finishButtonClicked.emit(currentPage);
-        if (!currentPage.preventDefault) {
-            // when preventDefault is enacted, this is called manually
-            // after an onCommit. put check in here to avoid duplicate
-            // onCommit calls
-            this.pageCollection.commitPage(currentPage);
-        }
         this._wizardFinished.next();
+        // SPECME
     }
 
     // When called, the wizard will move to the prev page.
@@ -248,6 +258,8 @@ export class WizardNavigationService implements OnDestroy {
     }
 
     public wizardHasAltCancel: boolean = false;
+
+    public wizardHasAltNext: boolean = false;
 
     public goTo(pageToGoToOrId: any) {
         let pageToGoTo: WizardPage;

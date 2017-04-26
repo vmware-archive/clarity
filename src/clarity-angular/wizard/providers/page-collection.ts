@@ -11,8 +11,6 @@ import { WizardPage } from "../wizard-page";
 
 @Injectable()
 export class PageCollectionService {
-// TODO: create Observables for when list of pages changes?
-
     public pages: QueryList<WizardPage>;
 
     public get pagesAsArray(): WizardPage[] {

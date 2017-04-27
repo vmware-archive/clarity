@@ -27,10 +27,10 @@ export default function(): void {
             context.detectChanges();
         });
 
-        it("'next' calls wizardNavigationService.next", function() {
-            spyOn(wizardNavigationService, "next");
+        it("'next' calls wizardNavigationService.checkAndCommitCurrentPage with next", function() {
+            spyOn(wizardNavigationService, "checkAndCommitCurrentPage");
             buttonHubService.buttonClicked("next");
-            expect(wizardNavigationService.next).toHaveBeenCalled();
+            expect(wizardNavigationService.checkAndCommitCurrentPage).toHaveBeenCalledWith("next");
         });
 
         it("'previous' calls wizardNavigationService.previous", function() {
@@ -41,14 +41,9 @@ export default function(): void {
         });
 
         it("'danger' calls wizardNavigationService.next or wizardNavigationService.finish", function() {
-            spyOn(wizardNavigationService, "next");
+            spyOn(wizardNavigationService, "checkAndCommitCurrentPage");
             buttonHubService.buttonClicked("danger");
-            expect(wizardNavigationService.next).toHaveBeenCalled();
-
-            spyOn(wizardNavigationService, "finish");
-            wizardNavigationService.setCurrentPage(wizardNavigationService.pageCollection.lastPage);
-            buttonHubService.buttonClicked("danger");
-            expect(wizardNavigationService.finish).toHaveBeenCalled();
+            expect(wizardNavigationService.checkAndCommitCurrentPage).toHaveBeenCalledWith("danger");
         });
 
         it("'cancel' calls wizardNavigationService.cancel", function() {
@@ -57,9 +52,7 @@ export default function(): void {
             expect(wizardNavigationService.cancel).toHaveBeenCalled();
         });
 
-        // TODO: this isn't making it all the way up through wizard for some reason
-        // so it is saying the spies aren't getting called...
-        xit("'finish' calls wizard deactivateGhostPages, deactivateGhostPages.close, emit wizardFinished", function() {
+        it("'finish' calls wizard deactivateGhostPages, deactivateGhostPages.close, emit wizardFinished", function() {
             let wizard = context.clarityDirective;
             let finalPage = wizard.pageCollection.lastPage;
 
@@ -68,9 +61,7 @@ export default function(): void {
             spyOn(wizard, "close");
 
             // set up for finish
-            // make last page current
             wizard.navService.setCurrentPage(finalPage);
-            // make ready to complete
             finalPage.nextStepDisabled = false;
             context.detectChanges();
 

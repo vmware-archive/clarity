@@ -86,6 +86,28 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
         this._sortSubscription.unsubscribe();
     }
 
+    /*
+     * Simple object property shortcut, activates both sorting and filtering
+     * based on native comparison of the specified property on the items.
+     */
+    private _field: string;
+    public get field() {
+        return this._field;
+    }
+
+    @Input("clrDgField")
+    public set field(field: string) {
+        if (typeof field === "string") {
+            this._field = field;
+            if (!this.customFilter) {
+                this.setFilter(new DatagridStringFilterImpl(new DatagridPropertyStringFilter(field)));
+            }
+            if (!this.sortBy) {
+                this.sortBy = new DatagridPropertyComparator(field);
+            }
+        }
+    }
+
     /**
      * Comparator to use when sorting the column
      */
@@ -139,6 +161,11 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
 
     @Input("clrDgSortOrder")
     public set sortOrder(value: SortOrder) {
+
+        if (typeof value === "undefined") {
+            return;
+        }
+
         // only if the incoming order is different from the current one
         if (this._sortOrder === value) {
             return;
@@ -219,28 +246,6 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
         if (custom) {
             this.deleteFilter();
             this.customFilter = true;
-        }
-    }
-
-    /*
-     * Simple object property shortcut, activates both sorting and filtering
-     * based on native comparison of the specified property on the items.
-     */
-    private _field: string;
-    public get field() {
-        return this._field;
-    }
-
-    @Input("clrDgField")
-    public set field(field: string) {
-        if (typeof field === "string") {
-            this._field = field;
-            if (!this.customFilter) {
-                this.setFilter(new DatagridStringFilterImpl(new DatagridPropertyStringFilter(field)));
-            }
-            if (!this.sortBy) {
-                this.sortBy = new DatagridPropertyComparator(field);
-            }
         }
     }
 

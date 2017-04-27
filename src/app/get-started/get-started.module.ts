@@ -1,5 +1,5 @@
 import {CommonModule} from "@angular/common";
-import { NgModule } from '@angular/core';
+import {NgModule} from "@angular/core";
 import {ClarityModule} from "clarity-angular";
 
 import {UtilsModule} from "../utils/utils.module";

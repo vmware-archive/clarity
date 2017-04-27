@@ -4,6 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+const COMPONENT_JSON = require("../../settings/componentlist.json");
+
+export const COMPONENT_MAP = new Map();
+
+for (let component of COMPONENT_JSON.list) {
+    COMPONENT_MAP.set(component.url, component);
+}
+
 export function componentList({ component }) {
     return component;
 }

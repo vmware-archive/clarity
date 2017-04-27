@@ -1,5 +1,5 @@
 import {NgModule}             from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
 
 import {DocumentationComponent} from "./documentation.component";
 import {ComponentStatusComponent} from "./component-status/component-status.component";
@@ -22,9 +22,12 @@ const documentationRoutes: Routes = [
           browserTitle: "Documentation"
         }
       }, {
-        path: BadgesDemo.URL,
+        path: "badges",
         component: BadgesDemo,
-        data: BadgesDemo.DATA
+        data: {
+          bodyClass: "page-badges",
+          browserTitle: "badges"
+        }
       }
     ]
   }

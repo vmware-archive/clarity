@@ -5,20 +5,21 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from 'clarity-angular';
-
+import {ClarityModule} from "clarity-angular";
 
 import {BadgeColorsDemo} from "./badge-colors";
 import {BadgeStatusesDemo} from "./badge-statuses";
 import {BadgesDemo} from "./badges.demo";
 import {DocWrapper} from "../_doc-wrapper/doc-wrapper";
 import {UtilsModule} from "../../../utils/utils.module";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
     imports: [
         CommonModule,
         ClarityModule.forChild(),
-        UtilsModule
+        UtilsModule,
+        RouterModule
     ],
     declarations: [
         DocWrapper,

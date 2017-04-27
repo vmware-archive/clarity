@@ -6,39 +6,40 @@ import {ComponentStatusComponent} from "./component-status/component-status.comp
 import {BadgesDemo} from "./demos/badges/badges.demo";
 
 const documentationRoutes: Routes = [
-  {
-    path: "",
-    component: DocumentationComponent,
-    data: {
-      bodyClass: "layout-documentation",
-      browserTitle: "Documentation"
-    },
-    children: [
-      {
+    {
         path: "",
-        component: ComponentStatusComponent,
+        component: DocumentationComponent,
         data: {
-          bodyClass: "page-documentation",
-          browserTitle: "Documentation"
-        }
-      }, {
-        path: "badges",
-        component: BadgesDemo,
-        data: {
-          bodyClass: "page-badges",
-          browserTitle: "badges"
-        }
-      }
-    ]
-  }
+            bodyClass: "layout-documentation",
+            browserTitle: "Documentation"
+        },
+        children: [
+            {
+                path: "",
+                component: ComponentStatusComponent,
+                data: {
+                    bodyClass: "page-documentation",
+                    browserTitle: "Documentation"
+                }
+            }, {
+                path: "badges",
+                component: BadgesDemo,
+                data: {
+                    bodyClass: "page-badges",
+                    browserTitle: "badges"
+                }
+            }
+        ]
+    }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(documentationRoutes)
-  ],
-  exports: [
-    RouterModule
-  ]
+    imports: [
+        RouterModule.forChild(documentationRoutes)
+    ],
+    exports: [
+        RouterModule
+    ]
 })
-export class DocumentationRoutingModule {}
+export class DocumentationRoutingModule {
+}

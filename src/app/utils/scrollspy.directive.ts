@@ -21,9 +21,9 @@ export class ScrollSpy implements OnDestroy, OnInit {
 
   @ContentChildren(RouterLinkWithHref, {descendants: true})
   set links(routerLinks: QueryList<RouterLinkWithHref>) {
-    this.anchors = routerLinks.map(routerLink => '#' + routerLink.fragment);
+    this.anchors = routerLinks.map(routerLink => "#" + routerLink.fragment);
     this.sub = routerLinks.changes.subscribe(() => {
-      this.anchors = routerLinks.map(routerLink => '#' + routerLink.fragment);
+      this.anchors = routerLinks.map(routerLink => "#" + routerLink.fragment);
     });
   }
 
@@ -48,6 +48,7 @@ export class ScrollSpy implements OnDestroy, OnInit {
   }
 
   findCurrentAnchor() {
+    console.log("Find", this.anchors);
     for (let i = this.anchors.length - 1; i >= 0; i--) {
       let anchor = this.anchors[i];
       if (this.scrollable.querySelector(anchor).offsetTop <= this.scrollPosition) {
@@ -57,11 +58,11 @@ export class ScrollSpy implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
-    this.scrollable.addEventListener('scroll', this);
+    this.scrollable.addEventListener("scroll", this);
   }
 
   ngOnDestroy() {
-    this.scrollable.removeEventListener('scroll', this);
+    this.scrollable.removeEventListener("scroll", this);
     if (this.sub) {
       this.sub.unsubscribe();
     }

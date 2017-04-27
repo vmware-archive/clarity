@@ -9,8 +9,7 @@ import {Component, Input} from "@angular/core";
     selector: "clr-doc-wrapper",
     templateUrl: "./doc-wrapper.html",
     host: {
-        "[style.display]": "'block'",
-        "[style.height]": "'100%'"
+        "[class.dox-wrapper]": "true"
     }
 })
 export class DocWrapper {

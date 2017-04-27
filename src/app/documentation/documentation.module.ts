@@ -29,4 +29,5 @@ import {BadgesDemoModule} from "./demos/badges/badges.demo.module";
         NewLayoutAlertComponent
     ]
 })
-export class DocumentationModule { }
+export class DocumentationModule {
+}

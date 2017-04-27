@@ -17,6 +17,8 @@ import {ButtonSizesDemo} from "./button-sizes";
 import {ToggleDemo} from "./toggles";
 import {ButtonsTestDemo} from "./buttons-test";
 import {ButtonsIconsDemo} from "./buttons-icons";
+import {ButtonLoadingDemo} from "./button-loading";
+import {Example} from "./utils/example";
 
 @NgModule({
     imports: [
@@ -33,7 +35,9 @@ import {ButtonsIconsDemo} from "./buttons-icons";
         ButtonSizesDemo,
         ToggleDemo,
         ButtonsTestDemo,
-        ButtonsIconsDemo
+        ButtonsIconsDemo,
+        ButtonLoadingDemo,
+        Example
     ],
     exports: [
         RealButtonDemo,
@@ -45,7 +49,8 @@ import {ButtonsIconsDemo} from "./buttons-icons";
         ButtonSizesDemo,
         ToggleDemo,
         ButtonsTestDemo,
-        ButtonsIconsDemo
+        ButtonsIconsDemo,
+        ButtonLoadingDemo
     ]
 })
 export default class ButtonsDemoModule {

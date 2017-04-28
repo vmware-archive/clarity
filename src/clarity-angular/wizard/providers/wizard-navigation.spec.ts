@@ -26,38 +26,39 @@ export default function(): void {
         });
 
         it(".setCurrentPage() should set the current page and emit the event", function() {
-
             wizardNavigationService.setCurrentPage(pageCollectionService.getPageByIndex(1));
             expect(wizardNavigationService.currentPage).toEqual(pageCollectionService.getPageByIndex(1));
             wizardNavigationService.setCurrentPage(pageCollectionService.lastPage);
             expect(wizardNavigationService.currentPage).toEqual(pageCollectionService.lastPage);
         });
 
-        it(".next() should call finish() and throw an error if the current page is the last page.", function() {
-
+        it(".next() should call finish() if the current page is the last page.", function() {
             let testPage = wizardNavigationService.pageCollection.lastPage;
+            let wizard = context.clarityDirective;
+
             wizardNavigationService.setCurrentPage(testPage);
             spyOn(testPage.primaryButtonClicked, "emit");
             spyOn(testPage.onCommit, "emit");
-            spyOn(context.clarityDirective.wizardFinished, "emit");
+            spyOn(wizard.wizardFinished, "emit");
+
             wizardNavigationService.wizardFinished.subscribe(function() {
-                context.clarityDirective.wizardFinished.emit();
+                wizard.wizardFinished.emit();
             });
-            expect(function() {
-                wizardNavigationService.next();
-            }).toThrowError("The wizard has no next page to go to.");
+
+            wizardNavigationService.next();
+
             expect(testPage.primaryButtonClicked.emit).toHaveBeenCalled();
             expect(testPage.onCommit.emit).toHaveBeenCalled();
             expect(testPage.completed).toBe(true);
-            expect(context.clarityDirective.wizardFinished.emit).toHaveBeenCalled();
-
+            expect(wizard.wizardFinished.emit).toHaveBeenCalled();
         });
 
         it(".next() should set the current page to the next page.", function() {
-
             expect(wizardNavigationService.currentPage)
                 .toEqual(wizardNavigationService.pageCollection.getPageByIndex(0));
+
             wizardNavigationService.next();
+
             expect(wizardNavigationService.currentPage)
                 .toEqual(wizardNavigationService.pageCollection.getPageByIndex(1));
         });
@@ -75,19 +76,16 @@ export default function(): void {
          * We should investigate possibilities of stripping down some of these tests on finish() and next() */
 
         it(".finish() should commit the current page and emit the event", function() {
-
             let testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
 
             spyOn(testPage.primaryButtonClicked, "emit");
             spyOn(testPage.onCommit, "emit");
             spyOn(context.clarityDirective.wizardFinished, "emit");
 
-            wizardNavigationService.wizardFinished.subscribe(function() {
-                context.clarityDirective.wizardFinished.emit();
-            });
-
             wizardNavigationService.setCurrentPage(testPage);
+
             wizardNavigationService.finish();
+
             expect(testPage.primaryButtonClicked.emit).toHaveBeenCalled();
             expect(testPage.onCommit.emit).toHaveBeenCalled();
             expect(testPage.completed).toBe(true);
@@ -95,10 +93,10 @@ export default function(): void {
         });
 
         it(".finish() should not commit the current page and emit events if next is disabled", function() {
-
             let testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
 
             testPage.nextStepDisabled = true;
+            context.detectChanges();
 
             spyOn(testPage.primaryButtonClicked, "emit");
             spyOn(testPage.onCommit, "emit");
@@ -106,7 +104,6 @@ export default function(): void {
 
             wizardNavigationService.wizardFinished.subscribe(function() {
                 context.clarityDirective.wizardFinished.emit();
-
             });
 
             wizardNavigationService.setCurrentPage(testPage);

@@ -66,10 +66,10 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
 
         this.wizardFinishedSubscription = this.navService.wizardFinished.subscribe(() => {
             this.wizardFinished.emit();
+
             if (!this.stopNext) {
                 this.forceFinish();
             }
-            // SPECME
         });
 
         this.differ = differs.find([]).create(null);

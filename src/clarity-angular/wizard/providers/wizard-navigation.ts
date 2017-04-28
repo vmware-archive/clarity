@@ -130,10 +130,11 @@ export class WizardNavigationService implements OnDestroy {
     // the user to the next page.
     public next(): void {
         if (this.currentPageIsLast) {
-            this.finish();
+            this.checkAndCommitCurrentPage("finish");
+            return;
         }
 
-        this.forceNext();
+        this.checkAndCommitCurrentPage("next");
 
         if (!this.wizardHasAltNext) {
             this._movedToNextPage.next(true);
@@ -199,12 +200,15 @@ export class WizardNavigationService implements OnDestroy {
             return;
         }
 
+        if (isFinish || isDangerFinish) {
+            this._wizardFinished.next();
+        }
+
         if (this.wizardHasAltNext) {
-            if (isFinish || isDangerFinish) {
-                this._wizardFinished.next();
-            } else if (isNext || isDangerNext) {
+            if (isNext || isDangerNext) {
                 this._movedToNextPage.next(true);
             }
+            // jump out here, no matter what type we're looking at
             return;
         }
 
@@ -212,17 +216,14 @@ export class WizardNavigationService implements OnDestroy {
         // completed.
         this.pageCollection.commitPage(currentPage);
 
-        if (isFinish || isDangerFinish) {
-            this.finish();
-        } else if (isNext || isDangerNext) {
-            this.next();
+        if (isNext || isDangerNext) {
+            this.forceNext();
         }
         // SPECME
     }
 
     public finish(): void {
-        this._wizardFinished.next();
-        // SPECME
+        this.checkAndCommitCurrentPage("finish");
     }
 
     // When called, the wizard will move to the prev page.

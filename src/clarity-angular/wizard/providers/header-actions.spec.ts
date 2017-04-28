@@ -13,7 +13,6 @@ import {WizardNavigationService} from "./wizard-navigation";
 export default function(): void {
 
     describe("Header Actions Service", function() {
-
         let context: TestContext<Wizard, HeaderActionsTest>;
         let headerActionService: HeaderActionService;
         let wizardNavigationService: WizardNavigationService;
@@ -30,7 +29,6 @@ export default function(): void {
         });
 
         it(".currentPageHasHeaderActions indicates if the current page has header actions", function() {
-
             let lastPage = wizardNavigationService.pageCollection.lastPage;
 
             expect(headerActionService.currentPageHasHeaderActions).toBe(true);
@@ -39,7 +37,6 @@ export default function(): void {
         });
 
         it(".showWizardHeaderActions indicates if other pages have the header actions", function() {
-
             let lastPage = wizardNavigationService.pageCollection.lastPage;
             expect(headerActionService.showWizardHeaderActions).toBe(false);
 
@@ -47,9 +44,8 @@ export default function(): void {
             expect(headerActionService.showWizardHeaderActions).toBe(true);
         });
 
-        /*
-        * TODO: investigate displayHeaderActionsWrapper is needed as it seems to always return
-         the same value as wizardHasHeaderActions*/
+        // TODO: investigate if displayHeaderActionsWrapper is needed as it seems to always return
+        // the same value as wizardHasHeaderActions
     });
 
 }

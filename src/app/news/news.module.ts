@@ -5,11 +5,10 @@ import {ClarityModule} from "clarity-angular";
 import {UtilsModule} from "../utils/utils.module";
 import {NewsRoutingModule} from "./news-routing.module";
 import {NewsComponent} from "./news.component";
-import {RELEASE_ROUTES} from "./release-page/release-pages";
 import {BreakingChange} from "./counters/breaking-change.directive";
 import {BugFix} from "./counters/bug-fix.directive";
 import {NewComponent} from "./counters/new-component.directive";
-import {componentList} from "../utils/component-list";
+import {Release} from "./release/release.directive";
 
 @NgModule({
     declarations: [
@@ -17,7 +16,7 @@ import {componentList} from "../utils/component-list";
         BreakingChange,
         BugFix,
         NewComponent,
-        RELEASE_ROUTES.map(componentList),
+        Release
     ],
     imports: [
         CommonModule,

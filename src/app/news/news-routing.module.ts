@@ -2,7 +2,6 @@ import {NgModule}             from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 
 import {NewsComponent} from "./news.component";
-import {RELEASE_ROUTES} from "./release-page/release-pages";
 
 const newsRoutes: Routes = [
     {
@@ -12,7 +11,20 @@ const newsRoutes: Routes = [
             bodyClass: "layout-news",
             browserTitle: "Releases"
         },
-        children: RELEASE_ROUTES
+        children: [
+            {
+                path: "0.9.1",
+                data: {
+                    browserTitle: "0.9.1"
+                }
+            },
+            {
+                path: "0.9.0",
+                data: {
+                    browserTitle: "0.9.0"
+                }
+            }
+        ]
     }
 ];
 

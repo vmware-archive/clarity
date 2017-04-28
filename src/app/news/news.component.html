@@ -1,5 +1,8 @@
-<router-outlet></router-outlet>
-
+<div class="content-area">
+    <ng-container *ngIf="currentTemplate">
+        <ng-template [ngTemplateOutlet]="currentTemplate"></ng-template>
+    </ng-container>
+</div>
 <nav class="sidenav" [clr-nav-level]="2">
     <section class="sidenav-content">
         <a class="nav-link" routerLink="/news" routerLinkActive="active"
@@ -16,3 +19,11 @@
         </section>
     </section>
 </nav>
+
+<ng-template [clrRelease]="'0.9.1'">
+    Release 0.9.1
+</ng-template>
+
+<ng-template [clrRelease]="'0.9.0'">
+    Release 0.9.0
+</ng-template>

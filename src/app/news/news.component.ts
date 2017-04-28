@@ -11,7 +11,7 @@ const RELEASES = require("../../releases/release-list.json");
 
 @Component({
     selector: "news",
-    templateUrl: "news.component.html",
+    templateUrl: "../../releases/final-template/auto-generated-news.component.html",
     host: {
         "[class.content-container]": "true"
     }

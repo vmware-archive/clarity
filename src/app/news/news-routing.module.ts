@@ -2,6 +2,7 @@ import {NgModule}             from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 
 import {NewsComponent} from "./news.component";
+import {AUTO_GENERATED_ROUTES} from "../../releases/final-template/auto-generated-routes";
 
 const newsRoutes: Routes = [
     {
@@ -11,20 +12,7 @@ const newsRoutes: Routes = [
             bodyClass: "layout-news",
             browserTitle: "Releases"
         },
-        children: [
-            {
-                path: "0.9.1",
-                data: {
-                    browserTitle: "0.9.1"
-                }
-            },
-            {
-                path: "0.9.0",
-                data: {
-                    browserTitle: "0.9.0"
-                }
-            }
-        ]
+        children: AUTO_GENERATED_ROUTES
     }
 ];
 

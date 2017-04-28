@@ -1,3 +1,5 @@
+
+/*
 import {Component, ViewChildren, QueryList, AfterViewInit} from "@angular/core";
 import {TEMPLATES} from "../../../releases/release-templates-stub";
 import {BreakingChange} from "../counters/breaking-change.directive";
@@ -70,3 +72,4 @@ function createChangeLogComponent(releaseNumber, releaseInfo) {
     }
     return ChangelogComponent;
 }
+*/

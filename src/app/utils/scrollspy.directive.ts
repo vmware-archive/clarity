@@ -48,7 +48,6 @@ export class ScrollSpy implements OnDestroy, OnInit {
   }
 
   findCurrentAnchor() {
-    console.log("Find", this.anchors);
     for (let i = this.anchors.length - 1; i >= 0; i--) {
       let anchor = this.anchors[i];
       if (this.scrollable.querySelector(anchor).offsetTop <= this.scrollPosition) {

@@ -1,18 +1,18 @@
 <router-outlet></router-outlet>
 
 <nav class="sidenav" [clr-nav-level]="2">
-  <section class="sidenav-content">
-    <a class="nav-link" routerLink="/news" routerLinkActive="active"
-       [routerLinkActiveOptions]="{exact:true}">Current Release ({{current}})</a>
+    <section class="sidenav-content">
+        <a class="nav-link" routerLink="/news" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact:true}">Current Release ({{current}})</a>
 
-    <section *ngFor="let minor of minors; let i = index" class="nav-group collapsible">
-      <input id="tab{{i}}" type="checkbox" checked>
-      <label for="tab{{i}}">{{minor}} Changelogs</label>
-      <ul class="nav-list">
-        <li *ngFor="let patch of patches[minor]">
-          <a class="nav-link" [routerLink]="patch" routerLinkActive="active">{{patch}}</a>
-        </li>
-      </ul>
+        <section *ngFor="let minor of minors; let i = index" class="nav-group collapsible">
+            <input id="tab{{i}}" type="checkbox" checked>
+            <label for="tab{{i}}">{{minor}} Changelogs</label>
+            <ul class="nav-list">
+                <li *ngFor="let patch of patches[minor]">
+                    <a class="nav-link" [routerLink]="patch" routerLinkActive="active">{{patch}}</a>
+                </li>
+            </ul>
+        </section>
     </section>
-  </section>
 </nav>

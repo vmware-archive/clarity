@@ -29,6 +29,7 @@ import {SelectsDemo} from "./demos/selects/selects.demo";
 import {SpinnerDemo} from "./demos/spinners/spinner.demo";
 import {StackViewDemo} from "./demos/stack-view/stack-view.demo";
 import {HeaderDemo} from "./demos/header/header.demo";
+import {SidenavDemo} from "./demos/sidenav/sidenav.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -237,6 +238,14 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-select-boxes",
                     browserTitle: "Select Boxes"
+                }
+            },
+            {
+                path: "sidenav",
+                component: SidenavDemo,
+                data: {
+                    bodyClass: "page-sidenav",
+                    browserTitle: "Sidenav"
                 }
             },
             {

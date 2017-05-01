@@ -36,6 +36,7 @@ import {SelectsDemoModule} from "./demos/selects/selects.demo.module";
 import {SpinnersDemoModule} from "./demos/spinners/spinners.demo.module";
 import {StackViewDemoModule} from "./demos/stack-view/stack-view.demo.module";
 import {HeaderDemoModule} from "./demos/header/header.demo.module";
+import {SidenavDemoModule} from "./demos/sidenav/sidenav.demo.module";
 
 @NgModule({
     imports: [
@@ -67,6 +68,7 @@ import {HeaderDemoModule} from "./demos/header/header.demo.module";
         RadiosDemoModule,
         ProgressBarsDemoModule,
         SelectsDemoModule,
+        SidenavDemoModule,
         SpinnersDemoModule,
         StackViewDemoModule,
         DocumentationRoutingModule

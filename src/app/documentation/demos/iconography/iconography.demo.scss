@@ -1,0 +1,74 @@
+// Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../../styles/clarity-imports';
+
+.clr-icon-selection {
+
+    h5 {
+        margin: $clr_baselineRem_1_75 0 $clr_baselineRem_0_75;
+    }
+
+    section {
+
+        .clr-icon-preview-settings {
+            padding: $clr_baselineRem_0_5 $clr_baselineRem_1_5;
+
+            .clr-solid-checkbox {
+                .toggle-switch {
+                    margin-right: $clr_baselineRem_0_5;
+                }
+            }
+
+            .clr-variant-radios {
+                & > label {
+                    padding-right: $clr_baselineRem_0_25;
+                }
+                .radio-inline {
+                    display: inline-block;
+                    padding-right: $clr_baselineRem_0_25;
+                    &:last-child {
+                        padding-right: $clr_baselineRem_0_5;
+                    }
+                }
+            }
+        }
+
+        .clr-icon-collection {
+            padding: $clr_baselineRem_1;
+            .clr-icon-item {
+                padding: $clr_baselineRem_0_5 $clr_baselineRem_0_25;
+                white-space: nowrap;
+                clr-icon {
+                    width: 24px;
+                    height: 24px;
+                    margin: 0 $clr_baselineRem_0_5;
+                }
+                span.icon-shape-name {
+                    white-space: nowrap
+                }
+            }
+        }
+
+    }
+
+}
+
+.clr-example {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    margin: 0;
+    padding: $clr_baselineRem_0_5 0;
+    &.inverse {
+        background: #414957;
+        margin: $clr_baselineRem_0_5 0 0;
+    }
+    clr-icon {
+        width: 36px;
+        height: 36px;
+        margin: 0 $clr_baselineRem_0_25;
+    }
+}

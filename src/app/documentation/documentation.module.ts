@@ -25,6 +25,9 @@ import {DatagridDemoModule} from "./demos/datagrid/datagrid.demo.module";
 import {FormsDemoModule} from "./demos/forms/forms.demo.module";
 import {GridDemoModule} from "./demos/grid/grid.demo.module";
 import {DropdownDemoModule} from "./demos/dropdown/dropdown.demo.module";
+import {LabelsDemoModule} from "./demos/labels/labels.demo.module";
+import {IconographyDemoModule} from "./demos/iconography/iconography.demo.module";
+import {InputFieldsDemoModule} from "./demos/input-fields/input-fields.demo.module";
 
 @NgModule({
     imports: [
@@ -45,6 +48,9 @@ import {DropdownDemoModule} from "./demos/dropdown/dropdown.demo.module";
         DropdownDemoModule,
         FormsDemoModule,
         GridDemoModule,
+        IconographyDemoModule,
+        InputFieldsDemoModule,
+        LabelsDemoModule,
         ListsDemoModule,
         ProgressBarsDemoModule,
         DocumentationRoutingModule

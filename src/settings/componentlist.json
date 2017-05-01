@@ -172,6 +172,38 @@
             "dox": 20
         },
         {
+            "url": "iconography",
+            "text": "Iconography",
+            "type": "pattern",
+            "ux": 20,
+            "ui": 20,
+            "core": 20,
+            "ng": -1,
+            "dox": 20,
+            "isUpdated": true
+        },
+        {
+            "url": "input-fields",
+            "text": "Input Fields",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 5,
+            "dox": 20
+        },
+        {
+            "url": "labels",
+            "text": "Labels",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20,
+            "newLayout": true
+        },
+        {
             "url": "lists",
             "text": "Lists",
             "type": "component",

@@ -18,6 +18,9 @@ import {DatagridDemo} from "./demos/datagrid/datagrid.demo";
 import {DropdownsDemo} from "./demos/dropdown/dropdown.demo";
 import {FormsDemo} from "./demos/forms/forms.demo";
 import {GridDemo} from "./demos/grid/grid.demo";
+import {IconsDemo} from "./demos/iconography/icons.demo";
+import {InputFieldsDemo} from "./demos/input-fields/input-fields.demo";
+import {LabelsDemo} from "./demos/labels/labels.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -138,6 +141,30 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-grid",
                     browserTitle: "Grid"
+                }
+            },
+            {
+                path: "iconography",
+                component: IconsDemo,
+                data: {
+                    bodyClass: "page-iconography",
+                    browserTitle: "Iconography"
+                }
+            },
+            {
+                path: "input-fields",
+                component: InputFieldsDemo,
+                data: {
+                    bodyClass: "input-fields",
+                    browserTitle: "Input Fields"
+                }
+            },
+            {
+                path: "labels",
+                component: LabelsDemo,
+                data: {
+                    bodyClass: "page-labels",
+                    browserTitle: "Labels"
                 }
             },
             {

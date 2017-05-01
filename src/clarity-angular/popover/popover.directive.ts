@@ -1,5 +1,6 @@
-import {Directive, EmbeddedViewRef, Input, TemplateRef, ViewContainerRef} from "@angular/core";
+import {Directive, EmbeddedViewRef, EventEmitter, Input, Output, TemplateRef, ViewContainerRef} from "@angular/core";
 import {PopoverOptions, Point, Popover} from "./popover";
+import {Subscription} from "rxjs/Subscription";
 
 let openCount: number = 0;
 let waiting: Array<() => void> = []; // pending create functions
@@ -7,33 +8,40 @@ let waiting: Array<() => void> = []; // pending create functions
 @Directive({ selector: "[clrPopover]"})
 export class PopoverDirective {
     private _popoverInstance: Popover;
+    private _subscription: Subscription;
 
     @Input("clrPopoverAnchor") anchorElem: any;
     @Input("clrPopoverAnchorPoint") anchorPoint: Point;
     @Input("clrPopoverPopoverPoint") popoverPoint: Point;
     @Input("clrPopoverOptions") popoverOptions: PopoverOptions = {};
+    @Output("clrPopoverChange") clrPopoverChange = new EventEmitter<boolean>(false);
+
 
     constructor(private templateRef: TemplateRef<any>, private viewContainer: ViewContainerRef) {
     }
 
-    // TODO: current implementation only allows a single popover to be open at any given time
-    // will need to revisit this when the requirements change for future components such as nested menu
     @Input() set clrPopover(open: boolean) {
         if (open) {
-            if (openCount === 0) {
+            if (this.popoverOptions.allowMultipleOpen) {
                 this.createPopover();
             } else {
-                waiting.push(() => {
+                if (openCount === 0) {
                     this.createPopover();
-                });
+                } else {
+                    waiting.push(() => {
+                        this.createPopover();
+                    });
+                }
             }
         } else {
             this.viewContainer.clear();
             this.destroyPopover();
 
-            if (waiting.length > 0) {
-                let createPopoverFn = waiting.shift();
-                createPopoverFn();
+            if (!this.popoverOptions.allowMultipleOpen) {
+                if (waiting.length > 0) {
+                    let createPopoverFn = waiting.shift();
+                    createPopoverFn();
+                }
             }
         }
     }
@@ -47,14 +55,23 @@ export class PopoverDirective {
         //inside of the popover. For Eg: Button Groups
         embeddedViewRef.detectChanges();
 
-        this._popoverInstance = new Popover(embeddedViewRef.rootNodes[0]);
-        this._popoverInstance.anchor(
-            this.anchorElem, this.anchorPoint, this.popoverPoint, this.popoverOptions);
+        // filter out other nodes in the view ref so we are only left with element nodes
+        let elementNodes: HTMLElement[] = embeddedViewRef.rootNodes.filter((node: any) => {
+           return node.nodeType === 1;
+        });
+
+        // we take the first element node in the embedded view; usually there should only be one anyways
+        this._popoverInstance = new Popover(elementNodes[0]);
+        this._subscription = this._popoverInstance.anchor(
+            this.anchorElem, this.anchorPoint, this.popoverPoint, this.popoverOptions).subscribe(() => {
+            this.clrPopoverChange.emit(false);
+        });
         openCount++;
     }
 
     destroyPopover() {
         if (this._popoverInstance) {
+            this._subscription.unsubscribe();
             this._popoverInstance.destroy();
             delete this._popoverInstance;
             openCount--;

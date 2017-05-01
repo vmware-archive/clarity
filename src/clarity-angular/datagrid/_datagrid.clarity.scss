@@ -112,27 +112,26 @@
         width: auto; // override the basic table's style of width: 100%
         max-width: none; // override the basic table's style of max-width: 100%
 
-        &.loading {
-            // this allows for the spinner to be centered relative to .datagrid-container
+        .datagrid-spinner-wrapper {
             position: relative;
-        }
 
-        .datagrid-spinner {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba($clr-white, 0.6);
-
-            .spinner {
-                // We center the spinner in the datagrid
+            .datagrid-spinner {
                 position: absolute;
                 top: 0;
                 bottom: 0;
                 left: 0;
                 right: 0;
-                margin: auto;
+                background: rgba($clr-white, 0.6);
+
+                .spinner {
+                    // We center the spinner in the datagrid
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                }
             }
         }
 

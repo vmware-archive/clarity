@@ -7,10 +7,9 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {ClarityModule} from "clarity-angular";
 
-import {BadgeColorsDemo} from "./badge-colors";
-import {BadgeStatusesDemo} from "./badge-statuses";
-import {BadgesDemo} from "./badges.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
+import {AppLayoutDemo} from "./app-layout.demo";
+import {LayoutDemoModule} from "../layout/layout.demo.module";
 import {RouterModule} from "@angular/router";
 
 @NgModule({
@@ -18,16 +17,15 @@ import {RouterModule} from "@angular/router";
         CommonModule,
         ClarityModule.forChild(),
         DocWrapperModule,
+        LayoutDemoModule,
         RouterModule
     ],
     declarations: [
-        BadgeColorsDemo,
-        BadgeStatusesDemo,
-        BadgesDemo
+        AppLayoutDemo
     ],
     exports: [
-        BadgesDemo
+        AppLayoutDemo
     ]
 })
-export class BadgesDemoModule {
+export class AppLayoutDemoModule {
 }

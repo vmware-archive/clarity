@@ -5,6 +5,7 @@ import {DocumentationComponent} from "./documentation.component";
 import {ComponentStatusComponent} from "./component-status/component-status.component";
 import {BadgesDemo} from "./demos/badges/badges.demo";
 import {AlertsDemo} from "./demos/alert/alerts.demo";
+import {AppLayoutDemo} from "./demos/app-layout/app-layout.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -29,6 +30,14 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-alerts",
                     browserTitle: "Alerts"
+                }
+            },
+            {
+                path: "app-layout",
+                component: AppLayoutDemo,
+                data: {
+                    bodyClass: "page-app-layout",
+                    browserTitle: "Application Layout"
                 }
             },
             {

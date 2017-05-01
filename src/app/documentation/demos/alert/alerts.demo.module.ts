@@ -21,12 +21,14 @@ import {AlertAngularSmallDemo} from "./angular/alert-angular-small";
 import {AlertAngularCloseEventDemo} from "./angular/alert-angular-close-event";
 import {AlertsDemo} from "./alerts.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
     imports: [
         CommonModule,
         ClarityModule.forChild(),
-        DocWrapperModule
+        DocWrapperModule,
+        RouterModule
     ],
     declarations: [
         AlertStylesDemo,

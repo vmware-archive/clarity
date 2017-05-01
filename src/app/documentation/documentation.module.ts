@@ -12,6 +12,7 @@ import {NewLayoutAlertComponent} from "./utils/new-layout-alert.component";
 import {StatusDotComponent} from "./component-status/status-dot.component";
 import {BadgesDemoModule} from "./demos/badges/badges.demo.module";
 import {AlertsDemoModule} from "./demos/alert/alerts.demo.module";
+import {AppLayoutDemoModule} from "./demos/app-layout/app-layout.demo.module";
 
 @NgModule({
     imports: [
@@ -20,6 +21,7 @@ import {AlertsDemoModule} from "./demos/alert/alerts.demo.module";
         UtilsModule,
         ClarityModule.forChild(),
         AlertsDemoModule,
+        AppLayoutDemoModule,
         BadgesDemoModule,
         DocumentationRoutingModule
     ],

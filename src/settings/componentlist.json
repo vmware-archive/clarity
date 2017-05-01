@@ -8,6 +8,16 @@
 
     "list": [
         {
+            "url": "app-layout",
+            "text": "Application Layout",
+            "type": "pattern",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
             "url": "alerts",
             "text": "Alerts",
             "type": "component",

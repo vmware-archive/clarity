@@ -48,6 +48,36 @@
             "core": -1,
             "ng": -1,
             "dox": 20
+        },
+        {
+            "url": "cards",
+            "text": "Cards",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "lists",
+            "text": "Lists",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "progress",
+            "text": "Progress Bars",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 5,
+            "dox": 20
         }
     ]
 }

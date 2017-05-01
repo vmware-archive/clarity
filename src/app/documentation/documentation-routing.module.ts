@@ -7,6 +7,9 @@ import {BadgesDemo} from "./demos/badges/badges.demo";
 import {AlertsDemo} from "./demos/alert/alerts.demo";
 import {AppLayoutDemo} from "./demos/app-layout/app-layout.demo";
 import {ButtonsDemo} from "./demos/buttons/buttons.demo";
+import {CardsDemo} from "./demos/card/cards.demo";
+import {ListsDemo} from "./demos/lists/lists.demo";
+import {ProgressBarsDemo} from "./demos/progress-bars/progress-bars.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -55,6 +58,30 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-buttons",
                     browserTitle: "Buttons"
+                }
+            },
+            {
+                path: "cards",
+                component: CardsDemo,
+                data: {
+                    bodyClass: "page-cards",
+                    browserTitle: "Cards"
+                }
+            },
+            {
+                path: "lists",
+                component: ListsDemo,
+                data: {
+                    bodyClass: "page-lists",
+                    browserTitle: "Lists"
+                }
+            },
+            {
+                path: "progress",
+                component: ProgressBarsDemo,
+                data: {
+                    bodyClass: "page-progress",
+                    browserTitle: "Progress Bars"
                 }
             }
         ]

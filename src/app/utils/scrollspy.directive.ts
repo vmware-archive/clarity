@@ -7,63 +7,64 @@ import {RouterLinkWithHref} from "@angular/router";
 import {Subscription} from "rxjs";
 
 @Directive({
-  selector: "[scrollspy]",
+    selector: "[scrollspy]",
 })
 export class ScrollSpy implements OnDestroy, OnInit {
 
-  constructor(private renderer: Renderer) {}
+    constructor(private renderer: Renderer) {
+    }
 
-  @Input("scrollspy") scrollable: any;
+    @Input("scrollspy") scrollable: any;
 
-  anchors = [];
+    anchors = [];
 
-  sub: Subscription;
+    sub: Subscription;
 
-  @ContentChildren(RouterLinkWithHref, {descendants: true})
-  set links(routerLinks: QueryList<RouterLinkWithHref>) {
-    this.anchors = routerLinks.map(routerLink => "#" + routerLink.fragment);
-    this.sub = routerLinks.changes.subscribe(() => {
-      this.anchors = routerLinks.map(routerLink => "#" + routerLink.fragment);
-    });
-  }
-
-  @ContentChildren(RouterLinkWithHref, {descendants: true, read: ElementRef})
-  linkElements: QueryList<ElementRef>;
-
-  throttle = false;
-  scrollPosition: number;
-
-  handleEvent() {
-    this.scrollPosition = this.scrollable.scrollTop;
-    if (!this.throttle) {
-      window.requestAnimationFrame(() => {
-        let currentLinkIndex = this.findCurrentAnchor() || 0;
-        this.linkElements.forEach((link: ElementRef, index: number) => {
-          this.renderer.setElementClass(link.nativeElement, "active", index === currentLinkIndex);
+    @ContentChildren(RouterLinkWithHref, {descendants: true})
+    set links(routerLinks: QueryList<RouterLinkWithHref>) {
+        this.anchors = routerLinks.map(routerLink => "#" + routerLink.fragment);
+        this.sub = routerLinks.changes.subscribe(() => {
+            this.anchors = routerLinks.map(routerLink => "#" + routerLink.fragment);
         });
-        this.throttle = false;
-      });
     }
-    this.throttle = true;
-  }
 
-  findCurrentAnchor() {
-    for (let i = this.anchors.length - 1; i >= 0; i--) {
-      let anchor = this.anchors[i];
-      if (this.scrollable.querySelector(anchor).offsetTop <= this.scrollPosition) {
-        return i;
-      }
+    @ContentChildren(RouterLinkWithHref, {descendants: true, read: ElementRef})
+    linkElements: QueryList<ElementRef>;
+
+    throttle = false;
+    scrollPosition: number;
+
+    handleEvent() {
+        this.scrollPosition = this.scrollable.scrollTop;
+        if (!this.throttle) {
+            window.requestAnimationFrame(() => {
+                let currentLinkIndex = this.findCurrentAnchor() || 0;
+                this.linkElements.forEach((link: ElementRef, index: number) => {
+                    this.renderer.setElementClass(link.nativeElement, "active", index === currentLinkIndex);
+                });
+                this.throttle = false;
+            });
+        }
+        this.throttle = true;
     }
-  }
 
-  ngOnInit() {
-    this.scrollable.addEventListener("scroll", this);
-  }
-
-  ngOnDestroy() {
-    this.scrollable.removeEventListener("scroll", this);
-    if (this.sub) {
-      this.sub.unsubscribe();
+    findCurrentAnchor() {
+        for (let i = this.anchors.length - 1; i >= 0; i--) {
+            let anchor = this.anchors[i];
+            if (this.scrollable.querySelector(anchor) && this.scrollable.querySelector(anchor).offsetTop <= this.scrollPosition) {
+                return i;
+            }
+        }
     }
-  }
+
+    ngOnInit() {
+        this.scrollable.addEventListener("scroll", this);
+    }
+
+    ngOnDestroy() {
+        this.scrollable.removeEventListener("scroll", this);
+        if (this.sub) {
+            this.sub.unsubscribe();
+        }
+    }
 }

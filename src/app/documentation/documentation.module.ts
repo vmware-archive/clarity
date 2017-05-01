@@ -14,6 +14,9 @@ import {BadgesDemoModule} from "./demos/badges/badges.demo.module";
 import {AlertsDemoModule} from "./demos/alert/alerts.demo.module";
 import {AppLayoutDemoModule} from "./demos/app-layout/app-layout.demo.module";
 import {ButtonsDemoModule} from "./demos/buttons/buttons.demo.module";
+import {CardsDemoModule} from "./demos/card/cards.demo.module";
+import {ListsDemoModule} from "./demos/lists/lists.demo.module";
+import {ProgressBarsDemoModule} from "./demos/progress-bars/progress-bars.demo.module";
 
 @NgModule({
     imports: [
@@ -25,6 +28,9 @@ import {ButtonsDemoModule} from "./demos/buttons/buttons.demo.module";
         AppLayoutDemoModule,
         BadgesDemoModule,
         ButtonsDemoModule,
+        CardsDemoModule,
+        ListsDemoModule,
+        ProgressBarsDemoModule,
         DocumentationRoutingModule
     ],
     declarations: [

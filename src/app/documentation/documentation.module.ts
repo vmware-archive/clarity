@@ -17,6 +17,7 @@ import {ButtonsDemoModule} from "./demos/buttons/buttons.demo.module";
 import {CardsDemoModule} from "./demos/card/cards.demo.module";
 import {ListsDemoModule} from "./demos/lists/lists.demo.module";
 import {ProgressBarsDemoModule} from "./demos/progress-bars/progress-bars.demo.module";
+import {ButtonGroupDemoModule} from "./demos/button-group/button-group.demo.module";
 
 @NgModule({
     imports: [
@@ -28,6 +29,7 @@ import {ProgressBarsDemoModule} from "./demos/progress-bars/progress-bars.demo.m
         AppLayoutDemoModule,
         BadgesDemoModule,
         ButtonsDemoModule,
+        ButtonGroupDemoModule,
         CardsDemoModule,
         ListsDemoModule,
         ProgressBarsDemoModule,

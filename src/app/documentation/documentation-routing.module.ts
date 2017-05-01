@@ -10,6 +10,7 @@ import {ButtonsDemo} from "./demos/buttons/buttons.demo";
 import {CardsDemo} from "./demos/card/cards.demo";
 import {ListsDemo} from "./demos/lists/lists.demo";
 import {ProgressBarsDemo} from "./demos/progress-bars/progress-bars.demo";
+import {ButtonGroupDemo} from "./demos/button-group/button-group.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -58,6 +59,14 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-buttons",
                     browserTitle: "Buttons"
+                }
+            },
+            {
+                path: "button-group",
+                component: ButtonGroupDemo,
+                data: {
+                    bodyClass: "page-button-group",
+                    browserTitle: "Button Group"
                 }
             },
             {

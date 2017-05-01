@@ -37,6 +37,17 @@
             "ng": -1,
             "dox": 20,
             "newLayout": true
+        },
+        {
+            "url": "buttons",
+            "newLayout": true,
+            "text": "Buttons",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
         }
     ]
 }

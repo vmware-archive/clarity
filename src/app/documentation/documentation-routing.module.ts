@@ -6,6 +6,7 @@ import {ComponentStatusComponent} from "./component-status/component-status.comp
 import {BadgesDemo} from "./demos/badges/badges.demo";
 import {AlertsDemo} from "./demos/alert/alerts.demo";
 import {AppLayoutDemo} from "./demos/app-layout/app-layout.demo";
+import {ButtonsDemo} from "./demos/buttons/buttons.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -46,6 +47,14 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-badges",
                     browserTitle: "Badges"
+                }
+            },
+            {
+                path: "buttons",
+                component: ButtonsDemo,
+                data: {
+                    bodyClass: "page-buttons",
+                    browserTitle: "Buttons"
                 }
             }
         ]

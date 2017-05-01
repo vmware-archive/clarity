@@ -13,6 +13,7 @@ import {StatusDotComponent} from "./component-status/status-dot.component";
 import {BadgesDemoModule} from "./demos/badges/badges.demo.module";
 import {AlertsDemoModule} from "./demos/alert/alerts.demo.module";
 import {AppLayoutDemoModule} from "./demos/app-layout/app-layout.demo.module";
+import {ButtonsDemoModule} from "./demos/buttons/buttons.demo.module";
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import {AppLayoutDemoModule} from "./demos/app-layout/app-layout.demo.module";
         AlertsDemoModule,
         AppLayoutDemoModule,
         BadgesDemoModule,
+        ButtonsDemoModule,
         DocumentationRoutingModule
     ],
     declarations: [

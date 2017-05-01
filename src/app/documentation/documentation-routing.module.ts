@@ -13,6 +13,7 @@ import {ProgressBarsDemo} from "./demos/progress-bars/progress-bars.demo";
 import {ButtonGroupDemo} from "./demos/button-group/button-group.demo";
 import {CheckboxesDemo} from "./demos/checkboxes/checkboxes.demo";
 import {CodeHighlightDemo} from "./demos/code/code.demo";
+import {ColorDemo} from "./demos/color/color.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -93,6 +94,14 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-code-highlight",
                     browserTitle: "Code Highlight"
+                }
+            },
+            {
+                path: "color",
+                component: ColorDemo,
+                data: {
+                    bodyClass: "page-color",
+                    browserTitle: "Color Palette"
                 }
             },
             {

@@ -111,6 +111,17 @@
             "noDemo": true
         },
         {
+            "url": "color",
+            "text": "Color Palette",
+            "type": "pattern",
+            "ux": 20,
+            "ui": 20,
+            "core": 20,
+            "ng": -1,
+            "dox": 20,
+            "isUpdated": true
+        },
+        {
             "url": "lists",
             "text": "Lists",
             "type": "component",

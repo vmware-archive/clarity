@@ -20,6 +20,7 @@ import {ProgressBarsDemoModule} from "./demos/progress-bars/progress-bars.demo.m
 import {ButtonGroupDemoModule} from "./demos/button-group/button-group.demo.module";
 import {CheckboxesDemoModule} from "./demos/checkboxes/checkboxes.demo.module";
 import {CodeHighlightDemoModule} from "./demos/code/code-highlight.demo.module";
+import {ColorDemoModule} from "./demos/color/color.demo.module";
 
 @NgModule({
     imports: [
@@ -35,6 +36,7 @@ import {CodeHighlightDemoModule} from "./demos/code/code-highlight.demo.module";
         CardsDemoModule,
         CheckboxesDemoModule,
         CodeHighlightDemoModule,
+        ColorDemoModule,
         ListsDemoModule,
         ProgressBarsDemoModule,
         DocumentationRoutingModule

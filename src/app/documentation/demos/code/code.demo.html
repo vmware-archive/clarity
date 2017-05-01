@@ -1,0 +1,23 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary"
+            id="code-highlight-is-a-custom-directive-to-highlight-code-blocks-using-prismhttpprismjscom"
+            target="_blank">Code Highlight
+            is a custom directive to highlight code blocks using <a href="http://prismjs.com/" target="_blank">Prism</a>.
+        </h5>
+
+        <p>Highlighting languages other than HTML, CSS, and JavaScript requires <code class="clr-code">prism.css</code>
+            and <code class="clr-code">prism.js</code> to be included in the page.</p>
+
+        <clr-code-highlight-imports-demo></clr-code-highlight-imports-demo>
+
+        <p>To highlight a code block, add the <code class="clr-code">clr-code-highlight</code> directive to the
+            <code class="clr-code">code</code> tag with the value set to the <code class="clr-code">language-*</code>
+            style classes from PrismJS. Refer to the <a href="http://prismjs.com/#languages-list" target="_blank">Prism
+                documentation</a> for the list of supported languages.</p>
+
+        <h6 id="example">Example</h6>
+
+        <clr-code-highlight-snippet-demo></clr-code-highlight-snippet-demo>
+    </article>
+</clr-doc-wrapper>

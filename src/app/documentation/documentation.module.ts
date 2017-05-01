@@ -19,6 +19,7 @@ import {ListsDemoModule} from "./demos/lists/lists.demo.module";
 import {ProgressBarsDemoModule} from "./demos/progress-bars/progress-bars.demo.module";
 import {ButtonGroupDemoModule} from "./demos/button-group/button-group.demo.module";
 import {CheckboxesDemoModule} from "./demos/checkboxes/checkboxes.demo.module";
+import {CodeHighlightDemoModule} from "./demos/code/code-highlight.demo.module";
 
 @NgModule({
     imports: [
@@ -33,6 +34,7 @@ import {CheckboxesDemoModule} from "./demos/checkboxes/checkboxes.demo.module";
         ButtonGroupDemoModule,
         CardsDemoModule,
         CheckboxesDemoModule,
+        CodeHighlightDemoModule,
         ListsDemoModule,
         ProgressBarsDemoModule,
         DocumentationRoutingModule

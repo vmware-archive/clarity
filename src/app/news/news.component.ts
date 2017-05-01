@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, QueryList, TemplateRef, ViewChildren} from "@angular/core";
+import {Component, OnInit, QueryList, TemplateRef, ViewChildren} from "@angular/core";
 import {compareReleases, MINORS, PATCHES} from "./release-page/release-organizer";
 import {Release} from "./release/release.directive";
 import {NavigationEnd, Router} from "@angular/router";
@@ -16,7 +16,7 @@ const RELEASES = require("../../releases/release-list.json");
         "[class.content-container]": "true"
     }
 })
-export class NewsComponent implements AfterViewInit, OnInit {
+export class NewsComponent implements OnInit {
     @ViewChildren(Release) releaseTemplates: QueryList<Release>;
     @ViewChildren(BreakingChange) breakingChanges: QueryList<BreakingChange>;
     @ViewChildren(BugFix) bugFixes: QueryList<BugFix>;
@@ -65,10 +65,6 @@ export class NewsComponent implements AfterViewInit, OnInit {
         }
     }
 
-    ngAfterViewInit() {
-        this.setTemplate(this.current);
-    }
-
     constructor(private router: Router) {
     }
 
@@ -79,6 +75,8 @@ export class NewsComponent implements AfterViewInit, OnInit {
                 let urlLength: number = url.length;
                 if (urlLength > 0 && url[urlLength - 1] !== "news") {
                     this.setTemplate(url[urlLength - 1]);
+                } else if (url[urlLength - 1] === "news") {
+                    this.setTemplate(this.current);
                 }
             }
         });

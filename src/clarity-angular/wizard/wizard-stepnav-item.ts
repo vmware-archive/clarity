@@ -25,6 +25,7 @@ import { PageCollectionService } from "./providers/page-collection";
         "[class.nav-item]": "true",
         "[class.active]": "isCurrent",
         "[class.disabled]": "isDisabled",
+        "[class.no-click]": "!canNavigate",
         "[class.complete]": "isComplete"
     }
 })
@@ -59,6 +60,11 @@ export class WizardStepnavItem {
     public get isComplete(): boolean {
         this.pageGuard();
         return this.page.completed;
+    }
+
+    public get canNavigate(): boolean {
+        this.pageGuard();
+        return this.pageCollection.previousPageIsCompleted(this.page);
     }
 
     click(): void {

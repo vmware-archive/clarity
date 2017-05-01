@@ -65,11 +65,10 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
         });
 
         this.wizardFinishedSubscription = this.navService.wizardFinished.subscribe(() => {
-            this.wizardFinished.emit();
-
             if (!this.stopNext) {
                 this.forceFinish();
             }
+            this.wizardFinished.emit();
         });
 
         this.differ = differs.find([]).create(null);
@@ -83,6 +82,10 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     // can activate showing or hiding the ghost page effect
     // defaults to false
     @Input("clrWizardShowGhostPages") showGhostPages: boolean = false;
+
+    // resets page completed states when navigating backwards
+    // defaults to false
+    @Input("clrWizardForceForwardNavigation") forceForward: boolean = false;
 
     // Variable that toggles open/close of the wizard component.
     // LEGACY: Naming convention matches old wizard
@@ -139,9 +142,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     }
 
     public ngOnInit(): void {
-        let navService = this.navService;
-
-        this.currentPageSubscription = navService.currentPageChanged.subscribe((page: WizardPage) => {
+        this.currentPageSubscription = this.navService.currentPageChanged.subscribe((page: WizardPage) => {
             this.setGhostPages();
             this.currentPageChanged.emit();
         });
@@ -162,12 +163,17 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     }
 
     public ngAfterContentInit() {
+        let navService = this.navService;
+
         this.pageCollection.pages = this.pages;
-        this.navService.wizardHasAltCancel = this.stopCancel;
-        this.navService.wizardHasAltNext = this.stopNext;
         this.headerActionService.wizardHeaderActions = this.headerActions;
+
+        navService.wizardHasAltCancel = this.stopCancel;
+        navService.wizardHasAltNext = this.stopNext;
+        navService.forceForwardNavigation = this.forceForward;
+
         if (this.showGhostPages) {
-            this.navService.hideWizardGhostPages = false;
+            navService.hideWizardGhostPages = false;
             this.deactivateGhostPages();
         }
     }
@@ -194,6 +200,19 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
         return this.navService.currentPage;
     }
 
+    public set currentPage(page: WizardPage) {
+        this.navService.goTo(page, true);
+    }
+
+// TODO: SETTER FOR CURRENT PAGE?!
+// takes page and sees if it's before or after current.
+// if after, uses regular goTo
+// if before, checks to see if completed or ready to complete.
+// sets ready to complete pages as completed as it moves.
+// checks first though. because it bounces out if it cannot move
+// throw error? sure, why not? allows for try/catch...
+
+
     // LEGACY: convenience function to match legacy API
     public get isLast(): boolean {
         return this.navService.currentPageIsLast;
@@ -208,10 +227,10 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     // wizard.
     // LEGACY: Naming convention matches old wizard
     public open(): void {
-        let navService = this.navService;
         this._open = true;
+
         if (!this.currentPage) {
-            navService.setFirstPageCurrent();
+            this.navService.setFirstPageCurrent();
         }
 
         this.setGhostPages();
@@ -252,12 +271,20 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     }
 
     // LEGACY: Naming convention matches old wizard
-    public next(): void {
-        this.navService.next();
+    public next(skipChecksAndEmits: boolean = true): void {
+        if (skipChecksAndEmits) {
+            this.forceNext();
+        } else {
+            this.navService.next();
+        }
     }
 
-    public finish(): void {
-        this.navService.finish();
+    public finish(skipChecksAndEmits: boolean = true): void {
+        if (skipChecksAndEmits) {
+            this.forceFinish();
+        } else {
+            this.navService.finish();
+        }
     }
 
     // does the work of finishing up the wizard and closing it but
@@ -314,7 +341,6 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
 
     public reset() {
         this.pageCollection.reset();
-        this.navService.setFirstPageCurrent();
         this.onReset.next();
     }
 

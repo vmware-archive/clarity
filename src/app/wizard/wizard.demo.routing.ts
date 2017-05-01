@@ -19,6 +19,7 @@ import { WizardAltCancelDemo } from "./wizard-alt-cancel.demo";
 import { WizardInlineDemo } from "./wizard-inline.demo";
 import { WizardJumpToDemo } from "./wizard-jump-to.demo";
 import { WizardAltNextDemo } from "./wizard-alt-next.demo";
+import { WizardForceForwardDemo } from "./wizard-force-forward.demo";
 
 const ROUTES: Routes = [
     {
@@ -38,7 +39,8 @@ const ROUTES: Routes = [
             { path: "inline", component: WizardInlineDemo },
             { path: "jump-to", component: WizardJumpToDemo },
             { path: "reset", component: WizardResetDemo },
-            { path: "alt-next", component: WizardAltNextDemo }
+            { path: "alt-next", component: WizardAltNextDemo },
+            { path: "force-forward", component: WizardForceForwardDemo }
         ]
     }
 ];

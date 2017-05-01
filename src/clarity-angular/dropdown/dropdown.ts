@@ -21,10 +21,12 @@ import {menuPositions} from "./menu-positions";
     selector: "clr-dropdown",
     template: `
         <ng-content select="[clrDropdownToggle]"></ng-content>
-        <div class="dropdown-menu" *clrPopover="open; anchor: anchor; anchorPoint: anchorPoint;
-            popoverPoint: popoverPoint;">
-            <ng-content select="[clr-dropdown-menu, .dropdown-menu]"></ng-content>
-        </div>
+        <template [(clrPopover)]="open" [clrPopoverAnchor]="anchor" [clrPopoverAnchorPoint]="anchorPoint"
+                     [clrPopoverPopoverPoint]="popoverPoint">
+            <div class="dropdown-menu">
+                <ng-content select="[clr-dropdown-menu, .dropdown-menu]"></ng-content>
+            </div>
+        </template>
     `,
     host: {
         "[class.dropdown]" : "true",

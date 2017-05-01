@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component} from "@angular/core";
+import {Component, ViewChildren, QueryList} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {PopoverDirective} from "./popover.directive";
 
@@ -15,25 +15,26 @@ describe("Popover directive", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [TestComponent, PopoverDirective]
+            declarations: [TestComponent, DesugaredSyntaxComponent, PopoverDirective]
         });
-
-        fixture = TestBed.createComponent(TestComponent);
-        fixture.detectChanges();
-        compiled = fixture.nativeElement;
     });
 
     afterEach(() => {
         fixture.destroy();
     });
 
-
     it("projects content", function () {
+        fixture = TestBed.createComponent(TestComponent);
+        compiled = fixture.nativeElement;
+
         expect(compiled.textContent).toMatch(/anchor1/);
         expect(compiled.textContent).toMatch(/anchor2/);
     });
 
     it("shows popover content if open", function () {
+        fixture = TestBed.createComponent(TestComponent);
+        compiled = fixture.nativeElement;
+
         fixture.componentInstance.open1 = true;
         fixture.detectChanges();
         expect(compiled.textContent).toMatch(/popover1/);
@@ -41,6 +42,9 @@ describe("Popover directive", () => {
     });
 
     it("queues up opening of subsequent popovers if one is already open", function () {
+        fixture = TestBed.createComponent(TestComponent);
+        compiled = fixture.nativeElement;
+
         fixture.componentInstance.open1 = true;
         fixture.componentInstance.open2 = true;
         fixture.componentInstance.open3 = true;
@@ -67,6 +71,16 @@ describe("Popover directive", () => {
         expect(compiled.textContent).not.toMatch(/popover2/);
         expect(compiled.textContent).toMatch(/popover3/);
     });
+
+    it("shows popover content when using desugared syntax", function () {
+        fixture = TestBed.createComponent(DesugaredSyntaxComponent);
+        compiled = fixture.nativeElement;
+
+        fixture.componentInstance.open1 = true;
+        fixture.detectChanges();
+        expect(compiled.textContent).toMatch(/popover1/);
+        expect(compiled.textContent).not.toMatch(/popover2/);
+    });
 });
 
 @Component({
@@ -89,4 +103,23 @@ class TestComponent {
     open1: boolean = false;
     open2: boolean = false;
     open3: boolean = false;
+}
+
+@Component({
+    template: `
+        <span #anchor1>anchor1</span>
+        <template [(clrPopover)]="open1" [clrPopoverAnchor]="anchor1">
+            <span>popover1</span>
+        </template>
+        <span #anchor2>anchor2</span>
+        <template [(clrPopover)]="open2" [clrPopoverAnchor]="anchor2">
+            <span>popover2</span>
+        </template>
+    `
+})
+class DesugaredSyntaxComponent {
+    @ViewChildren(PopoverDirective) popoverDirectives: QueryList<PopoverDirective>;
+
+    open1: boolean = false;
+    open2: boolean = false;
 }

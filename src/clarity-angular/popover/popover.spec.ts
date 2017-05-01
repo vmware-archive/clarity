@@ -38,15 +38,15 @@ describe("Popover", function () {
         popoverInstance = new Popover(popover);
     });
 
-    it("prevents scrolling of its first positioned container", function () {
+    it("adds a scroll event handler to its first positioned container", function () {
         popoverInstance.anchor(anchor, null, null);
-        expect(container.style.overflow).toEqual("hidden");
+        expect(container.onscroll).toBeDefined();
     });
 
-    it("resumes scrolling of its first positioned container when destroyed", function () {
+    it("removes scroll event handler of its first positioned container when destroyed", function () {
         popoverInstance.anchor(anchor, null, null);
         popoverInstance.destroy();
-        expect(container.style.overflow).toEqual("scroll");
+        expect(container.onscroll).toBeNull();
     });
 
     // TODO: when time permits, calculate expected values based on values for the elements

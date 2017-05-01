@@ -52,7 +52,7 @@
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/@angular/upgrade/-/upgrade-2.4.1.tgz#f13a61551c0616fdb765e34e0ebdeeadfebb5f6a"
 
-"@types/jasmine@^2.5.36":
+"@types/jasmine@2.5.40":
   version "2.5.40"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.40.tgz#875c7ae739dcab1342794f51231c4aadcda6eb79"
 

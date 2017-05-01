@@ -9,6 +9,8 @@
  * It could potentially be used as part of clarity-ui as a vanilla Javascript helper.
  */
 
+import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/Subject";
 export enum Point {
     RIGHT_CENTER,
     RIGHT_TOP,
@@ -28,6 +30,7 @@ export interface PopoverOptions {
     offsetX?: number;
     offsetY?: number;
     useAnchorParent?: boolean;
+    allowMultipleOpen?: boolean;
 }
 
 const POSITION_RELATIVE = "relative";
@@ -37,19 +40,9 @@ const POSITION_FIXED = "fixed";
 const OVERFLOW_SCROLL = "scroll";
 const OVERFLOW_AUTO = "auto";
 
-interface InlineOverflow {
-    both: string;
-    x: string;
-    y: string;
-}
-
-const OVERFLOW_HIDDEN: InlineOverflow = {
-    both: "hidden",
-    x: "hidden",
-    y: "hidden"
-};
-
 export class Popover {
+    private _scroll = new Subject<any>();
+
     constructor(private element: any) {
         // Browsers don't agree with what to do if some of these are not specified, so we set them all to be safe.
         element.style.position = POSITION_ABSOLUTE;
@@ -62,12 +55,12 @@ export class Popover {
     // TODO: need a way to account for parameters that change dynamically (positioning).
     public anchor(
         anchor: any, anchorAlign: Point, popoverAlign: Point,
-        {offsetX = 0, offsetY = 0, useAnchorParent = false}: PopoverOptions = {}) {
+        {offsetX = 0, offsetY = 0, useAnchorParent = false}: PopoverOptions = {}): Observable<any> {
 
         // TODO: we are assuming here that the popover is inside or next to the anchor.
         // We'd need to go up the popover tree too otherwise
 
-        this.preventScrolling(anchor);
+        this.addScrollEventListeners(anchor);
         if (useAnchorParent) {
             anchor = anchor.parentNode;
         }
@@ -249,11 +242,12 @@ export class Popover {
         }
 
         this.element.style.transform = `translateX(${leftDiff}px) translateY(${topDiff}px)`;
+        return this._scroll.asObservable();
     }
 
     public destroy() {
         this.element.style.transform = "none";
-        this.resumeScrolling();
+        this.removeScrollEventListeners();
     }
 
     private isPositioned(container: any) {
@@ -262,21 +256,24 @@ export class Popover {
     }
 
     /*
-     * We prevent the containers up to the first positioned one from scrolling
+     * Containers up to the first positioned one will have an event on scroll
      */
 
-    private originalOverflows: {e: any, overflow: InlineOverflow}[] = [];
+    private scrollableElements: HTMLElement[] = [];
 
-    private preventScrolling(e: any) {
+    private emitScrollEvent() {
+        this._scroll.next(this);
+    }
+
+    private boundOnScrollListener: any = this.emitScrollEvent.bind(this);
+
+    private addScrollEventListeners(e: any) {
         let anchor: any = e;
         let current: any = e;
         while (current && current !== document) {
             if (this.scrolls(current)) {
-                this.originalOverflows.push({
-                    e: current,
-                    overflow: this.getInlineOverflow(current)
-                });
-                this.setInlineOverflow(current, OVERFLOW_HIDDEN);
+                current.addEventListener("scroll", this.boundOnScrollListener);
+                this.scrollableElements.push(current);
             }
             if (current !== anchor && this.isPositioned(current)) {
                 break;
@@ -285,25 +282,11 @@ export class Popover {
         }
     }
 
-    private resumeScrolling() {
-        for (let container of this.originalOverflows) {
-            this.setInlineOverflow(container.e, container.overflow);
+    private removeScrollEventListeners() {
+        for (let elem of this.scrollableElements) {
+            elem.removeEventListener("scroll", this.boundOnScrollListener);
         }
-        this.originalOverflows.length = 0;
-    }
-
-    private getInlineOverflow(container: any): InlineOverflow {
-        return {
-            both: container.style.overflow,
-            x: container.style.overflowX,
-            y: container.style.overflowY
-        };
-    }
-
-    private setInlineOverflow(container: any, overflow: InlineOverflow) {
-        container.style.overflow = overflow.both;
-        container.style.overflowX = overflow.x;
-        container.style.overflowY = overflow.y;
+        this.scrollableElements.length = 0;
     }
 
     private scrolls(container: any): boolean {

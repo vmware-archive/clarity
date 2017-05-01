@@ -4,20 +4,20 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    Component, EventEmitter, HostListener, Input, Output, ElementRef, ViewChild
+    Component, EventEmitter, HostListener, Input, Output, ElementRef
 } from "@angular/core";
 import {Point} from "../popover/popover";
-import {DatagridRenderOrganizer} from "./render/render-organizer";
-
 
 @Component({
     selector: "clr-dg-action-overflow",
     template: `
         <clr-icon #anchor shape="ellipsis-vertical" class="datagrid-action-toggle" (click)="toggle()"></clr-icon>
-        <div #menu class="datagrid-action-overflow" *clrPopover="open; anchor: anchor; anchorPoint: anchorPoint; 
-            popoverPoint: popoverPoint;">
-            <ng-content></ng-content>
-        </div>
+        <template [(clrPopover)]="open" [clrPopoverAnchor]="anchor" [clrPopoverAnchorPoint]="anchorPoint"
+             [clrPopoverPopoverPoint]="popoverPoint">
+            <div #menu class="datagrid-action-overflow">
+                <ng-content></ng-content>
+            </div>
+        </template>
     `
 })
 
@@ -26,18 +26,7 @@ export class DatagridActionOverflow {
     public anchorPoint: Point = Point.RIGHT_CENTER;
     public popoverPoint: Point = Point.LEFT_CENTER;
 
-    constructor(private elementRef: ElementRef, private datagridRenderOrganizer: DatagridRenderOrganizer) {
-    }
-
-    // after change detection cycle settles, refresh the scrollbar
-    // NOTE: this might break if angular decides to change when @ViewChild's setter is called in its lifecycle
-    @ViewChild("menu") set menu(child: any) {
-        // Scrollbar might have disappeared, we need to warn the renderers
-        if (child) {
-            // TODO: A webkit bug prevents us from simply refreshing the scrollbar. Weird. Needs investigation.
-            // this.renderOrganizer.scrollbar.next();
-            this.datagridRenderOrganizer.resize();
-        }
+    constructor(private elementRef: ElementRef) {
     }
 
     /**

@@ -8,6 +8,16 @@
 
     "list": [
         {
+            "url": "alerts",
+            "text": "Alerts",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
             "url": "badges",
             "text": "Badges",
             "type": "component",

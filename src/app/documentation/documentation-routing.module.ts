@@ -4,6 +4,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {DocumentationComponent} from "./documentation.component";
 import {ComponentStatusComponent} from "./component-status/component-status.component";
 import {BadgesDemo} from "./demos/badges/badges.demo";
+import {AlertsDemo} from "./demos/alert/alerts.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -21,12 +22,21 @@ const documentationRoutes: Routes = [
                     bodyClass: "page-documentation",
                     browserTitle: "Documentation"
                 }
-            }, {
+            },
+            {
+                path: "alerts",
+                component: AlertsDemo,
+                data: {
+                    bodyClass: "page-alerts",
+                    browserTitle: "Alerts"
+                }
+            },
+            {
                 path: "badges",
                 component: BadgesDemo,
                 data: {
                     bodyClass: "page-badges",
-                    browserTitle: "badges"
+                    browserTitle: "Badges"
                 }
             }
         ]

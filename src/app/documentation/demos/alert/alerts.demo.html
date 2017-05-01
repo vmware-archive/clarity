@@ -1,0 +1,236 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="an-alert-is-a-banner-that-uses-text-color-and-an-icon-to-denote-the-severity-of-a-message">An alert is a banner that uses text, color, and an icon to denote the severity of a message.</h5>
+
+        <h6 id="alert">.alert</h6>
+
+        <p>This class is a wrapper around <code class="clr-code">.alert-item</code> and the
+            <code class="clr-code">.close</code> button. Place the <code class="clr-code">.close</code> button before the alert items.</p>
+
+        <h6 id="alert-item">.alert-item</h6>
+
+        <p>This class is a wrapper around <code class="clr-code">.alert-text</code> and <code class="clr-code">.alert-actions</code>.</p>
+
+        <h6 id="alert-actions">.alert-actions</h6>
+
+        <p><code class="clr-code">.alert-actions</code> can consist of dropdowns or links. Each action should extend the <code class="clr-code">.alert-action</code> class.</p>
+
+        <h3 id="types">Types</h3>
+
+        <p>Clarity has error, warning, information, and success alerts denoted by the following classes:</p>
+
+        <ul class="list">
+            <li>.alert-danger</li>
+            <li>.alert-warning</li>
+            <li>.alert-info</li>
+            <li>.alert-success</li>
+        </ul>
+
+        <clr-alert-demo-styles></clr-alert-demo-styles>
+
+        <h3 id="placement">Placement</h3>
+
+        <h5 id="alerts-in-the-content-area">Alerts in the Content Area</h5>
+        <clr-alert-demo-content-area></clr-alert-demo-content-area>
+
+        <h5 id="alerts-in-cards">Alerts in Cards</h5>
+        <clr-alert-demo-cards></clr-alert-demo-cards>
+
+        <h5 id="alerts-in-modals">Alerts in Modals</h5>
+        <clr-alert-demo-modals></clr-alert-demo-modals>
+
+        <h3 id="size">Size</h3>
+
+        <p>Use the <code class="clr-code">.alert-sm</code> class with <code class="clr-code">.alert</code> for an alert 24 pixels in height. The default is 36 pixels.</p>
+
+        <clr-alert-demo-sizes></clr-alert-demo-sizes>
+
+        <h3 id="app-level-alerts">App-Level Alerts</h3>
+
+        <h6 id="alert-app-level">.alert-app-level</h6>
+
+        <p>This class must be applied with <code class="clr-code">.alert</code> to render an app-level alert.</p>
+
+        <clr-alert-demo-app-level></clr-alert-demo-app-level>
+
+        <h2 id="angular-component">Angular Component</h2>
+
+        <h3 id="summary-of-options">Summary of Options</h3>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="left">Input</th>
+                <th class="left hidden-xs-down">Values</th>
+                <th class="hidden-xs-down">Default</th>
+                <th class="left">Effect</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="left">
+                    <b>[clrAlertClosable]</b>
+                    <div class="hidden-sm-up">Type: Boolean</div>
+                    <div class="hidden-sm-up">Default: true</div>
+                </td>
+                <td class="left hidden-xs-down">true, false</td>
+                <td class="hidden-xs-down">true</td>
+                <td class="left">If false, the alert will not be closable by clicking on the top-right "x".</td>
+            </tr>
+            <tr>
+                <td class="left">
+                    <b>[(clrAlertClosed)]</b>
+                    <div class="hidden-sm-up">Type: Boolean</div>
+                    <div class="hidden-sm-up">Default: false</div>
+                </td>
+                <td class="left hidden-xs-down">true, false</td>
+                <td class="hidden-xs-down">false</td>
+                <td class="left">
+                    Two-way binding on the state of the alert: opened or closed.
+                </td>
+            </tr>
+            <tr>
+                <td class="left">
+                    <b>[clrAlertType]</b>
+                    <div class="hidden-sm-up">Type: String</div>
+                    <div class="hidden-sm-up">Default:<br />"alert-info"</div>
+                </td>
+                <td class="left hidden-xs-down">"alert-info", "alert-warning", "alert-success" and "alert-danger"</td>
+                <td class="hidden-xs-down">"alert-info"</td>
+                <td class="left">Sets the type of the alert.</td>
+            </tr>
+            <tr>
+                <td class="left">
+                    <b>[clrAlertSizeSmall]</b>
+                    <div class="hidden-sm-up">Type: Boolean</div>
+                    <div class="hidden-sm-up">Default: false</div>
+                </td>
+                <td class="left hidden-xs-down">true, false</td>
+                <td class="hidden-xs-down">false</td>
+                <td class="left">If true, renders a small alert.</td>
+            </tr>
+            <tr>
+                <td class="left">
+                    <b>[clrAlertAppLevel]</b>
+                    <div class="hidden-sm-up">Type: Boolean</div>
+                    <div class="hidden-sm-up">Default: false</div>
+                </td>
+                <td class="left hidden-xs-down">true, false</td>
+                <td class="hidden-xs-down">false</td>
+                <td class="left">If true, renders an app-level alert.</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h5 id="examples">Examples</h5>
+
+        <h6 id="clralertclosable-set-to-false-default-value-is-true">1. clrAlertClosable set to false. Default value is true.</h6>
+
+        <clr-alert-not-closable-demo-angular></clr-alert-not-closable-demo-angular>
+
+        <h6 id="clralerttype-set-to-alert-success-default-value-is-alert-info-accepts-values-same-as-the-static-alert-type-classes">2. clrAlertType set to alert-success. Default value is alert-info. Accepts values same as the static alert type classes.</h6>
+
+        <clr-alert-success-demo-angular></clr-alert-success-demo-angular>
+
+        <h6 id="clralertsizesmall-set-to-true-default-value-is-false">3. clrAlertSizeSmall set to true. Default value is false.</h6>
+
+        <clr-alert-small-demo-angular></clr-alert-small-demo-angular>
+
+        <h6 id="binding-to-the-clralertclosedchange-event">4. Binding to the clrAlertClosedChange event.</h6>
+
+        <clr-alert-close-event-demo-angular></clr-alert-close-event-demo-angular>
+
+        <h6 id="clralertapplevel-set-to-true-default-is-false">5. clrAlertAppLevel set to true. Default is false.</h6>
+
+        <clr-alert-app-level-demo-angular></clr-alert-app-level-demo-angular>
+
+        <h2 id="guidelines">Using Standard Alerts</h2>
+
+        <p>Standard alerts are part of the content area. These alerts are for notifying users that a particular component or area of the screen needs attention. Standard alerts have four levels, denoted by color and icon. From most to least severe, they are:</p>
+
+        <ul class="list">
+            <li>Error–a problem needs fixing</li>
+            <li>Warning–an action might have a harmful outcome</li>
+            <li>Info–a situation needs attention, at some point</li>
+            <li>Success–a significant achievement occurred</li>
+        </ul>
+
+        <p>Other choices for displaying messages are <a routerLink="/documentation/input-fields">input field validations</a> and <a routerLink="/documentation/modals">modals</a> . However, these components require users to take action before proceeding.</p>
+
+        <h3 id="placement-and-size">Placement and Size</h3>
+
+        <p>Alert positioning should be contextual to the component or area to which it applies. For example, if the alert applies to the entire content area, place it at the top and span the width of that area.</p>
+
+        <p>Base the height of the alert (36 or 24 pixels) on its location. The larger alert is for use in the application’s main content area, modals, and wizards. The smaller alert is for use in cards.</p>
+
+        <h3 id="closing-alerts">Closing Alerts</h3>
+
+        <p>A close button (X) serves as a method for users to acknowledge the alert. It also allows users to declutter the view. Omit the close button if the alert should be persistent.</p>
+
+        <h3 id="message-text">Message Text</h3>
+
+        <p>Keep the message text short and concise. If combining multiple messages in a single alert, make sure that the messages are of the same type. Avoid mixing error and warning messages.</p>
+
+        <h3 id="stacking-alerts">Stacking Alerts</h3>
+
+        <p>When showing multiple alerts, stack from most severe to least severe:</p>
+
+        <ol class="list">
+            <li>Error</li>
+            <li>Warning</li>
+            <li>Info</li>
+            <li>Success</li>
+        </ol>
+
+        <p>Stack up to three alerts. For more than three, consider an alternate pattern, such as displaying the information on another page.</p>
+
+        <h3 id="actions">Actions</h3>
+
+        <p>You can display up to two actions in an alert. For more than two actions, use a dropdown menu, limiting the number of items to five.</p>
+
+        <p>The most common course of action goes at the top of the menu, destructive actions at the bottom. Avoid placing destructive actions directly in the alert.</p>
+
+        <p>Actions in standard alerts are represented by links because links take up less space than buttons and are light in appearance.
+            <!-- One line is 36 pixels tall using links.  With flat buttons, the line is taller to accommodate the button state change. -->
+        </p>
+
+        <h3 id="color">Color</h3>
+
+        <p>Alerts have their own color palette of red, yellow, green, and blue. They are not styled with Stoplight colors to avoid competition with call-to-action buttons.</p>
+
+        <h2 id="using-app-level-alerts">Using App-Level Alerts</h2>
+
+        <p>An app-level alert appears at the top of the screen, above the application header. This alert is reserved for a single, system-level message.</p>
+
+        <p>App-level alerts have three severity levels:</p>
+
+        <table class="table .table-noborder ">
+            <tr>
+                <th class="left">Type</th>
+                <th class="left">Example</th>
+            </tr>
+            <tr>
+                <td class="left">Error</td>
+                <td class="left">A problem exists with a server</td>
+            </tr>
+            <tr>
+                <td class="left">Warning</td>
+                <td class="left">A license is about to expire</td>
+            </tr>
+            <tr>
+                <td valign="top" class="left">Info</td>
+                <td class="left"> A trial is about to end<br /> Support is required for a feature </td>
+            </tr>
+        </table>
+
+        <h3 id="guidelines">Guidelines</h3>
+
+        <ul class="list">
+            <li>Show only one app-level alert at a time.</li>
+            <li>Keep the message text to one line–don’t wrap the text.</li>
+            <li>Include up to two actions and keep button labels concise.</li>
+            <li>Do not include a menu within the alert.</li>
+            <li>When appropriate, include a close icon so that the app-level alert can be dismissed.</li>
+        </ul>
+    </article>
+</clr-doc-wrapper>

@@ -35,6 +35,7 @@ import {RadiosDemoModule} from "./demos/radios/radios.demo.module";
 import {SelectsDemoModule} from "./demos/selects/selects.demo.module";
 import {SpinnersDemoModule} from "./demos/spinners/spinners.demo.module";
 import {StackViewDemoModule} from "./demos/stack-view/stack-view.demo.module";
+import {HeaderDemoModule} from "./demos/header/header.demo.module";
 
 @NgModule({
     imports: [
@@ -55,6 +56,7 @@ import {StackViewDemoModule} from "./demos/stack-view/stack-view.demo.module";
         DropdownDemoModule,
         FormsDemoModule,
         GridDemoModule,
+        HeaderDemoModule,
         IconographyDemoModule,
         InputFieldsDemoModule,
         LabelsDemoModule,

@@ -28,6 +28,7 @@ import {RadiosDemo} from "./demos/radios/radios.demo";
 import {SelectsDemo} from "./demos/selects/selects.demo";
 import {SpinnerDemo} from "./demos/spinners/spinner.demo";
 import {StackViewDemo} from "./demos/stack-view/stack-view.demo";
+import {HeaderDemo} from "./demos/header/header.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -148,6 +149,14 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-grid",
                     browserTitle: "Grid"
+                }
+            },
+            {
+                path: "header",
+                component: HeaderDemo,
+                data: {
+                    bodyClass: "page-header",
+                    browserTitle: "Header"
                 }
             },
             {

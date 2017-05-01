@@ -28,6 +28,13 @@ import {DropdownDemoModule} from "./demos/dropdown/dropdown.demo.module";
 import {LabelsDemoModule} from "./demos/labels/labels.demo.module";
 import {IconographyDemoModule} from "./demos/iconography/iconography.demo.module";
 import {InputFieldsDemoModule} from "./demos/input-fields/input-fields.demo.module";
+import {LoginDemoModule} from "./demos/login/login.demo.module";
+import {ModalDemoModule} from "./demos/modal/modal.demo.module";
+import {NavDemoModule} from "./demos/nav/nav.demo.module";
+import {RadiosDemoModule} from "./demos/radios/radios.demo.module";
+import {SelectsDemoModule} from "./demos/selects/selects.demo.module";
+import {SpinnersDemoModule} from "./demos/spinners/spinners.demo.module";
+import {StackViewDemoModule} from "./demos/stack-view/stack-view.demo.module";
 
 @NgModule({
     imports: [
@@ -52,7 +59,14 @@ import {InputFieldsDemoModule} from "./demos/input-fields/input-fields.demo.modu
         InputFieldsDemoModule,
         LabelsDemoModule,
         ListsDemoModule,
+        LoginDemoModule,
+        ModalDemoModule,
+        NavDemoModule,
+        RadiosDemoModule,
         ProgressBarsDemoModule,
+        SelectsDemoModule,
+        SpinnersDemoModule,
+        StackViewDemoModule,
         DocumentationRoutingModule
     ],
     declarations: [

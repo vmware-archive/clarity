@@ -7,10 +7,10 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {ClarityModule} from "clarity-angular";
 
+import {LoginDemo} from "./login.demo";
+import {LoginExampleDemo} from "./login-example.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
-import {AppLayoutDemo} from "./app-layout.demo";
 import {RouterModule} from "@angular/router";
-import {LayoutAllDemo} from "./layout-all";
 
 @NgModule({
     imports: [
@@ -20,12 +20,12 @@ import {LayoutAllDemo} from "./layout-all";
         RouterModule
     ],
     declarations: [
-        AppLayoutDemo,
-        LayoutAllDemo
+        LoginExampleDemo,
+        LoginDemo
     ],
     exports: [
-        AppLayoutDemo
+        LoginDemo
     ]
 })
-export class AppLayoutDemoModule {
+export class LoginDemoModule {
 }

@@ -5,12 +5,12 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "clarity-angular";
+import {ClarityModule} from 'clarity-angular';
 
+import {RadiosDemo} from "./radios.demo";
+import {RadiosTypesDemo} from "./radios-types.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
-import {AppLayoutDemo} from "./app-layout.demo";
 import {RouterModule} from "@angular/router";
-import {LayoutAllDemo} from "./layout-all";
 
 @NgModule({
     imports: [
@@ -20,12 +20,12 @@ import {LayoutAllDemo} from "./layout-all";
         RouterModule
     ],
     declarations: [
-        AppLayoutDemo,
-        LayoutAllDemo
+        RadiosTypesDemo,
+        RadiosDemo
     ],
     exports: [
-        AppLayoutDemo
+        RadiosDemo
     ]
 })
-export class AppLayoutDemoModule {
+export class RadiosDemoModule {
 }

@@ -1,0 +1,39 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+    <div class="backdrop-example-container">
+        <div *ngIf="!basic" style="margin: 0 auto; text-align: center">
+            <button class="btn btn-outline btn-inverse" (click)="basic = true">Show modal</button>
+        </div>
+        <clr-modal [(clrModalOpen)]="basic" [clrModalStaticBackdrop]="true">
+            <h3 class="modal-title">Add datastore to host</h3>
+            <div class="modal-body">
+                <p>Select a host where you want your datastore to be added.</p>
+
+                <form>
+                    <section class="form-block">
+                        <div class="form-group">
+                            <label for="selects_1">Host</label>
+                            <div class="select">
+                                <select id="selects_1">
+                                    <option>10.11.12.13</option>
+                                    <option>14.15.16.17</option>
+                                    <option>18.19.20.21</option>
+                                    <option>22.23.24.25</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" type="button" (click)="basic = false">Cancel</button>
+                <button class="btn btn-primary" type="button" (click)="basic = false">Add</button>
+            </div>
+        </clr-modal>
+    </div>
+</div>

@@ -5,12 +5,13 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "clarity-angular";
+import {ClarityModule} from 'clarity-angular';
 
+import {SpinnerSizesDemo} from "./spinner-sizes";
+import {SpinnerTypesDemo} from "./spinner-types";
+import {SpinnerDemo} from "./spinner.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
-import {AppLayoutDemo} from "./app-layout.demo";
 import {RouterModule} from "@angular/router";
-import {LayoutAllDemo} from "./layout-all";
 
 @NgModule({
     imports: [
@@ -20,12 +21,13 @@ import {LayoutAllDemo} from "./layout-all";
         RouterModule
     ],
     declarations: [
-        AppLayoutDemo,
-        LayoutAllDemo
+        SpinnerSizesDemo,
+        SpinnerTypesDemo,
+        SpinnerDemo
     ],
     exports: [
-        AppLayoutDemo
+        SpinnerDemo
     ]
 })
-export class AppLayoutDemoModule {
+export class SpinnersDemoModule {
 }

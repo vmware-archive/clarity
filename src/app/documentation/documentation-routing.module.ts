@@ -21,6 +21,13 @@ import {GridDemo} from "./demos/grid/grid.demo";
 import {IconsDemo} from "./demos/iconography/icons.demo";
 import {InputFieldsDemo} from "./demos/input-fields/input-fields.demo";
 import {LabelsDemo} from "./demos/labels/labels.demo";
+import {LoginDemo} from "./demos/login/login.demo";
+import {ModalDemo} from "./demos/modal/modal.demo";
+import {NavigationDemo} from "./demos/nav/navigation.demo";
+import {RadiosDemo} from "./demos/radios/radios.demo";
+import {SelectsDemo} from "./demos/selects/selects.demo";
+import {SpinnerDemo} from "./demos/spinners/spinner.demo";
+import {StackViewDemo} from "./demos/stack-view/stack-view.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -176,11 +183,67 @@ const documentationRoutes: Routes = [
                 }
             },
             {
+                path: "login",
+                component: LoginDemo,
+                data: {
+                    bodyClass: "page-login",
+                    browserTitle: "Login Page"
+                }
+            },
+            {
+                path: "modals",
+                component: ModalDemo,
+                data: {
+                    bodyClass: "page-modals",
+                    browserTitle: "Modals"
+                }
+            },
+            {
+                path: "navigation",
+                component: NavigationDemo,
+                data: {
+                    bodyClass: "page-navigation",
+                    browserTitle: "Navigation"
+                }
+            },
+            {
                 path: "progress",
                 component: ProgressBarsDemo,
                 data: {
                     bodyClass: "page-progress",
                     browserTitle: "Progress Bars"
+                }
+            },
+            {
+                path: "radios",
+                component: RadiosDemo,
+                data: {
+                    bodyClass: "page-radios",
+                    browserTitle: "Radio Buttons"
+                }
+            },
+            {
+                path: "select-boxes",
+                component: SelectsDemo,
+                data: {
+                    bodyClass: "page-select-boxes",
+                    browserTitle: "Select Boxes"
+                }
+            },
+            {
+                path: "spinners",
+                component: SpinnerDemo,
+                data: {
+                    bodyClass: "page-spinners",
+                    browserTitle: "Spinners"
+                }
+            },
+            {
+                path: "stack-view",
+                component: StackViewDemo,
+                data: {
+                    bodyClass: "page-stack-view",
+                    browserTitle: "Stack View"
                 }
             }
         ]

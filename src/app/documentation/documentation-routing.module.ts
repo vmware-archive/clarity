@@ -11,6 +11,7 @@ import {CardsDemo} from "./demos/card/cards.demo";
 import {ListsDemo} from "./demos/lists/lists.demo";
 import {ProgressBarsDemo} from "./demos/progress-bars/progress-bars.demo";
 import {ButtonGroupDemo} from "./demos/button-group/button-group.demo";
+import {CheckboxesDemo} from "./demos/checkboxes/checkboxes.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -75,6 +76,14 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-cards",
                     browserTitle: "Cards"
+                }
+            },
+            {
+                path: "checkboxes",
+                component: CheckboxesDemo,
+                data: {
+                    bodyClass: "page-checkboxes",
+                    browserTitle: "Checkboxes"
                 }
             },
             {

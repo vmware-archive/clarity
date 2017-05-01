@@ -22,6 +22,9 @@ import {CheckboxesDemoModule} from "./demos/checkboxes/checkboxes.demo.module";
 import {CodeHighlightDemoModule} from "./demos/code/code-highlight.demo.module";
 import {ColorDemoModule} from "./demos/color/color.demo.module";
 import {DatagridDemoModule} from "./demos/datagrid/datagrid.demo.module";
+import {FormsDemoModule} from "./demos/forms/forms.demo.module";
+import {GridDemoModule} from "./demos/grid/grid.demo.module";
+import {DropdownDemoModule} from "./demos/dropdown/dropdown.demo.module";
 
 @NgModule({
     imports: [
@@ -39,6 +42,9 @@ import {DatagridDemoModule} from "./demos/datagrid/datagrid.demo.module";
         CodeHighlightDemoModule,
         ColorDemoModule,
         DatagridDemoModule,
+        DropdownDemoModule,
+        FormsDemoModule,
+        GridDemoModule,
         ListsDemoModule,
         ProgressBarsDemoModule,
         DocumentationRoutingModule

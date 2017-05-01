@@ -15,6 +15,9 @@ import {CheckboxesDemo} from "./demos/checkboxes/checkboxes.demo";
 import {CodeHighlightDemo} from "./demos/code/code.demo";
 import {ColorDemo} from "./demos/color/color.demo";
 import {DatagridDemo} from "./demos/datagrid/datagrid.demo";
+import {DropdownsDemo} from "./demos/dropdown/dropdown.demo";
+import {FormsDemo} from "./demos/forms/forms.demo";
+import {GridDemo} from "./demos/grid/grid.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -111,6 +114,30 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-datagrid",
                     browserTitle: "Datagrid"
+                }
+            },
+            {
+                path: "dropdowns",
+                component: DropdownsDemo,
+                data: {
+                    bodyClass: "page-dropdowns",
+                    browserTitle: "Dropdowns"
+                }
+            },
+            {
+                path: "forms",
+                component: FormsDemo,
+                data: {
+                    bodyClass: "page-forms",
+                    browserTitle: "Forms"
+                }
+            },
+            {
+                path: "grid",
+                component: GridDemo,
+                data: {
+                    bodyClass: "page-grid",
+                    browserTitle: "Grid"
                 }
             },
             {

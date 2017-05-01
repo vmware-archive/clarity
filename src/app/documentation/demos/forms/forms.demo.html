@@ -1,0 +1,136 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="a-form-is-a-structured-layout-of-related-input-components">A form is a
+            structured layout of related input components.</h5>
+
+        <p>A container, often a <code class="clr-code">div</code> with a <code class="clr-code">.form-group</code>
+            classname on it, wraps one or more <code class="clr-code">label</code> and <code
+                    class="clr-code">input</code> pairs.</p>
+
+        <h6 id="form-block">.form-block</h6>
+
+        <p class="squish">This is an optional wrapper around one or more .form-group elements (see below). The
+            .form-block element can hold a label element that serves as a title or header for the form-groups within
+            it.</p>
+
+        <h6 id="form-group">.form-group</h6>
+
+        <p class="squish">This is a wrapper intended to contain a label and one or more input, .select, .checkbox,
+            .radio, or other form fields.</p>
+
+        <h6 id="select">.select</h6>
+
+        <p class="squish">This is a required wrapper intended to contain a select element and its options. The wrapper
+            is necessary to apply the custom Clarity styles for select boxes.</p>
+
+        <h6 id="radio-checkbox">.radio, .checkbox</h6>
+
+        <p class="squish">This is a required wrapper intended to contain a radio button or a checkbox input followed by
+            a label element. The wrapper is necessary to handle the alignment and spacing of the elements within it.</p>
+
+        <h3 id="wrapper-elements">Wrapper Elements</h3>
+
+        <p><code class="clr-code">.form-block</code>, <code class="clr-code">.form-group</code>, <code class="clr-code">.select</code>,
+            <code class="clr-code">.radio</code>, and <code class="clr-code">.checkbox</code> wrappers can be placed on
+            any block HTML
+            element. The recommendation is for <code class="clr-code">.form-block</code> classnames to be placed on
+            <code class="clr-code">section</code> or <code class="clr-code">fieldset</code> elements and for <code
+                    class="clr-code">.form-group</code> classnames to be placed on <code class="clr-code">div</code>
+            elements.</p>
+
+        <clr-forms-demo-fields></clr-forms-demo-fields>
+
+        <h3 id="compact-forms">Compact Forms</h3>
+
+        <p>For forms inside of smaller containers like modals or wizards, the whitespace around form groups and form
+            blocks can be minimized by using the <code>.compact</code> classname.</p>
+
+        <clr-forms-compact-demo></clr-forms-compact-demo>
+
+        <h3 id="forms-in-grid">Forms in Grid</h3>
+
+        <p>Forms can be used in a grid. Extend the <code class="clr-code">.row</code> class on a <code class="clr-code">.form-group</code>
+            and place the form fields in the grid column classes. To occupy 100% of the column width, extend the <code
+                    class="clr-code">.form-control</code> class on the form field. Resize your browser to see how forms
+            in grids work.</p>
+
+        <clr-forms-demo-grid></clr-forms-demo-grid>
+
+        <h2 id="forms-using-angular-2">Forms Using Angular</h2>
+
+        <p>Following are examples of using Clarity forms with the Template-Driven and Model-Driven/Reactive approaches
+            in Angular.</p>
+
+        <p>
+            <b>Note:</b> For more information see the Angular documentation on
+            <a href="https://angular.io/docs/ts/latest/guide/forms.html">Template-Driven Forms</a> and
+            <a href="https://angular.io/docs/ts/latest/cookbook/dynamic-form.html">Model-Driven/Reactive Forms</a>
+        </p>
+
+        <h3 id="example-1-template-driven-forms">Example 1. Template-Driven Forms</h3>
+
+        <clr-template-driven-forms-demo></clr-template-driven-forms-demo>
+
+        <h3 id="example-2-model-driven-reactive-forms">Example 2. Model-Driven/Reactive Forms</h3>
+
+        <clr-reactive-forms-demo></clr-reactive-forms-demo>
+
+        <h3 id="guidelines">Usage</h3>
+
+        <p>Forms guide users through input in a structured, specific order. Forms are comprised of <a
+                routerLink="/documentation/typography">text</a> and input components such as <a
+                routerLink="/documentation/checkboxes">checkboxes</a>, <a routerLink="/documentation/dropdowns">dropdowns</a>,
+            <a routerLink="/documentation/input-fields">input fields</a>, <a routerLink="/documentation/radios">radio
+                buttons</a>, and <a routerLink="/documentation/toggle-switches">toggle switches</a>.</p>
+
+        <h4 id="minimize-scrolling">Minimize Scrolling</h4>
+
+        <p>For a form that scrolls several pages, consider organizing the content by:</p>
+
+        <ul class="list">
+            <li>Grouping related fields in a form block with a descriptive label.</li>
+            <li>Progressively revealing more complex or less frequently used data.</li>
+            <li>Dividing content into separate pages in a <a routerLink="/documentation/wizards">wizard</a>.</li>
+        </ul>
+
+        <h4 id="labels">Labels</h4>
+
+        <p>Labels appear to the left of a component, moving above the component when the user resizes the window to
+            smaller dimensions.</p>
+
+        <p>Labels use sentence case, and label headers use title case, with no ending punctuation.</p>
+
+        <h4 id="placeholder-text">Placeholder Text</h4>
+
+        <p>Located inside a field, placeholder text can help clarify expected input. Placeholder text disappears when
+            the user types in the field.</p>
+
+        <p>Tip: Use the label to show what information goes in the field and placeholder text as a hint, description, or
+            example format:</p>
+
+        <p>Label: Airport
+            <br/> Placeholder text: SFO, SJO</p>
+
+        <p>Placeholder text can replace labels only in simple forms with a few easily-understood fields, see the <a
+                routerLink="/documentation/login">login page</a>.</p>
+
+        <h4 id="disabled-fields">Disabled Fields</h4>
+
+        <p>Show a disabled field only if the user can take a reasonable action to enable the component. When disabling a
+            component, also disable all associated elements, such as the component label and explanatory text.</p>
+
+        <h4 id="button-placement">Button Placement</h4>
+
+        <p>Button placement depends on form type and where it appears in the UI. See <a
+                routerLink="/documentation/buttons">buttons</a> for guidelines.</p>
+
+        <h4 id="validation">Validation</h4>
+
+        <p>For information on validation, see <a routerLink="/documentation/input-fields">input fields</a>.</p>
+
+        <h4 id="focus-and-navigation">Focus and Navigation</h4>
+
+        <p>Provide auto focus in the first field by default. Users can then navigate through the form in a logical
+            sequence.</p>
+    </article>
+</clr-doc-wrapper>

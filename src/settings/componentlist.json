@@ -142,6 +142,36 @@
             "dox": 20
         },
         {
+            "url": "dropdowns",
+            "text": "Dropdowns",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "url": "forms",
+            "text": "Forms (Layout)",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 5,
+            "dox": 20
+        },
+        {
+            "url": "grid",
+            "text": "Grid",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
             "url": "lists",
             "text": "Lists",
             "type": "component",

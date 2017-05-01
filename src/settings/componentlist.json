@@ -122,6 +122,26 @@
             "isUpdated": true
         },
         {
+            "url": null,
+            "text": "Datepicker",
+            "type": "component",
+            "ux": 20,
+            "ui": 5,
+            "core": -1,
+            "ng": 5,
+            "dox": 5
+        },
+        {
+            "url": "datagrid",
+            "text": "Datagrid",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
             "url": "lists",
             "text": "Lists",
             "type": "component",

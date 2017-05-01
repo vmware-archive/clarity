@@ -14,6 +14,7 @@ import {ButtonGroupDemo} from "./demos/button-group/button-group.demo";
 import {CheckboxesDemo} from "./demos/checkboxes/checkboxes.demo";
 import {CodeHighlightDemo} from "./demos/code/code.demo";
 import {ColorDemo} from "./demos/color/color.demo";
+import {DatagridDemo} from "./demos/datagrid/datagrid.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -102,6 +103,14 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-color",
                     browserTitle: "Color Palette"
+                }
+            },
+            {
+                path: "datagrid",
+                component: DatagridDemo,
+                data: {
+                    bodyClass: "page-datagrid",
+                    browserTitle: "Datagrid"
                 }
             },
             {

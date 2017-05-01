@@ -21,6 +21,7 @@ import {ButtonGroupDemoModule} from "./demos/button-group/button-group.demo.modu
 import {CheckboxesDemoModule} from "./demos/checkboxes/checkboxes.demo.module";
 import {CodeHighlightDemoModule} from "./demos/code/code-highlight.demo.module";
 import {ColorDemoModule} from "./demos/color/color.demo.module";
+import {DatagridDemoModule} from "./demos/datagrid/datagrid.demo.module";
 
 @NgModule({
     imports: [
@@ -37,6 +38,7 @@ import {ColorDemoModule} from "./demos/color/color.demo.module";
         CheckboxesDemoModule,
         CodeHighlightDemoModule,
         ColorDemoModule,
+        DatagridDemoModule,
         ListsDemoModule,
         ProgressBarsDemoModule,
         DocumentationRoutingModule

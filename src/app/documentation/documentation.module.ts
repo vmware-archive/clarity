@@ -37,6 +37,14 @@ import {SpinnersDemoModule} from "./demos/spinners/spinners.demo.module";
 import {StackViewDemoModule} from "./demos/stack-view/stack-view.demo.module";
 import {HeaderDemoModule} from "./demos/header/header.demo.module";
 import {SidenavDemoModule} from "./demos/sidenav/sidenav.demo.module";
+import {TablesDemoModule} from "./demos/tables/tables.demo.module";
+import {TabsDemoModule} from "./demos/tabs/tabs.demo.module";
+import {TogglesDemoModule} from "./demos/toggles/toggles.demo.module";
+import {TooltipsDemoModule} from "./demos/tooltips/tooltips.demo.module";
+import {TreeDemoModule} from "./demos/tree-view/tree-view.demo.module";
+import {TypographyDemoModule} from "./demos/typography/typography.demo.module";
+import {WizardDemoModule} from "./demos/wizard/wizard.demo.module";
+import {WizardDeprecatedDemoModule} from "./demos/wizard-deprecated/wizard.demo.module";
 
 @NgModule({
     imports: [
@@ -71,6 +79,14 @@ import {SidenavDemoModule} from "./demos/sidenav/sidenav.demo.module";
         SidenavDemoModule,
         SpinnersDemoModule,
         StackViewDemoModule,
+        TablesDemoModule,
+        TabsDemoModule,
+        TogglesDemoModule,
+        TooltipsDemoModule,
+        TreeDemoModule,
+        TypographyDemoModule,
+        WizardDemoModule,
+        WizardDeprecatedDemoModule,
         DocumentationRoutingModule
     ],
     declarations: [

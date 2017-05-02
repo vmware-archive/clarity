@@ -30,6 +30,14 @@ import {SpinnerDemo} from "./demos/spinners/spinner.demo";
 import {StackViewDemo} from "./demos/stack-view/stack-view.demo";
 import {HeaderDemo} from "./demos/header/header.demo";
 import {SidenavDemo} from "./demos/sidenav/sidenav.demo";
+import {TablesDemo} from "./demos/tables/tables.demo";
+import {TabsDemo} from "./demos/tabs/tabs.demo";
+import {TogglesDemo} from "app/documentation/demos/toggles/toggles.demo";
+import {TooltipsDemo} from "./demos/tooltips/tooltips.demo";
+import {TreeViewDemo} from "./demos/tree-view/tree-view.demo";
+import {TypographyDemo} from "./demos/typography/typography.demo";
+import {WizardDemo} from "./demos/wizard/wizard.demo";
+import {WizardOldDemo} from "./demos/wizard-deprecated/wizard.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -262,6 +270,70 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-stack-view",
                     browserTitle: "Stack View"
+                }
+            },
+            {
+                path: "tables",
+                component: TablesDemo,
+                data: {
+                    bodyClass: "page-tables",
+                    browserTitle: "Tables"
+                }
+            },
+            {
+                path: "tabs",
+                component: TabsDemo,
+                data: {
+                    bodyClass: "page-tables",
+                    browserTitle: "Tables"
+                }
+            },
+            {
+                path: "toggle-switches",
+                component: TogglesDemo,
+                data: {
+                    bodyClass: "page-toggle-switches",
+                    browserTitle: "Toggle Switches"
+                }
+            },
+            {
+                path: "tooltips",
+                component: TooltipsDemo,
+                data: {
+                    bodyClass: "page-tooltips",
+                    browserTitle: "Tooltips"
+                }
+            },
+            {
+                path: "tree-view",
+                component: TreeViewDemo,
+                data: {
+                    bodyClass: "page-tree-view",
+                    browserTitle: "Tree View"
+                }
+            },
+            {
+                path: "typography",
+                component: TypographyDemo,
+                data: {
+                    bodyClass: "page-typography",
+                    browserTitle: "Typography"
+                }
+            },
+            {
+                path: "wizards",
+                component: WizardDemo,
+                data: {
+                    bodyClass: "page-wizards",
+                    browserTitle: "Wizards"
+                }
+            },
+            {
+                path: "wizard-deprecated",
+                component: WizardOldDemo,
+                data: {
+                    bodyClass: "page-wizard-deprecated",
+                    browserTitle: "Wizards Deprecated"
                 }
             }
         ]

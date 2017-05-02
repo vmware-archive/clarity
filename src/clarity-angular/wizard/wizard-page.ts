@@ -170,15 +170,13 @@ export class WizardPage implements OnInit {
         new EventEmitter();
 
     // If our host has an ID attribute, we use this instead of our index.
-    // sometimes people are using array indices here. that's why it's "any".
-    // most often a string or a number.
     @Input("id")
-    _id: any = (wizardPageIndex++).toString();
+    _id: string = `${wizardPageIndex++}`;
 
     public get id() {
-        if (!this._id && this._id !== 0) {
+        if (this._id == null) {
             // guard here in the event that input becomes undefined or null by accident
-            this._id = (wizardPageIndex++).toString();
+            this._id = `${wizardPageIndex}`;
         }
         return `clr-wizard-page-${this._id}`;
     }

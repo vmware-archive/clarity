@@ -22,6 +22,7 @@
             "styles/main.scss"
         ],
         "scripts": [
+            "../node_modules/core-js/client/shim.min.js",
             "../node_modules/prismjs/prism.js",
             "../node_modules/prismjs/components/prism-typescript.min.js",
             "../node_modules/mutationobserver-shim/dist/mutationobserver.min.js",

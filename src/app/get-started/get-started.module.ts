@@ -3,31 +3,31 @@ import {NgModule} from "@angular/core";
 import {ClarityModule} from "clarity-angular";
 
 import {UtilsModule} from "../utils/utils.module";
-import { GetStartedComponent } from "./get-started.component";
+import {GetStartedComponent} from "./get-started.component";
 import {RouterModule, Routes} from "@angular/router";
 
 const route: Routes = [
-  {
-    path: "",
-    component: GetStartedComponent,
-    data: {
-      bodyClass: "layout-get-started",
-      browserTitle: "Get Started"
+    {
+        path: "",
+        component: GetStartedComponent,
+        data: {
+            bodyClass: "layout-get-started",
+            browserTitle: "Get Started"
+        }
     }
-  }
 ];
 
-
 @NgModule({
-  declarations: [
-    GetStartedComponent,
-  ],
-  imports: [
-    CommonModule,
-    ClarityModule.forChild(),
-    UtilsModule,
-    RouterModule.forChild(route)
-  ],
-  providers: []
+    declarations: [
+        GetStartedComponent,
+    ],
+    imports: [
+        CommonModule,
+        ClarityModule.forChild(),
+        UtilsModule,
+        RouterModule.forChild(route)
+    ],
+    providers: []
 })
-export class GetStartedModule { }
+export class GetStartedModule {
+}

@@ -263,6 +263,19 @@ class TestComponent {
     }
 }
 
+@Component({
+    template: `
+        <ng-container *ngFor="let page of [0, 1, 2, 3]">
+            <clr-wizard-page [id]="3 === page ? 'lastpage' : page">
+                Content for page {{ page }}
+            </clr-wizard-page>
+        </ng-container>
+    `
+})
+class IdTestComponent {
+    @ViewChildren(WizardPage) pages: QueryList<WizardPage>;
+}
+
 export default function(): void {
     describe("WizardPage", () => {
         let fixture: ComponentFixture<any>;
@@ -272,6 +285,84 @@ export default function(): void {
         let otherWizardPage: WizardPage;
         let pageCollection = new MyPageCollectionMock();
         let navService: WizardNavigationService;
+
+        describe("Numeric id bug", () => {
+            let firstPage: WizardPage;
+            let secondPage: WizardPage;
+            let thirdPage: WizardPage;
+            let fourthPage: WizardPage;
+            let myTestComponent: IdTestComponent;
+
+            beforeEach(() => {
+                TestBed.configureTestingModule({
+                    imports: [ ClarityModule.forRoot(), NoopAnimationsModule ],
+                    declarations: [ IdTestComponent ],
+                    providers: [
+                        WizardNavigationService,
+                        { provide: PageCollectionService, useValue: pageCollection },
+                        ButtonHubService
+                    ]
+                });
+                fixture = TestBed.createComponent(IdTestComponent);
+                fixture.detectChanges();
+                debugEl = fixture.debugElement;
+                myTestComponent = fixture.componentInstance;
+                firstPage = myTestComponent.pages.toArray()[0];
+                secondPage = myTestComponent.pages.toArray()[1];
+                thirdPage = myTestComponent.pages.toArray()[2];
+                fourthPage = myTestComponent.pages.toArray()[3];
+            });
+
+            afterEach(() => {
+                fixture.destroy();
+            });
+
+            it("should not auto-assign an id of zero", () => {
+                let myId = firstPage.id;
+                let myMungedId: string[];
+                let generatedId: string;
+
+                myMungedId = myId.split("-").reverse();
+                generatedId = myMungedId[0];
+                expect(generatedId).toBe("0", "should pass 0 as id if specified");
+            });
+
+            it("should match numeric ids if passed", () => {
+                // had an issue here because ppl were using indexes as ids and our logic
+                // was not awesome for that
+                let myId = firstPage.id;
+                let myMungedId: string[];
+                let generatedId: string;
+
+                myMungedId = myId.split("-").reverse();
+                generatedId = myMungedId[0];
+                expect(generatedId).toBe("0", "first page id should be 0");
+
+                myId = secondPage.id;
+                myMungedId = myId.split("-").reverse();
+                generatedId = myMungedId[0];
+
+                myMungedId = myId.split("-").reverse();
+                generatedId = myMungedId[0];
+                expect(generatedId).toBe("1", "should pass 1 as id if specified");
+
+                myId = thirdPage.id;
+                myMungedId = myId.split("-").reverse();
+                generatedId = myMungedId[0];
+
+                myMungedId = myId.split("-").reverse();
+                generatedId = myMungedId[0];
+                expect(generatedId).toBe("2", "should pass 2 as id if specified");
+
+                myId = fourthPage.id;
+                myMungedId = myId.split("-").reverse();
+                generatedId = myMungedId[0];
+
+                myMungedId = myId.split("-").reverse();
+                generatedId = myMungedId[0];
+                expect(generatedId).toBe("lastpage", "should pass string label as id");
+            });
+        });
 
         describe("Typescript API", () => {
             beforeEach(() => {

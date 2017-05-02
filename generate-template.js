@@ -1,16 +1,18 @@
 fs = require("fs");
-RELEASE_TEMPLATES = require("./release-template-stub.json");
+RELEASE_TEMPLATES = require("./src/releases/release-template-stub.json");
 
-const NEWS_TEMPLATE_PATH = "./final-template/news-template.html";
-const FINAL_COMPONENT_TEMPLATE_PATH = "./final-template/auto-generated-news.component.html";
+const NEWS_TEMPLATE_PATH = "./src/releases/final-template/news-template.html";
+const FINAL_COMPONENT_TEMPLATE_PATH = "./src/releases/final-template/auto-generated-news.component.html";
 
 const WRAPPER_TEMPLATE = '\n\n<!-- Release Template ${releaseNo}-->\n\n<ng-template [clrRelease]="\'${releaseNo}\'">\n\n${content}\n</ng-template>\n\n';
 const RELEASE_TEMPLATE_ARR = [];
 
-const FINAL_ROUTES_PATH = "./final-template/auto-generated-routes.ts";
+const FINAL_ROUTES_PATH = "./src/releases/final-template/auto-generated-routes.ts";
 const ROUTES_TEMPLATE = "export const AUTO_GENERATED_ROUTES = [${routes}];"
 
 /* Calls */
+console.log("Auto generating release notes!");
+
 generateReleaseTemplateArr();
 generateTemplates(initializeTemplateFile);
 
@@ -54,6 +56,7 @@ function generateTemplates(callback) {
 
 function initializeTemplateFile(templates, error) {
     if (error.length > 0) {
+        console.log(error);
         throw new Error("Error while reading the templates", error);
     }
     if (fs.existsSync(FINAL_COMPONENT_TEMPLATE_PATH)) {

@@ -156,6 +156,9 @@ body.layout-documentation {
     .main-container .content-container .dox-content-panel {
         padding: 0;
         overflow: hidden;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
     }
 
     .dox-wrapper {
@@ -166,7 +169,7 @@ body.layout-documentation {
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
         flex-direction: column;
-        height: 100%;
+        width: 100%;
     }
 
     .dox-header {
@@ -185,7 +188,6 @@ body.layout-documentation {
         max-width: 100%;
         border-top: 1px solid transparent;
         height: 100%;
-        padding-bottom: $bl-4_0;
 
         .dox-content-wrapper {
             padding-left: $bl-1_5;

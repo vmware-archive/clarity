@@ -9,7 +9,10 @@
     "test": "ng test",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
-    "deploy": "ng build --prod --bh /clarity/ && gulp deploy"
+    "deploy": "ng build --prod --bh /clarity/ && gulp deploy",
+    "serve": "ng serve",
+    "serve:prod": "ng serve --prod",
+    "generate-release-notes": "node generate-template.js"
   },
   "private": true,
   "dependencies": {
@@ -29,11 +32,12 @@
     "clarity-icons": "0.9.2",
     "clarity-ui": "0.9.2",
     "core-js": "^2.4.1",
+    "mdn-polyfills": "^2.2.0",
     "mutationobserver-shim": "^0.3.2",
     "prismjs": "^1.6.0",
     "rxjs": "~5.0.1",
     "ts-helpers": "^1.1.1",
-    "zone.js": "0.8.5"
+    "zone.js": "^0.8.5"
   },
   "devDependencies": {
     "@angular/cli": "1.0.1",
@@ -44,6 +48,8 @@
     "codelyzer": "~2.0.0-beta.4",
     "gh-pages": "^0.12.0",
     "gulp": "^3.9.1",
+    "gulp-shell": "^0.6.3",
+    "gulp-watch": "^4.3.11",
     "intl": "1.1.0",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",

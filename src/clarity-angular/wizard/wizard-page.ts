@@ -171,12 +171,12 @@ export class WizardPage implements OnInit {
 
     // If our host has an ID attribute, we use this instead of our index.
     @Input("id")
-    _id: string = (wizardPageIndex++).toString();
+    _id: string = `${wizardPageIndex++}`;
 
     public get id() {
-        if (!this._id) {
+        if (this._id == null) {
             // guard here in the event that input becomes undefined or null by accident
-            this._id = (wizardPageIndex++).toString();
+            this._id = `${wizardPageIndex}`;
         }
         return `clr-wizard-page-${this._id}`;
     }

@@ -5,6 +5,28 @@
  */
 import {Component} from "@angular/core";
 
+const HTML_EXAMPLE = `
+<clr-alert [clrAlertType]="'alert-success'" (clrAlertClosedChange)="onClose()">
+    <div class="alert-item">
+        <span class="alert-text">
+            This alert indicates a success!
+        </span>
+    </div>
+</clr-alert>
+<div>{{closeMessage}}</div>
+`;
+
+const TS_EXAMPLE = `
+export class AlertAngularDemo  {
+    closeMessage: string = "";
+
+    onClose() {
+        this.closeMessage = "The alert has been closed";
+        }
+}
+`;
+
+
 @Component({
     selector: "clr-alert-close-event-demo-angular",
     styleUrls: ["../alerts.demo.scss"],
@@ -12,6 +34,8 @@ import {Component} from "@angular/core";
 })
 export class AlertAngularCloseEventDemo {
     closeMessage: string = "";
+    htmlExample = HTML_EXAMPLE;
+    tsExample = TS_EXAMPLE;
 
     onClose(): void {
         this.closeMessage = "The alert has been closed";

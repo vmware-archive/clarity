@@ -5,10 +5,36 @@
  */
 import {Component} from "@angular/core";
 
+const HTML_EXAMPLE = `
+<div class="content-area">
+    <div class="alert alert-danger">
+        <div class="alert-item">
+            <span class="alert-text">
+                This alert is at the top of the page.
+            </span>
+        </div>
+    </div>
+    <p>
+        ...
+    </p>
+    <div class="alert alert-success">
+        <div class="alert-item">
+            <span class="alert-text">
+                This alert is in the middle of the page.
+            </span>
+        </div>
+    </div>
+    <p>
+        ...
+    </p>
+</div>
+`;
+
 @Component({
     selector: "clr-alert-demo-content-area",
     styleUrls: ["../alerts.demo.scss"],
     templateUrl: "./alert-content-area.demo.html"
 })
 export class AlertContentAreaDemo {
+    htmlExample = HTML_EXAMPLE;
 }

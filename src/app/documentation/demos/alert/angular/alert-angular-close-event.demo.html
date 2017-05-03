@@ -26,23 +26,5 @@
     </div>
 </div>
 
-<pre><code clr-code-highlight="language-html" ngNonBindable>
-&lt;clr-alert [clrAlertType]=&quot;'alert-success'&quot; (clrAlertClosedChange)=&quot;onClose()&quot;&gt;
-    &lt;div class=&quot;alert-item&quot;&gt;
-        &lt;span class=&quot;alert-text&quot;&gt;
-            This alert indicates a success!
-        &lt;/span&gt;
-    &lt;/div&gt;
-&lt;/clr-alert&gt;
-&lt;div&gt;{{closeMessage}}&lt;/div&gt;
-</code></pre>
-
-<pre><code clr-code-highlight="language-typescript">
-export class AlertAngularDemo  {{'{'}}
-    closeMessage: string = "";
-
-    onClose() {{'{'}}
-        this.closeMessage = "The alert has been closed";
-        {{'}'}}
-{{'}'}}
-</code></pre>
+<clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>
+<clr-code-snippet [clrCode]="tsExample" [clrLanguage]="'typescript'"></clr-code-snippet>

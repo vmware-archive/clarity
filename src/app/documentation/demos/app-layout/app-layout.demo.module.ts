@@ -11,12 +11,14 @@ import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {AppLayoutDemo} from "./app-layout.demo";
 import {RouterModule} from "@angular/router";
 import {LayoutAllDemo} from "./layout-all";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
         CommonModule,
         ClarityModule.forChild(),
         DocWrapperModule,
+        UtilsModule,
         RouterModule
     ],
     declarations: [

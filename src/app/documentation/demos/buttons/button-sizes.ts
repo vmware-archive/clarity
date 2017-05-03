@@ -5,10 +5,38 @@
  */
 import {Component} from "@angular/core";
 
+const HTML_EXAMPLE_1 = `
+<button class="btn">Regular</button>
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-success">Success</button>
+<button class="btn btn-info">Info</button>
+<button class="btn btn-warning">Warning</button>
+<button class="btn btn-danger">Danger</button>
+<button class="btn" disabled>Disabled</button>
+`;
+
+const HTML_EXAMPLE_2 = `
+<button class="btn btn-sm">Regular</button>
+<button class="btn btn-primary btn-sm">Primary</button>
+<button class="btn btn-success btn-sm">Success</button>
+<button class="btn btn-info btn-sm">Info</button>
+<button class="btn btn-warning btn-sm">Warning</button>
+<button class="btn btn-danger btn-sm">Danger</button>
+<button class="btn btn-sm" disabled>Disabled</button>
+`;
+
+const HTML_EXAMPLE_3 = `
+<button class="btn btn-primary btn-block">Primary</button>
+<button class="btn btn-success btn-block">Success</button>
+`;
+
 @Component({
     selector: "clr-buttons-demo-button-sizes",
     templateUrl: "./button-sizes.html",
     styleUrls: ["./buttons.demo.scss"]
 })
 export class ButtonSizesDemo {
+    htmlExample1 = HTML_EXAMPLE_1;
+    htmlExample2 = HTML_EXAMPLE_2;
+    htmlExample3 = HTML_EXAMPLE_3;
 }

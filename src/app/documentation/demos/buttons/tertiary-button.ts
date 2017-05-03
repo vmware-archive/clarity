@@ -5,10 +5,16 @@
  */
 import {Component} from "@angular/core";
 
+const HTML_EXAMPLE = `
+<button class="btn btn-link">Tertiary</button>
+<button class="btn btn-link" disabled>Disabled</button>
+`;
+
 @Component({
     selector: "clr-buttons-demo-tertiary-button",
     templateUrl: "./tertiary-button.html",
     styleUrls: ["./buttons.demo.scss"]
 })
 export class TertiaryButtonDemo {
+    htmlExample = HTML_EXAMPLE;
 }

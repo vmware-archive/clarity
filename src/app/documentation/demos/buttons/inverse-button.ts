@@ -5,10 +5,16 @@
  */
 import {Component} from "@angular/core";
 
+const HTML_EXAMPLE = `
+<button class="btn btn-inverse">Inverse</button>
+<button class="btn btn-inverse" disabled>Disabled Inverse</button>
+`;
+
 @Component({
     selector: "clr-buttons-demo-inverse-button",
     templateUrl: "./inverse-button.html",
     styleUrls: ["./buttons.demo.scss"]
 })
 export class InverseButtonDemo {
+    htmlExample = HTML_EXAMPLE;
 }

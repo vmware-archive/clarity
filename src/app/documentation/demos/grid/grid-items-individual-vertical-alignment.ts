@@ -5,10 +5,25 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<div class="row">
+    <div class="col-xs flex-xs-top">
+        <span>1/3</span>
+    </div>
+    <div class="col-xs flex-xs-middle">
+        <span>1/3</span>
+    </div>
+    <div class="col-xs flex-xs-bottom">
+        <span>1/3</span>
+    </div>
+</div>
+`;
+
 @Component({
     selector: "clr-grid-demo-individual-vertical-alignment",
     templateUrl: "./grid-items-individual-vertical-alignment.html",
     styleUrls: ["./grid.demo.scss"]
 })
 export class GridItemsIndividualVerticalAlignmentDemo {
+    example = EXAMPLE;
 }

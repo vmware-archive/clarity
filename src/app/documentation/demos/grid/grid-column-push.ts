@@ -5,10 +5,22 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<div class="row">
+    <div class="col-md-4 push-md-8">
+        <span>.col-md-4.push-md-8</span>
+    </div>
+    <div class="col-md-2">
+        <span>.col-md-2</span>
+    </div>
+</div>
+`;
+
 @Component({
     selector: "clr-grid-demo-column-push",
     templateUrl: "./grid-column-push.html",
     styleUrls: ["./grid.demo.scss"]
 })
 export class GridColumnPushDemo {
+    example = EXAMPLE;
 }

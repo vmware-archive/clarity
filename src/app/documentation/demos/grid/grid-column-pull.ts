@@ -5,10 +5,22 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<div class="row">
+    <div class="col-xs-4 offset-xs-5">
+        <span>.col-xs-4.offset-xs-5</span>
+    </div>
+    <div class="col-xs-3 pull-xs-9">
+        <span>.col-xs-3.pull-xs-9</span>
+    </div>
+</div>
+`;
+
 @Component({
     selector: "clr-grid-demo-column-pull",
     templateUrl: "./grid-column-pull.html",
     styleUrls: ["./grid.demo.scss"]
 })
 export class GridColumnPullDemo {
+    example = EXAMPLE;
 }

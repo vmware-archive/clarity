@@ -5,10 +5,25 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        <span>.col-sm-12 .col-md-6</span>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <span>.col-sm-12 .col-md-6</span>
+    </div>
+    <div class="col-sm-12 col-md-12">
+        <span>.col-sm-12 .col-md-12</span>
+    </div>
+</div>
+`;
+
 @Component({
     selector: "clr-grid-demo-column-stacking",
     templateUrl: "./grid-column-stacking.html",
     styleUrls: ["./grid.demo.scss"]
 })
 export class GridColumnStackingDemo {
+    example = EXAMPLE;
 }

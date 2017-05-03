@@ -5,10 +5,25 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<div class="row">
+    <div class="col-xs-4">
+        <span>4</span>
+    </div>
+    <div class="col-xs-6">
+        <span>6</span>
+    </div>
+    <div class="col-xs-2">
+        <span>2</span>
+    </div>
+</div>
+`;
+
 @Component({
     selector: "clr-grid-demo-columns",
     templateUrl: "./grid-columns.html",
     styleUrls: ["./grid.demo.scss"]
 })
 export class GridColumnsDemo {
+    example = EXAMPLE;
 }

@@ -20,13 +20,15 @@ import {GridItemsVerticalAlignmentDemo} from "./grid-items-vertical-alignment";
 import {GridDemo} from "./grid.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
         CommonModule,
         ClarityModule.forChild(),
         RouterModule,
-        DocWrapperModule
+        DocWrapperModule,
+        UtilsModule
     ],
     declarations: [
         GridAutoLayout1Demo,

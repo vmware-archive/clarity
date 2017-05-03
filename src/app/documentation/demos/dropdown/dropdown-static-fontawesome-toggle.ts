@@ -5,10 +5,28 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<div class="dropdown bottom-right open">
+    <button class="dropdown-toggle">
+        <span class="fa fa-home fa-fw"></span>
+        <clr-icon shape="caret down"></clr-icon>
+    </button>
+    <div class="dropdown-menu">
+        <h4 class="dropdown-header">Dropdown header</h4>
+        <a href="..." class="dropdown-item">Action 1</a>
+        <a href="..." class="dropdown-item">Action 2</a>
+        <a href="..." class="dropdown-item">Action 3</a>
+        <div class="dropdown-divider"></div>
+        <a href="..." class="dropdown-item">Link 1</a>
+    </div>
+</div>
+`;
+
 @Component({
     selector: "clr-dropdown-static-fontawesome-toggle-demo",
     styleUrls: ["./dropdown.demo.scss"],
     templateUrl: "./dropdown-static-fontawesome-toggle.demo.html"
 })
 export class DropdownStaticFontAwesomeToggleDemo {
+    example = EXAMPLE;
 }

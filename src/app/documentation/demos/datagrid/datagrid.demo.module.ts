@@ -7,7 +7,7 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 
-import {ClarityModule} from 'clarity-angular';
+import {ClarityModule} from "clarity-angular";
 
 import {DatagridBasicStructureDemo} from "./basic-structure/basic-structure";
 import {DatagridBatchActionDemo} from "./batch-action/batch-action";
@@ -27,11 +27,11 @@ import {DatagridPlaceholderDemo} from "./placeholder/placeholder";
 import {DatagridExpandableRowsDemo} from "./expandable-rows/expandable-rows";
 
 import {ColorFilter} from "./utils/color-filter";
-import {Example} from "./utils/example";
 import {FakeLoader} from "./expandable-rows/fake-loader";
 import {DatagridDemo} from "./datagrid.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
+import {UtilsModule} from "../../../utils/utils.module";
 
 
 @NgModule({
@@ -40,7 +40,8 @@ import {RouterModule} from "@angular/router";
         FormsModule,
         ClarityModule.forChild(),
         DocWrapperModule,
-        RouterModule
+        RouterModule,
+        UtilsModule
     ],
     declarations: [
         DatagridBasicStructureDemo,
@@ -60,7 +61,6 @@ import {RouterModule} from "@angular/router";
         DatagridPlaceholderDemo,
         DatagridExpandableRowsDemo,
         ColorFilter,
-        Example,
         FakeLoader,
         DatagridDemo
     ],

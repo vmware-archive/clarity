@@ -18,13 +18,15 @@ import {DropdownAngularCloseItemFalseDemo} from "./dropdown-angular-close-item-f
 import {DropdownsDemo} from "./dropdown.demo";
 import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
         CommonModule,
         ClarityModule.forChild(),
         RouterModule,
-        DocWrapperModule
+        DocWrapperModule,
+        UtilsModule
     ],
     declarations: [
         DropdownStaticDefaultDemo,

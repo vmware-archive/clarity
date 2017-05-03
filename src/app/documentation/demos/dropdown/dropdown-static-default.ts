@@ -5,10 +5,28 @@
  */
 import {Component} from "@angular/core";
 
+const HTML_EXAMPLE = `
+<div class="dropdown open">
+    <button class="dropdown-toggle btn btn-primary" type="button">
+        Dropdown
+        <clr-icon shape="caret down"></clr-icon>
+    </button>
+    <div class="dropdown-menu">
+        <h4 class="dropdown-header">Dropdown header</h4>
+        <a href="..." class="dropdown-item active">Action</a>
+        <a href="..." class="dropdown-item disabled">Disabled Link</a>
+        <div class="dropdown-divider"></div>
+        <a href="..." class="dropdown-item">Lorem.</a>
+        <a href="..." class="dropdown-item">Lorem ipsum.</a>
+    </div>
+</div>
+`;
+
 @Component({
     selector: "clr-dropdown-static-default-demo",
     styleUrls: ["./dropdown.demo.scss"],
     templateUrl: "./dropdown-static-default.demo.html"
 })
 export class DropdownStaticDefaultDemo {
+    example = HTML_EXAMPLE;
 }

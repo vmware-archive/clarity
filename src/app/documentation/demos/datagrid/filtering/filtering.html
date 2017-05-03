@@ -18,7 +18,7 @@
     The filter you provide to the <code class="clr-code">&lt;clr-dg-filter&gt;</code> component
     needs to implement the <code class="clr-code">Filter</code> interface provided by Clarity:
 </p>
-<clr-example [clrCode]="examples.filterInterface" clrLanguage="typescript"></clr-example>
+<clr-code-snippet [clrCode]="examples.filterInterface" clrLanguage="typescript"></clr-code-snippet>
 
 <p>
     There are several ways to pass your filter to the
@@ -29,22 +29,22 @@
         The simplest, but less reusable way, is to simply inline your filter's template in the
         column and use the <code class="clr-code">[clrDgFilter]</code> input to pass your filter
         instance:
-        <clr-example [clrCode]="examples.inlineFilterTS" clrLanguage="typescript"></clr-example>
-        <clr-example [clrCode]="examples.inlineFilterHTML" clrLanguage="html"></clr-example>
+        <clr-code-snippet [clrCode]="examples.inlineFilterTS" clrLanguage="typescript"></clr-code-snippet>
+        <clr-code-snippet [clrCode]="examples.inlineFilterHTML" clrLanguage="html"></clr-code-snippet>
     </li>
     <li>
         A more reusable way is to write an actual component for your custom filter,
         and inject its <code class="clr-code">DatagridFilter</code> parent in its constructor so
         that it can register itself:
-        <clr-example [clrCode]="examples.customFilterComponentTS" clrLanguage="typescript"></clr-example>
-        <clr-example [clrCode]="examples.customFilterComponentHTML" clrLanguage="html"></clr-example>
+        <clr-code-snippet [clrCode]="examples.customFilterComponentTS" clrLanguage="typescript"></clr-code-snippet>
+        <clr-code-snippet [clrCode]="examples.customFilterComponentHTML" clrLanguage="html"></clr-code-snippet>
     </li>
     <li>
         Finally, if you want to have a completely reusable filter independently of our Datagrid,
         you can write a component for it and use a template reference variable to declare the
         filter to its container:
-        <clr-example [clrCode]="examples.templateVariableTS" clrLanguage="typescript"></clr-example>
-        <clr-example [clrCode]="examples.templateVariableHTML" clrLanguage="html"></clr-example>
+        <clr-code-snippet [clrCode]="examples.templateVariableTS" clrLanguage="typescript"></clr-code-snippet>
+        <clr-code-snippet [clrCode]="examples.templateVariableHTML" clrLanguage="html"></clr-code-snippet>
     </li>
 </ul>
 
@@ -78,8 +78,8 @@
     <clr-dg-footer>{{users.length}} users</clr-dg-footer>
 </clr-datagrid>
 
-<clr-example [clrCode]="examples.colorFilterTS" clrLanguage="typescript"></clr-example>
-<clr-example [clrCode]="examples.colorFilterHTML" clrLanguage="html"></clr-example>
+<clr-code-snippet [clrCode]="examples.colorFilterTS" clrLanguage="typescript"></clr-code-snippet>
+<clr-code-snippet [clrCode]="examples.colorFilterHTML" clrLanguage="html"></clr-code-snippet>
 
 <h4>Preset Column Filters</h4>
 
@@ -88,7 +88,7 @@
     <code class="clr-code">[(clrFilterValue)]</code> can be pre-set.
 </p>
 
-<clr-example [clrCode]="examples.stringFilterColumnPresetHTML" clrLanguage="html"></clr-example>
+<clr-code-snippet [clrCode]="examples.stringFilterColumnPresetHTML" clrLanguage="html"></clr-code-snippet>
 
 <clr-datagrid>
     <clr-dg-column>User ID</clr-dg-column>

@@ -23,13 +23,15 @@ import {CardAlertDemo} from "./card-alert";
 import {ListsInCardsDemo} from "./lists-in-cards";
 import {ProgressBarCardsDemo} from "./progress-bar-cards";
 import {ProgressBarInlineCardsDemo} from "./progress-bar-inline-cards";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
         CommonModule,
         ClarityModule.forChild(),
         DocWrapperModule,
-        RouterModule
+        RouterModule,
+        UtilsModule
     ],
     declarations: [
         CardOldDemo,

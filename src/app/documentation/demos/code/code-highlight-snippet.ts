@@ -5,9 +5,24 @@
  */
 import {Component} from "@angular/core";
 
+const HTML_EXAMPLE = `
+<pre>
+    <code clr-code-highlight="language-css">
+        .some-component {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+    </code>
+</pre>
+`;
+
 @Component({
     selector: "clr-code-highlight-snippet-demo",
     templateUrl: "./code-highlight-snippet.html",
 })
 export class CodeHighlightSnippetDemo {
+    htmlExample = HTML_EXAMPLE;
 }

@@ -5,9 +5,20 @@
  */
 import {Component} from "@angular/core";
 
+const HTML_EXAMPLE = `
+<head>
+    ...
+    <link rel="stylesheet" href="node_modules/prismjs/themes/prism-solarizedlight.css">
+    <script src="node_modules/prismjs/prism.js"></script>
+    <script src="node_modules/prismjs/components/prism-typescript.min.js"></script>
+    ...
+</head>
+`;
+
 @Component({
     selector: "clr-code-highlight-imports-demo",
     templateUrl: "./code-highlight-imports.html",
 })
 export class CodeHighlightImportsDemo {
+    htmlExample = HTML_EXAMPLE;
 }

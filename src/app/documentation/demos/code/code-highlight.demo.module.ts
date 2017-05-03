@@ -11,13 +11,15 @@ import {CodeHighlightSnippetDemo} from "./code-highlight-snippet";
 import {CodeHighlightDemo} from "./code.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
         CommonModule,
         ClarityModule.forChild(),
         DocWrapperModule,
-        RouterModule
+        RouterModule,
+        UtilsModule
     ],
     declarations: [
         CodeHighlightImportsDemo,

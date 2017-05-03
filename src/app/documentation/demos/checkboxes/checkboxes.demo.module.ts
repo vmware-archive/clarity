@@ -11,10 +11,10 @@ import {ClarityModule} from "clarity-angular";
 import {CheckboxesDemo} from "./checkboxes.demo";
 
 import {Status} from "./data/status";
-import {Example} from "./utils/example";
 import {CheckboxesTypesDemo} from "./checkboxes-types.demo";
 import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
@@ -22,11 +22,11 @@ import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
         FormsModule,
         ClarityModule.forChild(),
         DocWrapperModule,
-        RouterModule
+        RouterModule,
+        UtilsModule
     ],
     declarations: [
         CheckboxesTypesDemo,
-        Example,
         CheckboxesDemo
     ],
     providers: [

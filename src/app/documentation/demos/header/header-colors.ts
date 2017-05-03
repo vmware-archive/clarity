@@ -5,10 +5,37 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<header class="header header-1">
+    ...
+</header>
+
+<header class="header header-2">
+    ...
+</header>
+
+<header class="header header-3">
+    ...
+</header>
+
+<header class="header header-4">
+    ...
+</header>
+
+<header class="header header-5">
+    ...
+</header>
+
+<header class="header header-6">
+    ...
+</header>
+`;
+
 @Component({
     selector: "clr-header-demo-colors",
     templateUrl: "./header-colors.demo.html",
     styleUrls: ["./headers.demo.scss"]
 })
 export class HeaderColorsDemo {
+    example = EXAMPLE;
 }

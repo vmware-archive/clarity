@@ -14,13 +14,15 @@ import {HeaderLinksDemo} from "./header-links";
 import {HeaderTypesDemo} from "./header-types";
 import {HeaderColorsDemo} from "./header-colors";
 import {SubNavDemo} from "./sub-nav";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
         CommonModule,
         ClarityModule.forChild(),
         DocWrapperModule,
-        RouterModule
+        RouterModule,
+        UtilsModule
     ],
     declarations: [
         HeaderColorsDemo,

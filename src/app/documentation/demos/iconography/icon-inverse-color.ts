@@ -5,10 +5,15 @@
  */
 import { Component } from "@angular/core";
 
+const EXAMPLE = `
+<clr-icon shape="info-circle" class="is-inverse"></clr-icon>
+`;
+
 @Component({
     selector: "clr-icon-inverse-colors-demo",
     styleUrls: ["./iconography.demo.scss"],
     templateUrl: "./icon-inverse-color.demo.html"
 })
 export class IconInverseColorDemo {
+    example = EXAMPLE;
 }

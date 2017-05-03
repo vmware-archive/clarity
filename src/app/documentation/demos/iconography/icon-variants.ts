@@ -5,6 +5,15 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<clr-icon shape="bell"></clr-icon>
+<clr-icon shape="bell" class="has-badge"></clr-icon>
+<clr-icon shape="bell" class="has-badge--success"></clr-icon>
+<clr-icon shape="bell" class="is-info has-badge--error"></clr-icon>
+<clr-icon shape="bell" class="is-solid"></clr-icon>
+<clr-icon shape="bell" class="is-solid has-badge--info"></clr-icon>
+`;
+
 @Component({
     selector: "clr-icon-variants-demo",
     // Note the .css extension here, not .scss. That's the best we can have at the moment.
@@ -12,4 +21,5 @@ import {Component} from "@angular/core";
     templateUrl: "./icon-variants.demo.html"
 })
 export class IconVariantsDemo {
+    example = EXAMPLE;
 }

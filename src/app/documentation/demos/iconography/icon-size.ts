@@ -5,10 +5,20 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<clr-icon shape="info-circle" size="12"></clr-icon>
+<clr-icon shape="info-circle" size="16"></clr-icon>
+<clr-icon shape="info-circle" size="36"></clr-icon>
+<clr-icon shape="info-circle" size="48"></clr-icon>
+<clr-icon shape="info-circle" size="64"></clr-icon>
+<clr-icon shape="info-circle" size="72"></clr-icon>
+`;
+
 @Component({
     selector: "clr-icon-size-demo",
     styleUrls: ["./iconography.demo.scss"],
     templateUrl: "./icon-size.demo.html"
 })
 export class IconSizeDemo {
+    example = EXAMPLE;
 }

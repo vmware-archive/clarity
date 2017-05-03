@@ -22,6 +22,7 @@ import {ModalSizesDemo} from "./modal-sizes";
 import {ModalDemo} from "./modal.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
+import {UtilsModule} from "../../../utils/utils.module";
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {RouterModule} from "@angular/router";
         CommonModule,
         ClarityModule.forChild(),
         DocWrapperModule,
-        RouterModule
+        RouterModule,
+        UtilsModule
     ],
     declarations: [
         ModalStaticDemo,

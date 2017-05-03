@@ -5,9 +5,34 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<ol class="list">
+    <li>...</li>
+    <li>
+        Ullamco laboris nisi ut aliquip
+        <ul class="list">
+            <li>Consequat</li>
+            <li>Adipisicing</li>
+            <li>Exercitation</li>
+        </ul>
+    </li>
+    <li>Reprehenderit in voluptate</li>
+    <li>
+        Mollit anim id
+        <ol class="list">
+            <li>Consequat</li>
+            <li>Adipisicing</li>
+            <li>Exercitation</li>
+        </ol>
+    </li>
+    <li>Reprehenderit in voluptate</li>
+</ol>
+`;
+
 @Component({
     selector: "clr-lists-ol-demo",
     templateUrl: "./lists-ol.html"
 })
 export class ListsOlDemo {
+    example = EXAMPLE;
 }

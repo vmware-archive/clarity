@@ -5,9 +5,14 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<div class="modal-backdrop" aria-hidden="true"></div>
+`;
+
 @Component({
     selector: "clr-modal-backdrop-demo",
     templateUrl: "./modal-backdrop.demo.html"
 })
 export class ModalBackdropDemo {
+    example = EXAMPLE;
 }

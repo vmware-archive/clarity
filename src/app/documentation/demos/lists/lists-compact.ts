@@ -5,9 +5,26 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<ul class="list compact">
+    <li>...</li>
+    <li>
+        Ullamco laboris nisi ut aliquip
+        <ul class="list">
+            <li>Consequat</li>
+            <li>Adipisicing</li>
+            <li>Exercitation</li>
+        </ul>
+    </li>
+    <li>Reprehenderit in voluptate</li>
+    <li>Mollit anim id</li>
+</ul>
+`;
+
 @Component({
     selector: "clr-lists-compact-demo",
     templateUrl: "./lists-compact.html"
 })
 export class ListsCompactDemo {
+    example = EXAMPLE;
 }

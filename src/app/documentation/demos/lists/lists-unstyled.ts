@@ -5,9 +5,19 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<ul class="list-unstyled">
+    <li>Id est laborum</li>
+    <li>Dolore eu fugiat</li>
+    <li>Occaecat cupidatat</li>
+    <li>Deserunt mollit anim</li>
+</ul>
+`
+
 @Component({
     selector: "clr-lists-unstyled-demo",
     templateUrl: "./lists-unstyled.html"
 })
 export class ListsUnstyledDemo {
+    example = EXAMPLE;
 }

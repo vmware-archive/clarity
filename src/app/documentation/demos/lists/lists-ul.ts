@@ -5,6 +5,22 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<ul class="list">
+    <li>...</li>
+    <li>
+        Ullamco laboris nisi ut aliquip
+        <ul class="list">
+            <li>Consequat</li>
+            <li>Adipisicing</li>
+            <li>Exercitation</li>
+        </ul>
+    </li>
+    <li>Reprehenderit in voluptate</li>
+    <li>Mollit anim id</li>
+</ul>
+`;
+
 @Component({
     selector: "clr-lists-ul-demo",
     templateUrl: "./lists-ul.html"

@@ -5,9 +5,18 @@
  */
 import {Component} from "@angular/core";
 
+const HTML_EXAMPLE = `
+<div class="btn-group btn-primary">
+    <button class="btn">Favorite</button>
+    <button class="btn btn-success">Add</button>
+    <button class="btn btn-danger">Delete</button>
+</div>
+`;
+
 @Component({
     selector: "clr-button-group-mixed-demo",
     templateUrl: "./mixed.html"
 })
 export class MixedButtonGroupDemo {
+    htmlExample = HTML_EXAMPLE;
 }

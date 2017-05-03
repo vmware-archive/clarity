@@ -16,6 +16,6 @@ import {ClarityDocComponent} from "../clarity-doc";
 })
 export class ButtonGroupDemo extends ClarityDocComponent {
     constructor() {
-        super("badges");
+        super("button-group");
     }
 }

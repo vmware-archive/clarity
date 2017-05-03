@@ -18,13 +18,15 @@ import {ButtonGroupAngularDirectionsDemo} from "./angular-directions";
 import {ButtonGroupDemo} from "./button-group.demo";
 import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "app/documentation/demos/_doc-wrapper/doc-wrapper.module";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
         CommonModule,
         ClarityModule.forChild(),
         DocWrapperModule,
-        RouterModule
+        RouterModule,
+        UtilsModule
     ],
     declarations: [
         ButtonGroupBasicStructureDemo,

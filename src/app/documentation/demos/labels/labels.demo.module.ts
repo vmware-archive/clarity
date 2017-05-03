@@ -16,13 +16,15 @@ import {LabelsDefaultDemo} from "./labels-default";
 import {LabelsDemo} from "./labels.demo";
 import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
         CommonModule,
         ClarityModule.forChild(),
         RouterModule,
-        DocWrapperModule
+        DocWrapperModule,
+        UtilsModule
     ],
     declarations: [
         LabelsWithBadgesDemo,

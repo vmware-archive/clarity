@@ -5,9 +5,17 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<span class="label label-info">Info</span>
+<span class="label label-success">Success</span>
+<span class="label label-warning">Warning</span>
+<span class="label label-danger">Error</span>
+`;
+
 @Component({
     selector: "clr-labels-status-demo",
     templateUrl: "./labels-status.demo.html"
 })
 export class LabelsStatusDemo {
+    example = EXAMPLE;
 }

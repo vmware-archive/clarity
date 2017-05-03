@@ -11,13 +11,15 @@ import {InputFieldsTypesDemo} from "./input-fields-types.demo";
 import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {FormValidationDemo} from "./form-validation";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
         CommonModule,
         ClarityModule.forChild(),
         RouterModule,
-        DocWrapperModule
+        DocWrapperModule,
+        UtilsModule
     ],
     declarations: [
         InputFieldsTypesDemo,

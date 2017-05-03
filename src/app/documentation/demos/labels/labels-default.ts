@@ -5,9 +5,18 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<span class="label">Austin</span>
+<span class="label">New York</span>
+<span class="label">Palo Alto</span>
+<span class="label">San Francisco</span>
+<span class="label">Seattle</span>
+`;
+
 @Component({
     selector: "clr-labels-default-demo",
     templateUrl: "./labels-default.demo.html"
 })
 export class LabelsDefaultDemo {
+    example = EXAMPLE;
 }

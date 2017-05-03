@@ -18,10 +18,10 @@ import {FormGridDemo} from "./form-grid";
 import {TemplateDrivenFormsDemo} from "./template-driven-forms/template-driven-forms";
 import {ReactiveFormsDemo} from "./reactive-forms/reactive-forms";
 
-import {Example} from "./utils/example";
 import {FormsDemo} from "./forms.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
@@ -30,7 +30,8 @@ import {RouterModule} from "@angular/router";
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
-        DocWrapperModule
+        DocWrapperModule,
+        UtilsModule
     ],
     declarations: [
         FormFieldsDemo,
@@ -40,7 +41,6 @@ import {RouterModule} from "@angular/router";
         FormCompactDemo,
         TemplateDrivenFormsDemo,
         ReactiveFormsDemo,
-        Example,
         FormsDemo
     ],
     exports: [

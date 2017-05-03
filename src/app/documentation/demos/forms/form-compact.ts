@@ -5,9 +5,16 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<form class="compact">
+    ...
+</form>
+`;
+
 @Component({
     selector: "clr-forms-compact-demo",
     templateUrl: "./form-compact.demo.html"
 })
 export class FormCompactDemo {
+    example = EXAMPLE;
 }

@@ -18,4 +18,24 @@ export class DatagridDemo extends ClarityDocComponent {
     constructor() {
         super("datagrid");
     }
+
+    demos: string[] = [
+        "Basic Structure",
+        "Custom Cell Rendering",
+        "Smart Iterator",
+        "Binding Model Properties to Columns",
+        "Custom Sort",
+        "Custom Filters",
+        "Built-in Filter",
+        "Pagination",
+        "Selection",
+        "Single Selection",
+        "Selection Batch Action",
+        "Single Row Action",
+        "Server-driven Datagrid",
+        "Placeholder",
+        "Expandable Rows",
+        "Full Demo"
+    ];
+    model: string = this.demos[0];
 }

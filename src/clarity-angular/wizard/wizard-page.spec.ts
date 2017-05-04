@@ -9,15 +9,17 @@ import { By } from "@angular/platform-browser";
 import { Component, QueryList, ViewChildren, ViewChild, DebugElement } from "@angular/core";
 import { Wizard } from "./wizard";
 import { WizardPage } from "./wizard-page";
-import { ClarityModule } from "../clarity.module";
 import { WizardNavigationService } from "./providers/wizard-navigation";
 import { PageCollectionService } from "./providers/page-collection";
 import { ButtonHubService } from "./providers/button-hub";
 import { PageCollectionMock } from "./providers/page-collection.mock";
 import { MockPage } from "./wizard-page.mock";
-import { Alert } from "../alert/alert";
+import { Alert } from "../emphasis/alert/alert";
 import { WizardButton } from "./wizard-button";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { ClrWizardModule } from "./wizard.module";
+import { ClrAlertModule } from "../emphasis/alert/alert.module";
+import { ClrIconModule } from "../icon/icon.module";
 
 class MyPageCollectionMock extends PageCollectionMock {
     public previousPage: MockPage;
@@ -295,7 +297,7 @@ export default function(): void {
 
             beforeEach(() => {
                 TestBed.configureTestingModule({
-                    imports: [ ClarityModule.forRoot(), NoopAnimationsModule ],
+                    imports: [ ClrWizardModule, ClrAlertModule, NoopAnimationsModule ],
                     declarations: [ IdTestComponent ],
                     providers: [
                         WizardNavigationService,
@@ -428,7 +430,7 @@ export default function(): void {
         describe("Typescript API", () => {
             beforeEach(() => {
                 TestBed.configureTestingModule({
-                    imports: [ ClarityModule.forRoot(), NoopAnimationsModule ],
+                    imports: [ClrWizardModule, NoopAnimationsModule ],
                     declarations: [ TypescriptTestComponent ],
                     providers: [
                         WizardNavigationService,
@@ -715,7 +717,7 @@ export default function(): void {
         describe("Template API", () => {
             beforeEach(() => {
                 TestBed.configureTestingModule({
-                    imports: [ ClarityModule.forRoot(), NoopAnimationsModule ],
+                    imports: [ClrWizardModule, NoopAnimationsModule ],
                     declarations: [ TemplateTestComponent ],
                     providers: [
                         WizardNavigationService,
@@ -996,7 +998,7 @@ export default function(): void {
         describe("View and Behavior", () => {
             beforeEach(() => {
                 TestBed.configureTestingModule({
-                    imports: [ ClarityModule.forRoot(), NoopAnimationsModule ],
+                    imports: [ClrWizardModule, ClrIconModule, ClrAlertModule, NoopAnimationsModule ],
                     declarations: [ ViewTestComponent ],
                     providers: [ WizardNavigationService, PageCollectionService, ButtonHubService ]
                 });

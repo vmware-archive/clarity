@@ -3,87 +3,46 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {CommonModule} from "@angular/common";
-import {FormsModule} from "@angular/forms";
 import { ModuleWithProviders, NgModule } from "@angular/core";
-
-import {ALERT_DIRECTIVES} from "./alert/index";
-import {CHECKBOX_DIRECTIVES} from "./checkboxes/index";
-import {CODE_HIGHLIGHT_DIRECTIVES} from "./code/index";
-import {DATAGRID_DIRECTIVES} from "./datagrid/index";
-import {DROPDOWN_DIRECTIVES} from "./dropdown/index";
-import {LAYOUT_DIRECTIVES} from "./layout/index";
-import {MODAL_DIRECTIVES} from "./modal/index";
-import {NAVIGATION_DIRECTIVES} from "./nav/index";
-import {POPOVER_DIRECTIVES} from "./popover/index";
-import {STACK_VIEW_DIRECTIVES} from "./stack-view/index";
-import {TABS_DIRECTIVES} from "./tabs/index";
-import {TOOLTIP_DIRECTIVES} from "./tooltips/index";
-import {TREE_VIEW_DIRECTIVES} from "./tree-view/index";
-import {OLD_WIZARD_DIRECTIVES} from "./wizard-deprecated/index";
-import {WIZARD_DIRECTIVES} from "./wizard/index";
-import {ICON_DIRECTIVES} from "./iconography/index";
-import {BUTTON_GROUP_DIRECTIVES} from "./button-group/index";
-import {LOADING_BUTTON_DIRECTIVES} from "./button-loading/index";
-import {LOADING_DIRECTIVES} from "./loading/index";
-
-import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationService";
+import { ClrButtonModule } from "./button/button.module";
+import { ClrDataModule } from "./data/data.module";
+import { ClrEmphasisModule } from "./emphasis/emphasis.module";
+import { ClrIconModule } from "./icon/icon.module";
+import { ClrModalModule } from "./modal/modal.module";
+import { ClrLoadingModule } from "./utils/loading/loading.module";
+import { ClrCodeModule } from "./code/code.module";
+import { ClrFormsModule } from "./forms/forms.module";
+import { ClrLayoutModule } from "./layout/layout.module";
+import { ClrPopoverModule } from "./popover/popover.module";
+import { ClrWizardModule } from "./wizard/wizard.module";
+import { ClrWizardDeprecatedModule } from "./wizard-deprecated/wizard-deprecated.module";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule
-    ],
-    declarations: [
-        ALERT_DIRECTIVES,
-        CHECKBOX_DIRECTIVES,
-        CODE_HIGHLIGHT_DIRECTIVES,
-        DATAGRID_DIRECTIVES,
-        DROPDOWN_DIRECTIVES,
-        LAYOUT_DIRECTIVES,
-        MODAL_DIRECTIVES,
-        NAVIGATION_DIRECTIVES,
-        POPOVER_DIRECTIVES,
-        STACK_VIEW_DIRECTIVES,
-        TABS_DIRECTIVES,
-        TOOLTIP_DIRECTIVES,
-        TREE_VIEW_DIRECTIVES,
-        OLD_WIZARD_DIRECTIVES,
-        WIZARD_DIRECTIVES,
-        ICON_DIRECTIVES,
-        BUTTON_GROUP_DIRECTIVES,
-        LOADING_BUTTON_DIRECTIVES,
-        LOADING_DIRECTIVES
-    ],
     exports: [
-        ALERT_DIRECTIVES,
-        CHECKBOX_DIRECTIVES,
-        CODE_HIGHLIGHT_DIRECTIVES,
-        DATAGRID_DIRECTIVES,
-        DROPDOWN_DIRECTIVES,
-        LAYOUT_DIRECTIVES,
-        MODAL_DIRECTIVES,
-        NAVIGATION_DIRECTIVES,
-        STACK_VIEW_DIRECTIVES,
-        TABS_DIRECTIVES,
-        TOOLTIP_DIRECTIVES,
-        TREE_VIEW_DIRECTIVES,
-        OLD_WIZARD_DIRECTIVES,
-        WIZARD_DIRECTIVES,
-        ICON_DIRECTIVES,
-        BUTTON_GROUP_DIRECTIVES,
-        LOADING_BUTTON_DIRECTIVES,
-        LOADING_DIRECTIVES
+        ClrEmphasisModule,
+        ClrDataModule,
+        ClrIconModule,
+        ClrModalModule,
+        ClrLoadingModule,
+        ClrButtonModule,
+        ClrCodeModule,
+        ClrFormsModule,
+        ClrLayoutModule,
+        ClrPopoverModule,
+        ClrWizardModule,
+        ClrWizardDeprecatedModule
     ]
 })
 export class ClarityModule {
+    /** @deprecated */
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: ClarityModule,
-            providers: [ ClrResponsiveNavigationService ]
+            providers: []
         };
     }
 
+    /** @deprecated */
     static forChild(): ModuleWithProviders {
         return {
             ngModule: ClarityModule,

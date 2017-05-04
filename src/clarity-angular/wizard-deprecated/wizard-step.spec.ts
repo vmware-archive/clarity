@@ -4,12 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {Component, QueryList, ViewChildren} from "@angular/core";
-import {ScrollingService} from "../main/scrolling-service";
-import {ClarityModule} from "../clarity.module";
-import {WizardStep} from "./wizard-step";
-import {WizardDeprecated} from "./wizard";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { Component, QueryList, ViewChildren } from "@angular/core";
+import { ScrollingService } from "../utils/scrolling/scrolling-service";
+import { WizardStep } from "./wizard-step";
+import { WizardDeprecated } from "./wizard";
+import { ClrWizardDeprecatedModule } from "./wizard-deprecated.module";
 
 @Component({
     template: `
@@ -29,7 +29,7 @@ describe("WizardStep", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [ClarityModule.forRoot()],
+            imports: [ClrWizardDeprecatedModule],
             declarations: [TestComponent],
             providers: [WizardDeprecated, ScrollingService],
         });

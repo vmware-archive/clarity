@@ -22,7 +22,7 @@ import {
     AnimationEvent
 } from "@angular/animations";
 
-import {ScrollingService} from "../main/scrolling-service";
+import {ScrollingService} from "../utils/scrolling/scrolling-service";
 import { GHOST_PAGE_ANIMATION } from "./utils/ghost-page-animations";
 
 @Component({

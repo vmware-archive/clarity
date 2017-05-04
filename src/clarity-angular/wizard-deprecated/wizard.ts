@@ -14,10 +14,10 @@ import {
     SimpleChange, HostListener
 } from "@angular/core";
 
-import {Tabs} from "../tabs/tabs";
+import {Tabs} from "../layout/tabs/tabs";
 import {WizardStep} from "./wizard-step";
 import {WizardPageDeprecated} from "./wizard-page";
-import {ScrollingService} from "../main/scrolling-service";
+import {ScrollingService} from "../utils/scrolling/scrolling-service";
 
 let nbWizardComponents: number = 0;
 

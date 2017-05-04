@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "../../clarity-angular";
+import {ClarityModule} from "../../clarity-angular/clarity.module";
 import {ROUTING} from "./progress-bars.demo.routing";
 import {ProgressBarExamplesDemo} from "./progress-bar-examples";
 import {ProgressBarColorsDemo} from "./progress-bar-colors";

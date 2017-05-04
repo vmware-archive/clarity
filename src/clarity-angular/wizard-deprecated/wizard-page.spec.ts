@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {Component, QueryList, ViewChildren} from "@angular/core";
-import {WizardPageDeprecated} from "./wizard-page";
-import {ClarityModule} from "../clarity.module";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { Component, QueryList, ViewChildren } from "@angular/core";
+import { WizardPageDeprecated } from "./wizard-page";
+import { ClrWizardDeprecatedModule } from "./wizard-deprecated.module";
 
 @Component({
     template: `
@@ -48,7 +48,7 @@ describe("WizardPage", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [ClarityModule.forRoot()],
+            imports: [ClrWizardDeprecatedModule],
             declarations: [TestComponent]
         });
         fixture = TestBed.createComponent(TestComponent);

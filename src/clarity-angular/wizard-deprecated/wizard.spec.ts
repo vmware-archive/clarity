@@ -6,10 +6,10 @@
 
 import {ComponentFixture, TestBed, fakeAsync, tick} from "@angular/core/testing";
 import {Component, ViewChild} from "@angular/core";
-import {ScrollingService} from "../main/scrolling-service";
-import {ClarityModule} from "../clarity.module";
+import {ScrollingService} from "../utils/scrolling/scrolling-service";
 import {WizardDeprecated} from "./wizard";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
+import { ClrWizardDeprecatedModule } from "./wizard-deprecated.module";
 
 @Component({
     template: `
@@ -138,7 +138,7 @@ describe("Wizard", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [ClarityModule.forRoot(), NoopAnimationsModule],
+            imports: [ClrWizardDeprecatedModule, NoopAnimationsModule],
             declarations: [AdvancedWizard, BasicWizard]
         });
     });

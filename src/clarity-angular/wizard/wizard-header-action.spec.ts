@@ -6,8 +6,8 @@
 
 import { Component, ViewChild, DebugElement } from "@angular/core";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { ClarityModule } from "../clarity.module";
 import { WizardHeaderAction } from "./wizard-header-action";
+import { ClrWizardModule } from "./wizard.module";
 
 @Component({
     template: `
@@ -51,7 +51,7 @@ export default function(): void {
 
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [ ClarityModule.forRoot() ],
+                imports: [ClrWizardModule ],
                 declarations: [ TestComponent ]
             });
             fixture = TestBed.createComponent(TestComponent);

@@ -12,8 +12,16 @@ import WizardNavigationSpecs from "./providers/wizard-navigation.spec";
 import PageCollectionSpecs from "./providers/page-collection.spec";
 import HeaderActionsSpecs from "./providers/header-actions.spec";
 
+import { ClrWizardModule } from "./wizard.module";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { ClrIconModule } from "../icon/icon.module";
+
 describe("New Wizard Tests", () => {
-    addHelpers();
+    addHelpers([
+        ClrWizardModule,
+        ClrIconModule,
+        NoopAnimationsModule
+    ]);
 
     WizardSpecs();
     WizardStepnavSpecs();

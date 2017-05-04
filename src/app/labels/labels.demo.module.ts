@@ -5,9 +5,8 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "../../clarity-angular";
+import {ClarityModule} from "../../clarity-angular/clarity.module";
 import {ROUTING} from "./labels.demo.routing";
-
 import {LabelsDemo} from "./labels.demo";
 import {LabelsWithBadgesDemo} from "./labels-with-badges";
 import {LabelsStatusDemo} from "./labels-status";

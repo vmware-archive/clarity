@@ -5,17 +5,32 @@
  */
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ClarityModule } from 'clarity-angular';
+import {
+    ClrLayoutModule,
+    ClrIconModule,
+    ClrButtonGroupModule,
+    ClrDataModule,
+    ClrFormsModule,
+    ClrAlertModule,
+    ClrPopoverModule
+} from 'clarity-angular';
 import { AppComponent }  from './app.component';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
-    imports:      [
+    imports: [
         BrowserAnimationsModule,
         BrowserModule,
-        ClarityModule.forRoot()
+        ClrLayoutModule, //Includes MainContainer, Navigation, & Tabs
+        ClrIconModule,
+        ClrButtonGroupModule,
+        ClrDataModule,
+        ClrFormsModule,
+        ClrAlertModule,
+        ClrPopoverModule
     ],
-    declarations: [ AppComponent ],
-    bootstrap:    [ AppComponent ]
+    declarations: [AppComponent],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

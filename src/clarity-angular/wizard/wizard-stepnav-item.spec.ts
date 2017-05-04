@@ -10,10 +10,9 @@ import {
     DebugElement,
     AfterContentInit
 } from "@angular/core";
-
+import { ClrWizardModule } from "./wizard.module";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
-import { ClarityModule } from "../clarity.module";
 import { WizardStepnavItem } from "./wizard-stepnav-item";
 import { WizardNavigationService } from "./providers/wizard-navigation";
 import { PageCollectionService } from "./providers/page-collection";
@@ -56,7 +55,7 @@ export default function(): void {
 
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [ ClarityModule.forRoot() ],
+                imports: [ClrWizardModule],
                 declarations: [ TestComponent ],
                 providers: [
                     WizardNavigationService,

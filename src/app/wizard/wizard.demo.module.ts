@@ -6,7 +6,7 @@
 
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ClarityModule } from "../../clarity-angular";
+import { ClarityModule } from "../../clarity-angular/clarity.module";
 import { FormsModule } from "@angular/forms";
 import { ROUTING } from "./wizard.demo.routing";
 import { CodeExample } from "../_utils/code-example";
@@ -29,8 +29,8 @@ import { WizardForceForwardDemo } from "./wizard-force-forward.demo";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule,
         FormsModule,
+        ClarityModule,
         ROUTING
     ],
     declarations: [

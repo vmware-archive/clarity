@@ -12,15 +12,18 @@ import { ROUTING } from "./app.routing";
 
 import { AppComponent } from "./app.component";
 import { LandingComponent } from "./landing.component";
-import { ClarityModule } from "../clarity-angular";
+import { ClarityModule } from "../clarity-angular/clarity.module";
+
+
+
 
 @NgModule({
     imports: [
         BrowserAnimationsModule,
         CommonModule,
         FormsModule,
-        ROUTING,
-        ClarityModule.forRoot()
+        ClarityModule,
+        ROUTING
     ],
     declarations: [
         AppComponent,

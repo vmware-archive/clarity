@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "../../clarity-angular";
+import {ClarityModule} from "../../clarity-angular/clarity.module";
 import {ROUTING} from "./tables.demo.routing";
 import {TablesDemo} from "./tables.demo";
 import {TablesBasicDemo} from "./tables-basic";

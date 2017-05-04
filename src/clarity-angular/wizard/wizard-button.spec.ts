@@ -7,13 +7,13 @@
 import { Component, DebugElement } from "@angular/core";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
-import { ClarityModule } from "../clarity.module";
 import { WizardNavigationService } from "./providers/wizard-navigation";
 import { ButtonHubService } from "./providers/button-hub";
 import { WizardButton, DEFAULT_BUTTON_TYPES, CUSTOM_BUTTON_TYPES } from "./wizard-button";
 import { MockPage } from "./wizard-page.mock";
 import { NavServiceMock } from "./providers/wizard-navigation.mock";
 import { ButtonHubMock } from "./providers/button-hub.mock";
+import { ClrWizardModule } from "./wizard.module";
 
 @Component({
     template: `
@@ -105,7 +105,7 @@ export default function(): void {
                 navService.currentPage = new MockPage(0);
 
                 TestBed.configureTestingModule({
-                    imports: [ ClarityModule.forRoot() ],
+                    imports: [ClrWizardModule ],
                     declarations: [ TestComponent ],
                     providers: [
                         { provide: WizardNavigationService, useValue: navService },
@@ -788,7 +788,7 @@ export default function(): void {
                 navService.currentPage = new MockPage(0);
 
                 TestBed.configureTestingModule({
-                    imports: [ ClarityModule.forRoot() ],
+                    imports: [ClrWizardModule ],
                     declarations: [ ViewTestComponent ],
                     providers: [
                         { provide: WizardNavigationService, useValue: navService },
@@ -934,7 +934,7 @@ export default function(): void {
                 navService.currentPage = new MockPage(0);
 
                 TestBed.configureTestingModule({
-                    imports: [ ClarityModule.forRoot() ],
+                    imports: [ClrWizardModule ],
                     declarations: [ ViewTestComponent ],
                     providers: [
                         { provide: WizardNavigationService, useValue: navService },

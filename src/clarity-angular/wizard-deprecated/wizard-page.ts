@@ -12,7 +12,7 @@ import {
     Output,
     ViewChild
 } from "@angular/core";
-import {TabContent} from "../tabs/tab-content";
+import {TabContent} from "../layout/tabs/tab-content";
 
 @Component({
     selector: "clr-wizard-page-deprecated",

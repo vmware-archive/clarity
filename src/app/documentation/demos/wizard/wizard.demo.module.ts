@@ -14,7 +14,6 @@ import {WizardBasic} from "./wizard-basic.demo";
 import {WizardFormValidation} from "./wizard-form-validation.demo";
 import {WizardAsyncValidation} from "./wizard-async-validation.demo";
 import {WizardNotClosable} from "./wizard-not-closable.demo";
-import {CodeExample} from "./code-example";
 import {WizardOptionsDemo} from "./wizard-options.demo";
 import { WizardNestedDirectiveDemo } from "./wizard-nested-directives.demo";
 import { WizardTitlesDemo } from "./wizard-titles.demo";
@@ -29,6 +28,7 @@ import { WizardAsyncCompletion } from "./wizard-async-completion.demo";
 import {WizardDemo} from "./wizard.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
@@ -36,10 +36,10 @@ import {RouterModule} from "@angular/router";
         ClarityModule.forChild(),
         FormsModule,
         DocWrapperModule,
-        RouterModule
+        RouterModule,
+        UtilsModule
     ],
     declarations: [
-        CodeExample,
         WizardBasic,
         WizardSimple,
         WizardFormValidation,

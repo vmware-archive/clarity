@@ -5,6 +5,15 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<h1>Header 1 (Display)</h1>
+<h2>Header 2 (Headline)</h2>
+<h3>Header 3 (Sub Heading)</h3>
+<h4>Header 4 (Section Heading Level 1)</h4>
+<h5>Header 5 (Category / group label, TOC)</h5>
+<h6>Header 6 (Section Heading Level 2 group label)</h6>
+`;
+
 @Component({
     selector: "clr-typography-headers",
     styleUrls: ["./typography.demo.scss"],
@@ -12,5 +21,5 @@ import {Component} from "@angular/core";
 })
 
 export class TypographyHeadersDemo {
-
+    example = EXAMPLE;
 }

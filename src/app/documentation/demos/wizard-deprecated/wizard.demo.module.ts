@@ -15,11 +15,11 @@ import {WizardDeprecatedBasic} from "./wizard-basic.demo";
 import {WizardDeprecatedFormValidation} from "./wizard-form-validation.demo";
 import {WizardDeprecatedAsyncValidation} from "./wizard-async-validation.demo";
 import {WizardDeprecatedNotClosable} from "./wizard-not-closable.demo";
-import {CodeExample} from "./code-example";
 import {WizardDeprecatedOptionsDemo} from "./wizard-options.demo";
 import {WizardOldDemo} from "./wizard.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
@@ -27,10 +27,10 @@ import {RouterModule} from "@angular/router";
         ClarityModule.forChild(),
         FormsModule,
         DocWrapperModule,
-        RouterModule
+        RouterModule,
+        UtilsModule
     ],
     declarations: [
-        CodeExample,
         WizardDeprecatedBasic,
         WizardDeprecatedSimple,
         WizardDeprecatedFormValidation,

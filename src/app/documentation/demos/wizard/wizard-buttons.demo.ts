@@ -9,7 +9,7 @@ import {CodeHighlight} from "clarity-angular";
 @Component({
     selector: "clr-wizard-default-buttons",
     template: `
-        <clr-example [clrLanguage]="'html'" [clrCode]="html"></clr-example>
+        <clr-code-snippet [clrLanguage]="'html'" [clrCode]="html"></clr-code-snippet>
     `
 })
 export class WizardDefaultButtonsDemo {

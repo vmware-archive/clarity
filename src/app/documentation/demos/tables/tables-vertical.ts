@@ -5,9 +5,42 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<table class="table table-vertical">
+    <tbody>
+        <tr>
+            <th>Basic table</th>
+            <td>.table</td>
+            <td>...</td>
+        </tr>
+        <tr>
+            <th>Left-aligned table cells</th>
+            <td>.left</td>
+            <td>...</td>
+        </tr>
+        <tr>
+            <th>Tables without borders</th>
+            <td>.table-noborder</td>
+            <td>...</td>
+        </tr>
+        <tr>
+            <th>Compact tables</th>
+            <td>.table-compact</td>
+            <td>...</td>
+        </tr>
+        <tr>
+            <th>Vertical tables</th>
+            <td>.table-vertical</td>
+            <td>...</td>
+        </tr>
+    </tbody>
+</table>
+`;
+
 @Component({
     selector: "clr-tables-vertical-demo",
     templateUrl: "./tables-vertical.html"
 })
 export class TablesVerticalDemo {
+    example = EXAMPLE;
 }

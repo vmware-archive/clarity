@@ -26,4 +26,5 @@ const EXAMPLE = `
     templateUrl: "./lists-ul.html"
 })
 export class ListsUlDemo {
+    example = EXAMPLE;
 }

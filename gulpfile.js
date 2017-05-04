@@ -17,7 +17,7 @@ gulp.task('watch', function () {
     return watch('src/releases', function () {
         gulp.src('src/releases')
             .pipe(shell([
-                "npm run generate-release-notes"
+                "node generate-template.js"
             ]));
     });
 });

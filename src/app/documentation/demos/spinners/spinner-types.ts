@@ -5,10 +5,34 @@
  */
 import {Component} from "@angular/core";
 
+const EXAMPLE = `
+<span class="spinner">
+    Loading...
+</span>
+`;
+
+const EXAMPLE1 = `
+<span class="spinner spinner-inline">
+    Loading...
+</span>
+<span>
+    Loading...
+</span>
+`;
+
+const EXAMPLE2 = `
+<span class="spinner spinner-inverse">
+    Loading...
+</span>
+`;
+
 @Component({
     selector: "clr-spinner-types",
     templateUrl: "./spinner-types.html",
     styleUrls: ["./spinner.demo.scss"]
 })
 export class SpinnerTypesDemo {
+    example = EXAMPLE;
+    example1 = EXAMPLE1;
+    example2 = EXAMPLE2;
 }

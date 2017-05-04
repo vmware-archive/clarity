@@ -170,6 +170,141 @@
 
 
 
+<!-- Release Template 0.9.1-->
+
+<ng-template [clrRelease]="'0.9.1'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>
+            Datagrid column resizing
+        </h6>
+        Column resizing is enabled in Datagrid by default now. Users can hover over a separator line that divides adjacent
+        column headers and drag it to resize the column before the dragged separator. It's also possible to bind through the
+        <code class="clr-code">(clrDgColumnResize)</code> directive on <code class="clr-code">clr-dg-column</code> to listen to
+        the resizing event and receive its emitted value which will be the new width size of the column.
+    </li>
+    <li>
+        <h6>Flip Clarity Icons</h6>
+        With 0.9.1, Clarity Icons has introduced an ability to flip icons horizontally and vertically. Usage examples:
+<pre><code clr-code-highlight="language-html" ngNonBindable>
+&#x3C;clr-icon shape=&#x22;floppy&#x22; flip=&#x22;horizontal&#x22;&#x3E;&#x3C;/clr-icon&#x3E;
+&#x3C;clr-icon shape=&#x22;floppy&#x22; flip=&#x22;vertical&#x22;&#x3E;&#x3C;/clr-icon&#x3E;
+</code></pre>
+    </li>
+    <li>
+        <h6>Sketch Template Updated</h6>
+        <a href="assets/images/sketchTemplates/Clarity-Template-0.9.0.sketch" target="_blank">The Clarity sketch template</a> has been updated with the latest changes in 0.9.0.
+    </li>
+    <li>
+        <h6>New Clarity wizard documentation</h6>
+        As the 0.9.0 Clarity wizard moves closer and closer to final, we have added extensive documentation
+        on its functionality and the different ways we have seen it used.
+        <a routerLink="/documentation/wizards">Check out the new wizards documentation</a>!
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Datagrid columns are resizable by dragging.</li>
+    <li>Action bar has been enabled in non-selectable Datagrids.</li>
+    <li>Clarity Icons has added new standard size icons for error, warning, success, and info icons.</li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed a misalignment issue in Datagrid columns with dynamically loaded <code class="clr-code">*clrDgItems</code>.</li>
+    <li bug-fix>Fixed an issue with Checkbox and Radio label alignment.</li>
+    <li bug-fix>Fixed an issue with the content wrapping in the Datagrid footer.</li>
+    <li bug-fix>Fixed an issue with Button Groups in cards.</li>
+</ul>
+
+</ng-template>
+
+
+
+<!-- Release Template 0.8.15-->
+
+<ng-template [clrRelease]="'0.8.15'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Updates to the Datagrid Selection Behavior</h6>
+        <p>Datagrid selection is now preserved when:</p>
+        <ul class="list">
+            <li>The user navigates to a different page in the datagrid</li>
+            <li>The data is updated, provided the smart iterator is used in the datagrid</li>
+        </ul>
+    </li>
+    <li>
+        <h6>Expandable rows for Datagrid</h6>
+        <p>
+            This feature can be used when a Datagrid row has additional data or details
+            that can be shown when interacting with the row. It supports many options, including:
+        </p>
+        <ul class="list">
+            <li>Overall details for the row</li>
+            <li>Per-cell details</li>
+            <li>Replacing the original row rather than expand under it</li>
+            <li>Lazy-loading of details</li>
+        </ul>
+        <p>Here is an example of how to make a row expandable:</p>
+        <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-dg-row *clrDgItems=&quot;let user of users&quot;&gt;
+    &lt;clr-dg-cell&gt;{{user.id}}&lt;/clr-dg-cell&gt;
+    &lt;clr-dg-cell&gt;{{user.name}}&lt;/clr-dg-cell&gt;
+
+    &lt;clr-dg-row-detail *clrIfExpanded&gt;
+        This user likes ducks.
+    &lt;/clr-dg-row-detail&gt;
+&lt;/clr-dg-row&gt;</code></pre>
+
+        <p>
+        If you include the same amount of <code class="clr-code">&lt;clr-dg-cell&gt;</code>
+        elements in the row details as anywhere else in the datagrid, they will properly align
+        as a way to display details for each cell individually.
+        Details are only instantiated when the row becomes expanded, so they are naturally lazy loaded: just make any AJAX
+        call you need in the constructor or <code class="clr-code">ngOnInit()</code> of the component you put inside the
+        <code class="clr-code">*clrIfExpanded</code> structural directive.
+        To notify us that you want a spinner to be displayed while lazy loading, just include a
+        <code class="clr-code">[clrLoading]="myLoadingBoolean"</code> anywhere inside the details or even the row itself.
+        As long as <code class="clr-code">myLoadingBoolean</code> is true, a spinner will be displayed.
+        </p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed the click event listener for buttons inside of a button group.</li>
+    <li bug-fix>Fixed animation to value 0 in progress bars in webkit.</li>
+    <li bug-fix>Separators for clr-dg-column components have been correctly positioned.</li>
+</ul>
+
+</ng-template>
+
+
+
+<!-- Release Template 0.8.16-->
+
+<ng-template [clrRelease]="'0.8.16'">
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Datagrid action bar has been enabled in non-selectable Datagrids.</li>
+</ul>
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed an issue with checkbox and radio label alignment.</li>
+    <li bug-fix>Fixed an issue with the content wrapping in the datagrid footer.</li>
+    <li bug-fix>Fixed an issue with button groups in cards.</li>
+</ul>
+
+</ng-template>
+
+
+
 <!-- Release Template 0.9.0-->
 
 <ng-template [clrRelease]="'0.9.0'">
@@ -626,79 +761,6 @@
 
 
 
-<!-- Release Template 0.9.1-->
-
-<ng-template [clrRelease]="'0.9.1'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>
-            Datagrid column resizing
-        </h6>
-        Column resizing is enabled in Datagrid by default now. Users can hover over a separator line that divides adjacent
-        column headers and drag it to resize the column before the dragged separator. It's also possible to bind through the
-        <code class="clr-code">(clrDgColumnResize)</code> directive on <code class="clr-code">clr-dg-column</code> to listen to
-        the resizing event and receive its emitted value which will be the new width size of the column.
-    </li>
-    <li>
-        <h6>Flip Clarity Icons</h6>
-        With 0.9.1, Clarity Icons has introduced an ability to flip icons horizontally and vertically. Usage examples:
-<pre><code clr-code-highlight="language-html" ngNonBindable>
-&#x3C;clr-icon shape=&#x22;floppy&#x22; flip=&#x22;horizontal&#x22;&#x3E;&#x3C;/clr-icon&#x3E;
-&#x3C;clr-icon shape=&#x22;floppy&#x22; flip=&#x22;vertical&#x22;&#x3E;&#x3C;/clr-icon&#x3E;
-</code></pre>
-    </li>
-    <li>
-        <h6>Sketch Template Updated</h6>
-        <a href="assets/images/sketchTemplates/Clarity-Template-0.9.0.sketch" target="_blank">The Clarity sketch template</a> has been updated with the latest changes in 0.9.0.
-    </li>
-    <li>
-        <h6>New Clarity wizard documentation</h6>
-        As the 0.9.0 Clarity wizard moves closer and closer to final, we have added extensive documentation
-        on its functionality and the different ways we have seen it used.
-        <a routerLink="/documentation/wizards">Check out the new wizards documentation</a>!
-    </li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>Datagrid columns are resizable by dragging.</li>
-    <li>Action bar has been enabled in non-selectable Datagrids.</li>
-    <li>Clarity Icons has added new standard size icons for error, warning, success, and info icons.</li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Fixed a misalignment issue in Datagrid columns with dynamically loaded <code class="clr-code">*clrDgItems</code>.</li>
-    <li bug-fix>Fixed an issue with Checkbox and Radio label alignment.</li>
-    <li bug-fix>Fixed an issue with the content wrapping in the Datagrid footer.</li>
-    <li bug-fix>Fixed an issue with Button Groups in cards.</li>
-</ul>
-
-</ng-template>
-
-
-
-<!-- Release Template 0.8.16-->
-
-<ng-template [clrRelease]="'0.8.16'">
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>Datagrid action bar has been enabled in non-selectable Datagrids.</li>
-</ul>
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Fixed an issue with checkbox and radio label alignment.</li>
-    <li bug-fix>Fixed an issue with the content wrapping in the datagrid footer.</li>
-    <li bug-fix>Fixed an issue with button groups in cards.</li>
-</ul>
-
-</ng-template>
-
-
-
 <!-- Release Template 0.8.13-->
 
 <ng-template [clrRelease]="'0.8.13'">
@@ -732,106 +794,6 @@
     </li>
 </ul>
 
-</ng-template>
-
-
-
-<!-- Release Template 0.8.15-->
-
-<ng-template [clrRelease]="'0.8.15'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Updates to the Datagrid Selection Behavior</h6>
-        <p>Datagrid selection is now preserved when:</p>
-        <ul class="list">
-            <li>The user navigates to a different page in the datagrid</li>
-            <li>The data is updated, provided the smart iterator is used in the datagrid</li>
-        </ul>
-    </li>
-    <li>
-        <h6>Expandable rows for Datagrid</h6>
-        <p>
-            This feature can be used when a Datagrid row has additional data or details
-            that can be shown when interacting with the row. It supports many options, including:
-        </p>
-        <ul class="list">
-            <li>Overall details for the row</li>
-            <li>Per-cell details</li>
-            <li>Replacing the original row rather than expand under it</li>
-            <li>Lazy-loading of details</li>
-        </ul>
-        <p>Here is an example of how to make a row expandable:</p>
-        <pre><code clr-code-highlight="language-html" ngNonBindable>
-&lt;clr-dg-row *clrDgItems=&quot;let user of users&quot;&gt;
-    &lt;clr-dg-cell&gt;{{user.id}}&lt;/clr-dg-cell&gt;
-    &lt;clr-dg-cell&gt;{{user.name}}&lt;/clr-dg-cell&gt;
-
-    &lt;clr-dg-row-detail *clrIfExpanded&gt;
-        This user likes ducks.
-    &lt;/clr-dg-row-detail&gt;
-&lt;/clr-dg-row&gt;</code></pre>
-
-        <p>
-        If you include the same amount of <code class="clr-code">&lt;clr-dg-cell&gt;</code>
-        elements in the row details as anywhere else in the datagrid, they will properly align
-        as a way to display details for each cell individually.
-        Details are only instantiated when the row becomes expanded, so they are naturally lazy loaded: just make any AJAX
-        call you need in the constructor or <code class="clr-code">ngOnInit()</code> of the component you put inside the
-        <code class="clr-code">*clrIfExpanded</code> structural directive.
-        To notify us that you want a spinner to be displayed while lazy loading, just include a
-        <code class="clr-code">[clrLoading]="myLoadingBoolean"</code> anywhere inside the details or even the row itself.
-        As long as <code class="clr-code">myLoadingBoolean</code> is true, a spinner will be displayed.
-        </p>
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Fixed the click event listener for buttons inside of a button group.</li>
-    <li bug-fix>Fixed animation to value 0 in progress bars in webkit.</li>
-    <li bug-fix>Separators for clr-dg-column components have been correctly positioned.</li>
-</ul>
-
-</ng-template>
-
-
-
-<!-- Release Template 0.8.11-->
-
-<ng-template [clrRelease]="'0.8.11'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>
-            New icons for Clarity Icons
-        </h6>
-        <p>
-            With 0.8.11, Clarity has introduced new icons such as id-badge, tablet, credit-card, certificate etc.
-        </p>
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>
-        Fixed an import issue with SASS imports.
-        This fix reduces the size from 770KB to around 357KB.
-        We are looking to optimize the CSS further.
-    </li>
-    <li bug-fix>
-        Fixed an overflow bug with responsive layout on Firefox
-    </li>
-    <li bug-fix>
-        Fixed an issue with the grid gutter width.
-    </li>
-    <li bug-fix>
-        Fixed the regression issue introduced when adding two-way binding to datagrid filters. This fix unwraps data
-        returned from DatagridPropertyStringFilter and testing around it.
-    </li>
-</ul>
 </ng-template>
 
 
@@ -887,53 +849,6 @@
         Fixed an issue with the datagrid filter positioning
     </li>
 </ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.8.9-->
-
-<ng-template [clrRelease]="'0.8.9'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Datagrid: Two-way binding and default values on filtered state</h6>
-        <p>Added two way binding to filter values for both <code class="clr-code">&lt;clr-dg-column&gt;</code>
-            and <code class="clr-code">&lt;dclr-dg-string-filter&gt;</code>. They now offer the
-            <code class="clr-code">[(clrFilterValue)]</code> property to bind to.</p>
-    </li>
-    <li>
-        <h6>Datagrid: Two-way binding on the sorted state of a column</h6>
-        <p>
-            <code class="clr-code">&lt;clr-dg-column&gt;</code> now offers a <code class="clr-code">[(clrDgSorted)]</code>
-            two-way binding to dynamically force a column to be sorted or not,
-            typically on initialization. It also lets consumers know at all
-            time if a column is sorted or not.
-        </p>
-    </li>
-    <li>
-        <h6>Datagrid: Single selection</h6>
-        <p>Added an option for single selection mode in datagrid.
-            Use <code class="clr-code">[(clrDgSingleSelected)]</code> to
-            use this feature.
-        </p>
-    </li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>
-        Moved component styles for form fields from <code class="clr-code">forms.clarity.scss</code>
-        into their own separate files.
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Updated datagrid component to support AOT.</li>
-</ul>
-
 </ng-template>
 
 
@@ -1013,6 +928,91 @@
     <li>Cleaned up sidenav's collapsible item to not rely on position property.</li>
     <li>Added Clarity style to radio buttons in datagrid.</li>
 </ul>
+</ng-template>
+
+
+
+<!-- Release Template 0.8.11-->
+
+<ng-template [clrRelease]="'0.8.11'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>
+            New icons for Clarity Icons
+        </h6>
+        <p>
+            With 0.8.11, Clarity has introduced new icons such as id-badge, tablet, credit-card, certificate etc.
+        </p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Fixed an import issue with SASS imports.
+        This fix reduces the size from 770KB to around 357KB.
+        We are looking to optimize the CSS further.
+    </li>
+    <li bug-fix>
+        Fixed an overflow bug with responsive layout on Firefox
+    </li>
+    <li bug-fix>
+        Fixed an issue with the grid gutter width.
+    </li>
+    <li bug-fix>
+        Fixed the regression issue introduced when adding two-way binding to datagrid filters. This fix unwraps data
+        returned from DatagridPropertyStringFilter and testing around it.
+    </li>
+</ul>
+</ng-template>
+
+
+
+<!-- Release Template 0.8.9-->
+
+<ng-template [clrRelease]="'0.8.9'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Datagrid: Two-way binding and default values on filtered state</h6>
+        <p>Added two way binding to filter values for both <code class="clr-code">&lt;clr-dg-column&gt;</code>
+            and <code class="clr-code">&lt;dclr-dg-string-filter&gt;</code>. They now offer the
+            <code class="clr-code">[(clrFilterValue)]</code> property to bind to.</p>
+    </li>
+    <li>
+        <h6>Datagrid: Two-way binding on the sorted state of a column</h6>
+        <p>
+            <code class="clr-code">&lt;clr-dg-column&gt;</code> now offers a <code class="clr-code">[(clrDgSorted)]</code>
+            two-way binding to dynamically force a column to be sorted or not,
+            typically on initialization. It also lets consumers know at all
+            time if a column is sorted or not.
+        </p>
+    </li>
+    <li>
+        <h6>Datagrid: Single selection</h6>
+        <p>Added an option for single selection mode in datagrid.
+            Use <code class="clr-code">[(clrDgSingleSelected)]</code> to
+            use this feature.
+        </p>
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>
+        Moved component styles for form fields from <code class="clr-code">forms.clarity.scss</code>
+        into their own separate files.
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Updated datagrid component to support AOT.</li>
+</ul>
+
 </ng-template>
 
 
@@ -1109,6 +1109,49 @@
 
 
 
+<!-- Release Template 0.8.5-->
+
+<ng-template [clrRelease]="'0.8.5'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>New icons for Clarity Icons</h6>
+        <p>
+            With 0.8.5, Clarity has introduced new icons such as
+            <code class="clr-code">tags</code>, <code class="clr-code">clock</code>, <code class="clr-code">floppy</code>,
+            <code class="clr-code">ellipses-vertical</code>, <code class="clr-code">ellipses-horizontal</code>,
+            and <code class="clr-code">bank</code>.
+        </p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed an issue with icon colors</li>
+    <li bug-fix>Removed active style for focused anchor tag.</li>
+    <li bug-fix>Renamed a Tree CSS regression test to fix the Windows directory name issue.</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>
+        Added Unit Tests for Clarity Icons.
+    </li>
+    <li>
+        Exposed a method to allow manual refresh of datagrids.
+    </li>
+    <li>
+        Updated .btn font-weight to 500
+    </li>
+    <li>
+        Increased contrast of cards
+    </li>
+</ul>
+</ng-template>
+
+
+
 <!-- Release Template 0.8.4-->
 
 <ng-template [clrRelease]="'0.8.4'">
@@ -1181,49 +1224,6 @@
     </li>
     <li>
         Optimized RxJS imports.
-    </li>
-</ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.8.5-->
-
-<ng-template [clrRelease]="'0.8.5'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>New icons for Clarity Icons</h6>
-        <p>
-            With 0.8.5, Clarity has introduced new icons such as
-            <code class="clr-code">tags</code>, <code class="clr-code">clock</code>, <code class="clr-code">floppy</code>,
-            <code class="clr-code">ellipses-vertical</code>, <code class="clr-code">ellipses-horizontal</code>,
-            and <code class="clr-code">bank</code>.
-        </p>
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Fixed an issue with icon colors</li>
-    <li bug-fix>Removed active style for focused anchor tag.</li>
-    <li bug-fix>Renamed a Tree CSS regression test to fix the Windows directory name issue.</li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>
-        Added Unit Tests for Clarity Icons.
-    </li>
-    <li>
-        Exposed a method to allow manual refresh of datagrids.
-    </li>
-    <li>
-        Updated .btn font-weight to 500
-    </li>
-    <li>
-        Increased contrast of cards
     </li>
 </ul>
 </ng-template>
@@ -1352,18 +1352,6 @@ import 	&#123; ClarityIcons &#125; from "clarity-icons"
 <ul class="list">
     <li>Updated coding guidelines with <code class="clr-code">clr-</code> prefix guidelines.</li>
     <li>Added proper exporting for Stack View components.</li>
-</ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.7.6-->
-
-<ng-template [clrRelease]="'0.7.6'">
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>[ui] Backport issue #304 - adds style for input types: tel, date</li>
 </ul>
 </ng-template>
 
@@ -1523,6 +1511,78 @@ export class AppModule &#123;    &#125;
 
 
 
+<!-- Release Template 0.7.6-->
+
+<ng-template [clrRelease]="'0.7.6'">
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>[ui] Backport issue #304 - adds style for input types: tel, date</li>
+</ul>
+</ng-template>
+
+
+
+<!-- Release Template 0.7.5-->
+
+<ng-template [clrRelease]="'0.7.5'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Added Clarity Icon variants architecture</h6>
+        <p>
+            Clarity Icons have been refactored to handle outlined, solid, badged, and alerted icon variants. The CSS for the icon styles and paths has also been re-architected to support a SuitCSS/BEM naming convention. Stay tuned as we begin updating our library
+            of icons and documentation to support these new features!
+        </p>
+    </li>
+    <li>
+        <h6>Added Icons support in Clarity buttons</h6>
+        <p>Clarity buttons now support Clarity Icons. The following is an example of using Icons in buttons:</p>
+        <pre><code clr-code-highlight="language-html">
+&lt;button class=&quot;btn btn-primary&quot;&gt;
+    &lt;clr-icon shape=&quot;cog&quot;&gt;&lt;/clr-icon&gt;
+    Settings
+&lt;/button&gt;
+</code></pre>
+    </li>
+    <li>
+        <h6>Added new icons in Clarity Icons</h6>
+        <p>
+            Clarity Icons now includes new icon shapes such as
+            <code class="clr-code">view-list</code>, <code class="clr-code">view-cards</code>,
+            <code class="clr-code">view-columns</code>, and <code class="clr-code">host</code>.
+        </p>
+    </li>
+    <li>
+        <h6>Added indeterminate state to checkboxes</h6>
+        <p>
+            Checkboxes for both Clarity-UI and Clarity-Angular now support an indeterminate state.
+        </p>
+    </li>
+    <li>
+        <h6>Added CSS regression testing to Clarity's repo</h6>
+        <p>
+            Added CSS regression testing using <a href="https://gemini-testing.github.io/">Gemini</a> to test Clarity components.
+        </p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed text dropdowns in the header actions section of the header</li>
+    <li bug-fix>Fixed bug where validated inputs didn’t occupy 100% of the width on smaller screens</li>
+    <li bug-fix>Updated <code class="clr-code">pre</code> style to have newlines by default</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul>
+    <li>Added Template-Driven and Model-Drive/Reactive approaches to handling Clarity forms</li>
+</ul>
+</ng-template>
+
+
+
 <!-- Release Template 0.7.4-->
 
 <ng-template [clrRelease]="'0.7.4'">
@@ -1625,104 +1685,6 @@ export class AppModule &#123;    &#125;
 
 
 
-<!-- Release Template 0.7.5-->
-
-<ng-template [clrRelease]="'0.7.5'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Added Clarity Icon variants architecture</h6>
-        <p>
-            Clarity Icons have been refactored to handle outlined, solid, badged, and alerted icon variants. The CSS for the icon styles and paths has also been re-architected to support a SuitCSS/BEM naming convention. Stay tuned as we begin updating our library
-            of icons and documentation to support these new features!
-        </p>
-    </li>
-    <li>
-        <h6>Added Icons support in Clarity buttons</h6>
-        <p>Clarity buttons now support Clarity Icons. The following is an example of using Icons in buttons:</p>
-        <pre><code clr-code-highlight="language-html">
-&lt;button class=&quot;btn btn-primary&quot;&gt;
-    &lt;clr-icon shape=&quot;cog&quot;&gt;&lt;/clr-icon&gt;
-    Settings
-&lt;/button&gt;
-</code></pre>
-    </li>
-    <li>
-        <h6>Added new icons in Clarity Icons</h6>
-        <p>
-            Clarity Icons now includes new icon shapes such as
-            <code class="clr-code">view-list</code>, <code class="clr-code">view-cards</code>,
-            <code class="clr-code">view-columns</code>, and <code class="clr-code">host</code>.
-        </p>
-    </li>
-    <li>
-        <h6>Added indeterminate state to checkboxes</h6>
-        <p>
-            Checkboxes for both Clarity-UI and Clarity-Angular now support an indeterminate state.
-        </p>
-    </li>
-    <li>
-        <h6>Added CSS regression testing to Clarity's repo</h6>
-        <p>
-            Added CSS regression testing using <a href="https://gemini-testing.github.io/">Gemini</a> to test Clarity components.
-        </p>
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Fixed text dropdowns in the header actions section of the header</li>
-    <li bug-fix>Fixed bug where validated inputs didn’t occupy 100% of the width on smaller screens</li>
-    <li bug-fix>Updated <code class="clr-code">pre</code> style to have newlines by default</li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul>
-    <li>Added Template-Driven and Model-Drive/Reactive approaches to handling Clarity forms</li>
-</ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.7.2-->
-
-<ng-template [clrRelease]="'0.7.2'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Core icon set for Clarity Icons</h6>
-        <p>
-            With 0.7.2, Clarity has released <a routerLink="/documentation/iconography">a core
-            set of 50 icons</a>. In addition, the orientation of icons can now be adjusted by using the <code class="clr-code">dir</code> attribute or appending the direction to the existing <code class="clr-code">shape</code> attribute.
-        </p>
-    </li>
-    <li>
-        <h6>Sketch template updated to 0.7</h6>
-        <p>
-            The Clarity Sketch template has been updated to 0.7. With the latest release, Sketch template has been rebuilt from the ground up to improve organization and presentation of the components.
-        </p>
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Fixed change detection for smart iterators on datagrid</li>
-    <li bug-fix>Unnecessary log messages removed from the datagrid</li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul>
-    <li>Added placeholder for empty state on data grids</li>
-    <li>Sketch template link added to website homepage</li>
-    <li>Coding guidelines added to github repo</li>
-    <li>Various website enhancements and bug fixes</li>
-</ul>
-</ng-template>
-
-
-
 <!-- Release Template 0.7.1-->
 
 <ng-template [clrRelease]="'0.7.1'">
@@ -1768,14 +1730,39 @@ export class AppModule &#123;    &#125;
 
 
 
-<!-- Release Template 0.6.4-->
+<!-- Release Template 0.7.2-->
 
-<ng-template [clrRelease]="'0.6.4'">
+<ng-template [clrRelease]="'0.7.2'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Core icon set for Clarity Icons</h6>
+        <p>
+            With 0.7.2, Clarity has released <a routerLink="/documentation/iconography">a core
+            set of 50 icons</a>. In addition, the orientation of icons can now be adjusted by using the <code class="clr-code">dir</code> attribute or appending the direction to the existing <code class="clr-code">shape</code> attribute.
+        </p>
+    </li>
+    <li>
+        <h6>Sketch template updated to 0.7</h6>
+        <p>
+            The Clarity Sketch template has been updated to 0.7. With the latest release, Sketch template has been rebuilt from the ground up to improve organization and presentation of the components.
+        </p>
+    </li>
+</ul>
 
 <h2>Bug Fixes</h2>
 <ul class="list">
-    <li bug-fix>Removed Dropdown Menu close transition to eliminate the delay when the dropdown menu was closed</li>
-    <li bug-fix>Replaced the SVG for the login background to use inline styles instead of the style tag to fix the IE 11 - Windows 10 issue with login backgrounds</li>
+    <li bug-fix>Fixed change detection for smart iterators on datagrid</li>
+    <li bug-fix>Unnecessary log messages removed from the datagrid</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul>
+    <li>Added placeholder for empty state on data grids</li>
+    <li>Sketch template link added to website homepage</li>
+    <li>Coding guidelines added to github repo</li>
+    <li>Various website enhancements and bug fixes</li>
 </ul>
 </ng-template>
 
@@ -1940,6 +1927,19 @@ export class AppModule &#123;    &#125;
 
 
 
+<!-- Release Template 0.6.4-->
+
+<ng-template [clrRelease]="'0.6.4'">
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Removed Dropdown Menu close transition to eliminate the delay when the dropdown menu was closed</li>
+    <li bug-fix>Replaced the SVG for the login background to use inline styles instead of the style tag to fix the IE 11 - Windows 10 issue with login backgrounds</li>
+</ul>
+</ng-template>
+
+
+
 <!-- Release Template 0.6.3-->
 
 <ng-template [clrRelease]="'0.6.3'">
@@ -1953,6 +1953,59 @@ export class AppModule &#123;    &#125;
     <li bug-fix>Hid the branding icon on tablet-sized and smaller screens</li>
     <li bug-fix>Fixed an issue with alignment and cursors on responsive nav triggers</li>
     <li bug-fix>Fixed a vertical alignment issue in small alerts</li>
+</ul>
+</ng-template>
+
+
+
+<!-- Release Template 0.6.2-->
+
+<ng-template [clrRelease]="'0.6.2'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Added size attribute to Clarity Icons</h6>
+        <p>
+            You can now set an icon size through <code class="clr-code">size</code> attribute. The sizes set through <code class="clr-code">size</code> attribute overrides the CSS size style. If you don't set either the size attribute or the CSS size
+            style, the size defaults to 16 by 16 pixels.
+        </p>
+        <pre><code clr-code-highlight="language-html">
+&lt;clr-icon shape=&quot;info&quot; size=&quot;12&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;info&quot; size=&quot;16&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;info&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;info&quot; size=&quot;48&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;info&quot; size=&quot;64&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;info&quot; size=&quot;72&quot;&gt;&lt;/clr-icon&gt;
+</code></pre>
+        <div class="alert alert-warning">
+            <div class="alert-item">
+                <span class="alert-text">
+                    Please note that <code class="clr-code">.icon-size-[sm/md/lg]</code> classes
+                    are being deprecated and will be removed in 0.8.0.
+                </span>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed issue with Clarity Icons throwing an error in IE10 </li>
+    <li bug-fix>Cleaned up checkbox positioning so it is more resilient to positioning and size modifications</li>
+    <li bug-fix>Fixed scrolling issue with website on iOS</li>
+    <li bug-fix>Fixed broken links and image paths from website navigation rearchitecture for github-pages</li>
+    <li bug-fix>Fixed vertical alignment issue with alerts</li>
+    <li bug-fix>Corrected a margin issue with link/flat buttons in forms</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Updated TravisCI and added steps to github workflow</li>
+    <li>Created Angular component for checkboxes — documentation coming soon</li>
+    <li>Implemented website homepage redesign</li>
+    <li>Continued cleanup of website content</li>
+    <li>Improved installation instructions for Clarity Icons, Clarity UI, and Clarity Angular</li>
 </ul>
 </ng-template>
 
@@ -2068,59 +2121,6 @@ export class AppModule &#123;    &#125;
 
 
 
-<!-- Release Template 0.6.2-->
-
-<ng-template [clrRelease]="'0.6.2'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Added size attribute to Clarity Icons</h6>
-        <p>
-            You can now set an icon size through <code class="clr-code">size</code> attribute. The sizes set through <code class="clr-code">size</code> attribute overrides the CSS size style. If you don't set either the size attribute or the CSS size
-            style, the size defaults to 16 by 16 pixels.
-        </p>
-        <pre><code clr-code-highlight="language-html">
-&lt;clr-icon shape=&quot;info&quot; size=&quot;12&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; size=&quot;16&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; size=&quot;48&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; size=&quot;64&quot;&gt;&lt;/clr-icon&gt;
-&lt;clr-icon shape=&quot;info&quot; size=&quot;72&quot;&gt;&lt;/clr-icon&gt;
-</code></pre>
-        <div class="alert alert-warning">
-            <div class="alert-item">
-                <span class="alert-text">
-                    Please note that <code class="clr-code">.icon-size-[sm/md/lg]</code> classes
-                    are being deprecated and will be removed in 0.8.0.
-                </span>
-            </div>
-        </div>
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Fixed issue with Clarity Icons throwing an error in IE10 </li>
-    <li bug-fix>Cleaned up checkbox positioning so it is more resilient to positioning and size modifications</li>
-    <li bug-fix>Fixed scrolling issue with website on iOS</li>
-    <li bug-fix>Fixed broken links and image paths from website navigation rearchitecture for github-pages</li>
-    <li bug-fix>Fixed vertical alignment issue with alerts</li>
-    <li bug-fix>Corrected a margin issue with link/flat buttons in forms</li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>Updated TravisCI and added steps to github workflow</li>
-    <li>Created Angular component for checkboxes — documentation coming soon</li>
-    <li>Implemented website homepage redesign</li>
-    <li>Continued cleanup of website content</li>
-    <li>Improved installation instructions for Clarity Icons, Clarity UI, and Clarity Angular</li>
-</ul>
-</ng-template>
-
-
-
 <!-- Release Template 0.6.0-->
 
 <ng-template [clrRelease]="'0.6.0'">
@@ -2197,49 +2197,6 @@ export class AppModule &#123;    &#125;
 <h2>Bug Fixes</h2>
 <ul class="list">
     <li bug-fix>Fixed issue with Clarity Icon dependencies</li>
-</ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.5.3-->
-
-<ng-template [clrRelease]="'0.5.3'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li new-component>
-        <h6>Wizard Component</h6>
-        <p>
-            0.5.3 includes a new Angular component - Wizards. A wizard can be created using the following markup:
-        </p>
-        <pre><code clr-code-highlight="language-html">
-&lt;clr-wizard #wizard [(clrWizardOpen)]=&quot;open&quot; [clrWizardSize]=&quot;'lg'&quot;&gt;
-    &lt;div class=&quot;wizard-title&quot;&gt;Wizard Title&lt;/div&gt;
-
-    &lt;clr-wizard-step&gt;Step 1&lt;/clr-wizard-step&gt;
-    &lt;clr-wizard-step&gt;Step 2&lt;/clr-wizard-step&gt;
-    &lt;clr-wizard-step&gt;Step 3&lt;/clr-wizard-step&gt;
-
-    &lt;clr-wizard-page&gt;Content for step 1&lt;/clr-wizard-page&gt;
-    &lt;clr-wizard-page&gt;Content for step 2&lt;/clr-wizard-page&gt;
-    &lt;clr-wizard-page&gt;Content for step 3&lt;/clr-wizard-page&gt;
-&lt;/clr-wizard&gt;
-</code></pre>
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Inverse button: disabled inverse button is too dark</li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>Documentation for Wizard Component</li>
-    <li>Add spinner component size variations</li>
-    <li>Restructure the left side navigation on the components page of the website</li>
-    <li>Improvements to the login page component</li>
 </ul>
 </ng-template>
 
@@ -2351,6 +2308,49 @@ export class AppModule &#123;    &#125;
 
 
 
+<!-- Release Template 0.5.3-->
+
+<ng-template [clrRelease]="'0.5.3'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li new-component>
+        <h6>Wizard Component</h6>
+        <p>
+            0.5.3 includes a new Angular component - Wizards. A wizard can be created using the following markup:
+        </p>
+        <pre><code clr-code-highlight="language-html">
+&lt;clr-wizard #wizard [(clrWizardOpen)]=&quot;open&quot; [clrWizardSize]=&quot;'lg'&quot;&gt;
+    &lt;div class=&quot;wizard-title&quot;&gt;Wizard Title&lt;/div&gt;
+
+    &lt;clr-wizard-step&gt;Step 1&lt;/clr-wizard-step&gt;
+    &lt;clr-wizard-step&gt;Step 2&lt;/clr-wizard-step&gt;
+    &lt;clr-wizard-step&gt;Step 3&lt;/clr-wizard-step&gt;
+
+    &lt;clr-wizard-page&gt;Content for step 1&lt;/clr-wizard-page&gt;
+    &lt;clr-wizard-page&gt;Content for step 2&lt;/clr-wizard-page&gt;
+    &lt;clr-wizard-page&gt;Content for step 3&lt;/clr-wizard-page&gt;
+&lt;/clr-wizard&gt;
+</code></pre>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Inverse button: disabled inverse button is too dark</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Documentation for Wizard Component</li>
+    <li>Add spinner component size variations</li>
+    <li>Restructure the left side navigation on the components page of the website</li>
+    <li>Improvements to the login page component</li>
+</ul>
+</ng-template>
+
+
+
 <!-- Release Template 0.5.2-->
 
 <ng-template [clrRelease]="'0.5.2'">
@@ -2369,6 +2369,46 @@ export class AppModule &#123;    &#125;
             Various updates of the Clarity Sketch template to keep it in sync with Clarity 0.5.0.
         </p>
     </li>
+</ul>
+</ng-template>
+
+
+
+<!-- Release Template 0.5.1-->
+
+<ng-template [clrRelease]="'0.5.1'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Stack View Editor: Implement HTML/CSS to indicate that a value has been changed</h6>
+        <p>
+            Stack View now has a new option <code class="clr-code">clrSbNotifyChange</code> which can be added on a stack block. When the option is set to <code class="clr-code">true</code>, an inidicator showing an update is shown on the stack block.
+        </p>
+    </li>
+    <li>
+        <h6>Implement HTML/CSS for an XL Clarity modal</h6>
+        <p>Clarity Modals now supports an additional size - xl using the <code class="clr-code">.modal-xl</code>. The size can also be set on the modal angular component using the <code class="clr-code">clrModalSize</code> option.</p>
+        <pre><code clr-code-highlight="language-html">
+&lt;clr-modal [(clrModalOpen)]=&quot;::boolean::&quot; [clrModalSize]=&quot;'xl'&quot;&gt;
+</code></pre>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Modal animation backdrop is sliding</li>
+    <li bug-fix>Add font-family declaration to body tag</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Implement and document new row selection color</li>
+    <li>Update website to use Angular 2.0.0</li>
+    <li>Documentation - Buttons</li>
+    <li>Export demo components in Clarity</li>
+    <li>Document Vertical Spacing Between Components</li>
+    <li>Add a date to Release Notes on web</li>
 </ul>
 </ng-template>
 
@@ -2458,41 +2498,15 @@ export class AppModule &#123;
 
 
 
-<!-- Release Template 0.5.1-->
+<!-- Release Template 0.4.3-->
 
-<ng-template [clrRelease]="'0.5.1'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Stack View Editor: Implement HTML/CSS to indicate that a value has been changed</h6>
-        <p>
-            Stack View now has a new option <code class="clr-code">clrSbNotifyChange</code> which can be added on a stack block. When the option is set to <code class="clr-code">true</code>, an inidicator showing an update is shown on the stack block.
-        </p>
-    </li>
-    <li>
-        <h6>Implement HTML/CSS for an XL Clarity modal</h6>
-        <p>Clarity Modals now supports an additional size - xl using the <code class="clr-code">.modal-xl</code>. The size can also be set on the modal angular component using the <code class="clr-code">clrModalSize</code> option.</p>
-        <pre><code clr-code-highlight="language-html">
-&lt;clr-modal [(clrModalOpen)]=&quot;::boolean::&quot; [clrModalSize]=&quot;'xl'&quot;&gt;
-</code></pre>
-    </li>
-</ul>
+<ng-template [clrRelease]="'0.4.3'">
 
 <h2>Bug Fixes</h2>
 <ul class="list">
-    <li bug-fix>Modal animation backdrop is sliding</li>
-    <li bug-fix>Add font-family declaration to body tag</li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>Implement and document new row selection color</li>
-    <li>Update website to use Angular 2.0.0</li>
-    <li>Documentation - Buttons</li>
-    <li>Export demo components in Clarity</li>
-    <li>Document Vertical Spacing Between Components</li>
-    <li>Add a date to Release Notes on web</li>
+    <li bug-fix>
+        Add font-family declaration to body tag
+    </li>
 </ul>
 </ng-template>
 
@@ -2543,164 +2557,6 @@ export class AppModule &#123;
 <ul class="list">
     <li>Revisit Clarity Color Usage</li>
     <li>Refactor buttons code</li>
-</ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.4.3-->
-
-<ng-template [clrRelease]="'0.4.3'">
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>
-        Add font-family declaration to body tag
-    </li>
-</ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.4.0-->
-
-<ng-template [clrRelease]="'0.4.0'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Add SASS mixin to target problematic browsers</h6>
-        <p>
-            The <code class="clr-code">fixForFirefox</code>, <code class="clr-code">fixForMsEdge</code>,
-            <code class="clr-code">fixForIE10AndUp</code>, and <code class="clr-code">fixForIE11AndUp</code> SASS mixins were added to <code class="clr-code">clarity/utils/helpers.clarity.scss</code>. These mixins allow us to target CSS fixes to specific
-            browsers.
-        </p>
-    </li>
-</ul>
-
-<h2>Breaking Changes</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li breaking-change>
-        <h6>Update Clarity to use BS4 alpha 3</h6>
-        <p>
-            Clarity has been upgraded to use BS4 Alpha 3. This allows users of Clarity to take advantage of the new BS for functionality with the flex box grid. With Alpha 3, BS4 rewrote some of the classnames related to their grid. Users of Clarity who were using
-            Push, pull, offset classes May need to replace the old class names with the new format. More information is available in the
-            <a href="http://v4-alpha.getbootstrap.com/layout/grid/#example-offsetting-columns" target="_blank">BS4 documentation</a>.
-        </p>
-    </li>
-    <li breaking-change>
-        <h6>Cleanup baselineRem() and rpx() SASS function calls</h6>
-        <p>
-            The <code class="clr-code">rpx()</code> SASS function has been removed from Clarity. Make sure to replace it with a measurement in pixels. For example, <code class="clr-code">padding-top: rpx(2)</code> would become <code class="clr-code">padding-top: 2px</code>.
-        </p>
-    </li>
-    <li breaking-change>
-        <h6>Typography updates - Implementation: HTML/CSS</h6>
-        <p>
-            Clarity's typography has been completely redone. It is imperative that all applications upgrading to 0.4.0 verify any customizations they had previously made to Clarity's font specs. Our own internal upgrades involved minimal changes to existing CSS overrides.
-            Nevertheless, Clarity strongly advises all users to visually check their applications after upgrading.
-        </p>
-        <p>
-            More information on SASS/SCSS convenience functions that have been added to Clarity to assist with the use of typography can be found in the typography documentation.
-        </p>
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>
-        Vertical alignment issue with the labels in Firefox
-    </li>
-    <li bug-fix>
-        Row arrow alignment issue with stack views in Firefox and IE
-    </li>
-    <li bug-fix>
-        Toggle switch alignment issue in Firefox and MSEdge
-    </li>
-    <li bug-fix>
-        Vertical alignment issue with buttons in IE (not Edge)
-    </li>
-    <li bug-fix>
-        Fixed a padding issue with text fields in IE10
-    </li>
-    <li bug-fix>
-        Hex code display in color contrast demo is not visible in IE10
-    </li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>
-        Add TSLint to Clarity
-    </li>
-    <li>
-        Optimize base64 Clarity fonts
-    </li>
-    <li>
-        Address additional cases for tabs including multi-level, scrolling, and usage in different areas like wizards and modals
-    </li>
-    <li>
-        Dropdowns Refactor - Add classes on the host element instead of nesting them
-    </li>
-    <li>
-        Upgrade website to 0.4.0
-    </li>
-</ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.3.5-->
-
-<ng-template [clrRelease]="'0.3.5'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Build optimization</h6>
-        <p>Improves Clarity build, reducing build time by 80-90%. Also fixes a SASS/SCSS issue that was preventing Clarity build script from running on Windows. </p>
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>
-        App Level Alert is not vertically aligned when alert action is not present
-    </li>
-    <li bug-fix>
-        Fix build issues on windows machine
-    </li>
-    <li bug-fix>
-        Header sub areas should have a constant height
-    </li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>
-        Document the &quot;Application Structure and Layout&quot;
-    </li>
-    <li>
-        Create Documentation for Grids
-    </li>
-    <li>
-        Add event-stream to package.json
-    </li>
-    <li>
-        Update Alert Icons
-    </li>
-    <li>
-        Move application structure and layout to the website
-    </li>
-    <li>
-        Stack View Editor: Design indicator that a value has been changed
-    </li>
-    <li>
-        Document Navigation Structure
-    </li>
-    <li>
-        Stack View Editor: Style the remove &quot;X&quot;
-    </li>
 </ul>
 </ng-template>
 
@@ -2824,6 +2680,94 @@ export class AppModule &#123;
 
 
 
+<!-- Release Template 0.4.0-->
+
+<ng-template [clrRelease]="'0.4.0'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Add SASS mixin to target problematic browsers</h6>
+        <p>
+            The <code class="clr-code">fixForFirefox</code>, <code class="clr-code">fixForMsEdge</code>,
+            <code class="clr-code">fixForIE10AndUp</code>, and <code class="clr-code">fixForIE11AndUp</code> SASS mixins were added to <code class="clr-code">clarity/utils/helpers.clarity.scss</code>. These mixins allow us to target CSS fixes to specific
+            browsers.
+        </p>
+    </li>
+</ul>
+
+<h2>Breaking Changes</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li breaking-change>
+        <h6>Update Clarity to use BS4 alpha 3</h6>
+        <p>
+            Clarity has been upgraded to use BS4 Alpha 3. This allows users of Clarity to take advantage of the new BS for functionality with the flex box grid. With Alpha 3, BS4 rewrote some of the classnames related to their grid. Users of Clarity who were using
+            Push, pull, offset classes May need to replace the old class names with the new format. More information is available in the
+            <a href="http://v4-alpha.getbootstrap.com/layout/grid/#example-offsetting-columns" target="_blank">BS4 documentation</a>.
+        </p>
+    </li>
+    <li breaking-change>
+        <h6>Cleanup baselineRem() and rpx() SASS function calls</h6>
+        <p>
+            The <code class="clr-code">rpx()</code> SASS function has been removed from Clarity. Make sure to replace it with a measurement in pixels. For example, <code class="clr-code">padding-top: rpx(2)</code> would become <code class="clr-code">padding-top: 2px</code>.
+        </p>
+    </li>
+    <li breaking-change>
+        <h6>Typography updates - Implementation: HTML/CSS</h6>
+        <p>
+            Clarity's typography has been completely redone. It is imperative that all applications upgrading to 0.4.0 verify any customizations they had previously made to Clarity's font specs. Our own internal upgrades involved minimal changes to existing CSS overrides.
+            Nevertheless, Clarity strongly advises all users to visually check their applications after upgrading.
+        </p>
+        <p>
+            More information on SASS/SCSS convenience functions that have been added to Clarity to assist with the use of typography can be found in the typography documentation.
+        </p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Vertical alignment issue with the labels in Firefox
+    </li>
+    <li bug-fix>
+        Row arrow alignment issue with stack views in Firefox and IE
+    </li>
+    <li bug-fix>
+        Toggle switch alignment issue in Firefox and MSEdge
+    </li>
+    <li bug-fix>
+        Vertical alignment issue with buttons in IE (not Edge)
+    </li>
+    <li bug-fix>
+        Fixed a padding issue with text fields in IE10
+    </li>
+    <li bug-fix>
+        Hex code display in color contrast demo is not visible in IE10
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>
+        Add TSLint to Clarity
+    </li>
+    <li>
+        Optimize base64 Clarity fonts
+    </li>
+    <li>
+        Address additional cases for tabs including multi-level, scrolling, and usage in different areas like wizards and modals
+    </li>
+    <li>
+        Dropdowns Refactor - Add classes on the host element instead of nesting them
+    </li>
+    <li>
+        Upgrade website to 0.4.0
+    </li>
+</ul>
+</ng-template>
+
+
+
 <!-- Release Template 0.3.6-->
 
 <ng-template [clrRelease]="'0.3.6'">
@@ -2832,6 +2776,62 @@ export class AppModule &#123;
 <ul class="list-unstyled">
     <li>
         Dropdowns Refactor - Add classes on the host element instead of nesting them
+    </li>
+</ul>
+</ng-template>
+
+
+
+<!-- Release Template 0.3.5-->
+
+<ng-template [clrRelease]="'0.3.5'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Build optimization</h6>
+        <p>Improves Clarity build, reducing build time by 80-90%. Also fixes a SASS/SCSS issue that was preventing Clarity build script from running on Windows. </p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        App Level Alert is not vertically aligned when alert action is not present
+    </li>
+    <li bug-fix>
+        Fix build issues on windows machine
+    </li>
+    <li bug-fix>
+        Header sub areas should have a constant height
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>
+        Document the &quot;Application Structure and Layout&quot;
+    </li>
+    <li>
+        Create Documentation for Grids
+    </li>
+    <li>
+        Add event-stream to package.json
+    </li>
+    <li>
+        Update Alert Icons
+    </li>
+    <li>
+        Move application structure and layout to the website
+    </li>
+    <li>
+        Stack View Editor: Design indicator that a value has been changed
+    </li>
+    <li>
+        Document Navigation Structure
+    </li>
+    <li>
+        Stack View Editor: Style the remove &quot;X&quot;
     </li>
 </ul>
 </ng-template>
@@ -2877,6 +2877,70 @@ export class AppModule &#123;
     </li>
     <li>
         Remove hover effect on flat buttons
+    </li>
+</ul>
+</ng-template>
+
+
+
+<!-- Release Template 0.3.2-->
+
+<ng-template [clrRelease]="'0.3.2'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>App Level Alerts</h6>
+        <p>An app-level alert appears at the top of the screen, above the application header. This alert is reserved for a system-level message.</p>
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;alert alert-app-level alert-danger&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;&gt;
+        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class=&quot;alert-item&quot;&gt;
+        &lt;div class=&quot;alert-text&quot;&gt;
+            Alert Type: Danger
+        &lt;/div&gt;
+        &lt;div class=&quot;alert-actions&quot;&gt;
+            &lt;button class=&quot;btn alert-action&quot;&gt;Action&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </li>
+    <li>
+        <h6>Inverse Buttons, update outline buttons and add min and max widths to buttons</h6>
+        <p>Inverse buttons can be used on dark backgrounds</p>
+        <pre><code clr-code-highlight="language-html">
+&lt;button type=&quot;submit&quot; class=&quot;btn btn-inverse&quot;&gt;Inverse&lt;/button&gt;
+</code></pre>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        The closing &quot;x&quot; in an alert seems vertically mis-aligned
+    </li>
+    <li bug-fix> Stackviews do not render correctly on IE
+    </li>
+    <li bug-fix> Buttons alignment bug fix
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>
+        Improve sass compilation watch
+    </li>
+    <li>
+        Clean up gulpfile.js
+    </li>
+    <li>
+        Create variables for common Clarity height/width values
+    </li>
+    <li>
+        Create a landing page for Clarity Demos
     </li>
 </ul>
 </ng-template>
@@ -3009,133 +3073,31 @@ export class AppModule &#123;
 
 
 
-<!-- Release Template 0.3.2-->
+<!-- Release Template 0.2.10-->
 
-<ng-template [clrRelease]="'0.3.2'">
+<ng-template [clrRelease]="'0.2.10'">
 
 <h2>Highlights</h2>
 <ul class="list-unstyled whats-new-highlights">
     <li>
-        <h6>App Level Alerts</h6>
-        <p>An app-level alert appears at the top of the screen, above the application header. This alert is reserved for a system-level message.</p>
+        <h6>Add new list styles</h6>
+        <p>Styles for <code class="clr-code">ol.list</code> ordered lists were added. A <code
+                class="clr-code">.compact</code> classname was also added. This classname shrinks font-size and
+            line-height of all types of lists.</p>
+
         <pre><code clr-code-highlight="language-html">
-&lt;div class=&quot;alert alert-app-level alert-danger&quot;&gt;
-    &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;&gt;
-        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
-    &lt;/button&gt;
-    &lt;div class=&quot;alert-item&quot;&gt;
-        &lt;div class=&quot;alert-text&quot;&gt;
-            Alert Type: Danger
-        &lt;/div&gt;
-        &lt;div class=&quot;alert-actions&quot;&gt;
-            &lt;button class=&quot;btn alert-action&quot;&gt;Action&lt;/button&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-    </li>
-    <li>
-        <h6>Inverse Buttons, update outline buttons and add min and max widths to buttons</h6>
-        <p>Inverse buttons can be used on dark backgrounds</p>
-        <pre><code clr-code-highlight="language-html">
-&lt;button type=&quot;submit&quot; class=&quot;btn btn-inverse&quot;&gt;Inverse&lt;/button&gt;
+&lt;ul class=&quot;list compact&quot;&gt;
+    ...
+&lt;/ul&gt;
 </code></pre>
     </li>
 </ul>
 
 <h2>Bug Fixes</h2>
 <ul class="list">
-    <li bug-fix>
-        The closing &quot;x&quot; in an alert seems vertically mis-aligned
+    <li bug-fix>Fixed incorrect margin on lists inside of cards
     </li>
-    <li bug-fix> Stackviews do not render correctly on IE
-    </li>
-    <li bug-fix> Buttons alignment bug fix
-    </li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>
-        Improve sass compilation watch
-    </li>
-    <li>
-        Clean up gulpfile.js
-    </li>
-    <li>
-        Create variables for common Clarity height/width values
-    </li>
-    <li>
-        Create a landing page for Clarity Demos
-    </li>
-</ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.2.7-->
-
-<ng-template [clrRelease]="'0.2.7'">
-
-<h2>Improvements</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Make first column of stack view sizable</h6>
-        <p>Overriding the width of the stack view's first column (labels) in CSS is now supported. Use this when the stack view is too wide or when you have an exact width of the first column.</p>
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Fixed typings error when compiling Clarity Seed for production
-    </li>
-    <li bug-fix>Rows from flexbox changes blowout some demos on clarity-demo
-    </li>
-    <li bug-fix>Put sidenav progress-bar demo back on the website
-    </li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>Add new Getting Started topics to TOC on website
-    </li>
-    <li>We need a &quot;How to file bugs&quot; section in get started on website
-    </li>
-</ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.2.9-->
-
-<ng-template [clrRelease]="'0.2.9'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Expose a close event in the alert angular component</h6>
-        <p>Allows developers to bind callbacks to the alert close event in their templates as in the following
-            example:</p>
-
-        <pre><code clr-code-highlight="language-html">
-&lt;clr-alert [clrAlertType]=&quot;&apos;alert-success&apos;&quot; (clrAlertClosedChange)=&quot;yourMethod()&quot;&gt;
-    &hellip;...&hellip;
-&lt;/clr-alert&gt;
-</code></pre>
-    </li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>Implement new &quot;available components&quot; page design for website
-    </li>
-    <li>Add code highlight to table demos
-    </li>
-    <li>Fix the width of the &quot;what&#39;s new&quot; page on the website
-    </li>
-    <li>Improve the &quot;available components&quot; table in the &quot;components&quot; page on the website
-    </li>
-    <li>Add analytics to website
+    <li bug-fix>Fixed double-margin on cards inside flexbox grid
     </li>
 </ul>
 </ng-template>
@@ -3473,31 +3435,36 @@ System.config(&#123;
 
 
 
-<!-- Release Template 0.2.10-->
+<!-- Release Template 0.2.9-->
 
-<ng-template [clrRelease]="'0.2.10'">
+<ng-template [clrRelease]="'0.2.9'">
 
 <h2>Highlights</h2>
 <ul class="list-unstyled whats-new-highlights">
     <li>
-        <h6>Add new list styles</h6>
-        <p>Styles for <code class="clr-code">ol.list</code> ordered lists were added. A <code
-                class="clr-code">.compact</code> classname was also added. This classname shrinks font-size and
-            line-height of all types of lists.</p>
+        <h6>Expose a close event in the alert angular component</h6>
+        <p>Allows developers to bind callbacks to the alert close event in their templates as in the following
+            example:</p>
 
         <pre><code clr-code-highlight="language-html">
-&lt;ul class=&quot;list compact&quot;&gt;
-    ...
-&lt;/ul&gt;
+&lt;clr-alert [clrAlertType]=&quot;&apos;alert-success&apos;&quot; (clrAlertClosedChange)=&quot;yourMethod()&quot;&gt;
+    &hellip;...&hellip;
+&lt;/clr-alert&gt;
 </code></pre>
     </li>
 </ul>
 
-<h2>Bug Fixes</h2>
+<h2>Other Changes</h2>
 <ul class="list">
-    <li bug-fix>Fixed incorrect margin on lists inside of cards
+    <li>Implement new &quot;available components&quot; page design for website
     </li>
-    <li bug-fix>Fixed double-margin on cards inside flexbox grid
+    <li>Add code highlight to table demos
+    </li>
+    <li>Fix the width of the &quot;what&#39;s new&quot; page on the website
+    </li>
+    <li>Improve the &quot;available components&quot; table in the &quot;components&quot; page on the website
+    </li>
+    <li>Add analytics to website
     </li>
 </ul>
 </ng-template>
@@ -3542,6 +3509,39 @@ System.config(&#123;
 <h2>Other Changes</h2>
 <ul class="list">
     <li>Make table font-size match stack-view font size
+    </li>
+</ul>
+</ng-template>
+
+
+
+<!-- Release Template 0.2.7-->
+
+<ng-template [clrRelease]="'0.2.7'">
+
+<h2>Improvements</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Make first column of stack view sizable</h6>
+        <p>Overriding the width of the stack view's first column (labels) in CSS is now supported. Use this when the stack view is too wide or when you have an exact width of the first column.</p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed typings error when compiling Clarity Seed for production
+    </li>
+    <li bug-fix>Rows from flexbox changes blowout some demos on clarity-demo
+    </li>
+    <li bug-fix>Put sidenav progress-bar demo back on the website
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Add new Getting Started topics to TOC on website
+    </li>
+    <li>We need a &quot;How to file bugs&quot; section in get started on website
     </li>
 </ul>
 </ng-template>
@@ -3605,6 +3605,46 @@ System.config(&#123;
     <li>Add a quick link to &quot;components&quot; on the home page
     </li>
 </ul>
+</ng-template>
+
+
+
+<!-- Release Template 0.2.5-->
+
+<ng-template [clrRelease]="'0.2.5'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Build Clarity Seed</h6>
+        <p>
+            This is a seed project for angular 2 apps using Clarity. The goal of this project is to offer a self-contained "getting started" project for any team
+that wishes to build an angular 2 application using Clarity. We included the features that we think are 'common' for all projects, while giving room for
+individuals to easily extend it to fit their project's specific needs. The build system written with gulp and the npm scripts simply run the corresponding gulp commands.
+        </p>
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+<li>Plan and implement packaging for Sketch components
+</li>
+<li>Create content to support templates
+</li>
+<li>Add the Sketch template to the website
+</li>
+<li>Side navigation on Components page has funky indentation
+</li>
+<li>Cards in progress bar demo are clickable to href=&quot;#&quot;
+</li>
+<li>Bundle angular app for Clarity website
+</li>
+<li>Quick changes to stackview design
+</li>
+<li>Fix error messages in seed
+</li>
+</ul>
+
 </ng-template>
 
 
@@ -3675,46 +3715,6 @@ System.config(&#123;
     <li>Move tabs to the Clarity website
     </li>
 </ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.2.5-->
-
-<ng-template [clrRelease]="'0.2.5'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Build Clarity Seed</h6>
-        <p>
-            This is a seed project for angular 2 apps using Clarity. The goal of this project is to offer a self-contained "getting started" project for any team
-that wishes to build an angular 2 application using Clarity. We included the features that we think are 'common' for all projects, while giving room for
-individuals to easily extend it to fit their project's specific needs. The build system written with gulp and the npm scripts simply run the corresponding gulp commands.
-        </p>
-    </li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-<li>Plan and implement packaging for Sketch components
-</li>
-<li>Create content to support templates
-</li>
-<li>Add the Sketch template to the website
-</li>
-<li>Side navigation on Components page has funky indentation
-</li>
-<li>Cards in progress bar demo are clickable to href=&quot;#&quot;
-</li>
-<li>Bundle angular app for Clarity website
-</li>
-<li>Quick changes to stackview design
-</li>
-<li>Fix error messages in seed
-</li>
-</ul>
-
 </ng-template>
 
 

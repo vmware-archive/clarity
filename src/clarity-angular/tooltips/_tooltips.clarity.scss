@@ -186,10 +186,7 @@ $clr-tooltip-adjusted-margin: $margin-value + $arrow-width * 2 !default;
     .tooltip {
         & > .clr-icon{
             margin-right: 0;
+            pointer-events: none;
         }
-        clr-icon > svg {
-        pointer-events: none;
-  }
-
     }
 }

@@ -12,7 +12,7 @@
     [clrModalSkipAnimation]="stopModalAnimations"
     [clrModalGhostPageState]="ghostPageState"
     [clrModalOverrideScrollService]="isStatic"
-    clrModalPreventClose="true"
+    [clrModalPreventClose]="true"
     (clrModalAlternateClose)="modalCancel()">
 
     <nav class="modal-nav clr-wizard-stepnav-wrapper">
@@ -42,10 +42,12 @@
     </div>
     <div class="modal-footer clr-wizard-footer">
         <div class="clr-wizard-footer-buttons">
-            <div *ngIf="!navService.currentPage.hasButtons" class="clr-wizard-footer-buttons-wrapper">
+            <div *ngIf="navService.currentPage && !navService.currentPage.hasButtons"
+                class="clr-wizard-footer-buttons-wrapper">
                 <ng-content select="clr-wizard-button"></ng-content>
             </div>
-            <div *ngIf="navService.currentPage.hasButtons" class="clr-wizard-footer-buttons-wrapper">
+            <div *ngIf="navService.currentPage && navService.currentPage.hasButtons"
+                class="clr-wizard-footer-buttons-wrapper">
                 <ng-template [ngTemplateOutlet]="navService.currentPage.buttons"></ng-template>
             </div>
         </div>

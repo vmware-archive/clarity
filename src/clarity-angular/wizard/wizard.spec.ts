@@ -4,924 +4,880 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-// import {ComponentFixture, TestBed} from "@angular/core/testing";
-// import {Component, ViewChild} from "@angular/core";
-// import {ScrollingService} from "../main/scrolling-service";
-// import {ClarityModule} from "../clarity.module";
-// import { Wizard } from "./wizard";
+import { BasicWizardTestComponent } from "./test-components/basic-wizard.mock";
+import { UnopenedWizardTestComponent } from "./test-components/unopened-wizard.mock";
+import { TemplateApiWizardTestComponent } from "./test-components/api-wizard.mock";
+import { DynamicWizardTestComponent } from "./test-components/dynamic-wizard.mock";
 
-describe("Wizard", () => {
-    describe("Typescript API", () => {
-        describe("Ghost pages", () => {
-        // Make sure that ghost pages start out as deactivated
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        // Make sure we opt out if showGhostPages is false
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        // Make sure we set proper state when sent deactivate
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        // Make sure we set proper state when on last page
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        // Make sure we set proper state when on next to last page
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        // Make sure we fall through to proper state
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        // Make sure we set expected state when first page is last page
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        // Make sure we set expected state when first page is next to last page
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        });
-        describe("Opening and closing", () => {
-            describe("open", () => {
-                // Make sure it calls the navService of currentPage is falsy or not set
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-                // Make sure it calls setGhostPages
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-                // Make sure it properly sets this._open
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-            });
-            describe("close", () => {
-                // Make sure it calls deactivateGhostPages
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-                // Make sure it properly sets this._open
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-            });
-            describe("toggle", () => {
-                // Make sure that passing it true calls open
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-                // Make sure that passing it false calls close
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-            });
-        });
-        describe("Convenience functions", () => {
-            describe("currentPage", () => {
-                // Make sure that currentPage calls the navService
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-            });
-            describe("isLast", () => {
-                // Make sure that isLast calls the navService
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-            });
-            describe("isFirst", () => {
-                // Make sure that isFirst calls the navService
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-            });
-            describe("prev", () => {
-                // Make sure that it calls the navService
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-            });
-            describe("previous", () => {
-                // Make sure that it calls the navService
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-            });
-            describe("next", () => {
-                // Make sure that it calls the navService
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-            });
-            describe("goTo", () => {
-                // Make sure that it calls the navService
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-                // Make sure that it early returns if not given a page id
-                // WTF??? DO WE HAVE PAGE IDS? VERIFY...
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-            });
-            describe("reset", () => {
-                // Make sure that it calls the pageCollection
-                // Make sure that it calls the navService
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-            });
-            describe("ghostPageState", () => {
-                // Make sure that it calls the navService
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-            });
-            describe("deactivateGhostPages", () => {
-                // Make sure that it calls the navService with "deactivate" as the value
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-            });
-        });
-    });
+import { tick, fakeAsync } from "@angular/core/testing";
+import { WizardNavigationService } from "./providers/wizard-navigation";
+import { PageCollectionService } from "./providers/page-collection";
+import { Wizard } from "./wizard";
+import { TestContext } from "../utils/testing/helpers.spec";
 
-    // Inputs, Outputs, and initialization of component based on content-children
-    describe("Template API", () => {
-        describe("Overriding modal animation", () => {
-        // Make sure that stopModalAnimations returns false when
-        // clrWizardPreventModalAnimation input is set
-        // validate default is false as well
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        });
-        describe("Current page onchange", () => {
-        // Make sure that ghost pages get set
-        // Make sure current page observable is emitted
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        });
+export default function(): void {
 
-        // validate that the clrWizardCurrentPageChanged output is fired
-        // validate that the clrWizardOnNext output is fired
-        // validate that the clrWizardOnPrevious output is fired
+    describe("Wizard", () => {
+        describe("Typescript API", () => {
+            describe("Ghost pages", () => {
+                // TODO: Ghost pages are not widely available atm. When they are then we should complete
+                // this test plan.
+                xit("should start out as deactivated", () => {
+                });
 
+                xit("should opt out if showGhostPages is false", () => {
+                });
 
-        describe("Projection", () => {
-            // validate wizard title is projected
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-            // validate that the stepnav is present
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-            // validate that the content title reflects current page and changes with it
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
+                xit("should set proper state when sent deactivate", () => {
+                });
 
-            describe("Content", () => {
-                // validate that the content shows up
-                it("true is true", () => {
-                    expect(true).toBe(true);
+                xit("should set proper state on last page", () => {
                 });
-                // validate that the content changes
-                it("true is true", () => {
-                    expect(true).toBe(true);
+
+                xit("should set proper state when on next to last page", () => {
                 });
-                // validate that the content can lazy load if needed
-                it("true is true", () => {
-                    expect(true).toBe(true);
+
+                xit("should fall through to proper state", () => {
                 });
-                // validate that pages can be added via an ngFor
-                it("true is true", () => {
-                    expect(true).toBe(true);
+
+                xit("should set expected state when first page is last page", () => {
                 });
-                // validate that the content can be changed dynamically
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-                // what should it do if no pages are in the template?
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-                // what should it do if all pages are hidden in the ngIf?
-                it("true is true", () => {
-                    expect(true).toBe(true);
+
+                xit("should set expected state when first page is next to last page", () => {
                 });
             });
 
-            describe("Buttons", () => {
-                // validate that the buttons show up
-                it("true is true", () => {
-                    expect(true).toBe(true);
+            describe("Opening and closing", () => {
+                let context: TestContext<Wizard, UnopenedWizardTestComponent>;
+                let wizardNavigationService: WizardNavigationService;
+                let pageCollectionService: PageCollectionService;
+                let wizard: Wizard;
+
+                beforeEach(function() {
+                    context = this.create(Wizard, UnopenedWizardTestComponent);
+                    wizardNavigationService = context.getClarityProvider(WizardNavigationService);
+                    pageCollectionService = context.getClarityProvider(PageCollectionService);
+                    wizard = context.clarityDirective;
+                    context.detectChanges();
                 });
-                // validate that the previous button is hidden on first page
-                it("true is true", () => {
-                    expect(true).toBe(true);
+
+                describe("open", () => {
+                    it("should call setGhostPages", () => {
+                        spyOn(wizard, "setGhostPages");
+                        wizard.open();
+                        expect(wizard.setGhostPages).toHaveBeenCalledTimes(1);
+                    });
+
+                    it("should set this._open", () => {
+                        expect(wizard._open).toBe(false, "hidden wizard._open should be false");
+                        wizard.open();
+                        expect(wizard._open).toBe(true, "visible wizard._open should be true");
+                    });
                 });
-                // validate that the previous button is visible on every page except the last page
-                // validate that the finish button is hidden on every page except the last one
-                // validate that the next button is hidden on last page
-                // validate that the finish button is visible on last page
-                it("true is true", () => {
-                    expect(true).toBe(true);
+
+                describe("close", () => {
+                    it("should call deactivateGhostPages", () => {
+                        spyOn(wizard, "deactivateGhostPages");
+                        wizard.open();
+                        wizard.close();
+                        expect(wizard.deactivateGhostPages).toHaveBeenCalledTimes(1);
+                    });
+
+                    it("should set this._open", () => {
+                        expect(wizard._open).toBe(false, "hidden wizard._open should be false");
+                        wizard.open();
+                        expect(wizard._open).toBe(true, "visible wizard._open should be true");
+                        wizard.close();
+                        expect(wizard._open).toBe(false, "closed wizard._open should be false");
+                    });
                 });
-                // validate that the button text is projected as expected
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-                // validate that the page buttons superceded default wizard buttons
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-                // validate that it falls back to wizard buttons
-                it("true is true", () => {
-                    expect(true).toBe(true);
-                });
-                // what should it do if no buttons are in the template?
-                it("true is true", () => {
-                    expect(true).toBe(true);
+
+                describe("toggle", () => {
+                    it("should call .open() if passed true", () => {
+                        spyOn(wizard, "open");
+                        wizard.toggle(false);
+                        expect(wizard.open).not.toHaveBeenCalled();
+                        wizard.toggle(true);
+                        expect(wizard.open).toHaveBeenCalledTimes(1);
+                    });
+
+                    it("should call .close() if passed false", () => {
+                        spyOn(wizard, "close");
+                        wizard.toggle(true);
+                        expect(wizard.close).not.toHaveBeenCalled();
+                        wizard.toggle(false);
+                        expect(wizard.close).toHaveBeenCalledTimes(1);
+                    });
                 });
             });
 
-            describe("Wizard Header Actions", () => {
-                // validate that header actions show up
-                it("true is true", () => {
-                    expect(true).toBe(true);
+            describe("Convenience functions", () => {
+                let context: TestContext<Wizard, BasicWizardTestComponent>;
+                let wizardNavigationService: WizardNavigationService;
+                let pageCollectionService: PageCollectionService;
+                let wizard: Wizard;
+
+                beforeEach(function() {
+                    context = this.create(Wizard, BasicWizardTestComponent);
+                    wizardNavigationService = context.getClarityProvider(WizardNavigationService);
+                    pageCollectionService = context.getClarityProvider(PageCollectionService);
+                    wizard = context.clarityDirective;
+                    context.detectChanges();
                 });
-                // validate that header actions don't show up when they aren't there
-                it("true is true", () => {
-                    expect(true).toBe(true);
+
+                describe("currentPage", () => {
+                    it("should match the navService", () => {
+                        let currentPagesMatch: boolean;
+                        currentPagesMatch = (wizard.currentPage === wizardNavigationService.currentPage);
+                        expect(currentPagesMatch).toBe(true, "current pages init as expected");
+                        wizard.next();
+                        context.detectChanges();
+                        currentPagesMatch = (wizard.currentPage === wizardNavigationService.currentPage);
+                        expect(currentPagesMatch).toBe(true, "current pages match after navigation");
+                    });
                 });
-                // validate that page header actions take precedence
-                it("true is true", () => {
-                    expect(true).toBe(true);
+
+                describe("isLast", () => {
+                    it("should return false if current page is not the last page", () => {
+                        let lastPage = pageCollectionService.lastPage;
+                        expect(wizard.currentPage).not.toBe(lastPage, "verify currentPage is not the last page");
+                        expect(wizard.isLast).toBe(false, "isLast should return false");
+                    });
+
+                    it("should return true if current page is the last page", () => {
+                        let lastPage = pageCollectionService.lastPage;
+
+                        // set last page
+                        wizardNavigationService.currentPage = lastPage;
+                        context.detectChanges();
+                        expect(wizard.currentPage).toBe(lastPage, "verify currentPage is the last page");
+                        expect(wizard.isLast).toBe(true, "isLast should return true");
+                    });
                 });
-                // validate that clicking on a header action does something
-                it("true is true", () => {
-                    expect(true).toBe(true);
+
+                describe("isFirst", () => {
+                    it("should return false if current page is not the first page", () => {
+                        let firstPage = pageCollectionService.firstPage;
+                        // move wizard off first page
+                        wizard.next();
+                        context.detectChanges();
+                        expect(wizard.currentPage).not.toBe(firstPage, "verify currentPage is not the first page");
+                        expect(wizard.isFirst).toBe(false, "isFirst should return false");
+                    });
+
+                    it("should return true if current page is the last page", () => {
+                        let firstPage = pageCollectionService.firstPage;
+                        expect(wizard.currentPage).toBe(firstPage, "verify currentPage is the first page");
+                        expect(wizard.isFirst).toBe(true, "isFirst should return true");
+                    });
                 });
-                // validate that wizard falls through to wizard header actions
-                it("true is true", () => {
-                    expect(true).toBe(true);
+
+                describe("prev", () => {
+                    it("should call the navService", () => {
+                        spyOn(wizardNavigationService, "previous");
+                        wizard.prev();
+                        expect(wizardNavigationService.previous).toHaveBeenCalledTimes(1);
+                    });
                 });
-                // validate that wizard doesn't show header action when page with header actions
-                // changes to a page w/o header actions and the wizard doesn't have them
-                it("true is true", () => {
-                    expect(true).toBe(true);
+
+                describe("previous", () => {
+                    it("should call the navService", () => {
+                        spyOn(wizardNavigationService, "previous");
+                        wizard.previous();
+                        expect(wizardNavigationService.previous).toHaveBeenCalledTimes(1);
+                    });
+                });
+
+                describe("next", () => {
+                    it("should call the navService to emit checks and events if told to", () => {
+                        spyOn(wizardNavigationService, "next");
+                        spyOn(wizard, "forceNext");
+                        wizard.next(false);
+                        expect(wizardNavigationService.next).toHaveBeenCalledTimes(1);
+                        expect(wizard.forceNext).not.toHaveBeenCalled();
+                    });
+
+                    it("should call forceNext if told not to emit checks and events", () => {
+                        spyOn(wizardNavigationService, "next");
+                        spyOn(wizard, "forceNext");
+                        wizard.next(true);
+                        expect(wizardNavigationService.next).not.toHaveBeenCalled();
+                        expect(wizard.forceNext).toHaveBeenCalledTimes(1);
+                    });
+
+                    it("should call forceNext by default", () => {
+                        spyOn(wizardNavigationService, "next");
+                        spyOn(wizard, "forceNext");
+                        wizard.next();
+                        expect(wizardNavigationService.next).not.toHaveBeenCalled();
+                        expect(wizard.forceNext).toHaveBeenCalledTimes(1);
+                    });
+                });
+
+                describe("goTo", () => {
+                    it("should call the navService", () => {
+                        let testId = pageCollectionService.lastPage.id;
+                        spyOn(wizardNavigationService, "goTo");
+                        wizard.goTo(testId);
+                        expect(wizardNavigationService.goTo).toHaveBeenCalledWith(testId);
+                    });
+
+                    it("should early return if not given a page id", () => {
+                        spyOn(wizardNavigationService, "goTo");
+                        wizard.goTo(null);
+                        wizard.goTo("");
+                        expect(wizardNavigationService.goTo).not.toHaveBeenCalled();
+                    });
+                });
+
+                describe("reset", () => {
+                    it("should call the pageCollection and update the nav", () => {
+                        let firstPage = pageCollectionService.firstPage;
+                        spyOn(pageCollectionService, "reset").and.callThrough();
+                        spyOn(wizard.onReset, "next");
+                        expect(wizard.currentPage).toBe(firstPage, "inits as expected");
+                        wizard.next();
+                        context.detectChanges();
+                        expect(wizard.currentPage).not.toBe(firstPage, "navigates as expected");
+                        wizard.reset();
+                        expect(pageCollectionService.reset).toHaveBeenCalledTimes(1);
+                        expect(wizard.onReset.next).toHaveBeenCalledTimes(1);
+                        context.detectChanges();
+                        expect(wizard.currentPage).toBe(firstPage, "resets to first page");
+                    });
+                });
+
+                describe("ghostPageState", () => {
+                    // TODO: Ghost pages are not widely available atm. When they are then we should complete
+                    // this test plan.
+                    xit("should call the navService", () => {
+                    });
+                });
+
+                describe("deactivateGhostPages", () => {
+                    // TODO: Ghost pages are not widely available atm. When they are then we should complete
+                    // this test plan.
+                    xit("should should call the navService  with \"deactivate\" as the value", () => {
+                    });
                 });
             });
         });
 
-        describe("Misc Observables", () => {
-            // validate that the clrWizardOnCancel output is fired
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-            // validate that the clrWizardOnFinish output is fired
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        });
-    });
+        // Inputs, Outputs, and initialization of component based on content-children
+        describe("Template API", () => {
+            let context: TestContext<Wizard, TemplateApiWizardTestComponent>;
+            let wizard: Wizard;
 
-// TODO: ADD TO WIZARD TESTS... PART OF TEMPLATE API^^^
-// On setup make sure pageCollection.pages is set, make sure it gets updated when wizard.pages is
-// On setup make sure navService.wizardHasAltCancel is set to wizard.stopCancel -- test dynamically too
-// On setup make sure navService.wizardHasAltNext is set to wizard.stopNext -- test dynamically too
-// On setup make sure headerActionService.wizardHeaderActions is set to wizard.headerActions --
-// test it also gets updated
-// On setup test that navService.hideWizardGhostPages gets set as expected
+            beforeEach(function() {
+                context = this.create(Wizard, TemplateApiWizardTestComponent);
+                wizard = context.clarityDirective;
+                context.detectChanges();
+            });
 
-    describe("View and Behavior", () => {
-// TODO: SPLIT THESE TESTS.
-// IF USER GIVES ME AN INPUT, DOES MY CONTROLLER HAVE THE RIGHT VALUE? <= TEMPLATE API
-// THEN SEPARATE TEST TO MAKE SURE THAT THE RESULT IN VIEW IS AS EXPECTED <= VIEW TESTS
-        describe("Sizing", () => {
-            // test that passing a size into the input updates the size
-            // doesn't matter if sizing updates dynamically
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        });
 
-        describe("Ghost Pages", () => {
-            // test that passing a boolean to the input hides/shows ghosts
-            // doesn't matter if it updates dynamically
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        });
+            describe("Overriding modal animation with (clrWizardPreventModalAnimation)", () => {
+                xit("should set stopModalAnimations to false when true", () => {
+                });
 
-        describe("Close X", () => {
-            // test that passing a boolean to the input hides/shows close X
-            // TODO: JUST TEST THAT MODAL HAS CORRECT VALUE; DON'T TEST STYLES IN MODAL
-            // doesn't matter if it updates dynamically
-            // TODO: MORE CASES WILL PROBABLY SHOW UP HERE
-            it("true is true", () => {
-                expect(true).toBe(true);
+                xit("should default to false", () => {
+                });
             });
-        });
 
-        describe("Opening", () => {
-// TODO: SPLIT INTO TWO SECTIONS (TEMPLATE API & VIEW TESTS)
-// MAY BE ABLE TO SKIP THE "DOES IT SHOW UP?" TEST
-            // test that passing a boolean to the clrWizardOpen input hides/shows wizard dynamically
-            // validate that the clrWizardOpenChange output is fired <= TEMPLATE API
-            // make sure first page is set to current if currentPage is set to falsy/null
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        });
+            describe("Current page onchange", () => {
+                xit("should update ghost pages", () => {
+                    // TODO: Ghost pages are not widely available atm. When they are then we should complete
+                    // this test plan.
+                });
 
-        describe("Closing", () => {
-// TODO: SPLIT INTO TWO SECTIONS (TEMPLATE API & VIEW TESTS)
-// MAY BE ABLE TO SKIP THE "DOES IT GO AWAY?" TEST
-            // test across Cancel button and Close X
-            // validate that the clrWizardOpenChange output is fired
-            // make sure that ghost pages are deactivated
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        });
+                it("should emit pageOnLoad when wizard is created", () => {
+                    context.detectChanges();
+                    expect(context.testComponent._firstPageLoaded).toBe(1, "only once when created");
+                });
 
-        describe("Backdrop is static", () => {
-            // validate that clrModalStaticBackdrop is set to true
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-        });
+                it("should emit page on load when navigating", () => {
+                    wizard.next();
+                    wizard.next();
+                    expect(context.testComponent._pagesLoaded).toBe(1);
+                });
 
-        describe("Navigation", () => {
-            // happy path through to finish
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-            // closes and opens on last open page
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-            // closes and opens on last possible page
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-            // what happens when current page is removed from the list of pages?
-            it("true is true", () => {
-                expect(true).toBe(true);
-            });
-            // todo: MAY NOT NEED THESE IF WE TEST STEPNAV AND NAVIGATION SERVICE...
-        });
+                it("should notify clrWizardCurrentPageChanged output", () => {
+                    expect(context.testComponent._currentPageChanged).toBe(1, "only initial load");
+                    wizard.next();
+                    expect(context.testComponent._currentPageChanged).toBe(2, "increases with move forward");
+                    wizard.next();
+                    expect(context.testComponent._currentPageChanged).toBe(3, "increases with move forward");
+                    wizard.previous();
+                    expect(context.testComponent._currentPageChanged).toBe(4, "increases with move backward");
+                });
 
-        // MIGHT BE TWO TESTS... DO I HAVE THE INPUT? DOES OUTPUT WORK? <= IN TEMPLATE API
-        // THEN TEST IF IT CLICKS THROUGH HERE
-        describe("Custom Navigation", () => {
+                it("should notify clrWizardOnNext output", () => {
+                    expect(context.testComponent._movedForward).toBe(0, "initial load");
+                    // need to do event emissions here, so passing false
+                    wizard.next(false);
+                    expect(context.testComponent._movedForward).toBe(1, "increases with move forward");
+                    // need to do event emissions here, so passing false
+                    wizard.next(false);
+                    expect(context.testComponent._movedForward).toBe(2, "increases with move forward");
+                    wizard.previous();
+                    expect(context.testComponent._movedForward).toBe(2, "stays put with move backward");
+                });
+
+                it("should notify clrWizardOnPrevious output", () => {
+                    expect(context.testComponent._movedBackward).toBe(0, "initial load");
+                    wizard.next();
+                    expect(context.testComponent._movedBackward).toBe(0, "stays put with move forward");
+                    wizard.next();
+                    expect(context.testComponent._movedBackward).toBe(0, "stays put with move forward");
+                    wizard.previous();
+                    expect(context.testComponent._movedBackward).toBe(1, "increases with move backward");
+                    wizard.previous();
+                    expect(context.testComponent._movedBackward).toBe(2, "increases with move backward");
+                });
+            });
+
+            describe("Projection", () => {
+                it("wizard title is projected", () => {
+                    let val = context.testElement.querySelector(".clr-wizard-title").textContent.trim();
+                    expect(val).toBe(context.testComponent.projectedTitle, "projects as expected");
+                    context.testComponent.projectedTitle = "OHAI";
+                    context.detectChanges();
+                    val = context.testElement.querySelector(".clr-wizard-title").textContent.trim();
+                    expect(val).toBe("OHAI", "updates as expected");
+                });
+
+                it("stepnav is present", () => {
+                    let val = context.testElement.querySelector(".clr-wizard-stepnav");
+                    expect(val).toBeTruthy();
+                });
+
+                it("content title should reflect current page and changes with it", () => {
+                    let val = context.testElement.querySelector(".modal-title-text").textContent.trim();
+                    expect(val).toBe("Longer Title for Page 1", "inits as expected");
+
+                    wizard.next();
+                    context.detectChanges();
+
+                    val = context.testElement.querySelector(".modal-title-text").textContent.trim();
+                    expect(val).toBe(context.testComponent.projectedPageTitle, "projects as expected");
+
+                    context.testComponent.projectedPageTitle = "OHAI";
+                    context.detectChanges();
+
+                    val = context.testElement.querySelector(".modal-title-text").textContent.trim();
+                    expect(val).toBe("OHAI", "updates as expected");
+                });
+
+                describe("Content", () => {
+                    it("content shows up", () => {
+                        let val = context.testElement.querySelector(".clr-wizard-page.active").textContent.trim();
+                        expect(val).toBe("Content for step 1");
+                    });
+
+                    it("content changes", () => {
+                        let val: string;
+
+                        wizard.pageCollection.lastPage.makeCurrent();
+                        context.detectChanges();
+
+                        // page 3 has projected content
+                        val = context.testElement.querySelector(".clr-wizard-page.active").textContent.trim();
+                        expect(val).toBe(context.testComponent.projectedContent, "projects as expected");
+
+                        context.testComponent.projectedContent = "OHAI";
+                        context.detectChanges();
+
+                        val = context.testElement.querySelector(".clr-wizard-page.active").textContent.trim();
+                        expect(val).toBe("OHAI", "updates as expected");
+                    });
+
+                    it("content can lazy load if needed", fakeAsync(() => {
+                        let val: string;
+
+                        wizard.next();
+                        context.detectChanges();
+
+                        val = context.testElement.querySelector(".clr-wizard-page.active").textContent.trim();
+                        expect(val).toBe(context.testComponent.lazyLoadContent, "projects as expected");
+
+                        context.testComponent.doLazyLoad();
+                        tick();
+                        context.detectChanges();
+
+                        val = context.testElement.querySelector(".clr-wizard-page.active").textContent.trim();
+                        expect(val).toBe("Content loaded!", "updates as expected");
+                    }));
+                });
+
+                describe("Buttons", () => {
+                    it("buttons show up", () => {
+                        let cancel = context.testElement.querySelector(".clr-wizard-btn--tertiary");
+                        let previous = context.testElement.querySelector(".clr-wizard-btn--secondary");
+                        let next = context.testElement.querySelector(".clr-wizard-btn--primary:not(.disabled)");
+                        let finish = context.testElement.querySelector(".clr-wizard-btn--primary.disabled");
+
+                        expect(cancel).toBeTruthy();
+                        expect(previous).toBeTruthy();
+                        expect(next).toBeTruthy();
+                        expect(finish).toBeTruthy();
+                    });
+
+                    it("previous button is hidden on first page", () => {
+                        let previous = context.testElement.querySelector(".clr-wizard-btn--secondary");
+                        let val = previous.parentElement.attributes["aria-hidden"].value;
+                        expect(val).toBe("true");
+                    });
+
+                    it("next button is visible on every page except the last page", () => {
+                        let next = context.testElement.querySelector(".clr-wizard-btn--primary:not(.disabled)");
+                        let val = next.parentElement.attributes["aria-hidden"].value;
+                        expect(val).toBe("false");
+
+                        wizard.pageCollection.lastPage.makeCurrent();
+                        context.detectChanges();
+
+                        val = next.parentElement.attributes["aria-hidden"].value;
+                        expect(val).toBe("true");
+                    });
+
+                    it("finish button is hidden on every page except the last one", () => {
+                        let finish = context.testElement.querySelector(".clr-wizard-btn--primary.disabled");
+                        let val = finish.parentElement.attributes["aria-hidden"].value;
+                        expect(val).toBe("true");
+
+                        wizard.pageCollection.lastPage.makeCurrent();
+                        context.detectChanges();
+
+                        val = finish.parentElement.attributes["aria-hidden"].value;
+                        expect(val).toBe("false");
+                    });
+
+                    it("button text is projected as expected", () => {
+                        let previous = context.testElement.querySelector(".clr-wizard-btn--secondary");
+                        let val = previous.textContent.trim();
+                        expect(val).toBe(context.testComponent.projectedButton, "projects as expected");
+
+                        context.testComponent.projectedButton = "OHAI";
+                        context.detectChanges();
+
+                        val = previous.textContent.trim();
+                        expect(val).toBe("OHAI", "updates as expected");
+                    });
+
+                    it("page buttons override default wizard buttons", () => {
+                        let cancel: any;
+                        let previous: any;
+                        let next: any;
+                        let finish: any;
+
+                        wizard.pageCollection.lastPage.makeCurrent();
+                        context.detectChanges();
+
+                        cancel = context.testElement.querySelector(".clr-wizard-btn--tertiary");
+                        previous = context.testElement.querySelector(".clr-wizard-btn--secondary");
+                        next = context.testElement.querySelector(".clr-wizard-btn--primary.disabled");
+                        finish = context.testElement.querySelector(".clr-wizard-btn--primary:not(.disabled)");
+
+                        // custom buttons can omit expected buttons if they want
+                        expect(cancel).toBeNull();
+                        expect(previous).toBeNull();
+                        expect(next).toBeNull();
+                        expect(finish).toBeTruthy();
+                        expect(finish.textContent.trim()).toBe(context.testComponent.projectedCustomButton);
+
+                        context.testComponent.projectedCustomButton = "Ohai";
+                        context.detectChanges();
+                        expect(finish.textContent.trim()).toBe("Ohai");
+                    });
+                });
+
+                describe("Wizard Header Actions", () => {
+                    // TODO: Header actions are not widely available atm. When they are then we should complete
+                    // this test plan.
+
+                    xit("header actions show up", () => {
+                    });
+
+                    xit("headerActionService.wizardHeaderActions is set to wizard.headerActions", () => {
+                    });
+
+                    xit("headerActionService.wizardHeaderActions updates with wizard", () => {
+                    });
+
+                    xit("header actions don't show up when they aren't there", () => {
+                    });
+
+                    xit("page header actions take precedence", () => {
+                    });
+
+                    xit("clicking on a header action does something", () => {
+                    });
+
+                    xit("wizard falls through to wizard header actions", () => {
+                    });
+
+                    xit("wizard doesn't show header action when page with header actions " +
+                        "changes to a page w/o header actions and the wizard doesn't have them", () => {
+                    });
+                });
+            });
+
+            describe("Misc Observables", () => {
+                it("clrWizardOnCancel output is fired when cancel button is clicked", () => {
+                    let cancel = context.testElement.querySelector(".clr-wizard-btn--tertiary");
+
+                    expect(context.testComponent._cancelled).toBe(0, "verify initial state");
+                    cancel.click();
+                    context.detectChanges();
+                    expect(context.testComponent._cancelled).toBe(1, "cancel button worked");
+                });
+
+                it("clrWizardOnCancel output is fired when close X is clicked", () => {
+                    let closeBtn = context.testElement.querySelector("button.close");
+                    expect(context.testComponent._cancelled).toBe(0, "verify initial state");
+
+                    closeBtn.click();
+                    context.detectChanges();
+                    expect(context.testComponent._cancelled).toBe(1, "close X worked");
+                });
+
+                it("clrWizardOnCancel output is not fired when wizard is closed by finish button", () => {
+                    let finish: any;
+                    expect(context.testComponent._cancelled).toBe(0, "verify initial state");
+
+                    wizard.pageCollection.lastPage.makeCurrent();
+                    context.detectChanges();
+                    finish = context.testElement.querySelector(".clr-wizard-btn--primary:not(.disabled)");
+                    finish.click();
+                    context.detectChanges();
+
+                    // also validates that custom button worked...
+                    expect(context.testComponent._cancelled).toBe(0, "finish button did not fire cancel");
+                    expect(wizard._open).toBe(false, "custom finish closed the wizard");
+                });
+
+                it("clrWizardOnFinish output is fired", () => {
+                    let finish: any;
+                    expect(context.testComponent._finished).toBe(0, "verify initial state");
+
+                    wizard.pageCollection.lastPage.makeCurrent();
+                    context.detectChanges();
+                    finish = context.testElement.querySelector(".clr-wizard-btn--primary:not(.disabled)");
+                    finish.click();
+                    context.detectChanges();
+
+                    // also validates that custom button worked...
+                    expect(context.testComponent._finished).toBe(1, "finish button fired event");
+                });
+            });
+
+            describe("Pages", () => {
+                it("sets pageCollection.pages", () => {
+                    const wizpages = wizard.pages;
+                    const pagecollection = wizard.pageCollection.pages;
+                    const expected = (wizpages === pagecollection);
+                    expect(expected).toBe(true);
+                });
+
+                it("pageCollection.pages updates when Wizard.pages does", () => {
+                    let wizpages = wizard.pages;
+                    let pagecollection = wizard.pageCollection.pages;
+                    let expected = (wizpages === pagecollection);
+                    const origPageCount = wizard.pageCollection.pagesCount + 0;
+
+                    expect(expected).toBe(true, "inits as the same");
+                    context.testComponent.showExtraPage = true;
+                    context.detectChanges();
+
+                    expected = (wizpages === pagecollection);
+                    expect(wizard.pageCollection.pagesCount).not.toEqual(origPageCount);
+                    expect(expected).toBe(true, "updates as expected");
+                });
+            });
+
+            describe("Alt-Cancel", () => {
+                it("navService.wizardHasAltCancel is set to wizard.stopCancel and updates dynamically", () => {
+                    let val = wizard.navService.wizardHasAltCancel;
+                    let expected = wizard.stopCancel;
+                    expect(val).toBe(expected, "inits as expected");
+
+                    wizard.stopCancel = true;
+                    context.detectChanges();
+
+                    val = wizard.navService.wizardHasAltCancel;
+                    expected = true;
+                    expect(val).toBe(expected, "updates as expected");
+                });
+            });
+
+            describe("Alt-Next", () => {
+                it("navService.wizardHasAltNext is set to wizard.stopNext and updates dynamically", () => {
+                    let val = wizard.navService.wizardHasAltNext;
+                    let expected = wizard.stopNext;
+                    expect(val).toBe(expected, "inits as expected");
+
+                    wizard.stopNext = true;
+                    context.detectChanges();
+
+                    val = wizard.navService.wizardHasAltNext;
+                    expected = true;
+                    expect(val).toBe(expected, "updates as expected");
+                });
+            });
+
+            describe("Force-Forward", () => {
+                it("navService.forceForwardNavigation is set to wizard.forceForward and updates dynamically", () => {
+                    let val = wizard.navService.forceForwardNavigation;
+                    let expected = wizard.forceForward;
+                    expect(val).toBe(expected, "inits as expected");
+
+                    wizard.forceForward = true;
+                    context.detectChanges();
+
+                    val = wizard.navService.forceForwardNavigation;
+                    expected = true;
+                    expect(val).toBe(expected, "updates as expected");
+                });
+            });
+
+            describe("Ghost Pages", () => {
+                xit("can be set via the ??? input", () => {
+                });
+
+                xit("navService.hideWizardGhostPages gets set as expected", () => {
+                });
+            });
+
+            describe("Sizing", () => {
+                it("can be set and updates via the clrWizardSize input", () => {
+                    const wizardModal = context.testElement.querySelector(".modal-dialog");
+                    let hasExpectedClass: boolean;
+                    expect(context.testComponent.mySize).toBeUndefined();
+                    context.testComponent.mySize = "lg";
+                    context.detectChanges();
+                    expect(wizard.size).toBe("lg");
+                    hasExpectedClass = wizardModal.classList.contains("modal-lg");
+                });
+
+                it("defaults to \"xl\"", () => {
+                    const wizardModal = context.testElement.querySelector(".modal-dialog");
+                    let hasExpectedClass: boolean;
+                    expect(context.testComponent.mySize).toBeUndefined();
+                    hasExpectedClass = wizardModal.classList.contains("modal-xl");
+                });
+            });
+
+            describe("Opening", () => {
+                it("emits clrWizardOpenChange output", () => {
+                    wizard.close();
+                    context.detectChanges();
+                    context.testComponent._openChange = 0;
+                    expect(context.testComponent._openChange).toBe(0, "make sure we have reset");
+                    wizard.open();
+                    context.detectChanges();
+                    expect(context.testComponent._openChange).toBe(1, "make sure we have reset");
+                });
+            });
+
+            describe("Closing", () => {
+                it("emits clrWizardOpenChange output", () => {
+                    context.testComponent._openChange = 0;
+                    expect(context.testComponent._openChange).toBe(0, "make sure we have reset");
+                    wizard.close();
+                    context.detectChanges();
+                    expect(context.testComponent._openChange).toBe(1, "make sure we have reset");
+                });
+            });
+
             describe("Alt Cancel Override", () => {
-                // validate that the clrWizardPreventDefaultCancel input keeps wizard from getting cancelled
-                it("true is true", () => {
-                    expect(true).toBe(true);
+                it("clrWizardPreventDefaultCancel input sets and updates stopCancel", () => {
+                    expect(wizard.stopCancel).toBe(context.testComponent.stopCancel);
+                    context.testComponent.stopCancel = true;
+                    context.detectChanges();
+                    expect(wizard.stopCancel).toBe(true);
+                });
+            });
+        });
+
+        describe("Dynamic Content", () => {
+            let context: TestContext<Wizard, DynamicWizardTestComponent>;
+            let wizardNavigationService: WizardNavigationService;
+            let pageCollectionService: PageCollectionService;
+            let wizard: Wizard;
+
+            beforeEach(function() {
+                context = this.create(Wizard, DynamicWizardTestComponent);
+                wizardNavigationService = context.getClarityProvider(WizardNavigationService);
+                pageCollectionService = context.getClarityProvider(PageCollectionService);
+                wizard = context.clarityDirective;
+                context.detectChanges();
+            });
+
+            it("pages can be added via an ngFor", () => {
+                let checkme: HTMLElement;
+
+                expect(wizard.pageCollection.pagesCount).toBe(3);
+
+                checkme = context.testElement.querySelector("#clr-wizard-page-1");
+                expect(checkme.textContent.trim()).toBe("Content for page 1", "page 1 content ok");
+
+                checkme = context.testElement.querySelector("#clr-wizard-page-2");
+                expect(checkme.textContent.trim()).toBe("Content for page 2", "page 2 content ok");
+
+                checkme = context.testElement.querySelector("#clr-wizard-page-4");
+                expect(checkme.textContent.trim()).toBe("Content for page 4", "page 4 content ok");
+
+                // NOW THE STEPNAV
+                checkme = context.testElement.querySelector("#clr-wizard-step-1");
+                expect(checkme.textContent.trim()).toBe("Page 1", "step 1 ok");
+
+                checkme = context.testElement.querySelector("#clr-wizard-step-2");
+                expect(checkme.textContent.trim()).toBe("Page 2", "step 2 ok");
+
+                checkme = context.testElement.querySelector("#clr-wizard-step-4");
+                expect(checkme.textContent.trim()).toBe("Page 4", "step 4 ok");
+            });
+
+            it("content can be changed dynamically", () => {
+                let checkme: HTMLElement;
+                expect(wizard.pageCollection.pagesCount).toBe(3);
+
+                // adding an element to my array
+                context.testComponent.pages.splice(2, 0, 3);
+                context.detectChanges();
+
+                expect(wizard.pageCollection.pagesCount).toBe(4);
+                checkme = context.testElement.querySelector("#clr-wizard-page-1");
+                expect(checkme.textContent.trim()).toBe("Content for page 1", "page 1 content ok");
+
+                checkme = context.testElement.querySelector("#clr-wizard-page-2");
+                expect(checkme.textContent.trim()).toBe("Content for page 2", "page 2 content ok");
+
+                checkme = context.testElement.querySelector("#clr-wizard-page-3");
+                expect(checkme.textContent.trim()).toBe("Content for page 3", "page 3 content ok");
+
+                checkme = context.testElement.querySelector("#clr-wizard-page-4");
+                expect(checkme.textContent.trim()).toBe("Content for page 4", "page 4 content ok");
+
+                // NOW THE STEPNAV
+                checkme = context.testElement.querySelector("#clr-wizard-step-1");
+                expect(checkme.textContent.trim()).toBe("Page 1", "step 1 ok");
+
+                checkme = context.testElement.querySelector("#clr-wizard-step-2");
+                expect(checkme.textContent.trim()).toBe("Page 2", "step 2 ok");
+
+                checkme = context.testElement.querySelector("#clr-wizard-step-3");
+                expect(checkme.textContent.trim()).toBe("Page 3", "step 3 ok");
+
+                checkme = context.testElement.querySelector("#clr-wizard-step-4");
+                expect(checkme.textContent.trim()).toBe("Page 4", "step 4 ok");
+
+                // dynamically hiding a page
+                context.testComponent.showSecondPage = false;
+                context.detectChanges();
+
+                expect(wizard.pageCollection.pagesCount).toBe(3);
+                checkme = context.testElement.querySelector("#clr-wizard-page-1");
+                expect(checkme.textContent.trim()).toBe("Content for page 1", "page 1 content ok");
+
+                checkme = context.testElement.querySelector("#clr-wizard-page-2");
+                expect(checkme).toBeNull();
+
+                checkme = context.testElement.querySelector("#clr-wizard-page-3");
+                expect(checkme.textContent.trim()).toBe("Content for page 3", "page 3 content ok");
+
+                checkme = context.testElement.querySelector("#clr-wizard-page-4");
+                expect(checkme.textContent.trim()).toBe("Content for page 4", "page 4 content ok");
+
+                // NOW THE STEPNAV
+                checkme = context.testElement.querySelector("#clr-wizard-step-1");
+                expect(checkme.textContent.trim()).toBe("Page 1", "step 1 ok");
+
+                checkme = context.testElement.querySelector("#clr-wizard-step-2");
+                expect(checkme).toBeNull();
+
+                checkme = context.testElement.querySelector("#clr-wizard-step-3");
+                expect(checkme.textContent.trim()).toBe("Page 3", "step 3 ok");
+
+                checkme = context.testElement.querySelector("#clr-wizard-step-4");
+                expect(checkme.textContent.trim()).toBe("Page 4", "step 4 ok");
+            });
+
+            it("should survive if there are no pages", () => {
+                expect(wizard.pageCollection.pagesCount).toBe(3);
+                expect(function() {
+                    context.testComponent.pages = [];
+                    context.detectChanges();
+                }).not.toThrowError();
+                expect(wizard.pageCollection.pagesCount).toBe(0);
+            });
+        });
+
+        describe("View and Behavior", () => {
+            describe("Ghost Pages", () => {
+                xit("do not appear by default", () => {
+                });
+
+                xit("can be shown by setting the ??? input", () => {
                 });
             });
 
-            // TODO: CUSTOM BUTTONS???
-        });
+            describe("Close X", () => {
+                xit("shows up by default", () => {
+                });
 
-        describe("Delegates to modal", () => {
-            // validate that clrModalSize is set as expected
-            it("true is true", () => {
-                expect(true).toBe(true);
+                xit("can be hidden with the clrWizardClosable input", () => {
+                });
             });
-            // validate that clrModalClosable is set as expected
-            it("true is true", () => {
-                expect(true).toBe(true);
+
+            describe("Backdrop is static", () => {
+                xit("clrModalStaticBackdrop is set to true", () => {
+                });
             });
-            // validate that clrModalOpenChange event calls wizard.cancel
-            // both dynamically and through clicking
-            it("true is true", () => {
-                expect(true).toBe(true);
+
+            describe("Navigation", () => {
+                xit("happy path through to finish", () => {
+                });
+
+                xit("close and open on last open page", () => {
+                });
+
+                xit("close and open on last navigable page", () => {
+                });
+
+                xit("sets last navigable page current when current page is removed", () => {
+                });
             });
-            // validate that clrModalSkipAnimation is set as expected
-            it("true is true", () => {
-                expect(true).toBe(true);
+
+            describe("Custom Navigation", () => {
+                describe("Alt Cancel Override", () => {
+                    xit("clrWizardPreventDefaultCancel input keeps wizard from getting cancelled", () => {
+                    });
+                });
             });
-            // validate that clrModalGhostPageState is set as expected
-            // and is updated as expected
-            it("true is true", () => {
-                expect(true).toBe(true);
+
+            describe("Delegates to modal", () => {
+                // validate that clrModalSize is set as expected
+                xit("clrModalSize is set as expected", () => {
+                });
+
+                // validate that clrModalClosable is set as expected
+                xit("clrModalClosable is set as expected", () => {
+                });
+
+                // validate that clrModalOpenChange event calls wizard.cancel
+                // both dynamically and through clicking
+                xit("clrModalOpenChange event calls wizard.cancel", () => {
+                });
+
+                // validate that clrModalSkipAnimation is set as expected
+                xit("clrModalSkipAnimation is set as expected", () => {
+                });
+
+                // validate that clrModalGhostPageState is set as expected
+                // and is updated as expected
+                xit("clrModalGhostPageState is set and updated as expected", () => {
+                });
             });
         });
-
     });
-});
-
-// @Component({
-//     template: `
-//     <clr-wizard [(clrWizardOpen)]="open" [clrWizardClosable]="false">
-//         <div class="wizard-title">Title</div>
-//         <clr-wizard-step>Tab1</clr-wizard-step>
-//         <clr-wizard-step>Tab2</clr-wizard-step>
-//         <clr-wizard-step>Tab3</clr-wizard-step>
-//         <clr-wizard-step>Tab4</clr-wizard-step>
-//         <clr-wizard-page>Page1</clr-wizard-page>
-//         <clr-wizard-page>Page2</clr-wizard-page>
-//         <clr-wizard-page>Page3</clr-wizard-page>
-//         <clr-wizard-page>Page4</clr-wizard-page>
-//     </clr-wizard>
-//    `,
-//     template: `
-//     <clr-wizard [(clrWizardOpen)]="open" [clrWizardClosable]="false">
-//         <div class="wizard-title">Title</div>
-//         <clr-wizard-step>Tab1</clr-wizard-step>
-//         <clr-wizard-step>Tab2</clr-wizard-step>
-//         <clr-wizard-step>Tab3</clr-wizard-step>
-//         <clr-wizard-step>Tab4</clr-wizard-step>
-//         <clr-wizard-page>Page1</clr-wizard-page>
-//         <clr-wizard-page>Page2</clr-wizard-page>
-//         <clr-wizard-page>Page3</clr-wizard-page>
-//         <clr-wizard-page>Page4</clr-wizard-page>
-//     </clr-wizard>
-//    `,
-//     viewProviders: [ScrollingService]
-// })
-// class BasicWizard {
-//     @ViewChild(Wizard) wizard: Wizard;
-
-//     open: boolean = true;
-// }
-
-// @Component({
-//     template: `
-//     <clr-wizard
-//         [(clrWizardOpen)]="open"
-//         (clrWizardOnCancel)="myOnCancel($event)">
-//          <div class="wizard-title">
-//             New Virtual Machine
-//          </div>
-
-//          <clr-wizard-step
-//             [clrWizardStepId]="'tab1'">
-//             Tab1
-//          </clr-wizard-step>
-//          <clr-wizard-step
-//             [clrWizardStepId]="'tab2'">
-//             Tab2
-//          </clr-wizard-step>
-//          <clr-wizard-step
-//             [clrWizardStepId]="'tab3'">
-//             Tab3
-//          </clr-wizard-step>
-//          <clr-wizard-step
-//             [clrWizardStepId]="'tab4'">
-//             Tab4
-//          </clr-wizard-step>
-
-//         <clr-wizard-page
-//             (clrWizardPageOnLoad)="myOnLoad()"
-//             [clrWizardPageNextDisabled]="nextDisabled">
-//             <div class="tab1">{{content1}}</div>
-//         </clr-wizard-page>
-
-//         <clr-wizard-page
-//                (clrWizardPageOnCommit)="myOnCommit0($event)">
-//             <div class="tab2"><p>Content2</p></div>
-//          </clr-wizard-page>
-
-//          <clr-wizard-page
-//                (clrWizardPageOnCommit)="myOnCommit($event)"
-//                [clrWizardPageNextDisabled]="dummyErrorFlag"
-//                [clrWizardPageErrorFlag]="dummyErrorFlag">
-//             <div class="errorMessage">Error Message</div>
-//             <div class="tab3"><p>{{content3}}</p></div>
-//          </clr-wizard-page>
-
-//          <clr-wizard-page>
-//             <div class="wizard-page-title">Custom Title</div>
-//             <p>Content4</p>
-//          </clr-wizard-page>
-//       </clr-wizard>
-//     `
-// })
-// class AdvancedWizard {
-//     @ViewChild(Wizard) wizard: Wizard;
-
-//     open: boolean = true;
-//     dummyErrorFlag: boolean = true;
-//     nextDisabled: boolean = false;
-//     content1: String = "Content1";
-//     content3: String = "Content3";
-//     hasBeenCanceled = false;
-
-//     myOnLoad(): void {
-//         this.content1 = "This Works Better";
-//     }
-
-//     myOnCommit0(event: any): void {
-//         this.content3 = "NewContent3";
-//     }
-
-//     myOnCommit(event: any): void {
-//         event.preventDefault();
-//     }
-
-//     myOnCancel(event: any): void {
-//         this.hasBeenCanceled = true;
-//     }
-// };
-
-// describe("Wizard", () => {
-//     let fixture: ComponentFixture<any>;
-//     let instance: Wizard;
-//     let compiled: any;
-
-//     let moveToNext: Function = function (el: any): void {
-//         let next: HTMLElement = el.querySelector(".btn-primary");
-//         next.click();
-//         fixture.detectChanges();
-//     };
-
-//     let moveToPrevious: Function = function (el: any): void {
-//         let back: HTMLElement = el.querySelector(".btn-outline");
-//         back.click();
-//         fixture.detectChanges();
-//     };
-
-//     let doCancel: Function = function(el: any): void {
-//         let cancel: HTMLElement = el.querySelector(".close");
-//         cancel.click();
-//         fixture.detectChanges();
-//     };
-
-//     beforeEach(() => {
-//         TestBed.configureTestingModule({
-//             imports: [ClarityModule.forRoot()],
-//             declarations: [AdvancedWizard, BasicWizard]
-//         });
-//     });
-
-//     afterEach(() => {
-//         fixture.destroy();
-//     });
-
-
-//     describe("Basic", () => {
-
-//         beforeEach(() => {
-//             fixture = TestBed.createComponent(BasicWizard);
-//             fixture.detectChanges();
-//             instance = fixture.componentInstance.wizard;
-//             compiled = fixture.nativeElement;
-//         });
-
-//         it("projects subcomponents", () => {
-//             expect(compiled.querySelectorAll("button.nav-link").length).toEqual(4);
-//             expect(compiled.querySelectorAll("section").length).toEqual(4);
-//         });
-
-//         it("sets the first tab and content as active", () => {
-//             expect(instance.tabLinks[0].active).toBe(true);
-//             expect(instance.tabLinks[1].active).toBe(false);
-//             expect(instance.tabLinks[2].active).toBe(false);
-//             expect(instance.tabLinks[3].active).toBe(false);
-//             expect(instance.tabContents[0].active).toBe(true);
-//             expect(instance.tabContents[1].active).toBe(false);
-//             expect(instance.tabContents[2].active).toBe(false);
-//             expect(instance.tabContents[3].active).toBe(false);
-//         });
-
-//         it("initializes the correct property values", () => {
-//             let linkElements: HTMLElement[] =  compiled.querySelectorAll("clr-wizard-step");
-//             let pageElements: HTMLElement[] =  compiled.querySelectorAll("clr-wizard-page");
-
-//             expect(instance.tabLinks[0].id).toMatch(/clr-wizard-[0-9]+-tab-0/);
-//             expect(instance.tabLinks[0].ariaControls).toMatch(/clr-wizard-[0-9]+-content-0/);
-//             expect(linkElements[0].textContent).toMatch(/Tab1/);
-
-//             expect(instance.tabLinks[1].id).toMatch(/clr-wizard-[0-9]+-tab-1/);
-//             expect(instance.tabLinks[1].ariaControls).toMatch(/clr-wizard-[0-9]+-content-1/);
-//             expect(linkElements[1].textContent).toMatch(/Tab2/);
-
-//             expect(instance.tabLinks[2].id).toMatch(/clr-wizard-[0-9]+-tab-2/);
-//             expect(instance.tabLinks[2].ariaControls).toMatch(/clr-wizard-[0-9]+-content-2/);
-//             expect(linkElements[2].textContent).toMatch(/Tab3/);
-
-//             expect(instance.tabLinks[3].id).toMatch(/clr-wizard-[0-9]+-tab-3/);
-//             expect(instance.tabLinks[3].ariaControls).toMatch(/clr-wizard-[0-9]+-content-3/);
-//             expect(linkElements[3].textContent).toMatch(/Tab4/);
-
-//             expect(instance.tabContents[0].id).toMatch(/clr-wizard-[0-9]+-content-0/);
-//             expect(instance.tabContents[0].ariaLabelledBy).toMatch(/clr-wizard-[0-9]+-tab-0/);
-//             expect(pageElements[0].textContent).toMatch(/Page1/);
-
-//             expect(instance.tabContents[1].id).toMatch(/clr-wizard-[0-9]+-content-1/);
-//             expect(instance.tabContents[1].ariaLabelledBy).toMatch(/clr-wizard-[0-9]+-tab-1/);
-//             expect(pageElements[1].textContent).toMatch(/Page2/);
-
-//             expect(instance.tabContents[2].id).toMatch(/clr-wizard-[0-9]+-content-2/);
-//             expect(instance.tabContents[2].ariaLabelledBy).toMatch(/clr-wizard-[0-9]+-tab-2/);
-//             expect(pageElements[2].textContent).toMatch(/Page3/);
-
-//             expect(instance.tabContents[3].id).toMatch(/clr-wizard-[0-9]+-content-3/);
-//             expect(instance.tabContents[3].ariaLabelledBy).toMatch(/clr-wizard-[0-9]+-tab-3/);
-//             expect(pageElements[3].textContent).toMatch(/Page4/);
-//         });
-
-//         it("activates the matching tab content when a tab is selected", () => {
-//             instance.selectTab(instance.tabLinks[2]);
-//             expect(instance.tabLinks[0].active).toBe(false);
-//             expect(instance.tabLinks[1].active).toBe(false);
-//             expect(instance.tabLinks[2].active).toBe(true);
-//             expect(instance.tabLinks[3].active).toBe(false);
-//             expect(instance.tabContents[0].active).toBe(false);
-//             expect(instance.tabContents[1].active).toBe(false);
-//             expect(instance.tabContents[2].active).toBe(true);
-//             expect(instance.tabContents[3].active).toBe(false);
-//         });
-
-//         it("moves to the next Tab on click of Next button", () => {
-//             expect(instance.tabLinks[0].active).toBe(true);
-//             expect(instance.tabLinks[1].active).toBe(false);
-//             moveToNext(compiled);
-//             expect(instance.tabLinks[0].active).toBe(false);
-//             expect(instance.tabLinks[1].active).toBe(true);
-//         });
-
-//         it("moves to the next Tab on programmatically calling the next() function", () => {
-//             expect(instance.tabLinks[0].active).toBe(true);
-//             expect(instance.tabLinks[1].active).toBe(false);
-//             instance.next();
-//             expect(instance.tabLinks[0].active).toBe(false);
-//             expect(instance.tabLinks[1].active).toBe(true);
-//         });
-
-//         it("moves to the previous Tab on click of Back button", () => {
-//             moveToNext(compiled);
-//             expect(instance.tabLinks[0].active).toBe(false);
-//             expect(instance.tabLinks[1].active).toBe(true);
-//             moveToPrevious(compiled);
-//             expect(instance.tabLinks[0].active).toBe(true);
-//             expect(instance.tabLinks[1].active).toBe(false);
-//         });
-
-//         it("moves to the previous Tab on programmatically calling the prev() function", () => {
-//             instance.next();
-//             expect(instance.tabLinks[0].active).toBe(false);
-//             expect(instance.tabLinks[1].active).toBe(true);
-//             instance.prev();
-//             expect(instance.tabLinks[0].active).toBe(true);
-//             expect(instance.tabLinks[1].active).toBe(false);
-//         });
-
-//         it("hides the Back button in the first tab", () => {
-//             let back: HTMLElement = compiled.querySelector(".btn-outline");
-//             expect(back).toBeNull();
-//         });
-
-//         it("hides the Next button in the last tab", () => {
-//             moveToNext(compiled);
-//             moveToNext(compiled);
-//             moveToNext(compiled);
-//             let primaryButtonText: string = compiled.querySelector(".btn-primary").textContent;
-//             expect(primaryButtonText).not.toMatch(/NEXT/);
-//         });
-
-//         it("passes clrWizardClosable false to the modal", () => {
-//             let closeButton = compiled.querySelector("button.close");
-//             expect(instance.closable).toBe(false);
-//             expect(closeButton).toBeNull();
-//         });
-//     });
-
-//     describe("Advanced", () => {
-
-//         beforeEach(() => {
-//             fixture = TestBed.createComponent(AdvancedWizard);
-//             fixture.detectChanges();
-//             instance = fixture.componentInstance.wizard;
-//             compiled = fixture.nativeElement;
-//         });
-
-//         // this test belongs here because even though we are checking for WizardPage's title,
-//         // it is the wizard's job to get the value from matching WizardStep's title.
-//         it("correctly assigns the tab content title", () => {
-//             let wizardPages: HTMLElement[] = compiled.querySelectorAll("section > label.text-light");
-
-//             expect(wizardPages[0].innerHTML).toMatch(/Tab1/);
-//             expect(wizardPages[1].innerHTML).toMatch(/Tab2/);
-//             expect(wizardPages[2].innerHTML).toMatch(/Tab3/);
-//             expect(wizardPages[3].innerHTML).toMatch(/Custom Title/);
-//         });
-
-//         it("doesn't switch the active tab if user clicks on a disabled tab", () => {
-//             let linkElements: HTMLElement[] = compiled.querySelectorAll("clr-wizard-step");
-
-//             expect(instance.tabLinks[0].active).toBe(true);
-//             expect(instance.tabLinks[1].active).toBe(false);
-
-//             linkElements[1].click();
-//             expect(instance.tabLinks[0].active).toBe(true);
-//             expect(instance.tabLinks[1].active).toBe(false);
-//         });
-
-//         it("should disable the next button if clrWizardPageNextDisabled flag is set to true", () => {
-//             expect(instance.tabLinks[0].active).toBe(true);
-//             expect(instance.tabLinks[1].active).toBe(false);
-
-//             fixture.componentInstance.nextDisabled = true;
-//             fixture.detectChanges();
-//             moveToNext(compiled);
-//             expect(instance.tabLinks[0].active).toBe(true);
-//             expect(instance.tabLinks[1].active).toBe(false);
-
-//             fixture.componentInstance.nextDisabled = false;
-//             fixture.detectChanges();
-//             moveToNext(compiled);
-//             expect(instance.tabLinks[0].active).toBe(false);
-//             expect(instance.tabLinks[1].active).toBe(true);
-//         });
-
-
-//         it("sets the isComplete to true when each step successfully validates " +
-//             "and context moves to next tab", () => {
-//             fixture.componentInstance.nextDisabled = false;
-//             fixture.detectChanges();
-//             moveToNext(compiled);
-//             expect(instance.tabLinks[0].isCompleted).toBe(true);
-//             expect(instance.tabLinks[0].active).toBe(false);
-//             expect(instance.tabLinks[1].active).toBe(true);
-//             expect(instance.tabLinks[2].active).toBe(false);
-//             expect(instance.tabLinks[3].active).toBe(false);
-//             expect(instance.tabContents[0].active).toBe(false);
-//             expect(instance.tabContents[1].active).toBe(true);
-//             expect(instance.tabContents[2].active).toBe(false);
-//             expect(instance.tabContents[3].active).toBe(false);
-//         });
-
-//         it("fires the onLoad for the first tab when the wizard opens", () => {
-//             let tab1: HTMLElement = compiled.querySelector(".tab1");
-//             expect(tab1.textContent).toMatch(/This Works Better/);
-//         });
-
-//         it("fires the onLoad every time a new tab is opened", () => {
-//             let tab1: HTMLElement = compiled.querySelector(".tab1");
-
-//             moveToNext(fixture.nativeElement);
-//             moveToPrevious(fixture.nativeElement);
-
-//             expect(tab1.textContent).toMatch(/This Works Better/);
-//         });
-
-//         it("allows canceling event through a user-defined onCommit handler", () => {
-//             moveToNext(compiled);
-//             expect(instance.tabContents[0].active).toBe(false);
-//             expect(instance.tabContents[1].active).toBe(true);
-//             expect(instance.tabContents[2].active).toBe(false);
-//             expect(instance.tabContents[3].active).toBe(false);
-
-//             moveToNext(compiled);
-//             expect(instance.tabContents[0].active).toBe(false);
-//             expect(instance.tabContents[1].active).toBe(false);
-//             expect(instance.tabContents[2].active).toBe(true);
-//             expect(instance.tabContents[3].active).toBe(false);
-
-//             moveToNext(compiled);
-//             expect(instance.tabContents[0].active).toBe(false);
-//             expect(instance.tabContents[1].active).toBe(false);
-//             expect(instance.tabContents[2].active).toBe(true);
-//             expect(instance.tabContents[3].active).toBe(false);
-//         });
-
-//         it("proceeds to the next tab when no user-defined onCommit is registered", () => {
-//             fixture.componentInstance.nextDisabled = false;
-//             fixture.detectChanges();
-//             moveToNext(compiled);
-//             let tab2: HTMLElement = compiled.querySelector(".tab2");
-//             expect(tab2.textContent).toMatch(/Content2/);
-//             expect(instance.tabLinks[0].active).toBe(false);
-//             expect(instance.tabLinks[1].active).toBe(true);
-//             expect(instance.tabLinks[2].active).toBe(false);
-//             expect(instance.tabLinks[3].active).toBe(false);
-//             expect(instance.tabContents[0].active).toBe(false);
-//             expect(instance.tabContents[1].active).toBe(true);
-//             expect(instance.tabContents[2].active).toBe(false);
-//             expect(instance.tabContents[3].active).toBe(false);
-//         });
-
-//         it("calls the user-defined onCommit handler when the Next button is clicked, and moves to next tab", () => {
-//             fixture.componentInstance.nextDisabled = false;
-//             fixture.detectChanges();
-//             moveToNext(compiled);
-//             moveToNext(compiled);
-//             let tab3: HTMLElement = compiled.querySelector(".tab3");
-//             expect(tab3.textContent).toMatch(/NewContent3/);
-//             expect(instance.tabLinks[0].active).toBe(false);
-//             expect(instance.tabLinks[1].active).toBe(false);
-//             expect(instance.tabLinks[2].active).toBe(true);
-//             expect(instance.tabLinks[3].active).toBe(false);
-//             expect(instance.tabContents[0].active).toBe(false);
-//             expect(instance.tabContents[1].active).toBe(false);
-//             expect(instance.tabContents[2].active).toBe(true);
-//             expect(instance.tabContents[3].active).toBe(false);
-//         });
-
-//         it("displays error message if clrWizardPageErrorFlag is set to true", () => {
-//             moveToNext(compiled);
-//             moveToNext(compiled);
-//             moveToNext(compiled);
-
-//             let contentWrapper: HTMLElement = compiled.querySelector(".errorMessage");
-//             expect(contentWrapper.textContent).toMatch(/Error Message/);
-//             expect(instance.tabLinks[0].active).toBe(false);
-//             expect(instance.tabLinks[1].active).toBe(false);
-//             expect(instance.tabLinks[2].active).toBe(true);
-//             expect(instance.tabLinks[3].active).toBe(false);
-//             expect(instance.tabContents[0].active).toBe(false);
-//             expect(instance.tabContents[1].active).toBe(false);
-//             expect(instance.tabContents[2].active).toBe(true);
-//             expect(instance.tabContents[3].active).toBe(false);
-//         });
-
-//         it("allows skipping of a tab given its id", () => {
-//             instance.skipTab("tab2");
-//             expect(instance.tabLinks.length).toEqual(3);
-//             expect(instance.tabContents.length).toEqual(3);
-
-//             expect(instance.tabLinks[0].id).toEqual("tab1");
-//             expect(instance.tabLinks[1].id).toEqual("tab3");
-//             expect(instance.tabLinks[2].id).toEqual("tab4");
-
-//             moveToNext(compiled);
-
-//             let tab1: HTMLElement = compiled.querySelector(".tab1, .complete");
-//             let tab2: HTMLElement = compiled.querySelector(".tab2, .skipped");
-//             let tab3: HTMLElement = compiled.querySelector(".tab3, .active");
-//             expect(tab1).toBeDefined();
-//             expect(tab2).toBeDefined();
-//             expect(tab3).toBeDefined();
-//         });
-
-//         it("allows un-skipping of a tab given its id", () => {
-//             instance.skipTab("tab2");
-//             expect(instance.tabLinks.length).toEqual(3);
-//             expect(instance.tabContents.length).toEqual(3);
-
-//             expect(instance.tabLinks[0].id).toEqual("tab1");
-//             expect(instance.tabLinks[1].id).toEqual("tab3");
-//             expect(instance.tabLinks[2].id).toEqual("tab4");
-
-//             moveToNext(compiled);
-
-//             let tab1: HTMLElement = compiled.querySelector(".tab1, .complete");
-//             let tab2: HTMLElement = compiled.querySelector(".tab2, .skipped");
-//             let tab3: HTMLElement = compiled.querySelector(".tab3, .active");
-//             let tab4: HTMLElement = compiled.querySelector(".tab4");
-
-//             expect(tab1).toBeDefined();
-//             expect(tab2).toBeDefined();
-//             expect(tab3).toBeDefined();
-//             expect(tab4).toBeDefined();
-
-//             moveToPrevious(compiled);
-//             instance.unSkipTab("tab2");
-
-//             expect(instance.tabLinks.length).toEqual(4);
-//             expect(instance.tabContents.length).toEqual(4);
-
-//             expect(instance.tabLinks[0].id).toEqual("tab1");
-//             expect(instance.tabLinks[1].id).toEqual("tab2");
-//             expect(instance.tabLinks[2].id).toEqual("tab3");
-//             expect(instance.tabLinks[3].id).toEqual("tab4");
-
-//             moveToNext(compiled);
-
-//             tab1 = compiled.querySelector(".tab1, .complete");
-//             tab2 = compiled.querySelector(".tab2, .active");
-//             tab3 = compiled.querySelector(".tab3");
-//             tab4 = compiled.querySelector(".tab4");
-
-//             expect(tab1).toBeDefined();
-//             expect(tab2).toBeDefined();
-//             expect(tab3).toBeDefined();
-//             expect(tab4).toBeDefined();
-//         });
-
-//         it("calls the user-defined onCancel handler when the Cancel button is clicked", () => {
-//             doCancel(compiled);
-//             expect(fixture.componentInstance.hasBeenCanceled).toBe(true);
-//         });
-
-//         it("defaults clrWizardClosable to true", () => {
-//             let closeButton = compiled.querySelector("button.close");
-//             expect(instance.closable).toBe(true);
-//             expect(closeButton).not.toBeNull();
-//         });
-//     });
-// });
+}

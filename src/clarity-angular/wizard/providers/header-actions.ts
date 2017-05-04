@@ -27,7 +27,7 @@ export class HeaderActionService {
     }
 
     public get currentPageHasHeaderActions(): boolean {
-        return this.navService.currentPage.hasHeaderActions;
+        return this.navService.currentPage ? this.navService.currentPage.hasHeaderActions : false;
     }
 
     public get showWizardHeaderActions(): boolean {

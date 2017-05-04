@@ -23,7 +23,8 @@ export class PageCollectionMock {
         return this._stepItemIdWasCalled;
     }
 
-    public previousPageIsCompleted(): boolean {
-        return true;
+    public _previousPageIsCompleted = true;
+    public previousPageIsCompleted(page: any = null): boolean {
+        return this._previousPageIsCompleted;
     }
 }

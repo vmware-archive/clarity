@@ -265,7 +265,7 @@ export class WizardPage implements OnInit {
     }
 
     public makeCurrent(): void {
-        this.navService.setCurrentPage(this);
+        this.navService.currentPage = this;
     }
 
     public ngOnInit(): void {

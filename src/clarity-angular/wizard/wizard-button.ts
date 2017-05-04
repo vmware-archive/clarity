@@ -107,7 +107,7 @@ export class WizardButton {
         let nav = this.navService;
         let page = this.navService.currentPage;
 
-        if (this.disabled) {
+        if (this.disabled || !page) {
             return true;
         }
 

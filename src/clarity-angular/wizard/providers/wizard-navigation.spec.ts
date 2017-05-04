@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { BasicWizardTestComponent } from "../test-components/basic-wizard.mock";
 import { WizardNavigationService } from "./wizard-navigation";
 import { PageCollectionService } from "./page-collection";
-import { Component, ViewChild } from "@angular/core";
 import { Wizard } from "../wizard";
 import { WizardPage } from "../wizard-page";
 import { TestContext } from "../../utils/testing/helpers.spec";
@@ -14,22 +14,21 @@ import { TestContext } from "../../utils/testing/helpers.spec";
 export default function(): void {
 
     describe("Wizard Navigation Service", function() {
-
-        let context: TestContext<Wizard, NavigationTest>;
+        let context: TestContext<Wizard, BasicWizardTestComponent>;
         let wizardNavigationService: WizardNavigationService;
         let pageCollectionService: PageCollectionService;
 
         beforeEach(function() {
-            context = this.create(Wizard, NavigationTest);
+            context = this.create(Wizard, BasicWizardTestComponent);
             wizardNavigationService = context.getClarityProvider(WizardNavigationService);
             pageCollectionService = context.getClarityProvider(PageCollectionService);
             context.detectChanges();
         });
 
-        it(".setCurrentPage() should set the current page and emit the event", function() {
-            wizardNavigationService.setCurrentPage(pageCollectionService.getPageByIndex(1));
+        it("currentPage should set the current page and emit the event", function() {
+            wizardNavigationService.currentPage = pageCollectionService.getPageByIndex(1);
             expect(wizardNavigationService.currentPage).toEqual(pageCollectionService.getPageByIndex(1));
-            wizardNavigationService.setCurrentPage(pageCollectionService.lastPage);
+            wizardNavigationService.currentPage = pageCollectionService.lastPage;
             expect(wizardNavigationService.currentPage).toEqual(pageCollectionService.lastPage);
         });
 
@@ -37,7 +36,7 @@ export default function(): void {
             let testPage = wizardNavigationService.pageCollection.lastPage;
             let wizard = context.clarityDirective;
 
-            wizardNavigationService.setCurrentPage(testPage);
+            wizardNavigationService.currentPage = testPage;
             spyOn(testPage.primaryButtonClicked, "emit");
             spyOn(testPage.onCommit, "emit");
             spyOn(wizard.wizardFinished, "emit");
@@ -68,7 +67,7 @@ export default function(): void {
 
             let testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
             testPage.nextStepDisabled = true;
-            wizardNavigationService.setCurrentPage(testPage);
+            wizardNavigationService.currentPage = testPage;
             expect(wizardNavigationService.next()).toBeUndefined();
         });
 
@@ -77,13 +76,13 @@ export default function(): void {
          * We should investigate possibilities of stripping down some of these tests on finish() and next() */
 
         it(".finish() should commit the current page and emit the event", function() {
-            let testPage = wizardNavigationService.pageCollection.getPageByIndex(3);
+            let testPage = wizardNavigationService.pageCollection.lastPage;
 
             spyOn(testPage.primaryButtonClicked, "emit");
             spyOn(testPage.onCommit, "emit");
             spyOn(context.clarityDirective.wizardFinished, "emit");
 
-            wizardNavigationService.setCurrentPage(testPage);
+            wizardNavigationService.currentPage = testPage;
 
             wizardNavigationService.finish();
 
@@ -107,7 +106,7 @@ export default function(): void {
                 context.clarityDirective.wizardFinished.emit();
             });
 
-            wizardNavigationService.setCurrentPage(testPage);
+            wizardNavigationService.currentPage = testPage;
             wizardNavigationService.finish();
             expect(testPage.primaryButtonClicked.emit).not.toHaveBeenCalled();
             expect(testPage.onCommit.emit).not.toHaveBeenCalled();
@@ -117,14 +116,14 @@ export default function(): void {
 
         it(".previous() should return undefined if the current page is the first page", function() {
             let testPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-            wizardNavigationService.setCurrentPage(testPage);
+            wizardNavigationService.currentPage = testPage;
             expect(wizardNavigationService.previous()).toBeUndefined();
         });
 
         it(".previous() should set the current page to the previous page", function() {
             let testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
             let previousPage = wizardNavigationService.pageCollection.getPageByIndex(1);
-            wizardNavigationService.setCurrentPage(testPage);
+            wizardNavigationService.currentPage = testPage;
             wizardNavigationService.previous();
             expect(wizardNavigationService.currentPage).toEqual(previousPage);
 
@@ -134,7 +133,7 @@ export default function(): void {
             let testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
             let previousPage = wizardNavigationService.pageCollection.getPageByIndex(1);
 
-            wizardNavigationService.setCurrentPage(testPage);
+            wizardNavigationService.currentPage = testPage;
             testPage.completed = true;
 
             wizardNavigationService.forceForwardNavigation = true;
@@ -150,7 +149,7 @@ export default function(): void {
             let goToPage = wizardNavigationService.pageCollection.getPageByIndex(1);
 
             startPage.completed = true;
-            wizardNavigationService.setCurrentPage(testPage);
+            wizardNavigationService.currentPage = testPage;
 
             expect(wizardNavigationService.goTo(goToPage)).toBeUndefined();
             expect(wizardNavigationService.goTo(goToPage.id)).toBeUndefined();
@@ -290,7 +289,7 @@ export default function(): void {
             let testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
             let firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
             let pageCollectionBeforeReset = wizardNavigationService.pageCollection;
-            wizardNavigationService.setCurrentPage(testPage);
+            wizardNavigationService.currentPage = testPage;
             wizardNavigationService.setFirstPageCurrent();
             let pageCollectionAfterReset = wizardNavigationService.pageCollection;
             expect(wizardNavigationService.currentPage).toEqual(firstPage);
@@ -298,8 +297,8 @@ export default function(): void {
         });
 
         it(".forceNext() should throw an error if there's no next page to go to", function() {
-            let testPage = wizardNavigationService.pageCollection.getPageByIndex(3);
-            wizardNavigationService.setCurrentPage(testPage);
+            let testPage = wizardNavigationService.pageCollection.lastPage;
+            wizardNavigationService.currentPage = testPage;
             expect(wizardNavigationService.currentPage).toEqual(testPage);
             expect(() => { wizardNavigationService.forceNext(); }).toThrowError();
         });
@@ -370,11 +369,11 @@ export default function(): void {
             });
 
             it("should emit finish button was clicked", function() {
-                let lastPage = wizardNavigationService.pageCollection.getPageByIndex(3);
+                let lastPage = wizardNavigationService.pageCollection.lastPage;
                 let currentPage: WizardPage;
                 let lastPageIsCurrent: boolean;
 
-                wizardNavigationService.setCurrentPage(lastPage);
+                wizardNavigationService.currentPage = lastPage;
                 context.detectChanges();
                 currentPage = wizardNavigationService.currentPage;
 
@@ -391,11 +390,11 @@ export default function(): void {
             });
 
             it("should emit danger button was clicked", function() {
-                let lastPage = wizardNavigationService.pageCollection.getPageByIndex(3);
+                let lastPage = wizardNavigationService.pageCollection.lastPage;
                 let currentPage: WizardPage;
                 let lastPageIsCurrent: boolean;
 
-                wizardNavigationService.setCurrentPage(lastPage);
+                wizardNavigationService.currentPage = lastPage;
                 context.detectChanges();
 
                 currentPage = wizardNavigationService.currentPage;
@@ -443,11 +442,11 @@ export default function(): void {
                 let checkMe = wizardNavigationService.wizardFinished.subscribe(() => {
                     calledAsExpected = true;
                 });
-                let lastPage = wizardNavigationService.pageCollection.getPageByIndex(3);
+                let lastPage = wizardNavigationService.pageCollection.lastPage;
                 let currentPage: WizardPage;
                 let lastPageIsCurrent: boolean;
 
-                wizardNavigationService.setCurrentPage(lastPage);
+                wizardNavigationService.currentPage = lastPage;
                 context.detectChanges();
                 currentPage = wizardNavigationService.currentPage;
 
@@ -466,11 +465,11 @@ export default function(): void {
                 let checkMe = wizardNavigationService.wizardFinished.subscribe(() => {
                     calledAsExpected = true;
                 });
-                let lastPage = wizardNavigationService.pageCollection.getPageByIndex(3);
+                let lastPage = wizardNavigationService.pageCollection.lastPage;
                 let currentPage: WizardPage;
                 let lastPageIsCurrent: boolean;
 
-                wizardNavigationService.setCurrentPage(lastPage);
+                wizardNavigationService.currentPage = lastPage;
                 context.detectChanges();
                 currentPage = wizardNavigationService.currentPage;
 
@@ -693,7 +692,7 @@ export default function(): void {
 
                 firstPage.completed = true;
                 secondPage.completed = false;
-                wizardNavigationService.setCurrentPage(secondPage);
+                wizardNavigationService.currentPage = secondPage;
 
                 pagesToTest = [ firstPage, secondPage ];
 
@@ -715,40 +714,4 @@ export default function(): void {
             });
         });
     });
-}
-
-@Component({
-    template: `
-            <clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardSize]="'lg'">
-                <clr-wizard-title>My Wizard Title</clr-wizard-title>
-                <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-                <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
-                <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-                <clr-wizard-button [type]="'finish'">Fait Accompli</clr-wizard-button>
-
-                <clr-wizard-page>
-                    <ng-template clrPageTitle>Longer Title for Page 1</ng-template>
-                    <p>Content for step 1</p>
-                </clr-wizard-page>
-
-                <clr-wizard-page>
-                    <ng-template clrPageTitle>Title for Page 2</ng-template>
-                    <p>Content for step 2</p>
-                </clr-wizard-page>
-
-                <clr-wizard-page>
-                    <ng-template clrPageTitle>Title for Page 3</ng-template>
-                    <p>Content for step 3</p>
-                </clr-wizard-page>
-
-                <clr-wizard-page>
-                    <ng-template clrPageTitle>Title for Last Page</ng-template>
-                    <p>Content for step 4</p>
-                </clr-wizard-page>
-            </clr-wizard>
-    `
-})
-class NavigationTest {
-    @ViewChild("wizard") wizard: Wizard;
-    open: boolean = true;
 }

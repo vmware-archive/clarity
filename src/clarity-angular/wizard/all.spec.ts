@@ -1,5 +1,6 @@
 import { addHelpers } from "../utils/testing/helpers.spec";
 
+import WizardSpecs from "./wizard.spec";
 import WizardStepnavItemSpecs from "./wizard-stepnav-item.spec";
 import WizardStepnavSpecs from "./wizard-stepnav.spec";
 import WizardButtonSpecs from "./wizard-button.spec";
@@ -14,6 +15,7 @@ import HeaderActionsSpecs from "./providers/header-actions.spec";
 describe("New Wizard Tests", () => {
     addHelpers();
 
+    WizardSpecs();
     WizardStepnavSpecs();
     WizardStepnavItemSpecs();
     WizardButtonSpecs();

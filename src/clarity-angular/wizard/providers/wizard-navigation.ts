@@ -82,15 +82,15 @@ export class WizardNavigationService implements OnDestroy {
         return this._currentChanged.asObservable();
     };
 
-    public currentPage: WizardPage;
     public navServiceLoaded = false;
     public forceForwardNavigation = false;
 
     public get currentPageTitle(): TemplateRef<any> {
         // when the querylist of pages is empty. this is the first place it fails...
         if (!this.currentPage) {
-            throw new Error("Current page does not exist. QueryList of pages is probably empty and should not be.");
-        }
+            return null;
+            //  throw new Error("Current page does not exist. QueryList of pages is probably empty and should not be.");
+       }
         return this.currentPage.title;
     }
 
@@ -106,10 +106,24 @@ export class WizardNavigationService implements OnDestroy {
         return this.pageCollection.lastPage === this.currentPage;
     }
 
+    private _currentPage: WizardPage;
+    get currentPage(): WizardPage {
+        if (!this._currentPage) {
+            return null;
+        }
+        return this._currentPage;
+    }
+    set currentPage(page: WizardPage) {
+        if (this._currentPage !== page) {
+            this._currentPage = page;
+            page.onLoad.emit(page.id);
+            this._currentChanged.next(page);
+        }
+    }
+
+    // LEGACY
     public setCurrentPage(page: WizardPage): void {
         this.currentPage = page;
-        page.onLoad.emit(page.id);
-        this._currentChanged.next(page);
     }
 
     private _movedToNextPage = new Subject<boolean>();
@@ -154,7 +168,7 @@ export class WizardNavigationService implements OnDestroy {
             // this is a state that alt next flows can get themselves in...
             this.pageCollection.commitPage(currentPage);
         }
-        this.setCurrentPage(nextPage);
+        this.currentPage = nextPage;
     }
 
     public checkAndCommitCurrentPage(buttonType: string): void {
@@ -250,7 +264,7 @@ export class WizardNavigationService implements OnDestroy {
             this.currentPage.completed = false;
         }
 
-        this.setCurrentPage(previousPage);
+        this.currentPage = previousPage;
     }
 
     private _cancelWizard = new Subject<any>();
@@ -308,7 +322,7 @@ export class WizardNavigationService implements OnDestroy {
             });
         }
 
-        this.setCurrentPage(pageToGoTo);
+        this.currentPage = pageToGoTo;
     }
 
     public canGoTo(pagesToCheck: WizardPage[]): boolean {
@@ -366,13 +380,11 @@ export class WizardNavigationService implements OnDestroy {
             lastCompletedPageIndex = lastCompletedPageIndex + 1;
         }
 
-        this.setCurrentPage(allPages[lastCompletedPageIndex]);
+        this.currentPage = allPages[lastCompletedPageIndex];
     }
 
-    // used to reset to the first page
-// TODO?: EASIEST WAY TO SOLVE IS TO HAVE A GENERIC INPUT TO RESET TO A SPECIFIC ID
     public setFirstPageCurrent(): void {
-        this.setCurrentPage(this.pageCollection.pagesAsArray[0]);
+        this.currentPage = this.pageCollection.pagesAsArray[0];
     }
 
     private _wizardGhostPageState: string = GHOST_PAGE_ANIMATION.STATES.NO_PAGES;
@@ -404,6 +416,6 @@ export class WizardNavigationService implements OnDestroy {
 
         currentPageRemoved = this.pageCollection.pagesAsArray.indexOf(this.currentPage) < 0;
         toSetCurrent = this.pageCollection.findFirstIncompletePage();
-        this.setCurrentPage(toSetCurrent);
+        this.currentPage = toSetCurrent;
     }
 }

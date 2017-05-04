@@ -177,21 +177,11 @@ export default function(): void {
             });
 
             describe("canNavigate", () => {
-                xit("should update false/true when previous page is updated", () => {
-                    // mock inits/resets with all false
-                    expect(testItemComponent.isComplete).toBe(false, "inits as false");
-                    fakeOutPage.completed = true;
-                    fixture.detectChanges();
-                    expect(testItemComponent.isComplete).toBe(true, "updates when page is updated");
-                    fakeOutPage.reset();
-                    fixture.detectChanges();
-                    expect(testItemComponent.isComplete).toBe(false, "resets when page is reset");
-                });
-
-                xit("should return true if previousPage is completed", () => {
-                });
-
-                xit("should return false if previousPage is not completed", () => {
+                it("should update false/true when previous page is updated", () => {
+                    // default in the mock returns true
+                    expect(testItemComponent.canNavigate).toBe(true, "inits as true");
+                    pageCollection._previousPageIsCompleted = false;
+                    expect(testItemComponent.canNavigate).toBe(false, "changed to false, returns false");
                 });
 
                 it("should throw an error if page is not present", () => {

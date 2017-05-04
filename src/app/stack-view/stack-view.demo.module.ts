@@ -5,8 +5,8 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "../../clarity-angular";
 import {FormsModule} from "@angular/forms";
+import {ClarityModule} from "../../clarity-angular/clarity.module";
 import {ROUTING} from "./stack-view.demo.routing";
 import {StackViewDemo} from "./stack-view.demo";
 import {StackViewAngularBasicDemo} from "./stack-view-angular-basic";

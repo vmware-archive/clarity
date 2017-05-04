@@ -3,7 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Comparator} from "../../../clarity-angular/datagrid";
+
+import {Comparator} from "../../../clarity-angular/data/datagrid";
 import {User} from "../inventory/user";
 
 export class PokemonComparator implements Comparator<User> {

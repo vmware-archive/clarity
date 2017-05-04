@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "../../clarity-angular";
+import {ClarityModule} from "../../clarity-angular/clarity.module";
 import {ROUTING} from "./nav.demo.routing";
 import {NavDemo} from "./nav.demo";
 import {HeadersDemo} from "./headers";

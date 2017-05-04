@@ -3,7 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {StringFilter} from "../../../clarity-angular/datagrid";
+
+import { StringFilter } from "../../../clarity-angular/data/datagrid/interfaces/string-filter";
 import {User} from "../inventory/user";
 
 export class PokemonFilter implements StringFilter<User> {

@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "../../clarity-angular";
+import {ClarityModule} from "../../clarity-angular/clarity.module";
 import {ROUTING} from "./buttons.demo.routing";
 import {ButtonsDemo} from "./buttons.demo";
 import {RealButtonDemo} from "./real-button";

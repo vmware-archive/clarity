@@ -5,7 +5,7 @@
  */
 
 import {Component, Input, ElementRef, forwardRef, Inject} from "@angular/core";
-import {TabLink} from "../tabs/tab-link";
+import {TabLink} from "../layout/tabs/tab-link";
 import {WizardDeprecated} from "./wizard";
 
 @Component({

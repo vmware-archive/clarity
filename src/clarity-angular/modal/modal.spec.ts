@@ -10,10 +10,10 @@ import {
     fakeAsync,
     tick
 } from "@angular/core/testing";
-import {Component, ViewChild} from "@angular/core";
-import {ClarityModule} from "../clarity.module";
-import {Modal} from "./modal";
-import {NoopAnimationsModule} from "@angular/platform-browser/animations";
+import { Component, ViewChild } from "@angular/core";
+import { Modal } from "./modal";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { ClrModalModule } from "./modal.module";
 
 @Component({
     template: `
@@ -46,7 +46,10 @@ describe("Modal", () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [ClarityModule.forRoot(), NoopAnimationsModule],
+            imports: [
+                ClrModalModule,
+                NoopAnimationsModule
+            ],
             declarations: [TestComponent]
         });
 

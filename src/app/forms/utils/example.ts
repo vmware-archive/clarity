@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, Input, ViewChild, AfterViewInit} from "@angular/core";
-import {CodeHighlight} from "../../../clarity-angular/code/code-highlight";
+import {CodeHighlight} from "../../../clarity-angular/code/syntax-highlight/syntax-highlight";
 
 @Component({
     moduleId: module.id,

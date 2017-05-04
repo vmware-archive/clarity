@@ -5,9 +5,8 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
+import {ClarityModule} from "../../clarity-angular/clarity.module";
 import {FormsModule} from "@angular/forms";
-
-import {ClarityModule} from "../../clarity-angular";
 import {ROUTING} from "./datagrid.demo.routing";
 import {DatagridBasicStructureDemo} from "./basic-structure/basic-structure";
 import {DatagridBindingPropertiesDemo} from "./binding-properties/binding-properties";
@@ -28,7 +27,6 @@ import {DatagridColumnSizingDemo} from "./column-sizing/column-sizing";
 import {DatagridExpandableRowsDemo} from "./expandable-rows/expandable-rows";
 import {DatagridPreserveSelectionDemo} from "./preserve-selection/preserve-selection";
 import {DatagridHideShowDemo} from "./hide-show-columns/hide-show";
-
 import {ColorFilter} from "./utils/color-filter";
 import {Example} from "./utils/example";
 import {FakeLoader} from "./expandable-rows/fake-loader";
@@ -36,7 +34,6 @@ import {DetailWrapper} from "./expandable-rows/detail-wrapper";
 import {DatagridPaginationScrollingDemo} from "./pagination-scrolling/pagination-scrolling";
 import {DatagridTestCasesDemo} from "./test-cases/test-cases";
 import {DatagridTestCasesAsyncDemo} from "./test-cases-async/test-cases-async";
-
 
 @NgModule({
     imports: [

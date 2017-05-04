@@ -6,7 +6,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Wizard } from "../../clarity-angular/wizard/wizard";
 import { WizardPage } from "../../clarity-angular/wizard/wizard-page";
-import { CodeHighlight } from "../../clarity-angular/code/code-highlight";
+import { CodeHighlight } from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
 
 @Component({
     moduleId: module.id,

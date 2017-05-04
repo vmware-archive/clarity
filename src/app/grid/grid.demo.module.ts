@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "../../clarity-angular";
+import {ClarityModule} from "../../clarity-angular/clarity.module";
 import {ROUTING} from "./grid.demo.routing";
 import {GridAutoLayout1Demo} from "./grid-auto-layout-1";
 import {GridAutoLayout2Demo} from "./grid-auto-layout-2";

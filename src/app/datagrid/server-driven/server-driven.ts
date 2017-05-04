@@ -4,11 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-
-import {State} from "../../../clarity-angular/datagrid";
+import {State} from "../../../clarity-angular/data/datagrid";
 import {FetchResult, Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
 import {EXAMPLES} from "./examples";
+
 
 @Component({
     moduleId: module.id,

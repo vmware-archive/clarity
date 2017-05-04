@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "../../clarity-angular";
+import {ClarityModule} from "../../clarity-angular/clarity.module";
 import {ROUTING} from "./typography.demo.routing";
 import {TypographyDemo} from "./typography.demo";
 import {TypographyFontWeightDemo} from "./typography-font-weight";

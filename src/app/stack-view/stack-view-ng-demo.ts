@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {ViewChild} from "@angular/core";
-import {StackBlock} from "../../clarity-angular/stack-view/stack-block";
+import {StackBlock} from "../../clarity-angular/data/stack-view/stack-block";
 
 export class StackViewNgDemo {
     /*

@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "../../clarity-angular";
+import {ClarityModule} from "../../clarity-angular/clarity.module";
 import {ROUTING} from "./buttons.demo.routing";
 import {BasicButtonGroupDemo} from "./angular/basic-structure/basic-button-group";
 import {HideShowOverflowToggleDemo} from "./angular/hide-show-overflow-toggle/hide-show-overflow-toggle";
@@ -22,13 +22,11 @@ import {ProjectionUpdateTest4Demo} from "./angular/projection-update-test-4/proj
 import {ProjectionUpdateTest3Demo} from "./angular/projection-update-test-3/projection-update-test-3";
 import {ProjectionUpdateTest2Demo} from "./angular/projection-update-test-2/projection-update-test-2";
 import {StaticButtonGroupBasicStructureDemo} from "./static/basic-structure/basic-structure";
-
 import {ButtonGroupCheckboxesDemo} from "./static/checkbox/button-group-checkboxes";
 import {ButtonGroupRadiosDemo} from "./static/radio/button-group-radios";
 import {ButtonGroupIconsDemo} from "./static/icons/button-group-icons";
 import {ButtonGroupIconsTextDemo} from "./static/icons-with-text/button-group-icon-text";
 import {ButtonGroupTypes} from "./static/types/button-group-types";
-
 import {ButtonGroupStaticDemo} from "./static/button-group-static";
 import {ButtonGroupAngularDemo} from "./angular/button-group-angular";
 import {ButtonGroupDemo} from "./button-group.demo";

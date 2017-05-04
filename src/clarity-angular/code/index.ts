@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Type } from "@angular/core";
-import { CodeHighlight } from "./code-highlight";
+import { CodeHighlight } from "./syntax-highlight/syntax-highlight";
 
-export * from "./code-highlight";
+export * from "./syntax-highlight/syntax-highlight";
 export const CODE_HIGHLIGHT_DIRECTIVES: Type<any>[] = [
     CodeHighlight
 ];

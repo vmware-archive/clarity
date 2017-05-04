@@ -8,11 +8,9 @@
  * when we have the time. This will be very helpful in future refactors due to Angular upgrades, or simply
  * just to avoid leaks since destroying fixtures is automatic with this.
  */
-import { Type, DebugElement } from "@angular/core";
+import { Type, DebugElement, ModuleWithProviders } from "@angular/core";
 import { TestBed, ComponentFixture } from "@angular/core/testing";
-import { ClarityModule } from "../../clarity.module";
 import { By } from "@angular/platform-browser";
-import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 // import { reportSlowSpecs } from "./slow-specs.spec";
 
 export class TestContext<D, C> {
@@ -51,7 +49,7 @@ export class TestContext<D, C> {
     }
 }
 
-export function addHelpers(): void {
+export function addHelpers(modulesToImport?: Array<Type<any> | ModuleWithProviders | any[]>): void {
     beforeEach(function() {
         /*
          * Ideally we would just make "this" a TestContext, but typing "this" in typescript
@@ -59,7 +57,7 @@ export function addHelpers(): void {
          */
         this.create = <D, C>(clarityDirective: Type<D>, testComponent: Type<C>, providers: any[] = []) => {
             TestBed.configureTestingModule({
-                imports: [ClarityModule.forRoot(), NoopAnimationsModule],
+                imports: modulesToImport,
                 declarations: [testComponent],
                 providers: providers
             });

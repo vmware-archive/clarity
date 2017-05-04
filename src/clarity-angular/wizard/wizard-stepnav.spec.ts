@@ -7,13 +7,13 @@
 import { Component, ViewChild, DebugElement } from "@angular/core";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
-import { ClarityModule } from "../clarity.module";
 import { PageCollectionService } from "./providers/page-collection";
 import { WizardNavigationService } from "./providers/wizard-navigation";
 import { ButtonHubService } from "./providers/button-hub";
 import { WizardStepnav } from "./wizard-stepnav";
 import { MockPage } from "./wizard-page.mock";
 import { PageCollectionMock } from "./providers/page-collection.mock";
+import { ClrWizardModule } from "./wizard.module";
 
 let mockPages: MockPage[];
 
@@ -48,7 +48,7 @@ export default function(): void {
 
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [ ClarityModule.forRoot() ],
+                imports: [ClrWizardModule ],
                 declarations: [ TestComponent ],
                 providers: [
                      WizardNavigationService,

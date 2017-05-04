@@ -14,6 +14,7 @@ import {StackViewStaticDemo} from "./stack-view-static";
 import {StackViewDemo} from "./stack-view.demo";
 import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
         ClarityModule.forChild(),
         FormsModule,
         RouterModule,
-        DocWrapperModule
+        DocWrapperModule,
+        UtilsModule
     ],
     declarations: [
         StackViewAngularBasicDemo,

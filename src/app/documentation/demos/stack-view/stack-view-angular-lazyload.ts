@@ -7,6 +7,34 @@ import {Component, ViewChild} from "@angular/core";
 import {StackViewNgDemo} from "./stack-view-ng-demo";
 import {StackBlock} from "clarity-angular/stack-view/stack-block";
 
+const EXAMPLE = `
+<clr-stack-view>
+    <clr-stack-header>
+        Lazily loaded children
+        <button class="stack-action btn btn-sm btn-link" (click)="resetChildren()" type="button">Reset</button>
+    </clr-stack-header>
+
+    <clr-stack-block #lazyBlock [clrSbExpandable]="true" (clrSbExpandedChange)="fetchChildren()">
+        <clr-stack-label>Label 1</clr-stack-label>
+        <clr-stack-content>Content 1</clr-stack-content>
+
+        <clr-stack-block *ngIf="children.length == 0">
+            <div>Loading...</div>
+        </clr-stack-block>
+
+        <clr-stack-block *ngFor="let child of children">
+            <clr-stack-label>{{child.title}}</clr-stack-label>
+            <clr-stack-content>{{child.content}}</clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block>
+        <clr-stack-label>Label 2</clr-stack-label>
+        <clr-stack-content>Content 2</clr-stack-content>
+    </clr-stack-block>
+</clr-stack-view>
+`;
+
 @Component({
     selector: "clr-stack-view-angular-lazyload-demo",
     templateUrl: "./stack-view-angular-lazyload.html",
@@ -19,4 +47,6 @@ export class StackViewAngularLazyloadDemo extends StackViewNgDemo {
         this.lazyBlock.expanded = false;
         this.children = [];
     }
+
+    example = EXAMPLE;
 };

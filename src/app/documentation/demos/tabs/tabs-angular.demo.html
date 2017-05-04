@@ -21,24 +21,4 @@
         </clr-tab-content>
     </clr-tabs>
 </div>
-
-<pre><code clr-code-highlight="language-html">
-    &lt;clr-tabs (clrTabsCurrentTabLinkChanged)="onTabSelected($event)"
-              (clrTabsCurrentTabIndexChanged)="onTabIndexChanged($event)"
-              (clrTabsCurrentTabContentChanged)="onTabContentActivated($event)"&gt;
-        &lt;clr-tab-link [clrTabLinkId]="'link1'" [clrTabLinkActive]="true"&gt;Dashboard&lt;/clr-tab-link&gt;
-        &lt;clr-tab-link&gt;Management&lt;/clr-tab-link&gt;
-        &lt;clr-tab-link&gt;Cloud&lt;/clr-tab-link&gt;
-
-        &lt;clr-tab-content [clrTabContentId]="'content1'" [clrTabContentActive]="true"&gt;
-            &lt;p&gt;Content for Dashboard tab. Here is a &lt;a href="javascript://"&gt;link&lt;/a&gt; that can be accessed via clicking
-                or through keyboard via tabbing.&lt;/p&gt;
-        &lt;/clr-tab-content&gt;
-        &lt;clr-tab-content&gt;
-            &lt;p&gt;Content for Management tab.&lt;/p&gt;
-        &lt;/clr-tab-content&gt;
-        &lt;clr-tab-content&gt;
-            &lt;p&gt;Content for Cloud tab.&lt;/p&gt;
-        &lt;/clr-tab-content&gt;
-    &lt;/clr-tabs&gt;
-</code></pre>
+<clr-code-snippet [clrCode]="example"></clr-code-snippet>

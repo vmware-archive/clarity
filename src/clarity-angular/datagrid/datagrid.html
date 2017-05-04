@@ -5,7 +5,14 @@
   -->
 
 <ng-content select="clr-dg-action-bar"></ng-content>
-<div class="datagrid" [class.loading]="loading">
+<div class="datagrid" #datagrid>
+    <div class="datagrid-spinner-wrapper" *ngIf="loading">
+        <!--we are using the offsetHeight here to set the height of spinner which is brittle;
+            re-evaluate later to see if there is a better fix for this-->
+        <div class="datagrid-spinner" [style.height.px]="datagrid.offsetHeight">
+            <div class="spinner">Loading...</div>
+        </div>
+    </div>
     <div clrDgTableWrapper class="datagrid-table-wrapper">
         <div clrDgHead class="datagrid-head">
             <div class="datagrid-row datagrid-row-flex">
@@ -44,7 +51,8 @@
 
             <!-- Custom placeholder overrides the default empty one -->
             <ng-content select="clr-dg-placeholder"></ng-content>
-            <clr-dg-placeholder *ngIf="!placeholder"></clr-dg-placeholder></div>
+            <clr-dg-placeholder *ngIf="!placeholder"></clr-dg-placeholder>
+        </div>
     </div>
 
     <!--
@@ -52,8 +60,4 @@
         everything when using custom elements with display:table-cell.
     -->
     <ng-content select="clr-dg-footer"></ng-content>
-
-    <div class="datagrid-spinner" *ngIf="loading">
-        <div class="spinner">Loading...</div>
-    </div>
 </div>

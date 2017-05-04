@@ -27,11 +27,13 @@ const tooltipSizes: string[] = [
     template: `
        <a #anchor href="javascript://" role="tooltip" aria-haspopup="true" class="tooltip" 
                 [ngClass]="'tooltip-' + direction + ' tooltip-' + size">
-            <ng-content></ng-content>
-            <span class="tooltip-content" *clrPopover="visible; anchor: anchor; anchorPoint: anchorPoint; 
-                popoverPoint: popoverPoint;">
-                <ng-content select="clr-tooltip-content"></ng-content>
-            </span>
+           <ng-content></ng-content>
+           <ng-template [(clrPopover)]="visible" [clrPopoverAnchor]="anchor" [clrPopoverAnchorPoint]="anchorPoint"
+                        [clrPopoverPopoverPoint]="popoverPoint">
+                <span class="tooltip-content">
+                    <ng-content select="clr-tooltip-content"></ng-content>
+                </span>
+           </ng-template>
         </a>
     `,
     host: {

@@ -9,7 +9,7 @@ import {Filter} from "./interfaces/filter";
 import {CustomFilter} from "./providers/custom-filter";
 import {FiltersProvider, RegisteredFilter} from "./providers/filters";
 import {DatagridFilterRegistrar} from "./utils/datagrid-filter-registrar";
-import {Point} from "../popover/popover";
+import {Point, PopoverOptions} from "../popover/popover";
 
 
 /**
@@ -25,17 +25,19 @@ import {Point} from "../popover/popover";
         <button #anchor class="datagrid-filter-toggle" (click)="toggle()"
            [class.datagrid-filter-open]="open" [class.datagrid-filtered]="active"></button>
 
-        <div class="datagrid-filter" *clrPopover="open; anchor: anchor; anchorPoint: anchorPoint; 
-            popoverPoint: popoverPoint">
-            <!-- FIXME: this whole filter part needs a final design before we can try to have a cleaner DOM -->
-            <div class="datagrid-filter-close-wrapper">
-                <button type="button" class="close" aria-label="Close" (click)="open = false">
-                    <clr-icon aria-hidden="true" shape="close"></clr-icon>
-                </button>
+        <ng-template [(clrPopover)]="open" [clrPopoverAnchor]="anchor" [clrPopoverAnchorPoint]="anchorPoint"
+             [clrPopoverPopoverPoint]="popoverPoint" [clrPopoverOptions]="popoverOptions">
+            <div class="datagrid-filter">
+                <!-- FIXME: this whole filter part needs a final design before we can try to have a cleaner DOM -->
+                <div class="datagrid-filter-close-wrapper">
+                    <button type="button" class="close" aria-label="Close" (click)="open = false">
+                        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                    </button>
+                </div>
+    
+                <ng-content></ng-content>
             </div>
-
-            <ng-content></ng-content>
-        </div>
+        </ng-template>
     `
 })
 export class DatagridFilter extends DatagridFilterRegistrar<Filter<any>> implements CustomFilter {
@@ -45,6 +47,7 @@ export class DatagridFilter extends DatagridFilterRegistrar<Filter<any>> impleme
 
     public anchorPoint: Point = Point.RIGHT_BOTTOM;
     public popoverPoint: Point = Point.RIGHT_TOP;
+    public popoverOptions: PopoverOptions = { allowMultipleOpen: true };
     /**
      * Tracks whether the filter dropdown is open or not
      */

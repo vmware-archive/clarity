@@ -11,21 +11,21 @@
         <p>
             Clarity's Datagrid uses a declarative interface, so you can use it as you would use an HTML table, directly in your templates. Here is a basic example with simple objects:
         </p>
-        <pre><code clr-code-highlight="language-html">
+        <pre><code clr-code-highlight="language-html" ngNonBindable>
 &lt;clr-datagrid&gt;
-    &lt;{{ 'clr-dg-column [clrDgField]' }}=&quot;'id'&quot;&gt;User ID&lt;/clr-dg-column&gt;
-    &lt;{{ 'clr-dg-column [clrDgField]' }}=&quot;'name'&quot;&gt;Name&lt;/clr-dg-column&gt;
-    &lt;{{ 'clr-dg-column [clrDgField]' }}=&quot;'creation'&quot;&gt;Creation date&lt;/clr-dg-column&gt;
-    &lt;{{ 'clr-dg-row *clrDgItems='}}&quot;{{'let user of users'}}&quot;&gt;
-        &lt;{{'clr-dg-cell'}}&gt;{{ '{ ' }}{{ '{ ' }}{{ 'user.id' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
-        &lt;{{'clr-dg-cell'}}&gt;{{ '{ ' }}{{ '{ ' }}{{ 'user.name' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
-        &lt;{{'clr-dg-cell'}}&gt;{{ '{ ' }}{{ '{ ' }}{{ 'user.creation | date' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
+    &lt;clr-dg-column &#91;clrDgField&#93;=&quot;'id'&quot;&gt;User ID&lt;/clr-dg-column&gt;
+    &lt;clr-dg-column &#91;clrDgField&#93;=&quot;'name'&quot;&gt;Name&lt;/clr-dg-column&gt;
+    &lt;clr-dg-column &#91;clrDgField&#93;=&quot;'creation'&quot;&gt;Creation date&lt;/clr-dg-column&gt;
+    &lt;clr-dg-row *clrDgItems=&quot;let user of users&quot;&gt;
+        &lt;clr-dg-cell&gt;&#123;&#123; user.id &#125;&#125;&lt;/clr-dg-cell&gt;
+        &lt;clr-dg-cell&gt;&#123;&#123; user.name &#125;&#125;&lt;/clr-dg-cell&gt;
+        &lt;clr-dg-cell&gt;&#123;&#123; user.creation | date &#125;&#125;&lt;/clr-dg-cell&gt;
     &lt;/clr-dg-row&gt;
 
-    &lt;{{'clr-dg-footer'}}&gt;
-        {{ '{ ' }}{{ '{ ' }}{{ 'pagination.firstItem + 1' }}{{ ' }' }}{{ '}' }} - {{ '{ ' }}{{ '{ ' }}{{ 'pagination.lastItem + 1' }}{{ ' }' }}{{ '}' }}
-        of {{ '{ ' }}{{ '{ ' }}{{ 'pagination.totalItems' }}{{ ' }' }}{{ '}' }}
-        &lt;{{'clr-dg-pagination #pagination [clrDgPageSize]'}}=&quot;10&quot;&gt;&lt;/clr-dg-pagination&gt;
+    &lt;clr-dg-footer&gt;
+        &#123;&#123; pagination.firstItem + 1 &#125;&#125; - &#123;&#123; pagination.lastItem + 1 &#125;&#125;
+        of &#123;&#123; pagination.totalItems &#125;&#125;
+        &lt;clr-dg-pagination #pagination &#91;clrDgPageSize&#93;=&quot;10&quot;&gt;&lt;/clr-dg-pagination&gt;
     &lt;/clr-dg-footer&gt;
 &lt;/clr-datagrid&gt;
 </code></pre>

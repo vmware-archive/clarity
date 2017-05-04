@@ -5,20 +5,20 @@
         <p>Now you can import all of our components from clarity-angular:</p>
 
         <pre><code clr-code-highlight="language-js">
-import {{ '{' }} DROPDOWN_DIRECTIVES {{ '}' }} from 'clarity-angular';
-import {{ '{' }} Modal {{ '}' }} from 'clarity-angular';
+import &#123; DROPDOWN_DIRECTIVES &#125; from 'clarity-angular';
+import &#123; Modal &#125; from 'clarity-angular';
 ...
 </code></pre>
         <p>If you are using system.js, you also need to add the package config for the above import statements to work:
         </p>
         <pre><code clr-code-highlight="language-js">
-System.config({{ '{' }}
-    packages: {{ '{' }}
-        'clarity-angular' : {{ '{' }} main: 'index.js', defaultExtension: 'js' {{ '}' }},
+System.config(&#123;
+    packages: &#123;
+        'clarity-angular' : &#123; main: 'index.js', defaultExtension: 'js' &#125;,
         ...
-    {{ '}' }},
+    &#125;,
     ...
-{{ '}' }});
+&#125;);
 </code></pre>
 
     </li>
@@ -90,7 +90,7 @@ System.config({{ '{' }}
         <p>In order to use Clarity 0.3.0 components, your web application must also be on Angular version RC4. Here are sample version numbers you could use in your <code class="clr-code">package.json</code>:</p>
 
         <pre><code clr-code-highlight="language-js">
-"dependencies": {{ '{' }}
+"dependencies": &#123;
     "@angular/common": "2.0.0-rc.4",
     "@angular/compiler": "2.0.0-rc.4",
     "@angular/core": "2.0.0-rc.4",
@@ -100,7 +100,7 @@ System.config({{ '{' }}
     "@angular/router": "3.0.0-beta.1",
     "@angular/upgrade": "2.0.0-rc.4",
     ...
-{{ '}' }}
+&#125;
 </code></pre>
 
         <p>Refer to <a href="https://github.com/angular/angular/blob/master/CHANGELOG.md" target="_blank">Angular's changelog</a> for a complete list of breaking changes that may impact your application.</p>
@@ -112,11 +112,11 @@ System.config({{ '{' }}
             to work on browsers that do not support it. You can add the polyfill by installing it on your app...</p>
 
         <pre><code clr-code-highlight="language-js">
-"dependencies": {{ '{' }}
+"dependencies": &#123;
     ...
     "web-animations-js": "^2.2.1",
     ...
-{{ '}' }}
+&#125;
 </code></pre>
 
         <p>...and including it in your application. A sample dev version of your <code class="clr-code">index.html</code> might include something like:</p>

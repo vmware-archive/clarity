@@ -24,7 +24,7 @@
             Using the newly released ClarityIcons API, you can now add your own icons to the publically available ClarityIcons architecture. Use the following call to add your icon to our library in your application:
         </p>
         <pre><code clr-code-highlight="language-typescript">
-ClarityIcons.add({{'{'}}"shapeNameGoesHere": &quot;&lt;svg ... &gt;[your SVG code goes here]&lt;/svg&gt;&quot;{{'}'}});
+ClarityIcons.add(&#123;"shapeNameGoesHere": &quot;&lt;svg ... &gt;[your SVG code goes here]&lt;/svg&gt;&quot;&#125;);
 </code></pre>
         <p>
             This API method will assign your SVG markup to the named shape you sent it. It can then be retrieved like in your application like any other icon in the ClarityIcons library.
@@ -39,7 +39,7 @@ ClarityIcons.add({{'{'}}"shapeNameGoesHere": &quot;&lt;svg ... &gt;[your SVG cod
             You can now create aliases for the icons in your application with a single API call:
         </p>
         <pre><code clr-code-highlight="language-typescript">
-ClarityIcons.alias({{'{'}}"bell": ["alarm", "oh-noehz"]{{'}'}});
+ClarityIcons.alias(&#123;"bell": ["alarm", "oh-noehz"]&#125;);
 </code></pre>
         <p>
             The above alias method call will assign "alarm" and "oh-noehz" names to the existing "bell" icon shape. Now you can use the "bell" icon with any of the new names you have assigned it.
@@ -87,12 +87,12 @@ ClarityIcons.alias({{'{'}}"bell": ["alarm", "oh-noehz"]{{'}'}});
             <a href="https://angular.io/docs/ts/latest/cookbook/ngmodule-faq.html#!#!23q-for-root">here</a> for more information. Clarity Module should now be imported as follows:
         </p>
         <pre><code clr-code-highlight="language-typescript">
-import {{ '{' }} NgModule {{ '}' }} from '@angular/core';
-import {{ '{' }} BrowserModule {{ '}' }} from '@angular/platform-browser';
-import {{ '{' }} ClarityModule {{ '}' }} from 'clarity-angular';
-import {{ '{' }} AppComponent {{ '}' }} from './app.component';
+import &#123; NgModule &#125; from '@angular/core';
+import &#123; BrowserModule &#125; from '@angular/platform-browser';
+import &#123; ClarityModule &#125; from 'clarity-angular';
+import &#123; AppComponent &#125; from './app.component';
 
-@NgModule({{ '{' }}
+@NgModule(&#123;
     imports: [
         BrowserModule,
         ClarityModule.forRoot(),
@@ -100,8 +100,8 @@ import {{ '{' }} AppComponent {{ '}' }} from './app.component';
         ],
         declarations: [ AppComponent ],
         bootstrap: [ AppComponent ]
-{{ '}' }})
-export class AppModule {{ '{' }}    {{ '}' }}
+&#125;)
+export class AppModule &#123;    &#125;
 </code></pre>
     </li>
 </ul>

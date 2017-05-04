@@ -10,7 +10,7 @@
             Here are the recommended version numbers you could use in your package.json:
         </p>
         <pre><code clr-code-highlight="language-js">
-"dependencies": {{ '{' }}
+"dependencies": &#123;
     "@angular/common": "2.0.0",
     "@angular/compiler": "2.0.0",
     "@angular/core": "2.0.0",
@@ -21,20 +21,20 @@
     "@angular/router": "3.0.0",
     "@angular/upgrade": "2.0.0",
     ...
-{{ '}' }}
+&#125;
 </code></pre>
         <p>
             Declaring directives and pipes in components has been deprecated. That means you will no longer import Clarity directives in the components as you have done with previous versions like this:
         </p>
         <pre><code clr-code-highlight="language-js">
-import {{ '{' }}SOME_CLARITY_DIRECTIVE{{ '}' }} from "clarity-angular";
-@Component({{ '{' }}
+import &#123;SOME_CLARITY_DIRECTIVE&#125; from "clarity-angular";
+@Component(&#123;
     ...
     directives: [SOME_CLARITY_DIRECTIVE],
     ...
-{{ '}' }});
+&#125;);
 
-export class YourComponent {{ '{' }}        {{ '}' }}
+export class YourComponent &#123;        &#125;
 </code></pre>
 
         <p>
@@ -42,12 +42,12 @@ export class YourComponent {{ '{' }}        {{ '}' }}
         </p>
 
         <pre><code clr-code-highlight="language-js">
-import {{ '{' }} NgModule {{ '}' }} from '@angular/core';
-import {{ '{' }} BrowserModule {{ '}' }} from '@angular/platform-browser';
-import {{ '{' }} ClarityModule {{ '}' }} from 'clarity-angular';
-import {{ '{' }} AppComponent {{ '}' }} from './app.component';
+import &#123; NgModule &#125; from '@angular/core';
+import &#123; BrowserModule &#125; from '@angular/platform-browser';
+import &#123; ClarityModule &#125; from 'clarity-angular';
+import &#123; AppComponent &#125; from './app.component';
 
-@NgModule({{ '{' }}
+@NgModule(&#123;
     imports: [
         BrowserModule,
         ClarityModule,
@@ -55,10 +55,10 @@ import {{ '{' }} AppComponent {{ '}' }} from './app.component';
     ],
     declarations: [ AppComponent ],
     bootstrap: [ AppComponent ]
-{{ '}' }})
+&#125;)
 
-export class AppModule {{ '{' }}
-{{ '}' }}
+export class AppModule &#123;
+&#125;
 </code></pre>
 
         <p>

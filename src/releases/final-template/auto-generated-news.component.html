@@ -151,9 +151,7 @@
             With 0.9.2, you can add Spinners inside of a Button to indicate loading by using the
             <code class="clr-code">clrLoading</code> directive on a Button.
         </p>
-<pre>
-<code clr-code-highlight="language-html">
-&lt;button [clrLoading]=&quot;loading&quot; class=&quot;btn&quot; (click)=&quot;activateLoading()&quot;&gt;Activate Loading&lt;/button&gt;</code></pre>
+        <pre><code clr-code-highlight="language-html">&lt;button [clrLoading]=&quot;loading&quot; class=&quot;btn&quot; (click)=&quot;activateLoading()&quot;&gt;Activate Loading&lt;/button&gt;</code></pre>
     </li>
 </ul>
 
@@ -238,68 +236,6 @@
     <li bug-fix>Fixed an issue with checkbox and radio label alignment.</li>
     <li bug-fix>Fixed an issue with the content wrapping in the datagrid footer.</li>
     <li bug-fix>Fixed an issue with button groups in cards.</li>
-</ul>
-
-</ng-template>
-
-
-
-<!-- Release Template 0.8.15-->
-
-<ng-template [clrRelease]="'0.8.15'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Updates to the Datagrid Selection Behavior</h6>
-        <p>Datagrid selection is now preserved when:</p>
-        <ul class="list">
-            <li>The user navigates to a different page in the datagrid</li>
-            <li>The data is updated, provided the smart iterator is used in the datagrid</li>
-        </ul>
-    </li>
-    <li>
-        <h6>Expandable rows for Datagrid</h6>
-        <p>
-            This feature can be used when a Datagrid row has additional data or details
-            that can be shown when interacting with the row. It supports many options, including:
-        </p>
-        <ul class="list">
-            <li>Overall details for the row</li>
-            <li>Per-cell details</li>
-            <li>Replacing the original row rather than expand under it</li>
-            <li>Lazy-loading of details</li>
-        </ul>
-        <p>Here is an example of how to make a row expandable:</p>
-        <pre><code clr-code-highlight="language-html" ngNonBindable>
-&lt;clr-dg-row *clrDgItems=&quot;let user of users&quot;&gt;
-    &lt;clr-dg-cell&gt;{{user.id}}&lt;/clr-dg-cell&gt;
-    &lt;clr-dg-cell&gt;{{user.name}}&lt;/clr-dg-cell&gt;
-
-    &lt;clr-dg-row-detail *clrIfExpanded&gt;
-        This user likes ducks.
-    &lt;/clr-dg-row-detail&gt;
-&lt;/clr-dg-row&gt;</code></pre>
-
-        <p>
-        If you include the same amount of <code class="clr-code">&lt;clr-dg-cell&gt;</code>
-        elements in the row details as anywhere else in the datagrid, they will properly align
-        as a way to display details for each cell individually.
-        Details are only instantiated when the row becomes expanded, so they are naturally lazy loaded: just make any AJAX
-        call you need in the constructor or <code class="clr-code">ngOnInit()</code> of the component you put inside the
-        <code class="clr-code">*clrIfExpanded</code> structural directive.
-        To notify us that you want a spinner to be displayed while lazy loading, just include a
-        <code class="clr-code">[clrLoading]="myLoadingBoolean"</code> anywhere inside the details or even the row itself.
-        As long as <code class="clr-code">myLoadingBoolean</code> is true, a spinner will be displayed.
-        </p>
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Fixed the click event listener for buttons inside of a button group.</li>
-    <li bug-fix>Fixed animation to value 0 in progress bars in webkit.</li>
-    <li bug-fix>Separators for clr-dg-column components have been correctly positioned.</li>
 </ul>
 
 </ng-template>
@@ -762,6 +698,68 @@
 
 
 
+<!-- Release Template 0.8.15-->
+
+<ng-template [clrRelease]="'0.8.15'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Updates to the Datagrid Selection Behavior</h6>
+        <p>Datagrid selection is now preserved when:</p>
+        <ul class="list">
+            <li>The user navigates to a different page in the datagrid</li>
+            <li>The data is updated, provided the smart iterator is used in the datagrid</li>
+        </ul>
+    </li>
+    <li>
+        <h6>Expandable rows for Datagrid</h6>
+        <p>
+            This feature can be used when a Datagrid row has additional data or details
+            that can be shown when interacting with the row. It supports many options, including:
+        </p>
+        <ul class="list">
+            <li>Overall details for the row</li>
+            <li>Per-cell details</li>
+            <li>Replacing the original row rather than expand under it</li>
+            <li>Lazy-loading of details</li>
+        </ul>
+        <p>Here is an example of how to make a row expandable:</p>
+        <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-dg-row *clrDgItems=&quot;let user of users&quot;&gt;
+    &lt;clr-dg-cell&gt;{{user.id}}&lt;/clr-dg-cell&gt;
+    &lt;clr-dg-cell&gt;{{user.name}}&lt;/clr-dg-cell&gt;
+
+    &lt;clr-dg-row-detail *clrIfExpanded&gt;
+        This user likes ducks.
+    &lt;/clr-dg-row-detail&gt;
+&lt;/clr-dg-row&gt;</code></pre>
+
+        <p>
+        If you include the same amount of <code class="clr-code">&lt;clr-dg-cell&gt;</code>
+        elements in the row details as anywhere else in the datagrid, they will properly align
+        as a way to display details for each cell individually.
+        Details are only instantiated when the row becomes expanded, so they are naturally lazy loaded: just make any AJAX
+        call you need in the constructor or <code class="clr-code">ngOnInit()</code> of the component you put inside the
+        <code class="clr-code">*clrIfExpanded</code> structural directive.
+        To notify us that you want a spinner to be displayed while lazy loading, just include a
+        <code class="clr-code">[clrLoading]="myLoadingBoolean"</code> anywhere inside the details or even the row itself.
+        As long as <code class="clr-code">myLoadingBoolean</code> is true, a spinner will be displayed.
+        </p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed the click event listener for buttons inside of a button group.</li>
+    <li bug-fix>Fixed animation to value 0 in progress bars in webkit.</li>
+    <li bug-fix>Separators for clr-dg-column components have been correctly positioned.</li>
+</ul>
+
+</ng-template>
+
+
+
 <!-- Release Template 0.8.14-->
 
 <ng-template [clrRelease]="'0.8.14'">
@@ -837,6 +835,23 @@
 
 
 
+<!-- Release Template 0.8.12-->
+
+<ng-template [clrRelease]="'0.8.12'">
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Fixed an issue with progress bars in cards
+    </li>
+    <li bug-fix>
+        Fixed an issue with the datagrid filter positioning
+    </li>
+</ul>
+</ng-template>
+
+
+
 <!-- Release Template 0.8.11-->
 
 <ng-template [clrRelease]="'0.8.11'">
@@ -869,23 +884,6 @@
     <li bug-fix>
         Fixed the regression issue introduced when adding two-way binding to datagrid filters. This fix unwraps data
         returned from DatagridPropertyStringFilter and testing around it.
-    </li>
-</ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.8.12-->
-
-<ng-template [clrRelease]="'0.8.12'">
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>
-        Fixed an issue with progress bars in cards
-    </li>
-    <li bug-fix>
-        Fixed an issue with the datagrid filter positioning
     </li>
 </ul>
 </ng-template>
@@ -926,7 +924,7 @@
         <h6>Datagrid scrolling</h6>
         <p>
             Datagrids can now scroll easily if you set their height. The header and footer stay fixed, only the body
-            containing the rows scrolls. It's as simple as setting the height of the <code>&lt;clr-datagrid&gt;</code>
+            containing the rows scrolls. It's as simple as setting the height of the <code class="clr-code">&lt;clr-datagrid&gt;</code>
             element to a specific value, or making it 100% to fill its container:
         </p>
 <pre><code clr-code-highlight="language-html">
@@ -951,10 +949,10 @@
 <h2>Bug Fixes</h2>
 <ul class="list">
     <li bug-fix>
-        Fixed the padding of form input fields on <code>xs</code> and <code>sm</code> breakpoints.
+        Fixed the padding of form input fields on <code class="clr-code">xs</code> and <code class="clr-code">sm</code> breakpoints.
     </li>
     <li bug-fix>
-        Fixed the error related to Change Detection in <code>DatagridActionOverflow</code>.
+        Fixed the error related to Change Detection in <code class="clr-code">DatagridActionOverflow</code>.
     </li>
     <li bug-fix>
         Renamed the files on which the form styles depends to fix the SASS build issue.
@@ -963,10 +961,57 @@
 
 <h2>Other Changes</h2>
 <ul class="list">
-    <li>Added information on two-way binding workaround for <code>clrWizardOpen</code> to the wizard documentation.</li>
+    <li>Added information on two-way binding workaround for <code class="clr-code">clrWizardOpen</code> to the wizard documentation.</li>
     <li>Cleaned up sidenav's collapsible item to not rely on position property.</li>
     <li>Added Clarity style to radio buttons in datagrid.</li>
 </ul>
+</ng-template>
+
+
+
+<!-- Release Template 0.8.9-->
+
+<ng-template [clrRelease]="'0.8.9'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Datagrid: Two-way binding and default values on filtered state</h6>
+        <p>Added two way binding to filter values for both <code class="clr-code">&lt;clr-dg-column&gt;</code>
+            and <code class="clr-code">&lt;dclr-dg-string-filter&gt;</code>. They now offer the
+            <code class="clr-code">[(clrFilterValue)]</code> property to bind to.</p>
+    </li>
+    <li>
+        <h6>Datagrid: Two-way binding on the sorted state of a column</h6>
+        <p>
+            <code class="clr-code">&lt;clr-dg-column&gt;</code> now offers a <code class="clr-code">[(clrDgSorted)]</code>
+            two-way binding to dynamically force a column to be sorted or not,
+            typically on initialization. It also lets consumers know at all
+            time if a column is sorted or not.
+        </p>
+    </li>
+    <li>
+        <h6>Datagrid: Single selection</h6>
+        <p>Added an option for single selection mode in datagrid.
+            Use <code class="clr-code">[(clrDgSingleSelected)]</code> to
+            use this feature.
+        </p>
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>
+        Moved component styles for form fields from <code class="clr-code">forms.clarity.scss</code>
+        into their own separate files.
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Updated datagrid component to support AOT.</li>
+</ul>
+
 </ng-template>
 
 
@@ -994,32 +1039,7 @@
 <h2>Other Changes</h2>
 <ul class="list">
     <li>Removed overwrite.scss from main.scss</li>
-    <li>Switched the <code>.content-area</code> scroll to only appear when the content overflows</li>
-</ul>
-
-</ng-template>
-
-
-
-<!-- Release Template 0.8.6-->
-
-<ng-template [clrRelease]="'0.8.6'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Designing with Clarity Icons</h6>
-        <p>
-            Now you can download all icons as SVG files in one directory to use in designs.
-            Make sure to check our <a routerLink="/documentation/iconography">Iconography</a> page often as we're constantly adding new icons to our library.
-        </p>
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Fixed an issue with the base64 encoding of Metropolis semi-bold.</li>
-    <li bug-fix>Made Datagrid scrollable if the content is too wide.</li>
+    <li>Switched the <code class="clr-code">.content-area</code> scroll to only appear when the content overflows</li>
 </ul>
 
 </ng-template>
@@ -1054,7 +1074,7 @@
         Added keyboard support for accessing Tooltips
     </li>
     <li>
-        Added a utility class called <code>.u-main-container</code> which can be used when the <code>.subnav</code> is optional
+        Added a utility class called <code class="clr-code">.u-main-container</code> which can be used when the <code class="clr-code">.subnav</code> is optional
         on some pages.
     </li>
 </ul>
@@ -1063,47 +1083,25 @@
 
 
 
-<!-- Release Template 0.8.9-->
+<!-- Release Template 0.8.6-->
 
-<ng-template [clrRelease]="'0.8.9'">
+<ng-template [clrRelease]="'0.8.6'">
 
 <h2>Highlights</h2>
 <ul class="list-unstyled whats-new-highlights">
     <li>
-        <h6>Datagrid: Two-way binding and default values on filtered state</h6>
-        <p>Added two way binding to filter values for both <code>&lt;clr-dg-column&gt;</code>
-            and <code>&lt;dclr-dg-string-filter&gt;</code>. They now offer the
-            <code>[(clrFilterValue)]</code> property to bind to.</p>
-    </li>
-    <li>
-        <h6>Datagrid: Two-way binding on the sorted state of a column</h6>
+        <h6>Designing with Clarity Icons</h6>
         <p>
-            <code>&lt;clr-dg-column&gt;</code> now offers a <code>[(clrDgSorted)]</code>
-            two-way binding to dynamically force a column to be sorted or not,
-            typically on initialization. It also lets consumers know at all
-            time if a column is sorted or not.
+            Now you can download all icons as SVG files in one directory to use in designs.
+            Make sure to check our <a routerLink="/documentation/iconography">Iconography</a> page often as we're constantly adding new icons to our library.
         </p>
-    </li>
-    <li>
-        <h6>Datagrid: Single selection</h6>
-        <p>Added an option for single selection mode in datagrid.
-            Use <code>[(clrDgSingleSelected)]</code> to
-            use this feature.
-        </p>
-    </li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>
-        Moved component styles for form fields from <code>forms.clarity.scss</code>
-        into their own separate files.
     </li>
 </ul>
 
 <h2>Bug Fixes</h2>
 <ul class="list">
-    <li bug-fix>Updated datagrid component to support AOT.</li>
+    <li bug-fix>Fixed an issue with the base64 encoding of Metropolis semi-bold.</li>
+    <li bug-fix>Made Datagrid scrollable if the content is too wide.</li>
 </ul>
 
 </ng-template>
@@ -1120,9 +1118,9 @@
         <h6>New icons for Clarity Icons</h6>
         <p>
             With 0.8.5, Clarity has introduced new icons such as
-            <code>tags</code>, <code>clock</code>, <code>floppy</code>,
-            <code>ellipses-vertical</code>, <code>ellipses-horizontal</code>,
-            and <code>bank</code>.
+            <code class="clr-code">tags</code>, <code class="clr-code">clock</code>, <code class="clr-code">floppy</code>,
+            <code class="clr-code">ellipses-vertical</code>, <code class="clr-code">ellipses-horizontal</code>,
+            and <code class="clr-code">bank</code>.
         </p>
     </li>
 </ul>
@@ -1153,6 +1151,84 @@
 
 
 
+<!-- Release Template 0.8.4-->
+
+<ng-template [clrRelease]="'0.8.4'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li new-component>
+        <h6>New Component: Tree View</h6>
+        <p>
+            Clarity now provides an Angular Tree View component.
+            There are three main types of trees: Basic Tree, Basic Tree
+            with Icons, and Checkbox Tree. Tree supports features like
+            dynamic tree generation, lazy loading of tree nodes, selectable
+            tree nodes, pre-populating a tree etc. For more details, refer to the
+            <a routerLink="/documentation/tree-view">
+                Tree Documentation
+            </a>.
+        </p>
+        <p>
+            <b>Basic Tree Example</b>
+        </p>
+<pre><code clr-code-highlight="language-html">
+&lt;clr-tree-node&gt;
+    &lt;b&gt;Office Locations&lt;/b&gt;
+        &lt;clr-tree-node&gt;
+            USA
+            &lt;clr-tree-node&gt;Palo Alto, CA (Headquarters)&lt;/clr-tree-node&gt;
+            &lt;clr-tree-node&gt;Seattle, WA&lt;/clr-tree-node&gt;
+            &lt;clr-tree-node&gt;Austin, TX&lt;/clr-tree-node&gt;
+        &lt;/clr-tree-node&gt;
+    &lt;clr-tree-node&gt;
+        UK
+        &lt;clr-tree-node&gt;
+            London
+        &lt;/clr-tree-node&gt;
+    &lt;/clr-tree-node&gt;
+    &lt;clr-tree-node&gt;
+        India
+        &lt;clr-tree-node&gt;Bangalore, KA&lt;/clr-tree-node&gt;
+        &lt;clr-tree-node&gt;Pune, MH&lt;/clr-tree-node&gt;
+    &lt;/clr-tree-node&gt;
+&lt;/clr-tree-node&gt;</code></pre>
+    </li>
+    <li>
+        <h6>New icons for Clarity Icons</h6>
+        <p>
+            With 0.8.4, Clarity has introduced many new icons including icons
+            that are requested by our users such as
+            <code class="clr-code">tag</code>, <code class="clr-code">help</code>, <code class="clr-code">plus-circle</code>, etc
+        </p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed an issue with the Header Overflow Trigger alignment.</li>
+    <li bug-fix>Removed active style for focused anchor tag.</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>
+        Support manual selection of Datagrid row.
+    </li>
+    <li>
+        Updated the documentation for Clarity checkboxes.
+    </li>
+    <li>
+        Added Unit Tests for Clarity Icons.
+    </li>
+    <li>
+        Optimized RxJS imports.
+    </li>
+</ul>
+</ng-template>
+
+
+
 <!-- Release Template 0.8.3-->
 
 <ng-template [clrRelease]="'0.8.3'">
@@ -1168,17 +1244,15 @@
             technology-shapes.js) so that now users could load only the group of shapes they need to use after
             loading clarity-icons-lite.umd.js, which is the light version of clarity-icons.min.js. For
             example:</p>
-        <pre>
-        <code clr-code-highlight="language-html">
-        &lt;script src=&quot;path/to/node_modules/clarity-icons/clarity-icons-lite.umd.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;path/to/node_modules/clarity-icons/shapes/social-shapes.umd.js&quot;&gt;&lt;/script&gt;</code></pre>
+<pre><code clr-code-highlight="language-html">
+&lt;script src=&quot;path/to/node_modules/clarity-icons/clarity-icons-lite.umd.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;path/to/node_modules/clarity-icons/shapes/social-shapes.umd.js&quot;&gt;&lt;/script&gt;</code></pre>
         <p>
             The typescript equivalent of the code above is here:
         </p>
-        <pre>
-        <code clr-code-highlight="language-typescript">
-        import "clarity-icons"
-        import "clarity-icons/shapes/social-shapes"</code></pre>
+<pre><code clr-code-highlight="language-typescript">
+import "clarity-icons"
+import "clarity-icons/shapes/social-shapes"</code></pre>
         <p>
             Just one more thing to note here is that by default clarity-icons-lite.umd.js includes Core
             shapes.
@@ -1215,15 +1289,15 @@
         <p>
             You can now import and use ClarityIcons API in your Angular components:
         </p>
-        <pre><code clr-code-highlight="language-typescript">
-import {{'{'}} ClarityIcons {{'}'}} from "clarity-icons"
+<pre><code clr-code-highlight="language-typescript">
+import 	&#123; ClarityIcons &#125; from "clarity-icons"
 </code></pre>
     </li>
 </ul>
 
 <h2>Bug Fixes</h2>
 <ul class="list">
-    <li>Fixed the issue with input width inside of <code>.tooltip-validation</code> in login forms.</li>
+    <li>Fixed the issue with input width inside of <code class="clr-code">.tooltip-validation</code> in login forms.</li>
     <li>Fixed an issue with grids showing horizontal scrolling inside of modals.</li>
     <li>Fixed the EventEmitter for the checked and indeterminate state in the internal angular checkbox component used in Datagrids and Trees.</li>
     <li>Update the plunker link to work with 0.8.x clarity and created a plunker tempalte for the previous version of Clarity (0.7.6).</li>
@@ -1235,8 +1309,8 @@ import {{'{'}} ClarityIcons {{'}'}} from "clarity-icons"
     <li>Styles for wizards were updated to more closely match visual design specs.</li>
     <li>Changed modal documentation to use new layout on website.</li>
     <li>Added a simple app within the Clarity project to test AoT compilation with npm package candidates.</li>
-    <li>The close buttons on modals, alerts, wizards, and the datagrid have been changed to use ClarityIcons. The old method of using the <code>&lt;span&gt;&amp;times;&lt;/span&gt;</code> element has been deprecated and will be removed in 0.9. It is still supported in 0.8, however.</li>
-    <li>The warning color for icons changed to <code>#FAC400</code>.</li>
+    <li>The close buttons on modals, alerts, wizards, and the datagrid have been changed to use ClarityIcons. The old method of using the <code class="clr-code">&lt;span&gt;&amp;times;&lt;/span&gt;</code> element has been deprecated and will be removed in 0.9. It is still supported in 0.8, however.</li>
+    <li>The warning color for icons changed to <code class="clr-code">#FAC400</code>.</li>
 </ul>
 </ng-template>
 
@@ -1261,101 +1335,22 @@ import {{'{'}} ClarityIcons {{'}'}} from "clarity-icons"
         </p>
     </li>
     <li>
-        <h6>Retrieve Clarity Icon templates through the <code>get()</code> method of ClarityIcons API</h6>
-        <p>You can now retrieve all Clarity Icon shape templates through <code>ClarityIcons.get()</code> method. Or if you want to retrieve the template of a particular shape, you can pass the shape name as an argument like <code>ClarityIcons.get("home")</code>.</p>
+        <h6>Retrieve Clarity Icon templates through the <code class="clr-code">get()</code> method of ClarityIcons API</h6>
+        <p>You can now retrieve all Clarity Icon shape templates through <code class="clr-code">ClarityIcons.get()</code> method. Or if you want to retrieve the template of a particular shape, you can pass the shape name as an argument like <code class="clr-code">ClarityIcons.get("home")</code>.</p>
     </li>
 </ul>
 
 <h2>Bug Fixes</h2>
 <ul class="list">
-    <li bug-fix>Fixed Datagrid's <code>*clrDgItems</code> to account for <a target="_blank" href="https://github.com/angular/angular/issues/13641">a breaking change introduced in Angular 2.4.1</a>.</li>
+    <li bug-fix>Fixed Datagrid's <code class="clr-code">*clrDgItems</code> to account for <a target="_blank" href="https://github.com/angular/angular/issues/13641">a breaking change introduced in Angular 2.4.1</a>.</li>
     <li bug-fix>Fixed path issue on user/groups icon that caused outlined path to appear solid.</li>
     <li bug-fix>Fixed website analytics to work with SPA.</li>
 </ul>
 
 <h2>Other Changes</h2>
 <ul class="list">
-    <li>Updated coding guidelines with <code>clr-</code> prefix guidelines.</li>
+    <li>Updated coding guidelines with <code class="clr-code">clr-</code> prefix guidelines.</li>
     <li>Added proper exporting for Stack View components.</li>
-</ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.8.4-->
-
-<ng-template [clrRelease]="'0.8.4'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li new-component>
-        <h6>New Component: Tree View</h6>
-        <p>
-            Clarity now provides an Angular Tree View component.
-            There are three main types of trees: Basic Tree, Basic Tree
-            with Icons, and Checkbox Tree. Tree supports features like
-            dynamic tree generation, lazy loading of tree nodes, selectable
-            tree nodes, pre-populating a tree etc. For more details, refer to the
-            <a routerLink="/documentation/tree-view">
-                Tree Documentation
-            </a>.
-        </p>
-        <p>
-            <b>Basic Tree Example</b>
-        </p>
-        <pre><code clr-code-highlight="language-html">
-        &lt;clr-tree-node&gt;
-            &lt;b&gt;Office Locations&lt;/b&gt;
-                &lt;clr-tree-node&gt;
-                    USA
-                    &lt;clr-tree-node&gt;Palo Alto, CA (Headquarters)&lt;/clr-tree-node&gt;
-                    &lt;clr-tree-node&gt;Seattle, WA&lt;/clr-tree-node&gt;
-                    &lt;clr-tree-node&gt;Austin, TX&lt;/clr-tree-node&gt;
-                &lt;/clr-tree-node&gt;
-            &lt;clr-tree-node&gt;
-                UK
-                &lt;clr-tree-node&gt;
-                    London
-                &lt;/clr-tree-node&gt;
-            &lt;/clr-tree-node&gt;
-            &lt;clr-tree-node&gt;
-                India
-                &lt;clr-tree-node&gt;Bangalore, KA&lt;/clr-tree-node&gt;
-                &lt;clr-tree-node&gt;Pune, MH&lt;/clr-tree-node&gt;
-            &lt;/clr-tree-node&gt;
-        &lt;/clr-tree-node&gt;
-        </code></pre>
-    </li>
-    <li>
-        <h6>New icons for Clarity Icons</h6>
-        <p>
-            With 0.8.4, Clarity has introduced many new icons including icons
-            that are requested by our users such as
-            <code>tag</code>, <code>help</code>, <code>plus-circle</code>, etc
-        </p>
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Fixed an issue with the Header Overflow Trigger alignment.</li>
-    <li bug-fix>Removed active style for focused anchor tag.</li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>
-        Support manual selection of Datagrid row.
-    </li>
-    <li>
-        Updated the documentation for Clarity checkboxes.
-    </li>
-    <li>
-        Added Unit Tests for Clarity Icons.
-    </li>
-    <li>
-        Optimized RxJS imports.
-    </li>
 </ul>
 </ng-template>
 
@@ -1391,7 +1386,7 @@ import {{'{'}} ClarityIcons {{'}'}} from "clarity-icons"
             Using the newly released ClarityIcons API, you can now add your own icons to the publically available ClarityIcons architecture. Use the following call to add your icon to our library in your application:
         </p>
         <pre><code clr-code-highlight="language-typescript">
-ClarityIcons.add({{'{'}}"shapeNameGoesHere": &quot;&lt;svg ... &gt;[your SVG code goes here]&lt;/svg&gt;&quot;{{'}'}});
+ClarityIcons.add(&#123;"shapeNameGoesHere": &quot;&lt;svg ... &gt;[your SVG code goes here]&lt;/svg&gt;&quot;&#125;);
 </code></pre>
         <p>
             This API method will assign your SVG markup to the named shape you sent it. It can then be retrieved like in your application like any other icon in the ClarityIcons library.
@@ -1406,7 +1401,7 @@ ClarityIcons.add({{'{'}}"shapeNameGoesHere": &quot;&lt;svg ... &gt;[your SVG cod
             You can now create aliases for the icons in your application with a single API call:
         </p>
         <pre><code clr-code-highlight="language-typescript">
-ClarityIcons.alias({{'{'}}"bell": ["alarm", "oh-noehz"]{{'}'}});
+ClarityIcons.alias(&#123;"bell": ["alarm", "oh-noehz"]&#125;);
 </code></pre>
         <p>
             The above alias method call will assign "alarm" and "oh-noehz" names to the existing "bell" icon shape. Now you can use the "bell" icon with any of the new names you have assigned it.
@@ -1454,12 +1449,12 @@ ClarityIcons.alias({{'{'}}"bell": ["alarm", "oh-noehz"]{{'}'}});
             <a href="https://angular.io/docs/ts/latest/cookbook/ngmodule-faq.html#!#!23q-for-root">here</a> for more information. Clarity Module should now be imported as follows:
         </p>
         <pre><code clr-code-highlight="language-typescript">
-import {{ '{' }} NgModule {{ '}' }} from '@angular/core';
-import {{ '{' }} BrowserModule {{ '}' }} from '@angular/platform-browser';
-import {{ '{' }} ClarityModule {{ '}' }} from 'clarity-angular';
-import {{ '{' }} AppComponent {{ '}' }} from './app.component';
+import &#123; NgModule &#125; from '@angular/core';
+import &#123; BrowserModule &#125; from '@angular/platform-browser';
+import &#123; ClarityModule &#125; from 'clarity-angular';
+import &#123; AppComponent &#125; from './app.component';
 
-@NgModule({{ '{' }}
+@NgModule(&#123;
     imports: [
         BrowserModule,
         ClarityModule.forRoot(),
@@ -1467,8 +1462,8 @@ import {{ '{' }} AppComponent {{ '}' }} from './app.component';
         ],
         declarations: [ AppComponent ],
         bootstrap: [ AppComponent ]
-{{ '}' }})
-export class AppModule {{ '{' }}    {{ '}' }}
+&#125;)
+export class AppModule &#123;    &#125;
 </code></pre>
     </li>
 </ul>
@@ -1631,55 +1626,17 @@ export class AppModule {{ '{' }}    {{ '}' }}
 <h2>Other Changes</h2>
 <ul>
   <li>
-    Added the <code>.icon-color-error</code> class and unified the color of
-    <code>.icon-color-danger</code> and <code>.icon-color-warning</code> classes
+    Added the <code class="clr-code">.icon-color-error</code> class and unified the color of
+    <code class="clr-code">.icon-color-danger</code> and <code class="clr-code">.icon-color-warning</code> classes
   </li>
   <li>
-    Added a demo for <code>.modal-xl</code> in the Modal documentation.
+    Added a demo for <code class="clr-code">.modal-xl</code> in the Modal documentation.
   </li>
   <li>
     Updated the Typography documentation to add Card Header/Title to the H4 styles
   </li>
 </ul>
 
-</ng-template>
-
-
-
-<!-- Release Template 0.7.2-->
-
-<ng-template [clrRelease]="'0.7.2'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Core icon set for Clarity Icons</h6>
-        <p>
-            With 0.7.2, Clarity has released <a routerLink="/documentation/iconography">a core
-            set of 50 icons</a>. In addition, the orientation of icons can now be adjusted by using the <code>dir</code> attribute or appending the direction to the existing <code>shape</code> attribute.
-        </p>
-    </li>
-    <li>
-        <h6>Sketch template updated to 0.7</h6>
-        <p>
-            The Clarity Sketch template has been updated to 0.7. With the latest release, Sketch template has been rebuilt from the ground up to improve organization and presentation of the components.
-        </p>
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Fixed change detection for smart iterators on datagrid</li>
-    <li bug-fix>Unnecessary log messages removed from the datagrid</li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul>
-    <li>Added placeholder for empty state on data grids</li>
-    <li>Sketch template link added to website homepage</li>
-    <li>Coding guidelines added to github repo</li>
-    <li>Various website enhancements and bug fixes</li>
-</ul>
 </ng-template>
 
 
@@ -1723,6 +1680,44 @@ export class AppModule {{ '{' }}    {{ '}' }}
   <li>Reduced the distance of the dropdown caret from the text/image</li>
 </ul>
 
+</ng-template>
+
+
+
+<!-- Release Template 0.7.2-->
+
+<ng-template [clrRelease]="'0.7.2'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Core icon set for Clarity Icons</h6>
+        <p>
+            With 0.7.2, Clarity has released <a routerLink="/documentation/iconography">a core
+            set of 50 icons</a>. In addition, the orientation of icons can now be adjusted by using the <code class="clr-code">dir</code> attribute or appending the direction to the existing <code class="clr-code">shape</code> attribute.
+        </p>
+    </li>
+    <li>
+        <h6>Sketch template updated to 0.7</h6>
+        <p>
+            The Clarity Sketch template has been updated to 0.7. With the latest release, Sketch template has been rebuilt from the ground up to improve organization and presentation of the components.
+        </p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed change detection for smart iterators on datagrid</li>
+    <li bug-fix>Unnecessary log messages removed from the datagrid</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul>
+    <li>Added placeholder for empty state on data grids</li>
+    <li>Sketch template link added to website homepage</li>
+    <li>Coding guidelines added to github repo</li>
+    <li>Various website enhancements and bug fixes</li>
+</ul>
 </ng-template>
 
 
@@ -1789,21 +1784,21 @@ export class AppModule {{ '{' }}    {{ '}' }}
         <p>
             Clarity's Datagrid uses a declarative interface, so you can use it as you would use an HTML table, directly in your templates. Here is a basic example with simple objects:
         </p>
-        <pre><code clr-code-highlight="language-html">
+        <pre><code clr-code-highlight="language-html" ngNonBindable>
 &lt;clr-datagrid&gt;
-    &lt;{{ 'clr-dg-column [clrDgField]' }}=&quot;'id'&quot;&gt;User ID&lt;/clr-dg-column&gt;
-    &lt;{{ 'clr-dg-column [clrDgField]' }}=&quot;'name'&quot;&gt;Name&lt;/clr-dg-column&gt;
-    &lt;{{ 'clr-dg-column [clrDgField]' }}=&quot;'creation'&quot;&gt;Creation date&lt;/clr-dg-column&gt;
-    &lt;{{ 'clr-dg-row *clrDgItems='}}&quot;{{'let user of users'}}&quot;&gt;
-        &lt;{{'clr-dg-cell'}}&gt;{{ '{ ' }}{{ '{ ' }}{{ 'user.id' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
-        &lt;{{'clr-dg-cell'}}&gt;{{ '{ ' }}{{ '{ ' }}{{ 'user.name' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
-        &lt;{{'clr-dg-cell'}}&gt;{{ '{ ' }}{{ '{ ' }}{{ 'user.creation | date' }}{{ ' }' }}{{ '}' }}&lt;/clr-dg-cell&gt;
+    &lt;clr-dg-column &#91;clrDgField&#93;=&quot;'id'&quot;&gt;User ID&lt;/clr-dg-column&gt;
+    &lt;clr-dg-column &#91;clrDgField&#93;=&quot;'name'&quot;&gt;Name&lt;/clr-dg-column&gt;
+    &lt;clr-dg-column &#91;clrDgField&#93;=&quot;'creation'&quot;&gt;Creation date&lt;/clr-dg-column&gt;
+    &lt;clr-dg-row *clrDgItems=&quot;let user of users&quot;&gt;
+        &lt;clr-dg-cell&gt;&#123;&#123; user.id &#125;&#125;&lt;/clr-dg-cell&gt;
+        &lt;clr-dg-cell&gt;&#123;&#123; user.name &#125;&#125;&lt;/clr-dg-cell&gt;
+        &lt;clr-dg-cell&gt;&#123;&#123; user.creation | date &#125;&#125;&lt;/clr-dg-cell&gt;
     &lt;/clr-dg-row&gt;
 
-    &lt;{{'clr-dg-footer'}}&gt;
-        {{ '{ ' }}{{ '{ ' }}{{ 'pagination.firstItem + 1' }}{{ ' }' }}{{ '}' }} - {{ '{ ' }}{{ '{ ' }}{{ 'pagination.lastItem + 1' }}{{ ' }' }}{{ '}' }}
-        of {{ '{ ' }}{{ '{ ' }}{{ 'pagination.totalItems' }}{{ ' }' }}{{ '}' }}
-        &lt;{{'clr-dg-pagination #pagination [clrDgPageSize]'}}=&quot;10&quot;&gt;&lt;/clr-dg-pagination&gt;
+    &lt;clr-dg-footer&gt;
+        &#123;&#123; pagination.firstItem + 1 &#125;&#125; - &#123;&#123; pagination.lastItem + 1 &#125;&#125;
+        of &#123;&#123; pagination.totalItems &#125;&#125;
+        &lt;clr-dg-pagination #pagination &#91;clrDgPageSize&#93;=&quot;10&quot;&gt;&lt;/clr-dg-pagination&gt;
     &lt;/clr-dg-footer&gt;
 &lt;/clr-datagrid&gt;
 </code></pre>
@@ -1931,6 +1926,19 @@ export class AppModule {{ '{' }}    {{ '}' }}
 
 
 
+<!-- Release Template 0.6.4-->
+
+<ng-template [clrRelease]="'0.6.4'">
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Removed Dropdown Menu close transition to eliminate the delay when the dropdown menu was closed</li>
+    <li bug-fix>Replaced the SVG for the login background to use inline styles instead of the style tag to fix the IE 11 - Windows 10 issue with login backgrounds</li>
+</ul>
+</ng-template>
+
+
+
 <!-- Release Template 0.6.3-->
 
 <ng-template [clrRelease]="'0.6.3'">
@@ -1944,19 +1952,6 @@ export class AppModule {{ '{' }}    {{ '}' }}
     <li bug-fix>Hid the branding icon on tablet-sized and smaller screens</li>
     <li bug-fix>Fixed an issue with alignment and cursors on responsive nav triggers</li>
     <li bug-fix>Fixed a vertical alignment issue in small alerts</li>
-</ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.6.4-->
-
-<ng-template [clrRelease]="'0.6.4'">
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Removed Dropdown Menu close transition to eliminate the delay when the dropdown menu was closed</li>
-    <li bug-fix>Replaced the SVG for the login background to use inline styles instead of the style tag to fix the IE 11 - Windows 10 issue with login backgrounds</li>
 </ul>
 </ng-template>
 
@@ -2010,18 +2005,6 @@ export class AppModule {{ '{' }}    {{ '}' }}
     <li>Implemented website homepage redesign</li>
     <li>Continued cleanup of website content</li>
     <li>Improved installation instructions for Clarity Icons, Clarity UI, and Clarity Angular</li>
-</ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.5.6-->
-
-<ng-template [clrRelease]="'0.5.6'">
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Fixed issue with Clarity Icon dependencies</li>
 </ul>
 </ng-template>
 
@@ -2109,7 +2092,7 @@ export class AppModule {{ '{' }}    {{ '}' }}
         </p>
         <p>
             We recommend that users make customizations in the
-            <code>utils/_overwrite.clarity.scss</code>. This file was created so that users of the Clarity Design System could overwrite our default variable assignments in one location.
+            <code class="clr-code">utils/_overwrite.clarity.scss</code>. This file was created so that users of the Clarity Design System could overwrite our default variable assignments in one location.
         </p>
         <p>
             Overriding the default Clarity Design System variables requires you to rebuild Clarity with your own SASS build.
@@ -2202,6 +2185,18 @@ export class AppModule {{ '{' }}    {{ '}' }}
   <li>Move Text from Component Demo Files to .md Files</li>
 </ul>
 
+</ng-template>
+
+
+
+<!-- Release Template 0.5.6-->
+
+<ng-template [clrRelease]="'0.5.6'">
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed issue with Clarity Icon dependencies</li>
+</ul>
 </ng-template>
 
 
@@ -2312,29 +2307,6 @@ export class AppModule {{ '{' }}    {{ '}' }}
 
 
 
-<!-- Release Template 0.5.2-->
-
-<ng-template [clrRelease]="'0.5.2'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Remove WOFF2 and TrueType fonts</h6>
-        <p>
-            Removed WOFF2 and TrueType font types. This change reduces the size of the minified Clarity css from 661KB to 488KB.
-        </p>
-    </li>
-    <li>
-        <h6>Update Sketch Template for Clarity Components</h6>
-        <p>
-            Various updates of the Clarity Sketch template to keep it in sync with Clarity 0.5.0.
-        </p>
-    </li>
-</ul>
-</ng-template>
-
-
-
 <!-- Release Template 0.5.3-->
 
 <ng-template [clrRelease]="'0.5.3'">
@@ -2373,6 +2345,29 @@ export class AppModule {{ '{' }}    {{ '}' }}
     <li>Add spinner component size variations</li>
     <li>Restructure the left side navigation on the components page of the website</li>
     <li>Improvements to the login page component</li>
+</ul>
+</ng-template>
+
+
+
+<!-- Release Template 0.5.2-->
+
+<ng-template [clrRelease]="'0.5.2'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Remove WOFF2 and TrueType fonts</h6>
+        <p>
+            Removed WOFF2 and TrueType font types. This change reduces the size of the minified Clarity css from 661KB to 488KB.
+        </p>
+    </li>
+    <li>
+        <h6>Update Sketch Template for Clarity Components</h6>
+        <p>
+            Various updates of the Clarity Sketch template to keep it in sync with Clarity 0.5.0.
+        </p>
+    </li>
 </ul>
 </ng-template>
 
@@ -2418,20 +2413,6 @@ export class AppModule {{ '{' }}    {{ '}' }}
 
 
 
-<!-- Release Template 0.4.3-->
-
-<ng-template [clrRelease]="'0.4.3'">
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>
-        Add font-family declaration to body tag
-    </li>
-</ul>
-</ng-template>
-
-
-
 <!-- Release Template 0.5.0-->
 
 <ng-template [clrRelease]="'0.5.0'">
@@ -2448,7 +2429,7 @@ export class AppModule {{ '{' }}    {{ '}' }}
             Here are the recommended version numbers you could use in your package.json:
         </p>
         <pre><code clr-code-highlight="language-js">
-"dependencies": {{ '{' }}
+"dependencies": &#123;
     "@angular/common": "2.0.0",
     "@angular/compiler": "2.0.0",
     "@angular/core": "2.0.0",
@@ -2459,20 +2440,20 @@ export class AppModule {{ '{' }}    {{ '}' }}
     "@angular/router": "3.0.0",
     "@angular/upgrade": "2.0.0",
     ...
-{{ '}' }}
+&#125;
 </code></pre>
         <p>
             Declaring directives and pipes in components has been deprecated. That means you will no longer import Clarity directives in the components as you have done with previous versions like this:
         </p>
         <pre><code clr-code-highlight="language-js">
-import {{ '{' }}SOME_CLARITY_DIRECTIVE{{ '}' }} from "clarity-angular";
-@Component({{ '{' }}
+import &#123;SOME_CLARITY_DIRECTIVE&#125; from "clarity-angular";
+@Component(&#123;
     ...
     directives: [SOME_CLARITY_DIRECTIVE],
     ...
-{{ '}' }});
+&#125;);
 
-export class YourComponent {{ '{' }}        {{ '}' }}
+export class YourComponent &#123;        &#125;
 </code></pre>
 
         <p>
@@ -2480,12 +2461,12 @@ export class YourComponent {{ '{' }}        {{ '}' }}
         </p>
 
         <pre><code clr-code-highlight="language-js">
-import {{ '{' }} NgModule {{ '}' }} from '@angular/core';
-import {{ '{' }} BrowserModule {{ '}' }} from '@angular/platform-browser';
-import {{ '{' }} ClarityModule {{ '}' }} from 'clarity-angular';
-import {{ '{' }} AppComponent {{ '}' }} from './app.component';
+import &#123; NgModule &#125; from '@angular/core';
+import &#123; BrowserModule &#125; from '@angular/platform-browser';
+import &#123; ClarityModule &#125; from 'clarity-angular';
+import &#123; AppComponent &#125; from './app.component';
 
-@NgModule({{ '{' }}
+@NgModule(&#123;
     imports: [
         BrowserModule,
         ClarityModule,
@@ -2493,10 +2474,10 @@ import {{ '{' }} AppComponent {{ '}' }} from './app.component';
     ],
     declarations: [ AppComponent ],
     bootstrap: [ AppComponent ]
-{{ '}' }})
+&#125;)
 
-export class AppModule {{ '{' }}
-{{ '}' }}
+export class AppModule &#123;
+&#125;
 </code></pre>
 
         <p>
@@ -2510,6 +2491,20 @@ export class AppModule {{ '{' }}
         <p>
             Please refer to <a href="https://github.com/angular/angular/blob/master/CHANGELOG.md" target="_blank">Angular's CHANGELOG for a complete list of breaking changes</a> that might impact your application.
         </p>
+    </li>
+</ul>
+</ng-template>
+
+
+
+<!-- Release Template 0.4.3-->
+
+<ng-template [clrRelease]="'0.4.3'">
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Add font-family declaration to body tag
     </li>
 </ul>
 </ng-template>
@@ -2684,20 +2679,6 @@ export class AppModule {{ '{' }}
 
 
 
-<!-- Release Template 0.3.6-->
-
-<ng-template [clrRelease]="'0.3.6'">
-
-<h2>Changes</h2>
-<ul class="list-unstyled">
-    <li>
-        Dropdowns Refactor - Add classes on the host element instead of nesting them
-    </li>
-</ul>
-</ng-template>
-
-
-
 <!-- Release Template 0.4.0-->
 
 <ng-template [clrRelease]="'0.4.0'">
@@ -2836,6 +2817,20 @@ export class AppModule {{ '{' }}
     </li>
     <li>
         Stack View Editor: Style the remove &quot;X&quot;
+    </li>
+</ul>
+</ng-template>
+
+
+
+<!-- Release Template 0.3.6-->
+
+<ng-template [clrRelease]="'0.3.6'">
+
+<h2>Changes</h2>
+<ul class="list-unstyled">
+    <li>
+        Dropdowns Refactor - Add classes on the host element instead of nesting them
     </li>
 </ul>
 </ng-template>
@@ -3088,20 +3083,20 @@ export class AppModule {{ '{' }}
         <p>Now you can import all of our components from clarity-angular:</p>
 
         <pre><code clr-code-highlight="language-js">
-import {{ '{' }} DROPDOWN_DIRECTIVES {{ '}' }} from 'clarity-angular';
-import {{ '{' }} Modal {{ '}' }} from 'clarity-angular';
+import &#123; DROPDOWN_DIRECTIVES &#125; from 'clarity-angular';
+import &#123; Modal &#125; from 'clarity-angular';
 ...
 </code></pre>
         <p>If you are using system.js, you also need to add the package config for the above import statements to work:
         </p>
         <pre><code clr-code-highlight="language-js">
-System.config({{ '{' }}
-    packages: {{ '{' }}
-        'clarity-angular' : {{ '{' }} main: 'index.js', defaultExtension: 'js' {{ '}' }},
+System.config(&#123;
+    packages: &#123;
+        'clarity-angular' : &#123; main: 'index.js', defaultExtension: 'js' &#125;,
         ...
-    {{ '}' }},
+    &#125;,
     ...
-{{ '}' }});
+&#125;);
 </code></pre>
 
     </li>
@@ -3173,7 +3168,7 @@ System.config({{ '{' }}
         <p>In order to use Clarity 0.3.0 components, your web application must also be on Angular version RC4. Here are sample version numbers you could use in your <code class="clr-code">package.json</code>:</p>
 
         <pre><code clr-code-highlight="language-js">
-"dependencies": {{ '{' }}
+"dependencies": &#123;
     "@angular/common": "2.0.0-rc.4",
     "@angular/compiler": "2.0.0-rc.4",
     "@angular/core": "2.0.0-rc.4",
@@ -3183,7 +3178,7 @@ System.config({{ '{' }}
     "@angular/router": "3.0.0-beta.1",
     "@angular/upgrade": "2.0.0-rc.4",
     ...
-{{ '}' }}
+&#125;
 </code></pre>
 
         <p>Refer to <a href="https://github.com/angular/angular/blob/master/CHANGELOG.md" target="_blank">Angular's changelog</a> for a complete list of breaking changes that may impact your application.</p>
@@ -3195,11 +3190,11 @@ System.config({{ '{' }}
             to work on browsers that do not support it. You can add the polyfill by installing it on your app...</p>
 
         <pre><code clr-code-highlight="language-js">
-"dependencies": {{ '{' }}
+"dependencies": &#123;
     ...
     "web-animations-js": "^2.2.1",
     ...
-{{ '}' }}
+&#125;
 </code></pre>
 
         <p>...and including it in your application. A sample dev version of your <code class="clr-code">index.html</code> might include something like:</p>
@@ -3416,9 +3411,11 @@ System.config({{ '{' }}
 <ul class="list-unstyled whats-new-highlights">
     <li>
         <h6>Add new list styles</h6>
-        <p>Styles for <code class="clr-code">ol.list</code> ordered lists were added. A <code class="clr-code">.compact</code> classname was also added. This classname shrinks font-size and line-height of all types of lists.</p>
+        <p>Styles for <code class="clr-code">ol.list</code> ordered lists were added. A <code
+                class="clr-code">.compact</code> classname was also added. This classname shrinks font-size and
+            line-height of all types of lists.</p>
 
-        <pre class=" language-html"><code class=" language-html">
+        <pre><code clr-code-highlight="language-html">
 &lt;ul class=&quot;list compact&quot;&gt;
     ...
 &lt;/ul&gt;
@@ -3445,9 +3442,10 @@ System.config({{ '{' }}
 <ul class="list-unstyled whats-new-highlights">
     <li>
         <h6>Expose a close event in the alert angular component</h6>
-        <p>Allows developers to bind callbacks to the alert close event in their templates as in the following example:</p>
+        <p>Allows developers to bind callbacks to the alert close event in their templates as in the following
+            example:</p>
 
-        <pre class=" language-html"><code class=" language-html">
+        <pre><code clr-code-highlight="language-html">
 &lt;clr-alert [clrAlertType]=&quot;&apos;alert-success&apos;&quot; (clrAlertClosedChange)=&quot;yourMethod()&quot;&gt;
     &hellip;...&hellip;
 &lt;/clr-alert&gt;
@@ -3480,17 +3478,24 @@ System.config({{ '{' }}
 <ul class="list-unstyled whats-new-highlights">
     <li>
         <h6>Compact styling for forms</h6>
-        <p>Extends forms with a class (<code class="clr-code">form.compact</code>) that decreases space between rows on the form.</p>
+        <p>Extends forms with a class (<code class="clr-code">form.compact</code>) that decreases space between rows on
+            the form.</p>
     </li>
     <li>
         <h6 new-component>Add code block highlighting to UI/NG components</h6>
-        <p>Adds a code block highlighting UI and Angular component (<code class="clr-code">clr-code-highlight</code>) to Clarity.</p>
+        <p>Adds a code block highlighting UI and Angular component (<code class="clr-code">clr-code-highlight</code>) to
+            Clarity.</p>
     </li>
     <li>
         <h6>Compact, non-bordered, and vertical HTML table styles</h6>
-        <p>0.2.8 introduced several variants of the HTML table styles in Clarity. These include a compact style (<code class="clr-code">.table-compact</code>) decreases the height of table rows from 36px to 24px, a non-bordered style (<code class="clr-code">.table-noborder</code>)
-            removes the border around HTML tables and in between rows (except for below the header), and a vertical style (<code class="clr-code">.table-vertical</code>) that displays an HTML table with the same orientation as the key-value layout of
-            a Stack View. While not documented on the website yet, examples are available on the Clarity demos in the git repo.</p>
+        <p>0.2.8 introduced several variants of the HTML table styles in Clarity. These include a compact style (<code
+                class="clr-code">.table-compact</code>) decreases the height of table rows from 36px to 24px, a
+            non-bordered style (<code class="clr-code">.table-noborder</code>)
+            removes the border around HTML tables and in between rows (except for below the header), and a vertical
+            style (<code class="clr-code">.table-vertical</code>) that displays an HTML table with the same orientation
+            as the key-value layout of
+            a Stack View. While not documented on the website yet, examples are available on the Clarity demos in the
+            git repo.</p>
     </li>
 </ul>
 
@@ -3503,39 +3508,6 @@ System.config({{ '{' }}
 <h2>Other Changes</h2>
 <ul class="list">
     <li>Make table font-size match stack-view font size
-    </li>
-</ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.2.7-->
-
-<ng-template [clrRelease]="'0.2.7'">
-
-<h2>Improvements</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Make first column of stack view sizable</h6>
-        <p>Overriding the width of the stack view's first column (labels) in CSS is now supported. Use this when the stack view is too wide or when you have an exact width of the first column.</p>
-    </li>
-</ul>
-
-<h2>Bug Fixes</h2>
-<ul class="list">
-    <li bug-fix>Fixed typings error when compiling Clarity Seed for production
-    </li>
-    <li bug-fix>Rows from flexbox changes blowout some demos on clarity-demo
-    </li>
-    <li bug-fix>Put sidenav progress-bar demo back on the website
-    </li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>Add new Getting Started topics to TOC on website
-    </li>
-    <li>We need a &quot;How to file bugs&quot; section in get started on website
     </li>
 </ul>
 </ng-template>
@@ -3599,6 +3571,79 @@ System.config({{ '{' }}
     <li>Add a quick link to &quot;components&quot; on the home page
     </li>
 </ul>
+</ng-template>
+
+
+
+<!-- Release Template 0.2.7-->
+
+<ng-template [clrRelease]="'0.2.7'">
+
+<h2>Improvements</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Make first column of stack view sizable</h6>
+        <p>Overriding the width of the stack view's first column (labels) in CSS is now supported. Use this when the stack view is too wide or when you have an exact width of the first column.</p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed typings error when compiling Clarity Seed for production
+    </li>
+    <li bug-fix>Rows from flexbox changes blowout some demos on clarity-demo
+    </li>
+    <li bug-fix>Put sidenav progress-bar demo back on the website
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Add new Getting Started topics to TOC on website
+    </li>
+    <li>We need a &quot;How to file bugs&quot; section in get started on website
+    </li>
+</ul>
+</ng-template>
+
+
+
+<!-- Release Template 0.2.5-->
+
+<ng-template [clrRelease]="'0.2.5'">
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Build Clarity Seed</h6>
+        <p>
+            This is a seed project for angular 2 apps using Clarity. The goal of this project is to offer a self-contained "getting started" project for any team
+that wishes to build an angular 2 application using Clarity. We included the features that we think are 'common' for all projects, while giving room for
+individuals to easily extend it to fit their project's specific needs. The build system written with gulp and the npm scripts simply run the corresponding gulp commands.
+        </p>
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+<li>Plan and implement packaging for Sketch components
+</li>
+<li>Create content to support templates
+</li>
+<li>Add the Sketch template to the website
+</li>
+<li>Side navigation on Components page has funky indentation
+</li>
+<li>Cards in progress bar demo are clickable to href=&quot;#&quot;
+</li>
+<li>Bundle angular app for Clarity website
+</li>
+<li>Quick changes to stackview design
+</li>
+<li>Fix error messages in seed
+</li>
+</ul>
+
 </ng-template>
 
 
@@ -3669,46 +3714,6 @@ System.config({{ '{' }}
     <li>Move tabs to the Clarity website
     </li>
 </ul>
-</ng-template>
-
-
-
-<!-- Release Template 0.2.5-->
-
-<ng-template [clrRelease]="'0.2.5'">
-
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Build Clarity Seed</h6>
-        <p>
-            This is a seed project for angular 2 apps using Clarity. The goal of this project is to offer a self-contained "getting started" project for any team
-that wishes to build an angular 2 application using Clarity. We included the features that we think are 'common' for all projects, while giving room for
-individuals to easily extend it to fit their project's specific needs. The build system written with gulp and the npm scripts simply run the corresponding gulp commands.
-        </p>
-    </li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-<li>Plan and implement packaging for Sketch components
-</li>
-<li>Create content to support templates
-</li>
-<li>Add the Sketch template to the website
-</li>
-<li>Side navigation on Components page has funky indentation
-</li>
-<li>Cards in progress bar demo are clickable to href=&quot;#&quot;
-</li>
-<li>Bundle angular app for Clarity website
-</li>
-<li>Quick changes to stackview design
-</li>
-<li>Fix error messages in seed
-</li>
-</ul>
-
 </ng-template>
 
 

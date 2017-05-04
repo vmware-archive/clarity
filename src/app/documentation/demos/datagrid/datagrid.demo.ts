@@ -35,6 +35,7 @@ export class DatagridDemo extends ClarityDocComponent {
         "Server-driven Datagrid",
         "Placeholder",
         "Expandable Rows",
+        "Hide/Show Columns",
         "Full Demo"
     ];
     model: string = this.demos[0];

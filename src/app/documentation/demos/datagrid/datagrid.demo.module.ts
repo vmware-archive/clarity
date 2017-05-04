@@ -32,6 +32,7 @@ import {DatagridDemo} from "./datagrid.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
 import {UtilsModule} from "../../../utils/utils.module";
+import {DatagridHideShowColumnsDemo} from "./hide-show-columns/hide-show-columns";
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import {UtilsModule} from "../../../utils/utils.module";
         DatagridStringFilteringDemo,
         DatagridPlaceholderDemo,
         DatagridExpandableRowsDemo,
+        DatagridHideShowColumnsDemo,
         ColorFilter,
         FakeLoader,
         DatagridDemo

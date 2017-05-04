@@ -1,5 +1,11 @@
 export const AUTO_GENERATED_ROUTES = [
 {
+	path: "0.9.3",
+	data: {
+		browserTitle: "0.9.3"
+	}
+},
+{
 	path: "0.9.2",
 	data: {
 		browserTitle: "0.9.2"
@@ -15,6 +21,18 @@ export const AUTO_GENERATED_ROUTES = [
 	path: "0.9.0",
 	data: {
 		browserTitle: "0.9.0"
+	}
+},
+{
+	path: "0.8.18",
+	data: {
+		browserTitle: "0.8.18"
+	}
+},
+{
+	path: "0.8.17",
+	data: {
+		browserTitle: "0.8.17"
 	}
 },
 {

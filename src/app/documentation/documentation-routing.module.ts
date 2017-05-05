@@ -38,6 +38,23 @@ import {TreeViewDemo} from "./demos/tree-view/tree-view.demo";
 import {TypographyDemo} from "./demos/typography/typography.demo";
 import {WizardDemo} from "./demos/wizard/wizard.demo";
 import {WizardOldDemo} from "./demos/wizard-deprecated/wizard.demo";
+import {DatagridBasicStructureDemo} from "./demos/datagrid/basic-structure/basic-structure";
+import {DatagridCustomRenderingDemo} from "./demos/datagrid/custom-rendering/custom-rendering";
+import {DatagridSmartIteratorDemo} from "./demos/datagrid/smart-iterator/smart-iterator";
+import {DatagridSortingDemo} from "./demos/datagrid/sorting/sorting";
+import {DatagridBindingPropertiesDemo} from "./demos/datagrid/binding-properties/binding-properties";
+import {DatagridFilteringDemo} from "./demos/datagrid/filtering/filtering";
+import {DatagridStringFilteringDemo} from "./demos/datagrid/string-filtering/string-filtering";
+import {DatagridPaginationDemo} from "./demos/datagrid/pagination/pagination";
+import {DatagridSelectionDemo} from "./demos/datagrid/selection/selection";
+import {DatagridSelectionSingleDemo} from "./demos/datagrid/single-selection/single-selection";
+import {DatagridBatchActionDemo} from "./demos/datagrid/batch-action/batch-action";
+import {DatagridSingleActionDemo} from "./demos/datagrid/single-action/single-action";
+import {DatagridServerDrivenDemo} from "./demos/datagrid/server-driven/server-driven";
+import {DatagridPlaceholderDemo} from "./demos/datagrid/placeholder/placeholder";
+import {DatagridExpandableRowsDemo} from "./demos/datagrid/expandable-rows/expandable-rows";
+import {DatagridHideShowColumnsDemo} from "./demos/datagrid/hide-show-columns/hide-show-columns";
+import {DatagridFullDemo} from "./demos/datagrid/full/full";
 
 const documentationRoutes: Routes = [
     {
@@ -131,6 +148,131 @@ const documentationRoutes: Routes = [
             {
                 path: "datagrid",
                 component: DatagridDemo,
+                children: [
+                    {
+                        path: "",
+                        redirectTo: "structure"
+                    },
+                    {
+                        path: "structure",
+                        component: DatagridBasicStructureDemo,
+                        data: {
+                            demoName: "Basic Structure"
+                        }
+                    },
+                    {
+                        path: "custom-rendering",
+                        component: DatagridCustomRenderingDemo,
+                        data: {
+                            demoName: "Custom Cell Rendering"
+                        }
+                    },
+                    {
+                        path: "smart-iterator",
+                        component: DatagridSmartIteratorDemo,
+                        data: {
+                            demoName: "Smart Iterator"
+                        }
+                    },
+                    {
+                        path: "binding-properties",
+                        component: DatagridBindingPropertiesDemo,
+                        data: {
+                            demoName: "Binding Properties"
+                        }
+                    },
+                    {
+                        path: "custom-sorting",
+                        component: DatagridSortingDemo,
+                        data: {
+                            demoName: "Custom Sorting"
+                        }
+                    },
+                    {
+                        path: "custom-filtering",
+                        component: DatagridFilteringDemo,
+                        data: {
+                            demoName: "Custom Filtering"
+                        }
+                    },
+                    {
+                        path: "string-filtering",
+                        component: DatagridStringFilteringDemo,
+                        data: {
+                            demoName: "String Filtering"
+                        }
+                    },
+                    {
+                        path: "pagination",
+                        component: DatagridPaginationDemo,
+                        data: {
+                            demoName: "Pagination"
+                        }
+                    },
+                    {
+                        path: "selection",
+                        component: DatagridSelectionDemo,
+                        data: {
+                            demoName: "Selection"
+                        }
+                    },
+                    {
+                        path: "selection-single",
+                        component: DatagridSelectionSingleDemo,
+                        data: {
+                            demoName: "Single Selection"
+                        }
+                    },
+                    {
+                        path: "batch-action",
+                        component: DatagridBatchActionDemo,
+                        data: {
+                            demoName: "Batch Action"
+                        }
+                    },
+                    {
+                        path: "single-action",
+                        component: DatagridSingleActionDemo,
+                        data: {
+                            demoName: "Single Action"
+                        }
+                    },
+                    {
+                        path: "server-driven",
+                        component: DatagridServerDrivenDemo,
+                        data: {
+                            demoName: "Server Driven"
+                        }
+                    },
+                    {
+                        path: "placeholder",
+                        component: DatagridPlaceholderDemo,
+                        data: {
+                            demoName: "Placeholder"
+                        }
+                    },
+                    {
+                        path: "expandable-rows",
+                        component: DatagridExpandableRowsDemo,
+                        data: {
+                            demoName: "Expandable Rows"
+                        }
+                    },
+                    {
+                        path: "hide-show",
+                        component: DatagridHideShowColumnsDemo,
+                        data: {
+                            demoName: "Hide/Show"
+                        }
+                    },
+                    {
+                        path: "full",
+                        component: DatagridFullDemo,
+                        data: {
+                            demoName: "Full Demo"
+                        }
+                    }
+                ],
                 data: {
                     bodyClass: "page-datagrid",
                     browserTitle: "Datagrid"

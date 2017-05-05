@@ -6,11 +6,44 @@
             on.</h5>
 
         <p>
-            We have {{demos.length}} datagrid demos. Starting with the basics, each demo shows
+            We have {{childRoutes.length}} datagrid demos. Starting with the basics, each demo shows
             you use one or more of the advanced Datagrid features.
         </p>
 
-        <form #datagridDemoForm="ngForm">
+        <ul class="list" style="margin-top: 24px">
+            <li><a [routerLink]="['./structure']">Basic Structure</a></li>
+            <li><a [routerLink]="['./custom-rendering']">Custom Cell Rendering</a></li>
+            <li><a [routerLink]="['./smart-iterator']">Smart Iterator</a></li>
+            <li><a [routerLink]="['./binding-properties']">Binding model properties</a></li>
+            <li><a [routerLink]="['./custom-sorting']">Custom Sort</a></li>
+            <li><a [routerLink]="['./custom-filtering']">Custom Filters</a></li>
+            <li><a [routerLink]="['./string-filtering']">Built-in Filters</a></li>
+            <li><a [routerLink]="['./pagination']">Pagination</a></li>
+            <li><a [routerLink]="['./selection']">Selection</a></li>
+            <li><a [routerLink]="['./selection-single']">Selection (Single)</a></li>
+            <li><a [routerLink]="['./batch-action']">Selection Batch Action</a></li>
+            <li><a [routerLink]="['./single-action']">Selection Single Row Action</a></li>
+            <li><a [routerLink]="['./server-driven']">Server-Driven Datagrid</a></li>
+            <li><a [routerLink]="['./placeholder']">Placeholder</a></li>
+            <li><a [routerLink]="['./expandable-rows']">Expandable Rows</a></li>
+            <li><a [routerLink]="['./hide-show']">Hide-show Columns</a></li>
+            <li><a [routerLink]="['./full']">Full demo</a></li>
+        </ul>
+
+        <router-outlet></router-outlet>
+
+        <div class="datagrid-demo-pagination">
+            <button class="btn btn-primary" *ngIf="previous" (click)="movePrevious()">
+                <clr-icon shape="angle-double left"></clr-icon>
+                {{previousRoute.data.demoName}}
+            </button>
+            <button class="btn btn-primary" *ngIf="next" (click)="moveNext()">
+                {{nextRoute.data.demoName}}
+                <clr-icon shape="angle-double right"></clr-icon>
+            </button>
+        </div>
+
+        <!--<form #datagridDemoForm="ngForm">
             <section class="form-block">
                 <label>Datagrid Demos</label>
                 <div class="form-group">
@@ -94,7 +127,7 @@
             <ng-container *ngIf="model === 'Full Demo'">
                 <clr-datagrid-full-demo class="clrweb-datagrid-first-demo"></clr-datagrid-full-demo>
             </ng-container>
-        </div>
+        </div>-->
 
         <h3 id="guidelines">Usage</h3>
 

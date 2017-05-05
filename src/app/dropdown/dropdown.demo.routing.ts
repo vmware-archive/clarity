@@ -14,6 +14,7 @@ import {DropdownStaticIconToggleDemo} from "./dropdown-static-icon-toggle";
 import {DropdownStaticButtonLinkToggleDemo} from "./dropdown-static-buttonlink-toggle";
 import {DropdownAngularPositioningDemo} from "./dropdown-angular-positioning";
 import {DropdownAngularCloseItemFalseDemo} from "./dropdown-angular-close-item-false";
+import {DropdownAngularNestedDemo} from "./dropdown-angular-nested";
 import {DropdownHeaderDemo} from "./dropdown-header";
 
 const ROUTES: Routes = [
@@ -28,6 +29,7 @@ const ROUTES: Routes = [
             { path: "icon-toggle", component: DropdownStaticIconToggleDemo },
             { path: "buttonlink-toggle", component: DropdownStaticButtonLinkToggleDemo },
             { path: "angular-positioning", component: DropdownAngularPositioningDemo },
+            { path: "angular-nested", component: DropdownAngularNestedDemo },
             { path: "multi-click", component: DropdownAngularCloseItemFalseDemo },
             { path: "dropdown-header", component: DropdownHeaderDemo }
         ]

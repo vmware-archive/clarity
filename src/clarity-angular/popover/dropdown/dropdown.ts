@@ -9,29 +9,32 @@ import {
     EventEmitter,
     HostListener,
     Input,
-    Output
+    Optional,
+    Output,
+    SkipSelf
 } from "@angular/core";
 
-import { Point } from "../common/popover";
+import { Point, PopoverOptions } from "../common/popover";
 import { menuPositions } from "./menu-positions";
 
-
-// TODO: the ng-content inside the dropdown-menu should ideally just be
+// TODO: the ng-content inside the ng-template should ideally just be
 // <ng-content select="clr-dropdown-menu"></ng-content>. Remove .dropdown-menu in 1.0?
 @Component({
     selector: "clr-dropdown",
     template: `
         <ng-content select="[clrDropdownToggle]"></ng-content>
         <ng-template [(clrPopover)]="open" [clrPopoverAnchor]="anchor" [clrPopoverAnchorPoint]="anchorPoint"
-                     [clrPopoverPopoverPoint]="popoverPoint">
-            <div class="dropdown-menu">
-                <ng-content select="[clr-dropdown-menu, .dropdown-menu]"></ng-content>
-            </div>
+                     [clrPopoverPopoverPoint]="popoverPoint" [clrPopoverOptions]="popoverOptions">
+            <ng-content select="[clr-dropdown-menu, .dropdown-menu]"></ng-content>
         </ng-template>
     `,
     host: {
-        "[class.dropdown]": "true",
-        "[class.open]": "true" // always set to true; clrPopover will remove it from DOM when not open
+        "[class.dropdown]" : "true",
+        "[class.right-top]" : "menuPosition == 'right-top'",
+        "[class.left-top]" : "menuPosition == 'left-top'",
+        "[class.right-bottom]" : "menuPosition == 'right-bottom'",
+        "[class.left-bottom]" : "menuPosition == 'left-bottom'",
+        "[class.open]" : "true" // always set to true; clrPopover will remove it from DOM when not open
     }
 })
 export class Dropdown {
@@ -46,9 +49,14 @@ export class Dropdown {
     public anchorPoint: Point = Point.BOTTOM_LEFT; // default if menuPosition isn't set
     public popoverPoint: Point = Point.LEFT_TOP; // default if menuPosition isn't set
     public anchor: any; // host element is the anchor
+    public popoverOptions: PopoverOptions = { allowMultipleOpen: true };
 
-    constructor(public elementRef: ElementRef) {
+    constructor(public elementRef: ElementRef, @SkipSelf() @Optional() public parent: Dropdown) {
         this.anchor = elementRef.nativeElement;
+    }
+
+    get isRootLevelDropdown(): boolean {
+        return this.parent === null;
     }
 
     @Input("clrMenuPosition")
@@ -97,6 +105,10 @@ export class Dropdown {
                 this.popoverPoint = Point.LEFT_TOP;
                 break;
         }
+    }
+
+    get menuPosition(): string {
+        return this._menuPosition;
     }
 
     toggleDropdown(): void {

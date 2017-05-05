@@ -13,14 +13,20 @@ export default function(): void {
     describe("DropdownMenu component", function() {
         let context: TestContext<DropdownMenu, SimpleTest>;
         let toggle: HTMLElement;
+        let compiled: any;
 
         beforeEach(function() {
             context = this.create(DropdownMenu, SimpleTest);
             toggle = context.clarityElement.querySelector("clr-icon");
+            compiled = context.fixture.nativeElement;
         });
 
         it("projects content", function() {
             expect(context.clarityElement.textContent.trim()).toMatch("Hello world");
+        });
+
+        it("has the correct css classes", () => {
+            expect(compiled.querySelector(".dropdown-menu")).not.toBeNull();
         });
 
     });

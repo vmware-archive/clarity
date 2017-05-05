@@ -10,36 +10,51 @@
             you use one or more of the advanced Datagrid features.
         </p>
 
-        <ul class="list" style="margin-top: 24px">
-            <li><a [routerLink]="['./structure']">Basic Structure</a></li>
-            <li><a [routerLink]="['./custom-rendering']">Custom Cell Rendering</a></li>
-            <li><a [routerLink]="['./smart-iterator']">Smart Iterator</a></li>
-            <li><a [routerLink]="['./binding-properties']">Binding model properties</a></li>
-            <li><a [routerLink]="['./custom-sorting']">Custom Sort</a></li>
-            <li><a [routerLink]="['./custom-filtering']">Custom Filters</a></li>
-            <li><a [routerLink]="['./string-filtering']">Built-in Filters</a></li>
-            <li><a [routerLink]="['./pagination']">Pagination</a></li>
-            <li><a [routerLink]="['./selection']">Selection</a></li>
-            <li><a [routerLink]="['./selection-single']">Selection (Single)</a></li>
-            <li><a [routerLink]="['./batch-action']">Selection Batch Action</a></li>
-            <li><a [routerLink]="['./single-action']">Selection Single Row Action</a></li>
-            <li><a [routerLink]="['./server-driven']">Server-Driven Datagrid</a></li>
-            <li><a [routerLink]="['./placeholder']">Placeholder</a></li>
-            <li><a [routerLink]="['./expandable-rows']">Expandable Rows</a></li>
-            <li><a [routerLink]="['./hide-show']">Hide-show Columns</a></li>
-            <li><a [routerLink]="['./full']">Full demo</a></li>
-        </ul>
+        <!-- This is manually coded right now but we can get these values from the routes imported in datagrid.demo.ts-->
+        <div class="row" style="margin-top: 24px">
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <ul class="list">
+                    <li><a [routerLink]="['./structure']">Basic Structure</a></li>
+                    <li><a [routerLink]="['./custom-rendering']">Custom Cell Rendering</a></li>
+                    <li><a [routerLink]="['./smart-iterator']">Smart Iterator</a></li>
+                    <li><a [routerLink]="['./binding-properties']">Binding model properties</a></li>
+                    <li><a [routerLink]="['./custom-sorting']">Custom Sort</a></li>
+                    <li><a [routerLink]="['./custom-filtering']">Custom Filters</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <ul class="list">
+                    <li><a [routerLink]="['./string-filtering']">Built-in Filters</a></li>
+                    <li><a [routerLink]="['./pagination']">Pagination</a></li>
+                    <li><a [routerLink]="['./selection']">Selection</a></li>
+                    <li><a [routerLink]="['./selection-single']">Selection (Single)</a></li>
+                    <li><a [routerLink]="['./batch-action']">Selection Batch Action</a></li>
+                    <li><a [routerLink]="['./single-action']">Selection Single Row Action</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <ul class="list">
+                    <li><a [routerLink]="['./server-driven']">Server-Driven Datagrid</a></li>
+                    <li><a [routerLink]="['./placeholder']">Placeholder</a></li>
+                    <li><a [routerLink]="['./expandable-rows']">Expandable Rows</a></li>
+                    <li><a [routerLink]="['./hide-show']">Hide-show Columns</a></li>
+                    <li><a [routerLink]="['./full']">Full demo</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div #demoView></div>
 
         <router-outlet></router-outlet>
 
         <div class="datagrid-demo-pagination">
             <button class="btn btn-primary demo-pagination-prev" *ngIf="previous" (click)="movePrevious()">
-                <clr-icon shape="angle-double left"></clr-icon>
+                <clr-icon shape="angle left"></clr-icon>
                 {{previousRoute.data.demoName}}
             </button>
             <button class="btn btn-primary demo-pagination-next" *ngIf="next" (click)="moveNext()">
                 {{nextRoute.data.demoName}}
-                <clr-icon shape="angle-double right"></clr-icon>
+                <clr-icon shape="angle right"></clr-icon>
             </button>
         </div>
 

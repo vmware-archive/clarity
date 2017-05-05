@@ -21,6 +21,8 @@ export class DatagridTestCasesDemo {
     zeroUsers: User[] = [];
     pageSize: number = 7;
 
+    loading: boolean = false;
+
     constructor(private inventory: Inventory) {
         inventory.size = 15;
         inventory.reset();
@@ -31,5 +33,9 @@ export class DatagridTestCasesDemo {
 
     updatePageSize(): void {
         this.pageSize = Math.floor((Math.random() * 10) + 3);
+    }
+
+    toggle() {
+        this.loading = !this.loading;
     }
 }

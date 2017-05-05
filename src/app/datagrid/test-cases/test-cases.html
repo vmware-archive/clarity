@@ -3,10 +3,12 @@
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
+
 <div class="clr-example">
     <h4>Zero Rows</h4>
     <p>Datagrid should be high enough to accomodate the placeholder.</p>
-    <clr-datagrid>
+    <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
+    <clr-datagrid [clrDgLoading]="loading">
         <clr-dg-column>User ID</clr-dg-column>
         <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
         <clr-dg-column>Creation date</clr-dg-column>
@@ -30,8 +32,9 @@
 <div class="clr-example">
     <h4>Zero Rows + Fixed Height</h4>
     <p>Datagrid height should be fixed irrespective on the number of rows displayed.</p>
+    <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
     <div style="height: 300px">
-        <clr-datagrid style="height: 100%">
+        <clr-datagrid style="height: 100%" [clrDgLoading]="loading">
             <clr-dg-column>User ID</clr-dg-column>
             <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
             <clr-dg-column>Creation date</clr-dg-column>
@@ -53,11 +56,11 @@
     </div>
 </div>
 
-
 <div class="clr-example">
     <h4>One Row</h4>
     <p>Datagrid body height should be atleast 72px.</p>
-    <clr-datagrid>
+    <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
+    <clr-datagrid [clrDgLoading]="loading">
         <clr-dg-column>User ID</clr-dg-column>
         <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
         <clr-dg-column>Creation date</clr-dg-column>
@@ -81,8 +84,9 @@
 <div class="clr-example">
     <h4>One Row + Fixed Height</h4>
     <p>Datagrid height should be fixed irrespective on the number of rows displayed.</p>
+    <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
     <div style="height: 300px">
-        <clr-datagrid style="height: 100%">
+        <clr-datagrid style="height: 100%" [clrDgLoading]="loading">
             <clr-dg-column>User ID</clr-dg-column>
             <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
             <clr-dg-column>Creation date</clr-dg-column>
@@ -104,11 +108,11 @@
     </div>
 </div>
 
-
 <div class="clr-example">
     <h4>No Pagination</h4>
     <p>Datagrid height should be variable depending on the number of rows displayed.</p>
-    <clr-datagrid>
+    <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
+    <clr-datagrid [clrDgLoading]="loading">
         <clr-dg-column>User ID</clr-dg-column>
         <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
         <clr-dg-column>Creation date</clr-dg-column>
@@ -132,8 +136,9 @@
 <div class="clr-example">
     <h4>No Pagination + Fixed Height</h4>
     <p>Datagrid height should be fixed irrespective on the number of rows displayed.</p>
+    <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
     <div style="height:300px">
-        <clr-datagrid style="height: 100%">
+        <clr-datagrid style="height: 100%" [clrDgLoading]="loading">
             <clr-dg-column>User ID</clr-dg-column>
             <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
             <clr-dg-column>Creation date</clr-dg-column>
@@ -158,7 +163,8 @@
 <div class="clr-example">
     <h4>Pagination</h4>
     <p>Datagrid height should be fixed irrespective on the number of rows displayed.</p>
-    <clr-datagrid>
+    <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
+    <clr-datagrid [clrDgLoading]="loading">
         <clr-dg-column>User ID</clr-dg-column>
         <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
         <clr-dg-column>Creation date</clr-dg-column>
@@ -184,8 +190,9 @@
 <div class="clr-example" style="margin-bottom: 72px">
     <h4>Pagination + Fixed Height</h4>
     <p>Datagrid height should be fixed irrespective on the number of rows displayed.</p>
+    <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
     <div style="height:300px">
-        <clr-datagrid style="height:100%">
+        <clr-datagrid style="height:100%" [clrDgLoading]="loading">
             <clr-dg-column>User ID</clr-dg-column>
             <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
             <clr-dg-column>Creation date</clr-dg-column>
@@ -212,7 +219,8 @@
 <div class="clr-example">
     <h4>Pagination + Updating Page Size</h4>
     <p>Datagrid height should be fixed irrespective on the number of rows displayed.</p>
-    <clr-datagrid>
+    <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
+    <clr-datagrid [clrDgLoading]="loading">
         <clr-dg-column>User ID</clr-dg-column>
         <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
         <clr-dg-column>Creation date</clr-dg-column>

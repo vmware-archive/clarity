@@ -19,6 +19,12 @@ export class DatagridTestCasesAsyncDemo {
     users: User[];
     users1: User[];
 
+    loading: boolean = false;
+
+    toggle() {
+        this.loading = !this.loading;
+    }
+
     constructor(private inventory: Inventory) {
         inventory.size = 15;
         inventory.reset();
@@ -31,6 +37,6 @@ export class DatagridTestCasesAsyncDemo {
 
         setTimeout(() => {
             this.users1 = this.users1.concat(inventory.all.slice(5));
-        }, 1000);
+        }, 3000);
     }
 }

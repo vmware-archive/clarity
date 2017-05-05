@@ -16,6 +16,7 @@ import {DropdownStaticButtonLinkToggleDemo} from "./dropdown-static-buttonlink-t
 import {DropdownAngularPositioningDemo} from "./dropdown-angular-positioning";
 import {DropdownAngularCloseItemFalseDemo} from "./dropdown-angular-close-item-false";
 import {DropdownHeaderDemo} from "./dropdown-header";
+import {DropdownAngularNestedDemo} from "./dropdown-angular-nested";
 
 @NgModule({
     imports: [
@@ -31,6 +32,7 @@ import {DropdownHeaderDemo} from "./dropdown-header";
         DropdownStaticIconToggleDemo,
         DropdownStaticButtonLinkToggleDemo,
         DropdownAngularPositioningDemo,
+        DropdownAngularNestedDemo,
         DropdownAngularCloseItemFalseDemo,
         DropdownHeaderDemo
     ],
@@ -41,6 +43,7 @@ import {DropdownHeaderDemo} from "./dropdown-header";
         DropdownStaticIconToggleDemo,
         DropdownStaticButtonLinkToggleDemo,
         DropdownAngularPositioningDemo,
+        DropdownAngularNestedDemo,
         DropdownAngularCloseItemFalseDemo,
         DropdownHeaderDemo
     ]

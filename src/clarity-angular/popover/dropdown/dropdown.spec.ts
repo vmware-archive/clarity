@@ -96,6 +96,26 @@ export default function(): void {
             expect(compiled.querySelector(".dropdown-item")).toBeNull();
         });
 
+        it("toggles the nested menu when clicked on the toggle", () => {
+            let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+            dropdownToggle.click();
+            //detect the click
+            fixture.detectChanges();
+
+            let nestedToggle: HTMLElement = compiled.querySelector(".nested");
+            expect(compiled.textContent.trim()).not.toMatch("Foo");
+            nestedToggle.click();
+            //detect the click
+            fixture.detectChanges();
+            expect(compiled.textContent.trim()).toMatch("Foo");
+
+            //click the nested toggle again to close the menu
+            nestedToggle.click();
+            //detect the click
+            fixture.detectChanges();
+            expect(compiled.textContent.trim()).not.toMatch("Foo");
+        });
+
         it("closes the menu when clicked outside of the host", () => {
             let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
             let outsideButton: HTMLElement = compiled.querySelector(".outside-click-test");
@@ -181,6 +201,12 @@ export default function(): void {
                 <label class="dropdown-header">Header</label>
                 <a href="javascript://" clrDropdownItem>Item</a>
                 <a href="javascript://" class="disabled" clrDropdownItem>Disabled Item</a>
+                <clr-dropdown [clrMenuPosition]="'right-top'">
+                    <button clrDropdownToggle class="nested">Nested</button>
+                    <clr-dropdown-menu>
+                        <a href="javascript://" clrDropdownItem>Foo</a>
+                    </clr-dropdown-menu>
+                </clr-dropdown>
             </clr-dropdown-menu>
         </clr-dropdown>
    `

@@ -63,6 +63,31 @@ gemini.suite('dropdown', (child) => {
             });
     });
 
+    gemini.suite('angular-nested', (child) => {
+        child.setUrl('/dropdown/angular-nested')
+            .before((actions) => {
+                actions.waitForElementToShow('.clr-example', WAIT_TIME);
+                actions.wait(WAIT_LOAD_TIME);
+            })
+            .setCaptureElements('.clr-example')
+            .capture('default')
+            .capture('clicked', function(actions, find) {
+                this.toggleButton = find('.clr-example .dropdown-toggle');
+                actions.click(this.toggleButton);
+                actions.wait(WAIT_TIME);
+            })
+            .capture('submenu-right', function(actions, find) {
+                this.itemWithSubMenu = find('.right-bottom .expandable');
+                actions.click(this.itemWithSubMenu);
+                actions.wait(WAIT_TIME);
+            })
+            .capture('submenu-left', function(actions, find) {
+                this.itemWithSubMenu = find('.left-top .expandable');
+                actions.click(this.itemWithSubMenu);
+                actions.wait(WAIT_TIME);
+            });
+    });
+
     gemini.suite('multi-click', (child) => {
         child.setUrl('/dropdown/multi-click')
             .before((actions) => {

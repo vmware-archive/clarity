@@ -5,59 +5,59 @@
   -->
 
 <ng-content select="clr-dg-action-bar"></ng-content>
-<div class="datagrid" #datagrid>
-    <div class="datagrid-spinner-wrapper" *ngIf="loading">
-        <!--we are using the offsetHeight here to set the height of spinner which is brittle;
-            re-evaluate later to see if there is a better fix for this-->
-        <div class="datagrid-spinner" [style.height.px]="datagrid.offsetHeight">
-            <div class="spinner">Loading...</div>
-        </div>
-    </div>
-    <div clrDgTableWrapper class="datagrid-table-wrapper">
-        <div clrDgHead class="datagrid-head">
-            <div class="datagrid-row datagrid-row-flex">
-                <!-- header for datagrid where you can select multiple rows -->
-                <div class="datagrid-column datagrid-select datagrid-fixed-column"
-                     *ngIf="selection.selectionType === SELECTION_TYPE.Multi">
+<div class="datagrid-overlay-wrapper">
+    <div class="datagrid-scroll-wrapper">
+        <div class="datagrid" #datagrid>
+            <div clrDgTableWrapper class="datagrid-table-wrapper">
+                <div clrDgHead class="datagrid-head">
+                    <div class="datagrid-row datagrid-row-flex">
+                        <!-- header for datagrid where you can select multiple rows -->
+                        <div class="datagrid-column datagrid-select datagrid-fixed-column"
+                             *ngIf="selection.selectionType === SELECTION_TYPE.Multi">
                         <span class="datagrid-column-title">
                             <clr-checkbox [(ngModel)]="allSelected"></clr-checkbox>
                         </span>
-                        <div class="datagrid-column-separator"></div>
+                            <div class="datagrid-column-separator"></div>
+                        </div>
+                        <!-- header for datagrid where you can select one row only -->
+                        <div class="datagrid-column datagrid-select datagrid-fixed-column"
+                             *ngIf="selection.selectionType === SELECTION_TYPE.Single">
+                            <div class="datagrid-column-separator"></div>
+                        </div>
+                        <!-- header for single row action; only display if we have at least one actionable row in datagrid -->
+                        <div class="datagrid-column datagrid-row-actions datagrid-fixed-column"
+                             *ngIf="rowActionService.hasActionableRow">
+                            <div class="datagrid-column-separator"></div>
+                        </div>
+                        <!-- header for carets; only display if we have at least one expandable row in datagrid -->
+                        <div class="datagrid-column datagrid-expandable-caret datagrid-fixed-column"
+                             *ngIf="expandableRows.hasExpandableRow">
+                            <div class="datagrid-column-separator"></div>
+                        </div>
+                        <ng-content select="clr-dg-column"></ng-content>
+                    </div>
                 </div>
-                <!-- header for datagrid where you can select one row only -->
-                <div class="datagrid-column datagrid-select datagrid-fixed-column"
-                     *ngIf="selection.selectionType === SELECTION_TYPE.Single">
-                    <div class="datagrid-column-separator"></div>
+
+                <div clrDgBody class="datagrid-body">
+                    <ng-template *ngIf="iterator"
+                                 ngFor [ngForOf]="items.displayed" [ngForTrackBy]="items.trackBy"
+                                 [ngForTemplate]="iterator.template"></ng-template>
+                    <ng-content *ngIf="!iterator"></ng-content>
+
+                    <!-- Custom placeholder overrides the default empty one -->
+                    <ng-content select="clr-dg-placeholder"></ng-content>
+                    <clr-dg-placeholder *ngIf="!placeholder"></clr-dg-placeholder>
                 </div>
-                <!-- header for single row action; only display if we have at least one actionable row in datagrid -->
-                <div class="datagrid-column datagrid-row-actions datagrid-fixed-column"
-                     *ngIf="rowActionService.hasActionableRow">
-                    <div class="datagrid-column-separator"></div>
-                </div>
-                <!-- header for carets; only display if we have at least one expandable row in datagrid -->
-                <div class="datagrid-column datagrid-expandable-caret datagrid-fixed-column"
-                     *ngIf="expandableRows.hasExpandableRow">
-                    <div class="datagrid-column-separator"></div>
-                </div>
-                <ng-content select="clr-dg-column"></ng-content>
             </div>
-        </div>
 
-        <div clrDgBody class="datagrid-body">
-            <ng-template *ngIf="iterator"
-                      ngFor [ngForOf]="items.displayed" [ngForTrackBy]="items.trackBy"
-                      [ngForTemplate]="iterator.template"></ng-template>
-            <ng-content *ngIf="!iterator"></ng-content>
-
-            <!-- Custom placeholder overrides the default empty one -->
-            <ng-content select="clr-dg-placeholder"></ng-content>
-            <clr-dg-placeholder *ngIf="!placeholder"></clr-dg-placeholder>
+            <!--
+                This is not inside the table because there is no good way of having a single column span
+                everything when using custom elements with display:table-cell.
+            -->
+            <ng-content select="clr-dg-footer"></ng-content>
         </div>
     </div>
-
-    <!--
-        This is not inside the table because there is no good way of having a single column span
-        everything when using custom elements with display:table-cell.
-    -->
-    <ng-content select="clr-dg-footer"></ng-content>
+    <div class="datagrid-spinner" *ngIf="loading">
+        <div class="spinner">Loading...</div>
+    </div>
 </div>

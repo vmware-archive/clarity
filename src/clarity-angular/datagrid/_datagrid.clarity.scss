@@ -13,16 +13,34 @@
     .datagrid-host {
         display: flex;
         flex-flow: column nowrap;
+    }
+
+    .datagrid-overlay-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex: 1 0 auto;
         width: 100%;
         overflow-x: auto;
         overflow-y: hidden;
-    }
 
+        .datagrid-spinner {
+            flex: 0 0 100%;
+            margin-left: -100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba($clr-white, 0.6);
+        }
+
+    }
+    .datagrid-scroll-wrapper {
+        display: flex;
+        flex-direction: row;
+        min-width: 100%;
+    }
     .datagrid {
         display: flex;
         flex-flow: column nowrap;
-        align-self: flex-start;
-        min-width: 100%;
         // IE & Firefox needs this
         min-height: 1px;
     }
@@ -111,29 +129,6 @@
         flex: 1 1 auto;
         width: auto; // override the basic table's style of width: 100%
         max-width: none; // override the basic table's style of max-width: 100%
-
-        .datagrid-spinner-wrapper {
-            position: relative;
-
-            .datagrid-spinner {
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: rgba($clr-white, 0.6);
-
-                .spinner {
-                    // We center the spinner in the datagrid
-                    position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    margin: auto;
-                }
-            }
-        }
 
         .datagrid-body {
             .datagrid-row:last-child {

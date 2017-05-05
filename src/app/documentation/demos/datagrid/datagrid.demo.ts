@@ -11,6 +11,7 @@ import {Subscription} from "rxjs/Subscription";
 @Component({
     selector: "clr-datagrid-demo",
     templateUrl: "./datagrid.demo.html",
+    styleUrls: ["./datagrid.demo.main.scss"],
     host: {
         "[class.content-area]": "true",
         "[class.dox-content-panel]": "true"

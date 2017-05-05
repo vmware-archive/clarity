@@ -33,11 +33,11 @@
         <router-outlet></router-outlet>
 
         <div class="datagrid-demo-pagination">
-            <button class="btn btn-primary" *ngIf="previous" (click)="movePrevious()">
+            <button class="btn btn-primary demo-pagination-prev" *ngIf="previous" (click)="movePrevious()">
                 <clr-icon shape="angle-double left"></clr-icon>
                 {{previousRoute.data.demoName}}
             </button>
-            <button class="btn btn-primary" *ngIf="next" (click)="moveNext()">
+            <button class="btn btn-primary demo-pagination-next" *ngIf="next" (click)="moveNext()">
                 {{nextRoute.data.demoName}}
                 <clr-icon shape="angle-double right"></clr-icon>
             </button>

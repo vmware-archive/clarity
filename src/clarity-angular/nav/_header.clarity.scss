@@ -126,7 +126,8 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
         }
 
         &.header-2{
-            background-color: #485969; //Harcoded because this color is not in the color palette. Its reserved for headers only
+            //Hardcoded because this color is not in the color palette. Its reserved for headers only
+            background-color: #485969;
         }
 
         &.header-3{
@@ -143,6 +144,11 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
 
         &.header-6{
             background-color: $action-blues-darkest;
+        }
+
+        &.header-7{
+            //Hardcoded because this color is not in the color palette. Its reserved for headers only
+            background-color: #314351;
         }
     }
 

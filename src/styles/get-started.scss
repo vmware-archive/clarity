@@ -144,3 +144,22 @@
         }
     }
 }
+
+.craft-plugin {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+
+
+    & > .btn {
+        margin-bottom: 0;
+    }
+}
+
+.craft-plugin-text {
+    font-size: 10px;
+}

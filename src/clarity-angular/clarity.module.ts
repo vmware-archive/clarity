@@ -26,6 +26,7 @@ import {ICON_DIRECTIVES} from "./iconography/index";
 import {BUTTON_GROUP_DIRECTIVES} from "./button-group/index";
 import {LOADING_BUTTON_DIRECTIVES} from "./button-loading/index";
 import {LOADING_DIRECTIVES} from "./loading/index";
+import {INPUT_TRAP_DIRECTIVES} from "./input-trap/index";
 
 import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationService";
 
@@ -53,7 +54,8 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
         ICON_DIRECTIVES,
         BUTTON_GROUP_DIRECTIVES,
         LOADING_BUTTON_DIRECTIVES,
-        LOADING_DIRECTIVES
+        LOADING_DIRECTIVES,
+        INPUT_TRAP_DIRECTIVES
     ],
     exports: [
         ALERT_DIRECTIVES,
@@ -73,7 +75,8 @@ import {ClrResponsiveNavigationService} from "./nav/clrResponsiveNavigationServi
         ICON_DIRECTIVES,
         BUTTON_GROUP_DIRECTIVES,
         LOADING_BUTTON_DIRECTIVES,
-        LOADING_DIRECTIVES
+        LOADING_DIRECTIVES,
+        INPUT_TRAP_DIRECTIVES
     ]
 })
 export class ClarityModule {

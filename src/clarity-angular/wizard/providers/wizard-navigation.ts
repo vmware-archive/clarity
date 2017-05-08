@@ -58,11 +58,10 @@ export class WizardNavigationService implements OnDestroy {
             } else {
                 this.cancel();
             }
-            // SPECME
         });
 
         this.pagesResetSubscription = this.pageCollection.pagesReset.subscribe(() => {
-            this.setLastEnabledPageCurrent();
+            this.setFirstPageCurrent();
         });
     }
 
@@ -85,6 +84,7 @@ export class WizardNavigationService implements OnDestroy {
 
     public currentPage: WizardPage;
     public navServiceLoaded = false;
+    public forceForwardNavigation = false;
 
     public get currentPageTitle(): TemplateRef<any> {
         // when the querylist of pages is empty. this is the first place it fails...
@@ -139,7 +139,6 @@ export class WizardNavigationService implements OnDestroy {
         if (!this.wizardHasAltNext) {
             this._movedToNextPage.next(true);
         }
-        // SPECME
     }
 
     public forceNext(): void {
@@ -156,7 +155,6 @@ export class WizardNavigationService implements OnDestroy {
             this.pageCollection.commitPage(currentPage);
         }
         this.setCurrentPage(nextPage);
-        // SPECME
     }
 
     public checkAndCommitCurrentPage(buttonType: string): void {
@@ -200,11 +198,16 @@ export class WizardNavigationService implements OnDestroy {
             return;
         }
 
+        // order is very important with these emitters!
         if (isFinish || isDangerFinish) {
+            // mark page as complete
+            this.pageCollection.commitPage(currentPage);
             this._wizardFinished.next();
         }
 
         if (this.wizardHasAltNext) {
+            this.pageCollection.commitPage(currentPage);
+
             if (isNext || isDangerNext) {
                 this._movedToNextPage.next(true);
             }
@@ -212,14 +215,9 @@ export class WizardNavigationService implements OnDestroy {
             return;
         }
 
-        // all the alt paths have early returned. mark page as
-        // completed.
-        this.pageCollection.commitPage(currentPage);
-
         if (isNext || isDangerNext) {
             this.forceNext();
         }
-        // SPECME
     }
 
     public finish(): void {
@@ -239,6 +237,7 @@ export class WizardNavigationService implements OnDestroy {
         if (this.currentPageIsFirst) {
             return;
         }
+
         previousPage = this.pageCollection.getPreviousPage(this.currentPage);
 
         if (!previousPage) {
@@ -246,6 +245,11 @@ export class WizardNavigationService implements OnDestroy {
         }
 
         this._movedToPreviousPage.next(true);
+
+        if (this.forceForwardNavigation) {
+            this.currentPage.completed = false;
+        }
+
         this.setCurrentPage(previousPage);
     }
 
@@ -262,44 +266,87 @@ export class WizardNavigationService implements OnDestroy {
 
     public wizardHasAltNext: boolean = false;
 
-    public goTo(pageToGoToOrId: any) {
+    public goTo(pageToGoToOrId: any, lazyComplete: boolean = false) {
         let pageToGoTo: WizardPage;
         let currentPage: WizardPage;
         let myPages: PageCollectionService;
         let pagesToCheck: WizardPage[];
         let okayToMove: boolean = true;
+        let goingForward: boolean;
+        let currentPageIndex: number;
+        let goToPageIndex: number;
 
         myPages = this.pageCollection;
-
-        if (typeof pageToGoToOrId === "string") {
-            // we have an ID so we need to look up our page
-            pageToGoTo = myPages.getPageById(pageToGoToOrId);
-        } else {
-            pageToGoTo = pageToGoToOrId;
-        }
-
+        pageToGoTo = (typeof pageToGoToOrId === "string") ? myPages.getPageById(pageToGoToOrId) : pageToGoToOrId;
         currentPage = this.currentPage;
 
+        // no point in going to the current page. you're there already!
         if (pageToGoTo === currentPage) {
             return;
-        } else {
-            pagesToCheck = myPages.getPageRangeFromPages(this.currentPage, pageToGoTo);
         }
 
-        pagesToCheck.forEach((page: WizardPage) => {
-            if (!okayToMove) {
-                return;
-            }
-            if (!page.completed && !page.current) {
-                okayToMove = false;
-            }
-        });
+        currentPageIndex = myPages.getPageIndex(currentPage);
+        goToPageIndex = myPages.getPageIndex(pageToGoTo);
+        goingForward = (goToPageIndex > currentPageIndex);
+        pagesToCheck = myPages.getPageRangeFromPages(this.currentPage, pageToGoTo);
+
+        okayToMove = lazyComplete || this.canGoTo(pagesToCheck);
 
         if (!okayToMove) {
             return;
         }
 
+        if (goingForward && lazyComplete) {
+            pagesToCheck.forEach((page: WizardPage) => {
+                if (page !== pageToGoTo) {
+                    page.completed = true;
+                }
+            });
+        } else if (!goingForward && this.forceForwardNavigation) {
+            pagesToCheck.forEach((page: WizardPage) => {
+                page.completed = false;
+            });
+        }
+
         this.setCurrentPage(pageToGoTo);
+    }
+
+    public canGoTo(pagesToCheck: WizardPage[]): boolean {
+        let okayToMove = true;
+        let myPages = this.pageCollection;
+
+        // previous page can be important when moving because if it's completed it
+        // allows us to move to the page even if it's incomplete...
+        let previousPagePasses: boolean;
+
+        if (!pagesToCheck || pagesToCheck.length < 1) {
+            return false;
+        }
+
+        pagesToCheck.forEach((page: WizardPage) => {
+            let previousPage: WizardPage;
+
+            if (!okayToMove) {
+                return;
+            }
+
+            if (page.completed) {
+                // default is true. just jump out instead of complicating it.
+                return;
+            }
+
+            // so we know our page is not completed...
+            previousPage = myPages.getPageIndex(page) > 0 ? myPages.getPreviousPage(page) : null;
+            previousPagePasses = (previousPage === null) || (previousPage.completed === true);
+
+            // we are false if not the current page AND previous page is not completed (but must have a previous page)
+            if (!page.current && !previousPagePasses) {
+                okayToMove = false;
+            }
+            // falls through to true as default
+        });
+
+        return okayToMove;
     }
 
     public setLastEnabledPageCurrent(): void {

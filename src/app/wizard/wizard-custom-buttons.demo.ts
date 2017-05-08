@@ -18,14 +18,14 @@ export class WizardCustomButtonsDemo {
     @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
 
     public handleDangerClick(): void {
-        this.wizard.finish();
+        this.wizard.finish(false);
     }
 
     public showWarning = false;
 
     public doCustomClick(buttonType: string): void {
         if ("custom-next" === buttonType) {
-            this.wizard.next();
+            this.wizard.next(false);
         }
 
         if ("custom-previous" === buttonType) {
@@ -48,14 +48,14 @@ export class WizardCustomButtonsDemo {
     @ViewChild("wizard") wizard: Wizard;
 
     public handleDangerClick(): void {
-        this.wizard.finish();
+        this.wizard.finish(false);
     }
 
     public showWarning = false;
 
     public doCustomClick(buttonType: string): void {
         if ("custom-next" === buttonType) {
-            this.wizard.next();
+            this.wizard.next(false);
         }
 
         if ("custom-previous" === buttonType) {

@@ -12,7 +12,6 @@ import { TestContext } from "../../utils/testing/helpers.spec";
 export default function(): void {
 
     describe("Page Collection Service", function() {
-
         describe("With pages", function() {
             let context: TestContext<Wizard, PageCollectionTest>;
             let pageCollectionService: PageCollectionService;
@@ -41,7 +40,6 @@ export default function(): void {
 
 
             it(".getPageById() should return the wizard page with a matching id", function() {
-
                 // checkResults() method is tested here as well
                 let firstPageId = context.clarityDirective.pages.first.id;
                 let firstPageIdNumber = firstPageId.match(/\d+/)[0];
@@ -171,9 +169,19 @@ export default function(): void {
                 expect(secondPage.completed).toBe(true);
             });
 
+            xit(".commitPage() should only fire page.onCommit once", function() {
+
+            });
+
+            xit(".commitPage() should only fire page.onCommit once -- even if there are page overrides", function() {
+
+            });
+
+            xit(".commitPage() should only fire page.onCommit once -- even if there are wizard overrides", function() {
+
+            });
 
             it(".reset() should set the completed properties back to false.", function() {
-
                 pageCollectionService.firstPage.completed = true;
                 pageCollectionService.lastPage.completed = true;
 
@@ -181,8 +189,35 @@ export default function(): void {
 
                 expect(pageCollectionService.firstPage.completed).toBe(false);
                 expect(pageCollectionService.lastPage.completed).toBe(false);
+            });
+
+            xit(".previousPageComplete() should return true if previous page is completed", function() {
 
             });
+
+            xit(".previousPageComplete() should return true if there is no previous page", function() {
+
+            });
+
+            xit(".previousPageComplete() should return false if previous page is not complete", function() {
+
+            });
+
+            xit("updateCompletedStates() shouldn't update completed state if all pages completed", function() {
+
+            });
+
+            xit("updateCompletedStates() should mark pages after first incomplete page as incomplete", function() {
+
+            });
+
+            xit("findFirstIncompletePageIndex() should return index of first incomplete page", function() {
+                // mixing up complete/incomplete states...
+            });
+
+            xit("findFirstIncompletePageIndex() should return last index if all pages complete", function() {
+            });
+
         });
     });
 }
@@ -230,26 +265,5 @@ export default function(): void {
     `
 })
 class PageCollectionTest {
-    open: boolean = true;
-    headerActionClicked = function() {
-        // console.log("header action clicked!");
-    };
-}
-
-@Component({
-    template: `
-            <clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardSize]="'lg'">
-                <clr-wizard-title>My Wizard Title</clr-wizard-title>
-                <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-                <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
-                <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-                <clr-wizard-button [type]="'finish'">Fait Accompli</clr-wizard-button>
-                <clr-wizard-header-action (actionClicked)="headerActionClicked($event)">
-                    <clr-icon shape="cloud" class="is-solid"></clr-icon>
-                </clr-wizard-header-action>
-            </clr-wizard>
-    `
-})
-class PageCollectionNoPagesTest {
     open: boolean = true;
 }

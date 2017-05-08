@@ -153,6 +153,23 @@ export class PageCollectionService {
         return this.getPageByIndex(previousPageIndex);
     }
 
+    public previousPageIsCompleted(page: WizardPage) {
+        let previousPage: WizardPage;
+
+        if (!page) {
+            return false;
+        }
+
+        previousPage = this.getPreviousPage(page);
+
+        if (null === previousPage) {
+            // page is the first page. no previous page.
+            return true;
+        }
+
+        return previousPage.completed;
+    }
+
     public getNextPage(page: WizardPage) {
         let myPageIndex = this.getPageIndex(page);
         let nextPageIndex = myPageIndex + 1;
@@ -180,7 +197,6 @@ export class PageCollectionService {
             // of event emitters this is how they break that cycle.
             page.onCommit.emit(page.id);
         }
-        //SPECME
     }
 
     // used by the navService to navigate back to first possible step after
@@ -203,16 +219,13 @@ export class PageCollectionService {
         if (firstIncompleteIndex === this.pagesAsArray.length - 1) {
             // all complete no need to do anything
             return;
-            // SPECME
         }
 
         this.pagesAsArray.forEach((page: WizardPage, index: number) => {
             if (index > firstIncompleteIndex) {
                 page.completed = false;
             }
-            // SPECME
         });
-        // SPECME
     }
 
     public findFirstIncompletePageIndex(): number {
@@ -221,15 +234,12 @@ export class PageCollectionService {
             if (null === returnIndex && false === page.completed) {
                 returnIndex = index;
             }
-            // SPECME
         });
-        // SPECME
 
         // fallthrough, all completed, return last page
         if (null === returnIndex) {
             returnIndex = this.pagesCount - 1;
         }
-        // SPECME
 
         return returnIndex;
     }
@@ -237,6 +247,5 @@ export class PageCollectionService {
     public findFirstIncompletePage(): WizardPage {
         let myIncompleteIndex = this.findFirstIncompletePageIndex();
         return this.pagesAsArray[myIncompleteIndex];
-        // SPECME
     }
 }

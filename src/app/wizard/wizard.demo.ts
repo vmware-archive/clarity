@@ -32,6 +32,7 @@ import {Component, ViewEncapsulation} from "@angular/core";
                 <li><a [routerLink]="['./alt-next']">Alt next</a></li>
                 <li><a [routerLink]="['./inline']">Inline/static wizard</a></li>
                 <li><a [routerLink]="['./jump-to']">Jump-to page</a></li>
+                <li><a [routerLink]="['./force-forward']">Force forward</a></li>
             </ul>
         </div>
       </div>

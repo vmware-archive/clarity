@@ -938,24 +938,19 @@ export default function(): void {
 
             // TODO: BUILD THESE TESTS OUT AT THE WIZARD LEVEL. ONLY WIZARD HANDLES CANCEL/CLOSE
             // BECAUSE IT NEEDS TO COMMUNICATE WITH MODAL PROPERTIES
-            // describe("pageOnCancel", () => {
-            //     it("should pass page id when emitted", () => {
-            //     });
+            xdescribe("pageOnCancel", () => {
+                it("should pass page id when emitted", () => {
+                });
 
-            //     it("should emit when page is current and wizard is cancelled", () => {
-            //     });
+                it("should only emit once by default", () => {
+                });
 
-            //     it("should not emit when another page is current and wizard is cancelled", () => {
-            //     });
+                it("should only emit once if overridden at page level", () => {
+                });
 
-            //     it("should emit when page is current and wizard is closed", () => {
-            //     });
-
-            //     it("should not emit when another page is current and wizard is closed", () => {
-            //     });
-            // });
-
-            // TODO: TEST BUTTON OUTPUTS IN PAGE COLLECTION
+                it("should only emit once if overridden at wizard level", () => {
+                });
+            });
 
             describe("id", () => {
                 it("should use custom id when defined in input", () => {

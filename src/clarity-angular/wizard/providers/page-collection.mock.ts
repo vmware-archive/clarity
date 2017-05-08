@@ -22,4 +22,8 @@ export class PageCollectionMock {
     public get stepItemIdWasCalled(): boolean {
         return this._stepItemIdWasCalled;
     }
+
+    public previousPageIsCompleted(): boolean {
+        return true;
+    }
 }

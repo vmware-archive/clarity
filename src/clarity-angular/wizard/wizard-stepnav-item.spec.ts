@@ -20,6 +20,7 @@ import { PageCollectionService } from "./providers/page-collection";
 import { ButtonHubService } from "./providers/button-hub";
 import { WizardPageNavTitleDirective } from "./directives/page-navtitle";
 import { MockPage } from "./wizard-page.mock";
+import { PageCollectionMock } from "./providers/page-collection.mock";
 
 let pageIndex = 0;
 let fakeOutPage = new MockPage(pageIndex);
@@ -51,12 +52,16 @@ export default function(): void {
         let testItemComponent: WizardStepnavItem;
         let debugEl: DebugElement;
         let myStepnavItem: HTMLElement;
+        let pageCollection = new PageCollectionMock();
 
         beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [ ClarityModule.forRoot() ],
                 declarations: [ TestComponent ],
-                providers: [ WizardNavigationService, PageCollectionService, ButtonHubService ]
+                providers: [
+                    WizardNavigationService,
+                    ButtonHubService,
+                    { provide: PageCollectionService, useValue: pageCollection } ]
             });
             fixture = TestBed.createComponent(TestComponent);
             fixture.detectChanges();
@@ -78,12 +83,6 @@ export default function(): void {
                     testItemComponent.page._id = "try-a-different-id";
                     fixture.detectChanges();
                     expect(pageCollectionSpy).toHaveBeenCalledWith(testItemComponent.page);
-                });
-
-                it("should receive expected id from page collection", () => {
-                    const expectedId = "this-is-my-page-step-0";
-                    fixture.detectChanges();
-                    expect(testItemComponent.id).toBe(expectedId);
                 });
 
                 it("should throw an error if page is not present", () => {
@@ -169,6 +168,30 @@ export default function(): void {
                     fakeOutPage.reset();
                     fixture.detectChanges();
                     expect(testItemComponent.isComplete).toBe(false, "resets when page is reset");
+                });
+
+                it("should throw an error if page is not present", () => {
+                    testItemComponent.page = null;
+                    expect(() => { testItemComponent.click(); }).toThrow();
+                });
+            });
+
+            describe("canNavigate", () => {
+                xit("should update false/true when previous page is updated", () => {
+                    // mock inits/resets with all false
+                    expect(testItemComponent.isComplete).toBe(false, "inits as false");
+                    fakeOutPage.completed = true;
+                    fixture.detectChanges();
+                    expect(testItemComponent.isComplete).toBe(true, "updates when page is updated");
+                    fakeOutPage.reset();
+                    fixture.detectChanges();
+                    expect(testItemComponent.isComplete).toBe(false, "resets when page is reset");
+                });
+
+                xit("should return true if previousPage is completed", () => {
+                });
+
+                xit("should return false if previousPage is not completed", () => {
                 });
 
                 it("should throw an error if page is not present", () => {

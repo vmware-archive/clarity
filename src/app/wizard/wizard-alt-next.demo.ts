@@ -45,7 +45,7 @@ export class WizardAltNextDemo implements OnInit {
         let allAreCorrect = sequenceOneIsCorrect && sequenceTwoIsCorrect && sequenceThreeIsCorrect;
 
         if (allAreCorrect) {
-            this.wizard.forceFinish();
+            this.wizard.finish();
             // resetting for another pass through
             this.model.allowNext = false;
             this.model.sequenceOne = "";
@@ -109,7 +109,7 @@ export class WizardAltNextDemo implements OnInit {
         let allAreCorrect = sequenceOneIsCorrect && sequenceTwoIsCorrect && sequenceThreeIsCorrect;
 
         if (allAreCorrect) {
-            this.wizard.forceFinish();
+            this.wizard.finish();
             // resetting for another pass through
             this.model.allowNext = false;
             this.model.sequenceOne = "";

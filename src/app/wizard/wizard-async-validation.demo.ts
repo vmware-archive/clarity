@@ -35,7 +35,7 @@ export class WizardAsyncValidation {
 
         setTimeout(() => {
             if (value.answer === "42") {
-                this.wizard.next();
+                this.wizard.forceNext();
             } else {
                 this.errorFlag = true;
             }

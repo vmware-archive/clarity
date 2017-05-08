@@ -36,11 +36,11 @@ export class WizardResetDemo implements OnInit {
 
     public doReset(): void {
         if (this.model.forceReset) {
-            this.wizard.reset();
             this.model.forceReset = false;
             this.model.favoriteColor = "";
             this.model.luckyNumber = "";
             this.model.flavorOfIceCream = "";
+            this.wizard.reset();
         }
     }
 

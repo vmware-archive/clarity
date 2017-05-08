@@ -110,7 +110,7 @@ export class WizardSimple {
     public doCustomClick(buttonType: string): void {
         if ("custom-next" === buttonType) {
             if (this.model.okToClick) {
-                this.wizardMedium.next();
+                this.wizardMedium.next(false);
             } else {
                 console.log("hi, i am the demo. i can't move to the next page...");
             }

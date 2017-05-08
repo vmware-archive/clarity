@@ -32,7 +32,6 @@ export class WizardHeaderAction {
     // title is explanatory text added to the header action
     @Input("title")
     title: string = "";
-    // SPECME
 
     // If our host has an ID attribute, we use this instead of our index.
     @Input("id")

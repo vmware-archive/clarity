@@ -97,7 +97,7 @@ The build process itself uses 3 folders:
     three packages:
     * `clarity-icons`: clarity icons package
     * `clarity-ui`: pure static styles
-    * `clarity-angular`: contains the Angular 2 components and depends on `clarity-ui` for look-and-feel
+    * `clarity-angular`: contains the Angular components and depends on `clarity-ui` for look-and-feel
   * `tests/`: The name says it all.
 
 #### The process itself

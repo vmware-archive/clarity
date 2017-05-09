@@ -39,7 +39,7 @@ module.exports = function (config) {
             { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
             { pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false },
 
-            // Angular 2 itself and the testing library
+            // Angular itself and the testing library
             { pattern: 'node_modules/@angular/**/*.js', included: false, watched: false },
             { pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false },
 

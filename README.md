@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/vmware/clarity.svg?branch=master)](https://travis-ci.org/vmware/clarity)
 
-Project Clarity is an open source design system that brings together UX guidelines, an HTML/CSS framework, and Angular 2 components. This repository includes everything you need to build, customize, test, and deploy Clarity.  For complete documentation, visit the [Clarity website](https://vmware.github.io/clarity/).
+Project Clarity is an open source design system that brings together UX guidelines, an HTML/CSS framework, and Angular components. This repository includes everything you need to build, customize, test, and deploy Clarity.  For complete documentation, visit the [Clarity website](https://vmware.github.io/clarity/).
 
 ## Getting Started
 
@@ -12,11 +12,11 @@ Clarity is published as three npm packages:
 
 * __clarity-icons.__ Contains the custom element icons.
 * __clarity-ui.__ Contains the static styles for building HTML components.
-* __clarity-angular.__ Contains the Angular 2 components. This package depends on clarity-ui for styles.
+* __clarity-angular.__ Contains the Angular components. This package depends on clarity-ui for styles.
 
-The easiest way to run a sample Angular 2 application with Clarity is to use the [Clarity Seed](https://github.com/vmware/clarity-seed). 
+The easiest way to run a sample Angular application with Clarity is to use the [Clarity Seed](https://github.com/vmware/clarity-seed). 
 
-If you already have an Angular 2 application, you can follow the installation steps below to include and use Clarity in your application.
+If you already have an Angular application, you can follow the installation steps below to include and use Clarity in your application.
 
 ### Installing Clarity Icons
 
@@ -94,7 +94,7 @@ application doesn't support IE10, you can skip the following installation:
     npm install clarity-angular --save
     ```
 
-3. Import the ClarityModule into your Angular 2 application's module.  Your application's main module might look like this:
+3. Import the ClarityModule into your Angular application's module.  Your application's main module might look like this:
     ```typescript
     import { NgModule } from '@angular/core';
     import { BrowserModule } from '@angular/platform-browser';

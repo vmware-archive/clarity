@@ -104,7 +104,7 @@ Type must be one of the following:
 * `UX`: Research and design principles. These are typically documentation commits.
 * `ICON`: Implementation of Clarity's Custom Element icons.
 * `UI`: Implementation of Clarity's static styles, its general look-and-feel.
-* `NG`: Implementation of Clarity's Angular 2 components.
+* `NG`: Implementation of Clarity's Angular components.
 * `CORE`: Website, distribution, build script and tooling.
 
 #### Writing Guidelines

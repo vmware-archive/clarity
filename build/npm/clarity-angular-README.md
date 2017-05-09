@@ -15,7 +15,7 @@
     npm install clarity-angular
     ```
 
-4. Import the ClarityModule into your Angular 2 application's module.  Your application's main module might look like this:
+4. Import the ClarityModule into your Angular application's module.  Your application's main module might look like this:
     ```
     import { NgModule } from '@angular/core';
     import { BrowserModule } from '@angular/platform-browser';

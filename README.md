@@ -27,7 +27,7 @@ If you already have an Angular application, you can follow the installation step
 
 2. Install the polyfill for Custom Elements: 
     ```bash
-    npm install @webcomponents/custom-elements@1.0.0-alpha.3 --save
+    npm install @webcomponents/custom-elements@1.0.0-rc.3 --save
     ```
 
 3. (Optional) If your application supports IE10, the polyfill will require the MutationObserver shim to work. If your 

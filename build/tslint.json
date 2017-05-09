@@ -1,4 +1,7 @@
 {
+  "linterOptions": {
+      "typeCheck": true
+  },
   "rules": {
     "align": [
       true,
@@ -7,7 +10,9 @@
     ],
     "ban": false,
     "class-name": true,
-    "comment-format": false,
+    "comment-format": [
+      false
+    ],
     "curly": true,
     "eofline": false,
     "forin": true,
@@ -15,7 +20,9 @@
       true,
       "spaces"
     ],
-    "interface-name": false,
+    "interface-name": [
+      false
+    ],
     "jsdoc-format": true,
     "label-position": true,
     "max-line-length": [
@@ -23,13 +30,17 @@
       120
     ],
     "member-access": false,
-    "member-ordering": false,
+    "member-ordering": [
+      false
+    ],
     "no-angle-bracket-type-assertion": false,
     "no-any": false,
     "no-arg": true,
     "no-bitwise": true,
     "no-conditional-assignment": true,
-    "no-consecutive-blank-lines": false,
+    "no-consecutive-blank-lines": [
+      false
+    ],
     "no-console": [
       true,
       "debug",
@@ -39,19 +50,20 @@
       "trace"
     ],
     "no-construct": true,
-    "no-constructor-vars": false,
     "no-debugger": true,
     "no-duplicate-variable": true,
     "no-empty": false,
     "no-eval": true,
-    "no-inferrable-types": false,
+    "no-inferrable-types": [
+      false
+    ],
     "no-internal-module": true,
     "no-null-keyword": false,
     "no-require-imports": true,
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-switch-case-fall-through": true,
-    "no-trailing-whitespace": true,
+    "no-trailing-whitespace": false,
     "no-unused-expression": true,
     "no-unused-variable": true,
     "no-use-before-declare": true,
@@ -72,14 +84,18 @@
       "avoid-escape"
     ],
     "radix": true,
-    "semicolon": [true, "always"],
+    "semicolon": [false, "always"],
     "switch-default": true,
-    "trailing-comma": false,
+    "trailing-comma": [
+      false
+    ],
     "triple-equals": [
       true,
       "allow-null-check"
     ],
-    "typedef": false,
+    "typedef": [
+      false
+    ],
     "typedef-whitespace": [
       true,
       {
@@ -97,7 +113,6 @@
         "variable-declaration": "space"
       }
     ],
-    "use-strict": false,
     "variable-name": [
       true,
       "check-format",

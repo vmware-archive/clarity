@@ -20,7 +20,7 @@ export class WizardAsyncValidation {
 
     loadingFlag: boolean = false;
     errorFlag: boolean = false;
-    answer: boolean = false;
+    answer: number = null;
     open: boolean = false;
 
     // have to define doCancel because page will prevent doCancel from working
@@ -37,7 +37,7 @@ export class WizardAsyncValidation {
 
         setTimeout(() => {
             if (value.answer === "42") {
-                this.wizard.next();
+                this.wizard.forceNext();
             } else {
                 this.errorFlag = true;
             }
@@ -73,7 +73,7 @@ export class WizardAsyncValidation {
 
         setTimeout(() => {
             if (value.answer === "42") {
-                this.wizard.next();
+                this.wizard.forceNext();
             } else {
                 this.errorFlag = true;
             }

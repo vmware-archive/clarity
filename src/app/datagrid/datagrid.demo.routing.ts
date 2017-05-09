@@ -28,6 +28,7 @@ import {DatagridPaginationScrollingDemo} from "./pagination-scrolling/pagination
 import {DatagridTestCasesDemo} from "./test-cases/test-cases";
 import {DatagridTestCasesAsyncDemo} from "./test-cases-async/test-cases-async";
 import {DatagridHideShowDemo} from "./hide-show-columns/hide-show";
+import {DatagridKitchenSinkDemo} from "./kitchen-sink/kitchen-sink";
 
 const ROUTES: Routes = [
     {
@@ -35,6 +36,7 @@ const ROUTES: Routes = [
         component: DatagridDemo,
         children: [
             {path: "", redirectTo: "structure", pathMatch: "full" },
+            {path: "kitchen-sink", component: DatagridKitchenSinkDemo},
             {path: "structure", component: DatagridBasicStructureDemo},
             {path: "custom-rendering", component: DatagridCustomRenderingDemo},
             {path: "smart-iterator", component: DatagridSmartIteratorDemo},

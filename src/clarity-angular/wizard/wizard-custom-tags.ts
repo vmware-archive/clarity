@@ -9,5 +9,5 @@ import {Directive} from "@angular/core";
 @Directive({selector: "clr-wizard-title, clr-wizard-pagetitle" })
 export class WizardCustomTags {
     // No behavior
-    // The only purpose is to "declare" the tag in Angular2
+    // The only purpose is to "declare" the tag in Angular
 }

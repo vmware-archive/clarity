@@ -5,9 +5,11 @@ env:
   global:
     - CXX=g++-4.8
   matrix:
-    - TEST_SUITE=test
-    - TEST_SUITE=css:test
-    - TEST_SUITE=css:reference
+    - TEST_SUITE='test'
+    - TEST_SUITE='css:test --set set1'
+    - TEST_SUITE='css:test --set set2'
+    - TEST_SUITE='css:reference --set set1'
+    - TEST_SUITE='css:reference --set set2'
 
 sudo: required
 dist: trusty

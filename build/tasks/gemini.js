@@ -28,6 +28,10 @@ gulp.task('css:reference', ["build"], function() {
         testPath += util.env.component + '.js';
     }
 
+    else if (util.env.set) {
+        testPath += util.env.set;
+    }
+
     var spawn = require('child_process').spawn;
     var cssReference = spawn('gemini', ['update', testPath], { stdio: 'inherit' });
 
@@ -43,6 +47,11 @@ gulp.task('css:test', ["build"], function() {
     if (util.env.component) {
         testPath += util.env.component + '.js';
     }
+
+    else if (util.env.set) {
+        testPath += util.env.set;
+    }
+
 
     var spawn = require('child_process').spawn;
     var cssTest = spawn('gemini', ['test', testPath, '--reporter', 'flat', '--reporter', 'html'], { stdio: 'inherit' });

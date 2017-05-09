@@ -34,6 +34,7 @@ import {DetailWrapper} from "./expandable-rows/detail-wrapper";
 import {DatagridPaginationScrollingDemo} from "./pagination-scrolling/pagination-scrolling";
 import {DatagridTestCasesDemo} from "./test-cases/test-cases";
 import {DatagridTestCasesAsyncDemo} from "./test-cases-async/test-cases-async";
+import {DatagridKitchenSinkDemo} from "./kitchen-sink/kitchen-sink";
 
 @NgModule({
     imports: [
@@ -65,6 +66,7 @@ import {DatagridTestCasesAsyncDemo} from "./test-cases-async/test-cases-async";
         DatagridExpandableRowsDemo,
         DatagridTestCasesDemo,
         DatagridTestCasesAsyncDemo,
+        DatagridKitchenSinkDemo,
         ColorFilter,
         Example,
         FakeLoader,
@@ -91,7 +93,8 @@ import {DatagridTestCasesAsyncDemo} from "./test-cases-async/test-cases-async";
         DatagridColumnSizingDemo,
         DatagridExpandableRowsDemo,
         DatagridTestCasesDemo,
-        DatagridTestCasesAsyncDemo
+        DatagridTestCasesAsyncDemo,
+        DatagridKitchenSinkDemo
     ]
 })
 export default class DatagridDemoModule {

@@ -55,6 +55,6 @@ export class StackView {
 @Directive({selector: "clr-stack-label, clr-stack-content"})
 export class StackViewCustomTags {
     // No behavior
-    // The only purpose is to "declare" the tag in Angular2
+    // The only purpose is to "declare" the tag in Angular
 }
 

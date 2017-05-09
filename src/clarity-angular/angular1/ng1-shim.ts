@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 // /*
-//  * This file should not be used in a pure Angular 2 application.
+//  * This file should not be used in a pure Angular application.
 //  * DO NOT document it.
 //  *
 //  * Its purpose is to attach "handles" to the global scope when using the Angular 1
@@ -24,7 +24,7 @@
 //  * 2) Before each test, instead of calling beforeEach(module("my-app")), call:
 //  *     beforeEach(Clarity.init());
 //  * 3) Once you"re done registering all the modules you need and before tests, where you generally
-//  * start calling inject(), make sure you wait for the Angular 2 part of the app to be ready:
+//  * start calling inject(), make sure you wait for the Angular part of the app to be ready:
 //  *     beforeEach(Clarity.ready());
 //  */
 //

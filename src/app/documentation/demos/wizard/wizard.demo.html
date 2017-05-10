@@ -78,8 +78,9 @@
 
         <p>
             There may be times when you need end-users to jump to a specific step in a wizard. The
-            way to do this is to call the <code class="clr-code">setCurrentPage()</code> method on
-            the <code class="clr-code">WizardNavigationService</code> provider of the wizard.
+            way to do this is pass the page object to the <code class="clr-code">currentPage</code>
+            property of the wizard's
+            <code class="clr-code">WizardNavigationService</code> provider.
         </p>
         <p>
             The safest way to ensure that end-users do not wind up in a bad state is to make sure
@@ -232,7 +233,7 @@
 
         <clr-wizard-async-completion></clr-wizard-async-completion>
 
-        <h3>Resetting the wizard</h3>
+        <h3 id="wizard-reset">Resetting the wizard</h3>
 
         <p>
             While the easiest way to restore a wizard back to its pristine state is to destroy and
@@ -265,6 +266,39 @@
         </p>
 
         <clr-wizard-reset></clr-wizard-reset>
+
+        <h5 id="force-forward">Making users go back through skipped pages</h5>
+
+        <p>
+            A different kind of wizard reset is one that occurs during navigation. For wizards
+            that use the next button to perform custom validations, users navigating backwards
+            in the wizard using the stepnav is problematic.
+        </p>
+
+        <p>
+            A user could, for instance, navigate from page 5 back to page 2 with the stepnav,
+            make changes on page 2, and then navigate back to page 5 (again using the stepnav).
+            The validation on the wizard would not run until the user clicked next or finish on
+            page 5, at which point they would be surprised with validation errors.
+        </p>
+
+        <p>
+            To avoid this, the Clarity wizard includes an input
+            <code class="clr-code">clrWizardForceForwardNavigation</code> which resets pages
+            when navigating backwards when set to <code class="clr-code">true</code>.
+        </p>
+
+        <p>
+            In the above example, pages 2, 3, and 4 would be reset to incomplete when the
+            user navigated from page 5 to page 2 using the stepnav.
+        </p>
+
+        <p>
+            This functionality is called “force forward” because it prevents users from jumping
+            backwards and forwards. An example is shown in the demo below.
+        </p>
+
+        <clr-wizard-force-forward></clr-wizard-force-forward>
 
         <h3 id="alternative-cancel">Providing an alternative cancel for the wizard</h3>
 
@@ -485,6 +519,12 @@ export class WizardJumpToDemo &#123;
             <li>
                 <code class="clr-code">clrWizardPreventDefaultCancel</code>> (boolean) prevents a
                 user’s cancel action from closing the wizard. Defaults to false.
+            </li>
+            <li>
+                <code class="clr-code">clrWizardForceForwardNavigation</code>> (boolean)
+                sets pages to incomplete when they are skipped over because a user navigates
+                backwards using the stepnav. Most useful when validation is occurring on a page-by-page
+                basis when the next button is clicked.
             </li>
         </ul>
 
@@ -752,10 +792,17 @@ export class WizardJumpToDemo &#123;
         </p>
         <p>
             Because much of what the nav service does is behind-the-scenes, there is really only
-            one method on the nav service that may interest you:
+            a couple of methods and properties on the nav service that may interest you:
         </p>
 
         <ul class="list">
+            <li>
+                <code class="clr-code">wizard.navService.currentPage</code> is a getter/setter
+                That will return the current page is called on its own or set the current page
+                to any WizardPage object that is passed to it. This bypasses most of the checks
+                involved with setting the current page but still emits a
+                <code class="clr-code">pageOnLoad</code> event.
+            </li>
             <li>
                 <code class="clr-code">wizard.navService.goTo()</code> takes either the id of a page
                 or the page object itself and checks to see if it can make the page current. This is

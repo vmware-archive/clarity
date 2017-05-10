@@ -25,6 +25,7 @@ import { WizardAltNextDemo } from "./wizard-alt-next.demo";
 import { WizardNoCancel } from "./wizard-no-cancel.demo";
 import { WizardJumpToDemo } from "./wizard-jump-to.demo";
 import { WizardAsyncCompletion } from "./wizard-async-completion.demo";
+import { WizardForceForwardDemo } from "./wizard-force-forward.demo";
 import {WizardDemo} from "./wizard.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
@@ -57,6 +58,7 @@ import {UtilsModule} from "../../../utils/utils.module";
         WizardNoCancel,
         WizardJumpToDemo,
         WizardAsyncCompletion,
+        WizardForceForwardDemo,
         WizardDemo
     ],
     exports: [

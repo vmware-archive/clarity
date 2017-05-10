@@ -1,0 +1,24 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<button class="btn btn-primary" (click)="wizard.open()">Force Forward Wizard</button>
+
+<clr-wizard #wizard [(clrWizardOpen)]="_open" [clrWizardForceForwardNavigation]="true">
+    <clr-wizard-title>Wizard, Only Forward Navigation</clr-wizard-title>
+
+    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+    <clr-wizard-page *ngFor="let page of [1, 2, 3, 4]">
+        <ng-template clrPageTitle>Title for page {{ page }}</ng-template>
+        <p>Content for page {{ page }}.</p>
+    </clr-wizard-page>
+</clr-wizard>
+
+<clr-code-snippet [clrLanguage]="'typescript'" [clrCode]="code"></clr-code-snippet>
+<clr-code-snippet [clrLanguage]="'html'" [clrCode]="html"></clr-code-snippet>

@@ -43,6 +43,19 @@ export default function(): void {
             expect(this.itemsProvider.displayed).toEqual([1, 2, 3, 4, 5]);
         });
 
+        it("handles a null input for the array of items", function() {
+            this.testComponent.numbers = null;
+            this.fixture.detectChanges();
+            expect(this.clarityDirective._rawItems).toEqual([]);
+        });
+
+        it("handles an undefined input for the array of items", function() {
+            let notDefined;
+            this.testComponent.numbers = notDefined;
+            this.fixture.detectChanges();
+            expect(this.clarityDirective._rawItems).toEqual([]);
+        });
+
         it("keeps the Items provider up to date with array changes", function () {
             expect(this.itemsProvider.displayed).toEqual([1, 2, 3, 4, 5]);
             this.testComponent.numbers[0] = 6;

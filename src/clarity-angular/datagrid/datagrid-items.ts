@@ -14,8 +14,10 @@ import {Items} from "./providers/items";
     selector: "[clrDgItems][clrDgItemsOf]",
 })
 export class DatagridItems implements OnChanges, DoCheck {
-    @Input("clrDgItemsOf") public rawItems: any[];
-
+    private _rawItems: any[];
+    @Input("clrDgItemsOf") public set rawItems(items: any[]) {
+        this._rawItems = items ? items : [];
+    }
     private _differ: IterableDiffer<any>;
 
     constructor(public template: TemplateRef<any>, private _differs: IterableDiffers, private _items: Items) {
@@ -38,11 +40,11 @@ export class DatagridItems implements OnChanges, DoCheck {
 
     ngDoCheck() {
         if (this._differ) {
-            const changes = this._differ.diff(this.rawItems);
+            const changes = this._differ.diff(this._rawItems);
             if (changes) {
                 // TODO: not very efficient right now,
                 // but premature optimization is the root of all evil.
-                this._items.all = this.rawItems;
+                this._items.all = this._rawItems;
             }
         }
     }

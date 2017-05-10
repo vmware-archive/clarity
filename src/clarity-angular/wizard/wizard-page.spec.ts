@@ -508,13 +508,13 @@ export default function(): void {
             describe("current", () => {
                 it("should return false if not current", () => {
                     // make sure another page is current
-                    navService.setCurrentPage(otherWizardPage);
+                    navService.currentPage = otherWizardPage;
                     fixture.detectChanges();
                     expect(testWizardPage.current).toBe(false);
                 });
 
                 it("should be true if page is current", () => {
-                    navService.setCurrentPage(testWizardPage);
+                    navService.currentPage = testWizardPage;
                     fixture.detectChanges();
                     expect(testWizardPage.current).toBe(true);
                 });
@@ -527,13 +527,13 @@ export default function(): void {
                     let dummyPreviousPage = new MockPage(99);
                     pageCollection.previousPage = dummyPreviousPage;
                     dummyPreviousPage.completed = false;
-                    navService.setCurrentPage(otherWizardPage);
+                    navService.currentPage = otherWizardPage;
                     testWizardPage.completed = false;
                     fixture.detectChanges();
                     expect(testWizardPage.enabled).toBe(false, "enabled is set to false");
                     expect(testWizardPage.disabled).toBe(true, "disabled is true when enabled is false");
 
-                    navService.setCurrentPage(testWizardPage);
+                    navService.currentPage = testWizardPage;
                     expect(testWizardPage.enabled).toBe(true, "enabled is set to true");
                     expect(testWizardPage.disabled).toBe(false, "disabled is false when enabled is true");
                 });
@@ -541,7 +541,7 @@ export default function(): void {
 
             describe("enabled", () => {
                 it("should return true if page is current", () => {
-                    navService.setCurrentPage(testWizardPage);
+                    navService.currentPage = testWizardPage;
                     fixture.detectChanges();
                     expect(testWizardPage.enabled).toBe(true);
                 });
@@ -556,7 +556,7 @@ export default function(): void {
                     let dummyPreviousPage = new MockPage(99);
                     pageCollection.previousPage = dummyPreviousPage;
                     dummyPreviousPage.completed = true;
-                    navService.setCurrentPage(otherWizardPage);
+                    navService.currentPage = otherWizardPage;
                     testWizardPage.completed = false;
                     fixture.detectChanges();
                     expect(testWizardPage.enabled).toBe(true);
@@ -567,7 +567,7 @@ export default function(): void {
                     let dummyPreviousPage = new MockPage(99);
                     pageCollection.previousPage = dummyPreviousPage;
                     dummyPreviousPage.completed = false;
-                    navService.setCurrentPage(otherWizardPage);
+                    navService.currentPage = otherWizardPage;
                     testWizardPage.completed = false;
                     fixture.detectChanges();
                     expect(testWizardPage.enabled).toBe(false);
@@ -685,14 +685,14 @@ export default function(): void {
 
             describe("makeCurrent", () => {
                 it("should call the navService to make the page current", () => {
-                    let navServiceSpy = spyOn(navService, "setCurrentPage");
                     testWizardPage.makeCurrent();
-                    expect(navServiceSpy).toHaveBeenCalledWith(testWizardPage);
+                    expect(navService.currentPage).toBe(testWizardPage);
                 });
 
                 it("should emit onLoad event", () => {
-                    let eventSpy = spyOn(testWizardPage.onLoad, "emit");
-                    testWizardPage.makeCurrent();
+                    let eventSpy = spyOn(otherWizardPage.onLoad, "emit");
+                    otherWizardPage.makeCurrent();
+                    fixture.detectChanges();
                     expect(eventSpy).toHaveBeenCalled();
                 });
             });

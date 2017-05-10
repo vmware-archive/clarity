@@ -4,23 +4,22 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component} from "@angular/core";
 import {Wizard} from "../wizard";
 import {TestContext} from "../../utils/testing/helpers.spec";
 import {ButtonHubService} from "./button-hub";
 import {WizardNavigationService} from "./wizard-navigation";
 import {PageCollectionService} from "./page-collection";
+import { BasicWizardTestComponent } from "../test-components/basic-wizard.mock";
 
 export default function(): void {
-
     describe("Button Hub Service", function() {
-        let context: TestContext<Wizard, ButtonHubTest>;
+        let context: TestContext<Wizard, BasicWizardTestComponent>;
         let buttonHubService: ButtonHubService;
         let wizardNavigationService: WizardNavigationService;
         let pageCollectionService: PageCollectionService;
 
         beforeEach(function() {
-            context = this.create(Wizard, ButtonHubTest);
+            context = this.create(Wizard, BasicWizardTestComponent);
             buttonHubService = context.getClarityProvider(ButtonHubService);
             wizardNavigationService = context.getClarityProvider(WizardNavigationService);
             pageCollectionService = context.getClarityProvider(PageCollectionService);
@@ -34,7 +33,7 @@ export default function(): void {
         });
 
         it("'previous' calls wizardNavigationService.previous", function() {
-            wizardNavigationService.setCurrentPage(pageCollectionService.lastPage);
+            wizardNavigationService.currentPage = pageCollectionService.lastPage;
             spyOn(wizardNavigationService, "previous");
             buttonHubService.buttonClicked("previous");
             expect(wizardNavigationService.previous).toHaveBeenCalled();
@@ -61,7 +60,7 @@ export default function(): void {
             spyOn(wizard, "close");
 
             // set up for finish
-            wizard.navService.setCurrentPage(finalPage);
+            wizard.navService.currentPage = finalPage;
             finalPage.nextStepDisabled = false;
             context.detectChanges();
 
@@ -78,32 +77,4 @@ export default function(): void {
             expect(wizardNavigationService.currentPage.customButtonClicked.emit).toHaveBeenCalled();
         });
     });
-}
-
-@Component({
-    template: `
-        <clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardShowGhostPages]="true">
-            <clr-wizard-title>My Wizard Title</clr-wizard-title>
-            <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-            <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
-            <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-            <clr-wizard-button [type]="'finish'">Fait Accompli</clr-wizard-button>
-
-            <clr-wizard-page>
-                <ng-template clrPageTitle>Title for Page 1</ng-template>
-                <p>Content for step 1</p>
-            </clr-wizard-page>
-            <clr-wizard-page>
-                <ng-template clrPageTitle>Title for Page 2</ng-template>
-                <p>Content for step 2</p>
-            </clr-wizard-page>
-            <clr-wizard-page>
-                <ng-template clrPageTitle>Title for Page 3</ng-template>
-                <p>Content for step 3</p>
-            </clr-wizard-page>
-        </clr-wizard>
-    `
-})
-class ButtonHubTest {
-    open: boolean = true;
 }

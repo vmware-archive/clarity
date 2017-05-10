@@ -142,7 +142,7 @@ export class WizardSimple {
 
     public funkyOpen(): void {
         if (this.myPage.completed) {
-            this.wizardMedium.navService.setCurrentPage(this.myPage);
+            this.wizardMedium.navService.currentPage = this.myPage;
         } else {
             this.wizardMedium.navService.setLastEnabledPageCurrent();
         }

@@ -12,7 +12,8 @@ import { Type, DebugElement } from "@angular/core";
 import { TestBed, ComponentFixture } from "@angular/core/testing";
 import { ClarityModule } from "../../clarity.module";
 import { By } from "@angular/platform-browser";
-import {NoopAnimationsModule} from "@angular/platform-browser/animations";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+// import { reportSlowSpecs } from "./slow-specs.spec";
 
 export class TestContext<D, C> {
     fixture: ComponentFixture<C>;
@@ -71,3 +72,11 @@ export function addHelpers(): void {
         }
     });
 }
+
+
+/*
+ * uncomment the line below to show how long it takes specs to run
+ * need to also uncomment the import up top.
+ * would be nice to be able to pass karma/jasmine a flag to turn this off and on.
+ */
+// reportSlowSpecs();

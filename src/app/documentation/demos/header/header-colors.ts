@@ -29,6 +29,10 @@ const EXAMPLE = `
 <header class="header header-6">
     ...
 </header>
+
+<header class="header header-7">
+    ...
+</header>
 `;
 
 @Component({

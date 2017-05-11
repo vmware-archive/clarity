@@ -6,7 +6,9 @@
 
 <button class="btn btn-primary" (click)="wizard.open()">Force Forward Wizard</button>
 
-<clr-wizard #wizard [(clrWizardOpen)]="_open" [clrWizardForceForwardNavigation]="true">
+<clr-wizard #wizard [(clrWizardOpen)]="_open"
+    [clrWizardForceForwardNavigation]="true"
+    [clrWizardSize]="'md'">
     <clr-wizard-title>Wizard, Only Forward Navigation</clr-wizard-title>
 
     <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
@@ -17,6 +19,7 @@
     <clr-wizard-page *ngFor="let page of [1, 2, 3, 4]">
         <ng-template clrPageTitle>Title for page {{ page }}</ng-template>
         <p>Content for page {{ page }}.</p>
+        <p class="content-for-page-1" *ngIf="page === 1">Ohai!</p>
     </clr-wizard-page>
 </clr-wizard>
 

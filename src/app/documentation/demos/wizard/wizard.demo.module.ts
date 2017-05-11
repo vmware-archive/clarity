@@ -14,7 +14,6 @@ import {WizardBasic} from "./wizard-basic.demo";
 import {WizardFormValidation} from "./wizard-form-validation.demo";
 import {WizardAsyncValidation} from "./wizard-async-validation.demo";
 import {WizardNotClosable} from "./wizard-not-closable.demo";
-import {WizardOptionsDemo} from "./wizard-options.demo";
 import { WizardNestedDirectiveDemo } from "./wizard-nested-directives.demo";
 import { WizardTitlesDemo } from "./wizard-titles.demo";
 import { WizardDefaultButtonsDemo } from "./wizard-buttons.demo";
@@ -45,7 +44,6 @@ import {UtilsModule} from "../../../utils/utils.module";
         WizardFormValidation,
         WizardAsyncValidation,
         WizardStaticDemo,
-        WizardOptionsDemo,
         WizardNotClosable,
         WizardNestedDirectiveDemo,
         WizardTitlesDemo,

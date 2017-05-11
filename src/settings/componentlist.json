@@ -180,7 +180,8 @@
             "core": -1,
             "ng": 20,
             "dox": 20,
-            "comments": ""
+            "comments": "",
+            "isUpdated": true
         },
         {
             "url": "iconography",

@@ -1,6 +1,6 @@
 {
   "name": "clarity-all",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "private": true,
   "dependencies": {
     "@angular/animations": "^4.1.0",

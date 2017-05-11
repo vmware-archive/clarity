@@ -1,10 +1,11 @@
-import {Component, OnInit, QueryList, TemplateRef, ViewChildren} from "@angular/core";
+import {AfterViewInit, Component, OnDestroy, OnInit, QueryList, TemplateRef, ViewChildren} from "@angular/core";
 import {compareReleases, MINORS, PATCHES} from "./release-page/release-organizer";
 import {Release} from "./release/release.directive";
 import {NavigationEnd, Router} from "@angular/router";
 import {BreakingChange} from "./counters/breaking-change.directive";
 import {BugFix} from "./counters/bug-fix.directive";
 import {NewComponent} from "./counters/new-component.directive";
+import {Subscription} from "rxjs/Subscription";
 
 const RELEASES = require("../../releases/release-list.json");
 
@@ -16,7 +17,7 @@ const RELEASES = require("../../releases/release-list.json");
         "[class.content-container]": "true"
     }
 })
-export class NewsComponent implements OnInit {
+export class NewsComponent implements OnInit, OnDestroy, AfterViewInit {
     @ViewChildren(Release) releaseTemplates: QueryList<Release>;
     @ViewChildren(BreakingChange) breakingChanges: QueryList<BreakingChange>;
     @ViewChildren(BugFix) bugFixes: QueryList<BugFix>;
@@ -30,6 +31,8 @@ export class NewsComponent implements OnInit {
     releaseDate: string;
     sketchVersion: string;
     commit: string;
+
+    private _subscriptions: Subscription[] = [];
 
     private _hasIcons: boolean = false;
 
@@ -68,11 +71,18 @@ export class NewsComponent implements OnInit {
     constructor(private router: Router) {
     }
 
+    resetCounts(): void {
+        this.nbBreakingChanges = 0;
+        this.nbNewComponents = 0;
+        this.nbBugFixes = 0;
+    }
+
     ngOnInit() {
         this.router.events.subscribe((change: any) => {
             if (change instanceof NavigationEnd) {
                 let url: string[] = change.url.split("/");
                 let urlLength: number = url.length;
+                this.resetCounts();
                 if (urlLength > 0 && url[urlLength - 1] !== "news") {
                     this.setTemplate(url[urlLength - 1]);
                 } else if (url[urlLength - 1] === "news") {
@@ -100,5 +110,19 @@ export class NewsComponent implements OnInit {
         this.nbBreakingChanges = this.breakingChanges ? this.breakingChanges.length : 0;
         this.nbBugFixes = this.bugFixes ? this.bugFixes.length : 0;
         this.nbNewComponents = this.newComponents ? this.newComponents.length : 0;
+    }
+
+    ngAfterViewInit() {
+        this._subscriptions.push(this.bugFixes.changes.subscribe(() => {
+            setTimeout(() => {
+                this.nbBreakingChanges = this.breakingChanges ? this.breakingChanges.length : 0;
+                this.nbBugFixes = this.bugFixes ? this.bugFixes.length : 0;
+                this.nbNewComponents = this.newComponents ? this.newComponents.length : 0;
+            }, 0);
+        }));
+    }
+
+    ngOnDestroy() {
+        this._subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
     }
 }

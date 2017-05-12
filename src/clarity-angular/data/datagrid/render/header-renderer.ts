@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Directive, ElementRef, Renderer, OnDestroy} from "@angular/core";
+import {Directive, ElementRef, Renderer2, OnDestroy} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 import {DomAdapter} from "./dom-adapter";
 import {STRICT_WIDTH_CLASS} from "./constants";
@@ -17,7 +17,7 @@ export class DatagridHeaderRenderer implements OnDestroy {
 
 
     constructor(private el: ElementRef,
-                private renderer: Renderer,
+                private renderer: Renderer2,
                 private organizer: DatagridRenderOrganizer,
                 private domAdapter: DomAdapter,
                 private columnResizer: DatagridColumnResizer) {
@@ -42,7 +42,7 @@ export class DatagridHeaderRenderer implements OnDestroy {
 
         // remove the width only if we set it, and it is not changed by dragging.
         if (this.widthSet && !this.columnResizer.columnResizeBy) {
-            this.renderer.setElementStyle(this.el.nativeElement, "width", null);
+            this.renderer.setStyle(this.el.nativeElement, "width", null);
         }
 
         let strictWidth: number = this.domAdapter.userDefinedWidth(this.el.nativeElement);
@@ -62,10 +62,14 @@ export class DatagridHeaderRenderer implements OnDestroy {
 
         let width: number = this.strictWidth;
 
-        this.renderer.setElementClass(this.el.nativeElement, STRICT_WIDTH_CLASS, !!width);
+        if (!!width) {
+            this.renderer.addClass(this.el.nativeElement, STRICT_WIDTH_CLASS);
+        } else {
+            this.renderer.removeClass(this.el.nativeElement, STRICT_WIDTH_CLASS);
+        }
 
         if (this.columnResizer.columnResizeBy) {
-            this.renderer.setElementStyle(this.el.nativeElement, "width", width + "px");
+            this.renderer.setStyle(this.el.nativeElement, "width", width + "px");
             this.columnResizer.columnResizeBy = 0;
             this.widthSet = false;
         }
@@ -74,7 +78,7 @@ export class DatagridHeaderRenderer implements OnDestroy {
 
             width = this.domAdapter.scrollWidth(this.el.nativeElement);
 
-            this.renderer.setElementStyle(this.el.nativeElement, "width", width + "px");
+            this.renderer.setStyle(this.el.nativeElement, "width", width + "px");
             this.widthSet = true;
         }
         return width;

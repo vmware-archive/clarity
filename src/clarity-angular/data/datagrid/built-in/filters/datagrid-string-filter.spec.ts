@@ -12,6 +12,9 @@ import {FiltersProvider} from "../../providers/filters";
 import {CustomFilter} from "../../providers/custom-filter";
 import {StringFilter} from "../../interfaces/string-filter";
 import {DatagridStringFilterImpl} from "./datagrid-string-filter-impl";
+import {DomAdapter} from "../../render/dom-adapter";
+
+const PROVIDERS = [FiltersProvider, DomAdapter];
 
 export default function (): void {
     describe("DatagridStringFilter component", function () {
@@ -27,7 +30,7 @@ export default function (): void {
 
         beforeEach(function () {
             filter = new TestFilter();
-            context = this.create(DatagridStringFilter, FullTest, [FiltersProvider]);
+            context = this.create(DatagridStringFilter, FullTest, PROVIDERS);
             filtersInstance = TestBed.get(FiltersProvider);
         });
 

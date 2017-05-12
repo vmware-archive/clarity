@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Directive, ElementRef, Renderer, OnDestroy} from "@angular/core";
+import {Directive, ElementRef, Renderer2, OnDestroy} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 import {DatagridRenderOrganizer} from "./render-organizer";
 
@@ -12,7 +12,7 @@ import {DatagridRenderOrganizer} from "./render-organizer";
 })
 export class DatagridHeadRenderer implements OnDestroy {
 
-    constructor(private el: ElementRef, private renderer: Renderer, organizer: DatagridRenderOrganizer) {
+    constructor(private el: ElementRef, private renderer: Renderer2, organizer: DatagridRenderOrganizer) {
         this.subscription = organizer.scrollbarWidth.subscribe(width => this.accountForScrollbar(width));
     }
 
@@ -22,6 +22,6 @@ export class DatagridHeadRenderer implements OnDestroy {
     }
 
     private accountForScrollbar(width: number) {
-        this.renderer.setElementStyle(this.el.nativeElement, "padding-right", width + "px");
+        this.renderer.setStyle(this.el.nativeElement, "padding-right", width + "px");
     }
 }

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    Component, Input, ViewChild, ElementRef, Renderer, AfterViewInit, EventEmitter, Output
+    Component, Input, ViewChild, ElementRef, Renderer2, AfterViewInit, EventEmitter, Output
 } from "@angular/core";
 import {StringFilter} from "../../interfaces/string-filter";
 import {CustomFilter} from "../../providers/custom-filter";
@@ -12,6 +12,7 @@ import {DatagridFilter} from "../../datagrid-filter";
 import {DatagridStringFilterImpl} from "./datagrid-string-filter-impl";
 import {DatagridFilterRegistrar} from "../../utils/datagrid-filter-registrar";
 import {FiltersProvider, RegisteredFilter} from "../../providers/filters";
+import {DomAdapter} from "../../render/dom-adapter";
 
 @Component({
     selector: "clr-dg-string-filter",
@@ -32,7 +33,7 @@ import {FiltersProvider, RegisteredFilter} from "../../providers/filters";
 export class DatagridStringFilter extends DatagridFilterRegistrar<DatagridStringFilterImpl>
     implements CustomFilter, AfterViewInit {
 
-    constructor(private renderer: Renderer, filters: FiltersProvider) {
+    constructor(private renderer: Renderer2, filters: FiltersProvider, private domAdapter: DomAdapter) {
         super(filters);
     }
 
@@ -68,7 +69,7 @@ export class DatagridStringFilter extends DatagridFilterRegistrar<DatagridString
                 // We need the timeout because at the time this executes, the input isn't
                 // displayed yet.
                 setTimeout(() => {
-                    this.renderer.invokeElementMethod(this.input.nativeElement, "focus");
+                    this.domAdapter.focus(this.input.nativeElement);
                 });
             }
         });

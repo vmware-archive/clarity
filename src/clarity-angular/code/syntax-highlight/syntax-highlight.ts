@@ -7,7 +7,7 @@ import {
     Input,
     Directive,
     ElementRef,
-    Renderer} from "@angular/core";
+    Renderer2} from "@angular/core";
 
 declare var Prism: any;
 
@@ -19,7 +19,7 @@ export class CodeHighlight {
 
     //Had to use renderer because I wanted to add to existing classes on the code block
     //Didn't want to override them completely
-    constructor(private _el: ElementRef, private renderer: Renderer) {
+    constructor(private _el: ElementRef, private renderer: Renderer2) {
     }
 
     ngAfterContentInit(): void {
@@ -37,7 +37,7 @@ export class CodeHighlight {
     set highlight(val: string) {
         if (val && val.trim() !== "") {
             this._highlight = val;
-            this.renderer.setElementClass(this._el.nativeElement, this._highlight, true);
+            this.renderer.addClass(this._el.nativeElement, this._highlight);
         }
     }
 

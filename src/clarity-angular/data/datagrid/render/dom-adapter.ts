@@ -45,4 +45,8 @@ export class DomAdapter {
     minWidth(element: any): number {
         return parseInt(getComputedStyle(element).getPropertyValue("min-width"), 10);
     }
+
+    focus(element: any): void {
+        element.focus();
+    }
 }

@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Directive, ElementRef, Renderer, OnDestroy} from "@angular/core";
+import {Directive, ElementRef, Renderer2, OnDestroy} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 import {STRICT_WIDTH_CLASS} from "./constants";
 import {DatagridRenderOrganizer} from "./render-organizer";
@@ -13,7 +13,7 @@ import {DatagridRenderOrganizer} from "./render-organizer";
 })
 export class DatagridCellRenderer implements OnDestroy {
 
-    constructor(private el: ElementRef, private renderer: Renderer, organizer: DatagridRenderOrganizer) {
+    constructor(private el: ElementRef, private renderer: Renderer2, organizer: DatagridRenderOrganizer) {
         this.subscription = organizer.clearWidths.subscribe(() => this.clearWidth());
     }
 
@@ -23,12 +23,16 @@ export class DatagridCellRenderer implements OnDestroy {
     }
 
     private clearWidth() {
-        this.renderer.setElementClass(this.el.nativeElement, STRICT_WIDTH_CLASS, false);
-        this.renderer.setElementStyle(this.el.nativeElement, "width", null);
+        this.renderer.removeClass(this.el.nativeElement, STRICT_WIDTH_CLASS);
+        this.renderer.setStyle(this.el.nativeElement, "width", null);
     }
 
     public setWidth(strict: boolean, value: number) {
-        this.renderer.setElementClass(this.el.nativeElement, STRICT_WIDTH_CLASS, strict);
-        this.renderer.setElementStyle(this.el.nativeElement, "width", value + "px");
+        if (strict) {
+            this.renderer.addClass(this.el.nativeElement, STRICT_WIDTH_CLASS);
+        } else {
+            this.renderer.removeClass(this.el.nativeElement, STRICT_WIDTH_CLASS);
+        }
+        this.renderer.setStyle(this.el.nativeElement, "width", value + "px");
     }
 }

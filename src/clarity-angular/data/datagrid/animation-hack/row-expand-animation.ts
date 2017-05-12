@@ -9,7 +9,7 @@
  * please do not use this as an example.
  */
 
-import {Directive, ElementRef, Renderer} from "@angular/core";
+import {Directive, ElementRef, Renderer2} from "@angular/core";
 
 import {DomAdapter} from "../render/dom-adapter";
 import {RowExpand} from "../providers/row-expand";
@@ -20,7 +20,7 @@ import {DatagridRenderOrganizer} from "../render/render-organizer";
 })
 export class DatagridRowExpandAnimation {
 
-    constructor(private el: ElementRef, private domAdapter: DomAdapter, private renderer: Renderer,
+    constructor(private el: ElementRef, private domAdapter: DomAdapter, private renderer: Renderer2,
                 private expand: RowExpand, private renderOrganizer: DatagridRenderOrganizer) {
         expand.animate.subscribe(() => {
             // We already had an animation waiting, so we just have to run in, not prepare again
@@ -52,8 +52,8 @@ export class DatagridRowExpandAnimation {
 
         this.oldHeight = this.domAdapter.computedHeight(this.el.nativeElement);
         // We set the height of the element immediately to avoid a flicker before the animation starts.
-        this.renderer.setElementStyle(this.el.nativeElement, "height", this.oldHeight + "px");
-        this.renderer.setElementStyle(this.el.nativeElement, "overflow-y", "hidden");
+        this.renderer.setStyle(this.el.nativeElement, "height", this.oldHeight + "px");
+        this.renderer.setStyle(this.el.nativeElement, "overflow-y", "hidden");
         setTimeout(() => {
             if (this.expand.loading) { return; }
             this.run();
@@ -61,7 +61,7 @@ export class DatagridRowExpandAnimation {
     }
 
     private run() {
-        this.renderer.setElementStyle(this.el.nativeElement, "height", null);
+        this.renderer.setStyle(this.el.nativeElement, "height", null);
         // I don't like realigning the columns before the animation, since the scrollbar could appear or disappear
         // halfway, but that's a compromise we have to make for now. We can look into a smarter fix later.
         this.renderOrganizer.scrollbar.next();
@@ -74,7 +74,7 @@ export class DatagridRowExpandAnimation {
             duration: 200
         });
         this.running.onfinish = () => {
-            this.renderer.setElementStyle(this.el.nativeElement, "overflow-y", null);
+            this.renderer.setStyle(this.el.nativeElement, "overflow-y", null);
             delete this.running;
         };
         delete this.oldHeight;

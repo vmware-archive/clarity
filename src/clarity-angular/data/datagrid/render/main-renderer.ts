@@ -5,7 +5,7 @@
  */
 import {
     Directive, ContentChildren, QueryList, AfterContentInit, AfterViewInit, OnDestroy,
-    ElementRef, Renderer, AfterViewChecked
+    ElementRef, Renderer2, AfterViewChecked
 } from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 import {DomAdapter} from "./dom-adapter";
@@ -26,7 +26,7 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, Af
         private page: Page,
         private domAdapter: DomAdapter,
         private el: ElementRef,
-        private renderer: Renderer) {
+        private renderer: Renderer2) {
             this._subscriptions.push(organizer.computeWidths.subscribe(() => this.computeHeadersWidth()));
             this._subscriptions.push(this.page.sizeChange.subscribe(() => {
                 if (this._heightSet) {
@@ -83,12 +83,12 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, Af
      */
     private computeDatagridHeight() {
         let value: number = this.domAdapter.computedHeight(this.el.nativeElement);
-        this.renderer.setElementStyle(this.el.nativeElement, "height", value + "px");
+        this.renderer.setStyle(this.el.nativeElement, "height", value + "px");
         this._heightSet = true;
     }
 
     private resetDatagridHeight() {
-        this.renderer.setElementStyle(this.el.nativeElement, "height", "");
+        this.renderer.setStyle(this.el.nativeElement, "height", "");
         this._heightSet = false;
     }
 

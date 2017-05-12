@@ -20,6 +20,7 @@
         flex-direction: row;
         flex: 0 auto; // Same as flex: initial. It sizes the item based on width/height properties or its content.
         width: 100%;
+        min-height: 100%; // Must be min to fix Safari bug: height: 100% won't fill flex parent. http://bit.ly/2qAPkha
         overflow-x: auto;
         overflow-y: hidden;
 

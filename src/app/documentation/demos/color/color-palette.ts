@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
     selector: "clr-color-palette",
@@ -11,124 +11,248 @@ import {Component} from "@angular/core";
     templateUrl: "./color-palette.demo.html"
 })
 export class ColorPalette {
+
+    copyContent: string;
+
+    copyNotificationOnClick(color: any) {
+        color.copied = true;
+        setTimeout(() => {
+            delete color.copied;
+        }, 1000)
+    }
+
+
     palettes = [
         {
-            type: "purple",
+            type: "Red",
             colors: [
-                { value: "#390256", text: "light" },
-                { value: "#50266b", text: "light" },
-                { value: "#660092", text: "light" },
-                { value: "#7620a3", text: "light" },
-                { value: "#853fb3", text: "light" },
-                { value: "#a065c6", text: "dark" },
-                { value: "#bb8cd9", text: "dark" },
-                { value: "#d5b3ec", text: "dark" },
-                { value: "#f0d9ff", text: "dark" }
+                {value: "#F52F22", text: "light", primary: true},
+                {value: "#A32100", text: "light"},
+                {value: "#C92100", text: "light"},
+                {value: "#E62700", text: "mid", bulleted: true},
+                {value: "#F52F22", text: "dark"},
+                {value: "#F54F47", text: "dark"},
+                {value: "#F76F6C", text: "dark"},
+                {value: "#F89997", text: "dark"},
+                {value: "#F8B7B6", text: "dark"},
+                {value: "#F5DBD9", text: "dark"},
+                {value: "#FFF0EE", text: "dark"}
             ]
         },
         {
-            type: "actionBlue",
+            type: "Pink",
             colors: [
-                { value: "#003666", text: "light" },
-                { value: "#004981", text: "light" },
-                { value: "#005c9b", text: "light" },
-                { value: "#007cbb", text: "mid", corePalette: true },
-                { value: "#0094d2", text: "dark" },
-                { value: "#49afd9", text: "dark" },
-                { value: "#89cbdf", text: "dark" },
-                { value: "#a6d8e7", text: "dark" },
-                { value: "#c5e5ef", text: "dark" },
-                { value: "#e1f1f6", text: "dark" }
+                {value: "#F1428A", text: "dark", primary: true},
+                {value: "#9B0D54", text: "light"},
+                {value: "#B0105B", text: "light"},
+                {value: "#C41261", text: "light"},
+                {value: "#D91468", text: "light"},
+                {value: "#ED186F", text: "dark"},
+                {value: "#F1428A", text: "dark"},
+                {value: "#F46CA5", text: "dark"},
+                {value: "#F897BF", text: "dark"},
+                {value: "#FBC1DA", text: "dark"},
+                {value: "#FFEBF5", text: "dark"}
             ]
         },
         {
-            type: "darkBlue",
+            type: "Purple",
             colors: [
-                { value: "#002538", text: "light" },
-                { value: "#004a70", text: "light" },
-                { value: "#006a91", text: "light" },
-                { value: "divider"},
-                { value: "#d9e4ea", text: "dark", corePalette: true }
+                {value: "#781DA0", text: "light", primary: true},
+                {value: "#4D007A", text: "light"},
+                {value: "#660092", text: "light"},
+                {value: "#781DA0", text: "light"},
+                {value: "#8939AD", text: "light"},
+                {value: "#9B56BB", text: "light"},
+                {value: "#AD73C8", text: "dark"},
+                {value: "#BE90D6", text: "dark"},
+                {value: "#D0ACE4", text: "dark"},
+                {value: "#E1C9F1", text: "dark"},
+                {value: "#F3E6FF", text: "dark"}
             ]
         },
         {
-            type: "jewelGreen",
+            type: "Ultramarine",
             colors: [
-                { value: "#013d32", text: "light" },
-                { value: "#00594a", text: "light" },
-                { value: "#05866f", text: "mid" },
-                { value: "#00a98c", text: "dark" },
-                { value: "#00c0a2", text: "dark" },
-                { value: "#00d4b8", text: "dark" },
-                { value: "#50e3cd", text: "dark" },
-                { value: "#85eddd", text: "dark" },
-                { value: "#bcf4ec", text: "dark" },
-                { value: "#e0faf6", text: "dark" }
+                {value: "#343DAC", text: "light", primary: true},
+                {value: "#0F1E82", text: "light"},
+                {value: "#1A23A0", text: "light"},
+                {value: "#343DAC", text: "light"},
+                {value: "#4E56B8", text: "light"},
+                {value: "#6870C4", text: "dark"},
+                {value: "#838ACF", text: "dark"},
+                {value: "#9DA3DB", text: "dark"},
+                {value: "#B7BDE7", text: "dark"},
+                {value: "#D1D6F3", text: "dark"},
+                {value: "#EBF0FF", text: "dark"}
             ]
         },
         {
-            type: "green",
+            type: "Blue",
             colors: [
-                { value: "#173a00", text: "light" },
-                { value: "#1d5100", text: "light" },
-                { value: "#266900", text: "light" },
-                { value: "#318700", text: "light", corePalette: true },
-                { value: "#62a420", text: "mid" },
-                { value: "#60b515", text: "dark" },
-                { value: "#92cf5b", text: "dark" },
-                { value: "#b7df94", text: "dark" },
-                { value: "#dff0d0", text: "dark" }
+                {value: "#0065AB", text: "light", primary: true},
+                {value: "#003D79", text: "light"},
+                {value: "#004D8A", text: "light"},
+                {value: "#0065AB", text: "mid"},
+                {value: "#007CBB", text: "mid", bulleted: true},
+                {value: "#0095D3", text: "dark"},
+                {value: "#49AFD9", text: "dark"},
+                {value: "#89CBDF", text: "dark"},
+                {value: "#A6D8E7", text: "dark"},
+                {value: "#C5E5EF", text: "dark"},
+                {value: "#E1F1F6", text: "dark"}
             ]
         },
         {
-            type: "yellowsAndOranges",
+            type: "Cyan",
             colors: [
-                { value: "#fac400", text: "dark" },
-                { value: "#ffdc0b", text: "dark" },
-                { value: "#ffe967", text: "dark" },
-                { value: "#fff899", text: "dark" },
-                { value: "#fffadc", text: "dark" },
-                { value: "divider" },
-                { value: "#a34200", text: "light" },
-                { value: "#c25400", text: "mid" },
-                { value: "#eb8d00", text: "dark" },
-                { value: "#feecb5", text: "dark" }
+                {value: "#00B7D6", text: "dark", primary: true},
+                {value: "#004A70", text: "light"},
+                {value: "#005680", text: "light"},
+                {value: "#006690", text: "light"},
+                {value: "#0081A7", text: "dark"},
+                {value: "#009CBF", text: "dark"},
+                {value: "#00B7D6", text: "dark"},
+                {value: "#36C9E1", text: "dark"},
+                {value: "#6DDBEB", text: "dark"},
+                {value: "#A3EDF6", text: "dark"},
+                {value: "#CCFBFF", text: "dark"}
+            ]
+        },
+
+        {
+            type: "Teal",
+            colors: [
+                {value: "#00968B", text: "dark", primary: true},
+                {value: "#006668", text: "light"},
+                {value: "#007E7A", text: "light"},
+                {value: "#00968B", text: "dark"},
+                {value: "#00AB9A", text: "dark"},
+                {value: "#00BFA9", text: "dark"},
+                {value: "#00D4B8", text: "dark"},
+                {value: "#38DFC8", text: "dark"},
+                {value: "#6FEAD9", text: "dark"},
+                {value: "#A7F4E9", text: "dark"},
+                {value: "#DEFFF9", text: "dark"}
             ]
         },
         {
-            type: "moreOranges",
+            type: "Green",
             colors: [
-                { value: "#e64120", text: "dark" },
-                { value: "#ff5500", text: "dark" },
-                { value: "#ff6f01", text: "dark" },
-                { value: "#ff9552", text: "dark" },
-                { value: "#ffb688", text: "dark" },
-                { value: "#ffd5ba", text: "dark" }
+                {value: "#48960C", text: "dark", primary: true},
+                {value: "#1D5100", text: "light"},
+                {value: "#266900", text: "light"},
+                {value: "#318700", text: "mid", bulleted: true},
+                {value: "#48960C", text: "dark"},
+                {value: "#62A420", text: "dark"},
+                {value: "#60B515", text: "dark"},
+                {value: "#85C81A", text: "dark"},
+                {value: "#AADB1E", text: "dark"},
+                {value: "#C7E59C", text: "dark"},
+                {value: "#DFF0D0", text: "dark"}
             ]
         },
         {
-            type: "reds",
+            type: "Yellow",
             colors: [
-                { value: "#a32100", text: "light" },
-                { value: "#c92100", text: "light" },
-                { value: "#e62700", text: "mid", corePalette: true },
-                { value: "#ebafa6", text: "dark" },
-                { value: "#f5dbd9", text: "dark" }
+                {value: "#FFDC0B", text: "dark", primary: true},
+                {value: "#C47D00", text: "dark"},
+                {value: "#D28F00", text: "dark"},
+                {value: "#DFA100", text: "dark"},
+                {value: "#EDB200", text: "dark"},
+                {value: "#FAC400", text: "dark"},
+                {value: "#FDD006", text: "dark"},
+                {value: "#FFDC0B", text: "dark"},
+                {value: "#FFE860", text: "dark"},
+                {value: "#FEF3B5", text: "dark"},
+                {value: "#FFFCE8", text: "dark"}
             ]
         },
         {
-            type: "neutrals",
+            type: "Orange",
             colors: [
-                { value: "#000000", text: "light" },
-                { value: "#313131", text: "light" },
-                { value: "#565656", text: "light", corePalette: true },
-                { value: "#747474", text: "light" },
-                { value: "#9a9a9a", text: "dark" },
-                { value: "#cccccc", text: "dark" },
-                { value: "#dddddd", text: "dark" },
-                { value: "#eeeeee", text: "dark" },
-                { value: "#fafafa", text: "dark", corePalette: true },
-                { value: "#ffffff", text: "dark" }
+                {value: "#F57600", text: "dark", primary: true},
+                {value: "#AA4500", text: "light"},
+                {value: "#C25400", text: "mid"},
+                {value: "#D36000", text: "dark"},
+                {value: "#E46C00", text: "dark"},
+                {value: "#F57600", text: "dark"},
+                {value: "#FF8400", text: "dark"},
+                {value: "#FF9C32", text: "dark"},
+                {value: "#FFB565", text: "dark"},
+                {value: "#FFCD97", text: "dark"},
+                {value: "#FFE5C9", text: "dark"}
+            ]
+        },
+        {
+            type: "Red-orange",
+            colors: [
+                {value: "#EE4A08", text: "dark", primary: true},
+                {value: "#CD3517", text: "light"},
+                {value: "#DE400F", text: "dark"},
+                {value: "#EE4A08", text: "dark"},
+                {value: "#FF5500", text: "dark"},
+                {value: "#FF681C", text: "dark"},
+                {value: "#FF8142", text: "dark"},
+                {value: "#FF9A69", text: "dark"},
+                {value: "#FFB38F", text: "dark"},
+                {value: "#FFCCB5", text: "dark"},
+                {value: "#FFE5DC", text: "dark"}
+            ]
+        },
+        {
+            type: "Warm-grey",
+            colors: [
+                {value: "#80746D", text: "light", primary: true},
+                {value: "#5B4D47", text: "light"},
+                {value: "#6C5F59", text: "light"},
+                {value: "#80746D", text: "mid"},
+                {value: "#948981", text: "dark"},
+                {value: "#A89E95", text: "dark"},
+                {value: "#BBB3A9", text: "dark"},
+                {value: "#CFC8BD", text: "dark"},
+                {value: "#E3DDD1", text: "dark"},
+                {value: "#F4F1E6", text: "dark"},
+                {value: "#FAF9F5", text: "dark"}
+            ]
+        },
+        {
+            type: "Neutral-grey",
+            colors: [
+                {value: "#747474", text: "light", primary: true},
+                {value: "#313131", text: "light"},
+                {value: "#444444", text: "light"},
+                {value: "#565656", text: "light", bulleted: true},
+                {value: "#747474", text: "light"},
+                {value: "#9A9A9A", text: "dark"},
+                {value: "#CCCCCC", text: "dark"},
+                {value: "#DDDDDD", text: "dark"},
+                {value: "#EEEEEE", text: "dark"},
+                {value: "#F2F2F2", text: "dark"},
+                {value: "#FAFAFA", text: "dark", bulleted: true}
+            ]
+        },
+        {
+            type: "Cool-grey",
+            colors: [
+                {value: "#61717D", text: "light", primary: true},
+                {value: "#25333D", text: "light"},
+                {value: "#314351", text: "light"},
+                {value: "#495A67", text: "light"},
+                {value: "#61717D", text: "light"},
+                {value: "#798893", text: "dark"},
+                {value: "#919FA8", text: "dark"},
+                {value: "#A9B6BE", text: "dark"},
+                {value: "#C1CDD4", text: "dark"},
+                {value: "#D9E4EA", text: "dark", bulleted: true},
+                {value: "#F3F6FA", text: "dark"}
+            ]
+        },
+        {
+            type: "Black-white",
+            colors: [
+                {value: "#000000", text: "light"},
+                {value: "#FFFFFF", text: "dark"}
             ]
         }
     ];

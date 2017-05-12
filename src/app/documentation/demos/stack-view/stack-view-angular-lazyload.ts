@@ -5,7 +5,7 @@
  */
 import {Component, ViewChild} from "@angular/core";
 import {StackViewNgDemo} from "./stack-view-ng-demo";
-import {StackBlock} from "clarity-angular/stack-view/stack-block";
+import {StackBlock} from "clarity-angular";
 
 const EXAMPLE = `
 <clr-stack-view>

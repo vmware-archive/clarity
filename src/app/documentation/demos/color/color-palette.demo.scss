@@ -1,7 +1,6 @@
 // Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
-
 @import '../../../../styles/clarity-imports';
 
 .card-block {
@@ -11,41 +10,66 @@
     padding-right: 0;
 }
 
-p.card-swatch {
+li.card-swatch {
     background: #ccc;
     color: #000;
     margin: 0;
     padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
     font-size: 16px;
-
+    list-style: none;
     &.upsize {
-        padding-top: $clr_baselineRem_2;
+        padding-bottom: $clr_baselineRem_2;
     }
-
-    &:before,
-    &:after {
-        clear: both;
-        display: table;
-        content: '';
+    &.primary {
+        padding-bottom: $clr_baselineRem_2;
+        margin-bottom: $clr_baselineRem_0_125;
     }
-
-    .hex-contrast {
-        display: block;
-        float: left;
-        & > span {
+    .card-swatch-content {
+        display: flex;
+        flex-grow: 1;
+        justify-content: flex-start;
+        align-items: center;
+        .bullet {
+            color: currentColor;
+            padding: 0;
+            font-size: 1.2em;
+        }
+        .hex-contrast {
             color: black;
-            padding-left: 3px;
+        }
+        .rgb-value {
+            margin-left: auto;
+            font-size: 0.9em;
+            clr-icon {
+                margin: 0 3px;
+                opacity: 0;
+                transition: all 0.2s ease-in-out;
+            }
+            .copied-indication {
+                display: inline-block;
+                transform: translateX(-24px);
+                opacity: 0;
+                transition: all 0.2s ease-in-out;
+            }
+        }
+    }
+    &:not(.dark-text) {
+        color: #fff;
+    }
+    &:not(:first-child) {
+        cursor: pointer;
+        &:hover {
+            .card-swatch-content .rgb-value clr-icon {
+                opacity: 1;
+            }
         }
     }
 
-    .rgb-value {
-        display: block;
-        float: right;
-        font-size: 0.9em;
-    }
-
-    &:not(.dark-text) {
-        color: #fff;
+    &.copied {
+        .card-swatch-content .rgb-value .copied-indication {
+            transform: translateX(0px);
+            opacity: 1;
+        }
     }
 }
 
@@ -58,4 +82,3 @@ p.card-swatch {
 .card-swatch-divider {
     height: $clr_baselineRem_0_5;
 }
-

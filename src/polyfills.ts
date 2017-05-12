@@ -17,6 +17,11 @@ import "core-js/es6/reflect";
 
 import "core-js/es7/reflect";
 
+//Needed for class manipulation on SVG elements in angular templates for IE browsers
+//https://github.com/angular/angular/issues/6327
+//https://github.com/jpf200124/ng2-ruler/commit/5f263ee2e5de1b4de86a56021ea70916ce3bd40e
+import 'classlist.js';
+
 import "intl";
 import "intl/locale-data/jsonp/en";
 

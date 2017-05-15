@@ -118,7 +118,6 @@ export class WizardButton {
         if (this.isPrevious && (nav.currentPageIsFirst || page.previousStepDisabled)) {
             return disabled;
         }
-    // TODO: more specs!!!
 
         if (this.isDanger && !page.readyToComplete) {
             return disabled;

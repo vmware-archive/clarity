@@ -6,10 +6,12 @@
 import { NgModule } from "@angular/core";
 import { ClrDropdownModule } from "./dropdown/dropdown.module";
 import { ClrTooltipModule } from "./tooltip/tooltip.module";
+import { ClrSignpostModule } from "./signpost/signpost.module";
 
 @NgModule({
     exports: [
         ClrDropdownModule,
+        ClrSignpostModule,
         ClrTooltipModule
     ]
 })

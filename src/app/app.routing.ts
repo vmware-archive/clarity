@@ -33,6 +33,7 @@ export const APP_ROUTES: Routes  = [
     { path: "progress-bars", loadChildren: "app/progress-bars/progress-bars.demo.module" },
     { path: "radios", loadChildren: "app/radios/radios.demo.module" },
     { path: "selects", loadChildren: "app/selects/selects.demo.module" },
+    { path: "signposts", loadChildren: "app/signpost/signpost.demo.module" },
     { path: "spinners", loadChildren: "app/spinners/spinners.demo.module" },
     { path: "stack-view", loadChildren: "app/stack-view/stack-view.demo.module" },
     { path: "tables", loadChildren: "app/tables/tables.demo.module" },

@@ -6,7 +6,7 @@
 
 <button class="btn btn-primary" (click)="wizard.open()">Wizard with Async Validation</button>
 
-<clr-wizard #wizard [(clrWizardOpen)]="open">
+<clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardSize]="'lg'">
     <clr-wizard-title>Async validation</clr-wizard-title>
 
     <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>

@@ -1,0 +1,121 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Test 1</h4>
+<div class="clr-example">
+    <clr-tree-node [(clrIndeterminate)]="indeterminate1">
+        A
+        <ng-template clrIfExpanded>
+            <clr-tree-node [(clrSelected)]="selected1">
+                A-1
+            </clr-tree-node>
+            <clr-tree-node>
+                A-2
+                <ng-template clrIfExpanded>
+                    <clr-tree-node>
+                        A-2.1
+                    </clr-tree-node>
+                    <clr-tree-node>
+                        A-2.2
+                    </clr-tree-node>
+                    <clr-tree-node>
+                        A-2.3
+                    </clr-tree-node>
+                </ng-template>
+            </clr-tree-node>
+            <clr-tree-node>
+                A-3
+            </clr-tree-node>
+        </ng-template>
+    </clr-tree-node>
+</div>
+
+<clr-example [clrCode]="example1" [clrLanguage]="'html'"></clr-example>
+
+<h4>Test 2</h4>
+<div class="clr-example">
+    <clr-tree-node [(clrSelected)]="selected2">
+        A2
+        <clr-tree-node *clrIfExpanded>
+            A-1
+        </clr-tree-node>
+        <clr-tree-node *clrIfExpanded [(clrIndeterminate)]="indeterminate2" [(clrSelected)]="iSelectedNode">
+            A-2
+            <clr-tree-node *clrIfExpanded>
+                A-2.1
+            </clr-tree-node>
+            <clr-tree-node *clrIfExpanded [(clrSelected)]="selected3">
+                A-2.2
+            </clr-tree-node>
+            <clr-tree-node *clrIfExpanded [(clrSelected)]="selected4">
+                A-2.3
+            </clr-tree-node>
+        </clr-tree-node>
+        <clr-tree-node *clrIfExpanded [(clrSelected)]="selected5">
+            A-3
+        </clr-tree-node>
+    </clr-tree-node>
+</div>
+
+<clr-example [clrCode]="example2" [clrLanguage]="'html'"></clr-example>
+
+<h4>Test 3</h4>
+<div class="clr-example">
+    <clr-tree-node [(clrSelected)]="selected6">
+        A3
+        <clr-tree-node *clrIfExpanded>
+            A-1
+        </clr-tree-node>
+        <clr-tree-node *clrIfExpanded [(clrIndeterminate)]="indeterminate3">
+            A-2
+            <clr-tree-node *clrIfExpanded [(clrSelected)]="selected7">
+                A-2.1
+            </clr-tree-node>
+            <clr-tree-node *clrIfExpanded>
+                A-2.2
+            </clr-tree-node>
+            <clr-tree-node *clrIfExpanded>
+                A-2.3
+            </clr-tree-node>
+        </clr-tree-node>
+        <clr-tree-node *clrIfExpanded>
+            A-3
+        </clr-tree-node>
+    </clr-tree-node>
+</div>
+
+<clr-example [clrCode]="example3" [clrLanguage]="'html'"></clr-example>
+
+<h4>Test 4</h4>
+<div class="clr-example">
+    <clr-tree-node [(clrIndeterminate)]="indeterminate4">
+        A
+        <ng-template clrIfExpanded>
+            <clr-tree-node [(clrSelected)]="selected8">
+                A-1
+            </clr-tree-node>
+            <clr-tree-node [(clrSelected)]="selected9">
+                A-2
+                <ng-template [clrIfExpanded]="true">
+                    <clr-tree-node>
+                        A-2.1
+                    </clr-tree-node>
+                    <clr-tree-node>
+                        A-2.2
+                    </clr-tree-node>
+                    <clr-tree-node>
+                        A-2.3
+                    </clr-tree-node>
+                </ng-template>
+            </clr-tree-node>
+            <clr-tree-node [(clrSelected)]="selected10">
+                A-3
+            </clr-tree-node>
+        </ng-template>
+    </clr-tree-node>
+</div>
+
+<clr-example [clrCode]="example4" [clrLanguage]="'html'"></clr-example>

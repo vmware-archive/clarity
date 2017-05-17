@@ -16,6 +16,7 @@ import { ClrLayoutModule } from "./layout/layout.module";
 import { ClrPopoverModule } from "./popover/popover.module";
 import { ClrWizardModule } from "./wizard/wizard.module";
 import { ClrWizardDeprecatedModule } from "./wizard-deprecated/wizard-deprecated.module";
+import {ClrIfExpandModule} from "./utils/expand/if-expand.module";
 
 @NgModule({
     exports: [
@@ -24,6 +25,7 @@ import { ClrWizardDeprecatedModule } from "./wizard-deprecated/wizard-deprecated
         ClrIconModule,
         ClrModalModule,
         ClrLoadingModule,
+        ClrIfExpandModule,
         ClrButtonModule,
         ClrCodeModule,
         ClrFormsModule,

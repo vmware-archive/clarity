@@ -45,4 +45,9 @@ export class AppComponent  {
     onAdd() {
         this.toAdd = this.selected.slice();
     }
+
+    selected1: boolean = false;
+    selected2: boolean = true;
+    selected3: boolean = true;
+    indeterminate1: boolean = true;
 }

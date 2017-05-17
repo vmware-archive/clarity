@@ -12,8 +12,8 @@
 import {Directive, ElementRef, Renderer2} from "@angular/core";
 
 import {DomAdapter} from "../render/dom-adapter";
-import {RowExpand} from "../providers/row-expand";
 import {DatagridRenderOrganizer} from "../render/render-organizer";
+import {Expand} from "../../../utils/expand/providers/expand";
 
 @Directive({
     selector: "clr-dg-row"
@@ -21,7 +21,7 @@ import {DatagridRenderOrganizer} from "../render/render-organizer";
 export class DatagridRowExpandAnimation {
 
     constructor(private el: ElementRef, private domAdapter: DomAdapter, private renderer: Renderer2,
-                private expand: RowExpand, private renderOrganizer: DatagridRenderOrganizer) {
+                private expand: Expand, private renderOrganizer: DatagridRenderOrganizer) {
         expand.animate.subscribe(() => {
             // We already had an animation waiting, so we just have to run in, not prepare again
             if (this.oldHeight) {

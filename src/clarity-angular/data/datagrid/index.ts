@@ -17,7 +17,6 @@ import {DatagridFooter} from "./datagrid-footer";
 import {DatagridItems} from "./datagrid-items";
 import {DatagridPagination} from "./datagrid-pagination";
 import {DatagridRow} from "./datagrid-row";
-import {DatagridIfExpanded} from "./datagrid-if-expanded";
 import {DatagridRowDetail} from "./datagrid-row-detail";
 import {DatagridPlaceholder} from "./datagrid-placeholder";
 
@@ -44,7 +43,6 @@ export * from "./datagrid-hidable-column.directive";
 export * from "./datagrid-filter";
 export * from "./datagrid-items";
 export * from "./datagrid-row";
-export * from "./datagrid-if-expanded";
 export * from "./datagrid-row-detail";
 export * from "./datagrid-cell";
 export * from "./datagrid-footer";
@@ -72,7 +70,6 @@ export const DATAGRID_DIRECTIVES: Type<any>[] = [
     DatagridFilter,
     DatagridItems,
     DatagridRow,
-    DatagridIfExpanded,
     DatagridRowDetail,
     DatagridCell,
     DatagridFooter,

@@ -5,20 +5,38 @@
  */
 import {Component} from "@angular/core";
 
-const EXAMPLE_HTML = `
-<clr-tree-node [(clrTreeNodeExpanded)]="expanded">
-        {{expanded ? "I am expanded" : "I am collapsed"}}
-    
+const EXAMPLE_1 = `
+<clr-tree-node>
+    {{expanded ? "I am expanded" : "I am collapsed"}}
+    <ng-template [(clrIfExpanded)]="expanded">
         <clr-tree-node>
-            Child Tree Node
+            Child Tree Node 1
         </clr-tree-node>
-    </clr-tree-node>
+        <clr-tree-node>
+            Child Tree Node 2
+        </clr-tree-node>
+        <clr-tree-node>
+            Child Tree Node 3
+        </clr-tree-node>
+    </ng-template>
+</clr-tree-node>
 `;
 
-const EXAMPLE_TS = `
-export class TreeNodeLabelChangeOnExpandDemo {
-        expanded: boolean = true;
-    }
+const EXAMPLE_2 = `
+<clr-tree-node [(clrSelected)]="selected">
+    {{expanded ? "I am expanded" : "I am collapsed"}}
+    <ng-template [(clrIfExpanded)]="expanded">
+        <clr-tree-node>
+            Child Tree Node 1
+        </clr-tree-node>
+        <clr-tree-node>
+            Child Tree Node 2
+        </clr-tree-node>
+        <clr-tree-node>
+            Child Tree Node 3
+        </clr-tree-node>
+    </ng-template>
+</clr-tree-node>
 `;
 
 @Component({
@@ -29,8 +47,18 @@ export class TreeNodeLabelChangeOnExpandDemo {
     templateUrl: "./label-change-on-expand.html"
 })
 export class TreeNodeLabelChangeOnExpandDemo {
-    exampleHTML = EXAMPLE_HTML;
-    exampleTS = EXAMPLE_TS;
+    private _expanded: boolean = false;
 
-    expanded: boolean = true;
+    example1 = EXAMPLE_1;
+    example2 = EXAMPLE_2;
+
+    get expanded(): boolean {
+        return this._expanded;
+    }
+
+    set expanded(value: boolean) {
+        this._expanded = value;
+    }
+
+    selected: boolean = false;
 }

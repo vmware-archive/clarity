@@ -7,9 +7,9 @@ import {Component} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
 import {DatagridRowExpandAnimation} from "./row-expand-animation";
-import {RowExpand} from "../providers/row-expand";
 import {DatagridRenderOrganizer} from "../render/render-organizer";
 import {MOCK_DOM_ADAPTER_PROVIDER} from "../render/dom-adapter.mock";
+import {Expand} from "../../../utils/expand/providers/expand";
 
 /*
  * TODO: web animations testing doesn't play nicely with PhantomJS. Pushing this to later.
@@ -25,14 +25,14 @@ export default function(): void {
             // TODO: improve the TestContext to allow this.
             TestBed.configureTestingModule({
                 declarations: [DatagridRowExpandAnimation, SimpleTest],
-                providers: [RowExpand, DatagridRenderOrganizer, MOCK_DOM_ADAPTER_PROVIDER]
+                providers: [Expand, DatagridRenderOrganizer, MOCK_DOM_ADAPTER_PROVIDER]
             });
             this.fixture = TestBed.createComponent(SimpleTest);
             this.fixture.detectChanges();
             this.testComponent = this.fixture.componentInstance;
             this.clarityElement =
                 this.fixture.debugElement.query(By.directive(DatagridRowExpandAnimation)).nativeElement;
-            this.expand = TestBed.get(RowExpand);
+            this.expand = TestBed.get(Expand);
         });
 
         afterEach(function() {

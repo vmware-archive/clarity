@@ -5,10 +5,10 @@
  */
 
 
-import { NgModule } from "@angular/core";
-import { ClrDatagridModule } from "./datagrid/datagrid.module";
-import { ClrStackViewModule } from "./stack-view/stack-view.module";
-import { ClrTreeViewModule } from "./tree-view/tree-view.module";
+import {NgModule} from "@angular/core";
+import {ClrDatagridModule} from "./datagrid/datagrid.module";
+import {ClrStackViewModule} from "./stack-view/stack-view.module";
+import {ClrTreeViewModule} from "./tree-view/tree-view.module";
 
 @NgModule({
     exports: [
@@ -17,4 +17,5 @@ import { ClrTreeViewModule } from "./tree-view/tree-view.module";
         ClrTreeViewModule
     ]
 })
-export class ClrDataModule {}
+export class ClrDataModule {
+}

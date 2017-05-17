@@ -17,10 +17,10 @@ import {RowActionService} from "./providers/row-action-service";
 import {GlobalExpandableRows} from "./providers/global-expandable-rows";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 import {DomAdapter} from "./render/dom-adapter";
-import {RowExpand} from "./providers/row-expand";
 import {LoadingListener} from "../../utils/loading/loading-listener";
 import { HideableColumnService } from "./providers/hideable-column.service";
 import { DatagridHideableColumn } from "./datagrid-hideable-column";
+import {Expand} from "../../utils/expand/providers/expand";
 
 const PROVIDERS = [Selection, Items, FiltersProvider, Sort, Page, RowActionService,
     GlobalExpandableRows, DatagridRenderOrganizer, DomAdapter, HideableColumnService];
@@ -159,14 +159,14 @@ export default function(): void {
         describe("Expand/Collapse", function() {
             // Until we can properly type "this"
             let context: TestContext<DatagridRow, ExpandTest>;
-            let expand: RowExpand;
+            let expand: Expand;
 
             beforeEach(function () {
                 context = this.create(DatagridRow, ExpandTest, PROVIDERS);
                 // This is the datagrid's job, so we handle it manually for the tests.
                 context.getClarityProvider(GlobalExpandableRows).hasExpandableRow = true;
                 context.detectChanges();
-                expand = context.getClarityProvider(RowExpand);
+                expand = context.getClarityProvider(Expand);
             });
 
             it("registers a LoadingListener", function () {

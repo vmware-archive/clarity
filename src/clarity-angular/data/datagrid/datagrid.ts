@@ -14,7 +14,6 @@ import { DatagridPropertyStringFilter } from "./built-in/filters/datagrid-proper
 import { DatagridItems } from "./datagrid-items";
 import { DatagridRow } from "./datagrid-row";
 import { DatagridPlaceholder } from "./datagrid-placeholder";
-import { DatagridIfExpanded } from "./datagrid-if-expanded";
 import { State } from "./interfaces/state";
 import { FiltersProvider } from "./providers/filters";
 import { Items } from "./providers/items";
@@ -28,6 +27,7 @@ import { DatagridActionOverflow } from "./datagrid-action-overflow";
 import { DatagridStringFilterImpl } from "./built-in/filters/datagrid-string-filter-impl";
 import { HideableColumnService } from "./providers/hideable-column.service";
 import { DatagridColumn } from "./datagrid-column";
+import {IfExpanded} from "../../utils/expand/if-expanded";
 
 @Component({
     selector: "clr-datagrid",
@@ -212,7 +212,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     /**
      * We grab all details for expandable rows to determine if we need the extra cell for carets or not
      */
-    @ContentChildren(DatagridIfExpanded, { descendants: true }) details: QueryList<DatagridIfExpanded>;
+    @ContentChildren(IfExpanded, { descendants: true }) details: QueryList<IfExpanded>;
 
     ngAfterContentInit() {
         // TODO: Move all this to ngOnInit() once https://github.com/angular/angular/issues/12818 goes in.

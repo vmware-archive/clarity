@@ -12,9 +12,9 @@ import {FiltersProvider} from "./providers/filters";
 import {Sort} from "./providers/sort";
 import {Page} from "./providers/page";
 import {RowActionService} from "./providers/row-action-service";
-import {RowExpand} from "./providers/row-expand";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 import { HideableColumnService } from "./providers/hideable-column.service";
+import {Expand} from "../../utils/expand/providers/expand";
 
 export default function(): void {
     describe("DatagridRowDetail component", function() {
@@ -22,7 +22,7 @@ export default function(): void {
 
         beforeEach(function() {
             context = this.create(DatagridRowDetail, FullTest,
-                [Selection, Items, FiltersProvider, Sort, Page, RowActionService, RowExpand, DatagridRenderOrganizer,
+                [Selection, Items, FiltersProvider, Sort, Page, RowActionService, Expand, DatagridRenderOrganizer,
                     HideableColumnService]);
         });
 
@@ -48,8 +48,8 @@ export default function(): void {
             expect(context.clarityElement.classList.contains("datagrid-container")).toBe(false);
         });
 
-        it("updates the RowExpand provider with the [clrDgReplace] input", function() {
-            let expand: RowExpand = context.getClarityProvider(RowExpand);
+        it("updates the Expand provider with the [clrDgReplace] input", function() {
+            let expand: Expand = context.getClarityProvider(Expand);
             expect(expand.replace).toBe(false);
             context.testComponent.replace = true;
             context.detectChanges();

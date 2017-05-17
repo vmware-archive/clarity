@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, Input, ContentChildren, QueryList} from "@angular/core";
-import {RowExpand} from "./providers/row-expand";
 import {Selection, SelectionType} from "./providers/selection";
 import {RowActionService} from "./providers/row-action-service";
 import {DatagridCell} from "./datagrid-cell";
+import {Expand} from "../../utils/expand/providers/expand";
 
 /**
  * Generic bland container serving various purposes for Datagrid.
@@ -36,7 +36,7 @@ export class DatagridRowDetail {
     public SELECTION_TYPE = SelectionType;
 
     constructor(public selection: Selection, public rowActionService: RowActionService,
-                public expand: RowExpand) {}
+                public expand: Expand) {}
 
     @ContentChildren(DatagridCell) cells: QueryList<DatagridCell>;
 

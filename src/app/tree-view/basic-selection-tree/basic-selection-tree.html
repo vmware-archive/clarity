@@ -1,0 +1,63 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Syntax 1</h4>
+<div class="clr-example">
+    <clr-tree-node [(clrSelected)]="selected1">
+        A
+        <ng-template clrIfExpanded>
+            <clr-tree-node [(clrSelected)]="selected1Child">
+                A-1
+            </clr-tree-node>
+            <clr-tree-node>
+                A-2
+                <ng-template clrIfExpanded>
+                    <clr-tree-node>
+                        A-2.1
+                    </clr-tree-node>
+                    <clr-tree-node>
+                        A-2.2
+                    </clr-tree-node>
+                    <clr-tree-node>
+                        A-2.3
+                    </clr-tree-node>
+                </ng-template>
+            </clr-tree-node>
+            <clr-tree-node>
+                A-3
+            </clr-tree-node>
+        </ng-template>
+    </clr-tree-node>
+</div>
+
+<clr-example [clrCode]="example1" [clrLanguage]="'html'"></clr-example>
+
+<h4>Syntax 2</h4>
+<div class="clr-example">
+    <clr-tree-node [(clrSelected)]="selected2">
+        A
+        <clr-tree-node *clrIfExpanded>
+            A-1
+        </clr-tree-node>
+        <clr-tree-node *clrIfExpanded>
+            A-2
+            <clr-tree-node *clrIfExpanded>
+                A-2.1
+            </clr-tree-node>
+            <clr-tree-node *clrIfExpanded>
+                A-2.2
+            </clr-tree-node>
+            <clr-tree-node *clrIfExpanded>
+                A-2.3
+            </clr-tree-node>
+        </clr-tree-node>
+        <clr-tree-node *clrIfExpanded>
+            A-3
+        </clr-tree-node>
+    </clr-tree-node>
+</div>
+
+<clr-example [clrCode]="example2" [clrLanguage]="'html'"></clr-example>

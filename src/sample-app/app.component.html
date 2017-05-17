@@ -113,6 +113,30 @@
                 <clr-dg-footer>{{users.length}} users</clr-dg-footer>
             </clr-datagrid>
 
+            <p></p>
+
+            <clr-tree-node [(clrSelected)]="selected1" [(clrIndeterminate)]="indeterminate1">
+                A
+                <clr-tree-node *clrIfExpanded>
+                    A-1
+                </clr-tree-node>
+                <clr-tree-node *clrIfExpanded>
+                    A-2
+                    <clr-tree-node *clrIfExpanded>
+                        A-2.1
+                    </clr-tree-node>
+                    <clr-tree-node *clrIfExpanded [(clrSelected)]="selected2">
+                        A-2.2
+                    </clr-tree-node>
+                    <clr-tree-node *clrIfExpanded>
+                        A-2.3
+                    </clr-tree-node>
+                </clr-tree-node>
+                <clr-tree-node *clrIfExpanded [(clrSelected)]="selected3">
+                    A-3
+                </clr-tree-node>
+            </clr-tree-node>
+
         </main>
     </div>
 </clr-main-container>

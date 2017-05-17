@@ -16,7 +16,6 @@ import FiltersProviderSpecs from "./providers/filters.spec";
 import PageProviderSpecs from "./providers/page.spec";
 import ItemsProviderSpecs from "./providers/items.spec";
 import SelectionProviderSpecs from "./providers/selection.spec";
-import RowExpandProviderSpecs from "./providers/row-expand.spec";
 import DatagridActionBarSpecs from "./datagrid-action-bar.spec";
 import DatagridActionOverflowSpecs from "./datagrid-action-overflow.spec";
 import DatagridCellSpecs from "./datagrid-cell.spec";
@@ -25,7 +24,6 @@ import DatagridColumnSpecs from "./datagrid-column.spec";
 import DatagridItemsSpecs from "./datagrid-items.spec";
 import DatagridRowSpecs from "./datagrid-row.spec";
 import DatagridRowDetailSpecs from "./datagrid-row-detail.spec";
-import DatagridIfExpandedSpecs from "./datagrid-if-expanded.spec";
 import DatagridPaginationSpecs from "./datagrid-pagination.spec";
 import DatagridFooterSpecs from "./datagrid-footer.spec";
 import DatagridSpecs from "./datagrid.spec";
@@ -60,7 +58,6 @@ describe("Datagrid", function() {
         PageProviderSpecs();
         ItemsProviderSpecs();
         SelectionProviderSpecs();
-        RowExpandProviderSpecs();
         DatagridHideableColumnServiceSpecs();
     });
     describe("Components", function() {
@@ -72,7 +69,6 @@ describe("Datagrid", function() {
         DatagridItemsSpecs();
         DatagridRowSpecs();
         DatagridRowDetailSpecs();
-        DatagridIfExpandedSpecs();
         DatagridPaginationSpecs();
         DatagridFooterSpecs();
         DatagridPlaceholderSpecs();

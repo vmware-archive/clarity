@@ -29,19 +29,20 @@ import {DatagridPreserveSelectionDemo} from "./preserve-selection/preserve-selec
 import {DatagridHideShowDemo} from "./hide-show-columns/hide-show";
 import {ColorFilter} from "./utils/color-filter";
 import {Example} from "./utils/example";
-import {FakeLoader} from "./expandable-rows/fake-loader";
 import {DetailWrapper} from "./expandable-rows/detail-wrapper";
 import {DatagridPaginationScrollingDemo} from "./pagination-scrolling/pagination-scrolling";
 import {DatagridTestCasesDemo} from "./test-cases/test-cases";
 import {DatagridTestCasesAsyncDemo} from "./test-cases-async/test-cases-async";
 import {DatagridKitchenSinkDemo} from "./kitchen-sink/kitchen-sink";
+import {UtilsDemoModule} from "../_utils/utils.module";
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ClarityModule,
-        ROUTING
+        ROUTING,
+        UtilsDemoModule
     ],
     declarations: [
         DatagridDemo,
@@ -69,7 +70,6 @@ import {DatagridKitchenSinkDemo} from "./kitchen-sink/kitchen-sink";
         DatagridKitchenSinkDemo,
         ColorFilter,
         Example,
-        FakeLoader,
         DetailWrapper
     ],
     exports: [

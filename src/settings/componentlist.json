@@ -117,7 +117,8 @@
             "ui": 20,
             "core": 20,
             "ng": -1,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": null,

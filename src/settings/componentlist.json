@@ -148,7 +148,9 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20
+            "dox": 20,
+            "newLayout": true,
+            "isUpdated": true
         },
         {
             "url": "forms",

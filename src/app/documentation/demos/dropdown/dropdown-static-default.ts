@@ -11,14 +11,27 @@ const HTML_EXAMPLE = `
         Dropdown
         <clr-icon shape="caret down"></clr-icon>
     </button>
-    <div class="dropdown-menu">
-        <h4 class="dropdown-header">Dropdown header</h4>
-        <a href="..." class="dropdown-item active">Action</a>
-        <a href="..." class="dropdown-item disabled">Disabled Link</a>
-        <div class="dropdown-divider"></div>
-        <a href="..." class="dropdown-item">Lorem.</a>
-        <a href="..." class="dropdown-item">Lorem ipsum.</a>
-    </div>
+        <div class="dropdown-menu">
+            <h4 class="dropdown-header">Dropdown header</h4>
+            <a href="..." class="dropdown-item active">Action</a>
+            <a href="..." class="dropdown-item disabled">Disabled Link</a>
+            <div class="dropdown-divider"></div>
+            <a href="..." class="dropdown-item">Lorem.</a>
+            <div class="dropdown open right-bottom">
+                <button class="dropdown-item active expandable">Lorem ipsum.</button>
+                <div class="dropdown-menu">
+                    <a href="..." class="dropdown-item">Foo.</a>
+                    <div class="dropdown open right-top">
+                        <button class="dropdown-item active expandable">Bar.</button>
+                        <div class="dropdown-menu">
+                            <a href="..." class="dropdown-item">Baz.</a>
+                        </div>
+                    </div>
+                    <a href="..." class="dropdown-item">Foo 2.</a>
+                </div>
+            </div>
+            <a href="..." class="dropdown-item">Ipsum.</a>
+        </div>
 </div>
 `;
 

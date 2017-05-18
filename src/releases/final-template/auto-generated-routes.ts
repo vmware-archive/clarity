@@ -1,5 +1,11 @@
 export const AUTO_GENERATED_ROUTES = [
 {
+	path: "0.9.5",
+	data: {
+		browserTitle: "0.9.5"
+	}
+},
+{
 	path: "0.9.4-patch",
 	data: {
 		browserTitle: "0.9.4-patch"

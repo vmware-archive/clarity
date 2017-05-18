@@ -5,7 +5,7 @@
  */
 import {Component, ViewChild} from "@angular/core";
 
-import {TreeNode} from "clarity-angular/tree-view";
+import {TreeNode} from "clarity-angular";
 
 import "clarity-icons/shapes/basic-shapes";
 import "clarity-icons/shapes/technology-shapes";

@@ -17,6 +17,8 @@ export class ColorScheme {
     readonly radius = 20;
     readonly viewBox = `0 0 ${2 * this.cx} ${2 * this.cy}`;
 
+    copyContent: string = "";
+
     donutHoleRadius: number;
 
     activeColor: string = "";

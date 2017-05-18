@@ -504,7 +504,7 @@ _:-ms-fullscreen,
     }
 }
 
-#modalDoxSizeDesign {
+.modal-size-design-demo {
     .clrweb-DoxMedia-block.is-colorblock {
         padding: 0;
         text-align: center;
@@ -623,10 +623,13 @@ _:-ms-fullscreen,
     }
 }
 
-clr-modal-style-design-demo {
+.in-place-takeover {
     .clr-example {
         height: 398px;
         position: relative;
+    }
+    &.is-large .clr-example {
+        height: 588px;
     }
     .backdrop-example-container {
         background: #002538;

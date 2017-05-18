@@ -14,10 +14,20 @@ const EXAMPLE = `
     <clr-dropdown-menu>
         <label class="dropdown-header">Dropdown header</label>
         <a href="..." clrDropdownItem>Action 1</a>
-        <a href="..." clrDropdownItem>Action 2</a>
         <a href="..." class="disabled" clrDropdownItem>Disabled Action</a>
         <div class="dropdown-divider"></div>
-        <a href="..." clrDropdownItem>Link 1</a>
+        <clr-dropdown clrMenuPosition="right-bottom">
+            <button clrDropdownToggle>Link 1</button>
+            <clr-dropdown-menu>
+                <a href="..." clrDropdownItem>Foo</a>
+                <clr-dropdown clrMenuPosition="left-top">
+                <button clrDropdownToggle>Bar</button>
+                <clr-dropdown-menu>
+                    <a href="..." clrDropdownItem>Baz</a>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+            </clr-dropdown-menu>
+        </clr-dropdown>
         <a href="..." clrDropdownItem>Link 2</a>
     </clr-dropdown-menu>
 </clr-dropdown>

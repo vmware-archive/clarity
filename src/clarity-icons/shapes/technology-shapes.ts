@@ -4,6 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { descriptorConfig } from "../utils/descriptor-config";
+
 /* tslint:disable:max-line-length */
 const technologyShapes: any = {
     "volume-up": `
@@ -365,9 +367,6 @@ const technologyShapes: any = {
             </svg>
         `,
 
-    get "analytics"() {
-        return this[ "line-chart" ];
-    },
 
     "dashboard": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-badge has-solid"
@@ -425,9 +424,6 @@ const technologyShapes: any = {
             </svg>
         `,
 
-    get "server"() {
-        return this[ "host" ];
-    },
 
     "storage": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-alert can-badge has-solid"
@@ -564,9 +560,7 @@ const technologyShapes: any = {
         </svg>`,
 
     /*TODO: app is deprecated and will be replaced with a new shape in 0.9.0*/
-    get "app"() {
-        return this[ "applications" ];
-    },
+
 
     "building": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-alert can-badge has-solid"
@@ -975,9 +969,6 @@ const technologyShapes: any = {
             <circle cx="30" cy="6" r="5"  class="clr-i-solid--badged clr-i-solid-path-2--badged clr-i-badge" />
         </svg>`,
 
-    get "command"() {
-        return this[ "terminal" ];
-    },
 
     "code": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="can-alert can-badge">
@@ -1038,9 +1029,6 @@ const technologyShapes: any = {
             <path d="M25,4H11A2,2,0,0,0,9,6V30a2,2,0,0,0,2,2H25a2,2,0,0,0,2-2V6A2,2,0,0,0,25,4ZM19,30H17V28h2Zm-8-4V6H25V26Z" class="clr-i-solid clr-i-solid-path-1" />
         </svg>`,
 
-    get "mobile-phone"() {
-        return this[ "mobile" ];
-    },
 
     "tablet": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="has-solid">
@@ -1243,9 +1231,6 @@ const technologyShapes: any = {
             <circle cx="30" cy="6" r="5"  class="clr-i-solid--badged clr-i-solid-path-3--badged clr-i-badge" />
         </svg>`,
 
-    get "license"() {
-        return this[ "certificate" ];
-    },
 
     "archive": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="has-solid">
@@ -1313,12 +1298,18 @@ const technologyShapes: any = {
         </svg>`,
 
 
-
 };
+
+Object.defineProperty(technologyShapes, "analytics", descriptorConfig(technologyShapes["line-chart"]));
+Object.defineProperty(technologyShapes, "server", descriptorConfig(technologyShapes["host"]));
+Object.defineProperty(technologyShapes, "app", descriptorConfig(technologyShapes["applications"]));
+Object.defineProperty(technologyShapes, "command", descriptorConfig(technologyShapes["terminal"]));
+Object.defineProperty(technologyShapes, "mobile-phone", descriptorConfig(technologyShapes["mobile"]));
+Object.defineProperty(technologyShapes, "license", descriptorConfig(technologyShapes["certificate"]));
 
 if (typeof window !== "undefined" && window.hasOwnProperty("ClarityIcons")) {
 
-    window[ "ClarityIcons" ].add(technologyShapes);
+    window["ClarityIcons"].add(technologyShapes);
 }
 
 export { technologyShapes as TechnologyShapes };

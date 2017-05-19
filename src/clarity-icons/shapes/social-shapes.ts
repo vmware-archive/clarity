@@ -3,8 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import { descriptorConfig } from "../utils/descriptor-config";
 
 /* tslint:disable:max-line-length */
+
 const socialShapes: any = {
 
     "map-marker": `
@@ -28,9 +30,6 @@ const socialShapes: any = {
             </svg>
         `,
 
-    get "map"() {
-        return this[ "map-marker" ];
-    },
 
     "share": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
@@ -65,9 +64,6 @@ const socialShapes: any = {
             </svg>
         `,
 
-    get "favorite"() {
-        return this[ "star" ];
-    },
 
     "bookmark": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
@@ -107,9 +103,6 @@ const socialShapes: any = {
             </svg>
         `,
 
-    get "email"() {
-        return this[ "envelope" ];
-    },
 
     "calendar": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-alert can-badge has-solid"
@@ -178,9 +171,6 @@ const socialShapes: any = {
             </svg>
         `,
 
-    get "date"() {
-        return this[ "calendar" ];
-    },
 
     "event": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-alert can-badge has-solid"
@@ -404,12 +394,16 @@ const socialShapes: any = {
         </svg>`
 
 
-
 };
+
+Object.defineProperty(socialShapes, "map", descriptorConfig(socialShapes["map-marker"]));
+Object.defineProperty(socialShapes, "favorite", descriptorConfig(socialShapes["star"]));
+Object.defineProperty(socialShapes, "email", descriptorConfig(socialShapes["envelope"]));
+Object.defineProperty(socialShapes, "date", descriptorConfig(socialShapes["calendar"]));
 
 if (typeof window !== "undefined" && window.hasOwnProperty("ClarityIcons")) {
 
-    window[ "ClarityIcons" ].add(socialShapes);
+    window["ClarityIcons"].add(socialShapes);
 }
 
 export { socialShapes as SocialShapes };

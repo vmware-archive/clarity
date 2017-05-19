@@ -4,9 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { descriptorConfig } from "../utils/descriptor-config";
+
 /* tslint:disable:max-line-length */
 const coreShapes: any = {
-
 
     "home": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
@@ -20,10 +21,6 @@ const coreShapes: any = {
                 <path class="clr-i-solid clr-i-solid-path-2" d="M18,7.79,6,19.83V32a2,2,0,0,0,2,2h7V24h6V34h7a2,2,0,0,0,2-2V19.76Z"/>
             </svg>
         `,
-
-    get "house"() {
-        return this[ "home" ];
-    },
 
     "cog": `
             <svg version="1.1" version="1.1" viewBox="0 0 36 36" class="can-alert can-badge has-solid">
@@ -51,10 +48,6 @@ const coreShapes: any = {
             </svg>
         `,
 
-    get "settings"() {
-        return this.cog;
-    },
-
 
     "check": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"
@@ -64,9 +57,6 @@ const coreShapes: any = {
             </svg>
         `,
 
-    get "success"() {
-        return this[ "check" ];
-    },
 
     "times": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"
@@ -76,9 +66,6 @@ const coreShapes: any = {
             </svg>
         `,
 
-    get "close"() {
-        return this[ "times" ];
-    },
 
     "exclamation-triangle": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
@@ -93,9 +80,6 @@ const coreShapes: any = {
             </svg>
         `,
 
-    get "warning"() {
-        return this[ "exclamation-triangle" ];
-    },
 
     "exclamation-circle": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
@@ -110,9 +94,6 @@ const coreShapes: any = {
             </svg>
         `,
 
-    get "error"() {
-        return this[ "exclamation-circle" ];
-    },
 
     "check-circle": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
@@ -140,11 +121,8 @@ const coreShapes: any = {
             </svg>
         `,
 
-    get "info"() {
-        return this[ "info-circle" ];
-    },
 
-    // for the sake of limiting breaking changes with components, the "standard" sizing of the alerty
+    // for the sake of limiting breaking changes with components, the "standard" sizing of the alert
     // icons is the outlier (other references point to the smaller, compact icons used in alerts).
     // if this becomes a problem, point other icon references to the standard size or rename the
     // compact ones.
@@ -220,9 +198,6 @@ const coreShapes: any = {
             </svg>
         `,
 
-    get "menu"() {
-        return this[ "bars" ];
-    },
 
     "user": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="can-alert can-badge has-solid">		
@@ -246,9 +221,6 @@ const coreShapes: any = {
             <circle cx="30" cy="6" r="5"  class="clr-i-solid--badged clr-i-solid-path-3--badged clr-i-badge" />
         </svg>`,
 
-    get "avatar"() {
-        return this[ "user" ];
-    },
 
     "angle": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"
@@ -257,10 +229,6 @@ const coreShapes: any = {
                 <path class="clr-i-outline clr-i-outline-path-1" d="M29.52,22.52,18,10.6,6.48,22.52a1.7,1.7,0,0,0,2.45,2.36L18,15.49l9.08,9.39a1.7,1.7,0,0,0,2.45-2.36Z"/>
             </svg>
         `,
-
-    get "caret"() {
-        return this[ "angle" ];
-    },
 
 
     "folder": `
@@ -287,10 +255,6 @@ const coreShapes: any = {
             </svg>
         `,
 
-    get "directory"() {
-        return this[ "folder" ];
-    },
-
 
     "bell": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-badge has-solid"
@@ -313,9 +277,6 @@ const coreShapes: any = {
             </svg>
         `,
 
-    get "notification"() {
-        return this[ "bell" ];
-    },
 
     "image": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-badge has-solid"
@@ -383,16 +344,6 @@ const coreShapes: any = {
             <circle cx="30" cy="6" r="5"  class="clr-i-outline--badged clr-i-outline-path-4--badged clr-i-badge" />
         </svg>`,
 
-    /*TODO: ellispes-vertical is deprecated and will be removed in 0.9.0*/
-    get "ellipses-vertical"() {
-        return this[ "ellipsis-vertical" ];
-    },
-
-    /*TODO: ellispes-horizontal is deprecated and will be removed in 0.9.0*/
-    get "ellipses-horizontal"() {
-        return this[ "ellipsis-horizontal" ];
-    },
-
     "vm-bug": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -420,5 +371,26 @@ const coreShapes: any = {
         `
 
 };
+
+Object.defineProperty(coreShapes, "house", descriptorConfig(coreShapes["home"]));
+Object.defineProperty(coreShapes, "settings", descriptorConfig(coreShapes["cog"]));
+Object.defineProperty(coreShapes, "success", descriptorConfig(coreShapes["check"]));
+Object.defineProperty(coreShapes, "close", descriptorConfig(coreShapes["times"]));
+Object.defineProperty(coreShapes, "warning", descriptorConfig(coreShapes["exclamation-triangle"]));
+Object.defineProperty(coreShapes, "error", descriptorConfig(coreShapes["exclamation-circle"]));
+Object.defineProperty(coreShapes, "info", descriptorConfig(coreShapes["info-circle"]));
+Object.defineProperty(coreShapes, "menu", descriptorConfig(coreShapes["bars"]));
+Object.defineProperty(coreShapes, "avatar", descriptorConfig(coreShapes["user"]));
+Object.defineProperty(coreShapes, "caret", descriptorConfig(coreShapes["angle"]));
+Object.defineProperty(coreShapes, "directory", descriptorConfig(coreShapes["folder"]));
+Object.defineProperty(coreShapes, "notification", descriptorConfig(coreShapes["bell"]));
+
+/*TODO: ellispes-vertical is deprecated and will be removed in 0.10.0*/
+Object.defineProperty(coreShapes, "ellipses-vertical", descriptorConfig(coreShapes["ellipsis-vertical"]));
+
+/*TODO: ellispes-horizontal is deprecated and will be removed in 0.10.0*/
+Object.defineProperty(coreShapes, "ellipses-horizontal", descriptorConfig(coreShapes["ellipsis-horizontal"]));
+
+
 
 export { coreShapes as CoreShapes };

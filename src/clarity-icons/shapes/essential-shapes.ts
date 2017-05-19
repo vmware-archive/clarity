@@ -3,6 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import { descriptorConfig } from "../utils/descriptor-config";
 
 /* tslint:disable:max-line-length */
 export const essentialShapes: any = {
@@ -226,9 +227,6 @@ export const essentialShapes: any = {
             </svg>
         `,
 
-    get "edit"() {
-        return this[ "pencil" ];
-    },
 
     "note": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="has-solid">
@@ -239,9 +237,6 @@ export const essentialShapes: any = {
             <path d="M33,6.4,29.3,2.7a1.71,1.71,0,0,0-2.36,0L23.65,6H6A2,2,0,0,0,4,8V30a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V11.76l3-3A1.67,1.67,0,0,0,33,6.4ZM18.83,20.13l-4.19.93,1-4.15,9.55-9.57,3.23,3.23ZM29.5,9.43,26.27,6.2l1.85-1.85,3.23,3.23Z" class="clr-i-solid clr-i-solid-path-1" />
         </svg>`,
 
-    get "note-edit"() {
-        return this[ "note" ];
-    },
 
     "refresh": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"
@@ -433,10 +428,6 @@ export const essentialShapes: any = {
             </svg>
         `,
 
-    get "group"() {
-        return this[ "users" ];
-    },
-
 
     "pop-out": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"
@@ -511,16 +502,6 @@ export const essentialShapes: any = {
             <circle cx="30" cy="6" r="5"  class="clr-i-outline--badged clr-i-outline-path-4--badged clr-i-badge" />
         </svg>`,
 
-    /*TODO: ellispes-vertical is deprecated and will be removed in 0.9.0*/
-    get "ellipses-vertical"() {
-        return this[ "ellipsis-vertical" ];
-    },
-
-    /*TODO: ellispes-horizontal is deprecated and will be removed in 0.9.0*/
-    get "ellipses-horizontal"() {
-        return this[ "ellipsis-horizontal" ];
-    },
-
     "angle-double": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -529,10 +510,6 @@ export const essentialShapes: any = {
                 <path class="clr-i-outline clr-i-outline-path-2" d="M29,30.41a1,1,0,0,1-.71-.29L18,19.83,7.71,30.12a1,1,0,0,1-1.41-1.41L18,17,29.71,28.71A1,1,0,0,1,29,30.41Z"/>
             </svg>
         `,
-
-    get "collapse"() {
-        return this[ "angle-double" ];
-    },
 
     "file": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="can-alert can-badge has-solid"
@@ -557,9 +534,6 @@ export const essentialShapes: any = {
             </svg>
         `,
 
-    get "document"() {
-        return this[ "file" ];
-    },
 
     "plus": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"
@@ -569,9 +543,6 @@ export const essentialShapes: any = {
             </svg>
         `,
 
-    get "add"() {
-        return this[ "plus" ];
-    },
 
     "minus": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -606,9 +577,6 @@ export const essentialShapes: any = {
             </svg>
         `,
 
-    get "cancel"() {
-        return this[ "ban" ];
-    },
 
     "times-circle": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
@@ -621,9 +589,6 @@ export const essentialShapes: any = {
             </svg>
         `,
 
-    get "remove"() {
-        return this[ "times-circle" ];
-    },
 
     "play": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
@@ -873,9 +838,6 @@ export const essentialShapes: any = {
             <circle cx="18.09" cy="18.03" r="6.86" class="clr-i-solid clr-i-solid-path-2"/>
         </svg>`,
 
-    get "eye-show"() {
-        return this[ "eye" ];
-    },
 
     "eye-hide": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
@@ -915,9 +877,6 @@ export const essentialShapes: any = {
             <path d="M10,13H4a1,1,0,0,0-1,1,1,1,0,0,0,1,1h6Z" class="clr-i-solid clr-i-solid-path-2" />
         </svg>`,
 
-    get "sign-in"() {
-        return this[ "login" ];
-    },
 
     "logout": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
@@ -929,9 +888,6 @@ export const essentialShapes: any = {
             <path d="M28.16,17.28a1,1,0,0,0-1.41,1.41L30.13,22H25v2h5.13l-3.38,3.46a1,1,0,1,0,1.41,1.41L34,23.07Z" class="clr-i-solid clr-i-solid-path-2"/>
         </svg>`,
 
-    get "sign-out"() {
-        return this[ "logout" ];
-    },
 
     "bank": `<svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid can-badge can-alert"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -1485,11 +1441,6 @@ export const essentialShapes: any = {
         </svg>`,
 
 
-    get "lightning"() {
-        return this[ "bolt" ];
-    },
-
-
     "shopping-cart": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="can-alert can-badge has-solid">
             <title>shopping-cart</title>
@@ -1606,9 +1557,6 @@ export const essentialShapes: any = {
             <path d="M25,4H11A2,2,0,0,0,9,6V30a2,2,0,0,0,2,2H25a2,2,0,0,0,2-2V6A2,2,0,0,0,25,4ZM19,30H17V28h2Zm-8-4V6H25V26Z" class="clr-i-solid clr-i-solid-path-1" />
         </svg>`,
 
-    get "mobile-phone"() {
-        return this[ "mobile" ];
-    },
 
     "tablet": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="has-solid">
@@ -1642,9 +1590,6 @@ export const essentialShapes: any = {
             <rect x="11" y="3" width="14" height="10" rx="2" ry="2" class="clr-i-solid clr-i-solid-path-4" />
         </svg>`,
 
-    get "flow-chart"() {
-        return this[ "organization" ];
-    },
 
     "credit-card": `
         <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="has-solid">
@@ -1703,13 +1648,33 @@ export const essentialShapes: any = {
         </svg>`
 
 
-
 };
+
+Object.defineProperty(essentialShapes, "edit", descriptorConfig(essentialShapes["pencil"]));
+Object.defineProperty(essentialShapes, "note-edit", descriptorConfig(essentialShapes["note"]));
+Object.defineProperty(essentialShapes, "group", descriptorConfig(essentialShapes["users"]));
+Object.defineProperty(essentialShapes, "collapse", descriptorConfig(essentialShapes["angle-double"]));
+Object.defineProperty(essentialShapes, "document", descriptorConfig(essentialShapes["file"]));
+Object.defineProperty(essentialShapes, "add", descriptorConfig(essentialShapes["plus"]));
+Object.defineProperty(essentialShapes, "cancel", descriptorConfig(essentialShapes["ban"]));
+Object.defineProperty(essentialShapes, "remove", descriptorConfig(essentialShapes["times-circle"]));
+Object.defineProperty(essentialShapes, "eye-show", descriptorConfig(essentialShapes["eye"]));
+Object.defineProperty(essentialShapes, "sign-in", descriptorConfig(essentialShapes["login"]));
+Object.defineProperty(essentialShapes, "sign-out", descriptorConfig(essentialShapes["logout"]));
+Object.defineProperty(essentialShapes, "lightning", descriptorConfig(essentialShapes["bolt"]));
+Object.defineProperty(essentialShapes, "mobile-phone", descriptorConfig(essentialShapes["mobile"]));
+Object.defineProperty(essentialShapes, "flow-chart", descriptorConfig(essentialShapes["organization"]));
+
+
+/*TODO: ellispes-vertical is deprecated and will be removed in 0.10.0*/
+Object.defineProperty(essentialShapes, "ellipses-vertical", descriptorConfig(essentialShapes["ellipsis-vertical"]));
+/*TODO: ellispes-horizontal is deprecated and will be removed in 0.10.0*/
+Object.defineProperty(essentialShapes, "ellipses-horizontal", descriptorConfig(essentialShapes["ellipsis-horizontal"]));
 
 
 if (typeof window !== "undefined" && window.hasOwnProperty("ClarityIcons")) {
 
-    window[ "ClarityIcons" ].add(essentialShapes);
+    window["ClarityIcons"].add(essentialShapes);
 }
 
 export { essentialShapes as EssentialShapes };

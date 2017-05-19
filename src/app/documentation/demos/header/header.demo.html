@@ -64,8 +64,7 @@
                 <h5>Typography</h5>
                 <p>Use clear language for top level navigation items. Do not combine icons and text.</p>
                 <p>If you’re using icons on their own in the header, using tooltips will help users understand what an
-                    icon
-                    means.</p>
+                    icon means.</p>
             </div>
             <div class="col-xs-12 col-sm-6 header-dox__media-container">
                 <div class="clrweb-DoxMedia is-do-block">
@@ -100,17 +99,16 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12 no-left-padding">
-                <div class="clrweb-DoxBookmark hidden-sm-down">
-                    <div class="clrweb-DoxBookmark-bookmark">
-                        <clr-icon shape="bookmark"></clr-icon>
-                    </div>
-                    <p>For responsive headers, visit <a routerLink="/documentation/navigation"
-                                                        fragment="navigation_layouts">Responsive Navigation</a></p>
-                </div>
-            </div>
-        </div>
+
+        <h3>Responsive Navigation</h3>
+        <p>
+            Clarity includes functionality for displaying the navigation on smaller devices like
+            tablets and phones with the <em>responsive navigation component</em> in clarity-angular. Details
+            on how to use <a routerLink="/documentation/navigation"
+            fragment="responsive_navigation">Clarity's responsive header can be found in our documentation
+            on app navigation</a>.
+        </p>
+
         <h3>Search</h3>
         <p>There are many different ways to include search in the header. Which way you choose depends on search's
             prominance and its utility within the application.</p>
@@ -298,21 +296,26 @@
             .header-actions
         </h6>
 
-        <p>
+        <p style="margin-bottom: 48px">
             <code class="clr-code">.header-actions</code> is a wrapper that contains secondary navigation links. Each
             navigation link extends the <code class="clr-code">.nav-link</code> class. Navigation links can be text or
             icons.
         </p>
 
+        <clr-alert [clrAlertClosable]="false">
+            <div class="alert-item">
+                <span class="alert-text">
+                    For information about headers with responsive navigation, see
+                    <a routerLink="/documentation/navigation"
+                    fragment="responsive_navigation">Responsive Navigation</a>.
+                </span>
+            </div>
+        </clr-alert>
+
         <h4 id="types">
             Types
         </h4>
         <clr-header-demo-types></clr-header-demo-types>
-
-        <p>
-            For information about responsive headers, see <a routerLink="/documentation/navigation"
-                                                             fragment="responsive_navigation">Responsive Navigation</a>.
-        </p>
 
         <h4 id="color-options">
             Color Options

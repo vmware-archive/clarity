@@ -7,7 +7,6 @@ import { ClarityIconsApi } from "./clarity-icons-api";
 import { ClarityIconElement } from "./clarity-icons-element";
 import { CoreShapes } from "./shapes/core-shapes";
 
-
 const clarityIcons: ClarityIconsApi = ClarityIconsApi.instance;
 
 clarityIcons.add(CoreShapes);

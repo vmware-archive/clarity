@@ -43,10 +43,14 @@ module.exports = function (config) {
             { pattern: 'node_modules/@angular/**/*.js', included: false, watched: false },
             { pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false },
 
+            // DOMPurify
+            { pattern: 'node_modules/dompurify/**/*.js', included: false, watched: false },
+            { pattern: 'node_modules/dompurify/**/*.js.map', included: false, watched: false },
+
             { pattern: 'build/karma-test-shim.js', included: true, watched: false },
 
             // Clarity's bundles
-            { pattern: dist + 'bundles/clarity-icons.min.js', included: true, watched: true },
+            //{ pattern: dist + 'bundles/clarity-icons.min.js', included: true, watched: true },
             { pattern: dist + 'bundles/clarity-ui.min.css', included: true, watched: true },
             { pattern: dist + 'bundles/clarity-angular.min.js', included: true, watched: true },
 

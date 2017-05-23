@@ -16,15 +16,28 @@ gulp.task("bundle:icons:sfx", ["typescript:icons"], function () {
 
     var buildOpts = {minify: true, mangle: false, normalize: true};
 
-    var builder = new Builder("dist/");
+    var builder = new Builder();
     builder.config({
+        map: {
+            "dompurify": "node_modules/dompurify"
+        },
+        paths: {
+            "clarity-icons/": "dist/clarity-icons/"
+        },
         packages: {
-            'clarity-icons': {defaultExtension: 'js'}
+            'clarity-icons': {
+                defaultExtension: 'js'
+           },
+           "dompurify": {
+               defaultExtension: 'js',
+               main: 'src/purify.js'
+           }
         }
     });
 
-    return builder.buildStatic("clarity-icons/clarity-icons-sfx.js", "dist/bundles/clarity-icons.min.js", buildOpts)
-        .catch(function (err) {
+    return builder.buildStatic(
+        "clarity-icons/clarity-icons-sfx.js",
+        "dist/bundles/clarity-icons.min.js", buildOpts).catch(function (err) {
             console.error(err);
             process.exit(1);
         });
@@ -32,17 +45,24 @@ gulp.task("bundle:icons:sfx", ["typescript:icons"], function () {
 });
 
 gulp.task("bundle:icons-lite:sfx", ["typescript:icons"], function () {
-
     var buildOpts = {minify: true, mangle: false, normalize: true};
 
-    var builder = new Builder("dist/");
+    var builder = new Builder();
     builder.config({
+        map: {
+            "dompurify": "node_modules/dompurify/src/purify.js"
+        },
+        paths: {
+            "clarity-icons/": "dist/clarity-icons/"
+        },
         packages: {
             'clarity-icons': {main: 'index.js', defaultExtension: 'js'}
         }
     });
 
-    builder.buildStatic("clarity-icons/index.js", "dist/bundles/clarity-icons-lite.umd.js", buildOpts)
+    builder.buildStatic(
+        "clarity-icons/index.js",
+        "dist/bundles/clarity-icons-lite.umd.js", buildOpts)
         .catch(function (err) {
             console.error(err);
             process.exit(1);
@@ -51,7 +71,6 @@ gulp.task("bundle:icons-lite:sfx", ["typescript:icons"], function () {
 });
 
 gulp.task("bundle:icons:shapes", ["typescript:icons"], function () {
-
     var buildOpts = {minify: true, mangle: false, normalize: true};
 
     var builder = new Builder("dist/");
@@ -85,7 +104,6 @@ gulp.task("bundle:icons:shapes", ["typescript:icons"], function () {
             console.error(err);
             process.exit(1);
         });
-
 });
 
 /**

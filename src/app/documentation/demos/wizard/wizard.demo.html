@@ -5,11 +5,223 @@
   -->
 <clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
     <article>
-        <h5 class="component-summary"
-            id="a-wizard-presents-a-multi-step-workflow-that-users-perform-in-a-recommended-sequence">A wizard presents
-            a multi-step workflow that users perform in a recommended sequence.</h5>
+        <h5 class="component-summary" id="wizardComponentSummary">
+            Wizards provide a way to go through a sequence of steps that form an end to end workflow..
+        </h5>
 
-        <h3 id="html-and-styles">HTML and Styles</h3>
+        <h2 id="design-guidelines" style="margin-top: 48px">Design Guidelines</h2>
+
+        <p>
+            Wizards are used to help users walk through a defined step-by-step process. Each step
+            is in the sidebar on the left. As users complete steps, the steps are marked with a
+            green bar to the left.
+        </p>
+        <p>
+            Wizards should have at least 2 steps. If your wizard exceeds 10 steps, consider combining
+            similar steps.
+        </p>
+        <p>Here is when you might want to use a wizard over just a normal form:</p>
+        <ul class="list">
+            <li>if the user is <b>not familiar with the domain knowledge</b> needed to complete a process</li>
+            <li>if the user needs to accomplish a goal that has <b>many steps</b> in it</li>
+            <li>if steps must be completed in a <b>specific sequence</b></li>
+        </ul>
+
+        <h3 id="style">Style</h3>
+
+        <clr-wizard-design-demo></clr-wizard-design-demo>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-4">
+                <div class="clrweb-DoxMedia">
+                    <div class="clrweb-DoxMedia-text">
+                        <h6>Titles</h6>
+                        <p>
+                            Titles are <b>concise summaries</b>. The wizard title describes the overall workflow. The
+                            step title describes the task being completed. The content title should be similar
+                            to its step title.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4">
+                <div class="clrweb-DoxMedia">
+                    <div class="clrweb-DoxMedia-text">
+                        <h6>Content</h6>
+                        <p>
+                            The content may differ between different types of wizards. Content can be text, a
+                            form, or both. Be <b>concise</b> and provide a <b>clear explanation</b> of the
+                            task or information a user should focus on.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4">
+                <div class="clrweb-DoxMedia">
+                    <div class="clrweb-DoxMedia-text">
+                        <h6>Buttons</h6>
+                        <p>
+                            Default progress buttons are provided, but can be overridden. Buttons are
+                            right-aligned based on the Z Pattern. Read more about it in 
+                            <a routerLink="/documentation/buttons">Button Placement</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 id="sizes">Sizes</h3>
+
+        <p>
+            There are multiple sizes for wizards. The Clarity wizard defaults to <b>x-large</b> but
+            different sizes could be used based on the content and screen sizes you are planning to
+            support. Always remember to test responsiveness as you design and use wizards. The best size
+            is one that doesn’t feel like there is too much or too little whitespace. If you’re unsure,
+            test different ones to see which looks best.
+        </p>
+
+        <clr-wizard-design-size-demo class="modal-size-design-demo"></clr-wizard-design-size-demo>
+
+        <div class="row" style="margin-top: 48px">
+            <div class="col-md-6 col-sm-12">
+                <h3 id="step-indicators" style="margin: 21px 0 24px">Step Indicators</h3>
+                <ul class="list">
+                    <li>Current step is indicated by a row-selected blue background</li>
+                    <li>Complete steps are indcated by a green bar to the left</li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="clrweb-DoxMedia is-figure">
+                    <div class="clrweb-DoxMedia-block" style="height: 235px">
+                        <div class="clrweb-DoxMedia-img">
+                            <img class="clrweb-Img" src="assets/images/documentation/wizards/Wizard-Steps.png"
+                                 alt="Completed steps are highlighted with a green bar to the left"/>
+                        </div>
+                    </div>
+                    <div class="clrweb-DoxMedia-text">
+                        <p>
+                            Completed steps are highlighted with a green bar to the left.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 id="building-steps">Building Steps</h3>
+
+        <p>
+            When building a step, it’s important to organize related tasks in it. Unrelated tasks should
+            be separate into a new step. This helps preserve context around the step being completed.
+        </p>
+        <p>
+            If a step’s content scrolls, consider splitting the step into two steps or use a larger
+            sized wizard. Scrolling content can sometimes be overlooked and users may try to progress
+            to the next step unintentionally.
+        </p>
+        <p>
+            It’s best to include only the required tasks in a step so users know they need to fill out
+            everything they see. Optional tasks slow the process of filling out a wizard.
+        </p>
+
+        <h3 id="conditional-steps">Conditional Steps</h3>
+
+        <p>
+            Conditional wizards change step content or the number of steps based on the entry from
+            another step. Non-conditional wizards are preferable. However, if a conditional wizard is
+            necessary, it is preferred to update the next step to be completed. Otherwise, users might lose
+            context of what change was made.
+        </p>
+
+        <div class="row" style="margin-top: 48px">
+            <div class="col-md-6 col-sm-12">
+                <h3 id="dismissing" style="margin: 21px 0 24px">Dismissing Wizard</h3>
+                <ul class="list">
+                    <li>
+                        A user needs to actively dismiss a wizard. A wizard should not disappear on its own
+                    </li>
+                    <li>
+                        Completing all of the steps or cancelling should dismiss the wizard
+                    </li>
+                </ul>
+                <div class="alert alert-warning" style=" margin-top: 21px">
+                    <div class="alert-item">
+                        <span class="alert-text">
+                            Clarity Wizards are not dismissed when clicking on the background overlay.
+                            This prevents losing information or data. An option to override this is available. 
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="clrweb-DoxMedia is-figure">
+                    <div class="clrweb-DoxMedia-block" style="height: 235px">
+                        <div class="clrweb-DoxMedia-img">
+                            <img class="clrweb-Img" src="assets/images/documentation/wizards/Wizard-Dismissing.png"
+                                 alt="There are three ways of closing the wizard"/>
+                        </div>
+                    </div>
+                    <div class="clrweb-DoxMedia-text">
+                        <p>
+                             The wizard can be closed by clicking the finish button, the cancel button, or
+                             canceling out by clicking the close "X" in the top right.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 id="validation">Validation</h3>
+
+        <p>
+            Wizard validation is done either in page or asynchronously (after submission).
+        </p>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="clrweb-DoxMedia is-figure">
+                    <div class="clrweb-DoxMedia-block" style="height: 235px">
+                        <div class="clrweb-DoxMedia-img">
+                            <img class="clrweb-Img"
+                                src="assets/images/documentation/wizards/Wizard-Validation-Inpage.png"
+                                 alt="The next button is often disabled with in-page validation"/>
+                        </div>
+                    </div>
+                    <div class="clrweb-DoxMedia-text">
+                        <h6>In Page</h6>
+                        <p>
+                            Use for <b>client-side validation</b>. For example, the format of a value like an
+                            email address. Fields with errors are indicated and have related tooltip error
+                            messages. The “Next” button can be disabled until the form is valid.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="clrweb-DoxMedia is-figure">
+                    <div class="clrweb-DoxMedia-block" style="height: 235px">
+                        <div class="clrweb-DoxMedia-img">
+                            <img class="clrweb-Img"
+                                src="assets/images/documentation/wizards/Wizard-Validation-Async.png"
+                                 alt="Asynchronous validation is often communicated through the alert messages"/>
+                        </div>
+                    </div>
+                    <div class="clrweb-DoxMedia-text">
+                        <h6>Asynchronous</h6>
+                        <p>
+                            Use for <b>server-side validation</b>, when you need to validate against data from
+                            a database. The “Next” button is enabled. Validation errors show in an alert
+                            within the content area.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 id="examples">Code &amp; Examples</h3>
+
+        <!--
 
         <p>Here is an example of the generated wizard markup using just HTML and CSS. Since the interactive
             functionality of the wizard is not provided in the static version, we recommend using the Angular
@@ -19,7 +231,8 @@
 
         <h3 id="basic-wizard">Basic Wizard</h3>
 
-        <p>
+        -->
+        <p id="basic-wizard">
             The wizard is hidden and shown by toggling a boolean value assigned to the
             <code class="clr-code">clrWizardOpen</code> input. The toggling of these values is
             shown in the code examples below.
@@ -871,127 +1084,6 @@ export class WizardJumpToDemo &#123;
                 state programmatically.
             </li>
         </ul>
-
-
-        <h3 id="guidelines">Usage</h3>
-
-        <p>Use a wizard to present a series of steps for completing a complex workflow, such as installation. A wizard
-            simplifies the workflow by directing users serially through the tasks.</p>
-
-        <p>If the user doesn’t need to complete the workflow in a predefined order, use a <a
-                routerLink="/documentation/modals">modal</a> instead.</p>
-
-        <h4 id="base-wizard-size-on-use-case">Base Wizard size on use case</h4>
-
-        <p>BSizes are 576 px, 864 px and 1056 px (default). The best design provides a good balance between white space
-            and the number of elements per page. Overloading a page with too many controls can be a problem as can
-            having many sparsely-populated pages.</p>
-
-        <h4 id="title">Title</h4>
-
-        <p>Typically task-based, the title should summarize the workflow, for example, Create Hardware Profile.</p>
-
-        <h4 id="steps">Steps</h4>
-        <div class="row buttons-modal-gfx">
-            <div class="col-md-6 col-sm-12 flex-xs-middle">
-                <img src="assets/images/documentation/wizards/New_wizard.png" alt="Buttons on inner wizard pages"
-                     style="max-width:100%;"/>
-            </div>
-
-            <div class="col-md-5 offset-md-1 col-sm-12 clrweb-wizardsteps-block">
-                <h4>Streamline the number of steps</h4>
-                <p>
-                    A wizard should be at least two steps. Otherwise, a modal will suffice. Also, avoid vertical
-                    scrolling of steps. At the default size, the steps scroll at 14 lines.
-                </p>
-
-                <h4>Non-branching wizards are preferable</h4>
-                <p>
-                    However, if a user choice results in a change in the number of steps, make the change early in the
-                    workflow. Otherwise, users might lose track of the navigation path.
-                </p>
-
-                <h4>Steps titles should be concise and direct</h4>
-                <p>
-                    To help readers scan the text, use sentence-style caps and no ending punctuation. Avoid text that is
-                    so long it wraps to the next line.
-                </p>
-            </div>
-        </div>
-
-        <h4 id="pages">Pages</h4>
-
-        <h6 id="use-the-header-to-set-context">Use the header to set context</h6>
-
-        <p>By default, the page header is the same text as the selected step. If needed, enhance the header text to
-            clarify meaning.</p>
-
-        <h6 id="ensure-content-is-cohesive">Ensure content is cohesive</h6>
-
-        <p>All text and components should support the goal or purpose of the page.</p>
-
-        <p>Avoid:</p>
-
-        <ul class="list">
-            <li>Putting more than one task on a page. Pages are easier to use when they present a single step of the
-                workflow.
-            </li>
-            <li>Opening a modal or wizard from within a wizard. This increases the complexity of the workflow.</li>
-            <li>Putting so much content on a page that it scrolls.</li>
-        </ul>
-
-        <h6 id="buttons-are-right-aligned-in-the-footer">Buttons are right-aligned, in the footer</h6>
-
-        <p>Right alignment supports the Z-pattern layout. The primary button is in the rightmost position.</p>
-
-        <table class="table-noborder">
-            <tbody>
-            <tr>
-                <td class="left">First wizard page</td>
-                <td class="left">
-                    <img src="assets/images/documentation/wizards/Wizard_buttons_1.png?1481774902655027000" width="70%"
-                         height="70%" alt="Buttons on first page of wizard"/>
-                </td>
-            </tr>
-            <tr>
-                <td class="left">Inner wizard pages</td>
-                <td class="left">
-                    <img src="assets/images/documentation/wizards/Wizard_buttons_2.png?1481774902655027000" width="70%"
-                         height="70%" alt="Buttons on wizard inner pages"/>
-                </td>
-            </tr>
-            <tr>
-                <td class="left">Last page</td>
-                <td class="left">
-                    <img src="assets/images/documentation/wizards/Wizard_buttons_3.png?1481774902655027000" width="70%"
-                         height="70%" alt="Buttons on final wizard page"/>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-        <h6 id="cancel-and-close">Cancel and Close</h6>
-
-        <p>Wizards have both a Close and Cancel button. The Close button is in the upper right corner as a visual
-            affordance and for accessibility reasons.</p>
-
-        <p>Clicking outside the wizard should not dismiss it. Users might accidentally click outside the wizard and lose
-            data.</p>
-
-        <h6 id="scrolling">Scrolling</h6>
-
-        <p>Some wizard pages might require scrolling. The title and buttons remain in place when the content
-            scrolls.</p>
-
-        <p>Clarity does not use horizontal lines to define the scrollable area. This keeps the UI clean and simple.
-            Also, a line above the buttons makes it appear as if all content is visible.</p>
-
-        <h6 id="validation">Validation</h6>
-
-        <p>Validation of user input can occur at the field level, the page level, and when the user finishes the wizard.
-            This control allows users to complete actions with minimal risk of error or data loss.</p>
-
-        <p>For more information on validation, see <a routerLink="/documentation/input-fields">input fields</a>.</p>
 
     </article>
 </clr-doc-wrapper>

@@ -7,7 +7,10 @@ import {Component} from "@angular/core";
 
 @Component({
     selector: "clr-modal-style-design-demo",
-    templateUrl: "./modal-style-design.demo.html"
+    templateUrl: "./modal-style-design.demo.html",
+    host: {
+        "[class.in-place-takeover]": "true"
+    }
 })
 export class ModalStyleDesignDemo {
     public basic: boolean = true;

@@ -443,6 +443,7 @@
             "url": "wizards",
             "text": "Wizards",
             "type": "component",
+            "newLayout": true,
             "ux": 20,
             "ui": 20,
             "core": -1,

@@ -14,6 +14,7 @@ import {FormGridDemo} from "./form-grid/form-grid";
 
 import {TemplateDrivenFormsDemo} from "./template-driven-forms/template-driven-forms";
 import {ReactiveFormsDemo} from "./reactive-forms/reactive-forms";
+import {FormGridValidationDemo} from "./form-grid-validation/form-grid-validation";
 
 const ROUTES: Routes = [
     {
@@ -26,6 +27,7 @@ const ROUTES: Routes = [
             { path: "form-validation", component: FormValidationDemo },
             { path: "form-compact", component: FormCompactDemo },
             { path: "form-grid", component: FormGridDemo },
+            { path: "form-grid-validation", component: FormGridValidationDemo },
             { path: "form-template-driven", component: TemplateDrivenFormsDemo },
             { path: "form-reactive", component: ReactiveFormsDemo }
         ]

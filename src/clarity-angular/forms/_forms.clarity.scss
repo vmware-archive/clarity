@@ -70,6 +70,7 @@
 
             &.row {
                 padding-left: 0;
+                position: static;
             }
 
             //The first label in a form-group always appears on the left hand side for large screens
@@ -84,7 +85,7 @@
 
             &.row > [class*='col-']:first-child > label,
             &.row > [class*='col-']:first-child > span {
-                position: relative;
+                position: static;
             }
 
             & > label:first-child,

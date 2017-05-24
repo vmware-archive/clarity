@@ -18,6 +18,7 @@ import {FormGridDemo} from "./form-grid/form-grid";
 import {TemplateDrivenFormsDemo} from "./template-driven-forms/template-driven-forms";
 import {ReactiveFormsDemo} from "./reactive-forms/reactive-forms";
 import {Example} from "./utils/example";
+import {FormGridValidationDemo} from "./form-grid-validation/form-grid-validation";
 
 @NgModule({
     imports: [
@@ -33,6 +34,7 @@ import {Example} from "./utils/example";
         FormGridDemo,
         FormTestDemo,
         FormValidationDemo,
+        FormGridValidationDemo,
         FormCompactDemo,
         TemplateDrivenFormsDemo,
         ReactiveFormsDemo,
@@ -44,6 +46,7 @@ import {Example} from "./utils/example";
         FormGridDemo,
         FormTestDemo,
         FormValidationDemo,
+        FormGridValidationDemo,
         FormCompactDemo,
         TemplateDrivenFormsDemo,
         ReactiveFormsDemo

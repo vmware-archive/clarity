@@ -19,12 +19,10 @@ import {Subscription} from "rxjs/Subscription";
                 <button (click)="page.current = 1">1</button>
             </li>
             <li *ngIf="page.current > 3">...</li>
-            <li *ngIf="page.current > 1">
-                <button (click)="page.previous()">{{page.current - 1}}</button>
-            </li>
-            <li class="pagination-current">{{page.current}}</li>
-            <li *ngIf="page.current < page.last">
-                <button (click)="page.next()">{{page.current + 1}}</button>
+            <li *ngFor="let pageNum of middlePages" [class.pagination-current]="pageNum === page.current">
+                <button *ngIf="pageNum !== page.current; else noButton" 
+                    (click)="page.current = pageNum">{{pageNum}}</button>
+                <ng-template #noButton>{{pageNum}}</ng-template>
             </li>
             <li *ngIf="page.current < page.last - 2">...</li>
             <li *ngIf="page.current < page.last - 1">
@@ -138,5 +136,21 @@ export class DatagridPagination implements OnDestroy {
      */
     public get lastItem(): number {
         return this.page.lastItem;
+    }
+
+    /**
+     * Conditionally adds page numbers before and after the current page
+     * @returns {number[]}
+     */
+    public get middlePages(): number[] {
+        let middlePages: number[] = [];
+        if (this.page.current > 1) {
+            middlePages.push(this.page.current - 1);
+        }
+        middlePages.push(this.page.current);
+        if (this.page.current < this.page.last) {
+            middlePages.push(this.page.current + 1);
+        }
+        return middlePages;
     }
 }

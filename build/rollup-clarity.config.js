@@ -12,6 +12,7 @@ export default {
         '@angular/forms',
         '@angular/platform-browser',
         'rxjs',
+        'rxjs/BehaviorSubject',
         'rxjs/Subject',
         'rxjs/Observable'
     ],
@@ -21,9 +22,10 @@ export default {
         '@angular/common' : 'ng.common',
         '@angular/forms' : 'ng.forms',
         '@angular/platform-browser' : 'ng.platformBrowser',
-        'rxjs' : 'rxjs',
-        'rxjs/Subject' : 'rxjs.Subject',
-        'rxjs/Observable' : 'rxjs/Observable'
+        'rxjs' : 'Rx',
+        'rxjs/BehaviorSubject' : 'Rx/BehaviorSubject',
+        'rxjs/Subject' : 'Rx/Subject',
+        'rxjs/Observable' : 'Rx/Observable'
     },
     plugins: [
         buble()

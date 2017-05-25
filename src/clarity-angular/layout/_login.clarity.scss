@@ -20,7 +20,7 @@ $clr-login-icon-size: $clr-icon-dimension-sm !default;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: $clr_baselineRem_1 $clr_baselineRem_4;
+            padding: $clr_baselineRem_1 $clr_baselineRem_2_5;
             height: auto;
             min-height: 100vh;
             width: $clr-login-width;
@@ -28,6 +28,14 @@ $clr-login-icon-size: $clr-icon-dimension-sm !default;
             .title {
                 @include clr-getTypePropertiesForDomElement(login_productName, (color, font-weight, font-family, font-size, letter-spacing));
                 line-height: $clr_baselineRem_1_5;
+
+                .welcome {
+                    line-height: $clr_baselineRem_1_5;
+                }
+                .hint {
+                    margin-top: $clr_baselineRem_1_25;
+                    font-size: rem(14/$clr-rem-denominator);
+                }
             }
 
             .trademark {
@@ -42,14 +50,14 @@ $clr-login-icon-size: $clr-icon-dimension-sm !default;
             .login-group {
                 display: flex;
                 flex-direction: column;
-                padding: $clr_baselineRem_3 0 0 0;
+                padding: $clr_baselineRem_2 0 0 0;
 
                 .auth-source {
-                    margin: $clr_baselineRem_0_25 0 $clr_baselineRem_1_25 0;
+                    margin: $clr_baselineRem_0_25 0 $clr_baselineRem_0_75 0;
                 }
 
                 .username {
-                    margin: $clr_baselineRem_0_25 0 $clr_baselineRem_1_25 0;
+                    margin: $clr_baselineRem_0_25 0 $clr_baselineRem_0_75 0;
                 }
 
                 .password {
@@ -57,7 +65,7 @@ $clr-login-icon-size: $clr-icon-dimension-sm !default;
                 }
 
                 .checkbox {
-                    margin: $clr_baselineRem_0_25 0 $clr_baselineRem_0_25 0;
+                    margin: $clr_baselineRem_0_25 0 $clr_baselineRem_0_75 0;
                 }
 
                 .tooltip-validation {
@@ -108,7 +116,7 @@ $clr-login-icon-size: $clr-icon-dimension-sm !default;
 
                 .signup {
                     margin-top: $clr_baselineRem_0_5;
-                    font-size: rem(16/$clr-rem-denominator);
+                    font-size: rem(14/$clr-rem-denominator);
                     text-align: center;
                 }
             }

@@ -12,13 +12,14 @@
 </p>
 
 <h3>Basic with Custom Cell Rendering</h3>
-<clr-datagrid id="basic-custom-cell">
+<button class="btn" id="btn-toggle" (click)="toggleItems()">Toggle</button>
+<clr-datagrid id="basic-custom-cell" [style.height.px]="279">
     <clr-dg-column>User ID</clr-dg-column>
     <clr-dg-column>Name</clr-dg-column>
     <clr-dg-column>Creation date</clr-dg-column>
     <clr-dg-column>Favorite color</clr-dg-column>
 
-    <clr-dg-row *ngFor="let user of nonPaginatedUsers">
+    <clr-dg-row *ngFor="let user of variableLengthUsers">
         <clr-dg-cell>{{user.id}}</clr-dg-cell>
         <clr-dg-cell>{{user.name}}</clr-dg-cell>
         <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
@@ -27,7 +28,7 @@
         </clr-dg-cell>
     </clr-dg-row>
 
-    <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
+    <clr-dg-footer>{{variableLengthUsers.length}} users</clr-dg-footer>
 </clr-datagrid>
 
 

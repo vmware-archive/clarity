@@ -13,7 +13,15 @@ gemini.suite('datagrid', (child) => {
                 });
             })
             .setCaptureElements('#basic-custom-cell')
-            .capture('default');
+            .capture('default')
+            .capture('toggle-scroll-on', function(actions, find) {
+                actions.click(find('#btn-toggle'));
+                actions.wait(WAIT_LOAD_TIME);
+            })
+            .capture('toggle-scroll-off', function(actions, find) {
+                actions.click(find('#btn-toggle'));
+                actions.wait(WAIT_LOAD_TIME);
+            })
     });
 
     gemini.suite('smart-iter-and-binding', (child) => {

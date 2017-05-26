@@ -27,16 +27,10 @@ If you already have an Angular application, you can follow the installation step
 
 2. Install the polyfill for Custom Elements: 
     ```bash
-    npm install @webcomponents/custom-elements@1.0.0-rc.3 --save
+    npm install @webcomponents/custom-elements@1.0.0 --save
     ```
 
-3. (Optional) If your application supports IE10, the polyfill will require the MutationObserver shim to work. If your 
-application doesn't support IE10, you can skip the following installation:
-    ```bash
-    npm install mutationobserver-shim@0.3.2 --save
-    ```
-
-4. Include the clarity-icons.min.css and clarity-icons.min.js in your HTML. As custom-elements.min.js is dependent on the Custom Elements polyfill, make sure to include it before clarity-icons.min.js. Also, if your app needs to support IE10, include the mutationobserver.min.js before the polyfill:
+3. Include the clarity-icons.min.css and clarity-icons.min.js in your HTML. As clarity-icons.min.js is dependent on the Custom Elements polyfill, make sure to include it before clarity-icons.min.js:
     ```html
     <link rel="stylesheet" href="path/to/node_modules/clarity-icons/clarity-icons.min.css">
 
@@ -55,7 +49,6 @@ application doesn't support IE10, you can skip the following installation:
     ],
     "scripts": [
         ...
-        "../node_modules/mutationobserver-shim/dist/mutationobserver.min.js",
         "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
         "../node_modules/clarity-icons/clarity-icons.min.js"
         ...

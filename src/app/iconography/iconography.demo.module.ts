@@ -14,6 +14,7 @@ import { IconSizeDemo } from "./icon-size";
 import { IconOrientationDemo } from "./icon-orientation";
 import { IconInverseColorDemo } from "./icon-inverse-color";
 import { IconVariantsDemo } from "./icon-variants";
+import {IconsViewBoxTestDemo} from "./icons-view-box-test.demo";
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import { IconVariantsDemo } from "./icon-variants";
         IconSelectionDemo,
         IconSizeDemo,
         IconInverseColorDemo,
-        IconVariantsDemo
+        IconVariantsDemo,
+        IconsViewBoxTestDemo
     ],
     exports: [
         IconsDemo,

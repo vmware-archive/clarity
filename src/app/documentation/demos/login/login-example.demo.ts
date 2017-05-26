@@ -9,8 +9,9 @@ const EXAMPLE = `
 <div class="login-wrapper">
     <form class="login">
         <label class="title">
-            Company Name<span class="trademark">&#8482;</span>
-            Product Name&#174;
+            <h3 class="welcome">Welcome to</h3>
+            Company Product Name
+            <h5 class="hint">Use your Company ID to sign in or create one now</h5>
         </label>
         <div class="login-group">
             <div class="auth-source select">
@@ -30,8 +31,8 @@ const EXAMPLE = `
             <div class="error active">
                 Invalid user name or password
             </div>
-            <button type="submit" class="btn btn-primary">LOG IN</button>
-            <a href="..." class="signup">Sign up for an account</a>
+            <button type="submit" class="btn btn-primary">NEXT</button>
+            <a href="javascript://" class="signup">Sign up for a Company ID</a>
         </div>
     </form>
 </div>

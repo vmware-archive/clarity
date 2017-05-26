@@ -20,6 +20,7 @@ import {SortOrder} from "../../../clarity-angular/data/datagrid/interfaces/sort-
 export class DatagridKitchenSinkDemo {
     nonPaginatedUsers: User[];
     users: User[];
+    variableLengthUsers: User[];
     sortOrder: SortOrder = SortOrder.Unsorted;
     pokemonComparator = new PokemonComparator();
     pokemonFilter = new PokemonFilter();
@@ -36,6 +37,14 @@ export class DatagridKitchenSinkDemo {
     showDate = true;
     showId = true;
 
+    toggleItems() {
+        if (this.variableLengthUsers.length === 5) {
+            this.variableLengthUsers = DatagridKitchenSinkData.users;
+        } else {
+            this.variableLengthUsers = DatagridKitchenSinkData.users.slice(0, 5);
+        }
+    }
+
     get selectable() {
         return !!this.selected2;
     }
@@ -49,6 +58,7 @@ export class DatagridKitchenSinkDemo {
 
     constructor() {
         this.nonPaginatedUsers = DatagridKitchenSinkData.users.slice(0, 5);
+        this.variableLengthUsers = DatagridKitchenSinkData.users.slice(0, 5);
         this.users = DatagridKitchenSinkData.users;
     }
 

@@ -138,6 +138,8 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, Af
      */
     private stabilizeColumns() {
         if (this.columnsSizesStable) {
+            // change in items might have introduced/taken away the scrollbar
+            this.organizer.scrollbar.next();
             return;
         }
         // No point resizing if there are no rows, we wait until they are actually loaded.

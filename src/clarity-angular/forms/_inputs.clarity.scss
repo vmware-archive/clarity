@@ -6,8 +6,15 @@
     #{$styledInputs} {
         @include custom-inputs($clr-baselineRem_1);
         @include clr-form-fields-appearance($clr-baselineRem_2_5, $clr-form-field-border-color);
-        @include input-border-bottom-animation();
         padding: 0 $clr_baselineRem_0_25;
+
+        &:not([readonly]) {
+            @include input-border-bottom-animation();
+        }
+
+        &[readonly] {
+            border: none;
+        }
     }
 
     #{$styledInputs},

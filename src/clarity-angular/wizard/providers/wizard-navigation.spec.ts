@@ -63,12 +63,20 @@ export default function(): void {
                 .toEqual(wizardNavigationService.pageCollection.getPageByIndex(1));
         });
 
-        it(".next() should return undefined if the next page is disabled", function() {
-
+        it(".next() should not navigate if the next page is disabled", function() {
             let testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
             testPage.nextStepDisabled = true;
             wizardNavigationService.currentPage = testPage;
-            expect(wizardNavigationService.next()).toBeUndefined();
+            wizardNavigationService.next();
+            expect(wizardNavigationService.currentPage).toBe(testPage);
+        });
+
+        it(".next() should not do anything if set to stop navigation", function() {
+            let testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+            wizardNavigationService.currentPage = testPage;
+            wizardNavigationService.wizardStopNavigation = true;
+            wizardNavigationService.next();
+            expect(wizardNavigationService.currentPage).toBe(testPage, "wizard did not navigate");
         });
 
         /*
@@ -114,10 +122,21 @@ export default function(): void {
             expect(context.clarityDirective.wizardFinished.emit).not.toHaveBeenCalled();
         });
 
-        it(".previous() should return undefined if the current page is the first page", function() {
-            let testPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+        it(".previous() should do nothing if the current page is the first page", function() {
+            let testPage = wizardNavigationService.pageCollection.firstPage;
+            let pageCollectionSpy = spyOn(wizardNavigationService.pageCollection, "getPreviousPage");
             wizardNavigationService.currentPage = testPage;
-            expect(wizardNavigationService.previous()).toBeUndefined();
+            wizardNavigationService.previous();
+            expect(wizardNavigationService.currentPage).toBe(testPage);
+            expect(pageCollectionSpy).not.toHaveBeenCalled();
+        });
+
+        it(".previous() should not do anything if stop navigation is true", function() {
+            let testPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+            wizardNavigationService.currentPage = testPage;
+            wizardNavigationService.wizardStopNavigation = true;
+            wizardNavigationService.previous();
+            expect(wizardNavigationService.currentPage).toBe(testPage);
         });
 
         it(".previous() should set the current page to the previous page", function() {
@@ -143,16 +162,37 @@ export default function(): void {
             expect(testPage.completed).toBe(false, "forceForward should set old current page to incomplete");
         });
 
-        it(".goTo() should return undefined if the given page is equal to the current page", function() {
-            let startPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-            let testPage = wizardNavigationService.pageCollection.getPageByIndex(1);
-            let goToPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+        it(".goTo() should not do anything if the given page is equal to the current page", function() {
+            let navSvc = wizardNavigationService;
+            let startPage = navSvc.pageCollection.getPageByIndex(0);
+            let testPage = navSvc.pageCollection.getPageByIndex(1);
+            let goToPage = navSvc.pageCollection.getPageByIndex(1);
+            let pageCollectionSpy = spyOn(navSvc.pageCollection, "getPageIndex");
 
             startPage.completed = true;
-            wizardNavigationService.currentPage = testPage;
+            navSvc.currentPage = testPage;
 
-            expect(wizardNavigationService.goTo(goToPage)).toBeUndefined();
-            expect(wizardNavigationService.goTo(goToPage.id)).toBeUndefined();
+            navSvc.goTo(goToPage);
+            expect(navSvc.currentPage).toBe(testPage, "does not navigate with object");
+
+            navSvc.goTo(goToPage.id);
+            expect(navSvc.currentPage).toBe(testPage, "does not navigate with id");
+
+            expect(pageCollectionSpy).not.toHaveBeenCalled();
+        });
+
+        it(".goTo() should not do anything if stop navigation is true", function() {
+            let navSvc = wizardNavigationService;
+            let startPage = navSvc.pageCollection.getPageByIndex(0);
+            let goToPage = navSvc.pageCollection.getPageByIndex(1);
+
+            navSvc.currentPage = startPage;
+            startPage.completed = true;
+            navSvc.wizardStopNavigation = true;
+            navSvc.goTo(goToPage);
+
+            expect(navSvc.currentPage).not.toBe(goToPage);
+            expect(navSvc.currentPage).toBe(startPage);
         });
 
         it(".goTo() should set the current page as the given page", function() {
@@ -303,6 +343,15 @@ export default function(): void {
             expect(() => { wizardNavigationService.forceNext(); }).toThrowError();
         });
 
+        it(".forceNext() should do nothing if stop navigation is set", function() {
+            let testPage = wizardNavigationService.pageCollection.firstPage;
+            wizardNavigationService.currentPage = testPage;
+            expect(wizardNavigationService.currentPage).toEqual(testPage);
+            wizardNavigationService.wizardStopNavigation = true;
+            wizardNavigationService.forceNext();
+            expect(wizardNavigationService.currentPage).toBe(testPage);
+        });
+
         it(".forceNext() set next page to be current and commit old current page if incomplete", function() {
             let firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
             let testPage = wizardNavigationService.pageCollection.getPageByIndex(1);
@@ -333,6 +382,50 @@ export default function(): void {
                 context.detectChanges();
                 expect(currentPage.readyToComplete).toBe(false, "validate page is not ready to complete");
                 wizardNavigationService.checkAndCommitCurrentPage("next");
+
+                expect(currentPage.primaryButtonClicked.emit).not.toHaveBeenCalled();
+                expect(currentPage.nextButtonClicked.emit).not.toHaveBeenCalled();
+                expect(wizardNavigationService.pageCollection.commitPage).not.toHaveBeenCalled();
+                expect(wizardNavigationService.forceNext).not.toHaveBeenCalled();
+            });
+
+            it("should do nothing if stop navigation is set to true", function() {
+                let currentPage = wizardNavigationService.currentPage;
+                currentPage.nextStepDisabled = false;
+                wizardNavigationService.wizardStopNavigation = true;
+
+                // whole lotta spies!
+                spyOn(currentPage.primaryButtonClicked, "emit");
+                spyOn(currentPage.nextButtonClicked, "emit");
+                spyOn(wizardNavigationService.pageCollection, "commitPage");
+                spyOn(wizardNavigationService, "forceNext");
+
+                context.detectChanges();
+                expect(currentPage.readyToComplete).toBe(true, "validate page is ok to navigate");
+                wizardNavigationService.checkAndCommitCurrentPage("next");
+
+                expect(currentPage.primaryButtonClicked.emit).not.toHaveBeenCalled();
+                expect(currentPage.nextButtonClicked.emit).not.toHaveBeenCalled();
+                expect(wizardNavigationService.pageCollection.commitPage).not.toHaveBeenCalled();
+                expect(wizardNavigationService.forceNext).not.toHaveBeenCalled();
+            });
+
+            it("should do nothing if the action type is finish and stop navigation is true", function() {
+                let lastPage = wizardNavigationService.pageCollection.lastPage;
+                wizardNavigationService.currentPage = lastPage;
+                let currentPage = wizardNavigationService.currentPage;
+                wizardNavigationService.wizardStopNavigation = true;
+                currentPage.nextStepDisabled = false;
+
+                expect(currentPage).toBe(lastPage, "validate current page is last page");
+
+                // whole lotta spies!
+                spyOn(currentPage.primaryButtonClicked, "emit");
+                spyOn(currentPage.nextButtonClicked, "emit");
+                spyOn(wizardNavigationService.pageCollection, "commitPage");
+                spyOn(wizardNavigationService, "forceNext");
+
+                wizardNavigationService.checkAndCommitCurrentPage("finish");
 
                 expect(currentPage.primaryButtonClicked.emit).not.toHaveBeenCalled();
                 expect(currentPage.nextButtonClicked.emit).not.toHaveBeenCalled();
@@ -585,6 +678,30 @@ export default function(): void {
                 expect(currentPage.onCommit.emit).toHaveBeenCalled();
 
                 expect(wizardNavigationService.pageCollection.commitPage).not.toHaveBeenCalled();
+                expect(wizardNavigationService.forceNext).not.toHaveBeenCalled();
+                expect(currentAsExpected).toBe(true, "wizard did not navigate");
+            });
+
+            it("should not commit page, fire events, or navigate if stop navigation is set", function() {
+                let currentPage = wizardNavigationService.currentPage;
+                let expectedPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+                let currentAsExpected: boolean;
+
+                spyOn(currentPage.primaryButtonClicked, "emit");
+                spyOn(currentPage.nextButtonClicked, "emit");
+                spyOn(currentPage.onCommit, "emit");
+                spyOn(wizardNavigationService.pageCollection, "commitPage");
+                spyOn(wizardNavigationService, "forceNext");
+
+                wizardNavigationService.wizardStopNavigation = true;
+                wizardNavigationService.checkAndCommitCurrentPage("next");
+                currentAsExpected = (currentPage === expectedPage);
+
+                // should not fire events at all
+                expect(currentPage.primaryButtonClicked.emit).not.toHaveBeenCalled();
+                expect(currentPage.nextButtonClicked.emit).not.toHaveBeenCalled();
+                expect(wizardNavigationService.pageCollection.commitPage).not.toHaveBeenCalled();
+                expect(currentPage.onCommit.emit).not.toHaveBeenCalled();
                 expect(wizardNavigationService.forceNext).not.toHaveBeenCalled();
                 expect(currentAsExpected).toBe(true, "wizard did not navigate");
             });

@@ -9,7 +9,7 @@ import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-
 
 @Component({
     moduleId: module.id,
-    selector: "clr-wizard-basic",
+    selector: "clr-old-wizard-basic",
     templateUrl: "./wizard-basic.demo.html"
 })
 export class WizardBasic {

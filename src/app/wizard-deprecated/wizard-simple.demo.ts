@@ -8,7 +8,7 @@ import {WizardDeprecated} from "../../clarity-angular/wizard-deprecated/wizard";
 
 @Component({
     moduleId: module.id,
-    selector: "clr-wizard-simple",
+    selector: "clr-old-wizard-simple",
     templateUrl: "./wizard-simple.demo.html"
 })
 export class WizardSimple {

@@ -90,6 +90,19 @@ export default function(): void {
                         wizard.close();
                         expect(wizard._open).toBe(false, "closed wizard._open should be false");
                     });
+
+                    it("should not do anything if stop navigation is set", () => {
+                        spyOn(wizard, "deactivateGhostPages");
+
+                        wizard.open();
+                        expect(wizard._open).toBe(true, "visible wizard._open should be true");
+
+                        wizard.stopNavigation = true;
+                        wizard.close();
+
+                        expect(wizard.deactivateGhostPages).not.toHaveBeenCalled();
+                        expect(wizard._open).toBe(true, "wizard._open should not have changed");
+                    });
                 });
 
                 describe("toggle", () => {
@@ -619,6 +632,21 @@ export default function(): void {
                     context.detectChanges();
 
                     val = wizard.navService.wizardHasAltNext;
+                    expected = true;
+                    expect(val).toBe(expected, "updates as expected");
+                });
+            });
+
+            describe("Stop Navigation", () => {
+                it("navService.wizardStopNavigation is set to wizard.stopNavigation and updates dynamically", () => {
+                    let val = wizard.navService.wizardStopNavigation;
+                    let expected = wizard.stopNavigation;
+                    expect(val).toBe(expected, "inits as expected");
+
+                    wizard.stopNavigation = true;
+                    context.detectChanges();
+
+                    val = wizard.navService.wizardStopNavigation;
                     expected = true;
                     expect(val).toBe(expected, "updates as expected");
                 });

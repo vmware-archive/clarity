@@ -337,6 +337,50 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     }
 
     /**
+     * Prevents Wizard from performing any form of navigation away from the current
+     * page. Set using the clrWizardPreventNavigation input.
+     *
+     * Note that stopNavigation is meant to freeze the wizard in place, typically
+     * during a long validation or background action where you want the wizard to
+     * display loading content but not allow the user to execute navigation in
+     * the stepnav, close X, or the  back, finish, or next buttons.
+     *
+     * @name stopNavigation
+     * @type {boolean}
+     * @memberof Wizard
+     */
+    @Input("clrWizardPreventNavigation")
+    set stopNavigation(value: boolean) {
+        this._stopNavigation = !!value;
+        this.navService.wizardStopNavigation = value;
+    }
+    private _stopNavigation: boolean = false;
+    get stopNavigation(): boolean {
+        return this._stopNavigation;
+    }
+
+    /**
+     * Prevents clicks on the links in the stepnav from working.
+     *
+     * A more granular bypassing of navigation which can be useful when your
+     * Wizard is in a state of completion and you don't want users to be
+     * able to jump backwards and change things.
+     *
+     * @name disableStepnav
+     * @type {boolean}
+     * @memberof Wizard
+     */
+    @Input("clrWizardDisableStepnav")
+    set disableStepnav(value: boolean) {
+        this._disableStepnav = !!value;
+        this.navService.wizardDisableStepnav = value;
+    }
+    private _disableStepnav: boolean = false;
+    get disableStepnav(): boolean {
+        return this._disableStepnav;
+    }
+
+    /**
      * Used only to communicate to the underlying modal that animations are not
      * wanted. Primary use is for the display of static/inline wizards.
      *
@@ -494,6 +538,10 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @memberof Wizard
      */
     public close(): void {
+        if (this.stopNavigation) {
+            return;
+        }
+
         this._open = false;
         this.deactivateGhostPages();
         this._openChanged.emit(false);
@@ -609,6 +657,10 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @memberof Wizard
      */
     public forceFinish(): void {
+        if (this.stopNavigation) {
+            return;
+        }
+
         this.deactivateGhostPages();
         this.close();
     }
@@ -670,6 +722,10 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     public checkAndCancel(): void {
         let currentPage = this.currentPage;
         let currentPageHasOverrides = currentPage.stopCancel || currentPage.preventDefault;
+
+        if (this.stopNavigation) {
+            return;
+        }
 
         currentPage.pageOnCancel.emit();
         if (!currentPageHasOverrides) {

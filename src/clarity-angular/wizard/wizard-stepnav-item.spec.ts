@@ -104,6 +104,20 @@ export default function(): void {
                     expect(navServiceSpy).not.toHaveBeenCalled();
                 });
 
+                it("should not call to navService if stopNavigation is true on navService", () => {
+                    testItemComponent.navService.wizardStopNavigation = true;
+                    fixture.detectChanges();
+                    testItemComponent.click();
+                    expect(navServiceSpy).not.toHaveBeenCalled();
+                });
+
+                it("should not call to navService if disableStepnav is true on navService", () => {
+                    testItemComponent.navService.wizardDisableStepnav = true;
+                    fixture.detectChanges();
+                    testItemComponent.click();
+                    expect(navServiceSpy).not.toHaveBeenCalled();
+                });
+
                 it("should not call to navService if current", () => {
                     fakeOutPage.current = true;
                     testItemComponent.click();
@@ -131,6 +145,18 @@ export default function(): void {
                     fakeOutPage.reset();
                     fixture.detectChanges();
                     expect(testItemComponent.isDisabled).toBe(false, "resets when page is reset");
+                });
+
+                it("should return true if navService is set to stop navigation", () => {
+                    testItemComponent.navService.wizardStopNavigation = true;
+                    fixture.detectChanges();
+                    expect(testItemComponent.isDisabled).toBe(true);
+                });
+
+                it("should return true if navService has disabled stepnav", () => {
+                    testItemComponent.navService.wizardDisableStepnav = true;
+                    fixture.detectChanges();
+                    expect(testItemComponent.isDisabled).toBe(true);
                 });
 
                 it("should throw an error if page is not present", () => {
@@ -294,8 +320,15 @@ export default function(): void {
                         "stepnav item does not have .disabled class when page is not disabled");
                 });
 
-                it("aria-selected have .disabled class if page is disabled", () => {
+                it("should have .disabled class if page is disabled", () => {
                     fakeOutPage.disabled = true;
+                    fixture.detectChanges();
+                    expect(myStepnavItem.classList.contains("disabled")).toBe(true,
+                        "stepnav item has .disabled class when page is disabled");
+                });
+
+                it("should have .disabled class if navService is set to stop navigation", () => {
+                    testItemComponent.navService.wizardStopNavigation = true;
                     fixture.detectChanges();
                     expect(myStepnavItem.classList.contains("disabled")).toBe(true,
                         "stepnav item has .disabled class when page is disabled");
@@ -344,6 +377,20 @@ export default function(): void {
 
                 it("should not register the click action if disabled", () => {
                     fakeOutPage.disabled = true;
+                    fixture.detectChanges();
+                    myClickTarget.click();
+                    expect(navServiceSpy).not.toHaveBeenCalled();
+                });
+
+                it("should not register the click action if navService is set to stop navigation", () => {
+                    testItemComponent.navService.wizardStopNavigation = true;
+                    fixture.detectChanges();
+                    myClickTarget.click();
+                    expect(navServiceSpy).not.toHaveBeenCalled();
+                });
+
+                it("should not register the click action if navService is set to disable the stepnav", () => {
+                    testItemComponent.navService.wizardDisableStepnav = true;
                     fixture.detectChanges();
                     myClickTarget.click();
                     expect(navServiceSpy).not.toHaveBeenCalled();

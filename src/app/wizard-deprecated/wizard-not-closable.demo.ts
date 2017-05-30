@@ -5,29 +5,31 @@
  */
 
 import {Component, ViewChild} from "@angular/core";
-import {Wizard} from "../../clarity-angular/wizard/wizard";
+import {WizardDeprecated} from "../../clarity-angular/wizard-deprecated/wizard";
 import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
 
 @Component({
     moduleId: module.id,
-    selector: "clr-wizard-not-closable",
+    selector: "clr-old-wizard-not-closable",
     templateUrl: "./wizard-not-closable.demo.html"
 })
 export class WizardNotClosable {
-    @ViewChild("wizardclos") wizardClosable: Wizard;
+    @ViewChild("wizardclos") wizardClosable: WizardDeprecated;
     @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
 
     html: string = `
-<clr-wizard [(clrWizardOpen)]="open" [clrWizardClosable]="false" [clrWizardSize]="'md'">
+<clr-wizard-deprecated #wizardclos [(clrWizardOpen)]="open" [clrWizardClosable]="false" [clrWizardSize]="'md'">
     <div class="wizard-title">Wizard Title</div>
 
     <clr-wizard-step>Step 1</clr-wizard-step>
     <clr-wizard-step>Step 2</clr-wizard-step>
     <clr-wizard-step>Step 3</clr-wizard-step>
 
-    <clr-wizard-page>Note that there is no closing &times; icon in the top right.</clr-wizard-page>
-    <clr-wizard-page>Content for step 2</clr-wizard-page>
-    <clr-wizard-page>Content for step 3</clr-wizard-page>
-</clr-wizard>
+    <clr-wizard-page-deprecated>
+      Note that there is no close (<clr-icon shape="close"></clr-icon>) icon in the top right.
+    </clr-wizard-page-deprecated>
+    <clr-wizard-page-deprecated>Content for step 2</clr-wizard-page-deprecated>
+    <clr-wizard-page-deprecated>Content for step 3</clr-wizard-page-deprecated>
+</clr-wizard-deprecated>
     `;
 }

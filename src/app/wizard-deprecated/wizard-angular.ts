@@ -8,7 +8,7 @@ import {Component} from "@angular/core";
 
 @Component({
     moduleId: module.id,
-    selector: "clr-wizard-demo-angular",
+    selector: "clr-old-wizard-demo-angular",
     styleUrls: ["./wizard.demo.css"],
     templateUrl: "./wizard-angular.demo.html"
 })

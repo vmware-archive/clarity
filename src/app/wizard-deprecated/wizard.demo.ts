@@ -8,7 +8,7 @@ import {Component, ViewEncapsulation} from "@angular/core";
 
 @Component({
    moduleId: module.id,
-   selector: "clr-wizard-demo",
+   selector: "clr-old-wizard-demo",
    styleUrls: ["./wizard.demo.css"],
    template: `
       <h2>Wizard</h2>

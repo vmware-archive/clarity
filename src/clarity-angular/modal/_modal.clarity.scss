@@ -62,7 +62,7 @@ $clr-modal-xl-width: baselineRem(48) !default;
     .modal-title {
         @include clr-getTypePropertiesForDomElement(modal_header, (color, font-size, font-family, font-weight, line-height, letter-spacing));
         margin: 0;
-        padding: 0;
+        padding: 0 $clr-baselineRem_0_125;
     }
 
     .close {
@@ -84,6 +84,7 @@ $clr-modal-xl-width: baselineRem(48) !default;
     max-height: 55vh;
     overflow-y: auto;
     overflow-x: hidden;
+    padding: 0 $clr-baselineRem_0_125;
 
     & > :first-child {
         margin-top: 0;

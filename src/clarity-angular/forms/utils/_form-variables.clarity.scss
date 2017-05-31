@@ -12,5 +12,5 @@ $clr-form-field-border-color: $clr-dark-midtone-gray !default;
 $clr-form-field-border-color: $clr-dark-midtone-gray !default;
 $clr-form-icon-dim: $clr-icon-dimension-sm !default;
 
-$styledInputs: inputs("text", "password", "number", "email", "url", "tel", "date", "time");
+$styledInputs: inputs("text", "password", "number", "email", "url", "tel", "date", "time", "datetime-local");
 $styledInputs1: inputs("button", "submit");

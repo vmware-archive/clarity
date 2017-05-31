@@ -27,6 +27,7 @@ import {WizardDesignDemo} from "./wizard-design.demo";
 import {WizardDesignSizeDemo} from "./wizard-design-size.demo";
 import {WizardAsyncCompletion} from "./wizard-async-completion.demo";
 import {WizardForceForwardDemo} from "./wizard-force-forward.demo";
+import {WizardStopNavigation} from "./wizard-stop-navigation.demo";
 import {WizardDemo} from "./wizard.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
@@ -61,7 +62,8 @@ import {UtilsModule} from "../../../utils/utils.module";
         WizardForceForwardDemo,
         WizardDemo,
         WizardDesignDemo,
-        WizardDesignSizeDemo
+        WizardDesignSizeDemo,
+        WizardStopNavigation
     ],
     exports: [
         WizardDemo

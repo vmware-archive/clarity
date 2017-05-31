@@ -255,6 +255,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
                 this.selectedChanged.emit(s);
             }
         }));
+
         this._subscriptions.push(
             this.columns.changes.subscribe(( columns: DatagridColumn[] ) => {
                 this.columnService.updateColumnList(this.columns.map(col => col.hideable));

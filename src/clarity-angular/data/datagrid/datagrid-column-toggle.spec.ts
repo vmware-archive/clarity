@@ -43,10 +43,6 @@ export default function (): void {
                 component = new DatagridColumnToggle(hideableColumnService);
             });
 
-            afterEach(function () {
-                component.ngOnDestroy();
-            });
-
             it("gets a list of hideable columns from the HideableColumnService", function () {
                 // inits to empty array.
                 expect(component.columns).toEqual([]);

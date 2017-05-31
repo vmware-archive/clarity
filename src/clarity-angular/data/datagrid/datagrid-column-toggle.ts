@@ -75,7 +75,6 @@ export class DatagridColumnToggle implements OnInit, OnDestroy {
      * @type {Array}
      */
     public columns: DatagridHideableColumn[] = [];
-    // public lastColumnshowing: boolean = false;
 
     public get allColumnsVisible(): boolean {
         return this._allColumnsVisible;
@@ -102,11 +101,11 @@ export class DatagridColumnToggle implements OnInit, OnDestroy {
                     this.columns.push(col);
                 }
             });
-        });
+            });
     }
 
     ngOnDestroy() {
-        // this._hideableColumnChangeSubscription.unsubscribe();
+        this._hideableColumnChangeSubscription.unsubscribe();
     }
 
     selectAll() {

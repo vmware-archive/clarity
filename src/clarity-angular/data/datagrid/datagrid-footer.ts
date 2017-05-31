@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
 import { Selection, SelectionType } from "./providers/selection";
 import { HideableColumnService } from "./providers/hideable-column.service";
@@ -12,7 +12,7 @@ import { HideableColumnService } from "./providers/hideable-column.service";
     selector: "clr-dg-footer",
     template: `
         <ng-container
-                *ngIf="(selection.selectionType === SELECTION_TYPE.Multi) && (selection.current.length > 0)">
+            *ngIf="(selection.selectionType === SELECTION_TYPE.Multi) && (selection.current.length > 0)">
             <clr-checkbox [clrDisabled]="true" [clrChecked]="true" class="datagrid-foot-select">
                 {{selection.current.length}}
             </clr-checkbox>
@@ -25,34 +25,49 @@ import { HideableColumnService } from "./providers/hideable-column.service";
     `,
     host: {
         "[class.datagrid-foot]": "true",
-    }
+    },
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatagridFooter implements OnInit {
 
-    constructor( public selection: Selection, public hideableColumnService: HideableColumnService ) {}
+    constructor( public selection: Selection,
+                 public hideableColumnService: HideableColumnService,
+                 public cdr: ChangeDetectorRef ) {}
 
-    public activeToggler: boolean = false; // When undefined/false we don't get views in the UI toggler component.
-                                           // Causing a bunch of failing tests
-    private listChangeSubscription: Subscription[] = [];
+    public activeToggler: boolean;
+    private subscriptions: Subscription[] = [];
 
     /* reference to the enum so that template can access */
     public SELECTION_TYPE = SelectionType;
 
     ngOnInit() {
-        this.listChangeSubscription.push(
+        this.subscriptions.push(
             this.hideableColumnService.columnListChange.subscribe(( change ) => {
                 let hiddenColumns = change.filter(col => col);
                 if ( hiddenColumns.length > 0 ) {
                     this.activeToggler = true;
-                } else {
-                    this.activeToggler = false;
                 }
+                this.cdr.detectChanges();
             })
         );
+
+        this.subscriptions.push(
+            this.selection.change.subscribe(() => {
+                this.cdr.markForCheck();
+            })
+        );
+
+        let hiddenColumns = this.hideableColumnService
+                                .getColumns()
+                                .filter(col => col);
+
+        if ( hiddenColumns.length > 0 ) {
+            this.activeToggler = true;
+        }
     }
 
     ngOnDestroy() {
-        this.listChangeSubscription.forEach(( sub ) => {
+        this.subscriptions.forEach(( sub ) => {
             sub.unsubscribe();
         });
     }

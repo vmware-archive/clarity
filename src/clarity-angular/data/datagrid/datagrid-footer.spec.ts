@@ -55,6 +55,7 @@ export default function(): void {
             clarityDirectiveSelection.selectionType = SelectionType.Multi;
             clarityDirectiveSelection.current.push(1);
 
+            context.clarityDirective.cdr.markForCheck();
             context.detectChanges();
 
             expect(context.clarityElement.querySelector(".datagrid-foot-select")).not.toBeNull();
@@ -62,6 +63,7 @@ export default function(): void {
 
 
             clarityDirectiveSelection.current.push(1);
+            context.clarityDirective.cdr.markForCheck();
             context.detectChanges();
 
             expect(context.clarityElement.querySelector(".datagrid-foot-select")).not.toBeNull();
@@ -69,6 +71,7 @@ export default function(): void {
 
             clarityDirectiveSelection.current = [];
 
+            context.clarityDirective.cdr.markForCheck();
             context.detectChanges();
 
             expect(context.clarityElement.querySelector(".datagrid-foot-select")).toBeNull();

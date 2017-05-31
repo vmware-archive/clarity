@@ -3,10 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { IconTemplate } from "./interfaces/icon-template";
 import { ClarityIconsApi } from "./clarity-icons-api";
-
-let allClrIconsShapes: IconTemplate = ClarityIconsApi.instance.get();
 
 /* CLR-ICON CUSTOM ELEMENT */
 
@@ -36,44 +33,40 @@ ClarityIconElement.prototype.constructor = ClarityIconElement;
 
 let generateIcon =
     function (element: any, shape: string) {
-
         shape = shape.split(/\s/)[ 0 ];
 
         if (shape !== element._shape) {
             element._shape = shape;
 
-            element.innerHTML =
-                allClrIconsShapes[ shape ] ||
-                (function () {
-                    console.error(`'${shape}' is not found in the Clarity Icons set.`);
-                    return allClrIconsShapes[ "error" ];
-                }());
+            // shape exists in set
+            if (ClarityIconsApi.instance.has(shape)) {
+                element.innerHTML = ClarityIconsApi.instance.get(shape);
+            } else {
+                console.error(`'${shape}' is not found in the Clarity Icons set.`);
+                element.innerHTML = ClarityIconsApi.instance.get("error");
+            }
         }
     };
 
 let setIconSize =
     function (element: any, size: string) {
-
         if (!Number(size) || Number(size) < 0) {
-
             element.style.width = null; // fallback to the original stylesheet value
             element.style.height = null; // fallback to the original stylesheet value
         } else {
-
             element.style.width = size + "px";
             element.style.height = size + "px";
         }
-
     };
 
 ClarityIconElement.prototype.connectedCallback =
     function () {
-
         let host = this as HTMLElement;
 
         if (host.hasAttribute("shape")) {
             generateIcon(host, host.getAttribute("shape"));
         }
+
         if (host.hasAttribute("size")) {
             setIconSize(host, host.getAttribute("size"));
         }
@@ -81,7 +74,6 @@ ClarityIconElement.prototype.connectedCallback =
 
 ClarityIconElement.prototype.attributeChangedCallback =
     function (attributeName: string, oldValue: string, newValue: string) {
-
         let host = this as HTMLElement;
 
         if (attributeName === "shape") {
@@ -90,7 +82,4 @@ ClarityIconElement.prototype.attributeChangedCallback =
         if (attributeName === "size") {
             setIconSize(host, newValue);
         }
-
-
     };
-

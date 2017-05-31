@@ -291,6 +291,16 @@ export default function(): void {
                     });
                 });
 
+                describe("stopNavigation override", () => {
+                    it("returns true if stopNavigation is true in navService", () => {
+                        navService.wizardStopNavigation = true;
+                        fixture.detectChanges();
+                        expect(buttonComponent.isDisabled).toBe(true);
+                        // reset here just this once...
+                        navService.wizardStopNavigation = false;
+                    });
+                });
+
                 describe("...and cancel buttons", () => {
                     it("returns false for button of type cancel that is NOT disabled", () => {
                         buttonComponent.disabled = false;

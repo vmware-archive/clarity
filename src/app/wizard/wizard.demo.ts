@@ -9,7 +9,6 @@ import {Component, ViewEncapsulation} from "@angular/core";
 @Component({
    moduleId: module.id,
    selector: "clr-wizard-demo",
-//    styleUrls: ["./wizard.demo.css"],
    template: `
       <h2>New Wizard</h2>
       <div class="row">
@@ -22,6 +21,7 @@ import {Component, ViewEncapsulation} from "@angular/core";
                 <li><a [routerLink]="['./not-closable']">Not closable</a></li>
                 <li><a [routerLink]="['./ghost-pages']">Ghost pages</a></li>
                 <li><a [routerLink]="['./custom-buttons']">Custom buttons</a></li>
+                <li><a [routerLink]="['./jump-to']">Jump-to page</a></li>
             </ul>
         </div>
         <div class="col-xs-12 col-sm-6">
@@ -31,8 +31,8 @@ import {Component, ViewEncapsulation} from "@angular/core";
                 <li><a [routerLink]="['./alt-cancel']">Alt cancel</a></li>
                 <li><a [routerLink]="['./alt-next']">Alt next</a></li>
                 <li><a [routerLink]="['./inline']">Inline/static wizard</a></li>
-                <li><a [routerLink]="['./jump-to']">Jump-to page</a></li>
                 <li><a [routerLink]="['./force-forward']">Force forward</a></li>
+                <li><a [routerLink]="['./stop-navigation']">Stop navigation</a></li>
             </ul>
         </div>
       </div>

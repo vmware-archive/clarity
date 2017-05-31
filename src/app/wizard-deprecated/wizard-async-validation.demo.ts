@@ -9,7 +9,7 @@ import {Wizard} from "../../clarity-angular/wizard/wizard";
 
 @Component({
     moduleId: module.id,
-    selector: "clr-wizard-async-validation",
+    selector: "clr-old-wizard-async-validation",
     templateUrl: "./wizard-async-validation.demo.html"
 })
 export class WizardAsyncValidation {

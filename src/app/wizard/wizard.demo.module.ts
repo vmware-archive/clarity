@@ -25,6 +25,7 @@ import { WizardInlineDemo } from "./wizard-inline.demo";
 import { WizardJumpToDemo } from "./wizard-jump-to.demo";
 import { WizardAltNextDemo } from "./wizard-alt-next.demo";
 import { WizardForceForwardDemo } from "./wizard-force-forward.demo";
+import { WizardStopNavigation } from "./wizard-stop-navigation.demo";
 
 @NgModule({
     imports: [
@@ -49,7 +50,8 @@ import { WizardForceForwardDemo } from "./wizard-force-forward.demo";
         WizardJumpToDemo,
         CodeExample,
         WizardAltNextDemo,
-        WizardForceForwardDemo
+        WizardForceForwardDemo,
+        WizardStopNavigation
     ],
     exports: [
         WizardBasicDemo,
@@ -67,7 +69,8 @@ import { WizardForceForwardDemo } from "./wizard-force-forward.demo";
         WizardJumpToDemo,
         CodeExample,
         WizardAltNextDemo,
-        WizardForceForwardDemo
+        WizardForceForwardDemo,
+        WizardStopNavigation
     ]
 })
 export default class WizardDemoModule {

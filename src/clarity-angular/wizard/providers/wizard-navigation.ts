@@ -137,10 +137,16 @@ export class WizardNavigationService implements OnDestroy {
         });
 
         this.customButtonSubscription = this.buttonService.customBtnClicked.subscribe((type: string) => {
-            this.currentPage.customButtonClicked.emit(type);
+            if (!this.wizardStopNavigation) {
+                this.currentPage.customButtonClicked.emit(type);
+            }
         });
 
         this.cancelButtonSubscription = this.buttonService.cancelBtnClicked.subscribe(() => {
+            if (this.wizardStopNavigation) {
+                return;
+            }
+
             if (this.currentPage.preventDefault) {
                 this.currentPage.pageOnCancel.emit(this.currentPage);
             } else {
@@ -309,7 +315,7 @@ export class WizardNavigationService implements OnDestroy {
      * @memberof WizardNavigationService
      */
     set currentPage(page: WizardPage) {
-        if (this._currentPage !== page) {
+        if (this._currentPage !== page && !this.wizardStopNavigation) {
             this._currentPage = page;
             page.onLoad.emit(page.id);
             this._currentChanged.next(page);
@@ -397,13 +403,13 @@ export class WizardNavigationService implements OnDestroy {
 
         this.checkAndCommitCurrentPage("next");
 
-        if (!this.wizardHasAltNext) {
+        if (!this.wizardHasAltNext && !this.wizardStopNavigation) {
             this._movedToNextPage.next(true);
         }
     }
 
     /**
-     * Bypasses checks and most event emissions to force hey page to navigate forward.
+     * Bypasses checks and most event emissions to force a page to navigate forward.
      *
      * Comparable to calling Wizard.next() or Wizard.forceNext().
      *
@@ -416,6 +422,10 @@ export class WizardNavigationService implements OnDestroy {
         // catch errant null or undefineds that creep in
         if (!nextPage) {
             throw new Error("The wizard has no next page to go to.");
+        }
+
+        if (this.wizardStopNavigation) {
+            return;
         }
 
         if (!currentPage.completed) {
@@ -446,7 +456,7 @@ export class WizardNavigationService implements OnDestroy {
         let isDangerFinish: boolean;
         let isFinish: boolean;
 
-        if (!currentPage.readyToComplete) {
+        if (!currentPage.readyToComplete || this.wizardStopNavigation) {
             return;
         }
 
@@ -549,7 +559,7 @@ export class WizardNavigationService implements OnDestroy {
     public previous(): void {
         let previousPage: WizardPage;
 
-        if (this.currentPageIsFirst) {
+        if (this.currentPageIsFirst || this.wizardStopNavigation) {
             return;
         }
 
@@ -630,6 +640,28 @@ export class WizardNavigationService implements OnDestroy {
     public wizardHasAltNext: boolean = false;
 
     /**
+     * A boolean flag shared across the Wizard subcomponents that follows the value
+     * of the Wizard.stopNavigation (clrWizardPreventNavigation) input. When true, all
+     * navigational elements in the wizard are disabled.
+     *
+     * This is intended to freeze the wizard in place. Events are not fired so this is
+     * not a way to implement alternate functionality for navigation.
+     *
+     * @type {boolean}
+     * @memberof WizardNavigationService
+     */
+    public wizardStopNavigation: boolean = false;
+
+    /**
+     * A boolean flag shared with the stepnav items that prevents user clicks on
+     * stepnav items from navigating the wizard.
+     *
+     * @type {boolean}
+     * @memberof WizardNavigationService
+     */
+    public wizardDisableStepnav: boolean = false;
+
+    /**
      * Performs all required checks to determine if a user can navigate to a page. Checking at each
      * point if a page is navigable -- completed where the page immediately after the last completed
      * page.
@@ -665,7 +697,8 @@ export class WizardNavigationService implements OnDestroy {
         currentPage = this.currentPage;
 
         // no point in going to the current page. you're there already!
-        if (pageToGoTo === currentPage) {
+        // also hard block on any navigation when stopNavigation is true
+        if (pageToGoTo === currentPage || this.wizardStopNavigation) {
             return;
         }
 

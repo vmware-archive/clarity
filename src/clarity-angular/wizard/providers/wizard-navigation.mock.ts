@@ -10,4 +10,6 @@ export class NavServiceMock {
     currentPage: MockPage;
     currentPageIsLast: boolean = false;
     currentPageIsFirst: boolean = false;
+    wizardStopNavigation: boolean = false;
+    wizardDisableStepnav: boolean = false;
 }

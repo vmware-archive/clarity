@@ -9,7 +9,7 @@ import {Wizard} from "../../clarity-angular/wizard/wizard";
 
 @Component({
     moduleId: module.id,
-    selector: "clr-wizard-form-validation",
+    selector: "clr-old-wizard-form-validation",
     templateUrl: "./wizard-form-validation.demo.html"
 })
 export class WizardFormValidation {

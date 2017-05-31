@@ -49,7 +49,7 @@ export class WizardStepnavItem {
 
     public get isDisabled(): boolean {
         this.pageGuard();
-        return this.page.disabled;
+        return this.page.disabled || this.navService.wizardStopNavigation || this.navService.wizardDisableStepnav;
     }
 
     public get isCurrent(): boolean {

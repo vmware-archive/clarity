@@ -255,7 +255,7 @@
 
         <clr-wizard-basic></clr-wizard-basic>
 
-        <h3 id="skipping-and-unskipping-steps">Skipping and unskipping steps</h3>
+        <h3 id="skipping-and-unskipping-steps">Skipping and Unskipping Steps</h3>
 
         <p>
             Depending on the flow of the wizard, you may want to skip or add steps in the wizard.
@@ -287,7 +287,7 @@
 
         <clr-wizard-nested-directives></clr-wizard-nested-directives>
 
-        <h3 id="jumping-to-a-step">Programmatically navigating the wizard</h3>
+        <h3 id="jumping-to-a-step">Programmatically Navigating the Wizard</h3>
 
         <p>
             There may be times when you need end-users to jump to a specific step in a wizard. The
@@ -337,7 +337,7 @@
 
         <clr-wizard-titles></clr-wizard-titles>
 
-        <h3 id="custom-page-buttons">Overriding buttons at the page level</h3>
+        <h3 id="custom-page-buttons">Overriding Buttons at the Page Level</h3>
 
         <p>
             As part of creating a wizard, you need to include a set of default buttons of types finish,
@@ -356,7 +356,7 @@
             default buttons defined at the wizard level.
         </p>
 
-        <h3 id="custom-buttons">Custom buttons and page-level button overrides</h3>
+        <h3 id="custom-buttons">Custom Buttons and Page-Level Button Overrides</h3>
 
         <p>
             A <em>page override</em> is defining a button at the page level in place of a button of the same type at the
@@ -446,7 +446,32 @@
 
         <clr-wizard-async-completion></clr-wizard-async-completion>
 
-        <h3 id="wizard-reset">Resetting the wizard</h3>
+        <h3 id="wizard-stop-navigation">Preventing Navigation and Disabling the Stepnav</h3>
+
+        <p>
+            If a wizard concludes with a long-running task or validation, preventing a user from
+            closing the wizard, jumping to a new page in the wizard, or navigating forwards or
+            backwards may be required. The Clarity wizard offers two inputs for disabling navigation.
+        </p>
+        <p>
+            The first is the <code class="clr-code">clrWizardPreventNavigation</code> input on
+            the <code class="clr-code">clr-wizard</code> component. When set to
+            <code class="clr-code">true</code>, this input prevents all stepnav links and buttons
+            from navigating away from the current wizard page.
+        </p>
+        <p>
+            The next input on the <code class="clr-code">clr-wizard</code> component is more specific
+            to the stepnav. When <code class="clr-code">clrWizardDisableStepnav</code> is set to
+            <code class="clr-code">true</code>, it only disables the links in the stepnav on the left
+            of the wizard. Buttons still work.
+        </p>
+        <p>
+            Examples of when and how to use both are demonstrated in the following example.
+        </p>
+
+        <clr-wizard-stop-navigation></clr-wizard-stop-navigation>
+
+        <h3 id="wizard-reset">Resetting the Wizard</h3>
 
         <p>
             While the easiest way to restore a wizard back to its pristine state is to destroy and
@@ -513,7 +538,7 @@
 
         <clr-wizard-force-forward></clr-wizard-force-forward>
 
-        <h3 id="alternative-cancel">Providing an alternative cancel for the wizard</h3>
+        <h3 id="alternative-cancel">Providing an Alternative Cancel for the Wizard</h3>
 
         <p>
             The Clarity wizard allows users to circumvent the default cancel/close action at
@@ -573,7 +598,7 @@
 
         <clr-wizard-no-cancel></clr-wizard-no-cancel>
 
-        <h3 id="alternative-cancel">Providing an alternative next for the wizard</h3>
+        <h3 id="alternative-cancel">Providing an Alternative Next for the Wizard</h3>
 
         <p>
             Just like with <code class="clr-code">clrWizardPreventDefaultCancel</code>,
@@ -639,7 +664,7 @@
             <code class="clr-code">clrWizardClosable</code> input to <code class="clr-code">false</code>.</p>
 
         <clr-wizard-not-closable></clr-wizard-not-closable>
-        <h3 id="clarity-wizard-deep-dive">Clarity wizard deep-dive</h3>
+        <h3 id="clarity-wizard-deep-dive">Clarity Wizard Deep-Dive</h3>
 
         <p>
             The Clarity wizard is a complex component made up of a number of subcomponents. Each
@@ -715,7 +740,7 @@ export class WizardJumpToDemo &#123;
         <h6>Inputs of note</h6>
         <ul class="list">
             <li>
-                <b>clrWizardSize</b> (string) sets the size of the wizard. Acceptable values are
+                <code class="clr-code">clrWizardSize</code> (string) sets the size of the wizard. Acceptable values are
                 <code class="clr-code">md</code>, <code class="clr-code">lg</code>, and
                 <code class="clr-code">xl</code> representing medium, large, and extra-large wizards.
                 <code class="clr-code">xl</code> is default.
@@ -738,6 +763,15 @@ export class WizardJumpToDemo &#123;
                 sets pages to incomplete when they are skipped over because a user navigates
                 backwards using the stepnav. Most useful when validation is occurring on a page-by-page
                 basis when the next button is clicked.
+            </li>
+            <li>
+                When set to true, <code class="clr-code">clrWizardPreventNavigation</code>> (boolean)
+                disables the buttons in the footer, the links in the stepnav to the left, and the close
+                "X" in the top right of the wizard if present.
+            </li>
+            <li>
+                <code class="clr-code">clrWizardDisableStepnav</code>> (boolean) disables the links in
+                the stepnav when set to true.
             </li>
         </ul>
 
@@ -1086,4 +1120,5 @@ export class WizardJumpToDemo &#123;
         </ul>
 
     </article>
+
 </clr-doc-wrapper>

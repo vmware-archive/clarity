@@ -23,14 +23,17 @@ import {Point, PopoverOptions} from "../../popover/common/popover";
     providers: [{provide: CustomFilter, useExisting: DatagridFilter}],
     template: `
         <button #anchor class="datagrid-filter-toggle" (click)="toggle()"
-           [class.datagrid-filter-open]="open" [class.datagrid-filtered]="active"></button>
+            [class.datagrid-filter-open]="open" [class.datagrid-filtered]="active"
+            type="button"></button>
 
         <ng-template [(clrPopover)]="open" [clrPopoverAnchor]="anchor" [clrPopoverAnchorPoint]="anchorPoint"
              [clrPopoverPopoverPoint]="popoverPoint" [clrPopoverOptions]="popoverOptions">
             <div class="datagrid-filter">
                 <!-- FIXME: this whole filter part needs a final design before we can try to have a cleaner DOM -->
                 <div class="datagrid-filter-close-wrapper">
-                    <button type="button" class="close" aria-label="Close" (click)="open = false">
+                    <button type="button" class="close" 
+                        aria-label="Close" (click)="open = false"
+                        type="button">
                         <clr-icon aria-hidden="true" shape="close"></clr-icon>
                     </button>
                 </div>

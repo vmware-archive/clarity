@@ -17,6 +17,7 @@ import { ClrResponsiveNavCodes } from "./clrResponsiveNavCodes";
     selector: "clr-header",
     template: `
         <button
+            type="button"
             *ngIf="isNavLevel1OnPage"
             class="header-hamburger-trigger"
             (click)="toggleNav(responsiveNavCodes.NAV_LEVEL_1)">
@@ -24,6 +25,7 @@ import { ClrResponsiveNavCodes } from "./clrResponsiveNavCodes";
         </button>
         <ng-content></ng-content>
         <button
+            type="button"
             *ngIf="isNavLevel2OnPage"
             class="header-overflow-trigger"
             (click)="toggleNav(responsiveNavCodes.NAV_LEVEL_2)">

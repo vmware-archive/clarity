@@ -44,7 +44,7 @@ let nbCount: number = 0;
 
             <ng-template #columnTitle><ng-content></ng-content></ng-template>
             
-            <button class="datagrid-column-title" *ngIf="sortable" (click)="sort()">
+            <button class="datagrid-column-title" *ngIf="sortable" (click)="sort()" type="button">
                <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
             </button>
             
@@ -53,7 +53,7 @@ let nbCount: number = 0;
             </span>
             
             <div class="datagrid-column-separator">
-                <button #columnHandle class="datagrid-column-handle" tabindex="-1"></button>
+                <button #columnHandle class="datagrid-column-handle" tabindex="-1" type="button"></button>
                 <div #columnHandleTracker class="datagrid-column-handle-tracker"></div>
             </div>        
         </div>

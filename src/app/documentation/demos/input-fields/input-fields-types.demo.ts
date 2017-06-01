@@ -27,7 +27,7 @@ const EXAMPLE = `
             <textarea id="formFields_8" rows="5"></textarea>
         </div>
         <div class="form-group">
-            <label for="formFields_2">Textbox [type="url"]</label>
+            <label for="formFields_9">Textbox [type="url"]</label>
             <input type="url" id="formFields_9" placeholder="https://vmware.github.io/clarity/" size="35">
         </div>
         <div class="form-group">
@@ -35,8 +35,16 @@ const EXAMPLE = `
             <input type="tel" id="formFields_10" size="35">
         </div>
         <div class="form-group">
-            <label for="formFields_11">Textbox [type="url"]</label>
+            <label for="formFields_11">Textbox [type="date"]</label>
             <input type="date" id="formFields_11" size="35">
+        </div>
+        <div class="form-group">
+            <label for="formFields_12">Textbox [type="datetime-local"]</label>
+            <input type="datetime-local" id="formFields_12" size="35">
+        </div>
+        <div class="form-group">
+            <label for="formFields_13">Textbox Readonly [type="text"]</label>
+            <input type="text" id="formFields_13" size="35" readonly value="Readonly Text">
         </div>
     </section>
 </form>

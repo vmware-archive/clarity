@@ -137,23 +137,19 @@ export class WizardAsyncCompletion {
 `;
 
     html: string = `
-<clr-wizard #wizard [(clrWizardOpen)]="open">
-    <clr-wizard-title>Async validation</clr-wizard-title>
+<clr-wizard #wizard [(clrWizardOpen)]="open" (clrWizardCurrentPageChanged)="resetFinalPage()">
+    <clr-wizard-title>Async validation on completion</clr-wizard-title>
 
     <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
     <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
     <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">
+      {{ finished ? "Done" : "Check Form" }}
+    </clr-wizard-button>
 
-    <clr-wizard-page
-        clrWizardPagePreventDefault="true"
-        (clrWizardPageOnCommit)="onCommit()"
-        (clrWizardPageOnCancel)="doCancel()">
-        <ng-template clrPageTitle>Form with async validation</ng-template>
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Form question</ng-template> <!-- mandatory -->
 
-        <div class="spinner" *ngIf="loadingFlag">
-            Loading...
-        </div>
         <clr-alert [clrAlertType]="'alert-info'" [clrAlertClosable]="false">
             <div class="alert-item">
                 This&nbsp;<a
@@ -161,12 +157,7 @@ export class WizardAsyncCompletion {
                     target="_blank">wiki article</a>&nbsp;might help you answer the question.
             </div>
         </clr-alert>
-        <clr-alert *ngIf="errorFlag" [clrAlertType]="'alert-danger'">
-            <div class="alert-item">
-                Your answer is incorrect.
-            </div>
-        </clr-alert>
-        <form #myForm="ngForm" [class.hide]="loadingFlag">
+        <form #myForm="ngForm">
             <section class="form-block">
                 <div class="form-group">
                     <label for="fourtyTwoInput">The answer to life, the universe and everything</label>
@@ -175,8 +166,28 @@ export class WizardAsyncCompletion {
             </section>
         </form>
     </clr-wizard-page>
-    <clr-wizard-page>
-        ...
+    <clr-wizard-page #myFinishPage
+        clrWizardPagePreventDefault="true"
+        (clrWizardPageOnCommit)="onCommit()"
+        (clrWizardPageOnCancel)="doCancel()"
+        (clrWizardPagePrevious)="goBack()">
+        <ng-template clrPageTitle>Async validation on finish</ng-template> <!-- mandatory -->
+
+        <clr-alert *ngIf="errorFlag" [clrAlertType]="'alert-danger'">
+            <div class="alert-item">
+                Your answer is incorrect.
+            </div>
+        </clr-alert>
+
+        <div class="spinner" *ngIf="loadingFlag">
+            Loading...
+        </div>
+
+        <p *ngIf="errorFlag && !loadingFlag">Go back and try again!</p>
+
+        <p *ngIf="showCongrats && !loadingFlag">Congratulations! Now you know the answer to life, the universe and everything!</p>
+
+        <p *ngIf="!checked && !loadingFlag">Click finish to see if you got the answer right.</p>
     </clr-wizard-page>
 </clr-wizard>
 `;

@@ -21,6 +21,7 @@ export class WizardStopNavigation {
     loading: boolean = false;
     errorFlag: boolean = false;
     progress: number = 0;
+    open: boolean = false;
 
     get readyToFinish(): boolean {
         return !this.untouched && !this.loading;

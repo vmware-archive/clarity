@@ -117,8 +117,7 @@
             "ui": 20,
             "core": 20,
             "ng": -1,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": null,
@@ -149,8 +148,7 @@
             "core": -1,
             "ng": 20,
             "dox": 20,
-            "newLayout": true,
-            "isUpdated": true
+            "newLayout": true
         },
         {
             "url": "forms",
@@ -192,7 +190,8 @@
             "ui": 20,
             "core": 20,
             "ng": -1,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "input-fields",
@@ -202,7 +201,8 @@
             "ui": 20,
             "core": -1,
             "ng": 5,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "labels",
@@ -233,7 +233,8 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": null,

@@ -11,6 +11,8 @@ import {PokemonComparator} from "../utils/pokemon-comparator";
 import {PokemonFilter} from "../utils/pokemon-filter";
 import {SortOrder} from "../../../clarity-angular/data/datagrid/interfaces/sort-order";
 
+import "../../../clarity-icons/shapes/essential-shapes";
+
 @Component({
     moduleId: module.id,
     selector: "clr-datagrid-kitchen-sink-demo",

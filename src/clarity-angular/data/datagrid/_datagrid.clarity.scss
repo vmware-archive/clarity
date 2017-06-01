@@ -502,6 +502,11 @@
                         background: none;
                         box-shadow: none;
                     }
+
+                    clr-icon {
+                        vertical-align: middle;
+                        transform: translate3d(0px, -1px, 0);
+                    }
                 }
             }
 

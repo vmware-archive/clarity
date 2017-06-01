@@ -40,7 +40,7 @@ let nbRow: number = 0;
             <clr-dg-cell *ngIf="globalExpandable.hasExpandableRow"
                          class="datagrid-expandable-caret datagrid-fixed-column">
                 <ng-container *ngIf="expand.expandable">
-                    <button (click)="toggleExpand()" *ngIf="!expand.loading">
+                    <button (click)="toggleExpand()" *ngIf="!expand.loading" type="button">
                         <clr-icon shape="caret" [attr.dir]="expand.expanded?'down':'right'"></clr-icon>
                     </button>
                     <div class="spinner spinner-sm" *ngIf="expand.loading"></div>

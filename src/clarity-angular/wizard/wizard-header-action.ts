@@ -16,7 +16,9 @@ let wizardHeaderActionIndex = 0;
 @Component({
     selector: "clr-wizard-header-action",
     template: `
-        <button class="btn clr-wizard-header-action btn-link"
+        <button 
+            type="button"
+            class="btn clr-wizard-header-action btn-link"
             [id]="id"
             [class.disabled]="disabled"
             (click)="click()"

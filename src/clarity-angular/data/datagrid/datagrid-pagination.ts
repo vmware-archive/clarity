@@ -13,23 +13,33 @@ import {Subscription} from "rxjs/Subscription";
     template: `
         <ul class="pagination" *ngIf="page.last > 1">
             <li *ngIf="page.current > 1">
-                <button class="pagination-previous" (click)="page.previous()"></button>
+                <button 
+                    class="pagination-previous" 
+                    (click)="page.previous()"
+                    type="button"></button>
             </li>
             <li *ngIf="page.current > 2">
-                <button (click)="page.current = 1">1</button>
+                <button (click)="page.current = 1" type="button">1</button>
             </li>
             <li *ngIf="page.current > 3">...</li>
             <li *ngFor="let pageNum of middlePages" [class.pagination-current]="pageNum === page.current">
-                <button *ngIf="pageNum !== page.current; else noButton" 
-                    (click)="page.current = pageNum">{{pageNum}}</button>
+                <button 
+                    *ngIf="pageNum !== page.current; else noButton" 
+                    (click)="page.current = pageNum"
+                    type="button">{{pageNum}}</button>
                 <ng-template #noButton>{{pageNum}}</ng-template>
             </li>
             <li *ngIf="page.current < page.last - 2">...</li>
             <li *ngIf="page.current < page.last - 1">
-                <button (click)="page.current = page.last">{{page.last}}</button>
+                <button 
+                    (click)="page.current = page.last"
+                    type="button">{{page.last}}</button>
             </li>
             <li *ngIf="page.current < page.last">
-                <button class="pagination-next" (click)="page.next()"></button>
+                <button 
+                    class="pagination-next" 
+                    (click)="page.next()"
+                    type="button"></button>
             </li>
         </ul>
     `,

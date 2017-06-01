@@ -33,7 +33,9 @@ export const CUSTOM_BUTTON_TYPES: any = {
 @Component({
     selector: "clr-wizard-button",
     template: `
-        <button class="btn clr-wizard-btn"
+        <button
+            type="button"
+            class="btn clr-wizard-btn"
             [class.btn-link]="isCancel"
             [class.clr-wizard-btn--tertiary]="isCancel"
             [class.btn-outline]="isPrevious"

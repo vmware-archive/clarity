@@ -8,11 +8,11 @@
 
 <div class="clr-example">
     <clr-button-group>
-        <clr-button>1</clr-button>
-        <clr-button>2</clr-button>
-        <clr-button>3</clr-button>
-        <clr-button>4</clr-button>
-        <clr-button>5</clr-button>
+        <clr-button name="button1" id="test">1</clr-button>
+        <clr-button type="button">2</clr-button>
+        <clr-button disabled>3</clr-button>
+        <clr-button disabled="false">4</clr-button>
+        <clr-button disabled="123">5</clr-button>
         <clr-button>6</clr-button>
     </clr-button-group>
 </div>
@@ -20,11 +20,11 @@
 <pre>
     <code [clr-code-highlight]="'language-html'">
     &lt;clr-button-group&gt;
-        &lt;clr-button&gt;1&lt;/clr-button&gt;
-        &lt;clr-button&gt;2&lt;/clr-button&gt;
-        &lt;clr-button&gt;3&lt;/clr-button&gt;
-        &lt;clr-button&gt;4&lt;/clr-button&gt;
-        &lt;clr-button&gt;5&lt;/clr-button&gt;
+        &lt;clr-button name=&quot;button1&quot; id=&quot;test&quot;&gt;1&lt;/clr-button&gt;
+        &lt;clr-button type=&quot;button&quot;&gt;2&lt;/clr-button&gt;
+        &lt;clr-button disabled&gt;3&lt;/clr-button&gt;
+        &lt;clr-button disabled=&quot;false&quot;&gt;4&lt;/clr-button&gt;
+        &lt;clr-button disabled=&quot;123&quot;&gt;5&lt;/clr-button&gt;
         &lt;clr-button&gt;6&lt;/clr-button&gt;
     &lt;/clr-button-group&gt;
     </code>

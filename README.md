@@ -34,7 +34,6 @@ If you already have an Angular application, you can follow the installation step
     ```html
     <link rel="stylesheet" href="path/to/node_modules/clarity-icons/clarity-icons.min.css">
 
-    <script src="path/to/node_modules/mutationobserver-shim/dist/mutationobserver.min.js"></script>
     <script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
     <script src="path/to/node_modules/clarity-icons/clarity-icons.min.js"></script>
     ```

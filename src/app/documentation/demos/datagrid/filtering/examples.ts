@@ -46,7 +46,7 @@ import {Filter, DatagridFilter} from "clarity-angular";
 })
 class MyFilter implements Filter<User> {
     constructor(private filterContainer: DatagridFilter) {
-        filterContainer.filter = this;
+        filterContainer.setFilter(this);
     }
     changes = new Subject<any>();
     isActive(): boolean { /* ... */ }

@@ -65,10 +65,6 @@
                 overflow: hidden; //overflow-y enabled in .sidenav-content
             }
         }
-
-        //chrome bug: http://stackoverflow.com/a/15203880/3538394
-        //needed for position: fixed on the header, subnav and sidenav
-        -webkit-transform: translateZ(0);
     }
 
     @media print {

@@ -335,15 +335,16 @@
             "dox": 20
         },
         {
-            "url": null,
-            "text": "Signpost",
+            "url": "signposts",
+            "text": "Signposts",
             "type": "component",
             "ux": 20,
-            "ui": 5,
+            "ui": 20,
             "core": -1,
-            "ng": 5,
-            "dox": 5,
-            "comments": ""
+            "ng": 20,
+            "dox": 20,
+            "comments": "",
+            "newLayout": true
         },
         {
             "url": "spinners",

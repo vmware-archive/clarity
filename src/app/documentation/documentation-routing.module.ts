@@ -55,6 +55,7 @@ import {DatagridPlaceholderDemo} from "./demos/datagrid/placeholder/placeholder"
 import {DatagridExpandableRowsDemo} from "./demos/datagrid/expandable-rows/expandable-rows";
 import {DatagridHideShowColumnsDemo} from "./demos/datagrid/hide-show-columns/hide-show-columns";
 import {DatagridFullDemo} from "./demos/datagrid/full/full";
+import {SignpostDemo} from "./demos/signposts/signpost.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -396,6 +397,14 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-sidenav",
                     browserTitle: "Sidenav"
+                }
+            },
+            {
+                path: "signposts",
+                component: SignpostDemo,
+                data: {
+                    bodyClass: "page-signposts",
+                    browserTitle: "Signposts"
                 }
             },
             {

@@ -1,0 +1,22 @@
+<!-- NOTE: There are issues with overflow related to .main-container, .content-container and .content-area (I think) -->
+<form>
+    <section class="form-block">
+        <label>Signpost in a form grid</label>
+        <div class="form-group row">
+            <div class="col-sm-2 col-xs-12">
+                <label for="signpost_form">Input field</label>
+            </div>
+            <div class="col-sm-5 col-xs-6">
+                <input class="form-control" style="width: 100%" type="text" id="signpost_form"
+                       placeholder="Enter value here">
+            </div>
+            <div class="col-sm-5 col-xs-6">
+                <clr-signpost [clrSignpostPosition]="'bottom-middle'">
+                    <clr-signpost-content *clrIfOpen="openState">
+                        <p>Only write nice things here.</p>
+                    </clr-signpost-content>
+                </clr-signpost>
+            </div>
+        </div>
+    </section>
+</form>

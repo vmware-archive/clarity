@@ -45,6 +45,7 @@ import {TreeDemoModule} from "./demos/tree-view/tree-view.demo.module";
 import {TypographyDemoModule} from "./demos/typography/typography.demo.module";
 import {WizardDemoModule} from "./demos/wizard/wizard.demo.module";
 import {WizardDeprecatedDemoModule} from "./demos/wizard-deprecated/wizard.demo.module";
+import {SignpostDemoModule} from "./demos/signposts/signpost.demo.module";
 
 @NgModule({
     imports: [
@@ -77,6 +78,7 @@ import {WizardDeprecatedDemoModule} from "./demos/wizard-deprecated/wizard.demo.
         ProgressBarsDemoModule,
         SelectsDemoModule,
         SidenavDemoModule,
+        SignpostDemoModule,
         SpinnersDemoModule,
         StackViewDemoModule,
         TablesDemoModule,

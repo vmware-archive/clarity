@@ -1,0 +1,14 @@
+{
+    "name": "vmw/clarity",
+    "description": "Clarity Design System: UX guidelines, HTML/CSS framework, and Angular 2 components working together to craft exceptional experiences.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["angular", "angular2", "javascript", "html", "css", "design"],
+    "homepage": "https://vmware.github.io/clarity/",
+    "support": {
+        "issues": "https://github.com/vmware/clarity/issues",
+        "wiki": "https://github.com/vmware/clarity/wiki",
+        "source": "https://github.com/vmware/clarity",
+        "docs": "https://vmware.github.io/clarity/documentation"
+    }
+}

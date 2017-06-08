@@ -190,8 +190,7 @@
             "ui": 20,
             "core": 20,
             "ng": -1,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "input-fields",
@@ -201,8 +200,7 @@
             "ui": 20,
             "core": -1,
             "ng": 5,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "labels",
@@ -233,8 +231,7 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": null,
@@ -449,8 +446,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "wizard-deprecated",

@@ -192,9 +192,9 @@ export class HideableColumnService {
      * @returns HideableColumn
      *
      */
-    public getColumnById( id: string ): DatagridHideableColumn {
+    public getColumnById( id: string ): undefined | DatagridHideableColumn {
         if ( id ) {
-            return this._columnList.find(column => column.id === id);
+            return this._columnList.find(column => column && column.id === id);
         }
         return;
     }

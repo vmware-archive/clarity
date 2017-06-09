@@ -172,5 +172,24 @@ export default function (): void {
             // Test that the flag is correct.
             expect(unFlaggedColumns[2].lastVisibleColumn).toBe(false);
         });
+
+        it("looks up columns by id", function() {
+            // test that it accounts for undefined
+            let nonHideableColumn: DatagridHideableColumn;
+            let visibleTestColumns: DatagridHideableColumn[] = [
+                new DatagridHideableColumn(null, "dg-col-1", false),
+                nonHideableColumn,
+                new DatagridHideableColumn(null, "dg-col-2", false),
+                new DatagridHideableColumn(null, "dg-col-3", false)
+            ];
+
+            // Setup
+            columnService.updateColumnList(visibleTestColumns);
+            // Test that we can find something that is a hideable column
+            expect(visibleTestColumns[0]).toEqual(columnService.getColumnById("dg-col-1"));
+
+            // Test that we gracefully do not find something that is not a hideable column and no errors.
+            expect(columnService.getColumnById("")).toBeUndefined();
+        });
     });
 };

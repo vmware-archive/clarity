@@ -339,7 +339,7 @@ export default function(): void {
             expect(testClass).toBeDefined();
 
             expect(signpost.anchorPoint).toBe(Point.LEFT_BOTTOM);
-            expect(signpost.popoverPoint).toBe(Point.RIGHT_BOTTOM);
+            expect(signpost.popoverPoint).toBe(Point.RIGHT_TOP);
             expect(signpost.signpostOptions.offsetY).toBe(-18);
             expect(signpost.signpostOptions.offsetX).toBe(-14);
         });
@@ -387,7 +387,7 @@ export default function(): void {
             expect(testClass).toBeDefined();
 
             expect(signpost.anchorPoint).toBe(Point.LEFT_TOP);
-            expect(signpost.popoverPoint).toBe(Point.RIGHT_TOP);
+            expect(signpost.popoverPoint).toBe(Point.RIGHT_BOTTOM);
             expect(signpost.signpostOptions.offsetY).toBe(18);
             expect(signpost.signpostOptions.offsetX).toBe(-14);
         });

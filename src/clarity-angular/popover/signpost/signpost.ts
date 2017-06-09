@@ -272,7 +272,7 @@ export class Signpost {
                 break;
             case ("left-top"):
                 this.anchorPoint = Point.LEFT_TOP;
-                this.popoverPoint = Point.RIGHT_TOP;
+                this.popoverPoint = Point.RIGHT_BOTTOM;
                 this.signpostOptions.offsetY = 18;
                 this.signpostOptions.offsetX = -14;
                 break;
@@ -284,7 +284,7 @@ export class Signpost {
                 break;
             case ("left-bottom"):
                 this.anchorPoint = Point.LEFT_BOTTOM;
-                this.popoverPoint = Point.RIGHT_BOTTOM;
+                this.popoverPoint = Point.RIGHT_TOP;
                 this.signpostOptions.offsetY = -18;
                 this.signpostOptions.offsetX = -14;
                 break;

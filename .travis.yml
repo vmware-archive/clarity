@@ -38,7 +38,8 @@ before_install:
   - export DISPLAY=:99.0
 
 before_script:
-  - npm install -g gemini@4.19.3
+  - npm install -g gemini
+  - npm install -g html-reporter
   - npm install -g selenium-standalone
   - selenium-standalone install
   - xvfb-run --server-args="-screen 0, 1600x2400x24" selenium-standalone start > selenium.txt &

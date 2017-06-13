@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, Input, Output, EventEmitter, OnDestroy} from "@angular/core";
+import {Component, Input, Output, EventEmitter, OnDestroy, OnInit} from "@angular/core";
 
 import {Page} from "./providers/page";
 import {Subscription} from "rxjs/Subscription";
@@ -46,7 +46,7 @@ import {Subscription} from "rxjs/Subscription";
     // IE10 comes to pollute even our components declaration
     styles: [`:host { display: block; }`]
 })
-export class DatagridPagination implements OnDestroy {
+export class DatagridPagination implements OnDestroy, OnInit {
     constructor(public page: Page) {
         /*
          * Default page size is 10.
@@ -55,7 +55,14 @@ export class DatagridPagination implements OnDestroy {
          */
         page.size = 10;
 
-        this._pageSubscription = page.change.subscribe(current => this.currentChanged.emit(current));
+    }
+
+    /**********
+     * Subscription to the Page service for page changes.
+     * Note: this only emits after the datagrid is initialized/stabalized and the page changes.
+     */
+    ngOnInit() {
+        this._pageSubscription = this.page.change.subscribe(current => this.currentChanged.emit(current));
     }
 
     /**

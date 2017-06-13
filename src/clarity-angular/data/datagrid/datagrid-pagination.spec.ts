@@ -17,6 +17,7 @@ export default function(): void {
             beforeEach(function() {
                 pageService = new Page();
                 component = new DatagridPagination(pageService);
+                component.ngOnInit(); // For the subscription that will get destroyed.
             });
 
             afterEach(function() {

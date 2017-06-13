@@ -14,7 +14,7 @@
         // spinner-lg is the default
         position: relative;
         display: inline-block;
-        @include min-height(rem(72/16));
+        @include min-height($clr_baselineRem_3);
         animation: spin 1s linear infinite;
         margin: 0;
         padding: 0;
@@ -23,11 +23,12 @@
         overflow: hidden;
 
         &.spinner-md {
-            @include min-height(rem(36/$clr-rem-denominator));
+            @include min-height($clr_baselineRem_1_5);
         }
 
-        &.spinner-inline, &.spinner-sm {
-            @include min-height(rem(18/$clr-rem-denominator));
+        &.spinner-inline,
+        &.spinner-sm {
+            @include min-height($clr_baselineRem_0_75);
         }
 
         &.spinner-inline {

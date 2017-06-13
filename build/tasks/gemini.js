@@ -54,7 +54,7 @@ gulp.task('css:test', ["build"], function() {
 
 
     var spawn = require('child_process').spawn;
-    var cssTest = spawn('gemini', ['test', testPath, '--reporter', 'flat'], { stdio: 'inherit' });
+    var cssTest = spawn('gemini', ['test', testPath, '--reporter', 'flat', '--reporter', 'html'], { stdio: 'inherit' });
 
     cssTest.on('exit', function(code) {
         process.exit(code);

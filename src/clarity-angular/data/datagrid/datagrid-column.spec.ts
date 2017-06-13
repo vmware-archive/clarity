@@ -121,6 +121,23 @@ export default function (): void {
                 component.sort();
                 expect(sortService.comparator).toEqual(new DatagridPropertyComparator("test"));
             });
+
+            it("sorts based on a property name if sortyBy is undefined", function () {
+                component.field = "test";
+                component.sortBy = undefined;
+                expect(sortService.comparator).toBeUndefined();
+                component.sort();
+                expect(sortService.comparator).toEqual(new DatagridPropertyComparator("test"));
+            });
+
+            it("sorts based on a property name if sortyBy becomes undefined", function () {
+                component.sortBy = comparator;
+                component.field = "test";
+                component.sortBy = undefined;
+                expect(sortService.comparator).toBeUndefined();
+                component.sort();
+                expect(sortService.comparator).toEqual(new DatagridPropertyComparator("test"));
+            });
         });
 
         describe("Template API", function () {

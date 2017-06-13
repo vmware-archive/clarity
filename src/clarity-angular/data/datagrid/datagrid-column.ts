@@ -13,7 +13,7 @@ import {
     ElementRef,
     ViewChild
 } from "@angular/core";
-import {Subscription} from "rxjs";
+import { Subscription } from "rxjs";
 
 import { DatagridPropertyComparator } from "./built-in/comparators/datagrid-property-comparator";
 import { DatagridPropertyStringFilter } from "./built-in/filters/datagrid-property-string-filter";
@@ -70,12 +70,12 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
         super(filters);
         this._sortSubscription = _sort.change.subscribe(sort => {
             // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
-            if (this.sortOrder !== SortOrder.Unsorted && sort.comparator !== this.sortBy) {
+            if (this.sortOrder !== SortOrder.Unsorted && sort.comparator !== this._sortBy) {
                 this._sortOrder = SortOrder.Unsorted;
                 this.sortOrderChange.emit(this._sortOrder);
             }
             // deprecated: to be removed - START
-            if (this.sorted && sort.comparator !== this.sortBy) {
+            if (this.sorted && sort.comparator !== this._sortBy) {
                 this._sorted = false;
                 this.sortedChange.emit(false);
             }
@@ -146,8 +146,8 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
             if (!this.customFilter) {
                 this.setFilter(new DatagridStringFilterImpl(new DatagridPropertyStringFilter(field)));
             }
-            if (!this.sortBy) {
-                this.sortBy = new DatagridPropertyComparator(field);
+            if (!this._sortBy) {
+                this._sortBy = new DatagridPropertyComparator(field);
             }
         }
     }
@@ -155,13 +155,31 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
     /**
      * Comparator to use when sorting the column
      */
-    @Input("clrDgSortBy") public sortBy: Comparator<any>;
+
+    private _sortBy: Comparator<any>;
+
+    public get sortBy() {
+        return this._sortBy;
+    }
+
+    @Input("clrDgSortBy")
+    public set sortBy(comparator: Comparator<any>) {
+        if (comparator) {
+            this._sortBy = comparator;
+        } else {
+            if (this._field) {
+                this._sortBy = new DatagridPropertyComparator(this._field);
+            } else {
+                delete this._sortBy;
+            }
+        }
+    }
 
     /**
      * Indicates if the column is sortable
      */
     public get sortable(): boolean {
-        return !!this.sortBy;
+        return !!this._sortBy;
     }
 
     // deprecated: to be removed - START
@@ -240,7 +258,7 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
             return;
         }
 
-        this._sort.toggle(this.sortBy, reverse);
+        this._sort.toggle(this._sortBy, reverse);
 
         // setting the private variable to not retrigger the setter logic
         this._sortOrder = this._sort.reverse ? SortOrder.Desc : SortOrder.Asc;

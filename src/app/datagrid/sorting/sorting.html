@@ -34,27 +34,38 @@
     the <code class="clr-code">Comparator</code> interface provided by Clarity.
 </p>
 <div class="alert alert-info">
-    <div class="alert-item">
-        <span class="alert-text">
-            Why use an object instead of the function directly?
-        </span>
-    </div>
-    <div class="alert-item">
-        <span>
-            Using an object implementing an interface allows strong type-checking, which is safer
-            for your application. If your sorting function does not comply with our API, you will
-            get a clear error during typescript compilation, instead of an obscure one during
-            runtime.
-        </span>
-    </div>
-    <div class="alert-item">
-        <span>
-            Admittedly, we could achieve strong typing by exporting a function signature instead
-            of a whole interface, but not only do interfaces leave room for future features without
-            forcing breaking changes, they also encourage you to write your business logic
-            outside of the controller, naturally creating pure Typescript or Javascript "logic"
-            classes, which are far more reusable.
-        </span>
+    <div class="alert-items">
+        <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+            </div>
+            <span class="alert-text">
+                Why use an object instead of the function directly?
+            </span>
+        </div>
+        <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+            </div>
+            <span>
+                Using an object implementing an interface allows strong type-checking, which is safer
+                for your application. If your sorting function does not comply with our API, you will
+                get a clear error during typescript compilation, instead of an obscure one during
+                runtime.
+            </span>
+        </div>
+        <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+            </div>
+            <span>
+                Admittedly, we could achieve strong typing by exporting a function signature instead
+                of a whole interface, but not only do interfaces leave room for future features without
+                forcing breaking changes, they also encourage you to write your business logic
+                outside of the controller, naturally creating pure Typescript or Javascript "logic"
+                classes, which are far more reusable.
+            </span>
+        </div>
     </div>
 </div>
 <p>

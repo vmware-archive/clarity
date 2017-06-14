@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -14,30 +14,30 @@
         <div class="content-container">
             <div class="content-area">
                 <div class="alert alert-danger">
+                    <div class="alert-items">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                        </div>
+                        <div class="alert-item static">
+                            <span class="alert-text">
+                                This is an alert with 36px height.
+                            </span>
+                        </div>
+                    </div>
                     <button type="button" class="close" aria-label="Close">
                         <clr-icon aria-hidden="true" shape="close"></clr-icon>
                     </button>
-                    <div class="alert-item">
-                        <span class="alert-text">
-                            This is an alert with 36px height.
-                        </span>
-                    </div>
                 </div>
                 <div class="alert alert-success alert-sm">
-                    <div class="alert-item">
-                        <span class="alert-text">
-                            This is an alert with 24px height.
-                        </span>
-                    </div>
-                    <button type="button" class="close" aria-label="Close">
-                        <clr-icon aria-hidden="true" shape="close"></clr-icon>
-                    </button>
-                </div>
-                <div class="alert alert-warning alert-sm">
-                    <div class="alert-item">
-                        <span class="alert-text">
-                            This is a small alert with an old close button.
-                        </span>
+                    <div class="alert-items">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+                        </div>
+                        <div class="alert-item static">
+                            <span class="alert-text">
+                                This is an alert with 24px height.
+                            </span>
+                        </div>
                     </div>
                     <button type="button" class="close" aria-label="Close">
                         <clr-icon aria-hidden="true" shape="close"></clr-icon>
@@ -50,21 +50,34 @@
 <pre>
     <code clr-code-highlight="language-html">
     &lt;div class=&quot;alert alert-danger&quot;&gt;
-        &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;&gt;
-            &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
-        &lt;/button&gt;
-        &lt;div class=&quot;alert-item&quot;&gt;
-            &lt;span&gt;
-                This is an alert with 36px height.
-            &lt;/span&gt;
+        &lt;div class=&quot;alert-items&quot;&gt;
+            &lt;div class=&quot;alert-icon-wrapper&quot;&gt;
+                &lt;clr-icon class=&quot;alert-icon&quot; shape=&quot;exclamation-circle&quot;&gt;&lt;/clr-icon&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;alert-item&quot;&gt;
+                &lt;span class=&quot;alert-text&quot;&gt;
+                    This is an alert with 36px height.
+                &lt;/span&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
+        &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;&gt;
+            &lt;clr-icon aria-hidden=&quot;true&quot; shape=&quot;close&quot;&gt;&lt;/clr-icon&gt;
+        &lt;/button&gt;
     &lt;/div&gt;
     &lt;div class=&quot;alert alert-success alert-sm&quot;&gt;
-        &lt;div class=&quot;alert-item&quot;&gt;
-            &lt;span&gt;
-                This is an alert with 24px height.
-            &lt;/span&gt;
+        &lt;div class=&quot;alert-items&quot;&gt;
+            &lt;div class=&quot;alert-icon-wrapper&quot;&gt;
+                &lt;clr-icon class=&quot;alert-icon&quot; shape=&quot;check-circle&quot;&gt;&lt;/clr-icon&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;alert-item&quot;&gt;
+                &lt;span class=&quot;alert-text&quot;&gt;
+                    This is an alert with 24px height.
+                &lt;/span&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
+        &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;&gt;
+            &lt;clr-icon aria-hidden=&quot;true&quot; shape=&quot;close&quot;&gt;&lt;/clr-icon&gt;
+        &lt;/button&gt;
     &lt;/div&gt;
     </code>
 </pre>

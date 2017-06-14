@@ -1058,7 +1058,7 @@ export default function(): void {
                     myInnerComponent = pageFour.query(By.directive(Alert));
 
                     expect(myInnerComponent).toBeDefined("inner alert component should exist");
-                    expect(myInnerComponent.nativeElement.textContent.trim()).toBe(
+                    expect(myInnerComponent.nativeElement.textContent.trim()).toContain(
                         "i believe the answer is 6", "content should project through to inner components");
                 });
 

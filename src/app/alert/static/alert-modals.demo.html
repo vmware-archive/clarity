@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -10,10 +10,15 @@
             <div class="modal-dialog" role="dialog" aria-hidden="true">
                 <div class="modal-content">
                     <div class="alert alert-danger">
-                        <div class="alert-item">
-                            <span class="alert-text">
-                                Alert in a modal.
-                            </span>
+                        <div class="alert-items">
+                            <div class="alert-icon-wrapper">
+                                <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                            </div>
+                            <div class="alert-item static">
+                                <span class="alert-text">
+                                    Alert in a modal.
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-header">
@@ -41,15 +46,20 @@
         &lt;div class=&quot;modal-dialog&quot; role=&quot;dialog&quot; aria-hidden=&quot;true&quot;&gt;
             &lt;div class=&quot;modal-content&quot;&gt;
                 &lt;div class=&quot;alert alert-danger&quot;&gt;
-                    &lt;div class=&quot;alert-item&quot;&gt;
-                        &lt;span class=&quot;alert-text&quot;&gt;
-                            Alert in a modal.
-                        &lt;/span&gt;
+                    &lt;div class=&quot;alert-items&quot;&gt;
+                        &lt;div class=&quot;alert-icon-wrapper&quot;&gt;
+                            &lt;clr-icon class=&quot;alert-icon&quot; shape=&quot;exclamation-circle&quot;&gt;&lt;/clr-icon&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;alert-item&quot;&gt;
+                            &lt;span class=&quot;alert-text&quot;&gt;
+                                Alert in a modal.
+                            &lt;/span&gt;
+                        &lt;/div&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
                 &lt;div class=&quot;modal-header&quot;&gt;
                     &lt;button aria-label=&quot;Close&quot; class=&quot;close&quot; type=&quot;button&quot;&gt;
-                        &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
+                        &lt;clr-icon aria-hidden=&quot;true&quot; shape=&quot;close&quot;&gt;&lt;/clr-icon&gt;
                     &lt;/button&gt;
                     &lt;h3 class=&quot;modal-title&quot;&gt;I have a nice title&lt;/h3&gt;
                 &lt;/div&gt;

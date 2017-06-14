@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,7 +10,6 @@ import {ROUTING} from "./alert.demo.routing";
 import {AlertsDemo} from "./alert.demo";
 import {AlertStaticDemo} from "./static/alert-static";
 import {AlertStylesDemo} from "./static/alert-styles";
-import {AlertStylesOldDemo} from "./static/alert-styles-old";
 import {AlertContentAreaDemo} from "./static/alert-content-area";
 import {AlertCardsDemo} from "./static/alert-cards";
 import {AlertModalsDemo} from "./static/alert-modals";
@@ -33,7 +32,6 @@ import {AlertAngularCloseEventDemo} from "./angular/alert-angular-close-event";
         AlertsDemo,
         AlertStaticDemo,
         AlertStylesDemo,
-        AlertStylesOldDemo,
         AlertContentAreaDemo,
         AlertCardsDemo,
         AlertModalsDemo,
@@ -51,7 +49,6 @@ import {AlertAngularCloseEventDemo} from "./angular/alert-angular-close-event";
         AlertsDemo,
         AlertStaticDemo,
         AlertStylesDemo,
-        AlertStylesOldDemo,
         AlertContentAreaDemo,
         AlertCardsDemo,
         AlertModalsDemo,

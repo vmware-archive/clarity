@@ -14,10 +14,23 @@ let latestId = 0;
 @Component({
     selector: "clr-checkbox",
     template: `
-        <input type="checkbox" [id]="id" [name]="name" [checked]="checked" 
+        <!--
+            FIXME: We are not subscribed to the change event but the click event here.
+            The reason for that is because checkboxes behave differently on IE & Edge.
+            https://stackoverflow.com/a/19447939
+            
+            To fix that, we listen to every click event and then toggle the checkbox manually
+            to make it behave the same way across the browsers we support.
+            
+            This works for cases when users toggle the checkbox using the keyboard too:
+            https://stackoverflow.com/questions/27878940/spacebar-triggering-click-event-on-checkbox
+        -->
+        <input type="checkbox" [id]="id" [name]="name" [checked]="checked"
                [indeterminate]="indeterminate" [disabled]="disabled"
-               (change)="toggle()" (blur)="touch()">
-        <label [attr.for]="id"><ng-content></ng-content></label>
+               (blur)="touch()" (click)="checkIndeterminateState()">
+        <label [attr.for]="id">
+            <ng-content></ng-content>
+        </label>
     `,
     host: {
         "[class.checkbox]": "!inline",
@@ -55,38 +68,50 @@ export class Checkbox implements ControlValueAccessor {
     // Support for inline checkboxes, adds the necessary class to the host
     @Input("clrInline") public inline = false;
 
-    @Input("clrChecked")
-    _checked = false;
+    private _checked = false;
 
     public get checked() {
         return this._checked;
     }
 
+    @Input("clrChecked")
     public set checked(value: boolean) {
         if (value !== this._checked) {
-            this.indeterminate = false;
-            this._checked = value;
-            this.change.emit(this.checked);
+            if (this._indeterminate) {
+                this.setIndeterminate(false);
+            }
+            this.setChecked(value);
         }
     }
 
     private _indeterminate: boolean = false;
 
-    public get indeterminate () {
+    public get indeterminate() {
         return this._indeterminate;
     }
 
     @Input("clrIndeterminate")
     public set indeterminate(value: boolean) {
         if (this._indeterminate !== value) {
-            this.checked = false;
-            this._indeterminate = value;
-            this.indeterminateChange.emit(this._indeterminate);
+            if (this._checked) {
+                this.setChecked(false);
+            }
+            this.setIndeterminate(value);
         }
     }
 
     @Output("clrIndeterminateChange")
     public indeterminateChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
+
+    private setIndeterminate(value: boolean) {
+        this._indeterminate = value;
+        this.indeterminateChange.emit(this._indeterminate);
+    }
+
+    private setChecked(value: boolean) {
+        this._checked = value;
+        this.change.emit(this._checked);
+    }
 
     @Output("clrCheckedChange")
     public change = new EventEmitter<boolean>(false);
@@ -109,17 +134,27 @@ export class Checkbox implements ControlValueAccessor {
      * These callbacks will be given to us through the ControlValueAccessor interface,
      * and we need to call them when the user interacts with the checkbox.
      */
-    private onChangeCallback = (_: any) => {};
+    private onChangeCallback = (_: any) => {
+    }
+
     registerOnChange(onChange: any): void {
         this.onChangeCallback = onChange;
     }
 
-    private onTouchedCallback = () => {};
+    private onTouchedCallback = () => {
+    }
+
     registerOnTouched(onTouched: any): void {
         this.onTouchedCallback = onTouched;
     }
 
     public touch() {
         this.onTouchedCallback();
+    }
+
+    checkIndeterminateState(): void {
+        if (!this.disabled) {
+            this.toggle();
+        }
     }
 }

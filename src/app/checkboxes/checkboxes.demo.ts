@@ -28,4 +28,6 @@ export class CheckboxesDemo {
     onToggleIndeterminateState() {
         this.indeterminateState = !this.indeterminateState;
     }
+
+    active: boolean = false;
 }

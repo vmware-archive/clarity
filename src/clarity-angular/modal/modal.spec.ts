@@ -10,10 +10,13 @@ import {
     fakeAsync,
     tick
 } from "@angular/core/testing";
+import { By } from "@angular/platform-browser";
 import { Component, ViewChild } from "@angular/core";
 import { Modal } from "./modal";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { ClrModalModule } from "./modal.module";
+import { ClrFocusTrapModule } from "../utils/focus-trap/focus-trap.module";
+import { FocusTrapDirective } from "../utils/focus-trap/focus-trap.directive";
 
 @Component({
     template: `
@@ -48,7 +51,8 @@ describe("Modal", () => {
         TestBed.configureTestingModule({
             imports: [
                 ClrModalModule,
-                NoopAnimationsModule
+                NoopAnimationsModule,
+                ClrFocusTrapModule
             ],
             declarations: [TestComponent]
         });
@@ -178,4 +182,11 @@ describe("Modal", () => {
         backdrop.click();
         flushAndExpectOpen(fixture, false);
     }));
+
+    it("traps user focus", () => {
+        fixture.detectChanges();
+        const focusable = fixture.debugElement.query(By.directive(FocusTrapDirective));
+
+        expect(focusable).toBeDefined();
+    });
 });

@@ -17,6 +17,7 @@ import {ModalAnimationDemo} from "./modal-animation";
 import {ModalBackdropDemo} from "./modal-backdrop";
 import {ModalSizesDemo} from "./modal-sizes";
 import {ModalMaxHeightDemo} from "./modal-max-height";
+import {ModalTrapDemo} from "./modal-trap";
 
 const ROUTES: Routes = [
     {
@@ -33,7 +34,8 @@ const ROUTES: Routes = [
             { path: "animation", component: ModalAnimationDemo },
             { path: "backdrop", component: ModalBackdropDemo },
             { path: "sizes", component: ModalSizesDemo },
-            { path: "max-height", component: ModalMaxHeightDemo }
+            { path: "max-height", component: ModalMaxHeightDemo },
+            { path: "focus-trap", component: ModalTrapDemo}
         ]
     }
 ];

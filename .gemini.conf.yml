@@ -6,6 +6,12 @@ browsers:
     desiredCapabilities:
       browserName: chrome
 
+system:
+  plugins:
+    html-reporter:
+      enabled: true
+
+
 #compositeImage: true
 #sessionsPerBrowser: 2
 tolerance: 3.5

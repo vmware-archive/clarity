@@ -59,8 +59,8 @@ $toggle-transition-animation: ease-in;
             width: $toggle-switch-base-width;
             border: 2px solid;
             border-radius: $clr_baselineRem_0_375;
-            border-color: clr-getColor(dark-midtone);
-            background-color: clr-getColor(dark-midtone);
+            border-color: $clr-gray;
+            background-color: $clr-gray;
             top: ($toggle-height - $toggle-switch-base-height) / 2;
             right: -1 * ($toggle-switch-base-width + $toggle-switch-base-left-spacing);
             transition: $toggle-transition-time $toggle-transition-animation;
@@ -105,19 +105,39 @@ $toggle-transition-animation: ease-in;
             }
 
             input[type="checkbox"]:checked + label::before {
-                border-color: clr-getColor(dark-midtone);
-                background-color: clr-getColor(dark-midtone);
+                border-color: $clr-light-midtone-gray;
+                background-color: $clr-light-midtone-gray;
             }
         }
 
         input[type="checkbox"]:disabled + label {
-            opacity: 0.4;
+            //opacity: 0.4;
             cursor: not-allowed;
+
+            &::before {
+                background-color: $clr-white;
+                border-color: $clr-light-midtone-gray;
+            }
+
+            &::after {
+                background-color: $clr-white;
+                border: 2px solid $clr-light-midtone-gray;
+                width: $toggle-switch-base-height;
+                height: $toggle-switch-base-height;
+                top: 3px;
+            }
         }
 
         input[type="checkbox"]:checked:disabled + label::before {
-            border-color: clr-getColor(dark-midtone);
-            background-color: clr-getColor(dark-midtone);
+            border-color: $clr-light-midtone-gray;
+            background-color: $clr-light-midtone-gray;
+        }
+
+        input[type="checkbox"]:checked:disabled + label::after {
+            border-color: $clr-white;
+            width: $toggle-switch-height;
+            height: $toggle-switch-height;
+            top: 5px;
         }
     }
 }

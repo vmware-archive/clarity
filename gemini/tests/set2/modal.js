@@ -23,6 +23,16 @@ gemini.suite('modal', (child) => {
             .capture('default');
     });
 
+    gemini.suite('max-height', (child) => {
+        child.setUrl('/modal/max-height')
+            .before((actions, find) => {
+                actions.waitForElementToShow('.clr-example', WAIT_TIME);
+                actions.wait(WAIT_LOAD_TIME);
+            })
+            .setCaptureElements('.content-area')
+            .capture('default');
+    });
+
     gemini.suite('backdrop', (child) => {
         child.setUrl('/modal/backdrop')
             .before((actions, find) => {

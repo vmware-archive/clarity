@@ -16,6 +16,7 @@ import {ModalAngularStaticBackdropDemo} from "./modal-angular-static-backdrop";
 import {ModalAnimationDemo} from "./modal-animation";
 import {ModalBackdropDemo} from "./modal-backdrop";
 import {ModalSizesDemo} from "./modal-sizes";
+import {ModalMaxHeightDemo} from "./modal-max-height";
 
 const ROUTES: Routes = [
     {
@@ -31,7 +32,8 @@ const ROUTES: Routes = [
             { path: "not-closable", component: ModalAngularNotClosableDemo },
             { path: "animation", component: ModalAnimationDemo },
             { path: "backdrop", component: ModalBackdropDemo },
-            { path: "sizes", component: ModalSizesDemo }
+            { path: "sizes", component: ModalSizesDemo },
+            { path: "max-height", component: ModalMaxHeightDemo }
         ]
     }
 ];

@@ -7,12 +7,14 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ClrIconModule } from "../icon/icon.module";
+import { ClrFocusTrapModule } from "../utils/focus-trap/focus-trap.module";
 import { MODAL_DIRECTIVES } from "./index";
 
 @NgModule({
     imports: [
         CommonModule,
-        ClrIconModule
+        ClrIconModule,
+        ClrFocusTrapModule
     ],
     declarations: [
         MODAL_DIRECTIVES

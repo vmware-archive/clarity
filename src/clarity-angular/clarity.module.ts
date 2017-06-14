@@ -10,6 +10,7 @@ import {ClrEmphasisModule} from "./emphasis/emphasis.module";
 import {ClrIconModule} from "./icon/icon.module";
 import {ClrModalModule} from "./modal/modal.module";
 import {ClrLoadingModule} from "./utils/loading/loading.module";
+import { ClrFocusTrapModule } from "./utils/focus-trap/focus-trap.module";
 import {ClrCodeModule} from "./code/code.module";
 import {ClrFormsModule} from "./forms/forms.module";
 import {ClrLayoutModule} from "./layout/layout.module";
@@ -27,6 +28,7 @@ import {ClrConditionalModule} from "./utils/conditional/conditional.module";
         ClrLoadingModule,
         ClrIfExpandModule,
         ClrConditionalModule,
+        ClrFocusTrapModule,
         ClrButtonModule,
         ClrCodeModule,
         ClrFormsModule,

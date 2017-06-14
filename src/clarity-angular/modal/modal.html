@@ -5,7 +5,7 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<div class="modal" *ngIf="_open">
+<div clrFocusTrap class="modal" *ngIf="_open">
     <!--fixme: revisit when ngClass works with exit animation-->
     <div [@fadeDown]="skipAnimation" (@fadeDown.done)="fadeDone($event)"
          class="modal-dialog"

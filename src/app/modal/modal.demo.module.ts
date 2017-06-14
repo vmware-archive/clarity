@@ -18,6 +18,7 @@ import {ModalAnimationDemo} from "./modal-animation";
 import {ModalBackdropDemo} from "./modal-backdrop";
 import {ModalSizesDemo} from "./modal-sizes";
 import {ModalMaxHeightDemo} from "./modal-max-height";
+import {ModalTrapDemo} from "./modal-trap";
 
 @NgModule({
     imports: [
@@ -36,7 +37,8 @@ import {ModalMaxHeightDemo} from "./modal-max-height";
         ModalAnimationDemo,
         ModalBackdropDemo,
         ModalSizesDemo,
-        ModalMaxHeightDemo
+        ModalMaxHeightDemo,
+        ModalTrapDemo
     ],
     exports: [
         ModalDemo,
@@ -49,7 +51,8 @@ import {ModalMaxHeightDemo} from "./modal-max-height";
         ModalAnimationDemo,
         ModalBackdropDemo,
         ModalSizesDemo,
-        ModalMaxHeightDemo
+        ModalMaxHeightDemo,
+        ModalTrapDemo
     ]
 })
 export default class ModalDemoModule {

@@ -137,7 +137,8 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "dropdowns",
@@ -252,7 +253,8 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "navigation",
@@ -344,7 +346,8 @@
             "ng": 20,
             "dox": 20,
             "comments": "",
-            "newLayout": true
+            "newLayout": true,
+            "isNew": true
         },
         {
             "url": "spinners",
@@ -354,7 +357,8 @@
             "ui": 20,
             "core": -1,
             "ng": 5,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "stack-view",
@@ -406,7 +410,8 @@
             "ui": 20,
             "core": -1,
             "ng": 5,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "tooltips",

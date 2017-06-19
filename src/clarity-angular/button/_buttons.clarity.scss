@@ -246,9 +246,10 @@ $clr-button-appearance-map: (
         }
     }
 
-    //.btn-outline-<state> is the new BS4 naming convention
-    //TODO: we support both the previous one and the new one but we will deprecate the old ones from the example in 0.5.0
-
+    //.btn-outline-<state> is the new BS4 naming convention. We are using both for now
+    // TODO: Refactor these classnames when the standard clarity naming convention is set.
+    // This is a breaking change and will need an upgrade path so users know how to easily migrate to the new
+    // version.
     .btn.btn-secondary,
     .btn.btn-info,
     .btn.btn-outline,
@@ -264,7 +265,8 @@ $clr-button-appearance-map: (
     .btn-secondary-outline .btn,
     .btn-outline-primary .btn,
     .btn-outline-secondary .btn,
-    .btn-info-outline .btn{
+    .btn-info-outline .btn,
+    .btn-outline-info .btn {
         @include populateButtonProperties(default);
     }
 
@@ -324,7 +326,6 @@ $clr-button-appearance-map: (
         max-width: 100%;
     }
 
-    //Current Margins - We might be getting rid of this in 0.9.0
     .btn {
         margin: $clr-button-vertical-margin $clr-button-horizontal-margin $clr-button-vertical-margin 0;
 
@@ -411,7 +412,8 @@ $clr-button-appearance-map: (
         &.btn-secondary-outline,
         &.btn-outline-primary,
         &.btn-outline-secondary,
-        &.btn-info-outline {
+        &.btn-info-outline,
+        &.btn-outline-info {
             @include btn-checked-styles();
         }
 
@@ -457,8 +459,10 @@ $clr-button-appearance-map: (
             width: 100%;
         }
 
-        //.btn-outline-<state> is the new BS4 naming convention
-        //TODO: we support both the previous one and the new one but we will deprecate the old ones from the example in 0.5.0
+        //.btn-outline-<state> is the new BS4 naming convention. We are using both for now
+        // TODO: Refactor these classnames when the standard clarity naming convention is set.
+        // This is a breaking change and will need an upgrade path so users know how to easily migrate to the new
+        // version.
         &.btn-secondary,
         &.btn-info,
         &.btn-outline,
@@ -466,9 +470,11 @@ $clr-button-appearance-map: (
         &.btn-secondary-outline,
         &.btn-outline-primary,
         &.btn-outline-secondary,
-        &.btn-info-outline {
+        &.btn-info-outline,
+        &.btn-outline-info {
             @include btn-checked-styles(default, radio);
         }
+
 
         &.btn-primary {
             @include btn-checked-styles(primary, radio);

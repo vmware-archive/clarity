@@ -49,5 +49,4 @@ gulp.task("svg:icons:zip", ["svg:icons"], function () {
 
 });
 
-
 gulp.task("svg", ["svg:icons:zip"]);

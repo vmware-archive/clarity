@@ -1302,7 +1302,6 @@ const technologyShapes: any = {
 
 Object.defineProperty(technologyShapes, "analytics", descriptorConfig(technologyShapes["line-chart"]));
 Object.defineProperty(technologyShapes, "server", descriptorConfig(technologyShapes["host"]));
-Object.defineProperty(technologyShapes, "app", descriptorConfig(technologyShapes["applications"]));
 Object.defineProperty(technologyShapes, "command", descriptorConfig(technologyShapes["terminal"]));
 Object.defineProperty(technologyShapes, "mobile-phone", descriptorConfig(technologyShapes["mobile"]));
 Object.defineProperty(technologyShapes, "license", descriptorConfig(technologyShapes["certificate"]));

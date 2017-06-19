@@ -162,9 +162,9 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
 
         .branding,
         .header-nav,
-        .search-box, //TODO: deprecate in 0.9.0
+        .search-box, //TODO: deprecated. Remove when the clarity css naming convention is implemented.
         .search,
-        .settings, //TODO: deprecate in 0.9.0
+        .settings, //TODO: deprecated. Remove when the clarity css naming convention is implemented.
         .header-actions,
         .divider {
             height: $clr-header-height;
@@ -189,10 +189,6 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
                 }
             }
 
-            //vmw logo
-            //TODO: Deprecate .logo and .clr-icon
-            .logo,
-            .clr-icon,
             clr-icon {
                 flex-grow: 0;
                 flex-shrink: 0;
@@ -242,14 +238,6 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
             .nav-link.active:first-of-type::before,
             .nav-link.active:last-of-type::after {
                 content: none;
-            }
-        }
-
-        //.search-box - TODO: deprecate in 0.9.0
-        .search-box {
-            //old search icon
-            & > .fa {
-                font-size: 22px;
             }
         }
 

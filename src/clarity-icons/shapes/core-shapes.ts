@@ -432,12 +432,4 @@ Object.defineProperty(coreShapes, "caret", descriptorConfig(coreShapes["angle"])
 Object.defineProperty(coreShapes, "directory", descriptorConfig(coreShapes["folder"]));
 Object.defineProperty(coreShapes, "notification", descriptorConfig(coreShapes["bell"]));
 
-/*TODO: ellispes-vertical is deprecated and will be removed in 0.10.0*/
-Object.defineProperty(coreShapes, "ellipses-vertical", descriptorConfig(coreShapes["ellipsis-vertical"]));
-
-/*TODO: ellispes-horizontal is deprecated and will be removed in 0.10.0*/
-Object.defineProperty(coreShapes, "ellipses-horizontal", descriptorConfig(coreShapes["ellipsis-horizontal"]));
-
-
-
 export { coreShapes as CoreShapes };

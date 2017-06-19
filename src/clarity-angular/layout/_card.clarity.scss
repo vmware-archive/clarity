@@ -136,10 +136,6 @@ $card-children-space-between: $clr_baselineRem_0_5;
             }
         }
 
-        //TODO: Decide if we want to deprecate this or not in 0.9.0
-        //because there are some cases where dividers could be used inside of .card-blocks
-        //to organize info
-
         //Use border-bottom directly on card header and card block to simplify the layout
         //Card dividers should only be used inside of a .card-block
         .card-divider {

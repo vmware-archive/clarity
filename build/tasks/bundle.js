@@ -80,14 +80,7 @@ gulp.task("bundle:icons:shapes", ["typescript:icons"], function () {
         }
     });
 
-    /* TODO: BasicShapes is deprecated, so is this task and will be removed in 0.9.0 */
-    builder.buildStatic("clarity-icons/shapes/basic-shapes.js", "dist/bundles/basic-shapes.min.js", buildOpts)
-        .catch(function (err) {
-            console.error(err);
-            process.exit(1);
-        });
-
-    builder.buildStatic("clarity-icons/shapes/essential-shapes.js", "dist/bundles/essential-shapes.min.js", buildOpts)
+    builder.buildStatic("clarity-icons/shapes/essential-shapes.js", "dist/bundles/essential-shapes.umd.js", buildOpts)
         .catch(function (err) {
             console.error(err);
             process.exit(1);

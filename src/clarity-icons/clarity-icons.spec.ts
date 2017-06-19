@@ -6,7 +6,6 @@
 
 import { ClarityIcons } from "./index";
 import { CoreShapes } from "./shapes/core-shapes";
-import { BasicShapes } from "./shapes/basic-shapes";
 import { EssentialShapes } from "./shapes/essential-shapes";
 import { SocialShapes } from "./shapes/social-shapes";
 import { TechnologyShapes } from "./shapes/technology-shapes";
@@ -71,7 +70,7 @@ describe("ClarityIcons", () => {
 
         it("should return all icons when no argument is passed in", () => {
             let currentAllShapes = Object.assign(
-                {}, CoreShapes, EssentialShapes, BasicShapes, SocialShapes, TechnologyShapes
+                {}, CoreShapes, EssentialShapes, SocialShapes, TechnologyShapes
             );
             testAllShapes(currentAllShapes);
         });
@@ -409,10 +408,6 @@ describe("ClarityIcons", () => {
 
         it("CoreShapes should not include fill attribute", () => {
             testIconStyles(CoreShapes, [ "vm-bug" ]);
-        });
-
-        it("BasicShapes should not include fill attribute", () => {
-            testIconStyles(BasicShapes);
         });
 
         it("EssentialShapes should not include fill attribute", () => {

@@ -1,11 +1,19 @@
+/*
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
 import {
     Component,
-    Input,
+    ContentChild,
+    Input
 } from "@angular/core";
 
 import { Point, PopoverOptions } from "../common/popover";
 import { IfOpenService } from "../../utils/conditional/if-open.service";
 import { Subscription } from "rxjs/Subscription";
+import { SignpostTriggerDirective } from "./signpost-trigger.directive";
+import { SIGNPOST_POSITIONS } from "./signpost-positions";
 
 //aka where the arrow / pointer is at in relation to the anchor
 const signpostPositions: string[] = [
@@ -26,21 +34,25 @@ const signpostPositions: string[] = [
 @Component({
     selector: "clr-signpost",
     template: `
-        <button
-            #anchor
-            type="button"
-            class="signpost-action btn btn-small btn-link"
-            [ngClass]="{active: open}"
-            clrSignpostTrigger>
-            <clr-icon shape="info"></clr-icon>
-        </button><!-- TODO: turn into ng-content to handle default signpost icon and clrSignpostTrigger @Input. -->
-        <ng-template [(clrPopoverOld)]="ifOpenService.open"
-                     [clrPopoverOldAnchor]="anchor"
-                     [clrPopoverOldAnchorPoint]="anchorPoint"
-                     [clrPopoverOldPopoverPoint]="popoverPoint"
-                     [clrPopoverOldOptions]="signpostOptions">
+        <div class="signpost-trigger" #anchor>
+            <ng-content></ng-content>
+            <ng-container *ngIf="!useCustomTrigger">
+                <button
+                    type="button"
+                    class="signpost-action btn btn-small btn-link"
+                    [class.active]="open"
+                    clrSignpostTrigger>
+                    <clr-icon shape="info"></clr-icon>
+                </button>
+            </ng-container>
+        </div>
+        
+        <div [clrPopoverAnchor]="anchor"
+             [clrPopoverAnchorPoint]="anchorPoint"
+             [clrPopoverPopoverPoint]="popoverPoint"
+             [clrPopoverOptions]="signpostOptions">
             <ng-content select="clr-signpost-content"></ng-content>
-        </ng-template>
+        </div>
     `,
     host: {
         "[class.signpost]": "true",
@@ -56,7 +68,7 @@ const signpostPositions: string[] = [
         "[class.left-bottom]": "signpostPosition == 'left-bottom'",
         "[class.left-middle]": "signpostPosition == 'left-middle'",
         "[class.left-top]": "signpostPosition == 'left-top'",
-        "[class.open]": "true" // always set to true; clrPopoverOld will remove it from DOM when not open
+        "[class.open]": "ifOpenService.open" // always set to true; clrPopoverOld will remove it from DOM when not open
     },
     providers: [ IfOpenService ]
 })
@@ -86,24 +98,6 @@ export class Signpost {
      */
     private _signpostPostion: string = "right-middle"; // For default position
 
-    /**********
-     * @param _offsetY
-     * @description
-     * A value given to the popover class that moves the popover window +/- that many px in the Y axis
-     * @type {number}
-     * @private
-     */
-    private _offsetY: number = 6; // For default position
-
-    /**********
-     * @param _offsetX
-     * @description
-     * A value given to the popover class that moves the popover window +/- that many px in the X axis
-     * @type {number}
-     * @private
-     */
-    private _offsetX: number = 14; // For default position
-
     /*********
      * @param openSubscription
      *
@@ -113,6 +107,30 @@ export class Signpost {
      * @private
      */
     private openSubscription: Subscription;
+
+
+    /**********
+     * @property useCustomTrigger
+     *
+     * @description
+     * Flag used to determin if we need to use the default trigger or a user supplied trigger element.
+     *
+     * @type {boolean}
+     */
+    public useCustomTrigger: boolean = false;
+
+    /**********
+     * @property signPostTrigger
+     *
+     * @description
+     * Uses ContentChild to check for a user supplied element with the SignpostTriggerDirective on it.
+     *
+     * @type {SignpostTriggerDirective}
+     */
+    @ContentChild(SignpostTriggerDirective)
+    set customTrigger( trigger: SignpostTriggerDirective ) {
+        this.useCustomTrigger = !!trigger;
+    }
 
     /**********
      * @param anchorPoint
@@ -152,9 +170,15 @@ export class Signpost {
      */
     public signpostOptions: PopoverOptions = {
         allowMultipleOpen: false,
-        offsetY: this._offsetY, //TODO: set these based on signPostPosition case
-        offsetX: this._offsetX
+        offsetY: 0, //TODO: set these based on signPostPosition case
+        offsetX: 0
     };
+
+    constructor( public ifOpenService: IfOpenService ) {
+        this.openSubscription = ifOpenService.openChange.subscribe(change => {
+            this.open = change;
+        });
+    }
 
     /**********
      *
@@ -166,15 +190,10 @@ export class Signpost {
      *
      * @param value<boolean>
      */
-    public set open(value: boolean) {
+    public set open( value: boolean ) {
         this.ifOpenService.open = value;
     }
 
-    constructor( public ifOpenService: IfOpenService) {
-        this.openSubscription = ifOpenService.openChange.subscribe(change => {
-            this.open = change;
-        });
-    }
 
     /*********
      * @function signpostPosition
@@ -204,95 +223,21 @@ export class Signpost {
      * 'left' meaning two things: 1) the SignpostContent container extends to the left and 2) the 'arrow/pointer'
      * linking the SingpostContent to the trigger points down at the horizontal center of the trigger icon.
      *
-     * @param position
+     * @param newPosition
      */
     @Input("clrSignpostPosition")
-    set signpostPosition( position: string ) {
-        if ( position && (signpostPositions.indexOf(position) > -1) ) {
-            this._signpostPostion = position;
+    set signpostPosition( newPosition: string ) {
+        if ( newPosition && (signpostPositions.indexOf(newPosition) > -1) ) {
+            this._signpostPostion = newPosition;
         } else {
-            console.log("Setting default");
             this._signpostPostion = "right-middle";
         }
-        // // set the popover values based on menu position
-        switch ( this._signpostPostion ) {
-            case ("top-left"):
-                this.anchorPoint = Point.TOP_LEFT;
-                this.popoverPoint = Point.BOTTOM_RIGHT;
-                this.signpostOptions.offsetY = -8;
-                this.signpostOptions.offsetX = 10;
-                break;
-            case ("top-middle"):
-                this.anchorPoint = Point.TOP_CENTER;
-                this.popoverPoint = Point.BOTTOM_CENTER;
-                this.signpostOptions.offsetY = -8;
-                this.signpostOptions.offsetX = 0;
-                break;
-            case ("top-right"):
-                this.anchorPoint = Point.TOP_RIGHT;
-                this.popoverPoint = Point.BOTTOM_LEFT;
-                this.signpostOptions.offsetY = -8;
-                this.signpostOptions.offsetX = -10;
-                break;
-            case ("right-top"):
-                this.anchorPoint = Point.RIGHT_TOP;
-                this.popoverPoint = Point.LEFT_BOTTOM;
-                this.signpostOptions.offsetY = 18;
-                this.signpostOptions.offsetX = 14;
-                break;
-            case ("right-middle"):
-                this.anchorPoint = Point.RIGHT_CENTER;
-                this.popoverPoint = Point.LEFT_CENTER;
-                this.signpostOptions.offsetY = 6;
-                this.signpostOptions.offsetX = 14;
-                break;
-            case ("right-bottom"):
-                this.anchorPoint = Point.RIGHT_BOTTOM;
-                this.popoverPoint = Point.LEFT_TOP;
-                this.signpostOptions.offsetY = -18;
-                this.signpostOptions.offsetX = 14;
-                break;
-            case ("bottom-right"):
-                this.anchorPoint = Point.BOTTOM_RIGHT;
-                this.popoverPoint = Point.TOP_LEFT;
-                this.signpostOptions.offsetY = 6;
-                this.signpostOptions.offsetX = -10;
-                break;
-            case ("bottom-middle"):
-                this.anchorPoint = Point.BOTTOM_CENTER;
-                this.popoverPoint = Point.TOP_CENTER;
-                this.signpostOptions.offsetY = 6;
-                this.signpostOptions.offsetX = 12;
-                break;
-            case ("bottom-left"):
-                this.anchorPoint = Point.BOTTOM_LEFT;
-                this.popoverPoint = Point.TOP_RIGHT;
-                this.signpostOptions.offsetY = 6;
-                this.signpostOptions.offsetX = 10;
-                break;
-            case ("left-top"):
-                this.anchorPoint = Point.LEFT_TOP;
-                this.popoverPoint = Point.RIGHT_BOTTOM;
-                this.signpostOptions.offsetY = 18;
-                this.signpostOptions.offsetX = -14;
-                break;
-            case ("left-middle"):
-                this.anchorPoint = Point.LEFT_CENTER;
-                this.popoverPoint = Point.RIGHT_CENTER;
-                this.signpostOptions.offsetY = 6;
-                this.signpostOptions.offsetX = -14;
-                break;
-            case ("left-bottom"):
-                this.anchorPoint = Point.LEFT_BOTTOM;
-                this.popoverPoint = Point.RIGHT_TOP;
-                this.signpostOptions.offsetY = -18;
-                this.signpostOptions.offsetX = -14;
-                break;
-            default:
-                this.anchorPoint = Point.RIGHT_CENTER;
-                this.popoverPoint = Point.LEFT_CENTER;
-                break;
-        }
+
+        let setPosition = SIGNPOST_POSITIONS[this._signpostPostion];
+        this.anchorPoint = setPosition.anchorPoint;
+        this.popoverPoint = setPosition.popoverPoint;
+        this.signpostOptions.offsetY = setPosition.offsetY;
+        this.signpostOptions.offsetX = setPosition.offsetX;
     }
 
     /*********
@@ -323,3 +268,4 @@ export class Signpost {
         this.ifOpenService.open = !this.ifOpenService.open;
     }
 }
+

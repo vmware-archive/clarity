@@ -13,6 +13,7 @@ env:
 
 sudo: required
 dist: trusty
+group: edge
 
 addons:
   apt:

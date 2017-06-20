@@ -487,7 +487,7 @@
                         outline: 0;
                     }
 
-                    &.disabled {
+                    &.disabled, &:disabled {
                         cursor: not-allowed;
                         opacity: 0.4;
                         user-select: none;

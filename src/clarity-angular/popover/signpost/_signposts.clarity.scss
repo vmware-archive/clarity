@@ -367,6 +367,12 @@
         }
         // End right-*
 
+        &-trigger {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+        }
+
         &-content {
             background-color: $clr-white;
             min-width: 216px;

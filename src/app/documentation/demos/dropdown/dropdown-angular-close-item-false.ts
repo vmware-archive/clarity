@@ -7,17 +7,17 @@ import {Component} from "@angular/core";
 
 const HTML_EXAMPLE = `
 <clr-dropdown [clrMenuPosition]="'bottom-right'" [clrCloseMenuOnItemClick]="false">
-    <button clrDropdownToggle>
+    <button type="button" clrDropdownToggle>
         <clr-icon shape="error" class="is-error" size="24"></clr-icon>
         <clr-icon shape="caret down"></clr-icon>
     </button>
     <clr-dropdown-menu>
         <label class="dropdown-header">Dropdown header</label>
-        <a href="..." clrDropdownItem>Action 1</a>
-        <a href="..." clrDropdownItem>Action 2</a>
+        <button type="button" clrDropdownItem>Action 1</button>
+        <button type="button" clrDropdownItem>Action 2</button>
         <div class="dropdown-divider"></div>
-        <a href="..." clrDropdownItem>Link 1</a>
-        <a href="..." clrDropdownItem>Link 2</a>
+        <button type="button" clrDropdownItem>Link 1</button>
+        <button type="button" clrDropdownItem>Link 2</button>
     </clr-dropdown-menu>
 </clr-dropdown>
 `;

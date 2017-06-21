@@ -26,7 +26,6 @@ export * from "./modal/modal.module";
 export * from "./popover/popover.module";
 export * from "./popover/dropdown/dropdown.module";
 export * from "./popover/tooltip/tooltip.module";
-export * from "./wizard-deprecated/wizard-deprecated.module";
 export * from "./wizard/wizard.module";
 export * from "./utils/loading/loading.module";
 
@@ -45,7 +44,6 @@ export * from "./modal/index";
 export * from "./layout/nav/index";
 export * from "./layout/tabs/index";
 export * from "./popover/tooltip/index";
-export * from "./wizard-deprecated/index";
 export * from "./wizard/index";
 export * from "./utils/animations/collapse/index";
 export * from "./utils/animations/fade/index";

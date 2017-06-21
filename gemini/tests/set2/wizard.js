@@ -43,6 +43,7 @@ gemini.suite('wizard', (child) => {
                 actions.waitForElementToShow('.tooltip-content', WAIT_TIME);
                 actions.wait(WAIT_TIME); // wait for animations to complete
             })
+            .ignoreElements('#nameInput')
             .setCaptureElements('.modal-outer-wrapper')
             .capture('default');
     });

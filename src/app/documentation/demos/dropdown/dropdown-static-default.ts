@@ -11,27 +11,27 @@ const HTML_EXAMPLE = `
         Dropdown
         <clr-icon shape="caret down"></clr-icon>
     </button>
-        <div class="dropdown-menu">
-            <h4 class="dropdown-header">Dropdown header</h4>
-            <a href="..." class="dropdown-item active">Action</a>
-            <a href="..." class="dropdown-item disabled">Disabled Link</a>
-            <div class="dropdown-divider"></div>
-            <a href="..." class="dropdown-item">Lorem.</a>
-            <div class="dropdown open right-bottom">
-                <button class="dropdown-item active expandable">Lorem ipsum.</button>
-                <div class="dropdown-menu">
-                    <a href="..." class="dropdown-item">Foo.</a>
-                    <div class="dropdown open right-top">
-                        <button class="dropdown-item active expandable">Bar.</button>
-                        <div class="dropdown-menu">
-                            <a href="..." class="dropdown-item">Baz.</a>
-                        </div>
+    <div class="dropdown-menu">
+        <h4 class="dropdown-header">Dropdown header</h4>
+        <button type="button" class="dropdown-item active">Action</button>
+        <button type="button" class="dropdown-item disabled">Disabled Link</button>
+        <div class="dropdown-divider"></div>
+        <button type="button" class="dropdown-item">Lorem.</button>
+        <div class="dropdown open right-bottom">
+            <button class="dropdown-item active expandable">Lorem ipsum.</button>
+            <div class="dropdown-menu">
+                <button type="button" class="dropdown-item">Foo.</button>
+                <div class="dropdown open right-top">
+                    <button class="dropdown-item active expandable">Bar.</button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">Baz.</button>
                     </div>
-                    <a href="..." class="dropdown-item">Foo 2.</a>
                 </div>
+                <button type="button" class="dropdown-item">Foo 2.</button>
             </div>
-            <a href="..." class="dropdown-item">Ipsum.</a>
         </div>
+        <button type="button" class="dropdown-item">Ipsum.</button>
+    </div>
 </div>
 `;
 

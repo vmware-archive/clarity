@@ -13,11 +13,11 @@ const EXAMPLE = `
     </button>
     <div class="dropdown-menu">
         <h4 class="dropdown-header">Dropdown header</h4>
-        <a href="..." class="dropdown-item">Action 1</a>
-        <a href="..." class="dropdown-item">Action 2</a>
-        <a href="..." class="dropdown-item">Action 3</a>
+        <button type="button" class="dropdown-item">Action 1</button>
+        <button type="button" class="dropdown-item">Action 2</button>
+        <button type="button" class="dropdown-item">Action 3</button>
         <div class="dropdown-divider"></div>
-        <a href="..." class="dropdown-item">Link 1</a>
+        <button type="button" class="dropdown-item">Link 1</button>
     </div>
 </div>
 `;

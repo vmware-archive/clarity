@@ -62,7 +62,7 @@ gulp.task("bundle:icons-lite:sfx", ["typescript:icons"], function () {
 
     builder.buildStatic(
         "clarity-icons/index.js",
-        "dist/bundles/clarity-icons-lite.umd.js", buildOpts)
+        "dist/bundles/clarity-icons-lite.min.js", buildOpts)
         .catch(function (err) {
             console.error(err);
             process.exit(1);
@@ -81,25 +81,25 @@ gulp.task("bundle:icons:shapes", ["typescript:icons"], function () {
     });
 
     /* TODO: BasicShapes is deprecated, so is this task and will be removed in 0.9.0 */
-    builder.buildStatic("clarity-icons/shapes/basic-shapes.js", "dist/bundles/basic-shapes.umd.js", buildOpts)
+    builder.buildStatic("clarity-icons/shapes/basic-shapes.js", "dist/bundles/basic-shapes.min.js", buildOpts)
         .catch(function (err) {
             console.error(err);
             process.exit(1);
         });
 
-    builder.buildStatic("clarity-icons/shapes/essential-shapes.js", "dist/bundles/essential-shapes.umd.js", buildOpts)
+    builder.buildStatic("clarity-icons/shapes/essential-shapes.js", "dist/bundles/essential-shapes.min.js", buildOpts)
         .catch(function (err) {
             console.error(err);
             process.exit(1);
         });
 
-    builder.buildStatic("clarity-icons/shapes/social-shapes.js", "dist/bundles/social-shapes.umd.js", buildOpts)
+    builder.buildStatic("clarity-icons/shapes/social-shapes.js", "dist/bundles/social-shapes.min.js", buildOpts)
         .catch(function (err) {
             console.error(err);
             process.exit(1);
         });
 
-    builder.buildStatic("clarity-icons/shapes/technology-shapes.js", "dist/bundles/technology-shapes.umd.js", buildOpts)
+    builder.buildStatic("clarity-icons/shapes/technology-shapes.js", "dist/bundles/technology-shapes.min.js", buildOpts)
         .catch(function (err) {
             console.error(err);
             process.exit(1);

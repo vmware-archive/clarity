@@ -42,8 +42,7 @@ export const APP_ROUTES: Routes  = [
     { path: "toggles", loadChildren: "app/toggles/toggles.demo.module" },
     { path: "tooltips", loadChildren: "app/tooltips/tooltips.demo.module" },
     { path: "typography", loadChildren: "app/typography/typography.demo.module" },
-    { path: "wizard", loadChildren: "app/wizard/wizard.demo.module" },
-    { path: "wizard-deprecated", loadChildren: "app/wizard-deprecated/wizard.demo.module" },
+    { path: "wizard", loadChildren: "app/wizard/wizard.demo.module" }
 ];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);

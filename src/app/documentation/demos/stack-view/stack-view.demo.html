@@ -7,13 +7,18 @@
         <h3 id="html-and-styles">HTML and Styles</h3>
 
         <div class="alert alert-warning">
-            <div class="alert-item">
-            <span class="alert-text">
-            We do not recommend using Stack View as a static component since the DOM structure
-            is architected to enable the Stack View's Javascript behavior and animation handling.
-            If you cannot use the Angular component, these are the elements and
-            classes you will need to use to benefit from Clarity's styles, without the animations.
-        </span>
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        We do not recommend using Stack View as a static component since the DOM structure
+                        is architected to enable the Stack View's Javascript behavior and animation handling.
+                        If you cannot use the Angular component, these are the elements and
+                        classes you will need to use to benefit from Clarity's styles, without the animations.
+                    </span>
+                </div>
             </div>
         </div>
 

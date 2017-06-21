@@ -119,11 +119,11 @@
                 <ng-template clrPageNavTitle>{{ pageThreeTitle }}</ng-template>
 
                 <clr-alert [clrAlertClosable]="false" clrAlertType="alert-error" *ngIf="showPowerError">
-                    <div class="alert-item">
+                    <clr-alert-item>
                         <span class="alert-text">
                             Your power and weakness cannot be from the same source.
                         </span>
-                    </div>
+                    </clr-alert-item>
                 </clr-alert>
 
                 <form #formPageTwo="ngForm">
@@ -149,11 +149,11 @@
                 <ng-template clrPageNavTitle>{{ pageFourTitle }}</ng-template>
 
                 <clr-alert [clrAlertClosable]="false" clrAlertType="alert-error" *ngIf="showPowerError">
-                    <div class="alert-item">
+                    <clr-alert-item>
                         <span class="alert-text">
                             Your power and weakness cannot be from the same source.
                         </span>
-                    </div>
+                    </clr-alert-item>
                 </clr-alert>
 
                 <form #formPageTwo="ngForm">

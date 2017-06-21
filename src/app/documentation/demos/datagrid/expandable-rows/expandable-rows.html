@@ -51,12 +51,17 @@
 <clr-code-snippet [clrCode]="examples.lazyLoadingDetail" clrLanguage="typescript"></clr-code-snippet>
 
 <div class="alert alert-info">
-    <div class="alert-item">
-        <span class="alert-text">
-            Note the <code class="clr-code">ngProjectAs</code> attribute on our custom detail component.
-            This is needed to make sure it is projected in the same place an actual
-            <code class="clr-code">&lt;clr-dg-row-detail&gt;</code> would be.
-        </span>
+    <div class="alert-items">
+        <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+            </div>
+            <span class="alert-text">
+                Note the <code class="clr-code">ngProjectAs</code> attribute on our custom detail component.
+                This is needed to make sure it is projected in the same place an actual
+                <code class="clr-code">&lt;clr-dg-row-detail&gt;</code> would be.
+            </span>
+        </div>
     </div>
 </div>
 

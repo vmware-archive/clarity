@@ -19,7 +19,7 @@ let technologyShapes = Object.keys(TechnologyShapes);
 })
 export class IconSelectionDemo {
 
-    commonPath = "assets/images/icons-svg-downloadable/";
+    commonPath = "assets/images/";
     allSetsLink = this.commonPath + "all-shapes.zip";
 
     previewClasses: any = {

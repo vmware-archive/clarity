@@ -77,7 +77,8 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "code-highlight",
@@ -253,8 +254,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "navigation",
@@ -357,8 +357,7 @@
             "ui": 20,
             "core": -1,
             "ng": 5,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "stack-view",
@@ -410,8 +409,7 @@
             "ui": 20,
             "core": -1,
             "ng": 5,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "tooltips",

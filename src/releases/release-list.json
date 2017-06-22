@@ -1,5 +1,5 @@
 {
-    "current": "0.9.9",
+    "current": "0.9.10",
     "all": {
         "0.10.0-alpha": {
             "date": "June 19, 2017",
@@ -7,6 +7,11 @@
             "commit": "dc024ed0e8fb5e1ddb629a52ef924e1afa56e610"
         },
 
+        "0.9.10": {
+            "date": "June 22, 2017",
+            "sketch": "0.9.0",
+            "commit": "8b2672badaa94bdcc3b4cb97ac9bca5f59fb4fe8"
+        },
         "0.9.9": {
             "date": "June 15, 2017",
             "sketch": "0.9.0",

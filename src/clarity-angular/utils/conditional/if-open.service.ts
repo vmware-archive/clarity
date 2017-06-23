@@ -21,7 +21,7 @@ import { Observable } from "rxjs/Observable";
 export class IfOpenService {
 
     /********
-     * @property _opened
+     * @property _openChange
      *
      * @description
      * A RXJS Subject that updates and provides subscriptions to for the current open state of a component template
@@ -30,7 +30,7 @@ export class IfOpenService {
      * @type {Subject<boolean>}
      * @private
      */
-    private _opened: Subject<boolean> = new Subject<boolean>();
+    private _openChange: Subject<boolean> = new Subject<boolean>();
 
     /*********
      * @property _open
@@ -51,8 +51,8 @@ export class IfOpenService {
      *
      * @returns {Observable<boolean>}
      */
-    public get openedChange(): Observable<boolean> {
-        return this._opened.asObservable();
+    public get openChange(): Observable<boolean> {
+        return this._openChange.asObservable();
     }
 
     /*********
@@ -68,7 +68,7 @@ export class IfOpenService {
         value = !!value;
         if ( this._open !== value ) {
             this._open = value;
-            this._opened.next(value);
+            this._openChange.next(value);
         }
     }
 

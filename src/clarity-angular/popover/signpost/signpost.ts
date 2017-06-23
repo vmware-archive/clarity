@@ -4,7 +4,7 @@ import {
 } from "@angular/core";
 
 import { Point, PopoverOptions } from "../common/popover";
-import { IfOpenService } from "./if-open.service";
+import { IfOpenService } from "../../utils/conditional/if-open.service";
 import { Subscription } from "rxjs/Subscription";
 
 //aka where the arrow / pointer is at in relation to the anchor
@@ -34,11 +34,11 @@ const signpostPositions: string[] = [
             clrSignpostTrigger>
             <clr-icon shape="info"></clr-icon>
         </button><!-- TODO: turn into ng-content to handle default signpost icon and clrSignpostTrigger @Input. -->
-        <ng-template [(clrPopover)]="ifOpenService.open"
-                     [clrPopoverAnchor]="anchor"
-                     [clrPopoverAnchorPoint]="anchorPoint"
-                     [clrPopoverPopoverPoint]="popoverPoint"
-                     [clrPopoverOptions]="signpostOptions">
+        <ng-template [(clrPopoverOld)]="ifOpenService.open"
+                     [clrPopoverOldAnchor]="anchor"
+                     [clrPopoverOldAnchorPoint]="anchorPoint"
+                     [clrPopoverOldPopoverPoint]="popoverPoint"
+                     [clrPopoverOldOptions]="signpostOptions">
             <ng-content select="clr-signpost-content"></ng-content>
         </ng-template>
     `,
@@ -56,7 +56,7 @@ const signpostPositions: string[] = [
         "[class.left-bottom]": "signpostPosition == 'left-bottom'",
         "[class.left-middle]": "signpostPosition == 'left-middle'",
         "[class.left-top]": "signpostPosition == 'left-top'",
-        "[class.open]": "true" // always set to true; clrPopover will remove it from DOM when not open
+        "[class.open]": "true" // always set to true; clrPopoverOld will remove it from DOM when not open
     },
     providers: [ IfOpenService ]
 })
@@ -171,7 +171,7 @@ export class Signpost {
     }
 
     constructor( public ifOpenService: IfOpenService) {
-        this.openSubscription = ifOpenService.openedChange.subscribe(change => {
+        this.openSubscription = ifOpenService.openChange.subscribe(change => {
             this.open = change;
         });
     }

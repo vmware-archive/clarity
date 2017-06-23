@@ -6,8 +6,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { Component } from "@angular/core";
 import { ClrSignpostModule } from "./signpost.module";
-import { ClrIconModule } from "../../icon/icon.module";
-import { IfOpenService } from "./if-open.service";
+import { IfOpenService } from "../../utils/conditional/if-open.service";
 
 export default function(): void {
 
@@ -18,7 +17,7 @@ export default function(): void {
 
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [ ClrSignpostModule, ClrIconModule ],
+                imports: [ ClrSignpostModule ],
                 declarations: [ TestSignpost ],
                 providers: [ IfOpenService ]
             });

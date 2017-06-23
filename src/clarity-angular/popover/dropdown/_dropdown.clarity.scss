@@ -205,7 +205,8 @@ $dropdown-white: clr-getColor(lightest);
     //Directions
     .btn-group-overflow,
     .dropdown {
-        &.open .dropdown-menu {
+        &.open > .dropdown-menu,
+        &.open > .dropdown-menu-wrapper > .dropdown-menu {
             visibility: visible;
         }
 
@@ -287,7 +288,8 @@ $dropdown-white: clr-getColor(lightest);
             }
 
             &.left-top {
-                > .dropdown-menu {
+                > .dropdown-menu,
+                > .dropdown-menu-wrapper > .dropdown-menu {
                     top: 0;
                     bottom: auto;
                     left: auto;
@@ -298,7 +300,8 @@ $dropdown-white: clr-getColor(lightest);
                 }
             }
             &.right-top {
-                > .dropdown-menu {
+                > .dropdown-menu,
+                > .dropdown-menu-wrapper > .dropdown-menu {
                     top: 0;
                     bottom: auto;
                     left: 100%;
@@ -309,7 +312,8 @@ $dropdown-white: clr-getColor(lightest);
                 }
             }
             &.left-bottom {
-                > .dropdown-menu {
+                > .dropdown-menu,
+                > .dropdown-menu-wrapper > .dropdown-menu {
                     top: auto;
                     bottom: 0;
                     left: auto;
@@ -320,7 +324,8 @@ $dropdown-white: clr-getColor(lightest);
                 }
             }
             &.right-bottom {
-                > .dropdown-menu {
+                > .dropdown-menu,
+                > .dropdown-menu-wrapper > .dropdown-menu {
                     top: auto;
                     bottom: 0;
                     left: 100%;

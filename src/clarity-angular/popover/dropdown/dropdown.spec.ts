@@ -8,7 +8,7 @@ import { Component, ViewChild } from "@angular/core";
 import { Point } from "../common/popover";
 import { Dropdown } from "./dropdown";
 import { ClrDropdownModule } from "./dropdown.module";
-import { ClrIconModule } from "../../icon/icon.module";
+import { IfOpenService } from "../../utils/conditional/if-open.service";
 
 
 export default function(): void {
@@ -19,8 +19,9 @@ export default function(): void {
 
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [ClrDropdownModule, ClrIconModule],
-                declarations: [TestComponent]
+                imports: [ClrDropdownModule],
+                declarations: [TestComponent],
+                providers: [IfOpenService]
             });
 
             fixture = TestBed.createComponent(TestComponent);
@@ -40,7 +41,9 @@ export default function(): void {
             expect(compiled.querySelector(".dropdown")).not.toBeNull();
         });
 
-        it("adds the .open class on clr-dropdown", () => {
+        it("adds the .open class on clr-dropdown when ifOpenService's open property is true", () => {
+            fixture.componentInstance.dropdownInstance.ifOpenService.open = true;
+            fixture.detectChanges();
             expect(compiled.querySelector(".open")).not.toBeNull();
         });
 
@@ -197,13 +200,13 @@ export default function(): void {
                 Dropdown
                 <clr-icon shape="caret down"></clr-icon>
             </button>
-            <clr-dropdown-menu>
+            <clr-dropdown-menu *clrIfOpen>
                 <label class="dropdown-header">Header</label>
                 <a href="javascript://" clrDropdownItem>Item</a>
                 <a href="javascript://" class="disabled" clrDropdownItem>Disabled Item</a>
                 <clr-dropdown [clrMenuPosition]="'right-top'">
                     <button clrDropdownToggle class="nested">Nested</button>
-                    <clr-dropdown-menu>
+                    <clr-dropdown-menu *clrIfOpen>
                         <a href="javascript://" clrDropdownItem>Foo</a>
                     </clr-dropdown-menu>
                 </clr-dropdown>

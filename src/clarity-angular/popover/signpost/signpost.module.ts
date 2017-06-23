@@ -9,6 +9,7 @@ import {CommonModule} from "@angular/common";
 import {ClrCommonPopoverModule} from "../common/popover.module";
 import {ClrIconModule} from "../../icon/icon.module";
 import {SIGNPOST_DIRECTIVES} from "./index";
+import {ClrConditionalModule} from "../../utils/conditional/conditional.module";
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import {SIGNPOST_DIRECTIVES} from "./index";
         SIGNPOST_DIRECTIVES
     ],
     exports: [
-        SIGNPOST_DIRECTIVES
+        SIGNPOST_DIRECTIVES,
+        ClrConditionalModule
     ],
     providers: [ ]
 })

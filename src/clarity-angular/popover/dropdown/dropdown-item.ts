@@ -10,6 +10,7 @@ import {
 } from "@angular/core";
 
 import { Dropdown } from "./dropdown";
+import {IfOpenService} from "../../utils/conditional/if-open.service";
 
 @Directive({
     selector: "[clrDropdownItem]",
@@ -19,13 +20,13 @@ import { Dropdown } from "./dropdown";
 })
 export class DropdownItem {
 
-    constructor(private _dropdown: Dropdown, private el: ElementRef) {
+    constructor(private _dropdown: Dropdown, private el: ElementRef, private ifOpenService: IfOpenService) {
     }
 
     @HostListener("click")
     onDropdownItemClick(): void {
         if (this._dropdown.isMenuClosable && !this.el.nativeElement.classList.contains("disabled")) {
-            this._dropdown.toggleDropdown();
+            this.ifOpenService.open = !this.ifOpenService.open;
         }
     }
 }

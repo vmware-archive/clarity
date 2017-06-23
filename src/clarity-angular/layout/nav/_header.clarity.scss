@@ -375,26 +375,17 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
                 //for the height of the header.
                 .dropdown-menu {
                     margin-top: -1 * $clr_baselineRem_0_375;
-
-                    .dropdown-menu {
-                        // TODO: this is a hack to prevent breaking changes as we implement
-                        // the popover directive. Remove this after the < 0.9.0 markup for
-                        // dropdown (angular component) is deprecated.
-                        margin-top: 0;
-                    }
+                    // TODO: As of 0.10.0 the dropdown-menu inside header without clrIfOpen directive (legacy)
+                    // will create empty space beyond the .main-container if the right isn't set to zero.
+                    // Re-evaluate later if we can come up with a better solution.
+                    left: auto;
+                    right: 0;
                 }
 
                 //Last Dropdown Menu adjustments so that the menu has some space
                 //between itself and the right end of the browser window
                 :last-child.dropdown-menu {
                     margin-right: $clr_baselineRem_0_3;
-
-                    .dropdown-menu {
-                        // TODO: this is a hack to prevent breaking changes as we implement
-                        // the popover directive. Remove this after the < 0.9.0 markup for
-                        // dropdown (angular component) is deprecated.
-                        margin-right: 0;
-                    }
                 }
             }
         }

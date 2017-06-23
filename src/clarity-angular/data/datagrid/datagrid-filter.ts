@@ -26,8 +26,8 @@ import {Point, PopoverOptions} from "../../popover/common/popover";
             [class.datagrid-filter-open]="open" [class.datagrid-filtered]="active"
             type="button"></button>
 
-        <ng-template [(clrPopover)]="open" [clrPopoverAnchor]="anchor" [clrPopoverAnchorPoint]="anchorPoint"
-             [clrPopoverPopoverPoint]="popoverPoint" [clrPopoverOptions]="popoverOptions">
+        <ng-template [(clrPopoverOld)]="open" [clrPopoverOldAnchor]="anchor" [clrPopoverOldAnchorPoint]="anchorPoint"
+             [clrPopoverOldPopoverPoint]="popoverPoint" [clrPopoverOldOptions]="popoverOptions">
             <div class="datagrid-filter">
                 <!-- FIXME: this whole filter part needs a final design before we can try to have a cleaner DOM -->
                 <div class="datagrid-filter-close-wrapper">

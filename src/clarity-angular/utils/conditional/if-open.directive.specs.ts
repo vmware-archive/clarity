@@ -3,7 +3,7 @@
 //  * This software is released under MIT license.
 //  * The full license information can be found in LICENSE in the root directory of this project.
 //  */
-import { Component, ViewChild } from "@angular/core";
+import {Component, ViewChild} from "@angular/core";
 import { IfOpenService } from "./if-open.service";
 import {TestBed} from "@angular/core/testing";
 import { IfOpenDirective } from "./if-open.directive";
@@ -31,7 +31,6 @@ export default function(): void {
             it("sets the open state of the directive", function() {
                 this.testComponent.openState = true;
                 this.fixture.detectChanges();
-                console.log(this.clarityDirective);
                 expect(this.clarityDirective.open).toEqual(true);
             });
 

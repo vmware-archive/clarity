@@ -8,7 +8,10 @@ import {
     TemplateRef,
     ViewContainerRef,
     Input,
-    OnInit, Output, EventEmitter
+    OnInit,
+    Output,
+    EventEmitter,
+    EmbeddedViewRef
 } from "@angular/core";
 
 import { IfOpenService } from "./if-open.service";
@@ -77,7 +80,13 @@ export class IfOpenDirective implements OnInit {
      */
     public updateView( value: boolean ) {
         if ( value ) {
-            this.container.createEmbeddedView(this.template);
+            let embeddedViewRef: EmbeddedViewRef<any>
+                = <EmbeddedViewRef<any>>this.container.createEmbeddedView(this.template);
+
+            //TODO: Not sure of the risks associated with using this. Find an alternative.
+            //Needed for find the correct height and width of dynamically created views
+            //inside of the popover. For Eg: Button Groups, Dropdown.
+            embeddedViewRef.detectChanges();
         } else {
             this.container.clear();
         }
@@ -91,7 +100,7 @@ export class IfOpenDirective implements OnInit {
      * IfOpenService. When changes are heard it calls updateView with the change value.
      */
     ngOnInit() {
-        this.ifOpenService.openedChange.subscribe((change) => {
+        this.ifOpenService.openChange.subscribe((change) => {
             this.updateView(change);
             this.openChange.emit(change);
         });

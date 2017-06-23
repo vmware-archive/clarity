@@ -6,7 +6,6 @@
 import { Component, Input } from "@angular/core";
 import { Point } from "../common/popover";
 
-
 const tooltipDirections: string[] = [
     "bottom-left",
     "bottom-right",
@@ -26,15 +25,16 @@ const tooltipSizes: string[] = [
 @Component({
     selector: "clr-tooltip",
     template: `
-       <a #anchor href="javascript://" role="tooltip" aria-haspopup="true" class="tooltip" 
-                [ngClass]="'tooltip-' + direction + ' tooltip-' + size">
-           <ng-content></ng-content>
-           <ng-template [(clrPopover)]="visible" [clrPopoverAnchor]="anchor" [clrPopoverAnchorPoint]="anchorPoint"
-                        [clrPopoverPopoverPoint]="popoverPoint">
+        <a #anchor href="javascript://" role="tooltip" aria-haspopup="true" class="tooltip"
+           [ngClass]="'tooltip-' + direction + ' tooltip-' + size">
+            <ng-content></ng-content>
+            <ng-template [(clrPopoverOld)]="visible" [clrPopoverOldAnchor]="anchor" 
+                         [clrPopoverOldAnchorPoint]="anchorPoint"
+                         [clrPopoverOldPopoverPoint]="popoverPoint">
                 <span class="tooltip-content">
                     <ng-content select="clr-tooltip-content"></ng-content>
                 </span>
-           </ng-template>
+            </ng-template>
         </a>
     `,
     host: {

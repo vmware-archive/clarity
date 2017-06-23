@@ -9,17 +9,12 @@ import { Signpost } from "./signpost";
 import { SignpostContent } from "./signpost-content";
 import { SignpostTriggerDirective } from "./signpost-trigger.directive";
 
-import { IfOpenDirective } from "./if-open.directive";
-
 export * from "./signpost";
 export * from "./signpost-content";
 export * from "./signpost-trigger.directive";
 
-export * from "./if-open.directive";
-
 export const SIGNPOST_DIRECTIVES: Type<any>[] = [
     Signpost,
     SignpostContent,
-    SignpostTriggerDirective,
-    IfOpenDirective
+    SignpostTriggerDirective
 ];

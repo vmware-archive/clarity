@@ -15,7 +15,7 @@ import { Point } from "../../popover/common/popover";
             <clr-icon shape="view-columns"></clr-icon>
         </button>
         <div class="column-switch"
-             *clrPopover="open; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint">
+             *clrPopoverOld="open; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint">
             <div class="switch-header">
                 Show Columns
                 <button

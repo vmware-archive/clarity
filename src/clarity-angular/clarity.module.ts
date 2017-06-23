@@ -16,6 +16,7 @@ import {ClrLayoutModule} from "./layout/layout.module";
 import {ClrPopoverModule} from "./popover/popover.module";
 import {ClrWizardModule} from "./wizard/wizard.module";
 import {ClrIfExpandModule} from "./utils/expand/if-expand.module";
+import {ClrConditionalModule} from "./utils/conditional/conditional.module";
 
 @NgModule({
     exports: [
@@ -25,6 +26,7 @@ import {ClrIfExpandModule} from "./utils/expand/if-expand.module";
         ClrModalModule,
         ClrLoadingModule,
         ClrIfExpandModule,
+        ClrConditionalModule,
         ClrButtonModule,
         ClrCodeModule,
         ClrFormsModule,

@@ -12,8 +12,8 @@ import {Point} from "../../popover/common/popover";
     selector: "clr-dg-action-overflow",
     template: `
         <clr-icon #anchor shape="ellipsis-vertical" class="datagrid-action-toggle" (click)="toggle()"></clr-icon>
-        <ng-template [(clrPopover)]="open" [clrPopoverAnchor]="anchor" [clrPopoverAnchorPoint]="anchorPoint"
-             [clrPopoverPopoverPoint]="popoverPoint">
+        <ng-template [(clrPopoverOld)]="open" [clrPopoverOldAnchor]="anchor" [clrPopoverOldAnchorPoint]="anchorPoint"
+             [clrPopoverOldPopoverPoint]="popoverPoint">
             <div #menu class="datagrid-action-overflow">
                 <ng-content></ng-content>
             </div>

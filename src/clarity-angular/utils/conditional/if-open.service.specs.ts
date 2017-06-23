@@ -21,7 +21,7 @@ export default function(): void {
                 let currentChange: boolean;
 
                 // Subscribe first
-                ifOpenService.openedChange.subscribe(change => {
+                ifOpenService.openChange.subscribe((change: boolean) => {
                     nbChanges++;
                     currentChange = change;
                 });

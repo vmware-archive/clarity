@@ -10,10 +10,6 @@ import SignpostContentSpecs from "./signpost-content.specs";
 
 import SignpostTriggerDirectiveSpecs from "./signpost-trigger.directive.specs";
 
-// Stand alone directive and service.
-import IfOpenDirectiveSpecs from "./if-open.directive.specs";
-import IfOpenServiceSpecs from "./if-open.service.specs";
-
 describe("Signpost", function() {
     addHelpers();
 
@@ -21,10 +17,5 @@ describe("Signpost", function() {
         SignpostSpecs();
         SignpostContentSpecs();
         SignpostTriggerDirectiveSpecs();
-    });
-
-    describe("Stand-alone", function() {
-        IfOpenDirectiveSpecs();
-        IfOpenServiceSpecs();
     });
 });

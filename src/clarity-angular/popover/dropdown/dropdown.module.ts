@@ -9,18 +9,20 @@ import { CommonModule } from "@angular/common";
 import { ClrCommonPopoverModule } from "../common/popover.module";
 import { ClrIconModule } from "../../icon/icon.module";
 import { DROPDOWN_DIRECTIVES } from "./index";
+import { ClrConditionalModule } from "../../utils/conditional/conditional.module";
 
 @NgModule({
     imports: [
         CommonModule,
-        ClrCommonPopoverModule,
-        ClrIconModule
+        ClrCommonPopoverModule
     ],
     declarations: [
         DROPDOWN_DIRECTIVES
     ],
     exports: [
-        DROPDOWN_DIRECTIVES
+        DROPDOWN_DIRECTIVES,
+        ClrConditionalModule,
+        ClrIconModule
     ]
 })
 export class ClrDropdownModule {}

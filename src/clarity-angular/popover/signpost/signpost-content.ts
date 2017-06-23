@@ -1,8 +1,7 @@
 import {
     Component, ElementRef, HostListener
-    // AfterViewInit, HostListener, OnDestroy, OnInit, Renderer2, ElementRef
 } from "@angular/core";
-import { IfOpenService } from "./if-open.service";
+import { IfOpenService } from "../../utils/conditional/if-open.service";
 
 @Component({
     selector: "clr-signpost-content",
@@ -46,7 +45,7 @@ export class SignpostContent {
         this.ifOpenService.open = false;
     }
 
-    constructor( private ifOpenService: IfOpenService, private elementRef: ElementRef ) { }
+    constructor(private ifOpenService: IfOpenService, private elementRef: ElementRef) { }
 
     /**********
      * @function onClick

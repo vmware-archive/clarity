@@ -312,7 +312,7 @@ $clr-alert-colors: (
         @include clr-getTypePropertiesForDomElement(alert-small_text, (letter-spacing));
 
         // need to use 11 instead of 12 here or else vertical alignment is thrown off
-        // by a pixel due to improper browser rounding; browsers aren't rendering on the 
+        // by a pixel due to improper browser rounding; browsers aren't rendering on the
         // sub-pixel required but rounding up to the nearest whole pixel...
         font-size: $clr_baselineRem_0_5 - 1;
 

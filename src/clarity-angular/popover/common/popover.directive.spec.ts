@@ -4,9 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ViewChildren, QueryList} from "@angular/core";
+import {Component, ViewChild} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {PopoverDirective} from "./popover.directive";
+import {IfOpenService} from "../../utils/conditional/if-open.service";
 
 describe("Popover directive", () => {
 
@@ -15,8 +16,13 @@ describe("Popover directive", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [TestComponent, DesugaredSyntaxComponent, PopoverDirective]
+            declarations: [TestComponent, PopoverDirective],
+            providers: [IfOpenService]
         });
+
+        fixture = TestBed.createComponent(TestComponent);
+        fixture.detectChanges();
+        compiled = fixture.nativeElement;
     });
 
     afterEach(() => {
@@ -24,102 +30,31 @@ describe("Popover directive", () => {
     });
 
     it("projects content", function () {
-        fixture = TestBed.createComponent(TestComponent);
-        compiled = fixture.nativeElement;
-
         expect(compiled.textContent).toMatch(/anchor1/);
-        expect(compiled.textContent).toMatch(/anchor2/);
     });
 
-    it("shows popover content if open", function () {
-        fixture = TestBed.createComponent(TestComponent);
-        compiled = fixture.nativeElement;
+    it("positions popover only if the open property of ifOpenService is true", function () {
+        let position: string;
 
-        fixture.componentInstance.open1 = true;
+        position = getComputedStyle(fixture.componentInstance.popover.nativeElement).position;
+        expect(position).toEqual("static");
+
+        fixture.componentInstance.popoverDirective.ifOpenService.open = true;
         fixture.detectChanges();
-        expect(compiled.textContent).toMatch(/popover1/);
-        expect(compiled.textContent).not.toMatch(/popover2/);
-    });
-
-    it("queues up opening of subsequent popovers if one is already open", function () {
-        fixture = TestBed.createComponent(TestComponent);
-        compiled = fixture.nativeElement;
-
-        fixture.componentInstance.open1 = true;
-        fixture.componentInstance.open2 = true;
-        fixture.componentInstance.open3 = true;
-        fixture.detectChanges();
-
-        // should only display the first popover
-        expect(compiled.textContent).toMatch(/popover1/);
-        expect(compiled.textContent).not.toMatch(/popover2/);
-        expect(compiled.textContent).not.toMatch(/popover3/);
-
-        fixture.componentInstance.open1 = false;
-        fixture.detectChanges();
-
-        // should display the second popover, now that first one is closed
-        expect(compiled.textContent).not.toMatch(/popover1/);
-        expect(compiled.textContent).toMatch(/popover2/);
-        expect(compiled.textContent).not.toMatch(/popover3/);
-
-        fixture.componentInstance.open2 = false;
-        fixture.detectChanges();
-
-        // should display the third popover, now that second one is closed
-        expect(compiled.textContent).not.toMatch(/popover1/);
-        expect(compiled.textContent).not.toMatch(/popover2/);
-        expect(compiled.textContent).toMatch(/popover3/);
-    });
-
-    it("shows popover content when using desugared syntax", function () {
-        fixture = TestBed.createComponent(DesugaredSyntaxComponent);
-        compiled = fixture.nativeElement;
-
-        fixture.componentInstance.open1 = true;
-        fixture.detectChanges();
-        expect(compiled.textContent).toMatch(/popover1/);
-        expect(compiled.textContent).not.toMatch(/popover2/);
+        position = getComputedStyle(fixture.componentInstance.popover.nativeElement).position;
+        expect(position).toEqual("absolute");
     });
 });
 
 @Component({
     template: `
         <span #anchor1>anchor1</span>
-        <div *clrPopover="open1; anchor: anchor1">
-            <span>popover1</span>
-        </div>
-        <span #anchor2>anchor2</span>
-        <div *clrPopover="open2; anchor: anchor2">
-            <span>popover2</span>
-        </div>
-        <span #anchor3>anchor3</span>
-        <div *clrPopover="open3; anchor: anchor3">
-            <span>popover3</span>
+        <div [clrPopoverAnchor]="anchor1">
+            <span #popover>popover1</span>
         </div>
     `
 })
 class TestComponent {
-    open1: boolean = false;
-    open2: boolean = false;
-    open3: boolean = false;
-}
-
-@Component({
-    template: `
-        <span #anchor1>anchor1</span>
-        <ng-template [(clrPopover)]="open1" [clrPopoverAnchor]="anchor1">
-            <span>popover1</span>
-        </ng-template>
-        <span #anchor2>anchor2</span>
-        <ng-template [(clrPopover)]="open2" [clrPopoverAnchor]="anchor2">
-            <span>popover2</span>
-        </ng-template>
-    `
-})
-class DesugaredSyntaxComponent {
-    @ViewChildren(PopoverDirective) popoverDirectives: QueryList<PopoverDirective>;
-
-    open1: boolean = false;
-    open2: boolean = false;
+    @ViewChild(PopoverDirective) popoverDirective: PopoverDirective;
+    @ViewChild("popover") popover: any;
 }

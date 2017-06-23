@@ -9,6 +9,7 @@ import {
 } from "@angular/core";
 
 import { Dropdown } from "./dropdown";
+import { IfOpenService } from "../../utils/conditional/if-open.service";
 
 @Directive({
     selector: "[clrDropdownToggle]",
@@ -22,7 +23,7 @@ import { Dropdown } from "./dropdown";
 export class DropdownToggle {
     private isRootLevelToggle: boolean = true;
 
-    constructor(private _dropdown: Dropdown) {
+    constructor(private _dropdown: Dropdown, private ifOpenService: IfOpenService) {
         // if the containing dropdown has a parent, then this is not the root level one
         if (_dropdown.parent) {
             this.isRootLevelToggle = false;
@@ -30,11 +31,11 @@ export class DropdownToggle {
     }
 
     get active(): boolean {
-        return this._dropdown.open;
+        return this.ifOpenService.open;
     }
 
     @HostListener("click")
     onDropdownToggleClick(): void {
-        this._dropdown.toggleDropdown();
+        this.ifOpenService.open = !this.ifOpenService.open;
     }
 }

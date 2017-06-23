@@ -8,7 +8,7 @@ import {
     HostListener
 } from "@angular/core";
 
-import { IfOpenService } from "./if-open.service";
+import { IfOpenService } from "../../utils/conditional/if-open.service";
 
 @Directive({
     selector: "[clrSignpostTrigger]"

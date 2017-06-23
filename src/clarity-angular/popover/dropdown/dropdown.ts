@@ -16,6 +16,7 @@ import {
 
 import { Point, PopoverOptions } from "../common/popover";
 import { menuPositions } from "./menu-positions";
+import {IfOpenService} from "../../utils/conditional/if-open.service";
 
 // TODO: the ng-content inside the ng-template should ideally just be
 // <ng-content select="clr-dropdown-menu"></ng-content>. Remove .dropdown-menu in 1.0?
@@ -23,10 +24,10 @@ import { menuPositions } from "./menu-positions";
     selector: "clr-dropdown",
     template: `
         <ng-content select="[clrDropdownToggle]"></ng-content>
-        <ng-template [(clrPopover)]="open" [clrPopoverAnchor]="anchor" [clrPopoverAnchorPoint]="anchorPoint"
-                     [clrPopoverPopoverPoint]="popoverPoint" [clrPopoverOptions]="popoverOptions">
+        <div class="dropdown-menu-wrapper" [clrPopoverAnchor]="anchor" [clrPopoverAnchorPoint]="anchorPoint"
+             [clrPopoverPopoverPoint]="popoverPoint" [clrPopoverOptions]="popoverOptions">
             <ng-content select="[clr-dropdown-menu, .dropdown-menu]"></ng-content>
-        </ng-template>
+        </div>
     `,
     host: {
         "[class.dropdown]" : "true",
@@ -34,8 +35,9 @@ import { menuPositions } from "./menu-positions";
         "[class.left-top]" : "menuPosition == 'left-top'",
         "[class.right-bottom]" : "menuPosition == 'right-bottom'",
         "[class.left-bottom]" : "menuPosition == 'left-bottom'",
-        "[class.open]" : "true" // always set to true; clrPopover will remove it from DOM when not open
-    }
+        "[class.open]" : "ifOpenService.open"
+    },
+    providers: [ IfOpenService ]
 })
 export class Dropdown {
 
@@ -51,7 +53,8 @@ export class Dropdown {
     public anchor: any; // host element is the anchor
     public popoverOptions: PopoverOptions = { allowMultipleOpen: true };
 
-    constructor(public elementRef: ElementRef, @SkipSelf() @Optional() public parent: Dropdown) {
+    constructor(public elementRef: ElementRef, @SkipSelf() @Optional() public parent: Dropdown,
+                public ifOpenService: IfOpenService) {
         this.anchor = elementRef.nativeElement;
     }
 
@@ -111,24 +114,11 @@ export class Dropdown {
         return this._menuPosition;
     }
 
-    toggleDropdown(): void {
-        this.open = !this.open;
-    }
-
-    get open(): boolean {
-        return this._open;
-    }
-
-    set open(val: boolean) {
-        this._open = val;
-        this._openChanged.emit(val);
-    }
-
     //called on mouse clicks anywhere in the DOM.
     //Checks to see if the mouseclick happened on the host or outside
     @HostListener("document:click", ["$event.target"])
     onMouseClick(target: any): void {
-        if (this._open) {
+        if (this.ifOpenService.open) {
             let current: any = target; //Get the element in the DOM on which the mouse was clicked
             let dropdownHost: any = this.elementRef.nativeElement; //Get the current dropdown native HTML element
 
@@ -139,7 +129,7 @@ export class Dropdown {
                 }
                 current = current.parentNode;
             }
-            this._open = false; //Remove .open from the dropdown
+            this.ifOpenService.open = false; //Remove .open from the dropdown
         }
     }
 }

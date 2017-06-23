@@ -7,7 +7,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { ClrSignpostModule } from "./signpost.module";
 import { ClrIconModule } from "../../icon/icon.module";
-import { IfOpenService } from "./if-open.service";
+import { IfOpenService } from "../../utils/conditional/if-open.service";
 import { Component } from "@angular/core";
 export default function(): void {
     describe("SignpostToggle component", function() {
@@ -29,9 +29,8 @@ export default function(): void {
         });
 
         it("should toggle the IfOpenService.open property on click", function() {
-            console.log(clarityElement);
             let trigger: HTMLElement = clarityElement.querySelector(".signpost-action");
-            console.log(ifOpenService, trigger);
+
             expect(ifOpenService.open).toBeUndefined();
             trigger.click();
             expect(ifOpenService.open).toEqual(true);

@@ -6,7 +6,6 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { Component, QueryList, ViewChild, ViewChildren, } from "@angular/core";
 import { ClrSignpostModule } from "./signpost.module";
-import { ClrIconModule } from "../../icon/icon.module";
 import { Signpost } from "./signpost";
 import { SignpostContent } from "./signpost-content";
 import { Point } from "../common/popover";
@@ -21,7 +20,7 @@ export default function(): void {
 
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [ ClrSignpostModule, ClrIconModule ],
+                imports: [ ClrSignpostModule ],
                 declarations: [ TestSignpost ]
             });
 

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -14,10 +14,15 @@
         <div class="content-container">
             <div class="content-area">
                 <div class="alert alert-danger">
-                    <div class="alert-item">
-                        <span class="alert-text">
-                            This alert is at the top of the page.
-                        </span>
+                    <div class="alert-items">
+                        <div class="alert-item static">
+                            <div class="alert-icon-wrapper">
+                                <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                            </div>
+                            <span class="alert-text">
+                                This alert is at the top of the page.
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <p>
@@ -28,10 +33,15 @@
                     mollit anim id est laborum.
                 </p>
                 <div class="alert alert-success">
-                    <div class="alert-item">
-                        <span class="alert-text">
-                            This alert is in the middle of the page.
-                        </span>
+                    <div class="alert-item static">
+                        <div class="alert-items">
+                            <div class="alert-icon-wrapper">
+                                <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+                            </div>
+                            <span class="alert-text">
+                                This alert is in the middle of the page.
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <p>
@@ -47,27 +57,35 @@
 </div>
 <pre>
     <code clr-code-highlight="language-html">
-    &lt;div class=&quot;content-area&quot;&gt;
-        &lt;div class=&quot;alert alert-danger&quot;&gt;
+    &lt;div class=&quot;alert alert-danger&quot;&gt;
+        &lt;div class=&quot;alert-items&quot;&gt;
             &lt;div class=&quot;alert-item&quot;&gt;
+                &lt;div class=&quot;alert-icon-wrapper&quot;&gt;
+                    &lt;clr-icon class=&quot;alert-icon&quot; shape=&quot;exclamation-circle&quot;&gt;&lt;/clr-icon&gt;
+                &lt;/div&gt;
                 &lt;span class=&quot;alert-text&quot;&gt;
                     This alert is at the top of the page.
                 &lt;/span&gt;
             &lt;/div&gt;
         &lt;/div&gt;
-        &lt;p&gt;
-            ...
-        &lt;/p&gt;
-        &lt;div class=&quot;alert alert-success&quot;&gt;
-            &lt;div class=&quot;alert-item&quot;&gt;
+    &lt;/div&gt;
+    &lt;p&gt;
+        ...
+    &lt;/p&gt;
+    &lt;div class=&quot;alert alert-success&quot;&gt;
+        &lt;div class=&quot;alert-item&quot;&gt;
+            &lt;div class=&quot;alert-items&quot;&gt;
+                &lt;div class=&quot;alert-icon-wrapper&quot;&gt;
+                    &lt;clr-icon class=&quot;alert-icon&quot; shape=&quot;check-circle&quot;&gt;&lt;/clr-icon&gt;
+                &lt;/div&gt;
                 &lt;span class=&quot;alert-text&quot;&gt;
                     This alert is in the middle of the page.
                 &lt;/span&gt;
             &lt;/div&gt;
         &lt;/div&gt;
-        &lt;p&gt;
-            ...
-        &lt;/p&gt;
     &lt;/div&gt;
+    &lt;p&gt;
+        ...
+    &lt;/p&gt;
     </code>
 </pre>

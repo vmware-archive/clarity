@@ -44,20 +44,28 @@
 <clr-example [clrCode]="example" clrLanguage="html"></clr-example>
 
 <div class="alert alert-warning">
-    <div class="alert-item">
-        <span class="alert-text">
-            In this example, the <code class="clr-code">[clrDgField]</code> input is a hard-coded
-            string, so it needs to be quoted twice:
-            <code class="clr-code">[clrDgField]=&quot;'name'&quot;</code>.
-        </span>
-    </div>
-    <div class="alert-item">
-        <span>
-            Another way to write this would be
-            <code class="clr-code">clrDgField=&quot;name&quot;</code>, without
-            having the extra quotes, but we do not recommend this. In particular, this leaves a
-            potentially unwanted attribute on the element, whereas the previous syntax only adds
-            a property to the corresponding Javascript object.
-        </span>
+    <div class="alert-items">
+        <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+            </div>
+            <span class="alert-text">
+                In this example, the <code class="clr-code">[clrDgField]</code> input is a hard-coded
+                string, so it needs to be quoted twice:
+                <code class="clr-code">[clrDgField]=&quot;'name'&quot;</code>.
+            </span>
+        </div>
+        <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+            </div>
+            <span class="alert-text">
+                Another way to write this would be
+                <code class="clr-code">clrDgField=&quot;name&quot;</code>, without
+                having the extra quotes, but we do not recommend this. In particular, this leaves a
+                potentially unwanted attribute on the element, whereas the previous syntax only adds
+                a property to the corresponding Javascript object.
+            </span>
+        </div>
     </div>
 </div>

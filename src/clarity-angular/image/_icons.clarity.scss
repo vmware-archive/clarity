@@ -1,13 +1,9 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 //Background SVG Images work only when the svg is url encoded.
 //Use this encoder http://meyerweb.com/eric/tools/dencoder/ to encode the SVG.
-
-//*******************************************************************
-//*PLEASE TEST ALL SVG IMAGES ON IE10 BEFORE PUSHING THEM TO MASTER**
-//*******************************************************************
 
 $svg_data: "data:image/svg+xml;charset=utf8";
 
@@ -23,20 +19,6 @@ $svg_data: "data:image/svg+xml;charset=utf8";
     + str-slice($fillColor + "",2)
     + "%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3Eexclamation-triangle-line%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20class%3D%22clr-i-outline%20clr-i-outline-path-1%22%20d%3D%22M18%2C21.32a1.3%2C1.3%2C0%2C0%2C0%2C1.3-1.3V14a1.3%2C1.3%2C0%2C1%2C0-2.6%2C0v6A1.3%2C1.3%2C0%2C0%2C0%2C18%2C21.32Z%22%3E%3C%2Fpath%3E%3Ccircle%20class%3D%22clr-i-outline%20clr-i-outline-path-2%22%20cx%3D%2217.95%22%20cy%3D%2224.27%22%20r%3D%221.5%22%3E%3C%2Fcircle%3E%3Cpath%20class%3D%22clr-i-outline%20clr-i-outline-path-3%22%20d%3D%22M30.33%2C25.54%2C20.59%2C7.6a3%2C3%2C0%2C0%2C0-5.27%2C0L5.57%2C25.54A3%2C3%2C0%2C0%2C0%2C8.21%2C30H27.69a3%2C3%2C0%2C0%2C0%2C2.64-4.43Zm-1.78%2C1.94a1%2C1%2C0%2C0%2C1-.86.49H8.21a1%2C1%2C0%2C0%2C1-.88-1.48L17.07%2C8.55a1%2C1%2C0%2C0%2C1%2C1.76%2C0l9.74%2C17.94A1%2C1%2C0%2C0%2C1%2C28.55%2C27.48Z%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsvg%3E";
     @return url("#{$svg_data},#{$warning-icon}");
-}
-
-@function generateSuccessIcon($fillColor:$greens-dark-midtone) {
-    $success-icon: "%3Csvg%20version%3D%221.1%22%20viewBox%3D%225%205%2026%2026%22%20preserveAspectRatio%3D%22xMidYMid%20meet%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%09.clr-i-outline%7Bfill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3Bfill%3A%23"
-    + str-slice($fillColor + "",2)
-    + "%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3Echeck-circle-line%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20class%3D%22clr-i-outline%20clr-i-outline-path-1%22%20d%3D%22M18%2C6A12%2C12%2C0%2C1%2C0%2C30%2C18%2C12%2C12%2C0%2C0%2C0%2C18%2C6Zm0%2C22A10%2C10%2C0%2C1%2C1%2C28%2C18%2C10%2C10%2C0%2C0%2C1%2C18%2C28Z%22%3E%3C%2Fpath%3E%3Cpath%20class%3D%22clr-i-outline%20clr-i-outline-path-2%22%20d%3D%22M16.34%2C23.74l-5-5a1%2C1%2C0%2C0%2C1%2C1.41-1.41l3.59%2C3.59%2C6.78-6.78a1%2C1%2C0%2C0%2C1%2C1.41%2C1.41Z%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsvg%3E";
-    @return url("#{$svg_data},#{$success-icon}");
-}
-
-@function generateInfoIcon($fillColor:$action-blues-dark-midtone) {
-    $info-icon: "%3Csvg%20version%3D%221.1%22%20viewBox%3D%225%205%2026%2026%22%20preserveAspectRatio%3D%22xMidYMid%20meet%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%09.clr-i-outline%7Bfill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3Bfill%3A%23"
-    + str-slice($fillColor + "",2)
-    + "%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3Einfo-circle-line%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ccircle%20class%3D%22clr-i-outline%20clr-i-outline-path-1%22%20cx%3D%2217.93%22%20cy%3D%2211.9%22%20r%3D%221.4%22%3E%3C%2Fcircle%3E%3Cpath%20class%3D%22clr-i-outline%20clr-i-outline-path-2%22%20d%3D%22M21%2C23H19V15H16a1%2C1%2C0%2C0%2C0%2C0%2C2h1v6H15a1%2C1%2C0%2C1%2C0%2C0%2C2h6a1%2C1%2C0%2C0%2C0%2C0-2Z%22%3E%3C%2Fpath%3E%3Cpath%20class%3D%22clr-i-outline%20clr-i-outline-path-3%22%20d%3D%22M18%2C6A12%2C12%2C0%2C1%2C0%2C30%2C18%2C12%2C12%2C0%2C0%2C0%2C18%2C6Zm0%2C22A10%2C10%2C0%2C1%2C1%2C28%2C18%2C10%2C10%2C0%2C0%2C1%2C18%2C28Z%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsvg%3E";
-    @return url("#{$svg_data},#{$info-icon}");
 }
 
 @function generateSpinnerIcon($fillBgColor:#000000,$fillSnakeColor:$action-blues-dark-midtone,$opacityBg:0.15) {
@@ -58,46 +40,6 @@ $svg_data: "data:image/svg+xml;charset=utf8";
 @function generateVMWLogo(){
     $logo: "%3Csvg%20viewBox%3D%220%200%2036%2036%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3Evm%20bug%3C%2Ftitle%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22Headers%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22CL-Headers-Specs%22%20transform%3D%22translate(-262.000000%2C%20-175.000000)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%2201%22%20transform%3D%22translate(238.000000%2C%20163.000000)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22vm-bug%22%20transform%3D%22translate(24.703125%2C%2012.000000)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Crect%20id%3D%22Rectangle-42%22%20fill-opacity%3D%220.25%22%20fill%3D%22%23DDDDDD%22%20opacity%3D%220.6%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2236%22%20height%3D%2236%22%20rx%3D%223%22%3E%3C%2Frect%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M7.63948376%2C13.8762402%20C7.32265324%2C13.2097082%206.53978152%2C12.9085139%205.80923042%2C13.219934%20C5.07771043%2C13.5322837%204.80932495%2C14.3103691%205.13972007%2C14.9769011%20L8.20725954%2C21.3744923%20C8.68977207%2C22.3784735%209.19844491%2C22.9037044%2010.1528121%2C22.9037044%20C11.1720955%2C22.9037044%2011.6168209%2C22.3310633%2012.0983646%2C21.3744923%20C12.0983646%2C21.3744923%2014.7744682%2C15.7847341%2014.8015974%2C15.7261685%20C14.8287266%2C15.6666733%2014.9149588%2C15.4863286%2015.1872199%2C15.4872582%20C15.4178182%2C15.490047%2015.6106294%2C15.6657437%2015.6106294%2C15.9018652%20L15.6106294%2C21.3698443%20C15.6106294%2C22.212073%2016.0979865%2C22.9037044%2017.0349134%2C22.9037044%20C17.9718403%2C22.9037044%2018.4785754%2C22.212073%2018.4785754%2C21.3698443%20L18.4785754%2C16.8965503%20C18.4785754%2C16.0338702%2019.1219254%2C15.4742436%2020.0007183%2C15.4742436%20C20.8785423%2C15.4742436%2021.4637583%2C16.0524624%2021.4637583%2C16.8965503%20L21.4637583%2C21.3698443%20C21.4637583%2C22.212073%2021.9520842%2C22.9037044%2022.8880423%2C22.9037044%20C23.8240003%2C22.9037044%2024.3326731%2C22.212073%2024.3326731%2C21.3698443%20L24.3326731%2C16.8965503%20C24.3326731%2C16.0338702%2024.9750543%2C15.4742436%2025.8538472%2C15.4742436%20C26.7307023%2C15.4742436%2027.3168871%2C16.0524624%2027.3168871%2C16.8965503%20L27.3168871%2C21.3698443%20C27.3168871%2C22.212073%2027.8052131%2C22.9037044%2028.74214%2C22.9037044%20C29.6771291%2C22.9037044%2030.1848331%2C22.212073%2030.1848331%2C21.3698443%20L30.1848331%2C16.2783582%20C30.1848331%2C14.4070488%2028.6181207%2C13.0962956%2026.7307023%2C13.0962956%20C24.8452216%2C13.0962956%2023.6651006%2C14.3475536%2023.6651006%2C14.3475536%20C23.037253%2C13.5666793%2022.1720247%2C13.0972252%2020.7089847%2C13.0972252%20C19.164557%2C13.0972252%2017.8129406%2C14.3475536%2017.8129406%2C14.3475536%20C17.1841241%2C13.5666793%2016.1154267%2C13.0972252%2015.2308204%2C13.0972252%20C13.8617638%2C13.0972252%2012.7746572%2C13.675444%2012.1119292%2C15.1302871%20L10.1528121%2C19.5608189%20L7.63948376%2C13.8762402%22%20id%3D%22Fill-4%22%20fill%3D%22%23FFFFFF%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E";
     @return url("#{$svg_data},#{$logo}");
-}
-
-@function generateUpdateIcon($fillBgColor:$clr-white){
-    $update-icon: "%3Csvg%20id%3D%22Layer_3%22%20data-name%3D%22Layer%203%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2013%2013.88%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%23"
-    + str-slice($fillBgColor + "",2)
-    + "%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Ctitle%3Eic_update%3C%2Ftitle%3E%3Cpath%20class%3D%22cls-1%22%20d%3D%22M13.83%2C15h-12c-0.28%2C0-.5%2C0-0.5-0.5s0.22-.5.5-0.5h12c0.28%2C0%2C.5%2C0%2C0.5.5S14.11%2C15%2C13.83%2C15Z%22%20transform%3D%22translate(-1.33%20-1.12)%22%2F%3E%3Cpath%20class%3D%22cls-1%22%20d%3D%22M12.58%2C7.8a0.48%2C0.48%2C0%2C0%2C0-.67-0.68L8.48%2C10.56v-9A0.47%2C0.47%2C0%2C0%2C0%2C8%2C1.12a0.48%2C0.48%2C0%2C0%2C0-.48.48v9L4.09%2C7.12a0.49%2C0.49%2C0%2C0%2C0-.68%2C0%2C0.48%2C0.48%2C0%2C0%2C0%2C0%2C.68l4.25%2C4.25a0.46%2C0.46%2C0%2C0%2C0%2C.67%2C0Zm0%2C0%22%20transform%3D%22translate(-1.33%20-1.12)%22%2F%3E%3C%2Fsvg%3E";
-    @return url("#{$svg_data},#{$update-icon}");
-}
-
-@function generateAddIcon($fillBgColor:$gray-dark){
-    $add-icon: "%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%220%200%2016%2016%22%20style%3D%22enable-background%3Anew%200%200%2016%2016%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%09.st0%7Bfill%3Anone%3Bstroke%3A%23"
-    + str-slice($fillBgColor + "",2)
-    + "%3Bstroke-width%3A2%3Bstroke-linecap%3Around%3Bstroke-miterlimit%3A10%3B%7D%0A%3C%2Fstyle%3E%0A%3Cg%3E%0A%09%3Cg%3E%0A%09%09%3Cline%20class%3D%22st0%22%20x1%3D%228%22%20y1%3D%221%22%20x2%3D%228%22%20y2%3D%2215%22%2F%3E%0A%09%09%3Cline%20class%3D%22st0%22%20x1%3D%221%22%20y1%3D%228%22%20x2%3D%2215%22%20y2%3D%228%22%2F%3E%0A%09%3C%2Fg%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A";
-    @return url("#{$svg_data},#{$add-icon}");
-}
-
-@function generateEditIcon($fillBgColor:$gray-dark){
-    $edit-icon: "%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%220%200%2016%2016%22%20style%3D%22enable-background%3Anew%200%200%2016%2016%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%09.st0%7Bfill%3A%23"
-    + str-slice($fillBgColor + "",2)
-    + "%3B%7D%0A%09.st1%7Bfill%3Anone%3Bstroke%3A%23"
-    + str-slice($fillBgColor + "",2)
-    + "%3Bstroke-miterlimit%3A10%3B%7D%0A%3C%2Fstyle%3E%0A%3Cg%3E%0A%09%3Cg%3E%0A%09%09%3Cpolygon%20class%3D%22st0%22%20points%3D%225.3%2C13.4%203.9%2C11.9%2013.6%2C2.3%2015%2C3.7%20%09%09%22%2F%3E%0A%09%09%3Cpolygon%20class%3D%22st1%22%20points%3D%2212.2%2C1%201.7%2C11.5%200.5%2C15%201%2C15.5%204.4%2C14.2%2014.9%2C3.7%20%09%09%22%2F%3E%0A%09%09%3Cpolygon%20class%3D%22st0%22%20points%3D%221.3%2C12.8%200.5%2C15%201%2C15.5%203.1%2C14.6%20%09%09%22%2F%3E%0A%09%3C%2Fg%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A";
-    @return url("#{$svg_data},#{$edit-icon}");
-}
-
-@function generateFolderAddIcon($fillBgColor:$gray-dark){
-    $folder-add-icon: "%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%220%200%2016%2016%22%20style%3D%22enable-background%3Anew%200%200%2016%2016%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%09.st0%7Bfill%3Anone%3Bstroke%3A%23"
-    + str-slice($fillBgColor + "",2)
-    "%3Bstroke-miterlimit%3A10%3B%7D%0A%09.st1%7Bfill%3A%23"
-    + str-slice($fillBgColor + "",2)
-    "%3B%7D%0A%09.st2%7Bfill%3Anone%3Bstroke%3A%23"
-    + str-slice($fillBgColor + "",2)
-    "%3Bstroke-width%3A2%3Bstroke-miterlimit%3A10%3B%7D%0A%3C%2Fstyle%3E%0A%3Cg%3E%0A%09%3Cg%3E%0A%09%09%3Cpath%20class%3D%22st0%22%20d%3D%22M2.5%2C8v1.2v6.3h13V7.3c0-0.5-0.4-0.9-0.9-0.9H9.1l-1-0.9H5%22%2F%3E%0A%09%3C%2Fg%3E%0A%09%3Cg%3E%0A%09%09%3Cpolygon%20class%3D%22st1%22%20points%3D%228%2C7%202%2C7%202%2C8%208%2C8%209%2C7%209%2C6%20%09%09%22%2F%3E%0A%09%09%3Cline%20class%3D%22st2%22%20x1%3D%223%22%20y1%3D%220%22%20x2%3D%223%22%20y2%3D%226%22%2F%3E%0A%09%3C%2Fg%3E%0A%09%3Cline%20class%3D%22st2%22%20x1%3D%220%22%20y1%3D%223%22%20x2%3D%226%22%20y2%3D%223%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A";
-    @return url("#{$svg_data},#{$folder-add-icon}");
-}
-
-@function generateMoreIcon($fillBgColor: $gray-dark) {
-    $folder-more-icon: "%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%220%200%2016%2016%22%20style%3D%22enable-background%3Anew%200%200%2016%2016%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%09.st0%7Bfill%3A%23"
-    + str-slice($fillBgColor + "",2) "%3B%7D%0A%3C%2Fstyle%3E%0A%3Cg%3E%0A%09%3Ccircle%20class%3D%22st0%22%20cx%3D%222.1%22%20cy%3D%228.2%22%20r%3D%221.8%22%2F%3E%0A%09%3Ccircle%20class%3D%22st0%22%20cx%3D%228.1%22%20cy%3D%228.2%22%20r%3D%221.8%22%2F%3E%0A%09%3Ccircle%20class%3D%22st0%22%20cx%3D%2214.1%22%20cy%3D%228.2%22%20r%3D%221.8%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A";
-    @return url("#{$svg_data},#{$folder-more-icon}");
 }
 
 @function generateSearchIcon($fillBgColor: $clr-white) {

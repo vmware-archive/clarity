@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -8,14 +8,19 @@
     <div class="card">
         <div class="card-block">
             <div class="alert alert-warning alert-sm">
+                <div class="alert-items">
+                    <div class="alert-item static">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                        </div>
+                        <span class="alert-text">
+                            Use small alerts in a card.
+                        </span>
+                    </div>
+                </div>
                 <button type="button" class="close" aria-label="Close">
                     <clr-icon aria-hidden="true" shape="close"></clr-icon>
                 </button>
-                <div class="alert-item">
-                    <span class="alert-text">
-                        Use small alerts in a card.
-                    </span>
-                </div>
             </div>
             <div class="card-media-block wrap">
                 <img class="card-media-image" src="http://placehold.it/60x60" />
@@ -43,14 +48,19 @@
     &lt;div class=&quot;card&quot;&gt;
         &lt;div class=&quot;card-block&quot;&gt;
             &lt;div class=&quot;alert alert-warning alert-sm&quot;&gt;
-                &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;&gt;
-                    &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
-                &lt;/button&gt;
-                &lt;div class=&quot;alert-item&quot;&gt;
-                    &lt;span class=&quot;alert-text&quot;&gt;
-                        Use small alerts in a card.
-                    &lt;/span&gt;
+                &lt;div class=&quot;alert-items&quot;&gt;
+                    &lt;div class=&quot;alert-item static&quot;&gt;
+                        &lt;div class=&quot;alert-icon-wrapper&quot;&gt;
+                            &lt;clr-icon class=&quot;alert-icon&quot; shape=&quot;exclamation-triangle&quot;&gt;&lt;/clr-icon&gt;
+                        &lt;/div&gt;
+                        &lt;span class=&quot;alert-text&quot;&gt;
+                            Use small alerts in a card.
+                        &lt;/span&gt;
+                    &lt;/div&gt;
                 &lt;/div&gt;
+                &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;&gt;
+                    &lt;clr-icon aria-hidden=&quot;true&quot; shape=&quot;close&quot;&gt;&lt;/clr-icon&gt;
+                &lt;/button&gt;
             &lt;/div&gt;
             &lt;div class=&quot;card-media-block wrap&quot;&gt;
                 &lt;img class=&quot;card-media-image&quot; src=&quot;http://placehold.it/60x60&quot; /&gt;

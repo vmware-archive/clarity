@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,7 +9,6 @@ import {AlertsDemo} from "./alert.demo";
 
 import {AlertStaticDemo} from "./static/alert-static";
 import {AlertStylesDemo} from "./static/alert-styles";
-import {AlertStylesOldDemo} from "./static/alert-styles-old";
 import {AlertContentAreaDemo} from "./static/alert-content-area";
 import {AlertCardsDemo} from "./static/alert-cards";
 import {AlertModalsDemo} from "./static/alert-modals";
@@ -35,7 +34,6 @@ const ROUTES: Routes = [
                 children: [
                     { path: "", redirectTo: "styles", pathMatch: "full" },
                     { path: "styles", component: AlertStylesDemo },
-                    { path: "old-close-buttons", component: AlertStylesOldDemo },
                     { path: "content-area", component: AlertContentAreaDemo },
                     { path: "cards", component: AlertCardsDemo },
                     { path: "modals", component: AlertModalsDemo },

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,7 +14,6 @@ import {Component} from "@angular/core";
         <h4>Static Styles</h4>
         <ul>
             <li><a [routerLink]="['./styles']">Styles</a></li>
-            <li><a [routerLink]="['./old-close-buttons']">Old Close Buttons</a></li>
             <li><a [routerLink]="['./sizes']">Sizes</a></li>
             <li><a [routerLink]="['./cards']">Alerts in Cards</a></li>
             <li><a [routerLink]="['./modals']">Alerts in Modals</a></li>

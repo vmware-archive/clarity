@@ -20,44 +20,12 @@
     .alert-icon, .clr-icon {
         @extend %icon-styles;
 
-        &.clr-icon-danger, &.icon-danger {
-            background-image: generateErrorIcon();
-        }
-
-        &.clr-icon-danger-white, &.icon-danger-white {
-            background-image: generateErrorIcon($gray-lightest);
-        }
-
         &.clr-icon-warning, &.icon-warning {
             background-image: generateWarningIcon();
         }
 
         &.clr-icon-warning-white {
             background-image: generateWarningIcon($gray-lightest);
-        }
-
-        &.clr-icon-success, &.icon-success {
-            background-image: generateSuccessIcon();
-        }
-
-        &.clr-icon-success-white {
-            background-image: generateSuccessIcon($gray-lightest);
-        }
-
-        &.clr-icon-info, &.icon-info {
-            background-image: generateInfoIcon();
-        }
-
-        &.clr-icon-info-white {
-            background-image: generateInfoIcon($gray-lightest);
-        }
-
-        &.clr-icon-update {
-            background-image: generateUpdateIcon();
-        }
-
-        &.clr-icon-caret {
-            background-image: generateCaretIcon();
         }
 
         &.clr-vmw-logo {

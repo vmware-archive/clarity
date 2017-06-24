@@ -138,6 +138,13 @@ export default function (): void {
                 component.sort();
                 expect(sortService.comparator).toEqual(new DatagridPropertyComparator("test"));
             });
+
+            it("sorts based on a property shortcut for sortBy without a given comparator", function () {
+                component.sortBy = "test";
+                expect(sortService.comparator).toBeUndefined();
+                component.sort();
+                expect(sortService.comparator).toEqual(new DatagridPropertyComparator("test"));
+            });
         });
 
         describe("Template API", function () {
@@ -147,6 +154,14 @@ export default function (): void {
                 this.context.testComponent.comparator = this.comparator;
                 this.context.detectChanges();
                 expect(this.context.clarityDirective.sortBy).toBe(this.comparator);
+            });
+
+            it("receives a string input for the property shortcut comparator", function () {
+                this.context = this.create(DatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+                this.comparator = new DatagridPropertyComparator("test");
+                this.context.testComponent.comparator = "test";
+                this.context.detectChanges();
+                expect(this.context.clarityDirective.sortBy).toEqual(this.comparator);
             });
 
             it("receives an input for the property name", function () {
@@ -411,7 +426,7 @@ class SimpleDeprecatedTest {
     `
 })
 class SimpleTest {
-    comparator: Comparator<any>;
+    comparator: Comparator<any> | string;
     field: string;
     sortOrder = SortOrder.Unsorted;
 }

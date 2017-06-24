@@ -22,6 +22,9 @@ class MyComponent {
     sortingHTML: `
 <-- In the columns declaration -->
 <clr-dg-column [clrDgField]="'pokemon.name'"
-               [clrDgSortBy]="pokemonComparator">Pokemon</clr-dg-column>
+    [clrDgSortBy]="pokemonComparator">Pokemon</clr-dg-column>
+
+<-- Or, default propery comparator created by shortcut on clrDgSortBy -->
+<clr-dg-column [clrDgSortBy]="'pokemon.name'">Pokemon</clr-dg-column>
 `
 };

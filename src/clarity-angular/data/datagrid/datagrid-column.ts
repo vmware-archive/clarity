@@ -43,19 +43,19 @@ let nbCount: number = 0;
                     [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
 
             <ng-template #columnTitle><ng-content></ng-content></ng-template>
-            
+
             <button class="datagrid-column-title" *ngIf="sortable" (click)="sort()" type="button">
                <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
             </button>
-            
+
             <span class="datagrid-column-title" *ngIf="!sortable">
                <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
             </span>
-            
+
             <div class="datagrid-column-separator">
                 <button #columnHandle class="datagrid-column-handle" tabindex="-1" type="button"></button>
                 <div #columnHandleTracker class="datagrid-column-handle-tracker"></div>
-            </div>        
+            </div>
         </div>
     `,
     host: {
@@ -163,14 +163,18 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
     }
 
     @Input("clrDgSortBy")
-    public set sortBy(comparator: Comparator<any>) {
-        if (comparator) {
-            this._sortBy = comparator;
+    public set sortBy(comparator: Comparator<any> | string) {
+        if (typeof comparator === "string") {
+            this._sortBy = new DatagridPropertyComparator(comparator);
         } else {
-            if (this._field) {
-                this._sortBy = new DatagridPropertyComparator(this._field);
+            if (comparator) {
+                this._sortBy = comparator;
             } else {
-                delete this._sortBy;
+                if (this._field) {
+                    this._sortBy = new DatagridPropertyComparator(this._field);
+                } else {
+                    delete this._sortBy;
+                }
             }
         }
     }

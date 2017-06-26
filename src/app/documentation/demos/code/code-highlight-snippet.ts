@@ -6,15 +6,16 @@
 import {Component} from "@angular/core";
 
 const HTML_EXAMPLE = `
+<!-- "&#123;" left curly brace / "&#125;" right curly brace -->
 <pre>
     <code clr-code-highlight="language-css">
-        .some-component {
+        .some-component &#123;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-        }
+        &#125;
     </code>
 </pre>
 `;

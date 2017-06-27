@@ -37,11 +37,27 @@ export default function (): void {
             context.detectChanges();
             expect(context.clarityElement.classList.contains("datagrid-cell--hidden")).toBeTruthy();
         });
+
+        it("does only adds .datagrid-signpost-trigger class when there is a signpost", function() {
+            expect(context.clarityElement.classList.contains("datagrid-signpost-trigger")).toBeFalsy();
+            context.testComponent.signpostTest = true;
+            context.detectChanges();
+            expect(context.clarityElement.classList.contains("datagrid-signpost-trigger")).toBeTruthy();
+        });
     });
 }
 
 @Component({
     template: `
-        <clr-dg-cell>Hello world</clr-dg-cell>`
+        <clr-dg-cell>
+            Hello world
+            <clr-signpost *ngIf="signpostTest">
+                <clr-signpost-content *clrIfOpen>
+                    The user is strong.
+                </clr-signpost-content>
+            </clr-signpost>
+        </clr-dg-cell>`
 })
-class SimpleTest { }
+class SimpleTest {
+    signpostTest: boolean = false;
+}

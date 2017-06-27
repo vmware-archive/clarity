@@ -9,6 +9,9 @@
 <button class="btn btn-outline-primary" (click)="toggleId()">
     Toggle ID
 </button>
+<button class="btn btn-outline-primary" (click)="conditionalSignpost = !conditionalSignpost">
+    Toggle Signposts
+</button>
 <button class="btn btn-outline-primary" (click)="toggleDate()">
     Toggle Date
 </button>
@@ -43,10 +46,31 @@
     <clr-dg-placeholder>No users found</clr-dg-placeholder>
 
     <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
-        <clr-dg-cell *ngIf="showId">{{user.id}}</clr-dg-cell>
+        <clr-dg-cell *ngIf="showId">
+            {{user.id}}
+            <clr-signpost [clrSignpostPosition]="'bottom-middle'" *ngIf="conditionalSignpost">
+                <clr-signpost-content *clrIfOpen>
+                    The user is strong.
+                </clr-signpost-content>
+            </clr-signpost>
+        </clr-dg-cell>
         <clr-dg-cell>{{user.name}}</clr-dg-cell>
         <clr-dg-cell *ngIf="showDate">{{user.creation | date}}</clr-dg-cell>
-        <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+        <clr-dg-cell>
+            {{user.pokemon.name}}
+            <clr-signpost [clrSignpostPosition]="'top-middle'">
+                <button
+                    type="button"
+                    class="signpost-action btn btn-small btn-link"
+                    [class.active]="open"
+                    clrSignpostTrigger>
+                    <clr-icon shape="help-info"></clr-icon>
+                </button>
+                <clr-signpost-content *clrIfOpen>
+                    The pokemon is strong.
+                </clr-signpost-content>
+            </clr-signpost>
+        </clr-dg-cell>
         <clr-dg-cell>
             <span class="color-square" [style.backgroundColor]="user.color"></span>
         </clr-dg-cell>

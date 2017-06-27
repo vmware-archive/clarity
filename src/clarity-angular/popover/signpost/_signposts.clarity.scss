@@ -374,7 +374,7 @@
         }
 
         &-content {
-            background-color: $clr-white;
+            background-color: transparent;
             min-width: 216px;
             max-width: 360px;
             min-height: 84px;
@@ -385,7 +385,7 @@
             .signpost-flex-wrap {
                 border: 1px solid $clr-dark-midtone-gray;
                 border-radius: 3px;
-                //overflow-y: hidden;
+                background-color: $clr-white;
                 display: flex;
                 flex-direction: column;
                 z-index: map-get($clr-layers, tooltips);

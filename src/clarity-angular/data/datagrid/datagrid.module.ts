@@ -12,6 +12,7 @@ import { FormsModule } from "@angular/forms";
 import { ClrCommonPopoverModule } from "../../popover/common/popover.module";
 import { ClrLoadingModule } from "../../utils/loading/loading.module";
 import { DATAGRID_DIRECTIVES } from "./index";
+import { ClrOutsideClickModule } from "../../utils/outside-click/outside-click.module";
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { DATAGRID_DIRECTIVES } from "./index";
         ClrFormsModule,
         FormsModule,
         ClrCommonPopoverModule,
-        ClrLoadingModule
+        ClrLoadingModule,
+        ClrOutsideClickModule
     ],
     declarations: [
         DATAGRID_DIRECTIVES,

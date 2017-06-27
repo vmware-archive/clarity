@@ -4,17 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    Component, EventEmitter, HostListener, Input, Output, ElementRef
+    Component, EventEmitter, Input, Output, ElementRef
 } from "@angular/core";
 import {Point} from "../../popover/common/popover";
 
 @Component({
     selector: "clr-dg-action-overflow",
     template: `
-        <clr-icon #anchor shape="ellipsis-vertical" class="datagrid-action-toggle" (click)="toggle()"></clr-icon>
+        <clr-icon #anchor shape="ellipsis-vertical" class="datagrid-action-toggle" (click)="toggle($event)"></clr-icon>
         <ng-template [(clrPopoverOld)]="open" [clrPopoverOldAnchor]="anchor" [clrPopoverOldAnchorPoint]="anchorPoint"
-             [clrPopoverOldPopoverPoint]="popoverPoint">
-            <div #menu class="datagrid-action-overflow">
+                     [clrPopoverOldPopoverPoint]="popoverPoint">
+            <div #menu class="datagrid-action-overflow" (clrOutsideClick)="close($event)" [clrStrict]="true">
                 <ng-content></ng-content>
             </div>
         </ng-template>
@@ -48,36 +48,30 @@ export class DatagridActionOverflow {
 
     @Output("clrDgActionOverflowOpenChange") public openChanged = new EventEmitter<boolean>(false);
 
+    /*
+     * We need to remember the click that opens the menu, to make sure it doesn't close the menu instantly
+     * when the event bubbles up the DOM all the way to the document, which we also listen to.
+     */
+    private openingEvent: any;
+
     /**
      * Shows/hides the action overflow menu
      */
-    public toggle() {
+    public toggle(event: any) {
+        this.openingEvent = event;
         this.open = !this.open;
     }
 
-    //called on mouse clicks anywhere in the DOM.
-    //Checks to see if the mouseclick happened on the host or outside
-    @HostListener("document:click", [ "$event.target" ])
-    onMouseClick(target: any): void {
-        if (this._open) {
-            let current: any = target; //Get the element in the DOM on which the mouse was clicked
-            let actionMenuHost: any = this.elementRef.nativeElement; //Get the current actionMenu native HTML element
-
-            if (target.className === "datagrid-action-overflow") {
-                return; // if clicking on the action overflow container but not the content, return without closing
-            }
-
-            //Start checking if current and actionMenuHost are equal. If not traverse to the parentNode and check again.
-            while (current) {
-                if (current.className === "datagrid-action-overflow") {
-                    break; // if user clicked on the overflow menu, hide it
-                }
-                if (current === actionMenuHost) {
-                    return;
-                }
-                current = current.parentNode;
-            }
-            this._open = false; // Hide the overflow menu
+    public close(event: MouseEvent) {
+        /*
+         * Because this listener is added synchonously, before the event finishes bubbling up the DOM,
+         * we end up firing on the very click that just opened the menu, p
+         * otentially closing it immediately every time. So we just ignore it.
+         */
+        if (event === this.openingEvent) {
+            delete this.openingEvent;
+            return;
         }
+        this.open = false;
     }
 }

@@ -373,6 +373,11 @@
             vertical-align: bottom;
         }
 
+        .datagrid-signpost-trigger {
+            height: $clr_baselineRem_1_5 - 1;
+            padding: 0 12px 0;
+        }
+
         .datagrid-expandable-caret {
             $horizontalPadding: ($clr-datagrid-fixed-column-size - $clr_baselineRem_1_25) / 2;
             padding: ($clr_baselineRem_0_125 - 1) $horizontalPadding $clr_baselineRem_0_125;

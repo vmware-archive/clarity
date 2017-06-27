@@ -13,6 +13,7 @@ import {ClrCommonPopoverModule} from "../../popover/common/popover.module";
 import {ClrLoadingModule} from "../../utils/loading/loading.module";
 import {DATAGRID_DIRECTIVES} from "./index";
 import {ClrIfExpandModule} from "../../utils/expand/if-expand.module";
+import {ClrOutsideClickModule} from "../../utils/outside-click/outside-click.module";
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import {ClrIfExpandModule} from "../../utils/expand/if-expand.module";
         ClrFormsModule,
         FormsModule,
         ClrCommonPopoverModule,
-        ClrLoadingModule
+        ClrLoadingModule,
+        ClrOutsideClickModule
     ],
     declarations: [
         DATAGRID_DIRECTIVES,

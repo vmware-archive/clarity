@@ -13,11 +13,10 @@ import { RouterModule } from "@angular/router";
 import { DocWrapperModule } from "../_doc-wrapper/doc-wrapper.module";
 import { UtilsModule } from "../../../utils/utils.module";
 
-import { DesugaredIfOpenDemo } from "./de-sugared-if-open.demo";
 import { SignpostDemo } from "./signpost.demo";
-import { SignpostFormDemo } from "./signpost-form.demo";
 import { SignpostParagraphDemo } from "./signpost-paragraph.demo";
 import { SignpostPositionsDemo } from "./signpost-positions.demo";
+import { SignpostTriggersDemo } from "./signpost-triggers.demo";
 
 @NgModule({
     imports: [
@@ -29,11 +28,10 @@ import { SignpostPositionsDemo } from "./signpost-positions.demo";
         UtilsModule
     ],
     declarations: [
-        DesugaredIfOpenDemo,
         SignpostDemo,
-        SignpostFormDemo,
         SignpostParagraphDemo,
-        SignpostPositionsDemo
+        SignpostPositionsDemo,
+        SignpostTriggersDemo
     ]
 })
 export class SignpostDemoModule {

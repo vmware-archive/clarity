@@ -49,8 +49,8 @@ describe("Popover directive", () => {
 @Component({
     template: `
         <span #anchor1>anchor1</span>
-        <div [clrPopoverAnchor]="anchor1">
-            <span #popover>popover1</span>
+        <div [clrPopoverAnchor]="anchor1" #popover>
+            <span>popover1</span>
         </div>
     `
 })

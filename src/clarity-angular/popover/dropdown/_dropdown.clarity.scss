@@ -202,6 +202,15 @@ $dropdown-white: clr-getColor(lightest);
         }
     }
 
+    .dropdown-menu-wrapper.is-open > .dropdown-menu {
+        //HATE THIS but this is the only solution that i can think of right now.
+        //NOTE: this makes sure that the width of .dropdown-menu-wrapper is not zero.
+        //WHY?: the wrapper is used in the angular component and has position: absolute
+        //when the menu is opened. position: absolute on the wrapper as well the menu
+        //makes the width of of the wrapper 0 and breaks all the *-right positions
+        position: static;
+    }
+
     //Directions
     .btn-group-overflow,
     .dropdown {
@@ -338,4 +347,6 @@ $dropdown-white: clr-getColor(lightest);
 
         }
     }
+
+
 }

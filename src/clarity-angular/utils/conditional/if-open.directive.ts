@@ -104,5 +104,6 @@ export class IfOpenDirective implements OnInit {
             this.updateView(change);
             this.openChange.emit(change);
         });
+        this.ifOpenService.addClass = true;
     }
 }

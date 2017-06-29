@@ -47,7 +47,8 @@ const signpostPositions: string[] = [
             </ng-container>
         </div>
         
-        <div [clrPopoverAnchor]="anchor"
+        <div class="signpost-popover"
+             [clrPopoverAnchor]="anchor"
              [clrPopoverAnchorPoint]="anchorPoint"
              [clrPopoverPopoverPoint]="popoverPoint"
              [clrPopoverOptions]="signpostOptions">

@@ -83,4 +83,9 @@ export class IfOpenService {
     public get open(): boolean {
         return this._open;
     }
+
+    //NOTE: This is just for dropdowns. This adds a class on the dropdown menu wrapper
+    //which removes the position: absolute from dropdown menu inside of it
+    //TODO: Remove this when we get rid of the deprecated dropdown
+    public addClass: boolean = false;
 }

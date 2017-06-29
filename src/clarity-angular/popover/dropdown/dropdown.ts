@@ -24,8 +24,12 @@ import {IfOpenService} from "../../utils/conditional/if-open.service";
     selector: "clr-dropdown",
     template: `
         <ng-content select="[clrDropdownToggle]"></ng-content>
-        <div class="dropdown-menu-wrapper" [clrPopoverAnchor]="anchor" [clrPopoverAnchorPoint]="anchorPoint"
-             [clrPopoverPopoverPoint]="popoverPoint" [clrPopoverOptions]="popoverOptions">
+        <div class="dropdown-menu-wrapper" 
+             [class.is-open]="ifOpenService.addClass" 
+             [clrPopoverAnchor]="anchor" 
+             [clrPopoverAnchorPoint]="anchorPoint"
+             [clrPopoverPopoverPoint]="popoverPoint" 
+             [clrPopoverOptions]="popoverOptions">
             <ng-content select="[clr-dropdown-menu, .dropdown-menu]"></ng-content>
         </div>
     `,

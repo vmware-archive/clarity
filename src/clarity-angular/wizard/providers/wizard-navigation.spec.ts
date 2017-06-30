@@ -530,6 +530,26 @@ export default function(): void {
                 expect(currentPage.onCommit.emit).toHaveBeenCalledTimes(1);
             });
 
+
+            it("should only commit page once on last page if there are wizard overrides", function() {
+                let wiz = context.clarityDirective;
+                let testPage = pageCollectionService.lastPage;
+                spyOn(testPage.onCommit, "emit");
+
+                wiz.navService.setCurrentPage(testPage);
+                expect(wiz.currentPage).toBe(testPage, "last page was made current");
+                context.detectChanges();
+
+                wiz.stopNext = true;
+                context.detectChanges();
+                expect(wiz.navService.wizardHasAltNext).toBe(true, "navService registers that we have an alt next");
+
+                wizardNavigationService.checkAndCommitCurrentPage("finish");
+
+                expect(testPage.onCommit.emit).toHaveBeenCalledTimes(1);
+            });
+
+
             it("should notify wizardFinished if finish", function() {
                 let calledAsExpected = false;
                 let checkMe = wizardNavigationService.wizardFinished.subscribe(() => {

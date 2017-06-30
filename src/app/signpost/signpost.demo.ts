@@ -61,7 +61,7 @@ export class SignpostDemo {
             description: "Top middle",
             position: "top-middle",
             id: "topMiddleTrigger"
-        },{
+        }, {
             description: "Top left",
             position: "top-left",
             id: "topLeftTrigger"

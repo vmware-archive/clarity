@@ -1,18 +1,6 @@
 var WAIT_TIME = 5000;
 var WAIT_LOAD_TIME = 1000;
 
-// gemini.suite('dynamic-show', (child) => {
-//     child.setUrl('/modal/dynamic-show')
-//         .before((actions, find) => {
-//             actions.waitForElementToShow('.btn', WAIT_TIME);
-//             actions.click(find('.btn'));
-//             actions.waitForElementToShow('.modal-content', WAIT_TIME);
-//             actions.wait(WAIT_TIME); // wait for modal to fully appear
-//         })
-//         .setCaptureElements('.modal-content')
-//         .capture('default');
-// });
-
 gemini.suite('signposts', (child) => {
     child.setUrl('/signposts')
         .before((actions) => {

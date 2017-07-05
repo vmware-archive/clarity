@@ -488,9 +488,11 @@ export class WizardNavigationService implements OnDestroy {
         }
 
         // order is very important with these emitters!
-        if (isFinish || isDangerFinish) {
+        if (isFinish) {
             // mark page as complete
-            this.pageCollection.commitPage(currentPage);
+            if (!this.wizardHasAltNext) {
+                this.pageCollection.commitPage(currentPage);
+            }
             this._wizardFinished.next();
         }
 

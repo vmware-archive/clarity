@@ -26,7 +26,7 @@ export class ColorPalette {
         {
             type: "Red",
             colors: [
-                {value: "#F52F22", text: "light", primary: true},
+                {value: "#F52F22", text: "dark", primary: true},
                 {value: "#A32100", text: "light"},
                 {value: "#C92100", text: "light"},
                 {value: "#E62700", text: "mid", bulleted: true},
@@ -93,7 +93,7 @@ export class ColorPalette {
                 {value: "#0065AB", text: "light", primary: true},
                 {value: "#003D79", text: "light"},
                 {value: "#004D8A", text: "light"},
-                {value: "#0065AB", text: "mid"},
+                {value: "#0065AB", text: "light"},
                 {value: "#007CBB", text: "mid", bulleted: true},
                 {value: "#0095D3", text: "dark"},
                 {value: "#49AFD9", text: "dark"},

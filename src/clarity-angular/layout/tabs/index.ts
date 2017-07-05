@@ -5,14 +5,17 @@
  */
 import { Type } from "@angular/core";
 import { TabContent } from "./tab-content";
-import { TabLink } from "./tab-link";
+import { Tab } from "./tab";
 import { Tabs } from "./tabs";
+import { TabLinkDirective } from "./tab-link.directive";
 
 export * from "./tabs";
+export * from "./tab";
 export * from "./tab-content";
-export * from "./tab-link";
+export * from "./tab-link.directive";
 export const TABS_DIRECTIVES: Type<any>[] = [
     TabContent,
-    TabLink,
-    Tabs
+    Tab,
+    Tabs,
+    TabLinkDirective
 ];

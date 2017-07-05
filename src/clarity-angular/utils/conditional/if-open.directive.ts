@@ -8,13 +8,14 @@ import {
     TemplateRef,
     ViewContainerRef,
     Input,
-    OnInit,
     Output,
     EventEmitter,
-    EmbeddedViewRef
+    EmbeddedViewRef,
+    OnDestroy
 } from "@angular/core";
 
 import { IfOpenService } from "./if-open.service";
+import {Subscription} from "rxjs/Subscription";
 
 @Directive({
     selector: "[clrIfOpen]"
@@ -30,7 +31,8 @@ import { IfOpenService } from "./if-open.service";
  * using it in the component template.
  *
  */
-export class IfOpenDirective implements OnInit {
+export class IfOpenDirective implements OnDestroy {
+    private subscription: Subscription;
 
     /*********
      * @function open
@@ -68,7 +70,13 @@ export class IfOpenDirective implements OnInit {
     }
 
     constructor( private ifOpenService: IfOpenService, private template: TemplateRef<any>,
-                 private container: ViewContainerRef ) { }
+                 private container: ViewContainerRef ) {
+
+        this.subscription = this.ifOpenService.openChange.subscribe((change) => {
+            this.updateView(change);
+            this.openChange.emit(change);
+        });
+    }
 
     /*********
      * @function updateView
@@ -92,17 +100,7 @@ export class IfOpenDirective implements OnInit {
         }
     }
 
-    /**********
-     * @function ngOnInit
-     *
-     * @description
-     * Angular lifecycle function that subscribes to the Observable changes to the open propoerty of the
-     * IfOpenService. When changes are heard it calls updateView with the change value.
-     */
-    ngOnInit() {
-        this.ifOpenService.openChange.subscribe((change) => {
-            this.updateView(change);
-            this.openChange.emit(change);
-        });
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

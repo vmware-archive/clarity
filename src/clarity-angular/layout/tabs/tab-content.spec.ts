@@ -4,18 +4,18 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {Component, QueryList, ViewChildren} from "@angular/core";
-import {TabContent} from "./tab-content";
+import {Component, ViewChild} from "@angular/core";
 import { ClrTabsModule } from "./tabs.module";
+import {IF_ACTIVE_ID_PROVIDER, IfActiveService} from "../../utils/conditional/if-active.service";
+import {TabContent} from "./tab-content";
 
 @Component({
     template: `
-        <clr-tab-content [clrTabContentActive]="true">Content1</clr-tab-content>
-        <clr-tab-content>Content2</clr-tab-content>
+        <clr-tab-content>Content1</clr-tab-content>
    `
 })
 class TestComponent {
-    @ViewChildren(TabContent) tabContentChildren: QueryList<TabContent>;
+    @ViewChild(TabContent) tabContent: TabContent;
 }
 
 describe("TabContent", () => {
@@ -25,18 +25,16 @@ describe("TabContent", () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [ClrTabsModule],
-            declarations: [TestComponent]
+            declarations: [TestComponent],
+            providers: [IfActiveService, IF_ACTIVE_ID_PROVIDER]
         });
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
         compiled = fixture.nativeElement;
     });
 
-    it("initializes the correct property values", () => {
-        let tabContents: TabContent[] = fixture.componentInstance.tabContentChildren.toArray();
-
-        expect(tabContents[0].active).toEqual(true);
-        expect(tabContents[1].active).toEqual(false);
+    it("creates ng-templates that can be rendered through templateOutlet", () => {
+        expect(fixture.componentInstance.tabContent.templateRef).toBeDefined();
     });
 
 });

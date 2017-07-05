@@ -35,6 +35,13 @@ $clr-active-nav-link-shadow: 0 -3px 0 $action-blues-dark-midtone inset;
             box-shadow: none;
             line-height: $clr-subnav-height;
 
+            //Clarity Buttons as .nav-links in .nav
+            &.btn {
+                text-transform: none;
+                margin: 0 0 -1px 0; //-1px to account for the border of the button
+                border-radius: 0;
+            }
+
             &:hover,
             &:focus,
             &:active {
@@ -45,7 +52,6 @@ $clr-active-nav-link-shadow: 0 -3px 0 $action-blues-dark-midtone inset;
             &.active {
                 box-shadow: $clr-active-nav-link-shadow;
                 transition: box-shadow 0.2s ease-in;
-                outline: 0; //box-shadow above will ensure that the links are accessible.
             }
 
             &:hover,
@@ -58,12 +64,10 @@ $clr-active-nav-link-shadow: 0 -3px 0 $action-blues-dark-midtone inset;
             &.active {
                 color: $clr-black;
             }
-        }
 
-        //Clarity Buttons as .nav-links in .nav
-        .nav-link {
-            &.btn {
-                margin: 0 0 -1px 0; //-1px to account for the border of the button
+            // When using clrTabLink directive, DOM has both .nav-link and .nav-item in the same elem
+            &.nav-item {
+                margin-right: $clr_baselineRem_1;
             }
         }
     }

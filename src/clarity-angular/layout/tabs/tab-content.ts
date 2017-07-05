@@ -5,23 +5,38 @@
  */
 import {
     Component,
-    Input
+    Inject,
+    Input,
+    TemplateRef,
+    ViewChild
 } from "@angular/core";
+import {IF_ACTIVE_ID, IfActiveService} from "../../utils/conditional/if-active.service";
+
+let nbTabContentComponents: number = 0;
 
 @Component({
     selector: "clr-tab-content",
-    templateUrl: "./tab-content.html",
-    host: {
-        "[id]" : "id",
-        "role" : "tabpanel",
-        "[attr.aria-hidden]" : "!active",
-        "[attr.aria-labelledby]": "ariaLabelledBy",
-        "[attr.data-hidden]": "!active",
-        "[class.active]" : "active"
-    }
+    template: `
+        <ng-template #tabContentProjectedRef>
+            <section [id]="tabContentId" role="tabpanel" [class.active]="active" 
+                     [attr.aria-labelledby]="ariaLabelledBy"
+                     [attr.aria-hidden]="!active" [attr.data-hidden]="!active">
+                <ng-content></ng-content>
+            </section>
+        </ng-template>
+    `
 })
 export class TabContent {
-    @Input("clrTabContentActive") active: boolean = false;
-    @Input("clrTabContentId") id: string;
+    @Input("clrTabContentId") tabContentId: string;
     ariaLabelledBy: string;
+
+    @ViewChild("tabContentProjectedRef") templateRef: TemplateRef<TabContent>;
+
+    constructor(public ifActiveService: IfActiveService, @Inject(IF_ACTIVE_ID) public id: number) {
+        this.tabContentId = "clr-tab-content-" + (nbTabContentComponents++);
+    }
+
+    get active() {
+        return this.ifActiveService.current === this.id;
+    }
 }

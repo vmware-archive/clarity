@@ -5,18 +5,21 @@
  */
 
 import { NgModule } from "@angular/core";
+import { ClrConditionalModule } from "../../utils/conditional/conditional.module";
 import { CommonModule } from "@angular/common";
 import { TABS_DIRECTIVES } from "./index";
 
 @NgModule({
     imports: [
         CommonModule,
+        ClrConditionalModule
     ],
     declarations: [
         TABS_DIRECTIVES
     ],
     exports: [
-        TABS_DIRECTIVES
+        TABS_DIRECTIVES,
+        ClrConditionalModule
     ]
 })
 export class ClrTabsModule {}

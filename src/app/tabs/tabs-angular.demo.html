@@ -6,42 +6,52 @@
 
 <div class="clr-example">
     <clr-tabs>
-        <clr-tab-link [clrTabLinkId]="'link1'" [clrTabLinkActive]="true">Dashboard</clr-tab-link>
-        <clr-tab-link>Management</clr-tab-link>
-        <clr-tab-link>Cloud</clr-tab-link>
+        <clr-tab>
+            <button clrTabLink>Dashboard</button>
+            <clr-tab-content clrTabContentId="content1" *clrIfActive>
+                <p>Content for Dashboard tab. Here is a <a href="javascript://">link</a> that can be accessed via clicking
+                    or through keyboard via tabbing.</p>
+            </clr-tab-content>
+        </clr-tab>
 
-        <clr-tab-content [clrTabContentId]="'content1'" [clrTabContentActive]="true">
-            <p>Content for Dashboard tab. Here is a <a href="javascript://">link</a> that can be accessed via clicking
-                or through keyboard via tabbing.</p>
-        </clr-tab-content>
-        <clr-tab-content>
-            <p>Content for Management tab.</p>
-        </clr-tab-content>
-        <clr-tab-content>
-            <p>Content for Cloud tab.</p>
-        </clr-tab-content>
+        <clr-tab>
+            <button clrTabLink>Management</button>
+            <clr-tab-content *clrIfActive="true">
+                <p>Content for Management tab.</p>
+            </clr-tab-content>
+        </clr-tab>
+
+        <clr-tab>
+            <button clrTabLink>Cloud</button>
+            <clr-tab-content *clrIfActive>
+                <p>Content for Cloud tab.</p>
+            </clr-tab-content>
+        </clr-tab>
     </clr-tabs>
 </div>
 
 <pre>
     <code clr-code-highlight="language-html">
-    &lt;clr-tabs (clrTabsCurrentTabLinkChanged)="onTabSelected($event)"
-              (clrTabsCurrentTabIndexChanged)="onTabIndexChanged($event)"
-              (clrTabsCurrentTabContentChanged)="onTabContentActivated($event)"&gt;
-        &lt;clr-tab-link [clrTabLinkId]="'link1'" [clrTabLinkActive]="true"&gt;Dashboard&lt;/clr-tab-link&gt;
-        &lt;clr-tab-link&gt;Management&lt;/clr-tab-link&gt;
-        &lt;clr-tab-link&gt;Cloud&lt;/clr-tab-link&gt;
-
-        &lt;clr-tab-content [clrTabContentId]="'content1'" [clrTabContentActive]="true"&gt;
-            &lt;p&gt;Content for Dashboard tab. Here is a &lt;a href="javascript://"&gt;link&lt;/a&gt; that can be accessed via clicking
-                or through keyboard via tabbing.&lt;/p&gt;
-        &lt;/clr-tab-content&gt;
-        &lt;clr-tab-content&gt;
-            &lt;p&gt;Content for Management tab.&lt;/p&gt;
-        &lt;/clr-tab-content&gt;
-        &lt;clr-tab-content&gt;
-            &lt;p&gt;Content for Cloud tab.&lt;/p&gt;
-        &lt;/clr-tab-content&gt;
+    &lt;clr-tabs&gt;
+        &lt;clr-tab&gt;
+            &lt;button clrTabLink&gt;Dashboard&lt;/button&gt;
+            &lt;clr-tab-content *clrIfActive&gt;
+                &lt;p&gt;Content for Dashboard tab. Here is a &lt;a href="javascript://"&gt;link&lt;/a&gt; that can be accessed via clicking
+                    or through keyboard via tabbing.&lt;/p&gt;
+            &lt;/clr-tab-content&gt;
+        &lt;/clr-tab&gt;
+        &lt;clr-tab&gt;
+            &lt;button clrTabLink&gt;Management&lt;/button&gt;
+            &lt;clr-tab-content *clrIfActive&gt;
+                &lt;p&gt;Content for Management tab.&lt;/p&gt;
+            &lt;/clr-tab-content&gt;
+        &lt;/clr-tab&gt;
+        &lt;clr-tab&gt;
+            &lt;button clrTabLink&gt;Cloud&lt;/button&gt;
+            &lt;clr-tab-content *clrIfActive&gt;
+                &lt;p&gt;Content for Cloud tab.&lt;/p&gt;
+            &lt;/clr-tab-content&gt;
+        &lt;/clr-tab&gt;
     &lt;/clr-tabs&gt;
     </code>
 </pre>

@@ -14,6 +14,7 @@ const EXAMPLE = `
 <p class="p6">Mostly buttons</p>
 <p class="p7">Tags and labels</p>
 <p class="p8">Badges</p>
+<pre class="language-html">Monospaced</pre> or <code class="language-html">Monospaced</code>
 `;
 
 @Component({

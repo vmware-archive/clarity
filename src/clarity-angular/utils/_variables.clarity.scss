@@ -43,6 +43,7 @@ $clr-breakpoints: (
 //1. Fonts Options
 $clr-font: Metropolis, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !default; //Default font stack for Clarity
 $clr-altFont: $clr-font !default; //TODO: TBD. Alternative font for Clarity
+$clr-monoFont: Consolas, Monaco, Courier, monospace !default;
 $clr-font-base-size: 14 !default;
 $clr-font-size: unquote($clr-font-base-size+'px') !default;
 $clr-rem-denominator: $clr-font-base-size !default;

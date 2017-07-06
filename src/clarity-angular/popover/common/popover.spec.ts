@@ -48,9 +48,9 @@ describe("Popover", function () {
         expect(container.onscroll).toBeDefined();
     });
 
-    it("removes scroll event handler of its first positioned container when destroyed", function () {
+    it("removes scroll event handler of its first positioned container when released", function () {
         popoverInstance.anchor(anchor, null, null);
-        popoverInstance.destroy();
+        popoverInstance.release();
         expect(container.onscroll).toBeNull();
     });
 

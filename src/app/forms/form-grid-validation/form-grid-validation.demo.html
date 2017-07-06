@@ -21,11 +21,9 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <input class="form-control" type="text" id="gForm_1" placeholder="Enter value here" size="45">
                     </div>
-                    <clr-tooltip
-                        [clrTooltipDirection]="'top-right'"
-                        [clrTooltipSize]="'lg'">
-                        <clr-icon shape="info-circle" class="info-tips-icon" size="24"></clr-icon>
-                        <clr-tooltip-content class="tooltip-content">
+                    <clr-tooltip>
+                        <clr-icon clrTooltipTrigger shape="info-circle" class="info-tips-icon" size="24"></clr-icon>
+                        <clr-tooltip-content clrPosition="top-right" clrSize="lg">
                             This should be a long text here.This should be a long text here.
                             This should be a long text here.This should be a long text here.
                             This should be a long text here.This should be a long text here.

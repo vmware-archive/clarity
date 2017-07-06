@@ -28,13 +28,13 @@ export class SignpostTriggerDirective {
     constructor(private ifOpenService: IfOpenService) { }
 
     /**********
-     * @function onSignpostContentClick
+     * @function onSignpostTriggerClick
      *
      * @description
      * click handler for the Signpost trigger button used to hide/show SignpostContent.
      */
-    @HostListener("click")
+    @HostListener("click", ["$event"])
     onSignpostTriggerClick(): void {
-        this.ifOpenService.open = !this.ifOpenService.open;
+        this.ifOpenService.toggleWithEvent(event);
     }
 }

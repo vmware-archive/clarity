@@ -6,54 +6,104 @@
 
 
 <div class="clr-example squeeze demo-menu-height dropdown-demo">
-    <clr-dropdown [clrMenuPosition]="'bottom-left'">
-        <button class="btn btn-outline-primary" clrDropdownToggle id="deprecated">
-            Dropdown
-            <clr-icon shape="caret down"></clr-icon>
-        </button>
-        <div class="dropdown-menu">
-            <label class="dropdown-header">Dropdown header</label>
-            <a href="javascript://" clrDropdownItem>Action 1</a>
-            <a href="javascript://" clrDropdownItem>Action 2</a>
-            <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
-            <div class="dropdown-divider"></div>
-            <a href="javascript://" clrDropdownItem>Link 1</a>
-            <a href="javascript://" clrDropdownItem>Link 2</a>
-        </div>
-    </clr-dropdown>
-    <clr-dropdown [clrMenuPosition]="'bottom-left'">
-        <button class="btn btn-outline-primary" clrDropdownToggle id="current">
-            Dropdown
-            <clr-icon shape="caret down"></clr-icon>
-        </button>
-        <clr-dropdown-menu *clrIfOpen>
-            <label class="dropdown-header">Dropdown header</label>
-            <a href="javascript://" clrDropdownItem>Action 1</a>
-            <a href="javascript://" clrDropdownItem>Action 2</a>
-            <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
-            <div class="dropdown-divider"></div>
-            <a href="javascript://" clrDropdownItem>Link 1</a>
-            <a href="javascript://" clrDropdownItem>Link 2</a>
-        </clr-dropdown-menu>
-    </clr-dropdown>
+    <p>
+        Static menu, no <code class="clr-code">*clrIfOpen</code> (deprecated):
+        <clr-dropdown>
+            <button class="btn btn-outline-primary" clrDropdownTrigger id="deprecated">
+                Dropdown
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <div class="dropdown-menu">
+                <label class="dropdown-header">Dropdown header</label>
+                <a href="javascript://" clrDropdownItem>Action 1</a>
+                <a href="javascript://" clrDropdownItem>Action 2</a>
+                <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
+                <div class="dropdown-divider"></div>
+                <a href="javascript://" clrDropdownItem>Link 1</a>
+                <a href="javascript://" clrDropdownItem>Link 2</a>
+            </div>
+        </clr-dropdown>
+        <clr-dropdown class="top-right">
+            <button class="btn btn-outline-primary" clrDropdownTrigger>
+                Dropdown
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <div class="dropdown-menu">
+                <label class="dropdown-header">Dropdown header</label>
+                <a href="javascript://" clrDropdownItem>Action 1</a>
+                <a href="javascript://" clrDropdownItem>Action 2</a>
+                <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
+                <div class="dropdown-divider"></div>
+                <a href="javascript://" clrDropdownItem>Link 1</a>
+                <a href="javascript://" clrDropdownItem>Link 2</a>
+            </div>
+        </clr-dropdown>
+    </p>
+    <p>
+        Menu component, no <code class="clr-code">*clrIfOpen</code> (not recommended):
+        <clr-dropdown>
+            <button class="btn btn-outline-primary" clrDropdownTrigger id="no-if-open">
+                Dropdown
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <clr-dropdown-menu>
+                <label class="dropdown-header">Dropdown header</label>
+                <a href="javascript://" clrDropdownItem>Action 1</a>
+                <a href="javascript://" clrDropdownItem>Action 2</a>
+                <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
+                <div class="dropdown-divider"></div>
+                <a href="javascript://" clrDropdownItem>Link 1</a>
+                <a href="javascript://" clrDropdownItem>Link 2</a>
+            </clr-dropdown-menu>
+        </clr-dropdown>
+        <clr-dropdown>
+            <button class="btn btn-outline-primary" clrDropdownTrigger>
+                Dropdown
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <clr-dropdown-menu clrPosition="top-right">
+                <label class="dropdown-header">Dropdown header</label>
+                <a href="javascript://" clrDropdownItem>Action 1</a>
+                <a href="javascript://" clrDropdownItem>Action 2</a>
+                <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
+                <div class="dropdown-divider"></div>
+                <a href="javascript://" clrDropdownItem>Link 1</a>
+                <a href="javascript://" clrDropdownItem>Link 2</a>
+            </clr-dropdown-menu>
+        </clr-dropdown>
+    </p>
+    <p>
+        Menu component, with <code class="clr-code">*clrIfOpen</code> (recommended):
+        <clr-dropdown>
+            <button class="btn btn-outline-primary" clrDropdownTrigger id="if-open">
+                Dropdown
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <clr-dropdown-menu *clrIfOpen>
+                <label class="dropdown-header">Dropdown header</label>
+                <a href="javascript://" clrDropdownItem>Action 1</a>
+                <a href="javascript://" clrDropdownItem>Action 2</a>
+                <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
+                <div class="dropdown-divider"></div>
+                <a href="javascript://" clrDropdownItem>Link 1</a>
+                <a href="javascript://" clrDropdownItem>Link 2</a>
+            </clr-dropdown-menu>
+        </clr-dropdown>
+        <clr-dropdown>
+            <button class="btn btn-outline-primary" clrDropdownTrigger>
+                Dropdown
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <clr-dropdown-menu *clrIfOpen clrPosition="top-right">
+                <label class="dropdown-header">Dropdown header</label>
+                <a href="javascript://" clrDropdownItem>Action 1</a>
+                <a href="javascript://" clrDropdownItem>Action 2</a>
+                <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
+                <div class="dropdown-divider"></div>
+                <a href="javascript://" clrDropdownItem>Link 1</a>
+                <a href="javascript://" clrDropdownItem>Link 2</a>
+            </clr-dropdown-menu>
+        </clr-dropdown>
+    </p>
 </div>
 
-<pre>
-    <code clr-code-highlight="language-html">
-    &lt;clr-dropdown [clrMenuPosition]=&quot;'top-left'&quot;&gt;
-        &lt;button class=&quot;btn btn-outline-primary&quot; clrDropdownToggle&gt;
-            Dropdown
-            &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
-        &lt;/button&gt;
-        &lt;clr-dropdown-menu *clrIfOpen&gt;
-            &lt;label class=&quot;dropdown-header&quot;&gt;Dropdown header&lt;/label&gt;
-            &lt;a href=&quot;...&quot; clrDropdownItem&gt;Action 1&lt;/a&gt;
-            &lt;a href=&quot;...&quot; clrDropdownItem&gt;Action 2&lt;/a&gt;
-            &lt;a href=&quot;...&quot; class=&quot;disabled&quot; clrDropdownItem&gt;Disabled Action&lt;/a&gt;
-            &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
-            &lt;a href=&quot;...&quot; clrDropdownItem&gt;Link 1&lt;/a&gt;
-            &lt;a href=&quot;...&quot; clrDropdownItem&gt;Link 2&lt;/a&gt;
-        &lt;/clr-dropdown-menu&gt;
-    &lt;/clr-dropdown&gt;
-    </code>
-</pre>

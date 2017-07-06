@@ -21,16 +21,16 @@
                         <div class="alert-actions">
                             <a class="alert-action" href="javascript://">Acknowledge</a>
                             <a class="alert-action" href="javascript://">Reset</a>
-                            <clr-dropdown [clrMenuPosition]="'bottom-right'">
-                                <button class="dropdown-toggle" clrDropdownToggle>
+                            <clr-dropdown>
+                                <button class="dropdown-toggle" clrDropdownTrigger>
                                     More Actions
                                     <clr-icon shape="caret down"></clr-icon>
                                 </button>
-                                <div class="dropdown-menu">
+                                <clr-dropdown-menu clrPosition="bottom-right">
                                     <a href="javascript://" class="dropdown-item" clrDropdownItem>Shutdown</a>
                                     <a href="javascript://" class="dropdown-item" clrDropdownItem>Delete</a>
                                     <a href="javascript://" class="dropdown-item" clrDropdownItem>Reboot</a>
-                                </div>
+                                </clr-dropdown-menu>
                             </clr-dropdown>
                         </div>
                     </div>
@@ -76,16 +76,16 @@
             &lt;div class=&quot;alert-actions&quot;&gt;
                 &lt;a class=&quot;alert-action&quot; href=&quot;javascript://&quot;&gt;Acknowledge&lt;/a&gt;
                 &lt;a class=&quot;alert-action&quot; href=&quot;javascript://&quot;&gt;Reset&lt;/a&gt;
-                &lt;clr-dropdown [clrMenuPosition]=&quot;&apos;bottom-right&apos;&quot;&gt;
-                    &lt;button class=&quot;dropdown-toggle&quot; clrDropdownToggle&gt;
+                &lt;clr-dropdown&gt;
+                    &lt;button class=&quot;dropdown-toggle&quot; clrDropdownTrigger&gt;
                         More Actions
                         &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
                     &lt;/button&gt;
-                    &lt;div class=&quot;dropdown-menu&quot;&gt;
+                    &lt;clr-dropdown-menu clrPosition=&quot;bottom-right&quot;&gt;
                         &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot; clrDropdownItem&gt;Shutdown&lt;/a&gt;
                         &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot; clrDropdownItem&gt;Delete&lt;/a&gt;
                         &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot; clrDropdownItem&gt;Reboot&lt;/a&gt;
-                    &lt;/div&gt;
+                    &lt;/clr-dropdown-menu&gt;
                 &lt;/clr-dropdown&gt;
             &lt;/div&gt;
         &lt;/div&gt;

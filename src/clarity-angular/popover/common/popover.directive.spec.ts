@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ViewChild} from "@angular/core";
+import {Component, ElementRef, ViewChild} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {PopoverDirective} from "./popover.directive";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
@@ -49,12 +49,12 @@ describe("Popover directive", () => {
 @Component({
     template: `
         <span #anchor1>anchor1</span>
-        <div [clrPopoverAnchor]="anchor1">
-            <span #popover>popover1</span>
+        <div #popover [clrPopoverAnchor]="anchor1">
+            <span>popover1</span>
         </div>
     `
 })
 class TestComponent {
     @ViewChild(PopoverDirective) popoverDirective: PopoverDirective;
-    @ViewChild("popover") popover: any;
+    @ViewChild("popover", {read: ElementRef}) popover: ElementRef;
 }

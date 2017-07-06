@@ -56,9 +56,18 @@ gemini.suite('dropdown', (child) => {
                 actions.click(this.deprecated);
                 actions.wait(WAIT_TIME);
             })
-            .capture('current-clicked', function(actions, find) {
-                this.current = find('#current');
-                actions.click(this.current);
+            .capture('no-if-open-clicked', function(actions, find) {
+                // Close the previous dropdown
+                actions.click(this.deprecated);
+                this.noIfOpen = find('#no-if-open');
+                actions.click(this.noIfOpen);
+                actions.wait(WAIT_TIME);
+            })
+            .capture('if-open-clicked', function(actions, find) {
+                // Close the previous dropdown
+                actions.click(this.noIfOpen);
+                this.ifOpen = find('#if-open');
+                actions.click(this.ifOpen);
                 actions.wait(WAIT_TIME);
             });
     });
@@ -77,12 +86,12 @@ gemini.suite('dropdown', (child) => {
                 actions.wait(WAIT_TIME);
             })
             .capture('submenu-right', function(actions, find) {
-                this.itemWithSubMenu = find('.right-bottom .expandable');
+                this.itemWithSubMenu = find('#sub-menu-1');
                 actions.click(this.itemWithSubMenu);
                 actions.wait(WAIT_TIME);
             })
             .capture('submenu-left', function(actions, find) {
-                this.itemWithSubMenu = find('.left-top .expandable');
+                this.itemWithSubMenu = find('#sub-menu-2');
                 actions.click(this.itemWithSubMenu);
                 actions.wait(WAIT_TIME);
             });

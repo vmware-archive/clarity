@@ -6,18 +6,18 @@
 import { Type } from "@angular/core";
 import { Dropdown } from "./dropdown";
 import { DropdownMenu } from "./dropdown-menu";
-import { DropdownToggle } from "./dropdown-toggle";
+import { DropdownTrigger } from "./dropdown-trigger";
 import { DropdownItem } from "./dropdown-item";
 
 export * from "./dropdown";
 export * from "./dropdown-menu";
-export * from "./dropdown-toggle";
+export * from "./dropdown-trigger";
 export * from "./dropdown-item";
 export * from "./menu-positions";
 
 export const DROPDOWN_DIRECTIVES: Type<any>[] = [
     Dropdown,
     DropdownMenu,
-    DropdownToggle,
+    DropdownTrigger,
     DropdownItem
 ];

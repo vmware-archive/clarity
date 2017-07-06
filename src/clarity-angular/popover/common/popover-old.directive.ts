@@ -72,7 +72,7 @@ export class PopoverDirectiveOld {
     destroyPopover() {
         if (this._popoverInstance) {
             this._subscription.unsubscribe();
-            this._popoverInstance.destroy();
+            this._popoverInstance.release();
             delete this._popoverInstance;
             openCount--;
         }

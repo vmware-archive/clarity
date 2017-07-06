@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <div class="position">
-                        <clr-signpost [clrSignpostPosition]="position.position">
+                        <clr-signpost>
                             <button
                                 id="{{ position.id }}"
                                 type="button"
@@ -23,7 +23,7 @@
                                 clrSignpostTrigger>
                                 <clr-icon shape="help-info"></clr-icon>
                             </button>
-                            <clr-signpost-content *clrIfOpen>
+                            <clr-signpost-content *clrIfOpen [clrPosition]="position.position">
                                 <p>{{ position.position }}</p>
                                 <p>
                                     Lorem Ipsum versions of Lorem Ipsum

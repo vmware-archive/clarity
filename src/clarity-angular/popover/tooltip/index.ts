@@ -5,11 +5,15 @@
  */
 import { Type } from "@angular/core";
 import { Tooltip } from "./tooltip";
+import {TooltipTrigger} from "./tooltip-trigger";
 import {TooltipContent} from "./tooltip-content";
 
+
 export * from "./tooltip";
+export * from "./tooltip-trigger";
 export * from "./tooltip-content";
 export const TOOLTIP_DIRECTIVES: Type<any>[] = [
     Tooltip,
+    TooltipTrigger,
     TooltipContent
 ];

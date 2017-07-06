@@ -4,21 +4,21 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component } from "@angular/core";
+import {Component} from "@angular/core";
 import { DropdownMenu } from "./dropdown-menu";
 import { TestContext } from "../../data/datagrid/helpers.spec";
+import {IfOpenService} from "../../utils/conditional/if-open.service";
+import {Point} from "../common/popover";
 
 export default function(): void {
 
     describe("DropdownMenu component", function() {
         let context: TestContext<DropdownMenu, SimpleTest>;
-        let toggle: HTMLElement;
-        let compiled: any;
 
         beforeEach(function() {
-            context = this.create(DropdownMenu, SimpleTest);
-            toggle = context.clarityElement.querySelector("clr-icon");
-            compiled = context.fixture.nativeElement;
+            context = this.create(DropdownMenu, SimpleTest, [IfOpenService]);
+            context.getClarityProvider(IfOpenService).open = true;
+            context.detectChanges();
         });
 
         it("projects content", function() {
@@ -26,7 +26,23 @@ export default function(): void {
         });
 
         it("has the correct css classes", () => {
-            expect(compiled.querySelector(".dropdown-menu")).not.toBeNull();
+            expect(context.testElement.querySelector(".dropdown-menu")).not.toBeNull();
+        });
+
+        it("supports clrPosition option", () => {
+            //Default is bottom-left since menuPosition is set to ""
+            expect((<any>context.clarityDirective).anchorPoint).toEqual(Point.BOTTOM_LEFT);
+            expect((<any>context.clarityDirective).popoverPoint).toEqual(Point.LEFT_TOP);
+
+            context.clarityDirective.position = "bottom-right";
+            context.detectChanges();
+            expect((<any>context.clarityDirective).anchorPoint).toEqual(Point.BOTTOM_RIGHT);
+            expect((<any>context.clarityDirective).popoverPoint).toEqual(Point.RIGHT_TOP);
+
+            context.clarityDirective.position = "top-right";
+            context.detectChanges();
+            expect((<any>context.clarityDirective).anchorPoint).toEqual(Point.TOP_RIGHT);
+            expect((<any>context.clarityDirective).popoverPoint).toEqual(Point.RIGHT_BOTTOM);
         });
 
     });
@@ -34,10 +50,13 @@ export default function(): void {
 
 @Component({
     template: `
-        <clr-dropdown-menu>
-            Hello world
-        </clr-dropdown-menu>
+        <clr-dropdown>
+            <clr-dropdown-menu [clrPosition]="position">
+                Hello world
+            </clr-dropdown-menu>
+        </clr-dropdown>
     `
 })
 class SimpleTest {
+    position: string;
 }

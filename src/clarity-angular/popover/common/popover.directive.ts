@@ -34,7 +34,7 @@ export class PopoverDirective {
 
     createPopover() {
         // we take the first child element; usually there should only be one anyways
-        this._popoverInstance = new Popover(this.el.nativeElement.children[0]);
+        this._popoverInstance = new Popover(this.el.nativeElement);
         this._subscription = this._popoverInstance.anchor(
             this.anchorElem, this.anchorPoint, this.popoverPoint, this.popoverOptions).subscribe(() => {
             // if a scroll event is detected, close the popover
@@ -45,7 +45,7 @@ export class PopoverDirective {
     destroyPopover() {
         if (this._popoverInstance) {
             this._subscription.unsubscribe();
-            this._popoverInstance.destroy();
+            this._popoverInstance.release();
             delete this._popoverInstance;
         }
     }

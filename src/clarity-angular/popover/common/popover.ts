@@ -41,7 +41,7 @@ const OVERFLOW_SCROLL = "scroll";
 const OVERFLOW_AUTO = "auto";
 
 export class Popover {
-    private _scroll = new Subject<any>();
+    private _scroll: Subject<void>;
 
     constructor(private element: any) {
         // Browsers don't agree with what to do if some of these are not specified, so we set them all to be safe.
@@ -245,9 +245,10 @@ export class Popover {
         return this._scroll.asObservable();
     }
 
-    public destroy() {
-        this.element.style.transform = "none";
+    public release() {
+        this.element.style.transform = "";
         this.removeScrollEventListeners();
+
     }
 
     private isPositioned(container: any) {
@@ -262,12 +263,13 @@ export class Popover {
     private scrollableElements: HTMLElement[] = [];
 
     private emitScrollEvent() {
-        this._scroll.next(this);
+        this._scroll.next();
     }
 
     private boundOnScrollListener: any = this.emitScrollEvent.bind(this);
 
     private addScrollEventListeners(e: any) {
+        this._scroll = new Subject<void>();
         let anchor: any = e;
         let current: any = e;
         while (current && current !== document) {
@@ -287,6 +289,10 @@ export class Popover {
             elem.removeEventListener("scroll", this.boundOnScrollListener);
         }
         this.scrollableElements.length = 0;
+        if (this._scroll) {
+            this._scroll.complete();
+            delete this._scroll;
+        }
     }
 
     private scrolls(container: any): boolean {

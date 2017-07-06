@@ -23,56 +23,6 @@ describe("Tooltip component", function() {
             expect(context.clarityElement.textContent).toMatch(/Hello/);
         });
 
-        it("projects tooltip content on hover", function() {
-            let tooltipContent: any;
-
-            context.clarityDirective.onMouseEnter();
-            context.detectChanges();
-
-            tooltipContent = context.clarityElement.querySelector(".tooltip-content");
-            expect(tooltipContent.textContent).toMatch(/World/);
-
-            context.clarityDirective.onMouseLeave();
-            context.detectChanges();
-            tooltipContent = context.clarityElement.querySelector(".tooltip-content");
-            expect(tooltipContent).toBeNull();
-        });
-
-        it("assigns default value for direction when unspecified", function() {
-            expect(context.clarityDirective.direction).toEqual("right");
-        });
-
-        it("assigns default value for size when unspecified", function() {
-            expect(context.clarityDirective.size).toEqual("sm");
-        });
-
-    });
-
-    describe("Inputs", function() {
-        let context: TestContext<Tooltip, InputTest>;
-
-        beforeEach(function() {
-            context = this.create(Tooltip, InputTest);
-        });
-
-        it("sets the tooltip direction property to input value provided", function() {
-            expect(context.clarityDirective.direction).toEqual("top-right");
-        });
-
-        it("sets the css class for direction with the input value provided", function() {
-            let anchor = context.clarityElement.querySelector(".tooltip-top-right");
-            expect(anchor).not.toBeNull();
-        });
-
-        it("sets the tooltip size property to input value provided", function() {
-            expect(context.clarityDirective.size).toEqual("xs");
-        });
-
-        it("sets the css class for size with the input value provided", function() {
-            let anchor = context.clarityElement.querySelector(".tooltip-xs");
-            expect(anchor).not.toBeNull();
-        });
-
     });
 
 });

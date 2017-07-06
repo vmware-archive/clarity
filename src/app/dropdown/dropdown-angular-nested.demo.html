@@ -6,8 +6,8 @@
 
 
 <div class="clr-example squeeze demo-menu-height dropdown-demo">
-    <clr-dropdown [clrMenuPosition]="'bottom-left'">
-        <button class="btn btn-outline-primary" clrDropdownToggle id="current">
+    <clr-dropdown>
+        <button class="btn btn-outline-primary" clrDropdownTrigger id="current">
             Dropdown
             <clr-icon shape="caret down"></clr-icon>
         </button>
@@ -16,50 +16,19 @@
             <a href="javascript://" clrDropdownItem>Action 1</a>
             <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
             <div class="dropdown-divider"></div>
-            <clr-dropdown [clrMenuPosition]="'right-bottom'">
-                <button clrDropdownToggle>Link 1</button>
+            <clr-dropdown>
+                <button clrDropdownTrigger id="sub-menu-1">Link 1</button>
                 <clr-dropdown-menu>
                     <a href="javascript://" clrDropdownItem>Foo</a>
-                    <clr-dropdown [clrMenuPosition]="'left-top'">
-                    <button clrDropdownToggle>Bar</button>
-                    <clr-dropdown-menu>
-                        <a href="javascript://" clrDropdownItem>Baz</a>
-                    </clr-dropdown-menu>
-                </clr-dropdown>
+                    <clr-dropdown>
+                        <button clrDropdownTrigger id="sub-menu-2">Bar</button>
+                        <clr-dropdown-menu clrPosition="left-bottom">
+                            <a href="javascript://" clrDropdownItem>Baz</a>
+                        </clr-dropdown-menu>
+                    </clr-dropdown>
                 </clr-dropdown-menu>
             </clr-dropdown>
             <a href="javascript://" clrDropdownItem>Link 2</a>
         </clr-dropdown-menu>
     </clr-dropdown>
 </div>
-
-<pre>
-    <code clr-code-highlight="language-html">
-    &lt;clr-dropdown [clrMenuPosition]=&quot;'bottom-left'&quot;&gt;
-        &lt;button class=&quot;btn btn-outline-primary&quot; clrDropdownToggle&gt;
-            Dropdown
-            &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
-        &lt;/button&gt;
-        &lt;clr-dropdown-menu&gt;
-            &lt;label class=&quot;dropdown-header&quot;&gt;Dropdown header&lt;/label&gt;
-            &lt;a href=&quot;...&quot; clrDropdownItem&gt;Action 1&lt;/a&gt;
-            &lt;a href=&quot;...&quot; class=&quot;disabled&quot; clrDropdownItem&gt;Disabled Action&lt;/a&gt;
-            &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
-            &lt;clr-dropdown [clrMenuPosition]=&quot;'right-bottom'"&gt;
-                &lt;button clrDropdownToggle&gt;Link 1&lt;/button&gt;
-                &lt;clr-dropdown-menu&gt;
-                    &lt;a href=&quot;...&quot; clrDropdownItem&gt;Foo&lt;/a&gt;
-                    &lt;clr-dropdown [clrMenuPosition]=&quot;'left-top'"&gt;
-                        &lt;button clrDropdownToggle&gt;Bar&lt;/button&gt;
-                        &lt;clr-dropdown-menu&gt;
-                            &lt;a href=&quot;...&quot; clrDropdownItem&gt;Baz&lt;/a&gt;
-                        &lt;/clr-dropdown-menu&gt;
-                    &lt;/clr-dropdown-submenu&gt;
-                    &lt;a href=&quot;...&quot; clrDropdownItem&gt;Foo 2&lt;/a&gt;
-                &lt;/clr-dropdown-menu&gt;
-            &lt;/clr-dropdown-submenu&gt;
-            &lt;a href=&quot;...&quot; clrDropdownItem&gt;Link 2&lt;/a&gt;
-        &lt;/clr-dropdown-menu&gt;
-    &lt;/clr-dropdown&gt;
-    </code>
-</pre>

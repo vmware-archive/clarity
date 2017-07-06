@@ -49,6 +49,7 @@ export class TestContext<D, C> {
     }
 }
 
+// This is so unusable right now, we need to fix it ASAP.
 export function addHelpers(modulesToImport?: Array<Type<any> | ModuleWithProviders | any[]>): void {
     beforeEach(function() {
         /*

@@ -117,7 +117,8 @@
             "ui": 20,
             "core": 20,
             "ng": -1,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": null,
@@ -137,8 +138,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "dropdowns",
@@ -345,8 +345,7 @@
             "ng": 20,
             "dox": 20,
             "comments": "",
-            "newLayout": true,
-            "isNew": true
+            "newLayout": true
         },
         {
             "url": "spinners",
@@ -449,7 +448,8 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "wizard-deprecated",

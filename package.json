@@ -1,6 +1,6 @@
 {
   "name": "clarity-all",
-  "version": "0.10.0-alpha.3",
+  "version": "0.10.0-alpha.4",
   "private": true,
   "dependencies": {
     "@angular/animations": "~4.1.0",
@@ -16,6 +16,9 @@
     "@angular/upgrade": "~4.1.0",
     "@webcomponents/custom-elements": "1.0.0",
     "angular": "1.5.x",
+    "clarity-angular": "file:dist/npm/clarity-angular",
+    "clarity-icons": "file:dist/npm/clarity-icons",
+    "clarity-ui": "file:dist/npm/clarity-ui",
     "core-js": "^2.4.0",
     "dompurify": "^0.9.0",
     "font-awesome": "^4.5.0",

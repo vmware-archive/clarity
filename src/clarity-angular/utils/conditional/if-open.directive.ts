@@ -10,7 +10,6 @@ import {
     Input,
     Output,
     EventEmitter,
-    EmbeddedViewRef,
     OnDestroy
 } from "@angular/core";
 
@@ -88,13 +87,7 @@ export class IfOpenDirective implements OnDestroy {
      */
     public updateView( value: boolean ) {
         if ( value ) {
-            let embeddedViewRef: EmbeddedViewRef<any>
-                = <EmbeddedViewRef<any>>this.container.createEmbeddedView(this.template);
-
-            //TODO: Not sure of the risks associated with using this. Find an alternative.
-            //Needed for find the correct height and width of dynamically created views
-            //inside of the popover. For Eg: Button Groups, Dropdown.
-            embeddedViewRef.detectChanges();
+            this.container.createEmbeddedView(this.template);
         } else {
             this.container.clear();
         }

@@ -3,12 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {Component, ViewChild} from "@angular/core";
-import {Point} from "../common/popover";
-import {Dropdown} from "./dropdown";
-import {ClrDropdownModule} from "./dropdown.module";
-import {IfOpenService} from "../../utils/conditional/if-open.service";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { Component, ViewChild } from "@angular/core";
+import { Dropdown } from "./dropdown";
+import { ClrDropdownModule } from "./dropdown.module";
+import { IfOpenService } from "../../utils/conditional/if-open.service";
 
 
 export default function(): void {
@@ -41,14 +40,8 @@ export default function(): void {
             expect(compiled.querySelector(".dropdown")).not.toBeNull();
         });
 
-        it("adds the .open class on clr-dropdown when ifOpenService's open property is true", () => {
-            fixture.componentInstance.dropdownInstance.ifOpenService.open = true;
-            fixture.detectChanges();
-            expect(compiled.querySelector(".open")).not.toBeNull();
-        });
-
-        it("adds the .dropdown-toggle class on clrDropdownToggle", () => {
-            let dropdownToggle: HTMLElement = compiled.querySelector("[clrDropdownToggle]");
+        it("adds the .dropdown-toggle class on clrDropdownTrigger", () => {
+            let dropdownToggle: HTMLElement = compiled.querySelector("[clrDropdownTrigger]");
             expect(dropdownToggle.classList.contains(".dropdown-toggle"));
         });
 
@@ -60,27 +53,6 @@ export default function(): void {
 
             let dropdownItem: HTMLElement = compiled.querySelector("[clrDropdownItem]");
             expect(dropdownItem.classList.contains(".dropdown-item"));
-        });
-
-        it("supports clrMenuDirection option", () => {
-            let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
-            dropdownToggle.click();
-            //detect the click
-            fixture.detectChanges();
-
-            //Default is bottom-left since menuPosition is set to ""
-            expect(fixture.componentInstance.dropdownInstance.anchorPoint).toEqual(Point.BOTTOM_LEFT);
-            expect(fixture.componentInstance.dropdownInstance.popoverPoint).toEqual(Point.LEFT_TOP);
-
-            fixture.componentInstance.menuPosition = "bottom-right";
-            fixture.detectChanges();
-            expect(fixture.componentInstance.dropdownInstance.anchorPoint).toEqual(Point.BOTTOM_RIGHT);
-            expect(fixture.componentInstance.dropdownInstance.popoverPoint).toEqual(Point.RIGHT_TOP);
-
-            fixture.componentInstance.menuPosition = "top-right";
-            fixture.detectChanges();
-            expect(fixture.componentInstance.dropdownInstance.anchorPoint).toEqual(Point.TOP_RIGHT);
-            expect(fixture.componentInstance.dropdownInstance.popoverPoint).toEqual(Point.RIGHT_BOTTOM);
         });
 
         it("toggles the menu when clicked on the host", () => {
@@ -187,19 +159,6 @@ export default function(): void {
             fixture.detectChanges();
             expect(compiled.querySelector(".dropdown-item")).toBeNull();
         });
-
-        it("emits a close event", () => {
-            let outsideButton: HTMLElement = compiled.querySelector(".outside-click-test");
-            let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
-
-            dropdownToggle.click();
-            fixture.detectChanges();
-            expect(fixture.componentInstance.openState).toBe(true);
-
-            outsideButton.click();
-            fixture.detectChanges();
-            expect(fixture.componentInstance.openState).toBe(false);
-        });
     });
 }
 
@@ -208,10 +167,8 @@ export default function(): void {
         <button class="outside-click-test" (click)="outsideButtonClickHandler()">
             Button to test clicks outside of the dropdown component
         </button>
-        <clr-dropdown [clrMenuPosition]="menuPosition"
-                      [clrCloseMenuOnItemClick]="menuClosable"
-                      [(clrDropdownMenuOpen)]="openState">
-            <button class="btn btn-primary" type="button" clrDropdownToggle>
+        <clr-dropdown [clrCloseMenuOnItemClick]="menuClosable">
+            <button class="btn btn-primary" type="button" clrDropdownTrigger>
                 Dropdown
                 <clr-icon shape="caret down"></clr-icon>
             </button>
@@ -219,8 +176,8 @@ export default function(): void {
                 <label class="dropdown-header">Header</label>
                 <a href="javascript://" clrDropdownItem>Item</a>
                 <a href="javascript://" class="disabled" clrDropdownItem>Disabled Item</a>
-                <clr-dropdown [clrMenuPosition]="'right-top'">
-                    <button clrDropdownToggle class="nested">Nested</button>
+                <clr-dropdown>
+                    <button clrDropdownTrigger class="nested">Nested</button>
                     <clr-dropdown-menu *clrIfOpen>
                         <a href="javascript://" clrDropdownItem>Foo</a>
                     </clr-dropdown-menu>
@@ -232,10 +189,8 @@ export default function(): void {
 class TestComponent {
     @ViewChild(Dropdown) dropdownInstance: Dropdown;
 
-    menuPosition: string = "";
     menuClosable: boolean = true;
     testCnt: number = 0;
-    openState: boolean = false;
 
     outsideButtonClickHandler(): void {
         this.testCnt++;

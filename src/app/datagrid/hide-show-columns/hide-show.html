@@ -48,8 +48,8 @@
     <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
         <clr-dg-cell *ngIf="showId">
             {{user.id}}
-            <clr-signpost [clrSignpostPosition]="'bottom-middle'" *ngIf="conditionalSignpost">
-                <clr-signpost-content *clrIfOpen>
+            <clr-signpost *ngIf="conditionalSignpost">
+                <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-middle'">
                     The user is strong.
                 </clr-signpost-content>
             </clr-signpost>
@@ -58,7 +58,7 @@
         <clr-dg-cell *ngIf="showDate">{{user.creation | date}}</clr-dg-cell>
         <clr-dg-cell>
             {{user.pokemon.name}}
-            <clr-signpost [clrSignpostPosition]="'top-middle'">
+            <clr-signpost>
                 <button
                     type="button"
                     class="signpost-action btn btn-small btn-link"
@@ -66,7 +66,7 @@
                     clrSignpostTrigger>
                     <clr-icon shape="help-info"></clr-icon>
                 </button>
-                <clr-signpost-content *clrIfOpen>
+                <clr-signpost-content *clrIfOpen [clrPosition]="'top-middle'">
                     The pokemon is strong.
                 </clr-signpost-content>
             </clr-signpost>

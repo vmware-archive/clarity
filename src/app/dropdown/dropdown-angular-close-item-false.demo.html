@@ -5,12 +5,12 @@
   -->
 
 <div class="clr-example squeeze dropdown-demo">
-    <clr-dropdown [clrMenuPosition]="'bottom-right'" [clrCloseMenuOnItemClick]="false">
-        <button clrDropdownToggle>
+    <clr-dropdown [clrCloseMenuOnItemClick]="false">
+        <button clrDropdownTrigger>
             <clr-icon shape="error" class="is-error" size="24"></clr-icon>
             <clr-icon shape="caret down"></clr-icon>
         </button>
-        <clr-dropdown-menu *clrIfOpen>
+        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
             <label class="dropdown-header">Dropdown header</label>
             <a href="javascript://" clrDropdownItem>Action 1</a>
             <a href="javascript://" clrDropdownItem>Action 2</a>
@@ -20,21 +20,3 @@
         </clr-dropdown-menu>
     </clr-dropdown>
 </div>
-<pre>
-    <code clr-code-highlight="language-html">
-    &lt;clr-dropdown [clrMenuPosition]=&quot;'bottom-right'&quot; [clrCloseMenuOnItemClick]=&quot;false&quot;&gt;
-        &lt;button clrDropdownToggle&gt;
-            &lt;clr-icon shape=&quot;error&quot; class=&quot;is-error&quot; size=&quot;24&quot;&gt;&lt;/clr-icon&gt;
-            &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
-        &lt;/button&gt;
-        &lt;clr-dropdown-menu *clrIfOpen&gt;
-            &lt;label class=&quot;dropdown-header&quot;&gt;Dropdown header&lt;/label&gt;
-            &lt;a href=&quot;...&quot; clrDropdownItem&gt;Action 1&lt;/a&gt;
-            &lt;a href=&quot;...&quot; clrDropdownItem&gt;Action 2&lt;/a&gt;
-            &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
-            &lt;a href=&quot;...&quot; clrDropdownItem&gt;Link 1&lt;/a&gt;
-            &lt;a href=&quot;...&quot; clrDropdownItem&gt;Link 2&lt;/a&gt;
-        &lt;/clr-dropdown-menu&gt;
-    &lt;/clr-dropdown&gt;
-    </code>
-</pre>

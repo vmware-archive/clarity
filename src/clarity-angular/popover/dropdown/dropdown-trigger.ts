@@ -12,7 +12,8 @@ import { Dropdown } from "./dropdown";
 import { IfOpenService } from "../../utils/conditional/if-open.service";
 
 @Directive({
-    selector: "[clrDropdownToggle]",
+    // We support both selectors for legacy reasons
+    selector: "[clrDropdownTrigger],[clrDropdownToggle]",
     host: {
         "[class.dropdown-toggle]" : "isRootLevelToggle",
         "[class.dropdown-item]" : "!isRootLevelToggle",
@@ -20,12 +21,12 @@ import { IfOpenService } from "../../utils/conditional/if-open.service";
         "[class.active]" : "active"
     }
 })
-export class DropdownToggle {
+export class DropdownTrigger {
     private isRootLevelToggle: boolean = true;
 
-    constructor(private _dropdown: Dropdown, private ifOpenService: IfOpenService) {
+    constructor(private dropdown: Dropdown, private ifOpenService: IfOpenService) {
         // if the containing dropdown has a parent, then this is not the root level one
-        if (_dropdown.parent) {
+        if (dropdown.parent) {
             this.isRootLevelToggle = false;
         }
     }
@@ -34,8 +35,8 @@ export class DropdownToggle {
         return this.ifOpenService.open;
     }
 
-    @HostListener("click")
-    onDropdownToggleClick(): void {
-        this.ifOpenService.open = !this.ifOpenService.open;
+    @HostListener("click", ["$event"])
+    onDropdownTriggerClick(event: any): void {
+        this.ifOpenService.toggleWithEvent(event);
     }
 }

@@ -51,12 +51,12 @@
                 </a>
             </div>
             <div class="header-actions">
-                <clr-dropdown [clrMenuPosition]="'bottom-right'">
-                    <button class="nav-icon" clrDropdownToggle>
+                <clr-dropdown>
+                    <button class="nav-icon" clrDropdownTrigger>
                         <clr-icon shape="cog"></clr-icon>
                         <clr-icon shape="caret down"></clr-icon>
                     </button>
-                    <clr-dropdown-menu>
+                    <clr-dropdown-menu clrPosition="bottom-right">
                         <a href="javascript://" clrDropdownItem>About</a>
                         <a href="javascript://" clrDropdownItem>Preferences</a>
                         <a href="javascript://" clrDropdownItem>Log out</a>
@@ -86,12 +86,12 @@
                 </label>
             </form>
             <div class="header-actions">
-                <clr-dropdown [clrMenuPosition]="'bottom-right'">
-                    <button class="nav-icon" clrDropdownToggle>
+                <clr-dropdown>
+                    <button class="nav-icon" clrDropdownTrigger>
                         <clr-icon shape="user"></clr-icon>
                         <clr-icon shape="caret down"></clr-icon>
                     </button>
-                    <clr-dropdown-menu>
+                    <clr-dropdown-menu clrPosition="bottom-right">
                         <a href="javascript://" clrDropdownItem>About</a>
                         <a href="javascript://" clrDropdownItem>Preferences</a>
                         <a href="javascript://" clrDropdownItem>Log out</a>
@@ -122,12 +122,12 @@
                 </a>
             </div>
             <div class="header-actions">
-                <clr-dropdown [clrMenuPosition]="'bottom-right'">
-                    <button class="nav-text" clrDropdownToggle>
+                <clr-dropdown>
+                    <button class="nav-text" clrDropdownTrigger>
                         john.doe@vmware.com
                         <clr-icon shape="caret down"></clr-icon>
                     </button>
-                    <clr-dropdown-menu>
+                    <clr-dropdown-menu clrPosition="bottom-right">
                         <a href="javascript://" clrDropdownItem>Preferences</a>
                         <a href="javascript://" clrDropdownItem>Log out</a>
                     </clr-dropdown-menu>
@@ -183,7 +183,7 @@
         &lt;/div&gt;
         &lt;div class=&quot;header-actions&quot;&gt;
             &lt;clr-dropdown [clrMenuPosition]=&quot;'bottom-right'&quot;&gt;
-                &lt;button class=&quot;nav-icon&quot; clrDropdownToggle&gt;
+                &lt;button class=&quot;nav-icon&quot; clrDropdownTrigger&gt;
                     &lt;clr-icon shape=&quot;cog&quot;&gt;&lt;/clr-icon&gt;
                     &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
                 &lt;/button&gt;
@@ -218,7 +218,7 @@
         &lt;/form&gt;
         &lt;div class=&quot;header-actions&quot;&gt;
             &lt;clr-dropdown [clrMenuPosition]=&quot;'bottom-right'&quot;&gt;
-                &lt;button class=&quot;nav-icon&quot; clrDropdownToggle&gt;
+                &lt;button class=&quot;nav-icon&quot; clrDropdownTrigger&gt;
                     &lt;clr-icon shape=&quot;user&quot;&gt;&lt;/clr-icon&gt;
                     &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
                 &lt;/button&gt;
@@ -254,7 +254,7 @@
         &lt;/div&gt;
         &lt;div class=&quot;header-actions&quot;&gt;
             &lt;clr-dropdown [clrMenuPosition]=&quot;'bottom-right'&quot;&gt;
-                &lt;button class=&quot;nav-text&quot; clrDropdownToggle&gt;
+                &lt;button class=&quot;nav-text&quot; clrDropdownTrigger&gt;
                     john.doe@vmware.com
                     &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
                 &lt;/button&gt;

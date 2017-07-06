@@ -4,18 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {addHelpers} from "../../utils/testing/helpers.spec";
-import SignpostSpecs from "./signpost.specs";
-import SignpostContentSpecs from "./signpost-content.specs";
-
-import SignpostTriggerDirectiveSpecs from "./signpost-trigger.directive.specs";
+import SignpostSpecs from "./signpost.spec";
+import SignpostContentSpecs from "./signpost-content.spec";
+import SignpostTriggerDirectiveSpecs from "./signpost-trigger.directive.spec";
 
 describe("Signpost", function() {
-    addHelpers();
-
-    describe("Components", function() {
-        SignpostSpecs();
-        SignpostContentSpecs();
-        SignpostTriggerDirectiveSpecs();
-    });
+    /*
+     * After having to work with it, I think this spec delves waaaay to much into the component's views.
+     * So I'm not happy with some of the code I wrote, but refactoring this whole spec is not part of my
+     * current work and it'll have to come later.
+     */
+    SignpostSpecs();
+    SignpostContentSpecs();
+    SignpostTriggerDirectiveSpecs();
 });

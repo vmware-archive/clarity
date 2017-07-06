@@ -6,7 +6,7 @@
     }
 
     .signpost {
-        display: inline;
+        display: inline-block;
 
         &:hover {
             cursor: pointer;
@@ -39,80 +39,74 @@
                 (if possible, I know they all use slightly different terms)
             3. Be used across Tooltips, Signposts (Do we also want it for Dropdowns)
          */
-        &.top-left {
-            .signpost-content {
-                .signpost-flex-wrap {
-                    position: relative;
-                    border-bottom-right-radius: 0; // Turn off rounded corner here
-                    .popover-pointer {
-                        @extend %popover-pointer;
+        .signpost-content.top-left {
+            .signpost-flex-wrap {
+                position: relative;
+                border-bottom-right-radius: 0; // Turn off rounded corner here
+                .popover-pointer {
+                    @extend %popover-pointer;
 
+                    border-left: 12px solid transparent;
+                    border-top: 12px solid $clr-dark-midtone-gray;
+                    right: -1px;
+                    bottom: -12px;
+
+                    &:before {
+                        content: '';
+                        width: 0;
+                        height: 0;
                         border-left: 12px solid transparent;
-                        border-top: 12px solid $clr-dark-midtone-gray;
-                        right: -1px;
-                        bottom: -12px;
-
-                        &:before {
-                            content: '';
-                            width: 0;
-                            height: 0;
-                            border-left: 12px solid transparent;
-                            border-top: 12px solid $clr-white;
-                            position: absolute;
-                            right: 1px;
-                            bottom: 2px;
-                        }
+                        border-top: 12px solid $clr-white;
+                        position: absolute;
+                        right: 1px;
+                        bottom: 2px;
                     }
                 }
             }
         }
-        &.top-middle {
-            .signpost-content {
-                .signpost-flex-wrap {
-                    position: relative;
-                    .popover-pointer {
-                        @extend %popover-pointer;
-                        border-right: 12px solid transparent;
-                        border-top: 12px solid $clr-dark-midtone-gray;
-                        left: 50%;
-                        bottom: -12px;
+        .signpost-content.top-middle {
+            .signpost-flex-wrap {
+                position: relative;
+                .popover-pointer {
+                    @extend %popover-pointer;
+                    border-right: 12px solid transparent;
+                    border-top: 12px solid $clr-dark-midtone-gray;
+                    left: 50%;
+                    bottom: -12px;
 
-                        &:before {
-                            content: '';
-                            width: 0;
-                            height: 0;
-                            border-right: 12px solid transparent;
-                            border-top: 12px solid $clr-white;
-                            position: absolute;
-                            left: 1px;
-                            bottom: 2px;
-                        }
+                    &:before {
+                        content: '';
+                        width: 0;
+                        height: 0;
+                        border-right: 12px solid transparent;
+                        border-top: 12px solid $clr-white;
+                        position: absolute;
+                        left: 1px;
+                        bottom: 2px;
                     }
                 }
             }
         }
-        &.top-right {
-            .signpost-content {
-                .signpost-flex-wrap {
-                    position: relative;
-                    border-bottom-left-radius: 0; // Turn off rounded corner here
-                    .popover-pointer {
-                        @extend %popover-pointer;
-                        border-right: 12px solid transparent;
-                        border-top: 12px solid $clr-dark-midtone-gray;
-                        left: -1px;
-                        bottom: -12px;
+        .signpost-content.top-right {
+            .signpost-flex-wrap {
+                position: relative;
+                border-bottom-left-radius: 0; // Turn off rounded corner here
+                .popover-pointer {
+                    @extend %popover-pointer;
+                    border-right: 12px solid transparent;
+                    border-top: 12px solid $clr-dark-midtone-gray;
+                    left: -1px;
+                    bottom: -12px;
 
-                        &:before {
-                            content: '';
-                            width: 0;
-                            height: 0;
-                            border-right: 12px solid transparent;
-                            border-top: 12px solid $clr-white;
-                            position: absolute;
-                            left: 1px;
-                            bottom: 2px;
-                        }
+                    &:before {
+                        content: '';
+                        width: 0;
+                        height: 0;
+                        border-right: 12px solid transparent;
+                        border-top: 12px solid $clr-white;
+                        position: absolute;
+                        left: 1px;
+                        bottom: 2px;
                     }
                 }
             }
@@ -122,79 +116,73 @@
         /***
             The signpost is below the icon top-{HORIZONTAL_POSITION}
         */
-        &.bottom-left {
-            .signpost-content {
-                .signpost-flex-wrap {
-                    border-top-right-radius: 0; // Turn off rounded corners here
-                    position: relative;
-                    .popover-pointer {
-                        @extend %popover-pointer;
+        .signpost-content.bottom-left {
+            .signpost-flex-wrap {
+                border-top-right-radius: 0; // Turn off rounded corners here
+                position: relative;
+                .popover-pointer {
+                    @extend %popover-pointer;
+                    border-left: 12px solid transparent;
+                    border-bottom: 12px solid $clr-dark-midtone-gray;
+                    right: -1px;
+                    top: -12px;
+
+                    &:before {
+                        content: '';
+                        width: 0;
+                        height: 0;
                         border-left: 12px solid transparent;
-                        border-bottom: 12px solid $clr-dark-midtone-gray;
-                        right: -1px;
-                        top: -12px;
-
-                        &:before {
-                            content: '';
-                            width: 0;
-                            height: 0;
-                            border-left: 12px solid transparent;
-                            border-bottom: 12px solid $clr-white;
-                            position: absolute;
-                            right: 1px;
-                            top: 2px;
-                        }
+                        border-bottom: 12px solid $clr-white;
+                        position: absolute;
+                        right: 1px;
+                        top: 2px;
                     }
                 }
             }
         }
-        &.bottom-middle {
-            .signpost-content {
-                .signpost-flex-wrap {
-                    position: relative;
-                    .popover-pointer {
-                        @extend %popover-pointer;
-                        border-right: 12px solid transparent;
-                        border-bottom: 12px solid $clr-dark-midtone-gray;
-                        right: 50%;
-                        top: -12px;
+        .signpost-content.bottom-middle {
+            .signpost-flex-wrap {
+                position: relative;
+                .popover-pointer {
+                    @extend %popover-pointer;
+                    border-right: 12px solid transparent;
+                    border-bottom: 12px solid $clr-dark-midtone-gray;
+                    right: 50%;
+                    top: -12px;
 
-                        &:before {
-                            content: '';
-                            width: 0;
-                            height: 0;
-                            border-right: 12px solid transparent;
-                            border-bottom: 12px solid $clr-white;
-                            position: absolute;
-                            right: -13px;
-                            top: 2px;
-                        }
+                    &:before {
+                        content: '';
+                        width: 0;
+                        height: 0;
+                        border-right: 12px solid transparent;
+                        border-bottom: 12px solid $clr-white;
+                        position: absolute;
+                        right: -13px;
+                        top: 2px;
                     }
                 }
             }
         }
-        &.bottom-right {
-            .signpost-content {
-                .signpost-flex-wrap {
-                    position: relative;
-                    border-top-left-radius: 0; // Turn off rounded corners here
-                    .popover-pointer {
-                        @extend %popover-pointer;
-                        border-right: 12px solid transparent;
-                        border-bottom: 12px solid $clr-dark-midtone-gray;
-                        left: -1px;
-                        top: -12px;
+        .signpost-content.bottom-right {
+            .signpost-flex-wrap {
+                position: relative;
+                border-top-left-radius: 0; // Turn off rounded corners here
+                .popover-pointer {
+                    @extend %popover-pointer;
+                    border-right: 12px solid transparent;
+                    border-bottom: 12px solid $clr-dark-midtone-gray;
+                    left: -1px;
+                    top: -12px;
 
-                        &:before {
-                            content: '';
-                            width: 0;
-                            height: 0;
-                            border-right: 12px solid transparent;
-                            border-bottom: 12px solid $clr-white;
-                            position: absolute;
-                            left: 1px;
-                            top: 2px;
-                        }
+                    &:before {
+                        content: '';
+                        width: 0;
+                        height: 0;
+                        border-right: 12px solid transparent;
+                        border-bottom: 12px solid $clr-white;
+                        position: absolute;
+                        left: 1px;
+                        top: 2px;
                     }
                 }
             }
@@ -204,80 +192,74 @@
         /***
             The signpost is on the left side of the icon left-{VERTICAL_POSITION}
          */
-        &.left-top {
-            .signpost-content {
-                .signpost-flex-wrap {
-                    position: relative;
-                    border-bottom-right-radius: 0; // Turn off rounded corners here
-                    .popover-pointer {
-                        @extend %popover-pointer;
+        .signpost-content.left-top {
+            .signpost-flex-wrap {
+                position: relative;
+                border-bottom-right-radius: 0; // Turn off rounded corners here
+                .popover-pointer {
+                    @extend %popover-pointer;
+                    border-top: 12px solid transparent;
+                    border-left: 12px solid $clr-dark-midtone-gray;
+                    right: -12px;
+                    bottom: -1px;
+
+                    &:before {
+                        content: '';
+                        width: 0;
+                        height: 0;
                         border-top: 12px solid transparent;
-                        border-left: 12px solid $clr-dark-midtone-gray;
-                        right: -12px;
-                        bottom: -1px;
-
-                        &:before {
-                            content: '';
-                            width: 0;
-                            height: 0;
-                            border-top: 12px solid transparent;
-                            border-left: 12px solid #ffffff;
-                            position: absolute;
-                            top: -13px;
-                            right: 2px;
-                        }
+                        border-left: 12px solid #ffffff;
+                        position: absolute;
+                        top: -13px;
+                        right: 2px;
                     }
                 }
             }
         }
-        &.left-middle {
-            .signpost-content {
-                .signpost-flex-wrap {
-                    position: relative;
-                    .popover-pointer {
-                        @extend %popover-pointer;
-                        border-bottom: 12px solid transparent;
-                        border-left: 12px solid $clr-dark-midtone-gray;
-                        right: -12px;
-                        top: 50%;
-                        transform: translateY(-50%);
+        .signpost-content.left-middle {
+            .signpost-flex-wrap {
+                position: relative;
+                .popover-pointer {
+                    @extend %popover-pointer;
+                    border-bottom: 12px solid transparent;
+                    border-left: 12px solid $clr-dark-midtone-gray;
+                    right: -12px;
+                    top: 50%;
+                    transform: translateY(-50%);
 
-                        &:before {
-                            content: '';
-                            width: 0;
-                            height: 0;
-                            border-bottom: 12px solid transparent;
-                            border-left: 12px solid #ffffff;
-                            position: absolute;
-                            top: 1px;
-                            left: -14px;
-                        }
+                    &:before {
+                        content: '';
+                        width: 0;
+                        height: 0;
+                        border-bottom: 12px solid transparent;
+                        border-left: 12px solid #ffffff;
+                        position: absolute;
+                        top: 1px;
+                        left: -14px;
                     }
                 }
             }
         }
-        &.left-bottom {
-            .signpost-content {
-                .signpost-flex-wrap {
-                    border-top-right-radius: 0; // Turn off rounded corners here
-                    position: relative;
-                    .popover-pointer {
-                        @extend %popover-pointer;
-                        border-bottom: 12px solid transparent;
-                        border-left: 12px solid $clr-dark-midtone-gray;
-                        right: -12px;
-                        top: -1px;
+        .signpost-content.left-bottom {
+            .signpost-flex-wrap {
+                border-top-right-radius: 0; // Turn off rounded corners here
+                position: relative;
+                .popover-pointer {
+                    @extend %popover-pointer;
+                    border-bottom: 12px solid transparent;
+                    border-left: 12px solid $clr-dark-midtone-gray;
+                    right: -12px;
+                    top: -1px;
 
-                        &:before {
-                            content: '';
-                            width: 0;
-                            height: 0;
-                            border-bottom: 12px solid transparent;
-                            border-left: 12px solid #ffffff;
-                            position: absolute;
-                            top: 1px;
-                            left: -14px;
-                        }
+                    &:before {
+                        content: '';
+                        width: 0;
+                        height: 0;
+                        border-bottom: 12px solid transparent;
+                        border-left: 12px solid #ffffff;
+                        position: absolute;
+                        top: 1px;
+                        left: -14px;
                     }
                 }
             }
@@ -287,80 +269,74 @@
         /***
             The signpost is on the right side of the icon right-{VERTICAL_POSITION}
         */
-        &.right-top { //border-top-left-radius: 3px;
-            .signpost-content {
-                .signpost-flex-wrap {
-                    position: relative;
-                    border-bottom-left-radius: 0; // turn off rounded corner here
-                    .popover-pointer {
-                        @extend %popover-pointer;
+        .signpost-content.right-top {
+            .signpost-flex-wrap {
+                position: relative;
+                border-bottom-left-radius: 0; // turn off rounded corner here
+                .popover-pointer {
+                    @extend %popover-pointer;
+                    border-top: 12px solid transparent;
+                    border-right: 12px solid $clr-dark-midtone-gray;
+                    left: -12px;
+                    bottom: -1px;
+
+                    &:before {
+                        content: '';
+                        width: 0;
+                        height: 0;
                         border-top: 12px solid transparent;
-                        border-right: 12px solid $clr-dark-midtone-gray;
-                        left: -12px;
-                        bottom: -1px;
-
-                        &:before {
-                            content: '';
-                            width: 0;
-                            height: 0;
-                            border-top: 12px solid transparent;
-                            border-right: 12px solid #ffffff;
-                            position: absolute;
-                            top: -13px;
-                            left: 2px;
-                        }
+                        border-right: 12px solid #ffffff;
+                        position: absolute;
+                        top: -13px;
+                        left: 2px;
                     }
                 }
             }
         }
-        &.right-middle {
-            .signpost-content {
-                .signpost-flex-wrap {
-                    position: relative;
-                    .popover-pointer {
-                        @extend %popover-pointer;
-                        border-bottom: 12px solid transparent;
-                        border-right: 12px solid $clr-dark-midtone-gray;
-                        left: -12px;
-                        top: 50%;
-                        transform: translateY(-50%);
+        .signpost-content.right-middle {
+            .signpost-flex-wrap {
+                position: relative;
+                .popover-pointer {
+                    @extend %popover-pointer;
+                    border-bottom: 12px solid transparent;
+                    border-right: 12px solid $clr-dark-midtone-gray;
+                    left: -12px;
+                    top: 50%;
+                    transform: translateY(-50%);
 
-                        &:before {
-                            content: '';
-                            width: 0;
-                            height: 0;
-                            border-bottom: 12px solid transparent;
-                            border-right: 12px solid #ffffff;
-                            position: absolute;
-                            top: 1px;
-                            left: 2px;
-                        }
+                    &:before {
+                        content: '';
+                        width: 0;
+                        height: 0;
+                        border-bottom: 12px solid transparent;
+                        border-right: 12px solid #ffffff;
+                        position: absolute;
+                        top: 1px;
+                        left: 2px;
                     }
                 }
             }
         }
-        &.right-bottom {
-            .signpost-content {
-                .signpost-flex-wrap {
-                    position: relative;
-                    border-top-left-radius: 0; // turn off rounded corner here
-                    .popover-pointer {
-                        @extend %popover-pointer;
-                        border-bottom: 12px solid transparent;
-                        border-right: 12px solid $clr-dark-midtone-gray;
-                        left: -12px;
-                        top: -1px;
+        .signpost-content.right-bottom {
+            .signpost-flex-wrap {
+                position: relative;
+                border-top-left-radius: 0; // turn off rounded corner here
+                .popover-pointer {
+                    @extend %popover-pointer;
+                    border-bottom: 12px solid transparent;
+                    border-right: 12px solid $clr-dark-midtone-gray;
+                    left: -12px;
+                    top: -1px;
 
-                        &:before {
-                            content: '';
-                            width: 0;
-                            height: 0;
-                            border-bottom: 12px solid transparent;
-                            border-right: 12px solid #ffffff;
-                            position: absolute;
-                            top: 1px;
-                            left: 2px;
-                        }
+                    &:before {
+                        content: '';
+                        width: 0;
+                        height: 0;
+                        border-bottom: 12px solid transparent;
+                        border-right: 12px solid #ffffff;
+                        position: absolute;
+                        top: 1px;
+                        left: 2px;
                     }
                 }
             }

@@ -22,12 +22,12 @@
             </label>
         </form>
         <div class="header-actions">
-            <clr-dropdown [clrMenuPosition]="'bottom-right'">
-                <button class="nav-icon" clrDropdownToggle>
+            <clr-dropdown>
+                <button class="nav-icon" clrDropdownTrigger>
                     <clr-icon shape="cog"></clr-icon>
                     <clr-icon shape="caret down"></clr-icon>
                 </button>
-                <clr-dropdown-menu>
+                <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
                     <a href="javascript://" clrDropdownItem>About</a>
                     <a href="javascript://" clrDropdownItem>Preferences</a>
                     <a href="javascript://" clrDropdownItem>Log out</a>

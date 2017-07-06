@@ -118,44 +118,44 @@ $clr-tooltip-adjusted-margin: $margin-value + $arrow-width * 2 !default;
         //Tooltip directions
         //Default Tooltip - Top Right
         & > .tooltip-content,
-        &.tooltip-top-right > .tooltip-content {
+        &.tooltip-top-right > .tooltip-content, .tooltip-content.tooltip-top-right {
             @include vertical-tooltip-generator(top, right);
         }
 
-        &.tooltip-top-left > .tooltip-content {
+        &.tooltip-top-left > .tooltip-content, .tooltip-content.tooltip-top-left {
             @include vertical-tooltip-generator(top, left);
         }
 
-        &.tooltip-bottom-right > .tooltip-content {
+        &.tooltip-bottom-right > .tooltip-content, .tooltip-content.tooltip-bottom-right {
             @include vertical-tooltip-generator(bottom, right);
         }
 
-        &.tooltip-bottom-left > .tooltip-content {
+        &.tooltip-bottom-left > .tooltip-content, .tooltip-content.tooltip-bottom-left {
             @include vertical-tooltip-generator(bottom, left);
         }
 
-        &.tooltip-right > .tooltip-content {
+        &.tooltip-right > .tooltip-content, .tooltip-content.tooltip-right {
             @include horizontal-tooltip-generator(right);
         }
 
-        &.tooltip-left > .tooltip-content {
+        &.tooltip-left > .tooltip-content, .tooltip-content.tooltip-left {
             @include horizontal-tooltip-generator(left);
         }
 
         //Tooltips Size
-        &.tooltip-xs > .tooltip-content {
+        &.tooltip-xs > .tooltip-content, .tooltip-content.tooltip-xs {
             width: $clr_baselineRem_3;
         }
 
-        &.tooltip-sm > .tooltip-content {
+        &.tooltip-sm > .tooltip-content, .tooltip-content.tooltip-sm {
             width: $clr_baselineRem_5;
         }
 
-        &.tooltip-md > .tooltip-content {
+        &.tooltip-md > .tooltip-content, .tooltip-content.tooltip-md {
             width: $clr-tooltip-default-width;
         }
 
-        &.tooltip-lg > .tooltip-content {
+        &.tooltip-lg > .tooltip-content, .tooltip-content.tooltip-lg {
             width: baselineRem(15);
         }
     }

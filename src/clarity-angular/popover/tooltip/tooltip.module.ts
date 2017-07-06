@@ -8,6 +8,8 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ClrCommonPopoverModule } from "../common/popover.module";
 import { TOOLTIP_DIRECTIVES } from "./index";
+import {ClrConditionalModule} from "../../utils/conditional/conditional.module";
+import {ClrIconModule} from "../../icon/icon.module";
 
 @NgModule({
     imports: [
@@ -18,7 +20,9 @@ import { TOOLTIP_DIRECTIVES } from "./index";
         TOOLTIP_DIRECTIVES
     ],
     exports: [
-        TOOLTIP_DIRECTIVES
+        TOOLTIP_DIRECTIVES,
+        ClrConditionalModule,
+        ClrIconModule
     ]
 })
 export class ClrTooltipModule {}

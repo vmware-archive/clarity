@@ -20,12 +20,12 @@ import {IfOpenService} from "../../utils/conditional/if-open.service";
 })
 export class DropdownItem {
 
-    constructor(private _dropdown: Dropdown, private el: ElementRef, private ifOpenService: IfOpenService) {
+    constructor(private dropdown: Dropdown, private el: ElementRef, private ifOpenService: IfOpenService) {
     }
 
     @HostListener("click")
     onDropdownItemClick(): void {
-        if (this._dropdown.isMenuClosable && !this.el.nativeElement.classList.contains("disabled")) {
+        if (this.dropdown.isMenuClosable && !this.el.nativeElement.classList.contains("disabled")) {
             this.ifOpenService.open = !this.ifOpenService.open;
         }
     }

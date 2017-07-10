@@ -21,19 +21,17 @@ import { Page } from "./providers/page";
 import { Selection, SelectionType } from "./providers/selection";
 import { Sort } from "./providers/sort";
 import { RowActionService } from "./providers/row-action-service";
-import { GlobalExpandableRows } from "./providers/global-expandable-rows";
+import { ExpandableRowsCount } from "./providers/global-expandable-rows";
 import { DatagridRenderOrganizer } from "./render/render-organizer";
-import { DatagridActionOverflow } from "./datagrid-action-overflow";
 import { DatagridStringFilterImpl } from "./built-in/filters/datagrid-string-filter-impl";
 import { HideableColumnService } from "./providers/hideable-column.service";
 import { DatagridColumn } from "./datagrid-column";
-import {IfExpanded} from "../../utils/expand/if-expanded";
 
 @Component({
     selector: "clr-datagrid",
     templateUrl: "./datagrid.html",
     providers: [ Selection, Sort, FiltersProvider, Page, Items, DatagridRenderOrganizer,
-        RowActionService, GlobalExpandableRows, HideableColumnService ],
+        RowActionService, ExpandableRowsCount, HideableColumnService ],
     host: {
         "[class.datagrid-host]": "true"
     }
@@ -46,7 +44,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
                 private page: Page,
                 private sort: Sort,
                 public items: Items,
-                public expandableRows: GlobalExpandableRows,
+                public expandableRows: ExpandableRowsCount,
                 public selection: Selection,
                 public rowActionService: RowActionService) {
     }
@@ -203,32 +201,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
 
     @ContentChildren(DatagridRow) rows: QueryList<DatagridRow>;
 
-    /**
-     * We get deep nested DatagridActionOverflow children components, listen to the changes in them,
-     * and figure out if the datagrid has at least one actionable row.
-     */
-    @ContentChildren(DatagridActionOverflow, { descendants: true }) public actionableRows: QueryList<DatagridRow>;
-
-    /**
-     * We grab all details for expandable rows to determine if we need the extra cell for carets or not
-     */
-    @ContentChildren(IfExpanded, { descendants: true }) details: QueryList<IfExpanded>;
-
     ngAfterContentInit() {
-        // TODO: Move all this to ngOnInit() once https://github.com/angular/angular/issues/12818 goes in.
-        // And when we do that, remove the manual step for each one.
-        this._subscriptions.push(this.actionableRows.changes.subscribe(() => {
-            /*if at least one row has actionable overflow, show a placeholder cell in every other row.*/
-            this.rowActionService.hasActionableRow = this.actionableRows.length > 0;
-        }));
-        this.rowActionService.hasActionableRow = this.actionableRows.length > 0;
-
-        this._subscriptions.push(this.details.changes.subscribe(() => {
-            /* if at least one row is expandable, show a placeholder cell in every other row.*/
-            this.expandableRows.hasExpandableRow = this.details.length > 0;
-        }));
-        this.expandableRows.hasExpandableRow = this.details.length > 0;
-
         this._subscriptions.push(this.rows.changes.subscribe(() => {
             if ( !this.items.smart ) {
                 this.items.all = this.rows.map(( row: DatagridRow ) => row.item);
@@ -237,6 +210,15 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
         if ( !this.items.smart ) {
             this.items.all = this.rows.map(( row: DatagridRow ) => row.item);
         }
+
+        this._subscriptions.push(
+            this.columns.changes.subscribe(( columns: DatagridColumn[] ) => {
+                this.columnService.updateColumnList(this.columns.map(col => col.hideable));
+            })
+        );
+
+        // Get ColumnService ready for HideableColumns.
+        this.columnService.updateColumnList(this.columns.map(col => col.hideable));
     }
 
     /**
@@ -255,15 +237,6 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
                 this.selectedChanged.emit(s);
             }
         }));
-
-        this._subscriptions.push(
-            this.columns.changes.subscribe(( columns: DatagridColumn[] ) => {
-                this.columnService.updateColumnList(this.columns.map(col => col.hideable));
-            })
-        );
-
-        // Get ColumnService ready for HideableColumns.
-        this.columnService.updateColumnList(this.columns.map(col => col.hideable));
     }
 
     /**

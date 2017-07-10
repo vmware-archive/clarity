@@ -6,8 +6,23 @@
 import {Injectable} from "@angular/core";
 
 @Injectable()
-export class GlobalExpandableRows {
+export class ExpandableRowsCount {
 
-    public hasExpandableRow = false;
+    private expandableCount = 0;
+
+    public register() {
+        this.expandableCount++;
+    }
+
+    public unregister() {
+        this.expandableCount--;
+    }
+
+    /**
+     * false means no rows with action
+     */
+    public get hasExpandableRow(): boolean {
+        return this.expandableCount > 0;
+    }
 
 }

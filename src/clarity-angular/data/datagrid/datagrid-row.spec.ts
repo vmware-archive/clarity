@@ -14,16 +14,17 @@ import {FiltersProvider} from "./providers/filters";
 import {Sort} from "./providers/sort";
 import {Page} from "./providers/page";
 import {RowActionService} from "./providers/row-action-service";
-import {GlobalExpandableRows} from "./providers/global-expandable-rows";
+import {ExpandableRowsCount} from "./providers/global-expandable-rows";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 import {DomAdapter} from "./render/dom-adapter";
 import {LoadingListener} from "../../utils/loading/loading-listener";
 import { HideableColumnService } from "./providers/hideable-column.service";
 import { DatagridHideableColumn } from "./datagrid-hideable-column";
 import {Expand} from "../../utils/expand/providers/expand";
+import {DatagridWillyWonka} from "./chocolate/datagrid-willy-wonka";
 
 const PROVIDERS = [Selection, Items, FiltersProvider, Sort, Page, RowActionService,
-    GlobalExpandableRows, DatagridRenderOrganizer, DomAdapter, HideableColumnService];
+    ExpandableRowsCount, DatagridRenderOrganizer, DomAdapter, HideableColumnService, DatagridWillyWonka];
 
 export default function(): void {
     describe("DatagridRow component", function() {
@@ -52,7 +53,7 @@ export default function(): void {
 
             it("displays an empty cell when one of the rows is expandable", function () {
                 expect(context.clarityElement.querySelector(".datagrid-fixed-column")).toBeNull();
-                context.getClarityProvider(GlobalExpandableRows).hasExpandableRow = true;
+                context.getClarityProvider(ExpandableRowsCount).register();
                 context.detectChanges();
                 expect(context.clarityElement.querySelector(".datagrid-fixed-column")).not.toBeNull();
             });
@@ -163,8 +164,6 @@ export default function(): void {
 
             beforeEach(function () {
                 context = this.create(DatagridRow, ExpandTest, PROVIDERS);
-                // This is the datagrid's job, so we handle it manually for the tests.
-                context.getClarityProvider(GlobalExpandableRows).hasExpandableRow = true;
                 context.detectChanges();
                 expand = context.getClarityProvider(Expand);
             });
@@ -193,8 +192,7 @@ export default function(): void {
                 expect(context.clarityElement.textContent).not.toMatch("Detail");
             });
 
-            // FIXME: PhantomJS being a d***
-            xit("displays both the row and the details when expanded and not replacing", fakeAsync(function () {
+            it("displays both the row and the details when expanded and not replacing", fakeAsync(function () {
                 expand.expanded = true;
                 tick();
                 context.detectChanges();
@@ -202,7 +200,7 @@ export default function(): void {
                 expect(context.clarityElement.textContent).toMatch("Detail");
             }));
 
-            xit("displays only the details when expanded and replacing", fakeAsync(function () {
+            it("displays only the details when expanded and replacing", fakeAsync(function () {
                 expand.replace = true;
                 expand.expanded = true;
                 tick();
@@ -219,7 +217,7 @@ export default function(): void {
                 expect(context.clarityElement.textContent).not.toMatch("Detail");
             }));
 
-            xit("expands and collapses when the caret is clicked", fakeAsync(function () {
+            it("expands and collapses when the caret is clicked", fakeAsync(function () {
                 let caret = context.clarityElement.querySelector(".datagrid-expandable-caret button");
                 caret.click();
                 flushAnimations();
@@ -229,7 +227,7 @@ export default function(): void {
                 expect(expand.expanded).toBe(false);
             }));
 
-            xit("offers 2-way binding on the expanded state of the row", fakeAsync(function () {
+            it("offers 2-way binding on the expanded state of the row", fakeAsync(function () {
                 context.testComponent.expanded = true;
                 flushAnimations();
                 expect(context.clarityDirective.expanded).toBe(true);

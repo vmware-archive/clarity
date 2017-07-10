@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component } from "@angular/core";
+import {Component} from "@angular/core";
 import { Subject } from "rxjs/Subject";
 import { TestContext } from "./helpers.spec";
 import { Datagrid } from "./datagrid";
@@ -19,7 +19,7 @@ import { RowActionService } from "./providers/row-action-service";
 import { StringFilter } from "./interfaces/string-filter";
 import { DatagridStringFilterImpl } from "./built-in/filters/datagrid-string-filter-impl";
 import { DatagridPropertyStringFilter } from "./built-in/filters/datagrid-property-string-filter";
-import { GlobalExpandableRows } from "./providers/global-expandable-rows";
+import { ExpandableRowsCount } from "./providers/global-expandable-rows";
 import { DatagridRenderOrganizer } from "./render/render-organizer";
 import { HideableColumnService } from "./providers/hideable-column.service";
 
@@ -215,7 +215,7 @@ export default function(): void {
             });
         });
 
-        describe("Actionable rows", function() {
+        describe("Actionable rows", function () {
             let context: TestContext<Datagrid, ActionableRowTest>;
             let rowActionService: RowActionService;
             let headActionOverflowCell: HTMLElement;
@@ -225,7 +225,6 @@ export default function(): void {
             it("it has cells for action overflows if there is at least one of them.", function() {
                 context = this.create(Datagrid, ActionableRowTest, [HideableColumnService]);
                 rowActionService = context.getClarityProvider(RowActionService);
-                context.detectChanges();
                 expect(rowActionService.hasActionableRow).toBe(true);
                 let datagridHead = context.clarityElement.querySelector(".datagrid-head");
                 headActionOverflowCell = datagridHead.querySelector(".datagrid-column.datagrid-row-actions");
@@ -240,14 +239,6 @@ export default function(): void {
                 context = this.create(Datagrid, ActionableRowTest, [HideableColumnService]);
                 rowActionService = context.getClarityProvider(RowActionService);
                 context.testComponent.showIfGreaterThan = 10;
-                /*
-                 * TODO: We need to investigate if we really need two change detections here.
-                 * At this point, it seems that we need two change detections as one is for the action of removing
-                 * action overflows themselves and this action will be listened to
-                 * by their QueryList and update the service.
-                 * Consequently, the service will require another change detection for updating the host cells.
-                 * */
-                context.detectChanges();
                 context.detectChanges();
                 actionOverflow = context.clarityElement.querySelectorAll("clr-dg-action-overflow");
                 expect(actionOverflow.length).toEqual(0);
@@ -264,24 +255,48 @@ export default function(): void {
         describe("Expandable rows", function() {
             it("detects if there is at least one expandable row", function() {
                 let context = this.create(Datagrid, ExpandableRowTest, [HideableColumnService]);
-                let globalExpandableRows: GlobalExpandableRows = context.getClarityProvider(GlobalExpandableRows);
-                /*
-                 * Why do we need an extra change detection here? See actionable rows solution above, same issue.
-                 * Not losing time on this right now.
-                 */
-                context.detectChanges();
+                let globalExpandableRows: ExpandableRowsCount = context.getClarityProvider(ExpandableRowsCount);
                 expect(globalExpandableRows.hasExpandableRow).toBe(true);
                 expect(context.clarityElement.querySelector(".datagrid-column.datagrid-expandable-caret"))
                     .not.toBeNull();
                 context.testComponent.expandable = false;
-                // Same here, why do we need an extra change detection?
-                context.detectChanges();
                 context.detectChanges();
                 expect(globalExpandableRows.hasExpandableRow).toBe(false);
                 expect(context.clarityElement.querySelector(".datagrid-column.datagrid-expandable-caret")).toBeNull();
             });
         });
 
+        describe("Chocolate", function() {
+            describe("clrDgItems", function() {
+                it("doesn't taunt with chocolate on actionable rows", function() {
+                    let context = this.create(Datagrid, ChocolateClrDgItemsTest);
+                    context.testComponent.action = true;
+                    expect(() => context.detectChanges()).not.toThrow();
+                });
+
+                it("doesn't taunt with chocolate on expandable rows", function() {
+                    let context = this.create(Datagrid, ChocolateClrDgItemsTest);
+                    context.testComponent.expandable = true;
+                    expect(() => context.detectChanges()).not.toThrow();
+                });
+            });
+
+            describe("ngFor", function() {
+                it("doesn't taunt with chocolate on actionable rows", function() {
+                    let context = this.create(Datagrid, ChocolateNgForTest);
+                    context.testComponent.action = true;
+                    expect(() => context.detectChanges()).not.toThrow();
+                });
+
+                it("doesn't taunt with chocolate on expandable rows", function() {
+                    let context = this.create(Datagrid, ChocolateNgForTest);
+                    context.testComponent.expandable = true;
+                    expect(() => context.detectChanges()).not.toThrow();
+                });
+            });
+
+
+        });
     });
 }
 
@@ -375,7 +390,7 @@ class TrackByTest {
         <clr-dg-column>First</clr-dg-column>
         <clr-dg-column>Second</clr-dg-column>
     
-        <clr-dg-row *clrDgItems="let item of items;" [clrDgItem]="item">
+        <clr-dg-row *clrDgItems="let item of items;">
         
             <clr-dg-action-overflow *ngIf="item > showIfGreaterThan">
                 <button class="action-item">Edit</button>
@@ -423,6 +438,61 @@ class ExpandableRowTest {
         3
     ];
     expandable = true;
+}
+
+
+@Component({
+    template: `
+        <clr-datagrid>
+            <clr-dg-column>First</clr-dg-column>
+            <clr-dg-column>Second</clr-dg-column>
+
+            <clr-dg-row *clrDgItems="let item of items; index as i">
+                <clr-dg-action-overflow *ngIf="action && i === 1">
+                    <button class="action-item">Edit</button>
+                </clr-dg-action-overflow>
+                <clr-dg-cell>{{item}}</clr-dg-cell>
+                <clr-dg-cell>{{item * item}}</clr-dg-cell>
+                <ng-template [ngIf]="expandable && i === 1">
+                    <clr-dg-row-detail *clrIfExpanded>Detail</clr-dg-row-detail>
+                </ng-template>
+            </clr-dg-row>
+
+            <clr-dg-footer>{{items.length}} items</clr-dg-footer>
+        </clr-datagrid>
+    `
+})
+class ChocolateClrDgItemsTest {
+    items = [1, 2, 3];
+    action = false;
+    expandable = false;
+}
+
+@Component({
+    template: `
+        <clr-datagrid>
+            <clr-dg-column>First</clr-dg-column>
+            <clr-dg-column>Second</clr-dg-column>
+
+            <clr-dg-row *ngFor="let item of items; index as i">
+                <clr-dg-action-overflow *ngIf="action && i === 1">
+                    <button class="action-item">Edit</button>
+                </clr-dg-action-overflow>
+                <clr-dg-cell>{{item}}</clr-dg-cell>
+                <clr-dg-cell>{{item * item}}</clr-dg-cell>
+                <ng-template [ngIf]="expandable && i === 1">
+                    <clr-dg-row-detail *clrIfExpanded>Detail</clr-dg-row-detail>
+                </ng-template>
+            </clr-dg-row>
+
+            <clr-dg-footer>{{items.length}} items</clr-dg-footer>
+        </clr-datagrid>
+    `
+})
+class ChocolateNgForTest {
+    items = [1, 2, 3];
+    action = false;
+    expandable = false;
 }
 
 class TestComparator implements Comparator<number> {

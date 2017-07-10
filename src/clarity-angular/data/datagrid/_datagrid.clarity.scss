@@ -151,9 +151,6 @@
 
         .datagrid-column, .datagrid-cell {
             text-align: left;
-        }
-
-        clr-dg-column {
             min-width: $clr_baselineRem_4;
         }
 
@@ -322,6 +319,7 @@
             flex: 0 0 $clr-datagrid-fixed-column-size;
             // IE10 needs this
             max-width: $clr-datagrid-fixed-column-size;
+            min-width: $clr-datagrid-fixed-column-size;
         }
 
         .datagrid-select {

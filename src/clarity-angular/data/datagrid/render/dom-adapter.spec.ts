@@ -28,10 +28,10 @@ export default function(): void {
 
         it("computes the scrollwidth of an element", function(this: UserContext) {
             let child = document.createElement("div");
-            child.style.width = "1234px";
+            child.style.width = "123456px";
             child.style.height = "10px";
             this.element.appendChild(child);
-            expect(this.domAdapter.scrollWidth(this.element)).toBe(1234);
+            expect(this.domAdapter.scrollWidth(this.element)).toBe(123456);
         });
 
         it("computes the width of the scrollbar on an element", function(this: UserContext) {

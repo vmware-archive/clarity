@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
 import { Selection, SelectionType } from "./providers/selection";
 import { HideableColumnService } from "./providers/hideable-column.service";
@@ -25,8 +25,7 @@ import { HideableColumnService } from "./providers/hideable-column.service";
     `,
     host: {
         "[class.datagrid-foot]": "true",
-    },
-    changeDetection: ChangeDetectionStrategy.OnPush
+    }
 })
 export class DatagridFooter implements OnInit {
 
@@ -47,13 +46,6 @@ export class DatagridFooter implements OnInit {
                 if ( hiddenColumns.length > 0 ) {
                     this.activeToggler = true;
                 }
-                this.cdr.detectChanges();
-            })
-        );
-
-        this.subscriptions.push(
-            this.selection.change.subscribe(() => {
-                this.cdr.markForCheck();
             })
         );
 

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    Directive, ContentChildren, QueryList, AfterContentInit, AfterViewInit, OnDestroy,
+    Directive, ContentChildren, QueryList, AfterContentInit, OnDestroy,
     ElementRef, Renderer2, AfterViewChecked
 } from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
@@ -18,7 +18,7 @@ import {Page} from "../providers/page";
     selector: "clr-datagrid",
     providers: [DomAdapter]
 })
-export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, AfterViewChecked, OnDestroy {
+export class DatagridMainRenderer implements AfterContentInit, AfterViewChecked, OnDestroy {
 
     constructor(
         private organizer: DatagridRenderOrganizer,
@@ -33,6 +33,7 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, Af
                     this.resetDatagridHeight();
                 }
             }));
+            this._subscriptions.push(this.items.change.subscribe(() => this.shouldStabilizeColumns = true));
         }
 
     @ContentChildren(DatagridHeaderRenderer) public headers: QueryList<DatagridHeaderRenderer>;
@@ -46,15 +47,10 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, Af
         }));
     }
 
-    ngAfterViewInit() {
-        this.stabilizeColumns();
-
-        this._subscriptions.push(this.items.change.subscribe(() => {
-            this.stabilizeColumns();
-        }));
-    }
-
     ngAfterViewChecked() {
+        if (this.shouldStabilizeColumns) {
+            this.stabilizeColumns();
+        }
         if (this.shouldComputeHeight()) {
             this.computeDatagridHeight();
         }
@@ -133,10 +129,13 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, Af
      */
     private columnsSizesStable = false;
 
+    private shouldStabilizeColumns = true;
+
     /**
      * Triggers a whole re-rendring cycle to set column sizes, if needed.
      */
     private stabilizeColumns() {
+        this.shouldStabilizeColumns = false;
         if (this.columnsSizesStable) {
             // change in items might have introduced/taken away the scrollbar
             this.organizer.scrollbar.next();

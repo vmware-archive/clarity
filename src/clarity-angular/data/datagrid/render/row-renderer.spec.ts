@@ -16,11 +16,12 @@ import { FiltersProvider } from "../providers/filters";
 import { Sort } from "../providers/sort";
 import { Page } from "../providers/page";
 import { RowActionService } from "../providers/row-action-service";
-import { GlobalExpandableRows } from "../providers/global-expandable-rows";
+import { ExpandableRowsCount } from "../providers/global-expandable-rows";
 import { HideableColumnService } from "../providers/hideable-column.service";
+import {DatagridWillyWonka} from "../chocolate/datagrid-willy-wonka";
 
 const PROVIDERS = [ Selection, Items, FiltersProvider, Sort, Page, RowActionService,
-    GlobalExpandableRows, MOCK_ORGANIZER_PROVIDER, DomAdapter, HideableColumnService ];
+    ExpandableRowsCount, MOCK_ORGANIZER_PROVIDER, DomAdapter, HideableColumnService, DatagridWillyWonka ];
 export default function (): void {
     describe("DatagridRowRenderer directive", function () {
         let context: TestContext<DatagridRowRenderer, SimpleTest>;

@@ -19,6 +19,7 @@ import {DatagridPagination} from "./datagrid-pagination";
 import {DatagridRow} from "./datagrid-row";
 import {DatagridIfExpanded} from "./datagrid-if-expanded";
 import {DatagridRowDetail} from "./datagrid-row-detail";
+import {DatagridDetailRegisterer} from "./datagrid-detail-registerer";
 import {DatagridPlaceholder} from "./datagrid-placeholder";
 
 import { DatagridMainRenderer } from "./render/main-renderer";
@@ -34,6 +35,11 @@ import { DatagridCellRenderer } from "./render/cell-renderer";
 import {DatagridRowExpandAnimation} from "./animation-hack/row-expand-animation";
 
 import {DatagridHideableColumnDirective} from "./datagrid-hidable-column.directive";
+
+import {DatagridWillyWonka} from "./chocolate/datagrid-willy-wonka";
+import {ActionableOompaLoompa} from "./chocolate/actionable-oompa-loompa";
+import {ExpandableOompaLoompa} from "./chocolate/expandable-oompa-loompa";
+
 
 export * from "./datagrid";
 export * from "./datagrid-action-bar";
@@ -74,6 +80,7 @@ export const DATAGRID_DIRECTIVES: Type<any>[] = [
     DatagridRow,
     DatagridIfExpanded,
     DatagridRowDetail,
+    DatagridDetailRegisterer,
     DatagridCell,
     DatagridFooter,
     DatagridPagination,
@@ -89,6 +96,11 @@ export const DATAGRID_DIRECTIVES: Type<any>[] = [
     DatagridRowRenderer,
     DatagridRowMasterRenderer,
     DatagridCellRenderer,
+
+    // Chocolate
+    DatagridWillyWonka,
+    ActionableOompaLoompa,
+    ExpandableOompaLoompa,
 
     // Animation hack
     DatagridRowExpandAnimation,

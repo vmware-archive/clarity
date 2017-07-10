@@ -45,10 +45,7 @@ export class DatagridHideableColumn {
      */
     constructor( private _template: TemplateRef<any>,
                  private _id: string,
-                 private _hidden: boolean = true ) {
-
-        this.hiddenChangesState.next(_hidden);
-    }
+                 private _hidden: boolean = false ) {}
 
     /**
      * @function template

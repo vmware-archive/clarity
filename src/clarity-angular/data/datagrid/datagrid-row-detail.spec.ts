@@ -71,7 +71,7 @@ export default function(): void {
         });
 
         it("displays an extra empty cell when the datagrid has an actionable row", function() {
-            context.getClarityProvider(RowActionService).hasActionableRow = true;
+            context.getClarityProvider(RowActionService).register();
             context.detectChanges();
             expect(context.clarityElement.querySelectorAll(".datagrid-fixed-column").length).toBe(2);
         });
@@ -79,7 +79,7 @@ export default function(): void {
         it("displays as many extra empty cells as needed", function() {
             let selection: Selection = context.getClarityProvider(Selection);
             selection.selectionType = SelectionType.Multi;
-            context.getClarityProvider(RowActionService).hasActionableRow = true;
+            context.getClarityProvider(RowActionService).register();
             context.detectChanges();
             expect(context.clarityElement.querySelectorAll(".datagrid-fixed-column").length).toBe(3);
         });
@@ -90,7 +90,7 @@ export default function(): void {
             expect(context.clarityElement.querySelectorAll(".datagrid-fixed-column").length).toBe(0);
             let selection: Selection = context.getClarityProvider(Selection);
             selection.selectionType = SelectionType.Multi;
-            context.getClarityProvider(RowActionService).hasActionableRow = true;
+            context.getClarityProvider(RowActionService).register();
             context.detectChanges();
             expect(context.clarityElement.querySelectorAll(".datagrid-fixed-column").length).toBe(0);
         });

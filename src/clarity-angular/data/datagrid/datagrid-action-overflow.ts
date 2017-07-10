@@ -4,9 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    Component, EventEmitter, Input, Output, ElementRef
+    Component, EventEmitter, Input, Output, OnDestroy
 } from "@angular/core";
 import {Point} from "../../popover/common/popover";
+import {RowActionService} from "./providers/row-action-service";
 
 @Component({
     selector: "clr-dg-action-overflow",
@@ -21,12 +22,17 @@ import {Point} from "../../popover/common/popover";
     `
 })
 
-export class DatagridActionOverflow {
+export class DatagridActionOverflow implements OnDestroy {
 
     public anchorPoint: Point = Point.RIGHT_CENTER;
     public popoverPoint: Point = Point.LEFT_CENTER;
 
-    constructor(private elementRef: ElementRef) {
+    constructor(private rowActionService: RowActionService) {
+        this.rowActionService.register();
+    }
+
+    ngOnDestroy() {
+        this.rowActionService.unregister();
     }
 
     /**

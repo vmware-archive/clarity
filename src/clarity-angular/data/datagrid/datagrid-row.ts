@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Input, Output, EventEmitter, ContentChildren, QueryList } from "@angular/core";
+import {Component, Input, Output, EventEmitter, ContentChildren, QueryList, AfterContentInit} from "@angular/core";
 import { Selection, SelectionType } from "./providers/selection";
 import { RowActionService } from "./providers/row-action-service";
-import { GlobalExpandableRows } from "./providers/global-expandable-rows";
+import { ExpandableRowsCount } from "./providers/global-expandable-rows";
 import { LoadingListener } from "../../utils/loading/loading-listener";
 import { HideableColumnService } from "./providers/hideable-column.service";
 import { DatagridHideableColumn } from "./datagrid-hideable-column";
@@ -69,7 +69,7 @@ let nbRow: number = 0;
     },
     providers: [ Expand, { provide: LoadingListener, useExisting: Expand } ]
 })
-export class DatagridRow {
+export class DatagridRow implements AfterContentInit {
     public id: string;
 
     /* reference to the enum so that template can access */
@@ -80,9 +80,9 @@ export class DatagridRow {
      */
     @Input("clrDgItem") item: any;
 
-    constructor( public selection: Selection, public rowActionService: RowActionService,
-                 public globalExpandable: GlobalExpandableRows, public expand: Expand,
-                 public hideableColumnService: HideableColumnService ) {
+    constructor(public selection: Selection, public rowActionService: RowActionService,
+                public globalExpandable: ExpandableRowsCount, public expand: Expand,
+                public hideableColumnService: HideableColumnService ) {
         this.id = "clr-dg-row" + (nbRow++);
     }
 
@@ -136,8 +136,17 @@ export class DatagridRow {
 
     private subscription: Subscription;
 
-    ngAfterViewInit() {
+    /*****
+     * property dgCells
+     *
+     * @description
+     * A Query List of the Datagrid cells in this row.
+     *
+     * @type QueryList<DatagridCell>
+     */
+    @ContentChildren(DatagridCell) dgCells: QueryList<DatagridCell>;
 
+    ngAfterContentInit() {
         // Make sure things get started
         let columnsList = this.hideableColumnService.getColumns();
         this.updateCellsForColumns(columnsList);
@@ -158,16 +167,6 @@ export class DatagridRow {
             }
         });
     }
-
-    /*****
-     * property dgCells
-     *
-     * @description
-     * A Query List of the Datagrid cells in this row.
-     *
-     * @type QueryList<DatagridCell>
-     */
-    @ContentChildren(DatagridCell) dgCells: QueryList<DatagridCell>;
 
     /**********
      * @function updateCellsForColumns

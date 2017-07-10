@@ -8,7 +8,6 @@ import {Component} from "@angular/core";
 import {TestContext} from "./helpers.spec";
 import {DatagridActionOverflow} from "./datagrid-action-overflow";
 import {RowActionService} from "./providers/row-action-service";
-import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 export default function(): void {
     describe("DatagridActionOverflow component", function() {
@@ -16,7 +15,7 @@ export default function(): void {
         let toggle: HTMLElement;
 
         beforeEach(function() {
-            context = this.create(DatagridActionOverflow, SimpleTest, [RowActionService, DatagridRenderOrganizer]);
+            context = this.create(DatagridActionOverflow, SimpleTest, [RowActionService]);
             toggle = context.clarityElement.querySelector("clr-icon");
         });
 

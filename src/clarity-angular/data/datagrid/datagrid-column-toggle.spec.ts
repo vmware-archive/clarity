@@ -84,13 +84,13 @@ export default function (): void {
 
                 // It inits to true (aka - hidden)
                 let testColumn: DatagridHideableColumn = component.columns[ 0 ];
-                let testEvent = true;
+                let testEvent = false;
 
-                expect(testColumn.hidden).toBe(true);    // hidden
+                expect(testColumn.hidden).toBe(false);    // showing
                 component.toggleColumn(testEvent, testColumn);
-                expect(testColumn.hidden).toBe(false);   // showing
+                expect(testColumn.hidden).toBe(true);   // hidden
                 component.toggleColumn(!testEvent, testColumn);
-                expect(testColumn.hidden).toBe(true);    // hidden
+                expect(testColumn.hidden).toBe(false);    // showing
             });
             it("toggles the open state of the UI", function () {
                 expect(component.open).toEqual(false);

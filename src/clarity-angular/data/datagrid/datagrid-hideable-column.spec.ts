@@ -31,15 +31,14 @@ export default function (): void {
             expect(testDgHideableColumn.id).toBe("dg-col-0");
         });
 
-        it("should have a hidden flag default to true", function () {
+        it("should have a hidden flag default to false", function () {
             expect(testDgHideableColumn.hidden).toBeDefined();
-            expect(testDgHideableColumn.hidden).toBe(true);
+            expect(testDgHideableColumn.hidden).toBe(false);
         });
 
         it("should allow hidden flag to be set", function () {
+            testDgHideableColumn.hidden = true;
             expect(testDgHideableColumn.hidden).toBe(true);
-            testDgHideableColumn.hidden = false;
-            expect(testDgHideableColumn.hidden).toBe(false);
         });
 
         it("should provide an observable for the hidden changes", function () {
@@ -51,12 +50,12 @@ export default function (): void {
                 changeValue = change;
             });
 
-            testDgHideableColumn.hidden = false;
-            expect(changeValue).toBe(false);
-            expect(nbChanges).toEqual(1);
-
             testDgHideableColumn.hidden = true;
             expect(changeValue).toBe(true);
+            expect(nbChanges).toEqual(1);
+
+            testDgHideableColumn.hidden = false;
+            expect(changeValue).toBe(false);
             expect(nbChanges).toEqual(2);
         });
 
@@ -69,7 +68,7 @@ export default function (): void {
                 changeValue = change;
             });
 
-            testDgHideableColumn.hidden = true;
+            testDgHideableColumn.hidden = false;
             expect(changeValue).toBeUndefined();
             expect(nbChanges).toBe(0);
         });

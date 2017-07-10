@@ -2,8 +2,7 @@ import {
     Directive,
     TemplateRef,
     ViewContainerRef,
-    Input,
-    AfterViewInit
+    Input
 } from "@angular/core";
 
 import { DatagridHideableColumn } from "./datagrid-hideable-column";
@@ -29,7 +28,7 @@ import { DatagridColumn } from "./datagrid-column";
  * datagrid toggle component.
  *
  */
-export class DatagridHideableColumnDirective implements AfterViewInit {
+export class DatagridHideableColumnDirective {
 
     /**
      * @property _hidden
@@ -104,20 +103,11 @@ export class DatagridHideableColumnDirective implements AfterViewInit {
                  private dgColumn: DatagridColumn ) {
 
         this.columnId = dgColumn.columnId;
-    }
 
-    /**
-     * @function ngAfterViewInit
-     *
-     * @description
-     * Responsible for setting up the items needed for a HideableColum.
-     *
-     * Use the templateRef to create this view and store it in the column service.
-     * Create instance of the utility class DatagridHideableColumn.
-     */
-    ngAfterViewInit() {
+        // Use the templateRef to create this view
         this.viewContainerRef.createEmbeddedView(this.templateRef);
 
+        // Create instance of the utility class DatagridHideableColumn.
         // Note this is on the parent instance of DatagridColumn.
         this.dgColumn.hideable = new DatagridHideableColumn(this.templateRef, this.columnId, this._hidden);
     }

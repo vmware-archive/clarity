@@ -373,6 +373,10 @@
             display: inline-block;
         }
 
+        &-popover {
+            z-index: map-get($clr-layers, tooltips);
+        }
+
         &-content {
             background-color: transparent;
             min-width: 216px;
@@ -380,7 +384,6 @@
             min-height: 84px;
             max-height: 504px;
             display: inline-block;
-            z-index: map-get($clr-layers, tooltips);
 
             .signpost-flex-wrap {
                 border: 1px solid $clr-dark-midtone-gray;

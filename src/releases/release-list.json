@@ -194,7 +194,7 @@
             "commit": "a5139dac9abd276ba62e21a0725e0de720ade3a7"
         },
         "0.8.0": {
-            "date": "Dec 22, 2016 - 2017",
+            "date": "Dec 22, 2016",
             "sketch": "0.7.3",
             "commit": "3c724fca53be645955d6ac621ec45bc4041e533b"
         },
@@ -207,32 +207,32 @@
             "commit": "2979224414ca222aa2dc8f064c98ed176a0adeaf"
         },
         "0.7.5": {
-            "date": "Dec 16, 2016 - 2017",
+            "date": "Dec 16, 2016 ",
             "sketch": "0.7.3",
             "commit": "3ab95f9b3c04a9699c7a25b210c0a2777ef8de36"
         },
         "0.7.4": {
-            "date": "Dec 8, 2016 - 2017",
+            "date": "Dec 8, 2016",
             "sketch": "0.7.3",
             "commit": "a136aba0b3ddab135743c7d74a5289bf7e007199"
         },
         "0.7.3": {
-            "date": "Dec 1, 2016 - 2017",
+            "date": "Dec 1, 2016",
             "sketch": "0.7.3",
             "commit": "7792acd165674b970cdaa33e89eb8371d8b487a6"
         },
         "0.7.2": {
-            "date": "Nov 23, 2016 - 2017",
+            "date": "Nov 23, 2016",
             "sketch": "0.7.0",
             "commit": "5172211a6e126b2213f95a6ee90611c497ec908a"
         },
         "0.7.1": {
-            "date": "Nov 18, 2016 - 2017",
+            "date": "Nov 18, 2016",
             "sketch": "0.7.0",
             "commit": "475a6c1cf5fdab4043e03261e671dcec51a512b2"
         },
         "0.7.0": {
-            "date": "Nov 11, 2016 - 2017",
+            "date": "Nov 11, 2016",
             "sketch": "0.7.0",
             "commit": "29c547cde08e6c3add9fa5b40b34c516ae90574f"
         },
@@ -240,27 +240,27 @@
 
 
         "0.6.4": {
-            "date": "Dec 8, 2016 - 2017",
+            "date": "Dec 8, 2016",
             "sketch": "0.6.0",
             "commit": "6b14e3abfcf49a2c3d857e0ffd79dbaaa9f3a695"
         },
         "0.6.3": {
-            "date": "Nov 18, 2016 - 2017",
+            "date": "Nov 18, 2016",
             "sketch": "0.6.0",
             "commit": "f2d82388e7b6a9d40e3e82442755ee32ee7b89c1"
         },
         "0.6.2": {
-            "date": "Nov 11, 2016 - 2017",
+            "date": "Nov 11, 2016",
             "sketch": "0.6.0",
             "commit": "d44dfc753e8ffce2d845aff7892e718704601e8e"
         },
         "0.6.1": {
-            "date": "Nov 4, 2016 - 2017",
+            "date": "Nov 4, 2016",
             "sketch": "0.6.0",
             "commit": "ce43e65ab3dd9706e24ca0697df84043a163f83e"
         },
         "0.6.0": {
-            "date": "Oct 28, 2016 - 2017",
+            "date": "Oct 28, 2016",
             "sketch": "0.6.0",
             "commit": "d332f6a632fd3570f6924324089466f555baf853"
         },
@@ -268,37 +268,37 @@
 
 
         "0.5.6": {
-            "date": "Oct 27, 2016 - 2017",
+            "date": "Oct 27, 2016",
             "sketch": "0.5.0",
             "commit": null
         },
         "0.5.5": {
-            "date": "Oct 21, 2016 - 2017",
+            "date": "Oct 21, 2016",
             "sketch": "0.5.0",
             "commit": null
         },
         "0.5.4": {
-            "date": "Oct 14, 2016 - 2017",
+            "date": "Oct 14, 2016",
             "sketch": "0.5.0",
             "commit": null
         },
         "0.5.3": {
-            "date": "Oct 6, 2016 - 2017",
+            "date": "Oct 6, 2016",
             "sketch": "0.5.0",
             "commit": null
         },
         "0.5.2": {
-            "date": "Sep 30, 2016 - 2017",
+            "date": "Sep 30, 2016",
             "sketch": "0.5.0",
             "commit": null
         },
         "0.5.1": {
-            "date": "Sep 22, 2016 - 2017",
+            "date": "Sep 22, 2016",
             "sketch": "0.5.0",
             "commit": null
         },
         "0.5.0": {
-            "date": "Sep 15, 2016 - 2017",
+            "date": "Sep 15, 2016",
             "sketch": "0.5.0",
             "commit": null
         },
@@ -306,22 +306,22 @@
 
 
         "0.4.3": {
-            "date": "Sep 22, 2016 - 2017",
+            "date": "Sep 22, 2016",
             "sketch": "0.3.0",
             "commit": null
         },
         "0.4.2": {
-            "date": "Sep 15, 2016 - 2017",
+            "date": "Sep 15, 2016",
             "sketch": "0.3.0",
             "commit": null
         },
         "0.4.1": {
-            "date": "Sep 7, 2016 - 2017",
+            "date": "Sep 7, 2016",
             "sketch": "0.3.0",
             "commit": null
         },
         "0.4.0": {
-            "date": "Aug 30, 2016 - 2017",
+            "date": "Aug 30, 2016",
             "sketch": "0.3.0",
             "commit": null
         },
@@ -329,37 +329,37 @@
 
 
         "0.3.6": {
-            "date": "Aug 26, 2016 - 2017",
+            "date": "Aug 26, 2016",
             "sketch": "0.3.0",
             "commit": null
         },
         "0.3.5": {
-            "date": "Aug 26, 2016 - 2017",
+            "date": "Aug 26, 2016",
             "sketch": "0.3.0",
             "commit": null
         },
         "0.3.4": {
-            "date": "Aug 18, 2016 - 2017",
+            "date": "Aug 18, 2016",
             "sketch": "0.3.0",
             "commit": null
         },
         "0.3.3": {
-            "date": "Aug 10, 2016 - 2017",
+            "date": "Aug 10, 2016",
             "sketch": "0.3.0",
             "commit": null
         },
         "0.3.2": {
-            "date": "Aug 4, 2016 - 2017",
+            "date": "Aug 4, 2016",
             "sketch": "0.3.0",
             "commit": null
         },
         "0.3.1": {
-            "date": "Jul 27, 2016 - 2017",
+            "date": "Jul 27, 2016",
             "sketch": "0.3.0",
             "commit": null
         },
         "0.3.0": {
-            "date": "Jul 20, 2016 - 2017",
+            "date": "Jul 20, 2016",
             "sketch": "0.3.0",
             "commit": null
         },
@@ -368,42 +368,42 @@
 
 
         "0.2.10": {
-            "date": "Jul 21, 2016 - 2017",
+            "date": "Jul 21, 2016",
             "sketch": "0.2.5",
             "commit": null
         },
         "0.2.9": {
-            "date": "Jul 17, 2016 - 2017",
+            "date": "Jul 17, 2016",
             "sketch": "0.2.5",
             "commit": null
         },
         "0.2.8": {
-            "date": "Jul 7, 2016 - 2017",
+            "date": "Jul 7, 2016",
             "sketch": "0.2.5",
             "commit": null
         },
         "0.2.7": {
-            "date": "Jun 30, 2016 - 2017",
+            "date": "Jun 30, 2016",
             "sketch": "0.2.5",
             "commit": null
         },
         "0.2.6": {
-            "date": "Jun 23, 2016 - 2017",
+            "date": "Jun 23, 2016",
             "sketch": "0.2.5",
             "commit": null
         },
         "0.2.5": {
-            "date": "Jun 16, 2016 - 2017",
+            "date": "Jun 16, 2016",
             "sketch": "0.2.5",
             "commit": null
         },
         "0.2.4": {
-            "date": "Jun 9, 2016 - 2017",
+            "date": "Jun 9, 2016",
             "sketch": "0.2.5",
             "commit": null
         },
         "0.2.3": {
-            "date": "Jun 2, 2016 - 2017",
+            "date": "Jun 2, 2016",
             "sketch": "0.2.5",
             "commit": null
         }

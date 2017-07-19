@@ -9,9 +9,15 @@ import { CoreShapes } from "./shapes/core-shapes";
 import { EssentialShapes } from "./shapes/essential-shapes";
 import { SocialShapes } from "./shapes/social-shapes";
 import { TechnologyShapes } from "./shapes/technology-shapes";
-import * as DomPurify from "dompurify";
+import { AllShapes } from "./shapes/all-shapes";
+import { removeWhitespace, testAllShapes, resetShapes } from "./helpers.spec";
 
 describe("ClarityIcons", () => {
+
+    afterEach(() => {
+        resetShapes();
+    });
+
     describe("Global object for the API", () => {
         it("should set a global object", () => {
             expect(window.ClarityIcons).not.toBeUndefined();
@@ -19,43 +25,6 @@ describe("ClarityIcons", () => {
     });
 
     describe("ClarityIconsApi.get()", () => {
-        // copied here for testing. brittle but preserves some semblance of privacy on the api
-        const sanitizeOptions = {
-            SAFE_FOR_TEMPLATES: true,
-            FORBID_ATTR: ["style"],
-            ALLOWED_TAGS: [
-                "img", "div", "span", "svg", "animate", "animateMotion", "animateTransform",
-                "circle", "clipPath", "defs", "desc", "ellipse", "feBlend", "feColorMatrix",
-                "feComponentTransfer", "feComposite", "feConvolveMatrix", "feDiffuseLighting",
-                "feDisplacementMap", "feDistantLight", "feDropShadow", "feFlood", "feFuncA",
-                "feFuncB", "feFuncG", "feFuncR", "feGaussianBlur", "feImage", "feMerge", "feMergeNode",
-                "feMorphology", "feOffset", "fePointLight", "feSpecularLighting", "feSpotLight",
-                "feTile", "feTurbulence", "filter", "g", "line", "linearGradient", "marker",
-                "mask", "mpath", "path", "pattern", "polygon", "polyline", "radialGradient", "rect",
-                "stop", "symbol", "text", "textPath", "title", "use", "view"
-            ],
-            ADD_ATTR: ["version", "preserveAspectRatio"]
-        };
-
-        // TODO: open question... should we make whitespace removal part of the icon parsing???
-        let removeWhitespace = function (htmlStr: string): string {
-            let returnStr = htmlStr.replace(/[\n|\r]+/g, "");
-            returnStr = returnStr.replace(/>[ |\t]+</g, "><");
-            returnStr = returnStr.replace(/"[ |\t]+/g, "\" ");
-            return returnStr.trim();
-        };
-
-        let testAllShapes = (expectedShapes: any) => {
-            expect(Object.keys(ClarityIcons.get()).length).toEqual(Object.keys(expectedShapes).length);
-
-            for (let shape in expectedShapes) {
-                if (expectedShapes.hasOwnProperty(shape)) {
-                    const myShape = removeWhitespace(DomPurify.sanitize(expectedShapes[ shape ], sanitizeOptions));
-                    const expected = removeWhitespace(ClarityIcons.get(shape));
-                    expect(expected).toEqual(myShape);
-                }
-            }
-        };
 
         // A brittle, yet necessary, test to validate sanitization.
         // Will break if SVG path is changed or config on sanitizer is changed
@@ -66,13 +35,19 @@ describe("ClarityIcons", () => {
             "<title>check</title>",
             "<path d=\"M13.72,27.69,3.29,17.27a1,1,0,0,1,1.41-1.41l9,9L31.29,",
             "7.29a1,1,0,0,1,1.41,1.41Z\" class=\"clr-i-outline clr-i-outline-path-1\"></path>",
-            "</svg>"].join(""));
+            "</svg>"
+        ].join(""));
 
         it("should return all icons when no argument is passed in", () => {
+
+            ClarityIcons.add(EssentialShapes);
+            ClarityIcons.add(SocialShapes);
+            ClarityIcons.add(TechnologyShapes);
+
             let currentAllShapes = Object.assign(
                 {}, CoreShapes, EssentialShapes, SocialShapes, TechnologyShapes
             );
-            testAllShapes(currentAllShapes);
+            testAllShapes(ClarityIcons, currentAllShapes);
         });
 
         it("should return CoreShapes['success'] when 'success' is passed in", () => {
@@ -85,14 +60,37 @@ describe("ClarityIcons", () => {
             expect(expected).toEqual(sanitizedIcon);
         });
 
-        xit("should return all icons when no argument is passed in passed after including EssentialShapes", () => {
-            // TODO: specs at this point are loading all icons so this test can't run
+        it("should return the shapes from EssentialShapes and CoreShapes sets " +
+            "if the EssentialShapes set is added in.", () => {
             ClarityIcons.add(EssentialShapes);
             let currentAllShapes = Object.assign({}, CoreShapes, EssentialShapes);
-            testAllShapes(currentAllShapes);
+            testAllShapes(ClarityIcons, currentAllShapes);
+        });
+
+        it("should return the shapes from SocialShapes and CoreShapes sets " +
+            "if the SocialShapes set is added in.", () => {
+            ClarityIcons.add(SocialShapes);
+            let currentAllShapes = Object.assign({}, CoreShapes, SocialShapes);
+            testAllShapes(ClarityIcons, currentAllShapes);
+        });
+
+        it("should return the shapes from TechnologyShapes and CoreShapes sets " +
+            "if the TechnologyShapes set is added in.", () => {
+            ClarityIcons.add(TechnologyShapes);
+            let currentAllShapes = Object.assign({}, CoreShapes, TechnologyShapes);
+            testAllShapes(ClarityIcons, currentAllShapes);
+        });
+
+        it("should return all icons from all sets if the AllShapes set is added in", () => {
+            ClarityIcons.add(AllShapes);
+            let currentAllShapes = Object.assign({}, CoreShapes, EssentialShapes, SocialShapes, TechnologyShapes);
+            testAllShapes(ClarityIcons, currentAllShapes);
         });
 
         it("should return EssentialShapes['pencil'] when 'pencil' is passed in after including EssentialShapes", () => {
+
+            ClarityIcons.add(EssentialShapes);
+
             const expected = [
                 "<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" ",
                 "xmlns=\"http://www.w3.org/2000/svg\" class=\"has-solid\" preserveAspectRatio=\"xMidYMid meet\" ",
@@ -133,20 +131,20 @@ describe("ClarityIcons", () => {
         it("should throw an error if an empty string is set for a shape name.", () => {
             let expectedErrorMessage = `Shape name or alias must be a non-empty string!`;
             expect(() => {
-                ClarityIcons.add({ "": "" });
+                ClarityIcons.add({"": ""});
             }).toThrowError(expectedErrorMessage);
         });
 
         it("should throw an error if a shape name contains a white space.", () => {
             let expectedErrorMessage = `Shape name or alias must not contain any whitespace characters!`;
             expect(() => {
-                ClarityIcons.add({ "invalid shapename": "" });
+                ClarityIcons.add({"invalid shapename": ""});
             }).toThrowError(expectedErrorMessage);
             expect(() => {
-                ClarityIcons.add({ " invalidShapename": "" });
+                ClarityIcons.add({" invalidShapename": ""});
             }).toThrowError(expectedErrorMessage);
             expect(() => {
-                ClarityIcons.add({ "invalidShapename ": "" });
+                ClarityIcons.add({"invalidShapename ": ""});
             }).toThrowError(expectedErrorMessage);
         });
 
@@ -156,15 +154,15 @@ describe("ClarityIcons", () => {
             const aFaIcon = "<span class=\"fa-icon fa-target\"></span>";
 
             expect(() => {
-                ClarityIcons.add({ "an-img": anImgTag });
+                ClarityIcons.add({"an-img": anImgTag});
             }).not.toThrowError();
 
             expect(() => {
-                ClarityIcons.add({ "a-bgimg": aDivTag });
+                ClarityIcons.add({"a-bgimg": aDivTag});
             }).not.toThrowError();
 
             expect(() => {
-                ClarityIcons.add({ "fa-icon": aFaIcon });
+                ClarityIcons.add({"fa-icon": aFaIcon});
             }).not.toThrowError();
 
             expect(ClarityIcons.get("an-img")).toEqual(anImgTag);
@@ -178,10 +176,10 @@ describe("ClarityIcons", () => {
             const faIcon = "<span onclick=\"doSomethingBad()\" class=\"fa-icon fa-target\"></span>";
             const junk = "<shape-template><svg><path></path></svg></shape-template>";
 
-            ClarityIcons.add({ "img": imgTag });
-            ClarityIcons.add({ "div": divTag });
-            ClarityIcons.add({ "fa": faIcon });
-            ClarityIcons.add({ "junk": junk });
+            ClarityIcons.add({"img": imgTag});
+            ClarityIcons.add({"div": divTag});
+            ClarityIcons.add({"fa": faIcon});
+            ClarityIcons.add({"junk": junk});
 
             expect(ClarityIcons.get("img")).toEqual("<img src=\"../assets/logo.png\">");
             expect(ClarityIcons.get("div")).toEqual("<div class=\"div-with-bgimg\"></div>");
@@ -192,7 +190,7 @@ describe("ClarityIcons", () => {
         it("should throw an error if an empty string is set for a shape name.", () => {
             let expectedErrorMessage = `Shape name or alias must be a non-empty string!`;
             expect(() => {
-                ClarityIcons.add({ "": "" });
+                ClarityIcons.add({"": ""});
             }).toThrowError(expectedErrorMessage);
         });
 
@@ -201,7 +199,7 @@ describe("ClarityIcons", () => {
 
             let shapeName = "shape-name";
             let shapeTemplate = "<svg><title>shape template</title></svg>";
-            let shape = { [shapeName]: shapeTemplate };
+            let shape = {[shapeName]: shapeTemplate};
 
             ClarityIcons.add(shape);
 
@@ -214,15 +212,15 @@ describe("ClarityIcons", () => {
 
             let shapeName1 = "shape-name-1";
             let shapeTemplate1 = "<svg><title>shape template 1</title></svg>";
-            let shape1 = { [shapeName1]: shapeTemplate1 };
+            let shape1 = {[shapeName1]: shapeTemplate1};
 
             let shapeName2 = "shape-name-2";
             let shapeTemplate2 = "<svg><title>shape template 2</title></svg>";
-            let shape2 = { [shapeName2]: shapeTemplate2 };
+            let shape2 = {[shapeName2]: shapeTemplate2};
 
             let shapeName3 = "shape-name-3";
             let shapeTemplate3 = "<svg><title>shape template 3</title></svg>";
-            let shape3 = { [shapeName3]: shapeTemplate3 };
+            let shape3 = {[shapeName3]: shapeTemplate3};
 
             ClarityIcons.add(shape1);
             ClarityIcons.add(shape2);
@@ -239,15 +237,15 @@ describe("ClarityIcons", () => {
 
             let shapeNameA = "shape-name-a";
             let shapeTemplateA = "<svg><title>shape template A</title></svg>";
-            let shapeA = { [shapeNameA]: shapeTemplateA };
+            let shapeA = {[shapeNameA]: shapeTemplateA};
 
             let shapeNameB = "shape-name-b";
             let shapeTemplateB = "<svg><title>shape template B</title></svg>";
-            let shapeB = { [shapeNameB]: shapeTemplateB };
+            let shapeB = {[shapeNameB]: shapeTemplateB};
 
             let shapeNameC = "shape-name-c";
             let shapeTemplateC = "<svg><title>shape template C</title></svg>";
-            let shapeC = { [shapeNameC]: shapeTemplateC };
+            let shapeC = {[shapeNameC]: shapeTemplateC};
 
             let multipleShapes = Object.assign({}, shapeA, shapeB, shapeC);
 
@@ -264,11 +262,11 @@ describe("ClarityIcons", () => {
 
             let shapeNameA = "shape-name-same";
             let shapeTemplateA = "<svg><title>shape template A</title></svg>";
-            let shapeA = { [shapeNameA]: shapeTemplateA };
+            let shapeA = {[shapeNameA]: shapeTemplateA};
 
             let shapeNameB = "shape-name-same";
             let shapeTemplateB = "<svg><title>shape template B</title></svg>";
-            let shapeB = { [shapeNameB]: shapeTemplateB };
+            let shapeB = {[shapeNameB]: shapeTemplateB};
 
             ClarityIcons.add(shapeA);
             ClarityIcons.add(shapeB);
@@ -281,13 +279,8 @@ describe("ClarityIcons", () => {
         });
     });
 
-
     describe("ClarityIconsApi.alias()", () => {
-        xit("should throw an error if the argument is not a valid object literal", () => {
-        });
-    });
 
-    describe("ClarityIconsApi.alias()", () => {
         it("should throw an error if the argument is not a valid object literal", () => {
             let expectedErrorMessage =
                 `The argument must be an object literal passed in the following pattern: 
@@ -303,14 +296,21 @@ describe("ClarityIcons", () => {
             let expectedErrorMessage = "The icon '" + shapeName + "' you are trying to set an alias to doesn't exist!";
 
             expect(() => {
-                ClarityIcons.alias({ [shapeName]: [ "write" ] });
+                ClarityIcons.alias({[shapeName]: ["write"]});
             }).toThrowError(expectedErrorMessage);
         });
 
         it("should allow aliases if the shape name exists", () => {
+
+            ClarityIcons.add(CoreShapes);
             let currentShapeNumber = Object.keys(ClarityIcons.get()).length;
 
-            ClarityIcons.alias({ "check": [ "check-mark", "success-mark" ] });
+            ClarityIcons.alias({
+                "check": [
+                    "check-mark",
+                    "success-mark"
+                ]
+            });
 
             expect(currentShapeNumber).toBe(Object.keys(ClarityIcons.get()).length - 2);
             expect(ClarityIcons.get("check-mark")).toBe(ClarityIcons.get("check"));
@@ -318,9 +318,13 @@ describe("ClarityIcons", () => {
         });
 
         it("should allow to create an alias from another alias name", () => {
+
+            ClarityIcons.add(CoreShapes);
+            ClarityIcons.alias({"check": ["success-mark"]});
+
             let currentShapeNumber = Object.keys(ClarityIcons.get()).length;
 
-            ClarityIcons.alias({ "success-mark": [ "ok-mark" ] });
+            ClarityIcons.alias({"success-mark": ["ok-mark"]});
 
             expect(currentShapeNumber).toBe(Object.keys(ClarityIcons.get()).length - 1);
             expect(ClarityIcons.get("success-mark")).toBe(ClarityIcons.get("check"));
@@ -328,17 +332,19 @@ describe("ClarityIcons", () => {
         });
 
         it("should allow to create a new shape by overriding existing alias name", () => {
+
+            ClarityIcons.add(CoreShapes);
+            ClarityIcons.alias({"check": ["success-mark"]});
+
             let currentShapeNumber = Object.keys(ClarityIcons.get()).length;
-
             let shapeTemplateOverrideAlias = "<svg><title>shape template override alias</title></svg>";
-
-            ClarityIcons.add({ "ok-mark": shapeTemplateOverrideAlias });
+            ClarityIcons.add({"success-mark": shapeTemplateOverrideAlias});
 
             //Even though ClarityIcons.add() is called once, no new shapes should be added in
             //as the existing icons's template is replaced by a new template only.
 
             expect(currentShapeNumber).toBe(Object.keys(ClarityIcons.get()).length);
-            expect(ClarityIcons.get("ok-mark")).toBe(shapeTemplateOverrideAlias);
+            expect(ClarityIcons.get("success-mark")).toBe(shapeTemplateOverrideAlias);
         });
     });
 
@@ -398,7 +404,7 @@ describe("ClarityIcons", () => {
 
             for (let shapeName in allShapes) {
                 if (allShapes.hasOwnProperty(shapeName)) {
-                    let template: string = allShapes[ shapeName ];
+                    let template: string = allShapes[shapeName];
 
                     expect(template.includes("fill=")).toBe(false);
                     expect(template.includes("style=")).toBe(false);
@@ -407,7 +413,7 @@ describe("ClarityIcons", () => {
         };
 
         it("CoreShapes should not include fill attribute", () => {
-            testIconStyles(CoreShapes, [ "vm-bug" ]);
+            testIconStyles(CoreShapes, ["vm-bug"]);
         });
 
         it("EssentialShapes should not include fill attribute", () => {
@@ -423,7 +429,12 @@ describe("ClarityIcons", () => {
         });
 
         it("No two shapes should have the same name unless their templates are identical", () => {
-            let allShapeTemplates: any = [ CoreShapes, EssentialShapes, SocialShapes, TechnologyShapes ];
+            let allShapeTemplates: any = [
+                CoreShapes,
+                EssentialShapes,
+                SocialShapes,
+                TechnologyShapes
+            ];
             let shapesTested: any = {};
             let removeSpacesBreaks = (template: string): string => {
                 return template.replace(/\n|\r/g, "").replace(/\s/g, "");
@@ -433,10 +444,10 @@ describe("ClarityIcons", () => {
                 for (let shapeName in shapeTemplates) {
                     if (shapeTemplates.hasOwnProperty(shapeName)) {
                         if (!shapesTested.hasOwnProperty(shapeName)) {
-                            shapesTested[ shapeName ] = shapeTemplates[ shapeName ];
+                            shapesTested[shapeName] = shapeTemplates[shapeName];
                         } else {
-                            expect(removeSpacesBreaks(shapeTemplates[ shapeName ]))
-                                .toBe(removeSpacesBreaks(shapesTested[ shapeName ]));
+                            expect(removeSpacesBreaks(shapeTemplates[shapeName]))
+                                .toBe(removeSpacesBreaks(shapesTested[shapeName]));
                         }
                     }
                 }

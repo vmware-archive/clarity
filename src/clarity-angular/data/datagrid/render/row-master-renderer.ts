@@ -28,8 +28,11 @@ export class DatagridRowMasterRenderer implements AfterViewInit, OnDestroy {
     constructor(private outsideContainer: ViewContainerRef, private organizer: DatagridRenderOrganizer) {}
 
     private subscription: Subscription;
+
     ngOnDestroy() {
-        this.subscription.unsubscribe();
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
     }
 
     @ViewChild("inside", {read: ViewContainerRef}) insideContainer: ViewContainerRef;

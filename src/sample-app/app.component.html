@@ -37,30 +37,35 @@
     <div class="content-container">
         <main class="content-area">
             <clr-tabs>
-                <clr-tab-link [clrTabLinkId]="'link1'" [clrTabLinkActive]="true">Dashboard</clr-tab-link>
-                <clr-tab-link>Management</clr-tab-link>
-                <clr-tab-link>Cloud</clr-tab-link>
-
-                <clr-tab-content [clrTabContentId]="'content1'" [clrTabContentActive]="true">
-                    <clr-alert [clrAlertType]="'alert-success'" (clrAlertClosedChange)="onClose()">
-                        <div class="alert-item">
+                <clr-tab>
+                    <button clrTabLink>Dashboard</button>
+                    <clr-tab-content *clrIfActive>
+                        <clr-alert [clrAlertType]="'alert-success'" (clrAlertClosedChange)="onClose()">
+                            <div class="alert-item">
                           <span class="alert-text">
                               This alert indicates a success!
                           </span>
-                        </div>
-                    </clr-alert>
-                    <p>Content for Dashboard tab. Here is a <a href="javascript://">link</a> that can be accessed via clicking
-                        or through keyboard via tabbing.</p>
-                    <clr-checkbox type="checkbox" id="checkbox_9" [(clrIndeterminate)]="indeterminateState">
-                        Indeterminate Checkbox.
-                    </clr-checkbox>
-                </clr-tab-content>
-                <clr-tab-content>
-                    <p>Content for Management tab.</p>
-                </clr-tab-content>
-                <clr-tab-content>
-                    <p>Content for Cloud tab.</p>
-                </clr-tab-content>
+                            </div>
+                        </clr-alert>
+                        <p>Content for Dashboard tab. Here is a <a href="javascript://">link</a> that can be accessed via clicking
+                            or through keyboard via tabbing.</p>
+                        <clr-checkbox type="checkbox" id="checkbox_9" [(clrIndeterminate)]="indeterminateState">
+                            Indeterminate Checkbox.
+                        </clr-checkbox>
+                    </clr-tab-content>
+                </clr-tab>
+                <clr-tab>
+                    <button clrTabLink>Management</button>
+                    <clr-tab-content *clrIfActive>
+                        <p>Content for Management tab.</p>
+                    </clr-tab-content>
+                </clr-tab>
+                <clr-tab>
+                    <button clrTabLink>Cloud</button>
+                    <clr-tab-content *clrIfActive>
+                        <p>Content for Cloud tab.</p>
+                    </clr-tab-content>
+                </clr-tab>
             </clr-tabs>
             <div class="card card-block">
                 <p class="card-text username-list">

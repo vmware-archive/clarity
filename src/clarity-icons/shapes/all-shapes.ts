@@ -5,15 +5,21 @@
  */
 
 import { CoreShapes } from "./core-shapes";
+import { CommerceShapes } from "./commerce-shapes";
 import { EssentialShapes } from "./essential-shapes";
+import { MediaShapes } from "./media-shapes";
 import { SocialShapes } from "./social-shapes";
 import { TechnologyShapes } from "./technology-shapes";
+import { TravelShapes } from "./travel-shapes";
 
 const allShapesSets = [
     CoreShapes,
+    CommerceShapes,
     EssentialShapes,
+    MediaShapes,
     SocialShapes,
-    TechnologyShapes
+    TechnologyShapes,
+    TravelShapes
 ];
 
 let allShapes: any = {};

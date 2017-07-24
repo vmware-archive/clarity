@@ -15,6 +15,7 @@ import {RowActionService} from "./providers/row-action-service";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 import { HideableColumnService } from "./providers/hideable-column.service";
 import {Expand} from "../../utils/expand/providers/expand";
+import {DatagridHideableColumn} from "./datagrid-hideable-column";
 
 export default function(): void {
     describe("DatagridRowDetail component", function() {
@@ -95,6 +96,31 @@ export default function(): void {
             expect(context.clarityElement.querySelectorAll(".datagrid-fixed-column").length).toBe(0);
         });
     });
+
+    describe("DatagridRowDetail hide/show cell behavior", function() {
+        let context: TestContext<DatagridRowDetail, HiddenTest>;
+        let hideableColumnService: HideableColumnService;
+
+        beforeEach(function () {
+            context = this.create(DatagridRowDetail, HiddenTest,
+                [Selection, Items, FiltersProvider, Sort, Page, RowActionService, Expand,
+                    DatagridRenderOrganizer, HideableColumnService]);
+            hideableColumnService = context.getClarityProvider(HideableColumnService);
+        });
+
+        it("should update cells for columns", function () {
+            spyOn(context.clarityDirective, "updateCellsForColumns");
+            hideableColumnService = context.getClarityProvider(HideableColumnService);
+
+            let hiddenColumns: DatagridHideableColumn[] = [
+                new DatagridHideableColumn(undefined, "dg-col-0", false),
+                new DatagridHideableColumn(undefined, "dg-col-1", true)
+            ];
+
+            hideableColumnService.updateColumnList(hiddenColumns);
+            expect(context.clarityDirective.updateCellsForColumns).toHaveBeenCalled();
+        });
+    });
 }
 
 @Component({
@@ -108,4 +134,16 @@ export default function(): void {
 class FullTest {
     public replace = false;
     public cell = false;
+}
+
+@Component({
+    template: `
+        <clr-dg-row-detail [clrDgReplace]="replace">
+            <clr-dg-cell>This is a cell</clr-dg-cell>
+            <clr-dg-cell>This is a cell</clr-dg-cell>
+        </clr-dg-row-detail>
+    `
+})
+class HiddenTest {
+
 }

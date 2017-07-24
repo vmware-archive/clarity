@@ -26,10 +26,11 @@ export class DatagridExpandableRowsDemo {
     users: User[];
     selected: User[];
 
-    detail = "default";
+    detail = "columns";
     replace = false;
     fixedHeight = false;
     slowLoad = false;
+    date = false;
 
     get selectable() {
         return !!this.selected;

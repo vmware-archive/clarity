@@ -6,8 +6,11 @@
 
 import { ClarityIcons } from "./index";
 import { CoreShapes } from "./shapes/core-shapes";
+import { CommerceShapes } from "./shapes/commerce-shapes";
+import { MediaShapes } from "./shapes/media-shapes";
 import { EssentialShapes } from "./shapes/essential-shapes";
 import { SocialShapes } from "./shapes/social-shapes";
+import { TravelShapes } from "./shapes/travel-shapes";
 import { TechnologyShapes } from "./shapes/technology-shapes";
 import { AllShapes } from "./shapes/all-shapes";
 import { removeWhitespace, testAllShapes, resetShapes } from "./helpers.spec";
@@ -25,7 +28,6 @@ describe("ClarityIcons", () => {
     });
 
     describe("ClarityIconsApi.get()", () => {
-
         // A brittle, yet necessary, test to validate sanitization.
         // Will break if SVG path is changed or config on sanitizer is changed
         const sanitizedIcon = removeWhitespace([
@@ -40,12 +42,22 @@ describe("ClarityIcons", () => {
 
         it("should return all icons when no argument is passed in", () => {
 
+            ClarityIcons.add(CommerceShapes);
             ClarityIcons.add(EssentialShapes);
             ClarityIcons.add(SocialShapes);
+            ClarityIcons.add(MediaShapes);
+            ClarityIcons.add(TravelShapes);
             ClarityIcons.add(TechnologyShapes);
 
             let currentAllShapes = Object.assign(
-                {}, CoreShapes, EssentialShapes, SocialShapes, TechnologyShapes
+                {},
+                CoreShapes,
+                CommerceShapes,
+                EssentialShapes,
+                SocialShapes,
+                MediaShapes,
+                TravelShapes,
+                TechnologyShapes
             );
             testAllShapes(ClarityIcons, currentAllShapes);
         });
@@ -60,6 +72,13 @@ describe("ClarityIcons", () => {
             expect(expected).toEqual(sanitizedIcon);
         });
 
+        it("should return the shapes from CommerceShapes and CoreShapes sets " +
+            "if the EssentialShapes set is added in.", () => {
+            ClarityIcons.add(CommerceShapes);
+            let currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes);
+            testAllShapes(ClarityIcons, currentAllShapes);
+        });
+
         it("should return the shapes from EssentialShapes and CoreShapes sets " +
             "if the EssentialShapes set is added in.", () => {
             ClarityIcons.add(EssentialShapes);
@@ -67,10 +86,24 @@ describe("ClarityIcons", () => {
             testAllShapes(ClarityIcons, currentAllShapes);
         });
 
+        it("should return the shapes from MediaShapes and CoreShapes sets " +
+            "if the EssentialShapes set is added in.", () => {
+            ClarityIcons.add(MediaShapes);
+            let currentAllShapes = Object.assign({}, CoreShapes, MediaShapes);
+            testAllShapes(ClarityIcons, currentAllShapes);
+        });
+
         it("should return the shapes from SocialShapes and CoreShapes sets " +
             "if the SocialShapes set is added in.", () => {
             ClarityIcons.add(SocialShapes);
             let currentAllShapes = Object.assign({}, CoreShapes, SocialShapes);
+            testAllShapes(ClarityIcons, currentAllShapes);
+        });
+
+        it("should return the shapes from TravelShapes and CoreShapes sets " +
+            "if the EssentialShapes set is added in.", () => {
+            ClarityIcons.add(TravelShapes);
+            let currentAllShapes = Object.assign({}, CoreShapes, TravelShapes);
             testAllShapes(ClarityIcons, currentAllShapes);
         });
 
@@ -83,7 +116,13 @@ describe("ClarityIcons", () => {
 
         it("should return all icons from all sets if the AllShapes set is added in", () => {
             ClarityIcons.add(AllShapes);
-            let currentAllShapes = Object.assign({}, CoreShapes, EssentialShapes, SocialShapes, TechnologyShapes);
+            let currentAllShapes = Object.assign({}, CoreShapes,
+                CommerceShapes,
+                EssentialShapes,
+                MediaShapes,
+                SocialShapes,
+                TravelShapes,
+                TechnologyShapes);
             testAllShapes(ClarityIcons, currentAllShapes);
         });
 
@@ -416,12 +455,24 @@ describe("ClarityIcons", () => {
             testIconStyles(CoreShapes, ["vm-bug"]);
         });
 
+        it("CommerceShapes should not include fill attribute", () => {
+            testIconStyles(CommerceShapes);
+        });
+
         it("EssentialShapes should not include fill attribute", () => {
             testIconStyles(EssentialShapes);
         });
 
+        it("MediaShapes should not include fill attribute", () => {
+            testIconStyles(MediaShapes);
+        });
+
         it("SocialShapes should not include fill attribute", () => {
             testIconStyles(SocialShapes);
+        });
+
+        it("TravelShapes should not include fill attribute", () => {
+            testIconStyles(TravelShapes);
         });
 
         it("TechnologyShapes should not include fill attribute", () => {
@@ -432,10 +483,13 @@ describe("ClarityIcons", () => {
             let allShapeTemplates: any = [
                 CoreShapes,
                 EssentialShapes,
+                CommerceShapes,
+                MediaShapes,
                 SocialShapes,
                 TechnologyShapes
             ];
             let shapesTested: any = {};
+            let duplicatesFound: string[] = [];
             let removeSpacesBreaks = (template: string): string => {
                 return template.replace(/\n|\r/g, "").replace(/\s/g, "");
             };
@@ -446,12 +500,17 @@ describe("ClarityIcons", () => {
                         if (!shapesTested.hasOwnProperty(shapeName)) {
                             shapesTested[shapeName] = shapeTemplates[shapeName];
                         } else {
+                            duplicatesFound.push(shapeName);
                             expect(removeSpacesBreaks(shapeTemplates[shapeName]))
                                 .toBe(removeSpacesBreaks(shapesTested[shapeName]));
                         }
                     }
                 }
             });
+
+            if (duplicatesFound.length > 0) {
+                console.log("Duplicated Icons: " + duplicatesFound);
+            }
         });
     });
 });

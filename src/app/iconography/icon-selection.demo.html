@@ -41,6 +41,16 @@
     </section>
 
     <section>
+        <h5>Commerce Shapes</h5>
+        <div class="row clr-icon-collection">
+            <div *ngFor="let shape of commerceShapes" class="clr-icon-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <clr-icon [attr.shape]="shape" [ngClass]="previewClasses"></clr-icon>
+                <span class="icon-shape-name">{{shape}}</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
         <h5>Essential Shapes</h5>
         <div class="row clr-icon-collection">
             <div *ngFor="let shape of essentialShapes" class="clr-icon-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -51,9 +61,29 @@
     </section>
 
     <section>
+        <h5>Media Shapes</h5>
+        <div class="row clr-icon-collection">
+            <div *ngFor="let shape of mediaShapes" class="clr-icon-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <clr-icon [attr.shape]="shape" [ngClass]="previewClasses"></clr-icon>
+                <span class="icon-shape-name">{{shape}}</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
         <h5>Social Shapes</h5>
         <div class="row clr-icon-collection">
             <div *ngFor="let shape of socialShapes" class="clr-icon-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <clr-icon [attr.shape]="shape" [ngClass]="previewClasses"></clr-icon>
+                <span class="icon-shape-name">{{shape}}</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h5>Travel Shapes</h5>
+        <div class="row clr-icon-collection">
+            <div *ngFor="let shape of travelShapes" class="clr-icon-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <clr-icon [attr.shape]="shape" [ngClass]="previewClasses"></clr-icon>
                 <span class="icon-shape-name">{{shape}}</span>
             </div>

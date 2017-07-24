@@ -3,12 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { Component, ViewChild } from "@angular/core";
-import { Point } from "../common/popover";
-import { Dropdown } from "./dropdown";
-import { ClrDropdownModule } from "./dropdown.module";
-import { IfOpenService } from "../../utils/conditional/if-open.service";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {Component, ViewChild} from "@angular/core";
+import {Point} from "../common/popover";
+import {Dropdown} from "./dropdown";
+import {ClrDropdownModule} from "./dropdown.module";
+import {IfOpenService} from "../../utils/conditional/if-open.service";
 
 
 export default function(): void {
@@ -187,6 +187,19 @@ export default function(): void {
             fixture.detectChanges();
             expect(compiled.querySelector(".dropdown-item")).toBeNull();
         });
+
+        it("emits a close event", () => {
+            let outsideButton: HTMLElement = compiled.querySelector(".outside-click-test");
+            let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+
+            dropdownToggle.click();
+            fixture.detectChanges();
+            expect(fixture.componentInstance.openState).toBe(true);
+
+            outsideButton.click();
+            fixture.detectChanges();
+            expect(fixture.componentInstance.openState).toBe(false);
+        });
     });
 }
 
@@ -195,7 +208,9 @@ export default function(): void {
         <button class="outside-click-test" (click)="outsideButtonClickHandler()">
             Button to test clicks outside of the dropdown component
         </button>
-        <clr-dropdown [clrMenuPosition]="menuPosition" [clrCloseMenuOnItemClick]="menuClosable">
+        <clr-dropdown [clrMenuPosition]="menuPosition"
+                      [clrCloseMenuOnItemClick]="menuClosable"
+                      [(clrDropdownMenuOpen)]="openState">
             <button class="btn btn-primary" type="button" clrDropdownToggle>
                 Dropdown
                 <clr-icon shape="caret down"></clr-icon>
@@ -212,7 +227,7 @@ export default function(): void {
                 </clr-dropdown>
             </clr-dropdown-menu>
         </clr-dropdown>
-   `
+    `
 })
 class TestComponent {
     @ViewChild(Dropdown) dropdownInstance: Dropdown;
@@ -220,6 +235,7 @@ class TestComponent {
     menuPosition: string = "";
     menuClosable: boolean = true;
     testCnt: number = 0;
+    openState: boolean = false;
 
     outsideButtonClickHandler(): void {
         this.testCnt++;

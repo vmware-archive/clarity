@@ -9,6 +9,7 @@ import {
     EventEmitter,
     HostListener,
     Input,
+    OnDestroy,
     Optional,
     Output,
     SkipSelf
@@ -17,6 +18,7 @@ import {
 import { Point, PopoverOptions } from "../common/popover";
 import { menuPositions } from "./menu-positions";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
+import {Subscription} from "rxjs/Subscription";
 
 // TODO: the ng-content inside the ng-template should ideally just be
 // <ng-content select="clr-dropdown-menu"></ng-content>. Remove .dropdown-menu in 1.0?
@@ -39,7 +41,9 @@ import {IfOpenService} from "../../utils/conditional/if-open.service";
     },
     providers: [ IfOpenService ]
 })
-export class Dropdown {
+export class Dropdown implements OnDestroy {
+
+    private ifOpenServiceUnsubscribe: Subscription;
 
     @Input("clrDropdownMenuOpen") _open: boolean = false;
 
@@ -56,6 +60,11 @@ export class Dropdown {
     constructor(public elementRef: ElementRef, @SkipSelf() @Optional() public parent: Dropdown,
                 public ifOpenService: IfOpenService) {
         this.anchor = elementRef.nativeElement;
+
+        // Subscribe and broadcast openChanges from the service
+        this.ifOpenServiceUnsubscribe = ifOpenService.openChange.subscribe(change => {
+            this._openChanged.next(change);
+        });
     }
 
     get isRootLevelDropdown(): boolean {
@@ -131,5 +140,9 @@ export class Dropdown {
             }
             this.ifOpenService.open = false; //Remove .open from the dropdown
         }
+    }
+
+    ngOnDestroy() {
+        this.ifOpenServiceUnsubscribe.unsubscribe();
     }
 }

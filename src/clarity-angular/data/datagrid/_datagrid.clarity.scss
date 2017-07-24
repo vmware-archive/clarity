@@ -573,13 +573,14 @@
 
     .datagrid-action-bar {
         flex: 0 0 auto;
-        padding: $clr_baselineRem_0_125;
         display: flex;
         flex-flow: row nowrap;
         align-items: stretch;
-        min-height: $clr_baselineRem_1_75;
-        line-height: $clr_baselineRem_1_75 - 3px;
-        margin-bottom: -$clr_baselineRem_1;
+
+        // Datagrid has a margin top of 1 baseline. action bar is supposed to be 1/2 baseline from the datagrid
+        // Had to use translate instead of negative margins to pull the
+        // action bar down. negative margin screws up the click targets.
+        transform: translateY($clr_baselineRem_0_5);
     }
 
     .datagrid-foot {

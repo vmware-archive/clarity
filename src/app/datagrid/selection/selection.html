@@ -57,12 +57,12 @@
 
 <clr-datagrid [(clrDgSelected)]="selected">
     <clr-dg-action-bar>
-        <div class="btn-group" role="group" aria-label="Available Actions" *ngIf="selected.length > 0">
-            <button type="button" class="btn btn-sm btn-secondary" (click)="onAdd()"><clr-icon shape="plus"></clr-icon> Add
+        <div class="btn-group btn-sm" role="group" aria-label="Available Actions" *ngIf="selected.length > 0">
+            <button type="button" class="btn btn-secondary" (click)="onAdd()"><clr-icon shape="plus"></clr-icon> Add
                 to
                 group</button>
-            <button type="button" class="btn btn-sm btn-secondary" (click)="onDelete()" ><clr-icon shape="close"></clr-icon> Delete</button>
-            <button type="button" class="btn btn-sm btn-secondary" (click)="onEdit()" *ngIf="selected.length == 1"><clr-icon shape="pencil"></clr-icon> Edit</button>
+            <button type="button" class="btn btn-secondary" (click)="onDelete()" ><clr-icon shape="close"></clr-icon> Delete</button>
+            <button type="button" class="btn btn-secondary" (click)="onEdit()" *ngIf="selected.length == 1"><clr-icon shape="pencil"></clr-icon> Edit</button>
         </div>
     </clr-dg-action-bar>
 

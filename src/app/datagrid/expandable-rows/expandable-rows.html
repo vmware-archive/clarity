@@ -35,13 +35,21 @@
             <input type="checkbox" name="slow-load" id="slow-load" [(ngModel)]="slowLoad">
             <label for="slow-load">Slow load</label>
         </div>
+        <div class="checkbox-inline">
+            <input type="checkbox" name="date" id="hidden-date" [(ngModel)]="date">
+            <label for="hidden-date">Hidden Date Column</label>
+        </div>
     </div>
 </form>
 
 <clr-datagrid [style.height.px]="fixedHeight ? 458 : null" [(clrDgSelected)]="selected">
     <clr-dg-column>User ID</clr-dg-column>
     <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
-    <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
+    <clr-dg-column [clrDgField]="'creation'">
+        <ng-container *clrDgHideableColumn="{hidden: date}">
+            Creation date
+        </ng-container>
+    </clr-dg-column>
     <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
     <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
 

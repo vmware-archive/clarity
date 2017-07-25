@@ -97,7 +97,7 @@ export default function(): void {
         });
     });
 
-    fdescribe("DatagridRowDetail hide/show cell behavior", function() {
+    describe("DatagridRowDetail hide/show cell behavior", function() {
         let context: TestContext<DatagridRowDetail, HiddenTest>;
         let hideableColumnService: HideableColumnService;
 

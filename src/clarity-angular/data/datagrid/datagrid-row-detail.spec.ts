@@ -97,7 +97,7 @@ export default function(): void {
         });
     });
 
-    describe("DatagridRowDetail hide/show cell behavior", function() {
+    fdescribe("DatagridRowDetail hide/show cell behavior", function() {
         let context: TestContext<DatagridRowDetail, HiddenTest>;
         let hideableColumnService: HideableColumnService;
 
@@ -110,7 +110,6 @@ export default function(): void {
 
         it("should update cells for columns", function () {
             spyOn(context.clarityDirective, "updateCellsForColumns");
-            hideableColumnService = context.getClarityProvider(HideableColumnService);
 
             let hiddenColumns: DatagridHideableColumn[] = [
                 new DatagridHideableColumn(undefined, "dg-col-0", false),

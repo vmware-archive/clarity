@@ -69,7 +69,7 @@ export class DatagridRowDetail implements AfterContentInit, OnDestroy {
 
         // Used to set things up the first time but only after all the columns are ready.
         this.subscription = this.hideableColumnService.columnListChange.subscribe(( columnList ) => {
-            // Prevents cell updates when cols and cells array are not aligned - only seems to run on init / first time.
+            // Prevents cell updates when cols and cells array are not aligned
             if ( columnList.length === this.cells.length ) {
                 this.updateCellsForColumns(columnList);
             }

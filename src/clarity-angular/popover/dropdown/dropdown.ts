@@ -128,7 +128,7 @@ export class Dropdown {
     //Checks to see if the mouseclick happened on the host or outside
     @HostListener("document:click", ["$event.target"])
     onMouseClick(target: any): void {
-        if (this._open) {
+        if (this.open) {
             let current: any = target; //Get the element in the DOM on which the mouse was clicked
             let dropdownHost: any = this.elementRef.nativeElement; //Get the current dropdown native HTML element
 
@@ -139,7 +139,7 @@ export class Dropdown {
                 }
                 current = current.parentNode;
             }
-            this._open = false; //Remove .open from the dropdown
+            this.open = false; //Remove .open from the dropdown
         }
     }
 }

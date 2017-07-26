@@ -52,6 +52,7 @@
             .content-area {
                 flex: 1 1 auto;
                 overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
                 padding: $clr-content-area-padding-top $clr-content-area-padding-right $clr-content-area-padding-bottom $clr-content-area-padding-left;
 
                 & > :first-child {

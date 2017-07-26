@@ -19,8 +19,8 @@ $clr-wizard-header-action-color: clr-getTextColor($clr-wizard-main-bgcolor, hove
 $clr-wizard-header-action-color--hovered: clr-getTextColor($clr-wizard-sidenav-bgcolor, darkest);
 $clr-wizard-box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.2);
 
-// NOTE THAT THE MIN-WIDTH OF THE BUTTONS WILL PUSH OUT THE DIALOG IF 
-// SET UP IMPROPERLY. THIS IS A KNOWN ISSUE AND USERS SHOULD USE THEIR 
+// NOTE THAT THE MIN-WIDTH OF THE BUTTONS WILL PUSH OUT THE DIALOG IF
+// SET UP IMPROPERLY. THIS IS A KNOWN ISSUE AND USERS SHOULD USE THEIR
 // BEST JUDGMENT WITH BUTTONS IN THE WIZARD. NO MORE THAN THREE...
 // IT'S AN ISSUE WITH THE NUMBER OF BUTTONS, NOT THE LENGTH OF THE TEXT
 // INSIDE THE BUTTONS
@@ -151,7 +151,7 @@ $clr-wizard-box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.2);
 
     .clr-wizard-stepnav {
         padding-left: $clr-wizard-default-space;
-        display: block; 
+        display: block;
         font-size: 14px;
         color: $clr-wizard-sidenav-text;
         width: 100%;
@@ -351,7 +351,7 @@ $clr-wizard-xl-dialog-max-height: 75vh;
         }
     }
 
-    .spinner {
+    .spinner:not(.spinner-inline) {
         left: calc(50% + 115px);
         position: absolute;
         top: 40%;
@@ -508,7 +508,7 @@ $clr-wizard-xl-dialog-max-height: 75vh;
 
             .nav-panel {
                 width: 99%;
-                height: 99%; 
+                height: 99%;
             }
         }
 
@@ -518,19 +518,19 @@ $clr-wizard-xl-dialog-max-height: 75vh;
         }
 
         .modal-content {
-            box-shadow: none; 
+            box-shadow: none;
         }
 
         .modal-dialog {
             min-height: 100%;
             height: 100%;
             width: 100%;
-            z-index: auto; 
+            z-index: auto;
         }
     }
 
     .modal-body {
-        height: 100%; 
+        height: 100%;
     }
 
     .modal-header .close {
@@ -538,11 +538,11 @@ $clr-wizard-xl-dialog-max-height: 75vh;
     }
 
     .nav.navList {
-        padding-top: 0; 
+        padding-top: 0;
     }
 
     .modal-dialog .modal-content .modal-body .content-area {
-        overflow-y: auto; 
+        overflow-y: auto;
     }
 
     .modal-backdrop {
@@ -563,7 +563,7 @@ $clr-wizard-xl-dialog-max-height: 75vh;
     .clr-wizard-stepnav-wrapper, &.clr-wizard .modal-content {
         min-height: 100%;
         height: auto;
-        max-height: 100%; 
+        max-height: 100%;
     }
 }
 

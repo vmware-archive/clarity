@@ -10,19 +10,21 @@ import "clarity-icons/shapes/technology-shapes";
 import "clarity-icons/shapes/social-shapes";
 
 const EXAMPLE_HTML = `
-<clr-tree-node *ngFor="let directory of rootDirectory" [clrTreeNodeExpanded]="directory.expanded">
-        <clr-icon [attr.shape]="directory.icon"></clr-icon>
-        {{directory.name}}
+<clr-tree-node *ngFor="let directory of rootDirectory">
+    <clr-icon [attr.shape]="directory.icon"></clr-icon>
+    {{directory.name}}
+    <ng-template [(clrIfExpanded)]="directory.expanded">
         <clr-tree-node *ngFor="let file of directory.files">
             <button
-                (click)="openFile(directory.name, file.name)"
-                class="clr-treenode-link"
-                [class.active]="file.active">
+                    (click)="openFile(directory.name, file.name)"
+                    class="clr-treenode-link"
+                    [class.active]="file.active">
                 <clr-icon [attr.shape]="file.icon"></clr-icon>
                 {{file.name}}
             </button>
         </clr-tree-node>
-    </clr-tree-node>
+    </ng-template>
+</clr-tree-node>
 `
 
 const EXAMPLE_TS = `

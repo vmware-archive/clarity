@@ -3,50 +3,22 @@
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
-<clr-tree [(clrTreeSelected)]="selection">
-    <clr-tree-node [clrTreeModel]="'Audit'" [clrTreeNodeExpanded]="true">
-        Audit User Privileges
-        <clr-tree-node [clrTreeModel]="'System'">
-            System Privileges
-            <clr-tree-node [clrTreeModel]="'Create'">
-                Create Users
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'Modify'">
-                Modify Users
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'Delete'">
-                Delete Users
-            </clr-tree-node>
+
+<clr-tree-node [(clrSelected)]="selected">
+    Permissions
+    <ng-template [clrIfExpanded]="true">
+        <clr-tree-node
+                *ngFor="let permission of permissions"
+                [(clrSelected)]="permission.selected">
+            {{permission.type}}
+            <ng-template [(clrIfExpanded)]="permission.expanded">
+                <clr-tree-node *ngFor="let right of permission.rights" [(clrSelected)]="right.enable">
+                    {{right.name}}
+                </clr-tree-node>
+            </ng-template>
         </clr-tree-node>
-        <clr-tree-node [clrTreeModel]="'View'">
-            Viewing Privileges
-            <clr-tree-node [clrTreeModel]="'Posts'">
-                View Posts
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'Profile'">
-                View Profile Information
-            </clr-tree-node>
-        </clr-tree-node>
-        <clr-tree-node [clrTreeModel]="'Edit'" [clrTreeNodeExpanded]="true">
-            Edit Privileges
-            <clr-tree-node [clrTreeModel]="'Settings'">
-                Edit Settings
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'Comments'">
-                Add Comments
-            </clr-tree-node>
-        </clr-tree-node>
-    </clr-tree-node>
-    <clr-tree-node [clrTreeModel]="'View'" [clrTreeNodeExpanded]="true">
-        View Only User Priveleges
-        <clr-tree-node [clrTreeModel]="'Edit'">
-            Edit Priveleges
-        </clr-tree-node>
-        <clr-tree-node [clrTreeModel]="'View'">
-            View Privileges
-        </clr-tree-node>
-    </clr-tree-node>
-</clr-tree>
+    </ng-template>
+</clr-tree-node>
 
 <div *ngIf="showCode">
     <clr-example [clrCode]="example_ts" clrLanguage="typescript"></clr-example>

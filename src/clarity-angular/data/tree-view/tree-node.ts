@@ -48,12 +48,10 @@ import {Expand} from "../../utils/expand/providers/expand";
     animations: [
         trigger("childNodesState", [
             state("expanded", style({
-                "height": "*",
-                "overflow-y": "hidden"
+                "height": "*"
             })),
             state("collapsed", style({
-                "height": 0,
-                "overflow-y": "hidden"
+                "height": 0
             })),
             transition(
                 "expanded <=> collapsed", animate("0.2s ease-in-out")

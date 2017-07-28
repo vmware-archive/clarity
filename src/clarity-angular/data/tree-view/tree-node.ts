@@ -29,25 +29,17 @@ import {TreeSelectionService} from "./providers/treeSelection.service";
 @Component({
     selector: "clr-tree-node",
     templateUrl: "./tree-node.html",
-    animations: [trigger("collapse", [
-        state("true", style({
-            "height": 0,
-            "overflow-y": "hidden"
-        })),
-        transition("true => false", [
-            animate("0.2s ease-in-out", style({
-                "height": "*",
-                "overflow-y": "hidden"
-            }))
-        ]),
-        transition("false => true", [
-            style({
-                "height": "*",
-                "overflow-y": "hidden"
-            }),
-            animate("0.2s ease-in-out")
+    animations: [
+        trigger("collapse", [
+            state("false", style({
+                "height": "*"
+            })),
+            state("true", style({
+                "height": 0
+            })),
+            transition("true <=> false", animate("0.2s ease-in-out"))
         ])
-    ])],
+    ],
     host: {"[class.clr-tree--compact]": "isCompact"}
 })
 export class TreeNode extends AbstractTreeSelection {

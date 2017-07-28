@@ -1,13 +1,19 @@
 import { Component } from "@angular/core";
 import { CoreShapes } from "clarity-icons/shapes/core-shapes";
+import { CommerceShapes } from "clarity-icons/shapes/commerce-shapes";
 import { EssentialShapes } from "clarity-icons/shapes/essential-shapes";
+import { MediaShapes } from "clarity-icons/shapes/media-shapes";
 import { SocialShapes } from "clarity-icons/shapes/social-shapes";
+import { TravelShapes } from "clarity-icons/shapes/travel-shapes";
 import { TechnologyShapes } from "clarity-icons/shapes/technology-shapes";
 
 
 let coreShapes = Object.keys(CoreShapes);
+let commerceShapes = Object.keys(CommerceShapes);
 let essentialShapes = Object.keys(EssentialShapes);
+let mediaShapes = Object.keys(MediaShapes);
 let socialShapes = Object.keys(SocialShapes);
+let travelShapes = Object.keys(TravelShapes);
 let technologyShapes = Object.keys(TechnologyShapes);
 
 
@@ -57,24 +63,24 @@ export class IconSelectionDemo {
     }
 
 
-    hideShapesFromCore: string[] = [ "vm-bug", "ellipses-horizontal", "ellipses-vertical" ];
+    hideShapesFromCore: string[] = [
+        "vm-bug"
+    ];
 
     coreShapes: string[] = coreShapes.filter((shape) => {
         return this.hideShapesFromCore.indexOf(shape) === -1;
     });
 
-    hideShapesFromEssential: string[] = [ "ellipses-horizontal", "ellipses-vertical", "network" ];
+    commerceShapes: string[] = commerceShapes;
 
-    essentialShapes: string[] = essentialShapes.filter((shape) => {
-        return this.hideShapesFromEssential.indexOf(shape) === -1;
-    });
+    essentialShapes: string[] = essentialShapes;
+
+    mediaShapes: string[] = mediaShapes;
 
     socialShapes: string[] = socialShapes;
 
-    hideShapesFromTechnology: string[] = [ "app"];
+    travelShapes: string[] = travelShapes;
 
-    technologyShapes: string[] = technologyShapes.filter((shape) => {
-        return this.hideShapesFromTechnology.indexOf(shape) === -1;
-    });
+    technologyShapes: string[] = technologyShapes;
 
 }

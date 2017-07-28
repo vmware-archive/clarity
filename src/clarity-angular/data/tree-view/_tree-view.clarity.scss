@@ -160,6 +160,7 @@ clr-tree-node {
 //Tree Nodes containing TreeNodes are wrapped with this class
 .clr-treenode-children {
     margin-left: $clr-tree-node-children-margin;
+    overflow-y: hidden;
 }
 
 .clr-tree--compact.clr-treenode,

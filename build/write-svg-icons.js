@@ -158,13 +158,15 @@ let breakUpAllShapeTemplates = (shapes) => {
 
 let makeSVG = (shapeTitle, shapeContent) => {
 
-    let openingTag = `<svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">`;
+    let openingTag = `<svg version="1.1" width="36" height="36"  viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">`;
     let title = `<title>${shapeTitle}</title>`;
+    let transparentBG = `<rect x="0" y="0" width="36" height="36" fill-opacity="0"/>`;
     let closingTag = `</svg>`;
 
     return `${openingTag}
                 ${title}
                 ${shapeContent}
+                ${transparentBG}
             ${closingTag}`;
 
 

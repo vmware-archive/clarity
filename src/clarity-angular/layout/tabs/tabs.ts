@@ -3,35 +3,61 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import {
+    Component, ContentChildren, QueryList
+} from "@angular/core";
 import {IfActiveService} from "../../utils/conditional/if-active.service";
-import {Tab} from "./tab";
 import {TabsService} from "./tabs-service";
+import {IfOpenService} from "../../utils/conditional/if-open.service";
+import {TabLinkDirective} from "./tab-link.directive";
 
-// TODO: find a better way to separately render the tab contents (i.e. not inside the ul)
 @Component({
     selector: "clr-tabs",
-    template: `
+    template: `        
         <ul class="nav" role="tablist">
-            <ng-content select="clr-tab"></ng-content>
+            <!--tab links-->
+            <ng-container *ngFor="let link of tabLinkDirectives">
+                <ng-container *ngIf="!link.inOverflow"
+                              [ngTemplateOutlet]="link.templateRefContainer.template">
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="tabsService.overflowTabs.length > 0">
+                <div class="tabs-overflow bottom-right" [class.open]="ifOpenService.open" 
+                     (click)="toggleOverflow($event)">
+                    <li role="presentation" class="nav-item">
+                        <button class="btn btn-link nav-link dropdown-toggle" [class.active]="activeTabInOverflow">
+                            <clr-icon shape="ellipsis-horizontal" [class.is-info]="ifOpenService.open"></clr-icon>
+                        </button>
+                    </li>
+                    <!--tab links in overflow menu-->
+                    <clr-tab-overflow-content>
+                        <ng-container *ngFor="let link of tabLinkDirectives">
+                            <ng-container *ngIf="link.inOverflow"
+                                          [ngTemplateOutlet]="link.templateRefContainer.template">
+                            </ng-container>
+                        </ng-container>
+                    </clr-tab-overflow-content>
+                </div>
+            </ng-container>
         </ul>
-        <ng-container *ngFor="let tab of tabsService.children">
-            <ng-template *ngIf="tab.tabContent" [ngTemplateOutlet]="tab.tabContent.templateRef"></ng-template>
-        </ng-container>
+        <!--tab content-->
+        <ng-content></ng-content>
     `,
-    providers: [ IfActiveService, TabsService ]
+    providers: [ IfActiveService, IfOpenService, TabsService ]
 })
 export class Tabs {
-    constructor(public ifActiveService: IfActiveService, public tabsService: TabsService) {
+    @ContentChildren(TabLinkDirective, {descendants: true}) tabLinkDirectives: QueryList<TabLinkDirective>;
+
+    constructor(public ifActiveService: IfActiveService,
+                public ifOpenService: IfOpenService,
+                public tabsService: TabsService) {
     }
 
-    get activeTab() {
-        let activeTab: Tab;
-        if (this.tabsService.children.length > 0) {
-            activeTab = this.tabsService.children.find((tab: Tab) => {
-                return tab.active;
-            });
-        }
-        return activeTab;
+    get activeTabInOverflow() {
+        return this.tabsService.overflowTabs.indexOf(this.tabsService.activeTab) > -1;
+    }
+
+    toggleOverflow(event: any) {
+        this.ifOpenService.toggleWithEvent(event);
     }
 }

@@ -205,6 +205,7 @@ $dropdown-white: clr-getColor(lightest);
 
     //Directions
     .btn-group-overflow,
+    .tabs-overflow,
     .dropdown {
         &.open > .dropdown-menu,
         &.open > .dropdown-menu-wrapper > .dropdown-menu {

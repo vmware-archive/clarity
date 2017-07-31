@@ -24,7 +24,9 @@ gulp.task("live", function() {
 				historyApiFallback({ index: "./app/index.html" })
 			]
 		},
-		files: ["dist/**/*"]
+		files: ["dist/**/*"],
+        reloadDebounce: 1000,
+        reloadDelay: 1000
 	});
 });
 

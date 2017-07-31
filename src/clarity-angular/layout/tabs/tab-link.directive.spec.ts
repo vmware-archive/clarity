@@ -57,6 +57,5 @@ describe("TabLink Directive", () => {
         fixture.detectChanges();
         expect(links[0].active).toEqual(false);
         expect(links[1].active).toEqual(true);
-
     });
 });

@@ -8,6 +8,7 @@ import {Component, ViewChild} from "@angular/core";
 import { ClrTabsModule } from "./tabs.module";
 import {IF_ACTIVE_ID_PROVIDER, IfActiveService} from "../../utils/conditional/if-active.service";
 import {TabContent} from "./tab-content";
+import {AriaService} from "./aria-service";
 
 @Component({
     template: `
@@ -26,15 +27,15 @@ describe("TabContent", () => {
         TestBed.configureTestingModule({
             imports: [ClrTabsModule],
             declarations: [TestComponent],
-            providers: [IfActiveService, IF_ACTIVE_ID_PROVIDER]
+            providers: [AriaService, IfActiveService, IF_ACTIVE_ID_PROVIDER]
         });
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
         compiled = fixture.nativeElement;
     });
 
-    it("creates ng-templates that can be rendered through templateOutlet", () => {
-        expect(fixture.componentInstance.tabContent.templateRef).toBeDefined();
+    it("projects content", () => {
+        expect(compiled.textContent.trim()).toMatch("Content1");
     });
 
 });

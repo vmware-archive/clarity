@@ -39,17 +39,21 @@ export class IfActiveDirective implements OnDestroy {
     constructor( private ifActiveService: IfActiveService, @Inject(IF_ACTIVE_ID) private id: number,
                  private template: TemplateRef<any>, private container: ViewContainerRef ) {
 
-        this.updateView(ifActiveService.current === this.id);
+        this.checkAndUpdateView(ifActiveService.current);
 
-        this.subscription = this.ifActiveService.currentChange.subscribe((newId) => {
-                let isNowActive = newId === this.id;
-                // only emit if the new active state is changed since last time.
-                if (isNowActive !== this.wasActive) {
-                    this.updateView(isNowActive);
-                    this.activeChange.emit(isNowActive);
-                    this.wasActive = isNowActive;
-                }
-            });
+        this.subscription = this.ifActiveService.currentChange.subscribe((newCurrentId) => {
+            this.checkAndUpdateView(newCurrentId);
+        });
+    }
+
+    private checkAndUpdateView(currentId: number) {
+        let isNowActive = currentId === this.id;
+        // only emit if the new active state is changed since last time.
+        if (isNowActive !== this.wasActive) {
+            this.updateView(isNowActive);
+            this.activeChange.emit(isNowActive);
+            this.wasActive = isNowActive;
+        }
     }
 
     /*********

@@ -15,7 +15,7 @@ import {TabsService} from "./tabs-service";
     <clr-tabs>
         <clr-tab>
             <button clrTabLink>Tab1</button>
-            <clr-tab-content *clrIfActive="true">
+            <clr-tab-content *clrIfActive>
                 <p>Content1</p>
             </clr-tab-content>
         </clr-tab>
@@ -35,9 +35,9 @@ import {TabsService} from "./tabs-service";
         </clr-tab>
 
         <clr-tab>
-            <button clrTabLink>Tab4</button>
+            <button clrTabLink [clrTabLinkInOverflow]="inOverflow" class="tab4">Tab4</button>
             <clr-tab-content *clrIfActive>
-                <p>Content4</p>
+                <p class="content-overflow">Content4</p>
             </clr-tab-content>
         </clr-tab>
     </clr-tabs>
@@ -45,6 +45,7 @@ import {TabsService} from "./tabs-service";
 })
 class TestComponent {
     @ViewChild(Tabs) tabsInstance: Tabs;
+    inOverflow: boolean = false;
 }
 
 describe("Tabs", () => {
@@ -71,13 +72,29 @@ describe("Tabs", () => {
 
     it("projects all the links and just the active content", () => {
         expect(compiled.querySelectorAll("button.nav-link").length).toEqual(4);
-        expect(compiled.querySelectorAll("section").length).toEqual(1);
+        expect(compiled.querySelectorAll("p").length).toEqual(1);
 
-        let section: HTMLElement = compiled.querySelector("section");
-        expect(section.textContent.trim()).toMatch("Content1");
+        let content: HTMLElement = compiled.querySelector("p");
+        expect(content.textContent.trim()).toMatch("Content1");
     });
 
     it("sets the first tab as active by default", () => {
-        expect(instance.activeTab).toEqual(instance.tabsService.children[0]);
+        expect(instance.tabsService.activeTab).toEqual(instance.tabsService.children[0]);
+    });
+
+    it("projects correctly when there's one or more overflow tabs", () => {
+        expect(compiled.querySelector(".tabs-overflow")).toBeNull();
+        expect(compiled.querySelector(".tab4")).toBeDefined();
+        expect(compiled.querySelector(".tabs-overflow .tab4")).toBeNull();
+
+        fixture.componentInstance.inOverflow = true;
+        fixture.detectChanges();
+        expect(compiled.querySelector(".tabs-overflow")).toBeDefined();
+
+        let toggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+        toggle.click();
+        fixture.detectChanges();
+        expect(compiled.querySelector(".tabs-overflow .tab4")).toBeDefined();
+
     });
 });

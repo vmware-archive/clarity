@@ -8,7 +8,6 @@ import {Tab} from "./tab";
 
 @Injectable()
 export class TabsService {
-
     private _children: Tab[] = [];
 
     register(tab: Tab) {
@@ -19,10 +18,23 @@ export class TabsService {
         return this._children;
     }
 
+    get activeTab() {
+        return this.children.find((tab: Tab) => {
+            return tab.active;
+        });
+    }
+
+    get overflowTabs() {
+        return this.children.filter((tab: Tab) => {
+            return tab.tabLink.inOverflow === true;
+        });
+    }
+
     unregister(tab: Tab) {
         const index = this.children.indexOf(tab);
         if (index > -1) {
             this.children.splice(index, 1);
         }
+
     }
 }

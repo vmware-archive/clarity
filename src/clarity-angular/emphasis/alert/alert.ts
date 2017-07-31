@@ -3,24 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    Component,
-    EventEmitter,
-    Input,
-    Output
-} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 
 // providers
-import { AlertIconAndTypesService } from "./providers/icon-and-types-service";
+import {AlertIconAndTypesService} from "./providers/icon-and-types-service";
 
-@Component({
-    selector: "clr-alert",
-    providers: [ AlertIconAndTypesService ],
-    templateUrl: "./alert.html"
-})
+@Component({selector: "clr-alert", providers: [AlertIconAndTypesService], templateUrl: "./alert.html"})
 export class Alert {
-    constructor(public iconService: AlertIconAndTypesService) {
-    }
+    constructor(public iconService: AlertIconAndTypesService) {}
 
     @Input("clrAlertSizeSmall") isSmall: boolean = false;
     @Input("clrAlertClosable") closable: boolean = true;

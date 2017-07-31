@@ -1,14 +1,27 @@
+/*
+ * Copyright (c) 2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
 import {
-    AfterViewChecked, ElementRef, HostBinding, Injectable, Injector, OnDestroy, Renderer2, SkipSelf
+    AfterViewChecked,
+    ElementRef,
+    HostBinding,
+    Injectable,
+    Injector,
+    OnDestroy,
+    Renderer2,
+    SkipSelf
 } from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
-import {Popover, Point, PopoverOptions} from "./popover";
+
 import {IfOpenService} from "../../utils/conditional/if-open.service";
+
+import {Point, Popover, PopoverOptions} from "./popover";
 
 // Literally any annotation would work here, but writing our own @HoneyBadger annotation feels overkill.
 @Injectable()
 export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
-
     constructor(injector: Injector, @SkipSelf() protected parentHost: ElementRef) {
         this.el = injector.get(ElementRef);
         this.ifOpenService = injector.get(IfOpenService);

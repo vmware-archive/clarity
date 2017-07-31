@@ -21,7 +21,7 @@ export class NestedProperty {
     public getPropValue(item: any): any {
         if (this.splitProp) {
             let value = item;
-            for (let nestedProp of this.splitProp) {
+            for (const nestedProp of this.splitProp) {
                 if (value == null || typeof value === "undefined" || typeof value[nestedProp] === "undefined") {
                     return undefined;
                 }

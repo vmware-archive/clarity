@@ -7,17 +7,18 @@ import {
     AnimationAnimateMetadata,
     AnimationMetadata,
     AnimationStateMetadata,
-    AnimationTransitionMetadata,
     AnimationStyleMetadata,
+    AnimationTransitionMetadata,
     style
 } from "@angular/animations";
+
 import {collapse} from "./index";
 
 describe("Collapse", () => {
-    let myCollapse: AnimationMetadata[] = collapse();
-    let state: AnimationStateMetadata = myCollapse[0] as AnimationStateMetadata;
-    let transition1: AnimationTransitionMetadata = myCollapse[1] as AnimationTransitionMetadata;
-    let transition2: AnimationTransitionMetadata = myCollapse[2] as AnimationTransitionMetadata;
+    const myCollapse: AnimationMetadata[] = collapse();
+    const state: AnimationStateMetadata = myCollapse[0] as AnimationStateMetadata;
+    const transition1: AnimationTransitionMetadata = myCollapse[1] as AnimationTransitionMetadata;
+    const transition2: AnimationTransitionMetadata = myCollapse[2] as AnimationTransitionMetadata;
 
     it("should return an array of AnimationMetadata", () => {
         expect(myCollapse.length).toEqual(3);
@@ -36,14 +37,14 @@ describe("Collapse", () => {
     });
 
     it("should contain a transition with height of * and timing of 0.2s ease-in-out for true => false", () => {
-        let step1: AnimationAnimateMetadata = (transition1.animation as any)[0];
+        const step1: AnimationAnimateMetadata = (transition1.animation as any)[0];
 
         expect(step1.styles).toEqual(style({"height": "*", "overflow-y": "hidden"}));
     });
 
     it("should contain a transition with height of * and timing of 0.2s ease-in-out for false => true", () => {
-        let step1: AnimationStyleMetadata = (transition2.animation as any)[0];
-        let step2: AnimationAnimateMetadata = (transition2.animation as any)[1];
+        const step1: AnimationStyleMetadata = (transition2.animation as any)[0];
+        const step2: AnimationAnimateMetadata = (transition2.animation as any)[1];
 
         expect(step1).toEqual(style({"height": "*", "overflow-y": "hidden"}));
         expect(step2.timings).toEqual("0.2s ease-in-out");

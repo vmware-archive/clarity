@@ -4,16 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild, DebugElement } from "@angular/core";
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { By } from "@angular/platform-browser";
-import { PageCollectionService } from "./providers/page-collection";
-import { WizardNavigationService } from "./providers/wizard-navigation";
-import { ButtonHubService } from "./providers/button-hub";
-import { WizardStepnav } from "./wizard-stepnav";
-import { MockPage } from "./wizard-page.mock";
-import { PageCollectionMock } from "./providers/page-collection.mock";
-import { ClrWizardModule } from "./wizard.module";
+import {Component, DebugElement, ViewChild} from "@angular/core";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {By} from "@angular/platform-browser";
+
+import {ButtonHubService} from "./providers/button-hub";
+import {PageCollectionService} from "./providers/page-collection";
+import {PageCollectionMock} from "./providers/page-collection.mock";
+import {WizardNavigationService} from "./providers/wizard-navigation";
+import {MockPage} from "./wizard-page.mock";
+import {WizardStepnav} from "./wizard-stepnav";
+import {ClrWizardModule} from "./wizard.module";
 
 let mockPages: MockPage[];
 
@@ -26,7 +27,7 @@ class StepnavPageCollection extends PageCollectionMock {
 }
 
 function resetMockPages(): MockPage[] {
-    return [ new MockPage(0), new MockPage(1), new MockPage(2) ];
+    return [new MockPage(0), new MockPage(1), new MockPage(2)];
 }
 
 @Component({
@@ -44,16 +45,15 @@ export default function(): void {
         let testItemComponent: WizardStepnav;
         let debugEl: DebugElement;
         let myStepnavEl: HTMLElement;
-        let pageCollection = new StepnavPageCollection();
+        const pageCollection = new StepnavPageCollection();
 
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [ClrWizardModule ],
-                declarations: [ TestComponent ],
+                imports: [ClrWizardModule],
+                declarations: [TestComponent],
                 providers: [
-                     WizardNavigationService,
-                     ButtonHubService,
-                    { provide: PageCollectionService, useValue: pageCollection }
+                    WizardNavigationService, ButtonHubService,
+                    {provide: PageCollectionService, useValue: pageCollection}
                 ]
             });
             fixture = TestBed.createComponent(TestComponent);
@@ -94,10 +94,9 @@ export default function(): void {
             describe("Renders as expected", () => {
                 it("list element should have role of tablist", () => {
                     let myRole: string;
-                    let myListElement = myStepnavEl.querySelector("ol");
+                    const myListElement = myStepnavEl.querySelector("ol");
 
-                    expect(myListElement.hasAttribute("role")).toBeTruthy(
-                        "stepnav list element has role attr");
+                    expect(myListElement.hasAttribute("role")).toBeTruthy("stepnav list element has role attr");
                     myRole = myListElement.getAttribute("role");
                     expect(myRole).toBe("tablist");
                 });

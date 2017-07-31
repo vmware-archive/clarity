@@ -4,16 +4,16 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClarityIcons } from "./index";
-import { CoreShapes } from "./shapes/core-shapes";
-import { CommerceShapes } from "./shapes/commerce-shapes";
-import { MediaShapes } from "./shapes/media-shapes";
-import { EssentialShapes } from "./shapes/essential-shapes";
-import { SocialShapes } from "./shapes/social-shapes";
-import { TravelShapes } from "./shapes/travel-shapes";
-import { TechnologyShapes } from "./shapes/technology-shapes";
-import { AllShapes } from "./shapes/all-shapes";
-import { removeWhitespace, testAllShapes, resetShapes } from "./helpers.spec";
+import {removeWhitespace, resetShapes, testAllShapes} from "./helpers.spec";
+import {ClarityIcons} from "./index";
+import {AllShapes} from "./shapes/all-shapes";
+import {CommerceShapes} from "./shapes/commerce-shapes";
+import {CoreShapes} from "./shapes/core-shapes";
+import {EssentialShapes} from "./shapes/essential-shapes";
+import {MediaShapes} from "./shapes/media-shapes";
+import {SocialShapes} from "./shapes/social-shapes";
+import {TechnologyShapes} from "./shapes/technology-shapes";
+import {TravelShapes} from "./shapes/travel-shapes";
 
 describe("ClarityIcons", () => {
 
@@ -33,11 +33,9 @@ describe("ClarityIcons", () => {
         const sanitizedIcon = removeWhitespace([
             "<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" ",
             "xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid meet\" ",
-            "viewBox=\"0 0 36 36\" version=\"1.1\">",
-            "<title>check</title>",
+            "viewBox=\"0 0 36 36\" version=\"1.1\">", "<title>check</title>",
             "<path d=\"M13.72,27.69,3.29,17.27a1,1,0,0,1,1.41-1.41l9,9L31.29,",
-            "7.29a1,1,0,0,1,1.41,1.41Z\" class=\"clr-i-outline clr-i-outline-path-1\"></path>",
-            "</svg>"
+            "7.29a1,1,0,0,1,1.41,1.41Z\" class=\"clr-i-outline clr-i-outline-path-1\"></path>", "</svg>"
         ].join(""));
 
         it("should return all icons when no argument is passed in", () => {
@@ -49,16 +47,8 @@ describe("ClarityIcons", () => {
             ClarityIcons.add(TravelShapes);
             ClarityIcons.add(TechnologyShapes);
 
-            let currentAllShapes = Object.assign(
-                {},
-                CoreShapes,
-                CommerceShapes,
-                EssentialShapes,
-                SocialShapes,
-                MediaShapes,
-                TravelShapes,
-                TechnologyShapes
-            );
+            const currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes, EssentialShapes, SocialShapes,
+                                                   MediaShapes, TravelShapes, TechnologyShapes);
             testAllShapes(ClarityIcons, currentAllShapes);
         });
 
@@ -73,56 +63,57 @@ describe("ClarityIcons", () => {
         });
 
         it("should return the shapes from CommerceShapes and CoreShapes sets " +
-            "if the EssentialShapes set is added in.", () => {
-            ClarityIcons.add(CommerceShapes);
-            let currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes);
-            testAllShapes(ClarityIcons, currentAllShapes);
-        });
+               "if the EssentialShapes set is added in.",
+           () => {
+               ClarityIcons.add(CommerceShapes);
+               const currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes);
+               testAllShapes(ClarityIcons, currentAllShapes);
+           });
 
         it("should return the shapes from EssentialShapes and CoreShapes sets " +
-            "if the EssentialShapes set is added in.", () => {
-            ClarityIcons.add(EssentialShapes);
-            let currentAllShapes = Object.assign({}, CoreShapes, EssentialShapes);
-            testAllShapes(ClarityIcons, currentAllShapes);
-        });
+               "if the EssentialShapes set is added in.",
+           () => {
+               ClarityIcons.add(EssentialShapes);
+               const currentAllShapes = Object.assign({}, CoreShapes, EssentialShapes);
+               testAllShapes(ClarityIcons, currentAllShapes);
+           });
 
         it("should return the shapes from MediaShapes and CoreShapes sets " +
-            "if the EssentialShapes set is added in.", () => {
-            ClarityIcons.add(MediaShapes);
-            let currentAllShapes = Object.assign({}, CoreShapes, MediaShapes);
-            testAllShapes(ClarityIcons, currentAllShapes);
-        });
+               "if the EssentialShapes set is added in.",
+           () => {
+               ClarityIcons.add(MediaShapes);
+               const currentAllShapes = Object.assign({}, CoreShapes, MediaShapes);
+               testAllShapes(ClarityIcons, currentAllShapes);
+           });
 
         it("should return the shapes from SocialShapes and CoreShapes sets " +
-            "if the SocialShapes set is added in.", () => {
-            ClarityIcons.add(SocialShapes);
-            let currentAllShapes = Object.assign({}, CoreShapes, SocialShapes);
-            testAllShapes(ClarityIcons, currentAllShapes);
-        });
+               "if the SocialShapes set is added in.",
+           () => {
+               ClarityIcons.add(SocialShapes);
+               const currentAllShapes = Object.assign({}, CoreShapes, SocialShapes);
+               testAllShapes(ClarityIcons, currentAllShapes);
+           });
 
         it("should return the shapes from TravelShapes and CoreShapes sets " +
-            "if the EssentialShapes set is added in.", () => {
-            ClarityIcons.add(TravelShapes);
-            let currentAllShapes = Object.assign({}, CoreShapes, TravelShapes);
-            testAllShapes(ClarityIcons, currentAllShapes);
-        });
+               "if the EssentialShapes set is added in.",
+           () => {
+               ClarityIcons.add(TravelShapes);
+               const currentAllShapes = Object.assign({}, CoreShapes, TravelShapes);
+               testAllShapes(ClarityIcons, currentAllShapes);
+           });
 
         it("should return the shapes from TechnologyShapes and CoreShapes sets " +
-            "if the TechnologyShapes set is added in.", () => {
-            ClarityIcons.add(TechnologyShapes);
-            let currentAllShapes = Object.assign({}, CoreShapes, TechnologyShapes);
-            testAllShapes(ClarityIcons, currentAllShapes);
-        });
+               "if the TechnologyShapes set is added in.",
+           () => {
+               ClarityIcons.add(TechnologyShapes);
+               const currentAllShapes = Object.assign({}, CoreShapes, TechnologyShapes);
+               testAllShapes(ClarityIcons, currentAllShapes);
+           });
 
         it("should return all icons from all sets if the AllShapes set is added in", () => {
             ClarityIcons.add(AllShapes);
-            let currentAllShapes = Object.assign({}, CoreShapes,
-                CommerceShapes,
-                EssentialShapes,
-                MediaShapes,
-                SocialShapes,
-                TravelShapes,
-                TechnologyShapes);
+            const currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes, EssentialShapes, MediaShapes,
+                                                   SocialShapes, TravelShapes, TechnologyShapes);
             testAllShapes(ClarityIcons, currentAllShapes);
         });
 
@@ -147,8 +138,8 @@ describe("ClarityIcons", () => {
         });
 
         it("should throw an error if the requested shape doesn't exist", () => {
-            let nonExistingShape = "non-existing-icon";
-            let expectedErrorMessage = `'${nonExistingShape}' is not found in the Clarity Icons set.`;
+            const nonExistingShape = "non-existing-icon";
+            const expectedErrorMessage = `'${nonExistingShape}' is not found in the Clarity Icons set.`;
 
             expect(() => {
                 ClarityIcons.get(nonExistingShape);
@@ -158,8 +149,7 @@ describe("ClarityIcons", () => {
 
     describe("ClarityIconsApi.add()", () => {
         it("should throw an error if the argument is not a valid object literal", () => {
-            let expectedErrorMessage =
-                `The argument must be an object literal passed in the following pattern: 
+            const expectedErrorMessage = `The argument must be an object literal passed in the following pattern: 
                 { "shape-name": "shape-template" }`;
 
             expect(() => {
@@ -168,14 +158,14 @@ describe("ClarityIcons", () => {
         });
 
         it("should throw an error if an empty string is set for a shape name.", () => {
-            let expectedErrorMessage = `Shape name or alias must be a non-empty string!`;
+            const expectedErrorMessage = `Shape name or alias must be a non-empty string!`;
             expect(() => {
                 ClarityIcons.add({"": ""});
             }).toThrowError(expectedErrorMessage);
         });
 
         it("should throw an error if a shape name contains a white space.", () => {
-            let expectedErrorMessage = `Shape name or alias must not contain any whitespace characters!`;
+            const expectedErrorMessage = `Shape name or alias must not contain any whitespace characters!`;
             expect(() => {
                 ClarityIcons.add({"invalid shapename": ""});
             }).toThrowError(expectedErrorMessage);
@@ -227,18 +217,18 @@ describe("ClarityIcons", () => {
         });
 
         it("should throw an error if an empty string is set for a shape name.", () => {
-            let expectedErrorMessage = `Shape name or alias must be a non-empty string!`;
+            const expectedErrorMessage = `Shape name or alias must be a non-empty string!`;
             expect(() => {
                 ClarityIcons.add({"": ""});
             }).toThrowError(expectedErrorMessage);
         });
 
         it("should add a new shape if a new shape name and template is passed in", () => {
-            let currentShapeNumber = Object.keys(ClarityIcons.get()).length;
+            const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
 
-            let shapeName = "shape-name";
-            let shapeTemplate = "<svg><title>shape template</title></svg>";
-            let shape = {[shapeName]: shapeTemplate};
+            const shapeName = "shape-name";
+            const shapeTemplate = "<svg><title>shape template</title></svg>";
+            const shape = {[shapeName]: shapeTemplate};
 
             ClarityIcons.add(shape);
 
@@ -247,19 +237,19 @@ describe("ClarityIcons", () => {
         });
 
         it("should add new shapes if multiple shape names and templates are passed in one by one", () => {
-            let currentShapeNumber = Object.keys(ClarityIcons.get()).length;
+            const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
 
-            let shapeName1 = "shape-name-1";
-            let shapeTemplate1 = "<svg><title>shape template 1</title></svg>";
-            let shape1 = {[shapeName1]: shapeTemplate1};
+            const shapeName1 = "shape-name-1";
+            const shapeTemplate1 = "<svg><title>shape template 1</title></svg>";
+            const shape1 = {[shapeName1]: shapeTemplate1};
 
-            let shapeName2 = "shape-name-2";
-            let shapeTemplate2 = "<svg><title>shape template 2</title></svg>";
-            let shape2 = {[shapeName2]: shapeTemplate2};
+            const shapeName2 = "shape-name-2";
+            const shapeTemplate2 = "<svg><title>shape template 2</title></svg>";
+            const shape2 = {[shapeName2]: shapeTemplate2};
 
-            let shapeName3 = "shape-name-3";
-            let shapeTemplate3 = "<svg><title>shape template 3</title></svg>";
-            let shape3 = {[shapeName3]: shapeTemplate3};
+            const shapeName3 = "shape-name-3";
+            const shapeTemplate3 = "<svg><title>shape template 3</title></svg>";
+            const shape3 = {[shapeName3]: shapeTemplate3};
 
             ClarityIcons.add(shape1);
             ClarityIcons.add(shape2);
@@ -272,21 +262,21 @@ describe("ClarityIcons", () => {
         });
 
         it("should add new shapes if multiple shape names and templates are passed in one object", () => {
-            let currentShapeNumber = Object.keys(ClarityIcons.get()).length;
+            const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
 
-            let shapeNameA = "shape-name-a";
-            let shapeTemplateA = "<svg><title>shape template A</title></svg>";
-            let shapeA = {[shapeNameA]: shapeTemplateA};
+            const shapeNameA = "shape-name-a";
+            const shapeTemplateA = "<svg><title>shape template A</title></svg>";
+            const shapeA = {[shapeNameA]: shapeTemplateA};
 
-            let shapeNameB = "shape-name-b";
-            let shapeTemplateB = "<svg><title>shape template B</title></svg>";
-            let shapeB = {[shapeNameB]: shapeTemplateB};
+            const shapeNameB = "shape-name-b";
+            const shapeTemplateB = "<svg><title>shape template B</title></svg>";
+            const shapeB = {[shapeNameB]: shapeTemplateB};
 
-            let shapeNameC = "shape-name-c";
-            let shapeTemplateC = "<svg><title>shape template C</title></svg>";
-            let shapeC = {[shapeNameC]: shapeTemplateC};
+            const shapeNameC = "shape-name-c";
+            const shapeTemplateC = "<svg><title>shape template C</title></svg>";
+            const shapeC = {[shapeNameC]: shapeTemplateC};
 
-            let multipleShapes = Object.assign({}, shapeA, shapeB, shapeC);
+            const multipleShapes = Object.assign({}, shapeA, shapeB, shapeC);
 
             ClarityIcons.add(multipleShapes);
 
@@ -297,21 +287,21 @@ describe("ClarityIcons", () => {
         });
 
         it("should allow override", () => {
-            let currentShapeNumber = Object.keys(ClarityIcons.get()).length;
+            const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
 
-            let shapeNameA = "shape-name-same";
-            let shapeTemplateA = "<svg><title>shape template A</title></svg>";
-            let shapeA = {[shapeNameA]: shapeTemplateA};
+            const shapeNameA = "shape-name-same";
+            const shapeTemplateA = "<svg><title>shape template A</title></svg>";
+            const shapeA = {[shapeNameA]: shapeTemplateA};
 
-            let shapeNameB = "shape-name-same";
-            let shapeTemplateB = "<svg><title>shape template B</title></svg>";
-            let shapeB = {[shapeNameB]: shapeTemplateB};
+            const shapeNameB = "shape-name-same";
+            const shapeTemplateB = "<svg><title>shape template B</title></svg>";
+            const shapeB = {[shapeNameB]: shapeTemplateB};
 
             ClarityIcons.add(shapeA);
             ClarityIcons.add(shapeB);
 
-            //Even though ClarityIcons.add() is called twice, only one more property should be added in
-            //as the former one is replaced by the latter one.
+            // Even though ClarityIcons.add() is called twice, only one more property should be added in
+            // as the former one is replaced by the latter one.
 
             expect(currentShapeNumber).toBe(Object.keys(ClarityIcons.get()).length - 1);
             expect(ClarityIcons.get(shapeNameA)).toBe(shapeTemplateB);
@@ -321,8 +311,7 @@ describe("ClarityIcons", () => {
     describe("ClarityIconsApi.alias()", () => {
 
         it("should throw an error if the argument is not a valid object literal", () => {
-            let expectedErrorMessage =
-                `The argument must be an object literal passed in the following pattern: 
+            const expectedErrorMessage = `The argument must be an object literal passed in the following pattern: 
                 { "shape-name": ["alias-name", ...] }`;
 
             expect(() => {
@@ -331,8 +320,9 @@ describe("ClarityIcons", () => {
         });
 
         it("should throw an error if the shape name doesn't exist", () => {
-            let shapeName = "pen";
-            let expectedErrorMessage = "The icon '" + shapeName + "' you are trying to set an alias to doesn't exist!";
+            const shapeName = "pen";
+            const expectedErrorMessage =
+                "The icon '" + shapeName + "' you are trying to set an alias to doesn't exist!";
 
             expect(() => {
                 ClarityIcons.alias({[shapeName]: ["write"]});
@@ -342,14 +332,9 @@ describe("ClarityIcons", () => {
         it("should allow aliases if the shape name exists", () => {
 
             ClarityIcons.add(CoreShapes);
-            let currentShapeNumber = Object.keys(ClarityIcons.get()).length;
+            const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
 
-            ClarityIcons.alias({
-                "check": [
-                    "check-mark",
-                    "success-mark"
-                ]
-            });
+            ClarityIcons.alias({"check": ["check-mark", "success-mark"]});
 
             expect(currentShapeNumber).toBe(Object.keys(ClarityIcons.get()).length - 2);
             expect(ClarityIcons.get("check-mark")).toBe(ClarityIcons.get("check"));
@@ -361,7 +346,7 @@ describe("ClarityIcons", () => {
             ClarityIcons.add(CoreShapes);
             ClarityIcons.alias({"check": ["success-mark"]});
 
-            let currentShapeNumber = Object.keys(ClarityIcons.get()).length;
+            const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
 
             ClarityIcons.alias({"success-mark": ["ok-mark"]});
 
@@ -375,12 +360,12 @@ describe("ClarityIcons", () => {
             ClarityIcons.add(CoreShapes);
             ClarityIcons.alias({"check": ["success-mark"]});
 
-            let currentShapeNumber = Object.keys(ClarityIcons.get()).length;
-            let shapeTemplateOverrideAlias = "<svg><title>shape template override alias</title></svg>";
+            const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
+            const shapeTemplateOverrideAlias = "<svg><title>shape template override alias</title></svg>";
             ClarityIcons.add({"success-mark": shapeTemplateOverrideAlias});
 
-            //Even though ClarityIcons.add() is called once, no new shapes should be added in
-            //as the existing icons's template is replaced by a new template only.
+            // Even though ClarityIcons.add() is called once, no new shapes should be added in
+            // as the existing icons's template is replaced by a new template only.
 
             expect(currentShapeNumber).toBe(Object.keys(ClarityIcons.get()).length);
             expect(ClarityIcons.get("success-mark")).toBe(shapeTemplateOverrideAlias);
@@ -393,25 +378,25 @@ describe("ClarityIcons", () => {
         });
 
         it("should insert the SVG markup", () => {
-            let clarityIcon = document.createElement("clr-icon");
+            const clarityIcon = document.createElement("clr-icon");
             clarityIcon.setAttribute("shape", "home");
 
-            let divSampleElement = document.createElement("div");
+            const divSampleElement = document.createElement("div");
             divSampleElement.innerHTML = ClarityIcons.get("home");
 
-            let clarityIconInnerHTML = clarityIcon.innerHTML;
+            const clarityIconInnerHTML = clarityIcon.innerHTML;
 
             expect(clarityIconInnerHTML).toBe(divSampleElement.innerHTML);
         });
 
         it("should insert the SVG markup of error icon if the shape doesn't exist", () => {
-            let clarityIcon = document.createElement("clr-icon");
-            let nonExistingShape = "non-existing-shape";
+            const clarityIcon = document.createElement("clr-icon");
+            const nonExistingShape = "non-existing-shape";
 
             clarityIcon.setAttribute("shape", nonExistingShape);
 
-            let clarityIconInnerHTML = clarityIcon.innerHTML;
-            let divSampleElement = document.createElement("div");
+            const clarityIconInnerHTML = clarityIcon.innerHTML;
+            const divSampleElement = document.createElement("div");
             divSampleElement.innerHTML = ClarityIcons.get("error");
 
             expect(clarityIconInnerHTML).toBe(divSampleElement.innerHTML);
@@ -419,7 +404,7 @@ describe("ClarityIcons", () => {
         });
 
         it("should control a size of an icon through size attribute", () => {
-            let clarityIcon = document.createElement("clr-icon");
+            const clarityIcon = document.createElement("clr-icon");
             clarityIcon.setAttribute("shape", "home");
             clarityIcon.setAttribute("size", "25");
 
@@ -429,7 +414,7 @@ describe("ClarityIcons", () => {
     });
 
     describe("SVG Icon Markups", () => {
-        let testIconStyles = (shapes: any, exceptions?: string[]) => {
+        const testIconStyles = (shapes: any, exceptions?: string[]) => {
 
             let allShapes = Object.keys(shapes);
 
@@ -441,9 +426,9 @@ describe("ClarityIcons", () => {
                 });
             }
 
-            for (let shapeName in allShapes) {
+            for (const shapeName in allShapes) {
                 if (allShapes.hasOwnProperty(shapeName)) {
-                    let template: string = allShapes[shapeName];
+                    const template: string = allShapes[shapeName];
 
                     expect(template.includes("fill=")).toBe(false);
                     expect(template.includes("style=")).toBe(false);
@@ -480,22 +465,16 @@ describe("ClarityIcons", () => {
         });
 
         it("No two shapes should have the same name unless their templates are identical", () => {
-            let allShapeTemplates: any = [
-                CoreShapes,
-                EssentialShapes,
-                CommerceShapes,
-                MediaShapes,
-                SocialShapes,
-                TechnologyShapes
-            ];
-            let shapesTested: any = {};
-            let duplicatesFound: string[] = [];
-            let removeSpacesBreaks = (template: string): string => {
+            const allShapeTemplates: any =
+                [CoreShapes, EssentialShapes, CommerceShapes, MediaShapes, SocialShapes, TechnologyShapes];
+            const shapesTested: any = {};
+            const duplicatesFound: string[] = [];
+            const removeSpacesBreaks = (template: string): string => {
                 return template.replace(/\n|\r/g, "").replace(/\s/g, "");
             };
 
             allShapeTemplates.map((shapeTemplates: any) => {
-                for (let shapeName in shapeTemplates) {
+                for (const shapeName in shapeTemplates) {
                     if (shapeTemplates.hasOwnProperty(shapeName)) {
                         if (!shapesTested.hasOwnProperty(shapeName)) {
                             shapesTested[shapeName] = shapeTemplates[shapeName];

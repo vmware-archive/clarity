@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { descriptorConfig } from "../utils/descriptor-config";
+import {descriptorConfig} from "../utils/descriptor-config";
 
 /* tslint:disable:max-line-length */
 const commerceShapes: any = {
@@ -144,7 +144,8 @@ const commerceShapes: any = {
             <path d="M32,6H4A2,2,0,0,0,2,8V28a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V8A2,2,0,0,0,32,6Zm0,18H4V20H32Z" class="clr-i-solid clr-i-solid-path-2" />
         </svg>`,
 
-    "bank": `<svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid can-badge can-alert"
+    "bank":
+        `<svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid can-badge can-alert"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <title>bank</title>
 
@@ -201,7 +202,7 @@ const commerceShapes: any = {
 Object.defineProperty(commerceShapes, "savings", descriptorConfig(commerceShapes["piggy-bank"]));
 
 if (typeof window !== "undefined" && window.hasOwnProperty("ClarityIcons")) {
-    window["ClarityIcons"].add(commerceShapes);
+    window.ClarityIcons.add(commerceShapes);
 }
 
-export { commerceShapes as CommerceShapes };
+export {commerceShapes as CommerceShapes};

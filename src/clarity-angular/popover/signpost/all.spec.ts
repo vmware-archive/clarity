@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import SignpostSpecs from "./signpost.spec";
 import SignpostContentSpecs from "./signpost-content.spec";
 import SignpostTriggerDirectiveSpecs from "./signpost-trigger.directive.spec";
+import SignpostSpecs from "./signpost.spec";
 
 describe("Signpost", function() {
     /*

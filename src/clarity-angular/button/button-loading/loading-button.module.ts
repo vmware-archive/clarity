@@ -4,20 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { ClrLoadingModule } from "../../utils/loading/loading.module";
-import { LOADING_BUTTON_DIRECTIVES } from "./index";
+import {CommonModule} from "@angular/common";
+import {NgModule} from "@angular/core";
+
+import {ClrLoadingModule} from "../../utils/loading/loading.module";
+
+import {LOADING_BUTTON_DIRECTIVES} from "./index";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ClrLoadingModule
-    ],
+    imports: [CommonModule, ClrLoadingModule],
     declarations: [LOADING_BUTTON_DIRECTIVES],
-    exports: [
-        LOADING_BUTTON_DIRECTIVES,
-        ClrLoadingModule
-    ]
+    exports: [LOADING_BUTTON_DIRECTIVES, ClrLoadingModule]
 })
-export class ClrLoadingButtonModule {}
+export class ClrLoadingButtonModule {
+}

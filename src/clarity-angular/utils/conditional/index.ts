@@ -10,7 +10,4 @@ import {IfOpenDirective} from "./if-open.directive";
 export * from "./if-active.directive";
 export * from "./if-open.directive";
 
-export const CONDITIONAL_DIRECTIVES: Type<any>[] = [
-    IfActiveDirective,
-    IfOpenDirective
-];
+export const CONDITIONAL_DIRECTIVES: Type<any>[] = [IfActiveDirective, IfOpenDirective];

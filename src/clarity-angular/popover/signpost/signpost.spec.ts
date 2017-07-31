@@ -3,14 +3,15 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ViewChild } from "@angular/core";
-import { Signpost } from "./signpost";
+import {Component, ViewChild} from "@angular/core";
+
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {addHelpers, TestContext} from "../../utils/testing/helpers.spec";
+
+import {Signpost} from "./signpost";
 import {ClrSignpostModule} from "./signpost.module";
 
 export default function(): void {
-
     describe("Signpost", function() {
         addHelpers([ClrSignpostModule]);
 
@@ -28,8 +29,7 @@ export default function(): void {
             });
 
             it("has a default trigger that can hide/show content", function() {
-                let signpostToggle: HTMLElement =
-                    context.testElement.querySelector(".signpost-action");
+                const signpostToggle: HTMLElement = context.testElement.querySelector(".signpost-action");
                 let signpostContent: HTMLElement;
 
                 // Test we have a trigger
@@ -64,21 +64,19 @@ export default function(): void {
              * This test assumes that if
              */
             it("does not display the default trigger", function() {
-                let triggerIcon: HTMLElement =
-                    context.testElement.querySelector("clr-icon");
+                const triggerIcon: HTMLElement = context.testElement.querySelector("clr-icon");
 
                 /**********
                  * If there is a clr-icon we are testing that it is not the same shape
                  * used for the default trigger.
                  */
-                if ( triggerIcon ) {
+                if (triggerIcon) {
                     expect(triggerIcon.getAttribute("shape")).not.toBe("info");
                 }
             });
 
             it("projects a custom trigger element to hide/show content", function() {
-                let signpostTrigger: HTMLElement =
-                    context.testElement.querySelector(".signpost-action");
+                const signpostTrigger: HTMLElement = context.testElement.querySelector(".signpost-action");
                 let signpostContent: HTMLElement;
 
                 expect(signpostTrigger.textContent.trim()).toBe("Custom trigger");

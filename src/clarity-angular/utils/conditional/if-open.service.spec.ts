@@ -7,7 +7,7 @@
 import {IfOpenService} from "./if-open.service";
 
 export default function(): void {
-    describe("IfOpenService provider", function () {
+    describe("IfOpenService provider", function() {
 
         let ifOpenService: IfOpenService;
 
@@ -15,7 +15,7 @@ export default function(): void {
             ifOpenService = new IfOpenService();
         });
 
-        describe("Typescript API", function () {
+        describe("Typescript API", function() {
             it("provides an observable for changes", function() {
                 let nbChanges: number = 0;
                 let currentChange: boolean;
@@ -44,13 +44,13 @@ export default function(): void {
 
             it("sets the current open value in the service", function() {
                 expect(ifOpenService.open).not.toBeDefined();
-                let test: boolean = false;
+                const test: boolean = false;
                 ifOpenService.open = test;
                 expect(ifOpenService.open).toEqual(test);
             });
 
             it("gets the current open value of the service", function() {
-                let init: boolean = false;
+                const init: boolean = false;
                 let test: boolean;
                 ifOpenService.open = init;
                 expect(test).toBeUndefined();

@@ -5,16 +5,17 @@
  */
 import {Component, ViewChild} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
+
 import {DatagridItems} from "./datagrid-items";
-import {Items} from "./providers/items";
-import {FiltersProvider} from "./providers/filters";
-import {Sort} from "./providers/sort";
-import {Page} from "./providers/page";
 import {ClrDatagridModule} from "./datagrid.module";
+import {FiltersProvider} from "./providers/filters";
+import {Items} from "./providers/items";
+import {Page} from "./providers/page";
+import {Sort} from "./providers/sort";
 
 export default function(): void {
     describe("DatagridItems directive", function() {
-        beforeEach(function () {
+        beforeEach(function() {
             /*
              * Since the DatagridItems element is a template that isn't rendered in the DOM,
              * we can't use our usual shortcut, we need to rely on @ViewChild
@@ -35,11 +36,11 @@ export default function(): void {
             this.fixture.destroy();
         });
 
-        it("makes the Items provider smart", function () {
+        it("makes the Items provider smart", function() {
             expect(this.itemsProvider.smart).toBe(true);
         });
 
-        it("receives an input for the array of items", function () {
+        it("receives an input for the array of items", function() {
             expect(this.itemsProvider.displayed).toEqual([1, 2, 3, 4, 5]);
         });
 
@@ -50,13 +51,12 @@ export default function(): void {
         });
 
         it("handles an undefined input for the array of items", function() {
-            let notDefined;
-            this.testComponent.numbers = notDefined;
+            this.testComponent.numbers = undefined;
             this.fixture.detectChanges();
             expect(this.clarityDirective._rawItems).toEqual([]);
         });
 
-        it("keeps the Items provider up to date with array changes", function () {
+        it("keeps the Items provider up to date with array changes", function() {
             expect(this.itemsProvider.displayed).toEqual([1, 2, 3, 4, 5]);
             this.testComponent.numbers[0] = 6;
             this.fixture.detectChanges();
@@ -66,7 +66,7 @@ export default function(): void {
             expect(this.itemsProvider.displayed).toEqual([]);
         });
 
-        it("receives an input for the trackBy option", function () {
+        it("receives an input for the trackBy option", function() {
             expect(this.itemsProvider.trackBy).toBeUndefined();
             this.testComponent.trackBy = (index: number, item: any) => index;
             this.fixture.detectChanges();
@@ -76,9 +76,7 @@ export default function(): void {
 }
 
 
-@Component({
-    template: `<div *clrDgItems="let n of numbers; trackBy: trackBy">{{n}}</div>`
-})
+@Component({template: `<div *clrDgItems="let n of numbers; trackBy: trackBy">{{n}}</div>`})
 class FullTest {
     @ViewChild(DatagridItems) datagridItems: DatagridItems;
 

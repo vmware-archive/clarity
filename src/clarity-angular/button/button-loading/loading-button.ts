@@ -6,7 +6,7 @@
 
 
 import {Component} from "@angular/core";
-import { LoadingListener } from "../../utils/loading/loading-listener";
+import {LoadingListener} from "../../utils/loading/loading-listener";
 
 
 @Component({
@@ -18,15 +18,13 @@ import { LoadingListener } from "../../utils/loading/loading-listener";
     providers: [{provide: LoadingListener, useExisting: LoadingButton}]
 })
 export class LoadingButton implements LoadingListener {
-
     public loading: Boolean;
 
     startLoading(): void {
-      this.loading = true;
+        this.loading = true;
     }
 
     doneLoading(): void {
-      this.loading = false;
+        this.loading = false;
     }
 }
-

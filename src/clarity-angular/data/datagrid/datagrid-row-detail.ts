@@ -3,14 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, Input, ContentChildren, QueryList, AfterContentInit, OnDestroy} from "@angular/core";
-import {Selection, SelectionType} from "./providers/selection";
-import {RowActionService} from "./providers/row-action-service";
-import {DatagridCell} from "./datagrid-cell";
+import {AfterContentInit, Component, ContentChildren, Input, OnDestroy, QueryList} from "@angular/core";
+import {Subscription} from "rxjs/Subscription";
+
 import {Expand} from "../../utils/expand/providers/expand";
+
+import {DatagridCell} from "./datagrid-cell";
 import {DatagridHideableColumn} from "./datagrid-hideable-column";
 import {HideableColumnService} from "./providers/hideable-column.service";
-import {Subscription} from "rxjs/Subscription";
+import {RowActionService} from "./providers/row-action-service";
+import {Selection, SelectionType} from "./providers/selection";
 
 /**
  * Generic bland container serving various purposes for Datagrid.
@@ -38,9 +40,7 @@ export class DatagridRowDetail implements AfterContentInit, OnDestroy {
     /* reference to the enum so that template can access it */
     public SELECTION_TYPE = SelectionType;
 
-    constructor(public selection: Selection,
-                public rowActionService: RowActionService,
-                public expand: Expand,
+    constructor(public selection: Selection, public rowActionService: RowActionService, public expand: Expand,
                 public hideableColumnService: HideableColumnService) {}
 
     @ContentChildren(DatagridCell) cells: QueryList<DatagridCell>;
@@ -49,41 +49,41 @@ export class DatagridRowDetail implements AfterContentInit, OnDestroy {
         return this.expand.replace;
     }
 
-    @Input("clrDgReplace") set replace(value: boolean) {
+    @Input("clrDgReplace")
+    set replace(value: boolean) {
         this.expand.replace = !!value;
     }
 
     private subscription: Subscription;
 
     ngAfterContentInit() {
-        let columnsList = this.hideableColumnService.getColumns();
+        const columnsList = this.hideableColumnService.getColumns();
         this.updateCellsForColumns(columnsList);
 
         // Triggered when the Cells list changes per row-renderer
-        this.cells.changes.subscribe(( cellList ) => {
-            let columnList = this.hideableColumnService.getColumns();
-            if ( cellList.length === columnList.length ) {
+        this.cells.changes.subscribe((cellList) => {
+            const columnList = this.hideableColumnService.getColumns();
+            if (cellList.length === columnList.length) {
                 this.updateCellsForColumns(columnList);
             }
         });
 
         // Used to set things up the first time but only after all the columns are ready.
-        this.subscription = this.hideableColumnService.columnListChange.subscribe(( columnList ) => {
+        this.subscription = this.hideableColumnService.columnListChange.subscribe((columnList) => {
             // Prevents cell updates when cols and cells array are not aligned
-            if ( columnList.length === this.cells.length ) {
+            if (columnList.length === this.cells.length) {
                 this.updateCellsForColumns(columnList);
             }
         });
     }
 
-    public updateCellsForColumns( columnList: DatagridHideableColumn[]) {
-        this.cells
-            .forEach(( cell, index ) => {
-                let currentColumn = columnList[ index ]; // Accounts for null space.
-                if ( currentColumn ) {
-                    cell.id = currentColumn.id;
-                }
-            });
+    public updateCellsForColumns(columnList: DatagridHideableColumn[]) {
+        this.cells.forEach((cell, index) => {
+            const currentColumn = columnList[index];  // Accounts for null space.
+            if (currentColumn) {
+                cell.id = currentColumn.id;
+            }
+        });
     }
 
     ngOnDestroy() {

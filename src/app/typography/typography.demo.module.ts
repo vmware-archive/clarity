@@ -3,37 +3,27 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
+import {NgModule} from "@angular/core";
+
 import {ClarityModule} from "../../clarity-angular/clarity.module";
-import {ROUTING} from "./typography.demo.routing";
-import {TypographyDemo} from "./typography.demo";
+
+import {TypographyFontCharTestDemo} from "./typography-font-char-test";
 import {TypographyFontWeightDemo} from "./typography-font-weight";
 import {TypographyHeadersDemo} from "./typography-headers";
-import {TypographyTextDemo} from "./typography-text";
 import {TypographyLinksDemo} from "./typography-links";
-import {TypographyFontCharTestDemo} from "./typography-font-char-test";
+import {TypographyTextDemo} from "./typography-text";
+import {TypographyDemo} from "./typography.demo";
+import {ROUTING} from "./typography.demo.routing";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ClarityModule,
-        ROUTING
-    ],
+    imports: [CommonModule, ClarityModule, ROUTING],
     declarations: [
-        TypographyDemo,
-        TypographyFontWeightDemo,
-        TypographyHeadersDemo,
-        TypographyTextDemo,
-        TypographyLinksDemo,
+        TypographyDemo, TypographyFontWeightDemo, TypographyHeadersDemo, TypographyTextDemo, TypographyLinksDemo,
         TypographyFontCharTestDemo
     ],
     exports: [
-        TypographyDemo,
-        TypographyFontWeightDemo,
-        TypographyHeadersDemo,
-        TypographyTextDemo,
-        TypographyLinksDemo,
+        TypographyDemo, TypographyFontWeightDemo, TypographyHeadersDemo, TypographyTextDemo, TypographyLinksDemo,
         TypographyFontCharTestDemo
     ]
 })

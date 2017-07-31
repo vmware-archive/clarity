@@ -3,12 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {Component, ViewChild} from "@angular/core";
-import {ClrTabsModule} from "./tabs.module";
-import {Tab} from "./tab";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+
 import {IfActiveService} from "../../utils/conditional/if-active.service";
+
+import {Tab} from "./tab";
 import {TabsService} from "./tabs-service";
+import {ClrTabsModule} from "./tabs.module";
 
 @Component({
     template: `
@@ -28,11 +30,8 @@ describe("Tab", () => {
     let instance: any;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [ClrTabsModule],
-            declarations: [TestComponent],
-            providers: [IfActiveService, TabsService]
-        });
+        TestBed.configureTestingModule(
+            {imports: [ClrTabsModule], declarations: [TestComponent], providers: [IfActiveService, TabsService]});
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
         compiled = fixture.nativeElement;

@@ -3,16 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Directive, ElementRef, Renderer2, OnDestroy} from "@angular/core";
+import {Directive, ElementRef, OnDestroy, Renderer2} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
+
 import {COMPUTE_WIDTH_CLASS} from "./constants";
 import {DatagridRenderOrganizer} from "./render-organizer";
 
-@Directive({
-    selector: "[clrDgTableWrapper]"
-})
+@Directive({selector: "[clrDgTableWrapper]"})
 export class DatagridTableRenderer implements OnDestroy {
-
     constructor(private el: ElementRef, private renderer: Renderer2, organizer: DatagridRenderOrganizer) {
         this.subscription = organizer.tableMode.subscribe(on => this.tableMode(on));
     }

@@ -13,5 +13,4 @@ import {Component} from "@angular/core";
     templateUrl: "./tooltips-directions.html"
 })
 export class TooltipsDirectionsDemo {
-
 }

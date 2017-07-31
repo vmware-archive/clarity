@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Injectable, TrackByFunction} from "@angular/core";
+import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 import {Subscription} from "rxjs/Subscription";
-import {Observable} from "rxjs/Observable";
 
 import {FiltersProvider} from "./filters";
 import {Page} from "./page";
@@ -21,7 +21,7 @@ export class Items {
      */
     public loading = false;
 
-    //TODO: Verify that trackBy is registered for the *ngFor case too
+    // TODO: Verify that trackBy is registered for the *ngFor case too
     /**
      * Tracking function to identify objects. Default is reference equality.
      */
@@ -37,9 +37,15 @@ export class Items {
      * Cleans up our subscriptions to other providers
      */
     public destroy() {
-        if (this._filtersSub) { this._filtersSub.unsubscribe(); }
-        if (this._sortSub) { this._sortSub.unsubscribe(); }
-        if (this._pageSub) { this._pageSub.unsubscribe(); }
+        if (this._filtersSub) {
+            this._filtersSub.unsubscribe();
+        }
+        if (this._sortSub) {
+            this._sortSub.unsubscribe();
+        }
+        if (this._pageSub) {
+            this._pageSub.unsubscribe();
+        }
     }
 
     /**
@@ -117,7 +123,7 @@ export class Items {
     // We do not want to expose the Subject itself, but the Observable which is read-only
     public get change(): Observable<any[]> {
         return this._change.asObservable();
-    };
+    }
 
     private _allChanges = new Subject<any[]>();
     private emitAllChanges(): void {
@@ -128,7 +134,7 @@ export class Items {
 
     public get allChanges(): Observable<any[]> {
         return this._allChanges.asObservable();
-    };
+    }
 
     /**
      * Checks if we don't have data to process yet, to abort early operations
@@ -141,7 +147,9 @@ export class Items {
      * FiltersProvider items from the raw list
      */
     private _filterItems() {
-        if (this.uninitialized) { return; }
+        if (this.uninitialized) {
+            return;
+        }
         if (this._filters.hasActiveFilters()) {
             this._filtered = this._all.filter((item) => this._filters.accepts(item));
         } else {
@@ -156,7 +164,9 @@ export class Items {
      * Sorts items in the filtered list
      */
     private _sortItems() {
-        if (this.uninitialized) { return; }
+        if (this.uninitialized) {
+            return;
+        }
         if (this._sort.comparator) {
             this._filtered.sort((a, b) => this._sort.compare(a, b));
         }
@@ -167,7 +177,9 @@ export class Items {
      * Extracts the current page from the sorted list
      */
     private _changePage() {
-        if (this.uninitialized) { return; }
+        if (this.uninitialized) {
+            return;
+        }
         if (this._page.size > 0) {
             this._displayed = this._filtered.slice(this._page.firstItem, this._page.lastItem + 1);
         } else {

@@ -4,12 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Directive, TemplateRef } from "@angular/core";
+import {Directive, TemplateRef} from "@angular/core";
 
-@Directive({
-    selector: "[clrPageButtons]"
-})
+@Directive({selector: "[clrPageButtons]"})
 export class WizardPageButtonsDirective {
-    constructor(public pageButtonsTemplateRef: TemplateRef<any>) {
-    }
+    constructor(public pageButtonsTemplateRef: TemplateRef<any>) {}
 }

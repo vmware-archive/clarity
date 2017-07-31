@@ -4,9 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-import {Page} from "./providers/page";
+
 import {DatagridPagination} from "./datagrid-pagination";
 import {TestContext} from "./helpers.spec";
+import {Page} from "./providers/page";
 
 export default function(): void {
     describe("DatagridPagination component", function() {
@@ -17,7 +18,7 @@ export default function(): void {
             beforeEach(function() {
                 pageService = new Page();
                 component = new DatagridPagination(pageService);
-                component.ngOnInit(); // For the subscription that will get destroyed.
+                component.ngOnInit();  // For the subscription that will get destroyed.
             });
 
             afterEach(function() {
@@ -77,25 +78,25 @@ export default function(): void {
                 context = this.create(DatagridPagination, FullTest, [Page]);
             });
 
-            it("receives an input for page size", function () {
+            it("receives an input for page size", function() {
                 context.testComponent.size = 42;
                 context.detectChanges();
                 expect(context.clarityDirective.pageSize).toBe(42);
             });
 
-            it("receives an input for total number of items", function () {
+            it("receives an input for total number of items", function() {
                 context.testComponent.total = 42;
                 context.detectChanges();
                 expect(context.clarityDirective.totalItems).toBe(42);
             });
 
-            it("receives an input for last page", function () {
+            it("receives an input for last page", function() {
                 context.testComponent.last = 42;
                 context.detectChanges();
                 expect(context.clarityDirective.lastPage).toBe(42);
             });
 
-            it("offers two-way binding on the current page", function () {
+            it("offers two-way binding on the current page", function() {
                 context.testComponent.current = 42;
                 context.detectChanges();
                 expect(context.clarityDirective.currentPage).toBe(42);
@@ -113,26 +114,26 @@ export default function(): void {
                 context = this.create(DatagridPagination, FullTest, [Page]);
             });
 
-            it("doesn't display anything if there is only one page", function () {
+            it("doesn't display anything if there is only one page", function() {
                 context.testComponent.size = 10;
                 context.testComponent.total = 10;
                 context.detectChanges();
                 expect(context.clarityElement.textContent.trim()).toBe("");
             });
 
-            it("displays a next button", function () {
+            it("displays a next button", function() {
                 context.testComponent.size = 10;
                 context.testComponent.total = 100;
                 context.testComponent.current = 1;
                 context.detectChanges();
-                let next = context.clarityElement.querySelector(".pagination-next");
+                const next = context.clarityElement.querySelector(".pagination-next");
                 expect(next).not.toBeNull();
                 next.click();
                 context.detectChanges();
                 expect(context.testComponent.current).toBe(2);
             });
 
-            it("doesn't display the next button on the last page", function () {
+            it("doesn't display the next button on the last page", function() {
                 context.testComponent.size = 10;
                 context.testComponent.total = 100;
                 context.testComponent.current = 10;
@@ -140,19 +141,19 @@ export default function(): void {
                 expect(context.clarityElement.querySelector(".pagination-next")).toBeNull();
             });
 
-            it("displays a previous button", function () {
+            it("displays a previous button", function() {
                 context.testComponent.size = 10;
                 context.testComponent.total = 100;
                 context.testComponent.current = 10;
                 context.detectChanges();
-                let previous = context.clarityElement.querySelector(".pagination-previous");
+                const previous = context.clarityElement.querySelector(".pagination-previous");
                 expect(previous).not.toBeNull();
                 previous.click();
                 context.detectChanges();
                 expect(context.testComponent.current).toBe(9);
             });
 
-            it("doesn't display the previous button on the first page", function () {
+            it("doesn't display the previous button on the first page", function() {
                 context.testComponent.size = 10;
                 context.testComponent.total = 100;
                 context.testComponent.current = 1;
@@ -160,7 +161,7 @@ export default function(): void {
                 expect(context.clarityElement.querySelector(".pagination-previous")).toBeNull();
             });
 
-            it("displays the first page, last page, and pages around the current one", function () {
+            it("displays the first page, last page, and pages around the current one", function() {
                 context.testComponent.size = 10;
                 context.testComponent.total = 1000;
                 context.testComponent.current = 42;
@@ -168,18 +169,18 @@ export default function(): void {
                 expect(context.clarityElement.textContent.trim()).toMatch(/^1\D+41\D+42\D+43\D+100$/);
             });
 
-            it("displays clickable page numbers", function () {
+            it("displays clickable page numbers", function() {
                 context.testComponent.size = 10;
                 context.testComponent.total = 1000;
                 context.testComponent.current = 42;
                 context.detectChanges();
-                let buttons = context.clarityElement.querySelectorAll("button");
-                let previousPageButton = buttons[2];
+                const buttons = context.clarityElement.querySelectorAll("button");
+                const previousPageButton = buttons[2];
                 // We check we have the correct button
                 expect(previousPageButton.textContent.trim()).toBe("41");
                 previousPageButton.click();
                 expect(context.testComponent.current).toBe(41);
-                let lastPageButton = buttons[4];
+                const lastPageButton = buttons[4];
                 // We check we have the correct button
                 expect(lastPageButton.textContent.trim()).toBe("100");
                 lastPageButton.click();

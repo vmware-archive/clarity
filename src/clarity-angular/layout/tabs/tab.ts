@@ -4,22 +4,20 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ContentChild, Inject} from "@angular/core";
-import {TabContent} from "./tab-content";
-import {
-    IF_ACTIVE_ID,
-    IF_ACTIVE_ID_PROVIDER,
-    IfActiveService
-} from "../../utils/conditional/if-active.service";
-import {TabsService} from "./tabs-service";
-import {TabLinkDirective} from "./tab-link.directive";
+
+import {IF_ACTIVE_ID, IF_ACTIVE_ID_PROVIDER, IfActiveService} from "../../utils/conditional/if-active.service";
+
 import {AriaService} from "./aria-service";
+import {TabContent} from "./tab-content";
+import {TabLinkDirective} from "./tab-link.directive";
+import {TabsService} from "./tabs-service";
 
 @Component({
     selector: "clr-tab",
     template: `
         <ng-content></ng-content>
     `,
-    providers: [ IF_ACTIVE_ID_PROVIDER, AriaService ]
+    providers: [IF_ACTIVE_ID_PROVIDER, AriaService]
 })
 export class Tab {
     @ContentChild(TabLinkDirective) tabLink: TabLinkDirective;
@@ -27,7 +25,6 @@ export class Tab {
 
     constructor(public ifActiveService: IfActiveService, @Inject(IF_ACTIVE_ID) public id: number,
                 private tabsService: TabsService) {
-
         tabsService.register(this);
     }
 

@@ -1,0 +1,7 @@
+BasedOnStyle: Google
+Language: JavaScript
+AlignAfterOpenBracket: true
+ColumnLimit: 120
+IndentWidth: 4
+JavaScriptQuotes: Double
+JavaScriptWrapImports: true

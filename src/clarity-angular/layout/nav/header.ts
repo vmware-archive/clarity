@@ -3,15 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    Component,
-    OnDestroy,
-    OnInit
-} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
-import { ClrResponsiveNavigationService } from "./clrResponsiveNavigationService";
-import { ClrResponsiveNavCodes } from "./clrResponsiveNavCodes";
+import {ClrResponsiveNavCodes} from "./clrResponsiveNavCodes";
+import {ClrResponsiveNavigationService} from "./clrResponsiveNavigationService";
 
 @Component({
     selector: "clr-header",
@@ -40,9 +36,7 @@ export class Header implements OnDestroy, OnInit {
     public isNavLevel1OnPage: boolean = false;
     public isNavLevel2OnPage: boolean = false;
 
-    constructor(
-        private responsiveNavService: ClrResponsiveNavigationService
-    ) {}
+    constructor(private responsiveNavService: ClrResponsiveNavigationService) {}
 
     ngOnInit() {
         this._subscription = this.responsiveNavService.registeredNavs.subscribe({
@@ -52,18 +46,18 @@ export class Header implements OnDestroy, OnInit {
         });
     }
 
-    //getter to access the responsive navigation codes from the template
+    // getter to access the responsive navigation codes from the template
     get responsiveNavCodes(): ClrResponsiveNavCodes {
         return ClrResponsiveNavCodes;
     }
 
-    //reset triggers. handles cases when an application has different nav levels on different pages.
+    // reset triggers. handles cases when an application has different nav levels on different pages.
     resetNavTriggers() {
         this.isNavLevel1OnPage = false;
         this.isNavLevel2OnPage = false;
     }
 
-    //decides which triggers to show on the header
+    // decides which triggers to show on the header
     initializeNavTriggers(navList: number[]): void {
         this.resetNavTriggers();
         if (navList.length > 2) {
@@ -79,17 +73,14 @@ export class Header implements OnDestroy, OnInit {
         });
     }
 
-    //closes the nav that is open
+    // closes the nav that is open
     closeOpenNav() {
         this.responsiveNavService.closeAllNavs();
     }
 
-    //toggles the nav that is open
+    // toggles the nav that is open
     toggleNav(navLevel: number) {
-        this.responsiveNavService.sendControlMessage(
-            ClrResponsiveNavCodes.NAV_TOGGLE,
-            navLevel
-        );
+        this.responsiveNavService.sendControlMessage(ClrResponsiveNavCodes.NAV_TOGGLE, navLevel);
     }
 
     ngOnDestroy() {

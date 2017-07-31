@@ -4,14 +4,16 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Injectable, OnDestroy, TemplateRef } from "@angular/core";
-import { Subject } from "rxjs/Subject";
-import { Observable } from "rxjs/Observable";
-import { Subscription } from "rxjs/Subscription";
-import { WizardPage } from "../wizard-page";
-import { PageCollectionService } from "./page-collection";
-import { ButtonHubService } from "./button-hub";
-import { GHOST_PAGE_ANIMATION } from "../../modal/utils/ghost-page-animations";
+import {Injectable, OnDestroy, TemplateRef} from "@angular/core";
+import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/Subject";
+import {Subscription} from "rxjs/Subscription";
+
+import {GHOST_PAGE_ANIMATION} from "../../modal/utils/ghost-page-animations";
+import {WizardPage} from "../wizard-page";
+
+import {ButtonHubService} from "./button-hub";
+import {PageCollectionService} from "./page-collection";
 
 
 /**
@@ -38,7 +40,6 @@ import { GHOST_PAGE_ANIMATION } from "../../modal/utils/ghost-page-animations";
  */
 @Injectable()
 export class WizardNavigationService implements OnDestroy {
-
     /**
      * Is notified when a previous button is clicked in the wizard. Performs checks
      * before alerting the current page of the button click. Enacts navigation to
@@ -114,7 +115,7 @@ export class WizardNavigationService implements OnDestroy {
      */
     constructor(public pageCollection: PageCollectionService, public buttonService: ButtonHubService) {
         this.previousButtonSubscription = this.buttonService.previousBtnClicked.subscribe(() => {
-            let currentPage = this.currentPage;
+            const currentPage = this.currentPage;
             if (this.currentPageIsFirst || currentPage.previousStepDisabled) {
                 return;
             }
@@ -199,7 +200,7 @@ export class WizardNavigationService implements OnDestroy {
         // TODO: MAKE SURE EXTERNAL OUTPUTS SAY 'CHANGE' NOT 'CHANGED'
         // A BREAKING CHANGE SO AWAITING MINOR RELEASE
         return this._currentChanged.asObservable();
-    };
+    }
 
     /**
      * A Boolean flag used by the WizardPage to avoid a race condition when pages are
@@ -416,8 +417,8 @@ export class WizardNavigationService implements OnDestroy {
      * @memberof WizardNavigationService
      */
     public forceNext(): void {
-        let currentPage: WizardPage = this.currentPage;
-        let nextPage: WizardPage = this.pageCollection.getNextPage(currentPage);
+        const currentPage: WizardPage = this.currentPage;
+        const nextPage: WizardPage = this.pageCollection.getNextPage(currentPage);
 
         // catch errant null or undefineds that creep in
         if (!nextPage) {
@@ -447,7 +448,7 @@ export class WizardNavigationService implements OnDestroy {
      * @memberof WizardNavigationService
      */
     public checkAndCommitCurrentPage(buttonType: string): void {
-        let currentPage: WizardPage = this.currentPage;
+        const currentPage: WizardPage = this.currentPage;
         let iAmTheLastPage: boolean;
 
         let isNext: boolean;
@@ -741,7 +742,7 @@ export class WizardNavigationService implements OnDestroy {
      */
     public canGoTo(pagesToCheck: WizardPage[]): boolean {
         let okayToMove = true;
-        let myPages = this.pageCollection;
+        const myPages = this.pageCollection;
 
         // previous page can be important when moving because if it's completed it
         // allows us to move to the page even if it's incomplete...
@@ -786,7 +787,7 @@ export class WizardNavigationService implements OnDestroy {
      * @memberof WizardNavigationService
      */
     public setLastEnabledPageCurrent(): void {
-        let allPages: WizardPage[] = this.pageCollection.pagesAsArray;
+        const allPages: WizardPage[] = this.pageCollection.pagesAsArray;
         let lastCompletedPageIndex: number = null;
 
         allPages.forEach((page: WizardPage, index: number) => {

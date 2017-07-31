@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { descriptorConfig } from "../utils/descriptor-config";
+import {descriptorConfig} from "../utils/descriptor-config";
 
 /* tslint:disable:max-line-length */
 
@@ -362,12 +362,12 @@ const socialShapes: any = {
 
 };
 
-Object.defineProperty(socialShapes, "favorite", descriptorConfig(socialShapes["star"]));
-Object.defineProperty(socialShapes, "email", descriptorConfig(socialShapes["envelope"]));
-Object.defineProperty(socialShapes, "date", descriptorConfig(socialShapes["calendar"]));
+Object.defineProperty(socialShapes, "favorite", descriptorConfig(socialShapes.star));
+Object.defineProperty(socialShapes, "email", descriptorConfig(socialShapes.envelope));
+Object.defineProperty(socialShapes, "date", descriptorConfig(socialShapes.calendar));
 
 if (typeof window !== "undefined" && window.hasOwnProperty("ClarityIcons")) {
-    window["ClarityIcons"].add(socialShapes);
+    window.ClarityIcons.add(socialShapes);
 }
 
-export { socialShapes as SocialShapes };
+export {socialShapes as SocialShapes};

@@ -3,10 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { Component, ViewChild } from "@angular/core";
-import { Alert } from "./alert";
-import { ClrAlertModule } from "./alert.module";
+import {Component, ViewChild} from "@angular/core";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+
+import {Alert} from "./alert";
+import {ClrAlertModule} from "./alert.module";
 
 @Component({
     template: `
@@ -42,10 +43,7 @@ export default function(): void {
         let compiled: any;
 
         beforeEach(() => {
-            TestBed.configureTestingModule({
-                imports: [ClrAlertModule],
-                declarations: [TestComponent]
-            });
+            TestBed.configureTestingModule({imports: [ClrAlertModule], declarations: [TestComponent]});
 
             fixture = TestBed.createComponent(TestComponent);
             fixture.detectChanges();
@@ -81,24 +79,24 @@ export default function(): void {
         });
 
         it("extends the alert type classes when clrAlertType is set", () => {
-            //default alert-info class
+            // default alert-info class
             expect(compiled.querySelector(".alert-info")).not.toBeNull();
 
-            //set alert-danger
+            // set alert-danger
             fixture.componentInstance.type = "alert-danger";
             fixture.detectChanges();
 
             expect(compiled.querySelector(".alert-info")).toBeNull();
             expect(compiled.querySelector(".alert-danger")).not.toBeNull();
 
-            //set alert-warning
+            // set alert-warning
             fixture.componentInstance.type = "alert-warning";
             fixture.detectChanges();
 
             expect(compiled.querySelector(".alert-danger")).toBeNull();
             expect(compiled.querySelector(".alert-warning")).not.toBeNull();
 
-            //set alert-success
+            // set alert-success
             fixture.componentInstance.type = "alert-success";
             fixture.detectChanges();
 
@@ -107,7 +105,7 @@ export default function(): void {
         });
 
         it("Removes the alert from the DOM when closed", () => {
-            let instance: Alert = fixture.componentInstance.alertInstance;
+            const instance: Alert = fixture.componentInstance.alertInstance;
 
             expect(compiled.querySelector(".alert")).not.toBeNull();
             fixture.componentInstance.isClosable = true;

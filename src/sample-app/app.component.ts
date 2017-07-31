@@ -9,7 +9,7 @@ import {Component} from "@angular/core";
     selector: "my-app",
     templateUrl: "./app.component.html",
 })
-export class AppComponent  {
+export class AppComponent {
     name = "world";
     closeMessage: string = "";
     indeterminateState: boolean = true;
@@ -26,9 +26,9 @@ export class AppComponent  {
 
     constructor() {
         this.users = [
-            { name: "alice" },
-            { name: "bob" },
-            { name: "carol" },
+            {name: "alice"},
+            {name: "bob"},
+            {name: "carol"},
         ];
     }
 

@@ -4,10 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Input, Component } from "@angular/core";
-import { WizardPage } from "./wizard-page";
-import { WizardNavigationService } from "./providers/wizard-navigation";
-import { PageCollectionService } from "./providers/page-collection";
+import {Component, Input} from "@angular/core";
+
+import {PageCollectionService} from "./providers/page-collection";
+import {WizardNavigationService} from "./providers/wizard-navigation";
+import {WizardPage} from "./wizard-page";
 
 @Component({
     selector: "[clr-wizard-stepnav-item]",
@@ -33,8 +34,7 @@ import { PageCollectionService } from "./providers/page-collection";
 export class WizardStepnavItem {
     @Input("page") public page: WizardPage;
 
-    constructor(public navService: WizardNavigationService, public pageCollection: PageCollectionService) {
-    }
+    constructor(public navService: WizardNavigationService, public pageCollection: PageCollectionService) {}
 
     private pageGuard(): void {
         if (!this.page) {

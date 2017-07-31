@@ -4,28 +4,27 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ViewChild} from "@angular/core";
-import { IfOpenService } from "./if-open.service";
 import {TestBed} from "@angular/core/testing";
-import { IfOpenDirective } from "./if-open.directive";
+
+import {IfOpenDirective} from "./if-open.directive";
+import {IfOpenService} from "./if-open.service";
 
 export default function(): void {
-    describe("IfOpen Directive", function () {
-        describe("Typescript API", function () {
-            beforeEach(function () {
-               TestBed.configureTestingModule(({
-                   declarations: [IfOpenDirective, IfOpenTest],
-                   providers: [IfOpenService]
-               }));
-               this.fixture = TestBed.createComponent(IfOpenTest);
-               this.fixture.detectChanges();
-               this.testComponent = this.fixture.componentInstance;
-               this.testElement = this.fixture.nativeElement;
-               this.clarityDirective = this.fixture.componentInstance.directive;
-               this.ifOpenService = TestBed.get(IfOpenService);
+    describe("IfOpen Directive", function() {
+        describe("Typescript API", function() {
+            beforeEach(function() {
+                TestBed.configureTestingModule(
+                    ({declarations: [IfOpenDirective, IfOpenTest], providers: [IfOpenService]}));
+                this.fixture = TestBed.createComponent(IfOpenTest);
+                this.fixture.detectChanges();
+                this.testComponent = this.fixture.componentInstance;
+                this.testElement = this.fixture.nativeElement;
+                this.clarityDirective = this.fixture.componentInstance.directive;
+                this.ifOpenService = TestBed.get(IfOpenService);
             });
 
             afterEach(function() {
-               this.fixture.destroy();
+                this.fixture.destroy();
             });
 
             it("sets the open state of the directive", function() {
@@ -69,11 +68,9 @@ export default function(): void {
         });
 
         describe("View", function() {
-            beforeEach(function () {
-                TestBed.configureTestingModule(({
-                    declarations: [IfOpenDirective, IfOpenTest],
-                    providers: [IfOpenService]
-                }));
+            beforeEach(function() {
+                TestBed.configureTestingModule(
+                    ({declarations: [IfOpenDirective, IfOpenTest], providers: [IfOpenService]}));
                 this.fixture = TestBed.createComponent(IfOpenTest);
                 this.fixture.detectChanges();
                 this.testComponent = this.fixture.componentInstance;

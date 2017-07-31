@@ -4,14 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ViewChild} from "@angular/core";
-import {IF_ACTIVE_ID_PROVIDER, IfActiveService} from "./if-active.service";
 import {TestBed} from "@angular/core/testing";
-import { IfActiveDirective } from "./if-active.directive";
+
+import {IfActiveDirective} from "./if-active.directive";
+import {IF_ACTIVE_ID_PROVIDER, IfActiveService} from "./if-active.service";
 
 export default function(): void {
-    describe("IfActive Directive", function () {
-        describe("Typescript API", function () {
-            beforeEach(function () {
+    describe("IfActive Directive", function() {
+        describe("Typescript API", function() {
+            beforeEach(function() {
                 TestBed.configureTestingModule(({
                     declarations: [IfActiveDirective, IfOpenTest],
                     providers: [IfActiveService, IF_ACTIVE_ID_PROVIDER]
@@ -35,7 +36,7 @@ export default function(): void {
             });
 
             it("gets the current value of the active state", function() {
-                this.ifActiveService.current =  new Object();
+                this.ifActiveService.current = new Object();
                 this.fixture.detectChanges();
                 expect(this.testComponent.activeState).toEqual(false);
             });
@@ -68,13 +69,13 @@ export default function(): void {
                 expect(currentChange).toBeUndefined();
 
                 // setting the current to the test directive's id
-                this.ifActiveService.current =  this.testComponent.directive.id;
+                this.ifActiveService.current = this.testComponent.directive.id;
                 this.fixture.detectChanges();
                 expect(nbChanges).toBe(1);
                 expect(currentChange).toBe(true);
 
                 // setting the current to the test directive's id again
-                this.ifActiveService.current =  this.testComponent.directive.id;
+                this.ifActiveService.current = this.testComponent.directive.id;
                 this.fixture.detectChanges();
                 expect(nbChanges).toBe(1);
                 expect(currentChange).toBe(true);
@@ -88,7 +89,7 @@ export default function(): void {
         });
 
         describe("View", function() {
-            beforeEach(function () {
+            beforeEach(function() {
                 TestBed.configureTestingModule(({
                     declarations: [IfActiveDirective, IfOpenTest],
                     providers: [IfActiveService, IF_ACTIVE_ID_PROVIDER]

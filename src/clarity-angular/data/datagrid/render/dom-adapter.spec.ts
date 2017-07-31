@@ -27,7 +27,7 @@ export default function(): void {
         });
 
         it("computes the scrollwidth of an element", function(this: UserContext) {
-            let child = document.createElement("div");
+            const child = document.createElement("div");
             child.style.width = "123456px";
             child.style.height = "10px";
             this.element.appendChild(child);
@@ -45,7 +45,7 @@ export default function(): void {
         });
 
         it("computes the height of an element", function(this: UserContext) {
-            let child = document.createElement("div");
+            const child = document.createElement("div");
             child.style.width = "10px";
             child.style.height = "1234px";
             this.element.replaceChild(child, this.element.firstChild);
@@ -61,7 +61,7 @@ export default function(): void {
 
             it("recognizes a width defined in a CSS stylesheet", function(this: UserContext) {
                 expect(this.domAdapter.userDefinedWidth(this.element)).toBe(0);
-                let style = document.createElement("style");
+                const style = document.createElement("style");
                 style.appendChild(document.createTextNode(".my-test { width: 42px; }"));
                 document.body.appendChild(style);
                 this.element.classList.add("my-test");
@@ -77,4 +77,4 @@ export default function(): void {
         });
 
     });
-};
+}

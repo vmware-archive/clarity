@@ -25,8 +25,8 @@ gulp.task("live", function() {
 			]
 		},
 		files: ["dist/**/*"],
-        reloadDebounce: 1000,
-        reloadDelay: 1000
+        reloadDebounce: 500,
+        reloadDelay: 500
 	});
 });
 

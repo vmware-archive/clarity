@@ -18,7 +18,7 @@ export class ProgressBarStaticDemo implements OnInit {
     staticLabeledProgbarValue: number = 0;
 
     getNewValue(): number {
-        let random: number = Math.floor(Math.random() * 98) + 1;
+        const random: number = Math.floor(Math.random() * 98) + 1;
         return parseInt(random + "", 10);
     }
 
@@ -29,7 +29,7 @@ export class ProgressBarStaticDemo implements OnInit {
         this.staticSuccessValue = this.getNewValue();
     }
 
-    //For CSS Regression Tests
+    // For CSS Regression Tests
     setInitialValues(): void {
         this.staticProgbarValue = 55;
         this.staticLabeledProgbarValue = 55;

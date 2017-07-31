@@ -13,11 +13,10 @@ import {menuPositions} from "../../../../clarity-angular/popover/dropdown/menu-p
     styleUrls: ["../../button-group.demo.css"]
 })
 export class MenuDirectionsDemo {
-
     menuPosition: string = menuPositions[0];
 
     flipDirection(): void {
-        let direction: string = this.menuPosition;
+        const direction: string = this.menuPosition;
         while (direction === this.menuPosition) {
             this.menuPosition = menuPositions[Math.floor(Math.random() * menuPositions.length)];
         }

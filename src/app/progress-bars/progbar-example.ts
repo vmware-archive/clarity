@@ -14,10 +14,8 @@ export class ProgBarExample {
     value: number = 0;
     intervalTimeInMs: number = 100;
 
-    constructor(private label: string = "demo",
-                private title: string = "Progress Bar",
-                private isLabeled: boolean = false) {
-    }
+    constructor(private label: string = "demo", private title: string = "Progress Bar",
+                private isLabeled: boolean = false) {}
 
     cssClassnames(): string {
         return ["progress", this.label].join(" ");
@@ -41,13 +39,12 @@ export class ProgBarExample {
         this.intervalId = setInterval(() => {
             this.run();
         }, this.intervalTimeInMs);
-
     }
 
     run(): void {
         let myProgress: number = this.value;
-        let maxProgressIncrement: number = 15;
-        let minProgressIncrement: number = 4;
+        const maxProgressIncrement: number = 15;
+        const minProgressIncrement: number = 4;
 
         myProgress += Math.random() * (maxProgressIncrement - minProgressIncrement) + minProgressIncrement;
 

@@ -4,13 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { CHECKBOX_DIRECTIVES } from "./checkbox/index";
+import {CommonModule} from "@angular/common";
+import {NgModule} from "@angular/core";
 
-@NgModule({
-    imports: [CommonModule],
-    declarations: [CHECKBOX_DIRECTIVES],
-    exports: [CHECKBOX_DIRECTIVES]
-})
-export class ClrFormsModule {}
+import {CHECKBOX_DIRECTIVES} from "./checkbox/index";
+
+@NgModule({imports: [CommonModule], declarations: [CHECKBOX_DIRECTIVES], exports: [CHECKBOX_DIRECTIVES]})
+export class ClrFormsModule {
+}

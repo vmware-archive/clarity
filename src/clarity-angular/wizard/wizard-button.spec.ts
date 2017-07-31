@@ -4,16 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, DebugElement } from "@angular/core";
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { By } from "@angular/platform-browser";
-import { WizardNavigationService } from "./providers/wizard-navigation";
-import { ButtonHubService } from "./providers/button-hub";
-import { WizardButton, DEFAULT_BUTTON_TYPES, CUSTOM_BUTTON_TYPES } from "./wizard-button";
-import { MockPage } from "./wizard-page.mock";
-import { NavServiceMock } from "./providers/wizard-navigation.mock";
-import { ButtonHubMock } from "./providers/button-hub.mock";
-import { ClrWizardModule } from "./wizard.module";
+import {Component, DebugElement} from "@angular/core";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {By} from "@angular/platform-browser";
+
+import {ButtonHubService} from "./providers/button-hub";
+import {ButtonHubMock} from "./providers/button-hub.mock";
+import {WizardNavigationService} from "./providers/wizard-navigation";
+import {NavServiceMock} from "./providers/wizard-navigation.mock";
+import {CUSTOM_BUTTON_TYPES, DEFAULT_BUTTON_TYPES, WizardButton} from "./wizard-button";
+import {MockPage} from "./wizard-page.mock";
+import {ClrWizardModule} from "./wizard.module";
 
 @Component({
     template: `
@@ -34,7 +35,7 @@ class ViewTestComponent {
     private _lastBtnClicked: string = "";
     public get clickCount(): number {
         return this._clickCount;
-    };
+    }
     public get lastBtnClicked(): string {
         return this._lastBtnClicked;
     }
@@ -50,8 +51,8 @@ export default function(): void {
             let fixture: ComponentFixture<any>;
             let buttonDebugEl: DebugElement;
             let buttonComponent: WizardButton;
-            let navService = new NavServiceMock();
-            let buttonHub = new ButtonHubMock();
+            const navService = new NavServiceMock();
+            const buttonHub = new ButtonHubMock();
 
             @Component({
                 template: `
@@ -62,19 +63,19 @@ export default function(): void {
             }
 
             function runTypeConstantCheck(component: any, fnToTest: any, buttonType: string, typeConstant: any) {
-                    buttonComponent.type = "next";
-                    fixture.detectChanges();
-                    expect(buttonComponent.isCancel).toBe(false, "next button type is not cancel");
+                buttonComponent.type = "next";
+                fixture.detectChanges();
+                expect(buttonComponent.isCancel).toBe(false, "next button type is not cancel");
 
-                    for (let key in typeConstant) {
-                        if (typeConstant.hasOwnProperty(key) && key !== buttonType) {
-                            let typeToTest = typeConstant[key];
-                            let testMsg = typeToTest + " button type is not " + buttonType;
-                            component.type = typeToTest;
-                            fixture.detectChanges();
-                            expect(fnToTest).toBe(false, testMsg);
-                        }
+                for (const key in typeConstant) {
+                    if (typeConstant.hasOwnProperty(key) && key !== buttonType) {
+                        const typeToTest = typeConstant[key];
+                        const testMsg = typeToTest + " button type is not " + buttonType;
+                        component.type = typeToTest;
+                        fixture.detectChanges();
+                        expect(fnToTest).toBe(false, testMsg);
                     }
+                }
             }
 
             function otherButtonsTestRoutine(component: any, buttonType: string) {
@@ -87,7 +88,7 @@ export default function(): void {
                     danger: "isDanger",
                     finish: "isFinish"
                 };
-                let myFn: any = component[FUNCTIONS_TO_TEST[buttonType]];
+                const myFn: any = component[FUNCTIONS_TO_TEST[buttonType]];
 
                 component.type = EMPTY_BUTTON_TYPE;
                 fixture.detectChanges();
@@ -105,11 +106,11 @@ export default function(): void {
                 navService.currentPage = new MockPage(0);
 
                 TestBed.configureTestingModule({
-                    imports: [ClrWizardModule ],
-                    declarations: [ TestComponent ],
+                    imports: [ClrWizardModule],
+                    declarations: [TestComponent],
                     providers: [
-                        { provide: WizardNavigationService, useValue: navService },
-                        { provide: ButtonHubService, useValue: buttonHub }
+                        {provide: WizardNavigationService, useValue: navService},
+                        {provide: ButtonHubService, useValue: buttonHub}
                     ]
                 });
                 fixture = TestBed.createComponent(TestComponent);
@@ -252,33 +253,27 @@ export default function(): void {
                 it("returns false for all other button types", () => {
                     buttonComponent.type = "custom-custom";
                     fixture.detectChanges();
-                    expect(buttonComponent.isPrimaryAction).toBe(false,
-                        "unknown button type is not primary");
+                    expect(buttonComponent.isPrimaryAction).toBe(false, "unknown button type is not primary");
 
                     buttonComponent.type = DEFAULT_BUTTON_TYPES.cancel;
                     fixture.detectChanges();
-                    expect(buttonComponent.isPrimaryAction).toBe(false,
-                        "cancel button is not primary");
+                    expect(buttonComponent.isPrimaryAction).toBe(false, "cancel button is not primary");
 
                     buttonComponent.type = CUSTOM_BUTTON_TYPES.cancel;
                     fixture.detectChanges();
-                    expect(buttonComponent.isPrimaryAction).toBe(false,
-                        "custom cancel button is not primary");
+                    expect(buttonComponent.isPrimaryAction).toBe(false, "custom cancel button is not primary");
 
                     buttonComponent.type = DEFAULT_BUTTON_TYPES.previous;
                     fixture.detectChanges();
-                    expect(buttonComponent.isPrimaryAction).toBe(false,
-                        "previous button is not primary");
+                    expect(buttonComponent.isPrimaryAction).toBe(false, "previous button is not primary");
 
                     buttonComponent.type = CUSTOM_BUTTON_TYPES.previous;
                     fixture.detectChanges();
-                    expect(buttonComponent.isPrimaryAction).toBe(false,
-                        "custom previous button is not primary");
+                    expect(buttonComponent.isPrimaryAction).toBe(false, "custom previous button is not primary");
 
                     buttonComponent.type = "";
                     fixture.detectChanges();
-                    expect(buttonComponent.isPrimaryAction).toBe(false,
-                        "empty button type is not primary");
+                    expect(buttonComponent.isPrimaryAction).toBe(false, "empty button type is not primary");
                 });
             });
 
@@ -365,186 +360,204 @@ export default function(): void {
                     });
 
                     it("returns true for button of type danger when disabled is true," +
-                    "even if page is ready to complete", () => {
-                        buttonComponent.disabled = true;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.danger;
-                        navService.currentPage.readyToComplete = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(true);
-                    });
+                           "even if page is ready to complete",
+                       () => {
+                           buttonComponent.disabled = true;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.danger;
+                           navService.currentPage.readyToComplete = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(true);
+                       });
 
                     it("returns true for button of type custom-danger when disabled is true," +
-                    "even if page is ready to complete", () => {
-                        buttonComponent.disabled = true;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.danger;
-                        navService.currentPage.readyToComplete = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(true);
-                    });
+                           "even if page is ready to complete",
+                       () => {
+                           buttonComponent.disabled = true;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.danger;
+                           navService.currentPage.readyToComplete = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(true);
+                       });
                 });
 
                 describe("...and next buttons", () => {
                     it("returns false for button of type next when page" +
-                    "is not the last page and ready to complete", () => {
-                        buttonComponent.disabled = false;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.next;
-                        navService.currentPage.readyToComplete = true;
-                        navService.currentPageIsLast = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(false);
-                    });
+                           "is not the last page and ready to complete",
+                       () => {
+                           buttonComponent.disabled = false;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.next;
+                           navService.currentPage.readyToComplete = true;
+                           navService.currentPageIsLast = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(false);
+                       });
 
                     it("returns false for button of type custom-next when page" +
-                    "is not the last page and ready to complete", () => {
-                        buttonComponent.disabled = false;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.next;
-                        navService.currentPage.readyToComplete = true;
-                        navService.currentPageIsLast = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(false);
-                    });
+                           "is not the last page and ready to complete",
+                       () => {
+                           buttonComponent.disabled = false;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.next;
+                           navService.currentPage.readyToComplete = true;
+                           navService.currentPageIsLast = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(false);
+                       });
 
                     it("returns true for button of type next when page" +
-                    "is the last page", () => {
-                        buttonComponent.disabled = false;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.next;
-                        navService.currentPage.readyToComplete = true;
-                        navService.currentPageIsLast = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(true);
-                    });
+                           "is the last page",
+                       () => {
+                           buttonComponent.disabled = false;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.next;
+                           navService.currentPage.readyToComplete = true;
+                           navService.currentPageIsLast = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(true);
+                       });
 
                     it("returns true for button of type custom-next when page" +
-                    "is the last page", () => {
-                        buttonComponent.disabled = false;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.next;
-                        navService.currentPage.readyToComplete = true;
-                        navService.currentPageIsLast = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(true);
-                    });
+                           "is the last page",
+                       () => {
+                           buttonComponent.disabled = false;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.next;
+                           navService.currentPage.readyToComplete = true;
+                           navService.currentPageIsLast = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(true);
+                       });
 
                     it("returns true for button of type next when page" +
-                    "is not ready to complete", () => {
-                        buttonComponent.disabled = false;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.next;
-                        navService.currentPage.readyToComplete = false;
-                        navService.currentPageIsLast = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(true);
-                    });
+                           "is not ready to complete",
+                       () => {
+                           buttonComponent.disabled = false;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.next;
+                           navService.currentPage.readyToComplete = false;
+                           navService.currentPageIsLast = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(true);
+                       });
 
                     it("returns true for button of type custom-next when page" +
-                    "is not ready to complete", () => {
-                        buttonComponent.disabled = false;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.next;
-                        navService.currentPage.readyToComplete = false;
-                        navService.currentPageIsLast = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(true);
-                    });
+                           "is not ready to complete",
+                       () => {
+                           buttonComponent.disabled = false;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.next;
+                           navService.currentPage.readyToComplete = false;
+                           navService.currentPageIsLast = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(true);
+                       });
 
                     it("returns true for button of type next when disabled is true," +
-                    "even if page is ready to complete and not the last page", () => {
-                        buttonComponent.disabled = true;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.next;
-                        navService.currentPage.readyToComplete = true;
-                        navService.currentPageIsLast = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(true);
-                    });
+                           "even if page is ready to complete and not the last page",
+                       () => {
+                           buttonComponent.disabled = true;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.next;
+                           navService.currentPage.readyToComplete = true;
+                           navService.currentPageIsLast = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(true);
+                       });
 
                     it("returns true for button of type custom-next when disabled is true," +
-                    "even if page is ready to complete and not the last page", () => {
-                        buttonComponent.disabled = true;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.next;
-                        navService.currentPage.readyToComplete = true;
-                        navService.currentPageIsLast = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(true);
-                    });
+                           "even if page is ready to complete and not the last page",
+                       () => {
+                           buttonComponent.disabled = true;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.next;
+                           navService.currentPage.readyToComplete = true;
+                           navService.currentPageIsLast = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(true);
+                       });
                 });
 
                 describe("...and finish buttons", () => {
                     it("returns false for button of type finish when page" +
-                    "is the last page and ready to complete", () => {
-                        buttonComponent.disabled = false;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.finish;
-                        navService.currentPage.readyToComplete = true;
-                        navService.currentPageIsLast = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(false);
-                    });
+                           "is the last page and ready to complete",
+                       () => {
+                           buttonComponent.disabled = false;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.finish;
+                           navService.currentPage.readyToComplete = true;
+                           navService.currentPageIsLast = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(false);
+                       });
 
                     it("returns false for button of type custom-finish when page" +
-                    "is the last page and ready to complete", () => {
-                        buttonComponent.disabled = false;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.finish;
-                        navService.currentPage.readyToComplete = true;
-                        navService.currentPageIsLast = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(false);
-                    });
+                           "is the last page and ready to complete",
+                       () => {
+                           buttonComponent.disabled = false;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.finish;
+                           navService.currentPage.readyToComplete = true;
+                           navService.currentPageIsLast = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(false);
+                       });
 
                     it("returns true for button of type finish when page" +
-                    "is NOT the last page", () => {
-                        buttonComponent.disabled = false;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.finish;
-                        navService.currentPage.readyToComplete = true;
-                        navService.currentPageIsLast = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(true);
-                    });
+                           "is NOT the last page",
+                       () => {
+                           buttonComponent.disabled = false;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.finish;
+                           navService.currentPage.readyToComplete = true;
+                           navService.currentPageIsLast = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(true);
+                       });
 
                     it("returns true for button of type custom-finish when page" +
-                    "is NOT the last page", () => {
-                        buttonComponent.disabled = false;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.finish;
-                        navService.currentPage.readyToComplete = true;
-                        navService.currentPageIsLast = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(true);
-                    });
+                           "is NOT the last page",
+                       () => {
+                           buttonComponent.disabled = false;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.finish;
+                           navService.currentPage.readyToComplete = true;
+                           navService.currentPageIsLast = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(true);
+                       });
 
                     it("returns true for button of type finish when page" +
-                    "is not ready to complete", () => {
-                        buttonComponent.disabled = false;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.finish;
-                        navService.currentPage.readyToComplete = false;
-                        navService.currentPageIsLast = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(true);
-                    });
+                           "is not ready to complete",
+                       () => {
+                           buttonComponent.disabled = false;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.finish;
+                           navService.currentPage.readyToComplete = false;
+                           navService.currentPageIsLast = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(true);
+                       });
 
                     it("returns true for button of type custom-finish when page" +
-                    "is not ready to complete", () => {
-                        buttonComponent.disabled = false;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.finish;
-                        navService.currentPage.readyToComplete = false;
-                        navService.currentPageIsLast = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(true);
-                    });
+                           "is not ready to complete",
+                       () => {
+                           buttonComponent.disabled = false;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.finish;
+                           navService.currentPage.readyToComplete = false;
+                           navService.currentPageIsLast = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(true);
+                       });
 
                     it("returns true for button of type finish when disabled is true," +
-                    "even if page is ready to complete and also the last page", () => {
-                        buttonComponent.disabled = true;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.finish;
-                        navService.currentPage.readyToComplete = true;
-                        navService.currentPageIsLast = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(true);
-                    });
+                           "even if page is ready to complete and also the last page",
+                       () => {
+                           buttonComponent.disabled = true;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.finish;
+                           navService.currentPage.readyToComplete = true;
+                           navService.currentPageIsLast = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(true);
+                       });
 
                     it("returns true for button of type custom-finish when disabled is true," +
-                    "even if page is ready to complete and also the last page", () => {
-                        buttonComponent.disabled = true;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.finish;
-                        navService.currentPage.readyToComplete = true;
-                        navService.currentPageIsLast = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isDisabled).toBe(true);
-                    });
+                           "even if page is ready to complete and also the last page",
+                       () => {
+                           buttonComponent.disabled = true;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.finish;
+                           navService.currentPage.readyToComplete = true;
+                           navService.currentPageIsLast = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isDisabled).toBe(true);
+                       });
                 });
 
                 describe("...and fallthrough", () => {
@@ -637,134 +650,148 @@ export default function(): void {
                     });
 
                     it("returns true for previous buttons that are " +
-                    "explicitly set to hidden even if current page is not first", () => {
-                        buttonComponent.hidden = true;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.previous;
-                        navService.currentPageIsFirst = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isHidden).toBe(true);
-                    });
+                           "explicitly set to hidden even if current page is not first",
+                       () => {
+                           buttonComponent.hidden = true;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.previous;
+                           navService.currentPageIsFirst = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isHidden).toBe(true);
+                       });
 
                     it("returns true for custom-previous buttons that are " +
-                    "explicitly set to hidden even if current page is not first", () => {
-                        buttonComponent.hidden = true;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.previous;
-                        navService.currentPageIsFirst = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isHidden).toBe(true);
-                    });
+                           "explicitly set to hidden even if current page is not first",
+                       () => {
+                           buttonComponent.hidden = true;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.previous;
+                           navService.currentPageIsFirst = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isHidden).toBe(true);
+                       });
                 });
 
                 describe("...and next buttons", () => {
                     it("returns false for button of type next when page" +
-                    "is not the last page", () => {
-                        buttonComponent.hidden = false;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.next;
-                        navService.currentPageIsLast = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isHidden).toBe(false);
-                    });
+                           "is not the last page",
+                       () => {
+                           buttonComponent.hidden = false;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.next;
+                           navService.currentPageIsLast = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isHidden).toBe(false);
+                       });
 
                     it("returns false for button of type custom-next when page" +
-                    "is not the last page", () => {
-                        buttonComponent.hidden = false;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.next;
-                        navService.currentPageIsLast = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isHidden).toBe(false);
-                    });
+                           "is not the last page",
+                       () => {
+                           buttonComponent.hidden = false;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.next;
+                           navService.currentPageIsLast = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isHidden).toBe(false);
+                       });
 
                     it("returns true for button of type next when page" +
-                    "is the last page", () => {
-                        buttonComponent.hidden = false;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.next;
-                        navService.currentPageIsLast = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isHidden).toBe(true);
-                    });
+                           "is the last page",
+                       () => {
+                           buttonComponent.hidden = false;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.next;
+                           navService.currentPageIsLast = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isHidden).toBe(true);
+                       });
 
                     it("returns true for button of type custom-next when page" +
-                    "is the last page", () => {
-                        buttonComponent.hidden = false;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.next;
-                        navService.currentPageIsLast = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isHidden).toBe(true);
-                    });
+                           "is the last page",
+                       () => {
+                           buttonComponent.hidden = false;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.next;
+                           navService.currentPageIsLast = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isHidden).toBe(true);
+                       });
 
                     it("returns true for button of type next when hidden is true," +
-                    "even if page is not the last page", () => {
-                        buttonComponent.hidden = true;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.next;
-                        navService.currentPageIsLast = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isHidden).toBe(true);
-                    });
+                           "even if page is not the last page",
+                       () => {
+                           buttonComponent.hidden = true;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.next;
+                           navService.currentPageIsLast = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isHidden).toBe(true);
+                       });
 
                     it("returns true for button of type custom-next when hidden is true," +
-                    "even if page is not the last page", () => {
-                        buttonComponent.hidden = true;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.next;
-                        navService.currentPageIsLast = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isHidden).toBe(true);
-                    });
+                           "even if page is not the last page",
+                       () => {
+                           buttonComponent.hidden = true;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.next;
+                           navService.currentPageIsLast = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isHidden).toBe(true);
+                       });
                 });
 
                 describe("...and finish buttons", () => {
                     it("returns false for button of type finish when page" +
-                    "is the last page", () => {
-                        buttonComponent.hidden = false;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.finish;
-                        navService.currentPageIsLast = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isHidden).toBe(false);
-                    });
+                           "is the last page",
+                       () => {
+                           buttonComponent.hidden = false;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.finish;
+                           navService.currentPageIsLast = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isHidden).toBe(false);
+                       });
 
                     it("returns false for button of type custom-finish when page" +
-                    "is the last page", () => {
-                        buttonComponent.hidden = false;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.finish;
-                        navService.currentPageIsLast = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isHidden).toBe(false);
-                    });
+                           "is the last page",
+                       () => {
+                           buttonComponent.hidden = false;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.finish;
+                           navService.currentPageIsLast = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isHidden).toBe(false);
+                       });
 
                     it("returns true for button of type finish when page" +
-                    "is NOT the last page", () => {
-                        buttonComponent.hidden = false;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.finish;
-                        navService.currentPageIsLast = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isHidden).toBe(true);
-                    });
+                           "is NOT the last page",
+                       () => {
+                           buttonComponent.hidden = false;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.finish;
+                           navService.currentPageIsLast = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isHidden).toBe(true);
+                       });
 
                     it("returns true for button of type custom-finish when page" +
-                    "is NOT the last page", () => {
-                        buttonComponent.hidden = false;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.finish;
-                        navService.currentPageIsLast = false;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isHidden).toBe(true);
-                    });
+                           "is NOT the last page",
+                       () => {
+                           buttonComponent.hidden = false;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.finish;
+                           navService.currentPageIsLast = false;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isHidden).toBe(true);
+                       });
 
                     it("returns true for button of type finish when hidden is true," +
-                    "even if page is the last page", () => {
-                        buttonComponent.hidden = true;
-                        buttonComponent.type = DEFAULT_BUTTON_TYPES.finish;
-                        navService.currentPageIsLast = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isHidden).toBe(true);
-                    });
+                           "even if page is the last page",
+                       () => {
+                           buttonComponent.hidden = true;
+                           buttonComponent.type = DEFAULT_BUTTON_TYPES.finish;
+                           navService.currentPageIsLast = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isHidden).toBe(true);
+                       });
 
                     it("returns true for button of type custom-finish when hidden is true," +
-                    "even if page is the last page", () => {
-                        buttonComponent.hidden = true;
-                        buttonComponent.type = CUSTOM_BUTTON_TYPES.finish;
-                        navService.currentPageIsLast = true;
-                        fixture.detectChanges();
-                        expect(buttonComponent.isHidden).toBe(true);
-                    });
+                           "even if page is the last page",
+                       () => {
+                           buttonComponent.hidden = true;
+                           buttonComponent.type = CUSTOM_BUTTON_TYPES.finish;
+                           navService.currentPageIsLast = true;
+                           fixture.detectChanges();
+                           expect(buttonComponent.isHidden).toBe(true);
+                       });
                 });
 
                 describe("...and fallthrough", () => {
@@ -790,19 +817,19 @@ export default function(): void {
             let fixture: ComponentFixture<any>;
             let buttonDebugEl: DebugElement;
             let buttonComponent: WizardButton;
-            let navService = new NavServiceMock();
-            let buttonHub = new ButtonHubMock();
+            const navService = new NavServiceMock();
+            const buttonHub = new ButtonHubMock();
             let myTestComponent: ViewTestComponent;
 
             beforeEach(() => {
                 navService.currentPage = new MockPage(0);
 
                 TestBed.configureTestingModule({
-                    imports: [ClrWizardModule ],
-                    declarations: [ ViewTestComponent ],
+                    imports: [ClrWizardModule],
+                    declarations: [ViewTestComponent],
                     providers: [
-                        { provide: WizardNavigationService, useValue: navService },
-                        { provide: ButtonHubService, useValue: buttonHub }
+                        {provide: WizardNavigationService, useValue: navService},
+                        {provide: ButtonHubService, useValue: buttonHub}
                     ]
                 });
                 fixture = TestBed.createComponent(ViewTestComponent);
@@ -922,8 +949,10 @@ export default function(): void {
                     fixture.detectChanges();
                     navService.currentPage.readyToComplete = false;
                     buttonComponent.click();
-                    expect(myTestComponent.clickCount).toBe(2, "does not emit click event when" +
-                        " circumstances do not allow");
+                    expect(myTestComponent.clickCount)
+                        .toBe(2,
+                              "does not emit click event when" +
+                                  " circumstances do not allow");
                     expect(myTestComponent.lastBtnClicked).not.toBe("danger", "did not send button type");
                 });
             });
@@ -933,8 +962,8 @@ export default function(): void {
             let fixture: ComponentFixture<any>;
             let buttonDebugEl: DebugElement;
             let buttonComponent: WizardButton;
-            let navService = new NavServiceMock();
-            let buttonHub = new ButtonHubMock();
+            const navService = new NavServiceMock();
+            const buttonHub = new ButtonHubMock();
             let myTestComponent: ViewTestComponent;
             let myTestComponentEl: HTMLElement;
             let buttonElement: HTMLElement;
@@ -944,11 +973,11 @@ export default function(): void {
                 navService.currentPage = new MockPage(0);
 
                 TestBed.configureTestingModule({
-                    imports: [ClrWizardModule ],
-                    declarations: [ ViewTestComponent ],
+                    imports: [ClrWizardModule],
+                    declarations: [ViewTestComponent],
                     providers: [
-                        { provide: WizardNavigationService, useValue: navService },
-                        { provide: ButtonHubService, useValue: buttonHub }
+                        {provide: WizardNavigationService, useValue: navService},
+                        {provide: ButtonHubService, useValue: buttonHub}
                     ]
                 });
                 fixture = TestBed.createComponent(ViewTestComponent);
@@ -1090,5 +1119,5 @@ export default function(): void {
                 });
             });
         });
-   });
+    });
 }

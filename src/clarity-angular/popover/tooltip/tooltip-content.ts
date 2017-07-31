@@ -1,22 +1,15 @@
+/*
+ * Copyright (c) 2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
 import {Component, ElementRef, Injector, Input, SkipSelf} from "@angular/core";
 import {AbstractPopover} from "../common/abstract-popover";
 import {Point} from "../common/popover";
 
-const POSITIONS: string[] = [
-    "bottom-left",
-    "bottom-right",
-    "top-left",
-    "top-right",
-    "right",
-    "left"
-];
+const POSITIONS: string[] = ["bottom-left", "bottom-right", "top-left", "top-right", "right", "left"];
 
-const SIZES: string[] = [
-    "xs",
-    "sm",
-    "md",
-    "lg"
-];
+const SIZES: string[] = ["xs", "sm", "md", "lg"];
 
 @Component({
     selector: "clr-tooltip-content",
@@ -31,7 +24,6 @@ const SIZES: string[] = [
     }
 })
 export class TooltipContent extends AbstractPopover {
-
     constructor(injector: Injector, @SkipSelf() parentHost: ElementRef) {
         super(injector, parentHost);
         // Defaults

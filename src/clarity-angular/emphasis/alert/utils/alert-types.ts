@@ -5,7 +5,5 @@
  */
 
 // TODO: alert-* types are deprecated and should be removed before 1.0!
-export const ALERT_TYPES: string[] = [
-    "alert-info", "alert-warning", "alert-danger", "alert-success",
-    "info", "warning", "danger", "success"
-];
+export const ALERT_TYPES: string[] =
+    ["alert-info", "alert-warning", "alert-danger", "alert-success", "info", "warning", "danger", "success"];

@@ -5,11 +5,12 @@
  */
 import {Component, ViewChild} from "@angular/core";
 import {Subject} from "rxjs/Subject";
-import {TestContext} from "./helpers.spec";
+
 import {DatagridFilter} from "./datagrid-filter";
-import {FiltersProvider} from "./providers/filters";
-import {CustomFilter} from "./providers/custom-filter";
+import {TestContext} from "./helpers.spec";
 import {Filter} from "./interfaces/filter";
+import {CustomFilter} from "./providers/custom-filter";
+import {FiltersProvider} from "./providers/filters";
 
 export default function(): void {
     describe("DatagridFilter component", function() {
@@ -61,18 +62,18 @@ export default function(): void {
             let context: TestContext<DatagridFilter, FullTest>;
             let filter: TestFilter;
 
-            beforeEach(function () {
+            beforeEach(function() {
                 filter = new TestFilter();
                 context = this.create(DatagridFilter, FullTest, [FiltersProvider]);
             });
 
-            it("receives an input for the filter logic", function () {
+            it("receives an input for the filter logic", function() {
                 context.testComponent.filter = filter;
                 context.detectChanges();
                 expect(context.clarityDirective.filter).toBe(filter);
             });
 
-            it("offers two-way binding on he open state of the filter dropdown", function () {
+            it("offers two-way binding on he open state of the filter dropdown", function() {
                 context.testComponent.filter = filter;
                 context.testComponent.open = true;
                 context.detectChanges();
@@ -90,7 +91,7 @@ export default function(): void {
         describe("View", function() {
             let context: TestContext<DatagridFilter, FullTest>;
 
-            beforeEach(function () {
+            beforeEach(function() {
                 context = this.create(DatagridFilter, FullTest, [FiltersProvider]);
             });
 
@@ -102,7 +103,7 @@ export default function(): void {
             });
 
             it("opens and closes the dropdown when the toggle is clicked", function() {
-                let toggle = context.clarityElement.querySelector(".datagrid-filter-toggle");
+                const toggle = context.clarityElement.querySelector(".datagrid-filter-toggle");
                 expect(context.clarityDirective.open).toBe(false);
                 toggle.click();
                 context.detectChanges();
@@ -120,18 +121,16 @@ class TestFilter implements Filter<number> {
 
     isActive(): boolean {
         return this.active;
-    };
+    }
 
     accepts(n: number): boolean {
         return true;
-    };
+    }
 
     changes = new Subject<boolean>();
 }
 
-@Component({
-    template: `<clr-dg-filter [clrDgFilter]="filter" [(clrDgFilterOpen)]="open">Hello world</clr-dg-filter>`
-})
+@Component({template: `<clr-dg-filter [clrDgFilter]="filter" [(clrDgFilterOpen)]="open">Hello world</clr-dg-filter>`})
 class FullTest {
     @ViewChild(CustomFilter) customFilter: CustomFilter;
 

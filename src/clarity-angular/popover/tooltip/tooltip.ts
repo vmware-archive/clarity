@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component } from "@angular/core";
+import {Component} from "@angular/core";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 
 @Component({
@@ -14,6 +14,7 @@ import {IfOpenService} from "../../utils/conditional/if-open.service";
     host: {
         "[class.tooltip]": "true",
     },
-    providers: [ IfOpenService ]
+    providers: [IfOpenService]
 })
-export class Tooltip {}
+export class Tooltip {
+}

@@ -3,50 +3,32 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
+import {NgModule} from "@angular/core";
+
 import {ClarityModule} from "../../clarity-angular/clarity.module";
-import {ROUTING} from "./tables.demo.routing";
-import {TablesDemo} from "./tables.demo";
+
 import {TablesBasicDemo} from "./tables-basic";
+import {TablesCompactDemo} from "./tables-compact";
+import {TablesCompactNoborderDemo} from "./tables-compact-noborder";
 import {TablesLeftcellDemo} from "./tables-leftcell";
 import {TablesMultilineDemo} from "./tables-multiline";
 import {TablesNoborderDemo} from "./tables-noborder";
-import {TablesCompactDemo} from "./tables-compact";
-import {TablesCompactNoborderDemo} from "./tables-compact-noborder";
 import {TablesVerticalDemo} from "./tables-vertical";
 import {TablesVerticalNoborderCompactDemo} from "./tables-vertical-noborder-compact";
 import {TablesWidthDemo} from "./tables-width";
+import {TablesDemo} from "./tables.demo";
+import {ROUTING} from "./tables.demo.routing";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ClarityModule,
-        ROUTING
-    ],
+    imports: [CommonModule, ClarityModule, ROUTING],
     declarations: [
-        TablesDemo,
-        TablesBasicDemo,
-        TablesLeftcellDemo,
-        TablesMultilineDemo,
-        TablesNoborderDemo,
-        TablesCompactDemo,
-        TablesCompactNoborderDemo,
-        TablesVerticalDemo,
-        TablesVerticalNoborderCompactDemo,
-        TablesWidthDemo
+        TablesDemo, TablesBasicDemo, TablesLeftcellDemo, TablesMultilineDemo, TablesNoborderDemo, TablesCompactDemo,
+        TablesCompactNoborderDemo, TablesVerticalDemo, TablesVerticalNoborderCompactDemo, TablesWidthDemo
     ],
     exports: [
-        TablesDemo,
-        TablesBasicDemo,
-        TablesLeftcellDemo,
-        TablesMultilineDemo,
-        TablesNoborderDemo,
-        TablesCompactDemo,
-        TablesCompactNoborderDemo,
-        TablesVerticalDemo,
-        TablesVerticalNoborderCompactDemo,
-        TablesWidthDemo
+        TablesDemo, TablesBasicDemo, TablesLeftcellDemo, TablesMultilineDemo, TablesNoborderDemo, TablesCompactDemo,
+        TablesCompactNoborderDemo, TablesVerticalDemo, TablesVerticalNoborderCompactDemo, TablesWidthDemo
     ]
 })
 export default class TablesDemoModule {

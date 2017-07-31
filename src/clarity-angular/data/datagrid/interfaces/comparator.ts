@@ -3,6 +3,4 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-export interface Comparator<T> {
-    compare(a: T, b: T): number;
-}
+export interface Comparator<T> { compare(a: T, b: T): number; }

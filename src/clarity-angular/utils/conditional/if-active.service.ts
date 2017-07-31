@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Injectable, InjectionToken} from "@angular/core";
-import { Subject } from "rxjs/Subject";
-import { Observable } from "rxjs/Observable";
+import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/Subject";
 
 let activeCounter = 0;
 
@@ -32,7 +32,6 @@ export const IF_ACTIVE_ID_PROVIDER = {
  *
  */
 export class IfActiveService {
-
     /********
      * @property _currentChange
      *
@@ -77,7 +76,7 @@ export class IfActiveService {
      *
      * @param value
      */
-    public set current( value: number ) {
+    public set current(value: number) {
         if (this._current !== value) {
             this._current = value;
             this._currentChange.next(value);

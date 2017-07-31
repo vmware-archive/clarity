@@ -42,4 +42,4 @@ export default function(): void {
             expect(this.filter.accepts({a: {b: "abc"}}, "a")).toBe(true);
         });
     });
-};
+}

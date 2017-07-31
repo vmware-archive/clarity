@@ -5,13 +5,14 @@
  */
 
 import {Component} from "@angular/core";
-import { TooltipContent } from "./tooltip-content";
-import { TestContext } from "../../data/datagrid/helpers.spec";
+
+import {TestContext} from "../../data/datagrid/helpers.spec";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {Point} from "../common/popover";
 
-export default function(): void {
+import {TooltipContent} from "./tooltip-content";
 
+export default function(): void {
     // FIXME: this doesn't even run yet, we don't have an all.spec for tooltips.
     describe("TooltipContent component", function() {
         let context: TestContext<TooltipContent, SimpleTest>;
@@ -31,7 +32,7 @@ export default function(): void {
         });
 
         it("accepts a [clrPosition] input", () => {
-            //Default is right
+            // Default is right
             expect((<any>context.clarityDirective).anchorPoint).toEqual(Point.RIGHT_CENTER);
             expect((<any>context.clarityDirective).popoverPoint).toEqual(Point.LEFT_TOP);
             expect(context.clarityElement.classList).toContain("tooltip-right");
@@ -52,7 +53,7 @@ export default function(): void {
         });
 
         it("accepts a [clrSize] input", () => {
-            //Default is small
+            // Default is small
             expect(context.clarityDirective.size).toEqual("sm");
             expect(context.clarityElement.classList).toContain("tooltip-sm");
 

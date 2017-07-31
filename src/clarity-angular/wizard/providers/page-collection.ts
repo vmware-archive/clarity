@@ -4,10 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Injectable, QueryList } from "@angular/core";
-import { Subject } from "rxjs/Subject";
-import { Observable } from "rxjs/Observable";
-import { WizardPage } from "../wizard-page";
+import {Injectable, QueryList} from "@angular/core";
+import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/Subject";
+
+import {WizardPage} from "../wizard-page";
 
 /**
  * PageCollectionService manages the collection of pages assigned to the wizard and offers
@@ -35,7 +36,6 @@ import { WizardPage } from "../wizard-page";
  */
 @Injectable()
 export class PageCollectionService {
-
     /**
      * A reference to the Wizard.pages QueryList.
      *
@@ -79,7 +79,7 @@ export class PageCollectionService {
      * @memberof PageCollectionService
      */
     public get penultimatePage(): WizardPage {
-        let pageCount = this.pagesCount;
+        const pageCount = this.pagesCount;
 
         if (pageCount < 2) {
             return;
@@ -97,7 +97,7 @@ export class PageCollectionService {
      * @memberof PageCollectionService
      */
     public get lastPage(): WizardPage {
-        let pageCount = this.pagesCount;
+        const pageCount = this.pagesCount;
 
         if (pageCount < 1) {
             return;
@@ -136,7 +136,7 @@ export class PageCollectionService {
      * @memberof PageCollectionService
      */
     public getPageById(id: string): WizardPage {
-        let foundPages: WizardPage[] = this.pages.filter((page: WizardPage) => id === page.id);
+        const foundPages: WizardPage[] = this.pages.filter((page: WizardPage) => id === page.id);
         return this.checkResults(foundPages, id);
     }
 
@@ -150,8 +150,8 @@ export class PageCollectionService {
      * @memberof PageCollectionService
      */
     public getPageByIndex(index: number): WizardPage {
-        let pageCount = this.pagesCount;
-        let pagesLastIndex: number = (pageCount > 1) ? pageCount - 1 : 0;
+        const pageCount = this.pagesCount;
+        const pagesLastIndex: number = (pageCount > 1) ? pageCount - 1 : 0;
 
         if (index < 0) {
             throw new Error("Cannot retrieve page with index of " + index);
@@ -174,7 +174,7 @@ export class PageCollectionService {
      * @memberof PageCollectionService
      */
     public getPageIndex(page: WizardPage): number {
-        let index = this.pagesAsArray.indexOf(page);
+        const index = this.pagesAsArray.indexOf(page);
 
         if (index < 0) {
             throw new Error("Requested page cannot be found in collection of pages.");
@@ -195,7 +195,7 @@ export class PageCollectionService {
      * @memberof PageCollectionService
      */
     private checkResults(results: WizardPage[], requestedPageId: string) {
-        let foundPagesCount: number = results.length || 0;
+        const foundPagesCount: number = results.length || 0;
 
         if (foundPagesCount > 1) {
             throw new Error("More than one page has the requested id " + requestedPageId + ".");
@@ -265,8 +265,8 @@ export class PageCollectionService {
      * @memberof PageCollectionService
      */
     public getPageRangeFromPages(page: WizardPage, otherPage: WizardPage): WizardPage[] {
-        let pageIndex = this.getPageIndex(page);
-        let otherPageIndex = this.getPageIndex(otherPage);
+        const pageIndex = this.getPageIndex(page);
+        const otherPageIndex = this.getPageIndex(otherPage);
         let startIndex: number;
         let endIndex: number;
 
@@ -291,8 +291,8 @@ export class PageCollectionService {
      * @memberof PageCollectionService
      */
     public getPreviousPage(page: WizardPage) {
-        let myPageIndex = this.getPageIndex(page);
-        let previousPageIndex = myPageIndex - 1;
+        const myPageIndex = this.getPageIndex(page);
+        const previousPageIndex = myPageIndex - 1;
         if (previousPageIndex < 0) {
             return null;
         }
@@ -336,8 +336,8 @@ export class PageCollectionService {
      * @memberof PageCollectionService
      */
     public getNextPage(page: WizardPage) {
-        let myPageIndex = this.getPageIndex(page);
-        let nextPageIndex = myPageIndex + 1;
+        const myPageIndex = this.getPageIndex(page);
+        const nextPageIndex = myPageIndex + 1;
 
         if (nextPageIndex >= this.pagesAsArray.length) {
             return null;
@@ -355,8 +355,8 @@ export class PageCollectionService {
      * @memberof PageCollectionService
      */
     public getStepItemIdForPage(page: WizardPage) {
-        let pageId = page.id;
-        let pageIdParts = pageId.split("-").reverse();
+        const pageId = page.id;
+        const pageIdParts = pageId.split("-").reverse();
 
         pageIdParts[1] = "step";
         return pageIdParts.reverse().join("-");
@@ -373,7 +373,7 @@ export class PageCollectionService {
      * @memberof PageCollectionService
      */
     public commitPage(page: WizardPage) {
-        let pageHasOverrides = page.stopNext || page.preventDefault;
+        const pageHasOverrides = page.stopNext || page.preventDefault;
         page.completed = true;
 
         if (!pageHasOverrides) {
@@ -432,7 +432,7 @@ export class PageCollectionService {
      * @memberof PageCollectionService
      */
     public updateCompletedStates(): void {
-        let firstIncompleteIndex = this.findFirstIncompletePageIndex();
+        const firstIncompleteIndex = this.findFirstIncompletePageIndex();
 
         if (firstIncompleteIndex === this.pagesAsArray.length - 1) {
             // all complete no need to do anything
@@ -470,7 +470,7 @@ export class PageCollectionService {
     }
 
     public findFirstIncompletePage(): WizardPage {
-        let myIncompleteIndex = this.findFirstIncompletePageIndex();
+        const myIncompleteIndex = this.findFirstIncompletePageIndex();
         return this.pagesAsArray[myIncompleteIndex];
     }
 }

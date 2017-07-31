@@ -26,7 +26,7 @@ export default function(): void {
         });
 
         it("prepares the animation before requesting to expand", function() {
-            let listeners: string[] = [];
+            const listeners: string[] = [];
             this.expand.animate.subscribe(() => listeners.push("animate"));
             this.expand.expandChange.subscribe(() => listeners.push("expand"));
             this.expand.expanded = true;
@@ -43,4 +43,4 @@ export default function(): void {
             expect(animates).toBe(2);
         });
     });
-};
+}

@@ -4,24 +4,25 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-import { Subject } from "rxjs/Subject";
-import { TestContext } from "./helpers.spec";
-import { Datagrid } from "./datagrid";
-import { State } from "./interfaces/state";
-import { Selection } from "./providers/selection";
-import { Sort } from "./providers/sort";
-import { FiltersProvider } from "./providers/filters";
-import { Page } from "./providers/page";
-import { Items } from "./providers/items";
-import { Comparator } from "./interfaces/comparator";
-import { Filter } from "./interfaces/filter";
-import { RowActionService } from "./providers/row-action-service";
-import { StringFilter } from "./interfaces/string-filter";
-import { DatagridStringFilterImpl } from "./built-in/filters/datagrid-string-filter-impl";
-import { DatagridPropertyStringFilter } from "./built-in/filters/datagrid-property-string-filter";
-import { ExpandableRowsCount } from "./providers/global-expandable-rows";
-import { DatagridRenderOrganizer } from "./render/render-organizer";
-import { HideableColumnService } from "./providers/hideable-column.service";
+import {Subject} from "rxjs/Subject";
+
+import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
+import {DatagridStringFilterImpl} from "./built-in/filters/datagrid-string-filter-impl";
+import {Datagrid} from "./datagrid";
+import {TestContext} from "./helpers.spec";
+import {Comparator} from "./interfaces/comparator";
+import {Filter} from "./interfaces/filter";
+import {State} from "./interfaces/state";
+import {StringFilter} from "./interfaces/string-filter";
+import {FiltersProvider} from "./providers/filters";
+import {ExpandableRowsCount} from "./providers/global-expandable-rows";
+import {HideableColumnService} from "./providers/hideable-column.service";
+import {Items} from "./providers/items";
+import {Page} from "./providers/page";
+import {RowActionService} from "./providers/row-action-service";
+import {Selection} from "./providers/selection";
+import {Sort} from "./providers/sort";
+import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 export default function(): void {
     describe("Datagrid component", function() {
@@ -33,7 +34,7 @@ export default function(): void {
             });
 
             it("allows to manually force a refresh of displayed items when data mutates", function() {
-                let items: Items = context.getClarityProvider(Items);
+                const items: Items = context.getClarityProvider(Items);
                 let refreshed = false;
                 items.change.subscribe(() => refreshed = true);
                 expect(refreshed).toBe(false);
@@ -42,7 +43,7 @@ export default function(): void {
             });
 
             it("allows to manually resize the datagrid", function() {
-                let organizer: DatagridRenderOrganizer = context.getClarityProvider(DatagridRenderOrganizer);
+                const organizer: DatagridRenderOrganizer = context.getClarityProvider(DatagridRenderOrganizer);
                 let resizeDone: boolean = false;
                 organizer.done.subscribe(() => {
                     resizeDone = true;
@@ -69,25 +70,18 @@ export default function(): void {
             });
 
             it("offers two-way binding on the currently selected items", function() {
-                let selection: Selection = context.getClarityProvider(Selection);
+                const selection: Selection = context.getClarityProvider(Selection);
                 context.testComponent.selected = [2];
                 context.detectChanges();
                 expect(selection.current).toEqual([2]);
                 selection.setSelected(1, true);
                 context.detectChanges();
-                expect(context.testComponent.selected).toEqual([
-                    2,
-                    1
-                ]);
+                expect(context.testComponent.selected).toEqual([2, 1]);
             });
 
             it("allows to set pre-selected items when initializing the full list of items", function() {
-                let selection: Selection = context.getClarityProvider(Selection);
-                context.testComponent.items = [
-                    4,
-                    5,
-                    6
-                ];
+                const selection: Selection = context.getClarityProvider(Selection);
+                context.testComponent.items = [4, 5, 6];
                 context.testComponent.selected = [5];
                 context.detectChanges();
                 expect(selection.current).toEqual([5]);
@@ -100,43 +94,36 @@ export default function(): void {
 
                 it("emits once when the sort order changes", function() {
                     context.testComponent.nbRefreshed = 0;
-                    let sort: Sort = context.getClarityProvider(Sort);
+                    const sort: Sort = context.getClarityProvider(Sort);
                     sort.toggle(new TestComparator());
                     expect(context.testComponent.nbRefreshed).toBe(1);
                 });
 
                 it("emits once when the filters change", function() {
                     context.testComponent.nbRefreshed = 0;
-                    let filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
-                    let filter = new TestFilter();
+                    const filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
+                    const filter = new TestFilter();
                     filters.add(filter);
                     expect(context.testComponent.nbRefreshed).toBe(1);
                 });
 
                 it("emits once when the page changes", function() {
                     context.testComponent.nbRefreshed = 0;
-                    let page: Page = context.getClarityProvider(Page);
+                    const page: Page = context.getClarityProvider(Page);
                     page.current = 2;
                     expect(context.testComponent.nbRefreshed).toBe(1);
                 });
 
                 it("emits the complete state of the datagrid", function() {
-                    context.testComponent.items = [
-                        1,
-                        2,
-                        3,
-                        4,
-                        5,
-                        6
-                    ];
+                    context.testComponent.items = [1, 2, 3, 4, 5, 6];
                     context.detectChanges();
-                    let comparator = new TestComparator();
-                    let sort: Sort = context.getClarityProvider(Sort);
+                    const comparator = new TestComparator();
+                    const sort: Sort = context.getClarityProvider(Sort);
                     sort.toggle(comparator);
-                    let filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
-                    let filter = new TestFilter();
+                    const filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
+                    const filter = new TestFilter();
                     filters.add(filter);
-                    let page: Page = context.getClarityProvider(Page);
+                    const page: Page = context.getClarityProvider(Page);
                     page.size = 2;
                     page.current = 2;
                     expect(context.testComponent.latestState).toEqual({
@@ -154,22 +141,17 @@ export default function(): void {
                 });
 
                 it("emits the correct data for all filter types", function() {
-                    let filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
-                    let customFilter = new TestFilter();
-                    let testStringFilter = new DatagridStringFilterImpl(new TestStringFilter());
+                    const filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
+                    const customFilter = new TestFilter();
+                    const testStringFilter = new DatagridStringFilterImpl(new TestStringFilter());
                     testStringFilter.value = "whatever";
-                    let builtinStringFilter = new DatagridStringFilterImpl(new DatagridPropertyStringFilter("test"));
+                    const builtinStringFilter = new DatagridStringFilterImpl(new DatagridPropertyStringFilter("test"));
                     builtinStringFilter.value = "1234";
-                    filters.add(customFilter); // custom filter
-                    filters.add(testStringFilter); // custom StringFilter ??
+                    filters.add(customFilter);      // custom filter
+                    filters.add(testStringFilter);  // custom StringFilter ??
                     filters.add(builtinStringFilter);
                     expect(context.testComponent.latestState.filters).toEqual([
-                        customFilter,
-                        testStringFilter,
-                        {
-                            property: "test",
-                            value: "1234"
-                        }
+                        customFilter, testStringFilter, {property: "test", value: "1234"}
                     ]);
                 });
             });
@@ -183,7 +165,7 @@ export default function(): void {
             });
 
             it("projects columns in the header", function() {
-                let header = context.clarityElement.querySelector(".datagrid-head");
+                const header = context.clarityElement.querySelector(".datagrid-head");
                 expect(header.textContent).toMatch(/First\s*Second/);
             });
 
@@ -195,27 +177,27 @@ export default function(): void {
         describe("Iterators", function() {
             it("projects rows when using ngFor", function() {
                 this.context = this.create(Datagrid, NgForTest, [HideableColumnService]);
-                let body = this.context.clarityElement.querySelector(".datagrid-body");
+                const body = this.context.clarityElement.querySelector(".datagrid-body");
                 expect(body.textContent).toMatch(/1\s*1\s*2\s*4\s*3\s*9/);
             });
 
             it("uses the rows template when using clrDgItems", function() {
                 this.context = this.create(Datagrid, FullTest, [HideableColumnService]);
-                let body = this.context.clarityElement.querySelector(".datagrid-body");
+                const body = this.context.clarityElement.querySelector(".datagrid-body");
                 expect(body.textContent).toMatch(/1\s*1\s*2\s*4\s*3\s*9/);
             });
 
             it("respects the trackBy option when using clrDgItems", function() {
                 this.context = this.create(Datagrid, TrackByTest, [HideableColumnService]);
-                let oldFirstRow = this.context.clarityElement.querySelector("clr-dg-row");
+                const oldFirstRow = this.context.clarityElement.querySelector("clr-dg-row");
                 this.context.testComponent.items = [42];
                 this.context.detectChanges();
-                let newFirstRow = this.context.clarityElement.querySelector("clr-dg-row");
+                const newFirstRow = this.context.clarityElement.querySelector("clr-dg-row");
                 expect(newFirstRow).toBe(oldFirstRow);
             });
         });
 
-        describe("Actionable rows", function () {
+        describe("Actionable rows", function() {
             let context: TestContext<Datagrid, ActionableRowTest>;
             let rowActionService: RowActionService;
             let headActionOverflowCell: HTMLElement;
@@ -226,7 +208,7 @@ export default function(): void {
                 context = this.create(Datagrid, ActionableRowTest, [HideableColumnService]);
                 rowActionService = context.getClarityProvider(RowActionService);
                 expect(rowActionService.hasActionableRow).toBe(true);
-                let datagridHead = context.clarityElement.querySelector(".datagrid-head");
+                const datagridHead = context.clarityElement.querySelector(".datagrid-head");
                 headActionOverflowCell = datagridHead.querySelector(".datagrid-column.datagrid-row-actions");
                 actionOverflowCell = context.clarityElement.querySelectorAll("clr-dg-cell.datagrid-row-actions");
                 actionOverflow = context.clarityElement.querySelectorAll("clr-dg-action-overflow");
@@ -243,7 +225,7 @@ export default function(): void {
                 actionOverflow = context.clarityElement.querySelectorAll("clr-dg-action-overflow");
                 expect(actionOverflow.length).toEqual(0);
                 expect(rowActionService.hasActionableRow).toBe(false);
-                let datagridHead = context.clarityElement.querySelector(".datagrid-head");
+                const datagridHead = context.clarityElement.querySelector(".datagrid-head");
                 headActionOverflowCell = datagridHead.querySelector(".datagrid-column.datagrid-row-actions");
                 actionOverflowCell = context.clarityElement.querySelectorAll("clr-dg-cell.datagrid-single-select");
                 expect(headActionOverflowCell).toBeNull();
@@ -254,8 +236,8 @@ export default function(): void {
 
         describe("Expandable rows", function() {
             it("detects if there is at least one expandable row", function() {
-                let context = this.create(Datagrid, ExpandableRowTest, [HideableColumnService]);
-                let globalExpandableRows: ExpandableRowsCount = context.getClarityProvider(ExpandableRowsCount);
+                const context = this.create(Datagrid, ExpandableRowTest, [HideableColumnService]);
+                const globalExpandableRows: ExpandableRowsCount = context.getClarityProvider(ExpandableRowsCount);
                 expect(globalExpandableRows.hasExpandableRow).toBe(true);
                 expect(context.clarityElement.querySelector(".datagrid-column.datagrid-expandable-caret"))
                     .not.toBeNull();
@@ -269,13 +251,13 @@ export default function(): void {
         describe("Chocolate", function() {
             describe("clrDgItems", function() {
                 it("doesn't taunt with chocolate on actionable rows", function() {
-                    let context = this.create(Datagrid, ChocolateClrDgItemsTest);
+                    const context = this.create(Datagrid, ChocolateClrDgItemsTest);
                     context.testComponent.action = true;
                     expect(() => context.detectChanges()).not.toThrow();
                 });
 
                 it("doesn't taunt with chocolate on expandable rows", function() {
-                    let context = this.create(Datagrid, ChocolateClrDgItemsTest);
+                    const context = this.create(Datagrid, ChocolateClrDgItemsTest);
                     context.testComponent.expandable = true;
                     expect(() => context.detectChanges()).not.toThrow();
                 });
@@ -283,13 +265,13 @@ export default function(): void {
 
             describe("ngFor", function() {
                 it("doesn't taunt with chocolate on actionable rows", function() {
-                    let context = this.create(Datagrid, ChocolateNgForTest);
+                    const context = this.create(Datagrid, ChocolateNgForTest);
                     context.testComponent.action = true;
                     expect(() => context.detectChanges()).not.toThrow();
                 });
 
                 it("doesn't taunt with chocolate on expandable rows", function() {
-                    let context = this.create(Datagrid, ChocolateNgForTest);
+                    const context = this.create(Datagrid, ChocolateNgForTest);
                     context.testComponent.expandable = true;
                     expect(() => context.detectChanges()).not.toThrow();
                 });
@@ -316,11 +298,7 @@ export default function(): void {
 `
 })
 class FullTest {
-    items = [
-        1,
-        2,
-        3
-    ];
+    items = [1, 2, 3];
 
     loading = false;
     selected: number[];
@@ -350,11 +328,7 @@ class FullTest {
 `
 })
 class NgForTest {
-    items = [
-        1,
-        2,
-        3
-    ];
+    items = [1, 2, 3];
 }
 
 @Component({
@@ -373,11 +347,7 @@ class NgForTest {
 `
 })
 class TrackByTest {
-    items = [
-        1,
-        2,
-        3
-    ];
+    items = [1, 2, 3];
 
     trackByIndex(index: number, item: any) {
         return index;
@@ -405,11 +375,7 @@ class TrackByTest {
 `
 })
 class ActionableRowTest {
-    items = [
-        1,
-        2,
-        3
-    ];
+    items = [1, 2, 3];
     showIfGreaterThan = 0;
 }
 
@@ -432,11 +398,7 @@ class ActionableRowTest {
 `
 })
 class ExpandableRowTest {
-    items = [
-        1,
-        2,
-        3
-    ];
+    items = [1, 2, 3];
     expandable = true;
 }
 
@@ -504,11 +466,11 @@ class TestComparator implements Comparator<number> {
 class TestFilter implements Filter<number> {
     isActive(): boolean {
         return true;
-    };
+    }
 
     accepts(n: number): boolean {
         return true;
-    };
+    }
 
     changes = new Subject<boolean>();
 }
@@ -516,5 +478,5 @@ class TestFilter implements Filter<number> {
 class TestStringFilter implements StringFilter<number> {
     accepts(item: number, search: string) {
         return true;
-    };
+    }
 }

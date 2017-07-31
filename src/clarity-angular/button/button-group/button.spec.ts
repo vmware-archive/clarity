@@ -4,36 +4,30 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, DebugElement } from "@angular/core";
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import {Component, DebugElement} from "@angular/core";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import { ButtonInGroupService } from "../providers/buttonInGroup.service";
-import { Button } from "./button";
-import { ClrButtonGroupModule } from "./button-group.module";
+import {ButtonInGroupService} from "../providers/buttonInGroup.service";
+import {Button} from "./button";
+import {ClrButtonGroupModule} from "./button-group.module";
 
 
 export default function(): void {
     describe("Buttons", () => {
         let fixture: ComponentFixture<any>;
-        let buttons: Button[] = [];
+        const buttons: Button[] = [];
 
         beforeEach(() => {
 
             TestBed.configureTestingModule({
-                imports: [
-                    ClrButtonGroupModule
-                ],
-                declarations: [
-                    TestButtonComponent
-                ],
-                providers: [
-                    ButtonInGroupService
-                ]
+                imports: [ClrButtonGroupModule],
+                declarations: [TestButtonComponent],
+                providers: [ButtonInGroupService]
             });
 
             fixture = TestBed.createComponent(TestButtonComponent);
             fixture.detectChanges();
-            let projection: DebugElement[] = fixture.debugElement.children;
+            const projection: DebugElement[] = fixture.debugElement.children;
             projection.forEach((debugElement) => {
                 buttons.push(<Button>debugElement.componentInstance);
             });
@@ -80,19 +74,19 @@ export default function(): void {
             expect(mockButton.inMenu).toBe(false);
 
             buttons[1].inMenu = true;
-            //Still expect false because the service method
-            //shouldn't be called as the inMenu input was already true.
-            //Its value did not change.
+            // Still expect false because the service method
+            // shouldn't be called as the inMenu input was already true.
+            // Its value did not change.
             expect(mockButton.inMenu).toBe(false);
 
-            //Set to false because the input is true initially
+            // Set to false because the input is true initially
             buttons[1].inMenu = false;
             expect(mockButton.inMenu).toBe(false);
 
             buttons[1].inMenu = true;
             expect(mockButton.inMenu).toBe(true);
 
-            //First set to false because the input is true initially
+            // First set to false because the input is true initially
             buttons[2].inMenu = false;
             expect(mockButton.inMenu).toBe(false);
 
@@ -104,7 +98,7 @@ export default function(): void {
 
             expect(fixture.componentInstance.flag).toBe(false);
 
-            let btn: any = fixture.nativeElement.querySelector("#testBtn");
+            const btn: any = fixture.nativeElement.querySelector("#testBtn");
 
             btn.click();
 
@@ -119,7 +113,7 @@ export default function(): void {
             expect(fixture.componentInstance.flag).toBe(false);
         });
     });
-};
+}
 
 @Component({
     template: `
@@ -129,7 +123,6 @@ export default function(): void {
     `
 })
 class TestButtonComponent {
-
     flag: boolean = false;
 
     toggleClick(): void {

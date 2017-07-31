@@ -4,8 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {inject} from "@angular/core/testing";
-import {ScrollingService} from "./scrolling-service";
 import {DOCUMENT} from "@angular/platform-browser";
+
+import {ScrollingService} from "./scrolling-service";
 
 describe("ScrollingService", () => {
     let scrollingService: ScrollingService;

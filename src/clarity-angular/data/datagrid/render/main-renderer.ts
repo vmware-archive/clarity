@@ -4,42 +4,40 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    Directive, ContentChildren, QueryList, AfterContentInit, OnDestroy,
-    ElementRef, Renderer2, AfterViewChecked
+    AfterContentInit,
+    AfterViewChecked,
+    ContentChildren,
+    Directive,
+    ElementRef,
+    OnDestroy,
+    QueryList,
+    Renderer2
 } from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
-import {DomAdapter} from "./dom-adapter";
-import {DatagridRenderOrganizer} from "./render-organizer";
-import {DatagridHeaderRenderer} from "./header-renderer";
+
 import {Items} from "../providers/items";
 import {Page} from "../providers/page";
 
-@Directive({
-    selector: "clr-datagrid",
-    providers: [DomAdapter]
-})
-export class DatagridMainRenderer implements AfterContentInit, AfterViewChecked, OnDestroy {
+import {DomAdapter} from "./dom-adapter";
+import {DatagridHeaderRenderer} from "./header-renderer";
+import {DatagridRenderOrganizer} from "./render-organizer";
 
-    constructor(
-        private organizer: DatagridRenderOrganizer,
-        private items: Items,
-        private page: Page,
-        private domAdapter: DomAdapter,
-        private el: ElementRef,
-        private renderer: Renderer2) {
-            this._subscriptions.push(organizer.computeWidths.subscribe(() => this.computeHeadersWidth()));
-            this._subscriptions.push(this.page.sizeChange.subscribe(() => {
-                if (this._heightSet) {
-                    this.resetDatagridHeight();
-                }
-            }));
-            this._subscriptions.push(this.items.change.subscribe(() => this.shouldStabilizeColumns = true));
-        }
+@Directive({selector: "clr-datagrid", providers: [DomAdapter]})
+export class DatagridMainRenderer implements AfterContentInit, AfterViewChecked, OnDestroy {
+    constructor(private organizer: DatagridRenderOrganizer, private items: Items, private page: Page,
+                private domAdapter: DomAdapter, private el: ElementRef, private renderer: Renderer2) {
+        this._subscriptions.push(organizer.computeWidths.subscribe(() => this.computeHeadersWidth()));
+        this._subscriptions.push(this.page.sizeChange.subscribe(() => {
+            if (this._heightSet) {
+                this.resetDatagridHeight();
+            }
+        }));
+        this._subscriptions.push(this.items.change.subscribe(() => this.shouldStabilizeColumns = true));
+    }
 
     @ContentChildren(DatagridHeaderRenderer) public headers: QueryList<DatagridHeaderRenderer>;
 
     ngAfterContentInit() {
-
         this._subscriptions.push(this.headers.changes.subscribe(() => {
             // TODO: only re-stabilize if a column was added or removed. Reordering is fine.
             this.columnsSizesStable = false;
@@ -78,7 +76,7 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewChecked,
      * Refer: http://stackoverflow.com/questions/24396205/flex-grow-not-working-in-internet-explorer-11-0
      */
     private computeDatagridHeight() {
-        let value: number = this.domAdapter.computedHeight(this.el.nativeElement);
+        const value: number = this.domAdapter.computedHeight(this.el.nativeElement);
         this.renderer.setStyle(this.el.nativeElement, "height", value + "px");
         this._heightSet = true;
     }
@@ -98,8 +96,7 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewChecked,
      * Makes each header compute its width.
      */
     private computeHeadersWidth() {
-
-        let nbColumns: number = this.headers.length;
+        const nbColumns: number = this.headers.length;
         let allStrict = true;
 
         this.headers.forEach((header, index) => {
@@ -117,7 +114,7 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewChecked,
                 header.strictWidth = 0;
             }
 
-            let width = header.computeWidth();
+            const width = header.computeWidth();
             this.organizer.widths[index] = {px: width, strict: !!header.strictWidth};
         });
     }

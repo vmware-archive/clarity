@@ -13,13 +13,16 @@ Before you start working with Clarity, please complete the following steps:
 
 Here are the typical steps in a contributor's workflow:
 
-- [Fork](https://help.github.com/articles/fork-a-repo/) the main Clarity repository. 
+- [Fork](https://help.github.com/articles/fork-a-repo/) the main Clarity repository.
 - Clone your fork and set the upstream remote to the main Clarity repository.
 - Set your name and e-mail in the Git configuration for signing.
 - Create a topic branch from where you want to base your work.
 - Setup your local environment to run and build Clarity. See our [build documentation](BUILD.md).
 - Make commits of logical units.
 - Make sure `npm test` passes for each of them.
+- Make sure `npm clang` passes for each of them. If not, you can run a gulp task (clang:format) to format your code.
+- Make sure `npm tslint` passes for each of them. If not, you can run a gulp task (tslint:fix) to try to auto-fix some of them.
+For certain lint failures you will have to fix them manually.
 - Make sure your commit messages are in the proper format (see below).
 - Push your changes to a topic branch in your fork of the repository.
 - [Submit a pull request](https://help.github.com/articles/about-pull-requests/).

@@ -3,16 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    Directive,
-    HostListener
-} from "@angular/core";
+import {Directive, HostListener} from "@angular/core";
 
-import { IfOpenService } from "../../utils/conditional/if-open.service";
+import {IfOpenService} from "../../utils/conditional/if-open.service";
 
-@Directive({
-    selector: "[clrSignpostTrigger]"
-})
+@Directive({selector: "[clrSignpostTrigger]"})
 
 /*********
  *
@@ -24,8 +19,7 @@ import { IfOpenService } from "../../utils/conditional/if-open.service";
  *
  */
 export class SignpostTriggerDirective {
-
-    constructor(private ifOpenService: IfOpenService) { }
+    constructor(private ifOpenService: IfOpenService) {}
 
     /**********
      * @function onSignpostTriggerClick

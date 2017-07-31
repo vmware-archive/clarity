@@ -24,4 +24,4 @@ export default function(): void {
             expect(this.property.getPropValue({my: {deep: {}}})).toBeUndefined();
         });
     });
-};
+}

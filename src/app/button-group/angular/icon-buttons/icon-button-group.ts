@@ -12,7 +12,6 @@ import {Component} from "@angular/core";
     styleUrls: ["../../button-group.demo.css"]
 })
 export class IconButtonGroupDemo {
-
     flip: boolean = false;
 
     toggleFlip() {
@@ -36,5 +35,4 @@ export class IconButtonGroupDemo {
     toggleFlip3() {
         this.flip3 = !this.flip3;
     }
-
 }

@@ -3,9 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {Component} from "@angular/core";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+
 import {IfOpenService} from "../../utils/conditional/if-open.service";
+
 import {TabOverflowContent} from "./tab-overflow-content";
 
 @Component({
@@ -24,10 +26,7 @@ describe("TabOverflowContent", () => {
     let instance: any;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            declarations: [TabOverflowContent, TestComponent],
-            providers: [IfOpenService]
-        });
+        TestBed.configureTestingModule({declarations: [TabOverflowContent, TestComponent], providers: [IfOpenService]});
 
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();

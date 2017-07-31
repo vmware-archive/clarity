@@ -3,10 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, QueryList, ContentChildren } from "@angular/core";
-import { HideableColumnService } from "./providers/hideable-column.service";
-import { DatagridHideableColumn } from "./datagrid-hideable-column";
-import { Signpost } from "../../popover/signpost/signpost";
+import {Component, ContentChildren, QueryList} from "@angular/core";
+
+import {Signpost} from "../../popover/signpost/signpost";
+
+import {DatagridHideableColumn} from "./datagrid-hideable-column";
+import {HideableColumnService} from "./providers/hideable-column.service";
 
 @Component({
     selector: "clr-dg-cell",
@@ -20,7 +22,6 @@ import { Signpost } from "../../popover/signpost/signpost";
     }
 })
 export class DatagridCell {
-
     /*********
      * @property signpost
      *
@@ -43,8 +44,8 @@ export class DatagridCell {
      * @type {boolean}
      */
     public get hidden(): boolean {
-        let column: DatagridHideableColumn = this.hideableColumnService.getColumnById(this.id);
-        return ( column ) ? column.hidden : false;
+        const column: DatagridHideableColumn = this.hideableColumnService.getColumnById(this.id);
+        return (column) ? column.hidden : false;
     }
 
     /**
@@ -57,5 +58,5 @@ export class DatagridCell {
      */
     public id: string;
 
-    constructor( public hideableColumnService: HideableColumnService ) { }
+    constructor(public hideableColumnService: HideableColumnService) {}
 }

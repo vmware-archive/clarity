@@ -5,13 +5,14 @@
  */
 
 import {Component} from "@angular/core";
-import { DropdownMenu } from "./dropdown-menu";
-import { TestContext } from "../../data/datagrid/helpers.spec";
+
+import {TestContext} from "../../data/datagrid/helpers.spec";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {Point} from "../common/popover";
 
-export default function(): void {
+import {DropdownMenu} from "./dropdown-menu";
 
+export default function(): void {
     describe("DropdownMenu component", function() {
         let context: TestContext<DropdownMenu, SimpleTest>;
 
@@ -30,7 +31,7 @@ export default function(): void {
         });
 
         it("supports clrPosition option", () => {
-            //Default is bottom-left since menuPosition is set to ""
+            // Default is bottom-left since menuPosition is set to ""
             expect((<any>context.clarityDirective).anchorPoint).toEqual(Point.BOTTOM_LEFT);
             expect((<any>context.clarityDirective).popoverPoint).toEqual(Point.LEFT_TOP);
 

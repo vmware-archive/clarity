@@ -29,8 +29,5 @@ import {StackView} from "./stack-view";
     `]
 })
 export class StackHeader {
-
-    constructor(public stackView: StackView) {
-    }
-
+    constructor(public stackView: StackView) {}
 }

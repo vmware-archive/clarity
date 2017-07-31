@@ -7,11 +7,8 @@ import {Directive, Input, OnDestroy, Optional} from "@angular/core";
 
 import {LoadingListener} from "./loading-listener";
 
-@Directive({
-    selector: "[clrLoading]"
-})
+@Directive({selector: "[clrLoading]"})
 export class Loading implements OnDestroy {
-
     // We find the first parent that handles something loading
     constructor(@Optional() private listener: LoadingListener) {}
 
@@ -19,9 +16,12 @@ export class Loading implements OnDestroy {
     public get loading() {
         return this._loading;
     }
-    @Input("clrLoading") public set loading(value: boolean) {
+    @Input("clrLoading")
+    public set loading(value: boolean) {
         value = !!value;
-        if (value === this._loading) { return; }
+        if (value === this._loading) {
+            return;
+        }
         this._loading = value;
         if (this.listener) {
             if (value) {
@@ -35,5 +35,4 @@ export class Loading implements OnDestroy {
     ngOnDestroy() {
         this.loading = false;
     }
-
 }

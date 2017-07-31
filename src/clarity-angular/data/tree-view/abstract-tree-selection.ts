@@ -43,12 +43,12 @@ export abstract class AbstractTreeSelection {
 
     childChanged(): void {
         let oneSelectedChild = false;
-        let previousSelectedValue: boolean = this._selected;
-        let previousIndeterminateValue: boolean = this._indeterminate;
+        const previousSelectedValue: boolean = this._selected;
+        const previousIndeterminateValue: boolean = this._indeterminate;
         this._selected = true;
         this._indeterminate = false;
 
-        for (let child of this.children) {
+        for (const child of this.children) {
             if (child.indeterminate) {
                 this._selected = false;
                 this._indeterminate = true;
@@ -69,9 +69,8 @@ export abstract class AbstractTreeSelection {
             }
         }
 
-        if (this.parent
-            && (this._selected !== previousSelectedValue
-            || this._indeterminate !== previousIndeterminateValue)) {
+        if (this.parent &&
+            (this._selected !== previousSelectedValue || this._indeterminate !== previousIndeterminateValue)) {
             this.parent.childChanged();
         }
 

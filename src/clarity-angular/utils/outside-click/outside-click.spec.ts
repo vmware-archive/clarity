@@ -9,10 +9,8 @@ import {By} from "@angular/platform-browser";
 import {OutsideClick} from "./outside-click";
 
 describe("Loading directive", function() {
-    beforeEach(function () {
-        TestBed.configureTestingModule({
-            declarations: [OutsideClick, FullTest]
-        });
+    beforeEach(function() {
+        TestBed.configureTestingModule({declarations: [OutsideClick, FullTest]});
         this.fixture = TestBed.createComponent(FullTest);
         this.fixture.detectChanges();
         this.testComponent = this.fixture.componentInstance;
@@ -25,7 +23,7 @@ describe("Loading directive", function() {
         this.fixture.destroy();
     });
 
-    it("emits clicks outside of the host", function () {
+    it("emits clicks outside of the host", function() {
         expect(this.testComponent.nbClicks).toBe(0);
         this.outside.click();
         expect(this.testComponent.nbClicks).toBe(1);
@@ -33,7 +31,7 @@ describe("Loading directive", function() {
         expect(this.testComponent.nbClicks).toBe(2);
     });
 
-    it("ignores clicks inside of the host", function () {
+    it("ignores clicks inside of the host", function() {
         expect(this.testComponent.nbClicks).toBe(0);
         this.host.click();
         expect(this.testComponent.nbClicks).toBe(0);
@@ -41,7 +39,7 @@ describe("Loading directive", function() {
         expect(this.testComponent.nbClicks).toBe(0);
     });
 
-    it("offers a strict input to only ignore clicks that happen exactly on the host", function () {
+    it("offers a strict input to only ignore clicks that happen exactly on the host", function() {
         this.testComponent.strict = true;
         this.fixture.detectChanges();
         expect(this.testComponent.nbClicks).toBe(0);

@@ -4,22 +4,21 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Injectable, QueryList } from "@angular/core";
-import { WizardHeaderAction } from "../wizard-header-action";
-import { WizardNavigationService } from "./wizard-navigation";
+import {Injectable, QueryList} from "@angular/core";
+import {WizardHeaderAction} from "../wizard-header-action";
+import {WizardNavigationService} from "./wizard-navigation";
 
 @Injectable()
 export class HeaderActionService {
     // this service communicates information about the presence/display of header actions
     // across the wizard
 
-    constructor(public navService: WizardNavigationService) {
-    }
+    constructor(public navService: WizardNavigationService) {}
 
     public wizardHeaderActions: QueryList<WizardHeaderAction>;
 
     public get wizardHasHeaderActions(): boolean {
-        let wizardHdrActions = this.wizardHeaderActions;
+        const wizardHdrActions = this.wizardHeaderActions;
         if (!wizardHdrActions) {
             return false;
         }

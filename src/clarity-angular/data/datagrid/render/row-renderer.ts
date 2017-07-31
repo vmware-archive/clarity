@@ -3,16 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Directive, ContentChildren, QueryList, AfterContentInit } from "@angular/core";
-import { Subscription } from "rxjs/Subscription";
-import { DatagridRenderOrganizer } from "./render-organizer";
-import { DatagridCellRenderer } from "./cell-renderer";
+import {AfterContentInit, ContentChildren, Directive, QueryList} from "@angular/core";
+import {Subscription} from "rxjs/Subscription";
 
-@Directive({
-    selector: "clr-dg-row, clr-dg-row-detail"
-})
+import {DatagridCellRenderer} from "./cell-renderer";
+import {DatagridRenderOrganizer} from "./render-organizer";
+
+@Directive({selector: "clr-dg-row, clr-dg-row-detail"})
 export class DatagridRowRenderer implements AfterContentInit {
-
     constructor(private organizer: DatagridRenderOrganizer) {
         this.subscription = organizer.alignColumns.subscribe(() => this.setWidths());
     }
@@ -26,7 +24,7 @@ export class DatagridRowRenderer implements AfterContentInit {
             return;
         }
         this.cells.forEach((cell, index) => {
-            let width = this.organizer.widths[index];
+            const width = this.organizer.widths[index];
             cell.setWidth(width.strict, width.px);
         });
     }

@@ -1,8 +1,15 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { HideableColumnService } from "./providers/hideable-column.service";
-import { DatagridHideableColumn } from "./datagrid-hideable-column";
-import { Subscription } from "rxjs";
-import { Point } from "../../popover/common/popover";
+/*
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+import {Component, OnDestroy, OnInit} from "@angular/core";
+import {Subscription} from "rxjs/Subscription";
+
+import {Point} from "../../popover/common/popover";
+
+import {DatagridHideableColumn} from "./datagrid-hideable-column";
+import {HideableColumnService} from "./providers/hideable-column.service";
 
 @Component({
     selector: "clr-dg-column-toggle",
@@ -55,14 +62,10 @@ import { Point } from "../../popover/common/popover";
             </div>
         </div>
     `,
-    host: {
-        "[class.column-switch-wrapper]": "true",
-        "[class.column-switch-wrapper--active]": "open"
-    }
+    host: {"[class.column-switch-wrapper]": "true", "[class.column-switch-wrapper--active]": "open"}
 })
 
 export class DatagridColumnToggle implements OnInit, OnDestroy {
-
     private _hideableColumnChangeSubscription: Subscription;
     private _allColumnsVisible: boolean;
 
@@ -88,24 +91,22 @@ export class DatagridColumnToggle implements OnInit, OnDestroy {
         this._allColumnsVisible = value;
     }
 
-    constructor( public hideableColumnService: HideableColumnService ) { }
+    constructor(public hideableColumnService: HideableColumnService) {}
 
     ngOnInit() {
-
-        this._hideableColumnChangeSubscription =
-            this.hideableColumnService.columnListChange.subscribe(( columnList ) => {
+        this._hideableColumnChangeSubscription = this.hideableColumnService.columnListChange.subscribe((columnList) => {
             // Reset the list of columns
             this.columns.length = 0;
             this.hideableColumnService.updateForLastVisibleColumn();
             this.allColumnsVisible = this.hideableColumnService.checkForAllColumnsVisible;
 
             // Add only the hidden columns to the toggler.
-            columnList.forEach(( col ) => {
-                if ( col ) {
+            columnList.forEach((col) => {
+                if (col) {
                     this.columns.push(col);
                 }
             });
-            });
+        });
     }
 
     ngOnDestroy() {
@@ -117,7 +118,7 @@ export class DatagridColumnToggle implements OnInit, OnDestroy {
         this.allColumnsVisible = this.hideableColumnService.checkForAllColumnsVisible;
     }
 
-    toggleColumn( event: boolean, column: DatagridHideableColumn ) {
+    toggleColumn(event: boolean, column: DatagridHideableColumn) {
         column.hidden = !event;
         this.allColumnsVisible = this.hideableColumnService.checkForAllColumnsVisible;
         this.hideableColumnService.updateForLastVisibleColumn();

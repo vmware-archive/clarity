@@ -3,10 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    Component, OnDestroy, ViewContainerRef, AfterViewInit, ViewChild, TemplateRef
-} from "@angular/core";
+import {AfterViewInit, Component, OnDestroy, TemplateRef, ViewChild, ViewContainerRef} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
+
 import {DatagridRenderOrganizer} from "./render-organizer";
 
 /**
@@ -19,12 +18,9 @@ import {DatagridRenderOrganizer} from "./render-organizer";
         <ng-template #projected><ng-content></ng-content></ng-template>
         <ng-container #inside></ng-container>
     `,
-    host: {
-        "[class.datagrid-row-master]": "true"
-    }
+    host: {"[class.datagrid-row-master]": "true"}
 })
 export class DatagridRowMasterRenderer implements AfterViewInit, OnDestroy {
-
     constructor(private outsideContainer: ViewContainerRef, private organizer: DatagridRenderOrganizer) {}
 
     private subscription: Subscription;
@@ -52,5 +48,4 @@ export class DatagridRowMasterRenderer implements AfterViewInit, OnDestroy {
         }
         this.outside = outside;
     }
-
 }

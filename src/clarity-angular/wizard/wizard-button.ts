@@ -4,15 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {
-    Component,
-    Input,
-    Output,
-    EventEmitter
-} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 
-import { WizardNavigationService } from "./providers/wizard-navigation";
-import { ButtonHubService } from "./providers/button-hub";
+import {ButtonHubService} from "./providers/button-hub";
+import {WizardNavigationService} from "./providers/wizard-navigation";
 
 export const DEFAULT_BUTTON_TYPES: any = {
     cancel: "cancel",
@@ -49,11 +44,8 @@ export const CUSTOM_BUTTON_TYPES: any = {
             <ng-content></ng-content>
         </button>
     `,
-    host: {
-        "class": "clr-wizard-btn-wrapper",
-        "[attr.aria-hidden]": "isHidden"
-    },
-    styles: ['[aria-hidden="true"] { display: none; }']
+    host: {"class": "clr-wizard-btn-wrapper", "[attr.aria-hidden]": "isHidden"},
+    styles: ["[aria-hidden=\"true\"] { display: none; }"]
 })
 export class WizardButton {
     @Input("type") public type: string = "";
@@ -63,11 +55,9 @@ export class WizardButton {
     @Input("clrWizardButtonHidden") public hidden: boolean = false;
 
     // EventEmitter which is emitted when a button is clicked.
-    @Output("clrWizardButtonClicked") wasClicked: EventEmitter<string> =
-        new EventEmitter<string>(false);
+    @Output("clrWizardButtonClicked") wasClicked: EventEmitter<string> = new EventEmitter<string>(false);
 
-    constructor(public navService: WizardNavigationService, public buttonService: ButtonHubService) {
-    }
+    constructor(public navService: WizardNavigationService, public buttonService: ButtonHubService) {}
 
     private checkDefaultAndCustomType(valueToCheck: string = "", typeToLookUp: string) {
         if (DEFAULT_BUTTON_TYPES[typeToLookUp] === valueToCheck) {
@@ -105,9 +95,9 @@ export class WizardButton {
 
     public get isDisabled(): boolean {
         // dealing with negatives here. cognitively easier to think of it like this...
-        let disabled = true;
-        let nav = this.navService;
-        let page = this.navService.currentPage;
+        const disabled = true;
+        const nav = this.navService;
+        const page = this.navService.currentPage;
 
         if (this.disabled || nav.wizardStopNavigation || !page) {
             return true;
@@ -138,8 +128,8 @@ export class WizardButton {
 
     public get isHidden(): boolean {
         // dealing with negatives here. cognitively easier to think of it like this...
-        let hidden = true;
-        let nav = this.navService;
+        const hidden = true;
+        const nav = this.navService;
 
         if (this.hidden) {
             return true;

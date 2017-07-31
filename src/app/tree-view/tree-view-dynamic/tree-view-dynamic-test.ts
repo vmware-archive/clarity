@@ -3,11 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, Input} from "@angular/core";
-
 import "clarity-icons/shapes/essential-shapes";
 import "clarity-icons/shapes/technology-shapes";
 import "clarity-icons/shapes/social-shapes";
+
+import {Component, Input} from "@angular/core";
 
 const EXAMPLE_HTML = `
 <clr-tree-node *ngFor="let project of projects">
@@ -110,51 +110,16 @@ export class TreeViewDynamicTestDemo {
     exampleTS = EXAMPLE_TS;
 
     projects = [
-        {
-            "name": "Project A",
-            "badge": "A",
-            "versions": [
-                {
-                    "number": "1",
-                    "languages": [
-                        {
-                            "name": "TS"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
+        {"name": "Project A", "badge": "A", "versions": [{"number": "1", "languages": [{"name": "TS"}]}]}, {
 
             "name": "Project B",
             "badge": "B",
-            "versions": [
-                {
-                    "number": "2",
-                    "languages": [
-                        {
-                            "name": "GO"
-                        }
-                    ]
-                }
-            ]
+            "versions": [{"number": "2", "languages": [{"name": "GO"}]}]
         },
         {
-            "name": "Project C",
-            "badge": "C",
-            "versions": [
-                {
-                    "number": "3",
-                    "languages": [
-                        {
-                            "name": "JS"
-                        },
-                        {
-                            "name": "JAVA"
-                        }
-                    ]
-                }
-            ]
+          "name": "Project C",
+          "badge": "C",
+          "versions": [{"number": "3", "languages": [{"name": "JS"}, {"name": "JAVA"}]}]
         }
     ];
 }

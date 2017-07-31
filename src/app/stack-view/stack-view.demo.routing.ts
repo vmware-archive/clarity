@@ -4,25 +4,23 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {ModuleWithProviders} from "@angular/core/src/metadata/ng_module";
-import {Routes, RouterModule} from "@angular/router";
-import {StackViewDemo} from "./stack-view.demo";
-import {StackViewStaticDemo} from "./stack-view-static";
-import {StackViewAngularBasicDemo} from "./stack-view-angular-basic";
-import {StackViewAngularModalEditDemo} from "./stack-view-angular-modal-edit";
-import {StackViewAngularLazyloadDemo} from "./stack-view-angular-lazyload";
+import {RouterModule, Routes} from "@angular/router";
 
-const routes: Routes = [
-    {
-        path: "",
-        component: StackViewDemo,
-        children: [
-            { path: "", redirectTo: "static", pathMatch: "full" },
-            { path: "static", component: StackViewStaticDemo },
-            { path: "angular-basic", component: StackViewAngularBasicDemo },
-            { path: "angular-modal-edit", component: StackViewAngularModalEditDemo },
-            { path: "angular-lazyload", component: StackViewAngularLazyloadDemo }
-        ]
-    }
-];
+import {StackViewAngularBasicDemo} from "./stack-view-angular-basic";
+import {StackViewAngularLazyloadDemo} from "./stack-view-angular-lazyload";
+import {StackViewAngularModalEditDemo} from "./stack-view-angular-modal-edit";
+import {StackViewStaticDemo} from "./stack-view-static";
+import {StackViewDemo} from "./stack-view.demo";
+
+const routes: Routes = [{
+    path: "",
+    component: StackViewDemo,
+    children: [
+        {path: "", redirectTo: "static", pathMatch: "full"}, {path: "static", component: StackViewStaticDemo},
+        {path: "angular-basic", component: StackViewAngularBasicDemo},
+        {path: "angular-modal-edit", component: StackViewAngularModalEditDemo},
+        {path: "angular-lazyload", component: StackViewAngularLazyloadDemo}
+    ]
+}];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forChild(routes);

@@ -7,7 +7,6 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class ExpandableRowsCount {
-
     private expandableCount = 0;
 
     public register() {
@@ -24,5 +23,4 @@ export class ExpandableRowsCount {
     public get hasExpandableRow(): boolean {
         return this.expandableCount > 0;
     }
-
 }

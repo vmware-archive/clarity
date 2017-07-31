@@ -3,55 +3,36 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
+import {NgModule} from "@angular/core";
+
 import {ClarityModule} from "../../clarity-angular/clarity.module";
-import {ROUTING} from "./progress-bars.demo.routing";
-import {ProgressBarExamplesDemo} from "./progress-bar-examples";
-import {ProgressBarColorsDemo} from "./progress-bar-colors";
+
+import {OldProgressBarCardsDemo} from "./old-progress-bar-cards";
 import {ProgressBarAnimationsDemo} from "./progress-bar-animations";
 import {ProgressBarCardsDemo} from "./progress-bar-cards";
-import {ProgressBarSidenavDemo} from "./progress-bar-sidenav";
-import {ProgressBarLoopDemo} from "./progress-bar-loop";
-import {ProgressBarsDemo} from "./progress-bars.demo";
-import {ProgressBarStaticDemo} from "./progress-bar-static";
-import {ProgressBarStaticCardsDemo} from "./progress-bar-static-cards";
+import {ProgressBarColorsDemo} from "./progress-bar-colors";
+import {ProgressBarExamplesDemo} from "./progress-bar-examples";
 import {ProgressBarInlineDemo} from "./progress-bar-inline";
 import {ProgressBarInlineCardsDemo} from "./progress-bar-inline-cards";
-import {OldProgressBarCardsDemo} from "./old-progress-bar-cards";
+import {ProgressBarLoopDemo} from "./progress-bar-loop";
+import {ProgressBarSidenavDemo} from "./progress-bar-sidenav";
+import {ProgressBarStaticDemo} from "./progress-bar-static";
+import {ProgressBarStaticCardsDemo} from "./progress-bar-static-cards";
+import {ProgressBarsDemo} from "./progress-bars.demo";
+import {ROUTING} from "./progress-bars.demo.routing";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ClarityModule,
-        ROUTING
-    ],
+    imports: [CommonModule, ClarityModule, ROUTING],
     declarations: [
-        ProgressBarExamplesDemo,
-        ProgressBarColorsDemo,
-        ProgressBarAnimationsDemo,
-        ProgressBarCardsDemo,
-        ProgressBarSidenavDemo,
-        ProgressBarLoopDemo,
-        ProgressBarsDemo,
-        ProgressBarStaticDemo,
-        ProgressBarStaticCardsDemo,
-        ProgressBarInlineDemo,
-        ProgressBarInlineCardsDemo,
-        OldProgressBarCardsDemo
+        ProgressBarExamplesDemo, ProgressBarColorsDemo, ProgressBarAnimationsDemo, ProgressBarCardsDemo,
+        ProgressBarSidenavDemo, ProgressBarLoopDemo, ProgressBarsDemo, ProgressBarStaticDemo,
+        ProgressBarStaticCardsDemo, ProgressBarInlineDemo, ProgressBarInlineCardsDemo, OldProgressBarCardsDemo
     ],
     exports: [
-        ProgressBarExamplesDemo,
-        ProgressBarColorsDemo,
-        ProgressBarAnimationsDemo,
-        ProgressBarCardsDemo,
-        ProgressBarSidenavDemo,
-        ProgressBarLoopDemo,
-        ProgressBarsDemo,
-        ProgressBarStaticDemo,
-        ProgressBarStaticCardsDemo,
-        ProgressBarInlineDemo,
-        ProgressBarInlineCardsDemo
+        ProgressBarExamplesDemo, ProgressBarColorsDemo, ProgressBarAnimationsDemo, ProgressBarCardsDemo,
+        ProgressBarSidenavDemo, ProgressBarLoopDemo, ProgressBarsDemo, ProgressBarStaticDemo,
+        ProgressBarStaticCardsDemo, ProgressBarInlineDemo, ProgressBarInlineCardsDemo
     ]
 })
 export default class ProgressBarsDemoModule {

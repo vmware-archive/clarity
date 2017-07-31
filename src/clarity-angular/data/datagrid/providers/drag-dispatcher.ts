@@ -4,19 +4,18 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Injectable, NgZone, Renderer2, ElementRef} from "@angular/core";
+import {ElementRef, Injectable, NgZone, Renderer2} from "@angular/core";
+import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
-import {Observable} from "rxjs";
 
 @Injectable()
 export class DragDispatcher {
-
     private _listeners: Function[];
 
-    //Will be listening to Drag events on the following element
+    // Will be listening to Drag events on the following element
     handleRef: ElementRef;
 
-    //Extra element to be used for tracking drag movements.
+    // Extra element to be used for tracking drag movements.
     handleTrackerRef: ElementRef;
 
     private _onDragStart: Subject<void> = new Subject<void>();
@@ -35,11 +34,10 @@ export class DragDispatcher {
         return this._onDragEnd;
     }
 
-    constructor(private _ngZone: NgZone, private _renderer: Renderer2) {
-    }
+    constructor(private _ngZone: NgZone, private _renderer: Renderer2) {}
 
     addDragListener() {
-        let handleEl = this.handleRef.nativeElement;
+        const handleEl = this.handleRef.nativeElement;
         this._listeners = [
             this.customDragEvent(handleEl, "mousedown", "mousemove", "mouseup"),
             this.customDragEvent(handleEl, "touchstart", "touchmove", "touchend")
@@ -47,7 +45,6 @@ export class DragDispatcher {
     }
 
     customDragEvent(element: HTMLElement, startOnEvent: string, moveOnEvent: string, endOnEvent: string): Function {
-
         let dragMoveListener: any;
         let dragEndListener: any;
 
@@ -62,15 +59,14 @@ export class DragDispatcher {
 
             dragEndListener = this._renderer.listen("document", endOnEvent, (endEvent: any) => {
 
-                //Unsubscribing from mouseMoveListener
+                // Unsubscribing from mouseMoveListener
                 dragMoveListener();
                 this.notifyDragEnd(endEvent);
-                //Unsubscribing from itself
+                // Unsubscribing from itself
                 dragEndListener();
             });
 
         });
-
     }
 
     notifyDragStart(event: any) {
@@ -88,5 +84,4 @@ export class DragDispatcher {
     destroy() {
         this._listeners.map(event => event());
     }
-
 }

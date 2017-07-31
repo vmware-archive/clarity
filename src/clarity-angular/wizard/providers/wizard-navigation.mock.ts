@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { MockPage } from "../wizard-page.mock";
+import {MockPage} from "../wizard-page.mock";
 
 export class NavServiceMock {
     currentPage: MockPage;

@@ -4,10 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
+
 import {TestContext} from "../helpers.spec";
+
+import {DatagridHeaderRenderer} from "./header-renderer";
 import {DatagridMainRenderer} from "./main-renderer";
 import {DatagridRenderOrganizer} from "./render-organizer";
-import {DatagridHeaderRenderer} from "./header-renderer";
 
 export default function(): void {
     describe("DatagridMainRenderer directive", function() {

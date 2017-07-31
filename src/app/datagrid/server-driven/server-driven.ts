@@ -31,10 +31,10 @@ export class DatagridServerDrivenDemo {
 
     refresh(state: State) {
         this.loading = true;
-        let filters: {[prop: string]: any[]} = {};
+        const filters: {[prop: string]: any[]} = {};
         if (state.filters) {
-            for (let filter of state.filters) {
-                let {property, value} = <{property: string, value: string}>filter;
+            for (const filter of state.filters) {
+                const {property, value} = <{property: string, value: string}>filter;
                 filters[property] = [value];
             }
         }

@@ -5,10 +5,9 @@
  */
 
 
-import { NgModule } from "@angular/core";
-import { ClrSyntaxHighlightModule } from "./syntax-highlight/syntax-highlight.module";
+import {NgModule} from "@angular/core";
+import {ClrSyntaxHighlightModule} from "./syntax-highlight/syntax-highlight.module";
 
-@NgModule({
-    exports: [ClrSyntaxHighlightModule]
-})
-export class ClrCodeModule {}
+@NgModule({exports: [ClrSyntaxHighlightModule]})
+export class ClrCodeModule {
+}

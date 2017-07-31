@@ -4,15 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
-import { CodeHighlight } from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
+import {Component, ViewChild} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-wizard-stop-navigation",
-    templateUrl: "./wizard-stop-navigation.demo.html"
-})
+import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
+import {Wizard} from "../../clarity-angular/wizard/wizard";
+
+@Component(
+    {moduleId: module.id, selector: "clr-wizard-stop-navigation", templateUrl: "./wizard-stop-navigation.demo.html"})
 export class WizardStopNavigation {
     @ViewChild("wizard") wizard: Wizard;
     @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
@@ -26,11 +24,7 @@ export class WizardStopNavigation {
         return !this.untouched && !this.loading;
     }
 
-    model = {
-        won: "",
-        too: "",
-        tree: ""
-    };
+    model = {won: "", too: "", tree: ""};
 
     // have to define doCancel because page will prevent doCancel from working
     // if the page had a previous button, you would need to call
@@ -52,7 +46,7 @@ export class WizardStopNavigation {
         if (this.untouched) {
             this.untouched = false;
             this.loading = true;
-            let timer = setInterval(() => {
+            const timer = setInterval(() => {
                 this.progress = this.progress + 14;
 
                 if (this.progress > 99) {

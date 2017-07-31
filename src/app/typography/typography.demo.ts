@@ -10,7 +10,7 @@ import {Component} from "@angular/core";
     selector: "clr-typography-demo",
     // Note the .css extension here, not .scss. That's the best we can have at the moment.
     styleUrls: ["./typography.demo.css"],
-    template:  `
+    template: `
         <h2>Typography</h2>
         <ul>
             <li><a [routerLink]="['./typography-font-weight']">Font Weights</a></li>

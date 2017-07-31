@@ -3,27 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    Component,
-    Input,
-    Output,
-    EventEmitter,
-    HostListener,
-    OnChanges,
-    OnDestroy,
-    SimpleChange
-} from "@angular/core";
-import {
-    animate,
-    state,
-    style,
-    transition,
-    trigger,
-    AnimationEvent
-} from "@angular/animations";
+import {animate, AnimationEvent, state, style, transition, trigger} from "@angular/animations";
+import {Component, EventEmitter, HostListener, Input, OnChanges, OnDestroy, Output, SimpleChange} from "@angular/core";
 
 import {ScrollingService} from "../utils/scrolling/scrolling-service";
-import { GHOST_PAGE_ANIMATION } from "./utils/ghost-page-animations";
+
+import {GHOST_PAGE_ANIMATION} from "./utils/ghost-page-animations";
 
 @Component({
     selector: "clr-modal",
@@ -33,84 +18,50 @@ import { GHOST_PAGE_ANIMATION } from "./utils/ghost-page-animations";
         :host { display: inline-block; }
     `],
     animations: [
-        trigger("fadeDown", [
-            transition("* => false", [
-                style({
-                    opacity: 0,
-                    transform: "translate(0, -25%)"
-                }),
-                animate("0.2s ease-in-out")]
-            ),
-            transition("false => *", [
-                animate("0.2s ease-in-out", style({
-                    opacity: 0,
-                    transform: "translate(0, -25%)"
-                }))]
-            )
-        ]),
-        trigger("fade", [
-            transition("void => *", [
-                    style({
-                        opacity: 0
-                    }),
-                    animate("0.2s ease-in-out", style({
-                        opacity: 0.85
-                    }))
-                ]
-            ),
-            transition("* => void", [
-                    animate("0.2s ease-in-out", style({
-                        opacity: 0
-                    }))
-                ]
-            )
-        ]),
-        trigger("ghostPageOneState", [
-            state(GHOST_PAGE_ANIMATION.STATES.NO_PAGES, style({
-                left: "-24px"
-            })),
-            state(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES, style({
-                left: "0"
-            })),
-            state(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE, style({
-                left: "-24px"
-            })),
-            state(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE, style({
-                left: "-24px"
-            })),
-            transition(GHOST_PAGE_ANIMATION.STATES.NO_PAGES + " => *", animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-            transition(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES + " => *", animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)),
-            transition(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE + " => *", animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-            transition(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE + " => *",
-                animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT))
-        ]),
-// TODO: USE TRANSFORM, NOT LEFT...
-        trigger("ghostPageTwoState", [
-            state(GHOST_PAGE_ANIMATION.STATES.NO_PAGES, style({
-                left: "-24px",
-                top: "24px",
-                bottom: "24px"
-            })),
-            state(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES, style({
-                left: "24px"
-            })),
-            state(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE, style({
-                left: "0px",
-                top: "24px",
-                bottom: "24px",
-                background: "#bbb"
-            })),
-            state(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE, style({
-                left: "-24px",
-                top: "24px",
-                bottom: "24px"
-            })),
-            transition(GHOST_PAGE_ANIMATION.STATES.NO_PAGES + " => *", animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-            transition(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES + " => *", animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)),
-            transition(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE + " => *", animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-            transition(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE + " => *",
-                animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT))
-        ])
+        trigger("fadeDown",
+                [
+                  transition("* => false",
+                             [style({opacity: 0, transform: "translate(0, -25%)"}), animate("0.2s ease-in-out")]),
+                  transition("false => *",
+                             [animate("0.2s ease-in-out", style({opacity: 0, transform: "translate(0, -25%)"}))])
+                ]),
+        trigger("fade",
+                [
+                  transition("void => *", [style({opacity: 0}), animate("0.2s ease-in-out", style({opacity: 0.85}))]),
+                  transition("* => void", [animate("0.2s ease-in-out", style({opacity: 0}))])
+                ]),
+        trigger("ghostPageOneState",
+                [
+                  state(GHOST_PAGE_ANIMATION.STATES.NO_PAGES, style({left: "-24px"})),
+                  state(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES, style({left: "0"})),
+                  state(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE, style({left: "-24px"})),
+                  state(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE, style({left: "-24px"})),
+                  transition(GHOST_PAGE_ANIMATION.STATES.NO_PAGES + " => *",
+                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
+                  transition(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES + " => *",
+                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)),
+                  transition(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE + " => *",
+                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
+                  transition(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE + " => *",
+                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT))
+                ]),
+        // TODO: USE TRANSFORM, NOT LEFT...
+        trigger("ghostPageTwoState",
+                [
+                  state(GHOST_PAGE_ANIMATION.STATES.NO_PAGES, style({left: "-24px", top: "24px", bottom: "24px"})),
+                  state(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES, style({left: "24px"})),
+                  state(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE,
+                        style({left: "0px", top: "24px", bottom: "24px", background: "#bbb"})),
+                  state(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE, style({left: "-24px", top: "24px", bottom: "24px"})),
+                  transition(GHOST_PAGE_ANIMATION.STATES.NO_PAGES + " => *",
+                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
+                  transition(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES + " => *",
+                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)),
+                  transition(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE + " => *",
+                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
+                  transition(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE + " => *",
+                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT))
+                ])
     ]
 })
 export class Modal implements OnChanges, OnDestroy {
@@ -128,8 +79,7 @@ export class Modal implements OnChanges, OnDestroy {
     @Input("clrModalPreventClose") stopClose: boolean = false;
     @Output("clrModalAlternateClose") altClose: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
-    constructor(private _scrollingService: ScrollingService) {
-    }
+    constructor(private _scrollingService: ScrollingService) {}
 
     get sizeClass(): string {
         if (this.size) {
@@ -139,10 +89,10 @@ export class Modal implements OnChanges, OnDestroy {
         }
     }
 
-    //Detect when _open is set to true and set no-scrolling to true
+    // Detect when _open is set to true and set no-scrolling to true
     ngOnChanges(changes: {[propName: string]: SimpleChange}): void {
         if (!this.bypassScrollService && changes && changes.hasOwnProperty("_open")) {
-            if (changes["_open"].currentValue) {
+            if (changes._open.currentValue) {
                 this._scrollingService.stopScrolling();
             } else {
                 this._scrollingService.resumeScrolling();

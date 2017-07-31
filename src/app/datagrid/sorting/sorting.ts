@@ -3,13 +3,13 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component } from "@angular/core";
+import {Component} from "@angular/core";
 
-import { SortOrder } from "../../../clarity-angular";
-import { Inventory } from "../inventory/inventory";
-import { User } from "../inventory/user";
-import { PokemonComparator } from "../utils/pokemon-comparator";
-import { EXAMPLES } from "./examples";
+import {SortOrder} from "../../../clarity-angular";
+import {Inventory} from "../inventory/inventory";
+import {User} from "../inventory/user";
+import {PokemonComparator} from "../utils/pokemon-comparator";
+import {EXAMPLES} from "./examples";
 
 @Component({
     moduleId: module.id,

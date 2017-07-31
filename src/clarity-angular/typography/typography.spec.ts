@@ -3,8 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {Component} from "@angular/core";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 @Component({
     template: `
@@ -30,9 +30,7 @@ describe("Typography", () => {
     let compiled: any;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            declarations: [TestComponent]
-        });
+        TestBed.configureTestingModule({declarations: [TestComponent]});
 
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
@@ -43,35 +41,35 @@ describe("Typography", () => {
         fixture.destroy();
     });
 
-    //Starting with just font sizes. Typography is going to change. Will add more tests
-    //when I update Typography
+    // Starting with just font sizes. Typography is going to change. Will add more tests
+    // when I update Typography
     it("checks if h1 has the correct styles", () => {
-        let h1: HTMLElement = compiled.querySelector("h1");
+        const h1: HTMLElement = compiled.querySelector("h1");
         expect(window.getComputedStyle(h1, null).getPropertyValue("font-size")).toEqual("32px");
     });
 
     it("checks if h2 has the correct styles", () => {
-        let h2: HTMLElement = compiled.querySelector("h2");
+        const h2: HTMLElement = compiled.querySelector("h2");
         expect(window.getComputedStyle(h2, null).getPropertyValue("font-size")).toEqual("28px");
     });
 
     it("checks if h3 has the correct styles", () => {
-        let h3: HTMLElement = compiled.querySelector("h3");
+        const h3: HTMLElement = compiled.querySelector("h3");
         expect(window.getComputedStyle(h3, null).getPropertyValue("font-size")).toEqual("22px");
     });
 
     it("checks if h4 has the correct styles", () => {
-        let h4: HTMLElement = compiled.querySelector("h4");
+        const h4: HTMLElement = compiled.querySelector("h4");
         expect(window.getComputedStyle(h4, null).getPropertyValue("font-size")).toEqual("18px");
     });
 
     it("checks if h5 has the correct styles", () => {
-        let h5: HTMLElement = compiled.querySelector("h5");
+        const h5: HTMLElement = compiled.querySelector("h5");
         expect(window.getComputedStyle(h5, null).getPropertyValue("font-size")).toEqual("16px");
     });
 
     it("checks if h6 has the correct styles", () => {
-        let h6: HTMLElement = compiled.querySelector("h6");
+        const h6: HTMLElement = compiled.querySelector("h6");
         expect(window.getComputedStyle(h6, null).getPropertyValue("font-size")).toEqual("14px");
     });
 });

@@ -4,12 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Injectable, TrackByFn} from "@angular/core";
+import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 import {Subscription} from "rxjs/Subscription";
-import {Observable} from "rxjs/Observable";
 
-import {Items} from "./items";
 import {FiltersProvider} from "./filters";
+import {Items} from "./items";
 
 let nbSelection: number = 0;
 
@@ -39,8 +39,8 @@ export class Selection {
             }
             let leftOver: any[];
             if (this._items.trackBy) {
-                let trackBy: TrackByFn = this._items.trackBy;
-                let updatedTracked: any[] = updatedItems.map((item, index) => trackBy(index, item));
+                const trackBy: TrackByFn = this._items.trackBy;
+                const updatedTracked: any[] = updatedItems.map((item, index) => trackBy(index, item));
                 leftOver = this.current.filter((selected, index) => {
                     return updatedTracked.indexOf(trackBy(index, selected)) > -1;
                 });
@@ -48,10 +48,10 @@ export class Selection {
                 leftOver = this.current.filter(selected => updatedItems.indexOf(selected) > -1);
             }
             if (this.current.length !== leftOver.length) {
-                //TODO: Discussed this with Eudes and this is fine for now.
-                //But we need to figure out a different pattern for the
-                //child triggering the parent change detection problem.
-                //Using setTimeout for now to fix this.
+                // TODO: Discussed this with Eudes and this is fine for now.
+                // But we need to figure out a different pattern for the
+                // child triggering the parent change detection problem.
+                // Using setTimeout for now to fix this.
                 setTimeout(() => {
                     this.current = leftOver;
                 }, 0);
@@ -69,7 +69,9 @@ export class Selection {
         return this._selectionType;
     }
     public set selectionType(value: SelectionType) {
-        if (value === this.selectionType) { return; }
+        if (value === this.selectionType) {
+            return;
+        }
         this._selectionType = value;
         if (value === SelectionType.None) {
             delete this.current;
@@ -108,7 +110,9 @@ export class Selection {
         return this._currentSingle;
     }
     public set currentSingle(value: any) {
-        if (value === this._currentSingle) { return; }
+        if (value === this._currentSingle) {
+            return;
+        }
         this._currentSingle = value;
         this.emitChange();
         // Ignore items changes in the same change detection cycle.
@@ -134,7 +138,7 @@ export class Selection {
     /**
      * The Observable that lets other classes subscribe to selection changes
      */
-    private _change = new Subject<any[] | any>();
+    private _change = new Subject<any[]|any>();
     private emitChange() {
         if (this._selectionType === SelectionType.Single) {
             this._change.next(this.currentSingle);
@@ -143,9 +147,9 @@ export class Selection {
         }
     }
     // We do not want to expose the Subject itself, but the Observable which is read-only
-    public get change(): Observable<any[] | any> {
+    public get change(): Observable<any[]|any> {
         return this._change.asObservable();
-    };
+    }
 
     /**
      * Checks if an item is currently selected
@@ -170,7 +174,7 @@ export class Selection {
                 // in single selection, set currentSingle method should be used
                 break;
             case SelectionType.Multi:
-                let index = this.current.indexOf(item);
+                const index = this.current.indexOf(item);
                 if (index >= 0 && !selected) {
                     this.current.splice(index, 1);
                     this.emitChange();
@@ -191,12 +195,12 @@ export class Selection {
         if ((this._selectionType !== SelectionType.Multi) || !this._items.displayed) {
             return false;
         }
-        let displayedItems: any[] = this._items.displayed;
-        let nbDisplayed = this._items.displayed.length;
+        const displayedItems: any[] = this._items.displayed;
+        const nbDisplayed = this._items.displayed.length;
         if (nbDisplayed < 1) {
             return false;
         }
-        let temp: any[] = displayedItems.filter(item => this.current.indexOf(item) > -1);
+        const temp: any[] = displayedItems.filter(item => this.current.indexOf(item) > -1);
         return temp.length === displayedItems.length;
     }
 

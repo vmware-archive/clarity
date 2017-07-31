@@ -53,10 +53,8 @@ export class Popover {
     }
 
     // TODO: need a way to account for parameters that change dynamically (positioning).
-    public anchor(
-        anchor: any, anchorAlign: Point, popoverAlign: Point,
-        {offsetX = 0, offsetY = 0, useAnchorParent = false}: PopoverOptions = {}): Observable<any> {
-
+    public anchor(anchor: any, anchorAlign: Point, popoverAlign: Point,
+                  {offsetX = 0, offsetY = 0, useAnchorParent = false}: PopoverOptions = {}): Observable<any> {
         // TODO: we are assuming here that the popover is inside or next to the anchor.
         // We'd need to go up the popover tree too otherwise
 
@@ -67,8 +65,8 @@ export class Popover {
         // explicitly override anchor's style to static
         anchor.style.position = "static";
 
-        let anchorRect = anchor.getBoundingClientRect();
-        let popoverRect = this.element.getBoundingClientRect();
+        const anchorRect = anchor.getBoundingClientRect();
+        const popoverRect = this.element.getBoundingClientRect();
 
         // position of left top corner of anchor + the offset
         let leftDiff: number = anchorRect.left - popoverRect.left + offsetX;
@@ -169,11 +167,11 @@ export class Popover {
         // Therefore, our logic makes assumptions about margins of interest given the points,
         // and only covers the cases where popover is outside the anchor.
 
-        let popoverComputedStyle = getComputedStyle(this.element);
-        let marginLeft = parseInt(popoverComputedStyle.marginLeft, 10);
-        let marginRight = parseInt(popoverComputedStyle.marginRight, 10);
-        let marginTop = parseInt(popoverComputedStyle.marginTop, 10);
-        let marginBottom = parseInt(popoverComputedStyle.marginBottom, 10);
+        const popoverComputedStyle = getComputedStyle(this.element);
+        const marginLeft = parseInt(popoverComputedStyle.marginLeft, 10);
+        const marginRight = parseInt(popoverComputedStyle.marginRight, 10);
+        const marginTop = parseInt(popoverComputedStyle.marginTop, 10);
+        const marginBottom = parseInt(popoverComputedStyle.marginBottom, 10);
 
         switch (anchorAlign) {
             case Point.LEFT_TOP:
@@ -248,11 +246,10 @@ export class Popover {
     public release() {
         this.element.style.transform = "";
         this.removeScrollEventListeners();
-
     }
 
     private isPositioned(container: any) {
-        let position = getComputedStyle(container).position;
+        const position = getComputedStyle(container).position;
         return position === POSITION_RELATIVE || position === POSITION_ABSOLUTE || position === POSITION_FIXED;
     }
 
@@ -270,7 +267,7 @@ export class Popover {
 
     private addScrollEventListeners(e: any) {
         this._scroll = new Subject<void>();
-        let anchor: any = e;
+        const anchor: any = e;
         let current: any = e;
         while (current && current !== document) {
             if (this.scrolls(current)) {
@@ -285,7 +282,7 @@ export class Popover {
     }
 
     private removeScrollEventListeners() {
-        for (let elem of this.scrollableElements) {
+        for (const elem of this.scrollableElements) {
             elem.removeEventListener("scroll", this.boundOnScrollListener);
         }
         this.scrollableElements.length = 0;
@@ -296,8 +293,8 @@ export class Popover {
     }
 
     private scrolls(container: any): boolean {
-        let computedStyles = getComputedStyle(container);
-        return computedStyles.overflowX === OVERFLOW_SCROLL || computedStyles.overflowX === OVERFLOW_AUTO
-            || computedStyles.overflowY === OVERFLOW_SCROLL || computedStyles.overflowY === OVERFLOW_AUTO;
+        const computedStyles = getComputedStyle(container);
+        return computedStyles.overflowX === OVERFLOW_SCROLL || computedStyles.overflowX === OVERFLOW_AUTO ||
+            computedStyles.overflowY === OVERFLOW_SCROLL || computedStyles.overflowY === OVERFLOW_AUTO;
     }
 }

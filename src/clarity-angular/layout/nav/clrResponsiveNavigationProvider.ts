@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClrResponsiveNavigationService } from "./clrResponsiveNavigationService";
+import {ClrResponsiveNavigationService} from "./clrResponsiveNavigationService";
 
 export function clrResponsiveNavigationProvider(existing: ClrResponsiveNavigationService) {
     return existing || new ClrResponsiveNavigationService();

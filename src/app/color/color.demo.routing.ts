@@ -4,23 +4,21 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {ModuleWithProviders} from "@angular/core/src/metadata/ng_module";
-import {Routes, RouterModule} from "@angular/router";
-import {ColorsDemo} from "./color.demo";
-import {ColorLuminanceDemo} from "./color-luminance";
+import {RouterModule, Routes} from "@angular/router";
+
 import {ColorContrastDemo} from "./color-contrast";
-import { ColorPalette } from "./color-palette";
+import {ColorLuminanceDemo} from "./color-luminance";
+import {ColorPalette} from "./color-palette";
+import {ColorsDemo} from "./color.demo";
 
-const ROUTES: Routes = [
-    {
-        path: "",
-        component: ColorsDemo,
-        children: [
-            { path: "", redirectTo: "color-palette", pathMatch: "full" },
-            { path: "color-palette", component: ColorPalette },
-            { path: "color-luminance", component: ColorLuminanceDemo },
-            { path: "color-contrast", component: ColorContrastDemo }
-        ]
-    }
-];
+const ROUTES: Routes = [{
+    path: "",
+    component: ColorsDemo,
+    children: [
+        {path: "", redirectTo: "color-palette", pathMatch: "full"}, {path: "color-palette", component: ColorPalette},
+        {path: "color-luminance", component: ColorLuminanceDemo},
+        {path: "color-contrast", component: ColorContrastDemo}
+    ]
+}];
 
-export const ROUTING: ModuleWithProviders  = RouterModule.forChild(ROUTES);
+export const ROUTING: ModuleWithProviders = RouterModule.forChild(ROUTES);

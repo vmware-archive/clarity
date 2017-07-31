@@ -4,9 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Injectable } from "@angular/core";
-import { ALERT_TYPES } from "../utils/alert-types";
-import { AlertInfoObject } from "../utils/alert-info-object";
+import {Injectable} from "@angular/core";
+
+import {AlertInfoObject} from "../utils/alert-info-object";
+import {ALERT_TYPES} from "../utils/alert-types";
 
 @Injectable()
 export class AlertIconAndTypesService {
@@ -28,7 +29,7 @@ export class AlertIconAndTypesService {
             return this.iconInfoFromType(this._alertType).shape;
         }
         return this._alertIconShape;
-    };
+    }
     set alertIconShape(val: string) {
         if (!val) {
             this._alertIconShape = "";
@@ -38,10 +39,7 @@ export class AlertIconAndTypesService {
     }
 
     public iconInfoFromType(type: string, classOrShape: string = "shape"): AlertInfoObject {
-        let returnObj = {
-            shape: "",
-            cssClass: ""
-        };
+        const returnObj = {shape: "", cssClass: ""};
 
         switch (type) {
             case "warning":

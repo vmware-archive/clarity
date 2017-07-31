@@ -3,16 +3,13 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    ComponentFixture,
-    TestBed,
-    fakeAsync,
-    tick
-} from "@angular/core/testing";
-import { Component, ViewChild, Type } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { Checkbox } from "./checkbox";
-import { ClrFormsModule } from "../forms.module";
+import {Component, Type, ViewChild} from "@angular/core";
+import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
+import {FormsModule} from "@angular/forms";
+
+import {ClrFormsModule} from "../forms.module";
+
+import {Checkbox} from "./checkbox";
 
 
 abstract class CheckboxTest {
@@ -102,16 +99,9 @@ describe("Checkbox", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [
-                ClrFormsModule,
-                FormsModule
-            ],
+            imports: [ClrFormsModule, FormsModule],
             declarations: [
-                BasicCheckbox,
-                CheckboxWithNgModel,
-                CheckboxWithLabel,
-                CheckboxWithName,
-                InlineCheckbox,
+                BasicCheckbox, CheckboxWithNgModel, CheckboxWithLabel, CheckboxWithName, InlineCheckbox,
                 IndeterminateCheckbox
             ]
         });
@@ -197,21 +187,21 @@ describe("Checkbox", () => {
         }
 
         it("toggles the checked state based on [ngModel] input", fakeAsync(() => {
-            createTestComponent(CheckboxWithNgModel);
-            flushAndAssertChecked(false);
-            fixture.componentInstance.checked = true;
-            flushAndAssertChecked(true);
-            fixture.componentInstance.checked = false;
-            flushAndAssertChecked(false);
-        }));
+               createTestComponent(CheckboxWithNgModel);
+               flushAndAssertChecked(false);
+               fixture.componentInstance.checked = true;
+               flushAndAssertChecked(true);
+               fixture.componentInstance.checked = false;
+               flushAndAssertChecked(false);
+           }));
 
         it("emits changes to (NgModelChange) based on user actions", fakeAsync(() => {
-            createTestComponent(CheckboxWithNgModel);
-            flushAndAssertChecked(false);
-            labelElement.click();
-            flushAndAssertChecked(true);
-            labelElement.click();
-            flushAndAssertChecked(false);
-        }));
+               createTestComponent(CheckboxWithNgModel);
+               flushAndAssertChecked(false);
+               labelElement.click();
+               flushAndAssertChecked(true);
+               labelElement.click();
+               flushAndAssertChecked(false);
+           }));
     });
 });

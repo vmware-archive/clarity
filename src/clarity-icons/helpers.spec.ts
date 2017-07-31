@@ -3,9 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ClarityIcons } from "./index";
-import { CoreShapes } from "./shapes/core-shapes";
 import * as DomPurify from "dompurify";
+
+import {ClarityIcons} from "./index";
+import {CoreShapes} from "./shapes/core-shapes";
 
 
 // TODO: open question... should we make whitespace removal part of the icon parsing???
@@ -78,16 +79,13 @@ const sanitizeOptions = {
         "use",
         "view"
     ],
-    ADD_ATTR: [
-        "version",
-        "preserveAspectRatio"
-    ]
+    ADD_ATTR: ["version", "preserveAspectRatio"]
 };
 
 export function testAllShapes(clarityIcons: any, expectedShapes: any): void {
     expect(Object.keys(clarityIcons.get()).length).toEqual(Object.keys(expectedShapes).length);
 
-    for (let shape in expectedShapes) {
+    for (const shape in expectedShapes) {
         if (expectedShapes.hasOwnProperty(shape)) {
             const myShape = removeWhitespace(DomPurify.sanitize(expectedShapes[shape], sanitizeOptions));
             const expected = removeWhitespace(clarityIcons.get(shape));
@@ -97,11 +95,10 @@ export function testAllShapes(clarityIcons: any, expectedShapes: any): void {
 }
 
 export function resetShapes(): void {
-
     // Removes all shapes from Clarity Icons, but adds the icons from CoreShapes back at the end
     // because the CoreShapes icons are added by default by ClarityIcons.
 
-    for (let shapeName in ClarityIcons.get()) {
+    for (const shapeName in ClarityIcons.get()) {
         if (ClarityIcons.get().hasOwnProperty(shapeName)) {
             delete ClarityIcons.get()[shapeName];
         }

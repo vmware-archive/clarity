@@ -7,7 +7,6 @@ import {Comparator} from "../../interfaces/comparator";
 import {NestedProperty} from "../nested-property";
 
 export class DatagridPropertyComparator implements Comparator<any> {
-
     private nestedProp: NestedProperty;
 
     constructor(public prop: string) {

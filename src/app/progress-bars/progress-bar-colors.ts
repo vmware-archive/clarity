@@ -17,8 +17,7 @@ export class ProgressBarColorsDemo {
 
     constructor() {
         this.colorTypes = [
-            new ProgBarExample("", "Normal"),
-            new ProgBarExample("success", "Success"),
+            new ProgBarExample("", "Normal"), new ProgBarExample("success", "Success"),
             new ProgBarExample("danger", "Danger/Warning")
         ];
     }

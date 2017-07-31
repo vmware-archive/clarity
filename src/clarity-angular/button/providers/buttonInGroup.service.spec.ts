@@ -4,8 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {ButtonInGroupService} from "./buttonInGroup.service";
 import {Button} from "../button-group/button";
+
+import {ButtonInGroupService} from "./buttonInGroup.service";
 
 export default function(): void {
     describe("Button In Group Service", () => {
@@ -21,7 +22,7 @@ export default function(): void {
                 testButton = button;
             });
 
-            let mockButton: Button = new Button(null);
+            const mockButton: Button = new Button(null);
             mockButton.inMenu = true;
 
             buttonInGroupService.updateButtonGroup(mockButton);

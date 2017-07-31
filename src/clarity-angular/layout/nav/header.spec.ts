@@ -3,10 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { Component } from "@angular/core";
-import { ClrNavigationModule } from "./navigation.module";
-import { ClrIconModule } from "../../icon/icon.module";
+import {Component} from "@angular/core";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+
+import {ClrIconModule} from "../../icon/icon.module";
+
+import {ClrNavigationModule} from "./navigation.module";
 
 @Component({
     template: `
@@ -34,10 +36,7 @@ describe("Header", () => {
     let compiled: any;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [ClrNavigationModule, ClrIconModule],
-            declarations: [TestComponent]
-        });
+        TestBed.configureTestingModule({imports: [ClrNavigationModule, ClrIconModule], declarations: [TestComponent]});
 
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();

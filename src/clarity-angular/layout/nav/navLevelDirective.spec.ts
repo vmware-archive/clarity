@@ -3,9 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ClrResponsiveNavigationService } from "./clrResponsiveNavigationService";
-import { NavLevelDirective } from "./navLevelDirective";
-import { ClrResponsiveNavCodes } from "./clrResponsiveNavCodes";
+import {ClrResponsiveNavCodes} from "./clrResponsiveNavCodes";
+import {ClrResponsiveNavigationService} from "./clrResponsiveNavigationService";
+import {NavLevelDirective} from "./navLevelDirective";
 
 describe("NavLevel1Directive", () => {
     let service: ClrResponsiveNavigationService;
@@ -13,7 +13,7 @@ describe("NavLevel1Directive", () => {
 
     beforeEach(() => {
         service = new ClrResponsiveNavigationService();
-        navLevel = new NavLevelDirective(service, null); //null because we are just testing the directive functions
+        navLevel = new NavLevelDirective(service, null);  // null because we are just testing the directive functions
         navLevel._level = 1;
     });
 
@@ -36,18 +36,14 @@ describe("NavLevel1Directive", () => {
     it("#sends the open code on controlNavSubject in the service when open() is called", () => {
         navLevel.open();
         service.navControl.subscribe(controlMessage => {
-            expect(controlMessage.controlCode).toBe(
-                ClrResponsiveNavCodes.NAV_OPEN
-            );
+            expect(controlMessage.controlCode).toBe(ClrResponsiveNavCodes.NAV_OPEN);
         });
     });
 
     it("#sends the close code on controlNavSubject when close() is called", () => {
         navLevel.close();
         service.navControl.subscribe(controlMessage => {
-            expect(controlMessage.controlCode).toBe(
-                ClrResponsiveNavCodes.NAV_CLOSE
-            );
+            expect(controlMessage.controlCode).toBe(ClrResponsiveNavCodes.NAV_CLOSE);
         });
     });
 

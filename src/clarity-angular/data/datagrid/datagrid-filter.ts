@@ -5,11 +5,12 @@
  */
 import {Component, EventEmitter, Input, Output} from "@angular/core";
 
+import {Point, PopoverOptions} from "../../popover/common/popover";
+
 import {Filter} from "./interfaces/filter";
 import {CustomFilter} from "./providers/custom-filter";
 import {FiltersProvider, RegisteredFilter} from "./providers/filters";
 import {DatagridFilterRegistrar} from "./utils/datagrid-filter-registrar";
-import {Point, PopoverOptions} from "../../popover/common/popover";
 
 
 /**
@@ -50,7 +51,7 @@ export class DatagridFilter extends DatagridFilterRegistrar<Filter<any>> impleme
 
     public anchorPoint: Point = Point.RIGHT_BOTTOM;
     public popoverPoint: Point = Point.RIGHT_TOP;
-    public popoverOptions: PopoverOptions = { allowMultipleOpen: true };
+    public popoverOptions: PopoverOptions = {allowMultipleOpen: true};
     /**
      * Tracks whether the filter dropdown is open or not
      */
@@ -61,7 +62,7 @@ export class DatagridFilter extends DatagridFilterRegistrar<Filter<any>> impleme
 
     @Input("clrDgFilterOpen")
     public set open(open: boolean) {
-        let boolOpen = !!open;
+        const boolOpen = !!open;
         if (boolOpen !== this._open) {
             this._open = boolOpen;
             this.openChanged.emit(boolOpen);
@@ -72,9 +73,9 @@ export class DatagridFilter extends DatagridFilterRegistrar<Filter<any>> impleme
 
 
     @Input("clrDgFilter")
-    public set customFilter(filter: Filter<any> | RegisteredFilter<Filter<any>>) {
+    public set customFilter(filter: Filter<any>|RegisteredFilter<Filter<any>>) {
         this.setFilter(filter);
-    };
+    }
 
     /**
      * Indicates if the filter is currently active

@@ -9,7 +9,6 @@
  * This does not mean you should extend it, simply implementing it is fine.
  */
 export abstract class LoadingListener {
-
     abstract startLoading(): void;
 
     abstract doneLoading(): void;

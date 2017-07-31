@@ -39,7 +39,7 @@ export class Inventory {
     filter(filters: {[key: string]: string[]}): Inventory {
         this._checkCurrentQuery();
         if (filters) {
-            for (let key in filters) {
+            for (const key in filters) {
                 if (filters[key].length === 0) {
                     continue;
                 }
@@ -49,9 +49,9 @@ export class Inventory {
                     getFilterProperty = (user: User) => user.pokemon.name;
                 }
 
-                let lowerCase = filters[key].map(value => value.toLowerCase());
+                const lowerCase = filters[key].map(value => value.toLowerCase());
                 this._currentQuery = this._currentQuery.filter(user => {
-                    for (let value of lowerCase) {
+                    for (const value of lowerCase) {
                         if (getFilterProperty(user).toLowerCase().indexOf(value) >= 0) {
                             return true;
                         }
@@ -73,7 +73,7 @@ export class Inventory {
 
             this._currentQuery.sort((a, b) => {
                 let comp = 0;
-                let propA = getSortProperty(a), propB = getSortProperty(b);
+                const propA = getSortProperty(a), propB = getSortProperty(b);
                 if (propA < propB) {
                     comp = -1;
                 } else if (propA > propB) {
@@ -89,10 +89,8 @@ export class Inventory {
     }
 
     fetch(skip: number = 0, limit: number = this._currentQuery.length): Promise<FetchResult> {
-        let result: FetchResult = {
-            users: this._currentQuery.slice(skip, skip + limit),
-            length: this._currentQuery.length
-        };
+        const result:
+            FetchResult = {users: this._currentQuery.slice(skip, skip + limit), length: this._currentQuery.length};
         this._currentQuery = null;
         return this._fakeHttp(result);
     }

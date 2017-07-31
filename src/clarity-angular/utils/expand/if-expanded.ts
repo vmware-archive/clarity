@@ -3,19 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Directive, TemplateRef, ViewContainerRef, OnInit, OnDestroy, Input, Output, EventEmitter} from "@angular/core";
+import {Directive, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewContainerRef} from "@angular/core";
+import {Subscription} from "rxjs/Subscription";
 
 import {Expand} from "./providers/expand";
-import {Subscription} from "rxjs/Subscription";
 
 /**
  * TODO: make this a reusable directive outside of Datagrid, like [clrLoading].
  */
-@Directive({
-    selector: "[clrIfExpanded]"
-})
+@Directive({selector: "[clrIfExpanded]"})
 export class IfExpanded implements OnInit, OnDestroy {
-
     private _expanded: boolean = false;
 
     get expanded(): boolean {
@@ -30,8 +27,7 @@ export class IfExpanded implements OnInit, OnDestroy {
         }
     }
 
-    @Output("clrIfExpandedChange") expandedChange: EventEmitter<boolean>
-        = new EventEmitter<boolean>(true);
+    @Output("clrIfExpandedChange") expandedChange: EventEmitter<boolean> = new EventEmitter<boolean>(true);
 
     constructor(private template: TemplateRef<any>, private container: ViewContainerRef, private expand: Expand) {
         expand.expandable++;

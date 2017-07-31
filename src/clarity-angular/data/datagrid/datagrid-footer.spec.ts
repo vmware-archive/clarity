@@ -4,14 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-import {TestContext} from "./helpers.spec";
+
 import {DatagridFooter} from "./datagrid-footer";
-import {Selection, SelectionType} from "./providers/selection";
+import {TestContext} from "./helpers.spec";
 import {FiltersProvider} from "./providers/filters";
+import {HideableColumnService} from "./providers/hideable-column.service";
 import {Items} from "./providers/items";
-import {Sort} from "./providers/sort";
 import {Page} from "./providers/page";
-import { HideableColumnService } from "./providers/hideable-column.service";
+import {Selection, SelectionType} from "./providers/selection";
+import {Sort} from "./providers/sort";
 
 const PROVIDERS_NEEDED = [Selection, Items, FiltersProvider, Sort, Page, HideableColumnService];
 
@@ -32,7 +33,7 @@ export default function(): void {
         });
 
         it("does not show the selection details when selection type is None", function() {
-            let clarityDirectiveSelection: Selection = context.clarityDirective.selection;
+            const clarityDirectiveSelection: Selection = context.clarityDirective.selection;
             clarityDirectiveSelection.selectionType = SelectionType.None;
 
             context.detectChanges();
@@ -41,7 +42,7 @@ export default function(): void {
         });
 
         it("does not show the selection details when selection type is single", function() {
-            let clarityDirectiveSelection: Selection = context.clarityDirective.selection;
+            const clarityDirectiveSelection: Selection = context.clarityDirective.selection;
             clarityDirectiveSelection.selectionType = SelectionType.Single;
             clarityDirectiveSelection.current.push(1);
 
@@ -51,7 +52,7 @@ export default function(): void {
         });
 
         it("shows the selection details when more than one item is selected", function() {
-            let clarityDirectiveSelection: Selection = context.clarityDirective.selection;
+            const clarityDirectiveSelection: Selection = context.clarityDirective.selection;
             clarityDirectiveSelection.selectionType = SelectionType.Multi;
             clarityDirectiveSelection.current.push(1);
 
@@ -79,8 +80,6 @@ export default function(): void {
     });
 }
 
-@Component({
-    template: `<clr-dg-footer>Hello world</clr-dg-footer>`
-})
+@Component({template: `<clr-dg-footer>Hello world</clr-dg-footer>`})
 class SimpleTest {
 }

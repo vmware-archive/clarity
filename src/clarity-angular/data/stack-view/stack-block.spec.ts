@@ -3,13 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {Component, ViewChild} from "@angular/core";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {FormsModule} from "@angular/forms";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
+
 import {StackBlock} from "./stack-block";
 import {StackView} from "./stack-view";
-import {NoopAnimationsModule} from "@angular/platform-browser/animations";
-import { ClrStackViewModule } from "./stack-view.module";
+import {ClrStackViewModule} from "./stack-view.module";
 
 @Component({
     template: `
@@ -65,16 +66,8 @@ export default function(): void {
 
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [
-                    ClrStackViewModule,
-                    NoopAnimationsModule,
-                    FormsModule
-                ],
-                declarations: [
-                    BasicBlock,
-                    DynamicBlock,
-                    NestedBlocks
-                ],
+                imports: [ClrStackViewModule, NoopAnimationsModule, FormsModule],
+                declarations: [BasicBlock, DynamicBlock, NestedBlocks],
                 providers: [StackView]
             });
         });
@@ -150,4 +143,4 @@ export default function(): void {
             expect(fixture.componentInstance.expanded).toBeFalsy();
         });
     });
-};
+}

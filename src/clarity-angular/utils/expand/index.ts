@@ -8,6 +8,4 @@ import {IfExpanded} from "./if-expanded";
 
 export * from "./if-expanded";
 
-export const EXPAND_DIRECTIVES: Type<any>[] = [
-    IfExpanded
-];
+export const EXPAND_DIRECTIVES: Type<any>[] = [IfExpanded];

@@ -8,8 +8,8 @@ import {
     ContentChild,
 } from "@angular/core";
 
-import { IfOpenService } from "../../utils/conditional/if-open.service";
-import { SignpostTriggerDirective } from "./signpost-trigger.directive";
+import {IfOpenService} from "../../utils/conditional/if-open.service";
+import {SignpostTriggerDirective} from "./signpost-trigger.directive";
 
 @Component({
     selector: "clr-signpost",
@@ -25,10 +25,8 @@ import { SignpostTriggerDirective } from "./signpost-trigger.directive";
         
         <ng-content></ng-content>
     `,
-    host: {
-        "[class.signpost]": "true"
-    },
-    providers: [ IfOpenService ]
+    host: {"[class.signpost]": "true"},
+    providers: [IfOpenService]
 })
 
 /*********
@@ -60,8 +58,7 @@ export class Signpost {
      * @type {SignpostTriggerDirective}
      */
     @ContentChild(SignpostTriggerDirective)
-    set customTrigger( trigger: SignpostTriggerDirective ) {
+    set customTrigger(trigger: SignpostTriggerDirective) {
         this.useCustomTrigger = !!trigger;
     }
 }
-

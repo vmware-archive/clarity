@@ -5,30 +5,30 @@
  */
 
 import {
+    AfterContentInit,
     Component,
     ContentChildren,
-    Input,
-    Output,
-    EventEmitter,
-    QueryList,
-    OnInit,
-    OnDestroy,
-    AfterContentInit,
     DoCheck,
+    ElementRef,
+    EventEmitter,
+    Input,
     IterableDiffers,
-    ElementRef
+    OnDestroy,
+    OnInit,
+    Output,
+    QueryList
 } from "@angular/core";
-import { Subscription } from "rxjs/Subscription";
-import { WizardPage } from "./wizard-page";
-import { WizardHeaderAction } from "./wizard-header-action";
+import {Subscription} from "rxjs/Subscription";
 
-import { GHOST_PAGE_ANIMATION } from "../modal/utils/ghost-page-animations";
+import {GHOST_PAGE_ANIMATION} from "../modal/utils/ghost-page-animations";
 
+import {ButtonHubService} from "./providers/button-hub";
+import {HeaderActionService} from "./providers/header-actions";
+import {PageCollectionService} from "./providers/page-collection";
 // providers
-import { WizardNavigationService } from "./providers/wizard-navigation";
-import { PageCollectionService } from "./providers/page-collection";
-import { ButtonHubService } from "./providers/button-hub";
-import { HeaderActionService } from "./providers/header-actions";
+import {WizardNavigationService} from "./providers/wizard-navigation";
+import {WizardHeaderAction} from "./wizard-header-action";
+import {WizardPage} from "./wizard-page";
 
 
 /**
@@ -43,7 +43,7 @@ import { HeaderActionService } from "./providers/header-actions";
  */
 @Component({
     selector: "clr-wizard",
-    providers: [ WizardNavigationService, PageCollectionService, ButtonHubService, HeaderActionService ],
+    providers: [WizardNavigationService, PageCollectionService, ButtonHubService, HeaderActionService],
     templateUrl: "./wizard.html",
     host: {
         "[class.clr-wizard]": "true",
@@ -66,13 +66,9 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      *
      * @memberof Wizard
      */
-    constructor(public navService: WizardNavigationService,
-                public pageCollection: PageCollectionService,
-                public buttonService: ButtonHubService,
-                public headerActionService: HeaderActionService,
-                private elementRef: ElementRef,
-                private differs: IterableDiffers) {
-
+    constructor(public navService: WizardNavigationService, public pageCollection: PageCollectionService,
+                public buttonService: ButtonHubService, public headerActionService: HeaderActionService,
+                private elementRef: ElementRef, private differs: IterableDiffers) {
         this.goNextSubscription = this.navService.movedToNextPage.subscribe(() => {
             this.onMoveNext.emit();
         });
@@ -177,8 +173,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @type {EventEmitter<boolean>}
      * @memberof Wizard
      */
-    @Output("clrWizardOpenChange") _openChanged: EventEmitter<boolean> =
-        new EventEmitter<boolean>(false);
+    @Output("clrWizardOpenChange") _openChanged: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
     /**
      * Emits when the wizard is canceled. Can be observed through the clrWizardOnCancel
@@ -191,8 +186,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @type {EventEmitter<any>}
      * @memberof Wizard
      */
-    @Output("clrWizardOnCancel") onCancel: EventEmitter<any> =
-        new EventEmitter<any>(false);
+    @Output("clrWizardOnCancel") onCancel: EventEmitter<any> = new EventEmitter<any>(false);
 
     /**
      * Emits when the wizard is completed. Can be observed through the clrWizardOnFinish
@@ -205,8 +199,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @type {EventEmitter<any>}
      * @memberof Wizard
      */
-    @Output("clrWizardOnFinish") wizardFinished: EventEmitter<any> =
-        new EventEmitter<any>(false);
+    @Output("clrWizardOnFinish") wizardFinished: EventEmitter<any> = new EventEmitter<any>(false);
 
     /**
      * Emits when the wizard is reset. See .reset(). Can be observed through
@@ -216,8 +209,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @type {EventEmitter<any>}
      * @memberof Wizard
      */
-    @Output("clrWizardOnReset") onReset: EventEmitter<any> =
-        new EventEmitter<any>(false);
+    @Output("clrWizardOnReset") onReset: EventEmitter<any> = new EventEmitter<any>(false);
 
     /**
      * A QueryList of the pages in the wizard. Note that a QueryList is sort of
@@ -259,8 +251,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @type {EventEmitter<any>}
      * @memberof Wizard
      */
-    @Output("clrWizardCurrentPageChanged") currentPageChanged: EventEmitter<any> =
-        new EventEmitter<any>(false);
+    @Output("clrWizardCurrentPageChanged") currentPageChanged: EventEmitter<any> = new EventEmitter<any>(false);
 
     /**
      * Emits when the wizard moves to the next page. Can be observed through the clrWizardOnNext
@@ -273,8 +264,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @type {EventEmitter<any>}
      * @memberof Wizard
      */
-    @Output("clrWizardOnNext") onMoveNext: EventEmitter<any> =
-        new EventEmitter<any>(false);
+    @Output("clrWizardOnNext") onMoveNext: EventEmitter<any> = new EventEmitter<any>(false);
 
     /**
      * Emits when the wizard moves to the previous page. Can be observed through the
@@ -286,8 +276,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @type {EventEmitter<any>}
      * @memberof Wizard
      */
-    @Output("clrWizardOnPrevious") onMovePrevious: EventEmitter<any> =
-        new EventEmitter<any>(false);
+    @Output("clrWizardOnPrevious") onMovePrevious: EventEmitter<any> = new EventEmitter<any>(false);
 
     /**
      * Prevents Wizard from moving to the next page or closing itself on finishing.
@@ -426,7 +415,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @memberof Wizard
      */
     public ngAfterContentInit() {
-        let navService = this.navService;
+        const navService = this.navService;
 
         this.pageCollection.pages = this.pages;
         this.headerActionService.wizardHeaderActions = this.headerActions;
@@ -444,7 +433,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @memberof Wizard
      */
     public ngDoCheck() {
-        let changes = this.differ.diff(this.pages);
+        const changes = this.differ.diff(this.pages);
         if (changes) {
             changes.forEachAddedItem((r: any) => {
                 this.navService.updateNavigation();
@@ -720,8 +709,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @memberof Wizard
      */
     public checkAndCancel(): void {
-        let currentPage = this.currentPage;
-        let currentPageHasOverrides = currentPage.stopCancel || currentPage.preventDefault;
+        const currentPage = this.currentPage;
+        const currentPageHasOverrides = currentPage.stopCancel || currentPage.preventDefault;
 
         if (this.stopNavigation) {
             return;
@@ -822,8 +811,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @memberof Wizard
      */
     public setGhostPages(deactivateOrNot: string = ""): void {
-        let navService = this.navService;
-        let ghostpageStates = GHOST_PAGE_ANIMATION.STATES;
+        const navService = this.navService;
+        const ghostpageStates = GHOST_PAGE_ANIMATION.STATES;
 
         if (this.showGhostPages) {
             if (deactivateOrNot === "deactivate") {

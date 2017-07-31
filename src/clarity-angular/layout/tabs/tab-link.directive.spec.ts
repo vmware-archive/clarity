@@ -3,12 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import {Component, QueryList, ViewChildren} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {Component, ViewChildren, QueryList} from "@angular/core";
-import {ClrTabsModule} from "./tabs.module";
+
 import {IfActiveService} from "../../utils/conditional/if-active.service";
+
 import {TabLinkDirective} from "./tab-link.directive";
 import {TabsService} from "./tabs-service";
+import {ClrTabsModule} from "./tabs.module";
 
 @Component({
     template: `
@@ -30,11 +32,8 @@ describe("TabLink Directive", () => {
     let instance: any;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [ClrTabsModule],
-            declarations: [TestComponent],
-            providers: [IfActiveService, TabsService]
-        });
+        TestBed.configureTestingModule(
+            {imports: [ClrTabsModule], declarations: [TestComponent], providers: [IfActiveService, TabsService]});
 
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
@@ -48,11 +47,11 @@ describe("TabLink Directive", () => {
     });
 
     it("sets itself as active when clicked", () => {
-        let links: TabLinkDirective[] = instance.tabLinkChildren.toArray();
+        const links: TabLinkDirective[] = instance.tabLinkChildren.toArray();
         expect(links[0].active).toEqual(true);
         expect(links[1].active).toEqual(false);
 
-        let tabLinks: HTMLElement[] = compiled.querySelectorAll("button");
+        const tabLinks: HTMLElement[] = compiled.querySelectorAll("button");
         tabLinks[1].click();
         fixture.detectChanges();
         expect(links[0].active).toEqual(false);

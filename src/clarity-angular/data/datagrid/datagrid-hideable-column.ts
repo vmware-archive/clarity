@@ -1,12 +1,11 @@
 /*
- * Copyright (c) 2016 -2017 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-
-import { TemplateRef } from "@angular/core";
-import { Subject } from "rxjs/Subject";
-import { Observable } from "rxjs/Observable";
+import {TemplateRef} from "@angular/core";
+import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/Subject";
 
 
 /**
@@ -18,7 +17,6 @@ import { Observable } from "rxjs/Observable";
  *
  */
 export class DatagridHideableColumn {
-
     /**
      * @property hiddenChanges
      *
@@ -43,9 +41,7 @@ export class DatagridHideableColumn {
      * @param _id
      * @param _hidden
      */
-    constructor( private _template: TemplateRef<any>,
-                 private _id: string,
-                 private _hidden: boolean = false ) {}
+    constructor(private _template: TemplateRef<any>, private _id: string, private _hidden: boolean = false) {}
 
     /**
      * @function template
@@ -95,8 +91,8 @@ export class DatagridHideableColumn {
      *
      * @param value
      */
-    set hidden( value: boolean ) {
-        if ( this._hidden === value ) {
+    set hidden(value: boolean) {
+        if (this._hidden === value) {
             return;
         }
         this._hidden = value;

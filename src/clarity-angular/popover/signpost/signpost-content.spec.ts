@@ -1,19 +1,20 @@
-// /*
-//  * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
-//  * This software is released under MIT license.
-//  * The full license information can be found in LICENSE in the root directory of this project.
-//  */
-import { TestBed } from "@angular/core/testing";
-import { Component } from "@angular/core";
-import { IfOpenService } from "../../utils/conditional/if-open.service";
+/*
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+import {Component} from "@angular/core";
+import {TestBed} from "@angular/core/testing";
+
 // I'm giving up, I'm using the datagrid ones for now.
 import {addHelpers, TestContext} from "../../data/datagrid/helpers.spec";
 import {IconCustomTag} from "../../icon/icon";
+import {IfOpenService} from "../../utils/conditional/if-open.service";
+
 import {SignpostContent} from "./signpost-content";
 import {SIGNPOST_POSITIONS} from "./signpost-positions";
 
 export default function(): void {
-
     describe("SignpostContent", function() {
         addHelpers();
 
@@ -28,10 +29,10 @@ export default function(): void {
         });
 
         it("has a close button that updates the IfOpenService.open value", function() {
-            let closer: HTMLElement = context.clarityElement.querySelector(".signpost-action");
+            const closer: HTMLElement = context.clarityElement.querySelector(".signpost-action");
             expect(closer).toBeDefined();
-            let service: IfOpenService = TestBed.get(IfOpenService);
-            let testValue: boolean = service.open;
+            const service: IfOpenService = TestBed.get(IfOpenService);
+            const testValue: boolean = service.open;
             closer.click();
             context.detectChanges();
             expect(testValue).not.toEqual(service.open);
@@ -71,7 +72,7 @@ export default function(): void {
             it("has a " + name + " signpost content position", function() {
                 context.clarityDirective.position = name;
                 context.detectChanges();
-                let position = SIGNPOST_POSITIONS[name];
+                const position = SIGNPOST_POSITIONS[name];
                 /*********
                  *
                  * There are 5 things to test here

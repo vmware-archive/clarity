@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component } from "@angular/core";
-import { PageCollectionService } from "./providers/page-collection";
+import {Component} from "@angular/core";
+import {PageCollectionService} from "./providers/page-collection";
 
 @Component({
     selector: "clr-wizard-stepnav",
@@ -15,12 +15,9 @@ import { PageCollectionService } from "./providers/page-collection";
             [page]="page" class="clr-wizard-stepnav-item"></li>
         </ol>
     `,
-    host: {
-        "class": "clr-wizard-stepnav"
-    }
+    host: {"class": "clr-wizard-stepnav"}
 })
 
 export class WizardStepnav {
-    constructor(public pageService: PageCollectionService) {
-    }
+    constructor(public pageService: PageCollectionService) {}
 }

@@ -3,32 +3,33 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ViewChild } from "@angular/core";
-import { DatagridHideableColumnDirective } from "./datagrid-hidable-column.directive";
-import { Sort } from "./providers/sort";
-import { FiltersProvider } from "./providers/filters";
-import { DatagridRenderOrganizer } from "./render/render-organizer";
-import { DomAdapter } from "./render/dom-adapter";
-import { DragDispatcher } from "./providers/drag-dispatcher";
-import { DatagridColumn } from "./datagrid-column";
-import { TestContext } from "./helpers.spec";
+import {Component, ViewChild} from "@angular/core";
 
-const PROVIDERS_NEEDED = [ Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher ];
+import {DatagridColumn} from "./datagrid-column";
+import {DatagridHideableColumnDirective} from "./datagrid-hidable-column.directive";
+import {TestContext} from "./helpers.spec";
+import {DragDispatcher} from "./providers/drag-dispatcher";
+import {FiltersProvider} from "./providers/filters";
+import {Sort} from "./providers/sort";
+import {DomAdapter} from "./render/dom-adapter";
+import {DatagridRenderOrganizer} from "./render/render-organizer";
 
-export default function (): void {
-    describe("DatagridHideableColumnDirective directive", function () {
-        describe("TypeScript API", function () {
+const PROVIDERS_NEEDED = [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher];
+
+export default function(): void {
+    describe("DatagridHideableColumnDirective directive", function() {
+        describe("TypeScript API", function() {
             let context: TestContext<DatagridColumn, HideableTest>;
 
-            beforeEach(function () {
+            beforeEach(function() {
                 context = this.create(DatagridColumn, HideableTest, PROVIDERS_NEEDED);
             });
 
-            it("creates a DatagridHideableColumn instance on the DatagridColumn", function () {
+            it("creates a DatagridHideableColumn instance on the DatagridColumn", function() {
                 expect(context.clarityDirective.hideable).toBeDefined();
             });
 
-            it("defaults the HideableColumn.hidden property to false", function () {
+            it("defaults the HideableColumn.hidden property to false", function() {
                 expect(context.clarityDirective.hideable.hidden).toBe(false);
             });
 
@@ -41,7 +42,7 @@ export default function (): void {
             //    // AND -> results in EHCAIWC error
             // });
 
-            it("correctly populates the DatagridHideableColumn instance with an id", function () {
+            it("correctly populates the DatagridHideableColumn instance with an id", function() {
                 expect(context.clarityDirective.columnId).toEqual(context.clarityDirective.hideable.id);
             });
         });
@@ -61,4 +62,3 @@ export default function (): void {
 class HideableTest {
     @ViewChild(DatagridHideableColumnDirective) directive: DatagridHideableColumnDirective;
 }
-

@@ -8,6 +8,4 @@ import {TreeNode} from "./tree-node";
 
 export * from "./tree-node";
 
-export const TREE_VIEW_DIRECTIVES: Type<any>[] = [
-    TreeNode
-];
+export const TREE_VIEW_DIRECTIVES: Type<any>[] = [TreeNode];

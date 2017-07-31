@@ -4,10 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
+
 import {TestContext} from "../helpers.spec";
+
 import {DatagridHeadRenderer} from "./head-renderer";
 import {DatagridRenderOrganizer} from "./render-organizer";
-import {MockDatagridRenderOrganizer, MOCK_ORGANIZER_PROVIDER} from "./render-organizer.mock";
+import {MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer} from "./render-organizer.mock";
 
 export default function(): void {
     describe("DatagridHeadRenderer directive", function() {
@@ -28,8 +30,6 @@ export default function(): void {
     });
 }
 
-@Component({
-    template: `<div clrDgHead>Hello world</div>`
-})
+@Component({template: `<div clrDgHead>Hello world</div>`})
 class SimpleTest {
 }

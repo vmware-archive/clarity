@@ -56,12 +56,24 @@ gulp.task("serve", function (callback) {
 gulp.task("test", function (callback) {
     env.set({NODE_ENV: "prod"}); // We only run tests in production mode for now
     env.set({TESTING: true});
-    return runSequence(
-        'build',
-        'karma:verbose',
-        'aot:test',
-        callback
-    );
+    if (process.env.TRAVIS) {
+        // run the tasks for clang rules and tslint only on Travis
+        return runSequence(
+            'clang:check',
+            'tslint:check',
+            'build',
+            'karma:verbose',
+            'aot:test',
+            callback
+        );
+    } else {
+        return runSequence(
+            'build',
+            'karma:verbose',
+            'aot:test',
+            callback
+        );
+    }
 });
 
 /**

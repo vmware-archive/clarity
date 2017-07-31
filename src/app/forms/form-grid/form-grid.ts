@@ -13,5 +13,4 @@ import {Component} from "@angular/core";
     templateUrl: "./form-grid.demo.html"
 })
 export class FormGridDemo {
-
 }

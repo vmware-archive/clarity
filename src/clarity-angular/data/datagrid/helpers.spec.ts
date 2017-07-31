@@ -8,10 +8,11 @@
  * when we have the time. This will be very helpful in future refactors due to Angular upgrades, or simply
  * just to avoid leaks since destroying fixtures is automatic with this.
  */
-import { Type, DebugElement } from "@angular/core";
-import { TestBed, ComponentFixture } from "@angular/core/testing";
-import { ClarityModule } from "../../clarity.module";
-import { By } from "@angular/platform-browser";
+import {DebugElement, Type} from "@angular/core";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {By} from "@angular/platform-browser";
+
+import {ClarityModule} from "../../clarity.module";
 
 export class TestContext<D, C> {
     fixture: ComponentFixture<C>;
@@ -29,8 +30,8 @@ export class TestContext<D, C> {
         this.testElement = this.fixture.nativeElement;
         this.clarityDebugElement = this.fixture.debugElement.query(By.directive(clarityDirectiveType));
         if (!this.clarityDebugElement) {
-            let componentName = (<any>componentType).name;
-            let clarityDirectiveName = (<any>clarityDirectiveType).name;
+            const componentName = (<any>componentType).name;
+            const clarityDirectiveName = (<any>clarityDirectiveType).name;
             throw new Error(`Test component ${componentName} doesn't contain a ${clarityDirectiveName}`);
         }
         this.clarityDirective = this.clarityDebugElement.injector.get(clarityDirectiveType);
@@ -56,24 +57,15 @@ export function addHelpers(): void {
          * is a bit too new for all IDEs to correctly process it.
          */
         this.create = <D, C>(clarityDirective: Type<D>, testComponent: Type<C>, providers: any[] = []) => {
-            TestBed.configureTestingModule({
-                imports: [ClarityModule.forRoot()],
-                declarations: [testComponent],
-                providers: providers
-            });
+            TestBed.configureTestingModule(
+                {imports: [ClarityModule.forRoot()], declarations: [testComponent], providers: providers});
             return this._context = new TestContext<D, C>(clarityDirective, testComponent);
         };
 
-        this.createOnly = <D, C>(clarityDirective: Type<D>, testComponent: Type<C>,
-                                 providers: any[] = [], extraDirectives: Type<any>[] = []) => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    clarityDirective,
-                    testComponent,
-                    ...extraDirectives
-                ],
-                providers: providers
-            });
+        this.createOnly = <D, C>(clarityDirective: Type<D>, testComponent: Type<C>, providers: any[] = [],
+                                 extraDirectives: Type<any>[] = []) => {
+            TestBed.configureTestingModule(
+                {declarations: [clarityDirective, testComponent, ...extraDirectives], providers: providers});
             return this._context = new TestContext<D, C>(clarityDirective, testComponent);
         };
     });

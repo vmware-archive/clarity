@@ -46,4 +46,4 @@ export default function(): void {
             expect(this.comparator.compare({a: {b: 42}}, {a: {b: 3}})).toBeGreaterThan(0);
         });
     });
-};
+}

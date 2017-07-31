@@ -117,7 +117,6 @@ const EXAMPLE_4 = `
     templateUrl: "./indeterminate-node.html"
 })
 export class IndeterminateNodeDemo {
-
     example1 = EXAMPLE_1;
     example2 = EXAMPLE_2;
     example3 = EXAMPLE_3;

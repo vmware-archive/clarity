@@ -4,11 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Wizard} from "../wizard";
 import {TestContext} from "../../utils/testing/helpers.spec";
+import {HeaderActionsTestComponent} from "../test-components/header-action-wizard.mock";
+import {Wizard} from "../wizard";
+
 import {HeaderActionService} from "./header-actions";
 import {WizardNavigationService} from "./wizard-navigation";
-import { HeaderActionsTestComponent } from "../test-components/header-action-wizard.mock";
 
 export default function(): void {
     describe("Header Actions Service", function() {
@@ -28,7 +29,7 @@ export default function(): void {
         });
 
         it(".currentPageHasHeaderActions indicates if the current page has header actions", function() {
-            let lastPage = wizardNavigationService.pageCollection.lastPage;
+            const lastPage = wizardNavigationService.pageCollection.lastPage;
 
             expect(headerActionService.currentPageHasHeaderActions).toBe(true);
             wizardNavigationService.currentPage = lastPage;
@@ -36,7 +37,7 @@ export default function(): void {
         });
 
         it(".showWizardHeaderActions indicates if other pages have the header actions", function() {
-            let lastPage = wizardNavigationService.pageCollection.lastPage;
+            const lastPage = wizardNavigationService.pageCollection.lastPage;
             expect(headerActionService.showWizardHeaderActions).toBe(false);
 
             wizardNavigationService.currentPage = lastPage;

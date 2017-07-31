@@ -4,15 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
-import { CodeHighlight } from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
+import {Component, ViewChild} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-wizard-ghosts",
-    templateUrl: "./wizard-ghosts.demo.html"
-})
+import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
+import {Wizard} from "../../clarity-angular/wizard/wizard";
+
+@Component({moduleId: module.id, selector: "clr-wizard-ghosts", templateUrl: "./wizard-ghosts.demo.html"})
 export class WizardGhostsDemo {
     @ViewChild("wizard") wizard: Wizard;
     @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
@@ -20,18 +17,15 @@ export class WizardGhostsDemo {
     public model: any;
 
     public ngOnInit() {
-        this.model = {
-            typesOfPages: ""
-        };
+        this.model = {typesOfPages: ""};
     }
 
     open: boolean = false;
 
-    typesOfPages = [ "All", "Odd", "First and even", "First and last" ];
+    typesOfPages = ["All", "Odd", "First and even", "First and last"];
 
     get isAll(): boolean {
-        return this.model.typesOfPages === "" || this.model.typesOfPages === "All" ||
-            this.model.typesOfPages === null;
+        return this.model.typesOfPages === "" || this.model.typesOfPages === "All" || this.model.typesOfPages === null;
     }
 
     get showEvenPages(): boolean {

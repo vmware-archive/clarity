@@ -8,9 +8,10 @@
  * when we have the time. This will be very helpful in future refactors due to Angular upgrades, or simply
  * just to avoid leaks since destroying fixtures is automatic with this.
  */
-import { Type, DebugElement, ModuleWithProviders } from "@angular/core";
-import { TestBed, ComponentFixture } from "@angular/core/testing";
-import { By } from "@angular/platform-browser";
+import {DebugElement, ModuleWithProviders, Type} from "@angular/core";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {By} from "@angular/platform-browser";
+
 // import { reportSlowSpecs } from "./slow-specs.spec";
 
 export class TestContext<D, C> {
@@ -29,8 +30,8 @@ export class TestContext<D, C> {
         this.testElement = this.fixture.nativeElement;
         this.clarityDebugElement = this.fixture.debugElement.query(By.directive(clarityDirectiveType));
         if (!this.clarityDebugElement) {
-            let componentName = (<any>componentType).name;
-            let clarityDirectiveName = (<any>clarityDirectiveType).name;
+            const componentName = (<any>componentType).name;
+            const clarityDirectiveName = (<any>clarityDirectiveType).name;
             throw new Error(`Test component ${componentName} doesn't contain a ${clarityDirectiveName}`);
         }
         this.clarityDirective = this.clarityDebugElement.injector.get(clarityDirectiveType);
@@ -50,18 +51,15 @@ export class TestContext<D, C> {
 }
 
 // This is so unusable right now, we need to fix it ASAP.
-export function addHelpers(modulesToImport?: Array<Type<any> | ModuleWithProviders | any[]>): void {
+export function addHelpers(modulesToImport?: Array<Type<any>|ModuleWithProviders|any[]>): void {
     beforeEach(function() {
         /*
          * Ideally we would just make "this" a TestContext, but typing "this" in typescript
          * is a bit too new for all IDEs to correctly process it.
          */
         this.create = <D, C>(clarityDirective: Type<D>, testComponent: Type<C>, providers: any[] = []) => {
-            TestBed.configureTestingModule({
-                imports: modulesToImport,
-                declarations: [testComponent],
-                providers: providers
-            });
+            TestBed.configureTestingModule(
+                {imports: modulesToImport, declarations: [testComponent], providers: providers});
             return this._context = new TestContext<D, C>(clarityDirective, testComponent);
         };
     });

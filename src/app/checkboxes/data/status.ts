@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Server } from "./server";
-import { SERVERS } from "./values";
+import {Server} from "./server";
+import {SERVERS} from "./values";
 
 export class Status {
     private _all: Server[];

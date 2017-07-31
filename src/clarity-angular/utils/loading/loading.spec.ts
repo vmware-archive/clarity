@@ -3,17 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, ViewChild, Injectable} from "@angular/core";
+import {Component, Injectable, ViewChild} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
+
 import {Loading} from "./loading";
 import {LoadingListener} from "./loading-listener";
 
 describe("Loading directive", function() {
-    beforeEach(function () {
-        TestBed.configureTestingModule({
-            declarations: [Loading, FullTest],
-            providers: [{provide: LoadingListener, useClass: DummyListener}]
-        });
+    beforeEach(function() {
+        TestBed.configureTestingModule(
+            {declarations: [Loading, FullTest], providers: [{provide: LoadingListener, useClass: DummyListener}]});
         this.fixture = TestBed.createComponent(FullTest);
         this.fixture.detectChanges();
         this.testComponent = this.fixture.componentInstance;
@@ -25,7 +24,7 @@ describe("Loading directive", function() {
         this.fixture.destroy();
     });
 
-    it("notifies the listener when the [clrLoading] input changes", function () {
+    it("notifies the listener when the [clrLoading] input changes", function() {
         expect(this.listener.loading).toBe(false);
         this.testComponent.loading = true;
         this.fixture.detectChanges();
@@ -35,7 +34,7 @@ describe("Loading directive", function() {
         expect(this.listener.loading).toBe(false);
     });
 
-    it("ignores successive inputs with the same value", function () {
+    it("ignores successive inputs with the same value", function() {
         spyOn(this.listener, "startLoading");
         spyOn(this.listener, "doneLoading");
         this.testComponent.loading = false;
@@ -50,7 +49,7 @@ describe("Loading directive", function() {
         expect(this.listener.startLoading).toHaveBeenCalledTimes(1);
     });
 
-    it("stops loading when destroyed", function () {
+    it("stops loading when destroyed", function() {
         this.testComponent.loading = true;
         this.fixture.detectChanges();
         expect(this.listener.loading).toBe(true);
@@ -61,9 +60,7 @@ describe("Loading directive", function() {
 });
 
 
-@Component({
-    template: `<div *ngIf="displayed" [clrLoading]="loading"></div>`
-})
+@Component({template: `<div *ngIf="displayed" [clrLoading]="loading"></div>`})
 class FullTest {
     @ViewChild(Loading) loadingDirective: Loading;
 

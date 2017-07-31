@@ -12,11 +12,9 @@ import {Component} from "@angular/core";
     styleUrls: ["../../button-group.demo.css"]
 })
 export class MoveButtonInMenuDemo {
-
     flip: boolean = false;
 
     toggleFlip() {
         this.flip = !this.flip;
     }
-
 }

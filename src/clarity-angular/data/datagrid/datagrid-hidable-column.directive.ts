@@ -1,16 +1,14 @@
-import {
-    Directive,
-    TemplateRef,
-    ViewContainerRef,
-    Input
-} from "@angular/core";
+/*
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+import {Directive, Input, TemplateRef, ViewContainerRef} from "@angular/core";
 
-import { DatagridHideableColumn } from "./datagrid-hideable-column";
-import { DatagridColumn } from "./datagrid-column";
+import {DatagridColumn} from "./datagrid-column";
+import {DatagridHideableColumn} from "./datagrid-hideable-column";
 
-@Directive({
-    selector: "[clrDgHideableColumn]"
-})
+@Directive({selector: "[clrDgHideableColumn]"})
 
 /**
  * @class DatagridHideableColumnDirective
@@ -29,7 +27,6 @@ import { DatagridColumn } from "./datagrid-column";
  *
  */
 export class DatagridHideableColumnDirective {
-
     /**
      * @property _hidden
      *
@@ -61,9 +58,9 @@ export class DatagridHideableColumnDirective {
      *
      */
     @Input("clrDgHideableColumn")
-    set clrDgHideableColumn( value: any ) {
+    set clrDgHideableColumn(value: any) {
         this._hidden = (value && value.hidden) ? value.hidden : false;
-        if ( this.dgColumn.hideable ) {
+        if (this.dgColumn.hideable) {
             this.dgColumn.hideable.hidden = (value && value.hidden) ? value.hidden : false;
         }
     }
@@ -98,10 +95,8 @@ export class DatagridHideableColumnDirective {
      * @param hideableColumnService
      * @param dgColumn
      */
-    constructor( private templateRef: TemplateRef<any>,
-                 private viewContainerRef: ViewContainerRef,
-                 private dgColumn: DatagridColumn ) {
-
+    constructor(private templateRef: TemplateRef<any>, private viewContainerRef: ViewContainerRef,
+                private dgColumn: DatagridColumn) {
         this.columnId = dgColumn.columnId;
 
         // Use the templateRef to create this view

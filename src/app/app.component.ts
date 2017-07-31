@@ -3,9 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ViewEncapsulation } from "@angular/core";
-import { Route } from "@angular/router";
-import { APP_ROUTES } from "./app.routing";
+import {Component, ViewEncapsulation} from "@angular/core";
+import {Route} from "@angular/router";
+import {APP_ROUTES} from "./app.routing";
 
 @Component({
     selector: "my-app",

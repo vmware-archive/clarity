@@ -5,7 +5,7 @@
  */
 
 import {AbstractTreeSelection} from "./abstract-tree-selection";
-export default function (): void {
+export default function(): void {
     describe("Abstract Tree Selection", () => {
         let root: TestTreeSelection;
 
@@ -29,12 +29,12 @@ export default function (): void {
             expect(root.selected).toBe(false);
             root.selected = true;
             expect(root.indeterminate).toBe(false);
-            for (let testChild of root.testChildren) {
+            for (const testChild of root.testChildren) {
                 expect(testChild.selected).toBe(true);
             }
 
-            let testChild = <TestTreeSelection>root.testChildren[0];
-            for (let testGrandChildren of testChild.testChildren) {
+            const rootTestChild = <TestTreeSelection>root.testChildren[0];
+            for (const testGrandChildren of rootTestChild.testChildren) {
                 expect(testGrandChildren.selected).toBe(true);
             }
         });
@@ -50,7 +50,7 @@ export default function (): void {
         });
 
         it("Root is indeterminate when not all grandchildren are selected", () => {
-            let testChild = <TestTreeSelection>root.testChildren[0];
+            const testChild = <TestTreeSelection>root.testChildren[0];
             expect(testChild.testChildren[0].selected).toBe(false);
             testChild.testChildren[0].selected = true;
 
@@ -67,9 +67,9 @@ export default function (): void {
         });
 
         it("Root is indeterminate when not all grandchildren are selected - Part 2", () => {
-            let testChild = <TestTreeSelection>root.testChildren[0];
+            const testChild = <TestTreeSelection>root.testChildren[0];
 
-            let testGrandChild = <TestTreeSelection>testChild.testChildren[0];
+            const testGrandChild = <TestTreeSelection>testChild.testChildren[0];
             expect(testGrandChild.testChildren[0].selected).toBe(false);
 
             testGrandChild.testChildren[0].selected = true;
@@ -89,8 +89,8 @@ export default function (): void {
         });
 
         it("Selection Changed is called when the selection is updated", () => {
-            let testChild = <TestTreeSelection>root.testChildren[0];
-            let testGrandChild = <TestTreeSelection>testChild.testChildren[0];
+            const testChild = <TestTreeSelection>root.testChildren[0];
+            const testGrandChild = <TestTreeSelection>testChild.testChildren[0];
 
             expect(root.selectedChangedTracker).toBe(0);
             expect(testChild.selectedChangedTracker).toBe(0);
@@ -107,7 +107,7 @@ export default function (): void {
         });
 
         it("Indeterminate Change is called when not all child nodes are selected at once", () => {
-            let testChild = <TestTreeSelection>root.testChildren[0];
+            const testChild = <TestTreeSelection>root.testChildren[0];
 
             expect(root.indeterminateChangedTracker).toBe(0);
 
@@ -119,7 +119,6 @@ export default function (): void {
 }
 
 class TestTreeSelection extends AbstractTreeSelection {
-
     testChildren: AbstractTreeSelection[] = [];
 
     constructor(parent: TestTreeSelection) {
@@ -127,22 +126,22 @@ class TestTreeSelection extends AbstractTreeSelection {
     }
 
     buildTestTreeSelection(): void {
-        let a1Node: TestTreeSelection = new TestTreeSelection(this);
-        let b1Node: TestTreeSelection = new TestTreeSelection(this);
-        let c1Node: TestTreeSelection = new TestTreeSelection(this);
+        const a1Node: TestTreeSelection = new TestTreeSelection(this);
+        const b1Node: TestTreeSelection = new TestTreeSelection(this);
+        const c1Node: TestTreeSelection = new TestTreeSelection(this);
 
-        let aa1Node: TestTreeSelection = new TestTreeSelection(a1Node);
+        const aa1Node: TestTreeSelection = new TestTreeSelection(a1Node);
 
-        let aa2Node: TestTreeSelection = new TestTreeSelection(a1Node);
+        const aa2Node: TestTreeSelection = new TestTreeSelection(a1Node);
 
-        let aa3Node: TestTreeSelection = new TestTreeSelection(a1Node);
+        const aa3Node: TestTreeSelection = new TestTreeSelection(a1Node);
 
         a1Node.testChildren = [aa1Node, aa2Node, aa3Node];
 
         this.testChildren = [a1Node, b1Node, c1Node];
 
-        //Just going insane with a 4 level tree
-        let aaa1Node: TestTreeSelection = new TestTreeSelection(aa1Node);
+        // Just going insane with a 4 level tree
+        const aaa1Node: TestTreeSelection = new TestTreeSelection(aa1Node);
 
         aa1Node.testChildren = [aaa1Node];
     }

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { descriptorConfig } from "../utils/descriptor-config";
+import {descriptorConfig} from "../utils/descriptor-config";
 
 /* tslint:disable:max-line-length */
 const coreShapes: any = {
@@ -429,17 +429,17 @@ const coreShapes: any = {
 
 };
 
-Object.defineProperty(coreShapes, "house", descriptorConfig(coreShapes["home"]));
-Object.defineProperty(coreShapes, "settings", descriptorConfig(coreShapes["cog"]));
-Object.defineProperty(coreShapes, "success", descriptorConfig(coreShapes["check"]));
-Object.defineProperty(coreShapes, "close", descriptorConfig(coreShapes["times"]));
+Object.defineProperty(coreShapes, "house", descriptorConfig(coreShapes.home));
+Object.defineProperty(coreShapes, "settings", descriptorConfig(coreShapes.cog));
+Object.defineProperty(coreShapes, "success", descriptorConfig(coreShapes.check));
+Object.defineProperty(coreShapes, "close", descriptorConfig(coreShapes.times));
 Object.defineProperty(coreShapes, "warning", descriptorConfig(coreShapes["exclamation-triangle"]));
 Object.defineProperty(coreShapes, "error", descriptorConfig(coreShapes["exclamation-circle"]));
 Object.defineProperty(coreShapes, "info", descriptorConfig(coreShapes["info-circle"]));
-Object.defineProperty(coreShapes, "menu", descriptorConfig(coreShapes["bars"]));
-Object.defineProperty(coreShapes, "avatar", descriptorConfig(coreShapes["user"]));
-Object.defineProperty(coreShapes, "caret", descriptorConfig(coreShapes["angle"]));
-Object.defineProperty(coreShapes, "directory", descriptorConfig(coreShapes["folder"]));
-Object.defineProperty(coreShapes, "notification", descriptorConfig(coreShapes["bell"]));
+Object.defineProperty(coreShapes, "menu", descriptorConfig(coreShapes.bars));
+Object.defineProperty(coreShapes, "avatar", descriptorConfig(coreShapes.user));
+Object.defineProperty(coreShapes, "caret", descriptorConfig(coreShapes.angle));
+Object.defineProperty(coreShapes, "directory", descriptorConfig(coreShapes.folder));
+Object.defineProperty(coreShapes, "notification", descriptorConfig(coreShapes.bell));
 
-export { coreShapes as CoreShapes };
+export {coreShapes as CoreShapes};

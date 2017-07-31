@@ -4,7 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    ComponentFactoryResolver, Directive, ElementRef, HostListener, Inject, Input, ViewContainerRef
+    ComponentFactoryResolver,
+    Directive,
+    ElementRef,
+    HostListener,
+    Inject,
+    Input,
+    ViewContainerRef
 } from "@angular/core";
 import {IF_ACTIVE_ID, IfActiveService} from "../../utils/conditional/if-active.service";
 import {TemplateRefContainer} from "../../utils/template-ref/template-ref-container";
@@ -17,7 +23,7 @@ let nbTabLinkComponents: number = 0;
     host: {
         "[id]": "tabLinkId",
         "[attr.aria-selected]": "active",
-        "[attr.aria-controls]" : "ariaControls",
+        "[attr.aria-controls]": "ariaControls",
         "role": "presentation",
         "[class.btn]": "true",
         "[class.btn-link]": "!inOverflow",
@@ -27,14 +33,12 @@ let nbTabLinkComponents: number = 0;
     }
 })
 export class TabLinkDirective {
-
     @Input("clrTabLinkInOverflow") inOverflow: boolean;
     templateRefContainer: TemplateRefContainer;
 
     constructor(public ifActiveService: IfActiveService, @Inject(IF_ACTIVE_ID) private id: number,
-                private  ariaService: AriaService, private el: ElementRef,
-                private cfr: ComponentFactoryResolver, private viewContainerRef: ViewContainerRef) {
-
+                private ariaService: AriaService, private el: ElementRef, private cfr: ComponentFactoryResolver,
+                private viewContainerRef: ViewContainerRef) {
         if (!this.tabLinkId) {
             this.tabLinkId = "clr-tab-link-" + (nbTabLinkComponents++);
         }
@@ -42,9 +46,9 @@ export class TabLinkDirective {
         // Tab links can be rendered in one of two places: in the main area or inside the overflow dropdown menu.
         // Here, we create a container so that its template can be used to create embeddedView on the fly.
         // See TabsService's renderView() method and how it's used in Tabs class for an example.
-        let factory = this.cfr.resolveComponentFactory(TemplateRefContainer);
-        this.templateRefContainer = this.viewContainerRef.createComponent(
-            factory, 1, undefined, [[this.el.nativeElement]]).instance;
+        const factory = this.cfr.resolveComponentFactory(TemplateRefContainer);
+        this.templateRefContainer =
+            this.viewContainerRef.createComponent(factory, 1, undefined, [[this.el.nativeElement]]).instance;
 
         // if there's no active tab, set the one associated with this link as active
         // it will be overridden if a tab created after this one sets it explicitly
@@ -63,7 +67,8 @@ export class TabLinkDirective {
         return this.ariaService.ariaLabelledBy;
     }
 
-    @Input("id") set tabLinkId(id: string) {
+    @Input("id")
+    set tabLinkId(id: string) {
         this.ariaService.ariaLabelledBy = id;
     }
 
@@ -75,5 +80,4 @@ export class TabLinkDirective {
     get active() {
         return this.ifActiveService.current === this.id;
     }
-
 }

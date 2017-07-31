@@ -10,7 +10,6 @@ import {LoadingListener} from "../../../utils/loading/loading-listener";
 
 @Injectable()
 export class Expand implements LoadingListener {
-
     public expandable: number = 0;
     public replace: boolean = false;
 
@@ -40,9 +39,9 @@ export class Expand implements LoadingListener {
         }
     }
 
-    //TODO: Move this to the datagrid RowExpand.
-    //I spent some time doing this but ran into a couple of issues
-    //Will take care of this later.
+    // TODO: Move this to the datagrid RowExpand.
+    // I spent some time doing this but ran into a couple of issues
+    // Will take care of this later.
     private _animate: Subject<any> = new Subject<any>();
     public get animate(): Observable<boolean> {
         return this._animate.asObservable();

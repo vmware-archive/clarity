@@ -17,7 +17,7 @@ export class ProgressBarInlineCardsDemo implements OnInit {
     value3: number = 0;
 
     getNewValue(): number {
-        let random: number = Math.floor(Math.random() * 98) + 1;
+        const random: number = Math.floor(Math.random() * 98) + 1;
         return parseInt(random + "", 10);
     }
 
@@ -27,7 +27,7 @@ export class ProgressBarInlineCardsDemo implements OnInit {
         this.value3 = this.getNewValue();
     }
 
-    //For CSS Regression Tests
+    // For CSS Regression Tests
     setInitialValues(): void {
         this.value1 = 55;
         this.value2 = 55;

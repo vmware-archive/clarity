@@ -59,7 +59,7 @@ export class DatagridSelectionDemo {
     onDelete(user: User) {
         this.cleanUp();
         if (user) {
-            this.toDelete = [ user ];
+            this.toDelete = [user];
         } else {
             this.toDelete = this.selected.slice();
         }

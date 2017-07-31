@@ -77,13 +77,13 @@ export class DatagridFullDemo {
             return;
         }
         this.loading = true;
-        let filters: {[key: string]: any[]} = {};
+        const filters: {[key: string]: any[]} = {};
         if (state.filters) {
-            for (let filter of state.filters) {
+            for (const filter of state.filters) {
                 if (filter instanceof ColorFilter) {
-                    filters["color"] = (<ColorFilter>filter).listSelected();
+                    filters.color = (<ColorFilter>filter).listSelected();
                 } else {
-                    let {property, value} = <{property: string, value: string}>filter;
+                    const {property, value} = <{property: string, value: string}>filter;
                     filters[property] = [value];
                 }
             }

@@ -4,8 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ViewChildren, QueryList} from "@angular/core";
+import {Component, QueryList, ViewChildren} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
+
 import {PopoverDirectiveOld} from "./popover-old.directive";
 
 describe("Popover directive (old)", () => {
@@ -14,16 +15,14 @@ describe("Popover directive (old)", () => {
     let compiled: any;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            declarations: [TestComponent, DesugaredSyntaxComponent, PopoverDirectiveOld]
-        });
+        TestBed.configureTestingModule({declarations: [TestComponent, DesugaredSyntaxComponent, PopoverDirectiveOld]});
     });
 
     afterEach(() => {
         fixture.destroy();
     });
 
-    it("projects content", function () {
+    it("projects content", function() {
         fixture = TestBed.createComponent(TestComponent);
         compiled = fixture.nativeElement;
 
@@ -31,7 +30,7 @@ describe("Popover directive (old)", () => {
         expect(compiled.textContent).toMatch(/anchor2/);
     });
 
-    it("shows popover content if open", function () {
+    it("shows popover content if open", function() {
         fixture = TestBed.createComponent(TestComponent);
         compiled = fixture.nativeElement;
 
@@ -41,7 +40,7 @@ describe("Popover directive (old)", () => {
         expect(compiled.textContent).not.toMatch(/popover2/);
     });
 
-    it("queues up opening of subsequent popovers if one is already open", function () {
+    it("queues up opening of subsequent popovers if one is already open", function() {
         fixture = TestBed.createComponent(TestComponent);
         compiled = fixture.nativeElement;
 
@@ -72,7 +71,7 @@ describe("Popover directive (old)", () => {
         expect(compiled.textContent).toMatch(/popover3/);
     });
 
-    it("shows popover content when using desugared syntax", function () {
+    it("shows popover content when using desugared syntax", function() {
         fixture = TestBed.createComponent(DesugaredSyntaxComponent);
         compiled = fixture.nativeElement;
 

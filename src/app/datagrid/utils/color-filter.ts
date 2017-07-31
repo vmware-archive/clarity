@@ -27,8 +27,8 @@ export class ColorFilter implements Filter<User> {
     changes: EventEmitter<any> = new EventEmitter<any>(false);
 
     listSelected(): string[] {
-        let list: string[] = [];
-        for (let color in this.selectedColors) {
+        const list: string[] = [];
+        for (const color in this.selectedColors) {
             if (this.selectedColors[color]) {
                 list.push(color);
             }

@@ -1,11 +1,17 @@
+/*
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
 import {Directive, EmbeddedViewRef, EventEmitter, Input, Output, TemplateRef, ViewContainerRef} from "@angular/core";
-import {PopoverOptions, Point, Popover} from "./popover";
 import {Subscription} from "rxjs/Subscription";
 
-let openCount: number = 0;
-let waiting: Array<() => void> = []; // pending create functions
+import {Point, Popover, PopoverOptions} from "./popover";
 
-@Directive({ selector: "[clrPopoverOld]"})
+let openCount: number = 0;
+const waiting: Array<() => void> = [];  // pending create functions
+
+@Directive({selector: "[clrPopoverOld]"})
 export class PopoverDirectiveOld {
     private _popoverInstance: Popover;
     private _subscription: Subscription;
@@ -17,10 +23,10 @@ export class PopoverDirectiveOld {
     @Output("clrPopoverOldChange") clrPopoverOldChange = new EventEmitter<boolean>(false);
 
 
-    constructor(private templateRef: TemplateRef<any>, private viewContainer: ViewContainerRef) {
-    }
+    constructor(private templateRef: TemplateRef<any>, private viewContainer: ViewContainerRef) {}
 
-    @Input() set clrPopoverOld(open: boolean) {
+    @Input()
+    set clrPopoverOld(open: boolean) {
         if (open) {
             if (this.popoverOptions.allowMultipleOpen) {
                 this.createPopover();
@@ -39,7 +45,7 @@ export class PopoverDirectiveOld {
 
             if (!this.popoverOptions.allowMultipleOpen) {
                 if (waiting.length > 0) {
-                    let createPopoverFn = waiting.shift();
+                    const createPopoverFn = waiting.shift();
                     createPopoverFn();
                 }
             }
@@ -47,25 +53,26 @@ export class PopoverDirectiveOld {
     }
 
     createPopover() {
-        let embeddedViewRef: EmbeddedViewRef<any>
-            = <EmbeddedViewRef<any>>this.viewContainer.createEmbeddedView(this.templateRef);
+        const embeddedViewRef: EmbeddedViewRef<any> =
+            <EmbeddedViewRef<any>>this.viewContainer.createEmbeddedView(this.templateRef);
 
-        //TODO: Not sure of the risks associated with using this. Find an alternative.
-        //Needed for find the correct height and width of dynamically created views
-        //inside of the popover. For Eg: Button Groups
+        // TODO: Not sure of the risks associated with using this. Find an alternative.
+        // Needed for find the correct height and width of dynamically created views
+        // inside of the popover. For Eg: Button Groups
         embeddedViewRef.detectChanges();
 
         // filter out other nodes in the view ref so we are only left with element nodes
-        let elementNodes: HTMLElement[] = embeddedViewRef.rootNodes.filter((node: any) => {
-           return node.nodeType === 1;
+        const elementNodes: HTMLElement[] = embeddedViewRef.rootNodes.filter((node: any) => {
+            return node.nodeType === 1;
         });
 
         // we take the first element node in the embedded view; usually there should only be one anyways
         this._popoverInstance = new Popover(elementNodes[0]);
-        this._subscription = this._popoverInstance.anchor(
-            this.anchorElem, this.anchorPoint, this.popoverPoint, this.popoverOptions).subscribe(() => {
-            this.clrPopoverOldChange.emit(false);
-        });
+        this._subscription =
+            this._popoverInstance.anchor(this.anchorElem, this.anchorPoint, this.popoverPoint, this.popoverOptions)
+                .subscribe(() => {
+                    this.clrPopoverOldChange.emit(false);
+                });
         openCount++;
     }
 

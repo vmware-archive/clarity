@@ -1,14 +1,16 @@
-// /*
-//  * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
-//  * This software is released under MIT license.
-//  * The full license information can be found in LICENSE in the root directory of this project.
-//  */
+/*
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+import {Component} from "@angular/core";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { ClrSignpostModule } from "./signpost.module";
-import { ClrIconModule } from "../../icon/icon.module";
-import { IfOpenService } from "../../utils/conditional/if-open.service";
-import { Component } from "@angular/core";
+import {ClrIconModule} from "../../icon/icon.module";
+import {IfOpenService} from "../../utils/conditional/if-open.service";
+
+import {ClrSignpostModule} from "./signpost.module";
+
 export default function(): void {
     describe("SignpostToggle component", function() {
         let fixture: ComponentFixture<any>;
@@ -16,20 +18,17 @@ export default function(): void {
         let ifOpenService: IfOpenService;
 
         beforeEach(() => {
-           TestBed.configureTestingModule({
-               imports: [ ClrSignpostModule, ClrIconModule ],
-               declarations: [ TestTrigger ],
-               providers: [ IfOpenService ]
-           });
+            TestBed.configureTestingModule(
+                {imports: [ClrSignpostModule, ClrIconModule], declarations: [TestTrigger], providers: [IfOpenService]});
 
-           fixture = TestBed.createComponent(TestTrigger);
-           fixture.detectChanges();
-           clarityElement = fixture.nativeElement;
-           ifOpenService = TestBed.get(IfOpenService);
+            fixture = TestBed.createComponent(TestTrigger);
+            fixture.detectChanges();
+            clarityElement = fixture.nativeElement;
+            ifOpenService = TestBed.get(IfOpenService);
         });
 
         it("should toggle the IfOpenService.open property on click", function() {
-            let trigger: HTMLElement = clarityElement.querySelector(".signpost-action");
+            const trigger: HTMLElement = clarityElement.querySelector(".signpost-action");
 
             expect(ifOpenService.open).toBeUndefined();
             trigger.click();
@@ -54,8 +53,4 @@ export default function(): void {
 })
 
 class TestTrigger {
-
 }
-
-
-

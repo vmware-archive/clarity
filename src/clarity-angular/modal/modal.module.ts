@@ -4,23 +4,18 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { ClrIconModule } from "../icon/icon.module";
-import { ClrFocusTrapModule } from "../utils/focus-trap/focus-trap.module";
-import { MODAL_DIRECTIVES } from "./index";
+import {CommonModule} from "@angular/common";
+import {NgModule} from "@angular/core";
+
+import {ClrIconModule} from "../icon/icon.module";
+import {ClrFocusTrapModule} from "../utils/focus-trap/focus-trap.module";
+
+import {MODAL_DIRECTIVES} from "./index";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ClrIconModule,
-        ClrFocusTrapModule
-    ],
-    declarations: [
-        MODAL_DIRECTIVES
-    ],
-    exports: [
-        MODAL_DIRECTIVES
-    ]
+    imports: [CommonModule, ClrIconModule, ClrFocusTrapModule],
+    declarations: [MODAL_DIRECTIVES],
+    exports: [MODAL_DIRECTIVES]
 })
-export class ClrModalModule {}
+export class ClrModalModule {
+}

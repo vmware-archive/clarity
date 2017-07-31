@@ -4,27 +4,30 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-import {TestContext} from "./helpers.spec";
+
+import {Expand} from "../../utils/expand/providers/expand";
+
+import {DatagridHideableColumn} from "./datagrid-hideable-column";
 import {DatagridRowDetail} from "./datagrid-row-detail";
-import {Selection, SelectionType} from "./providers/selection";
-import {Items} from "./providers/items";
+import {TestContext} from "./helpers.spec";
 import {FiltersProvider} from "./providers/filters";
-import {Sort} from "./providers/sort";
+import {HideableColumnService} from "./providers/hideable-column.service";
+import {Items} from "./providers/items";
 import {Page} from "./providers/page";
 import {RowActionService} from "./providers/row-action-service";
+import {Selection, SelectionType} from "./providers/selection";
+import {Sort} from "./providers/sort";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
-import { HideableColumnService } from "./providers/hideable-column.service";
-import {Expand} from "../../utils/expand/providers/expand";
-import {DatagridHideableColumn} from "./datagrid-hideable-column";
 
 export default function(): void {
     describe("DatagridRowDetail component", function() {
         let context: TestContext<DatagridRowDetail, FullTest>;
 
         beforeEach(function() {
-            context = this.create(DatagridRowDetail, FullTest,
-                [Selection, Items, FiltersProvider, Sort, Page, RowActionService, Expand, DatagridRenderOrganizer,
-                    HideableColumnService]);
+            context = this.create(DatagridRowDetail, FullTest, [
+                Selection, Items, FiltersProvider, Sort, Page, RowActionService, Expand, DatagridRenderOrganizer,
+                HideableColumnService
+            ]);
         });
 
         it("projects content", function() {
@@ -50,7 +53,7 @@ export default function(): void {
         });
 
         it("updates the Expand provider with the [clrDgReplace] input", function() {
-            let expand: Expand = context.getClarityProvider(Expand);
+            const expand: Expand = context.getClarityProvider(Expand);
             expect(expand.replace).toBe(false);
             context.testComponent.replace = true;
             context.detectChanges();
@@ -62,7 +65,7 @@ export default function(): void {
         });
 
         it("displays an extra empty cell when the datagrid is selectable", function() {
-            let selection: Selection = context.getClarityProvider(Selection);
+            const selection: Selection = context.getClarityProvider(Selection);
             selection.selectionType = SelectionType.Multi;
             context.detectChanges();
             expect(context.clarityElement.querySelectorAll(".datagrid-fixed-column").length).toBe(2);
@@ -78,7 +81,7 @@ export default function(): void {
         });
 
         it("displays as many extra empty cells as needed", function() {
-            let selection: Selection = context.getClarityProvider(Selection);
+            const selection: Selection = context.getClarityProvider(Selection);
             selection.selectionType = SelectionType.Multi;
             context.getClarityProvider(RowActionService).register();
             context.detectChanges();
@@ -89,7 +92,7 @@ export default function(): void {
             context.testComponent.replace = true;
             context.detectChanges();
             expect(context.clarityElement.querySelectorAll(".datagrid-fixed-column").length).toBe(0);
-            let selection: Selection = context.getClarityProvider(Selection);
+            const selection: Selection = context.getClarityProvider(Selection);
             selection.selectionType = SelectionType.Multi;
             context.getClarityProvider(RowActionService).register();
             context.detectChanges();
@@ -101,17 +104,18 @@ export default function(): void {
         let context: TestContext<DatagridRowDetail, HiddenTest>;
         let hideableColumnService: HideableColumnService;
 
-        beforeEach(function () {
-            context = this.create(DatagridRowDetail, HiddenTest,
-                [Selection, Items, FiltersProvider, Sort, Page, RowActionService, Expand,
-                    DatagridRenderOrganizer, HideableColumnService]);
+        beforeEach(function() {
+            context = this.create(DatagridRowDetail, HiddenTest, [
+                Selection, Items, FiltersProvider, Sort, Page, RowActionService, Expand, DatagridRenderOrganizer,
+                HideableColumnService
+            ]);
             hideableColumnService = context.getClarityProvider(HideableColumnService);
         });
 
-        it("should update cells for columns", function () {
+        it("should update cells for columns", function() {
             spyOn(context.clarityDirective, "updateCellsForColumns");
 
-            let hiddenColumns: DatagridHideableColumn[] = [
+            const hiddenColumns: DatagridHideableColumn[] = [
                 new DatagridHideableColumn(undefined, "dg-col-0", false),
                 new DatagridHideableColumn(undefined, "dg-col-1", true)
             ];
@@ -144,5 +148,4 @@ class FullTest {
     `
 })
 class HiddenTest {
-
 }

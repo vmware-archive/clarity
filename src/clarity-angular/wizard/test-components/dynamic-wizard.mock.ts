@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../wizard";
+import {Component, ViewChild} from "@angular/core";
+import {Wizard} from "../wizard";
 
 @Component({
     template: `
@@ -28,6 +28,6 @@ import { Wizard } from "../wizard";
 export class DynamicWizardTestComponent {
     @ViewChild("wizard") wizard: Wizard;
     open: boolean = true;
-    pages = [ 1, 2, 4 ];
+    pages = [1, 2, 4];
     showSecondPage = true;
 }

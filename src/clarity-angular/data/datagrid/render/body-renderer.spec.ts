@@ -4,24 +4,26 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
+
 import {TestContext} from "../helpers.spec";
+
 import {DatagridBodyRenderer} from "./body-renderer";
-import {DatagridRenderOrganizer} from "./render-organizer";
 import {DomAdapter} from "./dom-adapter";
-import {MockDomAdapter, MOCK_DOM_ADAPTER_PROVIDER} from "./dom-adapter.mock";
+import {MOCK_DOM_ADAPTER_PROVIDER, MockDomAdapter} from "./dom-adapter.mock";
+import {DatagridRenderOrganizer} from "./render-organizer";
 
 export default function(): void {
     describe("DatagridBodyRenderer directive", function() {
         let context: TestContext<DatagridBodyRenderer, SimpleTest>;
 
         beforeEach(function() {
-            context = this.create(DatagridBodyRenderer, SimpleTest,
-                [DatagridRenderOrganizer, MOCK_DOM_ADAPTER_PROVIDER]);
+            context =
+                this.create(DatagridBodyRenderer, SimpleTest, [DatagridRenderOrganizer, MOCK_DOM_ADAPTER_PROVIDER]);
         });
 
         it("emits its scrollbar width when notified of a change", function() {
-            let mockDomAdapter: MockDomAdapter = context.getClarityProvider(DomAdapter);
-            let organizer: DatagridRenderOrganizer = context.getClarityProvider(DatagridRenderOrganizer);
+            const mockDomAdapter: MockDomAdapter = context.getClarityProvider(DomAdapter);
+            const organizer: DatagridRenderOrganizer = context.getClarityProvider(DatagridRenderOrganizer);
             let scrollbarWidth: number;
             organizer.scrollbarWidth.subscribe(width => scrollbarWidth = width);
             expect(scrollbarWidth).toBeUndefined();
@@ -34,8 +36,6 @@ export default function(): void {
     });
 }
 
-@Component({
-    template: `<div clrDgBody>Hello world</div>`
-})
+@Component({template: `<div clrDgBody>Hello world</div>`})
 class SimpleTest {
 }

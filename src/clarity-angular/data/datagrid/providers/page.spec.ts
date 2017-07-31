@@ -102,4 +102,4 @@ export default function(): void {
         });
 
     });
-};
+}

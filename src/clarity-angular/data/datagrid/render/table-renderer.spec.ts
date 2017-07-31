@@ -4,10 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
+
 import {TestContext} from "../helpers.spec";
-import {DatagridTableRenderer} from "./table-renderer";
+
 import {DatagridRenderOrganizer} from "./render-organizer";
-import {MockDatagridRenderOrganizer, MOCK_ORGANIZER_PROVIDER} from "./render-organizer.mock";
+import {MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer} from "./render-organizer.mock";
+import {DatagridTableRenderer} from "./table-renderer";
 
 export default function(): void {
     describe("DatagridTableRenderer directive", function() {
@@ -29,8 +31,6 @@ export default function(): void {
     });
 }
 
-@Component({
-    template: `<div clrDgTableWrapper>Hello World</div>`
-})
+@Component({template: `<div clrDgTableWrapper>Hello World</div>`})
 class SimpleTest {
 }

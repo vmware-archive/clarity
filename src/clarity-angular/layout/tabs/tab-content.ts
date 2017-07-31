@@ -3,13 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    Component,
-    Inject,
-    Input,
-    TemplateRef,
-    ViewChild
-} from "@angular/core";
+import {Component, Inject, Input, TemplateRef, ViewChild} from "@angular/core";
 import {IF_ACTIVE_ID, IfActiveService} from "../../utils/conditional/if-active.service";
 import {AriaService} from "./aria-service";
 
@@ -33,7 +27,6 @@ export class TabContent {
 
     constructor(public ifActiveService: IfActiveService, @Inject(IF_ACTIVE_ID) public id: number,
                 private ariaService: AriaService) {
-
         if (!this.tabContentId) {
             this.tabContentId = "clr-tab-content-" + (nbTabContentComponents++);
         }
@@ -47,7 +40,8 @@ export class TabContent {
         return this.ariaService.ariaControls;
     }
 
-    @Input("id") set tabContentId(id: string) {
+    @Input("id")
+    set tabContentId(id: string) {
         this.ariaService.ariaControls = id;
     }
 

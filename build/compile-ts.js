@@ -47,7 +47,11 @@ module.exports = function(tsSources, options, destination) {
         }));
     }
 
-    stream = stream.pipe(ts(tsProject));
+    stream = stream.pipe(ts(tsProject))
+            .once("error", function () {
+                this.once("finish", function () { process.exit(1); }) ;
+            });
+
     if (!prod) {
         stream = stream.pipe(sourcemaps.write(".", {sourceRoot: "/src"}));
     }

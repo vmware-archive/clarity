@@ -3,49 +3,34 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
+import {NgModule} from "@angular/core";
+
 import {ClarityModule} from "../../clarity-angular/clarity.module";
-import {ROUTING} from "./dropdown.demo.routing";
-import {DropdownDemo} from "./dropdown.demo";
+
+import {DropdownAngularCloseItemFalseDemo} from "./dropdown-angular-close-item-false";
+import {DropdownAngularNestedDemo} from "./dropdown-angular-nested";
+import {DropdownAngularPositioningDemo} from "./dropdown-angular-positioning";
+import {DropdownHeaderDemo} from "./dropdown-header";
+import {DropdownStaticButtonLinkToggleDemo} from "./dropdown-static-buttonlink-toggle";
 import {DropdownStaticDefaultDemo} from "./dropdown-static-default";
-import {DropdownStaticPositioningDemo} from "./dropdown-static-positioning";
 import {DropdownStaticFontAwesomeToggleDemo} from "./dropdown-static-fontawesome-toggle";
 import {DropdownStaticIconToggleDemo} from "./dropdown-static-icon-toggle";
-import {DropdownStaticButtonLinkToggleDemo} from "./dropdown-static-buttonlink-toggle";
-import {DropdownAngularPositioningDemo} from "./dropdown-angular-positioning";
-import {DropdownAngularCloseItemFalseDemo} from "./dropdown-angular-close-item-false";
-import {DropdownHeaderDemo} from "./dropdown-header";
-import {DropdownAngularNestedDemo} from "./dropdown-angular-nested";
+import {DropdownStaticPositioningDemo} from "./dropdown-static-positioning";
+import {DropdownDemo} from "./dropdown.demo";
+import {ROUTING} from "./dropdown.demo.routing";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ClarityModule,
-        ROUTING
-    ],
+    imports: [CommonModule, ClarityModule, ROUTING],
     declarations: [
-        DropdownDemo,
-        DropdownStaticDefaultDemo,
-        DropdownStaticPositioningDemo,
-        DropdownStaticFontAwesomeToggleDemo,
-        DropdownStaticIconToggleDemo,
-        DropdownStaticButtonLinkToggleDemo,
-        DropdownAngularPositioningDemo,
-        DropdownAngularNestedDemo,
-        DropdownAngularCloseItemFalseDemo,
-        DropdownHeaderDemo
+        DropdownDemo, DropdownStaticDefaultDemo, DropdownStaticPositioningDemo, DropdownStaticFontAwesomeToggleDemo,
+        DropdownStaticIconToggleDemo, DropdownStaticButtonLinkToggleDemo, DropdownAngularPositioningDemo,
+        DropdownAngularNestedDemo, DropdownAngularCloseItemFalseDemo, DropdownHeaderDemo
     ],
     exports: [
-        DropdownDemo,
-        DropdownStaticDefaultDemo,
-        DropdownStaticPositioningDemo,
-        DropdownStaticIconToggleDemo,
-        DropdownStaticButtonLinkToggleDemo,
-        DropdownAngularPositioningDemo,
-        DropdownAngularNestedDemo,
-        DropdownAngularCloseItemFalseDemo,
-        DropdownHeaderDemo
+        DropdownDemo, DropdownStaticDefaultDemo, DropdownStaticPositioningDemo, DropdownStaticIconToggleDemo,
+        DropdownStaticButtonLinkToggleDemo, DropdownAngularPositioningDemo, DropdownAngularNestedDemo,
+        DropdownAngularCloseItemFalseDemo, DropdownHeaderDemo
     ]
 })
 export default class DropdownDemoModule {

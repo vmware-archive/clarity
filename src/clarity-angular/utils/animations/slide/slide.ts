@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {transition, style, animate, AnimationMetadata} from "@angular/animations";
+import {animate, AnimationMetadata, style, transition} from "@angular/animations";
 
 export function slide(direction: string): AnimationMetadata[] {
     "use strict";
@@ -20,16 +20,7 @@ export function slide(direction: string): AnimationMetadata[] {
         throw new Error("Unknown direction " + direction + " for slide animation.");
     }
     return [
-        transition("void => *", [
-            style({
-                transform: transform
-            }),
-            animate("0.2s ease-in-out")]
-        ),
-        transition("* => void", [
-            animate("0.2s ease-in-out", style({
-                transform: transform
-            }))]
-        )
+        transition("void => *", [style({transform: transform}), animate("0.2s ease-in-out")]),
+        transition("* => void", [animate("0.2s ease-in-out", style({transform: transform}))])
     ];
-};
+}

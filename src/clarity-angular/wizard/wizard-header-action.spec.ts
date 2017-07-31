@@ -4,10 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild, DebugElement } from "@angular/core";
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { WizardHeaderAction } from "./wizard-header-action";
-import { ClrWizardModule } from "./wizard.module";
+import {Component, DebugElement, ViewChild} from "@angular/core";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+
+import {WizardHeaderAction} from "./wizard-header-action";
+import {ClrWizardModule} from "./wizard.module";
 
 @Component({
     template: `
@@ -50,10 +51,7 @@ export default function(): void {
         let debugEl: DebugElement;
 
         beforeEach(() => {
-            TestBed.configureTestingModule({
-                imports: [ClrWizardModule ],
-                declarations: [ TestComponent ]
-            });
+            TestBed.configureTestingModule({imports: [ClrWizardModule], declarations: [TestComponent]});
             fixture = TestBed.createComponent(TestComponent);
             fixture.detectChanges();
             testComponent = fixture.componentInstance;
@@ -67,14 +65,14 @@ export default function(): void {
         describe("Typescript API", () => {
             describe("id", () => {
                 it("should return an indexed id if none is specified", () => {
-                    let haToTest = testComponent.plainDefaultHA;
+                    const haToTest = testComponent.plainDefaultHA;
                     // placement here is important b/c the index updates at a
                     // global level to avoid id conflicts...
                     expect(haToTest.id).toBe("clr-wizard-header-action-0");
                 });
 
                 it("should return expected id", () => {
-                    let haToTest = testComponent.idHA;
+                    const haToTest = testComponent.idHA;
                     expect(haToTest.id).toBe("clr-wizard-header-action-ohai", "id reflects input that is set");
                     haToTest._id = "onoez";
                     fixture.detectChanges();
@@ -117,7 +115,7 @@ export default function(): void {
                 });
 
                 it("should be able to change via host component", () => {
-                    let myHA = testComponent.clickedHA;
+                    const myHA = testComponent.clickedHA;
                     expect(myHA.title).toBe("title to update", "should init with expected value");
                     testComponent.titleToUpdate = "updated title";
                     fixture.detectChanges();
@@ -127,7 +125,7 @@ export default function(): void {
 
             describe("id", () => {
                 let haToTest: WizardHeaderAction;
-                let haToTestDefaultId = "clr-wizard-header-action-ohai";
+                const haToTestDefaultId = "clr-wizard-header-action-ohai";
 
                 beforeEach(() => {
                     haToTest = testComponent.idHA;
@@ -144,18 +142,24 @@ export default function(): void {
                 });
 
                 it("should be able to handle a component without an id defined", () => {
-                    let unsetHA = testComponent.plainDefaultHA;
+                    const unsetHA = testComponent.plainDefaultHA;
                     expect(unsetHA.id).toBeTruthy("id exists on unset header action");
-                    expect(unsetHA.id).toContain("clr-wizard-header-action-", "id should have " +
-                        "format of header action id");
+                    expect(unsetHA.id)
+                        .toContain("clr-wizard-header-action-",
+                                   "id should have " +
+                                       "format of header action id");
                     testComponent.myId = null;
                     fixture.detectChanges();
                     expect(haToTest.id).not.toBe(haToTestDefaultId, "nulling id should change id");
                     expect(unsetHA.id).toBeTruthy("id exists on null id header action");
-                    expect(unsetHA.id).toContain("clr-wizard-header-action-", "new id " +
-                        " on null id should have format of header action id");
-                    expect(unsetHA.id).not.toContain("-null", "new id " +
-                        " on null id should not contain null keyword in the id");
+                    expect(unsetHA.id)
+                        .toContain("clr-wizard-header-action-",
+                                   "new id " +
+                                       " on null id should have format of header action id");
+                    expect(unsetHA.id)
+                        .not.toContain("-null",
+                                       "new id " +
+                                           " on null id should not contain null keyword in the id");
                 });
             });
 
@@ -169,7 +173,7 @@ export default function(): void {
                 });
 
                 it("should be able to be enabled/disabled via input", () => {
-                    let testMe = testComponent.projectedHA;
+                    const testMe = testComponent.projectedHA;
                     expect(testMe.disabled).toBe(false, "disabled input is initted to false");
                     testComponent.disableMe = true;
                     fixture.detectChanges();
@@ -204,13 +208,13 @@ export default function(): void {
                 });
 
                 it("should update projected content as expected", () => {
-                    let newContent = "rice";
-                    expect(projectedEl.textContent.trim()).toBe(testComponent.projector,
-                        "verify that projected content is initted properly");
+                    const newContent = "rice";
+                    expect(projectedEl.textContent.trim())
+                        .toBe(testComponent.projector, "verify that projected content is initted properly");
                     testComponent.projector = newContent;
                     fixture.detectChanges();
-                    expect(projectedEl.textContent.trim()).toBe(newContent,
-                        "verify that projected content is updated properly");
+                    expect(projectedEl.textContent.trim())
+                        .toBe(newContent, "verify that projected content is updated properly");
                 });
             });
         });
@@ -218,12 +222,12 @@ export default function(): void {
         describe("View and Behavior", () => {
             describe("id", () => {
                 it("should have id", () => {
-                    let idToCheck = "clr-wizard-header-action-" + testComponent.myId;
-                    let lookupEl = debugEl.nativeElement;
-                    let allHAs = lookupEl.querySelectorAll(".clr-wizard-header-action");
+                    const idToCheck = "clr-wizard-header-action-" + testComponent.myId;
+                    const lookupEl = debugEl.nativeElement;
+                    const allHAs = lookupEl.querySelectorAll(".clr-wizard-header-action");
                     let myIdWasFound = false;
 
-                    for (let ha of allHAs) {
+                    for (const ha of allHAs) {
                         if (idToCheck === ha.id) {
                             myIdWasFound = true;
                             break;
@@ -256,20 +260,17 @@ export default function(): void {
                     let testMe: Element;
                     expect(testComponent.idHA.title).toBe("I have a title", "verify title is set");
                     testMe = debugEl.nativeElement.querySelector("#clr-wizard-header-action-ohai");
-                    expect(testMe.getAttribute("title")).toBe("I have a title",
-                        "verify DOM title is also set");
+                    expect(testMe.getAttribute("title")).toBe("I have a title", "verify DOM title is also set");
                 });
 
                 it("should update", () => {
                     let testMe: Element;
                     expect(testComponent.clickedHA.title).toBe("title to update", "verify title is set");
                     testMe = debugEl.nativeElement.querySelector("#clr-wizard-header-action-gotklikz");
-                    expect(testMe.getAttribute("title")).toBe("title to update",
-                        "verify DOM title updated");
+                    expect(testMe.getAttribute("title")).toBe("title to update", "verify DOM title updated");
                     testComponent.titleToUpdate = "updated title";
                     fixture.detectChanges();
-                    expect(testMe.getAttribute("title")).toBe("updated title",
-                        "verify DOM title updated");
+                    expect(testMe.getAttribute("title")).toBe("updated title", "verify DOM title updated");
                 });
             });
         });

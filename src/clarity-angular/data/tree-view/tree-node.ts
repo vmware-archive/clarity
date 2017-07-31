@@ -4,70 +4,36 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {
-    Component,
-    EventEmitter,
-    Input,
-    OnDestroy,
-    Optional, Output,
-    SkipSelf
-} from "@angular/core";
+import {animate, state, style, transition, trigger} from "@angular/animations";
+import {Component, EventEmitter, Input, OnDestroy, Optional, Output, SkipSelf} from "@angular/core";
 
-import {
-    animate,
-    state,
-    style,
-    transition,
-    trigger
-} from "@angular/animations";
-
-import {LoadingListener} from "../../utils/loading/loading-listener";
-import {AbstractTreeSelection} from "./abstract-tree-selection";
-import {TreeSelectionService} from "./providers/tree-selection.service";
-import {clrTreeSelectionProviderFactory} from "./providers/tree-selection.provider";
 import {Expand} from "../../utils/expand/providers/expand";
+import {LoadingListener} from "../../utils/loading/loading-listener";
+
+import {AbstractTreeSelection} from "./abstract-tree-selection";
+import {clrTreeSelectionProviderFactory} from "./providers/tree-selection.provider";
+import {TreeSelectionService} from "./providers/tree-selection.service";
 
 @Component({
     selector: "clr-tree-node",
     templateUrl: "./tree-node.html",
     providers: [
-        Expand,
-        {provide: LoadingListener, useExisting: Expand},
-        {
+        Expand, {provide: LoadingListener, useExisting: Expand}, {
             provide: TreeSelectionService,
             useFactory: clrTreeSelectionProviderFactory,
-            deps: [
-                [
-                    new Optional(),
-                    new SkipSelf(),
-                    TreeSelectionService
-                ]
-            ]
+            deps: [[new Optional(), new SkipSelf(), TreeSelectionService]]
         }
     ],
-    animations: [
-        trigger("childNodesState", [
-            state("expanded", style({
-                "height": "*",
-                "overflow-y": "hidden"
-            })),
-            state("collapsed", style({
-                "height": 0,
-                "overflow-y": "hidden"
-            })),
-            transition(
-                "expanded <=> collapsed", animate("0.2s ease-in-out")
-            )
-        ])
-    ]
+    animations: [trigger("childNodesState",
+                         [
+                           state("expanded", style({"height": "*", "overflow-y": "hidden"})),
+                           state("collapsed", style({"height": 0, "overflow-y": "hidden"})),
+                           transition("expanded <=> collapsed", animate("0.2s ease-in-out"))
+                         ])]
 
 })
-export class TreeNode
-    extends AbstractTreeSelection
-    implements OnDestroy {
-
-    constructor(public nodeExpand: Expand,
-                @Optional() @SkipSelf() public parent: TreeNode,
+export class TreeNode extends AbstractTreeSelection implements OnDestroy {
+    constructor(public nodeExpand: Expand, @Optional() @SkipSelf() public parent: TreeNode,
                 public treeSelectionService: TreeSelectionService) {
         super(parent);
         if (this.parent) {
@@ -87,9 +53,9 @@ export class TreeNode
         return (this.children.indexOf(node) > -1);
     }
 
-    //TODO: This should ideally be in AbstractTreeSelection
-    //Tried doing this but ran into some issues and also ran out of time.
-    //Will get this done later.
+    // TODO: This should ideally be in AbstractTreeSelection
+    // Tried doing this but ran into some issues and also ran out of time.
+    // Will get this done later.
     register(node: TreeNode): void {
         if (!this.checkIfChildNodeRegistered(node)) {
             this.children.push(node);
@@ -101,9 +67,9 @@ export class TreeNode
         }
     }
 
-    //TODO: This should ideally be in AbstractTreeSelection
-    //Tried doing this but ran into some issues and also ran out of time.
-    //Will get this done later.
+    // TODO: This should ideally be in AbstractTreeSelection
+    // Tried doing this but ran into some issues and also ran out of time.
+    // Will get this done later.
     unregister(node: TreeNode): void {
         const index = this.children.indexOf(node);
         if (index > -1) {
@@ -121,7 +87,7 @@ export class TreeNode
 
     @Input("clrSelected")
     public set nodeSelected(value: boolean) {
-        //required for recursive trees to discard unset inputs.
+        // required for recursive trees to discard unset inputs.
         this.activateSelection();
         if (value === undefined || value === null) {
             return;
@@ -131,8 +97,7 @@ export class TreeNode
         }
     }
 
-    @Output("clrSelectedChange") nodeSelectedChange: EventEmitter<boolean>
-        = new EventEmitter<boolean>(true);
+    @Output("clrSelectedChange") nodeSelectedChange: EventEmitter<boolean> = new EventEmitter<boolean>(true);
 
     selectedChanged(): void {
         this.nodeSelectedChange.emit(this.selected);
@@ -151,8 +116,7 @@ export class TreeNode
         this.activateSelection();
     }
 
-    @Output("clrIndeterminateChange") nodeIndeterminateChanged: EventEmitter<boolean>
-        = new EventEmitter<boolean>(true);
+    @Output("clrIndeterminateChange") nodeIndeterminateChanged: EventEmitter<boolean> = new EventEmitter<boolean>(true);
 
     indeterminateChanged(): void {
         this.nodeIndeterminateChanged.emit(this.indeterminate);

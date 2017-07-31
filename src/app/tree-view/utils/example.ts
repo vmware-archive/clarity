@@ -3,7 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, Input, ViewChild, AfterViewInit} from "@angular/core";
+import {AfterViewInit, Component, Input, ViewChild} from "@angular/core";
+
 import {CodeHighlight} from "../../../clarity-angular";
 
 
@@ -12,15 +13,13 @@ import {CodeHighlight} from "../../../clarity-angular";
     template: `
         <pre><code [clr-code-highlight]="'language-'+language">{{code.trim()}}</code></pre>
     `,
-    styles: [
-        `
+    styles: [`
         pre { 
             background: transparent; 
             padding: 12px;
             margin: 24px 0 0 0;
         }
-    `
-    ]
+    `]
 })
 export class Example implements AfterViewInit {
     @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;

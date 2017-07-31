@@ -4,15 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { BasicWizardTestComponent } from "../test-components/basic-wizard.mock";
-import { WizardNavigationService } from "./wizard-navigation";
-import { PageCollectionService } from "./page-collection";
-import { Wizard } from "../wizard";
-import { WizardPage } from "../wizard-page";
-import { TestContext } from "../../utils/testing/helpers.spec";
+import {TestContext} from "../../utils/testing/helpers.spec";
+import {BasicWizardTestComponent} from "../test-components/basic-wizard.mock";
+import {Wizard} from "../wizard";
+import {WizardPage} from "../wizard-page";
+
+import {PageCollectionService} from "./page-collection";
+import {WizardNavigationService} from "./wizard-navigation";
 
 export default function(): void {
-
     describe("Wizard Navigation Service", function() {
         let context: TestContext<Wizard, BasicWizardTestComponent>;
         let wizardNavigationService: WizardNavigationService;
@@ -33,8 +33,8 @@ export default function(): void {
         });
 
         it(".next() should call finish() if the current page is the last page.", function() {
-            let testPage = wizardNavigationService.pageCollection.lastPage;
-            let wizard = context.clarityDirective;
+            const testPage = wizardNavigationService.pageCollection.lastPage;
+            const wizard = context.clarityDirective;
 
             wizardNavigationService.currentPage = testPage;
             spyOn(testPage.primaryButtonClicked, "emit");
@@ -64,7 +64,7 @@ export default function(): void {
         });
 
         it(".next() should not navigate if the next page is disabled", function() {
-            let testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+            const testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
             testPage.nextStepDisabled = true;
             wizardNavigationService.currentPage = testPage;
             wizardNavigationService.next();
@@ -72,7 +72,7 @@ export default function(): void {
         });
 
         it(".next() should not do anything if set to stop navigation", function() {
-            let testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+            const testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
             wizardNavigationService.currentPage = testPage;
             wizardNavigationService.wizardStopNavigation = true;
             wizardNavigationService.next();
@@ -84,7 +84,7 @@ export default function(): void {
          * We should investigate possibilities of stripping down some of these tests on finish() and next() */
 
         it(".finish() should commit the current page and emit the event", function() {
-            let testPage = wizardNavigationService.pageCollection.lastPage;
+            const testPage = wizardNavigationService.pageCollection.lastPage;
 
             spyOn(testPage.primaryButtonClicked, "emit");
             spyOn(testPage.onCommit, "emit");
@@ -101,7 +101,7 @@ export default function(): void {
         });
 
         it(".finish() should not commit the current page and emit events if next is disabled", function() {
-            let testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+            const testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
 
             testPage.nextStepDisabled = true;
             context.detectChanges();
@@ -123,8 +123,8 @@ export default function(): void {
         });
 
         it(".previous() should do nothing if the current page is the first page", function() {
-            let testPage = wizardNavigationService.pageCollection.firstPage;
-            let pageCollectionSpy = spyOn(wizardNavigationService.pageCollection, "getPreviousPage");
+            const testPage = wizardNavigationService.pageCollection.firstPage;
+            const pageCollectionSpy = spyOn(wizardNavigationService.pageCollection, "getPreviousPage");
             wizardNavigationService.currentPage = testPage;
             wizardNavigationService.previous();
             expect(wizardNavigationService.currentPage).toBe(testPage);
@@ -132,7 +132,7 @@ export default function(): void {
         });
 
         it(".previous() should not do anything if stop navigation is true", function() {
-            let testPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+            const testPage = wizardNavigationService.pageCollection.getPageByIndex(1);
             wizardNavigationService.currentPage = testPage;
             wizardNavigationService.wizardStopNavigation = true;
             wizardNavigationService.previous();
@@ -140,8 +140,8 @@ export default function(): void {
         });
 
         it(".previous() should set the current page to the previous page", function() {
-            let testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
-            let previousPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+            const testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+            const previousPage = wizardNavigationService.pageCollection.getPageByIndex(1);
             wizardNavigationService.currentPage = testPage;
             wizardNavigationService.previous();
             expect(wizardNavigationService.currentPage).toEqual(previousPage);
@@ -149,8 +149,8 @@ export default function(): void {
         });
 
         it(".previous() set current page to incomplete if set to forceForward navigation", function() {
-            let testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
-            let previousPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+            const testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+            const previousPage = wizardNavigationService.pageCollection.getPageByIndex(1);
 
             wizardNavigationService.currentPage = testPage;
             testPage.completed = true;
@@ -163,11 +163,11 @@ export default function(): void {
         });
 
         it(".goTo() should not do anything if the given page is equal to the current page", function() {
-            let navSvc = wizardNavigationService;
-            let startPage = navSvc.pageCollection.getPageByIndex(0);
-            let testPage = navSvc.pageCollection.getPageByIndex(1);
-            let goToPage = navSvc.pageCollection.getPageByIndex(1);
-            let pageCollectionSpy = spyOn(navSvc.pageCollection, "getPageIndex");
+            const navSvc = wizardNavigationService;
+            const startPage = navSvc.pageCollection.getPageByIndex(0);
+            const testPage = navSvc.pageCollection.getPageByIndex(1);
+            const goToPage = navSvc.pageCollection.getPageByIndex(1);
+            const pageCollectionSpy = spyOn(navSvc.pageCollection, "getPageIndex");
 
             startPage.completed = true;
             navSvc.currentPage = testPage;
@@ -182,9 +182,9 @@ export default function(): void {
         });
 
         it(".goTo() should not do anything if stop navigation is true", function() {
-            let navSvc = wizardNavigationService;
-            let startPage = navSvc.pageCollection.getPageByIndex(0);
-            let goToPage = navSvc.pageCollection.getPageByIndex(1);
+            const navSvc = wizardNavigationService;
+            const startPage = navSvc.pageCollection.getPageByIndex(0);
+            const goToPage = navSvc.pageCollection.getPageByIndex(1);
 
             navSvc.currentPage = startPage;
             startPage.completed = true;
@@ -196,9 +196,9 @@ export default function(): void {
         });
 
         it(".goTo() should set the current page as the given page", function() {
-            let startPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-            let testPage = wizardNavigationService.pageCollection.getPageByIndex(1);
-            let goToPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+            const startPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+            const testPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+            const goToPage = wizardNavigationService.pageCollection.getPageByIndex(2);
             let pageAsExpected: boolean;
 
             // goTo checks completed states
@@ -214,9 +214,9 @@ export default function(): void {
         });
 
         it(".goTo() should not mark pages incomplete if moving forward and wizard is set to forceForward", function() {
-            let startPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-            let testPage = wizardNavigationService.pageCollection.getPageByIndex(1);
-            let goToPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+            const startPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+            const testPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+            const goToPage = wizardNavigationService.pageCollection.getPageByIndex(2);
 
             // goTo checks completed states
             startPage.completed = true;
@@ -231,10 +231,10 @@ export default function(): void {
         });
 
         it(".goTo() should mark pages incomplete if moving backward and wizard is set to forceForward", function() {
-            let startPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-            let secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
-            let thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
-            let fourthPage = wizardNavigationService.pageCollection.getPageByIndex(3);
+            const startPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+            const secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+            const thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+            const fourthPage = wizardNavigationService.pageCollection.getPageByIndex(3);
 
             // goTo checks completed states
             startPage.completed = true;
@@ -262,10 +262,10 @@ export default function(): void {
         });
 
         it(".goTo() should mark pages complete if moving forward and told to lazyComplete", function() {
-            let startPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-            let secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
-            let thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
-            let fourthPage = wizardNavigationService.pageCollection.getPageByIndex(3);
+            const startPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+            const secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+            const thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+            const fourthPage = wizardNavigationService.pageCollection.getPageByIndex(3);
 
             expect(startPage.completed).toBe(false, "validate startPage.completed is false as expected");
             expect(secondPage.completed).toBe(false, "validate secondPage.completed is false as expected");
@@ -284,10 +284,10 @@ export default function(): void {
         });
 
         it(".goTo() should not allow lazyComplete by default", function() {
-            let startPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-            let secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
-            let thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
-            let fourthPage = wizardNavigationService.pageCollection.getPageByIndex(3);
+            const startPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+            const secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+            const thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+            const fourthPage = wizardNavigationService.pageCollection.getPageByIndex(3);
 
             expect(startPage.completed).toBe(false, "validate startPage.completed is false as expected");
             expect(secondPage.completed).toBe(false, "validate secondPage.completed is false as expected");
@@ -305,10 +305,10 @@ export default function(): void {
         });
 
         it(".goTo() should not mark last page complete if moving forward with lazy complete", function() {
-            let startPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-            let secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
-            let thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
-            let fourthPage = wizardNavigationService.pageCollection.getPageByIndex(3);
+            const startPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+            const secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+            const thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+            const fourthPage = wizardNavigationService.pageCollection.getPageByIndex(3);
 
             expect(startPage.completed).toBe(false, "validate startPage.completed is false as expected");
             expect(secondPage.completed).toBe(false, "validate secondPage.completed is false as expected");
@@ -326,25 +326,27 @@ export default function(): void {
         });
 
         it(".setFirstPageCurrent() should set the first page as the current page", function() {
-            let testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
-            let firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-            let pageCollectionBeforeReset = wizardNavigationService.pageCollection;
+            const testPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+            const firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+            const pageCollectionBeforeReset = wizardNavigationService.pageCollection;
             wizardNavigationService.currentPage = testPage;
             wizardNavigationService.setFirstPageCurrent();
-            let pageCollectionAfterReset = wizardNavigationService.pageCollection;
+            const pageCollectionAfterReset = wizardNavigationService.pageCollection;
             expect(wizardNavigationService.currentPage).toEqual(firstPage);
             expect(pageCollectionBeforeReset).toEqual(pageCollectionAfterReset);
         });
 
         it(".forceNext() should throw an error if there's no next page to go to", function() {
-            let testPage = wizardNavigationService.pageCollection.lastPage;
+            const testPage = wizardNavigationService.pageCollection.lastPage;
             wizardNavigationService.currentPage = testPage;
             expect(wizardNavigationService.currentPage).toEqual(testPage);
-            expect(() => { wizardNavigationService.forceNext(); }).toThrowError();
+            expect(() => {
+                wizardNavigationService.forceNext();
+            }).toThrowError();
         });
 
         it(".forceNext() should do nothing if stop navigation is set", function() {
-            let testPage = wizardNavigationService.pageCollection.firstPage;
+            const testPage = wizardNavigationService.pageCollection.firstPage;
             wizardNavigationService.currentPage = testPage;
             expect(wizardNavigationService.currentPage).toEqual(testPage);
             wizardNavigationService.wizardStopNavigation = true;
@@ -353,8 +355,8 @@ export default function(): void {
         });
 
         it(".forceNext() set next page to be current and commit old current page if incomplete", function() {
-            let firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-            let testPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+            const firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+            const testPage = wizardNavigationService.pageCollection.getPageByIndex(1);
 
             spyOn(wizardNavigationService.pageCollection, "commitPage").and.callThrough();
 
@@ -370,7 +372,7 @@ export default function(): void {
 
         describe(".checkAndCommitCurrentPage() -- ", function() {
             it("should do nothing if the current page is not ready to complete", function() {
-                let currentPage = wizardNavigationService.currentPage;
+                const currentPage = wizardNavigationService.currentPage;
                 currentPage.nextStepDisabled = true;
 
                 // whole lotta spies!
@@ -390,7 +392,7 @@ export default function(): void {
             });
 
             it("should do nothing if stop navigation is set to true", function() {
-                let currentPage = wizardNavigationService.currentPage;
+                const currentPage = wizardNavigationService.currentPage;
                 currentPage.nextStepDisabled = false;
                 wizardNavigationService.wizardStopNavigation = true;
 
@@ -411,9 +413,9 @@ export default function(): void {
             });
 
             it("should do nothing if the action type is finish and stop navigation is true", function() {
-                let lastPage = wizardNavigationService.pageCollection.lastPage;
+                const lastPage = wizardNavigationService.pageCollection.lastPage;
                 wizardNavigationService.currentPage = lastPage;
-                let currentPage = wizardNavigationService.currentPage;
+                const currentPage = wizardNavigationService.currentPage;
                 wizardNavigationService.wizardStopNavigation = true;
                 currentPage.nextStepDisabled = false;
 
@@ -434,9 +436,9 @@ export default function(): void {
             });
 
             it("should do nothing if the action type is finish and current page is not the last page", function() {
-                let lastPage = wizardNavigationService.pageCollection.getPageByIndex(3);
-                let currentPage = wizardNavigationService.currentPage;
-                let lastPageIsNotCurrent = (wizardNavigationService.currentPage !== lastPage);
+                const lastPage = wizardNavigationService.pageCollection.getPageByIndex(3);
+                const currentPage = wizardNavigationService.currentPage;
+                const lastPageIsNotCurrent = (wizardNavigationService.currentPage !== lastPage);
 
                 // whole lotta spies!
                 spyOn(currentPage.primaryButtonClicked, "emit");
@@ -455,14 +457,14 @@ export default function(): void {
             });
 
             it("should emit that a primary button was clicked", function() {
-                let currentPage = wizardNavigationService.currentPage;
+                const currentPage = wizardNavigationService.currentPage;
                 spyOn(currentPage.primaryButtonClicked, "emit");
                 wizardNavigationService.checkAndCommitCurrentPage("next");
                 expect(currentPage.primaryButtonClicked.emit).toHaveBeenCalledTimes(1);
             });
 
             it("should emit finish button was clicked", function() {
-                let lastPage = wizardNavigationService.pageCollection.lastPage;
+                const lastPage = wizardNavigationService.pageCollection.lastPage;
                 let currentPage: WizardPage;
                 let lastPageIsCurrent: boolean;
 
@@ -483,7 +485,7 @@ export default function(): void {
             });
 
             it("should emit danger button was clicked", function() {
-                let lastPage = wizardNavigationService.pageCollection.lastPage;
+                const lastPage = wizardNavigationService.pageCollection.lastPage;
                 let currentPage: WizardPage;
                 let lastPageIsCurrent: boolean;
 
@@ -508,7 +510,7 @@ export default function(): void {
             });
 
             it("should emit next button was clicked", function() {
-                let currentPage = wizardNavigationService.currentPage;
+                const currentPage = wizardNavigationService.currentPage;
 
                 spyOn(currentPage.primaryButtonClicked, "emit");
                 spyOn(currentPage.nextButtonClicked, "emit");
@@ -524,7 +526,7 @@ export default function(): void {
             });
 
             it("should commit the current page -- but only once", function() {
-                let currentPage = wizardNavigationService.currentPage;
+                const currentPage = wizardNavigationService.currentPage;
                 spyOn(currentPage.onCommit, "emit");
                 wizardNavigationService.checkAndCommitCurrentPage("next");
                 expect(currentPage.onCommit.emit).toHaveBeenCalledTimes(1);
@@ -532,8 +534,8 @@ export default function(): void {
 
 
             it("should only commit page once on last page if there are wizard overrides", function() {
-                let wiz = context.clarityDirective;
-                let testPage = pageCollectionService.lastPage;
+                const wiz = context.clarityDirective;
+                const testPage = pageCollectionService.lastPage;
                 spyOn(testPage.onCommit, "emit");
 
                 wiz.navService.setCurrentPage(testPage);
@@ -552,10 +554,10 @@ export default function(): void {
 
             it("should notify wizardFinished if finish", function() {
                 let calledAsExpected = false;
-                let checkMe = wizardNavigationService.wizardFinished.subscribe(() => {
+                const checkMe = wizardNavigationService.wizardFinished.subscribe(() => {
                     calledAsExpected = true;
                 });
-                let lastPage = wizardNavigationService.pageCollection.lastPage;
+                const lastPage = wizardNavigationService.pageCollection.lastPage;
                 let currentPage: WizardPage;
                 let lastPageIsCurrent: boolean;
 
@@ -575,10 +577,10 @@ export default function(): void {
 
             it("should notify wizardFinished if danger button on last page", function() {
                 let calledAsExpected = false;
-                let checkMe = wizardNavigationService.wizardFinished.subscribe(() => {
+                const checkMe = wizardNavigationService.wizardFinished.subscribe(() => {
                     calledAsExpected = true;
                 });
-                let lastPage = wizardNavigationService.pageCollection.lastPage;
+                const lastPage = wizardNavigationService.pageCollection.lastPage;
                 let currentPage: WizardPage;
                 let lastPageIsCurrent: boolean;
 
@@ -598,7 +600,7 @@ export default function(): void {
 
             it("should notify movedToNextPage if wizard has alt-next and next clicked", function() {
                 let calledAsExpected = false;
-                let checkMe = wizardNavigationService.movedToNextPage.subscribe(() => {
+                const checkMe = wizardNavigationService.movedToNextPage.subscribe(() => {
                     calledAsExpected = true;
                 });
 
@@ -614,7 +616,7 @@ export default function(): void {
 
             it("should notify movedToNextPage if wizard has alt-next and danger-next clicked", function() {
                 let calledAsExpected = false;
-                let checkMe = wizardNavigationService.movedToNextPage.subscribe(() => {
+                const checkMe = wizardNavigationService.movedToNextPage.subscribe(() => {
                     calledAsExpected = true;
                 });
 
@@ -629,7 +631,7 @@ export default function(): void {
             });
 
             it("should emit onCommit if next overridden at page level", function() {
-                let currentPage = wizardNavigationService.currentPage;
+                const currentPage = wizardNavigationService.currentPage;
                 spyOn(currentPage.onCommit, "emit");
 
                 currentPage.stopNext = true;
@@ -641,7 +643,7 @@ export default function(): void {
             });
 
             it("should emit onCommit if next overridden at wizard level", function() {
-                let currentPage = wizardNavigationService.currentPage;
+                const currentPage = wizardNavigationService.currentPage;
                 spyOn(currentPage.onCommit, "emit");
 
                 wizardNavigationService.wizardHasAltNext = true;
@@ -651,8 +653,8 @@ export default function(): void {
             });
 
             it("should not commit page, fire events, or navigate if next overridden at wizard level", function() {
-                let currentPage = wizardNavigationService.currentPage;
-                let expectedPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+                const currentPage = wizardNavigationService.currentPage;
+                const expectedPage = wizardNavigationService.pageCollection.getPageByIndex(0);
                 let currentAsExpected: boolean;
 
                 spyOn(currentPage.primaryButtonClicked, "emit");
@@ -676,8 +678,8 @@ export default function(): void {
             });
 
             it("should not commit page, fire events, or navigate if next overridden at page level", function() {
-                let currentPage = wizardNavigationService.currentPage;
-                let expectedPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+                const currentPage = wizardNavigationService.currentPage;
+                const expectedPage = wizardNavigationService.pageCollection.getPageByIndex(0);
                 let currentAsExpected: boolean;
 
                 spyOn(currentPage.primaryButtonClicked, "emit");
@@ -703,8 +705,8 @@ export default function(): void {
             });
 
             it("should not commit page, fire events, or navigate if stop navigation is set", function() {
-                let currentPage = wizardNavigationService.currentPage;
-                let expectedPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+                const currentPage = wizardNavigationService.currentPage;
+                const expectedPage = wizardNavigationService.pageCollection.getPageByIndex(0);
                 let currentAsExpected: boolean;
 
                 spyOn(currentPage.primaryButtonClicked, "emit");
@@ -727,8 +729,8 @@ export default function(): void {
             });
 
             it("should navigate if not overridden and next clicked", function() {
-                let currentPage = wizardNavigationService.currentPage;
-                let expectedPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+                const currentPage = wizardNavigationService.currentPage;
+                const expectedPage = wizardNavigationService.pageCollection.getPageByIndex(1);
                 let currentAsExpected: boolean;
 
                 spyOn(currentPage.primaryButtonClicked, "emit");
@@ -755,8 +757,8 @@ export default function(): void {
             });
 
             it("should navigate if not overridden and danger-next clicked", function() {
-                let currentPage = wizardNavigationService.currentPage;
-                let expectedPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+                const currentPage = wizardNavigationService.currentPage;
+                const expectedPage = wizardNavigationService.pageCollection.getPageByIndex(1);
                 let currentAsExpected: boolean;
 
                 spyOn(currentPage.primaryButtonClicked, "emit");
@@ -795,57 +797,57 @@ export default function(): void {
             });
 
             it("should return true if all pages passed to it are completed", function() {
-                let firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-                let secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
-                let thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+                const firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+                const secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+                const thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
                 let pagesToTest: WizardPage[];
 
                 firstPage.completed = true;
                 secondPage.completed = true;
                 thirdPage.completed = true;
-                pagesToTest = [ firstPage, secondPage, thirdPage ];
+                pagesToTest = [firstPage, secondPage, thirdPage];
 
                 expect(wizardNavigationService.canGoTo(pagesToTest)).toBe(true);
             });
 
             it("should return true if last page is incomplete but page before it is complete", function() {
-                let firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-                let secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
-                let thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+                const firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+                const secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+                const thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
                 let pagesToTest: WizardPage[];
 
                 firstPage.completed = true;
                 secondPage.completed = true;
                 thirdPage.completed = false;
-                pagesToTest = [ firstPage, secondPage, thirdPage ];
+                pagesToTest = [firstPage, secondPage, thirdPage];
 
                 expect(wizardNavigationService.canGoTo(pagesToTest)).toBe(true);
             });
 
             it("should return true if last page is incomplete but current page", function() {
-                let firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-                let secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+                const firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+                const secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
                 let pagesToTest: WizardPage[];
 
                 firstPage.completed = true;
                 secondPage.completed = false;
                 wizardNavigationService.currentPage = secondPage;
 
-                pagesToTest = [ firstPage, secondPage ];
+                pagesToTest = [firstPage, secondPage];
 
                 expect(wizardNavigationService.canGoTo(pagesToTest)).toBe(true);
             });
 
             it("should return false if last page is incomplete and page before it is also incomplete", function() {
-                let firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-                let secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
-                let thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
+                const firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
+                const secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
+                const thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
                 let pagesToTest: WizardPage[];
 
                 firstPage.completed = true;
                 secondPage.completed = false;
                 thirdPage.completed = false;
-                pagesToTest = [ firstPage, secondPage, thirdPage ];
+                pagesToTest = [firstPage, secondPage, thirdPage];
 
                 expect(wizardNavigationService.canGoTo(pagesToTest)).toBe(false);
             });

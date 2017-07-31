@@ -14,5 +14,4 @@ import {StackViewNgDemo} from "./stack-view-ng-demo";
 })
 
 export class StackViewAngularBasicDemo extends StackViewNgDemo {
-
-};
+}

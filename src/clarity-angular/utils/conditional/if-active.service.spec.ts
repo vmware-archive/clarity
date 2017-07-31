@@ -7,7 +7,7 @@
 import {IfActiveService} from "./if-active.service";
 
 export default function(): void {
-    describe("IfActiveService provider", function () {
+    describe("IfActiveService provider", function() {
 
         let ifActiveService: IfActiveService;
 
@@ -15,7 +15,7 @@ export default function(): void {
             ifActiveService = new IfActiveService();
         });
 
-        describe("Typescript API", function () {
+        describe("Typescript API", function() {
             it("provides an observable for changes", function() {
                 let nbChanges: number = 0;
                 let currentChange: number;
@@ -49,7 +49,7 @@ export default function(): void {
             });
 
             it("gets the current active value of the service", function() {
-                let init = 1;
+                const init = 1;
                 let test: any;
                 ifActiveService.current = init;
                 expect(test).toBeUndefined();

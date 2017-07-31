@@ -5,11 +5,10 @@
  */
 
 import {ModuleWithProviders} from "@angular/core/src/metadata/ng_module";
-import {Routes, RouterModule} from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
+
 import {SignpostDemo} from "./signpost.demo";
 
-const ROUTES: Routes = [
-    { path: "", component: SignpostDemo }
-];
+const ROUTES: Routes = [{path: "", component: SignpostDemo}];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forChild(ROUTES);

@@ -4,47 +4,39 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { BasicWizardTestComponent } from "./test-components/basic-wizard.mock";
-import { UnopenedWizardTestComponent } from "./test-components/unopened-wizard.mock";
-import { TemplateApiWizardTestComponent } from "./test-components/api-wizard.mock";
-import { DynamicWizardTestComponent } from "./test-components/dynamic-wizard.mock";
+import {fakeAsync, tick} from "@angular/core/testing";
 
-import { tick, fakeAsync } from "@angular/core/testing";
-import { WizardNavigationService } from "./providers/wizard-navigation";
-import { PageCollectionService } from "./providers/page-collection";
-import { Wizard } from "./wizard";
-import { TestContext } from "../utils/testing/helpers.spec";
+import {TestContext} from "../utils/testing/helpers.spec";
+
+import {PageCollectionService} from "./providers/page-collection";
+import {WizardNavigationService} from "./providers/wizard-navigation";
+import {TemplateApiWizardTestComponent} from "./test-components/api-wizard.mock";
+import {BasicWizardTestComponent} from "./test-components/basic-wizard.mock";
+import {DynamicWizardTestComponent} from "./test-components/dynamic-wizard.mock";
+import {UnopenedWizardTestComponent} from "./test-components/unopened-wizard.mock";
+import {Wizard} from "./wizard";
 
 export default function(): void {
-
     describe("Wizard", () => {
         describe("Typescript API", () => {
             describe("Ghost pages", () => {
                 // TODO: Ghost pages are not widely available atm. When they are then we should complete
                 // this test plan.
-                xit("should start out as deactivated", () => {
-                });
+                xit("should start out as deactivated", () => {});
 
-                xit("should opt out if showGhostPages is false", () => {
-                });
+                xit("should opt out if showGhostPages is false", () => {});
 
-                xit("should set proper state when sent deactivate", () => {
-                });
+                xit("should set proper state when sent deactivate", () => {});
 
-                xit("should set proper state on last page", () => {
-                });
+                xit("should set proper state on last page", () => {});
 
-                xit("should set proper state when on next to last page", () => {
-                });
+                xit("should set proper state when on next to last page", () => {});
 
-                xit("should fall through to proper state", () => {
-                });
+                xit("should fall through to proper state", () => {});
 
-                xit("should set expected state when first page is last page", () => {
-                });
+                xit("should set expected state when first page is last page", () => {});
 
-                xit("should set expected state when first page is next to last page", () => {
-                });
+                xit("should set expected state when first page is next to last page", () => {});
             });
 
             describe("Opening and closing", () => {
@@ -152,13 +144,13 @@ export default function(): void {
 
                 describe("isLast", () => {
                     it("should return false if current page is not the last page", () => {
-                        let lastPage = pageCollectionService.lastPage;
+                        const lastPage = pageCollectionService.lastPage;
                         expect(wizard.currentPage).not.toBe(lastPage, "verify currentPage is not the last page");
                         expect(wizard.isLast).toBe(false, "isLast should return false");
                     });
 
                     it("should return true if current page is the last page", () => {
-                        let lastPage = pageCollectionService.lastPage;
+                        const lastPage = pageCollectionService.lastPage;
 
                         // set last page
                         wizardNavigationService.currentPage = lastPage;
@@ -170,7 +162,7 @@ export default function(): void {
 
                 describe("isFirst", () => {
                     it("should return false if current page is not the first page", () => {
-                        let firstPage = pageCollectionService.firstPage;
+                        const firstPage = pageCollectionService.firstPage;
                         // move wizard off first page
                         wizard.next();
                         context.detectChanges();
@@ -179,7 +171,7 @@ export default function(): void {
                     });
 
                     it("should return true if current page is the last page", () => {
-                        let firstPage = pageCollectionService.firstPage;
+                        const firstPage = pageCollectionService.firstPage;
                         expect(wizard.currentPage).toBe(firstPage, "verify currentPage is the first page");
                         expect(wizard.isFirst).toBe(true, "isFirst should return true");
                     });
@@ -229,7 +221,7 @@ export default function(): void {
 
                 describe("goTo", () => {
                     it("should call the navService", () => {
-                        let testId = pageCollectionService.lastPage.id;
+                        const testId = pageCollectionService.lastPage.id;
                         spyOn(wizardNavigationService, "goTo");
                         wizard.goTo(testId);
                         expect(wizardNavigationService.goTo).toHaveBeenCalledWith(testId);
@@ -245,7 +237,7 @@ export default function(): void {
 
                 describe("reset", () => {
                     it("should call the pageCollection and update the nav", () => {
-                        let firstPage = pageCollectionService.firstPage;
+                        const firstPage = pageCollectionService.firstPage;
                         spyOn(pageCollectionService, "reset").and.callThrough();
                         spyOn(wizard.onReset, "next");
                         expect(wizard.currentPage).toBe(firstPage, "inits as expected");
@@ -263,15 +255,13 @@ export default function(): void {
                 describe("ghostPageState", () => {
                     // TODO: Ghost pages are not widely available atm. When they are then we should complete
                     // this test plan.
-                    xit("should call the navService", () => {
-                    });
+                    xit("should call the navService", () => {});
                 });
 
                 describe("deactivateGhostPages", () => {
                     // TODO: Ghost pages are not widely available atm. When they are then we should complete
                     // this test plan.
-                    xit("should should call the navService  with \"deactivate\" as the value", () => {
-                    });
+                    xit("should should call the navService  with \"deactivate\" as the value", () => {});
                 });
             });
         });
@@ -289,18 +279,17 @@ export default function(): void {
 
 
             describe("Overriding modal animation with (clrWizardPreventModalAnimation)", () => {
-                xit("should set stopModalAnimations to false when true", () => {
-                });
+                xit("should set stopModalAnimations to false when true", () => {});
 
-                xit("should default to false", () => {
-                });
+                xit("should default to false", () => {});
             });
 
             describe("Current page onchange", () => {
-                xit("should update ghost pages", () => {
-                    // TODO: Ghost pages are not widely available atm. When they are then we should complete
-                    // this test plan.
-                });
+                xit("should update ghost pages",
+                    () => {
+                        // TODO: Ghost pages are not widely available atm. When they are then we should complete
+                        // this test plan.
+                    });
 
                 it("should emit pageOnLoad when wizard is created", () => {
                     context.detectChanges();
@@ -359,7 +348,7 @@ export default function(): void {
                 });
 
                 it("stepnav is present", () => {
-                    let val = context.testElement.querySelector(".clr-wizard-stepnav");
+                    const val = context.testElement.querySelector(".clr-wizard-stepnav");
                     expect(val).toBeTruthy();
                 });
 
@@ -382,7 +371,7 @@ export default function(): void {
 
                 describe("Content", () => {
                     it("content shows up", () => {
-                        let val = context.testElement.querySelector(".clr-wizard-page.active").textContent.trim();
+                        const val = context.testElement.querySelector(".clr-wizard-page.active").textContent.trim();
                         expect(val).toBe("Content for step 1");
                     });
 
@@ -404,29 +393,29 @@ export default function(): void {
                     });
 
                     it("content can lazy load if needed", fakeAsync(() => {
-                        let val: string;
+                           let val: string;
 
-                        wizard.next();
-                        context.detectChanges();
+                           wizard.next();
+                           context.detectChanges();
 
-                        val = context.testElement.querySelector(".clr-wizard-page.active").textContent.trim();
-                        expect(val).toBe(context.testComponent.lazyLoadContent, "projects as expected");
+                           val = context.testElement.querySelector(".clr-wizard-page.active").textContent.trim();
+                           expect(val).toBe(context.testComponent.lazyLoadContent, "projects as expected");
 
-                        context.testComponent.doLazyLoad();
-                        tick();
-                        context.detectChanges();
+                           context.testComponent.doLazyLoad();
+                           tick();
+                           context.detectChanges();
 
-                        val = context.testElement.querySelector(".clr-wizard-page.active").textContent.trim();
-                        expect(val).toBe("Content loaded!", "updates as expected");
-                    }));
+                           val = context.testElement.querySelector(".clr-wizard-page.active").textContent.trim();
+                           expect(val).toBe("Content loaded!", "updates as expected");
+                       }));
                 });
 
                 describe("Buttons", () => {
                     it("buttons show up", () => {
-                        let cancel = context.testElement.querySelector(".clr-wizard-btn--tertiary");
-                        let previous = context.testElement.querySelector(".clr-wizard-btn--secondary");
-                        let next = context.testElement.querySelector(".clr-wizard-btn--primary:not(.disabled)");
-                        let finish = context.testElement.querySelector(".clr-wizard-btn--primary.disabled");
+                        const cancel = context.testElement.querySelector(".clr-wizard-btn--tertiary");
+                        const previous = context.testElement.querySelector(".clr-wizard-btn--secondary");
+                        const next = context.testElement.querySelector(".clr-wizard-btn--primary:not(.disabled)");
+                        const finish = context.testElement.querySelector(".clr-wizard-btn--primary.disabled");
 
                         expect(cancel).toBeTruthy();
                         expect(previous).toBeTruthy();
@@ -435,13 +424,13 @@ export default function(): void {
                     });
 
                     it("previous button is hidden on first page", () => {
-                        let previous = context.testElement.querySelector(".clr-wizard-btn--secondary");
-                        let val = previous.parentElement.attributes["aria-hidden"].value;
+                        const previous = context.testElement.querySelector(".clr-wizard-btn--secondary");
+                        const val = previous.parentElement.attributes["aria-hidden"].value;
                         expect(val).toBe("true");
                     });
 
                     it("next button is visible on every page except the last page", () => {
-                        let next = context.testElement.querySelector(".clr-wizard-btn--primary:not(.disabled)");
+                        const next = context.testElement.querySelector(".clr-wizard-btn--primary:not(.disabled)");
                         let val = next.parentElement.attributes["aria-hidden"].value;
                         expect(val).toBe("false");
 
@@ -453,7 +442,7 @@ export default function(): void {
                     });
 
                     it("finish button is hidden on every page except the last one", () => {
-                        let finish = context.testElement.querySelector(".clr-wizard-btn--primary.disabled");
+                        const finish = context.testElement.querySelector(".clr-wizard-btn--primary.disabled");
                         let val = finish.parentElement.attributes["aria-hidden"].value;
                         expect(val).toBe("true");
 
@@ -465,7 +454,7 @@ export default function(): void {
                     });
 
                     it("button text is projected as expected", () => {
-                        let previous = context.testElement.querySelector(".clr-wizard-btn--secondary");
+                        const previous = context.testElement.querySelector(".clr-wizard-btn--secondary");
                         let val = previous.textContent.trim();
                         expect(val).toBe(context.testComponent.projectedButton, "projects as expected");
 
@@ -507,36 +496,29 @@ export default function(): void {
                     // TODO: Header actions are not widely available atm. When they are then we should complete
                     // this test plan.
 
-                    xit("header actions show up", () => {
-                    });
+                    xit("header actions show up", () => {});
 
-                    xit("headerActionService.wizardHeaderActions is set to wizard.headerActions", () => {
-                    });
+                    xit("headerActionService.wizardHeaderActions is set to wizard.headerActions", () => {});
 
-                    xit("headerActionService.wizardHeaderActions updates with wizard", () => {
-                    });
+                    xit("headerActionService.wizardHeaderActions updates with wizard", () => {});
 
-                    xit("header actions don't show up when they aren't there", () => {
-                    });
+                    xit("header actions don't show up when they aren't there", () => {});
 
-                    xit("page header actions take precedence", () => {
-                    });
+                    xit("page header actions take precedence", () => {});
 
-                    xit("clicking on a header action does something", () => {
-                    });
+                    xit("clicking on a header action does something", () => {});
 
-                    xit("wizard falls through to wizard header actions", () => {
-                    });
+                    xit("wizard falls through to wizard header actions", () => {});
 
                     xit("wizard doesn't show header action when page with header actions " +
-                        "changes to a page w/o header actions and the wizard doesn't have them", () => {
-                    });
+                            "changes to a page w/o header actions and the wizard doesn't have them",
+                        () => {});
                 });
             });
 
             describe("Misc Observables", () => {
                 it("clrWizardOnCancel output is fired when cancel button is clicked", () => {
-                    let cancel = context.testElement.querySelector(".clr-wizard-btn--tertiary");
+                    const cancel = context.testElement.querySelector(".clr-wizard-btn--tertiary");
 
                     expect(context.testComponent._cancelled).toBe(0, "verify initial state");
                     cancel.click();
@@ -545,7 +527,7 @@ export default function(): void {
                 });
 
                 it("clrWizardOnCancel output is fired when close X is clicked", () => {
-                    let closeBtn = context.testElement.querySelector("button.close");
+                    const closeBtn = context.testElement.querySelector("button.close");
                     expect(context.testComponent._cancelled).toBe(0, "verify initial state");
 
                     closeBtn.click();
@@ -592,8 +574,8 @@ export default function(): void {
                 });
 
                 it("pageCollection.pages updates when Wizard.pages does", () => {
-                    let wizpages = wizard.pages;
-                    let pagecollection = wizard.pageCollection.pages;
+                    const wizpages = wizard.pages;
+                    const pagecollection = wizard.pageCollection.pages;
                     let expected = (wizpages === pagecollection);
                     const origPageCount = wizard.pageCollection.pagesCount + 0;
 
@@ -668,11 +650,9 @@ export default function(): void {
             });
 
             describe("Ghost Pages", () => {
-                xit("can be set via the ??? input", () => {
-                });
+                xit("can be set via the ??? input", () => {});
 
-                xit("navService.hideWizardGhostPages gets set as expected", () => {
-                });
+                xit("navService.hideWizardGhostPages gets set as expected", () => {});
             });
 
             describe("Sizing", () => {
@@ -842,69 +822,54 @@ export default function(): void {
 
         describe("View and Behavior", () => {
             describe("Ghost Pages", () => {
-                xit("do not appear by default", () => {
-                });
+                xit("do not appear by default", () => {});
 
-                xit("can be shown by setting the ??? input", () => {
-                });
+                xit("can be shown by setting the ??? input", () => {});
             });
 
             describe("Close X", () => {
-                xit("shows up by default", () => {
-                });
+                xit("shows up by default", () => {});
 
-                xit("can be hidden with the clrWizardClosable input", () => {
-                });
+                xit("can be hidden with the clrWizardClosable input", () => {});
             });
 
             describe("Backdrop is static", () => {
-                xit("clrModalStaticBackdrop is set to true", () => {
-                });
+                xit("clrModalStaticBackdrop is set to true", () => {});
             });
 
             describe("Navigation", () => {
-                xit("happy path through to finish", () => {
-                });
+                xit("happy path through to finish", () => {});
 
-                xit("close and open on last open page", () => {
-                });
+                xit("close and open on last open page", () => {});
 
-                xit("close and open on last navigable page", () => {
-                });
+                xit("close and open on last navigable page", () => {});
 
-                xit("sets last navigable page current when current page is removed", () => {
-                });
+                xit("sets last navigable page current when current page is removed", () => {});
             });
 
             describe("Custom Navigation", () => {
                 describe("Alt Cancel Override", () => {
-                    xit("clrWizardPreventDefaultCancel input keeps wizard from getting cancelled", () => {
-                    });
+                    xit("clrWizardPreventDefaultCancel input keeps wizard from getting cancelled", () => {});
                 });
             });
 
             describe("Delegates to modal", () => {
                 // validate that clrModalSize is set as expected
-                xit("clrModalSize is set as expected", () => {
-                });
+                xit("clrModalSize is set as expected", () => {});
 
                 // validate that clrModalClosable is set as expected
-                xit("clrModalClosable is set as expected", () => {
-                });
+                xit("clrModalClosable is set as expected", () => {});
 
                 // validate that clrModalOpenChange event calls wizard.cancel
                 // both dynamically and through clicking
-                xit("clrModalOpenChange event calls wizard.cancel", () => {
-                });
+                xit("clrModalOpenChange event calls wizard.cancel", () => {});
 
                 // validate that clrModalSkipAnimation is set as expected
-                xit("clrModalSkipAnimation is set as expected", () => {
-                });
+                xit("clrModalSkipAnimation is set as expected", () => {});
 
                 // validate that clrModalGhostPageState is set as expected
                 // and is updated as expected
-                xit("clrModalGhostPageState is set and updated as expected", () => {
-                });
+                xit("clrModalGhostPageState is set and updated as expected", () => {});
             });
         });
     });

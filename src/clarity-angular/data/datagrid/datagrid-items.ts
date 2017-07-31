@@ -4,8 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    Directive, DoCheck, Input, IterableDiffer, IterableDiffers,
-    TemplateRef, TrackByFunction, OnChanges, SimpleChanges
+    Directive,
+    DoCheck,
+    Input,
+    IterableDiffer,
+    IterableDiffers,
+    OnChanges,
+    SimpleChanges,
+    TemplateRef,
+    TrackByFunction
 } from "@angular/core";
 
 import {Items} from "./providers/items";
@@ -15,7 +22,8 @@ import {Items} from "./providers/items";
 })
 export class DatagridItems implements OnChanges, DoCheck {
     private _rawItems: any[];
-    @Input("clrDgItemsOf") public set rawItems(items: any[]) {
+    @Input("clrDgItemsOf")
+    public set rawItems(items: any[]) {
         this._rawItems = items ? items : [];
     }
     private _differ: IterableDiffer<any>;
@@ -26,7 +34,7 @@ export class DatagridItems implements OnChanges, DoCheck {
 
     ngOnChanges(changes: SimpleChanges): void {
         if ("rawItems" in changes) {
-            const currentItems = changes["rawItems"].currentValue;
+            const currentItems = changes.rawItems.currentValue;
             if (!this._differ && currentItems) {
                 this._differ = this._differs.find(currentItems).create(this._items.trackBy);
             }

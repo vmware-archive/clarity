@@ -6,10 +6,12 @@
 import {Component} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
-import {DatagridRowExpandAnimation} from "./row-expand-animation";
-import {DatagridRenderOrganizer} from "../render/render-organizer";
-import {MOCK_DOM_ADAPTER_PROVIDER} from "../render/dom-adapter.mock";
+
 import {Expand} from "../../../utils/expand/providers/expand";
+import {MOCK_DOM_ADAPTER_PROVIDER} from "../render/dom-adapter.mock";
+import {DatagridRenderOrganizer} from "../render/render-organizer";
+
+import {DatagridRowExpandAnimation} from "./row-expand-animation";
 
 /*
  * TODO: web animations testing doesn't play nicely with PhantomJS. Pushing this to later.
@@ -19,7 +21,7 @@ export default function(): void {
     // I lost too much time trying to get it to pass, but this should just go away anyway once the
     // new cool features of Angular 4.1 animations come in.
     xdescribe("DatagridRowExpandAnimation directive", function() {
-        beforeEach(function () {
+        beforeEach(function() {
             // We do not use the TestContext on purpose, because we want to test this directive in isolation,
             // without all other components and directives on the same selector.
             // TODO: improve the TestContext to allow this.
@@ -47,8 +49,6 @@ export default function(): void {
     });
 }
 
-@Component({
-    template: `<clr-dg-row>Hello world</clr-dg-row>`
-})
+@Component({template: `<clr-dg-row>Hello world</clr-dg-row>`})
 class SimpleTest {
 }

@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    Component, EventEmitter, Input, Output, OnDestroy
-} from "@angular/core";
+import {Component, EventEmitter, Input, OnDestroy, Output} from "@angular/core";
+
 import {Point} from "../../popover/common/popover";
+
 import {RowActionService} from "./providers/row-action-service";
 
 @Component({
@@ -23,7 +23,6 @@ import {RowActionService} from "./providers/row-action-service";
 })
 
 export class DatagridActionOverflow implements OnDestroy {
-
     public anchorPoint: Point = Point.RIGHT_CENTER;
     public popoverPoint: Point = Point.LEFT_CENTER;
 
@@ -45,7 +44,7 @@ export class DatagridActionOverflow implements OnDestroy {
 
     @Input("clrDgActionOverflowOpen")
     public set open(open: boolean) {
-        let boolOpen = !!open;
+        const boolOpen = !!open;
         if (boolOpen !== this._open) {
             this._open = boolOpen;
             this.openChanged.emit(boolOpen);

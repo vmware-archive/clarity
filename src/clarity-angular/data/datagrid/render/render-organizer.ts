@@ -5,12 +5,11 @@
  */
 
 import {Injectable} from "@angular/core";
+import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
-import {Observable} from "rxjs";
 
 @Injectable()
 export class DatagridRenderOrganizer {
-
     public widths: {px: number, strict: boolean}[] = [];
 
     protected _clearWidths = new Subject<any>();
@@ -51,5 +50,4 @@ export class DatagridRenderOrganizer {
         this.scrollbar.next();
         this._done.next();
     }
-
 }

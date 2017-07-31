@@ -4,26 +4,24 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ContentChildren, QueryList, Input, HostListener, ElementRef} from "@angular/core";
-import {Button} from "./button";
-import {ButtonInGroupService} from "../providers/buttonInGroup.service";
-import {menuPositions} from "../../popover/dropdown/menu-positions";
+import {Component, ContentChildren, ElementRef, HostListener, Input, QueryList} from "@angular/core";
+
 import {Point} from "../../popover/common/popover";
+import {menuPositions} from "../../popover/dropdown/menu-positions";
+import {ButtonInGroupService} from "../providers/buttonInGroup.service";
+
+import {Button} from "./button";
 
 @Component({
     selector: "clr-button-group",
     templateUrl: "button-group.html",
     providers: [ButtonInGroupService],
-    host: {
-        "[class.btn-group]" : "true"
-    }
+    host: {"[class.btn-group]": "true"}
 })
 export class ButtonGroup {
     @ContentChildren(Button) buttons: QueryList<Button>;
 
-    constructor(
-        public buttonGroupNewService: ButtonInGroupService,
-        private elementRef: ElementRef) {}
+    constructor(public buttonGroupNewService: ButtonInGroupService, private elementRef: ElementRef) {}
 
     inlineButtons: Button[] = [];
     menuButtons: Button[] = [];
@@ -76,7 +74,7 @@ export class ButtonGroup {
      * @returns {number}
      */
     getMoveIndex(buttonToMove: Button): number {
-        let tempArr: Button[] = this.buttons.filter(button => (button.inMenu === buttonToMove.inMenu));
+        const tempArr: Button[] = this.buttons.filter(button => (button.inMenu === buttonToMove.inMenu));
         return tempArr.indexOf(buttonToMove);
     }
 
@@ -85,8 +83,8 @@ export class ButtonGroup {
      * the ContentChildren
      */
     initializeButtons(): void {
-        let tempInlineButtons: Button[] = [];
-        let tempInMenuButtons: Button[] = [];
+        const tempInlineButtons: Button[] = [];
+        const tempInMenuButtons: Button[] = [];
         this.buttons.forEach((button) => {
             if (button.inMenu) {
                 tempInMenuButtons.push(button);
@@ -103,7 +101,7 @@ export class ButtonGroup {
      *
      */
 
-    //Indicates the position of the overflow menu
+    // Indicates the position of the overflow menu
     private _menuPosition: string;
 
     get menuPosition(): string {
@@ -168,8 +166,8 @@ export class ButtonGroup {
         this._openMenu = value;
     }
 
-    public anchorPoint: Point = Point.BOTTOM_LEFT; // default if menuPosition isn't set
-    public popoverPoint: Point = Point.LEFT_TOP; // default if menuPosition isn't set
+    public anchorPoint: Point = Point.BOTTOM_LEFT;  // default if menuPosition isn't set
+    public popoverPoint: Point = Point.LEFT_TOP;    // default if menuPosition isn't set
 
     /**
      * Toggle the Dropdown Menu when the Dropdown Toggle is
@@ -192,7 +190,7 @@ export class ButtonGroup {
      */
     private _overflowMenuToggleClicked: boolean = false;
 
-    //TODO: Generic Directive to handle this
+    // TODO: Generic Directive to handle this
     /**
      * Called on mouse clicks anywhere in the DOM.
      * Checks to see if the mouseclick happened on the host or outside
@@ -201,10 +199,10 @@ export class ButtonGroup {
     @HostListener("document:click", ["$event.target"])
     onMouseClick(target: any): void {
         if (this.openMenu && !this._overflowMenuToggleClicked) {
-            //Reset the overflow menu toggle clicked flag
+            // Reset the overflow menu toggle clicked flag
             this._overflowMenuToggleClicked = false;
-            let current: any = target; //Get the element in the DOM on which the mouse was clicked
-            let host: any = this.elementRef.nativeElement; //Current Button Group
+            let current: any = target;  // Get the element in the DOM on which the mouse was clicked
+            const host: any = this.elementRef.nativeElement;  // Current Button Group
 
             if (current.classList.contains("dropdown-menu")) {
                 current = current.parentNode;
@@ -214,8 +212,8 @@ export class ButtonGroup {
                         return;
                     }
 
-                    //If clicked on dropdown menu and menu is in host
-                    //do nothing
+                    // If clicked on dropdown menu and menu is in host
+                    // do nothing
                     if (current === host) {
                         return;
                     }
@@ -224,6 +222,6 @@ export class ButtonGroup {
             }
             this.openMenu = false;
         }
-        this._overflowMenuToggleClicked = false; //Reset the overflow menu toggle clicked flag
+        this._overflowMenuToggleClicked = false;  // Reset the overflow menu toggle clicked flag
     }
 }

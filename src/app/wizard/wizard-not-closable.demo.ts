@@ -3,15 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
-import { CodeHighlight } from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
+import {Component, ViewChild} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-wizard-basic",
-    templateUrl: "./wizard-not-closable.demo.html"
-})
+import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
+import {Wizard} from "../../clarity-angular/wizard/wizard";
+
+@Component({moduleId: module.id, selector: "clr-wizard-basic", templateUrl: "./wizard-not-closable.demo.html"})
 export class WizardNotClosableDemo {
     @ViewChild("wizard") wizard: Wizard;
     @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;

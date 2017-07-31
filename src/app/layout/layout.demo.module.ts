@@ -3,44 +3,30 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
+import {NgModule} from "@angular/core";
+
 import {ClarityModule} from "../../clarity-angular/clarity.module";
-import {ROUTING} from "./layout.demo.routing";
-import {LayoutDemo} from "./layout.demo";
-import {LayoutAllDemo} from "./layout-all";
-import {LayoutNoSubnavDemo} from "./layout-no-subnav";
-import {LayoutNoSidenavDemo} from "./layout-no-sidenav";
-import {LayoutOnlyHeaderDemo} from "./layout-only-header";
-import {LayoutSubnavPrimaryDemo} from "./layout-subnav-primary";
-import {LayoutSidenavPrimaryDemo} from "./layout-sidenav-primary";
+
 import {LayoutAdditionalSectionsDemo} from "./layout-additional-sections";
+import {LayoutAllDemo} from "./layout-all";
+import {LayoutNoSidenavDemo} from "./layout-no-sidenav";
+import {LayoutNoSubnavDemo} from "./layout-no-subnav";
+import {LayoutOnlyHeaderDemo} from "./layout-only-header";
+import {LayoutSidenavPrimaryDemo} from "./layout-sidenav-primary";
+import {LayoutSubnavPrimaryDemo} from "./layout-subnav-primary";
+import {LayoutDemo} from "./layout.demo";
+import {ROUTING} from "./layout.demo.routing";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ClarityModule,
-        ROUTING
-    ],
+    imports: [CommonModule, ClarityModule, ROUTING],
     declarations: [
-        LayoutDemo,
-        LayoutAllDemo,
-        LayoutNoSubnavDemo,
-        LayoutNoSidenavDemo,
-        LayoutOnlyHeaderDemo,
-        LayoutSubnavPrimaryDemo,
-        LayoutSidenavPrimaryDemo,
-        LayoutAdditionalSectionsDemo
+        LayoutDemo, LayoutAllDemo, LayoutNoSubnavDemo, LayoutNoSidenavDemo, LayoutOnlyHeaderDemo,
+        LayoutSubnavPrimaryDemo, LayoutSidenavPrimaryDemo, LayoutAdditionalSectionsDemo
     ],
     exports: [
-        LayoutDemo,
-        LayoutAllDemo,
-        LayoutNoSubnavDemo,
-        LayoutNoSidenavDemo,
-        LayoutOnlyHeaderDemo,
-        LayoutSubnavPrimaryDemo,
-        LayoutSidenavPrimaryDemo,
-        LayoutAdditionalSectionsDemo
+        LayoutDemo, LayoutAllDemo, LayoutNoSubnavDemo, LayoutNoSidenavDemo, LayoutOnlyHeaderDemo,
+        LayoutSubnavPrimaryDemo, LayoutSidenavPrimaryDemo, LayoutAdditionalSectionsDemo
     ]
 })
 export default class LayoutDemoModule {

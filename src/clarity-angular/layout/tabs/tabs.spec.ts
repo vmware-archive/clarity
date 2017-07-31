@@ -3,12 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {Component, ViewChild} from "@angular/core";
-import {ClrTabsModule} from "./tabs.module";
-import {Tabs} from "./tabs";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+
 import {IfActiveService} from "../../utils/conditional/if-active.service";
+
+import {Tabs} from "./tabs";
 import {TabsService} from "./tabs-service";
+import {ClrTabsModule} from "./tabs.module";
 
 @Component({
     template: `
@@ -54,11 +56,8 @@ describe("Tabs", () => {
     let compiled: any;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [ClrTabsModule],
-            declarations: [TestComponent],
-            providers: [Tabs, IfActiveService, TabsService]
-        });
+        TestBed.configureTestingModule(
+            {imports: [ClrTabsModule], declarations: [TestComponent], providers: [Tabs, IfActiveService, TabsService]});
 
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
@@ -74,7 +73,7 @@ describe("Tabs", () => {
         expect(compiled.querySelectorAll("button.nav-link").length).toEqual(4);
         expect(compiled.querySelectorAll("p").length).toEqual(1);
 
-        let content: HTMLElement = compiled.querySelector("p");
+        const content: HTMLElement = compiled.querySelector("p");
         expect(content.textContent.trim()).toMatch("Content1");
     });
 
@@ -91,7 +90,7 @@ describe("Tabs", () => {
         fixture.detectChanges();
         expect(compiled.querySelector(".tabs-overflow")).toBeDefined();
 
-        let toggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+        const toggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
         toggle.click();
         fixture.detectChanges();
         expect(compiled.querySelector(".tabs-overflow .tab4")).toBeDefined();

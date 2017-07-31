@@ -117,7 +117,6 @@ const EXAMPLE_4 = `
     templateUrl: "./child-node-selected.html"
 })
 export class ChildNodeSelectedDemo {
-
     example1 = EXAMPLE_1;
     example2 = EXAMPLE_2;
     example3 = EXAMPLE_3;
@@ -134,5 +133,4 @@ export class ChildNodeSelectedDemo {
     selected9: boolean = true;
     selected10: boolean = false;
     selected11: boolean = true;
-
 }

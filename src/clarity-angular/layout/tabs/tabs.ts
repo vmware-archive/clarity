@@ -3,13 +3,13 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    Component, ContentChildren, QueryList
-} from "@angular/core";
+import {Component, ContentChildren, QueryList} from "@angular/core";
+
 import {IfActiveService} from "../../utils/conditional/if-active.service";
-import {TabsService} from "./tabs-service";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
+
 import {TabLinkDirective} from "./tab-link.directive";
+import {TabsService} from "./tabs-service";
 
 @Component({
     selector: "clr-tabs",
@@ -43,15 +43,13 @@ import {TabLinkDirective} from "./tab-link.directive";
         <!--tab content-->
         <ng-content></ng-content>
     `,
-    providers: [ IfActiveService, IfOpenService, TabsService ]
+    providers: [IfActiveService, IfOpenService, TabsService]
 })
 export class Tabs {
     @ContentChildren(TabLinkDirective, {descendants: true}) tabLinkDirectives: QueryList<TabLinkDirective>;
 
-    constructor(public ifActiveService: IfActiveService,
-                public ifOpenService: IfOpenService,
-                public tabsService: TabsService) {
-    }
+    constructor(public ifActiveService: IfActiveService, public ifOpenService: IfOpenService,
+                public tabsService: TabsService) {}
 
     get activeTabInOverflow() {
         return this.tabsService.overflowTabs.indexOf(this.tabsService.activeTab) > -1;

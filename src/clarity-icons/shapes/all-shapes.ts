@@ -4,28 +4,21 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { CoreShapes } from "./core-shapes";
-import { CommerceShapes } from "./commerce-shapes";
-import { EssentialShapes } from "./essential-shapes";
-import { MediaShapes } from "./media-shapes";
-import { SocialShapes } from "./social-shapes";
-import { TechnologyShapes } from "./technology-shapes";
-import { TravelShapes } from "./travel-shapes";
+import {CommerceShapes} from "./commerce-shapes";
+import {CoreShapes} from "./core-shapes";
+import {EssentialShapes} from "./essential-shapes";
+import {MediaShapes} from "./media-shapes";
+import {SocialShapes} from "./social-shapes";
+import {TechnologyShapes} from "./technology-shapes";
+import {TravelShapes} from "./travel-shapes";
 
-const allShapesSets = [
-    CoreShapes,
-    CommerceShapes,
-    EssentialShapes,
-    MediaShapes,
-    SocialShapes,
-    TechnologyShapes,
-    TravelShapes
-];
+const allShapesSets =
+    [CoreShapes, CommerceShapes, EssentialShapes, MediaShapes, SocialShapes, TechnologyShapes, TravelShapes];
 
-let allShapes: any = {};
+const allShapes: any = {};
 
-for (let set of allShapesSets) {
-    for (let shape in set) {
+for (const set of allShapesSets) {
+    for (const shape in set) {
         if (set.hasOwnProperty(shape)) {
             allShapes[shape] = set[shape];
         }
@@ -33,7 +26,7 @@ for (let set of allShapesSets) {
 }
 
 if (typeof window !== "undefined" && window.hasOwnProperty("ClarityIcons")) {
-    window["ClarityIcons"].add(allShapes);
+    window.ClarityIcons.add(allShapes);
 }
 
-export { allShapes as AllShapes };
+export {allShapes as AllShapes};

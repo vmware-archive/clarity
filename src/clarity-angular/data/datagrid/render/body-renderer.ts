@@ -5,14 +5,12 @@
  */
 import {Directive, ElementRef, OnDestroy} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
-import {DatagridRenderOrganizer} from "./render-organizer";
+
 import {DomAdapter} from "./dom-adapter";
+import {DatagridRenderOrganizer} from "./render-organizer";
 
-@Directive({
-    selector: "[clrDgBody]"
-})
+@Directive({selector: "[clrDgBody]"})
 export class DatagridBodyRenderer implements OnDestroy {
-
     constructor(private el: ElementRef, private organizer: DatagridRenderOrganizer, private domAdapter: DomAdapter) {
         this.subscription = organizer.scrollbar.subscribe(() => this.computeScrollbarWidth());
     }

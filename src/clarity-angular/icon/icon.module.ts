@@ -4,13 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { ICON_DIRECTIVES } from "./index";
+import {CommonModule} from "@angular/common";
+import {NgModule} from "@angular/core";
 
-@NgModule({
-    imports: [CommonModule],
-    declarations: [ICON_DIRECTIVES],
-    exports: [ICON_DIRECTIVES]
-})
-export class ClrIconModule {}
+import {ICON_DIRECTIVES} from "./index";
+
+@NgModule({imports: [CommonModule], declarations: [ICON_DIRECTIVES], exports: [ICON_DIRECTIVES]})
+export class ClrIconModule {
+}

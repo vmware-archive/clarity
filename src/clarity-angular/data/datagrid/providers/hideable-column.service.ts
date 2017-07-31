@@ -1,15 +1,14 @@
 /*
- * Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Injectable } from "@angular/core";
+import {Injectable} from "@angular/core";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {Observable} from "rxjs/Observable";
 
-import { Observable } from "rxjs/Observable";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
-
-import { DatagridHideableColumn } from "../datagrid-hideable-column";
+import {DatagridHideableColumn} from "../datagrid-hideable-column";
 
 
 /**
@@ -23,7 +22,6 @@ import { DatagridHideableColumn } from "../datagrid-hideable-column";
  */
 @Injectable()
 export class HideableColumnService {
-
     /**********
      * @property dgHiddenColumnMap
      *
@@ -63,8 +61,8 @@ export class HideableColumnService {
      * @returns {boolean}
      */
     public get canHideNextColumn(): boolean {
-        let hiddenColumns = this._columnList.filter(column => column !== undefined).filter(column => column.hidden);
-        return ( this._columnList.length - hiddenColumns.length > 1 );
+        const hiddenColumns = this._columnList.filter(column => column !== undefined).filter(column => column.hidden);
+        return (this._columnList.length - hiddenColumns.length > 1);
     }
 
     /**********
@@ -91,7 +89,6 @@ export class HideableColumnService {
      */
     public get columnListChange(): Observable<DatagridHideableColumn[]> {
         return this._columnListChange.asObservable();
-
     }
 
     /**********
@@ -118,12 +115,12 @@ export class HideableColumnService {
      *
      */
     public showHiddenColumns() {
-        this._columnList.forEach(( column ) => {
-            if ( column && column.hidden === true ) {
+        this._columnList.forEach((column) => {
+            if (column && column.hidden === true) {
                 column.hidden = false;
             }
 
-            if ( column && column.lastVisibleColumn ) {
+            if (column && column.lastVisibleColumn) {
                 column.lastVisibleColumn = false;
             }
         });
@@ -141,10 +138,10 @@ export class HideableColumnService {
      * @param columns
      *
      */
-    public updateColumnList( columns: DatagridHideableColumn[] ) {
-        this._columnList = columns; // clear the list
-        this.updateForLastVisibleColumn(); // Update our visibility state for UI
-        this._columnListChange.next(this._columnList); // Broadcast it
+    public updateColumnList(columns: DatagridHideableColumn[]) {
+        this._columnList = columns;                     // clear the list
+        this.updateForLastVisibleColumn();              // Update our visibility state for UI
+        this._columnListChange.next(this._columnList);  // Broadcast it
     }
 
     /**********
@@ -162,16 +159,16 @@ export class HideableColumnService {
      */
     public updateForLastVisibleColumn(): void {
         // There is more than one column showing, make sure nothing is marked lastVisibleColumn
-        if ( this.canHideNextColumn ) {
-            this._columnList.map(( column ) => {
-                if ( column && column.lastVisibleColumn ) {
+        if (this.canHideNextColumn) {
+            this._columnList.map((column) => {
+                if (column && column.lastVisibleColumn) {
                     column.lastVisibleColumn = false;
                 }
             });
         } else {
             // The visibleCount is down to only one column showing. Find it and flag it as the lastVisibleColumn
-            this._columnList.map(( column ) => {
-                if ( column && !column.hidden ) {
+            this._columnList.map((column) => {
+                if (column && !column.hidden) {
                     column.lastVisibleColumn = true;
                 }
             });
@@ -192,8 +189,8 @@ export class HideableColumnService {
      * @returns HideableColumn
      *
      */
-    public getColumnById( id: string ): undefined | DatagridHideableColumn {
-        if ( id ) {
+    public getColumnById(id: string): undefined|DatagridHideableColumn {
+        if (id) {
             return this._columnList.find(column => column && column.id === id);
         }
         return;

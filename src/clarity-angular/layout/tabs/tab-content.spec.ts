@@ -3,12 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {Component, ViewChild} from "@angular/core";
-import { ClrTabsModule } from "./tabs.module";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+
 import {IF_ACTIVE_ID_PROVIDER, IfActiveService} from "../../utils/conditional/if-active.service";
-import {TabContent} from "./tab-content";
+
 import {AriaService} from "./aria-service";
+import {TabContent} from "./tab-content";
+import {ClrTabsModule} from "./tabs.module";
 
 @Component({
     template: `

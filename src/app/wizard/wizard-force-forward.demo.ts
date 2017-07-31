@@ -4,14 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
+import {Component, ViewChild} from "@angular/core";
+import {Wizard} from "../../clarity-angular/wizard/wizard";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-wizard-force-forward",
-    templateUrl: "./wizard-force-forward.demo.html"
-})
+@Component({moduleId: module.id, selector: "clr-wizard-force-forward", templateUrl: "./wizard-force-forward.demo.html"})
 export class WizardForceForwardDemo {
     @ViewChild("wizard") wizard: Wizard;
     _open: boolean = false;

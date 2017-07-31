@@ -13,7 +13,6 @@ import {DatagridRenderOrganizer} from "./render-organizer";
  */
 @Injectable()
 export class MockDatagridRenderOrganizer extends DatagridRenderOrganizer {
-
     public get clearWidths(): Subject<any> {
         return this._clearWidths;
     }
@@ -29,7 +28,9 @@ export class MockDatagridRenderOrganizer extends DatagridRenderOrganizer {
     public get alignColumns(): Subject<any> {
         return this._alignColumns;
     }
-
 }
 
-export const MOCK_ORGANIZER_PROVIDER = {provide: DatagridRenderOrganizer, useClass: MockDatagridRenderOrganizer};
+export const MOCK_ORGANIZER_PROVIDER = {
+    provide: DatagridRenderOrganizer,
+    useClass: MockDatagridRenderOrganizer
+};

@@ -4,12 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Wizard} from "../wizard";
 import {TestContext} from "../../utils/testing/helpers.spec";
+import {BasicWizardTestComponent} from "../test-components/basic-wizard.mock";
+import {Wizard} from "../wizard";
+
 import {ButtonHubService} from "./button-hub";
-import {WizardNavigationService} from "./wizard-navigation";
 import {PageCollectionService} from "./page-collection";
-import { BasicWizardTestComponent } from "../test-components/basic-wizard.mock";
+import {WizardNavigationService} from "./wizard-navigation";
 
 export default function(): void {
     describe("Button Hub Service", function() {
@@ -52,8 +53,8 @@ export default function(): void {
         });
 
         it("'finish' calls wizard deactivateGhostPages, deactivateGhostPages.close, emit wizardFinished", function() {
-            let wizard = context.clarityDirective;
-            let finalPage = wizard.pageCollection.lastPage;
+            const wizard = context.clarityDirective;
+            const finalPage = wizard.pageCollection.lastPage;
 
             spyOn(wizard.wizardFinished, "emit");
             spyOn(wizard, "deactivateGhostPages");

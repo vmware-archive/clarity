@@ -230,7 +230,7 @@ const mediaShapes: any = {
 };
 
 if (typeof window !== "undefined" && window.hasOwnProperty("ClarityIcons")) {
-    window["ClarityIcons"].add(mediaShapes);
+    window.ClarityIcons.add(mediaShapes);
 }
 
-export { mediaShapes as MediaShapes };
+export {mediaShapes as MediaShapes};

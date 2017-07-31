@@ -4,12 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Directive, TemplateRef } from "@angular/core";
+import {Directive, TemplateRef} from "@angular/core";
 
-@Directive({
-    selector: "[clrPageTitle]"
-})
+@Directive({selector: "[clrPageTitle]"})
 export class WizardPageTitleDirective {
-    constructor(public pageTitleTemplateRef: TemplateRef<any>) {
-    }
+    constructor(public pageTitleTemplateRef: TemplateRef<any>) {}
 }

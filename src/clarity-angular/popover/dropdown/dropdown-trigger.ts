@@ -3,22 +3,20 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    Directive,
-    HostListener
-} from "@angular/core";
+import {Directive, HostListener} from "@angular/core";
 
-import { Dropdown } from "./dropdown";
-import { IfOpenService } from "../../utils/conditional/if-open.service";
+import {IfOpenService} from "../../utils/conditional/if-open.service";
+
+import {Dropdown} from "./dropdown";
 
 @Directive({
     // We support both selectors for legacy reasons
     selector: "[clrDropdownTrigger],[clrDropdownToggle]",
     host: {
-        "[class.dropdown-toggle]" : "isRootLevelToggle",
-        "[class.dropdown-item]" : "!isRootLevelToggle",
-        "[class.expandable]" : "!isRootLevelToggle",
-        "[class.active]" : "active"
+        "[class.dropdown-toggle]": "isRootLevelToggle",
+        "[class.dropdown-item]": "!isRootLevelToggle",
+        "[class.expandable]": "!isRootLevelToggle",
+        "[class.active]": "active"
     }
 })
 export class DropdownTrigger {

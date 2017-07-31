@@ -4,14 +4,16 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
+
 import {TestContext} from "../helpers.spec";
-import {DatagridHeaderRenderer} from "./header-renderer";
-import {DomAdapter} from "./dom-adapter";
-import {DatagridRenderOrganizer} from "./render-organizer";
-import {MockDatagridRenderOrganizer, MOCK_ORGANIZER_PROVIDER} from "./render-organizer.mock";
-import {MockDomAdapter, MOCK_DOM_ADAPTER_PROVIDER} from "./dom-adapter.mock";
-import {Sort} from "../providers/sort";
 import {FiltersProvider} from "../providers/filters";
+import {Sort} from "../providers/sort";
+
+import {DomAdapter} from "./dom-adapter";
+import {MOCK_DOM_ADAPTER_PROVIDER, MockDomAdapter} from "./dom-adapter.mock";
+import {DatagridHeaderRenderer} from "./header-renderer";
+import {DatagridRenderOrganizer} from "./render-organizer";
+import {MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer} from "./render-organizer.mock";
 
 export default function(): void {
     describe("DatagridHeaderRenderer directive", function() {
@@ -21,7 +23,7 @@ export default function(): void {
 
         beforeEach(function() {
             context = this.create(DatagridHeaderRenderer, SimpleTest,
-                [MOCK_ORGANIZER_PROVIDER, MOCK_DOM_ADAPTER_PROVIDER, Sort, FiltersProvider]);
+                                  [MOCK_ORGANIZER_PROVIDER, MOCK_DOM_ADAPTER_PROVIDER, Sort, FiltersProvider]);
             domAdapter = context.getClarityProvider(DomAdapter);
             organizer = context.getClarityProvider(DatagridRenderOrganizer);
         });
@@ -76,8 +78,6 @@ export default function(): void {
     });
 }
 
-@Component({
-    template: `<clr-dg-column>Hello world</clr-dg-column>`
-})
+@Component({template: `<clr-dg-column>Hello world</clr-dg-column>`})
 class SimpleTest {
 }

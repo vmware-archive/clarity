@@ -3,20 +3,21 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {DatagridStringFilterImpl} from "./datagrid-string-filter-impl";
 import {StringFilter} from "../../interfaces/string-filter";
+
+import {DatagridStringFilterImpl} from "./datagrid-string-filter-impl";
 
 export default function(): void {
     describe("DatagridStringFilterImpl", function() {
         let stringFilter: TestFilter;
         let fullFilter: DatagridStringFilterImpl;
 
-        beforeEach(function () {
+        beforeEach(function() {
             stringFilter = new TestFilter();
             fullFilter = new DatagridStringFilterImpl(this.stringFilter);
         });
 
-        it("updates the lowercase value when the raw value changes", function () {
+        it("updates the lowercase value when the raw value changes", function() {
             expect(fullFilter.value).toBe("");
             expect(fullFilter.lowerCaseValue).toBe("");
             fullFilter.value = "TEST";
@@ -24,7 +25,7 @@ export default function(): void {
             expect(fullFilter.lowerCaseValue).toBe("test");
         });
 
-        it("becomes active when the value isn't empty", function () {
+        it("becomes active when the value isn't empty", function() {
             expect(fullFilter.isActive()).toBe(false);
             fullFilter.value = "test";
             expect(fullFilter.isActive()).toBe(true);
@@ -32,7 +33,7 @@ export default function(): void {
             expect(fullFilter.isActive()).toBe(false);
         });
 
-        it("filters according to the StringFilter provided", function () {
+        it("filters according to the StringFilter provided", function() {
             expect(fullFilter.accepts("test")).toBe(false);
             fullFilter.value = "tes";
             expect(fullFilter.accepts("test")).toBe(false);
@@ -42,17 +43,17 @@ export default function(): void {
             expect(fullFilter.accepts("test")).toBe(false);
         });
 
-        it("ignores case when filtering", function () {
+        it("ignores case when filtering", function() {
             fullFilter.value = "TEST";
             expect(fullFilter.accepts("test")).toBe(true);
             fullFilter.value = "test";
             expect(fullFilter.accepts("TEST")).toBe(true);
         });
     });
-};
+}
 
 class TestFilter implements StringFilter<string> {
     accepts(item: string, search: string) {
         return item.toLowerCase() === search;
-    };
+    }
 }

@@ -4,12 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Subject} from "rxjs/Subject";
-import {Items} from "./items";
-import {Filter} from "../interfaces/filter";
+
 import {Comparator} from "../interfaces/comparator";
+import {Filter} from "../interfaces/filter";
+
 import {FiltersProvider} from "./filters";
-import {Sort} from "./sort";
+import {Items} from "./items";
 import {Page} from "./page";
+import {Sort} from "./sort";
 
 const ALL_ITEMS = [9, 3, 5, 8, 2, 6, 10, 7, 4, 1];
 
@@ -98,7 +100,7 @@ export default function(): void {
         });
 
         it("does not modify the original array", function() {
-            let copy = ALL_ITEMS.slice();
+            const copy = ALL_ITEMS.slice();
             setSmartItems(this.itemsInstance);
             this.evenFilter.toggle();
             this.sortInstance.toggle(this.comparator);
@@ -121,7 +123,7 @@ export default function(): void {
                 latestDisplayed = items;
             });
             expect(latestDisplayed).toBeUndefined();
-            let unprocessed = [3, 1, 2];
+            const unprocessed = [3, 1, 2];
             this.itemsInstance.all = unprocessed;
             expect(latestDisplayed).toBe(unprocessed);
             setSmartItems(this.itemsInstance);
@@ -145,7 +147,7 @@ export default function(): void {
             });
 
             it("forces refiltering", function() {
-                let filter = new NameFilter();
+                const filter = new NameFilter();
                 this.filtersInstance.add(filter);
                 filter.search("o");
                 this.users[0].name = "zzz";
@@ -155,7 +157,7 @@ export default function(): void {
             });
 
             it("forces resorting", function() {
-                let comparator = new NameComparator();
+                const comparator = new NameComparator();
                 this.sortInstance.toggle(comparator);
                 this.users[0].name = "zzz";
                 expect(this.itemsInstance.displayed).toEqual([{name: "zzz"}, {name: "world"}]);
@@ -170,7 +172,7 @@ export default function(): void {
         });
 
     });
-};
+}
 
 class EvenFilter implements Filter<number> {
     private active = false;
@@ -182,13 +184,13 @@ class EvenFilter implements Filter<number> {
 
     isActive(): boolean {
         return this.active;
-    };
+    }
 
     changes = new Subject<boolean>();
 
     accepts(n: number): boolean {
         return n % 2 === 0;
-    };
+    }
 }
 
 class TestComparator implements Comparator<number> {
@@ -206,13 +208,13 @@ class NameFilter implements Filter<any> {
 
     isActive(): boolean {
         return this._search.length > 0;
-    };
+    }
 
     changes = new Subject<string>();
 
     accepts(user: any): boolean {
         return user.name.includes(this._search);
-    };
+    }
 }
 
 class NameComparator implements Comparator<any> {

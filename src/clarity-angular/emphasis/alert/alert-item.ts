@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component } from "@angular/core";
-import { AlertIconAndTypesService } from "./providers/icon-and-types-service";
+import {Component} from "@angular/core";
+import {AlertIconAndTypesService} from "./providers/icon-and-types-service";
 
 @Component({
     // the .alert-item selector is deprecated; the :not clause is to allow us to use static
@@ -17,11 +17,8 @@ import { AlertIconAndTypesService } from "./providers/icon-and-types-service";
         </div>
         <ng-content></ng-content>
     `,
-    host: {
-        "class": "alert-item"
-    }
+    host: {"class": "alert-item"}
 })
 export class AlertItem {
-    constructor(public iconService: AlertIconAndTypesService) {
-    }
+    constructor(public iconService: AlertIconAndTypesService) {}
 }

@@ -35,6 +35,5 @@ export class TabsService {
         if (index > -1) {
             this.children.splice(index, 1);
         }
-
     }
 }

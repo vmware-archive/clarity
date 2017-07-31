@@ -1,16 +1,19 @@
-import {
-    Component, ElementRef, Injector, Input, SkipSelf
-} from "@angular/core";
+/*
+ * Copyright (c) 2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+import {Component, ElementRef, Injector, Input, SkipSelf} from "@angular/core";
 import {AbstractPopover} from "../common/abstract-popover";
 import {SIGNPOST_POSITIONS} from "./signpost-positions";
 
-//aka where the arrow / pointer is at in relation to the anchor
+// aka where the arrow / pointer is at in relation to the anchor
 const POSITIONS: string[] = [
     "top-left",
     "top-middle",
     "top-right",
     "right-top",
-    "right-middle", // default
+    "right-middle",  // default
     "right-bottom",
     "bottom-right",
     "bottom-middle",
@@ -35,12 +38,9 @@ const POSITIONS: string[] = [
             </div>
         </div>
     `,
-    host: {
-        "[class.signpost-content]": "true"
-    }
+    host: {"[class.signpost-content]": "true"}
 })
 export class SignpostContent extends AbstractPopover {
-
     constructor(injector: Injector, @SkipSelf() parentHost: ElementRef) {
         super(injector, parentHost);
         // Defaults
@@ -107,7 +107,7 @@ export class SignpostContent extends AbstractPopover {
         // Ugh
         this.renderer.addClass(this.el.nativeElement, this.position);
 
-        let setPosition = SIGNPOST_POSITIONS[this.position];
+        const setPosition = SIGNPOST_POSITIONS[this.position];
         this.anchorPoint = setPosition.anchorPoint;
         this.popoverPoint = setPosition.popoverPoint;
         this.popoverOptions.offsetY = setPosition.offsetY;

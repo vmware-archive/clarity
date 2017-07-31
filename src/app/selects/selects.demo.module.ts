@@ -3,24 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "../../clarity-angular/clarity.module";
-import {ROUTING} from "./selects.demo.routing";
-import {SelectsDemo} from "./selects.demo";
+import {NgModule} from "@angular/core";
 
-@NgModule({
-    imports: [
-        CommonModule,
-        ClarityModule,
-        ROUTING
-    ],
-    declarations: [
-        SelectsDemo
-    ],
-    exports: [
-        SelectsDemo
-    ]
-})
+import {ClarityModule} from "../../clarity-angular/clarity.module";
+
+import {SelectsDemo} from "./selects.demo";
+import {ROUTING} from "./selects.demo.routing";
+
+@NgModule({imports: [CommonModule, ClarityModule, ROUTING], declarations: [SelectsDemo], exports: [SelectsDemo]})
 export default class SelectsDemoModule {
 }

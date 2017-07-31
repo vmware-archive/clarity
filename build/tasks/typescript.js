@@ -5,9 +5,7 @@
  */
 
 var gulp = require('gulp');
-var tslint = require('gulp-tslint');
 var typescriptCompile = require('./../compile-ts');
-var runSequence = require('run-sequence');
 var absoluteRequires = require("../absolute-requires");
 var renameFolder = require("../rename-folder");
 /**
@@ -123,42 +121,32 @@ gulp.task('typescript:app', function () {
  */
 var clarityHtmlFiles = ["src/clarity-angular/**/*.html"];
 gulp.task('typescript:clarity:watch', function () {
-    gulp.watch(claritySources.concat(clarityHtmlFiles), function () {
-        return runSequence('tslint:clarity:no-error', 'typescript:clarity');
-    });
+    gulp.watch(claritySources.concat(clarityHtmlFiles), ['typescript:clarity']);
 });
 
 gulp.task('typescript:icons:watch', function () {
-    gulp.watch(iconsSources, function () {
-        return runSequence('tslint:icons:no-error', 'typescript:icons');
-    });
+    gulp.watch(iconsSources, ['typescript:icons']);
 });
 
 gulp.task('typescript:tests:watch', function () {
-    gulp.watch(testsSources, function () {
-        return runSequence('tslint:tests:no-error', 'typescript:tests');
-    });
+    gulp.watch(testsSources, ['typescript:tests']);
 });
 
 gulp.task('typescript:tests:icons:watch', function () {
-    gulp.watch(testsIconSources, function () {
-        return runSequence('tslint:tests:no-error', 'typescript:tests:icons');
-    });
+    gulp.watch(testsIconSources, ['typescript:tests:icons']);
 });
 
 gulp.task('typescript:app:watch', function () {
-    gulp.watch(appSources, function () {
-        return runSequence('tslint:app:no-error', 'typescript:app');
-    });
+    gulp.watch(appSources, ['typescript:app']);
 });
 
-gulp.task('typescript', function (callback) {
-    return runSequence(
-        'tslint',
-        ['typescript:clarity', 'typescript:icons', 'typescript:app', 'typescript:tests', 'typescript:tests:icons'],
-        callback
-    );
-});
+gulp.task('typescript', [
+    'typescript:clarity',
+    'typescript:icons',
+    'typescript:app',
+    'typescript:tests',
+    'typescript:tests:icons'
+]);
 
 gulp.task('typescript:watch', [
     'typescript:clarity:watch',

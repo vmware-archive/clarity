@@ -4,9 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild, OnInit } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
-import { CodeHighlight } from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
+import {Component, OnInit, ViewChild} from "@angular/core";
+
+import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
+import {Wizard} from "../../clarity-angular/wizard/wizard";
 
 @Component({
     moduleId: module.id,
@@ -23,12 +24,7 @@ export class WizardAltNextDemo implements OnInit {
     public errorFlag: boolean = false;
 
     public ngOnInit() {
-        this.model = {
-            allowNext: false,
-            sequenceOne: "",
-            sequenceTwo: "",
-            sequenceThree: ""
-        };
+        this.model = {allowNext: false, sequenceOne: "", sequenceTwo: "", sequenceThree: ""};
     }
 
     public pageCustomNext(): void {
@@ -39,10 +35,10 @@ export class WizardAltNextDemo implements OnInit {
     }
 
     public doFinish() {
-        let sequenceOneIsCorrect = this.model.sequenceOne === 3;
-        let sequenceTwoIsCorrect = this.model.sequenceTwo === 5;
-        let sequenceThreeIsCorrect = this.model.sequenceThree === 8;
-        let allAreCorrect = sequenceOneIsCorrect && sequenceTwoIsCorrect && sequenceThreeIsCorrect;
+        const sequenceOneIsCorrect = this.model.sequenceOne === 3;
+        const sequenceTwoIsCorrect = this.model.sequenceTwo === 5;
+        const sequenceThreeIsCorrect = this.model.sequenceThree === 8;
+        const allAreCorrect = sequenceOneIsCorrect && sequenceTwoIsCorrect && sequenceThreeIsCorrect;
 
         if (allAreCorrect) {
             this.wizard.finish();

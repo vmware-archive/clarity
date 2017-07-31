@@ -3,23 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    Directive,
-    TemplateRef,
-    ViewContainerRef,
-    Input,
-    Output,
-    EventEmitter,
-    Inject,
-    OnDestroy
-} from "@angular/core";
-
-import {IF_ACTIVE_ID, IfActiveService} from "./if-active.service";
+import {Directive, EventEmitter, Inject, Input, OnDestroy, Output, TemplateRef, ViewContainerRef} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
-@Directive({
-    selector: "[clrIfActive]"
-})
+import {IF_ACTIVE_ID, IfActiveService} from "./if-active.service";
+
+@Directive({selector: "[clrIfActive]"})
 
 /**********
  *
@@ -32,13 +21,11 @@ import {Subscription} from "rxjs/Subscription";
  *
  */
 export class IfActiveDirective implements OnDestroy {
-
     private subscription: Subscription;
     private wasActive: boolean = false;
 
-    constructor( private ifActiveService: IfActiveService, @Inject(IF_ACTIVE_ID) private id: number,
-                 private template: TemplateRef<any>, private container: ViewContainerRef ) {
-
+    constructor(private ifActiveService: IfActiveService, @Inject(IF_ACTIVE_ID) private id: number,
+                private template: TemplateRef<any>, private container: ViewContainerRef) {
         this.checkAndUpdateView(ifActiveService.current);
 
         this.subscription = this.ifActiveService.currentChange.subscribe((newCurrentId) => {
@@ -47,7 +34,7 @@ export class IfActiveDirective implements OnDestroy {
     }
 
     private checkAndUpdateView(currentId: number) {
-        let isNowActive = currentId === this.id;
+        const isNowActive = currentId === this.id;
         // only emit if the new active state is changed since last time.
         if (isNowActive !== this.wasActive) {
             this.updateView(isNowActive);
@@ -65,7 +52,7 @@ export class IfActiveDirective implements OnDestroy {
      * @param value
      */
     @Input("clrIfActive")
-    public set active( value: boolean ) {
+    public set active(value: boolean) {
         if (value) {
             this.ifActiveService.current = this.id;
         }
@@ -101,8 +88,8 @@ export class IfActiveDirective implements OnDestroy {
      * Clears all views from the ViewContainerRef
      * @param value
      */
-    public updateView( value: boolean ) {
-        if ( value ) {
+    public updateView(value: boolean) {
+        if (value) {
             this.container.createEmbeddedView(this.template);
         } else {
             this.container.clear();

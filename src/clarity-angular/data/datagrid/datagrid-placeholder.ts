@@ -17,9 +17,7 @@ import {Page} from "./providers/page";
                 <ng-content *ngIf="emptyDatagrid"></ng-content>
         </div>
     `,
-    host: {
-        "[class.datagrid-placeholder-container]": "true"
-    }
+    host: {"[class.datagrid-placeholder-container]": "true"}
 })
 export class DatagridPlaceholder {
     constructor(private items: Items, private page: Page) {}

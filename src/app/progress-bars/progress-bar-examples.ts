@@ -17,8 +17,7 @@ export class ProgressBarExamplesDemo {
 
     constructor() {
         this.examples = [
-            new ProgBarExample(),
-            new ProgBarExample("labeled", "Labeled", true),
+            new ProgBarExample(), new ProgBarExample("labeled", "Labeled", true),
             new ProgBarExample("progress-fade", "Fade Out")
         ];
     }

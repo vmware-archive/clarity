@@ -4,12 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {
-    Component,
-    Input,
-    Output,
-    EventEmitter
-} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 
 let wizardHeaderActionIndex = 0;
 
@@ -26,9 +21,7 @@ let wizardHeaderActionIndex = 0;
             <ng-content></ng-content>
         </button>
     `,
-    host: {
-        "class": "clr-wizard-header-action-wrapper"
-    }
+    host: {"class": "clr-wizard-header-action-wrapper"}
 })
 export class WizardHeaderAction {
     // title is explanatory text added to the header action
@@ -45,8 +38,7 @@ export class WizardHeaderAction {
 
     @Input("clrWizardHeaderActionDisabled") public disabled: boolean = false;
 
-    @Output("actionClicked") headerActionClicked: EventEmitter <string> =
-        new EventEmitter(false);
+    @Output("actionClicked") headerActionClicked: EventEmitter<string> = new EventEmitter(false);
 
     click(): void {
         if (this.disabled) {

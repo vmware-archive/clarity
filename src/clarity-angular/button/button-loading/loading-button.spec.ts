@@ -4,12 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild } from "@angular/core";
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import {Component, ViewChild} from "@angular/core";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import { LoadingButton } from "./loading-button";
-import { ClrLoadingButtonModule } from "./loading-button.module";
-import { ClrLoadingModule } from "../../utils/loading/loading.module";
+import {ClrLoadingModule} from "../../utils/loading/loading.module";
+
+import {LoadingButton} from "./loading-button";
+import {ClrLoadingButtonModule} from "./loading-button.module";
 
 describe("Loading Buttons", () => {
     let fixture: ComponentFixture<TestLoadingButtonComponent>;
@@ -17,14 +18,8 @@ describe("Loading Buttons", () => {
 
     beforeEach(() => {
 
-        TestBed.configureTestingModule({
-            imports: [
-                ClrLoadingModule, ClrLoadingButtonModule
-            ],
-            declarations: [
-                TestLoadingButtonComponent
-            ]
-        });
+        TestBed.configureTestingModule(
+            {imports: [ClrLoadingModule, ClrLoadingButtonModule], declarations: [TestLoadingButtonComponent]});
 
         fixture = TestBed.createComponent(TestLoadingButtonComponent);
         componentInstance = fixture.componentInstance;
@@ -37,7 +32,7 @@ describe("Loading Buttons", () => {
     });
 
     it("implements LoadingListener", () => {
-        let instance: LoadingButton = fixture.componentInstance.loadingButtonInstance;
+        const instance: LoadingButton = fixture.componentInstance.loadingButtonInstance;
 
         instance.startLoading();
         expect(instance.loading).toBe(true);

@@ -7,9 +7,9 @@
 import {Component, ViewEncapsulation} from "@angular/core";
 
 @Component({
-   moduleId: module.id,
-   selector: "clr-wizard-demo",
-   template: `
+    moduleId: module.id,
+    selector: "clr-wizard-demo",
+    template: `
       <h2>New Wizard</h2>
       <div class="row">
         <div class="col-xs-12 col-sm-6">
@@ -39,6 +39,7 @@ import {Component, ViewEncapsulation} from "@angular/core";
 
       <router-outlet></router-outlet>
    `,
-   encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None
 })
-export class WizardDemo {}
+export class WizardDemo {
+}

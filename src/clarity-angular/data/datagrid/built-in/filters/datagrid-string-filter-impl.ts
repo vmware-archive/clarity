@@ -1,10 +1,14 @@
+/*
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 import {Filter} from "../../interfaces/filter";
 import {StringFilter} from "../../interfaces/string-filter";
 
 export class DatagridStringFilterImpl implements Filter<any> {
-
     constructor(public filterFn: StringFilter<any>) {}
 
     /**
@@ -14,7 +18,7 @@ export class DatagridStringFilterImpl implements Filter<any> {
     // We do not want to expose the Subject itself, but the Observable which is read-only
     public get changes(): Observable<string> {
         return this._changes.asObservable();
-    };
+    }
 
     /**
      * Raw input value
@@ -57,6 +61,5 @@ export class DatagridStringFilterImpl implements Filter<any> {
     public accepts(item: any): boolean {
         // We always test with the lowercase value of the input, to stay case insensitive
         return this.filterFn.accepts(item, this.lowerCaseValue);
-    };
-
+    }
 }

@@ -5,7 +5,8 @@
  */
 
 
-import {Component, ViewChild, TemplateRef, Input, SkipSelf, Optional, EventEmitter, Output} from "@angular/core";
+import {Component, EventEmitter, Input, Optional, Output, SkipSelf, TemplateRef, ViewChild} from "@angular/core";
+
 import {ButtonInGroupService} from "../providers/buttonInGroup.service";
 
 @Component({
@@ -24,7 +25,6 @@ import {ButtonInGroupService} from "../providers/buttonInGroup.service";
     `
 })
 export class Button {
-
     private _enableService: boolean = false;
 
     @ViewChild("buttonProjectedRef") templateRef: TemplateRef<Button>;
@@ -42,8 +42,8 @@ export class Button {
         value = !!value;
         if (this._inMenu !== value) {
             this._inMenu = value;
-            //We check if the service flag is enabled
-            //and if the service exists because the service is optional
+            // We check if the service flag is enabled
+            // and if the service exists because the service is optional
             if (this._enableService && this.buttonInGroupService) {
                 this.buttonInGroupService.updateButtonGroup(this);
             }
@@ -59,7 +59,7 @@ export class Button {
     @Input("class")
     set classNames(value: string) {
         if (typeof value === "string") {
-            let classNames: string[] = value.split(" ");
+            const classNames: string[] = value.split(" ");
             if (classNames.indexOf("btn") === -1) {
                 classNames.push("btn");
             }
@@ -118,4 +118,3 @@ export class Button {
         this._enableService = true;
     }
 }
-

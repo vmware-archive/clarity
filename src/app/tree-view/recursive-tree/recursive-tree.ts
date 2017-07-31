@@ -83,32 +83,9 @@ export class RecursiveTreeDemo {
         name: "A1",
         expanded: true,
         children: [
-            {
-                name: "B1",
-                children: [
-                    { name: "C1" },
-                    { name: "C2" },
-                    { name: "C3" }
-                ]
-            },
-            {
-                name: "B2",
-                expanded: true,
-                children: [
-                    { name: "D1" },
-                    { name: "D2" },
-                    { name: "D3" }
-                ]
-            },
-            {
-                name: "B3",
-                expanded: true,
-                children: [
-                    { name: "E1" },
-                    { name: "E2" },
-                    { name: "E3" }
-                ]
-            }
+            {name: "B1", children: [{name: "C1"}, {name: "C2"}, {name: "C3"}]},
+            {name: "B2", expanded: true, children: [{name: "D1"}, {name: "D2"}, {name: "D3"}]},
+            {name: "B3", expanded: true, children: [{name: "E1"}, {name: "E2"}, {name: "E3"}]}
         ]
     };
 }

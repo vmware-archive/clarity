@@ -4,24 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {
-    Component,
-    Input,
-    Output,
-    EventEmitter,
-    ContentChild,
-    TemplateRef,
-    OnInit
-} from "@angular/core";
+import {Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef} from "@angular/core";
 
-import { WizardNavigationService } from "./providers/wizard-navigation";
-import { PageCollectionService } from "./providers/page-collection";
-import { ButtonHubService } from "./providers/button-hub";
-
-import { WizardPageTitleDirective } from "./directives/page-title";
-import { WizardPageNavTitleDirective } from "./directives/page-navtitle";
-import { WizardPageButtonsDirective } from "./directives/page-buttons";
-import { WizardPageHeaderActionsDirective } from "./directives/page-header-actions";
+import {WizardPageButtonsDirective} from "./directives/page-buttons";
+import {WizardPageHeaderActionsDirective} from "./directives/page-header-actions";
+import {WizardPageNavTitleDirective} from "./directives/page-navtitle";
+import {WizardPageTitleDirective} from "./directives/page-title";
+import {ButtonHubService} from "./providers/button-hub";
+import {PageCollectionService} from "./providers/page-collection";
+import {WizardNavigationService} from "./providers/wizard-navigation";
 
 let wizardPageIndex = 0;
 
@@ -42,16 +33,15 @@ let wizardPageIndex = 0;
     selector: "clr-wizard-page",
     template: "<ng-content></ng-content>",
     host: {
-        "[id]" : "id",
-        "role" : "tabpanel",
-        "[attr.aria-hidden]" : "!current",
+        "[id]": "id",
+        "role": "tabpanel",
+        "[attr.aria-hidden]": "!current",
         "[attr.aria-labelledby]": "stepItemId",
-        "[class.active]" : "current",
+        "[class.active]": "current",
         "[class.clr-wizard-page]": "true"
     }
 })
 export class WizardPage implements OnInit {
-
     /**
      * Creates an instance of WizardPage.
      *
@@ -61,10 +51,8 @@ export class WizardPage implements OnInit {
      *
      * @memberof WizardPage
      */
-    constructor(private navService: WizardNavigationService,
-                public pageCollection: PageCollectionService,
-                public buttonService: ButtonHubService) {
-    }
+    constructor(private navService: WizardNavigationService, public pageCollection: PageCollectionService,
+                public buttonService: ButtonHubService) {}
 
     /**
      * Contains a reference to the page title which is used for a number
@@ -141,7 +129,7 @@ export class WizardPage implements OnInit {
      */
     @Input("clrWizardPageNextDisabled")
     public set nextStepDisabled(val: boolean) {
-        let valBool = !!val;
+        const valBool = !!val;
         if (valBool !== this._nextStepDisabled) {
             this._nextStepDisabled = valBool;
             this.nextStepDisabledChange.emit(valBool);
@@ -155,8 +143,7 @@ export class WizardPage implements OnInit {
      * @type {EventEmitter <boolean>}
      * @memberof WizardPage
      */
-    @Output("clrWizardPageNextDisabledChange") nextStepDisabledChange: EventEmitter <boolean> =
-        new EventEmitter();
+    @Output("clrWizardPageNextDisabledChange") nextStepDisabledChange: EventEmitter<boolean> = new EventEmitter();
 
     /**
      * @private
@@ -191,7 +178,7 @@ export class WizardPage implements OnInit {
      */
     @Input("clrWizardPagePreviousDisabled")
     public set previousStepDisabled(val: boolean) {
-        let valBool = !!val;
+        const valBool = !!val;
         if (valBool !== this._previousStepDisabled) {
             this._previousStepDisabled = valBool;
             this.previousStepDisabledChange.emit(valBool);
@@ -205,8 +192,8 @@ export class WizardPage implements OnInit {
      * @type {EventEmitter <boolean>}
      * @memberof WizardPage
      */
-    @Output("clrWizardPagePreviousDisabledChange") public previousStepDisabledChange: EventEmitter <boolean> =
-        new EventEmitter();
+    @Output("clrWizardPagePreviousDisabledChange")
+    public previousStepDisabledChange: EventEmitter<boolean> = new EventEmitter();
 
     /**
      * Overrides all actions from the page level, so you can use an alternate function for
@@ -252,7 +239,7 @@ export class WizardPage implements OnInit {
      */
     @Input("clrWizardPagePreventDefaultCancel")
     public set stopCancel(val: boolean) {
-        let valBool = !!val;
+        const valBool = !!val;
         if (valBool !== this._stopCancel) {
             this._stopCancel = valBool;
             this.stopCancelChange.emit(valBool);
@@ -265,8 +252,7 @@ export class WizardPage implements OnInit {
      * @type {EventEmitter <boolean>}
      * @memberof WizardPage
      */
-    @Output("clrWizardPagePreventDefaultCancelChange") stopCancelChange: EventEmitter <boolean> =
-        new EventEmitter();
+    @Output("clrWizardPagePreventDefaultCancelChange") stopCancelChange: EventEmitter<boolean> = new EventEmitter();
 
     /**
      *
@@ -303,7 +289,7 @@ export class WizardPage implements OnInit {
      */
     @Input("clrWizardPagePreventDefaultNext")
     public set stopNext(val: boolean) {
-        let valBool = !!val;
+        const valBool = !!val;
         if (valBool !== this._stopNext) {
             this._stopNext = valBool;
         }
@@ -320,8 +306,7 @@ export class WizardPage implements OnInit {
      * @type {EventEmitter <string>}
      * @memberof WizardPage
      */
-    @Output("clrWizardPageOnCommit") onCommit: EventEmitter <string> =
-        new EventEmitter<string>(false);
+    @Output("clrWizardPageOnCommit") onCommit: EventEmitter<string> = new EventEmitter<string>(false);
 
     /**
      * Emits an event when WizardPage becomes the current page of the
@@ -330,7 +315,7 @@ export class WizardPage implements OnInit {
      * @type {EventEmitter <string>}
      * @memberof WizardPage
      */
-    @Output("clrWizardPageOnLoad") onLoad: EventEmitter <string> = new EventEmitter();
+    @Output("clrWizardPageOnLoad") onLoad: EventEmitter<string> = new EventEmitter();
 
     /**
      * Emits an event when the WizardPage invokes the cancel routine for the wizard.
@@ -347,8 +332,7 @@ export class WizardPage implements OnInit {
      * @type {EventEmitter <WizardPage>}
      * @memberof WizardPage
      */
-    @Output("clrWizardPageOnCancel") pageOnCancel: EventEmitter <WizardPage> =
-        new EventEmitter();
+    @Output("clrWizardPageOnCancel") pageOnCancel: EventEmitter<WizardPage> = new EventEmitter();
 
     /**
      * Emits an event when the finish button is clicked and the WizardPage is
@@ -367,8 +351,7 @@ export class WizardPage implements OnInit {
      * @type {EventEmitter <WizardPage>}
      * @memberof WizardPage
      */
-    @Output("clrWizardPageFinish") finishButtonClicked: EventEmitter <WizardPage> =
-        new EventEmitter();
+    @Output("clrWizardPageFinish") finishButtonClicked: EventEmitter<WizardPage> = new EventEmitter();
 
     /**
      * Emits an event when the previous button is clicked and the WizardPage is
@@ -387,8 +370,7 @@ export class WizardPage implements OnInit {
      * @type {EventEmitter <WizardPage>}
      * @memberof WizardPage
      */
-    @Output("clrWizardPagePrevious") previousButtonClicked: EventEmitter <WizardPage> =
-        new EventEmitter();
+    @Output("clrWizardPagePrevious") previousButtonClicked: EventEmitter<WizardPage> = new EventEmitter();
 
     /**
      * Emits an event when the next button is clicked and the WizardPage is
@@ -407,8 +389,7 @@ export class WizardPage implements OnInit {
      * @type {EventEmitter <WizardPage>}
      * @memberof WizardPage
      */
-    @Output("clrWizardPageNext") nextButtonClicked: EventEmitter <WizardPage> =
-        new EventEmitter();
+    @Output("clrWizardPageNext") nextButtonClicked: EventEmitter<WizardPage> = new EventEmitter();
 
     /**
      * Emits an event when a danger button is clicked and the WizardPage is
@@ -431,8 +412,7 @@ export class WizardPage implements OnInit {
      * @type {EventEmitter <WizardPage>}
      * @memberof WizardPage
      */
-    @Output("clrWizardPageDanger") dangerButtonClicked: EventEmitter <WizardPage> =
-        new EventEmitter();
+    @Output("clrWizardPageDanger") dangerButtonClicked: EventEmitter<WizardPage> = new EventEmitter();
 
     /**
      * Emits an event when a next, finish, or danger button is clicked and the
@@ -455,11 +435,9 @@ export class WizardPage implements OnInit {
      * @type {EventEmitter <WizardPage>}
      * @memberof WizardPage
      */
-    @Output("clrWizardPagePrimary") primaryButtonClicked: EventEmitter <string> =
-        new EventEmitter();
+    @Output("clrWizardPagePrimary") primaryButtonClicked: EventEmitter<string> = new EventEmitter();
 
-    @Output("clrWizardPageCustomButton") customButtonClicked: EventEmitter <string> =
-        new EventEmitter();
+    @Output("clrWizardPageCustomButton") customButtonClicked: EventEmitter<string> = new EventEmitter();
 
     /**
      * An input value that is used internally to generate the WizardPage ID as
@@ -490,7 +468,7 @@ export class WizardPage implements OnInit {
     public get id() {
         // covers things like null, undefined, false, and empty string
         // while allowing zero to pass
-        let idIsNonZeroFalsy = (!this._id && this._id !== 0);
+        const idIsNonZeroFalsy = (!this._id && this._id !== 0);
 
         // in addition to non-zero falsy we also want to make sure _id is not a negative
         // number.
@@ -597,7 +575,7 @@ export class WizardPage implements OnInit {
      * @memberof WizardPage
      */
     public get previousCompleted(): boolean {
-        let previousPage = this.pageCollection.getPreviousPage(this);
+        const previousPage = this.pageCollection.getPreviousPage(this);
 
         if (!previousPage) {
             return true;
@@ -613,7 +591,7 @@ export class WizardPage implements OnInit {
      * @type {TemplateRef < any >}
      * @memberof WizardPage
      */
-    public get title(): TemplateRef < any > {
+    public get title(): TemplateRef<any> {
         return this.pageTitle.pageTitleTemplateRef;
     }
 
@@ -624,7 +602,7 @@ export class WizardPage implements OnInit {
      * @type {TemplateRef < any >}
      * @memberof WizardPage
      */
-    public get navTitle(): TemplateRef < any > {
+    public get navTitle(): TemplateRef<any> {
         if (this.pageNavTitle) {
             return this.pageNavTitle.pageNavTitleTemplateRef;
         }
@@ -638,7 +616,7 @@ export class WizardPage implements OnInit {
      * @type {TemplateRef < any >}
      * @memberof WizardPage
      */
-    public get headerActions(): TemplateRef < any > {
+    public get headerActions(): TemplateRef<any> {
         if (!this._headerActions) {
             return;
         }
@@ -663,7 +641,7 @@ export class WizardPage implements OnInit {
      * @type {TemplateRef < any >}
      * @memberof WizardPage
      */
-    public get buttons(): TemplateRef < any > {
+    public get buttons(): TemplateRef<any> {
         if (!this._buttons) {
             return;
         }
@@ -704,7 +682,7 @@ export class WizardPage implements OnInit {
      * @memberof WizardPage
      */
     public ngOnInit(): void {
-        let navService = this.navService;
+        const navService = this.navService;
         if (!navService.currentPage && !navService.navServiceLoaded) {
             this.makeCurrent();
             this.navService.navServiceLoaded = true;

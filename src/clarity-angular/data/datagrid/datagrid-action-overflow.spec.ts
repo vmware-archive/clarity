@@ -5,8 +5,9 @@
  */
 
 import {Component} from "@angular/core";
-import {TestContext} from "./helpers.spec";
+
 import {DatagridActionOverflow} from "./datagrid-action-overflow";
+import {TestContext} from "./helpers.spec";
 import {RowActionService} from "./providers/row-action-service";
 
 export default function(): void {
@@ -19,7 +20,7 @@ export default function(): void {
             toggle = context.clarityElement.querySelector("clr-icon");
         });
 
-        it("offers two-way binding on clrDgActionOverflowOpen", function () {
+        it("offers two-way binding on clrDgActionOverflowOpen", function() {
             context.clarityDirective.open = true;
             context.detectChanges();
             expect(context.testComponent.open).toBe(true);
@@ -28,13 +29,13 @@ export default function(): void {
             expect(context.clarityDirective.open).toBe(false);
         });
 
-        it("projects menu content when open", function () {
+        it("projects menu content when open", function() {
             context.clarityDirective.open = true;
             context.detectChanges();
             expect(context.clarityElement.textContent.trim()).toMatch("Hello world");
         });
 
-        it("opens and closes the menu when the toggle is clicked", function () {
+        it("opens and closes the menu when the toggle is clicked", function() {
             expect(context.clarityDirective.open).toBe(false);
             toggle.click();
             context.detectChanges();
@@ -45,7 +46,7 @@ export default function(): void {
         });
 
         it("closes the menu when clicked outside of the host", () => {
-            let outsideDiv: HTMLElement = context.testElement.querySelector(".outside-click-test");
+            const outsideDiv: HTMLElement = context.testElement.querySelector(".outside-click-test");
 
             // should be closed initially
             expect(context.clarityDirective.open).toBe(false);
@@ -66,7 +67,7 @@ export default function(): void {
             toggle.click();
             context.detectChanges();
 
-            let actionOverflowMenu: HTMLElement = context.clarityElement.querySelector(".datagrid-action-overflow");
+            const actionOverflowMenu: HTMLElement = context.clarityElement.querySelector(".datagrid-action-overflow");
             actionOverflowMenu.click();
             context.detectChanges();
             expect(context.clarityDirective.open).toBe(true);
@@ -77,7 +78,7 @@ export default function(): void {
             toggle.click();
             context.detectChanges();
 
-            let actionItem: HTMLElement = context.clarityElement.querySelector(".action-item");
+            const actionItem: HTMLElement = context.clarityElement.querySelector(".action-item");
             actionItem.click();
             context.detectChanges();
             expect(context.clarityDirective.open).toBe(false);

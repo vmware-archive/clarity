@@ -4,12 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, DebugElement} from "@angular/core";
-import {TestContext} from "../helpers.spec";
-import {DatagridColumnResizer} from "./column-resizer";
-import {Datagrid} from "../datagrid";
 import {By} from "@angular/platform-browser";
-import {DomAdapter} from "./dom-adapter";
+
+import {Datagrid} from "../datagrid";
+import {TestContext} from "../helpers.spec";
 import {DragDispatcher} from "../providers/drag-dispatcher";
+
+import {DatagridColumnResizer} from "./column-resizer";
+import {DomAdapter} from "./dom-adapter";
 
 export default function(): void {
     describe("DatagridColumnResizer directive", function() {
@@ -33,7 +35,7 @@ export default function(): void {
         let pageDragPosX: number;
         let onMoveEvent: any;
 
-        let emulateResize = function(columnResizerDirective: DatagridColumnResizer, amount: number) {
+        const emulateResize = function(columnResizerDirective: DatagridColumnResizer, amount: number) {
             columnResizerDirective.dragStartHandler();
             columnResizerDirective.dragMoveHandler({pageX: columnResizerDirective.pageStartPositionX + amount});
             columnResizerDirective.dragEndHandler();
@@ -85,10 +87,10 @@ export default function(): void {
             expect(column2ResizerDirective.columnRectWidth).toBeUndefined();
             expect(column3ResizerDirective.columnRectWidth).toBeUndefined();
             expect(column4ResizerDirective.columnRectWidth).toBeUndefined();
-            let column1InitialWidth = domAdapter.clientRectWidth(column1ResizerDirective.columnEl);
-            let column2InitialWidth = domAdapter.clientRectWidth(column2ResizerDirective.columnEl);
-            let column3InitialWidth = domAdapter.clientRectWidth(column3ResizerDirective.columnEl);
-            let column4InitialWidth = domAdapter.clientRectWidth(column4ResizerDirective.columnEl);
+            const column1InitialWidth = domAdapter.clientRectWidth(column1ResizerDirective.columnEl);
+            const column2InitialWidth = domAdapter.clientRectWidth(column2ResizerDirective.columnEl);
+            const column3InitialWidth = domAdapter.clientRectWidth(column3ResizerDirective.columnEl);
+            const column4InitialWidth = domAdapter.clientRectWidth(column4ResizerDirective.columnEl);
             column1ResizerDirective.dragStartHandler();
             expect(column1ResizerDirective.columnRectWidth).toBe(column1InitialWidth);
             column2ResizerDirective.dragStartHandler();
@@ -115,8 +117,8 @@ export default function(): void {
             onMoveEvent = {pageX: pageDragPosX + 50};
             column3ResizerDirective.dragMoveHandler(onMoveEvent);
             expect(column3ResizerDirective.dragDistancePositionX).toBe(50);
-            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement)
-                .getPropertyValue("right")).toBe("-50px");
+            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement).getPropertyValue("right"))
+                .toBe("-50px");
             column3ResizerDirective.dragEndHandler();
             expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBe(250);
         });
@@ -127,8 +129,8 @@ export default function(): void {
             column3ResizerDirective.dragMoveHandler(onMoveEvent);
             expect(column3ResizerDirective.dragDistancePositionX).toBe(-50);
             expect(document.body.style.cursor).toBe("col-resize");
-            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement)
-                .getPropertyValue("right")).toBe("50px");
+            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement).getPropertyValue("right"))
+                .toBe("50px");
             column3ResizerDirective.dragEndHandler();
             expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBe(150);
         });
@@ -141,8 +143,8 @@ export default function(): void {
             column3ResizerDirective.dragMoveHandler(onMoveEvent);
             expect(column3ResizerDirective.dragDistancePositionX).toBe(0);
             expect(document.body.style.cursor).toBe("col-resize");
-            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement)
-                .getPropertyValue("right")).toBe("0px");
+            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement).getPropertyValue("right"))
+                .toBe("0px");
             column3ResizerDirective.dragEndHandler();
             expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBe(96);
         });
@@ -155,8 +157,8 @@ export default function(): void {
             column3ResizerDirective.dragMoveHandler(onMoveEvent);
             /* Default minimum width is 96px; thus, 120-96 = 24 so it could be dragged and shrunk by only 24px. */
             expect(column3ResizerDirective.dragDistancePositionX).toBe(-24);
-            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement)
-                .getPropertyValue("right")).toBe("24px");
+            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement).getPropertyValue("right"))
+                .toBe("24px");
             column3ResizerDirective.dragEndHandler();
             expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBe(96);
         });
@@ -170,10 +172,10 @@ export default function(): void {
             expect(document.body.style.cursor).toBe("col-resize");
             column3ResizerDirective.dragEndHandler();
             expect(document.body.style.cursor).toBe("auto");
-            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement)
-                .getPropertyValue("right")).toBe("0px");
-            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement)
-                .getPropertyValue("display")).toBe("none");
+            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement).getPropertyValue("right"))
+                .toBe("0px");
+            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement).getPropertyValue("display"))
+                .toBe("none");
         });
         it("emits an event once dragging ends", function() {
             emulateResize(column3ResizerDirective, 50);
@@ -184,9 +186,9 @@ export default function(): void {
             expect(column3ResizerDirective.columnResizeBy).toBe(0);
         });
         it("if a column shrinks, other flexible columns should expand.", function() {
-            let column1InitialWidth = domAdapter.clientRectWidth(column1ResizerDirective.columnEl);
-            let column2InitialWidth = domAdapter.clientRectWidth(column2ResizerDirective.columnEl);
-            let column4InitialWidth = domAdapter.clientRectWidth(column4ResizerDirective.columnEl);
+            const column1InitialWidth = domAdapter.clientRectWidth(column1ResizerDirective.columnEl);
+            const column2InitialWidth = domAdapter.clientRectWidth(column2ResizerDirective.columnEl);
+            const column4InitialWidth = domAdapter.clientRectWidth(column4ResizerDirective.columnEl);
             emulateResize(column3ResizerDirective, -50);
             expect(domAdapter.clientRectWidth(column1ResizerDirective.columnEl)).toBeGreaterThan(column1InitialWidth);
             expect(domAdapter.clientRectWidth(column2ResizerDirective.columnEl)).toBeGreaterThan(column2InitialWidth);
@@ -194,9 +196,9 @@ export default function(): void {
             expect(domAdapter.clientRectWidth(column4ResizerDirective.columnEl)).toBeGreaterThan(column4InitialWidth);
         });
         it("if a column expands, other flexible columns should expand.", function() {
-            let column1InitialWidth = domAdapter.clientRectWidth(column1ResizerDirective.columnEl);
-            let column2InitialWidth = domAdapter.clientRectWidth(column2ResizerDirective.columnEl);
-            let column4InitialWidth = domAdapter.clientRectWidth(column4ResizerDirective.columnEl);
+            const column1InitialWidth = domAdapter.clientRectWidth(column1ResizerDirective.columnEl);
+            const column2InitialWidth = domAdapter.clientRectWidth(column2ResizerDirective.columnEl);
+            const column4InitialWidth = domAdapter.clientRectWidth(column4ResizerDirective.columnEl);
             emulateResize(column3ResizerDirective, 50);
             expect(domAdapter.clientRectWidth(column1ResizerDirective.columnEl)).toBeLessThan(column1InitialWidth);
             expect(domAdapter.clientRectWidth(column2ResizerDirective.columnEl)).toBeLessThan(column2InitialWidth);
@@ -205,9 +207,9 @@ export default function(): void {
 
         });
         it("columns with strict width should keep their widths if other columns get resized", function() {
-            let column1InitialWidth = domAdapter.clientRectWidth(column1ResizerDirective.columnEl);
-            let column2InitialWidth = domAdapter.clientRectWidth(column2ResizerDirective.columnEl);
-            let column4InitialWidth = domAdapter.clientRectWidth(column4ResizerDirective.columnEl);
+            const column1InitialWidth = domAdapter.clientRectWidth(column1ResizerDirective.columnEl);
+            const column2InitialWidth = domAdapter.clientRectWidth(column2ResizerDirective.columnEl);
+            const column4InitialWidth = domAdapter.clientRectWidth(column4ResizerDirective.columnEl);
             emulateResize(column1ResizerDirective, -50);
             expect(domAdapter.clientRectWidth(column1ResizerDirective.columnEl)).toBe(column1InitialWidth - 50);
             expect(domAdapter.clientRectWidth(column2ResizerDirective.columnEl)).toBeGreaterThan(column2InitialWidth);

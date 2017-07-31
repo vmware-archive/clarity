@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, Input, Output, EventEmitter, OnDestroy, OnInit} from "@angular/core";
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from "@angular/core";
+import {Subscription} from "rxjs/Subscription";
 
 import {Page} from "./providers/page";
-import {Subscription} from "rxjs/Subscription";
 
 @Component({
     selector: "clr-dg-pagination",
@@ -54,7 +54,6 @@ export class DatagridPagination implements OnDestroy, OnInit {
          * we don't want pagination (page size 0) if this component isn't present in the datagrid.
          */
         page.size = 10;
-
     }
 
     /**********
@@ -160,7 +159,7 @@ export class DatagridPagination implements OnDestroy, OnInit {
      * @returns {number[]}
      */
     public get middlePages(): number[] {
-        let middlePages: number[] = [];
+        const middlePages: number[] = [];
         if (this.page.current > 1) {
             middlePages.push(this.page.current - 1);
         }

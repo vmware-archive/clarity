@@ -3,24 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    Component,
-    EventEmitter,
-    HostBinding,
-    Input,
-    Output,
-    OnInit,
-    Optional,
-    SkipSelf
-} from "@angular/core";
-
-import {
-    animate,
-    state,
-    style,
-    transition,
-    trigger
-} from "@angular/animations";
+import {animate, state, style, transition, trigger} from "@angular/animations";
+import {Component, EventEmitter, HostBinding, Input, OnInit, Optional, Output, SkipSelf} from "@angular/core";
 
 @Component({
     selector: "clr-stack-block",
@@ -41,50 +25,36 @@ import {
         :host { display: block; }
     `],
     // Make sure the host has the proper class for styling purposes
-    host: {
-        "[class.stack-block]": "true"
-    },
-    animations: [trigger("collapse", [
-        state("true", style({
-            "height": 0,
-            "overflow-y": "hidden"
-        })),
-        transition("true => false", [
-            animate("0.2s ease-in-out", style({
-                "height": "*",
-                "overflow-y": "hidden"
-            }))
-        ]),
-        transition("false => true", [
-            style({
-                "height": "*",
-                "overflow-y": "hidden"
-            }),
-            animate("0.2s ease-in-out")
-        ])
-    ])]
+    host: {"[class.stack-block]": "true"},
+    animations:
+        [trigger("collapse",
+                 [
+                   state("true", style({"height": 0, "overflow-y": "hidden"})),
+                   transition("true => false",
+                              [animate("0.2s ease-in-out", style({"height": "*", "overflow-y": "hidden"}))]),
+                   transition("false => true",
+                              [style({"height": "*", "overflow-y": "hidden"}), animate("0.2s ease-in-out")])
+                 ])]
 })
 export class StackBlock implements OnInit {
-
-    @HostBinding("class.stack-block-expanded")
-    @Input("clrSbExpanded") expanded: boolean = false;
+    @HostBinding("class.stack-block-expanded") @Input("clrSbExpanded") expanded: boolean = false;
     @Output("clrSbExpandedChange") expandedChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
-    @HostBinding("class.stack-block-expandable")
-    @Input("clrSbExpandable") expandable: boolean = false;
+    @HostBinding("class.stack-block-expandable") @Input("clrSbExpandable") expandable: boolean = false;
 
     private _changedChildren: number = 0;
     private _fullyInitialized: boolean = false;
     private _changed: boolean = false;
 
-    @HostBinding("class.stack-block-changed") get getChangedValue(): boolean {
+    @HostBinding("class.stack-block-changed")
+    get getChangedValue(): boolean {
         return this._changed || (this._changedChildren > 0 && !this.expanded);
     }
 
-    @Input("clrSbNotifyChange") set setChangedValue(value: boolean) {
+    @Input("clrSbNotifyChange")
+    set setChangedValue(value: boolean) {
         this._changed = value;
 
         if (this.parent && this._fullyInitialized) {
-
             if (value) {
                 this.parent._changedChildren++;
             } else {
@@ -105,9 +75,8 @@ export class StackBlock implements OnInit {
     }
 
     ngOnInit(): void {
-
-        //in order to access the parent StackBlock's properties,
-        //the child StackBlock  has to be fully initialized at first.
+        // in order to access the parent StackBlock's properties,
+        // the child StackBlock  has to be fully initialized at first.
         this._fullyInitialized = true;
     }
 
@@ -121,5 +90,4 @@ export class StackBlock implements OnInit {
             this.expandedChange.emit(this.expanded);
         }
     }
-
 }

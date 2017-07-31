@@ -3,32 +3,19 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    Directive,
-    ElementRef,
-    OnDestroy,
-    OnInit
-} from "@angular/core";
+import {Directive, ElementRef, OnDestroy, OnInit} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
-import { ClrResponsiveNavigationService } from "../nav/clrResponsiveNavigationService";
-import { ClrResponsiveNavCodes } from "../nav/clrResponsiveNavCodes";
-import { ClrResponsiveNavControlMessage } from "../nav/clrResponsiveNavControlMessage";
+import {ClrResponsiveNavCodes} from "../nav/clrResponsiveNavCodes";
+import {ClrResponsiveNavControlMessage} from "../nav/clrResponsiveNavControlMessage";
+import {ClrResponsiveNavigationService} from "../nav/clrResponsiveNavigationService";
 
-@Directive({
-    selector: "clr-main-container",
-    host: {
-        "[class.main-container]": "true"
-    }
-})
+@Directive({selector: "clr-main-container", host: {"[class.main-container]": "true"}})
 export class MainContainer implements OnDestroy, OnInit {
     private _subscription: Subscription;
     private _classList: DOMTokenList;
 
-    constructor(
-        private elRef: ElementRef,
-        private responsiveNavService: ClrResponsiveNavigationService
-    ) {}
+    constructor(private elRef: ElementRef, private responsiveNavService: ClrResponsiveNavigationService) {}
 
     ngOnInit() {
         this._classList = this.elRef.nativeElement.classList;

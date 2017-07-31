@@ -21,7 +21,7 @@ export class ProgressBarInlineDemo implements OnInit {
     staticLabeledProgbarValue: number = 0;
 
     getNewValue(): number {
-        let random: number = Math.floor(Math.random() * 98) + 1;
+        const random: number = Math.floor(Math.random() * 98) + 1;
         return parseInt(random + "", 10);
     }
 
@@ -45,7 +45,7 @@ export class ProgressBarInlineDemo implements OnInit {
         this.stopProgressBar();
         this.inlineProgressTimerId = setInterval(() => {
 
-            let oldProgressValue: number = this.inlineProgress;
+            const oldProgressValue: number = this.inlineProgress;
             let increment: number = Math.floor(Math.random() * 15) + 1;
             increment = parseInt(increment + "", 10);
             let newProgressValue: number = oldProgressValue + increment;

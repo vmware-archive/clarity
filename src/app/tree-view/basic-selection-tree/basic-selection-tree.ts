@@ -65,12 +65,10 @@ const EXAMPLE_2 = `
     templateUrl: "./basic-selection-tree.html"
 })
 export class BasicSelectionTreeDemo {
-
     example1 = EXAMPLE_1;
     example2 = EXAMPLE_2;
 
     selected1: boolean = false;
     selected1Child: boolean = false;
     selected2: boolean = false;
-
 }

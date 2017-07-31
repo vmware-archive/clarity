@@ -3,14 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Directive, HostListener, ElementRef, AfterViewInit } from "@angular/core";
+import {AfterViewInit, Directive, ElementRef, HostListener} from "@angular/core";
 
-@Directive({
-    selector: "[clrFocusTrap]"
-})
+@Directive({selector: "[clrFocusTrap]"})
 export class FocusTrapDirective implements AfterViewInit {
-
-    constructor(public elementRef: ElementRef) { }
+    constructor(public elementRef: ElementRef) {}
 
     @HostListener("document:focusin", ["$event"])
     onFocusIn(event: any) {
@@ -25,5 +22,4 @@ export class FocusTrapDirective implements AfterViewInit {
         const nativeElement: HTMLElement = this.elementRef.nativeElement;
         nativeElement.setAttribute("tabindex", "0");
     }
-
 }

@@ -3,16 +3,18 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, Input, Output, EventEmitter, ContentChildren, QueryList, AfterContentInit} from "@angular/core";
-import { Selection, SelectionType } from "./providers/selection";
-import { RowActionService } from "./providers/row-action-service";
-import { ExpandableRowsCount } from "./providers/global-expandable-rows";
-import { LoadingListener } from "../../utils/loading/loading-listener";
-import { HideableColumnService } from "./providers/hideable-column.service";
-import { DatagridHideableColumn } from "./datagrid-hideable-column";
-import { DatagridCell } from "./datagrid-cell";
-import { Subscription } from "rxjs/Subscription";
+import {AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList} from "@angular/core";
+import {Subscription} from "rxjs/Subscription";
+
 import {Expand} from "../../utils/expand/providers/expand";
+import {LoadingListener} from "../../utils/loading/loading-listener";
+
+import {DatagridCell} from "./datagrid-cell";
+import {DatagridHideableColumn} from "./datagrid-hideable-column";
+import {ExpandableRowsCount} from "./providers/global-expandable-rows";
+import {HideableColumnService} from "./providers/hideable-column.service";
+import {RowActionService} from "./providers/row-action-service";
+import {Selection, SelectionType} from "./providers/selection";
 
 
 let nbRow: number = 0;
@@ -63,11 +65,8 @@ let nbRow: number = 0;
             <ng-content select="clr-dg-row-detail"></ng-content>
         </ng-template>
     `,
-    host: {
-        "[class.datagrid-row]": "true",
-        "[class.datagrid-selected]": "selected"
-    },
-    providers: [ Expand, { provide: LoadingListener, useExisting: Expand } ]
+    host: {"[class.datagrid-row]": "true", "[class.datagrid-selected]": "selected"},
+    providers: [Expand, {provide: LoadingListener, useExisting: Expand}]
 })
 export class DatagridRow implements AfterContentInit {
     public id: string;
@@ -82,7 +81,7 @@ export class DatagridRow implements AfterContentInit {
 
     constructor(public selection: Selection, public rowActionService: RowActionService,
                 public globalExpandable: ExpandableRowsCount, public expand: Expand,
-                public hideableColumnService: HideableColumnService ) {
+                public hideableColumnService: HideableColumnService) {
         this.id = "clr-dg-row" + (nbRow++);
     }
 
@@ -91,7 +90,7 @@ export class DatagridRow implements AfterContentInit {
      * Indicates if the row is selected
      */
     public get selected() {
-        if ( this.selection.selectionType === SelectionType.None ) {
+        if (this.selection.selectionType === SelectionType.None) {
             return this._selected;
         } else {
             return this.selection.isSelected(this.item);
@@ -99,8 +98,8 @@ export class DatagridRow implements AfterContentInit {
     }
 
     @Input("clrDgSelected")
-    public set selected( value: boolean ) {
-        if ( this.selection.selectionType === SelectionType.None ) {
+    public set selected(value: boolean) {
+        if (this.selection.selectionType === SelectionType.None) {
             this._selected = value;
         } else {
             this.selection.setSelected(this.item, value);
@@ -109,8 +108,8 @@ export class DatagridRow implements AfterContentInit {
 
     @Output("clrDgSelectedChange") selectedChanged = new EventEmitter<boolean>(false);
 
-    public toggle( selected = !this.selected ) {
-        if ( selected !== this.selected ) {
+    public toggle(selected = !this.selected) {
+        if (selected !== this.selected) {
             this.selected = selected;
             this.selectedChanged.emit(selected);
         }
@@ -121,14 +120,14 @@ export class DatagridRow implements AfterContentInit {
     }
 
     @Input("clrDgExpanded")
-    public set expanded( value: boolean ) {
+    public set expanded(value: boolean) {
         this.expand.expanded = value;
     }
 
     @Output("clrDgExpandedChange") expandedChange = new EventEmitter<boolean>(false);
 
     public toggleExpand() {
-        if ( this.expand.expandable ) {
+        if (this.expand.expandable) {
             this.expanded = !this.expanded;
             this.expandedChange.emit(this.expanded);
         }
@@ -148,21 +147,21 @@ export class DatagridRow implements AfterContentInit {
 
     ngAfterContentInit() {
         // Make sure things get started
-        let columnsList = this.hideableColumnService.getColumns();
+        const columnsList = this.hideableColumnService.getColumns();
         this.updateCellsForColumns(columnsList);
 
         // Triggered when the Cells list changes per row-renderer
-        this.dgCells.changes.subscribe(( cellList ) => {
-            let columnList = this.hideableColumnService.getColumns();
-            if ( cellList.length === columnList.length ) {
+        this.dgCells.changes.subscribe((cellList) => {
+            const columnList = this.hideableColumnService.getColumns();
+            if (cellList.length === columnList.length) {
                 this.updateCellsForColumns(columnList);
             }
         });
 
         // Used to set things up the first time but only after all the columns are ready.
-        this.subscription = this.hideableColumnService.columnListChange.subscribe(( columnList ) => {
+        this.subscription = this.hideableColumnService.columnListChange.subscribe((columnList) => {
             // Prevents cell updates when cols and cells array are not aligned - only seems to run on init / first time.
-            if ( columnList.length === this.dgCells.length ) {
+            if (columnList.length === this.dgCells.length) {
                 this.updateCellsForColumns(columnList);
             }
         });
@@ -178,15 +177,14 @@ export class DatagridRow implements AfterContentInit {
      *
      * @param columnList<DatagridColumn[]>
      */
-    public updateCellsForColumns( columnList: DatagridHideableColumn[] ) {
+    public updateCellsForColumns(columnList: DatagridHideableColumn[]) {
         // Map cells to columns with Array.index
-        this.dgCells
-            .forEach(( cell, index ) => {
-                let currentColumn = columnList[ index ]; // Accounts for null space.
-                if ( currentColumn ) {
-                    cell.id = currentColumn.id;
-                }
-            });
+        this.dgCells.forEach((cell, index) => {
+            const currentColumn = columnList[index];  // Accounts for null space.
+            if (currentColumn) {
+                cell.id = currentColumn.id;
+            }
+        });
     }
 
     ngOnDestroy() {

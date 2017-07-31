@@ -4,15 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
-import { CodeHighlight } from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
+import {Component, OnInit, ViewChild} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-wizard-reset",
-    templateUrl: "./wizard-reset.demo.html"
-})
+import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
+import {Wizard} from "../../clarity-angular/wizard/wizard";
+
+@Component({moduleId: module.id, selector: "clr-wizard-reset", templateUrl: "./wizard-reset.demo.html"})
 export class WizardResetDemo implements OnInit {
     @ViewChild("wizard") wizard: Wizard;
     @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
@@ -22,12 +19,7 @@ export class WizardResetDemo implements OnInit {
     public model: any;
 
     public ngOnInit() {
-        this.model = {
-            forceReset: false,
-            favoriteColor: "",
-            luckyNumber: "",
-            flavorOfIceCream: ""
-        };
+        this.model = {forceReset: false, favoriteColor: "", luckyNumber: "", flavorOfIceCream: ""};
     }
 
     public doFinish(): void {

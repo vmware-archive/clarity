@@ -4,8 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-import {Status} from "./data/status";
+
 import {Server} from "./data/server";
+import {Status} from "./data/status";
 
 @Component({
     moduleId: module.id,

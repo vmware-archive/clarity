@@ -3,29 +3,20 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    Component,
-    ContentChild,
-    HostBinding,
-    Input,
-    Output,
-    EventEmitter,
-    ElementRef,
-    ViewChild
-} from "@angular/core";
-import { Subscription } from "rxjs";
+import {Component, ContentChild, ElementRef, EventEmitter, HostBinding, Input, Output, ViewChild} from "@angular/core";
+import {Subscription} from "rxjs/Subscription";
 
-import { DatagridPropertyComparator } from "./built-in/comparators/datagrid-property-comparator";
-import { DatagridPropertyStringFilter } from "./built-in/filters/datagrid-property-string-filter";
-import { Comparator } from "./interfaces/comparator";
-import { CustomFilter } from "./providers/custom-filter";
-import { Sort } from "./providers/sort";
-import { DatagridFilterRegistrar } from "./utils/datagrid-filter-registrar";
-import { FiltersProvider } from "./providers/filters";
-import { DatagridStringFilterImpl } from "./built-in/filters/datagrid-string-filter-impl";
-import { SortOrder } from "./interfaces/sort-order";
-import { DragDispatcher } from "./providers/drag-dispatcher";
-import { DatagridHideableColumn } from "./datagrid-hideable-column";
+import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
+import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
+import {DatagridStringFilterImpl} from "./built-in/filters/datagrid-string-filter-impl";
+import {DatagridHideableColumn} from "./datagrid-hideable-column";
+import {Comparator} from "./interfaces/comparator";
+import {SortOrder} from "./interfaces/sort-order";
+import {CustomFilter} from "./providers/custom-filter";
+import {DragDispatcher} from "./providers/drag-dispatcher";
+import {FiltersProvider} from "./providers/filters";
+import {Sort} from "./providers/sort";
+import {DatagridFilterRegistrar} from "./utils/datagrid-filter-registrar";
 
 let nbCount: number = 0;
 
@@ -58,14 +49,10 @@ let nbCount: number = 0;
             </div>
         </div>
     `,
-    host: {
-        "[class.datagrid-column]": "true",
-        "[class.datagrid-column--hidden]": "hidden"
-    }
+    host: {"[class.datagrid-column]": "true", "[class.datagrid-column--hidden]": "hidden"}
 })
 
 export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilterImpl> {
-
     constructor(private _sort: Sort, filters: FiltersProvider, private _dragDispatcher: DragDispatcher) {
         super(filters);
         this._sortSubscription = _sort.change.subscribe(sort => {
@@ -82,7 +69,7 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
             // deprecated: to be removed - END
         });
 
-        this.columnId = "dg-col-" + nbCount.toString(); // Approximate a GUID
+        this.columnId = "dg-col-" + nbCount.toString();  // Approximate a GUID
         nbCount++;
         // put index here
     }
@@ -113,13 +100,15 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
         return !!this.hideable && this.hideable.hidden;
     }
 
-    @ViewChild("columnHandle") set handleElRef(value: ElementRef) {
+    @ViewChild("columnHandle")
+    set handleElRef(value: ElementRef) {
         this._dragDispatcher.handleRef = value;
-    };
+    }
 
-    @ViewChild("columnHandleTracker") set handleTrackerElRef(value: ElementRef) {
+    @ViewChild("columnHandleTracker")
+    set handleTrackerElRef(value: ElementRef) {
         this._dragDispatcher.handleTrackerRef = value;
-    };
+    }
 
     /**
      * Subscription to the sort service changes
@@ -163,7 +152,7 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
     }
 
     @Input("clrDgSortBy")
-    public set sortBy(comparator: Comparator<any> | string) {
+    public set sortBy(comparator: Comparator<any>|string) {
         if (typeof comparator === "string") {
             this._sortBy = new DatagridPropertyComparator(comparator);
         } else {
@@ -227,7 +216,6 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
 
     @Input("clrDgSortOrder")
     public set sortOrder(value: SortOrder) {
-
         if (typeof value === "undefined") {
             return;
         }
@@ -250,7 +238,7 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
                 this.sort(true);
                 break;
         }
-    };
+    }
 
     @Output("clrDgSortOrderChange") public sortOrderChange = new EventEmitter<SortOrder>();
 

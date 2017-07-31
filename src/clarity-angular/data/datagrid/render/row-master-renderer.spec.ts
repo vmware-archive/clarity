@@ -4,10 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, Directive, Inject} from "@angular/core";
+
 import {TestContext} from "../helpers.spec";
-import {DatagridRowMasterRenderer} from "./row-master-renderer";
+
 import {DatagridRenderOrganizer} from "./render-organizer";
-import {MockDatagridRenderOrganizer, MOCK_ORGANIZER_PROVIDER} from "./render-organizer.mock";
+import {MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer} from "./render-organizer.mock";
+import {DatagridRowMasterRenderer} from "./row-master-renderer";
 
 export default function(): void {
     describe("DatagridRowMasterRenderer directive", function() {
@@ -57,9 +59,7 @@ class FullTest {
     constructor(@Inject("counter") public counter: {total: number}) {}
 }
 
-@Directive({
-    selector: "[testCounter]"
-})
+@Directive({selector: "[testCounter]"})
 class TestCounter {
     constructor(@Inject("counter") counter: {total: number}) {
         counter.total++;

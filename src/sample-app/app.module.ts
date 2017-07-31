@@ -3,31 +3,26 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from "@angular/core";
+import {BrowserModule} from "@angular/platform-browser";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
-    ClrLayoutModule,
-    ClrIconModule,
+    ClrAlertModule,
     ClrButtonGroupModule,
     ClrDataModule,
     ClrFormsModule,
-    ClrAlertModule,
+    ClrIconModule,
+    ClrLayoutModule,
     ClrPopoverModule
-} from 'clarity-angular';
-import { AppComponent }  from './app.component';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+} from "clarity-angular";
+
+import {AppComponent} from "./app.component";
 
 @NgModule({
     imports: [
-        BrowserAnimationsModule,
-        BrowserModule,
-        ClrLayoutModule, //Includes MainContainer, Navigation, & Tabs
-        ClrIconModule,
-        ClrButtonGroupModule,
-        ClrDataModule,
-        ClrFormsModule,
-        ClrAlertModule,
-        ClrPopoverModule
+        BrowserAnimationsModule, BrowserModule,
+        ClrLayoutModule,  // Includes MainContainer, Navigation, & Tabs
+        ClrIconModule, ClrButtonGroupModule, ClrDataModule, ClrFormsModule, ClrAlertModule, ClrPopoverModule
     ],
     declarations: [AppComponent],
     bootstrap: [AppComponent]

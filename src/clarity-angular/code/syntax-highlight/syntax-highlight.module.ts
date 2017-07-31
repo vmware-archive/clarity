@@ -4,13 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { CODE_HIGHLIGHT_DIRECTIVES } from "../index";
+import {CommonModule} from "@angular/common";
+import {NgModule} from "@angular/core";
 
-@NgModule({
-    imports: [CommonModule],
-    declarations: [CODE_HIGHLIGHT_DIRECTIVES],
-    exports: [CODE_HIGHLIGHT_DIRECTIVES]
-})
-export class ClrSyntaxHighlightModule {}
+import {CODE_HIGHLIGHT_DIRECTIVES} from "../index";
+
+@NgModule({imports: [CommonModule], declarations: [CODE_HIGHLIGHT_DIRECTIVES], exports: [CODE_HIGHLIGHT_DIRECTIVES]})
+export class ClrSyntaxHighlightModule {
+}

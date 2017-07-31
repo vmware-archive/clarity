@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { TemplateRef } from "@angular/core";
+import {TemplateRef} from "@angular/core";
 
 export class MockPage {
     constructor(pageIndex: number) {

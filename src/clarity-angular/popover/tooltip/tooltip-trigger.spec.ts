@@ -5,12 +5,13 @@
  */
 
 import {Component} from "@angular/core";
-import { TestContext } from "../../utils/testing/helpers.spec";
+
 import {IfOpenService} from "../../utils/conditional/if-open.service";
+import {TestContext} from "../../utils/testing/helpers.spec";
+
 import {TooltipTrigger} from "./tooltip-trigger";
 
 export default function(): void {
-
     // FIXME: this doesn't even run yet, we don't have an all.spec for tooltips.
     describe("TooltipContent component", function() {
         let context: TestContext<TooltipTrigger, SimpleTest>;
@@ -21,7 +22,7 @@ export default function(): void {
         });
 
         it("notifies the IfOpen service", function() {
-            let ifOpenService = context.getClarityProvider(IfOpenService);
+            const ifOpenService = context.getClarityProvider(IfOpenService);
             context.clarityDirective.showTooltip();
             expect(ifOpenService.open).toBe(true);
             context.clarityDirective.hideTooltip();

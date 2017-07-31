@@ -3,16 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    Component, Input, ViewChild, ElementRef, Renderer2, AfterViewInit, EventEmitter, Output
-} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewChild} from "@angular/core";
+
+import {DatagridFilter} from "../../datagrid-filter";
 import {StringFilter} from "../../interfaces/string-filter";
 import {CustomFilter} from "../../providers/custom-filter";
-import {DatagridFilter} from "../../datagrid-filter";
-import {DatagridStringFilterImpl} from "./datagrid-string-filter-impl";
-import {DatagridFilterRegistrar} from "../../utils/datagrid-filter-registrar";
 import {FiltersProvider, RegisteredFilter} from "../../providers/filters";
 import {DomAdapter} from "../../render/dom-adapter";
+import {DatagridFilterRegistrar} from "../../utils/datagrid-filter-registrar";
+
+import {DatagridStringFilterImpl} from "./datagrid-string-filter-impl";
 
 @Component({
     selector: "clr-dg-string-filter",
@@ -30,9 +30,8 @@ import {DomAdapter} from "../../render/dom-adapter";
         </clr-dg-filter>
     `
 })
-export class DatagridStringFilter extends DatagridFilterRegistrar<DatagridStringFilterImpl>
-    implements CustomFilter, AfterViewInit {
-
+export class DatagridStringFilter extends DatagridFilterRegistrar<DatagridStringFilterImpl> implements CustomFilter,
+                                                                                                       AfterViewInit {
     constructor(private renderer: Renderer2, filters: FiltersProvider, private domAdapter: DomAdapter) {
         super(filters);
     }
@@ -40,8 +39,8 @@ export class DatagridStringFilter extends DatagridFilterRegistrar<DatagridString
     /**
      * Customizable filter logic based on a search text
      */
-    @Input("clrDgStringFilter") set customStringFilter(value: StringFilter<any>
-        | RegisteredFilter<DatagridStringFilterImpl>) {
+    @Input("clrDgStringFilter")
+    set customStringFilter(value: StringFilter<any>|RegisteredFilter<DatagridStringFilterImpl>) {
         if (value instanceof RegisteredFilter) {
             this.setFilter(value);
         } else {
@@ -83,7 +82,9 @@ export class DatagridStringFilter extends DatagridFilterRegistrar<DatagridString
     }
     @Input("clrFilterValue")
     public set value(value: string) {
-        if (!this.filter) { return; }
+        if (!this.filter) {
+            return;
+        }
         if (!value) {
             value = "";
         }

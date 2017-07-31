@@ -4,23 +4,16 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
+import {Component, ViewChild} from "@angular/core";
+import {Wizard} from "../../clarity-angular/wizard/wizard";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-wizard-form-validation",
-    templateUrl: "./wizard-form-validation.demo.html"
-})
+@Component(
+    {moduleId: module.id, selector: "clr-wizard-form-validation", templateUrl: "./wizard-form-validation.demo.html"})
 export class WizardFormValidation {
     @ViewChild("wizard") wizard: Wizard;
     @ViewChild("number") numberField: any;
 
-    model = {
-        name: "",
-        favorite: "",
-        number: ""
-    };
+    model = {name: "", favorite: "", number: ""};
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";

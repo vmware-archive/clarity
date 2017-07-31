@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { descriptorConfig } from "../utils/descriptor-config";
+import {descriptorConfig} from "../utils/descriptor-config";
 
 /* tslint:disable:max-line-length */
 export const essentialShapes: any = {
@@ -1206,25 +1206,24 @@ export const essentialShapes: any = {
 
 };
 
-Object.defineProperty(essentialShapes, "edit", descriptorConfig(essentialShapes["pencil"]));
-Object.defineProperty(essentialShapes, "note-edit", descriptorConfig(essentialShapes["note"]));
-Object.defineProperty(essentialShapes, "group", descriptorConfig(essentialShapes["users"]));
+Object.defineProperty(essentialShapes, "edit", descriptorConfig(essentialShapes.pencil));
+Object.defineProperty(essentialShapes, "note-edit", descriptorConfig(essentialShapes.note));
+Object.defineProperty(essentialShapes, "group", descriptorConfig(essentialShapes.users));
 Object.defineProperty(essentialShapes, "collapse", descriptorConfig(essentialShapes["angle-double"]));
-Object.defineProperty(essentialShapes, "document", descriptorConfig(essentialShapes["file"]));
-Object.defineProperty(essentialShapes, "add", descriptorConfig(essentialShapes["plus"]));
-Object.defineProperty(essentialShapes, "cancel", descriptorConfig(essentialShapes["ban"]));
+Object.defineProperty(essentialShapes, "document", descriptorConfig(essentialShapes.file));
+Object.defineProperty(essentialShapes, "add", descriptorConfig(essentialShapes.plus));
+Object.defineProperty(essentialShapes, "cancel", descriptorConfig(essentialShapes.ban));
 Object.defineProperty(essentialShapes, "remove", descriptorConfig(essentialShapes["times-circle"]));
-Object.defineProperty(essentialShapes, "eye-show", descriptorConfig(essentialShapes["eye"]));
-Object.defineProperty(essentialShapes, "sign-in", descriptorConfig(essentialShapes["login"]));
-Object.defineProperty(essentialShapes, "sign-out", descriptorConfig(essentialShapes["logout"]));
-Object.defineProperty(essentialShapes, "lightning", descriptorConfig(essentialShapes["bolt"]));
-Object.defineProperty(essentialShapes, "flow-chart", descriptorConfig(essentialShapes["organization"]));
+Object.defineProperty(essentialShapes, "eye-show", descriptorConfig(essentialShapes.eye));
+Object.defineProperty(essentialShapes, "sign-in", descriptorConfig(essentialShapes.login));
+Object.defineProperty(essentialShapes, "sign-out", descriptorConfig(essentialShapes.logout));
+Object.defineProperty(essentialShapes, "lightning", descriptorConfig(essentialShapes.bolt));
+Object.defineProperty(essentialShapes, "flow-chart", descriptorConfig(essentialShapes.organization));
 Object.defineProperty(essentialShapes, "alert", descriptorConfig(essentialShapes["bubble-exclamation"]));
-Object.defineProperty(essentialShapes, "pinned", descriptorConfig(essentialShapes["pinboard"]));
+Object.defineProperty(essentialShapes, "pinned", descriptorConfig(essentialShapes.pinboard));
 
 if (typeof window !== "undefined" && window.hasOwnProperty("ClarityIcons")) {
-
-    window["ClarityIcons"].add(essentialShapes);
+    window.ClarityIcons.add(essentialShapes);
 }
 
-export { essentialShapes as EssentialShapes };
+export {essentialShapes as EssentialShapes};

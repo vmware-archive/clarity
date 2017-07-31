@@ -4,25 +4,18 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Directive, ElementRef, Renderer2, AfterViewInit, Output, EventEmitter, OnDestroy} from "@angular/core";
-import {DomAdapter} from "./dom-adapter";
-import {DatagridRenderOrganizer} from "./render-organizer";
-import {DragDispatcher} from "../providers/drag-dispatcher";
+import {AfterViewInit, Directive, ElementRef, EventEmitter, OnDestroy, Output, Renderer2} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
-@Directive({
-    selector: "clr-dg-column",
-    providers: [DragDispatcher]
-})
+import {DragDispatcher} from "../providers/drag-dispatcher";
+
+import {DomAdapter} from "./dom-adapter";
+import {DatagridRenderOrganizer} from "./render-organizer";
+
+@Directive({selector: "clr-dg-column", providers: [DragDispatcher]})
 export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
-
-
-    constructor(private el: ElementRef,
-                private renderer: Renderer2,
-                private organizer: DatagridRenderOrganizer,
-                private domAdapter: DomAdapter,
-                private dragDispatcher: DragDispatcher) {
-
+    constructor(private el: ElementRef, private renderer: Renderer2, private organizer: DatagridRenderOrganizer,
+                private domAdapter: DomAdapter, private dragDispatcher: DragDispatcher) {
         this.columnEl = el.nativeElement;
     }
 
@@ -33,7 +26,7 @@ export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
     handleTrackerEl: ElementRef;
 
     pageStartPositionX: number;
-    dragDistancePositionX: number; //relative to pageStartPosition
+    dragDistancePositionX: number;  // relative to pageStartPosition
 
     dragWithinMinWidth: boolean = false;
 
@@ -49,7 +42,6 @@ export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
     }
 
     ngAfterViewInit() {
-
         this.columnMinWidth = this.domAdapter.minWidth(this.columnEl);
         this.handleTrackerEl = this.dragDispatcher.handleTrackerRef.nativeElement;
 
@@ -68,7 +60,7 @@ export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
     }
 
     dragMoveHandler(moveEvent: any): void {
-        let pageMovePosition = moveEvent.pageX || moveEvent.changedTouches[0].pageX;
+        const pageMovePosition = moveEvent.pageX || moveEvent.changedTouches[0].pageX;
         this.dragDistancePositionX = this.getPositionWithinMax(pageMovePosition - this.pageStartPositionX);
         this.renderer.setStyle(this.handleTrackerEl, "right", -1 * this.dragDistancePositionX + "px");
     }
@@ -79,7 +71,6 @@ export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
         this.renderer.setStyle(document.body, "cursor", "auto");
 
         if (this.dragDistancePositionX) {
-
             this.columnResizeBy = this.dragDistancePositionX;
 
             this.resizeEmitter.emit(this.columnRectWidth + this.columnResizeBy);
@@ -105,7 +96,6 @@ export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
             }
 
         } else {
-
             if (this.dragWithinMinWidth) {
                 this.dragWithinMinWidth = false;
                 this.renderer.removeClass(this.handleTrackerEl, "exceeded-max");
@@ -113,6 +103,5 @@ export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
 
             return draggedDistance;
         }
-
     }
 }

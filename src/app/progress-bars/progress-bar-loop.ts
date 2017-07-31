@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     templateUrl: "./progress-bar-loop.html"
 })
 export class ProgressBarLoopDemo {
-
 }

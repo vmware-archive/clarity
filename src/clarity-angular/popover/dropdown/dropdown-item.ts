@@ -3,25 +3,15 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-    Directive,
-    ElementRef,
-    HostListener
-} from "@angular/core";
+import {Directive, ElementRef, HostListener} from "@angular/core";
 
-import { Dropdown } from "./dropdown";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 
-@Directive({
-    selector: "[clrDropdownItem]",
-    host: {
-        "[class.dropdown-item]" : "true"
-    }
-})
-export class DropdownItem {
+import {Dropdown} from "./dropdown";
 
-    constructor(private dropdown: Dropdown, private el: ElementRef, private ifOpenService: IfOpenService) {
-    }
+@Directive({selector: "[clrDropdownItem]", host: {"[class.dropdown-item]": "true"}})
+export class DropdownItem {
+    constructor(private dropdown: Dropdown, private el: ElementRef, private ifOpenService: IfOpenService) {}
 
     @HostListener("click")
     onDropdownItemClick(): void {

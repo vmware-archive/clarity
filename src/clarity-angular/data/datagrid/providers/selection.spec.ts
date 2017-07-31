@@ -3,14 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Selection, SelectionType} from "./selection";
-import {Items} from "./items";
-import {Sort} from "./sort";
-import {FiltersProvider} from "./filters";
-import {Page} from "./page";
-import {Filter} from "../interfaces/filter";
-import {Subject} from "rxjs/Subject";
 import {fakeAsync, tick} from "@angular/core/testing";
+import {Subject} from "rxjs/Subject";
+
+import {Filter} from "../interfaces/filter";
+
+import {FiltersProvider} from "./filters";
+import {Items} from "./items";
+import {Page} from "./page";
+import {Selection, SelectionType} from "./selection";
+import {Sort} from "./sort";
 
 const numberSort = (a: number, b: number) => a - b;
 
@@ -148,7 +150,7 @@ export default function(): void {
             selectionInstance.selectionType = SelectionType.Multi;
             selectionInstance.current = [4, 2];
 
-            let evenFilter: EvenFilter = new EvenFilter();
+            const evenFilter: EvenFilter = new EvenFilter();
 
             filtersInstance.add(<Filter<any>>evenFilter);
 
@@ -157,46 +159,45 @@ export default function(): void {
             expect(selectionInstance.current.length).toBe(0);
         });
 
-        it("keeps only the remaining selection when the items are updated",
-            fakeAsync(function() {
-                selectionInstance.selectionType = SelectionType.Multi;
-                selectionInstance.current = [4, 2];
+        it("keeps only the remaining selection when the items are updated", fakeAsync(function() {
+               selectionInstance.selectionType = SelectionType.Multi;
+               selectionInstance.current = [4, 2];
 
-                itemsInstance.all = [1, 2, 3, 5];
+               itemsInstance.all = [1, 2, 3, 5];
 
-                tick();
+               tick();
 
-                expect(selectionInstance.current.length).toBe(1);
-                expect(selectionInstance.current).toEqual([2]);
-        }));
+               expect(selectionInstance.current.length).toBe(1);
+               expect(selectionInstance.current).toEqual([2]);
+           }));
 
         it("keeps all the selections when the items are updated " +
-            "and the contain all the previous selection",
-            fakeAsync(function() {
-                selectionInstance.selectionType = SelectionType.Multi;
-                selectionInstance.current = [4, 2];
+               "and the contain all the previous selection",
+           fakeAsync(function() {
+               selectionInstance.selectionType = SelectionType.Multi;
+               selectionInstance.current = [4, 2];
 
-                itemsInstance.all = [1, 2, 3, 4, 5];
+               itemsInstance.all = [1, 2, 3, 4, 5];
 
-                tick();
+               tick();
 
-                expect(selectionInstance.current.length).toBe(2);
-                expect(selectionInstance.current).toEqual([4, 2]);
-        }));
+               expect(selectionInstance.current.length).toBe(2);
+               expect(selectionInstance.current).toEqual([4, 2]);
+           }));
 
         it("clears the selections when the items are updated and " +
-            "they do not contain the previous selection",
-            fakeAsync(function() {
-                selectionInstance.selectionType = SelectionType.Multi;
-                selectionInstance.current = [4, 2];
+               "they do not contain the previous selection",
+           fakeAsync(function() {
+               selectionInstance.selectionType = SelectionType.Multi;
+               selectionInstance.current = [4, 2];
 
-                itemsInstance.all = [1, 3, 5];
+               itemsInstance.all = [1, 3, 5];
 
-                tick();
+               tick();
 
-                expect(selectionInstance.current.length).toBe(0);
-                expect(selectionInstance.current).toEqual([]);
-        }));
+               expect(selectionInstance.current.length).toBe(0);
+               expect(selectionInstance.current).toEqual([]);
+           }));
 
         it("maintains the selection when the page is changed", function() {
             selectionInstance.selectionType = SelectionType.Multi;
@@ -209,7 +210,7 @@ export default function(): void {
             expect(selectionInstance.current).toEqual([4, 2]);
         });
     });
-};
+}
 
 abstract class TestFilter implements Filter<number> {
     private active = false;
@@ -221,7 +222,7 @@ abstract class TestFilter implements Filter<number> {
 
     isActive(): boolean {
         return this.active;
-    };
+    }
 
     changes = new Subject<boolean>();
 
@@ -231,5 +232,5 @@ abstract class TestFilter implements Filter<number> {
 class EvenFilter extends TestFilter {
     accepts(n: number): boolean {
         return n % 2 === 0;
-    };
+    }
 }

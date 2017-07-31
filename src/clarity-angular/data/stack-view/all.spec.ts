@@ -13,9 +13,9 @@
  * but I don"t see a way to do it simply without it being completely irrelevant.
  */
 
-import StackViewSpecs from "./stack-view.spec";
-import StackHeaderSpecs from "./stack-header.spec";
 import StackBlockSpecs from "./stack-block.spec";
+import StackHeaderSpecs from "./stack-header.spec";
+import StackViewSpecs from "./stack-view.spec";
 
 describe("Stack View directives", () => {
     StackViewSpecs();

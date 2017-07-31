@@ -4,10 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Type } from "@angular/core";
-import { Button } from "./button";
-import { ButtonGroup } from "./button-group";
+import {Type} from "@angular/core";
+import {Button} from "./button";
+import {ButtonGroup} from "./button-group";
 
-export const BUTTON_GROUP_DIRECTIVES: Type<any>[] = [
-    Button, ButtonGroup
-];
+export const BUTTON_GROUP_DIRECTIVES: Type<any>[] = [Button, ButtonGroup];

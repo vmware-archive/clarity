@@ -4,13 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-import {TestContext} from "./helpers.spec";
+
 import {DatagridActionBar} from "./datagrid-action-bar";
-import {Selection} from "./providers/selection";
-import {Items} from "./providers/items";
+import {TestContext} from "./helpers.spec";
 import {FiltersProvider} from "./providers/filters";
-import {Sort} from "./providers/sort";
+import {Items} from "./providers/items";
 import {Page} from "./providers/page";
+import {Selection} from "./providers/selection";
+import {Sort} from "./providers/sort";
 
 export default function(): void {
     describe("DatagridActionBar component", function() {
@@ -26,8 +27,6 @@ export default function(): void {
     });
 }
 
-@Component({
-    template: `<clr-dg-action-bar>Hello world</clr-dg-action-bar>`
-})
+@Component({template: `<clr-dg-action-bar>Hello world</clr-dg-action-bar>`})
 class SimpleTest {
 }

@@ -8,7 +8,7 @@ import {Component, ViewChild} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {ButtonGroup} from "./button-group";
-import { ClrButtonGroupModule } from "./button-group.module";
+import {ClrButtonGroupModule} from "./button-group.module";
 
 export default function(): void {
     describe("Button Group", () => {
@@ -18,17 +18,10 @@ export default function(): void {
 
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [
-                    ClrButtonGroupModule
-                ],
+                imports: [ClrButtonGroupModule],
                 declarations: [
-                    BtnGroupInlineViewContainer,
-                    BtnGroupBothViewContainersTest,
-                    BtnGroupMenuViewContainer,
-                    BtnGroupFlipTest1,
-                    BtnGroupFlipTest2,
-                    BtnGroupProjectionUpdateTest,
-                    BtnGroupEHCAIWCTest
+                    BtnGroupInlineViewContainer, BtnGroupBothViewContainersTest, BtnGroupMenuViewContainer,
+                    BtnGroupFlipTest1, BtnGroupFlipTest2, BtnGroupProjectionUpdateTest, BtnGroupEHCAIWCTest
                 ]
             });
         });
@@ -55,15 +48,15 @@ export default function(): void {
             });
 
             it("does not render the overflow", () => {
-                let overflow: HTMLElement = compiled.querySelector(".btn-group-overflow");
+                const overflow: HTMLElement = compiled.querySelector(".btn-group-overflow");
                 expect(overflow).toBeNull();
             });
 
             it("renders all buttons in the inline buttons view container", () => {
-                let btnGroupChildrenCompiled: HTMLCollection = compiled.children[0].children;
+                const btnGroupChildrenCompiled: HTMLCollection = compiled.children[0].children;
                 expect(btnGroupChildrenCompiled.length).toBe(5);
 
-                //Should be a button
+                // Should be a button
                 expect(btnGroupChildrenCompiled[0].classList.contains("btn")).toBe(true);
                 expect(btnGroupChildrenCompiled[1].classList.contains("btn")).toBe(true);
                 expect(btnGroupChildrenCompiled[2].classList.contains("btn")).toBe(true);
@@ -100,33 +93,33 @@ export default function(): void {
             });
 
             it("overflow is visible when atleast one button exists in the menu", () => {
-                let overflow: HTMLElement = compiled.querySelector(".btn-group-overflow");
+                const overflow: HTMLElement = compiled.querySelector(".btn-group-overflow");
                 expect(overflow).not.toBeNull();
             });
 
             it("renders inline buttons in the inline buttons view container", () => {
-                let btnGroupChildrenCompiled: HTMLCollection = compiled.children[0].children;
+                const btnGroupChildrenCompiled: HTMLCollection = compiled.children[0].children;
                 expect(btnGroupChildrenCompiled.length).toBe(3);
 
-                //Should be a button
+                // Should be a button
                 expect(btnGroupChildrenCompiled[0].classList.contains("btn")).toBe(true);
                 expect(btnGroupChildrenCompiled[1].classList.contains("btn")).toBe(true);
 
-                //Should be the overflow
+                // Should be the overflow
                 expect(btnGroupChildrenCompiled[2].classList.contains("btn")).toBe(false);
                 expect(btnGroupChildrenCompiled[2].classList.contains("btn-group-overflow")).toBe(true);
             });
 
             it("renders menu buttons in the menu buttons view container", () => {
-                let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+                const dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
                 dropdownToggle.click();
 
                 fixture.detectChanges();
 
-                let dropdownMenu: HTMLElement = compiled.querySelector(".dropdown-menu");
+                const dropdownMenu: HTMLElement = compiled.querySelector(".dropdown-menu");
                 expect(dropdownMenu.children.length).toBe(3);
 
-                //Should be a button
+                // Should be a button
                 expect(dropdownMenu.children[0].classList.contains("btn")).toBe(true);
                 expect(dropdownMenu.children[1].classList.contains("btn")).toBe(true);
                 expect(dropdownMenu.children[2].classList.contains("btn")).toBe(true);
@@ -161,15 +154,15 @@ export default function(): void {
             });
 
             it("does not render the overflow initially", () => {
-                let overflow: HTMLElement = compiled.querySelector(".btn-group-overflow");
+                const overflow: HTMLElement = compiled.querySelector(".btn-group-overflow");
                 expect(overflow).toBeNull();
             });
 
             it("renders all buttons in the inline buttons view container", () => {
-                let btnGroupChildrenCompiled: HTMLCollection = compiled.children[0].children;
+                const btnGroupChildrenCompiled: HTMLCollection = compiled.children[0].children;
                 expect(btnGroupChildrenCompiled.length).toBe(5);
 
-                //Should be a button
+                // Should be a button
                 expect(btnGroupChildrenCompiled[0].classList.contains("btn")).toBe(true);
                 expect(btnGroupChildrenCompiled[1].classList.contains("btn")).toBe(true);
                 expect(btnGroupChildrenCompiled[2].classList.contains("btn")).toBe(true);
@@ -224,16 +217,16 @@ export default function(): void {
 
                 fixture.detectChanges();
 
-                let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+                const dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
                 dropdownToggle.click();
 
                 fixture.detectChanges();
 
-                let overflowMenu: HTMLElement = compiled.querySelector(".dropdown-menu");
+                const overflowMenu: HTMLElement = compiled.querySelector(".dropdown-menu");
 
                 expect(overflowMenu.children.length).toBe(1);
 
-                //Should be a button
+                // Should be a button
                 expect(overflowMenu.children[0].classList.contains("btn")).toBe(true);
                 expect(overflowMenu.children[0].textContent).toMatch(/Button 5/);
             });
@@ -260,7 +253,7 @@ export default function(): void {
             });
 
             it("projects the menu buttons projected by the user when the menu is open", () => {
-                let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+                const dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
                 dropdownToggle.click();
 
                 fixture.detectChanges();
@@ -269,7 +262,7 @@ export default function(): void {
             });
 
             it("renders the overflow initially", () => {
-                let overflow: HTMLElement = compiled.querySelector(".btn-group-overflow");
+                const overflow: HTMLElement = compiled.querySelector(".btn-group-overflow");
                 expect(overflow).not.toBeNull();
             });
 
@@ -322,7 +315,7 @@ export default function(): void {
             });
 
             it("renders the overflow initially", () => {
-                let overflow: HTMLElement = compiled.querySelector(".btn-group-overflow");
+                const overflow: HTMLElement = compiled.querySelector(".btn-group-overflow");
                 expect(overflow).not.toBeNull();
             });
 
@@ -331,7 +324,7 @@ export default function(): void {
 
                 fixture.detectChanges();
 
-                let overflow: HTMLElement = compiled.querySelector(".btn-group-overflow");
+                const overflow: HTMLElement = compiled.querySelector(".btn-group-overflow");
                 expect(overflow).toBeNull();
             });
 
@@ -385,20 +378,20 @@ export default function(): void {
             });
 
             it("renders the overflow", () => {
-                let overflow: HTMLElement = compiled.querySelector(".btn-group-overflow");
+                const overflow: HTMLElement = compiled.querySelector(".btn-group-overflow");
                 expect(overflow).not.toBeNull();
             });
 
             it("renders all buttons in the menu view container", () => {
-                let dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+                const dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
                 dropdownToggle.click();
 
                 fixture.detectChanges();
 
-                let overflowMenu: HTMLElement = compiled.querySelector(".dropdown-menu");
+                const overflowMenu: HTMLElement = compiled.querySelector(".dropdown-menu");
                 expect(overflowMenu.children.length).toBe(5);
 
-                //Should be a button
+                // Should be a button
                 expect(overflowMenu.children[0].classList.contains("btn")).toBe(true);
                 expect(overflowMenu.children[1].classList.contains("btn")).toBe(true);
                 expect(overflowMenu.children[2].classList.contains("btn")).toBe(true);
@@ -427,8 +420,8 @@ export default function(): void {
             });
 
             it("renders only the views created in the dropdown menu", () => {
-                let dropdownToggle1: HTMLElement = compiled.querySelector(".test-btn-group-1 .dropdown-toggle");
-                let dropdownToggle2: HTMLElement = compiled.querySelector(".test-btn-group-2 .dropdown-toggle");
+                const dropdownToggle1: HTMLElement = compiled.querySelector(".test-btn-group-1 .dropdown-toggle");
+                const dropdownToggle2: HTMLElement = compiled.querySelector(".test-btn-group-2 .dropdown-toggle");
 
                 dropdownToggle1.click();
 

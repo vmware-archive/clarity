@@ -4,16 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
-import { WizardPage } from "../../clarity-angular/wizard/wizard-page";
-import { CodeHighlight } from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
+import {Component, ViewChild} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-wizard-jump-to",
-    templateUrl: "./wizard-jump-to.demo.html"
-})
+import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
+import {Wizard} from "../../clarity-angular/wizard/wizard";
+import {WizardPage} from "../../clarity-angular/wizard/wizard-page";
+
+@Component({moduleId: module.id, selector: "clr-wizard-jump-to", templateUrl: "./wizard-jump-to.demo.html"})
 export class WizardJumpToDemo {
     @ViewChild("wizard") wizard: Wizard;
     @ViewChild("pageThree") pageThree: WizardPage;

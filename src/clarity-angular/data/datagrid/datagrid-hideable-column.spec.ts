@@ -1,47 +1,53 @@
-import { Component, TemplateRef, ViewChild } from "@angular/core";
-import { TestContext } from "./helpers.spec";
-import { DatagridColumn } from "./datagrid-column";
-import { FiltersProvider } from "./providers/filters";
-import { Sort } from "./providers/sort";
-import { DatagridRenderOrganizer } from "./render/render-organizer";
-import { DragDispatcher } from "./providers/drag-dispatcher";
-import { DomAdapter } from "./render/dom-adapter";
-import { DatagridHideableColumn } from "./datagrid-hideable-column";
+/*
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+import {Component, TemplateRef, ViewChild} from "@angular/core";
+
+import {DatagridColumn} from "./datagrid-column";
+import {DatagridHideableColumn} from "./datagrid-hideable-column";
+import {TestContext} from "./helpers.spec";
+import {DragDispatcher} from "./providers/drag-dispatcher";
+import {FiltersProvider} from "./providers/filters";
+import {Sort} from "./providers/sort";
+import {DomAdapter} from "./render/dom-adapter";
+import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 const PROVIDERS_NEEDED = [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher];
 
 
-export default function (): void {
-    describe("DatagridHideableColumn", function () {
+export default function(): void {
+    describe("DatagridHideableColumn", function() {
         let context: TestContext<DatagridColumn, SimpleTest>;
         let testDgHideableColumn: DatagridHideableColumn;
 
-        beforeEach(function () {
+        beforeEach(function() {
             context = this.create(DatagridColumn, SimpleTest, PROVIDERS_NEEDED);
             testDgHideableColumn = new DatagridHideableColumn(context.testComponent.templateRef,
-                context.testComponent.id, context.testComponent.hidden);
+                                                              context.testComponent.id, context.testComponent.hidden);
         });
 
-        it("should have a template ref", function () {
+        it("should have a template ref", function() {
             expect(testDgHideableColumn.template).toBeDefined();
             expect(testDgHideableColumn.template).toEqual(jasmine.any(TemplateRef));
         });
 
-        it("should have an id", function () {
+        it("should have an id", function() {
             expect(testDgHideableColumn.id).toBe("dg-col-0");
         });
 
-        it("should have a hidden flag default to false", function () {
+        it("should have a hidden flag default to false", function() {
             expect(testDgHideableColumn.hidden).toBeDefined();
             expect(testDgHideableColumn.hidden).toBe(false);
         });
 
-        it("should allow hidden flag to be set", function () {
+        it("should allow hidden flag to be set", function() {
             testDgHideableColumn.hidden = true;
             expect(testDgHideableColumn.hidden).toBe(true);
         });
 
-        it("should provide an observable for the hidden changes", function () {
+        it("should provide an observable for the hidden changes", function() {
             let changeValue: boolean;
             let nbChanges: number = 0;
 
@@ -59,7 +65,7 @@ export default function (): void {
             expect(nbChanges).toEqual(2);
         });
 
-        it("only updates hidden with a new value", function () {
+        it("only updates hidden with a new value", function() {
             let changeValue: boolean;
             let nbChanges: number = 0;
 
@@ -86,7 +92,7 @@ export default function (): void {
     `
 })
 
-class SimpleTest  {
+class SimpleTest {
     @ViewChild("testRef") templateRef: TemplateRef<any>;
     id: string = "dg-col-0";
     hidden: boolean;

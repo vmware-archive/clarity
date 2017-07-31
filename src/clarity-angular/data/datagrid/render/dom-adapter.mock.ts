@@ -7,7 +7,6 @@
 import {DomAdapter} from "./dom-adapter";
 
 export class MockDomAdapter extends DomAdapter {
-
     _userDefinedWidth = 0;
     userDefinedWidth(element: any): number {
         return this._userDefinedWidth;
@@ -29,4 +28,7 @@ export class MockDomAdapter extends DomAdapter {
     }
 }
 
-export const MOCK_DOM_ADAPTER_PROVIDER = {provide: DomAdapter, useClass: MockDomAdapter};
+export const MOCK_DOM_ADAPTER_PROVIDER = {
+    provide: DomAdapter,
+    useClass: MockDomAdapter
+};

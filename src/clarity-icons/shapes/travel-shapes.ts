@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { descriptorConfig } from "../utils/descriptor-config";
+import {descriptorConfig} from "../utils/descriptor-config";
 
 /* tslint:disable:max-line-length */
 const travelShapes: any = {
@@ -93,11 +93,11 @@ const travelShapes: any = {
 
 };
 
-Object.defineProperty(travelShapes, "plane", descriptorConfig(travelShapes["airplane"]));
-Object.defineProperty(travelShapes, "auto", descriptorConfig(travelShapes["car"]));
+Object.defineProperty(travelShapes, "plane", descriptorConfig(travelShapes.airplane));
+Object.defineProperty(travelShapes, "auto", descriptorConfig(travelShapes.car));
 
 if (typeof window !== "undefined" && window.hasOwnProperty("ClarityIcons")) {
-    window["ClarityIcons"].add(travelShapes);
+    window.ClarityIcons.add(travelShapes);
 }
 
-export { travelShapes as TravelShapes };
+export {travelShapes as TravelShapes};

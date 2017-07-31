@@ -3,15 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import "../../../clarity-icons/shapes/essential-shapes";
+
 import {Component} from "@angular/core";
 
+import {SortOrder} from "../../../clarity-angular/data/datagrid/interfaces/sort-order";
 import {User} from "../inventory/user";
-import {DatagridKitchenSinkData} from "./kitchen-sink-data";
 import {PokemonComparator} from "../utils/pokemon-comparator";
 import {PokemonFilter} from "../utils/pokemon-filter";
-import {SortOrder} from "../../../clarity-angular/data/datagrid/interfaces/sort-order";
 
-import "../../../clarity-icons/shapes/essential-shapes";
+import {DatagridKitchenSinkData} from "./kitchen-sink-data";
 
 @Component({
     moduleId: module.id,
@@ -82,7 +83,7 @@ export class DatagridKitchenSinkDemo {
     onDelete(user: User) {
         this.cleanUp();
         if (user) {
-            this.toDelete = [ user ];
+            this.toDelete = [user];
         } else {
             this.toDelete = this.selected.slice();
         }

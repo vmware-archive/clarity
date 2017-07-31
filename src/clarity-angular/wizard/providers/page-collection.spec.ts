@@ -4,11 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { BasicWizardTestComponent } from "../test-components/basic-wizard.mock";
-import { PageCollectionService } from "./page-collection";
-import { Wizard } from "../wizard";
-import { WizardPage } from "../wizard-page";
-import { TestContext } from "../../utils/testing/helpers.spec";
+import {TestContext} from "../../utils/testing/helpers.spec";
+import {BasicWizardTestComponent} from "../test-components/basic-wizard.mock";
+import {Wizard} from "../wizard";
+import {WizardPage} from "../wizard-page";
+
+import {PageCollectionService} from "./page-collection";
 
 export default function(): void {
     describe("Page Collection Service", function() {
@@ -40,10 +41,10 @@ export default function(): void {
 
         it(".getPageById() should return the wizard page with a matching id", function() {
             // checkResults() method is tested here as well
-            let firstPageId = context.clarityDirective.pages.first.id;
-            let firstPageIdNumber = firstPageId.match(/\d+/)[0];
-            let lastPageId = context.clarityDirective.pages.last.id;
-            let nonExistingPageId = "N0N-EX1ST1N-ID";
+            const firstPageId = context.clarityDirective.pages.first.id;
+            const firstPageIdNumber = firstPageId.match(/\d+/)[0];
+            const lastPageId = context.clarityDirective.pages.last.id;
+            const nonExistingPageId = "N0N-EX1ST1N-ID";
 
             expect(pageCollectionService.getPageById(firstPageId)).toEqual(pageCollectionService.firstPage);
             expect(pageCollectionService.getPageById(lastPageId)).toEqual(pageCollectionService.lastPage);
@@ -52,7 +53,7 @@ export default function(): void {
                 pageCollectionService.getPageById(nonExistingPageId);
             }).toThrowError("No page can be found with the id " + nonExistingPageId + ".");
 
-            //Manually setting this id to make multiple pages have the same id.
+            // Manually setting this id to make multiple pages have the same id.
             pageCollectionService.getPageById(lastPageId)._id = firstPageIdNumber;
 
             expect(function() {
@@ -106,15 +107,15 @@ export default function(): void {
         it(".getPageRangeFromPages() should return the range of wizard pages", function() {
 
             expect(pageCollectionService.getPageRangeFromPages(pageCollectionService.firstPage,
-                pageCollectionService.lastPage))
+                                                               pageCollectionService.lastPage))
                 .toEqual(pageCollectionService.pageRange(0, 4));
 
             expect(pageCollectionService.getPageRangeFromPages(pageCollectionService.firstPage,
-                pageCollectionService.firstPage))
+                                                               pageCollectionService.firstPage))
                 .toEqual(pageCollectionService.pageRange(0, 0));
 
             expect(pageCollectionService.getPageRangeFromPages(pageCollectionService.getPageByIndex(1),
-                pageCollectionService.getPageByIndex(3)))
+                                                               pageCollectionService.getPageByIndex(3)))
                 .toEqual(pageCollectionService.pageRange(1, 3));
 
         });
@@ -145,21 +146,19 @@ export default function(): void {
 
         it(".getStepItemIdForPage() should return the step id of the page", function() {
 
-            let firstPageId = context.clarityDirective.pages.first.id;
-            let lastPageId = context.clarityDirective.pages.last.id;
+            const firstPageId = context.clarityDirective.pages.first.id;
+            const lastPageId = context.clarityDirective.pages.last.id;
 
-            let firstPageStepId = firstPageId.replace("page", "step");
-            let lastPageStepId = lastPageId.replace("page", "step");
+            const firstPageStepId = firstPageId.replace("page", "step");
+            const lastPageStepId = lastPageId.replace("page", "step");
 
-            expect(pageCollectionService.getStepItemIdForPage(pageCollectionService.firstPage))
-                .toBe(firstPageStepId);
-            expect(pageCollectionService.getStepItemIdForPage(pageCollectionService.lastPage))
-                .toBe(lastPageStepId);
+            expect(pageCollectionService.getStepItemIdForPage(pageCollectionService.firstPage)).toBe(firstPageStepId);
+            expect(pageCollectionService.getStepItemIdForPage(pageCollectionService.lastPage)).toBe(lastPageStepId);
 
         });
 
         it(".commitPage() should set the page's completed property to true", function() {
-            let testPage = pageCollectionService.getPageByIndex(2);
+            const testPage = pageCollectionService.getPageByIndex(2);
             spyOn(testPage.onCommit, "emit");
 
             pageCollectionService.commitPage(testPage);
@@ -169,7 +168,7 @@ export default function(): void {
         });
 
         it(".commitPage() should not fire page.onCommit when page has overrides", function() {
-            let testPage = pageCollectionService.getPageByIndex(2);
+            const testPage = pageCollectionService.getPageByIndex(2);
             spyOn(testPage.onCommit, "emit");
 
             testPage.stopNext = true;
@@ -182,7 +181,7 @@ export default function(): void {
         });
 
         it(".commitPage() should only fire page.onCommit once if there are wizard overrides", function() {
-            let testPage = pageCollectionService.getPageByIndex(2);
+            const testPage = pageCollectionService.getPageByIndex(2);
             spyOn(testPage.onCommit, "emit");
 
             context.clarityDirective.stopNext = true;
@@ -205,26 +204,26 @@ export default function(): void {
         });
 
         it(".previousPageIsCompleted() should return true if previous page is completed", function() {
-            let secondPage = pageCollectionService.getPageByIndex(1);
+            const secondPage = pageCollectionService.getPageByIndex(1);
             pageCollectionService.firstPage.completed = true;
             context.detectChanges();
             expect(pageCollectionService.previousPageIsCompleted(secondPage)).toBe(true);
         });
 
         it(".previousPageIsCompleted() should return true if there is no previous page", function() {
-            let firstPage = pageCollectionService.firstPage;
+            const firstPage = pageCollectionService.firstPage;
             expect(pageCollectionService.previousPageIsCompleted(firstPage)).toBe(true);
         });
 
         it(".previousPageIsCompleted() should return false if previous page is not complete", function() {
-            let secondPage = pageCollectionService.getPageByIndex(1);
+            const secondPage = pageCollectionService.getPageByIndex(1);
             expect(pageCollectionService.firstPage.completed).toBe(false, "verify first page is not completed");
-            expect(pageCollectionService.previousPageIsCompleted(secondPage)).toBe(false,
-                "second page's previous page is not complete");
+            expect(pageCollectionService.previousPageIsCompleted(secondPage))
+                .toBe(false, "second page's previous page is not complete");
         });
 
         it("updateCompletedStates() shouldn't update completed state if all pages completed", function() {
-            let pageArray = [];
+            const pageArray = [];
             pageArray.push(pageCollectionService.firstPage);
             pageArray.push(pageCollectionService.getPageByIndex(1));
             pageArray.push(pageCollectionService.getPageByIndex(2));
@@ -244,7 +243,7 @@ export default function(): void {
         });
 
         it("updateCompletedStates() should mark pages after first incomplete page as incomplete", function() {
-            let pageArray = [];
+            const pageArray = [];
             pageArray.push(pageCollectionService.firstPage);
             pageArray.push(pageCollectionService.getPageByIndex(1));
             pageArray.push(pageCollectionService.getPageByIndex(3));
@@ -273,9 +272,9 @@ export default function(): void {
         });
 
         it("findFirstIncompletePageIndex() should return last index if all pages complete", function() {
-            let pageArray = [];
+            const pageArray = [];
             let indexToTest: number;
-            let expectedIndex = pageCollectionService.pagesCount - 1;
+            const expectedIndex = pageCollectionService.pagesCount - 1;
 
             pageArray.push(pageCollectionService.firstPage);
             pageArray.push(pageCollectionService.getPageByIndex(1));

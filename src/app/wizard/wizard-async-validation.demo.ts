@@ -4,15 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
-import { CodeHighlight } from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
+import {Component, ViewChild} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-wizard-async-validation",
-    templateUrl: "./wizard-async-validation.demo.html"
-})
+import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
+import {Wizard} from "../../clarity-angular/wizard/wizard";
+
+@Component(
+    {moduleId: module.id, selector: "clr-wizard-async-validation", templateUrl: "./wizard-async-validation.demo.html"})
 export class WizardAsyncValidation {
     @ViewChild("wizard") wizard: Wizard;
     @ViewChild("myForm") formData: any;
@@ -29,7 +27,7 @@ export class WizardAsyncValidation {
     }
 
     onCommit(): void {
-        let value: any = this.formData.value;
+        const value: any = this.formData.value;
         this.loadingFlag = true;
         this.errorFlag = false;
 

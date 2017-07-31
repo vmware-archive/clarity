@@ -6,8 +6,10 @@
 
 import {Component, ElementRef, ViewChild} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {PopoverDirective} from "./popover.directive";
+
 import {IfOpenService} from "../../utils/conditional/if-open.service";
+
+import {PopoverDirective} from "./popover.directive";
 
 describe("Popover directive", () => {
 
@@ -15,10 +17,7 @@ describe("Popover directive", () => {
     let compiled: any;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            declarations: [TestComponent, PopoverDirective],
-            providers: [IfOpenService]
-        });
+        TestBed.configureTestingModule({declarations: [TestComponent, PopoverDirective], providers: [IfOpenService]});
 
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
@@ -29,11 +28,11 @@ describe("Popover directive", () => {
         fixture.destroy();
     });
 
-    it("projects content", function () {
+    it("projects content", function() {
         expect(compiled.textContent).toMatch(/anchor1/);
     });
 
-    it("positions popover only if the open property of ifOpenService is true", function () {
+    it("positions popover only if the open property of ifOpenService is true", function() {
         let position: string;
 
         position = getComputedStyle(fixture.componentInstance.popover.nativeElement).position;

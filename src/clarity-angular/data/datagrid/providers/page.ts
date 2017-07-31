@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Injectable} from "@angular/core";
-import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class Page {
@@ -17,7 +17,7 @@ export class Page {
         return this._size;
     }
     public set size(size: number) {
-        let oldSize = this._size;
+        const oldSize = this._size;
         if (size !== oldSize) {
             this._size = size;
             // Yeap. That's the formula to keep the first item from the old page still
@@ -71,7 +71,7 @@ export class Page {
     // We do not want to expose the Subject itself, but the Observable which is read-only
     public get change(): Observable<number> {
         return this._change.asObservable();
-    };
+    }
 
     private _sizeChange = new Subject<number>();
 

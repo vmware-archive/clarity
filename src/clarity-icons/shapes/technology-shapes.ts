@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { descriptorConfig } from "../utils/descriptor-config";
+import {descriptorConfig} from "../utils/descriptor-config";
 
 /* tslint:disable:max-line-length */
 const technologyShapes: any = {
@@ -1312,17 +1312,16 @@ const technologyShapes: any = {
 };
 
 Object.defineProperty(technologyShapes, "analytics", descriptorConfig(technologyShapes["line-chart"]));
-Object.defineProperty(technologyShapes, "server", descriptorConfig(technologyShapes["host"]));
-Object.defineProperty(technologyShapes, "command", descriptorConfig(technologyShapes["terminal"]));
-Object.defineProperty(technologyShapes, "mobile-phone", descriptorConfig(technologyShapes["mobile"]));
-Object.defineProperty(technologyShapes, "license", descriptorConfig(technologyShapes["certificate"]));
+Object.defineProperty(technologyShapes, "server", descriptorConfig(technologyShapes.host));
+Object.defineProperty(technologyShapes, "command", descriptorConfig(technologyShapes.terminal));
+Object.defineProperty(technologyShapes, "mobile-phone", descriptorConfig(technologyShapes.mobile));
+Object.defineProperty(technologyShapes, "license", descriptorConfig(technologyShapes.certificate));
 Object.defineProperty(technologyShapes, "disconnected", descriptorConfig(technologyShapes["no-wifi"]));
 Object.defineProperty(technologyShapes, "receiver", descriptorConfig(technologyShapes["phone-handset"]));
 Object.defineProperty(technologyShapes, "design", descriptorConfig(technologyShapes["ruler-pencil"]));
 
 if (typeof window !== "undefined" && window.hasOwnProperty("ClarityIcons")) {
-
-    window["ClarityIcons"].add(technologyShapes);
+    window.ClarityIcons.add(technologyShapes);
 }
 
-export { technologyShapes as TechnologyShapes };
+export {technologyShapes as TechnologyShapes};

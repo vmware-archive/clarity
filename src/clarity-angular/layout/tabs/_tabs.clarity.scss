@@ -20,3 +20,11 @@ button.nav-link{
   text-transform: capitalize;
   min-width: 0;
 }
+
+.tabs-overflow {
+    position: relative;
+
+    .nav-item {
+        margin-right: 0;
+    }
+}

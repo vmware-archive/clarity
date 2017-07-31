@@ -8,14 +8,18 @@ import { TabContent } from "./tab-content";
 import { Tab } from "./tab";
 import { Tabs } from "./tabs";
 import { TabLinkDirective } from "./tab-link.directive";
+import {TabOverflowContent} from "./tab-overflow-content";
 
 export * from "./tabs";
 export * from "./tab";
 export * from "./tab-content";
+export * from "./tab-overflow-content";
 export * from "./tab-link.directive";
+
 export const TABS_DIRECTIVES: Type<any>[] = [
     TabContent,
     Tab,
     Tabs,
+    TabOverflowContent,
     TabLinkDirective
 ];

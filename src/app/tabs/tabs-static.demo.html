@@ -18,17 +18,35 @@
             <button id="tabCloud" class="btn btn-link nav-link" aria-controls="panelCloud"
                     aria-selected="false" type="button">Cloud</button>
         </li>
+        <div class="tabs-overflow open bottom-right">
+            <li role="presentation" class="nav-item">
+                <button class="btn btn-link nav-link dropdown-toggle">
+                    <clr-icon shape="ellipsis-horizontal" class="is-info"></clr-icon>
+                </button>
+            </li>
+            <div class="dropdown-menu">
+                <button class="btn" aria-controls="panelInfrastructure">Infrastructure</button>
+                <button class="btn" aria-controls="panelSettings">Settings</button>
+            </div>
+        </div>
     </ul>
     <section id="panelDashboard" role="tabpanel" aria-labelledby="tabDashboard">
-        <p>You cannot switch between tabs in this static demo because it does not contain the JavaScript to handle this behavior.  The demo is here to show the look of tabs and the DOM structure.</p>
+        <p>Content for Dashboard</p>
     </section>
     <section id="panelManagement" role="tabpanel" aria-labelledby="tabManagement" aria-hidden="true">
-        <p>Content 2</p>
+        <p>Content for Management</p>
     </section>
     <section id="panelCloud" role="tabpanel" aria-labelledby="tabCloud" aria-hidden="true">
-        <p>Content 3</p>
+        <p>Content for Cloud</p>
+    </section>
+    <section id="panelInfrastructure" role="tabpanel" aria-labelledby="tabInfrastructure" aria-hidden="true">
+        <p>Content for Infrastructure</p>
+    </section>
+    <section id="panelSettings" role="tabpanel" aria-labelledby="tabSettings" aria-hidden="true">
+        <p>Content for Settings</p>
     </section>
 </div>
+<p>You cannot switch between tabs in this static demo because it does not contain the JavaScript to handle this behavior.  The demo is here to show the look of tabs and the DOM structure.</p>
 
 <pre>
     <code clr-code-highlight="language-html">
@@ -45,6 +63,17 @@
             &lt;button id=&quot;tab3&quot; class=&quot;btn btn-link nav-link&quot; aria-controls=&quot;panel3&quot;
                     aria-selected=&quot;false&quot; type=&quot;button&quot;&gt;Cloud&lt;/button&gt;
         &lt;/li&gt;
+        &lt;div class="tabs-overflow open bottom-right"&gt;
+            &lt;li role="presentation" class="nav-item"&gt;
+                &lt;button class="btn btn-link nav-link dropdown-toggle"&gt;
+                    &lt;clr-icon shape="ellipsis-horizontal" class="is-info"&gt;&lt;/clr-icon&gt;
+                &lt;/button&gt;
+            &lt;/li&gt;
+            &lt;div class="dropdown-menu"&gt;
+                &lt;button class="btn" aria-controls="panel4" aria-selected=&quot;false&quot;&gt;Infrastructure&lt;/button&gt;
+                &lt;button class="btn" aria-controls="panel5" aria-selected=&quot;false&quot;&gt;Settings&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
     &lt;/ul&gt;
     &lt;section id=&quot;panel1&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;tab1&quot;&gt;
         ...
@@ -53,6 +82,12 @@
         ...
     &lt;/section&gt;
     &lt;section id=&quot;panel3&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;tab3&quot; aria-hidden=&quot;true&quot;&gt;
+        ...
+    &lt;/section&gt;
+    &lt;section id="panel4" role="tabpanel" aria-labelledby="tab4" aria-hidden="true"&gt;
+        ...
+    &lt;/section&gt;
+    &lt;section id="panel5" role="tabpanel" aria-labelledby="tab5" aria-hidden="true"&gt;
         ...
     &lt;/section&gt;
     </code>

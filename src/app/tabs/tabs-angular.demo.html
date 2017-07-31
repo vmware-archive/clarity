@@ -5,6 +5,7 @@
   -->
 
 <div class="clr-example">
+    <button class="btn btn-primary" (click)="inOverflow = !inOverflow">Toggle</button>
     <clr-tabs>
         <clr-tab>
             <button clrTabLink>Dashboard</button>
@@ -22,9 +23,16 @@
         </clr-tab>
 
         <clr-tab>
-            <button clrTabLink>Cloud</button>
+            <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Cloud</button>
             <clr-tab-content *clrIfActive>
                 <p>Content for Cloud tab.</p>
+            </clr-tab-content>
+        </clr-tab>
+
+        <clr-tab>
+            <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Infrastructure</button>
+            <clr-tab-content *clrIfActive>
+                <p>Content for Infrastructure tab.</p>
             </clr-tab-content>
         </clr-tab>
     </clr-tabs>
@@ -47,9 +55,15 @@
             &lt;/clr-tab-content&gt;
         &lt;/clr-tab&gt;
         &lt;clr-tab&gt;
-            &lt;button clrTabLink&gt;Cloud&lt;/button&gt;
+            &lt;button clrTabLink [clrTabLinkInOverflow]="true"&gt;Cloud&lt;/button&gt;
             &lt;clr-tab-content *clrIfActive&gt;
                 &lt;p&gt;Content for Cloud tab.&lt;/p&gt;
+            &lt;/clr-tab-content&gt;
+        &lt;/clr-tab&gt;
+        &lt;clr-tab&gt;
+            &lt;button clrTabLink [clrTabLinkInOverflow]="true"&gt;Infrastructure&lt;/button&gt;
+            &lt;clr-tab-content *clrIfActive&gt;
+                &lt;p&gt;Content for Infrastructure tab.&lt;/p&gt;
             &lt;/clr-tab-content&gt;
         &lt;/clr-tab&gt;
     &lt;/clr-tabs&gt;

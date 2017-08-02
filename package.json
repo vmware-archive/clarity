@@ -26,6 +26,7 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
+    "@types/commander": "^2.9.1",
     "@types/jasmine": "2.5.40",
     "@types/node": "^6.0.46",
     "@types/selenium-webdriver": "^2.53.33",
@@ -33,6 +34,7 @@
     "browser-sync": "^2.11.2",
     "cheerio": "^0.22.0",
     "clang-format": "^1.0.37",
+    "commander": "^2.11.0",
     "connect-history-api-fallback": "^1.2.0",
     "del": "^2.2.0",
     "event-stream": "^3.3.4",
@@ -53,6 +55,7 @@
     "gulp-typescript": "2.13.0",
     "gulp-util": "^3.0.7",
     "gulp-zip": "^3.1.0",
+    "ip": "^1.1.5",
     "jasmine-core": "~2.5.2",
     "karma": "^1.6.0",
     "karma-chrome-launcher": "^2.0.0",
@@ -67,6 +70,7 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-uglify": "^1.0.1",
     "run-sequence": "^1.1.5",
+    "shelljs": "^0.7.8",
     "systemjs-builder": "^0.16.9",
     "through2": "^2.0.1",
     "tslint": "^5.5.0",
@@ -83,6 +87,8 @@
     "prepublish:all": "gulp npm:prepare --version $npm_package_version",
     "publish:all": "npm publish dist/npm/clarity-ui; npm publish dist/npm/clarity-angular; npm publish dist/npm/clarity-icons",
     "presample-app": "npm i dist/npm/clarity-ui; npm i dist/npm/clarity-icons; npm i dist/npm/clarity-angular;",
-    "sample-app": "gulp sample"
+    "sample-app": "gulp sample",
+    "cssTest": "./docker-ctrl/cdc.js -t",
+    "cssUpdate": "./docker-ctrl/cdc.js -u"
   }
 }

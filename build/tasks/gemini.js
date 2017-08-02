@@ -4,6 +4,12 @@ var server = browserSync.create("css-server");
 var historyApiFallback = require('connect-history-api-fallback');
 var del = require("del");
 var util = require('gulp-util');
+var ip = require("ip");
+
+function generateRootUrl() {
+    let myIp = ip.address();
+    return `http://${myIp}:3000/`;
+}
 
 var config = {
     open: false,
@@ -33,7 +39,7 @@ gulp.task('css:reference', ["build"], function() {
     }
 
     var spawn = require('child_process').spawn;
-    var cssReference = spawn('gemini', ['update', testPath], { stdio: 'inherit' });
+    var cssReference = spawn('gemini', ['update', testPath, '--root-url', generateRootUrl()], { stdio: 'inherit' });
 
     cssReference.on('exit', function(code) {
         process.exit(code);
@@ -52,9 +58,8 @@ gulp.task('css:test', ["build"], function() {
         testPath += util.env.set;
     }
 
-
     var spawn = require('child_process').spawn;
-    var cssTest = spawn('gemini', ['test', testPath, '--reporter', 'flat'], { stdio: 'inherit' });
+    var cssTest = spawn('gemini', ['test', testPath, '--reporter', 'flat', '--root-url', generateRootUrl()], { stdio: 'inherit' });
 
     cssTest.on('exit', function(code) {
         process.exit(code);

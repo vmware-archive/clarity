@@ -8,12 +8,16 @@ env:
     - TEST_SUITE='test'
     - TEST_SUITE='css:test --set set1'
     - TEST_SUITE='css:test --set set2'
-    - TEST_SUITE='css:reference --set set1'
-    - TEST_SUITE='css:reference --set set2'
+# TODO - keep these as placeholders to re-introduce the reference generation jobs or future optimizations.
+#    - TEST_SUITE='css:reference --set set1'
+#    - TEST_SUITE='css:reference --set set2'
 
 sudo: required
 dist: trusty
 group: edge
+
+services:
+  - docker
 
 addons:
   apt:
@@ -25,9 +29,7 @@ addons:
       - google-chrome-stable
   artifacts:
     paths:
-      - $TRAVIS_BUILD_DIR/screenshots.zip
       - $TRAVIS_BUILD_DIR/gemini-report/
-      - $TRAVIS_BUILD_DIR/selenium.txt
 cache:
   apt: true
   yarn: true
@@ -35,17 +37,12 @@ cache:
     - node_modules
 
 before_install:
-  - export CHROME_BIN=/usr/bin/google-chrome
-  - export DISPLAY=:99.0
 
 before_script:
   - npm install -g gemini
   - npm install -g html-reporter
-  - npm install -g selenium-standalone
-  - selenium-standalone install
-  - xvfb-run --server-args="-screen 0, 1600x2400x24" selenium-standalone start > selenium.txt &
+  - docker run -d -p 4444:4444 selenium/standalone-chrome
   - sleep 5
 
 script:
   - gulp $TEST_SUITE # run unit test, css regression, and css reference in parallel
-  - zip -r screenshots gemini/screens/

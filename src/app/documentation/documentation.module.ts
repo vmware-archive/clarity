@@ -44,7 +44,6 @@ import {TooltipsDemoModule} from "./demos/tooltips/tooltips.demo.module";
 import {TreeDemoModule} from "./demos/tree-view/tree-view.demo.module";
 import {TypographyDemoModule} from "./demos/typography/typography.demo.module";
 import {WizardDemoModule} from "./demos/wizard/wizard.demo.module";
-import {WizardDeprecatedDemoModule} from "./demos/wizard-deprecated/wizard.demo.module";
 import {SignpostDemoModule} from "./demos/signposts/signpost.demo.module";
 
 @NgModule({
@@ -88,7 +87,6 @@ import {SignpostDemoModule} from "./demos/signposts/signpost.demo.module";
         TreeDemoModule,
         TypographyDemoModule,
         WizardDemoModule,
-        WizardDeprecatedDemoModule,
         DocumentationRoutingModule
     ],
     declarations: [

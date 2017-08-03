@@ -27,25 +27,26 @@
         <h2>Tabs Refactor</h2>
         <p>
             0.10.0 introduces a breaking change for tabs component in Clarity.
-            Note that there is <em>no breaking change</em> for users using the static
-            (HTML) version of tabs. This change enables lazy loading of tab contents.
+            Note that there is <em>no breaking change for users using the static
+            (HTML) version of tabs</em>. This change enables lazy loading of tab contents.
         </p>
 
-        <div>
-            This version also deprecates the following outputs:
-            <ul class="list">
-                <li><code class="clr-code">clrTabsCurrentTabLinkChanged</code></li>
-                <li><code class="clr-code">clrTabsCurrentTabIndexChanged</code></li>
-                <li><code class="clr-code">clrTabsCurrentTabContentChanged</code></li>
-            </ul>
-        </div>
 
         <h3>Migrating tabs to the new markup</h3>
         <p>
-            The  0.10.0 version deprecates the <code class="clr-code">clr-tab-link</code> markup in favor of using
-            <code class="clr-code">clrTabLink</code> directive so that the end user can use a DOM
-            element of his/her choice. THe use of button is recommended. It also introduces another
-            wrapper element <code class="clr-code">clr-tab</code> around each tab link and content pair.
+            The  0.10.0 version deprecates the <code class="clr-code">clr-tab-link</code> markup. Now
+            you can use use the <code class="clr-code">clrTabLink</code> directive on a DOM
+            element for links as shown below. The use of button is recommended unless the tab is meant to reroute
+            the user to another page.
+        </p>
+        <p>
+            This version also introduces another wrapper element
+            <code class="clr-code">clr-tab</code> around each tab link and content pair.
+        </p>
+        <p>
+            The new tabs use the <code class="clr-code">*clrIfActive</code> structural directive to lazy load
+            the content of an active tab. For simple cases, using the microsyntax would suffice. We recommend
+            that you use the de-sugared syntax of the structural directive so you can bind to its input/output.
         </p>
 
         <div>
@@ -67,7 +68,32 @@
         </div>
 
         <div>
-            <h6>0.10.0 tabs component (after)</h6>
+            <h6>0.10.0 tabs component (after) - de-sugared syntax (preferred) </h6>
+            <div>
+<pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-tabs&gt;
+    &lt;clr-tab&gt;
+        &lt;button clrTabLink&gt;Tab1&lt;/button&gt;
+        &lt;ng-template [(clrIfActive)]="tab1Active"&gt;
+            &lt;clr-tab-content&gt;
+            ...
+            &lt;/clr-tab-content&gt;
+        &lt;/ng-template&gt;
+    &lt;clr-tab&gt;
+    &lt;clr-tab&gt;
+        &lt;button clrTabLink&gt;Tab2&lt;/button&gt;
+        &lt;ng-template [(clrIfActive)]="tab2Active"&gt;
+            &lt;clr-tab-content&gt;
+            ...
+            &lt;/clr-tab-content&gt;
+        &lt;/ng-template&gt;
+    &lt;clr-tab&gt;
+&lt;/clr-tabs&gt;</code></pre>
+            </div>
+        </div>
+
+        <div>
+            <h6>0.10.0 tabs component (after) - microsyntax </h6>
             <div>
 <pre><code clr-code-highlight="language-html" ngNonBindable>
 &lt;clr-tabs&gt;
@@ -85,6 +111,55 @@
     &lt;clr-tab&gt;
 &lt;/clr-tabs&gt;</code></pre>
             </div>
+        </div>
+
+        <div>
+            <h6>Input/Outputs Removed</h6>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="left">Alternative</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left"><code class="clr-code">[(clrTabsCurrentTabIndex)]</code></td>
+                    <td class="left">
+                        Not needed anymore. Use Input/Output on the <code class="clr-code">clrIfActive</code>
+                        directive to set or determine which tab is active.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left"><code class="clr-code">[clrTabContentActive]</code></td>
+                    <td class="left">
+                        Set Input value on the <code class="clr-code">clrIfActive</code>
+                        directive.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left"><code class="clr-code">[clrTabLinkActive]</code></td>
+                    <td class="left">
+                        Set Input value on the <code class="clr-code">clrIfActive</code>
+                        directive.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left"><code class="clr-code">(clrTabsCurrentTabContentChanged)</code></td>
+                    <td class="left">
+                        Use Output on the <code class="clr-code">clrIfActive</code>
+                        directive to determine when a tab's active status has changed.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left"><code class="clr-code">(clrTabsCurrentTabLinkChanged)</code></td>
+                    <td class="left">
+                        Use Output on the <code class="clr-code">clrIfActive</code>
+                        directive to determine when a tab's active status has changed.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </li>
     <li>

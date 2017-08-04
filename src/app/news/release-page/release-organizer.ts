@@ -25,6 +25,9 @@ function organize() {
 }
 
 function sortAll() {
+    console.log(MAJORS);
+    console.log(MINORS);
+    console.log(PATCHES);
     MAJORS.sort(compareReleases);
     for (let major in MINORS) {
         MINORS[major].sort(compareReleases);
@@ -34,6 +37,7 @@ function sortAll() {
     }
 }
 
+/*
 export function compareReleases(rA, rB) {
     let splitA = rA.split(".").map(part => parseInt(part, 10));
     let splitB = rB.split(".").map(part => parseInt(part, 10));
@@ -43,6 +47,39 @@ export function compareReleases(rA, rB) {
         } else if (splitA[i] > splitB[i]) {
             return -1;
         }
+    }
+    return 0;
+}
+*/
+
+export function compareReleases(rA, rB) {
+    let splitA = rA.split(".").map(part => parseInt(part, 10));
+    let splitB = rB.split(".").map(part => parseInt(part, 10));
+    let countA = 0;
+    let countB = 0;
+
+    if (rA.indexOf("-") > -1 && rB.indexOf("-") > -1) {
+        let minorVersionA = rA.split("-")[1].split(".");
+        let minorVersionB = rB.split("-")[1].split(".");
+        if (minorVersionA[0] < minorVersionB[0]) {
+            countA++;
+        } else {
+            countB++;
+        }
+    }
+
+    for (let i in splitA) {
+        if (splitA[i] < splitB[i]) {
+            countA++;
+        } else if (splitA[i] > splitB[i]) {
+            countB++;
+        }
+    }
+
+    if (countA > countB) {
+        return 1;
+    } else if (countB > countA) {
+        return -1;
     }
     return 0;
 }

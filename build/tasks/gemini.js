@@ -20,7 +20,7 @@ var config = {
     }
 };
 
-gulp.task('css:reference', ["build"], function() {
+gulp.task('css:reference', ["build"], function(cb) {
     server.init(config);
 
     var testPath = "gemini/tests/"; // test all components by default
@@ -30,6 +30,16 @@ gulp.task('css:reference', ["build"], function() {
 
     else if (util.env.set) {
         testPath += util.env.set;
+    }
+
+    // clear out previous screens if taking reference inside Travis
+    if(process.env.TRAVIS) {
+        var exec = require('child_process').exec;
+        exec("rm -r gemini/screens/", function (err, stdout, stderr) {
+            console.log(stdout);
+            console.log(stderr);
+            cb(err);
+        });
     }
 
     var spawn = require('child_process').spawn;

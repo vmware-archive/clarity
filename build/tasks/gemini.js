@@ -32,16 +32,6 @@ gulp.task('css:reference', ["build"], function(cb) {
         testPath += util.env.set;
     }
 
-    // clear out previous screens if taking reference inside Travis
-    if(process.env.TRAVIS) {
-        var exec = require('child_process').exec;
-        exec("rm -r gemini/screens/", function (err, stdout, stderr) {
-            console.log(stdout);
-            console.log(stderr);
-            cb(err);
-        });
-    }
-
     var spawn = require('child_process').spawn;
     var cssReference = spawn('gemini', ['update', testPath], { stdio: 'inherit' });
 

@@ -37,7 +37,6 @@ import {TooltipsDemo} from "./demos/tooltips/tooltips.demo";
 import {TreeViewDemo} from "./demos/tree-view/tree-view.demo";
 import {TypographyDemo} from "./demos/typography/typography.demo";
 import {WizardDemo} from "./demos/wizard/wizard.demo";
-import {WizardOldDemo} from "./demos/wizard-deprecated/wizard.demo";
 import {DatagridBasicStructureDemo} from "./demos/datagrid/basic-structure/basic-structure";
 import {DatagridCustomRenderingDemo} from "./demos/datagrid/custom-rendering/custom-rendering";
 import {DatagridSmartIteratorDemo} from "./demos/datagrid/smart-iterator/smart-iterator";
@@ -477,14 +476,6 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-wizards",
                     browserTitle: "Wizards"
-                }
-            },
-            {
-                path: "wizard-deprecated",
-                component: WizardOldDemo,
-                data: {
-                    bodyClass: "page-wizard-deprecated",
-                    browserTitle: "Wizards Deprecated"
                 }
             }
         ]

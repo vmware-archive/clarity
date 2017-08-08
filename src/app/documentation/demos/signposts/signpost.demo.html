@@ -145,6 +145,12 @@
         </ul>
         <clr-signpost-positions-demo></clr-signpost-positions-demo>
 
+        <h3 id="custom-triggers">Custom Triggers</h3>
+        <p>We provide a default trigger but you can add one yourself. The signpost component provides the <code
+                class="clr-code">clrSignpostTrigger</code> attribute directive. Include this on the outer-most container
+            of your custom trigger and the <code class="clr-code">[clrSignpostPosition]="position"</code> so that we
+            know what and where the Signpost should point.</p>
+        <clr-signpost-triggers-demo></clr-signpost-triggers-demo>
         <h2>Summary of Options</h2>
 
         <h4>Signpost (clr-signpost)</h4>
@@ -173,6 +179,19 @@
                     middle on the right side. And, the popover itself will be positioned to the right of the trigger
                     icon
                     with the icon in the vertical middle of the popover.
+                </td>
+            </tr>
+            <tr>
+                <td class="left">
+                    <b>clrSignpostTrigger</b>
+                    <div class="hidden-sm-up">Type: SignpostTriggerDirective</div>
+                    <div class="hidden-sm-up">Default: n/a</div>
+                </td>
+                <td class="hidden-xs-down">SignpostTriggerDirective</td>
+                <td class="hidden-xs-down">n/a</td>
+                <td class="left">
+                    The SignpostTriggerDirective is placed on the outer-most container element for a custom trigger. It
+                    overrides the default Signpost trigger with custom content.
                 </td>
             </tr>
             </tbody>

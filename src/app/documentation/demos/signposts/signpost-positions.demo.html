@@ -1,18 +1,16 @@
 <div>
     <div class="signpost-positions">
         <div class="description">
-            <div class="select">
-                <section class="form-block">
-                    <div class="form-group">
-                        <label for="position">Select a position: </label>
-                        <div class="select">
-                            <select id="position_selector" [(ngModel)]="position" name="position" id="position">
-                                <option *ngFor="let position of positions" [ngValue]="position">{{ position }}</option>
-                            </select>
-                        </div>
+            <section class="form-block">
+                <div class="form-group">
+                    <label for="position">Select a position: </label>
+                    <div class="select">
+                        <select id="position_selector" [(ngModel)]="position" name="position" id="position">
+                            <option *ngFor="let position of positions" [ngValue]="position">{{ position }}</option>
+                        </select>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </div>
         <div class="demo">
             <clr-signpost [clrSignpostPosition]="position">

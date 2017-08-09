@@ -51,12 +51,12 @@ const EXAMPLE = `
         </a>
     </div>
     <div class="header-actions">
-        <clr-dropdown clrMenuPosition="bottom-right">
-            <button class="nav-icon" clrDropdownToggle>
+        <clr-dropdown>
+            <button class="nav-icon" clrDropdownTrigger>
                 <clr-icon shape="cog"></clr-icon>
                 <clr-icon shape="caret down"></clr-icon>
             </button>
-            <clr-dropdown-menu>
+            <clr-dropdown-menu clrPosition="bottom-right">
                 <a href="..." clrDropdownItem>About</a>
                 <a href="..." clrDropdownItem>Preferences</a>
                 <a href="..." clrDropdownItem>Log out</a>
@@ -86,12 +86,12 @@ const EXAMPLE = `
         </label>
     </form>
     <div class="header-actions">
-        <clr-dropdown clrMenuPosition="bottom-right">
-            <button class="nav-icon" clrDropdownToggle>
+        <clr-dropdown>
+            <button class="nav-icon" clrDropdownTrigger>
                 <clr-icon shape="user"></clr-icon>
                 <clr-icon shape="caret down"></clr-icon>
             </button>
-            <clr-dropdown-menu>
+            <clr-dropdown-menu clrPosition="bottom-right">
                 <a href="..." clrDropdownItem>About</a>
                 <a href="..." clrDropdownItem>Preferences</a>
                 <a href="..." clrDropdownItem>Log out</a>
@@ -122,12 +122,12 @@ const EXAMPLE = `
         </a>
     </div>
     <div class="header-actions">
-        <clr-dropdown clrMenuPosition="bottom-right">
-            <button class="nav-text" clrDropdownToggle>
+        <clr-dropdown>
+            <button class="nav-text" clrDropdownTrigger>
                 john.doe@vmware.com
                 <clr-icon shape="caret down"></clr-icon>
             </button>
-            <clr-dropdown-menu>
+            <clr-dropdown-menu clrPosition="bottom-right">
                 <a href="..." clrDropdownItem>Preferences</a>
                 <a href="..." clrDropdownItem>Log out</a>
             </clr-dropdown-menu>

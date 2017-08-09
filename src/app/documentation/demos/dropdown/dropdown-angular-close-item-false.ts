@@ -6,12 +6,12 @@
 import {Component} from "@angular/core";
 
 const HTML_EXAMPLE = `
-<clr-dropdown [clrMenuPosition]="'bottom-right'" [clrCloseMenuOnItemClick]="false">
-    <button type="button" clrDropdownToggle>
+<clr-dropdown [clrCloseMenuOnItemClick]="false">
+    <button type="button" clrDropdownTrigger>
         <clr-icon shape="error" class="is-error" size="24"></clr-icon>
         <clr-icon shape="caret down"></clr-icon>
     </button>
-    <clr-dropdown-menu>
+    <clr-dropdown-menu *clrIfOpen>
         <label class="dropdown-header">Dropdown header</label>
         <button type="button" clrDropdownItem>Action 1</button>
         <button type="button" clrDropdownItem>Action 2</button>

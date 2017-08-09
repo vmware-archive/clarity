@@ -25,13 +25,12 @@ export class SignpostPositionsDemo extends ClarityDocComponent {
                             "bottom-left", "bottom-middle", "bottom-right",
                             "left-top", "left-middle", "left-bottom" ];
     position: string = "right-middle";
-    openState: boolean = false;
     html: string = `
 <select id="position_selector" [(ngModel)]="position" name="position" id="position">
     <option *ngFor="let position of positions" [ngValue]="position">{{ position }}</option>
 </select>
-<clr-signpost [clrSignpostPosition]="position">
-    <clr-signpost-content *clrIfOpen="openState">
+<clr-signpost>
+    <clr-signpost-content [clrPosition]="position" *clrIfOpen>
         <h3 style="margin-top: 0">Position</h3>
         <p><code class="clr-code">{{ position }}</code></p>
     </clr-signpost-content>
@@ -47,7 +46,6 @@ export class MyClass {
                             "bottom-left", "bottom-middle", "bottom-right",
                             "left-top", "left-middle", "left-bottom" ];
     position: string = "right-middle";
-    openState: boolean = false;
 }
 `;
 }

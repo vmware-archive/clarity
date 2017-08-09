@@ -18,6 +18,4 @@ export class SignpostFormDemo extends ClarityDocComponent {
     constructor() {
         super("signposts");
     }
-
-    openState: boolean = false;
 }

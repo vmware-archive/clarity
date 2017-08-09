@@ -11,17 +11,17 @@ const HTML_EXAMPLE = `
         <span class="alert-text">
             This alert cannot be dismissed.
         </span>
-        <div class="alert-actions">
-            <clr-dropdown [clrMenuPosition]="'bottom-right'">
-                <button class="dropdown-toggle" clrDropdownToggle>
+        <clr-dropdown-menu class="alert-actions">
+            <clr-dropdown>
+                <button class="dropdown-toggle" clrDropdownTrigger>
                     Actions
                     <clr-icon shape="caret down"></clr-icon>
                 </button>
-                <div class="dropdown-menu">
+                <clr-dropdown-menu clrPosition="bottom-right">
                     <a href="..." class="dropdown-item" clrDropdownItem>Shutdown</a>
                     <a href="..." class="dropdown-item" clrDropdownItem>Delete</a>
                     <a href="..." class="dropdown-item" clrDropdownItem>Reboot</a>
-                </div>
+                </clr-dropdown-menu>
             </clr-dropdown>
         </div>
     </div>

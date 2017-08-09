@@ -19,16 +19,16 @@
                             This alert cannot be dismissed.
                         </span>
                         <div class="alert-actions">
-                            <clr-dropdown [clrMenuPosition]="'bottom-right'">
-                                <button class="dropdown-toggle" clrDropdownToggle>
+                            <clr-dropdown>
+                                <button class="dropdown-toggle" clrDropdownTrigger>
                                     Actions
                                     <clr-icon shape="caret down"></clr-icon>
                                 </button>
-                                <div class="dropdown-menu">
+                                <clr-dropdown-menu clrPosition="bottom-right">
                                     <a href="javascript://" class="dropdown-item" clrDropdownItem>Shutdown</a>
                                     <a href="javascript://" class="dropdown-item" clrDropdownItem>Delete</a>
                                     <a href="javascript://" class="dropdown-item" clrDropdownItem>Reboot</a>
-                                </div>
+                                </clr-dropdown-menu>
                             </clr-dropdown>
                         </div>
                     </div>

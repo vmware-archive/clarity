@@ -6,101 +6,75 @@
 import {Component, Input} from "@angular/core";
 
 const EXAMPLE_HTML = `
-<clr-tree [(clrTreeSelected)]="selection">
-        <clr-tree-node [clrTreeModel]="'Audit'" [clrTreeNodeExpanded]="true">
-            Audit User Privileges
-            <clr-tree-node [clrTreeModel]="'System'">
-                System Privileges
-                <clr-tree-node [clrTreeModel]="'Create'">
-                    Create Users
+<clr-tree-node [(clrSelected)]="selected">
+    Permissions
+    <ng-template [clrIfExpanded]="true">
+        <clr-tree-node
+                *ngFor="let permission of permissions"
+                [(clrSelected)]="permission.selected">
+            {{permission.type}}
+            <ng-template [(clrIfExpanded)]="permission.expanded">
+                <clr-tree-node *ngFor="let right of permission.rights" [(clrSelected)]="right.enable">
+                    {{right.name}}
                 </clr-tree-node>
-                <clr-tree-node [clrTreeModel]="'Modify'">
-                    Modify Users
-                </clr-tree-node>
-                <clr-tree-node [clrTreeModel]="'Delete'">
-                    Delete Users
-                </clr-tree-node>
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'View'">
-                Viewing Privileges
-                <clr-tree-node [clrTreeModel]="'Posts'">
-                    View Posts
-                </clr-tree-node>
-                <clr-tree-node [clrTreeModel]="'Profile'">
-                    View Profile Information
-                </clr-tree-node>
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'Edit'" [clrTreeNodeExpanded]="true">
-                Edit Privileges
-                <clr-tree-node [clrTreeModel]="'Settings'">
-                    Edit Settings
-                </clr-tree-node>
-                <clr-tree-node [clrTreeModel]="'Comments'">
-                    Add Comments
-                </clr-tree-node>
-            </clr-tree-node>
+            </ng-template>
         </clr-tree-node>
-        <clr-tree-node [clrTreeModel]="'View'" [clrTreeNodeExpanded]="true">
-            View Only User Priveleges
-            <clr-tree-node [clrTreeModel]="'Edit'">
-                Edit Priveleges
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'View'">
-                View Privileges
-            </clr-tree-node>
-        </clr-tree-node>
-    </clr-tree>
+    </ng-template>
+</clr-tree-node>
 `
 
 const EXAMPLE_TS = `
 export class TreeViewPrepopulateDemo {
-        selection: any[] = [
-            {
-                model: "Audit",
-                selected: false,
-                children: [
-                    {
-                        model: "System",
-                        selected: false,
-                        children: [
-                            {
-                                model: "Create",
-                                selected: true
-                            },
-                            {
-                                model: "Modify",
-                                selected: true
-                            }
-                        ]
-                    },
-                    {
-                        model: "View",
-                        selected: true
-                    },
-                    {
-                        model: "Edit",
-                        selected: false,
-                        children: [
-                            {
-                                model: "Comments",
-                                selected: true
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                model: "View",
-                selected: false,
-                children: [
-                    {
-                        model: "View",
-                        selected: true
-                    }
-                ]
-            }
-        ];
-    }
+    selected: boolean = false;
+
+    permissions: any = [
+        {
+            type: "Authenticated Users",
+            selected: false,
+            expanded: true,
+            rights: [
+                {
+                    name: "Read",
+                    enable: true
+                },
+                {
+                    name: "Modify",
+                    enable: false
+                }
+            ]
+        },
+        {
+            type: "Owners",
+            selected: false,
+            expanded: true,
+            rights: [
+                {
+                    name: "Read",
+                    enable: true
+                },
+                {
+                    name: "Modify",
+                    enable: true
+                }
+            ]
+        },
+        {
+            type: "Public",
+            selected: false,
+            expanded: true,
+            rights: [
+                {
+                    name: "Read",
+                    enable: false
+                },
+                {
+                    name: "Modify",
+                    enable: true
+                }
+            ]
+        }
+    ];
+}
 `
 
 @Component({
@@ -115,48 +89,51 @@ export class TreeViewPrepopulateDemo {
 
     @Input("clrDemoShowCode") showCode: boolean = false;
 
-    selection: any[] = [
+    selected: boolean = false;
+
+    permissions: any = [
         {
-            model: "Audit",
+            type: "Authenticated Users",
             selected: false,
-            children: [
+            expanded: true,
+            rights: [
                 {
-                    model: "System",
-                    selected: false,
-                    children: [
-                        {
-                            model: "Create",
-                            selected: true
-                        },
-                        {
-                            model: "Modify",
-                            selected: true
-                        }
-                    ]
+                    name: "Read",
+                    enable: true
                 },
                 {
-                    model: "View",
-                    selected: true
-                },
-                {
-                    model: "Edit",
-                    selected: false,
-                    children: [
-                        {
-                            model: "Comments",
-                            selected: true
-                        }
-                    ]
+                    name: "Modify",
+                    enable: false
                 }
             ]
         },
         {
-            model: "View",
+            type: "Owners",
             selected: false,
-            children: [
+            expanded: true,
+            rights: [
                 {
-                    model: "View",
-                    selected: true
+                    name: "Read",
+                    enable: true
+                },
+                {
+                    name: "Modify",
+                    enable: true
+                }
+            ]
+        },
+        {
+            type: "Public",
+            selected: false,
+            expanded: true,
+            rights: [
+                {
+                    name: "Read",
+                    enable: false
+                },
+                {
+                    name: "Modify",
+                    enable: true
                 }
             ]
         }

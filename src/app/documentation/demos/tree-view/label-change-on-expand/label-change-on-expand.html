@@ -3,12 +3,13 @@
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
-<clr-tree-node [(clrTreeNodeExpanded)]="expanded">
+<clr-tree-node>
     {{expanded ? "I am expanded" : "I am collapsed"}}
-
-    <clr-tree-node>
-        Child Tree Node
-    </clr-tree-node>
+    <ng-template [(clrIfExpanded)]="expanded">
+        <clr-tree-node>
+            Child Tree Node
+        </clr-tree-node>
+    </ng-template>
 </clr-tree-node>
 
 <clr-example [clrCode]="example_html" clrLanguage="html"></clr-example>

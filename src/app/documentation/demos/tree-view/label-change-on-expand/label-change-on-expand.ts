@@ -6,19 +6,20 @@
 import {Component} from "@angular/core";
 
 const EXAMPLE_HTML = `
-<clr-tree-node [(clrTreeNodeExpanded)]="expanded">
-        {{expanded ? "I am expanded" : "I am collapsed"}}
-    
+<clr-tree-node>
+    {{expanded ? "I am expanded" : "I am collapsed"}}
+    <ng-template [(clrIfExpanded)]="expanded">
         <clr-tree-node>
             Child Tree Node
         </clr-tree-node>
-    </clr-tree-node>
+    </ng-template>
+</clr-tree-node>
 `;
 
 const EXAMPLE_TS = `
 export class TreeNodeLabelChangeOnExpandDemo {
-        expanded: boolean = true;
-    }
+    expanded: boolean = true;
+}
 `;
 
 @Component({

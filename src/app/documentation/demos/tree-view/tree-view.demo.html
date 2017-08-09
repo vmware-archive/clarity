@@ -269,7 +269,9 @@
         <h3>Basic Tree Node</h3>
 
         <p>
-            A basic tree can be created by simply nesting <code>clr-tree-node</code> tags.
+            A basic tree can be created by simply nesting
+            <code class="clr-code">clr-tree-node</code> tags along with the
+            <code class="clr-code">clrIfExpanded</code> directive.
         </p>
 
         <section class="clr-demo">
@@ -277,8 +279,8 @@
         </section>
 
         <p>
-            Tree Node supports <code>[(clrTreeNodeExpanded)]</code> two-way binding input
-            which can be used to expand/collapse it.
+            The <code class="clr-code">clrIfExpanded</code> directive supports two-way binding
+            which can be used to expand/collapse a tree node.
         </p>
 
         <section class="clr-demo">
@@ -288,9 +290,9 @@
         <h3>Routing using a Tree</h3>
 
         <p>
-            Use the <code>.clr-treenode-link</code> class to style content inside of a Tree Node
-            as clickable. To indicate an active Tree Node use the <code>.active</code> class
-            along with <code>.clr-treenode-link</code>.
+            Use the <code class="clr-code">.clr-treenode-link</code> class to style content inside of a Tree Node
+            as clickable. To indicate an active Tree Node use the <code class="clr-code">.active</code> class
+            along with <code class="clr-code">.clr-treenode-link</code>.
         </p>
 
         <section class="clr-demo">
@@ -308,11 +310,8 @@
         <h3>Lazy Loading A Tree Node</h3>
 
         <p>
-            A node can be lazily loaded by leveraging the <code>clrTreeNodeExpandable</code>
-            and <code>clrTreeNodeLoading</code> inputs. Enabling the <code>clrTreeNodeExpandable</code>
-            forces a Tree Node to be expandable even if it doesn't have its child Tree Nodes
-            loaded. Enabling the <code>clrTreeNodeLoading</code> indicates to the user with the help
-            of a spinner that the tree node is being loaded.
+            A node can be lazily loaded by leveraging the <code class="clr-code">clrLoading</code>
+            directive.
         </p>
 
         <section class="clr-demo">
@@ -322,43 +321,21 @@
         <h3>Checkbox Tree</h3>
 
         <p>
-            Use the <code>clr-tree</code> wrapper with the <code>[(clrTreeSelected)]</code> input
-            to enable selection on all Tree Nodes.
+            Selection can be enable on all tree nodes by using the
+            <code class="clr-code">[(clrSelected)]</code> input on the root node.
         </p>
 
         <section class="clr-demo">
             <clr-tree-view-basic-structure-demo></clr-tree-view-basic-structure-demo>
         </section>
 
-        <p>
-            <code>[clrTreeModel]</code> input can be used to set the model of a Tree Node.
-        </p>
-        <p>
-            <code>[(clrTreeSelected)]</code> is an array of <code>TreeSelection</code>.
-            <code>TreeSelection</code> can be imported using:
-        </p>
-
-        <section class="clr-demo">
-            <clr-tree-selection-code-snippet-demo></clr-tree-selection-code-snippet-demo>
-        </section>
-
         <h3>Toggling The Checked State Of A Tree Node</h3>
-
-        <p>
-            A Tree Node can be checked/unchecked using the <code>[(clrTreeNodeSelected)]</code>
-            input.
-        </p>
 
         <section class="clr-demo">
             <clr-tree-node-selection-demo></clr-tree-node-selection-demo>
         </section>
 
         <h3>Prepopulating a Checkbox Tree</h3>
-
-        <p>
-            A <code>TreeSelection</code> array can be passed to the <code>clrTreeSelected</code>
-            input to prepopulate a tree.
-        </p>
 
         <section class="clr-demo">
             <clr-tree-view-prepopulate-demo [clrDemoShowCode]="true">
@@ -367,8 +344,7 @@
 
         <h2>Summary of Options</h2>
 
-        <h3>Basic Tree</h3>
-
+        <h4>Tree Node (clr-tree-node)</h4>
         <table class="table">
             <thead>
             <tr>
@@ -381,88 +357,7 @@
             <tbody>
             <tr>
                 <td class="left">
-                    <b>[(clrTreeNodeExpanded)]</b>
-                    <div class="hidden-sm-up">Type: Boolean</div>
-                    <div class="hidden-sm-up">Default: false</div>
-                </td>
-                <td class="hidden-xs-down">true, false</td>
-                <td class="hidden-xs-down">false</td>
-                <td class="left">
-                    Two-way binding on the state of a Tree Node: expanded or collapsed
-                </td>
-            </tr>
-            <tr>
-                <td class="left">
-                    <b>[clrTreeNodeExpandable]</b>
-                    <div class="hidden-sm-up">Type: Boolean</div>
-                    <div class="hidden-sm-up">Default: false</div>
-                </td>
-                <td class="hidden-xs-down">true, false</td>
-                <td class="hidden-xs-down">false</td>
-                <td class="left">
-                    Makes the Tree node expandable, even if it
-                    doesn’t contain any nested <code>clr-tree-node</code>
-                </td>
-            </tr>
-            <tr>
-                <td class="left">
-                    <b>[clrTreeNodeLoading]</b>
-                    <div class="hidden-sm-up">Type: Boolean</div>
-                    <div class="hidden-sm-up">Default: false</div>
-                </td>
-                <td class="hidden-xs-down">true, false</td>
-                <td class="hidden-xs-down">false</td>
-                <td class="left">
-                    Replaces the arrow to expand and collapse a Tree Node with
-                    a Spinner to indicate that the child Tree Nodes are being loaded.
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-        <h3>Checkbox Tree</h3>
-
-        <h4>Tree Wrapper (clr-tree)</h4>
-        <table class="table">
-            <thead>
-            <tr>
-                <th class="left">Input/Output</th>
-                <th class="hidden-xs-down">Values</th>
-                <th class="hidden-xs-down">Default</th>
-                <th class="left">Effect</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td class="left">
-                    <b>[(clrTreeSelected)]</b>
-                    <div class="hidden-sm-up">Type: TreeSelection</div>
-                    <div class="hidden-sm-up">Default: NA</div>
-                </td>
-                <td class="hidden-xs-down">TreeSelection</td>
-                <td class="hidden-xs-down">NA</td>
-                <td class="left">
-                    Two-way binding on the checked/unchecked state
-                    of the Tree Nodes selected in a Checkbox Tree.
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-        <h4>Tree Nodes (clr-tree-node)</h4>
-        <table class="table">
-            <thead>
-            <tr>
-                <th class="left">Input/Output</th>
-                <th class="hidden-xs-down">Values</th>
-                <th class="hidden-xs-down">Default</th>
-                <th class="left">Effect</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td class="left">
-                    <b>[(clrTreeNodeSelected)]</b>
+                    <b>[(clrSelected)]</b>
                     <div class="hidden-sm-up">Type: Boolean</div>
                     <div class="hidden-sm-up">Default: false</div>
                 </td>
@@ -474,14 +369,53 @@
             </tr>
             <tr>
                 <td class="left">
-                    <b>[clrTreeModel]</b>
+                    <b>[clrIndeterminate]</b>
                     <div class="hidden-sm-up">Type: any</div>
                     <div class="hidden-sm-up">Default: NA</div>
                 </td>
                 <td class="hidden-xs-down">any</td>
                 <td class="hidden-xs-down">NA</td>
                 <td class="left">
-                    Sets the model of a Tree Node
+                    Sets the indeterminate state of a tree node.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h4>Directives used along with clr-tree-node</h4>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="left">Input/Output</th>
+                <th class="hidden-xs-down">Values</th>
+                <th class="hidden-xs-down">Default</th>
+                <th class="left">Effect</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="left">
+                    <b>[(clrIfExpanded)]</b>
+                    <div class="hidden-sm-up">Type: Boolean</div>
+                    <div class="hidden-sm-up">Default: false</div>
+                </td>
+                <td class="hidden-xs-down">true, false</td>
+                <td class="hidden-xs-down">false</td>
+                <td class="left">
+                    Two-way binding on the state of the Tree-Node: expanded / collapsed
+                </td>
+            </tr>
+            <tr>
+                <td class="left">
+                    <b>[clrLoading]</b>
+                    <div class="hidden-sm-up">Type: boolean</div>
+                    <div class="hidden-sm-up">Default: false</div>
+                </td>
+                <td class="hidden-xs-down">any</td>
+                <td class="hidden-xs-down">NA</td>
+                <td class="left">
+                    Activates a spinner to indicate that the node children are loading.
                 </td>
             </tr>
             </tbody>

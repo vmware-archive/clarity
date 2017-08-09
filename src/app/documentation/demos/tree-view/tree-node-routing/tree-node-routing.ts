@@ -6,8 +6,9 @@
 import {Component} from "@angular/core";
 
 const EXAMPLE_HTML = `
-<clr-tree-node [clrTreeNodeExpanded]="true">
-        <b>The Beatles</b>
+<clr-tree-node>
+    The Beatles
+    <ng-template [clrIfExpanded]="true">
         <clr-tree-node>
             <a
                 [routerLink]="['./album1']"
@@ -28,9 +29,10 @@ const EXAMPLE_HTML = `
                 class="clr-treenode-link"
                 routerLinkActive="active">Rubber Soul</a>
         </clr-tree-node>
-    </clr-tree-node>
-    <router-outlet></router-outlet>
-`
+    </ng-template>
+</clr-tree-node>
+<router-outlet></router-outlet>
+`;
 
 @Component({
     selector: "clr-tree-node-routing-demo",
@@ -87,5 +89,5 @@ export class TreeNodeRoutingDemo {
                 Rolling Stone magazine's list of the "500 Greatest Albums of All Time".
             `
         }
-    ]
+    ];
 }

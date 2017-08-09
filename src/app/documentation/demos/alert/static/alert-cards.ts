@@ -9,25 +9,28 @@ const HTML_EXAMPLE = `
 <div class="card">
     <div class="card-block">
         <div class="alert alert-warning alert-sm">
+            <div class="alert-items">
+                <div class="alert-item">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                    </div>
+                    <div class="alert-text">
+                        Use small alerts in a card.
+                    </div>
+                </div>
+            </div>
             <button type="button" class="close" aria-label="Close">
                 <clr-icon aria-hidden="true" shape="close"></clr-icon>
             </button>
-            <div class="alert-item">
-                <span class="alert-text">
-                    Use small alerts in a card.
-                </span>
-            </div>
         </div>
         <div class="card-media-block wrap">
-            <img class="card-media-image" src="http://placehold.it/60x60" />
+            <img class="card-media-image" src="//placehold.it/60x60" />
             <div class="card-media-description">
                 <span class="card-media-title">Project B</span>
                 <span class="card-media-text">Owner: Jane Doe</span>
             </div>
         </div>
-        <p class="card-text">
-            ...
-        </p>
+        <p class="card-text">...</p>
     </div>
     <div class="card-footer">
         <a class="card-link">Button One</a>

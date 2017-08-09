@@ -6,65 +6,83 @@
 import {Component} from "@angular/core";
 
 const HTML_EXAMPLE_1 = `
-<div class="alert alert-app-level alert-danger">
+<div class="alert alert-app-level alert-danger" style="margin-bottom:24px">
+    <div class="alert-items">
+        <div class="alert-item">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+            </div>
+            <div class="alert-text">
+                Alert Type: Danger
+            </div>
+            <div class="alert-actions">
+                <button class="btn alert-action">Action</button>
+            </div>
+        </div>
+    </div>
     <button type="button" class="close" aria-label="Close">
         <clr-icon aria-hidden="true" shape="close"></clr-icon>
     </button>
-    <div class="alert-item">
-        <div class="alert-text">
-            Alert Type: Danger
-        </div>
-        <div class="alert-actions">
-            <button class="btn alert-action">Action</button>
+</div>
+<div class="alert alert-app-level alert-warning" style="margin-bottom:24px">
+    <div class="alert-items">
+        <div class="alert-item">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+            </div>
+            <div class="alert-text">
+                Alert Type: Warning
+            </div>
+            <div class="alert-actions">
+                <button class="btn alert-action">Action</button>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="alert alert-app-level alert-warning">
     <button type="button" class="close" aria-label="Close">
         <clr-icon aria-hidden="true" shape="close"></clr-icon>
     </button>
-    <div class="alert-item">
-        <div class="alert-text">
-            Alert Type: Warning
-        </div>
-        <div class="alert-actions">
-            <button class="btn alert-action">Action</button>
-        </div>
-    </div>
 </div>
-
 <div class="alert alert-app-level alert-info">
+    <div class="alert-items">
+        <div class="alert-item">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+            </div>
+            <div class="alert-text">
+                Alert Type: Info
+            </div>
+            <div class="alert-actions">
+                <button class="btn alert-action">Action</button>
+            </div>
+        </div>
+    </div>
     <button type="button" class="close" aria-label="Close">
         <clr-icon aria-hidden="true" shape="close"></clr-icon>
     </button>
-    <div class="alert-item">
-        <div class="alert-text">
-            Alert Type: Info
-        </div>
-        <div class="alert-actions">
-            <button class="btn alert-action">Action</button>
-        </div>
-    </div>
 </div>
 `;
 
 const HTML_EXAMPLE_2 = `
 <div class="main-container">
     <div class="alert alert-app-level alert-info">
+        <div class="alert-items">
+            <div class="alert-item">
+                <div class="alert-icon-wrapper">
+                    <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                </div>
+                <div class="alert-text">
+                    A new update is now available. Upgrade to v.1234.
+                </div>
+                <div class="alert-actions">
+                    <button class="btn alert-action">Install Update</button>
+                </div>
+            </div>
+        </div>
         <button type="button" class="close" aria-label="Close">
             <clr-icon aria-hidden="true" shape="close"></clr-icon>
         </button>
-        <div class="alert-item">
-            <div class="alert-text">
-                A new update is now available. Upgrade to v.1234.
-            </div>
-            <div class="alert-actions">
-                <button class="btn alert-action">Install Update</button>
-            </div>
-        </div>
     </div>
-    <header class="header">
+    <header class="header header-6">
         <div class="branding">
             <span class="title">Header</span>
         </div>
@@ -80,20 +98,24 @@ const HTML_EXAMPLE_2 = `
 const HTML_EXAMPLE_3 = `
 <div class="main-container">
     <div class="alert alert-app-level alert-warning">
+        <div class="alert-items">
+            <div class="alert-item">
+                <div class="alert-icon-wrapper">
+                    <clr-icon class="alert-icon" shape="download"></clr-icon>
+                </div>
+                <div class="alert-text">
+                    A new update is now available. Upgrade to v.1234.
+                </div>
+                <div class="alert-actions">
+                    <button class="btn alert-action">Install Update</button>
+                </div>
+            </div>
+        </div>
         <button type="button" class="close" aria-label="Close">
             <clr-icon aria-hidden="true" shape="close"></clr-icon>
         </button>
-        <div class="alert-item">
-            <div class="clr-icon clr-icon-update"></div>
-            <div class="alert-text">
-                A new update is now available. Upgrade to v.1234.
-            </div>
-            <div class="alert-actions">
-                <button class="btn alert-action">Install Update</button>
-            </div>
-        </div>
     </div>
-    <header class="header">
+    <header class="header header-6">
         <div class="branding">
             <span class="title">Header</span>
         </div>

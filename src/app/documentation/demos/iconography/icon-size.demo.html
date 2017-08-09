@@ -14,10 +14,10 @@
 </span>
 
 <clr-code-snippet [clrCode]="example"></clr-code-snippet>
-<div class="alert alert-info">
-    <div class="alert-item">
+<clr-alert [clrAlertClosable]="false">
+    <clr-alert-item>
         <span class="alert-text">
             The size attribute overrides the CSS size style.  If you don’t set either the size attribute or the CSS size style, the size defaults to 16 by 16 pixels.
         </span>
-    </div>
-</div>
+    </clr-alert-item>
+</clr-alert>

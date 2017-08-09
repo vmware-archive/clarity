@@ -62,10 +62,10 @@
 
     <clr-wizard-page>
         <ng-template clrPageTitle>Wizard level alt-next and the finish button</ng-template>
-        <clr-alert *ngIf="errorFlag" clrAlertType="alert-danger">
-            <div class="alert-item">
+        <clr-alert *ngIf="errorFlag" clrAlertType="danger">
+            <clr-alert-item>
                 Your sequence should be 1, 2, 3, 5, 8.
-            </div>
+            </clr-alert-item>
         </clr-alert>
 
         <ng-container *ngIf="!errorFlag">

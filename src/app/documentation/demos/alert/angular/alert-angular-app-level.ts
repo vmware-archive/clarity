@@ -7,14 +7,14 @@ import {Component} from "@angular/core";
 
 const HTML_EXAMPLE = `
 <clr-alert [clrAlertType]="'alert-danger'" [clrAlertAppLevel]="true">
-    <div class="alert-item">
+    <clr-alert-item>
         <span class="alert-text">
             This is an app level alert.
         </span>
         <div class="alert-actions">
             <button class="btn alert-action">Fix</button>
         </div>
-    </div>
+    </clr-alert-item>
 </clr-alert>
 `;
 

@@ -9,6 +9,7 @@ import {ClarityDocComponent} from "../clarity-doc";
 @Component({
     selector: "clr-alerts-demo",
     templateUrl: "./alerts.demo.html",
+    styleUrls: ["./alerts.demo.scss"],
     host: {
         "[class.content-area]": "true",
         "[class.dox-content-panel]": "true"
@@ -16,6 +17,7 @@ import {ClarityDocComponent} from "../clarity-doc";
 })
 export class AlertsDemo extends ClarityDocComponent {
     expanded: boolean = false;
+    basic: boolean = true;
 
     constructor() {
         super("alerts");

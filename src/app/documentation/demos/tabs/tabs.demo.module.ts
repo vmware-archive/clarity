@@ -9,6 +9,7 @@ import {ClarityModule} from 'clarity-angular';
 
 import {TabsStaticDemo} from "./tabs-static";
 import {TabsAngularDemo} from "./tabs-angular";
+import {TabsAngularSimpleDemo} from "./tabs-angular-simple";
 import {TabsDemo} from "./tabs.demo";
 import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
@@ -25,6 +26,7 @@ import {UtilsModule} from "../../../utils/utils.module";
     declarations: [
         TabsStaticDemo,
         TabsAngularDemo,
+        TabsAngularSimpleDemo,
         TabsDemo
     ],
     exports: [

@@ -6,23 +6,42 @@
 import { Component } from "@angular/core";
 
 const EXAMPLE = `
-<clr-tabs (clrTabsCurrentTabLinkChanged)="onTabSelected($event)"
-          (clrTabsCurrentTabIndexChanged)="onTabIndexChanged($event)"
-          (clrTabsCurrentTabContentChanged)="onTabContentActivated($event)">
-    <clr-tab-link [clrTabLinkId]="'link1'" [clrTabLinkActive]="true">Dashboard</clr-tab-link>
-    <clr-tab-link>Management</clr-tab-link>
-    <clr-tab-link>Cloud</clr-tab-link>
+<clr-tabs>
+    <clr-tab>
+        <button clrTabLink>Dashboard</button>
+        <ng-template [(clrIfActive)]="dashboardActive">
+            <clr-tab-content>
+                ...
+            </clr-tab-content>
+        </ng-template>
+    </clr-tab>
 
-    <clr-tab-content [clrTabContentId]="'content1'" [clrTabContentActive]="true">
-        <p>Content for Dashboard tab. Here is a <a href="javascript://">link</a> that can be accessed via clicking
-            or through keyboard via tabbing.</p>
-    </clr-tab-content>
-    <clr-tab-content>
-        <p>Content for Management tab.</p>
-    </clr-tab-content>
-    <clr-tab-content>
-        <p>Content for Cloud tab.</p>
-    </clr-tab-content>
+    <clr-tab>
+        <button clrTabLink>Management</button>
+        <ng-template [(clrIfActive)]="managementActive">
+            <clr-tab-content>
+                ...
+            </clr-tab-content>
+        </ng-template>
+    </clr-tab>
+
+    <clr-tab>
+        <button clrTabLink>Cloud</button>
+        <ng-template [(clrIfActive)]="cloudActive">
+            <clr-tab-content>
+                ...
+            </clr-tab-content>
+        </ng-template>
+    </clr-tab>
+
+    <clr-tab>
+        <button clrTabLink>Infrastructure</button>
+        <ng-template [(clrIfActive)]="infrastructureActive">
+            <clr-tab-content>
+                ...
+            </clr-tab-content>
+        </ng-template>
+    </clr-tab>
 </clr-tabs>
 `;
 
@@ -32,4 +51,8 @@ const EXAMPLE = `
 })
 export class TabsAngularDemo {
     example = EXAMPLE;
+    dashboardActive = true;
+    managementActive = false;
+    cloudActive = false;
+    infrastructureActive = false;
 }

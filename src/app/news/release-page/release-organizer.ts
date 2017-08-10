@@ -25,9 +25,6 @@ function organize() {
 }
 
 function sortAll() {
-    console.log(MAJORS);
-    console.log(MINORS);
-    console.log(PATCHES);
     MAJORS.sort(compareReleases);
     for (let major in MINORS) {
         MINORS[major].sort(compareReleases);

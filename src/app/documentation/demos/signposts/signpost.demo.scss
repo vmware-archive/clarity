@@ -21,8 +21,26 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 100%;
-        min-height: 75px;
-        min-width: 400px;
+        //width: 100%;
+    }
+}
+
+.signpost-triggers-wrapper {
+    width: 100%;
+}
+
+.signpost-trigger-demo {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 24px;
+    width: 100%;border: 1px darkred;
+
+    .signpost-item {
+        flex: 1 0 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 24px;
     }
 }

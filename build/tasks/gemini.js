@@ -20,7 +20,7 @@ var config = {
     }
 };
 
-gulp.task('css:reference', ["build"], function() {
+gulp.task('css:reference', ["build"], function(cb) {
     server.init(config);
 
     var testPath = "gemini/tests/"; // test all components by default

@@ -6,36 +6,36 @@
 import {Component} from "@angular/core";
 
 const EXAMPLE1 = `
-<clr-tooltip [clrTooltipDirection]="'top-right'" [clrTooltipSize]="'xs'">
-    <clr-icon shape="info-circle" size="24"></clr-icon>
-    <clr-tooltip-content>
+<clr-tooltip>
+    <clr-icon clrTooltipTrigger shape="info-circle" size="24"></clr-icon>
+    <clr-tooltip-content clrPosition="top-right" clrSize="xs" *clrIfOpen>
         <span>Lorem</span>
     </clr-tooltip-content>
 </clr-tooltip>
 `;
 
 const EXAMPLE2 = `
-<clr-tooltip [clrTooltipDirection]="'top-left'" [clrTooltipSize]="'sm'">
-    <clr-icon shape="info-circle" size="24"></clr-icon>
-    <clr-tooltip-content>
+<clr-tooltip>
+    <clr-icon clrTooltipTrigger shape="info-circle" size="24"></clr-icon>
+    <clr-tooltip-content clrPosition="top-left" clrSize="sm" *clrIfOpen>
         <span>Lorem ipsum</span>
     </clr-tooltip-content>
 </clr-tooltip>
 `;
 
 const EXAMPLE3 = `
-<clr-tooltip [clrTooltipDirection]="'bottom-right'" [clrTooltipSize]="'md'">
-    <clr-icon shape="info-circle" size="24"></clr-icon>
-    <clr-tooltip-content>
+<clr-tooltip>
+    <clr-icon clrTooltipTrigger shape="info-circle" size="24"></clr-icon>
+    <clr-tooltip-content clrPosition="bottom-right" clrSize="md" *clrIfOpen>
         <span>Lorem ipsum sit</span>
     </clr-tooltip-content>
 </clr-tooltip>
 `;
 
 const EXAMPLE4 = `
-<clr-tooltip [clrTooltipDirection]="'bottom-left'" [clrTooltipSize]="'lg'">
-    <clr-icon shape="info-circle" size="24"></clr-icon>
-    <clr-tooltip-content>
+<clr-tooltip>
+    <clr-icon clrTooltipTrigger shape="info-circle" size="24"></clr-icon>
+    <clr-tooltip-content clrPosition="bottom-left" clrSize="lg" *clrIfOpen>
         <span>Lorem ipsum sit</span>
     </clr-tooltip-content>
 </clr-tooltip>
@@ -43,17 +43,17 @@ const EXAMPLE4 = `
 
 const EXAMPLE5 = `
 <clr-tooltip>
-    <clr-icon shape="info-circle" size="24"></clr-icon>
-    <clr-tooltip-content>
+    <clr-icon clrTooltipTrigger shape="info-circle" size="24"></clr-icon>
+    <clr-tooltip-content *clrIfOpen>
         <span>Lorem ipsum sit</span>
     </clr-tooltip-content>
 </clr-tooltip>
 `;
 
 const EXAMPLE6 = `
-<clr-tooltip [clrTooltipDirection]="'left'" [clrTooltipSize]="'sm'">
-    <clr-icon shape="info-circle" size="24"></clr-icon>
-    <clr-tooltip-content>
+<clr-tooltip>
+    <clr-icon clrTooltipTrigger shape="info-circle" size="24"></clr-icon>
+    <clr-tooltip-content clrPosition="left" clrSize="sm" *clrIfOpen>
         <span>Lorem ipsum sit</span>
     </clr-tooltip-content>
 </clr-tooltip>

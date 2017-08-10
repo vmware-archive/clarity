@@ -96,12 +96,29 @@
 
         <h2 id="angular-component">Angular Component</h2>
 
+        <p>
+            The tooltip component uses the <code class="clr-code">*clrIfOpen</code> structural directive
+            (detailed documentation coming soon) on the tooltip content
+            to indicate clearly that said content is only present in the DOM when open. We heavily recommend using
+            it for many reasons: better performance, making the intent clear in your own templates,
+            and following a more natural lifecycle for any directives or components inside of the tooltip.
+        </p>
+        <p>
+            If for some reason this behavior was not the one you wanted, for instance if you want screenreaders to
+            read the tooltip inline as opposed to when the user moves focus to the trigger,
+            we also support the tooltip content without a
+            <code class="clr-code">*clrIfOpen</code> directive on it. It will be created eagerly when the tooltip
+            itself initializes, and will not be destroyed or recreated until the tooltip itself is. Please make
+            sure you know exactly why you are omitting this directive if you end up doing so.
+        </p>
+
         <h3 id="summary-of-options">Summary of Options</h3>
 
+        <h6><code class="clr-code">&lt;clr-tooltip-content&gt;</code> component</h6>
         <table class="table">
             <thead>
             <tr>
-                <th class="left">Input</th>
+                <th class="left">Input / Output</th>
                 <th class="left hidden-xs-down">Values</th>
                 <th class="left hidden-xs-down">Default</th>
                 <th class="left">Effect</th>
@@ -110,7 +127,7 @@
             <tbody>
             <tr>
                 <td class="left">
-                    <b>clrTooltipDirection</b>
+                    <b>[clrPosition]</b>
                     <div class="hidden-sm-up">Values:<br/>Direction classnames</div>
                     <div class="hidden-sm-up">Default: "right"</div>
                 </td>
@@ -122,7 +139,7 @@
             </tr>
             <tr>
                 <td class="left">
-                    <b>clrTooltipSize</b>
+                    <b>[clrSize]</b>
                     <div class="hidden-sm-up">Values: xs, sm, md, lg</div>
                     <div class="hidden-sm-up">Default: md</div>
                 </td>

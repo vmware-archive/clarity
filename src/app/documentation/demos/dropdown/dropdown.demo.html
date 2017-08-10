@@ -30,12 +30,12 @@
             <div class="clrweb-DoxVersusBox-items">
                 <div class="clrweb-DoxVersusBox-itemWrapper">
                     <div class="clrweb-DoxVersusBox-item">
-                        <clr-dropdown [clrMenuPosition]="'bottom-left'">
-                            <button type="button" clrDropdownToggle class="btn btn-link">
+                        <clr-dropdown>
+                            <button type="button" clrDropdownTrigger class="btn btn-link">
                                 Departments
                                 <clr-icon shape="caret down"></clr-icon>
                             </button>
-                            <clr-dropdown-menu>
+                            <clr-dropdown-menu clrPosition="bottom-left">
                                 <button type="button" clrDropdownItem>Art</button>
                                 <button type="button" clrDropdownItem>Business</button>
                                 <button type="button" clrDropdownItem>Science</button>
@@ -242,12 +242,27 @@
 
         <h2 id="angular-component">Angular Component</h2>
 
+        <p>
+            The dropdown component uses the <code class="clr-code">*clrIfOpen</code> structural directive
+            (detailed documentation coming soon) on the
+            menu to indicate clearly that the menu is only present in the DOM when open. We heavily recommend using
+            it for many reasons: better performance, making the intent clear in your own templates,
+            and following a more natural lifecycle for any directives or components inside of the menu.
+        </p>
+        <p>
+            If for some reason this behavior was not the one you wanted, we also support the dropdown menu without a
+            <code class="clr-code">*clrIfOpen</code> directive on it. It will be created eagerly when the dropdown
+            itself initializes, and will not be destroyed or recreated until the dropdown itself is. Please make
+            sure you know exactly why you are omitting this directive if you end up doing so.
+        </p>
+
         <h3 id="summary-of-options">Summary of Options</h3>
 
+        <h6><code class="clr-code">&lt;clr-dropdown&gt;</code> component</h6>
         <table class="table">
             <thead>
             <tr>
-                <th class="left">Input</th>
+                <th class="left">Input / Output</th>
                 <th class="left hidden-xs-down">Values</th>
                 <th class="left hidden-xs-down">Default</th>
                 <th class="left">Effect</th>
@@ -256,20 +271,7 @@
             <tbody>
             <tr>
                 <td class="left">
-                    <b>clrMenuPosition</b>
-                    <div class="hidden-sm-up">Values:<br/>Direction classnames</div>
-                    <div class="hidden-sm-up">Default: "bottom-left"</div>
-                </td>
-                <td class="left hidden-xs-down">
-                    CSS dropdown menu direction classnames.
-                </td>
-                <td class="left hidden-xs-down">bottom-left</td>
-                <td class="left">Sets the direction in which the menu will open. If used in one of the nested menus,
-                    only four classes are valid: bottom-left, bottom-right, top-left, and top-right.</td>
-            </tr>
-            <tr>
-                <td class="left">
-                    <b>clrCloseMenuOnItemClick</b>
+                    <b>[clrCloseMenuOnItemClick]</b>
                     <div class="hidden-sm-up">Type: Boolean</div>
                     <div class="hidden-sm-up">Default: true</div>
                 </td>
@@ -280,10 +282,39 @@
             </tbody>
         </table>
 
+        <h6><code class="clr-code">&lt;clr-dropdown-menu&gt;</code> component</h6>
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="left">Input / Output</th>
+                <th class="left hidden-xs-down">Values</th>
+                <th class="left hidden-xs-down">Default</th>
+                <th class="left">Effect</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="left">
+                    <b>[clrPosition]</b>
+                    <div class="hidden-sm-up">Values:<br/>Direction classnames</div>
+                    <div class="hidden-sm-up">Default: "bottom-left"</div>
+                </td>
+                <td class="left hidden-xs-down">
+                    CSS dropdown menu direction classnames.
+                </td>
+                <td class="left hidden-xs-down">bottom-left</td>
+                <td class="left">Sets the direction in which the menu will open. If used in one of the nested menus,
+                    only four classes are valid: bottom-left, bottom-right, top-left, and top-right.</td>
+            </tr>
+            </tbody>
+        </table>
+
         <h4 id="example">Example</h4>
 
-        <h6 id="clrmenuposition-is-set-to-top-left-default-is-bottom-left">1. clrMenuPosition is set to top-left.
-            Default is bottom-left. For nested &lt;clr-dropdown&gt;, only the following clrMenuPositions are valid:
+        <h6 id="clrmenuposition-is-set-to-top-left-default-is-bottom-left">1. <code class="clr-code">clrPosition</code>
+            is set to top-left.
+            Default is bottom-left. For nested <code class="clr-code">&lt;clr-dropdown&gt;</code>,
+            only the following positions are valid:
             bottom-left, bottom-right, top-left, top-right.</h6>
 
         <clr-dropdown-angular-positioning-demo></clr-dropdown-angular-positioning-demo>

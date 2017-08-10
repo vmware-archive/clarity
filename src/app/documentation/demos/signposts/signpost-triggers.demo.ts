@@ -67,7 +67,6 @@ export class SignpostTriggersDemo extends ClarityDocComponent {
             </div>
         </div>
     </div>
-    <clr-code-snippet [clrLanguage]="'html'" [clrCode]="html"></clr-code-snippet>
 </div>
 `;
 }

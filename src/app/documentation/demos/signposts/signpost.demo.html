@@ -83,7 +83,7 @@
                 </div>
             </div>
         </div>
-        <h4 style="margin-bottom: 12px;">Recomendations</h4>
+        <h4 style="margin-bottom: 12px;">Recommendations</h4>
         <ul class="list">
             <li>The popover should not be so large that it dominates the screen</li>
             <li>Make sure that the popover doesn't obstruct other important information on the screen</li>
@@ -100,6 +100,22 @@
 
         <h3 id="examples">Code &amp; Examples</h3>
 
+        <p>
+            The signpost component uses the <code class="clr-code">*clrIfOpen</code> structural directive
+            (detailed documentation coming soon) on the signpost content
+            to indicate clearly that said content is only present in the DOM when open. We heavily recommend using
+            it for many reasons: better performance, making the intent clear in your own templates,
+            and following a more natural lifecycle for any directives or components inside of the signpost.
+        </p>
+        <p>
+            If for some reason this behavior was not the one you wanted, for instance if you want screenreaders to
+            read the signpost inline as opposed to when the user activates the trigger,
+            we also support the signpost content without a
+            <code class="clr-code">*clrIfOpen</code> directive on it. It will be created eagerly when the signpost
+            itself initializes, and will not be destroyed or recreated until the signpost itself is. Please make
+            sure you know exactly why you are omitting this directive if you end up doing so.
+        </p>
+
         <p>The default signpost is shown to the right of the trigger icon with the content centered vertically in the
             middle of the trigger. It opens with a click action. Once open its contents can be interacted with. The
             Signpost is closed when clicking on the
@@ -108,7 +124,7 @@
         </p>
         <div class="signpost-default">
             <clr-signpost>
-                <clr-signpost-content *clrIfOpen="openState">
+                <clr-signpost-content *clrIfOpen>
                     <h3 style="margin-top: 0">Default Signpost</h3>
                     <p>Position: <code class="clr-code">right-middle</code></p>
                 </clr-signpost-content>
@@ -116,7 +132,6 @@
         </div>
 
         <clr-code-snippet [clrLanguage]="'html'" [clrCode]="html"></clr-code-snippet>
-        <clr-code-snippet [clrLanguage]="'typescript'" [clrCode]="code"></clr-code-snippet>
 
         <clr-signpost-paragraph-demo></clr-signpost-paragraph-demo>
 
@@ -127,7 +142,7 @@
         <h3 id="signposts-positions">Signpost positions</h3>
         <p>
             There are twelve signpost positions to help place the popover in an appropriate location. When the
-            <code class="clr-code">[clrSignpostPosition]</code> has a value of:
+            <code class="clr-code">[clrPosition]</code> has a value of:
         </p>
         <ul class="list">
             <li><code class="clr-code">top-X: </code> the arrow will point down and the popover
@@ -152,8 +167,6 @@
             know what and where the Signpost should point.</p>
         <clr-signpost-triggers-demo></clr-signpost-triggers-demo>
         <h2>Summary of Options</h2>
-
-        <h4>Signpost (clr-signpost)</h4>
 
         <table class="table">
             <thead>

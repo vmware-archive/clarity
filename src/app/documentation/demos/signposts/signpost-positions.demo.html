@@ -13,8 +13,8 @@
             </section>
         </div>
         <div class="demo">
-            <clr-signpost [clrSignpostPosition]="position">
-                <clr-signpost-content *clrIfOpen="openState">
+            <clr-signpost>
+                <clr-signpost-content [clrPosition]="position" *clrIfOpen>
                     <h3 style="margin-top: 0">Position</h3>
                     <p>
                         <code class="clr-code">{{ position }}</code>

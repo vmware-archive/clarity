@@ -22,22 +22,9 @@ export class SignpostDemo extends ClarityDocComponent {
 
     openState: boolean = false;
 
-    code: string = `
-import {Component} from "@angular/core";
-
-@Component({
-    ...
-})
-
-export class MyClass {
-    // Use *clrIfOpen directive to manage hide/show with the openState property.
-    public openState: boolean = false;
-}
-    `;
-
     html: string = `
 <clr-signpost>
-    <clr-signpost-content *clrIfOpen="openState">
+    <clr-signpost-content *clrIfOpen>
         <h3>Default Signpost</h3>
         <p>Position: <code class="clr-code">right-middle</code></p>
     </clr-signpost-content>

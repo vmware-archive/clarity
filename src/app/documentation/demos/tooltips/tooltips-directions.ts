@@ -7,41 +7,41 @@ import {Component} from "@angular/core";
 
 const EXAMPLE1 = `
 <a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm tooltip-top-right">
-    <span class="example-icon example-more-icon"></span>
+    <clr-icon shape="info-circle" size="24"></clr-icon>
     <span class="tooltip-content">Lorem ipsum sit</span>
 </a>
 `;
 const EXAMPLE2 = `
 <a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm tooltip-top-left">
-    <span class="example-icon example-add-icon"></span>
+    <clr-icon shape="info-circle" size="24"></clr-icon>
     <span class="tooltip-content">Lorem ipsum sit</span>
 </a>
 `;
 
 const EXAMPLE3 = `
 <a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-md tooltip-bottom-right">
-    <span class="example-icon example-folder-add-icon"></span>
+    <clr-icon shape="info-circle" size="24"></clr-icon>
     <span class="tooltip-content">Lorem ipsum dolor sit amet, ipsum</span>
 </a>
 `;
 
 const EXAMPLE4 = `
 <a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-lg tooltip-bottom-left">
-    <span class="example-icon example-edit-icon"></span>
+    <clr-icon shape="info-circle" size="24"></clr-icon>
     <span class="tooltip-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
 </a>
 `;
 
 const EXAMPLE5 = `
 <a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-right">
-    <span class="example-icon example-add-icon"></span>
+    <clr-icon shape="info-circle" size="24"></clr-icon>
     <span class="tooltip-content">Lorem ipsum dolor sit amet, ipsum</span>
 </a>
 `;
 
 const EXAMPLE6 = `
 <a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm tooltip-left">
-    <span class="example-icon example-folder-add-icon"></span>
+    <clr-icon shape="info-circle" size="24"></clr-icon>
     <span class="tooltip-content">Lorem ipsum sit</span>
 </a>
 `;

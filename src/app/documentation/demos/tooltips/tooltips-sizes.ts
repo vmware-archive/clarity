@@ -7,27 +7,27 @@ import {Component} from "@angular/core";
 
 const EXAMPLE1 = `
 <a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-xs">
-    <span class="example-icon example-add-icon"></span>
+    <clr-icon shape="info-circle" size="24"></clr-icon>
     <span class="tooltip-content">Lorem</span>
 </a>
 `;
 const EXAMPLE2 = `
 <a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm">
-    <span class="example-icon example-add-icon"></span>
+    <clr-icon shape="info-circle" size="24"></clr-icon>
     <span class="tooltip-content">Lorem</span>
 </a>
 `;
 
 const EXAMPLE3 = `
 <a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-md">
-    <span class="example-icon example-add-icon"></span>
+    <clr-icon shape="info-circle" size="24"></clr-icon>
     <span class="tooltip-content">Lorem</span>
 </a>
 `;
 
 const EXAMPLE4 = `
 <a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-lg">
-    <span class="example-icon example-add-icon"></span>
+    <clr-icon shape="info-circle" size="24"></clr-icon>
     <span class="tooltip-content">Lorem</span>
 </a>
 `;

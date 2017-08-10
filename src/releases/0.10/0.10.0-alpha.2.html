@@ -38,7 +38,7 @@
                     <code class="clr-code">alert-success</code> for the terser types of
                     <code class="clr-code">danger</code>, <code class="clr-code">info</code>,
                     <code class="clr-code">warning</code>, and <code class="clr-code">success</code>.
-                    These types are passed to the <code class="clr-code">[clrAlertType]</code> input of the
+                    These types are passed to the <code class="clr-code">&#91;clrAlertType&#93;</code> input of the
                     <code class="clr-code">clr-alert</code> Angular component. This change does not impact
                     static HTML alerts. The default is now <code class="clr-code">info</code> and not
                     <code class="clr-code">alert-info</code>
@@ -129,13 +129,13 @@
             <h6>0.9 alert Angular component (deprecated, but working)</h6>
             <div>
                 <pre><code clr-code-highlight="language-html" ngNonBindable>
-&lt;clr-alert [clrAlertClosable]=&quot;false&quot; [clrAlertType]=&quot;'alert-danger'&quot;&gt;
+&lt;clr-alert &#91;clrAlertClosable&#93;=&quot;false&quot; &#91;clrAlertType&#93;=&quot;'alert-danger'&quot;&gt;
     &lt;div class=&quot;alert-item&quot;&gt;
         &lt;span class=&quot;alert-text&quot;&gt;
             This alert cannot be dismissed.
         &lt;/span&gt;
         &lt;div class=&quot;alert-actions&quot;&gt;
-            &lt;clr-dropdown [clrMenuPosition]=&quot;&apos;bottom-right&apos;&quot;&gt;
+            &lt;clr-dropdown &#91;clrMenuPosition&#93;=&quot;&apos;bottom-right&apos;&quot;&gt;
                 &lt;button class=&quot;dropdown-toggle&quot; clrDropdownToggle&gt;
                     Actions
                     &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
@@ -156,13 +156,13 @@
             <h6>0.10.0-alpha alert component</h6>
             <div>
                 <pre><code clr-code-highlight="language-html" ngNonBindable>
-&lt;clr-alert [clrAlertClosable]=&quot;false&quot; clrAlertType=&quot;danger&quot;&gt;
+&lt;clr-alert &#91;clrAlertClosable&#93;=&quot;false&quot; clrAlertType=&quot;danger&quot;&gt;
     &lt;clr-alert-item&gt;
         &lt;span class=&quot;alert-text&quot;&gt;
             This alert cannot be dismissed.
         &lt;/span&gt;
         &lt;div class=&quot;alert-actions&quot;&gt;
-            &lt;clr-dropdown [clrMenuPosition]=&quot;&apos;bottom-right&apos;&quot;&gt;
+            &lt;clr-dropdown &#91;clrMenuPosition&#93;=&quot;&apos;bottom-right&apos;&quot;&gt;
                 &lt;button class=&quot;dropdown-toggle&quot; clrDropdownToggle&gt;
                     Actions
                     &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
@@ -188,15 +188,15 @@
         </p>
 
         <p>
-            Clarity alerts now have a <code class="clr-code">[clrAlertIcon]</code> input that accepts
+            Clarity alerts now have a <code class="clr-code">&#91;clrAlertIcon&#93;</code> input that accepts
             a string which represents the name of the icon in the Clarity Icons library. By default,
             Clarity will give your alert an icon based on the type of alert it is but this default
-            can be easily overridden by assigning an icon name to <code class="clr-code">[clrAlertIcon]</code>.
+            can be easily overridden by assigning an icon name to <code class="clr-code">&#91;clrAlertIcon&#93;</code>.
         </p>
 
         <div>
             <pre><code clr-code-highlight="language-html" ngNonBindable>
-&lt;clr-alert [clrAlertIcon]=&quot;'notification'&quot; clrAlertType=&quot;info&quot; [clrAlertClosable]=&quot;false&quot;&gt;
+&lt;clr-alert &#91;clrAlertIcon&#93;=&quot;'notification'&quot; clrAlertType=&quot;info&quot; &#91;clrAlertClosable&#93;=&quot;false&quot;&gt;
     &lt;clr-alert-item&gt;
         &lt;span class=&quot;alert-text&quot;&gt;
             This alert will have a bell instead of an &quot;i&quot; inside of a circle.

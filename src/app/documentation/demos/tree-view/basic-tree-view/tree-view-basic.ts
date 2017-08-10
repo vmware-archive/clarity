@@ -6,59 +6,78 @@
 import {Component} from "@angular/core";
 
 const EXAMPLE_HTML = `
-<clr-tree [(clrTreeSelected)]="selection">
-        <clr-tree-node [clrTreeModel]="'Users'" [clrTreeNodeExpanded]="true">
-            Authenticated Users
-            <clr-tree-node [clrTreeModel]="'read'">
-                Read
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'modify'">
-                Modify
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'create'">
-                Create
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'delete'">
-                Delete
-            </clr-tree-node>
+<clr-tree-node [(clrSelected)]="selected">
+    Permissions
+    <ng-template [clrIfExpanded]="true">
+        <clr-tree-node
+                *ngFor="let permission of permissions"
+                [(clrSelected)]="permission.selected">
+            {{permission.type}}
+            <ng-template [(clrIfExpanded)]="permission.expanded">
+                <clr-tree-node *ngFor="let right of permission.rights" [(clrSelected)]="right.enable">
+                    {{right.name}}
+                </clr-tree-node>
+            </ng-template>
         </clr-tree-node>
-        <clr-tree-node [clrTreeModel]="'Owner'" [clrTreeNodeExpanded]="true">
-            Owners
-            <clr-tree-node [clrTreeModel]="'read'">
-                Read
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'modify'">
-                Modify
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'create'">
-                Create
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'delete'">
-                Delete
-            </clr-tree-node>
-        </clr-tree-node>
-        <clr-tree-node [clrTreeModel]="'Public'" [clrTreeNodeExpanded]="true">
-            Public
-            <clr-tree-node [clrTreeModel]="'read'">
-                Read
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'modify'">
-                Modify
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'create'">
-                Create
-            </clr-tree-node>
-            <clr-tree-node [clrTreeModel]="'delete'">
-                Delete
-            </clr-tree-node>
-        </clr-tree-node>
-    </clr-tree>
+    </ng-template>
+</clr-tree-node>
 `;
 
 const EXAMPLE_TS = `
-export class TreeViewBasicStructureDemo {
-        selection: any[] = [];
-    }
+@Component({
+    selector: "...",
+    templateUrl: "..."
+})
+export class Permissions {
+    selected: boolean = false;
+
+    permissions: any = [
+        {
+            type: "Authenticated Users",
+            expanded: true,
+            rights: [
+                {
+                    name: "Read",
+                    enable: true
+                },
+                {
+                    name: "Modify",
+                    enable: true
+                },
+                {
+                    name: "Create",
+                    enable: false
+                },
+                {
+                    name: "Delete",
+                    enable: false
+                }
+            ]
+        },
+        {
+            type: "Owners",
+            expanded: true,
+            rights: [
+                {
+                    name: "Read",
+                    enable: true
+                },
+                {
+                    name: "Modify",
+                    enable: true
+                },
+                {
+                    name: "Create",
+                    enable: true
+                },
+                {
+                    name: "Delete",
+                    enable: true
+                }
+            ]
+        }
+    ];
+}
 `;
 
 @Component({
@@ -71,12 +90,80 @@ export class TreeViewBasicStructureDemo {
     example_html = EXAMPLE_HTML;
     example_ts = EXAMPLE_TS;
 
-    selection: any[] = [];
+    selected: boolean = false;
+    permissions: any = [
+        {
+            type: "Authenticated Users",
+            selected: false,
+            expanded: true,
+            rights: [
+                {
+                    name: "Read",
+                    enable: true
+                },
+                {
+                    name: "Modify",
+                    enable: true
+                },
+                {
+                    name: "Create",
+                    enable: false
+                },
+                {
+                    name: "Delete",
+                    enable: false
+                }
+            ]
+        },
+        {
+            type: "Owners",
+            selected: false,
+            expanded: true,
+            rights: [
+                {
+                    name: "Read",
+                    enable: true
+                },
+                {
+                    name: "Modify",
+                    enable: true
+                },
+                {
+                    name: "Create",
+                    enable: true
+                },
+                {
+                    name: "Delete",
+                    enable: true
+                }
+            ]
+        },
+        {
+            type: "Public",
+            selected: false,
+            expanded: true,
+            rights: [
+                {
+                    name: "Read",
+                    enable: true
+                },
+                {
+                    name: "Modify",
+                    enable: false
+                },
+                {
+                    name: "Create",
+                    enable: false
+                },
+                {
+                    name: "Delete",
+                    enable: false
+                }
+            ]
+        }
+    ];
 
-    displaySelection: string = "";
-
-    onSelectionChange(value: any[]) {
-        this.selection = value;
-        this.displaySelection = JSON.stringify(value, null, "\t");
+    get displayPermissions(): string {
+        return JSON.stringify(this.permissions, null, "  ");
     }
 }

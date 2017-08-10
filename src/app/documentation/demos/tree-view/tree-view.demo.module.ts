@@ -12,17 +12,16 @@ import {TreeViewBasicStructureDemo} from "./basic-tree-view/tree-view-basic";
 import {TreeViewDynamicDemo} from "./tree-view-dynamic/tree-view-dynamic";
 import {TreeNodeLazyLoadingDemo} from "./lazy-loading/lazy-loading";
 import {TreeNodeLabelChangeOnExpandDemo} from "./label-change-on-expand/label-change-on-expand";
-import {TreeViewCompactDemo} from "./tree-view-compact/tree-view-compact";
 import {TreeNodeSelectionDemo} from "./tree-node-selection/tree-node-selection";
 import {TreeNodeRoutingDemo} from "./tree-node-routing/tree-node-routing";
 import {TreeViewPrepopulateDemo} from "./tree-view-prepopulate/tree-view-prepopulate";
 import {TreeNodeBasicStructureDMDemo} from "./basic-tree-node-DM/tree-node-basic-DM";
 
 import {Example} from "./utils/example";
-import {TreeSelectionCodeSnippetDemo} from "./tree-selection-code-snippet/tree-selection-code-snippet";
 import {TreeViewDemo} from "./tree-view.demo";
 import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
+import {LazyLoadedLocationsComponent} from "./lazy-loading/lazy-loaded-locations";
 
 @NgModule({
     imports: [
@@ -36,13 +35,12 @@ import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
         TreeNodeBasicStructureDMDemo,
         TreeViewBasicStructureDemo,
         TreeViewDynamicDemo,
+        LazyLoadedLocationsComponent,
         TreeNodeLazyLoadingDemo,
         TreeNodeLabelChangeOnExpandDemo,
-        TreeViewCompactDemo,
         TreeNodeSelectionDemo,
         TreeNodeRoutingDemo,
         TreeViewPrepopulateDemo,
-        TreeSelectionCodeSnippetDemo,
         Example,
         TreeViewDemo
     ],

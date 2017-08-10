@@ -3,67 +3,47 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, ViewChild} from "@angular/core";
-
-import {TreeNode} from "clarity-angular";
+import {Component} from "@angular/core";
 
 import "clarity-icons/shapes/basic-shapes";
 import "clarity-icons/shapes/technology-shapes";
 import "clarity-icons/shapes/social-shapes";
 
 const EXAMPLE_HTML = `
-<clr-tree-node [clrTreeNodeExpanded]="true">
-        <clr-icon shape="folder"></clr-icon>
-        Desktop
-        <clr-tree-node
-                #lazyTreeNode
-                [clrTreeNodeExpandable]="true"
-                (clrTreeNodeExpandedChange)="fetchFiles()"
-                [clrTreeNodeLoading]="loading">
-            <clr-icon [attr.shape]="dirShape"></clr-icon>
-            {{dirName}}
-    
-            <clr-tree-node *ngFor="let file of files">
-                <clr-icon [attr.shape]="file.icon"></clr-icon>
-                {{file.name}}
-            </clr-tree-node>
-        </clr-tree-node>
-        <clr-tree-node [clrTreeNodeExpanded]="true">
-            <clr-icon shape="folder"></clr-icon>
-            Files
-            <clr-tree-node>
-                <clr-icon shape="file"></clr-icon>
-                Cover-Letter.doc
-            </clr-tree-node>
-            <clr-tree-node>
-                <clr-icon shape="file"></clr-icon>
-                Notes.txt
-            </clr-tree-node>
-            <clr-tree-node>
-                <clr-icon shape="file"></clr-icon>
-                Resume.doc
-            </clr-tree-node>
-        </clr-tree-node>
-    </clr-tree-node>
-`
+<clr-tree-node>
+    <clr-icon shape="building"></clr-icon>
+    Office Locations
+    <ng-template clrIfExpanded>
+        <lazy-loaded-locations></lazy-loaded-locations>
+    </ng-template>
+</clr-tree-node>
+`;
 
 const EXAMPLE_TS = `
-    export class TreeNodeLazyLoadingDemo {
-        loading: boolean = false;
-    
-        fetchFiles() {
-            if (this.files.length > 0) {
-                return;
-            }
-            this.loading = true;
-            
-            //Fetch files from the server
-            
-            //After data is retrieved
-            this.loading = false;
-        }
+import {Component, Input, OnInit} from "@angular/core";
+
+@Component({
+    selector: "lazy-loaded-locations",
+    template: \`
+        <ng-container [clrLoading]="loading">
+            <clr-tree-node *ngFor="let location of locations">
+                {{location}}
+            </clr-tree-node>
+        </ng-container>
+    \`
+})
+export class LazyLoadedLocationsComponent implements OnInit {
+    @Input() node: string;
+    locations: string[];
+    loading: boolean;
+
+    ngOnInit() {
+        this.loading = true;
+        // This would be a call to your service that communicates with the server
+        this.locations = fetchLocations();
     }
-`
+}
+`;
 
 @Component({
     selector: "clr-tree-node-lazy-loading-demo",
@@ -72,50 +52,6 @@ const EXAMPLE_TS = `
     templateUrl: "./lazy-loading.html"
 })
 export class TreeNodeLazyLoadingDemo {
-    example_html = EXAMPLE_HTML;
+    example_html = EXAMPLE_HTML
     example_ts = EXAMPLE_TS;
-
-    dirName: string = "Applications";
-    dirShape: string = "folder";
-    files: any[] = [];
-    loading: boolean = false;
-
-    @ViewChild("lazyTreeNode") lazyTreeNode: TreeNode;
-
-    fetchFiles() {
-        if (this.files.length > 0) {
-            return;
-        }
-        this.loading = true;
-        setTimeout(() => {
-            this.files = [
-                {
-                    icon: "calendar",
-                    name: "Calendar"
-                },
-                {
-                    icon: "line-chart",
-                    name: "Charts"
-                },
-                {
-                    icon: "dashboard",
-                    name: "Dashboard"
-                },
-                {
-                    icon: "map",
-                    name: "Maps"
-                },
-                {
-                    icon: "email",
-                    name: "Mail"
-                }
-            ];
-            this.loading = false;
-        }, 2000);
-    }
-
-    onReset() {
-        this.lazyTreeNode.expanded = false;
-        this.files = [];
-    }
 }

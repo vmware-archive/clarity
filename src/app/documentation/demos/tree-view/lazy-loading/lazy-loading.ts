@@ -7,9 +7,7 @@ import {Component, ViewChild} from "@angular/core";
 
 import {TreeNode} from "clarity-angular";
 
-import "clarity-icons/shapes/basic-shapes";
-import "clarity-icons/shapes/technology-shapes";
-import "clarity-icons/shapes/social-shapes";
+import "clarity-icons/shapes/all-shapes";
 
 const EXAMPLE_HTML = `
 <clr-tree-node [clrTreeNodeExpanded]="true">

@@ -7,3 +7,15 @@
         max-width: 600px;
     }
 }
+
+.app-alert-box {
+    clr-alert {
+        display: block;
+        padding-top: 6px;
+    }
+}
+
+.type-alert-box > * {
+    display: block;
+    margin-top: -6px;
+}

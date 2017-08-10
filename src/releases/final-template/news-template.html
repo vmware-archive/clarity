@@ -5,8 +5,13 @@
         <hr>
 
         <div *ngIf="nbBreakingChanges > 0" class="alert alert-danger breaking-change-alert">
-            <div class="alert-item">
-                <span class="alert-text">This build introduces breaking change. Please read below.</span>
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">This build introduces breaking change. Please read below.</span>
+                </div>
             </div>
         </div>
 

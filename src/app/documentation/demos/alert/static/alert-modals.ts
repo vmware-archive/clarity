@@ -6,14 +6,19 @@
 import {Component} from "@angular/core";
 
 const HTML_EXAMPLE = `
-<div class="modal">
+<div class="modal static bump-down">
     <div class="modal-dialog" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="alert alert-danger">
-                <div class="alert-item">
-                    <span class="alert-text">
-                        Alert in a modal.
-                    </span>
+                <div class="alert-items">
+                    <div class="alert-item">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                        </div>
+                        <span class="alert-text">
+                            Alert in a modal.
+                        </span>
+                    </div>
                 </div>
             </div>
             <div class="modal-header">

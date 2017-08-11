@@ -24,7 +24,7 @@ gulp.task("npm:icons:bundles", function () {
     return gulp.src([
         "dist/bundles/clarity-icons.min.css",
         "dist/bundles/clarity-icons.min.js",
-        "dist/bundles/clarity-icons-lite.umd.js",
+        "dist/bundles/clarity-icons-lite.min.js",
         "!dist/clarity-icons/**/*.spec.ts",
         "dist/clarity-icons/**/*.ts",
         "dist/clarity-icons/**/*.js",
@@ -40,7 +40,7 @@ gulp.task("npm:icons:bundles", function () {
 
 gulp.task("npm:icons:shapes", function () {
     return gulp.src([
-        "dist/bundles/*-shapes.umd.js",
+        "dist/bundles/*-shapes.min.js",
     ]).pipe(gulp.dest(npmFolder + "/clarity-icons/shapes"));
 });
 

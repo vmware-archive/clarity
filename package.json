@@ -69,7 +69,7 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-uglify": "^1.0.1",
     "run-sequence": "^1.1.5",
-    "systemjs-builder": "^0.15.13",
+    "systemjs-builder": "^0.16.9",
     "through2": "^2.0.1",
     "tslint": "^4.0.0",
     "typescript": "~2.2.0"

@@ -1,24 +1,25 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+// TODO: base this text color off of color contraster, if possible
 $clr-tooltip-font-color: $clr-white !default;
 $clr-tooltip-background-color: $clr-black !default;
-$clr-tooltip-default-width: baselineRem(10) !default;
-$margin-value: $clr_baselineRem_0_25 !default;
-$arrow-height: $clr_baselineRem_0_25 !default;
-$arrow-width: baselineRem(5/24) !default; //I wanted the arrow width to be 9. If I use 4.5/24 it still rounds up to 10.
-$clr-tooltip-adjusted-margin: $margin-value + $arrow-width * 2 !default;
+$clr-tooltip-default-width: 10rem !default;
+$margin-value: 0.25rem !default;
+$arrow-height: 0.25rem !default;
+$arrow-width: 0.208333rem !default; //I wanted the arrow width to be 9. If I use 4.5/24 it still rounds up to 10.
+$clr-tooltip-adjusted-margin: 0.666667rem !default;
 
 @mixin common-tooltip-styles {
     @include clr-getTypePropertiesForDomElement(tooltip_text, (font-size, font-weight, letter-spacing));
 
     background: $clr-tooltip-background-color;
-    border-radius: $clr_baselineRem_0_125;
+    border-radius: 0.125rem;
     color: $clr-tooltip-font-color;
-    line-height: $clr_baselineRem_0_75;
+    line-height: 0.75rem;
     margin: 0; //Resetting any margin that might be applied to span/div elements inside forms
-    padding: $clr_baselineRem_0_375 $clr_baselineRem_0_5;
+    padding: 0.375rem 0.5rem;
     width: $clr-tooltip-default-width;
 }
 
@@ -39,7 +40,7 @@ $clr-tooltip-adjusted-margin: $margin-value + $arrow-width * 2 !default;
 
     &::before {
         position: absolute;
-        #{$oppA}: -1 * $arrow-width * 2 + 1;
+        #{$oppA}: -0.375rem;
         #{$oppB}: 0;
         #{$dirA}: auto;
         #{$dirB}: auto;
@@ -68,7 +69,7 @@ $clr-tooltip-adjusted-margin: $margin-value + $arrow-width * 2 !default;
     &::before {
         position: absolute;
         top: 0;
-        #{$oppA}: -1 * $arrow-width * 2 + 1;
+        #{$oppA}: -0.375rem;
         bottom: auto;
         #{$dirA}: auto;
         content: '';
@@ -97,6 +98,7 @@ $clr-tooltip-adjusted-margin: $margin-value + $arrow-width * 2 !default;
         }
 
         //Needed for IE10. Cannot add styles directly to &:hover::after,&:hover::before before adding styles to &:hover.
+        // TODO: is this still needed? we no longer support IE10...
         &:hover {
             background: url("data:image/svg+xml;charset=UTF-8,%3Csvg+xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22+width%3D%221%22+height%3D%221%22+viewBox%3D%220+0+1+1%22%3E%3Ctitle%3Etransparent+bcg%3C%2Ftitle%3E%3C%2Fsvg%3E");
         }
@@ -118,8 +120,8 @@ $clr-tooltip-adjusted-margin: $margin-value + $arrow-width * 2 !default;
         }
 
         &:focus > :first-child {
-            outline-offset: 1px;
-            outline-width: 1px;
+            outline-offset: $clr-rem-1px;
+            outline-width: $clr-rem-1px;
             outline-color: rgb(59, 153, 252); //Color that Chrome uses
             outline-style: solid;
         }
@@ -153,11 +155,11 @@ $clr-tooltip-adjusted-margin: $margin-value + $arrow-width * 2 !default;
 
         //Tooltips Size
         &.tooltip-xs > .tooltip-content, .tooltip-content.tooltip-xs {
-            width: $clr_baselineRem_3;
+            width: 3rem;
         }
 
         &.tooltip-sm > .tooltip-content, .tooltip-content.tooltip-sm {
-            width: $clr_baselineRem_5;
+            width: 5rem;
         }
 
         &.tooltip-md > .tooltip-content, .tooltip-content.tooltip-md {
@@ -165,7 +167,7 @@ $clr-tooltip-adjusted-margin: $margin-value + $arrow-width * 2 !default;
         }
 
         &.tooltip-lg > .tooltip-content, .tooltip-content.tooltip-lg {
-            width: baselineRem(15);
+            width: 15rem;
         }
     }
 

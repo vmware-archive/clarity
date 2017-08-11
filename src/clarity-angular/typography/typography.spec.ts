@@ -44,17 +44,17 @@ describe("Typography", () => {
     // when I update Typography
     it("checks if h1 has the correct styles", () => {
         const h1: HTMLElement = compiled.querySelector("h1");
-        expect(window.getComputedStyle(h1, null).getPropertyValue("font-size")).toEqual("32px");
+        expect(window.getComputedStyle(h1, null).getPropertyValue("font-size")).toEqual("31.9999px");
     });
 
     it("checks if h2 has the correct styles", () => {
         const h2: HTMLElement = compiled.querySelector("h2");
-        expect(window.getComputedStyle(h2, null).getPropertyValue("font-size")).toEqual("28px");
+        expect(window.getComputedStyle(h2, null).getPropertyValue("font-size")).toEqual("28.0001px");
     });
 
     it("checks if h3 has the correct styles", () => {
         const h3: HTMLElement = compiled.querySelector("h3");
-        expect(window.getComputedStyle(h3, null).getPropertyValue("font-size")).toEqual("22px");
+        expect(window.getComputedStyle(h3, null).getPropertyValue("font-size")).toEqual("22.0001px");
     });
 
     it("checks if h4 has the correct styles", () => {
@@ -64,11 +64,11 @@ describe("Typography", () => {
 
     it("checks if h5 has the correct styles", () => {
         const h5: HTMLElement = compiled.querySelector("h5");
-        expect(window.getComputedStyle(h5, null).getPropertyValue("font-size")).toEqual("16px");
+        expect(window.getComputedStyle(h5, null).getPropertyValue("font-size")).toEqual("16.0001px");
     });
 
     it("checks if h6 has the correct styles", () => {
         const h6: HTMLElement = compiled.querySelector("h6");
-        expect(window.getComputedStyle(h6, null).getPropertyValue("font-size")).toEqual("14px");
+        expect(window.getComputedStyle(h6, null).getPropertyValue("font-size")).toEqual("13.9999px");
     });
 });

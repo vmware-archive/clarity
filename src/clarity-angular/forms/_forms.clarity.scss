@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -6,6 +6,7 @@
 @import "./utils/mixins.clarity";
 
 //Validation Tooltips Arrow Color
+// TODO: color should be a variable
 @mixin vertical-tooltip-arrow-color($dirA:top,$dirB:right,$color:#000000) {
     $oppA: map-get($opp-directions, $dirA);
     $oppB: map-get($opp-directions, $dirB);
@@ -32,7 +33,7 @@
             content: '*';
             font-size: 1.1em;
             color: $clr-red;
-            margin-left: $clr_baselineRem_0_25;
+            margin-left: 0.25rem;
         }
     }
 }
@@ -44,18 +45,18 @@
     // that's bad, i know. but webdevs do it.
     form,
     .form {
-        padding-top: $clr_baselineRem_0_5;
+        padding-top: 0.5rem;
 
         label, span {
             display: inline-block;
         }
 
         .form-block {
-            margin: $clr_baselineRem_0_5 0 $clr_baselineRem_1_5 0;
+            margin: 0.5rem 0 1.5rem 0;
             & > label {
                 @include clr-getTypePropertiesForDomElement(form_block_label, (font-size, letter-spacing, font-weight));
                 color: $clr-black;
-                margin-bottom: $clr_baselineRem_0_25;
+                margin-bottom: 0.25rem;
             }
         }
 
@@ -64,8 +65,9 @@
             display: flex;
             flex-wrap: wrap;
             position: relative;
-            padding-left: baselineRem(9.5); //Everything else except for the first label starts after this padding on large screens
-            margin-bottom: $clr_baselineRem_0_5;
+            padding-left: 9.5rem;
+            //Everything else except for the first label starts after this padding on large screens
+            margin-bottom: 0.5rem;
             @include clr-getTypePropertiesForDomElement(form_group_fields, (font-size, letter-spacing, line-height));
 
             &.row {
@@ -77,9 +79,9 @@
             //TODO: Figure out a fix for labels wrapping large text
             & > label:first-child, & > span:first-child {
                 position: absolute;
-                width: baselineRem(8.5);
+                width: 8.5rem;
                 left: 0;
-                top: $clr_baselineRem_0_25;
+                top: 0.25rem;
                 margin: 0;
             }
 
@@ -115,7 +117,7 @@
             & > .btn {
                 flex: 0 1 auto;
                 margin-left: 0;
-                margin-right: $clr_baselineRem_0_5;
+                margin-right: 0.5rem;
             }
 
             //Link buttons have no right margin
@@ -127,18 +129,18 @@
             & > .radio {
                 flex: 1 1 100%;
                 margin-left: 0;
-                margin-right: $clr_baselineRem_1;
+                margin-right: 1rem;
             }
 
             & > .toggle-switch {
                 flex: 0 1 auto;
                 margin-left: 0;
-                margin-right: $clr_baselineRem_1;
+                margin-right: 1rem;
             }
 
             & > textarea {
                 margin-left: 0;
-                margin-right: $clr_baselineRem_0_5;
+                margin-right: 0.5rem;
             }
 
             //All children have a top and bottom margin regarless if they are direct descendants or if they are
@@ -158,17 +160,17 @@
             a,
             #{$styledInputs1},
             .btn {
-                margin-top: $clr_baselineRem_0_25;
-                margin-bottom: $clr_baselineRem_0_25;
+                margin-top: 0.25rem;
+                margin-bottom: 0.25rem;
             }
 
             .btn-sm {
-                margin-top: $clr_baselineRem_0_5;
-                margin-bottom: $clr_baselineRem_0_5;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
             }
 
             .tooltip-validation {
-                height: $clr_baselineRem_1;
+                height: 1rem;
                 input {
                     margin: 0;
                 }
@@ -191,7 +193,7 @@
 
             .form-group {
                 padding-left: 0;
-                margin-bottom: $clr_baselineRem_1;
+                margin-bottom: 1rem;
 
                 & > label:first-child,
                 & > label:not(:first-child),
@@ -208,12 +210,12 @@
 
                 & > label:first-child {
                     position: relative;
-                    margin: 0 0 $clr_baselineRem_0_5 0;
+                    margin: 0 0 0.5rem 0;
                 }
 
                 & > label:not(:first-child),
                 span {
-                    margin: $clr_baselineRem_0_5 $clr_baselineRem_0_5 0 0;
+                    margin: 0.5rem 0.5rem 0 0;
                 }
 
                 .tooltip-validation {
@@ -230,11 +232,11 @@
     //Wrap the textbox with a container extending this class
     .tooltip.tooltip-validation {
         $error-icon-width: $clr-form-icon-dim;
-        $error-icon-margin: $clr_baselineRem_0_25;
+        $error-icon-margin: 0.25rem;
 
         & > input {
             //6px to the right & left of the error icon + 16px for the width of the error icon
-            padding-right: 2 * $error-icon-margin + $error-icon-width;
+            padding-right: (2 * $error-icon-margin) + $error-icon-width;
         }
 
         //Tooltips are not visible on hover for validation.
@@ -248,7 +250,7 @@
             & > input {
                 $invalid_red: clr-getColor(dark-midtone, reds);
 
-                border-bottom: 1px solid $invalid_red;
+                border-bottom: $clr-default-borderwidth solid $invalid_red;
                 background: linear-gradient(to bottom, transparent 95%, #{$invalid_red} 95%);
                 transition: none;
             }
@@ -322,8 +324,9 @@
                 content: '';
                 height: $clr-form-icon-dim;
                 width: $clr-form-icon-dim;
-                top: $clr_baselineRem_0_125;
-                right: $clr_baselineRem_0_25;
+                top: 0.125rem;
+                right: 0.25rem;
+                // TODO: move to clr-icon
                 background-image: generateErrorIcon();
                 @include icon-background-styles();
                 margin: 0;
@@ -335,7 +338,7 @@
     .form {
         &.compact {
             .form-block {
-                margin: $clr_baselineRem_0_5 0 $clr_baselineRem_1 0;
+                margin: 0.5rem 0 1rem 0;
                 & > label {
                     margin-bottom: 0;
                 }
@@ -349,7 +352,7 @@
 
     @include fixForIE10AndUp() {
         #{$styledInputs} {
-            padding-bottom: $clr_baselineRem_0_125;
+            padding-bottom: 0.125rem;
         }
     }
 

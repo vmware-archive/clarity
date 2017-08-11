@@ -1,25 +1,25 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-$card-action-blue: clr-getColor(light-midtone,action-blues);
-$card-light: $gray-light;
-$card-text-fontsize: clr-getTypePropertyValueForDomElement(card_text, font-size);
-$card-children-padding-vertical: $clr_baselineRem_0_5;
-$card-children-padding-horizontal: $clr_baselineRem_0_75;
-$card-children-space-between: $clr_baselineRem_0_5;
+$card-action-blue: clr-getColor(light-midtone,action-blues) !default;
+$card-light: $gray-light !default;
+$card-text-fontsize: clr-getTypePropertyValueForDomElement(card_text, font-size) !default;
+$card-children-padding-vertical: 0.5rem !default;
+$card-children-padding-horizontal: 0.75rem !default;
+$card-children-space-between: 0.5rem !default;
 
 @include exports('card.clarity') {
 
     %card-border-appearance {
-        box-shadow: 0 3px 0 0 rgba(215, 215, 215, 1); //Hardcoded color not in color palette
+        box-shadow: 0 0.125rem 0 0 rgba(215, 215, 215, 1); //Hardcoded color not in color palette
         border-radius: $clr-default-borderradius;
-        border: 1px solid rgba(215, 215, 215, 1);
+        border: $clr-default-borderwidth solid rgba(215, 215, 215, 1);
     }
 
     %clickable-card-transition {
-        box-shadow: 0 3px 0 0 rgba(0, 148, 210, 1);
-        border: 1px solid rgba(0, 148, 210, 1);
+        box-shadow: 0 0.125rem 0 0 rgba(0, 148, 210, 1);
+        border: $clr-default-borderwidth solid rgba(0, 148, 210, 1);
         cursor: pointer;
         text-decoration: none;
         transform: translate3d(0, -2px, 0);
@@ -49,48 +49,8 @@ $card-children-space-between: $clr_baselineRem_0_5;
         display: block;
         background-color: $clr-white;
         width: 100%;
-        margin-top: $clr_baselineRem_1;
+        margin-top: 1rem;
         @extend %card-border-appearance;
-
-        .card-header,
-        &.card-block,
-        .card-block,
-        .card-footer {
-            padding: $card-children-padding-vertical $card-children-padding-horizontal;
-        }
-
-        .card-header,
-        .card-title {
-            @include clr-getTypePropertiesForDomElement(card_title, (color, font-size, font-weight, letter-spacing));
-        }
-
-        .card-text {
-            font-size: $card-text-fontsize;
-        }
-
-        //Images
-        .card-img {
-            &:first-child > img {
-                border-radius: $clr-default-borderradius $clr-default-borderradius 0 0;
-            }
-
-            &:last-child > img {
-                border-radius: 0 0 $clr-default-borderradius $clr-default-borderradius;
-            }
-
-            & > img {
-                @extend %card-image-appearance;
-            }
-        }
-
-        //Card with just an image
-        &.card-img,
-        & > .card-img:first-child:last-child {
-            & > img {
-                border-radius: $clr-default-borderradius;
-                @extend %card-image-appearance;
-            }
-        }
 
         .btn-link {
             min-width: 0;
@@ -99,23 +59,6 @@ $card-children-space-between: $clr_baselineRem_0_5;
             //without removing the paddings is a huge task and leads to a brittle card css
             //plus the alignment doesn't work in all the cases
             padding: 0;
-        }
-
-        &.card-block,
-        .card-block,
-        .card-footer {
-            .btn,
-            .btn.btn-link,
-            .card-link {
-                margin: 0 $clr-button-horizontal-margin 0 0;
-            }
-
-            //Need this level of nesting for now.
-            //Adding a TODO to remove the nesting in a separate PR
-            //Don't want to create a PR which solves multiple different issues.
-            .btn-group .btn {
-                margin: 0;
-            }
         }
 
         //Clickable Cards
@@ -127,38 +70,6 @@ $card-children-space-between: $clr_baselineRem_0_5;
             }
         }
 
-        .card-header,
-        .card-block {
-            border-bottom: 1px solid $card-light;
-
-            &:last-child {
-                border-bottom: none;
-            }
-        }
-
-        //Use border-bottom directly on card header and card block to simplify the layout
-        //Card dividers should only be used inside of a .card-block
-        .card-divider {
-            display: block;
-            border-bottom: 1px solid $card-light;
-        }
-
-        &.card-block,
-        .card-block {
-            .card-divider {
-                @extend %card-space-between;
-                margin-left: -1 * ($card-children-padding-horizontal);
-                margin-right: -1 * ($card-children-padding-horizontal);
-                width: auto;
-            }
-        }
-
-        //Hide card dividers and just show the border bottom of card-header and card-block
-        .card-header + .card-divider,
-        .card-block + .card-divider {
-            display: none;
-        }
-
         .card-title,
         .card-text,
         .card-media-block,
@@ -167,70 +78,23 @@ $card-children-space-between: $clr_baselineRem_0_5;
             @extend %card-space-between;
         }
 
-        //Card Media Block
-        .card-media-block {
-            display: flex;
-
-            .card-media-image {
-                $card-media-image-size: $clr_baselineRem_2_5;
-                display: inline-block; //to make sure IE10 respects the max-height and max-width
-                flex: 0 0 auto;
-                height: $card-media-image-size;
-                width: $card-media-image-size;
-                max-height: $card-media-image-size;
-                max-width: $card-media-image-size;
-            }
-
-            .card-media-description {
-                display: flex;
-                flex-direction: column;
-                margin: 0 0 0 $clr_baselineRem_0_5;
-            }
-
-            .card-media-title {
-                display: inline-block;
-            }
-
-            span,
-            .card-media-text {
-                display: inline-block;
-            }
-
-            &.wrap {
-                flex-direction: column;
-
-                .card-media-description {
-                    margin: $clr_baselineRem_0_25 0 0 0;
-                }
-            }
-        }
-
         //Clarity Lists
         & > .list,
         & > .list-unstyled {
             padding: $card-children-padding-vertical $card-children-padding-horizontal;
         }
 
-        &.card-block,
-        .card-block {
-            & > .list,
-            & > .list-unstyled {
-                padding: 0;
-            }
+        //Bootstrap 4 List Groups
+        .list-group-item {
+            font-size: $card-text-fontsize;
+            border-left-width: 0;
+            border-right-width: 0;
+            border-color: $clr-light-gray;
+            padding: 0.5rem 0.75rem;
         }
 
-        //Bootstrap 4 List Groups
-        .list-group {
-            .list-group-item {
-                font-size: $card-text-fontsize;
-                border-left-width: 0;
-                border-right-width: 0;
-                border-color: $clr-light-gray;
-            }
-
-            .list-group-item:first-child {
-                border-top-color: transparent;
-            }
+        .list-group-item:first-child {
+            border-top-color: transparent;
         }
 
         //Dropdowns
@@ -240,8 +104,140 @@ $card-children-space-between: $clr_baselineRem_0_5;
         @include fixForMsEdge() {
             .dropdown > .dropdown-toggle::after {
                 display: inline-block;
-                margin-top: -1 * $clr_baselineRem_0_5;
+                margin-top: -0.5rem;
             }
+        }
+    }
+
+    .card-header,
+    .card-block,
+    .card-footer {
+        padding: $card-children-padding-vertical $card-children-padding-horizontal;
+    }
+
+    .card-header,
+    .card-title {
+        @include clr-getTypePropertiesForDomElement(card_title, (color, font-size, font-weight, letter-spacing));
+    }
+
+    .card-text {
+        font-size: $card-text-fontsize;
+    }
+
+    //Images
+    .card-img {
+        &:first-child > img {
+            border-radius: $clr-default-borderradius $clr-default-borderradius 0 0;
+        }
+
+        &:last-child > img {
+            border-radius: 0 0 $clr-default-borderradius $clr-default-borderradius;
+        }
+
+        & > img {
+            @extend %card-image-appearance;
+        }
+    }
+
+    //Card with just an image
+    .card.card-img,
+    .card > .card-img:first-child:last-child {
+        & > img {
+            border-radius: $clr-default-borderradius;
+            @extend %card-image-appearance;
+        }
+    }
+
+    .card-block,
+    .card-footer {
+        .btn,
+        .btn.btn-link,
+        .card-link {
+            margin: 0 $clr-button-horizontal-margin 0 0;
+        }
+
+        //Need this level of nesting for now.
+        //Adding a TODO to remove the nesting in a separate PR
+        //Don't want to create a PR which solves multiple different issues.
+        .btn-group .btn {
+            margin: 0;
+        }
+    }
+
+    .card-header,
+    .card-block {
+        border-bottom: $clr-default-borderwidth solid $card-light;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    //Use border-bottom directly on card header and card block to simplify the layout
+    //Card dividers should only be used inside of a .card-block
+    .card-divider {
+        display: block;
+        border-bottom: $clr-default-borderwidth solid $card-light;
+    }
+
+    .card-block {
+        .card-divider {
+            @extend %card-space-between;
+            margin-left: -1 * ($card-children-padding-horizontal);
+            margin-right: -1 * ($card-children-padding-horizontal);
+            width: auto;
+        }
+    }
+
+    //Hide card dividers and just show the border bottom of card-header and card-block
+    .card-header, .card-block {
+        & + .card-divider {
+            display: none;
+        }
+    }
+
+    //Card Media Block
+    .card-media-block {
+        display: flex;
+
+        .card-media-image {
+            $card-media-image-size: 2.5rem;
+            display: inline-block; //to make sure IE10 respects the max-height and max-width
+            flex: 0 0 auto;
+            height: $card-media-image-size;
+            width: $card-media-image-size;
+            max-height: $card-media-image-size;
+            max-width: $card-media-image-size;
+        }
+
+        .card-media-description {
+            display: flex;
+            flex-direction: column;
+            margin: 0 0 0 0.5rem;
+        }
+
+        .card-media-title {
+            display: inline-block;
+        }
+
+        span,
+        .card-media-text {
+            display: inline-block;
+        }
+
+        &.wrap {
+            flex-direction: column;
+
+            .card-media-description {
+                margin: 0.25rem 0 0 0;
+            }
+        }
+    }
+
+    .card-block {
+        & > .list,
+        & > .list-unstyled {
+            padding: 0;
         }
     }
 
@@ -251,7 +247,7 @@ $card-children-space-between: $clr_baselineRem_0_5;
     @media screen and (min-width: map-get($clr-breakpoints, small)) {
         .card-columns {
             column-count: 3;
-            column-gap: $clr_baselineRem_0_5;
+            column-gap: 0.5rem;
             break-inside: avoid;
             column-fill: balance;
 
@@ -269,13 +265,27 @@ $card-children-space-between: $clr_baselineRem_0_5;
 
             .card {
                 display: inline-block; //For some weird reason stops the cards from getting cut off between 2 columns
-                margin: $clr_baselineRem_0_25;
+                margin: 0.25rem;
             }
 
             .clickable {
                 //To fix the flickering issue with clickable card transition
                 //http://stackoverflow.com/questions/3461441/prevent-flicker-on-webkit-transition-of-webkit-transform
                 backface-visibility: hidden;
+            }
+        }
+    }
+
+    @include fixForMsEdge {
+        // Edge did NOT like using display inline-table for button-groups inside of cards...
+        .card {
+            .checkbox,
+            .checkbox-inline,
+            .radio,
+            .radio-inline {
+                &.btn label {
+                    display: inline-block;
+                }
             }
         }
     }

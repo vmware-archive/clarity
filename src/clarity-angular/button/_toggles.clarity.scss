@@ -1,18 +1,18 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 //Toggle Properties
-$toggle-height: $clr_baselineRem_1;
-$toggle-switch-base-height: $clr_baselineRem_0_75;
-$toggle-switch-base-width: ($clr_baselineRem_1_5 - $clr_baselineRem_0_125);
-$toggle-switch-height: $toggle-switch-base-height - 4;
+$toggle-height: 1rem;
+$toggle-switch-base-height: 0.75rem;
+$toggle-switch-base-width: 1.375rem;
+$toggle-switch-height: 0.5833rem;
 
 //Distance between the toggle switch label and the switch (Switch is on the right)
-$toggle-switch-base-left-spacing: $clr_baselineRem_0_375;
+$toggle-switch-base-left-spacing: 0.375rem;
 
 //1px extra because we want a 1px distance between the base and the switch
-$toggle-switch-left-spacing: ($toggle-switch-base-width - $toggle-switch-base-left-spacing) + 1px;
+$toggle-switch-left-spacing: $toggle-switch-base-width - $toggle-switch-base-left-spacing + $clr-rem-1px;
 
 
 //Toggle Transition Properties
@@ -28,7 +28,7 @@ $toggle-transition-animation: ease-in;
     .toggle-switch {
         display: inline-block;
         height: $toggle-height;
-        margin-right: $clr_baselineRem_1;
+        margin-right: 1rem;
         vertical-align: middle;
         position: relative;
 
@@ -37,15 +37,15 @@ $toggle-transition-animation: ease-in;
             position: relative;
             cursor: pointer;
             height: $toggle-height;
-            margin-right: $clr_baselineRem_2;
+            margin-right: 2rem;
         }
 
         input[type="checkbox"] {
             @extend %custom-checkbox;
 
             position: absolute;
-            top: $clr_baselineRem_0_25;
-            right: $clr_baselineRem_0_25;
+            top: 0.25rem;
+            right: 0.25rem;
             height: $clr-icon-dimension-sm;
             width: $clr-icon-dimension-sm;
             opacity: 0;
@@ -58,7 +58,7 @@ $toggle-transition-animation: ease-in;
             height: $toggle-switch-base-height;
             width: $toggle-switch-base-width;
             border: 2px solid;
-            border-radius: $clr_baselineRem_0_375;
+            border-radius: 0.375rem;
             border-color: $clr-gray;
             background-color: $clr-gray;
             top: ($toggle-height - $toggle-switch-base-height) / 2;
@@ -85,16 +85,17 @@ $toggle-transition-animation: ease-in;
             content: '';
             height: $toggle-switch-height;
             width: $toggle-switch-height;
-            border: 1px solid clr-getColor(lightest);
+            border: $clr-default-borderwidth solid clr-getColor(lightest);
             border-radius: 50%;
             background-color: clr-getColor(lightest);
+            // TOCHECK: COMPUTATION...
             top: ($toggle-height - $toggle-switch-height) / 2;
             right: -1 * $toggle-switch-left-spacing;
             transition: right $toggle-transition-time $toggle-transition-animation;
         }
 
         input[type="checkbox"]:checked + label::after {
-            right: -1 * ($toggle-switch-base-width + $toggle-switch-base-left-spacing - 2px);
+            right: -1 * ($toggle-switch-base-width + $toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
             transition: right $toggle-transition-time $toggle-transition-animation;
         }
 
@@ -110,6 +111,7 @@ $toggle-transition-animation: ease-in;
             }
         }
 
+        // TODO: cleanup hard-coded sizes in here. not sure what they are keying on...
         input[type="checkbox"]:disabled + label {
             //opacity: 0.4;
             cursor: not-allowed;

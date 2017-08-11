@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -14,7 +14,7 @@
         // spinner-lg is the default
         position: relative;
         display: inline-block;
-        @include min-height($clr_baselineRem_3);
+        @include min-height(3rem);
         animation: spin 1s linear infinite;
         margin: 0;
         padding: 0;
@@ -23,12 +23,12 @@
         overflow: hidden;
 
         &.spinner-md {
-            @include min-height($clr_baselineRem_1_5);
+            @include min-height(1.5rem);
         }
 
         &.spinner-inline,
         &.spinner-sm {
-            @include min-height($clr_baselineRem_0_75);
+            @include min-height(0.75rem);
         }
 
         &.spinner-inline {

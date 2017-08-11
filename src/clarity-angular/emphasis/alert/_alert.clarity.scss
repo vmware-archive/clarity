@@ -3,15 +3,15 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 $clr-app-level-alert-color: $clr-white !default;
-$clr-icon-margin-right: $clr_baselineRem_0_25;
+$clr-icon-margin-right: 0.25rem !default;
 
 //Regular Alert
-$clr-alert-top-margin: $clr_baselineRem_0_25;
-$clr-alert-min-height: $clr_baselineRem_1_5;
-$clr-alert-horizontal-padding: $clr_baselineRem_0_5;
-$clr-alert-top-padding: $clr_baselineRem_0_125;
-$clr-alert-bottom-padding: $clr_baselineRem_0_375;
-$clr-alert-item-min-height: $clr-alert-icon-dimension-sm;
+$clr-alert-top-margin: 0.25rem !default;
+$clr-alert-min-height: 1.5rem !default;
+$clr-alert-horizontal-padding: 0.5rem !default;
+$clr-alert-top-padding: 0.125rem !default;
+$clr-alert-bottom-padding: 0.375rem !default;
+$clr-alert-item-min-height: $clr-alert-icon-dimension-sm !default;
 
 $clr-alert-colors: (
         info: (
@@ -71,7 +71,7 @@ $clr-alert-colors: (
     $border-prop: map-get($propMap, border);
 
     @if $border-prop != "none" {
-        border: 1px solid $border-prop;
+        border: $clr-default-borderwidth solid $border-prop;
     }
 
     @else {
@@ -84,20 +84,20 @@ $clr-alert-colors: (
 }
 
 @include exports('alert.clarity') {
-    $alertIconWidth: $clr_baselineRem_1 + 1;
+    $alertIconWidth: 1rem + $clr-rem-1px;
 
     .alert-icon {
-        $alert-icon-dim: $clr_baselineRem_1;
+        $alert-icon-dim: 1rem;
         height: $alert-icon-dim;
         width: $alert-icon-dim;
-        margin-left: -1 * ($clr_baselineRem_1/8);
-        margin-top: -1 * ($clr_baselineRem_1/6);
+        margin-left: -0.125rem;
+        margin-top: -0.166667rem;
     }
 
     .alert-icon-wrapper {
         flex: 0 0 $alertIconWidth;
-        padding-top: 1px;
-        height: $clr_baselineRem_0_75;
+        padding-top: $clr-rem-1px;
+        height: 0.75rem;
     }
 
     .alert-item {
@@ -105,7 +105,7 @@ $clr-alert-colors: (
         display: flex;
         flex-wrap: nowrap;
         min-height: $clr-alert-item-min-height;
-        margin-bottom: $clr_baselineRem_0_25;
+        margin-bottom: 0.25rem;
 
         &:last-child {
             margin-bottom: 0;
@@ -113,9 +113,8 @@ $clr-alert-colors: (
     }
 
     .alert-items {
-        // -1 is for the border; specs count border as part of spacing;
-        $vertPadding: $clr_baselineRem_0_25 - 1 + ($clr_baselineRem_0_25/2);
-        $horizPadding: $clr_baselineRem_0_5 - 1;
+        $vertPadding: 0.333333rem;
+        $horizPadding: calc(0.5rem - #{$clr-default-borderwidth});
         flex: 1 1 auto;
         flex-flow: column nowrap;
         padding: $vertPadding $horizPadding;
@@ -132,13 +131,13 @@ $clr-alert-colors: (
         flex-shrink: 1;
         flex-basis: 98%; //needed for IE11
         max-width: 98%;
-        margin-right: $clr_baselineRem_0_5;
+        margin-right: 0.5rem;
         text-align: left;
     }
 
     .alert {
         @include clr-getTypePropertiesForDomElement(alert_text, (font-size, letter-spacing));
-        line-height: $clr_baselineRem_0_75;
+        line-height: 0.75rem;
         position: relative;
         box-sizing: border-box;
         display: flex;
@@ -187,7 +186,7 @@ $clr-alert-colors: (
 
             .dropdown:last-child {
                 // used to align far-right dropdown inside an alert
-                margin-right: -2px;
+                margin-right: -2 * $clr-rem-1px;
             }
 
             .dropdown-item {
@@ -196,7 +195,7 @@ $clr-alert-colors: (
         }
 
         .alert-action:not(:last-child) {
-            margin-right: $clr_baselineRem_0_5;
+            margin-right: 0.5rem;
         }
 
         .alert-action,
@@ -216,27 +215,27 @@ $clr-alert-colors: (
         }
 
         .close {
-            $closeBtnNudge: $clr_baselineRem_1/6;
-            width: $clr_baselineRem_1;
+            $closeBtnNudge: 0.166667rem;
+            width: 1rem;
             display: block;
-            height: $clr_baselineRem_1_5;
-            flex: 0 0 ($clr_baselineRem_1 + $closeBtnNudge);
+            height: 1.5rem;
+            flex: 0 0 (1rem + $closeBtnNudge);
             order: 100;
-            padding-right: $clr_baselineRem_1/6;
+            padding-right: $closeBtnNudge;
 
             clr-icon {
-                $alert-close-icon-dims: $clr_baselineRem_1 - $closeBtnNudge;
-                margin-top: -1 * ($clr_baselineRem_0_25 - 1);
+                $alert-close-icon-dims: calc(1rem - #{$clr-default-borderwidth});
+                margin-top: -0.125rem;
                 height: $alert-close-icon-dims;
                 width: $alert-close-icon-dims;
             }
         }
 
         .close ~ .alert-item > .alert-actions {
-            padding-right: $clr_baselineRem_0_5;
+            padding-right: 0.5rem;
 
             & > .alert-action:last-child {
-                margin-right: $clr_baselineRem_0_5;
+                margin-right: 0.5rem;
             }
         }
     }
@@ -245,7 +244,7 @@ $clr-alert-colors: (
         margin: 0;
         border: none;
         border-radius: 0;
-        max-height: $clr_baselineRem_4;
+        max-height: 4rem;
         overflow-y: auto;
 
         @include generateAlertType(app-info);
@@ -269,7 +268,7 @@ $clr-alert-colors: (
         .alert-items {
             // line-height of 24px on .alert-item inside app-level-alert
             // blows out the sizing, so we need vert-padding to be 6px, not 8px
-            $appLevelAlertVertPadding: $clr_baselineRem_0_25;
+            $appLevelAlertVertPadding: 0.25rem;
             padding-top: $appLevelAlertVertPadding;
             padding-bottom: $appLevelAlertVertPadding;
         }
@@ -277,7 +276,7 @@ $clr-alert-colors: (
         .alert-item {
             justify-content: center;
             align-items: center;
-            min-height: $clr_baselineRem_1;
+            min-height: 1rem;
 
             .btn {
                 @extend .btn-inverse;
@@ -293,11 +292,12 @@ $clr-alert-colors: (
         .close {
             color: $clr-app-level-alert-color;
             opacity: 0.8;
-            height: $clr_baselineRem_1_5;
+            height: 1.5rem;
+            overflow: hidden;
 
             clr-icon {
                 fill: $clr-app-level-alert-color;
-                margin-top: -3px;
+                margin-top: -0.208333rem;
             }
 
             &:focus,
@@ -314,26 +314,24 @@ $clr-alert-colors: (
     }
 
     .alert-sm {
-        $alertSmallLineHeight: 0.667 * $clr_baselineRem_1;
-        $alertSmallNudge: $clr_baselineRem_1/6; // basically 4px
+        $alertSmallLineHeight: 0.666667rem;
+        $alertSmallNudge: 0.166667rem; // basically 4px
 
         @include clr-getTypePropertiesForDomElement(alert-small_text, (letter-spacing));
 
         // need to use 11 instead of 12 here or else vertical alignment is thrown off
         // by a pixel due to improper browser rounding; browsers aren't rendering on the
         // sub-pixel required but rounding up to the nearest whole pixel...
-        font-size: $clr_baselineRem_0_5 - 1;
+        font-size: calc(0.5rem - 1px);
 
         line-height: $alertSmallLineHeight;
 
         .alert-items {
-            $alertSmallVertPadding: $alertSmallNudge - 1;
-            $alertSmallHorizPadding: $clr_baselineRem_0_25 - 1; // -1 due to borders
-            padding: $alertSmallVertPadding $alertSmallHorizPadding;
+            padding: calc(#{$alertSmallNudge} - #{$clr-default-borderwidth}) calc(0.25rem - #{$clr-default-borderwidth});
         }
 
         .alert-item {
-            padding-top: 1px;
+            padding-top: $clr-rem-1px;
             margin-bottom: $alertSmallNudge;
 
             &:last-child {
@@ -348,21 +346,26 @@ $clr-alert-colors: (
 
         .alert-icon {
             margin-left: -1 * $alertSmallNudge;
-            margin-top: -1 * ($clr_baselineRem_1/6);
+            margin-top: -1 * $alertSmallNudge;
         }
 
         .alert-item > span, .alert-text {
-            margin-right: $clr_baselineRem_0_25;
+            margin-right: 0.25rem;
         }
 
         .close {
             padding-right: 0;
-            flex: 0 0 $clr_baselineRem_1;
-            height: $clr_baselineRem_1;
+            flex: 0 0 1rem;
+            height: 1rem;
+            line-height: 1rem;
 
             clr-icon {
-                margin-top: -3px;
-                margin-right: -1px;
+                $smallAlertCloseIconDims: 0.833333rem;
+                margin-top: -1 * ($alertSmallNudge + $clr-rem-1px);
+                margin-right: -1 * $clr-rem-1px;
+                height: $smallAlertCloseIconDims;
+                width: $smallAlertCloseIconDims;
+                line-height: calc(#{$smallAlertCloseIconDims} + 1px);
             }
         }
     }
@@ -385,7 +388,8 @@ $clr-alert-colors: (
 
             .alert-actions {
                 flex: 1 0 100%;
-                padding-top: $clr_baselineRem_0_125;
+                padding-top: 0.125rem;
+                // TOCHECK: CALCULATIONS
                 padding-left: $clr-alert-icon-dimension-sm + $clr-icon-margin-right;
             }
         }
@@ -402,7 +406,7 @@ $clr-alert-colors: (
     .card {
         .alert {
             $clr-alert-card-horizontal-margin: 0;
-            $clr-alert-card-vertical-margin: $clr_baselineRem_0_25;
+            $clr-alert-card-vertical-margin: 0.25rem;
             margin: $clr-alert-card-vertical-margin $clr-alert-card-horizontal-margin;
         }
     }
@@ -410,7 +414,7 @@ $clr-alert-colors: (
     //2. Modal
     .modal {
         .alert + .modal-header {
-            margin-top: $clr_baselineRem_0_5;
+            margin-top: 0.5rem;
         }
     }
 }

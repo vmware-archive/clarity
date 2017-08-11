@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -37,8 +37,9 @@ $clr-progress-bgColor: $clr-light-gray !default;
         // placement in the layout.
         height: 2em;
         margin: 0;
-        max-height: rem(1);
-        min-height: rem(0.3);
+        // NOTE: previous measurements based on base font size of 14px; remove this comment once nobody cares...
+        max-height: 0.583333rem;
+        min-height: 0.166667rem;
         overflow: hidden;
 
         display: block;
@@ -127,7 +128,7 @@ $clr-progress-bgColor: $clr-light-gray !default;
                 top: 50%;
                 right: 0;
                 line-height: 1em;
-                margin-top: -0.5em;
+                margin-top: -0.375em;
                 // TODO: we will need to define different text colors depending on the
                 // background. at the very least we may find ourselves needing light/dark.
                 color: clr-getTextColor();
@@ -214,7 +215,7 @@ $clr-progress-bgColor: $clr-light-gray !default;
         &::after {
             animation: clr-progress-looper 2s ease-in-out infinite;
             content: ' ';
-            top: 0;
+            top: 0.166667rem;
             bottom: 0;
             left: 0;
             position: absolute;
@@ -222,6 +223,10 @@ $clr-progress-bgColor: $clr-light-gray !default;
             background-color: $clr-progress-defaultBarColor;
             width: 75%;
         }
+    }
+
+    .nav-item .progress::after {
+        top: 0;
     }
 
     .progress-static {
@@ -394,13 +399,13 @@ $clr-progress-bgColor: $clr-light-gray !default;
 
     // Inside Cards
 
-    $clr-progressInCard-height: rem(4/15);
+    $clr-progressInCard-height: 0.15625rem;
     .card-block,
     .card-footer {
         .progress, .progress-static {
             // by default, positioned at the topmost of its card-block container
             margin: 0;
-            margin-top: -1 * ($card-children-padding-vertical + 1);
+            margin-top: -1 * $card-children-padding-vertical;
             height: $clr-progressInCard-height;
             position: absolute;
             left: 0;
@@ -421,7 +426,7 @@ $clr-progress-bgColor: $clr-light-gray !default;
     }
 
     // Inside Nav Items
-    $clr-progressInNav-height: rem(3/15);
+    $clr-progressInNav-height: 0.2rem;
     .nav-item {
         .progress, .progress-static {
             // by default, positioned at the topmost of its card-block container
@@ -452,11 +457,11 @@ $clr-progress-bgColor: $clr-light-gray !default;
 
         & > * {
             flex: 0 0 auto;
-            padding-right: $clr_baselineRem_0_5;
+            padding-right: 0.5rem;
             // vertically center???
 
             &:first-child {
-                padding-right: $clr_baselineRem_0_75;
+                padding-right: 0.75rem;
             }
 
             &:last-child {
@@ -492,9 +497,9 @@ $clr-progress-bgColor: $clr-light-gray !default;
         }
     }
 
-    $clr-progressInline__inCard-height: rem(8/15);
+    $clr-progressInline__inCard-height: 0.53329167rem;
     .card-block .progress-block {
-        margin-bottom: $clr_baselineRem_0_5;
+        margin-bottom: 0.5rem;
         padding: 0;
 
         &:last-child {
@@ -503,7 +508,7 @@ $clr-progress-bgColor: $clr-light-gray !default;
 
         & > label {
             max-width: 33%;
-            line-height: $clr_baselineRem_0_75;
+            line-height: 0.75rem;
         }
 
         .progress, .progress-static {

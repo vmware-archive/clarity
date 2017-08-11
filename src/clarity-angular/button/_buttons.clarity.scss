@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -10,7 +10,7 @@ $clr-global-button-properties-map: (
         hover-background-color: $action-blues-lightest,
         hover-color: $action-blues-dark,
         active-box-shadow-color: $action-blues-light-midtone,
-        active-box-shadow-width-top: 1px,
+        active-box-shadow-width-top: $clr-rem-1px,
         disabled-color: $gray-darker,
         disabled-background-color: transparent,
         disabled-border-color: $gray-dark,
@@ -24,7 +24,7 @@ $clr-global-button-properties-map: (
         hover-background-color: $action-blues-dark,
         hover-color: $clr-white,
         active-box-shadow-color: $action-blues-darkest,
-        active-box-shadow-width-top: 2px,
+        active-box-shadow-width-top: 2 * $clr-rem-1px,
         disabled-color: $gray-darker,
         disabled-background-color: $gray-light-midtone,
         disabled-border-color: $gray-light-midtone,
@@ -38,7 +38,7 @@ $clr-global-button-properties-map: (
         hover-background-color: $greens-dark,
         hover-color: $clr-white,
         active-box-shadow-color: $greens-darker,
-        active-box-shadow-width-top: 2px,
+        active-box-shadow-width-top: 2 * $clr-rem-1px,
         disabled-color: $gray-darker,
         disabled-background-color: $gray-light-midtone,
         disabled-border-color: $gray-light-midtone,
@@ -52,7 +52,7 @@ $clr-global-button-properties-map: (
         hover-background-color: $reds-dark-midtone,
         hover-color: $clr-white,
         active-box-shadow-color: $reds-dark,
-        active-box-shadow-width-top: 2px,
+        active-box-shadow-width-top: 2 * $clr-rem-1px,
         disabled-color: $gray-darker,
         disabled-background-color: $gray-light-midtone,
         disabled-border-color: $gray-light-midtone,
@@ -66,7 +66,7 @@ $clr-global-button-properties-map: (
         hover-background-color: $greens-lightest,
         hover-color: $greens-darker,
         active-box-shadow-color: $clr-green,
-        active-box-shadow-width-top: 1px,
+        active-box-shadow-width-top: $clr-rem-1px,
         disabled-color: $gray-darker,
         disabled-background-color: transparent,
         disabled-border-color: $gray-dark,
@@ -80,7 +80,7 @@ $clr-global-button-properties-map: (
         hover-background-color: $reds-lighter,
         hover-color: $reds-dark,
         active-box-shadow-color: $reds-light,
-        active-box-shadow-width-top: 1px,
+        active-box-shadow-width-top: $clr-rem-1px,
         disabled-color: $gray-darker,
         disabled-background-color: transparent,
         disabled-border-color: $gray-dark,
@@ -108,7 +108,7 @@ $clr-global-button-properties-map: (
         hover-background-color: rgba($clr-white, 0.15),
         hover-color: $clr-white,
         active-box-shadow-color: rgba($clr-black, 0.25),
-        active-box-shadow-width-top: 1px,
+        active-box-shadow-width-top: $clr-rem-1px,
         disabled-color: $clr-white,
         disabled-background-color: transparent,
         disabled-border-color: $clr-white,
@@ -117,18 +117,12 @@ $clr-global-button-properties-map: (
     )
 );
 
-//Button Variables
-$clr-button-horizontal-padding: $clr_baselineRem_0_5 !default;
-$clr-button-height: $clr_baselineRem_1_5 !default;
-$clr-button-height-sm: $clr_baselineRem_1 !default;
-$clr-button-padding: 0 $clr-button-horizontal-padding !default;
-
 //Call to Action & Standard Button Appearance
 $clr-button-appearance-map: (
     standard: (
-        line-height: $clr-button-height-sm - 1,
+        line-height: calc(#{$clr-button-height-sm} - 1px),
         letter-spacing: 0.073em,
-        font-size: rem(11/$clr-rem-denominator),
+        font-size: 0.458333rem,
         font-weight: 500,
         height: $clr-button-height-sm,
         padding: $clr-button-padding
@@ -136,7 +130,7 @@ $clr-button-appearance-map: (
     form: (
         line-height: $clr-button-height,
         letter-spacing: 0.12em,
-        font-size: rem(12/$clr-rem-denominator),
+        font-size: 0.5rem,
         font-weight: 500,
         height: $clr-button-height,
         padding: $clr-button-padding
@@ -192,8 +186,8 @@ $clr-button-appearance-map: (
 }
 
 @mixin btn-min-max-widths() {
-    min-width: baselineRem(3);
-    max-width: baselineRem(15);
+    min-width: 3rem;
+    max-width: 15rem;
 }
 
 @mixin btn-text-properties() {
@@ -209,7 +203,7 @@ $clr-button-appearance-map: (
 
 @mixin btn-default-border-styles() {
     border-radius: $clr-default-borderradius;
-    border: 1px solid;
+    border: $clr-default-borderwidth solid;
 }
 
 @mixin btn-appearance() {
@@ -242,7 +236,7 @@ $clr-button-appearance-map: (
     .btn-group > .btn,
     .btn {
         clr-icon {
-            transform: translate3d(0px, -2px, 0);
+            transform: translate3d(0rem, -2 * $clr-rem-1px, 0);
         }
     }
 
@@ -337,9 +331,9 @@ $clr-button-appearance-map: (
     //Small Icon Button
     .btn-sm:not(.btn-link) {
         clr-icon {
-            width: 12px;
-            height: 12px;
-            transform: translate3d(0px, -1px, 0);
+            width: 0.5rem;
+            height: 0.5rem;
+            transform: translate3d(0rem, -1 * $clr-rem-1px, 0);
         }
     }
 
@@ -379,7 +373,7 @@ $clr-button-appearance-map: (
             display: inline-table;
 
             line-height: inherit;
-            padding: 0 12px;
+            padding: 0 0.5rem;
         }
     }
 

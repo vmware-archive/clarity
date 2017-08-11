@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -9,22 +9,22 @@ $clr-thead-bgcolor: $clr-near-white !default;
 // Borders
 $clr-tablerow-bordercolor: $clr-light-gray !default;
 $clr-table-bordercolor: $clr-light-midtone-gray !default;
-$clr-table-borderwidth: 1px !default;
+$clr-table-borderwidth: $clr-default-borderwidth !default;
 $clr-table-borderstyle: $clr-table-borderwidth solid $clr-table-bordercolor !default;
 
 // Etc.
 $clr-table-fontsize: clr-getTypePropertyValueForDomElement(table_text, font-size);
-$clr-table-lineheight: rem(1) !default;
-$clr-table-cellpadding: $clr_baselineRem_0_5 !default;
-$clr-table-smallpadding: 0.5 * $clr-table-cellpadding !default;
+$clr-table-lineheight: 0.583333rem !default;
+$clr-table-cellpadding: 0.5rem !default;
+$clr-table-smallpadding: 0.25rem !default;
 
-$clr-table-lineheightPaddingShim: ($clr_baselineRem_1 - $clr-table-lineheight)/2 !default;
-$clr-table-topcellpadding: floor(($clr-table-cellpadding - $clr-table-borderwidth) * 0.5 + $clr-table-lineheightPaddingShim) !default;
-$clr-table-bottomcellpadding: $clr_baselineRem_1_5 - $clr-table-borderwidth - $clr-table-lineheight - $clr-table-topcellpadding !default;
+$clr-table-lineheightPaddingShim: (1rem - $clr-table-lineheight)/2 !default;
+$clr-table-topcellpadding: $clr-table-cellpadding - $clr-rem-1px !default;
+$clr-table-bottomcellpadding: $clr-table-cellpadding - $clr-rem-1px !default;
 
 // Border radius of corner cells needs to be slightly less than the table's,
 // To make sure they correctly cover the whole area up to the border.
-$clr-table-cornercellradius: $clr-default-borderradius - 1 !default;
+$clr-table-cornercellradius: calc(#{$clr-default-borderradius} - 1px) !default;
 
 // Mixin for basic table styles to be able to reuse them on non-table elements.
 @mixin basic-table($table, $thead, $tbody, $tr, $th, $td) {
@@ -35,7 +35,8 @@ $clr-table-cornercellradius: $clr-default-borderradius - 1 !default;
 
         background-color: $clr-table-bgcolor;
         color: clr-getTextColor($clr-table-bgcolor, text);
-        margin: $clr_baselineRem_1 0 0 0;
+        margin: 0;
+        margin-top: 1rem;
         max-width: 100%;
         width: 100%;
 
@@ -53,7 +54,7 @@ $clr-table-cornercellradius: $clr-default-borderradius - 1 !default;
                 text-align: left;
 
                 &:first-child {
-                    padding-left: $clr-table-smallpadding; // 0.25brem or 6px...
+                    padding-left: $clr-table-smallpadding;
                 }
             }
         }
@@ -184,7 +185,7 @@ $clr-table-cornercellradius: $clr-default-borderradius - 1 !default;
             border-top: 0 none;
 
             // there's no border so we have to adjust padding to preserve baseline.
-            padding-top: $clr-table-topcellpadding + $clr-table-borderwidth;
+            padding-top: calc(#{$clr-table-topcellpadding} + #{$clr-table-borderwidth});
 
             &:first-child {
                 border-right: 0 none;
@@ -208,18 +209,21 @@ $clr-table-cornercellradius: $clr-default-borderradius - 1 !default;
     }
 
     .table.table-compact {
-        $clr-compact-topcellpadding: floor($clr-table-lineheightPaddingShim - $clr-table-borderwidth * 0.5);
-        $clr-compact-bottomcellpadding: baselineRem(1) - $clr-table-borderwidth - $clr-table-lineheight - $clr-compact-topcellpadding;
+        $table--compact-rowHeight: 1rem; 
+        $table--compact-verticalPadding: ($table--compact-rowHeight - $clr-table-lineheight)/2;
 
         th, td {
-            padding-top: $clr-compact-topcellpadding;
-            padding-bottom: $clr-compact-bottomcellpadding;
+            // nudge down to force row to 24px height with border
+            padding-top: calc(#{$table--compact-verticalPadding} + 1px);
+            padding-bottom: $table--compact-verticalPadding;
         }
 
         &.table-noborder {
             th, td {
-                padding-top: $clr-compact-topcellpadding + $clr-table-borderwidth;
-                padding-bottom: $clr-compact-bottomcellpadding;
+                // nudge down to force row to 24px height with border
+                padding-top: calc(#{$table--compact-verticalPadding} + 2px);
+                // account for now missing bottom border
+                padding-bottom: calc(#{$table--compact-verticalPadding} + 1px);
             }
         }
     }

@@ -1,27 +1,28 @@
 //General
-$vertical-nav-width: $clr_baselineRem_1 * 10;
-$vertical-nav-min-width: $clr_baselineRem_2;
-$vertical-nav-item-height: $clr_baselineRem_1_5;
+$vertical-nav-width: 10rem !default;
+$vertical-nav-min-width: 2rem !default;
+$vertical-nav-item-height: 1.5rem !default;
+// TODO: better to use the color contrast code here
 $vertical-nav-item-color: $clr-dark-gray;
 $vertical-nav-bg-color: $clr-light-gray;
 $vertical-nav-hover-bg-color: $clr-white;
-$vertical-nav-top-padding: $clr_baselineRem_1;
+$vertical-nav-top-padding: 1rem !default;
 
 //Trigger
-$vertical-nav-trigger-collapsed-margin: ($vertical-nav-min-width - $vertical-nav-item-height) / 4;
+$vertical-nav-trigger-collapsed-margin: 0.125rem !default;
 
 //Icons
-$vertical-nav-icon-size: $clr-icon-dimension-sm;
-$vertical-nav-icon-right-margin: $clr_baselineRem_0_25;
-$vertical-nav-collapsed-caret-size: 10px;
+$vertical-nav-icon-size: 0.666667rem !default;
+$vertical-nav-icon-right-margin: 0.25rem !default;
+$vertical-nav-collapsed-caret-size: 0.416667rem !default;
 $vertical-nav-icon-active-color: $clr-action-blue;
 
 //Links
-$vertical-nav-link-padding-right: $clr_baselineRem_0_5;
-$vertical-nav-link-padding-left: $clr_baselineRem_1;
+$vertical-nav-link-padding-right: 0.5rem !default;
+$vertical-nav-link-padding-left: 1rem !default;
 
 //Divider
-$vertical-nav-divider-margin: $clr_baselineRem_0_5;
+$vertical-nav-divider-margin: 0.5rem !default;
 
 //Align
 $vertical-nav-trigger-icon-align-margin: ($vertical-nav-item-height - $vertical-nav-icon-size) / 2;
@@ -194,7 +195,7 @@ $vertical-nav-trigger-icon-align-margin: ($vertical-nav-item-height - $vertical-
         .nav-trigger + .nav-content {
             //Dims
             border-top: $clr-default-borderwidth solid rgba($gray-darker, 0.2);
-            padding-top: $clr_baselineRem_0_5;
+            padding-top: 0.5rem;
         }
 
         .nav-group-text,
@@ -345,7 +346,8 @@ $vertical-nav-trigger-icon-align-margin: ($vertical-nav-item-height - $vertical-
 
             .nav-icon {
                 //Dims
-                margin: 0 0 0 ($vertical-nav-min-width - $vertical-nav-icon-size) / 2;
+                margin: 0;
+                margin-left: 0.666667rem;
             }
 
             .nav-group-content {
@@ -381,7 +383,7 @@ $vertical-nav-trigger-icon-align-margin: ($vertical-nav-item-height - $vertical-
                     //Dims
                     height: $vertical-nav-item-height;
                     width: $vertical-nav-collapsed-caret-size;
-                    margin-left: $clr-baselineRem_0_125;
+                    margin-left: 0.125rem;
                     margin-right: 0;
                 }
             }

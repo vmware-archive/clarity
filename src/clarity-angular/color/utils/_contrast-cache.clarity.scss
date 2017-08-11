@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -53,11 +53,11 @@ $clr-gray-contrastCache: (
         middle-light: ( low: null, default: null, high: null, superHigh: null),
         middle-dark: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: null )
     ),
-    #747474: (
+    #737373: (
         lightest: ( low: $clr-white, default: $clr-white, high: null, superHigh: null),
-        darkest: ( low: $clr-light-gray, default: $clr-white, high: null, superHigh: null),
-        middle-light: ( low: $clr-near-white, default: $clr-white, high: null, superHigh: null),
-        middle-dark: ( low: null, default: null, high: null, superHigh: null)
+        darkest: ( low: $clr-light-gray, default: $clr-near-white, high: null, superHigh: null),
+        middle-light: ( low: $clr-near-white, default: $clr-near-white, high: null, superHigh: null),
+        middle-dark: ( low: $clr-black, default: null, high: null, superHigh: null)
     ),
     #565656: (
         lightest: ( low: $clr-white, default: $clr-white, high: $clr-white, superHigh: null),

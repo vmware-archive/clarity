@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -13,6 +13,9 @@
 
     .checkbox,
     .checkbox-inline {
+        $checkmark-full-size: $clr-checkbox-radio-height / 2;
+        $checkmark-half-size: $checkmark-full-size / 2;
+
         position: relative;
 
         //Hide the default checkbox behind the pseudo elements
@@ -37,16 +40,18 @@
 
         //Checkmark
         input[type="checkbox"] + label::after {
+            $checkmark-border-style: ($clr-checkbox-radio-height / 8) solid white;
+
             position: absolute;
             content: '';
             display: none;
-            height: ($clr-checkbox-radio-height / 4 + 1);
-            width: $clr-checkbox-radio-height / 2;
-            border-left: 2px solid white;
-            border-bottom: 2px solid white;
-            top: ($clr_baselineRem_1 - $clr-checkbox-radio-height) / 2;
-            left: $clr-checkbox-radio-height / 4;
-            transform: translate(0, $clr-checkbox-radio-height/4) rotate(-45deg);
+            height: $checkmark-half-size + $clr-rem-1px;
+            width: $checkmark-full-size;
+            border-left: $checkmark-border-style;
+            border-bottom: $checkmark-border-style;
+            top: (1rem - $clr-checkbox-radio-height) / 2;
+            left: $checkmark-half-size;
+            transform: translate(0, $checkmark-half-size) rotate(-45deg);
         }
 
         input[type="checkbox"]:checked + label::before {
@@ -59,13 +64,13 @@
         }
 
         input[type="checkbox"]:indeterminate + label::before {
-            border: 1px solid $clr-indeterminate-checkbox-border-color;
+            border: $clr-default-borderwidth solid $clr-indeterminate-checkbox-border-color;
         }
         input[type="checkbox"]:indeterminate + label::after {
             border-left: none;
             border-bottom-color: $clr-indeterminate-checkbox-border-color;
             display: inline-block;
-            transform: translate(0, $clr-checkbox-radio-height/4);
+            transform: translate(0, $checkmark-half-size);
         }
 
         &.disabled {
@@ -78,7 +83,7 @@
             }
 
             input[type="checkbox"]:checked + label::after {
-                $disabled-border-style: 2px solid $clr-form-field-disabled-color;
+                $disabled-border-style: ($clr-checkbox-radio-height / 8) solid $clr-form-field-disabled-color;
                 border-left: $disabled-border-style;
                 border-bottom: $disabled-border-style;
             }

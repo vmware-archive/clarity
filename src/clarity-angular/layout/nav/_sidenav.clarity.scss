@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -20,17 +20,17 @@ $clr-sidenav-border-color: $clr-light-midtone-gray !default;
     .sidenav {
         @include clr-getTypePropertiesForDomElement(sidenav_text, (line-height));
 
-        max-width: baselineRem(13);
-        min-width: baselineRem(9);
+        max-width: 13rem;
+        min-width: 9rem;
         width: $clr-sidenav-width;
-        border-right: 1px solid $clr-sidenav-border-color;
+        border-right: $clr-default-borderwidth solid $clr-sidenav-border-color;
         display: flex;
         flex-direction: column;
 
         .sidenav-content {
             flex: 1 1 auto;
             overflow-x: hidden;
-            margin-bottom: $clr_baselineRem_1;
+            padding-bottom: 1rem;
 
             //nav link common styles
             .nav-link {
@@ -44,8 +44,8 @@ $clr-sidenav-border-color: $clr-light-midtone-gray !default;
 
             & > .nav-link {
                 @include clr-getTypePropertiesForDomElement(sidenav_sectionHeader, (color, font-size, font-weight, line-height, font-family, letter-spacing));
-                margin: $clr_baselineRem_1 0 0 $clr_baselineRem_1_25;
-                padding-left: $clr_baselineRem_0_5;
+                margin: 1rem 0 0 1.25rem;
+                padding-left: 0.5rem;
 
                 @include nav-link-colors();
             }
@@ -56,12 +56,12 @@ $clr-sidenav-border-color: $clr-light-midtone-gray !default;
 
             @include clr-getTypePropertiesForDomElement(sidenav_text, (color, font-size, font-weight, letter-spacing));
 
-            margin-top: $clr_baselineRem_1;
+            margin-top: 1rem;
             width: 100%;
 
             .nav-list,
             label {
-                padding: 0 0 0 $clr_baselineRem_1_75;
+                padding: 0 0 0 1.75rem;
             }
 
             .nav-list {
@@ -69,11 +69,11 @@ $clr-sidenav-border-color: $clr-light-midtone-gray !default;
                 margin-top: 0;
                 overflow: hidden;
 
-                $navlink-padding: 4px;
+                $navlink-padding: 0.166667rem;
 
                 .nav-link {
-                    line-height: $clr-sidenav-fontsize + 2; // need a little extra to handle descenders
-                    padding: $navlink-padding 0 $navlink-padding $clr_baselineRem_0_5;
+                    line-height: 0.666667rem; // need a little extra to handle descenders
+                    padding: $navlink-padding 0 $navlink-padding 0.5rem;
 
                     @include nav-link-colors();
                 }
@@ -89,9 +89,9 @@ $clr-sidenav-border-color: $clr-light-midtone-gray !default;
         }
 
         .collapsible {
-            $clr-sidenav-caret-xOffset: baselineRem(8/24);
-            $clr-sidenav-caret-yOffset: baselineRem(7/24);
-            $clr-sidenav-caret-label-padding: baselineRem(32/24);
+            $clr-sidenav-caret-xOffset: 0.333333rem;
+            $clr-sidenav-caret-yOffset: 0.291667rem;
+            $clr-sidenav-caret-label-padding: 1.333333rem;
 
             label {
                 cursor: pointer;

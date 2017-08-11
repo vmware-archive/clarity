@@ -1,13 +1,24 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-$clr-baseline: 24px !default;
+$clr-baseline-px: 24px !default;
+$clr-baseline-int: $clr-baseline-px / 1px;
 
+// TODO: deprecated
+$clr-baseline: 1rem !default;
+
+// TODO: deprecated
 @function baselineRem($remSize) {
-  @return $remSize * $clr-baseline;
+    // @warn 'baselineRem() and $clr_baselineRem variables are deprecated. Please change units to rem.';
+    @return $remSize * 1rem;
 }
 
+// TODO: this exists because we need to compute 1px equivalents in themes on some values that
+// cannot use calc() in IE11. 
+$clr-rem-1px: 1/$clr-baseline-int * 1rem;
+
+// TODO: deprecated
 //BaselineRem Variables
 $clr_baselineRem_0_1: baselineRem(0.1);
 $clr_baselineRem_0_125: baselineRem(0.125);
@@ -44,22 +55,23 @@ $clr-breakpoints: (
 $clr-font: Metropolis, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !default; //Default font stack for Clarity
 $clr-altFont: $clr-font !default; //TODO: TBD. Alternative font for Clarity
 $clr-monoFont: Consolas, Monaco, Courier, monospace !default;
+
+// TODO: deprecated <= convert this section to use rem or remove it...
 $clr-font-base-size: 14 !default;
 $clr-font-size: unquote($clr-font-base-size+'px') !default;
 $clr-rem-denominator: $clr-font-base-size !default;
+
 $clr-kerning-lotsatext: normal !default; // 14px, but a lot of it
 $clr-kerning-smalltext: normal !default; // 14px-12px
 $clr-kerning-bigtext: 0.01em !default; // some types of 16px over dark background
 $clr-kerning-tinytext: 0.03em !default; // 11px and lower
 
-
-//Because the "rem" unit does not work on pseudo-elements in IE,
-//we use a function to compute "rem" to "px" with Sass.
+// TODO: deprecated
+// WARNING: THIS FUNCTION ASSUMES rem IS 14PX!!!
 @function rem($remSize) {
-  @return $remSize * $clr-font-base-size * 1px;
+    @warn 'rem() is deprecated. Please change units to rem.';
+    @return $remSize * $clr-font-base-size * 1px;
 };
-
-
 
 $clr-font-weights: (
     light: 200,
@@ -82,10 +94,10 @@ $clr-h1:(
     color: $clr-black,
     font-weight: $clr-typography-lightfont,
     font-family: $clr-altFont,
-    font-size: rem(32/$clr-rem-denominator),
+    font-size: 1.333333rem,
     letter-spacing: normal,
-    line-height: $clr_baselineRem_2,
-    margin-top: $clr_baselineRem_1,
+    line-height: 2rem,
+    margin-top: 1rem,
     margin-bottom: 0
   ),
   small:(),
@@ -99,10 +111,10 @@ $clr-h2:(
     color: $clr-black,
     font-weight: $clr-typography-lightfont,
     font-family: $clr-altFont,
-    font-size: rem(28/$clr-rem-denominator),
+    font-size: 1.166667rem,
     letter-spacing: normal,
-    line-height: $clr_baselineRem_2,
-    margin-top: $clr_baselineRem_1,
+    line-height: 2rem,
+    margin-top: 1rem,
     margin-bottom: 0
   ),
   small:(),
@@ -116,10 +128,10 @@ $clr-h3:(
     color: $clr-black,
     font-weight: $clr-typography-lightfont,
     font-family: $clr-altFont,
-    font-size: rem(22/$clr-rem-denominator),
+    font-size: 0.916667rem,
     letter-spacing: normal,
-    line-height: $clr_baselineRem_1,
-    margin-top: $clr_baselineRem_1,
+    line-height: 1rem,
+    margin-top: 1rem,
     margin-bottom: 0
   ),
   small:(),
@@ -133,10 +145,10 @@ $clr-h4:(
     color: $clr-black,
     font-weight: $clr-typography-lightfont,
     font-family: $clr-altFont,
-    font-size: rem(18/$clr-rem-denominator),
+    font-size: 0.75rem,
     letter-spacing: normal,
-    line-height: $clr_baselineRem_1,
-    margin-top: $clr_baselineRem_1,
+    line-height: 1rem,
+    margin-top: 1rem,
     margin-bottom: 0
   ),
   small:(),
@@ -149,10 +161,10 @@ $clr-h5:(
   clr-common: (
     font-weight: $clr-typography-regfont,
     font-family: $clr-altFont,
-    font-size: rem(16/$clr-rem-denominator),
+    font-size: 0.666667rem,
     letter-spacing: $clr-kerning-bigtext,
-    line-height: $clr_baselineRem_1,
-    margin-top: $clr_baselineRem_1,
+    line-height: 1rem,
+    margin-top: 1rem,
     margin-bottom: 0
   ),
   small:(),
@@ -165,10 +177,10 @@ $clr-h6:(
   clr-common: (
     font-weight: $clr-typography-sboldfont,
     font-family: $clr-altFont,
-    font-size: rem(14/$clr-rem-denominator),
+    font-size: 0.583333rem,
     letter-spacing: $clr-kerning-smalltext,
-    line-height: $clr_baselineRem_1,
-    margin-top: $clr_baselineRem_1,
+    line-height: 1rem,
+    margin-top: 1rem,
     margin-bottom: 0,
     color: $clr-near-black
   ),
@@ -180,19 +192,19 @@ $clr-h6:(
 
 
 //3. Paragraphs
-$clr-typography-smalltext: rem(13/$clr-rem-denominator) !default;
-$clr-typography-xsmalltext: rem(12/$clr-rem-denominator) !default;
-$clr-typography-xxsmalltext: rem(11/$clr-rem-denominator) !default;
-$clr-typography-tinytext: rem(10/$clr-rem-denominator) !default;
+$clr-typography-smalltext: 0.541667rem !default; // 13px
+$clr-typography-xsmalltext: 0.5rem !default; // 12px
+$clr-typography-xxsmalltext: 0.458333rem !default; // 11px
+$clr-typography-tinytext: 0.416667rem !default; // 10px
 
 // keeping this here as an easter egg. we use it on the website and it's not hurting anything. usage = intro text
 $clr-p0: (
   clr-common: (
     font-weight: $clr-typography-lightfont,
-    font-size: rem(20/$clr-rem-denominator),
+    font-size: 0.833333rem,
     letter-spacing: normal,
-    line-height: $clr_baselineRem_1,
-    margin-top: $clr_baselineRem_1,
+    line-height: 1rem,
+    margin-top: 1rem,
     margin-bottom: 0
   ),
   small:(),
@@ -204,10 +216,10 @@ $clr-p0: (
 $clr-p1: (
   clr-common: (
     font-weight: $clr-typography-regfont,
-    font-size: rem(1),
+    font-size: 0.583333rem,
     letter-spacing: $clr-kerning-lotsatext,
-    line-height: $clr_baselineRem_1,
-    margin-top: $clr_baselineRem_1,
+    line-height: 1rem,
+    margin-top: 1rem,
     margin-bottom: 0
   ),
   small:(),
@@ -221,8 +233,8 @@ $clr-p2: (
     font-weight: $clr-typography-sboldfont,
     font-size: $clr-typography-smalltext,
     letter-spacing: $clr-kerning-smalltext,
-    line-height: $clr_baselineRem_1,
-    margin-top: $clr_baselineRem_1,
+    line-height: 1rem,
+    margin-top: 1rem,
     margin-bottom: 0
   ),
   small:(),
@@ -236,8 +248,8 @@ $clr-p3: (
     font-weight: $clr-typography-regfont,
     font-size: $clr-typography-smalltext,
     letter-spacing: $clr-kerning-smalltext,
-    line-height: $clr_baselineRem_1,
-    margin-top: $clr_baselineRem_1,
+    line-height: 1rem,
+    margin-top: 1rem,
     margin-bottom: 0
   ),
   small:(),
@@ -251,8 +263,8 @@ $clr-p4: (
     font-weight: $clr-typography-boldfont,
     font-size: $clr-typography-xsmalltext,
     letter-spacing: $clr-kerning-smalltext,
-    line-height: $clr_baselineRem_1,
-    margin-top: $clr_baselineRem_1,
+    line-height: 1rem,
+    margin-top: 1rem,
     margin-bottom: 0
   ),
   small:(),
@@ -266,8 +278,8 @@ $clr-p5: (
     font-weight: $clr-typography-regfont,
     font-size: $clr-typography-xsmalltext,
     letter-spacing: $clr-kerning-smalltext,
-    line-height: $clr_baselineRem_1,
-    margin-top: $clr_baselineRem_1,
+    line-height: 1rem,
+    margin-top: 1rem,
     margin-bottom: 0
   ),
   small:(),
@@ -281,8 +293,8 @@ $clr-p6: (
     font-weight: $clr-typography-boldfont,
     font-size: $clr-typography-xxsmalltext,
     letter-spacing: $clr-kerning-tinytext,
-    line-height: $clr_baselineRem_0_5,
-    margin-top: $clr_baselineRem_1,
+    line-height: 0.5rem,
+    margin-top: 1rem,
     margin-bottom: 0
   ),
   small:(),
@@ -296,8 +308,8 @@ $clr-p7: (
     font-weight: $clr-typography-regfont,
     font-size: $clr-typography-xxsmalltext,
     letter-spacing: $clr-kerning-tinytext,
-    line-height: $clr_baselineRem_0_5,
-    margin-top: $clr_baselineRem_1,
+    line-height: 0.5rem,
+    margin-top: 1rem,
     margin-bottom: 0
   ),
   small:(),
@@ -311,8 +323,8 @@ $clr-p8: (
     font-weight: $clr-typography-regfont,
     font-size: $clr-typography-tinytext,
     letter-spacing: $clr-kerning-tinytext,
-    line-height: $clr_baselineRem_0_5,
-    margin-top: $clr_baselineRem_1,
+    line-height: 0.5rem,
+    margin-top: 1rem,
     margin-bottom: 0
   ),
   small:(),
@@ -380,24 +392,24 @@ $clr-typography-dom-to-type-element: (
 
 //4. Navigation
 $clr-sidenav-width: 18% !default;
-$clr-header-height: $clr_baselineRem_2_5 !default;
-$clr-subnav-height: $clr_baselineRem_1_5 !default;
+$clr-header-height: 2.5rem !default;
+$clr-subnav-height: 1.5rem !default;
 
 //5.Content Area Paddings
-$clr-content-area-padding-top: $clr_baselineRem_1 !default;
-$clr-content-area-padding-right: $clr_baselineRem_1 !default;
-$clr-content-area-padding-bottom: $clr_baselineRem_1 !default;
-$clr-content-area-padding-left: $clr_baselineRem_1 !default;
+$clr-content-area-padding-top: 1rem !default;
+$clr-content-area-padding-right: 1rem !default;
+$clr-content-area-padding-bottom: 1rem !default;
+$clr-content-area-padding-left: 1rem !default;
 
 //6. Cards
-$clr-card-outer-margin: $clr_baselineRem_0_75 !default;
-$clr-card-inner-margin: $clr_baselineRem_0_5 !default;
+$clr-card-outer-margin: 0.75rem !default;
+$clr-card-inner-margin: 0.5rem !default;
 
 //7. Modal
-$clr-modal-content-padding-top: $clr_baselineRem_1 !default;
-$clr-modal-content-padding-right: $clr_baselineRem_1 !default;
-$clr-modal-content-padding-bottom: $clr_baselineRem_1 !default;
-$clr-modal-content-padding-left: $clr_baselineRem_1 !default;
+$clr-modal-content-padding-top: 1rem !default;
+$clr-modal-content-padding-right: 1rem !default;
+$clr-modal-content-padding-bottom: 1rem !default;
+$clr-modal-content-padding-left: 1rem !default;
 
 //8. Colors
 //TODO: Refactor colors across clarity to use these variables so that there
@@ -463,27 +475,31 @@ $clr-custom-links-hover-color: $gray-light !default;
 $clr-selection-color: #D9E4EA !default;
 
 // 9. Misc
-$clr-default-borderradius: $clr_baselineRem_0_125 !default;
+$clr-default-borderradius: 0.125rem !default;
 $clr-default-borderwidth: 1px !default;
 
 //10. Buttons
-$clr-button-vertical-margin: $clr_baselineRem_0_25 !default;
-$clr-button-horizontal-margin: $clr_baselineRem_0_5 !default;
+$clr-button-vertical-margin: 0.25rem !default;
+$clr-button-horizontal-margin: 0.5rem !default;
+$clr-button-horizontal-padding: 0.5rem !default;
+$clr-button-height: 1.5rem !default;
+$clr-button-height-sm: 1rem !default;
+$clr-button-padding: 0 $clr-button-horizontal-padding !default;
 
 //11. Icons
-$clr-icon-dimension-sm: rem(16/$clr-rem-denominator) !default;
-$clr-alert-icon-dimension-sm: rem(18/$clr-rem-denominator) !default;
+$clr-icon-dimension-sm: 0.666667rem !default;
+$clr-alert-icon-dimension-sm: 0.75rem !default;
 
 //12. Dropdowns Caret Icon
-$clr-dropdown-caret-icon-dimension: 10px;
-$clr-dropdown-caret-left-margin: 2px;
+$clr-dropdown-caret-icon-dimension: 0.416667rem;
+$clr-dropdown-caret-left-margin: 0.083333rem;
 
 //13. Outline Offset
 $clr-outline-offset: -5px;
 
 //BS4 overrides
 $enable-flex: true;
-$grid-gutter-width-base: $clr_baselineRem_1;
+$grid-gutter-width-base: 1rem;
 $grid-gutter-widths: (
   xs: $grid-gutter-width-base,
   sm: $grid-gutter-width-base,

@@ -76,7 +76,7 @@ $dropdown-white: clr-getColor(lightest);
         display: flex;
         flex-direction: column;
         background: $dropdown-white;
-        padding: $clr_baselineRem_0_75 0;
+        padding: $clr_baselineRem_0_5 0;
         border: 1px solid clr-getColor(light-midtone);
         box-shadow: 0 1px 3px rgba(clr-getColor(dark), 0.25);
         min-width: baselineRem(5);
@@ -84,11 +84,12 @@ $dropdown-white: clr-getColor(lightest);
         border-radius: $clr-default-borderradius;
         visibility: hidden;
         z-index: map-get($clr-layers, dropdown-menu);
-
+        
         .dropdown-header {
             @include clr-getTypePropertiesForDomElement(dropdown_header, (font-size, font-weight, letter-spacing));
-
+            
             padding: 0 $clr_baselineRem_0_5;
+            line-height: $clr_baselineRem_0_75;
             margin: 0;
             color: clr-getColor(darkest);
 
@@ -198,7 +199,7 @@ $dropdown-white: clr-getColor(lightest);
 
         .dropdown-divider {
             border-bottom: 1px solid clr-getColor(light);
-            margin: $clr_baselineRem_0_75 0;
+            margin: $clr_baselineRem_0_25 0;
         }
     }
 

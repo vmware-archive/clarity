@@ -29,12 +29,8 @@ $clr-sidenav-border-color: $clr-light-midtone-gray !default;
 
         .sidenav-content {
             flex: 1 1 auto;
-            overflow: hidden;
+            overflow-x: hidden;
             margin-bottom: $clr_baselineRem_1;
-
-            &:hover {
-                overflow-y: auto;
-            }
 
             //nav link common styles
             .nav-link {

@@ -9,12 +9,14 @@ import {WillyWonka} from "./willy-wonka";
 export abstract class OompaLoompa implements AfterContentChecked {
     // FIXME: Request Injector once we move to Angular 4.2+, it'll allow easier refactors
     constructor(cdr: ChangeDetectorRef, willyWonka: WillyWonka) {
-        willyWonka.chocolate.subscribe(() => {
+        this.willyWonkaSubscription = willyWonka.chocolate.subscribe(() => {
             if (this.latestFlavor !== this.flavor) {
                 cdr.detectChanges();
             }
         });
     }
+
+    private willyWonkaSubscription: any;
 
     private latestFlavor: any;
 
@@ -22,5 +24,9 @@ export abstract class OompaLoompa implements AfterContentChecked {
 
     ngAfterContentChecked() {
         this.latestFlavor = this.flavor;
+    }
+
+    ngOnDestroy() {
+        this.willyWonkaSubscription.unsubscribe();
     }
 }

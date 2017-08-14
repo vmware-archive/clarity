@@ -15,7 +15,7 @@ import {ExpandableRowsCount} from "./providers/global-expandable-rows";
 import {HideableColumnService} from "./providers/hideable-column.service";
 import {RowActionService} from "./providers/row-action-service";
 import {Selection, SelectionType} from "./providers/selection";
-
+import {IfOpenService} from "../../utils/conditional/if-open.service";
 
 let nbRow: number = 0;
 
@@ -35,9 +35,11 @@ let nbRow: number = 0;
                     <label for="{{id}}"></label>
                 </div>
             </clr-dg-cell>
-            <clr-dg-cell *ngIf="rowActionService.hasActionableRow"
-                         class="datagrid-row-actions datagrid-fixed-column">
-                <ng-content select="clr-dg-action-overflow"></ng-content>
+            <clr-dg-cell *ngIf="rowActionService.hasActionableRow" class="datagrid-row-actions datagrid-fixed-column">
+                <button clrDatagridRowActionsTrigger class="datagrid-action-toggle">
+                    <clr-icon shape="ellipsis-vertical"></clr-icon>
+                </button>
+                <ng-content select="clr-dg-row-actions"></ng-content>
             </clr-dg-cell>
             <clr-dg-cell *ngIf="globalExpandable.hasExpandableRow"
                          class="datagrid-expandable-caret datagrid-fixed-column">
@@ -57,7 +59,7 @@ let nbRow: number = 0;
         <ng-template *ngIf="!expand.replace && expand.expanded && !expand.loading"
                      [ngTemplateOutlet]="detail"></ng-template>
 
-        <!-- 
+        <!--
             We need the "project into template" hack because we need this in 2 different places
             depending on whether the details replace the row or not.
         -->
@@ -66,7 +68,7 @@ let nbRow: number = 0;
         </ng-template>
     `,
     host: {"[class.datagrid-row]": "true", "[class.datagrid-selected]": "selected"},
-    providers: [Expand, {provide: LoadingListener, useExisting: Expand}]
+    providers: [Expand, IfOpenService, {provide: LoadingListener, useExisting: Expand}]
 })
 export class DatagridRow implements AfterContentInit {
     public id: string;

@@ -366,11 +366,6 @@
             }
         }
 
-        .datagrid-row-actions clr-icon {
-            height: $clr-table-lineheight;
-            vertical-align: bottom;
-        }
-
         .datagrid-signpost-trigger {
             height: $clr_baselineRem_1_5 - 1;
             padding: 0 12px 0;
@@ -420,6 +415,111 @@
             &.datagrid-selected {
                 color: $clr-black;
                 background-color: $clr-selection-color;
+            }
+
+            clr-db-row-actions-content {
+                visibility: hidden;
+
+                &.active {
+                    visibility: visible;
+                }
+            }
+
+            clr-dg-row-actions {
+                position: relative;
+                background: $clr-white;
+                padding: $clr_baselineRem_0_25 $clr_baselineRem_0_25;
+                margin-left: $clr_baselineRem_0_25;
+                border: 1px solid $gray-light-midtone;
+                box-shadow: 0 1px 3px rgba($gray-dark, 0.25);
+                border-radius: $clr-default-borderradius;
+                font-weight: normal;
+                z-index: map-get($clr-layers, dropdown-menu);
+                white-space: nowrap;
+                display: block;
+                visibility: hidden;
+
+                &.active {
+                    visibility: visible;
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right: 100%;
+                    width: 0;
+                    height: 0;
+                    margin-top: -1 * $clr-datagrid-action-arrow-size;
+                    border-right: $clr-datagrid-action-arrow-size solid $gray-light-midtone;
+                    border-top: $clr-datagrid-action-arrow-size solid transparent;
+                    border-bottom: $clr-datagrid-action-arrow-size solid transparent;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right: 100%;
+                    width: 0;
+                    height: 0;
+                    margin-top: -1 * $clr-datagrid-action-arrow-size + 1;
+                    border-right: $clr-datagrid-action-arrow-size - 1 solid $clr-white;
+                    border-top: $clr-datagrid-action-arrow-size - 1 solid transparent;
+                    border-bottom: $clr-datagrid-action-arrow-size - 1 solid transparent;
+                }
+
+                .action-item {
+                    @include clr-getTypePropertiesForDomElement(dropdown_text, (color, font-size, letter-spacing));
+                    $adjusted_lineHeight: clr-getTypePropertyValueForDomElement(dropdown_text, line-height) - 1;
+
+                    background: transparent;
+                    border: 0;
+                    color: clr-getTextColor();
+                    cursor: pointer;
+                    display: block;
+                    line-height: $adjusted_lineHeight;
+                    margin: 0;
+                    padding: 1px $clr_baselineRem_1 0;
+                    text-align: left;
+                    width: 100%;
+
+                    &:hover,
+                    &:focus {
+                        text-decoration: none;
+                        background-color: $gray-light;
+                    }
+
+                    &.active {
+                        background: $clr-selection-color;
+                        color: $clr-black;
+                    }
+
+                    &:focus {
+                        outline: 0;
+                    }
+
+                    &.disabled, &:disabled {
+                        cursor: not-allowed;
+                        opacity: 0.4;
+                        user-select: none;
+                    }
+
+                    &.disabled:hover {
+                        background: none;
+                    }
+
+                    &.disabled:active,
+                    &.disabled:focus {
+                        background: none;
+                        box-shadow: none;
+                    }
+
+                    clr-icon {
+                        vertical-align: middle;
+                        transform: translate3d(0px, -1px, 0);
+                    }
+                }
             }
 
             .datagrid-action-overflow {
@@ -515,6 +615,9 @@
 
             .datagrid-action-toggle {
                 cursor: pointer;
+                border: none;
+                background: none;
+                padding: 0;
             }
 
             .datagrid-row-detail {

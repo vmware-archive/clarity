@@ -515,6 +515,14 @@
 
             .datagrid-action-toggle {
                 cursor: pointer;
+                color: $clr-dark-gray;
+                border: none;
+                background: none;
+                padding: 0;
+            }
+
+            &.datagrid-selected .datagrid-action-toggle {
+                color: $clr-black;
             }
 
             .datagrid-row-detail {

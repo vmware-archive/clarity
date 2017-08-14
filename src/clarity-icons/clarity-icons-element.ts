@@ -23,7 +23,13 @@ export function ClarityIconElement() {
 
 (ClarityIconElement as any).observedAttributes = ["shape", "size"];
 
-ClarityIconElement.prototype = Object.create(HTMLElement.prototype);
+ClarityIconElement.prototype = Object.create(HTMLElement.prototype, {
+    constructor: {
+        configurable: true,
+        writable: true,
+        value: ClarityIconElement
+    }
+});
 
 ClarityIconElement.prototype.constructor = ClarityIconElement;
 

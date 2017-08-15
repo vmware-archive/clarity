@@ -14,6 +14,7 @@ import {TabsDemo} from "./tabs.demo";
 import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {UtilsModule} from "../../../utils/utils.module";
+import {TabsAngularOverflowDemo} from "./tabs-angular-overflow";
 
 @NgModule({
     imports: [
@@ -27,6 +28,7 @@ import {UtilsModule} from "../../../utils/utils.module";
         TabsStaticDemo,
         TabsAngularDemo,
         TabsAngularSimpleDemo,
+        TabsAngularOverflowDemo,
         TabsDemo
     ],
     exports: [

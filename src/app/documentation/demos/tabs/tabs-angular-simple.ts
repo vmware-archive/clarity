@@ -8,17 +8,17 @@ import { Component } from "@angular/core";
 const EXAMPLE = `
 <clr-tabs>
     <clr-tab>
-        <button clrTabLink clrTabLinkId="link1">Tab1</button>
-        <clr-tab-content clrContentId="content1" *clrIfActive>
+        <button clrTabLink id="link1">Tab1</button>
+        <clr-tab-content id="content1" *clrIfActive>
         ...
         </clr-tab-content>
-    </clr-tab>
+    <clr-tab>
     <clr-tab>
         <button clrTabLink>Tab2</button>
         <clr-tab-content *clrIfActive="true">
         ...
         </clr-tab-content>
-    </clr-tab>
+    <clr-tab>
 </clr-tabs>
 `;
 

@@ -12,13 +12,13 @@ const EXAMPLE = `
         <clr-tab-content id="content1" *clrIfActive>
         ...
         </clr-tab-content>
-    <clr-tab>
+    </clr-tab>
     <clr-tab>
         <button clrTabLink>Tab2</button>
         <clr-tab-content *clrIfActive="true">
         ...
         </clr-tab-content>
-    <clr-tab>
+    </clr-tab>
 </clr-tabs>
 `;
 

@@ -44,6 +44,7 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
         border-radius: $clr-default-borderradius;
         overflow-y: auto;
         background-color: $gray-lighter;
+        word-wrap: break-word;
 
         /* this fixes the overflow problem of children elements in a wrapper with a border-radius in Chrome */
         -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);

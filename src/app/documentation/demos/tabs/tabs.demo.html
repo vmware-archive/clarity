@@ -48,6 +48,25 @@
 
         <clr-modal-tabs-angular></clr-modal-tabs-angular>
 
+        <h5>Tab Overflow</h5>
+
+        <p>
+            Tab overflow is used when the tab group is larger than its containing space, or used to preserve space.
+            The overflow is configurable so you can assign tabs to the dropdown menu.
+        </p>
+
+        <p>
+            Tab overflow is shown below as an ellipses button in the tab group and is the last position to the right.
+            Clicking on the ellipses will show the overflow dropdown menu.
+        </p>
+
+        <p>
+            We recommend that a overflow dropdown have at least two options in it. We also recommend that you test out
+            scenarios with tab labels that may vary in length or when translated to another language to make sure there is enough room for them.
+        </p>
+
+        <clr-modal-tabs-angular-overflow></clr-modal-tabs-angular-overflow>
+
         <h6 id="accessibility-1">Accessibility</h6>
 
         <p>
@@ -72,7 +91,7 @@
             <tbody>
             <tr>
                 <td class="left">
-                    <b>[clrTabLinkId]</b>
+                    <b>[id]</b>
                     <div class="hidden-sm-up">Values:<br/>&lt;any valid id for html element&gt;</div>
                     <div class="hidden-sm-up">Default: auto-generated</div>
                 </td>
@@ -95,11 +114,23 @@
                 <th class="hidden-xs-down">Default</th>
                 <th class="left">Effect</th>
             </tr>
+            <tr>
+                <td class="left">
+                    <b>[clrTabLinkInOverflow]</b>
+                    <div class="hidden-sm-up">Values:<br/>true, false</div>
+                    <div class="hidden-sm-up">Default: false</div>
+                </td>
+                <td class="hidden-xs-down">&lt;true, false&gt;</td>
+                <td class="hidden-xs-down">false</td>
+                <td class="left">
+                    If true, then this tab link will go into the overflow section of the tabs.
+                </td>
+            </tr>
             </thead>
             <tbody>
             <tr>
                 <td class="left">
-                    <b>[clrTabContentId]</b>
+                    <b>[id]</b>
                     <div class="hidden-sm-up">Values:<br/>&lt;any valid id for html element&gt;</div>
                     <div class="hidden-sm-up">Default: auto-generated</div>
                 </td>

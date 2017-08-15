@@ -20,9 +20,15 @@
             </clr-tab-content>
         </clr-tab>
         <clr-tab>
-            <button clrTabLink>Cloud</button>
+            <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Cloud</button>
             <clr-tab-content *clrIfActive>
                 <p>Content for Cloud tab.</p>
+            </clr-tab-content>
+        </clr-tab>
+        <clr-tab>
+            <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Settings</button>
+            <clr-tab-content *clrIfActive>
+                <p>Content for Settings tab.</p>
             </clr-tab-content>
         </clr-tab>
     </clr-tabs>

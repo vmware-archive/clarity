@@ -1,0 +1,57 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example" style="margin-top: 0;">
+    <div class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div class="content-container">
+            <clr-vertical-nav *ngIf="!(demoWithDividers || demoWithHeadersAndDividers)">
+                <a clrVerticalNavLink href="javascript://">Snorlax</a>
+                <a clrVerticalNavLink href="javascript://" class="active">Jigglypuff</a>
+                <a clrVerticalNavLink href="javascript://">Ditto</a>
+                <a clrVerticalNavLink href="javascript://" *ngIf="!demoLongLabel">Charizard</a>
+                <a clrVerticalNavLink href="javascript://" *ngIf="demoLongLabel">Ultra Rare Mega Charizard EX (Secret
+                    Rare)</a>
+                <a clrVerticalNavLink href="javascript://">Arcanine</a>
+                <a clrVerticalNavLink href="javascript://">Blastoise</a>
+                <a clrVerticalNavLink href="javascript://">Gyrados</a>
+                <a clrVerticalNavLink href="javascript://">Jolteon</a>
+                <a clrVerticalNavLink href="javascript://">Raichu</a>
+            </clr-vertical-nav>
+            <clr-vertical-nav *ngIf="demoWithDividers">
+                <a clrVerticalNavLink href="javascript://">Snorlax</a>
+                <a clrVerticalNavLink href="javascript://" class="active">Jigglypuff</a>
+                <a clrVerticalNavLink href="javascript://">Ditto</a>
+
+                <div class="nav-divider"></div>
+
+                <a clrVerticalNavLink href="javascript://">Charizard</a>
+                <a clrVerticalNavLink href="javascript://">Arcanine</a>
+
+                <div class="nav-divider"></div>
+
+                <a clrVerticalNavLink href="javascript://">Blastoise</a>
+                <a clrVerticalNavLink href="javascript://">Gyrados</a>
+                <a clrVerticalNavLink href="javascript://">Jolteon</a>
+            </clr-vertical-nav>
+            <clr-vertical-nav *ngIf="demoWithHeadersAndDividers">
+                <label class="nav-header">
+                    Normal
+                </label>
+                <a clrVerticalNavLink href="javascript://">Snorlax</a>
+                <a clrVerticalNavLink href="javascript://" class="active">Jigglypuff</a>
+                <a clrVerticalNavLink href="javascript://">Ditto</a>
+
+                <div class="nav-divider"></div>
+
+                <label class="nav-header">
+                    Fire
+                </label>
+                <a clrVerticalNavLink href="javascript://">Charizard</a>
+                <a clrVerticalNavLink href="javascript://">Arcanine</a>
+            </clr-vertical-nav>
+        </div>
+    </div>
+</div>

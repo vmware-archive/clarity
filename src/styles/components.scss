@@ -394,6 +394,10 @@ _:-ms-fullscreen,
         padding: 24px;
         width: 100%;
 
+        &.other-color {
+            background: #C1CDD4;
+        }
+
         &.not-centered {
             -webkit-box-align: baseline;
             -ms-flex-align: baseline;

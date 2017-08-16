@@ -438,6 +438,17 @@
             "dox": 20
         },
         {
+            "url": "vertical-nav",
+            "text": "Vertical Nav",
+            "newLayout": true,
+            "type": "component",
+            "ux": 20,
+            "ui": 10,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
             "url": null,
             "text": "Vertical Tabs",
             "type": "component",

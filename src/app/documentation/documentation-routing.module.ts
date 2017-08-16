@@ -55,6 +55,26 @@ import {DatagridExpandableRowsDemo} from "./demos/datagrid/expandable-rows/expan
 import {DatagridHideShowColumnsDemo} from "./demos/datagrid/hide-show-columns/hide-show-columns";
 import {DatagridFullDemo} from "./demos/datagrid/full/full";
 import {SignpostDemo} from "./demos/signposts/signpost.demo";
+import {VerticalNavDemo} from "./demos/vertical-nav/vertical-nav.demo";
+import {BasicNavStructureDemo} from "./demos/vertical-nav/routes/basic-structure/basic-structure";
+import {CharmanderDemo} from "./demos/vertical-nav/routes/pokemons/charmander";
+import {JigglypuffDemo} from "./demos/vertical-nav/routes/pokemons/jigglypuff";
+import {PikachuDemo} from "./demos/vertical-nav/routes/pokemons/pikachu";
+import {RaichuDemo} from "./demos/vertical-nav/routes/pokemons/raichu";
+import {SnorlaxDemo} from "./demos/vertical-nav/routes/pokemons/snorlax";
+import {PokedexDemo} from "./demos/vertical-nav/routes/credits/pokedex";
+import {IconLinksDemo} from "./demos/vertical-nav/routes/icons/icons";
+import {NormalPokemonDemo} from "./demos/vertical-nav/routes/pokemon-types/normal";
+import {ElectricPokemonDemo} from "./demos/vertical-nav/routes/pokemon-types/electric";
+import {PoisonPokemonDemo} from "./demos/vertical-nav/routes/pokemon-types/poison";
+import {GrassPokemonDemo} from "./demos/vertical-nav/routes/pokemon-types/grass";
+import {FightingPokemonDemo} from "./demos/vertical-nav/routes/pokemon-types/fighting";
+import {CollapsibleNavDemo} from "./demos/vertical-nav/routes/collapsible-nav/collapsible-nav";
+import {NavGroupsVerticalNavDemo} from "./demos/vertical-nav/routes/nav-groups/nav-groups";
+import {FirePokemonDemo} from "./demos/vertical-nav/routes/pokemon-types/fire";
+import {PidgeyDemo} from "./demos/vertical-nav/routes/pokemons/pidgey";
+import {CharizardDemo} from "./demos/vertical-nav/routes/pokemons/charizard";
+import {NoLazyLoadingVerticalNavDemo} from "./demos/vertical-nav/routes/no-lazy-loading/no-lazy-loading";
 
 const documentationRoutes: Routes = [
     {
@@ -468,6 +488,237 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-typography",
                     browserTitle: "Typography"
+                }
+            },
+            {
+                path: "vertical-nav",
+                component: VerticalNavDemo,
+                children: [
+                    {
+                        path: "",
+                        redirectTo: "basic-structure"
+                    },
+                    {
+                        path: "basic-structure",
+                        component: BasicNavStructureDemo,
+                        children: [
+                            {
+                                path: "",
+                                redirectTo: "charmander"
+                            },
+                            {
+                                path: "charmander",
+                                component: CharmanderDemo
+                            },
+                            {
+                                path: "jigglypuff",
+                                component: JigglypuffDemo
+                            },
+                            {
+                                path: "pikachu",
+                                component: PikachuDemo
+                            },
+                            {
+                                path: "raichu",
+                                component: RaichuDemo
+                            },
+                            {
+                                path: "snorlax",
+                                component: SnorlaxDemo
+                            },
+                            {
+                                path: "credit",
+                                component: PokedexDemo
+                            }
+                        ],
+                        data: {
+                            demoName: "Basic Structure"
+                        }
+                    },
+                    {
+                        path: "icon-links",
+                        component: IconLinksDemo,
+                        children: [
+                            {
+                                path: "",
+                                redirectTo: "normal"
+                            },
+                            {
+                                path: "normal",
+                                component: NormalPokemonDemo
+                            },
+                            {
+                                path: "electric",
+                                component: ElectricPokemonDemo
+                            },
+                            {
+                                path: "poison",
+                                component: PoisonPokemonDemo
+                            },
+                            {
+                                path: "grass",
+                                component: GrassPokemonDemo
+                            },
+                            {
+                                path: "fighting",
+                                component: FightingPokemonDemo
+                            },
+                            {
+                                path: "credit",
+                                component: PokedexDemo
+                            }
+                        ],
+                        data: {
+                            demoName: "Icon Links"
+                        }
+                    },
+                    {
+                        path: "collapsible-nav",
+                        component: CollapsibleNavDemo,
+                        children: [
+                            {
+                                path: "",
+                                redirectTo: "normal"
+                            },
+                            {
+                                path: "normal",
+                                component: NormalPokemonDemo
+                            },
+                            {
+                                path: "electric",
+                                component: ElectricPokemonDemo
+                            },
+                            {
+                                path: "poison",
+                                component: PoisonPokemonDemo
+                            },
+                            {
+                                path: "grass",
+                                component: GrassPokemonDemo
+                            },
+                            {
+                                path: "fighting",
+                                component: FightingPokemonDemo
+                            },
+                            {
+                                path: "credit",
+                                component: PokedexDemo
+                            }
+                        ],
+                        data: {
+                            demoName: "Collapsible Vertical Nav"
+                        }
+                    },
+                    {
+                        path: "nav-groups",
+                        component: NavGroupsVerticalNavDemo,
+                        children: [
+                            {
+                                path: "",
+                                redirectTo: "normal"
+                            },
+                            {
+                                path: "normal",
+                                component: NormalPokemonDemo
+                            },
+                            {
+                                path: "normal/snorlax",
+                                component: SnorlaxDemo
+                            },
+                            {
+                                path: "normal/pidgey",
+                                component: PidgeyDemo
+                            },
+                            {
+                                path: "electric",
+                                component: ElectricPokemonDemo
+                            },
+                            {
+                                path: "electric/pikachu",
+                                component: PikachuDemo
+                            },
+                            {
+                                path: "electric/raichu",
+                                component: RaichuDemo
+                            },
+                            {
+                                path: "fire",
+                                component: FirePokemonDemo
+                            },
+                            {
+                                path: "fire/charmander",
+                                component: CharmanderDemo
+                            },
+                            {
+                                path: "fire/charizard",
+                                component: CharizardDemo
+                            },
+                            {
+                                path: "credit",
+                                component: PokedexDemo
+                            }
+                        ],
+                        data: {
+                            demoName: "Nav Groups"
+                        }
+                    },
+                    {
+                        path: "no-lazy-loading",
+                        component: NoLazyLoadingVerticalNavDemo,
+                        children: [
+                            {
+                                path: "",
+                                redirectTo: "normal"
+                            },
+                            {
+                                path: "normal",
+                                component: NormalPokemonDemo
+                            },
+                            {
+                                path: "snorlax",
+                                component: SnorlaxDemo
+                            },
+                            {
+                                path: "pidgey",
+                                component: PidgeyDemo
+                            },
+                            {
+                                path: "electric",
+                                component: ElectricPokemonDemo
+                            },
+                            {
+                                path: "pikachu",
+                                component: PikachuDemo
+                            },
+                            {
+                                path: "raichu",
+                                component: RaichuDemo
+                            },
+                            {
+                                path: "fire",
+                                component: FirePokemonDemo
+                            },
+                            {
+                                path: "charmander",
+                                component: CharmanderDemo
+                            },
+                            {
+                                path: "charizard",
+                                component: CharizardDemo
+                            },
+                            {
+                                path: "credit",
+                                component: PokedexDemo
+                            }
+                        ],
+                        data: {
+                            demoName: "Unstructured Routes"
+                        }
+                    }
+                ],
+                data: {
+                    bodyClass: "page-vertical-nav",
+                    browserTitle: "Vertical Nav"
                 }
             },
             {

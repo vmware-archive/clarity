@@ -45,6 +45,7 @@ import {TreeDemoModule} from "./demos/tree-view/tree-view.demo.module";
 import {TypographyDemoModule} from "./demos/typography/typography.demo.module";
 import {WizardDemoModule} from "./demos/wizard/wizard.demo.module";
 import {SignpostDemoModule} from "./demos/signposts/signpost.demo.module";
+import {VerticalNavDemoModule} from "./demos/vertical-nav/vertical-nav.demo.module";
 
 @NgModule({
     imports: [
@@ -86,6 +87,7 @@ import {SignpostDemoModule} from "./demos/signposts/signpost.demo.module";
         TooltipsDemoModule,
         TreeDemoModule,
         TypographyDemoModule,
+        VerticalNavDemoModule,
         WizardDemoModule,
         DocumentationRoutingModule
     ],

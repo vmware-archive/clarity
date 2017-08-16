@@ -1,0 +1,50 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example" style="margin-top: 0">
+    <div class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div class="content-container">
+            <clr-vertical-nav [clrVerticalNavCollapsible]="true" [clrVerticalNavCollapsed]="demoCollapsed">
+                <a clrVerticalNavLink href="javascript://">
+                    <clr-icon *ngIf="!demoHideIcons" shape="user" clrVerticalNavIcon></clr-icon>
+                    Normal
+                </a>
+                <a clrVerticalNavLink href="javascript://" class="active">
+                    <clr-icon *ngIf="!demoHideIcons" shape="flame" clrVerticalNavIcon></clr-icon>
+                    Fire
+                </a>
+                <a clrVerticalNavLink href="javascript://">
+                    <clr-icon *ngIf="!demoHideIcons" shape="download-cloud" clrVerticalNavIcon></clr-icon>
+                    Water
+                </a>
+                <a clrVerticalNavLink href="javascript://">
+                    <clr-icon *ngIf="!demoHideIcons" shape="bolt" clrVerticalNavIcon></clr-icon>
+                    Electric
+                </a>
+                <a clrVerticalNavLink href="javascript://">
+                    <clr-icon *ngIf="!demoHideIcons" shape="bug" clrVerticalNavIcon></clr-icon>
+                    Grass
+                </a>
+                <a clrVerticalNavLink href="javascript://">
+                    <clr-icon *ngIf="!demoHideIcons" shape="block" clrVerticalNavIcon></clr-icon>
+                    Ice
+                </a>
+                <a clrVerticalNavLink href="javascript://">
+                    <clr-icon *ngIf="!demoHideIcons" shape="shield" clrVerticalNavIcon></clr-icon>
+                    Fighting
+                </a>
+                <a clrVerticalNavLink href="javascript://">
+                    <clr-icon *ngIf="!demoHideIcons" shape="sad-face" clrVerticalNavIcon></clr-icon>
+                    Poison
+                </a>
+                <a clrVerticalNavLink href="javascript://">
+                    <clr-icon *ngIf="!demoHideIcons" shape="image" clrVerticalNavIcon></clr-icon>
+                    Ground
+                </a>
+            </clr-vertical-nav>
+        </div>
+    </div>
+</div>

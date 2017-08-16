@@ -1,0 +1,20 @@
+<div class="nav-group-content" (click)="onNavContentClick()">
+    <ng-content select="[clrVerticalNavIcon]"></ng-content>
+    <ng-content select="[clrVerticalNavLink]"></ng-content>
+    <div class="nav-group-text">
+        <ng-content></ng-content>
+    </div>
+    <button
+        class="nav-group-trigger"
+        type="button"
+        (click)="toggleExpand()">
+        <clr-icon shape="caret"
+                  [attr.dir]="(this.expanded) ? 'down' : 'right'"></clr-icon>
+    </button>
+</div>
+<!--TODO: This animation needs to be added to the clr-vertical-nav-group-children component-->
+<div class="nav-group-children"
+     [@clrExpand]="expandAnimationState"
+     (@clrExpand.done)="expandAnimationDone($event)">
+    <ng-content select="[clrIfExpanded], clr-vertical-nav-group-children"></ng-content>
+</div>

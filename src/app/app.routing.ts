@@ -43,6 +43,7 @@ export const APP_ROUTES: Routes = [
     {path: "toggles", loadChildren: "app/toggles/toggles.demo.module"},
     {path: "tooltips", loadChildren: "app/tooltips/tooltips.demo.module"},
     {path: "typography", loadChildren: "app/typography/typography.demo.module"},
+    {path: "vertical-nav", loadChildren: "app/vertical-nav/vertical-nav.demo.module"},
     {path: "wizard", loadChildren: "app/wizard/wizard.demo.module"}
 ];
 

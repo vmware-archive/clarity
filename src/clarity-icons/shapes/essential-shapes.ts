@@ -1209,6 +1209,7 @@ export const essentialShapes: any = {
 Object.defineProperty(essentialShapes, "edit", descriptorConfig(essentialShapes.pencil));
 Object.defineProperty(essentialShapes, "note-edit", descriptorConfig(essentialShapes.note));
 Object.defineProperty(essentialShapes, "group", descriptorConfig(essentialShapes.users));
+// TODO: Remove angle-double from essential shapes in 0.11 because its already present in core-shapes now
 Object.defineProperty(essentialShapes, "collapse", descriptorConfig(essentialShapes["angle-double"]));
 Object.defineProperty(essentialShapes, "document", descriptorConfig(essentialShapes.file));
 Object.defineProperty(essentialShapes, "add", descriptorConfig(essentialShapes.plus));

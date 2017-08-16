@@ -135,6 +135,7 @@
 @import "layout/nav/nav.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity, layers.clarity
 @import "layout/nav/subnav.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity, layers.clarity
 @import "layout/nav/sidenav.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity
+@import "layout/vertical-nav/vertical-nav.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity
 @import "layout/nav/responsive-nav.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity, layers.clarity
 
 //Progress Bars

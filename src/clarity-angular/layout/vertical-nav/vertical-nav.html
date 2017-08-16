@@ -1,0 +1,11 @@
+<button type="button" class="nav-trigger"
+        [class.on-collapse]="collapsed"
+        (click)="toggleByButton()"
+        *ngIf="collapsible">
+    <clr-icon shape="angle-double" class="nav-trigger-icon" [attr.dir]="(this.collapsed) ? 'right' : 'left'"></clr-icon>
+</button>
+<!-- Click handler on .nav-content is bad but required :-( -->
+<div class="nav-content">
+    <ng-content></ng-content>
+    <button (click)="collapsed = false" class="nav-btn" *ngIf="collapsible && collapsed"></button>
+</div>

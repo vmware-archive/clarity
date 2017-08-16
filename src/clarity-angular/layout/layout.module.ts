@@ -8,7 +8,8 @@ import {NgModule} from "@angular/core";
 import {ClrMainContainerModule} from "./main-container/main-container.module";
 import {ClrNavigationModule} from "./nav/navigation.module";
 import {ClrTabsModule} from "./tabs/tabs.module";
+import {ClrVerticalNavModule} from "./vertical-nav/vertical-nav.module";
 
-@NgModule({exports: [ClrMainContainerModule, ClrNavigationModule, ClrTabsModule]})
+@NgModule({exports: [ClrMainContainerModule, ClrNavigationModule, ClrTabsModule, ClrVerticalNavModule]})
 export class ClrLayoutModule {
 }

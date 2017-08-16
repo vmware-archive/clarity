@@ -11,6 +11,7 @@ $clr-sliding-panel-z-index: map-get($clr-layers, sidepanel);
 $clr-sliding-panel-backdrop-z-index: map-get($clr-layers, sidepanel-bg);
 $clr-sliding-transition-time: 0.3s;
 $clr-transition-style: ease;
+$clr-nav-background-color: $clr-light-gray;
 
 @mixin sliding-nav-positioning($top: 0, $right: auto, $bottom: 0, $left: 0) {
     display: flex;
@@ -20,7 +21,7 @@ $clr-transition-style: ease;
     right: $right;
     bottom: $bottom;
     left: $left;
-    background: $clr-white;
+    background: $clr-nav-background-color;
     z-index: $clr-sliding-panel-z-index;
     height: 100vh;
 }
@@ -189,7 +190,8 @@ $clr-transition-style: ease;
             .header-nav.clr-nav-level-1,
             .subnav.clr-nav-level-1,
             .sub-nav.clr-nav-level-1,
-            .sidenav.clr-nav-level-1 {
+            .sidenav.clr-nav-level-1,
+            .clr-vertical-nav.clr-nav-level-1 {
                 @include sliding-nav-positioning();
                 transform: translateX(-1 * $clr-sliding-panel-width);
                 transition: transform $clr-sliding-transition-time $clr-transition-style;
@@ -198,7 +200,8 @@ $clr-transition-style: ease;
             .header-nav.clr-nav-level-2,
             .subnav.clr-nav-level-2,
             .sub-nav.clr-nav-level-2,
-            .sidenav.clr-nav-level-2 {
+            .sidenav.clr-nav-level-2,
+            .clr-vertical-nav.clr-nav-level-2 {
                 @include sliding-nav-positioning(0, 0, 0, auto);
                 transform: translateX($clr-sliding-panel-width);
                 transition: transform $clr-sliding-transition-time $clr-transition-style;
@@ -223,6 +226,7 @@ $clr-transition-style: ease;
                 //Such deep nesting is unfortunately required here because we don't want
                 //navs which are not subnav to behave in a similar way.
                 .nav {
+                    padding-left: 0;
 
                     .nav-item {
                         height: $clr_baselineRem_1_5;
@@ -230,13 +234,14 @@ $clr-transition-style: ease;
                     }
 
                     .nav-link {
-                        padding: 0 0 0 $clr_baselineRem_0_5;
+                        padding: 0 $clr_baselineRem_0_5 0  $clr_baselineRem_1;
                         width: 100%;
                         max-width: 100%;
                         overflow: hidden;
                         text-overflow: ellipsis;
                         border-radius: $clr-default-borderradius 0 0 $clr-default-borderradius;
-                        @include nav-link-colors();
+
+                        @include vertical-nav-link-colors();
 
                         &:hover,
                         &.active {
@@ -249,6 +254,21 @@ $clr-transition-style: ease;
 
             .sidenav.clr-nav-level-1,
             .sidenav.clr-nav-level-2 {
+
+                .nav-link {
+
+                    &:hover,
+                    &.active {
+                        color: inherit;
+                        background: $clr-white;
+                    }
+                }
+            }
+
+            .sidenav.clr-nav-level-1,
+            .sidenav.clr-nav-level-2,
+            .clr-vertical-nav.clr-nav-level-1,
+            .clr-vertical-nav.clr-nav-level-2 {
                 border-right: none;
             }
         }
@@ -309,12 +329,9 @@ $clr-transition-style: ease;
 
                     .header-nav.clr-nav-level-1,
                     .header-nav.clr-nav-level-2 {
-                        padding-left: $clr_baselineRem_1;
 
                         .nav-link{
                             flex: 0 0 auto;
-                            border-radius: $clr-default-borderradius 0 0 $clr-default-borderradius;
-                            margin-top: $clr_baselineRem_0_5;
 
                             .nav-icon,
                             .fa {
@@ -327,15 +344,18 @@ $clr-transition-style: ease;
                                 display: inline-block;
                                 color: $clr-sliding-panel-text-color;
                                 line-height: $nav-text-height;
-                                padding: $clr_baselineRem_0_25 0 $clr_baselineRem_0_25 $clr_baselineRem_0_5;
+                                padding: $clr_baselineRem_0_25 0 $clr_baselineRem_0_25 $clr_baselineRem_1;
                                 white-space: normal;
+                                font-weight: normal;
                             }
+
+                            opacity: 1;
 
                             .nav-icon + .nav-text {
                                 display: inline-block;
                             }
 
-                            @include nav-link-colors();
+                            @include vertical-nav-link-colors();
 
                             &.active > .nav-text {
                                 color: inherit;
@@ -344,13 +364,8 @@ $clr-transition-style: ease;
                     }
                 }
 
-                .subnav.clr-nav-level-1,
-                .sub-nav.clr-nav-level-1,
-                .subnav.clr-nav-level-2,
-                .sub-nav.clr-nav-level-2 {
-                    .nav .nav-item{
-                        margin-top: $clr_baselineRem_0_5;
-                    }
+                .clr-vertical-nav .nav-trigger {
+                    display: none;
                 }
             }
 
@@ -399,8 +414,9 @@ $clr-transition-style: ease;
                 .header-nav.clr-nav-level-1,
                 .subnav.clr-nav-level-1,
                 .sub-nav.clr-nav-level-1,
-                .sidenav.clr-nav-level-1 {
-                    padding-top: $clr-header-height;
+                .sidenav.clr-nav-level-1,
+                .clr-vertical-nav.clr-nav-level-1 {
+                    padding-top: $clr-header-height + $clr_baselineRem_1;
                     transform: translateX(0);
                     transition: transform $clr-sliding-transition-time $clr-transition-style;
 
@@ -414,7 +430,8 @@ $clr-transition-style: ease;
                 .header-nav.clr-nav-level-2,
                 .subnav.clr-nav-level-2,
                 .sub-nav.clr-nav-level-2,
-                .sidenav.clr-nav-level-2 {
+                .sidenav.clr-nav-level-2,
+                .clr-vertical-nav.clr-nav-level-2 {
                     transform: translateX(0);
                     transition: transform $clr-sliding-transition-time $clr-transition-style;
                 }
@@ -435,7 +452,8 @@ $clr-transition-style: ease;
                 .header-nav.clr-nav-level-1,
                 .subnav.clr-nav-level-1,
                 .sub-nav.clr-nav-level-1,
-                .sidenav.clr-nav-level-1 {
+                .sidenav.clr-nav-level-1,
+                .clr-vertical-nav.clr-nav-level-1 {
                     width: $clr-sliding-panel-width;
                     max-width: $clr-sliding-panel-width;
                 }
@@ -445,7 +463,8 @@ $clr-transition-style: ease;
                 .header-nav.clr-nav-level-2,
                 .subnav.clr-nav-level-2,
                 .sub-nav.clr-nav-level-2,
-                .sidenav.clr-nav-level-2 {
+                .sidenav.clr-nav-level-2,
+                .clr-vertical-nav.clr-nav-level-2 {
                     width: $clr-sliding-panel-width;
                     max-width: $clr-sliding-panel-width;
                 }
@@ -467,14 +486,16 @@ $clr-transition-style: ease;
             .header-nav.clr-nav-level-1,
             .subnav.clr-nav-level-1,
             .sub-nav.clr-nav-level-1,
-            .sidenav.clr-nav-level-1 {
+            .sidenav.clr-nav-level-1,
+            .clr-vertical-nav.clr-nav-level-1 {
                 transform: translateX(-1 * $clr-sliding-panel-width-sm);
             }
 
             .header-nav.clr-nav-level-2,
             .subnav.clr-nav-level-2,
             .sub-nav.clr-nav-level-2,
-            .sidenav.clr-nav-level-2 {
+            .sidenav.clr-nav-level-2,
+            .clr-vertical-nav.clr-nav-level-2 {
                 transform: translateX($clr-sliding-panel-width-sm);
             }
         }
@@ -491,7 +512,8 @@ $clr-transition-style: ease;
                 .header-nav.clr-nav-level-1,
                 .subnav.clr-nav-level-1,
                 .sub-nav.clr-nav-level-1,
-                .sidenav.clr-nav-level-1 {
+                .sidenav.clr-nav-level-1,
+                .clr-vertical-nav.clr-nav-level-1 {
                     width: $clr-sliding-panel-width-sm;
                     max-width: $clr-sliding-panel-width-sm;
                 }
@@ -505,7 +527,8 @@ $clr-transition-style: ease;
                 .header-nav.clr-nav-level-2,
                 .subnav.clr-nav-level-2,
                 .sub-nav.clr-nav-level-2,
-                .sidenav.clr-nav-level-2 {
+                .sidenav.clr-nav-level-2,
+                .clr-vertical-nav.clr-nav-level-2 {
                     width: $clr-sliding-panel-width-sm;
                     max-width: $clr-sliding-panel-width-sm;
                 }

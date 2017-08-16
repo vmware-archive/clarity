@@ -49,3 +49,9 @@ $clr-outline-spread: 2px;
     outline: 0;
     text-decoration: none;
 }
+
+@mixin overflow-ellipsis() {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

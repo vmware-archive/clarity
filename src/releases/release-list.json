@@ -47,6 +47,11 @@
             "commit": "dc024ed0e8fb5e1ddb629a52ef924e1afa56e610"
         },
 
+        "0.9.17": {
+            "date": "August 17, 2017",
+            "sketch": "0.9.0",
+            "commit": ""
+        },
         "0.9.16": {
             "date": "August 3, 2017",
             "sketch": "0.9.0",

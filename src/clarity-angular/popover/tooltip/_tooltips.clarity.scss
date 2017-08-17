@@ -87,6 +87,9 @@ $clr-tooltip-adjusted-margin: $margin-value + $arrow-width * 2 !default;
         overflow: visible;
 
         & > .tooltip-content {
+            //Both visibility and opacity are needed. Opacity handles the transition.
+            //And visibility makes sure that the user cant select the text in the tooltip-content
+            //when hidden
             visibility: hidden;
             opacity: 0;
             transition: opacity 0.3s linear;
@@ -102,6 +105,12 @@ $clr-tooltip-adjusted-margin: $margin-value + $arrow-width * 2 !default;
         &:focus > .tooltip-content {
             visibility: visible;
             opacity: 1;
+
+            //Have to do this for IE11. Cant use a :not selector
+            &:empty {
+                visibility: hidden;
+                opacity: 0;
+            }
         }
 
         &:focus {

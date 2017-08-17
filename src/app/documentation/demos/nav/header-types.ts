@@ -6,7 +6,7 @@
 import {Component} from "@angular/core";
 
 @Component({
-    selector: "clr-header-demo-types",
+    selector: "clr-nav-header-demo-types",
     templateUrl: "./header-types.demo.html",
     styleUrls: ["./headers.demo.scss"]
 })

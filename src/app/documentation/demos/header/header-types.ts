@@ -56,7 +56,7 @@ const EXAMPLE = `
                 <clr-icon shape="cog"></clr-icon>
                 <clr-icon shape="caret down"></clr-icon>
             </button>
-            <clr-dropdown-menu clrPosition="bottom-right">
+            <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
                 <a href="..." clrDropdownItem>About</a>
                 <a href="..." clrDropdownItem>Preferences</a>
                 <a href="..." clrDropdownItem>Log out</a>
@@ -91,7 +91,7 @@ const EXAMPLE = `
                 <clr-icon shape="user"></clr-icon>
                 <clr-icon shape="caret down"></clr-icon>
             </button>
-            <clr-dropdown-menu clrPosition="bottom-right">
+            <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
                 <a href="..." clrDropdownItem>About</a>
                 <a href="..." clrDropdownItem>Preferences</a>
                 <a href="..." clrDropdownItem>Log out</a>
@@ -127,7 +127,7 @@ const EXAMPLE = `
                 john.doe@vmware.com
                 <clr-icon shape="caret down"></clr-icon>
             </button>
-            <clr-dropdown-menu clrPosition="bottom-right">
+            <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
                 <a href="..." clrDropdownItem>Preferences</a>
                 <a href="..." clrDropdownItem>Log out</a>
             </clr-dropdown-menu>

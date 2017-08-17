@@ -63,5 +63,12 @@
         "blurb": "As a UI Engineer, Matt's primary focus is collecting feedback and improving components. He is passionate about simple, intuitive user interfaces and incremental improvement.",
         "img": "matt.png",
         "workstreams": ["UI", "NG"]
+    }, {
+        "name": "Jeremy Wilken",
+        "role": "Developer",
+        "blurb": "Jeremy is a developer with a passion for all things web and education. He is a Google Developer Expert for Angular, author of the books Angular in Action and Ionic in Action, and regularly speaks at events.",
+        "twitter": "gnomeontherun",
+        "img": "jeremy.png",
+        "workstreams": ["UI", "NG"]
     }]
 }

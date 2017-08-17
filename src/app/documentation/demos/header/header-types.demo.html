@@ -56,7 +56,7 @@
                         <clr-icon shape="cog"></clr-icon>
                         <clr-icon shape="caret down"></clr-icon>
                     </button>
-                    <clr-dropdown-menu clrPosition="bottom-right">
+                    <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
                         <a href="javascript://" clrDropdownItem>About</a>
                         <a href="javascript://" clrDropdownItem>Preferences</a>
                         <a href="javascript://" clrDropdownItem>Log out</a>
@@ -86,12 +86,12 @@
                 </label>
             </form>
             <div class="header-actions">
-                <clr-dropdown clrPosition="bottom-right">
+                <clr-dropdown>
                     <button class="nav-icon" clrDropdownTrigger>
                         <clr-icon shape="user"></clr-icon>
                         <clr-icon shape="caret down"></clr-icon>
                     </button>
-                    <clr-dropdown-menu>
+                    <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
                         <a href="javascript://" clrDropdownItem>About</a>
                         <a href="javascript://" clrDropdownItem>Preferences</a>
                         <a href="javascript://" clrDropdownItem>Log out</a>
@@ -122,12 +122,12 @@
                 </a>
             </div>
             <div class="header-actions header-actions--overflow">
-                <clr-dropdown clrPosition="bottom-right">
+                <clr-dropdown>
                     <button class="nav-text" clrDropdownTrigger>
                         john.doe@vmware.com
                         <clr-icon shape="caret down"></clr-icon>
                     </button>
-                    <clr-dropdown-menu>
+                    <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
                         <a href="javascript://" clrDropdownItem>Preferences</a>
                         <a href="javascript://" clrDropdownItem>Log out</a>
                     </clr-dropdown-menu>

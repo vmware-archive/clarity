@@ -25,8 +25,7 @@
             "core": -1,
             "ng": 20,
             "dox": 20,
-            "newLayout": true,
-            "isUpdated": true
+            "newLayout": true
         },
         {
             "url": "badges",
@@ -139,8 +138,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "dropdowns",
@@ -194,8 +192,7 @@
             "ui": 20,
             "core": 20,
             "ng": -1,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "input-fields",
@@ -349,8 +346,7 @@
             "ng": 20,
             "dox": 20,
             "comments": "",
-            "newLayout": true,
-            "isUpdated": true
+            "newLayout": true
         },
         {
             "url": "spinners",
@@ -412,8 +408,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "tree-view",
@@ -424,8 +419,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "typography",
@@ -446,7 +440,8 @@
             "ui": 10,
             "core": -1,
             "ng": 20,
-            "dox": 20
+            "dox": 20,
+            "isNew": true
         },
         {
             "url": null,

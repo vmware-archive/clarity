@@ -61,6 +61,7 @@
         "name": "Matt Hippely",
         "role": "Developer",
         "blurb": "As a UI Engineer, Matt's primary focus is collecting feedback and improving components. He is passionate about simple, intuitive user interfaces and incremental improvement.",
+        "twitter": "hippeelee",
         "img": "matt.png",
         "workstreams": ["UI", "NG"]
     }, {

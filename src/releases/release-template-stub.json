@@ -1,4 +1,5 @@
 {
+    "0.10.1": "src/releases/0.10/0.10.1.html",
     "0.10.0-patch": "src/releases/0.10/0.10.0-patch.html",
     "0.10.0": "src/releases/0.10/0.10.0.html",
     "0.10.0-rc.1": "src/releases/0.10/0.10.0-rc.1.html",

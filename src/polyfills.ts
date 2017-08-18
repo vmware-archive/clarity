@@ -22,8 +22,12 @@ import "core-js/es7/reflect";
 //https://github.com/jpf200124/ng2-ruler/commit/5f263ee2e5de1b4de86a56021ea70916ce3bd40e
 import 'classlist.js';
 
+//require('smoothscroll-polyfill').polyfill();
+
 import "intl";
 import "intl/locale-data/jsonp/en";
 
 import "zone.js/dist/zone";
 import "reflect-metadata";
+
+

@@ -36,7 +36,6 @@ export class IconSelectionDemo {
 
 
     onChangeSolid(event: any): void {
-
         this.previewClasses[ "is-solid" ] = event.target.checked;
     }
 

@@ -2,6 +2,9 @@ import {Component, ElementRef, OnInit, Renderer} from '@angular/core';
 import {Router, NavigationEnd} from "@angular/router";
 import {Title} from '@angular/platform-browser';
 
+import 'clarity-icons';
+import 'clarity-icons/shapes/all-shapes';
+
 declare let ga: Function;
 
 const PRODUCT_TITLE = require('../settings/global.json').alt_title;

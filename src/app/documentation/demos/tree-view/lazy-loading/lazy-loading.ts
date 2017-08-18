@@ -5,9 +5,8 @@
  */
 import {Component} from "@angular/core";
 
-import "clarity-icons/shapes/essential-shapes";
-import "clarity-icons/shapes/technology-shapes";
-import "clarity-icons/shapes/social-shapes";
+import "clarity-icons/shapes/all-shapes";
+
 
 const EXAMPLE_HTML = `
 <clr-tree-node>

@@ -14,6 +14,13 @@ const appRoutes: Routes = [
         loadChildren: "app/documentation/documentation.module#DocumentationModule",
     },
     {
+        path: "icons",
+        loadChildren: "app/icons/icons.module#IconsModule",
+        data: {
+            bodyClass: "layout-icons"
+        }
+    },
+    {
         path: "community",
         loadChildren: "app/community/community.module#CommunityModule",
     },
@@ -27,6 +34,12 @@ const appRoutes: Routes = [
         data: {
             bodyClass: "layout-home"
         }
+    },
+
+    // just in case people who may have bookmarked the old iconography url, redirect them to the new url.
+    {
+        path: "documentation/iconography",
+        redirectTo: '/icons/clarity-icons'
     },
     {
         path: "**",

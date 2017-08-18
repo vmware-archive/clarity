@@ -32,6 +32,7 @@
     "clarity-icons": "0.10.1",
     "clarity-ui": "0.10.1",
     "core-js": "^2.4.1",
+    "jump.js": "^1.0.2",
     "mdn-polyfills": "^2.2.0",
     "prismjs": "^1.6.0",
     "rxjs": "~5.0.1",

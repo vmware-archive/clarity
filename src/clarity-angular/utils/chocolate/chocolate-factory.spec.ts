@@ -54,6 +54,11 @@ describe("Chocolate factory", function() {
             // Second one is not last anymore after the new child has been created, it needs an extra change detection
             expect(children.map(child => child.changes)).toEqual([2, 3]);
         });
+
+        it("properly cleans up when components are destroyed", function() {
+            this.testComponent.children.pop();
+            expect(() => this.fixture.detectChanges()).not.toThrow();
+        });
     });
 });
 
@@ -66,8 +71,6 @@ describe("Chocolate factory", function() {
     `
 })
 class ChocolateTest extends WillyWonka {
-    nbChildren = 0;
-
     children = [0, 0];
 }
 
@@ -105,6 +108,7 @@ class ChocolateChild extends OompaLoompa implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        super.ngOnDestroy();
         this.parent.nbChildren--;
     }
 

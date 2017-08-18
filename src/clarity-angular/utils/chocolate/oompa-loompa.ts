@@ -3,18 +3,21 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {AfterContentChecked, ChangeDetectorRef} from "@angular/core";
+import {AfterContentChecked, ChangeDetectorRef, OnDestroy} from "@angular/core";
+import {Subscription} from "rxjs/Subscription";
 import {WillyWonka} from "./willy-wonka";
 
-export abstract class OompaLoompa implements AfterContentChecked {
+export abstract class OompaLoompa implements AfterContentChecked, OnDestroy {
     // FIXME: Request Injector once we move to Angular 4.2+, it'll allow easier refactors
     constructor(cdr: ChangeDetectorRef, willyWonka: WillyWonka) {
-        willyWonka.chocolate.subscribe(() => {
+        this.subscription = willyWonka.chocolate.subscribe(() => {
             if (this.latestFlavor !== this.flavor) {
                 cdr.detectChanges();
             }
         });
     }
+
+    private subscription: Subscription;
 
     private latestFlavor: any;
 
@@ -22,5 +25,9 @@ export abstract class OompaLoompa implements AfterContentChecked {
 
     ngAfterContentChecked() {
         this.latestFlavor = this.flavor;
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

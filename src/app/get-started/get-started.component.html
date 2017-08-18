@@ -83,7 +83,7 @@
         <a id="clarity_icons"></a>
     </p>
     <ul class="list">
-        <li><b>clarity-icons.</b> Contains the custom element icons.</li>
+        <li><b>clarity-icons.</b> The library that provides the custom element icons.</li>
         <li><b>clarity-ui.</b> Contains the static styles for building HTML components.</li>
         <li><b>clarity-angular.</b> Contains the Angular components. This package depends on clarity-ui for styles.
         </li>
@@ -91,41 +91,24 @@
     <h5 id="step-2a-install-clarity-icons">Step 2a: Install Clarity Icons</h5>
     <p></p>
     <ol class="list">
-        <li>Install the Clarity Icons package through npm:
+        <li>Install the Clarity Icons library through npm:
             <clr-code-snippet
                     [clrCode]="'npm install clarity-icons --save'"
                     [clrDisablePrism]="true"></clr-code-snippet>
         </li>
         <li>Install the polyfill for Custom Elements:
             <clr-code-snippet
-                    [clrCode]="'npm install @webcomponents/custom-elements@1.0.0-alpha.3 --save'"
-                    [clrDisablePrism]="true"></clr-code-snippet>
-        </li>
-        <li>(Optional) If your application supports IE10, the polyfill requires the MutationObserver shim to work. If
-            your application does not support IE10, you can skip the following installation:
-            <clr-code-snippet
-                    [clrCode]="'npm install mutationobserver-shim@0.3.2 --save'"
+                    [clrCode]="'npm install @webcomponents/custom-elements@1.0.0 --save'"
                     [clrDisablePrism]="true"></clr-code-snippet>
         </li>
         <li>
-            Include clarity-icons.min.css and clarity-icons.min.js in your HTML. Because custom-elements.min.js is
-            dependent on the Custom Elements polyfill, you must include it before clarity-icons.min.js. If your app
-            supports IE10, include mutationobserver.min.js
-            before the polyfill:
+            Load the library in your app by including <code class="clr-code">clarity-icons.min.css</code> and <code class="clr-code">clarity-icons.min.js</code>.
+            Also, make sure to include <code class="clr-code">custom-elements.min.js</code>, the Custom Elements polyfill before <code class="clr-code">clarity-icons.min.js</code>:
             <clr-code-snippet [clrCode]="iconsImportsExample"></clr-code-snippet>
-            If your site is built with <a href="https://github.com/angular/angular-cli">angular-cli</a> you can achieve
-            the above by adding the files to the styles array and scripts array in <code class="clr-code">angular-cli.json</code>:
-            <clr-code-snippet [clrCode]="iconsNodeImports" [clrDisablePrism]="true"></clr-code-snippet>
-        </li>
-        <li>
-            (Optional) If you load Clarity Icons by importing it in Typescript, you can load the shape sets modularly:
-            <clr-code-snippet [clrCode]="'import \'clarity-icons\';'" [clrLanguage]="'typescript'"></clr-code-snippet>
-            Unlike loading <code class="clr-code">clarity-icons.min.js</code> in a <code class="clr-code">script</code>
-            tag, the pattern above won't load all shape sets, but only Core Shapes. Thus, you can load additional sets
-            on demand when you need shapes from those sets. For example, if I need to use
-            <code class="clr-code">play</code> icon, which happens to be in the set of Essential Shapes, I would want to
-            import <code class="clr-code">essential-shapes</code> as well:
-            <clr-code-snippet [clrCode]="iconsTSImports" [clrLanguage]="'typescript'"></clr-code-snippet>
+
+            <p>
+               Visit the <a href="/icons/clarity-icons">Clarity Icons</a> page for more installation information.
+            </p>
         </li>
     </ol>
     <h5 id="step-2b-install-clarity-ui">Step 2b: Install Clarity UI</h5>

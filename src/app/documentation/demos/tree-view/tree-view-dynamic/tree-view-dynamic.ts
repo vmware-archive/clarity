@@ -5,9 +5,8 @@
  */
 import {Component, Input} from "@angular/core";
 
-import "clarity-icons/shapes/essential-shapes";
-import "clarity-icons/shapes/technology-shapes";
-import "clarity-icons/shapes/social-shapes";
+import "clarity-icons/shapes/all-shapes";
+
 
 const EXAMPLE_HTML = `
 <clr-tree-node *ngFor="let directory of rootDirectory">
@@ -25,7 +24,7 @@ const EXAMPLE_HTML = `
         </clr-tree-node>
     </ng-template>
 </clr-tree-node>
-`
+`;
 
 const EXAMPLE_TS = `
     rootDirectory: any[] = [
@@ -89,7 +88,7 @@ const EXAMPLE_TS = `
         ...
         ...
     }
-`
+`;
 
 @Component({
     selector: "clr-tree-view-dynamic-demo",

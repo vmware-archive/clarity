@@ -331,14 +331,6 @@ const documentationRoutes: Routes = [
                 }
             },
             {
-                path: "iconography",
-                component: IconsDemo,
-                data: {
-                    bodyClass: "page-iconography",
-                    browserTitle: "Iconography"
-                }
-            },
-            {
                 path: "input-fields",
                 component: InputFieldsDemo,
                 data: {

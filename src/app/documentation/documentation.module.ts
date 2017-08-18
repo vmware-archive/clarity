@@ -26,7 +26,6 @@ import {FormsDemoModule} from "./demos/forms/forms.demo.module";
 import {GridDemoModule} from "./demos/grid/grid.demo.module";
 import {DropdownDemoModule} from "./demos/dropdown/dropdown.demo.module";
 import {LabelsDemoModule} from "./demos/labels/labels.demo.module";
-import {IconographyDemoModule} from "./demos/iconography/iconography.demo.module";
 import {InputFieldsDemoModule} from "./demos/input-fields/input-fields.demo.module";
 import {LoginDemoModule} from "./demos/login/login.demo.module";
 import {ModalDemoModule} from "./demos/modal/modal.demo.module";
@@ -67,7 +66,6 @@ import {VerticalNavDemoModule} from "./demos/vertical-nav/vertical-nav.demo.modu
         FormsDemoModule,
         GridDemoModule,
         HeaderDemoModule,
-        IconographyDemoModule,
         InputFieldsDemoModule,
         LabelsDemoModule,
         ListsDemoModule,

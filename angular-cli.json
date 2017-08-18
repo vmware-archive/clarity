@@ -26,7 +26,6 @@
             "../node_modules/prismjs/prism.js",
             "../node_modules/prismjs/components/prism-typescript.min.js",
             "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-            "../node_modules/clarity-icons/clarity-icons.min.js",
             "../node_modules/web-animations-js/web-animations.min.js"
         ],
         "environmentSource": "environments/environment.ts",

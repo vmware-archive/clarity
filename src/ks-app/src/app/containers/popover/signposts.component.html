@@ -1,0 +1,23 @@
+<h1>Signposts</h1>
+<div class="row">
+    <div class="col-xs-12 col-lg-4"
+         *ngFor="let position of positions">
+        <h4>{{  position.description }}</h4>
+        <clr-signpost>
+            <button
+                id="{{ position.id }}"
+                type="button"
+                class="signpost-action btn btn-small btn-link"
+                [ngClass]="{active: open}"
+                clrSignpostTrigger>
+                <clr-icon [attr.shape]="position.icon"></clr-icon>
+            </button>
+            <clr-signpost-content *clrIfOpen [clrPosition]="position.position">
+                <p>{{ position.position }}</p>
+                <p>
+                    Lorem Ipsum versions of Lorem Ipsum <a href="javascript://">Link</a>
+                </p>
+            </clr-signpost-content>
+        </clr-signpost>
+    </div>
+</div>

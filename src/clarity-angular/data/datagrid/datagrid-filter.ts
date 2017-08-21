@@ -71,7 +71,6 @@ export class DatagridFilter extends DatagridFilterRegistrar<Filter<any>> impleme
 
     @Output("clrDgFilterOpenChange") public openChanged = new EventEmitter<boolean>(false);
 
-
     @Input("clrDgFilter")
     public set customFilter(filter: Filter<any>|RegisteredFilter<Filter<any>>) {
         this.setFilter(filter);

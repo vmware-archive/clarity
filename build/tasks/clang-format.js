@@ -8,7 +8,11 @@ var gulp = require('gulp');
 var format = require('gulp-clang-format');
 var clangFormat = require('clang-format');
 
-var tsSources = ['src/**/*.ts', '!src/sample-app/aot-compiled/**/*'];
+var tsSources = [
+    'src/**/*.ts',
+    '!src/ks-app/node_modules/**/*',
+    '!src/sample-app/aot-compiled/**/*'
+];
 
 /**
  Formats the typescript file according to the .clang-format file

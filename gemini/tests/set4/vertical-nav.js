@@ -71,6 +71,7 @@ gemini.suite('vertical-nav', (child) => {
     });
 
     gemini.suite('nested-icons-menus-text-collapsed', (child) => {
+        child.setTolerance(5);
         child.setUrl('/vertical-nav/nested-icon-menus')
             .before((actions, find) => {
                 actions.waitForElementToShow('.nav-group-text', WAIT_TIME);

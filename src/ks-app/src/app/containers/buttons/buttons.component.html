@@ -1,0 +1,179 @@
+<h1>Buttons & Button Groups</h1>
+
+<p>Button groups are for creating collections of similar type action buttons. There are several styles of button</p>
+
+<div class="ks-demo-wrapper">
+  <p>Buttons allow an application to communicate action and direct user intent.</p>
+  <button class="btn btn-primary">Change it</button>
+  <button class="btn btn-success">Proceed</button>
+  <button class="btn btn-warning">Warning</button>
+  <button class="btn btn-outline-info">Change it</button>
+  <button class="btn btn-outline-success">Proceed</button>
+  <button class="btn btn-outline-warning">Warning</button>
+</div>
+<div class="ks-demo-wrapper">
+  <h3>Icons</h3>
+  <div>
+    <h4>Normal</h4>
+    <button class="btn btn-icon">
+      <clr-icon shape="home"></clr-icon>
+    </button>
+    <button class="btn btn-primary btn-icon">
+      <clr-icon shape="home"></clr-icon>
+    </button>
+    <button class="btn btn-success btn-icon">
+      <clr-icon shape="home"></clr-icon>
+    </button>
+    <button class="btn btn-info btn-icon">
+      <clr-icon shape="home"></clr-icon>
+    </button>
+    <button class="btn btn-warning btn-icon">
+      <clr-icon shape="home"></clr-icon>
+    </button>
+    <button class="btn btn-danger btn-icon">
+      <clr-icon shape="home"></clr-icon>
+    </button>
+    <button class="btn btn-icon" disabled>
+      <clr-icon shape="home"></clr-icon>
+    </button>
+
+    <h4>Small</h4>
+    <button class="btn btn-sm btn-icon">
+      <clr-icon shape="home"></clr-icon>
+    </button>
+    <button class="btn btn-sm btn-primary btn-icon">
+      <clr-icon shape="home"></clr-icon>
+    </button>
+    <button class="btn btn-sm btn-success btn-icon">
+      <clr-icon shape="home"></clr-icon>
+    </button>
+    <button class="btn btn-sm btn-info btn-icon">
+      <clr-icon shape="home"></clr-icon>
+    </button>
+    <button class="btn btn-sm btn-warning btn-icon">
+      <clr-icon shape="home"></clr-icon>
+    </button>
+    <button class="btn btn-sm btn-danger btn-icon">
+      <clr-icon shape="home"></clr-icon>
+    </button>
+    <button class="btn btn-sm btn-icon" disabled>
+      <clr-icon shape="home"></clr-icon>
+    </button>
+
+    <h4>Link Normal</h4>
+    <button class="btn btn-link btn-icon">
+      <clr-icon shape="home"></clr-icon>
+    </button>
+
+    <h4>Link Small</h4>
+    <button class="btn btn-sm btn-link btn-icon">
+      <clr-icon shape="home"></clr-icon>
+    </button>
+  </div>
+</div>
+
+
+<nav class="ks-demo-wrapper">
+  <clr-button-group class="btn-primary">
+    <clr-button class="btn btn-warning">Stop</clr-button>
+    <clr-button>OK 1</clr-button>
+    <clr-button>OK 2</clr-button>
+    <clr-button>OK 3</clr-button>
+    <clr-button class="btn btn-success">Yes</clr-button>
+    <clr-button [clrInMenu]="true" class="btn btn-danger">OH NO</clr-button>
+    <clr-button [clrInMenu]="true">OK 4</clr-button>
+    <clr-button [clrInMenu]="true">OK 5</clr-button>
+    <clr-button [clrInMenu]="true">OK 6</clr-button>
+    <clr-button [clrInMenu]="true">OK 7</clr-button>
+  </clr-button-group>
+</nav>
+<nav class="ks-demo-wrapper">
+  <clr-button-group class="btn-outline-primary">
+    <clr-button class="btn btn-outline-warning">Stop</clr-button>
+    <clr-button class="btn">OK 1</clr-button>
+    <clr-button class="btn">OK 2</clr-button>
+    <clr-button class="btn">OK 3</clr-button>
+    <clr-button class="btn btn-outline-success">Yes</clr-button>
+    <clr-button [clrInMenu]="true">OH NO</clr-button>
+    <clr-button [clrInMenu]="true">OK 4</clr-button>
+    <clr-button [clrInMenu]="true">OK 5</clr-button>
+    <clr-button [clrInMenu]="true">OK 6</clr-button>
+    <clr-button [clrInMenu]="true">OK 7</clr-button>
+  </clr-button-group>
+</nav>
+<div class="ks-demo-wrapper">
+  <div class="btn-group btn-link">
+    <button class="btn">Add</button>
+    <button class="btn">Edit</button>
+    <button class="btn">Download</button>
+    <button class="btn">Delete</button>
+  </div>
+</div>
+<div class="ks-demo-wrapper">
+  <p>Buttons are available in a small size</p>
+  <div class="btn-group btn-outline-primary btn-sm">
+    <button class="btn">Add</button>
+    <button class="btn">Edit</button>
+    <button class="btn">Download</button>
+    <button class="btn">Delete</button>
+  </div>
+</div>
+<div class="ks-demo-wrapper">
+  <h4>Icon Solid</h4>
+  <div class="btn-group btn-primary btn-icon">
+    <button class="btn">
+      <clr-icon shape="home"></clr-icon>
+      <span class="clr-icon-title">Home</span>
+    </button>
+    <button class="btn">
+      <clr-icon shape="cog"></clr-icon>
+      <span class="clr-icon-title">Settings</span>
+    </button>
+    <button class="btn">
+      <clr-icon shape="user"></clr-icon>
+      <span class="clr-icon-title">User</span>
+    </button>
+    <button class="btn">
+      <clr-icon shape="cloud"></clr-icon>
+      <span class="clr-icon-title">Cloud</span>
+    </button>
+  </div>
+  <h4>Icon Outline</h4>
+  <div class="btn-group btn-outline-info btn-icon">
+    <button class="btn">
+      <clr-icon shape="home"></clr-icon>
+      <span class="clr-icon-title">Home</span>
+    </button>
+    <button class="btn">
+      <clr-icon shape="cog"></clr-icon>
+      <span class="clr-icon-title">Settings</span>
+    </button>
+    <button class="btn">
+      <clr-icon shape="user"></clr-icon>
+      <span class="clr-icon-title">User</span>
+    </button>
+    <button class="btn">
+      <clr-icon shape="cloud"></clr-icon>
+      <span class="clr-icon-title">Cloud</span>
+    </button>
+  </div>
+  <h4>Icon links</h4>
+  <div class="btn-group btn-link btn-icon">
+    <button class="btn">
+      <clr-icon shape="home"></clr-icon>
+      <span class="clr-icon-title">Home</span>
+    </button>
+    <button class="btn">
+      <clr-icon shape="cog"></clr-icon>
+      <span class="clr-icon-title">Settings</span>
+    </button>
+    <button class="btn">
+      <clr-icon shape="user"></clr-icon>
+      <span class="clr-icon-title">User</span>
+    </button>
+    <button class="btn">
+      <clr-icon shape="cloud"></clr-icon>
+      <span class="clr-icon-title">Cloud</span>
+    </button>
+  </div>
+</div>

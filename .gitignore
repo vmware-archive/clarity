@@ -1,6 +1,7 @@
 dist/
 tmp/
 node_modules/
+src/ks-app/node_modules
 typings/
 .idea/
 aot-compiled/

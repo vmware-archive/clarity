@@ -32,3 +32,31 @@
         </clr-dropdown-menu>
     </clr-dropdown>
 </div>
+
+<div class="clr-example squeeze demo-menu-height dropdown-demo">
+    <clr-dropdown>
+        <button class="btn btn-outline-primary" clrDropdownTrigger id="current1">
+            Dropdown
+            <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu *clrIfOpen>
+            <label class="dropdown-header">Dropdown header</label>
+            <a href="javascript://" clrDropdownItem>Action 1</a>
+            <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
+            <div class="dropdown-divider"></div>
+            <clr-dropdown>
+                <button clrDropdownTrigger id="sub-menu-3">Link 1</button>
+                <clr-dropdown-menu *clrIfOpen>
+                    <a href="javascript://" clrDropdownItem>Foo</a>
+                    <clr-dropdown>
+                        <button clrDropdownTrigger id="sub-menu-4">Bar</button>
+                        <clr-dropdown-menu clrPosition="left-bottom" *clrIfOpen>
+                            <a href="javascript://" clrDropdownItem>Baz</a>
+                        </clr-dropdown-menu>
+                    </clr-dropdown>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+            <a href="javascript://" clrDropdownItem>Link 2</a>
+        </clr-dropdown-menu>
+    </clr-dropdown>
+</div>

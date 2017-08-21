@@ -141,6 +141,25 @@ export default function(): void {
             expect(compiled.querySelector(".dropdown-item")).not.toBeNull();
         });
 
+        it("closes all dropdown menus when clrMenuClosable is true", () => {
+            const dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+            dropdownToggle.click();
+            fixture.detectChanges();
+
+            const nestedToggle: HTMLElement = compiled.querySelector(".nested");
+            nestedToggle.click();
+
+            fixture.detectChanges();
+
+            const nestedItem: HTMLElement = compiled.querySelector(".nested-item");
+            nestedItem.click();
+
+            fixture.detectChanges();
+
+            const items: HTMLElement = compiled.querySelector(".dropdown-item");
+            expect(items).toBeNull();
+        });
+
         it("does not close the menu when a disabled item is clicked", () => {
             const dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
             dropdownToggle.click();
@@ -177,7 +196,7 @@ export default function(): void {
                 <clr-dropdown>
                     <button clrDropdownTrigger class="nested">Nested</button>
                     <clr-dropdown-menu *clrIfOpen>
-                        <a href="javascript://" clrDropdownItem>Foo</a>
+                        <a href="javascript://" clrDropdownItem class="nested-item">Foo</a>
                     </clr-dropdown-menu>
                 </clr-dropdown>
             </clr-dropdown-menu>

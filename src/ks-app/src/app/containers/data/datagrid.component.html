@@ -1,0 +1,259 @@
+<h1>Datagrids</h1>
+<p>Datagrids are for organizing large volumes of data that users can scan, compare, and perform actions on.</p>
+<h3>Basic with Custom Cell Rendering</h3>
+<clr-datagrid id="basic-custom-cell" [style.height.px]="279">
+  <clr-dg-column>User ID</clr-dg-column>
+  <clr-dg-column>Name</clr-dg-column>
+  <clr-dg-column>Creation date</clr-dg-column>
+  <clr-dg-column>Favorite color</clr-dg-column>
+
+  <clr-dg-row *ngFor="let user of variableLengthUsers">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>{{variableLengthUsers.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<h3>Sort and Filter</h3>
+<clr-datagrid>
+  <clr-dg-column>User ID</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'" [(clrFilterValue)]="nameFilter">Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
+  <clr-dg-column [clrDgField]="'pokemon.name'" [clrDgSortBy]="pokemonComparator" [(clrDgSortOrder)]="sortOrder">
+    Pokemon
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of nonPaginatedUsers">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<h3>Paginate and hide columns with a placeholder</h3>
+<button class="btn btn-outline-primary" id="toggle-id" (click)="showId = !showId">
+  Toggle ID
+</button>
+<clr-datagrid>
+  <clr-dg-column *ngIf="showId">
+    <ng-container *clrDgHideableColumn>
+      User ID
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column >
+    <!--Name-->
+    <ng-container *clrDgHideableColumn>
+      Name
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn>
+      Creation date
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn>
+      Pokemon
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'">
+    <ng-container *clrDgHideableColumn>
+      Favorite color
+    </ng-container>
+  </clr-dg-column>
+
+  <clr-dg-placeholder>No users found</clr-dg-placeholder>
+
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+    <clr-dg-cell *ngIf="showId">{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell *ngIf="showDate">{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+    of {{pagination.totalItems}} users
+    <clr-dg-pagination #pagination [clrDgPageSize]="currentPageSize"></clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+
+<h3>Scroll vertically and horizontally on overflow</h3>
+<div class="card" [style.width.px]="400" id="horizontal-scrolling">
+  <div class="card-block">
+    <clr-datagrid [style.height.px]="250">
+      <clr-dg-column>User ID</clr-dg-column>
+      <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+      <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
+      <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+      <clr-dg-column class="lorem-ipsum">Filler</clr-dg-column>
+
+      <clr-dg-row *clrDgItems="let user of nonPaginatedUsers">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+        <clr-dg-cell>
+          <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+        <clr-dg-cell>This is a very wide column.</clr-dg-cell>
+      </clr-dg-row>
+
+      <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
+    </clr-datagrid>
+  </div>
+</div>
+
+<h3>Single selection and exapndable options</h3>
+<form>
+  <div class="form-group">
+    <label>Type of detail</label>
+    <div class="radio-inline">
+      <input type="radio" name="detail" id="detail-default" value="default" [(ngModel)]="detail">
+      <label for="detail-default">Overall</label>
+    </div>
+    <div class="radio-inline">
+      <input type="radio" name="detail" id="detail-columns" value="columns" [(ngModel)]="detail">
+      <label for="detail-columns">Per column</label>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="checkbox-inline">
+      <input type="checkbox" name="replace" id="replace" [(ngModel)]="replace">
+      <label for="replace">Replace row</label>
+    </div>
+  </div>
+</form>
+<div id="single-selection">
+  <div class="card card-block">
+    <p class="card-text username-list">
+      Selected user:
+      <em *ngIf="!singleSelected">No user selected.</em>
+      <span class="username" *ngIf="singleSelected">{{singleSelected.name}}</span>
+    </p>
+  </div>
+</div>
+<clr-datagrid [(clrDgSingleSelected)]="singleSelected">
+  <clr-dg-column>User ID</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
+  <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of nonPaginatedUsers" [clrDgItem]="user">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+
+    <clr-dg-row-detail *clrIfExpanded [clrDgReplace]="replace">
+      <ng-template [clrFakeLoader]="slowLoad" clrLoading>
+        <ng-container *ngIf="detail === 'default'">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed
+          quam. Proin rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget,
+          pellentesque sed arcu. Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra. Aenean
+          sagittis nibh lacus, in eleifend urna ultrices et. Mauris porttitor nisi nec velit pharetra porttitor.
+          Vestibulum vulputate sollicitudin dolor ut tincidunt. Phasellus vitae blandit felis. Nullam posuere
+          ipsum tincidunt velit pellentesque rhoncus. Morbi faucibus ut ipsum at malesuada. Nam vestibulum felis
+          sit amet metus finibus hendrerit. Fusce faucibus odio eget ex vulputate rhoncus. Fusce nec aliquam leo,
+          at suscipit diam.
+        </ng-container>
+
+        <ng-container *ngIf="detail === 'columns'">
+          <clr-dg-cell>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</clr-dg-cell>
+          <clr-dg-cell>Proin in neque in ante placerat mattis id sed quam.</clr-dg-cell>
+          <clr-dg-cell>Proin rhoncus lacus et tempor dignissim.</clr-dg-cell>
+          <clr-dg-cell>Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.</clr-dg-cell>
+          <clr-dg-cell>Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra.</clr-dg-cell>
+        </ng-container>
+      </ng-template>
+    </clr-dg-row-detail>
+  </clr-dg-row>
+
+  <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<h3>Multi-select with batch actions and single row actions</h3>
+<div id="multl-selection">
+  <div class="card card-block">
+    <p class="card-text username-list">
+      Selected users:
+      <em *ngIf="selected.length == 0">No user selected.</em>
+      <span class="username" *ngFor="let user of selected">{{user.name}}</span>
+    </p>
+
+    <p class="card-text username-list">
+      Users to be added to group:
+      <em *ngIf="toAdd.length == 0">No user selected.</em>
+      <span class="username" *ngFor="let user of toAdd">{{user.name}}</span>
+    </p>
+
+    <p class="card-text username-list">
+      Users to be deleted:
+      <em *ngIf="toDelete.length == 0">No user selected.</em>
+      <span class="username" *ngFor="let user of toDelete">{{user.name}}</span>
+    </p>
+
+    <p class="card-text username-list">
+      User to be edited:
+      <em *ngIf="!toEdit">No user selected.</em>
+      <span class="username" *ngIf="toEdit">{{toEdit.name}}</span>
+    </p>
+  </div>
+
+  <clr-datagrid [(clrDgSelected)]="selected">
+    <clr-dg-action-bar>
+      <div class="btn-group" role="group" aria-label="Available Actions" *ngIf="selected.length > 0">
+        <button type="button" class="btn btn-sm btn-secondary" (click)="onAdd()"><clr-icon shape="plus"></clr-icon> Add
+                                                                                                                    to
+                                                                                                                    group</button>
+        <button type="button" class="btn btn-sm btn-secondary" (click)="onDelete()" ><clr-icon shape="close"></clr-icon> Delete</button>
+        <button type="button" class="btn btn-sm btn-secondary" (click)="onEdit()" *ngIf="selected.length == 1"><clr-icon shape="pencil"></clr-icon> Edit</button>
+      </div>
+    </clr-dg-action-bar>
+
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of nonPaginatedUsers" [clrDgItem]="user">
+      <clr-dg-action-overflow>
+        <button class="action-item" (click)="onEdit(user)">
+          <clr-icon shape="note"></clr-icon>
+          Edit
+        </button>
+        <button class="action-item" (click)="onDelete(user)">
+          <clr-icon shape="trash"></clr-icon>
+          Delete
+        </button>
+      </clr-dg-action-overflow>
+
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
+  </clr-datagrid>
+</div>

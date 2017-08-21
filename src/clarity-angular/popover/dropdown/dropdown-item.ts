@@ -16,7 +16,11 @@ export class DropdownItem {
     @HostListener("click")
     onDropdownItemClick(): void {
         if (this.dropdown.isMenuClosable && !this.el.nativeElement.classList.contains("disabled")) {
-            this.ifOpenService.open = !this.ifOpenService.open;
+            let tempDropdown: Dropdown = this.dropdown;
+            while (tempDropdown) {
+                tempDropdown.ifOpenService.open = !tempDropdown.ifOpenService.open;
+                tempDropdown = tempDropdown.parent;
+            }
         }
     }
 }

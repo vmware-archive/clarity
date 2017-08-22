@@ -9,7 +9,8 @@
         <button
             class="btn dropdown-toggle"
             (click)="toggleMenu()">
-            <clr-icon shape="ellipsis-horizontal"></clr-icon>
+            <clr-icon *ngIf="menuLabel == ''" shape="ellipsis-horizontal"></clr-icon>
+            <span *ngIf="menuLabel != ''">{{menuLabel}}</span>
         </button>
         <div
             class="dropdown-menu"

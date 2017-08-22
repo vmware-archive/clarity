@@ -21,7 +21,8 @@ export default function(): void {
                 imports: [ClrButtonGroupModule],
                 declarations: [
                     BtnGroupInlineViewContainer, BtnGroupBothViewContainersTest, BtnGroupMenuViewContainer,
-                    BtnGroupFlipTest1, BtnGroupFlipTest2, BtnGroupProjectionUpdateTest, BtnGroupEHCAIWCTest
+                    BtnGroupFlipTest1, BtnGroupFlipTest2, BtnGroupProjectionUpdateTest, BtnGroupEHCAIWCTest,
+                    BtnGroupMenuLabelTest
                 ]
             });
         });
@@ -125,6 +126,25 @@ export default function(): void {
                 expect(dropdownMenu.children[2].classList.contains("btn")).toBe(true);
             });
 
+        });
+
+        describe("Button group wit custom menu label", () => {
+
+            beforeEach(() => {
+                fixture = TestBed.createComponent(BtnGroupMenuLabelTest);
+                fixture.detectChanges();
+                compiled = fixture.nativeElement;
+                testBtnGroup = fixture.componentInstance.btnGroup;
+            });
+
+            afterEach(() => {
+                fixture.destroy();
+            });
+
+            it("renders the custom menu label", () => {
+                const dropdownToggle: HTMLElement = compiled.querySelector(".btn.dropdown-toggle");
+                expect(dropdownToggle.innerText).toContain("MORE");
+            });
         });
 
         describe("Flip Test 1", () => {
@@ -506,6 +526,21 @@ class BtnGroupInlineViewContainer {
     `
 })
 class BtnGroupBothViewContainersTest {
+    @ViewChild(ButtonGroup) btnGroup: ButtonGroup;
+}
+
+@Component({
+    template: `
+        <clr-button-group [clrMenuLabel]="'more'">
+            <clr-button>Button 1</clr-button>
+            <clr-button>Button 2</clr-button>
+            <clr-button [clrInMenu]="true">Button 3</clr-button>
+            <clr-button [clrInMenu]="true">Button 4</clr-button>
+            <clr-button [clrInMenu]="true">Button 5</clr-button>
+        </clr-button-group>
+    `
+})
+class BtnGroupMenuLabelTest {
     @ViewChild(ButtonGroup) btnGroup: ButtonGroup;
 }
 

@@ -15,6 +15,9 @@ import {IconButtonGroupDemo} from "./angular/icon-buttons/icon-button-group";
 import {MenuDirectionsDemo} from "./angular/menu-directions/menu-directions";
 import {MixedButtonGroupDemo} from "./angular/mixed-buttons/mixed-button-group";
 import {MoveAllInMenuDemo} from "./angular/move-all-in-menu/move-all-in-menu";
+import {
+    MoveButtonInMenuWithCustomLabelDemo
+} from "./angular/move-button-in-menu-with-custom-label/move-button-in-menu-with-custom-label";
 import {MoveButtonInMenuDemo} from "./angular/move-button-in-menu/move-button-in-menu";
 import {MoveMultipleButtonInMenuDemo} from "./angular/move-multiple-buttons-in-menu/move-multiple-button-in-menu";
 import {ProjectionUpdateTest1Demo} from "./angular/projection-update-test-1/projection-update-test-1";
@@ -46,6 +49,7 @@ import {ButtonGroupTypes} from "./static/types/button-group-types";
         MixedButtonGroupDemo,
         MoveAllInMenuDemo,
         MoveButtonInMenuDemo,
+        MoveButtonInMenuWithCustomLabelDemo,
         MoveMultipleButtonInMenuDemo,
         ProjectionUpdateTest1Demo,
         ProjectionUpdateTest2Demo,
@@ -76,6 +80,7 @@ import {ButtonGroupTypes} from "./static/types/button-group-types";
         MixedButtonGroupDemo,
         MoveAllInMenuDemo,
         MoveButtonInMenuDemo,
+        MoveButtonInMenuWithCustomLabelDemo,
         MoveMultipleButtonInMenuDemo,
         ProjectionUpdateTest1Demo,
         ProjectionUpdateTest2Demo,

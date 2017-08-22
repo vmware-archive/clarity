@@ -19,6 +19,7 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./hide-overflow']">Hide/Show Overflow Toggle</a></li>
             <li><a [routerLink]="['./mixed-buttons']">Mixed Buttons</a></li>
             <li><a [routerLink]="['./move-button-in-menu']">Move Button In Menu</a></li>
+            <li><a [routerLink]="['./move-button-in-menu-with-custom-label']">Move Button In Menu with Custom Label</a></li>
             <li><a [routerLink]="['./move-multiple-buttons-in-menu']">Move Multiple Buttons In Menu</a></li>
             <li><a [routerLink]="['./move-all-in-menu']">Move All Buttons In Menu</a></li>
             <li><a [routerLink]="['./projection-update-test-1']">Projection Update Test 1</a></li>

@@ -166,6 +166,17 @@ export class ButtonGroup {
         this._openMenu = value;
     }
 
+    private _menuLabel: string = "";
+
+    get menuLabel(): string {
+        return this._menuLabel;
+    }
+
+    @Input("clrMenuLabel")
+    set menuLabel(value: string) {
+        this._menuLabel = value;
+    }
+
     public anchorPoint: Point = Point.BOTTOM_LEFT;  // default if menuPosition isn't set
     public popoverPoint: Point = Point.LEFT_TOP;    // default if menuPosition isn't set
 

@@ -9,9 +9,6 @@
         "type" : "git",
         "url" : "ssh://git@git.eng.vmware.com/clarity.git"
     },
-    "dependencies": {
-        "dompurify": "^0.9.0"
-    },
     "peerDependencies": {
         "@webcomponents/custom-elements": "1.0.0"
     },

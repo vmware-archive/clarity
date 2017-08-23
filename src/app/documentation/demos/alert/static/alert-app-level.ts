@@ -8,7 +8,7 @@ import {Component} from "@angular/core";
 const HTML_EXAMPLE_1 = `
 <div class="alert alert-app-level alert-danger" style="margin-bottom:24px">
     <div class="alert-items">
-        <div class="alert-item">
+        <div class="alert-item static">
             <div class="alert-icon-wrapper">
                 <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
             </div>
@@ -26,7 +26,7 @@ const HTML_EXAMPLE_1 = `
 </div>
 <div class="alert alert-app-level alert-warning" style="margin-bottom:24px">
     <div class="alert-items">
-        <div class="alert-item">
+        <div class="alert-item static">
             <div class="alert-icon-wrapper">
                 <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
             </div>
@@ -44,7 +44,7 @@ const HTML_EXAMPLE_1 = `
 </div>
 <div class="alert alert-app-level alert-info">
     <div class="alert-items">
-        <div class="alert-item">
+        <div class="alert-item static">
             <div class="alert-icon-wrapper">
                 <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
             </div>
@@ -66,7 +66,7 @@ const HTML_EXAMPLE_2 = `
 <div class="main-container">
     <div class="alert alert-app-level alert-info">
         <div class="alert-items">
-            <div class="alert-item">
+            <div class="alert-item static">
                 <div class="alert-icon-wrapper">
                     <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
                 </div>
@@ -99,7 +99,7 @@ const HTML_EXAMPLE_3 = `
 <div class="main-container">
     <div class="alert alert-app-level alert-warning">
         <div class="alert-items">
-            <div class="alert-item">
+            <div class="alert-item static">
                 <div class="alert-icon-wrapper">
                     <clr-icon class="alert-icon" shape="download"></clr-icon>
                 </div>

@@ -9,7 +9,7 @@ const HTML_EXAMPLE = `
 <div class="content-area">
     <div class="alert alert-danger">
         <div class="alert-items">
-            <div class="alert-item">
+            <div class="alert-item static">
                 <div class="alert-icon-wrapper">
                     <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
                 </div>
@@ -22,7 +22,7 @@ const HTML_EXAMPLE = `
     <p>...</p>
     <div class="alert alert-success">
         <div class="alert-items">
-            <div class="alert-item">
+            <div class="alert-item static">
                 <div class="alert-icon-wrapper">
                     <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
                 </div>

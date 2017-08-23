@@ -12,7 +12,7 @@ const HTML_EXAMPLE = `
             <button type="button" class="close" aria-label="Close">
                 <clr-icon aria-hidden="true" shape="close"></clr-icon>
             </button>
-            <div class="alert-item">
+            <div class="alert-item static">
                 <span class="alert-text">
                     Use small alerts in a card.
                 </span>

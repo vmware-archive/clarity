@@ -28,15 +28,6 @@ describe("ClarityIcons", () => {
     });
 
     describe("ClarityIconsApi.get()", () => {
-        // A brittle, yet necessary, test to validate sanitization.
-        // Will break if SVG path is changed or config on sanitizer is changed
-        const sanitizedIcon = removeWhitespace([
-            "<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" ",
-            "xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid meet\" ",
-            "viewBox=\"0 0 36 36\" version=\"1.1\">", "<title>check</title>",
-            "<path d=\"M13.72,27.69,3.29,17.27a1,1,0,0,1,1.41-1.41l9,9L31.29,",
-            "7.29a1,1,0,0,1,1.41,1.41Z\" class=\"clr-i-outline clr-i-outline-path-1\"></path>", "</svg>"
-        ].join(""));
 
         it("should return all icons when no argument is passed in", () => {
 
@@ -50,16 +41,6 @@ describe("ClarityIcons", () => {
             const currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes, EssentialShapes, SocialShapes,
                                                    MediaShapes, TravelShapes, TechnologyShapes);
             testAllShapes(ClarityIcons, currentAllShapes);
-        });
-
-        it("should return CoreShapes['success'] when 'success' is passed in", () => {
-            const expected = removeWhitespace(ClarityIcons.get("success"));
-            expect(expected).toEqual(sanitizedIcon);
-        });
-
-        it("should return CoreShapes['check'] when 'check' is passed in", () => {
-            const expected = removeWhitespace(ClarityIcons.get("check"));
-            expect(expected).toEqual(sanitizedIcon);
         });
 
         it("should return the shapes from CommerceShapes and CoreShapes sets " +
@@ -121,20 +102,18 @@ describe("ClarityIcons", () => {
 
             ClarityIcons.add(EssentialShapes);
 
-            const expected = [
-                "<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" ",
-                "xmlns=\"http://www.w3.org/2000/svg\" class=\"has-solid\" preserveAspectRatio=\"xMidYMid meet\" ",
-                "viewBox=\"0 0 36 36\" version=\"1.1\"><title>pencil</title><path ",
-                "d=\"M33.87,8.32,28,2.42a2.07,2.07,0,0,0-2.92,0L4.27,23.2l-1.9,8.2a2.06,2.06,0,0,0,2,2.5,2.14,",
-                "2.14,0,0,0,.43,0L13.09,32,33.87,11.24A2.07,2.07,0,0,0,33.87,8.32ZM12.09,30.2,",
-                "4.32,31.83l1.77-7.62L21.66,8.7l6,6ZM29,13.25l-6-6,3.48-3.46,5.9,6Z\" ",
-                "class=\"clr-i-outline clr-i-outline-path-1\"></path><path d=\"M4.22,23.2l-1.9,8.2a2.06,2.06,",
-                "0,0,0,2,2.5,2.14,2.14,0,0,0,.43,0L13,32,28.84,16.22,20,7.4Z\" ",
-                "class=\"clr-i-solid clr-i-solid-path-1\"></path><path d=\"M33.82,8.32l-5.9-5.9a2.07,2.07,0,0,",
-                "0-2.92,0L21.72,5.7l8.83,8.83,3.28-3.28A2.07,2.07,0,0,0,33.82,8.32Z\" ",
-                "class=\"clr-i-solid clr-i-solid-path-2\"></path></svg>"
-            ].join("");
-            expect(expected).toEqual(removeWhitespace(ClarityIcons.get("pencil")));
+            const expected = `
+                <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>pencil</title>
+    
+                    <path class="clr-i-outline clr-i-outline-path-1" d="M33.87,8.32,28,2.42a2.07,2.07,0,0,0-2.92,0L4.27,23.2l-1.9,8.2a2.06,2.06,0,0,0,2,2.5,2.14,2.14,0,0,0,.43,0L13.09,32,33.87,11.24A2.07,2.07,0,0,0,33.87,8.32ZM12.09,30.2,4.32,31.83l1.77-7.62L21.66,8.7l6,6ZM29,13.25l-6-6,3.48-3.46,5.9,6Z"/>
+    
+                    <path class="clr-i-solid clr-i-solid-path-1" d="M4.22,23.2l-1.9,8.2a2.06,2.06,0,0,0,2,2.5,2.14,2.14,0,0,0,.43,0L13,32,28.84,16.22,20,7.4Z"/>
+                    <path class="clr-i-solid clr-i-solid-path-2" d="M33.82,8.32l-5.9-5.9a2.07,2.07,0,0,0-2.92,0L21.72,5.7l8.83,8.83,3.28-3.28A2.07,2.07,0,0,0,33.82,8.32Z"/>
+                </svg>
+            `;
+            expect(removeWhitespace(expected)).toEqual(removeWhitespace(ClarityIcons.get("pencil")));
         });
 
         it("should throw an error if the requested shape doesn't exist", () => {
@@ -197,23 +176,6 @@ describe("ClarityIcons", () => {
             expect(ClarityIcons.get("an-img")).toEqual(anImgTag);
             expect(ClarityIcons.get("a-bgimg")).toEqual(aDivTag);
             expect(ClarityIcons.get("fa-icon")).toEqual(aFaIcon);
-        });
-
-        it("should sanitize additions", () => {
-            const imgTag = "<img src=\"../assets/logo.png\"><script>alert('boo');</script>";
-            const divTag = "<div class=\"div-with-bgimg\" style=\"behavior: EWW;\"></div>";
-            const faIcon = "<span onclick=\"doSomethingBad()\" class=\"fa-icon fa-target\"></span>";
-            const junk = "<shape-template><svg><path></path></svg></shape-template>";
-
-            ClarityIcons.add({"img": imgTag});
-            ClarityIcons.add({"div": divTag});
-            ClarityIcons.add({"fa": faIcon});
-            ClarityIcons.add({"junk": junk});
-
-            expect(ClarityIcons.get("img")).toEqual("<img src=\"../assets/logo.png\">");
-            expect(ClarityIcons.get("div")).toEqual("<div class=\"div-with-bgimg\"></div>");
-            expect(ClarityIcons.get("fa")).toEqual("<span class=\"fa-icon fa-target\"></span>");
-            expect(ClarityIcons.get("junk")).toEqual("<svg><path></path></svg>");
         });
 
         it("should throw an error if an empty string is set for a shape name.", () => {

@@ -43,7 +43,6 @@ System.config({
         'tests': 'dist/tests',
         'clarity-icons': 'dist/clarity-icons',
         'rxjs': 'node_modules/rxjs',
-        'dompurify': 'node_modules/dompurify/dist/purify.min.js',
         '@angular/animations': 'node_modules/@angular/animations/bundles/animations.umd.js',
         '@angular/animations/browser': 'node_modules/@angular/animations/bundles/animations-browser.umd.js',
         '@angular/core': 'node_modules/@angular/core/bundles/core.umd.js',

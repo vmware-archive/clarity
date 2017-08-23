@@ -16,5 +16,4 @@ declare interface Module {
 
 interface Window {
     ClarityIcons: any;
-    DOMPurify: any;
 }

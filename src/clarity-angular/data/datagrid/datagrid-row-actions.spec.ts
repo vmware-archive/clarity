@@ -5,18 +5,30 @@
  */
 
 import {Component} from "@angular/core";
-
-import {DatagridActionOverflow} from "./datagrid-action-overflow";
 import {TestContext} from "./helpers.spec";
+import {DatagridRowActions} from "./datagrid-row-actions";
 import {RowActionService} from "./providers/row-action-service";
+import {IfOpenService} from "../../utils/conditional/if-open.service";
+import {Selection} from "./providers/selection";
+import {Items} from "./providers/items";
+import {FiltersProvider} from "./providers/filters";
+import {Sort} from "./providers/sort";
+import {Page} from "./providers/page";
+import {ExpandableRowsCount} from "./providers/global-expandable-rows";
+import {HideableColumnService} from "./providers/hideable-column.service";
+import {DatagridRenderOrganizer} from "./render/render-organizer";
+import {DatagridWillyWonka} from "./chocolate/datagrid-willy-wonka";
+import {DomAdapter} from "./render/dom-adapter";
 
 export default function(): void {
-    describe("DatagridActionOverflow component", function() {
-        let context: TestContext<DatagridActionOverflow, SimpleTest>;
+    fdescribe("DatagridRowActions component", function() {
+        let context: TestContext<DatagridRowActions, SimpleTest>;
         let toggle: HTMLElement;
 
         beforeEach(function() {
-            context = this.create(DatagridActionOverflow, SimpleTest, [RowActionService]);
+            context = this.create(DatagridRowActions, SimpleTest, [Page, ExpandableRowsCount, HideableColumnService,
+                RowActionService, IfOpenService, Selection, Items, FiltersProvider, Sort, DatagridRenderOrganizer,
+                DatagridWillyWonka, DomAdapter]);
             toggle = context.clarityElement.querySelector("clr-icon");
         });
 
@@ -88,13 +100,19 @@ export default function(): void {
 }
 
 @Component({
+    providers: [IfOpenService],
     template: `
         <div class="outside-click-test">
-            This is an area outside of the action overflow
+            This is an area outside of the actions
         </div>
-        <clr-dg-action-overflow [(clrDgActionOverflowOpen)]="open">
-            <button class="action-item">Hello world</button>
-        </clr-dg-action-overflow>`
+        <clr-dg-row>
+            <button clrDatagridRowActionsTrigger>
+                <clr-icon shape="ellipsis-vertical"></clr-icon>
+            </button>
+            <clr-dg-row-actions [(clrDgActionOverflowOpen)]="open">
+                <button class="action-item">Hello world</button>
+            </clr-dg-row-actions>
+        </clr-dg-row>`
 })
 class SimpleTest {
     open: boolean;

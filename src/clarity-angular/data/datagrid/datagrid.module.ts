@@ -14,12 +14,13 @@ import {ClrCommonPopoverModule} from "../../popover/common/popover.module";
 import {ClrIfExpandModule} from "../../utils/expand/if-expand.module";
 import {ClrLoadingModule} from "../../utils/loading/loading.module";
 import {ClrOutsideClickModule} from "../../utils/outside-click/outside-click.module";
+import {ClrPopoverModule} from "../../popover/popover.module";
 
 import {DATAGRID_DIRECTIVES} from "./index";
 
 @NgModule({
     imports: [
-        CommonModule, ClrIconModule, ClrFormsModule, FormsModule, ClrCommonPopoverModule, ClrLoadingModule,
+        CommonModule, ClrIconModule, ClrFormsModule, FormsModule, ClrCommonPopoverModule, ClrLoadingModule, ClrPopoverModule,
         ClrOutsideClickModule
     ],
     declarations: [

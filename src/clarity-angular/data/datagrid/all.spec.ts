@@ -16,7 +16,6 @@ import DatagridPropertyStringFilterSpecs from "./built-in/filters/datagrid-prope
 import DatagridStringFilterSpecs from "./built-in/filters/datagrid-string-filter.spec";
 import NestedPropertySpecs from "./built-in/nested-property.spec";
 import DatagridActionBarSpecs from "./datagrid-action-bar.spec";
-import DatagridActionOverflowSpecs from "./datagrid-action-overflow.spec";
 import DatagridCellSpecs from "./datagrid-cell.spec";
 import DatagridColumnToggle from "./datagrid-column-toggle.spec";
 import DatagridColumnSpecs from "./datagrid-column.spec";
@@ -27,6 +26,7 @@ import DatagridHideableColumnSpec from "./datagrid-hideable-column.spec";
 import DatagridItemsSpecs from "./datagrid-items.spec";
 import DatagridPaginationSpecs from "./datagrid-pagination.spec";
 import DatagridPlaceholderSpecs from "./datagrid-placeholder.spec";
+import DatagridRowActionsSpecs from "./datagrid-row-actions.spec";
 import DatagridRowDetailSpecs from "./datagrid-row-detail.spec";
 import DatagridRowSpecs from "./datagrid-row.spec";
 import DatagridSpecs from "./datagrid.spec";
@@ -62,12 +62,12 @@ describe("Datagrid", function() {
     });
     describe("Components", function() {
         DatagridActionBarSpecs();
-        DatagridActionOverflowSpecs();
         DatagridCellSpecs();
         DatagridFilterSpecs();
         DatagridColumnSpecs();
         DatagridItemsSpecs();
         DatagridRowSpecs();
+        DatagridRowActionsSpecs();
         DatagridRowDetailSpecs();
         DatagridPaginationSpecs();
         DatagridFooterSpecs();

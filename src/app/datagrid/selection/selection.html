@@ -76,10 +76,10 @@
     </clr-dg-column>
 
     <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
-        <clr-dg-action-overflow>
+        <clr-dg-row-actions> <!-- TODO support bindings *clrIfOpen="state" --> <!-- TODO support old API [(clrDgActionOverflowOpen)]="state" -->
             <button class="action-item" (click)="onEdit(user)">Edit</button>
             <button class="action-item" (click)="onDelete(user)">Delete</button>
-        </clr-dg-action-overflow>
+        </clr-dg-row-actions>
 
         <clr-dg-cell>{{user.id}}</clr-dg-cell>
         <clr-dg-cell>{{user.name}}</clr-dg-cell>

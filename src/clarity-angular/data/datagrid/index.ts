@@ -12,7 +12,6 @@ import {DatagridWillyWonka} from "./chocolate/datagrid-willy-wonka";
 import {ExpandableOompaLoompa} from "./chocolate/expandable-oompa-loompa";
 import {Datagrid} from "./datagrid";
 import {DatagridActionBar} from "./datagrid-action-bar";
-import {DatagridActionOverflow} from "./datagrid-action-overflow";
 import {DatagridCell} from "./datagrid-cell";
 import {DatagridColumn} from "./datagrid-column";
 import {DatagridColumnToggle} from "./datagrid-column-toggle";
@@ -24,6 +23,9 @@ import {DatagridItems} from "./datagrid-items";
 import {DatagridPagination} from "./datagrid-pagination";
 import {DatagridPlaceholder} from "./datagrid-placeholder";
 import {DatagridRow} from "./datagrid-row";
+import {DatagridRowActions} from "./datagrid-row-actions";
+import {DatagridRowActionsRegisterer} from "./datagrid-row-actions-registerer";
+import {DatagridRowActionsTrigger} from "./datagrid-row-actions-trigger";
 import {DatagridRowDetail} from "./datagrid-row-detail";
 import {DatagridBodyRenderer} from "./render/body-renderer";
 import {DatagridCellRenderer} from "./render/cell-renderer";
@@ -38,7 +40,6 @@ import {DatagridTableRenderer} from "./render/table-renderer";
 
 export * from "./datagrid";
 export * from "./datagrid-action-bar";
-export * from "./datagrid-action-overflow";
 export * from "./datagrid-column";
 export * from "./datagrid-column-toggle";
 export * from "./datagrid-hidable-column.directive";
@@ -50,6 +51,9 @@ export * from "./datagrid-cell";
 export * from "./datagrid-footer";
 export * from "./datagrid-pagination";
 export * from "./datagrid-placeholder";
+export * from "./datagrid-row-actions";
+export * from "./datagrid-row-actions-registerer";
+export * from "./datagrid-row-actions-trigger";
 
 export * from "./interfaces/state";
 export * from "./interfaces/sort-order";
@@ -63,9 +67,10 @@ export * from "./built-in/comparators/datagrid-property-comparator";
 
 export const DATAGRID_DIRECTIVES: Type<any>[] = [
     // Core
-    Datagrid, DatagridActionBar, DatagridActionOverflow, DatagridColumn, DatagridColumnToggle,
+    Datagrid, DatagridActionBar, DatagridColumn, DatagridColumnToggle,
     DatagridHideableColumnDirective, DatagridFilter, DatagridItems, DatagridRow, DatagridRowDetail,
     DatagridDetailRegisterer, DatagridCell, DatagridFooter, DatagridPagination, DatagridPlaceholder,
+    DatagridRowActions, DatagridRowActionsRegisterer, DatagridRowActionsTrigger,
 
     // Renderers
     DatagridMainRenderer, DatagridTableRenderer, DatagridHeadRenderer, DatagridHeaderRenderer, DatagridBodyRenderer,

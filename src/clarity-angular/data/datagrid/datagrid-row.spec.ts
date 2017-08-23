@@ -152,6 +152,71 @@ export default function(): void {
                    expect(context.clarityDirective.selected).toBe(false);
                }));
 
+            it("selects the model on click only when `rowSelectionMode` is enabled (Single selection)", function() {
+                selectionProvider.selectionType = SelectionType.Single;
+                context.testComponent.item = {id: 1};
+                context.detectChanges();
+                const row = context.clarityElement;
+                row.click();
+                context.detectChanges();
+                expect(selectionProvider.currentSingle).toBeUndefined();
+
+                // Enabling the rowSelectionMode
+                selectionProvider.rowSelectionMode = true;
+                context.detectChanges();
+                row.click();
+                context.detectChanges();
+                expect(selectionProvider.currentSingle).toEqual(context.testComponent.item);
+            });
+
+            it("selects the model on click only when `rowSelectionMode` is enabled (Multi selection)", function() {
+                selectionProvider.selectionType = SelectionType.Multi;
+                context.testComponent.item = {id: 1};
+                context.detectChanges();
+                const row = context.clarityElement;
+                expect(selectionProvider.current).toEqual([]);
+                row.click();
+                context.detectChanges();
+                expect(selectionProvider.current).toEqual([]);
+
+                // Enabling the rowSelectionMode
+                selectionProvider.rowSelectionMode = true;
+                context.detectChanges();
+                row.click();
+                context.detectChanges();
+                expect(selectionProvider.current).toEqual([context.testComponent.item]);
+
+                row.click();
+                context.detectChanges();
+                expect(selectionProvider.current).toEqual([]);
+            });
+
+            it("doesn't have input for selection when hideSelectionColumn is enabled (Single selection)", function() {
+                selectionProvider.selectionType = SelectionType.Single;
+                context.detectChanges();
+
+                let input = context.clarityElement.querySelector("input");
+                expect(input).toBeDefined();
+
+                selectionProvider.hideSelectionColumn = true;
+                context.detectChanges();
+                input = context.clarityElement.querySelector("input");
+                expect(input).toBeNull();
+            });
+
+            it("doesn't have input for selection when hideSelectionColumn is enabled (Multi selection)", function() {
+                selectionProvider.selectionType = SelectionType.Multi;
+                context.detectChanges();
+
+                let input = context.clarityElement.querySelector("input");
+                expect(input).toBeDefined();
+
+                selectionProvider.hideSelectionColumn = true;
+                context.detectChanges();
+                input = context.clarityElement.querySelector("input");
+                expect(input).toBeNull();
+            });
+
             function flushAndAssertSelected(selected: boolean) {
                 context.detectChanges();
                 // ngModel is asynchronous, we need an extra change detection

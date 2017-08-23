@@ -13,7 +13,7 @@
                     <div class="datagrid-row datagrid-row-flex">
                         <!-- header for datagrid where you can select multiple rows -->
                         <div class="datagrid-column datagrid-select datagrid-fixed-column"
-                             *ngIf="selection.selectionType === SELECTION_TYPE.Multi">
+                             *ngIf="selection.selectionType === SELECTION_TYPE.Multi && !selection.hideSelectionColumn">
                         <span class="datagrid-column-title">
                             <clr-checkbox [(ngModel)]="allSelected"></clr-checkbox>
                         </span>
@@ -21,7 +21,7 @@
                         </div>
                         <!-- header for datagrid where you can select one row only -->
                         <div class="datagrid-column datagrid-select datagrid-fixed-column"
-                             *ngIf="selection.selectionType === SELECTION_TYPE.Single">
+                             *ngIf="selection.selectionType === SELECTION_TYPE.Single && !selection.hideSelectionColumn">
                             <div class="datagrid-column-separator"></div>
                         </div>
                         <!-- header for single row action; only display if we have at least one actionable row in datagrid -->

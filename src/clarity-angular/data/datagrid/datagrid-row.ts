@@ -3,7 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList} from "@angular/core";
+import {
+    AfterContentInit,
+    Component,
+    ContentChildren,
+    EventEmitter,
+    HostListener,
+    Input,
+    Output,
+    QueryList
+} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
 import {Expand} from "../../utils/expand/providers/expand";
@@ -23,11 +32,11 @@ let nbRow: number = 0;
     selector: "clr-dg-row",
     template: `
         <clr-dg-row-master class="datagrid-row-flex">
-            <clr-dg-cell *ngIf="selection.selectionType === SELECTION_TYPE.Multi"
+            <clr-dg-cell *ngIf="selection.selectionType === SELECTION_TYPE.Multi && !selection.hideSelectionColumn"
                          class="datagrid-select datagrid-fixed-column">
                 <clr-checkbox [ngModel]="selected" (ngModelChange)="toggle($event)"></clr-checkbox>
             </clr-dg-cell>
-            <clr-dg-cell *ngIf="selection.selectionType === SELECTION_TYPE.Single"
+            <clr-dg-cell *ngIf="selection.selectionType === SELECTION_TYPE.Single && !selection.hideSelectionColumn"
                          class="datagrid-select datagrid-fixed-column">
                 <div class="radio">
                     <input type="radio" [id]="id" [name]="selection.id + '-radio'" [value]="item"
@@ -65,7 +74,11 @@ let nbRow: number = 0;
             <ng-content select="clr-dg-row-detail"></ng-content>
         </ng-template>
     `,
-    host: {"[class.datagrid-row]": "true", "[class.datagrid-selected]": "selected"},
+    host: {
+        "[class.datagrid-row]": "true",
+        "[class.datagrid-selected]": "selected",
+        "[attr.tabindex]": "selection.rowSelectionMode ? 0 : null"
+    },
     providers: [Expand, {provide: LoadingListener, useExisting: Expand}]
 })
 export class DatagridRow implements AfterContentInit {
@@ -130,6 +143,26 @@ export class DatagridRow implements AfterContentInit {
         if (this.expand.expandable) {
             this.expanded = !this.expanded;
             this.expandedChange.emit(this.expanded);
+        }
+    }
+
+    @HostListener("click", ["$event"])
+    public toggleSelection(event: any) {
+        if (!this.selection.rowSelectionMode) {
+            return;
+        }
+
+        switch (this.selection.selectionType) {
+            case SelectionType.None:
+                break;
+            case SelectionType.Single:
+                this.selection.currentSingle = this.item;
+                break;
+            case SelectionType.Multi:
+                this.toggle();
+                break;
+            default:
+                break;
         }
     }
 

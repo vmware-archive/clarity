@@ -111,6 +111,23 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     @Output("clrDgSingleSelectedChange") singleSelectedChanged = new EventEmitter<any>(false);
 
     /**
+     * Selection/Deselection on row click mode
+     */
+    @Input("clDgRowSelection")
+    set rowSelectionMode(value: boolean) {
+        this.selection.rowSelectionMode = value;
+    }
+
+    /**
+     * Hide selection column and use row selection mode
+     */
+    @Input("clDgHideSelectionColumn")
+    set hideSelectionColumn(value: boolean) {
+        this.selection.rowSelectionMode = true;
+        this.selection.hideSelectionColumn = true;
+    }
+
+    /**
      * Indicates if all currently displayed items are selected
      */
     public get allSelected() {

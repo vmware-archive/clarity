@@ -16,22 +16,10 @@ gulp.task("bundle:icons:sfx", ["typescript:icons"], function () {
 
     var buildOpts = {minify: true, mangle: false, normalize: true};
 
-    var builder = new Builder();
+    var builder = new Builder("dist/");
     builder.config({
-        map: {
-            "dompurify": "node_modules/dompurify"
-        },
-        paths: {
-            "clarity-icons/": "dist/clarity-icons/"
-        },
         packages: {
-            'clarity-icons': {
-                defaultExtension: 'js'
-           },
-           "dompurify": {
-               defaultExtension: 'js',
-               main: 'src/purify.js'
-           }
+            'clarity-icons': {defaultExtension: 'js'}
         }
     });
 
@@ -46,14 +34,8 @@ gulp.task("bundle:icons:sfx", ["typescript:icons"], function () {
 gulp.task("bundle:icons-lite:sfx", ["typescript:icons"], function () {
     var buildOpts = {minify: true, mangle: false, normalize: true};
 
-    var builder = new Builder();
+    var builder = new Builder("dist/");
     builder.config({
-        map: {
-            "dompurify": "node_modules/dompurify/src/purify.js"
-        },
-        paths: {
-            "clarity-icons/": "dist/clarity-icons/"
-        },
         packages: {
             'clarity-icons': {main: 'index.js', defaultExtension: 'js'}
         }

@@ -4,8 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import * as DomPurify from "dompurify";
-
 import {IconAlias} from "./interfaces/icon-alias";
 import {IconTemplate} from "./interfaces/icon-template";
 
@@ -36,77 +34,6 @@ export class ClarityIconsApi {
         return true;
     }
 
-    private sanitizeTemplate(template: string): string {
-        const allowedTags = [
-            "img",
-            "div",
-            "span",
-            "svg",
-            "animate",
-            "animateMotion",
-            "animateTransform",
-            "circle",
-            "clipPath",
-            "defs",
-            "desc",
-            "ellipse",
-            "feBlend",
-            "feColorMatrix",
-            "feComponentTransfer",
-            "feComposite",
-            "feConvolveMatrix",
-            "feDiffuseLighting",
-            "feDisplacementMap",
-            "feDistantLight",
-            "feDropShadow",
-            "feFlood",
-            "feFuncA",
-            "feFuncB",
-            "feFuncG",
-            "feFuncR",
-            "feGaussianBlur",
-            "feImage",
-            "feMerge",
-            "feMergeNode",
-            "feMorphology",
-            "feOffset",
-            "fePointLight",
-            "feSpecularLighting",
-            "feSpotLight",
-            "feTile",
-            "feTurbulence",
-            "filter",
-            "g",
-            "line",
-            "linearGradient",
-            "marker",
-            "mask",
-            "mpath",
-            "path",
-            "pattern",
-            "polygon",
-            "polyline",
-            "radialGradient",
-            "rect",
-            "stop",
-            "symbol",
-            "text",
-            "textPath",
-            "title",
-            "use",
-            "view"
-        ];
-
-        const sanitizeOptions = {
-            SAFE_FOR_TEMPLATES: true,
-            FORBID_ATTR: ["style"],
-            ALLOWED_TAGS: allowedTags,
-            ADD_ATTR: ["version", "preserveAspectRatio"]
-        };
-
-        return DomPurify.sanitize(template, sanitizeOptions);
-    }
-
     private setIconTemplate(shapeName: string, shapeTemplate: string): void {
         const trimmedShapeTemplate = shapeTemplate.trim();
 
@@ -116,7 +43,7 @@ export class ClarityIconsApi {
                 delete iconShapeSources[shapeName];
             }
 
-            iconShapeSources[shapeName] = this.sanitizeTemplate(trimmedShapeTemplate);
+            iconShapeSources[shapeName] = trimmedShapeTemplate;
         }
     }
 

@@ -104,7 +104,13 @@ export class IconsSetsComponent implements AfterViewInit, OnDestroy {
 
     ngAfterViewInit() {
         this.filterIconsOnSearch();
-        this.initialHeight = this._el.nativeElement.getBoundingClientRect().height;
+
+        // @angular/router v4.3.0^ breaks something with the lifecycle.
+        // TODO: find a better way to solve this chocolate error than using setTimeout.
+
+        setTimeout(() => {
+            this.initialHeight = this._el.nativeElement.getBoundingClientRect().height;
+        });
     }
 
 

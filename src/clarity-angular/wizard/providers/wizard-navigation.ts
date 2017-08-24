@@ -892,7 +892,9 @@ export class WizardNavigationService implements OnDestroy {
         this.pageCollection.updateCompletedStates();
 
         currentPageRemoved = this.pageCollection.pagesAsArray.indexOf(this.currentPage) < 0;
-        toSetCurrent = this.pageCollection.findFirstIncompletePage();
-        this.currentPage = toSetCurrent;
+        if (currentPageRemoved) {
+            toSetCurrent = this.pageCollection.findFirstIncompletePage();
+            this.currentPage = toSetCurrent;
+        }
     }
 }

@@ -34,19 +34,22 @@
 </ng-template>
 
 <section class="icons-header">
-    <div class="icons-header-wrapper">
-        <h1>Clarity Icons</h1>
-        <p class="icons-header-message">Over 100 beautiful and easy to use SVG icons, flexible with variations to meet&nbsp;your&nbsp;needs</p>
-        <div *ngIf="isOnIconSetsRoute" class="download-button-wrapper">
-            <a class="btn btn-primary" [href]="allSetsLink">DOWNLOAD ALL SVG SETS</a>
-        </div>
-    </div>
+
     <div class="icons-background">
         <div class="icon-bg-wrapper" [class.glow]="blinkIconsRandomly.indexOf(i)>=0"
              *ngFor="let shape of blinkIconsFromEssentialSet; let i = index;">
             <clr-icon [attr.shape]="shape" size="24"></clr-icon>
         </div>
     </div>
+
+    <div class="icons-header-wrapper">
+        <h1>Clarity Icons</h1>
+        <p class="icons-header-message">Over 200 beautiful and easy to use SVG icons, flexible with variations to meet&nbsp;your&nbsp;needs</p>
+        <div *ngIf="isOnIconSetsRoute" class="download-button-wrapper">
+            <a class="btn btn-primary" [href]="allSetsLink">DOWNLOAD ALL SVG SETS</a>
+        </div>
+    </div>
+
 </section>
 <div class="searchbar-container sticky" *ngIf="isOnIconSetsRoute && isSearchbarSticky"
      [@searchBarStickAnimation]="isSearchbarSticky">

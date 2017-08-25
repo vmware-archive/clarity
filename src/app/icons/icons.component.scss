@@ -40,7 +40,6 @@ $clr-searchbar-container-height-sm: 108px;
                 color: rgba(#fff, 0.6);
             }
         }
-        z-index: 1;
     }
     .icons-header-wrapper {
         position: relative;
@@ -51,7 +50,6 @@ $clr-searchbar-container-height-sm: 108px;
         align-items: center;
         justify-content: center;
         padding: 0 $clr_baselineRem_1_5;
-        z-index: 2;
 
         p.icons-header-message {
             font-size: 16px;
@@ -80,7 +78,6 @@ $clr-searchbar-container-height-sm: 108px;
     min-height: calc(100vh - #{$clr-icons-content-top});
     width: 100%;
     text-align: center;
-    z-index: 3;
 
     .content-container {
         max-width: $clr-icons-content-width;

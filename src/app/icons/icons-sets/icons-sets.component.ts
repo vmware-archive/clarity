@@ -65,7 +65,7 @@ export class IconsSetsComponent implements AfterViewInit, OnDestroy {
 
         // jump to the very first fragment on search results
         this.subscriptions.push(this._iconsViewService.searchValue
-            .debounceTime(150)
+            .debounceTime(200)
             .subscribe((searchedValue: string) => {
 
                 let firstFragRef = this.fragmentContentElRef.first;
@@ -148,7 +148,7 @@ export class IconsSetsComponent implements AfterViewInit, OnDestroy {
     filterIconsOnSearch() {
 
         this.subscriptions.push(this._iconsViewService.searchValue
-            .debounceTime(150)
+            .debounceTime(200)
             .subscribe((searchedValue: string) => {
 
                 // if icon detail box is open, close it when searching starts
@@ -182,12 +182,24 @@ export class IconsSetsComponent implements AfterViewInit, OnDestroy {
             })
         );
 
+        // send GA searched icons
+        // debounceTime is 1 second
+        this.subscriptions.push(this._iconsViewService.searchValue
+            .debounceTime(1000)
+            .subscribe(() => {
+
+                if (window["trackIconSearch"] && this.searchedValue) {
+                    window["trackIconSearch"](this.searchedValue, this.totalVisibleIcons);
+                }
+            })
+        );
+
     }
 
 
     filterIconsByTags(searchedValue: string, tags: string[]) {
         return tags.filter((tag) => {
-            return tag.toLowerCase().indexOf(searchedValue.toLocaleLowerCase()) > -1;
+            return tag.toLowerCase().indexOf(searchedValue.toLowerCase()) > -1;
         });
     }
 

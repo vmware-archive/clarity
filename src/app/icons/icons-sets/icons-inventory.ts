@@ -12,9 +12,12 @@ import { SocialShapes } from "clarity-icons/shapes/social-shapes";
 import { TravelShapes } from "clarity-icons/shapes/travel-shapes";
 import { TechnologyShapes } from "clarity-icons/shapes/technology-shapes";
 
+import { ICONS_TAGS } from "./icons-tags"
+
 const HIDE_ICONS = {
     "vm-bug": true
 };
+
 
 const ALL_ALIASES = {
     "house": "home",
@@ -77,20 +80,28 @@ function reversedAliases(originalKeyValue: any) {
     return reversed;
 }
 
-function makeSetSearchable(set: any, tags: string[] = []): any[] {
+function makeSetSearchable(set: any, defaultTags: string[] = []): any[] {
 
     let reversed_aliases = reversedAliases(ALL_ALIASES);
 
     let shapesNames = Object.keys(set);
 
-    return shapesNames.map((name: string) => {
+    let searchableSet = shapesNames.map((name: string) => {
+
+        // only return icons that are not aliases
+
         if (!ALL_ALIASES[name]) {
+
             let aliases = reversed_aliases[name] || [];
-            return {name: name, template: set[name], tags: aliases.concat(tags), aliases: aliases}
+            let tags = ICONS_TAGS[name] || [];
+
+            return {name: name, template: set[name], tags: aliases.concat(tags).concat(defaultTags), aliases: aliases}
         }
     })
         .filter((searchableIcon: any) => { if (searchableIcon) return searchableIcon; })
         .filter((hideIcon: any) => { if (!HIDE_ICONS[hideIcon.name]) return hideIcon; });
+
+    return searchableSet;
 
 }
 

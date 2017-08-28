@@ -64,8 +64,11 @@ $clr-searchbar-container-height-sm: 108px;
             margin: 0;
             font-weight: 400;
         }
-        .download-button-wrapper {
+        .header-buttons {
             margin-top: 24px;
+            .btn {
+                margin: 0;
+            }
         }
     }
 }

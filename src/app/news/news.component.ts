@@ -2,7 +2,6 @@ import {
     AfterViewInit,
     Component,
     OnDestroy,
-    OnInit,
     QueryList,
     TemplateRef,
     ViewChildren
@@ -25,7 +24,7 @@ const RELEASES = require("../../releases/release-list.json");
         "[class.content-container]": "true"
     }
 })
-export class NewsComponent implements OnInit, OnDestroy, AfterViewInit {
+export class NewsComponent implements OnDestroy, AfterViewInit {
     @ViewChildren(Release) releaseTemplates: QueryList<Release>;
     @ViewChildren(BreakingChange) breakingChanges: QueryList<BreakingChange>;
     @ViewChildren(BugFix) bugFixes: QueryList<BugFix>;
@@ -88,6 +87,7 @@ export class NewsComponent implements OnInit, OnDestroy, AfterViewInit {
                     this.setTemplate(url[urlLength - 1]);
                 } else if (url[urlLength - 1] === "news") {
                     this.setDefaultCurrentTemplate = true;
+                    this.setTemplate(this.current);
                 }
             }
         }));

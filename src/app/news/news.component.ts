@@ -75,20 +75,19 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
         }
     }
 
-    setDefaultCurrentTemplate: boolean = false;
-
     constructor(private router: Router) {
         this._subscriptions.push(this.router.events.subscribe((change: any) => {
             if (change instanceof NavigationEnd) {
                 let url: string[] = change.url.split("/");
                 let urlLength: number = url.length;
                 this.resetCounts();
-                if (urlLength > 0 && url[urlLength - 1] !== "news") {
-                    this.setTemplate(url[urlLength - 1]);
-                } else if (url[urlLength - 1] === "news") {
-                    this.setDefaultCurrentTemplate = true;
-                    this.setTemplate(this.current);
-                }
+                setTimeout(() => {
+                    if (urlLength > 0 && url[urlLength - 1] !== "news") {
+                        this.setTemplate(url[urlLength - 1]);
+                    } else if (url[urlLength - 1] === "news") {
+                        this.setTemplate(this.current);
+                    }
+                }, 0);
             }
         }));
     }
@@ -97,9 +96,6 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
         this.nbBreakingChanges = 0;
         this.nbNewComponents = 0;
         this.nbBugFixes = 0;
-    }
-
-    ngOnInit() {
     }
 
     setTemplate(releaseNo: string): void {
@@ -130,11 +126,6 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
                 this.nbNewComponents = this.newComponents ? this.newComponents.length : 0;
             }, 0);
         }));
-
-        setTimeout(() => {if (this.setDefaultCurrentTemplate) {
-            this.setTemplate(this.current);
-            this.setDefaultCurrentTemplate = false;
-        }}, 0);
     }
 
     ngOnDestroy() {

@@ -149,6 +149,8 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
         this.selection.selectionType = SelectionType.Single;
         if (value) {
             this.selection.currentSingle = value;
+        } else {
+            this.selection.currentSingle = null;
         }
     }
 

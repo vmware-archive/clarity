@@ -248,6 +248,52 @@ export default function(): void {
             });
         });
 
+        describe("Single selection", function() {
+            let context: TestContext<Datagrid, SingleSelectionTest>;
+            let selection: Selection;
+
+            beforeEach(function() {
+                context = this.create(Datagrid, SingleSelectionTest, [Selection]);
+                selection = context.getClarityProvider(Selection);
+            });
+
+            describe("TypeScript API", function() {
+                // None for now, would duplicate tests of Selection provider
+            });
+
+            describe("Template API", function() {
+                it("sets the currentSingle binding", function() {
+                    expect(selection.currentSingle).toBeNull();
+                    context.testComponent.selected = 1;
+                    context.detectChanges();
+                    expect(selection.currentSingle).toEqual(1);
+                    context.testComponent.selected = null;
+                    context.detectChanges();
+                    expect(selection.currentSingle).toBeNull();
+                });
+
+                it("offers two way binding on the currentSingle value", function() {
+                    expect(selection.currentSingle).toBeNull();
+                    context.testComponent.selected = 1;
+                    context.detectChanges();
+                    expect(selection.currentSingle).toEqual(1);
+                    selection.currentSingle = 2;
+                    context.detectChanges();
+                    expect(context.testComponent.selected).toEqual(2);
+                });
+            });
+
+            describe("View", function() {
+                it("sets the proper selected class", function() {
+                    const row = context.clarityElement.querySelectorAll(".datagrid-row")[1];
+                    expect(row.classList.contains("datagrid-selected")).toBeFalsy();
+                    selection.currentSingle = 1;
+                    context.detectChanges();
+                    expect(row.classList.contains("datagrid-selected")).toBeTruthy();
+                });
+            });
+        });
+
         describe("Chocolate", function() {
             describe("clrDgItems", function() {
                 it("doesn't taunt with chocolate on actionable rows", function() {
@@ -352,6 +398,26 @@ class TrackByTest {
     trackByIndex(index: number, item: any) {
         return index;
     }
+}
+
+@Component({
+    template: `
+    <clr-datagrid [(clrDgSingleSelected)]="selected">
+        <clr-dg-column>First</clr-dg-column>
+        <clr-dg-column>Second</clr-dg-column>
+    
+        <clr-dg-row *clrDgItems="let item of items;" [clrDgItem]="item">
+            <clr-dg-cell>{{item}}</clr-dg-cell>
+            <clr-dg-cell>{{item * item}}</clr-dg-cell>
+        </clr-dg-row>
+    
+        <clr-dg-footer (click)="selected = null">{{selected}}</clr-dg-footer>
+    </clr-datagrid>
+`
+})
+class SingleSelectionTest {
+    items = [1, 2, 3];
+    selected: any;
 }
 
 @Component({

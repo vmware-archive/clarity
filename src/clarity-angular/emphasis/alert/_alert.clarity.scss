@@ -117,7 +117,7 @@ $clr-alert-colors: (
         $vertPadding: $clr_baselineRem_0_25 - 1 + ($clr_baselineRem_0_25/2);
         $horizPadding: $clr_baselineRem_0_5 - 1;
         flex: 1 1 auto;
-        flex-flow: row wrap;
+        flex-flow: column nowrap;
         padding: $vertPadding $horizPadding;
         display: flex;
     }
@@ -127,8 +127,10 @@ $clr-alert-colors: (
     //close alert button.
     .alert-item > span,
     .alert-text {
-        flex: 1 1 auto;
         display: inline-block;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 98%; //needed for IE11
         max-width: 98%;
         margin-right: $clr_baselineRem_0_5;
         text-align: left;
@@ -200,6 +202,7 @@ $clr-alert-colors: (
         .alert-action,
         .dropdown-toggle {
             color: $clr-dark-gray;
+            text-decoration: underline;
 
             &:active {
                 color: $action-purples-darker;
@@ -303,6 +306,11 @@ $clr-alert-colors: (
                 opacity: 1;
             }
         }
+
+        .alert-action,
+        .dropdown-toggle {
+            text-decoration: none;
+        }
     }
 
     .alert-sm {
@@ -367,9 +375,12 @@ $clr-alert-colors: (
 
             .alert-text {
                 margin-right: 0;
-                max-width: calc(98% - $alertIconWidth);
-                // don't use calc in flex declaration; spotty browser support
-                // using max-width instead
+                //90% was just an estimate to distance the text from the
+                //close alert button on medium and smaller breakpoints.
+                max-width: 90%;
+                //needed for safari
+                width: 90%;
+                flex-basis: 90%;
             }
 
             .alert-actions {

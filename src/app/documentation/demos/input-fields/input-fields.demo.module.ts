@@ -12,6 +12,7 @@ import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {FormValidationDemo} from "./form-validation";
 import {UtilsModule} from "../../../utils/utils.module";
+import {RequiredFieldsDemo} from "./required-fields.demo";
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import {UtilsModule} from "../../../utils/utils.module";
     declarations: [
         InputFieldsTypesDemo,
         InputFieldsDemo,
-        FormValidationDemo
+        FormValidationDemo,
+        RequiredFieldsDemo
     ],
     exports: [
         InputFieldsDemo

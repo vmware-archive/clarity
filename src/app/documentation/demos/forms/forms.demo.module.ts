@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from 'clarity-angular';
+import {ClarityModule} from "clarity-angular";
 import {FormsModule}   from "@angular/forms";
 import {ReactiveFormsModule} from "@angular/forms";
 
@@ -22,7 +22,6 @@ import {FormsDemo} from "./forms.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
 import {UtilsModule} from "../../../utils/utils.module";
-import {RequiredFieldsDemo} from "./required-fields.demo";
 
 @NgModule({
     imports: [
@@ -42,8 +41,7 @@ import {RequiredFieldsDemo} from "./required-fields.demo";
         FormCompactDemo,
         TemplateDrivenFormsDemo,
         ReactiveFormsDemo,
-        FormsDemo,
-        RequiredFieldsDemo
+        FormsDemo
     ],
     exports: [
         FormsDemo

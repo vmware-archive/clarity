@@ -11,7 +11,7 @@ const HTML_EXAMPLE = `
         <span class="alert-text">
             This alert cannot be dismissed.
         </span>
-        <clr-dropdown-menu class="alert-actions">
+        <div class="alert-actions">
             <clr-dropdown>
                 <button class="dropdown-toggle" clrDropdownTrigger>
                     Actions

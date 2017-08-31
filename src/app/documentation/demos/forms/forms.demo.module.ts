@@ -22,6 +22,7 @@ import {FormsDemo} from "./forms.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
 import {UtilsModule} from "../../../utils/utils.module";
+import {RequiredFieldsDemo} from "./required-fields.demo";
 
 @NgModule({
     imports: [
@@ -41,7 +42,8 @@ import {UtilsModule} from "../../../utils/utils.module";
         FormCompactDemo,
         TemplateDrivenFormsDemo,
         ReactiveFormsDemo,
-        FormsDemo
+        FormsDemo,
+        RequiredFieldsDemo
     ],
     exports: [
         FormsDemo

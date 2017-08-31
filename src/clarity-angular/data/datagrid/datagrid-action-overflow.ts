@@ -12,7 +12,9 @@ import {RowActionService} from "./providers/row-action-service";
 @Component({
     selector: "clr-dg-action-overflow",
     template: `
-        <clr-icon #anchor shape="ellipsis-vertical" class="datagrid-action-toggle" (click)="toggle($event)"></clr-icon>
+        <button (click)="toggle($event)" class="datagrid-action-toggle" #anchor>
+            <clr-icon shape="ellipsis-vertical"></clr-icon>
+        </button>
         <ng-template [(clrPopoverOld)]="open" [clrPopoverOldAnchor]="anchor" [clrPopoverOldAnchorPoint]="anchorPoint"
                      [clrPopoverOldPopoverPoint]="popoverPoint">
             <div #menu class="datagrid-action-overflow" (clrOutsideClick)="close($event)" [clrStrict]="true">

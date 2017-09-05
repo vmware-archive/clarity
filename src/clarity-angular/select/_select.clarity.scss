@@ -1,0 +1,52 @@
+@include exports('select.clarity') {
+    clr-select clr-select-menu ul {
+        list-style-type: none   
+    }
+    clr-option  li:hover, li.highlight {
+        background: #eee
+    }
+    clr-option  li:active, li.selected {
+        background: #D9E4EA
+    }
+
+    //Dropdown Menu
+    clr-select-menu > * {
+        display: block;
+        white-space: nowrap;
+    }
+
+    clr-select-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        margin-top: 4px;
+        display: flex;
+        flex-direction: column;
+        background: $dropdown-white;
+        padding: $clr_baselineRem_0_5 0;
+        border: 1px solid clr-getColor(light-midtone);
+        box-shadow: 0 1px 3px rgba(clr-getColor(dark), 0.25);
+        min-width: baselineRem(5);
+        max-width: baselineRem(15);
+        border-radius: $clr-default-borderradius;
+        visibility: hidden;
+        z-index: 1;
+        
+        .select-header {
+            @include clr-getTypePropertiesForDomElement(dropdown_header, (font-size, font-weight, letter-spacing));
+            
+            padding: 0 $clr_baselineRem_0_5;
+            line-height: $clr_baselineRem_0_75;
+            margin: 0;
+            color: clr-getColor(darkest);
+
+            @extend %dropdown-content;
+        }
+        .wrapper {
+            padding-left: 15px
+        }
+    }
+    clr-icon{
+        margin-left: -20px;
+    }
+}

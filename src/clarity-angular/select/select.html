@@ -1,0 +1,10 @@
+<ng-content select="[clrSelectInput]"></ng-content>
+<clr-icon aria-hidden="true" shape="angle down" clrSelectMenuTrigger></clr-icon>
+<clr-select-menu *clrIfOpen style="width: 300px;">
+    <ng-content *ngIf="!loading" select="clr-option"></ng-content>
+    <li *ngIf="loading" class="wrapper">
+        <span class="spinner spinner-inline"></span>
+        <span *ngIf="clrLoadingText">{{clrLoadingText}}</span>
+        <span *ngIf="!clrLoadingText">Searching for matches</span>
+    </li>
+</clr-select-menu>

@@ -14,6 +14,7 @@ import {ClrIconModule} from "./icon/icon.module";
 import {ClrLayoutModule} from "./layout/layout.module";
 import {ClrModalModule} from "./modal/modal.module";
 import {ClrPopoverModule} from "./popover/popover.module";
+import {ClrSelectModule} from "./select/select.module";
 import {ClrConditionalModule} from "./utils/conditional/conditional.module";
 import {ClrIfExpandModule} from "./utils/expand/if-expand.module";
 import {ClrFocusTrapModule} from "./utils/focus-trap/focus-trap.module";
@@ -24,7 +25,7 @@ import {ClrWizardModule} from "./wizard/wizard.module";
     exports: [
         ClrEmphasisModule, ClrDataModule, ClrIconModule, ClrModalModule, ClrLoadingModule, ClrIfExpandModule,
         ClrConditionalModule, ClrFocusTrapModule, ClrButtonModule, ClrCodeModule, ClrFormsModule, ClrLayoutModule,
-        ClrPopoverModule, ClrWizardModule
+        ClrPopoverModule, ClrWizardModule, ClrSelectModule
     ]
 })
 export class ClarityModule {

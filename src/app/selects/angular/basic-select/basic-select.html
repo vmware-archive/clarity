@@ -1,0 +1,53 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+  <h4>Basic</h4>
+  
+    <section class="form-block">
+        <label>Select Boxes</label>
+        <label>Selected: </label>
+        <code clr-code-highlight="language-json" *ngIf="selected">{{selected | json}}</code>
+        <div class="form-group">
+            <label for="selects_1">This is a select box</label>
+            <clr-select [(ngModel)]="selected" style="width: 200px;">
+                <input type="text" clrSelectInput style="width: 300px;" />
+
+                <clr-option *ngFor="let option of options" [clrValue]="option" [clrTitle]="option.name"></clr-option>
+            </clr-select>
+        </div>
+    </section>
+
+    <h4>A few more results</h4>
+    
+      <section class="form-block">
+          <label>Select Boxes</label>
+          <label>Selected:</label>
+          <code clr-code-highlight="language-json" *ngIf="selectedAFewMore">{{selectedAFewMore | json}}</code>
+          <div class="form-group">
+              <label for="selects_1">This is a select box</label>
+              <clr-select [(ngModel)]="selectedAFewMore" style="width: 200px;">
+                  <input type="text" clrSelectInput style="width: 300px;" />
+  
+                  <clr-option *ngFor="let option of optionsAFewMore" [clrValue]="option" [clrTitle]="option.name"></clr-option>
+              </clr-select>
+          </div>
+      </section>
+    
+    <h4>Server driven results</h4>
+    
+    <section class="form-block">
+        <label>Select Boxes</label>
+        <label>Selected:</label>
+        <code clr-code-highlight="language-json" *ngIf="selectedAFewMore">{{selectedAFewMore | json}}</code>
+        <div class="form-group">
+            <label for="selects_1">This is a select box</label>
+            <clr-select [(ngModel)]="selectedFromServer" style="width: 200px;" (clrDgRefresh)="loadOptionsFromServer($event)" [clrDgLoading]="loading" [clrLoadingText]="'Searching for names'">
+                <input type="text" clrSelectInput style="width: 300px;" />
+
+                <clr-option *ngFor="let option of optionsFromServer" [clrValue]="option" [clrTitle]="option.name"></clr-option>
+            </clr-select>
+        </div>
+    </section>

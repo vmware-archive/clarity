@@ -1,10 +1,14 @@
+
 /*
  * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import {Component, DebugElement} from "@angular/core";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";  // Needed to recreate issue #1084
 
+import {ClrDatagridModule} from "../datagrid.module";
 import {TestContext} from "../helpers.spec";
 
 import {DatagridHeaderRenderer} from "./header-renderer";
@@ -100,6 +104,37 @@ export default function(): void {
                 context.testComponent.clrDgItems = [1];
                 context.detectChanges();
                 expect(resizeSpy.calls.count()).toBe(1);
+            });
+        });
+
+        describe("smart datagrid height", function() {
+            let context: ComponentFixture<DatagridHeightTest>;
+            let compiled: any;
+
+            beforeEach(function() {
+                TestBed.configureTestingModule(
+                    {imports: [BrowserAnimationsModule, ClrDatagridModule], declarations: [DatagridHeightTest]});
+                context = TestBed.createComponent(DatagridHeightTest);
+                context.detectChanges();
+                compiled = context.nativeElement;
+            });
+
+            it("sets an initial datagrid height", function() {
+                expect(context.nativeElement.clientHeight).toBeGreaterThan(0);
+            });
+
+            it("adjusts datagrid height when items are added or removed", function() {
+                // Tests fix for issue #1084
+                const initHeight = context.nativeElement.clientHeight;
+                const changeBtn = context.nativeElement.querySelector(".btn.btn-sm.btn-outline-primary");
+                changeBtn.click();  // Adds items to the list
+                context.detectChanges();
+                const height2 = context.nativeElement.clientHeight;
+                expect(initHeight).toBeLessThan(height2);
+                changeBtn.click();  // toggle back to initial height
+                context.detectChanges();
+                const finalHeight = context.nativeElement.clientHeight;
+                expect(finalHeight).toEqual(initHeight);
             });
         });
 
@@ -217,4 +252,35 @@ class ColumnsWidthTest {
     secondCell = "BBB";
 
     fixedWidth = false;
+}
+
+@Component({
+    template: `
+        <clr-datagrid>
+            <clr-dg-column>Number</clr-dg-column>
+            <clr-dg-row *clrDgItems="let number of numbers">
+                <clr-dg-cell>{{number}}</clr-dg-cell>
+            </clr-dg-row>
+
+            <clr-dg-footer>
+                <button
+                    class="btn btn-sm btn-outline-primary"
+                    (click)="changeList()">Change
+                </button>
+                <clr-dg-pagination [clrDgPageSize]="pageSize"></clr-dg-pagination>
+            </clr-dg-footer>
+        </clr-datagrid>
+    `
+})
+class DatagridHeightTest {
+    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    pageSize = 5;
+
+    changeList() {
+        if (this.pageSize === 5) {
+            this.pageSize = this.numbers.length;  // after 1st click
+        } else {
+            this.pageSize = 5;  // after 3rd click
+        }
+    }
 }

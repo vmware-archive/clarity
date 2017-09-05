@@ -50,7 +50,9 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewChecked,
             this.stabilizeColumns();
         }
         if (this.shouldComputeHeight()) {
-            this.computeDatagridHeight();
+            setTimeout(() => {
+                this.computeDatagridHeight();
+            });
         }
     }
 

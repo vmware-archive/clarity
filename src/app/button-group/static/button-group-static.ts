@@ -17,6 +17,7 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./types']">Types</a></li>
             <li><a [routerLink]="['./directions']">Directions</a></li>
             <li><a [routerLink]="['./icons']">Icons</a></li>
+            <li><a [routerLink]="['./icon-button-group']">Icon Button Group</a></li>
             <li><a [routerLink]="['./icons-with-text']">Icons with Text</a></li>
             <li><a [routerLink]="['./checkboxes']">Checkboxes</a></li>
             <li><a [routerLink]="['./radios']">Radios</a></li>

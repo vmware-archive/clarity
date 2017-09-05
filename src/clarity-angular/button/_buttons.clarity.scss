@@ -343,6 +343,10 @@ $clr-button-appearance-map: (
         }
     }
 
+    .btn-icon {
+        min-width: unset;
+    }
+
     //Overflow
     .btn-group {
         &.btn-primary .dropdown-toggle,

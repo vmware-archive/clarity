@@ -26,6 +26,7 @@ import {StaticButtonGroupBasicStructureDemo} from "./static/basic-structure/basi
 import {ButtonGroupStaticDemo} from "./static/button-group-static";
 import {ButtonGroupCardsDemo} from "./static/cards/button-group-cards";
 import {ButtonGroupCheckboxesDemo} from "./static/checkbox/button-group-checkboxes";
+import {StaticIconButtonGroupDemo} from "./static/icon-buttons/icon-button-group";
 import {ButtonGroupIconsTextDemo} from "./static/icons-with-text/button-group-icon-text";
 import {ButtonGroupIconsDemo} from "./static/icons/button-group-icons";
 import {StaticMenuDirectionsDemo} from "./static/menu-directions/menu-directions";
@@ -44,6 +45,7 @@ const ROUTES: Routes = [{
                 {path: "basic-structure", component: StaticButtonGroupBasicStructureDemo},
                 {path: "directions", component: StaticMenuDirectionsDemo}, {path: "types", component: ButtonGroupTypes},
                 {path: "icons", component: ButtonGroupIconsDemo},
+                {path: "icon-button-group", component: StaticIconButtonGroupDemo},
                 {path: "icons-with-text", component: ButtonGroupIconsTextDemo},
                 {path: "checkboxes", component: ButtonGroupCheckboxesDemo},
                 {path: "radios", component: ButtonGroupRadiosDemo}, {path: "cards", component: ButtonGroupCardsDemo}

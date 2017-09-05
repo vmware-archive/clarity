@@ -119,6 +119,21 @@ gemini.suite('buttons', (child) => {
         });
     });
 
+    gemini.suite('icon-buttons', (child) => {
+        child.setUrl('/buttons/icon-buttons')
+            .before((actions, find) => {
+                actions.waitForElementToShow('.clr-example', WAIT_TIME);
+            });
+
+        var classes = [
+            '.clr-example'
+        ];
+
+        classes.forEach(function(btnClass) {
+            captureButton(btnClass);
+        });
+    });
+
     gemini.suite('toggles', (child) => {
         child.setUrl('/buttons/toggles')
             .before((actions, find) => {
@@ -128,15 +143,5 @@ gemini.suite('buttons', (child) => {
             .setCaptureElements('.toggle-switch')
             .capture('default');
     });
-
-    // gemini.suite('buttons-test', (child) => {
-    //     child.setUrl('/buttons/buttons-test')
-    //         .before((actions, find) => {
-    //             actions.waitForElementToShow('main.content-area', WAIT_TIME);
-    //             actions.wait(WAIT_LOAD_TIME);
-    //         })
-    //         .setCaptureElements('main.content-area')
-    //         .capture('default');
-    // });
 
 });

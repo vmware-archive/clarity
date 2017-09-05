@@ -15,6 +15,7 @@ import {ButtonsIconsDemo} from "./buttons-icons";
 import {ButtonsTestDemo} from "./buttons-test";
 import {ButtonsDemo} from "./buttons.demo";
 import {ROUTING} from "./buttons.demo.routing";
+import {IconButtonsDemo} from "./icon-buttons";
 import {InverseButtonDemo} from "./inverse-button";
 import {PrimaryButtonDemo} from "./primary-button";
 import {RealButtonDemo} from "./real-button";
@@ -26,11 +27,13 @@ import {ToggleDemo} from "./toggles";
     imports: [CommonModule, ClarityModule, ROUTING],
     declarations: [
         ButtonsDemo, RealButtonDemo, PrimaryButtonDemo, SecondaryButtonDemo, TertiaryButtonDemo, InverseButtonDemo,
-        ButtonStatesDemo, ButtonLoadingDemo, ButtonSizesDemo, ToggleDemo, ButtonsTestDemo, ButtonsIconsDemo
+        ButtonStatesDemo, ButtonLoadingDemo, ButtonSizesDemo, ToggleDemo, ButtonsTestDemo, ButtonsIconsDemo,
+        IconButtonsDemo
     ],
     exports: [
         ButtonsDemo, RealButtonDemo, PrimaryButtonDemo, SecondaryButtonDemo, TertiaryButtonDemo, InverseButtonDemo,
-        ButtonStatesDemo, ButtonLoadingDemo, ButtonSizesDemo, ToggleDemo, ButtonsTestDemo, ButtonsIconsDemo
+        ButtonStatesDemo, ButtonLoadingDemo, ButtonSizesDemo, ToggleDemo, ButtonsTestDemo, ButtonsIconsDemo,
+        IconButtonsDemo
     ]
 })
 export default class ButtonsDemoModule {

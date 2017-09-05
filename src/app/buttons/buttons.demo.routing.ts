@@ -12,6 +12,7 @@ import {ButtonStatesDemo} from "./button-states";
 import {ButtonsIconsDemo} from "./buttons-icons";
 import {ButtonsTestDemo} from "./buttons-test";
 import {ButtonsDemo} from "./buttons.demo";
+import {IconButtonsDemo} from "./icon-buttons";
 import {InverseButtonDemo} from "./inverse-button";
 import {PrimaryButtonDemo} from "./primary-button";
 import {RealButtonDemo} from "./real-button";
@@ -30,7 +31,7 @@ const ROUTES: Routes = [{
         {path: "inverse-button", component: InverseButtonDemo}, {path: "button-states", component: ButtonStatesDemo},
         {path: "button-loading", component: ButtonLoadingDemo}, {path: "button-sizes", component: ButtonSizesDemo},
         {path: "toggles", component: ToggleDemo}, {path: "buttons-test", component: ButtonsTestDemo},
-        {path: "icons", component: ButtonsIconsDemo}
+        {path: "icons", component: ButtonsIconsDemo}, {path: "icon-buttons", component: IconButtonsDemo}
     ]
 }];
 

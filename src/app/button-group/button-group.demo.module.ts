@@ -24,11 +24,12 @@ import {ProjectionUpdateTest4Demo} from "./angular/projection-update-test-4/proj
 import {ProjectionUpdateTest5Demo} from "./angular/projection-update-test-5/projection-update-test-5";
 import {ProjectionUpdateTest6Demo} from "./angular/projection-update-test-6/projection-update-test-6";
 import {ButtonGroupDemo} from "./button-group.demo";
-import {ROUTING} from "./buttons.demo.routing";
+import {ROUTING} from "./button-group.demo.routing";
 import {StaticButtonGroupBasicStructureDemo} from "./static/basic-structure/basic-structure";
 import {ButtonGroupStaticDemo} from "./static/button-group-static";
 import {ButtonGroupCardsDemo} from "./static/cards/button-group-cards";
 import {ButtonGroupCheckboxesDemo} from "./static/checkbox/button-group-checkboxes";
+import {StaticIconButtonGroupDemo} from "./static/icon-buttons/icon-button-group";
 import {ButtonGroupIconsTextDemo} from "./static/icons-with-text/button-group-icon-text";
 import {ButtonGroupIconsDemo} from "./static/icons/button-group-icons";
 import {StaticMenuDirectionsDemo} from "./static/menu-directions/menu-directions";
@@ -62,6 +63,7 @@ import {ButtonGroupTypes} from "./static/types/button-group-types";
         ButtonGroupTypes,
         StaticMenuDirectionsDemo,
         ButtonGroupCardsDemo,
+        StaticIconButtonGroupDemo,
 
         ButtonGroupStaticDemo,
         ButtonGroupAngularDemo,
@@ -92,6 +94,7 @@ import {ButtonGroupTypes} from "./static/types/button-group-types";
         ButtonGroupTypes,
         StaticMenuDirectionsDemo,
         ButtonGroupCardsDemo,
+        StaticIconButtonGroupDemo,
 
         ButtonGroupStaticDemo,
         ButtonGroupAngularDemo,

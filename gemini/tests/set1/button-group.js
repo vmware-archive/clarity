@@ -164,7 +164,7 @@ gemini.suite('button-group', (child) => {
             .before((actions, find) => {
             actions.waitForElementToShow('#btn-group-test-2', WAIT_TIME);
         })
-        .setCaptureElements('#btn-group-test-1')
+        .setCaptureElements('#btn-group-test-2')
         .capture('default');
     });
 
@@ -188,4 +188,14 @@ gemini.suite('button-group', (child) => {
         .setCaptureElements('#btn-group-test-1')
         .capture('default');
     });
+
+    gemini.suite('icon-button-group', (child) => {
+            child
+                .setUrl('/button-group/static/icon-button-group')
+                .before((actions, find) => {
+                actions.waitForElementToShow('.clr-example', WAIT_TIME);
+            })
+            .setCaptureElements('.clr-example')
+            .capture('default');
+        });
 });

@@ -16,6 +16,7 @@ export default function(): void {
         let fixture: ComponentFixture<any>;
         let clarityElement: any;
         let ifOpenService: IfOpenService;
+        let trigger: HTMLElement;
 
         beforeEach(() => {
             TestBed.configureTestingModule(
@@ -25,16 +26,27 @@ export default function(): void {
             fixture.detectChanges();
             clarityElement = fixture.nativeElement;
             ifOpenService = TestBed.get(IfOpenService);
+            trigger = clarityElement.querySelector(".signpost-action");
         });
 
         it("should toggle the IfOpenService.open property on click", function() {
-            const trigger: HTMLElement = clarityElement.querySelector(".signpost-action");
-
             expect(ifOpenService.open).toBeUndefined();
             trigger.click();
             expect(ifOpenService.open).toEqual(true);
             trigger.click();
             expect(ifOpenService.open).toEqual(false);
+        });
+
+        it("should have active class when open", function() {
+            expect(trigger.classList.contains("active")).toBeFalsy();
+            trigger.click();
+            expect(trigger.classList.contains("active")).toBeTruthy();
+            trigger.click();
+            expect(trigger.classList.contains("active")).toBeFalsy();
+            ifOpenService.open = true;
+            expect(trigger.classList.contains("active")).toBeTruthy();
+            ifOpenService.open = false;
+            expect(trigger.classList.contains("active")).toBeFalsy();
         });
     });
 }
@@ -51,6 +63,5 @@ export default function(): void {
         </button>
     `
 })
-
 class TestTrigger {
 }

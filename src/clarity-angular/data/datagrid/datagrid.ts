@@ -212,15 +212,25 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
         this.columnService.updateColumnList(this.columns.map(col => col.hideable));
     }
 
+    /* We aggregate the refreshes so it's only emitted once per cycle */
+    private _shouldRefresh: boolean = false;
+
+    ngAfterViewChecked() {
+        if (this._shouldRefresh) {
+            this._shouldRefresh = false;
+            this.triggerRefresh();
+        }
+    }
+
     /**
      * Our setup happens in the view of some of our components, so we wait for it to be done before starting
      */
     ngAfterViewInit() {
         // TODO: determine if we can get rid of provider wiring in view init so that subscriptions can be done earlier
         this.triggerRefresh();
-        this._subscriptions.push(this.sort.change.subscribe(() => this.triggerRefresh()));
-        this._subscriptions.push(this.filters.change.subscribe(() => this.triggerRefresh()));
-        this._subscriptions.push(this.page.change.subscribe(() => this.triggerRefresh()));
+        this._subscriptions.push(this.sort.change.subscribe(() => this._shouldRefresh = true));
+        this._subscriptions.push(this.filters.change.subscribe(() => this._shouldRefresh = true));
+        this._subscriptions.push(this.page.change.subscribe(() => this._shouldRefresh = true));
         this._subscriptions.push(this.selection.change.subscribe(s => {
             if (this.selection.selectionType === SelectionType.Single) {
                 this.singleSelectedChanged.emit(s);

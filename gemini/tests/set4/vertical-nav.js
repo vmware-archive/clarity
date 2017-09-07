@@ -3,6 +3,9 @@ var WAIT_LOAD_TIME = 1000;
 
 gemini.suite('vertical-nav', (child) => {
 
+    // higher tolerance for vertical-nav tests to account for weird minor pixel diffs
+    child.setTolerance(5);
+
     gemini.suite('nested-menus-links', (child) => {
         child
             .setUrl('/vertical-nav/nested-menus')

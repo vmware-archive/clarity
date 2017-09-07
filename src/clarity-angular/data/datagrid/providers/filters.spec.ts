@@ -8,11 +8,12 @@ import {Subject} from "rxjs/Subject";
 import {Filter} from "../interfaces/filter";
 
 import {FiltersProvider} from "./filters";
+import {Page} from "./page";
 
 export default function(): void {
     describe("FiltersProvider provider", function() {
         beforeEach(function() {
-            this.filtersInstance = new FiltersProvider();
+            this.filtersInstance = new FiltersProvider(new Page());
             this.evenFilter = new EvenFilter();
             this.positiveFilter = new PositiveFilter();
             this.filtersInstance.add(this.evenFilter);

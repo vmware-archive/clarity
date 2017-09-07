@@ -25,6 +25,7 @@ import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {ButtonsIconsSmallDemo} from "./buttons-icons-sm";
 import {UtilsModule} from "../../../utils/utils.module";
+import {IconButtonsDemo} from "./icon-buttons";
 
 @NgModule({
     imports: [
@@ -47,6 +48,7 @@ import {UtilsModule} from "../../../utils/utils.module";
         ButtonsIconsDemo,
         ButtonsIconsSmallDemo,
         ButtonLoadingDemo,
+        IconButtonsDemo,
 
         ButtonsDemo,
 

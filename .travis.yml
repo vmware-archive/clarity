@@ -8,9 +8,8 @@ env:
     - TEST_SUITE='test'
     - TEST_SUITE='css:test --set set1'
     - TEST_SUITE='css:test --set set2'
-# TODO - keep these as placeholders to re-introduce the reference generation jobs or future optimizations.
-#    - TEST_SUITE='css:reference --set set1'
-#    - TEST_SUITE='css:reference --set set2'
+    - TEST_SUITE='css:test --set set3'
+    - TEST_SUITE='css:test --set set4'
 
 sudo: required
 dist: trusty
@@ -41,7 +40,7 @@ before_install:
 before_script:
   - npm install -g gemini
   - npm install -g html-reporter
-  - docker run -d -p 4444:4444 selenium/standalone-chrome
+  - docker run -d -p 4444:4444 selenium/standalone-chrome@sha256:b899f16b6d963600ef6da8a8dd49e311146033ed66cb5af71eccb78ab378e19a
   - sleep 5
 
 script:

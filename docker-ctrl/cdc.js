@@ -43,7 +43,7 @@ if (program.update) {
  * @param config
  */
 function runGemini(config) {
-    let status = shell.exec("docker run --rm --name=clarity_chrome -d -p 4444:4444 selenium/standalone-chrome");
+    let status = shell.exec("docker run --rm --name=clarity_chrome -d -p 4444:4444 selenium/standalone-chrome@sha256:b899f16b6d963600ef6da8a8dd49e311146033ed66cb5af71eccb78ab378e19a");
     if (status.code === 0) {
         config.args.forEach(function(arg) {
             shell.exec(`gulp css:${config.action} --set` + ` ${arg}`); // TODO: A better way to build string cmds.

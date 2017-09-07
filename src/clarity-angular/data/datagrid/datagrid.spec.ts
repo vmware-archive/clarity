@@ -102,6 +102,7 @@ export default function(): void {
                     context.testComponent.nbRefreshed = 0;
                     let sort: Sort = context.getClarityProvider(Sort);
                     sort.toggle(new TestComparator());
+                    context.detectChanges();
                     expect(context.testComponent.nbRefreshed).toBe(1);
                 });
 
@@ -110,6 +111,23 @@ export default function(): void {
                     let filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
                     let filter = new TestFilter();
                     filters.add(filter);
+                    context.detectChanges();
+                    expect(context.testComponent.nbRefreshed).toBe(1);
+                });
+
+                it("emits once when the filters change when currentPage > 1", function() {
+                    // filter change should set the page to 1, so we expect two events that trigger emits
+                    // datagrid should consolidate and still emit once
+                    context.testComponent.items = [1, 2, 3, 4, 5, 6];
+                    context.detectChanges();
+                    const page: Page = context.getClarityProvider(Page);
+                    page.size = 2;
+                    page.current = 2;
+                    context.testComponent.nbRefreshed = 0;
+                    const filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
+                    const filter = new TestFilter();
+                    filters.add(filter);
+                    context.detectChanges();
                     expect(context.testComponent.nbRefreshed).toBe(1);
                 });
 
@@ -117,6 +135,7 @@ export default function(): void {
                     context.testComponent.nbRefreshed = 0;
                     let page: Page = context.getClarityProvider(Page);
                     page.current = 2;
+                    context.detectChanges();
                     expect(context.testComponent.nbRefreshed).toBe(1);
                 });
 
@@ -139,6 +158,7 @@ export default function(): void {
                     let page: Page = context.getClarityProvider(Page);
                     page.size = 2;
                     page.current = 2;
+                    context.detectChanges();
                     expect(context.testComponent.latestState).toEqual({
                         page: {
                             from: 2,
@@ -163,6 +183,7 @@ export default function(): void {
                     filters.add(customFilter); // custom filter
                     filters.add(testStringFilter); // custom StringFilter ??
                     filters.add(builtinStringFilter);
+                    context.detectChanges();
                     expect(context.testComponent.latestState.filters).toEqual([
                         customFilter,
                         testStringFilter,

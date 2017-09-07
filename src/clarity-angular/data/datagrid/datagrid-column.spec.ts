@@ -19,11 +19,12 @@ import {SortOrder} from "./interfaces/sort-order";
 import {StringFilter} from "./interfaces/string-filter";
 import {DragDispatcher} from "./providers/drag-dispatcher";
 import {FiltersProvider} from "./providers/filters";
+import {Page} from "./providers/page";
 import {Sort} from "./providers/sort";
 import {DomAdapter} from "./render/dom-adapter";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 
-const PROVIDERS_NEEDED = [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher];
+const PROVIDERS_NEEDED = [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher, Page];
 
 export default function(): void {
     describe("DatagridColumn component", function() {
@@ -36,7 +37,7 @@ export default function(): void {
 
             beforeEach(function() {
                 sortService = new Sort();
-                filtersService = new FiltersProvider();
+                filtersService = new FiltersProvider(new Page());
                 comparator = new TestComparator();
                 dragDispatcherService = undefined;
                 component = new DatagridColumn(sortService, filtersService, dragDispatcherService);

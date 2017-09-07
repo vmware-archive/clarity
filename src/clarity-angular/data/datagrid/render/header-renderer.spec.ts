@@ -7,6 +7,7 @@ import {Component} from "@angular/core";
 
 import {TestContext} from "../helpers.spec";
 import {FiltersProvider} from "../providers/filters";
+import {Page} from "../providers/page";
 import {Sort} from "../providers/sort";
 
 import {DomAdapter} from "./dom-adapter";
@@ -23,7 +24,7 @@ export default function(): void {
 
         beforeEach(function() {
             context = this.create(DatagridHeaderRenderer, SimpleTest,
-                                  [MOCK_ORGANIZER_PROVIDER, MOCK_DOM_ADAPTER_PROVIDER, Sort, FiltersProvider]);
+                                  [MOCK_ORGANIZER_PROVIDER, MOCK_DOM_ADAPTER_PROVIDER, Sort, FiltersProvider, Page]);
             domAdapter = context.getClarityProvider(DomAdapter);
             organizer = context.getClarityProvider(DatagridRenderOrganizer);
         });

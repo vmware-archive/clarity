@@ -23,12 +23,12 @@ export default function(): void {
         }
 
         beforeEach(function() {
-            this.filtersInstance = new FiltersProvider();
+            this.pageInstance = new Page();
+            this.filtersInstance = new FiltersProvider(this.pageInstance);
             this.evenFilter = new EvenFilter();
             this.filtersInstance.add(this.evenFilter);
             this.sortInstance = new Sort();
             this.comparator = new TestComparator();
-            this.pageInstance = new Page();
             this.itemsInstance = new Items(this.filtersInstance, this.sortInstance, this.pageInstance);
         });
 

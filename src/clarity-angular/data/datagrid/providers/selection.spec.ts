@@ -24,9 +24,9 @@ export default function(): void {
     let itemsInstance: Items;
     describe("Selection provider", function() {
         beforeEach(function() {
-            filtersInstance = new FiltersProvider();
-            sortInstance = new Sort();
             pageInstance = new Page();
+            filtersInstance = new FiltersProvider(pageInstance);
+            sortInstance = new Sort();
             itemsInstance = new Items(filtersInstance, sortInstance, pageInstance);
 
             selectionInstance = new Selection(itemsInstance, filtersInstance);

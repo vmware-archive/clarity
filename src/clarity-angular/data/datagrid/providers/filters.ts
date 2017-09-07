@@ -8,9 +8,11 @@ import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 
 import {Filter} from "../interfaces/filter";
+import {Page} from "./page";
 
 @Injectable()
 export class FiltersProvider {
+    constructor(private _page: Page) {}
     /**
      * This subject is the list of filters that changed last, not the whole list.
      * We emit a list rather than just one filter to allow batch changes to several at once.
@@ -58,7 +60,7 @@ export class FiltersProvider {
      */
     public add<F extends Filter<any>>(filter: F): RegisteredFilter<F> {
         const index = this._all.length;
-        const subscription = filter.changes.subscribe(() => this._change.next([filter]));
+        const subscription = filter.changes.subscribe(() => this.resetPageAndEmitFilterChange([filter]));
         let hasUnregistered = false;
         const registered = new RegisteredFilter(filter, () => {
             if (hasUnregistered) {
@@ -67,13 +69,13 @@ export class FiltersProvider {
             subscription.unsubscribe();
             this._all.splice(index, 1);
             if (filter.isActive()) {
-                this._change.next([]);
+                this.resetPageAndEmitFilterChange([]);
             }
             hasUnregistered = true;
         });
         this._all.push(registered);
         if (filter.isActive()) {
-            this._change.next([filter]);
+            this.resetPageAndEmitFilterChange([filter]);
         }
         return registered;
     }
@@ -88,6 +90,13 @@ export class FiltersProvider {
             }
         }
         return true;
+    }
+
+    private resetPageAndEmitFilterChange(filters: Filter<any>[]) {
+        // filtering may change the page number such that current page number doesn't exist in the filtered dataset.
+        // So here we always set the current page to 1 so that it'll fetch first page's data with the given filter.
+        this._page.current = 1;
+        this._change.next(filters);
     }
 }
 

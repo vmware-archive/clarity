@@ -1,6 +1,11 @@
 {
-    "current": "0.10.3",
+    "current": "0.10.4",
     "all": {
+        "0.10.4": {
+            "date": "September 7, 2017",
+            "sketch": "0.10.0",
+            "commit": "84b0377ad3d8e145a69d79ef5fb57f4dda336361"
+        },
         "0.10.3": {
             "date": "August 31, 2017",
             "sketch": "0.10.0",
@@ -61,16 +66,20 @@
             "sketch": "0.9.0",
             "commit": "dc024ed0e8fb5e1ddb629a52ef924e1afa56e610"
         },
-
+        "0.9.19": {
+            "date": "September 7, 2017",
+            "sketch": "0.9.0",
+            "commit": "41e6ae034071e6d88f787ef3a91fe94d5129812e"
+        },
         "0.9.18": {
             "date": "August 24, 2017",
             "sketch": "0.9.0",
-            "commit": ""
+            "commit": "df0de4657b31bdf5e6f065cc32360588dc624fef"
         },
         "0.9.17": {
             "date": "August 17, 2017",
             "sketch": "0.9.0",
-            "commit": ""
+            "commit": "fb4fa56ae6238822b8127ae7ea008c8228b6527a"
         },
         "0.9.16": {
             "date": "August 3, 2017",

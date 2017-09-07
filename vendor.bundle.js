@@ -5399,11 +5399,14 @@ var DatagridMainRenderer = (function () {
         }));
     };
     DatagridMainRenderer.prototype.ngAfterViewChecked = function () {
+        var _this = this;
         if (this.shouldStabilizeColumns) {
             this.stabilizeColumns();
         }
         if (this.shouldComputeHeight()) {
-            this.computeDatagridHeight();
+            setTimeout(function () {
+                _this.computeDatagridHeight();
+            });
         }
     };
     DatagridMainRenderer.prototype.shouldComputeHeight = function () {
@@ -5667,6 +5670,9 @@ var DatagridRowRenderer = (function () {
         this.organizer = organizer;
         this.subscription = organizer.alignColumns.subscribe(function () { return _this.setWidths(); });
     }
+    DatagridRowRenderer.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
     DatagridRowRenderer.prototype.setWidths = function () {
         var _this = this;
         if (this.organizer.widths.length !== this.cells.length) {

@@ -24,6 +24,7 @@ import {LayoutNoSubnavDemo} from "./layout-no-subnav";
 import {LayoutOnlyHeaderDemo} from "./layout-only-header";
 import {LayoutSidenavPrimaryDemo} from "./layout-sidenav-primary";
 import {LayoutSubnavPrimaryDemo} from "./layout-subnav-primary";
+import {NavCodeInfoAlert} from "./nav-code-info-alert";
 
 @NgModule({
     imports: [
@@ -47,7 +48,8 @@ import {LayoutSubnavPrimaryDemo} from "./layout-subnav-primary";
         LayoutNoSubnavDemo,
         LayoutOnlyHeaderDemo,
         LayoutSidenavPrimaryDemo,
-        LayoutSubnavPrimaryDemo
+        LayoutSubnavPrimaryDemo,
+        NavCodeInfoAlert
     ],
     exports: [
         NavigationDemo

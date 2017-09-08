@@ -9,6 +9,7 @@ export const ICONS_TAGS = {
     "image": ["graphic"],
     "envelope": ["letter"],
     "times": ["multiply"],
+    "times-circle": ["delete"],
     "power": ["on"],
     "heart": ["love"],
     "thumbs-up": ["like"],
@@ -19,5 +20,7 @@ export const ICONS_TAGS = {
     "angle": ["arrow"],
     "angle-double": ["arrow"],
     "flame": ["fire"],
-    "truck": ["shipping"]
+    "talk-bubbles": ["chat"],
+    "truck": ["shipping"],
+    "trash": ["delete", "remove"]
 };

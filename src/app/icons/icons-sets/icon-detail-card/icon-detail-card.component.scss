@@ -5,6 +5,7 @@
     .card-title {
         text-transform: lowercase;
         margin-bottom: $clr-baseline;
+        height: 24px;
     }
 
     .card-link {
@@ -22,8 +23,9 @@
     }
 }
 
-clr-code-snippet /deep/ pre {
+pre, clr-code-snippet /deep/ pre {
     background-color: $clr-near-white;
+    padding: 12px;
 }
 
 .aliases {

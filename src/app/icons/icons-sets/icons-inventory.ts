@@ -108,25 +108,25 @@ function makeSetSearchable(set: any, defaultTags: string[] = []): any[] {
 export const IconsInventory = {
 
     "core-shapes": {
-        searchableIcons: makeSetSearchable(CoreShapes, ["core"])
+        searchableIcons: makeSetSearchable(CoreShapes, [])
     },
     "commerce-shapes": {
-        searchableIcons: makeSetSearchable(CommerceShapes, ["commerce"])
+        searchableIcons: makeSetSearchable(CommerceShapes, [])
     },
     "essential-shapes": {
-        searchableIcons: makeSetSearchable(EssentialShapes, ["essential"])
+        searchableIcons: makeSetSearchable(EssentialShapes, [])
     },
     "media-shapes": {
-        searchableIcons: makeSetSearchable(MediaShapes, ["media"])
+        searchableIcons: makeSetSearchable(MediaShapes, [])
     },
     "social-shapes": {
-        searchableIcons: makeSetSearchable(SocialShapes, ["social"])
+        searchableIcons: makeSetSearchable(SocialShapes, [])
     },
     "travel-shapes": {
-        searchableIcons: makeSetSearchable(TravelShapes, ["travel"])
+        searchableIcons: makeSetSearchable(TravelShapes, [])
     },
     "technology-shapes": {
-        searchableIcons: makeSetSearchable(TechnologyShapes, ["technology"])
+        searchableIcons: makeSetSearchable(TechnologyShapes, [])
     }
 
 };

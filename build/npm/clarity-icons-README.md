@@ -7,7 +7,7 @@
 
 2. Install the polyfill for Custom Elements:
     ```
-    npm install @webcomponents/custom-elements@1.0.0
+    npm install @webcomponents/custom-elements
     ```
 
 3. Include the clarity-icons.min.css and clarity-icons.min.js in your HTML. As clarity-icons.min.js is dependent on the Custom Elements polyfill, make sure to include it before clarity-icons.min.js:

@@ -10,7 +10,7 @@
         "url" : "ssh://git@git.eng.vmware.com/clarity.git"
     },
     "peerDependencies": {
-        "@webcomponents/custom-elements": "1.0.0"
+        "@webcomponents/custom-elements": "^1.0.0"
     },
     //@exclude
     "scripts": {

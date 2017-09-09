@@ -14,7 +14,7 @@
     "@angular/platform-server": "^4.3.0",
     "@angular/router": "^4.3.0",
     "@angular/upgrade": "^4.3.0",
-    "@webcomponents/custom-elements": "1.0.0",
+    "@webcomponents/custom-elements": "^1.0.0",
     "angular": "1.5.x",
     "core-js": "^2.4.0",
     "font-awesome": "^4.5.0",

@@ -5,6 +5,7 @@
  */
 
 var gulp = require("gulp");
+var plumber = require("gulp-plumber");
 var replace = require('gulp-replace');
 var sourcemaps = require("gulp-sourcemaps");
 var inlineNg2Template = require("gulp-inline-ng2-template");
@@ -31,6 +32,7 @@ module.exports = function(tsSources, options, destination) {
     var prod = process.env.NODE_ENV==="prod";
 
     var stream = gulp.src(allSources, {base: "src/"})
+        .pipe(plumber())
         // replace .scss references in styleUrls: [...] in the files
         .pipe(replace(/styleUrls\s*:\s*\[([^\]]*)\]/g, function(match, group) {
             // here, match = styleUrls: [...]  and group = string inside []

@@ -42,6 +42,4 @@ const EXAMPLE_HTML = `
     styleUrls: ["../tree-view.demo.css"],
     templateUrl: "tree-node-routing.html"
 })
-export class TreeNodeRoutingDemo {
-    exampleHTML = EXAMPLE_HTML;
-}
+export class TreeNodeRoutingDemo { exampleHTML = EXAMPLE_HTML; }

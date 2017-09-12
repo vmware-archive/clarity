@@ -26,9 +26,9 @@ import {TreeSelectionService} from "./providers/tree-selection.service";
     ],
     animations: [trigger("childNodesState",
                          [
-                           state("expanded", style({"height": "*", "overflow-y": "hidden"})),
-                           state("collapsed", style({"height": 0, "overflow-y": "hidden"})),
-                           transition("expanded <=> collapsed", animate("0.2s ease-in-out"))
+                             state("expanded", style({"height": "*", "overflow-y": "hidden"})),
+                             state("collapsed", style({"height": 0, "overflow-y": "hidden"})),
+                             transition("expanded <=> collapsed", animate("0.2s ease-in-out"))
                          ])]
 
 })

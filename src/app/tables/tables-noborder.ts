@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     styleUrls: ["tables.demo.scss"],
     templateUrl: "./tables-noborder.html"
 })
-export class TablesNoborderDemo {
-}
+export class TablesNoborderDemo {}

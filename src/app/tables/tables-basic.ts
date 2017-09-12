@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     styleUrls: ["tables.demo.scss"],
     templateUrl: "./tables-basic.html"
 })
-export class TablesBasicDemo {
-}
+export class TablesBasicDemo {}

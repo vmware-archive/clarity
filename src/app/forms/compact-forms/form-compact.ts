@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./form-compact.demo.css"],
     templateUrl: "./form-compact.demo.html"
 })
-export class FormCompactDemo {
-}
+export class FormCompactDemo {}

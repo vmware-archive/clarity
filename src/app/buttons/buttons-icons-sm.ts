@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./buttons-icons-sm.html",
     styleUrls: ["./buttons.demo.css"]
 })
-export class ButtonsIconsSmallDemo {
-}
+export class ButtonsIconsSmallDemo {}

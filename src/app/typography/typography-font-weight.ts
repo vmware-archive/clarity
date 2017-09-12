@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     templateUrl: "./typography-font-weight.html"
 })
 
-export class TypographyFontWeightDemo {
-}
+export class TypographyFontWeightDemo {}

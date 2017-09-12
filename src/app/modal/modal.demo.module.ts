@@ -35,5 +35,4 @@ import {ROUTING} from "./modal.demo.routing";
         ModalMaxHeightDemo, ModalTrapDemo
     ]
 })
-export default class ModalDemoModule {
-}
+export default class ModalDemoModule {}

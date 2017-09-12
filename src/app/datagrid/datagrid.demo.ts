@@ -14,5 +14,4 @@ export const TITLE = "Datagrid";
     styleUrls: ["./datagrid.demo.scss"],
 })
 
-export class DatagridDemo {
-}
+export class DatagridDemo {}

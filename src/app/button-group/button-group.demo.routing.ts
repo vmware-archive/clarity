@@ -52,25 +52,25 @@ const ROUTES: Routes = [{
             ]
         },
         {
-          path: "angular",
-          component: ButtonGroupAngularDemo,
-          children: [
-              {path: "", redirectTo: "basic-structure", pathMatch: "full"},
-              {path: "basic-structure", component: BasicButtonGroupDemo},
-              {path: "directions", component: MenuDirectionsDemo},
-              {path: "icon-button", component: IconButtonGroupDemo},
-              {path: "hide-overflow", component: HideShowOverflowToggleDemo},
-              {path: "mixed-buttons", component: MixedButtonGroupDemo},
-              {path: "move-button-in-menu", component: MoveButtonInMenuDemo},
-              {path: "move-multiple-buttons-in-menu", component: MoveMultipleButtonInMenuDemo},
-              {path: "move-all-in-menu", component: MoveAllInMenuDemo},
-              {path: "projection-update-test-1", component: ProjectionUpdateTest1Demo},
-              {path: "projection-update-test-2", component: ProjectionUpdateTest2Demo},
-              {path: "projection-update-test-3", component: ProjectionUpdateTest3Demo},
-              {path: "projection-update-test-4", component: ProjectionUpdateTest4Demo},
-              {path: "projection-update-test-5", component: ProjectionUpdateTest5Demo},
-              {path: "projection-update-test-6", component: ProjectionUpdateTest6Demo},
-          ]
+            path: "angular",
+            component: ButtonGroupAngularDemo,
+            children: [
+                {path: "", redirectTo: "basic-structure", pathMatch: "full"},
+                {path: "basic-structure", component: BasicButtonGroupDemo},
+                {path: "directions", component: MenuDirectionsDemo},
+                {path: "icon-button", component: IconButtonGroupDemo},
+                {path: "hide-overflow", component: HideShowOverflowToggleDemo},
+                {path: "mixed-buttons", component: MixedButtonGroupDemo},
+                {path: "move-button-in-menu", component: MoveButtonInMenuDemo},
+                {path: "move-multiple-buttons-in-menu", component: MoveMultipleButtonInMenuDemo},
+                {path: "move-all-in-menu", component: MoveAllInMenuDemo},
+                {path: "projection-update-test-1", component: ProjectionUpdateTest1Demo},
+                {path: "projection-update-test-2", component: ProjectionUpdateTest2Demo},
+                {path: "projection-update-test-3", component: ProjectionUpdateTest3Demo},
+                {path: "projection-update-test-4", component: ProjectionUpdateTest4Demo},
+                {path: "projection-update-test-5", component: ProjectionUpdateTest5Demo},
+                {path: "projection-update-test-6", component: ProjectionUpdateTest6Demo},
+            ]
         }
     ]
 }];

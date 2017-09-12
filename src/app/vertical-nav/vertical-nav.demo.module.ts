@@ -146,5 +146,4 @@ import {WithoutExpandedDirectiveDemo} from "./without-expanded-directive/without
     ],
     providers: [VerticalNavCases]
 })
-export default class VerticalNavDemoModule {
-}
+export default class VerticalNavDemoModule {}

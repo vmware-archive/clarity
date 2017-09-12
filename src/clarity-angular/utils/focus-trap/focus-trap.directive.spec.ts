@@ -75,5 +75,4 @@ describe("FocusTrap", () => {
         </form>
    `
 })
-class TestComponent {
-}
+class TestComponent {}

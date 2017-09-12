@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./toggles.html",
     styleUrls: ["./buttons.demo.css"]
 })
-export class ToggleDemo {
-}
+export class ToggleDemo {}

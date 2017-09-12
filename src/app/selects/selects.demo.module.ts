@@ -12,5 +12,4 @@ import {SelectsDemo} from "./selects.demo";
 import {ROUTING} from "./selects.demo.routing";
 
 @NgModule({imports: [CommonModule, ClarityModule, ROUTING], declarations: [SelectsDemo], exports: [SelectsDemo]})
-export default class SelectsDemoModule {
-}
+export default class SelectsDemoModule {}

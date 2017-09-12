@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./form-grid.demo.css"],
     templateUrl: "./form-grid.demo.html"
 })
-export class FormGridDemo {
-}
+export class FormGridDemo {}

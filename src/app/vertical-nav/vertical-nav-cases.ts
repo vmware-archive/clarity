@@ -6,22 +6,25 @@
 export class VerticalNavCases {
     basicMenu = {
         title: "Basic",
-        items: [
-            {label: "Music Note Text"}, {label: "Bug Text"}, {label: "Bolt Text"},
-            {label: "Edit has a long text that should overflow"}, {label: "Hourglass Text"}, {label: "Happy Face Text"},
-            {label: "Flame Text"}, {label: "Thermometer Text"}, {label: "Lightbulb Text"}
-        ]
+        items:
+            [
+                {label: "Music Note Text"}, {label: "Bug Text"}, {label: "Bolt Text"},
+                {label: "Edit has a long text that should overflow"}, {label: "Hourglass Text"},
+                {label: "Happy Face Text"}, {label: "Flame Text"}, {label: "Thermometer Text"},
+                {label: "Lightbulb Text"}
+            ]
     };
 
     iconMenu = {
         title: "With icons",
-        items: [
-            {label: "Music Note Text", icon: "music-note"},
-            {label: "Bug has a long text that should overflow", icon: "bug"}, {label: "Bolt Text", icon: "bolt"},
-            {label: "Edit Text", icon: "edit"}, {label: "Hourglass Text", icon: "hourglass"},
-            {label: "Happy Face Text", icon: "happy-face"}, {label: "Flame Text", icon: "flame"},
-            {label: "Thermometer Text", icon: "thermometer"}, {label: "Lightbulb Text", icon: "lightbulb"}
-        ]
+        items:
+            [
+                {label: "Music Note Text", icon: "music-note"},
+                {label: "Bug has a long text that should overflow", icon: "bug"}, {label: "Bolt Text", icon: "bolt"},
+                {label: "Edit Text", icon: "edit"}, {label: "Hourglass Text", icon: "hourglass"},
+                {label: "Happy Face Text", icon: "happy-face"}, {label: "Flame Text", icon: "flame"},
+                {label: "Thermometer Text", icon: "thermometer"}, {label: "Lightbulb Text", icon: "lightbulb"}
+            ]
     };
 
     allNestedMenu = {

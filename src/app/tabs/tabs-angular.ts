@@ -11,6 +11,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./tabs.demo.css"],
     templateUrl: "./tabs-angular.demo.html"
 })
-export class TabsAngularDemo {
-    inOverflow: boolean = false;
-}
+export class TabsAngularDemo { inOverflow: boolean = false; }

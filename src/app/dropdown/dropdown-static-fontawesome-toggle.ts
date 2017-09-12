@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./dropdown.demo.css"],
     templateUrl: "./dropdown-static-fontawesome-toggle.demo.html"
 })
-export class DropdownStaticFontAwesomeToggleDemo {
-}
+export class DropdownStaticFontAwesomeToggleDemo {}

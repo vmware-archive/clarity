@@ -16,5 +16,4 @@ import {LOADING_BUTTON_DIRECTIVES} from "./index";
     declarations: [LOADING_BUTTON_DIRECTIVES],
     exports: [LOADING_BUTTON_DIRECTIVES, ClrLoadingModule]
 })
-export class ClrLoadingButtonModule {
-}
+export class ClrLoadingButtonModule {}

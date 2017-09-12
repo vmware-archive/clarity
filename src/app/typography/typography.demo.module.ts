@@ -27,5 +27,4 @@ import {ROUTING} from "./typography.demo.routing";
         TypographyFontCharTestDemo
     ]
 })
-export default class TypographyDemoModule {
-}
+export default class TypographyDemoModule {}

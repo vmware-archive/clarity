@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     styleUrls: ["tables.demo.scss"],
     templateUrl: "./tables-leftcell.html"
 })
-export class TablesLeftcellDemo {
-}
+export class TablesLeftcellDemo {}

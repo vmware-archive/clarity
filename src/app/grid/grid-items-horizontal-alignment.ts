@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./grid-items-horizontal-alignment.html",
     styleUrls: ["./grid.demo.scss"]
 })
-export class GridItemsHorizontalAlignmentDemo {
-}
+export class GridItemsHorizontalAlignmentDemo {}

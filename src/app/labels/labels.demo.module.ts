@@ -27,5 +27,4 @@ import {ROUTING} from "./labels.demo.routing";
         LabelsDefaultDemo
     ]
 })
-export default class LabelsDemoModule {
-}
+export default class LabelsDemoModule {}

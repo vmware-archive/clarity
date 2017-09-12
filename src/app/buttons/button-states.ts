@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./button-states.html",
     styleUrls: ["./buttons.demo.css"]
 })
-export class ButtonStatesDemo {
-}
+export class ButtonStatesDemo {}

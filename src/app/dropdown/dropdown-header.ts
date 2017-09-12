@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./dropdown-header.demo.html",
     styleUrls: ["./dropdown.demo.css"]
 })
-export class DropdownHeaderDemo {
-}
+export class DropdownHeaderDemo {}

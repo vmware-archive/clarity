@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     templateUrl: "./typography-text.html"
 })
 
-export class TypographyTextDemo {
-}
+export class TypographyTextDemo {}

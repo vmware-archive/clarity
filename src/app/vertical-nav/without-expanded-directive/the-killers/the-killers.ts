@@ -20,5 +20,4 @@ import {Component} from "@angular/core";
         </p>
     `
 })
-export class Killers1Demo {
-}
+export class Killers1Demo {}

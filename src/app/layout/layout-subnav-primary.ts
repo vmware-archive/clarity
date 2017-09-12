@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./layout-subnav-primary.html",
     styleUrls: ["./layout.demo.css"]
 })
-export class LayoutSubnavPrimaryDemo {
-}
+export class LayoutSubnavPrimaryDemo {}

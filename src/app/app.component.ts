@@ -15,6 +15,4 @@ import {APP_ROUTES} from "./app.routing";
     encapsulation: ViewEncapsulation.None
 })
 
-export class AppComponent {
-    public routes: Route[] = APP_ROUTES;
-}
+export class AppComponent { public routes: Route[] = APP_ROUTES; }

@@ -18,5 +18,4 @@ import {ROUTING} from "./spinners.demo.routing";
     declarations: [SpinnerDemo, SpinnerSizesDemo, SpinnerTypesDemo],
     exports: [SpinnerDemo, SpinnerSizesDemo, SpinnerTypesDemo]
 })
-export default class SpinnersDemoModule {
-}
+export default class SpinnersDemoModule {}

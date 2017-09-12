@@ -37,8 +37,7 @@ describe("Tooltip component", function() {
         </clr-tooltip>
     `
 })
-class SimpleTest {
-}
+class SimpleTest {}
 
 @Component({
     template: `
@@ -50,5 +49,4 @@ class SimpleTest {
         </clr-tooltip>
     `
 })
-class InputTest {
-}
+class InputTest {}

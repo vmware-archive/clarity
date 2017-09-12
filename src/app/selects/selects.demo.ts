@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./selects.demo.css"],
     templateUrl: "./selects.demo.html"
 })
-export class SelectsDemo {
-}
+export class SelectsDemo {}

@@ -18,5 +18,4 @@ import {TOOLTIP_DIRECTIVES} from "./index";
     declarations: [TOOLTIP_DIRECTIVES],
     exports: [TOOLTIP_DIRECTIVES, ClrConditionalModule, ClrIconModule]
 })
-export class ClrTooltipModule {
-}
+export class ClrTooltipModule {}

@@ -12,5 +12,4 @@ import {Component, ViewEncapsulation} from "@angular/core";
     styleUrls: ["./tabs.demo.css"],
     templateUrl: "./tabs.demo.html"
 })
-export class TabsDemo {
-}
+export class TabsDemo {}

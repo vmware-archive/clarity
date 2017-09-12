@@ -18,5 +18,4 @@ import {ROUTING} from "./tabs.demo.routing";
     declarations: [TabsDemo, TabsStaticDemo, TabsAngularDemo],
     exports: [TabsDemo, TabsStaticDemo, TabsAngularDemo]
 })
-export default class TabsDemoModule {
-}
+export default class TabsDemoModule {}

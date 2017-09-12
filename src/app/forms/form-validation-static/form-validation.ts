@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./form-validation.demo.css"],
     templateUrl: "./form-validation.demo.html"
 })
-export class FormValidationDemo {
-}
+export class FormValidationDemo {}

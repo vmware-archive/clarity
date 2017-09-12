@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./icon-button-group.html",
     styleUrls: ["../../button-group.demo.css"]
 })
-export class StaticIconButtonGroupDemo {
-}
+export class StaticIconButtonGroupDemo {}

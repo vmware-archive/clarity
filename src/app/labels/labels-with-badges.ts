@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./labels.demo.css"],
     templateUrl: "./labels-with-badges.demo.html"
 })
-export class LabelsWithBadgesDemo {
-}
+export class LabelsWithBadgesDemo {}

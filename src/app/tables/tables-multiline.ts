@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     styleUrls: ["tables.demo.scss"],
     templateUrl: "./tables-multiline.html"
 })
-export class TablesMultilineDemo {
-}
+export class TablesMultilineDemo {}

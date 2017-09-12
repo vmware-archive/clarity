@@ -33,5 +33,4 @@ import {ROUTING} from "./dropdown.demo.routing";
         DropdownAngularCloseItemFalseDemo, DropdownHeaderDemo
     ]
 })
-export default class DropdownDemoModule {
-}
+export default class DropdownDemoModule {}

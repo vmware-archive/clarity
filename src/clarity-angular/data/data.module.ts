@@ -11,5 +11,4 @@ import {ClrStackViewModule} from "./stack-view/stack-view.module";
 import {ClrTreeViewModule} from "./tree-view/tree-view.module";
 
 @NgModule({exports: [ClrDatagridModule, ClrStackViewModule, ClrTreeViewModule]})
-export class ClrDataModule {
-}
+export class ClrDataModule {}

@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./grid-items-individual-vertical-alignment.html",
     styleUrls: ["./grid.demo.scss"]
 })
-export class GridItemsIndividualVerticalAlignmentDemo {
-}
+export class GridItemsIndividualVerticalAlignmentDemo {}

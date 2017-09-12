@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
         <p>Credit: Wikipedia</p>
     `
 })
-export class Wikipedia2Demo {
-}
+export class Wikipedia2Demo {}

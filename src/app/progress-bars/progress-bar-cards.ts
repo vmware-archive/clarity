@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     templateUrl: "./progress-bar-cards.html"
 })
 
-export class ProgressBarCardsDemo {
-}
+export class ProgressBarCardsDemo {}

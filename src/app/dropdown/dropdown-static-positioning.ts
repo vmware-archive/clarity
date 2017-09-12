@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./dropdown.demo.css"],
     templateUrl: "./dropdown-static-positioning.demo.html"
 })
-export class DropdownStaticPositioningDemo {
-}
+export class DropdownStaticPositioningDemo {}

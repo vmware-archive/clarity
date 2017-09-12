@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./grid-columns.html",
     styleUrls: ["./grid.demo.scss"]
 })
-export class GridColumnsDemo {
-}
+export class GridColumnsDemo {}

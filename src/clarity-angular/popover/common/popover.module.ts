@@ -10,5 +10,4 @@ import {NgModule} from "@angular/core";
 import {POPOVER_DIRECTIVES} from "./index";
 
 @NgModule({imports: [CommonModule], declarations: [POPOVER_DIRECTIVES], exports: [POPOVER_DIRECTIVES]})
-export class ClrCommonPopoverModule {
-}
+export class ClrCommonPopoverModule {}

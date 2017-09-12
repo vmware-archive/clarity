@@ -15,5 +15,4 @@ import {Component} from "@angular/core";
     `,
     host: {"class": "nav-link"}
 })
-export class VerticalNavLink {
-}
+export class VerticalNavLink {}

@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./modal.demo.css"],
     templateUrl: "./modal-static.demo.html"
 })
-export class ModalStaticDemo {
-}
+export class ModalStaticDemo {}

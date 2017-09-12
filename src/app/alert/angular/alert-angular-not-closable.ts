@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["../alert.demo.css"],
     templateUrl: "./alert-angular-not-closable.demo.html"
 })
-export class AlertAngularNotClosableDemo {
-}
+export class AlertAngularNotClosableDemo {}

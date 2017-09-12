@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./layout-sidenav-primary.html",
     styleUrls: ["./layout.demo.css"]
 })
-export class LayoutSidenavPrimaryDemo {
-}
+export class LayoutSidenavPrimaryDemo {}

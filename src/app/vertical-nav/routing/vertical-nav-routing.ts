@@ -18,30 +18,29 @@ import {VerticalNavCases} from "../vertical-nav-cases";
 export class VerticalNavRoutingDemo {
     option: string = "link";
 
-    case:
-        any;
+    case: any;
 
-        groupExpand: boolean = true;
+    groupExpand: boolean = true;
 
-        updateGroupExpand(event: any) {
-            this.groupExpand = event;
-        }
+    updateGroupExpand(event: any) {
+        this.groupExpand = event;
+    }
 
-        navCollapsed: boolean = false;
+    navCollapsed: boolean = false;
 
-        updateNavCollapsed(val: boolean): void {
-            this.navCollapsed = val;
-        }
+    updateNavCollapsed(val: boolean): void {
+        this.navCollapsed = val;
+    }
 
-        toggleNav(): void {
-            this.navCollapsed = !this.navCollapsed;
-        }
+    toggleNav(): void {
+        this.navCollapsed = !this.navCollapsed;
+    }
 
-        toggleGroup(): void {
-            this.groupExpand = !this.groupExpand;
-        }
+    toggleGroup(): void {
+        this.groupExpand = !this.groupExpand;
+    }
 
-        constructor(public verticalNavCases: VerticalNavCases) {
-            this.case = this.verticalNavCases.allNestedIconMenu;
-        }
+    constructor(public verticalNavCases: VerticalNavCases) {
+        this.case = this.verticalNavCases.allNestedIconMenu;
+    }
 }

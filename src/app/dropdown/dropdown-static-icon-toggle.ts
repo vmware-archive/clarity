@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./dropdown.demo.css"],
     templateUrl: "./dropdown-static-icon-toggle.demo.html"
 })
-export class DropdownStaticIconToggleDemo {
-}
+export class DropdownStaticIconToggleDemo {}

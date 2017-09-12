@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./button-group-checkboxes.html",
     styleUrls: ["../../button-group.demo.css"]
 })
-export class ButtonGroupCheckboxesDemo {
-}
+export class ButtonGroupCheckboxesDemo {}

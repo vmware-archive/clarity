@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./layout-additional-sections.html",
     styleUrls: ["./layout.demo.css"]
 })
-export class LayoutAdditionalSectionsDemo {
-}
+export class LayoutAdditionalSectionsDemo {}

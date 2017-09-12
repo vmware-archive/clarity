@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./header-types.demo.html",
     styleUrls: ["./headers.demo.css"]
 })
-export class HeaderTypesDemo {
-}
+export class HeaderTypesDemo {}

@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./inverse-button.html",
     styleUrls: ["./buttons.demo.css"]
 })
-export class InverseButtonDemo {
-}
+export class InverseButtonDemo {}

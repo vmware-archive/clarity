@@ -17,5 +17,4 @@ import {Component} from "@angular/core";
         </clr-dg-row-detail>
     `
 })
-export class DetailWrapper {
-}
+export class DetailWrapper {}

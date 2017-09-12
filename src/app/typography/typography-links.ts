@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     templateUrl: "./typography-links.html"
 })
 
-export class TypographyLinksDemo {
-}
+export class TypographyLinksDemo {}

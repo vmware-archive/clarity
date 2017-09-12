@@ -12,6 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./modal.demo.css"],
     templateUrl: "./modal-max-height.html"
 })
-export class ModalMaxHeightDemo {
-    public open: boolean = true;
-}
+export class ModalMaxHeightDemo { public open: boolean = true; }

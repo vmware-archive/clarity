@@ -25,5 +25,4 @@ import {Component} from "@angular/core";
         <router-outlet></router-outlet>
     `
 })
-export class TablesDemo {
-}
+export class TablesDemo {}

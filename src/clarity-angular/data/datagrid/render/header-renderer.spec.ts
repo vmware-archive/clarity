@@ -79,5 +79,4 @@ export default function(): void {
 }
 
 @Component({template: `<clr-dg-column>Hello world</clr-dg-column>`})
-class SimpleTest {
-}
+class SimpleTest {}

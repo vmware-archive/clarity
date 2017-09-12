@@ -13,30 +13,29 @@ import {VerticalNavCases} from "../vertical-nav-cases";
     styleUrls: ["../vertical-nav.demo.css"]
 })
 export class VerticalNavCollapsibleDemo {
-    case:
-        any;
+    case: any;
 
-        constructor(public verticalNavCases: VerticalNavCases) {
-            this.case = this.verticalNavCases.basicMenu;
-        }
+    constructor(public verticalNavCases: VerticalNavCases) {
+        this.case = this.verticalNavCases.basicMenu;
+    }
 
-        collapsible: boolean = true;
+    collapsible: boolean = true;
 
-        private _collapse: boolean = true;
+    private _collapse: boolean = true;
 
-        get collapse(): boolean {
-            return this._collapse;
-        }
+    get collapse(): boolean {
+        return this._collapse;
+    }
 
-        set collapse(value: boolean) {
-            this._collapse = value;
-        }
+    set collapse(value: boolean) {
+        this._collapse = value;
+    }
 
-        toggleCollapsible(): void {
-            this.collapsible = !this.collapsible;
-        }
+    toggleCollapsible(): void {
+        this.collapsible = !this.collapsible;
+    }
 
-        toggleCollapse(): void {
-            this.collapse = !this.collapse;
-        }
+    toggleCollapse(): void {
+        this.collapse = !this.collapse;
+    }
 }

@@ -29,5 +29,4 @@ import {Component} from "@angular/core";
         <router-outlet></router-outlet>
     `
 })
-export class ModalDemo {
-}
+export class ModalDemo {}

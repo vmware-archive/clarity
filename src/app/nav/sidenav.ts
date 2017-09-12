@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./sidenav.demo.css"],
     templateUrl: "./sidenav.demo.html"
 })
-export class SidenavDemo {
-}
+export class SidenavDemo {}

@@ -19,5 +19,4 @@ import {TREE_VIEW_DIRECTIVES} from "./index";
     declarations: [TREE_VIEW_DIRECTIVES],
     exports: [TREE_VIEW_DIRECTIVES, ClrIfExpandModule]
 })
-export class ClrTreeViewModule {
-}
+export class ClrTreeViewModule {}

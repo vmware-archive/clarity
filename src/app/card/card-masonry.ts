@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./card.demo.css"],
     templateUrl: "./card-masonry.html"
 })
-export class CardMasonryDemo {
-}
+export class CardMasonryDemo {}

@@ -32,5 +32,4 @@ import {Component} from "@angular/core";
         <router-outlet></router-outlet>
     `
 })
-export class TreeViewDemo {
-}
+export class TreeViewDemo {}

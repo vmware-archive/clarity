@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./color-contrast.demo.css"],
     templateUrl: "./color-contrast.demo.html"
 })
-export class ColorContrastDemo {
-}
+export class ColorContrastDemo {}

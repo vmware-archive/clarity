@@ -12,5 +12,4 @@ import {StackViewNgDemo} from "./stack-view-ng-demo";
     templateUrl: "./stack-view-angular-lazyload.html",
     styleUrls: ["./stack-view.demo.css"]
 })
-export class StackViewAngularLazyloadDemo extends StackViewNgDemo {
-}
+export class StackViewAngularLazyloadDemo extends StackViewNgDemo {}

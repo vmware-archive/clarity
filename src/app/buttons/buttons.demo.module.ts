@@ -36,5 +36,4 @@ import {ToggleDemo} from "./toggles";
         IconButtonsDemo
     ]
 })
-export default class ButtonsDemoModule {
-}
+export default class ButtonsDemoModule {}

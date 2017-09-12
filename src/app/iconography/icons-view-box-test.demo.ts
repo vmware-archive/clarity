@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./iconography.demo.css"],
     templateUrl: "./icons-view-box-test.demo.html"
 })
-export class IconsViewBoxTestDemo {
-}
+export class IconsViewBoxTestDemo {}

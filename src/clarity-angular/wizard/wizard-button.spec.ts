@@ -59,8 +59,7 @@ export default function(): void {
                     <clr-wizard-button></clr-wizard-button>
                 `
             })
-            class TestComponent {
-            }
+            class TestComponent {}
 
             function runTypeConstantCheck(component: any, fnToTest: any, buttonType: string, typeConstant: any) {
                 buttonComponent.type = "next";

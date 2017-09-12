@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     styleUrls: ["lists.demo.css"],
     templateUrl: "./lists-mixed.html"
 })
-export class ListsMixedDemo {
-}
+export class ListsMixedDemo {}

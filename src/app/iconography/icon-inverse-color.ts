@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./iconography.demo.css"],
     templateUrl: "./icon-inverse-color.demo.html"
 })
-export class IconInverseColorDemo {
-}
+export class IconInverseColorDemo {}

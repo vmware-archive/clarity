@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./dropdown.demo.css"],
     templateUrl: "./dropdown-static-buttonlink-toggle.demo.html"
 })
-export class DropdownStaticButtonLinkToggleDemo {
-}
+export class DropdownStaticButtonLinkToggleDemo {}

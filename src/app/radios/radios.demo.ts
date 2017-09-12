@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./radios.demo.css"],
     templateUrl: "./radios.demo.html"
 })
-export class RadiosDemo {
-}
+export class RadiosDemo {}

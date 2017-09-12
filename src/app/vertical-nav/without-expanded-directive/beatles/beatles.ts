@@ -23,5 +23,4 @@ import {Component} from "@angular/core";
         </p>
     `
 })
-export class Beatles1Demo {
-}
+export class Beatles1Demo {}

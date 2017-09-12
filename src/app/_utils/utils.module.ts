@@ -11,5 +11,4 @@ import {ClarityModule} from "../../clarity-angular/clarity.module";
 import {FakeLoader} from "./fake-loader";
 
 @NgModule({imports: [CommonModule, ClarityModule], declarations: [FakeLoader], exports: [FakeLoader]})
-export class UtilsDemoModule {
-}
+export class UtilsDemoModule {}

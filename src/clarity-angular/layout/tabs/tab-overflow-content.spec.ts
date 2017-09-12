@@ -17,8 +17,7 @@ import {TabOverflowContent} from "./tab-overflow-content";
         </clr-tab-overflow-content>
     `
 })
-class TestComponent {
-}
+class TestComponent {}
 
 describe("TabOverflowContent", () => {
     let fixture: ComponentFixture<any>;

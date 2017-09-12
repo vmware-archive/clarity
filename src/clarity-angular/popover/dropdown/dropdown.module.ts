@@ -18,5 +18,4 @@ import {DROPDOWN_DIRECTIVES} from "./index";
     declarations: [DROPDOWN_DIRECTIVES],
     exports: [DROPDOWN_DIRECTIVES, ClrConditionalModule, ClrIconModule]
 })
-export class ClrDropdownModule {
-}
+export class ClrDropdownModule {}

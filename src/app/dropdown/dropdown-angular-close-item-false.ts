@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./dropdown-angular-close-item-false.demo.html",
     styleUrls: ["./dropdown.demo.css"]
 })
-export class DropdownAngularCloseItemFalseDemo {
-}
+export class DropdownAngularCloseItemFalseDemo {}

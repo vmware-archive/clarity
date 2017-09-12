@@ -41,5 +41,4 @@ import {AlertStylesDemo} from "./static/alert-styles";
         AlertAngularSmallDemo, AlertAngularCloseEventDemo
     ]
 })
-export default class AlertDemoModule {
-}
+export default class AlertDemoModule {}

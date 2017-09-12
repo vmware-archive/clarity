@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./stack-view.demo.css"]
 })
 
-export class StackViewStaticDemo {
-}
+export class StackViewStaticDemo {}

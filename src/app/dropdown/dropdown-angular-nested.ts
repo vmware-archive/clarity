@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./dropdown-angular-nested.demo.html",
     styleUrls: ["./dropdown.demo.css"]
 })
-export class DropdownAngularNestedDemo {
-}
+export class DropdownAngularNestedDemo {}

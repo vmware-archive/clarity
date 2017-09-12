@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./grid-column-stacking.html",
     styleUrls: ["./grid.demo.scss"]
 })
-export class GridColumnStackingDemo {
-}
+export class GridColumnStackingDemo {}

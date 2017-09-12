@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     styleUrls: ["progress-bars.demo.css"],
     templateUrl: "./progress-bar-loop.html"
 })
-export class ProgressBarLoopDemo {
-}
+export class ProgressBarLoopDemo {}

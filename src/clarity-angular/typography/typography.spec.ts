@@ -22,8 +22,7 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
         <div class="p4">P4 Styles</div>
    `
 })
-class TestComponent {
-}
+class TestComponent {}
 
 describe("Typography", () => {
     let fixture: ComponentFixture<any>;

@@ -20,5 +20,4 @@ import {Component} from "@angular/core";
     `
 })
 
-export class ButtonGroupDemo {
-}
+export class ButtonGroupDemo {}

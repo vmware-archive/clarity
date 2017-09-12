@@ -18,5 +18,4 @@ import {ROUTING} from "./code-highlight.demo.routing";
     declarations: [CodeHighlightDemo, CodeHighlightImportsDemo, CodeHighlightSnippetDemo],
     exports: [CodeHighlightDemo, CodeHighlightImportsDemo, CodeHighlightSnippetDemo]
 })
-export default class CodeHighlightDemoModule {
-}
+export default class CodeHighlightDemoModule {}

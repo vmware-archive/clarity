@@ -19,5 +19,4 @@ import {Component} from "@angular/core";
         <router-outlet></router-outlet>
     `
 })
-export class SpinnerDemo {
-}
+export class SpinnerDemo {}

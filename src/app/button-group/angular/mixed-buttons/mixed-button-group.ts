@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./mixed-button-group.html",
     styleUrls: ["../../button-group.demo.css"]
 })
-export class MixedButtonGroupDemo {
-}
+export class MixedButtonGroupDemo {}

@@ -30,5 +30,4 @@ import {Component} from "@angular/core";
     `
 })
 
-export class ButtonsDemo {
-}
+export class ButtonsDemo {}

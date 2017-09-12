@@ -22,9 +22,9 @@ const COLLAPSED_STATE: string = "collapsed";
     providers: [Expand],
     animations: [trigger("clrExpand",
                          [
-                           state(EXPANDED_STATE, style({"height": "*"})),
-                           state(COLLAPSED_STATE, style({"height": 0, "overflow-y": "hidden"})),
-                           transition(`${EXPANDED_STATE} <=> ${COLLAPSED_STATE}`, animate("0.2s ease-in-out"))
+                             state(EXPANDED_STATE, style({"height": "*"})),
+                             state(COLLAPSED_STATE, style({"height": 0, "overflow-y": "hidden"})),
+                             transition(`${EXPANDED_STATE} <=> ${COLLAPSED_STATE}`, animate("0.2s ease-in-out"))
                          ])],
     host: {"class": "nav-group"}
 })

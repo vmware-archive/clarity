@@ -37,5 +37,4 @@ export default function(): void {
 }
 
 @Component({template: `<div clrDgBody>Hello world</div>`})
-class SimpleTest {
-}
+class SimpleTest {}

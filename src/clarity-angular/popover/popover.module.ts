@@ -10,5 +10,4 @@ import {ClrSignpostModule} from "./signpost/signpost.module";
 import {ClrTooltipModule} from "./tooltip/tooltip.module";
 
 @NgModule({exports: [ClrDropdownModule, ClrSignpostModule, ClrTooltipModule]})
-export class ClrPopoverModule {
-}
+export class ClrPopoverModule {}

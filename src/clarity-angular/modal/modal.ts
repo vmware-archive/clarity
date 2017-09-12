@@ -20,47 +20,47 @@ import {GHOST_PAGE_ANIMATION} from "./utils/ghost-page-animations";
     animations: [
         trigger("fadeDown",
                 [
-                  transition("* => false",
-                             [style({opacity: 0, transform: "translate(0, -25%)"}), animate("0.2s ease-in-out")]),
-                  transition("false => *",
-                             [animate("0.2s ease-in-out", style({opacity: 0, transform: "translate(0, -25%)"}))])
+                    transition("* => false",
+                               [style({opacity: 0, transform: "translate(0, -25%)"}), animate("0.2s ease-in-out")]),
+                    transition("false => *",
+                               [animate("0.2s ease-in-out", style({opacity: 0, transform: "translate(0, -25%)"}))])
                 ]),
         trigger("fade",
                 [
-                  transition("void => *", [style({opacity: 0}), animate("0.2s ease-in-out", style({opacity: 0.85}))]),
-                  transition("* => void", [animate("0.2s ease-in-out", style({opacity: 0}))])
+                    transition("void => *", [style({opacity: 0}), animate("0.2s ease-in-out", style({opacity: 0.85}))]),
+                    transition("* => void", [animate("0.2s ease-in-out", style({opacity: 0}))])
                 ]),
         trigger("ghostPageOneState",
                 [
-                  state(GHOST_PAGE_ANIMATION.STATES.NO_PAGES, style({left: "-24px"})),
-                  state(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES, style({left: "0"})),
-                  state(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE, style({left: "-24px"})),
-                  state(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE, style({left: "-24px"})),
-                  transition(GHOST_PAGE_ANIMATION.STATES.NO_PAGES + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-                  transition(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)),
-                  transition(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-                  transition(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT))
+                    state(GHOST_PAGE_ANIMATION.STATES.NO_PAGES, style({left: "-24px"})),
+                    state(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES, style({left: "0"})),
+                    state(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE, style({left: "-24px"})),
+                    state(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE, style({left: "-24px"})),
+                    transition(GHOST_PAGE_ANIMATION.STATES.NO_PAGES + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
+                    transition(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)),
+                    transition(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
+                    transition(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT))
                 ]),
         // TODO: USE TRANSFORM, NOT LEFT...
         trigger("ghostPageTwoState",
                 [
-                  state(GHOST_PAGE_ANIMATION.STATES.NO_PAGES, style({left: "-24px", top: "24px", bottom: "24px"})),
-                  state(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES, style({left: "24px"})),
-                  state(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE,
-                        style({left: "0px", top: "24px", bottom: "24px", background: "#bbb"})),
-                  state(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE, style({left: "-24px", top: "24px", bottom: "24px"})),
-                  transition(GHOST_PAGE_ANIMATION.STATES.NO_PAGES + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-                  transition(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)),
-                  transition(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-                  transition(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT))
+                    state(GHOST_PAGE_ANIMATION.STATES.NO_PAGES, style({left: "-24px", top: "24px", bottom: "24px"})),
+                    state(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES, style({left: "24px"})),
+                    state(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE,
+                          style({left: "0px", top: "24px", bottom: "24px", background: "#bbb"})),
+                    state(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE, style({left: "-24px", top: "24px", bottom: "24px"})),
+                    transition(GHOST_PAGE_ANIMATION.STATES.NO_PAGES + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
+                    transition(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)),
+                    transition(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
+                    transition(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT))
                 ])
     ]
 })

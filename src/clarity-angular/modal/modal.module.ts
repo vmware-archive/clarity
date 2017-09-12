@@ -17,5 +17,4 @@ import {MODAL_DIRECTIVES} from "./index";
     declarations: [MODAL_DIRECTIVES],
     exports: [MODAL_DIRECTIVES]
 })
-export class ClrModalModule {
-}
+export class ClrModalModule {}

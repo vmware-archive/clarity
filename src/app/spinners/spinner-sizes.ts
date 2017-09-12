@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./spinner-sizes.html",
     styleUrls: ["./spinner.demo.scss"]
 })
-export class SpinnerSizesDemo {
-}
+export class SpinnerSizesDemo {}

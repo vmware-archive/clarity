@@ -76,28 +76,28 @@ const ROUTES: Routes = [{
             ]
         },
         {
-          path: "without-expanded-directive",
-          component: WithoutExpandedDirectiveDemo,
-          children: [
-              {path: "", redirectTo: "beatles", pathMatch: "full"}, {path: "beatles", component: Beatles1Demo},
-              {path: "beatles/abbey-road", component: AbbeyRoad1Demo},
-              {path: "beatles/revolver", component: Revolver1Demo},
-              {path: "beatles/rubber-soul", component: RubberSoul1Demo}, {path: "killers", component: Killers1Demo},
-              {path: "killers/hot-fuss", component: HotFuss1Demo},
-              {path: "killers/day-and-age", component: DayAndAge1Demo},
-              {path: "killers/sams-town", component: SamsTown1Demo}, {path: "wikipedia", component: Wikipedia1Demo}
-          ]
+            path: "without-expanded-directive",
+            component: WithoutExpandedDirectiveDemo,
+            children: [
+                {path: "", redirectTo: "beatles", pathMatch: "full"}, {path: "beatles", component: Beatles1Demo},
+                {path: "beatles/abbey-road", component: AbbeyRoad1Demo},
+                {path: "beatles/revolver", component: Revolver1Demo},
+                {path: "beatles/rubber-soul", component: RubberSoul1Demo}, {path: "killers", component: Killers1Demo},
+                {path: "killers/hot-fuss", component: HotFuss1Demo},
+                {path: "killers/day-and-age", component: DayAndAge1Demo},
+                {path: "killers/sams-town", component: SamsTown1Demo}, {path: "wikipedia", component: Wikipedia1Demo}
+            ]
         },
         {
-          path: "unstructured-routes",
-          component: UnstructuredRoutesDemo,
-          children: [
-              {path: "", redirectTo: "beatles", pathMatch: "full"}, {path: "beatles", component: Beatles2Demo},
-              {path: "abbey-road", component: AbbeyRoad2Demo}, {path: "revolver", component: Revolver2Demo},
-              {path: "rubber-soul", component: RubberSoul2Demo}, {path: "killers", component: Killers2Demo},
-              {path: "hot-fuss", component: HotFuss2Demo}, {path: "day-and-age", component: DayAndAge2Demo},
-              {path: "sams-town", component: SamsTown2Demo}, {path: "wikipedia", component: Wikipedia2Demo}
-          ]
+            path: "unstructured-routes",
+            component: UnstructuredRoutesDemo,
+            children: [
+                {path: "", redirectTo: "beatles", pathMatch: "full"}, {path: "beatles", component: Beatles2Demo},
+                {path: "abbey-road", component: AbbeyRoad2Demo}, {path: "revolver", component: Revolver2Demo},
+                {path: "rubber-soul", component: RubberSoul2Demo}, {path: "killers", component: Killers2Demo},
+                {path: "hot-fuss", component: HotFuss2Demo}, {path: "day-and-age", component: DayAndAge2Demo},
+                {path: "sams-town", component: SamsTown2Demo}, {path: "wikipedia", component: Wikipedia2Demo}
+            ]
         },
         {path: "all", component: VerticalNavAllCases}
     ]

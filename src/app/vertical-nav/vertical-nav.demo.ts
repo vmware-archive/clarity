@@ -28,5 +28,4 @@ import {Component} from "@angular/core";
         <router-outlet></router-outlet>
     `
 })
-export class VerticalNavDemo {
-}
+export class VerticalNavDemo {}

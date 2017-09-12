@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./code-highlight-snippet.html",
     styleUrls: ["./code-highlight.demo.css"]
 })
-export class CodeHighlightSnippetDemo {
-}
+export class CodeHighlightSnippetDemo {}

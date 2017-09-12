@@ -20,5 +20,4 @@ import {SIGNPOST_DIRECTIVES} from "./index";
     providers: []
 })
 
-export class ClrSignpostModule {
-}
+export class ClrSignpostModule {}

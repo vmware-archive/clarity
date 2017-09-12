@@ -32,5 +32,4 @@ export default function(): void {
 }
 
 @Component({template: `<div clrDgTableWrapper>Hello World</div>`})
-class SimpleTest {
-}
+class SimpleTest {}

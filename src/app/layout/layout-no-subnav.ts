@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./layout-no-subnav.html",
     styleUrls: ["./layout.demo.css"]
 })
-export class LayoutNoSubnavDemo {
-}
+export class LayoutNoSubnavDemo {}

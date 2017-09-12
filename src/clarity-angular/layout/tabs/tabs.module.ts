@@ -19,5 +19,4 @@ import {TABS_DIRECTIVES} from "./index";
     declarations: [TABS_DIRECTIVES],
     exports: [TABS_DIRECTIVES, ClrConditionalModule]
 })
-export class ClrTabsModule {
-}
+export class ClrTabsModule {}

@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./iconography.demo.css"],
     templateUrl: "./icon-colors.demo.html"
 })
-export class IconColorsDemo {
-}
+export class IconColorsDemo {}

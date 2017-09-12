@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./grid-auto-layout-2.html",
     styleUrls: ["./grid.demo.scss"]
 })
-export class GridAutoLayout2Demo {
-}
+export class GridAutoLayout2Demo {}

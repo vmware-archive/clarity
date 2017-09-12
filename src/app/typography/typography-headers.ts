@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     templateUrl: "./typography-headers.html"
 })
 
-export class TypographyHeadersDemo {
-}
+export class TypographyHeadersDemo {}

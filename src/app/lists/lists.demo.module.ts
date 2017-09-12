@@ -27,5 +27,4 @@ import {OldListsInCardsDemo} from "./old-lists-in-cards";
     exports:
         [ListsDemo, ListsUlDemo, ListsOlDemo, ListsUnstyledDemo, ListsCompactDemo, ListsMixedDemo, ListsInCardsDemo]
 })
-export default class ListsDemoModule {
-}
+export default class ListsDemoModule {}

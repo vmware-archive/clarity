@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./modal.demo.css"],
     templateUrl: "./modal-backdrop.demo.html"
 })
-export class ModalBackdropDemo {
-}
+export class ModalBackdropDemo {}

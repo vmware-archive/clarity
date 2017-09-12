@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["../alert.demo.css"],
     templateUrl: "./alert-angular-app-level.demo.html"
 })
-export class AlertAngularAppLevelDemo {
-}
+export class AlertAngularAppLevelDemo {}

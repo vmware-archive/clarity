@@ -13,10 +13,9 @@ import {VerticalNavCases} from "../vertical-nav-cases";
     styleUrls: ["../vertical-nav.demo.css"]
 })
 export class VerticalNavBasicDemo {
-    case:
-        any;
+    case: any;
 
-        constructor(public verticalNavCases: VerticalNavCases) {
-            this.case = this.verticalNavCases.basicMenu;
-        }
+    constructor(public verticalNavCases: VerticalNavCases) {
+        this.case = this.verticalNavCases.basicMenu;
+    }
 }

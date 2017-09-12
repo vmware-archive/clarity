@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     templateUrl: "./progress-bar-sidenav.html"
 })
 
-export class ProgressBarSidenavDemo {
-}
+export class ProgressBarSidenavDemo {}

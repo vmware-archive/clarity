@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./tooltips.demo.css"],
     templateUrl: "./tooltips-buttons.html"
 })
-export class TooltipsButtonsDemo {
-}
+export class TooltipsButtonsDemo {}

@@ -12,5 +12,4 @@ import {StackViewNgDemo} from "./stack-view-ng-demo";
     templateUrl: "./stack-view-angular-modal-edit.html",
     styleUrls: ["./stack-view.demo.css"]
 })
-export class StackViewAngularModalEditDemo extends StackViewNgDemo {
-}
+export class StackViewAngularModalEditDemo extends StackViewNgDemo {}

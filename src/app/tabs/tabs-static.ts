@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./tabs-static.demo.html",
     styleUrls: ["./tabs.demo.css"]
 })
-export class TabsStaticDemo {
-}
+export class TabsStaticDemo {}

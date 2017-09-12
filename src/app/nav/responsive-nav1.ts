@@ -33,5 +33,4 @@ import {Component} from "@angular/core";
     `,
     styleUrls: ["./headers.demo.css"]
 })
-export class ResponsiveNav1Demo {
-}
+export class ResponsiveNav1Demo {}

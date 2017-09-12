@@ -13,20 +13,19 @@ import {VerticalNavCases} from "../vertical-nav-cases";
     styleUrls: ["../vertical-nav.demo.css"]
 })
 export class VerticalNavPartiallyNestedMenusDemo {
-    case:
-        any;
+    case: any;
 
-        constructor(public verticalNavCases: VerticalNavCases) {
-            this.case = this.verticalNavCases.partiallyNestedMenu;
-        }
+    constructor(public verticalNavCases: VerticalNavCases) {
+        this.case = this.verticalNavCases.partiallyNestedMenu;
+    }
 
-        private _collapse: boolean = false;
+    private _collapse: boolean = false;
 
-        get collapse(): boolean {
-            return this._collapse;
-        }
+    get collapse(): boolean {
+        return this._collapse;
+    }
 
-        set collapse(value: boolean) {
-            this._collapse = value;
-        }
+    set collapse(value: boolean) {
+        this._collapse = value;
+    }
 }

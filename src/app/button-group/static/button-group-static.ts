@@ -26,5 +26,4 @@ import {Component} from "@angular/core";
         <router-outlet></router-outlet>
     `
 })
-export class ButtonGroupStaticDemo {
-}
+export class ButtonGroupStaticDemo {}

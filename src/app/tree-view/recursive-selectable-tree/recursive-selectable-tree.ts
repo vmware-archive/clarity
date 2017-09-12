@@ -92,14 +92,15 @@ export class RecursiveSelectableTreeDemo {
         name: "A1",
         selected: false,
         expanded: true,
-        children: [
-            {name: "B1", selected: false, children: [{name: "C1"}, {name: "C2"}, {name: "C3"}]}, {
-                name: "B2",
-                selected: true,
-                expanded: true,
-                children: [{name: "D1"}, {name: "D2", selected: false}, {name: "D3"}]
-            },
-            {name: "B3", selected: true, children: [{name: "E1"}, {name: "E2"}, {name: "E3"}]}
-        ]
+        children:
+            [
+                {name: "B1", selected: false, children: [{name: "C1"}, {name: "C2"}, {name: "C3"}]}, {
+                    name: "B2",
+                    selected: true,
+                    expanded: true,
+                    children: [{name: "D1"}, {name: "D2", selected: false}, {name: "D3"}]
+                },
+                {name: "B3", selected: true, children: [{name: "E1"}, {name: "E2"}, {name: "E3"}]}
+            ]
     };
 }

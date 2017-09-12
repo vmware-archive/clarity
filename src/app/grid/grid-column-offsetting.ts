@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./grid-column-offsetting.html",
     styleUrls: ["./grid.demo.scss"]
 })
-export class GridColumnOffsettingDemo {
-}
+export class GridColumnOffsettingDemo {}

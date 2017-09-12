@@ -33,7 +33,7 @@
     "bootstrap": "4.0.0-alpha.5",
     "browser-sync": "^2.11.2",
     "cheerio": "^0.22.0",
-    "clang-format": "^1.0.37",
+    "clang-format": "^1.0.55",
     "commander": "^2.11.0",
     "connect-history-api-fallback": "^1.2.0",
     "del": "^2.2.0",

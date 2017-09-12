@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     styleUrls: ["lists.demo.css"],
     templateUrl: "./old-lists-in-cards.html"
 })
-export class OldListsInCardsDemo {
-}
+export class OldListsInCardsDemo {}

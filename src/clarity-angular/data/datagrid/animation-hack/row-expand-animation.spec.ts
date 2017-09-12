@@ -50,5 +50,4 @@ export default function(): void {
 }
 
 @Component({template: `<clr-dg-row>Hello world</clr-dg-row>`})
-class SimpleTest {
-}
+class SimpleTest {}

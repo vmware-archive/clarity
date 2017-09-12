@@ -12,5 +12,4 @@ import {LoginDemo} from "./login.demo";
 import {ROUTING} from "./login.demo.routing";
 
 @NgModule({imports: [CommonModule, ClarityModule, ROUTING], declarations: [LoginDemo], exports: [LoginDemo]})
-export default class LoginDemoModule {
-}
+export default class LoginDemoModule {}

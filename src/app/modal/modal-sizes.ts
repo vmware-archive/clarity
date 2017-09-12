@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./modal.demo.css"],
     templateUrl: "./modal-sizes.demo.html"
 })
-export class ModalSizesDemo {
-}
+export class ModalSizesDemo {}

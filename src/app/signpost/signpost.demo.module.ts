@@ -17,5 +17,4 @@ import {ROUTING} from "./signpost.routing";
     declarations: [SignpostDemo],
     exports: [SignpostDemo]
 })
-export default class SignpostsDemoModule {
-}
+export default class SignpostsDemoModule {}

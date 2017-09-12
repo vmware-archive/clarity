@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./basic-structure.html",
     styleUrls: ["../../button-group.demo.css"]
 })
-export class StaticButtonGroupBasicStructureDemo {
-}
+export class StaticButtonGroupBasicStructureDemo {}

@@ -101,5 +101,4 @@ import {ButtonGroupTypes} from "./static/types/button-group-types";
         ButtonGroupDemo
     ]
 })
-export default class ButtonGroupDemoModule {
-}
+export default class ButtonGroupDemoModule {}

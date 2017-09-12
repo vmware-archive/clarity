@@ -21,15 +21,15 @@ const ROUTES: Routes = [{
     path: "",
     component: NavDemo,
     children: [
-        {path: "", redirectTo: "headers", pathMatch: "full"},
-        {
-          path: "headers",
-          component: HeadersDemo,
-          children: [
-              {path: "", redirectTo: "header-types", pathMatch: "full"},
-              {path: "header-types", component: HeaderTypesDemo}, {path: "header-colors", component: HeaderColorsDemo},
-              {path: "header-types-old", component: HeaderTypesOldDemo}
-          ]
+        {path: "", redirectTo: "headers", pathMatch: "full"}, {
+            path: "headers",
+            component: HeadersDemo,
+            children: [
+                {path: "", redirectTo: "header-types", pathMatch: "full"},
+                {path: "header-types", component: HeaderTypesDemo},
+                {path: "header-colors", component: HeaderColorsDemo},
+                {path: "header-types-old", component: HeaderTypesOldDemo}
+            ]
         },
         {path: "nav-tabs", component: NavsDemo}, {path: "sidenav", component: SidenavDemo},
         {path: "subnav", component: SubNavDemo}, {path: "responsive-nav1", component: ResponsiveNav1Demo},

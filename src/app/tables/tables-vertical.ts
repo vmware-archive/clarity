@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     styleUrls: ["tables.demo.scss"],
     templateUrl: "./tables-vertical.html"
 })
-export class TablesVerticalDemo {
-}
+export class TablesVerticalDemo {}

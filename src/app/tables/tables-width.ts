@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     styleUrls: ["tables.demo.scss"],
     templateUrl: "./tables-width.html"
 })
-export class TablesWidthDemo {
-}
+export class TablesWidthDemo {}

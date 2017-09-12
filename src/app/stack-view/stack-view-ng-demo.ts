@@ -14,11 +14,12 @@ export class StackViewNgDemo {
         {title: "Label 1", content: "Content 1"}, {
             title: "Label 2",
             content: "Content 2",
-            children: [
-                {title: "Sub-label 1", content: "Sub-content 1"},
-                {title: "Sub-label 2", content: "Sub-content 2"},
-                {title: "Sub-label 3", content: "Sub-content 3"},
-            ]
+            children:
+                [
+                    {title: "Sub-label 1", content: "Sub-content 1"},
+                    {title: "Sub-label 2", content: "Sub-content 2"},
+                    {title: "Sub-label 3", content: "Sub-content 3"},
+                ]
         },
         {title: "Label 3", content: "Content 3"}
     ];

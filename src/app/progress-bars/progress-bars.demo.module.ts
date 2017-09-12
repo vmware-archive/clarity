@@ -35,5 +35,4 @@ import {ROUTING} from "./progress-bars.demo.routing";
         ProgressBarStaticCardsDemo, ProgressBarInlineDemo, ProgressBarInlineCardsDemo
     ]
 })
-export default class ProgressBarsDemoModule {
-}
+export default class ProgressBarsDemoModule {}

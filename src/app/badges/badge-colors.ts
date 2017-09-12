@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./badges.demo.css"],
     templateUrl: "./badge-colors.demo.html"
 })
-export class BadgeColorsDemo {
-}
+export class BadgeColorsDemo {}

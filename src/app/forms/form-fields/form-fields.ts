@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./form-fields.demo.css"],
     templateUrl: "./form-fields.demo.html"
 })
-export class FormFieldsDemo {
-}
+export class FormFieldsDemo {}

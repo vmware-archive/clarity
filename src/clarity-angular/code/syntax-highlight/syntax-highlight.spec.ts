@@ -17,8 +17,7 @@ import {ClrSyntaxHighlightModule} from "./syntax-highlight.module";
         </pre>
    `
 })
-class TestComponent {
-}
+class TestComponent {}
 
 describe("CodeHighlight", () => {
     let fixture: ComponentFixture<any>;

@@ -21,5 +21,4 @@ import {LandingComponent} from "./landing.component";
     declarations: [AppComponent, LandingComponent],
     bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}

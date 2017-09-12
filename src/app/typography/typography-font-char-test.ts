@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     templateUrl: "./typography-font-char-test.html"
 })
 
-export class TypographyFontCharTestDemo {
-}
+export class TypographyFontCharTestDemo {}

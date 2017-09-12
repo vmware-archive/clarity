@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./grid-column-pull.html",
     styleUrls: ["./grid.demo.scss"]
 })
-export class GridColumnPullDemo {
-}
+export class GridColumnPullDemo {}

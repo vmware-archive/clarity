@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./button-group-radios.html",
     styleUrls: ["../../button-group.demo.css"]
 })
-export class ButtonGroupRadiosDemo {
-}
+export class ButtonGroupRadiosDemo {}

@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     styleUrls: ["tables.demo.scss"],
     templateUrl: "./tables-vertical-noborder-compact.html"
 })
-export class TablesVerticalNoborderCompactDemo {
-}
+export class TablesVerticalNoborderCompactDemo {}

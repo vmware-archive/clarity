@@ -117,9 +117,9 @@ export class TreeViewDynamicTestDemo {
             "versions": [{"number": "2", "languages": [{"name": "GO"}]}]
         },
         {
-          "name": "Project C",
-          "badge": "C",
-          "versions": [{"number": "3", "languages": [{"name": "JS"}, {"name": "JAVA"}]}]
+            "name": "Project C",
+            "badge": "C",
+            "versions": [{"number": "3", "languages": [{"name": "JS"}, {"name": "JAVA"}]}]
         }
     ];
 }

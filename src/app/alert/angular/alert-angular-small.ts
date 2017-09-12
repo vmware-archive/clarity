@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["../alert.demo.css"],
     templateUrl: "./alert-angular-small.demo.html"
 })
-export class AlertAngularSmallDemo {
-}
+export class AlertAngularSmallDemo {}

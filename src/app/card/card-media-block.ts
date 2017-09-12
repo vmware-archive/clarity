@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./card.demo.css"],
     templateUrl: "./card-media-block.html"
 })
-export class CardMediaBlockDemo {
-}
+export class CardMediaBlockDemo {}

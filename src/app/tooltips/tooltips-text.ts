@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./tooltips.demo.css"],
     templateUrl: "./tooltips-text.html"
 })
-export class TooltipsTextDemo {
-}
+export class TooltipsTextDemo {}

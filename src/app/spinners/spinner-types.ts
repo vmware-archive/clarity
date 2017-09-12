@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./spinner-types.html",
     styleUrls: ["./spinner.demo.scss"]
 })
-export class SpinnerTypesDemo {
-}
+export class SpinnerTypesDemo {}

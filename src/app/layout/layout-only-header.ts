@@ -11,5 +11,4 @@ import {Component} from "@angular/core";
     templateUrl: "./layout-only-header.html",
     styleUrls: ["./layout.demo.css"]
 })
-export class LayoutOnlyHeaderDemo {
-}
+export class LayoutOnlyHeaderDemo {}

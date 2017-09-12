@@ -12,5 +12,4 @@ import {Component} from "@angular/core";
     styleUrls: ["./navs.demo.css"],
     templateUrl: "./navs.demo.html"
 })
-export class NavsDemo {
-}
+export class NavsDemo {}

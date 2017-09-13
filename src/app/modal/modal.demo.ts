@@ -24,6 +24,7 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./static-backdrop']">Keep Open When Clicking Backdrop</a></li>
             <li><a [routerLink]="['./not-closable']">Force User Action</a></li>
             <li><a [routerLink]="['./focus-trap']">Trap User Focus</a></li>
+            <li><a [routerLink]="['./modal-form']">Modal Form</a></li>
         </ul>
 
         <router-outlet></router-outlet>

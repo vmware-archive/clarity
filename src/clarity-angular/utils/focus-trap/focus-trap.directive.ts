@@ -3,11 +3,17 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {AfterViewInit, Directive, ElementRef, HostListener} from "@angular/core";
+import {DOCUMENT} from "@angular/common";
+import {AfterViewInit, Directive, ElementRef, HostListener, Injector, OnDestroy} from "@angular/core";
 
 @Directive({selector: "[clrFocusTrap]"})
-export class FocusTrapDirective implements AfterViewInit {
-    constructor(public elementRef: ElementRef) {}
+export class FocusTrapDirective implements AfterViewInit, OnDestroy {
+    private _previousActiveElement: HTMLElement;
+    private document: Document;
+
+    constructor(public elementRef: ElementRef, injector: Injector) {
+        this.document = injector.get(DOCUMENT);
+    }
 
     @HostListener("document:focusin", ["$event"])
     onFocusIn(event: any) {
@@ -19,7 +25,16 @@ export class FocusTrapDirective implements AfterViewInit {
     }
 
     ngAfterViewInit() {
+        this._previousActiveElement = <HTMLElement>document.activeElement;
         const nativeElement: HTMLElement = this.elementRef.nativeElement;
         nativeElement.setAttribute("tabindex", "0");
+    }
+
+    public setPreviousFocus(): void {
+        this._previousActiveElement.focus();
+    }
+
+    ngOnDestroy() {
+        this.setPreviousFocus();
     }
 }

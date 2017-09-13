@@ -4,8 +4,19 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {animate, AnimationEvent, state, style, transition, trigger} from "@angular/animations";
-import {Component, EventEmitter, HostListener, Input, OnChanges, OnDestroy, Output, SimpleChange} from "@angular/core";
+import {
+    Component,
+    EventEmitter,
+    HostListener,
+    Input,
+    OnChanges,
+    OnDestroy,
+    Output,
+    SimpleChange,
+    ViewChild
+} from "@angular/core";
 
+import {FocusTrapDirective} from "../utils/focus-trap/focus-trap.directive";
 import {ScrollingService} from "../utils/scrolling/scrolling-service";
 
 import {GHOST_PAGE_ANIMATION} from "./utils/ghost-page-animations";
@@ -65,6 +76,8 @@ import {GHOST_PAGE_ANIMATION} from "./utils/ghost-page-animations";
     ]
 })
 export class Modal implements OnChanges, OnDestroy {
+    @ViewChild(FocusTrapDirective) focusTrap: FocusTrapDirective;
+
     @Input("clrModalOpen") _open: boolean = false;
     @Output("clrModalOpenChange") _openChanged: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
@@ -114,6 +127,7 @@ export class Modal implements OnChanges, OnDestroy {
 
     @HostListener("body:keyup.escape")
     close(): void {
+        this.focusTrap.setPreviousFocus();  // Handles moving focus back to the element that had it before.
         if (this.stopClose) {
             this.altClose.emit(false);
             return;

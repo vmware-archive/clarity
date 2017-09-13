@@ -5,7 +5,6 @@ export const MINORS: { [major: string]: string[] } = {};
 export const PATCHES: { [minor: string]: string[] } = {};
 
 organize();
-sortAll();
 
 function organize() {
     for (let releaseNumber in RELEASES.all) {
@@ -23,31 +22,6 @@ function organize() {
         PATCHES[minor].push(releaseNumber);
     }
 }
-
-function sortAll() {
-    MAJORS.sort(compareReleases);
-    for (let major in MINORS) {
-        MINORS[major].sort(compareReleases);
-    }
-    for (let minor in PATCHES) {
-        PATCHES[minor].sort(compareReleases);
-    }
-}
-
-/*
-export function compareReleases(rA, rB) {
-    let splitA = rA.split(".").map(part => parseInt(part, 10));
-    let splitB = rB.split(".").map(part => parseInt(part, 10));
-    for (let i in splitA) {
-        if (splitA[i] < splitB[i]) {
-            return 1;
-        } else if (splitA[i] > splitB[i]) {
-            return -1;
-        }
-    }
-    return 0;
-}
-*/
 
 export function compareReleases(rA, rB) {
     let splitA = rA.split(".").map(part => parseInt(part, 10));

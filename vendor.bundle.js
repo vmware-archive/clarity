@@ -84,8 +84,8 @@ function View_Header_Host_0(_l) {
     });
 }
 var HeaderNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_15" /* ɵccf */]('clr-header', __WEBPACK_IMPORTED_MODULE_2_clarity_angular_layout_nav_header__["a" /* Header */], View_Header_Host_0, {}, {}, ['*']);
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL1VzZXJzL21oaXBwZWx5L1Byb2plY3RzL2NsYXJpdHkvd2Vic2l0ZS9ub2RlX21vZHVsZXMvY2xhcml0eS1hbmd1bGFyL2xheW91dC9uYXYvaGVhZGVyLm5nZmFjdG9yeS50cyIsInZlcnNpb24iOjMsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5nOi8vL1VzZXJzL21oaXBwZWx5L1Byb2plY3RzL2NsYXJpdHkvd2Vic2l0ZS9ub2RlX21vZHVsZXMvY2xhcml0eS1hbmd1bGFyL2xheW91dC9uYXYvaGVhZGVyLmQudHMiLCJuZzovLy9Vc2Vycy9taGlwcGVseS9Qcm9qZWN0cy9jbGFyaXR5L3dlYnNpdGUvbm9kZV9tb2R1bGVzL2NsYXJpdHktYW5ndWxhci9sYXlvdXQvbmF2L2hlYWRlci5kLnRzLkhlYWRlci5odG1sIiwibmc6Ly8vVXNlcnMvbWhpcHBlbHkvUHJvamVjdHMvY2xhcml0eS93ZWJzaXRlL25vZGVfbW9kdWxlcy9jbGFyaXR5LWFuZ3VsYXIvbGF5b3V0L25hdi9oZWFkZXIuZC50cy5IZWFkZXJfSG9zdC5odG1sIl0sInNvdXJjZXNDb250ZW50IjpbIiAiLCJcbiAgICAgICAgPGJ1dHRvblxuICAgICAgICAgICAgdHlwZT1cImJ1dHRvblwiXG4gICAgICAgICAgICAqbmdJZj1cImlzTmF2TGV2ZWwxT25QYWdlXCJcbiAgICAgICAgICAgIGNsYXNzPVwiaGVhZGVyLWhhbWJ1cmdlci10cmlnZ2VyXCJcbiAgICAgICAgICAgIChjbGljayk9XCJ0b2dnbGVOYXYocmVzcG9uc2l2ZU5hdkNvZGVzLk5BVl9MRVZFTF8xKVwiPlxuICAgICAgICAgICAgPHNwYW4+PC9zcGFuPlxuICAgICAgICA8L2J1dHRvbj5cbiAgICAgICAgPG5nLWNvbnRlbnQ+PC9uZy1jb250ZW50PlxuICAgICAgICA8YnV0dG9uXG4gICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcbiAgICAgICAgICAgICpuZ0lmPVwiaXNOYXZMZXZlbDJPblBhZ2VcIlxuICAgICAgICAgICAgY2xhc3M9XCJoZWFkZXItb3ZlcmZsb3ctdHJpZ2dlclwiXG4gICAgICAgICAgICAoY2xpY2spPVwidG9nZ2xlTmF2KHJlc3BvbnNpdmVOYXZDb2Rlcy5OQVZfTEVWRUxfMilcIj5cbiAgICAgICAgICAgIDxzcGFuPjwvc3Bhbj5cbiAgICAgICAgPC9idXR0b24+XG4gICAgICAgIDxkaXYgY2xhc3M9XCJoZWFkZXItYmFja2Ryb3BcIiAoY2xpY2spPVwiY2xvc2VPcGVuTmF2KClcIj48L2Rpdj5cbiAgICAiLCI8Y2xyLWhlYWRlcj48L2Nsci1oZWFkZXI+Il0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7Ozs7OztvQkNDUTtNQUFBO01BQUE7SUFBQTtJQUFBO0lBSUk7TUFBQTtNQUFBO0lBQUE7SUFKSjtFQUFBLGdDQUl3RDtNQUNwRDtVQUFBLDBEQUFhO1VBQUE7OztvQkFHakI7TUFBQTtNQUFBO0lBQUE7SUFBQTtJQUlJO01BQUE7TUFBQTtJQUFBO0lBSko7RUFBQSxnQ0FJd0Q7TUFDcEQ7VUFBQSwwREFBYTtVQUFBOzs7b0JBZHpCLCtDQUNRO01BQUEsbUVBQUE7TUFBQTtNQU1TLHNEQUNULGtCQUF5QjtpQkFBQSxnQ0FDekI7VUFBQSxxREFBQTtVQUFBO01BTVMsK0NBQ1Q7VUFBQTtjQUFBO1lBQUE7WUFBQTtZQUE2QjtjQUFBO2NBQUE7WUFBQTtZQUE3QjtVQUFBLGdDQUE0RDs7O1FBYnhEO1FBRkosV0FFSSxTQUZKO1FBVUk7UUFGSixXQUVJLFNBRko7Ozs7b0JDVFI7TUFBQTthQUFBO1VBQUE7SUFBQTs7SUFBQTtJQUFBLFdBQUEsU0FBQTs7OzsifQ==
-//# sourceMappingURL=/Users/mhippely/Projects/clarity/website/src/header.ngfactory.js.map
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL1ZvbHVtZXMvRGF0YS9jbGFyaXR5L2NsYXJpdHktcHVibGlzaC13ZWJzaXRlL25vZGVfbW9kdWxlcy9jbGFyaXR5LWFuZ3VsYXIvbGF5b3V0L25hdi9oZWFkZXIubmdmYWN0b3J5LnRzIiwidmVyc2lvbiI6Mywic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibmc6Ly8vVm9sdW1lcy9EYXRhL2NsYXJpdHkvY2xhcml0eS1wdWJsaXNoLXdlYnNpdGUvbm9kZV9tb2R1bGVzL2NsYXJpdHktYW5ndWxhci9sYXlvdXQvbmF2L2hlYWRlci5kLnRzIiwibmc6Ly8vVm9sdW1lcy9EYXRhL2NsYXJpdHkvY2xhcml0eS1wdWJsaXNoLXdlYnNpdGUvbm9kZV9tb2R1bGVzL2NsYXJpdHktYW5ndWxhci9sYXlvdXQvbmF2L2hlYWRlci5kLnRzLkhlYWRlci5odG1sIiwibmc6Ly8vVm9sdW1lcy9EYXRhL2NsYXJpdHkvY2xhcml0eS1wdWJsaXNoLXdlYnNpdGUvbm9kZV9tb2R1bGVzL2NsYXJpdHktYW5ndWxhci9sYXlvdXQvbmF2L2hlYWRlci5kLnRzLkhlYWRlcl9Ib3N0Lmh0bWwiXSwic291cmNlc0NvbnRlbnQiOlsiICIsIlxuICAgICAgICA8YnV0dG9uXG4gICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcbiAgICAgICAgICAgICpuZ0lmPVwiaXNOYXZMZXZlbDFPblBhZ2VcIlxuICAgICAgICAgICAgY2xhc3M9XCJoZWFkZXItaGFtYnVyZ2VyLXRyaWdnZXJcIlxuICAgICAgICAgICAgKGNsaWNrKT1cInRvZ2dsZU5hdihyZXNwb25zaXZlTmF2Q29kZXMuTkFWX0xFVkVMXzEpXCI+XG4gICAgICAgICAgICA8c3Bhbj48L3NwYW4+XG4gICAgICAgIDwvYnV0dG9uPlxuICAgICAgICA8bmctY29udGVudD48L25nLWNvbnRlbnQ+XG4gICAgICAgIDxidXR0b25cbiAgICAgICAgICAgIHR5cGU9XCJidXR0b25cIlxuICAgICAgICAgICAgKm5nSWY9XCJpc05hdkxldmVsMk9uUGFnZVwiXG4gICAgICAgICAgICBjbGFzcz1cImhlYWRlci1vdmVyZmxvdy10cmlnZ2VyXCJcbiAgICAgICAgICAgIChjbGljayk9XCJ0b2dnbGVOYXYocmVzcG9uc2l2ZU5hdkNvZGVzLk5BVl9MRVZFTF8yKVwiPlxuICAgICAgICAgICAgPHNwYW4+PC9zcGFuPlxuICAgICAgICA8L2J1dHRvbj5cbiAgICAgICAgPGRpdiBjbGFzcz1cImhlYWRlci1iYWNrZHJvcFwiIChjbGljayk9XCJjbG9zZU9wZW5OYXYoKVwiPjwvZGl2PlxuICAgICIsIjxjbHItaGVhZGVyPjwvY2xyLWhlYWRlcj4iXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7Ozs7Ozs7O29CQ0NRO01BQUE7TUFBQTtJQUFBO0lBQUE7SUFJSTtNQUFBO01BQUE7SUFBQTtJQUpKO0VBQUEsZ0NBSXdEO01BQ3BEO1VBQUEsMERBQWE7VUFBQTs7O29CQUdqQjtNQUFBO01BQUE7SUFBQTtJQUFBO0lBSUk7TUFBQTtNQUFBO0lBQUE7SUFKSjtFQUFBLGdDQUl3RDtNQUNwRDtVQUFBLDBEQUFhO1VBQUE7OztvQkFkekIsK0NBQ1E7TUFBQSxtRUFBQTtNQUFBO01BTVMsc0RBQ1Qsa0JBQXlCO2lCQUFBLGdDQUN6QjtVQUFBLHFEQUFBO1VBQUE7TUFNUywrQ0FDVDtVQUFBO2NBQUE7WUFBQTtZQUFBO1lBQTZCO2NBQUE7Y0FBQTtZQUFBO1lBQTdCO1VBQUEsZ0NBQTREOzs7UUFieEQ7UUFGSixXQUVJLFNBRko7UUFVSTtRQUZKLFdBRUksU0FGSjs7OztvQkNUUjtNQUFBO2FBQUE7VUFBQTtJQUFBOztJQUFBO0lBQUEsV0FBQSxTQUFBOzs7OyJ9
+//# sourceMappingURL=/Volumes/Data/clarity/clarity-publish-website/src/header.ngfactory.js.map
 
 /***/ }),
 
@@ -121,8 +121,8 @@ function View_TemplateRefContainer_Host_0(_l) {
     return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_44" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](0, null, null, 1, 'ng-component', [], null, null, null, View_TemplateRefContainer_0, RenderType_TemplateRefContainer)), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ɵdid */](49152, null, 0, __WEBPACK_IMPORTED_MODULE_1_clarity_angular_utils_template_ref_template_ref_container__["a" /* TemplateRefContainer */], [], null, null)], null, null);
 }
 var TemplateRefContainerNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_15" /* ɵccf */]('ng-component', __WEBPACK_IMPORTED_MODULE_1_clarity_angular_utils_template_ref_template_ref_container__["a" /* TemplateRefContainer */], View_TemplateRefContainer_Host_0, {}, {}, ['*']);
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL1VzZXJzL21oaXBwZWx5L1Byb2plY3RzL2NsYXJpdHkvd2Vic2l0ZS9ub2RlX21vZHVsZXMvY2xhcml0eS1hbmd1bGFyL3V0aWxzL3RlbXBsYXRlLXJlZi90ZW1wbGF0ZS1yZWYtY29udGFpbmVyLm5nZmFjdG9yeS50cyIsInZlcnNpb24iOjMsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5nOi8vL1VzZXJzL21oaXBwZWx5L1Byb2plY3RzL2NsYXJpdHkvd2Vic2l0ZS9ub2RlX21vZHVsZXMvY2xhcml0eS1hbmd1bGFyL3V0aWxzL3RlbXBsYXRlLXJlZi90ZW1wbGF0ZS1yZWYtY29udGFpbmVyLmQudHMiLCJuZzovLy9Vc2Vycy9taGlwcGVseS9Qcm9qZWN0cy9jbGFyaXR5L3dlYnNpdGUvbm9kZV9tb2R1bGVzL2NsYXJpdHktYW5ndWxhci91dGlscy90ZW1wbGF0ZS1yZWYvdGVtcGxhdGUtcmVmLWNvbnRhaW5lci5kLnRzLlRlbXBsYXRlUmVmQ29udGFpbmVyLmh0bWwiLCJuZzovLy9Vc2Vycy9taGlwcGVseS9Qcm9qZWN0cy9jbGFyaXR5L3dlYnNpdGUvbm9kZV9tb2R1bGVzL2NsYXJpdHktYW5ndWxhci91dGlscy90ZW1wbGF0ZS1yZWYvdGVtcGxhdGUtcmVmLWNvbnRhaW5lci5kLnRzLlRlbXBsYXRlUmVmQ29udGFpbmVyX0hvc3QuaHRtbCJdLCJzb3VyY2VzQ29udGVudCI6WyIgIiwiXG4gICAgICA8bmctdGVtcGxhdGU+XG4gICAgICAgIDxuZy1jb250ZW50PjwvbmctY29udGVudD5cbiAgICAgIDwvbmctdGVtcGxhdGU+XG4gICAgIiwiPG5nLWNvbXBvbmVudD48L25nLWNvbXBvbmVudD4iXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7Ozs7OztvQkNDbUIsc0RBQ1g7TUFBQSxHQUF5Qjs7O3NEQUZqQztNQUFBLGVBQ007TUFFYzs7O29CQ0hwQjtNQUFBO3FDQUFBLFVBQUE7TUFBQTs7OyJ9
-//# sourceMappingURL=/Users/mhippely/Projects/clarity/website/src/template-ref-container.ngfactory.js.map
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL1ZvbHVtZXMvRGF0YS9jbGFyaXR5L2NsYXJpdHktcHVibGlzaC13ZWJzaXRlL25vZGVfbW9kdWxlcy9jbGFyaXR5LWFuZ3VsYXIvdXRpbHMvdGVtcGxhdGUtcmVmL3RlbXBsYXRlLXJlZi1jb250YWluZXIubmdmYWN0b3J5LnRzIiwidmVyc2lvbiI6Mywic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibmc6Ly8vVm9sdW1lcy9EYXRhL2NsYXJpdHkvY2xhcml0eS1wdWJsaXNoLXdlYnNpdGUvbm9kZV9tb2R1bGVzL2NsYXJpdHktYW5ndWxhci91dGlscy90ZW1wbGF0ZS1yZWYvdGVtcGxhdGUtcmVmLWNvbnRhaW5lci5kLnRzIiwibmc6Ly8vVm9sdW1lcy9EYXRhL2NsYXJpdHkvY2xhcml0eS1wdWJsaXNoLXdlYnNpdGUvbm9kZV9tb2R1bGVzL2NsYXJpdHktYW5ndWxhci91dGlscy90ZW1wbGF0ZS1yZWYvdGVtcGxhdGUtcmVmLWNvbnRhaW5lci5kLnRzLlRlbXBsYXRlUmVmQ29udGFpbmVyLmh0bWwiLCJuZzovLy9Wb2x1bWVzL0RhdGEvY2xhcml0eS9jbGFyaXR5LXB1Ymxpc2gtd2Vic2l0ZS9ub2RlX21vZHVsZXMvY2xhcml0eS1hbmd1bGFyL3V0aWxzL3RlbXBsYXRlLXJlZi90ZW1wbGF0ZS1yZWYtY29udGFpbmVyLmQudHMuVGVtcGxhdGVSZWZDb250YWluZXJfSG9zdC5odG1sIl0sInNvdXJjZXNDb250ZW50IjpbIiAiLCJcbiAgICAgIDxuZy10ZW1wbGF0ZT5cbiAgICAgICAgPG5nLWNvbnRlbnQ+PC9uZy1jb250ZW50PlxuICAgICAgPC9uZy10ZW1wbGF0ZT5cbiAgICAiLCI8bmctY29tcG9uZW50PjwvbmctY29tcG9uZW50PiJdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7Ozs7Ozs7O29CQ0NtQixzREFDWDtNQUFBLEdBQXlCOzs7c0RBRmpDO01BQUEsZUFDTTtNQUVjOzs7b0JDSHBCO01BQUE7cUNBQUEsVUFBQTtNQUFBOzs7In0=
+//# sourceMappingURL=/Volumes/Data/clarity/clarity-publish-website/src/template-ref-container.ngfactory.js.map
 
 /***/ }),
 
@@ -3225,6 +3225,8 @@ var Datagrid = (function () {
         this.refresh = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* EventEmitter */](false);
         this.selectedChanged = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* EventEmitter */](false);
         this.singleSelectedChanged = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* EventEmitter */](false);
+        /* We aggregate the refreshes so it's only emitted once per cycle */
+        this._shouldRefresh = false;
         /**
          * Subscriptions to all the services and queries changes
          */
@@ -3318,6 +3320,9 @@ var Datagrid = (function () {
             if (value) {
                 this.selection.currentSingle = value;
             }
+            else {
+                this.selection.currentSingle = null;
+            }
         },
         enumerable: true,
         configurable: true
@@ -3360,6 +3365,12 @@ var Datagrid = (function () {
         // Get ColumnService ready for HideableColumns.
         this.columnService.updateColumnList(this.columns.map(function (col) { return col.hideable; }));
     };
+    Datagrid.prototype.ngAfterViewChecked = function () {
+        if (this._shouldRefresh) {
+            this._shouldRefresh = false;
+            this.triggerRefresh();
+        }
+    };
     /**
      * Our setup happens in the view of some of our components, so we wait for it to be done before starting
      */
@@ -3367,9 +3378,9 @@ var Datagrid = (function () {
         var _this = this;
         // TODO: determine if we can get rid of provider wiring in view init so that subscriptions can be done earlier
         this.triggerRefresh();
-        this._subscriptions.push(this.sort.change.subscribe(function () { return _this.triggerRefresh(); }));
-        this._subscriptions.push(this.filters.change.subscribe(function () { return _this.triggerRefresh(); }));
-        this._subscriptions.push(this.page.change.subscribe(function () { return _this.triggerRefresh(); }));
+        this._subscriptions.push(this.sort.change.subscribe(function () { return _this._shouldRefresh = true; }));
+        this._subscriptions.push(this.filters.change.subscribe(function () { return _this._shouldRefresh = true; }));
+        this._subscriptions.push(this.page.change.subscribe(function () { return _this._shouldRefresh = true; }));
         this._subscriptions.push(this.selection.change.subscribe(function (s) {
             if (_this.selection.selectionType === __WEBPACK_IMPORTED_MODULE_14__providers_selection__["b" /* SelectionType */].Single) {
                 _this.singleSelectedChanged.emit(s);
@@ -3760,6 +3771,7 @@ DragDispatcher.ctorParameters = function () { return [
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__page__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/page.js");
 /*
  * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
@@ -3767,8 +3779,10 @@ DragDispatcher.ctorParameters = function () { return [
  */
 
 
+
 var FiltersProvider = (function () {
-    function FiltersProvider() {
+    function FiltersProvider(_page) {
+        this._page = _page;
         /**
          * This subject is the list of filters that changed last, not the whole list.
          * We emit a list rather than just one filter to allow batch changes to several at once.
@@ -3820,7 +3834,7 @@ var FiltersProvider = (function () {
     FiltersProvider.prototype.add = function (filter) {
         var _this = this;
         var index = this._all.length;
-        var subscription = filter.changes.subscribe(function () { return _this._change.next([filter]); });
+        var subscription = filter.changes.subscribe(function () { return _this.resetPageAndEmitFilterChange([filter]); });
         var hasUnregistered = false;
         var registered = new RegisteredFilter(filter, function () {
             if (hasUnregistered) {
@@ -3829,13 +3843,13 @@ var FiltersProvider = (function () {
             subscription.unsubscribe();
             _this._all.splice(index, 1);
             if (filter.isActive()) {
-                _this._change.next([]);
+                _this.resetPageAndEmitFilterChange([]);
             }
             hasUnregistered = true;
         });
         this._all.push(registered);
         if (filter.isActive()) {
-            this._change.next([filter]);
+            this.resetPageAndEmitFilterChange([filter]);
         }
         return registered;
     };
@@ -3851,6 +3865,12 @@ var FiltersProvider = (function () {
         }
         return true;
     };
+    FiltersProvider.prototype.resetPageAndEmitFilterChange = function (filters) {
+        // filtering may change the page number such that current page number doesn't exist in the filtered dataset.
+        // So here we always set the current page to 1 so that it'll fetch first page's data with the given filter.
+        this._page.current = 1;
+        this._change.next(filters);
+    };
     return FiltersProvider;
 }());
 
@@ -3858,7 +3878,9 @@ FiltersProvider.decorators = [
     { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* Injectable */] },
 ];
 /** @nocollapse */
-FiltersProvider.ctorParameters = function () { return []; };
+FiltersProvider.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_2__page__["a" /* Page */], },
+]; };
 var RegisteredFilter = (function () {
     function RegisteredFilter(filter, unregister) {
         this.filter = filter;
@@ -10468,16 +10490,31 @@ var SIGNPOST_POSITIONS = {
  *
  */
 var SignpostTriggerDirective = (function () {
-    function SignpostTriggerDirective(ifOpenService) {
+    function SignpostTriggerDirective(ifOpenService, renderer, el) {
+        var _this = this;
         this.ifOpenService = ifOpenService;
+        this.renderer = renderer;
+        this.el = el;
+        this.subscriptions = [];
+        this.subscriptions.push(this.ifOpenService.openChange.subscribe(function (isOpen) {
+            if (isOpen) {
+                _this.renderer.addClass(_this.el.nativeElement, "active");
+            }
+            else {
+                _this.renderer.removeClass(_this.el.nativeElement, "active");
+            }
+        }));
     }
+    SignpostTriggerDirective.prototype.ngOnDestroy = function () {
+        this.subscriptions.forEach(function (sub) { return sub.unsubscribe(); });
+    };
     /**********
      * @function onSignpostTriggerClick
      *
      * @description
      * click handler for the Signpost trigger button used to hide/show SignpostContent.
      */
-    SignpostTriggerDirective.prototype.onSignpostTriggerClick = function () {
+    SignpostTriggerDirective.prototype.onSignpostTriggerClick = function (event) {
         this.ifOpenService.toggleWithEvent(event);
     };
     return SignpostTriggerDirective;
@@ -10489,6 +10526,8 @@ SignpostTriggerDirective.decorators = [
 /** @nocollapse */
 SignpostTriggerDirective.ctorParameters = function () { return [
     { type: __WEBPACK_IMPORTED_MODULE_1__utils_conditional_if_open_service__["a" /* IfOpenService */], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Renderer2 */], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["p" /* ElementRef */], },
 ]; };
 SignpostTriggerDirective.propDecorators = {
     'onSignpostTriggerClick': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* HostListener */], args: ["click", ["$event"],] },],

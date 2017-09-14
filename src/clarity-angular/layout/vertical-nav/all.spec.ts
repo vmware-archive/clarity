@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import VerticalNavGroupServiceSpecs from "./providers/vertical-nav-group.service.spec";
+import VerticalNavGroupRegistrationServiceSpecs from "./providers/vertical-nav-group-registration.service.spec";
 import VerticalNavIconServiceSpecs from "./providers/vertical-nav-icon.service.spec";
 import VerticalNavServiceSpecs from "./providers/vertical-nav.service.spec";
 import VerticalNavGroupSpecs from "./vertical-nav-group.spec";
@@ -16,7 +16,7 @@ describe("Vertical Nav", function() {
     describe("Providers", function() {
         VerticalNavServiceSpecs();
         VerticalNavIconServiceSpecs();
-        VerticalNavGroupServiceSpecs();
+        VerticalNavGroupRegistrationServiceSpecs();
     });
 
     describe("Directives", function() {

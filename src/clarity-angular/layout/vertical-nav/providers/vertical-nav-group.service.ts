@@ -5,20 +5,18 @@
  */
 
 import {Injectable} from "@angular/core";
-import {VerticalNavGroup} from "../vertical-nav-group";
+import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class VerticalNavGroupService {
-    public navGroups: VerticalNavGroup[] = [];
+    private _expandChange: Subject<boolean> = new Subject<boolean>();
 
-    registerNavGroup(navGroup: VerticalNavGroup) {
-        this.navGroups.push(navGroup);
+    get expandChange(): Observable<boolean> {
+        return this._expandChange.asObservable();
     }
 
-    unregisterNavGroup(navGroup: VerticalNavGroup): void {
-        const index = this.navGroups.indexOf(navGroup);
-        if (index > -1) {
-            this.navGroups.splice(index, 1);
-        }
+    expand(): void {
+        this._expandChange.next(true);
     }
 }

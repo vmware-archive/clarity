@@ -3,7 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import {Component, HostListener, Optional} from "@angular/core";
+import {VerticalNavGroupService} from "./providers/vertical-nav-group.service";
 
 @Component({
     selector: "[clrVerticalNavLink]",
@@ -15,4 +16,13 @@ import {Component} from "@angular/core";
     `,
     host: {"class": "nav-link"}
 })
-export class VerticalNavLink {}
+export class VerticalNavLink {
+    constructor(@Optional() private _navGroupService: VerticalNavGroupService) {}
+
+    @HostListener("click")
+    private expandParentNavGroup(): void {
+        if (this._navGroupService) {
+            this._navGroupService.expand();
+        }
+    }
+}

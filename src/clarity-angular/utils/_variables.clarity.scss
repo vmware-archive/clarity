@@ -463,6 +463,7 @@ $clr-selection-color: #D9E4EA !default;
 
 // 9. Misc
 $clr-default-borderradius: $clr_baselineRem_0_125 !default;
+$clr-default-borderwidth: 1px !default;
 
 //10. Buttons
 $clr-button-vertical-margin: $clr_baselineRem_0_25 !default;
@@ -475,6 +476,9 @@ $clr-alert-icon-dimension-sm: rem(18/$clr-rem-denominator) !default;
 //12. Dropdowns Caret Icon
 $clr-dropdown-caret-icon-dimension: 10px;
 $clr-dropdown-caret-left-margin: 2px;
+
+//13. Outline Offset
+$clr-outline-offset: -5px;
 
 //BS4 overrides
 $enable-flex: true;

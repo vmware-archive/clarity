@@ -11,9 +11,10 @@ $vertical-nav-top-padding: $clr_baselineRem_1;
 $vertical-nav-trigger-collapsed-margin: ($vertical-nav-min-width - $vertical-nav-item-height) / 4;
 
 //Icons
-$vertical-nav-icon-size: 16px;
+$vertical-nav-icon-size: $clr-icon-dimension-sm;
 $vertical-nav-icon-right-margin: $clr_baselineRem_0_25;
 $vertical-nav-collapsed-caret-size: 10px;
+$vertical-nav-icon-active-color: $clr-action-blue;
 
 //Links
 $vertical-nav-link-padding-right: $clr_baselineRem_0_5;
@@ -22,12 +23,19 @@ $vertical-nav-link-padding-left: $clr_baselineRem_1;
 //Divider
 $vertical-nav-divider-margin: $clr_baselineRem_0_5;
 
+//Align
+$vertical-nav-trigger-icon-align-margin: ($vertical-nav-item-height - $vertical-nav-icon-size) / 2;
+
 @mixin vertical-nav-link-colors($color: $vertical-nav-hover-bg-color) {
     color: $vertical-nav-item-color;
 
     &:hover,
     &.active {
         background-color: $color;
+
+        .nav-icon {
+            fill: $vertical-nav-icon-active-color;
+        }
     }
 
     &:hover {
@@ -53,17 +61,11 @@ $vertical-nav-divider-margin: $clr_baselineRem_0_5;
 
         .nav-divider {
             //Dims
-            border: 1px solid $gray-darker;
+            border: $clr-default-borderwidth solid $gray-darker;
             margin: $vertical-nav-divider-margin 0;
 
             //Others
             opacity: 0.2;
-        }
-
-        .nav-trigger + .nav-content {
-            //Dims
-            border-top: 1px solid rgba($gray-darker, 0.2);
-            padding-top: $clr_baselineRem_0_5;
         }
 
         .nav-content {
@@ -77,45 +79,6 @@ $vertical-nav-divider-margin: $clr_baselineRem_0_5;
             overflow-x: hidden;
         }
 
-        .nav-trigger,
-        .nav-group-trigger {
-            //Display
-            flex: 0 0 $vertical-nav-item-height;
-
-            //Dims
-            border: none;
-            height: $vertical-nav-item-height;
-            padding: 0;
-
-            //Others
-            background-color: transparent;
-            cursor: pointer;
-            outline-offset: -5px;
-        }
-
-        .nav-trigger {
-            //Display
-            display: flex;
-            flex: 0 0 $vertical-nav-item-height;
-            align-items: center;
-            //Flex-start because of IE11 + margin-left: auto
-            justify-content: flex-start;
-
-            //Dims
-            margin-top: -1 * $vertical-nav-top-padding;
-            height: $vertical-nav-item-height;
-        }
-
-        //Parent .nav-trigger
-        .nav-trigger-icon {
-            //Dims
-            margin-left: auto;
-            margin-right: ($vertical-nav-item-height - $clr-icon-dimension-sm) / 2;
-
-            //Others
-            transition: all 0.2s ease-in-out;
-        }
-
         .nav-group {
             //Display
             display: block;
@@ -124,20 +87,6 @@ $vertical-nav-divider-margin: $clr_baselineRem_0_5;
             //Dims
             height: auto;
             min-height: $vertical-nav-item-height;
-        }
-
-        //Parent .nav-group-content
-        .nav-group-trigger {
-            //Display
-            flex: 0 0 $vertical-nav-item-height;
-
-            //Others
-            color: inherit;
-
-            clr-icon {
-                //Others
-                transition: all 0.2s ease-in-out;
-            }
         }
 
         .nav-group-content {
@@ -157,6 +106,7 @@ $vertical-nav-divider-margin: $clr_baselineRem_0_5;
             }
 
             .nav-icon {
+                //Dims
                 margin-left: $vertical-nav-link-padding-left;
             }
 
@@ -171,8 +121,80 @@ $vertical-nav-divider-margin: $clr_baselineRem_0_5;
             }
 
             .nav-link + .nav-group-text {
+                //Display
                 display: none;
             }
+        }
+
+        .nav-trigger,
+        .nav-group-trigger {
+            //Display
+            flex: 0 0 $vertical-nav-item-height;
+
+            //Dims
+            border: none;
+            height: $vertical-nav-item-height;
+            padding: 0;
+
+            //Others
+            background-color: transparent;
+            cursor: pointer;
+            outline-offset: $clr-outline-offset;
+        }
+
+        .nav-trigger {
+            //Display
+            display: flex;
+            align-items: center;
+            //Flex-start because of IE11 + margin-left: auto
+            justify-content: flex-start;
+
+            //Dims
+            height: $vertical-nav-item-height;
+            margin-top: -1 * $vertical-nav-top-padding;
+        }
+
+        //Parent .nav-group-content
+        .nav-group-trigger {
+            //Display
+            //flex: 0 0 $vertical-nav-item-height;
+            display: flex;
+            flex: 1 1 auto;
+
+            //Others
+            color: inherit;
+            overflow: hidden;
+            text-align: left;
+
+            .nav-group-trigger-icon {
+                //Display
+                flex-shrink: 0;
+
+                //Dims
+                height: $vertical-nav-item-height;
+                width: $vertical-nav-icon-size;
+                margin-left: $vertical-nav-trigger-icon-align-margin;
+                margin-right: $vertical-nav-trigger-icon-align-margin;
+
+                //Others
+                transition: all 0.2s ease-in-out;
+            }
+        }
+
+        //Parent .nav-trigger
+        .nav-trigger-icon {
+            //Dims
+            margin-left: auto;
+            margin-right: ($vertical-nav-item-height - $vertical-nav-icon-size) / 2;
+
+            //Others
+            transition: all 0.2s ease-in-out;
+        }
+
+        .nav-trigger + .nav-content {
+            //Dims
+            border-top: $clr-default-borderwidth solid rgba($gray-darker, 0.2);
+            padding-top: $clr_baselineRem_0_5;
         }
 
         .nav-group-text,
@@ -183,7 +205,17 @@ $vertical-nav-divider-margin: $clr_baselineRem_0_5;
 
             //Others
             line-height: $vertical-nav-item-height;
-            outline-offset: -5px;
+            outline-offset: $clr-outline-offset;
+        }
+
+        .nav-group-text,
+        //Parent .nav-link
+        .nav-text {
+            //Display
+            flex: 1 1 auto;
+
+            //Mixins
+            @include overflow-ellipsis();
         }
 
         .nav-link {
@@ -192,20 +224,6 @@ $vertical-nav-divider-margin: $clr_baselineRem_0_5;
 
             //Others
             @include vertical-nav-link-colors();
-
-            &:hover .nav-icon {
-                fill: $clr-action-blue;
-            }
-        }
-
-        & > .nav-link,
-        .nav-content > .nav-link {
-            //Display
-            flex: 0 0 $vertical-nav-item-height;
-        }
-
-        .nav-icon + .nav-group-text {
-            padding-left: 0;
         }
 
         .nav-header {
@@ -215,16 +233,6 @@ $vertical-nav-divider-margin: $clr_baselineRem_0_5;
             //Others
             @include clr-getTypePropertiesForDomElement(vertical_nav_header, (font-size, font-weight, letter-spacing));
             line-height: $vertical-nav-item-height;
-        }
-
-        .nav-group-text,
-            //Parent .nav-link
-        .nav-text {
-            //Display
-            flex: 1 1 auto;
-
-            //Mixins
-            @include overflow-ellipsis();
         }
 
         //Parent .nav-text
@@ -258,10 +266,35 @@ $vertical-nav-divider-margin: $clr_baselineRem_0_5;
             background: transparent;
             border: none;
             cursor: pointer;
-            outline-offset: -5px;
+            outline-offset: $clr-outline-offset;
         }
 
-        //Interactions
+        & > .nav-link,
+        .nav-content > .nav-link {
+            //Display
+            flex: 0 0 $vertical-nav-item-height;
+        }
+
+        .nav-link + .nav-group-trigger {
+            //Display
+            flex: 0 0 $vertical-nav-item-height;
+
+            .nav-group-text {
+                display: none;
+            }
+        }
+
+        .nav-icon + .nav-group-text {
+            padding-left: 0;
+        }
+
+        ///////
+        //////
+        ////
+        // Interactions
+        ////
+        //////
+        ///////
         &.has-nav-groups {
             .nav-link,
             .nav-group .nav-group-text,
@@ -283,6 +316,11 @@ $vertical-nav-divider-margin: $clr_baselineRem_0_5;
         .nav-group.active:not(.is-expanded) {
             .nav-group-content {
                 background-color: $vertical-nav-hover-bg-color;
+
+                //Horrible Nesting but nothing I can do.
+                .nav-icon {
+                    fill: $vertical-nav-icon-active-color;
+                }
             }
         }
 
@@ -310,17 +348,19 @@ $vertical-nav-divider-margin: $clr_baselineRem_0_5;
                 margin: 0 0 0 ($vertical-nav-min-width - $vertical-nav-icon-size) / 2;
             }
 
-            .nav-group-trigger {
-                //Display
-                flex: 0 0 $vertical-nav-collapsed-caret-size + $vertical-nav-icon-right-margin;
+            .nav-group-content {
+                .nav-link {
+                    //Display
+                    flex: 0 0 $vertical-nav-min-width;
+                }
 
-                //Dims
-                padding-left: 0;
+                .nav-link ~ .nav-group-trigger {
+                    //Display
+                    flex: 0 0 $vertical-nav-collapsed-caret-size + $vertical-nav-icon-right-margin;
 
-                clr-icon {
-                    //Dims
-                    height: $vertical-nav-collapsed-caret-size;
-                    width: $vertical-nav-collapsed-caret-size;
+                    //Others
+                    transform: translateX(-1 * $vertical-nav-icon-size);
+                    pointer-events: none;
                 }
             }
 
@@ -330,21 +370,23 @@ $vertical-nav-divider-margin: $clr_baselineRem_0_5;
                 padding: 0;
             }
 
-            .nav-group-content {
-                .nav-link {
-                    //Display
-                    flex: 0 0 $vertical-nav-min-width;
-                }
+            .nav-group-trigger {
+                //Display
+                //flex: 0 0 $vertical-nav-collapsed-caret-size + $vertical-nav-icon-right-margin;
 
-                .nav-link ~ .nav-group-trigger {
+                //Dims
+                padding-left: 0;
 
-                    //Others
-                    transform: translateX(-1 * $vertical-nav-icon-size);
-                    pointer-events: none;
+                .nav-group-trigger-icon {
+                    //Dims
+                    height: $vertical-nav-item-height;
+                    width: $vertical-nav-collapsed-caret-size;
+                    margin-left: $clr-baselineRem_0_125;
+                    margin-right: 0;
                 }
             }
 
-            //If no icon present the hide the nav-group and nav-links.
+            //If no icon present then hide the nav-group and nav-links.
             .nav-group,
             .nav-link {
                 display: none;

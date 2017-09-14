@@ -37,6 +37,10 @@
                             <input type="radio" name="vertNavRadios" id="rad2" [(ngModel)]="option" value="text">
                             <label for="rad2">Nav Group Text</label>
                         </div>
+                        <div class="radio btn">
+                            <input type="radio" name="vertNavRadios" id="rad3" [(ngModel)]="option" value="lazyText">
+                            <label for="rad3">Nav Group Text + Lazy Loading</label>
+                        </div>
                     </div>
                 </div>
                 <div class="controls">
@@ -51,6 +55,15 @@
                             Lazy Loading + Nav Group parent text (instead of parent links)
                             will not highlight when a child route is active and the nav group is collapsed.
                             If you don't have a nav group parent link we recommend that you do not use lazy loading.
+                        </span>
+                    </div>
+                </clr-alert>
+
+                <clr-alert [clrAlertType]="'alert-info'" [clrAlertClosable]="false" *ngIf="option === 'lazyText'">
+                    <div class="alert-item">
+                        <span class="alert-text">
+                            Lazy Loading can work with Nav Group Text but we have to provide a hidden/empty link
+                            which is used to detect the parent route and mark the nav group as active when collapsed.
                         </span>
                     </div>
                 </clr-alert>
@@ -168,6 +181,79 @@
                     </clr-vertical-nav-group>
 
                     <clr-vertical-nav-group routerLinkActive="active" routerLinkActive="active">
+                        <clr-icon [attr.shape]="'home'" clrVerticalNavIcon></clr-icon>
+                        The Killers
+                        <ng-template clrIfExpanded>
+                            <clr-vertical-nav-group-children>
+                                <a routerLinkActive="active"
+                                   [routerLink]="['./killers/hot-fuss']"
+                                   clrVerticalNavLink>
+                                    Hot Fuss
+                                </a>
+                                <a routerLinkActive="active"
+                                   clrVerticalNavLink
+                                   [routerLink]="['./killers/day-and-age']">
+                                    Day & Age
+                                </a>
+                                <a routerLinkActive="active"
+                                   clrVerticalNavLink
+                                   [routerLink]="['./killers/sams-town']">
+                                    Sam's Town
+                                </a>
+                            </clr-vertical-nav-group-children>
+                        </ng-template>
+                    </clr-vertical-nav-group>
+
+                    <a routerLinkActive="active"
+                       clrVerticalNavLink
+                       [routerLink]="['./wikipedia']">
+                        <clr-icon shape="certificate" clrVerticalNavIcon></clr-icon>
+                        Wikipedia
+                    </a>
+
+                </clr-vertical-nav>
+            </ng-container>
+
+
+            <ng-container *ngIf="option === 'lazyText'">
+                <clr-vertical-nav
+                    [clrVerticalNavCollapsible]="true"
+                    [clrVerticalNavCollapsed]="navCollapsed"
+                    (clrVerticalNavCollapsedChange)="updateNavCollapsed($event)">
+
+                    <clr-vertical-nav-group routerLinkActive="active">
+                        <a hidden aria-hidden="true"
+                            [routerLink]="['./beatles']">
+                        </a>
+                        <clr-icon [attr.shape]="'home'" clrVerticalNavIcon></clr-icon>
+                        The Beatles
+                        <ng-template
+                            [clrIfExpanded]="groupExpand"
+                            (clrIfExpandedChange)="updateGroupExpand($event)">
+                            <clr-vertical-nav-group-children>
+                                <a routerLinkActive="active"
+                                   clrVerticalNavLink
+                                   [routerLink]="['./beatles/abbey-road']">
+                                    Abbey Road
+                                </a>
+                                <a routerLinkActive="active"
+                                   clrVerticalNavLink
+                                   [routerLink]="['./beatles/revolver']">
+                                    Revolver
+                                </a>
+                                <a routerLinkActive="active"
+                                   clrVerticalNavLink
+                                   [routerLink]="['./beatles/rubber-soul']">
+                                    Rubber Soul
+                                </a>
+                            </clr-vertical-nav-group-children>
+                        </ng-template>
+                    </clr-vertical-nav-group>
+
+                    <clr-vertical-nav-group routerLinkActive="active" routerLinkActive="active">
+                        <a hidden aria-hidden="true"
+                            [routerLink]="['./killers']">
+                        </a>
                         <clr-icon [attr.shape]="'home'" clrVerticalNavIcon></clr-icon>
                         The Killers
                         <ng-template clrIfExpanded>

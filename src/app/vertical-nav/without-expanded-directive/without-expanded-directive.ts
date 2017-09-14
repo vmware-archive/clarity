@@ -15,7 +15,7 @@ import {VerticalNavCases} from "../vertical-nav-cases";
 export class WithoutExpandedDirectiveDemo {
     case: any;
 
-    option: string = "link";
+    option: string = "text";
 
     groupExpand: boolean = true;
 

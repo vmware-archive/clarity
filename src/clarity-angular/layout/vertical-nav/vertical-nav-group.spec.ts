@@ -13,7 +13,7 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {ClrIconModule} from "../../icon/icon.module";
 import {Expand} from "../../utils/expand/providers/expand";
 
-import {VerticalNavGroupService} from "./providers/vertical-nav-group.service";
+import {VerticalNavGroupRegistrationService} from "./providers/vertical-nav-group-registration.service";
 import {VerticalNavService} from "./providers/vertical-nav.service";
 import {VerticalNavGroup} from "./vertical-nav-group";
 import {ClrVerticalNavModule} from "./vertical-nav.module";
@@ -27,7 +27,7 @@ export default function(): void {
             TestBed.configureTestingModule({
                 imports: [ClrVerticalNavModule, ClrIconModule, NoopAnimationsModule],
                 declarations: [GroupInternalsTestComponent, IfExpandedTestComponent, TemplateAPITestComponent],
-                providers: [VerticalNavService, VerticalNavGroupService]
+                providers: [VerticalNavService, VerticalNavGroupRegistrationService]
             });
         });
 

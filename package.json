@@ -1,6 +1,6 @@
 {
   "name": "clarity",
-  "version": "0.10.3",
+  "version": "0.10.5",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
@@ -28,9 +28,9 @@
     "@types/node": "^6.0.51",
     "@webcomponents/custom-elements": "1.0.0",
     "bootstrap": "^4.0.0-alpha.5",
-    "clarity-angular": "0.10.4",
-    "clarity-icons": "0.10.4",
-    "clarity-ui": "0.10.4",
+    "clarity-angular": "0.10.5",
+    "clarity-icons": "0.10.5",
+    "clarity-ui": "0.10.5",
     "core-js": "^2.4.1",
     "jump.js": "^1.0.2",
     "mdn-polyfills": "^2.2.0",

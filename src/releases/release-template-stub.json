@@ -1,4 +1,5 @@
 {
+    "0.10.5": "src/releases/0.10/0.10.5.html",
     "0.10.4": "src/releases/0.10/0.10.4.html",
     "0.10.3": "src/releases/0.10/0.10.3.html",
     "0.10.2": "src/releases/0.10/0.10.2.html",
@@ -13,6 +14,7 @@
     "0.10.0-alpha.2": "src/releases/0.10/0.10.0-alpha.2.html",
     "0.10.0-alpha": "src/releases/0.10/0.10.0-alpha.html",
 
+    "0.9.20": "src/releases/0.9/0.9.20.html",
     "0.9.19": "src/releases/0.9/0.9.19.html",
     "0.9.18": "src/releases/0.9/0.9.18.html",
     "0.9.17": "src/releases/0.9/0.9.17.html",

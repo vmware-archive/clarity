@@ -1,0 +1,62 @@
+/*!
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+// Color usage (Needs to be declared before usage in the OG Clarity theme
+// Grays
+$gray-lightest: clr-getColor(lightest);
+$gray-lighter: clr-getColor(lighter);
+$gray-light: clr-getColor(light);
+$gray-light-midtone: clr-getColor(light-midtone);
+$gray-dark-midtone: clr-getColor(dark-midtone);
+$gray-dark: clr-getColor(dark);
+$gray-darker: clr-getColor(darker);
+$gray-darkest: clr-getColor(darkest);
+// Blues
+$action-blues-lightest: clr-getColor(lightest,action-blues);
+$action-blues-lighter: clr-getColor(lighter,action-blues);
+$action-blues-light: clr-getColor(light,action-blues);
+$action-blues-light-midtone: clr-getColor(light-midtone,action-blues);
+$action-blues-dark-midtone: clr-getColor(dark-midtone,action-blues);
+$action-blues-dark: clr-getColor(dark,action-blues);
+$action-blues-darker: clr-getColor(darker,action-blues);
+$action-blues-darkest: clr-getColor(darkest,action-blues);
+// Reds
+$reds-lightest: clr-getColor(lightest,reds);
+$reds-lighter: clr-getColor(lighter,reds);
+$reds-light: clr-getColor(light,reds);
+$reds-light-midtone: clr-getColor(light-midtone,reds);
+$reds-dark-midtone: clr-getColor(dark-midtone,reds);
+$reds-dark: clr-getColor(dark,reds);
+$reds-darker: clr-getColor(darker,reds);
+$reds-darkest: clr-getColor(darkest,reds);
+// Greens
+$greens-lightest: clr-getColor(lightest,greens);
+$greens-lighter: clr-getColor(lighter,greens);
+$greens-light: clr-getColor(light,greens);
+$greens-light-midtone: clr-getColor(light-midtone,greens);
+$greens-dark-midtone: clr-getColor(dark-midtone,greens);
+$greens-dark: clr-getColor(dark,greens);
+$greens-darker: clr-getColor(darker,greens);
+$greens-darkest: clr-getColor(darkest,greens);
+// Purples
+$action-purples-lightest: clr-getColor(lightest,action-purples);
+$action-purples-lighter: clr-getColor(lighter,action-purples);
+$action-purples-light: clr-getColor(light,action-purples);
+$action-purples-light-midtone: clr-getColor(light-midtone,action-purples);
+$action-purples-dark-midtone: clr-getColor(dark-midtone,action-purples);
+$action-purples-dark: clr-getColor(dark,action-purples);
+$action-purples-darker: clr-getColor(darker,action-purples);
+$action-purples-darkest: clr-getColor(darkest,action-purples);
+// Yellows
+$yellows-lightest: clr-getColor(lightest,yellows);
+$yellows-lighter: clr-getColor(lighter,yellows);
+$yellows-light: clr-getColor(light,yellows);
+$yellows-light-midtone: clr-getColor(light-midtone,yellows);
+$yellows-dark-midtone: clr-getColor(dark-midtone,yellows);
+$yellows-dark: clr-getColor(dark,yellows);
+$yellows-darker: clr-getColor(darker,yellows);
+$yellows-darkest: clr-getColor(darkest,yellows);
+// End colors

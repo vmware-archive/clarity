@@ -2,19 +2,12 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-$card-action-blue: clr-getColor(light-midtone,action-blues) !default;
-$card-light: $gray-light !default;
-$card-text-fontsize: clr-getTypePropertyValueForDomElement(card_text, font-size) !default;
-$card-children-padding-vertical: 0.5rem !default;
-$card-children-padding-horizontal: 0.75rem !default;
-$card-children-space-between: 0.5rem !default;
-
 @include exports('card.clarity') {
 
     %card-border-appearance {
-        box-shadow: 0 0.125rem 0 0 rgba(215, 215, 215, 1); //Hardcoded color not in color palette
-        border-radius: $clr-default-borderradius;
-        border: $clr-default-borderwidth solid rgba(215, 215, 215, 1);
+        box-shadow: $clr-card-box-shadow; //Hardcoded color not in color palette
+        border-radius: $clr-global-borderradius;
+        border: $clr-card-border;
     }
 
     %clickable-card-transition {
@@ -47,7 +40,7 @@ $card-children-space-between: 0.5rem !default;
     .card {
         position: relative;
         display: block;
-        background-color: $clr-white;
+        background-color: $clr-card-bg-color;
         width: 100%;
         margin-top: 1rem;
         @extend %card-border-appearance;
@@ -62,7 +55,7 @@ $card-children-space-between: 0.5rem !default;
         }
 
         //Clickable Cards
-        &.clickable{
+        &.clickable {
             color: inherit;
 
             &:hover {
@@ -127,11 +120,11 @@ $card-children-space-between: 0.5rem !default;
     //Images
     .card-img {
         &:first-child > img {
-            border-radius: $clr-default-borderradius $clr-default-borderradius 0 0;
+            border-radius: $clr-global-borderradius $clr-global-borderradius 0 0;
         }
 
         &:last-child > img {
-            border-radius: 0 0 $clr-default-borderradius $clr-default-borderradius;
+            border-radius: 0 0 $clr-global-borderradius $clr-global-borderradius;
         }
 
         & > img {
@@ -143,9 +136,9 @@ $card-children-space-between: 0.5rem !default;
     .card.card-img,
     .card > .card-img:first-child:last-child {
         & > img {
-            border-radius: $clr-default-borderradius;
+            border-radius: $clr-global-borderradius;
             @extend %card-image-appearance;
-        }
+           }
     }
 
     .card-block,
@@ -166,7 +159,7 @@ $card-children-space-between: 0.5rem !default;
 
     .card-header,
     .card-block {
-        border-bottom: $clr-default-borderwidth solid $card-light;
+        border-bottom: $clr-default-borderwidth solid $clr-card-border-color;
 
         &:last-child {
             border-bottom: none;
@@ -177,7 +170,7 @@ $card-children-space-between: 0.5rem !default;
     //Card dividers should only be used inside of a .card-block
     .card-divider {
         display: block;
-        border-bottom: $clr-default-borderwidth solid $card-light;
+        border-bottom: $clr-default-borderwidth solid $clr-card-divider-color;
     }
 
     .card-block {
@@ -289,4 +282,4 @@ $card-children-space-between: 0.5rem !default;
             }
         }
     }
-}
+    }

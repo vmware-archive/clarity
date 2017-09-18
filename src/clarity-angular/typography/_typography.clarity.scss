@@ -203,7 +203,7 @@
 
     //HTML
     html {
-        color: clr-getTextColor();
+        color: $clr-app-font-color-primary;
         font-family: $clr-font;
         font-size: $clr-baseline-px;
     }

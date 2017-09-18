@@ -4,9 +4,6 @@
 
 @import "utils/mixins.clarity";
 
-$clr-progress-defaultBarColor: $clr-action-blue !default;
-$clr-progress-bgColor: $clr-light-gray !default;
-
 @include exports('prgross-bars.clarity') {
     // KEY POINTS TO NOTE:
     // - Firefox does not handle transitions on progress bars yet. So the movement
@@ -99,7 +96,7 @@ $clr-progress-bgColor: $clr-light-gray !default;
 
     // Variations
     .progress {
-        @each $type, $color in (success, $clr-green), (warning, $clr-red), (danger, $clr-red) {
+        @each $type, $color in (success, $clr-progress-success-color), (warning, $clr-progress-danger-color), (danger, $clr-progress-warning-color) {
             &.#{$type} > progress {
                 @include clr-progress-color($color);
             }
@@ -178,7 +175,7 @@ $clr-progress-bgColor: $clr-light-gray !default;
         @extend %clr-progress-animatedTransition;
 
         &[value="100"] {
-            @include clr-progress-color($clr-green);
+            @include clr-progress-color($clr-progress-success-color);
         }
     }
 
@@ -192,7 +189,7 @@ $clr-progress-bgColor: $clr-light-gray !default;
         @extend %clr-progress-animatedTransition;
 
         &[value="100"] {
-            @include clr-progress-color($clr-red);
+            @include clr-progress-color($clr-progress-danger-color);
         }
     }
 
@@ -390,7 +387,7 @@ $clr-progress-bgColor: $clr-light-gray !default;
             right: 3em;
         }
 
-        @each $type, $color in (success, $clr-green), (warning, $clr-red), (danger, $clr-red) {
+        @each $type, $color in (success, $clr-progress-success-color), (warning, $clr-progress-warning-color), (danger, $clr-progress-danger-color) {
             &.#{$type} > .progress-meter::before {
                 background-color: $color;
             }

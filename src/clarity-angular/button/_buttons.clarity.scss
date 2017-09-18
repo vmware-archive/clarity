@@ -2,141 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-$clr-global-button-properties-map: (
-    default: (
-        background-color: transparent,
-        border-color: $action-blues-dark-midtone,
-        color: $action-blues-dark-midtone,
-        hover-background-color: $action-blues-lightest,
-        hover-color: $action-blues-dark,
-        active-box-shadow-color: $action-blues-light-midtone,
-        active-box-shadow-width-top: $clr-rem-1px,
-        disabled-color: $gray-darker,
-        disabled-background-color: transparent,
-        disabled-border-color: $gray-dark,
-        checked-background-color: $action-blues-dark-midtone,
-        checked-color: $clr-white
-    ),
-    primary: (
-        background-color: $action-blues-dark-midtone,
-        border-color: $action-blues-dark-midtone,
-        color: $clr-white,
-        hover-background-color: $action-blues-dark,
-        hover-color: $clr-white,
-        active-box-shadow-color: $action-blues-darkest,
-        active-box-shadow-width-top: 2 * $clr-rem-1px,
-        disabled-color: $gray-darker,
-        disabled-background-color: $gray-light-midtone,
-        disabled-border-color: $gray-light-midtone,
-        checked-background-color: $action-blues-dark,
-        checked-color: $clr-white
-    ),
-    success: (
-        background-color: $greens-light-midtone,
-        border-color: $greens-light-midtone,
-        color: $clr-white,
-        hover-background-color: $greens-dark,
-        hover-color: $clr-white,
-        active-box-shadow-color: $greens-darker,
-        active-box-shadow-width-top: 2 * $clr-rem-1px,
-        disabled-color: $gray-darker,
-        disabled-background-color: $gray-light-midtone,
-        disabled-border-color: $gray-light-midtone,
-        checked-background-color: $greens-dark,
-        checked-color: $clr-white
-    ),
-    danger: (
-        background-color: $reds-light-midtone,
-        border-color: $reds-light-midtone,
-        color: $clr-white,
-        hover-background-color: $reds-dark-midtone,
-        hover-color: $clr-white,
-        active-box-shadow-color: $reds-dark,
-        active-box-shadow-width-top: 2 * $clr-rem-1px,
-        disabled-color: $gray-darker,
-        disabled-background-color: $gray-light-midtone,
-        disabled-border-color: $gray-light-midtone,
-        checked-background-color: $reds-dark-midtone,
-        checked-color: $clr-white
-    ),
-    outline-success: (
-        background-color: transparent,
-        border-color: $greens-dark,
-        color: $greens-dark-midtone,
-        hover-background-color: $greens-lightest,
-        hover-color: $greens-darker,
-        active-box-shadow-color: $clr-green,
-        active-box-shadow-width-top: $clr-rem-1px,
-        disabled-color: $gray-darker,
-        disabled-background-color: transparent,
-        disabled-border-color: $gray-dark,
-        checked-background-color: $greens-dark,
-        checked-color: $clr-white
-    ),
-    outline-danger: (
-        background-color: transparent,
-        border-color: $reds-dark-midtone,
-        color: $reds-light-midtone,
-        hover-background-color: $reds-lighter,
-        hover-color: $reds-dark,
-        active-box-shadow-color: $reds-light,
-        active-box-shadow-width-top: $clr-rem-1px,
-        disabled-color: $gray-darker,
-        disabled-background-color: transparent,
-        disabled-border-color: $gray-dark,
-        checked-background-color: $reds-dark-midtone,
-        checked-color: $clr-white
-    ),
-    link: (
-        background-color: transparent,
-        border-color: transparent,
-        color: $action-blues-dark-midtone,
-        hover-background-color: transparent,
-        hover-color: $action-blues-dark,
-        active-box-shadow-color: transparent,
-        active-box-shadow-width-top: 0,
-        disabled-color: $gray-darker,
-        disabled-background-color: transparent,
-        disabled-border-color: transparent,
-        checked-background-color: transparent,
-        checked-color: $action-blues-dark
-    ),
-    inverse: (
-        background-color: transparent,
-        border-color: $clr-white,
-        color: $clr-white,
-        hover-background-color: rgba($clr-white, 0.15),
-        hover-color: $clr-white,
-        active-box-shadow-color: rgba($clr-black, 0.25),
-        active-box-shadow-width-top: $clr-rem-1px,
-        disabled-color: $clr-white,
-        disabled-background-color: transparent,
-        disabled-border-color: $clr-white,
-        checked-background-color: rgba($clr-white, 0.15),
-        checked-color: $clr-white
-    )
-);
-
-//Call to Action & Standard Button Appearance
-$clr-button-appearance-map: (
-    standard: (
-        line-height: calc(#{$clr-button-height-sm} - 1px),
-        letter-spacing: 0.073em,
-        font-size: 0.458333rem,
-        font-weight: 500,
-        height: $clr-button-height-sm,
-        padding: $clr-button-padding
-    ),
-    form: (
-        line-height: $clr-button-height,
-        letter-spacing: 0.12em,
-        font-size: 0.5rem,
-        font-weight: 500,
-        height: $clr-button-height,
-        padding: $clr-button-padding
-    )
-);
-
 @mixin populateButtonProperties($button-type: default, $button-global-map: $clr-global-button-properties-map) {
     $button-property-map: map-get($button-global-map, $button-type);
     border-color: map-get($button-property-map, border-color);
@@ -170,7 +35,7 @@ $clr-button-appearance-map: (
 @mixin btn-checked-styles($button-type: default, $type: checkbox ,$button-global-map: $clr-global-button-properties-map) {
     $button-property-map: map-get($button-global-map, $button-type);
 
-    $background-color: map-get($button-property-map, checked-background-color);
+    $background-color: map-get($button-property-map, checked-background-color); // add semantic prop: group-checked-font-color
     $color: map-get($button-property-map, checked-color);
 
     input[type="#{$type}"]:checked + label {
@@ -202,7 +67,7 @@ $clr-button-appearance-map: (
 }
 
 @mixin btn-default-border-styles() {
-    border-radius: $clr-default-borderradius;
+    border-radius: $clr-global-borderradius;
     border: $clr-default-borderwidth solid;
 }
 
@@ -281,6 +146,15 @@ $clr-button-appearance-map: (
         @include populateButtonProperties(danger);
     }
 
+    .btn.btn-outline,
+    .btn.btn-outline .btn,
+    .btn.btn-info-outline,
+    .btn-info-outline .btn,
+    .btn.btn-outline-info,
+    .btn-outline .btn{
+        @include populateButtonProperties(outline-info);
+    }
+
     .btn.btn-success-outline,
     .btn.btn-outline-success,
     .btn-success-outline .btn,
@@ -339,6 +213,14 @@ $clr-button-appearance-map: (
 
     .btn-icon {
         min-width: 0;
+
+        // Make the disabled btn-icon color theme-able
+        // TODO fix button types by refactoring the maps that hold attr values for all button types.
+        $icon-props: map_get($clr-global-button-properties-map, icon);
+        $disabled-icon-color: map_get($icon-props, disabled-color);
+        &:disabled {
+            color: $disabled-icon-color;
+        }
     }
 
     //Overflow
@@ -366,7 +248,6 @@ $clr-button-appearance-map: (
     .radio.btn,
     .radio-inline.btn {
         padding: 0;
-
         label {
             //needed for chrome
             //refer: http://stackoverflow.com/a/32196680/3538394
@@ -472,7 +353,6 @@ $clr-button-appearance-map: (
         &.btn-outline-info {
             @include btn-checked-styles(default, radio);
         }
-
 
         &.btn-primary {
             @include btn-checked-styles(primary, radio);

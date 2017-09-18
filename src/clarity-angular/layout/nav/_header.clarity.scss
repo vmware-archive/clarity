@@ -2,21 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-// variables here...
-$clr-header-bgColor: $gray-darkest !default;
-$clr-header-textColor: clr-getTextColor($clr-header-bgColor, lightest);
-$clr-logo-width: 1.5rem;
-$clr-nav-icon-size: 0.916667rem;
-$clr-header-section-divider-height: 1.666667rem;
-$clr-search-icon-width: 0.833333rem;
-$clr-header-divider-opacity: 0.15;
-$clr-header-nav-opactiy: 0.65;
-$clr-header-nav-hover-opacity: 1;
-$clr-header-outline-offset: -0.208333rem;
-$clr-header-clarity-icons-size: 1rem;
-$clr-header-dropdown-caret-distance: 0.0833333rem;
-$clr-header-nav-text-horizontal-padding: 1rem;
-
 @mixin header-section-divider() {
     display: inline-block;
     background: $clr-header-textColor;
@@ -121,34 +106,34 @@ $clr-header-nav-text-horizontal-padding: 1rem;
     .header {
         background-color: $clr-header-bgColor;
 
-        &.header-1{
+        &.header-1 {
             background-color: $clr-header-bgColor;
         }
 
-        &.header-2{
+        &.header-2 {
             //Hardcoded because this color is not in the color palette. Its reserved for headers only
-            background-color: #485969;
+            background-color: $clr-header-2-bg-color;
         }
 
-        &.header-3{
-            background-color: $action-purples-darkest;
+        &.header-3 {
+            background-color: $clr-header-3-bg-color;
         }
 
-        &.header-4{
-            background-color: $clr-blue;
+        &.header-4 {
+            background-color: $clr-header-4-bg-color;
         }
 
-        &.header-5{
-            background-color: $action-blues-dark;
+        &.header-5 {
+            background-color: $clr-header-5-bg-color;
         }
 
-        &.header-6{
-            background-color: $action-blues-darkest;
+        &.header-6 {
+            background-color: $clr-header-6-bg-color;
         }
 
-        &.header-7{
+        &.header-7 {
             //Hardcoded because this color is not in the color palette. Its reserved for headers only
-            background-color: #314351;
+            background-color: $clr-header-7-bg-color;
         }
     }
 

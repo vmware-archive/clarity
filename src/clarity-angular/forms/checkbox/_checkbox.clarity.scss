@@ -13,9 +13,6 @@
 
     .checkbox,
     .checkbox-inline {
-        $checkmark-full-size: $clr-checkbox-radio-height / 2;
-        $checkmark-half-size: $checkmark-full-size / 2;
-
         position: relative;
 
         //Hide the default checkbox behind the pseudo elements
@@ -31,7 +28,7 @@
         //Checkbox base
         input[type="checkbox"] + label::before {
             @include checkbox-radio-shared-inactive($clr-checkbox-radio-height, $clr-custom-checkbox-radio-top, 0, $clr-form-field-border-color);
-            border-radius: $clr-default-borderradius;
+            border-radius: $clr-global-borderradius;
         }
 
         input[type="checkbox"]:focus + label::before {
@@ -40,7 +37,6 @@
 
         //Checkmark
         input[type="checkbox"] + label::after {
-            $checkmark-border-style: ($clr-checkbox-radio-height / 8) solid white;
 
             position: absolute;
             content: '';
@@ -52,6 +48,7 @@
             top: (1rem - $clr-checkbox-radio-height) / 2;
             left: $checkmark-half-size;
             transform: translate(0, $checkmark-half-size) rotate(-45deg);
+            border-color: $clr-checkbox-checkmark-color;
         }
 
         input[type="checkbox"]:checked + label::before {
@@ -76,14 +73,15 @@
         &.disabled {
             label {
                 @include disabled-form-fields();
+                color: $clr-checkbox-disabled-font-color;
             }
 
             input[type="checkbox"]:checked + label::before {
-                background-color: $clr-form-disabled-background-color;
+                background-color: $clr-checkbox-disabled-background-color;
             }
 
             input[type="checkbox"]:checked + label::after {
-                $disabled-border-style: ($clr-checkbox-radio-height / 8) solid $clr-form-field-disabled-color;
+                $disabled-border-style: ($clr-checkbox-radio-height / 8) solid $clr-checkbox-disabled-checkmark-color;
                 border-left: $disabled-border-style;
                 border-bottom: $disabled-border-style;
             }

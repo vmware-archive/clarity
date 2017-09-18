@@ -9,7 +9,7 @@
         padding: 0 0.25rem;
 
         &:not([readonly]) {
-            @include input-border-bottom-animation();
+            @include input-border-bottom-animation($clr-input-border-color);
         }
 
         &[readonly] {
@@ -28,8 +28,10 @@
     textarea {
         resize: vertical;
         width: 100%;
-        border: $clr-default-borderwidth solid $gray-light-midtone;
-        border-radius: $clr-default-borderradius;
+        background: $clr-textarea-bg-color;
+        border: $clr-default-borderwidth solid $clr-textarea-border-color;
+        color: $clr-textarea-text-color;
+        border-radius: $clr-global-borderradius;
         padding: 0.5rem 0.25rem;
 
         &:focus {

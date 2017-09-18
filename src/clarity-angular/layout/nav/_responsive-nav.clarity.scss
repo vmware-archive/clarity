@@ -2,19 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-$clr-sliding-panel-text-color: clr-getTextColor();
-$clr-sliding-panel-width: 15rem;
-$clr-sliding-panel-width-sm: 12rem;
-$clr-trigger-position: $clr-sliding-panel-width + 0.5rem;
-$clr-trigger-position-sm: $clr-sliding-panel-width-sm + 0.5rem;
-$clr-sliding-panel-z-index: map-get($clr-layers, sidepanel);
-$clr-sliding-panel-backdrop-z-index: map-get($clr-layers, sidepanel-bg);
-$clr-sliding-transition-time: 0.3s;
-$clr-transition-style: ease;
-$clr-nav-background-color: $clr-light-gray;
-$clr-trigger-animation: transform (2 * $clr-sliding-transition-time) $clr-transition-style;
-$clr-sliding-panel-animation: transform $clr-sliding-transition-time $clr-transition-style;
-
 @mixin sliding-nav-positioning($top: 0, $right: auto, $bottom: 0, $left: 0) {
     display: flex;
     flex-direction: column;
@@ -247,7 +234,7 @@ $clr-sliding-panel-animation: transform $clr-sliding-transition-time $clr-transi
                         max-width: 100%;
                         overflow: hidden;
                         text-overflow: ellipsis;
-                        border-radius: $clr-default-borderradius 0 0 $clr-default-borderradius;
+                        border-radius: $clr-global-borderradius 0 0 $clr-global-borderradius;
 
                         @include vertical-nav-link-colors();
 
@@ -268,7 +255,7 @@ $clr-sliding-panel-animation: transform $clr-sliding-transition-time $clr-transi
                     &:hover,
                     &.active {
                         color: inherit;
-                        background: $clr-white;
+                        background: $clr-responsive-nav-hover-bg; // Is the menu that showsup when the viewport is narrow (x-axis)
                     }
                 }
             }
@@ -403,7 +390,7 @@ $clr-sliding-panel-animation: transform $clr-sliding-transition-time $clr-transi
                         clr-icon[shape="vm-bug"],
                         .clr-vmw-logo {
                             background-color: $gray-dark;
-                            border-radius: $clr-default-borderradius;
+                            border-radius: $clr-global-borderradius;
                         }
 
                         .title {

@@ -1,23 +1,8 @@
-// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
-// This software is released under MIT license.
-// The full license information can be found in LICENSE in the root directory of this project.
-
-//Toggle Properties
-$toggle-height: 1rem;
-$toggle-switch-base-height: 0.75rem;
-$toggle-switch-base-width: 1.375rem;
-$toggle-switch-height: 0.5833rem;
-
-//Distance between the toggle switch label and the switch (Switch is on the right)
-$toggle-switch-base-left-spacing: 0.375rem;
-
-//1px extra because we want a 1px distance between the base and the switch
-$toggle-switch-left-spacing: $toggle-switch-base-width - $toggle-switch-base-left-spacing + $clr-rem-1px;
-
-
-//Toggle Transition Properties
-$toggle-transition-time: 0.15s;
-$toggle-transition-animation: ease-in;
+/*!
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
 
 @include exports('toggles.clarity') {
     //Remove the default checkbox appearance
@@ -27,7 +12,7 @@ $toggle-transition-animation: ease-in;
 
     .toggle-switch {
         display: inline-block;
-        height: $toggle-height;
+        height: $clr-toggle-height;
         margin-right: 1rem;
         vertical-align: middle;
         position: relative;
@@ -36,7 +21,7 @@ $toggle-transition-animation: ease-in;
             display: inline-block;
             position: relative;
             cursor: pointer;
-            height: $toggle-height;
+            height: $clr-toggle-height;
             margin-right: 2rem;
         }
 
@@ -55,15 +40,15 @@ $toggle-transition-animation: ease-in;
             position: absolute;
             display: inline-block;
             content: '';
-            height: $toggle-switch-base-height;
-            width: $toggle-switch-base-width;
+            height: $clr-toggle-switch-base-height;
+            width: $clr-toggle-switch-base-width;
             border: 2px solid;
             border-radius: 0.375rem;
-            border-color: $clr-gray;
-            background-color: $clr-gray;
-            top: ($toggle-height - $toggle-switch-base-height) / 2;
-            right: -1 * ($toggle-switch-base-width + $toggle-switch-base-left-spacing);
-            transition: $toggle-transition-time $toggle-transition-animation;
+            border-color: $clr-toggle-bg-color-off;
+            background-color: $clr-toggle-bg-color-off;
+            top: ($clr-toggle-height - $clr-toggle-switch-base-height) / 2;
+            right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing);
+            transition: $clr-toggle-transition-time $clr-toggle-transition-animation;
             transition-property: border-color, background-color;
         }
 
@@ -72,9 +57,9 @@ $toggle-transition-animation: ease-in;
         }
 
         input[type="checkbox"]:checked + label::before {
-            border-color: clr-getColor(light-midtone, greens);
-            background-color: clr-getColor(light-midtone, greens);
-            transition: $toggle-transition-time $toggle-transition-animation;
+            border-color: $clr-toggle-bg-color-on;
+            background-color: $clr-toggle-bg-color-on;
+            transition: $clr-toggle-transition-time $clr-toggle-transition-animation;
             transition-property: border-color, background-color;
         }
 
@@ -83,20 +68,20 @@ $toggle-transition-animation: ease-in;
             position: absolute;
             display: inline-block;
             content: '';
-            height: $toggle-switch-height;
-            width: $toggle-switch-height;
-            border: $clr-default-borderwidth solid clr-getColor(lightest);
+            height: $clr-toggle-switch-height;
+            width: $clr-toggle-switch-height;
+            border: $clr-default-borderwidth solid $clr-toggle-handle-bg-color;
             border-radius: 50%;
-            background-color: clr-getColor(lightest);
+            background-color: $clr-toggle-handle-bg-color;
             // TOCHECK: COMPUTATION...
-            top: ($toggle-height - $toggle-switch-height) / 2;
-            right: -1 * $toggle-switch-left-spacing;
-            transition: right $toggle-transition-time $toggle-transition-animation;
+            top: ($clr-toggle-height - $clr-toggle-switch-height) / 2;
+            right: -1 * $clr-toggle-switch-left-spacing;
+            transition: right $clr-toggle-transition-time $clr-toggle-transition-animation;
         }
 
         input[type="checkbox"]:checked + label::after {
-            right: -1 * ($toggle-switch-base-width + $toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
-            transition: right $toggle-transition-time $toggle-transition-animation;
+            right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+            transition: right $clr-toggle-transition-time $clr-toggle-transition-animation;
         }
 
         &.disabled {
@@ -106,40 +91,47 @@ $toggle-transition-animation: ease-in;
             }
 
             input[type="checkbox"]:checked + label::before {
-                border-color: $clr-light-midtone-gray;
-                background-color: $clr-light-midtone-gray;
+                border-color: $clr-toggle-disabled-on-border-color; // No effect on our demos
+                background-color: $clr-toggle-disabled-on-bg-color; // No effect on our demos
             }
         }
 
         // TODO: cleanup hard-coded sizes in here. not sure what they are keying on...
         input[type="checkbox"]:disabled + label {
-            //opacity: 0.4;
             cursor: not-allowed;
 
             &::before {
-                background-color: $clr-white;
-                border-color: $clr-light-midtone-gray;
+                // toggle disabled/off bg color
+                background-color: $clr-toggle-disabled-off-bg-color;
+                // toggle disabled/off border color (excluding the handle circle)
+                border-color: $clr-toggle-disabled-off-border-color;
             }
 
             &::after {
-                background-color: $clr-white;
-                border: 2px solid $clr-light-midtone-gray;
-                width: $toggle-switch-base-height;
-                height: $toggle-switch-base-height;
+                // toggle handle color for disabled/off and inner part of handle disabled/on
+                background-color: $clr-toggle-disabled-off-bg-color;
+                // toggle handle color for disabled/off handle outer border circle
+                border: 2px solid $clr-toggle-disabled-off-handle-border-color;
+                width: $clr-toggle-switch-base-height;
+                height: $clr-toggle-switch-base-height;
                 top: 3px;
             }
         }
 
         input[type="checkbox"]:checked:disabled + label::before {
-            border-color: $clr-light-midtone-gray;
-            background-color: $clr-light-midtone-gray;
+            // toggle disabled/on border color
+            border-color: $clr-toggle-disabled-on-border-color;
+            // toggle disabled/on bg color
+            background-color: $clr-toggle-disabled-on-bg-color;
         }
 
         input[type="checkbox"]:checked:disabled + label::after {
-            border-color: $clr-white;
-            width: $toggle-switch-height;
-            height: $toggle-switch-height;
+            // toggle disabled on handle circle border color
+            border-color: $clr-toggle-disabled-on-handle-border-color;
+            width: $clr-toggle-switch-height;
+            height: $clr-toggle-switch-height;
             top: 5px;
+
         }
     }
 }

@@ -2,9 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-// TODO: would be nice to key text color in subnav off of the bgColor...
-$clr-subnav-bgColor: $gray-lightest !default;
-$clr-nav-shadow: 0 -1px 0 $gray-light-midtone inset;
 
 @include exports('subnav.clarity') {
     .sub-nav, //TODO: deprecated. Remove when the clarity css naming convention is implemented.

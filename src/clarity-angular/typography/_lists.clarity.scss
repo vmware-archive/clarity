@@ -2,8 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-$clr-list-style-padding: 1.1em;
-
 @include exports('lists.clarity') {
     %kill-list-styles {
         padding-left: 0;

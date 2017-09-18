@@ -43,11 +43,11 @@
         }
 
         > .btn-group-overflow:last-child:not(:first-child) > .btn:first-child {
-            border-radius: 0 $clr-default-borderradius $clr-default-borderradius 0;
+            border-radius: 0 $clr-global-borderradius $clr-global-borderradius 0;
         }
 
         > .btn-group-overflow:last-child:first-child > .btn:first-child {
-            border-radius: $clr-default-borderradius;
+            border-radius: $clr-global-borderradius;
         }
 
         //To avoid double borders

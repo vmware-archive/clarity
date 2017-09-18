@@ -1,0 +1,10 @@
+/*!
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+// Usage: ../progress/spinner/_spinner.clarity.scss
+$clr-spinner-color: #49AFD9;
+$clr-spinner-bg-color: $clr-black; //TODO: Confirm with UX the correct bg color here.
+$clr-spinner-opacity: 0.15;

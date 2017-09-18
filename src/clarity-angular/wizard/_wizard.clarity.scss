@@ -1,23 +1,8 @@
-// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
-// This software is released under MIT license.
-// The full license information can be found in LICENSE in the root directory of this project.
-
-// Backgrounds
-$clr-wizard-main-bgcolor: clr-getColor(1) !default;
-$clr-wizard-sidenav-bgcolor: clr-getColor(2) !default;
-$clr-wizard-default-space: 1rem;
-$clr-wizard-main-textColor: clr-getTextColor($clr-wizard-main-bgcolor);
-$clr-wizard-sidenav-text: clr-getTextColor($clr-wizard-sidenav-bgcolor, text);
-$clr-wizard-title-text: clr-getTextColor($clr-wizard-sidenav-bgcolor, darkest);
-$clr-wizard-stepnav-border-size: 0.166667rem;
-$clr-wizard-stepnav-border-color: clr-getColor(3) !default;
-$clr-wizard-stepnav-border-color--active: $clr-green;
-$clr-wizard-footer-height: 3.5rem;
-$clr-wizard-stepnav-active-bgcolor: $clr-selection-color !default;
-$clr-wizard-sidenav-text--active: clr-getTextColor($clr-wizard-stepnav-active-bgcolor, darkest);
-$clr-wizard-header-action-color: clr-getTextColor($clr-wizard-main-bgcolor, hoverable);;
-$clr-wizard-header-action-color--hovered: clr-getTextColor($clr-wizard-sidenav-bgcolor, darkest);
-$clr-wizard-box-shadow: 0 $clr-rem-1px (2 * $clr-rem-1px) (2 * $clr-rem-1px) rgba(0, 0, 0, 0.2);
+/*!
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
 
 // NOTE THAT THE MIN-WIDTH OF THE BUTTONS WILL PUSH OUT THE DIALOG IF
 // SET UP IMPROPERLY. THIS IS A KNOWN ISSUE AND USERS SHOULD USE THEIR
@@ -41,7 +26,7 @@ $clr-wizard-box-shadow: 0 $clr-rem-1px (2 * $clr-rem-1px) (2 * $clr-rem-1px) rgb
         }
 
         .modal-content {
-            border-radius: 0 $clr-default-borderradius $clr-default-borderradius 0;
+            border-radius: 0 $clr-global-borderradius $clr-global-borderradius 0;
             box-shadow: none;
             padding: 0;
             flex: 2 2 auto;
@@ -145,10 +130,10 @@ $clr-wizard-box-shadow: 0 $clr-rem-1px (2 * $clr-rem-1px) (2 * $clr-rem-1px) rgb
             padding-bottom: $clr-wizard-default-space;
             line-height: $clr-wizard-default-space;
             // TODO: NEED COLORVAR HERE
-            border-right: $clr-default-borderwidth solid #e4e4e4;
+            border-right: $clr-default-borderwidth solid $clr-wizard-step-nav-border-color;
             height: 100%;
             background-color: $clr-wizard-sidenav-bgcolor;
-            border-radius: $clr-default-borderradius 0 0 $clr-default-borderradius;
+            border-radius: $clr-global-borderradius 0 0 $clr-global-borderradius;
         }
 
         .clr-wizard-stepnav {
@@ -185,7 +170,7 @@ $clr-wizard-box-shadow: 0 $clr-rem-1px (2 * $clr-rem-1px) (2 * $clr-rem-1px) rgb
 
                 .clr-wizard-stepnav-link {
                     background-color: $clr-wizard-stepnav-active-bgcolor;
-                    border-radius: $clr-default-borderradius 0 0 $clr-default-borderradius;
+                    border-radius: $clr-global-borderradius 0 0 $clr-global-borderradius;
                 }
             }
 
@@ -279,21 +264,6 @@ $clr-wizard-box-shadow: 0 $clr-rem-1px (2 * $clr-rem-1px) (2 * $clr-rem-1px) rgb
         }
     }
 
-    $clr-wizard-all-dialog-min-width: 10rem;
-    $clr-wizard-all-dialog-min-height: 17.5rem;
-
-    $clr-wizard-md-nav-min-width: 9rem;
-    $clr-wizard-md-nav-max-width: 10rem;
-    $clr-wizard-md-dialog-max-height: 21rem;
-
-    $clr-wizard-lg-nav-min-width: $clr-wizard-all-dialog-min-width;
-    $clr-wizard-lg-nav-max-width: 12rem;
-    $clr-wizard-lg-dialog-max-height: 30rem;
-
-    $clr-wizard-xl-nav-min-width: $clr-wizard-all-dialog-min-width;
-    $clr-wizard-xl-nav-max-width: 13rem;
-    $clr-wizard-xl-dialog-max-height: 75vh;
-
     .clr-wizard {
 
         // sizing stuff is here
@@ -381,10 +351,6 @@ $clr-wizard-box-shadow: 0 $clr-rem-1px (2 * $clr-rem-1px) (2 * $clr-rem-1px) rgb
     }
 
     .clr-wizard--ghosted {
-        $clr-wizard-ghost-wrapper-width: 2rem;
-        $clr-wizard-ghost-panel-width: 1rem;
-        $clr-wizard-ghost-wrapper-padding: 1rem;
-        $clr-wizard-ghost-shadow: $clr-wizard-box-shadow;
 
         .modal-dialog {
             display: block;
@@ -418,9 +384,9 @@ $clr-wizard-box-shadow: 0 $clr-rem-1px (2 * $clr-rem-1px) (2 * $clr-rem-1px) rgb
             position: absolute;
             top: $clr-wizard-ghost-wrapper-padding;
             bottom: $clr-wizard-ghost-wrapper-padding;
-            background: #bbb;
+            background: $clr-wizard-ghost-1;
             width: $clr-wizard-ghost-panel-width;
-            border-radius: 0 $clr-default-borderradius $clr-default-borderradius 0;
+            border-radius: 0 $clr-global-borderradius $clr-global-borderradius 0;
             left: (-1 * $clr-wizard-ghost-panel-width);
             box-shadow: $clr-wizard-ghost-shadow;
             z-index: -1;
@@ -429,11 +395,9 @@ $clr-wizard-box-shadow: 0 $clr-rem-1px (2 * $clr-rem-1px) (2 * $clr-rem-1px) rgb
         .modal-ghost-2 {
             top: (2 * $clr-wizard-ghost-wrapper-padding);
             bottom: (2 * $clr-wizard-ghost-wrapper-padding);
-            background: #9a9a9a;
+            background: $clr-wizard-ghost-2;
             z-index: -2;
         }
-
-        $clr-wizard-ghost-dialog-default-width: $clr-modal-md-width + $clr-wizard-ghost-wrapper-width;
 
         .modal-dialog, .modal-outer-wrapper {
             width: $clr-wizard-ghost-dialog-default-width;

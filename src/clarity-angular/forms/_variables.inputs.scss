@@ -1,0 +1,17 @@
+/*!
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+// Usage: ../forms/utils/_mixins.clarity.scss
+$clr-input-text-color: $clr-black;
+
+// Usage: ../forms/utils/_mixins.clarity.scss
+// Usage: ../forms/_select.clarity.scss
+$clr-input-border-color: clr-getColor(light-midtone,action-blues);
+
+// Usage: ../forms/_inputs.clarity.scss
+$clr-textarea-border-color: $gray-light-midtone;
+$clr-textarea-bg-color: $clr-white;
+$clr-textarea-text-color: $clr-black;

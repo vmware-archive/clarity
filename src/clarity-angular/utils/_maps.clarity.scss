@@ -1,0 +1,606 @@
+/*!
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+// TODO - write better documentation for why and how these maps are used as well as where the $clr-variable-names are declared.
+
+// ALERTS
+// Alert maps
+$clr-alert-colors: (
+    info: (
+        background: $clr-alert-info-bg-color,
+        font: $clr-alert-info-font-color,
+        border: $clr-alert-info-border-color,
+        icon-color: $clr-alert-info-icon-color
+    ),
+    success: (
+        background: $clr-alert-success-bg-color,
+        font: $clr-alert-success-font-color,
+        border: $clr-alert-success-border-color,
+        icon-color: $clr-alert-success-icon-color
+    ),
+    warning: (
+        background: $clr-alert-warning-bg-color,
+        font: $clr-alert-warning-font-color,
+        border: $clr-alert-warning-border-color,
+        icon-color: $clr-alert-warning-icon-color
+    ),
+    danger: (
+        background: $clr-alert-danger-bg-color,
+        font: $clr-alert-danger-font-color,
+        border: $clr-alert-danger-border-color,
+        icon-color: $clr-alert-danger-icon-color
+    ),
+    app-info: (
+        background: $clr-app-alert-info-bg-color,
+        font: $clr-app-alert-info-font-color,
+        border: $clr-app-alert-info-border-color,
+        icon-color: $clr-app-alert-info-icon-color
+    ),
+    // TODO: Determine if this should be depricated and removed.
+    app-success: (
+        background: $clr-green-light-midtone,
+        font: $clr-white,
+        border: none,
+        icon-color: $clr-white
+    ),
+    app-warning: (
+        background: $clr-app-alert-warning-bg-color,
+        font: $clr-app-alert-warning-font-color,
+        border: $clr-app-alert-warning-border-color,
+        icon-color: $clr-app-alert-warning-icon-color
+    ),
+    app-danger: (
+        background: $clr-app-alert-danger-bg-color,
+        font: $clr-app-alert-danger-font-color,
+        border: $clr-app-alert-danger-border-color,
+        icon-color: $clr-app-alert-danger-icon-color
+    )
+);
+
+// LABELS
+// Badges and Labels
+// NOTE to self: font here sets the color of the badge, not the label font color.
+// Label Color Map (Usage: ../emphasis/_labels.clarity.scss)
+$clr-label-colors: (// Also used for badges
+    gray: (
+        background: $clr-label-gray-bg-color,
+        font: $clr-label-font-color
+    ),
+    purple: (
+        background: $clr-label-purple-bg-color,
+        font: $clr-label-font-color
+    ),
+    blue: (
+        background: $clr-label-blue-bg-color,
+        font: $clr-label-font-color
+    ),
+    orange: (
+        background: $clr-label-orange-bg-color,
+        font: $clr-label-font-color-contrast
+
+    ),
+    light-blue: (
+        background: $clr-label-light-blue-bg-color,
+        font: $clr-label-font-color-contrast
+    )
+);
+//LABELS
+// Label Status Map (Usage: ../emphasis/_labels.clarity.scss)
+$clr-label-status: (
+    info: (
+        background: $clr-label-info-bg-color,
+        font: $clr-label-info-font-color,
+        border: $clr-label-info-border-color
+    ),
+    success: (
+        background: $clr-label-success-bg-color,
+        font: $clr-label-success-font-color,
+        border: $clr-label-success-border-color
+    ),
+    warning: (
+        background: $clr-label-warning-bg-color,
+        font: $clr-label-warning-font-color,
+        border: $clr-label-warning-border-color
+    ),
+    danger: (
+        background: $clr-label-danger-bg-color,
+        font: $clr-label-danger-font-color,
+        border: $clr-label-danger-border-color
+    )
+);
+// BADGES
+// Badge Status Map (Usage: ../emphasis/_labels.clarity.scss)
+$clr-badge-status: (
+    info: (
+        background: $clr-badge-info-bg-color,
+        font: $clr-badge-info-font-color
+    ),
+    success: (
+        background: $clr-badge-success-bg-color,
+        font: $clr-badge-success-font-color
+    ),
+    warning: (
+        background: $clr-badge-warning-bg-color,
+        font: $clr-badge-warning-font-color
+    ),
+    danger: (
+        background: $clr-badge-danger-bg-color,
+        font: $clr-badge-danger-font-color
+    )
+);
+$clr-badge-colors: (// Also used for badges
+    gray: (
+        background: $clr-badge-gray-bg-color,
+        font: $clr-badge-font-color
+    ),
+    purple: (
+        background: $clr-badge-purple-bg-color,
+        font: $clr-badge-font-color
+    ),
+    blue: (
+        background: $clr-badge-blue-bg-color,
+        font: $clr-badge-font-color
+    ),
+    orange: (
+        background: $clr-badge-orange-bg-color,
+        font: $clr-badge-font-color-contrast
+    ),
+    light-blue: (
+        background: $clr-badge-light-blue-bg-color,
+        font: $clr-badge-font-color-contrast
+    )
+);
+
+// Buttons
+$clr-global-button-properties-map: (
+    default: (
+        background-color: $clr-btn-default-bg-color,
+        border-color: $clr-btn-default-color,
+        color: $clr-btn-default-color,
+        hover-background-color: $clr-btn-default-hover-bg-color,
+        hover-color: $clr-btn-default-hover-color,
+        active-box-shadow-color: $clr-btn-default-box-shadow-color,
+        active-box-shadow-width-top: 2px,
+        disabled-color: $clr-btn-default-disabled-color,
+        disabled-background-color: $clr-btn-default-bg-color,
+        disabled-border-color: $clr-btn-default-disabled-border-color,
+        checked-background-color: $clr-btn-default-color,
+        checked-color: $clr-btn-default-checked-color
+    ),
+    primary: (
+        background-color: $clr-btn-primary-bg-color,
+        border-color: $clr-btn-primary-border-color,
+        color: $clr-btn-primary-color,
+        hover-background-color: $clr-btn-primary-hover-bg-color,
+        hover-color: $clr-btn-primary-hover-color,
+        active-box-shadow-color: $clr-btn-primary-box-shadow-color,
+        active-box-shadow-width-top: 1px,
+        disabled-color: $clr-btn-primary-disabled-color,
+        disabled-background-color: $clr-btn-primary-disabled-bg-color,
+        disabled-border-color: $clr-btn-primary-disabled-border-color,
+        checked-background-color: $clr-btn-primary-color,
+        checked-color: $clr-btn-primary-checked-color
+    ),
+    success: (
+        background-color: $clr-btn-success-bg-color,
+        border-color: $clr-btn-success-bg-color,
+        color: $clr-btn-success-color,
+        hover-background-color: $clr-btn-success-hover-bg-color,
+        hover-color: $clr-btn-success-hover-color,
+        active-box-shadow-color: $clr-btn-success-box-shadow-color,
+        active-box-shadow-width-top: 2px,
+        disabled-color: $clr-btn-success-disabled-color,
+        disabled-background-color: $clr-btn-success-disabled-bg-color,
+        disabled-border-color: $clr-btn-success-disabled-border-color,
+        checked-background-color: $clr-btn-success-checked-bg-color,
+        checked-color: $clr-btn-success-color
+    ),
+    danger: (
+        background-color: $clr-btn-danger-bg-color,
+        border-color: $clr-btn-danger-bg-color,
+        color: $clr-btn-danger-color,
+        hover-background-color: $clr-btn-danger-hover-bg-color,
+        hover-color: $clr-btn-danger-hover-color,
+        active-box-shadow-color: $clr-btn-danger-box-shadow-color,
+        active-box-shadow-width-top: 2px,
+        disabled-color: $clr-btn-danger-disabled-color,
+        disabled-background-color: $clr-btn-danger-disabled-bg-color,
+        disabled-border-color: $clr-btn-danger-disabled-bg-color,
+        checked-background-color: $clr-btn-danger-checked-bg-color,
+        checked-color: $clr-btn-danger-color
+    ),
+    outline-info: (
+            background-color: $clr-btn-default-outline-bg-color,
+            border-color: $clr-btn-default-outline-color,
+            color: $clr-btn-default-outline-color,
+            hover-background-color: $clr-btn-default-outline-hover-bg-color,
+            hover-color: $clr-btn-default-outline-hover-color,
+            active-box-shadow-color: $clr-btn-default-outline-box-shadow-color,
+            active-box-shadow-width-top: 2px,
+            disabled-color: $clr-btn-default-outline-disabled-color,
+            disabled-background-color: $clr-btn-default-outline-bg-color,
+            disabled-border-color: $clr-btn-default-outline-disabled-border-color,
+            checked-background-color: $clr-btn-default-outline-color,
+            checked-color: $clr-btn-default-outline-checked-color
+    ),
+    outline-success: (
+        background-color: transparent,
+        border-color: $clr-btn-success-outline-border-color,
+        color: $clr-btn-success-outline-color,
+        hover-background-color: $clr-btn-success-outline-hover-bg-color,
+        hover-color: $clr-btn-success-outline-hover-color,
+        active-box-shadow-color: $clr-btn-success-outline-box-shadow-color,
+        active-box-shadow-width-top: 1px,
+        disabled-color: $clr-btn-success-outline-disabled-color,
+        disabled-background-color: $clr-btn-success-outline-disabled-bg-color,
+        disabled-border-color: $clr-btn-success-outline-disabled-border-color,
+        checked-background-color: $clr-btn-success-outline-border-color,
+        checked-color: $clr-btn-success-outline-checked-color
+    ),
+    outline-danger: (
+        background-color: transparent,
+        border-color: $clr-btn-danger-outline-border-color,
+        color: $clr-btn-danger-outline-color,
+        hover-background-color: $clr-btn-danger-outline-hover-bg-color,
+        hover-color: $clr-btn-danger-outline-hover-color,
+        active-box-shadow-color: $clr-btn-danger-outline-box-shadow-color,
+        active-box-shadow-width-top: 1px,
+        disabled-color: $clr-btn-danger-outline-disabled-color,
+        disabled-background-color: transparent,
+        disabled-border-color: $clr-btn-danger-outline-disabled-color,
+        checked-background-color: $clr-btn-danger-outline-checked-bg-color,
+        checked-color: $clr-btn-danger-outline-checked-color
+    ),
+    link: (
+        background-color: transparent,
+        border-color: transparent,
+        color: $clr-btn-link-color,
+        hover-background-color: transparent,
+        hover-color: $clr-btn-link-hover-color,
+        active-box-shadow-color: transparent,
+        active-box-shadow-width-top: 0,
+        disabled-color: $clr-btn-link-disabled-color,
+        disabled-background-color: transparent,
+        disabled-border-color: transparent,
+        checked-background-color: transparent,
+        checked-color: $clr-btn-link-checked-color
+    ),
+    inverse: (
+        background-color: $clr-btn-inverse-bg-color,
+        border-color: $clr-btn-inverse-border-color,
+        color: $clr-btn-inverse-color,
+        hover-background-color: $clr-btn-inverse-hover-bg-color,
+        hover-color: $clr-btn-inverse-hover-color,
+        active-box-shadow-color: $clr-btn-inverse-box-shadow-color,
+        active-box-shadow-width-top: 1px,
+        disabled-color: $clr-btn-inverse-disabled-color,
+        disabled-background-color: transparent,
+        disabled-border-color: $clr-btn-inverse-disabled-border-color,
+        checked-background-color: $clr-btn-inverse-checked-bg-color,
+        checked-color: $clr-btn-inverse-checked-color
+    ),
+    icon: (
+        disabled-color: $clr-button-icon-disabled-color
+    )
+);
+// BUTTONS
+//Call to Action & Standard Button Appearance
+$clr-button-appearance-map: (
+    standard: (
+        line-height: calc(#{$clr-button-height-sm} - 1px),
+        letter-spacing: 0.073em,
+        font-size: 0.458333rem,
+        font-weight: 500,
+        height: $clr-button-height-sm,
+        padding: $clr-button-padding
+    ),
+    form: (
+        line-height: $clr-button-height,
+        letter-spacing: 0.12em,
+        font-size: 0.5rem,
+        font-weight: 500,
+        height: $clr-button-height,
+        padding: $clr-button-padding
+    )
+);
+
+// Typography
+// Headers
+$clr-breakpoints: (
+    small : 544px,
+    medium: 768px,
+    large : 992px,
+    xlarge: 1200px
+) !default;
+
+$clr-h1: (
+    clr-common: (
+        color: $clr-h1-color,
+        font-weight: $clr-typography-lightfont,
+        font-family: $clr-altFont,
+        font-size: 1.333333rem,
+        letter-spacing: normal,
+        line-height: 2rem,
+        margin-top: 1rem,
+        margin-bottom: 0
+    ),
+    small:(),
+    medium:(),
+    large:(),
+    xlarge:()
+);
+
+$clr-h2: (
+    clr-common: (
+        color: $clr-h2-color,
+        font-weight: $clr-typography-lightfont,
+        font-family: $clr-altFont,
+        font-size: 1.166667rem,
+        letter-spacing: normal,
+        line-height: 2rem,
+        margin-top: 1rem,
+        margin-bottom: 0
+    ),
+    small:(),
+    medium:(),
+    large:(),
+    xlarge:()
+);
+$clr-h3: (
+    clr-common: (
+        color: $clr-h3-color,
+        font-weight: $clr-typography-lightfont,
+        font-family: $clr-altFont,
+        font-size:  0.916667rem,
+        letter-spacing: normal,
+        line-height: 1rem,
+        margin-top: 1rem,
+        margin-bottom: 0
+    ),
+    small:(),
+    medium:(),
+    large:(),
+    xlarge:()
+);
+$clr-h4: (
+    clr-common: (
+        color: $clr-h4-color,
+        font-weight: $clr-typography-lightfont,
+        font-family: $clr-altFont,
+        font-size: 0.75rem,
+        letter-spacing: normal,
+        line-height: 1rem,
+        margin-top: 1rem,
+        margin-bottom: 0
+    ),
+    small:(),
+    medium:(),
+    large:(),
+    xlarge:()
+);
+$clr-h5: (
+    clr-common: (
+        color: $clr-h5-color,
+        font-weight: $clr-typography-regfont,
+        font-family: $clr-altFont,
+        font-size: 0.666667rem,
+        letter-spacing: $clr-kerning-bigtext,
+        line-height: 1rem,
+        margin-top: 1rem,
+        margin-bottom: 0
+    ),
+    small:(),
+    medium:(),
+    large:(),
+    xlarge:()
+);
+$clr-h6: (
+    clr-common: (
+        font-weight: $clr-typography-sboldfont,
+        font-family: $clr-altFont,
+        font-size: 0.583333rem,
+        letter-spacing: $clr-kerning-smalltext,
+        line-height: 1rem,
+        margin-top: 1rem,
+        margin-bottom: 0,
+        color: $clr-h6-color
+    ),
+    small:(),
+    medium:(),
+    large:(),
+    xlarge:()
+);
+// Paragraphs
+// keeping this here as an easter egg. we use it on the website and it's not hurting anything. usage = intro text
+$clr-p0: (
+    clr-common: (
+        font-weight: $clr-typography-lightfont,
+        font-size: 0.833333rem,
+        letter-spacing: normal,
+        line-height: 1rem,
+        margin-top: 1rem,
+        margin-bottom: 0
+    ),
+    small:(),
+    medium:(),
+    large:(),
+    xlarge:()
+);
+$clr-p1: (
+    clr-common: (
+        color: $clr-p1-color,
+        font-weight: $clr-typography-regfont,
+        font-size: 0.583333rem,
+        letter-spacing: $clr-kerning-lotsatext,
+        line-height: 1rem,
+        margin-top: 1rem,
+        margin-bottom: 0
+    ),
+    small:(),
+    medium:(),
+    large:(),
+    xlarge:()
+);
+$clr-p2: (
+    clr-common: (
+        color: $clr-p2-color,
+        font-weight: $clr-typography-sboldfont,
+        font-size: $clr-typography-smalltext,
+        letter-spacing: $clr-kerning-smalltext,
+        line-height: 1rem,
+        margin-top: 1rem,
+        margin-bottom: 0
+    ),
+    small:(),
+    medium:(),
+    large:(),
+    xlarge:()
+);
+$clr-p3: (
+    clr-common: (
+        color: $clr-p3-color,
+        font-weight: $clr-typography-regfont,
+        font-size: $clr-typography-smalltext,
+        letter-spacing: $clr-kerning-smalltext,
+        line-height: 1rem,
+        margin-top: 1rem,
+        margin-bottom: 0
+    ),
+    small:(),
+    medium:(),
+    large:(),
+    xlarge:()
+);
+$clr-p4: (
+    clr-common: (
+        color: $clr-p4-color,
+        font-weight: $clr-typography-boldfont,
+        font-size: $clr-typography-xsmalltext,
+        letter-spacing: $clr-kerning-smalltext,
+        line-height: 1rem,
+        margin-top: 1rem,
+        margin-bottom: 0
+    ),
+    small:(),
+    medium:(),
+    large:(),
+    xlarge:()
+);
+$clr-p5: (
+    clr-common: (
+        color: $clr-p5-color,
+        font-weight: $clr-typography-regfont,
+        font-size: $clr-typography-xsmalltext,
+        letter-spacing: $clr-kerning-smalltext,
+        line-height: 1rem,
+        margin-top: 1rem,
+        margin-bottom: 0
+    ),
+    small:(),
+    medium:(),
+    large:(),
+    xlarge:()
+);
+$clr-p6: (
+    clr-common: (
+        color: $clr-p6-color,
+        font-weight: $clr-typography-boldfont,
+        font-size: $clr-typography-xxsmalltext,
+        letter-spacing: $clr-kerning-tinytext,
+        line-height: 0.5rem,
+        margin-top: 1rem,
+        margin-bottom: 0
+    ),
+    small:(),
+    medium:(),
+    large:(),
+    xlarge:()
+);
+$clr-p7: (
+    clr-common: (
+        color: $clr-p7-color,
+        font-weight: $clr-typography-regfont,
+        font-size: $clr-typography-xxsmalltext,
+        letter-spacing: $clr-kerning-tinytext,
+        line-height: 0.5rem,
+        margin-top: 1rem,
+        margin-bottom: 0
+    ),
+    small:(),
+    medium:(),
+    large:(),
+    xlarge:()
+);
+$clr-p8: (
+    clr-common: (
+        color: $clr-p8-color,
+        font-weight: $clr-typography-regfont,
+        font-size: $clr-typography-tinytext,
+        letter-spacing: $clr-kerning-tinytext,
+        line-height: 0.5rem,
+        margin-top: 1rem,
+        margin-bottom: 0
+    ),
+    small:(),
+    medium:(),
+    large:(),
+    xlarge:()
+);
+//Element Properties Map
+$clr-elements: (
+    h1: $clr-h1,
+    h2: $clr-h2,
+    h3: $clr-h3,
+    h4: $clr-h4,
+    h5: $clr-h5,
+    h6: $clr-h6,
+    p0: $clr-p0,
+    p1: $clr-p1,
+    p2: $clr-p2,
+    p3: $clr-p3,
+    p4: $clr-p4,
+    p5: $clr-p5,
+    p6: $clr-p6,
+    p7: $clr-p7,
+    p8: $clr-p8
+);
+// DOM-Properties map
+$clr-typography-dom-to-type-element: (
+    alert-small_text: p4,
+    alert_text: p3,
+    card_link: p6,
+    card_text: p1,
+    card_title: h4,
+    datagrid_placeholder: h5,
+    datagrid_column_toggle_title: h5,
+    dropdown_text: p1,
+    dropdown_header: p4,
+    form_block_label: h5,
+    form_group_fields: p3,
+    label_text: p7,
+    login_productName: h1,
+    login_subtitle: h3,
+    login_trademark: h2,
+    modal_header: h3,
+    nav_title: h5,
+    page_introParagraph: h5,
+    page_bodyText: p1,
+    page_mainHeading: h2,
+    page_secondaryHeading: h3,
+    page_sectionHeader: h5,
+    page_tertiaryHeading: h4,
+    sidenav_sectionHeader: h6,
+    sidenav_text: p1,
+    stackview_header: p2,
+    stackview_text: p3,
+    tab_text: p1,
+    table_header: p6,
+    table_text: p3,
+    toc_header: h6,
+    toc_text: p1,
+    tooltip_text: p3,
+    vertical_nav_header: p4
+);
+

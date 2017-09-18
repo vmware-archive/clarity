@@ -2,91 +2,44 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-$clr-padding-top-bottom: 0.125rem !default;
-$clr-padding-left-right: 0.5rem !default;
-
-// TODO: use contrast color generators instead of hard-coded color vars
-$clr-label-colors: (
-    gray: (
-        background: $clr-gray,
-        font: $clr-white
-    ),
-    purple: (
-        background: $clr-action-purple-light-midtone,
-        font: $clr-white
-    ),
-    blue: (
-        background: $clr-action-blue-dark,
-        font: $clr-white
-    ),
-    orange: (
-        background: $clr-yellow-light-midtone,
-        font: $clr-black
-    ),
-    light-blue: (
-        background: $clr-action-blue-lighter,
-        font: $clr-black
-    )
-) !default;
+// TODO: Split badges and labels into separate files.
 
 @mixin generateLabelStyles($color:gray,$alias:1) {
-    $color-map: map-get($clr-label-colors,$color);
+    $label-color-map: map-get($clr-label-colors,$color);
+    $badge-color-map: map-get($clr-badge-colors, $color);
+
     &.label-#{$color},&.label-#{$alias} {
-        border: $clr-default-borderwidth solid map-get($color-map,background);
+        border: $clr-default-borderwidth solid map-get($label-color-map,background);
     }
 
     &.clickable.label-#{$color} {
         &:hover, &:active {
             text-decoration: none;
-            background: $gray-light;
+            background: $clr-label-bg-hover-color;
         }
 
         &:active {
-            box-shadow: 0 $clr-default-borderwidth 0 0 map-get($color-map,background) inset;
+            box-shadow: 0 $clr-default-borderwidth 0 0 map-get($label-color-map,background) inset;
             transform: translateY(0.5px);
         }
     }
 
     &.label-#{$color} > .badge {
-        background: map-get($color-map,background);
-        color: map-get($color-map,font)
+        background: map-get($badge-color-map,background);
+        color: map-get($badge-color-map,font)
     }
 };
 
 @mixin generateBadgeStyles($color:gray,$alias:1) {
-    $color-map: map-get($clr-label-colors,$color);
+    $color-map: map-get($clr-badge-colors,$color);
     &.badge-#{$color},&.badge-#{$alias} {
         background: map-get($color-map,background);
         color: map-get($color-map,font)
     }
 };
 
-// TODO: use contrast color generators instead of hard-coded color vars
-$label-status: (
-    info: (
-        background: $action-blues-lightest,
-        font: $action-blues-dark,
-        border: $action-blues-light
-    ),
-    success: (
-        background: $greens-lightest,
-        font: $greens-dark,
-        border: $greens-light
-    ),
-    warning: (
-        background: $yellows-lighter,
-        font: $gray-darkest,
-        border: $yellows-light
-    ),
-    danger: (
-        background: $reds-lighter,
-        font: $reds-dark,
-        border: $reds-light
-    )
-);
-
 @mixin generateStatusLabelStyles($status:info) {
-    $status-map: map-get($label-status,$status);
+    $status-map: map-get($clr-label-status,$status);
     &.label-#{$status} {
         background: map-get($status-map,background);
         color: map-get($status-map,font);
@@ -94,28 +47,8 @@ $label-status: (
     }
 };
 
-// TODO: use contrast color generators instead of hard-coded color vars
-$badge-status: (
-    info: (
-        background: $action-blues-dark-midtone,
-        font: white
-        ),
-    success: (
-        background: $clr-green-dark-midtone,
-        font: white
-    ),
-    warning: (
-        background: $yellows-light,
-        font: black
-    ),
-    danger: (
-        background: $reds-dark-midtone,
-        font: white
-    )
-);
-
 @mixin generateStatusBadgeStyles($status:info) {
-    $status-map: map-get($badge-status,$status);
+    $status-map: map-get($clr-badge-status,$status);
     &.badge-#{$status} {
         background: map-get($status-map,background);
         color: map-get($status-map,font)
@@ -140,18 +73,18 @@ $badge-status: (
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        padding: 0 $clr-padding-left-right $label-nudge-for-vertical-alignment;
+        padding: 0 $clr-label-padding-left-right $label-nudge-for-vertical-alignment;
         border-radius: 0.5rem;
         border: $clr-default-borderwidth solid $gray-dark;
         height: 0.875rem;
         margin: 0 0.25rem 0 0;
         white-space: nowrap;
         // TODO: use contrast color generators instead of hard-coded color vars
-        color: clr-getTextColor();
+        color: $clr-label-font-color;
 
         // TODO: use contrast color generators instead of hard-coded color vars
         &:visited {
-            color: clr-getTextColor();
+            color: $clr-label-font-color;
         }
 
         &:focus, &:hover, &:active {
@@ -161,7 +94,7 @@ $badge-status: (
         // TODO: use contrast color generators instead of hard-coded color vars
         &.clickable {
             &:hover, &:active {
-                background: $gray-light;
+                background: $clr-label-bg-hover-color;
             }
 
             &:active {
@@ -212,11 +145,11 @@ $badge-status: (
         white-space: nowrap;
         text-align: center;
         // TODO: use contrast color generators instead of hard-coded color vars
-        color: $gray-lightest;
+        color: $clr-badge-font-color;
 
         // TODO: use contrast color generators instead of hard-coded color vars
         &:visited {
-            color: $gray-lightest;
+            color: $clr-badge-font-color;
         }
 
         @include generateBadgeStyles(gray, 1);

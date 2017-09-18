@@ -1,11 +1,8 @@
-// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
-// This software is released under MIT license.
-// The full license information can be found in LICENSE in the root directory of this project.
-
-$clr-modal-sm-width: 12rem !default;
-$clr-modal-md-width: 24rem !default;
-$clr-modal-lg-width: 36rem !default;
-$clr-modal-xl-width: 48rem !default;
+/*!
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
 
 .modal {
     position: fixed;
@@ -48,9 +45,9 @@ $clr-modal-xl-width: 48rem !default;
 
     .modal-content {
         padding: $clr-modal-content-padding-top $clr-modal-content-padding-right $clr-modal-content-padding-bottom $clr-modal-content-padding-left;
-        background-color: clr-getColor(lightest);
-        border-radius: $clr-default-borderradius;
-        box-shadow: 0 $modal-boxshadow-y $modal-boxshadow-spread $modal-boxshadow-spread rgba(0, 0, 0, 0.2);
+        background-color: $clr-modal-bg-color;
+        border-radius: $clr-global-borderradius;
+        box-shadow: 0 $modal-boxshadow-y $modal-boxshadow-spread $modal-boxshadow-spread $clr-modal-content-box-shadow-color;
     }
 
 }
@@ -72,6 +69,8 @@ $clr-modal-xl-width: 48rem !default;
         line-height: 1rem;
 
         clr-icon {
+            fill: $clr-modal-close-color;
+
             // per measurement, this results in an icon that is 16x16...
             width: 1rem;
             height: 1rem;
@@ -139,7 +138,7 @@ and (orientation: landscape) {
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: clr-getColor(darkest);
+    background-color: $clr-modal-backdrop-color;
     opacity: $clr-backdrop-opacity;
     z-index: map-get($clr-layers, modal-bg);
 }

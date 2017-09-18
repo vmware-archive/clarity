@@ -15,7 +15,6 @@
 
 @import "../../clarity-angular/utils/mixins.clarity";
 @import "../../clarity-angular/utils/helpers.clarity";
-//@import "./utils/normalize.clarity"; //Deleted
 
 //Color
 @import "../../clarity-angular/color/utils/colors.clarity";
@@ -28,7 +27,7 @@
 
 //Variables
 @import "../../clarity-angular/utils/variables.clarity"; // depends on helpers.clarity, color.clarity
-
+@import "../../clarity-angular/utils/maps.clarity";
 /* Clarity - End Part 1 */
 
 //Styles for Clarity Demos
@@ -38,7 +37,6 @@
     .main-container{
         height: auto;
         padding-top: 0;
-        background: $gray-lightest;
 
         .content-area{
             overflow-y: hidden;

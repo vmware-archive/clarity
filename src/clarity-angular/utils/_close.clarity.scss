@@ -3,8 +3,6 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @include exports('close.clarity') {
-    $close-color--normal: $gray-dark;
-    $close-color--hover: $clr-black;
 
     .close {
         transition: color linear 0.2s;

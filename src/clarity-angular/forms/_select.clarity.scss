@@ -1,18 +1,17 @@
-// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
-// This software is released under MIT license.
-// The full license information can be found in LICENSE in the root directory of this project.
+/*!
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
 
 @include exports("select.clarity") {
     .select {
         position: relative;
-        $select-hover-background: rgba(221, 221, 221, 0.5);
-        $select-after-color: $gray-dark-midtone;
-        $select-after-hover-color: $gray-dark;
 
         select {
             @include custom-inputs(1rem);
             @include clr-form-fields-appearance(2.5rem, $clr-form-field-border-color);
-            @include input-border-bottom-animation();
+            @include input-border-bottom-animation($clr-input-border-color);
 
             position: relative;
             padding: 0 ($clr-dropdown-caret-icon-dimension + 0.5rem) 0 0.25rem;
@@ -24,8 +23,8 @@
 
             &:hover,
             &:active {
-                border-color: $select-hover-background;
-                background: $select-hover-background;
+                border-color: $clr-select-hover-background;
+                background: $clr-select-hover-background;
             }
 
             &:disabled {
@@ -47,20 +46,20 @@
             top: (1rem - $clr-dropdown-caret-icon-dimension) / 2;
             right: 0.25rem;
             // TODO: get rid of generated icons
-            background-image: generateCaretIcon();
+            background-image: generateCaretIcon($clr-select-after-color);
             @include icon-background-styles();
             margin: 0;
         }
 
         &:hover::after {
-            color: $select-after-hover-color;
+            color: $clr-select-after-hover-color;
         }
 
         &.disabled {
             @include disabled-form-fields();
 
             &:hover::after {
-                color: $select-after-color;
+                color: $clr-select-after-color;
             }
         }
 
@@ -82,13 +81,10 @@
 
     //Multiple Select
     select[multiple], select[size] {
-        $clr-multiple-select-background: $clr-white;
-        $clr-multiple-select-border-color: $gray-light-midtone;
-
         padding: 0;
         background: $clr-multiple-select-background;
         border: $clr-default-borderwidth solid $clr-multiple-select-border-color;
-        border-radius: $clr-default-borderradius;
+        border-radius: $clr-global-borderradius;
         height: auto;
         min-width: 5rem;
 

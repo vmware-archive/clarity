@@ -1,0 +1,68 @@
+/*!
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+// Usage: ../typography/_typography.clarity.scss
+$clr-font: Metropolis, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !default; //Default font stack for Clarity
+
+// Usage: ../data/datagrid/_datagrid.clarity.scss
+// Usage: ../typography/_typography.clarity.scss
+$clr-app-font-color-primary: clr-getTextColor();
+
+// Usage: ../utils/_maps.clarity.scss
+$clr-altFont: $clr-font !default; //TODO: TBD. Alternative font for Clarity
+
+// Usage: ../code/syntax-highlight/_code.clarity.scss
+$clr-monoFont: Consolas, Monaco, Courier, monospace !default;
+
+// Usage: ../typography/_typography.clarity.scss
+// Usage: ../utils/_helpers.clarity.scss
+$clr-font-base-size: 14 !default;  // Moved to general for now. Needs a better general name
+
+// TODO abstract font-weights into variables.
+$clr-font-weights: (
+        light: 200,
+        regular: 400,
+        semibold: 500,
+        bold: 600
+) !default;
+
+// Usage: ../utils/_maps.clarity.scss
+$clr-kerning-lotsatext: normal !default; // 14px, but a lot of it
+$clr-kerning-smalltext: normal !default; // 14px-12px
+$clr-kerning-bigtext: 0.01em !default; // some types of 16px over dark background
+$clr-kerning-tinytext: 0.03em !default; // 11px and lower
+$clr-typography-lightfont: map-get($clr-font-weights,light);
+$clr-typography-regfont: map-get($clr-font-weights,regular);
+$clr-typography-sboldfont: map-get($clr-font-weights,semibold);
+$clr-typography-boldfont: map-get($clr-font-weights,bold);
+
+// Usage: ../utils/_maps.clarity.scss
+// Paragraphs
+$clr-typography-smalltext: 0.541667rem !default; // 13px
+$clr-typography-xsmalltext: 0.5rem !default; // 12px
+$clr-typography-xxsmalltext: 0.458333rem !default; // 11px
+$clr-typography-tinytext: 0.416667rem !default; // 10px
+
+// Header colors
+$clr-h1-color: $clr-black;
+$clr-h2-color: $clr-black;
+$clr-h3-color: $clr-black;
+$clr-h4-color: $clr-black;
+$clr-h5-color: $clr-dark-gray;
+$clr-h6-color: $clr-near-black;
+
+// Paragraph colors
+$clr-p1-color: $clr-app-font-color-primary;
+$clr-p2-color: $clr-app-font-color-primary;
+$clr-p3-color: $clr-app-font-color-primary;
+$clr-p4-color: $clr-dark-gray;
+$clr-p5-color: $clr-dark-gray;
+$clr-p6-color: $clr-dark-gray;
+$clr-p7-color: $clr-dark-gray;
+$clr-p8-color: $clr-dark-gray;
+
+// Usage: ../typography/_typography.clarity.scss
+$clr-typography-commonmap-key: "clr-common";

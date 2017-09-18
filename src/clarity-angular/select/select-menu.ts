@@ -24,6 +24,10 @@ import {RootSelectService} from "./providers/select.service";
 
 @Component({
     selector: "clr-select-menu",
+    host: {
+        "[class.clr-select-menu]": "true",
+        "role": "listbox"
+    },
     template: `
     <ul>
         <ng-content></ng-content>
@@ -37,7 +41,7 @@ export class SelectMenu extends AbstractPopover {
         this.anchorPoint = Point.BOTTOM_LEFT;
         this.popoverPoint = Point.LEFT_TOP;
 
-        this.popoverOptions.allowMultipleOpen = true;
+        this.popoverOptions.allowMultipleOpen = false;
         this.closeOnOutsideClick = true;
     }
 }

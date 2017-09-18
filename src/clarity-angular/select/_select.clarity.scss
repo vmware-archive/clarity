@@ -1,25 +1,26 @@
 @include exports('select.clarity') {
-    clr-select clr-select-menu ul {
-        list-style-type: none   
+    .clr-select .clr-select-menu ul {
+        list-style-type: none
     }
-    clr-option  li:hover, li.highlight {
-        background: #eee
+    .clr-option {
+        display: list-item;
+        text-align: -webkit-match-parent;
+        padding-left: 15px
     }
-    clr-option  li:active, li.selected {
+    .clr-option:hover,
+    .clr-option.highlight {
+        background: $gray-light
+    }
+    .clr-option:active,
+    .clr-option.selected {
         background: #D9E4EA
-    }
-
-    //Dropdown Menu
-    clr-select-menu > * {
+    } //Dropdown Menu
+    .clr-select-menu>* {
         display: block;
-        white-space: nowrap;
     }
-
-    clr-select-menu {
+    .clr-select-menu {
         position: absolute;
-        top: 100%;
         left: 0;
-        margin-top: 4px;
         display: flex;
         flex-direction: column;
         background: $dropdown-white;
@@ -31,22 +32,20 @@
         border-radius: $clr-default-borderradius;
         visibility: hidden;
         z-index: 1;
-        
         .select-header {
             @include clr-getTypePropertiesForDomElement(dropdown_header, (font-size, font-weight, letter-spacing));
-            
             padding: 0 $clr_baselineRem_0_5;
             line-height: $clr_baselineRem_0_75;
             margin: 0;
             color: clr-getColor(darkest);
-
             @extend %dropdown-content;
         }
-        .wrapper {
-            padding-left: 15px
-        }
     }
-    clr-icon{
-        margin-left: -20px;
+    .open-trigger {
+        margin-left: -50px !important;
+        color: $gray !important;
+    }
+    .loading {
+        padding-left: 15px;
     }
 }

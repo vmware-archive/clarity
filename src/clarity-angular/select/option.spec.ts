@@ -28,7 +28,7 @@ class TestComponent {
     selected: any;
 }
 
-describe("Select", () => {
+describe("Option", () => {
     let fixture: ComponentFixture<any>;
     let compiled: any;
 
@@ -51,19 +51,7 @@ describe("Select", () => {
         return componentFixture.componentInstance.selectInstance;
     }
 
-    it("toggles the menu when clicked on the carret", () => {
-        const menuToggl: HTMLElement = compiled.querySelector(".open-trigger");
-
-        expect(compiled.querySelector(".clr-select-menu")).toBeNull();
-        menuToggl.click();
-        // detect the click
-        fixture.detectChanges();
-        expect(compiled.querySelector(".clr-select-menu")).not.toBeNull();
-
-        // click the dropdown toggle again to close the menu
-        menuToggl.click();
-        // detect the click
-        fixture.detectChanges();
-        expect(compiled.querySelector(".clr-select-menu")).toBeNull();
+    it("init", () => {
+        expect(true).toBeTruthy();
     });
 });

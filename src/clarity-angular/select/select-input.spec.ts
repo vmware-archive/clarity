@@ -10,6 +10,7 @@ import {By} from "@angular/platform-browser";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 import {Select} from "./select";
+import {SelectInput} from "./select-input";
 import {ClrSelectModule} from "./select.module";
 
 @Component({
@@ -25,10 +26,11 @@ import {ClrSelectModule} from "./select.module";
 class TestComponent {
     @ViewChild(Select) selectInstance: Select;
 
+
     selected: any;
 }
 
-describe("Select", () => {
+describe("SelectInput", () => {
     let fixture: ComponentFixture<any>;
     let compiled: any;
 
@@ -51,19 +53,43 @@ describe("Select", () => {
         return componentFixture.componentInstance.selectInstance;
     }
 
-    it("toggles the menu when clicked on the carret", () => {
-        const menuToggl: HTMLElement = compiled.querySelector(".open-trigger");
+    it("pushes input to selectsService on input", () => {
+        const input = compiled.querySelector("input");
+        compiled.querySelector("input").value = "test";
+        input.dispatchEvent(new Event("input"));
+        fixture.detectChanges();
+        expect(getSelectInstance(fixture).selectService.input).toBe("test");
+    });
 
+    it("opens menu if not already open @ arrow down", () => {
+        const input = compiled.querySelector("input");
         expect(compiled.querySelector(".clr-select-menu")).toBeNull();
-        menuToggl.click();
-        // detect the click
+        input.dispatchEvent(new KeyboardEvent("keypress", {key: "ArrowDown"}));
+        // detect the arrow down
+        fixture.detectChanges();
+        expect(compiled.querySelector(".clr-select-menu")).not.toBeNull();
+    });
+
+    it("closes menu after selecting an option", () => {
+        const input = compiled.querySelector("input");
+        expect(compiled.querySelector(".clr-select-menu")).toBeNull();
+
+        input.dispatchEvent(new KeyboardEvent("keypress", {key: "ArrowDown"}));
+
         fixture.detectChanges();
         expect(compiled.querySelector(".clr-select-menu")).not.toBeNull();
 
-        // click the dropdown toggle again to close the menu
-        menuToggl.click();
-        // detect the click
+        input.dispatchEvent(new KeyboardEvent("keypress", {key: "Enter"}));
         fixture.detectChanges();
+
         expect(compiled.querySelector(".clr-select-menu")).toBeNull();
+    });
+    it("input gets focused on if open status of select-menu changes", () => {
+        const menuToggl: HTMLElement = compiled.querySelector(".open-trigger");
+        const input: HTMLInputElement = compiled.querySelector("input");
+        spyOn(input, "focus");
+        menuToggl.click();
+        fixture.detectChanges();
+        expect(input.focus).toHaveBeenCalled();
     });
 });

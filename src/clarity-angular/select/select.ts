@@ -1,3 +1,4 @@
+import {AfterViewInit} from "@angular/core";
 /*
  * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
@@ -5,7 +6,6 @@
  */
 import {ViewChild} from "@angular/core";
 import {
-    AfterViewInit,
     Component,
     ContentChildren,
     ElementRef,
@@ -18,45 +18,73 @@ import {
     QueryList,
     SkipSelf
 } from "@angular/core";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {Subscription} from "rxjs/Subscription";
 
 import {IfOpenService} from "../utils/conditional/if-open.service";
 
-import {State} from "./interfaces/state";
 import {Option} from "./option";
-import {ROOT_SELECT_PROVIDER, RootSelectService} from "./providers/select.service";
+import {RootSelectService} from "./providers/select.service";
 import {SelectInput} from "./select-input";
 import {SelectMenu} from "./select-menu";
 
-@Component({selector: "clr-select", templateUrl: "./select.html", providers: [IfOpenService, ROOT_SELECT_PROVIDER]})
+@Component({
+    selector: "clr-select",
+    templateUrl: "./select.html",
+    host: {"[class.clr-select]": "true"},
+    providers: [
+        IfOpenService, RootSelectService,
+        {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => Select), multi: true}
+    ]
+})
 /**
  * Basic Version very much WIP
  */
-export class Select implements OnDestroy {
+export class Select implements OnDestroy, ControlValueAccessor, AfterViewInit {
     @ContentChildren(Option) options: QueryList<Option>;
+    @ViewChild(SelectMenu) selectMenu: ElementRef;
     private model: any;
+    private input: string;
     private _loading: boolean;
     private _clrLoadingText: string;
     private _subOpen: Subscription;
     private _subInput: Subscription;
-    private _subSpecialKeys: Subscription;
-    @ViewChild(SelectMenu) selectMenu: ElementRef;
+    private _subHighlighted: Subscription;
 
+    /**
+     *
+     *
+     * @param {IfOpenService} ifOpenService
+     * @param {RootSelectService} selectService
+     * @memberof Select
+     */
     constructor(public ifOpenService: IfOpenService, public selectService: RootSelectService) {
-        this._subOpen = ifOpenService.openChange.subscribe((value) => {
-            if (value === true) {
-                this.selectService.highlighted = this.options.first;
-            }
-        });
-        this._subInput = selectService.input.subscribe((input: string) => {
+        this._subInput = selectService.inputChange.subscribe((input: string) => {
             this.handleInput(input);
         });
-        this._subSpecialKeys = selectService.specialKey.subscribe((specialKeys: string) => {
-            this.handleSpecialKeys(specialKeys);
+        this._subOpen = ifOpenService.openChange.subscribe((value: boolean) => {
+            if (value === false) {
+                this.onTouchedCallback();
+            }
+        });
+        this._subHighlighted = selectService.highlightedChange.subscribe((option: Option) => {
+            if (this.selectService.highlighted) {
+                this.model = this.selectService.highlighted.clrValue;
+                this.onChangeCallback(this.selectService.highlighted.clrValue);
+            }
         });
     }
+    ngAfterViewInit() {
+        this.processOptions();
 
-    @Output("clrDgRefresh") public refresh = new EventEmitter<State>(false);
+        this.options.changes.subscribe(_ => this.processOptions());
+    }
+
+    private processOptions(): void {
+        this.selectService.options = this.options.toArray();
+    }
+
+    @Output("clrRefresh") public refresh = new EventEmitter<string>(false);
 
     /**
      * Shows a loading message
@@ -64,10 +92,12 @@ export class Select implements OnDestroy {
     public get loading(): boolean {
         return this._loading;
     }
+    @Output("clrLoadingChange") clrLoadingChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    @Input("clrDgLoading")
+    @Input("clrLoading")
     public set loading(value: boolean) {
         this._loading = value;
+        this.clrLoadingChange.next(value);
     }
 
     @Input()
@@ -78,20 +108,10 @@ export class Select implements OnDestroy {
         return this._clrLoadingText;
     }
 
-    get ngModel() {
-        return this.model;
-    }
-    @Input()
-    set ngModel(model: any) {
-        this.model = model;
-        this.ngModelChange.next(model);
-    }
-    @Output("ngModelChange") ngModelChange: EventEmitter<any> = new EventEmitter<any>();
-
     ngOnDestroy() {
-        this._subOpen.unsubscribe();
         this._subInput.unsubscribe();
-        this._subSpecialKeys.unsubscribe();
+        this._subHighlighted.unsubscribe();
+        this._subOpen.unsubscribe();
     }
     /**
      * Opens the select menu on input and filters the options
@@ -100,86 +120,52 @@ export class Select implements OnDestroy {
      * @memberof Select
      */
     handleInput(input: string) {
-        const state: State = {search: input};
-        this.refresh.emit(state);
-        if (input !== "") {
+        this.refresh.emit(this.input = input);
+        if (input !== "" && input !== undefined && input !== null) {
             this.ifOpenService.open = true;
             this.options.map((option) => {
                 // this is quite restrictive as it its case-sensitive right now, is that expected behaviour ?
-                if (input && option.clrTitle.indexOf(input) === -1) {
+                if (input && option.toString().indexOf(input) === -1) {
                     option.visible = false;
                 } else {
                     option.visible = true;
                 }
             });
         } else {
-            this.ifOpenService.open = false;
-            this.options.map((option) => {
-                option.visible = true;
-            });
-        }
-        if (this.selectService.selected &&
-            input.toLowerCase().indexOf(this.selectService.selected.clrTitle.toLowerCase()) === -1) {
-            this.selectService.selected = null;
-            this.ngModel = null;
-        }
-    }
-    /**
-     * Handles ArrowUp, -Down and Enter
-     *
-     * @param {string} key
-     * @returns
-     * @memberof Select
-     */
-    handleSpecialKeys(key: string) {
-        if (key === "ArrowUp") {
-            this.selectService.highlighted = this.getPrevOption(this.selectService.highlighted);
-        } else if (key === "ArrowDown") {
-            if (!this.ifOpenService.open) {
-                this.ifOpenService.open = true;
-                const state: State = {search: ""};
-                this.refresh.emit(state);
-                return;
-            }
-            this.selectService.highlighted = this.getNextOption(this.selectService.highlighted);
-        } else if (key === "Enter") {
-            if (this.ifOpenService.open && this.selectService.highlighted != null) {
-                this.selectOption(this.selectService.highlighted);
+            if (!this.options || this.options.length === 0) {
                 this.ifOpenService.open = false;
+            } else {
+                this.options.map((option) => {
+                    option.visible = true;
+                });
             }
         }
-    }
-    selectOption(option: Option) {
-        this.selectService.selected = option;
-        this.ngModel = option.clrValue;
-        this.selectService.input = option.clrTitle;
-    }
-    getPrevOption(pivotOption: Option): Option {
-        const availableOptions = this.options.filter((option: Option) => {
-            return option.visible;
-        });
-        if (availableOptions[0] === pivotOption) {
-            return pivotOption;
+        if (this.selectService.selected && input &&
+            input.toLowerCase().indexOf(this.selectService.selected.toString().toLowerCase()) === -1) {
+            this.selectService.selected = null;
+            this.model = null;
         }
-        const elementPos = availableOptions
-                               .map((x) => {
-                                   return x.clrValue;
-                               })
-                               .indexOf(pivotOption.clrValue);
-        return availableOptions[elementPos - 1];
     }
-    getNextOption(pivotOption: Option): Option {
-        const availableOptions = this.options.filter((option: Option) => {
-            return option.visible;
-        });
-        if (availableOptions[availableOptions.length - 1] === pivotOption) {
-            return pivotOption;
-        }
-        const elementPos = availableOptions
-                               .map((x) => {
-                                   return x.clrValue;
-                               })
-                               .indexOf(pivotOption.clrValue);
-        return availableOptions[elementPos + 1];
+    writeValue(obj: any) {
+        this.selectService.input = obj;
+    }
+    /*
+     * These callbacks will be given to us through the ControlValueAccessor interface,
+     * and we need to call them when the user interacts with the checkbox.
+     */
+    private onChangeCallback = (_: any) => {};
+
+    registerOnChange(onChange: any): void {
+        this.onChangeCallback = onChange;
+    }
+
+    private onTouchedCallback = () => {};
+
+    registerOnTouched(onTouched: any): void {
+        this.onTouchedCallback = onTouched;
+    }
+
+    onMenuTriggerClick(e: Event) {
+        this.ifOpenService.toggleWithEvent(e);
     }
 }

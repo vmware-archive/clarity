@@ -5,7 +5,6 @@
  */
 import {Component} from "@angular/core";
 
-import {State} from "./../../../../clarity-angular/select/interfaces/state";
 import {FetchResult, Inventory} from "./../../../datagrid/inventory/inventory";
 
 @Component({
@@ -25,10 +24,11 @@ export class BasicSelectDemo {
         this.optionsAFewMore = inventory.all.slice(0, 20);
         this.options = inventory.all.slice(0, 10);
     }
-    loadOptionsFromServer(state: State) {
+    loadOptionsFromServer(input: string) {
+        if (input == undefined || input == null) return;
         this.loading = true;
         this.inventory.latency = 500;
-        this.inventory.filter({"name": [state.search]}).fetch().then((result: FetchResult) => {
+        this.inventory.filter({"name": [input]}).fetch().then((result: FetchResult) => {
             this.optionsFromServer = result.users;
             this.loading = false;
         });

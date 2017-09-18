@@ -9,8 +9,7 @@ import {Option} from "./option";
 import {Select} from "./select";
 import {SelectInput} from "./select-input";
 import {SelectMenu} from "./select-menu";
-import {SelectMenuTrigger} from "./select-menu-trigger";
 
 export * from "./select";
 
-export const SELECT_DIRECTIVES: Type<any>[] = [Select, Option, SelectInput, SelectMenu, SelectMenuTrigger];
+export const SELECT_DIRECTIVES: Type<any>[] = [Select, Option, SelectInput, SelectMenu];

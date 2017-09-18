@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {AfterViewInit, Component, ElementRef, HostListener, Input, OnDestroy, ViewChild} from "@angular/core";
+import { Component, ElementRef, HostListener, Input, OnDestroy, ViewChild} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
 import {DetailWrapper} from "./../../app/datagrid/expandable-rows/detail-wrapper";
@@ -13,23 +13,19 @@ import {Select} from "./select";
 
 @Component({
     selector: "clr-option",
-    template: `
-    <li *ngIf="visible" [class.highlight]="highlight" [class.selected]="selected">
-        <div class="wrapper" #contentWrapper>
-            <ng-content></ng-content>
-        </div>
-        <div class="wrapper" #contentWrapper *ngIf="contentWrapper.children.length == 0">
-            {{clrTitle}}
-        </div>  
-    </li>
-    `
+    host: {
+        "[class.clr-option]": "true",
+        "[class.highlight]": "_highlight",
+        "[class.selected]": "_selected",
+        "role": "option"
+    },
+    template: `<ng-content *ngIf="visible"></ng-content>`
 })
-export class Option implements OnDestroy, AfterViewInit {
+export class Option implements OnDestroy {
     private _value: String;
-    private _title: String;
     private _visible: boolean = true;
-    private _highlight: boolean = false;
-    private _selected: boolean = false;
+    public _highlight: boolean = false;
+    public _selected: boolean = false;
     private _subHighlighted: Subscription;
     private _subSelected: Subscription;
     private _subInput: Subscription;  // TODO: implement bold as hint
@@ -43,7 +39,6 @@ export class Option implements OnDestroy, AfterViewInit {
             } else {
                 this.highlight = false;
             }
-            this.el.nativeElement.scrollTop = 10;
         });
         this._subSelected = this.selectService.selectedChange.subscribe((value: Option) => {
             if (value && value === this) {
@@ -59,23 +54,16 @@ export class Option implements OnDestroy, AfterViewInit {
      * @memberof Option
      */
     @Input("clrValue")
-    set clrValue(value: String) {
+    set clrValue(value: any) {
         this._value = value;
     }
-    get clrValue() {
+    get clrValue(): any {
         return this._value;
     }
-    /**
-     * [ngTitle] defines the value filterable
-     *
-     * @memberof Option
-     */
-    @Input("clrTitle")
-    set clrTitle(title: String) {
-        this._title = title;
-    }
-    get clrTitle() {
-        return this._title;
+
+    toString(): string {
+        const element = this.el.nativeElement
+        return element.innerText || element.textContent;
     }
 
     /**
@@ -95,7 +83,6 @@ export class Option implements OnDestroy, AfterViewInit {
      *
      * @memberof Option
      */
-    @Input("visible")
     set visible(visible: boolean) {
         this._visible = visible;
     }
@@ -135,6 +122,7 @@ export class Option implements OnDestroy, AfterViewInit {
     }
 
     ngOnDestroy() {
+        this._subSelected.unsubscribe();
         this._subHighlighted.unsubscribe();
     }
 }

@@ -7,27 +7,36 @@ import {Injectable, Optional, SkipSelf} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 
+import {IfOpenService} from "./../../utils/conditional/if-open.service";
 import {Option} from "./../option";
 
 @Injectable()
 export class RootSelectService {
     private _changes: Subject<boolean> = new Subject<boolean>();
-    private _input: Subject<string> = new Subject<string>();
+    private _input: string;
+    private _inputChange: Subject<string> = new Subject<string>();
     private _specialKey: Subject<string> = new Subject<string>();
     private _highlightedChange: Subject<Option> = new Subject<Option>();
+    private _selectedChange: Subject<Option> = new Subject<Option>();
     public _highlighted: Option;
     public _selected: Option;
-    private _selectedChange: Subject<Option> = new Subject<Option>();
+    public _options: Option[];
+    private _optionsChange: Subject<Option[]> = new Subject<Option[]>();
 
+    //    constructor(private ifOpenService: IfOpenService) {}
 
     get changes(): Observable<boolean> {
         return this._changes.asObservable();
     }
-    get input(): any {
-        return this._input.asObservable();
+    get input(): string {
+        return this._input;
     }
-    set input(input: any) {
-        this._input.next(input);
+    set input(input: string) {
+        this._input = input;
+        this._inputChange.next(input);
+    }
+    public get inputChange(): Observable<string> {
+        return this._inputChange.asObservable();
     }
 
     get specialKey(): any {
@@ -62,17 +71,57 @@ export class RootSelectService {
         this._selectedChange.next(this._selected);
     }
 
+    get options(): Option[] {
+        return this._options;
+    }
+
+    set options(options: Option[]) {
+        this._options = options;
+        this._optionsChange.next(options);
+    }
+
     closeMenus(): void {
         this._changes.next(false);
+    }
+
+    focusPrevious() {
+        const availableOptions = this.options.filter((option: Option) => {
+            return option.visible;
+        });
+        if (availableOptions[0] === this.highlighted) {
+            return;
+        }
+        const elementPos = availableOptions
+                               .map((x) => {
+                                   if (x) return x.clrValue;
+                               })
+                               .indexOf(this.highlighted.clrValue);
+        this.highlighted = availableOptions[elementPos - 1];
+    }
+    focusNext() {
+        if (!this.highlighted) {
+            this.highlighted = this.options[0];
+            return;
+        }
+        const availableOptions = this.options.filter((option: Option) => {
+            return option.visible;
+        });
+        if (availableOptions[availableOptions.length - 1] === this.highlighted) {
+            return;
+        }
+        const elementPos = availableOptions
+                               .map((x) => {
+                                   if (x) return x.clrValue;
+                               })
+                               .indexOf(this.highlighted.clrValue);
+        this.highlighted = availableOptions[elementPos + 1];
+    }
+    selectCurrentFocused() {
+        this.selected = this.highlighted;
+        this.input = this.highlighted.toString();
     }
 }
 
 export function clrRootSelectFactory(existing: RootSelectService) {
     return existing || new RootSelectService();
 }
-
-export const ROOT_SELECT_PROVIDER = {
-    provide: RootSelectService,
-    useFactory: clrRootSelectFactory,
-    deps: [[new Optional(), new SkipSelf(), RootSelectService]]
-};

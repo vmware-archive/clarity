@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 /*
  * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
@@ -14,7 +15,7 @@ import {SelectsDemo} from "./selects.demo";
 import {ROUTING} from "./selects.demo.routing";
 
 @NgModule({
-    imports: [CommonModule, ClarityModule, ROUTING],
+    imports: [CommonModule, ClarityModule, ROUTING,FormsModule],
     declarations: [SelectsDemo, SelectAngularDemo, BasicSelectDemo],
     exports: [SelectsDemo, SelectAngularDemo, BasicSelectDemo]
 })

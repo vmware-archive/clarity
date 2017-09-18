@@ -2,8 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-$dropdown-white: clr-getColor(lightest);
-
 %dropdown-content {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -17,7 +15,6 @@ $dropdown-white: clr-getColor(lightest);
 
         .dropdown-toggle {
             display: inline-block;
-
             position: relative;
             margin: 0;
             white-space: nowrap;
@@ -32,7 +29,6 @@ $dropdown-white: clr-getColor(lightest);
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
-
                 color: inherit;
                 height: $clr-dropdown-caret-icon-dimension;
                 width: $clr-dropdown-caret-icon-dimension;
@@ -48,7 +44,7 @@ $dropdown-white: clr-getColor(lightest);
 
             &:not(.btn) {
                 padding: 0 $clr-dropdown-caret-icon-dimension + $clr-dropdown-caret-left-margin 0 0;
-
+                color:$clr-dropdown-active-text-color;
                 clr-icon[shape^="caret"] {
                     right: 0;
                 }
@@ -59,6 +55,7 @@ $dropdown-white: clr-getColor(lightest);
             background: transparent;
             border: none;
             cursor: pointer;
+            color: $clr-dropdown-active-text-color;
         }
     }
 
@@ -75,23 +72,23 @@ $dropdown-white: clr-getColor(lightest);
         margin-top: 0.083333rem;
         display: flex;
         flex-direction: column;
-        background: $dropdown-white;
+        background: $clr-dropdown-bg-color;
         padding: 0.5rem 0;
-        border: $clr-default-borderwidth solid clr-getColor(light-midtone);
-        box-shadow: 0 $clr-default-borderwidth 0.125rem rgba(clr-getColor(dark), 0.25);
+        border: $clr-default-borderwidth solid $clr-dropdown-border-color;
+        box-shadow: 0 $clr-default-borderwidth 0.125rem $clr-dropdown-box-shadow;
         min-width: 5rem;
         max-width: 15rem;
-        border-radius: $clr-default-borderradius;
+        border-radius: $clr-global-borderradius;
         visibility: hidden;
         z-index: map-get($clr-layers, dropdown-menu);
-        
+
         .dropdown-header {
             @include clr-getTypePropertiesForDomElement(dropdown_header, (font-size, font-weight, letter-spacing));
-            
+
             padding: 0 0.5rem;
             line-height: 0.75rem;
             margin: 0;
-            color: clr-getColor(darkest);
+            color: $clr-dropdown-header-color;
 
             @extend %dropdown-content;
         }
@@ -112,11 +109,10 @@ $dropdown-white: clr-getColor(lightest);
         .btn-link,
         .dropdown-item {
             @include clr-getTypePropertiesForDomElement(dropdown_text, (font-size, letter-spacing, font-weight));
-            $dropdown-text-color: clr-getTextColor();
 
             background: transparent;
             border: 0;
-            color: $dropdown-text-color;
+            color: $clr-dropdown-item-text-color;
             cursor: pointer;
             display: block;
             margin: 0;
@@ -128,8 +124,8 @@ $dropdown-white: clr-getColor(lightest);
 
             &:hover,
             &:focus {
-                background-color: $gray-light;
-                color: $dropdown-text-color;
+                background-color: $clr-dropdown-bg-hover-color;
+                color: $clr-dropdown-item-text-color;
                 text-decoration: none;
             }
 
@@ -152,8 +148,8 @@ $dropdown-white: clr-getColor(lightest);
             }
 
             &.active {
-                background: $clr-selection-color;
-                color: $clr-black;
+                background: $clr-dropdown-selection-color;
+                color: $clr-dropdown-active-text-color;
             }
 
             &:active {
@@ -198,7 +194,7 @@ $dropdown-white: clr-getColor(lightest);
         }
 
         .dropdown-divider {
-            border-bottom: $clr-default-borderwidth solid clr-getColor(light);
+            border-bottom: $clr-default-borderwidth solid $clr-dropdown-divider-color;
             margin: 0.25rem 0;
         }
     }
@@ -289,7 +285,7 @@ $dropdown-white: clr-getColor(lightest);
             // -1 is to account for the border that shifts the menu down by 1 pixel
 
             .dropdown-menu {
-                border-color: $clr-dark-midtone-gray;
+                border-color: $clr-dropdown-child-border-color;
                 position: absolute;
             }
 

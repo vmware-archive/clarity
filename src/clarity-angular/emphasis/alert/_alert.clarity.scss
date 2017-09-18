@@ -2,68 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-$clr-app-level-alert-color: $clr-white !default;
-$clr-icon-margin-right: 0.25rem !default;
-
-//Regular Alert
-$clr-alert-top-margin: 0.25rem !default;
-$clr-alert-min-height: 1.5rem !default;
-$clr-alert-horizontal-padding: 0.5rem !default;
-$clr-alert-top-padding: 0.125rem !default;
-$clr-alert-bottom-padding: 0.375rem !default;
-$clr-alert-item-min-height: $clr-alert-icon-dimension-sm !default;
-
-$clr-alert-colors: (
-        info: (
-                background: $clr-action-blue-lightest,
-                font: $clr-dark-gray,
-                border: $clr-action-blue-light,
-                icon-color: $clr-action-blue
-        ),
-        success: (
-                background: $clr-green-lightest,
-                font: $clr-dark-gray,
-                border: $clr-green,
-                icon-color: $clr-green-dark-midtone
-        ),
-        warning: (
-                background: $clr-yellow-lighter,
-                font: $clr-dark-gray,
-                border: $clr-yellow,
-                icon-color: $clr-dark-gray
-        ),
-        danger: (
-                background: $clr-red-lighter,
-                font: $clr-dark-gray,
-                border: $clr-red-light,
-                icon-color: $clr-red
-        ),
-        app-info: (
-                background: $clr-action-blue,
-                font: $clr-app-level-alert-color,
-                border: none,
-                icon-color: $clr-app-level-alert-color
-        ),
-        app-success: (
-                background: $clr-green-light-midtone,
-                font: $clr-app-level-alert-color,
-                border: none,
-                icon-color: $clr-app-level-alert-color
-        ),
-        app-warning: (
-                background: $clr-yellow-dark,
-                font: $clr-app-level-alert-color,
-                border: none,
-                icon-color: $clr-app-level-alert-color
-        ),
-        app-danger: (
-                background: $clr-red,
-                font: $clr-app-level-alert-color,
-                border: none,
-                icon-color: $clr-app-level-alert-color
-        )
-) !default;
-
 @mixin generateAlertType($alertType: "info") {
     $propMap: map-get($clr-alert-colors, $alertType);
     background: map-get($propMap, background);
@@ -126,11 +64,11 @@ $clr-alert-colors: (
     //close alert button.
     .alert-item > span,
     .alert-text {
-        display: inline-block;
+        display: inline-block; //needed for IE11
         flex-grow: 1;
         flex-shrink: 1;
         flex-basis: 98%; //needed for IE11
-        max-width: 98%;
+        max-width: 98%; //needed for IE11
         margin-right: 0.5rem;
         text-align: left;
     }
@@ -143,7 +81,7 @@ $clr-alert-colors: (
         display: flex;
         flex-direction: row;
         width: auto;
-        border-radius: $clr-default-borderradius;
+        border-radius: $clr-global-borderradius;
         margin-top: $clr-alert-top-margin;
 
         @include generateAlertType(info);
@@ -192,6 +130,12 @@ $clr-alert-colors: (
             .dropdown-item {
                 @include clr-getTypePropertiesForDomElement(dropdown_text, (color, font-size, line-height, letter-spacing));
             }
+
+            .dropdown {
+                .dropdown-toggle {
+                    color: $clr-alert-action-color;
+                }
+            }
         }
 
         .alert-action:not(:last-child) {
@@ -200,14 +144,21 @@ $clr-alert-colors: (
 
         .alert-action,
         .dropdown-toggle {
-            color: $clr-dark-gray;
+            color: $clr-alert-action-color;
             text-decoration: underline;
 
             &:active {
-                color: $action-purples-darker;
+                color: $clr-alert-action-active-color;
             }
         }
 
+        .alert-action {
+            button.dropdown-toggle:not(.btn) {
+                background: transparent;
+                cursor: pointer;
+                color: $clr-dropdown-text-color;
+            }
+        }
         .dropdown-toggle:not(.btn) {
             display: inline-block;
             background: transparent;
@@ -290,13 +241,13 @@ $clr-alert-colors: (
         }
 
         .close {
-            color: $clr-app-level-alert-color;
+            color: $clr-app-alert-close-icon-color;
             opacity: 0.8;
             height: 1.5rem;
             overflow: hidden;
 
             clr-icon {
-                fill: $clr-app-level-alert-color;
+                fill: $clr-app-alert-close-icon-color;
                 margin-top: -0.208333rem;
             }
 

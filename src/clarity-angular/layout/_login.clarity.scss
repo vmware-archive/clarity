@@ -2,10 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-$clr-login-background-color: $clr-white !default;
-$clr-login-width: 21rem !default;
-$clr-login-icon-size: $clr-icon-dimension-sm !default;
-
 @include exports('login.clarity') {
     .login-wrapper {
         display: flex;
@@ -33,6 +29,7 @@ $clr-login-icon-size: $clr-icon-dimension-sm !default;
                     line-height: 1.5rem;
                 }
                 .hint {
+                    @include clr-getTypePropertiesForDomElement(login_productName, (color));
                     margin-top: 1.25rem;
                     font-size: 0.5833rem;
                 }
@@ -73,7 +70,7 @@ $clr-login-icon-size: $clr-icon-dimension-sm !default;
                     // TODO: use contrast checker vs. known background?
                     background: clr-getColor(dark-midtone, reds);
                     color: $clr-login-background-color;
-                    border-radius: $clr-default-borderradius;
+                    border-radius: $clr-global-borderradius;
                     line-height: 0.75rem;
 
                     &:before {

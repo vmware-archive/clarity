@@ -14,8 +14,6 @@
 
     .radio,
     .radio-inline {
-        $radio-checked-box-shadow: inset 0 0 0 0.25rem $clr-form-field-background-color;
-        $radio-focused-box-shadow: 0 0 $clr-outline-blur $clr-outline-spread $clr-outline-color;
 
         position: relative;
 
@@ -40,30 +38,31 @@
 
         //Checked Radio Styles
         input[type="radio"]:checked + label::before {
-            box-shadow: $radio-checked-box-shadow;
+            box-shadow: $clr-radio-checked-box-shadow;
             border: none;
         }
 
         //Outline color for unchecked radios
         input[type="radio"]:focus + label::before {
             outline: 0;
-            box-shadow: $radio-focused-box-shadow;
+            box-shadow: $clr-radio-focused-box-shadow;
         }
 
         //Outline color for checked radios
         input[type="radio"]:focus:checked + label::before {
             outline: 0;
-            box-shadow: $radio-checked-box-shadow, $radio-focused-box-shadow;
+            box-shadow: $clr-radio-checked-box-shadow, $clr-radio-focused-box-shadow;
         }
 
         &.disabled {
             label {
                 @include disabled-form-fields();
+                color: $clr-radio-disabled-font-color; // font color
             }
 
             input[type="radio"]:checked + label::before {
-                background-color: $clr-form-disabled-background-color;
-                box-shadow: $radio-checked-box-shadow;
+                background-color: $clr-radio-disabled-bg-color; // 'dot' color
+                box-shadow: $clr-radio-disabled-checked-box-shadow; //background-color around the dot
             }
         }
     }

@@ -2,9 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "./utils/form-variables.clarity";
-@import "./utils/mixins.clarity";
-
 //Validation Tooltips Arrow Color
 // TODO: color should be a variable
 @mixin vertical-tooltip-arrow-color($dirA:top,$dirB:right,$color:#000000) {
@@ -55,7 +52,7 @@
             margin: 0.5rem 0 1.5rem 0;
             & > label {
                 @include clr-getTypePropertiesForDomElement(form_block_label, (font-size, letter-spacing, font-weight));
-                color: $clr-black;
+                color: $clr-form-text-color;
                 margin-bottom: 0.25rem;
             }
         }
@@ -94,7 +91,7 @@
             & > span:first-child,
             &.row > [class*='col-'] > label,
             &.row > [class*='col-'] > span {
-                color: $clr-black;
+                color: $clr-form-text-color;
 
                 @include generate-required-indicator();
             }
@@ -248,16 +245,16 @@
 
         &.invalid {
             & > input {
-                $invalid_red: clr-getColor(dark-midtone, reds);
+                $invalid_red: $clr-forms-input-invalid-color;
 
                 border-bottom: $clr-default-borderwidth solid $invalid_red;
-                background: linear-gradient(to bottom, transparent 95%, #{$invalid_red} 95%);
+                background: linear-gradient(to bottom, transparent 95%, $clr-forms-input-invalid-color 95%);
                 transition: none;
             }
 
             //Show on input focus
             & > input:focus + .tooltip-content {
-                background: $reds-dark-midtone;
+                background: $clr-forms-input-invalid-color;
                 visibility: visible;
                 opacity: 1;
             }
@@ -283,19 +280,19 @@
 
             //Set arrow colors to red :(
             & > .tooltip-content::before, &.tooltip-top-right > .tooltip-content::before {
-                @include vertical-tooltip-arrow-color(top, right, $reds-dark-midtone);
+                @include vertical-tooltip-arrow-color(top, right, $clr-forms-input-invalid-color);
             }
 
             &.tooltip-top-left > .tooltip-content::before {
-                @include vertical-tooltip-arrow-color(top, left, $reds-dark-midtone);
+                @include vertical-tooltip-arrow-color(top, left, $clr-forms-input-invalid-color);
             }
 
             &.tooltip-bottom-right > .tooltip-content::before {
-                @include vertical-tooltip-arrow-color(bottom, right, $reds-dark-midtone);
+                @include vertical-tooltip-arrow-color(bottom, right, $clr-forms-input-invalid-color);
             }
 
             &.tooltip-bottom-left > .tooltip-content::before {
-                @include vertical-tooltip-arrow-color(bottom, left, $reds-dark-midtone);
+                @include vertical-tooltip-arrow-color(bottom, left, $clr-forms-input-invalid-color);
             }
 
             &.tooltip-left > input:focus + .tooltip-content {
@@ -304,7 +301,7 @@
                 margin: 0 ($error-icon-margin + $error-icon-width/2) 0 0;
 
                 &::before {
-                    @include horizontal-tooltip-arrow-color(top, left, $reds-dark-midtone);
+                    @include horizontal-tooltip-arrow-color(top, left, $clr-forms-input-invalid-color);
                 }
             }
 
@@ -314,7 +311,7 @@
                 margin: 0 0 0 ($error-icon-margin + $error-icon-width/2);
 
                 &::before {
-                    @include horizontal-tooltip-arrow-color(top, right, $reds-dark-midtone);
+                    @include horizontal-tooltip-arrow-color(top, right, $clr-forms-input-invalid-color);
                 }
             }
 
@@ -327,7 +324,7 @@
                 top: 0.125rem;
                 right: 0.25rem;
                 // TODO: move to clr-icon
-                background-image: generateErrorIcon();
+                background-image: generateErrorIcon($clr-forms-input-invalid-icon-color);
                 @include icon-background-styles();
                 margin: 0;
             }

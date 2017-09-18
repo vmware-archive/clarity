@@ -390,14 +390,6 @@
         -webkit-appearance: none;
     }
 
-    // // todo: needed?
-    // output {
-    //     display: inline-block;
-    //     //  font-size: $font-size-base;
-    //     //  line-height: $line-height;
-    //     //  color: $input-color;
-    // }
-
     // Always hide an element with the `hidden` HTML attribute (from PureCSS).
     [hidden] {
         display: none !important;
@@ -418,22 +410,22 @@
     }
 
     a:link {
-        color: $action-blues-dark-midtone;
+        color: $clr-link-color;
         text-decoration: none;
     }
 
     a:hover {
-        color: $action-blues-dark-midtone;
+        color: $clr-link-hover-color;
         text-decoration: underline;
     }
 
     a:active {
-        color: $action-purples-light-midtone;
+        color: $clr-link-active-color;
         text-decoration: underline;
     }
 
     a:visited {
-        color: $clr-links-visited-color; //TODO: Not in the color palette. Will be added soon.
+        color: $clr-link-visited-color; //TODO: Not in the color palette. Will be added soon.
         text-decoration: none;
     }
 }

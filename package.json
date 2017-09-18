@@ -3,7 +3,7 @@
     "version": "0.10.13",
     "private": true,
     "scripts": {
-        "start": "webpack-dev-server --port=4200 --host 0.0.0.0 --open",
+        "start": "webpack-dev-server -d --open",
         "clean": "del ./dist",
         "cpy": "cpy",
         "build": "npm-run-all clean build:angular webpack build:icons",
@@ -14,7 +14,7 @@
         "clang:format": "node_modules/.bin/clang-format -style=file -i --glob=src/**/*.ts",
         "prebuild:angular": "cpy ./npm/clarity-angular/package.json ./src/clarity-angular/; replace '@VERSION' $npm_package_version ./src/clarity-angular/package.json",
         "build:angular": "ng-packagr -p ng-package.json",
-        "postbuild:angular": "cpy dist/clarity-angular/bundles/* dist/clarity-angular; cd dist/clarity-angular; npm pack;",
+        "postbuild:angular": "webpack --config webpack.dark-theme.config.js; cpy dist/clarity-angular/bundles/* dist/clarity-angular; cd dist/clarity-angular; npm pack;",
         "build:icons": "webpack --config webpack.icons.config.js",
         "postbuild:icons": "node ./scripts/clarity-icons-svg.js",
         "publish:all": "node scripts/publish.js",
@@ -23,7 +23,7 @@
         "replace": "replace",
         "tslint:check": "node_modules/.bin/tslint -c tslint.json \"src/**/*.ts\" -e \"**/node_modules/**\"",
         "tslint:fix": "node_modules/.bin/tslint -c tslint.json --fix \"src/**/*.ts\" -e \"**/node_modules/**\"",
-        "webpack": "webpack",
+        "webpack": "webpack --progress --colors",
         "preks:publish": "npm run build",
         "ks:publish": "cd src/ks-app; ng build --preserve-symlinks --prod; cd ../../dist/ks-app; cat index.html > 404.html; surge; cd ../../"
     },

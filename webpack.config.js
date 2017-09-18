@@ -85,6 +85,8 @@ module.exports = {
     ],
     "clarity-ui/clarity-ui": "./src/clarity-angular/main.scss",
     "clarity-ui/clarity-ui.min": "./src/clarity-angular/main.scss",
+    // "clarity-ui/clarity-ui-dark": "./src/clarity-angular/dark-theme.scss",// Uncomment for dark dev
+    // "clarity-ui/clarity-ui-dark.min": "./src/clarity-angular/dark-theme.scss", // Uncomment for dark dev
     "clarity-icons/clarity-icons": "./src/clarity-icons/clarity-icons.scss",
     "clarity-icons/clarity-icons.min": "./src/clarity-icons/clarity-icons.scss"
   },
@@ -134,6 +136,7 @@ module.exports = {
             {
               "loader": "postcss-loader",
               "options": {
+                  "sourcemap": true,
                   "ident": "postcss",
                   "plugins": postcssPlugins
               }
@@ -144,6 +147,37 @@ module.exports = {
           ]
         })
       },
+      {
+        "test": /dark-theme\.scss$/,
+        use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            //resolve-url-loader may be chained before sass-loader if necessary
+            use: [
+                {
+                    loader: 'text-transform-loader',
+                    options: {
+                        transformText: function(content, loaderOptions) {
+                            return content.replace(/@VERSION/g, require('./package.json').version);
+                        }
+                    }
+                },
+                {
+                    "loader": "css-loader"
+                },
+                {
+                    "loader": "postcss-loader",
+                    "options": {
+                        "sourcemap": true,
+                        "ident": "postcss",
+                        "plugins": postcssPlugins
+                    }
+                },
+                {
+                    "loader": "sass-loader"
+                }
+            ]
+        })
+    },
       {
         "test": /clarity-icons\.scss$/,
         use: ExtractTextPlugin.extract({
@@ -177,7 +211,9 @@ module.exports = {
       {
         "test": /\.scss$/,
         "exclude": [
+
           path.join(process.cwd(), "src/clarity-angular/main.scss"),
+          path.join(process.cwd(), "src/clarity-angular/dark-theme.scss"),
           path.join(process.cwd(), "src/clarity-icons/clarity-icons.scss")
         ],
         "use": [
@@ -264,8 +300,21 @@ module.exports = {
             to: 'clarity-ui/src/'
         },
         {
+          context: './src/clarity-angular',
+          from: {
+            glob: "**/_variables.*.scss",
+            dot: true
+          },
+          to: 'clarity-ui/src/'
+        },
+        {
             context: './src/clarity-angular',
             from: 'main.scss',
+            to: 'clarity-ui/src/'
+        },
+        {
+            context: './src/clarity-angular',
+            from: 'dark-theme.scss',
             to: 'clarity-ui/src/'
         },
         {
@@ -275,7 +324,6 @@ module.exports = {
                 return content.toString().replace(/@VERSION/g, require('./package.json').version);
             }
         }
-
     ], {
       "ignore": [
         ".gitkeep"
@@ -374,6 +422,8 @@ module.exports = {
       new SuppressChunksPlugin([
           { name: 'clarity-ui/clarity-ui', match: /\.js(\.map)?$/ },
           { name: 'clarity-ui/clarity-ui.min', match: /\.js(\.map)?$/ },
+          { name: 'clarity-ui/clarity-ui-dark', match: /\.js(\.map)?$/ },
+          { name: 'clarity-ui/clarity-ui-dark.min', match: /\.js(\.map)?$/ },
           { name: 'clarity-icons/clarity-icons', match: /\.js(\.map)?$/ },
           { name: 'clarity-icons/clarity-icons.min', match: /\.js(\.map)?$/ }
       ])
@@ -391,6 +441,8 @@ module.exports = {
   },
   "devServer": {
     "historyApiFallback": true,
+    "port": 4200,
+    "host":"0.0.0.0",
     "disableHostCheck": true
   }
 };

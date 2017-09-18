@@ -2,8 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-$clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, font-weight);
-
 @include exports('stack-view.clarity') {
     .stack-header {
         font-weight: $clr-stack-font-weight;
@@ -40,10 +38,10 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
     .stack-view {
         @include clr-getTypePropertiesForDomElement(stackview_text, (color, font-size, font-weight, line-height, letter-spacing));
         margin-top: 0;
-        border: $clr-default-borderwidth solid $gray-light-midtone;
-        border-radius: $clr-default-borderradius;
+        border: $clr-default-borderwidth solid $clr-stack-view-border-color;
+        border-radius: $clr-global-borderradius;
         overflow-y: auto;
-        background-color: $gray-lighter;
+        background-color: $clr-stack-view-bg-color;
         word-wrap: break-word;
 
         /* this fixes the overflow problem of children elements in a wrapper with a border-radius in Chrome */
@@ -60,7 +58,7 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
             display: flex;
             // Wrapping for nested stack-blocks
             flex-flow: row wrap;
-            border-bottom: 1px solid $clr-lighter-midtone-gray;
+            border-bottom: 1px solid $clr-stack-view-stack-block-border-bottom;
         }
 
         // We have to handle potential nested elements, typically for web components
@@ -69,7 +67,7 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
             // than the total height of the  blocks it contains, but we do not have a
             // weird 1px scroll when both heights match exactly.
             border-bottom: none;
-            box-shadow: 0 1px 0 $clr-lighter-midtone-gray;
+            box-shadow: 0 1px 0 $clr-stack-view-border-box-color;
         }
 
         .stack-block-changed {
@@ -81,19 +79,19 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
                 position: relative;
                 width: 0;
                 height: 0;
-                border-top: 0.375rem solid $clr-blue;
+                border-top: 0.375rem solid $clr-stack-block-changed-border-top-color;
                 border-right: 0.375rem solid transparent;
             }
         }
 
         .stack-block-label, .stack-block-content {
             padding: 0.25rem 0.5rem;
-            background-color: $gray-lighter;
+            background-color: $clr-stack-view-stack-block-label-and-content-bg-color;
         }
 
         .stack-block-label {
             @include clr-getTypePropertiesForDomElement(stackview_header, (font-size, font-weight, line-height, letter-spacing));
-            color: $gray-darkest;
+            color: $clr-stack-view-stack-block-label-text-color;
 
             // We're doing a non-flexible item.
             // It's just easier to align and stretch everything vertically this way than with
@@ -113,6 +111,7 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
         }
 
         .stack-block-content {
+            color: $clr-stack-view-stack-block-content-text-color;
             flex: 1 1 auto;
             width: 60%;
             margin-bottom: 0;
@@ -126,18 +125,18 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
             width: 100%;
 
             .stack-block {
-                border-bottom-color: $gray-light;
+                border-bottom-color: $clr-stack-view-stack-children-stack-block-border-bottom-color;
             }
             > .stack-block:last-child, > :last-child .stack-block:last-of-type {
                 // This way we keep a border-bottom on the last element if the stack view is higher
                 // than the total height of the  blocks it contains, but we do not have a
                 // weird 1px scroll when both heights match exactly.
                 border-bottom: none;
-                box-shadow: 0 1px 0 $clr-lighter-midtone-gray;
+                box-shadow: 0 1px 0 $clr-stack-view-border-box-color;
             }
 
             .stack-block-label, .stack-block-content {
-                background-color: $clr-white;
+                background-color: $clr-stack-view-stack-children-stack-block-label-and-content-bg-color;
             }
 
             .stack-block-label {
@@ -161,7 +160,7 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
 
             &:hover:not(.stack-block-expanded) {
                 > .stack-block-label, > .stack-block-content {
-                    background-color: $gray-light;
+                    background-color: $clr-stack-view-stack-block-expandable-hover;
                 }
             }
         }
@@ -172,8 +171,8 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
             }
 
             > .stack-block-label, > .stack-block-content {
-                background-color: $clr-selection-color;
-                color: $clr-black;
+                background-color: $clr-stack-view-stack-block-expanded-bg-color;
+                color: $clr-stack-view-stack-block-expanded-text-color;
             }
         }
 
@@ -197,6 +196,7 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
             height: 1rem;
         }
 
+        // TODO: Clean up if not being used
         .stack-block-expandable > .stack-block-content {
             #{$styledInputs} {
                 transition: background-size 0.2s ease, border-bottom-color 0.2s ease-in-out;
@@ -210,6 +210,7 @@ $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, fo
                 }
             }
         }
+        // TODO: Clean up if not being used
         .stack-block-expanded > .stack-block-content {
             #{$styledInputs} {
                 border-bottom-color: $gray-dark;

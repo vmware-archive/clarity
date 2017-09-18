@@ -18,7 +18,7 @@
         animation: spin 1s linear infinite;
         margin: 0;
         padding: 0;
-        background: generateSpinnerIcon();
+        background: generateSpinnerIcon($clr-spinner-bg-color, $clr-spinner-color, $clr-spinner-opacity);
         text-indent: 100%;
         overflow: hidden;
 
@@ -36,6 +36,7 @@
         }
 
         &.spinner-inverse {
+            // TODO: get ux input on direction here
             background: generateSpinnerIcon($clr-white);
         }
     }

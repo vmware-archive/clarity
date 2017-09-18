@@ -2,15 +2,15 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-$clr-sidenav-border-color: $clr-light-midtone-gray !default;
+
 
 @mixin nav-link-colors {
     &:hover {
-        background: $gray-light;
+        background: $clr-sidenav-link-hover-color;
     }
 
     &.active {
-        background: $clr-selection-color;
+        background: $clr-global-selection-color;
         color: $clr-black;
     }
 }
@@ -35,7 +35,7 @@ $clr-sidenav-border-color: $clr-light-midtone-gray !default;
             //nav link common styles
             .nav-link {
                 display: inline-block;
-                border-radius: $clr-default-borderradius 0 0 $clr-default-borderradius;
+                border-radius: $clr-global-borderradius 0 0 $clr-global-borderradius;
                 color: inherit;
                 cursor: pointer;
                 text-decoration: none;

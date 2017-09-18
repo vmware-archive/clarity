@@ -6,10 +6,6 @@
     @include basic-table(".datagrid", ".datagrid-head", ".datagrid-body",
             ".datagrid-row", ".datagrid-column", ".datagrid-cell");
 
-    $clr-datagrid-icon-size: 0.583333rem;
-    $clr-datagrid-action-arrow-size: 0.25rem;
-    $clr-datagrid-fixed-column-size: (2 * $clr-table-cellpadding) + $clr-table-lineheight;
-
     .datagrid-host {
         display: flex;
         flex-flow: column nowrap;
@@ -169,7 +165,7 @@
 
         .datagrid-head {
             background-color: $clr-thead-bgcolor;
-            border-bottom: (2 * $clr-table-borderwidth) solid $clr-light-midtone-gray;
+            border-bottom: (2 * $clr-table-borderwidth) solid $clr-table-header-border-bottom-color;
 
             .datagrid-row-actions {
                 padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
@@ -188,7 +184,7 @@
 
             .datagrid-column-title {
                 @include clr-no-styles-button();
-                color: $clr-dark-gray;
+                color: $clr-table-font-color;
                 text-align: left;
                 flex: 1 1 auto;
                 align-self: flex-start;
@@ -215,7 +211,7 @@
                     width: $clr-rem-1px;
                     top: calc(-0.25rem + 1px);
                     left: 0;
-                    background-color: $clr-lighter-midtone-gray;
+                    background-color: $clr-table-border-color;
                 }
 
                 .datagrid-column-handle {
@@ -320,11 +316,11 @@
                 top: 100%;
                 right: 0;
                 margin-top: 0.2rem;
-                background: $clr-white;
+                background: $clr-datagrid-popover-bg-color;
                 padding: 0.75rem;
-                border: $clr-default-borderwidth solid $gray-light-midtone;
+                border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
                 box-shadow: 0 1px 3px rgba($gray-dark, 0.25);
-                border-radius: $clr-default-borderradius;
+                border-radius: $clr-global-borderradius;
                 font-weight: normal;
                 z-index: map-get($clr-layers, dropdown-menu);
 
@@ -441,7 +437,7 @@
         }
 
         .datagrid-body .datagrid-row {
-            border-top: $clr-table-borderwidth solid $clr-lighter-midtone-gray;
+            border-top: $clr-table-borderwidth solid $clr-table-border-color;
             flex-shrink: 0;
 
             &:first-child {
@@ -449,22 +445,22 @@
             }
 
             &:hover {
-                background-color: $clr-light-gray;
+                background-color: $clr-datagrid-row-hover;
             }
 
             &.datagrid-selected {
                 color: $clr-black;
-                background-color: $clr-selection-color;
+                background-color: $clr-global-selection-color;
             }
 
             .datagrid-action-overflow {
                 position: absolute;
-                background: $clr-white;
+                background: $clr-datagrid-popover-bg-color;
                 padding: 0.25rem 0.25rem;
                 margin-left: 0.25rem;
-                border: $clr-default-borderwidth solid $gray-light-midtone;
+                border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
                 box-shadow: 0 1px 3px rgba($gray-dark, 0.25);
-                border-radius: $clr-default-borderradius;
+                border-radius: $clr-global-borderradius;
                 font-weight: normal;
                 z-index: map-get($clr-layers, dropdown-menu);
                 white-space: nowrap;
@@ -477,7 +473,7 @@
                     width: 0;
                     height: 0;
                     margin-top: -1 * $clr-datagrid-action-arrow-size;
-                    border-right: $clr-datagrid-action-arrow-size solid $gray-light-midtone;
+                    border-right: $clr-datagrid-action-arrow-size solid $clr-datagrid-popover-border-color;
                     border-top: $clr-datagrid-action-arrow-size solid transparent;
                     border-bottom: $clr-datagrid-action-arrow-size solid transparent;
                 }
@@ -491,7 +487,7 @@
                     height: 0;
                     // not all browsers support calc() in psuedoelements
                     margin-top: -1 * $clr-datagrid-action-arrow-size + $clr-rem-1px;
-                    border-right: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid $clr-white;
+                    border-right: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid $clr-datagrid-popover-bg-color;
                     border-top: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid transparent;
                     border-bottom: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid transparent;
                 }
@@ -501,7 +497,7 @@
 
                     background: transparent;
                     border: 0;
-                    color: clr-getTextColor();
+                    color: $clr-app-font-color-primary;
                     cursor: pointer;
                     display: block;
                     line-height: calc(#{clr-getTypePropertyValueForDomElement(dropdown_text, line-height)} - 1px);
@@ -513,11 +509,11 @@
                     &:hover,
                     &:focus {
                         text-decoration: none;
-                        background-color: $gray-light;
+                        background-color: $clr-datagrid-action-popover-hover-color;
                     }
 
                     &.active {
-                        background: $clr-selection-color;
+                        background: $clr-datagrid-row-hover;
                         color: $clr-black;
                     }
 
@@ -550,7 +546,7 @@
 
             .datagrid-action-toggle {
                 cursor: pointer;
-                color: $clr-dark-gray;
+                color: $clr-datagrid-action-toggle;
                 border: none;
                 background: none;
                 padding: calc(0.375rem - #{$clr-table-borderwidth});
@@ -589,8 +585,8 @@
     }
 
     .datagrid-placeholder {
-        background: $clr-white;
-        border-top: $clr-default-borderwidth solid $clr-lighter-midtone-gray;
+        background: $clr-table-bgcolor;
+        border-top: $clr-default-borderwidth solid $clr-table-border-color;
         width: 100%;
 
         &.datagrid-empty {
@@ -639,8 +635,8 @@
         line-height: calc(1.5rem - #{3 * $clr-default-borderwidth});
         font-size: clr-getTypePropertyValueForDomElement(table_header, font-size);
         background-color: $clr-thead-bgcolor;
-        border-top: (2 * $clr-default-borderwidth) solid $clr-light-midtone-gray;
-        border-radius: 0 0 $clr-default-borderradius $clr-default-borderradius;
+        border-top: (2 * $clr-default-borderwidth) solid $clr-table-footer-border-top-color;
+        border-radius: 0 0 $clr-global-borderradius $clr-global-borderradius;
 
         .pagination {
             margin-left: 1.5rem;
@@ -669,11 +665,11 @@
             }
 
             .column-switch {
-                border-radius: $clr-default-borderradius;
+                border-radius: $clr-global-borderradius;
                 padding: 0.75rem;
-                background-color: $clr-white;
-                border: $clr-default-borderwidth solid $clr-light-midtone-gray;
-                box-shadow: 0 1px 3px rgba(116, 116, 116, 0.25);
+                background-color: $clr-datagrid-popover-bg-color;
+                border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
+                box-shadow: 0 1px 3px rgba(116, 116, 116, 0.25); // TODO: Add theme-able variable
                 width: 10.416667rem;
                 display: flex;
                 flex-direction: column;

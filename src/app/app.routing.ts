@@ -44,6 +44,7 @@ export const APP_ROUTES: Routes = [
     {path: "tooltips", loadChildren: "app/tooltips/tooltips.demo.module"},
     {path: "typography", loadChildren: "app/typography/typography.demo.module"},
     {path: "vertical-nav", loadChildren: "app/vertical-nav/vertical-nav.demo.module"},
+    {path: "virtual-scroll", loadChildren: "app/virtual-scroll/virtual-scroll.demo.module"},
     {path: "wizard", loadChildren: "app/wizard/wizard.demo.module"}
 ];
 

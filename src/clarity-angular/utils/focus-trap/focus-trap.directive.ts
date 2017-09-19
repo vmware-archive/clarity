@@ -5,21 +5,23 @@
  */
 import {DOCUMENT} from "@angular/common";
 import {AfterViewInit, Directive, ElementRef, HostListener, Injector, OnDestroy} from "@angular/core";
+import {FocusTrapTracker} from "./focus-trap-tracker.service";
 
 @Directive({selector: "[clrFocusTrap]"})
 export class FocusTrapDirective implements AfterViewInit, OnDestroy {
     private _previousActiveElement: HTMLElement;
     private document: Document;
 
-    constructor(public elementRef: ElementRef, injector: Injector) {
+    constructor(public elementRef: ElementRef, injector: Injector, private focusTrapsTracker: FocusTrapTracker) {
         this.document = injector.get(DOCUMENT);
+        this.focusTrapsTracker.current = this;
     }
 
     @HostListener("document:focusin", ["$event"])
     onFocusIn(event: any) {
         const nativeElement: HTMLElement = this.elementRef.nativeElement;
 
-        if (!nativeElement.contains(event.target)) {
+        if (this.focusTrapsTracker.current === this && !nativeElement.contains(event.target)) {
             nativeElement.focus();
         }
     }
@@ -36,5 +38,6 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
 
     ngOnDestroy() {
         this.setPreviousFocus();
+        this.focusTrapsTracker.activatePreviousTrapper();
     }
 }

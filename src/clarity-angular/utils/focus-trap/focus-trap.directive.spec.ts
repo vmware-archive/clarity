@@ -18,18 +18,22 @@ import {ClrFocusTrapModule} from "./focus-trap.module";
 describe("FocusTrap", () => {
     let fixture: ComponentFixture<any>;
     let compiled: any;
+    let component: TestComponent;
     let directive: FocusTrapDirective;
+    let lastInput: HTMLElement;
+    const tabEvent = {shiftKey: false, keyCode: 9, preventDefault: () => {}};
 
     describe("default behavior", () => {
         beforeEach(() => {
             TestBed.configureTestingModule({imports: [ClrFocusTrapModule], declarations: [TestComponent]});
 
             fixture = TestBed.createComponent(TestComponent);
+            component = fixture.componentInstance;
             fixture.detectChanges();
-
             compiled = fixture.nativeElement;
-
             directive = fixture.debugElement.query(By.directive(FocusTrapDirective)).injector.get(FocusTrapDirective);
+
+            lastInput = compiled.querySelector("#last");
         });
 
         afterEach(() => {
@@ -46,22 +50,56 @@ describe("FocusTrap", () => {
             expect(element.getAttribute("tabindex")).toEqual("0");
         });
 
-        it(`should focus on trappable element when tab key
-        is pressed and last input is active`,
-           () => {
 
-               const element = directive.elementRef.nativeElement;
+        it(`should focus on trappable element when tab key is pressed and last input is active`, () => {
+            const element = directive.elementRef.nativeElement;
+            lastInput.focus();
+            directive.onFocusIn(tabEvent);
+            expect(document.activeElement).toEqual(element);
+        });
 
-               const lastInput = compiled.querySelector("#last");
-               lastInput.focus();
+        it(`should keep focus within nested element with focus trap directive`, () => {
+            component.level1 = true;
+            fixture.detectChanges();
+            const levelOneFocusTrap = compiled.querySelector("#levelOneFocusTrap");
+            lastInput.focus();
+            expect(document.activeElement).toEqual(levelOneFocusTrap);
+        });
 
-               const tabEvent = {shiftKey: false, keyCode: 9, preventDefault: () => {}};
+        it(`should keep focus within last focus trap directive element`, () => {
+            component.level1 = true;
+            component.level2 = true;
+            fixture.detectChanges();
+            const levelTwoFocusTrap = compiled.querySelector("#levelTwoFocusTrap");
+            const levelTwoButton = compiled.querySelector("#levelTwoButton");
+            lastInput.focus();
+            expect(document.activeElement).toEqual(levelTwoFocusTrap);
+            levelTwoButton.focus();
+            expect(document.activeElement)
+                .toEqual(levelTwoButton, `element inside currently active focus trap directive wasn't focused`);
+        });
 
-               directive.onFocusIn(tabEvent);
+        it(`should keep trap focus within previous focus trap element if last one is removed`, () => {
+            component.level1 = true;
+            component.level2 = true;
+            component.level3 = true;
+            fixture.detectChanges();
+            const levelThreeButton = compiled.querySelector("#levelThreeButton");
+            const levelTwoButton = compiled.querySelector("#levelTwoButton");
+            const levelTwoFocusTrap = compiled.querySelector("#levelTwoFocusTrap");
+            levelThreeButton.focus();
+            component.level3 = false;
+            fixture.detectChanges();
+            lastInput.focus();
+            expect(document.activeElement).toEqual(levelTwoFocusTrap);
+            levelTwoButton.focus();
+            expect(document.activeElement)
+                .toEqual(levelTwoButton, `element inside currently active focus trap directive wasn't focused`);
 
-               expect(document.activeElement).toEqual(element);
-           });
+        });
+
     });
+
 
     describe("clr-modal behavior", () => {
         beforeEach(() => {
@@ -102,6 +140,7 @@ describe("FocusTrap", () => {
             fixture.detectChanges();
             expect(document.activeElement).toBe(initialActiveElement);
         });
+
     });
 });
 
@@ -112,7 +151,7 @@ describe("FocusTrap", () => {
             <button id="first">
                 Button to test first input
             </button>
-            <input type="text" />
+            <input type="text"/>
             <select>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -120,10 +159,25 @@ describe("FocusTrap", () => {
             <button id="last">
                 Last Input
             </button>
+
+            <div id="levelOneFocusTrap" clrFocusTrap *ngIf="level1 === true">
+                <button id="levelOneButton">Level 1</button>
+                <div id="levelTwoFocusTrap" clrFocusTrap *ngIf="level2 === true">
+                    <button id="levelTwoButton">Level 2</button>
+                    <div id="levelThreeFocusTrap" clrFocusTrap *ngIf="level3 === true">
+                        <button id="levelThreeButton">Level 3</button>
+                    </div>
+                </div>
+            </div>
+
         </form>
     `
 })
-class TestComponent {}
+class TestComponent {
+    level1 = false;
+    level2 = false;
+    level3 = false;
+}
 
 @Component({
     template: `

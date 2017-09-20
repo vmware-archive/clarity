@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="clrweb-DoxMedia-text">
-                        <p>Basic</p>
+                        <h6>Basic</h6>
                         <div>
                             No dividers or section headers.
                         </div>
@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     <div class="clrweb-DoxMedia-text">
-                        <p>Dividers</p>
+                        <h6>Dividers</h6>
                         <div>
                             Used to separate logical clusters of navigation items. Best used when you have two or more
                             links in a cluster.
@@ -112,7 +112,7 @@
                         </div>
                     </div>
                     <div class="clrweb-DoxMedia-text">
-                        <p>Dividers & Headers</p>
+                        <h6>Dividers & Headers</h6>
                         <div>
                             Used to separate logical clusters of navigation items. Best used when you have two or more
                             links in a cluster.
@@ -169,7 +169,7 @@
         <p>
             Hierarchy is used to show parent-child relationship between links. If a child link is active and the parent
             item is collapsed, the parent will display as active. When expanded, the active indicator will display on
-            the child link.
+            the child link. Clicking on text, carets or icons will expand and collapse the parent item.
         </p>
 
         <div class="row">
@@ -181,7 +181,7 @@
                         </div>
                     </div>
                     <div class="clrweb-DoxMedia-text">
-                        <p>Basic</p>
+                        <h6>Basic</h6>
                         <div>
                             Top level hierarchy items are semibold font weight and have a caret to the right. Child
                             links are normal font weight.
@@ -198,7 +198,7 @@
                         </div>
                     </div>
                     <div class="clrweb-DoxMedia-text">
-                        <p>Icons</p>
+                        <h6>Icons</h6>
                         <div>
                             Icons are only applied to the top level navigation items. They are not applied to child
                             links.
@@ -216,7 +216,7 @@
                         </div>
                     </div>
                     <div class="clrweb-DoxMedia-text">
-                        <p>Mixed</p>
+                        <h6>Mixed</h6>
                         <div>
                             Top level hierarchy items without child links are semibold. Clicking on one will navigate a
                             user to a page.
@@ -226,6 +226,15 @@
             </div>
         </div>
 
+        <clr-alert clrAlertType="info" [clrAlertClosable]="false">
+            <clr-alert-item>
+                    <span class="alert-text">
+                        If you need a summary or overview-type landing page for a link group, we recommend you make it as your
+                        first child link.
+                    </span>
+            </clr-alert-item>
+        </clr-alert>
+
         <h3>Collapse & Expand Navigation</h3>
 
         <p>
@@ -233,7 +242,7 @@
             to content. The double caret in the upper right corner will collapse and expand the navigation.
         </p>
 
-        <h6>Basic</h6>
+        <h5>Basic</h5>
 
         <div class="row">
             <div class="col-sm-12 col-md-6">
@@ -245,7 +254,7 @@
                         </div>
                     </div>
                     <div class="clrweb-DoxMedia-text">
-                        <p>No Icons</p>
+                        <h6>No Icons</h6>
                         <div>
                             When no icons are present, collapsing the navigation will show a basic bar. The entire bar
                             is a click target that can expand the navigation.
@@ -263,7 +272,7 @@
                         </div>
                     </div>
                     <div class="clrweb-DoxMedia-text">
-                        <p>Icons</p>
+                        <h6>Icons</h6>
                         <div>
                             When collapsed, text will disappear and only icons will show. Clicking on an icon will
                             navigate the user. An active link will also show as an active icon when collapsed.
@@ -273,7 +282,7 @@
             </div>
         </div>
 
-        <h6>Hierarchy</h6>
+        <h5>Hierarchy</h5>
 
         <div class="row">
             <div class="col-sm-12 col-md-12">
@@ -285,7 +294,7 @@
                         </div>
                     </div>
                     <div class="clrweb-DoxMedia-text">
-                        <p>No Icons</p>
+                        <h6>No Icons</h6>
                         <div>
                             When no icons are present, collapsing the navigation will show a basic bar. The entire bar
                             is a click target that can expand the navigation.
@@ -302,7 +311,7 @@
                         </div>
                     </div>
                     <div class="clrweb-DoxMedia-text">
-                        <p>Icons</p>
+                        <h6>Icons</h6>
                         <div>
                             Top level hierarchy items will show a caret next to its icon when the navigation is
                             collapsed. Clicking one will expand the navigation its top level item.
@@ -320,7 +329,7 @@
                         </div>
                     </div>
                     <div class="clrweb-DoxMedia-text">
-                        <p>Mixed</p>
+                        <h6>Mixed</h6>
                         <div>
                             Top level items without children will show no caret next to the icon. Clicking on an icon
                             with no caret will navigate the user to a page.
@@ -422,8 +431,10 @@
                     <li><a routerLink="./basic-structure">Basic Structure</a></li>
                     <li><a routerLink="./icon-links">Icon Links</a></li>
                     <li><a routerLink="./collapsible-nav">Collapsible Navigation</a></li>
-                    <li><a routerLink="./nav-groups">Nav Groups</a></li>
-                    <li><a routerLink="./no-lazy-loading">Unstructured Routes</a></li>
+                    <li><a routerLink="./nav-groups">Vertical Nav Groups</a></li>
+                    <li><a routerLink="./lazy-loading-nav-links">Lazy Loading Nav Links in Nav Groups</a></li>
+                    <!--li><a routerLink="./nav-groups">Nav Groups</a></li>
+                    <li><a routerLink="./no-lazy-loading">Unstructured Routes</a></li-->
                 </ul>
             </div>
         </div>

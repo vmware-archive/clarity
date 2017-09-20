@@ -9,9 +9,11 @@ const HTML_EXAMPLE = `
 <clr-vertical-nav [clrVerticalNavCollapsible]="demoCollapsible">
     <clr-vertical-nav-group
             routerLinkActive="active">
+        <a routerLink="./normal" hidden aria-hidden="true">
+        </a>
         <clr-icon shape="user" clrVerticalNavIcon></clr-icon>
         Normal
-        <clr-vertical-nav-group-children>
+        <clr-vertical-nav-group-children *clrIfExpanded="true">
             <a clrVerticalNavLink
                routerLink="./normal/pidgey"
                routerLinkActive="active">
@@ -26,9 +28,11 @@ const HTML_EXAMPLE = `
     </clr-vertical-nav-group>
     <clr-vertical-nav-group
             routerLinkActive="active">
+        <a routerLink="./fire" hidden aria-hidden="true">
+        </a>
         <clr-icon shape="flame" clrVerticalNavIcon></clr-icon>
         Fire
-        <clr-vertical-nav-group-children>
+        <clr-vertical-nav-group-children *clrIfExpanded>
             <a clrVerticalNavLink
                routerLink="./fire/charmander"
                routerLinkActive="active">
@@ -43,9 +47,11 @@ const HTML_EXAMPLE = `
     </clr-vertical-nav-group>
     <clr-vertical-nav-group
             routerLinkActive="active">
+        <a routerLink="./electric" hidden aria-hidden="true">
+        </a>
         <clr-icon shape="bolt" clrVerticalNavIcon></clr-icon>
         Electric
-        <clr-vertical-nav-group-children>
+        <clr-vertical-nav-group-children *clrIfExpanded>
             <a clrVerticalNavLink
                routerLink="./electric/pikachu"
                routerLinkActive="active">
@@ -76,6 +82,10 @@ const ROUTES_EXAMPLE = `
             redirectTo: "normal/pidgey"
         },
         {
+            path: "normal",
+            component: PidgeyDemo
+        },
+        {
             path: "normal/snorlax",
             component: SnorlaxDemo
         },
@@ -84,12 +94,20 @@ const ROUTES_EXAMPLE = `
             component: PidgeyDemo
         },
         {
+            path: "electric",
+            component: PikachuDemo
+        },
+        {
             path: "electric/pikachu",
             component: PikachuDemo
         },
         {
             path: "electric/raichu",
             component: RaichuDemo
+        },
+        {
+            path: "fire",
+            component: CharmanderDemo
         },
         {
             path: "fire/charmander",
@@ -110,11 +128,11 @@ const ROUTES_EXAMPLE = `
 `;
 
 @Component({
-    selector: "clr-vertical-nav-nav-groups-demo",
-    templateUrl: "./nav-groups.html",
+    selector: "clr-vertical-nav-lazy-loading-nav-groups-demo",
+    templateUrl: "./lazy-loading-nav-groups.html",
     styleUrls: ["../../vertical-nav.demo.scss"]
 })
-export class VerticalNavGroupsDemo {
+export class LazyLoadingNavGroupsVerticalNavDemo {
     htmlExample = HTML_EXAMPLE;
     routesExample = ROUTES_EXAMPLE;
     demoCollapsible: boolean = true;

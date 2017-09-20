@@ -6,12 +6,17 @@
 import {Component} from "@angular/core";
 
 const HTML_EXAMPLE = `
-<clr-vertical-nav [clrVerticalNavCollapsible]="demoCollapsible">
+<clr-vertical-nav [clrVerticalNavCollapsible]="collapsible">
     <clr-vertical-nav-group
             routerLinkActive="active">
-        <clr-icon shape="user" clrVerticalNavIcon></clr-icon>
-        Normal
-        <clr-vertical-nav-group-children>
+        <a clrVerticalNavLink
+           routerLink="./normal"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact:true}">
+            <clr-icon shape="user" clrVerticalNavIcon></clr-icon>
+            Normal
+        </a>
+        <clr-vertical-nav-group-children *clrIfExpanded="true">
             <a clrVerticalNavLink
                routerLink="./normal/pidgey"
                routerLinkActive="active">
@@ -26,9 +31,14 @@ const HTML_EXAMPLE = `
     </clr-vertical-nav-group>
     <clr-vertical-nav-group
             routerLinkActive="active">
-        <clr-icon shape="flame" clrVerticalNavIcon></clr-icon>
-        Fire
-        <clr-vertical-nav-group-children>
+        <a clrVerticalNavLink
+           routerLink="./fire"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact:true}">
+            <clr-icon shape="flame" clrVerticalNavIcon></clr-icon>
+            Fire
+        </a>
+        <clr-vertical-nav-group-children *clrIfExpanded>
             <a clrVerticalNavLink
                routerLink="./fire/charmander"
                routerLinkActive="active">
@@ -43,9 +53,14 @@ const HTML_EXAMPLE = `
     </clr-vertical-nav-group>
     <clr-vertical-nav-group
             routerLinkActive="active">
-        <clr-icon shape="bolt" clrVerticalNavIcon></clr-icon>
-        Electric
-        <clr-vertical-nav-group-children>
+        <a clrVerticalNavLink
+           routerLink="./electric"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact:true}">
+            <clr-icon shape="bolt" clrVerticalNavIcon></clr-icon>
+            Electric
+        </a>
+        <clr-vertical-nav-group-children *clrIfExpanded>
             <a clrVerticalNavLink
                routerLink="./electric/pikachu"
                routerLinkActive="active">
@@ -73,48 +88,59 @@ const ROUTES_EXAMPLE = `
     children: [
         {
             path: "",
-            redirectTo: "normal/pidgey"
+            redirectTo: "normal"
+        },
+        {
+            path: "normal",
+            component: NormalPokemon
         },
         {
             path: "normal/snorlax",
-            component: SnorlaxDemo
+            component: Snorlax
         },
         {
             path: "normal/pidgey",
-            component: PidgeyDemo
+            component: Pidgey
+        },
+        {
+            path: "electric",
+            component: ElectricPokemon
         },
         {
             path: "electric/pikachu",
-            component: PikachuDemo
+            component: Pikachu
         },
         {
             path: "electric/raichu",
-            component: RaichuDemo
+            component: Raichu
+        },
+        {
+            path: "fire",
+            component: FirePokemon
         },
         {
             path: "fire/charmander",
-            component: CharmanderDemo
+            component: Charmander
         },
         {
             path: "fire/charizard",
-            component: CharizardDemo
+            component: Charizard
         },
         {
             path: "credit",
-            component: PokedexDemo
+            component: Pokedex
         }
     ],
-    ...
 }
 ...
 `;
 
 @Component({
-    selector: "clr-vertical-nav-nav-groups-demo",
+    selector: "clr-vertical-nav-nav-groups-parent-links-demo",
     templateUrl: "./nav-groups.html",
     styleUrls: ["../../vertical-nav.demo.scss"]
 })
-export class VerticalNavGroupsDemo {
+export class NavGroupsParentLinksVerticalNavDemo {
     htmlExample = HTML_EXAMPLE;
     routesExample = ROUTES_EXAMPLE;
     demoCollapsible: boolean = true;

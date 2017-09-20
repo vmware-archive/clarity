@@ -1,4 +1,4 @@
-import {NgModule}             from "@angular/core";
+import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 
 import {DocumentationComponent} from "./documentation.component";
@@ -18,7 +18,6 @@ import {DatagridDemo} from "./demos/datagrid/datagrid.demo";
 import {DropdownsDemo} from "./demos/dropdown/dropdown.demo";
 import {FormsDemo} from "./demos/forms/forms.demo";
 import {GridDemo} from "./demos/grid/grid.demo";
-import {IconsDemo} from "./demos/iconography/icons.demo";
 import {InputFieldsDemo} from "./demos/input-fields/input-fields.demo";
 import {LabelsDemo} from "./demos/labels/labels.demo";
 import {LoginDemo} from "./demos/login/login.demo";
@@ -70,11 +69,10 @@ import {PoisonPokemonDemo} from "./demos/vertical-nav/routes/pokemon-types/poiso
 import {GrassPokemonDemo} from "./demos/vertical-nav/routes/pokemon-types/grass";
 import {FightingPokemonDemo} from "./demos/vertical-nav/routes/pokemon-types/fighting";
 import {CollapsibleNavDemo} from "./demos/vertical-nav/routes/collapsible-nav/collapsible-nav";
-import {NavGroupsVerticalNavDemo} from "./demos/vertical-nav/routes/nav-groups/nav-groups";
-import {FirePokemonDemo} from "./demos/vertical-nav/routes/pokemon-types/fire";
 import {PidgeyDemo} from "./demos/vertical-nav/routes/pokemons/pidgey";
 import {CharizardDemo} from "./demos/vertical-nav/routes/pokemons/charizard";
-import {NoLazyLoadingVerticalNavDemo} from "./demos/vertical-nav/routes/no-lazy-loading/no-lazy-loading";
+import {LazyLoadingNavGroupsVerticalNavDemo} from "./demos/vertical-nav/routes/lazy-loading-nav-groups/lazy-loading-nav-groups";
+import {VerticalNavGroupsDemo} from "./demos/vertical-nav/routes/nav-groups/nav-groups";
 
 const documentationRoutes: Routes = [
     {
@@ -603,7 +601,104 @@ const documentationRoutes: Routes = [
                     },
                     {
                         path: "nav-groups",
-                        component: NavGroupsVerticalNavDemo,
+                        component: VerticalNavGroupsDemo,
+                        children: [
+                            {
+                                path: "",
+                                redirectTo: "normal/pidgey"
+                            },
+                            {
+                                path: "normal/snorlax",
+                                component: SnorlaxDemo
+                            },
+                            {
+                                path: "normal/pidgey",
+                                component: PidgeyDemo
+                            },
+                            {
+                                path: "electric/pikachu",
+                                component: PikachuDemo
+                            },
+                            {
+                                path: "electric/raichu",
+                                component: RaichuDemo
+                            },
+                            {
+                                path: "fire/charmander",
+                                component: CharmanderDemo
+                            },
+                            {
+                                path: "fire/charizard",
+                                component: CharizardDemo
+                            },
+                            {
+                                path: "credit",
+                                component: PokedexDemo
+                            }
+                        ],
+                        data: {
+                            demoName: "Vertical Nav Groups"
+                        }
+                    },
+                    {
+                        path: "lazy-loading-nav-links",
+                        component: LazyLoadingNavGroupsVerticalNavDemo,
+                        children: [
+                            {
+                                path: "",
+                                redirectTo: "normal/pidgey"
+                            },
+                            {
+                                path: "normal",
+                                component: PidgeyDemo
+                            },
+                            {
+                                path: "normal/snorlax",
+                                component: SnorlaxDemo
+                            },
+                            {
+                                path: "normal/pidgey",
+                                component: PidgeyDemo
+                            },
+                            {
+                                path: "electric",
+                                component: PikachuDemo
+                            },
+                            {
+                                path: "electric/pikachu",
+                                component: PikachuDemo
+                            },
+                            {
+                                path: "electric/raichu",
+                                component: RaichuDemo
+                            },
+                            {
+                                path: "fire",
+                                component: CharmanderDemo
+                            },
+                            {
+                                path: "fire/charmander",
+                                component: CharmanderDemo
+                            },
+                            {
+                                path: "fire/charizard",
+                                component: CharizardDemo
+                            },
+                            {
+                                path: "credit",
+                                component: PokedexDemo
+                            }
+                        ],
+                        data: {
+                            demoName: "Lazy Loading Links In Nav Groups"
+                        }
+                    },
+                    /*,
+                    // Commented because these demos are deprecated (Nav Groups with Parent Links)
+                    // Keeping them commented just in case we decide to add them back.
+                    {
+                        path: "nav-groups",
+                        component: NavGroupsParentLinksVerticalNavDemo,
                         children: [
                             {
                                 path: "",
@@ -707,6 +802,7 @@ const documentationRoutes: Routes = [
                             demoName: "Unstructured Routes"
                         }
                     }
+                    */
                 ],
                 data: {
                     bodyClass: "page-vertical-nav",

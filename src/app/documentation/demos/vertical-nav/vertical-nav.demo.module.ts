@@ -34,8 +34,10 @@ import {CollapsibleNavDemo} from "./routes/collapsible-nav/collapsible-nav";
 import {CharizardDemo} from "./routes/pokemons/charizard";
 import {PidgeyDemo} from "./routes/pokemons/pidgey";
 import {FirePokemonDemo} from "./routes/pokemon-types/fire";
-import {NavGroupsVerticalNavDemo} from "./routes/nav-groups/nav-groups";
-import {NoLazyLoadingVerticalNavDemo} from "./routes/no-lazy-loading/no-lazy-loading";
+import {NavGroupsParentLinksVerticalNavDemo} from "./routes/nav-groups-with-parent-links/nav-groups";
+import {NoLazyLoadingVerticalNavDemo} from "./routes/no-lazy-loading-with-parent-links/no-lazy-loading";
+import {LazyLoadingNavGroupsVerticalNavDemo} from "./routes/lazy-loading-nav-groups/lazy-loading-nav-groups";
+import {VerticalNavGroupsDemo} from "./routes/nav-groups/nav-groups";
 
 @NgModule({
     imports: [
@@ -56,8 +58,10 @@ import {NoLazyLoadingVerticalNavDemo} from "./routes/no-lazy-loading/no-lazy-loa
         BasicNavStructureDemo,
         IconLinksDemo,
         CollapsibleNavDemo,
-        NavGroupsVerticalNavDemo,
+        NavGroupsParentLinksVerticalNavDemo,
         NoLazyLoadingVerticalNavDemo,
+        LazyLoadingNavGroupsVerticalNavDemo,
+        VerticalNavGroupsDemo,
 
         CharmanderDemo,
         JigglypuffDemo,

@@ -13,10 +13,10 @@ const HTML_EXAMPLE = `
     <clr-icon shape="cog"></clr-icon>
 </button>
 <button type="button" class="btn btn-icon btn-warning">
-    <clr-icon shape="exclamation-circle"></clr-icon>
+    <clr-icon shape="warning-standard"></clr-icon>
 </button>
 <button type="button" class="btn btn-icon btn-danger">
-    <clr-icon shape="times"></clr-icon>
+    <clr-icon shape="error-standard"></clr-icon>
 </button>
 <button type="button" class="btn btn-icon btn-success">
     <clr-icon shape="check"></clr-icon>

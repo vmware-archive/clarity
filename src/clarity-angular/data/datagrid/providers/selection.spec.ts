@@ -114,6 +114,33 @@ export default function(): void {
             expect(selectionInstance.isSelected(4)).toBe(false);
         });
 
+        it("handles clrDgItems trackBy index expressions in multi selection type", function() {
+            // IMPORTANT, using clrDgItems with trackBy will use trackBy reference in multi
+            selectionInstance.selectionType = SelectionType.Multi;
+            itemsInstance.trackBy = (index, item) => index;
+            // Must set the trackBy before setting the items
+            itemsInstance.all = ["a", "b", "c", "d", "e"];
+            selectionInstance.current = [1, 3];
+            expect(selectionInstance.isSelected("a")).toBe(false);
+            expect(selectionInstance.isSelected("b")).toBe(true);
+            expect(selectionInstance.isSelected("c")).toBe(false);
+            expect(selectionInstance.isSelected("d")).toBe(true);
+            expect(selectionInstance.isSelected("e")).toBe(false);
+        });
+
+        it("handles clrDgItems trackBy index expressions in single selection type", function() {
+            selectionInstance.selectionType = SelectionType.Single;
+            itemsInstance.trackBy = (index, item) => index;
+            // Must set the trackBy before setting the items
+            itemsInstance.all = ["a", "b", "c", "d", "e"];
+            selectionInstance.currentSingle = "c";
+            expect(selectionInstance.isSelected("a")).toBe(false);
+            expect(selectionInstance.isSelected("b")).toBe(false);
+            expect(selectionInstance.isSelected("c")).toBe(true);
+            expect(selectionInstance.isSelected("d")).toBe(false);
+            expect(selectionInstance.isSelected("e")).toBe(false);
+        });
+
         it("exposes an Observable to follow selection changes in multi selection type", function() {
             let nbChanges = 0;
             let currentSelection: any[];

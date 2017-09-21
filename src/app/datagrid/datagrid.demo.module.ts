@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {CommonModule} from "@angular/common";
+import {HttpClientModule} from "@angular/common/http";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 
@@ -27,6 +28,7 @@ import {DatagridPaginationDemo} from "./pagination/pagination";
 import {DatagridPlaceholderDemo} from "./placeholder/placeholder";
 import {DatagridPreserveSelectionDemo} from "./preserve-selection/preserve-selection";
 import {DatagridScrollingDemo} from "./scrolling/scrolling";
+import {DatagridSelectionServerDemo} from "./selection-server/selection-server";
 import {DatagridSelectionSingleDemo} from "./selection-single/selection-single";
 import {DatagridSelectionDemo} from "./selection/selection";
 import {DatagridServerDrivenDemo} from "./server-driven/server-driven";
@@ -39,7 +41,7 @@ import {ColorFilter} from "./utils/color-filter";
 import {Example} from "./utils/example";
 
 @NgModule({
-    imports: [CommonModule, FormsModule, ClarityModule, ROUTING, UtilsDemoModule],
+    imports: [CommonModule, FormsModule, HttpClientModule, ClarityModule, ROUTING, UtilsDemoModule],
     declarations: [
         DatagridDemo,
         DatagridBasicStructureDemo,
@@ -52,6 +54,7 @@ import {Example} from "./utils/example";
         DatagridPaginationScrollingDemo,
         DatagridSelectionDemo,
         DatagridSelectionSingleDemo,
+        DatagridSelectionServerDemo,
         DatagridPreserveSelectionDemo,
         DatagridServerDrivenDemo,
         DatagridSmartIteratorDemo,
@@ -79,6 +82,7 @@ import {Example} from "./utils/example";
         DatagridPaginationScrollingDemo,
         DatagridSelectionDemo,
         DatagridSelectionSingleDemo,
+        DatagridSelectionServerDemo,
         DatagridPreserveSelectionDemo,
         DatagridServerDrivenDemo,
         DatagridSmartIteratorDemo,

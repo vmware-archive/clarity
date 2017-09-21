@@ -21,6 +21,7 @@ import {DatagridPaginationDemo} from "./pagination/pagination";
 import {DatagridPlaceholderDemo} from "./placeholder/placeholder";
 import {DatagridPreserveSelectionDemo} from "./preserve-selection/preserve-selection";
 import {DatagridScrollingDemo} from "./scrolling/scrolling";
+import {DatagridSelectionServerDemo} from "./selection-server/selection-server";
 import {DatagridSelectionSingleDemo} from "./selection-single/selection-single";
 import {DatagridSelectionDemo} from "./selection/selection";
 import {DatagridServerDrivenDemo} from "./server-driven/server-driven";
@@ -48,6 +49,7 @@ const ROUTES: Routes = [{
         {path: "selection", component: DatagridSelectionDemo},
         {path: "selection-single", component: DatagridSelectionSingleDemo},
         {path: "preserve-selection", component: DatagridPreserveSelectionDemo},
+        {path: "selection-server", component: DatagridSelectionServerDemo},
         {path: "server-driven", component: DatagridServerDrivenDemo},
         {path: "placeholder", component: DatagridPlaceholderDemo},
         {path: "scrolling", component: DatagridScrollingDemo},

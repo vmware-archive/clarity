@@ -50,7 +50,7 @@ export class DatagridSelectionDemo {
     }
 
     constructor(private inventory: Inventory) {
-        inventory.size = 10;
+        inventory.size = 103;
         inventory.reset();
         this.users = inventory.all;
     }
@@ -76,5 +76,9 @@ export class DatagridSelectionDemo {
     onAdd() {
         this.cleanUp();
         this.toAdd = this.selected.slice();
+    }
+
+    trackBy(index: number, item: any) {
+        return index;
     }
 }

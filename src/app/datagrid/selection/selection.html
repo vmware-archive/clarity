@@ -75,7 +75,7 @@
         </ng-container>
     </clr-dg-column>
 
-    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+    <clr-dg-row *clrDgItems="let user of users; trackBy: trackBy" [clrDgItem]="user">
         <clr-dg-action-overflow>
             <button class="action-item" (click)="onEdit(user)">Edit</button>
             <button class="action-item" (click)="onDelete(user)">Delete</button>
@@ -89,7 +89,9 @@
         </clr-dg-cell>
     </clr-dg-row>
 
-    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+    <clr-dg-footer>{{users.length}} users
+        <clr-dg-pagination></clr-dg-pagination>
+    </clr-dg-footer>
 </clr-datagrid>
 
 <clr-example [clrCode]="example" clrLanguage="html"></clr-example>

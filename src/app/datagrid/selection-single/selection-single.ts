@@ -32,8 +32,12 @@ export class DatagridSelectionSingleDemo {
     singleSelected: User;
 
     constructor(private inventory: Inventory) {
-        inventory.size = 10;
+        inventory.size = 103;
         inventory.reset();
         this.users = inventory.all;
+    }
+
+    trackBy(index: number, item: any) {
+        return index;
     }
 }

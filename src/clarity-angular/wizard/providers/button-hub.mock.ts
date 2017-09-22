@@ -5,6 +5,8 @@
  */
 
 export class ButtonHubMock {
+    public buttonsReady: boolean = false;
+
     public buttonClicked(type: string): string {
         return type;
     }

@@ -17,9 +17,6 @@ import {
 } from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
-import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
-import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
-import {DatagridStringFilterImpl} from "./built-in/filters/datagrid-string-filter-impl";
 import {DatagridColumn} from "./datagrid-column";
 import {DatagridItems} from "./datagrid-items";
 import {DatagridPlaceholder} from "./datagrid-placeholder";
@@ -33,6 +30,8 @@ import {Page} from "./providers/page";
 import {RowActionService} from "./providers/row-action-service";
 import {Selection, SelectionType} from "./providers/selection";
 import {Sort} from "./providers/sort";
+import {StateDebouncer} from "./providers/state-debouncer.provider";
+import {StateProvider} from "./providers/state.provider";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 @Component({
@@ -40,15 +39,14 @@ import {DatagridRenderOrganizer} from "./render/render-organizer";
     templateUrl: "./datagrid.html",
     providers: [
         Selection, Sort, FiltersProvider, Page, Items, DatagridRenderOrganizer, RowActionService, ExpandableRowsCount,
-        HideableColumnService
+        HideableColumnService, StateDebouncer, StateProvider
     ],
     host: {"[class.datagrid-host]": "true"}
 })
 export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
-    constructor(private columnService: HideableColumnService, private filters: FiltersProvider,
-                private organizer: DatagridRenderOrganizer, private page: Page, private sort: Sort, public items: Items,
-                public expandableRows: ExpandableRowsCount, public selection: Selection,
-                public rowActionService: RowActionService) {}
+    constructor(private columnService: HideableColumnService, private organizer: DatagridRenderOrganizer,
+                public items: Items, public expandableRows: ExpandableRowsCount, public selection: Selection,
+                public rowActionService: RowActionService, private stateProvider: StateProvider) {}
 
     /* reference to the enum so that template can access */
     public SELECTION_TYPE = SelectionType;
@@ -69,50 +67,6 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
      * Output emitted whenever the data needs to be refreshed, based on user action or external ones
      */
     @Output("clrDgRefresh") public refresh = new EventEmitter<State>(false);
-
-    /**
-     * Emits a State output to ask for the data to be refreshed
-     */
-    private triggerRefresh() {
-        const state: State = {};
-        if (this.page.size > 0) {
-            state.page = {from: this.page.firstItem, to: this.page.lastItem, size: this.page.size};
-        }
-        if (this.sort.comparator) {
-            if (this.sort.comparator instanceof DatagridPropertyComparator) {
-                /*
-                 * Special case for the default object property comparator,
-                 * we give the property name instead of the actual comparator.
-                 */
-                state.sort = {by: (<DatagridPropertyComparator>this.sort.comparator).prop, reverse: this.sort.reverse};
-            } else {
-                state.sort = {by: this.sort.comparator, reverse: this.sort.reverse};
-            }
-        }
-
-        const activeFilters = this.filters.getActiveFilters();
-        if (activeFilters.length > 0) {
-            state.filters = [];
-            for (const filter of activeFilters) {
-                if (filter instanceof DatagridStringFilterImpl) {
-                    const stringFilter = (<DatagridStringFilterImpl>filter).filterFn;
-                    if (stringFilter instanceof DatagridPropertyStringFilter) {
-                        /*
-                         * Special case again for the default object property filter,
-                         * we give the property name instead of the full filter object.
-                         */
-                        state.filters.push({
-                            property: (<DatagridPropertyStringFilter>stringFilter).prop,
-                            value: (<DatagridStringFilterImpl>filter).value
-                        });
-                        continue;
-                    }
-                }
-                state.filters.push(filter);
-            }
-        }
-        this.refresh.emit(state);
-    }
 
     /**
      * Public method to re-trigger the computation of displayed items manually
@@ -212,25 +166,13 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
         this.columnService.updateColumnList(this.columns.map(col => col.hideable));
     }
 
-    /* We aggregate the refreshes so it's only emitted once per cycle */
-    private _shouldRefresh: boolean = false;
-
-    ngAfterViewChecked() {
-        if (this._shouldRefresh) {
-            this._shouldRefresh = false;
-            this.triggerRefresh();
-        }
-    }
-
     /**
      * Our setup happens in the view of some of our components, so we wait for it to be done before starting
      */
     ngAfterViewInit() {
         // TODO: determine if we can get rid of provider wiring in view init so that subscriptions can be done earlier
-        this.triggerRefresh();
-        this._subscriptions.push(this.sort.change.subscribe(() => this._shouldRefresh = true));
-        this._subscriptions.push(this.filters.change.subscribe(() => this._shouldRefresh = true));
-        this._subscriptions.push(this.page.change.subscribe(() => this._shouldRefresh = true));
+        this.refresh.emit(this.stateProvider.state);
+        this._subscriptions.push(this.stateProvider.change.subscribe(state => this.refresh.emit(state)));
         this._subscriptions.push(this.selection.change.subscribe(s => {
             if (this.selection.selectionType === SelectionType.Single) {
                 this.singleSelectedChanged.emit(s);

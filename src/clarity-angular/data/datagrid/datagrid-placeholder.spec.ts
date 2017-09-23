@@ -12,12 +12,13 @@ import {FiltersProvider} from "./providers/filters";
 import {Items} from "./providers/items";
 import {Page} from "./providers/page";
 import {Sort} from "./providers/sort";
+import {StateDebouncer} from "./providers/state-debouncer.provider";
 
 export default function(): void {
     describe("DatagridPlaceholder component", function() {
         describe("Typescript API", function() {
             beforeEach(function() {
-                this.pageProvider = new Page();
+                this.pageProvider = new Page(new StateDebouncer());
                 this.itemsProvider = new Items(null, null, this.pageProvider);
                 this.component = new DatagridPlaceholder(this.itemsProvider, this.pageProvider);
             });
@@ -37,7 +38,8 @@ export default function(): void {
             let pageProvider: Page;
 
             beforeEach(function() {
-                context = this.create(DatagridPlaceholder, SimpleTest, [Items, Page, Sort, FiltersProvider]);
+                context =
+                    this.create(DatagridPlaceholder, SimpleTest, [Items, Page, Sort, FiltersProvider, StateDebouncer]);
                 itemsProvider = TestBed.get(Items);
                 pageProvider = TestBed.get(Page);
             });

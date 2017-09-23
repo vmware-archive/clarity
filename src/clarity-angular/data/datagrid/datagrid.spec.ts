@@ -175,6 +175,23 @@ export default function(): void {
                         customFilter, testStringFilter, {property: "test", value: "1234"}
                     ]);
                 });
+
+                it("emits early enough to avoid chocolate errors on the loading input", function() {
+                    context.testComponent.fakeLoad = true;
+                    const page: Page = context.getClarityProvider(Page);
+                    page.current = 2;
+                    expect(() => context.detectChanges()).not.toThrow();
+                });
+
+                // Actually not fixed yet, my bad
+                xit("doesn't emit when the datagrid is destroyed", function() {
+                    context.testComponent.filter = true;
+                    context.detectChanges();
+                    context.testComponent.nbRefreshed = 0;
+                    context.testComponent.destroy = true;
+                    context.detectChanges();
+                    expect(context.testComponent.nbRefreshed).toBe(0);
+                });
             });
         });
 
@@ -351,8 +368,12 @@ export default function(): void {
 
 @Component({
     template: `
-    <clr-datagrid [(clrDgSelected)]="selected" [clrDgLoading]="loading" (clrDgRefresh)="refresh($event)">
-        <clr-dg-column>First</clr-dg-column>
+    <clr-datagrid *ngIf="!destroy"
+                  [(clrDgSelected)]="selected" [clrDgLoading]="loading" (clrDgRefresh)="refresh($event)">
+        <clr-dg-column>
+            First
+            <clr-dg-filter *ngIf="filter" [clrDgFilter]="testFilter"></clr-dg-filter>
+        </clr-dg-column>
         <clr-dg-column>Second</clr-dg-column>
     
         <clr-dg-row *clrDgItems="let item of items">
@@ -373,9 +394,18 @@ class FullTest {
     nbRefreshed = 0;
     latestState: State;
 
+    fakeLoad = false;
+
+    // Filter needed to test the non-emission of refresh on destroy, even with an active filter
+    filter = false;
+    testFilter = new TestFilter();
+
+    destroy = false;
+
     refresh(state: State) {
         this.nbRefreshed++;
         this.latestState = state;
+        this.loading = this.fakeLoad;
     }
 }
 

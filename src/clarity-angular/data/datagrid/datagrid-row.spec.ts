@@ -22,12 +22,13 @@ import {Page} from "./providers/page";
 import {RowActionService} from "./providers/row-action-service";
 import {Selection, SelectionType} from "./providers/selection";
 import {Sort} from "./providers/sort";
+import {StateDebouncer} from "./providers/state-debouncer.provider";
 import {DomAdapter} from "./render/dom-adapter";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 const PROVIDERS = [
     Selection, Items, FiltersProvider, Sort, Page, RowActionService, ExpandableRowsCount, DatagridRenderOrganizer,
-    DomAdapter, HideableColumnService, DatagridWillyWonka
+    DomAdapter, HideableColumnService, DatagridWillyWonka, StateDebouncer
 ];
 
 export default function(): void {

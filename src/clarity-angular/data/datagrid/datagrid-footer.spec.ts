@@ -13,8 +13,9 @@ import {Items} from "./providers/items";
 import {Page} from "./providers/page";
 import {Selection, SelectionType} from "./providers/selection";
 import {Sort} from "./providers/sort";
+import {StateDebouncer} from "./providers/state-debouncer.provider";
 
-const PROVIDERS_NEEDED = [Selection, Items, FiltersProvider, Sort, Page, HideableColumnService];
+const PROVIDERS_NEEDED = [Selection, Items, FiltersProvider, Sort, Page, HideableColumnService, StateDebouncer];
 
 export default function(): void {
     describe("DatagridFooter component", function() {

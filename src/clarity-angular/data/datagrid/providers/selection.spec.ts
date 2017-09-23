@@ -13,6 +13,7 @@ import {Items} from "./items";
 import {Page} from "./page";
 import {Selection, SelectionType} from "./selection";
 import {Sort} from "./sort";
+import {StateDebouncer} from "./state-debouncer.provider";
 
 const numberSort = (a: number, b: number) => a - b;
 
@@ -24,9 +25,10 @@ export default function(): void {
     let itemsInstance: Items;
     describe("Selection provider", function() {
         beforeEach(function() {
-            pageInstance = new Page();
-            filtersInstance = new FiltersProvider(pageInstance);
-            sortInstance = new Sort();
+            const stateDebouncer = new StateDebouncer();
+            pageInstance = new Page(stateDebouncer);
+            filtersInstance = new FiltersProvider(pageInstance, stateDebouncer);
+            sortInstance = new Sort(stateDebouncer);
             itemsInstance = new Items(filtersInstance, sortInstance, pageInstance);
 
             selectionInstance = new Selection(itemsInstance, filtersInstance);

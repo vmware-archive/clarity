@@ -15,6 +15,7 @@ import {Page} from "../providers/page";
 import {RowActionService} from "../providers/row-action-service";
 import {Selection} from "../providers/selection";
 import {Sort} from "../providers/sort";
+import {StateDebouncer} from "../providers/state-debouncer.provider";
 
 import {DatagridCellRenderer} from "./cell-renderer";
 import {DomAdapter} from "./dom-adapter";
@@ -24,7 +25,7 @@ import {DatagridRowRenderer} from "./row-renderer";
 
 const PROVIDERS = [
     Selection, Items, FiltersProvider, Sort, Page, RowActionService, ExpandableRowsCount, MOCK_ORGANIZER_PROVIDER,
-    DomAdapter, HideableColumnService, DatagridWillyWonka
+    DomAdapter, HideableColumnService, DatagridWillyWonka, StateDebouncer
 ];
 export default function(): void {
     describe("DatagridRowRenderer directive", function() {

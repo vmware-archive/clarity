@@ -17,6 +17,7 @@ import {Page} from "./providers/page";
 import {RowActionService} from "./providers/row-action-service";
 import {Selection, SelectionType} from "./providers/selection";
 import {Sort} from "./providers/sort";
+import {StateDebouncer} from "./providers/state-debouncer.provider";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 export default function(): void {
@@ -26,7 +27,7 @@ export default function(): void {
         beforeEach(function() {
             context = this.create(DatagridRowDetail, FullTest, [
                 Selection, Items, FiltersProvider, Sort, Page, RowActionService, Expand, DatagridRenderOrganizer,
-                HideableColumnService
+                HideableColumnService, StateDebouncer
             ]);
         });
 
@@ -107,7 +108,7 @@ export default function(): void {
         beforeEach(function() {
             context = this.create(DatagridRowDetail, HiddenTest, [
                 Selection, Items, FiltersProvider, Sort, Page, RowActionService, Expand, DatagridRenderOrganizer,
-                HideableColumnService
+                HideableColumnService, StateDebouncer
             ]);
             hideableColumnService = context.getClarityProvider(HideableColumnService);
         });

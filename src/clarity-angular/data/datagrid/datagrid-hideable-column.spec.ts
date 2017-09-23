@@ -12,10 +12,12 @@ import {DragDispatcher} from "./providers/drag-dispatcher";
 import {FiltersProvider} from "./providers/filters";
 import {Page} from "./providers/page";
 import {Sort} from "./providers/sort";
+import {StateDebouncer} from "./providers/state-debouncer.provider";
 import {DomAdapter} from "./render/dom-adapter";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 
-const PROVIDERS_NEEDED = [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher, Page];
+const PROVIDERS_NEEDED =
+    [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher, Page, StateDebouncer];
 
 
 export default function(): void {

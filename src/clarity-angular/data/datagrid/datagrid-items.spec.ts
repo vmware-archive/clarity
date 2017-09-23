@@ -12,6 +12,7 @@ import {FiltersProvider} from "./providers/filters";
 import {Items} from "./providers/items";
 import {Page} from "./providers/page";
 import {Sort} from "./providers/sort";
+import {StateDebouncer} from "./providers/state-debouncer.provider";
 
 export default function(): void {
     describe("DatagridItems directive", function() {
@@ -23,7 +24,7 @@ export default function(): void {
             TestBed.configureTestingModule({
                 imports: [ClrDatagridModule],
                 declarations: [FullTest],
-                providers: [Items, FiltersProvider, Sort, Page]
+                providers: [Items, FiltersProvider, Sort, Page, StateDebouncer]
             });
             this.fixture = TestBed.createComponent(FullTest);
             this.fixture.detectChanges();

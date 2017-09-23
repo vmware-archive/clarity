@@ -9,10 +9,11 @@ import {Subject} from "rxjs/Subject";
 
 import {Filter} from "../interfaces/filter";
 import {Page} from "./page";
+import {StateDebouncer} from "./state-debouncer.provider";
 
 @Injectable()
 export class FiltersProvider {
-    constructor(private _page: Page) {}
+    constructor(private _page: Page, private stateDebouncer: StateDebouncer) {}
     /**
      * This subject is the list of filters that changed last, not the whole list.
      * We emit a list rather than just one filter to allow batch changes to several at once.
@@ -93,10 +94,12 @@ export class FiltersProvider {
     }
 
     private resetPageAndEmitFilterChange(filters: Filter<any>[]) {
+        this.stateDebouncer.changeStart();
         // filtering may change the page number such that current page number doesn't exist in the filtered dataset.
         // So here we always set the current page to 1 so that it'll fetch first page's data with the given filter.
         this._page.current = 1;
         this._change.next(filters);
+        this.stateDebouncer.changeDone();
     }
 }
 

@@ -6,11 +6,12 @@
 import {Comparator} from "../interfaces/comparator";
 
 import {Sort} from "./sort";
+import {StateDebouncer} from "./state-debouncer.provider";
 
 export default function(): void {
     describe("Sort provider", function() {
         beforeEach(function() {
-            this.sortInstance = new Sort();
+            this.sortInstance = new Sort(new StateDebouncer());
             this.comparator = new TestComparator();
         });
 

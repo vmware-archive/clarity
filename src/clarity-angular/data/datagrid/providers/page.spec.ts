@@ -4,11 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Page} from "./page";
+import {StateDebouncer} from "./state-debouncer.provider";
 
 export default function(): void {
     describe("Page provider", function() {
         beforeEach(function() {
-            this.pageInstance = new Page();
+            this.pageInstance = new Page(new StateDebouncer());
         });
 
         it("has page size 0 by default", function() {

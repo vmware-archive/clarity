@@ -6,4 +6,14 @@
 
 .ks-demo-wrapper {
   margin-bottom: 24px;
+
+  .main-container{
+    height: 400px;
+    padding-top: 0;
+    background: #fff;
+
+    .content-area{
+      overflow-y: hidden;
+    }
+  }
 }

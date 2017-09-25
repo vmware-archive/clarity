@@ -104,6 +104,17 @@ describe("Modal", () => {
            expect(getModalInstance(fixture).close).not.toHaveBeenCalled();
        }));
 
+    it("should not throw an error when close is called on an already closed modal", fakeAsync(() => {
+           // Close the test modal
+           fixture.componentInstance.modalInstance.close();
+           fixture.detectChanges();
+           // App should not throw an error when already closed.
+           expect(() => {
+               fixture.componentInstance.modalInstance.close();
+               fixture.detectChanges();
+           }).not.toThrow();
+       }));
+
     it("offers two-way binding on clrModalOpen", fakeAsync(() => {
            expect(fixture.componentInstance.opened).toBe(true);
            getModalInstance(fixture).close();

@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-modal-static-old-demo",
-    styleUrls: ["./modal.demo.css"],
+    styleUrls: ["./modal.demo.scss"],
     templateUrl: "./modal-static-old.demo.html"
 })
 export class ModalStaticOldDemo {}

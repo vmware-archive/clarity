@@ -21,7 +21,6 @@ Selected user: <span class="username" *ngIf="selectedUser">{{selectedUser.name}}
 `;
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-selection-single-demo",
     providers: [Inventory],
     templateUrl: "selection-single.html",

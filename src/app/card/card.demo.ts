@@ -5,11 +5,5 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-card-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./card.demo.css"],
-    templateUrl: "./card.demo.html"
-})
+@Component({selector: "clr-card-demo", styleUrls: ["./card.demo.scss"], templateUrl: "./card.demo.html"})
 export class CardDemo {}

@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-color-demo-contrast",
-    styleUrls: ["./color-contrast.demo.css"],
+    styleUrls: ["./color-contrast.demo.scss"],
     templateUrl: "./color-contrast.demo.html"
 })
 export class ColorContrastDemo {}

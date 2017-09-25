@@ -5,11 +5,6 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-modal-backdrop-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./modal.demo.css"],
-    templateUrl: "./modal-backdrop.demo.html"
-})
+@Component(
+    {selector: "clr-modal-backdrop-demo", styleUrls: ["./modal.demo.scss"], templateUrl: "./modal-backdrop.demo.html"})
 export class ModalBackdropDemo {}

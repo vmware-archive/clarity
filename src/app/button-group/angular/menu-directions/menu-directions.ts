@@ -7,10 +7,9 @@ import {Component} from "@angular/core";
 import {menuPositions} from "../../../../clarity-angular/popover/dropdown/menu-positions";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-menu-directions-demo",
     templateUrl: "./menu-directions.html",
-    styleUrls: ["../../button-group.demo.css"]
+    styleUrls: ["../../button-group.demo.scss"]
 })
 export class MenuDirectionsDemo {
     menuPosition: string = menuPositions[0];

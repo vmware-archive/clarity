@@ -5,10 +5,5 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-card-images-demo",
-    styleUrls: ["./card.demo.css"],
-    templateUrl: "./card-images.html"
-})
+@Component({selector: "clr-card-images-demo", styleUrls: ["./card.demo.scss"], templateUrl: "./card-images.html"})
 export class CardImagesDemo {}

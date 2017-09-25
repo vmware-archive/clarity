@@ -5,10 +5,5 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-tabs-demo-static",
-    templateUrl: "./tabs-static.demo.html",
-    styleUrls: ["./tabs.demo.css"]
-})
+@Component({selector: "clr-tabs-demo-static", templateUrl: "./tabs-static.demo.html", styleUrls: ["./tabs.demo.scss"]})
 export class TabsStaticDemo {}

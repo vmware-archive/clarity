@@ -6,10 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-alert-demo-app-level",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["../alert.demo.css"],
+    styleUrls: ["../alert.demo.scss"],
     templateUrl: "./alert-app-level.demo.html"
 })
 export class AlertAppLevelDemo {}

@@ -5,10 +5,5 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-spinner-types",
-    templateUrl: "./spinner-types.html",
-    styleUrls: ["./spinner.demo.scss"]
-})
+@Component({selector: "clr-spinner-types", templateUrl: "./spinner-types.html", styleUrls: ["./spinner.demo.scss"]})
 export class SpinnerTypesDemo {}

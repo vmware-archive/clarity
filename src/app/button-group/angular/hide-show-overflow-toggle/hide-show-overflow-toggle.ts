@@ -6,10 +6,9 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-hide-show-overflow-menu-demo",
     templateUrl: "./hide-show-overflow-toggle.html",
-    styleUrls: ["../../button-group.demo.css"]
+    styleUrls: ["../../button-group.demo.scss"]
 })
 export class HideShowOverflowToggleDemo {
     hide: boolean = false;

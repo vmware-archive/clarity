@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-grid-demo-auto-layout-1",
     templateUrl: "./grid-auto-layout-1.html",
     styleUrls: ["./grid.demo.scss"]

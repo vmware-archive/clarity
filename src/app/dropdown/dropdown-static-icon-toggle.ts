@@ -6,10 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-dropdown-static-icon-toggle-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./dropdown.demo.css"],
+    styleUrls: ["./dropdown.demo.scss"],
     templateUrl: "./dropdown-static-icon-toggle.demo.html"
 })
 export class DropdownStaticIconToggleDemo {}

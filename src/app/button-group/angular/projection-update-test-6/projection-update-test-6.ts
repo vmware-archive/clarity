@@ -6,10 +6,9 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-button-group-projection-update-test-6-demo",
     templateUrl: "./projection-update-test-6.html",
-    styleUrls: ["../../button-group.demo.css"]
+    styleUrls: ["../../button-group.demo.scss"]
 })
 export class ProjectionUpdateTest6Demo {
     show: boolean = true;

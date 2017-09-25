@@ -6,10 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-nav-demo-headers",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./headers.demo.css"],
+    styleUrls: ["./headers.demo.scss"],
     template: `
         <h2>Header</h2>
         <ul>

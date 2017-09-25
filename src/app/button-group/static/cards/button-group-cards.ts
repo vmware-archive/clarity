@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-button-group-cards-demo",
     templateUrl: "./button-group-cards.html",
-    styleUrls: ["../../button-group.demo.css"]
+    styleUrls: ["../../button-group.demo.scss"]
 })
 export class ButtonGroupCardsDemo {}

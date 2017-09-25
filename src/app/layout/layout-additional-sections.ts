@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-layout-additional-sections-demo",
     templateUrl: "./layout-additional-sections.html",
-    styleUrls: ["./layout.demo.css"]
+    styleUrls: ["./layout.demo.scss"]
 })
 export class LayoutAdditionalSectionsDemo {}

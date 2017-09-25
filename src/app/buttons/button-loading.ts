@@ -6,10 +6,9 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-buttons-demo-button-loading",
     templateUrl: "./button-loading.html",
-    styleUrls: ["./buttons.demo.css"]
+    styleUrls: ["./buttons.demo.scss"]
 })
 export class ButtonLoadingDemo {
     private validateLoading: boolean = false;

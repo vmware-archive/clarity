@@ -7,7 +7,7 @@
 import {Component, ViewChild} from "@angular/core";
 import {Wizard} from "../../clarity-angular/wizard/wizard";
 
-@Component({moduleId: module.id, selector: "clr-wizard-force-forward", templateUrl: "./wizard-force-forward.demo.html"})
+@Component({selector: "clr-wizard-force-forward", templateUrl: "./wizard-force-forward.demo.html"})
 export class WizardForceForwardDemo {
     @ViewChild("wizard") wizard: Wizard;
     _open: boolean = false;

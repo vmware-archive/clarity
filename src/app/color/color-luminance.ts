@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-color-demo-luminance",
-    styleUrls: ["./color-luminance.demo.css"],
+    styleUrls: ["./color-luminance.demo.scss"],
     templateUrl: "./color-luminance.demo.html"
 })
 export class ColorLuminanceDemo {}

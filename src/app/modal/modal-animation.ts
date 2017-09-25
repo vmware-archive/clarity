@@ -6,10 +6,8 @@
 import {Component, OnInit} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-modal-animation-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./modal.demo.css"],
+    styleUrls: ["./modal.demo.scss"],
     templateUrl: "./modal-animation.demo.html"
 })
 export class ModalAnimationDemo implements OnInit {

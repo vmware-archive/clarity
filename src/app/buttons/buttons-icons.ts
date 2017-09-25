@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-buttons-demo-button-icons",
     templateUrl: "./buttons-icons.html",
-    styleUrls: ["./buttons.demo.css"]
+    styleUrls: ["./buttons.demo.scss"]
 })
 export class ButtonsIconsDemo {}

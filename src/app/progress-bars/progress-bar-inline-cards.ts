@@ -6,9 +6,8 @@
 import {Component, OnInit} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-progress-bar-inline-cards-demo",
-    styleUrls: ["progress-bars.demo.css"],
+    styleUrls: ["progress-bars.demo.scss"],
     templateUrl: "./progress-bar-inline-cards.html"
 })
 export class ProgressBarInlineCardsDemo implements OnInit {

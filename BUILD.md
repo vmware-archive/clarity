@@ -1,6 +1,6 @@
 Understanding the build
 =======================
-We currently use Gulp as the build system. 
+We currently use Webpack and npm scripts for our build
 
 Our stack
 ---------
@@ -8,97 +8,115 @@ Without going into too much detail, the main tools we use in our build are:
 * [Typescript](http://www.typescriptlang.org/), which we transpile to ES5.
 * [Sass](http://sass-lang.com/) as CSS preprocessor.
 * [Autoprefixer](https://github.com/postcss/autoprefixer) to ensure consistent cross-browser styles.
-* [SystemJS Build Tool](https://github.com/systemjs/builder) as bundler and minifier.
-* [Jasmine](http://jasmine.github.io/) as test framework
-* [Karma](http://karma-runner.github.io/) as test runner, running by default on [PhantomJS]
-(http://phantomjs.org/)
-* [Browsersync](http://www.browsersync.io/) as live development server.
-* [TSLint](http://palantir.github.io/tslint/) as linter for Typescript. (Do not use it yet, we 
-  still need to configure it with our preferences)
+* [webpack](https://webpack.js.org/clang) as bundler and minifier.
+* [webpack-dev-server](https://github.com/webpack/webpack-dev-server) as live development server.
+* [Jasmine](http://jasmine.github.io/) as test framework.
+* [Karma](http://karma-runner.github.io/) as test runner, running by default on [Headless Chrome](https://developers.google.com/web/updates/2017/04/headless-chrome).
+* [TSLint](http://palantir.github.io/tslint/) as linter for Typescript.
+* [clang-format](https://github.com/angular/clang-format) as formatter for Typescript.
+* [Gemini](https://gemini-testing.github.io/) for screenshot-based css regression tests.
+* [Docker](https://www.docker.com/) for running our Gemini css regression tests. In order to run the 
+  css regression tests locally, your system must have Docker installed and running.
 
-Gulp tasks
-----------
-If you look at the npm scripts defined in `package.json`, you'll notice that they are just 
-shortcuts for the most used gulp commands. Going a bit lower-level (but not detailing every 
-single task), here is the list of tasks you might want to run manually at some point:
+Globally Installed NPM packages
+-------------------------------
+The following packages are installed globally in development environment. The purpose for each is listed below. 
+You won't need to install these for general development but may wish to do so if you want to run specific scripts 
+that require them:
 
-##### `gulp build` and `gulp build --prod`
-By default, this task builds the project in development mode and puts all the compiled files for 
-both Clarity itself and the sample app in various subfolders of the `dist/` folder. If you add the 
-`--prod` flag, it builds for production instead and puts all the Clarity deliverables in the 
-`dist/bundles/` folder, while the sample app remains in the other subfolders of `dist/`.
+* [@angular/cli](https://cli.angular.io/): the kitchen sink app (`/src/ks-app`) is an angular-cli app. 
+   This app is used to test our npm packages produced by consuming them in an application.
+* [gemini](https://gemini-testing.github.io/): this is used to run cli commands to run css regression tests.
+* [html-reporter](https://www.npmjs.com/package/html-reporter): plugin for gemini to produce an html report of the css regression tests.
+* [selenium-standalone](https://github.com/vvo/selenium-standalone): for running css regression tests.
+* [surge](https://surge.sh/): for publishing static website. We use this to publish the kitchen sink app.
 
-##### `gulp serve` and `gulp serve --prod`
-These build the project, then serve it through a live-server, watching source file changes an 
-triggering auto-reloads. Every compiled file has a sourcemap pointing to the original Typescript 
-or SCSS sources, so debugging should work seamlessly in all development-appropriate browsers.
-With the `--prod` flag, the sample application is wired to use Clarity's minified production 
-bundles.
+NPM Scripts
+-----------
+All of our build scripts are defined in `package.json`.
 
-##### `gulp aot`
-This task uses the ngc to compile clarity-angular components into es5 es2015 format, and additionally
-produces the umd bundle file. This happens out of band from the development compilation. In other words,
-this task compiles the ts files from our src directly into es5 es2015 javascript files.
+##### `npm start`
+This will start up our demo app using webpack-dev-server on port 4200 and watch for file changes for live reload.
 
-##### `gulp test`
-Runs all the unit tests found in `*.spec.ts` files in the clarity source folder, and outputs 
-detailed results in the console. Note that tests are always run in "production mode", on the 
-minified bundles.
+##### `npm run clean`
+This script deletes the `dist` folder, which contains all the produced files for bundling.
 
-##### `gulp test:watch`
-Same as `gulp test`, but watches changes in both test files and source files to re-run the tests.
-Useful when writing new tests.
+##### `npm run build`
+This script builds npm package candidates for all three packages we currently publish: `clarity-angular`, `clarity-ui`, and `clarity-icons` under the `/dist` folder. 
+Note that this will also produce bundle files as a result of building and bundling for the demo app. Those can be ignored for the purposes of publishing.
 
-##### `gulp clean`
-Removes all build artifacts. Don't worry about calling this yourself all the time, all tasks 
-described before this already do it for you before running. Just use it when you want for some 
-reason to clean the project without rebuilding.
+##### `npm run test` and `npm run test:travis`
+The `test` script runs all the unit tests using karma. The entry point for the tests is `tests/tests.entry.ts`.
+You may locally modify this file to constrain which tests to run if you are testing for specific components and don't want
+to run all the tests.
 
-##### `gulp tslint`
-This gulp task runs tslint using the config file `build/tslint.json`. When initially running the app,
-each subtask `tslint:*` will run and halt the process if tslint fails. For each subtask `tslint:*`,
-there's a corresponding `tslint:*:no-error` task that is run when a watch task detects a change in
-the ts file. These `no-error` tasks output the tslint errors on console but doesn't halt the process.
+The `test:travis` script is used by Travis-CI to run some additional format checks before running the unit tests.
+If the code doesn't pass both clang-format checker and tslint, then the build fails before running the unit tests.
 
-##### `gulp sample`
-This gulp task assumes that npm packages have been produced under the `dist/npm` folder to be published, 
-and that they are locally installed. We recommend that you run `npm run sample-app` instead, which will
-locally install the packages that exist under the `dist/npm` folder as a pre-step. 
-This task starts up a simple web application to test consuming of our npm packages in an AoT compiled application.
+##### `npm run clang:check` and `npm run clang:format`
+We use [clang-format](https://github.com/angular/clang-format) as formatter for our code. `npm run clang:check` will not 
+actually format the file but only check if there are any files that would be changed. We do this via a shell script (`./scripts/clang-check.sh`), 
+which runs the clang-format command (with `-output-replacements-xml` flag) and greps for any replacement that would be produced.
+
+The `npm run clang:format` does the actual formatting according to the rules specified in `.clang-format` file.
+
+##### `npm build:angular`
+This script produces the `clarity-angular` package using [ng-packagr](https://github.com/dherges/ng-packagr). 
+However, because of limitations of the tools we supplement this with a `pre` and `post` script. 
+
+The `pre` script simply copies over the `package.json` template from our `npm` folder (this contains templates for `package.json` and 
+`README.md` for all of our packages) into `src/clarity-angular` and sets the correct version number. This is necessary because 
+`ng-packagr` requires the `package.json` to be at the root of the `src` (defined in `ng-package.json`).
+
+The `post` script runs `npm pack` on the package to create the `tgz file`.
+
+##### `npm build: icons`
+This script produces the `clarity-icons` package by bundling js files that can be included in consuming app. 
+The `post` script generates the svg files and also zipped up files for the icon sets. Note that this script partially 
+relies on `webpack` as well, since the `webpack` script produces the `clarity-icons.css` and `clarity-icons.min.css` files. 
+The `webpack` script also processes the `package.json` and `README.md` files for all of our packages. 
+This means that running `npm build: icons` by itself will NOT produce a complete package.
+
+##### `npm run webpack`
+This is the script that bundles the demo app as well as produce the package for `clarity-ui`. Since our demo app
+consumes the `clarity-ui.min.css`, it wasn't necessary to create a separate script for generating the `clarity-ui` 
+package. This script also handles tasks common to all packages, such as setting the version and copying over the 
+`package.json` and `README.md` files.
+
+##### `npm run ks:publish`
+This script publishes the kitchen sink app located under `src/ks-app`. Note that surge must be globally installed to be able to
+publish this app to a CDN. You can still locally test the kitchen sink app by:
+* `cd src/ks-app`
+* `npm install`
+* `ng serve --preserve-symlinks`
+
+##### `npm run tslint:check` and `npm run tslint:fix`
+The `tslint:check` script will run the tslinter and fail if linting fails. The `tslint:fix` script is very similar but 
+is run with the `--fix` flag to auto-fix some rules if possible. Some lint rules cannot be auto fixed so you will have 
+to manually fix those.
+
+##### `npm run cssTest` and `npm run cssUpdate`
+These scripts use Docker to start up a container with selenium and chrome to run the Gemini tests. Currently there are 4 sets 
+in our code base and these are arbitrary sets to parallelize running them in Travis builds. You must pass in the set(s) for both 
+of these scripts (e.g. `npm run cssTest set1 set3`).
 
 Under the hood
 --------------
-All the build-related scripts and the various configuration files needed can be found in the 
-`build/` folder. Actual gulp tasks are grouped in the `build/tasks/` subfolder.
+Most build-related scripts and config files are either at the root of the project or under `/scripts` folder.
 
 #### Pit stops and targets
 The build process itself uses 3 folders:
 * `src/` (version controlled): Of course, the source files. The important part is that the build 
   _never_ writes anything to this folder, as it is version controlled. This folder is used as 
   read-only.
-* `tmp/` (not version controlled): When intermediate processing and writing of a file is needed, we 
-  output it to `tmp/`. At the end of the build, nothing of value should end up here, as we simply 
-  remove the folder to clean up.
-* `dist/` (not version controlled): This is where we output the sample app, transpiled tests, 
+* `dist/` (not version controlled): This is where we output the sample app bundles, 
   sourcemaps and all clarity deliverables. Basically everything. Because of that, it is itself 
   divided into several subfolders:
-  * `app/`: The sample app that contains demo components for development and testing.
-  * `bundles/`: As the name suggest, this is where the production deliverables end up. When 
-    running tests or the sample application in production mode, these bundles will actually be 
-    referenced and used directly by other files in `dist/`, to really test the final product.
-  * `clarity-angular/`: This will contain the clarity components compiled in commonjs format. Note that
-    this version is not what gets ultimately packaged into the npm package. We package the compiled version
-    produced by the `aot` gulp task so that Clarity components are AoT ready.
+  * `assets/`: The sample app that contains demo components for development and testing.
+  * `clarity-angular/`: This will contain the clarity components compiled using ng-packagr.
   * `clarity-icons/`: This will contain the compiled js files and d.ts files from clarity icons. 
-  * `sample-app/`: This will contain a simple application with no router to test consuming of our 
-    npm packages in an AoT compiled application. 
-  * `npm/`: When publishing to the NPM registry, this will contain the various packages we 
-    currently publish, pre-compiled and trimmed of all development tools. At the moment, we produce
-    three packages:
-    * `clarity-icons`: clarity icons package
-    * `clarity-ui`: pure static styles
-    * `clarity-angular`: contains the Angular components and depends on `clarity-ui` for look-and-feel
-  * `tests/`: The name says it all.
+  * `clarity-ui/`: This will contain the compiled .css files and source .clarity.scss files for clarity-ui. 
+* `tests/`: Contains the entry point to running karma tests.
 
 #### The process itself
 
@@ -106,16 +124,13 @@ The build process itself uses 3 folders:
 We simply clean up the project before building anything.
 
 ##### HTML
-* All the HTML files for the sample application are copied to the `dist/app` folder, respecting 
-  their path relative to `src/`. Only `index.html` is processed to produce different files based 
-  on the environment, dev or prod.
-* The HTML files for clarity components are inlined and compiled into the js.
+* All the HTML files for the sample application are bundled by webpack into js and copied to the `dist/` folder.
 
 ##### Sass
 * All the SCSS files for the sample application are compiled with Sass and moved to `dist/`, once
  again respecting their path relative to `src/`.
-* All `*.clarity.scss` files found in `src/clarity/` are compiled by Sass into a minified bundle 
-  and moved to `dist/` or `dist/bundles/`, depending on the environment.
+* All `*.clarity.scss` files found in `src/clarity-angular/` are compiled by Sass into a minified bundle 
+  and moved to `dist/clarity-ui`.
 * All other SCSS files in `src/clarity-angular/` are considered to be behaviour-driven styles, so they 
   are compiled by Sass and inlined in the Typescript declarations of the
   components (see below).
@@ -123,38 +138,23 @@ We simply clean up the project before building anything.
   bundling.
   
 ##### Typescript
-* All the Typescript files for the sample application are transpiled to ES5 and moved to `dist/`,
-  respecting their path relative to `src/`. This means templates and styles should use relative 
-  paths, they will still be in the same place after the build.
-* All the Typescript files for clarity components are inlined, transpiled to ES5, and moved to 
-  `dist/clarity-angular/`. This way, each component fits neatly 
-  into a single Javascript file, without external HTML or CSS. Also note that during this 
-  transpilation, we produce Typescript declaration files (`*.d.ts`) for each of these components.
+* All the Typescript files for the demo application are bundled by webpack into js and moved to `dist/` as 
+    `<number>.js` files.
+* All the Typescript files for clarity components are packaged by ng-packagr under `dist/clarity-angular`. 
+ The Typescript declaration files (`*.d.ts`) are produced for each of these components.
 * All `*.spec.ts` and `*.mock.ts` files, containing the unit tests and mocks for Clarity's 
-  components, are transpiled to ES5 and moved to `dist/tests/`.
+  components, are transpiled and used by the webpack config file `webpack.test.config.js`. No output is generated.
 
 ##### Bundle
-Bundling only happens when building for a production environment. We take all Javascript files for 
-Clarity components obtained in the previous step (which should be in `tmp/` at that time) in a 
-single, minified one, and place that new file in `dist/bundles/`.
-After that, we create a ZIP archive with the minified CSS bundle, the minified JS one, and all 
-our components' Typescript declaration files (preserving their folder structure), which we move 
-to `dist/bundles/` too.
+Bundling happens only when we run `npm run build`. This command bundles and produces all of our packages.
 
 ##### Tests
-When building for a production environment, we run all the unit tests before ending the build. If
-one of them fails, the build itself fails.
+Running `npm test` only runs the karma tests. Travis will execute `npm test:travis`, which checks for code format and 
+fails the build if the format check or linter fails.
 
 ##### Live server
-When building to serve the sample application, we start our live server once all the previous 
-steps are over.
-If we are not serving, we clean the `tmp/` folder when we're done. If we are serving, we keep it 
-to watch for changes more efficiently.
+We use webpack-dev-server for development.
 
 ##### NPM publishing
-When trying to publish our packages to NPM, we first prepare a `dist/npm/` folder with the exact 
-state of the packages we want to publish: a correct `package.json`, pre-compiled bundles, 
-Typescript declaration files... To do this, we first run a whole production build, then handpick 
-the various files we want from  `tmp/` and `dist/` and copy them to `dist/npm/<package-name>/`.
-Note that because we only allow publishing all packages at the same time, they share a single 
-version number and are always bumped synchronously.
+The `npm run build` script will produce 3 packages for publishing. This script will also run any dependent scripts, such as 
+copying over the `package.json` template as well as the `README.md` from the `npm` folder.

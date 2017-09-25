@@ -33,7 +33,6 @@ export default function(): void {
 
         it("should have a template ref", function() {
             expect(testDgHideableColumn.template).toBeDefined();
-            expect(testDgHideableColumn.template).toEqual(jasmine.any(TemplateRef));
         });
 
         it("should have an id", function() {

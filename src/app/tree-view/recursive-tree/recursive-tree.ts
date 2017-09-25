@@ -67,13 +67,8 @@ root = {
 };
 `;
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-tree-recursive-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["../tree-view.demo.css"],
-    templateUrl: "./recursive-tree.html"
-})
+@Component(
+    {selector: "clr-tree-recursive-demo", styleUrls: ["../tree-view.demo.scss"], templateUrl: "./recursive-tree.html"})
 export class RecursiveTreeDemo {
     exampleHTML = EXAMPLE_HTML;
     exampleTS = EXAMPLE_TS;

@@ -6,10 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-button-group-angular-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["../button-group.demo.css"],
+    styleUrls: ["../button-group.demo.scss"],
     template: `
         <h4>Angular Styles</h4>
         <ul>

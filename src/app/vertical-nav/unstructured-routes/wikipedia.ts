@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wikipedia-demo",
     template: `
         <p>Credit: Wikipedia</p>

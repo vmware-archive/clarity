@@ -7,10 +7,9 @@ import {Component} from "@angular/core";
 import {VerticalNavCases} from "../vertical-nav-cases";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-without-expanded-directive-demo",
     templateUrl: "./without-expanded-directive.html",
-    styleUrls: ["../vertical-nav.demo.css"]
+    styleUrls: ["../vertical-nav.demo.scss"]
 })
 export class WithoutExpandedDirectiveDemo {
     case: any;

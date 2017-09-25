@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-dropdown-angular-close-item-false-demo",
     templateUrl: "./dropdown-angular-close-item-false.demo.html",
-    styleUrls: ["./dropdown.demo.css"]
+    styleUrls: ["./dropdown.demo.scss"]
 })
 export class DropdownAngularCloseItemFalseDemo {}

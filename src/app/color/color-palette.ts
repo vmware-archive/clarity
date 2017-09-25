@@ -5,12 +5,8 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-color-palette",
-    styleUrls: ["./color-palette.demo.scss"],
-    templateUrl: "./color-palette.demo.html"
-})
+@Component(
+    {selector: "clr-color-palette", styleUrls: ["./color-palette.demo.scss"], templateUrl: "./color-palette.demo.html"})
 export class ColorPalette {
     palettes = [
         {

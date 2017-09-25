@@ -31,7 +31,6 @@ const EXAMPLE = `
 `;
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-binding-properties-demo",
     providers: [Inventory],
     templateUrl: "./binding-properties.html",

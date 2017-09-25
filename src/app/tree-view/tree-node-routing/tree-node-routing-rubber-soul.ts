@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-tree-node-routing-rubber-soul-demo",
     template: `
         <!--Credit https://en.wikipedia.org/wiki/Rubber_Soul-->

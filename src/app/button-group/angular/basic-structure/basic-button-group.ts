@@ -6,10 +6,9 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-basic-button-group-demo",
     templateUrl: "./basic-button-group.html",
-    styleUrls: ["../../button-group.demo.css"]
+    styleUrls: ["../../button-group.demo.scss"]
 })
 export class BasicButtonGroupDemo {
     handleClick(id: number): void {

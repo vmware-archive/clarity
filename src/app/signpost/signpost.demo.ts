@@ -5,13 +5,7 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-signpost-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./signpost.demo.css"],
-    templateUrl: "signpost.demo.html"
-})
+@Component({selector: "clr-signpost-demo", styleUrls: ["./signpost.demo.scss"], templateUrl: "signpost.demo.html"})
 
 export class SignpostDemo {
     openState: boolean = false;

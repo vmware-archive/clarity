@@ -9,7 +9,7 @@ import {Component, ViewChild} from "@angular/core";
 import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
 import {Wizard} from "../../clarity-angular/wizard/wizard";
 
-@Component({moduleId: module.id, selector: "clr-wizard-inline", templateUrl: "./wizard-inline.demo.html"})
+@Component({selector: "clr-wizard-inline", templateUrl: "./wizard-inline.demo.html"})
 export class WizardInlineDemo {
     @ViewChild("wizard") wizard: Wizard;
     @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;

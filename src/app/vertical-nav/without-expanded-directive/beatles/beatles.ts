@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-beatles1-demo",
     template: `
         <!--Credit https://en.wikipedia.org/wiki/The_Beatles-->

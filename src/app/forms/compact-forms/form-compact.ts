@@ -6,10 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-forms-compact-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./form-compact.demo.css"],
+    styleUrls: ["./form-compact.demo.scss"],
     templateUrl: "./form-compact.demo.html"
 })
 export class FormCompactDemo {}

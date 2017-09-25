@@ -16,7 +16,6 @@ const EXAMPLE = `
 `;
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-smart-iterator-demo",
     providers: [Inventory],
     templateUrl: "./smart-iterator.html",

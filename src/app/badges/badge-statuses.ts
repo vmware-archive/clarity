@@ -5,11 +5,6 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-badge-statuses-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./badges.demo.css"],
-    templateUrl: "./badge-statuses.demo.html"
-})
+@Component(
+    {selector: "clr-badge-statuses-demo", styleUrls: ["./badges.demo.scss"], templateUrl: "./badge-statuses.demo.html"})
 export class BadgeStatusesDemo {}

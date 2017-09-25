@@ -11,7 +11,6 @@ import {EXAMPLES} from "./examples";
 
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-server-driven-demo",
     providers: [Inventory],
     templateUrl: "server-driven.html",

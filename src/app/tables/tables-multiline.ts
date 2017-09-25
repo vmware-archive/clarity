@@ -5,10 +5,6 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-tables-multiline-demo",
-    styleUrls: ["tables.demo.scss"],
-    templateUrl: "./tables-multiline.html"
-})
+@Component(
+    {selector: "clr-tables-multiline-demo", styleUrls: ["tables.demo.scss"], templateUrl: "./tables-multiline.html"})
 export class TablesMultilineDemo {}

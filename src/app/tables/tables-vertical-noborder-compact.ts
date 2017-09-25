@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-tables-vertical-noborder-compact-demo",
     styleUrls: ["tables.demo.scss"],
     templateUrl: "./tables-vertical-noborder-compact.html"

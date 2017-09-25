@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-typography-font-char-test",
-    styleUrls: ["./typography.demo.css"],
+    styleUrls: ["./typography.demo.scss"],
     templateUrl: "./typography-font-char-test.html"
 })
 

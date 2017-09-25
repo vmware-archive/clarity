@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-static-button-group-basic-structure-demo",
     templateUrl: "./basic-structure.html",
-    styleUrls: ["../../button-group.demo.css"]
+    styleUrls: ["../../button-group.demo.scss"]
 })
 export class StaticButtonGroupBasicStructureDemo {}

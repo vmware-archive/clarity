@@ -1,18 +1,47 @@
-dist/
-tmp/
-node_modules/
-src/ks-app/node_modules
-typings/
-.idea/
-aot-compiled/
-gemini-report/
-src/sample-app/aot-compiled/
-.DS_Store
-.npmrc.clarity
-npm-debug.log
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-.sass-cache/
-_site/
-js/
-.vscode
-.stylelintrc
+# compiled output
+/dist
+/tmp
+/out-tsc
+/.ng_build
+/gemini-report/
+
+# dependencies
+/node_modules
+/src/ks-app/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+.awcache
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+src/clarity-angular/package.json
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db

@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-buttons-demo-tertiary-button",
     templateUrl: "./tertiary-button.html",
-    styleUrls: ["./buttons.demo.css"]
+    styleUrls: ["./buttons.demo.scss"]
 })
 export class TertiaryButtonDemo {}

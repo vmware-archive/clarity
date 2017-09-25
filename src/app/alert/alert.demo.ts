@@ -5,10 +5,5 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-alert-demo",
-    styleUrls: ["./alert.demo.css"],
-    templateUrl: "./alert.demo.html"
-})
+@Component({selector: "clr-alert-demo", styleUrls: ["./alert.demo.scss"], templateUrl: "./alert.demo.html"})
 export class AlertsDemo {}

@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-progress-bar-static-cards-demo",
-    styleUrls: ["progress-bars.demo.css"],
+    styleUrls: ["progress-bars.demo.scss"],
     templateUrl: "./progress-bar-static-cards.html"
 })
 export class ProgressBarStaticCardsDemo {}

@@ -6,10 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-tooltips-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./tooltips.demo.css"],
+    styleUrls: ["./tooltips.demo.scss"],
     template: `
         <h2>Tooltips</h2>
 

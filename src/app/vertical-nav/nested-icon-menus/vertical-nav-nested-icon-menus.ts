@@ -7,10 +7,9 @@ import {Component} from "@angular/core";
 import {VerticalNavCases} from "../vertical-nav-cases";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-vertical-nav-nested-icon-menus-demo",
     templateUrl: "./vertical-nav-nested-icon-menus.demo.html",
-    styleUrls: ["../vertical-nav.demo.css"]
+    styleUrls: ["../vertical-nav.demo.scss"]
 })
 export class VerticalNavNestedIconMenusDemo {
     case: any;

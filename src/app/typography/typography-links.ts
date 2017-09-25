@@ -5,11 +5,7 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-typography-links",
-    styleUrls: ["./typography.demo.css"],
-    templateUrl: "./typography-links.html"
-})
+@Component(
+    {selector: "clr-typography-links", styleUrls: ["./typography.demo.scss"], templateUrl: "./typography-links.html"})
 
 export class TypographyLinksDemo {}

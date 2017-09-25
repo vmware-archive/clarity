@@ -10,10 +10,8 @@ import {Employee} from "../model/employee.model";
 import {EXAMPLES} from "./examples";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-template-driven-forms-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./template-driven-forms.css"],
+    styleUrls: ["./template-driven-forms.scss"],
     templateUrl: "./template-driven-forms.html"
 })
 export class TemplateDrivenFormsDemo {

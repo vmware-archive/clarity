@@ -3,8 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, Inject, Input, TemplateRef, ViewChild} from "@angular/core";
+import {Component, ElementRef, Inject, Input, OnDestroy, Renderer2, TemplateRef, ViewChild} from "@angular/core";
+import {Subscription} from "rxjs/Subscription";
+
 import {IF_ACTIVE_ID, IfActiveService} from "../../utils/conditional/if-active.service";
+
 import {AriaService} from "./aria-service";
 
 let nbTabContentComponents: number = 0;
@@ -14,22 +17,27 @@ let nbTabContentComponents: number = 0;
     template: `
         <ng-content></ng-content>
     `,
-    host: {
-        "[id]": "tabContentId",
-        "[attr.aria-labelledby]": "ariaLabelledBy",
-        "[attr.aria-hidden]": "!active",
-        "[attr.data-hidden]": "!active",
-        "role": "tabpanel"
-    }
+    host: {"role": "tabpanel"}
 })
-export class TabContent {
+export class TabContent implements OnDestroy {
     @ViewChild("tabContentProjectedRef") templateRef: TemplateRef<TabContent>;
 
     constructor(public ifActiveService: IfActiveService, @Inject(IF_ACTIVE_ID) public id: number,
-                private ariaService: AriaService) {
+                private ariaService: AriaService, private renderer: Renderer2, private el: ElementRef) {
         if (!this.tabContentId) {
             this.tabContentId = "clr-tab-content-" + (nbTabContentComponents++);
         }
+
+        this.setAttributes();
+        this.subscriptions.push(this.ifActiveService.currentChange.subscribe(() => {
+            this.setAttributes();
+        }));
+    }
+
+    private subscriptions: Subscription[] = [];
+
+    ngOnDestroy() {
+        this.subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
     }
 
     get ariaLabelledBy(): string {
@@ -47,5 +55,12 @@ export class TabContent {
 
     get active() {
         return this.ifActiveService.current === this.id;
+    }
+
+    setAttributes() {
+        this.renderer.setAttribute(this.el.nativeElement, "id", this.tabContentId);
+        this.renderer.setAttribute(this.el.nativeElement, "aria-labelledby", this.ariaLabelledBy);
+        this.renderer.setAttribute(this.el.nativeElement, "aria-hidden", `${!this.active}`);
+        this.renderer.setAttribute(this.el.nativeElement, "data-hidden", `${!this.active}`);
     }
 }

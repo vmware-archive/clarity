@@ -7,7 +7,7 @@
 <div class="clr-example">
     <button class="btn btn-primary" (click)="inOverflow = !inOverflow">Toggle</button>
     <clr-tabs>
-        <clr-tab>
+        <clr-tab *ngIf="true">
             <button clrTabLink>Dashboard</button>
             <clr-tab-content clrTabContentId="content1" *clrIfActive>
                 <p>Content for Dashboard tab. Here is a <a href="javascript://">link</a> that can be accessed via clicking

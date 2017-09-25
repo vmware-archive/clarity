@@ -48,9 +48,6 @@ describe("TabLink Directive", () => {
 
     it("sets itself as active when clicked", () => {
         const links: TabLinkDirective[] = instance.tabLinkChildren.toArray();
-        expect(links[0].active).toEqual(true);
-        expect(links[1].active).toEqual(false);
-
         const tabLinks: HTMLElement[] = compiled.querySelectorAll("button");
         tabLinks[1].click();
         fixture.detectChanges();

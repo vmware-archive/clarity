@@ -9,8 +9,7 @@ import {Component, ViewChild} from "@angular/core";
 import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
 import {Wizard} from "../../clarity-angular/wizard/wizard";
 
-@Component(
-    {moduleId: module.id, selector: "clr-wizard-async-validation", templateUrl: "./wizard-async-validation.demo.html"})
+@Component({selector: "clr-wizard-async-validation", templateUrl: "./wizard-async-validation.demo.html"})
 export class WizardAsyncValidation {
     @ViewChild("wizard") wizard: Wizard;
     @ViewChild("myForm") formData: any;

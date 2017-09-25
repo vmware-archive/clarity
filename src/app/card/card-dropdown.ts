@@ -5,10 +5,5 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-card-dropdown-demo",
-    styleUrls: ["./card.demo.css"],
-    templateUrl: "./card-dropdown.html"
-})
+@Component({selector: "clr-card-dropdown-demo", styleUrls: ["./card.demo.scss"], templateUrl: "./card-dropdown.html"})
 export class CardDropdownDemo {}

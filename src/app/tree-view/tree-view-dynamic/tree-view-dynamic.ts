@@ -92,9 +92,7 @@ const EXAMPLE_TS = `
 `;
 
 @Component({
-    moduleId: module.id,
     selector: "clr-tree-view-dynamic-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
     styleUrls: ["../tree-view.demo.scss"],
     templateUrl: "./tree-view-dynamic.html"
 })

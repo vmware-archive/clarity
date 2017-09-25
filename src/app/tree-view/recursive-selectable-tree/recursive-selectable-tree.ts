@@ -77,10 +77,8 @@ selectableRoot = {
 `;
 
 @Component({
-    moduleId: module.id,
     selector: "clr-tree-recursive-selectable-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["../tree-view.demo.css"],
+    styleUrls: ["../tree-view.demo.scss"],
     templateUrl: "./recursive-selectable-tree.html"
 })
 export class RecursiveSelectableTreeDemo {

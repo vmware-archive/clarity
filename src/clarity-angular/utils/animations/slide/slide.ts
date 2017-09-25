@@ -6,7 +6,6 @@
 import {animate, AnimationMetadata, style, transition} from "@angular/animations";
 
 export function slide(direction: string): AnimationMetadata[] {
-    "use strict";
     let transform: string = null;
     if (direction === "up") {
         transform = "translate(0, 25%)";

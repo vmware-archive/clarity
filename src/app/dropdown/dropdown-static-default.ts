@@ -6,10 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-dropdown-static-default-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./dropdown.demo.css"],
+    styleUrls: ["./dropdown.demo.scss"],
     templateUrl: "./dropdown-static-default.demo.html"
 })
 export class DropdownStaticDefaultDemo {}

@@ -36,10 +36,8 @@ const EXAMPLE_HTML = `
 
 
 @Component({
-    moduleId: module.id,
     selector: "clr-tree-node-routing-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["../tree-view.demo.css"],
+    styleUrls: ["../tree-view.demo.scss"],
     templateUrl: "tree-node-routing.html"
 })
 export class TreeNodeRoutingDemo { exampleHTML = EXAMPLE_HTML; }

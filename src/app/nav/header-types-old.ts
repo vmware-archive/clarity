@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-header-demo-types-old",
     templateUrl: "./header-types-old.demo.html",
-    styleUrls: ["./headers.demo.css"]
+    styleUrls: ["./headers.demo.scss"]
 })
 export class HeaderTypesOldDemo {}

@@ -8,13 +8,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 import {EXAMPLES} from "./examples";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-reactive-forms-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./reactive-forms.css"],
-    templateUrl: "./reactive-forms.html"
-})
+@Component(
+    {selector: "clr-reactive-forms-demo", styleUrls: ["./reactive-forms.scss"], templateUrl: "./reactive-forms.html"})
 export class ReactiveFormsDemo {
     examples = EXAMPLES;
 

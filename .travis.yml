@@ -5,11 +5,11 @@ env:
   global:
     - CXX=g++-4.8
   matrix:
-    - TEST_SUITE='test'
-    - TEST_SUITE='css:test --set set1'
-    - TEST_SUITE='css:test --set set2'
-    - TEST_SUITE='css:test --set set3'
-    - TEST_SUITE='css:test --set set4'
+    - TEST_SUITE='test:travis'
+    - TEST_SUITE='cssTest set1'
+    - TEST_SUITE='cssTest set2'
+    - TEST_SUITE='cssTest set3'
+    - TEST_SUITE='cssTest set4'
 
 sudo: required
 dist: trusty
@@ -31,7 +31,6 @@ addons:
       - $TRAVIS_BUILD_DIR/gemini-report/
 cache:
   apt: true
-  yarn: true
   directories:
     - node_modules
 
@@ -40,8 +39,6 @@ before_install:
 before_script:
   - npm install -g gemini
   - npm install -g html-reporter
-  - docker run -d -p 4444:4444 selenium/standalone-chrome@sha256:b899f16b6d963600ef6da8a8dd49e311146033ed66cb5af71eccb78ab378e19a
-  - sleep 5
 
 script:
-  - gulp $TEST_SUITE # run unit test, css regression, and css reference in parallel
+  - npm run $TEST_SUITE # run unit test and css regression test sets in parallel

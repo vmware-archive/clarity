@@ -7,9 +7,8 @@ import {Component} from "@angular/core";
 import {StackViewNgDemo} from "./stack-view-ng-demo";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-stack-view-angular-modal-edit-demo",
     templateUrl: "./stack-view-angular-modal-edit.html",
-    styleUrls: ["./stack-view.demo.css"]
+    styleUrls: ["./stack-view.demo.scss"]
 })
 export class StackViewAngularModalEditDemo extends StackViewNgDemo {}

@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-killers-demo",
     template: `
         <!--https://en.wikipedia.org/wiki/The_Killers-->

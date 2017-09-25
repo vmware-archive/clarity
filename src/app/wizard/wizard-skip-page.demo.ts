@@ -7,7 +7,7 @@
 import {Component, ViewChild} from "@angular/core";
 import {Wizard} from "../../clarity-angular/wizard/wizard";
 
-@Component({moduleId: module.id, selector: "clr-wizard-skip-page", templateUrl: "./wizard-skip-page.demo.html"})
+@Component({selector: "clr-wizard-skip-page", templateUrl: "./wizard-skip-page.demo.html"})
 export class WizardSkipPageDemo {
     @ViewChild("wizard") wizard: Wizard;
     skipStepTwo: boolean = true;

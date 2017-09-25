@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-hot-fuss-1-demo",
     template: `
         <!--https://en.wikipedia.org/wiki/Hot_Fuss-->

@@ -119,7 +119,7 @@ describe("FocusTrap", () => {
         });
 
         it("should have an activeElement that defaults to the body", () => {
-            expect(document.body).toBe(document.activeElement);
+            expect(document.body as Element).toBe(document.activeElement);
         });
 
         it("should return focus to the activeElement at the time of its initialization", () => {

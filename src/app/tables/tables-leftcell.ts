@@ -5,10 +5,6 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-tables-leftcell-demo",
-    styleUrls: ["tables.demo.scss"],
-    templateUrl: "./tables-leftcell.html"
-})
+@Component(
+    {selector: "clr-tables-leftcell-demo", styleUrls: ["tables.demo.scss"], templateUrl: "./tables-leftcell.html"})
 export class TablesLeftcellDemo {}

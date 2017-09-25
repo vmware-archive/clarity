@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-revolver-1-demo",
     template: `
         <!--Credit https://en.wikipedia.org/wiki/Revolver_(Beatles_album)-->

@@ -5,10 +5,5 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-lists-mixed-demo",
-    styleUrls: ["lists.demo.css"],
-    templateUrl: "./lists-mixed.html"
-})
+@Component({selector: "clr-lists-mixed-demo", styleUrls: ["lists.demo.scss"], templateUrl: "./lists-mixed.html"})
 export class ListsMixedDemo {}

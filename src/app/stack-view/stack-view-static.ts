@@ -6,10 +6,9 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-stack-view-static-demo",
     templateUrl: "./stack-view-static.html",
-    styleUrls: ["./stack-view.demo.css"]
+    styleUrls: ["./stack-view.demo.scss"]
 })
 
 export class StackViewStaticDemo {}

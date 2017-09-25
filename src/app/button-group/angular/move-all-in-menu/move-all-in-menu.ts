@@ -6,10 +6,9 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-move-all-in-menu-demo",
     templateUrl: "move-all-in-menu.html",
-    styleUrls: ["../../button-group.demo.css"]
+    styleUrls: ["../../button-group.demo.scss"]
 })
 export class MoveAllInMenuDemo {
     hide: boolean = false;

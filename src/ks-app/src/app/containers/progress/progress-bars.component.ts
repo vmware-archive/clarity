@@ -57,7 +57,7 @@ export class KSProgressBars {
 
     runProgressBar(): void {
         this.stopProgressBar();
-        this.inlineProgressTimerId = setInterval(() => {
+        this.inlineProgressTimerId = window.setInterval(() => {
 
             const oldProgressValue: number = this.inlineProgress;
             let increment: number = Math.floor(Math.random() * 15) + 1;

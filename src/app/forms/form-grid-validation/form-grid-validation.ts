@@ -6,10 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-forms-demo-grid-validation",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./form-grid-validation.demo.css"],
+    styleUrls: ["./form-grid-validation.demo.scss"],
     templateUrl: "./form-grid-validation.demo.html"
 })
 export class FormGridValidationDemo {

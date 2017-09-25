@@ -5,10 +5,5 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-buttons-demo-toggles",
-    templateUrl: "./toggles.html",
-    styleUrls: ["./buttons.demo.css"]
-})
+@Component({selector: "clr-buttons-demo-toggles", templateUrl: "./toggles.html", styleUrls: ["./buttons.demo.scss"]})
 export class ToggleDemo {}

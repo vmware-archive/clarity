@@ -7,7 +7,6 @@
 import {Component, ViewEncapsulation} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-demo",
     template: `
       <h2>New Wizard</h2>

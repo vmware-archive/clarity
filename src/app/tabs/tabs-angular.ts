@@ -5,10 +5,6 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-modal-tabs-angular",
-    styleUrls: ["./tabs.demo.css"],
-    templateUrl: "./tabs-angular.demo.html"
-})
+@Component(
+    {selector: "clr-modal-tabs-angular", styleUrls: ["./tabs.demo.scss"], templateUrl: "./tabs-angular.demo.html"})
 export class TabsAngularDemo { inOverflow: boolean = false; }

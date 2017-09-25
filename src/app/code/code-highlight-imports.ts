@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-code-highlight-imports-demo",
     templateUrl: "./code-highlight-imports.html",
-    styleUrls: ["./code-highlight.demo.css"]
+    styleUrls: ["./code-highlight.demo.scss"]
 })
 export class CodeHighlightImportsDemo {}

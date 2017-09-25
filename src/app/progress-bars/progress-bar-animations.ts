@@ -7,9 +7,8 @@ import {Component} from "@angular/core";
 import {ProgBarExample} from "./progbar-example";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-progress-bar-animations-demo",
-    styleUrls: ["progress-bars.demo.css"],
+    styleUrls: ["progress-bars.demo.scss"],
     templateUrl: "./progress-bar-animations.html"
 })
 

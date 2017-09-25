@@ -5,10 +5,5 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-grid-demo-columns",
-    templateUrl: "./grid-columns.html",
-    styleUrls: ["./grid.demo.scss"]
-})
+@Component({selector: "clr-grid-demo-columns", templateUrl: "./grid-columns.html", styleUrls: ["./grid.demo.scss"]})
 export class GridColumnsDemo {}

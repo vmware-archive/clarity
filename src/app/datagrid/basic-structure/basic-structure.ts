@@ -27,7 +27,6 @@ const EXAMPLE = `
 `;
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-basic-structure-demo",
     providers: [Inventory],
     templateUrl: "./basic-structure.html",

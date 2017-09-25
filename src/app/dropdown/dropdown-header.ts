@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-dropdown-header-demo",
     templateUrl: "./dropdown-header.demo.html",
-    styleUrls: ["./dropdown.demo.css"]
+    styleUrls: ["./dropdown.demo.scss"]
 })
 export class DropdownHeaderDemo {}

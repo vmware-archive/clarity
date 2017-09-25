@@ -5,10 +5,6 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-tables-noborder-demo",
-    styleUrls: ["tables.demo.scss"],
-    templateUrl: "./tables-noborder.html"
-})
+@Component(
+    {selector: "clr-tables-noborder-demo", styleUrls: ["tables.demo.scss"], templateUrl: "./tables-noborder.html"})
 export class TablesNoborderDemo {}

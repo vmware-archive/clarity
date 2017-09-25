@@ -97,10 +97,8 @@ const EXAMPLE_4 = `
 `;
 
 @Component({
-    moduleId: module.id,
     selector: "clr-tree-node-basic-expanded-structure-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["../tree-view.demo.css"],
+    styleUrls: ["../tree-view.demo.scss"],
     templateUrl: "./tree-node-basic-expanded.html"
 })
 export class TreeNodeBasicExpandedStructureDemo {

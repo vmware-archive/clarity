@@ -15,7 +15,6 @@ import {PokemonFilter} from "../utils/pokemon-filter";
 import {DatagridKitchenSinkData} from "./kitchen-sink-data";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-kitchen-sink-demo",
     templateUrl: "./kitchen-sink.html",
     styleUrls: ["../datagrid.demo.scss"]

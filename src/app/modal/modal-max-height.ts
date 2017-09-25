@@ -5,11 +5,6 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-modal-max-height-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./modal.demo.css"],
-    templateUrl: "./modal-max-height.html"
-})
+@Component(
+    {selector: "clr-modal-max-height-demo", styleUrls: ["./modal.demo.scss"], templateUrl: "./modal-max-height.html"})
 export class ModalMaxHeightDemo { public open: boolean = true; }

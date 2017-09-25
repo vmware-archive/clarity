@@ -5,10 +5,5 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-layout-all-demo",
-    templateUrl: "./layout-all.html",
-    styleUrls: ["./layout.demo.css"]
-})
+@Component({selector: "clr-layout-all-demo", templateUrl: "./layout-all.html", styleUrls: ["./layout.demo.scss"]})
 export class LayoutAllDemo {}

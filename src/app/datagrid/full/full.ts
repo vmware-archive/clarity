@@ -13,7 +13,6 @@ import {PokemonFilter} from "../utils/pokemon-filter";
 
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-full-demo",
     providers: [Inventory],
     templateUrl: "./full.html",

@@ -5,11 +5,5 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-selects-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./selects.demo.css"],
-    templateUrl: "./selects.demo.html"
-})
+@Component({selector: "clr-selects-demo", styleUrls: ["./selects.demo.scss"], templateUrl: "./selects.demo.html"})
 export class SelectsDemo {}

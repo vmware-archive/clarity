@@ -10,12 +10,8 @@ export class Hero {
     constructor(public id: number, public name: string, public power: string, public alterEgo?: string) {}
 }
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-modal-dynamic-form",
-    styleUrls: ["./modal.demo.css"],
-    templateUrl: "./modal-form.demo.html"
-})
+@Component(
+    {selector: "clr-modal-dynamic-form", styleUrls: ["./modal.demo.scss"], templateUrl: "./modal-form.demo.html"})
 export class ModalFormDemo {
     basic: boolean = false;
     powers = ["Really Smart", "Super Flexible", "Super Hot", "Weather Changer"];

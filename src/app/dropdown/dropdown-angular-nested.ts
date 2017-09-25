@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-dropdown-angular-nested-demo",
     templateUrl: "./dropdown-angular-nested.demo.html",
-    styleUrls: ["./dropdown.demo.css"]
+    styleUrls: ["./dropdown.demo.scss"]
 })
 export class DropdownAngularNestedDemo {}

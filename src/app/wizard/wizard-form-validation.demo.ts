@@ -7,8 +7,7 @@
 import {Component, ViewChild} from "@angular/core";
 import {Wizard} from "../../clarity-angular/wizard/wizard";
 
-@Component(
-    {moduleId: module.id, selector: "clr-wizard-form-validation", templateUrl: "./wizard-form-validation.demo.html"})
+@Component({selector: "clr-wizard-form-validation", templateUrl: "./wizard-form-validation.demo.html"})
 export class WizardFormValidation {
     @ViewChild("wizard") wizard: Wizard;
     @ViewChild("number") numberField: any;

@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-layout-only-subnav-primary",
     templateUrl: "./layout-subnav-primary.html",
-    styleUrls: ["./layout.demo.css"]
+    styleUrls: ["./layout.demo.scss"]
 })
 export class LayoutSubnavPrimaryDemo {}

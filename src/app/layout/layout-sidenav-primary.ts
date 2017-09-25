@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-layout-only-sidenav-primary",
     templateUrl: "./layout-sidenav-primary.html",
-    styleUrls: ["./layout.demo.css"]
+    styleUrls: ["./layout.demo.scss"]
 })
 export class LayoutSidenavPrimaryDemo {}

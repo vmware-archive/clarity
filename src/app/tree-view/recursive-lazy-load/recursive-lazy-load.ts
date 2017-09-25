@@ -81,10 +81,8 @@ selectableRoot = {
 `;
 
 @Component({
-    moduleId: module.id,
     selector: "clr-tree-recursive-lazy-load-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["../tree-view.demo.css"],
+    styleUrls: ["../tree-view.demo.scss"],
     templateUrl: "./recursive-lazy-load.html"
 })
 export class RecursiveLazyLoadComponent {

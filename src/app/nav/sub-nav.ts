@@ -5,11 +5,5 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-nav-demo-subnav",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./sub-nav.demo.css"],
-    templateUrl: "./sub-nav.demo.html"
-})
+@Component({selector: "clr-nav-demo-subnav", styleUrls: ["./sub-nav.demo.scss"], templateUrl: "./sub-nav.demo.html"})
 export class SubNavDemo {}

@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-responsive-nav-subnav-sidenav-demo",
     template: `
     <pre>
@@ -30,6 +29,6 @@ import {Component} from "@angular/core";
     </code>
     </pre>
     `,
-    styleUrls: ["./headers.demo.css"]
+    styleUrls: ["./headers.demo.scss"]
 })
 export class ResponsiveNav2Demo {}

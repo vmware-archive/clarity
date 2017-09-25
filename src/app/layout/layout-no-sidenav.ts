@@ -6,9 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-layout-no-sidenav-demo",
     templateUrl: "./layout-no-sidenav.html",
-    styleUrls: ["./layout.demo.css"]
+    styleUrls: ["./layout.demo.scss"]
 })
 export class LayoutNoSidenavDemo {}

@@ -11,7 +11,6 @@ import {PokemonFilter} from "../utils/pokemon-filter";
 import {EXAMPLES} from "./examples";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-string-filtering-demo",
     providers: [Inventory],
     templateUrl: "string-filtering.html",

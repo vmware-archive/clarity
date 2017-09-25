@@ -5,11 +5,5 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-label-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./labels.demo.css"],
-    templateUrl: "./labels.demo.html"
-})
+@Component({selector: "clr-label-demo", styleUrls: ["./labels.demo.scss"], templateUrl: "./labels.demo.html"})
 export class LabelsDemo {}

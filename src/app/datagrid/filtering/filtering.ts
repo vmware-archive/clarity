@@ -10,7 +10,6 @@ import {User} from "../inventory/user";
 import {EXAMPLES} from "./examples";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-filtering-demo",
     providers: [Inventory],
     templateUrl: "./filtering.html",

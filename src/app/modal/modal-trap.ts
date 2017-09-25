@@ -5,10 +5,5 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-modal-trap-demo",
-    styleUrls: ["./modal.demo.css"],
-    templateUrl: "./modal-trap.demo.html"
-})
+@Component({selector: "clr-modal-trap-demo", styleUrls: ["./modal.demo.scss"], templateUrl: "./modal-trap.demo.html"})
 export class ModalTrapDemo {}

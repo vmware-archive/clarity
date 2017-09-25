@@ -9,7 +9,6 @@ import {Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-preserve-selection-demo",
     providers: [Inventory],
     templateUrl: "preserve-selection.html",

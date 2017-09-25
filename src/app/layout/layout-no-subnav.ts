@@ -5,10 +5,6 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-layout-no-subnav-demo",
-    templateUrl: "./layout-no-subnav.html",
-    styleUrls: ["./layout.demo.css"]
-})
+@Component(
+    {selector: "clr-layout-no-subnav-demo", templateUrl: "./layout-no-subnav.html", styleUrls: ["./layout.demo.scss"]})
 export class LayoutNoSubnavDemo {}

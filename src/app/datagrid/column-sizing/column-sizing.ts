@@ -9,7 +9,6 @@ import {Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-column-sizing-demo",
     providers: [Inventory],
     templateUrl: "column-sizing.html",

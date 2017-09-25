@@ -8,7 +8,7 @@ import {Component, ViewChild} from "@angular/core";
 import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
 import {Wizard} from "../../clarity-angular/wizard/wizard";
 
-@Component({moduleId: module.id, selector: "clr-wizard-basic", templateUrl: "./wizard-not-closable.demo.html"})
+@Component({selector: "clr-wizard-basic", templateUrl: "./wizard-not-closable.demo.html"})
 export class WizardNotClosableDemo {
     @ViewChild("wizard") wizard: Wizard;
     @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;

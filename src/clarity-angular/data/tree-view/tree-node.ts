@@ -29,8 +29,8 @@ import {TreeSelectionService} from "./providers/tree-selection.service";
                              state("expanded", style({"height": "*", "overflow-y": "hidden"})),
                              state("collapsed", style({"height": 0, "overflow-y": "hidden"})),
                              transition("expanded <=> collapsed", animate("0.2s ease-in-out"))
-                         ])]
-
+                         ])],
+    host: {"class": ".clr-tree-node"}
 })
 export class TreeNode extends AbstractTreeSelection implements OnDestroy {
     constructor(public nodeExpand: Expand, @Optional() @SkipSelf() public parent: TreeNode,

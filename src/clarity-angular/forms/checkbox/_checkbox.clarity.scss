@@ -22,7 +22,7 @@
         }
 
         label {
-            @include checkbox-radio-label-styles($clr_baselineRem_1, $clr-checkbox-radio-height + $clr_baselineRem_0_25);
+            @include checkbox-radio-label-styles($clr-checkbox-radio-label-height, $clr-checkbox-radio-padding-left);
         }
 
         //Checkbox base

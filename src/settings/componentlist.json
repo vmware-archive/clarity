@@ -125,9 +125,9 @@
             "text": "Datepicker",
             "type": "component",
             "ux": 20,
-            "ui": 5,
+            "ui": 10,
             "core": -1,
-            "ng": 5,
+            "ng": 10,
             "dox": 5
         },
         {
@@ -278,7 +278,7 @@
             "url": null,
             "text": "Notifications/Toasts",
             "type": "component",
-            "ux": 10,
+            "ux": 5,
             "ui": 5,
             "core": -1,
             "ng": 5,
@@ -331,7 +331,7 @@
             "ux": 20,
             "ui": 20,
             "core": -1,
-            "ng": 10,
+            "ng": 20,
             "dox": 20
         },
         {
@@ -353,7 +353,7 @@
             "ux": 20,
             "ui": 20,
             "core": -1,
-            "ng": 5,
+            "ng": -1,
             "dox": 20
         },
         {
@@ -434,10 +434,11 @@
             "newLayout": true,
             "type": "component",
             "ux": 20,
-            "ui": 10,
+            "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": null,

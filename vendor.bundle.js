@@ -84,8 +84,8 @@ function View_Header_Host_0(_l) {
     });
 }
 var HeaderNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_15" /* ɵccf */]('clr-header', __WEBPACK_IMPORTED_MODULE_2_clarity_angular_layout_nav_header__["a" /* Header */], View_Header_Host_0, {}, {}, ['*']);
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL1VzZXJzL21oaXBwZWx5L1Byb2plY3RzL2NsYXJpdHkvd2Vic2l0ZS9ub2RlX21vZHVsZXMvY2xhcml0eS1hbmd1bGFyL2xheW91dC9uYXYvaGVhZGVyLm5nZmFjdG9yeS50cyIsInZlcnNpb24iOjMsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5nOi8vL1VzZXJzL21oaXBwZWx5L1Byb2plY3RzL2NsYXJpdHkvd2Vic2l0ZS9ub2RlX21vZHVsZXMvY2xhcml0eS1hbmd1bGFyL2xheW91dC9uYXYvaGVhZGVyLmQudHMiLCJuZzovLy9Vc2Vycy9taGlwcGVseS9Qcm9qZWN0cy9jbGFyaXR5L3dlYnNpdGUvbm9kZV9tb2R1bGVzL2NsYXJpdHktYW5ndWxhci9sYXlvdXQvbmF2L2hlYWRlci5kLnRzLkhlYWRlci5odG1sIiwibmc6Ly8vVXNlcnMvbWhpcHBlbHkvUHJvamVjdHMvY2xhcml0eS93ZWJzaXRlL25vZGVfbW9kdWxlcy9jbGFyaXR5LWFuZ3VsYXIvbGF5b3V0L25hdi9oZWFkZXIuZC50cy5IZWFkZXJfSG9zdC5odG1sIl0sInNvdXJjZXNDb250ZW50IjpbIiAiLCJcbiAgICAgICAgPGJ1dHRvblxuICAgICAgICAgICAgdHlwZT1cImJ1dHRvblwiXG4gICAgICAgICAgICAqbmdJZj1cImlzTmF2TGV2ZWwxT25QYWdlXCJcbiAgICAgICAgICAgIGNsYXNzPVwiaGVhZGVyLWhhbWJ1cmdlci10cmlnZ2VyXCJcbiAgICAgICAgICAgIChjbGljayk9XCJ0b2dnbGVOYXYocmVzcG9uc2l2ZU5hdkNvZGVzLk5BVl9MRVZFTF8xKVwiPlxuICAgICAgICAgICAgPHNwYW4+PC9zcGFuPlxuICAgICAgICA8L2J1dHRvbj5cbiAgICAgICAgPG5nLWNvbnRlbnQ+PC9uZy1jb250ZW50PlxuICAgICAgICA8YnV0dG9uXG4gICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcbiAgICAgICAgICAgICpuZ0lmPVwiaXNOYXZMZXZlbDJPblBhZ2VcIlxuICAgICAgICAgICAgY2xhc3M9XCJoZWFkZXItb3ZlcmZsb3ctdHJpZ2dlclwiXG4gICAgICAgICAgICAoY2xpY2spPVwidG9nZ2xlTmF2KHJlc3BvbnNpdmVOYXZDb2Rlcy5OQVZfTEVWRUxfMilcIj5cbiAgICAgICAgICAgIDxzcGFuPjwvc3Bhbj5cbiAgICAgICAgPC9idXR0b24+XG4gICAgICAgIDxkaXYgY2xhc3M9XCJoZWFkZXItYmFja2Ryb3BcIiAoY2xpY2spPVwiY2xvc2VPcGVuTmF2KClcIj48L2Rpdj5cbiAgICAiLCI8Y2xyLWhlYWRlcj48L2Nsci1oZWFkZXI+Il0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7Ozs7OztvQkNDUTtNQUFBO01BQUE7SUFBQTtJQUFBO0lBSUk7TUFBQTtNQUFBO0lBQUE7SUFKSjtFQUFBLGdDQUl3RDtNQUNwRDtVQUFBLDBEQUFhO1VBQUE7OztvQkFHakI7TUFBQTtNQUFBO0lBQUE7SUFBQTtJQUlJO01BQUE7TUFBQTtJQUFBO0lBSko7RUFBQSxnQ0FJd0Q7TUFDcEQ7VUFBQSwwREFBYTtVQUFBOzs7b0JBZHpCLCtDQUNRO01BQUEsbUVBQUE7TUFBQTtNQU1TLHNEQUNULGtCQUF5QjtpQkFBQSxnQ0FDekI7VUFBQSxxREFBQTtVQUFBO01BTVMsK0NBQ1Q7VUFBQTtjQUFBO1lBQUE7WUFBQTtZQUE2QjtjQUFBO2NBQUE7WUFBQTtZQUE3QjtVQUFBLGdDQUE0RDs7O1FBYnhEO1FBRkosV0FFSSxTQUZKO1FBVUk7UUFGSixXQUVJLFNBRko7Ozs7b0JDVFI7TUFBQTthQUFBO1VBQUE7SUFBQTs7SUFBQTtJQUFBLFdBQUEsU0FBQTs7OzsifQ==
-//# sourceMappingURL=/Users/mhippely/Projects/clarity/website/src/header.ngfactory.js.map
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL1VzZXJzL3N0c29nb28vVk13YXJlL1BVQkxJU0gvd2Vic2l0ZS9ub2RlX21vZHVsZXMvY2xhcml0eS1hbmd1bGFyL2xheW91dC9uYXYvaGVhZGVyLm5nZmFjdG9yeS50cyIsInZlcnNpb24iOjMsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5nOi8vL1VzZXJzL3N0c29nb28vVk13YXJlL1BVQkxJU0gvd2Vic2l0ZS9ub2RlX21vZHVsZXMvY2xhcml0eS1hbmd1bGFyL2xheW91dC9uYXYvaGVhZGVyLmQudHMiLCJuZzovLy9Vc2Vycy9zdHNvZ29vL1ZNd2FyZS9QVUJMSVNIL3dlYnNpdGUvbm9kZV9tb2R1bGVzL2NsYXJpdHktYW5ndWxhci9sYXlvdXQvbmF2L2hlYWRlci5kLnRzLkhlYWRlci5odG1sIiwibmc6Ly8vVXNlcnMvc3Rzb2dvby9WTXdhcmUvUFVCTElTSC93ZWJzaXRlL25vZGVfbW9kdWxlcy9jbGFyaXR5LWFuZ3VsYXIvbGF5b3V0L25hdi9oZWFkZXIuZC50cy5IZWFkZXJfSG9zdC5odG1sIl0sInNvdXJjZXNDb250ZW50IjpbIiAiLCJcbiAgICAgICAgPGJ1dHRvblxuICAgICAgICAgICAgdHlwZT1cImJ1dHRvblwiXG4gICAgICAgICAgICAqbmdJZj1cImlzTmF2TGV2ZWwxT25QYWdlXCJcbiAgICAgICAgICAgIGNsYXNzPVwiaGVhZGVyLWhhbWJ1cmdlci10cmlnZ2VyXCJcbiAgICAgICAgICAgIChjbGljayk9XCJ0b2dnbGVOYXYocmVzcG9uc2l2ZU5hdkNvZGVzLk5BVl9MRVZFTF8xKVwiPlxuICAgICAgICAgICAgPHNwYW4+PC9zcGFuPlxuICAgICAgICA8L2J1dHRvbj5cbiAgICAgICAgPG5nLWNvbnRlbnQ+PC9uZy1jb250ZW50PlxuICAgICAgICA8YnV0dG9uXG4gICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcbiAgICAgICAgICAgICpuZ0lmPVwiaXNOYXZMZXZlbDJPblBhZ2VcIlxuICAgICAgICAgICAgY2xhc3M9XCJoZWFkZXItb3ZlcmZsb3ctdHJpZ2dlclwiXG4gICAgICAgICAgICAoY2xpY2spPVwidG9nZ2xlTmF2KHJlc3BvbnNpdmVOYXZDb2Rlcy5OQVZfTEVWRUxfMilcIj5cbiAgICAgICAgICAgIDxzcGFuPjwvc3Bhbj5cbiAgICAgICAgPC9idXR0b24+XG4gICAgICAgIDxkaXYgY2xhc3M9XCJoZWFkZXItYmFja2Ryb3BcIiAoY2xpY2spPVwiY2xvc2VPcGVuTmF2KClcIj48L2Rpdj5cbiAgICAiLCI8Y2xyLWhlYWRlcj48L2Nsci1oZWFkZXI+Il0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7Ozs7OztvQkNDUTtNQUFBO01BQUE7SUFBQTtJQUFBO0lBSUk7TUFBQTtNQUFBO0lBQUE7SUFKSjtFQUFBLGdDQUl3RDtNQUNwRDtVQUFBLDBEQUFhO1VBQUE7OztvQkFHakI7TUFBQTtNQUFBO0lBQUE7SUFBQTtJQUlJO01BQUE7TUFBQTtJQUFBO0lBSko7RUFBQSxnQ0FJd0Q7TUFDcEQ7VUFBQSwwREFBYTtVQUFBOzs7b0JBZHpCLCtDQUNRO01BQUEsbUVBQUE7TUFBQTtNQU1TLHNEQUNULGtCQUF5QjtpQkFBQSxnQ0FDekI7VUFBQSxxREFBQTtVQUFBO01BTVMsK0NBQ1Q7VUFBQTtjQUFBO1lBQUE7WUFBQTtZQUE2QjtjQUFBO2NBQUE7WUFBQTtZQUE3QjtVQUFBLGdDQUE0RDs7O1FBYnhEO1FBRkosV0FFSSxTQUZKO1FBVUk7UUFGSixXQUVJLFNBRko7Ozs7b0JDVFI7TUFBQTthQUFBO1VBQUE7SUFBQTs7SUFBQTtJQUFBLFdBQUEsU0FBQTs7OzsifQ==
+//# sourceMappingURL=/Users/stsogoo/VMware/PUBLISH/website/src/header.ngfactory.js.map
 
 /***/ }),
 
@@ -121,8 +121,8 @@ function View_TemplateRefContainer_Host_0(_l) {
     return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_44" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](0, null, null, 1, 'ng-component', [], null, null, null, View_TemplateRefContainer_0, RenderType_TemplateRefContainer)), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ɵdid */](49152, null, 0, __WEBPACK_IMPORTED_MODULE_1_clarity_angular_utils_template_ref_template_ref_container__["a" /* TemplateRefContainer */], [], null, null)], null, null);
 }
 var TemplateRefContainerNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_15" /* ɵccf */]('ng-component', __WEBPACK_IMPORTED_MODULE_1_clarity_angular_utils_template_ref_template_ref_container__["a" /* TemplateRefContainer */], View_TemplateRefContainer_Host_0, {}, {}, ['*']);
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL1VzZXJzL21oaXBwZWx5L1Byb2plY3RzL2NsYXJpdHkvd2Vic2l0ZS9ub2RlX21vZHVsZXMvY2xhcml0eS1hbmd1bGFyL3V0aWxzL3RlbXBsYXRlLXJlZi90ZW1wbGF0ZS1yZWYtY29udGFpbmVyLm5nZmFjdG9yeS50cyIsInZlcnNpb24iOjMsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5nOi8vL1VzZXJzL21oaXBwZWx5L1Byb2plY3RzL2NsYXJpdHkvd2Vic2l0ZS9ub2RlX21vZHVsZXMvY2xhcml0eS1hbmd1bGFyL3V0aWxzL3RlbXBsYXRlLXJlZi90ZW1wbGF0ZS1yZWYtY29udGFpbmVyLmQudHMiLCJuZzovLy9Vc2Vycy9taGlwcGVseS9Qcm9qZWN0cy9jbGFyaXR5L3dlYnNpdGUvbm9kZV9tb2R1bGVzL2NsYXJpdHktYW5ndWxhci91dGlscy90ZW1wbGF0ZS1yZWYvdGVtcGxhdGUtcmVmLWNvbnRhaW5lci5kLnRzLlRlbXBsYXRlUmVmQ29udGFpbmVyLmh0bWwiLCJuZzovLy9Vc2Vycy9taGlwcGVseS9Qcm9qZWN0cy9jbGFyaXR5L3dlYnNpdGUvbm9kZV9tb2R1bGVzL2NsYXJpdHktYW5ndWxhci91dGlscy90ZW1wbGF0ZS1yZWYvdGVtcGxhdGUtcmVmLWNvbnRhaW5lci5kLnRzLlRlbXBsYXRlUmVmQ29udGFpbmVyX0hvc3QuaHRtbCJdLCJzb3VyY2VzQ29udGVudCI6WyIgIiwiXG4gICAgICA8bmctdGVtcGxhdGU+XG4gICAgICAgIDxuZy1jb250ZW50PjwvbmctY29udGVudD5cbiAgICAgIDwvbmctdGVtcGxhdGU+XG4gICAgIiwiPG5nLWNvbXBvbmVudD48L25nLWNvbXBvbmVudD4iXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7Ozs7OztvQkNDbUIsc0RBQ1g7TUFBQSxHQUF5Qjs7O3NEQUZqQztNQUFBLGVBQ007TUFFYzs7O29CQ0hwQjtNQUFBO3FDQUFBLFVBQUE7TUFBQTs7OyJ9
-//# sourceMappingURL=/Users/mhippely/Projects/clarity/website/src/template-ref-container.ngfactory.js.map
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL1VzZXJzL3N0c29nb28vVk13YXJlL1BVQkxJU0gvd2Vic2l0ZS9ub2RlX21vZHVsZXMvY2xhcml0eS1hbmd1bGFyL3V0aWxzL3RlbXBsYXRlLXJlZi90ZW1wbGF0ZS1yZWYtY29udGFpbmVyLm5nZmFjdG9yeS50cyIsInZlcnNpb24iOjMsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5nOi8vL1VzZXJzL3N0c29nb28vVk13YXJlL1BVQkxJU0gvd2Vic2l0ZS9ub2RlX21vZHVsZXMvY2xhcml0eS1hbmd1bGFyL3V0aWxzL3RlbXBsYXRlLXJlZi90ZW1wbGF0ZS1yZWYtY29udGFpbmVyLmQudHMiLCJuZzovLy9Vc2Vycy9zdHNvZ29vL1ZNd2FyZS9QVUJMSVNIL3dlYnNpdGUvbm9kZV9tb2R1bGVzL2NsYXJpdHktYW5ndWxhci91dGlscy90ZW1wbGF0ZS1yZWYvdGVtcGxhdGUtcmVmLWNvbnRhaW5lci5kLnRzLlRlbXBsYXRlUmVmQ29udGFpbmVyLmh0bWwiLCJuZzovLy9Vc2Vycy9zdHNvZ29vL1ZNd2FyZS9QVUJMSVNIL3dlYnNpdGUvbm9kZV9tb2R1bGVzL2NsYXJpdHktYW5ndWxhci91dGlscy90ZW1wbGF0ZS1yZWYvdGVtcGxhdGUtcmVmLWNvbnRhaW5lci5kLnRzLlRlbXBsYXRlUmVmQ29udGFpbmVyX0hvc3QuaHRtbCJdLCJzb3VyY2VzQ29udGVudCI6WyIgIiwiXG4gICAgICA8bmctdGVtcGxhdGU+XG4gICAgICAgIDxuZy1jb250ZW50PjwvbmctY29udGVudD5cbiAgICAgIDwvbmctdGVtcGxhdGU+XG4gICAgIiwiPG5nLWNvbXBvbmVudD48L25nLWNvbXBvbmVudD4iXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7Ozs7OztvQkNDbUIsc0RBQ1g7TUFBQSxHQUF5Qjs7O3NEQUZqQztNQUFBLGVBQ007TUFFYzs7O29CQ0hwQjtNQUFBO3FDQUFBLFVBQUE7TUFBQTs7OyJ9
+//# sourceMappingURL=/Users/stsogoo/VMware/PUBLISH/website/src/template-ref-container.ngfactory.js.map
 
 /***/ }),
 
@@ -3168,22 +3168,21 @@ DatagridRow.propDecorators = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Datagrid; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__built_in_comparators_datagrid_property_comparator__ = __webpack_require__("../../../../clarity-angular/data/datagrid/built-in/comparators/datagrid-property-comparator.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__built_in_filters_datagrid_property_string_filter__ = __webpack_require__("../../../../clarity-angular/data/datagrid/built-in/filters/datagrid-property-string-filter.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__built_in_filters_datagrid_string_filter_impl__ = __webpack_require__("../../../../clarity-angular/data/datagrid/built-in/filters/datagrid-string-filter-impl.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__datagrid_column__ = __webpack_require__("../../../../clarity-angular/data/datagrid/datagrid-column.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__datagrid_items__ = __webpack_require__("../../../../clarity-angular/data/datagrid/datagrid-items.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__datagrid_placeholder__ = __webpack_require__("../../../../clarity-angular/data/datagrid/datagrid-placeholder.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__datagrid_row__ = __webpack_require__("../../../../clarity-angular/data/datagrid/datagrid-row.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_filters__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/filters.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_global_expandable_rows__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/global-expandable-rows.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_hideable_column_service__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/hideable-column.service.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_items__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/items.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_page__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/page.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_row_action_service__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/row-action-service.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_selection__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/selection.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_sort__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/sort.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__render_render_organizer__ = __webpack_require__("../../../../clarity-angular/data/datagrid/render/render-organizer.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__datagrid_column__ = __webpack_require__("../../../../clarity-angular/data/datagrid/datagrid-column.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__datagrid_items__ = __webpack_require__("../../../../clarity-angular/data/datagrid/datagrid-items.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__datagrid_placeholder__ = __webpack_require__("../../../../clarity-angular/data/datagrid/datagrid-placeholder.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__datagrid_row__ = __webpack_require__("../../../../clarity-angular/data/datagrid/datagrid-row.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_filters__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/filters.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_global_expandable_rows__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/global-expandable-rows.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_hideable_column_service__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/hideable-column.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_items__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/items.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_page__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/page.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_row_action_service__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/row-action-service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_selection__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/selection.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_sort__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/sort.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_state_debouncer_provider__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/state-debouncer.provider.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_state_provider__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/state.provider.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__render_render_organizer__ = __webpack_require__("../../../../clarity-angular/data/datagrid/render/render-organizer.js");
 /*
  * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
@@ -3205,28 +3204,23 @@ DatagridRow.propDecorators = {
 
 
 
-
 var Datagrid = (function () {
-    function Datagrid(columnService, filters, organizer, page, sort, items, expandableRows, selection, rowActionService) {
+    function Datagrid(columnService, organizer, items, expandableRows, selection, rowActionService, stateProvider) {
         this.columnService = columnService;
-        this.filters = filters;
         this.organizer = organizer;
-        this.page = page;
-        this.sort = sort;
         this.items = items;
         this.expandableRows = expandableRows;
         this.selection = selection;
         this.rowActionService = rowActionService;
+        this.stateProvider = stateProvider;
         /* reference to the enum so that template can access */
-        this.SELECTION_TYPE = __WEBPACK_IMPORTED_MODULE_14__providers_selection__["b" /* SelectionType */];
+        this.SELECTION_TYPE = __WEBPACK_IMPORTED_MODULE_11__providers_selection__["b" /* SelectionType */];
         /**
          * Output emitted whenever the data needs to be refreshed, based on user action or external ones
          */
         this.refresh = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* EventEmitter */](false);
         this.selectedChanged = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* EventEmitter */](false);
         this.singleSelectedChanged = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* EventEmitter */](false);
-        /* We aggregate the refreshes so it's only emitted once per cycle */
-        this._shouldRefresh = false;
         /**
          * Subscriptions to all the services and queries changes
          */
@@ -3246,50 +3240,6 @@ var Datagrid = (function () {
         configurable: true
     });
     /**
-     * Emits a State output to ask for the data to be refreshed
-     */
-    Datagrid.prototype.triggerRefresh = function () {
-        var state = {};
-        if (this.page.size > 0) {
-            state.page = { from: this.page.firstItem, to: this.page.lastItem, size: this.page.size };
-        }
-        if (this.sort.comparator) {
-            if (this.sort.comparator instanceof __WEBPACK_IMPORTED_MODULE_1__built_in_comparators_datagrid_property_comparator__["a" /* DatagridPropertyComparator */]) {
-                /*
-                 * Special case for the default object property comparator,
-                 * we give the property name instead of the actual comparator.
-                 */
-                state.sort = { by: this.sort.comparator.prop, reverse: this.sort.reverse };
-            }
-            else {
-                state.sort = { by: this.sort.comparator, reverse: this.sort.reverse };
-            }
-        }
-        var activeFilters = this.filters.getActiveFilters();
-        if (activeFilters.length > 0) {
-            state.filters = [];
-            for (var _i = 0, activeFilters_1 = activeFilters; _i < activeFilters_1.length; _i++) {
-                var filter = activeFilters_1[_i];
-                if (filter instanceof __WEBPACK_IMPORTED_MODULE_3__built_in_filters_datagrid_string_filter_impl__["a" /* DatagridStringFilterImpl */]) {
-                    var stringFilter = filter.filterFn;
-                    if (stringFilter instanceof __WEBPACK_IMPORTED_MODULE_2__built_in_filters_datagrid_property_string_filter__["a" /* DatagridPropertyStringFilter */]) {
-                        /*
-                         * Special case again for the default object property filter,
-                         * we give the property name instead of the full filter object.
-                         */
-                        state.filters.push({
-                            property: stringFilter.prop,
-                            value: filter.value
-                        });
-                        continue;
-                    }
-                }
-                state.filters.push(filter);
-            }
-        }
-        this.refresh.emit(state);
-    };
-    /**
      * Public method to re-trigger the computation of displayed items manually
      */
     Datagrid.prototype.dataChanged = function () {
@@ -3301,10 +3251,10 @@ var Datagrid = (function () {
          */
         set: function (value) {
             if (value) {
-                this.selection.selectionType = __WEBPACK_IMPORTED_MODULE_14__providers_selection__["b" /* SelectionType */].Multi;
+                this.selection.selectionType = __WEBPACK_IMPORTED_MODULE_11__providers_selection__["b" /* SelectionType */].Multi;
             }
             else {
-                this.selection.selectionType = __WEBPACK_IMPORTED_MODULE_14__providers_selection__["b" /* SelectionType */].None;
+                this.selection.selectionType = __WEBPACK_IMPORTED_MODULE_11__providers_selection__["b" /* SelectionType */].None;
             }
             this.selection.current = value;
         },
@@ -3316,7 +3266,7 @@ var Datagrid = (function () {
          * Selected item in single-select mode
          */
         set: function (value) {
-            this.selection.selectionType = __WEBPACK_IMPORTED_MODULE_14__providers_selection__["b" /* SelectionType */].Single;
+            this.selection.selectionType = __WEBPACK_IMPORTED_MODULE_11__providers_selection__["b" /* SelectionType */].Single;
             if (value) {
                 this.selection.currentSingle = value;
             }
@@ -3365,27 +3315,19 @@ var Datagrid = (function () {
         // Get ColumnService ready for HideableColumns.
         this.columnService.updateColumnList(this.columns.map(function (col) { return col.hideable; }));
     };
-    Datagrid.prototype.ngAfterViewChecked = function () {
-        if (this._shouldRefresh) {
-            this._shouldRefresh = false;
-            this.triggerRefresh();
-        }
-    };
     /**
      * Our setup happens in the view of some of our components, so we wait for it to be done before starting
      */
     Datagrid.prototype.ngAfterViewInit = function () {
         var _this = this;
         // TODO: determine if we can get rid of provider wiring in view init so that subscriptions can be done earlier
-        this.triggerRefresh();
-        this._subscriptions.push(this.sort.change.subscribe(function () { return _this._shouldRefresh = true; }));
-        this._subscriptions.push(this.filters.change.subscribe(function () { return _this._shouldRefresh = true; }));
-        this._subscriptions.push(this.page.change.subscribe(function () { return _this._shouldRefresh = true; }));
+        this.refresh.emit(this.stateProvider.state);
+        this._subscriptions.push(this.stateProvider.change.subscribe(function (state) { return _this.refresh.emit(state); }));
         this._subscriptions.push(this.selection.change.subscribe(function (s) {
-            if (_this.selection.selectionType === __WEBPACK_IMPORTED_MODULE_14__providers_selection__["b" /* SelectionType */].Single) {
+            if (_this.selection.selectionType === __WEBPACK_IMPORTED_MODULE_11__providers_selection__["b" /* SelectionType */].Single) {
                 _this.singleSelectedChanged.emit(s);
             }
-            else if (_this.selection.selectionType === __WEBPACK_IMPORTED_MODULE_14__providers_selection__["b" /* SelectionType */].Multi) {
+            else if (_this.selection.selectionType === __WEBPACK_IMPORTED_MODULE_11__providers_selection__["b" /* SelectionType */].Multi) {
                 _this.selectedChanged.emit(s);
             }
         }));
@@ -3404,35 +3346,33 @@ Datagrid.decorators = [
                 selector: "clr-datagrid",
                 template: "\n      <!--\n        ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.\n        ~ This software is released under MIT license.\n        ~ The full license information can be found in LICENSE in the root directory of this project.\n        -->\n\n      <ng-content select=\"clr-dg-action-bar\"></ng-content>\n      <div class=\"datagrid-overlay-wrapper\">\n          <div class=\"datagrid-scroll-wrapper\">\n              <div class=\"datagrid\" #datagrid>\n                  <div clrDgTableWrapper class=\"datagrid-table-wrapper\">\n                      <div clrDgHead class=\"datagrid-head\">\n                          <div class=\"datagrid-row datagrid-row-flex\">\n                              <!-- header for datagrid where you can select multiple rows -->\n                              <div class=\"datagrid-column datagrid-select datagrid-fixed-column\"\n                                   *ngIf=\"selection.selectionType === SELECTION_TYPE.Multi\">\n                              <span class=\"datagrid-column-title\">\n                                  <clr-checkbox [(ngModel)]=\"allSelected\"></clr-checkbox>\n                              </span>\n                                  <div class=\"datagrid-column-separator\"></div>\n                              </div>\n                              <!-- header for datagrid where you can select one row only -->\n                              <div class=\"datagrid-column datagrid-select datagrid-fixed-column\"\n                                   *ngIf=\"selection.selectionType === SELECTION_TYPE.Single\">\n                                  <div class=\"datagrid-column-separator\"></div>\n                              </div>\n                              <!-- header for single row action; only display if we have at least one actionable row in datagrid -->\n                              <div class=\"datagrid-column datagrid-row-actions datagrid-fixed-column\"\n                                   *ngIf=\"rowActionService.hasActionableRow\">\n                                  <div class=\"datagrid-column-separator\"></div>\n                              </div>\n                              <!-- header for carets; only display if we have at least one expandable row in datagrid -->\n                              <div class=\"datagrid-column datagrid-expandable-caret datagrid-fixed-column\"\n                                   *ngIf=\"expandableRows.hasExpandableRow\">\n                                  <div class=\"datagrid-column-separator\"></div>\n                              </div>\n                              <ng-content select=\"clr-dg-column\"></ng-content>\n                          </div>\n                      </div>\n\n                      <div clrDgBody class=\"datagrid-body\">\n                          <ng-template *ngIf=\"iterator\"\n                                       ngFor [ngForOf]=\"items.displayed\" [ngForTrackBy]=\"items.trackBy\"\n                                       [ngForTemplate]=\"iterator.template\"></ng-template>\n                          <ng-content *ngIf=\"!iterator\"></ng-content>\n\n                          <!-- Custom placeholder overrides the default empty one -->\n                          <ng-content select=\"clr-dg-placeholder\"></ng-content>\n                          <clr-dg-placeholder *ngIf=\"!placeholder\"></clr-dg-placeholder>\n                      </div>\n                  </div>\n\n                  <!--\n                      This is not inside the table because there is no good way of having a single column span\n                      everything when using custom elements with display:table-cell.\n                  -->\n                  <ng-content select=\"clr-dg-footer\"></ng-content>\n              </div>\n          </div>\n          <div class=\"datagrid-spinner\" *ngIf=\"loading\">\n              <div class=\"spinner\">Loading...</div>\n          </div>\n      </div>\n    ",
                 providers: [
-                    __WEBPACK_IMPORTED_MODULE_14__providers_selection__["a" /* Selection */], __WEBPACK_IMPORTED_MODULE_15__providers_sort__["a" /* Sort */], __WEBPACK_IMPORTED_MODULE_8__providers_filters__["a" /* FiltersProvider */], __WEBPACK_IMPORTED_MODULE_12__providers_page__["a" /* Page */], __WEBPACK_IMPORTED_MODULE_11__providers_items__["a" /* Items */], __WEBPACK_IMPORTED_MODULE_16__render_render_organizer__["a" /* DatagridRenderOrganizer */], __WEBPACK_IMPORTED_MODULE_13__providers_row_action_service__["a" /* RowActionService */], __WEBPACK_IMPORTED_MODULE_9__providers_global_expandable_rows__["a" /* ExpandableRowsCount */],
-                    __WEBPACK_IMPORTED_MODULE_10__providers_hideable_column_service__["a" /* HideableColumnService */]
+                    __WEBPACK_IMPORTED_MODULE_11__providers_selection__["a" /* Selection */], __WEBPACK_IMPORTED_MODULE_12__providers_sort__["a" /* Sort */], __WEBPACK_IMPORTED_MODULE_5__providers_filters__["a" /* FiltersProvider */], __WEBPACK_IMPORTED_MODULE_9__providers_page__["a" /* Page */], __WEBPACK_IMPORTED_MODULE_8__providers_items__["a" /* Items */], __WEBPACK_IMPORTED_MODULE_15__render_render_organizer__["a" /* DatagridRenderOrganizer */], __WEBPACK_IMPORTED_MODULE_10__providers_row_action_service__["a" /* RowActionService */], __WEBPACK_IMPORTED_MODULE_6__providers_global_expandable_rows__["a" /* ExpandableRowsCount */],
+                    __WEBPACK_IMPORTED_MODULE_7__providers_hideable_column_service__["a" /* HideableColumnService */], __WEBPACK_IMPORTED_MODULE_13__providers_state_debouncer_provider__["a" /* StateDebouncer */], __WEBPACK_IMPORTED_MODULE_14__providers_state_provider__["a" /* StateProvider */]
                 ],
                 host: { "[class.datagrid-host]": "true" }
             },] },
 ];
 /** @nocollapse */
 Datagrid.ctorParameters = function () { return [
-    { type: __WEBPACK_IMPORTED_MODULE_10__providers_hideable_column_service__["a" /* HideableColumnService */], },
-    { type: __WEBPACK_IMPORTED_MODULE_8__providers_filters__["a" /* FiltersProvider */], },
-    { type: __WEBPACK_IMPORTED_MODULE_16__render_render_organizer__["a" /* DatagridRenderOrganizer */], },
-    { type: __WEBPACK_IMPORTED_MODULE_12__providers_page__["a" /* Page */], },
-    { type: __WEBPACK_IMPORTED_MODULE_15__providers_sort__["a" /* Sort */], },
-    { type: __WEBPACK_IMPORTED_MODULE_11__providers_items__["a" /* Items */], },
-    { type: __WEBPACK_IMPORTED_MODULE_9__providers_global_expandable_rows__["a" /* ExpandableRowsCount */], },
-    { type: __WEBPACK_IMPORTED_MODULE_14__providers_selection__["a" /* Selection */], },
-    { type: __WEBPACK_IMPORTED_MODULE_13__providers_row_action_service__["a" /* RowActionService */], },
+    { type: __WEBPACK_IMPORTED_MODULE_7__providers_hideable_column_service__["a" /* HideableColumnService */], },
+    { type: __WEBPACK_IMPORTED_MODULE_15__render_render_organizer__["a" /* DatagridRenderOrganizer */], },
+    { type: __WEBPACK_IMPORTED_MODULE_8__providers_items__["a" /* Items */], },
+    { type: __WEBPACK_IMPORTED_MODULE_6__providers_global_expandable_rows__["a" /* ExpandableRowsCount */], },
+    { type: __WEBPACK_IMPORTED_MODULE_11__providers_selection__["a" /* Selection */], },
+    { type: __WEBPACK_IMPORTED_MODULE_10__providers_row_action_service__["a" /* RowActionService */], },
+    { type: __WEBPACK_IMPORTED_MODULE_14__providers_state_provider__["a" /* StateProvider */], },
 ]; };
 Datagrid.propDecorators = {
     'loading': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Input */], args: ["clrDgLoading",] },],
     'refresh': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["K" /* Output */], args: ["clrDgRefresh",] },],
-    'iterator': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* ContentChild */], args: [__WEBPACK_IMPORTED_MODULE_5__datagrid_items__["a" /* DatagridItems */],] },],
+    'iterator': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* ContentChild */], args: [__WEBPACK_IMPORTED_MODULE_2__datagrid_items__["a" /* DatagridItems */],] },],
     'selected': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Input */], args: ["clrDgSelected",] },],
     'selectedChanged': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["K" /* Output */], args: ["clrDgSelectedChange",] },],
     'singleSelected': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Input */], args: ["clrDgSingleSelected",] },],
     'singleSelectedChanged': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["K" /* Output */], args: ["clrDgSingleSelectedChange",] },],
-    'placeholder': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* ContentChild */], args: [__WEBPACK_IMPORTED_MODULE_6__datagrid_placeholder__["a" /* DatagridPlaceholder */],] },],
-    'columns': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* ContentChildren */], args: [__WEBPACK_IMPORTED_MODULE_4__datagrid_column__["a" /* DatagridColumn */],] },],
-    'rows': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* ContentChildren */], args: [__WEBPACK_IMPORTED_MODULE_7__datagrid_row__["a" /* DatagridRow */],] },],
+    'placeholder': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* ContentChild */], args: [__WEBPACK_IMPORTED_MODULE_3__datagrid_placeholder__["a" /* DatagridPlaceholder */],] },],
+    'columns': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* ContentChildren */], args: [__WEBPACK_IMPORTED_MODULE_1__datagrid_column__["a" /* DatagridColumn */],] },],
+    'rows': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* ContentChildren */], args: [__WEBPACK_IMPORTED_MODULE_4__datagrid_row__["a" /* DatagridRow */],] },],
 };
 //# sourceMappingURL=datagrid.js.map
 
@@ -3772,6 +3712,7 @@ DragDispatcher.ctorParameters = function () { return [
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__page__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/page.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__state_debouncer_provider__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/state-debouncer.provider.js");
 /*
  * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
@@ -3780,9 +3721,11 @@ DragDispatcher.ctorParameters = function () { return [
 
 
 
+
 var FiltersProvider = (function () {
-    function FiltersProvider(_page) {
+    function FiltersProvider(_page, stateDebouncer) {
         this._page = _page;
+        this.stateDebouncer = stateDebouncer;
         /**
          * This subject is the list of filters that changed last, not the whole list.
          * We emit a list rather than just one filter to allow batch changes to several at once.
@@ -3866,10 +3809,12 @@ var FiltersProvider = (function () {
         return true;
     };
     FiltersProvider.prototype.resetPageAndEmitFilterChange = function (filters) {
+        this.stateDebouncer.changeStart();
         // filtering may change the page number such that current page number doesn't exist in the filtered dataset.
         // So here we always set the current page to 1 so that it'll fetch first page's data with the given filter.
         this._page.current = 1;
         this._change.next(filters);
+        this.stateDebouncer.changeDone();
     };
     return FiltersProvider;
 }());
@@ -3880,6 +3825,7 @@ FiltersProvider.decorators = [
 /** @nocollapse */
 FiltersProvider.ctorParameters = function () { return [
     { type: __WEBPACK_IMPORTED_MODULE_2__page__["a" /* Page */], },
+    { type: __WEBPACK_IMPORTED_MODULE_3__state_debouncer_provider__["a" /* StateDebouncer */], },
 ]; };
 var RegisteredFilter = (function () {
     function RegisteredFilter(filter, unregister) {
@@ -4376,6 +4322,7 @@ Items.ctorParameters = function () { return [
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__state_debouncer_provider__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/state-debouncer.provider.js");
 /*
  * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
@@ -4383,8 +4330,10 @@ Items.ctorParameters = function () { return [
  */
 
 
+
 var Page = (function () {
-    function Page() {
+    function Page(stateDebouncer) {
+        this.stateDebouncer = stateDebouncer;
         /**
          * Page size, a value of 0 means no pagination
          */
@@ -4475,8 +4424,10 @@ var Page = (function () {
         },
         set: function (page) {
             if (page !== this._current) {
+                this.stateDebouncer.changeStart();
                 this._current = page;
                 this._change.next(page);
+                this.stateDebouncer.changeDone();
             }
         },
         enumerable: true,
@@ -4535,7 +4486,9 @@ Page.decorators = [
     { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* Injectable */] },
 ];
 /** @nocollapse */
-Page.ctorParameters = function () { return []; };
+Page.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_2__state_debouncer_provider__["a" /* StateDebouncer */], },
+]; };
 //# sourceMappingURL=page.js.map
 
 /***/ }),
@@ -4844,6 +4797,7 @@ Selection.ctorParameters = function () { return [
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__state_debouncer_provider__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/state-debouncer.provider.js");
 /*
  * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
@@ -4851,8 +4805,10 @@ Selection.ctorParameters = function () { return [
  */
 
 
+
 var Sort = (function () {
-    function Sort() {
+    function Sort(stateDebouncer) {
+        this.stateDebouncer = stateDebouncer;
         /**
          * Ascending order if false, descending if true
          */
@@ -4867,8 +4823,10 @@ var Sort = (function () {
             return this._comparator;
         },
         set: function (value) {
+            this.stateDebouncer.changeStart();
             this._comparator = value;
             this.emitChange();
+            this.stateDebouncer.changeDone();
         },
         enumerable: true,
         configurable: true
@@ -4878,8 +4836,10 @@ var Sort = (function () {
             return this._reverse;
         },
         set: function (value) {
+            this.stateDebouncer.changeStart();
             this._reverse = value;
             this.emitChange();
+            this.stateDebouncer.changeDone();
         },
         enumerable: true,
         configurable: true
@@ -4906,6 +4866,7 @@ var Sort = (function () {
      * @memberof Sort
      */
     Sort.prototype.toggle = function (sortBy, forceReverse) {
+        this.stateDebouncer.changeStart();
         // We modify private properties directly, to batch the change event
         if (this.comparator === sortBy) {
             this._reverse = typeof forceReverse !== "undefined" ? forceReverse || !this._reverse : !this._reverse;
@@ -4915,6 +4876,7 @@ var Sort = (function () {
             this._reverse = typeof forceReverse !== "undefined" ? forceReverse : false;
         }
         this.emitChange();
+        this.stateDebouncer.changeDone();
     };
     /**
      * Clears the current sorting order
@@ -4935,8 +4897,178 @@ Sort.decorators = [
     { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* Injectable */] },
 ];
 /** @nocollapse */
-Sort.ctorParameters = function () { return []; };
+Sort.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_2__state_debouncer_provider__["a" /* StateDebouncer */], },
+]; };
 //# sourceMappingURL=sort.js.map
+
+/***/ }),
+
+/***/ "../../../../clarity-angular/data/datagrid/providers/state-debouncer.provider.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StateDebouncer; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__);
+/*
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+
+/*
+ * This provider implements some form of synchronous debouncing through a lock pattern
+ * to avoid emitting multiple state changes for a single user action.
+ */
+var StateDebouncer = (function () {
+    function StateDebouncer() {
+        /**
+         * The Observable that lets other classes subscribe to global state changes
+         */
+        this._change = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__["Subject"]();
+        /*
+         * This is the lock, to only emit once all the changes have finished processing
+         */
+        this.nbChanges = 0;
+    }
+    Object.defineProperty(StateDebouncer.prototype, "change", {
+        // We do not want to expose the Subject itself, but the Observable which is read-only
+        get: function () {
+            return this._change.asObservable();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    StateDebouncer.prototype.changeStart = function () {
+        this.nbChanges++;
+    };
+    StateDebouncer.prototype.changeDone = function () {
+        if (--this.nbChanges === 0) {
+            this._change.next();
+        }
+    };
+    return StateDebouncer;
+}());
+
+StateDebouncer.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* Injectable */] },
+];
+/** @nocollapse */
+StateDebouncer.ctorParameters = function () { return []; };
+//# sourceMappingURL=state-debouncer.provider.js.map
+
+/***/ }),
+
+/***/ "../../../../clarity-angular/data/datagrid/providers/state.provider.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StateProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__built_in_comparators_datagrid_property_comparator__ = __webpack_require__("../../../../clarity-angular/data/datagrid/built-in/comparators/datagrid-property-comparator.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__built_in_filters_datagrid_property_string_filter__ = __webpack_require__("../../../../clarity-angular/data/datagrid/built-in/filters/datagrid-property-string-filter.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__built_in_filters_datagrid_string_filter_impl__ = __webpack_require__("../../../../clarity-angular/data/datagrid/built-in/filters/datagrid-string-filter-impl.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__filters__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/filters.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__page__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/page.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__sort__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/sort.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__state_debouncer_provider__ = __webpack_require__("../../../../clarity-angular/data/datagrid/providers/state-debouncer.provider.js");
+/*
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+
+
+
+
+
+
+
+
+/**
+ * This provider aggregates state changes from the various providers of the Datagrid
+ */
+var StateProvider = (function () {
+    function StateProvider(filters, sort, page, debouncer) {
+        var _this = this;
+        this.filters = filters;
+        this.sort = sort;
+        this.page = page;
+        this.debouncer = debouncer;
+        /**
+         * The Observable that lets other classes subscribe to global state changes
+         */
+        this.change = this.debouncer.change.map(function () { return _this.state; });
+    }
+    Object.defineProperty(StateProvider.prototype, "state", {
+        /*
+         * By making this a getter, we open the possibility for a setter in the future.
+         * It's been requested a couple times.
+         */
+        get: function () {
+            var state = {};
+            if (this.page.size > 0) {
+                state.page = { from: this.page.firstItem, to: this.page.lastItem, size: this.page.size };
+            }
+            if (this.sort.comparator) {
+                if (this.sort.comparator instanceof __WEBPACK_IMPORTED_MODULE_2__built_in_comparators_datagrid_property_comparator__["a" /* DatagridPropertyComparator */]) {
+                    /*
+                     * Special case for the default object property comparator,
+                     * we give the property name instead of the actual comparator.
+                     */
+                    state.sort = { by: this.sort.comparator.prop, reverse: this.sort.reverse };
+                }
+                else {
+                    state.sort = { by: this.sort.comparator, reverse: this.sort.reverse };
+                }
+            }
+            var activeFilters = this.filters.getActiveFilters();
+            if (activeFilters.length > 0) {
+                state.filters = [];
+                for (var _i = 0, activeFilters_1 = activeFilters; _i < activeFilters_1.length; _i++) {
+                    var filter = activeFilters_1[_i];
+                    if (filter instanceof __WEBPACK_IMPORTED_MODULE_4__built_in_filters_datagrid_string_filter_impl__["a" /* DatagridStringFilterImpl */]) {
+                        var stringFilter = filter.filterFn;
+                        if (stringFilter instanceof __WEBPACK_IMPORTED_MODULE_3__built_in_filters_datagrid_property_string_filter__["a" /* DatagridPropertyStringFilter */]) {
+                            /*
+                             * Special case again for the default object property filter,
+                             * we give the property name instead of the full filter object.
+                             */
+                            state.filters.push({
+                                property: stringFilter.prop,
+                                value: filter.value
+                            });
+                            continue;
+                        }
+                    }
+                    state.filters.push(filter);
+                }
+            }
+            return state;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return StateProvider;
+}());
+
+StateProvider.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["w" /* Injectable */] },
+];
+/** @nocollapse */
+StateProvider.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_5__filters__["a" /* FiltersProvider */], },
+    { type: __WEBPACK_IMPORTED_MODULE_7__sort__["a" /* Sort */], },
+    { type: __WEBPACK_IMPORTED_MODULE_6__page__["a" /* Page */], },
+    { type: __WEBPACK_IMPORTED_MODULE_8__state_debouncer_provider__["a" /* StateDebouncer */], },
+]; };
+//# sourceMappingURL=state.provider.js.map
 
 /***/ }),
 
@@ -8387,11 +8519,11 @@ var VERTICAL_NAV_DIRECTIVES = [__WEBPACK_IMPORTED_MODULE_0__vertical_nav__["a" /
 
 /***/ }),
 
-/***/ "../../../../clarity-angular/layout/vertical-nav/providers/vertical-nav-group.service.js":
+/***/ "../../../../clarity-angular/layout/vertical-nav/providers/vertical-nav-group-registration.service.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerticalNavGroupService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerticalNavGroupRegistrationService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /**
  * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
@@ -8399,18 +8531,56 @@ var VERTICAL_NAV_DIRECTIVES = [__WEBPACK_IMPORTED_MODULE_0__vertical_nav__["a" /
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+var VerticalNavGroupRegistrationService = (function () {
+    function VerticalNavGroupRegistrationService() {
+        this.navGroupCount = 0;
+    }
+    VerticalNavGroupRegistrationService.prototype.registerNavGroup = function () {
+        this.navGroupCount++;
+    };
+    VerticalNavGroupRegistrationService.prototype.unregisterNavGroup = function () {
+        this.navGroupCount--;
+    };
+    return VerticalNavGroupRegistrationService;
+}());
+
+VerticalNavGroupRegistrationService.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* Injectable */] },
+];
+/** @nocollapse */
+VerticalNavGroupRegistrationService.ctorParameters = function () { return []; };
+//# sourceMappingURL=vertical-nav-group-registration.service.js.map
+
+/***/ }),
+
+/***/ "../../../../clarity-angular/layout/vertical-nav/providers/vertical-nav-group.service.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerticalNavGroupService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__);
+/**
+ * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+
 var VerticalNavGroupService = (function () {
     function VerticalNavGroupService() {
-        this.navGroups = [];
+        this._expandChange = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__["Subject"]();
     }
-    VerticalNavGroupService.prototype.registerNavGroup = function (navGroup) {
-        this.navGroups.push(navGroup);
-    };
-    VerticalNavGroupService.prototype.unregisterNavGroup = function (navGroup) {
-        var index = this.navGroups.indexOf(navGroup);
-        if (index > -1) {
-            this.navGroups.splice(index, 1);
-        }
+    Object.defineProperty(VerticalNavGroupService.prototype, "expandChange", {
+        get: function () {
+            return this._expandChange.asObservable();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    VerticalNavGroupService.prototype.expand = function () {
+        this._expandChange.next(true);
     };
     return VerticalNavGroupService;
 }());
@@ -8585,8 +8755,9 @@ VerticalNavGroupChildren.ctorParameters = function () { return []; };
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_animations__ = __webpack_require__("../../../animations/@angular/animations.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_expand_providers_expand__ = __webpack_require__("../../../../clarity-angular/utils/expand/providers/expand.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_vertical_nav_group_service__ = __webpack_require__("../../../../clarity-angular/layout/vertical-nav/providers/vertical-nav-group.service.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_vertical_nav_service__ = __webpack_require__("../../../../clarity-angular/layout/vertical-nav/providers/vertical-nav.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_vertical_nav_group_registration_service__ = __webpack_require__("../../../../clarity-angular/layout/vertical-nav/providers/vertical-nav-group-registration.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_vertical_nav_group_service__ = __webpack_require__("../../../../clarity-angular/layout/vertical-nav/providers/vertical-nav-group.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_vertical_nav_service__ = __webpack_require__("../../../../clarity-angular/layout/vertical-nav/providers/vertical-nav.service.js");
 /**
  * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
@@ -8597,19 +8768,21 @@ VerticalNavGroupChildren.ctorParameters = function () { return []; };
 
 
 
+
 var EXPANDED_STATE = "expanded";
 var COLLAPSED_STATE = "collapsed";
 var VerticalNavGroup = (function () {
-    function VerticalNavGroup(_itemExpand, _verticalNavGroupService, _verticalNavService) {
+    function VerticalNavGroup(_itemExpand, _navGroupRegistrationService, _navGroupService, _navService) {
         var _this = this;
         this._itemExpand = _itemExpand;
-        this._verticalNavGroupService = _verticalNavGroupService;
-        this._verticalNavService = _verticalNavService;
+        this._navGroupRegistrationService = _navGroupRegistrationService;
+        this._navGroupService = _navGroupService;
+        this._navService = _navService;
         this.wasExpanded = false;
         this.expandedChange = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["r" /* EventEmitter */](true);
         this._subscriptions = [];
         this._expandAnimationState = COLLAPSED_STATE;
-        this._verticalNavGroupService.registerNavGroup(this);
+        this._navGroupRegistrationService.registerNavGroup();
         // FIXME: This subscription handles a corner case
         // Vertical Nav collapse requires the animation to run first and then
         // remove the nodes from the DOM. If the user directly sets the input
@@ -8618,8 +8791,8 @@ var VerticalNavGroup = (function () {
         // animation states are correct for that edge case.
         this._subscriptions.push(this._itemExpand.expandChange.subscribe(function (value) {
             if (value && _this.expandAnimationState === COLLAPSED_STATE) {
-                if (_this._verticalNavService.collapsed) {
-                    _this._verticalNavService.collapsed = false;
+                if (_this._navService.collapsed) {
+                    _this._navService.collapsed = false;
                 }
                 _this.expandAnimationState = EXPANDED_STATE;
             }
@@ -8627,9 +8800,9 @@ var VerticalNavGroup = (function () {
                 _this.expandAnimationState = COLLAPSED_STATE;
             }
         }));
-        // If the nav is collapsing, close the open nav group + save its state
-        // If the nav is expanding, expand if the previous state was expanding
-        this._subscriptions.push(this._verticalNavService.animateOnCollapsed.subscribe(function (goingToCollapse) {
+        // 1. If the nav is collapsing, close the open nav group + save its state
+        // 2. If the nav is expanding, expand the nav group if the previous state was expanded
+        this._subscriptions.push(this._navService.animateOnCollapsed.subscribe(function (goingToCollapse) {
             if (goingToCollapse && _this.expanded) {
                 _this.wasExpanded = true;
                 _this.expandAnimationState = COLLAPSED_STATE;
@@ -8637,6 +8810,12 @@ var VerticalNavGroup = (function () {
             else if (!goingToCollapse && _this.wasExpanded) {
                 _this.expandGroup();
                 _this.wasExpanded = false;
+            }
+        }));
+        // If a link is clicked, expand the nav group
+        this._subscriptions.push(this._navGroupService.expandChange.subscribe(function (expand) {
+            if (expand && !_this.expanded) {
+                _this.expandGroup();
             }
         }));
     }
@@ -8700,32 +8879,24 @@ var VerticalNavGroup = (function () {
         }
         else {
             // If nav is collasped, first open the nav
-            if (this._verticalNavService.collapsed) {
-                this._verticalNavService.collapsed = false;
+            if (this._navService.collapsed) {
+                this._navService.collapsed = false;
             }
             // then expand the nav group
-            this.expandGroup();
-        }
-    };
-    // TODO: FIXME: This is horrible. I really need to refactor VerticalNavGroup
-    // but I have spent way too much time on VerticalNav and I don't have the patience
-    // to do it right now. Have tested that it works and does not cause any side-effects
-    VerticalNavGroup.prototype.onNavContentClick = function () {
-        if (this._verticalNavService.collapsible && this._verticalNavService.collapsed) {
             this.expandGroup();
         }
     };
     VerticalNavGroup.prototype.ngAfterContentInit = function () {
         // This makes sure that if someone marks a nav group expanded in a collapsed nav
         // the expanded property is switched back to collapsed state.
-        if (this._verticalNavService.collapsed && this.expanded) {
+        if (this._navService.collapsed && this.expanded) {
             this.wasExpanded = true;
             this.expandAnimationState = COLLAPSED_STATE;
         }
     };
     VerticalNavGroup.prototype.ngOnDestroy = function () {
         this._subscriptions.forEach(function (sub) { return sub.unsubscribe(); });
-        this._verticalNavGroupService.unregisterNavGroup(this);
+        this._navGroupRegistrationService.unregisterNavGroup();
     };
     return VerticalNavGroup;
 }());
@@ -8733,11 +8904,11 @@ var VerticalNavGroup = (function () {
 VerticalNavGroup.decorators = [
     { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["k" /* Component */], args: [{
                 selector: "clr-vertical-nav-group",
-                template: "\n      <div class=\"nav-group-content\" (click)=\"onNavContentClick()\">\n          <ng-content select=\"[clrVerticalNavIcon]\"></ng-content>\n          <ng-content select=\"[clrVerticalNavLink]\"></ng-content>\n          <div class=\"nav-group-text\">\n              <ng-content></ng-content>\n          </div>\n          <button\n              class=\"nav-group-trigger\"\n              type=\"button\"\n              (click)=\"toggleExpand()\">\n              <clr-icon shape=\"caret\"\n                        [attr.dir]=\"(this.expanded) ? 'down' : 'right'\"></clr-icon>\n          </button>\n      </div>\n      <!--TODO: This animation needs to be added to the clr-vertical-nav-group-children component-->\n      <div class=\"nav-group-children\"\n           [@clrExpand]=\"expandAnimationState\"\n           (@clrExpand.done)=\"expandAnimationDone($event)\">\n          <ng-content select=\"[clrIfExpanded], clr-vertical-nav-group-children\"></ng-content>\n      </div>\n    ",
-                providers: [__WEBPACK_IMPORTED_MODULE_2__utils_expand_providers_expand__["a" /* Expand */]],
+                template: "\n      <div class=\"nav-group-content\">\n          <ng-content select=\"[clrVerticalNavLink]\"></ng-content>\n          <button\n              class=\"nav-group-trigger\"\n              type=\"button\"\n              (click)=\"toggleExpand()\">\n              <ng-content select=\"[clrVerticalNavIcon]\"></ng-content>\n              <div class=\"nav-group-text\">\n                  <ng-content></ng-content>\n              </div>\n              <clr-icon shape=\"caret\"\n                        class=\"nav-group-trigger-icon\"\n                        [attr.dir]=\"(this.expanded) ? 'down' : 'right'\">\n              </clr-icon>\n          </button>\n      </div>\n      <!--TODO: This animation needs to be added to the clr-vertical-nav-group-children component-->\n      <div class=\"nav-group-children\"\n           [@clrExpand]=\"expandAnimationState\"\n           (@clrExpand.done)=\"expandAnimationDone($event)\">\n          <ng-content select=\"[clrIfExpanded], clr-vertical-nav-group-children\"></ng-content>\n      </div>\n    ",
+                providers: [__WEBPACK_IMPORTED_MODULE_2__utils_expand_providers_expand__["a" /* Expand */], __WEBPACK_IMPORTED_MODULE_4__providers_vertical_nav_group_service__["a" /* VerticalNavGroupService */]],
                 animations: [Object(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["j" /* trigger */])("clrExpand", [
                         Object(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["g" /* state */])(EXPANDED_STATE, Object(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["h" /* style */])({ "height": "*" })),
-                        Object(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["g" /* state */])(COLLAPSED_STATE, Object(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["h" /* style */])({ "height": 0, "overflow-y": "hidden" })),
+                        Object(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["g" /* state */])(COLLAPSED_STATE, Object(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["h" /* style */])({ "height": 0, "overflow-y": "hidden", "visibility": "hidden" })),
                         Object(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["i" /* transition */])(EXPANDED_STATE + " <=> " + COLLAPSED_STATE, Object(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["e" /* animate */])("0.2s ease-in-out"))
                     ])],
                 host: { "class": "nav-group" }
@@ -8746,8 +8917,9 @@ VerticalNavGroup.decorators = [
 /** @nocollapse */
 VerticalNavGroup.ctorParameters = function () { return [
     { type: __WEBPACK_IMPORTED_MODULE_2__utils_expand_providers_expand__["a" /* Expand */], },
-    { type: __WEBPACK_IMPORTED_MODULE_3__providers_vertical_nav_group_service__["a" /* VerticalNavGroupService */], },
-    { type: __WEBPACK_IMPORTED_MODULE_4__providers_vertical_nav_service__["a" /* VerticalNavService */], },
+    { type: __WEBPACK_IMPORTED_MODULE_3__providers_vertical_nav_group_registration_service__["a" /* VerticalNavGroupRegistrationService */], },
+    { type: __WEBPACK_IMPORTED_MODULE_4__providers_vertical_nav_group_service__["a" /* VerticalNavGroupService */], },
+    { type: __WEBPACK_IMPORTED_MODULE_5__providers_vertical_nav_service__["a" /* VerticalNavService */], },
 ]; };
 VerticalNavGroup.propDecorators = {
     'expanded': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* HostBinding */], args: ["class.is-expanded",] },],
@@ -8800,15 +8972,23 @@ VerticalNavIcon.ctorParameters = function () { return [
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerticalNavLink; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_vertical_nav_group_service__ = __webpack_require__("../../../../clarity-angular/layout/vertical-nav/providers/vertical-nav-group.service.js");
 /**
  * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+
 var VerticalNavLink = (function () {
-    function VerticalNavLink() {
+    function VerticalNavLink(_navGroupService) {
+        this._navGroupService = _navGroupService;
     }
+    VerticalNavLink.prototype.expandParentNavGroup = function () {
+        if (this._navGroupService) {
+            this._navGroupService.expand();
+        }
+    };
     return VerticalNavLink;
 }());
 
@@ -8820,7 +9000,12 @@ VerticalNavLink.decorators = [
             },] },
 ];
 /** @nocollapse */
-VerticalNavLink.ctorParameters = function () { return []; };
+VerticalNavLink.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_1__providers_vertical_nav_group_service__["a" /* VerticalNavGroupService */], decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* Optional */] },] },
+]; };
+VerticalNavLink.propDecorators = {
+    'expandParentNavGroup': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* HostListener */], args: ["click",] },],
+};
 //# sourceMappingURL=vertical-nav-link.js.map
 
 /***/ }),
@@ -8831,7 +9016,7 @@ VerticalNavLink.ctorParameters = function () { return []; };
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerticalNav; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_vertical_nav_group_service__ = __webpack_require__("../../../../clarity-angular/layout/vertical-nav/providers/vertical-nav-group.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_vertical_nav_group_registration_service__ = __webpack_require__("../../../../clarity-angular/layout/vertical-nav/providers/vertical-nav-group-registration.service.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_vertical_nav_icon_service__ = __webpack_require__("../../../../clarity-angular/layout/vertical-nav/providers/vertical-nav-icon.service.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_vertical_nav_service__ = __webpack_require__("../../../../clarity-angular/layout/vertical-nav/providers/vertical-nav.service.js");
 /**
@@ -8844,46 +9029,46 @@ VerticalNavLink.ctorParameters = function () { return []; };
 
 
 var VerticalNav = (function () {
-    function VerticalNav(_verticalNavService, _verticalNavIconService, _verticalNavGroupService) {
+    function VerticalNav(_navService, _navIconService, _navGroupRegistrationService) {
         var _this = this;
-        this._verticalNavService = _verticalNavService;
-        this._verticalNavIconService = _verticalNavIconService;
-        this._verticalNavGroupService = _verticalNavGroupService;
+        this._navService = _navService;
+        this._navIconService = _navIconService;
+        this._navGroupRegistrationService = _navGroupRegistrationService;
         this._collapsedChanged = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* EventEmitter */](true);
-        this._sub = this._verticalNavService.collapsedChanged.subscribe(function (value) {
+        this._sub = this._navService.collapsedChanged.subscribe(function (value) {
             _this._collapsedChanged.emit(value);
         });
     }
     Object.defineProperty(VerticalNav.prototype, "collapsible", {
         get: function () {
-            return this._verticalNavService.collapsible;
+            return this._navService.collapsible;
         },
         set: function (value) {
-            this._verticalNavService.collapsible = value;
+            this._navService.collapsible = value;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(VerticalNav.prototype, "collapsed", {
         get: function () {
-            return this._verticalNavService.collapsed;
+            return this._navService.collapsed;
         },
         set: function (value) {
-            this._verticalNavService.collapsed = value;
+            this._navService.collapsed = value;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(VerticalNav.prototype, "hasNavGroups", {
         get: function () {
-            return this._verticalNavGroupService.navGroups.length > 0;
+            return this._navGroupRegistrationService.navGroupCount > 0;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(VerticalNav.prototype, "hasIcons", {
         get: function () {
-            return this._verticalNavIconService.hasIcons;
+            return this._navIconService.hasIcons;
         },
         enumerable: true,
         configurable: true
@@ -8901,7 +9086,7 @@ VerticalNav.decorators = [
     { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */], args: [{
                 selector: "clr-vertical-nav",
                 template: "\n      <button type=\"button\" class=\"nav-trigger\"\n              [class.on-collapse]=\"collapsed\"\n              (click)=\"toggleByButton()\"\n              *ngIf=\"collapsible\">\n          <clr-icon shape=\"angle-double\" class=\"nav-trigger-icon\" [attr.dir]=\"(this.collapsed) ? 'right' : 'left'\"></clr-icon>\n      </button>\n      <!-- Click handler on .nav-content is bad but required :-( -->\n      <div class=\"nav-content\">\n          <ng-content></ng-content>\n          <button (click)=\"collapsed = false\" class=\"nav-btn\" *ngIf=\"collapsible && collapsed\"></button>\n      </div>\n    ",
-                providers: [__WEBPACK_IMPORTED_MODULE_3__providers_vertical_nav_service__["a" /* VerticalNavService */], __WEBPACK_IMPORTED_MODULE_2__providers_vertical_nav_icon_service__["a" /* VerticalNavIconService */], __WEBPACK_IMPORTED_MODULE_1__providers_vertical_nav_group_service__["a" /* VerticalNavGroupService */]],
+                providers: [__WEBPACK_IMPORTED_MODULE_3__providers_vertical_nav_service__["a" /* VerticalNavService */], __WEBPACK_IMPORTED_MODULE_2__providers_vertical_nav_icon_service__["a" /* VerticalNavIconService */], __WEBPACK_IMPORTED_MODULE_1__providers_vertical_nav_group_registration_service__["a" /* VerticalNavGroupRegistrationService */]],
                 host: {
                     "class": "clr-vertical-nav",
                     "[class.is-collapsed]": "collapsed",
@@ -8914,7 +9099,7 @@ VerticalNav.decorators = [
 VerticalNav.ctorParameters = function () { return [
     { type: __WEBPACK_IMPORTED_MODULE_3__providers_vertical_nav_service__["a" /* VerticalNavService */], },
     { type: __WEBPACK_IMPORTED_MODULE_2__providers_vertical_nav_icon_service__["a" /* VerticalNavIconService */], },
-    { type: __WEBPACK_IMPORTED_MODULE_1__providers_vertical_nav_group_service__["a" /* VerticalNavGroupService */], },
+    { type: __WEBPACK_IMPORTED_MODULE_1__providers_vertical_nav_group_registration_service__["a" /* VerticalNavGroupRegistrationService */], },
 ]; };
 VerticalNav.propDecorators = {
     'collapsible': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Input */], args: ["clrVerticalNavCollapsible",] },],
@@ -9046,7 +9231,6 @@ var Modal = (function () {
         this._openChanged.emit(true);
     };
     Modal.prototype.close = function () {
-        this.focusTrap.setPreviousFocus(); // Handles moving focus back to the element that had it before.
         if (this.stopClose) {
             this.altClose.emit(false);
             return;
@@ -9059,6 +9243,7 @@ var Modal = (function () {
         // this was handled by the fadeDone event below, but that AnimationEvent is not firing in Angular 4.0.
         this._openChanged.emit(false);
         // SPECME
+        this.focusTrap.setPreviousFocus(); // Handles moving focus back to the element that had it before.
     };
     Modal.prototype.fadeDone = function (e) {
         if (e.toState === "void") {
@@ -29442,6 +29627,18 @@ function flattenUnsubscriptionErrors(errors) {
 
 /***/ }),
 
+/***/ "../../../../rxjs/add/operator/map.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Observable_1 = __webpack_require__("../../../../rxjs/Observable.js");
+var map_1 = __webpack_require__("../../../../rxjs/operator/map.js");
+Observable_1.Observable.prototype.map = map_1.map;
+//# sourceMappingURL=map.js.map
+
+/***/ }),
+
 /***/ "../../../../rxjs/observable/ArrayLikeObservable.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -33484,6 +33681,9 @@ var Zone$1 = (function (global) {
         patchEventTarget: function () { return []; },
         patchOnProperties: noop,
         patchMethod: function () { return noop; },
+        setNativePromise: function (NativePromise) {
+            nativeMicroTaskQueuePromise = NativePromise.resolve(0);
+        },
     };
     var _currentZoneFrame = { parent: null, zone: new Zone(null, null) };
     var _currentTask = null;
@@ -33496,6 +33696,32 @@ var Zone$1 = (function (global) {
     return global['Zone'] = Zone;
 })(typeof window !== 'undefined' && window || typeof self !== 'undefined' && self || global);
 
+var __read = (undefined && undefined.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __values = (undefined && undefined.__values) || function (o) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
+    if (m) return m.call(o);
+    return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+};
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -33731,7 +33957,7 @@ Zone.__load_patch('ZoneAwarePromise', function (global, Zone, api) {
             var resolve;
             var reject;
             var promise = new this(function (res, rej) {
-                _a = [res, rej], resolve = _a[0], reject = _a[1];
+                _a = __read([res, rej], 2), resolve = _a[0], reject = _a[1];
                 var _a;
             });
             function onResolve(value) {
@@ -33740,14 +33966,24 @@ Zone.__load_patch('ZoneAwarePromise', function (global, Zone, api) {
             function onReject(error) {
                 promise && (promise = null || reject(error));
             }
-            for (var _i = 0, values_1 = values; _i < values_1.length; _i++) {
-                var value = values_1[_i];
-                if (!isThenable(value)) {
-                    value = this.resolve(value);
+            try {
+                for (var values_1 = __values(values), values_1_1 = values_1.next(); !values_1_1.done; values_1_1 = values_1.next()) {
+                    var value = values_1_1.value;
+                    if (!isThenable(value)) {
+                        value = this.resolve(value);
+                    }
+                    value.then(onResolve, onReject);
                 }
-                value.then(onResolve, onReject);
+            }
+            catch (e_1_1) { e_1 = { error: e_1_1 }; }
+            finally {
+                try {
+                    if (values_1_1 && !values_1_1.done && (_a = values_1.return)) _a.call(values_1);
+                }
+                finally { if (e_1) throw e_1.error; }
             }
             return promise;
+            var e_1, _a;
         };
         ZoneAwarePromise.all = function (values) {
             var resolve;
@@ -33758,23 +33994,33 @@ Zone.__load_patch('ZoneAwarePromise', function (global, Zone, api) {
             });
             var count = 0;
             var resolvedValues = [];
-            for (var _i = 0, values_2 = values; _i < values_2.length; _i++) {
-                var value = values_2[_i];
-                if (!isThenable(value)) {
-                    value = this.resolve(value);
-                }
-                value.then((function (index) { return function (value) {
-                    resolvedValues[index] = value;
-                    count--;
-                    if (!count) {
-                        resolve(resolvedValues);
+            try {
+                for (var values_2 = __values(values), values_2_1 = values_2.next(); !values_2_1.done; values_2_1 = values_2.next()) {
+                    var value = values_2_1.value;
+                    if (!isThenable(value)) {
+                        value = this.resolve(value);
                     }
-                }; })(count), reject);
-                count++;
+                    value.then((function (index) { return function (value) {
+                        resolvedValues[index] = value;
+                        count--;
+                        if (!count) {
+                            resolve(resolvedValues);
+                        }
+                    }; })(count), reject);
+                    count++;
+                }
+            }
+            catch (e_2_1) { e_2 = { error: e_2_1 }; }
+            finally {
+                try {
+                    if (values_2_1 && !values_2_1.done && (_a = values_2.return)) _a.call(values_2);
+                }
+                finally { if (e_2) throw e_2.error; }
             }
             if (!count)
                 resolve(resolvedValues);
             return promise;
+            var e_2, _a;
         };
         ZoneAwarePromise.prototype.then = function (onFulfilled, onRejected) {
             var chainPromise = new this.constructor(null);
@@ -33799,6 +34045,42 @@ Zone.__load_patch('ZoneAwarePromise', function (global, Zone, api) {
     ZoneAwarePromise['race'] = ZoneAwarePromise.race;
     ZoneAwarePromise['all'] = ZoneAwarePromise.all;
     var NativePromise = global[symbolPromise] = global['Promise'];
+    var ZONE_AWARE_PROMISE = Zone.__symbol__('ZoneAwarePromise');
+    var desc = Object.getOwnPropertyDescriptor(global, 'Promise');
+    if (!desc || desc.configurable) {
+        desc && delete desc.writable;
+        desc && delete desc.value;
+        if (!desc) {
+            desc = { configurable: true, enumerable: true };
+        }
+        desc.get = function () {
+            // if we already set ZoneAwarePromise, use patched one
+            // otherwise return native one.
+            return global[ZONE_AWARE_PROMISE] ? global[ZONE_AWARE_PROMISE] : global[symbolPromise];
+        };
+        desc.set = function (NewNativePromise) {
+            if (NewNativePromise === ZoneAwarePromise) {
+                // if the NewNativePromise is ZoneAwarePromise
+                // save to global
+                global[ZONE_AWARE_PROMISE] = NewNativePromise;
+            }
+            else {
+                // if the NewNativePromise is not ZoneAwarePromise
+                // for example: after load zone.js, some library just
+                // set es6-promise to global, if we set it to global
+                // directly, assertZonePatched will fail and angular
+                // will not loaded, so we just set the NewNativePromise
+                // to global[symbolPromise], so the result is just like
+                // we load ES6 Promise before zone.js
+                global[symbolPromise] = NewNativePromise;
+                if (!NewNativePromise.prototype[symbolThen]) {
+                    patchThen(NewNativePromise);
+                }
+                api.setNativePromise(NewNativePromise);
+            }
+        };
+        Object.defineProperty(global, 'Promise', desc);
+    }
     global['Promise'] = ZoneAwarePromise;
     var symbolThenPatched = __symbol__('thenPatched');
     function patchThen(Ctor) {
@@ -33918,14 +34200,20 @@ var isBrowser = !isNode && !isWebWorker && !!(typeof window !== 'undefined' && w
 var isMix = typeof _global.process !== 'undefined' &&
     {}.toString.call(_global.process) === '[object process]' && !isWebWorker &&
     !!(typeof window !== 'undefined' && window['HTMLElement']);
-var ON_PROPERTY_HANDLER_SYMBOL = zoneSymbol('onPropertyHandler');
 var zoneSymbolEventNames = {};
 var wrapFn = function (event) {
+    // https://github.com/angular/zone.js/issues/911, in IE, sometimes
+    // event will be undefined, so we need to use window.event
+    event = event || _global.event;
+    if (!event) {
+        return;
+    }
     var eventNameSymbol = zoneSymbolEventNames[event.type];
     if (!eventNameSymbol) {
         eventNameSymbol = zoneSymbolEventNames[event.type] = zoneSymbol('ON_PROPERTY' + event.type);
     }
-    var listener = this[eventNameSymbol];
+    var target = this || event.target || _global;
+    var listener = target[eventNameSymbol];
     var result = listener && listener.apply(this, arguments);
     if (result != undefined && !result) {
         event.preventDefault();
@@ -33994,8 +34282,9 @@ function patchProperty(obj, prop, prototype) {
         if (!target) {
             return null;
         }
-        if (target[eventNameSymbol]) {
-            return wrapFn;
+        var listener = target[eventNameSymbol];
+        if (listener) {
+            return listener;
         }
         else if (originalDescGet) {
             // result will be null when use inline event attribute,
@@ -34243,6 +34532,26 @@ Zone.__load_patch('toString', function (global, Zone, api) {
  * @fileoverview
  * @suppress {missingRequire}
  */
+var __read$1 = (undefined && undefined.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spread = (undefined && undefined.__spread) || function () {
+    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read$1(arguments[i]));
+    return ar;
+};
 var TRUE_STR = 'true';
 var FALSE_STR = 'false';
 // an identifier to tell ZoneTask do not create a new invoke closure
@@ -34256,6 +34565,7 @@ var FUNCTION_TYPE = 'function';
 var OBJECT_TYPE = 'object';
 var ZONE_SYMBOL_PREFIX = '__zone_symbol__';
 var EVENT_NAME_SYMBOL_REGX = /^__zone_symbol__(\w+)(true|false)$/;
+var IMMEDIATE_PROPAGATION_SYMBOL = ('__zone_symbol__propagationStopped');
 function patchEventTarget(_global, apis, patchOptions) {
     var ADD_EVENT_LISTENER = (patchOptions && patchOptions.addEventListenerFnName) || 'addEventListener';
     var REMOVE_EVENT_LISTENER = (patchOptions && patchOptions.removeEventListenerFnName) || 'removeEventListener';
@@ -34290,7 +34600,15 @@ function patchEventTarget(_global, apis, patchOptions) {
     };
     // global shared zoneAwareCallback to handle all event callback with capture = false
     var globalZoneAwareCallback = function (event) {
-        var target = this || _global;
+        // https://github.com/angular/zone.js/issues/911, in IE, sometimes
+        // event will be undefined, so we need to use window.event
+        event = event || _global.event;
+        if (!event) {
+            return;
+        }
+        // event.target is needed for Samusung TV and SourceBuffer
+        // || global is needed https://github.com/angular/zone.js/issues/190
+        var target = this || event.target || _global;
         var tasks = target[zoneSymbolEventNames$1[event.type][FALSE_STR]];
         if (tasks) {
             // invoke all tasks which attached to current target with given event.type and capture = false
@@ -34304,6 +34622,9 @@ function patchEventTarget(_global, apis, patchOptions) {
                 // the callback will remove itself or other listener
                 var copyTasks = tasks.slice();
                 for (var i = 0; i < copyTasks.length; i++) {
+                    if (event && event[IMMEDIATE_PROPAGATION_SYMBOL] === true) {
+                        break;
+                    }
                     invokeTask(copyTasks[i], target, event);
                 }
             }
@@ -34311,7 +34632,15 @@ function patchEventTarget(_global, apis, patchOptions) {
     };
     // global shared zoneAwareCallback to handle all event callback with capture = true
     var globalZoneAwareCaptureCallback = function (event) {
-        var target = this || _global;
+        // https://github.com/angular/zone.js/issues/911, in IE, sometimes
+        // event will be undefined, so we need to use window.event
+        event = event || _global.event;
+        if (!event) {
+            return;
+        }
+        // event.target is needed for Samusung TV and SourceBuffer
+        // || global is needed https://github.com/angular/zone.js/issues/190
+        var target = this || event.target || _global;
         var tasks = target[zoneSymbolEventNames$1[event.type][TRUE_STR]];
         if (tasks) {
             // invoke all tasks which attached to current target with given event.type and capture = false
@@ -34325,6 +34654,9 @@ function patchEventTarget(_global, apis, patchOptions) {
                 // the callback will remove itself or other listener
                 var copyTasks = tasks.slice();
                 for (var i = 0; i < copyTasks.length; i++) {
+                    if (event && event[IMMEDIATE_PROPAGATION_SYMBOL] === true) {
+                        break;
+                    }
                     invokeTask(copyTasks[i], target, event);
                 }
             }
@@ -34668,7 +35000,7 @@ function patchEventTarget(_global, apis, patchOptions) {
                     var tasks = target[symbolEventName];
                     var captureTasks = target[symbolCaptureEventName];
                     if (tasks) {
-                        var removeTasks = tasks.slice();
+                        var removeTasks = __spread(tasks);
                         for (var i = 0; i < removeTasks.length; i++) {
                             var task = removeTasks[i];
                             var delegate = task.originalDelegate ? task.originalDelegate : task.callback;
@@ -34676,7 +35008,7 @@ function patchEventTarget(_global, apis, patchOptions) {
                         }
                     }
                     if (captureTasks) {
-                        var removeTasks = captureTasks.slice();
+                        var removeTasks = __spread(captureTasks);
                         for (var i = 0; i < removeTasks.length; i++) {
                             var task = removeTasks[i];
                             var delegate = task.originalDelegate ? task.originalDelegate : task.callback;
@@ -34719,6 +35051,14 @@ function findEventTasks(target, eventName) {
     }
     return foundTasks;
 }
+function patchEventPrototype(global, api) {
+    var Event = global['Event'];
+    if (Event && Event.prototype) {
+        api.patchMethod(Event.prototype, 'stopImmediatePropagation', function (delegate) { return function (self, args) {
+            self[IMMEDIATE_PROPAGATION_SYMBOL] = true;
+        }; });
+    }
+}
 
 /**
  * @license
@@ -34731,6 +35071,7 @@ function findEventTasks(target, eventName) {
  * @fileoverview
  * @suppress {missingRequire}
  */
+var taskSymbol = zoneSymbol('zoneTask');
 function patchTimer(window, setName, cancelName, nameSuffix) {
     var setNative = null;
     var clearNative = null;
@@ -34751,26 +35092,22 @@ function patchTimer(window, setName, cancelName, nameSuffix) {
             }
             finally {
                 if (typeof data.handleId === NUMBER) {
-                    // Node returns complex objects as handleIds
+                    // in non-nodejs env, we remove timerId
+                    // from local cache
                     delete tasksByHandleId[data.handleId];
+                }
+                else if (data.handleId) {
+                    // Node returns complex objects as handleIds
+                    // we remove task reference from timer object
+                    data.handleId[taskSymbol] = null;
                 }
             }
         }
         data.args[0] = timer;
         data.handleId = setNative.apply(window, data.args);
-        if (typeof data.handleId === NUMBER) {
-            // Node returns complex objects as handleIds -> no need to keep them around. Additionally,
-            // this throws an
-            // exception in older node versions and has no effect there, because of the stringified key.
-            tasksByHandleId[data.handleId] = task;
-        }
         return task;
     }
     function clearTask(task) {
-        if (typeof task.data.handleId === NUMBER) {
-            // Node returns complex objects as handleIds
-            delete tasksByHandleId[task.data.handleId];
-        }
         return clearNative(task.data.handleId);
     }
     setNative =
@@ -34789,12 +35126,25 @@ function patchTimer(window, setName, cancelName, nameSuffix) {
                 }
                 // Node.js must additionally support the ref and unref functions.
                 var handle = task.data.handleId;
+                if (typeof handle === NUMBER) {
+                    // for non nodejs env, we save handleId: task
+                    // mapping in local cache for clearTimeout
+                    tasksByHandleId[handle] = task;
+                }
+                else if (handle) {
+                    // for nodejs env, we save task
+                    // reference in timerId Object for clearTimeout
+                    handle[taskSymbol] = task;
+                }
                 // check whether handle is null, because some polyfill or browser
                 // may return undefined from setTimeout/setInterval/setImmediate/requestAnimationFrame
                 if (handle && handle.ref && handle.unref && typeof handle.ref === FUNCTION &&
                     typeof handle.unref === FUNCTION) {
                     task.ref = handle.ref.bind(handle);
                     task.unref = handle.unref.bind(handle);
+                }
+                if (typeof handle === NUMBER || handle) {
+                    return handle;
                 }
                 return task;
             }
@@ -34805,10 +35155,29 @@ function patchTimer(window, setName, cancelName, nameSuffix) {
         }; });
     clearNative =
         patchMethod(window, cancelName, function (delegate) { return function (self, args) {
-            var task = typeof args[0] === NUMBER ? tasksByHandleId[args[0]] : args[0];
+            var id = args[0];
+            var task;
+            if (typeof id === NUMBER) {
+                // non nodejs env.
+                task = tasksByHandleId[id];
+            }
+            else {
+                // nodejs env.
+                task = id && id[taskSymbol];
+                // other environments.
+                if (!task) {
+                    task = id;
+                }
+            }
             if (task && typeof task.type === STRING) {
                 if (task.state !== NOT_SCHEDULED &&
                     (task.cancelFn && task.data.isPeriodic || task.runCount === 0)) {
+                    if (typeof id === NUMBER) {
+                        delete tasksByHandleId[id];
+                    }
+                    else if (id) {
+                        id[taskSymbol] = null;
+                    }
                     // Do not cancel already canceled functions
                     task.zone.cancelTask(task);
                 }
@@ -35043,6 +35412,7 @@ var globalEventHandlersEventNames = [
     'mouseover',
     'mouseup',
     'mousewheel',
+    'orientationchange',
     'pause',
     'play',
     'playing',
@@ -35080,6 +35450,7 @@ var globalEventHandlersEventNames = [
     'touchcancel',
     'touchmove',
     'touchstart',
+    'touchend',
     'transitioncancel',
     'transitionend',
     'waiting',
@@ -35088,7 +35459,8 @@ var globalEventHandlersEventNames = [
 var documentEventNames = [
     'afterscriptexecute', 'beforescriptexecute', 'DOMContentLoaded', 'fullscreenchange',
     'mozfullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange', 'fullscreenerror',
-    'mozfullscreenerror', 'webkitfullscreenerror', 'msfullscreenerror', 'readystatechange'
+    'mozfullscreenerror', 'webkitfullscreenerror', 'msfullscreenerror', 'readystatechange',
+    'visibilitychange'
 ];
 var windowEventNames = [
     'absolutedeviceorientation',
@@ -35197,6 +35569,7 @@ var XMLHttpRequestEventNames = [
 ];
 var IDBIndexEventNames = ['upgradeneeded', 'complete', 'abort', 'success', 'error', 'blocked', 'versionchange', 'close'];
 var websocketEventNames = ['close', 'error', 'open', 'message'];
+var workerEventNames = ['error', 'message'];
 var eventNames = globalEventHandlersEventNames.concat(webglEventNames, formEventNames, detailEventNames, documentEventNames, windowEventNames, htmlElementEventNames, ieElementEventNames);
 function filterProperties(target, onProperties, ignoreProperties) {
     if (!ignoreProperties) {
@@ -35239,6 +35612,10 @@ function propertyDescriptorPatch(api, _global) {
             var HTMLMarqueeElement_1 = window['HTMLMarqueeElement'];
             if (HTMLMarqueeElement_1) {
                 patchFilteredProperties(HTMLMarqueeElement_1.prototype, marqueeEventNames, ignoreProperties);
+            }
+            var Worker_1 = window['Worker'];
+            if (Worker_1) {
+                patchFilteredProperties(Worker_1.prototype, workerEventNames, ignoreProperties);
             }
         }
         patchFilteredProperties(XMLHttpRequest.prototype, XMLHttpRequestEventNames, ignoreProperties);
@@ -35445,6 +35822,9 @@ function eventTargetPatch(_global, api) {
     api.patchEventTarget = patchEventTarget;
     return true;
 }
+function patchEvent(global, api) {
+    patchEventPrototype(global, api);
+}
 
 /**
  * @license
@@ -35494,6 +35874,10 @@ function registerElementPatch(_global) {
  * @fileoverview
  * @suppress {missingRequire}
  */
+Zone.__load_patch('util', function (global, Zone, api) {
+    api.patchOnProperties = patchOnProperties;
+    api.patchMethod = patchMethod;
+});
 Zone.__load_patch('timers', function (global, Zone, api) {
     var set = 'set';
     var clear = 'clear';
@@ -35518,6 +35902,7 @@ Zone.__load_patch('blocking', function (global, Zone, api) {
     }
 });
 Zone.__load_patch('EventTarget', function (global, Zone, api) {
+    patchEvent(global, api);
     eventTargetPatch(global, api);
     // patch XMLHttpRequestEventTarget's addEventListener/removeEventListener
     var XMLHttpRequestEventTarget = global['XMLHttpRequestEventTarget'];
@@ -35550,6 +35935,7 @@ Zone.__load_patch('XHR', function (global, Zone, api) {
     var XHR_SYNC = zoneSymbol('xhrSync');
     var XHR_LISTENER = zoneSymbol('xhrListener');
     var XHR_SCHEDULED = zoneSymbol('xhrScheduled');
+    var XHR_URL = zoneSymbol('xhrURL');
     function patchXHR(window) {
         function findPendingTask(target) {
             var pendingTask = target[XHR_TASK];
@@ -35609,6 +35995,7 @@ Zone.__load_patch('XHR', function (global, Zone, api) {
         }
         var openNative = patchMethod(window.XMLHttpRequest.prototype, 'open', function () { return function (self, args) {
             self[XHR_SYNC] = args[2] == false;
+            self[XHR_URL] = args[1];
             return openNative.apply(self, args);
         }; });
         var XMLHTTPREQUEST_SOURCE = 'XMLHttpRequest.send';
@@ -35619,7 +36006,14 @@ Zone.__load_patch('XHR', function (global, Zone, api) {
                 return sendNative.apply(self, args);
             }
             else {
-                var options = { target: self, isPeriodic: false, delay: null, args: args, aborted: false };
+                var options = {
+                    target: self,
+                    url: self[XHR_URL],
+                    isPeriodic: false,
+                    delay: null,
+                    args: args,
+                    aborted: false
+                };
                 return zone.scheduleMacroTask(XMLHTTPREQUEST_SOURCE, placeholderCallback, options, scheduleTask, clearTask);
             }
         }; });
@@ -35671,10 +36065,6 @@ Zone.__load_patch('PromiseRejectionEvent', function (global, Zone, api) {
             findPromiseRejectionHandler('rejectionhandled');
     }
 });
-Zone.__load_patch('util', function (global, Zone, api) {
-    api.patchOnProperties = patchOnProperties;
-    api.patchMethod = patchMethod;
-});
 
 /**
  * @license
@@ -35714,7 +36104,7 @@ Zone.__load_patch('util', function (global, Zone, api) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return AnimationGroupPlayer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return ɵPRE_STYLE; });
 /**
- * @license Angular v4.4.3
+ * @license Angular v4.4.4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -37031,7 +37421,7 @@ var ɵPRE_STYLE = '!';
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_animations__ = __webpack_require__("../../../animations/@angular/animations.es5.js");
 
 /**
- * @license Angular v4.4.3
+ * @license Angular v4.4.4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -39025,7 +39415,11 @@ var AnimationTimelineContext = (function () {
         }
         if (selector.length > 0) {
             var /** @type {?} */ multi = limit != 1;
-            results.push.apply(results, this._driver.query(this.element, selector, multi));
+            var /** @type {?} */ elements = this._driver.query(this.element, selector, multi);
+            if (limit !== 0) {
+                elements = elements.slice(0, limit);
+            }
+            results.push.apply(results, elements);
         }
         if (!optional && results.length == 0) {
             errors.push("`query(\"" + originalSelector + "\")` returned zero elements. (Use `query(\"" + originalSelector + "\", { optional: true })` if you wish to allow this.)");
@@ -42291,7 +42685,7 @@ function supportsWebAnimations() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 
 /**
- * @license Angular v4.4.3
+ * @license Angular v4.4.4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -46258,7 +46652,7 @@ function isPlatformWorkerUi(platformId) {
 /**
  * \@stable
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_0" /* Version */]('4.4.3');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_0" /* Version */]('4.4.4');
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -46502,7 +46896,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_0" /* Version */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__);
 
 /**
- * @license Angular v4.4.3
+ * @license Angular v4.4.4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -47298,7 +47692,7 @@ var Version = (function () {
 /**
  * \@stable
  */
-var VERSION = new Version('4.4.3');
+var VERSION = new Version('4.4.4');
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -58423,33 +58817,19 @@ function viewDef(flags, nodes, updateDirectives, updateRenderer) {
     var /** @type {?} */ viewRootNodeFlags = 0;
     var /** @type {?} */ viewMatchedQueries = 0;
     var /** @type {?} */ currentParent = null;
+    var /** @type {?} */ currentRenderParent = null;
     var /** @type {?} */ currentElementHasPublicProviders = false;
     var /** @type {?} */ currentElementHasPrivateProviders = false;
     var /** @type {?} */ lastRenderRootNode = null;
     for (var /** @type {?} */ i = 0; i < nodes.length; i++) {
-        while (currentParent && i > currentParent.index + currentParent.childCount) {
-            var /** @type {?} */ newParent = currentParent.parent;
-            if (newParent) {
-                newParent.childFlags |= ((currentParent.childFlags));
-                newParent.childMatchedQueries |= currentParent.childMatchedQueries;
-            }
-            currentParent = newParent;
-        }
         var /** @type {?} */ node = nodes[i];
         node.index = i;
         node.parent = currentParent;
         node.bindingIndex = viewBindingCount;
         node.outputIndex = viewDisposableCount;
-        // renderParent needs to account for ng-container!
-        var /** @type {?} */ currentRenderParent = void 0;
-        if (currentParent && currentParent.flags & 1 /* TypeElement */ &&
-            !((currentParent.element)).name) {
-            currentRenderParent = currentParent.renderParent;
-        }
-        else {
-            currentRenderParent = currentParent;
-        }
         node.renderParent = currentRenderParent;
+        viewNodeFlags |= node.flags;
+        viewMatchedQueries |= node.matchedQueryIds;
         if (node.element) {
             var /** @type {?} */ elDef = node.element;
             elDef.publicProviders =
@@ -58458,24 +58838,11 @@ function viewDef(flags, nodes, updateDirectives, updateRenderer) {
             // Note: We assume that all providers of an element are before any child element!
             currentElementHasPublicProviders = false;
             currentElementHasPrivateProviders = false;
-        }
-        validateNode(currentParent, node, nodes.length);
-        viewNodeFlags |= node.flags;
-        viewMatchedQueries |= node.matchedQueryIds;
-        if (node.element && node.element.template) {
-            viewMatchedQueries |= node.element.template.nodeMatchedQueries;
-        }
-        if (currentParent) {
-            currentParent.childFlags |= node.flags;
-            currentParent.directChildFlags |= node.flags;
-            currentParent.childMatchedQueries |= node.matchedQueryIds;
-            if (node.element && node.element.template) {
-                currentParent.childMatchedQueries |= node.element.template.nodeMatchedQueries;
+            if (node.element.template) {
+                viewMatchedQueries |= node.element.template.nodeMatchedQueries;
             }
         }
-        else {
-            viewRootNodeFlags |= node.flags;
-        }
+        validateNode(currentParent, node, nodes.length);
         viewBindingCount += node.bindings.length;
         viewDisposableCount += node.outputs.length;
         if (!currentRenderParent && (node.flags & 3 /* CatRenderNode */)) {
@@ -58499,7 +58866,7 @@ function viewDef(flags, nodes, updateDirectives, updateRenderer) {
                 if (!currentElementHasPrivateProviders) {
                     currentElementHasPrivateProviders = true; /** @type {?} */
                     ((((
-                    // Use protoyypical inheritance to not get O(n^2) complexity...
+                    // Use prototypical inheritance to not get O(n^2) complexity...
                     currentParent)).element)).allProviders =
                         Object.create(/** @type {?} */ ((((currentParent)).element)).publicProviders);
                 } /** @type {?} */
@@ -58509,17 +58876,45 @@ function viewDef(flags, nodes, updateDirectives, updateRenderer) {
                 ((((currentParent)).element)).componentProvider = node;
             }
         }
-        if (node.childCount) {
+        if (currentParent) {
+            currentParent.childFlags |= node.flags;
+            currentParent.directChildFlags |= node.flags;
+            currentParent.childMatchedQueries |= node.matchedQueryIds;
+            if (node.element && node.element.template) {
+                currentParent.childMatchedQueries |= node.element.template.nodeMatchedQueries;
+            }
+        }
+        else {
+            viewRootNodeFlags |= node.flags;
+        }
+        if (node.childCount > 0) {
             currentParent = node;
+            if (!isNgContainer(node)) {
+                currentRenderParent = node;
+            }
         }
-    }
-    while (currentParent) {
-        var /** @type {?} */ newParent = currentParent.parent;
-        if (newParent) {
-            newParent.childFlags |= currentParent.childFlags;
-            newParent.childMatchedQueries |= currentParent.childMatchedQueries;
+        else {
+            // When the current node has no children, check if it is the last children of its parent.
+            // When it is, propagate the flags up.
+            // The loop is required because an element could be the last transitive children of several
+            // elements. We loop to either the root or the highest opened element (= with remaining
+            // children)
+            while (currentParent && i === currentParent.index + currentParent.childCount) {
+                var /** @type {?} */ newParent = currentParent.parent;
+                if (newParent) {
+                    newParent.childFlags |= currentParent.childFlags;
+                    newParent.childMatchedQueries |= currentParent.childMatchedQueries;
+                }
+                currentParent = newParent;
+                // We also need to update the render parent & account for ng-container
+                if (currentParent && isNgContainer(currentParent)) {
+                    currentRenderParent = currentParent.renderParent;
+                }
+                else {
+                    currentRenderParent = currentParent;
+                }
+            }
         }
-        currentParent = newParent;
     }
     var /** @type {?} */ handleEvent = function (view, nodeIndex, eventName, event) { return ((((nodes[nodeIndex].element)).handleEvent))(view, eventName, event); };
     return {
@@ -58530,11 +58925,17 @@ function viewDef(flags, nodes, updateDirectives, updateRenderer) {
         nodeMatchedQueries: viewMatchedQueries, flags: flags,
         nodes: nodes,
         updateDirectives: updateDirectives || NOOP,
-        updateRenderer: updateRenderer || NOOP,
-        handleEvent: handleEvent || NOOP,
+        updateRenderer: updateRenderer || NOOP, handleEvent: handleEvent,
         bindingCount: viewBindingCount,
         outputCount: viewDisposableCount, lastRenderRootNode: lastRenderRootNode
     };
+}
+/**
+ * @param {?} node
+ * @return {?}
+ */
+function isNgContainer(node) {
+    return (node.flags & 1 /* TypeElement */) !== 0 && ((node.element)).name === null;
 }
 /**
  * @param {?} parent
@@ -61413,7 +61814,7 @@ function transition$$1(stateChangeExpr, steps) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 
 /**
- * @license Angular v4.4.3
+ * @license Angular v4.4.4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -67338,7 +67739,7 @@ FormBuilder.ctorParameters = function () { return []; };
 /**
  * \@stable
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_0" /* Version */]('4.4.3');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_0" /* Version */]('4.4.4');
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -67560,7 +67961,7 @@ ReactiveFormsModule.ctorParameters = function () { return []; };
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 
 /**
- * @license Angular v4.4.3
+ * @license Angular v4.4.4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -71967,7 +72368,7 @@ var By = (function () {
 /**
  * \@stable
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["_0" /* Version */]('4.4.3');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["_0" /* Version */]('4.4.4');
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -72021,7 +72422,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["_0" /* Version */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_animations_browser__ = __webpack_require__("../../../animations/@angular/animations/browser.es5.js");
 
 /**
- * @license Angular v4.4.3
+ * @license Angular v4.4.4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -72865,7 +73266,7 @@ NoopAnimationsModule.ctorParameters = function () { return []; };
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_rxjs_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21_rxjs_operator_filter__);
 
 /**
- * @license Angular v4.4.3
+ * @license Angular v4.4.4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -79118,7 +79519,7 @@ function provideRouterInitializer() {
 /**
  * \@stable
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["_0" /* Version */]('4.4.3');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["_0" /* Version */]('4.4.4');
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.

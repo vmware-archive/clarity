@@ -49,14 +49,6 @@ export class TabLinkDirective {
         const factory = this.cfr.resolveComponentFactory(TemplateRefContainer);
         this.templateRefContainer =
             this.viewContainerRef.createComponent(factory, 1, undefined, [[this.el.nativeElement]]).instance;
-
-        // if there's no active tab, set the one associated with this link as active
-        // it will be overridden if a tab created after this one sets it explicitly
-        // TODO: when we have another component using IfActiveService, the same logic might be
-        // needed. If this is a recurring pattern, let's consider moving this logic to IfActiveService.
-        if (!this.ifActiveService.current) {
-            this.ifActiveService.current = id;
-        }
     }
 
     get ariaControls(): string {

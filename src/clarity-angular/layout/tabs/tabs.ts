@@ -55,6 +55,12 @@ export class Tabs {
         return this.tabsService.overflowTabs.indexOf(this.tabsService.activeTab) > -1;
     }
 
+    ngAfterContentInit() {
+        if (typeof this.ifActiveService.current === "undefined") {
+            this.tabLinkDirectives.first.activate();
+        }
+    }
+
     toggleOverflow(event: any) {
         this.ifOpenService.toggleWithEvent(event);
     }

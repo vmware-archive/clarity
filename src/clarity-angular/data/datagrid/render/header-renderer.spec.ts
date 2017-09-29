@@ -27,8 +27,8 @@ export default function(): void {
             context = this.create(
                 DatagridHeaderRenderer, SimpleTest,
                 [MOCK_ORGANIZER_PROVIDER, MOCK_DOM_ADAPTER_PROVIDER, Sort, FiltersProvider, Page, StateDebouncer]);
-            domAdapter = context.getClarityProvider(DomAdapter);
-            organizer = context.getClarityProvider(DatagridRenderOrganizer);
+            domAdapter = <MockDomAdapter>context.getClarityProvider(DomAdapter);
+            organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
         });
 
         it("computes and sets the width of a column based on its scrollWidth", function() {

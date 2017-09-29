@@ -18,7 +18,7 @@ export default function(): void {
 
         beforeEach(function() {
             context = this.createOnly(DatagridRowMasterRenderer, FullTest, [MOCK_ORGANIZER_PROVIDER], [TestCounter]);
-            organizer = context.getClarityProvider(DatagridRenderOrganizer);
+            organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
         });
 
         it("adds the .datagrid-row-master class to the host", function() {

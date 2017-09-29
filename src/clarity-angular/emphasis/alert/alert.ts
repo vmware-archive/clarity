@@ -3,14 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {ChangeDetectorRef, Component, EventEmitter, Input, Optional, Output} from "@angular/core";
 
 // providers
 import {AlertIconAndTypesService} from "./providers/icon-and-types-service";
+import {MultiAlertService} from "./providers/multi-alert-service";
 
 @Component({selector: "clr-alert", providers: [AlertIconAndTypesService], templateUrl: "./alert.html"})
 export class Alert {
-    constructor(public iconService: AlertIconAndTypesService) {}
+    constructor(public iconService: AlertIconAndTypesService, public cdr: ChangeDetectorRef,
+                @Optional() public multiAlertService: MultiAlertService) {}
 
     @Input("clrAlertSizeSmall") isSmall: boolean = false;
     @Input("clrAlertClosable") closable: boolean = true;
@@ -36,11 +38,41 @@ export class Alert {
         return this.iconService.iconInfoFromType(this.iconService.alertType).cssClass;
     }
 
+    private previouslyHidden = false;
+    private hidden = false;
+
+    private detectChangesIfNeeded() {
+        if (this.previouslyHidden !== this.hidden) {
+            this.previouslyHidden = this.hidden;
+            this.cdr.detectChanges();
+        }
+    }
+
+    get isHidden() {
+        if (this.multiAlertService) {
+            if (this.multiAlertService.currentAlert === this) {
+                if (this.hidden === true) {
+                    this.previouslyHidden = true;
+                    this.hidden = false;
+                }
+            } else if (this.hidden === false) {
+                this.previouslyHidden = false;
+                this.hidden = true;
+            }
+            this.detectChangesIfNeeded();
+        }
+
+        return this.hidden;
+    }
+
     close(): void {
         if (!this.closable) {
             return;
         }
         this._closed = true;
+        if (this.multiAlertService) {
+            this.multiAlertService.close();
+        }
         this._closedChanged.emit(true);
     }
 

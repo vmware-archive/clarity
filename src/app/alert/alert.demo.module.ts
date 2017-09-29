@@ -12,6 +12,7 @@ import {AlertsDemo} from "./alert.demo";
 import {ROUTING} from "./alert.demo.routing";
 import {AlertAngularDemo} from "./angular/alert-angular";
 import {AlertAngularAppLevelDemo} from "./angular/alert-angular-app-level";
+import {AlertAngularAppLevelAlertsDemo} from "./angular/alert-angular-app-level-alerts";
 import {AlertAngularCloseEventDemo} from "./angular/alert-angular-close-event";
 import {AlertAngularNotClosableDemo} from "./angular/alert-angular-not-closable";
 import {AlertAngularSmallDemo} from "./angular/alert-angular-small";
@@ -30,15 +31,15 @@ import {AlertStylesDemo} from "./static/alert-styles";
         AlertsDemo, AlertStaticDemo, AlertStylesDemo, AlertContentAreaDemo, AlertCardsDemo, AlertModalsDemo,
         AlertSizesDemo, AlertAppLevelDemo,
 
-        AlertAngularDemo, AlertAngularAppLevelDemo, AlertAngularNotClosableDemo, AlertAngularSuccessDemo,
-        AlertAngularSmallDemo, AlertAngularCloseEventDemo
+        AlertAngularDemo, AlertAngularAppLevelDemo, AlertAngularAppLevelAlertsDemo, AlertAngularNotClosableDemo,
+        AlertAngularSuccessDemo, AlertAngularSmallDemo, AlertAngularCloseEventDemo
     ],
     exports: [
         AlertsDemo, AlertStaticDemo, AlertStylesDemo, AlertContentAreaDemo, AlertCardsDemo, AlertModalsDemo,
         AlertSizesDemo, AlertAppLevelDemo,
 
-        AlertAngularDemo, AlertAngularAppLevelDemo, AlertAngularNotClosableDemo, AlertAngularSuccessDemo,
-        AlertAngularSmallDemo, AlertAngularCloseEventDemo
+        AlertAngularDemo, AlertAngularAppLevelDemo, AlertAngularAppLevelAlertsDemo, AlertAngularNotClosableDemo,
+        AlertAngularSuccessDemo, AlertAngularSmallDemo, AlertAngularCloseEventDemo
     ]
 })
 export default class AlertDemoModule {}

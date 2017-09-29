@@ -9,6 +9,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {AlertsDemo} from "./alert.demo";
 import {AlertAngularDemo} from "./angular/alert-angular";
 import {AlertAngularAppLevelDemo} from "./angular/alert-angular-app-level";
+import {AlertAngularAppLevelAlertsDemo} from "./angular/alert-angular-app-level-alerts";
 import {AlertAngularCloseEventDemo} from "./angular/alert-angular-close-event";
 import {AlertAngularNotClosableDemo} from "./angular/alert-angular-not-closable";
 import {AlertAngularSmallDemo} from "./angular/alert-angular-small";
@@ -42,6 +43,7 @@ const ROUTES: Routes = [{
                 {path: "", redirectTo: "not-closable", pathMatch: "full"},
                 {path: "not-closable", component: AlertAngularNotClosableDemo},
                 {path: "app-level", component: AlertAngularAppLevelDemo},
+                {path: "app-level-alerts", component: AlertAngularAppLevelAlertsDemo},
                 {path: "success", component: AlertAngularSuccessDemo},
                 {path: "small", component: AlertAngularSmallDemo},
                 {path: "close-events", component: AlertAngularCloseEventDemo}

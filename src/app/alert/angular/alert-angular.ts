@@ -16,6 +16,7 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./close-events']">Invoking Callbacks on Close</a></li>
             <li><a [routerLink]="['./success']">Set Alert Type</a></li>
             <li><a [routerLink]="['./app-level']">Instantiate as App Level Alert</a></li>
+            <li><a [routerLink]="['./app-level-alerts']">Multiple App Level Alert</a></li>
         </ul>
         <router-outlet></router-outlet>
     `

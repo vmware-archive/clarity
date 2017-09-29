@@ -7,8 +7,12 @@
 import {Type} from "@angular/core";
 import {Alert} from "./alert";
 import {AlertItem} from "./alert-item";
+import {Alerts} from "./alerts";
+import {AlertsPager} from "./alerts-pager";
 
 export * from "./alert";
 export * from "./alert-item";
+export * from "./alerts";
+export * from "./alerts-pager";
 
-export const ALERT_DIRECTIVES: Type<any>[] = [Alert, AlertItem];
+export const ALERT_DIRECTIVES: Type<any>[] = [Alert, AlertItem, Alerts, AlertsPager];

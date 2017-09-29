@@ -35,7 +35,7 @@ export default function(): void {
 
         beforeEach(function() {
             context = this.create(DatagridRowRenderer, SimpleTest, PROVIDERS);
-            organizer = context.getClarityProvider(DatagridRenderOrganizer);
+            organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
             organizer.widths = [{px: 42, strict: false}, {px: 24, strict: true}];
             cellWidthSpy = spyOn(DatagridCellRenderer.prototype, "setWidth");
         });

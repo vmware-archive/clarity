@@ -8,7 +8,7 @@
  * when we have the time. This will be very helpful in future refactors due to Angular upgrades, or simply
  * just to avoid leaks since destroying fixtures is automatic with this.
  */
-import {DebugElement, Type} from "@angular/core";
+import {DebugElement, InjectionToken, Type} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
 
@@ -38,7 +38,8 @@ export class TestContext<D, C> {
         this.clarityElement = this.clarityDebugElement.nativeElement;
     }
 
-    getClarityProvider(token: any) {
+    // The Function type here is just to tell Typescript to be nice with abstract classes. Weird.
+    getClarityProvider<T>(token: Type<T>|InjectionToken<T>|Function): T {
         return this.clarityDebugElement.injector.get(token);
     }
 

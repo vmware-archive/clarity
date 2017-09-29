@@ -22,7 +22,7 @@ export default function(): void {
         });
 
         it("emits its scrollbar width when notified of a change", function() {
-            const mockDomAdapter: MockDomAdapter = context.getClarityProvider(DomAdapter);
+            const mockDomAdapter = <MockDomAdapter>context.getClarityProvider(DomAdapter);
             const organizer: DatagridRenderOrganizer = context.getClarityProvider(DatagridRenderOrganizer);
             let scrollbarWidth: number;
             organizer.scrollbarWidth.subscribe(width => scrollbarWidth = width);

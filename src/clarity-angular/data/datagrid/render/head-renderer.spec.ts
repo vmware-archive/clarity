@@ -18,7 +18,7 @@ export default function(): void {
 
         beforeEach(function() {
             context = this.create(DatagridHeadRenderer, SimpleTest, [MOCK_ORGANIZER_PROVIDER]);
-            organizer = context.getClarityProvider(DatagridRenderOrganizer);
+            organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
         });
 
         it("adds right padding corresponding to the scrollbar of the body", function() {

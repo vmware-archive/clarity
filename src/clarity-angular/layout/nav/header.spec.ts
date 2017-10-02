@@ -8,10 +8,11 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {ClrIconModule} from "../../icon/icon.module";
 
+import {MainContainerWillyWonka} from "./main-container-willy-wonka";
 import {ClrNavigationModule} from "./navigation.module";
 
 @Component({
-    template: `
+    template: `        
         <clr-header class="header">
             <div class="branding">
                 <a href="#" class="nav-link">
@@ -35,7 +36,11 @@ describe("Header", () => {
     let compiled: any;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({imports: [ClrNavigationModule, ClrIconModule], declarations: [TestComponent]});
+        TestBed.configureTestingModule({
+            imports: [ClrNavigationModule, ClrIconModule],
+            declarations: [TestComponent],
+            providers: [MainContainerWillyWonka]
+        });
 
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();

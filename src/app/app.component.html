@@ -1,81 +1,39 @@
 <!--
-  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2017 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
 <clr-main-container>
-  <clr-header>
-    <div class="branding">
-      <a href="#" class="nav-link">
-        <clr-icon shape="vm-bug"></clr-icon>
-        <span class="title">Project Clarity</span>
-      </a>
-    </div>
-    <div class="header-nav" [clr-nav-level]="1">
-      <a class="active nav-link" href="javascript://"><span class="nav-text">Components</span></a>
-      <a class="nav-link" href="javascript://"><span class="nav-text">Patterns</span></a>
-    </div>
-    <form class="search">
-      <label for="search_input">
-        <input id="search_input" type="text" placeholder="Search for Components...">
-      </label>
-    </form>
-    <div class="header-actions">
-      <clr-dropdown>
-        <button class="nav-icon" clrDropdownTrigger>
-          <clr-icon shape="cog"></clr-icon>
-          <clr-icon shape="caret down"></clr-icon>
-        </button>
-        <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
-          <a href="javascript://" clrDropdownItem>About</a>
-          <a href="javascript://" clrDropdownItem>Preferences</a>
-          <a href="javascript://" clrDropdownItem>Log out</a>
-        </clr-dropdown-menu>
-      </clr-dropdown>
-    </div>
-  </clr-header>
-  <div class="content-container">
-    <main class="content-area">
-      <router-outlet></router-outlet>
-    </main>
-    <nav class="sidenav" [clr-nav-level]="2">
-      <section class="sidenav-content">
-        <section class="nav-group collapsible">
-          <input id="tab1" type="checkbox">
-          <label for="tab1">Clarity Navigation</label>
-          <ul class="nav-list">
-            <li *ngFor="let route of routes">
-              <a *ngIf="route.path != ''" class="nav-link" [routerLink]="[route.path]"
-                 [routerLinkActive]="['active']">{{route.path}}</a>
-            </li>
-          </ul>
-        </section>
-      </section>
-    </nav>
-
-    <!--<clr-vertical-nav [clrVerticalNavCollapsible]="true" [clrVerticalNavCollapsed]="false" [clr-nav-level]="2">
-        <clr-vertical-nav-group>
-            <clr-icon shape="home" clrVerticalNavIcon></clr-icon>
-            Home
-            <ng-container *ngFor="let route of routes" ngProjectAs="[clrVerticalNavLink]">
-                <a clrVerticalNavLink *ngIf="route.path != ''"
-                   [routerLink]="[route.path]"
-                   [routerLinkActive]="['active']">
-                    {{route.path}}
-                </a>
-            </ng-container>
-        </clr-vertical-nav-group>
-    </clr-vertical-nav>-->
-
-    <!--<clr-vertical-nav [clrVerticalNavCollapsible]="true" [clrVerticalNavCollapsed]="false" [clr-nav-level]="2">
-        <ng-container *ngFor="let route of routes">
-            <a clrVerticalNavLink *ngIf="route.path != ''"
-               [routerLink]="[route.path]"
-               [routerLinkActive]="['active']">
-                {{route.path}}
+    <clr-header>
+        <div class="branding">
+            <a href="#" class="nav-link">
+                <clr-icon shape="vm-bug"></clr-icon>
+                <span class="title">Project Clarity</span>
             </a>
-        </ng-container>
-    </clr-vertical-nav>-->
-  </div>
+        </div>
+        <div class="header-nav" [clr-nav-level]="1">
+            <a class="active nav-link" href="javascript://"><span class="nav-text">Components</span></a>
+            <a class="nav-link" href="javascript://"><span class="nav-text">Patterns</span></a>
+        </div>
+        <form class="search">
+            <label for="search_input">
+                <input id="search_input" type="text" placeholder="Search for Components...">
+            </label>
+        </form>
+        <div class="header-actions">
+            <clr-dropdown>
+                <button class="nav-icon" clrDropdownTrigger>
+                    <clr-icon shape="cog"></clr-icon>
+                    <clr-icon shape="caret down"></clr-icon>
+                </button>
+                <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
+                    <a href="javascript://" clrDropdownItem>About</a>
+                    <a href="javascript://" clrDropdownItem>Preferences</a>
+                    <a href="javascript://" clrDropdownItem>Log out</a>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
+    </clr-header>
+    <my-app-content-container class="content-container"></my-app-content-container>
 </clr-main-container>

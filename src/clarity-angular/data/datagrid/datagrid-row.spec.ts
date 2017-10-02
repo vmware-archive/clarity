@@ -191,30 +191,23 @@ export default function(): void {
                 expect(selectionProvider.current).toEqual([]);
             });
 
-            it("doesn't have input for selection when hideSelectionColumn is enabled (Single selection)", function() {
-                selectionProvider.selectionType = SelectionType.Single;
-                context.detectChanges();
-
-                let input = context.clarityElement.querySelector("input");
-                expect(input).toBeDefined();
-
-                selectionProvider.hideSelectionColumn = true;
-                context.detectChanges();
-                input = context.clarityElement.querySelector("input");
-                expect(input).toBeNull();
-            });
-
-            it("doesn't have input for selection when hideSelectionColumn is enabled (Multi selection)", function() {
+            it("select the model on space or enter when `rowSelectionMode` is enabled", function() {
                 selectionProvider.selectionType = SelectionType.Multi;
+                selectionProvider.rowSelectionMode = true;
+                context.testComponent.item = {id: 1};
+                const row = context.clarityElement;
                 context.detectChanges();
 
-                let input = context.clarityElement.querySelector("input");
-                expect(input).toBeDefined();
-
-                selectionProvider.hideSelectionColumn = true;
+                const event: any = new Event("keypress");
+                event.keyCode = 13;  // Enter
+                row.dispatchEvent(event);
                 context.detectChanges();
-                input = context.clarityElement.querySelector("input");
-                expect(input).toBeNull();
+                expect(selectionProvider.current).toEqual([context.testComponent.item]);
+
+                event.keyCode = 32;  // Space
+                row.dispatchEvent(event);
+                context.detectChanges();
+                expect(selectionProvider.current).toEqual([]);
             });
 
             function flushAndAssertSelected(selected: boolean) {

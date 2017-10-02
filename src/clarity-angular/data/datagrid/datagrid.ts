@@ -119,15 +119,6 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     }
 
     /**
-     * Hide selection column and use row selection mode
-     */
-    @Input("clDgHideSelectionColumn")
-    set hideSelectionColumn(value: boolean) {
-        this.selection.rowSelectionMode = true;
-        this.selection.hideSelectionColumn = true;
-    }
-
-    /**
      * Indicates if all currently displayed items are selected
      */
     public get allSelected() {

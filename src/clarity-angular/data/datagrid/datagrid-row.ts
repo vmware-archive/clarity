@@ -8,6 +8,7 @@ import {
     Component,
     ContentChildren,
     EventEmitter,
+    HostBinding,
     HostListener,
     Input,
     Output,
@@ -32,11 +33,11 @@ let nbRow: number = 0;
     selector: "clr-dg-row",
     template: `
         <clr-dg-row-master class="datagrid-row-flex">
-            <clr-dg-cell *ngIf="selection.selectionType === SELECTION_TYPE.Multi && !selection.hideSelectionColumn"
+            <clr-dg-cell *ngIf="selection.selectionType === SELECTION_TYPE.Multi"
                          class="datagrid-select datagrid-fixed-column">
                 <clr-checkbox [ngModel]="selected" (ngModelChange)="toggle($event)"></clr-checkbox>
             </clr-dg-cell>
-            <clr-dg-cell *ngIf="selection.selectionType === SELECTION_TYPE.Single && !selection.hideSelectionColumn"
+            <clr-dg-cell *ngIf="selection.selectionType === SELECTION_TYPE.Single"
                          class="datagrid-select datagrid-fixed-column">
                 <div class="radio">
                     <input type="radio" [id]="id" [name]="selection.id + '-radio'" [value]="item"
@@ -87,15 +88,21 @@ export class DatagridRow implements AfterContentInit {
     /* reference to the enum so that template can access */
     public SELECTION_TYPE = SelectionType;
 
+    private readonly ENTER_KEY_CODE = 13;
+    private readonly SPACE_KEY_CODE = 32;
+
     /**
      * Model of the row, to use for selection
      */
     @Input("clrDgItem") item: any;
 
+    @HostBinding("attr.role") role: string;
+
     constructor(public selection: Selection, public rowActionService: RowActionService,
                 public globalExpandable: ExpandableRowsCount, public expand: Expand,
                 public hideableColumnService: HideableColumnService) {
         this.id = "clr-dg-row" + (nbRow++);
+        this.role = selection.rowSelectionMode ? "button" : null;
     }
 
     private _selected = false;
@@ -146,8 +153,8 @@ export class DatagridRow implements AfterContentInit {
         }
     }
 
-    @HostListener("click", ["$event"])
-    public toggleSelection(event: any) {
+    @HostListener("click")
+    public toggleSelection() {
         if (!this.selection.rowSelectionMode) {
             return;
         }
@@ -163,6 +170,20 @@ export class DatagridRow implements AfterContentInit {
                 break;
             default:
                 break;
+        }
+    }
+
+    @HostListener("keypress", ["$event"])
+    public keypress(event: KeyboardEvent) {
+        if (!this.selection.rowSelectionMode) {
+            return;
+        }
+
+        // Check to see if space or enter were pressed
+        if (event.keyCode === this.ENTER_KEY_CODE || event.keyCode === this.SPACE_KEY_CODE) {
+            // Prevent the default action to stop scrolling when space is pressed
+            event.preventDefault();
+            this.toggleSelection();
         }
     }
 

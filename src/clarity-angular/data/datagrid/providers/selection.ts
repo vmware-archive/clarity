@@ -82,8 +82,6 @@ export class Selection {
 
     public rowSelectionMode: boolean = false;
 
-    public hideSelectionColumn: boolean = false;
-
     private get _selectable(): boolean {
         return (this._selectionType === SelectionType.Multi) || (this._selectionType === SelectionType.Single);
     }

@@ -32,20 +32,6 @@ const MULTI_SELECTION_EXAMPLE = `
 Selected users: <span *ngFor="let user of selected">{{user.name}}</span>
 `;
 
-
-const HIDDEN_SELECTION_EXAMPLE = `
-<clr-datagrid [(clrDgSelected)]="selected" clDgHideSelectionColumn="true">
-    <-- ... -->
-    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
-        <-- ... -->
-    </clr-dg-row>
-   <-- ... -->
-</clr-datagrid>
-
-Selected users: <span *ngFor="let user of selected">{{user.name}}</span>
-`;
-
-
 @Component({
     moduleId: module.id,
     selector: "clr-datagrid-selection-row-mode-demo",
@@ -56,11 +42,9 @@ Selected users: <span *ngFor="let user of selected">{{user.name}}</span>
 export class DatagridSelectionRowModeDemo {
     singleSelectionExample = SINGLE_SELECTION_EXAMPLE;
     multiSelectionExample = MULTI_SELECTION_EXAMPLE;
-    hiddenSelectionExample = HIDDEN_SELECTION_EXAMPLE;
     users: User[];
     singleSelected: User;
     multiSelected: User[] = [];
-    hiddenMultiSelected: User[] = [];
 
     constructor(private inventory: Inventory) {
         inventory.size = 10;

@@ -10,6 +10,8 @@ import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class ButtonHubService {
+    public buttonsReady: boolean = false;
+
     private _previousBtnClicked = new Subject<any>();
     public get previousBtnClicked(): Observable<any> {
         return this._previousBtnClicked.asObservable();

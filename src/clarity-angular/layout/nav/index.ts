@@ -6,9 +6,12 @@
 import {Type} from "@angular/core";
 
 import {Header} from "./header";
+import {MainContainerWillyWonka} from "./main-container-willy-wonka";
+import {NavDetectionOompaLoompa} from "./nav-detection-oompa-loompa";
 import {NavLevelDirective} from "./navLevelDirective";
 
 export * from "./header";
 export * from "./navLevelDirective";
 
-export const NAVIGATION_DIRECTIVES: Type<any>[] = [Header, NavLevelDirective];
+export const NAVIGATION_DIRECTIVES: Type<any>[] =
+    [Header, NavLevelDirective, NavDetectionOompaLoompa, MainContainerWillyWonka];

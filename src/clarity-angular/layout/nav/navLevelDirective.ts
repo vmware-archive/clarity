@@ -3,18 +3,18 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {AfterContentInit, Directive, ElementRef, HostListener, Input} from "@angular/core";
+import {Directive, ElementRef, HostListener, Input, OnInit} from "@angular/core";
 
 import {ClrResponsiveNavCodes} from "./clrResponsiveNavCodes";
 import {ClrResponsiveNavigationService} from "./clrResponsiveNavigationService";
 
 @Directive({selector: "[clr-nav-level]"})
-export class NavLevelDirective implements AfterContentInit {
+export class NavLevelDirective implements OnInit {
     @Input("clr-nav-level") _level: number;
 
     constructor(private responsiveNavService: ClrResponsiveNavigationService, private elementRef: ElementRef) {}
 
-    ngAfterContentInit() {
+    ngOnInit() {
         if (this.level !== ClrResponsiveNavCodes.NAV_LEVEL_1 && this.level !== ClrResponsiveNavCodes.NAV_LEVEL_2) {
             console.error("Nav Level can only be 1 or 2");
             return;

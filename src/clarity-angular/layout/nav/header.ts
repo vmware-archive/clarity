@@ -31,14 +31,12 @@ import {ClrResponsiveNavigationService} from "./clrResponsiveNavigationService";
     `,
     host: {"[class.header]": "true"}
 })
-export class Header implements OnDestroy, OnInit {
+export class Header implements OnDestroy {
     private _subscription: Subscription;
     public isNavLevel1OnPage: boolean = false;
     public isNavLevel2OnPage: boolean = false;
 
-    constructor(private responsiveNavService: ClrResponsiveNavigationService) {}
-
-    ngOnInit() {
+    constructor(private responsiveNavService: ClrResponsiveNavigationService) {
         this._subscription = this.responsiveNavService.registeredNavs.subscribe({
             next: (navLevelList: number[]) => {
                 this.initializeNavTriggers(navLevelList);

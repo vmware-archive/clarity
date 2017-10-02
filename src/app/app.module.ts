@@ -12,10 +12,11 @@ import {ClarityModule} from "../clarity-angular/clarity.module";
 
 import {AppComponent} from "./app.component";
 import {ROUTING} from "./app.routing";
+import {AppContentContainerComponent} from "./content-container.component";
 import {LandingComponent} from "./landing.component";
 
 @NgModule({
-    declarations: [AppComponent, LandingComponent],
+    declarations: [AppComponent, LandingComponent, AppContentContainerComponent],
     imports: [BrowserAnimationsModule, CommonModule, FormsModule, ClarityModule, ROUTING],
     bootstrap: [AppComponent]
 })

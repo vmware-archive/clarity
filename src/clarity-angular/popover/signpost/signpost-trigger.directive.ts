@@ -8,7 +8,10 @@ import {Subscription} from "rxjs/Subscription";
 
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 
-@Directive({selector: "[clrSignpostTrigger]"})
+@Directive({
+    selector: "[clrSignpostTrigger]",
+    host: {"[class.signpost-trigger]": "true", "[attr.tabindex]": "0", "role": "button"}
+})  // role button or other roles
 
 /*********
  *
@@ -40,10 +43,18 @@ export class SignpostTriggerDirective implements OnDestroy {
      * @function onSignpostTriggerClick
      *
      * @description
-     * click handler for the Signpost trigger button used to hide/show SignpostContent.
+     * Enter and nnpclick handler for the Signpost trigger button used to hide/show SignpostContent.
+     *
+     * The enter HostListener handles the case when the directive is on a non-standard elemnent e.g clr-icon without
+     * a button wrapper
      */
+    @HostListener("keydown.enter", ["$event"])  // Works with the clr-icon trigger
+    @HostListener("keydown.space", ["$event"])
+    // Works with the clr-icon trigger needs preventDeault to keep page from scrolling.
     @HostListener("click", ["$event"])
-    onSignpostTriggerClick(event: Event): void {
+    onSignpostTriggerClick(event: KeyboardEvent|MouseEvent): void {
+        console.log(event);
         this.ifOpenService.toggleWithEvent(event);
+        event.preventDefault();  // Keeps the page from scrolling down when the signpost is triggered with space
     }
 }

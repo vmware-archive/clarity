@@ -10,8 +10,8 @@
                     </div>
                     <div class="position">
                         <clr-signpost>
-                            <button id="{{ position.id }}" type="button" class="signpost-action btn btn-small btn-link" clrSignpostTrigger>
-                                <clr-icon shape="help-info"></clr-icon>
+                            <button id="{{ position.id }}" type="button" class="btn btn-icon" clrSignpostTrigger>
+                                <clr-icon shape="help-info" size="24"></clr-icon>
                             </button>
                             <clr-signpost-content *clrIfOpen [clrPosition]="position.position">
                                 <p>{{ position.position }}</p>

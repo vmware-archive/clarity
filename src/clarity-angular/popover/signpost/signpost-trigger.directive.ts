@@ -48,9 +48,8 @@ export class SignpostTriggerDirective implements OnDestroy {
      * The enter HostListener handles the case when the directive is on a non-standard element e.g clr-icon without
      * a button wrapper and we preventDefault to keep the page from scrolling when the Space key is used.
      */
-    @HostListener("keydown.enter", ["$event"])  // Works with the clr-icon trigger
+    @HostListener("keydown.enter", ["$event"])
     @HostListener("keydown.space", ["$event"])
-    // Works with the clr-icon trigger needs preventDeault to keep page from scrolling.
     @HostListener("click", ["$event"])
     onSignpostTriggerClick(event: KeyboardEvent|MouseEvent): void {
         this.ifOpenService.toggleWithEvent(event);

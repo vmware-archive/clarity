@@ -53,7 +53,6 @@ export class SignpostTriggerDirective implements OnDestroy {
     // Works with the clr-icon trigger needs preventDeault to keep page from scrolling.
     @HostListener("click", ["$event"])
     onSignpostTriggerClick(event: KeyboardEvent|MouseEvent): void {
-        console.log(event);
         this.ifOpenService.toggleWithEvent(event);
         event.preventDefault();  // Keeps the page from scrolling down when the signpost is triggered with space
     }

@@ -14,9 +14,8 @@
 
         .signpost-trigger {
             color: $clr-dark-midtone-gray;
-            border: none;
 
-            &:active {
+            &.btn-icon {
                 border: none;
             }
 

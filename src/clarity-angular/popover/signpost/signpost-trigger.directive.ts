@@ -11,7 +11,7 @@ import {IfOpenService} from "../../utils/conditional/if-open.service";
 @Directive({
     selector: "[clrSignpostTrigger]",
     host: {"[class.signpost-trigger]": "true", "[attr.tabindex]": "0", "role": "button"}
-})  // role button or other roles
+})
 
 /*********
  *
@@ -43,10 +43,10 @@ export class SignpostTriggerDirective implements OnDestroy {
      * @function onSignpostTriggerClick
      *
      * @description
-     * Enter and nnpclick handler for the Signpost trigger button used to hide/show SignpostContent.
+     * Enter key, Space key and click handlers for the Signpost trigger button are used to hide/show SignpostContent.
      *
-     * The enter HostListener handles the case when the directive is on a non-standard elemnent e.g clr-icon without
-     * a button wrapper
+     * The enter HostListener handles the case when the directive is on a non-standard element e.g clr-icon without
+     * a button wrapper and we preventDefault to keep the page from scrolling when the Space key is used.
      */
     @HostListener("keydown.enter", ["$event"])  // Works with the clr-icon trigger
     @HostListener("keydown.space", ["$event"])

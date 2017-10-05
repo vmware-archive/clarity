@@ -29,7 +29,7 @@ export default function(): void {
             });
 
             it("has a default trigger that can hide/show content", function() {
-                const signpostToggle: HTMLElement = context.testElement.querySelector(".signpost-action");
+                const signpostToggle: HTMLElement = context.testElement.querySelector(".signpost-trigger");
                 let signpostContent: HTMLElement;
 
                 // Test we have a trigger

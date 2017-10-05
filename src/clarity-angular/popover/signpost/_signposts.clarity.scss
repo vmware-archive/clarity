@@ -12,19 +12,18 @@
             cursor: pointer;
         }
 
-        .signpost-action {
-            min-width: $clr_baselineRem_1;
-            margin: 0;
-            padding: 0;
+        .signpost-trigger {
             color: $clr-dark-midtone-gray;
-            outline: none;
 
-            clr-icon {
-                width: $clr_baselineRem_1;
-                height: $clr_baselineRem_1;
+            &.btn-icon {
+                border: none;
             }
 
-            &:hover, &.active {
+            &.active, &:hover {
+                color: $clr-action-blue;
+            }
+
+            &:focus {
                 color: $clr-action-blue;
             }
         }
@@ -371,11 +370,11 @@
                     justify-content: flex-end;
                     flex: 0 0 24px;
 
-                    button {
-                        clr-icon {
-                            width: 16px;
-                            height: 16px;
-                        }
+                    .signpost-action {
+                        min-width: $clr_baselineRem_1;
+                        margin: 0;
+                        padding: 0;
+                        color: $clr-dark-midtone-gray;
                     }
                 }
 

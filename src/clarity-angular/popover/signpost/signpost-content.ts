@@ -30,7 +30,7 @@ const POSITIONS: string[] = [
             <div class="popover-pointer"></div>
             <div class="signpost-content-header">
                 <button type="button" class="signpost-action close" aria-label="Close" (click)="close()">
-                    <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                    <clr-icon aria-hidden="true" shape="close" size="16"></clr-icon>
                 </button>
             </div>
             <div class="signpost-content-body">

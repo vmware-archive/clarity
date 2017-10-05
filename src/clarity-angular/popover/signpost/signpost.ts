@@ -17,9 +17,9 @@ import {SignpostTriggerDirective} from "./signpost-trigger.directive";
         <ng-container *ngIf="!useCustomTrigger">
             <button
                 type="button"
-                class="signpost-action btn btn-small btn-link"
+                class="btn btn-icon"    
                 clrSignpostTrigger>
-                <clr-icon shape="info"></clr-icon>
+                <clr-icon shape="info" size="24"></clr-icon>
             </button>
         </ng-container>
         

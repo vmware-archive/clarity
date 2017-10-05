@@ -50,3 +50,6 @@ export * from "./utils/animations/fade/index";
 export * from "./utils/animations/fade-slide/index";
 export * from "./utils/animations/slide/index";
 export * from "./utils/loading/index";
+
+// Below are exported for internal use only and may change without notice
+export {FocusTrapTracker as ÇlrFocusTrapTracker} from "./utils/focus-trap/focus-trap-tracker.service";

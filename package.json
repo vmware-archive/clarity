@@ -1,6 +1,6 @@
 {
     "name": "clarity-all",
-    "version": "0.10.6",
+    "version": "0.10.8-alpha.1",
     "private": true,
     "scripts": {
         "start": "webpack-dev-server --port=4200 --host 0.0.0.0",
@@ -17,7 +17,8 @@
         "postbuild:angular": "cpy dist/clarity-angular/bundles/* dist/clarity-angular; cd dist/clarity-angular; npm pack;",
         "build:icons": "webpack --config webpack.icons.config.js",
         "postbuild:icons": "node ./scripts/clarity-icons-svg.js",
-        "npm:publish": "npm publish dist/clarity-ui; npm publish dist/clarity-angular/clarity-angular-$npm_package_version.tgz; npm publish dist/clarity-icons",
+        "prepublish": "npm run build",
+        "publish": "npm publish dist/clarity-ui; npm publish dist/clarity-angular/clarity-angular-$npm_package_version.tgz; npm publish dist/clarity-icons",
         "cssTest": "./scripts/docker-cdc.js -t",
         "cssUpdate": "./scripts/docker-cdc.js -u",
         "replace": "replace",

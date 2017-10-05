@@ -36,7 +36,7 @@
 npm-debug.log
 testem.log
 /typings
-src/clarity-angular/package.json
+/src/clarity-angular/package.json
 
 # e2e
 /e2e/*.js

@@ -7,26 +7,24 @@ import {Component} from "@angular/core";
 import {VerticalNavCases} from "../vertical-nav-cases";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-vertical-nav-partial-nested-menus-demo",
     templateUrl: "./vertical-nav-partial-nested-menus.demo.html",
-    styleUrls: ["../vertical-nav.demo.css"]
+    styleUrls: ["../vertical-nav.demo.scss"]
 })
 export class VerticalNavPartiallyNestedMenusDemo {
-    case:
-        any;
+    case: any;
 
-        constructor(public verticalNavCases: VerticalNavCases) {
-            this.case = this.verticalNavCases.partiallyNestedMenu;
-        }
+    constructor(public verticalNavCases: VerticalNavCases) {
+        this.case = this.verticalNavCases.partiallyNestedMenu;
+    }
 
-        private _collapse: boolean = false;
+    private _collapse: boolean = false;
 
-        get collapse(): boolean {
-            return this._collapse;
-        }
+    get collapse(): boolean {
+        return this._collapse;
+    }
 
-        set collapse(value: boolean) {
-            this._collapse = value;
-        }
+    set collapse(value: boolean) {
+        this._collapse = value;
+    }
 }

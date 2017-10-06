@@ -29,5 +29,4 @@ import {IconsViewBoxTestDemo} from "./icons-view-box-test.demo";
         IconVariantsDemo
     ]
 })
-export default class IconographyDemoModule {
-}
+export default class IconographyDemoModule {}

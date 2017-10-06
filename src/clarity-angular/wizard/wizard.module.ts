@@ -17,5 +17,4 @@ import {WIZARD_DIRECTIVES} from "./index";
     declarations: [WIZARD_DIRECTIVES],
     exports: [WIZARD_DIRECTIVES]
 })
-export class ClrWizardModule {
-}
+export class ClrWizardModule {}

@@ -13,5 +13,4 @@ import {ROUTING} from "./input-fields.demo.routing";
 
 @NgModule(
     {imports: [CommonModule, ClarityModule, ROUTING], declarations: [InputFieldsDemo], exports: [InputFieldsDemo]})
-export default class InputFieldsDemoModule {
-}
+export default class InputFieldsDemoModule {}

@@ -26,5 +26,9 @@
 
     .main-container{
         height: 500px;
+
+        .content-area {
+            overflow-y: auto;
+        }
     }
 }

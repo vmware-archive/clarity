@@ -9,6 +9,7 @@
     $clr-datagrid-icon-size: rem(1);
     $clr-datagrid-action-arrow-size: $clr_baselineRem_0_25;
     $clr-datagrid-fixed-column-size: 2*$clr-table-cellpadding + $clr-table-lineheight;
+    $horizontalPadding: ($clr-datagrid-fixed-column-size - $clr_baselineRem_1_25) / 2;
 
     .datagrid-host {
         display: flex;
@@ -147,6 +148,10 @@
         .datagrid-head {
             background-color: $clr-thead-bgcolor;
             border-bottom: 2*$clr-table-borderwidth solid $clr-light-midtone-gray;
+
+            .datagrid-row-actions {
+                padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
+            }
         }
 
         .datagrid-column, .datagrid-cell {
@@ -366,9 +371,13 @@
             }
         }
 
-        .datagrid-row-actions clr-icon {
-            height: $clr-table-lineheight;
-            vertical-align: bottom;
+        .datagrid-row-actions {
+            padding: 0;
+
+            clr-icon {
+                height: $clr-table-lineheight;
+                vertical-align: bottom;
+            }
         }
 
         .datagrid-signpost-trigger {
@@ -377,7 +386,6 @@
         }
 
         .datagrid-expandable-caret {
-            $horizontalPadding: ($clr-datagrid-fixed-column-size - $clr_baselineRem_1_25) / 2;
             padding: ($clr_baselineRem_0_125 - 1) $horizontalPadding $clr_baselineRem_0_125;
 
             text-align: center;
@@ -518,7 +526,8 @@
                 color: $clr-dark-gray;
                 border: none;
                 background: none;
-                padding: 0;
+                padding: $clr_baselineRem_0_375 - $clr-table-borderwidth;
+                margin: ($clr_baselineRem_0_125 - 1) $horizontalPadding;
             }
 
             &.datagrid-selected .datagrid-action-toggle {

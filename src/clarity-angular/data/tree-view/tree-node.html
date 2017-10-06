@@ -1,21 +1,27 @@
-<button
-    type="button"
-    class="clr-treenode-caret"
-    (click)="toggleExpand()"
-    *ngIf="nodeExpand.expandable && !nodeExpand.loading">
-    <clr-icon
-        shape="caret"
-        [attr.dir]="caretDirection"></clr-icon>
-</button>
-<span class="clr-treenode-spinner spinner" *ngIf="nodeExpand.expandable && nodeExpand.loading">
-    Loading...
-</span>
-<clr-checkbox
-    *ngIf="selectable"
-    [(ngModel)]="selected"
-    [(clrIndeterminate)]="indeterminate"></clr-checkbox>
-<div class="clr-treenode-content">
-    <ng-content></ng-content>
+<div class="clr-tree-node-content-container">
+    <button
+        type="button"
+        class="clr-treenode-caret"
+        (click)="toggleExpand()"
+        *ngIf="nodeExpand.expandable && !nodeExpand.loading">
+        <clr-icon
+            class="clr-treenode-caret-icon"
+            shape="caret"
+            [attr.dir]="caretDirection"></clr-icon>
+    </button>
+    <div class="clr-treenode-spinner-container" *ngIf="nodeExpand.expandable && nodeExpand.loading">
+        <span class="clr-treenode-spinner spinner">
+            Loading...
+        </span>
+    </div>
+    <clr-checkbox
+        class="clr-treenode-checkbox"
+        *ngIf="selectable"
+        [(ngModel)]="selected"
+        [(clrIndeterminate)]="indeterminate"></clr-checkbox>
+    <div class="clr-treenode-content">
+        <ng-content></ng-content>
+    </div>
 </div>
 <!-- FIXME: remove this string concatenation when boolean states are supported -->
 <div

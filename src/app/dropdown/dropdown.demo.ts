@@ -22,5 +22,4 @@ import {Component} from "@angular/core";
         <router-outlet></router-outlet>
     `
 })
-export class DropdownDemo {
-}
+export class DropdownDemo {}

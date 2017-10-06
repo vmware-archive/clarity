@@ -8,6 +8,7 @@ import {Component} from "@angular/core";
 import {DatagridPagination} from "./datagrid-pagination";
 import {TestContext} from "./helpers.spec";
 import {Page} from "./providers/page";
+import {StateDebouncer} from "./providers/state-debouncer.provider";
 
 export default function(): void {
     describe("DatagridPagination component", function() {
@@ -16,7 +17,7 @@ export default function(): void {
             let component: DatagridPagination;
 
             beforeEach(function() {
-                pageService = new Page();
+                pageService = new Page(new StateDebouncer());
                 component = new DatagridPagination(pageService);
                 component.ngOnInit();  // For the subscription that will get destroyed.
             });
@@ -75,7 +76,7 @@ export default function(): void {
             let context: TestContext<DatagridPagination, FullTest>;
 
             beforeEach(function() {
-                context = this.create(DatagridPagination, FullTest, [Page]);
+                context = this.create(DatagridPagination, FullTest, [Page, StateDebouncer]);
             });
 
             it("receives an input for page size", function() {
@@ -111,7 +112,7 @@ export default function(): void {
             let context: TestContext<DatagridPagination, FullTest>;
 
             beforeEach(function() {
-                context = this.create(DatagridPagination, FullTest, [Page]);
+                context = this.create(DatagridPagination, FullTest, [Page, StateDebouncer]);
             });
 
             it("doesn't display anything if there is only one page", function() {

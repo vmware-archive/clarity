@@ -6,10 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-buttons-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./buttons.demo.css"],
+    styleUrls: ["./buttons.demo.scss"],
     template: `
         <h2>Buttons</h2>
         <ul>
@@ -23,11 +21,11 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./button-sizes']">Button Sizes</a></li>
             <li><a [routerLink]="['./toggles']">Toggles</a></li>
             <li><a [routerLink]="['./icons']">Icons in Buttons</a></li>
+            <li><a [routerLink]="['./icon-buttons']">Icon Buttons</a></li>
             <li><a [routerLink]="['./buttons-test']">Buttons Test</a></li>
         </ul>
         <router-outlet></router-outlet>
     `
 })
 
-export class ButtonsDemo {
-}
+export class ButtonsDemo {}

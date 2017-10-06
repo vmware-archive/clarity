@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-hot-fuss-demo",
     template: `
         <!--https://en.wikipedia.org/wiki/Hot_Fuss-->
@@ -21,5 +20,4 @@ import {Component} from "@angular/core";
         </p>
     `
 })
-export class HotFuss2Demo {
-}
+export class HotFuss2Demo {}

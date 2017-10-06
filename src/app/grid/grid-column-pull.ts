@@ -5,11 +5,6 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-grid-demo-column-pull",
-    templateUrl: "./grid-column-pull.html",
-    styleUrls: ["./grid.demo.scss"]
-})
-export class GridColumnPullDemo {
-}
+@Component(
+    {selector: "clr-grid-demo-column-pull", templateUrl: "./grid-column-pull.html", styleUrls: ["./grid.demo.scss"]})
+export class GridColumnPullDemo {}

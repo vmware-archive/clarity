@@ -7,14 +7,14 @@
 import {Component, EventEmitter, Input, OnDestroy, Output} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
-import {VerticalNavGroupService} from "./providers/vertical-nav-group.service";
+import {VerticalNavGroupRegistrationService} from "./providers/vertical-nav-group-registration.service";
 import {VerticalNavIconService} from "./providers/vertical-nav-icon.service";
 import {VerticalNavService} from "./providers/vertical-nav.service";
 
 @Component({
     selector: "clr-vertical-nav",
     templateUrl: "./vertical-nav.html",
-    providers: [VerticalNavService, VerticalNavIconService, VerticalNavGroupService],
+    providers: [VerticalNavService, VerticalNavIconService, VerticalNavGroupRegistrationService],
     host: {
         "class": "clr-vertical-nav",
         "[class.is-collapsed]": "collapsed",
@@ -24,40 +24,39 @@ import {VerticalNavService} from "./providers/vertical-nav.service";
 })
 export class VerticalNav implements OnDestroy {
     get collapsible(): boolean {
-        return this._verticalNavService.collapsible;
+        return this._navService.collapsible;
     }
 
     @Input("clrVerticalNavCollapsible")
     set collapsible(value: boolean) {
-        this._verticalNavService.collapsible = value;
+        this._navService.collapsible = value;
     }
 
     get collapsed(): boolean {
-        return this._verticalNavService.collapsed;
+        return this._navService.collapsed;
     }
 
     @Input("clrVerticalNavCollapsed")
     set collapsed(value: boolean) {
-        this._verticalNavService.collapsed = value;
+        this._navService.collapsed = value;
     }
 
     @Output("clrVerticalNavCollapsedChange")
     private _collapsedChanged: EventEmitter<boolean> = new EventEmitter<boolean>(true);
 
     get hasNavGroups(): boolean {
-        return this._verticalNavGroupService.navGroups.length > 0;
+        return this._navGroupRegistrationService.navGroupCount > 0;
     }
 
     get hasIcons(): boolean {
-        return this._verticalNavIconService.hasIcons;
+        return this._navIconService.hasIcons;
     }
 
     private _sub: Subscription;
 
-    constructor(private _verticalNavService: VerticalNavService,
-                private _verticalNavIconService: VerticalNavIconService,
-                private _verticalNavGroupService: VerticalNavGroupService) {
-        this._sub = this._verticalNavService.collapsedChanged.subscribe(value => {
+    constructor(private _navService: VerticalNavService, private _navIconService: VerticalNavIconService,
+                private _navGroupRegistrationService: VerticalNavGroupRegistrationService) {
+        this._sub = this._navService.collapsedChanged.subscribe(value => {
             this._collapsedChanged.emit(value);
         });
     }

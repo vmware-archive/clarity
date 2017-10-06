@@ -1201,9 +1201,38 @@ export const essentialShapes: any = {
 
             <path class="clr-i-outline clr-i-outline-path-1" d="M6,14.15A3.17,3.17,0,0,1,9.17,11H28.4l-4.28,4.54a1,1,0,1,0,1.46,1.37L32.09,10,25.58,3.09a1,1,0,1,0-1.46,1.37L28.4,9H9.17A5.17,5.17,0,0,0,4,14.15v6.1l2-2.12Z"/>
             <path class="clr-i-outline clr-i-outline-path-2" d="M30,21.85A3.17,3.17,0,0,1,26.83,25H7.6l4.28-4.54a1,1,0,1,0-1.46-1.37L3.91,26l6.51,6.91a1,1,0,1,0,1.46-1.37L7.6,27H26.83A5.17,5.17,0,0,0,32,21.85v-6.1l-2,2.12Z"/>
+        </svg>`,
+
+    "file-group": `
+        <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="has-solid" role="img">
+            <title>file-group</title>
+
+            <path class="clr-i-outline clr-i-outline-path-1" d="M31,34H13a1,1,0,0,1-1-1V11a1,1,0,0,1,1-1H31a1,1,0,0,1,1,1V33A1,1,0,0,1,31,34ZM14,32H30V12H14Z"/>
+            <rect class="clr-i-outline clr-i-outline-path-2" x="16" y="16" width="12" height="2"/>
+            <rect class="clr-i-outline clr-i-outline-path-3" x="16" y="20" width="12" height="2"/>
+            <rect class="clr-i-outline clr-i-outline-path-4" x="16" y="24" width="12" height="2"/>
+            <path class="clr-i-outline clr-i-outline-path-5" d="M6,24V4H24V3a1,1,0,0,0-1-1H5A1,1,0,0,0,4,3V25a1,1,0,0,0,1,1H6Z"/>
+            <path class="clr-i-outline clr-i-outline-path-6" d="M10,28V8H28V7a1,1,0,0,0-1-1H9A1,1,0,0,0,8,7V29a1,1,0,0,0,1,1h1Z"/>
+
+            <path class="clr-i-solid clr-i-solid-path-1" d="M31,10H13a1,1,0,0,0-1,1V33a1,1,0,0,0,1,1H31a1,1,0,0,0,1-1V11A1,1,0,0,0,31,10ZM28,26H16V24H28Zm0-4H16V20H28Zm0-4H16V16H28Z"/>
+            <path class="clr-i-solid clr-i-solid-path-2" d="M6,24V4H24V3a1,1,0,0,0-1-1H5A1,1,0,0,0,4,3V25a1,1,0,0,0,1,1H6Z"/>
+            <path class="clr-i-solid clr-i-solid-path-3" d="M10,28V8H28V7a1,1,0,0,0-1-1H9A1,1,0,0,0,8,7V29a1,1,0,0,0,1,1h1Z"/>
+        </svg>`,
+
+    "paperclip": `
+        <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+            <title>paperclip</title>
+
+            <path class="clr-i-outline clr-i-outline-path-1" d="M8.42,32.6A6.3,6.3,0,0,1,4,30.79l-.13-.13A6.2,6.2,0,0,1,2,26.22,6.77,6.77,0,0,1,4,21.4L19.5,6.07a8.67,8.67,0,0,1,12.15-.35A8,8,0,0,1,34,11.44a9,9,0,0,1-2.7,6.36L17.37,31.6A1,1,0,1,1,16,30.18L29.89,16.38A7,7,0,0,0,32,11.44a6,6,0,0,0-1.76-4.3,6.67,6.67,0,0,0-9.34.35L5.45,22.82A4.78,4.78,0,0,0,4,26.22a4.21,4.21,0,0,0,1.24,3l.13.13a4.64,4.64,0,0,0,6.5-.21L25.22,15.94A2.7,2.7,0,0,0,26,14a2.35,2.35,0,0,0-.69-1.68,2.61,2.61,0,0,0-3.66.13l-9.2,9.12a1,1,0,1,1-1.41-1.42L20.28,11a4.62,4.62,0,0,1,6.48-.13A4.33,4.33,0,0,1,28,14a4.68,4.68,0,0,1-1.41,3.34L13.28,30.58A6.91,6.91,0,0,1,8.42,32.6Z"/>
+        </svg>`,
+
+    "shrink": `
+        <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+            <title>shrink</title>
+
+            <path class="clr-i-outline clr-i-outline-path-1" d="M32,15H22.41l9.25-9.25a1,1,0,0,0-1.41-1.41L21,13.59V4a1,1,0,0,0-2,0V17H32a1,1,0,0,0,0-2Z"/>
+            <path class="clr-i-outline clr-i-outline-path-2" d="M4,19a1,1,0,0,0,0,2h9.59L4.33,30.25a1,1,0,1,0,1.41,1.41L15,22.41V32a1,1,0,0,0,2,0V19Z"/>
         </svg>`
-
-
 };
 
 Object.defineProperty(essentialShapes, "edit", descriptorConfig(essentialShapes.pencil));
@@ -1222,6 +1251,10 @@ Object.defineProperty(essentialShapes, "lightning", descriptorConfig(essentialSh
 Object.defineProperty(essentialShapes, "flow-chart", descriptorConfig(essentialShapes.organization));
 Object.defineProperty(essentialShapes, "alert", descriptorConfig(essentialShapes["bubble-exclamation"]));
 Object.defineProperty(essentialShapes, "pinned", descriptorConfig(essentialShapes.pinboard));
+Object.defineProperty(essentialShapes, "attachment", descriptorConfig(essentialShapes.paperclip));
+Object.defineProperty(essentialShapes, "attachment", descriptorConfig(essentialShapes.paperclip));
+Object.defineProperty(essentialShapes, "resize-down", descriptorConfig(essentialShapes.shrink));
+Object.defineProperty(essentialShapes, "resize-up", descriptorConfig(essentialShapes.resize));
 
 if (typeof window !== "undefined" && window.hasOwnProperty("ClarityIcons")) {
     window.ClarityIcons.add(essentialShapes);

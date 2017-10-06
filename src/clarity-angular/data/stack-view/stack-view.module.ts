@@ -12,5 +12,4 @@ import {STACK_VIEW_DIRECTIVES} from "./index";
 
 @NgModule(
     {imports: [CommonModule, FormsModule], declarations: [STACK_VIEW_DIRECTIVES], exports: [STACK_VIEW_DIRECTIVES]})
-export class ClrStackViewModule {
-}
+export class ClrStackViewModule {}

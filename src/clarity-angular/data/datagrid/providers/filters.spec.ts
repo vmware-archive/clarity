@@ -8,11 +8,14 @@ import {Subject} from "rxjs/Subject";
 import {Filter} from "../interfaces/filter";
 
 import {FiltersProvider} from "./filters";
+import {Page} from "./page";
+import {StateDebouncer} from "./state-debouncer.provider";
 
 export default function(): void {
     describe("FiltersProvider provider", function() {
         beforeEach(function() {
-            this.filtersInstance = new FiltersProvider();
+            const stateDebouncer = new StateDebouncer();
+            this.filtersInstance = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
             this.evenFilter = new EvenFilter();
             this.positiveFilter = new PositiveFilter();
             this.filtersInstance.add(this.evenFilter);

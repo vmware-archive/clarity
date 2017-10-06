@@ -34,5 +34,4 @@ import {ROUTING} from "./grid.demo.routing";
         GridItemsIndividualVerticalAlignmentDemo, GridItemsVerticalAlignmentDemo
     ]
 })
-export default class GridDemoModule {
-}
+export default class GridDemoModule {}

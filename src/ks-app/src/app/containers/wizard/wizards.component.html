@@ -1,0 +1,238 @@
+<h1>Wizards</h1>
+<div class="row">
+    <div class="col-xs-12 col-lg-6">
+        <h4>Form validation</h4>
+        <button class="btn btn-primary" (click)="formOpen = !formOpen">Open Wizard</button>
+        <clr-wizard #formWizard
+                    [(clrWizardOpen)]="formOpen"
+                    [clrWizardSize]="'lg'">
+            <clr-wizard-title>Wizard with form validation</clr-wizard-title>
+
+            <clr-wizard-button [type]="'cancel'">Close</clr-wizard-button>
+            <clr-wizard-button [type]="'previous'">Previous</clr-wizard-button>
+            <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+            <clr-wizard-button [type]="'finish'">Done</clr-wizard-button>
+
+            <clr-wizard-page [clrWizardPageNextDisabled]="name.pristine || !formPageOne.valid">
+                <ng-template clrPageTitle>Form with validation</ng-template> <!-- mandatory -->
+                <form #formPageOne="ngForm">
+                    <section class="form-block">
+                        <label>Enter a name and favorite food</label>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <label for="nameInput" aria-haspopup="true" role="tooltip"
+                                   [class.invalid]="name.touched && !name.valid"
+                                   class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
+                                <input type="text" id="nameInput" required [(ngModel)]="formModel.name" name="name" #name="ngModel">
+                                <span class="tooltip-content">This field cannot be empty!</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="favInput">Favorite food</label>
+                            <input type="text" id="favInput" [(ngModel)]="formModel.favorite" name="favorite">
+                        </div>
+                    </section>
+                </form>
+            </clr-wizard-page>
+
+            <clr-wizard-page [clrWizardPageNextDisabled]="number.pristine || !formPageTwo.valid">
+                <ng-template clrPageTitle>We need a number</ng-template> <!-- mandatory -->
+                <ng-template clrPageNavTitle>
+                    Enter a number
+                </ng-template> <!-- optional -->
+                <form #formPageTwo="ngForm">
+                    <section class="form-block">
+                        <label>Please your lucky number!</label>
+                        <div class="form-group">
+                            <label>Your number</label>
+                            <label for="numberInput" aria-haspopup="true" role="tooltip"
+                                   [class.invalid]="number.touched && !number.valid"
+                                   class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
+                                <input type="number" id="numberInput" required [(ngModel)]="formModel.number"
+                                       name="number" #number="ngModel">
+                                <span class="tooltip-content">
+                            This field cannot be empty!
+                        </span>
+                            </label>
+                        </div>
+                    </section>
+                </form>
+            </clr-wizard-page>
+
+            <clr-wizard-page [clrWizardPageNextDisabled]="!formPageOne.valid || !formPageTwo.valid">
+                <ng-template clrPageTitle>Title for page 3</ng-template> <!-- mandatory -->
+                <ng-template clrPageNavTitle>
+            <span *ngIf="formPageOne.valid && formPageTwo.valid">
+                Ready to go!
+            </span>
+                    <span *ngIf="!formPageOne.valid || !formPageTwo.valid">
+                Not ready yet
+            </span>
+                </ng-template> <!-- optional -->
+
+                <div *ngIf="formPageOne.valid && formPageTwo.valid">
+                    <p>Congratulations! You are done with this wizard.</p>
+                    <form class="compact">
+                        <label>Your information</label>
+                        <section class="form-block">
+                            <div class="form-group">
+                                <label>Your name:</label>
+                                <span>{{ formModel.name }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Your favorite food:</label>
+                                <span>{{ formModel.favorite }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Your lucky number:</label>
+                                <span>{{ formModel.number }}</span>
+                            </div>
+                        </section>
+                    </form>
+                </div>
+
+                <div *ngIf="!formPageOne.valid || !formPageTwo.valid">
+                    <p>Not quite there yet.</p>
+                </div>
+
+            </clr-wizard-page>
+        </clr-wizard>
+    </div>
+    <div class="col-xs-12 col-lg-6">
+        <h4>Ghost pages</h4>
+        <button class="btn btn-primary" (click)="ghostOpen = !ghostOpen">Open Wizard</button>
+        <clr-wizard #ghostWizard
+                    [(clrWizardOpen)]="ghostOpen" [clrWizardShowGhostPages]="true"
+                    [clrWizardSize]="'lg'">
+            <clr-wizard-title>Ghost Pages</clr-wizard-title>
+
+            <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+            <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+            <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+            <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+            <clr-wizard-page>
+                <ng-template clrPageTitle>Title for page 1</ng-template> <!-- mandatory -->
+                <ng-template clrPageNavTitle>Step 1</ng-template> <!-- optional -->
+
+                <form #pageTypesForm="ngForm" class="content-for-page-1">
+                    <section class="form-block">
+                        <label>Which pages should I show?</label>
+                        <div class="form-group">
+                            <label for="typesOfPages">Page categories</label>
+                            <div class="select">
+                                <select id="typesOfPages11"
+                                        name="typesOfPages"
+                                        [(ngModel)]="ghostModel.typesOfPages">
+                                    <option value="Default">Select pages you want to show...</option>
+                                    <option *ngFor="let type of typesOfPages" [value]="type">{{type}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </clr-wizard-page>
+
+            <clr-wizard-page *ngIf="showEvenPages">
+                <ng-template clrPageTitle>Title for page 2</ng-template> <!-- mandatory -->
+                <ng-template clrPageNavTitle>Step 2</ng-template> <!-- optional -->
+                <p class="content-for-page-2">Content for step 2</p>
+            </clr-wizard-page>
+
+            <clr-wizard-page *ngIf="showPageThree">
+                <ng-template clrPageTitle>Title for page 3</ng-template> <!-- mandatory -->
+                <ng-template clrPageNavTitle>Step 3</ng-template> <!-- optional -->
+                <form #pageTypesForm="ngForm" class="content-for-page-3">
+                    <section class="form-block">
+                        <label>Which pages should I show?</label>
+                        <div class="form-group">
+                            <label for="typesOfPages">Page categories</label>
+                            <div class="select">
+                                <select id="typesOfPages"
+                                        name="typesOfPages"
+                                        [(ngModel)]="ghostModel.typesOfPages">
+                                    <option value="Default">Select pages you want to show...</option>
+                                    <option *ngFor="let type of typesOfPages" [value]="type">{{type}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </clr-wizard-page>
+
+            <clr-wizard-page *ngIf="showEvenPages">
+                <ng-template clrPageTitle>Title for page 4</ng-template> <!-- mandatory -->
+                <ng-template clrPageNavTitle>Step 4</ng-template> <!-- optional -->
+                <p class="content-for-page-4">Content for step 4</p>
+            </clr-wizard-page>
+
+            <clr-wizard-page *ngIf="showPageFive">
+                <ng-template clrPageTitle>Title for page 5</ng-template> <!-- mandatory -->
+                <ng-template clrPageNavTitle>Step 5</ng-template> <!-- optional -->
+                <p class="content-for-page-5">Content for step 5</p>
+            </clr-wizard-page>
+        </clr-wizard>
+    </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h4>Inline</h4>
+    <button class="btn btn-primary" (click)="inlineOpen = !inlineOpen">Open Wizard</button>
+    <clr-wizard #inlineWizard [(clrWizardOpen)]="inlineOpen"
+                [clrWizardSize]="'lg'"
+                [clrWizardPreventModalAnimation]="true"
+                class="clr-wizard--inline clr-wizard--no-shadow clr-wizard--no-title"
+                style="height: 500px">
+
+      <clr-wizard-title>Inline Wizard</clr-wizard-title>
+
+      <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+      <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+      <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+      <clr-wizard-button [type]="'finish'">Submit</clr-wizard-button>
+
+      <clr-wizard-page>
+        <ng-template clrPageTitle>Page 1</ng-template> <!-- optional -->
+
+        <p>Content for page 1</p>
+        <p class="content-for-page-1">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia,
+          officiis rem id explicabo incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur
+          quas! Quaerat explicabo expedita placeat vero.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia,
+          officiis rem id explicabo incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur
+          quas! Quaerat explicabo expedita placeat vero.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia,
+          officiis rem id explicabo incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur
+          quas! Quaerat explicabo expedita placeat vero.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia,
+          officiis rem id explicabo incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur
+          quas! Quaerat explicabo expedita placeat vero.
+        </p>
+      </clr-wizard-page>
+
+      <clr-wizard-page>
+        <ng-template clrPageTitle>Page 2</ng-template> <!-- mandatory -->
+
+        <p>Content for page 2</p>
+        <p class="content-for-page-2">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia,
+          officiis rem id explicabo incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur
+          quas! Quaerat explicabo expedita placeat vero.
+        </p>
+      </clr-wizard-page>
+
+      <clr-wizard-page>
+        <ng-template clrPageTitle>Page 3</ng-template> <!-- mandatory -->
+
+        <p class="content-for-page-3">Content for page 3</p>
+      </clr-wizard-page>
+    </clr-wizard>
+  </div>
+</div>

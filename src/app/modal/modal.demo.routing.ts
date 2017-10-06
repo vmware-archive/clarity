@@ -12,6 +12,7 @@ import {ModalAngularSizeDemo} from "./modal-angular-size";
 import {ModalAngularStaticBackdropDemo} from "./modal-angular-static-backdrop";
 import {ModalAnimationDemo} from "./modal-animation";
 import {ModalBackdropDemo} from "./modal-backdrop";
+import {ModalFormDemo} from "./modal-form.demo";
 import {ModalMaxHeightDemo} from "./modal-max-height";
 import {ModalSizesDemo} from "./modal-sizes";
 import {ModalStaticDemo} from "./modal-static";
@@ -31,7 +32,7 @@ const ROUTES: Routes = [{
         {path: "not-closable", component: ModalAngularNotClosableDemo},
         {path: "animation", component: ModalAnimationDemo}, {path: "backdrop", component: ModalBackdropDemo},
         {path: "sizes", component: ModalSizesDemo}, {path: "max-height", component: ModalMaxHeightDemo},
-        {path: "focus-trap", component: ModalTrapDemo}
+        {path: "focus-trap", component: ModalTrapDemo}, {path: "modal-form", component: ModalFormDemo}
     ]
 }];
 

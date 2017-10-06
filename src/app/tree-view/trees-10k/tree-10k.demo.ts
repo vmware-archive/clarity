@@ -47,13 +47,8 @@ const EXAMPLE_2 = `
 </clr-tree-node>
 `;
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-tree-node-10k-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["../tree-view.demo.css"],
-    templateUrl: "./tree-10k.demo.html"
-})
+@Component(
+    {selector: "clr-tree-node-10k-demo", styleUrls: ["../tree-view.demo.scss"], templateUrl: "./tree-10k.demo.html"})
 export class TreeNode10kDemo {
     nodes: string[] = Array(10).fill("Tree Node");
 

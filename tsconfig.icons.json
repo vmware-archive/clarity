@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/clarity-icons",
+        "target": "es5",
+        "declaration": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": [ "es2015", "dom" ],
+        "removeComments": false,
+        "noImplicitAny": true,
+        "types": []
+    },
+    "include": [
+        "src/typings.d.ts",
+        "src/clarity-icons/**/*.ts"
+    ],
+    "exclude": [
+        "**/*.spec.ts"
+    ]
+}

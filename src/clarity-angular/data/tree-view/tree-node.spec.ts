@@ -710,9 +710,10 @@ export class RecursiveSelectableTreeTest {
         name: "A1",
         selected: false,
         expanded: true,
-        children: [
-            {name: "B1", selected: true, children: [{name: "C1"}, {name: "C2"}]},
-            {name: "B2", selected: true, expanded: true, children: [{name: "D1"}, {name: "D2", selected: false}]}
-        ]
+        children:
+            [
+                {name: "B1", selected: true, children: [{name: "C1"}, {name: "C2"}]},
+                {name: "B2", selected: true, expanded: true, children: [{name: "D1"}, {name: "D2", selected: false}]}
+            ]
     };
 }

@@ -11,12 +11,14 @@ import {TestContext} from "../../helpers.spec";
 import {StringFilter} from "../../interfaces/string-filter";
 import {CustomFilter} from "../../providers/custom-filter";
 import {FiltersProvider} from "../../providers/filters";
+import {Page} from "../../providers/page";
+import {StateDebouncer} from "../../providers/state-debouncer.provider";
 import {DomAdapter} from "../../render/dom-adapter";
 
 import {DatagridStringFilter} from "./datagrid-string-filter";
 import {DatagridStringFilterImpl} from "./datagrid-string-filter-impl";
 
-const PROVIDERS = [FiltersProvider, DomAdapter];
+const PROVIDERS = [FiltersProvider, DomAdapter, Page, StateDebouncer];
 
 export default function(): void {
     describe("DatagridStringFilter component", function() {

@@ -19,7 +19,7 @@ export default function(): void {
 
         beforeEach(function() {
             context = this.create(DatagridCellRenderer, SimpleTest, [MOCK_ORGANIZER_PROVIDER, HideableColumnService]);
-            organizer = context.getClarityProvider(DatagridRenderOrganizer);
+            organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
         });
 
         it("allows to set the width of the cell in pixels", function() {
@@ -48,5 +48,4 @@ export default function(): void {
 }
 
 @Component({template: `<clr-dg-cell>Hello world</clr-dg-cell>`})
-class SimpleTest {
-}
+class SimpleTest {}

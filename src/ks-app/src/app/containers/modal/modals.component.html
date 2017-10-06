@@ -1,0 +1,130 @@
+<h1>Modals</h1>
+
+<h3>Default</h3>
+<button class="btn btn-primary" (click)="opened1 = true">Show modal</button>
+<clr-modal [(clrModalOpen)]="opened1">
+    <h3 class="modal-title">Modal Title</h3>
+    <div class="modal-body">
+        <p>Modal Body</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="opened1 = false">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="opened1 = false">Ok</button>
+    </div>
+</clr-modal>
+
+<h3>With Overflow</h3>
+<button class="btn btn-primary" (click)="opened2 = true">Show modal</button>
+<clr-modal [(clrModalOpen)]="opened2">
+    <h3 class="modal-title">Modal Title</h3>
+    <div class="modal-body">
+        <p>Modal Body</p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Commodi consequuntur cumque eligendi non officiis quae reiciendis?
+            Asperiores, assumenda commodi eaque et, facere fuga
+            nulla obcaecati officia, sapiente sed soluta velit?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Commodi consequuntur cumque eligendi non officiis quae reiciendis?
+            Asperiores, assumenda commodi eaque et, facere fuga
+            nulla obcaecati officia, sapiente sed soluta velit?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Commodi consequuntur cumque eligendi non officiis quae reiciendis?
+            Asperiores, assumenda commodi eaque et, facere fuga
+            nulla obcaecati officia, sapiente sed soluta velit?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Commodi consequuntur cumque eligendi non officiis quae reiciendis?
+            Asperiores, assumenda commodi eaque et, facere fuga
+            nulla obcaecati officia, sapiente sed soluta velit?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Commodi consequuntur cumque eligendi non officiis quae reiciendis?
+            Asperiores, assumenda commodi eaque et, facere fuga
+            nulla obcaecati officia, sapiente sed soluta velit?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Commodi consequuntur cumque eligendi non officiis quae reiciendis?
+            Asperiores, assumenda commodi eaque et, facere fuga
+            nulla obcaecati officia, sapiente sed soluta velit?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Commodi consequuntur cumque eligendi non officiis quae reiciendis?
+            Asperiores, assumenda commodi eaque et, facere fuga
+            nulla obcaecati officia, sapiente sed soluta velit?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Commodi consequuntur cumque eligendi non officiis quae reiciendis?
+            Asperiores, assumenda commodi eaque et, facere fuga
+            nulla obcaecati officia, sapiente sed soluta velit?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Commodi consequuntur cumque eligendi non officiis quae reiciendis?
+            Asperiores, assumenda commodi eaque et, facere fuga
+            nulla obcaecati officia, sapiente sed soluta velit?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Commodi consequuntur cumque eligendi non officiis quae reiciendis?
+            Asperiores, assumenda commodi eaque et, facere fuga
+            nulla obcaecati officia, sapiente sed soluta velit?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Commodi consequuntur cumque eligendi non officiis quae reiciendis?
+            Asperiores, assumenda commodi eaque et, facere fuga
+            nulla obcaecati officia, sapiente sed soluta velit?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Commodi consequuntur cumque eligendi non officiis quae reiciendis?
+            Asperiores, assumenda commodi eaque et, facere fuga
+            nulla obcaecati officia, sapiente sed soluta velit?
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="opened2 = false">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="opened2 = false">Ok</button>
+    </div>
+</clr-modal>
+
+<h3>Sizes</h3>
+<button class="btn btn-primary" (click)="small = true">Small modal</button>
+<button class="btn btn-primary" (click)="large = true">Large modal</button>
+<button class="btn btn-primary" (click)="extraLarge = true">Extra large modal</button>
+
+<clr-modal [(clrModalOpen)]="small" [clrModalSize]="'sm'">
+    <h3 class="modal-title">Small modal</h3>
+    <div class="modal-body">I am a small modal.</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="small = false">Ok</button>
+    </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="large" [clrModalSize]="'lg'">
+    <h3 class="modal-title">Large modal</h3>
+    <div class="modal-body">I am a large modal.</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="large = false">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="large = false">Ok</button>
+    </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="extraLarge" [clrModalSize]="'xl'">
+    <h3 class="modal-title">Extra large modal</h3>
+    <div class="modal-body">I am an extra large modal.</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="extraLarge = false">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="extraLarge = false">Ok</button>
+    </div>
+</clr-modal>

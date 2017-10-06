@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-tree-node-routing-abbey-road-demo",
     template: `
         <!--Credit https://en.wikipedia.org/wiki/Abbey_Road-->
@@ -23,5 +22,4 @@ import {Component} from "@angular/core";
         </p>
     `
 })
-export class TreeNodeRoutingAbbeyRoadDemo {
-}
+export class TreeNodeRoutingAbbeyRoadDemo {}

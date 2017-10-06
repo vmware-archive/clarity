@@ -95,9 +95,7 @@ const EXAMPLE_TS = `
 `;
 
 @Component({
-    moduleId: module.id,
     selector: "clr-tree-view-dynamic-1-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
     styleUrls: ["../tree-view.demo.scss"],
     templateUrl: "./tree-view-dynamic-test.html"
 })
@@ -117,9 +115,9 @@ export class TreeViewDynamicTestDemo {
             "versions": [{"number": "2", "languages": [{"name": "GO"}]}]
         },
         {
-          "name": "Project C",
-          "badge": "C",
-          "versions": [{"number": "3", "languages": [{"name": "JS"}, {"name": "JAVA"}]}]
+            "name": "Project C",
+            "badge": "C",
+            "versions": [{"number": "3", "languages": [{"name": "JS"}, {"name": "JAVA"}]}]
         }
     ];
 }

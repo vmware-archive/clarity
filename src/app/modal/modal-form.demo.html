@@ -1,0 +1,26 @@
+<p>
+    <button class="btn btn-primary" (click)="basic = true;">Show modal</button>
+    <span>Model Info: {{diagnostic}}</span>
+</p>
+<clr-modal [(clrModalOpen)]="basic">
+    <h3 class="modal-title">I have a nice title</h3>
+    <div class="modal-body">
+        <p>But not much to say...</p>
+        <form #form="ngForm" class="form" (ngSubmit)="onSubmit(model)">
+            <section class="form-block">
+            <div class="form-group">
+                    <label for="contactInfo">Contact Info</label>
+                    <input type="text" id="contactInfo"
+                           [(ngModel)]="model.contactInfo"
+                           name="contactInfo">
+                    <label for="contactInfo">Model Info: {{diagnostic}}</label>
+                </div>
+                <button type="submit">Submit</button>
+            </section>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="basic = false">Ok</button>
+    </div>
+</clr-modal>

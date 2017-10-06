@@ -10,7 +10,6 @@ import {IF_ACTIVE_ID_PROVIDER, IfActiveService} from "../../utils/conditional/if
 
 import {AriaService} from "./aria-service";
 import {TabContent} from "./tab-content";
-import {ClrTabsModule} from "./tabs.module";
 
 @Component({
     template: `
@@ -27,8 +26,7 @@ describe("TabContent", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [ClrTabsModule],
-            declarations: [TestComponent],
+            declarations: [TestComponent, TabContent],
             providers: [AriaService, IfActiveService, IF_ACTIVE_ID_PROVIDER]
         });
         fixture = TestBed.createComponent(TestComponent);

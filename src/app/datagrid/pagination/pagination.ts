@@ -18,7 +18,6 @@ const EXAMPLE = `
 `;
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-pagination-demo",
     providers: [Inventory],
     templateUrl: "pagination.html",

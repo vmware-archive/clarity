@@ -31,5 +31,4 @@ import {ROUTING} from "./tables.demo.routing";
         TablesCompactNoborderDemo, TablesVerticalDemo, TablesVerticalNoborderCompactDemo, TablesWidthDemo
     ]
 })
-export default class TablesDemoModule {
-}
+export default class TablesDemoModule {}

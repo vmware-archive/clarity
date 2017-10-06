@@ -6,10 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-grid-demo-column-offsetting",
     templateUrl: "./grid-column-offsetting.html",
     styleUrls: ["./grid.demo.scss"]
 })
-export class GridColumnOffsettingDemo {
-}
+export class GridColumnOffsettingDemo {}

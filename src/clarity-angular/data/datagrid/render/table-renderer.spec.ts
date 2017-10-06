@@ -18,7 +18,7 @@ export default function(): void {
 
         beforeEach(function() {
             context = this.create(DatagridTableRenderer, SimpleTest, [MOCK_ORGANIZER_PROVIDER]);
-            organizer = context.getClarityProvider(DatagridRenderOrganizer);
+            organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
         });
 
         it("toggles in and out of table mode when notified", function() {
@@ -32,5 +32,4 @@ export default function(): void {
 }
 
 @Component({template: `<div clrDgTableWrapper>Hello World</div>`})
-class SimpleTest {
-}
+class SimpleTest {}

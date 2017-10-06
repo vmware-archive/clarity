@@ -28,8 +28,7 @@ import {ClrNavigationModule} from "./navigation.module";
         </clr-header>
    `
 })
-class TestComponent {
-}
+class TestComponent {}
 
 describe("Header", () => {
     let fixture: ComponentFixture<any>;

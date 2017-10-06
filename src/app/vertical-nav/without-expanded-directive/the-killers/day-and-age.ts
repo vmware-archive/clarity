@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-day-and-age-1-demo",
     template: `
         <!--Credit https://en.wikipedia.org/wiki/Day_%26_Age-->
@@ -20,5 +19,4 @@ import {Component} from "@angular/core";
         </p>
     `
 })
-export class DayAndAge1Demo {
-}
+export class DayAndAge1Demo {}

@@ -6,11 +6,9 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-typography-font-weight",
-    styleUrls: ["./typography.demo.css"],
+    styleUrls: ["./typography.demo.scss"],
     templateUrl: "./typography-font-weight.html"
 })
 
-export class TypographyFontWeightDemo {
-}
+export class TypographyFontWeightDemo {}

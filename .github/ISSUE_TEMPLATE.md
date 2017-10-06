@@ -19,14 +19,14 @@ PLEASE FILL OUT THE FOLLOWING. WE MAY CLOSE INCOMPLETE ISSUES.
 <!-- Include a working plunker link reproducing the behavior. -->
 <!-- Clarity Plunker Templates -->
 * Include a link to the reproduction scenario you created by forking one of the Clarity Plunker Templates:
-<!-- Clarity Version: [Latest - 0.9.x](https://plnkr.co/uNwwZe) -->
-<!-- Clarity Version: [Legacy - 0.8.15](https://plnkr.co/8TwwdL) -->
+<!-- Clarity Version: [Latest](https://embed.plnkr.co/AuJuo5/) -->
+<!-- Clarity Version: [0.9.20](https://embed.plnkr.co/b6Deth/) -->
 
 ### Environment details
 
-* **Angular version:** 2.0.X
+* **Angular version:** 4.x.x
 
-* **Clarity version:** 
+* **Clarity version:**
 
 * **OS and version:** 
 

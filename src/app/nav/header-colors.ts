@@ -5,11 +5,6 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-header-demo-colors",
-    templateUrl: "./header-colors.demo.html",
-    styleUrls: ["./headers.demo.css"]
-})
-export class HeaderColorsDemo {
-}
+@Component(
+    {selector: "clr-header-demo-colors", templateUrl: "./header-colors.demo.html", styleUrls: ["./headers.demo.scss"]})
+export class HeaderColorsDemo {}

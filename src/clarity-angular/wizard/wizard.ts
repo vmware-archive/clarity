@@ -424,6 +424,11 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
             navService.hideWizardGhostPages = false;
             this.deactivateGhostPages();
         }
+
+        // Only trigger buttons ready if default is open (inlined)
+        if (this._open) {
+            this.buttonService.buttonsReady = true;
+        }
     }
 
     /**
@@ -514,6 +519,9 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
         if (!this.currentPage) {
             this.navService.setFirstPageCurrent();
         }
+
+        // Only render buttons when wizard is opened, to avoid chocolate errors
+        this.buttonService.buttonsReady = true;
 
         this.setGhostPages();
         this._openChanged.emit(true);

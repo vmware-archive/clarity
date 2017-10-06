@@ -17,5 +17,4 @@ import {VERTICAL_NAV_DIRECTIVES} from "./index";
     declarations: [VERTICAL_NAV_DIRECTIVES],
     exports: [VERTICAL_NAV_DIRECTIVES, ClrIfExpandModule, ClrIconModule]
 })
-export class ClrVerticalNavModule {
-}
+export class ClrVerticalNavModule {}

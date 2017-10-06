@@ -1,0 +1,111 @@
+<h1>Alerts</h1>
+<h5>Alerts are banners that communicate a message with a severity attached to it. They grab the user’s attention to
+    provide critical information needed in context.</h5>
+<h3>Standard Alerts</h3>
+<p>Standard alerts are used in the context of an application either in the content area itself or within components.</p>
+<p>There are four different sub-types of standard alerts success, info, warning, and error</p>
+<div class="row">
+  <div class="col-xs-6">
+    <h4>Standard Alerts</h4>
+    <clr-alert>
+      <div class="alert-item">
+            <span class="alert-text">
+                This is a default info alert.
+            </span>
+      </div>
+    </clr-alert>
+    <clr-alert [clrAlertType]="'alert-success'">
+      <div class="alert-item">
+            <span class="alert-text">
+                This alert indicates success.
+            </span>
+      </div>
+    </clr-alert>
+    <clr-alert [clrAlertType]="'alert-warning'">
+      <div class="alert-item">
+            <span class="alert-text">
+                This alert indicates a warning.
+            </span>
+      </div>
+    </clr-alert>
+    <clr-alert [clrAlertType]="'alert-danger'">
+      <div class="alert-item">
+            <span class="alert-text">
+                This alert indicates danger.
+            </span>
+      </div>
+    </clr-alert>
+  </div>
+  <div class="col-xs-6">
+    <h4>Small Alerts</h4>
+    <clr-alert [clrAlertSizeSmall]="true">
+      <div class="alert-item">
+            <span class="alert-text">
+                This is a small alert.
+            </span>
+      </div>
+    </clr-alert>
+    <clr-alert [clrAlertSizeSmall]="true" [clrAlertType]="'alert-success'">
+      <div class="alert-item">
+            <span class="alert-text">
+                This is a small alert.
+            </span>
+      </div>
+    </clr-alert>
+    <clr-alert [clrAlertSizeSmall]="true" [clrAlertType]="'alert-warning'">
+      <div class="alert-item">
+            <span class="alert-text">
+                This is a small alert.
+            </span>
+      </div>
+    </clr-alert>
+    <clr-alert [clrAlertSizeSmall]="true" [clrAlertType]="'alert-danger'">
+      <div class="alert-item">
+            <span class="alert-text">
+                This is a small alert.
+            </span>
+      </div>
+    </clr-alert>
+  </div>
+</div>
+<h3>App-level Alerts</h3>
+<p>App-level alerts are used in the global context of an application. They are placed at the very top of all content and navigation.</p>
+<p>There are three different sub-types of app-level alerts info, warning, and error.</p>
+<div class="row">
+  <div class="col-xs-12" style="margin-bottom: 24px">
+    <clr-alert [clrAlertAppLevel]="true">
+      <div class="alert-item">
+            <span class="alert-text">
+                This is an app level alert.
+            </span>
+        <div class="alert-actions">
+          <button class="btn alert-action">Fix</button>
+        </div>
+      </div>
+    </clr-alert>
+  </div>
+  <div class="col-xs-12" style="margin-bottom: 24px">
+    <clr-alert [clrAlertType]="'alert-warning'" [clrAlertAppLevel]="true">
+      <div class="alert-item">
+            <span class="alert-text">
+                This is an app level alert.
+            </span>
+        <div class="alert-actions">
+          <button class="btn alert-action">Fix</button>
+        </div>
+      </div>
+    </clr-alert>
+  </div>
+  <div class="col-xs-12">
+    <clr-alert [clrAlertType]="'alert-danger'" [clrAlertAppLevel]="true">
+      <div class="alert-item">
+            <span class="alert-text">
+                This is an app level alert.
+            </span>
+        <div class="alert-actions">
+          <button class="btn alert-action">Fix</button>
+        </div>
+      </div>
+    </clr-alert>
+  </div>
+</div>

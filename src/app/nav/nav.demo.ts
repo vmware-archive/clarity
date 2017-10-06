@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-nav-demo",
     styleUrls: [],
     template: `
@@ -22,5 +21,4 @@ import {Component} from "@angular/core";
         <router-outlet></router-outlet>
     `
 })
-export class NavDemo {
-}
+export class NavDemo {}

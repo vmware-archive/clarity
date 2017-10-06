@@ -24,5 +24,4 @@ import {NAVIGATION_DIRECTIVES} from "./index";
     }],
     exports: [NAVIGATION_DIRECTIVES]
 })
-export class ClrNavigationModule {
-}
+export class ClrNavigationModule {}

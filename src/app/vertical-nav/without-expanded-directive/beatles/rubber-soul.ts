@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-rubber-soul-1-demo",
     template: `
         <!--Credit https://en.wikipedia.org/wiki/Rubber_Soul-->
@@ -20,5 +19,4 @@ import {Component} from "@angular/core";
         </p>
     `
 })
-export class RubberSoul1Demo {
-}
+export class RubberSoul1Demo {}

@@ -8,6 +8,7 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {IfActiveService} from "../../utils/conditional/if-active.service";
 
+import {TabsWillyWonka} from "./chocolate/tabs-willy-wonka";
 import {TabLinkDirective} from "./tab-link.directive";
 import {TabsService} from "./tabs-service";
 import {ClrTabsModule} from "./tabs.module";
@@ -32,8 +33,11 @@ describe("TabLink Directive", () => {
     let instance: any;
 
     beforeEach(() => {
-        TestBed.configureTestingModule(
-            {imports: [ClrTabsModule], declarations: [TestComponent], providers: [IfActiveService, TabsService]});
+        TestBed.configureTestingModule({
+            imports: [ClrTabsModule],
+            declarations: [TestComponent],
+            providers: [IfActiveService, TabsService, TabsWillyWonka]
+        });
 
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
@@ -48,7 +52,7 @@ describe("TabLink Directive", () => {
 
     it("sets itself as active when clicked", () => {
         const links: TabLinkDirective[] = instance.tabLinkChildren.toArray();
-        expect(links[0].active).toEqual(true);
+        expect(links[0].active).toEqual(false);
         expect(links[1].active).toEqual(false);
 
         const tabLinks: HTMLElement[] = compiled.querySelectorAll("button");

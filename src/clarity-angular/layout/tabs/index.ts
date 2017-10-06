@@ -5,6 +5,8 @@
  */
 import {Type} from "@angular/core";
 
+import {ActiveOompaLoompa} from "./chocolate/active-oompa-loompa";
+import {TabsWillyWonka} from "./chocolate/tabs-willy-wonka";
 import {Tab} from "./tab";
 import {TabContent} from "./tab-content";
 import {TabLinkDirective} from "./tab-link.directive";
@@ -17,4 +19,5 @@ export * from "./tab-content";
 export * from "./tab-overflow-content";
 export * from "./tab-link.directive";
 
-export const TABS_DIRECTIVES: Type<any>[] = [TabContent, Tab, Tabs, TabOverflowContent, TabLinkDirective];
+export const TABS_DIRECTIVES: Type<any>[] =
+    [TabContent, Tab, Tabs, TabOverflowContent, TabLinkDirective, TabsWillyWonka, ActiveOompaLoompa];

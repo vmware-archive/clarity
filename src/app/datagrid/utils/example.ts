@@ -8,7 +8,6 @@ import {AfterViewInit, Component, Input, ViewChild} from "@angular/core";
 import {CodeHighlight} from "../../../clarity-angular/code/syntax-highlight/syntax-highlight";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-example",
     template: `
         <pre><code [clr-code-highlight]="'language-'+language">{{code.trim()}}</code></pre>

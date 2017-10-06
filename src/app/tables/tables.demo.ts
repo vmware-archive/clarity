@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-tables-demo",
     styleUrls: [],
     template: `
@@ -25,5 +24,4 @@ import {Component} from "@angular/core";
         <router-outlet></router-outlet>
     `
 })
-export class TablesDemo {
-}
+export class TablesDemo {}

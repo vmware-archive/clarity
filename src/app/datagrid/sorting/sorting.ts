@@ -12,7 +12,6 @@ import {PokemonComparator} from "../utils/pokemon-comparator";
 import {EXAMPLES} from "./examples";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-sorting-demo",
     providers: [Inventory],
     templateUrl: "./sorting.html",

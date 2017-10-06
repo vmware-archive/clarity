@@ -6,10 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-codehighlight-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./code-highlight.demo.css"],
+    styleUrls: ["./code-highlight.demo.scss"],
     template: `
         <h2>CodeHighlight</h2>
         <ul>
@@ -19,5 +17,4 @@ import {Component} from "@angular/core";
         <router-outlet></router-outlet>
     `
 })
-export class CodeHighlightDemo {
-}
+export class CodeHighlightDemo {}

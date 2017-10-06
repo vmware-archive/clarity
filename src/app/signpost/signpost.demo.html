@@ -3,24 +3,14 @@
 <div class="content-container">
     <div class="content-area">
         <div class="signpost-demo">
-            <div class="signpost-item"
-                *ngFor="let position of positions">
+            <div class="signpost-item" *ngFor="let position of positions">
                 <div class="signpost-positions">
                     <div class="description">
-                        <div class="select">
-                            <section class="form-block">
-                                <h4>{{  position.description }}</h4>
-                            </section>
-                        </div>
+                        <h4>{{ position.description }}</h4>
                     </div>
                     <div class="position">
                         <clr-signpost>
-                            <button
-                                id="{{ position.id }}"
-                                type="button"
-                                class="signpost-action btn btn-small btn-link"
-                                [ngClass]="{active: open}"
-                                clrSignpostTrigger>
+                            <button id="{{ position.id }}" type="button" class="signpost-action btn btn-small btn-link" clrSignpostTrigger>
                                 <clr-icon shape="help-info"></clr-icon>
                             </button>
                             <clr-signpost-content *clrIfOpen [clrPosition]="position.position">

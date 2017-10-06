@@ -1,0 +1,154 @@
+<h1>Progress Bars</h1>
+<div class="row">
+    <div *ngFor="let e of examples" class="col-xs-12 col-lg-4">
+        <h4>{{e.title}}</h4>
+        <div [ngClass]="e.cssClassnames()">
+            <progress
+                value="{{e.value}}"
+                max="100" [attr.data-displayval]="e.value + '%'"></progress>
+            <span *ngIf="e.isLabeled">{{e.value}}%</span>
+        </div>
+        <p>
+            <button
+                class="btn btn-outline"
+                (click)="e.start()"
+                [ngClass]="e.demoId">Show</button></p>
+    </div>
+    <div class="col-xs-12 col-lg-4">
+        <h4>In Sidenav</h4>
+        <ul class="sidenav list-unstyled col-xs-2">
+            <li class="nav-item">
+                <a class="nav-link" href="javascript://">Link</a>
+                <div class="progress loop"><progress></progress></div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript://">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript://">Another link</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-lg-4">
+        <h4>Indeterminate/Looping</h4>
+        <div class="progress loop"><progress></progress></div>
+    </div>
+    <div class="col-xs-12 col-lg-4">
+        <h4>Labeled, Static Progress Bar</h4>
+        <div class="progress-static labeled">
+            <div class="progress-meter" [attr.data-value]="staticLabeledProgbarValue" [attr.data-displayval]="staticLabeledProgbarValue + '%'"></div>
+            <span>{{staticLabeledProgbarValue}}%</span>
+        </div>
+        <p>
+            <button class="btn btn-outline"
+                    (click)="setNewValues()">
+                Load New Values
+            </button>
+        </p>
+    </div>
+    <div class="col-xs-12 col-lg-4">
+        <h4>Danger Static Progress Bar</h4>
+        <div class="progress-static danger">
+            <div class="progress-meter" [attr.data-value]="staticDangerValue"></div>
+        </div>
+        <p>
+            <button class="btn btn-outline"
+                    (click)="setNewValues()">
+                Load New Values
+            </button>
+        </p>
+    </div>
+    <div class="col-xs-12 col-lg-4">
+
+        <h4>Success Static Progress Bar</h4>
+        <div class="progress-static success">
+            <div class="progress-meter" [attr.data-value]="staticSuccessValue"></div>
+        </div>
+        <p>
+            <button class="btn btn-outline"
+                    (click)="setNewValues()">
+                Load New Values
+            </button>
+        </p>
+    </div>
+    <div class="col-xs-12 col-lg-4">
+        <h4>Stacked Layout</h4>
+        <div class="progress-block">
+            <div class="progress-group">
+                <div class="progress-static labeled danger">
+                    <div class="progress-meter" [attr.data-value]="staticDangerValue" [attr.data-displayval]="staticDangerValue + '%'"></div>
+                    <span>{{staticDangerValue}}%</span>
+                </div>
+                <div class="progress-static labeled">
+                    <div class="progress-meter" [attr.data-value]="staticLabeledProgbarValue" [attr.data-displayval]="staticLabeledProgbarValue + '%'"></div>
+                    <span>{{staticLabeledProgbarValue}}%</span>
+                </div>
+                <div class="progress-static labeled success">
+                    <div class="progress-meter" [attr.data-value]="staticSuccessValue" [attr.data-displayval]="staticSuccessValue + '%'"></div>
+                    <span>{{staticSuccessValue}}%</span>
+                </div>
+            </div>
+        </div>
+        <p><button class="btn btn-outline" (click)="setNewValues()">Load New Values</button></p>
+    </div>
+    <div class="col-xs-12 col-lg-4">
+        <h4>Stacked and resized layout</h4>
+        <div class="progress-block">
+            <div class="progress-group" style="font-size: 1px">
+                <div class="progress-static danger">
+                    <div class="progress-meter" [attr.data-value]="staticDangerValue" [attr.data-displayval]="staticDangerValue + '%'"></div>
+                    <span>{{staticDangerValue}}%</span>
+                </div>
+                <div class="progress-static">
+                    <div class="progress-meter" [attr.data-value]="staticLabeledProgbarValue" [attr.data-displayval]="staticLabeledProgbarValue + '%'"></div>
+                    <span>{{staticLabeledProgbarValue}}%</span>
+                </div>
+                <div class="progress-static success">
+                    <div class="progress-meter" [attr.data-value]="staticSuccessValue" [attr.data-displayval]="staticSuccessValue + '%'"></div>
+                    <span>{{staticSuccessValue}}%</span>
+                </div>
+            </div>
+        </div>
+        <p><button class="btn btn-outline" (click)="setNewValues()">Load New Values</button></p>
+    </div>
+    <div class="col-xs-12 col-lg-4">
+        <h4>Inline in Card</h4>
+        <div class="card">
+            <div class="card-block">
+              <div class="progress-static top">
+                <div class="progress-meter" [attr.data-value]="value1"></div>
+              </div>
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">Here is a progress bar at the very top of a card.</p>
+                <div class="progress-block">
+                    <label>Label</label>
+                    <div class="progress-static">
+                        <div class="progress-meter" [attr.data-value]="value1"></div>
+                    </div>
+                </div>
+
+                <div class="progress-block">
+                    <label>Longer Label</label>
+                    <div class="progress-static">
+                        <div class="progress-meter" [attr.data-value]="value2"></div>
+                    </div>
+                </div>
+                <div class="progress-block">
+                    <label>Really, Really, Really Long Label</label>
+                    <div class="progress success">
+                        <progress value="{{value3}}" max="100" [attr.data-displayval]="value3 + '%'"></progress>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-sm btn-link" (click)="setNewValues()">Click</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

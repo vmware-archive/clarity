@@ -9,5 +9,4 @@ import {NgModule} from "@angular/core";
 import {OUSTIDE_CLICK_DIRECTIVES} from "./index";
 
 @NgModule({imports: [CommonModule], declarations: [OUSTIDE_CLICK_DIRECTIVES], exports: [OUSTIDE_CLICK_DIRECTIVES]})
-export class ClrOutsideClickModule {
-}
+export class ClrOutsideClickModule {}

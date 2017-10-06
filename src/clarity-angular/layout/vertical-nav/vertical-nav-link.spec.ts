@@ -11,7 +11,7 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 import {ClrIconModule} from "../../icon/icon.module";
 
-import {VerticalNavGroupService} from "./providers/vertical-nav-group.service";
+import {VerticalNavGroupRegistrationService} from "./providers/vertical-nav-group-registration.service";
 import {VerticalNavIconService} from "./providers/vertical-nav-icon.service";
 import {VerticalNavService} from "./providers/vertical-nav.service";
 import {VerticalNavGroup} from "./vertical-nav-group";
@@ -63,7 +63,31 @@ export default function(): void {
 
                 expect(icon).not.toBeNull();
 
-                expect(icon.parentElement).toBe(compiled.querySelector("#link2"));
+                // expect(icon.parentElement).toBe(compiled.querySelector("#link2"));
+            });
+        });
+
+        describe("Nav Link Interactions with Nav Group", () => {
+            beforeEach(() => {
+                fixture = TestBed.createComponent(TestComponentWithGroup);
+                fixture.detectChanges();
+                compiled = fixture.nativeElement;
+            });
+
+            afterEach(() => {
+                fixture.destroy();
+            });
+
+            it("clicking on the link opens the nav group", () => {
+                const navGroup: VerticalNavGroup = fixture.componentInstance.navGroup;
+                const link: HTMLElement = <HTMLElement>compiled.querySelector("#link2");
+                expect(navGroup.expanded).toBe(false);
+
+                link.click();
+
+                fixture.detectChanges();
+
+                expect(navGroup.expanded).toBe(true);
             });
         });
     });
@@ -80,10 +104,9 @@ export default function(): void {
             Icon Text
         </a>
     `,
-    providers: [VerticalNavService, VerticalNavIconService, VerticalNavGroupService]
+    providers: [VerticalNavService, VerticalNavIconService, VerticalNavGroupRegistrationService]
 })
-class TestComponent {
-}
+class TestComponent {}
 
 @Component({
     template: `
@@ -100,7 +123,7 @@ class TestComponent {
             Link 3
         </a>
     `,
-    providers: [VerticalNavService, VerticalNavIconService, VerticalNavGroupService]
+    providers: [VerticalNavService, VerticalNavIconService, VerticalNavGroupRegistrationService]
 })
 class TestComponentWithGroup {
     @ViewChild("group") navGroup: VerticalNavGroup;

@@ -10,7 +10,7 @@ import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-
 import {Wizard} from "../../clarity-angular/wizard/wizard";
 import {WizardPage} from "../../clarity-angular/wizard/wizard-page";
 
-@Component({moduleId: module.id, selector: "clr-wizard-jump-to", templateUrl: "./wizard-jump-to.demo.html"})
+@Component({selector: "clr-wizard-jump-to", templateUrl: "./wizard-jump-to.demo.html"})
 export class WizardJumpToDemo {
     @ViewChild("wizard") wizard: Wizard;
     @ViewChild("pageThree") pageThree: WizardPage;

@@ -6,10 +6,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-tree-view-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./tree-view.demo.css"],
+    styleUrls: ["./tree-view.demo.scss"],
     template: `
         <h2>New Tree View</h2>
 
@@ -32,5 +30,4 @@ import {Component} from "@angular/core";
         <router-outlet></router-outlet>
     `
 })
-export class TreeViewDemo {
-}
+export class TreeViewDemo {}

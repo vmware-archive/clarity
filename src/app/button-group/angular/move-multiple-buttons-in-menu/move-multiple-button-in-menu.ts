@@ -6,10 +6,9 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-move-mulitple-button-in-menu-demo",
     templateUrl: "./move-multiple-button-in-menu.html",
-    styleUrls: ["../../button-group.demo.css"]
+    styleUrls: ["../../button-group.demo.scss"]
 })
 export class MoveMultipleButtonInMenuDemo {
     flip: boolean = false;

@@ -5,11 +5,6 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-buttons-demo-real-button",
-    templateUrl: "./real-button.html",
-    styleUrls: ["./buttons.demo.css"]
-})
-export class RealButtonDemo {
-}
+@Component(
+    {selector: "clr-buttons-demo-real-button", templateUrl: "./real-button.html", styleUrls: ["./buttons.demo.scss"]})
+export class RealButtonDemo {}

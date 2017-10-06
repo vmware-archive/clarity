@@ -9,7 +9,7 @@ import {Component, ViewChild} from "@angular/core";
 import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
 import {Wizard} from "../../clarity-angular/wizard/wizard";
 
-@Component({moduleId: module.id, selector: "clr-wizard-alt-cancel", templateUrl: "./wizard-alt-cancel.demo.html"})
+@Component({selector: "clr-wizard-alt-cancel", templateUrl: "./wizard-alt-cancel.demo.html"})
 export class WizardAltCancelDemo {
     @ViewChild("wizard") wizard: Wizard;
     @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;

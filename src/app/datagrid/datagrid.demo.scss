@@ -4,6 +4,10 @@
 
 @import "../_utils/code";
 
+ul {
+    column-count: 3;
+}
+
 .color-square {
     display: inline-block;
     vertical-align: bottom;

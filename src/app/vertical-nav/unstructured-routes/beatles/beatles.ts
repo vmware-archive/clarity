@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-beatles-demo",
     template: `
         <!--Credit https://en.wikipedia.org/wiki/The_Beatles-->
@@ -23,5 +22,4 @@ import {Component} from "@angular/core";
         </p>
     `
 })
-export class Beatles2Demo {
-}
+export class Beatles2Demo {}

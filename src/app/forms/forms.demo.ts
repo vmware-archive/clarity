@@ -23,5 +23,4 @@ import {Component} from "@angular/core";
         <router-outlet></router-outlet>
     `
 })
-export class FormsDemo {
-}
+export class FormsDemo {}

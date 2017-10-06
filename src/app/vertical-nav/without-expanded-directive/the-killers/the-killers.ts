@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-killers1-demo",
     template: `
         <!--https://en.wikipedia.org/wiki/The_Killers-->
@@ -20,5 +19,4 @@ import {Component} from "@angular/core";
         </p>
     `
 })
-export class Killers1Demo {
-}
+export class Killers1Demo {}

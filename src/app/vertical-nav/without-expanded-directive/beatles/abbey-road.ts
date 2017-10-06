@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-abbey-road-1-demo",
     template: `
         <!--Credit https://en.wikipedia.org/wiki/Abbey_Road-->
@@ -23,5 +22,4 @@ import {Component} from "@angular/core";
         </p>
     `
 })
-export class AbbeyRoad1Demo {
-}
+export class AbbeyRoad1Demo {}

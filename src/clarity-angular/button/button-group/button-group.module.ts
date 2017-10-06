@@ -17,5 +17,4 @@ import {BUTTON_GROUP_DIRECTIVES} from "./index";
     declarations: [BUTTON_GROUP_DIRECTIVES],
     exports: [BUTTON_GROUP_DIRECTIVES]
 })
-export class ClrButtonGroupModule {
-}
+export class ClrButtonGroupModule {}

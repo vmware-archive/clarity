@@ -8,13 +8,8 @@ import {Component} from "@angular/core";
 import {Server} from "./data/server";
 import {Status} from "./data/status";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-checkboxes-demo",
-    // Note the .css extension here, not .scss. That's the best we can have at the moment.
-    styleUrls: ["./checkboxes.demo.css"],
-    templateUrl: "./checkboxes.demo.html"
-})
+@Component(
+    {selector: "clr-checkboxes-demo", styleUrls: ["./checkboxes.demo.scss"], templateUrl: "./checkboxes.demo.html"})
 
 export class CheckboxesDemo {
     list: Server[];

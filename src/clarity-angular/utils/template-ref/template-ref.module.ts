@@ -14,5 +14,4 @@ import {TEMPLATE_REF_DIRECTIVES} from "./index";
     entryComponents: [TEMPLATE_REF_DIRECTIVES],
     exports: [TEMPLATE_REF_DIRECTIVES]
 })
-export class ClrTemplateRefModule {
-}
+export class ClrTemplateRefModule {}

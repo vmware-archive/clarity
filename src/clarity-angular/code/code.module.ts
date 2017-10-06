@@ -9,5 +9,4 @@ import {NgModule} from "@angular/core";
 import {ClrSyntaxHighlightModule} from "./syntax-highlight/syntax-highlight.module";
 
 @NgModule({exports: [ClrSyntaxHighlightModule]})
-export class ClrCodeModule {
-}
+export class ClrCodeModule {}

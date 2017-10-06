@@ -12,5 +12,4 @@ import {ClrIconModule} from "../../icon/icon.module";
 import {LAYOUT_DIRECTIVES} from "./index";
 
 @NgModule({imports: [CommonModule, ClrIconModule], declarations: [LAYOUT_DIRECTIVES], exports: [LAYOUT_DIRECTIVES]})
-export class ClrMainContainerModule {
-}
+export class ClrMainContainerModule {}

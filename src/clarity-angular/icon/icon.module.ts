@@ -10,5 +10,4 @@ import {NgModule} from "@angular/core";
 import {ICON_DIRECTIVES} from "./index";
 
 @NgModule({imports: [CommonModule], declarations: [ICON_DIRECTIVES], exports: [ICON_DIRECTIVES]})
-export class ClrIconModule {
-}
+export class ClrIconModule {}

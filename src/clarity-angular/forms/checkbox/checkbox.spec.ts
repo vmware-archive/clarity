@@ -24,48 +24,42 @@ abstract class CheckboxTest {
         <clr-checkbox [(clrChecked)]="checked"></clr-checkbox>
     `
 })
-class BasicCheckbox extends CheckboxTest {
-}
+class BasicCheckbox extends CheckboxTest {}
 
 @Component({
     template: `
         <clr-checkbox [(ngModel)]="checked"></clr-checkbox>
     `
 })
-class CheckboxWithNgModel extends CheckboxTest {
-}
+class CheckboxWithNgModel extends CheckboxTest {}
 
 @Component({
     template: `
         <clr-checkbox [(clrChecked)]="checked">Hello world</clr-checkbox>
     `
 })
-class CheckboxWithLabel extends CheckboxTest {
-}
+class CheckboxWithLabel extends CheckboxTest {}
 
 @Component({
     template: `
         <clr-checkbox [(clrChecked)]="checked" name="hello"></clr-checkbox>
     `
 })
-class CheckboxWithName extends CheckboxTest {
-}
+class CheckboxWithName extends CheckboxTest {}
 
 @Component({
     template: `
         <clr-checkbox [(clrChecked)]="checked" [clrInline]="true"></clr-checkbox>
     `
 })
-class InlineCheckbox extends CheckboxTest {
-}
+class InlineCheckbox extends CheckboxTest {}
 
 @Component({
     template: `
         <clr-checkbox [(clrIndeterminate)]="indeterminate" [(clrChecked)]="checked"></clr-checkbox>
     `
 })
-class IndeterminateCheckbox extends CheckboxTest {
-}
+class IndeterminateCheckbox extends CheckboxTest {}
 
 describe("Checkbox", () => {
     let fixture: ComponentFixture<CheckboxTest>;

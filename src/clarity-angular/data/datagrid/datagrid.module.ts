@@ -27,5 +27,4 @@ import {DATAGRID_DIRECTIVES} from "./index";
     ],
     exports: [DATAGRID_DIRECTIVES, ClrIfExpandModule]
 })
-export class ClrDatagridModule {
-}
+export class ClrDatagridModule {}

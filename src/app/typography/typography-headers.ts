@@ -6,11 +6,9 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-typography-headers",
-    styleUrls: ["./typography.demo.css"],
+    styleUrls: ["./typography.demo.scss"],
     templateUrl: "./typography-headers.html"
 })
 
-export class TypographyHeadersDemo {
-}
+export class TypographyHeadersDemo {}

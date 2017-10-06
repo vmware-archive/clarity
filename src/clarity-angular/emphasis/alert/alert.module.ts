@@ -17,5 +17,4 @@ import {ALERT_DIRECTIVES} from "./index";
     declarations: [ALERT_DIRECTIVES],
     exports: [ALERT_DIRECTIVES]
 })
-export class ClrAlertModule {
-}
+export class ClrAlertModule {}

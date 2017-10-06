@@ -9,5 +9,4 @@ import {NgModule} from "@angular/core";
 import {LOADING_DIRECTIVES} from "./index";
 
 @NgModule({imports: [CommonModule], declarations: [LOADING_DIRECTIVES], exports: [LOADING_DIRECTIVES]})
-export class ClrLoadingModule {
-}
+export class ClrLoadingModule {}

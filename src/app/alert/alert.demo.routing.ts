@@ -36,15 +36,16 @@ const ROUTES: Routes = [{
             ]
         },
         {
-          path: "angular",
-          component: AlertAngularDemo,
-          children: [
-              {path: "", redirectTo: "not-closable", pathMatch: "full"},
-              {path: "not-closable", component: AlertAngularNotClosableDemo},
-              {path: "app-level", component: AlertAngularAppLevelDemo},
-              {path: "success", component: AlertAngularSuccessDemo}, {path: "small", component: AlertAngularSmallDemo},
-              {path: "close-events", component: AlertAngularCloseEventDemo}
-          ]
+            path: "angular",
+            component: AlertAngularDemo,
+            children: [
+                {path: "", redirectTo: "not-closable", pathMatch: "full"},
+                {path: "not-closable", component: AlertAngularNotClosableDemo},
+                {path: "app-level", component: AlertAngularAppLevelDemo},
+                {path: "success", component: AlertAngularSuccessDemo},
+                {path: "small", component: AlertAngularSmallDemo},
+                {path: "close-events", component: AlertAngularCloseEventDemo}
+            ]
         }
     ]
 }];

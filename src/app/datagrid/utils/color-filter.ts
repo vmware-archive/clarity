@@ -10,7 +10,6 @@ import {COLORS} from "../inventory/values";
 
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-color-filter-demo",
     template: `
         <span *ngFor="let color of allColors" class="color-square color-selectable"

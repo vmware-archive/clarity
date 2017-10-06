@@ -7,7 +7,6 @@
 import {Component, ViewEncapsulation} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-demo",
     template: `
       <h2>New Wizard</h2>
@@ -41,5 +40,4 @@ import {Component, ViewEncapsulation} from "@angular/core";
    `,
     encapsulation: ViewEncapsulation.None
 })
-export class WizardDemo {
-}
+export class WizardDemo {}

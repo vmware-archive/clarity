@@ -16,5 +16,4 @@ import {IfOpenService} from "../../utils/conditional/if-open.service";
     },
     providers: [IfOpenService]
 })
-export class Tooltip {
-}
+export class Tooltip {}

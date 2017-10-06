@@ -23,10 +23,12 @@ import {ClrWizardModule} from "./wizard.module";
             [clrWizardButtonDisabled]="disableBtn"
             [clrWizardButtonHidden]="hideBtn"
             (clrWizardButtonClicked)="doClick($event)"
+            *ngIf="show"
         >hello {{ projector }}</clr-wizard-button>
     `
 })
 class ViewTestComponent {
+    public show: boolean = true;
     public btnType: string = "";
     public disableBtn: boolean = false;
     public hideBtn: boolean = false;
@@ -59,8 +61,7 @@ export default function(): void {
                     <clr-wizard-button></clr-wizard-button>
                 `
             })
-            class TestComponent {
-            }
+            class TestComponent {}
 
             function runTypeConstantCheck(component: any, fnToTest: any, buttonType: string, typeConstant: any) {
                 buttonComponent.type = "next";
@@ -114,6 +115,7 @@ export default function(): void {
                     ]
                 });
                 fixture = TestBed.createComponent(TestComponent);
+                buttonHub.buttonsReady = true;
                 fixture.detectChanges();
                 buttonDebugEl = fixture.debugElement.query(By.directive(WizardButton));
                 buttonComponent = buttonDebugEl.componentInstance;
@@ -833,6 +835,7 @@ export default function(): void {
                     ]
                 });
                 fixture = TestBed.createComponent(ViewTestComponent);
+                buttonHub.buttonsReady = true;
                 fixture.detectChanges();
                 buttonDebugEl = fixture.debugElement.query(By.directive(WizardButton));
                 buttonComponent = buttonDebugEl.componentInstance;
@@ -894,6 +897,20 @@ export default function(): void {
                     fixture.detectChanges();
                     expect(buttonComponent.isDisabled).toBe(false, "updates when set back");
                 });
+
+                it("should render properly even with ngIf is applied", () => {
+                    // Test when buttons are not ready
+                    buttonHub.buttonsReady = false;
+                    expect(buttonComponent.isDisabled).toBe(false, "should always be false if buttons aren't ready");
+                    // Test with buttons ready.
+                    buttonHub.buttonsReady = true;
+                    fixture.detectChanges();
+                    expect(buttonComponent.isDisabled).toBe(false, "should be the default value");
+                    // Test setting to hide
+                    myTestComponent.disableBtn = true;
+                    fixture.detectChanges();
+                    expect(buttonComponent.isDisabled).toBe(true, "should now be disabled");
+                });
             });
 
             describe("hidden input", () => {
@@ -909,6 +926,20 @@ export default function(): void {
                     myTestComponent.hideBtn = false;
                     fixture.detectChanges();
                     expect(buttonComponent.isHidden).toBe(false, "updates when set back");
+                });
+
+                it("binds to the host even with ngIf is applied", () => {
+                    // Test when buttons are not ready
+                    buttonHub.buttonsReady = false;
+                    expect(buttonComponent.isHidden).toBe(false, "should always be false if buttons aren't ready");
+                    // Test with buttons ready.
+                    buttonHub.buttonsReady = true;
+                    fixture.detectChanges();
+                    expect(buttonComponent.isHidden).toBe(false, "should be the default value");
+                    // Test setting to hide
+                    myTestComponent.hideBtn = true;
+                    fixture.detectChanges();
+                    expect(buttonComponent.isHidden).toBe(true, "should now be hidden");
                 });
             });
 
@@ -981,6 +1012,7 @@ export default function(): void {
                     ]
                 });
                 fixture = TestBed.createComponent(ViewTestComponent);
+                buttonHub.buttonsReady = true;
                 fixture.detectChanges();
                 buttonDebugEl = fixture.debugElement.query(By.directive(WizardButton));
                 buttonComponent = buttonDebugEl.componentInstance;

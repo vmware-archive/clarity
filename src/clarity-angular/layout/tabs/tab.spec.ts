@@ -8,6 +8,7 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {IfActiveService} from "../../utils/conditional/if-active.service";
 
+import {TabsWillyWonka} from "./chocolate/tabs-willy-wonka";
 import {Tab} from "./tab";
 import {TabsService} from "./tabs-service";
 import {ClrTabsModule} from "./tabs.module";
@@ -30,8 +31,11 @@ describe("Tab", () => {
     let instance: any;
 
     beforeEach(() => {
-        TestBed.configureTestingModule(
-            {imports: [ClrTabsModule], declarations: [TestComponent], providers: [IfActiveService, TabsService]});
+        TestBed.configureTestingModule({
+            imports: [ClrTabsModule],
+            declarations: [TestComponent],
+            providers: [IfActiveService, TabsService, TabsWillyWonka]
+        });
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
         compiled = fixture.nativeElement;

@@ -27,7 +27,7 @@ If you already have an Angular application, you can follow the installation step
 
 2. Install the polyfill for Custom Elements: 
     ```bash
-    npm install @webcomponents/custom-elements@1.0.0 --save
+    npm install @webcomponents/custom-elements --save
     ```
 
 3. Include the clarity-icons.min.css and clarity-icons.min.js in your HTML. As clarity-icons.min.js is dependent on the Custom Elements polyfill, make sure to include it before clarity-icons.min.js:
@@ -135,5 +135,5 @@ The Clarity project team welcomes contributions from the community. For more det
 
 If you find a bug or want to request a new feature, please open a [GitHub issue](https://github.com/vmware/clarity/issues).
 * Include a link to the reproduction scenario you created by forking one of the Clarity Plunker Templates:
-  - Clarity Version: [Latest - 0.9.x](https://plnkr.co/uNwwZe)
+  - Clarity Version: [Latest - 0.10.x](https://plnkr.co/uNwwZe)
   - Clarity Version: [Legacy - 0.8.15](https://plnkr.co/8TwwdL)

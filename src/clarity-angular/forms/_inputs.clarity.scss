@@ -30,7 +30,7 @@
         width: 100%;
         border: 1px solid $gray-light-midtone;
         border-radius: $clr-default-borderradius;
-        padding: $clr_baselineRem_0_5 $clr_baselineRem_0_25;
+        padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
 
         &:focus {
             @include include-outline-style-form-fields();

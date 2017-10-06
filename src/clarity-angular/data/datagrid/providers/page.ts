@@ -6,9 +6,12 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
+import {StateDebouncer} from "./state-debouncer.provider";
 
 @Injectable()
 export class Page {
+    constructor(private stateDebouncer: StateDebouncer) {}
+
     /**
      * Page size, a value of 0 means no pagination
      */
@@ -88,8 +91,10 @@ export class Page {
     }
     public set current(page: number) {
         if (page !== this._current) {
+            this.stateDebouncer.changeStart();
             this._current = page;
             this._change.next(page);
+            this.stateDebouncer.changeDone();
         }
     }
 

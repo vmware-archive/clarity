@@ -10,5 +10,4 @@ import {NgModule} from "@angular/core";
 import {CODE_HIGHLIGHT_DIRECTIVES} from "../index";
 
 @NgModule({imports: [CommonModule], declarations: [CODE_HIGHLIGHT_DIRECTIVES], exports: [CODE_HIGHLIGHT_DIRECTIVES]})
-export class ClrSyntaxHighlightModule {
-}
+export class ClrSyntaxHighlightModule {}

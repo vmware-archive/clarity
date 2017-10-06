@@ -9,7 +9,6 @@ import {Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-hide-show-demo",
     providers: [Inventory],
     templateUrl: "./hide-show.html",

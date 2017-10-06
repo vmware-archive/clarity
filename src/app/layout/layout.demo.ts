@@ -20,5 +20,4 @@ import {Component} from "@angular/core";
         <router-outlet></router-outlet>
     `
 })
-export class LayoutDemo {
-}
+export class LayoutDemo {}

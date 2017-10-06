@@ -12,6 +12,7 @@ import {FiltersProvider} from "./filters";
 import {Items} from "./items";
 import {Page} from "./page";
 import {Sort} from "./sort";
+import {StateDebouncer} from "./state-debouncer.provider";
 
 const ALL_ITEMS = [9, 3, 5, 8, 2, 6, 10, 7, 4, 1];
 
@@ -23,12 +24,13 @@ export default function(): void {
         }
 
         beforeEach(function() {
-            this.filtersInstance = new FiltersProvider();
+            const stateDebouncer = new StateDebouncer();
+            this.pageInstance = new Page(stateDebouncer);
+            this.filtersInstance = new FiltersProvider(this.pageInstance, stateDebouncer);
             this.evenFilter = new EvenFilter();
             this.filtersInstance.add(this.evenFilter);
-            this.sortInstance = new Sort();
+            this.sortInstance = new Sort(stateDebouncer);
             this.comparator = new TestComparator();
-            this.pageInstance = new Page();
             this.itemsInstance = new Items(this.filtersInstance, this.sortInstance, this.pageInstance);
         });
 

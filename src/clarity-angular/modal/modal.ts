@@ -4,8 +4,19 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {animate, AnimationEvent, state, style, transition, trigger} from "@angular/animations";
-import {Component, EventEmitter, HostListener, Input, OnChanges, OnDestroy, Output, SimpleChange} from "@angular/core";
+import {
+    Component,
+    EventEmitter,
+    HostListener,
+    Input,
+    OnChanges,
+    OnDestroy,
+    Output,
+    SimpleChange,
+    ViewChild
+} from "@angular/core";
 
+import {FocusTrapDirective} from "../utils/focus-trap/focus-trap.directive";
 import {ScrollingService} from "../utils/scrolling/scrolling-service";
 
 import {GHOST_PAGE_ANIMATION} from "./utils/ghost-page-animations";
@@ -20,51 +31,53 @@ import {GHOST_PAGE_ANIMATION} from "./utils/ghost-page-animations";
     animations: [
         trigger("fadeDown",
                 [
-                  transition("* => false",
-                             [style({opacity: 0, transform: "translate(0, -25%)"}), animate("0.2s ease-in-out")]),
-                  transition("false => *",
-                             [animate("0.2s ease-in-out", style({opacity: 0, transform: "translate(0, -25%)"}))])
+                    transition("* => false",
+                               [style({opacity: 0, transform: "translate(0, -25%)"}), animate("0.2s ease-in-out")]),
+                    transition("false => *",
+                               [animate("0.2s ease-in-out", style({opacity: 0, transform: "translate(0, -25%)"}))])
                 ]),
         trigger("fade",
                 [
-                  transition("void => *", [style({opacity: 0}), animate("0.2s ease-in-out", style({opacity: 0.85}))]),
-                  transition("* => void", [animate("0.2s ease-in-out", style({opacity: 0}))])
+                    transition("void => *", [style({opacity: 0}), animate("0.2s ease-in-out", style({opacity: 0.85}))]),
+                    transition("* => void", [animate("0.2s ease-in-out", style({opacity: 0}))])
                 ]),
         trigger("ghostPageOneState",
                 [
-                  state(GHOST_PAGE_ANIMATION.STATES.NO_PAGES, style({left: "-24px"})),
-                  state(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES, style({left: "0"})),
-                  state(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE, style({left: "-24px"})),
-                  state(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE, style({left: "-24px"})),
-                  transition(GHOST_PAGE_ANIMATION.STATES.NO_PAGES + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-                  transition(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)),
-                  transition(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-                  transition(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT))
+                    state(GHOST_PAGE_ANIMATION.STATES.NO_PAGES, style({left: "-24px"})),
+                    state(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES, style({left: "0"})),
+                    state(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE, style({left: "-24px"})),
+                    state(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE, style({left: "-24px"})),
+                    transition(GHOST_PAGE_ANIMATION.STATES.NO_PAGES + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
+                    transition(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)),
+                    transition(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
+                    transition(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT))
                 ]),
         // TODO: USE TRANSFORM, NOT LEFT...
         trigger("ghostPageTwoState",
                 [
-                  state(GHOST_PAGE_ANIMATION.STATES.NO_PAGES, style({left: "-24px", top: "24px", bottom: "24px"})),
-                  state(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES, style({left: "24px"})),
-                  state(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE,
-                        style({left: "0px", top: "24px", bottom: "24px", background: "#bbb"})),
-                  state(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE, style({left: "-24px", top: "24px", bottom: "24px"})),
-                  transition(GHOST_PAGE_ANIMATION.STATES.NO_PAGES + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-                  transition(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)),
-                  transition(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-                  transition(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE + " => *",
-                             animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT))
+                    state(GHOST_PAGE_ANIMATION.STATES.NO_PAGES, style({left: "-24px", top: "24px", bottom: "24px"})),
+                    state(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES, style({left: "24px"})),
+                    state(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE,
+                          style({left: "0px", top: "24px", bottom: "24px", background: "#bbb"})),
+                    state(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE, style({left: "-24px", top: "24px", bottom: "24px"})),
+                    transition(GHOST_PAGE_ANIMATION.STATES.NO_PAGES + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
+                    transition(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)),
+                    transition(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
+                    transition(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE + " => *",
+                               animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT))
                 ])
     ]
 })
 export class Modal implements OnChanges, OnDestroy {
+    @ViewChild(FocusTrapDirective) focusTrap: FocusTrapDirective;
+
     @Input("clrModalOpen") _open: boolean = false;
     @Output("clrModalOpenChange") _openChanged: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
@@ -126,6 +139,7 @@ export class Modal implements OnChanges, OnDestroy {
         // this was handled by the fadeDone event below, but that AnimationEvent is not firing in Angular 4.0.
         this._openChanged.emit(false);
         // SPECME
+        this.focusTrap.setPreviousFocus();  // Handles moving focus back to the element that had it before.
     }
 
     fadeDone(e: AnimationEvent) {

@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-sams-town-demo",
     template: `
         <!--Credit https://en.wikipedia.org/wiki/Sam%27s_Town-->
@@ -21,5 +20,4 @@ import {Component} from "@angular/core";
         </p>
     `
 })
-export class SamsTown2Demo {
-}
+export class SamsTown2Demo {}

@@ -5,11 +5,5 @@
  */
 import {Component} from "@angular/core";
 
-@Component({
-    moduleId: module.id,
-    selector: "clr-lists-compact-demo",
-    styleUrls: ["lists.demo.css"],
-    templateUrl: "./lists-compact.html"
-})
-export class ListsCompactDemo {
-}
+@Component({selector: "clr-lists-compact-demo", styleUrls: ["lists.demo.scss"], templateUrl: "./lists-compact.html"})
+export class ListsCompactDemo {}

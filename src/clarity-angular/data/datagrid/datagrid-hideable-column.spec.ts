@@ -10,11 +10,14 @@ import {DatagridHideableColumn} from "./datagrid-hideable-column";
 import {TestContext} from "./helpers.spec";
 import {DragDispatcher} from "./providers/drag-dispatcher";
 import {FiltersProvider} from "./providers/filters";
+import {Page} from "./providers/page";
 import {Sort} from "./providers/sort";
+import {StateDebouncer} from "./providers/state-debouncer.provider";
 import {DomAdapter} from "./render/dom-adapter";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 
-const PROVIDERS_NEEDED = [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher];
+const PROVIDERS_NEEDED =
+    [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher, Page, StateDebouncer];
 
 
 export default function(): void {
@@ -30,7 +33,6 @@ export default function(): void {
 
         it("should have a template ref", function() {
             expect(testDgHideableColumn.template).toBeDefined();
-            expect(testDgHideableColumn.template).toEqual(jasmine.any(TemplateRef));
         });
 
         it("should have an id", function() {

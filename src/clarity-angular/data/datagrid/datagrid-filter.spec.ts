@@ -11,6 +11,8 @@ import {TestContext} from "./helpers.spec";
 import {Filter} from "./interfaces/filter";
 import {CustomFilter} from "./providers/custom-filter";
 import {FiltersProvider} from "./providers/filters";
+import {Page} from "./providers/page";
+import {StateDebouncer} from "./providers/state-debouncer.provider";
 
 export default function(): void {
     describe("DatagridFilter component", function() {
@@ -20,7 +22,8 @@ export default function(): void {
             let component: DatagridFilter;
 
             beforeEach(function() {
-                filterService = new FiltersProvider();
+                const stateDebouncer = new StateDebouncer();
+                filterService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
                 filter = new TestFilter();
                 component = new DatagridFilter(filterService);
             });
@@ -64,7 +67,7 @@ export default function(): void {
 
             beforeEach(function() {
                 filter = new TestFilter();
-                context = this.create(DatagridFilter, FullTest, [FiltersProvider]);
+                context = this.create(DatagridFilter, FullTest, [FiltersProvider, Page, StateDebouncer]);
             });
 
             it("receives an input for the filter logic", function() {
@@ -92,7 +95,7 @@ export default function(): void {
             let context: TestContext<DatagridFilter, FullTest>;
 
             beforeEach(function() {
-                context = this.create(DatagridFilter, FullTest, [FiltersProvider]);
+                context = this.create(DatagridFilter, FullTest, [FiltersProvider, Page, StateDebouncer]);
             });
 
             it("projects content into the dropdown", function() {

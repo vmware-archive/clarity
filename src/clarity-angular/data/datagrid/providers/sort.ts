@@ -8,9 +8,12 @@ import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 
 import {Comparator} from "../interfaces/comparator";
+import {StateDebouncer} from "./state-debouncer.provider";
 
 @Injectable()
 export class Sort {
+    constructor(private stateDebouncer: StateDebouncer) {}
+
     /**
      * Currently active comparator
      */
@@ -19,8 +22,10 @@ export class Sort {
         return this._comparator;
     }
     public set comparator(value: Comparator<any>) {
+        this.stateDebouncer.changeStart();
         this._comparator = value;
         this.emitChange();
+        this.stateDebouncer.changeDone();
     }
 
     /**
@@ -31,8 +36,10 @@ export class Sort {
         return this._reverse;
     }
     public set reverse(value: boolean) {
+        this.stateDebouncer.changeStart();
         this._reverse = value;
         this.emitChange();
+        this.stateDebouncer.changeDone();
     }
 
     /**
@@ -58,6 +65,7 @@ export class Sort {
      * @memberof Sort
      */
     public toggle(sortBy: Comparator<any>, forceReverse?: boolean) {
+        this.stateDebouncer.changeStart();
         // We modify private properties directly, to batch the change event
         if (this.comparator === sortBy) {
             this._reverse = typeof forceReverse !== "undefined" ? forceReverse || !this._reverse : !this._reverse;
@@ -66,6 +74,7 @@ export class Sort {
             this._reverse = typeof forceReverse !== "undefined" ? forceReverse : false;
         }
         this.emitChange();
+        this.stateDebouncer.changeDone();
     }
 
     /**

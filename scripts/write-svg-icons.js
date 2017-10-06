@@ -176,19 +176,13 @@ let makeSVG = (shapeTitle, shapeContent) => {
 //use shapes from this directory
 const SOURCE_PATH = path.join(__dirname, "../dist/clarity-icons/shapes");
 
-//main directory to contain svg files
-const TARGET_DIR_NAME = "svg-source";
-
-//main directory to contain svg files will be created at the same path as the source path
-const TARGET_PATH = path.join(SOURCE_PATH, TARGET_DIR_NAME);
-
 let makeSVGset = (setName, callback) => {
 
     let importSet = require(SOURCE_PATH + "/" + setName + ".js");
     let exportedName = Object.getOwnPropertyNames(importSet)[1];
     let setShapes = importSet[exportedName];
 
-    let setShapesContainerDir = path.join(TARGET_PATH, setName);
+    let setShapesContainerDir = path.join(SOURCE_PATH, setName);
 
     createContainerDir(setShapesContainerDir)
         .then((containerDirPath)=> {

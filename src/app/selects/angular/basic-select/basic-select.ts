@@ -8,7 +8,6 @@ import {Component} from "@angular/core";
 import {FetchResult, Inventory} from "./../../../datagrid/inventory/inventory";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-basic-select-demo",
     providers: [Inventory],
     templateUrl: "./basic-select.html",
@@ -25,7 +24,9 @@ export class BasicSelectDemo {
         this.options = inventory.all.slice(0, 10);
     }
     loadOptionsFromServer(input: string) {
-        if (input == undefined || input == null) return;
+        if (input === undefined || input == null) {
+            return;
+        }
         this.loading = true;
         this.inventory.latency = 500;
         this.inventory.filter({"name": [input]}).fetch().then((result: FetchResult) => {

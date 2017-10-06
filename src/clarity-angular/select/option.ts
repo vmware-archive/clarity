@@ -3,11 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ElementRef, HostListener, Input, OnDestroy, ViewChild} from "@angular/core";
+import {Component, ElementRef, HostListener, Input, OnDestroy, ViewChild} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
-
-import {DetailWrapper} from "./../../app/datagrid/expandable-rows/detail-wrapper";
-import {ListsCompactDemo} from "./../../app/lists/lists-compact";
 import {RootSelectService} from "./providers/select.service";
 import {Select} from "./select";
 
@@ -19,7 +16,7 @@ import {Select} from "./select";
         "[class.selected]": "_selected",
         "role": "option"
     },
-    template: `<ng-content *ngIf="visible"></ng-content>`
+    template: `<ng-content #content *ngIf="visible"></ng-content>`
 })
 export class Option implements OnDestroy {
     private _value: String;
@@ -62,7 +59,10 @@ export class Option implements OnDestroy {
     }
 
     toString(): string {
-        const element = this.el.nativeElement
+        if (!this.el) {
+            return "";
+        }
+        const element = this.el.nativeElement;
         return element.innerText || element.textContent;
     }
 

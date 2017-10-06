@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-select-angular-demo",
     template: `
         <h4>Angular Styles</h4>

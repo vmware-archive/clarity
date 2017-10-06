@@ -7,7 +7,7 @@
 import { Component, ViewChild } from "@angular/core";
 import { Wizard, WizardPage } from "clarity-angular";
 
-import { FocusTrapTracker } from "clarity-angular/utils/focus-trap/focus-trap-tracker.service";
+import { ÇlrFocusTrapTracker } from "clarity-angular";
 import { DisableFocusTrap } from "../../utils/disable-focus-trap";
 
 
@@ -19,7 +19,7 @@ import { DisableFocusTrap } from "../../utils/disable-focus-trap";
         "[class.in-place-takeover]": "true",
         "[class.is-large]": "true"
     },
-    providers: [{provide: FocusTrapTracker, useClass: DisableFocusTrap}],
+    providers: [{provide: ÇlrFocusTrapTracker, useClass: DisableFocusTrap}],
     styles: [
         `
             .wizdemo-color-block-row {

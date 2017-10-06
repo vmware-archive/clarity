@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from "@angular/core";
-import { FocusTrapTracker } from "clarity-angular/utils/focus-trap/focus-trap-tracker.service";
+import { ÇlrFocusTrapTracker } from "clarity-angular";
 import { DisableFocusTrap } from "../../utils/disable-focus-trap";
 
 
@@ -14,7 +14,7 @@ import { DisableFocusTrap } from "../../utils/disable-focus-trap";
     host: {
         "[class.in-place-takeover]": "true"
     },
-    providers: [{provide: FocusTrapTracker, useClass: DisableFocusTrap}]
+    providers: [{provide: ÇlrFocusTrapTracker, useClass: DisableFocusTrap}]
 })
 export class ModalStyleDesignDemo {
     public basic: boolean = true;

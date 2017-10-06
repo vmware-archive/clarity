@@ -1,10 +1,10 @@
-import {AfterViewInit} from "@angular/core";
 /*
  * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {ViewChild} from "@angular/core";
+import {AfterViewInit} from "@angular/core";
 import {
     Component,
     ContentChildren,
@@ -50,6 +50,7 @@ export class Select implements OnDestroy, ControlValueAccessor, AfterViewInit {
     private _subOpen: Subscription;
     private _subInput: Subscription;
     private _subHighlighted: Subscription;
+    private _subSelected: Subscription;
 
     /**
      *
@@ -70,7 +71,13 @@ export class Select implements OnDestroy, ControlValueAccessor, AfterViewInit {
         this._subHighlighted = selectService.highlightedChange.subscribe((option: Option) => {
             if (this.selectService.highlighted) {
                 this.model = this.selectService.highlighted.clrValue;
-                this.onChangeCallback(this.selectService.highlighted.clrValue);
+            }
+        });
+        this._subSelected = selectService.selectedChange.subscribe((option: Option) => {
+            if (option === null) {
+                this.onChangeCallback(null);
+            } else {
+                this.onChangeCallback(option.clrValue);
             }
         });
     }
@@ -112,6 +119,7 @@ export class Select implements OnDestroy, ControlValueAccessor, AfterViewInit {
         this._subInput.unsubscribe();
         this._subHighlighted.unsubscribe();
         this._subOpen.unsubscribe();
+        this._subSelected.unsubscribe();
     }
     /**
      * Opens the select menu on input and filters the options

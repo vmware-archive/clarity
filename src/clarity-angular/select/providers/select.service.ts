@@ -85,6 +85,9 @@ export class RootSelectService {
     }
 
     focusPrevious() {
+        if (!this.highlighted) {
+            return;
+        }
         const availableOptions = this.options.filter((option: Option) => {
             return option.visible;
         });
@@ -93,7 +96,9 @@ export class RootSelectService {
         }
         const elementPos = availableOptions
                                .map((x) => {
-                                   if (x) return x.clrValue;
+                                   if (x) {
+                                       return x.clrValue;
+                                   }
                                })
                                .indexOf(this.highlighted.clrValue);
         this.highlighted = availableOptions[elementPos - 1];
@@ -111,7 +116,9 @@ export class RootSelectService {
         }
         const elementPos = availableOptions
                                .map((x) => {
-                                   if (x) return x.clrValue;
+                                   if (x) {
+                                       return x.clrValue;
+                                   }
                                })
                                .indexOf(this.highlighted.clrValue);
         this.highlighted = availableOptions[elementPos + 1];

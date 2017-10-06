@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ViewChild} from "@angular/core";
+import {DebugElement} from "@angular/core";
 import {async, ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
 import {FormsModule} from "@angular/forms";
 import {By} from "@angular/platform-browser";
@@ -33,6 +34,7 @@ class TestComponent {
 describe("SelectInput", () => {
     let fixture: ComponentFixture<any>;
     let compiled: any;
+    let input: DebugElement;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule(
@@ -42,6 +44,7 @@ describe("SelectInput", () => {
             fixture = TestBed.createComponent(TestComponent);
             fixture.detectChanges();
             compiled = fixture.nativeElement;
+            input = fixture.debugElement.query(By.css("input"));
         });
     }));
 
@@ -54,42 +57,24 @@ describe("SelectInput", () => {
     }
 
     it("pushes input to selectsService on input", () => {
-        const input = compiled.querySelector("input");
         compiled.querySelector("input").value = "test";
-        input.dispatchEvent(new Event("input"));
+        input.nativeElement.dispatchEvent(new Event("input"));
         fixture.detectChanges();
         expect(getSelectInstance(fixture).selectService.input).toBe("test");
     });
 
-    it("opens menu if not already open @ arrow down", () => {
-        const input = compiled.querySelector("input");
-        expect(compiled.querySelector(".clr-select-menu")).toBeNull();
-        input.dispatchEvent(new KeyboardEvent("keypress", {key: "ArrowDown"}));
-        // detect the arrow down
+    it("opens menu on typing", () => {
+        compiled.querySelector("input").value = "Fir";
+        input.nativeElement.dispatchEvent(new Event("input"));
         fixture.detectChanges();
         expect(compiled.querySelector(".clr-select-menu")).not.toBeNull();
     });
 
-    it("closes menu after selecting an option", () => {
-        const input = compiled.querySelector("input");
-        expect(compiled.querySelector(".clr-select-menu")).toBeNull();
-
-        input.dispatchEvent(new KeyboardEvent("keypress", {key: "ArrowDown"}));
-
-        fixture.detectChanges();
-        expect(compiled.querySelector(".clr-select-menu")).not.toBeNull();
-
-        input.dispatchEvent(new KeyboardEvent("keypress", {key: "Enter"}));
-        fixture.detectChanges();
-
-        expect(compiled.querySelector(".clr-select-menu")).toBeNull();
-    });
     it("input gets focused on if open status of select-menu changes", () => {
         const menuToggl: HTMLElement = compiled.querySelector(".open-trigger");
-        const input: HTMLInputElement = compiled.querySelector("input");
-        spyOn(input, "focus");
+        spyOn(input.nativeElement, "focus");
         menuToggl.click();
         fixture.detectChanges();
-        expect(input.focus).toHaveBeenCalled();
+        expect(input.nativeElement.focus).toHaveBeenCalled();
     });
 });

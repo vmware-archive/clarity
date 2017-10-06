@@ -6,6 +6,7 @@ module.exports = {
         "index": "./src/clarity-icons/index.ts",
         "interfaces/icon-alias": "./src/clarity-icons/interfaces/icon-alias.ts",
         "interfaces/icon-template": "./src/clarity-icons/interfaces/icon-template.ts",
+        "clarity-icons-api": "./src/clarity-icons/clarity-icons-api.ts",
         "clarity-icons-lite.min": "./src/clarity-icons/index.ts",
         "clarity-icons.min": "./src/clarity-icons/clarity-icons-sfx.ts",
         "shapes/all-shapes": "./src/clarity-icons/shapes/all-shapes.ts",

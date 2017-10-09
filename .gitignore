@@ -5,6 +5,8 @@
 /tmp
 /out-tsc
 /.ng_build
+src/clarity-angular/.ng_build
+
 /gemini-report/
 
 # dependencies

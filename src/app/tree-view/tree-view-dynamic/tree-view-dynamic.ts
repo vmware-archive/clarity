@@ -5,6 +5,7 @@
  */
 import "clarity-icons/shapes/essential-shapes";
 import "clarity-icons/shapes/technology-shapes";
+import "clarity-icons/shapes/travel-shapes";
 import "clarity-icons/shapes/social-shapes";
 
 import {Component, Input} from "@angular/core";

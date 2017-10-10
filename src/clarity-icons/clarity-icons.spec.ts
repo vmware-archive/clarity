@@ -3,8 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-
-import {removeWhitespace, resetShapes, testAllShapes} from "./helpers.spec";
+import {ClarityIconElement} from "./clarity-icons-element";
+import {getErrorShape, giveAngleShapeTitle, removeWhitespace, resetShapes, testAllShapes} from "./helpers.spec";
 import {ClarityIcons} from "./index";
 import {AllShapes} from "./shapes/all-shapes";
 import {CommerceShapes} from "./shapes/commerce-shapes";
@@ -16,7 +16,6 @@ import {TechnologyShapes} from "./shapes/technology-shapes";
 import {TravelShapes} from "./shapes/travel-shapes";
 
 describe("ClarityIcons", () => {
-
     afterEach(() => {
         resetShapes();
     });
@@ -28,9 +27,7 @@ describe("ClarityIcons", () => {
     });
 
     describe("ClarityIconsApi.get()", () => {
-
         it("should return all icons when no argument is passed in", () => {
-
             ClarityIcons.add(CommerceShapes);
             ClarityIcons.add(EssentialShapes);
             ClarityIcons.add(SocialShapes);
@@ -43,39 +40,31 @@ describe("ClarityIcons", () => {
             testAllShapes(ClarityIcons, currentAllShapes);
         });
 
-        it("should return the shapes from CommerceShapes and CoreShapes sets " +
-               "if the EssentialShapes set is added in.",
-           () => {
-               ClarityIcons.add(CommerceShapes);
-               const currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes);
-               testAllShapes(ClarityIcons, currentAllShapes);
-           });
+        it("should return shapes from CommerceShapes and CoreShapes sets if EssentialShapes set is added in.", () => {
+            ClarityIcons.add(CommerceShapes);
+            const currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes);
+            testAllShapes(ClarityIcons, currentAllShapes);
+        });
 
-        it("should return the shapes from EssentialShapes and CoreShapes sets " +
-               "if the EssentialShapes set is added in.",
-           () => {
-               ClarityIcons.add(EssentialShapes);
-               const currentAllShapes = Object.assign({}, CoreShapes, EssentialShapes);
-               testAllShapes(ClarityIcons, currentAllShapes);
-           });
+        it("should return shapes from EssentialShapes and CoreShapes sets if EssentialShapes set is added in.", () => {
+            ClarityIcons.add(EssentialShapes);
+            const currentAllShapes = Object.assign({}, CoreShapes, EssentialShapes);
+            testAllShapes(ClarityIcons, currentAllShapes);
+        });
 
-        it("should return the shapes from MediaShapes and CoreShapes sets " +
-               "if the EssentialShapes set is added in.",
-           () => {
-               ClarityIcons.add(MediaShapes);
-               const currentAllShapes = Object.assign({}, CoreShapes, MediaShapes);
-               testAllShapes(ClarityIcons, currentAllShapes);
-           });
+        it("should return shapes from MediaShapes and CoreShapes sets if EssentialShapes set is added in.", () => {
+            ClarityIcons.add(MediaShapes);
+            const currentAllShapes = Object.assign({}, CoreShapes, MediaShapes);
+            testAllShapes(ClarityIcons, currentAllShapes);
+        });
 
-        it("should return the shapes from SocialShapes and CoreShapes sets " +
-               "if the SocialShapes set is added in.",
-           () => {
-               ClarityIcons.add(SocialShapes);
-               const currentAllShapes = Object.assign({}, CoreShapes, SocialShapes);
-               testAllShapes(ClarityIcons, currentAllShapes);
-           });
+        it("should return shapes from SocialShapes and CoreShapes sets if SocialShapes set is added in.", () => {
+            ClarityIcons.add(SocialShapes);
+            const currentAllShapes = Object.assign({}, CoreShapes, SocialShapes);
+            testAllShapes(ClarityIcons, currentAllShapes);
+        });
 
-        it("should return the shapes from TravelShapes and CoreShapes sets " +
+        it("should return shapes from TravelShapes and CoreShapes sets " +
                "if the EssentialShapes set is added in.",
            () => {
                ClarityIcons.add(TravelShapes);
@@ -83,8 +72,7 @@ describe("ClarityIcons", () => {
                testAllShapes(ClarityIcons, currentAllShapes);
            });
 
-        it("should return the shapes from TechnologyShapes and CoreShapes sets " +
-               "if the TechnologyShapes set is added in.",
+        it("should return shapes from TechnologyShapes and CoreShapes sets if TechnologyShapes set is added in.",
            () => {
                ClarityIcons.add(TechnologyShapes);
                const currentAllShapes = Object.assign({}, CoreShapes, TechnologyShapes);
@@ -99,7 +87,6 @@ describe("ClarityIcons", () => {
         });
 
         it("should return EssentialShapes['pencil'] when 'pencil' is passed in after including EssentialShapes", () => {
-
             ClarityIcons.add(EssentialShapes);
 
             const expected = `
@@ -271,7 +258,6 @@ describe("ClarityIcons", () => {
     });
 
     describe("ClarityIconsApi.alias()", () => {
-
         it("should throw an error if the argument is not a valid object literal", () => {
             const expectedErrorMessage = `The argument must be an object literal passed in the following pattern: 
                 { "shape-name": ["alias-name", ...] }`;
@@ -292,11 +278,10 @@ describe("ClarityIcons", () => {
         });
 
         it("should allow aliases if the shape name exists", () => {
-
             ClarityIcons.add(CoreShapes);
             const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
 
-            ClarityIcons.alias({"check": ["check-mark", "success-mark"]});
+            ClarityIcons.alias({check: ["check-mark", "success-mark"]});
 
             expect(currentShapeNumber).toBe(Object.keys(ClarityIcons.get()).length - 2);
             expect(ClarityIcons.get("check-mark")).toBe(ClarityIcons.get("check"));
@@ -304,9 +289,8 @@ describe("ClarityIcons", () => {
         });
 
         it("should allow to create an alias from another alias name", () => {
-
             ClarityIcons.add(CoreShapes);
-            ClarityIcons.alias({"check": ["success-mark"]});
+            ClarityIcons.alias({check: ["success-mark"]});
 
             const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
 
@@ -318,9 +302,8 @@ describe("ClarityIcons", () => {
         });
 
         it("should allow to create a new shape by overriding existing alias name", () => {
-
             ClarityIcons.add(CoreShapes);
-            ClarityIcons.alias({"check": ["success-mark"]});
+            ClarityIcons.alias({check: ["success-mark"]});
 
             const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
             const shapeTemplateOverrideAlias = "<svg><title>shape template override alias</title></svg>";
@@ -351,20 +334,6 @@ describe("ClarityIcons", () => {
             expect(clarityIconInnerHTML).toBe(divSampleElement.innerHTML);
         });
 
-        it("should insert the SVG markup of error icon if the shape doesn't exist", () => {
-            const clarityIcon = document.createElement("clr-icon");
-            const nonExistingShape = "non-existing-shape";
-
-            clarityIcon.setAttribute("shape", nonExistingShape);
-
-            const clarityIconInnerHTML = clarityIcon.innerHTML;
-            const divSampleElement = document.createElement("div");
-            divSampleElement.innerHTML = ClarityIcons.get("error");
-
-            expect(clarityIconInnerHTML).toBe(divSampleElement.innerHTML);
-            expect(console.error).toHaveBeenCalled();
-        });
-
         it("should control a size of an icon through size attribute", () => {
             const clarityIcon = document.createElement("clr-icon");
             clarityIcon.setAttribute("shape", "home");
@@ -373,15 +342,206 @@ describe("ClarityIcons", () => {
             expect(clarityIcon.style.width).toBe("25px");
             expect(clarityIcon.style.height).toBe("25px");
         });
+
+        it("should be able to use non-svg template", () => {
+            const testShape = `<img src="arrow-icon.png" alt="arrow-icon" width="42" height="42">`;
+            ClarityIcons.add({"test-shape": testShape});
+
+            const clarityIcon = document.createElement("clr-icon");
+            clarityIcon.setAttribute("shape", "test-shape");
+
+            expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(testShape));
+        });
+
+        it("should append title text after non-svg template if title attribute is specified", () => {
+            const clarityIcon = document.createElement("clr-icon") as ClarityIconElement;
+            const testShape = `<img src="arrow-icon.png" alt="arrow-icon" width="42" height="42">`;
+            ClarityIcons.add({"test-shape": testShape});
+
+            clarityIcon.setAttribute("shape", "test-shape");
+            clarityIcon.setAttribute("title", "my-custom-title");
+
+            const clrIconUniqId = clarityIcon.clrIconUniqId;
+            const shapeAfterTitleAttrChange =
+                `<img src="arrow-icon.png" alt="arrow-icon" width="42" height="42"><span class="is-off-screen" id="${
+                    clrIconUniqId}">my-custom-title</span>`;
+
+            expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(shapeAfterTitleAttrChange));
+        });
+
+        it("should not inject anything if the custom title is not given", () => {
+            const testShape = `<svg><g></g></svg>`;
+            ClarityIcons.add({"test-shape": testShape});
+
+            const clarityIcon = document.createElement("clr-icon");
+            clarityIcon.setAttribute("shape", "test-shape");
+
+            expect(clarityIcon.hasAttribute("aria-labelledby")).toBeFalsy();
+            expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(testShape));
+        });
+
+        it("should inject a custom title into the template if title attribute is present", () => {
+            const clarityIcon = document.createElement("clr-icon") as ClarityIconElement;
+            const customTitle = "my-custom-title";
+
+            let timeStart = performance.now();
+            clarityIcon.setAttribute("shape", "angle");
+            console.log("Icon shape processing took: " + (performance.now() - timeStart));
+
+            timeStart = performance.now();
+            clarityIcon.setAttribute("title", customTitle);
+            console.log("Icon title processing took: " + (performance.now() - timeStart));
+
+            const clrIconUniqId = clarityIcon.clrIconUniqId;
+            const testShape = giveAngleShapeTitle(clrIconUniqId, customTitle);
+
+            expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(testShape));
+        });
+
+        it("should inject custom title if given and template doesn't contain title tag", () => {
+            const customTitle = "my-custom-title";
+            const shapeBeforeTitleAttrChange = `<svg><g></g></svg>`;
+
+            ClarityIcons.add({"test-shape": shapeBeforeTitleAttrChange});
+
+            const clarityIcon = document.createElement("clr-icon") as ClarityIconElement;
+
+            clarityIcon.setAttribute("shape", "test-shape");
+            clarityIcon.setAttribute("title", customTitle);
+
+            const clrIconUniqId = clarityIcon.clrIconUniqId;
+            const shapeAfterTitleAttrChange =
+                `<svg><g></g></svg><span class="is-off-screen" id="${clrIconUniqId}">${customTitle}</span>`;
+            expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(shapeAfterTitleAttrChange));
+        });
+
+        it("should inject a custom title if it's is specified before the shape attribute specified", () => {
+            const clarityIcon = document.createElement("clr-icon") as ClarityIconElement;
+            const customTitle = "my-custom-title";
+
+            clarityIcon.setAttribute("title", customTitle);
+            clarityIcon.setAttribute("shape", "angle");
+
+            const clrIconUniqId = clarityIcon.clrIconUniqId;
+            const testShape = giveAngleShapeTitle(clrIconUniqId, customTitle);
+
+            expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(testShape));
+        });
+
+        it("should update existing title if custom title is specified", () => {
+            const clarityIcon = document.createElement("clr-icon") as ClarityIconElement;
+
+            const oldCustomTitle = "my-old-custom-title";
+            const newCustomTitle = "my-new-custom-title";
+
+            clarityIcon.setAttribute("shape", "angle");
+            clarityIcon.setAttribute("title", oldCustomTitle);
+            const clrIconUniqId = clarityIcon.clrIconUniqId;
+
+            expect(clarityIcon.querySelector(`#${clrIconUniqId}`).textContent).toBe(oldCustomTitle);  // existing title
+            clarityIcon.setAttribute("title", newCustomTitle);
+
+            expect(clarityIcon.querySelector(`#${clrIconUniqId}`).textContent).toBe(newCustomTitle);
+        });
+
+        it("should remove existing title if title attribute is removed", () => {
+            const clarityIcon = document.createElement("clr-icon") as ClarityIconElement;
+
+            const customTitle = "my-custom-title";
+
+            clarityIcon.setAttribute("shape", "angle");
+            clarityIcon.setAttribute("title", customTitle);
+            const clrIconUniqId = clarityIcon.clrIconUniqId;
+
+            expect(clarityIcon.querySelector(`#${clrIconUniqId}`).textContent).toBe(customTitle);  // existing title
+            clarityIcon.removeAttribute("title");
+
+            expect(clarityIcon.querySelector(`#${clrIconUniqId}`)).toBeNull();
+        });
+
+        it("should remove existing title if title attribute is empty", () => {
+            const clarityIcon = document.createElement("clr-icon") as ClarityIconElement;
+
+            const customTitle = "my-custom-title";
+
+            clarityIcon.setAttribute("shape", "angle");
+            clarityIcon.setAttribute("title", customTitle);
+            const clrIconUniqId = clarityIcon.clrIconUniqId;
+
+            expect(clarityIcon.querySelector(`#${clrIconUniqId}`).textContent).toBe(customTitle);  // existing title
+            clarityIcon.setAttribute("title", "");
+
+            expect(clarityIcon.querySelector(`#${clrIconUniqId}`)).toBeNull();
+        });
+
+        it("should persist title even after shape attribute update", () => {
+            const clarityIcon = document.createElement("clr-icon") as ClarityIconElement;
+            const customTitle = "my-custom-title";
+
+            clarityIcon.setAttribute("shape", "angle");
+            clarityIcon.setAttribute("title", customTitle);
+
+            const clrIconUniqId = clarityIcon.clrIconUniqId;
+            const arrowShapeAfterTitleAttrChange = giveAngleShapeTitle(clrIconUniqId, customTitle);
+
+            expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(arrowShapeAfterTitleAttrChange));
+
+            const testShape = `<svg><title>test-shape</title><g></g></svg>`;
+            ClarityIcons.add({"test-shape": testShape});
+
+            const testShapeAfterShapeAttrChange =
+                `<svg><title>test-shape</title><g></g></svg><span class="is-off-screen" id="${clrIconUniqId}">${
+                    customTitle}</span>`;
+
+            clarityIcon.setAttribute("shape", "test-shape");
+            expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(testShapeAfterShapeAttrChange));
+        });
+
+        it("should add aria-labelledby attribute if title attribute is present", () => {
+            const clarityIcon = document.createElement("clr-icon") as ClarityIconElement;
+
+            const customTitle = "my-custom-title";
+
+            clarityIcon.setAttribute("shape", "angle");
+            clarityIcon.setAttribute("title", customTitle);
+
+            const clrIconUniqId = clarityIcon.clrIconUniqId;
+            expect(clarityIcon.getAttribute("aria-labelledby")).toBe(clrIconUniqId);
+        });
+
+        it("should inject error shape if icon is not found", () => {
+            const clarityIcon = document.createElement("clr-icon") as ClarityIconElement;
+            const nonExistingShape = "non-existing-icon";
+
+            clarityIcon.setAttribute("shape", nonExistingShape);
+            expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(getErrorShape()));
+            expect(console.error).toHaveBeenCalled();
+        });
+
+        it("should inject error shape with title if icon is not found", () => {
+            const clarityIcon = document.createElement("clr-icon") as ClarityIconElement;
+            const nonExistingShape = "non-existing-icon";
+            const customTitle = "my-custom-title";
+
+            clarityIcon.setAttribute("shape", nonExistingShape);
+            clarityIcon.setAttribute("title", customTitle);
+
+            const clrIconUniqId = clarityIcon.clrIconUniqId;
+
+            expect(removeWhitespace(clarityIcon.innerHTML))
+                .toBe(removeWhitespace(getErrorShape(clrIconUniqId, customTitle)));
+            expect(console.error).toHaveBeenCalled();
+        });
+
+
     });
 
     describe("SVG Icon Markups", () => {
         const testIconStyles = (shapes: any, exceptions?: string[]) => {
-
             let allShapes = Object.keys(shapes);
 
             if (exceptions && exceptions.length > 0) {
-                allShapes = allShapes.filter((shape) => {
+                allShapes = allShapes.filter(shape => {
                     if (exceptions.indexOf(shape) === -1) {
                         return shape;
                     }

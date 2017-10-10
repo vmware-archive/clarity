@@ -7,6 +7,10 @@ import {ClarityIconsApi} from "./clarity-icons-api";
 
 /* CLR-ICON CUSTOM ELEMENT */
 
+let clrIconId = 0;
+const offScreenSpan = document.createElement("span");
+offScreenSpan.className = "is-off-screen";
+
 let parentConstructor = function() {
     return HTMLElement.apply(this, arguments);
 };
@@ -18,62 +22,143 @@ if (typeof Reflect === "object") {
 
 export function ClarityIconElement() {
     "use strict";
-    return (parentConstructor as any).apply(this, arguments);
+
+    const _this = (parentConstructor as any).apply(this, arguments);
+
+    _this.clrIconUniqId = "_clr_icon_" + clrIconId;
+    clrIconId++;
+
+    return _this;
 }
 
-(ClarityIconElement as any).observedAttributes = ["shape", "size"];
+(ClarityIconElement as any).observedAttributes = ["shape", "size", "title"];
 
 ClarityIconElement.prototype = Object.create(
     HTMLElement.prototype, {constructor: {configurable: true, writable: true, value: ClarityIconElement}});
 
 ClarityIconElement.prototype.constructor = ClarityIconElement;
 
-const generateIcon = function(element: any, shape: string) {
-    shape = shape.split(/\s/)[0];
-
-    if (shape !== element._shape) {
-        element._shape = shape;
-
-        // shape exists in set
-        if (ClarityIconsApi.instance.has(shape)) {
-            element.innerHTML = ClarityIconsApi.instance.get(shape);
-        } else {
-            console.error(`'${shape}' is not found in the Clarity Icons set.`);
-            element.innerHTML = ClarityIconsApi.instance.get("error");
-        }
-    }
+ClarityIconElement.prototype._appendCustomTitle = function() {
+    const cloneOffScreenSpan = <HTMLElement>offScreenSpan.cloneNode(false);
+    cloneOffScreenSpan.id = this.clrIconUniqId;
+    cloneOffScreenSpan.textContent = this.currentTitleAttrVal;
+    this.appendChild(cloneOffScreenSpan);
 };
 
-const setIconSize = function(element: any, size: string) {
+ClarityIconElement.prototype._setIconSize = function(size: string) {
     if (!Number(size) || Number(size) < 0) {
-        element.style.width = null;   // fallback to the original stylesheet value
-        element.style.height = null;  // fallback to the original stylesheet value
+        this.style.width = null;   // fallback to the original stylesheet value
+        this.style.height = null;  // fallback to the original stylesheet value
     } else {
-        element.style.width = size + "px";
-        element.style.height = size + "px";
+        this.style.width = size + "px";
+        this.style.height = size + "px";
     }
 };
 
 ClarityIconElement.prototype.connectedCallback = function() {
-    const host = this as HTMLElement;
+    // One thing to note here is that the attributeChangedCallback method is called for every attribute first
+    // before this connectedCallback method called only once when the custom element is inserted into the DOM.
+    // So we could check whether the attribute values really changed or not.
+    // If not, we don't need to execute the same codes again.
 
-    if (host.hasAttribute("shape")) {
-        generateIcon(host, host.getAttribute("shape"));
+    if (this.hasAttribute("size")) {
+        const sizeAttrValue = this.getAttribute("size");
+
+        if (this.currentSizeAttrVal !== sizeAttrValue) {
+            this.currentSizeAttrVal = sizeAttrValue;
+            this._setIconSize(sizeAttrValue);
+        }
     }
 
-    if (host.hasAttribute("size")) {
-        setIconSize(host, host.getAttribute("size"));
+    // Note: the size attribute is irrelevant from the shape template;
+    // That's why the size checking placed before detecting changes in shape and title attributes.
+    // This means even if the shape is not found, the injected shape will have the user-given size.
+
+    if (this.hasAttribute("shape")) {
+        const shapeAttrValue = this.getAttribute("shape").split(/\s/)[0];
+
+        if (shapeAttrValue === this.currentShapeAttrVal) {
+            return;
+        }
+
+        this.currentShapeAttrVal = shapeAttrValue;
+
+        if (ClarityIconsApi.instance.has(this.currentShapeAttrVal)) {
+            this.currentShapeTemplate = ClarityIconsApi.instance.get(this.currentShapeAttrVal);
+        } else {
+            this._injectErrorTemplate();
+            return;
+        }
     }
+
+
+    if (this.hasAttribute("title")) {
+        const titleAttrValue = this.getAttribute("title");
+
+        if (this.currentTitleAttrVal !== titleAttrValue) {
+            this.currentTitleAttrVal = titleAttrValue;
+        }
+
+        if (!this.currentShapeAttrVal) {
+            return;
+        }
+    }
+
+    this._injectTemplate();
 };
 
 ClarityIconElement.prototype.attributeChangedCallback = function(attributeName: string, oldValue: string,
                                                                  newValue: string) {
-    const host = this as HTMLElement;
+    if (attributeName === "size") {
+        this._setIconSize(newValue);
+    }
+
+    // Note: the size attribute is irrelavent from the shape template;
+    // That's why the size checking placced before detecting changes in shape and title attributes.
+    // This means even if the shape is not found, the injected shape will have the user-given size.
 
     if (attributeName === "shape") {
-        generateIcon(host, newValue);
+        this.currentShapeAttrVal = newValue.split(/\s/)[0];
+
+        if (ClarityIconsApi.instance.has(this.currentShapeAttrVal)) {
+            this.currentShapeTemplate = ClarityIconsApi.instance.get(this.currentShapeAttrVal);
+        } else {
+            this._injectErrorTemplate();
+            return;
+        }
     }
-    if (attributeName === "size") {
-        setIconSize(host, newValue);
+    if (attributeName === "title") {
+        this.currentTitleAttrVal = newValue;
+
+        if (!this.currentShapeAttrVal) {
+            return;
+        }
     }
+
+    this._injectTemplate();
+};
+
+ClarityIconElement.prototype._setAriaLabelledBy = function() {
+    const existingAriaLabelledBy: string = this.getAttribute("aria-labelledby");
+    if (!existingAriaLabelledBy) {
+        this.setAttribute("aria-labelledby", this.clrIconUniqId);
+    } else if (existingAriaLabelledBy && existingAriaLabelledBy.indexOf(this.clrIconUniqId) < 0) {
+        this.setAttribute("aria-labelledby", existingAriaLabelledBy + " " + this.clrIconUniqId);
+    }
+};
+
+ClarityIconElement.prototype._injectTemplate = function() {
+
+    this.innerHTML = this.currentShapeTemplate;
+
+    if (this.currentTitleAttrVal) {
+        this._setAriaLabelledBy();
+        this._appendCustomTitle();
+    }
+};
+
+ClarityIconElement.prototype._injectErrorTemplate = function() {
+    console.error(`'${this.currentShapeAttrVal}' is not found in the Clarity Icons set.`);
+    this.currentShapeTemplate = ClarityIconsApi.instance.get("error");
+    this._injectTemplate();
 };

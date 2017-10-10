@@ -12,3 +12,7 @@ declare var window: Window;
 interface Window {
     ClarityIcons: any;
 }
+
+interface ClarityIconElement extends HTMLElement {
+    clrIconUniqId: string;
+}

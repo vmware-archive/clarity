@@ -6,7 +6,6 @@
  * Clarity v@VERSION | MIT license | https://github.com/vmware/clarity
  *
  */
-
 $clr-icon-size: 16px;
 $clr-icon-color-success: #318700;
 $clr-icon-color-danger: #e62700;
@@ -99,9 +98,13 @@ clr-icon {
         height: 100%;
         width: 100%;
         display: block;
+        pointer-events: none;
     }
     & > svg {
         transition: inherit;
+        title {
+            display: none;
+        }
     }
     .clr-i-solid,
     .clr-i-solid--badged,
@@ -184,5 +187,19 @@ clr-icon {
         .clr-i-alert {
             @include setIconColor($clr-icon-color-warning);
         }
+    }
+    .is-off-screen {
+        position: fixed !important;
+        border: none !important;
+        height: 1px !important;
+        width: 1px !important;
+
+        left: 0px !important;
+        top: -1px !important;
+
+        overflow: hidden !important;
+
+        padding: 0 !important;
+        margin: 0 0 -1px 0 !important;
     }
 }

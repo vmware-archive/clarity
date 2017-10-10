@@ -1,0 +1,51 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Server-driven &amp; Selection</h2>
+
+<h3>Single Selection</h3>
+
+<clr-datagrid (clrDgRefresh)="refreshSingle($event)" [clrDgLoading]="loadingSingle" [(clrDgSingleSelected)]="selected">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>First Name</clr-dg-column>
+    <clr-dg-column>Last Name</clr-dg-column>
+    <clr-dg-column>Avatar</clr-dg-column>
+
+    <clr-dg-row *ngFor="let user of usersSingle; trackBy: trackById" [clrDgItem]="user">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.first_name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.last_name}}</clr-dg-cell>
+        <clr-dg-cell><img [src]="user.avatar" width="14" /></clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{totalSingle}} users
+        <clr-dg-pagination #pagination [clrDgTotalItems]="totalSingle" [clrDgPageSize]="perPage"></clr-dg-pagination>
+    </clr-dg-footer>
+</clr-datagrid>
+
+<h3>Multi-selection</h3>
+
+<clr-datagrid (clrDgRefresh)="refreshMulti($event)" [clrDgLoading]="loadingMulti" [(clrDgSelected)]="list">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>First Name</clr-dg-column>
+    <clr-dg-column>Last Name</clr-dg-column>
+    <clr-dg-column>Avatar</clr-dg-column>
+
+    <clr-dg-row *ngFor="let user of usersMulti; trackBy: trackById" [clrDgItem]="user">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.first_name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.last_name}}</clr-dg-cell>
+        <clr-dg-cell><img [src]="user.avatar" width="14" /></clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{totalMulti}} users
+        <clr-dg-pagination #pagination [clrDgTotalItems]="totalMulti" [clrDgPageSize]="perPage"></clr-dg-pagination>
+    </clr-dg-footer>
+</clr-datagrid>

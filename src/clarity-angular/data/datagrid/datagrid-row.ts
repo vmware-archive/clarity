@@ -13,6 +13,7 @@ import {DatagridCell} from "./datagrid-cell";
 import {DatagridHideableColumn} from "./datagrid-hideable-column";
 import {ExpandableRowsCount} from "./providers/global-expandable-rows";
 import {HideableColumnService} from "./providers/hideable-column.service";
+import {Items} from "./providers/items";
 import {RowActionService} from "./providers/row-action-service";
 import {Selection, SelectionType} from "./providers/selection";
 
@@ -31,7 +32,7 @@ let nbRow: number = 0;
                          class="datagrid-select datagrid-fixed-column">
                 <div class="radio">
                     <input type="radio" [id]="id" [name]="selection.id + '-radio'" [value]="item"
-                           [(ngModel)]="selection.currentSingle">
+                        [checked]="item === selection.currentSingle" [(ngModel)]="selection.currentSingle">
                     <label for="{{id}}"></label>
                 </div>
             </clr-dg-cell>
@@ -70,6 +71,7 @@ let nbRow: number = 0;
 })
 export class DatagridRow implements AfterContentInit {
     public id: string;
+    public index: number;
 
     /* reference to the enum so that template can access */
     public SELECTION_TYPE = SelectionType;
@@ -81,8 +83,9 @@ export class DatagridRow implements AfterContentInit {
 
     constructor(public selection: Selection, public rowActionService: RowActionService,
                 public globalExpandable: ExpandableRowsCount, public expand: Expand,
-                public hideableColumnService: HideableColumnService) {
-        this.id = "clr-dg-row" + (nbRow++);
+                public hideableColumnService: HideableColumnService, private items: Items) {
+        this.index = nbRow++;
+        this.id = "clr-dg-row" + this.index;
     }
 
     private _selected = false;
@@ -93,7 +96,7 @@ export class DatagridRow implements AfterContentInit {
         if (this.selection.selectionType === SelectionType.None) {
             return this._selected;
         } else {
-            return this.selection.isSelected(this.item);
+            return this.selection.isSelected(this.item, this.index);
         }
     }
 
@@ -165,6 +168,12 @@ export class DatagridRow implements AfterContentInit {
                 this.updateCellsForColumns(columnList);
             }
         });
+
+        // Check if item was selected in single selection mode and server driven, rehydrate if necessary
+        if (this.items.trackBy && this.selection.currentSingle &&
+            this.items.trackBy(0, this.selection.currentSingle) === this.items.trackBy(0, this.item)) {
+            this.item = this.selection.currentSingle;
+        }
     }
 
     /**********

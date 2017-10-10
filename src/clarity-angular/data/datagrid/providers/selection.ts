@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Injectable, TrackByFn} from "@angular/core";
+import {Injectable, TrackByFunction} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 import {Subscription} from "rxjs/Subscription";
@@ -19,9 +19,15 @@ export enum SelectionType {
     Multi
 }
 
+interface Reference {
+    reference: any;
+    original: any;
+}
+
 @Injectable()
 export class Selection {
     public id: string;
+    private allReferences: Reference[] = [];
 
     constructor(private _items: Items, private _filters: FiltersProvider) {
         this.id = "clr-dg-selection" + (nbSelection++);
@@ -39,10 +45,17 @@ export class Selection {
             }
             let leftOver: any[];
             if (this._items.trackBy) {
-                const trackBy: TrackByFn = this._items.trackBy;
-                const updatedTracked: any[] = updatedItems.map((item, index) => trackBy(index, item));
-                leftOver = this.current.filter((selected, index) => {
-                    return updatedTracked.indexOf(trackBy(index, selected)) > -1;
+                this.allReferences = [];
+                const trackBy: TrackByFunction<Function> = this._items.trackBy;
+                const updatedTracked: any[] = updatedItems.map((item, index) => {
+                    const ref = trackBy(index, item);
+                    // Push instance of every computed reference into list for later checking
+                    this.allReferences.push({reference: ref, original: item});
+                    return ref;
+                });
+                // When all the items change, we need to rebuild the list based on trackBy references
+                leftOver = updatedItems.filter((item, index) => {
+                    return this.current.indexOf(trackBy(index, item)) > -1;
                 });
             } else {
                 leftOver = this.current.filter(selected => updatedItems.indexOf(selected) > -1);
@@ -154,11 +167,33 @@ export class Selection {
     /**
      * Checks if an item is currently selected
      */
-    public isSelected(item: any): boolean {
-        if (this._selectionType === SelectionType.Single) {
-            return this.currentSingle === item;
-        } else if (this._selectionType === SelectionType.Multi) {
-            return this.current.indexOf(item) >= 0;
+    public isSelected(item: any, rowIndex?: number): boolean {
+        // Check if we are running with ngFor
+        if (!this.allReferences.length) {
+            const trackBy = this._items.trackBy;
+            if (this._selectionType === SelectionType.Single) {
+                // We use the rowIndex for trackBy as provided by the grid, but this won't really work in reality.
+                // Since each row is destroyed and recreated with pagination, the index will not reflect the true
+                // index of the item in the list (because it is not known to the grid in anyway), so this is
+                // broken but broken in a way that tries to use the closest approximation of index.
+                return (this.currentSingle) ? trackBy(rowIndex, this.currentSingle) === trackBy(rowIndex, item) : false;
+            } else if (this._selectionType === SelectionType.Multi) {
+                return this.current.findIndex((selected: any) => {
+                    // Same as the comment above with rowIndex
+                    return trackBy(rowIndex, selected) === trackBy(rowIndex, item);
+                }) >= 0;
+            }
+            return false;
+        }
+
+        // Have to lookup against the precalculated
+        const index = this.allReferences.findIndex((refItem: Reference) => {
+            return refItem.original === item;
+        });
+        if (this._selectionType === SelectionType.Single && this.allReferences[index]) {
+            return (this.currentSingle) ? this.currentSingle === this.allReferences[index].original : false;
+        } else if (this._selectionType === SelectionType.Multi && this.allReferences[index]) {
+            return this.current.indexOf(this.allReferences[index].reference) >= 0;
         }
         return false;
     }
@@ -174,12 +209,36 @@ export class Selection {
                 // in single selection, set currentSingle method should be used
                 break;
             case SelectionType.Multi:
-                const index = this.current.indexOf(item);
+                let index;
+                let ref = item;
+                // check if we have clrDgItems in use
+                if (this.allReferences.length) {
+                    let refIndex;
+                    // look up actual item against all items
+                    refIndex = this.allReferences.findIndex((refItem: Reference) => {
+                        return refItem.original === item;
+                    });
+
+                    // For some odd reason, if we couldn't find the ref, break for sanity
+                    if (refIndex < 0) {
+                        break;
+                    }
+
+                    // Set reference value to the trackby calculation when
+                    ref = this.allReferences[refIndex].reference;
+                    index = this.current.indexOf(ref);
+                } else {
+                    // we are using ngFor, so just use index of item
+                    index = this.current.indexOf(item);
+                }
+
                 if (index >= 0 && !selected) {
+                    // already selected, unselect it
                     this.current.splice(index, 1);
                     this.emitChange();
                 } else if (index < 0 && selected) {
-                    this.current.push(item);
+                    // not selected, add it to list
+                    this.current.push(ref);
                     this.emitChange();
                 }
                 break;

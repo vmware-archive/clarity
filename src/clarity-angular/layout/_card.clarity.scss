@@ -45,7 +45,6 @@ $card-children-space-between: $clr_baselineRem_0_5;
 
     //TODO: Try to reduce the nesting in .card
     .card {
-        position: relative;
         display: block;
         background-color: $clr-white;
         width: 100%;

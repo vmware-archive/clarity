@@ -242,34 +242,35 @@ module.exports = {
     ]),
     new CopyWebpackPlugin([
         {
-            "context": "./src/",
-            "to": "",
-            "from": {
-              "glob": "favicon.ico",
-              "dot": true
+            context: "./src/",
+            from: {
+              glob: "favicon.ico",
+              dot: true
             }
         },
         {
-            "context": "./src/",
-            "to": "",
-            "from": {
-                "glob": "assets/**/*",
-                "dot": true
+            context: "./src/",
+            from: {
+                glob: "assets/**/*",
+                dot: true
             }
         },
         {
             context: './src/clarity-angular',
-            from: '**/*',
-            to: 'clarity-ui/src/',
-            "from": {
-                "glob": "**/*.clarity.scss",
-                "dot": true
-            }
+            from: {
+                glob: "**/*.clarity.scss",
+                dot: true
+            },
+            to: 'clarity-ui/src/'
+        },
+        {
+            context: './src/clarity-angular',
+            from: 'main.scss',
+            to: 'clarity-ui/src/'
         },
         {
             context: './npm/',
             from: '**/*',
-            to: '',
             transform: function(content, path) {
                 return content.toString().replace(/@VERSION/g, require('./package.json').version);
             }

@@ -83,18 +83,20 @@ export default function(): void {
             context.detectChanges();
             expect(context.clarityDirective.open).toBe(false);
         });
-
     });
 }
 
 @Component({
     template: `
-        <div class="outside-click-test">
-            This is an area outside of the action overflow
-        </div>
-        <clr-dg-action-overflow [(clrDgActionOverflowOpen)]="open">
-            <button class="action-item">Hello world</button>
-        </clr-dg-action-overflow>`
+        <div>
+            <div class="outside-click-test">
+                This is an area outside of the action overflow
+            </div>
+            <clr-dg-action-overflow [(clrDgActionOverflowOpen)]="open">
+                <button class="action-item">Hello world</button>
+            </clr-dg-action-overflow>
+        </div>`
+
 })
 class SimpleTest {
     open: boolean;

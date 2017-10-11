@@ -152,6 +152,64 @@ export default function(): void {
                    expect(context.clarityDirective.selected).toBe(false);
                }));
 
+            it("selects the model on click only when `rowSelectionMode` is enabled (Single selection)", function() {
+                selectionProvider.selectionType = SelectionType.Single;
+                context.testComponent.item = {id: 1};
+                context.detectChanges();
+                const row = context.clarityElement;
+                row.click();
+                context.detectChanges();
+                expect(selectionProvider.currentSingle).toBeUndefined();
+
+                // Enabling the rowSelectionMode
+                selectionProvider.rowSelectionMode = true;
+                context.detectChanges();
+                row.click();
+                context.detectChanges();
+                expect(selectionProvider.currentSingle).toEqual(context.testComponent.item);
+            });
+
+            it("selects the model on click only when `rowSelectionMode` is enabled (Multi selection)", function() {
+                selectionProvider.selectionType = SelectionType.Multi;
+                context.testComponent.item = {id: 1};
+                context.detectChanges();
+                const row = context.clarityElement;
+                expect(selectionProvider.current).toEqual([]);
+                row.click();
+                context.detectChanges();
+                expect(selectionProvider.current).toEqual([]);
+
+                // Enabling the rowSelectionMode
+                selectionProvider.rowSelectionMode = true;
+                context.detectChanges();
+                row.click();
+                context.detectChanges();
+                expect(selectionProvider.current).toEqual([context.testComponent.item]);
+
+                row.click();
+                context.detectChanges();
+                expect(selectionProvider.current).toEqual([]);
+            });
+
+            it("select the model on space or enter when `rowSelectionMode` is enabled", function() {
+                selectionProvider.selectionType = SelectionType.Multi;
+                selectionProvider.rowSelectionMode = true;
+                context.testComponent.item = {id: 1};
+                const row = context.clarityElement;
+                context.detectChanges();
+
+                const event: any = new Event("keypress");
+                event.keyCode = 13;  // Enter
+                row.dispatchEvent(event);
+                context.detectChanges();
+                expect(selectionProvider.current).toEqual([context.testComponent.item]);
+
+                event.keyCode = 32;  // Space
+                row.dispatchEvent(event);
+                context.detectChanges();
+                expect(selectionProvider.current).toEqual([]);
+            });
+
             function flushAndAssertSelected(selected: boolean) {
                 context.detectChanges();
                 // ngModel is asynchronous, we need an extra change detection

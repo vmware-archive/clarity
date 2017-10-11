@@ -3,7 +3,17 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList} from "@angular/core";
+import {
+    AfterContentInit,
+    Component,
+    ContentChildren,
+    EventEmitter,
+    HostBinding,
+    HostListener,
+    Input,
+    Output,
+    QueryList
+} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
 import {Expand} from "../../utils/expand/providers/expand";
@@ -65,7 +75,11 @@ let nbRow: number = 0;
             <ng-content select="clr-dg-row-detail"></ng-content>
         </ng-template>
     `,
-    host: {"[class.datagrid-row]": "true", "[class.datagrid-selected]": "selected"},
+    host: {
+        "[class.datagrid-row]": "true",
+        "[class.datagrid-selected]": "selected",
+        "[attr.tabindex]": "selection.rowSelectionMode ? 0 : null"
+    },
     providers: [Expand, {provide: LoadingListener, useExisting: Expand}]
 })
 export class DatagridRow implements AfterContentInit {
@@ -74,15 +88,21 @@ export class DatagridRow implements AfterContentInit {
     /* reference to the enum so that template can access */
     public SELECTION_TYPE = SelectionType;
 
+    private readonly ENTER_KEY_CODE = 13;
+    private readonly SPACE_KEY_CODE = 32;
+
     /**
      * Model of the row, to use for selection
      */
     @Input("clrDgItem") item: any;
 
+    @HostBinding("attr.role") role: string;
+
     constructor(public selection: Selection, public rowActionService: RowActionService,
                 public globalExpandable: ExpandableRowsCount, public expand: Expand,
                 public hideableColumnService: HideableColumnService) {
         this.id = "clr-dg-row" + (nbRow++);
+        this.role = selection.rowSelectionMode ? "button" : null;
     }
 
     private _selected = false;
@@ -130,6 +150,40 @@ export class DatagridRow implements AfterContentInit {
         if (this.expand.expandable) {
             this.expanded = !this.expanded;
             this.expandedChange.emit(this.expanded);
+        }
+    }
+
+    @HostListener("click")
+    public toggleSelection() {
+        if (!this.selection.rowSelectionMode) {
+            return;
+        }
+
+        switch (this.selection.selectionType) {
+            case SelectionType.None:
+                break;
+            case SelectionType.Single:
+                this.selection.currentSingle = this.item;
+                break;
+            case SelectionType.Multi:
+                this.toggle();
+                break;
+            default:
+                break;
+        }
+    }
+
+    @HostListener("keypress", ["$event"])
+    public keypress(event: KeyboardEvent) {
+        if (!this.selection.rowSelectionMode) {
+            return;
+        }
+
+        // Check to see if space or enter were pressed
+        if (event.keyCode === this.ENTER_KEY_CODE || event.keyCode === this.SPACE_KEY_CODE) {
+            // Prevent the default action to stop scrolling when space is pressed
+            event.preventDefault();
+            this.toggleSelection();
         }
     }
 

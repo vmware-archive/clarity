@@ -79,6 +79,9 @@ export class Selection {
             this.current = [];
         }
     }
+
+    public rowSelectionMode: boolean = false;
+
     private get _selectable(): boolean {
         return (this._selectionType === SelectionType.Multi) || (this._selectionType === SelectionType.Single);
     }

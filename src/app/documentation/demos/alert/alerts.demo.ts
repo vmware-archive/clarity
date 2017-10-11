@@ -5,6 +5,8 @@
  */
 import {Component} from "@angular/core";
 import {ClarityDocComponent} from "../clarity-doc";
+import { ÇlrFocusTrapTracker } from "clarity-angular";
+import { DisableFocusTrap } from "../../utils/disable-focus-trap";
 
 @Component({
     selector: "clr-alerts-demo",
@@ -13,7 +15,8 @@ import {ClarityDocComponent} from "../clarity-doc";
     host: {
         "[class.content-area]": "true",
         "[class.dox-content-panel]": "true"
-    }
+    },
+    providers: [{provide: ÇlrFocusTrapTracker, useClass: DisableFocusTrap}]
 })
 export class AlertsDemo extends ClarityDocComponent {
     expanded: boolean = false;

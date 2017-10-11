@@ -33,7 +33,6 @@ Selected users: <span *ngFor="let user of selected">{{user.name}}</span>
 `;
 
 @Component({
-    moduleId: module.id,
     selector: "clr-datagrid-selection-row-mode-demo",
     providers: [Inventory],
     templateUrl: "selection-row-mode.html",

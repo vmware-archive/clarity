@@ -5,6 +5,11 @@
  */
 
 export class DisableFocusTrap {
+    constructor() {
+        if (document.activeElement) {
+            (<HTMLElement>document.activeElement).blur();
+        }
+    }
     get current() { return; }
     set current(value: any) {}
     activatePreviousTrapper() {}

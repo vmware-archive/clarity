@@ -20,6 +20,18 @@ const EXAMPLE = `
 Selected user: <span class="username" *ngIf="selectedUser">{{selectedUser.name}}</span>
 `;
 
+const ROW_SELECTION_EXAMPLE = `
+<clr-datagrid [(clrDgSingleSelected)]="selectedUser" [clDgRowSelection]="true">
+    <-- ... -->
+    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+        <-- ... -->
+    </clr-dg-row>
+   <-- ... -->
+</clr-datagrid>
+
+Selected user: <span class="username" *ngIf="selectedUser">{{selectedUser.name}}</span>
+`;
+
 @Component({
     moduleId: module.id,
     selector: "clr-datagrid-selection-single-demo",
@@ -29,8 +41,10 @@ Selected user: <span class="username" *ngIf="selectedUser">{{selectedUser.name}}
 })
 export class DatagridSelectionSingleDemo {
     example = EXAMPLE;
+    rowSelectionExample = ROW_SELECTION_EXAMPLE;
     users: User[];
     singleSelected: User;
+    rowSelected: User;
 
     constructor(private inventory: Inventory) {
         inventory.size = 10;

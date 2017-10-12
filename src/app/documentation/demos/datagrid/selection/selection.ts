@@ -26,6 +26,18 @@ const SINGLE_ROW_EXAMPLE = `
 </clr-dg-row>
 `;
 
+const SINGLE_SELECTION_EXAMPLE = `
+<clr-datagrid [(clrDgSingleSelected)]="selectedUser" [clDgRowSelection]="true">
+    <-- ... -->
+    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+        <-- ... -->
+    </clr-dg-row>
+   <-- ... -->
+</clr-datagrid>
+
+Selected user: <span class="username" *ngIf="selectedUser">{{selectedUser.name}}</span>
+`;
+
 @Component({
     selector: "clr-datagrid-selection-demo",
     providers: [Inventory],
@@ -34,9 +46,11 @@ const SINGLE_ROW_EXAMPLE = `
 })
 export class DatagridSelectionDemo {
     mainExample = MAIN_EXAMPLE;
+    rowSelectionExample = SINGLE_SELECTION_EXAMPLE;
     singleRowExample = SINGLE_ROW_EXAMPLE;
     users: User[];
     selected: User[] = [];
+    rowSelected: User[] = [];
 
     constructor(private inventory: Inventory) {
         inventory.size = 10;

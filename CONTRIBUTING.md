@@ -117,6 +117,10 @@ These documents provide guidance creating a well-crafted commit message:
  * [How to Write a Git Commit Message](http://chris.beams.io/posts/git-commit/)
  * [Closing Issues Via Commit Messages](https://help.github.com/articles/closing-issues-via-commit-messages/)
 
+#### Contributing to Documentation
+
+The [Clarity documentation website](https://vmware.github.io/clarity/documentation) is also housed in this repository under the `new-website` branch.  You can contribute to the documentation by submitting pull requests against that branch.
+
 ## Reporting Bugs and Creating Issues
 
 You can submit an issue or a bug to our [GitHub repository](https://github.com/vmware/clarity/issues).  You must provide:

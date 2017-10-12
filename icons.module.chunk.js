@@ -182,10 +182,10 @@ function View_IconsGetStartedComponent_0(_l) {
                 'https://embed.plnkr.co/d9YYiHRxxi6igd20YsgF/'], ['target', '_blank']], null, null, null, null, null)),
         (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['View\n        example'])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['\n'])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['\n\n'])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* ɵeld */](0, null, null, 1, 'h3', [['class', 'paragraph-header']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['Load Clarity Icons API and icon sets in Typescript:'])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['\n\n'])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* ɵeld */](0, null, null, 1, 'p', [], null, null, null, null, null)),
         (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['\n    It\'s easy to load Clarity Icons API and icon sets in Typescript.\n'])),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['\n\n'])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* ɵeld */](0, null, null, 10, 'clr-alert', [], null, null, null, __WEBPACK_IMPORTED_MODULE_4__gendir_node_modules_clarity_angular_clarity_angular_ngfactory__["P" /* View_Alert_0 */], __WEBPACK_IMPORTED_MODULE_4__gendir_node_modules_clarity_angular_clarity_angular_ngfactory__["a" /* RenderType_Alert */])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_39" /* ɵprd */](512, null, __WEBPACK_IMPORTED_MODULE_5_clarity_angular__["_102" /* ɵs */], __WEBPACK_IMPORTED_MODULE_5_clarity_angular__["_102" /* ɵs */], []),
-        __WEBPACK_IMPORTED_MODULE_1__angular_core__["_18" /* ɵdid */](49152, null, 0, __WEBPACK_IMPORTED_MODULE_5_clarity_angular__["a" /* Alert */], [__WEBPACK_IMPORTED_MODULE_5_clarity_angular__["_102" /* ɵs */]], { closable: [0, 'closable'] }, null),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['\n\n'])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* ɵeld */](0, null, null, 10, 'clr-alert', [], null, null, null, __WEBPACK_IMPORTED_MODULE_4__gendir_node_modules_clarity_angular_clarity_angular_ngfactory__["P" /* View_Alert_0 */], __WEBPACK_IMPORTED_MODULE_4__gendir_node_modules_clarity_angular_clarity_angular_ngfactory__["a" /* RenderType_Alert */])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_39" /* ɵprd */](512, null, __WEBPACK_IMPORTED_MODULE_5_clarity_angular__["_104" /* ɵs */], __WEBPACK_IMPORTED_MODULE_5_clarity_angular__["_104" /* ɵs */], []),
+        __WEBPACK_IMPORTED_MODULE_1__angular_core__["_18" /* ɵdid */](49152, null, 0, __WEBPACK_IMPORTED_MODULE_5_clarity_angular__["a" /* Alert */], [__WEBPACK_IMPORTED_MODULE_5_clarity_angular__["_104" /* ɵs */]], { closable: [0, 'closable'] }, null),
         (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](0, ['\n    '])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* ɵeld */](0, null, 0, 5, 'div', [['class',
-                'alert-item alert-item'], ['clr-alert-item', '']], null, null, null, __WEBPACK_IMPORTED_MODULE_4__gendir_node_modules_clarity_angular_clarity_angular_ngfactory__["O" /* View_AlertItem_0 */], __WEBPACK_IMPORTED_MODULE_4__gendir_node_modules_clarity_angular_clarity_angular_ngfactory__["b" /* RenderType_AlertItem */])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_18" /* ɵdid */](49152, null, 0, __WEBPACK_IMPORTED_MODULE_5_clarity_angular__["b" /* AlertItem */], [__WEBPACK_IMPORTED_MODULE_5_clarity_angular__["_102" /* ɵs */]], null, null), (_l()(),
+                'alert-item alert-item'], ['clr-alert-item', '']], null, null, null, __WEBPACK_IMPORTED_MODULE_4__gendir_node_modules_clarity_angular_clarity_angular_ngfactory__["O" /* View_AlertItem_0 */], __WEBPACK_IMPORTED_MODULE_4__gendir_node_modules_clarity_angular_clarity_angular_ngfactory__["b" /* RenderType_AlertItem */])), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_18" /* ɵdid */](49152, null, 0, __WEBPACK_IMPORTED_MODULE_5_clarity_angular__["b" /* AlertItem */], [__WEBPACK_IMPORTED_MODULE_5_clarity_angular__["_104" /* ɵs */]], null, null), (_l()(),
             __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](0, ['\n        '])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* ɵeld */](0, null, 0, 1, 'span', [['class',
                 'alert-text']], null, null, null, null, null)),
         (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['\n            One thing that should be noted here is that if you are loading Clarity Icons in Typescript,\n                make sure you are not loading it through the script tag again. Otherwise you will have two different\n                instances of Clarity Icons that override one another.\n        '])),
@@ -1310,7 +1310,7 @@ function View_IconsComponent_0(_l) {
                 ad = (pd_0 && ad);
             }
             return ad;
-        }, null, null)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_18" /* ɵdid */](1196032, null, 0, __WEBPACK_IMPORTED_MODULE_2_clarity_angular__["Z" /* NavLevelDirective */], [__WEBPACK_IMPORTED_MODULE_2_clarity_angular__["_68" /* ɵcv */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["p" /* ElementRef */]], { _level: [0, '_level'] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['\n            '])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* ɵeld */](0, null, null, 93, 'section', [['class', 'sidenav-content']], [[2, 'on-icon-sets', null], [2, 'sticky',
+        }, null, null)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_18" /* ɵdid */](212992, null, 0, __WEBPACK_IMPORTED_MODULE_2_clarity_angular__["Z" /* NavLevelDirective */], [__WEBPACK_IMPORTED_MODULE_2_clarity_angular__["_68" /* ɵcv */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["p" /* ElementRef */]], { _level: [0, '_level'] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['\n            '])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* ɵeld */](0, null, null, 93, 'section', [['class', 'sidenav-content']], [[2, 'on-icon-sets', null], [2, 'sticky',
                 null]], null, null, null, null)),
         (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['\n\n                '])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* ɵeld */](0, null, null, 37, 'section', [['class', 'nav-group']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['\n                    '])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* ɵeld */](0, null, null, 0, 'input', [['id', 'overview'], ['type', 'checkbox']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['\n                    '])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* ɵeld */](0, null, null, 1, 'label', [['for', 'overview']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['Overview'])),
         (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['\n                    '])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* ɵeld */](0, null, null, 29, 'ul', [['class', 'nav-list']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_42" /* ɵted */](null, ['\n                        '])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* ɵeld */](0, null, null, 7, 'li', [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* ɵeld */](0, null, null, 6, 'a', [['class',
@@ -1578,17 +1578,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 var IconsModuleNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ɵcmf */](__WEBPACK_IMPORTED_MODULE_1__app_icons_icons_module__["a" /* IconsModule */], [], function (_l) {
-    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵmod */]([__WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* ComponentFactoryResolver */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ɵCodegenComponentFactoryResolver */], [[8, [__WEBPACK_IMPORTED_MODULE_2__gendir_node_modules_clarity_angular_clarity_angular_ngfactory__["_28" /* ɵczNgFactory */], __WEBPACK_IMPORTED_MODULE_3__icons_component_ngfactory__["a" /* IconsComponentNgFactory */], __WEBPACK_IMPORTED_MODULE_4__icons_get_started_icons_get_started_component_ngfactory__["a" /* IconsGetStartedComponentNgFactory */],
+    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵmod */]([__WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* ComponentFactoryResolver */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ɵCodegenComponentFactoryResolver */], [[8, [__WEBPACK_IMPORTED_MODULE_2__gendir_node_modules_clarity_angular_clarity_angular_ngfactory__["_28" /* ɵdbNgFactory */], __WEBPACK_IMPORTED_MODULE_3__icons_component_ngfactory__["a" /* IconsComponentNgFactory */], __WEBPACK_IMPORTED_MODULE_4__icons_get_started_icons_get_started_component_ngfactory__["a" /* IconsGetStartedComponentNgFactory */],
                     __WEBPACK_IMPORTED_MODULE_5__icons_how_to_use_icons_how_to_use_component_ngfactory__["a" /* IconsHowToUseComponentNgFactory */], __WEBPACK_IMPORTED_MODULE_6__icons_api_icons_api_component_ngfactory__["a" /* IconsApiComponentNgFactory */], __WEBPACK_IMPORTED_MODULE_7__icons_sets_icons_sets_component_ngfactory__["a" /* IconsSetsComponentNgFactory */]]],
             [3, __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* ComponentFactoryResolver */]], __WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* NgModuleRef */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](4608, __WEBPACK_IMPORTED_MODULE_8__angular_common__["m" /* NgLocalization */], __WEBPACK_IMPORTED_MODULE_8__angular_common__["l" /* NgLocaleLocalization */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* LOCALE_ID */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](4608, __WEBPACK_IMPORTED_MODULE_9__angular_forms__["B" /* ɵi */], __WEBPACK_IMPORTED_MODULE_9__angular_forms__["B" /* ɵi */], []),
         __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](4608, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_26" /* ÇlrFocusTrapTracker */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_26" /* ÇlrFocusTrapTracker */], []),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](5120, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_68" /* ɵcv */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_69" /* ɵcw */], [[3, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_68" /* ɵcv */]]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_11__angular_router__["o" /* RouterModule */], __WEBPACK_IMPORTED_MODULE_11__angular_router__["o" /* RouterModule */], [[2, __WEBPACK_IMPORTED_MODULE_11__angular_router__["t" /* ɵa */]], [2, __WEBPACK_IMPORTED_MODULE_11__angular_router__["l" /* Router */]]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_8__angular_common__["b" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_8__angular_common__["b" /* CommonModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["m" /* ClrIconModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["m" /* ClrIconModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_28" /* ɵb */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_28" /* ɵb */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_96" /* ɵk */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_96" /* ɵk */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["j" /* ClrDropdownModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["j" /* ClrDropdownModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["e" /* ClrAlertModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["e" /* ClrAlertModule */], []),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](5120, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_68" /* ɵcv */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_71" /* ɵcy */], [[3, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_68" /* ɵcv */]]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_11__angular_router__["o" /* RouterModule */], __WEBPACK_IMPORTED_MODULE_11__angular_router__["o" /* RouterModule */], [[2, __WEBPACK_IMPORTED_MODULE_11__angular_router__["t" /* ɵa */]], [2, __WEBPACK_IMPORTED_MODULE_11__angular_router__["l" /* Router */]]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_8__angular_common__["b" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_8__angular_common__["b" /* CommonModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["m" /* ClrIconModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["m" /* ClrIconModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_28" /* ɵb */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_28" /* ɵb */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_98" /* ɵk */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_98" /* ɵk */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["j" /* ClrDropdownModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["j" /* ClrDropdownModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["e" /* ClrAlertModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["e" /* ClrAlertModule */], []),
         __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["k" /* ClrEmphasisModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["k" /* ClrEmphasisModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["l" /* ClrFormsModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["l" /* ClrFormsModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_9__angular_forms__["y" /* ɵba */], __WEBPACK_IMPORTED_MODULE_9__angular_forms__["y" /* ɵba */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_9__angular_forms__["k" /* FormsModule */], __WEBPACK_IMPORTED_MODULE_9__angular_forms__["k" /* FormsModule */], []),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["p" /* ClrLoadingModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["p" /* ClrLoadingModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_103" /* ɵt */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_103" /* ɵt */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_56" /* ɵce */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_56" /* ɵce */], []),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["p" /* ClrLoadingModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["p" /* ClrLoadingModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_105" /* ɵt */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_105" /* ɵt */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_56" /* ɵce */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_56" /* ɵce */], []),
         __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["i" /* ClrDatagridModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["i" /* ClrDatagridModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["u" /* ClrStackViewModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["u" /* ClrStackViewModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["y" /* ClrTreeViewModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["y" /* ClrTreeViewModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["h" /* ClrDataModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["h" /* ClrDataModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_60" /* ɵcl */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_60" /* ɵcl */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["r" /* ClrModalModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["r" /* ClrModalModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["o" /* ClrLoadingButtonModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["o" /* ClrLoadingButtonModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["f" /* ClrButtonGroupModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["f" /* ClrButtonGroupModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["g" /* ClrButtonModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["g" /* ClrButtonModule */], []),
         __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["v" /* ClrSyntaxHighlightModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["v" /* ClrSyntaxHighlightModule */], []),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_67" /* ɵcu */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_67" /* ɵcu */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["q" /* ClrMainContainerModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["q" /* ClrMainContainerModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["s" /* ClrNavigationModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["s" /* ClrNavigationModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_70" /* ɵcx */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_70" /* ɵcx */], []),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["w" /* ClrTabsModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["w" /* ClrTabsModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_77" /* ɵde */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_77" /* ɵde */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["n" /* ClrLayoutModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["n" /* ClrLayoutModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_87" /* ɵdp */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_87" /* ɵdp */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["x" /* ClrTooltipModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["x" /* ClrTooltipModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["t" /* ClrPopoverModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["t" /* ClrPopoverModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["z" /* ClrWizardModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["z" /* ClrWizardModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["d" /* ClarityModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["d" /* ClarityModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__app_utils_utils_module__["a" /* UtilsModule */], __WEBPACK_IMPORTED_MODULE_12__app_utils_utils_module__["a" /* UtilsModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_1__app_icons_icons_module__["a" /* IconsModule */], __WEBPACK_IMPORTED_MODULE_1__app_icons_icons_module__["a" /* IconsModule */], []),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_67" /* ɵcu */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_67" /* ɵcu */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["q" /* ClrMainContainerModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["q" /* ClrMainContainerModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["s" /* ClrNavigationModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["s" /* ClrNavigationModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_72" /* ɵcz */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_72" /* ɵcz */], []),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["w" /* ClrTabsModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["w" /* ClrTabsModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_79" /* ɵdg */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_79" /* ɵdg */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["n" /* ClrLayoutModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["n" /* ClrLayoutModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_89" /* ɵdr */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["_89" /* ɵdr */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["x" /* ClrTooltipModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["x" /* ClrTooltipModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["t" /* ClrPopoverModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["t" /* ClrPopoverModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["z" /* ClrWizardModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["z" /* ClrWizardModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["d" /* ClarityModule */], __WEBPACK_IMPORTED_MODULE_10_clarity_angular__["d" /* ClarityModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__app_utils_utils_module__["a" /* UtilsModule */], __WEBPACK_IMPORTED_MODULE_12__app_utils_utils_module__["a" /* UtilsModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_1__app_icons_icons_module__["a" /* IconsModule */], __WEBPACK_IMPORTED_MODULE_1__app_icons_icons_module__["a" /* IconsModule */], []),
         __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_11__angular_router__["j" /* ROUTES */], function () {
             return [[{ path: '', component: __WEBPACK_IMPORTED_MODULE_13__app_icons_icons_component__["b" /* IconsComponent */], children: [{ path: '', redirectTo: 'clarity-icons' },
                             { path: 'clarity-icons', component: __WEBPACK_IMPORTED_MODULE_14__app_icons_icons_get_started_icons_get_started_component__["a" /* IconsGetStartedComponent */] }, { path: 'how-to-use',
@@ -2666,7 +2666,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -2689,7 +2689,8 @@ exports.descriptorConfig = descriptorConfig;
 
 /***/ }),
 /* 1 */,
-/* 2 */
+/* 2 */,
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2977,7 +2978,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -3001,7 +3002,8 @@ exports.descriptorConfig = descriptorConfig;
 /***/ }),
 /* 1 */,
 /* 2 */,
-/* 3 */
+/* 3 */,
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3212,12 +3214,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 4:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3337,7 +3339,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3361,7 +3363,7 @@ exports.descriptorConfig = descriptorConfig;
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3488,7 +3490,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3512,7 +3514,7 @@ exports.descriptorConfig = descriptorConfig;
 
 /***/ }),
 
-/***/ 6:
+/***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3690,7 +3692,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3714,7 +3716,7 @@ exports.descriptorConfig = descriptorConfig;
 
 /***/ }),
 
-/***/ 7:
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

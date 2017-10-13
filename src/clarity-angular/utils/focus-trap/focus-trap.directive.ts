@@ -33,7 +33,9 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
     }
 
     public setPreviousFocus(): void {
-        this._previousActiveElement.focus();
+        if (this._previousActiveElement && this._previousActiveElement.focus) {
+            this._previousActiveElement.focus();
+        }
     }
 
     ngOnDestroy() {

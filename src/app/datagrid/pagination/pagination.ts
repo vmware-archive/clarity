@@ -26,6 +26,7 @@ const EXAMPLE = `
 export class DatagridPaginationDemo {
     example = EXAMPLE;
     users: User[];
+    expanded: false;
 
     constructor(private inventory: Inventory) {
         inventory.size = 103;

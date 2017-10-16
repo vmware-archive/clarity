@@ -3,7 +3,7 @@
     "version": "0.10.9",
     "private": true,
     "scripts": {
-        "start": "webpack-dev-server --port=4200 --host 0.0.0.0",
+        "start": "webpack-dev-server --port=4200 --host 0.0.0.0 --open",
         "clean": "del ./dist",
         "cpy": "cpy",
         "build": "npm-run-all clean build:angular webpack build:icons",

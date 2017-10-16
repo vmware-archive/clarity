@@ -4,12 +4,13 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, DebugElement} from "@angular/core";
+import {Component} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";  // Needed to recreate issue #1084
 
 import {ClrDatagridModule} from "../datagrid.module";
 import {TestContext} from "../helpers.spec";
+import {Page} from "../providers/page";
 
 import {DatagridHeaderRenderer} from "./header-renderer";
 import {DatagridMainRenderer} from "./main-renderer";
@@ -183,6 +184,75 @@ export default function(): void {
                 expect(organizer.widths[1].strict).toBe(false);
             });
         });
+
+        describe("scrollbar spy on page change", () => {
+            let context: TestContext<DatagridMainRenderer, DatagridHeightTest>;
+            let page: Page;
+            let organizer: DatagridRenderOrganizer;
+
+            beforeEach(function() {
+                context = this.create(DatagridMainRenderer, DatagridHeightTest);
+                page = context.getClarityProvider(Page);
+                organizer = context.getClarityProvider(DatagridRenderOrganizer);
+            });
+
+            it("scrollbar spy when the page has changed", () => {
+                let scrollSpyFlag: boolean = false;
+                organizer.scrollbar.subscribe(() => {
+                    scrollSpyFlag = true;
+                    console.log("Test");
+                });
+
+                context.detectChanges();
+                organizer.resize();
+
+                context.fixture.whenStable().then(() => {
+                    expect(scrollSpyFlag).toBe(true);
+                });
+
+                scrollSpyFlag = false;
+
+                page.next();
+                context.detectChanges();
+
+                context.fixture.whenStable().then(() => {
+                    expect(scrollSpyFlag).toBe(true);
+                });
+            });
+        });
+
+        describe("scrollbar spy on expandable rows", () => {
+            let context: TestContext<DatagridMainRenderer, DatagridScrollbarTest>;
+            let organizer: DatagridRenderOrganizer;
+
+            beforeEach(function() {
+                context = this.create(DatagridMainRenderer, DatagridScrollbarTest);
+                organizer = context.getClarityProvider(DatagridRenderOrganizer);
+            });
+
+            it("adds scrollbar when the rows are expanded", () => {
+                let scrollSpyFlag: boolean = false;
+                organizer.scrollbar.subscribe(() => {
+                    scrollSpyFlag = true;
+                });
+
+                context.detectChanges();
+                organizer.resize();
+
+                context.fixture.whenStable().then(() => {
+                    expect(scrollSpyFlag).toBe(true);
+                });
+
+                scrollSpyFlag = false;
+
+                context.testComponent.expand = true;
+                context.detectChanges();
+
+                context.fixture.whenStable().then(() => {
+                    expect(scrollSpyFlag).toBe(true);
+                });
+            });
+        });
     });
 }
 
@@ -283,4 +353,28 @@ class DatagridHeightTest {
             this.pageSize = 5;  // after 3rd click
         }
     }
+}
+
+@Component({
+    template: `
+        <clr-datagrid>
+            <clr-dg-column>Number</clr-dg-column>
+            <clr-dg-row *clrDgItems="let number of numbers">
+                <clr-dg-cell>{{number}}</clr-dg-cell>
+                <clr-dg-row-detail *clrIfExpanded="expand">
+                    Lorem ipsum...
+                </clr-dg-row-detail>
+            </clr-dg-row>
+
+            <clr-dg-footer>
+                <clr-dg-pagination [clrDgPageSize]="pageSize"></clr-dg-pagination>
+            </clr-dg-footer>
+        </clr-datagrid>
+    `
+})
+class DatagridScrollbarTest {
+    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    pageSize = 5;
+
+    expand: boolean = false;
 }

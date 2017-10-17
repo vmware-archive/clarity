@@ -45,7 +45,7 @@
         // IE & Firefox needs this
         min-height: 1px;
     }
-    .datagrid-head, .datagrid-body, .datagrid-row, .datagrid-column, .datagrid-cell {
+    .datagrid-head, .datagrid-body, .datagrid-row, .datagrid-column, .datagrid-cell, .datagrid-fixed-column {
         display: block;
     }
     .datagrid-table-wrapper {
@@ -120,6 +120,9 @@
             display: none;
         }
         .datagrid-placeholder-container {
+            display: none;
+        }
+        .datagrid-fixed-column {
             display: none;
         }
     }

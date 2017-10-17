@@ -37,6 +37,7 @@
         "role": "Developer",
         "blurb": "Jeeyun is working on clarityCORE, which encompasses various tools for building, developing, and shipping Clarity. She's also creating Clarity's Angular components and making sure that the components are beautiful as well as sensible and functional.",
         "img": "jeeyun.png",
+        "twitter": "jeeyunit",
         "workstreams": ["CR", "NG"]
     }, {
         "name": "Red Dolan",
@@ -50,12 +51,14 @@
         "role": "Visual Designer",
         "blurb": "Lilia researches what's needed for Clarity and delivers the visual designs.  She works on layout design, component design, and icons.",
         "img": "lilia.png",
+        "twitter": "lilkim439",
         "workstreams": ["UX"]
     }, {
         "name": "Shijir Tsogoo",
         "role": "Developer",
         "blurb": "Shijir recently graduated from the University of Washington. He creates Angular components for Clarity.",
         "img": "shijir.png",
+        "twitter": "ts_shijir",
         "workstreams": ["UI", "NG"]
     }, {
         "name": "Matt Hippely",

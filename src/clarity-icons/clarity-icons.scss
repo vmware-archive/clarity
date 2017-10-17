@@ -95,10 +95,12 @@ clr-icon {
     .clr-i-badge {
         @include setIconColor($clr-icon-color-danger);
     }
-    &>svg {
+    & > * {
         height: 100%;
         width: 100%;
         display: block;
+    }
+    & > svg {
         transition: inherit;
     }
     .clr-i-solid,

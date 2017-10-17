@@ -219,11 +219,11 @@ export class ColorPalette {
         {
             type: "Neutral-grey",
             colors: [
-                {value: "#747474", text: "light", primary: true},
+                {value: "#737373", text: "light", primary: true},
                 {value: "#313131", text: "light"},
                 {value: "#444444", text: "light"},
                 {value: "#565656", text: "light", bulleted: true},
-                {value: "#747474", text: "light"},
+                {value: "#737373", text: "light"},
                 {value: "#9A9A9A", text: "dark"},
                 {value: "#CCCCCC", text: "dark"},
                 {value: "#DDDDDD", text: "dark"},

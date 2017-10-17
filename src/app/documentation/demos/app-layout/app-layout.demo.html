@@ -182,9 +182,28 @@
         <p><img src="assets/images/documentation/app-layout/24_baseline.png?1481674789140619000" alt="24px Baseline" /></p>
 
         <h6 id="repeat-24px-in-your-layout">Repeat 24px in Your Layout</h6>
+        <p>
+            Calculate the vertical margins and padding between elements using the Clarity baseline.
+            A multiple of 24px can be a whole or half-ratio. Common numbers include: 6px, 12px, 18px,
+            24px, 30px, 36px, 42px, 48px, 54px, 60px, 66px, 72px.
+        </p>
 
-        <p>Calculate the vertical margins and padding between elements using the Clarity baseline. A multiple of 24px can be a whole or half-ratio. Common numbers include:</p>
 
-        <p>6 px, 12px, 18px, 24px, 30px, 36px, 42px, 48px, 54px, 60px, 66px, 72px</p>
+        <h6 id="rem-units">Changing vertical rhythm with rem</h6>
+        <p>
+            Clarity uses <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units" target="_blank">rem units</a> for its whitespace and sizing. If the 24px vertical baseline
+            is too large or too small for your needs, you can edit this globally across a Clarity application
+            by changing the <code class="clr-code">font-size</code> style of the <code class="clr-code">html</code>
+            element, as in the example below.
+        </p>
+
+        <clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>
+
+        <p>
+            Note that the declaration on the <code class="clr-code">html</code> selector needs to happen 
+            <em>after</em> the Clarity CSS has been loaded. Also note that the "grid" for Clarity layouts and
+            components is equal to one-fourth of the baseline. So instead of a 6px grid, the example above will
+            put your application on a 5px grid.
+        </p>
     </article>
 </clr-doc-wrapper>

@@ -6,6 +6,13 @@
 import {Component} from "@angular/core";
 import {ClarityDocComponent} from "../clarity-doc";
 
+const HTML_EXAMPLE = `
+html {
+    /* the following line of CSS would change Clarity to a 20px vertical rhythm with a 5px grid */
+    font-size: 20px;
+}
+`;
+
 @Component({
     selector: "clr-app-layout-demo",
     templateUrl: "./app-layout.demo.html",
@@ -18,4 +25,6 @@ export class AppLayoutDemo extends ClarityDocComponent {
     constructor() {
         super("app-layout");
     }
+
+    htmlExample = HTML_EXAMPLE;
 }

@@ -132,16 +132,20 @@
 //Nav
 //@import "./navbar/navbar.clarity"; //deleted
 @import "layout/nav/header.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity, layers.clarity
+
 @import "layout/nav/nav.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity, layers.clarity
+
 @import "layout/nav/subnav.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity, layers.clarity
+
 @import "layout/nav/sidenav.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity
+
 @import "layout/vertical-nav/vertical-nav.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity
+
 @import "layout/nav/responsive-nav.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity, layers.clarity
 
 //Progress Bars
 //depends on variables.clarity, helpers.clarity, color.clarity, cards.clarity
 @import "progress/progress-bars/progress-bars.clarity";
-
 //Spinners
 //depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, icons.clarity
 @import "progress/spinner/spinner.clarity";
@@ -156,12 +160,18 @@
 
 //Forms
 @import "./forms/utils/form-variables.clarity";
+
 @import "./forms/utils/mixins.clarity";
+
 @import "./forms/inputs.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
-@import "forms/checkbox/checkbox.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
-@import "./forms/radio.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
+
+@import "forms/checkbox/checkbox.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, form-variables.clarity
+
+@import "./forms/radio.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, form-variables.clarity
+
 @import "./forms/select.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity, icons.clarity, images.clarity
-@import "./forms/forms.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
+
+@import "./forms/forms.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, form-variables.clarity
 
 //Stack View
 //depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, forms.clarity

@@ -2,10 +2,10 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-$clr-modal-sm-width: baselineRem(12) !default;
-$clr-modal-md-width: baselineRem(24) !default;
-$clr-modal-lg-width: baselineRem(36) !default;
-$clr-modal-xl-width: baselineRem(48) !default;
+$clr-modal-sm-width: 12rem !default;
+$clr-modal-md-width: 24rem !default;
+$clr-modal-lg-width: 36rem !default;
+$clr-modal-xl-width: 48rem !default;
 
 .modal {
     position: fixed;
@@ -18,10 +18,10 @@ $clr-modal-xl-width: baselineRem(48) !default;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: $clr_baselineRem_2;
+    padding: 2rem;
 
     @media screen and (max-width: map-get($clr-breakpoints, small)) {
-        padding: $clr_baselineRem_0_5;
+        padding: 0.5rem;
     }
 }
 
@@ -57,23 +57,24 @@ $clr-modal-xl-width: baselineRem(48) !default;
 
 .modal-header {
     border-bottom: none;
-    padding: 0 0 $clr_baselineRem_1 0;
+    padding: 0 0 1rem 0;
 
     .modal-title {
         @include clr-getTypePropertiesForDomElement(modal_header, (color, font-size, font-family, font-weight, line-height, letter-spacing));
         margin: 0;
-        padding: 0 $clr-baselineRem_0_125;
+        padding: 0 0.125rem;
     }
 
     .close {
-        margin-top: 0;
-        font-size: rem(26/$clr-rem-denominator);
-        line-height: $clr_baselineRem_1;
+        margin-top: -0.0416667rem;
+        margin-right: -0.208333rem;
+        font-size: 1.0833rem;
+        line-height: 1rem;
 
         clr-icon {
             // per measurement, this results in an icon that is 16x16...
-            width: $clr_baselineRem_1;
-            height: $clr_baselineRem_1;
+            width: 1rem;
+            height: 1rem;
         }
     }
 }
@@ -84,7 +85,7 @@ $clr-modal-xl-width: baselineRem(48) !default;
     max-height: 70vh;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 0 $clr-baselineRem_0_125;
+    padding: 0 0.125rem;
 
     & > :first-child {
         margin-top: 0;
@@ -97,11 +98,11 @@ $clr-modal-xl-width: baselineRem(48) !default;
 .modal-footer {
     display: flex;
     justify-content: flex-end;
-    padding: $clr_baselineRem_1 0 0 0;
+    padding: 1rem 0 0 0;
 
     .btn {
         //switched right margin to left because footer is right aligned
-        margin: 0 0 0 $clr_baselineRem_0_5;
+        margin: 0 0 0 0.5rem;
     }
 }
 
@@ -115,11 +116,11 @@ and (orientation: landscape) {
 
 @media screen and (max-width: map-get($clr-breakpoints, small)) {
     .modal-content {
-        padding: $clr_baselineRem_0_5 0 $clr_baselineRem_0_5 $clr_baselineRem_1;
+        padding: 0.5rem 0 0.5rem 1rem;
     }
 
     .modal-header {
-        padding: 0 $clr_baselineRem_1 $clr_baselineRem_0_5 0;
+        padding: 0 1rem 0.5rem 0;
     }
 
     .modal-body {
@@ -127,7 +128,7 @@ and (orientation: landscape) {
     }
 
     .modal-footer {
-        padding: $clr_baselineRem_0_5 $clr_baselineRem_1 0 0;
+        padding: 0.5rem 1rem 0 0;
     }
 }
 

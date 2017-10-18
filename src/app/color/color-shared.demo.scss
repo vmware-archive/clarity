@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -6,15 +6,15 @@
 
 @mixin clrdemo-colorPaletteLabels {
     text-transform: uppercase;
-    font-size: 0.8rem;
-    line-height: 1.1rem;
-    font-weight: normal;
-    letter-spacing: 0.8;
+    font-size: 0.5rem;
+    line-height: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
 }
 
 @mixin clr-colordemo-hexContrastBlockStyles {
     display: block;
-    line-height: 80px;
+    line-height: 3.333333rem;
     font-size: 2rem;
 }
 
@@ -23,11 +23,10 @@
         content: '#{$color}';
         display: block;
         position: absolute;
-        bottom: 10px;
+        bottom: 0;
         width: 100%;
         text-align: center;
-        font-weight: 400;
-        letter-spacing: 0.08em;
+
         @if $textcolor != null {
             color: $textcolor;
         }
@@ -37,7 +36,7 @@
 }
 
 @mixin clr-colordemo-sharedContainerStyles {
-    font-size: 16px;
+    font-size: 0.666667rem;
     margin: 0;
     padding: 1.4rem;
 }
@@ -45,8 +44,8 @@
 @mixin clr-colordemo-sharedTableStyles {
     table {
         border-collapse: collapse;
-        min-width: 1140px;
-        min-width: 960px;
+        min-width: 47.5rem;
+        min-width: 40rem;
         width: 100%;
     }
 
@@ -57,7 +56,7 @@
     }
 
     td {
-        border: 1px solid clr-getColor(white);
+        border: $clr-default-borderwidth solid clr-getColor(white);
         vertical-align: middle;
         width: 8%;
         text-align: center;
@@ -69,10 +68,10 @@
 
 @mixin clr-colordemo-luminanceAndContrastTableStyles {
     th {
-        font-size: 11px; // TODO: convert to rem() function
+        font-size: 0.458333rem;
         color: clr-getColor(darker);
         text-transform: uppercase;
         background-color: clr-getColor(lighter);
-        padding: 8px;
+        padding: 0.333333rem;
     }
 }

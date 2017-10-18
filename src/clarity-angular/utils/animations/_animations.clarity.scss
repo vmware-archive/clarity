@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -12,11 +12,12 @@
  */
 
 $clr-animation-duration: 0.2s;
+$clr-animation-easing: ease-in-out;
 
 @include exports('animations.clarity') {
     .fade {
         opacity: 0;
-        transition: opacity $clr-animation-duration ease-in-out;
+        transition: opacity $clr-animation-duration $clr-animation-easing;
         will-change: opacity;
 
         &.in {
@@ -27,8 +28,8 @@ $clr-animation-duration: 0.2s;
     .fadeDown {
         opacity: 0;
         transform: translate(0, -25%);
-        transition: opacity $clr-animation-duration ease-in-out,
-        transform $clr-animation-duration ease-in-out;
+        transition: opacity $clr-animation-duration $clr-animation-easing,
+        transform $clr-animation-duration $clr-animation-easing;
         will-change: opacity, transform;
 
         &.in {

@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -10,12 +10,12 @@
         $select-after-hover-color: $gray-dark;
 
         select {
-            @include custom-inputs($clr-baselineRem_1);
-            @include clr-form-fields-appearance($clr-baselineRem_2_5, $clr-form-field-border-color);
+            @include custom-inputs(1rem);
+            @include clr-form-fields-appearance(2.5rem, $clr-form-field-border-color);
             @include input-border-bottom-animation();
 
             position: relative;
-            padding: 0 ($clr-dropdown-caret-icon-dimension + 2 * $clr_baselineRem_0_25) 0 $clr_baselineRem_0_25;
+            padding: 0 ($clr-dropdown-caret-icon-dimension + 0.5rem) 0 0.25rem;
             cursor: pointer;
             width: 100%;
             //Moves the :after pseudo element (arrow) to the back so that clicking over it activates
@@ -44,8 +44,9 @@
             content: '';
             height: $clr-dropdown-caret-icon-dimension;
             width: $clr-dropdown-caret-icon-dimension;
-            top: ($clr_baselineRem_1 - $clr-dropdown-caret-icon-dimension) / 2;
-            right: $clr_baselineRem_0_25;
+            top: (1rem - $clr-dropdown-caret-icon-dimension) / 2;
+            right: 0.25rem;
+            // TODO: get rid of generated icons
             background-image: generateCaretIcon();
             @include icon-background-styles();
             margin: 0;
@@ -86,10 +87,10 @@
 
         padding: 0;
         background: $clr-multiple-select-background;
-        border: 1px solid $clr-multiple-select-border-color;
+        border: $clr-default-borderwidth solid $clr-multiple-select-border-color;
         border-radius: $clr-default-borderradius;
         height: auto;
-        min-width: $clr_baselineRem_5;
+        min-width: 5rem;
 
         &:hover,
         &:active {
@@ -97,7 +98,7 @@
             border-color: $clr-multiple-select-border-color;
         }
         option {
-            padding: $clr-baselineRem_0_125 $clr-baselineRem_0_25;
+            padding: 0.125rem 0.25rem;
         }
     }
 }

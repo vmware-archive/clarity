@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -18,7 +18,7 @@ $clr-active-nav-link-shadow: 0 -3px 0 $action-blues-dark-midtone inset;
 
         .nav-item {
             display: inline-block;
-            margin-right: $clr_baselineRem_1;
+            margin-right: 1rem;
 
             &.active > .nav-link {
                 color: $clr-black;
@@ -31,14 +31,15 @@ $clr-active-nav-link-shadow: 0 -3px 0 $action-blues-dark-midtone inset;
 
             display: inline-block;
             color: $gray-dark;
-            padding: 0 $clr_baselineRem_0_125;
+            padding: 0 0.125rem;
             box-shadow: none;
             line-height: $clr-subnav-height;
 
             //Clarity Buttons as .nav-links in .nav
             &.btn {
                 text-transform: none;
-                margin: 0 0 -1px 0; //-1px to account for the border of the button
+                margin: 0;
+                margin-bottom: -1 * $clr-default-borderwidth; //-1px to account for the border of the button
                 border-radius: 0;
             }
 
@@ -67,7 +68,7 @@ $clr-active-nav-link-shadow: 0 -3px 0 $action-blues-dark-midtone inset;
 
             // When using clrTabLink directive, DOM has both .nav-link and .nav-item in the same elem
             &.nav-item {
-                margin-right: $clr_baselineRem_1;
+                margin-right: 1rem;
             }
         }
     }

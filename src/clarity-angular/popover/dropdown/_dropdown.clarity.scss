@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -72,15 +72,15 @@ $dropdown-white: clr-getColor(lightest);
         position: absolute;
         top: 100%;
         left: 0;
-        margin-top: 2px;
+        margin-top: 0.083333rem;
         display: flex;
         flex-direction: column;
         background: $dropdown-white;
-        padding: $clr_baselineRem_0_5 0;
-        border: 1px solid clr-getColor(light-midtone);
-        box-shadow: 0 1px 3px rgba(clr-getColor(dark), 0.25);
-        min-width: baselineRem(5);
-        max-width: baselineRem(15);
+        padding: 0.5rem 0;
+        border: $clr-default-borderwidth solid clr-getColor(light-midtone);
+        box-shadow: 0 $clr-default-borderwidth 0.125rem rgba(clr-getColor(dark), 0.25);
+        min-width: 5rem;
+        max-width: 15rem;
         border-radius: $clr-default-borderradius;
         visibility: hidden;
         z-index: map-get($clr-layers, dropdown-menu);
@@ -88,8 +88,8 @@ $dropdown-white: clr-getColor(lightest);
         .dropdown-header {
             @include clr-getTypePropertiesForDomElement(dropdown_header, (font-size, font-weight, letter-spacing));
             
-            padding: 0 $clr_baselineRem_0_5;
-            line-height: $clr_baselineRem_0_75;
+            padding: 0 0.5rem;
+            line-height: 0.75rem;
             margin: 0;
             color: clr-getColor(darkest);
 
@@ -120,7 +120,7 @@ $dropdown-white: clr-getColor(lightest);
             cursor: pointer;
             display: block;
             margin: 0;
-            padding: 1px $clr_baselineRem_1 0;
+            padding: $clr-rem-1px 1rem 0;
             width: 100%;
             text-transform: none;
 
@@ -134,16 +134,16 @@ $dropdown-white: clr-getColor(lightest);
             }
 
             &.expandable {
-                $clr-dropdown-caret-xOffset: baselineRem(8px / $clr-baselineRem_1);
+                $clr-dropdown-caret-xOffset: 0.333rem;
 
-                margin-right: $clr_baselineRem_1;
-                padding-right: $clr_baselineRem_0_5;
+                margin-right: 1rem;
+                padding-right: 0.5rem;
 
                 &:before {
                     content: '';
                     float: right;
-                    height: $clr_baselineRem_0_5;
-                    width: $clr_baselineRem_0_5;
+                    height: 0.5rem;
+                    width: 0.5rem;
                     transform: rotate(-90deg) translateX(-1 * $clr-dropdown-caret-xOffset);
                     background-image: generateCaretIcon();
                     @include icon-background-styles();
@@ -183,7 +183,7 @@ $dropdown-white: clr-getColor(lightest);
 
         .btn,
         .dropdown-item {
-            $adjusted_lineHeight: $clr_baselineRem_1_25;
+            $adjusted_lineHeight: 1.25rem;
             height: $adjusted_lineHeight;
             line-height: $adjusted_lineHeight;
         }
@@ -191,15 +191,15 @@ $dropdown-white: clr-getColor(lightest);
         @media screen and (max-width: map-get($clr-breakpoints, small)) {
             .btn,
             .dropdown-item {
-                $adjusted_lineHeight: $clr_baselineRem_1_5;
+                $adjusted_lineHeight: 1.5rem;
                 height: $adjusted_lineHeight;
                 line-height: $adjusted_lineHeight;
             }
         }
 
         .dropdown-divider {
-            border-bottom: 1px solid clr-getColor(light);
-            margin: $clr_baselineRem_0_25 0;
+            border-bottom: $clr-default-borderwidth solid clr-getColor(light);
+            margin: 0.25rem 0;
         }
     }
 
@@ -207,6 +207,8 @@ $dropdown-white: clr-getColor(lightest);
     .btn-group-overflow,
     .tabs-overflow,
     .dropdown {
+        $dropdown-menu-positional-nudge: 2 * $clr-rem-1px;
+
         &.open > .dropdown-menu,
         &.open > .dropdown-menu-wrapper > .dropdown-menu {
             visibility: visible;
@@ -216,7 +218,7 @@ $dropdown-white: clr-getColor(lightest);
         &.bottom-right > .dropdown-menu {
             top: 100%;
             bottom: auto;
-            margin: 2px 0 0 0;
+            margin: $dropdown-menu-positional-nudge 0 0 0;
         }
 
         &.bottom-left > .dropdown-menu {
@@ -233,7 +235,7 @@ $dropdown-white: clr-getColor(lightest);
         &.top-right > .dropdown-menu {
             top: auto;
             bottom: 100%;
-            margin: 0 0 2px 0;
+            margin: 0 0 $dropdown-menu-positional-nudge 0;
         }
 
         &.top-left > .dropdown-menu {
@@ -250,7 +252,7 @@ $dropdown-white: clr-getColor(lightest);
         &.left-bottom > .dropdown-menu {
             right: 100%;
             left: auto;
-            margin: 0 2px 0 0;
+            margin: 0 $dropdown-menu-positional-nudge 0 0;
         }
 
         &.left-bottom > .dropdown-menu {
@@ -267,7 +269,7 @@ $dropdown-white: clr-getColor(lightest);
         &.right-bottom > .dropdown-menu {
             left: 100%;
             right: auto;
-            margin: 0 0 0 2px;
+            margin: 0 0 0 $dropdown-menu-positional-nudge;
         }
 
         &.right-bottom > .dropdown-menu {
@@ -282,7 +284,9 @@ $dropdown-white: clr-getColor(lightest);
 
         // nested dropdown (submenu)
         .dropdown {
-            $clr-dropdown-submenu-overlap-margin: baselineRem(4px / $clr-baselineRem_1);
+            $clr-dropdown-submenu-overlap-margin: -0.166667rem;
+            $clr-dropdown-submenu-vertical-margin: (-1 * 0.75rem) - $clr-rem-1px;
+            // -1 is to account for the border that shifts the menu down by 1 pixel
 
             .dropdown-menu {
                 border-color: $clr-dark-midtone-gray;
@@ -296,9 +300,8 @@ $dropdown-white: clr-getColor(lightest);
                     bottom: auto;
                     left: auto;
                     right: 100%;
-                    // -1 is to account for the border that shifts the menu down by 1 pixel
-                    margin-top: (-1 * $clr_baselineRem_0_75) - 1;
-                    margin-right: -1 * $clr-dropdown-submenu-overlap-margin;
+                    margin-top: $clr-dropdown-submenu-vertical-margin;
+                    margin-right: $clr-dropdown-submenu-overlap-margin;
                 }
             }
             &.right-top {
@@ -308,9 +311,8 @@ $dropdown-white: clr-getColor(lightest);
                     bottom: auto;
                     left: 100%;
                     right: auto;
-                    // -1 is to account for the border that shifts the menu down by 1 pixel
-                    margin-top: (-1 * $clr_baselineRem_0_75) - 1;
-                    margin-left: -1 * $clr-dropdown-submenu-overlap-margin;
+                    margin-top: $clr-dropdown-submenu-vertical-margin;
+                    margin-left: $clr-dropdown-submenu-overlap-margin;
                 }
             }
             &.left-bottom {
@@ -320,9 +322,8 @@ $dropdown-white: clr-getColor(lightest);
                     bottom: 0;
                     left: auto;
                     right: 100%;
-                    // -1 is to account for the border that shifts the menu down by 1 pixel
-                    margin-bottom: (-1 * $clr_baselineRem_0_75) - 1;
-                    margin-right: -1 * $clr-dropdown-submenu-overlap-margin;
+                    margin-bottom: $clr-dropdown-submenu-vertical-margin;
+                    margin-right: $clr-dropdown-submenu-overlap-margin;
                 }
             }
             &.right-bottom {
@@ -332,9 +333,8 @@ $dropdown-white: clr-getColor(lightest);
                     bottom: 0;
                     left: 100%;
                     right: auto;
-                    // -1 is to account for the border that shifts the menu down by 1 pixel
-                    margin-bottom: (-1 * $clr_baselineRem_0_75) - 1;
-                    margin-left: -1 * $clr-dropdown-submenu-overlap-margin;
+                    margin-bottom: $clr-dropdown-submenu-vertical-margin;
+                    margin-left: $clr-dropdown-submenu-overlap-margin;
                 }
             }
 

@@ -1,12 +1,12 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @include exports("inputs.clarity") {
     #{$styledInputs} {
-        @include custom-inputs($clr-baselineRem_1);
-        @include clr-form-fields-appearance($clr-baselineRem_2_5, $clr-form-field-border-color);
-        padding: 0 $clr_baselineRem_0_25;
+        @include custom-inputs(1rem);
+        @include clr-form-fields-appearance(2.5rem, $clr-form-field-border-color);
+        padding: 0 0.25rem;
 
         &:not([readonly]) {
             @include input-border-bottom-animation();
@@ -28,9 +28,9 @@
     textarea {
         resize: vertical;
         width: 100%;
-        border: 1px solid $gray-light-midtone;
+        border: $clr-default-borderwidth solid $gray-light-midtone;
         border-radius: $clr-default-borderradius;
-        padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
+        padding: 0.5rem 0.25rem;
 
         &:focus {
             @include include-outline-style-form-fields();

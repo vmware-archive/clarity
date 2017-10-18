@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -23,10 +23,10 @@ $clr-list-style-padding: 1.1em;
             margin-left: $clr-list-style-padding;
 
             &.compact {
-                line-height: $clr_baselineRem_0_75;
+                line-height: 0.75rem;
 
                 & > li {
-                    margin-bottom: $clr_baselineRem_0_25;
+                    margin-bottom: 0.25rem;
 
                     &:last-child {
                         margin-bottom: 0;
@@ -61,7 +61,7 @@ $clr-list-style-padding: 1.1em;
 
     ul, ol {
         &.list-spacer {
-            margin-top: $clr_baselineRem_1;
+            margin-top: 1rem;
         }
     }
 }

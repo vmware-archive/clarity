@@ -15,11 +15,11 @@ p.card-swatch {
     background: #ccc;
     color: #000;
     margin: 0;
-    padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
-    font-size: 16px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.666667rem;
 
     &.upsize {
-        padding-top: $clr_baselineRem_2;
+        padding-top: 2rem;
     }
 
     &:before,
@@ -34,7 +34,7 @@ p.card-swatch {
         float: left;
         & > span {
             color: black;
-            padding-left: 3px;
+            padding-left: 0.125rem;
         }
     }
 
@@ -56,6 +56,6 @@ p.card-swatch {
 }
 
 .card-swatch-divider {
-    height: $clr_baselineRem_0_5;
+    height: 0.5rem;
 }
 

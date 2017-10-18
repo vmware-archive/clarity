@@ -22,7 +22,7 @@
     width: $height;
 }
 
-@mixin checkbox-radio-label-styles($min-height, $padding-left, $line-height: $clr_baselineRem_1) {
+@mixin checkbox-radio-label-styles($min-height, $padding-left, $line-height: 1rem) {
     //Positioning
     position: relative;
 
@@ -45,7 +45,7 @@
     display: inline-block;
     height: $height;
     width: $height;
-    border: 1px solid $border-color;
+    border: $clr-default-borderwidth solid $border-color;
 }
 
 //Standard Clarity Input Bottom Border Animation
@@ -56,7 +56,7 @@
     transition: background-size 0.2s ease;
 
     &:focus {
-        border-bottom: 1px solid $border-color;
+        border-bottom: $clr-default-borderwidth solid $border-color;
         background-size: 100% 100%;
     }
 }
@@ -79,5 +79,5 @@
 @mixin clr-form-fields-appearance($min-width, $border-bottom-width) {
     display: inline-block;
     min-width: $min-width;
-    border-bottom: 1px solid $border-bottom-width;
+    border-bottom: $clr-default-borderwidth solid $border-bottom-width;
 }

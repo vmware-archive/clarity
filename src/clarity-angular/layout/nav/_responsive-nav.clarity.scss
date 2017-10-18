@@ -1,17 +1,19 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 $clr-sliding-panel-text-color: clr-getTextColor();
-$clr-sliding-panel-width: baselineRem(15);
-$clr-sliding-panel-width-sm: baselineRem(12);
-$clr-trigger-position: $clr-sliding-panel-width + $clr_baselineRem_0_5;
-$clr-trigger-position-sm: $clr-sliding-panel-width-sm + $clr_baselineRem_0_5;
+$clr-sliding-panel-width: 15rem;
+$clr-sliding-panel-width-sm: 12rem;
+$clr-trigger-position: $clr-sliding-panel-width + 0.5rem;
+$clr-trigger-position-sm: $clr-sliding-panel-width-sm + 0.5rem;
 $clr-sliding-panel-z-index: map-get($clr-layers, sidepanel);
 $clr-sliding-panel-backdrop-z-index: map-get($clr-layers, sidepanel-bg);
 $clr-sliding-transition-time: 0.3s;
 $clr-transition-style: ease;
 $clr-nav-background-color: $clr-light-gray;
+$clr-trigger-animation: transform (2 * $clr-sliding-transition-time) $clr-transition-style;
+$clr-sliding-panel-animation: transform $clr-sliding-transition-time $clr-transition-style;
 
 @mixin sliding-nav-positioning($top: 0, $right: auto, $bottom: 0, $left: 0) {
     display: flex;
@@ -33,7 +35,7 @@ $clr-nav-background-color: $clr-light-gray;
     left: $left;
     z-index: $clr-sliding-panel-z-index;
     transform: translateX($transformX);
-    transition: transform $clr-sliding-transition-time $clr-transition-style;
+    transition: $clr-trigger-animation;
 
     &::after {
         content: none;
@@ -46,9 +48,9 @@ $clr-nav-background-color: $clr-light-gray;
 
         &::before,
         &::after {
-            left: 3px;
+            left: 0.125rem;
             transform-origin: 9%;
-            transition: transform 2 * $clr-sliding-transition-time $clr-transition-style;
+            transition: $clr-trigger-animation;
         }
 
         &::before {
@@ -67,11 +69,11 @@ $clr-nav-background-color: $clr-light-gray;
 
         &::before,
         &::after {
-            height: 2px;
-            width: $clr_baselineRem_1;
-            left: -6px;
+            height: 0.0833333rem;
+            width: 1rem;
+            left: -0.25rem;
             transform-origin: -3%;
-            transition: transform (2 * $clr-sliding-transition-time) $clr-transition-style;
+            transition: $clr-trigger-animation;
         }
 
         &::before {
@@ -92,14 +94,16 @@ $clr-nav-background-color: $clr-light-gray;
     }
 
     .header-hamburger-trigger {
+        $trigger-span-psuedo-positioning: -0.291667rem;
+
         & > span,
         & > span::before,
         & > span::after {
             display: inline-block;
-            height: 2px;
-            width: $clr_baselineRem_1;
+            height: 0.0833333rem;
+            width: 1rem;
             background: $clr-white;
-            border-radius: 3px;
+            border-radius: 0.125rem;
         }
 
         & > span {
@@ -114,11 +118,11 @@ $clr-nav-background-color: $clr-light-gray;
             }
 
             &::before {
-                top: -7px;
+                top: $trigger-span-psuedo-positioning;
             }
 
             &::after {
-                bottom: -7px;
+                bottom: $trigger-span-psuedo-positioning;
             }
         }
 
@@ -128,14 +132,16 @@ $clr-nav-background-color: $clr-light-gray;
     }
 
     .header-overflow-trigger {
+        $overflow-trigger-psuedo-positioning: -0.333333rem;
+
         & > span,
         & > span::before,
         & > span::after {
             display: inline-block;
-            height: 4px;
-            width: 4px;
+            height: 0.166667rem;
+            width: 0.166667rem;
             background: $clr-white;
-            border-radius: 4px;
+            border-radius: 0.166667rem;
         }
 
         & > span {
@@ -150,11 +156,11 @@ $clr-nav-background-color: $clr-light-gray;
             }
 
             &::before {
-                top: -8px;
+                top: $overflow-trigger-psuedo-positioning;
             }
 
             &::after {
-                bottom: -8px;
+                bottom: $overflow-trigger-psuedo-positioning;
             }
         }
 
@@ -173,15 +179,16 @@ $clr-nav-background-color: $clr-light-gray;
                 border: none;
                 background: none;
                 cursor: pointer;
-                font-size: $clr_baselineRem_1;
+                font-size: 1rem;
                 height: $clr-header-height;
                 width: $clr-header-height;
-                padding: 0 0 4px 0; //4px to vertically align the trigger lines. display flex was not working on all browsers.
+                padding: 0 0 0.166667rem 0;
+                //4px to vertically align the trigger lines. display flex was not working on all browsers.
                 text-align: center;
                 white-space: nowrap;
 
                 &:focus {
-                    outline-offset: -5px; //So that the outline styles aren't hidden because of the browser
+                    outline-offset: -0.208333rem; //So that the outline styles aren't hidden because of the browser
                 }
 
                 @include header-nav-appearance();
@@ -194,7 +201,7 @@ $clr-nav-background-color: $clr-light-gray;
             .clr-vertical-nav.clr-nav-level-1 {
                 @include sliding-nav-positioning();
                 transform: translateX(-1 * $clr-sliding-panel-width);
-                transition: transform $clr-sliding-transition-time $clr-transition-style;
+                transition: $clr-sliding-panel-animation;
             }
 
             .header-nav.clr-nav-level-2,
@@ -204,7 +211,7 @@ $clr-nav-background-color: $clr-light-gray;
             .clr-vertical-nav.clr-nav-level-2 {
                 @include sliding-nav-positioning(0, 0, 0, auto);
                 transform: translateX($clr-sliding-panel-width);
-                transition: transform $clr-sliding-transition-time $clr-transition-style;
+                transition: $clr-sliding-panel-animation;
             }
 
             .subnav.clr-nav-level-1,
@@ -225,16 +232,17 @@ $clr-nav-background-color: $clr-light-gray;
 
                 //Such deep nesting is unfortunately required here because we don't want
                 //navs which are not subnav to behave in a similar way.
+                // TODO: more specificity in classname is preferable to nesting...
                 .nav {
                     padding-left: 0;
 
                     .nav-item {
-                        height: $clr_baselineRem_1_5;
+                        height: 1.5rem;
                         margin-right: 0;
                     }
 
                     .nav-link {
-                        padding: 0 $clr_baselineRem_0_5 0  $clr_baselineRem_1;
+                        padding: 0 0.5rem 0 1rem;
                         width: 100%;
                         max-width: 100%;
                         overflow: hidden;
@@ -288,7 +296,7 @@ $clr-nav-background-color: $clr-light-gray;
 
             .header {
                 .branding {
-                    max-width: baselineRem(10);
+                    max-width: 10rem;
                     min-width: 0;
                     overflow: hidden;
                 }
@@ -296,7 +304,7 @@ $clr-nav-background-color: $clr-light-gray;
                 .header-hamburger-trigger + .branding {
                     padding-left: 0;
 
-                    //deprecate .clr-icon, .logo
+                    //TODO: deprecate .clr-icon, .logo
                     .clr-icon,
                     .logo,
                     clr-icon {
@@ -339,12 +347,12 @@ $clr-nav-background-color: $clr-light-gray;
                             }
 
                             .nav-text {
-                                $nav-text-height: $clr_baselineRem_1;
+                                $nav-text-height: 1rem;
 
                                 display: inline-block;
                                 color: $clr-sliding-panel-text-color;
                                 line-height: $nav-text-height;
-                                padding: $clr_baselineRem_0_25 0 $clr_baselineRem_0_25 $clr_baselineRem_1;
+                                padding: 0.25rem 0 0.25rem 1rem;
                                 white-space: normal;
                                 font-weight: normal;
                             }
@@ -379,7 +387,7 @@ $clr-nav-background-color: $clr-light-gray;
                         width: $clr-sliding-panel-width;
                         max-width: $clr-sliding-panel-width;
                         z-index: $clr-sliding-panel-z-index + 1;
-                        padding-left: $clr_baselineRem_1;
+                        padding-left: 1rem;
 
                         & > .nav-link {
                             overflow: hidden;
@@ -416,12 +424,12 @@ $clr-nav-background-color: $clr-light-gray;
                 .sub-nav.clr-nav-level-1,
                 .sidenav.clr-nav-level-1,
                 .clr-vertical-nav.clr-nav-level-1 {
-                    padding-top: $clr-header-height + $clr_baselineRem_1;
+                    padding-top: $clr-header-height + 1rem;
                     transform: translateX(0);
-                    transition: transform $clr-sliding-transition-time $clr-transition-style;
+                    transition: $clr-sliding-panel-animation;
 
                     .sidenav-content {
-                        margin-bottom: $clr_baselineRem_1;
+                        padding-bottom: 1rem;
                     }
                 }
             }
@@ -433,13 +441,13 @@ $clr-nav-background-color: $clr-light-gray;
                 .sidenav.clr-nav-level-2,
                 .clr-vertical-nav.clr-nav-level-2 {
                     transform: translateX(0);
-                    transition: transform $clr-sliding-transition-time $clr-transition-style;
+                    transition: $clr-sliding-panel-animation;
                 }
 
                 .header-nav.clr-nav-level-2,
                 .subnav.clr-nav-level-2,
                 .sub-nav.clr-nav-level-2 {
-                    padding-top: $clr_baselineRem_1;
+                    padding-top: 1rem;
                 }
 
                 .header-overflow-trigger {
@@ -477,7 +485,7 @@ $clr-nav-background-color: $clr-light-gray;
 
             .header {
                 .branding {
-                    max-width: baselineRem(6);
+                    max-width: 6rem;
                     min-width: 0;
                     overflow: hidden;
                 }

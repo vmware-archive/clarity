@@ -5,24 +5,24 @@
 // variables here...
 $clr-header-bgColor: $gray-darkest !default;
 $clr-header-textColor: clr-getTextColor($clr-header-bgColor, lightest);
-$clr-logo-width: $clr_baselineRem_1_5;
-$clr-nav-icon-size: rem(22/$clr-rem-denominator);
-$clr-header-section-divider-height: 40px;
-$clr-search-icon-width: 20px;
+$clr-logo-width: 1.5rem;
+$clr-nav-icon-size: 0.916667rem;
+$clr-header-section-divider-height: 1.666667rem;
+$clr-search-icon-width: 0.833333rem;
 $clr-header-divider-opacity: 0.15;
 $clr-header-nav-opactiy: 0.65;
 $clr-header-nav-hover-opacity: 1;
-$clr-header-outline-offset: -5px;
-$clr-header-clarity-icons-size: $clr_baselineRem_1;
-$clr-header-dropdown-caret-distance: 2px;
-$clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
+$clr-header-outline-offset: -0.208333rem;
+$clr-header-clarity-icons-size: 1rem;
+$clr-header-dropdown-caret-distance: 0.0833333rem;
+$clr-header-nav-text-horizontal-padding: 1rem;
 
 @mixin header-section-divider() {
     display: inline-block;
     background: $clr-header-textColor;
     opacity: $clr-header-divider-opacity;
     height: $clr-header-section-divider-height;
-    width: 1px;
+    width: $clr-default-borderwidth;
     top: ($clr-header-height - $clr-header-section-divider-height) / 2;
 }
 
@@ -174,8 +174,8 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
         .branding {
             display: flex;
             flex: 0 0 auto;
-            min-width: baselineRem(8.5);
-            padding: 0 $clr_baselineRem_1;
+            min-width: 8.5rem;
+            padding: 0 1rem;
 
             & > a,
             & > .nav-link {
@@ -195,7 +195,7 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
                 flex-shrink: 0;
                 height: $clr-logo-width;
                 width: $clr-logo-width;
-                margin-right: $clr_baselineRem_0_375;
+                margin-right: 0.375rem;
             }
 
             //product title
@@ -248,19 +248,19 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
             display: flex;
             align-items: center;
             flex: 0 0 auto;
-            max-width: baselineRem(12);
+            max-width: 12rem;
             padding: 0;
             @include header-nav-appearance();
 
             & > .nav-icon {
-                margin: 0 $clr_baselineRem_0_25 $clr_baselineRem_0_125 $clr_baselineRem_1;
+                margin: 0 0.25rem 0.125rem 1rem;
             }
 
             label {
                 display: inline-block;
                 height: $clr-header-height;
                 line-height: $clr-header-height;
-                padding-left: $clr_baselineRem_1;
+                padding-left: 1rem;
                 text-align: center;
 
                 &::before {
@@ -272,12 +272,12 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
                     cursor: pointer;
                     height: $clr-search-icon-width;
                     width: $clr-search-icon-width;
-                    margin: ($clr-header-height - $clr-search-icon-width) / 2 0 0 0;
+                    margin: 0.83335rem 0 0 0;
                     vertical-align: top;
                 }
 
                 input {
-                    line-height: $clr_baselineRem_1;
+                    line-height: 1rem;
                 }
             }
 
@@ -306,7 +306,7 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
 
             //Reduce nesting from 5 to 3 at the most
             & > .dropdown {
-                $clr-header-action-caret-icon-right-position: $clr_baselineRem_0_5;
+                $clr-header-action-caret-icon-right-position: 0.5rem;
 
                 & > .dropdown-toggle {
                     position: relative;
@@ -323,17 +323,16 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
                     transform: translateY(-50%);
 
                     //Dropdown icons are 2px smaller
-                    height: $clr-header-clarity-icons-size - 2;
-                    width: $clr-header-clarity-icons-size - 2;
-                    //2px is the distance between the caret and the icon
-                    right: ($clr-dropdown-caret-icon-dimension + $clr-header-action-caret-icon-right-position + $clr-header-dropdown-caret-distance);
+                    height: 0.916667rem;
+                    width: 0.916667rem;
+                    right: 1rem;
                 }
 
                 .dropdown-toggle.nav-icon clr-icon[shape^="caret"] {
                     right: $clr-header-action-caret-icon-right-position;
                 }
 
-                $dropdown-nav-text-dist: $clr-header-nav-text-horizontal-padding + $clr-dropdown-caret-icon-dimension + $clr-header-dropdown-caret-distance;
+                $dropdown-nav-text-dist: 1.5rem;
                 .dropdown-toggle.nav-text {
                     padding: 0 $dropdown-nav-text-dist 0 $clr-header-nav-text-horizontal-padding;
 
@@ -357,13 +356,13 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
                 //Last Dropdown Menu adjustments so that the menu has some space
                 //between itself and the right end of the browser window
                 &:last-child.bottom-right > .dropdown-menu {
-                    right: $clr_baselineRem_0_125;
+                    right: 0.125rem;
                 }
 
                 //Pull the dropdown menus of all dropdowns up to compensate
                 //for the height of the header.
                 .dropdown-menu {
-                    margin-top: -1 * baselineRem(4/24);
+                    margin-top: -0.166667rem;
                     // TODO: As of 0.10.0 the dropdown-menu inside header without clrIfOpen directive (legacy)
                     // will create empty space beyond the .main-container if the right isn't set to zero.
                     // Re-evaluate later if we can come up with a better solution.
@@ -374,7 +373,7 @@ $clr-header-nav-text-horizontal-padding: $clr_baselineRem_1;
                 //Last Dropdown Menu adjustments so that the menu has some space
                 //between itself and the right end of the browser window
                 :last-child.dropdown-menu {
-                    margin-right: $clr_baselineRem_0_3;
+                    margin-right: 0.333333rem;
                 }
             }
         }

@@ -1,4 +1,4 @@
-// Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -21,7 +21,7 @@
 
 // return false to bypass; return null forces warning that there was no contrast for color;
 @function clr-getTextContrastFromCache($color: $clr-white, $tone:  darkest, $failThreshold:  4.50) {
-    $originalGrays: (#fff, #fafafa, #eee, #ddd, #ccc, #9a9a9a, #747474, #565656, #313131, #000);
+    $originalGrays: (#fff, #fafafa, #eee, #ddd, #ccc, #9a9a9a, #737373, #565656, #313131, #000);
     $failThresholdLabel: default;
 
     @if not(map-get($clr-grays, hex-colors) == $originalGrays) {
@@ -119,6 +119,7 @@
 }
 
 // types of text color you can ask for include: text, subtext, black, white, lightest, darkest, hover-text, hover-text-hovered, hover-text-active, and hover-text-clicked
+
 @function clr-getTextColor($background: clr-getColor(lightest), $preferredType: text, $textWeight: normal, $textSize: normal, $preferredColor: grays) {
     $failThreshold: _clr-getContrastFailThreshold($textWeight, $textSize);
 

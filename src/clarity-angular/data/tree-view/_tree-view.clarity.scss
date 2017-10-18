@@ -7,17 +7,17 @@ $clr-tree-border-radius: $clr-default-borderradius;
 $clr-tree-caret-size: $clr-icon-dimension-sm;
 $clr-tree-spinner-size: $clr-icon-dimension-sm;
 
-$clr-tree-node-touch-target: $clr_baselineRem_1_25;
-$clr-tree-node-children-margin: $clr-tree-node-touch-target - $clr-tree-caret-size / 2 - 1;
+$clr-tree-node-touch-target: 1.25rem;
+$clr-tree-node-children-margin: $clr-tree-node-touch-target - $clr-tree-caret-size / 2 - $clr-rem-1px;
 
-$clr-tree-node-touch-target-big: $clr_baselineRem_1_5;
-$clr-tree-node-children-margin-big: $clr-tree-node-touch-target-big - $clr-tree-caret-size / 2 - 1;
+$clr-tree-node-touch-target-big: 1.5rem;
+$clr-tree-node-children-margin-big: $clr-tree-node-touch-target-big - $clr-tree-caret-size / 2 - $clr-rem-1px;
 
-$clr-tree-node-touch-target-small: $clr_baselineRem_1;
-$clr-tree-node-children-margin-small: $clr-tree-node-touch-target-small - $clr-tree-caret-size / 2 - 1;
+$clr-tree-node-touch-target-small: 1rem;
+$clr-tree-node-children-margin-small: $clr-tree-node-touch-target-small - $clr-tree-caret-size / 2 - $clr-rem-1px;
 
-$clr-tree-node-content-icon-margin-right: $clr-baselineRem_0_25;
-$clr-tree-node-link-padding-left: $clr-baselineRem_0_25;
+$clr-tree-node-content-icon-margin-right: 0.25rem;
+$clr-tree-node-link-padding-left: 0.25rem;
 
 $clr-tree-node-caret-link-hover-color: $clr-black;
 $clr-tree-link-hover-color: $clr-custom-links-hover-color;
@@ -183,6 +183,22 @@ $clr-tree-checkbox-padding-left: ($clr-tree-node-touch-target - $clr-checkbox-ra
         //States
         &:first-child {
             margin-left: $clr-tree-node-touch-target;
+        }
+    }
+
+    .clr-treenode-content .label {
+        margin-left: 0.25rem;
+    }
+
+    @include fixForMsEdge {
+        .clr-treenode-content .label {
+            margin-left: 0.125rem;
+        }
+    }
+
+    @include fixForIE10AndUp {
+        .clr-treenode-content .label {
+            margin-left: 0.125rem;
         }
     }
 }

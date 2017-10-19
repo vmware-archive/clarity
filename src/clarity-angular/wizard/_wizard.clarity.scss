@@ -354,7 +354,7 @@ $clr-wizard-box-shadow: 0 $clr-rem-1px (2 * $clr-rem-1px) (2 * $clr-rem-1px) rgb
             }
         }
 
-        .spinner:not(.spinner-inline) {
+        .spinner:not(.spinner-inline):not(.clr-treenode-spinner) {
             left: calc(50% + 4.791667rem);
             position: absolute;
             top: 40%;

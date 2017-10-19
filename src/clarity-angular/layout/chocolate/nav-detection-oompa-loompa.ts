@@ -3,16 +3,22 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ChangeDetectorRef, Directive} from "@angular/core";
+import {ChangeDetectorRef, Directive, Optional} from "@angular/core";
 import {OompaLoompa} from "../../utils/chocolate/oompa-loompa";
-import {ClrResponsiveNavigationService} from "./clrResponsiveNavigationService";
+import {ClrResponsiveNavigationService} from "../nav/clrResponsiveNavigationService";
 import {MainContainerWillyWonka} from "./main-container-willy-wonka";
 
 @Directive({selector: "clr-header"})
 export class NavDetectionOompaLoompa extends OompaLoompa {
-    constructor(cdr: ChangeDetectorRef, willyWonka: MainContainerWillyWonka,
-                private responsiveNavService: ClrResponsiveNavigationService) {
+    private responsiveNavService: ClrResponsiveNavigationService;
+
+    constructor(cdr: ChangeDetectorRef, @Optional() willyWonka: MainContainerWillyWonka,
+                responsiveNavService: ClrResponsiveNavigationService) {
+        if (!willyWonka) {
+            throw new Error("clr-header should only be used inside of a clr-main-container");
+        }
         super(cdr, willyWonka);
+        this.responsiveNavService = responsiveNavService;
     }
 
     // NavDetectionOompaLoompa is the addition of the nav levels

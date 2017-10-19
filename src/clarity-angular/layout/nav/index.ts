@@ -5,9 +5,10 @@
  */
 import {Type} from "@angular/core";
 
+import {MainContainerWillyWonka} from "../chocolate/main-container-willy-wonka";
+import {NavDetectionOompaLoompa} from "../chocolate/nav-detection-oompa-loompa";
+
 import {Header} from "./header";
-import {MainContainerWillyWonka} from "./main-container-willy-wonka";
-import {NavDetectionOompaLoompa} from "./nav-detection-oompa-loompa";
 import {NavLevelDirective} from "./navLevelDirective";
 
 export * from "./header";

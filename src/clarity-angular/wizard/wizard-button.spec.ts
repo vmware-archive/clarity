@@ -1105,6 +1105,17 @@ export default function(): void {
                     expect(actualButton.classList.contains("disabled")).toBe(true);
                 });
 
+                it("disabled buttons should have disabled attribute set", () => {
+                    myTestComponent.disableBtn = true;
+                    fixture.detectChanges();
+                    expect(actualButton.getAttribute("disabled")).toBe("");
+                });
+
+                it("enabled buttons should not have a disabled attribute", () => {
+                    // button inits with disabled false
+                    expect(actualButton.getAttribute("disabled")).toBe(null);
+                });
+
                 it("unknown button types should not be primary", () => {
                     // button inits as empty type
                     expect(actualButton.classList.contains("btn-primary")).toBe(false);

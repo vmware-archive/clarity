@@ -40,6 +40,7 @@ export const CUSTOM_BUTTON_TYPES: any = {
             [class.btn-success]="isFinish"
             [class.btn-danger]="isDanger"
             [class.disabled]="isDisabled"
+            [attr.disabled]="_disabledAttribute"
             (click)="click()">
             <ng-content></ng-content>
         </button>
@@ -91,6 +92,13 @@ export class WizardButton {
 
     public get isPrimaryAction(): boolean {
         return this.isNext || this.isDanger || this.isFinish;
+    }
+
+    public get _disabledAttribute(): string|null {
+        if (this.isDisabled) {
+            return "";
+        }
+        return null;
     }
 
     public get isDisabled(): boolean {

@@ -2,11 +2,11 @@
 
 $clr-icons-hero-height: $clr-baseline*10;
 $clr-icons-content-top: $clr-icons-hero-height + $clr-header-height;
-$clr-icons-content-width: 1080px;
+$clr-icons-content-width: 45rem;
 $clr-sidenav-width: $clr-baseline*9;
 $clr-searchbar-nonsticky-margintop: 0;
-$clr-searchbar-container-height: 120px + $clr-searchbar-nonsticky-margintop;
-$clr-searchbar-container-height-sm: 108px;
+$clr-searchbar-container-height: 5rem + $clr-searchbar-nonsticky-margintop;
+$clr-searchbar-container-height-sm: 4.5rem;
 
 .icons-header {
     position: fixed;

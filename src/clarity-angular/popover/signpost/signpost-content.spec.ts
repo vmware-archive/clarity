@@ -3,13 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import {Component, ElementRef} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
 
 // I'm giving up, I'm using the datagrid ones for now.
 import {addHelpers, TestContext} from "../../data/datagrid/helpers.spec";
 import {IconCustomTag} from "../../icon/icon";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
+import {POPOVER_HOST_ANCHOR} from "../common/popover-host-anchor.token";
 
 import {SignpostContent} from "./signpost-content";
 import {SIGNPOST_POSITIONS} from "./signpost-positions";
@@ -101,7 +102,8 @@ export default function(): void {
         <clr-signpost-content [clrPosition]="position">
             Signpost content
         </clr-signpost-content>
-    `
+    `,
+    providers: [{provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef}]
 })
 
 class SimpleTest {

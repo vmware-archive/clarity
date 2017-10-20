@@ -3,9 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, ElementRef, Injector, Input, SkipSelf} from "@angular/core";
+import {Component, ElementRef, Inject, Injector, Input, SkipSelf} from "@angular/core";
 import {AbstractPopover} from "../common/abstract-popover";
 import {Point} from "../common/popover";
+import {POPOVER_HOST_ANCHOR} from "../common/popover-host-anchor.token";
 
 const POSITIONS: string[] = ["bottom-left", "bottom-right", "top-left", "top-right", "right", "left"];
 
@@ -24,7 +25,7 @@ const SIZES: string[] = ["xs", "sm", "md", "lg"];
     }
 })
 export class TooltipContent extends AbstractPopover {
-    constructor(injector: Injector, @SkipSelf() parentHost: ElementRef) {
+    constructor(injector: Injector, @Inject(POPOVER_HOST_ANCHOR) parentHost: ElementRef) {
         super(injector, parentHost);
         // Defaults
         this.position = "right";

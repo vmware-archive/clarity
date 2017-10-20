@@ -6,9 +6,12 @@
 import {
     Component,
     ContentChild,
+    ElementRef,
 } from "@angular/core";
 
 import {IfOpenService} from "../../utils/conditional/if-open.service";
+import {POPOVER_HOST_ANCHOR} from "../common/popover-host-anchor.token";
+
 import {SignpostTriggerDirective} from "./signpost-trigger.directive";
 
 @Component({
@@ -26,7 +29,7 @@ import {SignpostTriggerDirective} from "./signpost-trigger.directive";
         <ng-content></ng-content>
     `,
     host: {"[class.signpost]": "true"},
-    providers: [IfOpenService]
+    providers: [IfOpenService, {provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef}]
 })
 
 /*********

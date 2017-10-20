@@ -3,8 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, ElementRef, Injector, Input, SkipSelf} from "@angular/core";
+import {Component, ElementRef, Inject, Injector, Input, SkipSelf} from "@angular/core";
+
 import {AbstractPopover} from "../common/abstract-popover";
+import {POPOVER_HOST_ANCHOR} from "../common/popover-host-anchor.token";
+
 import {SIGNPOST_POSITIONS} from "./signpost-positions";
 
 // aka where the arrow / pointer is at in relation to the anchor
@@ -41,7 +44,7 @@ const POSITIONS: string[] = [
     host: {"[class.signpost-content]": "true"}
 })
 export class SignpostContent extends AbstractPopover {
-    constructor(injector: Injector, @SkipSelf() parentHost: ElementRef) {
+    constructor(injector: Injector, @Inject(POPOVER_HOST_ANCHOR) parentHost: ElementRef) {
         super(injector, parentHost);
         // Defaults
         this.position = "right-middle";

@@ -3,10 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, Input, OnDestroy, Optional, SkipSelf} from "@angular/core";
+import {Component, ElementRef, Input, OnDestroy, Optional, SkipSelf} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
 import {IfOpenService} from "../../utils/conditional/if-open.service";
+import {POPOVER_HOST_ANCHOR} from "../common/popover-host-anchor.token";
+
 import {ROOT_DROPDOWN_PROVIDER, RootDropdownService} from "./providers/dropdown.service";
 
 @Component({
@@ -17,7 +19,7 @@ import {ROOT_DROPDOWN_PROVIDER, RootDropdownService} from "./providers/dropdown.
         // FIXME: remove this as soon as we stop supporting this old <div class="dropdown-menu"> syntax
         "[class.open]": "ifOpenService.open"
     },
-    providers: [IfOpenService, ROOT_DROPDOWN_PROVIDER]
+    providers: [IfOpenService, ROOT_DROPDOWN_PROVIDER, {provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef}]
 })
 export class Dropdown implements OnDestroy {
     private _subscription: Subscription;

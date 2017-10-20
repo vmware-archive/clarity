@@ -57,7 +57,7 @@ export default function(): void {
             expect(selectionInstance.current).toEqual([4, 2]);
         });
 
-        it("can select/deselect all items at once in multi selection type", function() {
+        it("can select/deselect all items at once in multi selection type if no pagination exist", function() {
             selectionInstance.selectionType = SelectionType.Multi;
             selectionInstance.toggleAll();
             expect(selectionInstance.current).toEqual(itemsInstance.displayed);
@@ -67,6 +67,17 @@ export default function(): void {
             expect(selectionInstance.current).toEqual([4]);
             selectionInstance.toggleAll();
             expect(selectionInstance.current.sort(numberSort)).toEqual(itemsInstance.displayed);
+        });
+
+        it("can select/deselect items only on the current page", function() {
+            selectionInstance.selectionType = SelectionType.Multi;
+            pageInstance.size = 3;
+            selectionInstance.current = [4, 1, 2];
+            pageInstance.current = 2;
+            selectionInstance.toggleAll();
+            expect(selectionInstance.current).toEqual([4, 1, 2, 5, 6]);
+            selectionInstance.toggleAll();
+            expect(selectionInstance.current).toEqual([1, 2]);
         });
 
         it("can't select/deselect all items at once in other single selection type", function() {

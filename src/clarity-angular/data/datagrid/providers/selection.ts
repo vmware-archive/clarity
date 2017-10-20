@@ -215,18 +215,20 @@ export class Selection {
             return;
         }
         /*
-         * If everything is already selected, we clear.
-         * If at least one row isn't selected, we select everything.
+         * If every currently displayed item is already selected, we clear them.
+         * If at least one item isn't selected, we select every currently displayed item.
          */
         if (this.isAllSelected()) {
-            this.current.length = 0;
+            this.current = this.current.filter(item => {
+                return this._items.displayed.indexOf(item) < 0;
+            });
         } else {
             this._items.displayed.forEach(item => {
                 if (this.current.indexOf(item) < 0) {
                     this.current.push(item);
                 }
             });
+            this.emitChange();
         }
-        this.emitChange();
     }
 }

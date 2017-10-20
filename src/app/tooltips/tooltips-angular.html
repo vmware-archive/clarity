@@ -68,3 +68,19 @@
     </clr-tooltip>
 </div>
 
+<h6>ng-container test</h6>
+<div class="clr-example" style="margin-bottom:200px">
+    <clr-tooltip>
+        <button clrTooltipTrigger class="btn btn-primary">
+            <clr-icon shape="info-standard" size="24"></clr-icon>
+        </button>
+        <ng-container *ngIf="true">
+            <clr-tooltip-content *clrIfOpen clrSize="lg">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Amet animi, aut cum cumque delectus deleniti distinctio enim et facilis iure laudantium magnam magni
+                nesciunt nihil nisi praesentium reprehenderit velit vitae.
+            </clr-tooltip-content>
+        </ng-container>
+    </clr-tooltip>
+</div>
+

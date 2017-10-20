@@ -34,6 +34,13 @@ export default function(): void {
             expect(this.pageInstance.lastItem).toBe(29);
         });
 
+
+        it("return -1 for the indexes of the first and last displayed items if no items exist", function() {
+            this.pageInstance.totalItems = 0;
+            expect(this.pageInstance.firstItem).toBe(-1);
+            expect(this.pageInstance.lastItem).toBe(-1);
+        });
+
         it("doesn't paginate when size is 0", function() {
             this.pageInstance.next();
             expect(this.pageInstance.current).toBe(1);

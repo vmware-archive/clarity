@@ -19,6 +19,7 @@ export class Page {
     public get size(): number {
         return this._size;
     }
+
     public set size(size: number) {
         const oldSize = this._size;
         if (size !== oldSize) {
@@ -41,6 +42,7 @@ export class Page {
     public get totalItems(): number {
         return this._totalItems;
     }
+
     public set totalItems(total: number) {
         this._totalItems = total;
         // If we have less items than before, we might need to change the current page
@@ -63,6 +65,7 @@ export class Page {
         }
         return 1;
     }
+
     public set last(page: number) {
         this._last = page;
     }
@@ -71,6 +74,7 @@ export class Page {
      * The Observable that lets other classes subscribe to page changes
      */
     private _change = new Subject<number>();
+
     // We do not want to expose the Subject itself, but the Observable which is read-only
     public get change(): Observable<number> {
         return this._change.asObservable();
@@ -89,6 +93,7 @@ export class Page {
     public get current(): number {
         return this._current;
     }
+
     public set current(page: number) {
         if (page !== this._current) {
             this.stateDebouncer.changeStart();
@@ -120,23 +125,28 @@ export class Page {
      * Index of the first item displayed on the current page, starting at 0
      */
     public get firstItem(): number {
-        if (this.size === 0) {
-            return 0;
+        if (!this.totalItems) {
+            return -1;
+        } else {
+            if (this.size === 0) {
+                return 0;
+            }
+            return (this.current - 1) * this.size;
         }
-        return (this.current - 1) * this.size;
     }
 
     /**
      * Index of the last item displayed on the current page, starting at 0
      */
     public get lastItem(): number {
-        if (this.size === 0) {
-            return this.totalItems - 1;
+        if (!this.totalItems) {
+            return -1;
+        } else {
+            if (this.size === 0) {
+                return this.totalItems - 1;
+            }
+            const lastInPage = (this.current) * this.size - 1;
+            return Math.min(lastInPage, this.totalItems - 1);
         }
-        let lastInPage = (this.current) * this.size - 1;
-        if (this.totalItems) {
-            lastInPage = Math.min(lastInPage, this.totalItems - 1);
-        }
-        return lastInPage;
     }
 }

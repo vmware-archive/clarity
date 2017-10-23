@@ -15,10 +15,11 @@ import {DatagridRenderOrganizer} from "./render-organizer";
 export class DatagridHeaderRenderer implements OnDestroy {
     constructor(private el: ElementRef, private renderer: Renderer2, private organizer: DatagridRenderOrganizer,
                 private domAdapter: DomAdapter, private columnResizer: DatagridColumnResizer) {
-        this.subscription = organizer.clearWidths.subscribe(() => this.clearWidth());
+        this.subscriptions.push(organizer.clearWidths.subscribe(() => this.clearWidth()));
+        this.subscriptions.push(organizer.detectStrictWidths.subscribe(() => this.detectStrictWidth()));
     }
 
-    private subscription: Subscription;
+    private subscriptions: Subscription[] = [];
 
     /**
      * Indicates if the column has a strict width, so it doesn't shrink or expand based on the content.
@@ -28,7 +29,7 @@ export class DatagridHeaderRenderer implements OnDestroy {
 
 
     ngOnDestroy() {
-        this.subscription.unsubscribe();
+        this.subscriptions.forEach(sub => sub.unsubscribe());
     }
 
     private clearWidth() {
@@ -36,41 +37,37 @@ export class DatagridHeaderRenderer implements OnDestroy {
         if (this.widthSet && !this.columnResizer.columnResizeBy) {
             this.renderer.setStyle(this.el.nativeElement, "width", null);
         }
+    }
 
-        let strictWidth: number = this.domAdapter.userDefinedWidth(this.el.nativeElement);
-
+    private detectStrictWidth() {
         if (this.columnResizer.columnResizeBy) {
-            strictWidth = this.columnResizer.columnRectWidth + this.columnResizer.columnResizeBy;
-        }
-
-        if (strictWidth) {
-            this.strictWidth = strictWidth;
+            this.strictWidth = this.columnResizer.columnRectWidth + this.columnResizer.columnResizeBy;
         } else {
-            delete this.strictWidth;
+            this.strictWidth = this.domAdapter.userDefinedWidth(this.el.nativeElement);
         }
     }
 
     public computeWidth(): number {
         let width: number = this.strictWidth;
-
-        if (!!width) {
-            this.renderer.addClass(this.el.nativeElement, STRICT_WIDTH_CLASS);
-        } else {
-            this.renderer.removeClass(this.el.nativeElement, STRICT_WIDTH_CLASS);
-        }
-
-        if (this.columnResizer.columnResizeBy) {
-            this.renderer.setStyle(this.el.nativeElement, "width", width + "px");
-            this.columnResizer.columnResizeBy = 0;
-            this.widthSet = false;
-        }
-
         if (!width) {
             width = this.domAdapter.scrollWidth(this.el.nativeElement);
-
-            this.renderer.setStyle(this.el.nativeElement, "width", width + "px");
-            this.widthSet = true;
         }
         return width;
+    }
+
+    public setWidth(width: number) {
+        if (this.strictWidth) {
+            if (this.columnResizer.columnResizeBy) {
+                this.renderer.setStyle(this.el.nativeElement, "width", width + "px");
+                this.columnResizer.columnResizeBy = 0;
+                this.widthSet = false;
+            }
+            this.renderer.addClass(this.el.nativeElement, STRICT_WIDTH_CLASS);
+            // We don't actually set the width if there already is a user-defined one, we just add the class
+            return;
+        }
+        this.renderer.removeClass(this.el.nativeElement, STRICT_WIDTH_CLASS);
+        this.renderer.setStyle(this.el.nativeElement, "width", width + "px");
+        this.widthSet = true;
     }
 }

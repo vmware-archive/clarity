@@ -8,7 +8,7 @@
 <div class="datagrid-overlay-wrapper">
     <div class="datagrid-scroll-wrapper">
         <div class="datagrid" #datagrid>
-            <div clrDgTableWrapper class="datagrid-table-wrapper">
+            <clr-dg-table-wrapper class="datagrid-table-wrapper">
                 <div clrDgHead class="datagrid-head">
                     <div class="datagrid-row datagrid-row-flex">
                         <!-- header for datagrid where you can select multiple rows -->
@@ -38,17 +38,15 @@
                     </div>
                 </div>
 
-                <div clrDgBody class="datagrid-body">
-                    <ng-template *ngIf="iterator"
-                                 ngFor [ngForOf]="items.displayed" [ngForTrackBy]="items.trackBy"
-                                 [ngForTemplate]="iterator.template"></ng-template>
-                    <ng-content *ngIf="!iterator"></ng-content>
+                <ng-template *ngIf="iterator"
+                             ngFor [ngForOf]="items.displayed" [ngForTrackBy]="items.trackBy"
+                             [ngForTemplate]="iterator.template"></ng-template>
+                <ng-content *ngIf="!iterator"></ng-content>
 
-                    <!-- Custom placeholder overrides the default empty one -->
-                    <ng-content select="clr-dg-placeholder"></ng-content>
-                    <clr-dg-placeholder *ngIf="!placeholder"></clr-dg-placeholder>
-                </div>
-            </div>
+                <!-- Custom placeholder overrides the default empty one -->
+                <ng-content select="clr-dg-placeholder"></ng-content>
+                <clr-dg-placeholder *ngIf="!placeholder"></clr-dg-placeholder>
+            </clr-dg-table-wrapper>
 
             <!--
                 This is not inside the table because there is no good way of having a single column span

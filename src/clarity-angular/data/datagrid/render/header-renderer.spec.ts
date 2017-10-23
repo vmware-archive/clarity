@@ -31,38 +31,41 @@ export default function(): void {
             organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
         });
 
-        it("computes and sets the width of a column based on its scrollWidth", function() {
+        it("computes the width of a column based on its scrollWidth", function() {
             domAdapter._scrollWidth = 123;
             expect(context.clarityDirective.computeWidth()).toBe(123);
+        });
+
+        it("can set the width of a column", function() {
+            context.clarityDirective.setWidth(123);
             expect(context.clarityElement.style.width).toBe("123px");
         });
 
         it("resets the column to default width when notified", function() {
-            domAdapter._scrollWidth = 123;
-            context.clarityDirective.computeWidth();
+            context.clarityDirective.setWidth(123);
             expect(context.clarityElement.style.width).toBe("123px");
             organizer.clearWidths.next();
             expect(context.clarityElement.style.width).toBeFalsy();
         });
 
-        it("sets a strict column width upon clearing when the user declared one", function() {
+        it("uses the width declared by the user if there is one", function() {
             domAdapter._userDefinedWidth = 123;
-            organizer.clearWidths.next();
+            organizer.detectStrictWidths.next();
             expect(context.clarityDirective.strictWidth).toBe(123);
             domAdapter._userDefinedWidth = 0;
-            organizer.clearWidths.next();
-            expect(context.clarityDirective.strictWidth).toBeUndefined();
+            organizer.detectStrictWidths.next();
+            expect(context.clarityDirective.strictWidth).toBeFalsy();
         });
 
         it("does not remove the width defined by the user", function() {
             context.clarityElement.style.width = "123px";
             domAdapter._userDefinedWidth = 123;
             organizer.clearWidths.next();
+            organizer.detectStrictWidths.next();
             expect(context.clarityElement.style.width).toBe("123px");
             // One extra cycle to be sure, because clearing widths before computing them
             // might have a special case handling
             context.clarityDirective.computeWidth();
-            expect(context.clarityElement.style.width).toBe("123px");
             organizer.clearWidths.next();
             expect(context.clarityElement.style.width).toBe("123px");
         });
@@ -71,10 +74,12 @@ export default function(): void {
             domAdapter._scrollWidth = 123;
             context.clarityDirective.strictWidth = 24;
             expect(context.clarityDirective.computeWidth()).toBe(24);
+            context.clarityDirective.setWidth(24);
             expect(context.clarityElement.style.width).toBeFalsy();
             expect(context.clarityElement.classList).toContain("datagrid-fixed-width");
             delete context.clarityDirective.strictWidth;
             expect(context.clarityDirective.computeWidth()).toBe(123);
+            context.clarityDirective.setWidth(123);
             expect(context.clarityElement.style.width).toBe("123px");
             expect(context.clarityElement.classList).not.toContain("datagrid-fixed-width");
         });

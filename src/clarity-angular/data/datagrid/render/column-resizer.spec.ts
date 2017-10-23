@@ -232,12 +232,12 @@ export default function(): void {
             emulateResize(column4ResizerDirective, -50);
             expect(column1ResizerDirective.columnEl.classList.contains("datagrid-fixed-width")).toBe(false);
             expect(column2ResizerDirective.columnEl.classList.contains("datagrid-fixed-width")).toBe(true);
-            expect(column2ResizerDirective.columnEl.classList.contains("datagrid-fixed-width")).toBe(true);
+            expect(column3ResizerDirective.columnEl.classList.contains("datagrid-fixed-width")).toBe(true);
             expect(column4ResizerDirective.columnEl.classList.contains("datagrid-fixed-width")).toBe(true);
             emulateResize(column1ResizerDirective, -50);
             expect(column1ResizerDirective.columnEl.classList.contains("datagrid-fixed-width")).toBe(true);
             expect(column2ResizerDirective.columnEl.classList.contains("datagrid-fixed-width")).toBe(true);
-            expect(column2ResizerDirective.columnEl.classList.contains("datagrid-fixed-width")).toBe(true);
+            expect(column3ResizerDirective.columnEl.classList.contains("datagrid-fixed-width")).toBe(true);
             expect(column4ResizerDirective.columnEl.classList.contains("datagrid-fixed-width")).toBe(false);
         });
     });

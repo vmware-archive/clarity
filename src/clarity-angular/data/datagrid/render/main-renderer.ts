@@ -113,12 +113,13 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewChecked,
             }
 
             if (nbColumns === index + 1 && allStrict) {
-                header.strictWidth = 0;
+                delete header.strictWidth;
             }
 
-            const width = header.computeWidth();
-            this.organizer.widths[index] = {px: width, strict: !!header.strictWidth};
+            this.organizer.widths[index] = {px: header.computeWidth(), strict: !!header.strictWidth};
         });
+
+        this.headers.forEach((header, index) => header.setWidth(this.organizer.widths[index].px));
     }
 
     /**

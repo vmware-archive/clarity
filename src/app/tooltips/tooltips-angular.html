@@ -69,7 +69,7 @@
 </div>
 
 <h6>ng-container test</h6>
-<div class="clr-example" style="margin-bottom:200px">
+<div class="clr-example" style="margin-bottom:96px">
     <clr-tooltip>
         <button clrTooltipTrigger class="btn btn-primary">
             <clr-icon shape="info-standard" size="24"></clr-icon>
@@ -82,5 +82,24 @@
             </clr-tooltip-content>
         </ng-container>
     </clr-tooltip>
+</div>
+
+<h6>Tooltip in Dropdown</h6>
+<div class="clr-example" style="margin-bottom:120px">
+    <clr-dropdown>
+        <button type="button" class="btn" clrDropdownTrigger>Click Me!</button>
+        <clr-dropdown-menu>
+            <clr-tooltip>
+                <button type="button" clrDropdownItem clrTooltipTrigger>
+                    Option One
+                </button>
+                <clr-tooltip-content [clrSize]="'lg'">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias cumque enim fuga fugit impedit
+                    tempora tempore, voluptatibus. Consequuntur dicta distinctio et fugit, minima perferendis quas quod,
+                    recusandae sequi soluta tempora!
+                </clr-tooltip-content>
+            </clr-tooltip>
+        </clr-dropdown-menu>
+    </clr-dropdown>
 </div>
 

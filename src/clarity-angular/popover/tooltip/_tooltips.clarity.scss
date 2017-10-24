@@ -94,6 +94,7 @@ $clr-tooltip-adjusted-margin: 0.666667rem !default;
             visibility: hidden;
             opacity: 0;
             transition: opacity 0.3s linear;
+            white-space: normal;
             z-index: map-get($clr-layers, tooltips);
         }
 

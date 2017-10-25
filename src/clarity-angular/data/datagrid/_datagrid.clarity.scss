@@ -97,20 +97,41 @@
         }
     }
 
+    // Class only applied temporarily when preforming internal operations,
+    // to improve rendering performance.
+    .datagrid-no-layout {
+        display: block;
+
+        .datagrid-body, .datagrid-row, .datagrid-cell {
+            display: none;
+        }
+
+        .datagrid-head, .datagrid-head .datagrid-row, .datagrid-column {
+            display: block;
+        }
+    }
+
     // Class only applied temporarily when computing columns width
     .datagrid-computing-columns-width {
-        display: table;
+        display: block;
 
+        .datagrid-body {
+            display: table;
+            table-layout: auto;
+        }
         .datagrid-head {
             display: table-header-group;
         }
-        .datagrid-body {
+        .datagrid-row {
             display: table-row-group;
         }
-        .datagrid-row {
+        .datagrid-head .datagrid-row {
             display: table-row;
         }
         .datagrid-row-master {
+            display: table-row;
+        }
+        .datagrid-row-detail {
             display: none;
         }
         .datagrid-column, .datagrid-cell {

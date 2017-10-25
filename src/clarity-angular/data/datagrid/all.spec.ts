@@ -45,7 +45,6 @@ import DatagridHeadRendererSpecs from "./render/head-renderer.spec";
 import DatagridHeaderRendererSpecs from "./render/header-renderer.spec";
 import DatagridMainRendererSpecs from "./render/main-renderer.spec";
 import DatagridRenderOrganizerSpecs from "./render/render-organizer.spec";
-import DatagridRowMasterRendererSpecs from "./render/row-master-renderer.spec";
 import DatagridRowRendererSpecs from "./render/row-renderer.spec";
 import DatagridTableRendererSpecs from "./render/table-renderer.spec";
 
@@ -82,7 +81,6 @@ describe("Datagrid", function() {
         DatagridRenderOrganizerSpecs();
         DatagridCellRendererSpecs();
         DatagridRowRendererSpecs();
-        DatagridRowMasterRendererSpecs();
         DatagridBodyRendererSpecs();
         DatagridHeaderRendererSpecs();
         DatagridHeadRendererSpecs();

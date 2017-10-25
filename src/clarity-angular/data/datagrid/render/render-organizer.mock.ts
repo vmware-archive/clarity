@@ -13,8 +13,16 @@ import {DatagridRenderOrganizer} from "./render-organizer";
  */
 @Injectable()
 export class MockDatagridRenderOrganizer extends DatagridRenderOrganizer {
+    public get noLayout(): Subject<boolean> {
+        return this._noLayout;
+    }
+
     public get clearWidths(): Subject<any> {
         return this._clearWidths;
+    }
+
+    public get detectStrictWidths(): Subject<any> {
+        return this._detectStrictWidths;
     }
 
     public get tableMode(): Subject<boolean> {

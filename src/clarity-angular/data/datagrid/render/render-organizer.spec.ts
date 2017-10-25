@@ -18,13 +18,26 @@ export default function(): void {
             this.organizer = new DatagridRenderOrganizer();
         });
 
+        it("doesn't clear widths on the first rendering", function(this: UserContext) {
+            let clearedWidths = false;
+            this.organizer.clearWidths.subscribe(() => clearedWidths = true);
+            this.organizer.resize();
+            expect(clearedWidths).toBe(false);
+            this.organizer.resize();
+            expect(clearedWidths).toBe(true);
+        });
+
         it("follows the correct rendering order", function(this: UserContext) {
+            // Initial sizing to make sure clearWidths is included in the next one.
+            this.organizer.resize();
             let step = 0;
-            this.organizer.clearWidths.subscribe(() => expect(step++).toBe(0));
-            this.organizer.tableMode.subscribe(on => expect(step++).toBe(on ? 1 : 3));
-            this.organizer.computeWidths.subscribe(() => expect(step++).toBe(2));
-            this.organizer.alignColumns.subscribe(() => expect(step++).toBe(4));
-            this.organizer.scrollbar.subscribe(() => expect(step++).toBe(5));
+            this.organizer.noLayout.subscribe(on => expect(step++).toBe(on ? 0 : 7));
+            this.organizer.clearWidths.subscribe(() => expect(step++).toBe(1));
+            this.organizer.detectStrictWidths.subscribe(() => expect(step++).toBe(2));
+            this.organizer.tableMode.subscribe(on => expect(step++).toBe(on ? 3 : 5));
+            this.organizer.computeWidths.subscribe(() => expect(step++).toBe(4));
+            this.organizer.alignColumns.subscribe(() => expect(step++).toBe(6));
+            this.organizer.scrollbar.subscribe(() => expect(step++).toBe(8));
             this.organizer.resize();
         });
 

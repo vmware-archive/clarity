@@ -10,11 +10,23 @@ import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class DatagridRenderOrganizer {
+    private alreadySized = false;
+
     public widths: {px: number, strict: boolean}[] = [];
+
+    protected _noLayout = new Subject<boolean>();
+    public get noLayout(): Observable<boolean> {
+        return this._noLayout.asObservable();
+    }
 
     protected _clearWidths = new Subject<any>();
     public get clearWidths(): Observable<any> {
         return this._clearWidths.asObservable();
+    }
+
+    protected _detectStrictWidths = new Subject<any>();
+    public get detectStrictWidths(): Observable<any> {
+        return this._detectStrictWidths.asObservable();
     }
 
     protected _tableMode = new Subject<boolean>();
@@ -42,12 +54,18 @@ export class DatagridRenderOrganizer {
 
     public resize() {
         this.widths.length = 0;
-        this._clearWidths.next();
+        this._noLayout.next(true);
+        if (this.alreadySized) {
+            this._clearWidths.next();
+        }
+        this._detectStrictWidths.next();
         this._tableMode.next(true);
         this._computeWidths.next();
         this._tableMode.next(false);
         this._alignColumns.next();
+        this._noLayout.next(false);
         this.scrollbar.next();
+        this.alreadySized = true;
         this._done.next();
     }
 }

@@ -31,7 +31,6 @@ import {DatagridColumnResizer} from "./render/column-resizer";
 import {DatagridHeadRenderer} from "./render/head-renderer";
 import {DatagridHeaderRenderer} from "./render/header-renderer";
 import {DatagridMainRenderer} from "./render/main-renderer";
-import {DatagridRowMasterRenderer} from "./render/row-master-renderer";
 import {DatagridRowRenderer} from "./render/row-renderer";
 import {DatagridTableRenderer} from "./render/table-renderer";
 
@@ -69,7 +68,7 @@ export const DATAGRID_DIRECTIVES: Type<any>[] = [
 
     // Renderers
     DatagridMainRenderer, DatagridTableRenderer, DatagridHeadRenderer, DatagridHeaderRenderer, DatagridBodyRenderer,
-    DatagridColumnResizer, DatagridRowRenderer, DatagridRowMasterRenderer, DatagridCellRenderer,
+    DatagridColumnResizer, DatagridRowRenderer, DatagridCellRenderer,
 
     // Chocolate
     DatagridWillyWonka, ActionableOompaLoompa, ExpandableOompaLoompa,

@@ -32,7 +32,7 @@ let nbRow: number = 0;
 @Component({
     selector: "clr-dg-row",
     template: `
-        <clr-dg-row-master class="datagrid-row-flex">
+        <div class="datagrid-row-master datagrid-row-flex">
             <clr-dg-cell *ngIf="selection.selectionType === SELECTION_TYPE.Multi"
                          class="datagrid-select datagrid-fixed-column">
                 <clr-checkbox [ngModel]="selected" (ngModelChange)="toggle($event)"></clr-checkbox>
@@ -62,7 +62,7 @@ let nbRow: number = 0;
 
             <ng-template *ngIf="expand.replace && expand.expanded && !expand.loading"
                          [ngTemplateOutlet]="detail"></ng-template>
-        </clr-dg-row-master>
+        </div>
 
         <ng-template *ngIf="!expand.replace && expand.expanded && !expand.loading"
                      [ngTemplateOutlet]="detail"></ng-template>

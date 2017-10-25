@@ -44,12 +44,14 @@ export default function(): void {
                 let wizardNavigationService: WizardNavigationService;
                 let pageCollectionService: PageCollectionService;
                 let wizard: Wizard;
+                let component: UnopenedWizardTestComponent;
 
                 beforeEach(function() {
                     context = this.create(Wizard, UnopenedWizardTestComponent);
                     wizardNavigationService = context.getClarityProvider(WizardNavigationService);
                     pageCollectionService = context.getClarityProvider(PageCollectionService);
                     wizard = context.clarityDirective;
+                    component = context.testComponent;
                     context.detectChanges();
                 });
 
@@ -64,6 +66,15 @@ export default function(): void {
                         expect(wizard._open).toBe(false, "hidden wizard._open should be false");
                         wizard.open();
                         expect(wizard._open).toBe(true, "visible wizard._open should be true");
+                    });
+
+                    it("should handle two way binding on clrWizardOpen", () => {
+                        expect(wizard._open).toBe(false, "hidden wizard._open should be false");
+                        expect(component.open).toBe(false, "component binding is set to false");
+                        component.open = true;
+                        context.detectChanges();
+                        expect(wizard._open).toBe(true, "hidden wizard._open should be true");
+                        expect(component.open).toBe(true, "component binding is set to true");
                     });
                 });
 

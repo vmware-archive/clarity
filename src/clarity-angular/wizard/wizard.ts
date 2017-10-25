@@ -156,7 +156,14 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @type {boolean}
      * @memberof Wizard
      */
-    @Input("clrWizardOpen") _open: boolean = false;
+    public _open: boolean = false;
+    @Input("clrWizardOpen")
+    set clrWizardOpen(open: boolean) {
+        if (open) {
+            this.buttonService.buttonsReady = true;
+        }
+        this._open = open;
+    }
 
     /**
      * Emits when the wizard is opened or closed. Emits through the

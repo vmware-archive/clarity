@@ -6,7 +6,7 @@
 import {Component} from "@angular/core";
 
 const HTML_EXAMPLE = `
-<clr-vertical-nav [clrVerticalNavCollapsible]="collapsible" [(clrVerticalNavCollapsed)]="collapsed">
+<clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed">
     <a clrVerticalNavLink routerLink="./normal" routerLinkActive="active">
         <clr-icon clrVerticalNavIcon shape="user"></clr-icon>
         Normal

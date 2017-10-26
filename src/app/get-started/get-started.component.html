@@ -12,28 +12,40 @@
     <h2 id="howToUse">How to Use Clarity</h2>
     <p>We offer three approaches for utilizing Clarity: UX, UX and UI, and Angular.</p>
     <h3 id="designResources">Using Clarity Design Resources</h3>
-    <p>Jumpstart your project with one of our
-        <a href="https://www.sketchapp.com/" target="_blank">Sketch</a>-based design resources.
-        Start by downloading the
+    <p>Jumpstart your project with one of our Sketch-based design resources. Start by downloading the
         <a href="https://github.com/chrismsimpson/Metropolis" target="_blank">
-            Metropolis font.
-        </a> Then download your resource of choice.
+            Metropolis fonts
+        </a>. Then download your resource of choice.
     </p>
     <div>
-        <a href="assets/images/sketchTemplates/Clarity-Template-0.10.0.sketch" target="_blank" class="btn btn-primary">
+        <a href="assets/images/sketchLibraries/Clarity-UI-Library-0.10.11.sketch.zip" target="_blank"
+           class="btn btn-primary">
+            <clr-icon shape="download"></clr-icon>
+            UI Library (0.10.11)
+        </a>
+        <a href="assets/images/sketchLibraries/Clarity-Icons-Library-0.10.11.sketch.zip" target="_blank"
+           class="btn btn-primary">
+            <clr-icon shape="download"></clr-icon>
+            ICONS Library (0.10.11)
+        </a>
+        <a href="assets/images/sketchTemplates/Clarity-Template-0.10.0.sketch" target="_blank" class="btn btn-link">
             <clr-icon shape="download"></clr-icon>
             UI Template (0.10.0)
         </a>
-        <div class="craft-plugin">
-            <a href="assets/images/sketchCraftLibraries/Clarity.library-0.10.0.zip" class="btn btn-primary" target="_blank">
-                <clr-icon shape="download"></clr-icon>
-                Craft Library (0.10.0)
-            </a>
-            <span class="craft-plugin-text">
-                requires <a href="https://www.invisionapp.com/craft" target="_blank">Craft Manager plugin</a>
-            </span>
-        </div>
     </div>
+
+    <clr-alert clrAlertType="info" [clrAlertClosable]="false" class="craft-library-alert">
+        <clr-alert-item>
+            <span class="alert-text">
+                Clarity has moved to Sketch Libraries. Our Craft Library resource is deprecated and will be removed when Clarity v0.11.0 is released.
+            </span>
+            <div class="alert-actions">
+                <a class="alert-action" href="assets/images/sketchCraftLibraries/Clarity.library-0.9.9.zip">
+                    Download Craft Library (0.9.9)
+                </a>
+            </div>
+        </clr-alert-item>
+    </clr-alert>
 
     <h3 id="seedProjectClarity">Starting With a Clarity Seed Project (Recommended)</h3>
     <p>For a new project, the best approach is to clone the Clarity seed project and modify it to fit your needs. The
@@ -102,12 +114,14 @@
                     [clrDisablePrism]="true"></clr-code-snippet>
         </li>
         <li>
-            Load the library in your app by including <code class="clr-code">clarity-icons.min.css</code> and <code class="clr-code">clarity-icons.min.js</code>.
-            Also, make sure to include <code class="clr-code">custom-elements.min.js</code>, the Custom Elements polyfill before <code class="clr-code">clarity-icons.min.js</code>:
+            Load the library in your app by including <code class="clr-code">clarity-icons.min.css</code> and <code
+                class="clr-code">clarity-icons.min.js</code>.
+            Also, make sure to include <code class="clr-code">custom-elements.min.js</code>, the Custom Elements
+            polyfill before <code class="clr-code">clarity-icons.min.js</code>:
             <clr-code-snippet [clrCode]="iconsImportsExample"></clr-code-snippet>
 
             <p>
-               Visit the <a routerLink="/icons">Clarity Icons</a> section for more installation information.
+                Visit the <a routerLink="/icons">Clarity Icons</a> section for more installation information.
             </p>
         </li>
     </ol>
@@ -138,7 +152,8 @@
                     [clrCode]="'npm install clarity-angular --save'"
                     [clrDisablePrism]="true"></clr-code-snippet>
         </li>
-        <li>Import the ClarityModule into your Angular application's module. Your application's main module might look like this:
+        <li>Import the ClarityModule into your Angular application's module. Your application's main module might look
+            like this:
             <clr-code-snippet [clrCode]="ngModuleExample" [clrLanguage]="'typescript'"></clr-code-snippet>
         </li>
     </ol>
@@ -197,7 +212,8 @@
             <label class="bump-down"><a class="nav-link" routerLink="." fragment="howToUse">How to Use
                 Clarity</a></label>
             <ul class="nav-list">
-                <li><a class="nav-link" routerLink="." fragment="designResources">Using Clarity Design Resources</a></li>
+                <li><a class="nav-link" routerLink="." fragment="designResources">Using Clarity Design Resources</a>
+                </li>
                 <li><a class="nav-link" routerLink="." fragment="seedProjectClarity">Using a Clarity Seed</a></li>
                 <li><a class="nav-link" routerLink="." fragment="seedProjectAngular">Using an Angular Seed</a></li>
             </ul>
@@ -206,7 +222,8 @@
             <label class="bump-down"><a class="nav-link" routerLink="." fragment="contribute_guidelines">Contributing to
                 Clarity</a></label>
             <label class="bump-down"><a class="nav-link" routerLink="." fragment="reportingBugs">Reporting an Issue</a></label>
-            <label class="bump-down"><a class="nav-link" routerLink="." fragment="stackoverflow">StackOverflow</a></label>
+            <label class="bump-down"><a class="nav-link" routerLink="."
+                                        fragment="stackoverflow">StackOverflow</a></label>
             <label class="bump-down"><a class="nav-link" routerLink="." fragment="attributions">Attributions</a></label>
         </section>
     </section>

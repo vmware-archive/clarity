@@ -164,3 +164,14 @@
     font-size: 10px;
 }
 
+.craft-library-alert {
+    margin: $bl-1_0 0 0;
+    display: block;
+    a.craft-library-download {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        line-height: unset;
+        height: auto;
+    }
+}

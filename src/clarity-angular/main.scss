@@ -71,6 +71,9 @@
 //@import "./media/media.clarity"; //Deleted
 //@import "./utils/utilities.clarity"; // deleted
 
+//Popover
+@import "./popover/common/popover.clarity";
+
 //Icons & Images
 @import "./image/icons.clarity"; // depends on variables.clarity
 @import "./image/images.clarity"; // depends on variables.clarity, mixins.clarity, icons.clarity

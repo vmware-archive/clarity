@@ -13,7 +13,8 @@ import {
     OnDestroy,
     Output,
     SimpleChange,
-    ViewChild
+    ViewChild,
+    ElementRef
 } from "@angular/core";
 
 import {FocusTrapDirective} from "../utils/focus-trap/focus-trap.directive";
@@ -92,7 +93,7 @@ export class Modal implements OnChanges, OnDestroy {
     @Input("clrModalPreventClose") stopClose: boolean = false;
     @Output("clrModalAlternateClose") altClose: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
-    constructor(private _scrollingService: ScrollingService) {}
+    constructor(private _scrollingService: ScrollingService,private elementRef: ElementRef) {}
 
     get sizeClass(): string {
         if (this.size) {
@@ -123,6 +124,9 @@ export class Modal implements OnChanges, OnDestroy {
         }
         this._open = true;
         this._openChanged.emit(true);
+        debugger;
+        const componentContainer = this.elementRef.nativeElement;
+        componentContainer.style("display", "inline-block");
     }
 
     @HostListener("body:keyup.escape")
@@ -140,6 +144,9 @@ export class Modal implements OnChanges, OnDestroy {
         this._openChanged.emit(false);
         // SPECME
         this.focusTrap.setPreviousFocus();  // Handles moving focus back to the element that had it before.
+        debugger;
+        const componentContainer = this.elementRef.nativeElement;
+        componentContainer.style("display", "block");
     }
 
     fadeDone(e: AnimationEvent) {

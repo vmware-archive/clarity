@@ -6,6 +6,7 @@
 import {animate, AnimationEvent, state, style, transition, trigger} from "@angular/animations";
 import {
     Component,
+    ElementRef,
     EventEmitter,
     HostListener,
     Input,
@@ -26,7 +27,7 @@ import {GHOST_PAGE_ANIMATION} from "./utils/ghost-page-animations";
     viewProviders: [ScrollingService],
     templateUrl: "./modal.html",
     styles: [`
-        :host { display: inline-block; }
+        :host { display: inline; }
     `],
     animations: [
         trigger("fadeDown",
@@ -92,7 +93,7 @@ export class Modal implements OnChanges, OnDestroy {
     @Input("clrModalPreventClose") stopClose: boolean = false;
     @Output("clrModalAlternateClose") altClose: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
-    constructor(private _scrollingService: ScrollingService) {}
+    constructor(private _scrollingService: ScrollingService, private elementRef: ElementRef) {}
 
     get sizeClass(): string {
         if (this.size) {
@@ -106,8 +107,16 @@ export class Modal implements OnChanges, OnDestroy {
     ngOnChanges(changes: {[propName: string]: SimpleChange}): void {
         if (!this.bypassScrollService && changes && changes.hasOwnProperty("_open")) {
             if (changes._open.currentValue) {
+                const hostElement = this.elementRef.nativeElement;
+                if (hostElement) {
+                    hostElement.style["display"] = "inline";
+                }
                 this._scrollingService.stopScrolling();
             } else {
+                const hostElement = this.elementRef.nativeElement;
+                if (hostElement) {
+                    hostElement.style["display"] = "none";
+                }
                 this._scrollingService.resumeScrolling();
             }
         }

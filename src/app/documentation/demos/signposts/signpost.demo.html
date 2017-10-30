@@ -141,8 +141,10 @@
 
         <h3 id="signposts-positions">Signpost positions</h3>
         <p>
-            There are twelve signpost positions to help place the popover in an appropriate location. When the
-            <code class="clr-code">[clrPosition]</code> has a value of:
+            There are twelve signpost positions to help place the popover in an appropriate position when shown. You
+            control the position and direction by declaring a position that orients your that Signpost content as you
+            see fit. On a <code class="clr-code">clr-signpost-content</code> component add the input
+            <code class="clr-code">[clrPosition]="'position'"</code> where position is one of the following:
         </p>
         <ul class="list">
             <li><code class="clr-code">top-X: </code> the arrow will point down and the popover
@@ -162,9 +164,10 @@
 
         <h3 id="custom-triggers">Custom Triggers</h3>
         <p>We provide a default trigger but you can add one yourself. The signpost component provides the <code
-                class="clr-code">clrSignpostTrigger</code> attribute directive. Include this on the outer-most container
-            of your custom trigger and the <code class="clr-code">[clrSignpostPosition]="position"</code> so that we
-            know what and where the Signpost should point.</p>
+                class="clr-code">clrSignpostTrigger</code> attribute directive that can be added to the <code
+                class="clr-code">clr-signpost-content</code> child. To control the position of your signpost, add <code
+                class="clr-code">[clrPosition]="position"</code> so that it
+            knows how the Signpost should point.</p>
         <clr-signpost-triggers-demo></clr-signpost-triggers-demo>
         <h2>Summary of Options</h2>
 
@@ -179,15 +182,16 @@
             </thead>
             <tbody>
             <tr>
+
                 <td class="left">
-                    <b>[clrSignpostPosition]</b>
+                    <b>[clrPosition]</b>
                     <div class="hidden-sm-up">Type: string</div>
                     <div class="hidden-sm-up">Default: right-middle</div>
                 </td>
                 <td class="hidden-xs-down">string</td>
                 <td class="hidden-xs-down">right-middle</td>
                 <td class="left">
-                    Set the position of the clr-signpost-content popover: anchorPoint & popoverPosition. For example:
+                    Set the position of the <code class="clr-code">clr-signpost-content</code> popover: anchorPoint & popoverPosition. For example:
                     "right-middle" (ANCHOR-POSITION) will anchor the clr-signpost-content popover and point to the icons
                     middle on the right side. And, the popover itself will be positioned to the right of the trigger
                     icon

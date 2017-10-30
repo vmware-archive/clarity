@@ -27,12 +27,12 @@ export class SignpostTriggersDemo extends ClarityDocComponent {
     <div class="signpost-trigger-demo">
         <div class="signpost-item">
             <h6>Clarity Icon</h6>
-            <clr-signpost [clrSignpostPosition]="'bottom-middle'">
+            <clr-signpost>
                 <clr-icon shape="avatar" 
                           class="is-solid has-badge-info" 
                           clrSignpostTrigger>
                 </clr-icon>
-                <clr-signpost-content *clrIfOpen>
+                <clr-signpost-content [clrPosition]="'bottom-middle'" *clrIfOpen>
                     Lorem ipsum...
                 </clr-signpost-content>
             </clr-signpost>
@@ -40,12 +40,12 @@ export class SignpostTriggersDemo extends ClarityDocComponent {
         <div class="signpost-item">
             <h6>Button Link</h6>
             <div class="trigger-item">
-                <clr-signpost [clrSignpostPosition]="'top-middle'">
+                <clr-signpost>
                     <button class="btn btn-link" 
                             clrSignpostTrigger>
                                 Button Link Trigger
                     </button>
-                    <clr-signpost-content *clrIfOpen>
+                    <clr-signpost-content [clrPosition]="'top-middle'" *clrIfOpen>
                         Lorem ipsum...
                     </clr-signpost-content>
                 </clr-signpost>
@@ -54,13 +54,13 @@ export class SignpostTriggersDemo extends ClarityDocComponent {
         <div class="signpost-item">
             <h6>Button Link w/ Clarity Icon</h6>
             <div class="trigger-item">
-                <clr-signpost [clrSignpostPosition]="'bottom-middle'">
+                <clr-signpost>
                     <button class="btn btn-link" 
                             clrSignpostTrigger>
                                 Button Link 
                                 <clr-icon shape="help-info"></clr-icon>
                     </button>
-                    <clr-signpost-content *clrIfOpen>
+                    <clr-signpost-content [clrPosition]="'bottom-middle'" *clrIfOpen>
                         Lorem ipsum...
                     </clr-signpost-content>
                 </clr-signpost>

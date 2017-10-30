@@ -57,9 +57,13 @@ export function addHelpers(): void {
          * Ideally we would just make "this" a TestContext, but typing "this" in typescript
          * is a bit too new for all IDEs to correctly process it.
          */
-        this.create = <D, C>(clarityDirective: Type<D>, testComponent: Type<C>, providers: any[] = []) => {
-            TestBed.configureTestingModule(
-                {imports: [ClarityModule.forRoot()], declarations: [testComponent], providers: providers});
+        this.create = <D, C>(clarityDirective: Type<D>, testComponent: Type<C>, providers: any[] = [],
+                             extraDirectives: Type<any>[] = []) => {
+            TestBed.configureTestingModule({
+                imports: [ClarityModule.forRoot()],
+                declarations: [testComponent, ...extraDirectives],
+                providers: providers
+            });
             return this._context = new TestContext<D, C>(clarityDirective, testComponent);
         };
 

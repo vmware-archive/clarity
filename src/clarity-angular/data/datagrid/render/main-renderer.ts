@@ -3,6 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import {isPlatformBrowser} from "@angular/common";
 import {
     AfterContentInit,
     AfterViewChecked,
@@ -10,8 +11,9 @@ import {
     Directive,
     ElementRef,
     OnDestroy,
+    PLATFORM_ID,
     QueryList,
-    Renderer2
+    Renderer2,
 } from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
@@ -20,9 +22,19 @@ import {Page} from "../providers/page";
 
 import {DomAdapter} from "./dom-adapter";
 import {DatagridHeaderRenderer} from "./header-renderer";
+import {NoopDomAdapter} from "./noop-dom-adapter";
 import {DatagridRenderOrganizer} from "./render-organizer";
 
-@Directive({selector: "clr-datagrid", providers: [DomAdapter]})
+export const domAdapterFactory = (platformId: Object) => {
+    if (isPlatformBrowser(platformId)) {
+        return new DomAdapter();
+    } else {
+        return new NoopDomAdapter();
+    }
+};
+
+@Directive(
+    {selector: "clr-datagrid", providers: [{provide: DomAdapter, useFactory: domAdapterFactory, deps: [PLATFORM_ID]}]})
 export class DatagridMainRenderer implements AfterContentInit, AfterViewChecked, OnDestroy {
     constructor(private organizer: DatagridRenderOrganizer, private items: Items, private page: Page,
                 private domAdapter: DomAdapter, private el: ElementRef, private renderer: Renderer2) {

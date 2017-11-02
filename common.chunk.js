@@ -26,9 +26,9 @@ var styles_CodeSnippet = ['pre[_ngcontent-%COMP%] {\n            background: tra
 var RenderType_CodeSnippet = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_17" /* ɵcrt */]({ encapsulation: 0, styles: styles_CodeSnippet,
     data: {} });
 function View_CodeSnippet_1(_l) {
-    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_44" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](0, 0, null, null, 6, null, null, null, null, null, null, null)),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](-1, null, ['\n            '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](2, 0, null, null, 3, 'pre', [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](3, 0, null, null, 2, 'code', [], null, null, null, null, null)), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ɵdid */](4, 1064960, [[1, 4]], 0, __WEBPACK_IMPORTED_MODULE_1_clarity_angular__["A" /* CodeHighlight */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["p" /* ElementRef */],
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Renderer2 */]], { highlight: [0, 'highlight'] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](5, null, ['', ''])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](-1, null, ['\n        ']))], function (_ck, _v) {
+    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_44" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](0, null, null, 6, null, null, null, null, null, null, null)),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](null, ['\n            '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](0, null, null, 3, 'pre', [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](0, null, null, 2, 'code', [], null, null, null, null, null)), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ɵdid */](1064960, [[1, 4]], 0, __WEBPACK_IMPORTED_MODULE_1_clarity_angular__["A" /* CodeHighlight */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["p" /* ElementRef */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Renderer2 */]], { highlight: [0, 'highlight'] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](null, ['', ''])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](null, ['\n        ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = ('language-' + _co.language);
         _ck(_v, 4, 0, currVal_0);
@@ -39,18 +39,18 @@ function View_CodeSnippet_1(_l) {
     });
 }
 function View_CodeSnippet_2(_l) {
-    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_44" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](0, 0, null, null, 5, null, null, null, null, null, null, null)),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](-1, null, ['\n            '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](2, 0, null, null, 2, 'pre', [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](3, 0, null, null, 1, 'code', [['class', 'clr-code']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](4, null, ['', ''])),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](-1, null, ['\n        ']))], null, function (_ck, _v) {
+    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_44" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](0, null, null, 5, null, null, null, null, null, null, null)),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](null, ['\n            '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](0, null, null, 2, 'pre', [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](0, null, null, 1, 'code', [['class', 'clr-code']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](null, ['', ''])), (_l()(),
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](null, ['\n        ']))], null, function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = _co.code.trim();
         _ck(_v, 4, 0, currVal_0);
     });
 }
 function View_CodeSnippet_0(_l) {
-    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_44" /* ɵvid */](0, [__WEBPACK_IMPORTED_MODULE_0__angular_core__["_40" /* ɵqud */](671088640, 1, { codeHighlight: 0 }), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](-1, null, ['\n        '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* ɵand */](16777216, null, null, 1, null, View_CodeSnippet_1)), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ɵdid */](3, 16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["k" /* NgIf */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* ViewContainerRef */],
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* TemplateRef */]], { ngIf: [0, 'ngIf'] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](-1, null, ['\n        '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* ɵand */](16777216, null, null, 1, null, View_CodeSnippet_2)), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ɵdid */](6, 16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["k" /* NgIf */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* ViewContainerRef */],
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* TemplateRef */]], { ngIf: [0, 'ngIf'] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](-1, null, ['\n    ']))], function (_ck, _v) {
+    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_44" /* ɵvid */](0, [__WEBPACK_IMPORTED_MODULE_0__angular_core__["_40" /* ɵqud */](671088640, 1, { codeHighlight: 0 }), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](null, ['\n        '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* ɵand */](16777216, null, null, 1, null, View_CodeSnippet_1)), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ɵdid */](16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["k" /* NgIf */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* ViewContainerRef */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* TemplateRef */]], { ngIf: [0, 'ngIf'] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](null, ['\n        '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* ɵand */](16777216, null, null, 1, null, View_CodeSnippet_2)), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ɵdid */](16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["k" /* NgIf */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* ViewContainerRef */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* TemplateRef */]], { ngIf: [0, 'ngIf'] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵted */](null, ['\n    ']))], function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = !_co.disablePrism;
         _ck(_v, 3, 0, currVal_0);
@@ -59,13 +59,13 @@ function View_CodeSnippet_0(_l) {
     }, null);
 }
 function View_CodeSnippet_Host_0(_l) {
-    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_44" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](0, 0, null, null, 1, 'clr-code-snippet', [], null, null, null, View_CodeSnippet_0, RenderType_CodeSnippet)),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ɵdid */](1, 4243456, null, 0, __WEBPACK_IMPORTED_MODULE_3__app_utils_code_snippet__["a" /* CodeSnippet */], [], null, null)], null, null);
+    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_44" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* ɵeld */](0, null, null, 1, 'clr-code-snippet', [], null, null, null, View_CodeSnippet_0, RenderType_CodeSnippet)),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ɵdid */](4243456, null, 0, __WEBPACK_IMPORTED_MODULE_3__app_utils_code_snippet__["a" /* CodeSnippet */], [], null, null)], null, null);
 }
 var CodeSnippetNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_15" /* ɵccf */]('clr-code-snippet', __WEBPACK_IMPORTED_MODULE_3__app_utils_code_snippet__["a" /* CodeSnippet */], View_CodeSnippet_Host_0, { code: 'clrCode', language: 'clrLanguage',
     disablePrism: 'clrDisablePrism' }, {}, []);
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL1VzZXJzL21oaXBwZWx5L1Byb2plY3RzL2NsYXJpdHkvd2Vic2l0ZS9zcmMvYXBwL3V0aWxzL2NvZGUtc25pcHBldC5uZ2ZhY3RvcnkudHMiLCJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJuZzovLy9Vc2Vycy9taGlwcGVseS9Qcm9qZWN0cy9jbGFyaXR5L3dlYnNpdGUvc3JjL2FwcC91dGlscy9jb2RlLXNuaXBwZXQudHMiLCJuZzovLy9Vc2Vycy9taGlwcGVseS9Qcm9qZWN0cy9jbGFyaXR5L3dlYnNpdGUvc3JjL2FwcC91dGlscy9jb2RlLXNuaXBwZXQudHMuQ29kZVNuaXBwZXQuaHRtbCIsIm5nOi8vL1VzZXJzL21oaXBwZWx5L1Byb2plY3RzL2NsYXJpdHkvd2Vic2l0ZS9zcmMvYXBwL3V0aWxzL2NvZGUtc25pcHBldC50cy5Db2RlU25pcHBldF9Ib3N0Lmh0bWwiXSwic291cmNlc0NvbnRlbnQiOlsiICIsIlxuICAgICAgICA8bmctY29udGFpbmVyICpuZ0lmPVwiIWRpc2FibGVQcmlzbVwiPlxuICAgICAgICAgICAgPHByZT48Y29kZSBbY2xyLWNvZGUtaGlnaGxpZ2h0XT1cIidsYW5ndWFnZS0nK2xhbmd1YWdlXCI+e3tjb2RlLnRyaW0oKX19PC9jb2RlPjwvcHJlPlxuICAgICAgICA8L25nLWNvbnRhaW5lcj5cbiAgICAgICAgPG5nLWNvbnRhaW5lciAqbmdJZj1cImRpc2FibGVQcmlzbVwiPlxuICAgICAgICAgICAgPHByZT48Y29kZSBjbGFzcz1cImNsci1jb2RlXCI+e3tjb2RlLnRyaW0oKX19PC9jb2RlPjwvcHJlPlxuICAgICAgICA8L25nLWNvbnRhaW5lcj5cbiAgICAiLCI8Y2xyLWNvZGUtc25pcHBldD48L2Nsci1jb2RlLXNuaXBwZXQ+Il0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7Ozs7OztvQkNDUTtNQUFBO01BQW9DLHNEQUNoQztVQUFBO1VBQUEsOEJBQUs7VUFBQTtVQUFBLHVCQUFBO3NCQUFBLDZDQUFrRDtVQUFBLHdCQUE0Qjs7O1FBQXhFO1FBQU4sV0FBTSxTQUFOOzs7UUFBa0Q7UUFBQTs7OztvQkFFM0Q7TUFBQTtNQUFtQyxzREFDL0I7VUFBQTtVQUFBLDhCQUFLO1VBQUE7VUFBQSw4QkFBdUI7TUFBNEI7O0lBQTVCO0lBQUE7Ozs7MkRBTHhDO01BQUEsaUJBQ1E7TUFBQSw0QkFBQTtvQkFBQSxtQ0FFZTtNQUFBLGlCQUNmO01BQUEsNEJBQUE7b0JBQUEsbUNBRWU7TUFBQTs7SUFMRDtJQUFkLFdBQWMsU0FBZDtJQUdjO0lBQWQsV0FBYyxTQUFkOzs7O29CQ0pSO01BQUE7YUFBQTtVQUFBOzs7OyJ9
-//# sourceMappingURL=/Users/mhippely/Projects/clarity/website/src/code-snippet.ngfactory.js.map
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL1VzZXJzL2FkaXR5YWIvd2Vic2l0ZS9zcmMvYXBwL3V0aWxzL2NvZGUtc25pcHBldC5uZ2ZhY3RvcnkudHMiLCJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJuZzovLy9Vc2Vycy9hZGl0eWFiL3dlYnNpdGUvc3JjL2FwcC91dGlscy9jb2RlLXNuaXBwZXQudHMiLCJuZzovLy9Vc2Vycy9hZGl0eWFiL3dlYnNpdGUvc3JjL2FwcC91dGlscy9jb2RlLXNuaXBwZXQudHMuQ29kZVNuaXBwZXQuaHRtbCIsIm5nOi8vL1VzZXJzL2FkaXR5YWIvd2Vic2l0ZS9zcmMvYXBwL3V0aWxzL2NvZGUtc25pcHBldC50cy5Db2RlU25pcHBldF9Ib3N0Lmh0bWwiXSwic291cmNlc0NvbnRlbnQiOlsiICIsIlxuICAgICAgICA8bmctY29udGFpbmVyICpuZ0lmPVwiIWRpc2FibGVQcmlzbVwiPlxuICAgICAgICAgICAgPHByZT48Y29kZSBbY2xyLWNvZGUtaGlnaGxpZ2h0XT1cIidsYW5ndWFnZS0nK2xhbmd1YWdlXCI+e3tjb2RlLnRyaW0oKX19PC9jb2RlPjwvcHJlPlxuICAgICAgICA8L25nLWNvbnRhaW5lcj5cbiAgICAgICAgPG5nLWNvbnRhaW5lciAqbmdJZj1cImRpc2FibGVQcmlzbVwiPlxuICAgICAgICAgICAgPHByZT48Y29kZSBjbGFzcz1cImNsci1jb2RlXCI+e3tjb2RlLnRyaW0oKX19PC9jb2RlPjwvcHJlPlxuICAgICAgICA8L25nLWNvbnRhaW5lcj5cbiAgICAiLCI8Y2xyLWNvZGUtc25pcHBldD48L2Nsci1jb2RlLXNuaXBwZXQ+Il0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7Ozs7OztvQkNDUTtNQUFBO01BQW9DLG1EQUNoQztVQUFBO1VBQUEsOEJBQUs7VUFBQTtVQUFBLHVCQUFBO3NCQUFBLDZDQUFrRDtVQUFBLFVBQTRCOztJQUF4RTtJQUFOLFdBQU0sU0FBTjs7O0lBQWtEO0lBQUE7Ozs7b0JBRTNEO01BQUE7TUFBbUMsbURBQy9CO1VBQUE7VUFBQSw4QkFBSztVQUFBO1VBQUEsOEJBQXVCLHdDQUE0QjtpQkFBQTs7SUFBNUI7SUFBQTs7OzsyREFMeEM7TUFBQSxpQkFDUTtNQUFBLDRCQUFBO29CQUFBLG1DQUVlO01BQUEsaUJBQ2Y7TUFBQSw0QkFBQTtvQkFBQSxtQ0FFZTtNQUFBOztJQUxEO0lBQWQsV0FBYyxTQUFkO0lBR2M7SUFBZCxXQUFjLFNBQWQ7Ozs7b0JDSlI7TUFBQTthQUFBOzs7OzsifQ==
+//# sourceMappingURL=/Users/adityab/website/src/code-snippet.ngfactory.js.map
 
 /***/ }),
 
@@ -87,7 +87,7 @@ var CodeSnippet = (function () {
     return CodeSnippet;
 }());
 
-//# sourceMappingURL=/Users/mhippely/Projects/clarity/website/src/code-snippet.js.map
+//# sourceMappingURL=/Users/adityab/website/src/code-snippet.js.map
 
 /***/ }),
 
@@ -131,7 +131,7 @@ var HashListener = (function () {
     return HashListener;
 }());
 
-//# sourceMappingURL=/Users/mhippely/Projects/clarity/website/src/hash-listener.directive.js.map
+//# sourceMappingURL=/Users/adityab/website/src/hash-listener.directive.js.map
 
 /***/ }),
 
@@ -197,7 +197,7 @@ var ScrollSpy = (function () {
     return ScrollSpy;
 }());
 
-//# sourceMappingURL=/Users/mhippely/Projects/clarity/website/src/scrollspy.directive.js.map
+//# sourceMappingURL=/Users/adityab/website/src/scrollspy.directive.js.map
 
 /***/ })
 

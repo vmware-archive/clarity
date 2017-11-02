@@ -59,6 +59,10 @@ const FLIP_EXAMPLE = `
 <clr-icon shape="floppy" flip="vertical"></clr-icon>
 `;
 
+const TITLE_EXAMPLE = `
+<clr-icon shape="copy" title="Copy Document"></clr-icon>
+`;
+
 const DIRECTION_EXAMPLE_DIR = `
 <clr-icon shape="caret" dir="up"></clr-icon>
 <clr-icon shape="caret" dir="right"></clr-icon>
@@ -100,6 +104,7 @@ export class IconsHowToUseComponent {
     orientationExampleDir = DIRECTION_EXAMPLE_DIR;
     orientationExampleFlip = DIRECTION_EXAMPLE_FLIP;
     variantExample = VARIANTS_EXAMPLE;
+    titleExample = TITLE_EXAMPLE;
 
 
 }

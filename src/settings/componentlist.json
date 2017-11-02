@@ -138,8 +138,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "dropdowns",
@@ -149,8 +148,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "forms",
@@ -192,7 +190,8 @@
             "ui": 20,
             "core": 20,
             "ng": -1,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "input-fields",
@@ -356,8 +355,7 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "stack-view",
@@ -460,8 +458,7 @@
             "ux": 20,
             "ui": 20,
             "core": -1,
-            "ng": 20,
-            "isUpdated": true
+            "ng": 20
         }
     ]
 }

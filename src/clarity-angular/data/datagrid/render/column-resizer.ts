@@ -42,9 +42,7 @@ export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
     }
 
     ngAfterViewInit() {
-        this.columnMinWidth = this.domAdapter.minWidth(this.columnEl);
         this.handleTrackerEl = this.dragDispatcher.handleTrackerRef.nativeElement;
-
         this.dragDispatcher.addDragListener();
         this.subscriptions.push(this.dragDispatcher.onDragStart.subscribe(() => this.dragStartHandler()));
         this.subscriptions.push(this.dragDispatcher.onDragMove.subscribe(($event) => this.dragMoveHandler($event)));
@@ -52,6 +50,10 @@ export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
     }
 
     dragStartHandler(): void {
+        if (!this.columnMinWidth) {
+            // sets the min width only on the very first drag attempt
+            this.columnMinWidth = this.domAdapter.minWidth(this.columnEl);
+        }
         this.renderer.setStyle(this.handleTrackerEl, "display", "block");
         this.renderer.setStyle(document.body, "cursor", "col-resize");
         this.dragDistancePositionX = 0;

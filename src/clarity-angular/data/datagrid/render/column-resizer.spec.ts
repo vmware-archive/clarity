@@ -70,12 +70,25 @@ export default function(): void {
             expect(column3DragDispatcher.handleTrackerRef.nativeElement).not.toBeUndefined();
             expect(column4DragDispatcher.handleTrackerRef.nativeElement).not.toBeUndefined();
         });
-        it("accesses column minumum width when the drag listener is added in", function() {
+        it("accesses column minimum width on the first drag attempt", function() {
+            column1ResizerDirective.dragStartHandler();
             expect(column1ResizerDirective.columnMinWidth).toEqual(96);
+            column2ResizerDirective.dragStartHandler();
             expect(column2ResizerDirective.columnMinWidth).toEqual(120);
+            column3ResizerDirective.dragStartHandler();
             expect(column3ResizerDirective.columnMinWidth).toEqual(96);
+            column4ResizerDirective.dragStartHandler();
             expect(column4ResizerDirective.columnMinWidth).toEqual(96);
         });
+        it("if a column expands by large size, other flexible columns shouldn't shrink below their minimum width",
+           function() {
+               const column1InitialWidth = domAdapter.clientRectWidth(column1ResizerDirective.columnEl);
+               emulateResize(column1ResizerDirective, 1000);
+               expect(domAdapter.clientRectWidth(column1ResizerDirective.columnEl)).toBe(column1InitialWidth + 1000);
+               expect(domAdapter.clientRectWidth(column2ResizerDirective.columnEl)).toBe(120);
+               expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBe(200);
+               expect(domAdapter.clientRectWidth(column4ResizerDirective.columnEl)).toBe(96);
+           });
         it("initial column width should be greater than minumum widths or equal to user defined width", function() {
             expect(domAdapter.clientRectWidth(column1ResizerDirective.columnEl)).toBeGreaterThanOrEqual(96);
             expect(domAdapter.clientRectWidth(column2ResizerDirective.columnEl)).toBeGreaterThanOrEqual(120);
@@ -148,7 +161,7 @@ export default function(): void {
             column3ResizerDirective.dragEndHandler();
             expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBe(96);
         });
-        it("should change the column width up to its minimum width if dragging exceeds it", function() {
+        it("shouldn't shrink column below its minimum width", function() {
             context.testComponent.column3WidthStrict = 120;
             context.detectChanges();
             column3ResizerDirective.dragStartHandler();
@@ -195,7 +208,7 @@ export default function(): void {
             expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBe(150);
             expect(domAdapter.clientRectWidth(column4ResizerDirective.columnEl)).toBeGreaterThan(column4InitialWidth);
         });
-        it("if a column expands, other flexible columns should expand.", function() {
+        it("if a column expands, other flexible columns should shrink.", function() {
             const column1InitialWidth = domAdapter.clientRectWidth(column1ResizerDirective.columnEl);
             const column2InitialWidth = domAdapter.clientRectWidth(column2ResizerDirective.columnEl);
             const column4InitialWidth = domAdapter.clientRectWidth(column4ResizerDirective.columnEl);
@@ -204,7 +217,6 @@ export default function(): void {
             expect(domAdapter.clientRectWidth(column2ResizerDirective.columnEl)).toBeLessThan(column2InitialWidth);
             expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBe(250);
             expect(domAdapter.clientRectWidth(column4ResizerDirective.columnEl)).toBeLessThan(column4InitialWidth);
-
         });
         it("columns with strict width should keep their widths if other columns get resized", function() {
             const column1InitialWidth = domAdapter.clientRectWidth(column1ResizerDirective.columnEl);
@@ -252,14 +264,12 @@ export default function(): void {
             <clr-dg-column [style.width.px]="column3WidthStrict" 
             (clrDgColumnResize)="newWidth = $event">Three</clr-dg-column>
             <clr-dg-column>Four</clr-dg-column>
-        
             <clr-dg-row *clrDgItems="let item of items">
                 <clr-dg-cell>{{item}}</clr-dg-cell>
                 <clr-dg-cell>{{item * 2}}</clr-dg-cell>
                 <clr-dg-cell>{{item * 3}}</clr-dg-cell>
                 <clr-dg-cell>{{item * 4}}</clr-dg-cell>
             </clr-dg-row>
-        
             <clr-dg-footer>{{items.length}} items</clr-dg-footer>
         </clr-datagrid>
     </div>

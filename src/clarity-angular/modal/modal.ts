@@ -7,6 +7,7 @@ import {animate, AnimationEvent, state, style, transition, trigger} from "@angul
 import {
     Component,
     EventEmitter,
+    HostBinding,
     HostListener,
     Input,
     OnChanges,
@@ -26,7 +27,8 @@ import {GHOST_PAGE_ANIMATION} from "./utils/ghost-page-animations";
     viewProviders: [ScrollingService],
     templateUrl: "./modal.html",
     styles: [`
-        :host { display: inline-block; }
+        :host { display: none; }
+        :host.open { display: inline; }
     `],
     animations: [
         trigger("fadeDown",
@@ -77,8 +79,7 @@ import {GHOST_PAGE_ANIMATION} from "./utils/ghost-page-animations";
 })
 export class Modal implements OnChanges, OnDestroy {
     @ViewChild(FocusTrapDirective) focusTrap: FocusTrapDirective;
-
-    @Input("clrModalOpen") _open: boolean = false;
+    @HostBinding("class.open") @Input("clrModalOpen") _open: boolean = false;
     @Output("clrModalOpenChange") _openChanged: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
     @Input("clrModalClosable") closable: boolean = true;

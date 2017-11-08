@@ -5,20 +5,9 @@
  */
 import {Component} from "@angular/core";
 
-import {Inventory} from "../inventory/inventory";
+import {State} from "../../../clr-angular/data/datagrid";
+import {FetchResult, Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
-
-const EXAMPLE = `
-<clr-datagrid [(clrDgSelected)]="selected">
-    <-- ... -->
-    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
-        <-- ... -->
-    </clr-dg-row>
-   <-- ... -->
-</clr-datagrid>
-
-Selected users: <span *ngFor="let user of selected">{{user.name}}</span>
-`;
 
 @Component({
     selector: "clr-datagrid-selection-demo",
@@ -27,54 +16,47 @@ Selected users: <span *ngFor="let user of selected">{{user.name}}</span>
     styleUrls: ["../datagrid.demo.scss"]
 })
 export class DatagridSelectionDemo {
-    example = EXAMPLE;
-    users: User[];
-    _selected: User[] = [];
-    toAdd: User[] = [];
-    toDelete: User[] = [];
-    toEdit: User;
-
-    get selected() {
-        return this._selected;
-    }
-
-    set selected(selection: User[]) {
-        this._selected = selection;
-        this.cleanUp();
-    }
-
-    cleanUp(): void {
-        this.toAdd = [];
-        this.toDelete = [];
-        this.toEdit = null;
-    }
+    clientNoTrackByUsers: User[];
+    clientNoTrackBySelected: User[] = [];
+    clientTrackByIndexUsers: User[];
+    clientTrackByIndexSelected: User[] = [];
+    clientTrackByIdUsers: User[];
+    clientTrackByIdSelected: User[] = [];
+    serverTrackByIdUsers: User[];
+    serverTrackByIdSelected: User[] = [];
+    total = 100;
+    loading = true;
 
     constructor(private inventory: Inventory) {
-        inventory.size = 10;
-        inventory.reset();
-        this.users = inventory.all;
+        this.inventory.size = this.total;
+        this.inventory.latency = 500;
+        this.inventory.reset();
+        this.clientNoTrackByUsers = this.clientTrackByIndexUsers = this.clientTrackByIdUsers = this.inventory.all;
     }
 
-    onDelete(user: User) {
-        this.cleanUp();
-        if (user) {
-            this.toDelete = [user];
-        } else {
-            this.toDelete = this.selected.slice();
+    refresh(state: State) {
+        this.loading = true;
+        const filters: {[prop: string]: any[]} = {};
+        if (state.filters) {
+            for (const filter of state.filters) {
+                const {property, value} = <{property: string, value: string}>filter;
+                filters[property] = [value];
+            }
         }
+        this.inventory.filter(filters)
+            .sort(<{by: string, reverse: boolean}>state.sort)
+            .fetch(state.page.from, state.page.size)
+            .then((result: FetchResult) => {
+                this.serverTrackByIdUsers = result.users;
+                this.loading = false;
+            });
     }
 
-    onEdit(user: User) {
-        this.cleanUp();
-        if (user) {
-            this.toEdit = user;
-        } else {
-            this.toEdit = this.selected[0];
-        }
+    trackByIndex(index: number, item: User) {
+        return index;
     }
 
-    onAdd() {
-        this.cleanUp();
-        this.toAdd = this.selected.slice();
+    trackById(index: number, item: User) {
+        return item.id;
     }
 }

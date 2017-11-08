@@ -41,7 +41,7 @@ let nbRow: number = 0;
                          class="datagrid-select datagrid-fixed-column">
                 <div class="radio">
                     <input type="radio" [id]="id" [name]="selection.id + '-radio'" [value]="item"
-                           [(ngModel)]="selection.currentSingle">
+                           [(ngModel)]="selection.currentSingle" [checked]="selection.currentSingle === item">
                     <label for="{{id}}"></label>
                 </div>
             </clr-dg-cell>

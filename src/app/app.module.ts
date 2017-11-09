@@ -20,7 +20,7 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
         BrowserAnimationsModule,
         BrowserModule,
         FormsModule,
-        ClarityModule.forRoot(),
+        ClarityModule,
         UtilsModule,
         AppRoutingModule
     ],

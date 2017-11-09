@@ -45,13 +45,14 @@ import {TypographyDemoModule} from "./demos/typography/typography.demo.module";
 import {WizardDemoModule} from "./demos/wizard/wizard.demo.module";
 import {SignpostDemoModule} from "./demos/signposts/signpost.demo.module";
 import {VerticalNavDemoModule} from "./demos/vertical-nav/vertical-nav.demo.module";
+import {ThemesDemoModule} from "./demos/themes/themes.demo.module";
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         UtilsModule,
-        ClarityModule.forChild(),
+        ClarityModule,
         AlertsDemoModule,
         AppLayoutDemoModule,
         BadgesDemoModule,
@@ -81,6 +82,7 @@ import {VerticalNavDemoModule} from "./demos/vertical-nav/vertical-nav.demo.modu
         StackViewDemoModule,
         TablesDemoModule,
         TabsDemoModule,
+        ThemesDemoModule,
         TogglesDemoModule,
         TooltipsDemoModule,
         TreeDemoModule,

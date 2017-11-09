@@ -73,6 +73,7 @@ import {PidgeyDemo} from "./demos/vertical-nav/routes/pokemons/pidgey";
 import {CharizardDemo} from "./demos/vertical-nav/routes/pokemons/charizard";
 import {LazyLoadingNavGroupsVerticalNavDemo} from "./demos/vertical-nav/routes/lazy-loading-nav-groups/lazy-loading-nav-groups";
 import {VerticalNavGroupsDemo} from "./demos/vertical-nav/routes/nav-groups/nav-groups";
+import {ThemesDemo} from "./demos/themes/themes.demo";
 
 const documentationRoutes: Routes = [
     {
@@ -446,6 +447,14 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-tables",
                     browserTitle: "Tables"
+                }
+            },
+            {
+                path: "themes",
+                component: ThemesDemo,
+                data: {
+                    bodyClass: "page-tables",
+                    browserTitle: "Clarity Themes"
                 }
             },
             {

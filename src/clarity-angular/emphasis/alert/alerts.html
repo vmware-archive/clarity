@@ -1,0 +1,5 @@
+<clr-alerts-pager
+        *ngIf="multiAlertService.count > 1"
+        [clrCurrentAlertIndex]="currentAlertIndex">
+</clr-alerts-pager>
+<ng-content select="clr-alert"></ng-content>

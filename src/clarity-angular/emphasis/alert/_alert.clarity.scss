@@ -394,11 +394,19 @@ $clr-alert-colors: (
             }
         }
 
+        .alerts-pager {
+            margin-top: $clr_baselineRem_0_125;
+        }
+
         .alert-app-level {
             .alert-actions {
                 margin-left: 0;
             }
         }
+    }
+
+    .alert-hidden {
+        display: none;
     }
 
     //alert padding/margin adjustments
@@ -416,5 +424,60 @@ $clr-alert-colors: (
         .alert + .modal-header {
             margin-top: 0.5rem;
         }
+    }
+
+    //3. Multiple app level alerts
+    .alerts {
+        &.alert-info {
+            background: $clr-action-blue-dark;
+        }
+
+        &.alert-danger {
+            background: $clr-red-dark;
+        }
+
+        &.alert-warning {
+            background: $clr-yellow-darker;
+        }
+
+        &.alert-success {
+            background: $clr-green-darker;
+        }
+    }
+
+    .alerts-pager {
+        color: $clr-app-level-alert-color;
+        float: left;
+        @include clr-getTypePropertiesForDomElement(alert_text, (font-size, letter-spacing));
+
+        min-height: $clr-alert-min-height;
+        text-align: center;
+        width: 144px;
+    }
+
+
+    .alerts-pager-button {
+        @include clr-no-styles-button();
+        color: $clr-white;
+        cursor: pointer;
+    }
+
+    .alerts-pager-control {
+        display: flex;
+        margin-top: $clr-alert-top-margin;
+    }
+
+    $clr-alerts-pager-item-width: 33.33%;
+    .alerts-page-down {
+        margin-left: $clr-baselineRem_1;
+        width: $clr-alerts-pager-item-width;
+    }
+
+    .alerts-page-up {
+        margin-right: $clr_baselineRem_1;
+        width: $clr-alerts-pager-item-width;
+    }
+    .alerts-pager-text {
+        width: $clr-alerts-pager-item-width;
     }
 }

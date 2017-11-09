@@ -390,6 +390,18 @@
             "dox": 20
         },
         {
+            "newLayout": true,
+            "url": "themes",
+            "text": "Themes",
+            "type": "pattern",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20,
+            "isNew": true
+        },
+        {
             "url": "toggle-switches",
             "text": "Toggle Switches",
             "type": "component",

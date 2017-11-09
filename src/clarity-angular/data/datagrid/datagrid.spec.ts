@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import {ChangeDetectionStrategy, Component, Input} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 
 import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
@@ -20,7 +20,7 @@ import {HideableColumnService} from "./providers/hideable-column.service";
 import {Items} from "./providers/items";
 import {Page} from "./providers/page";
 import {RowActionService} from "./providers/row-action-service";
-import {Selection} from "./providers/selection";
+import {Selection, SelectionType} from "./providers/selection";
 import {Sort} from "./providers/sort";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 
@@ -332,6 +332,29 @@ export default function(): void {
             });
         });
 
+        describe("Multi selection", function() {
+            let context: TestContext<Datagrid, OnPushTest>;
+            let selection: Selection;
+
+            beforeEach(function() {
+                context = this.create(Datagrid, OnPushTest, [Selection], [MultiSelectionTest]);
+                selection = context.getClarityProvider(Selection);
+            });
+
+            describe("Template API", function() {
+                it("sets the selected binding with OnPush", function() {
+                    selection.selectionType = SelectionType.Multi;
+                    expect(selection.current).toEqual(context.testComponent.selected);
+                    context.testComponent.selected = [1];
+                    context.detectChanges();
+                    expect(selection.current).toEqual(context.testComponent.selected);
+                    context.testComponent.selected = [];
+                    context.detectChanges();
+                    expect(selection.current).toEqual(context.testComponent.selected);
+                });
+            });
+        });
+
         describe("Chocolate", function() {
             describe("clrDgItems", function() {
                 it("doesn't taunt with chocolate on actionable rows", function() {
@@ -449,6 +472,37 @@ class TrackByTest {
     trackByIndex(index: number, item: any) {
         return index;
     }
+}
+
+// Have to wrap the OnPush component otherwise change detection doesn't run.
+// The secret here is OnPush only updates on input changes, hence the wrapper.
+@Component({
+    template: `
+    <multi-select-test [items]="items" [selected]="selected"></multi-select-test>
+    `
+})
+class OnPushTest {
+    items = [1, 2, 3];
+    selected: any[] = [];
+}
+
+@Component({
+    selector: "multi-select-test",
+    template: `
+    <clr-datagrid [(clrDgSelected)]="selected">
+        <clr-dg-column>First</clr-dg-column>
+        <clr-dg-column>Second</clr-dg-column>
+    
+        <clr-dg-row *clrDgItems="let item of items;" [clrDgItem]="item">
+            <clr-dg-cell>{{item}}</clr-dg-cell>
+            <clr-dg-cell>{{item * item}}</clr-dg-cell>
+        </clr-dg-row>
+    </clr-datagrid>`,
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+class MultiSelectionTest {
+    @Input() items: any[] = [];
+    @Input() selected: any[] = [];
 }
 
 @Component({

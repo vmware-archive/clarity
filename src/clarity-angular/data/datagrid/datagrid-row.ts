@@ -35,7 +35,7 @@ let nbRow: number = 0;
         <div class="datagrid-row-master datagrid-row-flex">
             <clr-dg-cell *ngIf="selection.selectionType === SELECTION_TYPE.Multi"
                          class="datagrid-select datagrid-fixed-column">
-                <clr-checkbox [ngModel]="selected" (ngModelChange)="toggle($event)"></clr-checkbox>
+                <clr-checkbox [clrChecked]="selected" (clrCheckedChange)="toggle($event)"></clr-checkbox>
             </clr-dg-cell>
             <clr-dg-cell *ngIf="selection.selectionType === SELECTION_TYPE.Single"
                          class="datagrid-select datagrid-fixed-column">

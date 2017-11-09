@@ -234,7 +234,7 @@
     <clr-dg-column>Creation date</clr-dg-column>
     <clr-dg-column>Favorite color</clr-dg-column>
 
-    <clr-dg-row *clrDgItems="let user of nonPaginatedUsers" [clrDgItem]="user">
+    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
       <clr-dg-action-overflow>
         <button class="action-item" (click)="onEdit(user)">
           <clr-icon shape="note"></clr-icon>
@@ -254,6 +254,10 @@
       </clr-dg-cell>
     </clr-dg-row>
 
-    <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
+    <clr-dg-footer>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+      of {{pagination.totalItems}} users
+      <clr-dg-pagination #pagination [clrDgPageSize]="currentPageSize"></clr-dg-pagination>
+    </clr-dg-footer>
   </clr-datagrid>
 </div>

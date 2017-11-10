@@ -15,6 +15,7 @@ import {AlertSizesDemo} from "./static/alert-sizes";
 import {AlertAppLevelDemo} from "./static/alert-app-level";
 
 import {AlertAngularAppLevelDemo} from "./angular/alert-angular-app-level";
+import {AlertAngularAppLevelAlertsDemo} from "./angular/alert-angular-app-level-alerts";
 import {AlertAngularNotClosableDemo} from "./angular/alert-angular-not-closable";
 import {AlertAngularSuccessDemo} from "./angular/alert-angular-success";
 import {AlertAngularSmallDemo} from "./angular/alert-angular-small";
@@ -41,6 +42,7 @@ import {UtilsModule} from "../../../utils/utils.module";
         AlertAppLevelDemo,
 
         AlertAngularAppLevelDemo,
+        AlertAngularAppLevelAlertsDemo,
         AlertAngularNotClosableDemo,
         AlertAngularSuccessDemo,
         AlertAngularSmallDemo,

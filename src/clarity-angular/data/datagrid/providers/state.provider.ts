@@ -3,10 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import "rxjs/add/operator/map";
-
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
+import {map} from "rxjs/operators/map";
 
 import {DatagridPropertyComparator} from "../built-in/comparators/datagrid-property-comparator";
 import {DatagridPropertyStringFilter} from "../built-in/filters/datagrid-property-string-filter";
@@ -29,7 +28,7 @@ export class StateProvider {
     /**
      * The Observable that lets other classes subscribe to global state changes
      */
-    change: Observable<State> = this.debouncer.change.map(() => this.state);
+    change: Observable<State> = this.debouncer.change.pipe(map(() => this.state));
 
     /*
      * By making this a getter, we open the possibility for a setter in the future.

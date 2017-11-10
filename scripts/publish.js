@@ -7,6 +7,7 @@ const shell = require('shelljs');
 const prompt = require('prompt');
 const colors = require('colors/safe');
 const version = require('../package.json').version;
+const path = require('path');
 
 /*********
  * Build Clarity for release
@@ -26,7 +27,8 @@ prompt.start();
  */
 prompt.get(['confirmation'], function (err, result) {
     if(/yes/i.test(result.confirmation) || /y/i.test(result.confirmation)) {
-        shell.exec('npm publish dist/clarity-ui; npm publish dist/clarity-angular/clarity-angular-$npm_package_version.tgz; npm publish dist/clarity-icons');
+        const npm = path.join(process.cwd(), 'node_modules', '.bin', 'npm');
+        shell.exec(`${npm} publish dist/clarity-ui; ${npm} publish dist/clarity-angular/clarity-angular-${version}.tgz; ${npm} publish dist/clarity-icons`);
         console.log(colors.green(`Clarity v${version} successfully published to npm!`));
     } else {
         console.log(colors.red('Nah, just kidding for now!'));

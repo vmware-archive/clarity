@@ -5,31 +5,42 @@
  */
 
 
-import {Component, EventEmitter, Input, Optional, Output, SkipSelf, TemplateRef, ViewChild} from "@angular/core";
+import { Component, EventEmitter, Input, Optional, Output, SkipSelf, TemplateRef, ViewChild } from "@angular/core";
 
-import {ButtonInGroupService} from "../providers/buttonInGroup.service";
+import { ButtonInGroupService } from "../providers/buttonInGroup.service";
+import { LoadingListener } from "../../index";
 
 @Component({
     selector: "clr-button",
     template: `
         <ng-template #buttonProjectedRef>
-            <button 
-                [class]="classNames" 
+            <button
+                [class]="classNames"
                 (click)="emitClick()"
                 [attr.type]="type"
                 [attr.name]="name"
                 [attr.disabled]="disabled">
+                <span class="spinner spinner-inline" *ngIf="loading"></span>
                 <ng-content></ng-content>
             </button>
         </ng-template>
-    `
+    `,
+    providers: [{provide: LoadingListener, useExisting: Button}]
 })
-export class Button {
+export class Button implements LoadingListener {
     private _enableService: boolean = false;
 
     @ViewChild("buttonProjectedRef") templateRef: TemplateRef<Button>;
+    public loading: Boolean;
 
-    constructor(@SkipSelf() @Optional() public buttonInGroupService: ButtonInGroupService) {}
+    startLoading(): void {
+        this.loading = true;
+    }
+
+    doneLoading(): void {
+        this.loading = false;
+    }
+    constructor( @SkipSelf() @Optional() public buttonInGroupService: ButtonInGroupService) { }
 
     private _inMenu: boolean = false;
 

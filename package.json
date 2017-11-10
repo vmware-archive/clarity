@@ -1,6 +1,6 @@
 {
     "name": "clarity-all",
-    "version": "0.10.12",
+    "version": "0.10.13",
     "private": true,
     "scripts": {
         "start": "webpack-dev-server --port=4200 --host 0.0.0.0 --open",

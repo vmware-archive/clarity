@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Injectable, TrackByFn} from "@angular/core";
+import {Injectable, TrackByFunction} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 import {Subscription} from "rxjs/Subscription";
@@ -39,7 +39,7 @@ export class Selection {
             }
             let leftOver: any[];
             if (this._items.trackBy) {
-                const trackBy: TrackByFn = this._items.trackBy;
+                const trackBy: TrackByFunction<any> = this._items.trackBy;
                 const updatedTracked: any[] = updatedItems.map((item, index) => trackBy(index, item));
                 leftOver = this.current.filter((selected, index) => {
                     return updatedTracked.indexOf(trackBy(index, selected)) > -1;

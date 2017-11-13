@@ -5,11 +5,11 @@
  */
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
-import {Filter} from "../../interfaces/filter";
-import {StringFilter} from "../../interfaces/string-filter";
+import {ClrDatagridFilterInterface} from "../../interfaces/filter.interface";
+import {ClrDatagridStringFilterInterface} from "../../interfaces/string-filter.interface";
 
-export class DatagridStringFilterImpl implements Filter<any> {
-    constructor(public filterFn: StringFilter<any>) {}
+export class DatagridStringFilterImpl implements ClrDatagridFilterInterface<any> {
+    constructor(public filterFn: ClrDatagridStringFilterInterface<any>) {}
 
     /**
      * The Observable required as part of the Filter interface

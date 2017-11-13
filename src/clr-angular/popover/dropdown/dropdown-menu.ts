@@ -17,9 +17,9 @@ import {POPOVER_HOST_ANCHOR} from "../common/popover-host-anchor.token";
         "[class.dropdown-menu]": "true",
     }
 })
-export class DropdownMenu extends AbstractPopover {
+export class ClrDropdownMenu extends AbstractPopover {
     constructor(injector: Injector, @Optional() @Inject(POPOVER_HOST_ANCHOR) parentHost: ElementRef,
-                @Optional() @SkipSelf() nested: DropdownMenu) {
+                @Optional() @SkipSelf() nested: ClrDropdownMenu) {
         if (!parentHost) {
             throw new Error("clr-dropdown-menu should only be used inside of a clr-dropdown");
         }

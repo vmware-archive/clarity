@@ -8,7 +8,7 @@ import {Component, ViewChild} from "@angular/core";
 import {fakeAsync, TestBed, tick} from "@angular/core/testing";
 
 import {TestContext} from "../../helpers.spec";
-import {StringFilter} from "../../interfaces/string-filter";
+import {StringFilter} from "../../interfaces/string-filter.interface";
 import {CustomFilter} from "../../providers/custom-filter";
 import {FiltersProvider} from "../../providers/filters";
 import {Page} from "../../providers/page";

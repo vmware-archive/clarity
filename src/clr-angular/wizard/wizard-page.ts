@@ -6,23 +6,23 @@
 
 import {Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef} from "@angular/core";
 
-import {WizardPageButtonsDirective} from "./directives/page-buttons";
-import {WizardPageHeaderActionsDirective} from "./directives/page-header-actions";
-import {WizardPageNavTitleDirective} from "./directives/page-navtitle";
-import {WizardPageTitleDirective} from "./directives/page-title";
-import {ButtonHubService} from "./providers/button-hub";
-import {PageCollectionService} from "./providers/page-collection";
-import {WizardNavigationService} from "./providers/wizard-navigation";
+import {ButtonHubService} from "./providers/button-hub.service";
+import {PageCollectionService} from "./providers/page-collection.service";
+import {WizardNavigationService} from "./providers/wizard-navigation.service";
+import {ClrWizardPageButtons} from "./wizard-page-buttons";
+import {ClrWizardPageHeaderActions} from "./wizard-page-header-actions";
+import {ClrWizardPageNavTitle} from "./wizard-page-navtitle";
+import {ClrWizardPageTitle} from "./wizard-page-title";
 
 let wizardPageIndex = 0;
 
 /**
- * The WizardPage component is responsible for displaying the content of each step
+ * The ClrWizardPage component is responsible for displaying the content of each step
  * in the wizard workflow.
  *
- * WizardPage component has hooks into the navigation service (WizardPage.navService),
- * page collection (WizardPage.pageCollection), and button service
- * (WizardPage.buttonService). These three providers are shared across the components
+ * ClrWizardPage component has hooks into the navigation service (ClrWizardPage.navService),
+ * page collection (ClrWizardPage.pageCollection), and button service
+ * (ClrWizardPage.buttonService). These three providers are shared across the components
  * within each instance of a Wizard.
  *
  */
@@ -38,9 +38,9 @@ let wizardPageIndex = 0;
         "[class.clr-wizard-page]": "true"
     }
 })
-export class WizardPage implements OnInit {
+export class ClrWizardPage implements OnInit {
     /**
-     * Creates an instance of WizardPage.
+     * Creates an instance of ClrWizardPage.
      *
      * @memberof WizardPage
      */
@@ -54,19 +54,19 @@ export class WizardPage implements OnInit {
      * @memberof WizardPage
      *
      */
-    @ContentChild(WizardPageTitleDirective) public pageTitle: WizardPageTitleDirective;
+    @ContentChild(ClrWizardPageTitle) public pageTitle: ClrWizardPageTitle;
 
     /**
      * Contains a reference to the desired title for the page's step in the
      * navigation on the left side of the wizard. Can be projected to change the
      * navigation link's text.
      *
-     * If not defined, then WizardPage.pageTitle will be displayed in the stepnav.
+     * If not defined, then ClrWizardPage.pageTitle will be displayed in the stepnav.
      *
      * @memberof WizardPage
      *
      */
-    @ContentChild(WizardPageNavTitleDirective) public pageNavTitle: WizardPageNavTitleDirective;
+    @ContentChild(ClrWizardPageNavTitle) public pageNavTitle: ClrWizardPageNavTitle;
 
     /**
      * Contains a reference to the buttons defined within the page. If not defined,
@@ -76,7 +76,7 @@ export class WizardPage implements OnInit {
      * @memberof WizardPage
      *
      */
-    @ContentChild(WizardPageButtonsDirective) public _buttons: WizardPageButtonsDirective;
+    @ContentChild(ClrWizardPageButtons) public _buttons: ClrWizardPageButtons;
 
     /**
      * Contains a reference to the header actions defined within the page. If not defined,
@@ -86,7 +86,7 @@ export class WizardPage implements OnInit {
      * @memberof WizardPage
      *
      */
-    @ContentChild(WizardPageHeaderActionsDirective) public _headerActions: WizardPageHeaderActionsDirective;
+    @ContentChild(ClrWizardPageHeaderActions) public _headerActions: ClrWizardPageHeaderActions;
 
     /**
      *
@@ -103,7 +103,7 @@ export class WizardPage implements OnInit {
      * and visibly disables the next button.
      *
      * Does not require that you re-implement navigation routines like you
-     * would if you were using WizardPage.preventDefault or
+     * would if you were using ClrWizardPage.preventDefault or
      * Wizard.preventDefault.
      *
      * @memberof WizardPage
@@ -129,7 +129,7 @@ export class WizardPage implements OnInit {
     }
 
     /**
-     * Emits when the value of WizardPage.nextStepDisabled changes.
+     * Emits when the value of ClrWizardPage.nextStepDisabled changes.
      * Should emit the new value of nextStepDisabled.
      *
      * @memberof WizardPage
@@ -152,7 +152,7 @@ export class WizardPage implements OnInit {
      * and visibly disables the previous button.
      *
      * Does not require that you re-implement navigation routines like you
-     * would if you were using WizardPage.preventDefault or
+     * would if you were using ClrWizardPage.preventDefault or
      * Wizard.preventDefault.
      *
      * @memberof WizardPage
@@ -178,7 +178,7 @@ export class WizardPage implements OnInit {
     }
 
     /**
-     * Emits when the value of WizardPage.previousStepDisabled changes.
+     * Emits when the value of ClrWizardPage.previousStepDisabled changes.
      * Should emit the new value of previousStepDisabled.
      *
      * @memberof WizardPage
@@ -189,8 +189,8 @@ export class WizardPage implements OnInit {
 
     /**
      * Overrides all actions from the page level, so you can use an alternate function for
-     * validation or data-munging with a WizardPage.onCommit (clrWizardPageOnCommit output),
-     * WizardPage.onCancel (clrWizardPageOnCancel output), or one
+     * validation or data-munging with a ClrWizardPage.onCommit (clrWizardPageOnCommit output),
+     * ClrWizardPage.onCancel (clrWizardPageOnCancel output), or one
      * of the granular page-level button click event emitters.
      *
      * @memberof WizardPage
@@ -218,13 +218,13 @@ export class WizardPage implements OnInit {
     /**
      * Overrides the cancel action from the page level. Allows you to use an
      * alternate function for validation or data-munging before cancelling the
-     * wizard when combined with the WizardPage.onCancel
+     * wizard when combined with the ClrWizardPage.onCancel
      * (the clrWizardPageOnCancel output).
      *
      * Requires that you manually close the wizard from your host component,
      * usually with a call to Wizard.forceNext() or wizard.next();
      *
-     * @memberof WizardPage
+     * @memberof ClrWizardPage
      */
     @Input("clrWizardPagePreventDefaultCancel")
     public set stopCancel(val: boolean) {
@@ -262,15 +262,15 @@ export class WizardPage implements OnInit {
     /**
      * Overrides forward navigation from the page level. Allows you to use an
      * alternate function for validation or data-munging before moving the
-     * wizard to the next pagewhen combined with the WizardPage.onCommit
-     * (clrWizardPageOnCommit) or WizardPage.nextButtonClicked
+     * wizard to the next pagewhen combined with the ClrWizardPage.onCommit
+     * (clrWizardPageOnCommit) or ClrWizardPage.nextButtonClicked
      * (clrWizardPageNext) outputs.
      *
      * Requires that you manually tell the wizard to navigate forward from
      * the hostComponent, usually with a call to Wizard.forceNext() or
      * wizard.next();
      *
-     * @memberof WizardPage
+     * @memberof ClrWizardPage
      */
     @Input("clrWizardPagePreventDefaultNext")
     public set stopNext(val: boolean) {
@@ -281,8 +281,8 @@ export class WizardPage implements OnInit {
     }
 
     /**
-     * An event emitter carried over from a legacy version of WizardPage.
-     * Fires an event on WizardPage whenever the next or finish buttons
+     * An event emitter carried over from a legacy version of ClrWizardPage.
+     * Fires an event on ClrWizardPage whenever the next or finish buttons
      * are clicked and the page is the current page of the Wizard.
      *
      * Note that this does not automatically emit an event when a custom
@@ -294,7 +294,7 @@ export class WizardPage implements OnInit {
     @Output("clrWizardPageOnCommit") onCommit: EventEmitter<string> = new EventEmitter<string>(false);
 
     /**
-     * Emits an event when WizardPage becomes the current page of the
+     * Emits an event when ClrWizardPage becomes the current page of the
      * Wizard.
      *
      * @memberof WizardPage
@@ -303,10 +303,10 @@ export class WizardPage implements OnInit {
     @Output("clrWizardPageOnLoad") onLoad: EventEmitter<string> = new EventEmitter();
 
     /**
-     * Emits an event when the WizardPage invokes the cancel routine for the wizard.
+     * Emits an event when the ClrWizardPage invokes the cancel routine for the wizard.
      *
-     * Can be used in conjunction with the WizardPage.stopCancel
-     * (clrWizardPagePreventDefaultCancel) or WizardPage.preventDefault
+     * Can be used in conjunction with the ClrWizardPage.stopCancel
+     * (clrWizardPagePreventDefaultCancel) or ClrWizardPage.preventDefault
      * (clrWizardPagePagePreventDefault) inputs to implement custom cancel
      * functionality at the page level. This is useful if you would like to do
      * validation, save data, or warn users before cancelling the wizard.
@@ -317,13 +317,13 @@ export class WizardPage implements OnInit {
      * @memberof WizardPage
      *
      */
-    @Output("clrWizardPageOnCancel") pageOnCancel: EventEmitter<WizardPage> = new EventEmitter();
+    @Output("clrWizardPageOnCancel") pageOnCancel: EventEmitter<ClrWizardPage> = new EventEmitter();
 
     /**
-     * Emits an event when the finish button is clicked and the WizardPage is
+     * Emits an event when the finish button is clicked and the ClrWizardPage is
      * the wizard's current page.
      *
-     * Can be used in conjunction with the WizardPage.preventDefault
+     * Can be used in conjunction with the ClrWizardPage.preventDefault
      * (clrWizardPagePagePreventDefault) input to implement custom finish
      * functionality at the page level. This is useful if you would like to do
      * validation, save data, or warn users before allowing them to complete
@@ -336,13 +336,13 @@ export class WizardPage implements OnInit {
      * @memberof WizardPage
      *
      */
-    @Output("clrWizardPageFinish") finishButtonClicked: EventEmitter<WizardPage> = new EventEmitter();
+    @Output("clrWizardPageFinish") finishButtonClicked: EventEmitter<ClrWizardPage> = new EventEmitter();
 
     /**
-     * Emits an event when the previous button is clicked and the WizardPage is
+     * Emits an event when the previous button is clicked and the ClrWizardPage is
      * the wizard's current page.
      *
-     * Can be used in conjunction with the WizardPage.preventDefault
+     * Can be used in conjunction with the ClrWizardPage.preventDefault
      * (clrWizardPagePagePreventDefault) input to implement custom backwards
      * navigation at the page level. This is useful if you would like to do
      * validation, save data, or warn users before allowing them to go
@@ -355,13 +355,13 @@ export class WizardPage implements OnInit {
      * @memberof WizardPage
      *
      */
-    @Output("clrWizardPagePrevious") previousButtonClicked: EventEmitter<WizardPage> = new EventEmitter();
+    @Output("clrWizardPagePrevious") previousButtonClicked: EventEmitter<ClrWizardPage> = new EventEmitter();
 
     /**
-     * Emits an event when the next button is clicked and the WizardPage is
+     * Emits an event when the next button is clicked and the ClrWizardPage is
      * the wizard's current page.
      *
-     * Can be used in conjunction with the WizardPage.preventDefault
+     * Can be used in conjunction with the ClrWizardPage.preventDefault
      * (clrWizardPagePagePreventDefault) input to implement custom forwards
      * navigation at the page level. This is useful if you would like to do
      * validation, save data, or warn users before allowing them to go
@@ -374,15 +374,15 @@ export class WizardPage implements OnInit {
      * @memberof WizardPage
      *
      */
-    @Output("clrWizardPageNext") nextButtonClicked: EventEmitter<WizardPage> = new EventEmitter();
+    @Output("clrWizardPageNext") nextButtonClicked: EventEmitter<ClrWizardPage> = new EventEmitter();
 
     /**
-     * Emits an event when a danger button is clicked and the WizardPage is
+     * Emits an event when a danger button is clicked and the ClrWizardPage is
      * the wizard's current page. By default, a danger button will act as
-     * either a "next" or "finish" button depending on if the WizardPage is the
+     * either a "next" or "finish" button depending on if the ClrWizardPage is the
      * last page or not.
      *
-     * Can be used in conjunction with the WizardPage.preventDefault
+     * Can be used in conjunction with the ClrWizardPage.preventDefault
      * (clrWizardPagePagePreventDefault) input to implement custom forwards
      * or finish navigation at the page level when the danger button is clicked.
      * This is useful if you would like to do validation, save data, or warn
@@ -397,13 +397,13 @@ export class WizardPage implements OnInit {
      * @memberof WizardPage
      *
      */
-    @Output("clrWizardPageDanger") dangerButtonClicked: EventEmitter<WizardPage> = new EventEmitter();
+    @Output("clrWizardPageDanger") dangerButtonClicked: EventEmitter<ClrWizardPage> = new EventEmitter();
 
     /**
      * Emits an event when a next, finish, or danger button is clicked and the
-     * WizardPage is the wizard's current page.
+     * ClrWizardPage is the wizard's current page.
      *
-     * Can be used in conjunction with the WizardPage.preventDefault
+     * Can be used in conjunction with the ClrWizardPage.preventDefault
      * (clrWizardPagePagePreventDefault) input to implement custom forwards
      * or finish navigation at the page level, regardless of the type of
      * primary button.
@@ -425,7 +425,7 @@ export class WizardPage implements OnInit {
     @Output("clrWizardPageCustomButton") customButtonClicked: EventEmitter<string> = new EventEmitter();
 
     /**
-     * An input value that is used internally to generate the WizardPage ID as
+     * An input value that is used internally to generate the ClrWizardPage ID as
      * well as the step nav item ID.
      *
      * Typed as any because it should be able to accept numbers as well as
@@ -440,7 +440,7 @@ export class WizardPage implements OnInit {
 
     /**
      * A read-only getter that generates an ID string for the wizard page from
-     * either the value passed to the WizardPage "id" input or a wizard page
+     * either the value passed to the ClrWizardPage "id" input or a wizard page
      * counter shared across all wizard pages in the application.
      *
      * Note that the value passed into the ID input Will be prefixed with
@@ -448,7 +448,7 @@ export class WizardPage implements OnInit {
      *
      * @readonly
      *
-     * @memberof WizardPage
+     * @memberof ClrWizardPage
      */
     public get id() {
         // covers things like null, undefined, false, and empty string
@@ -466,8 +466,8 @@ export class WizardPage implements OnInit {
 
     /**
      * A read-only getter that serves as a convenience for those who would rather
-     * not think in the terms of !WizardPage.nextStepDisabled. For some use cases,
-     * WizardPage.readyToComplete is more logical and declarative.
+     * not think in the terms of !ClrWizardPage.nextStepDisabled. For some use cases,
+     * ClrWizardPage.readyToComplete is more logical and declarative.
      *
      * @memberof WizardPage
      *
@@ -489,7 +489,7 @@ export class WizardPage implements OnInit {
      *
      * Note there is and open question about how to handle pages that are marked
      * complete but who are no longer readyToComplete. This might indicate an error
-     * state for the WizardPage. Currently, the wizard does not acknowledge this state
+     * state for the ClrWizardPage. Currently, the wizard does not acknowledge this state
      * and only returns that the page is incomplete.
      *
      * @memberof WizardPage
@@ -506,11 +506,11 @@ export class WizardPage implements OnInit {
     }
 
     /**
-     * A WizardPage can be manually set to completed using this boolean setter.
+     * A ClrWizardPage can be manually set to completed using this boolean setter.
      * It is recommended that users rely on the convenience functions in the wizard
      * and navigation service instead of manually setting pages’ completion state.
      *
-     * @memberof WizardPage
+     * @memberof ClrWizardPage
      */
     public set completed(value: boolean) {
         this._complete = value;
@@ -547,7 +547,7 @@ export class WizardPage implements OnInit {
 
     /**
      * A read-only getter that returns whether or not the page before this
-     * WizardPage is completed. This is useful for determining whether or not
+     * ClrWizardPage is completed. This is useful for determining whether or not
      * a page is navigable if it is not current or already completed.
      *
      * @memberof WizardPage
@@ -619,7 +619,7 @@ export class WizardPage implements OnInit {
 
     /**
      * A read-only getter that returns a boolean that says whether or
-     * not the WizardPage includes buttons. Used to determine if the
+     * not the ClrWizardPage includes buttons. Used to determine if the
      * Wizard should override the default button set defined as
      * its direct children.
      *
@@ -631,8 +631,8 @@ export class WizardPage implements OnInit {
     }
 
     /**
-     * Uses the nav service to make the WizardPage the current page in the
-     * wizard. Bypasses all checks but still emits the WizardPage.onLoad
+     * Uses the nav service to make the ClrWizardPage the current page in the
+     * wizard. Bypasses all checks but still emits the ClrWizardPage.onLoad
      * (clrWizardPageOnLoad) output.
      *
      * In most cases, it is better to use the default navigation functions
@@ -662,7 +662,7 @@ export class WizardPage implements OnInit {
     /**
      * A read-only getter that returns the id used by the step nav item associated with the page.
      *
-     * WizardPage needs this ID string for aria information.
+     * ClrWizardPage needs this ID string for aria information.
      *
      * @memberof WizardPage
      *

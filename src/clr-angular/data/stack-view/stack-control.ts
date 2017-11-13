@@ -8,14 +8,14 @@
  */
 
 import {EventEmitter} from "@angular/core";
-import {StackView} from "./stack-view";
+import {ClrStackView} from "./stack-view";
 
 export class StackControl {
     model: any;
     modelChange: EventEmitter<any> = new EventEmitter<any>(false);
 
-    constructor(protected stackView: StackView) {
-        // Make the StackView editable, since it contains a StackControl
+    constructor(protected stackView: ClrStackView) {
+        // Make the ClrStackView editable, since it contains a StackControl
         this.stackView.editable = true;
         this.stackView.editingChange.subscribe((editing: boolean) => {
             // Edit mode was closed

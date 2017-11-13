@@ -28,7 +28,7 @@ import {Selection, SelectionType} from "./providers/selection";
         "[class.datagrid-foot]": "true",
     }
 })
-export class DatagridFooter implements OnInit {
+export class ClrDatagridFooter implements OnInit {
     constructor(public selection: Selection, public hideableColumnService: HideableColumnService,
                 public cdr: ChangeDetectorRef) {}
 

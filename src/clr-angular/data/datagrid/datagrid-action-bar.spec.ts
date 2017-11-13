@@ -5,7 +5,7 @@
  */
 import {Component} from "@angular/core";
 
-import {DatagridActionBar} from "./datagrid-action-bar";
+import {ClrDatagridActionBar} from "./datagrid-action-bar";
 import {TestContext} from "./helpers.spec";
 import {FiltersProvider} from "./providers/filters";
 import {Items} from "./providers/items";
@@ -15,10 +15,10 @@ import {Sort} from "./providers/sort";
 
 export default function(): void {
     describe("DatagridActionBar component", function() {
-        let context: TestContext<DatagridActionBar, SimpleTest>;
+        let context: TestContext<ClrDatagridActionBar, SimpleTest>;
 
         beforeEach(function() {
-            context = this.create(DatagridActionBar, SimpleTest, [Selection, Items, FiltersProvider, Sort, Page]);
+            context = this.create(ClrDatagridActionBar, SimpleTest, [Selection, Items, FiltersProvider, Sort, Page]);
         });
 
         it("projects content", function() {

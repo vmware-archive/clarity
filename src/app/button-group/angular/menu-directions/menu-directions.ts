@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-import {menuPositions} from "../../../../clr-angular/popover/dropdown/menu-positions";
+import {CLR_MENU_POSITIONS} from "../../../../clr-angular/popover/dropdown/menu-positions";
 
 @Component({
     selector: "clr-menu-directions-demo",
@@ -12,12 +12,12 @@ import {menuPositions} from "../../../../clr-angular/popover/dropdown/menu-posit
     styleUrls: ["../../button-group.demo.scss"]
 })
 export class MenuDirectionsDemo {
-    menuPosition: string = menuPositions[0];
+    menuPosition: string = CLR_MENU_POSITIONS[0];
 
     flipDirection(): void {
         const direction: string = this.menuPosition;
         while (direction === this.menuPosition) {
-            this.menuPosition = menuPositions[Math.floor(Math.random() * menuPositions.length)];
+            this.menuPosition = CLR_MENU_POSITIONS[Math.floor(Math.random() * CLR_MENU_POSITIONS.length)];
         }
     }
 }

@@ -6,8 +6,8 @@
 
 import {Component, EventEmitter, Input, Output} from "@angular/core";
 
-import {ButtonHubService} from "./providers/button-hub";
-import {WizardNavigationService} from "./providers/wizard-navigation";
+import {ButtonHubService} from "./providers/button-hub.service";
+import {WizardNavigationService} from "./providers/wizard-navigation.service";
 
 export const DEFAULT_BUTTON_TYPES: any = {
     cancel: "cancel",
@@ -48,7 +48,7 @@ export const CUSTOM_BUTTON_TYPES: any = {
     host: {"class": "clr-wizard-btn-wrapper", "[attr.aria-hidden]": "isHidden"},
     styles: ["[aria-hidden=\"true\"] { display: none; }"]
 })
-export class WizardButton {
+export class ClrWizardButton {
     @Input("type") public type: string = "";
 
     @Input("clrWizardButtonDisabled") public disabled: boolean = false;

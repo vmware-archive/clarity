@@ -5,18 +5,26 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import {NgModule, Type} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 
 import {ClrFormsModule} from "../../forms/forms.module";
 import {ClrIconModule} from "../../icon/icon.module";
 import {ClrIfExpandModule} from "../../utils/expand/if-expand.module";
+import {ClrTreeNode} from "./tree-node";
 
-import {TREE_VIEW_DIRECTIVES} from "./index";
+export const CLR_TREE_VIEW_DIRECTIVES: Type<any>[] = [ClrTreeNode];
 
 @NgModule({
     imports: [CommonModule, ClrIconModule, FormsModule, ClrFormsModule],
-    declarations: [TREE_VIEW_DIRECTIVES],
-    exports: [TREE_VIEW_DIRECTIVES, ClrIfExpandModule]
+    declarations: [CLR_TREE_VIEW_DIRECTIVES],
+    exports: [CLR_TREE_VIEW_DIRECTIVES, ClrIfExpandModule]
 })
 export class ClrTreeViewModule {}
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export const TreeNode = ClrTreeNode;
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const TREE_VIEW_DIRECTIVES = CLR_TREE_VIEW_DIRECTIVES;

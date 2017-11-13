@@ -5,7 +5,6 @@
  */
 
 import {Injectable} from "@angular/core";
-import {VerticalNavGroup} from "../vertical-nav-group";
 
 @Injectable()
 export class VerticalNavGroupRegistrationService {

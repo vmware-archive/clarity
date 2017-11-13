@@ -7,10 +7,10 @@
 import {Component, ContentChildren, ElementRef, HostListener, Input, QueryList} from "@angular/core";
 
 import {Point} from "../../popover/common/popover";
-import {menuPositions} from "../../popover/dropdown/menu-positions";
-import {ButtonInGroupService} from "../providers/buttonInGroup.service";
+import {CLR_MENU_POSITIONS} from "../../popover/dropdown/menu-positions";
+import {ButtonInGroupService} from "../providers/button-in-group.service";
 
-import {Button} from "./button";
+import {ClrButton} from "./button";
 
 @Component({
     selector: "clr-button-group",
@@ -18,14 +18,13 @@ import {Button} from "./button";
     providers: [ButtonInGroupService],
     host: {"[class.btn-group]": "true"}
 })
-
-export class ButtonGroup {
-    @ContentChildren(Button) buttons: QueryList<Button>;
+export class ClrButtonGroup {
+    @ContentChildren(ClrButton) buttons: QueryList<ClrButton>;
 
     constructor(public buttonGroupNewService: ButtonInGroupService, private elementRef: ElementRef) {}
 
-    inlineButtons: Button[] = [];
-    menuButtons: Button[] = [];
+    inlineButtons: ClrButton[] = [];
+    menuButtons: ClrButton[] = [];
 
     /**
      * 1. Initializes the initial Button Group View
@@ -46,9 +45,9 @@ export class ButtonGroup {
      *
      * @param button
      */
-    rearrangeButton(button: Button): void {
-        let fromView: Button[];
-        let toView: Button[];
+    rearrangeButton(button: ClrButton): void {
+        let fromView: ClrButton[];
+        let toView: ClrButton[];
         if (button.inMenu) {
             fromView = this.inlineButtons;
             toView = this.menuButtons;
@@ -74,14 +73,14 @@ export class ButtonGroup {
      * @param buttonToMove
      * @returns
      */
-    getMoveIndex(buttonToMove: Button): number {
-        const tempArr: Button[] = this.buttons.filter(button => (button.inMenu === buttonToMove.inMenu));
+    getMoveIndex(buttonToMove: ClrButton): number {
+        const tempArr: ClrButton[] = this.buttons.filter(button => (button.inMenu === buttonToMove.inMenu));
         return tempArr.indexOf(buttonToMove);
     }
 
     initializeButtons(): void {
-        const tempInlineButtons: Button[] = [];
-        const tempInMenuButtons: Button[] = [];
+        const tempInlineButtons: ClrButton[] = [];
+        const tempInMenuButtons: ClrButton[] = [];
         this.buttons.forEach((button) => {
             if (button.inMenu) {
                 tempInMenuButtons.push(button);
@@ -107,7 +106,7 @@ export class ButtonGroup {
 
     @Input("clrMenuPosition")
     set menuPosition(pos: string) {
-        if (pos && (menuPositions.indexOf(pos) > -1)) {
+        if (pos && (CLR_MENU_POSITIONS.indexOf(pos) > -1)) {
             this._menuPosition = pos;
         } else {
             this._menuPosition = "bottom-left";
@@ -167,7 +166,7 @@ export class ButtonGroup {
     public popoverPoint: Point = Point.LEFT_TOP;    // default if menuPosition isn't set
 
     /**
-     * Toggle the Dropdown Menu when the Dropdown Toggle is
+     * Toggle the ClrDropdown Menu when the ClrDropdown Toggle is
      * clicked. Also set a flag that indicates that the toggle
      * was clicked so that we don't traverse the DOM to find the
      * location of the click.

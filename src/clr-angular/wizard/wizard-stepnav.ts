@@ -5,7 +5,7 @@
  */
 
 import {Component} from "@angular/core";
-import {PageCollectionService} from "./providers/page-collection";
+import {PageCollectionService} from "./providers/page-collection.service";
 
 @Component({
     selector: "clr-wizard-stepnav",
@@ -18,6 +18,6 @@ import {PageCollectionService} from "./providers/page-collection";
     host: {"class": "clr-wizard-stepnav"}
 })
 
-export class WizardStepnav {
+export class ClrWizardStepnav {
     constructor(public pageService: PageCollectionService) {}
 }

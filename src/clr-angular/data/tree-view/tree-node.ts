@@ -32,8 +32,8 @@ import {TreeSelectionService} from "./providers/tree-selection.service";
                          ])],
     host: {"class": ".clr-tree-node"}
 })
-export class TreeNode extends AbstractTreeSelection implements OnDestroy {
-    constructor(public nodeExpand: Expand, @Optional() @SkipSelf() public parent: TreeNode,
+export class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
+    constructor(public nodeExpand: Expand, @Optional() @SkipSelf() public parent: ClrTreeNode,
                 public treeSelectionService: TreeSelectionService) {
         super(parent);
         if (this.parent) {
@@ -41,22 +41,22 @@ export class TreeNode extends AbstractTreeSelection implements OnDestroy {
         }
     }
 
-    private _children: TreeNode[] = [];
+    private _children: ClrTreeNode[] = [];
 
-    get children(): TreeNode[] {
+    get children(): ClrTreeNode[] {
         return this._children;
     }
 
     /* Registration */
 
-    checkIfChildNodeRegistered(node: TreeNode): boolean {
+    checkIfChildNodeRegistered(node: ClrTreeNode): boolean {
         return (this.children.indexOf(node) > -1);
     }
 
     // TODO: This should ideally be in AbstractTreeSelection
     // Tried doing this but ran into some issues and also ran out of time.
     // Will get this done later.
-    register(node: TreeNode): void {
+    register(node: ClrTreeNode): void {
         if (!this.checkIfChildNodeRegistered(node)) {
             this.children.push(node);
             if (this.selectable) {
@@ -70,7 +70,7 @@ export class TreeNode extends AbstractTreeSelection implements OnDestroy {
     // TODO: This should ideally be in AbstractTreeSelection
     // Tried doing this but ran into some issues and also ran out of time.
     // Will get this done later.
-    unregister(node: TreeNode): void {
+    unregister(node: ClrTreeNode): void {
         const index = this.children.indexOf(node);
         if (index > -1) {
             this.children.splice(index, 1);

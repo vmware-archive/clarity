@@ -8,21 +8,21 @@ import {TestBed} from "@angular/core/testing";
 
 // I'm giving up, I'm using the datagrid ones for now.
 import {addHelpers, TestContext} from "../../data/datagrid/helpers.spec";
-import {IconCustomTag} from "../../icon/icon";
+import {ClrIconCustomTag} from "../../icon";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {POPOVER_HOST_ANCHOR} from "../common/popover-host-anchor.token";
 
-import {SignpostContent} from "./signpost-content";
+import {ClrSignpostContent} from "./signpost-content";
 import {SIGNPOST_POSITIONS} from "./signpost-positions";
 
 export default function(): void {
-    describe("SignpostContent", function() {
+    describe("ClrSignpostContent", function() {
         addHelpers();
 
-        let context: TestContext<SignpostContent, SimpleTest>;
+        let context: TestContext<ClrSignpostContent, SimpleTest>;
 
         beforeEach(function() {
-            context = this.createOnly(SignpostContent, SimpleTest, [IfOpenService], [IconCustomTag]);
+            context = this.createOnly(ClrSignpostContent, SimpleTest, [IfOpenService], [ClrIconCustomTag]);
         });
 
         it("projects content when open", function() {

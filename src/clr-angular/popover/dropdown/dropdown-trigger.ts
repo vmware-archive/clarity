@@ -7,7 +7,7 @@ import {Directive, HostListener} from "@angular/core";
 
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 
-import {Dropdown} from "./dropdown";
+import {ClrDropdown} from "./dropdown";
 
 @Directive({
     // We support both selectors for legacy reasons
@@ -19,10 +19,10 @@ import {Dropdown} from "./dropdown";
         "[class.active]": "active"
     }
 })
-export class DropdownTrigger {
+export class ClrDropdownTrigger {
     private isRootLevelToggle: boolean = true;
 
-    constructor(private dropdown: Dropdown, private ifOpenService: IfOpenService) {
+    constructor(private dropdown: ClrDropdown, private ifOpenService: IfOpenService) {
         // if the containing dropdown has a parent, then this is not the root level one
         if (dropdown.parent) {
             this.isRootLevelToggle = false;

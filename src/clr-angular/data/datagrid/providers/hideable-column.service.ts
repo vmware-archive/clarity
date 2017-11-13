@@ -8,7 +8,7 @@ import {Injectable} from "@angular/core";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Observable} from "rxjs/Observable";
 
-import {DatagridHideableColumn} from "../datagrid-hideable-column";
+import {DatagridHideableColumnModel} from "../datagrid-hideable-column.model";
 
 
 /**
@@ -31,7 +31,7 @@ export class HideableColumnService {
      * DatagridCells to DatagridColumns in the RowRenderer.
      *
      */
-    private _columnList: DatagridHideableColumn[] = [];
+    private _columnList: DatagridHideableColumnModel[] = [];
 
     /**********
      *
@@ -43,8 +43,8 @@ export class HideableColumnService {
      * on page load.
      *
      */
-    private _columnListChange: BehaviorSubject<DatagridHideableColumn[]> =
-        new BehaviorSubject<DatagridHideableColumn[]>(this._columnList);
+    private _columnListChange: BehaviorSubject<DatagridHideableColumnModel[]> =
+        new BehaviorSubject<DatagridHideableColumnModel[]>(this._columnList);
 
     /**********
      *
@@ -80,7 +80,7 @@ export class HideableColumnService {
      * Use this if you need to do something whenever the Datagrid's column list is changed (i.e *ngIf on a column).
      *
      */
-    public get columnListChange(): Observable<DatagridHideableColumn[]> {
+    public get columnListChange(): Observable<DatagridHideableColumnModel[]> {
         return this._columnListChange.asObservable();
     }
 
@@ -91,7 +91,7 @@ export class HideableColumnService {
      * but subscribing to the _columnListChange changes did not seem like the correct way to get it.
      *
      */
-    public getColumns(): DatagridHideableColumn[] {
+    public getColumns(): DatagridHideableColumnModel[] {
         return this._columnList;
     }
 
@@ -124,7 +124,7 @@ export class HideableColumnService {
      * Is dependent on the order in @ContentChildren in Datagrid.
      *
      */
-    public updateColumnList(columns: DatagridHideableColumn[]) {
+    public updateColumnList(columns: DatagridHideableColumnModel[]) {
         this._columnList = columns;                     // clear the list
         this.updateForLastVisibleColumn();              // Update our visibility state for UI
         this._columnListChange.next(this._columnList);  // Broadcast it
@@ -164,7 +164,7 @@ export class HideableColumnService {
      *
      *
      */
-    public getColumnById(id: string): undefined|DatagridHideableColumn {
+    public getColumnById(id: string): undefined|DatagridHideableColumnModel {
         if (id) {
             return this._columnList.find(column => column && column.id === id);
         }

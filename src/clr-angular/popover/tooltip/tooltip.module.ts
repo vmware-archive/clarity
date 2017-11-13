@@ -5,17 +5,32 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import {NgModule, Type} from "@angular/core";
 
 import {ClrIconModule} from "../../icon/icon.module";
 import {ClrConditionalModule} from "../../utils/conditional/conditional.module";
 import {ClrCommonPopoverModule} from "../common/popover.module";
 
-import {TOOLTIP_DIRECTIVES} from "./index";
+import {ClrTooltip} from "./tooltip";
+import {ClrTooltipContent} from "./tooltip-content";
+import {ClrTooltipTrigger} from "./tooltip-trigger";
+
+export const CLR_TOOLTIP_DIRECTIVES: Type<any>[] = [ClrTooltip, ClrTooltipTrigger, ClrTooltipContent];
 
 @NgModule({
     imports: [CommonModule, ClrCommonPopoverModule],
-    declarations: [TOOLTIP_DIRECTIVES],
-    exports: [TOOLTIP_DIRECTIVES, ClrConditionalModule, ClrIconModule]
+    declarations: [CLR_TOOLTIP_DIRECTIVES],
+    exports: [CLR_TOOLTIP_DIRECTIVES, ClrConditionalModule, ClrIconModule]
 })
 export class ClrTooltipModule {}
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export const Tooltip = ClrTooltip;
+/** @deprecated since 0.11 */
+export const TooltipContent = ClrTooltipContent;
+/** @deprecated since 0.11 */
+export const TooltipTrigger = ClrTooltipTrigger;
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const TOOLTIP_DIRECTIVES = CLR_TOOLTIP_DIRECTIVES;

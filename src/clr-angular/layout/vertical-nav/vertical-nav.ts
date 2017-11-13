@@ -22,7 +22,7 @@ import {VerticalNavService} from "./providers/vertical-nav.service";
         "[class.has-icons]": "hasIcons"
     }
 })
-export class VerticalNav implements OnDestroy {
+export class ClrVerticalNav implements OnDestroy {
     get collapsible(): boolean {
         return this._navService.collapsible;
     }

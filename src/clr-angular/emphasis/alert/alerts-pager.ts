@@ -6,19 +6,19 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
-import {Alert} from "./alert";
-import {MultiAlertService} from "./providers/multi-alert-service";
+import {ClrAlert} from "./alert";
+import {MultiAlertService} from "./providers/multi-alert.service";
 
 
 @Component({selector: "clr-alerts-pager", templateUrl: "./alerts-pager.html", host: {"[class.alerts-pager]": "true"}})
-export class AlertsPager implements OnInit, OnDestroy {
+export class ClrAlertsPager implements OnInit, OnDestroy {
     private multiAlertServiceChanges: Subscription;
 
     /**
      * Input/Output to support two way binding on current alert instance
      */
     @Input("clrCurrentAlert")
-    set currentAlert(alert: Alert) {
+    set currentAlert(alert: ClrAlert) {
         if (alert) {
             this.multiAlertService.currentAlert = alert;
         }
@@ -27,7 +27,7 @@ export class AlertsPager implements OnInit, OnDestroy {
         return this.multiAlertService.currentAlert;
     }
 
-    @Output("clrCurrentAlertChange") currentAlertChange = new EventEmitter<Alert>(false);
+    @Output("clrCurrentAlertChange") currentAlertChange = new EventEmitter<ClrAlert>(false);
 
     /**
      * Input/Output to support two way binding on current alert index

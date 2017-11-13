@@ -10,7 +10,7 @@ import {map} from "rxjs/operators/map";
 import {DatagridPropertyComparator} from "../built-in/comparators/datagrid-property-comparator";
 import {DatagridPropertyStringFilter} from "../built-in/filters/datagrid-property-string-filter";
 import {DatagridStringFilterImpl} from "../built-in/filters/datagrid-string-filter-impl";
-import {State} from "../interfaces/state";
+import {ClrDatagridStateInterface} from "../interfaces/state.interface";
 
 import {FiltersProvider} from "./filters";
 import {Page} from "./page";
@@ -28,14 +28,14 @@ export class StateProvider {
     /**
      * The Observable that lets other classes subscribe to global state changes
      */
-    change: Observable<State> = this.debouncer.change.pipe(map(() => this.state));
+    change: Observable<ClrDatagridStateInterface> = this.debouncer.change.pipe(map(() => this.state));
 
     /*
      * By making this a getter, we open the possibility for a setter in the future.
      * It's been requested a couple times.
      */
-    get state(): State {
-        const state: State = {};
+    get state(): ClrDatagridStateInterface {
+        const state: ClrDatagridStateInterface = {};
         if (this.page.size > 0) {
             state.page = {from: this.page.firstItem, to: this.page.lastItem, size: this.page.size};
         }

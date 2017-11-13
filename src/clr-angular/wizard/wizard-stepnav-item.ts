@@ -6,9 +6,9 @@
 
 import {Component, Input} from "@angular/core";
 
-import {PageCollectionService} from "./providers/page-collection";
-import {WizardNavigationService} from "./providers/wizard-navigation";
-import {WizardPage} from "./wizard-page";
+import {PageCollectionService} from "./providers/page-collection.service";
+import {WizardNavigationService} from "./providers/wizard-navigation.service";
+import {ClrWizardPage} from "./wizard-page";
 
 @Component({
     selector: "[clr-wizard-stepnav-item]",
@@ -31,8 +31,8 @@ import {WizardPage} from "./wizard-page";
     }
 })
 
-export class WizardStepnavItem {
-    @Input("page") public page: WizardPage;
+export class ClrWizardStepnavItem {
+    @Input("page") public page: ClrWizardPage;
 
     constructor(public navService: WizardNavigationService, public pageCollection: PageCollectionService) {}
 

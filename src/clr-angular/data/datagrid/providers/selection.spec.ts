@@ -6,7 +6,7 @@
 import {fakeAsync, tick} from "@angular/core/testing";
 import {Subject} from "rxjs/Subject";
 
-import {Filter} from "../interfaces/filter";
+import {ClrDatagridFilterInterface} from "../interfaces/filter.interface";
 
 import {FiltersProvider} from "./filters";
 import {Items} from "./items";
@@ -165,7 +165,7 @@ export default function(): void {
 
             const evenFilter: EvenFilter = new EvenFilter();
 
-            filtersInstance.add(<Filter<any>>evenFilter);
+            filtersInstance.add(<ClrDatagridFilterInterface<any>>evenFilter);
 
             evenFilter.toggle();
 
@@ -225,7 +225,7 @@ export default function(): void {
     });
 }
 
-abstract class TestFilter implements Filter<number> {
+abstract class TestFilter implements ClrDatagridFilterInterface<number> {
     private active = false;
 
     toggle() {

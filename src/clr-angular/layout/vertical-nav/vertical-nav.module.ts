@@ -5,16 +5,23 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import {NgModule, Type} from "@angular/core";
 
 import {ClrIconModule} from "../../icon/icon.module";
 import {ClrIfExpandModule} from "../../utils/expand/if-expand.module";
 
-import {VERTICAL_NAV_DIRECTIVES} from "./index";
+import {ClrVerticalNav} from "./vertical-nav";
+import {ClrVerticalNavGroup} from "./vertical-nav-group";
+import {ClrVerticalNavGroupChildren} from "./vertical-nav-group-children";
+import {ClrVerticalNavIcon} from "./vertical-nav-icon";
+import {ClrVerticalNavLink} from "./vertical-nav-link";
+
+export const CLR_VERTICAL_NAV_DIRECTIVES: Type<any>[] =
+    [ClrVerticalNav, ClrVerticalNavLink, ClrVerticalNavGroup, ClrVerticalNavGroupChildren, ClrVerticalNavIcon];
 
 @NgModule({
     imports: [CommonModule, ClrIconModule, ClrIfExpandModule],
-    declarations: [VERTICAL_NAV_DIRECTIVES],
-    exports: [VERTICAL_NAV_DIRECTIVES, ClrIfExpandModule, ClrIconModule]
+    declarations: [CLR_VERTICAL_NAV_DIRECTIVES],
+    exports: [CLR_VERTICAL_NAV_DIRECTIVES, ClrIfExpandModule, ClrIconModule]
 })
 export class ClrVerticalNavModule {}

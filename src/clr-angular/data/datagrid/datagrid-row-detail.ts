@@ -8,8 +8,8 @@ import {Subscription} from "rxjs/Subscription";
 
 import {Expand} from "../../utils/expand/providers/expand";
 
-import {DatagridCell} from "./datagrid-cell";
-import {DatagridHideableColumn} from "./datagrid-hideable-column";
+import {ClrDatagridCell} from "./datagrid-cell";
+import {DatagridHideableColumnModel} from "./datagrid-hideable-column.model";
 import {HideableColumnService} from "./providers/hideable-column.service";
 import {RowActionService} from "./providers/row-action-service";
 import {Selection, SelectionType} from "./providers/selection";
@@ -36,14 +36,14 @@ import {Selection, SelectionType} from "./providers/selection";
         "[class.datagrid-container]": "cells.length === 0",
     }
 })
-export class DatagridRowDetail implements AfterContentInit, OnDestroy {
+export class ClrDatagridRowDetail implements AfterContentInit, OnDestroy {
     /* reference to the enum so that template can access it */
     public SELECTION_TYPE = SelectionType;
 
     constructor(public selection: Selection, public rowActionService: RowActionService, public expand: Expand,
                 public hideableColumnService: HideableColumnService) {}
 
-    @ContentChildren(DatagridCell) cells: QueryList<DatagridCell>;
+    @ContentChildren(ClrDatagridCell) cells: QueryList<ClrDatagridCell>;
 
     get replace() {
         return this.expand.replace;
@@ -77,7 +77,7 @@ export class DatagridRowDetail implements AfterContentInit, OnDestroy {
         });
     }
 
-    public updateCellsForColumns(columnList: DatagridHideableColumn[]) {
+    public updateCellsForColumns(columnList: DatagridHideableColumnModel[]) {
         this.cells.forEach((cell, index) => {
             const currentColumn = columnList[index];  // Accounts for null space.
             if (currentColumn) {

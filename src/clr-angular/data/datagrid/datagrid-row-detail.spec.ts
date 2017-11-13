@@ -7,8 +7,8 @@ import {Component} from "@angular/core";
 
 import {Expand} from "../../utils/expand/providers/expand";
 
-import {DatagridHideableColumn} from "./datagrid-hideable-column";
-import {DatagridRowDetail} from "./datagrid-row-detail";
+import {DatagridHideableColumnModel} from "./datagrid-hideable-column.model";
+import {ClrDatagridRowDetail} from "./datagrid-row-detail";
 import {TestContext} from "./helpers.spec";
 import {FiltersProvider} from "./providers/filters";
 import {HideableColumnService} from "./providers/hideable-column.service";
@@ -21,11 +21,11 @@ import {StateDebouncer} from "./providers/state-debouncer.provider";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 export default function(): void {
-    describe("DatagridRowDetail component", function() {
-        let context: TestContext<DatagridRowDetail, FullTest>;
+    describe("ClrDatagridRowDetail component", function() {
+        let context: TestContext<ClrDatagridRowDetail, FullTest>;
 
         beforeEach(function() {
-            context = this.create(DatagridRowDetail, FullTest, [
+            context = this.create(ClrDatagridRowDetail, FullTest, [
                 Selection, Items, FiltersProvider, Sort, Page, RowActionService, Expand, DatagridRenderOrganizer,
                 HideableColumnService, StateDebouncer
             ]);
@@ -101,12 +101,12 @@ export default function(): void {
         });
     });
 
-    describe("DatagridRowDetail hide/show cell behavior", function() {
-        let context: TestContext<DatagridRowDetail, HiddenTest>;
+    describe("ClrDatagridRowDetail hide/show cell behavior", function() {
+        let context: TestContext<ClrDatagridRowDetail, HiddenTest>;
         let hideableColumnService: HideableColumnService;
 
         beforeEach(function() {
-            context = this.create(DatagridRowDetail, HiddenTest, [
+            context = this.create(ClrDatagridRowDetail, HiddenTest, [
                 Selection, Items, FiltersProvider, Sort, Page, RowActionService, Expand, DatagridRenderOrganizer,
                 HideableColumnService, StateDebouncer
             ]);
@@ -116,9 +116,9 @@ export default function(): void {
         it("should update cells for columns", function() {
             spyOn(context.clarityDirective, "updateCellsForColumns");
 
-            const hiddenColumns: DatagridHideableColumn[] = [
-                new DatagridHideableColumn(undefined, "dg-col-0", false),
-                new DatagridHideableColumn(undefined, "dg-col-1", true)
+            const hiddenColumns: DatagridHideableColumnModel[] = [
+                new DatagridHideableColumnModel(undefined, "dg-col-0", false),
+                new DatagridHideableColumnModel(undefined, "dg-col-1", true)
             ];
 
             hideableColumnService.updateColumnList(hiddenColumns);

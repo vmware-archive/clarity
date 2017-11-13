@@ -6,7 +6,7 @@
 import {Component} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
 
-import {DatagridPlaceholder} from "./datagrid-placeholder";
+import {ClrDatagridPlaceholder} from "./datagrid-placeholder";
 import {TestContext} from "./helpers.spec";
 import {FiltersProvider} from "./providers/filters";
 import {Items} from "./providers/items";
@@ -15,12 +15,12 @@ import {Sort} from "./providers/sort";
 import {StateDebouncer} from "./providers/state-debouncer.provider";
 
 export default function(): void {
-    describe("DatagridPlaceholder component", function() {
+    describe("ClrDatagridPlaceholder component", function() {
         describe("Typescript API", function() {
             beforeEach(function() {
                 this.pageProvider = new Page(new StateDebouncer());
                 this.itemsProvider = new Items(null, null, this.pageProvider);
-                this.component = new DatagridPlaceholder(this.itemsProvider, this.pageProvider);
+                this.component = new ClrDatagridPlaceholder(this.itemsProvider, this.pageProvider);
             });
 
             it("detects if the Datagrid is empty", function() {
@@ -33,13 +33,13 @@ export default function(): void {
         });
 
         describe("View", function() {
-            let context: TestContext<DatagridPlaceholder, SimpleTest>;
+            let context: TestContext<ClrDatagridPlaceholder, SimpleTest>;
             let itemsProvider: Items;
             let pageProvider: Page;
 
             beforeEach(function() {
-                context =
-                    this.create(DatagridPlaceholder, SimpleTest, [Items, Page, Sort, FiltersProvider, StateDebouncer]);
+                context = this.create(ClrDatagridPlaceholder, SimpleTest,
+                                      [Items, Page, Sort, FiltersProvider, StateDebouncer]);
                 itemsProvider = TestBed.get(Items);
                 pageProvider = TestBed.get(Page);
             });

@@ -9,17 +9,17 @@ import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing"
 import {By} from "@angular/platform-browser";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
-import {Alert} from "../emphasis/alert/alert";
+import {ClrAlert} from "../emphasis/alert/alert";
 import {ClrAlertModule} from "../emphasis/alert/alert.module";
 import {ClrIconModule} from "../icon/icon.module";
 
-import {ButtonHubService} from "./providers/button-hub";
-import {PageCollectionService} from "./providers/page-collection";
-import {PageCollectionMock} from "./providers/page-collection.mock";
-import {WizardNavigationService} from "./providers/wizard-navigation";
-import {Wizard} from "./wizard";
-import {WizardButton} from "./wizard-button";
-import {WizardPage} from "./wizard-page";
+import {ButtonHubService} from "./providers/button-hub.service";
+import {PageCollectionService} from "./providers/page-collection.service";
+import {PageCollectionMock} from "./providers/page-collection.service.mock";
+import {WizardNavigationService} from "./providers/wizard-navigation.service";
+import {ClrWizard} from "./wizard";
+import {ClrWizardButton} from "./wizard-button";
+import {ClrWizardPage} from "./wizard-page";
 import {MockPage} from "./wizard-page.mock";
 import {ClrWizardModule} from "./wizard.module";
 
@@ -54,7 +54,7 @@ class MyPageCollectionMock extends PageCollectionMock {
     `
 })
 class TypescriptTestComponent {
-    @ViewChildren(WizardPage) wizardPageChildren: QueryList<WizardPage>;
+    @ViewChildren(ClrWizardPage) wizardPageChildren: QueryList<ClrWizardPage>;
 }
 
 @Component({
@@ -78,9 +78,9 @@ class TypescriptTestComponent {
     `
 })
 class TemplateTestComponent {
-    @ViewChild("nav") navigationTemplateTester: WizardPage;
-    @ViewChild("lifecycle") lifecycleTemplateTester: WizardPage;
-    @ViewChild("other") otherTemplateTester: WizardPage;
+    @ViewChild("nav") navigationTemplateTester: ClrWizardPage;
+    @ViewChild("lifecycle") lifecycleTemplateTester: ClrWizardPage;
+    @ViewChild("other") otherTemplateTester: ClrWizardPage;
 
     public navTwoWayBindingPassed: boolean = false;
     public testId = "ohai";
@@ -205,15 +205,15 @@ class TemplateTestComponent {
     `
 })
 class ViewTestComponent {
-    @ViewChild("viewTestWizard") testWizard: Wizard;
-    @ViewChild("viewTestWizardPageOne") pageOne: WizardPage;
-    @ViewChild("viewTestWizardPageTwo") pageTwo: WizardPage;
-    @ViewChild("viewTestWizardPageThree") pageThree: WizardPage;
-    @ViewChild("viewTestWizardPageFour") pageFour: WizardPage;
-    @ViewChild("wizardPreviousBtn") wizardPreviousBtn: WizardButton;
-    @ViewChild("pagePreviousBtn") pagePreviousBtn: WizardButton;
-    @ViewChild("wizardCancelBtn") wizardCancelBtn: WizardButton;
-    @ViewChild("pageCancelBtn") pageCancelBtn: WizardButton;
+    @ViewChild("viewTestWizard") testWizard: ClrWizard;
+    @ViewChild("viewTestWizardPageOne") pageOne: ClrWizardPage;
+    @ViewChild("viewTestWizardPageTwo") pageTwo: ClrWizardPage;
+    @ViewChild("viewTestWizardPageThree") pageThree: ClrWizardPage;
+    @ViewChild("viewTestWizardPageFour") pageFour: ClrWizardPage;
+    @ViewChild("wizardPreviousBtn") wizardPreviousBtn: ClrWizardButton;
+    @ViewChild("pagePreviousBtn") pagePreviousBtn: ClrWizardButton;
+    @ViewChild("wizardCancelBtn") wizardCancelBtn: ClrWizardButton;
+    @ViewChild("pageCancelBtn") pageCancelBtn: ClrWizardButton;
 
     public projector = "my projected content";
     public innerProjector = 12;
@@ -253,7 +253,7 @@ class ViewTestComponent {
     `
 })
 class TestComponent {
-    @ViewChildren(WizardPage) wizardPageChildren: QueryList<WizardPage>;
+    @ViewChildren(ClrWizardPage) wizardPageChildren: QueryList<ClrWizardPage>;
     open: boolean = true;
     nextDisabled: boolean = false;
     content1: String = "Content1";
@@ -277,24 +277,24 @@ class TestComponent {
     `
 })
 class IdTestComponent {
-    @ViewChildren(WizardPage) pages: QueryList<WizardPage>;
+    @ViewChildren(ClrWizardPage) pages: QueryList<ClrWizardPage>;
 }
 
 export default function(): void {
-    describe("WizardPage", () => {
+    describe("ClrWizardPage", () => {
         let fixture: ComponentFixture<any>;
         let testComponent: TypescriptTestComponent;
         let debugEl: DebugElement;
-        let testWizardPage: WizardPage;
-        let otherWizardPage: WizardPage;
+        let testWizardPage: ClrWizardPage;
+        let otherWizardPage: ClrWizardPage;
         const pageCollection = new MyPageCollectionMock();
         let navService: WizardNavigationService;
 
         describe("Numeric id bug", () => {
-            let firstPage: WizardPage;
-            let secondPage: WizardPage;
-            let thirdPage: WizardPage;
-            let fourthPage: WizardPage;
+            let firstPage: ClrWizardPage;
+            let secondPage: ClrWizardPage;
+            let thirdPage: ClrWizardPage;
+            let fourthPage: ClrWizardPage;
             let myTestComponent: IdTestComponent;
 
             beforeEach(() => {
@@ -713,8 +713,8 @@ export default function(): void {
         });
 
         let templateTestComponent: TemplateTestComponent;
-        let lifecycleWizardPage: WizardPage;
-        let navWizardPage: WizardPage;
+        let lifecycleWizardPage: ClrWizardPage;
+        let navWizardPage: ClrWizardPage;
 
         describe("Template API", () => {
             beforeEach(() => {
@@ -1004,7 +1004,7 @@ export default function(): void {
                 debugEl = fixture.debugElement;
                 viewTestComponent = fixture.componentInstance;
                 navService = fixture.debugElement.injector.get(WizardNavigationService);
-                allTestPages = fixture.debugElement.queryAll(By.directive(WizardPage));
+                allTestPages = fixture.debugElement.queryAll(By.directive(ClrWizardPage));
                 allTestPages.forEach((thisPage) => {
                     switch (thisPage.componentInstance) {
                         case viewTestComponent.pageOne:
@@ -1051,7 +1051,7 @@ export default function(): void {
 
                 it("should be able to project other components", () => {
                     let myInnerComponent: DebugElement;
-                    myInnerComponent = pageFour.query(By.directive(Alert));
+                    myInnerComponent = pageFour.query(By.directive(ClrAlert));
 
                     expect(myInnerComponent).toBeDefined("inner alert component should exist");
                     expect(myInnerComponent.nativeElement.textContent.trim())
@@ -1116,7 +1116,7 @@ export default function(): void {
                 it("aria-hidden should reflect if page is not current", () => {
                     // explicitly set a page to current
                     const expectedPage = pageTwo.componentInstance;
-                    let currentPage: WizardPage;
+                    let currentPage: ClrWizardPage;
                     let pageOneTest: string;
                     let pageTwoTest: string;
                     let currentPageIdTest: boolean;
@@ -1171,7 +1171,7 @@ export default function(): void {
                        // verify button is not disabled at this point
                        const pageToTest = pageTwo.componentInstance;
                        const wizard = viewTestComponent.testWizard;
-                       const debugWiz = fixture.debugElement.query(By.directive(Wizard));
+                       const debugWiz = fixture.debugElement.query(By.directive(ClrWizard));
                        let previousBtn: Node;
                        let testIfCurrent: boolean;
                        let wizardBtnDisabled: boolean;
@@ -1209,7 +1209,7 @@ export default function(): void {
                        // verify button is not disabled at this point
                        const pageToTest = pageThree.componentInstance;
                        const wizard = viewTestComponent.testWizard;
-                       const debugWiz = fixture.debugElement.query(By.directive(Wizard));
+                       const debugWiz = fixture.debugElement.query(By.directive(ClrWizard));
                        let previousBtn: DebugElement;
                        let testIfCurrent: boolean;
                        let wizardBtnDisabled: boolean;
@@ -1247,7 +1247,7 @@ export default function(): void {
                 it("should not show page-level buttons when page is not current", () => {
                     const pageToTest = pageThree.componentInstance;
                     const wizard = viewTestComponent.testWizard;
-                    const debugWiz = fixture.debugElement.query(By.directive(Wizard));
+                    const debugWiz = fixture.debugElement.query(By.directive(ClrWizard));
                     let previousBtn: HTMLElement;
                     let testIfCurrent: boolean;
 
@@ -1269,13 +1269,13 @@ export default function(): void {
                 it("should subvert cancel routine if true", () => {
                     const pageToTest = pageOne;
                     const wizard = viewTestComponent.testWizard;
-                    const debugWiz = fixture.debugElement.query(By.directive(Wizard));
+                    const debugWiz = fixture.debugElement.query(By.directive(ClrWizard));
                     let cancelBtn: HTMLElement;
                     const serviceSpy = spyOn(wizard.navService, "cancel").and.callThrough();
                     const pageSpy = spyOn(pageToTest.componentInstance.pageOnCancel, "emit").and.callThrough();
                     const wizardCancelSpy = spyOn(wizard.onCancel, "emit").and.callThrough();
                     const wizardCloseSpy = spyOn(wizard, "close").and.callThrough();
-                    let currentPage: WizardPage;
+                    let currentPage: ClrWizardPage;
                     let expectedCurrent: boolean;
 
                     // setup
@@ -1305,13 +1305,13 @@ export default function(): void {
                 it("should allow cancel routine if false", () => {
                     const pageToTest = pageOne;
                     const wizard = viewTestComponent.testWizard;
-                    const debugWiz = fixture.debugElement.query(By.directive(Wizard));
+                    const debugWiz = fixture.debugElement.query(By.directive(ClrWizard));
                     let cancelBtn: HTMLElement;
                     const serviceSpy = spyOn(wizard.navService, "cancel").and.callThrough();
                     const pageSpy = spyOn(pageToTest.componentInstance.pageOnCancel, "emit").and.callThrough();
                     const wizardCancelSpy = spyOn(wizard.onCancel, "emit").and.callThrough();
                     const wizardCloseSpy = spyOn(wizard, "close").and.callThrough();
-                    let currentPage: WizardPage;
+                    let currentPage: ClrWizardPage;
                     let expectedCurrent: boolean;
 
                     // setup
@@ -1338,13 +1338,13 @@ export default function(): void {
                 it("should allow cancel routine by default", () => {
                     const pageToTest = pageTwo;
                     const wizard = viewTestComponent.testWizard;
-                    const debugWiz = fixture.debugElement.query(By.directive(Wizard));
+                    const debugWiz = fixture.debugElement.query(By.directive(ClrWizard));
                     let cancelBtn: HTMLElement;
                     const serviceSpy = spyOn(wizard.navService, "cancel").and.callThrough();
                     const pageSpy = spyOn(pageToTest.componentInstance.pageOnCancel, "emit").and.callThrough();
                     const wizardCancelSpy = spyOn(wizard.onCancel, "emit").and.callThrough();
                     const wizardCloseSpy = spyOn(wizard, "close").and.callThrough();
-                    let currentPage: WizardPage;
+                    let currentPage: ClrWizardPage;
                     let expectedCurrent: boolean;
 
                     wizard.next();
@@ -1374,14 +1374,14 @@ export default function(): void {
                 it("should run alt cancel routine if true and pageOnCancel is provided", () => {
                     const pageToTest = pageFour;
                     const wizard = viewTestComponent.testWizard;
-                    const debugWiz = fixture.debugElement.query(By.directive(Wizard));
+                    const debugWiz = fixture.debugElement.query(By.directive(ClrWizard));
                     let cancelBtn: HTMLElement;
                     const serviceSpy = spyOn(wizard.navService, "cancel").and.callThrough();
                     const pageSpy = spyOn(pageToTest.componentInstance.pageOnCancel, "emit").and.callThrough();
                     const wizardCancelSpy = spyOn(wizard.onCancel, "emit").and.callThrough();
                     const wizardCloseSpy = spyOn(wizard, "close").and.callThrough();
                     const componentSpy = spyOn(viewTestComponent, "altCancel").and.callThrough();
-                    let currentPage: WizardPage;
+                    let currentPage: ClrWizardPage;
                     let expectedCurrent: boolean;
 
                     // setup
@@ -1426,7 +1426,7 @@ export default function(): void {
             describe("onCommit", () => {
                 let innerPage: DebugElement;
                 let endPage: DebugElement;
-                let wizard: Wizard;
+                let wizard: ClrWizard;
                 let debugWiz: DebugElement;
                 let debugElem: HTMLElement;
                 let cancelBtn: any;
@@ -1440,7 +1440,7 @@ export default function(): void {
                     innerPage = pageTwo;
                     endPage = pageFour;
                     wizard = viewTestComponent.testWizard;
-                    debugWiz = fixture.debugElement.query(By.directive(Wizard));
+                    debugWiz = fixture.debugElement.query(By.directive(ClrWizard));
                     debugElem = debugWiz.nativeElement;
 
                     wizard.next();  // => page 2

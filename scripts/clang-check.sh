@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+echo "clang version info:";
+
+node_modules/.bin/clang-format --version
+
 echo "Running clang check on source files. Number of changes needed:"
 
 if node_modules/.bin/clang-format -style=file --glob=src/**/*.ts -output-replacements-xml | grep -c "<replacement "; then

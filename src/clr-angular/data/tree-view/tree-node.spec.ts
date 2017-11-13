@@ -10,7 +10,7 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 import {ClrIfExpandModule} from "../../utils/expand/if-expand.module";
 
-import {TreeNode} from "./tree-node";
+import {ClrTreeNode} from "./tree-node";
 import {ClrTreeViewModule} from "./tree-view.module";
 
 export default function(): void {
@@ -50,7 +50,7 @@ export default function(): void {
                 });
 
                 it("projects the child node when the parent node is expanded", () => {
-                    const parentNode: TreeNode = fixture.componentInstance.parentTreeNode;
+                    const parentNode: ClrTreeNode = fixture.componentInstance.parentTreeNode;
 
                     parentNode.expanded = true;
 
@@ -63,7 +63,7 @@ export default function(): void {
                 });
 
                 it("projects child nodes in .clr-treenode-children", () => {
-                    const parentNode: TreeNode = fixture.componentInstance.parentTreeNode;
+                    const parentNode: ClrTreeNode = fixture.componentInstance.parentTreeNode;
                     const childrenContainer: HTMLElement = compiled.querySelector(".clr-treenode-children");
 
                     expect(childrenContainer.children.length).toBe(0);
@@ -97,38 +97,38 @@ export default function(): void {
 
             describe("Typescript API", () => {
                 it("supports the expanded option", () => {
-                    const parentNode: TreeNode = fixture.componentInstance.parentTreeNode;
+                    const parentNode: ClrTreeNode = fixture.componentInstance.parentTreeNode;
                     expect(parentNode.expanded).toBeDefined();
                 });
 
                 it("supports the selected option", () => {
-                    const parentNode: TreeNode = fixture.componentInstance.parentTreeNode;
+                    const parentNode: ClrTreeNode = fixture.componentInstance.parentTreeNode;
                     expect(parentNode.selected).toBeDefined();
                 });
 
                 it("supports the toggleExpand() function", () => {
-                    const parentNode: TreeNode = fixture.componentInstance.parentTreeNode;
+                    const parentNode: ClrTreeNode = fixture.componentInstance.parentTreeNode;
                     expect(parentNode.toggleExpand).toBeDefined();
                 });
 
                 it("provides an instance of the NodeExpand service", () => {
-                    const parentNode: TreeNode = fixture.componentInstance.parentTreeNode;
+                    const parentNode: ClrTreeNode = fixture.componentInstance.parentTreeNode;
                     expect(parentNode.nodeExpand).toBeDefined();
                     expect(parentNode.nodeExpand).not.toBeNull();
                 });
 
                 it("provides a selectable getter", () => {
-                    const parentNode: TreeNode = fixture.componentInstance.parentTreeNode;
+                    const parentNode: ClrTreeNode = fixture.componentInstance.parentTreeNode;
                     expect(parentNode.selectable).toBeDefined();
                 });
 
                 it("provides a register method", () => {
-                    const parentNode: TreeNode = fixture.componentInstance.parentTreeNode;
+                    const parentNode: ClrTreeNode = fixture.componentInstance.parentTreeNode;
                     expect(parentNode.register).toBeDefined();
                 });
 
                 it("provides a unregister method", () => {
-                    const parentNode: TreeNode = fixture.componentInstance.parentTreeNode;
+                    const parentNode: ClrTreeNode = fixture.componentInstance.parentTreeNode;
                     expect(parentNode.unregister).toBeDefined();
                 });
 
@@ -149,7 +149,7 @@ export default function(): void {
                 });
 
                 it("updates the nodeExpand service when expanded is set", () => {
-                    const parentNode: TreeNode = fixture.componentInstance.parentTreeNode;
+                    const parentNode: ClrTreeNode = fixture.componentInstance.parentTreeNode;
 
                     expect(parentNode.nodeExpand.expanded).toBe(false);
 
@@ -241,7 +241,7 @@ export default function(): void {
             });
 
             it("projects the child node when the parent node is expanded", () => {
-                const parentNode: TreeNode = fixture.componentInstance.parentTreeNode;
+                const parentNode: ClrTreeNode = fixture.componentInstance.parentTreeNode;
 
                 parentNode.expanded = true;
 
@@ -254,7 +254,7 @@ export default function(): void {
             });
 
             it("projects child nodes in .clr-treenode-children", () => {
-                const parentNode: TreeNode = fixture.componentInstance.parentTreeNode;
+                const parentNode: ClrTreeNode = fixture.componentInstance.parentTreeNode;
                 const childrenContainer: HTMLElement = compiled.querySelector(".clr-treenode-children");
 
                 expect(childrenContainer.children.length).toBe(0);
@@ -282,7 +282,7 @@ export default function(): void {
             });
 
             it("has the parent node expanded by default", () => {
-                const parentNode: TreeNode = fixture.componentInstance.parentTreeNode;
+                const parentNode: ClrTreeNode = fixture.componentInstance.parentTreeNode;
 
                 expect(parentNode.expanded).toBe(true);
             });
@@ -308,7 +308,7 @@ export default function(): void {
             });
 
             it("receives clrSelected Input from the user", () => {
-                const parentNode: TreeNode = fixture.componentInstance.parentTreeNode;
+                const parentNode: ClrTreeNode = fixture.componentInstance.parentTreeNode;
 
                 expect(parentNode.selected).toBe(false);
 
@@ -319,7 +319,7 @@ export default function(): void {
             });
 
             it("enables selection when clrSelected Input is received on the root node", () => {
-                const parentNode: TreeNode = fixture.componentInstance.parentTreeNode;
+                const parentNode: ClrTreeNode = fixture.componentInstance.parentTreeNode;
 
                 expect(parentNode.selectable).toBe(true);
             });
@@ -392,19 +392,19 @@ export default function(): void {
 
         describe("Recursive Tree Selection", () => {
             let a1Rec: RecursiveSelectableStructureTestComponent;
-            let a1Node: TreeNode;
+            let a1Node: ClrTreeNode;
 
             let b1Rec: RecursiveSelectableStructureTestComponent;
-            let b1Node: TreeNode;
+            let b1Node: ClrTreeNode;
 
             let b2Rec: RecursiveSelectableStructureTestComponent;
-            let b2Node: TreeNode;
+            let b2Node: ClrTreeNode;
 
             let d1Rec: RecursiveSelectableStructureTestComponent;
-            let d1Node: TreeNode;
+            let d1Node: ClrTreeNode;
 
             let d2Rec: RecursiveSelectableStructureTestComponent;
-            let d2Node: TreeNode;
+            let d2Node: ClrTreeNode;
 
             beforeEach(() => {
                 fixture = TestBed.createComponent(RecursiveSelectableTreeTest);
@@ -467,14 +467,14 @@ export default function(): void {
                 expect(compiled.textContent).toMatch(/C2/);
 
                 const c1Rec: RecursiveSelectableStructureTestComponent = b1Rec.recursiveStructures.toArray()[0];
-                const c1Node: TreeNode = c1Rec.treeNode;
+                const c1Node: ClrTreeNode = c1Rec.treeNode;
 
                 // C1
                 expect(c1Node.indeterminate).toBe(false);
                 expect(c1Node.selected).toBe(true);
 
                 const c2Rec: RecursiveSelectableStructureTestComponent = b1Rec.recursiveStructures.toArray()[1];
-                const c2Node: TreeNode = c2Rec.treeNode;
+                const c2Node: ClrTreeNode = c2Rec.treeNode;
 
                 // C2
                 expect(c2Node.indeterminate).toBe(false);
@@ -525,8 +525,8 @@ export default function(): void {
     `
 })
 export class BasicTreeNodeTestComponent {
-    @ViewChild("parentTreeNode") parentTreeNode: TreeNode;
-    @ViewChild("childTreeNode") childTreeNode: TreeNode;
+    @ViewChild("parentTreeNode") parentTreeNode: ClrTreeNode;
+    @ViewChild("childTreeNode") childTreeNode: ClrTreeNode;
 }
 
 @Component({
@@ -548,8 +548,8 @@ export class BasicTreeNodeTestComponent {
     `
 })
 export class TreeNodeAlternateSyntaxTestComponent {
-    @ViewChild("parentTreeNode") parentTreeNode: TreeNode;
-    @ViewChild("childTreeNode") childTreeNode: TreeNode;
+    @ViewChild("parentTreeNode") parentTreeNode: ClrTreeNode;
+    @ViewChild("childTreeNode") childTreeNode: ClrTreeNode;
 }
 
 @Component({
@@ -576,8 +576,8 @@ export class TreeNodeAlternateSyntaxTestComponent {
     `
 })
 export class TreeNodeExpandedTestComponent {
-    @ViewChild("parentTreeNode") parentTreeNode: TreeNode;
-    @ViewChild("childTreeNode") childTreeNode: TreeNode;
+    @ViewChild("parentTreeNode") parentTreeNode: ClrTreeNode;
+    @ViewChild("childTreeNode") childTreeNode: ClrTreeNode;
 }
 
 @Component({
@@ -601,8 +601,8 @@ export class TreeNodeExpandedTestComponent {
     `
 })
 export class BasicTreeNodeSelectionTestComponent {
-    @ViewChild("parentTreeNode") parentTreeNode: TreeNode;
-    @ViewChild("childTreeNode") childTreeNode: TreeNode;
+    @ViewChild("parentTreeNode") parentTreeNode: ClrTreeNode;
+    @ViewChild("childTreeNode") childTreeNode: ClrTreeNode;
 
     selectedTracker: number = 0;
     selectedChildTracker: number = 0;
@@ -651,8 +651,8 @@ export class BasicTreeNodeSelectionTestComponent {
     `
 })
 export class BasicTreeNodeIndeterminateNodeTest {
-    @ViewChild("parentTreeNode") parentTreeNode: TreeNode;
-    @ViewChild("childTreeNode") childTreeNode: TreeNode;
+    @ViewChild("parentTreeNode") parentTreeNode: ClrTreeNode;
+    @ViewChild("childTreeNode") childTreeNode: ClrTreeNode;
 
     indeterminateTracker: number = 0;
 
@@ -688,7 +688,7 @@ export class RecursiveSelectableStructureTestComponent {
     @Input() item: any;
     @Input() selected: boolean = false;
 
-    @ViewChild("treeNode") treeNode: TreeNode;
+    @ViewChild("treeNode") treeNode: ClrTreeNode;
     @ViewChildren("recursiveStructure") recursiveStructures: QueryList<RecursiveSelectableStructureTestComponent>;
 }
 

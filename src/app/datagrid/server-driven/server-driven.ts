@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-import {State} from "../../../clr-angular/data/datagrid";
+import {ClrDatagridStateInterface} from "../../../clr-angular/data/datagrid";
 import {FetchResult, Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
 import {EXAMPLES} from "./examples";
@@ -28,7 +28,7 @@ export class DatagridServerDrivenDemo {
         inventory.reset();
     }
 
-    refresh(state: State) {
+    refresh(state: ClrDatagridStateInterface) {
         this.loading = true;
         const filters: {[prop: string]: any[]} = {};
         if (state.filters) {

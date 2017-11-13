@@ -8,7 +8,7 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 
-import {TabOverflowContent} from "./tab-overflow-content";
+import {ClrTabOverflowContent} from "./tab-overflow-content";
 
 @Component({
     template: `
@@ -25,7 +25,8 @@ describe("TabOverflowContent", () => {
     let instance: any;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({declarations: [TabOverflowContent, TestComponent], providers: [IfOpenService]});
+        TestBed.configureTestingModule(
+            {declarations: [ClrTabOverflowContent, TestComponent], providers: [IfOpenService]});
 
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();

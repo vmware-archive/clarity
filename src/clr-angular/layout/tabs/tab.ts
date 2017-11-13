@@ -7,10 +7,10 @@ import {Component, ContentChild, Inject} from "@angular/core";
 
 import {IF_ACTIVE_ID, IF_ACTIVE_ID_PROVIDER, IfActiveService} from "../../utils/conditional/if-active.service";
 
-import {AriaService} from "./aria-service";
-import {TabContent} from "./tab-content";
-import {TabLinkDirective} from "./tab-link.directive";
-import {TabsService} from "./tabs-service";
+import {AriaService} from "./providers/aria.service";
+import {TabsService} from "./providers/tabs.service";
+import {ClrTabContent} from "./tab-content";
+import {ClrTabLink} from "./tab-link.directive";
 
 @Component({
     selector: "clr-tab",
@@ -19,9 +19,9 @@ import {TabsService} from "./tabs-service";
     `,
     providers: [IF_ACTIVE_ID_PROVIDER, AriaService]
 })
-export class Tab {
-    @ContentChild(TabLinkDirective) tabLink: TabLinkDirective;
-    @ContentChild(TabContent) tabContent: TabContent;
+export class ClrTab {
+    @ContentChild(ClrTabLink) tabLink: ClrTabLink;
+    @ContentChild(ClrTabContent) tabContent: ClrTabContent;
 
     constructor(public ifActiveService: IfActiveService, @Inject(IF_ACTIVE_ID) public id: number,
                 private tabsService: TabsService) {

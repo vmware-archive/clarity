@@ -20,7 +20,7 @@ import {Items} from "./providers/items";
 @Directive({
     selector: "[clrDgItems][clrDgItemsOf]",
 })
-export class DatagridItems implements OnChanges, DoCheck {
+export class ClrDatagridItems implements OnChanges, DoCheck {
     private _rawItems: any[];
     @Input("clrDgItemsOf")
     public set rawItems(items: any[]) {

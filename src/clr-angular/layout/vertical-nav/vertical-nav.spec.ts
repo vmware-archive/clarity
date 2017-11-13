@@ -13,7 +13,7 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {ClrIconModule} from "../../icon/icon.module";
 
 import {VerticalNavService} from "./providers/vertical-nav.service";
-import {VerticalNav} from "./vertical-nav";
+import {ClrVerticalNav} from "./vertical-nav";
 import {ClrVerticalNavModule} from "./vertical-nav.module";
 
 export default function(): void {
@@ -39,7 +39,8 @@ export default function(): void {
                 fixture = TestBed.createComponent(NoIconsNoNavGroupTestComponent);
                 fixture.detectChanges();
                 compiled = fixture.nativeElement;
-                vertNavService = fixture.debugElement.query(By.directive(VerticalNav)).injector.get(VerticalNavService);
+                vertNavService =
+                    fixture.debugElement.query(By.directive(ClrVerticalNav)).injector.get(VerticalNavService);
             });
 
             afterEach(() => {
@@ -103,7 +104,8 @@ export default function(): void {
                 fixture = TestBed.createComponent(NoIconsNoNavGroupTestComponent);
                 fixture.detectChanges();
                 compiled = fixture.nativeElement;
-                vertNavService = fixture.debugElement.query(By.directive(VerticalNav)).injector.get(VerticalNavService);
+                vertNavService =
+                    fixture.debugElement.query(By.directive(ClrVerticalNav)).injector.get(VerticalNavService);
             });
 
             afterEach(() => {
@@ -134,7 +136,8 @@ export default function(): void {
                 fixture = TestBed.createComponent(IconsButNoNavGroupTestComponent);
                 fixture.detectChanges();
                 compiled = fixture.nativeElement;
-                vertNavService = fixture.debugElement.query(By.directive(VerticalNav)).injector.get(VerticalNavService);
+                vertNavService =
+                    fixture.debugElement.query(By.directive(ClrVerticalNav)).injector.get(VerticalNavService);
             });
 
             afterEach(() => {
@@ -163,7 +166,8 @@ export default function(): void {
                 fixture = TestBed.createComponent(OnlyNavGroupTestComponent);
                 fixture.detectChanges();
                 compiled = fixture.nativeElement;
-                vertNavService = fixture.debugElement.query(By.directive(VerticalNav)).injector.get(VerticalNavService);
+                vertNavService =
+                    fixture.debugElement.query(By.directive(ClrVerticalNav)).injector.get(VerticalNavService);
             });
 
             afterEach(() => {
@@ -190,7 +194,8 @@ export default function(): void {
                 fixture = TestBed.createComponent(IconsAndNavGroupTestComponent);
                 fixture.detectChanges();
                 compiled = fixture.nativeElement;
-                vertNavService = fixture.debugElement.query(By.directive(VerticalNav)).injector.get(VerticalNavService);
+                vertNavService =
+                    fixture.debugElement.query(By.directive(ClrVerticalNav)).injector.get(VerticalNavService);
             });
 
             afterEach(() => {
@@ -232,7 +237,8 @@ export default function(): void {
                 fixture = TestBed.createComponent(ResponsiveVerticalNavTestComponent);
                 fixture.detectChanges();
                 compiled = fixture.nativeElement;
-                vertNavService = fixture.debugElement.query(By.directive(VerticalNav)).injector.get(VerticalNavService);
+                vertNavService =
+                    fixture.debugElement.query(By.directive(ClrVerticalNav)).injector.get(VerticalNavService);
             });
 
             afterEach(() => {
@@ -291,7 +297,8 @@ export default function(): void {
                 fixture = TestBed.createComponent(ViewBasicsTestComponent);
                 fixture.detectChanges();
                 compiled = fixture.nativeElement;
-                vertNavService = fixture.debugElement.query(By.directive(VerticalNav)).injector.get(VerticalNavService);
+                vertNavService =
+                    fixture.debugElement.query(By.directive(ClrVerticalNav)).injector.get(VerticalNavService);
             });
 
             afterEach(() => {
@@ -371,7 +378,8 @@ export default function(): void {
                 fixture = TestBed.createComponent(ViewBasicsTestComponent);
                 fixture.detectChanges();
                 compiled = fixture.nativeElement;
-                vertNavService = fixture.debugElement.query(By.directive(VerticalNav)).injector.get(VerticalNavService);
+                vertNavService =
+                    fixture.debugElement.query(By.directive(ClrVerticalNav)).injector.get(VerticalNavService);
             });
 
             afterEach(() => {
@@ -443,7 +451,8 @@ export default function(): void {
                 fixture = TestBed.createComponent(APITestComponent);
                 fixture.detectChanges();
                 compiled = fixture.nativeElement;
-                vertNavService = fixture.debugElement.query(By.directive(VerticalNav)).injector.get(VerticalNavService);
+                vertNavService =
+                    fixture.debugElement.query(By.directive(ClrVerticalNav)).injector.get(VerticalNavService);
             });
 
             afterEach(() => {
@@ -579,7 +588,7 @@ class IconsAndNavGroupTestComponent {}
     `
 })
 class ViewBasicsTestComponent {
-    @ViewChild("nav") nav: VerticalNav;
+    @ViewChild("nav") nav: ClrVerticalNav;
 
     groupToggle: boolean = true;
     iconToggle: boolean = true;
@@ -600,7 +609,7 @@ class APITestComponent {
     collapsed: boolean = false;
     collapsedChange: boolean;
 
-    @ViewChild("nav") nav: VerticalNav;
+    @ViewChild("nav") nav: ClrVerticalNav;
 
     updateCollapsed(val: boolean) {
         this.collapsedChange = val;

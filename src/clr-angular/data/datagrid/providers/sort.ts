@@ -7,7 +7,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 
-import {Comparator} from "../interfaces/comparator";
+import {ClrDatagridComparatorInterface} from "../interfaces/comparator.interface";
 import {StateDebouncer} from "./state-debouncer.provider";
 
 @Injectable()
@@ -17,11 +17,11 @@ export class Sort {
     /**
      * Currently active comparator
      */
-    private _comparator: Comparator<any>;
-    public get comparator(): Comparator<any> {
+    private _comparator: ClrDatagridComparatorInterface<any>;
+    public get comparator(): ClrDatagridComparatorInterface<any> {
         return this._comparator;
     }
-    public set comparator(value: Comparator<any>) {
+    public set comparator(value: ClrDatagridComparatorInterface<any>) {
         this.stateDebouncer.changeStart();
         this._comparator = value;
         this.emitChange();
@@ -61,7 +61,7 @@ export class Sort {
      *
      * @memberof Sort
      */
-    public toggle(sortBy: Comparator<any>, forceReverse?: boolean) {
+    public toggle(sortBy: ClrDatagridComparatorInterface<any>, forceReverse?: boolean) {
         this.stateDebouncer.changeStart();
         // We modify private properties directly, to batch the change event
         if (this.comparator === sortBy) {

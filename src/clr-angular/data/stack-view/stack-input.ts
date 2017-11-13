@@ -12,7 +12,7 @@
 
 import {Component} from "@angular/core";
 import {StackControl} from "./stack-control";
-import {StackView} from "./stack-view";
+import {ClrStackView} from "./stack-view";
 
 @Component({
     selector: "clr-stack-input",
@@ -23,10 +23,10 @@ import {StackView} from "./stack-view";
         <input [type]="type" *ngIf="stackView.editing" [(ngModel)]="model"/>
     `
 })
-export class StackInput extends StackControl {
+export class ClrStackInput extends StackControl {
     type: string = "text";
 
-    constructor(public stackView: StackView) {
+    constructor(public stackView: ClrStackView) {
         super(stackView);
     }
 }

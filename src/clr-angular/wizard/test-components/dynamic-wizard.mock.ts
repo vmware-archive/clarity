@@ -5,7 +5,7 @@
  */
 
 import {Component, ViewChild} from "@angular/core";
-import {Wizard} from "../wizard";
+import {ClrWizard} from "../wizard";
 
 @Component({
     template: `
@@ -26,7 +26,7 @@ import {Wizard} from "../wizard";
     `
 })
 export class DynamicWizardTestComponent {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     open: boolean = true;
     pages = [1, 2, 4];
     showSecondPage = true;

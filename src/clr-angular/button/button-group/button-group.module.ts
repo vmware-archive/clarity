@@ -5,16 +5,28 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import {NgModule, Type} from "@angular/core";
 
 import {ClrIconModule} from "../../icon/icon.module";
 import {ClrCommonPopoverModule} from "../../popover/common/popover.module";
 
-import {BUTTON_GROUP_DIRECTIVES} from "./index";
+import {ClrButton} from "./button";
+import {ClrButtonGroup} from "./button-group";
+
+export const CLR_BUTTON_GROUP_DIRECTIVES: Type<any>[] = [ClrButton, ClrButtonGroup];
 
 @NgModule({
     imports: [CommonModule, ClrIconModule, ClrCommonPopoverModule],
-    declarations: [BUTTON_GROUP_DIRECTIVES],
-    exports: [BUTTON_GROUP_DIRECTIVES]
+    declarations: [CLR_BUTTON_GROUP_DIRECTIVES],
+    exports: [CLR_BUTTON_GROUP_DIRECTIVES]
 })
 export class ClrButtonGroupModule {}
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export const Button = ClrButton;
+/** @deprecated since 0.11 */
+export const ButtonGroup = ClrButtonGroup;
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const BUTTON_GROUP_DIRECTIVES = CLR_BUTTON_GROUP_DIRECTIVES;

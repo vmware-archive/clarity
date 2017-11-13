@@ -17,11 +17,11 @@ import {
 } from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
-import {DatagridColumn} from "./datagrid-column";
-import {DatagridItems} from "./datagrid-items";
-import {DatagridPlaceholder} from "./datagrid-placeholder";
-import {DatagridRow} from "./datagrid-row";
-import {State} from "./interfaces/state";
+import {ClrDatagridColumn} from "./datagrid-column";
+import {ClrDatagridItems} from "./datagrid-items";
+import {ClrDatagridPlaceholder} from "./datagrid-placeholder";
+import {ClrDatagridRow} from "./datagrid-row";
+import {ClrDatagridStateInterface} from "./interfaces/state.interface";
 import {FiltersProvider} from "./providers/filters";
 import {ExpandableRowsCount} from "./providers/global-expandable-rows";
 import {HideableColumnService} from "./providers/hideable-column.service";
@@ -43,7 +43,7 @@ import {DatagridRenderOrganizer} from "./render/render-organizer";
     ],
     host: {"[class.datagrid-host]": "true"}
 })
-export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
+export class ClrDatagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     constructor(private columnService: HideableColumnService, private organizer: DatagridRenderOrganizer,
                 public items: Items, public expandableRows: ExpandableRowsCount, public selection: Selection,
                 public rowActionService: RowActionService, private stateProvider: StateProvider) {}
@@ -66,7 +66,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     /**
      * Output emitted whenever the data needs to be refreshed, based on user action or external ones
      */
-    @Output("clrDgRefresh") public refresh = new EventEmitter<State>(false);
+    @Output("clrDgRefresh") public refresh = new EventEmitter<ClrDatagridStateInterface>(false);
 
     /**
      * Public method to re-trigger the computation of displayed items manually
@@ -78,7 +78,7 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     /**
      * We grab the smart iterator from projected content
      */
-    @ContentChild(DatagridItems) public iterator: DatagridItems;
+    @ContentChild(ClrDatagridItems) public iterator: ClrDatagridItems;
 
     /**
      * Array of all selected items
@@ -141,12 +141,12 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     /**
      * Custom placeholder detection
      */
-    @ContentChild(DatagridPlaceholder) public placeholder: DatagridPlaceholder;
+    @ContentChild(ClrDatagridPlaceholder) public placeholder: ClrDatagridPlaceholder;
 
     /**
      * Hideable Column data source / detection.
      */
-    @ContentChildren(DatagridColumn) public columns: QueryList<DatagridColumn>;
+    @ContentChildren(ClrDatagridColumn) public columns: QueryList<ClrDatagridColumn>;
 
     /**
      * When the datagrid is user-managed without the smart iterator, we get the items displayed
@@ -154,19 +154,19 @@ export class Datagrid implements AfterContentInit, AfterViewInit, OnDestroy {
      * displayed, typically for selection.
      */
 
-    @ContentChildren(DatagridRow) rows: QueryList<DatagridRow>;
+    @ContentChildren(ClrDatagridRow) rows: QueryList<ClrDatagridRow>;
 
     ngAfterContentInit() {
         this._subscriptions.push(this.rows.changes.subscribe(() => {
             if (!this.items.smart) {
-                this.items.all = this.rows.map((row: DatagridRow) => row.item);
+                this.items.all = this.rows.map((row: ClrDatagridRow) => row.item);
             }
         }));
         if (!this.items.smart) {
-            this.items.all = this.rows.map((row: DatagridRow) => row.item);
+            this.items.all = this.rows.map((row: ClrDatagridRow) => row.item);
         }
 
-        this._subscriptions.push(this.columns.changes.subscribe((columns: DatagridColumn[]) => {
+        this._subscriptions.push(this.columns.changes.subscribe((columns: ClrDatagridColumn[]) => {
             this.columnService.updateColumnList(this.columns.map(col => col.hideable));
         }));
 

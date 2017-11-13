@@ -5,11 +5,11 @@
  */
 
 import {Component, ViewChild} from "@angular/core";
-import {Wizard} from "../../clr-angular/wizard/wizard";
+import {ClrWizard} from "../../clr-angular/wizard/wizard";
 
 @Component({selector: "clr-wizard-force-forward", templateUrl: "./wizard-force-forward.demo.html"})
 export class WizardForceForwardDemo {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     _open: boolean = false;
 
     open() {

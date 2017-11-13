@@ -9,7 +9,7 @@ import {FormsModule} from "@angular/forms";
 import {By} from "@angular/platform-browser";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
-import {Modal} from "../../modal/modal";
+import {ClrModal} from "../../modal/modal";
 import {ClrModalModule} from "../../modal/modal.module";
 
 import {FocusTrapDirective} from "./focus-trap.directive";
@@ -200,7 +200,7 @@ class TestComponent {
         </clr-modal>`
 })
 class TestModalComponent {
-    @ViewChild(Modal) modal: Modal;
+    @ViewChild(ClrModal) modal: ClrModal;
     openState: boolean = false;
     model: any = {contactInfo: ""};
 }

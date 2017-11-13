@@ -15,9 +15,9 @@ import {LoadingListener} from "../../utils/loading/loading-listener";
         <span class="spinner spinner-inline" *ngIf="loading"></span>
         <ng-content></ng-content>
     `,
-    providers: [{provide: LoadingListener, useExisting: LoadingButton}]
+    providers: [{provide: LoadingListener, useExisting: ClrLoadingButton}]
 })
-export class LoadingButton implements LoadingListener {
+export class ClrLoadingButton implements LoadingListener {
     public loading: Boolean;
 
     startLoading(): void {

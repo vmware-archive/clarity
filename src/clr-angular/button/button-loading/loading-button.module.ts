@@ -5,15 +5,23 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import {NgModule, Type} from "@angular/core";
 
 import {ClrLoadingModule} from "../../utils/loading/loading.module";
+import {ClrLoadingButton} from "./loading-button";
 
-import {LOADING_BUTTON_DIRECTIVES} from "./index";
+export const CLR_LOADING_BUTTON_DIRECTIVES: Type<any>[] = [ClrLoadingButton];
 
 @NgModule({
     imports: [CommonModule, ClrLoadingModule],
-    declarations: [LOADING_BUTTON_DIRECTIVES],
-    exports: [LOADING_BUTTON_DIRECTIVES, ClrLoadingModule]
+    declarations: [CLR_LOADING_BUTTON_DIRECTIVES],
+    exports: [CLR_LOADING_BUTTON_DIRECTIVES, ClrLoadingModule]
 })
 export class ClrLoadingButtonModule {}
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export const LoadingButton = ClrLoadingButton;
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const LOADING_BUTTON_DIRECTIVES = CLR_LOADING_BUTTON_DIRECTIVES;

@@ -6,6 +6,7 @@
 import {Type} from "@angular/core";
 import {PopoverDirectiveOld} from "./popover-old.directive";
 
+export * from "./popover-options.interface";
 export * from "./popover-old.directive";
 
 export const POPOVER_DIRECTIVES: Type<any>[] = [PopoverDirectiveOld];

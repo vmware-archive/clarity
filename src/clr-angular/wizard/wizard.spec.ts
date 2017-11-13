@@ -8,13 +8,13 @@ import {fakeAsync, tick} from "@angular/core/testing";
 
 import {TestContext} from "../utils/testing/helpers.spec";
 
-import {PageCollectionService} from "./providers/page-collection";
-import {WizardNavigationService} from "./providers/wizard-navigation";
+import {PageCollectionService} from "./providers/page-collection.service";
+import {WizardNavigationService} from "./providers/wizard-navigation.service";
 import {TemplateApiWizardTestComponent} from "./test-components/api-wizard.mock";
 import {BasicWizardTestComponent} from "./test-components/basic-wizard.mock";
 import {DynamicWizardTestComponent} from "./test-components/dynamic-wizard.mock";
 import {UnopenedWizardTestComponent} from "./test-components/unopened-wizard.mock";
-import {Wizard} from "./wizard";
+import {ClrWizard} from "./wizard";
 
 export default function(): void {
     describe("Wizard", () => {
@@ -40,14 +40,14 @@ export default function(): void {
             });
 
             describe("Opening and closing", () => {
-                let context: TestContext<Wizard, UnopenedWizardTestComponent>;
+                let context: TestContext<ClrWizard, UnopenedWizardTestComponent>;
                 let wizardNavigationService: WizardNavigationService;
                 let pageCollectionService: PageCollectionService;
-                let wizard: Wizard;
+                let wizard: ClrWizard;
                 let component: UnopenedWizardTestComponent;
 
                 beforeEach(function() {
-                    context = this.create(Wizard, UnopenedWizardTestComponent);
+                    context = this.create(ClrWizard, UnopenedWizardTestComponent);
                     wizardNavigationService = context.getClarityProvider(WizardNavigationService);
                     pageCollectionService = context.getClarityProvider(PageCollectionService);
                     wizard = context.clarityDirective;
@@ -128,13 +128,13 @@ export default function(): void {
             });
 
             describe("Convenience functions", () => {
-                let context: TestContext<Wizard, BasicWizardTestComponent>;
+                let context: TestContext<ClrWizard, BasicWizardTestComponent>;
                 let wizardNavigationService: WizardNavigationService;
                 let pageCollectionService: PageCollectionService;
-                let wizard: Wizard;
+                let wizard: ClrWizard;
 
                 beforeEach(function() {
-                    context = this.create(Wizard, BasicWizardTestComponent);
+                    context = this.create(ClrWizard, BasicWizardTestComponent);
                     wizardNavigationService = context.getClarityProvider(WizardNavigationService);
                     pageCollectionService = context.getClarityProvider(PageCollectionService);
                     wizard = context.clarityDirective;
@@ -279,11 +279,11 @@ export default function(): void {
 
         // Inputs, Outputs, and initialization of component based on content-children
         describe("Template API", () => {
-            let context: TestContext<Wizard, TemplateApiWizardTestComponent>;
-            let wizard: Wizard;
+            let context: TestContext<ClrWizard, TemplateApiWizardTestComponent>;
+            let wizard: ClrWizard;
 
             beforeEach(function() {
-                context = this.create(Wizard, TemplateApiWizardTestComponent);
+                context = this.create(ClrWizard, TemplateApiWizardTestComponent);
                 wizard = context.clarityDirective;
                 context.detectChanges();
             });
@@ -718,13 +718,13 @@ export default function(): void {
         });
 
         describe("Dynamic Content", () => {
-            let context: TestContext<Wizard, DynamicWizardTestComponent>;
+            let context: TestContext<ClrWizard, DynamicWizardTestComponent>;
             let wizardNavigationService: WizardNavigationService;
             let pageCollectionService: PageCollectionService;
-            let wizard: Wizard;
+            let wizard: ClrWizard;
 
             beforeEach(function() {
-                context = this.create(Wizard, DynamicWizardTestComponent);
+                context = this.create(ClrWizard, DynamicWizardTestComponent);
                 wizardNavigationService = context.getClarityProvider(WizardNavigationService);
                 pageCollectionService = context.getClarityProvider(PageCollectionService);
                 wizard = context.clarityDirective;

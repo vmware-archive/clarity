@@ -7,7 +7,7 @@
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 
-import {CHECKBOX_DIRECTIVES} from "./checkbox/index";
+import {CLR_CHECKBOX_DIRECTIVES} from "./checkbox";
 
-@NgModule({imports: [CommonModule], declarations: [CHECKBOX_DIRECTIVES], exports: [CHECKBOX_DIRECTIVES]})
+@NgModule({imports: [CommonModule], declarations: [CLR_CHECKBOX_DIRECTIVES], exports: [CLR_CHECKBOX_DIRECTIVES]})
 export class ClrFormsModule {}

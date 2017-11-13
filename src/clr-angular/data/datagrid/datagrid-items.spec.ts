@@ -6,7 +6,7 @@
 import {Component, ViewChild} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
 
-import {DatagridItems} from "./datagrid-items";
+import {ClrDatagridItems} from "./datagrid-items";
 import {ClrDatagridModule} from "./datagrid.module";
 import {FiltersProvider} from "./providers/filters";
 import {Items} from "./providers/items";
@@ -15,10 +15,10 @@ import {Sort} from "./providers/sort";
 import {StateDebouncer} from "./providers/state-debouncer.provider";
 
 export default function(): void {
-    describe("DatagridItems directive", function() {
+    describe("ClrDatagridItems directive", function() {
         beforeEach(function() {
             /*
-             * Since the DatagridItems element is a template that isn't rendered in the DOM,
+             * Since the ClrDatagridItems element is a template that isn't rendered in the DOM,
              * we can't use our usual shortcut, we need to rely on @ViewChild
              */
             TestBed.configureTestingModule({
@@ -79,7 +79,7 @@ export default function(): void {
 
 @Component({template: `<div *clrDgItems="let n of numbers; trackBy: trackBy">{{n}}</div>`})
 class FullTest {
-    @ViewChild(DatagridItems) datagridItems: DatagridItems;
+    @ViewChild(ClrDatagridItems) datagridItems: ClrDatagridItems;
 
     numbers = [1, 2, 3, 4, 5];
 

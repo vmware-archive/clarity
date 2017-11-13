@@ -9,9 +9,9 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {IfActiveService} from "../../utils/conditional/if-active.service";
 
 import {TabsWillyWonka} from "./chocolate/tabs-willy-wonka";
-import {TabLinkDirective} from "./tab-link.directive";
+import {TabsService} from "./providers/tabs.service";
+import {ClrTabLink} from "./tab-link.directive";
 import {TABS_ID_PROVIDER} from "./tabs-id.provider";
-import {TabsService} from "./tabs-service";
 import {ClrTabsModule} from "./tabs.module";
 
 @Component({
@@ -25,7 +25,7 @@ import {ClrTabsModule} from "./tabs.module";
     `
 })
 class TestComponent {
-    @ViewChildren(TabLinkDirective) tabLinkChildren: QueryList<TabLinkDirective>;
+    @ViewChildren(ClrTabLink) tabLinkChildren: QueryList<ClrTabLink>;
 }
 
 describe("TabLink Directive", () => {
@@ -52,7 +52,7 @@ describe("TabLink Directive", () => {
     });
 
     it("sets itself as active when clicked", () => {
-        const links: TabLinkDirective[] = instance.tabLinkChildren.toArray();
+        const links: ClrTabLink[] = instance.tabLinkChildren.toArray();
         expect(links[0].active).toEqual(false);
         expect(links[1].active).toEqual(false);
 

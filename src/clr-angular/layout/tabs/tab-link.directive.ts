@@ -12,9 +12,11 @@ import {
     Input,
     ViewContainerRef
 } from "@angular/core";
+
 import {IF_ACTIVE_ID, IfActiveService} from "../../utils/conditional/if-active.service";
 import {TemplateRefContainer} from "../../utils/template-ref/template-ref-container";
-import {AriaService} from "./aria-service";
+
+import {AriaService} from "./providers/aria.service";
 import {TABS_ID} from "./tabs-id.provider";
 
 let nbTabLinkComponents: number = 0;
@@ -33,7 +35,7 @@ let nbTabLinkComponents: number = 0;
         "[class.active]": "active"
     }
 })
-export class TabLinkDirective {
+export class ClrTabLink {
     @Input("clrTabLinkInOverflow") inOverflow: boolean;
     templateRefContainer: TemplateRefContainer;
 

@@ -8,7 +8,7 @@ import {Subscription} from "rxjs/Subscription";
 
 import {Point} from "../../popover/common/popover";
 
-import {DatagridHideableColumn} from "./datagrid-hideable-column";
+import {DatagridHideableColumnModel} from "./datagrid-hideable-column.model";
 import {HideableColumnService} from "./providers/hideable-column.service";
 
 @Component({
@@ -65,7 +65,7 @@ import {HideableColumnService} from "./providers/hideable-column.service";
     host: {"[class.column-switch-wrapper]": "true", "[class.active]": "open"}
 })
 
-export class DatagridColumnToggle implements OnInit, OnDestroy {
+export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
     private _hideableColumnChangeSubscription: Subscription;
     private _allColumnsVisible: boolean;
 
@@ -77,9 +77,9 @@ export class DatagridColumnToggle implements OnInit, OnDestroy {
     public open: boolean = false;
 
     /****
-     * DatagridHideableColumn init
+     * DatagridHideableColumnModel init
      */
-    public columns: DatagridHideableColumn[] = [];
+    public columns: DatagridHideableColumnModel[] = [];
 
     public get allColumnsVisible(): boolean {
         return this._allColumnsVisible;
@@ -116,7 +116,7 @@ export class DatagridColumnToggle implements OnInit, OnDestroy {
         this.allColumnsVisible = this.hideableColumnService.checkForAllColumnsVisible;
     }
 
-    toggleColumn(event: boolean, column: DatagridHideableColumn) {
+    toggleColumn(event: boolean, column: DatagridHideableColumnModel) {
         column.hidden = !event;
         this.allColumnsVisible = this.hideableColumnService.checkForAllColumnsVisible;
         this.hideableColumnService.updateForLastVisibleColumn();

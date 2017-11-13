@@ -6,7 +6,7 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser";
 
-import {Datagrid} from "../datagrid";
+import {ClrDatagrid} from "../datagrid";
 import {TestContext} from "../helpers.spec";
 import {DragDispatcher} from "../providers/drag-dispatcher";
 
@@ -15,7 +15,7 @@ import {DomAdapter} from "./dom-adapter";
 
 export default function(): void {
     describe("DatagridColumnResizer directive", function() {
-        let context: TestContext<Datagrid, ColumnResizerTest>;
+        let context: TestContext<ClrDatagrid, ColumnResizerTest>;
 
         let column1: DebugElement;
         let column2: DebugElement;
@@ -41,7 +41,7 @@ export default function(): void {
             columnResizerDirective.dragEndHandler();
         };
         beforeEach(function() {
-            context = this.create(Datagrid, ColumnResizerTest);
+            context = this.create(ClrDatagrid, ColumnResizerTest);
             context.detectChanges();
             domAdapter = context.getClarityProvider(DomAdapter);
 

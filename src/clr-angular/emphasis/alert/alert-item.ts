@@ -5,7 +5,7 @@
  */
 
 import {Component} from "@angular/core";
-import {AlertIconAndTypesService} from "./providers/icon-and-types-service";
+import {AlertIconAndTypesService} from "./providers/icon-and-types.service";
 
 @Component({
     // the .alert-item selector is deprecated; the :not clause is to allow us to use static
@@ -19,6 +19,6 @@ import {AlertIconAndTypesService} from "./providers/icon-and-types-service";
     `,
     host: {"class": "alert-item"}
 })
-export class AlertItem {
+export class ClrAlertItem {
     constructor(public iconService: AlertIconAndTypesService) {}
 }

@@ -19,8 +19,8 @@ import {Subscription} from "rxjs/Subscription";
 import {Expand} from "../../utils/expand/providers/expand";
 import {LoadingListener} from "../../utils/loading/loading-listener";
 
-import {DatagridCell} from "./datagrid-cell";
-import {DatagridHideableColumn} from "./datagrid-hideable-column";
+import {ClrDatagridCell} from "./datagrid-cell";
+import {DatagridHideableColumnModel} from "./datagrid-hideable-column.model";
 import {ExpandableRowsCount} from "./providers/global-expandable-rows";
 import {HideableColumnService} from "./providers/hideable-column.service";
 import {RowActionService} from "./providers/row-action-service";
@@ -82,7 +82,7 @@ let nbRow: number = 0;
     },
     providers: [Expand, {provide: LoadingListener, useExisting: Expand}]
 })
-export class DatagridRow implements AfterContentInit {
+export class ClrDatagridRow implements AfterContentInit {
     public id: string;
 
     /* reference to the enum so that template can access */
@@ -193,10 +193,10 @@ export class DatagridRow implements AfterContentInit {
      * property dgCells
      *
      * @description
-     * A Query List of the Datagrid cells in this row.
+     * A Query List of the ClrDatagrid cells in this row.
      *
      */
-    @ContentChildren(DatagridCell) dgCells: QueryList<DatagridCell>;
+    @ContentChildren(ClrDatagridCell) dgCells: QueryList<ClrDatagridCell>;
 
     ngAfterContentInit() {
         // Make sure things get started
@@ -228,7 +228,7 @@ export class DatagridRow implements AfterContentInit {
      * Take a Column list and use index to access the columns for hideable properties.
      *
      */
-    public updateCellsForColumns(columnList: DatagridHideableColumn[]) {
+    public updateCellsForColumns(columnList: DatagridHideableColumnModel[]) {
         // Map cells to columns with Array.index
         this.dgCells.forEach((cell, index) => {
             const currentColumn = columnList[index];  // Accounts for null space.

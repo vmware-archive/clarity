@@ -12,7 +12,7 @@ import {
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {POPOVER_HOST_ANCHOR} from "../common/popover-host-anchor.token";
 
-import {SignpostTriggerDirective} from "./signpost-trigger.directive";
+import {ClrSignpostTrigger} from "./signpost-trigger";
 
 @Component({
     selector: "clr-signpost",
@@ -34,14 +34,14 @@ import {SignpostTriggerDirective} from "./signpost-trigger.directive";
 
 /*********
  *
- * @class Signpost
+ * @class ClrSignpost
  *
  * @description
- * Class used to configure and control the state of a Signpost and its associated SignpostContent.
+ * Class used to configure and control the state of a ClrSignpost and its associated ClrSignpostContent.
  * It supports the clrPosition with a 'right-middle' default.
  *
  */
-export class Signpost {
+export class ClrSignpost {
     /**********
      * @property useCustomTrigger
      *
@@ -55,11 +55,11 @@ export class Signpost {
      * @property signPostTrigger
      *
      * @description
-     * Uses ContentChild to check for a user supplied element with the SignpostTriggerDirective on it.
+     * Uses ContentChild to check for a user supplied element with the ClrSignpostTrigger on it.
      *
      */
-    @ContentChild(SignpostTriggerDirective)
-    set customTrigger(trigger: SignpostTriggerDirective) {
+    @ContentChild(ClrSignpostTrigger)
+    set customTrigger(trigger: ClrSignpostTrigger) {
         this.useCustomTrigger = !!trigger;
     }
 }

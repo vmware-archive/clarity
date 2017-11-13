@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, EventEmitter, forwardRef, Input, Output} from "@angular/core";
+import {Component, EventEmitter, forwardRef, Input, Output, Type} from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 /**
@@ -38,9 +38,9 @@ let latestId = 0;
      * which allows us to use [(ngModel)] directly on our component,
      * with all the automatic features wiring that come with it.
      */
-    providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => Checkbox), multi: true}]
+    providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ClrCheckbox), multi: true}]
 })
-export class Checkbox implements ControlValueAccessor {
+export class ClrCheckbox implements ControlValueAccessor {
     // If our host has an ID attribute, we use this instead of our index.
     @Input("id")
     _id: string = (latestId++).toString();
@@ -145,3 +145,12 @@ export class Checkbox implements ControlValueAccessor {
         }
     }
 }
+
+export const CLR_CHECKBOX_DIRECTIVES: Type<any>[] = [ClrCheckbox];
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export const Checkbox = ClrCheckbox;
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const CHECKBOX_DIRECTIVES = CLR_CHECKBOX_DIRECTIVES;

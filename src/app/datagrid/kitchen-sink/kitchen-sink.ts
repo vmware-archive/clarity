@@ -7,7 +7,7 @@ import "../../../clr-icons/shapes/essential-shapes";
 
 import {Component} from "@angular/core";
 
-import {SortOrder} from "../../../clr-angular/data/datagrid/interfaces/sort-order";
+import {ClrDatagridSortOrder} from "../../../clr-angular/data/datagrid/interfaces/sort-order";
 import {User} from "../inventory/user";
 import {PokemonComparator} from "../utils/pokemon-comparator";
 import {PokemonFilter} from "../utils/pokemon-filter";
@@ -23,7 +23,7 @@ export class DatagridKitchenSinkDemo {
     nonPaginatedUsers: User[];
     users: User[];
     variableLengthUsers: User[];
-    sortOrder: SortOrder = SortOrder.Unsorted;
+    sortOrder: ClrDatagridSortOrder = ClrDatagridSortOrder.UNSORTED;
     pokemonComparator = new PokemonComparator();
     pokemonFilter = new PokemonFilter();
     singleSelected: User;

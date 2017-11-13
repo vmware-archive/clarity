@@ -8,7 +8,7 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 
-import {Dropdown} from "./dropdown";
+import {ClrDropdown} from "./dropdown";
 import {ClrDropdownModule} from "./dropdown.module";
 
 
@@ -204,7 +204,7 @@ export default function(): void {
     `
 })
 class TestComponent {
-    @ViewChild(Dropdown) dropdownInstance: Dropdown;
+    @ViewChild(ClrDropdown) dropdownInstance: ClrDropdown;
 
     menuClosable: boolean = true;
     testCnt: number = 0;

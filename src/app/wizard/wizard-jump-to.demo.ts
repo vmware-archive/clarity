@@ -6,18 +6,18 @@
 
 import {Component, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
-import {Wizard} from "../../clr-angular/wizard/wizard";
-import {WizardPage} from "../../clr-angular/wizard/wizard-page";
+import {ClrCodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
+import {ClrWizard} from "../../clr-angular/wizard/wizard";
+import {ClrWizardPage} from "../../clr-angular/wizard/wizard-page";
 
 @Component({selector: "clr-wizard-jump-to", templateUrl: "./wizard-jump-to.demo.html"})
 export class WizardJumpToDemo {
-    @ViewChild("wizard") wizard: Wizard;
-    @ViewChild("pageThree") pageThree: WizardPage;
-    @ViewChild("pageFive") pageFive: WizardPage;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild("wizard") wizard: ClrWizard;
+    @ViewChild("pageThree") pageThree: ClrWizardPage;
+    @ViewChild("pageFive") pageFive: ClrWizardPage;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
-    public jumpTo(page: WizardPage) {
+    public jumpTo(page: ClrWizardPage) {
         if (page && page.completed) {
             this.wizard.navService.currentPage = page;
         } else {

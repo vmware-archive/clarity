@@ -23,7 +23,7 @@ let wizardHeaderActionIndex = 0;
     `,
     host: {"class": "clr-wizard-header-action-wrapper"}
 })
-export class WizardHeaderAction {
+export class ClrWizardHeaderAction {
     // title is explanatory text added to the header action
     @Input("title")
     title: string = "";

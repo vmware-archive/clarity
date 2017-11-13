@@ -17,7 +17,7 @@ import {Point} from "../../popover/common/popover";
         "[class.dropdown-menu]": "true",
     }
 })
-export class TabOverflowContent extends AbstractPopover {
+export class ClrTabOverflowContent extends AbstractPopover {
     constructor(injector: Injector, @SkipSelf() parentHost: ElementRef) {
         super(injector, parentHost);
         this.anchorPoint = Point.BOTTOM_RIGHT;

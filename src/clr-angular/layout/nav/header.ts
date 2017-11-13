@@ -3,11 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, OnDestroy, OnInit} from "@angular/core";
+import {Component, OnDestroy} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
-import {ClrResponsiveNavCodes} from "./clrResponsiveNavCodes";
-import {ClrResponsiveNavigationService} from "./clrResponsiveNavigationService";
+import {ResponsiveNavigationService} from "./providers/responsive-navigation.service";
+import {ResponsiveNavCodes} from "./responsive-nav-codes";
 
 @Component({
     selector: "clr-header",
@@ -31,12 +31,12 @@ import {ClrResponsiveNavigationService} from "./clrResponsiveNavigationService";
     `,
     host: {"[class.header]": "true"}
 })
-export class Header implements OnDestroy {
+export class ClrHeader implements OnDestroy {
     private _subscription: Subscription;
     public isNavLevel1OnPage: boolean = false;
     public isNavLevel2OnPage: boolean = false;
 
-    constructor(private responsiveNavService: ClrResponsiveNavigationService) {
+    constructor(private responsiveNavService: ResponsiveNavigationService) {
         this._subscription = this.responsiveNavService.registeredNavs.subscribe({
             next: (navLevelList: number[]) => {
                 this.initializeNavTriggers(navLevelList);
@@ -45,8 +45,8 @@ export class Header implements OnDestroy {
     }
 
     // getter to access the responsive navigation codes from the template
-    get responsiveNavCodes(): ClrResponsiveNavCodes {
-        return ClrResponsiveNavCodes;
+    get responsiveNavCodes(): ResponsiveNavCodes {
+        return ResponsiveNavCodes;
     }
 
     // reset triggers. handles cases when an application has different nav levels on different pages.
@@ -63,9 +63,9 @@ export class Header implements OnDestroy {
             return;
         }
         navList.forEach((navLevel) => {
-            if (navLevel === ClrResponsiveNavCodes.NAV_LEVEL_1) {
+            if (navLevel === ResponsiveNavCodes.NAV_LEVEL_1) {
                 this.isNavLevel1OnPage = true;
-            } else if (navLevel === ClrResponsiveNavCodes.NAV_LEVEL_2) {
+            } else if (navLevel === ResponsiveNavCodes.NAV_LEVEL_2) {
                 this.isNavLevel2OnPage = true;
             }
         });
@@ -78,7 +78,7 @@ export class Header implements OnDestroy {
 
     // toggles the nav that is open
     toggleNav(navLevel: number) {
-        this.responsiveNavService.sendControlMessage(ClrResponsiveNavCodes.NAV_TOGGLE, navLevel);
+        this.responsiveNavService.sendControlMessage(ResponsiveNavCodes.NAV_TOGGLE, navLevel);
     }
 
     ngOnDestroy() {

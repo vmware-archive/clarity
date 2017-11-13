@@ -9,9 +9,9 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {IfActiveService} from "../../utils/conditional/if-active.service";
 
 import {TabsWillyWonka} from "./chocolate/tabs-willy-wonka";
-import {Tab} from "./tab";
+import {TabsService} from "./providers/tabs.service";
+import {ClrTab} from "./tab";
 import {TABS_ID_PROVIDER} from "./tabs-id.provider";
-import {TabsService} from "./tabs-service";
 import {ClrTabsModule} from "./tabs.module";
 
 @Component({
@@ -23,7 +23,7 @@ import {ClrTabsModule} from "./tabs.module";
     `
 })
 class TestComponent {
-    @ViewChild(Tab) tabInstance: Tab;
+    @ViewChild(ClrTab) tabInstance: ClrTab;
 }
 
 describe("Tab", () => {

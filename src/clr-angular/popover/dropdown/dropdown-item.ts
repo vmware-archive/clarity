@@ -5,12 +5,12 @@
  */
 import {Directive, ElementRef, HostListener} from "@angular/core";
 
-import {Dropdown} from "./dropdown";
+import {ClrDropdown} from "./dropdown";
 import {RootDropdownService} from "./providers/dropdown.service";
 
 @Directive({selector: "[clrDropdownItem]", host: {"[class.dropdown-item]": "true"}})
-export class DropdownItem {
-    constructor(private dropdown: Dropdown, private el: ElementRef, private _dropdownService: RootDropdownService) {}
+export class ClrDropdownItem {
+    constructor(private dropdown: ClrDropdown, private el: ElementRef, private _dropdownService: RootDropdownService) {}
 
     @HostListener("click")
     onDropdownItemClick(): void {

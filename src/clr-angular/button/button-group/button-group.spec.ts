@@ -7,14 +7,14 @@
 import {Component, ViewChild} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import {ButtonGroup} from "./button-group";
+import {ClrButtonGroup} from "./button-group";
 import {ClrButtonGroupModule} from "./button-group.module";
 
 export default function(): void {
     describe("Button Group", () => {
         let fixture: ComponentFixture<any>;
         let compiled: any;
-        let testBtnGroup: ButtonGroup;
+        let testBtnGroup: ClrButtonGroup;
 
         beforeEach(() => {
             TestBed.configureTestingModule({
@@ -479,7 +479,7 @@ export default function(): void {
     `
 })
 class BtnGroupInlineViewContainer {
-    @ViewChild(ButtonGroup) btnGroup: ButtonGroup;
+    @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
 }
 
 @Component({
@@ -494,7 +494,7 @@ class BtnGroupInlineViewContainer {
     `
 })
 class BtnGroupBothViewContainersTest {
-    @ViewChild(ButtonGroup) btnGroup: ButtonGroup;
+    @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
 }
 
 @Component({
@@ -509,7 +509,7 @@ class BtnGroupBothViewContainersTest {
     `
 })
 class BtnGroupFlipTest1 {
-    @ViewChild(ButtonGroup) btnGroup: ButtonGroup;
+    @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
 
     flip: boolean = false;
 }
@@ -526,7 +526,7 @@ class BtnGroupFlipTest1 {
     `
 })
 class BtnGroupFlipTest2 {
-    @ViewChild(ButtonGroup) btnGroup: ButtonGroup;
+    @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
 
     flip: boolean = false;
 }
@@ -543,7 +543,7 @@ class BtnGroupFlipTest2 {
     `
 })
 class BtnGroupProjectionUpdateTest {
-    @ViewChild(ButtonGroup) btnGroup: ButtonGroup;
+    @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
 
     show: boolean = true;
 }
@@ -561,7 +561,7 @@ class BtnGroupProjectionUpdateTest {
     `
 })
 class BtnGroupMenuViewContainer {
-    @ViewChild(ButtonGroup) btnGroup: ButtonGroup;
+    @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
 }
 
 
@@ -589,6 +589,6 @@ class BtnGroupMenuViewContainer {
     `
 })
 class BtnGroupEHCAIWCTest {
-    @ViewChild("btnGroup1") btnGroup1: ButtonGroup;
-    @ViewChild("btnGroup2") btnGroup2: ButtonGroup;
+    @ViewChild("btnGroup1") btnGroup1: ClrButtonGroup;
+    @ViewChild("btnGroup2") btnGroup2: ClrButtonGroup;
 }

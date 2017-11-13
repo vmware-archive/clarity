@@ -11,8 +11,8 @@ import {Expand} from "../../utils/expand/providers/expand";
 import {LoadingListener} from "../../utils/loading/loading-listener";
 
 import {DatagridWillyWonka} from "./chocolate/datagrid-willy-wonka";
-import {DatagridHideableColumn} from "./datagrid-hideable-column";
-import {DatagridRow} from "./datagrid-row";
+import {DatagridHideableColumnModel} from "./datagrid-hideable-column.model";
+import {ClrDatagridRow} from "./datagrid-row";
 import {TestContext} from "./helpers.spec";
 import {FiltersProvider} from "./providers/filters";
 import {ExpandableRowsCount} from "./providers/global-expandable-rows";
@@ -32,13 +32,13 @@ const PROVIDERS = [
 ];
 
 export default function(): void {
-    describe("DatagridRow component", function() {
+    describe("ClrDatagridRow component", function() {
         describe("View", function() {
             // Until we can properly type "this"
-            let context: TestContext<DatagridRow, FullTest>;
+            let context: TestContext<ClrDatagridRow, FullTest>;
 
             beforeEach(function() {
-                context = this.create(DatagridRow, FullTest, PROVIDERS);
+                context = this.create(ClrDatagridRow, FullTest, PROVIDERS);
             });
 
             it("projects content", function() {
@@ -65,11 +65,11 @@ export default function(): void {
 
         describe("Selection", function() {
             // Until we can properly type "this"
-            let context: TestContext<DatagridRow, FullTest>;
+            let context: TestContext<ClrDatagridRow, FullTest>;
             let selectionProvider: Selection;
 
             beforeEach(function() {
-                context = this.create(DatagridRow, FullTest, PROVIDERS);
+                context = this.create(ClrDatagridRow, FullTest, PROVIDERS);
                 selectionProvider = TestBed.get(Selection);
             });
 
@@ -221,11 +221,11 @@ export default function(): void {
 
         describe("Expand/Collapse", function() {
             // Until we can properly type "this"
-            let context: TestContext<DatagridRow, ExpandTest>;
+            let context: TestContext<ClrDatagridRow, ExpandTest>;
             let expand: Expand;
 
             beforeEach(function() {
-                context = this.create(DatagridRow, ExpandTest, PROVIDERS);
+                context = this.create(ClrDatagridRow, ExpandTest, PROVIDERS);
                 context.detectChanges();
                 expand = context.getClarityProvider(Expand);
             });
@@ -306,11 +306,11 @@ export default function(): void {
         });
 
         describe("Hide/Show", function() {
-            let context: TestContext<DatagridRow, ExpandTest>;
+            let context: TestContext<ClrDatagridRow, ExpandTest>;
             let hideableColumnService: HideableColumnService;
 
             beforeEach(function() {
-                context = this.create(DatagridRow, HideShowTest, PROVIDERS);
+                context = this.create(ClrDatagridRow, HideShowTest, PROVIDERS);
                 hideableColumnService = context.getClarityProvider(HideableColumnService);
             });
 
@@ -319,9 +319,9 @@ export default function(): void {
                 spyOn(context.clarityDirective, "updateCellsForColumns");
                 hideableColumnService = context.getClarityProvider(HideableColumnService);
 
-                const hiddenColumns: DatagridHideableColumn[] = [
-                    new DatagridHideableColumn(null, "dg-col-0", false),
-                    new DatagridHideableColumn(null, "dg-col-1", true)
+                const hiddenColumns: DatagridHideableColumnModel[] = [
+                    new DatagridHideableColumnModel(null, "dg-col-0", false),
+                    new DatagridHideableColumnModel(null, "dg-col-1", true)
                 ];
 
                 hideableColumnService.updateColumnList(hiddenColumns);

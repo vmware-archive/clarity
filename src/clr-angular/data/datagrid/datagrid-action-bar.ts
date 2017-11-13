@@ -12,4 +12,4 @@ import {Component} from "@angular/core";
     `,
     host: {"[class.datagrid-action-bar]": "true"}
 })
-export class DatagridActionBar {}
+export class ClrDatagridActionBar {}

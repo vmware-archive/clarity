@@ -24,7 +24,7 @@ const SIZES: string[] = ["xs", "sm", "md", "lg"];
         "[style.opacity]": "1"
     }
 })
-export class TooltipContent extends AbstractPopover {
+export class ClrTooltipContent extends AbstractPopover {
     constructor(injector: Injector, @Optional() @Inject(POPOVER_HOST_ANCHOR) parentHost: ElementRef) {
         if (!parentHost) {
             throw new Error("clr-tooltip-content should only be used inside of a clr-tooltip");

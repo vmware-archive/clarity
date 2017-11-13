@@ -5,11 +5,20 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import {NgModule, Type} from "@angular/core";
 
 import {ClrIconModule} from "../../icon/icon.module";
+import {ClrMainContainer} from "./main-container";
 
-import {LAYOUT_DIRECTIVES} from "./index";
+export const CLR_LAYOUT_DIRECTIVES: Type<any>[] = [ClrMainContainer];
 
-@NgModule({imports: [CommonModule, ClrIconModule], declarations: [LAYOUT_DIRECTIVES], exports: [LAYOUT_DIRECTIVES]})
+@NgModule(
+    {imports: [CommonModule, ClrIconModule], declarations: [CLR_LAYOUT_DIRECTIVES], exports: [CLR_LAYOUT_DIRECTIVES]})
 export class ClrMainContainerModule {}
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export const MainContainer = ClrMainContainer;
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const LAYOUT_DIRECTIVES = CLR_LAYOUT_DIRECTIVES;

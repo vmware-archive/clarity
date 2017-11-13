@@ -5,9 +5,10 @@
  */
 import {Component, EventEmitter, Input, Output} from "@angular/core";
 
-import {Point, PopoverOptions} from "../../popover/common/popover";
+import {Point} from "../../popover/common/popover";
+import {PopoverOptions} from "../../popover/common/popover-options.interface";
 
-import {Filter} from "./interfaces/filter";
+import {ClrDatagridFilterInterface} from "./interfaces/filter.interface";
 import {CustomFilter} from "./providers/custom-filter";
 import {FiltersProvider, RegisteredFilter} from "./providers/filters";
 import {DatagridFilterRegistrar} from "./utils/datagrid-filter-registrar";
@@ -21,7 +22,7 @@ import {DatagridFilterRegistrar} from "./utils/datagrid-filter-registrar";
 @Component({
     selector: "clr-dg-filter",
     // We register this component as a CustomFilter, for the parent column to detect it.
-    providers: [{provide: CustomFilter, useExisting: DatagridFilter}],
+    providers: [{provide: CustomFilter, useExisting: ClrDatagridFilter}],
     template: `
         <button #anchor class="datagrid-filter-toggle" (click)="toggle()"
             [class.datagrid-filter-open]="open" [class.datagrid-filtered]="active"
@@ -44,7 +45,8 @@ import {DatagridFilterRegistrar} from "./utils/datagrid-filter-registrar";
         </ng-template>
     `
 })
-export class DatagridFilter extends DatagridFilterRegistrar<Filter<any>> implements CustomFilter {
+export class ClrDatagridFilter extends DatagridFilterRegistrar<ClrDatagridFilterInterface<any>> implements
+    CustomFilter {
     constructor(_filters: FiltersProvider) {
         super(_filters);
     }
@@ -72,7 +74,7 @@ export class DatagridFilter extends DatagridFilterRegistrar<Filter<any>> impleme
     @Output("clrDgFilterOpenChange") public openChanged = new EventEmitter<boolean>(false);
 
     @Input("clrDgFilter")
-    public set customFilter(filter: Filter<any>|RegisteredFilter<Filter<any>>) {
+    public set customFilter(filter: ClrDatagridFilterInterface<any>|RegisteredFilter<ClrDatagridFilterInterface<any>>) {
         this.setFilter(filter);
     }
 

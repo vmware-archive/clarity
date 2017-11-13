@@ -5,11 +5,11 @@
  */
 
 import {Component, ViewChild} from "@angular/core";
-import {Wizard} from "../../clr-angular/wizard/wizard";
+import {ClrWizard} from "../../clr-angular/wizard/wizard";
 
 @Component({selector: "clr-wizard-skip-page", templateUrl: "./wizard-skip-page.demo.html"})
 export class WizardSkipPageDemo {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     skipStepTwo: boolean = true;
     _open: boolean = false;
 
@@ -26,7 +26,7 @@ export class WizardSkipPageDemo {
     ...
 })
 export class WizardSkipPageDemo {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     skipStepTwo: boolean = true;
     _open: boolean = false;
 

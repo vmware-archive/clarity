@@ -77,7 +77,7 @@ import {GHOST_PAGE_ANIMATION} from "./utils/ghost-page-animations";
                 ])
     ]
 })
-export class Modal implements OnChanges, OnDestroy {
+export class ClrModal implements OnChanges, OnDestroy {
     @ViewChild(FocusTrapDirective) focusTrap: FocusTrapDirective;
     @HostBinding("class.open") @Input("clrModalOpen") _open: boolean = false;
     @Output("clrModalOpenChange") _openChanged: EventEmitter<boolean> = new EventEmitter<boolean>(false);

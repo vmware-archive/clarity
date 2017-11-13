@@ -7,7 +7,7 @@
 import {Component, DebugElement, ViewChild} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import {WizardHeaderAction} from "./wizard-header-action";
+import {ClrWizardHeaderAction} from "./wizard-header-action";
 import {ClrWizardModule} from "./wizard.module";
 
 @Component({
@@ -26,11 +26,11 @@ class TestComponent {
     myId: string = "ohai";
     disableMe: boolean = false;
 
-    @ViewChild("unset") plainDefaultHA: WizardHeaderAction;
-    @ViewChild("disabled") disabledHA: WizardHeaderAction;
-    @ViewChild("identified") idHA: WizardHeaderAction;
-    @ViewChild("projected") projectedHA: WizardHeaderAction;
-    @ViewChild("clicker") clickedHA: WizardHeaderAction;
+    @ViewChild("unset") plainDefaultHA: ClrWizardHeaderAction;
+    @ViewChild("disabled") disabledHA: ClrWizardHeaderAction;
+    @ViewChild("identified") idHA: ClrWizardHeaderAction;
+    @ViewChild("projected") projectedHA: ClrWizardHeaderAction;
+    @ViewChild("clicker") clickedHA: ClrWizardHeaderAction;
 
     private _lastClickedHeaderAction: string = "";
     public get lastClickedHeaderAction(): string {
@@ -82,7 +82,7 @@ export default function(): void {
 
             describe("click", () => {
                 let onClickSpy: any;
-                let clicker: WizardHeaderAction;
+                let clicker: ClrWizardHeaderAction;
 
                 beforeEach(() => {
                     clicker = testComponent.clickedHA;
@@ -124,7 +124,7 @@ export default function(): void {
             });
 
             describe("id", () => {
-                let haToTest: WizardHeaderAction;
+                let haToTest: ClrWizardHeaderAction;
                 const haToTestDefaultId = "clr-wizard-header-action-ohai";
 
                 beforeEach(() => {

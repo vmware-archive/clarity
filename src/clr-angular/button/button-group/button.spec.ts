@@ -7,15 +7,15 @@
 import {Component, DebugElement} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import {ButtonInGroupService} from "../providers/buttonInGroup.service";
-import {Button} from "./button";
+import {ButtonInGroupService} from "../providers/button-in-group.service";
+import {ClrButton} from "./button";
 import {ClrButtonGroupModule} from "./button-group.module";
 
 
 export default function(): void {
     describe("Buttons", () => {
         let fixture: ComponentFixture<any>;
-        const buttons: Button[] = [];
+        const buttons: ClrButton[] = [];
 
         beforeEach(() => {
             TestBed.configureTestingModule({
@@ -28,7 +28,7 @@ export default function(): void {
             fixture.detectChanges();
             const projection: DebugElement[] = fixture.debugElement.children;
             projection.forEach((debugElement) => {
-                buttons.push(<Button>debugElement.componentInstance);
+                buttons.push(<ClrButton>debugElement.componentInstance);
             });
         });
 
@@ -59,7 +59,7 @@ export default function(): void {
         });
 
         it("notifies when the clrInMenu input is updated with the help of the service", () => {
-            let mockButton: Button;
+            let mockButton: ClrButton;
             buttons.forEach((updatedButton) => {
                 updatedButton.buttonInGroupService.changes.subscribe((button) => {
                     mockButton = button;

@@ -21,10 +21,10 @@ import {ROOT_DROPDOWN_PROVIDER, RootDropdownService} from "./providers/dropdown.
     },
     providers: [IfOpenService, ROOT_DROPDOWN_PROVIDER, {provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef}]
 })
-export class Dropdown implements OnDestroy {
+export class ClrDropdown implements OnDestroy {
     private _subscription: Subscription;
 
-    constructor(@SkipSelf() @Optional() public parent: Dropdown, public ifOpenService: IfOpenService,
+    constructor(@SkipSelf() @Optional() public parent: ClrDropdown, public ifOpenService: IfOpenService,
                 dropdownService: RootDropdownService) {
         this._subscription = dropdownService.changes.subscribe(value => this.ifOpenService.open = value);
     }

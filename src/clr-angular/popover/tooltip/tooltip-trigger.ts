@@ -7,7 +7,7 @@ import {Directive, HostListener} from "@angular/core";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 
 @Directive({selector: "[clrTooltipTrigger]", host: {"[attr.tabindex]": "0"}})
-export class TooltipTrigger {
+export class ClrTooltipTrigger {
     constructor(private ifOpenService: IfOpenService) {}
 
     @HostListener("mouseenter") @HostListener("focus")

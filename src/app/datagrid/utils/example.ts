@@ -5,7 +5,7 @@
  */
 import {AfterViewInit, Component, Input, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../../clr-angular/code/syntax-highlight/syntax-highlight";
+import {ClrCodeHighlight} from "../../../clr-angular/code/syntax-highlight/syntax-highlight";
 
 @Component({
     selector: "clr-example",
@@ -20,7 +20,7 @@ import {CodeHighlight} from "../../../clr-angular/code/syntax-highlight/syntax-h
     `]
 })
 export class Example implements AfterViewInit {
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
     @Input("clrCode") public code: string;
     @Input("clrLanguage") public language: string;

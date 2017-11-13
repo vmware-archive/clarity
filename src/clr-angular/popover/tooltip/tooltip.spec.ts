@@ -6,16 +6,16 @@
 
 import {Component} from "@angular/core";
 import {addHelpers, TestContext} from "../../data/datagrid/helpers.spec";
-import {Tooltip} from "./tooltip";
+import {ClrTooltip} from "./tooltip";
 
 describe("Tooltip component", function() {
     addHelpers();
 
     describe("Simple", function() {
-        let context: TestContext<Tooltip, SimpleTest>;
+        let context: TestContext<ClrTooltip, SimpleTest>;
 
         beforeEach(function() {
-            context = this.create(Tooltip, SimpleTest);
+            context = this.create(ClrTooltip, SimpleTest);
         });
 
         it("projects anchor content", function() {

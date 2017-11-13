@@ -8,7 +8,7 @@ import VerticalNavGroupRegistrationServiceSpecs from "./providers/vertical-nav-g
 import VerticalNavIconServiceSpecs from "./providers/vertical-nav-icon.service.spec";
 import VerticalNavServiceSpecs from "./providers/vertical-nav.service.spec";
 import VerticalNavGroupSpecs from "./vertical-nav-group.spec";
-import VerticalNavIconDirectiveSpecs from "./vertical-nav-icon.directive.spec";
+import VerticalNavIconDirectiveSpecs from "./vertical-nav-icon.spec";
 import VerticalNavLinkSpecs from "./vertical-nav-link.spec";
 import VerticalNavSpecs from "./vertical-nav.spec";
 

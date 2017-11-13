@@ -9,15 +9,15 @@ import {Component} from "@angular/core";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {TestContext} from "../../utils/testing/helpers.spec";
 
-import {TooltipTrigger} from "./tooltip-trigger";
+import {ClrTooltipTrigger} from "./tooltip-trigger";
 
 export default function(): void {
     // FIXME: this doesn't even run yet, we don't have an all.spec for tooltips.
     describe("TooltipContent component", function() {
-        let context: TestContext<TooltipTrigger, SimpleTest>;
+        let context: TestContext<ClrTooltipTrigger, SimpleTest>;
 
         beforeEach(function() {
-            context = this.create(TooltipTrigger, SimpleTest, [IfOpenService]);
+            context = this.create(ClrTooltipTrigger, SimpleTest, [IfOpenService]);
             context.detectChanges();
         });
 

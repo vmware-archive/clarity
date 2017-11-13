@@ -8,31 +8,31 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {ClrEmphasisModule} from "../emphasis.module";
 
-import {Alert} from "./alert";
-import {Alerts} from "./alerts";
-import {MultiAlertService} from "./providers/multi-alert-service";
+import {ClrAlert} from "./alert";
+import {ClrAlerts} from "./alerts";
+import {MultiAlertService} from "./providers/multi-alert.service";
 
-describe("Alerts component", function() {
+describe("ClrAlerts component", function() {
     describe("Typescript API", function() {
-        let component: Alerts;
+        let component: ClrAlerts;
         let service: MultiAlertService;
-        let queryList: QueryList<Alert>;
+        let queryList: QueryList<ClrAlert>;
 
         beforeEach(function() {
             service = new MultiAlertService();
 
             TestBed.configureTestingModule({imports: [ClrEmphasisModule]});
 
-            const alertFixture = TestBed.createComponent(Alert);
+            const alertFixture = TestBed.createComponent(ClrAlert);
             this.alert = alertFixture.componentInstance;
 
-            const anotherAlertFixture = TestBed.createComponent(Alert);
+            const anotherAlertFixture = TestBed.createComponent(ClrAlert);
             this.anotherAlert = anotherAlertFixture.componentInstance;
 
-            queryList = new QueryList<Alert>();
+            queryList = new QueryList<ClrAlert>();
             queryList.reset([this.alert, this.anotherAlert]);
             service.manage(queryList);
-            component = new Alerts(service);
+            component = new ClrAlerts(service);
         });
 
         it("knows the current alert", function() {
@@ -256,8 +256,8 @@ describe("Alerts component", function() {
    `
 })
 class TestComponent {
-    @ViewChild(Alerts) public alertsInstance: Alerts;
-    @ViewChildren(Alert) public alertInstances: QueryList<Alert>;
+    @ViewChild(ClrAlerts) public alertsInstance: ClrAlerts;
+    @ViewChildren(ClrAlert) public alertInstances: QueryList<ClrAlert>;
 
     currentAlertIndex: number = 0;
 }
@@ -291,10 +291,10 @@ class TestComponent {
    `
 })
 class TestAlertInstance {
-    @ViewChild(Alerts) public alertsInstance: Alerts;
-    @ViewChildren(Alert) public alertInstances: QueryList<Alert>;
+    @ViewChild(ClrAlerts) public alertsInstance: ClrAlerts;
+    @ViewChildren(ClrAlert) public alertInstances: QueryList<ClrAlert>;
 
-    public currentAlert: Alert;
+    public currentAlert: ClrAlert;
 }
 
 @Component({
@@ -312,8 +312,8 @@ class TestAlertInstance {
    `
 })
 class DynamicAlerts {
-    @ViewChild(Alerts) public alertsInstance: Alerts;
-    @ViewChildren(Alert) public alertInstances: QueryList<Alert>;
+    @ViewChild(ClrAlerts) public alertsInstance: ClrAlerts;
+    @ViewChildren(ClrAlert) public alertInstances: QueryList<ClrAlert>;
 
     dynamicAlerts: Array<any>;
 

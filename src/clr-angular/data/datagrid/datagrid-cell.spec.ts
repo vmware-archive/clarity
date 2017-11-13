@@ -5,19 +5,19 @@
  */
 import {Component} from "@angular/core";
 
-import {DatagridCell} from "./datagrid-cell";
-import {DatagridHideableColumn} from "./datagrid-hideable-column";
+import {ClrDatagridCell} from "./datagrid-cell";
+import {DatagridHideableColumnModel} from "./datagrid-hideable-column.model";
 import {TestContext} from "./helpers.spec";
 import {HideableColumnService} from "./providers/hideable-column.service";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 export default function(): void {
-    describe("DatagridCell component", function() {
-        let context: TestContext<DatagridCell, SimpleTest>;
+    describe("ClrDatagridCell component", function() {
+        let context: TestContext<ClrDatagridCell, SimpleTest>;
         let hideableColumnService: HideableColumnService;
 
         beforeEach(function() {
-            context = this.create(DatagridCell, SimpleTest, [DatagridRenderOrganizer, HideableColumnService]);
+            context = this.create(ClrDatagridCell, SimpleTest, [DatagridRenderOrganizer, HideableColumnService]);
         });
 
         it("projects content", function() {
@@ -29,7 +29,7 @@ export default function(): void {
         });
 
         it("adds the .datagrid-cell--hidden class to the host", function() {
-            const testColumn: DatagridHideableColumn[] = [new DatagridHideableColumn(null, "dg-col-0", true)];
+            const testColumn: DatagridHideableColumnModel[] = [new DatagridHideableColumnModel(null, "dg-col-0", true)];
             hideableColumnService = context.getClarityProvider(HideableColumnService);
             hideableColumnService.updateColumnList(testColumn);
             context.clarityDirective.id = "dg-col-0";

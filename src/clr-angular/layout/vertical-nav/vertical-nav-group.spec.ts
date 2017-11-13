@@ -15,7 +15,7 @@ import {Expand} from "../../utils/expand/providers/expand";
 
 import {VerticalNavGroupRegistrationService} from "./providers/vertical-nav-group-registration.service";
 import {VerticalNavService} from "./providers/vertical-nav.service";
-import {VerticalNavGroup} from "./vertical-nav-group";
+import {ClrVerticalNavGroup} from "./vertical-nav-group";
 import {ClrVerticalNavModule} from "./vertical-nav.module";
 
 export default function(): void {
@@ -32,7 +32,7 @@ export default function(): void {
         });
 
         describe("Nav Group Internals", () => {
-            let navGroup: VerticalNavGroup;
+            let navGroup: ClrVerticalNavGroup;
             let expandService: Expand;
             let vertNavService: VerticalNavService;
 
@@ -41,7 +41,7 @@ export default function(): void {
                 fixture.detectChanges();
                 compiled = fixture.nativeElement;
                 navGroup = fixture.componentInstance.navGroup;
-                expandService = fixture.debugElement.query(By.directive(VerticalNavGroup)).injector.get(Expand);
+                expandService = fixture.debugElement.query(By.directive(ClrVerticalNavGroup)).injector.get(Expand);
                 vertNavService = TestBed.get(VerticalNavService);
             });
 
@@ -153,7 +153,7 @@ export default function(): void {
         });
 
         describe("Template API", () => {
-            let navGroup: VerticalNavGroup;
+            let navGroup: ClrVerticalNavGroup;
             let expandService: Expand;
 
             beforeEach(() => {
@@ -161,7 +161,7 @@ export default function(): void {
                 fixture.detectChanges();
                 compiled = fixture.nativeElement;
                 navGroup = fixture.componentInstance.navGroup;
-                expandService = fixture.debugElement.query(By.directive(VerticalNavGroup)).injector.get(Expand);
+                expandService = fixture.debugElement.query(By.directive(ClrVerticalNavGroup)).injector.get(Expand);
             });
 
             afterEach(() => {
@@ -204,7 +204,7 @@ export default function(): void {
         });
 
         describe("View Basics", () => {
-            let navGroup: VerticalNavGroup;
+            let navGroup: ClrVerticalNavGroup;
             let expandService: Expand;
 
             beforeEach(() => {
@@ -212,7 +212,7 @@ export default function(): void {
                 fixture.detectChanges();
                 compiled = fixture.nativeElement;
                 navGroup = fixture.componentInstance.navGroup;
-                expandService = fixture.debugElement.query(By.directive(VerticalNavGroup)).injector.get(Expand);
+                expandService = fixture.debugElement.query(By.directive(ClrVerticalNavGroup)).injector.get(Expand);
             });
 
             afterEach(() => {
@@ -248,7 +248,7 @@ export default function(): void {
     `
 })
 class GroupInternalsTestComponent {
-    @ViewChild("group") navGroup: VerticalNavGroup;
+    @ViewChild("group") navGroup: ClrVerticalNavGroup;
 }
 
 
@@ -267,7 +267,7 @@ class GroupInternalsTestComponent {
     `
 })
 class IfExpandedTestComponent {
-    @ViewChild("group") navGroup: VerticalNavGroup;
+    @ViewChild("group") navGroup: ClrVerticalNavGroup;
 }
 
 @Component({
@@ -285,7 +285,7 @@ class IfExpandedTestComponent {
     `
 })
 class TemplateAPITestComponent {
-    @ViewChild("group") navGroup: VerticalNavGroup;
+    @ViewChild("group") navGroup: ClrVerticalNavGroup;
 
     expanded: boolean = false;
 

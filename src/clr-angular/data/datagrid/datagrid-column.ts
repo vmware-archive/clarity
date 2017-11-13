@@ -9,9 +9,9 @@ import {Subscription} from "rxjs/Subscription";
 import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
 import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
 import {DatagridStringFilterImpl} from "./built-in/filters/datagrid-string-filter-impl";
-import {DatagridHideableColumn} from "./datagrid-hideable-column";
-import {Comparator} from "./interfaces/comparator";
-import {SortOrder} from "./interfaces/sort-order";
+import {DatagridHideableColumnModel} from "./datagrid-hideable-column.model";
+import {ClrDatagridComparatorInterface} from "./interfaces/comparator.interface";
+import {ClrDatagridSortOrder} from "./interfaces/sort-order";
 import {CustomFilter} from "./providers/custom-filter";
 import {DragDispatcher} from "./providers/drag-dispatcher";
 import {FiltersProvider} from "./providers/filters";
@@ -52,13 +52,13 @@ let nbCount: number = 0;
     host: {"[class.datagrid-column]": "true", "[class.datagrid-column--hidden]": "hidden"}
 })
 
-export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilterImpl> {
+export class ClrDatagridColumn extends DatagridFilterRegistrar<DatagridStringFilterImpl> {
     constructor(private _sort: Sort, filters: FiltersProvider, private _dragDispatcher: DragDispatcher) {
         super(filters);
         this._sortSubscription = _sort.change.subscribe(sort => {
             // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
-            if (this.sortOrder !== SortOrder.Unsorted && sort.comparator !== this._sortBy) {
-                this._sortOrder = SortOrder.Unsorted;
+            if (this.sortOrder !== ClrDatagridSortOrder.UNSORTED && sort.comparator !== this._sortBy) {
+                this._sortOrder = ClrDatagridSortOrder.UNSORTED;
                 this.sortOrderChange.emit(this._sortOrder);
             }
             // deprecated: to be removed - START
@@ -78,8 +78,8 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
      * @property columnId
      *
      * @description
-     * A DatagridColumn class variable that holds the number of DatagridColumn instances for a Datagrid.
-     * It is used to generate a unique id for the DatagridColumn instance.
+     * A ClrDatagridColumn class variable that holds the number of ClrDatagridColumn instances for a Datagrid.
+     * It is used to generate a unique id for the ClrDatagridColumn instance.
      *
      */
     public columnId: string;
@@ -89,7 +89,8 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
      *
      * @description
      * A property that allows the column to be hidden / shown with css
-     * Note the default allows the DatagridColumn to have an *ngIf on it. (EHCAIWC - will occur if its not initialized)
+     * Note the default allows the ClrDatagridColumn to have an *ngIf on it. (EHCAIWC - will occur if its not
+     * initialized)
      *
      * @default false
      *
@@ -140,17 +141,17 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
     }
 
     /**
-     * Comparator to use when sorting the column
+     * ClrDatagridComparatorInterface to use when sorting the column
      */
 
-    private _sortBy: Comparator<any>;
+    private _sortBy: ClrDatagridComparatorInterface<any>;
 
     public get sortBy() {
         return this._sortBy;
     }
 
     @Input("clrDgSortBy")
-    public set sortBy(comparator: Comparator<any>|string) {
+    public set sortBy(comparator: ClrDatagridComparatorInterface<any>|string) {
         if (typeof comparator === "string") {
             this._sortBy = new DatagridPropertyComparator(comparator);
         } else {
@@ -207,13 +208,13 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
     /**
      * Indicates how the column is currently sorted
      */
-    private _sortOrder: SortOrder = SortOrder.Unsorted;
+    private _sortOrder: ClrDatagridSortOrder = ClrDatagridSortOrder.UNSORTED;
     public get sortOrder() {
         return this._sortOrder;
     }
 
     @Input("clrDgSortOrder")
-    public set sortOrder(value: SortOrder) {
+    public set sortOrder(value: ClrDatagridSortOrder) {
         if (typeof value === "undefined") {
             return;
         }
@@ -226,19 +227,19 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
         switch (value) {
             // the Unsorted case happens when the current state is either Asc or Desc
             default:
-            case SortOrder.Unsorted:
+            case ClrDatagridSortOrder.UNSORTED:
                 this._sort.clear();
                 break;
-            case SortOrder.Asc:
+            case ClrDatagridSortOrder.ASC:
                 this.sort(false);
                 break;
-            case SortOrder.Desc:
+            case ClrDatagridSortOrder.DESC:
                 this.sort(true);
                 break;
         }
     }
 
-    @Output("clrDgSortOrderChange") public sortOrderChange = new EventEmitter<SortOrder>();
+    @Output("clrDgSortOrderChange") public sortOrderChange = new EventEmitter<ClrDatagridSortOrder>();
 
     /**
      * Sorts the datagrid based on this column
@@ -251,7 +252,7 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
         this._sort.toggle(this._sortBy, reverse);
 
         // setting the private variable to not retrigger the setter logic
-        this._sortOrder = this._sort.reverse ? SortOrder.Desc : SortOrder.Asc;
+        this._sortOrder = this._sort.reverse ? ClrDatagridSortOrder.DESC : ClrDatagridSortOrder.ASC;
         this.sortOrderChange.emit(this._sortOrder);
 
         // deprecated: to be removed - START
@@ -269,7 +270,7 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
         if (typeof this.sortOrder === "undefined") {
             return this.sorted && !this._sort.reverse;
         } else {
-            return this.sortOrder === SortOrder.Asc;
+            return this.sortOrder === ClrDatagridSortOrder.ASC;
         }
         // deprecated: if condition to be removed - END
     }
@@ -283,7 +284,7 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
         if (typeof this.sortOrder === "undefined") {
             return this.sorted && this._sort.reverse;
         } else {
-            return this.sortOrder === SortOrder.Desc;
+            return this.sortOrder === ClrDatagridSortOrder.DESC;
         }
         // deprecated: if condition to be removed - END
     }
@@ -326,9 +327,9 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
      * @property hideable
      *
      * @description
-     * When a column is hideable this is defined with an instance of DatagridHideableColumn.
+     * When a column is hideable this is defined with an instance of DatagridHideableColumnModel.
      * When its not hideable should be undefined.
      *
      */
-    public hideable: DatagridHideableColumn;
+    public hideable: DatagridHideableColumnModel;
 }

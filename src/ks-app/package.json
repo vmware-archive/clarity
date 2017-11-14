@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "@webcomponents/custom-elements": "1.0.0",
-    "clarity-angular": "file:../../dist/clarity-angular/clarity-angular-0.10.12.tgz",
+    "clarity-angular": "file:../../dist/clarity-angular/clarity-angular-0.10.13.tgz",
     "clarity-icons": "file:../../dist/clarity-icons",
     "clarity-ui": "file:../../dist/clarity-ui",
     "core-js": "^2.4.1",

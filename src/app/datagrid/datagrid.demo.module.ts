@@ -13,6 +13,7 @@ import {UtilsDemoModule} from "../_utils/utils.module";
 import {DatagridBasicStructureDemo} from "./basic-structure/basic-structure";
 import {DatagridBindingPropertiesDemo} from "./binding-properties/binding-properties";
 import {DatagridColumnSizingDemo} from "./column-sizing/column-sizing";
+import {DatagridCompactDemo} from "./compact/compact";
 import {DatagridCustomRenderingDemo} from "./custom-rendering/custom-rendering";
 import {DatagridDemo} from "./datagrid.demo";
 import {ROUTING} from "./datagrid.demo.routing";
@@ -45,6 +46,7 @@ import {Example} from "./utils/example";
         DatagridDemo,
         DatagridBasicStructureDemo,
         DatagridBindingPropertiesDemo,
+        DatagridCompactDemo,
         DatagridCustomRenderingDemo,
         DatagridFilteringDemo,
         DatagridFullDemo,
@@ -74,6 +76,7 @@ import {Example} from "./utils/example";
         DatagridDemo,
         DatagridBasicStructureDemo,
         DatagridBindingPropertiesDemo,
+        DatagridCompactDemo,
         DatagridCustomRenderingDemo,
         DatagridFilteringDemo,
         DatagridFullDemo,

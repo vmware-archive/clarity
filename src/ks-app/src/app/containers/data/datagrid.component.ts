@@ -22,6 +22,7 @@ export class KSDatagrid {
     pokemonComparator = new PokemonComparator();
     pokemonFilter = new PokemonFilter();
     replace: boolean = false;
+    isCompact: boolean = false;
     selected: User[] = [];
     showDate = true;
     showId = true;

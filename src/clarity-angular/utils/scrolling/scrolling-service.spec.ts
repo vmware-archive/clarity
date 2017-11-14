@@ -3,8 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import {DOCUMENT} from "@angular/common";
 import {inject} from "@angular/core/testing";
-import {DOCUMENT} from "@angular/platform-browser";
 
 import {ScrollingService} from "./scrolling-service";
 

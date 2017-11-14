@@ -2,8 +2,39 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+// Backgrounds
+$clr-table-bgcolor: $clr-white !default;
+$clr-thead-bgcolor: $clr-near-white !default;
+
+// Borders
+$clr-tablerow-bordercolor: $clr-light-gray !default;
+$clr-table-bordercolor: $clr-light-midtone-gray !default;
+$clr-table-borderwidth: $clr-default-borderwidth !default;
+$clr-table-borderstyle: $clr-table-borderwidth solid $clr-table-bordercolor !default;
+
+// Etc.
+$clr-table-fontsize: clr-getTypePropertyValueForDomElement(table_text, font-size);
+$clr-table-lineheight: 0.583333rem !default;
+$clr-table-cellpadding: 0.5rem !default;
+$clr-table-smallpadding: 0.25rem !default;
+
+$clr-table-lineheightPaddingShim: (1rem - $clr-table-lineheight)/2 !default;
+$clr-table-topcellpadding: $clr-table-cellpadding - $clr-rem-1px !default;
+$clr-table-bottomcellpadding: $clr-table-cellpadding - $clr-rem-1px !default;
+
+$clr-table-topcellpadding-cmp: $clr-table-cellpadding/2 - $clr-rem-1px !default;
+$clr-table-bottomcellpadding-cmp: $clr-table-cellpadding/2 - $clr-rem-1px !default;
+
+// Border radius of corner cells needs to be slightly less than the table's,
+// To make sure they correctly cover the whole area up to the border.
+$clr-table-cornercellradius: calc(#{$clr-default-borderradius} - 1px) !default;
+
+$clr-table--compact-rowHeight: 1rem !default;
+$clr-table--compact-verticalPadding: ($clr-table--compact-rowHeight - $clr-table-lineheight)/2 !default;
+
 // Mixin for basic table styles to be able to reuse them on non-table elements.
 @mixin basic-table($table, $thead, $tbody, $tr, $th, $td) {
+
     #{$table} {
         border-collapse: separate;
         border: $clr-table-borderstyle;
@@ -20,7 +51,6 @@
         #{$td} {
             font-size: $clr-table-fontsize;
             line-height: $clr-table-lineheight;
-
             border-top: $clr-table-borderwidth solid $clr-tablerow-bordercolor;
             padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
             text-align: center;
@@ -76,6 +106,13 @@
                     }
                 }
             }
+        }
+    }
+
+    &#{$table}-compact {
+        #{$th}, #{$td} {
+            padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);
+            padding-bottom: calc(#{$clr-table--compact-verticalPadding});
         }
     }
 }
@@ -185,21 +222,18 @@
     }
 
     .table.table-compact {
-        $table--compact-rowHeight: 1rem;
-        $table--compact-verticalPadding: ($table--compact-rowHeight - $clr-table-lineheight)/2;
-
         th, td {
             // nudge down to force row to 24px height with border
-            padding-top: calc(#{$table--compact-verticalPadding} + 1px);
-            padding-bottom: $table--compact-verticalPadding;
+            padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);
+            padding-bottom: $clr-table--compact-verticalPadding;
         }
 
         &.table-noborder {
             th, td {
                 // nudge down to force row to 24px height with border
-                padding-top: calc(#{$table--compact-verticalPadding} + 2px);
+                padding-top: calc(#{$clr-table--compact-verticalPadding} + 2px);
                 // account for now missing bottom border
-                padding-bottom: calc(#{$table--compact-verticalPadding} + 1px);
+                padding-bottom: calc(#{$clr-table--compact-verticalPadding} + 1px);
             }
         }
     }

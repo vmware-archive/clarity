@@ -1,7 +1,12 @@
 <h1>Datagrids</h1>
 <p>Datagrids are for organizing large volumes of data that users can scan, compare, and perform actions on.</p>
+
+<button class="btn btn-outline-primary" id="toggle-compact" (click)="isCompact=!isCompact">
+  Toggle Compact All
+</button>
+
 <h3>Basic with Custom Cell Rendering</h3>
-<clr-datagrid id="basic-custom-cell" [style.height.px]="279">
+<clr-datagrid [class.datagrid-compact]="isCompact" id="basic-custom-cell">
   <clr-dg-column>User ID</clr-dg-column>
   <clr-dg-column>Name</clr-dg-column>
   <clr-dg-column>Creation date</clr-dg-column>
@@ -20,7 +25,7 @@
 </clr-datagrid>
 
 <h3>Sort and Filter</h3>
-<clr-datagrid>
+<clr-datagrid [class.datagrid-compact]="isCompact">
   <clr-dg-column>User ID</clr-dg-column>
   <clr-dg-column [clrDgField]="'name'" [(clrFilterValue)]="nameFilter">Name</clr-dg-column>
   <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
@@ -42,17 +47,55 @@
   <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
 </clr-datagrid>
 
+<h3>Cells with signposts, icons, and badges</h3>
+<clr-datagrid id="datagrid-compact-with-signpost" [class.datagrid-compact]="isCompact">
+  <clr-dg-column>User ID</clr-dg-column>
+  <clr-dg-column>Name</clr-dg-column>
+  <clr-dg-column>Creation date</clr-dg-column>
+  <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
+  <clr-dg-column>Favorite color</clr-dg-column>
+
+  <clr-dg-row *ngFor="let user of nonPaginatedUsers">
+    <clr-dg-cell>
+      {{user.id}}
+      <clr-signpost>
+        <button
+          type="button"
+          class="signpost-action btn btn-small btn-link"
+          [class.active]="open"
+          clrSignpostTrigger>
+          <clr-icon shape="help-info"></clr-icon>
+        </button>
+        <clr-signpost-content *clrIfOpen [clrPosition]="'top-middle'">
+          The pokemon is strong.
+        </clr-signpost-content>
+      </clr-signpost>
+    </clr-dg-cell>
+    <clr-dg-cell>
+      {{user.name}} <clr-icon shape="user"></clr-icon>
+    </clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>{{user.pokemon.name}} <span class="badge badge-5">#{{user.pokemon.number}}</span></clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+
 <h3>Paginate and hide columns with a placeholder</h3>
 <button class="btn btn-outline-primary" id="toggle-id" (click)="showId = !showId">
   Toggle ID
 </button>
-<clr-datagrid>
+<clr-datagrid [class.datagrid-compact]="isCompact">
   <clr-dg-column *ngIf="showId">
     <ng-container *clrDgHideableColumn>
       User ID
     </ng-container>
   </clr-dg-column>
-  <clr-dg-column >
+  <clr-dg-column>
     <!--Name-->
     <ng-container *clrDgHideableColumn>
       Name
@@ -96,7 +139,7 @@
 <h3>Scroll vertically and horizontally on overflow</h3>
 <div class="card" [style.width.px]="400" id="horizontal-scrolling">
   <div class="card-block">
-    <clr-datagrid [style.height.px]="250">
+    <clr-datagrid [class.datagrid-compact]="isCompact" [style.height.px]="250">
       <clr-dg-column>User ID</clr-dg-column>
       <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
       <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
@@ -147,7 +190,7 @@
     </p>
   </div>
 </div>
-<clr-datagrid [(clrDgSingleSelected)]="singleSelected">
+<clr-datagrid [class.datagrid-compact]="isCompact" [(clrDgSingleSelected)]="singleSelected">
   <clr-dg-column>User ID</clr-dg-column>
   <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
   <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
@@ -218,7 +261,7 @@
     </p>
   </div>
 
-  <clr-datagrid [(clrDgSelected)]="selected">
+  <clr-datagrid [class.datagrid-compact]="isCompact" [(clrDgSelected)]="selected">
     <clr-dg-action-bar>
       <div class="btn-group" role="group" aria-label="Available Actions" *ngIf="selected.length > 0">
         <button type="button" class="btn btn-sm btn-secondary" (click)="onAdd()"><clr-icon shape="plus"></clr-icon> Add

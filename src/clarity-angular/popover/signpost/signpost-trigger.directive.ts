@@ -8,7 +8,7 @@ import {Subscription} from "rxjs/Subscription";
 
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 
-@Directive({selector: "[clrSignpostTrigger]"})
+@Directive({selector: "[clrSignpostTrigger]", host: {"class": "signpost-trigger"}})
 
 /*********
  *

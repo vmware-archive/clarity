@@ -369,12 +369,7 @@
             display: block;
             line-height: inherit;
             flex: 1 1 (1.5rem - (2 * $clr-rem-1px)); // can't use calc() in flex. #thanksIE!
-
-            // Has a possible sibling in the .column-switch-wrapper
-            + .column-switch-wrapper {
-                flex: 1 1 100%;
-                margin-left: 0.083333rem;
-            }
+            margin-right: 0.083333rem; // Space for the instance when a hideable column toggle is next to it.
 
             label {
                 color: unset;
@@ -653,25 +648,23 @@
         }
 
         .column-switch-wrapper {
-            // Has a possible sibling in the .datagrid-foot-select.checkbox container
-            flex: 1 1 1rem;
+            // We need this container to fill the space between itself and the right side of the footer
+            flex: 1 1 100%;
 
+            &.active {
+                .column-toggle--action {
+                    color: $clr-action-blue;
+                }
+            }
             .column-toggle--action {
-
                 // I'm overriding .btn/.btn-link here but am not confident this is the correct way to do it.
                 min-width: 0.75rem;
                 padding-left: 0;
                 padding-right: 0;
 
-                clr-icon {
-                    color: $clr-dark-midtone-gray;
-                    &:hover {
-                        color: $clr-action-blue;
-                    }
-
-                    &--active, .active {
-                        color: $clr-action-blue;
-                    }
+                color: $clr-dark-midtone-gray;
+                &:hover {
+                    color: $clr-action-blue;
                 }
             }
 

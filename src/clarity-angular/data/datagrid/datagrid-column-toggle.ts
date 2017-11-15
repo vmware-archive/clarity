@@ -62,7 +62,7 @@ import {HideableColumnService} from "./providers/hideable-column.service";
             </div>
         </div>
     `,
-    host: {"[class.column-switch-wrapper]": "true", "[class.column-switch-wrapper--active]": "open"}
+    host: {"[class.column-switch-wrapper]": "true", "[class.active]": "open"}
 })
 
 export class DatagridColumnToggle implements OnInit, OnDestroy {

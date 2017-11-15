@@ -31,21 +31,21 @@ describe("Multi Alert provider", function() {
         multiAlertService.manage(queryList);
     });
 
-    it("next updates the current alert index and stays within bounds", function() {
+    it("next updates the current alert index and cycles when the last index is found", function() {
         expect(multiAlertService.current).toBe(0);
         multiAlertService.next();
         expect(multiAlertService.current).toBe(1);
         multiAlertService.next();
-        expect(multiAlertService.current).toBe(1);
+        expect(multiAlertService.current).toBe(0);
     });
 
-    it("previous method updates the current alert index and stays within bounds", function() {
+    it("previous method updates the current alert index and cycles when the first index is found", function() {
         multiAlertService.next();
         expect(multiAlertService.current).toBe(1);
         multiAlertService.previous();
         expect(multiAlertService.current).toBe(0);
         multiAlertService.previous();
-        expect(multiAlertService.current).toBe(0);
+        expect(multiAlertService.current).toBe(1);
     });
 
     it("close reduces the number of active alerts and updates the index", function() {

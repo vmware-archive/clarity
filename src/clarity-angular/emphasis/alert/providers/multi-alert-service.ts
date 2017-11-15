@@ -53,11 +53,11 @@ export class MultiAlertService {
     }
 
     next() {
-        this.current = (this.current === this.activeAlerts.length - 1) ? this.current : this.current + 1;
+        this.current = (this.current === this.activeAlerts.length - 1) ? 0 : this.current + 1;
     }
 
     previous() {
-        this.current = (this.current === 0) ? this.current : this.current - 1;
+        this.current = (this.current === 0) ? this.activeAlerts.length - 1 : this.current - 1;
     }
 
     close() {

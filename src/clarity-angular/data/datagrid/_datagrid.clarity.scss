@@ -368,10 +368,11 @@
         .datagrid-foot-select.checkbox {
             display: block;
             line-height: inherit;
-            flex: 0 0 (1.5rem - (2 * $clr-rem-1px)); // can't use calc() in flex. #thanksIE!
+            flex: 1 1 (1.5rem - (2 * $clr-rem-1px)); // can't use calc() in flex. #thanksIE!
 
             // Has a possible sibling in the .column-switch-wrapper
             + .column-switch-wrapper {
+                flex: 1 1 100%;
                 margin-left: 0.083333rem;
             }
 

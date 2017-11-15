@@ -5,10 +5,10 @@
  */
 
 
-import { Component, EventEmitter, Input, Optional, Output, SkipSelf, TemplateRef, ViewChild } from "@angular/core";
+import {Component, EventEmitter, Input, Optional, Output, SkipSelf, TemplateRef, ViewChild} from "@angular/core";
 
-import { ButtonInGroupService } from "../providers/buttonInGroup.service";
-import { LoadingListener } from "../../index";
+import {LoadingListener} from "../../index";
+import {ButtonInGroupService} from "../providers/buttonInGroup.service";
 
 @Component({
     selector: "clr-button",
@@ -40,7 +40,7 @@ export class Button implements LoadingListener {
     doneLoading(): void {
         this.loading = false;
     }
-    constructor( @SkipSelf() @Optional() public buttonInGroupService: ButtonInGroupService) { }
+    constructor(@SkipSelf() @Optional() public buttonInGroupService: ButtonInGroupService) {}
 
     private _inMenu: boolean = false;
 

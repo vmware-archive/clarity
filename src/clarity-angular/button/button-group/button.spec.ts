@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, DebugElement} from "@angular/core";
+import {Component, DebugElement, ViewChild} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {ButtonInGroupService} from "../providers/buttonInGroup.service";
@@ -112,17 +112,39 @@ export default function(): void {
 
             expect(fixture.componentInstance.flag).toBe(false);
         });
+        it("implements LoadingListener", () => {
+            const instance: Button = fixture.componentInstance.loadingButtonInstance;
+
+            instance.startLoading();
+            expect(instance.loading).toBe(true);
+
+            instance.doneLoading();
+            expect(instance.loading).toBe(false);
+        });
+
+        it("displays spinner when [clrLoading] value is true", () => {
+            fixture.componentInstance.loadingButtonInstance.loading = true;
+            fixture.detectChanges();
+            expect(fixture.nativeElement.querySelector(".spinner")).toBeTruthy();
+        });
+
+        it("hides spinner when [clrLoading] value is false", () => {
+            fixture.componentInstance.loadingButtonInstance.loading = false;
+            fixture.detectChanges();
+            expect(fixture.nativeElement.querySelector(".spinner")).toBeFalsy();
+        });
     });
 }
 
 @Component({
     template: `
-        <clr-button id="testBtn" (click)="toggleClick()">Test 1</clr-button>
+        <clr-button #loadingButton [clrLoading]="true" id="testBtn" (click)="toggleClick()">Test 1</clr-button>
         <clr-button [clrInMenu]="true">Test 2</clr-button>
         <clr-button [clrInMenu]="true" class="btn btn-primary">Test 3</clr-button>
     `
 })
 class TestButtonComponent {
+    @ViewChild("loadingButton") loadingButtonInstance: Button;
     flag: boolean = false;
 
     toggleClick(): void {

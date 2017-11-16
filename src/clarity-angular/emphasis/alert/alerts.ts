@@ -3,7 +3,18 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList} from "@angular/core";
+import {
+    AfterContentInit,
+    Component,
+    ContentChildren,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    Output,
+    QueryList
+} from "@angular/core";
+import {Subscription} from "rxjs/Subscription";
+
 import {Alert} from "./alert";
 import {MultiAlertService} from "./providers/multi-alert-service";
 
@@ -19,8 +30,10 @@ import {MultiAlertService} from "./providers/multi-alert-service";
         "[class.alert-warning]": "this.currentAlertType == 'warning'"
     }
 })
-export class Alerts implements AfterContentInit {
+export class Alerts implements AfterContentInit, OnDestroy {
     @ContentChildren(Alert) allAlerts: QueryList<Alert>;
+
+    private subscriptions: Subscription[] = [];
 
     /**
      * Input/Output to support two way binding on current alert index
@@ -75,9 +88,20 @@ export class Alerts implements AfterContentInit {
 
     ngAfterContentInit() {
         this.multiAlertService.manage(this.allAlerts);
-        this.multiAlertService.changes.subscribe((index) => {
+        this.subscriptions.push(this.multiAlertService.changes.subscribe((index) => {
             this.currentAlertIndexChange.next(index);
             this.currentAlertChange.next(this.multiAlertService.currentAlert);
-        });
+        }));
+        // This sub updates the current index of the alerts pager component based on the
+        // changes in the alert content children.
+        this.subscriptions.push(this.allAlerts.changes.subscribe(changes => {
+            if (this.currentAlertIndex >= changes.length) {
+                this.currentAlertIndex = changes.length - 1;
+            }
+        }));
+    }
+
+    ngOnDestroy() {
+        this.subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
     }
 }

@@ -49,7 +49,6 @@ describe("Alerts component", function() {
                 TestBed.configureTestingModule({imports: [ClrEmphasisModule], declarations: [componentType]});
 
                 fixture = TestBed.createComponent(componentType);
-                // fixture.detectChanges();
             };
         });
 
@@ -138,6 +137,17 @@ describe("Alerts component", function() {
             fixture.componentInstance.alertInstances.toArray()[0].close();
             fixture.detectChanges();
             expect(compiled.querySelectorAll("clr-alerts-pager").length).toBe(0);
+        });
+
+        it("makes the previous alert active when the current alert is removed from the DOM", function() {
+            fixture.componentInstance.currentAlertIndex = 1;
+            fixture.detectChanges();
+            expect(alertElements[0].classList).toContain("alert-hidden");
+
+            fixture.componentInstance.alertInstances.reset([this.alert]);
+            fixture.detectChanges();
+
+            console.log(fixture.componentInstance.currentAlertIndex);
         });
     });
 

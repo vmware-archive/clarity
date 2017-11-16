@@ -10,4 +10,18 @@ import {Component} from "@angular/core";
     styleUrls: ["../alert.demo.scss"],
     templateUrl: "./alert-angular-app-level-alerts.demo.html"
 })
-export class AlertAngularAppLevelAlertsDemo {}
+export class AlertAngularAppLevelAlertsDemo {
+    toggle1: boolean = true;
+    toggle2: boolean = true;
+    toggle3: boolean = true;
+
+    toggleAlert(alertNum: number): void {
+        if (alertNum === 1) {
+            this.toggle1 = !this.toggle1;
+        } else if (alertNum === 2) {
+            this.toggle2 = !this.toggle2;
+        } else if (alertNum === 3) {
+            this.toggle3 = !this.toggle3;
+        }
+    }
+}

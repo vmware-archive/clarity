@@ -3,8 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ClarityIconElement} from "./clarity-icons-element";
-import {getErrorShape, giveAngleShapeTitle, removeWhitespace, resetShapes, testAllShapes} from "./helpers.spec";
+import {
+    getErrorShape,
+    giveAngleShapeTitle,
+    removeWhitespace,
+    resetShapes,
+    testAllShapes,
+    testAllShapesRequiredAttributes
+} from "./helpers.spec";
 import {ClarityIcons} from "./index";
 import {AllShapes} from "./shapes/all-shapes";
 import {CommerceShapes} from "./shapes/commerce-shapes";
@@ -91,7 +97,7 @@ describe("ClarityIcons", () => {
 
             const expected = `
                 <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
-                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" role="img">
                     <title>pencil</title>
     
                     <path class="clr-i-outline clr-i-outline-path-1" d="M33.87,8.32,28,2.42a2.07,2.07,0,0,0-2.92,0L4.27,23.2l-1.9,8.2a2.06,2.06,0,0,0,2,2.5,2.14,2.14,0,0,0,.43,0L13.09,32,33.87,11.24A2.07,2.07,0,0,0,33.87,8.32ZM12.09,30.2,4.32,31.83l1.77-7.62L21.66,8.7l6,6ZM29,13.25l-6-6,3.48-3.46,5.9,6Z"/>
@@ -613,5 +619,13 @@ describe("ClarityIcons", () => {
                 console.log("Duplicated Icons: " + duplicatesFound);
             }
         });
+
+        it("each icons should have the required attributes only once in their templates", () => {
+            const currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes, EssentialShapes, SocialShapes,
+                                                   MediaShapes, TravelShapes, TechnologyShapes);
+
+            testAllShapesRequiredAttributes(currentAllShapes);
+        });
+
     });
 });

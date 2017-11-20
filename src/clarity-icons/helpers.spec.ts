@@ -27,6 +27,25 @@ export function testAllShapes(clarityIcons: any, expectedShapes: any): void {
     }
 }
 
+export function testAllShapesRequiredAttributes(shapes: any): void {
+    for (const shape in shapes) {
+        if (shapes.hasOwnProperty(shape)) {
+            expect((shapes[shape].match(/version=/g) || []).length)
+                .toBe(1, `The version attribute is not specified or duplicated in ${shape}.`);
+            expect((shapes[shape].match(/preserveAspectRatio=/g) || []).length)
+                .toBe(1, `The preserveAspectRatio attribute is not specified or duplicated in ${shape}.`);
+            expect((shapes[shape].match(/viewBox=/g) || []).length)
+                .toBe(1, `The viewBox attribute is not specified or duplicated in ${shape}.`);
+            expect((shapes[shape].match(/xmlns\=('|")http\:\/\/www\.w3\.org\/2000\/svg('|")/g) || []).length)
+                .toBe(1, `The xmlns attribute is not specified or duplicated in ${shape}.`);
+            expect((shapes[shape].match(/xmlns\:xlink\=('|")http\:\/\/www\.w3\.org\/1999\/xlink('|")/g) || []).length)
+                .toBe(1, `The xmlns:xlink attribute is not specified or duplicated in ${shape}.`);
+            expect((shapes[shape].match(/focusable=('|")false('|")/g) || []).length)
+                .toBe(1, `The 'focusable="false"' attribute is not specified or duplicated in ${shape}.`);
+        }
+    }
+}
+
 export function resetShapes(): void {
     // Removes all shapes from Clarity Icons, but adds the icons from CoreShapes back at the end
     // because the CoreShapes icons are added by default by ClarityIcons.
@@ -42,7 +61,7 @@ export function resetShapes(): void {
 
 export function giveAngleShapeTitle(titleId: string, titleTxt: string) {
     return `<svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" 
-        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" role="img">
         <title>angle</title>
         <path class="clr-i-outline clr-i-outline-path-1" d="M29.52,22.52,18,10.6,6.48,22.52a1.7,1.7,0,0,0,2.45,2.36L18,15.49l9.08,9.39a1.7,1.7,0,0,0,2.45-2.36Z"></path>
     </svg><span class="is-off-screen" id="${titleId}">${titleTxt}</span>`;
@@ -50,7 +69,7 @@ export function giveAngleShapeTitle(titleId: string, titleTxt: string) {
 
 export function getErrorShape(titleId?: string, titleTxt?: string) {
     const svgTemplate =
-        `<svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+        `<svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" role="img">
             <title>exclamation-circle</title>
             <path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path>
             <path class="clr-i-outline clr-i-outline-path-2" d="M18,20.07a1.3,1.3,0,0,1-1.3-1.3v-6a1.3,1.3,0,1,1,2.6,0v6A1.3,1.3,0,0,1,18,20.07Z"></path>

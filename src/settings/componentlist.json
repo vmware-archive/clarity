@@ -25,7 +25,8 @@
             "core": -1,
             "ng": 20,
             "dox": 20,
-            "newLayout": true
+            "newLayout": true,
+            "isUpdated": true
         },
         {
             "url": "badges",
@@ -253,8 +254,7 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "navigation",

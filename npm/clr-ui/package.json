@@ -1,16 +1,15 @@
 {
-    "name": "clarity-icons",
+    "name": "@clr/ui",
     "version": "@VERSION",
-    "description": "Custom Element Icons for Clarity",
+    "description": "CSS for Clarity",
     "homepage": "https://vmware.github.io/clarity/",
-    "main": "index.js",
-    "types": "index.d.ts",
     "repository" : {
         "type" : "git",
-        "url" : "ssh://git@git.eng.vmware.com/clarity.git"
+        "url" : "git@github.com:vmware/clarity.git"
     },
     "peerDependencies": {
-        "@webcomponents/custom-elements": "^1.0.0"
+        "@clr/icons": "@VERSION",
+        "bootstrap": "4.0.0-alpha.5"
     },
     "author": "clarity",
     "license": "MIT",

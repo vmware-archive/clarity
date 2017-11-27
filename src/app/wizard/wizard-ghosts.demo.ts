@@ -6,8 +6,8 @@
 
 import {Component, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
-import {Wizard} from "../../clarity-angular/wizard/wizard";
+import {CodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
+import {Wizard} from "../../clr-angular/wizard/wizard";
 
 @Component({selector: "clr-wizard-ghosts", templateUrl: "./wizard-ghosts.demo.html"})
 export class WizardGhostsDemo {
@@ -42,7 +42,7 @@ export class WizardGhostsDemo {
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
+import { Wizard } from "../../clr-angular/wizard/wizard";
 
 @Component({
     ...

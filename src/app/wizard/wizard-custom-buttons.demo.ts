@@ -6,8 +6,8 @@
 
 import {Component, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
-import {Wizard} from "../../clarity-angular/wizard/wizard";
+import {CodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
+import {Wizard} from "../../clr-angular/wizard/wizard";
 
 @Component({selector: "clr-wizard-custom-buttons", templateUrl: "./wizard-custom-buttons.demo.html"})
 export class WizardCustomButtonsDemo {
@@ -36,7 +36,7 @@ export class WizardCustomButtonsDemo {
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
+import { Wizard } from "../../clr-angular/wizard/wizard";
 
 @Component({
     ...

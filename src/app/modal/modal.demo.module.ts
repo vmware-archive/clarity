@@ -7,7 +7,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 
-import {ClarityModule} from "../../clarity-angular/clarity.module";
+import {ClarityModule} from "../../clr-angular/clr.module";
 
 import {ModalAngularNotClosableDemo} from "./modal-angular-not-closable";
 import {ModalAngularShowDemo} from "./modal-angular-show";

@@ -6,8 +6,8 @@ module.exports = {
     resolve: {
         modules: [
             path.join(process.cwd(), 'src/app'),
-            path.join(process.cwd(), 'src/clarity-angular'),
-            path.join(process.cwd(), 'src/clarity-icons'),
+            path.join(process.cwd(), 'src/clr-angular'),
+            path.join(process.cwd(), 'src/clr-icons'),
             "./node_modules"
         ],
         extensions: [".ts", ".js", ".json"]

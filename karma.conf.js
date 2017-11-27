@@ -12,7 +12,7 @@ module.exports = function(karma) {
             { pattern: './node_modules/prismjs/components/prism-typescript.min.js', included: true, watched: false},
 
             // Clarity
-            { pattern: './dist/clarity-ui/clarity-ui.min.css', included: true, watched: true },
+            { pattern: './dist/clr-ui/clr-ui.min.css', included: true, watched: true },
 
             // Entry point to all our spec files
             { pattern: "./tests/tests.entry.ts", watched: false }

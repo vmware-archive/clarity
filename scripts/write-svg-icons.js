@@ -174,7 +174,7 @@ let makeSVG = (shapeTitle, shapeContent) => {
 
 
 //use shapes from this directory
-const SOURCE_PATH = path.join(__dirname, "../dist/clarity-icons/shapes");
+const SOURCE_PATH = path.join(__dirname, "../dist/clr-icons/shapes");
 
 let makeSVGset = (setName, callback) => {
 

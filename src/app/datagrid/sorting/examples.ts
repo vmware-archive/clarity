@@ -5,7 +5,7 @@
  */
 export const EXAMPLES = {
     sortingTS: `
-import {Comparator} from "clarity-angular";
+import {Comparator} from "@clr/ng";
 
 class PokemonComparator implements Comparator<User> {
     compare(a: User, b: User) {

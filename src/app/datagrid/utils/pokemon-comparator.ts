@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Comparator} from "../../../clarity-angular/data/datagrid";
+import {Comparator} from "../../../clr-angular/data/datagrid";
 import {User} from "../inventory/user";
 
 export class PokemonComparator implements Comparator<User> {

@@ -8,7 +8,7 @@ import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {ReactiveFormsModule} from "@angular/forms";
 
-import {ClarityModule} from "../../clarity-angular/clarity.module";
+import {ClarityModule} from "../../clr-angular/clr.module";
 
 import {FormCompactDemo} from "./compact-forms/form-compact";
 import {FormFieldsDemo} from "./form-fields/form-fields";

@@ -13,7 +13,7 @@ interface Filter<T> {
 `,
 
     inlineFilterTS: `
-import {Filter} from "clarity-angular";
+import {Filter} from "@clr/ng";
 
 class MyFilter implements Filter<User> {
     changes = new Subject<any>();
@@ -38,7 +38,7 @@ class MyComponent {
 `,
 
     customFilterComponentTS: `
-import {Filter, DatagridFilter} from "clarity-angular";
+import {Filter, DatagridFilter} from "@clr/ng";
 
 @Component({
     selector: "my-filter",
@@ -87,7 +87,7 @@ class MyReusableFilter {
 `,
 
     colorFilterTS: `
-import {Filter} from "clarity-angular";
+import {Filter} from "@clr/ng";
 
 @Component({
     selector: "color-filter",

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {StringFilter} from "clarity-angular";
+import {StringFilter} from "@clr/ng";
 import {User} from "./user";
 
 export class PokemonFilter implements StringFilter<User> {

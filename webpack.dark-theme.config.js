@@ -11,8 +11,8 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    'clarity-ui/clarity-ui-dark': './src/clarity-angular/dark-theme.scss',
-    'clarity-ui/clarity-ui-dark.min': './src/clarity-angular/dark-theme.scss'
+    'clr-ui/clr-ui-dark': './src/clr-angular/dark-theme.scss',
+    'clr-ui/clr-ui-dark.min': './src/clr-angular/dark-theme.scss'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -23,7 +23,7 @@ module.exports = {
     rules: [
       {
         include: [
-          path.join(process.cwd(), "src/clarity-angular/dark-theme.scss")
+          path.join(process.cwd(), "src/clr-angular/dark-theme.scss")
         ],
         test: /\.scss$/,
         loaders: ExtractTextPlugin.extract({

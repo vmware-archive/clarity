@@ -6,8 +6,8 @@
 
 import {Component, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
-import {Wizard} from "../../clarity-angular/wizard/wizard";
+import {CodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
+import {Wizard} from "../../clr-angular/wizard/wizard";
 
 @Component({selector: "clr-wizard-alt-cancel", templateUrl: "./wizard-alt-cancel.demo.html"})
 export class WizardAltCancelDemo {
@@ -34,7 +34,7 @@ export class WizardAltCancelDemo {
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
+import { Wizard } from "../../clr-angular/wizard/wizard";
 
 @Component({
     ...

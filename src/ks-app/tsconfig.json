@@ -16,8 +16,8 @@
       "dom"
     ],
     "paths": {
-//      "clarity-angular": [
-//        "../../dist/npm/clarity-angular"
+//      "clr-angular": [
+//        "../../dist/npm/clr-angular"
 //      ]
     }
   }

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {StringFilter} from "../../../clarity-angular/data/datagrid/interfaces/string-filter";
+import {StringFilter} from "../../../clr-angular/data/datagrid/interfaces/string-filter";
 import {User} from "../inventory/user";
 
 export class PokemonFilter implements StringFilter<User> {

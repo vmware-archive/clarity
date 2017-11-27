@@ -6,7 +6,7 @@
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 
-import {ClarityModule} from "../../clarity-angular/clarity.module";
+import {ClarityModule} from "../../clr-angular/clr.module";
 
 import {InputFieldsDemo} from "./input-fields.demo";
 import {ROUTING} from "./input-fields.demo.routing";

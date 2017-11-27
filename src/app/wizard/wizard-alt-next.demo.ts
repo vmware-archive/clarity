@@ -6,8 +6,8 @@
 
 import {Component, OnInit, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
-import {Wizard} from "../../clarity-angular/wizard/wizard";
+import {CodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
+import {Wizard} from "../../clr-angular/wizard/wizard";
 
 @Component(
     {selector: "clr-wizard-alt-next", templateUrl: "./wizard-alt-next.demo.html", styles: [".stress { color: red; }"]})
@@ -61,8 +61,8 @@ export class WizardAltNextDemo implements OnInit {
 
     code: string = `
 import { Component, ViewChild, OnInit } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
-import { CodeHighlight } from "../../clarity-angular/code/code-highlight";
+import { Wizard } from "../../clr-angular/wizard/wizard";
+import { CodeHighlight } from "../../clr-angular/code/code-highlight";
 
 @Component({
     selector: "clr-wizard-alt-next",

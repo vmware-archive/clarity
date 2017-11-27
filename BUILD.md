@@ -42,7 +42,8 @@ This will start up our demo app using webpack-dev-server on port 4200 and watch 
 This script deletes the `dist` folder, which contains all the produced files for bundling.
 
 ##### `npm run build`
-This script builds npm package candidates for all three packages we currently publish: `clarity-angular`, `clarity-ui`, and `clarity-icons` under the `/dist` folder. 
+This script builds npm package candidates for all three packages we currently publish: `@clr/ng`, `@clr/ui`, and 
+`@clr/icons` under the `/dist` folder. 
 Note that this will also produce bundle files as a result of building and bundling for the demo app. Those can be ignored for the purposes of publishing.
 
 ##### `npm run test` and `npm run test:travis`
@@ -61,25 +62,26 @@ which runs the clang-format command (with `-output-replacements-xml` flag) and g
 The `npm run clang:format` does the actual formatting according to the rules specified in `.clang-format` file.
 
 ##### `npm build:angular`
-This script produces the `clarity-angular` package using [ng-packagr](https://github.com/dherges/ng-packagr). 
+This script produces the `@clr/ng` package using [ng-packagr](https://github.com/dherges/ng-packagr). 
 However, because of limitations of the tools we supplement this with a `pre` and `post` script. 
 
 The `pre` script simply copies over the `package.json` template from our `npm` folder (this contains templates for `package.json` and 
-`README.md` for all of our packages) into `src/clarity-angular` and sets the correct version number. This is necessary because 
+`README.md` for all of our packages) into `src/clr-angular` and sets the correct version number. This is necessary 
+because 
 `ng-packagr` requires the `package.json` to be at the root of the `src` (defined in `ng-package.json`).
 
 The `post` script runs `npm pack` on the package to create the `tgz file`.
 
 ##### `npm build: icons`
-This script produces the `clarity-icons` package by bundling js files that can be included in consuming app. 
+This script produces the `clr-icons` package by bundling js files that can be included in consuming app. 
 The `post` script generates the svg files and also zipped up files for the icon sets. Note that this script partially 
-relies on `webpack` as well, since the `webpack` script produces the `clarity-icons.css` and `clarity-icons.min.css` files. 
+relies on `webpack` as well, since the `webpack` script produces the `clr-icons.css` and `clr-icons.min.css` files. 
 The `webpack` script also processes the `package.json` and `README.md` files for all of our packages. 
 This means that running `npm build: icons` by itself will NOT produce a complete package.
 
 ##### `npm run webpack`
-This is the script that bundles the demo app as well as produce the package for `clarity-ui`. Since our demo app
-consumes the `clarity-ui.min.css`, it wasn't necessary to create a separate script for generating the `clarity-ui` 
+This is the script that bundles the demo app as well as produce the package for `@clr/ui`. Since our demo app
+consumes the `clr-ui.min.css`, it wasn't necessary to create a separate script for generating the `@clr/ui` 
 package. This script also handles tasks common to all packages, such as setting the version and copying over the 
 `package.json` and `README.md` files.
 
@@ -113,9 +115,9 @@ The build process itself uses 3 folders:
   sourcemaps and all clarity deliverables. Basically everything. Because of that, it is itself 
   divided into several subfolders:
   * `assets/`: The sample app that contains demo components for development and testing.
-  * `clarity-angular/`: This will contain the clarity components compiled using ng-packagr.
-  * `clarity-icons/`: This will contain the compiled js files and d.ts files from clarity icons. 
-  * `clarity-ui/`: This will contain the compiled .css files and source .clarity.scss files for clarity-ui. 
+  * `clr-angular/`: This will contain the clarity components compiled using ng-packagr.
+  * `clr-icons/`: This will contain the compiled js files and d.ts files from clarity icons. 
+  * `clr-ui/`: This will contain the compiled .css files and source .clarity.scss files for @clr/ui. 
 * `tests/`: Contains the entry point to running karma tests.
 
 #### The process itself
@@ -129,9 +131,9 @@ We simply clean up the project before building anything.
 ##### Sass
 * All the SCSS files for the sample application are compiled with Sass and moved to `dist/`, once
  again respecting their path relative to `src/`.
-* All `*.clarity.scss` files found in `src/clarity-angular/` are compiled by Sass into a minified bundle 
-  and moved to `dist/clarity-ui`.
-* All other SCSS files in `src/clarity-angular/` are considered to be behaviour-driven styles, so they 
+* All `*.clarity.scss` files found in `src/clr-angular/` are compiled by Sass into a minified bundle 
+  and moved to `dist/clr-ui`.
+* All other SCSS files in `src/clr-angular/` are considered to be behaviour-driven styles, so they 
   are compiled by Sass and inlined in the Typescript declarations of the
   components (see below).
 * Every single CSS file output by Sass goes through Autoprefixer, before potential inlining or 
@@ -140,7 +142,7 @@ We simply clean up the project before building anything.
 ##### Typescript
 * All the Typescript files for the demo application are bundled by webpack into js and moved to `dist/` as 
     `<number>.js` files.
-* All the Typescript files for clarity components are packaged by ng-packagr under `dist/clarity-angular`. 
+* All the Typescript files for clarity components are packaged by ng-packagr under `dist/clr-angular`. 
  The Typescript declaration files (`*.d.ts`) are produced for each of these components.
 * All `*.spec.ts` and `*.mock.ts` files, containing the unit tests and mocks for Clarity's 
   components, are transpiled and used by the webpack config file `webpack.test.config.js`. No output is generated.

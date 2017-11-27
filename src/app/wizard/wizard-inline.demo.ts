@@ -6,8 +6,8 @@
 
 import {Component, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
-import {Wizard} from "../../clarity-angular/wizard/wizard";
+import {CodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
+import {Wizard} from "../../clr-angular/wizard/wizard";
 
 @Component({selector: "clr-wizard-inline", templateUrl: "./wizard-inline.demo.html"})
 export class WizardInlineDemo {

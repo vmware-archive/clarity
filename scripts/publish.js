@@ -28,7 +28,7 @@ prompt.start();
 prompt.get(['confirmation'], function (err, result) {
     if(/yes/i.test(result.confirmation) || /y/i.test(result.confirmation)) {
         const npm = path.join(process.cwd(), 'node_modules', '.bin', 'npm');
-        shell.exec(`${npm} publish dist/clarity-ui; ${npm} publish dist/clarity-angular/clarity-angular-${version}.tgz; ${npm} publish dist/clarity-icons`);
+        shell.exec(`${npm} publish dist/clr-ui; ${npm} publish dist/clr-angular/clr-ng-${version}.tgz; ${npm} publish dist/clr-icons`);
         console.log(colors.green(`Clarity v${version} successfully published to npm!`));
     } else {
         console.log(colors.red('Nah, just kidding for now!'));

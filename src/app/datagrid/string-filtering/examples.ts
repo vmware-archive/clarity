@@ -19,7 +19,7 @@ interface StringFilter<T> {
 `,
 
     stringFilterTS: `
-import {StringFilter} from "clarity-angular";
+import {StringFilter} from "clr-angular";
 
 class PokemonFilter implements StringFilter<User> {
     accepts(user: User, search: string):boolean {

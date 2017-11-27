@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-import {State} from "../../../clarity-angular/data/datagrid";
+import {State} from "../../../clr-angular/data/datagrid";
 import {FetchResult, Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
 import {ColorFilter} from "../utils/color-filter";

@@ -7,7 +7,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 
-import {ClarityModule} from "../../clarity-angular/clarity.module";
+import {ClarityModule} from "../../clr-angular/clr.module";
 import {UtilsDemoModule} from "../_utils/utils.module";
 
 import {DatagridBasicStructureDemo} from "./basic-structure/basic-structure";

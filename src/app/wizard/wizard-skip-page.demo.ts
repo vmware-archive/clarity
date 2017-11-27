@@ -5,7 +5,7 @@
  */
 
 import {Component, ViewChild} from "@angular/core";
-import {Wizard} from "../../clarity-angular/wizard/wizard";
+import {Wizard} from "../../clr-angular/wizard/wizard";
 
 @Component({selector: "clr-wizard-skip-page", templateUrl: "./wizard-skip-page.demo.html"})
 export class WizardSkipPageDemo {

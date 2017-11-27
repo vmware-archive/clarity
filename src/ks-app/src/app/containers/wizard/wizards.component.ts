@@ -5,8 +5,8 @@
  */
 
 import {Component, OnInit, ViewChild} from "@angular/core";
-import {Wizard} from "clarity-angular";
-import {WizardPage} from "clarity-angular";
+import {Wizard} from "@clr/ng";
+import {WizardPage} from "@clr/ng";
 
 @Component({templateUrl: "./wizards.component.html"})
 export class KSWizards implements OnInit {

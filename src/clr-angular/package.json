@@ -1,11 +1,11 @@
 {
-    "name": "clarity-angular",
-    "version": "@VERSION",
+    "name": "@clr/ng",
+    "version": "0.10.13",
     "description": "Angular components for Clarity",
-    "es2015": "clarity-angular/clarity-angular.js",
+    "es2015": "clr-angular/clr-angular.js",
     "homepage": "https://vmware.github.io/clarity/",
-    "main": "bundles/clarity-angular.umd.js",
-    "module": "clarity-angular/clarity-angular.es5.js",
+    "main": "bundles/clr-angular.umd.js",
+    "module": "clr-angular/clr-angular.es5.js",
     "repository" : {
         "type" : "git",
         "url" : "git@github.com:vmware/clarity.git"
@@ -18,7 +18,7 @@
         "@angular/platform-browser": "^4.3.0",
         "@angular/platform-browser-dynamic": "^4.3.0",
         "@angular/router": "^4.3.0",
-        "clarity-ui": "@VERSION"
+        "@clr/ui": "0.10.13"
     },
     "author": "clarity",
     "license": "MIT",

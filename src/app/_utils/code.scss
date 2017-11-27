@@ -4,8 +4,8 @@
 
 /* Vendor */
 
-@import "../../clarity-angular/utils/vendor/decimalRounding.clarity";
-@import "../../clarity-angular/utils/vendor/mathPow.clarity";
+@import "../../clr-angular/utils/vendor/decimalRounding.clarity";
+@import "../../clr-angular/utils/vendor/mathPow.clarity";
 
 /* End Vendor */
 
@@ -13,21 +13,21 @@
 
 /* Clarity - Begin Part 1 */
 
-@import "../../clarity-angular/utils/mixins.clarity";
-@import "../../clarity-angular/utils/helpers.clarity";
+@import "../../clr-angular/utils/mixins.clarity";
+@import "../../clr-angular/utils/helpers.clarity";
 
 //Color
-@import "../../clarity-angular/color/utils/colors.clarity";
-@import "../../clarity-angular/color/utils/contrast-cache.clarity";
-@import "../../clarity-angular/color/utils/helpers.clarity";
-@import "../../clarity-angular/color/color.clarity"; // depends on colors.clarity, helper.clarity, contrast-cache.clarity
+@import "../../clr-angular/color/utils/colors.clarity";
+@import "../../clr-angular/color/utils/contrast-cache.clarity";
+@import "../../clr-angular/color/utils/helpers.clarity";
+@import "../../clr-angular/color/color.clarity"; // depends on colors.clarity, helper.clarity, contrast-cache.clarity
 
 //Layer - z-indices
-@import "../../clarity-angular/utils/layers.clarity";
+@import "../../clr-angular/utils/layers.clarity";
 
 //Variables
-@import "../../clarity-angular/utils/variables.clarity"; // depends on helpers.clarity, color.clarity
-@import "../../clarity-angular/utils/maps.clarity";
+@import "../../clr-angular/utils/variables.clarity"; // depends on helpers.clarity, color.clarity
+@import "../../clr-angular/utils/maps.clarity";
 /* Clarity - End Part 1 */
 
 //Styles for Clarity Demos

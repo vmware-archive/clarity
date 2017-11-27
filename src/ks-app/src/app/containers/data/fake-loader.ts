@@ -5,7 +5,7 @@
  */
 import {Directive, Input, OnInit, TemplateRef, ViewContainerRef} from "@angular/core";
 
-import {Loading} from "clarity-angular";
+import {Loading} from "@clr/ng";
 
 const LATENCY = 2000;
 

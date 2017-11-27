@@ -5,7 +5,7 @@
  */
 
 import {Component, ViewChild} from "@angular/core";
-import {Wizard} from "../../clarity-angular/wizard/wizard";
+import {Wizard} from "../../clr-angular/wizard/wizard";
 
 @Component({selector: "clr-wizard-form-validation", templateUrl: "./wizard-form-validation.demo.html"})
 export class WizardFormValidation {
@@ -16,7 +16,7 @@ export class WizardFormValidation {
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
+import { Wizard } from "../../clr-angular/wizard/wizard";
 
 @Component({
     ...

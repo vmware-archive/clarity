@@ -1,5 +1,5 @@
 {
-    "name": "clarity-all",
+    "name": "clr-all",
     "version": "0.10.13",
     "private": true,
     "scripts": {
@@ -12,11 +12,11 @@
         "test:travis": "npm-run-all clang:check tslint:check test",
         "clang:check": "./scripts/clang-check.sh",
         "clang:format": "node_modules/.bin/clang-format -style=file -i --glob=src/**/*.ts",
-        "prebuild:angular": "cpy ./npm/clarity-angular/package.json ./src/clarity-angular/; replace '@VERSION' $npm_package_version ./src/clarity-angular/package.json",
+        "prebuild:angular": "cpy ./npm/clr-angular/package.json ./src/clr-angular/; replace '@VERSION' $npm_package_version ./src/clr-angular/package.json",
         "build:angular": "ng-packagr -p ng-package.json",
-        "postbuild:angular": "webpack --config webpack.dark-theme.config.js; cpy dist/clarity-angular/bundles/* dist/clarity-angular; cd dist/clarity-angular; npm pack;",
+        "postbuild:angular": "webpack --config webpack.dark-theme.config.js; cpy dist/clr-angular/bundles/* dist/clr-angular; cd dist/clr-angular; npm pack;",
         "build:icons": "webpack --config webpack.icons.config.js",
-        "postbuild:icons": "node ./scripts/clarity-icons-svg.js",
+        "postbuild:icons": "node ./scripts/clr-icons-svg.js",
         "publish:all": "node scripts/publish.js",
         "cssTest": "./scripts/docker-cdc.js -t",
         "cssUpdate": "./scripts/docker-cdc.js -u",

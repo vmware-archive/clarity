@@ -6,9 +6,9 @@
 
 import {Component, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
-import {Wizard} from "../../clarity-angular/wizard/wizard";
-import {WizardPage} from "../../clarity-angular/wizard/wizard-page";
+import {CodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
+import {Wizard} from "../../clr-angular/wizard/wizard";
+import {WizardPage} from "../../clr-angular/wizard/wizard-page";
 
 @Component({selector: "clr-wizard-jump-to", templateUrl: "./wizard-jump-to.demo.html"})
 export class WizardJumpToDemo {
@@ -36,8 +36,8 @@ export class WizardJumpToDemo {
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
-import { WizardPage } from "../../clarity-angular/wizard/wizard-page";
+import { Wizard } from "../../clr-angular/wizard/wizard";
+import { WizardPage } from "../../clr-angular/wizard/wizard-page";
 
 @Component({
     ...

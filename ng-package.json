@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-  "src": "src/clarity-angular",
-  "dest": "dist/clarity-angular",
+  "src": "src/clr-angular",
+  "dest": "dist/clr-angular",
   "lib": {
     "entryFile": "./public_api.ts"
   }

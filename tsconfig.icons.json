@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": "./dist/clarity-icons",
+        "outDir": "./dist/clr-icons",
         "target": "es5",
         "declaration": true,
         "module": "commonjs",
@@ -15,7 +15,7 @@
     },
     "include": [
         "src/typings.d.ts",
-        "src/clarity-icons/**/*.ts"
+        "src/clr-icons/**/*.ts"
     ],
     "exclude": [
         "**/*.spec.ts"

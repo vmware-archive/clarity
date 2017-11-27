@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, EventEmitter} from "@angular/core";
-import {Filter} from "../../../clarity-angular/data/datagrid";
+import {Filter} from "../../../clr-angular/data/datagrid";
 import {User} from "../inventory/user";
 import {COLORS} from "../inventory/values";
 

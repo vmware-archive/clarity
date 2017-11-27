@@ -5,7 +5,7 @@
 /tmp
 /out-tsc
 /.ng_build
-src/clarity-angular/.ng_build
+src/clr-angular/.ng_build
 
 /gemini-report/
 
@@ -38,7 +38,7 @@ src/clarity-angular/.ng_build
 npm-debug.log
 testem.log
 /typings
-/src/clarity-angular/package.json
+/src/clr-angular/package.json
 
 # e2e
 /e2e/*.js

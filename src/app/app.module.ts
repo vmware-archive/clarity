@@ -8,7 +8,7 @@ import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
-import {ClarityModule} from "../clarity-angular/clarity.module";
+import {ClarityModule} from "../clr-angular/clr.module";
 
 import {AppComponent} from "./app.component";
 import {ROUTING} from "./app.routing";

@@ -6,7 +6,7 @@
 
 /*
  * Do NOT Angular this up. It assumes we're in the DOM, plays with native elements, ...
- * It could potentially be used as part of clarity-ui as a vanilla Javascript helper.
+ * It could potentially be used as part of @clr/ui as a vanilla Javascript helper.
  */
 
 import {Observable} from "rxjs/Observable";

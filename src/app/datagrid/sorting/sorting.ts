@@ -5,7 +5,7 @@
  */
 import {Component} from "@angular/core";
 
-import {SortOrder} from "../../../clarity-angular";
+import {SortOrder} from "../../../clr-angular";
 import {Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
 import {PokemonComparator} from "../utils/pokemon-comparator";

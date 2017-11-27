@@ -3,8 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ClarityIconsApi} from "./clarity-icons-api";
-import {ClarityIconElement} from "./clarity-icons-element";
+import {ClarityIconsApi} from "./clr-icons-api";
+import {ClarityIconElement} from "./clr-icons-element";
 import {CoreShapes} from "./shapes/core-shapes";
 
 const clarityIcons: ClarityIconsApi = ClarityIconsApi.instance;

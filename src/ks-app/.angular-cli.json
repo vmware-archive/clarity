@@ -19,14 +19,14 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "KS",
       "styles": [
-        "../node_modules/clarity-icons/clarity-icons.min.css",
-        "../node_modules/clarity-ui/clarity-ui-dark.min.css",
+        "../node_modules/@clr/icons/clr-icons.min.css",
+        "../node_modules/@clr/ui/clr-ui-dark.min.css",
         "styles.scss"
       ],
       "scripts": [
         "../node_modules/mutationobserver-shim/dist/mutationobserver.min.js",
         "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-        "../node_modules/clarity-icons/clarity-icons.min.js",
+        "../node_modules/@clr/icons/clr-icons.min.js",
         "../node_modules/web-animations-js/web-animations.min.js"
       ],
       "environmentSource": "environments/environment.ts",

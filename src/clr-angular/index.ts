@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from "./clarity.module";
+export * from "./clr.module";
 
 export * from "./button/button.module";
 export * from "./button/button-group/button-group.module";

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-import {menuPositions} from "../../../../clarity-angular/popover/dropdown/menu-positions";
+import {menuPositions} from "../../../../clr-angular/popover/dropdown/menu-positions";
 
 @Component({
     selector: "clr-menu-directions-demo",

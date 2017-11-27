@@ -74,7 +74,7 @@ module.exports = {
   "entry": {
     "main": [
       "./src/main.ts",
-      "./src/clarity-icons/index.ts"
+      "./src/clr-icons/index.ts"
     ],
     "polyfills": [
       "./src/polyfills.ts"
@@ -83,12 +83,12 @@ module.exports = {
       "./node_modules/prismjs/themes/prism-solarizedlight.css",
       "./node_modules/font-awesome/css/font-awesome.min.css",
     ],
-    "clarity-ui/clarity-ui": "./src/clarity-angular/main.scss",
-    "clarity-ui/clarity-ui.min": "./src/clarity-angular/main.scss",
-    // "clarity-ui/clarity-ui-dark": "./src/clarity-angular/dark-theme.scss",// Uncomment for dark dev
-    // "clarity-ui/clarity-ui-dark.min": "./src/clarity-angular/dark-theme.scss", // Uncomment for dark dev
-    "clarity-icons/clarity-icons": "./src/clarity-icons/clarity-icons.scss",
-    "clarity-icons/clarity-icons.min": "./src/clarity-icons/clarity-icons.scss"
+    "clr-ui/clr-ui": "./src/clr-angular/main.scss",
+    "clr-ui/clr-ui.min": "./src/clr-angular/main.scss",
+    // "clr-ui/clr-ui-dark": "./src/clr-angular/dark-theme.scss",// Uncomment for dark dev
+    // "clr-ui/clr-ui-dark.min": "./src/clr-angular/dark-theme.scss", // Uncomment for dark dev
+    "clr-icons/clr-icons": "./src/clr-icons/clr-icons.scss",
+    "clr-icons/clr-icons.min": "./src/clr-icons/clr-icons.scss"
   },
   "output": {
     "path": path.join(process.cwd(), "dist"),
@@ -179,7 +179,7 @@ module.exports = {
         })
     },
       {
-        "test": /clarity-icons\.scss$/,
+        "test": /clr-icons\.scss$/,
         use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             //resolve-url-loader may be chained before sass-loader if necessary
@@ -212,9 +212,9 @@ module.exports = {
         "test": /\.scss$/,
         "exclude": [
 
-          path.join(process.cwd(), "src/clarity-angular/main.scss"),
-          path.join(process.cwd(), "src/clarity-angular/dark-theme.scss"),
-          path.join(process.cwd(), "src/clarity-icons/clarity-icons.scss")
+          path.join(process.cwd(), "src/clr-angular/main.scss"),
+          path.join(process.cwd(), "src/clr-angular/dark-theme.scss"),
+          path.join(process.cwd(), "src/clr-icons/clr-icons.scss")
         ],
         "use": [
           "exports-loader?module.exports.toString()",
@@ -292,30 +292,30 @@ module.exports = {
             }
         },
         {
-            context: './src/clarity-angular',
+            context: './src/clr-angular',
             from: {
                 glob: "**/*.clarity.scss",
                 dot: true
             },
-            to: 'clarity-ui/src/'
+            to: 'clr-ui/src/'
         },
         {
-          context: './src/clarity-angular',
+          context: './src/clr-angular',
           from: {
             glob: "**/_variables.*.scss",
             dot: true
           },
-          to: 'clarity-ui/src/'
+          to: 'clr-ui/src/'
         },
         {
-            context: './src/clarity-angular',
+            context: './src/clr-angular',
             from: 'main.scss',
-            to: 'clarity-ui/src/'
+            to: 'clr-ui/src/'
         },
         {
-            context: './src/clarity-angular',
+            context: './src/clr-angular',
             from: 'dark-theme.scss',
-            to: 'clarity-ui/src/'
+            to: 'clr-ui/src/'
         },
         {
             context: './npm/',
@@ -420,12 +420,12 @@ module.exports = {
           }
       }),
       new SuppressChunksPlugin([
-          { name: 'clarity-ui/clarity-ui', match: /\.js(\.map)?$/ },
-          { name: 'clarity-ui/clarity-ui.min', match: /\.js(\.map)?$/ },
-          { name: 'clarity-ui/clarity-ui-dark', match: /\.js(\.map)?$/ },
-          { name: 'clarity-ui/clarity-ui-dark.min', match: /\.js(\.map)?$/ },
-          { name: 'clarity-icons/clarity-icons', match: /\.js(\.map)?$/ },
-          { name: 'clarity-icons/clarity-icons.min', match: /\.js(\.map)?$/ }
+          { name: 'clr-ui/clr-ui', match: /\.js(\.map)?$/ },
+          { name: 'clr-ui/clr-ui.min', match: /\.js(\.map)?$/ },
+          { name: 'clr-ui/clr-ui-dark', match: /\.js(\.map)?$/ },
+          { name: 'clr-ui/clr-ui-dark.min', match: /\.js(\.map)?$/ },
+          { name: 'clr-icons/clr-icons', match: /\.js(\.map)?$/ },
+          { name: 'clr-icons/clr-icons.min', match: /\.js(\.map)?$/ }
       ])
   ],
   "node": {

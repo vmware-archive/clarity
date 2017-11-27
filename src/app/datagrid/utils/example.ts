@@ -5,7 +5,7 @@
  */
 import {AfterViewInit, Component, Input, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../../clarity-angular/code/syntax-highlight/syntax-highlight";
+import {CodeHighlight} from "../../../clr-angular/code/syntax-highlight/syntax-highlight";
 
 @Component({
     selector: "clr-example",

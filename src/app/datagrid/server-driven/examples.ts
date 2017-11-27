@@ -20,7 +20,7 @@ interface State {
 `,
 
     serverDrivenTS: `
-import {State} from "clarity-angular";
+import {State} from "clr-angular";
 
 class MyComponent {
     users: User[];

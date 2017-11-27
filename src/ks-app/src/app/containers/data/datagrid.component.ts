@@ -5,7 +5,7 @@
  */
 
 import {Component} from "@angular/core";
-import {SortOrder} from "clarity-angular";
+import {SortOrder} from "@clr/ng";
 
 import {PokemonComparator} from "./pokemon-comparator";
 import {DatagridKitchenSinkData} from "./pokemon-data";

@@ -19,7 +19,7 @@ import {
     ClrModalModule,
     ClrPopoverModule,
     ClrWizardModule
-} from "clarity-angular";
+} from "@clr/ng";
 
 import {AppRoutingModule} from "./app-routing.module";
 import {AppComponent} from "./app.component";

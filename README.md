@@ -10,9 +10,9 @@ Project Clarity is an open source design system that brings together UX guidelin
 
 Clarity is published as three npm packages:
 
-* __clarity-icons.__ Contains the custom element icons.
-* __clarity-ui.__ Contains the static styles for building HTML components.
-* __clarity-angular.__ Contains the Angular components. This package depends on clarity-ui for styles.
+* __@clr/icons.__ Contains the custom element icons.
+* __@clr/ui.__ Contains the static styles for building HTML components.
+* __@clr/ng.__ Contains the Angular components. This package depends on @clr/ui for styles.
 
 The easiest way to run a sample Angular application with Clarity is to use the [Clarity Seed](https://github.com/vmware/clarity-seed). 
 
@@ -22,7 +22,7 @@ If you already have an Angular application, you can follow the installation step
 
 1. Install Clarity Icons package through npm:
     ```bash
-    npm install clarity-icons --save
+    npm install clr-icons --save
     ```
 
 2. Install the polyfill for Custom Elements: 
@@ -30,12 +30,12 @@ If you already have an Angular application, you can follow the installation step
     npm install @webcomponents/custom-elements --save
     ```
 
-3. Include the clarity-icons.min.css and clarity-icons.min.js in your HTML. As clarity-icons.min.js is dependent on the Custom Elements polyfill, make sure to include it before clarity-icons.min.js:
+3. Include the clr-icons.min.css and clr-icons.min.js in your HTML. As clr-icons.min.js is dependent on the Custom Elements polyfill, make sure to include it before clr-icons.min.js:
     ```html
-    <link rel="stylesheet" href="path/to/node_modules/clarity-icons/clarity-icons.min.css">
+    <link rel="stylesheet" href="path/to/node_modules/clr-icons/clr-icons.min.css">
 
     <script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
-    <script src="path/to/node_modules/clarity-icons/clarity-icons.min.js"></script>
+    <script src="path/to/node_modules/clr-icons/clr-icons.min.js"></script>
     ```
 
     If your site is built with [angular-cli](https://github.com/angular/angular-cli) you can achieve the above by adding the files to the styles array and 
@@ -43,13 +43,13 @@ If you already have an Angular application, you can follow the installation step
     ```js
     "styles": [
         ...
-        "../node_modules/clarity-icons/clarity-icons.min.css",
+        "../node_modules/clr-icons/clr-icons.min.css",
         ...
     ],
     "scripts": [
         ...
         "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-        "../node_modules/clarity-icons/clarity-icons.min.js"
+        "../node_modules/clr-icons/clr-icons.min.js"
         ...
     ]
     ```
@@ -58,12 +58,12 @@ If you already have an Angular application, you can follow the installation step
 
 1. Install Clarity UI package through npm:
     ```bash
-    npm install clarity-ui --save
+    npm install @clr/ui --save
     ```
 
-2. Include the clarity-ui.min.css in your HTML file:
+2. Include the clr-ui.min.css in your HTML file:
     ```html
-    <link rel="stylesheet" href="path/to/node_modules/clarity-ui/clarity-ui.min.css">
+    <link rel="stylesheet" href="path/to/node_modules/@clr/ui/clr-ui.min.css">
     ```
 
     If your site is built with [angular-cli](https://github.com/angular/angular-cli), you can achieve the above by adding the file to the styles array in 
@@ -71,7 +71,7 @@ If you already have an Angular application, you can follow the installation step
     ```js
     "styles": [
         ...
-        "../node_modules/clarity-ui/clarity-ui.min.css"
+        "../node_modules/@clr/ui/clr-ui.min.css"
         ...
     ]
     ```
@@ -83,14 +83,14 @@ If you already have an Angular application, you can follow the installation step
 1. Follow steps above to install Clarity Icons and Clarity UI.
 2. Install the clarity-angular package through npm:
     ```bash
-    npm install clarity-angular --save
+    npm install @clr/ng --save
     ```
 
 3. Import the ClarityModule into your Angular application's module.  Your application's main module might look like this:
     ```typescript
     import { NgModule } from '@angular/core';
     import { BrowserModule } from '@angular/platform-browser';
-    import { ClarityModule } from 'clarity-angular';
+    import { ClarityModule } from '@clr/ng';
     import { AppComponent } from './app.component';
 
     @NgModule({
@@ -112,7 +112,7 @@ If you already have an Angular application, you can follow the installation step
     	...
     	map: {
     	   ...
-    	   'clarity-angular': 'node_modules/clarity-angular/clarity-angular.umd.js',
+    	   '@clr/ng': 'node_modules/clr-angular/clr-angular.umd.js',
     	},
     	...
     });

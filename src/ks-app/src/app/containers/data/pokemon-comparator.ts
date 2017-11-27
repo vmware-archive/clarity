@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Comparator} from "clarity-angular";
+import {Comparator} from "@clr/ng";
 import {User} from "./user";
 
 export class PokemonComparator implements Comparator<User> {

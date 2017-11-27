@@ -3,8 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import "../../../clarity-icons/shapes/media-shapes";
-import "../../../clarity-icons/shapes/social-shapes";
+import "../../../clr-icons/shapes/media-shapes";
+import "../../../clr-icons/shapes/social-shapes";
 
 import {Component} from "@angular/core";
 

@@ -229,8 +229,11 @@ body.layout-documentation {
             }
         }
     }
-    .component-summary ~ h3 { // This changed b/c labels doc has demo element between .component-summary and the h3 element.
-        margin-top: $bl-2_0;
+    .component-summary {
+        & ~ h3, & ~ #design-guidelines > h3, & ~ #code-examples > h3 {
+            // This changed b/c labels doc has demo element between .component-summary and the h3 element.
+            margin-top: $bl-2_0;
+        }
     }
     .clrweb-button-demo,
     .clrweb-stackview-demo {
@@ -260,7 +263,7 @@ body.layout-documentation {
     }
     h3#examples {
         border-top: 1px solid #ccc;
-        padding-top: 116px;
+        padding-top: 2rem;
     }
 }
 

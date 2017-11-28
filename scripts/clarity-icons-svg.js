@@ -1,5 +1,8 @@
+/*jshint esversion: 6 */
+
 const writeSVGIcons = require('./write-svg-icons');
 const shell = require("shelljs");
+const bestzip = require('bestzip');
 
 const SHAPE_SETS = [
     "core-shapes",
@@ -12,8 +15,10 @@ const SHAPE_SETS = [
 ];
 
 writeSVGIcons(SHAPE_SETS, () => {
-    shell.exec("cd dist/clarity-icons/shapes; zip -r all-shapes.zip ./**/*");
+    shell.pushd("./dist/clarity-icons/shapes");
+    shell.exec(`bestzip all-shapes.zip ${SHAPE_SETS.join(' ')}`);
     SHAPE_SETS.forEach((setName) => {
-        shell.exec(`cd dist/clarity-icons/shapes; zip -r ${setName}.zip ./${setName}/*; rm -r ./${setName}`);
+        shell.exec(`bestzip ${setName}.zip ${setName}/*`);
+        shell.rm('-rf', `${setName}`);
     });
 });

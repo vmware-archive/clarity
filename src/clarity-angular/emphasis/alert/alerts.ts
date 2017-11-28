@@ -17,7 +17,8 @@ import {MultiAlertService} from "./providers/multi-alert-service";
         "[class.alert-info]": "this.currentAlertType == 'info'",
         "[class.alert-success]": "this.currentAlertType == 'success'",
         "[class.alert-warning]": "this.currentAlertType == 'warning'"
-    }
+    },
+    styles: [":host { display: block }"]
 })
 export class Alerts implements AfterContentInit {
     @ContentChildren(Alert) allAlerts: QueryList<Alert>;

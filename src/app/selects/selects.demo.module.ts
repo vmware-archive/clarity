@@ -5,11 +5,18 @@
  */
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
+import {FormsModule} from "@angular/forms";
 
 import {ClarityModule} from "../../clarity-angular/clarity.module";
 
+import {BasicSelectDemo} from "./angular/basic-select/basic-select";
+import {SelectAngularDemo} from "./angular/select-angular";
 import {SelectsDemo} from "./selects.demo";
 import {ROUTING} from "./selects.demo.routing";
 
-@NgModule({imports: [CommonModule, ClarityModule, ROUTING], declarations: [SelectsDemo], exports: [SelectsDemo]})
+@NgModule({
+    imports: [CommonModule, ClarityModule, ROUTING, FormsModule],
+    declarations: [SelectsDemo, SelectAngularDemo, BasicSelectDemo],
+    exports: [SelectsDemo, SelectAngularDemo, BasicSelectDemo]
+})
 export default class SelectsDemoModule {}

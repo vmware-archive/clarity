@@ -108,6 +108,9 @@
 //depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity
 @import "popover/dropdown/dropdown.clarity";
 
+//Select
+@import "select/select.clarity";
+
 //Labels & Badges
 // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, typography.clarity
 @import "emphasis/labels.clarity";

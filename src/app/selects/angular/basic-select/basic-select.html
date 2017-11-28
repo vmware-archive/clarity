@@ -1,0 +1,57 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Basic</h4>
+<form #form="ngForm" novalidate>
+    <section class=" form-block">
+        <label>Select Boxes</label>
+        <label>Selected: </label>
+        <code clr-code-highlight="language-json" *ngIf="selected">{{selected | json}}</code>
+        <div class="form-group">
+            <label for="selects_1">This is a select box</label>
+            <clr-select [(ngModel)]="selected" name="selectOne">
+                <input type="text" clrSelectInput style="width: 300px;" />
+
+                <clr-option *ngFor="let option of options" [clrValue]="option">{{option.name}}</clr-option>
+            </clr-select>
+        </div>
+    </section>
+</form>
+
+<h4>A few more results</h4>
+<form #formTwo="ngForm" novalidate>
+    <section class="form-block">
+        <label>Select Boxes</label>
+        <label>Selected:</label>
+        <code clr-code-highlight="language-json" *ngIf="selectedAFewMore">{{selectedAFewMore | json}}</code>
+        <div class="form-group">
+            <label for="selects_1">This is a select box</label>
+            <clr-select [(ngModel)]="selectedAFewMore" name="selectTwo">
+                <input type="text" clrSelectInput style="width: 300px;" />
+
+                <clr-option *ngFor="let option of optionsAFewMore" [clrValue]="option">{{option.name}}</clr-option>
+            </clr-select>
+        </div>
+    </section>
+</form>
+
+<h4>Server driven results</h4>
+<form #formThree="ngForm" novalidate>
+    <section class="form-block">
+        <label>Select Boxes</label>
+        <label>Selected:</label>
+        <code clr-code-highlight="language-json" *ngIf="selectedFromServer">{{selectedFromServer | json}}</code>
+        <div class="form-group">
+            <label for="selects_1">This is a select box</label>
+            <clr-select [(ngModel)]="selectedFromServer" name="selectThree" (clrRefresh)="loadOptionsFromServer($event)
+    " [clrLoading]="loading" [clrLoadingText]=" 'Searching for names'">
+                <input type="text" clrSelectInput style="width: 300px;" />
+
+                <clr-option *ngFor="let option of optionsFromServer" [clrValue]="option">{{option.name}}</clr-option>
+            </clr-select>
+        </div>
+    </section>
+</form>

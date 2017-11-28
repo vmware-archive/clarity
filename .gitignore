@@ -40,6 +40,9 @@ testem.log
 /typings
 /src/clarity-angular/package.json
 
+.vscode
+.stylelintrc
+.angulardoc.json
 # e2e
 /e2e/*.js
 /e2e/*.map

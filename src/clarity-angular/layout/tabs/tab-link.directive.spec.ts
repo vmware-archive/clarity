@@ -10,6 +10,7 @@ import {IfActiveService} from "../../utils/conditional/if-active.service";
 
 import {TabsWillyWonka} from "./chocolate/tabs-willy-wonka";
 import {TabLinkDirective} from "./tab-link.directive";
+import {TABS_ID_PROVIDER} from "./tabs-id.provider";
 import {TabsService} from "./tabs-service";
 import {ClrTabsModule} from "./tabs.module";
 
@@ -36,7 +37,7 @@ describe("TabLink Directive", () => {
         TestBed.configureTestingModule({
             imports: [ClrTabsModule],
             declarations: [TestComponent],
-            providers: [IfActiveService, TabsService, TabsWillyWonka]
+            providers: [IfActiveService, TabsService, TabsWillyWonka, TABS_ID_PROVIDER]
         });
 
         fixture = TestBed.createComponent(TestComponent);

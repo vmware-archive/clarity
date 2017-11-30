@@ -17,7 +17,33 @@
     <clr-tab>
         <button clrTabLink>Management</button>
         <clr-tab-content *clrIfActive="true">
-            <p>Content for Management tab.</p>
+          <clr-tabs>
+            <clr-tab>
+              <button clrTabLink>Management Level1 Tab1</button>
+              <clr-tab-content *clrIfActive>Management Level1 Content1</clr-tab-content>
+            </clr-tab>
+            <clr-tab *ngIf="true">
+              <button clrTabLink>Management Level1 Tab2</button>
+              <clr-tab-content *clrIfActive>
+                <clr-tabs>
+                  <clr-tab>
+                    <button clrTabLink>Management Level2 Tab1</button>
+                    <clr-tab-content *clrIfActive>
+                      <p>
+                        Management Grand Content1
+                      </p>
+                    </clr-tab-content>
+                  </clr-tab>
+                  <clr-tab *ngIf="true">
+                    <button clrTabLink>Management Level2 Tab2</button>
+                    <clr-tab-content *clrIfActive>
+                      <p>Management Grand Content2</p>
+                    </clr-tab-content>
+                  </clr-tab>
+                </clr-tabs>
+              </clr-tab-content>
+            </clr-tab>
+          </clr-tabs>
         </clr-tab-content>
     </clr-tab>
 

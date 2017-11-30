@@ -4,14 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, Type, ViewChild} from "@angular/core";
-import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {addHelpers, TestContext} from "../../data/datagrid/helpers.spec";
 
 import {Tab} from "./tab";
 import {Tabs} from "./tabs";
 import {TabsService} from "./tabs-service";
-import {ClrTabsModule} from "./tabs.module";
 
 @Component({
     template: `
@@ -88,23 +86,52 @@ class NgIfSecondTest {
     @ViewChild("first") firstTab: Tab;
 }
 
+@Component({
+    template: `
+    <clr-tabs>
+        <clr-tab>
+            <button clrTabLink>ParentTab 1</button>
+            <clr-tab-content *clrIfActive>Parent Content 1</clr-tab-content>
+        </clr-tab>
+        <clr-tab>
+            <button clrTabLink>Parent Tab 2</button>
+                <clr-tab-content *clrIfActive="true">
+                    <clr-tabs>
+                        <clr-tab>
+                            <button clrTabLink>Child Tab1</button>
+                            <clr-tab-content *clrIfActive>Child Content1</clr-tab-content>
+                        </clr-tab>
+                        <clr-tab *ngIf="true">
+                            <button clrTabLink>Child Tab2</button>
+                            <clr-tab-content *clrIfActive>Child Content2</clr-tab-content>
+                        </clr-tab>
+                    </clr-tabs>
+                </clr-tab-content>
+        </clr-tab>
+    </clr-tabs>
+    `
+})
+class NestedTabsTest {
+    @ViewChild(Tabs) tabsInstance: Tabs;
+}
+
 describe("Tabs", () => {
+
+    addHelpers();
+
     describe("Projection", () => {
-        let fixture: ComponentFixture<any>;
-        let instance: any;
+
+        let context: TestContext<Tabs, TestComponent>;
         let compiled: any;
 
-        beforeEach(() => {
-            TestBed.configureTestingModule({imports: [ClrTabsModule], declarations: [TestComponent]});
-
-            fixture = TestBed.createComponent(TestComponent);
-            fixture.detectChanges();
-            instance = fixture.componentInstance.tabsInstance;
-            compiled = fixture.nativeElement;
+        beforeEach(function() {
+            context = this.create(Tabs, TestComponent);
+            context.fixture.detectChanges();
+            compiled = context.fixture.nativeElement;
         });
 
         afterEach(() => {
-            fixture.destroy();
+            context.fixture.destroy();
         });
 
         it("projects all the links and just the active content", () => {
@@ -120,20 +147,43 @@ describe("Tabs", () => {
             expect(compiled.querySelector(".tab4")).toBeDefined();
             expect(compiled.querySelector(".tabs-overflow .tab4")).toBeNull();
 
-            fixture.componentInstance.inOverflow = true;
-            fixture.detectChanges();
+            context.fixture.componentInstance.inOverflow = true;
+            context.fixture.detectChanges();
             expect(compiled.querySelector(".tabs-overflow")).toBeDefined();
 
             const toggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
             toggle.click();
-            fixture.detectChanges();
+            context.fixture.detectChanges();
             expect(compiled.querySelector(".tabs-overflow .tab4")).toBeDefined();
 
         });
     });
 
+    describe("Nested Projection", () => {
+
+        let context: TestContext<Tabs, NestedTabsTest>;
+        let compiled: any;
+
+        beforeEach(function() {
+            context = this.create(Tabs, NestedTabsTest);
+            context.fixture.detectChanges();
+            compiled = context.fixture.nativeElement;
+        });
+
+        afterEach(() => {
+            context.fixture.destroy();
+        });
+
+        it("shouldn't project nested tab links in parent tabs", () => {
+            expect(compiled.querySelectorAll("button.nav-link").length).toEqual(4);
+            const parentLevelNav = compiled.querySelectorAll("ul.nav")[0];
+            const childLevelNav = compiled.querySelectorAll("ul.nav")[1];
+            expect(parentLevelNav.querySelectorAll("button.nav-link").length).toEqual(2);
+            expect(childLevelNav.querySelectorAll("button.nav-link").length).toEqual(2);
+        });
+    });
+
     describe("Default tab", function() {
-        addHelpers();
 
         function expectFirstTabActive<T extends TestComponent|NgIfFirstTest|NgIfSecondTest>(testType: Type<T>) {
             const context: TestContext<Tabs, T> = this.create(Tabs, testType);

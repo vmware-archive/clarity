@@ -1,7 +1,7 @@
 @import '../../styles/clarity-imports';
 
 $clr-icons-hero-height: $clr-baseline*10;
-$clr-icons-content-top: $clr-icons-hero-height + $clr-header-height;
+$clr-icons-content-top: calc(#{$clr-icons-hero-height} + #{$clr-header-height});
 $clr-icons-content-width: 45rem;
 $clr-sidenav-width: $clr-baseline*9;
 $clr-searchbar-nonsticky-margintop: 0;
@@ -110,7 +110,7 @@ $clr-searchbar-container-height-sm: 4.5rem;
 
     .icons-search-wrapper {
         width: calc(100% - #{$clr-sidenav-width});
-        max-width: $clr-icons-content-width - $clr-sidenav-width;
+        max-width: calc($clr-icons-content-width - $clr-sidenav-width);
         position: relative;
         flex: 0 0 auto;
         padding: $clr-baseline $clr_baselineRem_1_5;

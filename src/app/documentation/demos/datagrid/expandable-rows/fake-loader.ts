@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Directive, TemplateRef, ViewContainerRef, Input, OnInit} from "@angular/core";
-import {Loading} from "clarity-angular";
+import {Loading} from "@clr/angular";
 
 const LATENCY = 2000;
 

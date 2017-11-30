@@ -3,14 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, OnDestroy} from "@angular/core";
 
 @Component({
     selector: "clr-progress-bar-inline-demo",
     styleUrls: ["progress-bars.demo.scss"],
     templateUrl: "./progress-bar-inline.html"
 })
-export class ProgressBarInlineDemo implements OnInit {
+export class ProgressBarInlineDemo implements OnInit, OnDestroy {
     inlineProgress: number = 0;
     inlineProgressTimerId: any = -1;
 
@@ -24,12 +24,14 @@ export class ProgressBarInlineDemo implements OnInit {
         return parseInt(random + "", 10);
     }
 
-    setNewValues(): void {
+    setNewValues(disableBar?: boolean): void {
         this.inlineStaticProgbarValue = this.getNewValue();
         this.staticLabeledProgbarValue = this.getNewValue();
         this.staticDangerValue = this.getNewValue();
         this.staticSuccessValue = this.getNewValue();
-        this.runProgressBar();
+        if (!disableBar) {
+            this.runProgressBar();
+        }
     }
 
     stopProgressBar(): void {
@@ -42,7 +44,7 @@ export class ProgressBarInlineDemo implements OnInit {
 
     runProgressBar(): void {
         this.stopProgressBar();
-        this.inlineProgressTimerId = window.setInterval(() => {
+        this.inlineProgressTimerId = setInterval(() => {
 
             let oldProgressValue: number = this.inlineProgress;
             let increment: number = Math.floor(Math.random() * 15) + 1;
@@ -60,10 +62,10 @@ export class ProgressBarInlineDemo implements OnInit {
     }
 
     ngOnInit(): void {
-        this.runProgressBar();
+        this.setNewValues(true);
+    }
 
-        setTimeout(() => {
-            this.setNewValues();
-        }, 800);
+    ngOnDestroy(): void {
+        this.stopProgressBar();
     }
 }

@@ -6,7 +6,7 @@
 import {Component} from "@angular/core";
 import {Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
-import {SortOrder} from "clarity-angular";
+import {SortOrder} from "@clr/angular";
 import {PokemonComparator} from "../utils/pokemon-comparator";
 import {EXAMPLES} from "./examples";
 

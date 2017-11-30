@@ -1,16 +1,15 @@
-import {Component, ElementRef, OnInit, Renderer} from '@angular/core';
+import {Component, ElementRef, OnInit, Renderer,InjectionToken, Inject} from '@angular/core';
 import {Router, NavigationEnd} from "@angular/router";
 import {Title} from '@angular/platform-browser';
 
-import 'clarity-icons';
-import 'clarity-icons/shapes/all-shapes';
+export const PLATFORM_TOKEN = new InjectionToken<string>("clarity");
 
 declare let ga: Function;
 
 const PRODUCT_TITLE = require('../settings/global.json').alt_title;
 
 @Component({
-    selector: 'body',
+    selector: 'root',
     templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {

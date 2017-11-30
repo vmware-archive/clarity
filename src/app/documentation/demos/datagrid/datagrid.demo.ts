@@ -48,6 +48,7 @@ export class DatagridDemo extends ClarityDocComponent implements OnInit, OnDestr
                 }
             }
         }));
+        this.initializePagination('/' + this.route.snapshot.url + '/' + this.route.children[0].routeConfig.path);
     }
 
     initializePagination(url: string): void {

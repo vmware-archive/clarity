@@ -1,10 +1,12 @@
 import {
     Component, ElementRef, Input, ViewChild, AfterViewInit, OnDestroy,
-    Renderer2, NgZone
+    Renderer2, NgZone, Inject, PLATFORM_ID
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ActiveFragmentService } from "./active-fragment.service";
-import { Subscription } from "rxjs";
+import { Subscription } from "rxjs/Subscription";
 import { ActivatedRoute } from "@angular/router";
+import "rxjs/add/operator/distinctUntilChanged";
 
 //noinspection TypeScriptCheckImport
 import jump from 'jump.js'
@@ -21,7 +23,8 @@ export class FragmentContentComponent implements AfterViewInit, OnDestroy {
                 private _ngZone: NgZone,
                 private _renderer: Renderer2,
                 private _route: ActivatedRoute,
-                private _activeFragmentService: ActiveFragmentService) {}
+                private _activeFragmentService: ActiveFragmentService,
+                @Inject(PLATFORM_ID) private platformId: Object) {}
 
     private subscriptions: Subscription[] = [];
 
@@ -75,11 +78,13 @@ export class FragmentContentComponent implements AfterViewInit, OnDestroy {
         this.subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
 
         // unregister all render events.
-        this.windowScroll();
-        this.windowResize();
-        this.fragmentClick();
-
-        window.scrollTo(0, 0);
+        if (isPlatformBrowser(this.platformId)) {
+            this.windowScroll();
+            this.windowResize();
+            this.fragmentClick();
+            
+            window.scrollTo(0, 0);
+        }
     }
 
     updateElementState() {
@@ -133,29 +138,33 @@ export class FragmentContentComponent implements AfterViewInit, OnDestroy {
 
 
     fragmentScrollHandler() {
-        this.windowScroll = this._renderer.listen(window, "scroll", () => {
-            this._ngZone.runOutsideAngular(() => {
+        if (isPlatformBrowser(this.platformId)) {
+            this.windowScroll = this._renderer.listen(window, "scroll", () => {
+                this._ngZone.runOutsideAngular(() => {
 
-                this.updateElementState();
+                    this.updateElementState();
 
-                if (this.isScrollWithinActiveZone() && this.isScrollPositive()) {
-                    this._activeFragmentService.activeFragment.next(this.fragmentLink);
-                }
+                    if (this.isScrollWithinActiveZone() && this.isScrollPositive()) {
+                        this._activeFragmentService.activeFragment.next(this.fragmentLink);
+                    }
+                });
             });
-        });
+        }
     }
 
     fragmentWindowResizeHandler() {
-        this.windowResize = this._renderer.listen(window, "resize", () => {
-            this._ngZone.runOutsideAngular(() => {
-                this.updateElementState();
+        if (isPlatformBrowser(this.platformId)) {
+            this.windowResize = this._renderer.listen(window, "resize", () => {
+                this._ngZone.runOutsideAngular(() => {
+                    this.updateElementState();
+                });
             });
-        });
+        }
     }
 
     // Setting the initial scroll position depending on which fragment is clicked on
     setInitialScrollPosition() {
-        if (this._route.snapshot.fragment === this.fragmentLink) {
+        if (isPlatformBrowser(this.platformId) && this._route.snapshot.fragment === this.fragmentLink) {
             setTimeout(() => {
 
                 this.updateElementState();

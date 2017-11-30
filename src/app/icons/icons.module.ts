@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { ClarityModule } from "clarity-angular";
+import { ClarityModule } from "@clr/angular";
 import { IconsComponent } from "./icons.component";
 import { IconsRouting } from "./icons-routing.module";
 import { IconsGetStartedComponent } from './icons-get-started/icons-get-started.component';

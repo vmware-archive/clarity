@@ -5,7 +5,7 @@
  */
 import {Component} from "@angular/core";
 
-import {State} from "clarity-angular";
+import {State} from "@clr/angular";
 import {FetchResult, Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
 import {ColorFilter} from "../utils/color-filter";

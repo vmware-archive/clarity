@@ -4,13 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { CoreShapes } from "clarity-icons/shapes/core-shapes";
-import { CommerceShapes } from "clarity-icons/shapes/commerce-shapes";
-import { EssentialShapes } from "clarity-icons/shapes/essential-shapes";
-import { MediaShapes } from "clarity-icons/shapes/media-shapes";
-import { SocialShapes } from "clarity-icons/shapes/social-shapes";
-import { TravelShapes } from "clarity-icons/shapes/travel-shapes";
-import { TechnologyShapes } from "clarity-icons/shapes/technology-shapes";
+import { CoreShapes } from "@clr/icons/shapes/core-shapes";
+import { CommerceShapes } from "@clr/icons/shapes/commerce-shapes";
+import { EssentialShapes } from "@clr/icons/shapes/essential-shapes";
+import { MediaShapes } from "@clr/icons/shapes/media-shapes";
+import { SocialShapes } from "@clr/icons/shapes/social-shapes";
+import { TravelShapes } from "@clr/icons/shapes/travel-shapes";
+import { TechnologyShapes } from "@clr/icons/shapes/technology-shapes";
 
 import { ICONS_TAGS } from "./icons-tags"
 

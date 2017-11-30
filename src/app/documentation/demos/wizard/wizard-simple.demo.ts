@@ -5,7 +5,7 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "clarity-angular";
+import { Wizard } from "@clr/angular";
 
 @Component({
     moduleId: module.id,

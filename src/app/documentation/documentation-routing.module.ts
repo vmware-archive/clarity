@@ -1,91 +1,28 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
+import {environment} from "../../environments/environment";
 
 import {DocumentationComponent} from "./documentation.component";
 import {ComponentStatusComponent} from "./component-status/component-status.component";
-import {BadgesDemo} from "./demos/badges/badges.demo";
-import {AlertsDemo} from "./demos/alert/alerts.demo";
-import {AppLayoutDemo} from "./demos/app-layout/app-layout.demo";
-import {ButtonsDemo} from "./demos/buttons/buttons.demo";
-import {CardsDemo} from "./demos/card/cards.demo";
-import {ListsDemo} from "./demos/lists/lists.demo";
-import {ProgressBarsDemo} from "./demos/progress-bars/progress-bars.demo";
-import {ButtonGroupDemo} from "./demos/button-group/button-group.demo";
-import {CheckboxesDemo} from "./demos/checkboxes/checkboxes.demo";
-import {CodeHighlightDemo} from "./demos/code/code.demo";
-import {ColorDemo} from "./demos/color/color.demo";
-import {DatagridDemo} from "./demos/datagrid/datagrid.demo";
-import {DropdownsDemo} from "./demos/dropdown/dropdown.demo";
-import {FormsDemo} from "./demos/forms/forms.demo";
-import {GridDemo} from "./demos/grid/grid.demo";
-import {InputFieldsDemo} from "./demos/input-fields/input-fields.demo";
-import {LabelsDemo} from "./demos/labels/labels.demo";
-import {LoginDemo} from "./demos/login/login.demo";
-import {ModalDemo} from "./demos/modal/modal.demo";
-import {NavigationDemo} from "./demos/nav/navigation.demo";
-import {RadiosDemo} from "./demos/radios/radios.demo";
-import {SelectsDemo} from "./demos/selects/selects.demo";
-import {SpinnerDemo} from "./demos/spinners/spinner.demo";
-import {StackViewDemo} from "./demos/stack-view/stack-view.demo";
-import {HeaderDemo} from "./demos/header/header.demo";
-import {SidenavDemo} from "./demos/sidenav/sidenav.demo";
-import {TablesDemo} from "./demos/tables/tables.demo";
-import {TabsDemo} from "./demos/tabs/tabs.demo";
-import {TogglesDemo} from "app/documentation/demos/toggles/toggles.demo";
-import {TooltipsDemo} from "./demos/tooltips/tooltips.demo";
-import {TreeViewDemo} from "./demos/tree-view/tree-view.demo";
-import {TypographyDemo} from "./demos/typography/typography.demo";
-import {WizardDemo} from "./demos/wizard/wizard.demo";
-import {DatagridBasicStructureDemo} from "./demos/datagrid/basic-structure/basic-structure";
-import {DatagridCustomRenderingDemo} from "./demos/datagrid/custom-rendering/custom-rendering";
-import {DatagridSmartIteratorDemo} from "./demos/datagrid/smart-iterator/smart-iterator";
-import {DatagridSortingDemo} from "./demos/datagrid/sorting/sorting";
-import {DatagridBindingPropertiesDemo} from "./demos/datagrid/binding-properties/binding-properties";
-import {DatagridFilteringDemo} from "./demos/datagrid/filtering/filtering";
-import {DatagridStringFilteringDemo} from "./demos/datagrid/string-filtering/string-filtering";
-import {DatagridPaginationDemo} from "./demos/datagrid/pagination/pagination";
-import {DatagridSelectionDemo} from "./demos/datagrid/selection/selection";
-import {DatagridSelectionSingleDemo} from "./demos/datagrid/single-selection/single-selection";
-import {DatagridBatchActionDemo} from "./demos/datagrid/batch-action/batch-action";
-import {DatagridSingleActionDemo} from "./demos/datagrid/single-action/single-action";
-import {DatagridServerDrivenDemo} from "./demos/datagrid/server-driven/server-driven";
-import {DatagridPlaceholderDemo} from "./demos/datagrid/placeholder/placeholder";
-import {DatagridExpandableRowsDemo} from "./demos/datagrid/expandable-rows/expandable-rows";
-import {DatagridHideShowColumnsDemo} from "./demos/datagrid/hide-show-columns/hide-show-columns";
-import { DatagridCompactDemo } from "./demos/datagrid/compact/compact";
-import {DatagridFullDemo} from "./demos/datagrid/full/full";
-import {SignpostDemo} from "./demos/signposts/signpost.demo";
-import {VerticalNavDemo} from "./demos/vertical-nav/vertical-nav.demo";
-import {BasicNavStructureDemo} from "./demos/vertical-nav/routes/basic-structure/basic-structure";
-import {CharmanderDemo} from "./demos/vertical-nav/routes/pokemons/charmander";
-import {JigglypuffDemo} from "./demos/vertical-nav/routes/pokemons/jigglypuff";
-import {PikachuDemo} from "./demos/vertical-nav/routes/pokemons/pikachu";
-import {RaichuDemo} from "./demos/vertical-nav/routes/pokemons/raichu";
-import {SnorlaxDemo} from "./demos/vertical-nav/routes/pokemons/snorlax";
-import {PokedexDemo} from "./demos/vertical-nav/routes/credits/pokedex";
-import {IconLinksDemo} from "./demos/vertical-nav/routes/icons/icons";
-import {NormalPokemonDemo} from "./demos/vertical-nav/routes/pokemon-types/normal";
-import {ElectricPokemonDemo} from "./demos/vertical-nav/routes/pokemon-types/electric";
-import {PoisonPokemonDemo} from "./demos/vertical-nav/routes/pokemon-types/poison";
-import {GrassPokemonDemo} from "./demos/vertical-nav/routes/pokemon-types/grass";
-import {FightingPokemonDemo} from "./demos/vertical-nav/routes/pokemon-types/fighting";
-import {CollapsibleNavDemo} from "./demos/vertical-nav/routes/collapsible-nav/collapsible-nav";
-import {PidgeyDemo} from "./demos/vertical-nav/routes/pokemons/pidgey";
-import {CharizardDemo} from "./demos/vertical-nav/routes/pokemons/charizard";
-import {LazyLoadingNavGroupsVerticalNavDemo} from "./demos/vertical-nav/routes/lazy-loading-nav-groups/lazy-loading-nav-groups";
-import {VerticalNavGroupsDemo} from "./demos/vertical-nav/routes/nav-groups/nav-groups";
-import {ThemesDemo} from "./demos/themes/themes.demo";
-
 
 const documentationRoutes: Routes = [
     {
-        path: "",
+        path: "documentation",
+        redirectTo: `/documentation/${environment.version}`,
+        pathMatch: "full"
+    },
+    {
+        path: `documentation/${environment.version}`,
         component: DocumentationComponent,
         data: {
             bodyClass: "layout-documentation",
             browserTitle: "Documentation"
         },
         children: [
+            {
+                path: "get-started",
+                loadChildren: "app/documentation/get-started/get-started.module#GetStartedModule",
+            },
             {
                 path: "",
                 component: ComponentStatusComponent,
@@ -96,7 +33,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "alerts",
-                component: AlertsDemo,
+                loadChildren: "app/documentation/demos/alert/alerts.demo.module#AlertsDemoModule",
                 data: {
                     bodyClass: "page-alerts",
                     browserTitle: "Alerts"
@@ -104,7 +41,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "app-layout",
-                component: AppLayoutDemo,
+                loadChildren: "app/documentation/demos/app-layout/app-layout.demo.module#AppLayoutDemoModule",
                 data: {
                     bodyClass: "page-app-layout",
                     browserTitle: "Application Layout"
@@ -112,7 +49,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "badges",
-                component: BadgesDemo,
+                loadChildren: "app/documentation/demos/badges/badges.demo.module#BadgesDemoModule",
                 data: {
                     bodyClass: "page-badges",
                     browserTitle: "Badges"
@@ -120,7 +57,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "buttons",
-                component: ButtonsDemo,
+                loadChildren: "app/documentation/demos/buttons/buttons.demo.module#ButtonsDemoModule",
                 data: {
                     bodyClass: "page-buttons",
                     browserTitle: "Buttons"
@@ -128,7 +65,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "button-group",
-                component: ButtonGroupDemo,
+                loadChildren: "app/documentation/demos/button-group/button-group.demo.module#ButtonGroupDemoModule",
                 data: {
                     bodyClass: "page-button-group",
                     browserTitle: "Button Group"
@@ -136,7 +73,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "cards",
-                component: CardsDemo,
+                loadChildren: "app/documentation/demos/card/cards.demo.module#CardsDemoModule",
                 data: {
                     bodyClass: "page-cards",
                     browserTitle: "Cards"
@@ -144,7 +81,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "checkboxes",
-                component: CheckboxesDemo,
+                loadChildren: "app/documentation/demos/checkboxes/checkboxes.demo.module#CheckboxesDemoModule",
                 data: {
                     bodyClass: "page-checkboxes",
                     browserTitle: "Checkboxes"
@@ -152,7 +89,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "code-highlight",
-                component: CodeHighlightDemo,
+                loadChildren: "app/documentation/demos/code/code-highlight.demo.module#CodeHighlightDemoModule",
                 data: {
                     bodyClass: "page-code-highlight",
                     browserTitle: "Code Highlight"
@@ -160,7 +97,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "color",
-                component: ColorDemo,
+                loadChildren: "app/documentation/demos/color/color.demo.module#ColorDemoModule",
                 data: {
                     bodyClass: "page-color",
                     browserTitle: "Color Palette"
@@ -168,139 +105,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "datagrid",
-                component: DatagridDemo,
-                children: [
-                    {
-                        path: "",
-                        redirectTo: "structure"
-                    },
-                    {
-                        path: "structure",
-                        component: DatagridBasicStructureDemo,
-                        data: {
-                            demoName: "Basic Structure"
-                        }
-                    },
-                    {
-                        path: "custom-rendering",
-                        component: DatagridCustomRenderingDemo,
-                        data: {
-                            demoName: "Custom Cell Rendering"
-                        }
-                    },
-                    {
-                        path: "smart-iterator",
-                        component: DatagridSmartIteratorDemo,
-                        data: {
-                            demoName: "Smart Iterator"
-                        }
-                    },
-                    {
-                        path: "binding-properties",
-                        component: DatagridBindingPropertiesDemo,
-                        data: {
-                            demoName: "Binding Properties"
-                        }
-                    },
-                    {
-                        path: "custom-sorting",
-                        component: DatagridSortingDemo,
-                        data: {
-                            demoName: "Custom Sorting"
-                        }
-                    },
-                    {
-                        path: "custom-filtering",
-                        component: DatagridFilteringDemo,
-                        data: {
-                            demoName: "Custom Filtering"
-                        }
-                    },
-                    {
-                        path: "string-filtering",
-                        component: DatagridStringFilteringDemo,
-                        data: {
-                            demoName: "String Filtering"
-                        }
-                    },
-                    {
-                        path: "pagination",
-                        component: DatagridPaginationDemo,
-                        data: {
-                            demoName: "Pagination"
-                        }
-                    },
-                    {
-                        path: "selection",
-                        component: DatagridSelectionDemo,
-                        data: {
-                            demoName: "Selection"
-                        }
-                    },
-                    {
-                        path: "selection-single",
-                        component: DatagridSelectionSingleDemo,
-                        data: {
-                            demoName: "Single Selection"
-                        }
-                    },
-                    {
-                        path: "batch-action",
-                        component: DatagridBatchActionDemo,
-                        data: {
-                            demoName: "Batch Action"
-                        }
-                    },
-                    {
-                        path: "single-action",
-                        component: DatagridSingleActionDemo,
-                        data: {
-                            demoName: "Single Action"
-                        }
-                    },
-                    {
-                        path: "server-driven",
-                        component: DatagridServerDrivenDemo,
-                        data: {
-                            demoName: "Server Driven"
-                        }
-                    },
-                    {
-                        path: "placeholder",
-                        component: DatagridPlaceholderDemo,
-                        data: {
-                            demoName: "Placeholder"
-                        }
-                    },
-                    {
-                        path: "expandable-rows",
-                        component: DatagridExpandableRowsDemo,
-                        data: {
-                            demoName: "Expandable Rows"
-                        }
-                    },
-                    {
-                        path: "hide-show",
-                        component: DatagridHideShowColumnsDemo,
-                        data: {
-                            demoName: "Hide/Show"
-                        }
-                    },
-                    {
-                        path: "compact",
-                        component: DatagridCompactDemo,
-                        data: {
-                            demoName: "Compact"
-                        }
-                    },
-                    {
-                        path: "full",
-                        component: DatagridFullDemo,
-                        data: {
-                            demoName: "Full Demo"
-                        }
-                    }
-                ],
+                loadChildren: "app/documentation/demos/datagrid/datagrid.demo.module#DatagridDemoModule",
                 data: {
                     bodyClass: "page-datagrid",
                     browserTitle: "Datagrid"
@@ -308,7 +113,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "dropdowns",
-                component: DropdownsDemo,
+                loadChildren: "app/documentation/demos/dropdown/dropdown.demo.module#DropdownDemoModule",
                 data: {
                     bodyClass: "page-dropdowns",
                     browserTitle: "Dropdowns"
@@ -316,7 +121,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "forms",
-                component: FormsDemo,
+                loadChildren: "app/documentation/demos/forms/forms.demo.module#FormsDemoModule",
                 data: {
                     bodyClass: "page-forms",
                     browserTitle: "Forms"
@@ -324,7 +129,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "grid",
-                component: GridDemo,
+                loadChildren: "app/documentation/demos/grid/grid.demo.module#GridDemoModule",
                 data: {
                     bodyClass: "page-grid",
                     browserTitle: "Grid"
@@ -332,7 +137,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "header",
-                component: HeaderDemo,
+                loadChildren: "app/documentation/demos/header/header.demo.module#HeaderDemoModule",
                 data: {
                     bodyClass: "page-header",
                     browserTitle: "Header"
@@ -340,7 +145,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "input-fields",
-                component: InputFieldsDemo,
+                loadChildren: "app/documentation/demos/input-fields/input-fields.demo.module#InputFieldsDemoModule",
                 data: {
                     bodyClass: "input-fields",
                     browserTitle: "Input Fields"
@@ -348,7 +153,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "labels",
-                component: LabelsDemo,
+                loadChildren: "app/documentation/demos/labels/labels.demo.module#LabelsDemoModule",
                 data: {
                     bodyClass: "page-labels",
                     browserTitle: "Labels"
@@ -356,7 +161,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "lists",
-                component: ListsDemo,
+                loadChildren: "app/documentation/demos/lists/lists.demo.module#ListsDemoModule",
                 data: {
                     bodyClass: "page-lists",
                     browserTitle: "Lists"
@@ -364,7 +169,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "login",
-                component: LoginDemo,
+                loadChildren: "app/documentation/demos/login/login.demo.module#LoginDemoModule",
                 data: {
                     bodyClass: "page-login",
                     browserTitle: "Login Page"
@@ -372,7 +177,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "modals",
-                component: ModalDemo,
+                loadChildren: "app/documentation/demos/modal/modal.demo.module#ModalDemoModule",
                 data: {
                     bodyClass: "page-modals",
                     browserTitle: "Modals"
@@ -380,7 +185,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "navigation",
-                component: NavigationDemo,
+                loadChildren: "app/documentation/demos/nav/nav.demo.module#NavDemoModule",
                 data: {
                     bodyClass: "page-navigation",
                     browserTitle: "Navigation"
@@ -388,7 +193,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "progress",
-                component: ProgressBarsDemo,
+                loadChildren: "app/documentation/demos/progress-bars/progress-bars.demo.module#ProgressBarsDemoModule",
                 data: {
                     bodyClass: "page-progress",
                     browserTitle: "Progress Bars"
@@ -396,7 +201,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "radios",
-                component: RadiosDemo,
+                loadChildren: "app/documentation/demos/radios/radios.demo.module#RadiosDemoModule",
                 data: {
                     bodyClass: "page-radios",
                     browserTitle: "Radio Buttons"
@@ -404,7 +209,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "select-boxes",
-                component: SelectsDemo,
+                loadChildren: "app/documentation/demos/selects/selects.demo.module#SelectsDemoModule",
                 data: {
                     bodyClass: "page-select-boxes",
                     browserTitle: "Select Boxes"
@@ -412,7 +217,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "sidenav",
-                component: SidenavDemo,
+                loadChildren: "app/documentation/demos/sidenav/sidenav.demo.module#SidenavDemoModule",
                 data: {
                     bodyClass: "page-sidenav",
                     browserTitle: "Sidenav"
@@ -420,7 +225,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "signposts",
-                component: SignpostDemo,
+                loadChildren: "app/documentation/demos/signposts/signpost.demo.module#SignpostDemoModule",
                 data: {
                     bodyClass: "page-signposts",
                     browserTitle: "Signposts"
@@ -428,7 +233,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "spinners",
-                component: SpinnerDemo,
+                loadChildren: "app/documentation/demos/spinners/spinners.demo.module#SpinnersDemoModule",
                 data: {
                     bodyClass: "page-spinners",
                     browserTitle: "Spinners"
@@ -436,7 +241,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "stack-view",
-                component: StackViewDemo,
+                loadChildren: "app/documentation/demos/stack-view/stack-view.demo.module#StackViewDemoModule",
                 data: {
                     bodyClass: "page-stack-view",
                     browserTitle: "Stack View"
@@ -444,7 +249,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "tables",
-                component: TablesDemo,
+                loadChildren: "app/documentation/demos/tables/tables.demo.module#TablesDemoModule",
                 data: {
                     bodyClass: "page-tables",
                     browserTitle: "Tables"
@@ -452,7 +257,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "tabs",
-                component: TabsDemo,
+                loadChildren: "app/documentation/demos/tabs/tabs.demo.module#TabsDemoModule",
                 data: {
                     bodyClass: "page-tables",
                     browserTitle: "Tables"
@@ -460,7 +265,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "themes",
-                component: ThemesDemo,
+                loadChildren: "app/documentation/demos/themes/themes.demo.module#ThemesDemoModule",
                 data: {
                     bodyClass: "page-tables",
                     browserTitle: "Clarity Themes"
@@ -468,7 +273,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "toggle-switches",
-                component: TogglesDemo,
+                loadChildren: "app/documentation/demos/toggles/toggles.demo.module#TogglesDemoModule",
                 data: {
                     bodyClass: "page-toggle-switches",
                     browserTitle: "Toggle Switches"
@@ -476,7 +281,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "tooltips",
-                component: TooltipsDemo,
+                loadChildren: "app/documentation/demos/tooltips/tooltips.demo.module#TooltipsDemoModule",
                 data: {
                     bodyClass: "page-tooltips",
                     browserTitle: "Tooltips"
@@ -484,7 +289,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "tree-view",
-                component: TreeViewDemo,
+                loadChildren: "app/documentation/demos/tree-view/tree-view.demo.module#TreeDemoModule",
                 data: {
                     bodyClass: "page-tree-view",
                     browserTitle: "Tree View"
@@ -492,7 +297,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "typography",
-                component: TypographyDemo,
+                loadChildren: "app/documentation/demos/typography/typography.demo.module#TypographyDemoModule",
                 data: {
                     bodyClass: "page-typography",
                     browserTitle: "Typography"
@@ -500,328 +305,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "vertical-nav",
-                component: VerticalNavDemo,
-                children: [
-                    {
-                        path: "",
-                        redirectTo: "basic-structure"
-                    },
-                    {
-                        path: "basic-structure",
-                        component: BasicNavStructureDemo,
-                        children: [
-                            {
-                                path: "",
-                                redirectTo: "charmander"
-                            },
-                            {
-                                path: "charmander",
-                                component: CharmanderDemo
-                            },
-                            {
-                                path: "jigglypuff",
-                                component: JigglypuffDemo
-                            },
-                            {
-                                path: "pikachu",
-                                component: PikachuDemo
-                            },
-                            {
-                                path: "raichu",
-                                component: RaichuDemo
-                            },
-                            {
-                                path: "snorlax",
-                                component: SnorlaxDemo
-                            },
-                            {
-                                path: "credit",
-                                component: PokedexDemo
-                            }
-                        ],
-                        data: {
-                            demoName: "Basic Structure"
-                        }
-                    },
-                    {
-                        path: "icon-links",
-                        component: IconLinksDemo,
-                        children: [
-                            {
-                                path: "",
-                                redirectTo: "normal"
-                            },
-                            {
-                                path: "normal",
-                                component: NormalPokemonDemo
-                            },
-                            {
-                                path: "electric",
-                                component: ElectricPokemonDemo
-                            },
-                            {
-                                path: "poison",
-                                component: PoisonPokemonDemo
-                            },
-                            {
-                                path: "grass",
-                                component: GrassPokemonDemo
-                            },
-                            {
-                                path: "fighting",
-                                component: FightingPokemonDemo
-                            },
-                            {
-                                path: "credit",
-                                component: PokedexDemo
-                            }
-                        ],
-                        data: {
-                            demoName: "Icon Links"
-                        }
-                    },
-                    {
-                        path: "collapsible-nav",
-                        component: CollapsibleNavDemo,
-                        children: [
-                            {
-                                path: "",
-                                redirectTo: "normal"
-                            },
-                            {
-                                path: "normal",
-                                component: NormalPokemonDemo
-                            },
-                            {
-                                path: "electric",
-                                component: ElectricPokemonDemo
-                            },
-                            {
-                                path: "poison",
-                                component: PoisonPokemonDemo
-                            },
-                            {
-                                path: "grass",
-                                component: GrassPokemonDemo
-                            },
-                            {
-                                path: "fighting",
-                                component: FightingPokemonDemo
-                            },
-                            {
-                                path: "credit",
-                                component: PokedexDemo
-                            }
-                        ],
-                        data: {
-                            demoName: "Collapsible Vertical Nav"
-                        }
-                    },
-                    {
-                        path: "nav-groups",
-                        component: VerticalNavGroupsDemo,
-                        children: [
-                            {
-                                path: "",
-                                redirectTo: "normal/pidgey"
-                            },
-                            {
-                                path: "normal/snorlax",
-                                component: SnorlaxDemo
-                            },
-                            {
-                                path: "normal/pidgey",
-                                component: PidgeyDemo
-                            },
-                            {
-                                path: "electric/pikachu",
-                                component: PikachuDemo
-                            },
-                            {
-                                path: "electric/raichu",
-                                component: RaichuDemo
-                            },
-                            {
-                                path: "fire/charmander",
-                                component: CharmanderDemo
-                            },
-                            {
-                                path: "fire/charizard",
-                                component: CharizardDemo
-                            },
-                            {
-                                path: "credit",
-                                component: PokedexDemo
-                            }
-                        ],
-                        data: {
-                            demoName: "Vertical Nav Groups"
-                        }
-                    },
-                    {
-                        path: "lazy-loading-nav-links",
-                        component: LazyLoadingNavGroupsVerticalNavDemo,
-                        children: [
-                            {
-                                path: "",
-                                redirectTo: "normal/pidgey"
-                            },
-                            {
-                                path: "normal",
-                                component: PidgeyDemo
-                            },
-                            {
-                                path: "normal/snorlax",
-                                component: SnorlaxDemo
-                            },
-                            {
-                                path: "normal/pidgey",
-                                component: PidgeyDemo
-                            },
-                            {
-                                path: "electric",
-                                component: PikachuDemo
-                            },
-                            {
-                                path: "electric/pikachu",
-                                component: PikachuDemo
-                            },
-                            {
-                                path: "electric/raichu",
-                                component: RaichuDemo
-                            },
-                            {
-                                path: "fire",
-                                component: CharmanderDemo
-                            },
-                            {
-                                path: "fire/charmander",
-                                component: CharmanderDemo
-                            },
-                            {
-                                path: "fire/charizard",
-                                component: CharizardDemo
-                            },
-                            {
-                                path: "credit",
-                                component: PokedexDemo
-                            }
-                        ],
-                        data: {
-                            demoName: "Lazy Loading Links In Nav Groups"
-                        }
-                    },
-                    /*,
-                    // Commented because these demos are deprecated (Nav Groups with Parent Links)
-                    // Keeping them commented just in case we decide to add them back.
-                    {
-                        path: "nav-groups",
-                        component: NavGroupsParentLinksVerticalNavDemo,
-                        children: [
-                            {
-                                path: "",
-                                redirectTo: "normal"
-                            },
-                            {
-                                path: "normal",
-                                component: NormalPokemonDemo
-                            },
-                            {
-                                path: "normal/snorlax",
-                                component: SnorlaxDemo
-                            },
-                            {
-                                path: "normal/pidgey",
-                                component: PidgeyDemo
-                            },
-                            {
-                                path: "electric",
-                                component: ElectricPokemonDemo
-                            },
-                            {
-                                path: "electric/pikachu",
-                                component: PikachuDemo
-                            },
-                            {
-                                path: "electric/raichu",
-                                component: RaichuDemo
-                            },
-                            {
-                                path: "fire",
-                                component: FirePokemonDemo
-                            },
-                            {
-                                path: "fire/charmander",
-                                component: CharmanderDemo
-                            },
-                            {
-                                path: "fire/charizard",
-                                component: CharizardDemo
-                            },
-                            {
-                                path: "credit",
-                                component: PokedexDemo
-                            }
-                        ],
-                        data: {
-                            demoName: "Nav Groups"
-                        }
-                    },
-                    {
-                        path: "no-lazy-loading",
-                        component: NoLazyLoadingVerticalNavDemo,
-                        children: [
-                            {
-                                path: "",
-                                redirectTo: "normal"
-                            },
-                            {
-                                path: "normal",
-                                component: NormalPokemonDemo
-                            },
-                            {
-                                path: "snorlax",
-                                component: SnorlaxDemo
-                            },
-                            {
-                                path: "pidgey",
-                                component: PidgeyDemo
-                            },
-                            {
-                                path: "electric",
-                                component: ElectricPokemonDemo
-                            },
-                            {
-                                path: "pikachu",
-                                component: PikachuDemo
-                            },
-                            {
-                                path: "raichu",
-                                component: RaichuDemo
-                            },
-                            {
-                                path: "fire",
-                                component: FirePokemonDemo
-                            },
-                            {
-                                path: "charmander",
-                                component: CharmanderDemo
-                            },
-                            {
-                                path: "charizard",
-                                component: CharizardDemo
-                            },
-                            {
-                                path: "credit",
-                                component: PokedexDemo
-                            }
-                        ],
-                        data: {
-                            demoName: "Unstructured Routes"
-                        }
-                    }
-                    */
-                ],
+                loadChildren: "app/documentation/demos/vertical-nav/vertical-nav.demo.module#VerticalNavDemoModule",
                 data: {
                     bodyClass: "page-vertical-nav",
                     browserTitle: "Vertical Nav"
@@ -829,7 +313,7 @@ const documentationRoutes: Routes = [
             },
             {
                 path: "wizards",
-                component: WizardDemo,
+                loadChildren: "app/documentation/demos/wizard/wizard.demo.module#WizardDemoModule",
                 data: {
                     bodyClass: "page-wizards",
                     browserTitle: "Wizards"

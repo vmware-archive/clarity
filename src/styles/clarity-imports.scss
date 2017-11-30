@@ -1,7 +1,7 @@
 /* Vendor */
 
-@import "~clarity-ui/src/utils/vendor/decimalRounding.clarity";
-@import "~clarity-ui/src/utils/vendor/mathPow.clarity";
+@import "~@clr/ui/src/utils/vendor/decimalRounding.clarity";
+@import "~@clr/ui/src/utils/vendor/mathPow.clarity";
 
 /* End Vendor */
 
@@ -9,19 +9,18 @@
 
 /* Clarity - Begin Part 1 */
 
-@import "~clarity-ui/src/utils/mixins.clarity";
-@import "~clarity-ui/src/utils/helpers.clarity";
-//@import "./utils/normalize.clarity"; //Deleted
+@import "~@clr/ui/src/utils/mixins.clarity";
+@import "~@clr/ui/src/utils/helpers.clarity";
 
 //Color
-@import "~clarity-ui/src/color/utils/colors.clarity";
-@import "~clarity-ui/src/color/utils/contrast-cache.clarity";
-@import "~clarity-ui/src/color/utils/helpers.clarity";
-@import "~clarity-ui/src/color/color.clarity"; // depends on colors.clarity, helper.clarity, contrast-cache.clarity
+@import "~@clr/ui/src/color/utils/colors.clarity";
+@import "~@clr/ui/src/color/utils/contrast-cache.clarity";
+@import "~@clr/ui/src/color/utils/helpers.clarity";
+@import "~@clr/ui/src/color/color.clarity"; // depends on colors.clarity, helper.clarity, contrast-cache.clarity
 
 //Layer - z-indices
-@import "~clarity-ui/src/utils/layers.clarity";
+@import "~@clr/ui/src/utils/layers.clarity";
 
 //Variables
-@import "~clarity-ui/src/utils/variables.clarity"; // depends on helpers.clarity, color.clarity
-@import "~clarity-ui/src/utils/_maps.clarity";
+@import "~@clr/ui/src/utils/variables.clarity"; // depends on helpers.clarity, color.clarity
+@import "~@clr/ui/src/utils/_maps.clarity";

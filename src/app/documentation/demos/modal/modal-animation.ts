@@ -3,7 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, PLATFORM_ID, Inject} from "@angular/core";
+import {isPlatformBrowser} from '@angular/common';
 
 const EXAMPLE = `
 <div class="modal">
@@ -22,10 +23,21 @@ const EXAMPLE = `
 })
 export class ModalAnimationDemo implements OnInit {
     animatedExampleIn: boolean = false;
+    interval: any;
+
+    constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
     ngOnInit(): void {
-        // If you want interactivity, go to the Angular component demo. :-P
-        setInterval(() => this.animatedExampleIn = !this.animatedExampleIn, 2000);
+        if (isPlatformBrowser(this.platformId)) {
+            // If you want interactivity, go to the Angular component demo. :-P
+            this.interval = setInterval(() => this.animatedExampleIn = !this.animatedExampleIn, 2000);
+        }
+    }
+
+    ngOnDestroy(): void {
+        if (this.interval) {
+            clearInterval(this.interval);
+        }
     }
 
     example = EXAMPLE;

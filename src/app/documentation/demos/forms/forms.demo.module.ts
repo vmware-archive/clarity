@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "clarity-angular";
+import {ClarityModule} from "@clr/angular";
 import {FormsModule}   from "@angular/forms";
 import {ReactiveFormsModule} from "@angular/forms";
 
@@ -26,10 +26,10 @@ import {UtilsModule} from "../../../utils/utils.module";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule,
+        RouterModule.forChild([{path: "", component: FormsDemo}]),
         DocWrapperModule,
         UtilsModule
     ],

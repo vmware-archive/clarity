@@ -27,8 +27,6 @@ export class ProgressBarInlineCardsDemo implements OnInit {
     }
 
     ngOnInit(): void {
-        setTimeout(() => {
-            this.setNewValues();
-        }, 500);
+        this.setNewValues();
     }
 }

@@ -5,10 +5,10 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "clarity-angular";
+import {ClarityModule} from "@clr/angular";
 import {VerticalNavDemo} from "./vertical-nav.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
-import {RouterModule} from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
 import {UtilsModule} from "../../../utils/utils.module";
 import {BasicNavDemo} from "./basic-nav/basic-nav";
 import {BasicNavUsage} from "./basic-nav-usage/basic-nav-usage";
@@ -39,12 +39,346 @@ import {NoLazyLoadingVerticalNavDemo} from "./routes/no-lazy-loading-with-parent
 import {LazyLoadingNavGroupsVerticalNavDemo} from "./routes/lazy-loading-nav-groups/lazy-loading-nav-groups";
 import {VerticalNavGroupsDemo} from "./routes/nav-groups/nav-groups";
 
+const routes: Routes = [
+  {
+    path: "",
+    component: VerticalNavDemo,
+    children: [
+      {
+        path: "",
+        redirectTo: "basic-structure",
+        pathMatch: "full"
+      },
+      {
+        path: "basic-structure",
+        component: BasicNavStructureDemo,
+        children: [
+          {
+            path: "",
+            redirectTo: "charmander",
+            pathMatch: "full"
+          },
+          {
+            path: "charmander",
+            component: CharmanderDemo
+          },
+          {
+            path: "jigglypuff",
+            component: JigglypuffDemo
+          },
+          {
+            path: "pikachu",
+            component: PikachuDemo
+          },
+          {
+            path: "raichu",
+            component: RaichuDemo
+          },
+          {
+            path: "snorlax",
+            component: SnorlaxDemo
+          },
+          {
+            path: "credit",
+            component: PokedexDemo
+          }
+        ],
+        data: {
+          demoName: "Basic Structure"
+        }
+      },
+      {
+        path: "icon-links",
+        component: IconLinksDemo,
+        children: [
+          {
+            path: "",
+            redirectTo: "normal",
+            pathMatch: "full"
+          },
+          {
+            path: "normal",
+            component: NormalPokemonDemo
+          },
+          {
+            path: "electric",
+            component: ElectricPokemonDemo
+          },
+          {
+            path: "poison",
+            component: PoisonPokemonDemo
+          },
+          {
+            path: "grass",
+            component: GrassPokemonDemo
+          },
+          {
+            path: "fighting",
+            component: FightingPokemonDemo
+          },
+          {
+            path: "credit",
+            component: PokedexDemo
+          }
+        ],
+        data: {
+          demoName: "Icon Links"
+        }
+      },
+      {
+        path: "collapsible-nav",
+        component: CollapsibleNavDemo,
+        children: [
+          {
+            path: "",
+            redirectTo: "normal",
+            pathMatch: "full"
+          },
+          {
+            path: "normal",
+            component: NormalPokemonDemo
+          },
+          {
+            path: "electric",
+            component: ElectricPokemonDemo
+          },
+          {
+            path: "poison",
+            component: PoisonPokemonDemo
+          },
+          {
+            path: "grass",
+            component: GrassPokemonDemo
+          },
+          {
+            path: "fighting",
+            component: FightingPokemonDemo
+          },
+          {
+            path: "credit",
+            component: PokedexDemo
+          }
+        ],
+        data: {
+          demoName: "Collapsible Vertical Nav"
+        }
+      },
+      {
+        path: "nav-groups",
+        component: VerticalNavGroupsDemo,
+        children: [
+          {
+            path: "",
+            redirectTo: "normal/pidgey",
+            pathMatch: "full"
+          },
+          {
+            path: "normal/snorlax",
+            component: SnorlaxDemo
+          },
+          {
+            path: "normal/pidgey",
+            component: PidgeyDemo
+          },
+          {
+            path: "electric/pikachu",
+            component: PikachuDemo
+          },
+          {
+            path: "electric/raichu",
+            component: RaichuDemo
+          },
+          {
+            path: "fire/charmander",
+            component: CharmanderDemo
+          },
+          {
+            path: "fire/charizard",
+            component: CharizardDemo
+          },
+          {
+            path: "credit",
+            component: PokedexDemo
+          }
+        ],
+        data: {
+          demoName: "Vertical Nav Groups"
+        }
+      },
+      {
+        path: "lazy-loading-nav-links",
+        component: LazyLoadingNavGroupsVerticalNavDemo,
+        children: [
+          {
+            path: "",
+            redirectTo: "normal/pidgey",
+            pathMatch: "full"
+          },
+          {
+            path: "normal",
+            component: PidgeyDemo
+          },
+          {
+            path: "normal/snorlax",
+            component: SnorlaxDemo
+          },
+          {
+            path: "normal/pidgey",
+            component: PidgeyDemo
+          },
+          {
+            path: "electric",
+            component: PikachuDemo
+          },
+          {
+            path: "electric/pikachu",
+            component: PikachuDemo
+          },
+          {
+            path: "electric/raichu",
+            component: RaichuDemo
+          },
+          {
+            path: "fire",
+            component: CharmanderDemo
+          },
+          {
+            path: "fire/charmander",
+            component: CharmanderDemo
+          },
+          {
+            path: "fire/charizard",
+            component: CharizardDemo
+          },
+          {
+            path: "credit",
+            component: PokedexDemo
+          }
+        ],
+        data: {
+          demoName: "Lazy Loading Links In Nav Groups"
+        }
+      }
+      /*,
+                // Commented because these demos are deprecated (Nav Groups with Parent Links)
+                // Keeping them commented just in case we decide to add them back.
+                {
+                    path: "nav-groups",
+                    component: NavGroupsParentLinksVerticalNavDemo,
+                    children: [
+                        {
+                            path: "",
+                            redirectTo: "normal"
+                        },
+                        {
+                            path: "normal",
+                            component: NormalPokemonDemo
+                        },
+                        {
+                            path: "normal/snorlax",
+                            component: SnorlaxDemo
+                        },
+                        {
+                            path: "normal/pidgey",
+                            component: PidgeyDemo
+                        },
+                        {
+                            path: "electric",
+                            component: ElectricPokemonDemo
+                        },
+                        {
+                            path: "electric/pikachu",
+                            component: PikachuDemo
+                        },
+                        {
+                            path: "electric/raichu",
+                            component: RaichuDemo
+                        },
+                        {
+                            path: "fire",
+                            component: FirePokemonDemo
+                        },
+                        {
+                            path: "fire/charmander",
+                            component: CharmanderDemo
+                        },
+                        {
+                            path: "fire/charizard",
+                            component: CharizardDemo
+                        },
+                        {
+                            path: "credit",
+                            component: PokedexDemo
+                        }
+                    ],
+                    data: {
+                        demoName: "Nav Groups"
+                    }
+                },
+                {
+                    path: "no-lazy-loading",
+                    component: NoLazyLoadingVerticalNavDemo,
+                    children: [
+                        {
+                            path: "",
+                            redirectTo: "normal"
+                        },
+                        {
+                            path: "normal",
+                            component: NormalPokemonDemo
+                        },
+                        {
+                            path: "snorlax",
+                            component: SnorlaxDemo
+                        },
+                        {
+                            path: "pidgey",
+                            component: PidgeyDemo
+                        },
+                        {
+                            path: "electric",
+                            component: ElectricPokemonDemo
+                        },
+                        {
+                            path: "pikachu",
+                            component: PikachuDemo
+                        },
+                        {
+                            path: "raichu",
+                            component: RaichuDemo
+                        },
+                        {
+                            path: "fire",
+                            component: FirePokemonDemo
+                        },
+                        {
+                            path: "charmander",
+                            component: CharmanderDemo
+                        },
+                        {
+                            path: "charizard",
+                            component: CharizardDemo
+                        },
+                        {
+                            path: "credit",
+                            component: PokedexDemo
+                        }
+                    ],
+                    data: {
+                        demoName: "Unstructured Routes"
+                    }
+                }
+                */
+    ]
+  }
+];
+
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule,
         DocWrapperModule,
-        RouterModule,
+        RouterModule.forChild(routes),
         UtilsModule
     ],
     declarations: [
@@ -83,5 +417,4 @@ import {VerticalNavGroupsDemo} from "./routes/nav-groups/nav-groups";
         VerticalNavDemo
     ]
 })
-export class VerticalNavDemoModule {
-}
+export class VerticalNavDemoModule {}

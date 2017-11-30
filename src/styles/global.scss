@@ -37,11 +37,11 @@ p.cozy + p {
     margin-top: 4px;
 }
 
-body p.squish {
+p.squish {
     margin-top: 0;
 }
 
-body ol.indent {
+ol.indent {
     padding-left: $bl-2_0;
     margin-top: $bl-1_0;
     & li {
@@ -152,8 +152,8 @@ code[class*="language-"] {
 }
 
 @media (max-width: 991px) {
-    body.layout-get-started,
-    body.layout-components {
+    .layout-get-started,
+    .layout-components {
         .content-area > section {
             width: 100%;
             padding-left: 0;
@@ -187,12 +187,9 @@ a.btn-primary {
     text-align: center;
 }
 
-body:not(.layout-home) {
+:not(.layout-home) {
     .content-area section:first-of-type h1 {
         margin-top: -1 * $bl-0_25;
-    }
-    .main-container .content-container .content-area {
-        padding-bottom: $bl-3_0;
     }
 }
 
@@ -222,63 +219,59 @@ body:not(.layout-home) {
     }
 }
 
-body {
-    &.layout-documentation,
-    &.layout-get-started,
-    &.layout-news {
-        .main-container .content-container .content-area {
-            padding-left: $bl-1_5;
-            padding-top: $bl-0_75;
-        }
+.layout-documentation,
+.layout-get-started,
+.layout-news {
+    .main-container .content-container .content-area {
+        padding-left: $bl-1_5;
+        padding-top: $bl-0_75;
     }
 }
 
 // custom whitespace changes for website
-body {
-    &.layout-documentation,
-    &.layout-get-started,
-    &.layout-news {
-        h2,
-        h3 {
-            margin-top: 120px;
-        }
-        h2 + h3 {
-            margin-top: $bl-1_5;
-        }
-        h5 {
-            color: #000;
-            margin-top: 72px;
-        }
-        h4 {
-            margin-top: 72px;
-        }
-        h6 {
-            margin-top: 48px;
-        }
-        h5 + h6 {
-            margin-top: 36px;
-        }
-        h3 + h5,
-        h2 + h5,
-        h3 + h4,
-        h1 + h5 {
-            margin-top: $bl-1_0;
-        }
-        h6 + p {
-            margin-top: $bl-0_25;
-        }
-        pre {
-            // TODO: move this into the background style of the code-highlight 
-            // component...
-            background: #FFF !important;
-        }
+.layout-documentation,
+.layout-get-started,
+.layout-news {
+    h2,
+    h3 {
+        margin-top: 120px;
     }
-    .btn.no-margin {
-        padding: 0;
-        margin: 0;
-        width: auto;
-        min-width: auto;
+    h2 + h3 {
+        margin-top: $bl-1_5;
     }
+    h5 {
+        color: #000;
+        margin-top: 72px;
+    }
+    h4 {
+        margin-top: 72px;
+    }
+    h6 {
+        margin-top: 48px;
+    }
+    h5 + h6 {
+        margin-top: 36px;
+    }
+    h3 + h5,
+    h2 + h5,
+    h3 + h4,
+    h1 + h5 {
+        margin-top: $bl-1_0;
+    }
+    h6 + p {
+        margin-top: $bl-0_25;
+    }
+    pre {
+        // TODO: move this into the background style of the code-highlight 
+        // component...
+        background: #FFF !important;
+    }
+}
+.btn.no-margin {
+    padding: 0;
+    margin: 0;
+    width: auto;
+    min-width: auto;
 }
 
 .margin-top-24 {

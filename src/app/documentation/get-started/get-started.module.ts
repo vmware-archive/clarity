@@ -1,8 +1,8 @@
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
-import {ClarityModule} from "clarity-angular";
+import {ClarityModule} from "@clr/angular";
 
-import {UtilsModule} from "../utils/utils.module";
+import {UtilsModule} from "../../utils/utils.module";
 import {GetStartedComponent} from "./get-started.component";
 import {RouterModule, Routes} from "@angular/router";
 
@@ -11,7 +11,7 @@ const route: Routes = [
         path: "",
         component: GetStartedComponent,
         data: {
-            bodyClass: "layout-get-started",
+            // bodyClass: "layout-get-started",
             browserTitle: "Get Started"
         }
     }
@@ -23,7 +23,7 @@ const route: Routes = [
     ],
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule,
         UtilsModule,
         RouterModule.forChild(route)
     ],

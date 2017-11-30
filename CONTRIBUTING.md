@@ -20,8 +20,8 @@ Here are the typical steps in a contributor's workflow:
 - Setup your local environment to run and build Clarity. See our [build documentation](BUILD.md).
 - Make commits of logical units.
 - Make sure `npm test` passes for each of them.
-- Make sure `npm clang` passes for each of them. If not, you can run a gulp task (clang:format) to format your code.
-- Make sure `npm tslint` passes for each of them. If not, you can run a gulp task (tslint:fix) to try to auto-fix some of them.
+- Make sure `npm run clang:check` passes for each of them. If not, you can run `npm run clang:format` to format your code.
+- Make sure `npm run tslint:check` passes for each of them. If not, you can run `npm run tslint:fix` to try to auto-fix some of them.
 For certain lint failures you will have to fix them manually.
 - Make sure your commit messages are in the proper format (see below).
 - Push your changes to a topic branch in your fork of the repository.

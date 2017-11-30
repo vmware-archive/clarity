@@ -15,6 +15,7 @@ import {
 import {IF_ACTIVE_ID, IfActiveService} from "../../utils/conditional/if-active.service";
 import {TemplateRefContainer} from "../../utils/template-ref/template-ref-container";
 import {AriaService} from "./aria-service";
+import {TABS_ID} from "./tabs-id.provider";
 
 let nbTabLinkComponents: number = 0;
 
@@ -38,7 +39,7 @@ export class TabLinkDirective {
 
     constructor(public ifActiveService: IfActiveService, @Inject(IF_ACTIVE_ID) private id: number,
                 private ariaService: AriaService, private el: ElementRef, private cfr: ComponentFactoryResolver,
-                private viewContainerRef: ViewContainerRef) {
+                private viewContainerRef: ViewContainerRef, @Inject(TABS_ID) public tabsId: number) {
         if (!this.tabLinkId) {
             this.tabLinkId = "clr-tab-link-" + (nbTabLinkComponents++);
         }

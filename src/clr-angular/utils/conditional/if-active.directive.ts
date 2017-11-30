@@ -44,7 +44,6 @@ export class IfActiveDirective implements OnDestroy {
     }
 
     /*********
-     * @function active
      *
      * @description
      * A setter that updates IfActiveService.active with value.
@@ -65,23 +64,19 @@ export class IfActiveDirective implements OnDestroy {
      * An event emitter that emits when the active property is set to allow for 2way binding when the directive is
      * used with de-structured / de-sugared syntax.
      *
-     * @type {EventEmitter<any>}
      */
     @Output("clrIfActiveChange") activeChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
     /********
-     * @function active
      *
      * @description
      * A getter that returns the current IfActiveService.active value.
-     * @returns {any}
      */
     public get active() {
         return this.ifActiveService.current === this.id;
     }
 
     /*********
-     * @function updateView
      *
      * @description
      * Function that takes a any value and either created an embedded view for the associated ViewContainerRef or,

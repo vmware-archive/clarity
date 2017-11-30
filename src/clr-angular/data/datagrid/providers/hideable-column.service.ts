@@ -12,7 +12,6 @@ import {DatagridHideableColumn} from "../datagrid-hideable-column";
 
 
 /**
- * @class HideableColumnService
  *
  * @description
  * An @Injectable provider class that enables
@@ -31,8 +30,6 @@ export class HideableColumnService {
      * this array will have empty spaces a.k.a nulls. This is needed to be able to map
      * DatagridCells to DatagridColumns in the RowRenderer.
      *
-     *
-     * @type { DatagridHideableColumn[] }
      */
     private _columnList: DatagridHideableColumn[] = [];
 
@@ -45,7 +42,6 @@ export class HideableColumnService {
      * NOTE: I am using BehaviorSubject because <clr-dg-column-toggle> is not getting the latest _columnListChange
      * on page load.
      *
-     * @type {BehaviorSubject<DatagridColumn[]>}
      */
     private _columnListChange: BehaviorSubject<DatagridHideableColumn[]> =
         new BehaviorSubject<DatagridHideableColumn[]>(this._columnList);
@@ -58,7 +54,6 @@ export class HideableColumnService {
      * Service function that is called by clr-dg-column-toggle component. Use this if you need to ask if you can hide
      * a column. It acts as a guard against hiding all the columns making sure there is at least one column displayed.
      *
-     * @returns {boolean}
      */
     public get canHideNextColumn(): boolean {
         const hiddenColumns = this._columnList.filter(column => column !== undefined).filter(column => column.hidden);
@@ -72,7 +67,6 @@ export class HideableColumnService {
      * @description
      * For when you need to know if the datagrid's columns are all showing.
      *
-     * @return {boolean}
      */
     public get checkForAllColumnsVisible(): boolean {
         return !this._columnList.some(column => column && column.hidden);
@@ -85,7 +79,6 @@ export class HideableColumnService {
      * A public property that enables subscribers to hear updates to the column map.
      * Use this if you need to do something whenever the Datagrid's column list is changed (i.e *ngIf on a column).
      *
-     * @returns {Observable<DatagridHideableColumn[]>}
      */
     public get columnListChange(): Observable<DatagridHideableColumn[]> {
         return this._columnListChange.asObservable();
@@ -93,20 +86,16 @@ export class HideableColumnService {
 
     /**********
      *
-     * @function getColumns
-     *
      * @description
      * Public function that returns the current list of columns. I needed an array of to iterate on in the RowRenderer
      * but subscribing to the _columnListChange changes did not seem like the correct way to get it.
      *
-     * @returns {DatagridColumn[]}
      */
     public getColumns(): DatagridHideableColumn[] {
         return this._columnList;
     }
 
     /**********
-     * @function showHiddenColumns
      *
      * @description
      * Iterate through the current _columnList:
@@ -127,15 +116,12 @@ export class HideableColumnService {
     }
 
     /**
-     * @function updateColumnList
      *
      * @param columns: DatagridColumn[]
      *
      * @description
      * Creates an array of DatagridHideableColumn's || null based column array passed as param.
      * Is dependent on the order in @ContentChildren in Datagrid.
-     *
-     * @param columns
      *
      */
     public updateColumnList(columns: DatagridHideableColumn[]) {
@@ -146,15 +132,11 @@ export class HideableColumnService {
 
     /**********
      *
-     * @function updateForLastVisibleColumn
-     *
      * @description
      * Gets the current visible count for all columns.
      * When it is greater than 1 it marks everything as false for the lastVisibleColumn.
      * When visible count is not > 1 (i.e) 1. , it finds the only column that is not hidden and marks it as the
      * lastVisibleColumn.
-     *
-     * @return void
      *
      */
     public updateForLastVisibleColumn(): void {
@@ -177,16 +159,9 @@ export class HideableColumnService {
 
     /**********
      *
-     * @function getColumnById
-     *
      * @description
      * Return a HideableColumn in this._columnList for the given id.
      *
-     * @param id
-     *
-     * @type string
-     *
-     * @returns HideableColumn
      *
      */
     public getColumnById(id: string): undefined|DatagridHideableColumn {

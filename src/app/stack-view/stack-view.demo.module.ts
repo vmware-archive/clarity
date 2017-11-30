@@ -7,7 +7,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 
-import {ClarityModule} from "../../clr-angular/clr.module";
+import {ClarityModule} from "../../clr-angular/clr-angular.module";
 
 import {StackViewAngularBasicDemo} from "./stack-view-angular-basic";
 import {StackViewAngularLazyloadDemo} from "./stack-view-angular-lazyload";

@@ -6,7 +6,7 @@
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 
-import {ClarityModule} from "../../clr-angular/clr.module";
+import {ClarityModule} from "../../clr-angular/clr-angular.module";
 
 import {TypographyFontCharTestDemo} from "./typography-font-char-test";
 import {TypographyFontWeightDemo} from "./typography-font-weight";

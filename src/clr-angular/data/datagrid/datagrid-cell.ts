@@ -19,13 +19,10 @@ export class DatagridCell {
     /*********
      * @property signpost
      *
-     * @type {Signpost}
-     *
      * @description
      * @ContentChild is used to detect the presence of a Signpost in the projected content.
      * On the host, we set the .datagrid-signpost-trigger class on the cell when signpost.length is greater than 0.
      *
-     * @type {Querylist<Signpost>}
      */
     @ContentChildren(Signpost) signpost: QueryList<Signpost>;
 
@@ -35,7 +32,6 @@ export class DatagridCell {
      * @description
      * An identifier for an instance of this cell that maps it to a specific column
      *
-     * @type {string}
      */
     private _id: string;
 

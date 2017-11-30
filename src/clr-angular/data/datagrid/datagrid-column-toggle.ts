@@ -71,7 +71,6 @@ export class DatagridColumnToggle implements OnInit, OnDestroy {
 
     /***
      * Popover init
-     * @type {Point}
      */
     public anchorPoint: Point = Point.TOP_LEFT;
     public popoverPoint: Point = Point.LEFT_BOTTOM;
@@ -79,7 +78,6 @@ export class DatagridColumnToggle implements OnInit, OnDestroy {
 
     /****
      * DatagridHideableColumn init
-     * @type {Array}
      */
     public columns: DatagridHideableColumn[] = [];
 

@@ -7,7 +7,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 
-import {ClarityModule} from "../../clr-angular/clr.module";
+import {ClarityModule} from "../../clr-angular/clr-angular.module";
 
 import {VerticalNavAllCases} from "./all-cases/vertical-all-cases.demo";
 import {VerticalNavBasicDemo} from "./basic/vertical-nav-basic";

@@ -18,6 +18,7 @@ import {Button} from "./button";
     providers: [ButtonInGroupService],
     host: {"[class.btn-group]": "true"}
 })
+
 export class ButtonGroup {
     @ContentChildren(Button) buttons: QueryList<Button>;
 
@@ -71,17 +72,13 @@ export class ButtonGroup {
      * Finds the order of a button w.r.t other buttons
      *
      * @param buttonToMove
-     * @returns {number}
+     * @returns
      */
     getMoveIndex(buttonToMove: Button): number {
         const tempArr: Button[] = this.buttons.filter(button => (button.inMenu === buttonToMove.inMenu));
         return tempArr.indexOf(buttonToMove);
     }
 
-    /**
-     * Finds where each button belongs based on
-     * the ContentChildren
-     */
     initializeButtons(): void {
         const tempInlineButtons: Button[] = [];
         const tempInMenuButtons: Button[] = [];
@@ -185,8 +182,6 @@ export class ButtonGroup {
      * If true, this can save us traversing the DOM to find
      * whether the click was withing the button group toggle
      * or menu in the onMouseClick method
-     * @type {boolean}
-     * @private
      */
     private _overflowMenuToggleClicked: boolean = false;
 
@@ -194,7 +189,6 @@ export class ButtonGroup {
     /**
      * Called on mouse clicks anywhere in the DOM.
      * Checks to see if the mouseclick happened on the host or outside
-     * @param target
      */
     @HostListener("document:click", ["$event.target"])
     onMouseClick(target: any): void {

@@ -59,9 +59,6 @@ export class Sort {
      * optional forceReverse input parameter allows to override that toggling behavior by sorting in
      * reverse order if `true`.
      *
-     * @param {Comparator<any>} sortBy the comparator to use for sorting
-     * @param {boolean} [forceReverse] `true` to force sorting descendingly
-     *
      * @memberof Sort
      */
     public toggle(sortBy: Comparator<any>, forceReverse?: boolean) {

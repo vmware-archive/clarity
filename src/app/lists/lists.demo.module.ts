@@ -6,7 +6,7 @@
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 
-import {ClarityModule} from "../../clr-angular/clr.module";
+import {ClarityModule} from "../../clr-angular/clr-angular.module";
 
 import {ListsCompactDemo} from "./lists-compact";
 import {ListsInCardsDemo} from "./lists-in-cards";

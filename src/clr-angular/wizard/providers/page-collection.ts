@@ -32,7 +32,6 @@ import {WizardPage} from "../wizard-page";
  * reference to the Wizard.pages QueryList when the wizard is created.
  *
  * @export
- * @class PageCollectionService
  */
 @Injectable()
 export class PageCollectionService {
@@ -41,7 +40,6 @@ export class PageCollectionService {
      *
      * Populated when the wizard is created.
      *
-     * @type {QueryList<WizardPage>}
      * @memberof PageCollectionService
      */
     public pages: QueryList<WizardPage>;
@@ -51,8 +49,6 @@ export class PageCollectionService {
      *
      * Useful for many instances when you would prefer a QueryList to act like an array.
      *
-     * @readonly
-     * @type {WizardPage[]}
      * @memberof PageCollectionService
      */
     public get pagesAsArray(): WizardPage[] {
@@ -62,8 +58,6 @@ export class PageCollectionService {
     /**
      * Returns the length of the pages query list.
      *
-     * @readonly
-     * @type {number}
      * @memberof PageCollectionService
      */
     public get pagesCount(): number {
@@ -74,8 +68,6 @@ export class PageCollectionService {
      * Returns the next-to-last page in the query list of pages. Operates as a getter
      * so that it isn't working with stale data.
      *
-     * @readonly
-     * @type {WizardPage}
      * @memberof PageCollectionService
      */
     public get penultimatePage(): WizardPage {
@@ -92,8 +84,6 @@ export class PageCollectionService {
      * Returns the last page in the query list of pages. Operates as a getter
      * so that it isn't working with stale data.
      *
-     * @readonly
-     * @type {WizardPage}
      * @memberof PageCollectionService
      */
     public get lastPage(): WizardPage {
@@ -110,8 +100,6 @@ export class PageCollectionService {
      * Returns the first page in the query list of pages. Operates as a getter
      * so that it isn't working with stale data.
      *
-     * @readonly
-     * @type {WizardPage}
      * @memberof PageCollectionService
      */
     public get firstPage(): WizardPage {
@@ -130,9 +118,6 @@ export class PageCollectionService {
      * Returns the next-to-last page in the query list of pages. Operates as a getter
      * so that it isn't working with stale data.
      *
-     * @readonly
-     * @type {WizardPage}
-     * @param {string} id  ID of the page you're looking for
      * @memberof PageCollectionService
      */
     public getPageById(id: string): WizardPage {
@@ -143,9 +128,6 @@ export class PageCollectionService {
     /**
      * Accepts s number as a parameter and treats that number as the index of the page
      * you're looking for in the collection of pages. Returns a  wizard page object.
-     *
-     * @param {number} index
-     * @returns {WizardPage}
      *
      * @memberof PageCollectionService
      */
@@ -168,9 +150,6 @@ export class PageCollectionService {
      * Takes a wizard page object as a parameter and returns its index in the
      * collection of pages.
      *
-     * @param {WizardPage} page
-     * @returns {number}
-     *
      * @memberof PageCollectionService
      */
     public getPageIndex(page: WizardPage): number {
@@ -186,11 +165,6 @@ export class PageCollectionService {
     /**
      * Consolidates guard logic that prevents a couple of unfortunate edge cases with
      * look ups on the collection of pages.
-     *
-     * @private
-     * @param {WizardPage[]} results
-     * @param {string} requestedPageId
-     * @returns
      *
      * @memberof PageCollectionService
      */
@@ -209,10 +183,6 @@ export class PageCollectionService {
     /**
      * Accepts two numeric indexes and returns an array of wizard page objects that include
      * all wizard pages in the page collection from the first index to the second.
-     *
-     * @param {number} start
-     * @param {number} end
-     * @returns {WizardPage[]}
      *
      * @memberof PageCollectionService
      */
@@ -258,10 +228,6 @@ export class PageCollectionService {
      * objects between them in the page collection. It doesn't care which page is ahead of the
      * other in the parameters. It will be smart enough to figure that out  on its own.
      *
-     * @param {WizardPage} page
-     * @param {WizardPage} otherPage
-     * @returns {WizardPage[]}
-     *
      * @memberof PageCollectionService
      */
     public getPageRangeFromPages(page: WizardPage, otherPage: WizardPage): WizardPage[] {
@@ -285,9 +251,6 @@ export class PageCollectionService {
      * the page immediately before it in the page collection. Returns null if there is
      * no page before the page it is passed.
      *
-     * @param {WizardPage} page
-     * @returns {WizardPage}
-     *
      * @memberof PageCollectionService
      */
     public getPreviousPage(page: WizardPage) {
@@ -302,9 +265,6 @@ export class PageCollectionService {
     /**
      * Accepts a wizard page object as a parameter and returns a Boolean that says if
      * the page you sent it is complete.
-     *
-     * @param {WizardPage} page
-     * @returns {boolean}
      *
      * @memberof PageCollectionService
      */
@@ -330,9 +290,6 @@ export class PageCollectionService {
      * the page immediately after it in the page collection. Returns null if there is
      * no page after the page it is passed.
      *
-     * @param {WizardPage} page
-     * @returns {WizardPage} next page
-     *
      * @memberof PageCollectionService
      */
     public getNextPage(page: WizardPage) {
@@ -349,9 +306,6 @@ export class PageCollectionService {
      * Takes a wizard page object as a parameter and generates a step item id from the
      * page ID. Returns the generated step item ID as a string.
      *
-     * @param {WizardPage} page
-     * @returns {string}
-     *
      * @memberof PageCollectionService
      */
     public getStepItemIdForPage(page: WizardPage) {
@@ -367,8 +321,6 @@ export class PageCollectionService {
      * This involves marking the page complete and firing the WizardPage.onCommit
      * (clrWizardPageOnCommit) output. Takes the wizard page object that you intend to
      * mark completed as a parameter.
-     *
-     * @param {WizardPage} page
      *
      * @memberof PageCollectionService
      */
@@ -388,9 +340,8 @@ export class PageCollectionService {
 
     /**
      *
-     * @private
-     *
      * @memberof PageCollectionService
+     *
      */
     private _pagesReset = new Subject<boolean>();
 
@@ -400,9 +351,8 @@ export class PageCollectionService {
      * can also reset the navigation to make the first page in the page collection
      * current/active.
      *
-     * @readonly
-     * @type {Observable<boolean>}
      * @memberof PageCollectionService
+     *
      */
     public get pagesReset(): Observable<boolean> {
         return this._pagesReset.asObservable();
@@ -427,9 +377,8 @@ export class PageCollectionService {
      * the first incomplete page index and sets all pages behind it to a completed
      * state of false.
      *
-     * @returns {void}
-     *
      * @memberof PageCollectionService
+     *
      */
     public updateCompletedStates(): void {
         const firstIncompleteIndex = this.findFirstIncompletePageIndex();
@@ -449,9 +398,8 @@ export class PageCollectionService {
     /**
      * Retrieves the index of the first incomplete page in the page collection.
      *
-     * @returns {number}
-     *
      * @memberof PageCollectionService
+     *
      */
     public findFirstIncompletePageIndex(): number {
         let returnIndex: number = null;

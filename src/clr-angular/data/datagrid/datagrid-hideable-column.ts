@@ -9,7 +9,6 @@ import {Subject} from "rxjs/Subject";
 
 
 /**
- * @class DatagridHideableColumn
  *
  * @description
  * A utility class for that adds hide/show functionality to a column, its cells and enables a toggler in the
@@ -23,12 +22,10 @@ export class DatagridHideableColumn {
      * @description
      * A stream of state changes an instance of DatagridHideableColumn will broadcast to subscribers.
      *
-     * @type {Subject<boolean>}
      */
     private hiddenChangesState: Subject<boolean> = new Subject<boolean>();
 
     /**
-     * @constructor
      *
      * @description
      * The init function for DatagridHideableColumn instances that does the following:
@@ -44,52 +41,44 @@ export class DatagridHideableColumn {
     constructor(private _template: TemplateRef<any>, private _id: string, private _hidden: boolean = false) {}
 
     /**
-     * @function template
      *
      * @description
      * A getter function that returns an TemplateRef of the DatagridColumn that is hideable. This is currently used to
      * populate the DatagridColumnToggle UI with the correct Column name.
      *
-     * @returns {TemplateRef<any>}
      */
     get template() {
         return this._template;
     }
 
     /**
-     * @function id
      *
      * @description
      * public function that returns the id of a HideableCOlumn instance. Used by the HideableCOlumnService for passing
      * state and actions between DateGridColumns, DataGridCells & the DatagridColumnToggle Components.
      *
-     * @returns {string}
      */
     get id(): string {
         return this._id;
     }
 
     /**
-     * @function hidden
      *
      * @description
      * A getter that returns the hidden value of a DatagridHideableColumn instance.
      * TODO: debug and make sure you really need this since we have the hiddenCHanges observable.
      *
-     * @returns {boolean}
      */
     get hidden(): boolean {
         return this._hidden;
     }
 
     /**
-     * @function hidden
      *
      * @description
      * The setter for setting the hidden state of a DatagridHideableColumn instance.
      * It also broadcasts the change after its set.
      *
-     * @param value
      */
     set hidden(value: boolean) {
         if (this._hidden === value) {
@@ -100,12 +89,10 @@ export class DatagridHideableColumn {
     }
 
     /**
-     * @function hiddenChangeState
      *
      * @description
      * An Observable for the HideableColumns hidden changes.
      *
-     * @returns {Observable<boolean>}
      */
     get hiddenChangeState(): Observable<boolean> {
         return this.hiddenChangesState.asObservable();

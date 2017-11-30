@@ -34,9 +34,6 @@ import {PageCollectionService} from "./page-collection";
  *   ...
  * }
  *
- * @export
- * @class WizardNavigationService
- * @implements {OnDestroy}
  */
 @Injectable()
 export class WizardNavigationService implements OnDestroy {
@@ -45,40 +42,40 @@ export class WizardNavigationService implements OnDestroy {
      * before alerting the current page of the button click. Enacts navigation to
      * the previous page if not overridden at the page level.
      *
-     * @type {Subscription}
      * @memberof WizardNavigationService
+     *
      */
     public previousButtonSubscription: Subscription;
 
     /**
      * Is notified when a Next button is clicked in the wizard.
      *
-     * @type {Subscription}
      * @memberof WizardNavigationService
+     *
      */
     public nextButtonSubscription: Subscription;
 
     /**
      * Is notified when a danger button is clicked in the wizard.
      *
-     * @type {Subscription}
      * @memberof WizardNavigationService
+     *
      */
     public dangerButtonSubscription: Subscription;
 
     /**
      * Is notified when a  finish button is clicked in the wizard.
      *
-     * @type {Subscription}
      * @memberof WizardNavigationService
+     *
      */
     public finishButtonSubscription: Subscription;
 
     /**
      * Is notified when a Custom button is clicked in the wizard.
      *
-     * @type {Subscription}
      * @memberof WizardNavigationService
+     *
      */
     public customButtonSubscription: Subscription;
 
@@ -87,8 +84,8 @@ export class WizardNavigationService implements OnDestroy {
      * which handles all cancel functionality, if cancel is not overridden at the page
      * level.
      *
-     * @type {Subscription}
      * @memberof WizardNavigationService
+     *
      */
     public cancelButtonSubscription: Subscription;
 
@@ -97,8 +94,8 @@ export class WizardNavigationService implements OnDestroy {
      * emits an event notifying WizardNavigationService that it has reset all pages
      * to their pristine, incomplete state.
      *
-     * @type {Subscription}
      * @memberof WizardNavigationService
+     *
      */
     public pagesResetSubscription: Subscription;
 
@@ -108,10 +105,8 @@ export class WizardNavigationService implements OnDestroy {
      * in the wizard. Is also responsible for taking action when the page collection
      * requests that navigation be reset to its pristine state.
      *
-     * @param {PageCollectionService} pageCollection
-     * @param {ButtonHubService} buttonService
-     *
      * @memberof WizardNavigationService
+     *
      */
     constructor(public pageCollection: PageCollectionService, public buttonService: ButtonHubService) {
         this.previousButtonSubscription = this.buttonService.previousBtnClicked.subscribe(() => {
@@ -163,9 +158,8 @@ export class WizardNavigationService implements OnDestroy {
 
     /**
      *
-     * @ignore
-     *
      * @memberof WizardNavigationService
+     *
      */
     ngOnDestroy(): void {
         this.previousButtonSubscription.unsubscribe();
@@ -180,10 +174,8 @@ export class WizardNavigationService implements OnDestroy {
 
     /**
      *
-     * @ignore
-     * @private
-     *
      * @memberof WizardNavigationService
+     *
      */
     private _currentChanged = new Subject<WizardPage>();
 
@@ -192,9 +184,8 @@ export class WizardNavigationService implements OnDestroy {
      * of the wizard. It is recommended that users listen to the WizardPage.onLoad
      * (clrWizardPageOnLoad) output instead of this Observable.
      *
-     * @private
-     *
      * @memberof WizardNavigationService
+     *
      */
     public get currentPageChanged(): Observable<WizardPage> {
         // TODO: MAKE SURE EXTERNAL OUTPUTS SAY 'CHANGE' NOT 'CHANGED'
@@ -206,8 +197,8 @@ export class WizardNavigationService implements OnDestroy {
      * A Boolean flag used by the WizardPage to avoid a race condition when pages are
      * loading and there is no current page defined.
      *
-     * @type {boolean}
      * @memberof WizardNavigationService
+     *
      */
     public navServiceLoaded = false;
 
@@ -220,17 +211,15 @@ export class WizardNavigationService implements OnDestroy {
      * This is useful when a wizard executes validation on a page-by-page basis when
      * the next button is clicked.
      *
-     * @type {boolean}
      * @memberof WizardNavigationService
+     *
      */
     public forceForwardNavigation = false;
 
     /**
      *
-     * @ignore
-     * @readonly
-     * @type {TemplateRef<any>}
      * @memberof WizardNavigationService
+     *
      */
     public get currentPageTitle(): TemplateRef<any> {
         // when the querylist of pages is empty. this is the first place it fails...
@@ -246,9 +235,8 @@ export class WizardNavigationService implements OnDestroy {
      *
      * This is helpful for determining whether a page is navigable.
      *
-     * @readonly
-     * @type {boolean}
      * @memberof WizardNavigationService
+     *
      */
     public get currentPageIsFirst(): boolean {
         return this.pageCollection.firstPage === this.currentPage;
@@ -260,9 +248,8 @@ export class WizardNavigationService implements OnDestroy {
      *
      * This is used to determine the animation state of ghost pages.
      *
-     * @readonly
-     * @type {boolean}
      * @memberof WizardNavigationService
+     *
      */
     public get currentPageIsNextToLast(): boolean {
         return this.pageCollection.penultimatePage === this.currentPage;
@@ -275,9 +262,8 @@ export class WizardNavigationService implements OnDestroy {
      * This is used to determine the animation state of ghost pages as well as
      * which buttons should display in the wizard footer.
      *
-     * @readonly
-     * @type {boolean}
      * @memberof WizardNavigationService
+     *
      */
     public get currentPageIsLast(): boolean {
         return this.pageCollection.lastPage === this.currentPage;
@@ -285,18 +271,16 @@ export class WizardNavigationService implements OnDestroy {
 
     /**
      *
-     * @ignore
-     * @private
-     * @type {WizardPage}
      * @memberof WizardNavigationService
+     *
      */
     private _currentPage: WizardPage;
 
     /**
      * Returns the WizardPage object of the current page or null.
      *
-     * @type {WizardPage}
      * @memberof WizardNavigationService
+     *
      */
     get currentPage(): WizardPage {
         if (!this._currentPage) {
@@ -328,8 +312,6 @@ export class WizardNavigationService implements OnDestroy {
      * Deprecated in 0.9.4. Accepts a WizardPage object as a parameter and then
      * tries to set that page to be the current page in the wizard.
      *
-     * @param {WizardPage} page
-     *
      * @memberof WizardNavigationService
      */
     public setCurrentPage(page: WizardPage): void {
@@ -338,10 +320,8 @@ export class WizardNavigationService implements OnDestroy {
 
     /**
      *
-     * @ignore
-     * @private
-     *
      * @memberof WizardNavigationService
+     *
      */
     private _movedToNextPage = new Subject<boolean>();
 
@@ -350,9 +330,8 @@ export class WizardNavigationService implements OnDestroy {
      * has occurred. It is recommended that you use the Wizard.onMoveNext
      * (clrWizardOnNext) output instead of this one.
      *
-     * @readonly
-     * @type {Observable<boolean>}
      * @memberof WizardNavigationService
+     *
      */
     public get movedToNextPage(): Observable<boolean> {
         return this._movedToNextPage.asObservable();
@@ -360,10 +339,8 @@ export class WizardNavigationService implements OnDestroy {
 
     /**
      *
-     * @ignore
-     * @private
-     *
      * @memberof WizardNavigationService
+     *
      */
     private _wizardFinished = new Subject<boolean>();
 
@@ -374,9 +351,8 @@ export class WizardNavigationService implements OnDestroy {
      * It is recommended that you use the Wizard.wizardFinished (clrWizardOnFinish)
      * output instead of this one.
      *
-     * @readonly
-     * @type {Observable<boolean>}
      * @memberof WizardNavigationService
+     *
      */
     public get wizardFinished(): Observable<boolean> {
         return this._wizardFinished.asObservable();
@@ -392,9 +368,8 @@ export class WizardNavigationService implements OnDestroy {
      *
      * In most cases, it makes more sense to use Wizard.next(false).
      *
-     * @returns {void}
-     *
      * @memberof WizardNavigationService
+     *
      */
     public next(): void {
         if (this.currentPageIsLast) {
@@ -415,6 +390,7 @@ export class WizardNavigationService implements OnDestroy {
      * Comparable to calling Wizard.next() or Wizard.forceNext().
      *
      * @memberof WizardNavigationService
+     *
      */
     public forceNext(): void {
         const currentPage: WizardPage = this.currentPage;
@@ -442,10 +418,8 @@ export class WizardNavigationService implements OnDestroy {
      *
      * Avoid calling this function directly unless you really know what you're doing.
      *
-     * @param {string} buttonType
-     * @returns {void}
-     *
      * @memberof WizardNavigationService
+     *
      */
     public checkAndCommitCurrentPage(buttonType: string): void {
         const currentPage: WizardPage = this.currentPage;
@@ -522,7 +496,6 @@ export class WizardNavigationService implements OnDestroy {
      *
      * In most cases, it makes more sense to use Wizard.finish(false).
      *
-     * @memberof WizardNavigationService
      */
     public finish(): void {
         this.checkAndCommitCurrentPage("finish");
@@ -530,10 +503,8 @@ export class WizardNavigationService implements OnDestroy {
 
     /**
      *
-     * @ignore
-     * @private
-     *
      * @memberof WizardNavigationService
+     *
      */
     private _movedToPreviousPage = new Subject<boolean>();
 
@@ -541,9 +512,8 @@ export class WizardNavigationService implements OnDestroy {
      * Notifies the wizard when backwards navigation has occurred via the
      * previous button.
      *
-     * @readonly
-     * @type {Observable<boolean>}
      * @memberof WizardNavigationService
+     *
      */
     public get movedToPreviousPage(): Observable<boolean> {
         return this._movedToPreviousPage.asObservable();
@@ -555,9 +525,8 @@ export class WizardNavigationService implements OnDestroy {
      * In most instances, it makes more sense to call Wizard.previous()
      * which does the same thing.
      *
-     * @returns {void}
-     *
      * @memberof WizardNavigationService
+     *
      */
     public previous(): void {
         let previousPage: WizardPage;
@@ -583,19 +552,16 @@ export class WizardNavigationService implements OnDestroy {
 
     /**
      *
-     * @ignore
-     * @private
-     *
      * @memberof WizardNavigationService
+     *
      */
     private _cancelWizard = new Subject<any>();
 
     /**
      * Notifies the wizard that a user is trying to cancel it.
      *
-     * @readonly
-     * @type {Observable<any>}
      * @memberof WizardNavigationService
+     *
      */
     public get notifyWizardCancel(): Observable<any> {
         return this._cancelWizard.asObservable();
@@ -615,6 +581,7 @@ export class WizardNavigationService implements OnDestroy {
      * again evoke the events it handles.
      *
      * @memberof WizardNavigationService
+     *
      */
     public cancel(): void {
         this._cancelWizard.next();
@@ -626,8 +593,8 @@ export class WizardNavigationService implements OnDestroy {
      * routine is subverted and must be reinstated in the host component calling Wizard.close()
      * at some point.
      *
-     * @type {boolean}
      * @memberof WizardNavigationService
+     *
      */
     public wizardHasAltCancel: boolean = false;
 
@@ -637,8 +604,8 @@ export class WizardNavigationService implements OnDestroy {
      * routines are subverted and must be reinstated in the host component calling Wizard.next(),
      * Wizard.forceNext(), Wizard.finish(), or Wizard.forceFinish().
      *
-     * @type {boolean}
      * @memberof WizardNavigationService
+     *
      */
     public wizardHasAltNext: boolean = false;
 
@@ -650,8 +617,8 @@ export class WizardNavigationService implements OnDestroy {
      * This is intended to freeze the wizard in place. Events are not fired so this is
      * not a way to implement alternate functionality for navigation.
      *
-     * @type {boolean}
      * @memberof WizardNavigationService
+     *
      */
     public wizardStopNavigation: boolean = false;
 
@@ -659,8 +626,8 @@ export class WizardNavigationService implements OnDestroy {
      * A boolean flag shared with the stepnav items that prevents user clicks on
      * stepnav items from navigating the wizard.
      *
-     * @type {boolean}
      * @memberof WizardNavigationService
+     *
      */
     public wizardDisableStepnav: boolean = false;
 
@@ -679,11 +646,8 @@ export class WizardNavigationService implements OnDestroy {
      *
      * To avoid checks on navigation, use WizardPage.makeCurrent() instead.
      *
-     * @param {*} pageToGoToOrId
-     * @param {boolean} [lazyComplete=false]
-     * @returns
-     *
      * @memberof WizardNavigationService
+     *
      */
     public goTo(pageToGoToOrId: any, lazyComplete: boolean = false) {
         let pageToGoTo: WizardPage;
@@ -735,10 +699,8 @@ export class WizardNavigationService implements OnDestroy {
      * Accepts a range of WizardPage objects as a parameter. Performs the work of checking
      * those objects to determine if navigation can be accomplished.
      *
-     * @param {WizardPage[]} pagesToCheck
-     * @returns {boolean}
-     *
      * @memberof WizardNavigationService
+     *
      */
     public canGoTo(pagesToCheck: WizardPage[]): boolean {
         let okayToMove = true;
@@ -785,6 +747,7 @@ export class WizardNavigationService implements OnDestroy {
      * and makes that page the current/active page.
      *
      * @memberof WizardNavigationService
+     *
      */
     public setLastEnabledPageCurrent(): void {
         const allPages: WizardPage[] = this.pageCollection.pagesAsArray;
@@ -811,26 +774,23 @@ export class WizardNavigationService implements OnDestroy {
      * current/active page.
      *
      * @memberof WizardNavigationService
+     *
      */
     public setFirstPageCurrent(): void {
         this.currentPage = this.pageCollection.pagesAsArray[0];
     }
 
     /**
-     *
-     * @ignore
-     * @private
-     * @type {string}
      * @memberof WizardNavigationService
+     *
      */
     private _wizardGhostPageState: string = GHOST_PAGE_ANIMATION.STATES.NO_PAGES;
 
 
     /**
      *
-     * @ignore
-     * @type {string}
      * @memberof WizardNavigationService
+     *
      */
     public get wizardGhostPageState(): string {
         return this._wizardGhostPageState;
@@ -838,9 +798,8 @@ export class WizardNavigationService implements OnDestroy {
 
     /**
      *
-     * @ignore
-     *
      * @memberof WizardNavigationService
+     *
      */
     public set wizardGhostPageState(value: string) {
         if (this.hideWizardGhostPages) {
@@ -852,18 +811,15 @@ export class WizardNavigationService implements OnDestroy {
 
     /**
      *
-     * @ignore
-     * @private
-     * @type {boolean}
      * @memberof WizardNavigationService
+     *
      */
     private _hideWizardGhostPages: boolean = true;
 
     /**
      *
-     * @ignore
-     * @type {boolean}
      * @memberof WizardNavigationService
+     *
      */
     public get hideWizardGhostPages(): boolean {
         return this._hideWizardGhostPages;
@@ -871,9 +827,8 @@ export class WizardNavigationService implements OnDestroy {
 
     /**
      *
-     * @ignore
-     *
      * @memberof WizardNavigationService
+     *
      */
     public set hideWizardGhostPages(value: boolean) {
         this._hideWizardGhostPages = value;
@@ -884,6 +839,7 @@ export class WizardNavigationService implements OnDestroy {
      * added or removed from the collection of pages.
      *
      * @memberof WizardNavigationService
+     *
      */
     public updateNavigation(): void {
         let toSetCurrent: WizardPage;

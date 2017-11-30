@@ -37,10 +37,10 @@ export class SignpostTriggerDirective implements OnDestroy {
     }
 
     /**********
-     * @function onSignpostTriggerClick
      *
      * @description
      * click handler for the Signpost trigger button used to hide/show SignpostContent.
+     *
      */
     @HostListener("click", ["$event"])
     onSignpostTriggerClick(event: Event): void {

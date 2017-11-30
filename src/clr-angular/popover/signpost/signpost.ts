@@ -48,7 +48,6 @@ export class Signpost {
      * @description
      * Flag used to determine if we need to use the default trigger or a user supplied trigger element.
      *
-     * @type {boolean}
      */
     public useCustomTrigger: boolean = false;
 
@@ -58,7 +57,6 @@ export class Signpost {
      * @description
      * Uses ContentChild to check for a user supplied element with the SignpostTriggerDirective on it.
      *
-     * @type {SignpostTriggerDirective}
      */
     @ContentChild(SignpostTriggerDirective)
     set customTrigger(trigger: SignpostTriggerDirective) {

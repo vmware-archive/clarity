@@ -156,7 +156,6 @@ export class DatagridPagination implements OnDestroy, OnInit {
 
     /**
      * Conditionally adds page numbers before and after the current page
-     * @returns {number[]}
      */
     public get middlePages(): number[] {
         const middlePages: number[] = [];

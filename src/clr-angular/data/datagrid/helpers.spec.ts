@@ -12,7 +12,7 @@ import {DebugElement, InjectionToken, Type} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
 
-import {ClarityModule} from "../../clr.module";
+import {ClarityModule} from "../../clr-angular.module";
 
 export class TestContext<D, C> {
     fixture: ComponentFixture<C>;

@@ -55,7 +55,6 @@ export class SignpostContent extends AbstractPopover {
     }
 
     /**********
-     * @function close
      *
      * @description
      * Close function that uses the signpost instance to toggle the state of the content popover.
@@ -72,7 +71,6 @@ export class SignpostContent extends AbstractPopover {
     }
 
     /*********
-     * @function set position
      *
      * @description
      * A setter for the position of the SignpostContent popover. This is a combination of the following:

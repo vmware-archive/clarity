@@ -81,7 +81,6 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
      * A DatagridColumn class variable that holds the number of DatagridColumn instances for a Datagrid.
      * It is used to generate a unique id for the DatagridColumn instance.
      *
-     * @type {string}
      */
     public columnId: string;
 
@@ -94,7 +93,6 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
      *
      * @default false
      *
-     * @type boolean
      */
     public get hidden(): boolean {
         return !!this.hideable && this.hideable.hidden;
@@ -331,7 +329,6 @@ export class DatagridColumn extends DatagridFilterRegistrar<DatagridStringFilter
      * When a column is hideable this is defined with an instance of DatagridHideableColumn.
      * When its not hideable should be undefined.
      *
-     * @type {DatagridHideableColumn}
      */
     public hideable: DatagridHideableColumn;
 }

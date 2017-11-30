@@ -25,9 +25,6 @@ let wizardPageIndex = 0;
  * (WizardPage.buttonService). These three providers are shared across the components
  * within each instance of a Wizard.
  *
- * @export
- * @class WizardPage
- * @implements {OnInit}
  */
 @Component({
     selector: "clr-wizard-page",
@@ -45,10 +42,6 @@ export class WizardPage implements OnInit {
     /**
      * Creates an instance of WizardPage.
      *
-     * @param {WizardNavigationService} navService
-     * @param {PageCollectionService} pageCollection
-     * @param {ButtonHubService} buttonService
-     *
      * @memberof WizardPage
      */
     constructor(private navService: WizardNavigationService, public pageCollection: PageCollectionService,
@@ -58,8 +51,8 @@ export class WizardPage implements OnInit {
      * Contains a reference to the page title which is used for a number
      * of different tasks for display in the wizard.
      *
-     * @type {WizardPageTitleDirective}
      * @memberof WizardPage
+     *
      */
     @ContentChild(WizardPageTitleDirective) public pageTitle: WizardPageTitleDirective;
 
@@ -70,9 +63,8 @@ export class WizardPage implements OnInit {
      *
      * If not defined, then WizardPage.pageTitle will be displayed in the stepnav.
      *
-     * @
-     * @type {WizardPageNavTitleDirective}
      * @memberof WizardPage
+     *
      */
     @ContentChild(WizardPageNavTitleDirective) public pageNavTitle: WizardPageNavTitleDirective;
 
@@ -81,8 +73,8 @@ export class WizardPage implements OnInit {
      * the wizard defaults to the set of buttons defined as a direct child of the
      * wizard.
      *
-     * @type {WizardPageButtonsDirective}
      * @memberof WizardPage
+     *
      */
     @ContentChild(WizardPageButtonsDirective) public _buttons: WizardPageButtonsDirective;
 
@@ -91,15 +83,15 @@ export class WizardPage implements OnInit {
      * the wizard defaults to the set of header actions defined as a direct child of the
      * wizard.
      *
-     * @type {WizardPageHeaderActionsDirective}
      * @memberof WizardPage
+     *
      */
     @ContentChild(WizardPageHeaderActionsDirective) public _headerActions: WizardPageHeaderActionsDirective;
 
     /**
-     * @private
-     * @ignore
+     *
      * @memberof WizardPage
+     *
      */
     private _nextStepDisabled = false;
 
@@ -114,9 +106,8 @@ export class WizardPage implements OnInit {
      * would if you were using WizardPage.preventDefault or
      * Wizard.preventDefault.
      *
-     * @readonly
-     * @type {boolean}
      * @memberof WizardPage
+     *
      */
     public get nextStepDisabled(): boolean {
         return this._nextStepDisabled;
@@ -126,6 +117,7 @@ export class WizardPage implements OnInit {
      * Sets whether the page should allow forward navigation.
      *
      * @memberof WizardPage
+     *
      */
     @Input("clrWizardPageNextDisabled")
     public set nextStepDisabled(val: boolean) {
@@ -140,15 +132,15 @@ export class WizardPage implements OnInit {
      * Emits when the value of WizardPage.nextStepDisabled changes.
      * Should emit the new value of nextStepDisabled.
      *
-     * @type {EventEmitter <boolean>}
      * @memberof WizardPage
+     *
      */
     @Output("clrWizardPageNextDisabledChange") nextStepDisabledChange: EventEmitter<boolean> = new EventEmitter();
 
     /**
-     * @private
-     * @ignore
+     *
      * @memberof WizardPage
+     *
      */
     private _previousStepDisabled = false;
 
@@ -163,9 +155,8 @@ export class WizardPage implements OnInit {
      * would if you were using WizardPage.preventDefault or
      * Wizard.preventDefault.
      *
-     * @readonly
-     * @type {boolean}
      * @memberof WizardPage
+     *
      */
     public get previousStepDisabled(): boolean {
         return this._previousStepDisabled;
@@ -175,6 +166,7 @@ export class WizardPage implements OnInit {
      * Sets whether the page should allow backward navigation.
      *
      * @memberof WizardPage
+     *
      */
     @Input("clrWizardPagePreviousDisabled")
     public set previousStepDisabled(val: boolean) {
@@ -189,8 +181,8 @@ export class WizardPage implements OnInit {
      * Emits when the value of WizardPage.previousStepDisabled changes.
      * Should emit the new value of previousStepDisabled.
      *
-     * @type {EventEmitter <boolean>}
      * @memberof WizardPage
+     *
      */
     @Output("clrWizardPagePreviousDisabledChange")
     public previousStepDisabledChange: EventEmitter<boolean> = new EventEmitter();
@@ -201,26 +193,23 @@ export class WizardPage implements OnInit {
      * WizardPage.onCancel (clrWizardPageOnCancel output), or one
      * of the granular page-level button click event emitters.
      *
-     * @type {boolean}
      * @memberof WizardPage
+     *
      */
     @Input("clrWizardPagePreventDefault") public preventDefault: boolean = false;
 
     /**
      *
-     * @ignore
-     * @private
-     *
      * @memberof WizardPage
+     *
      */
     private _stopCancel = false;
 
     /**
      * A getter that retrieves whether the page is preventing the cancel action.
      *
-     * @readonly
-     * @type {boolean}
      * @memberof WizardPage
+     *
      */
     public get stopCancel(): boolean {
         return this._stopCancel;
@@ -248,27 +237,23 @@ export class WizardPage implements OnInit {
 
     /**
      *
-     * @ignore
-     * @type {EventEmitter <boolean>}
      * @memberof WizardPage
+     *
      */
     @Output("clrWizardPagePreventDefaultCancelChange") stopCancelChange: EventEmitter<boolean> = new EventEmitter();
 
     /**
      *
-     *
-     * @private
-     * @ignore
      * @memberof WizardPage
+     *
      */
     private _stopNext = false;
 
     /**
      * A getter that tells you whether the page is preventing the next action.
      *
-     * @readonly
-     * @type {boolean}
      * @memberof WizardPage
+     *
      */
     public get stopNext(): boolean {
         return this._stopNext;
@@ -303,8 +288,8 @@ export class WizardPage implements OnInit {
      * Note that this does not automatically emit an event when a custom
      * button is used in place of a next or finish button.
      *
-     * @type {EventEmitter <string>}
      * @memberof WizardPage
+     *
      */
     @Output("clrWizardPageOnCommit") onCommit: EventEmitter<string> = new EventEmitter<string>(false);
 
@@ -312,8 +297,8 @@ export class WizardPage implements OnInit {
      * Emits an event when WizardPage becomes the current page of the
      * Wizard.
      *
-     * @type {EventEmitter <string>}
      * @memberof WizardPage
+     *
      */
     @Output("clrWizardPageOnLoad") onLoad: EventEmitter<string> = new EventEmitter();
 
@@ -329,8 +314,8 @@ export class WizardPage implements OnInit {
      * Note that this requires you to call Wizard.close() from the host component.
      * This constitues a full replacement of the cancel functionality.
      *
-     * @type {EventEmitter <WizardPage>}
      * @memberof WizardPage
+     *
      */
     @Output("clrWizardPageOnCancel") pageOnCancel: EventEmitter<WizardPage> = new EventEmitter();
 
@@ -348,8 +333,8 @@ export class WizardPage implements OnInit {
      * from the host component. This combination creates a full replacement of
      * the finish functionality.
      *
-     * @type {EventEmitter <WizardPage>}
      * @memberof WizardPage
+     *
      */
     @Output("clrWizardPageFinish") finishButtonClicked: EventEmitter<WizardPage> = new EventEmitter();
 
@@ -367,8 +352,8 @@ export class WizardPage implements OnInit {
      * from the host component. This combination creates a full replacement of
      * the backwards navigation functionality.
      *
-     * @type {EventEmitter <WizardPage>}
      * @memberof WizardPage
+     *
      */
     @Output("clrWizardPagePrevious") previousButtonClicked: EventEmitter<WizardPage> = new EventEmitter();
 
@@ -386,8 +371,8 @@ export class WizardPage implements OnInit {
      * from the host component. This combination creates a full replacement of
      * the forward navigation functionality.
      *
-     * @type {EventEmitter <WizardPage>}
      * @memberof WizardPage
+     *
      */
     @Output("clrWizardPageNext") nextButtonClicked: EventEmitter<WizardPage> = new EventEmitter();
 
@@ -409,8 +394,8 @@ export class WizardPage implements OnInit {
      * combination creates a full replacement of the forward navigation and
      * finish functionality.
      *
-     * @type {EventEmitter <WizardPage>}
      * @memberof WizardPage
+     *
      */
     @Output("clrWizardPageDanger") dangerButtonClicked: EventEmitter<WizardPage> = new EventEmitter();
 
@@ -432,8 +417,8 @@ export class WizardPage implements OnInit {
      * combination creates a full replacement of the forward navigation and
      * finish functionality.
      *
-     * @type {EventEmitter <WizardPage>}
      * @memberof WizardPage
+     *
      */
     @Output("clrWizardPagePrimary") primaryButtonClicked: EventEmitter<string> = new EventEmitter();
 
@@ -447,8 +432,8 @@ export class WizardPage implements OnInit {
      * strings. Passing an index for wizard whose pages are created with an
      * ngFor loop is a common use case.
      *
-     * @type {*}
      * @memberof WizardPage
+     *
      */
     @Input("id")
     _id: any = (wizardPageIndex++).toString();
@@ -484,9 +469,8 @@ export class WizardPage implements OnInit {
      * not think in the terms of !WizardPage.nextStepDisabled. For some use cases,
      * WizardPage.readyToComplete is more logical and declarative.
      *
-     * @readonly
-     *
      * @memberof WizardPage
+     *
      */
     public get readyToComplete(): boolean {
         return !this.nextStepDisabled;
@@ -494,10 +478,8 @@ export class WizardPage implements OnInit {
 
     /**
      *
-     * @ignore
-     * @private
-     * @type {boolean}
      * @memberof WizardPage
+     *
      */
     private _complete: boolean = false;
 
@@ -510,8 +492,8 @@ export class WizardPage implements OnInit {
      * state for the WizardPage. Currently, the wizard does not acknowledge this state
      * and only returns that the page is incomplete.
      *
-     * @type {boolean}
      * @memberof WizardPage
+     *
      */
     public get completed(): boolean {
         return this._complete && this.readyToComplete;
@@ -537,9 +519,8 @@ export class WizardPage implements OnInit {
     /**
      * Checks with the navigation service to see if it is the current page.
      *
-     * @readonly
-     * @type {boolean}
      * @memberof WizardPage
+     *
      */
     public get current(): boolean {
         return this.navService.currentPage === this;
@@ -557,9 +538,8 @@ export class WizardPage implements OnInit {
      * This getter handles the logic for enabling or disabling the links in
      * the step nav on the left Side of the wizard.
      *
-     * @readonly
-     * @type {boolean}
      * @memberof WizardPage
+     *
      */
     public get enabled(): boolean {
         return this.current || this.completed || this.previousCompleted;
@@ -570,9 +550,8 @@ export class WizardPage implements OnInit {
      * WizardPage is completed. This is useful for determining whether or not
      * a page is navigable if it is not current or already completed.
      *
-     * @readonly
-     * @type {boolean}
      * @memberof WizardPage
+     *
      */
     public get previousCompleted(): boolean {
         const previousPage = this.pageCollection.getPreviousPage(this);
@@ -586,10 +565,8 @@ export class WizardPage implements OnInit {
 
     /**
      *
-     * @ignore
-     * @readonly
-     * @type {TemplateRef < any >}
      * @memberof WizardPage
+     *
      */
     public get title(): TemplateRef<any> {
         return this.pageTitle.pageTitleTemplateRef;
@@ -597,10 +574,8 @@ export class WizardPage implements OnInit {
 
     /**
      *
-     * @ignore
-     * @readonly
-     * @type {TemplateRef < any >}
      * @memberof WizardPage
+     *
      */
     public get navTitle(): TemplateRef<any> {
         if (this.pageNavTitle) {
@@ -611,10 +586,8 @@ export class WizardPage implements OnInit {
 
     /**
      *
-     * @ignore
-     * @readonly
-     * @type {TemplateRef < any >}
      * @memberof WizardPage
+     *
      */
     public get headerActions(): TemplateRef<any> {
         if (!this._headerActions) {
@@ -625,10 +598,8 @@ export class WizardPage implements OnInit {
 
     /**
      *
-     * @ignore
-     * @readonly
-     * @type {TemplateRef < any >}
      * @memberof WizardPage
+     *
      */
     public get hasHeaderActions(): boolean {
         return !!this._headerActions;
@@ -636,10 +607,8 @@ export class WizardPage implements OnInit {
 
     /**
      *
-     * @ignore
-     * @readonly
-     * @type {TemplateRef < any >}
      * @memberof WizardPage
+     *
      */
     public get buttons(): TemplateRef<any> {
         if (!this._buttons) {
@@ -654,9 +623,8 @@ export class WizardPage implements OnInit {
      * Wizard should override the default button set defined as
      * its direct children.
      *
-     * @readonly
-     * @type {boolean}
      * @memberof WizardPage
+     *
      */
     public get hasButtons(): boolean {
         return !!this._buttons;
@@ -671,6 +639,7 @@ export class WizardPage implements OnInit {
      * in Wizard.
      *
      * @memberof WizardPage
+     *
      */
     public makeCurrent(): void {
         this.navService.currentPage = this;
@@ -680,6 +649,7 @@ export class WizardPage implements OnInit {
      * Links the nav service and establishes the current page if one is not defined.
      *
      * @memberof WizardPage
+     *
      */
     public ngOnInit(): void {
         const navService = this.navService;
@@ -694,9 +664,8 @@ export class WizardPage implements OnInit {
      *
      * WizardPage needs this ID string for aria information.
      *
-     * @readonly
-     * @type {string}
      * @memberof WizardPage
+     *
      */
     public get stepItemId(): string {
         return this.pageCollection.getStepItemIdForPage(this);

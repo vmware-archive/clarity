@@ -25,9 +25,6 @@ export class IfOpenService {
      * @description
      * A RXJS Subject that updates and provides subscriptions to for the current open state of a component template
      * implemting the IfOpen structural directive.
-     *
-     * @type {Subject<boolean>}
-     * @private
      */
     private _openChange: Subject<boolean> = new Subject<boolean>();
 
@@ -37,25 +34,20 @@ export class IfOpenService {
      * @description
      * A property holding the current value for open/closed state of an IfOpen structural directive.
      *
-     * @type {boolean}
-     * @private
      */
     private _open: boolean;
 
     /*********
-     * @function openChange
      *
      * @description
      * A getter function that provides an observable for the _opened Subject.
      *
-     * @returns {Observable<boolean>}
      */
     public get openChange(): Observable<boolean> {
         return this._openChange.asObservable();
     }
 
     /*********
-     * @function open
      *
      * @description
      * A setter function that updates the current state of _open for this instance of IfOpen structural directive. And,
@@ -73,11 +65,9 @@ export class IfOpenService {
 
     /*********
      *
-     * @function open
-     *
      * @description
      * A getter that returns the current value of this IfOpen instance.
-     * @returns {boolean}
+     *
      */
     public get open(): boolean {
         return this._open;

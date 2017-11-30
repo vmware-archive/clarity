@@ -5,7 +5,7 @@
  */
 export const EXAMPLES = {
     sortingTS: `
-import {Comparator} from "@clr/ng";
+import {Comparator} from "@clr/angular";
 
 class PokemonComparator implements Comparator<User> {
     compare(a: User, b: User) {

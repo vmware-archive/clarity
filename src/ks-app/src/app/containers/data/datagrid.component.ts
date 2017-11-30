@@ -5,7 +5,7 @@
  */
 
 import {Component} from "@angular/core";
-import {SortOrder} from "@clr/ng";
+import {SortOrder} from "@clr/angular";
 
 import {PokemonComparator} from "./pokemon-comparator";
 import {DatagridKitchenSinkData} from "./pokemon-data";

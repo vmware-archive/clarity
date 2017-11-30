@@ -33,12 +33,10 @@ export class DatagridHideableColumnDirective {
      * @description
      * Used to initialize the column with either hidden or visible state.
      *
-     * @type boolean
      */
     private _hidden: boolean;
 
     /**
-     * @function clrDgHideableColumn
      *
      * @description
      * Setter fn for the @Input with the same name as this structural directive.
@@ -46,8 +44,6 @@ export class DatagridHideableColumnDirective {
      * It's more verbose but has more Clarity.
      *
      * @default false
-     *
-     * @type object
      *
      * @example
      * *clrDgHideableColumn

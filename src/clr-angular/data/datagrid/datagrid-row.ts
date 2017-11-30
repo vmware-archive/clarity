@@ -195,7 +195,6 @@ export class DatagridRow implements AfterContentInit {
      * @description
      * A Query List of the Datagrid cells in this row.
      *
-     * @type QueryList<DatagridCell>
      */
     @ContentChildren(DatagridCell) dgCells: QueryList<DatagridCell>;
 
@@ -222,14 +221,12 @@ export class DatagridRow implements AfterContentInit {
     }
 
     /**********
-     * @function updateCellsForColumns
      *
      * @description
      * 1. Maps the new columnListChange to the dgCells list by index
      * 2. Sets the hidden state on the cell
      * Take a Column list and use index to access the columns for hideable properties.
      *
-     * @param columnList<DatagridColumn[]>
      */
     public updateCellsForColumns(columnList: DatagridHideableColumn[]) {
         // Map cells to columns with Array.index

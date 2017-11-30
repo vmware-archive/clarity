@@ -32,14 +32,9 @@ import {WizardPage} from "./wizard-page";
 
 
 /**
+ *
  * The Wizard component
  *
- * @export
- * @class Wizard
- * @implements {OnInit}
- * @implements {OnDestroy}
- * @implements {AfterContentInit}
- * @implements {DoCheck}
  */
 @Component({
     selector: "clr-wizard",
@@ -57,14 +52,9 @@ import {WizardPage} from "./wizard-page";
 export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     /**
      * Creates an instance of Wizard.
-     * @param {WizardNavigationService} navService
-     * @param {PageCollectionService} pageCollection
-     * @param {ButtonHubService} buttonService
-     * @param {HeaderActionService} headerActionService
-     * @param {ElementRef} elementRef
-     * @param {IterableDiffers} differs
      *
      * @memberof Wizard
+     *
      */
     constructor(public navService: WizardNavigationService, public pageCollection: PageCollectionService,
                 public buttonService: ButtonHubService, public headerActionService: HeaderActionService,
@@ -94,17 +84,16 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     /**
      * Used for marking when the collection of wizard pages has been added to or deleted from
      *
-     * @type {*}
      * @memberof Wizard
+     *
      */
     differ: any;
 
     /**
      * Contains the size defined by the clrWizardSize input
-     * @name size
-     * @type {string}
-     * @default "xl"
+     *
      * @memberof Wizard
+     *
      */
     @Input("clrWizardSize") size: string = "xl";
 
@@ -112,10 +101,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * The property that reveals the ghost pages in the wizard. Set through the
      * clrWizardShowGhostPages input.
      *
-     * @name showGhostPages
-     * @default false
-     * @type {boolean}
      * @memberof Wizard
+     *
      */
     @Input("clrWizardShowGhostPages") showGhostPages: boolean = false;
 
@@ -123,10 +110,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * Resets page completed states when navigating backwards. Can be set using
      * the clrWizardForceForwardNavigation input.
      *
-     * @name forceForward
-     * @type {boolean}
-     * @default false
      * @memberof Wizard
+     *
      */
     @Input("clrWizardForceForwardNavigation")
     set forceForward(value: boolean) {
@@ -142,9 +127,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * Tells the modal part of the wizard whether it should have a close "X"
      * in the top right corner. Set with the clrWizardClosable input.
      *
-     * @name closable
-     * @type {boolean}
      * @memberof Wizard
+     *
      */
     @Input("clrWizardClosable") closable: boolean = true;
 
@@ -152,9 +136,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * Toggles open/close of the wizard component. Set using the clrWizardOpen
      * input.
      *
-     * @name _open
-     * @type {boolean}
      * @memberof Wizard
+     *
      */
     public _open: boolean = false;
     @Input("clrWizardOpen")
@@ -176,9 +159,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      *
      * ...for two-way binding.
      *
-     * @name _openChanged
-     * @type {EventEmitter<boolean>}
      * @memberof Wizard
+     *
      */
     @Output("clrWizardOpenChange") _openChanged: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
@@ -189,9 +171,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * Can be combined with the clrWizardPreventDefaultCancel input to create
      * wizard-level custom cancel routines.
      *
-     * @name onCancel
-     * @type {EventEmitter<any>}
      * @memberof Wizard
+     *
      */
     @Output("clrWizardOnCancel") onCancel: EventEmitter<any> = new EventEmitter<any>(false);
 
@@ -202,9 +183,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * Can be combined with the clrWizardPreventDefaultNext input to create
      * wizard-level custom completion routines.
      *
-     * @name onFinish
-     * @type {EventEmitter<any>}
      * @memberof Wizard
+     *
      */
     @Output("clrWizardOnFinish") wizardFinished: EventEmitter<any> = new EventEmitter<any>(false);
 
@@ -212,9 +192,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * Emits when the wizard is reset. See .reset(). Can be observed through
      * the clrWizardOnReset output.
      *
-     * @name onReset
-     * @type {EventEmitter<any>}
      * @memberof Wizard
+     *
      */
     @Output("clrWizardOnReset") onReset: EventEmitter<any> = new EventEmitter<any>(false);
 
@@ -227,9 +206,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * helper function in the PageCollectionService, accessible from the
      * Wizard through Wizard.pageCollection.
      *
-     * @name pages
-     * @type {QueryList<WizardPage>}
      * @memberof Wizard
+     *
      */
     @ContentChildren(WizardPage) public pages: QueryList<WizardPage>;
 
@@ -243,9 +221,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * header action. But this is probably easier to do by invoking the header action's
      * event handler in your host component.
      *
-     * @name headerActions
-     * @type {QueryList<WizardHeaderAction>}
      * @memberof Wizard
+     *
      */
     @ContentChildren(WizardHeaderAction) public headerActions: QueryList<WizardHeaderAction>;
 
@@ -254,9 +231,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * output. This can happen on .next() or .previous().
      * Useful for non-blocking validation.
      *
-     * @name currentPageChanged
-     * @type {EventEmitter<any>}
      * @memberof Wizard
+     *
      */
     @Output("clrWizardCurrentPageChanged") currentPageChanged: EventEmitter<any> = new EventEmitter<any>(false);
 
@@ -267,9 +243,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * Can be combined with the clrWizardPreventDefaultNext input to create
      * wizard-level custom navigation routines, which are useful for validation.
      *
-     * @name onMoveNext
-     * @type {EventEmitter<any>}
      * @memberof Wizard
+     *
      */
     @Output("clrWizardOnNext") onMoveNext: EventEmitter<any> = new EventEmitter<any>(false);
 
@@ -279,9 +254,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      *
      * Can be useful for validation.
      *
-     * @name onMovePrevious
-     * @type {EventEmitter<any>}
      * @memberof Wizard
+     *
      */
     @Output("clrWizardOnPrevious") onMovePrevious: EventEmitter<any> = new EventEmitter<any>(false);
 
@@ -295,9 +269,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      *
      * Primarily used for validation.
      *
-     * @name stopNext
-     * @type {boolean}
      * @memberof Wizard
+     *
      */
     @Input("clrWizardPreventDefaultNext")
     set stopNext(value: boolean) {
@@ -318,9 +291,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      *
      * Useful for doing checks or prompts before closing a Wizard.
      *
-     * @name stopCancel
-     * @type {boolean}
      * @memberof Wizard
+     *
      */
     @Input("clrWizardPreventDefaultCancel")
     set stopCancel(value: boolean) {
@@ -341,9 +313,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * display loading content but not allow the user to execute navigation in
      * the stepnav, close X, or the  back, finish, or next buttons.
      *
-     * @name stopNavigation
-     * @type {boolean}
      * @memberof Wizard
+     *
      */
     @Input("clrWizardPreventNavigation")
     set stopNavigation(value: boolean) {
@@ -362,9 +333,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * Wizard is in a state of completion and you don't want users to be
      * able to jump backwards and change things.
      *
-     * @name disableStepnav
-     * @type {boolean}
      * @memberof Wizard
+     *
      */
     @Input("clrWizardDisableStepnav")
     set disableStepnav(value: boolean) {
@@ -382,9 +352,8 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      *
      * Set using clrWizardPreventModalAnimation input. But you should never set it.
      *
-     * @name _stopModalAnimations
-     * @type {boolean}
      * @memberof Wizard
+     *
      */
     @Input("clrWizardPreventModalAnimation") _stopModalAnimations: boolean = false;
     public get stopModalAnimations(): string {
@@ -420,6 +389,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      *
      * @name ngAfterContentInit
      * @memberof Wizard
+     *
      */
     public ngAfterContentInit() {
         const navService = this.navService;
@@ -443,6 +413,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      *
      * @name ngDoCheck
      * @memberof Wizard
+     *
      */
     public ngDoCheck() {
         const changes = this.differ.diff(this.pages);
@@ -460,9 +431,9 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * Convenient property for determining whether a wizard is static/in-line or not.
      *
      * @name isStatic
-     * @readonly
-     * @type {boolean}
+     *
      * @memberof Wizard
+     *
      */
     public get isStatic(): boolean {
         return this.elementRef.nativeElement.classList.contains("clr-wizard--inline");
@@ -477,8 +448,9 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * to the designated page.
      *
      * @name currentPage
-     * @type {WizardPage}
+     *
      * @memberof Wizard
+     *
      */
     public get currentPage(): WizardPage {
         return this.navService.currentPage;
@@ -492,9 +464,9 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * the wizard.
      *
      * @name isLast
-     * @readonly
-     * @type {boolean}
+     *
      * @memberof Wizard
+     *
      */
     public get isLast(): boolean {
         return this.navService.currentPageIsLast;
@@ -505,9 +477,9 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * the wizard.
      *
      * @name isFirst
-     * @readonly
-     * @type {boolean}
+     *
      * @memberof Wizard
+     *
      */
     public get isFirst(): boolean {
         return this.navService.currentPageIsFirst;
@@ -560,7 +532,6 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * close if invoked with no parameter.
      *
      * @name toggle
-     * @param {boolean} value
      *
      * @memberof Wizard
      */
@@ -754,8 +725,6 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * numeric ID or the ID specified for the WizardPage component’s “id” input.
      *
      * @name goTo
-     * @param {string} pageId
-     * @returns {void}
      *
      * @memberof Wizard
      */
@@ -793,8 +762,6 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * WizardNavigationService.
      *
      * @name ghostPageState
-     * @readonly
-     * @type {string}
      * @memberof Wizard
      */
     public get ghostPageState(): string {
@@ -819,9 +786,6 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * animation to its closed state.
      *
      * @name setGhostPages
-     * @param {string} [deactivateOrNot=""]
-     * @requires module:../modal/utils/ghost-page-animations
-     * @requires ghost-page-animations#GHOST_PAGE_ANIMATION
      *
      * @memberof Wizard
      */

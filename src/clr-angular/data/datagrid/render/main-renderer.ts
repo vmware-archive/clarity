@@ -25,6 +25,8 @@ import {DatagridHeaderRenderer} from "./header-renderer";
 import {NoopDomAdapter} from "./noop-dom-adapter";
 import {DatagridRenderOrganizer} from "./render-organizer";
 
+// Fixes build error
+// @dynamic (https://github.com/angular/angular/issues/19698#issuecomment-338340211)
 export const domAdapterFactory = (platformId: Object) => {
     if (isPlatformBrowser(platformId)) {
         return new DomAdapter();
@@ -33,6 +35,8 @@ export const domAdapterFactory = (platformId: Object) => {
     }
 };
 
+// Fixes build error
+// @dynamic (https://github.com/angular/angular/issues/19698#issuecomment-338340211)
 @Directive(
     {selector: "clr-datagrid", providers: [{provide: DomAdapter, useFactory: domAdapterFactory, deps: [PLATFORM_ID]}]})
 export class DatagridMainRenderer implements AfterContentInit, AfterViewChecked, OnDestroy {

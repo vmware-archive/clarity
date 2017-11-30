@@ -8,7 +8,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 
-import {ClarityModule} from "../../clr-angular/clr.module";
+import {ClarityModule} from "../../clr-angular/clr-angular.module";
 import {CodeExample} from "../_utils/code-example";
 
 import {WizardAltCancelDemo} from "./wizard-alt-cancel.demo";

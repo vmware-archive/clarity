@@ -39,8 +39,6 @@ export class IfActiveService {
      * A RXJS Subject that updates and provides subscriptions to for the current current state of a component template
      * implemting the IfActive structural directive.
      *
-     * @type {Subject<any>}
-     * @private
      */
     private _currentChange: Subject<number> = new Subject<number>();
 
@@ -49,26 +47,20 @@ export class IfActiveService {
      *
      * @description
      * A property holding the current value for current/closed state of an IfActive structural directive.
-     *
-     * @type {number}
-     * @private
      */
     private _current: number;
 
     /*********
-     * @function currentChange
      *
      * @description
      * A getter function that provides an observable for the _current Subject.
      *
-     * @returns {Observable<number>}
      */
     public get currentChange(): Observable<number> {
         return this._currentChange.asObservable();
     }
 
     /*********
-     * @function current
      *
      * @description
      * A setter function that updates the current state of _current for this instance of IfActive structural directive.
@@ -85,11 +77,9 @@ export class IfActiveService {
 
     /*********
      *
-     * @function current
-     *
      * @description
      * A getter that returns the current value of this IfActive instance.
-     * @returns {number}
+     * @returns
      */
     public get current(): number {
         return this._current;

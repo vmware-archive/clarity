@@ -24,7 +24,6 @@ export class IfOpenDirective implements OnDestroy {
     private subscription: Subscription;
 
     /*********
-     * @function open
      *
      * @description
      * A setter that updates IfOpenService.open with value.
@@ -42,17 +41,14 @@ export class IfOpenDirective implements OnDestroy {
      * @description
      * An event emitter that emits when the open property is set to allow for 2way binding when the directive is
      * used with de-structured / de-sugared syntax.
-     *
-     * @type {EventEmitter<boolean>}
      */
     @Output("clrIfOpenChange") openChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
     /********
-     * @function open
      *
      * @description
      * A getter that returns the current IfOpenService.open value.
-     * @returns {boolean}
+     *
      */
     public get open() {
         return this.ifOpenService.open;
@@ -67,7 +63,6 @@ export class IfOpenDirective implements OnDestroy {
     }
 
     /*********
-     * @function updateView
      *
      * @description
      * Function that takes a boolean value and either created an embedded view for the associated ViewContainerRef or,

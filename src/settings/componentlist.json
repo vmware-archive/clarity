@@ -5,17 +5,17 @@
         "notStarted": 5,
         "notDoing": -1
     },
-
-    "list": [{
-        "url": "app-layout",
-        "text": "Application Layout",
-        "type": "pattern",
-        "ux": 20,
-        "ui": 20,
-        "core": -1,
-        "ng": -1,
-        "dox": 20
-    },
+    "list": [
+        {
+            "url": "app-layout",
+            "text": "Application Layout",
+            "type": "pattern",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
         {
             "url": "alerts",
             "text": "Alerts",
@@ -182,16 +182,6 @@
             "ng": 20,
             "dox": 20,
             "comments": ""
-        },
-        {
-            "url": "iconography",
-            "text": "Iconography",
-            "type": "pattern",
-            "ux": 20,
-            "ui": 20,
-            "core": 20,
-            "ng": -1,
-            "dox": 20
         },
         {
             "url": "input-fields",

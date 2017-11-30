@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "clarity-angular";
+import {ClarityModule} from "@clr/angular";
 
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {AppLayoutDemo} from "./app-layout.demo";
@@ -16,10 +16,10 @@ import {UtilsModule} from "../../../utils/utils.module";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule,
         DocWrapperModule,
         UtilsModule,
-        RouterModule
+        RouterModule.forChild([{path: "", component: AppLayoutDemo}])
     ],
     declarations: [
         AppLayoutDemo,

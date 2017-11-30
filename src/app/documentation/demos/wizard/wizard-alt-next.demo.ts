@@ -5,8 +5,8 @@
  */
 
 import { Component, ViewChild, OnInit } from "@angular/core";
-import { Wizard } from "clarity-angular";
-import { CodeHighlight } from "clarity-angular";
+import { Wizard } from "@clr/angular";
+import { CodeHighlight } from "@clr/angular";
 
 @Component({
     moduleId: module.id,

@@ -152,7 +152,7 @@ table.buttons-cmp-table td {
     }
 }
 
-body.layout-documentation {
+.layout-documentation {
     .main-container .content-container .dox-content-panel {
         padding: 0;
         overflow: hidden;
@@ -304,7 +304,7 @@ body.layout-documentation {
 }
 
 @media (max-width: 329px) {
-    body.layout-documentation {
+    .layout-documentation {
         .dox-tabs {
             padding-top: 0;
             li {
@@ -325,8 +325,8 @@ body.layout-documentation {
 // IE10 hack
 @media screen and (-ms-high-contrast: active),
 (-ms-high-contrast: none) {
-    body.layout-news,
-    body.layout-documentation {
+    .layout-news,
+    .layout-documentation {
         .main-container .content-container .content-area {
             display: -ms-flexbox;
             min-height: 1px;
@@ -337,8 +337,8 @@ body.layout-documentation {
 // reset IE10 hack for IE11+
 _:-ms-fullscreen,
  :root {
-    body.layout-news,
-    body.layout-documentation {
+    .layout-news,
+    .layout-documentation {
         .main-container .content-container .content-area {
             display: flex;
         }
@@ -346,10 +346,10 @@ _:-ms-fullscreen,
 }
 
 @media (max-width: 991px) {
-    body.layout-get-started .main-container .content-container .content-area,
-    body.layout-news .main-container .content-container .content-area,
-    body.layout-documentation .dox-header,
-    body.layout-documentation .dox-content-panel .dox-content .dox-content-wrapper {
+    .layout-get-started .main-container .content-container .content-area,
+    .layout-news .main-container .content-container .content-area,
+    .layout-documentation .dox-header,
+    .layout-documentation .dox-content-panel .dox-content .dox-content-wrapper {
         padding-left: $bl-1_0;
         padding-right: $bl-1_0;
     }

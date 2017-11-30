@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "clarity-angular";
+import {ClarityModule} from "@clr/angular";
 
 import {UtilsModule} from "../../../utils/utils.module";
 import {RouterModule} from "@angular/router";
@@ -14,7 +14,7 @@ import {DocWrapper} from "./doc-wrapper";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule,
         UtilsModule,
         RouterModule
     ],

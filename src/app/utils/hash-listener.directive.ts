@@ -2,9 +2,10 @@
  * Hack while waiting for https://github.com/angular/angular/issues/6595 to be fixed.
  */
 
-import {Directive, OnDestroy, OnInit} from "@angular/core";
+import {Directive, OnDestroy, OnInit, PLATFORM_ID, Inject} from "@angular/core";
+import {isPlatformBrowser} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
-import {Subscription} from "rxjs";
+import {Subscription} from "rxjs/Subscription";
 
 @Directive({
   selector: "[hash-listener]",
@@ -14,7 +15,7 @@ import {Subscription} from "rxjs";
 })
 export class HashListener implements OnDestroy, OnInit {
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object) {
     this.sub = this.route.fragment.subscribe(f => {
       this.scrollToAnchor(f, false);
     })
@@ -27,7 +28,7 @@ export class HashListener implements OnDestroy, OnInit {
   }
 
   scrollToAnchor(hash: string, smooth = true) {
-    if (hash) {
+    if (hash && isPlatformBrowser(this.platformId)) {
       const element = document.querySelector("#" + hash);
       if (element) {
         element.scrollIntoView({

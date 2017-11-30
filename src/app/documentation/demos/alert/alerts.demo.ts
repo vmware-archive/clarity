@@ -5,7 +5,7 @@
  */
 import {Component} from "@angular/core";
 import {ClarityDocComponent} from "../clarity-doc";
-import { ÇlrFocusTrapTracker } from "clarity-angular";
+import { ÇlrFocusTrapTracker } from "@clr/angular";
 import { DisableFocusTrap } from "../../utils/disable-focus-trap";
 
 @Component({

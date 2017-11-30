@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from 'clarity-angular';
+import {ClarityModule} from '@clr/angular';
 
 import {TypographyFontWeightDemo} from "./typography-font-weight";
 import {TypographyHeadersDemo} from "./typography-headers";
@@ -20,9 +20,9 @@ import {UtilsModule} from "../../../utils/utils.module";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule,
         DocWrapperModule,
-        RouterModule,
+        RouterModule.forChild([{path: "", component: TypographyDemo}]),
         UtilsModule
     ],
     declarations: [

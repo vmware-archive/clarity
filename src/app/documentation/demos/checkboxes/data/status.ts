@@ -4,9 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { Injectable } from '@angular/core';
 import { Server } from "./server";
 import { SERVERS } from "./values";
 
+@Injectable()
 export class Status {
     private _all: Server[];
     constructor() {

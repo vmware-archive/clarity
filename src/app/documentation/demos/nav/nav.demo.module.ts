@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from 'clarity-angular';
+import {ClarityModule} from '@clr/angular';
 
 import {NavsDemo} from "./navs";
 import {SidenavDemo} from "./sidenav";
@@ -29,8 +29,8 @@ import {NavCodeInfoAlert} from "./nav-code-info-alert";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
-        RouterModule,
+        ClarityModule,
+        RouterModule.forChild([{path: "", component: NavigationDemo}]),
         DocWrapperModule
     ],
     declarations: [

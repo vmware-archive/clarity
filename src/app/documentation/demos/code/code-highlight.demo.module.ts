@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "clarity-angular";
+import {ClarityModule} from "@clr/angular";
 import {CodeHighlightImportsDemo} from "./code-highlight-imports";
 import {CodeHighlightSnippetDemo} from "./code-highlight-snippet";
 import {CodeHighlightDemo} from "./code.demo";
@@ -16,9 +16,9 @@ import {UtilsModule} from "../../../utils/utils.module";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule,
         DocWrapperModule,
-        RouterModule,
+        RouterModule.forChild([{path: "", component: CodeHighlightDemo}]),
         UtilsModule
     ],
     declarations: [

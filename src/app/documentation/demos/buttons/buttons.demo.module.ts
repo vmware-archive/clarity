@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "clarity-angular";
+import {ClarityModule} from "@clr/angular";
 
 import {RealButtonDemo} from "./real-button";
 import {PrimaryButtonDemo} from "./primary-button";
@@ -30,9 +30,9 @@ import {IconButtonsDemo} from "./icon-buttons";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule,
         DocWrapperModule,
-        RouterModule,
+        RouterModule.forChild([{path: "", component: ButtonsDemo}]),
         UtilsModule
     ],
     declarations: [

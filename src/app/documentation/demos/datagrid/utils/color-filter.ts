@@ -5,7 +5,7 @@
  */
 import {Component, EventEmitter} from "@angular/core";
 
-import {Filter} from "clarity-angular";
+import {Filter} from "@clr/angular";
 import {User} from "../inventory/user";
 import {COLORS} from "../inventory/values";
 

@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "clarity-angular";
+import {ClarityModule} from "@clr/angular";
 
 import {AlertStylesDemo} from "./static/alert-styles";
 import {AlertContentAreaDemo} from "./static/alert-content-area";
@@ -28,10 +28,10 @@ import {UtilsModule} from "../../../utils/utils.module";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule,
         DocWrapperModule,
         UtilsModule,
-        RouterModule
+        RouterModule.forChild([{path: "", component: AlertsDemo}])
     ],
     declarations: [
         AlertStylesDemo,

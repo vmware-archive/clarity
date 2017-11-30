@@ -8,7 +8,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
-import { ClarityModule } from "clarity-angular";
+import { ClarityModule } from "@clr/angular";
 
 import { RouterModule } from "@angular/router";
 import { DocWrapperModule } from "../_doc-wrapper/doc-wrapper.module";
@@ -21,7 +21,7 @@ import {ThemesDemo} from "./themes.demo";
         CommonModule,
         FormsModule,
         ClarityModule,
-        RouterModule,
+        RouterModule.forChild([{path: "", component: ThemesDemo}]),
         DocWrapperModule,
         UtilsModule
     ],

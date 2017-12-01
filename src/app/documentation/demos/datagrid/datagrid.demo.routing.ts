@@ -24,6 +24,7 @@ import {DatagridExpandableRowsDemo} from "./expandable-rows/expandable-rows";
 import {DatagridHideShowColumnsDemo} from "./hide-show-columns/hide-show-columns";
 import {DatagridBatchActionDemo} from "./batch-action/batch-action";
 import {DatagridSingleActionDemo} from "./single-action/single-action";
+import { DatagridCompactDemo } from "./compact/compact";
 
 const ROUTES: Routes = [
     {
@@ -47,6 +48,7 @@ const ROUTES: Routes = [
             {path: "placeholder", component: DatagridPlaceholderDemo},
             {path: "expandable-rows", component: DatagridExpandableRowsDemo},
             {path: "hide-show", component: DatagridHideShowColumnsDemo},
+            {path: "compact", component: DatagridCompactDemo},
             {path: "full", component: DatagridFullDemo}
         ]
     }

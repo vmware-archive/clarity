@@ -52,6 +52,7 @@ import {DatagridServerDrivenDemo} from "./demos/datagrid/server-driven/server-dr
 import {DatagridPlaceholderDemo} from "./demos/datagrid/placeholder/placeholder";
 import {DatagridExpandableRowsDemo} from "./demos/datagrid/expandable-rows/expandable-rows";
 import {DatagridHideShowColumnsDemo} from "./demos/datagrid/hide-show-columns/hide-show-columns";
+import { DatagridCompactDemo } from "./demos/datagrid/compact/compact";
 import {DatagridFullDemo} from "./demos/datagrid/full/full";
 import {SignpostDemo} from "./demos/signposts/signpost.demo";
 import {VerticalNavDemo} from "./demos/vertical-nav/vertical-nav.demo";
@@ -74,6 +75,7 @@ import {CharizardDemo} from "./demos/vertical-nav/routes/pokemons/charizard";
 import {LazyLoadingNavGroupsVerticalNavDemo} from "./demos/vertical-nav/routes/lazy-loading-nav-groups/lazy-loading-nav-groups";
 import {VerticalNavGroupsDemo} from "./demos/vertical-nav/routes/nav-groups/nav-groups";
 import {ThemesDemo} from "./demos/themes/themes.demo";
+
 
 const documentationRoutes: Routes = [
     {
@@ -282,6 +284,13 @@ const documentationRoutes: Routes = [
                         component: DatagridHideShowColumnsDemo,
                         data: {
                             demoName: "Hide/Show"
+                        }
+                    },
+                    {
+                        path: "compact",
+                        component: DatagridCompactDemo,
+                        data: {
+                            demoName: "Compact"
                         }
                     },
                     {

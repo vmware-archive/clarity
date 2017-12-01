@@ -33,6 +33,7 @@ import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
 import {UtilsModule} from "../../../utils/utils.module";
 import {DatagridHideShowColumnsDemo} from "./hide-show-columns/hide-show-columns";
+import { DatagridCompactDemo } from "./compact/compact";
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import {DatagridHideShowColumnsDemo} from "./hide-show-columns/hide-show-columns
         DatagridBasicStructureDemo,
         DatagridBatchActionDemo,
         DatagridBindingPropertiesDemo,
+        DatagridCompactDemo,
         DatagridCustomRenderingDemo,
         DatagridFilteringDemo,
         DatagridFullDemo,

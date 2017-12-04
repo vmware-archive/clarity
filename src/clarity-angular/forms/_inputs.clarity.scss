@@ -32,7 +32,7 @@
         border: $clr-default-borderwidth solid $clr-textarea-border-color;
         color: $clr-textarea-text-color;
         border-radius: $clr-global-borderradius;
-        padding: 0.5rem 0.25rem;
+        padding: 0.25rem 0.5rem;
 
         &:focus {
             @include include-outline-style-form-fields();

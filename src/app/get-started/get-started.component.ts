@@ -51,7 +51,7 @@ const UI_HTML_IMPORT = `
 const UI_NODE_IMPORTS = `
 "styles": [
       ...
-      "../node_modules/clarity-ui/clarity-ui-dark.min.css",
+      "../node_modules/clarity-ui/clarity-ui.min.css",
       ...
   ]
 `;

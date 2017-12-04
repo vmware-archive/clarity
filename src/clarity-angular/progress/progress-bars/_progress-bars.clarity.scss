@@ -220,6 +220,14 @@
             background-color: $clr-progress-defaultBarColor;
             width: 75%;
         }
+
+        &.danger::after, &.warning::after {
+            background-color: $clr-progress-danger-color;
+        }
+
+        &.success::after {
+            background-color: $clr-progress-success-color;
+        }
     }
 
     .nav-item .progress::after {

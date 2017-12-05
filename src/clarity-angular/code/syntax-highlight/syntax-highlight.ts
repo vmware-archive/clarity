@@ -3,7 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Directive, ElementRef, Input, Renderer2} from "@angular/core";
+import {isPlatformBrowser} from "@angular/common";
+import {Directive, ElementRef, Inject, Input, PLATFORM_ID, Renderer2} from "@angular/core";
 
 declare var Prism: any;
 
@@ -13,14 +14,16 @@ export class CodeHighlight {
 
     // Had to use renderer because I wanted to add to existing classes on the code block
     // Didn't want to override them completely
-    constructor(private _el: ElementRef, private renderer: Renderer2) {}
+    constructor(private _el: ElementRef, private renderer: Renderer2, @Inject(PLATFORM_ID) private platformId: Object) {
+    }
 
     ngAfterContentInit(): void {
         this.redraw();
     }
 
     public redraw() {
-        if (this._el && this._el.nativeElement) {
+        // Only run Prism in browser engines
+        if (this._el && this._el.nativeElement && isPlatformBrowser(this.platformId)) {
             Prism.highlightElement(this._el.nativeElement);
         }
     }

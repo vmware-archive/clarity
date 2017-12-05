@@ -19,14 +19,16 @@ import {DatagridRenderOrganizer} from "../render/render-organizer";
 export class DatagridRowExpandAnimation {
     constructor(private el: ElementRef, private domAdapter: DomAdapter, private renderer: Renderer2,
                 private expand: Expand, private renderOrganizer: DatagridRenderOrganizer) {
-        expand.animate.subscribe(() => {
-            // We already had an animation waiting, so we just have to run in, not prepare again
-            if (this.oldHeight) {
-                setTimeout(() => this.run());
-            } else {
-                this.animate();
-            }
-        });
+        if (expand && expand.animate) {
+            expand.animate.subscribe(() => {
+                // We already had an animation waiting, so we just have to run in, not prepare again
+                if (this.oldHeight) {
+                    setTimeout(() => this.run());
+                } else {
+                    this.animate();
+                }
+            });
+        }
     }
 
     private running: any;

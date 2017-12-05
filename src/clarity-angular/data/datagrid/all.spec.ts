@@ -44,6 +44,7 @@ import DomAdapterSpecs from "./render/dom-adapter.spec";
 import DatagridHeadRendererSpecs from "./render/head-renderer.spec";
 import DatagridHeaderRendererSpecs from "./render/header-renderer.spec";
 import DatagridMainRendererSpecs from "./render/main-renderer.spec";
+import NoopDomAdapterSpecs from "./render/noop-dom-adapter.spec";
 import DatagridRenderOrganizerSpecs from "./render/render-organizer.spec";
 import DatagridRowRendererSpecs from "./render/row-renderer.spec";
 import DatagridTableRendererSpecs from "./render/table-renderer.spec";
@@ -78,6 +79,7 @@ describe("Datagrid", function() {
     });
     describe("Render", function() {
         DomAdapterSpecs();
+        NoopDomAdapterSpecs();
         DatagridRenderOrganizerSpecs();
         DatagridCellRendererSpecs();
         DatagridRowRendererSpecs();

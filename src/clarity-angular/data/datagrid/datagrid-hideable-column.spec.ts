@@ -80,7 +80,6 @@ export default function(): void {
             expect(changeValue).toBeUndefined();
             expect(nbChanges).toBe(0);
         });
-
     });
 }
 

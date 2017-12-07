@@ -10,7 +10,6 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {PopoverDirectiveOld} from "./popover-old.directive";
 
 describe("Popover directive (old)", () => {
-
     let fixture: ComponentFixture<any>;
     let compiled: any;
 

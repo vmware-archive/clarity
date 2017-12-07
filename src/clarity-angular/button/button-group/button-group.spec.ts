@@ -27,7 +27,6 @@ export default function(): void {
         });
 
         describe("Buttons in Inline Buttons View Container", () => {
-
             beforeEach(() => {
                 fixture = TestBed.createComponent(BtnGroupInlineViewContainer);
                 fixture.detectChanges();
@@ -63,11 +62,9 @@ export default function(): void {
                 expect(btnGroupChildrenCompiled[3].classList.contains("btn")).toBe(true);
                 expect(btnGroupChildrenCompiled[4].classList.contains("btn")).toBe(true);
             });
-
         });
 
         describe("Buttons in both View Containers", () => {
-
             beforeEach(() => {
                 fixture = TestBed.createComponent(BtnGroupBothViewContainersTest);
                 fixture.detectChanges();
@@ -124,11 +121,9 @@ export default function(): void {
                 expect(dropdownMenu.children[1].classList.contains("btn")).toBe(true);
                 expect(dropdownMenu.children[2].classList.contains("btn")).toBe(true);
             });
-
         });
 
         describe("Flip Test 1", () => {
-
             beforeEach(() => {
                 fixture = TestBed.createComponent(BtnGroupFlipTest1);
                 fixture.detectChanges();
@@ -233,7 +228,6 @@ export default function(): void {
         });
 
         describe("Flip Test 2", () => {
-
             beforeEach(() => {
                 fixture = TestBed.createComponent(BtnGroupFlipTest2);
                 fixture.detectChanges();
@@ -289,7 +283,6 @@ export default function(): void {
         });
 
         describe("Content Projection Update", () => {
-
             beforeEach(() => {
                 fixture = TestBed.createComponent(BtnGroupProjectionUpdateTest);
                 fixture.detectChanges();
@@ -357,7 +350,6 @@ export default function(): void {
 
         /* This feature is not recommended but we are just testing the fallback */
         describe("Buttons in Menu View Container", () => {
-
             beforeEach(() => {
                 fixture = TestBed.createComponent(BtnGroupMenuViewContainer);
                 fixture.detectChanges();
@@ -404,11 +396,9 @@ export default function(): void {
                 expect(compiled.textContent).toMatch(/Button 4/);
                 expect(compiled.textContent).toMatch(/Button 5/);
             });
-
         });
 
         describe("Toggling Button Group Overflow Menus", () => {
-
             beforeEach(() => {
                 fixture = TestBed.createComponent(BtnGroupEHCAIWCTest);
                 fixture.detectChanges();
@@ -473,9 +463,7 @@ export default function(): void {
                 expect(compiled.textContent).not.toMatch(/Button 9/);
                 expect(compiled.textContent).not.toMatch(/Button 10/);
             });
-
         });
-
     });
 }
 

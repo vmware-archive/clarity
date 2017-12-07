@@ -319,7 +319,6 @@ export default function(): void {
             });
 
             it("adds the .datagrid-column--hidden when not visible", function() {
-
                 context.clarityDirective.hideable = new DatagridHideableColumn(null, "dg-col-0", true);
                 context.detectChanges();
                 expect(context.clarityElement.classList.contains("datagrid-column--hidden")).toBeTruthy();

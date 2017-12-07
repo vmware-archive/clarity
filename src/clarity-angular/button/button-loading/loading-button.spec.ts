@@ -17,7 +17,6 @@ describe("Loading Buttons", () => {
     let componentInstance: TestLoadingButtonComponent;
 
     beforeEach(() => {
-
         TestBed.configureTestingModule(
             {imports: [ClrLoadingModule, ClrLoadingButtonModule], declarations: [TestLoadingButtonComponent]});
 

@@ -155,7 +155,6 @@ describe("Tabs", () => {
             toggle.click();
             context.fixture.detectChanges();
             expect(compiled.querySelector(".tabs-overflow .tab4")).toBeDefined();
-
         });
     });
 

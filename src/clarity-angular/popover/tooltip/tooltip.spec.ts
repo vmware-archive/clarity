@@ -9,7 +9,6 @@ import {addHelpers, TestContext} from "../../data/datagrid/helpers.spec";
 import {Tooltip} from "./tooltip";
 
 describe("Tooltip component", function() {
-
     addHelpers();
 
     describe("Simple", function() {
@@ -22,9 +21,7 @@ describe("Tooltip component", function() {
         it("projects anchor content", function() {
             expect(context.clarityElement.textContent).toMatch(/Hello/);
         });
-
     });
-
 });
 
 @Component({

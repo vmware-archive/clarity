@@ -43,7 +43,6 @@ export class ProgressBarInlineDemo implements OnInit {
     runProgressBar(): void {
         this.stopProgressBar();
         this.inlineProgressTimerId = setInterval(() => {
-
             const oldProgressValue: number = this.inlineProgress;
             let increment: number = Math.floor(Math.random() * 15) + 1;
             increment = parseInt(increment + "", 10);

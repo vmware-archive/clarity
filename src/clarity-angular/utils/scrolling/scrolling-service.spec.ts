@@ -24,5 +24,4 @@ describe("ScrollingService", () => {
         scrollingService.resumeScrolling();
         expect(document.body.classList.contains("no-scrolling")).toBe(false);
     });
-
 });

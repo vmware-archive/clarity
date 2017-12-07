@@ -137,6 +137,78 @@ describe("Alerts component", function() {
             fixture.detectChanges();
             expect(compiled.querySelectorAll("clr-alerts-pager").length).toBe(0);
         });
+
+        describe("sets classname as expected", function() {
+            it("sets danger classname as expected", function() {
+                const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
+                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                myAlert.alertType = "danger";
+                fixture.detectChanges();
+
+                expect(alertsContainer.classList.contains("alert-danger")).toBe(true);
+            });
+            it("sets info classname as expected", function() {
+                const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
+                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                myAlert.alertType = "info";
+                fixture.detectChanges();
+
+                expect(alertsContainer.classList.contains("alert-info")).toBe(true);
+            });
+            it("sets success classname as expected", function() {
+                const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
+                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                myAlert.alertType = "success";
+                fixture.detectChanges();
+
+                expect(alertsContainer.classList.contains("alert-success")).toBe(true);
+            });
+            it("sets warning classname as expected", function() {
+                const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
+                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                myAlert.alertType = "warning";
+                fixture.detectChanges();
+
+                expect(alertsContainer.classList.contains("alert-warning")).toBe(true);
+            });
+            // no tests for unexpected/unrecognized values because the alert types service ignores them
+            // and only changes an alert type when given a known value.
+        });
+
+        describe("sets classname as expected with deprecated alert type", function() {
+            it("sets danger classname as expected", function() {
+                const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
+                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                myAlert.alertType = "alert-danger";
+                fixture.detectChanges();
+
+                expect(alertsContainer.classList.contains("alert-danger")).toBe(true);
+            });
+            it("sets info classname as expected", function() {
+                const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
+                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                myAlert.alertType = "alert-info";
+                fixture.detectChanges();
+
+                expect(alertsContainer.classList.contains("alert-info")).toBe(true);
+            });
+            it("sets success classname as expected", function() {
+                const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
+                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                myAlert.alertType = "alert-success";
+                fixture.detectChanges();
+
+                expect(alertsContainer.classList.contains("alert-success")).toBe(true);
+            });
+            it("sets warning classname as expected", function() {
+                const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
+                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                myAlert.alertType = "alert-warning";
+                fixture.detectChanges();
+
+                expect(alertsContainer.classList.contains("alert-warning")).toBe(true);
+            });
+        });
     });
 
     describe("Supports dynamic alerts", function() {

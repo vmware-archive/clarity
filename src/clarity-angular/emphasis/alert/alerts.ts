@@ -13,10 +13,10 @@ import {MultiAlertService} from "./providers/multi-alert-service";
     providers: [MultiAlertService],
     host: {
         "[class.alerts]": "true",
-        "[class.alert-danger]": "this.currentAlertType == 'danger'",
-        "[class.alert-info]": "this.currentAlertType == 'info'",
-        "[class.alert-success]": "this.currentAlertType == 'success'",
-        "[class.alert-warning]": "this.currentAlertType == 'warning'"
+        "[class.alert-danger]": "this.currentAlertType == 'danger' || this.currentAlertType == 'alert-danger'",
+        "[class.alert-info]": "this.currentAlertType == 'info' || this.currentAlertType == 'alert-info'",
+        "[class.alert-success]": "this.currentAlertType == 'success' || this.currentAlertType == 'alert-success'",
+        "[class.alert-warning]": "this.currentAlertType == 'warning' || this.currentAlertType == 'alert-warning'"
     },
     styles: [":host { display: block }"]
 })

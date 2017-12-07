@@ -110,7 +110,7 @@ $clr-searchbar-container-height-sm: 4.5rem;
 
     .icons-search-wrapper {
         width: calc(100% - #{$clr-sidenav-width});
-        max-width: calc($clr-icons-content-width - $clr-sidenav-width);
+        max-width: calc(#{$clr-icons-content-width} - #{$clr-sidenav-width});
         position: relative;
         flex: 0 0 auto;
         padding: $clr-baseline $clr_baselineRem_1_5;

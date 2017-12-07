@@ -63,7 +63,6 @@ export default function(): void {
             expect(context.clarityElement.classList).not.toContain("tooltip-sm");
             expect(context.clarityElement.classList).toContain("tooltip-lg");
         });
-
     });
 }
 

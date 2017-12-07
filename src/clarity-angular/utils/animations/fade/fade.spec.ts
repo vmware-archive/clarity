@@ -14,9 +14,7 @@ import {
 import {fade} from "./index";
 
 describe("Fade", () => {
-
     describe("default", () => {
-
         const defaultFade: AnimationMetadata[] = fade();
         const enterTransition: AnimationTransitionMetadata = defaultFade[0] as AnimationTransitionMetadata;
         const exitTransition: AnimationTransitionMetadata = defaultFade[1] as AnimationTransitionMetadata;
@@ -46,7 +44,6 @@ describe("Fade", () => {
 
             expect(step1.styles).toEqual(style({opacity: 0}));
         });
-
     });
 
     describe("fade with custom opacity", () => {
@@ -80,7 +77,5 @@ describe("Fade", () => {
 
             expect(step1.styles).toEqual(style({opacity: 0}));
         });
-
     });
-
 });

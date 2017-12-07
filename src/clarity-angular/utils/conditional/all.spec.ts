@@ -17,7 +17,6 @@ import IfOpenDirectiveSpecs from "./if-open.directive.spec";
 import IfOpenServiceSpecs from "./if-open.service.spec";
 
 describe("Conditional Utils", function() {
-
     describe("clrIfActive", function() {
         IfActiveServiceSpecs();
         IfActiveDirectiveSpecs();
@@ -27,5 +26,4 @@ describe("Conditional Utils", function() {
         IfOpenServiceSpecs();
         IfOpenDirectiveSpecs();
     });
-
 });

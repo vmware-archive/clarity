@@ -41,7 +41,6 @@ describe("Alerts component", function() {
     });
 
     describe("Template API", function() {
-
         let fixture: ComponentFixture<any>;
 
         beforeEach(function() {
@@ -91,7 +90,6 @@ describe("Alerts component", function() {
     });
 
     describe("View basics", function() {
-
         let fixture: ComponentFixture<TestComponent>;
         let compiled: any;
         let alertElements: Array<Element>;

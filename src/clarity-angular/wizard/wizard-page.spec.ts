@@ -523,7 +523,6 @@ export default function(): void {
                     fixture.detectChanges();
                     expect(testWizardPage.current).toBe(true);
                 });
-
             });
 
             describe("disabled", () => {

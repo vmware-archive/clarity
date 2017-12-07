@@ -114,7 +114,6 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewChecked,
         let allStrict = true;
 
         this.headers.forEach((header, index) => {
-
             // On the last header column check whether all columns have strict widths.
             // If all columns have strict widths, remove the strict width from the last column and make it the column's
             // minimum width so that when all previous columns shrink, it will get a flexible width and cover the empty

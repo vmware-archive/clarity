@@ -46,6 +46,5 @@ export default function(): void {
             this.organizer.resize();
             expect(this.organizer.widths).toEqual([]);
         });
-
     });
 }

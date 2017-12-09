@@ -25,13 +25,13 @@ import {DatagridHeaderRenderer} from "./header-renderer";
 import {NoopDomAdapter} from "./noop-dom-adapter";
 import {DatagridRenderOrganizer} from "./render-organizer";
 
-export const domAdapterFactory = (platformId: Object) => {
+export function domAdapterFactory(platformId: Object) {
     if (isPlatformBrowser(platformId)) {
         return new DomAdapter();
     } else {
         return new NoopDomAdapter();
     }
-};
+}
 
 @Directive(
     {selector: "clr-datagrid", providers: [{provide: DomAdapter, useFactory: domAdapterFactory, deps: [PLATFORM_ID]}]})

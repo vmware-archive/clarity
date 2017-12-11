@@ -11,9 +11,9 @@
  *
  * Buttons are used to create click/touch handlers in a variety of use cases.
  */
-export * from "./button/button.module"; // causes build failure;
-export * from "./button/button-group/button-group.module"; // causes build failure;
-export * from "./button/button-group/index"; // causes build failure;
+export * from "./button/button.module";                     // causes build failure;
+export * from "./button/button-group/button-group.module";  // causes build failure;
+export * from "./button/button-group/index";                // causes build failure;
 export * from "./button/button-loading/loading-button.module";
 export * from "./button/button-loading/index";
 
@@ -34,11 +34,11 @@ export * from "./code/syntax-highlight/syntax-highlight.module";
  * - TreeView holds hierarchical data that needs to be traversed
  * - StackView holds data with a  master / child relationshiop
  */
-export * from "./data/data.module"; // causes build failure;
-export * from "./data/datagrid/datagrid.module"; // causes build failure;
-export * from "./data/datagrid/index"; // causes build failure
-export * from "./data/tree-view/index"; // causes build failure
-export * from "./data/tree-view/tree-view.module"; // causes build failure
+export * from "./data/data.module";                 // causes build failure;
+export * from "./data/datagrid/datagrid.module";    // causes build failure;
+export * from "./data/datagrid/index";              // causes build failure
+export * from "./data/tree-view/index";             // causes build failure
+export * from "./data/tree-view/tree-view.module";  // causes build failure
 export * from "./data/stack-view/index";
 export * from "./data/stack-view/stack-view.module";
 
@@ -47,9 +47,9 @@ export * from "./data/stack-view/stack-view.module";
  *
  * These components are used to draw attention to actionable information.
  */
-export * from "./emphasis/alert/alert.module"; // causes build failure
+export * from "./emphasis/alert/alert.module";  // causes build failure
 export * from "./emphasis/alert/index";
-export * from "./emphasis/emphasis.module"; // causes build failure
+export * from "./emphasis/emphasis.module";  // causes build failure
 
 /**********
  * Forms
@@ -72,7 +72,7 @@ export * from "./icon/index";
  *
  * Used to create structure and help organize the visual presentation in an app container.
  */
-export * from "./layout/layout.module"; // causes build failure
+export * from "./layout/layout.module";  // causes build failure
 export * from "./layout/main-container/index";
 export * from "./layout/main-container/main-container.module";
 export * from "./layout/nav/index";
@@ -85,8 +85,8 @@ export * from "./layout/tabs/tabs.module";
  *
  * Modals are used to present information and actions to a user that force them to focus on that
  */
-export * from "./modal/modal.module"; // causes build failure
-export * from "./modal/index"; // causes build failure
+export * from "./modal/modal.module";  // causes build failure
+export * from "./modal/index";         // causes build failure
 
 /**********
  * Popover
@@ -123,14 +123,5 @@ export {FocusTrapTracker as ÇlrFocusTrapTracker} from "./utils/focus-trap/focus
  *
  * Wizards cast spells and take users on a journey along a pathway
  */
-export * from "./wizard/index"; // causes build failure
-export * from "./wizard/wizard.module"; // causes build failure
-
-
-
-
-
-
-
-
-
+export * from "./wizard/index";          // causes build failure
+export * from "./wizard/wizard.module";  // causes build failure

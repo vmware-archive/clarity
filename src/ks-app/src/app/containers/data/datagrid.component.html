@@ -107,7 +107,7 @@
     </ng-container>
   </clr-dg-column>
   <clr-dg-column>
-    <ng-container *clrDgHideableColumn>
+    <ng-container *clrDgHideableColumn="{hidden:true}">
       Pokemon
     </ng-container>
   </clr-dg-column>
@@ -123,7 +123,21 @@
     <clr-dg-cell *ngIf="showId">{{user.id}}</clr-dg-cell>
     <clr-dg-cell>{{user.name}}</clr-dg-cell>
     <clr-dg-cell *ngIf="showDate">{{user.creation | date}}</clr-dg-cell>
-    <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      {{user.pokemon.name}}
+      <clr-signpost>
+        <button
+          type="button"
+          class="signpost-action btn btn-small btn-link"
+          [class.active]="open"
+          clrSignpostTrigger>
+          <clr-icon shape="help-info"></clr-icon>
+        </button>
+        <clr-signpost-content *clrIfOpen [clrPosition]="'top-middle'">
+          The pokemon is strong.
+        </clr-signpost-content>
+      </clr-signpost>
+    </clr-dg-cell>
     <clr-dg-cell>
       <span class="color-square" [style.backgroundColor]="user.color"></span>
     </clr-dg-cell>

@@ -3,11 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, ContentChildren, QueryList} from "@angular/core";
-
+import {Component, ContentChildren, ElementRef, QueryList, Renderer2} from "@angular/core";
+import {Subscription} from "rxjs/Subscription";
 import {Signpost} from "../../popover/signpost/signpost";
-
-import {DatagridHideableColumn} from "./datagrid-hideable-column";
 import {HideableColumnService} from "./providers/hideable-column.service";
 
 @Component({
@@ -15,11 +13,7 @@ import {HideableColumnService} from "./providers/hideable-column.service";
     template: `
         <ng-content></ng-content>
     `,
-    host: {
-        "[class.datagrid-cell]": "true",
-        "[class.datagrid-cell--hidden]": "hidden",
-        "[class.datagrid-signpost-trigger]": "signpost.length > 0"
-    }
+    host: {"[class.datagrid-cell]": "true", "[class.datagrid-signpost-trigger]": "signpost.length > 0"}
 })
 export class DatagridCell {
     /*********
@@ -36,19 +30,6 @@ export class DatagridCell {
     @ContentChildren(Signpost) signpost: QueryList<Signpost>;
 
     /**
-     * @property hidden
-     *
-     * @description
-     * Property used to apply a css class to this cell that hides it when hidden = true.
-     *
-     * @type {boolean}
-     */
-    public get hidden(): boolean {
-        const column: DatagridHideableColumn = this.hideableColumnService.getColumnById(this.id);
-        return (column) ? column.hidden : false;
-    }
-
-    /**
      * @property id
      *
      * @description
@@ -56,7 +37,43 @@ export class DatagridCell {
      *
      * @type {string}
      */
-    public id: string;
+    private _id: string;
 
-    constructor(public hideableColumnService: HideableColumnService) {}
+    set id(value: string) {
+        this._id = value;
+        this.mapHideableColumn(this._id);
+    }
+
+    private hiddenStateSubscription: Subscription;
+
+    constructor(public hideableColumnService: HideableColumnService, private _el: ElementRef,
+                private _renderer: Renderer2) {}
+
+
+    private mapHideableColumn(columnId: string) {
+        if (!columnId) {
+            return;
+        }
+
+        const hideableColumn = this.hideableColumnService.getColumnById(this._id);
+
+        this.setHiddenClass(hideableColumn.hidden);
+        this.hiddenStateSubscription = hideableColumn.hiddenChangeState.subscribe(() => {
+            this.setHiddenClass(hideableColumn.hidden);
+        });
+    }
+
+    private setHiddenClass(hideableColumnValue: boolean) {
+        if (hideableColumnValue) {
+            this._renderer.addClass(this._el.nativeElement, "datagrid-cell--hidden");
+        } else {
+            this._renderer.removeClass(this._el.nativeElement, "datagrid-cell--hidden");
+        }
+    }
+
+    ngOnDestroy() {
+        if (this.hiddenStateSubscription) {
+            this.hiddenStateSubscription.unsubscribe();
+        }
+    }
 }

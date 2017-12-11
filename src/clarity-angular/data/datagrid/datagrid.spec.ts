@@ -381,6 +381,13 @@ export default function(): void {
                     expect(() => context.detectChanges()).not.toThrow();
                 });
             });
+
+            describe("column hidden by default", function() {
+                it("doesn't taunt with chocolate on columns hidden by default", function() {
+                    const context = this.create(Datagrid, HiddenColumnTest);
+                    expect(() => context.detectChanges()).not.toThrow();
+                });
+            });
         });
     });
 }
@@ -646,4 +653,26 @@ class TestStringFilter implements StringFilter<number> {
     accepts(item: number, search: string) {
         return true;
     }
+}
+
+
+@Component({
+    selector: "hidden-column-test",
+    template: `
+    <clr-datagrid>
+        <clr-dg-column>
+            <ng-container *clrDgHideableColumn="{hidden: true}">
+                First
+            </ng-container>
+        </clr-dg-column>
+        <clr-dg-column>Second</clr-dg-column>
+    
+        <clr-dg-row *ngFor="let item of items;">
+            <clr-dg-cell>{{item}}</clr-dg-cell>
+            <clr-dg-cell>{{item * item}}</clr-dg-cell>
+        </clr-dg-row>
+    </clr-datagrid>`
+})
+class HiddenColumnTest {
+    items = [1, 2, 3];
 }

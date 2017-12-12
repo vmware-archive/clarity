@@ -79,7 +79,6 @@ export default function(): void {
         });
 
         it(".pageRange() should return the range of wizard pages", function() {
-
             expect(pageCollectionService.pageRange(0, 0)).toEqual([pageCollectionService.firstPage]);
 
             expect(pageCollectionService.pageRange(4, 4)).toEqual([pageCollectionService.lastPage]);
@@ -101,11 +100,9 @@ export default function(): void {
             expect(pageCollectionService.pageRange(3, undefined)).toEqual([]);
 
             expect(pageCollectionService.pageRange(null, undefined)).toEqual([]);
-
         });
 
         it(".getPageRangeFromPages() should return the range of wizard pages", function() {
-
             expect(pageCollectionService.getPageRangeFromPages(pageCollectionService.firstPage,
                                                                pageCollectionService.lastPage))
                 .toEqual(pageCollectionService.pageRange(0, 4));
@@ -117,11 +114,9 @@ export default function(): void {
             expect(pageCollectionService.getPageRangeFromPages(pageCollectionService.getPageByIndex(1),
                                                                pageCollectionService.getPageByIndex(3)))
                 .toEqual(pageCollectionService.pageRange(1, 3));
-
         });
 
         it(".getPreviousPage() should return the previous page of the current page", function() {
-
             expect(pageCollectionService.getPreviousPage(pageCollectionService.lastPage))
                 .toEqual(pageCollectionService.getPageByIndex(3));
 
@@ -129,11 +124,9 @@ export default function(): void {
                 .toEqual(pageCollectionService.getPageByIndex(1));
 
             expect(pageCollectionService.getPreviousPage(pageCollectionService.firstPage)).toBeNull();
-
         });
 
         it(".getNextPage() should return the next page of the current page", function() {
-
             expect(pageCollectionService.getNextPage(pageCollectionService.firstPage))
                 .toEqual(pageCollectionService.getPageByIndex(1));
 
@@ -141,11 +134,9 @@ export default function(): void {
                 .toEqual(pageCollectionService.getPageByIndex(3));
 
             expect(pageCollectionService.getNextPage(pageCollectionService.lastPage)).toBeNull();
-
         });
 
         it(".getStepItemIdForPage() should return the step id of the page", function() {
-
             const firstPageId = context.clarityDirective.pages.first.id;
             const lastPageId = context.clarityDirective.pages.last.id;
 
@@ -154,7 +145,6 @@ export default function(): void {
 
             expect(pageCollectionService.getStepItemIdForPage(pageCollectionService.firstPage)).toBe(firstPageStepId);
             expect(pageCollectionService.getStepItemIdForPage(pageCollectionService.lastPage)).toBe(lastPageStepId);
-
         });
 
         it(".commitPage() should set the page's completed property to true", function() {

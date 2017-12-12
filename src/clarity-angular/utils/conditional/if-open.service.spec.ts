@@ -8,7 +8,6 @@ import {IfOpenService} from "./if-open.service";
 
 export default function(): void {
     describe("IfOpenService provider", function() {
-
         let ifOpenService: IfOpenService;
 
         beforeEach(function() {

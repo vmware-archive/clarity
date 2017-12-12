@@ -14,7 +14,6 @@ import {
 import {slide} from "./index";
 
 describe("Slide", () => {
-
     describe("invalid direction", () => {
         it("should throw an error", () => {
             expect(() => {

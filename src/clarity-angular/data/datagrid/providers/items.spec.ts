@@ -172,7 +172,6 @@ export default function(): void {
              * is if the filters themselves changed, which we already tested
              */
         });
-
     });
 }
 

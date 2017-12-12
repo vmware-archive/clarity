@@ -9,7 +9,6 @@ import {HideableColumnService} from "./hideable-column.service";
 
 export default function(): void {
     describe("DatagridHideableColumn provider", function() {
-
         let columnService: HideableColumnService;
 
         beforeEach(function() {
@@ -65,7 +64,6 @@ export default function(): void {
             expect(columnService.checkForAllColumnsVisible).toBe(true);
             testColumns[0].hidden = true;
             expect(columnService.checkForAllColumnsVisible).toBe(false);
-
         });
 
         it("provides an observable that pushes the latest columnListChange", function() {

@@ -148,7 +148,6 @@ ClarityIconElement.prototype._setAriaLabelledBy = function() {
 };
 
 ClarityIconElement.prototype._injectTemplate = function() {
-
     this.innerHTML = this.currentShapeTemplate;
 
     if (this.currentTitleAttrVal) {

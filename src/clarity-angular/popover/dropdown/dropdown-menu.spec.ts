@@ -45,7 +45,6 @@ export default function(): void {
             expect((<any>context.clarityDirective).anchorPoint).toEqual(Point.TOP_RIGHT);
             expect((<any>context.clarityDirective).popoverPoint).toEqual(Point.RIGHT_BOTTOM);
         });
-
     });
 }
 

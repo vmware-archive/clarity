@@ -18,7 +18,6 @@ export default function(): void {
         const buttons: Button[] = [];
 
         beforeEach(() => {
-
             TestBed.configureTestingModule({
                 imports: [ClrButtonGroupModule],
                 declarations: [TestButtonComponent],
@@ -95,7 +94,6 @@ export default function(): void {
         });
 
         it("emits a click event", () => {
-
             expect(fixture.componentInstance.flag).toBe(false);
 
             const btn: any = fixture.nativeElement.querySelector("#testBtn");

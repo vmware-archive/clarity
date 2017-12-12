@@ -50,5 +50,4 @@ describe("Tab", () => {
         expect(instance.tabLink.ariaControls).toMatch(/clr-tab-content-[0-9]/);
         expect(instance.tabContent.ariaLabelledBy).toMatch(/clr-tab-link-[0-9]/);
     });
-
 });

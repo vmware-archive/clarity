@@ -71,7 +71,6 @@ export default function(): void {
         });
 
         describe("Typescript API", () => {
-
             describe("id", () => {
                 it("should call page collection service for step item id", () => {
                     const pageCollectionSpy = spyOn(testItemComponent.pageCollection, "getStepItemIdForPage");

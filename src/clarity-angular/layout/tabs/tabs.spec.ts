@@ -116,11 +116,9 @@ class NestedTabsTest {
 }
 
 describe("Tabs", () => {
-
     addHelpers();
 
     describe("Projection", () => {
-
         let context: TestContext<Tabs, TestComponent>;
         let compiled: any;
 
@@ -155,12 +153,10 @@ describe("Tabs", () => {
             toggle.click();
             context.fixture.detectChanges();
             expect(compiled.querySelector(".tabs-overflow .tab4")).toBeDefined();
-
         });
     });
 
     describe("Nested Projection", () => {
-
         let context: TestContext<Tabs, NestedTabsTest>;
         let compiled: any;
 
@@ -184,7 +180,6 @@ describe("Tabs", () => {
     });
 
     describe("Default tab", function() {
-
         function expectFirstTabActive<T extends TestComponent|NgIfFirstTest|NgIfSecondTest>(testType: Type<T>) {
             const context: TestContext<Tabs, T> = this.create(Tabs, testType);
             const tabsService = context.getClarityProvider(TabsService);

@@ -1,0 +1,12 @@
+/*!
+ * Copyright (c) 2016-2017 VMWare, Inc. All Rights Reserved.
+ * This software is released under MIT License.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+// Fixes specific prism issue only for labels with badges (#1700: https://github.com/vmware/clarity/issues/1700)
+.prism-fix {
+    pre {
+        margin-top: 7px;
+    }
+}

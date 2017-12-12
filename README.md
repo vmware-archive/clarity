@@ -12,7 +12,7 @@ Clarity is published as three npm packages:
 
 * __@clr/icons.__ Contains the custom element icons.
 * __@clr/ui.__ Contains the static styles for building HTML components.
-* __@clr/ng.__ Contains the Angular components. This package depends on @clr/ui for styles.
+* __@clr/angular.__ Contains the Angular components. This package depends on @clr/ui for styles.
 
 The easiest way to run a sample Angular application with Clarity is to use the [Clarity Seed](https://github.com/vmware/clarity-seed). 
 
@@ -83,14 +83,14 @@ If you already have an Angular application, you can follow the installation step
 1. Follow steps above to install Clarity Icons and Clarity UI.
 2. Install the clarity-angular package through npm:
     ```bash
-    npm install @clr/ng --save
+    npm install @clr/angular --save
     ```
 
 3. Import the ClarityModule into your Angular application's module.  Your application's main module might look like this:
     ```typescript
     import { NgModule } from '@angular/core';
     import { BrowserModule } from '@angular/platform-browser';
-    import { ClarityModule } from '@clr/ng';
+    import { ClarityModule } from '@clr/angular';
     import { AppComponent } from './app.component';
 
     @NgModule({
@@ -112,7 +112,7 @@ If you already have an Angular application, you can follow the installation step
     	...
     	map: {
     	   ...
-    	   '@clr/ng': 'node_modules/clr-angular/clr-angular.umd.js',
+    	   '@clr/angular': 'node_modules/clr-angular/clr-angular.umd.js',
     	},
     	...
     });

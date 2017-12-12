@@ -12,14 +12,14 @@
 
 3. Install the clarity-angular package through npm:
     ```
-    npm install @clr/ng
+    npm install @clr/angular
     ```
 
 4. Import the ClarityModule into your Angular application's module.  Your application's main module might look like this:
     ```
     import { NgModule } from '@angular/core';
     import { BrowserModule } from '@angular/platform-browser';
-    import { ClarityModule } from '@clr/ng';
+    import { ClarityModule } from '@clr/angular';
     import { AppComponent } from './app.component';
 
     @NgModule({

@@ -41,7 +41,6 @@ describe("Alerts pager component", function() {
     });
 
     describe("Template API", function() {
-
         beforeEach(function() {
             const service = new MultiAlertService();
             const queryList = new QueryList<Alert>();

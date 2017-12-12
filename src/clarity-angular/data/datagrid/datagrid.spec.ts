@@ -52,7 +52,6 @@ export default function(): void {
                 context.clarityDirective.resize();
                 expect(resizeDone).toBe(true);
             });
-
         });
 
         describe("Template API", function() {
@@ -269,7 +268,6 @@ export default function(): void {
                 expect(headActionOverflowCell).toBeNull();
                 expect(actionOverflowCell.length).toEqual(0);
             });
-
         });
 
         describe("Expandable rows", function() {
@@ -383,8 +381,6 @@ export default function(): void {
                     expect(() => context.detectChanges()).not.toThrow();
                 });
             });
-
-
         });
     });
 }

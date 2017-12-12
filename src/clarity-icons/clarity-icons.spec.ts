@@ -538,8 +538,6 @@ describe("ClarityIcons", () => {
                 .toBe(removeWhitespace(getErrorShape(clrIconUniqId, customTitle)));
             expect(console.error).toHaveBeenCalled();
         });
-
-
     });
 
     describe("SVG Icon Markups", () => {
@@ -626,6 +624,5 @@ describe("ClarityIcons", () => {
 
             testAllShapesRequiredAttributes(currentAllShapes);
         });
-
     });
 });

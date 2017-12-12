@@ -33,7 +33,6 @@ const PROVIDERS = [
 
 export default function(): void {
     describe("DatagridRow component", function() {
-
         describe("View", function() {
             // Until we can properly type "this"
             let context: TestContext<DatagridRow, FullTest>;
@@ -327,7 +326,6 @@ export default function(): void {
 
                 hideableColumnService.updateColumnList(hiddenColumns);
                 expect(context.clarityDirective.updateCellsForColumns).toHaveBeenCalled();
-
             });
         });
     });

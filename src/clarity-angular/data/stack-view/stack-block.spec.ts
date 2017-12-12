@@ -108,7 +108,6 @@ export default function(): void {
             fixture.detectChanges();
 
             expect(getBlockInstance(fixture).expandable).toBeTruthy();
-
         });
 
         it("starts collapsed", () => {

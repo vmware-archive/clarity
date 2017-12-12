@@ -145,7 +145,6 @@ export default function(): void {
             wizardNavigationService.currentPage = testPage;
             wizardNavigationService.previous();
             expect(wizardNavigationService.currentPage).toEqual(previousPage);
-
         });
 
         it(".previous() set current page to incomplete if set to forceForward navigation", function() {

@@ -7,16 +7,17 @@ import {AfterContentInit, Component, ContentChildren, EventEmitter, Input, Outpu
 import {Alert} from "./alert";
 import {MultiAlertService} from "./providers/multi-alert-service";
 
+// alert types in the format of "alert-*" are deprecated and will be removed in 0.12 or later
 @Component({
     selector: "clr-alerts",
     templateUrl: "./alerts.html",
     providers: [MultiAlertService],
     host: {
         "[class.alerts]": "true",
-        "[class.alert-danger]": "this.currentAlertType == 'danger'",
-        "[class.alert-info]": "this.currentAlertType == 'info'",
-        "[class.alert-success]": "this.currentAlertType == 'success'",
-        "[class.alert-warning]": "this.currentAlertType == 'warning'"
+        "[class.alert-danger]": "this.currentAlertType == 'danger' || this.currentAlertType == 'alert-danger'",
+        "[class.alert-info]": "this.currentAlertType == 'info' || this.currentAlertType == 'alert-info'",
+        "[class.alert-success]": "this.currentAlertType == 'success' || this.currentAlertType == 'alert-success'",
+        "[class.alert-warning]": "this.currentAlertType == 'warning' || this.currentAlertType == 'alert-warning'"
     },
     styles: [":host { display: block }"]
 })

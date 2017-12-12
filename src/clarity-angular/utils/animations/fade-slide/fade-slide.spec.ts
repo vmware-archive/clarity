@@ -14,7 +14,6 @@ import {
 import {fadeSlide} from "./index";
 
 describe("FadeSlide", () => {
-
     describe("invalid direction", () => {
         it("should throw an error", () => {
             expect(() => {

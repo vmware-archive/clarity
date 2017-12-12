@@ -31,7 +31,6 @@ export default function(): void {
         });
 
         describe("Tree Node Basics", () => {
-
             beforeEach(() => {
                 fixture = TestBed.createComponent(BasicTreeNodeTestComponent);
                 fixture.detectChanges();
@@ -298,7 +297,6 @@ export default function(): void {
         });
 
         describe("Basic Tree Node Selection", () => {
-
             beforeEach(() => {
                 fixture = TestBed.createComponent(BasicTreeNodeSelectionTestComponent);
                 fixture.detectChanges();
@@ -444,7 +442,6 @@ export default function(): void {
             });
 
             it("initializes the tree with the selection state set by the user", () => {
-
                 // A1
                 expect(a1Node.expanded).toBe(true);
                 expect(a1Node.indeterminate).toBe(true);

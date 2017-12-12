@@ -8,7 +8,6 @@ import {IfActiveService} from "./if-active.service";
 
 export default function(): void {
     describe("IfActiveService provider", function() {
-
         let ifActiveService: IfActiveService;
 
         beforeEach(function() {

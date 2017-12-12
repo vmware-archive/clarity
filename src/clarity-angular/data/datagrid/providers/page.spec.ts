@@ -101,6 +101,5 @@ export default function(): void {
             expect(currentPage).toBe(1);
             expect(nbChanges).toBe(3);
         });
-
     });
 }

@@ -95,9 +95,7 @@ describe("FocusTrap", () => {
             levelTwoButton.focus();
             expect(document.activeElement)
                 .toEqual(levelTwoButton, `element inside currently active focus trap directive wasn't focused`);
-
         });
-
     });
 
 
@@ -140,7 +138,6 @@ describe("FocusTrap", () => {
             fixture.detectChanges();
             expect(document.activeElement).toBe(initialActiveElement);
         });
-
     });
 });
 

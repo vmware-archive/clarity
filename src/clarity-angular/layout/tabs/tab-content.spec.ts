@@ -37,5 +37,4 @@ describe("TabContent", () => {
     it("projects content", () => {
         expect(compiled.textContent.trim()).toMatch("Content1");
     });
-
 });

@@ -58,14 +58,12 @@ export class DragDispatcher {
             });
 
             dragEndListener = this._renderer.listen("document", endOnEvent, (endEvent: any) => {
-
                 // Unsubscribing from mouseMoveListener
                 dragMoveListener();
                 this.notifyDragEnd(endEvent);
                 // Unsubscribing from itself
                 dragEndListener();
             });
-
         });
     }
 

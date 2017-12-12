@@ -75,6 +75,5 @@ export default function(): void {
                 expect(this.domAdapter.userDefinedWidth(this.element)).toBe(0);
             });
         });
-
     });
 }

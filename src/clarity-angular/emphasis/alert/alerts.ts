@@ -7,6 +7,7 @@ import {AfterContentInit, Component, ContentChildren, EventEmitter, Input, Outpu
 import {Alert} from "./alert";
 import {MultiAlertService} from "./providers/multi-alert-service";
 
+// alert types in the format of "alert-*" are deprecated and will be removed in 0.12 or later
 @Component({
     selector: "clr-alerts",
     templateUrl: "./alerts.html",

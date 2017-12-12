@@ -42,7 +42,7 @@ This will start up our demo app using webpack-dev-server on port 4200 and watch 
 This script deletes the `dist` folder, which contains all the produced files for bundling.
 
 ##### `npm run build`
-This script builds npm package candidates for all three packages we currently publish: `@clr/ng`, `@clr/ui`, and 
+This script builds npm package candidates for all three packages we currently publish: `@clr/angular`, `@clr/ui`, and 
 `@clr/icons` under the `/dist` folder. 
 Note that this will also produce bundle files as a result of building and bundling for the demo app. Those can be ignored for the purposes of publishing.
 
@@ -62,7 +62,7 @@ which runs the clang-format command (with `-output-replacements-xml` flag) and g
 The `npm run clang:format` does the actual formatting according to the rules specified in `.clang-format` file.
 
 ##### `npm build:angular`
-This script produces the `@clr/ng` package using [ng-packagr](https://github.com/dherges/ng-packagr). 
+This script produces the `@clr/angular` package using [ng-packagr](https://github.com/dherges/ng-packagr). 
 However, because of limitations of the tools we supplement this with a `pre` and `post` script. 
 
 The `pre` script simply copies over the `package.json` template from our `npm` folder (this contains templates for `package.json` and 

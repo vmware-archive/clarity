@@ -22,7 +22,7 @@ If you already have an Angular application, you can follow the installation step
 
 1. Install Clarity Icons package through npm:
     ```bash
-    npm install clr-icons --save
+    npm install @clr/icons --save
     ```
 
 2. Install the polyfill for Custom Elements: 
@@ -32,7 +32,7 @@ If you already have an Angular application, you can follow the installation step
 
 3. Include the clr-icons.min.css and clr-icons.min.js in your HTML. As clr-icons.min.js is dependent on the Custom Elements polyfill, make sure to include it before clr-icons.min.js:
     ```html
-    <link rel="stylesheet" href="path/to/node_modules/clr-icons/clr-icons.min.css">
+    <link rel="stylesheet" href="path/to/node_modules/@clr/icons/clr-icons.min.css">
 
     <script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
     <script src="path/to/node_modules/clr-icons/clr-icons.min.js"></script>
@@ -43,13 +43,13 @@ If you already have an Angular application, you can follow the installation step
     ```js
     "styles": [
         ...
-        "../node_modules/clr-icons/clr-icons.min.css",
+        "../node_modules/@clr/icons/clr-icons.min.css",
         ...
     ],
     "scripts": [
         ...
         "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-        "../node_modules/clr-icons/clr-icons.min.js"
+        "../node_modules/@clr/icons/clr-icons.min.js"
         ...
     ]
     ```
@@ -112,7 +112,7 @@ If you already have an Angular application, you can follow the installation step
     	...
     	map: {
     	   ...
-    	   '@clr/angular': 'node_modules/clr-angular/clr-angular.umd.js',
+    	   '@clr/angular': 'node_modules/@clr/angular/bundles/clr-angular.umd.js',
     	},
     	...
     });

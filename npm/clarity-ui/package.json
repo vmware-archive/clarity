@@ -8,7 +8,8 @@
         "url" : "git@github.com:vmware/clarity.git"
     },
     "peerDependencies": {
-        "clarity-icons": "@VERSION"
+        "clarity-icons": "@VERSION",
+        "bootstrap": "4.0.0-alpha.5"
     },
     "author": "clarity",
     "license": "MIT",

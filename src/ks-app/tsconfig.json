@@ -15,10 +15,6 @@
       "es2016",
       "dom"
     ],
-    "paths": {
-//      "clr-angular": [
-//        "../../dist/npm/clr-angular"
-//      ]
-    }
+    "paths": {}
   }
 }

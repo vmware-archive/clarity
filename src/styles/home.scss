@@ -5,6 +5,7 @@ body.layout-home {
         height: auto;
 
         .content-area {
+            overflow-x: hidden;
             padding: 0;
         }
     }
@@ -111,16 +112,6 @@ body.layout-home {
         position: absolute;
         bottom: -55px;
         left: 564px;
-
-        .snow-flake {
-            -webkit-animation: spin-snowflake 20s infinite linear;
-            -moz-animation: spin-snowflake 20s infinite linear;
-            -o-animation: spin-snowflake 20s infinite linear;
-            -ms-animation: spin-snowflake 20s infinite linear;
-            animation: spin-snowflake 20s infinite linear;
-            transform: translate3d(0,0,0);
-            transform-origin: center;
-        }
     }
 }
 
@@ -325,7 +316,11 @@ a.home-contact_link {
     .home-hero {
         width: 100%;
         overflow-x: hidden;
+        &.winter {
+            overflow-x: unset;
+        }
     }
+
 }
 
 @media (max-width: 1291px) {
@@ -350,12 +345,21 @@ a.home-contact_link {
             padding-left: $bl-1_0;
         }
     }
+    .svg-winter { //Remove winter class after January
+        left: 455px;
+    }
 }
 
 @media (max-width: 1092px) {
     .home-hero {
         .bg-img {
             left: 504px;
+        }
+        .svg-winter{
+            height: 665px;
+            width: 580px;
+            bottom: -110px;
+            left: 397px;
         }
     }
 }
@@ -546,6 +550,10 @@ a.home-contact_link {
         margin-top: $bl-1_0;
     }
 
+    .svg-winter{
+        display: none;
+    }
+
 }
 
 @media (max-width: 545px) {
@@ -699,31 +707,4 @@ a.home-contact_link {
         padding-top: $bl-0_75;
         padding-bottom: $bl-0_5;
     }
-}
-
-@media (min-width: 767px) and (max-width: 930px) {
-    .home-contact-block .xtra {
-        display: none;
-    }
-}
-
-@-webkit-keyframes spin-snowflake {
-    0% { -webkit-transform: rotate(0deg);}
-    100% { -webkit-transform: rotate(360deg);}
-}
-@-moz-keyframes spin-snowflake {
-    0% { -moz-transform: rotate(0deg);}
-    100% { -moz-transform: rotate(360deg);}
-}
-@-o-keyframes spin-snowflake {
-    0% { -o-transform: rotate(0deg);}
-    100% { -o-transform: rotate(360deg);}
-}
-@-ms-keyframes spin-snowflake {
-    0% { -ms-transform: rotate(0deg);}
-    100% { -ms-transform: rotate(360deg);}
-}
-@-keyframes spin-snowflake {
-    0% { transform: rotate(0deg);}
-    100% { transform: rotate(360deg);}
 }

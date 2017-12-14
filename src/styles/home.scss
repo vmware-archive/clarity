@@ -38,8 +38,10 @@ body.layout-home {
     position: relative;
 
     .home-hero-content {
+        position: relative;
         width: 100%;
         max-width: 648px;
+        z-index: 1;
     }
 
     h1 {
@@ -98,9 +100,27 @@ body.layout-home {
         position: absolute;
         bottom: 0;
         left: 612px;
-        background-image: url('../assets/images/clarity_logo.svg');
+        background-image: url('../assets/images/clarity_logo_winter.svg');
         background-size: cover;
         background-position: center center;
+    }
+
+    .svg-winter {
+        height: 700px;
+        width: 740px;
+        position: absolute;
+        bottom: -55px;
+        left: 564px;
+
+        .snow-flake {
+            -webkit-animation: spin-snowflake 20s infinite linear;
+            -moz-animation: spin-snowflake 20s infinite linear;
+            -o-animation: spin-snowflake 20s infinite linear;
+            -ms-animation: spin-snowflake 20s infinite linear;
+            animation: spin-snowflake 20s infinite linear;
+            transform: translate3d(0,0,0);
+            transform-origin: center;
+        }
     }
 }
 
@@ -240,11 +260,11 @@ body.layout-home {
     background-color: #313131;
 
     background: -moz-linear-gradient(left, #0094D2 0%, #eaf700 50%, #313131 50%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#0094D2), color-stop(50%,#0094D2), color-stop(50%,#313131));
-    background: -webkit-linear-gradient(left, #0094D2 0%,#0094D2 50%,#313131 50%);
-    background: -o-linear-gradient(left, #0094D2 0%,#0094D2 50%,#313131 50%);
-    background: -ms-linear-gradient(left, #0094D2 0%,#0094D2 50%,#313131 50%);
-    background: linear-gradient(to right, #0094D2 0%,#0094D2 50%,#313131 50%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #0094D2), color-stop(50%, #0094D2), color-stop(50%, #313131));
+    background: -webkit-linear-gradient(left, #0094D2 0%, #0094D2 50%, #313131 50%);
+    background: -o-linear-gradient(left, #0094D2 0%, #0094D2 50%, #313131 50%);
+    background: -ms-linear-gradient(left, #0094D2 0%, #0094D2 50%, #313131 50%);
+    background: linear-gradient(to right, #0094D2 0%, #0094D2 50%, #313131 50%);
 }
 
 .home-contact-container, .layout-home footer {
@@ -557,7 +577,7 @@ a.home-contact_link {
             margin-top: -1 * $bl-2_0;
         }
 
-         .home-card {
+        .home-card {
             padding-left: 156px;
             padding-right: $bl-0_75;
         }
@@ -685,4 +705,25 @@ a.home-contact_link {
     .home-contact-block .xtra {
         display: none;
     }
+}
+
+@-webkit-keyframes spin-snowflake {
+    0% { -webkit-transform: rotate(0deg);}
+    100% { -webkit-transform: rotate(360deg);}
+}
+@-moz-keyframes spin-snowflake {
+    0% { -moz-transform: rotate(0deg);}
+    100% { -moz-transform: rotate(360deg);}
+}
+@-o-keyframes spin-snowflake {
+    0% { -o-transform: rotate(0deg);}
+    100% { -o-transform: rotate(360deg);}
+}
+@-ms-keyframes spin-snowflake {
+    0% { -ms-transform: rotate(0deg);}
+    100% { -ms-transform: rotate(360deg);}
+}
+@-keyframes spin-snowflake {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
 }

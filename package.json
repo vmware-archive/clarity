@@ -1,6 +1,6 @@
 {
     "name": "clarity-all",
-    "version": "0.10.17",
+    "version": "0.10.18",
     "private": true,
     "scripts": {
         "start": "webpack-dev-server -d --open",

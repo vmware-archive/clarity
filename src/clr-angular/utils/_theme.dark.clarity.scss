@@ -340,6 +340,7 @@ $clr-datagrid-popover-bg-color: #22343c;
 $clr-datagrid-action-toggle: $clr-datagrid-font-color;
 $clr-datagrid-popover-border-color: $clr-black;
 $clr-datagrid-action-popover-hover-color: $clr-datagrid-row-hover;
+$clr-datagrid-loading-background: rgba(0, 0, 0, 0.5);
 // END: Datagrid
 
 /*********
@@ -359,7 +360,7 @@ $clr-dropdown-bg-active-color: $clr-global-selection-color;
 $clr-dropdown-bg-hover-color: $clr-global-hover-bg-color;
 $clr-dropdown-font-color: #adbbc4;
 $clr-dropdown-selection-color: #324f61;
-$clr-dropdown-box-shadow: rgba(clr-getColor(dark), 0.25);
+$clr-dropdown-box-shadow: rgba(0, 0, 0, 0.5);
 $clr-dropdown-divider-color: $clr-dropdown-border-color;
 $clr-dropdown-header-color: #ADBBC4;
 // END: Dropdown overrides

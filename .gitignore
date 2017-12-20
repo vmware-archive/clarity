@@ -39,6 +39,7 @@ npm-debug.log
 testem.log
 /typings
 /src/clr-angular/package.json
+/src/clr-angular/README.md
 
 # e2e
 /e2e/*.js

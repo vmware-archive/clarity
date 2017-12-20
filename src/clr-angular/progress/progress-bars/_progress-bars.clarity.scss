@@ -126,9 +126,6 @@
                 right: 0;
                 line-height: 1em;
                 margin-top: -0.375em;
-                // TODO: we will need to define different text colors depending on the
-                // background. at the very least we may find ourselves needing light/dark.
-                color: clr-getTextColor();
             }
         }
     }
@@ -212,7 +209,7 @@
         &::after {
             animation: clr-progress-looper 2s ease-in-out infinite;
             content: ' ';
-            top: 0.166667rem;
+            top: 0.142rem;
             bottom: 0;
             left: 0;
             position: absolute;

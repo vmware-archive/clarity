@@ -133,5 +133,29 @@
             top: 5px;
 
         }
+
+        // Allow for label to be on the right of the toggle switch.
+		&.right-label {
+
+            label {
+			    margin-left: $clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing;
+                margin-right: 0;
+            }
+
+            input[type="checkbox"] + label::before {
+                right: 0;
+                left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing);
+            }
+
+            input[type="checkbox"] + label::after {
+                right: 0;
+                left: -1 * $clr-toggle-switch-left-spacing;
+                transition-property: left;
+            }
+
+            input[type="checkbox"]:checked + label::after {
+                transition-property: left;
+            }
+		}
     }
 }

@@ -5,7 +5,7 @@
 @include exports('datagrid.clarity') {
     @include basic-table(".datagrid", ".datagrid-head", ".datagrid-body",
         ".datagrid-row", ".datagrid-column", ".datagrid-cell");
-    
+
     $clr-datagrid-icon-size: 0.583333rem;
     $clr-datagrid-action-arrow-size: 0.25rem;
     $clr-datagrid-fixed-column-size: (2 * $clr-table-cellpadding) + $clr-table-lineheight;
@@ -33,7 +33,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba($clr-white, 0.6);
+            background: $clr-datagrid-loading-background;
         }
 
     }

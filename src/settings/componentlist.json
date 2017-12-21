@@ -25,8 +25,7 @@
             "core": -1,
             "ng": 20,
             "dox": 20,
-            "newLayout": true,
-            "isUpdated": true
+            "newLayout": true
         },
         {
             "url": "badges",
@@ -294,7 +293,8 @@
             "ui": 20,
             "core": -1,
             "ng": 5,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "radios",
@@ -398,7 +398,8 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "toggle-switches",

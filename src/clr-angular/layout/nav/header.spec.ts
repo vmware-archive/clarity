@@ -8,7 +8,7 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {ClrIconModule} from "../../icon/icon.module";
 
-import {MainContainerWillyWonka} from "../chocolate/main-container-willy-wonka";
+import {MainContainerWillyWonka} from "./chocolate/main-container-willy-wonka";
 import {ClrNavigationModule} from "./navigation.module";
 
 @Component({

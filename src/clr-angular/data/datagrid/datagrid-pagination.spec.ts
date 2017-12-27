@@ -5,20 +5,20 @@
  */
 import {Component} from "@angular/core";
 
-import {DatagridPagination} from "./datagrid-pagination";
+import {ClrDatagridPagination} from "./datagrid-pagination";
 import {TestContext} from "./helpers.spec";
 import {Page} from "./providers/page";
 import {StateDebouncer} from "./providers/state-debouncer.provider";
 
 export default function(): void {
-    describe("DatagridPagination component", function() {
+    describe("ClrDatagridPagination component", function() {
         describe("Typescript API", function() {
             let pageService: Page;
-            let component: DatagridPagination;
+            let component: ClrDatagridPagination;
 
             beforeEach(function() {
                 pageService = new Page(new StateDebouncer());
-                component = new DatagridPagination(pageService);
+                component = new ClrDatagridPagination(pageService);
                 component.ngOnInit();  // For the subscription that will get destroyed.
             });
 
@@ -73,10 +73,10 @@ export default function(): void {
 
         describe("Template API", function() {
             // Until we can properly type "this"
-            let context: TestContext<DatagridPagination, FullTest>;
+            let context: TestContext<ClrDatagridPagination, FullTest>;
 
             beforeEach(function() {
-                context = this.create(DatagridPagination, FullTest, [Page, StateDebouncer]);
+                context = this.create(ClrDatagridPagination, FullTest, [Page, StateDebouncer]);
             });
 
             it("receives an input for page size", function() {
@@ -109,10 +109,10 @@ export default function(): void {
 
         describe("View", function() {
             // Until we can properly type "this"
-            let context: TestContext<DatagridPagination, FullTest>;
+            let context: TestContext<ClrDatagridPagination, FullTest>;
 
             beforeEach(function() {
-                context = this.create(DatagridPagination, FullTest, [Page, StateDebouncer]);
+                context = this.create(ClrDatagridPagination, FullTest, [Page, StateDebouncer]);
             });
 
             it("doesn't display anything if there is only one page", function() {

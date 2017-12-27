@@ -19,7 +19,7 @@ import {Page} from "./providers/page";
     `,
     host: {"[class.datagrid-placeholder-container]": "true"}
 })
-export class DatagridPlaceholder {
+export class ClrDatagridPlaceholder {
     constructor(private items: Items, private page: Page) {}
 
     /**

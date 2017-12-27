@@ -30,7 +30,7 @@ const COLLAPSED_STATE: string = "collapsed";
                  ])],
     host: {"class": "nav-group"}
 })
-export class VerticalNavGroup implements AfterContentInit, OnDestroy {
+export class ClrVerticalNavGroup implements AfterContentInit, OnDestroy {
     constructor(private _itemExpand: Expand, private _navGroupRegistrationService: VerticalNavGroupRegistrationService,
                 private _navGroupService: VerticalNavGroupService, private _navService: VerticalNavService) {
         this._navGroupRegistrationService.registerNavGroup();

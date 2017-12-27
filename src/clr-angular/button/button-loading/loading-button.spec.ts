@@ -9,7 +9,7 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {ClrLoadingModule} from "../../utils/loading/loading.module";
 
-import {LoadingButton} from "./loading-button";
+import {ClrLoadingButton} from "./loading-button";
 import {ClrLoadingButtonModule} from "./loading-button.module";
 
 describe("Loading Buttons", () => {
@@ -31,7 +31,7 @@ describe("Loading Buttons", () => {
     });
 
     it("implements LoadingListener", () => {
-        const instance: LoadingButton = fixture.componentInstance.loadingButtonInstance;
+        const instance: ClrLoadingButton = fixture.componentInstance.loadingButtonInstance;
 
         instance.startLoading();
         expect(instance.loading).toBe(true);
@@ -59,7 +59,7 @@ describe("Loading Buttons", () => {
     `
 })
 class TestLoadingButtonComponent {
-    @ViewChild(LoadingButton) loadingButtonInstance: LoadingButton;
+    @ViewChild(ClrLoadingButton) loadingButtonInstance: ClrLoadingButton;
 
     flag: boolean = false;
 }

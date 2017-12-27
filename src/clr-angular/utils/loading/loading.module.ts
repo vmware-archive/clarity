@@ -4,9 +4,18 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import {NgModule, Type} from "@angular/core";
 
-import {LOADING_DIRECTIVES} from "./index";
+import {ClrLoading} from "./loading";
 
-@NgModule({imports: [CommonModule], declarations: [LOADING_DIRECTIVES], exports: [LOADING_DIRECTIVES]})
+export const CLR_LOADING_DIRECTIVES: Type<any>[] = [ClrLoading];
+
+@NgModule({imports: [CommonModule], declarations: [CLR_LOADING_DIRECTIVES], exports: [CLR_LOADING_DIRECTIVES]})
 export class ClrLoadingModule {}
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export const Loading = ClrLoading;
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const LOADING_DIRECTIVES = CLR_LOADING_DIRECTIVES;

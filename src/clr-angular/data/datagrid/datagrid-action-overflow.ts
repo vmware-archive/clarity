@@ -24,7 +24,7 @@ import {RowActionService} from "./providers/row-action-service";
     `
 })
 
-export class DatagridActionOverflow implements OnDestroy {
+export class ClrDatagridActionOverflow implements OnDestroy {
     public anchorPoint: Point = Point.RIGHT_CENTER;
     public popoverPoint: Point = Point.LEFT_CENTER;
 

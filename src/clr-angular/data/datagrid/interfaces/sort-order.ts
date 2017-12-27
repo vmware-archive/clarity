@@ -11,8 +11,8 @@
  * @export
  * @enum {number}
  */
-export enum SortOrder {
-    Unsorted = 0,
-    Asc = 1,
-    Desc = -1
+export enum ClrDatagridSortOrder {
+    UNSORTED = 0,
+    ASC = 1,
+    DESC = -1
 }

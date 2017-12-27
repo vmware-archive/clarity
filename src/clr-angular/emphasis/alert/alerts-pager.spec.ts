@@ -8,18 +8,18 @@ import {TestBed} from "@angular/core/testing";
 
 import {ClrEmphasisModule} from "../../emphasis/emphasis.module";
 
-import {Alert} from "./alert";
-import {AlertsPager} from "./alerts-pager";
-import {MultiAlertService} from "./providers/multi-alert-service";
+import {ClrAlert} from "./alert";
+import {ClrAlertsPager} from "./alerts-pager";
+import {MultiAlertService} from "./providers/multi-alert.service";
 
-describe("Alerts pager component", function() {
+describe("ClrAlerts pager component", function() {
     describe("Typescript API", function() {
-        let component: AlertsPager;
+        let component: ClrAlertsPager;
         let service: MultiAlertService;
 
         beforeEach(() => {
             service = new MultiAlertService();
-            component = new AlertsPager(service);
+            component = new ClrAlertsPager(service);
         });
 
         afterEach(() => {
@@ -43,7 +43,7 @@ describe("Alerts pager component", function() {
     describe("Template API", function() {
         beforeEach(function() {
             const service = new MultiAlertService();
-            const queryList = new QueryList<Alert>();
+            const queryList = new QueryList<ClrAlert>();
 
             this.create = <T>(componentType: Type<T>) => {
                 TestBed.configureTestingModule({
@@ -53,9 +53,9 @@ describe("Alerts pager component", function() {
                 });
                 this.fixture = TestBed.createComponent(componentType);
 
-                this.alertFixture = TestBed.createComponent(Alert);
+                this.alertFixture = TestBed.createComponent(ClrAlert);
                 this.alert = this.alertFixture.componentInstance;
-                this.secondAlertFixture = TestBed.createComponent(Alert);
+                this.secondAlertFixture = TestBed.createComponent(ClrAlert);
                 this.secondAlert = this.secondAlertFixture.componentInstance;
 
                 queryList.reset([this.alert, this.secondAlert]);
@@ -97,12 +97,12 @@ describe("Alerts pager component", function() {
 
 @Component({template: `<clr-alerts-pager [(clrCurrentAlertIndex)]="index"></clr-alerts-pager>`})
 export class TestIndex {
-    @ViewChild(AlertsPager) pagerInstance: AlertsPager;
+    @ViewChild(ClrAlertsPager) pagerInstance: ClrAlertsPager;
     index: number = 0;
 }
 
 @Component({template: `<clr-alerts-pager [(clrCurrentAlert)]="currentAlert"></clr-alerts-pager>`})
 export class TestInstance {
-    @ViewChild(AlertsPager) pagerInstance: AlertsPager;
-    currentAlert: Alert;
+    @ViewChild(ClrAlertsPager) pagerInstance: ClrAlertsPager;
+    currentAlert: ClrAlert;
 }

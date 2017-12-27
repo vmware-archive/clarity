@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {ViewChild} from "@angular/core";
-import {StackBlock} from "../../clr-angular/data/stack-view/stack-block";
+import {ClrStackBlock} from "../../clr-angular/data/stack-view/stack-block";
 
 export class StackViewNgDemo {
     /*
@@ -29,7 +29,7 @@ export class StackViewNgDemo {
     /*
      * Lazy loading demo
      */
-    @ViewChild("lazyBlock") lazyBlock: StackBlock;
+    @ViewChild("lazyBlock") lazyBlock: ClrStackBlock;
     children: any[] = [];
 
     fetchChildren(): void {

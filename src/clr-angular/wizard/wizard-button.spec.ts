@@ -8,11 +8,11 @@ import {Component, DebugElement} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
 
-import {ButtonHubService} from "./providers/button-hub";
-import {ButtonHubMock} from "./providers/button-hub.mock";
-import {WizardNavigationService} from "./providers/wizard-navigation";
-import {NavServiceMock} from "./providers/wizard-navigation.mock";
-import {CUSTOM_BUTTON_TYPES, DEFAULT_BUTTON_TYPES, WizardButton} from "./wizard-button";
+import {ButtonHubService} from "./providers/button-hub.service";
+import {ButtonHubMock} from "./providers/button-hub.service.mock";
+import {WizardNavigationService} from "./providers/wizard-navigation.service";
+import {NavServiceMock} from "./providers/wizard-navigation.service.mock";
+import {ClrWizardButton, CUSTOM_BUTTON_TYPES, DEFAULT_BUTTON_TYPES} from "./wizard-button";
 import {MockPage} from "./wizard-page.mock";
 import {ClrWizardModule} from "./wizard.module";
 
@@ -52,7 +52,7 @@ export default function(): void {
         describe("Typescript API", () => {
             let fixture: ComponentFixture<any>;
             let buttonDebugEl: DebugElement;
-            let buttonComponent: WizardButton;
+            let buttonComponent: ClrWizardButton;
             const navService = new NavServiceMock();
             const buttonHub = new ButtonHubMock();
 
@@ -117,7 +117,7 @@ export default function(): void {
                 fixture = TestBed.createComponent(TestComponent);
                 buttonHub.buttonsReady = true;
                 fixture.detectChanges();
-                buttonDebugEl = fixture.debugElement.query(By.directive(WizardButton));
+                buttonDebugEl = fixture.debugElement.query(By.directive(ClrWizardButton));
                 buttonComponent = buttonDebugEl.componentInstance;
             });
 
@@ -818,7 +818,7 @@ export default function(): void {
         describe("Template API", () => {
             let fixture: ComponentFixture<any>;
             let buttonDebugEl: DebugElement;
-            let buttonComponent: WizardButton;
+            let buttonComponent: ClrWizardButton;
             const navService = new NavServiceMock();
             const buttonHub = new ButtonHubMock();
             let myTestComponent: ViewTestComponent;
@@ -837,7 +837,7 @@ export default function(): void {
                 fixture = TestBed.createComponent(ViewTestComponent);
                 buttonHub.buttonsReady = true;
                 fixture.detectChanges();
-                buttonDebugEl = fixture.debugElement.query(By.directive(WizardButton));
+                buttonDebugEl = fixture.debugElement.query(By.directive(ClrWizardButton));
                 buttonComponent = buttonDebugEl.componentInstance;
                 myTestComponent = fixture.componentInstance;
             });
@@ -992,7 +992,7 @@ export default function(): void {
         describe("View and Behavior", () => {
             let fixture: ComponentFixture<any>;
             let buttonDebugEl: DebugElement;
-            let buttonComponent: WizardButton;
+            let buttonComponent: ClrWizardButton;
             const navService = new NavServiceMock();
             const buttonHub = new ButtonHubMock();
             let myTestComponent: ViewTestComponent;
@@ -1014,7 +1014,7 @@ export default function(): void {
                 fixture = TestBed.createComponent(ViewTestComponent);
                 buttonHub.buttonsReady = true;
                 fixture.detectChanges();
-                buttonDebugEl = fixture.debugElement.query(By.directive(WizardButton));
+                buttonDebugEl = fixture.debugElement.query(By.directive(ClrWizardButton));
                 buttonComponent = buttonDebugEl.componentInstance;
                 buttonElement = buttonDebugEl.nativeElement;
                 actualButton = buttonElement.querySelector("button");

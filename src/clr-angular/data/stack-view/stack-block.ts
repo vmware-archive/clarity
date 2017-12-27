@@ -36,7 +36,7 @@ import {Component, EventEmitter, HostBinding, Input, OnInit, Optional, Output, S
                                 [style({"height": "*", "overflow-y": "hidden"}), animate("0.2s ease-in-out")])
                  ])]
 })
-export class StackBlock implements OnInit {
+export class ClrStackBlock implements OnInit {
     @HostBinding("class.stack-block-expanded") @Input("clrSbExpanded") expanded: boolean = false;
     @Output("clrSbExpandedChange") expandedChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
     @HostBinding("class.stack-block-expandable") @Input("clrSbExpandable") expandable: boolean = false;
@@ -64,19 +64,19 @@ export class StackBlock implements OnInit {
     }
 
     /*
-     * This would be more efficient with @ContentChildren, with the parent StackBlock
+     * This would be more efficient with @ContentChildren, with the parent ClrStackBlock
      * querying for children StackBlocks, but this feature is not available when downgrading
      * the component for Angular 1.
      */
-    constructor(@SkipSelf() @Optional() private parent: StackBlock) {
+    constructor(@SkipSelf() @Optional() private parent: ClrStackBlock) {
         if (parent) {
             parent.addChild();
         }
     }
 
     ngOnInit(): void {
-        // in order to access the parent StackBlock's properties,
-        // the child StackBlock  has to be fully initialized at first.
+        // in order to access the parent ClrStackBlock's properties,
+        // the child ClrStackBlock  has to be fully initialized at first.
         this._fullyInitialized = true;
     }
 

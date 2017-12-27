@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, Directive, EventEmitter, Output} from "@angular/core";
+import {Component, EventEmitter, Output} from "@angular/core";
 
 @Component({
     selector: "clr-stack-view",
@@ -16,7 +16,7 @@ import {Component, Directive, EventEmitter, Output} from "@angular/core";
         :host { display: block; }
     `]
 })
-export class StackView {
+export class ClrStackView {
     /**
      * Undocumented experimental feature: inline editing.
      */
@@ -44,10 +44,4 @@ export class StackView {
     /**
      * End of undocumented experimental feature.
      */
-}
-
-@Directive({selector: "clr-stack-label, clr-stack-content"})
-export class StackViewCustomTags {
-    // No behavior
-    // The only purpose is to "declare" the tag in Angular
 }

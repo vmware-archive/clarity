@@ -8,7 +8,7 @@ import {Component, ViewChild} from "@angular/core";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {addHelpers, TestContext} from "../../utils/testing/helpers.spec";
 
-import {Signpost} from "./signpost";
+import {ClrSignpost} from "./signpost";
 import {ClrSignpostModule} from "./signpost.module";
 
 export default function(): void {
@@ -16,11 +16,11 @@ export default function(): void {
         addHelpers([ClrSignpostModule]);
 
         describe("default trigger", function() {
-            let context: TestContext<Signpost, TestDefaultSignpost>;
+            let context: TestContext<ClrSignpost, TestDefaultSignpost>;
             let ifOpenService: IfOpenService;
 
             beforeEach(function() {
-                context = this.create(Signpost, TestDefaultSignpost);
+                context = this.create(ClrSignpost, TestDefaultSignpost);
                 ifOpenService = context.getClarityProvider(IfOpenService);
             });
 
@@ -52,11 +52,11 @@ export default function(): void {
         });
 
         describe("custom trigger", function() {
-            let context: TestContext<Signpost, TestCustomTriggerSignpost>;
+            let context: TestContext<ClrSignpost, TestCustomTriggerSignpost>;
             let ifOpenService: IfOpenService;
 
             beforeEach(function() {
-                context = this.create(Signpost, TestCustomTriggerSignpost);
+                context = this.create(ClrSignpost, TestCustomTriggerSignpost);
                 ifOpenService = context.getClarityProvider(IfOpenService);
             });
 
@@ -122,7 +122,7 @@ export default function(): void {
 })
 
 class TestCustomTriggerSignpost {
-    @ViewChild(Signpost) signpost: Signpost;
+    @ViewChild(ClrSignpost) signpost: ClrSignpost;
 
     position: string = "right-middle";
 }
@@ -141,7 +141,7 @@ class TestCustomTriggerSignpost {
 })
 
 class TestDefaultSignpost {
-    @ViewChild(Signpost) signpost: Signpost;
+    @ViewChild(ClrSignpost) signpost: ClrSignpost;
 
     openState: boolean = false;
 }

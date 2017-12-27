@@ -9,7 +9,7 @@ import {Directive, ElementRef, Inject, Input, PLATFORM_ID, Renderer2} from "@ang
 declare var Prism: any;
 
 @Directive({selector: "code[clr-code-highlight]"})
-export class CodeHighlight {
+export class ClrCodeHighlight {
     private _highlight: string = "";
 
     // Had to use renderer because I wanted to add to existing classes on the code block

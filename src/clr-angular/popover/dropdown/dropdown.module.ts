@@ -5,17 +5,39 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import {NgModule, Type} from "@angular/core";
 
 import {ClrIconModule} from "../../icon/icon.module";
 import {ClrConditionalModule} from "../../utils/conditional/conditional.module";
 import {ClrCommonPopoverModule} from "../common/popover.module";
 
-import {DROPDOWN_DIRECTIVES} from "./index";
+import {ClrDropdown} from "./dropdown";
+import {ClrDropdownItem} from "./dropdown-item";
+import {ClrDropdownMenu} from "./dropdown-menu";
+import {ClrDropdownTrigger} from "./dropdown-trigger";
+import {CLR_MENU_POSITIONS} from "./menu-positions";
+
+export const CLR_DROPDOWN_DIRECTIVES: Type<any>[] = [ClrDropdown, ClrDropdownMenu, ClrDropdownTrigger, ClrDropdownItem];
 
 @NgModule({
     imports: [CommonModule, ClrCommonPopoverModule],
-    declarations: [DROPDOWN_DIRECTIVES],
-    exports: [DROPDOWN_DIRECTIVES, ClrConditionalModule, ClrIconModule]
+    declarations: [CLR_DROPDOWN_DIRECTIVES],
+    exports: [CLR_DROPDOWN_DIRECTIVES, ClrConditionalModule, ClrIconModule]
 })
 export class ClrDropdownModule {}
+
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export const Dropdown = ClrDropdown;
+/** @deprecated since 0.11 */
+export const DropdownMenu = ClrDropdownMenu;
+/** @deprecated since 0.11 */
+export const DropdownTrigger = ClrDropdownTrigger;
+/** @deprecated since 0.11 */
+export const DropdownItem = ClrDropdownItem;
+/** @deprecated since 0.11 */
+export const menuPositions = CLR_MENU_POSITIONS;
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const DROPDOWN_DIRECTIVES = CLR_DROPDOWN_DIRECTIVES;

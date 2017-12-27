@@ -4,11 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {DatagridHideableColumn} from "../datagrid-hideable-column";
+import {DatagridHideableColumnModel} from "../datagrid-hideable-column.model";
 import {HideableColumnService} from "./hideable-column.service";
 
 export default function(): void {
-    describe("DatagridHideableColumn provider", function() {
+    describe("DatagridHideableColumnModel provider", function() {
         let columnService: HideableColumnService;
 
         beforeEach(function() {
@@ -16,9 +16,10 @@ export default function(): void {
         });
 
         it("knows if the next column can be hidden", function() {
-            const initialTestColumns: DatagridHideableColumn[] = [
-                new DatagridHideableColumn(null, "dg-col-1", false),
-                new DatagridHideableColumn(null, "dg-col-2", false), new DatagridHideableColumn(null, "dg-col-3", false)
+            const initialTestColumns: DatagridHideableColumnModel[] = [
+                new DatagridHideableColumnModel(null, "dg-col-1", false),
+                new DatagridHideableColumnModel(null, "dg-col-2", false),
+                new DatagridHideableColumnModel(null, "dg-col-3", false)
             ];
 
             // test when they are all showing
@@ -40,11 +41,11 @@ export default function(): void {
         });
 
         it("resets the lastVisibleColumn when showing all columns", function() {
-            let restTestColumns: DatagridHideableColumn[];
-            const col1: DatagridHideableColumn = new DatagridHideableColumn(null, "dg-col-1", false);
-            const col2: DatagridHideableColumn = new DatagridHideableColumn(null, "dg-col-2", true);
-            const col3: DatagridHideableColumn = new DatagridHideableColumn(null, "dg-col-3", true);
-            const initialTestColumns: DatagridHideableColumn[] = [col1, col2, col3];
+            let restTestColumns: DatagridHideableColumnModel[];
+            const col1: DatagridHideableColumnModel = new DatagridHideableColumnModel(null, "dg-col-1", false);
+            const col2: DatagridHideableColumnModel = new DatagridHideableColumnModel(null, "dg-col-2", true);
+            const col3: DatagridHideableColumnModel = new DatagridHideableColumnModel(null, "dg-col-3", true);
+            const initialTestColumns: DatagridHideableColumnModel[] = [col1, col2, col3];
 
             col1.lastVisibleColumn = true;
             columnService.updateColumnList(initialTestColumns);
@@ -56,8 +57,9 @@ export default function(): void {
 
         it("checks for all columns visible", function() {
             const testColumns = [
-                new DatagridHideableColumn(null, "dg-col-1", false),
-                new DatagridHideableColumn(null, "dg-col-2", false), new DatagridHideableColumn(null, "dg-col-3", false)
+                new DatagridHideableColumnModel(null, "dg-col-1", false),
+                new DatagridHideableColumnModel(null, "dg-col-2", false),
+                new DatagridHideableColumnModel(null, "dg-col-3", false)
             ];
 
             columnService.updateColumnList(testColumns);
@@ -68,17 +70,18 @@ export default function(): void {
 
         it("provides an observable that pushes the latest columnListChange", function() {
             const testColumns = [
-                new DatagridHideableColumn(null, "dg-col-1", false),
-                new DatagridHideableColumn(null, "dg-col-2", false), new DatagridHideableColumn(null, "dg-col-3", false)
+                new DatagridHideableColumnModel(null, "dg-col-1", false),
+                new DatagridHideableColumnModel(null, "dg-col-2", false),
+                new DatagridHideableColumnModel(null, "dg-col-3", false)
             ];
             let nbChanges: number = 0;
-            let testList: DatagridHideableColumn[];
+            let testList: DatagridHideableColumnModel[];
 
             expect(columnService.columnListChange).toBeDefined();
             expect(testList).toBeUndefined();
 
             // Empty on init.
-            columnService.columnListChange.subscribe((change: DatagridHideableColumn[]) => {
+            columnService.columnListChange.subscribe((change: DatagridHideableColumnModel[]) => {
                 nbChanges++;
                 testList = change;
             });
@@ -91,8 +94,9 @@ export default function(): void {
 
         it("provides access to the current latestColumn list", function() {
             const testColumns = [
-                new DatagridHideableColumn(null, "dg-col-1", false),
-                new DatagridHideableColumn(null, "dg-col-2", false), new DatagridHideableColumn(null, "dg-col-3", false)
+                new DatagridHideableColumnModel(null, "dg-col-1", false),
+                new DatagridHideableColumnModel(null, "dg-col-2", false),
+                new DatagridHideableColumnModel(null, "dg-col-3", false)
             ];
 
             expect(columnService.getColumns()).toBeDefined();
@@ -102,10 +106,11 @@ export default function(): void {
         });
 
         it("shows all hidden columns", function() {
-            let testShowAllColumns: DatagridHideableColumn[];
-            const hiddenTestColumns: DatagridHideableColumn[] = [
-                new DatagridHideableColumn(null, "dg-col-1", true), new DatagridHideableColumn(null, "dg-col-2", true),
-                new DatagridHideableColumn(null, "dg-col-3", true)
+            let testShowAllColumns: DatagridHideableColumnModel[];
+            const hiddenTestColumns: DatagridHideableColumnModel[] = [
+                new DatagridHideableColumnModel(null, "dg-col-1", true),
+                new DatagridHideableColumnModel(null, "dg-col-2", true),
+                new DatagridHideableColumnModel(null, "dg-col-3", true)
             ];
 
             columnService.updateColumnList(hiddenTestColumns);
@@ -116,9 +121,10 @@ export default function(): void {
         });
 
         it("updates the columnListChange with a new columnsList", function() {
-            const newColumnList: DatagridHideableColumn[] = [
-                new DatagridHideableColumn(null, "dg-col-1", false),
-                new DatagridHideableColumn(null, "dg-col-2", false), new DatagridHideableColumn(null, "dg-col-3", false)
+            const newColumnList: DatagridHideableColumnModel[] = [
+                new DatagridHideableColumnModel(null, "dg-col-1", false),
+                new DatagridHideableColumnModel(null, "dg-col-2", false),
+                new DatagridHideableColumnModel(null, "dg-col-3", false)
             ];
 
             expect(columnService.updateColumnList).toBeDefined();
@@ -128,9 +134,10 @@ export default function(): void {
         });
 
         it("updates columnListChange for the lastVisibleColumn", function() {
-            const visibleTestColumns: DatagridHideableColumn[] = [
-                new DatagridHideableColumn(null, "dg-col-1", false),
-                new DatagridHideableColumn(null, "dg-col-2", false), new DatagridHideableColumn(null, "dg-col-3", false)
+            const visibleTestColumns: DatagridHideableColumnModel[] = [
+                new DatagridHideableColumnModel(null, "dg-col-1", false),
+                new DatagridHideableColumnModel(null, "dg-col-2", false),
+                new DatagridHideableColumnModel(null, "dg-col-3", false)
             ];
 
             // Setup
@@ -166,10 +173,11 @@ export default function(): void {
 
         it("looks up columns by id", function() {
             // test that it accounts for undefined
-            const nonHideableColumn: DatagridHideableColumn = undefined;
-            const visibleTestColumns: DatagridHideableColumn[] = [
-                new DatagridHideableColumn(null, "dg-col-1", false), nonHideableColumn,
-                new DatagridHideableColumn(null, "dg-col-2", false), new DatagridHideableColumn(null, "dg-col-3", false)
+            const nonHideableColumn: DatagridHideableColumnModel = undefined;
+            const visibleTestColumns: DatagridHideableColumnModel[] = [
+                new DatagridHideableColumnModel(null, "dg-col-1", false), nonHideableColumn,
+                new DatagridHideableColumnModel(null, "dg-col-2", false),
+                new DatagridHideableColumnModel(null, "dg-col-3", false)
             ];
 
             // Setup

@@ -6,7 +6,8 @@
 import {Directive, EmbeddedViewRef, EventEmitter, Input, Output, TemplateRef, ViewContainerRef} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
-import {Point, Popover, PopoverOptions} from "./popover";
+import {Point, Popover} from "./popover";
+import {PopoverOptions} from "./popover-options.interface";
 
 let openCount: number = 0;
 const waiting: Array<() => void> = [];  // pending create functions

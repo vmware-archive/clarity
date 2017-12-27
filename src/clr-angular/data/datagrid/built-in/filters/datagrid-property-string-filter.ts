@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {StringFilter} from "../../interfaces/string-filter";
+import {ClrDatagridStringFilterInterface} from "../../interfaces/string-filter.interface";
 import {NestedProperty} from "../nested-property";
 
-export class DatagridPropertyStringFilter implements StringFilter<any> {
+export class DatagridPropertyStringFilter implements ClrDatagridStringFilterInterface<any> {
     private nestedProp: NestedProperty;
 
     constructor(public prop: string, public exact = false) {

@@ -5,7 +5,7 @@
  */
 
 import {Component, ViewChild} from "@angular/core";
-import {Wizard} from "../wizard";
+import {ClrWizard} from "../wizard";
 
 @Component({
     template: `
@@ -50,7 +50,7 @@ import {Wizard} from "../wizard";
     `
 })
 export class TemplateApiWizardTestComponent {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     mySize: string;
     projectedTitle = "My Great Title";
     projectedPageTitle = "Title for Page 2";

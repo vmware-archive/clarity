@@ -46,7 +46,7 @@ import {Page} from "./providers/page";
     // IE10 comes to pollute even our components declaration
     styles: [`:host { display: block; }`]
 })
-export class DatagridPagination implements OnDestroy, OnInit {
+export class ClrDatagridPagination implements OnDestroy, OnInit {
     constructor(public page: Page) {
         /*
          * Default page size is 10.

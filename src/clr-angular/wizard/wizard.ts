@@ -22,13 +22,13 @@ import {Subscription} from "rxjs/Subscription";
 
 import {GHOST_PAGE_ANIMATION} from "../modal/utils/ghost-page-animations";
 
-import {ButtonHubService} from "./providers/button-hub";
-import {HeaderActionService} from "./providers/header-actions";
-import {PageCollectionService} from "./providers/page-collection";
+import {ButtonHubService} from "./providers/button-hub.service";
+import {HeaderActionService} from "./providers/header-actions.service";
+import {PageCollectionService} from "./providers/page-collection.service";
 // providers
-import {WizardNavigationService} from "./providers/wizard-navigation";
-import {WizardHeaderAction} from "./wizard-header-action";
-import {WizardPage} from "./wizard-page";
+import {WizardNavigationService} from "./providers/wizard-navigation.service";
+import {ClrWizardHeaderAction} from "./wizard-header-action";
+import {ClrWizardPage} from "./wizard-page";
 
 
 /**
@@ -49,7 +49,7 @@ import {WizardPage} from "./wizard-page";
         "[class.clr-wizard--ghosted]": "showGhostPages"
     }
 })
-export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
+export class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     /**
      * Creates an instance of Wizard.
      *
@@ -202,19 +202,19 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * like an Array but not really. Note also that pages does not contain
      * WizardPages that have been removed with an ngIf.
      *
-     * Most interactions with a Wizard's pages are more easily done using the
+     * Most interactions with a ClrWizard's pages are more easily done using the
      * helper function in the PageCollectionService, accessible from the
-     * Wizard through Wizard.pageCollection.
+     * ClrWizard through ClrWizard.pageCollection.
      *
      * @memberof Wizard
      *
      */
-    @ContentChildren(WizardPage) public pages: QueryList<WizardPage>;
+    @ContentChildren(ClrWizardPage) public pages: QueryList<ClrWizardPage>;
 
     /**
-     * A QueryList of the header actions defined at the Wizard level. Does not
+     * A QueryList of the header actions defined at the ClrWizard level. Does not
      * contain header actions defined at the page level. Mostly used by other functionality
-     * that needs to either know if the Wizard has header actions or needs to stamp them
+     * that needs to either know if the ClrWizard has header actions or needs to stamp them
      * somewhere.
      *
      * Could be useful if you needed to locate and programmatically activate a specific
@@ -224,7 +224,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @memberof Wizard
      *
      */
-    @ContentChildren(WizardHeaderAction) public headerActions: QueryList<WizardHeaderAction>;
+    @ContentChildren(ClrWizardHeaderAction) public headerActions: QueryList<ClrWizardHeaderAction>;
 
     /**
      * Emits when the current page has changed. Can be observed through the clrWizardCurrentPageChanged
@@ -260,11 +260,11 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     @Output("clrWizardOnPrevious") onMovePrevious: EventEmitter<any> = new EventEmitter<any>(false);
 
     /**
-     * Prevents Wizard from moving to the next page or closing itself on finishing.
+     * Prevents ClrWizard from moving to the next page or closing itself on finishing.
      * Set using the clrWizardPreventDefaultNext input.
      *
      * Note that using stopNext will require you to create your own calls to
-     * .next() and .finish() in your host component to make the Wizard work as
+     * .next() and .finish() in your host component to make the ClrWizard work as
      * expected.
      *
      * Primarily used for validation.
@@ -283,13 +283,13 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     }
 
     /**
-     * Prevents Wizard from closing when the cancel button or close "X" is clicked.
+     * Prevents ClrWizard from closing when the cancel button or close "X" is clicked.
      * Set using the clrWizardPreventDefaultCancel input.
      *
      * Note that using stopCancel will require you to create your own calls to
-     * .close() in your host component to make the Wizard work as expected.
+     * .close() in your host component to make the ClrWizard work as expected.
      *
-     * Useful for doing checks or prompts before closing a Wizard.
+     * Useful for doing checks or prompts before closing a ClrWizard.
      *
      * @memberof Wizard
      *
@@ -305,7 +305,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     }
 
     /**
-     * Prevents Wizard from performing any form of navigation away from the current
+     * Prevents ClrWizard from performing any form of navigation away from the current
      * page. Set using the clrWizardPreventNavigation input.
      *
      * Note that stopNavigation is meant to freeze the wizard in place, typically
@@ -330,7 +330,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * Prevents clicks on the links in the stepnav from working.
      *
      * A more granular bypassing of navigation which can be useful when your
-     * Wizard is in a state of completion and you don't want users to be
+     * ClrWizard is in a state of completion and you don't want users to be
      * able to jump backwards and change things.
      *
      * @memberof Wizard
@@ -364,7 +364,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     }
 
     public ngOnInit(): void {
-        this.currentPageSubscription = this.navService.currentPageChanged.subscribe((page: WizardPage) => {
+        this.currentPageSubscription = this.navService.currentPageChanged.subscribe((page: ClrWizardPage) => {
             this.setGhostPages();
             this.currentPageChanged.emit();
         });
@@ -443,7 +443,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * As a getter, current page is a convenient way to retrieve the current page from
      * the WizardNavigationService.
      *
-     * As a setter, current page accepts a WizardPage and passes it to WizardNavigationService
+     * As a setter, current page accepts a ClrWizardPage and passes it to WizardNavigationService
      * to be made the current page. currentPage performs checks to make sure it can navigate
      * to the designated page.
      *
@@ -452,10 +452,10 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * @memberof Wizard
      *
      */
-    public get currentPage(): WizardPage {
+    public get currentPage(): ClrWizardPage {
         return this.navService.currentPage;
     }
-    public set currentPage(page: WizardPage) {
+    public set currentPage(page: ClrWizardPage) {
         this.navService.goTo(page, true);
     }
 
@@ -490,7 +490,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * page defined, sets the first page in the wizard to be current.
      *
      * @name open
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public open(): void {
         this._open = true;
@@ -511,7 +511,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * of cancel() to implement alternative cancel functionality.
      *
      * @name close
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public close(): void {
         if (this.stopNavigation) {
@@ -533,7 +533,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      *
      * @name toggle
      *
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public toggle(value: boolean): void {
         if (value) {
@@ -549,7 +549,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * It is recommended that you use previous() instead.
      *
      * @name prev
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public prev(): void {
         this.previous();
@@ -559,7 +559,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * Moves the wizard to the previous page.
      *
      * @name previous
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public previous(): void {
         this.navService.previous();
@@ -586,7 +586,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * navigation with clrWizardPreventDefaultNext.
      *
      * @name next
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public next(skipChecksAndEmits: boolean = true): void {
         if (skipChecksAndEmits) {
@@ -610,7 +610,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * navigation with clrWizardPreventDefaultNext.
      *
      * @name finish
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public finish(skipChecksAndEmits: boolean = true): void {
         if (skipChecksAndEmits) {
@@ -625,11 +625,11 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * checks and emissions that other paths do. Good for a last step in an
      * alternate workflow.
      *
-     * Does the same thing as calling Wizard.finish(true) or Wizard.finish()
+     * Does the same thing as calling ClrWizard.finish(true) or ClrWizard.finish()
      * without a parameter.
      *
      * @name forceFinish
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public forceFinish(): void {
         if (this.stopNavigation) {
@@ -645,11 +645,11 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * checks and emissions that other paths do. Good for a last step in an
      * alternate workflow.
      *
-     * Does the same thing as calling Wizard.next(true) or Wizard.next()
+     * Does the same thing as calling ClrWizard.next(true) or ClrWizard.next()
      * without a parameter.
      *
      * @name forceNext
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public forceNext(): void {
         this.navService.forceNext();
@@ -663,10 +663,10 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * or clrWizardPagePreventDefault because it will initiate the same checks
      * and event emissions that invoked your event handler.
      *
-     * Use Wizard.close() instead.
+     * Use ClrWizard.close() instead.
      *
      * @name cancel
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public cancel(): void {
         this.navService.cancel();
@@ -676,10 +676,10 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * Overrides behavior of the underlying modal to avoid collisions with
      * alternative cancel functionality.
      *
-     * In most cases, use Wizard.cancel() instead.
+     * In most cases, use ClrWizard.cancel() instead.
      *
      * @name modalCancel
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public modalCancel(): void {
         this.checkAndCancel();
@@ -692,7 +692,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * clrWizardOnCancel) if so.
      *
      * @name checkAndCancel
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public checkAndCancel(): void {
         const currentPage = this.currentPage;
@@ -717,16 +717,16 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * to navigate to the page with that ID. Navigation will invoke the wizard’s default
      * checks and event emissions.
      *
-     * Probably less useful than calling directly to Wizard.navService.goTo() because the
+     * Probably less useful than calling directly to ClrWizard.navService.goTo() because the
      * nav service method can accept either a string ID or a page object.
      *
      * The format of the expected ID parameter can be found in the return of the
-     * WizardPage.id getter, usually prefixed with “clr-wizard-page-“ and then either a
-     * numeric ID or the ID specified for the WizardPage component’s “id” input.
+     * ClrWizardPage.id getter, usually prefixed with “clr-wizard-page-“ and then either a
+     * numeric ID or the ID specified for the ClrWizardPage component’s “id” input.
      *
      * @name goTo
      *
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public goTo(pageId: string): void {
         if (!pageId) {
@@ -738,19 +738,19 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
 
     /**
      * A convenience function that calls to PageCollectionService.reset() and emits the
-     * Wizard.onReset event.
+     * ClrWizard.onReset event.
      *
-     * Reset sets all WizardPages to incomplete and sets the first page in the Wizard to
+     * Reset sets all WizardPages to incomplete and sets the first page in the ClrWizard to
      * be the current page, essentially resetting the wizard navigation.
      *
      * Users would then use the onReset event to reset the data or model in their
      * host component.
      *
      * It could be useful to call a reset without firing the onReset event. To do this,
-     * just call Wizard.pageCollection.reset() directly.
+     * just call ClrWizard.pageCollection.reset() directly.
      *
      * @name reset
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public reset() {
         this.pageCollection.reset();
@@ -772,7 +772,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      * Convenience method that resets the ghost page animation.
      *
      * @name deactivateGhostPages
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public deactivateGhostPages(): void {
         this.setGhostPages("deactivate");
@@ -787,7 +787,7 @@ export class Wizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      *
      * @name setGhostPages
      *
-     * @memberof Wizard
+     * @memberof ClrWizard
      */
     public setGhostPages(deactivateOrNot: string = ""): void {
         const navService = this.navService;

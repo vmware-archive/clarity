@@ -6,14 +6,14 @@
 
 import {Component, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
-import {Wizard} from "../../clr-angular/wizard/wizard";
+import {ClrCodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
+import {ClrWizard} from "../../clr-angular/wizard/wizard";
 
 @Component({selector: "clr-wizard-async-validation", templateUrl: "./wizard-async-validation.demo.html"})
 export class WizardAsyncValidation {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     @ViewChild("myForm") formData: any;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
     loadingFlag: boolean = false;
     errorFlag: boolean = false;

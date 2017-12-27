@@ -7,7 +7,7 @@ import {Component} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {FormsModule} from "@angular/forms";
 
-import {StackView} from "./stack-view";
+import {ClrStackView} from "./stack-view";
 import {ClrStackViewModule} from "./stack-view.module";
 
 @Component({
@@ -28,7 +28,7 @@ export default function(): void {
 
         beforeEach(() => {
             TestBed.configureTestingModule(
-                {imports: [ClrStackViewModule, FormsModule], declarations: [TestComponent], providers: [StackView]});
+                {imports: [ClrStackViewModule, FormsModule], declarations: [TestComponent], providers: [ClrStackView]});
             fixture = TestBed.createComponent(TestComponent);
             fixture.detectChanges();
             compiled = fixture.nativeElement;

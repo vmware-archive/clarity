@@ -10,14 +10,14 @@ import {TestContext} from "../../data/datagrid/helpers.spec";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {Point} from "../common/popover";
 
-import {DropdownMenu} from "./dropdown-menu";
+import {ClrDropdownMenu} from "./dropdown-menu";
 
 export default function(): void {
     describe("DropdownMenu component", function() {
-        let context: TestContext<DropdownMenu, SimpleTest>;
+        let context: TestContext<ClrDropdownMenu, SimpleTest>;
 
         beforeEach(function() {
-            context = this.create(DropdownMenu, SimpleTest, [IfOpenService]);
+            context = this.create(ClrDropdownMenu, SimpleTest, [IfOpenService]);
             context.getClarityProvider(IfOpenService).open = true;
             context.detectChanges();
         });

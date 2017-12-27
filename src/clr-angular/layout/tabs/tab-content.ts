@@ -5,7 +5,7 @@
  */
 import {Component, Inject, Input, TemplateRef, ViewChild} from "@angular/core";
 import {IF_ACTIVE_ID, IfActiveService} from "../../utils/conditional/if-active.service";
-import {AriaService} from "./aria-service";
+import {AriaService} from "./providers/aria.service";
 
 let nbTabContentComponents: number = 0;
 
@@ -22,8 +22,8 @@ let nbTabContentComponents: number = 0;
         "role": "tabpanel"
     }
 })
-export class TabContent {
-    @ViewChild("tabContentProjectedRef") templateRef: TemplateRef<TabContent>;
+export class ClrTabContent {
+    @ViewChild("tabContentProjectedRef") templateRef: TemplateRef<ClrTabContent>;
 
     constructor(public ifActiveService: IfActiveService, @Inject(IF_ACTIVE_ID) public id: number,
                 private ariaService: AriaService) {

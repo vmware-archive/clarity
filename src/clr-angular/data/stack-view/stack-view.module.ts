@@ -5,11 +5,47 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import {NgModule, Type} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 
-import {STACK_VIEW_DIRECTIVES} from "./index";
+import {ClrStackBlock} from "./stack-block";
+import {ClrStackHeader} from "./stack-header";
+import {ClrStackInput} from "./stack-input";
+import {ClrStackSelect} from "./stack-select";
+import {ClrStackView} from "./stack-view";
+import {ClrStackViewCustomTags} from "./stack-view-custom-tags";
 
-@NgModule(
-    {imports: [CommonModule, FormsModule], declarations: [STACK_VIEW_DIRECTIVES], exports: [STACK_VIEW_DIRECTIVES]})
+export const CLR_STACK_VIEW_DIRECTIVES: Type<any>[] = [
+    ClrStackView, ClrStackHeader, ClrStackBlock, ClrStackViewCustomTags,
+    /**
+     * Undocumented experimental feature: inline editing.
+     */
+    ClrStackInput, ClrStackSelect
+    /**
+     * End of undocumented experimental feature.
+     */
+];
+
+@NgModule({
+    imports: [CommonModule, FormsModule],
+    declarations: [CLR_STACK_VIEW_DIRECTIVES],
+    exports: [CLR_STACK_VIEW_DIRECTIVES]
+})
 export class ClrStackViewModule {}
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export const StackView = ClrStackView;
+/** @deprecated since 0.11 */
+export const StackHeader = ClrStackHeader;
+/** @deprecated since 0.11 */
+export const StackBlock = ClrStackBlock;
+/** @deprecated since 0.11 */
+export const StackViewCustomTags = ClrStackViewCustomTags;
+/** @deprecated since 0.11 */
+export const StackInput = ClrStackInput;
+/** @deprecated since 0.11 */
+export const StackSelect = ClrStackSelect;
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const STACK_VIEW_DIRECTIVES = CLR_STACK_VIEW_DIRECTIVES;

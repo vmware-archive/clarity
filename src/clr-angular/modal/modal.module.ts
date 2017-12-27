@@ -5,16 +5,24 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import {NgModule, Type} from "@angular/core";
 
 import {ClrIconModule} from "../icon/icon.module";
 import {ClrFocusTrapModule} from "../utils/focus-trap/focus-trap.module";
+import {ClrModal} from "./modal";
 
-import {MODAL_DIRECTIVES} from "./index";
+export const CLR_MODAL_DIRECTIVES: Type<any>[] = [ClrModal];
 
 @NgModule({
     imports: [CommonModule, ClrIconModule, ClrFocusTrapModule],
-    declarations: [MODAL_DIRECTIVES],
-    exports: [MODAL_DIRECTIVES]
+    declarations: [CLR_MODAL_DIRECTIVES],
+    exports: [CLR_MODAL_DIRECTIVES]
 })
 export class ClrModalModule {}
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export const Modal = ClrModal;
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const MODAL_DIRECTIVES = CLR_MODAL_DIRECTIVES;

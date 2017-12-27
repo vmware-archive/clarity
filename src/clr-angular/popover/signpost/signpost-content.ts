@@ -43,7 +43,7 @@ const POSITIONS: string[] = [
     `,
     host: {"[class.signpost-content]": "true"}
 })
-export class SignpostContent extends AbstractPopover {
+export class ClrSignpostContent extends AbstractPopover {
     constructor(injector: Injector, @Optional() @Inject(POPOVER_HOST_ANCHOR) parentHost: ElementRef) {
         if (!parentHost) {
             throw new Error("clr-signpost-content should only be used inside of a clr-signpost");
@@ -73,12 +73,12 @@ export class SignpostContent extends AbstractPopover {
     /*********
      *
      * @description
-     * A setter for the position of the SignpostContent popover. This is a combination of the following:
-     * - anchorPoint - where on the trigger to anchor the SignpostContent
-     * - popoverPoint - where on the SignpostContent container to align with the anchorPoint
-     * - offsetY - where on the Y axis to align the SignpostContent so it meets specs
-     * - offsetX - where on the X axis to align the SignpostContent so it meets specs
-     * There are 12 possible positions to place a SignpostContent container:
+     * A setter for the position of the ClrSignpostContent popover. This is a combination of the following:
+     * - anchorPoint - where on the trigger to anchor the ClrSignpostContent
+     * - popoverPoint - where on the ClrSignpostContent container to align with the anchorPoint
+     * - offsetY - where on the Y axis to align the ClrSignpostContent so it meets specs
+     * - offsetX - where on the X axis to align the ClrSignpostContent so it meets specs
+     * There are 12 possible positions to place a ClrSignpostContent container:
      * - top-left
      * - top-middle
      * - top-right
@@ -93,8 +93,8 @@ export class SignpostContent extends AbstractPopover {
      * - left-top
      *
      * I think of it as follows for 'top-left' -> CONTAINER_SIDE-SIDE_POSITION. In this case CONTAINER_SIDE is 'top'
-     * meaning the top of the trigger icon (above the icon that hides/shows) the SignpostContent. And, SIDE_POSITION is
-     * 'left' meaning two things: 1) the SignpostContent container extends to the left and 2) the 'arrow/pointer'
+     * meaning the top of the trigger icon (above the icon that hides/shows) the ClrSignpostContent. And, SIDE_POSITION
+     * is 'left' meaning two things: 1) the ClrSignpostContent container extends to the left and 2) the 'arrow/pointer'
      * linking the SingpostContent to the trigger points down at the horizontal center of the trigger icon.
      *
      * @param newPosition

@@ -5,23 +5,38 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule, Optional, SkipSelf} from "@angular/core";
+import {NgModule, Optional, SkipSelf, Type} from "@angular/core";
 
 import {ClrIconModule} from "../../icon/icon.module";
 import {ClrDropdownModule} from "../../popover/dropdown/dropdown.module";
 
-import {clrResponsiveNavigationProvider} from "./clrResponsiveNavigationProvider";
-import {ClrResponsiveNavigationService} from "./clrResponsiveNavigationService";
-import {NAVIGATION_DIRECTIVES} from "./index";
+import {MainContainerWillyWonka} from "./chocolate/main-container-willy-wonka";
+import {NavDetectionOompaLoompa} from "./chocolate/nav-detection-oompa-loompa";
+import {ClrHeader} from "./header";
+import {ClrNavLevel} from "./nav-level";
+import {ResponsiveNavigationProvider} from "./providers/responsive-navigation.provider";
+import {ResponsiveNavigationService} from "./providers/responsive-navigation.service";
+
+export const CLR_NAVIGATION_DIRECTIVES: Type<any>[] =
+    [ClrHeader, ClrNavLevel, NavDetectionOompaLoompa, MainContainerWillyWonka];
 
 @NgModule({
     imports: [CommonModule, ClrIconModule, ClrDropdownModule],
-    declarations: [NAVIGATION_DIRECTIVES],
+    declarations: [CLR_NAVIGATION_DIRECTIVES],
     providers: [{
-        provide: ClrResponsiveNavigationService,
-        useFactory: clrResponsiveNavigationProvider,
-        deps: [[new Optional(), new SkipSelf(), ClrResponsiveNavigationService]]
+        provide: ResponsiveNavigationService,
+        useFactory: ResponsiveNavigationProvider,
+        deps: [[new Optional(), new SkipSelf(), ResponsiveNavigationService]]
     }],
-    exports: [NAVIGATION_DIRECTIVES]
+    exports: [CLR_NAVIGATION_DIRECTIVES]
 })
 export class ClrNavigationModule {}
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export const Header = ClrHeader;
+/** @deprecated since 0.11 */
+export const NavLevelDirective = ClrNavLevel;
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const NAVIGATION_DIRECTIVES = CLR_NAVIGATION_DIRECTIVES;

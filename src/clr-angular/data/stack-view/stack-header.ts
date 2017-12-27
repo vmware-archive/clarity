@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-import {StackView} from "./stack-view";
+import {ClrStackView} from "./stack-view";
 
 @Component({
     selector: "clr-stack-header",
@@ -28,6 +28,6 @@ import {StackView} from "./stack-view";
         :host { display: block; }
     `]
 })
-export class StackHeader {
-    constructor(public stackView: StackView) {}
+export class ClrStackHeader {
+    constructor(public stackView: ClrStackView) {}
 }

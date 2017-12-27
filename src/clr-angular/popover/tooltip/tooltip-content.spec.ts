@@ -10,15 +10,15 @@ import {TestContext} from "../../data/datagrid/helpers.spec";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {Point} from "../common/popover";
 
-import {TooltipContent} from "./tooltip-content";
+import {ClrTooltipContent} from "./tooltip-content";
 
 export default function(): void {
     // FIXME: this doesn't even run yet, we don't have an all.spec for tooltips.
     describe("TooltipContent component", function() {
-        let context: TestContext<TooltipContent, SimpleTest>;
+        let context: TestContext<ClrTooltipContent, SimpleTest>;
 
         beforeEach(function() {
-            context = this.create(TooltipContent, SimpleTest, [IfOpenService]);
+            context = this.create(ClrTooltipContent, SimpleTest, [IfOpenService]);
             context.getClarityProvider(IfOpenService).open = true;
             context.detectChanges();
         });

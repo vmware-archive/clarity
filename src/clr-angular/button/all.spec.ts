@@ -6,7 +6,7 @@
 
 import ButtonGroupSpecs from "./button-group/button-group.spec";
 import ButtonSpecs from "./button-group/button.spec";
-import ButtonInGroupServiceSpecs from "./providers/buttonInGroup.service.spec";
+import ButtonInGroupServiceSpecs from "./providers/button-in-group.service.spec";
 
 describe("Button Group Directives", () => {
     ButtonSpecs();

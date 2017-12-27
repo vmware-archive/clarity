@@ -6,14 +6,14 @@
 
 import {Component, OnInit, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
-import {Wizard} from "../../clr-angular/wizard/wizard";
+import {ClrCodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
+import {ClrWizard} from "../../clr-angular/wizard/wizard";
 
 @Component(
     {selector: "clr-wizard-alt-next", templateUrl: "./wizard-alt-next.demo.html", styles: [".stress { color: red; }"]})
 export class WizardAltNextDemo implements OnInit {
-    @ViewChild("wizard") wizard: Wizard;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild("wizard") wizard: ClrWizard;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
     public model: any;
     public stressText: boolean = false;

@@ -7,7 +7,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 
-import {Filter} from "../interfaces/filter";
+import {ClrDatagridFilterInterface} from "../interfaces/filter.interface";
 import {Page} from "./page";
 import {StateDebouncer} from "./state-debouncer.provider";
 
@@ -18,9 +18,9 @@ export class FiltersProvider {
      * This subject is the list of filters that changed last, not the whole list.
      * We emit a list rather than just one filter to allow batch changes to several at once.
      */
-    private _change = new Subject<Filter<any>[]>();
+    private _change = new Subject<ClrDatagridFilterInterface<any>[]>();
     // We do not want to expose the Subject itself, but the Observable which is read-only
-    public get change(): Observable<Filter<any>[]> {
+    public get change(): Observable<ClrDatagridFilterInterface<any>[]> {
         return this._change.asObservable();
     }
 
@@ -46,8 +46,8 @@ export class FiltersProvider {
     /**
      * Returns a list of all currently active filters
      */
-    public getActiveFilters(): Filter<any>[] {
-        const ret: Filter<any>[] = [];
+    public getActiveFilters(): ClrDatagridFilterInterface<any>[] {
+        const ret: ClrDatagridFilterInterface<any>[] = [];
         for (const {filter} of this._all) {
             if (filter && filter.isActive()) {
                 ret.push(filter);
@@ -59,7 +59,7 @@ export class FiltersProvider {
     /**
      * Registers a filter, and returns a deregistration function
      */
-    public add<F extends Filter<any>>(filter: F): RegisteredFilter<F> {
+    public add<F extends ClrDatagridFilterInterface<any>>(filter: F): RegisteredFilter<F> {
         const index = this._all.length;
         const subscription = filter.changes.subscribe(() => this.resetPageAndEmitFilterChange([filter]));
         let hasUnregistered = false;
@@ -93,7 +93,7 @@ export class FiltersProvider {
         return true;
     }
 
-    private resetPageAndEmitFilterChange(filters: Filter<any>[]) {
+    private resetPageAndEmitFilterChange(filters: ClrDatagridFilterInterface<any>[]) {
         this.stateDebouncer.changeStart();
         // filtering may change the page number such that current page number doesn't exist in the filtered dataset.
         // So here we always set the current page to 1 so that it'll fetch first page's data with the given filter.
@@ -103,6 +103,6 @@ export class FiltersProvider {
     }
 }
 
-export class RegisteredFilter<F extends Filter<any>> {
+export class RegisteredFilter<F extends ClrDatagridFilterInterface<any>> {
     constructor(public filter: F, public unregister: () => void) {}
 }

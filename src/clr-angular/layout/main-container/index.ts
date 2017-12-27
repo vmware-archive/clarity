@@ -3,8 +3,6 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Type} from "@angular/core";
-import {MainContainer} from "./main-container";
 
 export * from "./main-container";
-export const LAYOUT_DIRECTIVES: Type<any>[] = [MainContainer];
+export * from "./main-container.module";

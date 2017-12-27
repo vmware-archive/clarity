@@ -6,13 +6,13 @@
 import {Component, Injectable, ViewChild} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
 
-import {Loading} from "./loading";
+import {ClrLoading} from "./loading";
 import {LoadingListener} from "./loading-listener";
 
 describe("Loading directive", function() {
     beforeEach(function() {
         TestBed.configureTestingModule(
-            {declarations: [Loading, FullTest], providers: [{provide: LoadingListener, useClass: DummyListener}]});
+            {declarations: [ClrLoading, FullTest], providers: [{provide: LoadingListener, useClass: DummyListener}]});
         this.fixture = TestBed.createComponent(FullTest);
         this.fixture.detectChanges();
         this.testComponent = this.fixture.componentInstance;
@@ -62,7 +62,7 @@ describe("Loading directive", function() {
 
 @Component({template: `<div *ngIf="displayed" [clrLoading]="loading"></div>`})
 class FullTest {
-    @ViewChild(Loading) loadingDirective: Loading;
+    @ViewChild(ClrLoading) loadingDirective: ClrLoading;
 
     public displayed = true;
     public loading = false;

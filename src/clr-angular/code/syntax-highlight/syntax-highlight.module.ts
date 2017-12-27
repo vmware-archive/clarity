@@ -5,9 +5,18 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import {NgModule, Type} from "@angular/core";
+import {ClrCodeHighlight} from "./syntax-highlight";
 
-import {CODE_HIGHLIGHT_DIRECTIVES} from "../index";
+export const CLR_CODE_HIGHLIGHT_DIRECTIVES: Type<any>[] = [ClrCodeHighlight];
 
-@NgModule({imports: [CommonModule], declarations: [CODE_HIGHLIGHT_DIRECTIVES], exports: [CODE_HIGHLIGHT_DIRECTIVES]})
+@NgModule(
+    {imports: [CommonModule], declarations: [CLR_CODE_HIGHLIGHT_DIRECTIVES], exports: [CLR_CODE_HIGHLIGHT_DIRECTIVES]})
 export class ClrSyntaxHighlightModule {}
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export const CodeHighlight = ClrCodeHighlight;
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const CODE_HIGHLIGHT_DIRECTIVES = CLR_CODE_HIGHLIGHT_DIRECTIVES;

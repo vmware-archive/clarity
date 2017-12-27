@@ -6,26 +6,26 @@
 import {Component, ViewChild} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 
-import {DatagridFilter} from "./datagrid-filter";
+import {ClrDatagridFilter} from "./datagrid-filter";
 import {TestContext} from "./helpers.spec";
-import {Filter} from "./interfaces/filter";
+import {ClrDatagridFilterInterface} from "./interfaces/filter.interface";
 import {CustomFilter} from "./providers/custom-filter";
 import {FiltersProvider} from "./providers/filters";
 import {Page} from "./providers/page";
 import {StateDebouncer} from "./providers/state-debouncer.provider";
 
 export default function(): void {
-    describe("DatagridFilter component", function() {
+    describe("ClrDatagridFilter component", function() {
         describe("Typescript API", function() {
             let filterService: FiltersProvider;
             let filter: TestFilter;
-            let component: DatagridFilter;
+            let component: ClrDatagridFilter;
 
             beforeEach(function() {
                 const stateDebouncer = new StateDebouncer();
                 filterService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
                 filter = new TestFilter();
-                component = new DatagridFilter(filterService);
+                component = new ClrDatagridFilter(filterService);
             });
 
             afterEach(function() {
@@ -62,12 +62,12 @@ export default function(): void {
 
         describe("Template API", function() {
             // Until we can properly type "this"
-            let context: TestContext<DatagridFilter, FullTest>;
+            let context: TestContext<ClrDatagridFilter, FullTest>;
             let filter: TestFilter;
 
             beforeEach(function() {
                 filter = new TestFilter();
-                context = this.create(DatagridFilter, FullTest, [FiltersProvider, Page, StateDebouncer]);
+                context = this.create(ClrDatagridFilter, FullTest, [FiltersProvider, Page, StateDebouncer]);
             });
 
             it("receives an input for the filter logic", function() {
@@ -92,10 +92,10 @@ export default function(): void {
         });
 
         describe("View", function() {
-            let context: TestContext<DatagridFilter, FullTest>;
+            let context: TestContext<ClrDatagridFilter, FullTest>;
 
             beforeEach(function() {
-                context = this.create(DatagridFilter, FullTest, [FiltersProvider, Page, StateDebouncer]);
+                context = this.create(ClrDatagridFilter, FullTest, [FiltersProvider, Page, StateDebouncer]);
             });
 
             it("projects content into the dropdown", function() {
@@ -119,7 +119,7 @@ export default function(): void {
     });
 }
 
-class TestFilter implements Filter<number> {
+class TestFilter implements ClrDatagridFilterInterface<number> {
     public active = true;
 
     isActive(): boolean {
@@ -137,6 +137,6 @@ class TestFilter implements Filter<number> {
 class FullTest {
     @ViewChild(CustomFilter) customFilter: CustomFilter;
 
-    filter: Filter<any>;
+    filter: ClrDatagridFilterInterface<any>;
     open: boolean;
 }

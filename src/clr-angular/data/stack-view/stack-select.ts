@@ -11,7 +11,7 @@
 
 import {Component} from "@angular/core";
 import {StackControl} from "./stack-control";
-import {StackView} from "./stack-view";
+import {ClrStackView} from "./stack-view";
 
 @Component({
     selector: "clr-stack-select",
@@ -26,8 +26,8 @@ import {StackView} from "./stack-view";
         </div>
     `
 })
-export class StackSelect extends StackControl {
-    constructor(public stackView: StackView) {
+export class ClrStackSelect extends StackControl {
+    constructor(public stackView: ClrStackView) {
         super(stackView);
     }
 }

@@ -6,11 +6,11 @@
 import {ChangeDetectorRef, Component, EventEmitter, Input, Optional, Output} from "@angular/core";
 
 // providers
-import {AlertIconAndTypesService} from "./providers/icon-and-types-service";
-import {MultiAlertService} from "./providers/multi-alert-service";
+import {AlertIconAndTypesService} from "./providers/icon-and-types.service";
+import {MultiAlertService} from "./providers/multi-alert.service";
 
 @Component({selector: "clr-alert", providers: [AlertIconAndTypesService], templateUrl: "./alert.html"})
-export class Alert {
+export class ClrAlert {
     constructor(public iconService: AlertIconAndTypesService, public cdr: ChangeDetectorRef,
                 @Optional() public multiAlertService: MultiAlertService) {}
 

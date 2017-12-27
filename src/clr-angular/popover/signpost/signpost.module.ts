@@ -5,19 +5,34 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import {NgModule, Type} from "@angular/core";
 
 import {ClrIconModule} from "../../icon/icon.module";
 import {ClrConditionalModule} from "../../utils/conditional/conditional.module";
 import {ClrCommonPopoverModule} from "../common/popover.module";
 
-import {SIGNPOST_DIRECTIVES} from "./index";
+import {ClrSignpost} from "./signpost";
+import {ClrSignpostContent} from "./signpost-content";
+import {ClrSignpostTrigger} from "./signpost-trigger";
+
+export const CLR_SIGNPOST_DIRECTIVES: Type<any>[] = [ClrSignpost, ClrSignpostContent, ClrSignpostTrigger];
 
 @NgModule({
     imports: [CommonModule, ClrCommonPopoverModule, ClrIconModule],
-    declarations: [SIGNPOST_DIRECTIVES],
-    exports: [SIGNPOST_DIRECTIVES, ClrConditionalModule],
+    declarations: [CLR_SIGNPOST_DIRECTIVES],
+    exports: [CLR_SIGNPOST_DIRECTIVES, ClrConditionalModule],
     providers: []
 })
 
 export class ClrSignpostModule {}
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export const Signpost = ClrSignpost;
+/** @deprecated since 0.11 */
+export const SignpostContent = ClrSignpostContent;
+/** @deprecated since 0.11 */
+export const SignpostTrigger = ClrSignpostTrigger;
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const SIGNPOST_DIRECTIVES = CLR_SIGNPOST_DIRECTIVES;

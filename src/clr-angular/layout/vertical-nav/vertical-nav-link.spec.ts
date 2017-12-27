@@ -14,8 +14,8 @@ import {ClrIconModule} from "../../icon/icon.module";
 import {VerticalNavGroupRegistrationService} from "./providers/vertical-nav-group-registration.service";
 import {VerticalNavIconService} from "./providers/vertical-nav-icon.service";
 import {VerticalNavService} from "./providers/vertical-nav.service";
-import {VerticalNavGroup} from "./vertical-nav-group";
-import {VerticalNavLink} from "./vertical-nav-link";
+import {ClrVerticalNavGroup} from "./vertical-nav-group";
+import {ClrVerticalNavLink} from "./vertical-nav-link";
 import {ClrVerticalNavModule} from "./vertical-nav.module";
 
 export default function(): void {
@@ -79,7 +79,7 @@ export default function(): void {
             });
 
             it("clicking on the link opens the nav group", () => {
-                const navGroup: VerticalNavGroup = fixture.componentInstance.navGroup;
+                const navGroup: ClrVerticalNavGroup = fixture.componentInstance.navGroup;
                 const link: HTMLElement = <HTMLElement>compiled.querySelector("#link2");
                 expect(navGroup.expanded).toBe(false);
 
@@ -126,6 +126,6 @@ class TestComponent {}
     providers: [VerticalNavService, VerticalNavIconService, VerticalNavGroupRegistrationService]
 })
 class TestComponentWithGroup {
-    @ViewChild("group") navGroup: VerticalNavGroup;
-    @ViewChild("link") navLink: VerticalNavLink;
+    @ViewChild("group") navGroup: ClrVerticalNavGroup;
+    @ViewChild("link") navLink: ClrVerticalNavLink;
 }

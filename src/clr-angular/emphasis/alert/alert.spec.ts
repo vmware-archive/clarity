@@ -6,7 +6,7 @@
 import {Component, ViewChild} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import {Alert} from "./alert";
+import {ClrAlert} from "./alert";
 import {ClrAlertModule} from "./alert.module";
 
 @Component({
@@ -26,7 +26,7 @@ import {ClrAlertModule} from "./alert.module";
    `
 })
 class TestComponent {
-    @ViewChild(Alert) alertInstance: Alert;
+    @ViewChild(ClrAlert) alertInstance: ClrAlert;
 
     type: string = "";
     isSmall: boolean = false;
@@ -105,7 +105,7 @@ export default function(): void {
         });
 
         it("Removes the alert from the DOM when closed", () => {
-            const instance: Alert = fixture.componentInstance.alertInstance;
+            const instance: ClrAlert = fixture.componentInstance.alertInstance;
 
             expect(compiled.querySelector(".alert")).not.toBeNull();
             fixture.componentInstance.isClosable = true;

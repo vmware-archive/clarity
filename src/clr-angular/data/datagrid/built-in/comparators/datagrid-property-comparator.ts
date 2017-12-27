@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Comparator} from "../../interfaces/comparator";
+import {ClrDatagridComparatorInterface} from "../../interfaces/comparator.interface";
 import {NestedProperty} from "../nested-property";
 
-export class DatagridPropertyComparator implements Comparator<any> {
+export class DatagridPropertyComparator implements ClrDatagridComparatorInterface<any> {
     private nestedProp: NestedProperty;
 
     constructor(public prop: string) {

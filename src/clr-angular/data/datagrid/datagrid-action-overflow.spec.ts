@@ -6,17 +6,17 @@
 
 import {Component} from "@angular/core";
 
-import {DatagridActionOverflow} from "./datagrid-action-overflow";
+import {ClrDatagridActionOverflow} from "./datagrid-action-overflow";
 import {TestContext} from "./helpers.spec";
 import {RowActionService} from "./providers/row-action-service";
 
 export default function(): void {
     describe("DatagridActionOverflow component", function() {
-        let context: TestContext<DatagridActionOverflow, SimpleTest>;
+        let context: TestContext<ClrDatagridActionOverflow, SimpleTest>;
         let toggle: HTMLElement;
 
         beforeEach(function() {
-            context = this.create(DatagridActionOverflow, SimpleTest, [RowActionService]);
+            context = this.create(ClrDatagridActionOverflow, SimpleTest, [RowActionService]);
             toggle = context.clarityElement.querySelector("clr-icon");
         });
 

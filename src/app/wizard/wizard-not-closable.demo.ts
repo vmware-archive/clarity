@@ -5,18 +5,18 @@
  */
 import {Component, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
-import {Wizard} from "../../clr-angular/wizard/wizard";
+import {ClrCodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
+import {ClrWizard} from "../../clr-angular/wizard/wizard";
 
 @Component({selector: "clr-wizard-basic", templateUrl: "./wizard-not-closable.demo.html"})
 export class WizardNotClosableDemo {
-    @ViewChild("wizard") wizard: Wizard;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild("wizard") wizard: ClrWizard;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
     open: boolean = false;
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clr-angular/wizard/wizard";
+import { ClrWizard } from "../../clr-angular/wizard/wizard";
 
 @Component({
     ...

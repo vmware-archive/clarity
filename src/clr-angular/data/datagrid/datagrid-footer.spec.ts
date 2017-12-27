@@ -5,7 +5,7 @@
  */
 import {Component} from "@angular/core";
 
-import {DatagridFooter} from "./datagrid-footer";
+import {ClrDatagridFooter} from "./datagrid-footer";
 import {TestContext} from "./helpers.spec";
 import {FiltersProvider} from "./providers/filters";
 import {HideableColumnService} from "./providers/hideable-column.service";
@@ -18,11 +18,11 @@ import {StateDebouncer} from "./providers/state-debouncer.provider";
 const PROVIDERS_NEEDED = [Selection, Items, FiltersProvider, Sort, Page, HideableColumnService, StateDebouncer];
 
 export default function(): void {
-    describe("DatagridFooter component", function() {
-        let context: TestContext<DatagridFooter, SimpleTest>;
+    describe("ClrDatagridFooter component", function() {
+        let context: TestContext<ClrDatagridFooter, SimpleTest>;
 
         beforeEach(function() {
-            context = this.create(DatagridFooter, SimpleTest, PROVIDERS_NEEDED);
+            context = this.create(ClrDatagridFooter, SimpleTest, PROVIDERS_NEEDED);
         });
 
         it("projects content", function() {

@@ -7,7 +7,7 @@
 
 import {Component, EventEmitter, Input, Optional, Output, SkipSelf, TemplateRef, ViewChild} from "@angular/core";
 
-import {ButtonInGroupService} from "../providers/buttonInGroup.service";
+import {ButtonInGroupService} from "../providers/button-in-group.service";
 
 @Component({
     selector: "clr-button",
@@ -24,10 +24,10 @@ import {ButtonInGroupService} from "../providers/buttonInGroup.service";
         </ng-template>
     `
 })
-export class Button {
+export class ClrButton {
     private _enableService: boolean = false;
 
-    @ViewChild("buttonProjectedRef") templateRef: TemplateRef<Button>;
+    @ViewChild("buttonProjectedRef") templateRef: TemplateRef<ClrButton>;
 
     constructor(@SkipSelf() @Optional() public buttonInGroupService: ButtonInGroupService) {}
 

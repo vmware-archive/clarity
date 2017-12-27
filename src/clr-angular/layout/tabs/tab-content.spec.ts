@@ -8,8 +8,8 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {IF_ACTIVE_ID_PROVIDER, IfActiveService} from "../../utils/conditional/if-active.service";
 
-import {AriaService} from "./aria-service";
-import {TabContent} from "./tab-content";
+import {AriaService} from "./providers/aria.service";
+import {ClrTabContent} from "./tab-content";
 
 @Component({
     template: `
@@ -17,7 +17,7 @@ import {TabContent} from "./tab-content";
    `
 })
 class TestComponent {
-    @ViewChild(TabContent) tabContent: TabContent;
+    @ViewChild(ClrTabContent) tabContent: ClrTabContent;
 }
 
 describe("TabContent", () => {
@@ -26,7 +26,7 @@ describe("TabContent", () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [TestComponent, TabContent],
+            declarations: [TestComponent, ClrTabContent],
             providers: [AriaService, IfActiveService, IF_ACTIVE_ID_PROVIDER]
         });
         fixture = TestBed.createComponent(TestComponent);

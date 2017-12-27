@@ -8,13 +8,13 @@ import {AfterContentInit, Component, DebugElement, ViewChild} from "@angular/cor
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
 
-import {WizardPageNavTitleDirective} from "./directives/page-navtitle";
-import {ButtonHubService} from "./providers/button-hub";
-import {PageCollectionService} from "./providers/page-collection";
-import {PageCollectionMock} from "./providers/page-collection.mock";
-import {WizardNavigationService} from "./providers/wizard-navigation";
+import {ButtonHubService} from "./providers/button-hub.service";
+import {PageCollectionService} from "./providers/page-collection.service";
+import {PageCollectionMock} from "./providers/page-collection.service.mock";
+import {WizardNavigationService} from "./providers/wizard-navigation.service";
+import {ClrWizardPageNavTitle} from "./wizard-page-navtitle";
 import {MockPage} from "./wizard-page.mock";
-import {WizardStepnavItem} from "./wizard-stepnav-item";
+import {ClrWizardStepnavItem} from "./wizard-stepnav-item";
 import {ClrWizardModule} from "./wizard.module";
 
 const pageIndex = 0;
@@ -33,8 +33,8 @@ class TestComponent implements AfterContentInit {
     page: MockPage;
     projector: string = "foo";
 
-    @ViewChild(WizardStepnavItem) stepNavItem: WizardStepnavItem;
-    @ViewChild(WizardPageNavTitleDirective) navTitleRef: WizardPageNavTitleDirective;
+    @ViewChild(ClrWizardStepnavItem) stepNavItem: ClrWizardStepnavItem;
+    @ViewChild(ClrWizardPageNavTitle) navTitleRef: ClrWizardPageNavTitle;
 
     public ngAfterContentInit(): void {
         this.page.navTitle = this.navTitleRef.pageNavTitleTemplateRef;
@@ -44,7 +44,7 @@ class TestComponent implements AfterContentInit {
 export default function(): void {
     describe("New Wizard Stepnav Item", () => {
         let fixture: ComponentFixture<any>;
-        let testItemComponent: WizardStepnavItem;
+        let testItemComponent: ClrWizardStepnavItem;
         let debugEl: DebugElement;
         let myStepnavItem: HTMLElement;
         const pageCollection = new PageCollectionMock();
@@ -61,7 +61,7 @@ export default function(): void {
             fixture = TestBed.createComponent(TestComponent);
             fixture.detectChanges();
             testItemComponent = fixture.componentInstance.stepNavItem;
-            debugEl = fixture.debugElement.query(By.directive(WizardStepnavItem));
+            debugEl = fixture.debugElement.query(By.directive(ClrWizardStepnavItem));
             myStepnavItem = debugEl.nativeElement;
         });
 

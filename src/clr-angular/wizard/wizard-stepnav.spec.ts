@@ -8,12 +8,12 @@ import {Component, DebugElement, ViewChild} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
 
-import {ButtonHubService} from "./providers/button-hub";
-import {PageCollectionService} from "./providers/page-collection";
-import {PageCollectionMock} from "./providers/page-collection.mock";
-import {WizardNavigationService} from "./providers/wizard-navigation";
+import {ButtonHubService} from "./providers/button-hub.service";
+import {PageCollectionService} from "./providers/page-collection.service";
+import {PageCollectionMock} from "./providers/page-collection.service.mock";
+import {WizardNavigationService} from "./providers/wizard-navigation.service";
 import {MockPage} from "./wizard-page.mock";
-import {WizardStepnav} from "./wizard-stepnav";
+import {ClrWizardStepnav} from "./wizard-stepnav";
 import {ClrWizardModule} from "./wizard.module";
 
 let mockPages: MockPage[];
@@ -36,13 +36,13 @@ function resetMockPages(): MockPage[] {
     `
 })
 class TestComponent {
-    @ViewChild(WizardStepnav) stepNav: WizardStepnav;
+    @ViewChild(ClrWizardStepnav) stepNav: ClrWizardStepnav;
 }
 
 export default function(): void {
     describe("New Wizard Stepnav", () => {
         let fixture: ComponentFixture<any>;
-        let testItemComponent: WizardStepnav;
+        let testItemComponent: ClrWizardStepnav;
         let debugEl: DebugElement;
         let myStepnavEl: HTMLElement;
         const pageCollection = new StepnavPageCollection();
@@ -59,7 +59,7 @@ export default function(): void {
             fixture = TestBed.createComponent(TestComponent);
             fixture.detectChanges();
             testItemComponent = fixture.componentInstance.stepNav;
-            debugEl = fixture.debugElement.query(By.directive(WizardStepnav));
+            debugEl = fixture.debugElement.query(By.directive(ClrWizardStepnav));
             myStepnavEl = debugEl.nativeElement;
         });
 

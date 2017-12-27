@@ -5,7 +5,7 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import {NgModule, Type} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 
 import {ClrFormsModule} from "../../forms/forms.module";
@@ -15,7 +15,59 @@ import {ClrIfExpandModule} from "../../utils/expand/if-expand.module";
 import {ClrLoadingModule} from "../../utils/loading/loading.module";
 import {ClrOutsideClickModule} from "../../utils/outside-click/outside-click.module";
 
-import {DATAGRID_DIRECTIVES} from "./index";
+import {DatagridRowExpandAnimation} from "./animation-hack/row-expand-animation";
+import {DatagridStringFilter} from "./built-in/filters/datagrid-string-filter";
+import {ActionableOompaLoompa} from "./chocolate/actionable-oompa-loompa";
+import {DatagridWillyWonka} from "./chocolate/datagrid-willy-wonka";
+import {ExpandableOompaLoompa} from "./chocolate/expandable-oompa-loompa";
+import {ClrDatagrid} from "./datagrid";
+import {ClrDatagridActionBar} from "./datagrid-action-bar";
+import {ClrDatagridActionOverflow} from "./datagrid-action-overflow";
+import {ClrDatagridCell} from "./datagrid-cell";
+import {ClrDatagridColumn} from "./datagrid-column";
+import {ClrDatagridColumnToggle} from "./datagrid-column-toggle";
+import {DatagridDetailRegisterer} from "./datagrid-detail-registerer";
+import {ClrDatagridFilter} from "./datagrid-filter";
+import {ClrDatagridFooter} from "./datagrid-footer";
+import {ClrDatagridHideableColumn} from "./datagrid-hideable-column";
+import {ClrDatagridItems} from "./datagrid-items";
+import {ClrDatagridPagination} from "./datagrid-pagination";
+import {ClrDatagridPlaceholder} from "./datagrid-placeholder";
+import {ClrDatagridRow} from "./datagrid-row";
+import {ClrDatagridRowDetail} from "./datagrid-row-detail";
+import {ClrDatagridComparatorInterface} from "./interfaces/comparator.interface";
+import {ClrDatagridFilterInterface} from "./interfaces/filter.interface";
+import {ClrDatagridSortOrder} from "./interfaces/sort-order";
+import {ClrDatagridStateInterface} from "./interfaces/state.interface";
+import {ClrDatagridStringFilterInterface} from "./interfaces/string-filter.interface";
+import {DatagridBodyRenderer} from "./render/body-renderer";
+import {DatagridCellRenderer} from "./render/cell-renderer";
+import {DatagridColumnResizer} from "./render/column-resizer";
+import {DatagridHeadRenderer} from "./render/head-renderer";
+import {DatagridHeaderRenderer} from "./render/header-renderer";
+import {DatagridMainRenderer} from "./render/main-renderer";
+import {DatagridRowRenderer} from "./render/row-renderer";
+import {DatagridTableRenderer} from "./render/table-renderer";
+
+export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
+    // Core
+    ClrDatagrid, ClrDatagridActionBar, ClrDatagridActionOverflow, ClrDatagridColumn, ClrDatagridColumnToggle,
+    ClrDatagridHideableColumn, ClrDatagridFilter, ClrDatagridItems, ClrDatagridRow, ClrDatagridRowDetail,
+    DatagridDetailRegisterer, ClrDatagridCell, ClrDatagridFooter, ClrDatagridPagination, ClrDatagridPlaceholder,
+
+    // Renderers
+    DatagridMainRenderer, DatagridTableRenderer, DatagridHeadRenderer, DatagridHeaderRenderer, DatagridBodyRenderer,
+    DatagridColumnResizer, DatagridRowRenderer, DatagridCellRenderer,
+
+    // Chocolate
+    DatagridWillyWonka, ActionableOompaLoompa, ExpandableOompaLoompa,
+
+    // Animation hack
+    DatagridRowExpandAnimation,
+
+    // Built-in shortcuts
+    DatagridStringFilter
+];
 
 @NgModule({
     imports: [
@@ -23,8 +75,56 @@ import {DATAGRID_DIRECTIVES} from "./index";
         ClrOutsideClickModule
     ],
     declarations: [
-        DATAGRID_DIRECTIVES,
+        CLR_DATAGRID_DIRECTIVES,
     ],
-    exports: [DATAGRID_DIRECTIVES, ClrIfExpandModule]
+    exports: [CLR_DATAGRID_DIRECTIVES, ClrIfExpandModule]
 })
 export class ClrDatagridModule {}
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export const Datagrid = ClrDatagrid;
+/** @deprecated since 0.11 */
+export const DatagridActionBar = ClrDatagridActionBar;
+/** @deprecated since 0.11 */
+export const DatagridActionOverflow = ClrDatagridActionOverflow;
+/** @deprecated since 0.11 */
+export const DatagridColumn = ClrDatagridColumn;
+/** @deprecated since 0.11 */
+export const DatagridColumnToggle = ClrDatagridColumnToggle;
+/** @deprecated since 0.11 */
+export const DatagridHideableColumnDirective = ClrDatagridHideableColumn;
+/** @deprecated since 0.11 */
+export const DatagridFilter = ClrDatagridFilter;
+/** @deprecated since 0.11 */
+export const DatagridItems = ClrDatagridItems;
+/** @deprecated since 0.11 */
+export const DatagridRow = ClrDatagridRow;
+/** @deprecated since 0.11 */
+export const DatagridRowDetail = ClrDatagridRowDetail;
+/** @deprecated since 0.11 */
+export const DatagridCell = ClrDatagridCell;
+/** @deprecated since 0.11 */
+export const DatagridFooter = ClrDatagridFooter;
+/** @deprecated since 0.11 */
+export const DatagridPagination = ClrDatagridPagination;
+/** @deprecated since 0.11 */
+export const DatagridPlaceholder = ClrDatagridPlaceholder;
+/** @deprecated since 0.11 */
+export enum SortOrder {
+    // Cannot extend an enum so have to redeclare it
+    Unsorted = 0,
+    Asc = 1,
+    Desc = -1
+}
+/** @deprecated since 0.11 */
+export interface Comparator<T> extends ClrDatagridComparatorInterface<any> {}
+/** @deprecated since 0.11 */
+export interface Filter<T> extends ClrDatagridFilterInterface<any> {}
+/** @deprecated since 0.11 */
+export interface State extends ClrDatagridStateInterface {}
+/** @deprecated since 0.11 */
+export interface StringFilter<T> extends ClrDatagridStringFilterInterface<any> {}
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const DATAGRID_DIRECTIVES = CLR_DATAGRID_DIRECTIVES;

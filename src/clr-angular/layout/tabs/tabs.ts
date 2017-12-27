@@ -8,9 +8,9 @@ import {AfterContentInit, Component, ContentChildren, Inject, QueryList} from "@
 import {IfActiveService} from "../../utils/conditional/if-active.service";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 
-import {TabLinkDirective} from "./tab-link.directive";
+import {TabsService} from "./providers/tabs.service";
+import {ClrTabLink} from "./tab-link.directive";
 import {TABS_ID, TABS_ID_PROVIDER} from "./tabs-id.provider";
-import {TabsService} from "./tabs-service";
 
 @Component({
     selector: "clr-tabs",
@@ -46,9 +46,8 @@ import {TabsService} from "./tabs-service";
     `,
     providers: [IfActiveService, IfOpenService, TabsService, TABS_ID_PROVIDER]
 })
-export class Tabs implements AfterContentInit {
-    @ContentChildren(TabLinkDirective, {descendants: true})
-    tabLinkDirectives: QueryList<TabLinkDirective>;
+export class ClrTabs implements AfterContentInit {
+    @ContentChildren(ClrTabLink, {descendants: true}) tabLinkDirectives: QueryList<ClrTabLink>;
 
     constructor(public ifActiveService: IfActiveService, public ifOpenService: IfOpenService,
                 public tabsService: TabsService, @Inject(TABS_ID) public tabsId: number) {}

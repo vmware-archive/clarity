@@ -5,7 +5,7 @@
  */
 
 import SignpostContentSpecs from "./signpost-content.spec";
-import SignpostTriggerDirectiveSpecs from "./signpost-trigger.directive.spec";
+import SignpostTriggerSpecs from "./signpost-trigger.spec";
 import SignpostSpecs from "./signpost.spec";
 
 describe("Signpost", function() {
@@ -16,5 +16,5 @@ describe("Signpost", function() {
      */
     SignpostSpecs();
     SignpostContentSpecs();
-    SignpostTriggerDirectiveSpecs();
+    SignpostTriggerSpecs();
 });

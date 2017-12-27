@@ -7,9 +7,9 @@ import {Component, Type, ViewChild} from "@angular/core";
 
 import {addHelpers, TestContext} from "../../data/datagrid/helpers.spec";
 
-import {Tab} from "./tab";
-import {Tabs} from "./tabs";
-import {TabsService} from "./tabs-service";
+import {TabsService} from "./providers/tabs.service";
+import {ClrTab} from "./tab";
+import {ClrTabs} from "./tabs";
 
 @Component({
     template: `
@@ -45,8 +45,8 @@ import {TabsService} from "./tabs-service";
    `
 })
 class TestComponent {
-    @ViewChild(Tabs) tabsInstance: Tabs;
-    @ViewChild("first") firstTab: Tab;
+    @ViewChild(ClrTabs) tabsInstance: ClrTabs;
+    @ViewChild("first") firstTab: ClrTab;
     inOverflow: boolean = false;
 }
 
@@ -65,7 +65,7 @@ class TestComponent {
    `
 })
 class NgIfFirstTest {
-    @ViewChild("first") firstTab: Tab;
+    @ViewChild("first") firstTab: ClrTab;
 }
 
 @Component({
@@ -83,7 +83,7 @@ class NgIfFirstTest {
    `
 })
 class NgIfSecondTest {
-    @ViewChild("first") firstTab: Tab;
+    @ViewChild("first") firstTab: ClrTab;
 }
 
 @Component({
@@ -112,18 +112,18 @@ class NgIfSecondTest {
     `
 })
 class NestedTabsTest {
-    @ViewChild(Tabs) tabsInstance: Tabs;
+    @ViewChild(ClrTabs) tabsInstance: ClrTabs;
 }
 
 describe("Tabs", () => {
     addHelpers();
 
     describe("Projection", () => {
-        let context: TestContext<Tabs, TestComponent>;
+        let context: TestContext<ClrTabs, TestComponent>;
         let compiled: any;
 
         beforeEach(function() {
-            context = this.create(Tabs, TestComponent);
+            context = this.create(ClrTabs, TestComponent);
             context.fixture.detectChanges();
             compiled = context.fixture.nativeElement;
         });
@@ -157,11 +157,11 @@ describe("Tabs", () => {
     });
 
     describe("Nested Projection", () => {
-        let context: TestContext<Tabs, NestedTabsTest>;
+        let context: TestContext<ClrTabs, NestedTabsTest>;
         let compiled: any;
 
         beforeEach(function() {
-            context = this.create(Tabs, NestedTabsTest);
+            context = this.create(ClrTabs, NestedTabsTest);
             context.fixture.detectChanges();
             compiled = context.fixture.nativeElement;
         });
@@ -181,7 +181,7 @@ describe("Tabs", () => {
 
     describe("Default tab", function() {
         function expectFirstTabActive<T extends TestComponent|NgIfFirstTest|NgIfSecondTest>(testType: Type<T>) {
-            const context: TestContext<Tabs, T> = this.create(Tabs, testType);
+            const context: TestContext<ClrTabs, T> = this.create(ClrTabs, testType);
             const tabsService = context.getClarityProvider(TabsService);
             expect(tabsService.activeTab).toEqual(context.testComponent.firstTab);
         }

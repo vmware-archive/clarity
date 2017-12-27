@@ -8,7 +8,7 @@ import {Directive, Input, OnDestroy, Optional} from "@angular/core";
 import {LoadingListener} from "./loading-listener";
 
 @Directive({selector: "[clrLoading]"})
-export class Loading implements OnDestroy {
+export class ClrLoading implements OnDestroy {
     // We find the first parent that handles something loading
     constructor(@Optional() private listener: LoadingListener) {}
 

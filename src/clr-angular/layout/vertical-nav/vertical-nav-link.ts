@@ -16,7 +16,7 @@ import {VerticalNavGroupService} from "./providers/vertical-nav-group.service";
     `,
     host: {"class": "nav-link"}
 })
-export class VerticalNavLink {
+export class ClrVerticalNavLink {
     constructor(@Optional() private _navGroupService: VerticalNavGroupService) {}
 
     @HostListener("click")

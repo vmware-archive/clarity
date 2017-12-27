@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {OnDestroy} from "@angular/core";
-import {Filter} from "../interfaces/filter";
+import {ClrDatagridFilterInterface} from "../interfaces/filter.interface";
 import {FiltersProvider, RegisteredFilter} from "../providers/filters";
 
-export abstract class DatagridFilterRegistrar<F extends Filter<any>> implements OnDestroy {
+export abstract class DatagridFilterRegistrar<F extends ClrDatagridFilterInterface<any>> implements OnDestroy {
     constructor(private filters: FiltersProvider) {}
 
     public registered: RegisteredFilter<F>;

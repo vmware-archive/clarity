@@ -5,7 +5,7 @@
  */
 import {Component, ContentChildren, ElementRef, QueryList, Renderer2} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
-import {Signpost} from "../../popover/signpost/signpost";
+import {ClrSignpost} from "../../popover/signpost/signpost";
 import {HideableColumnService} from "./providers/hideable-column.service";
 
 @Component({
@@ -15,7 +15,7 @@ import {HideableColumnService} from "./providers/hideable-column.service";
     `,
     host: {"[class.datagrid-cell]": "true", "[class.datagrid-signpost-trigger]": "signpost.length > 0"}
 })
-export class DatagridCell {
+export class ClrDatagridCell {
     /*********
      * @property signpost
      *
@@ -24,7 +24,7 @@ export class DatagridCell {
      * On the host, we set the .datagrid-signpost-trigger class on the cell when signpost.length is greater than 0.
      *
      */
-    @ContentChildren(Signpost) signpost: QueryList<Signpost>;
+    @ContentChildren(ClrSignpost) signpost: QueryList<ClrSignpost>;
 
     /**
      * @property id

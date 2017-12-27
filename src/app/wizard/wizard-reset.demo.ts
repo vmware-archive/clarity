@@ -6,13 +6,13 @@
 
 import {Component, OnInit, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
-import {Wizard} from "../../clr-angular/wizard/wizard";
+import {ClrCodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
+import {ClrWizard} from "../../clr-angular/wizard/wizard";
 
 @Component({selector: "clr-wizard-reset", templateUrl: "./wizard-reset.demo.html"})
 export class WizardResetDemo implements OnInit {
-    @ViewChild("wizard") wizard: Wizard;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild("wizard") wizard: ClrWizard;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
     public open: boolean = false;
 
@@ -38,7 +38,7 @@ export class WizardResetDemo implements OnInit {
 
     code: string = `
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { Wizard } from "../../clr-angular/wizard/wizard";
+import { ClrWizard } from "../../clr-angular/wizard/wizard";
 
 @Component({
     selector: "clr-wizard-reset",

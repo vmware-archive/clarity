@@ -8,8 +8,8 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {FormsModule} from "@angular/forms";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
-import {StackBlock} from "./stack-block";
-import {StackView} from "./stack-view";
+import {ClrStackBlock} from "./stack-block";
+import {ClrStackView} from "./stack-view";
 import {ClrStackViewModule} from "./stack-view.module";
 
 @Component({
@@ -21,7 +21,7 @@ import {ClrStackViewModule} from "./stack-view.module";
    `
 })
 class BasicBlock {
-    @ViewChild(StackBlock) blockInstance: StackBlock;
+    @ViewChild(ClrStackBlock) blockInstance: ClrStackBlock;
 }
 
 @Component({
@@ -41,7 +41,7 @@ class BasicBlock {
    `
 })
 class NestedBlocks {
-    @ViewChild("main") blockInstance: StackBlock;
+    @ViewChild("main") blockInstance: ClrStackBlock;
 }
 
 @Component({
@@ -53,7 +53,7 @@ class NestedBlocks {
    `
 })
 class DynamicBlock {
-    @ViewChild(StackBlock) blockInstance: StackBlock;
+    @ViewChild(ClrStackBlock) blockInstance: ClrStackBlock;
 
     expanded: boolean = false;
 }
@@ -68,7 +68,7 @@ export default function(): void {
             TestBed.configureTestingModule({
                 imports: [ClrStackViewModule, NoopAnimationsModule, FormsModule],
                 declarations: [BasicBlock, DynamicBlock, NestedBlocks],
-                providers: [StackView]
+                providers: [ClrStackView]
             });
         });
 
@@ -76,7 +76,7 @@ export default function(): void {
             fixture.destroy();
         });
 
-        function getBlockInstance(bFixture: ComponentFixture<any>): StackBlock {
+        function getBlockInstance(bFixture: ComponentFixture<any>): ClrStackBlock {
             return bFixture.componentInstance.blockInstance;
         }
 

@@ -5,16 +5,34 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import {NgModule, Type} from "@angular/core";
 
 import {ClrIconModule} from "../../icon/icon.module";
 import {ClrDropdownModule} from "../../popover/dropdown/dropdown.module";
 
-import {ALERT_DIRECTIVES} from "./index";
+import {ClrAlert} from "./alert";
+import {ClrAlertItem} from "./alert-item";
+import {ClrAlerts} from "./alerts";
+import {ClrAlertsPager} from "./alerts-pager";
+
+export const CLR_ALERT_DIRECTIVES: Type<any>[] = [ClrAlert, ClrAlertItem, ClrAlerts, ClrAlertsPager];
 
 @NgModule({
     imports: [CommonModule, ClrIconModule, ClrDropdownModule],
-    declarations: [ALERT_DIRECTIVES],
-    exports: [ALERT_DIRECTIVES]
+    declarations: [CLR_ALERT_DIRECTIVES],
+    exports: [CLR_ALERT_DIRECTIVES]
 })
 export class ClrAlertModule {}
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export const Alert = ClrAlert;
+/** @deprecated since 0.11 */
+export const AlertItem = ClrAlertItem;
+/** @deprecated since 0.11 */
+export const Alerts = ClrAlerts;
+/** @deprecated since 0.11 */
+export const AlertsPager = ClrAlertsPager;
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const ALERT_DIRECTIVES = CLR_ALERT_DIRECTIVES;

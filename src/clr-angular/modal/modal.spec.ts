@@ -11,7 +11,7 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {FocusTrapDirective} from "../utils/focus-trap/focus-trap.directive";
 import {ClrFocusTrapModule} from "../utils/focus-trap/focus-trap.module";
 
-import {Modal} from "./modal";
+import {ClrModal} from "./modal";
 import {ClrModalModule} from "./modal.module";
 
 @Component({
@@ -31,7 +31,7 @@ import {ClrModalModule} from "./modal.module";
    `
 })
 class TestComponent {
-    @ViewChild(Modal) modalInstance: Modal;
+    @ViewChild(ClrModal) modalInstance: ClrModal;
 
     opened: boolean = true;
     closable: boolean = true;
@@ -54,7 +54,7 @@ describe("Modal", () => {
         });
     }));
 
-    function getModalInstance(componentFixture: ComponentFixture<any>): Modal {
+    function getModalInstance(componentFixture: ComponentFixture<any>): ClrModal {
         return componentFixture.componentInstance.modalInstance;
     }
 

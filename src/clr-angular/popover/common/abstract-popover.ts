@@ -17,7 +17,8 @@ import {Subscription} from "rxjs/Subscription";
 
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 
-import {Point, Popover, PopoverOptions} from "./popover";
+import {Point, Popover} from "./popover";
+import {PopoverOptions} from "./popover-options.interface";
 
 // Literally any annotation would work here, but writing our own @HoneyBadger annotation feels overkill.
 @Injectable()

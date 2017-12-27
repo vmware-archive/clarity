@@ -6,13 +6,13 @@
 
 import {Component, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
-import {Wizard} from "../../clr-angular/wizard/wizard";
+import {ClrCodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
+import {ClrWizard} from "../../clr-angular/wizard/wizard";
 
 @Component({selector: "clr-wizard-stop-navigation", templateUrl: "./wizard-stop-navigation.demo.html"})
 export class WizardStopNavigation {
-    @ViewChild("wizard") wizard: Wizard;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild("wizard") wizard: ClrWizard;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
     untouched: boolean = true;
     loading: boolean = false;
@@ -62,13 +62,13 @@ export class WizardStopNavigation {
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clr-angular/wizard/wizard";
+import { ClrWizard } from "../../clr-angular/wizard/wizard";
 
 @Component({
     ...
 })
 export class WizardStopNavigation {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
 
     untouched: boolean = true;
     loading: boolean = false;

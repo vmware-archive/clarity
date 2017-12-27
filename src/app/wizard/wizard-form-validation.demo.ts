@@ -5,24 +5,24 @@
  */
 
 import {Component, ViewChild} from "@angular/core";
-import {Wizard} from "../../clr-angular/wizard/wizard";
+import {ClrWizard} from "../../clr-angular/wizard/wizard";
 
 @Component({selector: "clr-wizard-form-validation", templateUrl: "./wizard-form-validation.demo.html"})
 export class WizardFormValidation {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     @ViewChild("number") numberField: any;
 
     model = {name: "", favorite: "", number: ""};
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clr-angular/wizard/wizard";
+import { ClrWizard } from "../../clr-angular/wizard/wizard";
 
 @Component({
     ...
 })
 export class WizardFormValidation {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     @ViewChild("number") numberFi: any;
 
     model = {

@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList} from "@angular/core";
-import {Alert} from "./alert";
-import {MultiAlertService} from "./providers/multi-alert-service";
+import {ClrAlert} from "./alert";
+import {MultiAlertService} from "./providers/multi-alert.service";
 
 // the 'alert-*' alert types are deprecated and should be removed in 0.12 or later
 @Component({
@@ -21,8 +21,8 @@ import {MultiAlertService} from "./providers/multi-alert-service";
     },
     styles: [":host { display: block }"]
 })
-export class Alerts implements AfterContentInit {
-    @ContentChildren(Alert) allAlerts: QueryList<Alert>;
+export class ClrAlerts implements AfterContentInit {
+    @ContentChildren(ClrAlert) allAlerts: QueryList<ClrAlert>;
 
     /**
      * Input/Output to support two way binding on current alert index
@@ -47,7 +47,7 @@ export class Alerts implements AfterContentInit {
      * Input/Output to support two way binding on current alert instance
      */
     @Input("clrCurrentAlert")
-    set currentAlert(alert: Alert) {
+    set currentAlert(alert: ClrAlert) {
         if (alert) {
             this.multiAlertService.currentAlert = alert;
         }
@@ -55,7 +55,7 @@ export class Alerts implements AfterContentInit {
     get currentAlert() {
         return this.multiAlertService.currentAlert;
     }
-    @Output("clrCurrentAlertChange") public currentAlertChange = new EventEmitter<Alert>(false);
+    @Output("clrCurrentAlertChange") public currentAlertChange = new EventEmitter<ClrAlert>(false);
 
     /**
      * Ensure we are only dealing with alerts that have not been closed yet

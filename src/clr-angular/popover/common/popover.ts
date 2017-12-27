@@ -11,6 +11,7 @@
 
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
+import {PopoverOptions} from "./popover-options.interface";
 export enum Point {
     RIGHT_CENTER,
     RIGHT_TOP,
@@ -24,13 +25,6 @@ export enum Point {
     LEFT_CENTER,
     LEFT_TOP,
     LEFT_BOTTOM,
-}
-
-export interface PopoverOptions {
-    offsetX?: number;
-    offsetY?: number;
-    useAnchorParent?: boolean;
-    allowMultipleOpen?: boolean;
 }
 
 const POSITION_RELATIVE = "relative";

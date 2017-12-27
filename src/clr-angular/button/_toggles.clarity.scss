@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-@include exports('toggles.clarity') {
+ @include exports('toggles.clarity') {
     //Remove the default checkbox appearance
     %custom-checkbox {
         @include clr-appearance-normal();
@@ -133,5 +133,30 @@
             top: 5px;
 
         }
+
+        // Allow for label to be on the right of the toggle switch.
+		&.right-label {
+
+            label {
+			    margin-left: $clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing;
+                margin-right: 0;
+            }
+
+            input[type="checkbox"] + label::before {
+                right: 0;
+                left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing);
+            }
+
+            input[type="checkbox"] + label::after {
+                right: 0;
+                left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+                transition-property: left;
+            }
+
+            input[type="checkbox"]:checked + label::after {
+                left: -1 * $clr-toggle-switch-left-spacing;
+                transition-property: left;
+            }
+		}
     }
 }

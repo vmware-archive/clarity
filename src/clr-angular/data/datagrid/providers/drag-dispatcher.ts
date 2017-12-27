@@ -80,6 +80,8 @@ export class DragDispatcher {
     }
 
     destroy() {
-        this._listeners.map(event => event());
+        if (this._listeners) {
+            this._listeners.map(event => event());
+        }
     }
 }

@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+export * from "./vertical-nav-group-children";
 export * from "./vertical-nav-group";
 export * from "./vertical-nav";
 export * from "./vertical-nav-link";

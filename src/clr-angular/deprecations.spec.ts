@@ -34,6 +34,7 @@ import {
     CLR_TABS_DIRECTIVES,
     CLR_TOOLTIP_DIRECTIVES,
     CLR_TREE_VIEW_DIRECTIVES,
+    CLR_VERTICAL_NAV_DIRECTIVES,
     CLR_WIZARD_DIRECTIVES,
     ClrAlert,
     ClrAlertItem,
@@ -87,6 +88,11 @@ import {
     ClrTooltipContent,
     ClrTooltipTrigger,
     ClrTreeNode,
+    ClrVerticalNav,
+    ClrVerticalNavGroup,
+    ClrVerticalNavGroupChildren,
+    ClrVerticalNavIcon,
+    ClrVerticalNavLink,
     ClrWizard,
     ClrWizardButton,
     ClrWizardCustomTags,
@@ -160,6 +166,12 @@ import {
     TooltipTrigger,
     TREE_VIEW_DIRECTIVES,
     TreeNode,
+    VERTICAL_NAV_DIRECTIVES,
+    VerticalNav,
+    VerticalNavGroup,
+    VerticalNavGroupChildren,
+    VerticalNavIcon,
+    VerticalNavLink,
     Wizard,
     WIZARD_DIRECTIVES,
     WizardButton,
@@ -178,39 +190,39 @@ describe("Deprecations", () => {
     describe("since v0.11", () => {
         it("should export deprecated buttons items", () => {
             expect(BUTTON_GROUP_DIRECTIVES).toEqual(CLR_BUTTON_GROUP_DIRECTIVES);
-            expect(Button).toEqual(ClrButton);
-            expect(ButtonGroup).toEqual(ClrButtonGroup);
+            expect(Button.prototype instanceof ClrButton).toBeTruthy();
+            expect(ButtonGroup.prototype instanceof ClrButtonGroup).toBeTruthy();
             expect(LOADING_BUTTON_DIRECTIVES).toEqual(CLR_LOADING_BUTTON_DIRECTIVES);
-            expect(LoadingButton).toEqual(ClrLoadingButton);
+            expect(LoadingButton.prototype instanceof ClrLoadingButton).toBeTruthy();
         });
         it("should export depecreated code highlight items", () => {
             expect(CODE_HIGHLIGHT_DIRECTIVES).toEqual(CLR_CODE_HIGHLIGHT_DIRECTIVES);
-            expect(CodeHighlight).toEqual(ClrCodeHighlight);
+            expect(CodeHighlight.prototype instanceof ClrCodeHighlight).toBeTruthy();
         });
         it("should export deprecated data items", () => {
-            expect(Datagrid).toEqual(ClrDatagrid);
-            expect(DatagridActionBar).toEqual(ClrDatagridActionBar);
-            expect(DatagridActionOverflow).toEqual(ClrDatagridActionOverflow);
-            expect(DatagridColumn).toEqual(ClrDatagridColumn);
-            expect(DatagridColumnToggle).toEqual(ClrDatagridColumnToggle);
-            expect(DatagridFilter).toEqual(ClrDatagridFilter);
-            expect(DatagridHideableColumnDirective).toEqual(ClrDatagridHideableColumn);
-            expect(DatagridItems).toEqual(ClrDatagridItems);
-            expect(DatagridRow).toEqual(ClrDatagridRow);
-            expect(DatagridRowDetail).toEqual(ClrDatagridRowDetail);
-            expect(DatagridCell).toEqual(ClrDatagridCell);
-            expect(DatagridFooter).toEqual(ClrDatagridFooter);
-            expect(DatagridPagination).toEqual(ClrDatagridPagination);
-            expect(DatagridPlaceholder).toEqual(ClrDatagridPlaceholder);
+            expect(Datagrid.prototype instanceof ClrDatagrid).toBeTruthy();
+            expect(DatagridActionBar.prototype instanceof ClrDatagridActionBar).toBeTruthy();
+            expect(DatagridActionOverflow.prototype instanceof ClrDatagridActionOverflow).toBeTruthy();
+            expect(DatagridColumn.prototype instanceof ClrDatagridColumn).toBeTruthy();
+            expect(DatagridColumnToggle.prototype instanceof ClrDatagridColumnToggle).toBeTruthy();
+            expect(DatagridFilter.prototype instanceof ClrDatagridFilter).toBeTruthy();
+            expect(DatagridHideableColumnDirective.prototype instanceof ClrDatagridHideableColumn).toBeTruthy();
+            expect(DatagridItems.prototype instanceof ClrDatagridItems).toBeTruthy();
+            expect(DatagridRow.prototype instanceof ClrDatagridRow).toBeTruthy();
+            expect(DatagridRowDetail.prototype instanceof ClrDatagridRowDetail).toBeTruthy();
+            expect(DatagridCell.prototype instanceof ClrDatagridCell).toBeTruthy();
+            expect(DatagridFooter.prototype instanceof ClrDatagridFooter).toBeTruthy();
+            expect(DatagridPagination.prototype instanceof ClrDatagridPagination).toBeTruthy();
+            expect(DatagridPlaceholder.prototype instanceof ClrDatagridPlaceholder).toBeTruthy();
             expect(DATAGRID_DIRECTIVES).toEqual(CLR_DATAGRID_DIRECTIVES);
-            expect(StackView).toEqual(ClrStackView);
-            expect(StackSelect).toEqual(ClrStackSelect);
-            expect(StackInput).toEqual(ClrStackInput);
-            expect(StackHeader).toEqual(ClrStackHeader);
-            expect(StackViewCustomTags).toEqual(ClrStackViewCustomTags);
-            expect(StackBlock).toEqual(ClrStackBlock);
+            expect(StackView.prototype instanceof ClrStackView).toBeTruthy();
+            expect(StackSelect.prototype instanceof ClrStackSelect).toBeTruthy();
+            expect(StackInput.prototype instanceof ClrStackInput).toBeTruthy();
+            expect(StackHeader.prototype instanceof ClrStackHeader).toBeTruthy();
+            expect(StackViewCustomTags.prototype instanceof ClrStackViewCustomTags).toBeTruthy();
+            expect(StackBlock.prototype instanceof ClrStackBlock).toBeTruthy();
             expect(STACK_VIEW_DIRECTIVES).toEqual(CLR_STACK_VIEW_DIRECTIVES);
-            expect(TreeNode).toEqual(ClrTreeNode);
+            expect(TreeNode.prototype instanceof ClrTreeNode).toBeTruthy();
             expect(TREE_VIEW_DIRECTIVES).toEqual(CLR_TREE_VIEW_DIRECTIVES);
             // Can't test interfaces directly, so just verify if they are exported and can be applied.
             class ComparatorTest implements Comparator<any> {
@@ -245,66 +257,72 @@ describe("Deprecations", () => {
         });
         it("should export deprecated emphasis items", () => {
             expect(ALERT_DIRECTIVES).toEqual(CLR_ALERT_DIRECTIVES);
-            expect(Alert).toEqual(ClrAlert);
-            expect(AlertItem).toEqual(ClrAlertItem);
-            expect(Alerts).toEqual(ClrAlerts);
-            expect(AlertsPager).toEqual(ClrAlertsPager);
+            expect(Alert.prototype instanceof ClrAlert).toBeTruthy();
+            expect(AlertItem.prototype instanceof ClrAlertItem).toBeTruthy();
+            expect(Alerts.prototype instanceof ClrAlerts).toBeTruthy();
+            expect(AlertsPager.prototype instanceof ClrAlertsPager).toBeTruthy();
         });
         it("should export deprecated form items", () => {
-            expect(Checkbox).toEqual(ClrCheckbox);
+            expect(Checkbox.prototype instanceof ClrCheckbox).toBeTruthy();
             expect(CHECKBOX_DIRECTIVES).toEqual(CLR_CHECKBOX_DIRECTIVES);
         });
         it("should export deprecated icon items", () => {
-            expect(IconCustomTag).toEqual(ClrIconCustomTag);
+            expect(IconCustomTag.prototype instanceof ClrIconCustomTag).toBeTruthy();
             expect(ICON_DIRECTIVES).toEqual(CLR_ICON_DIRECTIVES);
         });
         it("should export deprecated layout items", () => {
             expect(NAVIGATION_DIRECTIVES).toEqual(CLR_NAVIGATION_DIRECTIVES);
-            expect(Header).toEqual(ClrHeader);
-            expect(NavLevelDirective).toEqual(ClrNavLevel);
+            expect(Header.prototype instanceof ClrHeader).toBeTruthy();
+            expect(NavLevelDirective.prototype instanceof ClrNavLevel).toBeTruthy();
             expect(TABS_DIRECTIVES).toEqual(CLR_TABS_DIRECTIVES);
-            expect(Tab).toEqual(ClrTab);
-            expect(Tabs).toEqual(ClrTabs);
-            expect(TabLinkDirective).toEqual(ClrTabLink);
-            expect(TabContent).toEqual(ClrTabContent);
-            expect(TabOverflowContent).toEqual(ClrTabOverflowContent);
+            expect(Tab.prototype instanceof ClrTab).toBeTruthy();
+            expect(Tabs.prototype instanceof ClrTabs).toBeTruthy();
+            expect(TabLinkDirective.prototype instanceof ClrTabLink).toBeTruthy();
+            expect(TabContent.prototype instanceof ClrTabContent).toBeTruthy();
+            expect(TabOverflowContent.prototype instanceof ClrTabOverflowContent).toBeTruthy();
+            expect(VERTICAL_NAV_DIRECTIVES).toEqual(CLR_VERTICAL_NAV_DIRECTIVES);
+            expect(VerticalNav.prototype instanceof ClrVerticalNav).toBeTruthy();
+            expect(VerticalNavGroup.prototype instanceof ClrVerticalNavGroup).toBeTruthy();
+            expect(VerticalNavGroupChildren.prototype instanceof ClrVerticalNavGroupChildren).toBeTruthy();
+            expect(VerticalNavIcon.prototype instanceof ClrVerticalNavIcon).toBeTruthy();
+            expect(VerticalNavLink.prototype instanceof ClrVerticalNavLink).toBeTruthy();
         });
         it("should export deprecated modal items", () => {
-            expect(Modal).toEqual(ClrModal);
+            expect(Modal.prototype instanceof ClrModal).toBeTruthy();
             expect(MODAL_DIRECTIVES).toEqual(CLR_MODAL_DIRECTIVES);
         });
         it("should export deprecated popover items", () => {
-            expect(Dropdown).toEqual(ClrDropdown);
-            expect(DropdownItem).toEqual(ClrDropdownItem);
-            expect(DropdownMenu).toEqual(ClrDropdownMenu);
-            expect(DropdownTrigger).toEqual(ClrDropdownTrigger);
+            expect(Dropdown.prototype instanceof ClrDropdown).toBeTruthy();
+            expect(DropdownItem.prototype instanceof ClrDropdownItem).toBeTruthy();
+            expect(DropdownMenu.prototype instanceof ClrDropdownMenu).toBeTruthy();
+            expect(DropdownTrigger.prototype instanceof ClrDropdownTrigger).toBeTruthy();
             expect(menuPositions).toEqual(CLR_MENU_POSITIONS);
             expect(DROPDOWN_DIRECTIVES).toEqual(CLR_DROPDOWN_DIRECTIVES);
-            expect(Signpost).toEqual(ClrSignpost);
-            expect(SignpostContent).toEqual(ClrSignpostContent);
-            expect(SignpostTrigger).toEqual(ClrSignpostTrigger);
+            expect(Signpost.prototype instanceof ClrSignpost).toBeTruthy();
+            expect(SignpostContent.prototype instanceof ClrSignpostContent).toBeTruthy();
+            expect(SignpostTrigger.prototype instanceof ClrSignpostTrigger).toBeTruthy();
             expect(SIGNPOST_DIRECTIVES).toEqual(CLR_SIGNPOST_DIRECTIVES);
-            expect(Tooltip).toEqual(ClrTooltip);
-            expect(TooltipContent).toEqual(ClrTooltipContent);
-            expect(TooltipTrigger).toEqual(ClrTooltipTrigger);
+            expect(Tooltip.prototype instanceof ClrTooltip).toBeTruthy();
+            expect(TooltipContent.prototype instanceof ClrTooltipContent).toBeTruthy();
+            expect(TooltipTrigger.prototype instanceof ClrTooltipTrigger).toBeTruthy();
             expect(TOOLTIP_DIRECTIVES).toEqual(CLR_TOOLTIP_DIRECTIVES);
         });
         it("should export deprecated util items", () => {
-            expect(Loading).toEqual(ClrLoading);
+            expect(Loading.prototype instanceof ClrLoading).toBeTruthy();
             expect(LOADING_DIRECTIVES).toEqual(CLR_LOADING_DIRECTIVES);
         });
         it("should export deprecated wizard items", () => {
-            expect(Wizard).toEqual(ClrWizard);
-            expect(WizardPage).toEqual(ClrWizardPage);
-            expect(WizardStepnav).toEqual(ClrWizardStepnav);
-            expect(WizardStepnavItem).toEqual(ClrWizardStepnavItem);
-            expect(WizardButton).toEqual(ClrWizardButton);
-            expect(WizardHeaderAction).toEqual(ClrWizardHeaderAction);
-            expect(WizardCustomTags).toEqual(ClrWizardCustomTags);
-            expect(WizardPageTitleDirective).toEqual(ClrWizardPageTitle);
-            expect(WizardPageNavTitleDirective).toEqual(ClrWizardPageNavTitle);
-            expect(WizardPageButtonsDirective).toEqual(ClrWizardPageButtons);
-            expect(WizardPageHeaderActionsDirective).toEqual(ClrWizardPageHeaderActions);
+            expect(Wizard.prototype instanceof ClrWizard).toBeTruthy();
+            expect(WizardPage.prototype instanceof ClrWizardPage).toBeTruthy();
+            expect(WizardStepnav.prototype instanceof ClrWizardStepnav).toBeTruthy();
+            expect(WizardStepnavItem.prototype instanceof ClrWizardStepnavItem).toBeTruthy();
+            expect(WizardButton.prototype instanceof ClrWizardButton).toBeTruthy();
+            expect(WizardHeaderAction.prototype instanceof ClrWizardHeaderAction).toBeTruthy();
+            expect(WizardCustomTags.prototype instanceof ClrWizardCustomTags).toBeTruthy();
+            expect(WizardPageTitleDirective.prototype instanceof ClrWizardPageTitle).toBeTruthy();
+            expect(WizardPageNavTitleDirective.prototype instanceof ClrWizardPageNavTitle).toBeTruthy();
+            expect(WizardPageButtonsDirective.prototype instanceof ClrWizardPageButtons).toBeTruthy();
+            expect(WizardPageHeaderActionsDirective.prototype instanceof ClrWizardPageHeaderActions).toBeTruthy();
             expect(WIZARD_DIRECTIVES).toEqual(CLR_WIZARD_DIRECTIVES);
         });
     });

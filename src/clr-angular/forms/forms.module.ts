@@ -5,9 +5,17 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import {NgModule, Type} from "@angular/core";
+import {ClrCheckbox} from "./checkbox";
 
-import {CLR_CHECKBOX_DIRECTIVES} from "./checkbox";
+export const CLR_CHECKBOX_DIRECTIVES: Type<any>[] = [ClrCheckbox];
 
 @NgModule({imports: [CommonModule], declarations: [CLR_CHECKBOX_DIRECTIVES], exports: [CLR_CHECKBOX_DIRECTIVES]})
 export class ClrFormsModule {}
+
+/* tslint:disable variable-name */
+/** @deprecated since 0.11 */
+export class Checkbox extends ClrCheckbox {}
+/* tslint:enable variable-name */
+/** @deprecated since 0.11 */
+export const CHECKBOX_DIRECTIVES = CLR_CHECKBOX_DIRECTIVES;

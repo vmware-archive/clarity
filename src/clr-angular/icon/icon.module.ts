@@ -15,7 +15,7 @@ export class ClrIconModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export const IconCustomTag = ClrIconCustomTag;
+export class IconCustomTag extends ClrIconCustomTag {}
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const ICON_DIRECTIVES = CLR_ICON_DIRECTIVES;

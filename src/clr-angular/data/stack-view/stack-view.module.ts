@@ -35,17 +35,17 @@ export class ClrStackViewModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export const StackView = ClrStackView;
+export class StackView extends ClrStackView {}
 /** @deprecated since 0.11 */
-export const StackHeader = ClrStackHeader;
+export class StackHeader extends ClrStackHeader {}
 /** @deprecated since 0.11 */
-export const StackBlock = ClrStackBlock;
+export class StackBlock extends ClrStackBlock {}
 /** @deprecated since 0.11 */
-export const StackViewCustomTags = ClrStackViewCustomTags;
+export class StackViewCustomTags extends ClrStackViewCustomTags {}
 /** @deprecated since 0.11 */
-export const StackInput = ClrStackInput;
+export class StackInput extends ClrStackInput {}
 /** @deprecated since 0.11 */
-export const StackSelect = ClrStackSelect;
+export class StackSelect extends ClrStackSelect {}
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const STACK_VIEW_DIRECTIVES = CLR_STACK_VIEW_DIRECTIVES;

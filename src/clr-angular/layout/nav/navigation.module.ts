@@ -34,9 +34,9 @@ export class ClrNavigationModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export const Header = ClrHeader;
+export class Header extends ClrHeader {}
 /** @deprecated since 0.11 */
-export const NavLevelDirective = ClrNavLevel;
+export class NavLevelDirective extends ClrNavLevel {}
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const NAVIGATION_DIRECTIVES = CLR_NAVIGATION_DIRECTIVES;

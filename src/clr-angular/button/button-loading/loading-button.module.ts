@@ -21,7 +21,7 @@ export class ClrLoadingButtonModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export const LoadingButton = ClrLoadingButton;
+export class LoadingButton extends ClrLoadingButton {}
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const LOADING_BUTTON_DIRECTIVES = CLR_LOADING_BUTTON_DIRECTIVES;

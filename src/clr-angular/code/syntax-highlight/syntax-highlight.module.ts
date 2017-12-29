@@ -16,7 +16,7 @@ export class ClrSyntaxHighlightModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export const CodeHighlight = ClrCodeHighlight;
+export class CodeHighlight extends ClrCodeHighlight {}
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const CODE_HIGHLIGHT_DIRECTIVES = CLR_CODE_HIGHLIGHT_DIRECTIVES;

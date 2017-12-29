@@ -22,7 +22,7 @@ export class ClrModalModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export const Modal = ClrModal;
+export class Modal extends ClrModal {}
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const MODAL_DIRECTIVES = CLR_MODAL_DIRECTIVES;

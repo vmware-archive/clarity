@@ -1,6 +1,11 @@
 {
-    "current": "0.10.19",
+    "current": "0.10.20",
     "all": {
+        "0.10.20": {
+            "date": "Dec 28, 2017",
+            "sketch": "0.10.11",
+            "commit": "6c28e115eb5b9be309b8b70cef8f47abae244da1"
+        },
         "0.10.19": {
             "date": "Dec 21, 2017",
             "sketch": "0.10.11",

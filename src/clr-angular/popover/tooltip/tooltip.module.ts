@@ -26,11 +26,11 @@ export class ClrTooltipModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export const Tooltip = ClrTooltip;
+export class Tooltip extends ClrTooltip {}
 /** @deprecated since 0.11 */
-export const TooltipContent = ClrTooltipContent;
+export class TooltipContent extends ClrTooltipContent {}
 /** @deprecated since 0.11 */
-export const TooltipTrigger = ClrTooltipTrigger;
+export class TooltipTrigger extends ClrTooltipTrigger {}
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const TOOLTIP_DIRECTIVES = CLR_TOOLTIP_DIRECTIVES;

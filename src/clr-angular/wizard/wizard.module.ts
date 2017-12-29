@@ -36,27 +36,27 @@ export class ClrWizardModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export const Wizard = ClrWizard;
+export class Wizard extends ClrWizard {}
 /** @deprecated since 0.11 */
-export const WizardPage = ClrWizardPage;
+export class WizardPage extends ClrWizardPage {}
 /** @deprecated since 0.11 */
-export const WizardStepnav = ClrWizardStepnav;
+export class WizardStepnav extends ClrWizardStepnav {}
 /** @deprecated since 0.11 */
-export const WizardStepnavItem = ClrWizardStepnavItem;
+export class WizardStepnavItem extends ClrWizardStepnavItem {}
 /** @deprecated since 0.11 */
-export const WizardButton = ClrWizardButton;
+export class WizardButton extends ClrWizardButton {}
 /** @deprecated since 0.11 */
-export const WizardHeaderAction = ClrWizardHeaderAction;
+export class WizardHeaderAction extends ClrWizardHeaderAction {}
 /** @deprecated since 0.11 */
-export const WizardCustomTags = ClrWizardCustomTags;
+export class WizardCustomTags extends ClrWizardCustomTags {}
 /** @deprecated since 0.11 */
-export const WizardPageTitleDirective = ClrWizardPageTitle;
+export class WizardPageTitleDirective extends ClrWizardPageTitle {}
 /** @deprecated since 0.11 */
-export const WizardPageNavTitleDirective = ClrWizardPageNavTitle;
+export class WizardPageNavTitleDirective extends ClrWizardPageNavTitle {}
 /** @deprecated since 0.11 */
-export const WizardPageButtonsDirective = ClrWizardPageButtons;
+export class WizardPageButtonsDirective extends ClrWizardPageButtons {}
 /** @deprecated since 0.11 */
-export const WizardPageHeaderActionsDirective = ClrWizardPageHeaderActions;
+export class WizardPageHeaderActionsDirective extends ClrWizardPageHeaderActions {}
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const WIZARD_DIRECTIVES = CLR_WIZARD_DIRECTIVES;

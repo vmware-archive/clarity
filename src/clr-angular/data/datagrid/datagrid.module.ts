@@ -83,33 +83,33 @@ export class ClrDatagridModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export const Datagrid = ClrDatagrid;
+export class Datagrid extends ClrDatagrid {}
 /** @deprecated since 0.11 */
-export const DatagridActionBar = ClrDatagridActionBar;
+export class DatagridActionBar extends ClrDatagridActionBar {}
 /** @deprecated since 0.11 */
-export const DatagridActionOverflow = ClrDatagridActionOverflow;
+export class DatagridActionOverflow extends ClrDatagridActionOverflow {}
 /** @deprecated since 0.11 */
-export const DatagridColumn = ClrDatagridColumn;
+export class DatagridColumn extends ClrDatagridColumn {}
 /** @deprecated since 0.11 */
-export const DatagridColumnToggle = ClrDatagridColumnToggle;
+export class DatagridColumnToggle extends ClrDatagridColumnToggle {}
 /** @deprecated since 0.11 */
-export const DatagridHideableColumnDirective = ClrDatagridHideableColumn;
+export class DatagridHideableColumnDirective extends ClrDatagridHideableColumn {}
 /** @deprecated since 0.11 */
-export const DatagridFilter = ClrDatagridFilter;
+export class DatagridFilter extends ClrDatagridFilter {}
 /** @deprecated since 0.11 */
-export const DatagridItems = ClrDatagridItems;
+export class DatagridItems extends ClrDatagridItems {}
 /** @deprecated since 0.11 */
-export const DatagridRow = ClrDatagridRow;
+export class DatagridRow extends ClrDatagridRow {}
 /** @deprecated since 0.11 */
-export const DatagridRowDetail = ClrDatagridRowDetail;
+export class DatagridRowDetail extends ClrDatagridRowDetail {}
 /** @deprecated since 0.11 */
-export const DatagridCell = ClrDatagridCell;
+export class DatagridCell extends ClrDatagridCell {}
 /** @deprecated since 0.11 */
-export const DatagridFooter = ClrDatagridFooter;
+export class DatagridFooter extends ClrDatagridFooter {}
 /** @deprecated since 0.11 */
-export const DatagridPagination = ClrDatagridPagination;
+export class DatagridPagination extends ClrDatagridPagination {}
 /** @deprecated since 0.11 */
-export const DatagridPlaceholder = ClrDatagridPlaceholder;
+export class DatagridPlaceholder extends ClrDatagridPlaceholder {}
 /** @deprecated since 0.11 */
 export enum SortOrder {
     // Cannot extend an enum so have to redeclare it

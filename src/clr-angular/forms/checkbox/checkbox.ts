@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, EventEmitter, forwardRef, Input, Output, Type} from "@angular/core";
+import {Component, EventEmitter, forwardRef, Input, Output} from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 /**
@@ -145,12 +145,3 @@ export class ClrCheckbox implements ControlValueAccessor {
         }
     }
 }
-
-export const CLR_CHECKBOX_DIRECTIVES: Type<any>[] = [ClrCheckbox];
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export const Checkbox = ClrCheckbox;
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const CHECKBOX_DIRECTIVES = CLR_CHECKBOX_DIRECTIVES;

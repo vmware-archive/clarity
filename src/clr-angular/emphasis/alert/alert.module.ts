@@ -26,13 +26,13 @@ export class ClrAlertModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export const Alert = ClrAlert;
+export class Alert extends ClrAlert {}
 /** @deprecated since 0.11 */
-export const AlertItem = ClrAlertItem;
+export class AlertItem extends ClrAlertItem {}
 /** @deprecated since 0.11 */
-export const Alerts = ClrAlerts;
+export class Alerts extends ClrAlerts {}
 /** @deprecated since 0.11 */
-export const AlertsPager = ClrAlertsPager;
+export class AlertsPager extends ClrAlertsPager {}
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const ALERT_DIRECTIVES = CLR_ALERT_DIRECTIVES;

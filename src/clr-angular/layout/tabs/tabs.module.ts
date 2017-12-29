@@ -32,15 +32,15 @@ export class ClrTabsModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export const Tab = ClrTab;
+export class Tab extends ClrTab {}
 /** @deprecated since 0.11 */
-export const Tabs = ClrTabs;
+export class Tabs extends ClrTabs {}
 /** @deprecated since 0.11 */
-export const TabContent = ClrTabContent;
+export class TabContent extends ClrTabContent {}
 /** @deprecated since 0.11 */
-export const TabOverflowContent = ClrTabOverflowContent;
+export class TabOverflowContent extends ClrTabOverflowContent {}
 /** @deprecated since 0.11 */
-export const TabLinkDirective = ClrTabLink;
+export class TabLinkDirective extends ClrTabLink {}
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const TABS_DIRECTIVES = CLR_TABS_DIRECTIVES;

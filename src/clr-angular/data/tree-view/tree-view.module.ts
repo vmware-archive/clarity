@@ -24,7 +24,7 @@ export class ClrTreeViewModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export const TreeNode = ClrTreeNode;
+export class TreeNode extends ClrTreeNode {}
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const TREE_VIEW_DIRECTIVES = CLR_TREE_VIEW_DIRECTIVES;

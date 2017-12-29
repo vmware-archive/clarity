@@ -15,7 +15,7 @@ export class ClrLoadingModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export const Loading = ClrLoading;
+export class Loading extends ClrLoading {}
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const LOADING_DIRECTIVES = CLR_LOADING_DIRECTIVES;

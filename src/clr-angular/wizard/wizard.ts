@@ -377,11 +377,21 @@ export class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     private wizardFinishedSubscription: Subscription;
 
     ngOnDestroy() {
-        this.goNextSubscription.unsubscribe();
-        this.goPreviousSubscription.unsubscribe();
-        this.cancelSubscription.unsubscribe();
-        this.currentPageSubscription.unsubscribe();
-        this.wizardFinishedSubscription.unsubscribe();
+        if (this.goNextSubscription) {
+            this.goNextSubscription.unsubscribe();
+        }
+        if (this.goPreviousSubscription) {
+            this.goPreviousSubscription.unsubscribe();
+        }
+        if (this.cancelSubscription) {
+            this.cancelSubscription.unsubscribe();
+        }
+        if (this.currentPageSubscription) {
+            this.currentPageSubscription.unsubscribe();
+        }
+        if (this.wizardFinishedSubscription) {
+            this.wizardFinishedSubscription.unsubscribe();
+        }
     }
 
     /**

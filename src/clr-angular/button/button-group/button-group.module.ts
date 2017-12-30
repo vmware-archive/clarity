@@ -24,9 +24,13 @@ export class ClrButtonGroupModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export class Button extends ClrButton {}
+export interface Button extends ClrButton {}
 /** @deprecated since 0.11 */
-export class ButtonGroup extends ClrButtonGroup {}
+export const Button = ClrButton;
+/** @deprecated since 0.11 */
+export interface ButtonGroup extends ClrButtonGroup {}
+/** @deprecated since 0.11 */
+export const ButtonGroup = ClrButtonGroup;
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const BUTTON_GROUP_DIRECTIVES = CLR_BUTTON_GROUP_DIRECTIVES;

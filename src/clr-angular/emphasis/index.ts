@@ -4,4 +4,4 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 export * from "./emphasis.module";
-export * from "./alert";
+export * from "./alert/index";

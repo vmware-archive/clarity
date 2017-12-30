@@ -29,13 +29,21 @@ export class ClrDropdownModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export class Dropdown extends ClrDropdown {}
+export interface Dropdown extends ClrDropdown {}
 /** @deprecated since 0.11 */
-export class DropdownMenu extends ClrDropdownMenu {}
+export const Dropdown = ClrDropdown;
 /** @deprecated since 0.11 */
-export class DropdownTrigger extends ClrDropdownTrigger {}
+export interface DropdownMenu extends ClrDropdownMenu {}
 /** @deprecated since 0.11 */
-export class DropdownItem extends ClrDropdownItem {}
+export const DropdownMenu = ClrDropdownMenu;
+/** @deprecated since 0.11 */
+export interface DropdownTrigger extends ClrDropdownTrigger {}
+/** @deprecated since 0.11 */
+export const DropdownTrigger = ClrDropdownTrigger;
+/** @deprecated since 0.11 */
+export interface DropdownItem extends ClrDropdownItem {}
+/** @deprecated since 0.11 */
+export const DropdownItem = ClrDropdownItem;
 /** @deprecated since 0.11 */
 export const menuPositions = CLR_MENU_POSITIONS;
 /* tslint:enable variable-name */

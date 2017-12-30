@@ -5,5 +5,5 @@
  */
 
 export * from "./button.module";
-export * from "./button-group";
-export * from "./button-loading";
+export * from "./button-group/index";
+export * from "./button-loading/index";

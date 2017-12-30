@@ -35,17 +35,29 @@ export class ClrStackViewModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export class StackView extends ClrStackView {}
+export interface StackView extends ClrStackView {}
 /** @deprecated since 0.11 */
-export class StackHeader extends ClrStackHeader {}
+export const StackView = ClrStackView;
 /** @deprecated since 0.11 */
-export class StackBlock extends ClrStackBlock {}
+export interface StackHeader extends ClrStackHeader {}
 /** @deprecated since 0.11 */
-export class StackViewCustomTags extends ClrStackViewCustomTags {}
+export const StackHeader = ClrStackHeader;
 /** @deprecated since 0.11 */
-export class StackInput extends ClrStackInput {}
+export interface StackBlock extends ClrStackBlock {}
 /** @deprecated since 0.11 */
-export class StackSelect extends ClrStackSelect {}
+export const StackBlock = ClrStackBlock;
+/** @deprecated since 0.11 */
+export interface StackViewCustomTags extends ClrStackViewCustomTags {}
+/** @deprecated since 0.11 */
+export const StackViewCustomTags = ClrStackViewCustomTags;
+/** @deprecated since 0.11 */
+export interface StackInput extends ClrStackInput {}
+/** @deprecated since 0.11 */
+export const StackInput = ClrStackInput;
+/** @deprecated since 0.11 */
+export interface StackSelect extends ClrStackSelect {}
+/** @deprecated since 0.11 */
+export const StackSelect = ClrStackSelect;
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const STACK_VIEW_DIRECTIVES = CLR_STACK_VIEW_DIRECTIVES;

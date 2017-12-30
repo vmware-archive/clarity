@@ -25,7 +25,8 @@ var map = {
 	],
 	"app/news/news.module.ngfactory": [
 		"../../../../../src/$$_gendir/app/news/news.module.ngfactory.ts",
-		"news.module"
+		"news.module",
+		"common"
 	]
 };
 function webpackAsyncContext(req) {

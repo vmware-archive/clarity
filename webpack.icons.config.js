@@ -4,8 +4,7 @@ const {UglifyJsPlugin} = require('webpack').optimize;
 module.exports = {
     entry: {
         "index": "./src/clarity-icons/index.ts",
-        "interfaces/icon-alias": "./src/clarity-icons/interfaces/icon-alias.ts",
-        "interfaces/icon-template": "./src/clarity-icons/interfaces/icon-template.ts",
+        "interfaces/icon-template": "./src/clarity-icons/interfaces/icon-interfaces.ts",
         "utils/descriptor-config": "./src/clarity-icons/utils/descriptor-config.ts",
         "clarity-icons-api": "./src/clarity-icons/clarity-icons-api.ts",
         "clarity-icons-element": "./src/clarity-icons/clarity-icons-element.ts",

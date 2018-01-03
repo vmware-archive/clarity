@@ -4,3 +4,5 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 export interface IconAlias { [key: string]: string[]; }
+export interface IconShapeSources { [key: string]: string; }
+export interface ShapeTemplateObservables { [key: string]: Function[]; }

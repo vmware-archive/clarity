@@ -12,16 +12,15 @@ const clarityIcons: ClarityIconsApi = ClarityIconsApi.instance;
 clarityIcons.add(CoreShapes);
 
 // check if there is a global object called "ClarityIcons"
-if (undefined !== window) {
+if (typeof window !== "undefined") {
     if (!window.hasOwnProperty("ClarityIcons")) {
         // Setting a global object called "ClarityIcons" to expose the ClarityIconsApi.
         window.ClarityIcons = clarityIcons;
-
-        // Defining clr-icon custom element
-        customElements.define("clr-icon", ClarityIconElement);
     }
-} else {
+
+    // Defining clr-icon custom element
     customElements.define("clr-icon", ClarityIconElement);
 }
+
 
 export {clarityIcons as ClarityIcons};

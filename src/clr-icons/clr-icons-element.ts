@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {ClarityIconsApi} from "./clr-icons-api";
+import {ShapeTemplateObserver} from "./utils/shape-template-observer";
 
 /* CLR-ICON CUSTOM ELEMENT */
 
@@ -23,12 +24,29 @@ if (typeof Reflect === "object") {
 export function ClarityIconElement() {
     "use strict";
 
-    const _this = (parentConstructor as any).apply(this, arguments);
+    const _instance = (parentConstructor as any).apply(this, arguments);
 
-    _this.clrIconUniqId = "_clr_icon_" + clrIconId;
+    _instance.clrIconUniqId = "_clr_icon_" + clrIconId;
     clrIconId++;
 
-    return _this;
+    Object.defineProperty(_instance, "currentShapeAttrVal", {
+        get: function() {
+            return _instance._currentShapeAttrVal;
+        },
+        set: function(shapeName: string) {
+            if (shapeName) {
+                _instance._currentShapeAttrVal = shapeName;
+
+                // callback function to remove the subscription
+                _instance._shapeTemplateSubscription =
+                    ShapeTemplateObserver.instance.subscribeTo(shapeName, (updatedTemplate: string) => {
+                        this._injectTemplate(updatedTemplate);
+                    });
+            }
+        }
+    });
+
+    return _instance;
 }
 
 (ClarityIconElement as any).observedAttributes = ["shape", "size", "title"];
@@ -114,7 +132,7 @@ ClarityIconElement.prototype.attributeChangedCallback = function(attributeName: 
     }
 
     // Note: the size attribute is irrelavent from the shape template;
-    // That's why the size checking placced before detecting changes in shape and title attributes.
+    // That's why the size checking placed before detecting changes in shape and title attributes.
     // This means even if the shape is not found, the injected shape will have the user-given size.
 
     if (attributeName === "shape") {
@@ -138,6 +156,14 @@ ClarityIconElement.prototype.attributeChangedCallback = function(attributeName: 
     this._injectTemplate();
 };
 
+ClarityIconElement.prototype.disconnectedCallback = function() {
+    // as the icon element is removed from the DOM,
+    // remove its listener callback function as well.
+    if (this._shapeTemplateSubscription) {
+        this._shapeTemplateSubscription();
+    }
+};
+
 ClarityIconElement.prototype._setAriaLabelledBy = function() {
     const existingAriaLabelledBy: string = this.getAttribute("aria-labelledby");
     if (!existingAriaLabelledBy) {
@@ -147,7 +173,13 @@ ClarityIconElement.prototype._setAriaLabelledBy = function() {
     }
 };
 
-ClarityIconElement.prototype._injectTemplate = function() {
+ClarityIconElement.prototype._injectTemplate = function(shapeTemplate?: string) {
+    // Accepting the argument, shapeTemplate, will help us to update the shape template
+    // right before the injection.
+    if (shapeTemplate && shapeTemplate !== this.currentShapeTemplate) {
+        this.currentShapeTemplate = shapeTemplate;
+    }
+
     this.innerHTML = this.currentShapeTemplate;
 
     if (this.currentTitleAttrVal) {
@@ -157,7 +189,6 @@ ClarityIconElement.prototype._injectTemplate = function() {
 };
 
 ClarityIconElement.prototype._injectErrorTemplate = function() {
-    console.error(`'${this.currentShapeAttrVal}' is not found in the Clarity Icons set.`);
     this.currentShapeTemplate = ClarityIconsApi.instance.get("error");
     this._injectTemplate();
 };

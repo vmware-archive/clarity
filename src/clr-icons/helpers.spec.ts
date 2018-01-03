@@ -6,6 +6,7 @@
 
 import {ClarityIcons} from "./index";
 import {CoreShapes} from "./shapes/core-shapes";
+import {changeHandlerCallbacks} from "./utils/shape-template-observer";
 
 // TODO: open question... should we make whitespace removal part of the icon parsing???
 export function removeWhitespace(htmlStr: string): string {
@@ -57,6 +58,14 @@ export function resetShapes(): void {
     }
 
     ClarityIcons.add(CoreShapes);
+}
+
+export function resetCallbacks(): void {
+    for (const callback in changeHandlerCallbacks) {
+        if (changeHandlerCallbacks.hasOwnProperty(callback)) {
+            delete changeHandlerCallbacks[callback];
+        }
+    }
 }
 
 export function giveAngleShapeTitle(titleId: string, titleTxt: string) {

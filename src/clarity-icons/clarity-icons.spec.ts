@@ -3,10 +3,13 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import {ClarityIconsApi} from "./clarity-icons-api";
+
 import {
     getErrorShape,
     giveAngleShapeTitle,
     removeWhitespace,
+    resetCallbacks,
     resetShapes,
     testAllShapes,
     testAllShapesRequiredAttributes
@@ -20,6 +23,7 @@ import {MediaShapes} from "./shapes/media-shapes";
 import {SocialShapes} from "./shapes/social-shapes";
 import {TechnologyShapes} from "./shapes/technology-shapes";
 import {TravelShapes} from "./shapes/travel-shapes";
+import {changeHandlerCallbacks} from "./utils/shape-template-observer";
 
 describe("ClarityIcons", () => {
     afterEach(() => {
@@ -107,15 +111,6 @@ describe("ClarityIcons", () => {
                 </svg>
             `;
             expect(removeWhitespace(expected)).toEqual(removeWhitespace(ClarityIcons.get("pencil")));
-        });
-
-        it("should throw an error if the requested shape doesn't exist", () => {
-            const nonExistingShape = "non-existing-icon";
-            const expectedErrorMessage = `'${nonExistingShape}' is not found in the Clarity Icons set.`;
-
-            expect(() => {
-                ClarityIcons.get(nonExistingShape);
-            }).toThrowError(expectedErrorMessage);
         });
     });
 
@@ -276,8 +271,7 @@ describe("ClarityIcons", () => {
         it("should throw an error if the shape name doesn't exist", () => {
             const shapeName = "pen";
             const expectedErrorMessage =
-                "The icon '" + shapeName + "' you are trying to set an alias to doesn't exist!";
-
+                `An icon "${shapeName}" you are trying to set aliases to doesn't exist in the Clarity Icons sets!`;
             expect(() => {
                 ClarityIcons.alias({[shapeName]: ["write"]});
             }).toThrowError(expectedErrorMessage);
@@ -325,7 +319,7 @@ describe("ClarityIcons", () => {
 
     describe("ClarityIcon Custom Element", () => {
         beforeEach(() => {
-            spyOn(console, "error");
+            resetCallbacks();
         });
 
         it("should insert the SVG markup", () => {
@@ -521,7 +515,6 @@ describe("ClarityIcons", () => {
 
             clarityIcon.setAttribute("shape", nonExistingShape);
             expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(getErrorShape()));
-            expect(console.error).toHaveBeenCalled();
         });
 
         it("should inject error shape with title if icon is not found", () => {
@@ -536,7 +529,81 @@ describe("ClarityIcons", () => {
 
             expect(removeWhitespace(clarityIcon.innerHTML))
                 .toBe(removeWhitespace(getErrorShape(clrIconUniqId, customTitle)));
-            expect(console.error).toHaveBeenCalled();
+        });
+
+        it("should reflect the updated shape template in injected icon", () => {
+            const clarityIcon = document.createElement("clr-icon") as ClarityIconElement;
+            const nonExistingShape = "non-existing-icon";
+            clarityIcon.setAttribute("shape", nonExistingShape);
+            document.body.appendChild(clarityIcon);
+
+            expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(getErrorShape()));
+
+            let testShape = `<svg><g><title>first</title></g></svg>`;
+            ClarityIcons.add({"non-existing-icon": testShape});
+            expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(testShape));
+
+            // testing multiple template changes
+            testShape = `<svg><g><title>second</title></g></svg>`;
+            ClarityIcons.add({"non-existing-icon": testShape});
+            expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(testShape));
+        });
+
+
+        it("should add template change handler callbacks", () => {
+            const userAttrName = "user";
+            const homeAttrName = "home";
+            const userIcon1 = document.createElement("clr-icon") as ClarityIconElement;
+            userIcon1.setAttribute("shape", userAttrName);
+            const userIcon2 = document.createElement("clr-icon") as ClarityIconElement;
+            userIcon2.setAttribute("shape", userAttrName);
+            const homeIcon = document.createElement("clr-icon") as ClarityIconElement;
+            homeIcon.setAttribute("shape", homeAttrName);
+
+            expect(changeHandlerCallbacks[userAttrName].length).toBe(2);
+            expect(changeHandlerCallbacks[homeAttrName].length).toBe(1);
+        });
+
+        it("should remove template change handler callbacks when icon removed from the DOM", () => {
+            const userAttrName = "user";
+            const homeAttrName = "home";
+            const userIcon1 = document.createElement("clr-icon") as ClarityIconElement;
+            userIcon1.setAttribute("shape", userAttrName);
+            const userIcon2 = document.createElement("clr-icon") as ClarityIconElement;
+            userIcon2.setAttribute("shape", userAttrName);
+            const homeIcon = document.createElement("clr-icon") as ClarityIconElement;
+            homeIcon.setAttribute("shape", homeAttrName);
+            document.body.appendChild(userIcon1);
+            document.body.appendChild(userIcon2);
+            document.body.appendChild(homeIcon);
+
+            document.body.removeChild(userIcon1);
+            document.body.removeChild(homeIcon);
+
+            expect(changeHandlerCallbacks[userAttrName].length).toBe(1);
+            expect(changeHandlerCallbacks[homeAttrName]).toBeUndefined();
+            document.body.removeChild(userIcon2);
+            expect(changeHandlerCallbacks[userAttrName]).toBeUndefined();
+        });
+
+        it("should persist title when shape template gets updated", () => {
+            const clarityIcon = document.createElement("clr-icon") as ClarityIconElement;
+            const nonExistingShape = "non-existing-icon";
+            const customTitle = "my-custom-title";
+            const clrIconUniqId = clarityIcon.clrIconUniqId;
+
+            clarityIcon.setAttribute("shape", nonExistingShape);
+            clarityIcon.setAttribute("title", customTitle);
+
+            expect(removeWhitespace(clarityIcon.innerHTML))
+                .toBe(removeWhitespace(getErrorShape(clrIconUniqId, customTitle)));
+
+            const testShape = `<svg><g></g></svg>`;
+            ClarityIcons.add({"non-existing-icon": testShape});
+
+            const testShapeAfterTemplateChange =
+                `<svg><g></g></svg><span class="is-off-screen" id="${clrIconUniqId}">${customTitle}</span>`;
+            expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(testShapeAfterTemplateChange));
         });
     });
 

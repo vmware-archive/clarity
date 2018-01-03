@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {IconAlias} from "./interfaces/icon-alias";
-import {IconTemplate} from "./interfaces/icon-template";
+import {IconAlias, IconShapeSources} from "./interfaces/icon-interfaces";
+import {ShapeTemplateObserver} from "./utils/shape-template-observer";
 
-const iconShapeSources: IconTemplate = {};
+const iconShapeSources: IconShapeSources = {};
 
 export class ClarityIconsApi {
     private static singleInstance: ClarityIconsApi;
@@ -44,10 +44,12 @@ export class ClarityIconsApi {
             }
 
             iconShapeSources[shapeName] = trimmedShapeTemplate;
+
+            ShapeTemplateObserver.instance.emitChanges(shapeName, trimmedShapeTemplate);
         }
     }
 
-    private setIconAliases(templates: IconTemplate, shapeName: string, aliasNames: string[]): void {
+    private setIconAliases(templates: IconShapeSources, shapeName: string, aliasNames: string[]): void {
         for (const aliasName of aliasNames) {
             if (this.validateName(aliasName)) {
                 Object.defineProperty(templates, aliasName, {
@@ -61,7 +63,7 @@ export class ClarityIconsApi {
         }
     }
 
-    add(icons?: IconTemplate): void {
+    add(icons?: IconShapeSources): void {
         if (typeof icons !== "object") {
             throw new Error(`The argument must be an object literal passed in the following pattern: 
                 { "shape-name": "shape-template" }`);
@@ -88,11 +90,6 @@ export class ClarityIconsApi {
             throw new TypeError("Only string argument is allowed in this method.");
         }
 
-        // if shapeName doesn't exist in the icons templates, throw an error.
-        if (!this.has(shapeName)) {
-            throw new Error(`'${shapeName}' is not found in the Clarity Icons set.`);
-        }
-
         return iconShapeSources[shapeName];
     }
 
@@ -111,7 +108,8 @@ export class ClarityIconsApi {
                     // set an alias to the icon if it exists in iconShapeSources.
                     this.setIconAliases(iconShapeSources, shapeName, aliases[shapeName]);
                 } else {
-                    throw new Error("The icon '" + shapeName + "' you are trying to set an alias to doesn't exist!");
+                    throw new Error(`An icon "${
+                        shapeName}" you are trying to set aliases to doesn't exist in the Clarity Icons sets!`);
                 }
             }
         }

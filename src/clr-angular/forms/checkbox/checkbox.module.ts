@@ -3,21 +3,21 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import {CommonModule} from "@angular/common";
 import {NgModule, Type} from "@angular/core";
+import {ClrCheckbox} from "./checkbox";
 
-import {ClrLoading} from "./loading";
+export const CLR_CHECKBOX_DIRECTIVES: Type<any>[] = [ClrCheckbox];
 
-export const CLR_LOADING_DIRECTIVES: Type<any>[] = [ClrLoading];
-
-@NgModule({imports: [CommonModule], declarations: [CLR_LOADING_DIRECTIVES], exports: [CLR_LOADING_DIRECTIVES]})
-export class ClrLoadingModule {}
+@NgModule({imports: [CommonModule], declarations: [CLR_CHECKBOX_DIRECTIVES], exports: [CLR_CHECKBOX_DIRECTIVES]})
+export class ClrCheckboxModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export interface Loading extends ClrLoading {}
+export interface Checkbox extends ClrCheckbox {}
 /** @deprecated since 0.11 */
-export const Loading = ClrLoading;
+export const Checkbox = ClrCheckbox;
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
-export const LOADING_DIRECTIVES = CLR_LOADING_DIRECTIVES;
+export const CHECKBOX_DIRECTIVES = CLR_CHECKBOX_DIRECTIVES;

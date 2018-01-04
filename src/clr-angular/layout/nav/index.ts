@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-export * from "./chocolate";
+export * from "./chocolate/index";
 export * from "./header";
 export * from "./nav-level";
 export * from "./navigation.module";

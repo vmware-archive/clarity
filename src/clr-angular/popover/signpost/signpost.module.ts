@@ -28,11 +28,17 @@ export class ClrSignpostModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export class Signpost extends ClrSignpost {}
+export interface Signpost extends ClrSignpost {}
 /** @deprecated since 0.11 */
-export class SignpostContent extends ClrSignpostContent {}
+export const Signpost = ClrSignpost;
 /** @deprecated since 0.11 */
-export class SignpostTrigger extends ClrSignpostTrigger {}
+export interface SignpostContent extends ClrSignpostContent {}
+/** @deprecated since 0.11 */
+export const SignpostContent = ClrSignpostContent;
+/** @deprecated since 0.11 */
+export interface SignpostTrigger extends ClrSignpostTrigger {}
+/** @deprecated since 0.11 */
+export const SignpostTrigger = ClrSignpostTrigger;
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const SIGNPOST_DIRECTIVES = CLR_SIGNPOST_DIRECTIVES;

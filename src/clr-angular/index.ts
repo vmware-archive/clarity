@@ -6,17 +6,17 @@
 
 export * from "./clr-angular.module";
 
-export * from "./button";
-export * from "./code";
-export * from "./data";
-export * from "./emphasis";
-export * from "./forms";
-export * from "./icon";
-export * from "./layout";
-export * from "./modal";
-export * from "./popover";
-export * from "./utils";
-export * from "./wizard";
+export * from "./button/index";
+export * from "./code/index";
+export * from "./data/index";
+export * from "./emphasis/index";
+export * from "./forms/index";
+export * from "./icon/index";
+export * from "./layout/index";
+export * from "./modal/index";
+export * from "./popover/index";
+export * from "./utils/index";
+export * from "./wizard/index";
 
 // Below are exported for internal use only and may change without notice
 export {FocusTrapTracker as ÇlrFocusTrapTracker} from "./utils/focus-trap/focus-trap-tracker.service";

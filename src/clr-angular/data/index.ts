@@ -5,6 +5,6 @@
  */
 
 export * from "./data.module";
-export * from "./datagrid";
-export * from "./tree-view";
-export * from "./stack-view";
+export * from "./datagrid/index";
+export * from "./tree-view/index";
+export * from "./stack-view/index";

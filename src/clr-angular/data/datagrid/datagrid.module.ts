@@ -85,33 +85,61 @@ export class ClrDatagridModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export class Datagrid extends ClrDatagrid {}
+export interface Datagrid extends ClrDatagrid {}
 /** @deprecated since 0.11 */
-export class DatagridActionBar extends ClrDatagridActionBar {}
+export const Datagrid = ClrDatagrid;
 /** @deprecated since 0.11 */
-export class DatagridActionOverflow extends ClrDatagridActionOverflow {}
+export interface DatagridActionBar extends ClrDatagridActionBar {}
 /** @deprecated since 0.11 */
-export class DatagridColumn extends ClrDatagridColumn {}
+export const DatagridActionBar = ClrDatagridActionBar;
 /** @deprecated since 0.11 */
-export class DatagridColumnToggle extends ClrDatagridColumnToggle {}
+export interface DatagridActionOverflow extends ClrDatagridActionOverflow {}
 /** @deprecated since 0.11 */
-export class DatagridHideableColumnDirective extends ClrDatagridHideableColumn {}
+export const DatagridActionOverflow = ClrDatagridActionOverflow;
 /** @deprecated since 0.11 */
-export class DatagridFilter extends ClrDatagridFilter {}
+export interface DatagridColumn extends ClrDatagridColumn {}
 /** @deprecated since 0.11 */
-export class DatagridItems extends ClrDatagridItems {}
+export const DatagridColumn = ClrDatagridColumn;
 /** @deprecated since 0.11 */
-export class DatagridRow extends ClrDatagridRow {}
+export interface DatagridColumnToggle extends ClrDatagridColumnToggle {}
 /** @deprecated since 0.11 */
-export class DatagridRowDetail extends ClrDatagridRowDetail {}
+export const DatagridColumnToggle = ClrDatagridColumnToggle;
 /** @deprecated since 0.11 */
-export class DatagridCell extends ClrDatagridCell {}
+export interface DatagridHideableColumnDirective extends ClrDatagridHideableColumn {}
 /** @deprecated since 0.11 */
-export class DatagridFooter extends ClrDatagridFooter {}
+export const DatagridHideableColumnDirective = ClrDatagridHideableColumn;
 /** @deprecated since 0.11 */
-export class DatagridPagination extends ClrDatagridPagination {}
+export interface DatagridFilter extends ClrDatagridFilter {}
 /** @deprecated since 0.11 */
-export class DatagridPlaceholder extends ClrDatagridPlaceholder {}
+export const DatagridFilter = ClrDatagridFilter;
+/** @deprecated since 0.11 */
+export interface DatagridItems extends ClrDatagridItems {}
+/** @deprecated since 0.11 */
+export const DatagridItems = ClrDatagridItems;
+/** @deprecated since 0.11 */
+export interface DatagridRow extends ClrDatagridRow {}
+/** @deprecated since 0.11 */
+export const DatagridRow = ClrDatagridRow;
+/** @deprecated since 0.11 */
+export interface DatagridRowDetail extends ClrDatagridRowDetail {}
+/** @deprecated since 0.11 */
+export const DatagridRowDetail = ClrDatagridRowDetail;
+/** @deprecated since 0.11 */
+export interface DatagridCell extends ClrDatagridCell {}
+/** @deprecated since 0.11 */
+export const DatagridCell = ClrDatagridCell;
+/** @deprecated since 0.11 */
+export interface DatagridFooter extends ClrDatagridFooter {}
+/** @deprecated since 0.11 */
+export const DatagridFooter = ClrDatagridFooter;
+/** @deprecated since 0.11 */
+export interface DatagridPagination extends ClrDatagridPagination {}
+/** @deprecated since 0.11 */
+export const DatagridPagination = ClrDatagridPagination;
+/** @deprecated since 0.11 */
+export interface DatagridPlaceholder extends ClrDatagridPlaceholder {}
+/** @deprecated since 0.11 */
+export const DatagridPlaceholder = ClrDatagridPlaceholder;
 /** @deprecated since 0.11 */
 export enum SortOrder {
     // Cannot extend an enum so have to redeclare it

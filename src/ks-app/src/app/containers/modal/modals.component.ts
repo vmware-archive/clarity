@@ -5,9 +5,16 @@
  */
 
 import {Component} from "@angular/core";
+import {ClrModal, Modal} from "@clr/angular";
 
 @Component({templateUrl: "./modals.component.html"})
 export class KSModals {
+    /**
+     * @description
+     * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
+     */
+    private aModal: Modal;
+    private aClrModal: ClrModal;
     opened1: boolean = false;
     opened2: boolean = false;
     small: boolean = false;

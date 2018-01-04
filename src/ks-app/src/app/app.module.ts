@@ -26,6 +26,8 @@ import {AppComponent} from "./app.component";
 import {KSButtonGroups} from "./containers/buttons/button-groups.component";
 import {KSButtons} from "./containers/buttons/buttons.component";
 import {KSCards} from "./containers/cards/cards.component";
+import {KSCodeSnippetComponent} from "./containers/code/code-snippet.component";
+import {KSCode} from "./containers/code/code.component";
 import {KSColors} from "./containers/colors/colors.component";
 import {KSDatagrid} from "./containers/data/datagrid.component";
 import {FakeLoader} from "./containers/data/fake-loader";
@@ -64,20 +66,20 @@ import {KSWizards} from "./containers/wizard/wizards.component";
 
 @NgModule({
     declarations: [
-        AppComponent,   KSAlerts,         KSBadges,        KSButtons,       KSButtonGroups,  KSColors,
-        KSDatagrid,     KSStackView,      KSTreeView,      KSLabels,        KSCheckboxes,    KSForms,
-        KSInputs,       KSLists,          KSRadios,        KSSelects,       KSModals,        KSTabs,
-        KSVerticalNav,  KSDropdowns,      KSSignposts,     KSTooltips,      KSTypography,    KSWizards,
-        KSCards,        FakeLoader,       KSLogin,         KSWikipediaDemo, KSAbbeyRoadDemo, KSBeatlesDemo,
-        KSRevolverDemo, KSRubberSoulDemo, KSDayAndAgeDemo, KSSamsTownDemo,  KSKillersDemo,   KSHotFussDemo,
-        KSProgressBars, KSSpinners,       KSTables,        KSTooltips
+        AppComponent,   KSAlerts,         KSBadges,        KSButtons,
+        KSButtonGroups, KSColors,         KSCode,          KSCodeSnippetComponent,
+        KSDatagrid,     KSStackView,      KSTreeView,      KSLabels,
+        KSCheckboxes,   KSForms,          KSInputs,        KSLists,
+        KSRadios,       KSSelects,        KSModals,        KSTabs,
+        KSVerticalNav,  KSDropdowns,      KSSignposts,     KSTooltips,
+        KSTypography,   KSWizards,        KSCards,         FakeLoader,
+        KSLogin,        KSWikipediaDemo,  KSAbbeyRoadDemo, KSBeatlesDemo,
+        KSRevolverDemo, KSRubberSoulDemo, KSDayAndAgeDemo, KSSamsTownDemo,
+        KSKillersDemo,  KSHotFussDemo,    KSProgressBars,  KSSpinners,
+        KSTables,       KSTooltips
     ],
-    imports: [
-        BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, ClarityModule,
-        ClrLayoutModule,  // Includes MainContainer, Navigation, & Tabs
-        ClrIconModule, ClrButtonGroupModule, ClrDataModule, ClrFormsModule, ClrAlertModule, ClrPopoverModule,
-        ClrModalModule, ClrWizardModule, AppRoutingModule
-    ],
+    imports:
+        [BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, ClarityModule, AppRoutingModule],
     providers: [],
     bootstrap: [AppComponent]
 })

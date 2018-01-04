@@ -5,10 +5,51 @@
  */
 
 import {Component} from "@angular/core";
+import {
+    ClrHeader,
+    ClrNavLevel,
+    ClrVerticalNav,
+    ClrVerticalNavGroup,
+    ClrVerticalNavGroupChildren,
+    ClrVerticalNavIcon,
+    ClrVerticalNavLink,
+    Header,
+    MainContainerWillyWonka,
+    NavDetectionOompaLoompa,
+    NavLevelDirective,
+    VerticalNavGroup,
+    VerticalNavGroupChildren,
+    VerticalNavIcon,
+    VerticalNavLink
+} from "@clr/angular";
+import {VerticalNav} from "@clr/angular/index";
+
 import {VerticalNavCases} from "./vertical-nav-cases";
 
 @Component({templateUrl: "./vertical-nav.component.html", providers: [VerticalNavCases]})
 export class KSVerticalNav {
+    /**
+     * @description
+     * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
+     * This is a catchall for navigation entities.
+     */
+    private aHeader: Header;
+    private aClrHeader: ClrHeader;
+    private aNavLevelDirective: NavLevelDirective;
+    private aClrNavLevel: ClrNavLevel;
+    private aNavDetectionOompaLoompa: NavDetectionOompaLoompa;
+    private aMainContainerWillyWonka: MainContainerWillyWonka;
+    private aVerticalNav: VerticalNav;
+    private aClrVerticalNav: ClrVerticalNav;
+    private aVerticalNavGroup: VerticalNavGroup;
+    private aClrVerticalNavGroup: ClrVerticalNavGroup;
+    private aVerticalNavGroupChildren: VerticalNavGroupChildren;
+    private aClrVerticalNavGroupChildren: ClrVerticalNavGroupChildren;
+    private aVerticalNavIcon: VerticalNavIcon;
+    private aClrVerticalNavIcon: ClrVerticalNavIcon;
+    private aVerticalNavLink: VerticalNavLink;
+    private aClrVerticalNavLink: ClrVerticalNavLink;
+
     option: string = "link";
 
     case: any;

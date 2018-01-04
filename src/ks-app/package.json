@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --preserve-symlinks --host 0.0.0.0",
-    "build": "ng build",
+    "build": "ng build --prod --preserve-symlinks",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -27,6 +27,7 @@
     "@clr/ui": "file:../../dist/clr-ui",
     "core-js": "^2.4.1",
     "mutationobserver-shim": "^0.3.2",
+    "prismjs": "^1.6.0",
     "rxjs": "^5.4.3",
     "ts-helpers": "^1.1.1",
     "web-animations-js": "^2.3.1",

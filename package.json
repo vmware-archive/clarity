@@ -25,7 +25,7 @@
         "tslint:fix": "node_modules/.bin/tslint -c tslint.json --fix \"src/**/*.ts\" -e \"**/node_modules/**\"",
         "webpack": "webpack --progress --colors",
         "preks:publish": "npm run build",
-        "ks:publish": "cd src/ks-app; ng build --preserve-symlinks --prod; cd ../../dist/ks-app; cat index.html > 404.html; surge; cd ../../"
+        "ks:publish": "cd src/ks-app; npm run build; cd ../../dist/ks-app; cat index.html > 404.html; surge; cd ../../"
     },
     "dependencies": {
         "@angular/animations": "^5.0.0",

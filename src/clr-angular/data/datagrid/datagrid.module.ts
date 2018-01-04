@@ -31,6 +31,7 @@ import {ClrDatagridFilter} from "./datagrid-filter";
 import {ClrDatagridFooter} from "./datagrid-footer";
 import {ClrDatagridHideableColumn} from "./datagrid-hideable-column";
 import {ClrDatagridItems} from "./datagrid-items";
+import {ClrDatagridItemsTrackBy} from "./datagrid-items-trackby";
 import {ClrDatagridPagination} from "./datagrid-pagination";
 import {ClrDatagridPlaceholder} from "./datagrid-placeholder";
 import {ClrDatagridRow} from "./datagrid-row";
@@ -52,8 +53,9 @@ import {DatagridTableRenderer} from "./render/table-renderer";
 export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
     // Core
     ClrDatagrid, ClrDatagridActionBar, ClrDatagridActionOverflow, ClrDatagridColumn, ClrDatagridColumnToggle,
-    ClrDatagridHideableColumn, ClrDatagridFilter, ClrDatagridItems, ClrDatagridRow, ClrDatagridRowDetail,
-    DatagridDetailRegisterer, ClrDatagridCell, ClrDatagridFooter, ClrDatagridPagination, ClrDatagridPlaceholder,
+    ClrDatagridHideableColumn, ClrDatagridFilter, ClrDatagridItems, ClrDatagridItemsTrackBy, ClrDatagridRow,
+    ClrDatagridRowDetail, DatagridDetailRegisterer, ClrDatagridCell, ClrDatagridFooter, ClrDatagridPagination,
+    ClrDatagridPlaceholder,
 
     // Renderers
     DatagridMainRenderer, DatagridTableRenderer, DatagridHeadRenderer, DatagridHeaderRenderer, DatagridBodyRenderer,

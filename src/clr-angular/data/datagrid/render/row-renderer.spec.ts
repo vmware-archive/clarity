@@ -58,8 +58,6 @@ export default function(): void {
             context.testComponent.show = true;
             context.detectChanges();
             expect(cellWidthSpy.calls.allArgs()).toEqual([[false, 42], [true, 24]]);
-            console.log(organizer.widths);
-            console.log("cellWidthSpy: ", cellWidthSpy);
         });
 
         it("sets the size of cells when they change dynamically", function() {

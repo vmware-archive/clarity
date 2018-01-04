@@ -29,43 +29,17 @@
     have access to the full objects, we could perform any operation we want on them.
 </p>
 
+<h3>Client side, no trackBy</h3>
+
 <div class="card card-block">
     <p class="card-text username-list">
         Selected users:
-        <em *ngIf="selected.length == 0">No user selected.</em>
-        <span class="username" *ngFor="let user of selected">{{user.name}}</span>
-    </p>
-
-    <p class="card-text username-list">
-        Users to be added to group:
-        <em *ngIf="toAdd.length == 0">No user selected.</em>
-        <span class="username" *ngFor="let user of toAdd">{{user.name}}</span>
-    </p>
-
-    <p class="card-text username-list">
-        Users to be deleted:
-        <em *ngIf="toDelete.length == 0">No user selected.</em>
-        <span class="username" *ngFor="let user of toDelete">{{user.name}}</span>
-    </p>
-
-    <p class="card-text username-list">
-        User to be edited:
-        <em *ngIf="!toEdit">No user selected.</em>
-        <span class="username" *ngIf="toEdit">{{toEdit.name}}</span>
+        <em *ngIf="clientNoTrackBySelected.length == 0">No user selected.</em>
+        <span class="username" *ngFor="let user of clientNoTrackBySelected">{{user.name}}</span>
     </p>
 </div>
 
-<clr-datagrid [(clrDgSelected)]="selected">
-    <clr-dg-action-bar>
-        <div class="btn-group btn-sm" role="group" aria-label="Available Actions" *ngIf="selected.length > 0">
-            <button type="button" class="btn btn-secondary" (click)="onAdd()"><clr-icon shape="plus"></clr-icon> Add
-                to
-                group</button>
-            <button type="button" class="btn btn-secondary" (click)="onDelete()" ><clr-icon shape="close"></clr-icon> Delete</button>
-            <button type="button" class="btn btn-secondary" (click)="onEdit()" *ngIf="selected.length == 1"><clr-icon shape="pencil"></clr-icon> Edit</button>
-        </div>
-    </clr-dg-action-bar>
-
+<clr-datagrid [(clrDgSelected)]="clientNoTrackBySelected">
     <clr-dg-column>User ID</clr-dg-column>
     <clr-dg-column>Name</clr-dg-column>
     <clr-dg-column>Creation date</clr-dg-column>
@@ -75,12 +49,7 @@
         </ng-container>
     </clr-dg-column>
 
-    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
-        <clr-dg-action-overflow>
-            <button class="action-item" (click)="onEdit(user)">Edit</button>
-            <button class="action-item" (click)="onDelete(user)">Delete</button>
-        </clr-dg-action-overflow>
-
+    <clr-dg-row *clrDgItems="let user of clientNoTrackByUsers" [clrDgItem]="user">
         <clr-dg-cell>{{user.id}}</clr-dg-cell>
         <clr-dg-cell>{{user.name}}</clr-dg-cell>
         <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
@@ -89,7 +58,118 @@
         </clr-dg-cell>
     </clr-dg-row>
 
-    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+    <clr-dg-footer>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{total}} users
+        <clr-dg-pagination #pagination [clrDgTotalItems]="total"></clr-dg-pagination>
+    </clr-dg-footer>
 </clr-datagrid>
 
-<clr-example [clrCode]="example" clrLanguage="html"></clr-example>
+<h3>Client side, trackBy index</h3>
+
+<div class="card card-block">
+    <p class="card-text username-list">
+        Selected users:
+        <em *ngIf="clientTrackByIndexSelected.length == 0">No user selected.</em>
+        <span class="username" *ngFor="let user of clientTrackByIndexSelected">{{user.name}}</span>
+    </p>
+</div>
+
+<clr-datagrid [(clrDgSelected)]="clientTrackByIndexSelected">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn>
+            Favorite color
+        </ng-container>
+    </clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of clientTrackByIndexUsers; trackBy: trackByIndex" [clrDgItem]="user">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{total}} users
+        <clr-dg-pagination #pagination [clrDgTotalItems]="total"></clr-dg-pagination>
+    </clr-dg-footer>
+</clr-datagrid>
+
+<h3>Client side, trackBy item</h3>
+
+<div class="card card-block">
+    <p class="card-text username-list">
+        Selected users:
+        <em *ngIf="clientTrackByIdSelected.length == 0">No user selected.</em>
+        <span class="username" *ngFor="let user of clientTrackByIdSelected">{{user.name}}</span>
+    </p>
+</div>
+
+<clr-datagrid [(clrDgSelected)]="clientTrackByIdSelected">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn>
+            Favorite color
+        </ng-container>
+    </clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of clientTrackByIdUsers; trackBy: trackById" [clrDgItem]="user">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{total}} users
+        <clr-dg-pagination #pagination [clrDgTotalItems]="total"></clr-dg-pagination>
+    </clr-dg-footer>
+</clr-datagrid>
+
+<h3>Server-driven, trackBy item</h3>
+
+<div class="card card-block">
+    <p class="card-text username-list">
+        Selected users:
+        <em *ngIf="serverTrackByIdSelected.length == 0">No user selected.</em>
+        <span class="username" *ngFor="let user of serverTrackByIdSelected">{{user.name}}</span>
+    </p>
+</div>
+
+<clr-datagrid [(clrDgSelected)]="serverTrackByIdSelected" (clrDgRefresh)="refresh($event)" [clrDgLoading]="loading">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn>
+            Favorite color
+        </ng-container>
+    </clr-dg-column>
+
+    <clr-dg-row *ngFor="let user of serverTrackByIdUsers; trackBy: trackById" [clrDgItem]="user">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{total}} users
+        <clr-dg-pagination #pagination [clrDgTotalItems]="total" [clrDgPageSize]="10"></clr-dg-pagination>
+    </clr-dg-footer>
+</clr-datagrid>
+    

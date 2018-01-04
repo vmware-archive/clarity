@@ -22,41 +22,59 @@ export enum SelectionType {
 @Injectable()
 export class Selection {
     public id: string;
+    private selected: any[] = [];  // Refs of selected items
+    private selectedSingle: any;   // Ref of single selected item
 
     constructor(private _items: Items, private _filters: FiltersProvider) {
         this.id = "clr-dg-selection" + (nbSelection++);
 
-        this._filtersSub = this._filters.change.subscribe(() => {
+        this.subscriptions.push(this._filters.change.subscribe(() => {
             if (!this._selectable) {
                 return;
             }
             this.clearSelection();
-        });
+        }));
 
-        this._itemsSub = this._items.allChanges.subscribe((updatedItems) => {
+        this.subscriptions.push(this._items.allChanges.subscribe(updatedItems => {
             if (!this._selectable) {
                 return;
             }
-            let leftOver: any[];
-            if (this._items.trackBy) {
-                const trackBy: TrackByFunction<any> = this._items.trackBy;
-                const updatedTracked: any[] = updatedItems.map((item, index) => trackBy(index, item));
-                leftOver = this.current.filter((selected, index) => {
-                    return updatedTracked.indexOf(trackBy(index, selected)) > -1;
-                });
-            } else {
+            let leftOver: any[] = this.current.slice();
+            let newSingle: any;
+
+            // Calculate the references for each item
+            const trackBy: TrackByFunction<any> = this._items.trackBy;
+            const matched = [];
+            updatedItems.forEach((item, index) => {
+                const ref = trackBy(index, item);
+                // Look in current selected refs array if item is selected, and update actual value
+                if (this.selectedSingle === ref) {
+                    newSingle = item;
+                } else if (this.selected.length) {
+                    const selectedIndex = this.selected.indexOf(ref);
+                    if (selectedIndex > -1) {
+                        matched.push(selectedIndex);
+                        leftOver[selectedIndex] = item;
+                    }
+                }
+            });
+
+            // Filter out any unmatched items if we're using smart datagrids where we expect all items to be present
+            if (this._items.smart) {
                 leftOver = this.current.filter(selected => updatedItems.indexOf(selected) > -1);
             }
-            if (this.current.length !== leftOver.length) {
-                // TODO: Discussed this with Eudes and this is fine for now.
-                // But we need to figure out a different pattern for the
-                // child triggering the parent change detection problem.
-                // Using setTimeout for now to fix this.
-                setTimeout(() => {
-                    this.current = leftOver;
-                }, 0);
-            }
-        });
+
+            // TODO: Discussed this with Eudes and this is fine for now.
+            // But we need to figure out a different pattern for the
+            // child triggering the parent change detection problem.
+            // Using setTimeout for now to fix this.
+            setTimeout(() => {
+                if (typeof newSingle !== "undefined") {
+                    this.currentSingle = newSingle;
+                }
+                this.current = leftOver;
+            }, 0);
+        }));
     }
 
     public clearSelection(): void {
@@ -93,16 +111,14 @@ export class Selection {
     /**
      * Subscriptions to the other providers changes.
      */
-    private _itemsSub: Subscription;
-    private _filtersSub: Subscription;
+    private subscriptions: Subscription[] = [];
 
 
     /**
      * Cleans up our subscriptions to other providers
      */
     public destroy() {
-        this._itemsSub.unsubscribe();
-        this._filtersSub.unsubscribe();
+        this.subscriptions.forEach(sub => sub.unsubscribe());
     }
 
     /**
@@ -117,8 +133,13 @@ export class Selection {
             return;
         }
         this._currentSingle = value;
+        if (this._items.trackBy && value) {
+            const lookup = this._items.displayed.findIndex(maybe => maybe === value);
+            this.selectedSingle = this._items.trackBy(lookup, value);
+        }
         this.emitChange();
         // Ignore items changes in the same change detection cycle.
+        // @TODO This can likely be removed!
         this.debounce = true;
         setTimeout(() => this.debounce = false);
     }
@@ -134,6 +155,7 @@ export class Selection {
         this._current = value;
         this.emitChange();
         // Ignore items changes in the same change detection cycle.
+        // @TODO This can likely be removed!
         this.debounce = true;
         setTimeout(() => this.debounce = false);
     }
@@ -178,11 +200,21 @@ export class Selection {
                 break;
             case SelectionType.Multi:
                 const index = this.current.indexOf(item);
+                const trackBy = this._items.trackBy;
                 if (index >= 0 && !selected) {
                     this.current.splice(index, 1);
+                    if (trackBy) {
+                        // Keep selected refs array in sync
+                        this.selected.splice(index, 1);
+                    }
                     this.emitChange();
                 } else if (index < 0 && selected) {
                     this.current.push(item);
+                    if (trackBy) {
+                        // Push selected ref onto array
+                        const lookup = this._items.displayed.findIndex(maybe => maybe === item);
+                        this.selected.push(this._items.trackBy(0, item));
+                    }
                     this.emitChange();
                 }
                 break;

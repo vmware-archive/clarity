@@ -82,10 +82,11 @@ export class Items {
     public set all(items: any[]) {
         if (this.smart) {
             this._all = items;
-            this.emitAllChanges();
+            this.emitAllChanges(items);
             this._filterItems();
         } else {
             this._displayed = items;
+            this.emitAllChanges(items);
             this.emitChange();
         }
     }
@@ -126,10 +127,8 @@ export class Items {
     }
 
     private _allChanges = new Subject<any[]>();
-    private emitAllChanges(): void {
-        if (this.smart) {
-            this._allChanges.next(this._all);
-        }
+    private emitAllChanges(items: any[]): void {
+        this._allChanges.next(items);
     }
 
     public get allChanges(): Observable<any[]> {

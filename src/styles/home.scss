@@ -101,17 +101,9 @@ body.layout-home {
         position: absolute;
         bottom: 0;
         left: 612px;
-        background-image: url('../assets/images/clarity_logo_winter.svg');
+        background-image: url('../assets/images/clarity_logo.svg');
         background-size: cover;
         background-position: center center;
-    }
-
-    .svg-winter {
-        height: 700px;
-        width: 740px;
-        position: absolute;
-        bottom: -55px;
-        left: 564px;
     }
 }
 
@@ -315,10 +307,6 @@ a.home-contact_link {
 @media (max-width: 1364px) {
     .home-hero {
         width: 100%;
-        overflow-x: hidden;
-        &.winter {
-            overflow-x: unset;
-        }
     }
 
 }
@@ -345,21 +333,12 @@ a.home-contact_link {
             padding-left: $bl-1_0;
         }
     }
-    .svg-winter { //Remove winter class after January
-        left: 455px;
-    }
 }
 
 @media (max-width: 1092px) {
     .home-hero {
         .bg-img {
             left: 504px;
-        }
-        .svg-winter{
-            height: 665px;
-            width: 580px;
-            bottom: -110px;
-            left: 397px;
         }
     }
 }
@@ -549,11 +528,6 @@ a.home-contact_link {
     a.home-contact_link {
         margin-top: $bl-1_0;
     }
-
-    .svg-winter{
-        display: none;
-    }
-
 }
 
 @media (max-width: 545px) {

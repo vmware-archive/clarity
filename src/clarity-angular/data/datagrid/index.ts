@@ -65,8 +65,8 @@ export * from "./built-in/comparators/datagrid-property-comparator";
 export const DATAGRID_DIRECTIVES: Type<any>[] = [
     // Core
     Datagrid, DatagridActionBar, DatagridActionOverflow, DatagridColumn, DatagridColumnToggle,
-    DatagridHideableColumnDirective, DatagridFilter, DatagridItems, DatagridItemsTrackBy, DatagridRow, DatagridRowDetail,
-    DatagridDetailRegisterer, DatagridCell, DatagridFooter, DatagridPagination, DatagridPlaceholder,
+    DatagridHideableColumnDirective, DatagridFilter, DatagridItems, DatagridItemsTrackBy, DatagridRow,
+    DatagridRowDetail, DatagridDetailRegisterer, DatagridCell, DatagridFooter, DatagridPagination, DatagridPlaceholder,
 
     // Renderers
     DatagridMainRenderer, DatagridTableRenderer, DatagridHeadRenderer, DatagridHeaderRenderer, DatagridBodyRenderer,

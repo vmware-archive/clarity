@@ -41,6 +41,13 @@
         }
     }
 
+    //Spinners inside of small buttons
+    .btn-sm {
+        .spinner {
+            @include min-height(0.541667rem);
+        }
+    }
+
     @keyframes spin {
         0% {
             transform: rotate(0deg);

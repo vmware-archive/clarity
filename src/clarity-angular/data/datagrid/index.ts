@@ -21,6 +21,7 @@ import {DatagridFilter} from "./datagrid-filter";
 import {DatagridFooter} from "./datagrid-footer";
 import {DatagridHideableColumnDirective} from "./datagrid-hidable-column.directive";
 import {DatagridItems} from "./datagrid-items";
+import {DatagridItemsTrackBy} from "./datagrid-items-trackby";
 import {DatagridPagination} from "./datagrid-pagination";
 import {DatagridPlaceholder} from "./datagrid-placeholder";
 import {DatagridRow} from "./datagrid-row";
@@ -43,6 +44,7 @@ export * from "./datagrid-column-toggle";
 export * from "./datagrid-hidable-column.directive";
 export * from "./datagrid-filter";
 export * from "./datagrid-items";
+export * from "./datagrid-items-trackby";
 export * from "./datagrid-row";
 export * from "./datagrid-row-detail";
 export * from "./datagrid-cell";
@@ -63,7 +65,7 @@ export * from "./built-in/comparators/datagrid-property-comparator";
 export const DATAGRID_DIRECTIVES: Type<any>[] = [
     // Core
     Datagrid, DatagridActionBar, DatagridActionOverflow, DatagridColumn, DatagridColumnToggle,
-    DatagridHideableColumnDirective, DatagridFilter, DatagridItems, DatagridRow, DatagridRowDetail,
+    DatagridHideableColumnDirective, DatagridFilter, DatagridItems, DatagridItemsTrackBy, DatagridRow, DatagridRowDetail,
     DatagridDetailRegisterer, DatagridCell, DatagridFooter, DatagridPagination, DatagridPlaceholder,
 
     // Renderers

@@ -25,6 +25,7 @@ import DatagridFooterSpecs from "./datagrid-footer.spec";
 import DatagridHideableColumnDirectiveSpec from "./datagrid-hideable-column.directive.spec";
 import DatagridHideableColumnSpec from "./datagrid-hideable-column.spec";
 import DatagridItemsSpecs from "./datagrid-items.spec";
+import DatagridItemsTrackBySpecs from "./datagrid-items-trackby.spec";
 import DatagridPaginationSpecs from "./datagrid-pagination.spec";
 import DatagridPlaceholderSpecs from "./datagrid-placeholder.spec";
 import DatagridRowDetailSpecs from "./datagrid-row-detail.spec";
@@ -66,6 +67,7 @@ describe("Datagrid", function() {
         DatagridFilterSpecs();
         DatagridColumnSpecs();
         DatagridItemsSpecs();
+        DatagridItemsTrackBySpecs();
         DatagridRowSpecs();
         DatagridRowDetailSpecs();
         DatagridPaginationSpecs();

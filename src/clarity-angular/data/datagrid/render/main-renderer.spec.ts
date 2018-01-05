@@ -200,7 +200,6 @@ export default function(): void {
                 let scrollSpyFlag: boolean = false;
                 organizer.scrollbar.subscribe(() => {
                     scrollSpyFlag = true;
-                    console.log("Test");
                 });
 
                 context.detectChanges();

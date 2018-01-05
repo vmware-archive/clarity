@@ -13,6 +13,8 @@ import {Component} from "@angular/core";
 export class ButtonLoadingDemo {
     private validateLoading: boolean = false;
     private submitLoading: boolean = false;
+    private validateSmLoading: boolean = false;
+    private submitSmLoading: boolean = false;
 
     validateDemo() {
         this.validateLoading = true;
@@ -22,5 +24,15 @@ export class ButtonLoadingDemo {
     submitDemo() {
         this.submitLoading = true;
         setTimeout(() => this.submitLoading = false, 1500);
+    }
+
+    validateSmDemo() {
+        this.validateSmLoading = true;
+        setTimeout(() => this.validateSmLoading = false, 1500);
+    }
+
+    submitSmDemo() {
+        this.submitSmLoading = true;
+        setTimeout(() => this.submitSmLoading = false, 1500);
     }
 }

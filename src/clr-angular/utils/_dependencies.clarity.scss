@@ -1,23 +1,21 @@
-/*!
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
- * This software is released under MIT license.
- * The full license information can be found in LICENSE in the root directory of this project.
- */
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
 
 
-/* Bootstrap 4 Dependencies - Begin Part 1 */
+// Bootstrap 4 Dependencies - Begin Part 1
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins";
 @import "node_modules/bootstrap/scss/normalize";
-/* Bootstrap 4 Dependencies - End Part 1 */
+//Bootstrap 4 Dependencies - End Part 1
 
 
-/* Vendor */
+// Vendor
 @import "../utils/vendor/decimalRounding.clarity";
 @import "../utils/vendor/mathPow.clarity";
-/* End Vendor */
+// End Vendor
 
-/* Clarity Internal Dependencies- Begin Part 1 */
+// Clarity Internal Dependencies- Begin Part 1
 @import "../utils/mixins.clarity";
 @import "../utils/helpers.clarity";
 
@@ -33,7 +31,7 @@
 // Component variables
 @import "../utils/variables.clarity"; // depends on helpers.clarity, color.clarity
 
-/* Bootstrap 4 Dependencies - Begin Part 2 */
+// Bootstrap 4 Dependencies - Begin Part 2
 
 @import "node_modules/bootstrap/scss/media";
 @import "node_modules/bootstrap/scss/utilities";

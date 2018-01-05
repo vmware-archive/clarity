@@ -386,5 +386,19 @@
                 }
             }
         }
+
+        &.nav-trigger--bottom {
+            .nav-trigger {
+                order: 2;
+                margin-top: 0;
+            }
+
+            .nav-trigger + .nav-content {
+                //Dims
+                border-bottom: $clr-global-borderwidth solid rgba($gray-darker, 0.2);
+                border-top: none;
+                padding-top: 0;
+            }
+        }
     }
 }

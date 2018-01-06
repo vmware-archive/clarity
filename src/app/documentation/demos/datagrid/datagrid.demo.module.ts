@@ -6,8 +6,9 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {Routes, RouterModule} from "@angular/router";
 
-import {ClarityModule} from "clarity-angular";
+import {ClarityModule} from "@clr/angular";
 
 import {DatagridBasicStructureDemo} from "./basic-structure/basic-structure";
 import {DatagridBatchActionDemo} from "./batch-action/batch-action";
@@ -25,24 +26,162 @@ import {DatagridSortingDemo} from "./sorting/sorting";
 import {DatagridStringFilteringDemo} from "./string-filtering/string-filtering";
 import {DatagridPlaceholderDemo} from "./placeholder/placeholder";
 import {DatagridExpandableRowsDemo} from "./expandable-rows/expandable-rows";
+import {DatagridHideShowColumnsDemo} from "./hide-show-columns/hide-show-columns";
+import {DatagridCompactDemo} from "./compact/compact";
 
 import {ColorFilter} from "./utils/color-filter";
 import {FakeLoader} from "./expandable-rows/fake-loader";
 import {DatagridDemo} from "./datagrid.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
-import {RouterModule} from "@angular/router";
 import {UtilsModule} from "../../../utils/utils.module";
-import {DatagridHideShowColumnsDemo} from "./hide-show-columns/hide-show-columns";
-import { DatagridCompactDemo } from "./compact/compact";
 
+const routes: Routes = [
+    {
+        path: "",
+        component: DatagridDemo,
+        children: [
+            {
+                path: "",
+                redirectTo: "structure",
+                pathMatch: "full"
+            },
+            {
+                path: "structure",
+                component: DatagridBasicStructureDemo,
+                data: {
+                    demoName: "Basic Structure"
+                }
+            },
+            {
+                path: "custom-rendering",
+                component: DatagridCustomRenderingDemo,
+                data: {
+                    demoName: "Custom Cell Rendering"
+                }
+            },
+            {
+                path: "smart-iterator",
+                component: DatagridSmartIteratorDemo,
+                data: {
+                    demoName: "Smart Iterator"
+                }
+            },
+            {
+                path: "binding-properties",
+                component: DatagridBindingPropertiesDemo,
+                data: {
+                    demoName: "Binding Properties"
+                }
+            },
+            {
+                path: "custom-sorting",
+                component: DatagridSortingDemo,
+                data: {
+                    demoName: "Custom Sorting"
+                }
+            },
+            {
+                path: "custom-filtering",
+                component: DatagridFilteringDemo,
+                data: {
+                    demoName: "Custom Filtering"
+                }
+            },
+            {
+                path: "string-filtering",
+                component: DatagridStringFilteringDemo,
+                data: {
+                    demoName: "String Filtering"
+                }
+            },
+            {
+                path: "pagination",
+                component: DatagridPaginationDemo,
+                data: {
+                    demoName: "Pagination"
+                }
+            },
+            {
+                path: "selection",
+                component: DatagridSelectionDemo,
+                data: {
+                    demoName: "Selection"
+                }
+            },
+            {
+                path: "selection-single",
+                component: DatagridSelectionSingleDemo,
+                data: {
+                    demoName: "Single Selection"
+                }
+            },
+            {
+                path: "batch-action",
+                component: DatagridBatchActionDemo,
+                data: {
+                    demoName: "Batch Action"
+                }
+            },
+            {
+                path: "single-action",
+                component: DatagridSingleActionDemo,
+                data: {
+                    demoName: "Single Action"
+                }
+            },
+            {
+                path: "server-driven",
+                component: DatagridServerDrivenDemo,
+                data: {
+                    demoName: "Server Driven"
+                }
+            },
+            {
+                path: "placeholder",
+                component: DatagridPlaceholderDemo,
+                data: {
+                    demoName: "Placeholder"
+                }
+            },
+            {
+                path: "expandable-rows",
+                component: DatagridExpandableRowsDemo,
+                data: {
+                    demoName: "Expandable Rows"
+                }
+            },
+            {
+                path: "compact",
+                component: DatagridCompactDemo,
+                data: {
+                    demoName: "Compact"
+                }
+            },
+            {
+                path: "hide-show",
+                component: DatagridHideShowColumnsDemo,
+                data: {
+                    demoName: "Hide/Show"
+                }
+            },
+            {
+                path: "full",
+                component: DatagridFullDemo,
+                data: {
+                    demoName: "Full Demo"
+                }
+            }
+        ]
+    }
+];
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        ClarityModule.forChild(),
+        ClarityModule,
         DocWrapperModule,
-        RouterModule,
+        RouterModule.forChild(routes),
         UtilsModule
     ],
     declarations: [

@@ -9,7 +9,7 @@ import { AppComponent } from "./app.component";
 @NgModule({
     imports: [
         BrowserModule,
-        ClarityModule.forRoot(),
+        ClarityModule,
         ...
      ],
      declarations: [ AppComponent ],
@@ -60,8 +60,7 @@ const UI_NODE_IMPORTS = `
     selector: "get-started",
     templateUrl: "./get-started.component.html",
     host: {
-        "id": "main-container",
-        "[class.content-container]": "true"
+        "[class.content-area]": "true"
     }
 })
 export class GetStartedComponent {

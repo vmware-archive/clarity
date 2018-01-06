@@ -1,5 +1,8 @@
-fs = require("fs");
-RELEASE_TEMPLATES = require("./src/releases/release-template-stub.json");
+const fs = require("fs");
+const converter = require("xml-js");
+const path = require("path");
+
+const RELEASE_TEMPLATES = require("./src/releases/release-template-stub.json");
 
 const NEWS_TEMPLATE_PATH = "./src/releases/final-template/news-template.html";
 const FINAL_COMPONENT_TEMPLATE_PATH = "./src/releases/final-template/auto-generated-news.component.html";
@@ -17,6 +20,7 @@ generateReleaseTemplateArr();
 generateTemplates(initializeTemplateFile);
 
 initializeRoutesFile();
+generateSitemapNewsUrls();
 
 /* Functions */
 function generateReleaseTemplateArr() {
@@ -98,4 +102,31 @@ function generateRoutes() {
     });
     var final_routes = ROUTES_TEMPLATE.replace("${routes}", routes);
     fs.writeFileSync(FINAL_ROUTES_PATH, final_routes);
+}
+
+function generateSitemapNewsUrls() {
+    const baseUrl = 'https://vmware.github.io/clarity/news/';
+    const sitemapPath = path.join(process.cwd(), "src", "sitemap.xml");
+    const sitemapFile = fs.readFileSync(sitemapPath, {encoding: 'utf8'});
+    const sitemap = converter.xml2js(sitemapFile, {compact: true});
+    
+    // Build an array of routes and paths
+    const urls = sitemap.urlset.url
+        .filter(item => !item.loc._text.startsWith(baseUrl));
+    let releases = Object.values(RELEASE_TEMPLATES)
+        .map(item => item.replace(/src\/releases\/(.*?)\/(.*?)\.html/i, '$2'));
+
+    releases.forEach(release => {
+        urls.push({
+            loc: {
+                _text: baseUrl + release
+            },
+            changefreq: {
+                _text: 'daily'
+            }
+        });
+    });
+    sitemap.urlset.url = urls;
+
+    fs.writeFileSync(sitemapPath, converter.js2xml(sitemap, {compact: true, spaces: 4}), {encoding: 'utf8'});
 }

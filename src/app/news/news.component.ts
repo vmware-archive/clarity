@@ -33,6 +33,7 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
     nbBreakingChanges: number;
     nbBugFixes: number;
     nbNewComponents: number;
+    newPackageFormat = false;
 
     releaseNumber: string;
     releaseDate: string;
@@ -106,6 +107,10 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
         }
     }
 
+    newPackages(a, b) {
+        return compareReleases(this.releaseNumber, "0.11.0");
+    }
+
     setInfo(releaseNo: string, releaseInfo: any): void {
         this.releaseNumber = releaseNo;
         this.releaseDate = releaseInfo.date;
@@ -116,6 +121,7 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
         this.nbBreakingChanges = this.breakingChanges ? this.breakingChanges.length : 0;
         this.nbBugFixes = this.bugFixes ? this.bugFixes.length : 0;
         this.nbNewComponents = this.newComponents ? this.newComponents.length : 0;
+        this.newPackageFormat = (compareReleases("0.11.0", releaseNo) >= 0);
     }
 
     ngAfterViewInit() {

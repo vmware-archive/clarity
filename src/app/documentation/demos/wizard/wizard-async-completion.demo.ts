@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, ViewChild } from "@angular/core";
-import { Wizard, WizardPage } from "clarity-angular";
+import { Wizard, WizardPage } from "@clr/angular";
 
 @Component({
   selector: "clr-wizard-async-completion",

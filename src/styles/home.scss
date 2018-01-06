@@ -1,4 +1,4 @@
-body.layout-home {
+.layout-home {
     background-color: #fafafa;
 
     .main-container {
@@ -312,7 +312,7 @@ a.home-contact_link {
 }
 
 @media (max-width: 1291px) {
-    body.layout-home {
+    .layout-home {
         section,
         section.home-contact {
             padding-left: $bl-0_75;
@@ -344,7 +344,7 @@ a.home-contact_link {
 }
 
 @media (max-width: 991px) {
-    body.layout-home section.home-hero {
+    .layout-home section.home-hero {
         padding-top: $bl-1_0;
         padding-bottom: $bl-3_0;
         height: 660px;
@@ -352,7 +352,7 @@ a.home-contact_link {
 }
 
 @media (max-width: 907px) {
-    body.layout-home {
+    .layout-home {
         section.home-process {
             padding-left: 42px;
             padding-right: 42px;
@@ -380,7 +380,7 @@ a.home-contact_link {
 }
 
 @media (max-width: 768px) {
-    body.layout-home section {
+    .layout-home section {
         &.home-hero {
             padding-top: $bl-1_0;
             height: 492px;
@@ -580,7 +580,7 @@ a.home-contact_link {
 }
 
 @media (max-width: 420px) {
-    body.layout-home {
+    .layout-home {
         section {
             &.home-cards {
                 padding-bottom: $bl-1_0;

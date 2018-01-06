@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from 'clarity-angular';
+import {ClarityModule} from '@clr/angular';
 import {ProgressBarExamplesDemo} from "./progress-bar-examples";
 import {ProgressBarColorsDemo} from "./progress-bar-colors";
 import {ProgressBarAnimationsDemo} from "./progress-bar-animations";
@@ -24,9 +24,9 @@ import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule,
         DocWrapperModule,
-        RouterModule
+        RouterModule.forChild([{path: "", component: ProgressBarsDemo}]),
     ],
     declarations: [
         ProgressBarExamplesDemo,

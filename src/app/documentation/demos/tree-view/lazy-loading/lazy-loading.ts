@@ -5,7 +5,7 @@
  */
 import {Component} from "@angular/core";
 
-import "clarity-icons/shapes/all-shapes";
+import "@clr/icons/shapes/all-shapes";
 
 
 const EXAMPLE_HTML = `

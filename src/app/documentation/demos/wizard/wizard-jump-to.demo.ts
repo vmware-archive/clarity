@@ -5,9 +5,9 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "clarity-angular";
-import { WizardPage } from "clarity-angular";
-import { CodeHighlight } from "clarity-angular";
+import { Wizard } from "@clr/angular";
+import { WizardPage } from "@clr/angular";
+import { CodeHighlight } from "@clr/angular";
 
 @Component({
     moduleId: module.id,

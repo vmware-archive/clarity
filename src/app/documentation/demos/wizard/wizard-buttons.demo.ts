@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ViewChild} from "@angular/core";
-import {CodeHighlight} from "clarity-angular";
+import {CodeHighlight} from "@clr/angular";
 
 @Component({
     selector: "clr-wizard-default-buttons",

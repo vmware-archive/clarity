@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ClarityIcons } from 'clarity-icons'
+
+declare const ClarityIcons: any;
 
 import { COMMON_PATH } from '../../icons.component';
 
@@ -117,7 +118,6 @@ export class IconDetailCardComponent {
             "has-alert is-solid": "-solid-alerted",
             "has-badge is-solid": "-solid-badged"
         };
-
 
         return `${this.commonPath}${this.clrIconSet}/${this.clrIcon}${variant[this.activeVariantClasses]}.svg`;
 

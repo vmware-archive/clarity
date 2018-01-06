@@ -5,9 +5,9 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { Wizard, WizardPage } from "clarity-angular";
+import { Wizard, WizardPage } from "@clr/angular";
 
-import { ÇlrFocusTrapTracker } from "clarity-angular";
+import { ÇlrFocusTrapTracker } from "@clr/angular";
 import { DisableFocusTrap } from "../../utils/disable-focus-trap";
 
 

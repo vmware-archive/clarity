@@ -1,4 +1,4 @@
-<main id="content-area" class="content-area" hash-listener #scrollable>
+<section class="dox-content">
     <h1 id="introduction">Clarity Design System</h1>
     <p>Project Clarity is an open source design system that brings together UX guidelines, an HTML/CSS framework, and
         Angular components. Clarity is for both designers and developers.
@@ -209,27 +209,4 @@
         attributions</a> for third party software included in Clarity.
     </p>
     <div style="visibility: hidden; height: 80vh;">This is a spacer to force sidenav highlighting on scroll</div>
-</main>
-<nav class="sidenav" [clr-nav-level]="2">
-    <section class="sidenav-content">
-        <section class="nav-group" [scrollspy]="scrollable">
-            <label><a class="nav-link active" routerLink="." fragment="introduction">Clarity Design System</a></label>
-            <label class="bump-down"><a class="nav-link" routerLink="." fragment="howToUse">How to Use
-                Clarity</a></label>
-            <ul class="nav-list">
-                <li><a class="nav-link" routerLink="." fragment="designResources">Using Clarity Design Resources</a>
-                </li>
-                <li><a class="nav-link" routerLink="." fragment="seedProjectClarity">Using a Clarity Seed</a></li>
-                <li><a class="nav-link" routerLink="." fragment="seedProjectAngular">Using an Angular Seed</a></li>
-            </ul>
-            <label class="bump-down"><a class="nav-link" routerLink="." fragment="browserSupport">Device &amp; Browser
-                Support</a></label>
-            <label class="bump-down"><a class="nav-link" routerLink="." fragment="contribute_guidelines">Contributing to
-                Clarity</a></label>
-            <label class="bump-down"><a class="nav-link" routerLink="." fragment="reportingBugs">Reporting an Issue</a></label>
-            <label class="bump-down"><a class="nav-link" routerLink="."
-                                        fragment="stackoverflow">StackOverflow</a></label>
-            <label class="bump-down"><a class="nav-link" routerLink="." fragment="attributions">Attributions</a></label>
-        </section>
-    </section>
-</nav>
+</section>

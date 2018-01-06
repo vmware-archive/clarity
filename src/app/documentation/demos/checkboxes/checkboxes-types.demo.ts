@@ -160,9 +160,7 @@ const EXAMPLE_STATIC = `
 `;
 
 
-
-
-
+const status = new Status();
 
 @Component({
     selector: "clr-checkboxes-types-demo",
@@ -171,14 +169,10 @@ const EXAMPLE_STATIC = `
 
 export class CheckboxesTypesDemo {
 
-    list: Server[];
+    list: Server[] = status.fetch();
     indeterminateState: boolean = true;
     nativeIndeterminateState: boolean = true;
     termsAgreement: boolean = true;
-
-    constructor(private status: Status) {
-        this.list = status.fetch();
-    }
 
     onToggleIndeterminateState() {
         this.indeterminateState = !this.indeterminateState;

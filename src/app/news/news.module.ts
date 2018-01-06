@@ -1,6 +1,6 @@
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
-import {ClarityModule} from "clarity-angular";
+import {ClarityModule} from "@clr/angular";
 
 import {UtilsModule} from "../utils/utils.module";
 import {NewsRoutingModule} from "./news-routing.module";
@@ -20,7 +20,7 @@ import {Release} from "./release/release.directive";
     ],
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
+        ClarityModule,
         UtilsModule,
         NewsRoutingModule
     ],

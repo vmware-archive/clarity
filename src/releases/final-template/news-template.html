@@ -48,11 +48,17 @@
                 <img class="icon" src="assets/images/logos/npm.svg" />
                 <div class="description">
                     <p class="title">NPM Packages</p>
-                    <p>
+                    <p *ngIf="!newPackageFormat">
                         <a href="https://www.npmjs.com/package/clarity-ui" target="_blank">clarity-ui</a><br>
                         <a href="https://www.npmjs.com/package/clarity-angular" target="_blank">clarity-angular</a>
                         <br *ngIf="hasIcons">
                         <a *ngIf="hasIcons" href="https://www.npmjs.com/package/clarity-icons" target="_blank">clarity-icons</a>
+                    </p>
+                    <p *ngIf="newPackageFormat">
+                        <a href="https://www.npmjs.com/package/@clr/ui" target="_blank">@clr/ui</a><br>
+                        <a href="https://www.npmjs.com/package/@clr/angular" target="_blank">@clr/angular</a>
+                        <br *ngIf="hasIcons">
+                        <a *ngIf="hasIcons" href="https://www.npmjs.com/package/@clr/icons" target="_blank">@clr/icons</a>
                     </p>
                 </div>
             </div>

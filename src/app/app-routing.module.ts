@@ -6,14 +6,6 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
 const appRoutes: Routes = [
     {
-        path: "get-started",
-        loadChildren: "app/get-started/get-started.module#GetStartedModule",
-    },
-    {
-        path: "documentation",
-        loadChildren: "app/documentation/documentation.module#DocumentationModule",
-    },
-    {
         path: "icons",
         loadChildren: "app/icons/icons.module#IconsModule",
         data: {
@@ -30,16 +22,17 @@ const appRoutes: Routes = [
     },
     {
         path: "",
-        component: HomeComponent,
-        data: {
-            bodyClass: "layout-home"
-        }
+        component: HomeComponent
     },
 
     // just in case people who may have bookmarked the old iconography url, redirect them to the new url.
     {
         path: "documentation/iconography",
         redirectTo: '/icons/clarity-icons'
+    },
+    {
+        path: "get-started",
+        redirectTo: "/documentation/v0.11/get-started"
     },
     {
         path: "**",

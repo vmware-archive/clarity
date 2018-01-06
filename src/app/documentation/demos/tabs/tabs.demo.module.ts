@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from 'clarity-angular';
+import {ClarityModule} from '@clr/angular';
 
 import {TabsStaticDemo} from "./tabs-static";
 import {TabsAngularDemo} from "./tabs-angular";
@@ -19,8 +19,8 @@ import {TabsAngularOverflowDemo} from "./tabs-angular-overflow";
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
-        RouterModule,
+        ClarityModule,
+        RouterModule.forChild([{path: "", component: TabsDemo}]),
         DocWrapperModule,
         UtilsModule
     ],

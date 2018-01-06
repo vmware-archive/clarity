@@ -1,12 +1,14 @@
 import {
-    Component, OnDestroy, ViewChildren, QueryList, ElementRef, AfterViewInit, Renderer2
+    Component, OnDestroy, ViewChildren, QueryList, ElementRef, AfterViewInit, Renderer2, PLATFORM_ID, Inject
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { IconsViewService } from "../icons-view.service";
 import { ActiveFragmentService } from "../utils/active-fragment.service";
 import { IconsInventory } from "./icons-inventory";
 import { FragmentContentComponent } from "../utils/fragment-content.component";
 import { style, state, animate, transition, trigger } from "@angular/animations";
 import { Subscription } from "rxjs/Subscription";
+import 'rxjs/add/operator/debounceTime';
 import jump from "jump.js";
 
 import { COMMON_PATH } from "../icons.component";
@@ -57,7 +59,8 @@ export class IconsSetsComponent implements AfterViewInit, OnDestroy {
     constructor(private _el: ElementRef,
                 private _iconsViewService: IconsViewService,
                 private _renderer: Renderer2,
-                private _activeFragmentService: ActiveFragmentService) {
+                private _activeFragmentService: ActiveFragmentService,
+                @Inject(PLATFORM_ID) private platformId: Object) {
 
         this.subscriptions.push(this._iconsViewService.previewClasses.subscribe((newPreviewClasses) => {
             this.previewClasses = newPreviewClasses;
@@ -89,16 +92,20 @@ export class IconsSetsComponent implements AfterViewInit, OnDestroy {
             }));
 
         // if window size changes, hide the icon detail box.
-        this.windowResizeEvent = this._renderer.listen(window, "resize", () => {
-            this.hideDetail();
-        });
+        if (isPlatformBrowser(this.platformId)) {
+            this.windowResizeEvent = this._renderer.listen(window, "resize", () => {
+                this.hideDetail();
+            });
+        }
 
         this.prepareIconsSets();
     }
 
     ngOnDestroy() {
         this.subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
-        this.windowResizeEvent();
+        if (this.windowResizeEvent) {
+            this.windowResizeEvent();
+        }
     }
 
 
@@ -108,9 +115,11 @@ export class IconsSetsComponent implements AfterViewInit, OnDestroy {
         // @angular/router v4.3.0^ breaks something with the lifecycle.
         // TODO: find a better way to solve this chocolate error than using setTimeout.
 
-        setTimeout(() => {
-            this.initialHeight = this._el.nativeElement.getBoundingClientRect().height;
-        });
+        if (isPlatformBrowser(this.platformId)) {
+            setTimeout(() => {
+                this.initialHeight = this._el.nativeElement.getBoundingClientRect().height;
+            });
+        }
     }
 
 

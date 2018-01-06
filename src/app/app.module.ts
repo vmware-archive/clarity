@@ -1,14 +1,15 @@
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BrowserModule, Title} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
-import {FormsModule} from "@angular/forms";
-import {ClarityModule} from "clarity-angular";
+import {ClarityModule} from "@clr/angular";
+import {BrowserPrebootModule} from "preboot/browser";
 
-import {UtilsModule} from "./utils/utils.module";
 import {AppRoutingModule} from "./app-routing.module";
-import {AppComponent} from "./app.component";
+import {AppComponent, PLATFORM_TOKEN} from "./app.component";
 import {HomeComponent} from "./home/home.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+
+import {DocumentationModule} from "./documentation/documentation.module";
 
 @NgModule({
     declarations: [
@@ -17,17 +18,17 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
         PageNotFoundComponent
     ],
     imports: [
+        BrowserModule.withServerTransition({ appId: "clarity" }),
+        BrowserPrebootModule.replayEvents(),
         BrowserAnimationsModule,
-        BrowserModule,
-        FormsModule,
         ClarityModule,
-        UtilsModule,
+        DocumentationModule,
         AppRoutingModule
     ],
     providers: [
-        Title
+        Title, 
+        { provide: PLATFORM_TOKEN, useValue: "Client" }
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}

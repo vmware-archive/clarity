@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "clarity-angular";
+import {ClarityModule} from "@clr/angular";
 
 import {TreeNodeBasicStructureDemo} from "./basic-tree-node/tree-node-basic";
 import {TreeViewBasicStructureDemo} from "./basic-tree-view/tree-view-basic";
@@ -26,8 +26,8 @@ import {LazyLoadedLocationsComponent} from "./lazy-loading/lazy-loaded-locations
 @NgModule({
     imports: [
         CommonModule,
-        ClarityModule.forChild(),
-        RouterModule,
+        ClarityModule,
+        RouterModule.forChild([{path: "", component: TreeViewDemo}]),
         DocWrapperModule
     ],
     declarations: [

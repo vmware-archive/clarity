@@ -218,6 +218,8 @@
         // TODO fix button types by refactoring the maps that hold attr values for all button types.
         $icon-props: map_get($clr-global-button-properties-map, icon);
         $disabled-icon-color: map_get($icon-props, disabled-color);
+
+        &.disabled,
         &:disabled {
             color: $disabled-icon-color;
         }

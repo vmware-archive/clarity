@@ -1,0 +1,131 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+
+
+@mixin nav-link-colors {
+    &:hover {
+        background: $clr-sidenav-link-hover-color;
+    }
+
+    &.active {
+        background: $clr-global-selection-color;
+        color: $clr-black;
+    }
+}
+
+@include exports('sidenav.clarity') {
+
+    .sidenav {
+        @include clr-getTypePropertiesForDomElement(sidenav_text, (line-height));
+
+        max-width: 13rem;
+        min-width: 9rem;
+        width: $clr-sidenav-width;
+        border-right: $clr-default-borderwidth solid $clr-sidenav-border-color;
+        display: flex;
+        flex-direction: column;
+
+        .sidenav-content {
+            flex: 1 1 auto;
+            overflow-x: hidden;
+            padding-bottom: 1rem;
+
+            //nav link common styles
+            .nav-link {
+                display: inline-block;
+                border-radius: $clr-global-borderradius 0 0 $clr-global-borderradius;
+                color: inherit;
+                cursor: pointer;
+                text-decoration: none;
+                width: 100%;
+            }
+
+            & > .nav-link {
+                @include clr-getTypePropertiesForDomElement(sidenav_sectionHeader, (color, font-size, font-weight, line-height, font-family, letter-spacing));
+                margin: 1rem 0 0 1.25rem;
+                padding-left: 0.5rem;
+
+                @include nav-link-colors();
+            }
+        }
+
+        .nav-group {
+            $clr-sidenav-fontsize: clr-getTypePropertyValueForDomElement(sidenav_text, font-size);
+
+            @include clr-getTypePropertiesForDomElement(sidenav_text, (color, font-size, font-weight, letter-spacing));
+
+            margin-top: 1rem;
+            width: 100%;
+
+            .nav-list,
+            label {
+                padding: 0 0 0 1.75rem;
+            }
+
+            .nav-list {
+                list-style: none;
+                margin-top: 0;
+                overflow: hidden;
+
+                $navlink-padding: 0.166667rem;
+
+                .nav-link {
+                    line-height: 0.666667rem; // need a little extra to handle descenders
+                    padding: $navlink-padding 0 $navlink-padding 0.5rem;
+
+                    @include nav-link-colors();
+                }
+            }
+
+            label {
+                @include clr-getTypePropertiesForDomElement(sidenav_sectionHeader, (color, font-size, font-weight, line-height, font-family, letter-spacing));
+            }
+
+            input[type="checkbox"] {
+                display: none;
+            }
+        }
+
+        .collapsible {
+            $clr-sidenav-caret-xOffset: 0.333333rem;
+            $clr-sidenav-caret-yOffset: 0.291667rem;
+            $clr-sidenav-caret-label-padding: 1.333333rem;
+
+            label {
+                cursor: pointer;
+                display: inline-block;
+                width: 100%;
+                padding: 0 0 0 $clr-sidenav-caret-label-padding;
+
+                &:after {
+                    content: '';
+                    float: left;
+                    height: $clr-dropdown-caret-icon-dimension;
+                    width: $clr-dropdown-caret-icon-dimension;
+                    transform: translateX(-1 * $clr-sidenav-caret-xOffset) translateY($clr-sidenav-caret-yOffset);
+                    background-image: generateCaretIcon();
+                    @include icon-background-styles();
+                    margin: 0;
+                }
+            }
+
+            .nav-list, ul {
+                overflow: hidden;
+            }
+
+            input[type="checkbox"]:checked ~ .nav-list, input[type="checkbox"]:checked ~ ul {
+                height: 0;
+            }
+
+            input[type="checkbox"] ~ .nav-list, input[type="checkbox"] ~ ul {
+                height: auto;
+            }
+
+            input[type="checkbox"]:checked ~ label:after {
+                transform: rotate(-90deg) translateX(-1 * $clr-sidenav-caret-yOffset) translateY(-1 * $clr-sidenav-caret-xOffset);
+            }
+        }
+    }
+}

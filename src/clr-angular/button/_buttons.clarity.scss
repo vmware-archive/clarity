@@ -1,0 +1,392 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin populateButtonProperties($button-type: default, $button-global-map: $clr-global-button-properties-map) {
+    $button-property-map: map-get($button-global-map, $button-type);
+    border-color: map-get($button-property-map, border-color);
+    background-color: map-get($button-property-map, background-color);
+    color: map-get($button-property-map, color);
+
+    //To override the visited state of anchor links styled as buttons
+    &:visited {
+        color: map-get($button-property-map, color);
+    }
+
+    &:hover {
+        background-color: map-get($button-property-map, hover-background-color);
+        color: map-get($button-property-map, hover-color);
+    }
+
+    &:active {
+        box-shadow: 0 map-get($button-property-map, active-box-shadow-width-top) 0 0 map-get($button-property-map, active-box-shadow-color) inset;
+    }
+
+    &.disabled,
+    &:disabled {
+        color: map-get($button-property-map, disabled-color);
+        cursor: not-allowed;
+        background-color: map-get($button-property-map, disabled-background-color);
+        border-color: map-get($button-property-map, disabled-border-color);
+        opacity: 0.4;
+    }
+}
+
+@mixin btn-checked-styles($button-type: default, $type: checkbox ,$button-global-map: $clr-global-button-properties-map) {
+    $button-property-map: map-get($button-global-map, $button-type);
+
+    $background-color: map-get($button-property-map, checked-background-color); // add semantic prop: group-checked-font-color
+    $color: map-get($button-property-map, checked-color);
+
+    input[type="#{$type}"]:checked + label {
+        background-color: $background-color;
+        color: $color;
+    }
+}
+
+@mixin btn-nowrap() {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+@mixin btn-min-max-widths() {
+    min-width: 3rem;
+    max-width: 15rem;
+}
+
+@mixin btn-text-properties() {
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+@mixin btn-default-border-styles() {
+    border-radius: $clr-global-borderradius;
+    border: $clr-default-borderwidth solid;
+}
+
+@mixin btn-appearance() {
+    cursor: pointer;
+    display: inline-block;
+
+    // Overrides a Fix for IOS in BS4 _normalize.scss (~ln 330)
+    // `!important` is to override specificity in this instance
+    // But we wanted to preserve the normalize fix in non-Clarity buttons for iOS
+    -webkit-appearance: none !important;
+}
+
+@mixin generateButton() {
+    @include btn-appearance();
+    @include btn-default-border-styles();
+    @include btn-min-max-widths();
+    @include btn-nowrap();
+    @include btn-text-properties();
+}
+
+@include exports('buttons.clarity') {
+
+    .btn {
+        @include generateButton();
+        @include clr-getStylesFromMap($clr-button-appearance-map, form);
+        @include populateButtonProperties(default);
+    }
+
+    //Clarity Buttons
+    .btn-group > .btn,
+    .btn {
+        clr-icon {
+            transform: translate3d(0rem, -2 * $clr-rem-1px, 0);
+        }
+    }
+
+    //.btn-outline-<state> is the new BS4 naming convention. We are using both for now
+    // TODO: Refactor these classnames when the standard clarity naming convention is set.
+    // This is a breaking change and will need an upgrade path so users know how to easily migrate to the new
+    // version.
+    .btn.btn-secondary,
+    .btn.btn-info,
+    .btn.btn-outline,
+    .btn.btn-primary-outline,
+    .btn.btn-secondary-outline,
+    .btn.btn-outline-primary,
+    .btn.btn-outline-secondary,
+    .btn.btn-info-outline,
+    .btn-secondary .btn,
+    .btn-info .btn,
+    .btn-outline .btn,
+    .btn-primary-outline .btn,
+    .btn-secondary-outline .btn,
+    .btn-outline-primary .btn,
+    .btn-outline-secondary .btn,
+    .btn-info-outline .btn,
+    .btn-outline-info .btn {
+        @include populateButtonProperties(default);
+    }
+
+    .btn.btn-primary,
+    .btn-primary .btn {
+        @include populateButtonProperties(primary);
+    }
+
+    .btn.btn-success,
+    .btn-success .btn {
+        @include populateButtonProperties(success);
+    }
+
+    .btn.btn-danger,
+    .btn.btn-warning,
+    .btn-danger .btn,
+    .btn-warning .btn {
+        @include populateButtonProperties(danger);
+    }
+
+    .btn.btn-outline,
+    .btn.btn-outline .btn,
+    .btn.btn-info-outline,
+    .btn-info-outline .btn,
+    .btn.btn-outline-info,
+    .btn-outline .btn{
+        @include populateButtonProperties(outline-info);
+    }
+
+    .btn.btn-success-outline,
+    .btn.btn-outline-success,
+    .btn-success-outline .btn,
+    .btn-outline-success .btn {
+        @include populateButtonProperties(outline-success);
+    }
+
+    .btn.btn-danger-outline,
+    .btn.btn-outline-danger,
+    .btn.btn-warning-outline,
+    .btn.btn-outline-warning,
+    .btn-danger-outline .btn,
+    .btn-outline-danger .btn,
+    .btn-warning-outline .btn,
+    .btn-outline-warning .btn {
+        @include populateButtonProperties(outline-danger);
+    }
+
+    .btn.btn-link,
+    .btn-link .btn {
+        @include populateButtonProperties(link);
+    }
+
+    .btn.btn-inverse,
+    .btn-inverse .btn {
+        @include populateButtonProperties(inverse);
+    }
+
+    .btn.btn-sm,
+    .btn-sm .btn {
+        @include clr-getStylesFromMap($clr-button-appearance-map, standard);
+    }
+
+    .btn-block {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .btn {
+        margin: $clr-button-vertical-margin $clr-button-horizontal-margin $clr-button-vertical-margin 0;
+
+        &.btn-link {
+            margin: $clr-button-vertical-margin 0;
+        }
+    }
+
+    //Small Icon Button
+    .btn-sm:not(.btn-link) {
+        clr-icon {
+            width: 0.5rem;
+            height: 0.5rem;
+            transform: translate3d(0rem, -1 * $clr-rem-1px, 0);
+        }
+    }
+
+    .btn-icon {
+        min-width: 0;
+
+        // Make the disabled btn-icon color theme-able
+        // TODO fix button types by refactoring the maps that hold attr values for all button types.
+        $icon-props: map_get($clr-global-button-properties-map, icon);
+        $disabled-icon-color: map_get($icon-props, disabled-color);
+
+        &.disabled,
+        &:disabled {
+            color: $disabled-icon-color;
+        }
+    }
+
+    //Overflow
+    .btn-group {
+        &.btn-primary .dropdown-toggle,
+        &.btn-success .dropdown-toggle,
+        &.btn-warning .dropdown-toggle,
+        &.btn-danger .dropdown-toggle{
+            @include populateButtonProperties(primary);
+        }
+
+        &.btn-link .dropdown-toggle {
+            @include populateButtonProperties(link);
+        }
+
+        &.btn-sm .btn-group-overflow > .dropdown-toggle {
+            @include clr-getStylesFromMap($clr-button-appearance-map, standard);
+        }
+    }
+
+    //Checkboxes styled as Buttons
+    //Radio Buttons styled as Buttons
+    .checkbox.btn,
+    .checkbox-inline.btn,
+    .radio.btn,
+    .radio-inline.btn {
+        padding: 0;
+        label {
+            //needed for chrome
+            //refer: http://stackoverflow.com/a/32196680/3538394
+            display: inline-table;
+
+            line-height: inherit;
+            padding: 0 0.5rem;
+        }
+    }
+
+    .checkbox.btn,
+    .checkbox-inline.btn {
+        input[type="checkbox"] + label::before,
+        input[type="checkbox"] + label::after {
+            content: none;
+        }
+    }
+
+    .radio.btn,
+    .radio-inline.btn {
+        input[type="radio"] + label::before,
+        input[type="radio"] + label::after {
+            content: none;
+        }
+    }
+
+    .checkbox.btn,
+    .checkbox-inline.btn {
+        @include btn-checked-styles();
+
+        label {
+            width: 100%;
+        }
+
+        //.btn-outline-<state> is the new BS4 naming convention
+        //TODO: we support both the previous one and the new one but we will deprecate the old ones from the example in 0.5.0
+        &.btn-secondary,
+        &.btn-info,
+        &.btn-outline,
+        &.btn-primary-outline,
+        &.btn-secondary-outline,
+        &.btn-outline-primary,
+        &.btn-outline-secondary,
+        &.btn-info-outline,
+        &.btn-outline-info {
+            @include btn-checked-styles();
+        }
+
+        &.btn-primary {
+            @include btn-checked-styles(primary);
+        }
+
+        &.btn-success {
+            @include btn-checked-styles(success);
+        }
+
+        &.btn-danger,
+        &.btn-warning {
+            @include btn-checked-styles(danger);
+        }
+
+        &.btn-success-outline,
+        &.btn-outline-success {
+            @include btn-checked-styles(outline-success);
+        }
+
+        &.btn-danger-outline,
+        &.btn-outline-danger,
+        &.btn-warning-outline,
+        &.btn-outline-warning {
+            @include btn-checked-styles(outline-danger);
+        }
+
+        &.btn-link {
+            @include btn-checked-styles(link);
+        }
+
+        &.btn-inverse {
+            @include btn-checked-styles(inverse);
+        }
+    }
+
+    .radio.btn,
+    .radio.btn {
+        @include btn-checked-styles(default, radio);
+
+        label {
+            width: 100%;
+        }
+
+        //.btn-outline-<state> is the new BS4 naming convention. We are using both for now
+        // TODO: Refactor these classnames when the standard clarity naming convention is set.
+        // This is a breaking change and will need an upgrade path so users know how to easily migrate to the new
+        // version.
+        &.btn-secondary,
+        &.btn-info,
+        &.btn-outline,
+        &.btn-primary-outline,
+        &.btn-secondary-outline,
+        &.btn-outline-primary,
+        &.btn-outline-secondary,
+        &.btn-info-outline,
+        &.btn-outline-info {
+            @include btn-checked-styles(default, radio);
+        }
+
+        &.btn-primary {
+            @include btn-checked-styles(primary, radio);
+        }
+
+        &.btn-success {
+            @include btn-checked-styles(success, radio);
+        }
+
+        &.btn-danger,
+        &.btn-warning {
+            @include btn-checked-styles(danger, radio);
+        }
+
+        &.btn-success-outline,
+        &.btn-outline-success {
+            @include btn-checked-styles(outline-success, radio);
+        }
+
+        &.btn-danger-outline,
+        &.btn-outline-danger,
+        &.btn-warning-outline,
+        &.btn-outline-warning {
+            @include btn-checked-styles(outline-danger, radio);
+        }
+
+        &.btn-link {
+            @include btn-checked-styles(link, radio);
+        }
+
+        &.btn-inverse {
+            @include btn-checked-styles(inverse, radio);
+        }
+    }
+}

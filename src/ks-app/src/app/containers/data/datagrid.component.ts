@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import {Component} from "@angular/core";
-import {SortOrder} from "clarity-angular";
+import {SortOrder} from "@clr/angular";
 
 import {PokemonComparator} from "./pokemon-comparator";
 import {DatagridKitchenSinkData} from "./pokemon-data";
@@ -22,6 +22,7 @@ export class KSDatagrid {
     pokemonComparator = new PokemonComparator();
     pokemonFilter = new PokemonFilter();
     replace: boolean = false;
+    isCompact: boolean = false;
     selected: User[] = [];
     showDate = true;
     showId = true;

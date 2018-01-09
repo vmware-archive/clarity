@@ -1,0 +1,40 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+/**
+ * TODO: figure out if we want to include animate.css or if we prefer sticking to a few,
+ * controlled animations that we write ourselves.
+ *
+ * At the moment, we rely on the fact that each ".foo" animation has the hidden styles by default,
+ * and ".foo.in" has the displayed styles. This will still be feasible by simply wrapping
+ * animate.css, if we want.
+ */
+
+$clr-animation-duration: 0.2s;
+$clr-animation-easing: ease-in-out;
+
+@include exports('animations.clarity') {
+    .fade {
+        opacity: 0;
+        transition: opacity $clr-animation-duration $clr-animation-easing;
+        will-change: opacity;
+
+        &.in {
+            opacity: 1;
+        }
+    }
+
+    .fadeDown {
+        opacity: 0;
+        transform: translate(0, -25%);
+        transition: opacity $clr-animation-duration $clr-animation-easing,
+        transform $clr-animation-duration $clr-animation-easing;
+        will-change: opacity, transform;
+
+        &.in {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+    }
+}

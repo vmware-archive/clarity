@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,7 +7,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 
-import {ClarityModule} from "../../clarity-angular/clarity.module";
+import {ClarityModule} from "../../clr-angular/clr-angular.module";
 
 import {VerticalNavAllCases} from "./all-cases/vertical-all-cases.demo";
 import {VerticalNavBasicDemo} from "./basic/vertical-nav-basic";

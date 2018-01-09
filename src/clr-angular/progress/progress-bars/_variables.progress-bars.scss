@@ -1,0 +1,10 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Usage: ../progress/progress-bars/_progress-bars.clarity.scss
+$clr-progress-defaultBarColor: $clr-action-blue;
+$clr-progress-success-color: $clr-green;
+$clr-progress-danger-color: $clr-red;
+$clr-progress-warning-color: $clr-progress-danger-color;
+$clr-progress-bgColor: $clr-light-gray;

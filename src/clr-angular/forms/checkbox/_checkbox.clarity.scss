@@ -1,0 +1,90 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('checkbox.clarity') {
+    .checkbox {
+        display: block;
+    }
+
+    .checkbox-inline {
+        display: inline-block;
+    }
+
+    .checkbox,
+    .checkbox-inline {
+        position: relative;
+
+        //Hide the default checkbox behind the pseudo elements
+        //Opacity is set to 0 so that the input remains accessible
+        input[type="checkbox"] {
+            @include checkbox-radio-input-styles($clr-checkbox-radio-height, $clr-custom-checkbox-radio-top, 0);
+        }
+
+        label {
+            @include checkbox-radio-label-styles($clr-checkbox-radio-label-height, $clr-checkbox-radio-padding-left);
+        }
+
+        //Checkbox base
+        input[type="checkbox"] + label::before {
+            @include checkbox-radio-shared-inactive($clr-checkbox-radio-height, $clr-custom-checkbox-radio-top, 0, $clr-form-field-border-color);
+            border-radius: $clr-global-borderradius;
+        }
+
+        input[type="checkbox"]:focus + label::before {
+            @include include-outline-style-form-fields();
+        }
+
+        //Checkmark
+        input[type="checkbox"] + label::after {
+
+            position: absolute;
+            content: '';
+            display: none;
+            height: $checkmark-half-size + $clr-rem-1px;
+            width: $checkmark-full-size;
+            border-left: $checkmark-border-style;
+            border-bottom: $checkmark-border-style;
+            top: (1rem - $clr-checkbox-radio-height) / 2;
+            left: $checkmark-half-size;
+            transform: translate(0, $checkmark-half-size) rotate(-45deg);
+            border-color: $clr-checkbox-checkmark-color;
+        }
+
+        input[type="checkbox"]:checked + label::before {
+            background: $clr-form-field-background-color;
+            border: none;
+        }
+
+        input[type="checkbox"]:checked + label::after {
+            display: inline-block;
+        }
+
+        input[type="checkbox"]:indeterminate + label::before {
+            border: $clr-default-borderwidth solid $clr-indeterminate-checkbox-border-color;
+        }
+        input[type="checkbox"]:indeterminate + label::after {
+            border-left: none;
+            border-bottom-color: $clr-indeterminate-checkbox-border-color;
+            display: inline-block;
+            transform: translate(0, $checkmark-half-size);
+        }
+
+        &.disabled {
+            label {
+                @include disabled-form-fields();
+                color: $clr-checkbox-disabled-font-color;
+            }
+
+            input[type="checkbox"]:checked + label::before {
+                background-color: $clr-checkbox-disabled-background-color;
+            }
+
+            input[type="checkbox"]:checked + label::after {
+                $disabled-border-style: ($clr-checkbox-radio-height / 8) solid $clr-checkbox-disabled-checkmark-color;
+                border-left: $disabled-border-style;
+                border-bottom: $disabled-border-style;
+            }
+        }
+    }
+}

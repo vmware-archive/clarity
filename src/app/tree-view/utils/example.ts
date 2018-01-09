@@ -1,12 +1,11 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {AfterViewInit, Component, Input, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../../clarity-angular";
-
+import {ClrCodeHighlight} from "../../../clr-angular/code/syntax-highlight/syntax-highlight";
 
 @Component({
     selector: "clr-example",
@@ -22,7 +21,7 @@ import {CodeHighlight} from "../../../clarity-angular";
     `]
 })
 export class Example implements AfterViewInit {
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
     @Input("clrCode") public code: string;
     @Input("clrLanguage") public language: string;

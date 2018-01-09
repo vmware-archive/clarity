@@ -20,8 +20,8 @@ Here are the typical steps in a contributor's workflow:
 - Setup your local environment to run and build Clarity. See our [build documentation](BUILD.md).
 - Make commits of logical units.
 - Make sure `npm test` passes for each of them.
-- Make sure `npm clang` passes for each of them. If not, you can run a gulp task (clang:format) to format your code.
-- Make sure `npm tslint` passes for each of them. If not, you can run a gulp task (tslint:fix) to try to auto-fix some of them.
+- Make sure `npm run clang:check` passes for each of them. If not, you can run `npm run clang:format` to format your code.
+- Make sure `npm run tslint:check` passes for each of them. If not, you can run `npm run tslint:fix` to try to auto-fix some of them.
 For certain lint failures you will have to fix them manually.
 - Make sure your commit messages are in the proper format (see below).
 - Push your changes to a topic branch in your fork of the repository.
@@ -120,6 +120,8 @@ These documents provide guidance creating a well-crafted commit message:
 #### Contributing to Documentation
 
 The [Clarity documentation website](https://vmware.github.io/clarity/documentation) is also housed in this repository under the `new-website` branch.  You can contribute to the documentation by submitting pull requests against that branch.
+
+The documentation website is written in Angular using angular-cli.  You can serve the documentation by [installing](https://github.com/angular/angular-cli#installation) angular-cli, checking out the `new-website` branch, and running `npm start`.   
 
 ## Reporting Bugs and Creating Issues
 

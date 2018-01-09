@@ -15,10 +15,6 @@
       "es2016",
       "dom"
     ],
-    "paths": {
-//      "clarity-angular": [
-//        "../../dist/npm/clarity-angular"
-//      ]
-    }
+    "paths": {}
   }
 }

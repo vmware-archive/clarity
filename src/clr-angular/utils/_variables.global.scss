@@ -1,0 +1,80 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// App border radus
+$clr-default-borderradius: 0.125rem !default; // deprecated and will be removed.
+$clr-global-borderradius: $clr-default-borderradius !default;
+// App border width
+$clr-default-borderwidth: 1px !default; // deprecated and will be removed.
+$clr-global-borderwidth: $clr-default-borderwidth !default;
+
+$clr-baseline: 24px !default;
+$clr-font-base-size: 14 !default; // Moved from original needs a better name
+$clr-rem-denominator: $clr-font-base-size !default; // Moved from original location needs better name
+//BaselineRem Variables
+// All baselineRem_* variables are deprecated and should not be used.
+// Use regular rem values instead.
+$clr_baselineRem_0_1: 0.1rem;
+$clr_baselineRem_0_125: 0.125rem;
+$clr_baselineRem_0_2: 0.2rem;
+$clr_baselineRem_0_25: 0.25rem;
+$clr_baselineRem_0_3: 0.3rem;
+$clr_baselineRem_0_375: 0.375rem;
+$clr_baselineRem_0_5: 0.5rem;
+$clr_baselineRem_0_72: 0.72rem;
+$clr_baselineRem_0_75: 0.75rem;
+$clr_baselineRem_1: 1rem;
+$clr_baselineRem_1_25: 1.25rem;
+$clr_baselineRem_1_5: 1.5rem;
+$clr_baselineRem_1_75: 1.75rem;
+$clr_baselineRem_2: 2rem;
+$clr_baselineRem_2_5: 2.5rem;
+$clr_baselineRem_3: 3rem;
+$clr_baselineRem_3_5: 3.5rem;
+$clr_baselineRem_4: 4rem;
+$clr_baselineRem_5: 5rem;
+$clr_baselineRem_6: 6rem;
+
+//13. Outline Offset
+$clr-outline-offset: -5px;
+// App bg color
+$clr-global-app-background: $gray-lighter;
+// App selection color
+$clr-global-selection-color: #D9E4EA;
+$clr-selection-color: $clr-global-selection-color; // $clr-selection-color is deprecated and will be removed.
+// App hover color
+$clr-global-hover-color: $gray-light;
+
+// TODO: Can any of this be grouped in a 'Layout' section?
+//5.Content Area Paddings
+$clr-content-area-padding-top: 1rem !default;
+$clr-content-area-padding-right: 1rem !default;
+$clr-content-area-padding-bottom: 1rem !default;
+$clr-content-area-padding-left: 1rem !default;
+
+// Moved from typography b/c they are needed earlier
+// Usage: ../typography/_typography.clarity.scss
+$clr-baseline-px: 24px !default;
+$clr-baseline-int: $clr-baseline-px / 1px;
+// TODO: this exists because we need to compute 1px equivalents in themes on some values that
+// cannot use calc() in IE11.
+$clr-rem-1px: 1/$clr-baseline-int * 1rem;
+$clr-rem-1px: 1/$clr-baseline-int * 1rem;
+
+//BS4 overrides
+$enable-flex: true;
+$grid-gutter-width-base: 1rem;
+// Bootstrap overrides
+$grid-gutter-widths: (
+    xs: $grid-gutter-width-base,
+    sm: $grid-gutter-width-base,
+    md: $grid-gutter-width-base,
+    lg: $grid-gutter-width-base,
+    xl: $grid-gutter-width-base
+);
+
+// Close button colors
+// Usage: ../emphasis/alert/_alert.clarity.scss
+$close-color--normal: $gray-dark;
+$close-color--hover: $clr-black;

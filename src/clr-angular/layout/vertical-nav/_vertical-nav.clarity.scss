@@ -1,0 +1,404 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin vertical-nav-link-colors($color: $clr-vertical-nav-hover-bg-color) {
+    color: $clr-vertical-nav-item-color;
+
+    &:hover,
+    &.active {
+        color: $clr-vertical-nav-item-active-color;
+        background-color: $color;
+
+        .nav-icon {
+            fill: $clr-vertical-nav-icon-active-color;
+        }
+    }
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+@include exports('vertical-nav.clarity') {
+    .clr-vertical-nav {
+        //Display
+        display: flex;
+        flex-direction: column;
+
+        //Dims
+        padding-top: $clr-vertical-nav-top-padding;
+        width: $clr-vertical-nav-width;
+        min-width: $clr-vertical-nav-min-width;
+
+        //Others
+        background-color: $clr-vertical-nav-bg-color;
+        will-change: width;
+        transition: width 0.2s ease-in-out;
+
+        .nav-divider {
+            //Dims
+            border: $clr-global-borderwidth solid $gray-darker;
+            margin: $clr-vertical-nav-divider-margin 0;
+
+            //Others
+            opacity: 0.2;
+        }
+
+        .nav-content {
+            //display
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+
+            //Others
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .nav-group {
+            //Display
+            display: block;
+            flex: 0 0 auto;
+
+            //Dims
+            height: auto;
+            min-height: $clr-vertical-nav-item-height;
+        }
+
+        .nav-group-content {
+            //Display
+            display: flex;
+
+            //Others
+            @include vertical-nav-link-colors();
+
+            .nav-link {
+                //Display
+                flex: 1 1 auto;
+
+                //Dims
+                padding-left: 0;
+                min-width: 0; //Chrome nested flex box ellipsis fix
+            }
+
+            .nav-icon {
+                //Dims
+                margin-left: $clr-vertical-nav-link-padding-left;
+            }
+
+            .nav-text {
+                //Dims
+                padding-left: $clr-vertical-nav-link-padding-left;
+            }
+
+            .nav-icon + .nav-text {
+                //Dims
+                padding-left: 0;
+            }
+
+            .nav-link + .nav-group-text {
+                //Display
+                display: none;
+            }
+        }
+
+        .nav-trigger,
+        .nav-group-trigger {
+            //Display
+            flex: 0 0 $clr-vertical-nav-item-height;
+
+            //Dims
+            border: none;
+            height: $clr-vertical-nav-item-height;
+            padding: 0;
+
+            //Others
+            color: $clr-vertical-nav-toggle-icon-color;
+            background-color: transparent;
+            cursor: pointer;
+            outline-offset: $clr-outline-offset;
+        }
+
+        .nav-trigger {
+            //Display
+            display: flex;
+            align-items: center;
+            //Flex-start because of IE11 + margin-left: auto
+            justify-content: flex-start;
+
+            //Dims
+            height: $clr-vertical-nav-item-height;
+            margin-top: -1 * $clr-vertical-nav-top-padding;
+        }
+
+        //Parent .nav-group-content
+        .nav-group-trigger {
+            //Display
+            //flex: 0 0 $clr-vertical-nav-item-height;
+            display: flex;
+            flex: 1 1 auto;
+
+            //Others
+            color: inherit;
+            overflow: hidden;
+            text-align: left;
+
+            .nav-group-trigger-icon {
+                //Display
+                flex-shrink: 0;
+
+                //Dims
+                height: $clr-vertical-nav-item-height;
+                width: $clr-vertical-nav-icon-size;
+                margin-left: $clr-vertical-nav-trigger-icon-align-margin;
+                margin-right: $clr-vertical-nav-trigger-icon-align-margin;
+
+                //Others
+                transition: all 0.2s ease-in-out;
+            }
+        }
+
+        //Parent .nav-trigger
+        .nav-trigger-icon {
+            //Dims
+            margin-left: auto;
+            margin-right: ($clr-vertical-nav-item-height - $clr-vertical-nav-icon-size) / 2;
+
+            //Others
+            transition: all 0.2s ease-in-out;
+        }
+
+        .nav-trigger + .nav-content {
+            //Dims
+            border-top: $clr-global-borderwidth solid rgba($gray-darker, 0.2);
+            padding-top: 0.5rem;
+        }
+
+        .nav-group-text,
+        .nav-link {
+            //Dims
+            height: $clr-vertical-nav-item-height;
+            padding: 0 $clr-vertical-nav-link-padding-right 0 $clr-vertical-nav-link-padding-left;
+
+            //Others
+            line-height: $clr-vertical-nav-item-height;
+            outline-offset: $clr-outline-offset;
+        }
+
+        .nav-group-text,
+        //Parent .nav-link
+        .nav-text {
+            //Display
+            flex: 1 1 auto;
+            //Mixins
+            @include overflow-ellipsis();
+        }
+
+        .nav-link {
+            //Display
+            display: flex;
+
+            //Others
+            @include vertical-nav-link-colors();
+        }
+
+        .nav-header {
+            //Dims
+            padding: 0 $clr-vertical-nav-link-padding-right 0 $clr-vertical-nav-link-padding-left;
+
+            //Others
+            @include clr-getTypePropertiesForDomElement(vertical_nav_header, (font-size, font-weight, letter-spacing));
+            line-height: $clr-vertical-nav-item-height;
+        }
+
+        //Parent .nav-text
+        .nav-icon {
+            //Display
+            flex: 0 0 $clr-vertical-nav-icon-size;
+            align-self: center;
+
+            //Dims
+            height: $clr-vertical-nav-icon-size;
+            width: $clr-vertical-nav-icon-size;
+            margin-right: $clr-vertical-nav-icon-right-margin;
+
+            //Others
+            vertical-align: middle;
+        }
+
+        clr-vertical-nav-group-children {
+            display: block;
+        }
+
+        .nav-btn {
+            //Display
+            flex: 1 1 auto;
+
+            //Dims
+            padding: 0;
+            margin: 0;
+
+            //Others
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            outline-offset: $clr-outline-offset;
+        }
+
+        & > .nav-link,
+        .nav-content > .nav-link {
+            //Display
+            flex: 0 0 $clr-vertical-nav-item-height;
+        }
+
+        .nav-link + .nav-group-trigger {
+            //Display
+            flex: 0 0 $clr-vertical-nav-item-height;
+
+            .nav-group-text {
+                display: none;
+            }
+        }
+
+        .nav-icon + .nav-group-text {
+            padding-left: 0;
+        }
+
+        ///////
+        //////
+        ////
+        // Interactions
+        ////
+        //////
+        ///////
+        &.has-nav-groups {
+            .nav-link,
+            .nav-group .nav-group-text,
+            .nav-group .nav-group-trigger {
+                font-weight: 600;
+            }
+
+            .nav-group-children .nav-link {
+                font-weight: normal;
+            }
+        }
+
+        &.has-icons {
+            .nav-group-children .nav-link {
+                padding-left: $clr-vertical-nav-icon-size + $clr-vertical-nav-icon-right-margin + $clr-vertical-nav-link-padding-left;
+            }
+        }
+
+        .nav-group.active:not(.is-expanded) {
+            .nav-group-content {
+                background-color: $clr-vertical-nav-hover-bg-color;
+
+                //Horrible Nesting but nothing I can do.
+                .nav-icon {
+                    fill: $clr-vertical-nav-icon-active-color;
+                }
+            }
+        }
+
+        .nav-group-content {
+            .nav-link.active ~ .nav-group-trigger {
+                background-color: $clr-vertical-nav-hover-bg-color;
+            }
+        }
+
+        .main-container:not([class*="open-overflow-menu"]):not([class*="open-hamburger-menu"]) &.is-collapsed {
+            //Dims
+            width: $clr-vertical-nav-min-width;
+            min-width: $clr-vertical-nav-min-width;
+
+            //Others
+            cursor: pointer;
+
+            .nav-trigger {
+                //Dims
+                margin-right: $clr-vertical-nav-trigger-collapsed-margin;
+            }
+
+            .nav-icon {
+                //Dims
+                margin: 0;
+                margin-left: 0.666667rem;
+            }
+
+            .nav-group-content {
+                .nav-link {
+                    //Display
+                    flex: 0 0 $clr-vertical-nav-min-width;
+                }
+
+                .nav-link ~ .nav-group-trigger {
+                    //Display
+                    flex: 0 0 $clr-vertical-nav-collapsed-caret-size + $clr-vertical-nav-icon-right-margin;
+
+                    //Others
+                    transform: translateX(-1 * $clr-vertical-nav-icon-size);
+                    pointer-events: none;
+                }
+            }
+
+            .nav-link,
+            .nav-group-trigger {
+                //Dims
+                padding: 0;
+            }
+
+            .nav-group-trigger {
+                //Display
+                //flex: 0 0 $clr-vertical-nav-collapsed-caret-size + $clr-vertical-nav-icon-right-margin;
+
+                //Dims
+                padding-left: 0;
+
+                .nav-group-trigger-icon {
+                    //Dims
+                    height: $clr-vertical-nav-item-height;
+                    width: $clr-vertical-nav-collapsed-caret-size;
+                    margin-left: 0.125rem;
+                    margin-right: 0;
+                }
+            }
+
+            //If no icon present then hide the nav-group and nav-links.
+            .nav-group,
+            .nav-link {
+                display: none;
+            }
+
+            //When the nav has icons just hide the nav-text
+            &.has-icons {
+                .nav-group {
+                    display: block;
+                }
+
+                .nav-link {
+                    display: flex;
+                }
+
+                .nav-group-text,
+                .nav-text {
+                    display: none;
+                }
+            }
+        }
+
+        &.nav-trigger--bottom {
+            .nav-trigger {
+                order: 2;
+                margin-top: 0;
+            }
+
+            .nav-trigger + .nav-content {
+                //Dims
+                border-bottom: $clr-global-borderwidth solid rgba($gray-darker, 0.2);
+                border-top: none;
+                padding-top: 0;
+            }
+        }
+    }
+}

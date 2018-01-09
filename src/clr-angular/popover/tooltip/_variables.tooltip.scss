@@ -1,0 +1,12 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+
+// Usage: ../popover/tooltip/_tooltips.clarity.scss
+$clr-tooltip-font-color: $clr-white !default;
+$clr-tooltip-background-color: $clr-black !default;
+$clr-tooltip-default-width: 10rem !default;
+$arrow-height: 0.25rem !default;
+$arrow-width: 0.208333rem !default; //I wanted the arrow width to be 9. If I use 4.5/24 it still rounds up to 10.
+$clr-tooltip-adjusted-margin: 0.666667rem !default;

@@ -1,0 +1,179 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('tree-view.clarity') {
+    .clr-tree-node {
+        //Display
+        display: block;
+
+        //Not sure why Firefox doesn't add this by default using the collapse
+        //animation directive.
+        @include fixForFirefox() {
+            overflow-y: hidden;
+        }
+    }
+
+    .clr-tree-node-content-container {
+        //Display
+        display: flex;
+        align-items: center;
+    }
+
+    .clr-treenode-content {
+        //Note to people reviewing: Adding display flex to the content area. You think this might break a few things
+        //on the consumer side?
+        //Display
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+
+        //Dimensions
+        &:first-child {
+            padding-left: $clr-tree-node-touch-target;
+        }
+
+        //Others
+        border-radius: $clr-tree-border-radius 0 0 $clr-tree-border-radius;
+        line-height: $clr-tree-node-touch-target;
+
+        //Horrible. This, unfortunately, is carried over from earlier to make sure we don't break anything.
+        //Why did I add styles directly on the icons selector? :-( x-(
+        //This was not even needed because it's the user's responsibility to align things they project.
+        clr-icon,
+        //TODO: Update demos to use .clr-icon class
+        .clr-icon {
+            //Dimensions
+            height: $clr-tree-caret-size;
+            width: $clr-tree-caret-size;
+            margin-right: $clr-tree-node-content-icon-margin-right;
+
+            //Others
+            vertical-align: middle;
+        }
+    }
+
+    .clr-treenode-caret {
+        //Display
+        flex: 0 0 $clr-tree-node-touch-target;
+
+        //Dimensions
+        padding: 0;
+        margin: 0;
+        height: $clr-tree-node-touch-target;
+        width: $clr-tree-node-touch-target;
+
+        //Others
+        background: none;
+        border: none;
+        color: $clr-tree-node-caret-color;
+        cursor: pointer;
+        outline-offset: -5px; //TODO: Replace with the outline offset mixin after the rem value change.
+
+        &:hover {
+            color: $clr-tree-node-caret-link-hover-color;
+        }
+    }
+
+    .clr-tree-node-caret-icon {
+        //Dimensions
+        height: $clr-tree-caret-size;
+        width: $clr-tree-caret-size;
+
+        //Others
+        vertical-align: middle;
+    }
+
+    .clr-treenode-spinner-container {
+        //Dimensions
+        height: $clr-tree-node-touch-target;
+        width: $clr-tree-node-touch-target;
+        padding: ($clr-tree-node-touch-target - $clr-tree-spinner-size) / 2;
+    }
+
+    .clr-treenode-spinner {
+        //Dimensions
+        min-height: $clr-tree-spinner-size;
+        min-width: $clr-tree-spinner-size;
+        height: $clr-tree-spinner-size;
+        width: $clr-tree-spinner-size;
+    }
+
+    .clr-treenode-children {
+        //Dimensions
+        margin-left: $clr-tree-node-children-margin;
+    }
+
+    .clr-treenode-link {
+        //Display
+        display: inline-block;
+
+        //Dimensions
+        height: 100%;
+        margin: 0;
+        padding: 0 0 0 $clr-tree-node-link-padding-left;
+        width: 100%;
+
+        //Others
+        background: transparent;
+        border-radius: $clr-tree-border-radius 0 0 $clr-tree-border-radius;
+        border-color: transparent;
+        color: $clr-tree-link-text-color;
+        cursor: pointer;
+        line-height: inherit;
+        text-align: left;
+
+        //States
+        &:link,
+        &:visited,
+        &:active,
+        &:hover {
+            color: inherit;
+        }
+
+        &:hover,
+        &:focus {
+            background: $clr-tree-link-hover-color;
+            text-decoration: none;
+        }
+
+        &:focus {
+            //Removed only because we provide an alternative style
+            outline: 0;
+        }
+
+        &.active {
+            background: $clr-tree-link-selection-color;
+            color: $clr-tree-node-caret-link-hover-color;
+        }
+    }
+
+    .clr-treenode-checkbox {
+        //Dimensions
+        height: $clr-tree-node-touch-target;
+        width: $clr-tree-node-touch-target;
+        padding-top: $clr-tree-checkbox-padding-top;
+        padding-left: $clr-tree-checkbox-padding-left;
+
+        //States
+        &:first-child {
+            margin-left: $clr-tree-node-touch-target;
+        }
+    }
+
+    .clr-treenode-content .label {
+        margin-left: 0.25rem;
+    }
+
+    @include fixForMsEdge {
+        .clr-treenode-content .label {
+            margin-left: 0.125rem;
+        }
+    }
+
+    @include fixForIE10AndUp {
+        .clr-treenode-content .label {
+            margin-left: 0.125rem;
+        }
+    }
+}

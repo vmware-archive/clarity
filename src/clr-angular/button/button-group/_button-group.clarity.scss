@@ -1,0 +1,112 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('button-group.clarity') {
+
+    .btn-group {
+        display: inline-flex;
+        margin-right: 0.5rem;
+
+        .btn {
+            margin: 0;
+
+            &:not(:first-child) {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            &:not(:last-child) {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+
+        &.btn-primary .btn:not(:last-child),
+        &.btn-success .btn:not(:last-child),
+        &.btn-danger .btn:not(:last-child),
+        &.btn-warning .btn:not(:last-child) {
+            margin: 0 $clr-default-borderwidth 0 0;
+        }
+
+        //I couldn't reduce the nesting here :-(
+        //TODO: Try to reduce the nesting here later.
+        &.btn-primary .dropdown-menu .btn,
+        &.btn-success .dropdown-menu .btn,
+        &.btn-danger .dropdown-menu .btn,
+        &.btn-warning .dropdown-menu .btn {
+            margin: 0;
+        }
+
+        > .btn-group-overflow {
+            position: relative;
+        }
+
+        > .btn-group-overflow:last-child:not(:first-child) > .btn:first-child {
+            border-radius: 0 $clr-global-borderradius $clr-global-borderradius 0;
+        }
+
+        > .btn-group-overflow:last-child:first-child > .btn:first-child {
+            border-radius: $clr-global-borderradius;
+        }
+
+        //To avoid double borders
+        .btn + .btn {
+            border-left: none;
+        }
+
+        .btn + .btn-group-overflow {
+            .btn {
+                border-left: none;
+            }
+        }
+
+        //Flat Buttons
+        &.btn-link .dropdown-toggle {
+            min-width: 0;
+        }
+
+        //Flat Icon Buttons
+        &.btn-icon-link {
+
+            &.btn-link .btn {
+                min-width: 0;
+            }
+        }
+
+        //Flat Icon Buttons All
+        &.btn-icon {
+            .btn {
+                min-width: 0;
+            }
+        }
+
+        //Icons and their corresponding title
+        .clr-icon-title {
+            display: none;
+            text-transform: none;
+        }
+
+        .dropdown-toggle {
+            display: block;
+        }
+
+        .dropdown-menu {
+            clr-icon {
+                display: none;
+            }
+
+            .clr-icon-title {
+                display: inline;
+            }
+        }
+    }
+
+    .card-footer {
+        .checkbox, .checkbox-inline, .radio, .radio-inline {
+            &.btn label {
+                line-height: calc(1rem - 1px);
+            }
+        }
+    }
+}

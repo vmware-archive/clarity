@@ -1,0 +1,26 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Usage:  ../data/stack-view/_stack-view.clarity.scss
+// Usage: ../forms/_select.clarity.scss
+// Usage: ../layout/nav/_sidenav.clarity.scss
+// Usage: ../popover/dropdown/_dropdown.clarity.scss
+$clr-dropdown-caret-icon-dimension: 0.416667rem;
+
+// Usage: ../popover/dropdown/_dropdown.clarity.scss
+$clr-dropdown-active-text-color: $clr-black;
+$clr-dropdown-caret-left-margin: 0.083333rem;
+$clr-dropdown-bg-color: $clr-white;
+$clr-dropdown-text-color: $clr-dark-gray;
+$clr-dropdown-item-text-color: clr-getTextColor();
+$clr-dropdown-border-color: $clr-light-midtone-gray;
+$clr-dropdown-divider-color: $clr-light-gray;
+$clr-dropdown-child-border-color: $clr-dark-midtone-gray;
+$clr-dropdown-bg-hover-color: $clr-global-hover-color;
+$clr-dropdown-selection-color: $clr-global-selection-color;
+$clr-dropdown-box-shadow: rgba(clr-getColor(dark), 0.25);
+$clr-dropdown-header-color: clr-getColor(darkest);
+
+// TODO - Remove? No usages found
+$clr-dropdown-bg-active-color: $clr-global-selection-color;

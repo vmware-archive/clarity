@@ -1,0 +1,57 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+//Generates styles for elements with different styles in different cases from its corresponding map
+@mixin clr-getStylesFromMap($element-map,$element) {
+    //Check if the element exists in the map
+    @if map-has-key($element-map,$element){
+        $el-map: map-get($element-map,$element); //get the element style map
+        @each $key, $val in $el-map {
+            #{$key}: $val;
+        }
+    }
+}
+
+//Credit: Zurb Foundation for Apps https://github.com/zurb/foundation-apps/blob/master/scss/helpers/_functions.scss
+//Keep track of modules that have been imported, so we don't import more than once
+$imported-modules: () !default;
+@mixin exports($name) {
+    //check if they have been imported
+    @if (index($imported-modules, $name) == null) {
+        $imported-modules: append($imported-modules, $name) !global;
+        @content;
+    }
+}
+
+//TODO: Should these mixins be moved into their own separate file?
+//Outline Styles
+$clr-outline-color: #6bc1e3;
+$clr-outline-color-inverse: rgba(255, 255, 255, 0.09);
+$clr-outline-blur: 2px;
+$clr-outline-spread: 2px;
+
+@mixin include-outline-style-form-fields(
+    $outline-color: $clr-outline-color,
+    $outline-blur: $clr-outline-blur,
+    $outline-spread: $clr-outline-spread) {
+        outline: 0;
+        box-shadow: 0 0 $outline-blur $outline-spread $outline-color;
+}
+
+@mixin include-outline-style-links() {
+    outline: 0;
+    text-decoration: underline;
+}
+
+@mixin include-outline-style-header-links($outline-color: $clr-outline-color-inverse) {
+    background: $outline-color;
+    outline: 0;
+    text-decoration: none;
+}
+
+@mixin overflow-ellipsis() {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

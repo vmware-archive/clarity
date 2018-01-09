@@ -1,0 +1,20 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Usage: ../modal/_modal.clarity.scss
+$clr-modal-content-padding-top: 1rem !default;
+$clr-modal-content-padding-right: 1rem !default;
+$clr-modal-content-padding-bottom: 1rem !default;
+$clr-modal-content-padding-left: 1rem !default;
+$clr-modal-sm-width: 12rem !default;
+$clr-modal-close-color: $gray-dark;
+$clr-modal-bg-color: clr-getColor(lightest);
+$clr-modal-content-box-shadow-color: rgba(0, 0, 0, 0.2);
+$clr-modal-backdrop-color: clr-getColor(darkest);
+
+// Usage: ../modal/_modal.clarity.scss
+// Usage: ../wizard/_wizard.clarity.scss
+$clr-modal-md-width: 24rem !default;
+$clr-modal-lg-width: 36rem !default;
+$clr-modal-xl-width: 48rem !default;

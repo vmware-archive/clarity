@@ -1,0 +1,34 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Theme variables
+// Usage: ./data/_tables.clarity.scss
+// Usage: ./data/datagrid/_datagrid.clarity.scss
+$clr-table-bgcolor: $clr-white !default;
+$clr-thead-bgcolor: $clr-near-white !default;
+
+// Usage: ./data/datagrid/_datagrid.clarity.scss
+$clr-table-header-border-bottom-color: $clr-light-midtone-gray;
+$clr-table-footer-border-top-color: $clr-light-midtone-gray;
+$clr-table-border-color:  $clr-lighter-midtone-gray;
+
+// Usage: ./data/_tables.clarity.scss
+$clr-tablerow-bordercolor: $clr-light-gray !default;
+$clr-table-bordercolor: $clr-light-midtone-gray !default;
+$clr-table-borderwidth: 1px !default;
+$clr-table-smallpadding: 0.25rem !default;
+// Border radius of corner cells needs to be slightly less than the table's,
+// To make sure they correctly cover the whole area up to the border.
+$clr-table-cornercellradius: calc(#{$clr-default-borderradius} - 1px) !default;
+
+// Usage: ./data/_tables.clarity.scss
+// Usage: ./data/datagrid/_datagrid.clarity.scss
+$clr-table-borderstyle: $clr-table-borderwidth solid $clr-table-bordercolor !default;
+$clr-table-font-color: clr-getTextColor($clr-table-bgcolor, text);
+// Table dims and sizing
+$clr-table-fontsize: 0.541667rem;
+$clr-table-lineheight: 0.583333rem !default;
+$clr-table-cellpadding: 0.5rem !default;
+$clr-table-topcellpadding: $clr-table-cellpadding - $clr-rem-1px !default;
+$clr-table-bottomcellpadding: $clr-table-cellpadding - $clr-rem-1px !default;

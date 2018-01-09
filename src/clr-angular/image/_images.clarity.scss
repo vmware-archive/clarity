@@ -1,0 +1,35 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin icon-background-styles() {
+    background-repeat: no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+}
+
+@include exports('images.clarity') {
+    %icon-styles {
+        display: inline-block;
+        height: $clr-icon-dimension-sm;
+        width: $clr-icon-dimension-sm;
+        padding: 0;
+        @include icon-background-styles();
+    }
+
+    .alert-icon, .clr-icon {
+        @extend %icon-styles;
+
+        &.clr-icon-warning, &.icon-warning {
+            background-image: generateWarningIcon();
+        }
+
+        &.clr-icon-warning-white {
+            background-image: generateWarningIcon($gray-lightest);
+        }
+
+        &.clr-vmw-logo {
+            background-image: generateVMWLogo();
+        }
+    }
+}

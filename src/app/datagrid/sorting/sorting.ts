@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
 
-import {SortOrder} from "../../../clarity-angular";
+import {ClrDatagridSortOrder} from "../../../clr-angular/data/datagrid/interfaces/sort-order";
 import {Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
 import {PokemonComparator} from "../utils/pokemon-comparator";
@@ -21,7 +21,7 @@ export class DatagridSortingDemo {
     examples = EXAMPLES;
     users: User[];
     usersDeprecated: User[];
-    sortOrder: SortOrder = SortOrder.Unsorted;
+    sortOrder: ClrDatagridSortOrder = ClrDatagridSortOrder.UNSORTED;
     sorted: boolean = false;
 
     pokemonComparator = new PokemonComparator();

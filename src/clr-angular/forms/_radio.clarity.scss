@@ -1,0 +1,69 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('radio.clarity') {
+
+    .radio {
+        display: block;
+    }
+
+    .radio-inline {
+        display: inline-block;
+    }
+
+    .radio,
+    .radio-inline {
+
+        position: relative;
+
+        //Hide the default radio
+        input[type="radio"] {
+            @include checkbox-radio-input-styles($clr-checkbox-radio-height, $clr-custom-checkbox-radio-top, 0);
+        }
+
+        label {
+            @include checkbox-radio-label-styles($clr-checkbox-radio-label-height, $clr-checkbox-radio-padding-left);
+        }
+
+        label:empty {
+            padding-left: 0;
+        }
+
+        //Radio button base
+        input[type="radio"] + label::before {
+            @include checkbox-radio-shared-inactive($clr-checkbox-radio-height, $clr-custom-checkbox-radio-top, 0, $clr-form-field-border-color);
+            border-radius: 50%;
+        }
+
+        //Checked Radio Styles
+        input[type="radio"]:checked + label::before {
+            box-shadow: $clr-radio-checked-box-shadow;
+            border: none;
+        }
+
+        //Outline color for unchecked radios
+        input[type="radio"]:focus + label::before {
+            outline: 0;
+            box-shadow: $clr-radio-focused-box-shadow;
+        }
+
+        //Outline color for checked radios
+        input[type="radio"]:focus:checked + label::before {
+            outline: 0;
+            box-shadow: $clr-radio-checked-box-shadow, $clr-radio-focused-box-shadow;
+        }
+
+        &.disabled {
+            label {
+                @include disabled-form-fields();
+                color: $clr-radio-disabled-font-color; // font color
+            }
+
+            input[type="radio"]:checked + label::before {
+                background-color: $clr-radio-disabled-bg-color; // 'dot' color
+                box-shadow: $clr-radio-disabled-checked-box-shadow; //background-color around the dot
+            }
+        }
+    }
+}

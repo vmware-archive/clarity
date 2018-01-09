@@ -1,0 +1,410 @@
+/*
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+import {fakeAsync, tick} from "@angular/core/testing";
+import {Subject} from "rxjs/Subject";
+
+import {ClrDatagridFilterInterface} from "../interfaces/filter.interface";
+
+import {FiltersProvider} from "./filters";
+import {Items} from "./items";
+import {Page} from "./page";
+import {Selection, SelectionType} from "./selection";
+import {Sort} from "./sort";
+import {StateDebouncer} from "./state-debouncer.provider";
+
+const numberSort = (a: number, b: number) => a - b;
+
+export default function(): void {
+    let selectionInstance: Selection;
+    let sortInstance: Sort;
+    let pageInstance: Page;
+    let filtersInstance: FiltersProvider;
+    let itemsInstance: Items;
+    describe("Selection provider", function() {
+        beforeEach(function() {
+            const stateDebouncer = new StateDebouncer();
+            pageInstance = new Page(stateDebouncer);
+            filtersInstance = new FiltersProvider(pageInstance, stateDebouncer);
+            sortInstance = new Sort(stateDebouncer);
+            itemsInstance = new Items(filtersInstance, sortInstance, pageInstance);
+
+            selectionInstance = new Selection(itemsInstance, filtersInstance);
+        });
+
+        afterEach(function() {
+            selectionInstance.destroy();
+            itemsInstance.destroy();
+        });
+
+        describe("with smart items", function() {
+            beforeEach(function() {
+                itemsInstance.smartenUp();
+                itemsInstance.all = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            });
+
+            it("starts inactive", function() {
+                expect(selectionInstance.selectionType).toBe(SelectionType.None);
+                expect(selectionInstance.current).toBeUndefined();
+                selectionInstance.setSelected(4, true);
+                expect(selectionInstance.current).toBeUndefined();
+            });
+
+            it("can select/deselect items in multi selection type", function() {
+                selectionInstance.selectionType = SelectionType.Multi;
+                selectionInstance.setSelected(4, true);
+                expect(selectionInstance.current).toEqual([4]);
+                selectionInstance.setSelected(2, true);
+                expect(selectionInstance.current).toEqual([4, 2]);
+            });
+
+            it("can select/deselect all items at once in multi selection type", function() {
+                selectionInstance.selectionType = SelectionType.Multi;
+                selectionInstance.toggleAll();
+                expect(selectionInstance.current).toEqual(itemsInstance.displayed);
+                selectionInstance.toggleAll();
+                expect(selectionInstance.current).toEqual([]);
+                selectionInstance.setSelected(4, true);
+                expect(selectionInstance.current).toEqual([4]);
+                selectionInstance.toggleAll();
+                expect(selectionInstance.current.sort(numberSort)).toEqual(itemsInstance.displayed);
+            });
+
+            it("can't select/deselect all items at once in other single selection type", function() {
+                selectionInstance.selectionType = SelectionType.Single;
+                selectionInstance.toggleAll();
+                expect(selectionInstance.currentSingle).toBeUndefined();
+                selectionInstance.currentSingle = 4;
+                selectionInstance.toggleAll();
+                expect(selectionInstance.currentSingle).toEqual(4);
+            });
+
+            it("can select/deselect all items at once in multi selection type if no pagination exist", function() {
+                selectionInstance.selectionType = SelectionType.Multi;
+                selectionInstance.toggleAll();
+                expect(selectionInstance.current).toEqual(itemsInstance.displayed);
+                selectionInstance.toggleAll();
+                expect(selectionInstance.current).toEqual([]);
+                selectionInstance.setSelected(4, true);
+                expect(selectionInstance.current).toEqual([4]);
+                selectionInstance.toggleAll();
+                expect(selectionInstance.current.sort(numberSort)).toEqual(itemsInstance.displayed);
+            });
+
+            it("can select/deselect items only on the current page", function() {
+                selectionInstance.selectionType = SelectionType.Multi;
+                pageInstance.size = 3;
+                selectionInstance.current = [4, 1, 2];
+                pageInstance.current = 2;
+                selectionInstance.toggleAll();
+                expect(selectionInstance.current).toEqual([4, 1, 2, 5, 6]);
+                selectionInstance.toggleAll();
+                expect(selectionInstance.current).toEqual([1, 2]);
+            });
+
+            it("can't select/deselect all items at once in other single selection type", function() {
+                selectionInstance.selectionType = SelectionType.Single;
+                selectionInstance.toggleAll();
+                expect(selectionInstance.currentSingle).toBeUndefined();
+                selectionInstance.currentSingle = 4;
+                selectionInstance.toggleAll();
+                expect(selectionInstance.currentSingle).toEqual(4);
+            });
+
+            it("can detect if an item is selected", function() {
+                selectionInstance.selectionType = SelectionType.Multi;
+                expect(selectionInstance.isSelected(4)).toBe(false);
+                selectionInstance.setSelected(4, true);
+                expect(selectionInstance.isSelected(4)).toBe(true);
+                selectionInstance.setSelected(4, false);
+                expect(selectionInstance.isSelected(4)).toBe(false);
+            });
+
+            it("can detect if all items are selected in multi selection type", function() {
+                selectionInstance.selectionType = SelectionType.Multi;
+                expect(selectionInstance.isAllSelected()).toBe(false);
+                selectionInstance.setSelected(4, true);
+                expect(selectionInstance.isAllSelected()).toBe(false);
+                selectionInstance.current = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+                expect(selectionInstance.isAllSelected()).toBe(true);
+            });
+
+            it("accepts pre-selected items in multi selection type", function() {
+                selectionInstance.selectionType = SelectionType.Multi;
+                selectionInstance.current = [4, 2];
+                expect(selectionInstance.isSelected(1)).toBe(false);
+                expect(selectionInstance.isSelected(2)).toBe(true);
+                expect(selectionInstance.isSelected(3)).toBe(false);
+                expect(selectionInstance.isSelected(4)).toBe(true);
+            });
+
+            it("accepts pre-selected item in single selection type", function() {
+                selectionInstance.selectionType = SelectionType.Single;
+                selectionInstance.currentSingle = 2;
+                expect(selectionInstance.isSelected(1)).toBe(false);
+                expect(selectionInstance.isSelected(2)).toBe(true);
+                expect(selectionInstance.isSelected(3)).toBe(false);
+                expect(selectionInstance.isSelected(4)).toBe(false);
+            });
+
+            it("exposes an Observable to follow selection changes in multi selection type", function() {
+                let nbChanges = 0;
+                let currentSelection: any[];
+                selectionInstance.change.subscribe((items: any[]) => {
+                    nbChanges++;
+                    currentSelection = items;
+                });
+                expect(currentSelection).toBeUndefined();
+                selectionInstance.selectionType = SelectionType.Multi;
+                expect(currentSelection).toEqual([]);
+                selectionInstance.setSelected(4, true);
+                expect(selectionInstance.current).toEqual([4]);
+                selectionInstance.toggleAll();
+                expect(selectionInstance.current.sort(numberSort)).toEqual(itemsInstance.displayed);
+                selectionInstance.toggleAll();
+                expect(selectionInstance.current).toEqual([]);
+                expect(nbChanges).toBe(4);
+            });
+
+            it("exposes an Observable to follow selection changes in single selection type", function() {
+                let nbChanges = 0;
+                let currentSelection: any;
+                selectionInstance.change.subscribe((items: any) => {
+                    nbChanges++;
+                    currentSelection = items;
+                });
+                expect(currentSelection).toBeUndefined();
+                selectionInstance.selectionType = SelectionType.Single;
+                expect(currentSelection).toBeUndefined();
+                selectionInstance.currentSingle = 4;
+                selectionInstance.currentSingle = 2;
+                expect(nbChanges).toBe(3);
+            });
+
+            it("clears selection when a filter is added", function() {
+                selectionInstance.selectionType = SelectionType.Multi;
+                selectionInstance.current = [4, 2];
+
+                const evenFilter: EvenFilter = new EvenFilter();
+
+                filtersInstance.add(<ClrDatagridFilterInterface<any>>evenFilter);
+
+                evenFilter.toggle();
+
+                expect(selectionInstance.current.length).toBe(0);
+            });
+
+            it("keeps only the remaining selection when the items are updated", fakeAsync(function() {
+                   selectionInstance.selectionType = SelectionType.Multi;
+                   selectionInstance.current = [4, 2];
+
+                   itemsInstance.all = [1, 2, 3, 5];
+
+                   tick();
+
+                   expect(selectionInstance.current.length).toBe(1);
+                   expect(selectionInstance.current).toEqual([2]);
+               }));
+
+            it("keeps all the selections when the items are updated " +
+                   "and the contain all the previous selection",
+               fakeAsync(function() {
+                   selectionInstance.selectionType = SelectionType.Multi;
+                   selectionInstance.current = [4, 2];
+
+                   itemsInstance.all = [1, 2, 3, 4, 5];
+
+                   tick();
+
+                   expect(selectionInstance.current.length).toBe(2);
+                   expect(selectionInstance.current).toEqual([4, 2]);
+               }));
+
+            it("clears the selections when the items are updated and " +
+                   "they do not contain the previous selection",
+               fakeAsync(function() {
+                   selectionInstance.selectionType = SelectionType.Multi;
+                   selectionInstance.current = [4, 2];
+
+                   itemsInstance.all = [1, 3, 5];
+
+                   tick();
+
+                   expect(selectionInstance.current.length).toBe(0);
+                   expect(selectionInstance.current).toEqual([]);
+               }));
+
+            it("maintains the selection when the page is changed", function() {
+                selectionInstance.selectionType = SelectionType.Multi;
+                selectionInstance.current = [4, 2];
+
+                pageInstance.size = 3;
+
+                pageInstance.current = 2;
+
+                expect(selectionInstance.current).toEqual([4, 2]);
+            });
+        });
+
+        describe("client-side selection and pagination", function() {
+            const items = [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}, {id: 8}, {id: 9}, {id: 10}];
+            function testSelectedItems(selectedIndexes: any[]) {
+                items.forEach((item, index) => {
+                    const state = selectedIndexes.indexOf(index) > -1;
+                    expect(selectionInstance.isSelected(item)).toEqual(state);
+                });
+            }
+
+            beforeEach(function() {
+                beforeEach(function() {
+                    itemsInstance.smartenUp();
+                    itemsInstance.all = items;
+                    pageInstance.size = 3;
+                });
+            });
+
+            describe("multi-selection", function() {
+                function testMultiSelection() {
+                    selectionInstance.setSelected(items[2], true);
+                    testSelectedItems([2]);
+                    expect(selectionInstance.current).toEqual([items[2]]);
+                    pageInstance.current = 3;
+                    testSelectedItems([2]);
+                    expect(selectionInstance.current).toEqual([items[2]]);
+                }
+
+                beforeEach(function() {
+                    selectionInstance.selectionType = SelectionType.Multi;
+                });
+
+                it("should support no trackBy", function() {
+                    testMultiSelection();
+                });
+
+                it("should support trackBy item", function() {
+                    itemsInstance.trackBy = (index, item) => item.id;
+                    itemsInstance.all = items;
+                    testMultiSelection();
+                });
+
+                it("should support trackBy index", function() {
+                    itemsInstance.trackBy = (index, item) => index;
+                    itemsInstance.all = items;
+                    testMultiSelection();
+                });
+            });
+
+            describe("single selection", function() {
+                function testSingleSelection() {
+                    selectionInstance.currentSingle = items[2];
+                    pageInstance.current = 2;
+                    testSelectedItems([2]);
+                    selectionInstance.currentSingle = items[5];
+                    pageInstance.current = 3;
+                    testSelectedItems([5]);
+                }
+
+                beforeEach(function() {
+                    selectionInstance.selectionType = SelectionType.Single;
+                });
+
+                it("should support no trackBy", function() {
+                    testSingleSelection();
+                });
+
+                it("should support trackBy item", function() {
+                    itemsInstance.trackBy = (index, item) => item.id;
+                    itemsInstance.all = items;
+                    testSingleSelection();
+                });
+
+                it("should support trackBy index", function() {
+                    itemsInstance.trackBy = (index, item) => index;
+                    itemsInstance.all = items;
+                    testSingleSelection();
+                });
+            });
+        });
+
+        describe("server-driven selection and pagination", function() {
+            const itemsA = [{id: 1}, {id: 2}, {id: 3}];
+            const itemsB = [{id: 4}, {id: 5}, {id: 6}];
+            const itemsC = itemsA.map(item => Object.assign({modified: true}, item));
+
+            function testSelection(stateA, stateB, stateC) {
+                expect(selectionInstance.isSelected(itemsA[0])).toEqual(stateA);
+                expect(selectionInstance.isSelected(itemsB[0])).toEqual(stateB);
+                expect(selectionInstance.isSelected(itemsC[0])).toEqual(stateC);
+            }
+
+            describe("multi-selection", function() {
+                beforeEach(function() {
+                    selectionInstance.selectionType = SelectionType.Multi;
+                });
+                // We don't support server-driven, multi-selection without trackBy.
+                // We don't support server-driven, multi-selection, trackBy index.
+                it("should support trackBy item", fakeAsync(() => {
+                       itemsInstance.trackBy = (index, item) => item.id;
+                       itemsInstance.all = itemsA;
+                       tick();
+                       selectionInstance.setSelected(itemsA[0], true);
+                       testSelection(true, false, false);
+                       itemsInstance.all = itemsB;
+                       tick();
+                       testSelection(true, false, false);
+                       itemsInstance.all = itemsC;
+                       tick();
+                       testSelection(false, false, true);
+                       expect(selectionInstance.current[0].modified).toEqual(true);
+                   }));
+            });
+
+            describe("single selection", function() {
+                beforeEach(function() {
+                    selectionInstance.selectionType = SelectionType.Single;
+                });
+                // We don't support server-driven, multi-selection without trackBy.
+                // We don't support server-driven, multi-selection, trackBy index.
+                it("should support trackBy item", fakeAsync(() => {
+                       itemsInstance.trackBy = (index, item) => item.id;
+                       itemsInstance.all = itemsA;
+                       tick();
+                       selectionInstance.currentSingle = itemsA[0];
+                       testSelection(true, false, false);
+                       itemsInstance.all = itemsB;
+                       tick();
+                       testSelection(true, false, false);
+                       // itemsInstance.all = itemsC;
+                       // tick();
+                       // testSelection(false, false, true);
+                       // expect(selectionInstance.currentSingle.modified).toEqual(true);
+                   }));
+            });
+        });
+    });
+}
+
+abstract class TestFilter implements ClrDatagridFilterInterface<number> {
+    private active = false;
+
+    toggle() {
+        this.active = !this.active;
+        this.changes.next(this.active);
+    }
+
+    isActive(): boolean {
+        return this.active;
+    }
+
+    changes = new Subject<boolean>();
+
+    abstract accepts(n: number): boolean;
+}
+
+class EvenFilter extends TestFilter {
+    accepts(n: number): boolean {
+        return n % 2 === 0;
+    }
+}

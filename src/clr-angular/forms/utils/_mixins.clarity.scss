@@ -1,0 +1,84 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin disabled-form-fields() {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@mixin checkbox-radio-input-styles($height, $top, $left) {
+    //Positioning
+    position: absolute;
+    top: $top;
+    left: $left;
+    opacity: 0;
+
+    //Display
+    //NOTE: Even though the input is invisible, we assign it a height
+    //and width so that it aligns right behind the fake checkbox
+    //and so that the user's default input size doesn't affect it
+    height: $height;
+    width: $height;
+}
+
+@mixin checkbox-radio-label-styles($min-height, $padding-left, $line-height: 1rem) {
+    //Positioning
+    position: relative;
+
+    //Display
+    display: inline-block;
+    min-height: $min-height;
+    padding-left: $padding-left;
+    cursor: pointer;
+    line-height: $line-height;
+}
+
+@mixin checkbox-radio-shared-inactive($height, $top, $left, $border-color) {
+    //Positioning
+    position: absolute;
+    top: $top;
+    left: $left;
+
+    //Display
+    content: '';
+    display: inline-block;
+    height: $height;
+    width: $height;
+    border: $clr-default-borderwidth solid $border-color;
+}
+
+//Standard Clarity Input Bottom Border Animation
+@mixin input-border-bottom-animation($border-color) {
+    // Border-bottom animation on focus
+    background: linear-gradient(to bottom, transparent 95%, $border-color 95%) no-repeat;
+    background-size: 0% 100%;
+    transition: background-size 0.2s ease;
+
+    &:focus {
+        border-bottom: $clr-default-borderwidth solid $border-color;
+        background-size: 100% 100%;
+    }
+}
+
+@mixin custom-inputs($height) {
+    @include clr-appearance-normal();
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+    height: $height;
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+@mixin clr-form-fields-appearance($min-width, $border-bottom-width) {
+    color: $clr-input-text-color;
+    display: inline-block;
+    min-width: $min-width;
+    border-bottom: $clr-default-borderwidth solid $border-bottom-width;
+}

@@ -1,0 +1,362 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('signpost.clarity') {
+    .signpost {
+        display: inline-block;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        .signpost-action {
+            min-width: 1rem;
+            margin: 0;
+            padding: 0;
+            color: $clr-signpost-action-color;
+            outline: none;
+
+            clr-icon {
+                width: 1rem;
+                height: 1rem;
+            }
+
+            &:hover, &.active {
+                color: $clr-signpost-action-hover-color;
+            }
+        }
+
+        .signpost-content-header button clr-icon {
+            width: 0.666667rem;
+            height: 0.666667rem;
+        }
+    }
+
+    .signpost-trigger {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+    }
+
+    .signpost-content {
+        background-color: transparent;
+        min-width: 9rem;
+        max-width: 15rem;
+        // previous min-height of 3.5rem was too much for small signposts like in datagrid hide-show demo
+        min-height: 2rem;
+        max-height: 21rem;
+        display: inline-block;
+        position: relative;
+        z-index: map-get($clr-layers, tooltips);
+
+        .popover-pointer {
+            width: 0;
+            height: 0;
+            position: absolute;
+
+            &:before {
+                content: '';
+                width: 0;
+                height: 0;
+                position: absolute;
+            }
+        }
+
+        /***
+            The signpost is above the icon top-{HORIZONTAL_POSITION}
+        */
+        /***
+            TODO: Create a general mix-in for the poover-pointer that can
+            1. Accomadate all 12 positions
+            2. Unification for the nomenclature between components
+                (if possible, I know they all use slightly different terms)
+            3. Be used across Tooltips, Signposts (Do we also want it for Dropdowns)
+            4. What's up with the namespacing here? Usually we use `clr-*` to denote
+                Clarity components but we aren't doing that in signposts. We should
+                consider it.
+         */
+
+         /* NOTE: signposts need precise pixels for some measurements due to the design
+            Hence the 1px and 2px values you'll see below.
+
+            I've tested the calcs below while resizing the base font-size for the rem
+            measurements and they appear to hold up well.
+          */
+
+         &.top-left,
+         &.top-middle,
+         &.top-right {
+             .popover-pointer {
+                 border-top: $clr-signpost-pointer-border;
+                 bottom: -1 * $clr-signpost-border-size;
+
+                 &:before {
+                     border-top: $clr-signpost-pointer-psuedo-border;
+                     bottom: 2px;
+                 }
+             }
+         }
+
+         &.top-left {
+             .signpost-flex-wrap {
+                 border-bottom-right-radius: 0; // Turn off rounded corner here
+             }
+
+             .popover-pointer {
+                 border-left: $clr-signpost-pointer-invisible-border;
+                 right: -1px;
+
+                 &:before {
+                     border-left: $clr-signpost-pointer-invisible-border;
+                     right: 1px;
+                 }
+             }
+         }
+
+         &.top-middle {
+             .popover-pointer {
+                 border-right: $clr-signpost-pointer-invisible-border;
+                 left: 50%;
+
+                 &:before {
+                     border-right: $clr-signpost-pointer-invisible-border;
+                     left: 1px;
+                 }
+             }
+         }
+
+         &.top-right {
+             .signpost-flex-wrap {
+                 border-bottom-left-radius: 0; // Turn off rounded corner here
+             }
+
+             .popover-pointer {
+                 border-right: $clr-signpost-pointer-invisible-border;
+                 left: 0;
+
+                 &:before {
+                     border-right: $clr-signpost-pointer-invisible-border;
+                     left: 1px;
+                 }
+             }
+         }
+         // End top-*
+
+         /***
+             The signpost is below the icon top-{HORIZONTAL_POSITION}
+         */
+
+         &.bottom-left,
+         &.bottom-middle,
+         &.bottom-right {
+             .popover-pointer {
+                 border-bottom: $clr-signpost-pointer-border;
+                 top: calc( #{-1 * $clr-signpost-border-size} + 1px);
+
+                 &:before {
+                     border-bottom: $clr-signpost-pointer-psuedo-border;
+                     top: 2px;
+                 }
+             }
+         }
+
+         &.bottom-left {
+             .signpost-flex-wrap {
+                 border-top-right-radius: 0; // Turn off rounded corners here
+             }
+
+             .popover-pointer {
+                 border-left: $clr-signpost-pointer-invisible-border;
+                 right: 0;
+
+                 &:before {
+                     border-left: $clr-signpost-pointer-invisible-border;
+                     right: 1px;
+                 }
+             }
+         }
+
+         &.bottom-middle {
+             .popover-pointer {
+                 border-right: $clr-signpost-pointer-invisible-border;
+                 right: 50%;
+
+                 &:before {
+                     border-right: $clr-signpost-pointer-invisible-border;
+                     right: calc(#{ -1 * $clr-signpost-border-size } - 1px);
+                 }
+             }
+         }
+
+         &.bottom-right {
+             .signpost-flex-wrap {
+                 border-top-left-radius: 0; // Turn off rounded corners here
+             }
+
+             .popover-pointer {
+                 border-right: $clr-signpost-pointer-invisible-border;
+                 left: 0;
+
+                 &:before {
+                     border-right: $clr-signpost-pointer-invisible-border;
+                     left: 1px;
+                 }
+             }
+         }
+         // End bottom-*
+
+         /***
+             The signpost is on the left side of the icon left-{VERTICAL_POSITION}
+          */
+
+         &.left-top,
+         &.left-middle,
+         &.left-bottom {
+             .popover-pointer {
+                 border-left: $clr-signpost-pointer-border;
+                 right: -1 * $clr-signpost-border-size;
+
+                 &:before {
+                     border-left: $clr-signpost-pointer-psuedo-border;
+                 }
+             }
+         }
+
+         &.left-top {
+             .signpost-flex-wrap {
+                 border-bottom-right-radius: 0; // Turn off rounded corners here
+             }
+
+             .popover-pointer {
+                 border-top: $clr-signpost-pointer-invisible-border;
+                 bottom: 0;
+
+                 &:before {
+                     border-top: $clr-signpost-pointer-invisible-border;
+                     top: calc(#{ -1 * $clr-signpost-border-size } - 1px);
+                     right: 2px;
+                 }
+             }
+         }
+
+         &.left-middle {
+             .popover-pointer {
+                 border-bottom: $clr-signpost-pointer-invisible-border;
+                 top: 50%;
+                 transform: translateY(-50%);
+
+                 &:before {
+                     border-bottom: $clr-signpost-pointer-invisible-border;
+                     top: 1px;
+                     left: calc(#{-1 * $clr-signpost-border-size} - 2px);
+                 }
+             }
+         }
+
+         &.left-bottom {
+             .signpost-flex-wrap {
+                 border-top-right-radius: 0; // Turn off rounded corners here
+             }
+
+             .popover-pointer {
+                 border-bottom: $clr-signpost-pointer-invisible-border;
+                 top: 0;
+
+                 &:before {
+                     border-bottom: $clr-signpost-pointer-invisible-border;
+                     top: 1px;
+                     left: calc(#{-1 * $clr-signpost-border-size} - 2px);
+                 }
+             }
+         }
+         // End left-*
+
+         /***
+             The signpost is on the right side of the icon right-{VERTICAL_POSITION}
+         */
+
+         &.right-top,
+         &.right-middle,
+         &.right-bottom {
+             .popover-pointer {
+                 border-right: $clr-signpost-pointer-border;
+                 left: -1 * $clr-signpost-border-size;
+
+                 &:before {
+                     border-right: $clr-signpost-pointer-psuedo-border;
+                     left: 2px;
+                 }
+             }
+         }
+
+         &.right-top {
+             .signpost-flex-wrap {
+                 border-bottom-left-radius: 0; // turn off rounded corner here
+             }
+
+             .popover-pointer {
+                 border-top: $clr-signpost-pointer-invisible-border;
+                 bottom: 0;
+
+                 &:before {
+                     border-top: $clr-signpost-pointer-invisible-border;
+                     top: calc( #{ -1 * $clr-signpost-border-size } - 1px);
+                 }
+             }
+         }
+
+         &.right-middle {
+             .popover-pointer {
+                 border-bottom: $clr-signpost-pointer-invisible-border;
+                 top: 50%;
+                 transform: translateY(-50%);
+
+                 &:before {
+                     border-bottom: $clr-signpost-pointer-invisible-border;
+                     top: 1px;
+                 }
+             }
+         }
+
+         &.right-bottom {
+             .signpost-flex-wrap {
+                 border-top-left-radius: 0; // turn off rounded corner here
+             }
+
+             .popover-pointer {
+                 border-bottom: $clr-signpost-pointer-invisible-border;
+                 top: 0;
+
+                 &:before {
+                     border-bottom: $clr-signpost-pointer-invisible-border;
+                     top: 1px;
+                 }
+             }
+         }
+         // End right-*
+
+    }
+
+    .signpost-content-header {
+        display: flex;
+        justify-content: flex-end;
+        flex: 0 0 1rem;
+    }
+
+    .signpost-flex-wrap {
+        border: $clr-default-borderwidth solid $clr-signpost-outerBorder;
+        border-radius: $clr-default-borderradius;
+        background-color: $clr-signpost-innerBlock;
+        display: flex;
+        flex-direction: column;
+        z-index: map-get($clr-layers, tooltips);
+    }
+
+    .signpost-content-body {
+        flex: 1 1 auto;
+        padding: 0 1rem 1rem;
+        max-height: 20rem;
+        overflow-y: auto;
+    }
+}

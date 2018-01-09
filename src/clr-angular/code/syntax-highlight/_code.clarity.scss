@@ -1,0 +1,40 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('code.clarity') {
+    //Styles for Clarity Code Snippets
+
+    pre, pre[class*="language-"] {
+        margin: 0.5rem 0;
+    }
+
+    pre {
+        border: $clr-default-borderwidth solid $gray-light-midtone;
+        max-height: 15rem;
+        border-radius: $clr-default-borderradius;
+        overflow: auto;
+    }
+
+    pre code {
+        white-space: pre;
+    }
+
+    //Overriding PrismJS code styles
+    :not(pre) > code[class*="language-"], pre[class*="language-"], pre, code[class*="language-"] {
+        // aot is allowing prism to push its styles below ours; using important here instead of
+        // an extra layer of specificity due to the nature of code/pre tags.
+        font-family: $clr-monoFont !important;
+        line-height: 1rem;
+        padding: 0;
+    }
+
+    //Overriding bootstrap code styles
+    code {
+        &.clr-code {
+            color: $reds-dark-midtone;
+            padding: 0;
+            background: transparent;
+        }
+    }
+}

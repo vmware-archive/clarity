@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -89,8 +89,9 @@ export class Inventory {
     }
 
     fetch(skip: number = 0, limit: number = this._currentQuery.length): Promise<FetchResult> {
-        const result:
-            FetchResult = {users: this._currentQuery.slice(skip, skip + limit), length: this._currentQuery.length};
+        // Stringify and parse to mimic new object creation like a real HTTP request
+        const items = JSON.stringify(this._currentQuery.slice(skip, skip + limit));
+        const result: FetchResult = {users: JSON.parse(items), length: this._currentQuery.length};
         this._currentQuery = null;
         return this._fakeHttp(result);
     }

@@ -1,0 +1,41 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// TODO: optimize the component default variables for theming
+$clr-wizard-main-bgcolor: clr-getColor(1);
+$clr-wizard-sidenav-bgcolor: clr-getColor(2);
+$clr-wizard-default-space: 1rem !default;
+$clr-wizard-main-textColor: clr-getTextColor($clr-wizard-main-bgcolor);
+$clr-wizard-sidenav-text: clr-getTextColor($clr-wizard-sidenav-bgcolor, text);
+$clr-wizard-sidenav-text--active: clr-getTextColor($clr-wizard-sidenav-bgcolor, darkest);
+$clr-wizard-title-text: clr-getTextColor($clr-wizard-sidenav-bgcolor, darkest);
+$clr-wizard-stepnav-border-size: 0.166667rem;
+$clr-wizard-stepnav-border-color: clr-getColor(3);
+$clr-wizard-stepnav-border-color--active: $clr-green;
+$clr-wizard-footer-height: 3.5rem;
+$clr-wizard-stepnav-active-bgcolor: #D9E4EA; // TODO: consolidate color values into semantic variable names
+$clr-wizard-header-action-color: clr-getTextColor($clr-wizard-main-bgcolor, hoverable);;
+$clr-wizard-header-action-color--hovered: clr-getTextColor($clr-wizard-sidenav-bgcolor, darkest);
+$clr-wizard-box-shadow: 0 $clr-rem-1px (2 * $clr-rem-1px) (2 * $clr-rem-1px) rgba(0, 0, 0, 0.2);
+$clr-wizard-step-nav-border-color: #e4e4e4;
+
+$clr-wizard-all-dialog-min-width: 10rem;
+$clr-wizard-all-dialog-min-height: 17.5rem;
+$clr-wizard-md-nav-min-width: 9rem;
+$clr-wizard-md-nav-max-width: 10rem;
+$clr-wizard-md-dialog-max-height: 21rem;
+$clr-wizard-lg-nav-min-width: $clr-wizard-all-dialog-min-width;
+$clr-wizard-lg-nav-max-width: 12rem;
+$clr-wizard-lg-dialog-max-height: 30rem;
+$clr-wizard-xl-nav-min-width: $clr-wizard-all-dialog-min-width;
+$clr-wizard-xl-nav-max-width: 13rem;
+$clr-wizard-xl-dialog-max-height: 75vh;
+
+$clr-wizard-ghost-1: #bbb;    // TODO: consolidate color values into semantic variable names
+$clr-wizard-ghost-2: #9a9a9a; // TODO: consolidate color values into semantic variable names
+$clr-wizard-ghost-wrapper-width: 2rem;
+$clr-wizard-ghost-panel-width: 1rem;
+$clr-wizard-ghost-wrapper-padding: 1rem;
+$clr-wizard-ghost-shadow: $clr-wizard-box-shadow;
+$clr-wizard-ghost-dialog-default-width: $clr-modal-md-width + $clr-wizard-ghost-wrapper-width;

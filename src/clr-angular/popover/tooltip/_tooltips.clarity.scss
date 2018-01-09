@@ -1,0 +1,198 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin common-tooltip-styles {
+    @include clr-getTypePropertiesForDomElement(tooltip_text, (font-size, font-weight, letter-spacing));
+
+    background: $clr-tooltip-background-color;
+    border-radius: 0.125rem;
+    color: $clr-tooltip-font-color;
+    line-height: 0.75rem;
+    margin: 0; //Resetting any margin that might be applied to span/div elements inside forms
+    padding: 0.375rem 0.5rem;
+    width: $clr-tooltip-default-width;
+}
+
+@mixin vertical-tooltip-generator($dirA:top, $dirB:right) {
+    $oppA: map-get($opp-directions,$dirA);
+    $oppB: map-get($opp-directions,$dirB);
+
+    @include common-tooltip-styles;
+
+    position: absolute;
+    #{$dirA}: auto;
+    #{$oppA}: 100%;
+    #{$oppB}: 50%;
+    #{$dirB}: auto;
+
+    border-#{$oppA}-#{$oppB}-radius: 0;
+    margin-#{$oppA}: $clr-tooltip-adjusted-margin;
+
+    &::before {
+        position: absolute;
+        #{$oppA}: -0.375rem;
+        #{$oppB}: 0;
+        #{$dirA}: auto;
+        #{$dirB}: auto;
+        content: '';
+        border-#{$oppB}: $arrow-height solid $clr-tooltip-background-color;
+        border-#{$dirA}: $arrow-width solid $clr-tooltip-background-color;
+        border-#{$dirB}: $arrow-height solid transparent;
+        border-#{$oppA}: $arrow-width solid transparent;
+    }
+}
+
+@mixin horizontal-tooltip-generator($dirA:right) {
+    $oppA: map-get($opp-directions,$dirA);
+
+    position: absolute;
+    #{$dirA}: auto;
+    #{$oppA}: 100%;
+    top: 50%;
+    bottom: auto;
+
+    @include common-tooltip-styles;
+
+    border-top-#{$oppA}-radius: 0;
+    margin-#{$oppA}: $clr-tooltip-adjusted-margin;
+
+    &::before {
+        position: absolute;
+        top: 0;
+        #{$oppA}: -0.375rem;
+        bottom: auto;
+        #{$dirA}: auto;
+        content: '';
+        border-top: $arrow-height solid $clr-tooltip-background-color;
+        border-#{$dirA}: $arrow-width solid $clr-tooltip-background-color;
+        border-bottom: $arrow-height solid transparent;
+        border-#{$oppA}: $arrow-width solid transparent;
+    }
+}
+
+@include exports('tooltips.clarity') {
+    .tooltip {
+        display: inline-block;
+        position: relative;
+        text-align: left;
+        overflow: visible;
+
+        & > .tooltip-content {
+            //Both visibility and opacity are needed. Opacity handles the transition.
+            //And visibility makes sure that the user cant select the text in the tooltip-content
+            //when hidden
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s linear;
+            white-space: normal;
+            z-index: map-get($clr-layers, tooltips);
+        }
+
+        //Needed for IE10. Cannot add styles directly to &:hover::after,&:hover::before before adding styles to &:hover.
+        // TODO: is this still needed? we no longer support IE10...
+        &:hover {
+            background: url("data:image/svg+xml;charset=UTF-8,%3Csvg+xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22+width%3D%221%22+height%3D%221%22+viewBox%3D%220+0+1+1%22%3E%3Ctitle%3Etransparent+bcg%3C%2Ftitle%3E%3C%2Fsvg%3E");
+        }
+
+        &:hover > .tooltip-content,
+        &:focus > .tooltip-content {
+            visibility: visible;
+            opacity: 1;
+
+            //Have to do this for IE11. Cant use a :not selector
+            &:empty {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+
+        &:focus {
+            outline: 0;
+        }
+
+        &:focus > :first-child {
+            outline-offset: $clr-rem-1px;
+            outline-width: $clr-rem-1px;
+            outline-color: rgb(59, 153, 252); //Color that Chrome uses
+            outline-style: solid;
+        }
+
+        //Tooltip directions
+        //Default Tooltip - Top Right
+        & > .tooltip-content,
+        &.tooltip-top-right > .tooltip-content, .tooltip-content.tooltip-top-right {
+            @include vertical-tooltip-generator(top, right);
+        }
+
+        &.tooltip-top-left > .tooltip-content, .tooltip-content.tooltip-top-left {
+            @include vertical-tooltip-generator(top, left);
+        }
+
+        &.tooltip-bottom-right > .tooltip-content, .tooltip-content.tooltip-bottom-right {
+            @include vertical-tooltip-generator(bottom, right);
+        }
+
+        &.tooltip-bottom-left > .tooltip-content, .tooltip-content.tooltip-bottom-left {
+            @include vertical-tooltip-generator(bottom, left);
+        }
+
+        &.tooltip-right > .tooltip-content, .tooltip-content.tooltip-right {
+            @include horizontal-tooltip-generator(right);
+        }
+
+        &.tooltip-left > .tooltip-content, .tooltip-content.tooltip-left {
+            @include horizontal-tooltip-generator(left);
+        }
+
+        //Tooltips Size
+        &.tooltip-xs > .tooltip-content, .tooltip-content.tooltip-xs {
+            width: 3rem;
+        }
+
+        &.tooltip-sm > .tooltip-content, .tooltip-content.tooltip-sm {
+            width: 5rem;
+        }
+
+        &.tooltip-md > .tooltip-content, .tooltip-content.tooltip-md {
+            width: $clr-tooltip-default-width;
+        }
+
+        &.tooltip-lg > .tooltip-content, .tooltip-content.tooltip-lg {
+            width: 15rem;
+        }
+    }
+
+    //Override tooltip margins values for different components.
+
+    //Buttons
+    .tooltip {
+
+        //Default is top right
+        & > .btn + .tooltip-content,
+        &.tooltip-top-right > .btn + .tooltip-content,
+        &.tooltip-top-left > .btn + .tooltip-content {
+            margin-bottom: $clr-tooltip-adjusted-margin - $clr-button-vertical-margin;
+        }
+
+        &.tooltip-bottom-right > .btn + .tooltip-content,
+        &.tooltip-bottom-left > .btn + .tooltip-content {
+            margin-top: $clr-tooltip-adjusted-margin - $clr-button-vertical-margin;
+        }
+
+        &.tooltip-right > .btn + .tooltip-content {
+            margin-left: $clr-tooltip-adjusted-margin - $clr-button-horizontal-margin;
+        }
+    }
+
+    //Icons
+    .tooltip {
+        & > .clr-icon{
+            margin-right: 0;
+        }
+
+        clr-icon > svg {
+            pointer-events: none;
+        }
+    }
+}

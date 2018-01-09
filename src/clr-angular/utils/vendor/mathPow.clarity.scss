@@ -1,0 +1,120 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// by Tobias Bengfort
+// http://www.sassmeister.com/gist/5bbe8480c48e2fc10ab5
+
+$PI: 3.141592653589793;
+
+@function -math-exp-taylor-0($x, $steps) {
+    $item: 1;
+    $result: 1;
+
+    @for $i from 1 to $steps {
+        $item: $item * $x / $i;
+        $result: $result + $item;
+    }
+
+    @return $result;
+}
+
+@function -math-ln-taylor-1($x, $steps) {
+    $z: ($x - 1) / ($x + 1);
+
+    $power: $z;
+    $result: $z;
+
+    @for $i from 1 to $steps {
+        $power: $power * $z *$z;
+        $result: $result + $power / (2 * $i + 1);
+    }
+
+    @return 2 * $result;
+}
+
+@function -math-sin-taylor-0($x, $steps) {
+    $item: $x;
+    $result: $x;
+
+    @for $i from 1 to $steps {
+        $item: -$item * $x * $x / (2 * $i) / (2 * $i + 1);
+        $result: $result + $item;
+    }
+
+    @return $result;
+}
+
+@function -math-pow-int($base, $exponent) {
+    @if $exponent < 0 {
+        @return 1 / -math-pow-int($base, -$exponent);
+    } @else if $exponent == 0 {
+        @return 1;
+    } @else if $exponent == 1 {
+        @return $base;
+    } @else {
+        $exp: floor($exponent / 2);
+        $pow: -math-pow-int($base, $exp);
+        @if $exp * 2 == $exponent {
+            @return $pow * $pow;
+        } @else {
+            @return $pow * $pow * $base;
+        }
+    }
+}
+
+@function -math-log-approx($x) {
+    @if $x <= 0 {
+        @error "cannot calculate log of #{$x}";
+    } @else if $x >= 1 {
+        // choose the smaller option (-1) because it yield better
+        // results in ln().
+        @return str-length(inspect(round($x))) - 1;
+    } @else {
+        @return -1 * str-length(inspect(round(1 / $x)));
+    }
+}
+
+@function ln($x, $steps: 32) {
+    $ln10: 2.302585092994046;
+    $approx: -math-log-approx($x);
+    // $y is in range [1, 10]
+    $y: $x / -math-pow-int(10, $approx);
+    @return $approx * $ln10 + -math-ln-taylor-1($y, $steps);
+}
+
+@function pow($x, $exponent, $steps: 32) {
+    $exp1: round($exponent);
+    $exp2: $exponent - $exp1;
+    $pow1: -math-pow-int($x, $exp1);
+    @if $exp2 == 0 {
+        @return $pow1;
+    } @else {
+        $y: ln($x, $steps) * $exp2;
+        $pow2: -math-exp-taylor-0($y, $steps);
+        @return $pow1 * $pow2;
+    }
+}
+
+@function sqrt($x, $exponent: 2, $steps: 32) {
+    @return pow($x, 1 / $exponent, $steps);
+}
+
+@function sin($x, $steps: 32) {
+    $y: $x % (2 * $PI);
+    @if $y > $PI {
+        @return -1 * sin($y - $PI);
+    } @else if $y < 0 {
+        @return -1 * sin(-$y);
+    } @else {
+        @return -math-sin-taylor-0($y % (2 * $PI), $steps);
+    }
+}
+
+@function cos($x, $steps: 32) {
+    @return sin($x - $PI / 2, $steps);
+}
+
+@function tan($x, $steps: 32) {
+    @return sin($x, $steps) / $cos($x, $steps);
+}

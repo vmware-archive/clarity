@@ -1,0 +1,28 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Usage: ../layout/main-containter/_layout.clarity.scss
+// Usage: ../layout/nav/_header.clarity.scss
+// Usage: ../layout/nav/_responsive-nav.clarity.scss
+$clr-header-height: 2.5rem !default;
+
+// Usage: ../layout/nav/_header.clarity.scss
+$clr-header-bgColor: $gray-darkest !default;
+$clr-header-textColor: clr-getTextColor($clr-header-bgColor, lightest);
+$clr-logo-width: 1.5rem;
+$clr-nav-icon-size: 0.916667rem;
+$clr-header-section-divider-height: 1.666667rem;
+$clr-search-icon-width: 0.833333rem;
+$clr-header-divider-opacity: 0.15;
+$clr-header-nav-opactiy: 0.65;
+$clr-header-nav-hover-opacity: 1;
+$clr-header-outline-offset: -0.208333rem;
+$clr-header-clarity-icons-size: 1rem;
+$clr-header-nav-text-horizontal-padding: 1rem !default
+$clr-header-2-bg-color: #485969;
+$clr-header-3-bg-color: $action-purples-darkest;
+$clr-header-4-bg-color: $clr-blue;
+$clr-header-5-bg-color: $action-blues-dark;
+$clr-header-6-bg-color: $action-blues-darkest;
+$clr-header-7-bg-color: #314351;

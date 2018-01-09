@@ -1,17 +1,17 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
 
-import {CommerceShapes} from "../../clarity-icons/shapes/commerce-shapes";
-import {CoreShapes} from "../../clarity-icons/shapes/core-shapes";
-import {EssentialShapes} from "../../clarity-icons/shapes/essential-shapes";
-import {MediaShapes} from "../../clarity-icons/shapes/media-shapes";
-import {SocialShapes} from "../../clarity-icons/shapes/social-shapes";
-import {TechnologyShapes} from "../../clarity-icons/shapes/technology-shapes";
-import {TravelShapes} from "../../clarity-icons/shapes/travel-shapes";
+import {CommerceShapes} from "../../clr-icons/shapes/commerce-shapes";
+import {CoreShapes} from "../../clr-icons/shapes/core-shapes";
+import {EssentialShapes} from "../../clr-icons/shapes/essential-shapes";
+import {MediaShapes} from "../../clr-icons/shapes/media-shapes";
+import {SocialShapes} from "../../clr-icons/shapes/social-shapes";
+import {TechnologyShapes} from "../../clr-icons/shapes/technology-shapes";
+import {TravelShapes} from "../../clr-icons/shapes/travel-shapes";
 
 
 const coreShapes = Object.keys(CoreShapes);
@@ -29,7 +29,7 @@ const technologyShapes = Object.keys(TechnologyShapes);
     templateUrl: "./icon-selection.demo.html"
 })
 export class IconSelectionDemo {
-    commonPath = "clarity-icons/shapes/svg-source/";
+    commonPath = "clr-icons/shapes/svg-source/";
     // coreSetLink = this.commonPath + "core-shapes.zip";
     // commerceSetLink = this.commonPath + "commerce-shapes.zip";
     // mediaSetLink = this.commonPath + "media-shapes.zip";

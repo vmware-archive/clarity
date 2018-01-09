@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {ViewChild} from "@angular/core";
-import {StackBlock} from "../../clarity-angular/data/stack-view/stack-block";
+import {ClrStackBlock} from "../../clr-angular/data/stack-view/stack-block";
 
 export class StackViewNgDemo {
     /*
@@ -29,7 +29,7 @@ export class StackViewNgDemo {
     /*
      * Lazy loading demo
      */
-    @ViewChild("lazyBlock") lazyBlock: StackBlock;
+    @ViewChild("lazyBlock") lazyBlock: ClrStackBlock;
     children: any[] = [];
 
     fetchChildren(): void {

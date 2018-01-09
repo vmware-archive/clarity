@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -13,7 +13,7 @@ interface Filter<T> {
 `,
 
     inlineFilterTS: `
-import {Filter} from "clarity-angular";
+import {Filter} from "@clr/angular";
 
 class MyFilter implements Filter<User> {
     changes = new Subject<any>();
@@ -38,7 +38,7 @@ class MyComponent {
 `,
 
     customFilterComponentTS: `
-import {Filter, DatagridFilter} from "clarity-angular";
+import {Filter, DatagridFilter} from "@clr/angular";
 
 @Component({
     selector: "my-filter",
@@ -87,7 +87,7 @@ class MyReusableFilter {
 `,
 
     colorFilterTS: `
-import {Filter} from "clarity-angular";
+import {Filter} from "@clr/angular";
 
 @Component({
     selector: "color-filter",

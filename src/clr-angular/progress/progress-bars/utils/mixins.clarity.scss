@@ -1,0 +1,16 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin clr-progress-color($color: $clr-action-blue) {
+    // for IE...
+    color: $color;
+
+    &::-webkit-progress-value {
+        background-color: $color;
+    }
+
+    &::-moz-progress-bar {
+        background-color: $color;
+    }
+}

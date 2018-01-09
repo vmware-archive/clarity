@@ -1,0 +1,81 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@function baselineRem($remSize) {
+    @return $remSize * $clr-baseline;
+}
+
+//Because the "rem" unit does not work on pseudo-elements in IE,
+//we use a function to compute "rem" to "px" with Sass.
+@function rem($remSize) {
+    @warn 'rem() is deprecated. Please change units to rem.';
+    @return $remSize * $clr-font-base-size * 1px;
+};
+
+//Get a selector for all the input types specified
+@function inputs($types...) {
+    $inputs: ();
+    @each $type in $types {
+        $inputs: $inputs, unquote('input[type='+$type+']');
+    }
+    @return quote($inputs);
+}
+
+@mixin clr-appearance-normal(){
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+}
+
+@mixin clr-no-styles-button {
+    @include clr-appearance-normal();
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+}
+
+//Dropdowns & Tooltips
+$opp-directions: (
+    top: bottom,
+    bottom: top,
+    left: right,
+    right: left
+);
+
+@mixin clr-container() {
+    & > :first-child {
+        margin-top: 0;
+    }
+    & > :last-child {
+        margin-bottom: 0;
+    }
+ }
+
+@mixin fixForFirefox() {
+    @-moz-document url-prefix() {
+        @content;
+    }
+}
+
+@mixin fixForMsEdge() {
+    @supports (-ms-ime-align:auto) {
+        @content;
+    }
+}
+
+@mixin fixForIE10AndUp() {
+    _:-ms-input-placeholder, :root {
+        @content;
+    }
+}
+
+@mixin fixForIE11AndUp() {
+    _:-ms-fullscreen, :root {
+        @content;
+    }
+}

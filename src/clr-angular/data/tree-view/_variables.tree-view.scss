@@ -1,0 +1,21 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Usage: ../data/tree-view/_tree-vioew.clarity.scss
+$clr-tree-border-radius: $clr-global-borderradius;
+$clr-tree-caret-size: $clr-icon-dimension-sm;
+$clr-tree-spinner-size: $clr-icon-dimension-sm;
+$clr-tree-node-touch-target: 1.25rem;
+$clr-tree-node-children-margin: $clr-tree-node-touch-target - $clr-tree-caret-size / 2 - $clr-rem-1px;
+$clr-tree-node-touch-target-big: 1.5rem;
+$clr-tree-node-touch-target-small: 1rem;
+$clr-tree-node-content-icon-margin-right: 0.25rem;
+$clr-tree-node-link-padding-left: 0.25rem;
+$clr-tree-node-caret-link-hover-color: $clr-black;
+$clr-tree-link-hover-color: $clr-custom-links-hover-color;
+$clr-tree-link-selection-color: $clr-global-selection-color;
+$clr-tree-link-text-color: clr-getTextColor();
+$clr-tree-checkbox-padding-top: ($clr-tree-node-touch-target - $clr-checkbox-radio-label-height) / 2;
+$clr-tree-checkbox-padding-left: ($clr-tree-node-touch-target - $clr-checkbox-radio-height) / 2;
+$clr-tree-node-caret-color: $gray-dark-midtone;

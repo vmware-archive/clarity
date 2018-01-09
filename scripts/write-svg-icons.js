@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -174,7 +174,7 @@ let makeSVG = (shapeTitle, shapeContent) => {
 
 
 //use shapes from this directory
-const SOURCE_PATH = path.join(__dirname, "../dist/clarity-icons/shapes");
+const SOURCE_PATH = path.join(__dirname, "../dist/clr-icons/shapes");
 
 let makeSVGset = (setName, callback) => {
 

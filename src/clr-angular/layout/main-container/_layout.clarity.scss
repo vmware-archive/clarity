@@ -1,0 +1,89 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('layout.clarity') {
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        background: $clr-global-app-background;
+
+        .alert.alert-app-level {
+            flex: 0 0 auto;
+            overflow-x: hidden;
+        }
+
+        header,
+        .header {
+            flex: 0 0 $clr-header-height;
+        }
+
+        .sub-nav,
+        .subnav {
+            flex: 0 0 $clr-subnav-height;
+        }
+
+        //This is a utility class which mimics the main-container class
+        //and occupies the remaining space inside of the main-container
+        //after the header just in case our users app layout requires
+        //that the .subnav and the .content-container be inside of an
+        //angular component
+        .u-main-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+            overflow: hidden; //IE 10 doesn't like it if we don't use this
+        }
+
+        .content-container {
+            display: flex;
+            flex: 1 1 auto;
+
+            //needed for Firefox:
+            //http://stackoverflow.com/a/30580228/3538394
+            //http://stackoverflow.com/a/26916542/3538394
+            //min-height: 0px works in Firefox but not in IE. IE wants a positive value
+            //IE:
+            //http://stackoverflow.com/a/14964944/3538394
+            min-height: 1px;
+
+            .content-area {
+                flex: 1 1 auto;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                padding: $clr-content-area-padding-top $clr-content-area-padding-right $clr-content-area-padding-bottom $clr-content-area-padding-left;
+
+                & > :first-child {
+                    margin-top: 0;
+                }
+            }
+
+            .sidenav {
+                flex: 0 0 auto;
+                order: -1;
+                overflow: hidden; //overflow-y enabled in .sidenav-content
+            }
+
+            .clr-vertical-nav {
+                flex: 0 0 auto;
+                order: -1;
+            }
+        }
+    }
+
+    @media print {
+        .main-container {
+            height: auto;
+        }
+    }
+
+    body.no-scrolling .main-container .content-container .content-area {
+        overflow: hidden;
+    }
+
+    body.no-scrolling {
+        overflow: hidden;
+    }
+}

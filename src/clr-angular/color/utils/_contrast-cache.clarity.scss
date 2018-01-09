@@ -1,0 +1,270 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// using cache for contrast lookup shaved 7 seconds off sass build. over 50% at this time.
+// using interpolation for cacheContrast keys increased build time almost 250%.
+
+// this cache is not exactly what the color code would pass; minor liberties were taken to apply design sense to
+// the cached colors returned. what you will get is, at least, an acceptable color contrast with a color that
+// returns as inoffensive. if you get funky with the colors you're trying to contrast with, you're at the mercy
+// of the contrast checker. if you go around the contrast checker, well... why are you reading this?
+
+// WCAG AA ratios represented by mapped values:
+// low = 3.00 and up (applicable to very large text, bolded normal-size text, or a combination of the two)
+// default = 4.5 and up (applicable to normal-sized text that is not bolded or large text that is thin)
+// high = 7 and up (applicable to normal-sized text that is thin or small, normal weight text)
+// superHigh = 13 and up (applicable to very small, normal weight text or small, thin text)
+
+$clr-gray-contrastCache: (
+    #fff: (
+        lightest: ( low: $clr-dark-gray, default: $clr-dark-gray, high: $clr-dark-gray, superHigh: $clr-near-black),
+        darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: $clr-black),
+        middle-light: ( low: null, default: null, high: null, superHigh: null),
+        middle-dark: ( low: $clr-dark-gray, default: $clr-dark-gray, high: $clr-dark-gray, superHigh: $clr-near-black)
+    ),
+    #fafafa: (
+        lightest: ( low: $clr-dark-gray, default: $clr-dark-gray, high: $clr-dark-gray, superHigh: $clr-near-black),
+        darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: $clr-black),
+        middle-light: ( low: null, default: null, high: null, superHigh: null),
+        middle-dark: ( low: $clr-dark-gray, default: $clr-dark-gray, high: $clr-dark-gray, superHigh: $clr-near-black)
+    ),
+    #eee: (
+        lightest: ( low: $clr-dark-gray, default: $clr-dark-gray, high: $clr-dark-gray, superHigh: $clr-near-black),
+        darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: $clr-black),
+        middle-light: ( low: null, default: null, high: null, superHigh: null),
+        middle-dark: ( low: $clr-dark-gray, default: $clr-dark-gray, high: $clr-dark-gray, superHigh: $clr-near-black)
+    ),
+    #ddd: (
+        lightest: ( low: $clr-near-black, default: $clr-near-black, high: $clr-near-black, superHigh: $clr-black),
+        darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: $clr-black),
+        middle-light: ( low: null, default: null, high: null, superHigh: null),
+        middle-dark: ( low: $clr-near-black, default: $clr-near-black, high: $clr-near-black, superHigh: $clr-black)
+    ),
+    #ccc: (
+        lightest: ( low: $clr-near-black, default: $clr-near-black, high: $clr-near-black, superHigh: $clr-black),
+        darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: $clr-black),
+        middle-light: ( low: null, default: null, high: null, superHigh: null),
+        middle-dark: ( low: $clr-near-black, default: $clr-near-black, high: $clr-near-black, superHigh: $clr-black)
+    ),
+    #9a9a9a: (
+        lightest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: null ),
+        darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: null ),
+        middle-light: ( low: null, default: null, high: null, superHigh: null),
+        middle-dark: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: null )
+    ),
+    #737373: (
+        lightest: ( low: $clr-white, default: $clr-white, high: null, superHigh: null),
+        darkest: ( low: $clr-light-gray, default: $clr-near-white, high: null, superHigh: null),
+        middle-light: ( low: $clr-near-white, default: $clr-near-white, high: null, superHigh: null),
+        middle-dark: ( low: $clr-black, default: null, high: null, superHigh: null)
+    ),
+    #565656: (
+        lightest: ( low: $clr-white, default: $clr-white, high: $clr-white, superHigh: null),
+        darkest: ( low: $clr-light-midtone-gray, default: $clr-light-midtone-gray, high: $clr-near-white, superHigh: null),
+        middle-light: ( low: $clr-near-white, default: $clr-near-white, high: $clr-near-white, superHigh: null),
+        middle-dark: ( low: null, default: null, high: null, superHigh: null)
+    ),
+    #313131: (
+        lightest: ( low: $clr-white, default: $clr-white, high: $clr-white, superHigh: $clr-white),
+        darkest: ( low: $clr-light-midtone-gray, default: $clr-light-midtone-gray, high: $clr-light-midtone-gray, superHigh: $clr-white),
+        middle-light: ( low: $clr-near-white, default: $clr-near-white, high: $clr-near-white, superHigh: $clr-white),
+        middle-dark: ( low: $clr-dark-midtone-gray, default: $clr-dark-midtone-gray, high: null, superHigh: null)
+    ),
+    #000: (
+        lightest: ( low: $clr-white, default: $clr-white, high: $clr-white, superHigh: $clr-white),
+        darkest: ( low: $clr-light-midtone-gray, default: $clr-light-midtone-gray, high: $clr-light-midtone-gray, superHigh: $clr-light-gray),
+        middle-light: ( low: $clr-near-white, default: $clr-light-gray, high: $clr-light-gray, superHigh: $clr-light-gray),
+        middle-dark: ( low: $clr-dark-midtone-gray, default: $clr-dark-midtone-gray, high: $clr-dark-midtone-gray, superHigh: null)
+    )
+);
+
+$clr-blue-contrastCache: (
+    #e1f1f6: (
+        lightest: ( low: $clr-dark-gray, default: $clr-dark-gray, high: $clr-near-black, superHigh: $clr-black ),
+        darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: $clr-black ),
+        middle-light: ( low: null, default: null, high: null, superHigh: null),
+        middle-dark: ( low: $clr-near-black, default: $clr-near-black, high: $clr-near-black, superHigh: $clr-black )
+    ),
+    #c0dae4: (
+        lightest: ( low: $clr-dark-gray, default: $clr-dark-gray, high: $clr-near-black, superHigh: $clr-black ),
+        darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: $clr-black ),
+        middle-light: ( low: null, default: null, high: null, superHigh: null),
+        middle-dark: ( low: $clr-near-black, default: $clr-near-black, high: $clr-near-black, superHigh: $clr-black )
+    ),
+    #a9cdda: (
+        lightest: ( low: $clr-dark-gray, default: $clr-near-black, high: $clr-near-black, superHigh: null ),
+        darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: null ),
+        middle-light: ( low: null, default: null, high: null, superHigh: null),
+        middle-dark: ( low: $clr-near-black, default: $clr-near-black, high: $clr-near-black, superHigh: null )
+    ),
+    #66a6bd: (
+        lightest: ( low: $clr-near-black, default: $clr-near-black, high: $clr-black, superHigh: null ),
+        darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: null ),
+        middle-light: ( low: null, default: null, high: null, superHigh: null),
+        middle-dark: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: null )
+    ),
+    #4392ae: (
+        lightest: ( low: $clr-white, default: null, high: null, superHigh: null ),
+        darkest: ( low: $clr-black, default: $clr-black, high: null, superHigh: null ),
+        middle-light: ( low: $clr-near-white, default: null, high: null, superHigh: null ),
+        middle-dark: ( low: $clr-near-black, default: $clr-black, high: null, superHigh: null )
+    ),
+    #006a91: (
+        lightest: ( low: $clr-white, default: $clr-white, high: null, superHigh: null),
+        darkest: ( low: $clr-near-white, default: $clr-near-white, high: null, superHigh: null ),
+        middle-light: ( low: $clr-near-white, default: $clr-near-white, high: null, superHigh: null ),
+        middle-dark: ( low: null, default: null, high: null, superHigh: null)
+    ),
+    #004057: (
+        lightest: ( low: $clr-white, default: $clr-white, high: $clr-white, superHigh: null ),
+        darkest: ( low: $clr-near-white, default: $clr-near-white, high: $clr-near-white, superHigh: null),
+        middle-light: ( low: $clr-near-white, default: $clr-near-white, high: $clr-near-white, superHigh: null),
+        middle-dark: ( low: null, default: null, high: null, superHigh: null)
+    )
+);
+
+$clr-action-blue-contrastCache: (
+    #89cbdf: (
+        lightest: ( low: $clr-near-black, default: $clr-near-black, high: $clr-near-black, superHigh: null ),
+        darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: null ),
+        middle-light: ( low: null, default: null, high: null, superHigh: null),
+        middle-dark: ( low: $clr-near-black, default: $clr-near-black, high: $clr-near-black, superHigh: null )
+    ),
+    #49afd9: (
+        lightest: ( low: $clr-near-black, default: $clr-near-black, high: $clr-black, superHigh: null ),
+        darkest:  ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: null ),
+        middle-light: ( low: null, default: null, high: null, superHigh: null),
+        middle-dark: ( low: $clr-near-black, default: $clr-near-black, high: $clr-black, superHigh: null )
+    ),
+    #0094d2: (
+        lightest: ( low: $clr-white, default: null, high: null, superHigh: null ),
+        darkest: ( low: $clr-black, default: $clr-black, high: null, superHigh: null ),
+        middle-light: ( low: $clr-white, default: null, high: null, superHigh: null),
+        middle-dark: ( low: $clr-near-black, default: $clr-black, high: null, superHigh: null )
+    ),
+    #007cbb: (
+        lightest: ( low: $clr-white, default: $clr-white, high: null, superHigh: null ),
+        darkest: ( low: null, default: null, high: null, superHigh: null ),
+        middle-light: ( low: $clr-near-white, default: $clr-white, high: null, superHigh: null ),
+        middle-dark: ( low: null, default: null, high: null, superHigh: null )
+    ),
+    #004a70: (
+        lightest: ( low: $clr-white, default: $clr-white, high: $clr-white, superHigh: null ),
+        darkest: ( low: $clr-light-midtone-gray, default: $clr-light-midtone-gray, high: $clr-near-white, superHigh: null ),
+        middle-light: ( low: $clr-near-white, default: $clr-near-white, high: $clr-near-white, superHigh: null ),
+        middle-dark: ( low: $clr-dark-midtone-gray, default: null, high: null, superHigh: null )
+    ),
+    #003a59: (
+        lightest: ( low: $clr-white, default: $clr-white, high: $clr-white, superHigh: null ),
+        darkest: ( low: $clr-light-gray, default: $clr-light-gray, high: $clr-light-gray, superHigh: null ),
+        middle-light: ( low: $clr-light-midtone-gray, default: $clr-light-midtone-gray, high: $clr-light-gray, superHigh: null ),
+        middle-dark: ( low: null, default: null, high: null, superHigh: null )
+    )
+);
+
+$clr-action-purple-contrastCache: (
+    #9460b8: (
+        lightest: ( low: $clr-white, default: $clr-white, high: null, superHigh: null ),
+        darkest: ( low: $clr-near-white, default: $clr-white, high: null, superHigh: null ),
+        middle-light: ( low: $clr-near-white, default: $clr-white, high: null, superHigh: null ),
+        middle-dark: ( low: $clr-black, default: $clr-black, high: null, superHigh: null )
+    ),
+    #853fb3: (
+        lightest: ( low: $clr-white, default: $clr-white, high: null, superHigh: null ),
+        darkest: ( low: $clr-near-white, default: $clr-near-white, high: null, superHigh: null ),
+        middle-light: ( low: $clr-near-white, default: $clr-near-white, high: null, superHigh: null ),
+        middle-dark: ( low: null, default: null, high: null, superHigh: null )
+    ),
+    #660092: (
+        lightest: ( low: $clr-white, default: $clr-white, high: $clr-white, superHigh: null ),
+        darkest: ( low: $clr-light-midtone-gray, default: $clr-light-midtone-gray, high: $clr-light-gray, superHigh: null ),
+        middle-light: ( low: $clr-near-white, default: $clr-near-white, high: $clr-near-white, superHigh: null ),
+        middle-dark: ( low: null, default: null, high: null, superHigh: null )
+    ),
+    #50266b: (
+        lightest: ( low: $clr-white, default: $clr-white, high: $clr-white, superHigh: null ),
+        darkest: ( low: $clr-light-midtone-gray, default: $clr-light-midtone-gray, high: $clr-light-gray, superHigh: null ),
+        middle-light: ( low: $clr-near-white, default: $clr-near-white, high: $clr-near-white, superHigh: null ),
+        middle-dark: ( low: null, default: null, high: null, superHigh: null )
+    )
+);
+
+$clr-red-contrastCache: (
+    #e62700: (
+        lightest: ( low: $clr-white, default: $clr-white, high: null, superHigh: null ),
+        darkest: ( low: $clr-near-white, default: $clr-white, high: null, superHigh: null ),
+        middle-light: ( low: $clr-near-white, default: $clr-white, high: null, superHigh: null ),
+        middle-dark: ( low: $clr-black, default: $clr-black, high: null, superHigh: null )
+    ),
+    #c92100: (
+        lightest: ( low: $clr-white, default: $clr-white, high: null, superHigh: null ),
+        darkest: ( low: $clr-near-white, default: $clr-near-white, high: null, superHigh: null ),
+        middle-light: ( low: $clr-near-white, default: $clr-near-white, high: null, superHigh: null ),
+        middle-dark: ( low: null, default: null, high: null, superHigh: null )
+    )
+);
+
+$clr-yellow-contrastCache: (
+    #FFDC0B: (
+        lightest: ( low: $clr-near-black, default: $clr-near-black, high: $clr-near-black, superHigh: $clr-black ),
+        darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: $clr-black ),
+        middle-light: ( low: null, default: null, high: null, superHigh: null ),
+        middle-dark: ( low: $clr-near-black, default: $clr-near-black, high: $clr-near-black, superHigh: $clr-black )
+    )
+);
+
+$clr-green-contrastCache: (
+    #c6e4ab: (
+        lightest: ( low: $clr-dark-gray, default: $clr-near-black, high: $clr-near-black, superHigh: $clr-black ),
+        darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: $clr-black ),
+        middle-light: ( low: null, default: null, high: null, superHigh: null ),
+        middle-dark: ( low: $clr-dark-gray, default: $clr-near-black, high: $clr-near-black, superHigh: $clr-black )
+    ),
+    #a0d373: (
+        lightest: ( low: $clr-dark-gray, default: $clr-near-black, high: $clr-near-black, superHigh: null ),
+        darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: null ),
+        middle-light: ( low: null, default: null, high: null, superHigh: null ),
+        middle-dark: ( low: $clr-dark-gray, default: $clr-near-black, high: $clr-near-black, superHigh: null )
+    ),
+    #62a420: (
+        lightest: ( low: $clr-white, default: null, high: null, superHigh: null ),
+        darkest: ( low: $clr-black, default: $clr-black, high: null, superHigh: null ),
+        middle-light: ( low: $clr-near-white, default: null, high: null, superHigh: null ),
+        middle-dark: ( low: $clr-near-black, default: $clr-black, high: null, superHigh: null )
+    ),
+    #60b515: (
+        lightest: ( low: $clr-near-black, default: $clr-near-black, high: $clr-black, superHigh: null ),
+        darkest: ( low: $clr-black, default: $clr-black, high: $clr-black, superHigh: null ),
+        middle-light: ( low: null, default: null, high: null, superHigh: null ),
+        middle-dark: ( low: $clr-dark-gray, default: $clr-near-black, high: $clr-black, superHigh: null )
+    ),
+    #318700: (
+        lightest: ( low: $clr-white, default: $clr-white, high: null, superHigh: null ),
+        darkest: ( low: $clr-near-white, default: $clr-white, high: null, superHigh: null ),
+        middle-light: ( low: $clr-near-white, default: $clr-white, high: null, superHigh: null ),
+        middle-dark: ( low: null, default: null, high: null, superHigh: null )
+    ),
+    #266900: (
+        lightest: ( low: $clr-white, default: $clr-white, high: null, superHigh: null ),
+        darkest: ( low: $clr-near-white, default: $clr-near-white, high: null, superHigh: null ),
+        middle-light: ( low: $clr-near-white, default: $clr-near-white, high: null, superHigh: null ),
+        middle-dark: ( low: null, default: null, high: null, superHigh: null )
+    ),
+    #1d5100: (
+        lightest: ( low: $clr-white, default: $clr-white, high: $clr-white, superHigh: null ),
+        darkest: ( low: $clr-near-white, default: $clr-near-white, high: $clr-near-white, superHigh: null ),
+        middle-light: ( low: $clr-near-white, default: $clr-near-white, high: $clr-near-white, superHigh: null ),
+        middle-dark: ( low: null, default: null, high: null, superHigh: null )
+    )
+);
+
+// sadly, map-merge can only handle 2 arguments so we have this. which is slightly
+// more readable than a bunch of hex-colors in one assignement.
+$clr-contrastCache: $clr-gray-contrastCache;
+$clr-contrastCache:  map-merge($clr-contrastCache, $clr-blue-contrastCache);
+$clr-contrastCache:  map-merge($clr-contrastCache, $clr-action-blue-contrastCache);
+$clr-contrastCache:  map-merge($clr-contrastCache, $clr-action-purple-contrastCache);
+$clr-contrastCache:  map-merge($clr-contrastCache, $clr-red-contrastCache);
+$clr-contrastCache:  map-merge($clr-contrastCache, $clr-yellow-contrastCache);
+$clr-contrastCache:  map-merge($clr-contrastCache, $clr-green-contrastCache);

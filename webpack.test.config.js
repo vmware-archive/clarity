@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
 const path = require("path");
 
 module.exports = {
@@ -6,8 +12,8 @@ module.exports = {
     resolve: {
         modules: [
             path.join(process.cwd(), 'src/app'),
-            path.join(process.cwd(), 'src/clarity-angular'),
-            path.join(process.cwd(), 'src/clarity-icons'),
+            path.join(process.cwd(), 'src/clr-angular'),
+            path.join(process.cwd(), 'src/clr-icons'),
             "./node_modules"
         ],
         extensions: [".ts", ".js", ".json"]

@@ -1,0 +1,142 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@function clr-getColor($colorIndexOrBase: base, $colorType: grays) {
+    $colorMap: _clr-lookupColorMap($colorType);
+
+    @if $colorIndexOrBase == base {
+        @return map-get($colorMap, $colorIndexOrBase);
+    } @else {
+        @return _clr-getColorFromList($colorIndexOrBase, map-get($colorMap, hex-colors));
+    }
+}
+
+// clr-getBaseColor() is very specific and requires an understanding of the clarity color palette. this is not optimal but it's a helper function.
+@function clr-getBaseColor($type: gray) {
+    $clr-base-color-helpermap: (white: 1, gray: 2, blue: 3, actionblue: 4, green: 5, grey: 2, highlight: 4, light-background: 1, dark-background: 2, blue-background: 3, link-color: 4, success-color: 5);
+    $whatToGet: map-get($clr-base-color-helpermap, $type);
+    @return _clr-getColorFromList($whatToGet, map-get($clr-base-colors, hex-colors));
+}
+
+// return false to bypass; return null forces warning that there was no contrast for color;
+@function clr-getTextContrastFromCache($color: $clr-white, $tone:  darkest, $failThreshold:  4.50) {
+    $originalGrays: (#fff, #fafafa, #eee, #ddd, #ccc, #9a9a9a, #737373, #565656, #313131, #000);
+    $failThresholdLabel: default;
+
+    @if not(map-get($clr-grays, hex-colors) == $originalGrays) {
+        @warn 'Changes to neutral palette have invalidated contrast-cache. Please update contrast-cache.scss';
+        @return false;
+    }
+
+    @if map-has-key($clr-contrastCache, $color) == true {
+        $currentColor: map-get($clr-contrastCache, $color);
+
+        @if $failThreshold == 3.00 {
+            $failThresholdLabel:  low;
+        } @else if $failThreshold == 7.00 {
+            $failThresholdLabel: high;
+        } @else if $failThreshold == 13.00 {
+            $failThresholdLabel: superHigh;
+        }
+
+        $returnVal: map-get(map-get(map-get($clr-contrastCache, $color), $tone), $failThresholdLabel);
+
+        @return $returnVal;
+    }
+
+    @return false;
+}
+
+@function clr-getTextContrast($background: clr-getColor(lightest), $preferredTone: darkest, $textWeight: normal, $textSize: normal, $preferredColor: grays) {
+    $failThreshold: _clr-getContrastFailThreshold($textWeight, $textSize);
+    $failColor:  #ff0080; // fushcia
+
+    @if $preferredColor == grays {
+        $lookupCacheColor: clr-getTextContrastFromCache($background, $preferredTone, $failThreshold);
+
+        @if $lookupCacheColor == null {
+            @warn 'clr-getTextContrast: no acceptable #{$preferredTone} color contrast for #{$background}';
+            @return $failColor;
+        } @else if not($lookupCacheColor == false) {
+            @return $lookupCacheColor;
+        }
+    }
+
+    $preferredColorMap: _clr-lookupColorMap($preferredColor);
+    $tonesList: map-get($preferredColorMap, hex-colors);
+    $tonesListLength:  length($tonesList);
+    $tonesListHalfLength:  floor($tonesListLength/2);
+
+    // middle-light starts from the middle and returns the first contrasting tone up to the lightest: tones 4 to 1;
+    // middle-dark starts from the middle and returns the first contrasting tone down to the darkest: tones 5 to 8;
+
+    @if $preferredTone == middle-light {
+        // most likely this hits what we want, if not try again below
+        @for $i from ($tonesListHalfLength + 1) through $tonesListLength {
+            $color: _clr-getColorFromList($i, $tonesList);
+            $test: _clr-testColorContrast($color, $background, $failThreshold);
+
+            @if ($test == true) {
+                @return $color;
+            }
+        }
+    } @else if $preferredTone == middle-dark {
+        @for $i from ($tonesListHalfLength * -1) through -1 {
+            $color: _clr-getColorFromList(abs($i), $tonesList);
+            $test: _clr-testColorContrast($color, $background, $failThreshold);
+
+            @if ($test == true) {
+                @return $color;
+            }
+        }
+    } @else if $preferredTone == lightest {
+        // go from lightest to darkest...
+        @for $i from 1 through $tonesListLength {
+            $color: _clr-getColorFromList($i, $tonesList);
+            $test: _clr-testColorContrast($color, $background, $failThreshold);
+
+            @if ($test == true) {
+                @return $color;
+            }
+        }
+    } @else {
+        // go from darkest to lightest...
+        @for $i from ($tonesListLength * -1) through -1 {
+            $color: _clr-getColorFromList(abs($i), $tonesList);
+            $test: _clr-testColorContrast($color, $background, $failThreshold);
+
+            @if ($test == true) {
+                @return $color;
+            }
+        }
+    }
+
+    // this will throw a SASS error because the function returns no value in this instance
+    @warn 'clr-getTextContrast: no acceptable #{$preferredTone} color contrast for #{$background}';
+
+    @return $failColor; // returns fuschia to alert that there's a bad color combo. may change in future.
+}
+
+// types of text color you can ask for include: text, subtext, black, white, lightest, darkest, hover-text, hover-text-hovered, hover-text-active, and hover-text-clicked
+
+@function clr-getTextColor($background: clr-getColor(lightest), $preferredType: text, $textWeight: normal, $textSize: normal, $preferredColor: grays) {
+    $failThreshold: _clr-getContrastFailThreshold($textWeight, $textSize);
+
+    @if ($preferredType == black or $preferredType == white) {
+        @return _clr-getAchromaticColor($background, $preferredType, $failThreshold);
+    }
+
+    $bgLuminanceType: _clr-isLightOrDark($background, $failThreshold);
+    $translatedType: $preferredType;
+
+    @if ($preferredType == hover-text) {
+        $translatedType: hoverable;
+    } @else if ($preferredType == hover-text-hovered) {
+        $translatedType: hovered;
+    } @else if ($preferredType == hover-text-clicked or $preferredType == hover-text-active) {
+        $translatedType: clicked;
+    }
+
+    @return _clr-testAndReturnTextColor($background, $translatedType, $bgLuminanceType, $failThreshold, $preferredColor);
+}

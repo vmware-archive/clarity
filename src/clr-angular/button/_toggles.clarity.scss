@@ -1,0 +1,160 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+ @include exports('toggles.clarity') {
+    //Remove the default checkbox appearance
+    %custom-checkbox {
+        @include clr-appearance-normal();
+    }
+
+    .toggle-switch {
+        display: inline-block;
+        height: $clr-toggle-height;
+        margin-right: 1rem;
+        vertical-align: middle;
+        position: relative;
+
+        label {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            height: $clr-toggle-height;
+            margin-right: 2rem;
+        }
+
+        input[type="checkbox"] {
+            @extend %custom-checkbox;
+
+            position: absolute;
+            top: 0.25rem;
+            right: 0.25rem;
+            height: $clr-icon-dimension-sm;
+            width: $clr-icon-dimension-sm;
+            opacity: 0;
+        }
+
+        input[type="checkbox"] + label::before {
+            position: absolute;
+            display: inline-block;
+            content: '';
+            height: $clr-toggle-switch-base-height;
+            width: $clr-toggle-switch-base-width;
+            border: 2px solid;
+            border-radius: 0.375rem;
+            border-color: $clr-toggle-bg-color-off;
+            background-color: $clr-toggle-bg-color-off;
+            top: ($clr-toggle-height - $clr-toggle-switch-base-height) / 2;
+            right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing);
+            transition: $clr-toggle-transition-time $clr-toggle-transition-animation;
+            transition-property: border-color, background-color;
+        }
+
+        input[type="checkbox"]:focus + label::before {
+            @include include-outline-style-form-fields();
+        }
+
+        input[type="checkbox"]:checked + label::before {
+            border-color: $clr-toggle-bg-color-on;
+            background-color: $clr-toggle-bg-color-on;
+            transition: $clr-toggle-transition-time $clr-toggle-transition-animation;
+            transition-property: border-color, background-color;
+        }
+
+        //Toggle Switch
+        input[type="checkbox"] + label::after {
+            position: absolute;
+            display: inline-block;
+            content: '';
+            height: $clr-toggle-switch-height;
+            width: $clr-toggle-switch-height;
+            border: $clr-default-borderwidth solid $clr-toggle-handle-bg-color;
+            border-radius: 50%;
+            background-color: $clr-toggle-handle-bg-color;
+            // TOCHECK: COMPUTATION...
+            top: ($clr-toggle-height - $clr-toggle-switch-height) / 2;
+            right: -1 * $clr-toggle-switch-left-spacing;
+            transition: right $clr-toggle-transition-time $clr-toggle-transition-animation;
+        }
+
+        input[type="checkbox"]:checked + label::after {
+            right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+            transition: right $clr-toggle-transition-time $clr-toggle-transition-animation;
+        }
+
+        &.disabled {
+            label {
+                opacity: 0.4;
+                cursor: not-allowed;
+            }
+
+            input[type="checkbox"]:checked + label::before {
+                border-color: $clr-toggle-disabled-on-border-color; // No effect on our demos
+                background-color: $clr-toggle-disabled-on-bg-color; // No effect on our demos
+            }
+        }
+
+        // TODO: cleanup hard-coded sizes in here. not sure what they are keying on...
+        input[type="checkbox"]:disabled + label {
+            cursor: not-allowed;
+
+            &::before {
+                // toggle disabled/off bg color
+                background-color: $clr-toggle-disabled-off-bg-color;
+                // toggle disabled/off border color (excluding the handle circle)
+                border-color: $clr-toggle-disabled-off-border-color;
+            }
+
+            &::after {
+                // toggle handle color for disabled/off and inner part of handle disabled/on
+                background-color: $clr-toggle-disabled-off-bg-color;
+                // toggle handle color for disabled/off handle outer border circle
+                border: 2px solid $clr-toggle-disabled-off-handle-border-color;
+                width: $clr-toggle-switch-base-height;
+                height: $clr-toggle-switch-base-height;
+                top: 3px;
+            }
+        }
+
+        input[type="checkbox"]:checked:disabled + label::before {
+            // toggle disabled/on border color
+            border-color: $clr-toggle-disabled-on-border-color;
+            // toggle disabled/on bg color
+            background-color: $clr-toggle-disabled-on-bg-color;
+        }
+
+        input[type="checkbox"]:checked:disabled + label::after {
+            // toggle disabled on handle circle border color
+            border-color: $clr-toggle-disabled-on-handle-border-color;
+            width: $clr-toggle-switch-height;
+            height: $clr-toggle-switch-height;
+            top: 5px;
+
+        }
+
+        // Allow for label to be on the right of the toggle switch.
+		&.right-label {
+
+            label {
+			    margin-left: $clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing;
+                margin-right: 0;
+            }
+
+            input[type="checkbox"] + label::before {
+                right: 0;
+                left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing);
+            }
+
+            input[type="checkbox"] + label::after {
+                right: 0;
+                left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+                transition-property: left;
+            }
+
+            input[type="checkbox"]:checked + label::after {
+                left: -1 * $clr-toggle-switch-left-spacing;
+                transition-property: left;
+            }
+		}
+    }
+}

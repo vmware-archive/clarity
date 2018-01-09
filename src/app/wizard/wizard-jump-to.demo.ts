@@ -1,23 +1,23 @@
 /*
- * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import {Component, ViewChild} from "@angular/core";
 
-import {CodeHighlight} from "../../clarity-angular/code/syntax-highlight/syntax-highlight";
-import {Wizard} from "../../clarity-angular/wizard/wizard";
-import {WizardPage} from "../../clarity-angular/wizard/wizard-page";
+import {ClrCodeHighlight} from "../../clr-angular/code/syntax-highlight/syntax-highlight";
+import {ClrWizard} from "../../clr-angular/wizard/wizard";
+import {ClrWizardPage} from "../../clr-angular/wizard/wizard-page";
 
 @Component({selector: "clr-wizard-jump-to", templateUrl: "./wizard-jump-to.demo.html"})
 export class WizardJumpToDemo {
-    @ViewChild("wizard") wizard: Wizard;
-    @ViewChild("pageThree") pageThree: WizardPage;
-    @ViewChild("pageFive") pageFive: WizardPage;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild("wizard") wizard: ClrWizard;
+    @ViewChild("pageThree") pageThree: ClrWizardPage;
+    @ViewChild("pageFive") pageFive: ClrWizardPage;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
-    public jumpTo(page: WizardPage) {
+    public jumpTo(page: ClrWizardPage) {
         if (page && page.completed) {
             this.wizard.navService.currentPage = page;
         } else {
@@ -36,8 +36,8 @@ export class WizardJumpToDemo {
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
-import { WizardPage } from "../../clarity-angular/wizard/wizard-page";
+import { Wizard } from "../../clr-angular/wizard/wizard";
+import { WizardPage } from "../../clr-angular/wizard/wizard-page";
 
 @Component({
     ...

@@ -1,0 +1,17 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// All z-indexes should come from here, to have a centralized file to reorganize them if needed
+
+$clr-layers: (
+    content: 0,
+    select-box: 2,
+    dropdown-menu: 1000,
+    alert: 1033,
+    sidepanel-bg: 1038,
+    sidepanel: 1039,
+    modal-bg: 1040,
+    modal: 1050,
+    tooltips: 1070
+) !default;

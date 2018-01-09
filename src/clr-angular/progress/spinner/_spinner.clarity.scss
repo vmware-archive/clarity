@@ -1,0 +1,59 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin min-height($size){
+    min-height: $size;
+    min-width: $size;
+    height: $size;
+    width: $size;
+}
+
+@include exports('spinner.clarity') {
+    .spinner {
+        // spinner-lg is the default
+        position: relative;
+        display: inline-block;
+        @include min-height(3rem);
+        animation: spin 1s linear infinite;
+        margin: 0;
+        padding: 0;
+        background: generateSpinnerIcon($clr-spinner-bg-color, $clr-spinner-color, $clr-spinner-opacity);
+        text-indent: 100%;
+        overflow: hidden;
+
+        &.spinner-md {
+            @include min-height(1.5rem);
+        }
+
+        &.spinner-inline,
+        &.spinner-sm {
+            @include min-height(0.75rem);
+        }
+
+        &.spinner-inline {
+            vertical-align: text-bottom; //To align with text properly
+        }
+
+        &.spinner-inverse {
+            // TODO: get ux input on direction here
+            background: generateSpinnerIcon($clr-white);
+        }
+    }
+
+    //Spinners inside of small buttons
+    .btn-sm {
+        .spinner {
+            @include min-height(0.541667rem);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}

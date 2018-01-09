@@ -1,0 +1,31 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<ng-container *ngFor="let inlineButton of inlineButtons">
+    <ng-template [ngTemplateOutlet]="inlineButton.templateRef"></ng-template>
+</ng-container>
+<ng-container *ngIf="menuButtons.length > 0">
+    <div
+        class="btn-group-overflow open"
+        [ngClass]="menuPosition"
+        #anchor>
+        <button
+            class="btn dropdown-toggle"
+            (click)="toggleMenu()">
+            <clr-icon shape="ellipsis-horizontal"></clr-icon>
+        </button>
+        <div
+            class="dropdown-menu"
+            *clrPopoverOld="openMenu; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint;">
+            <ng-template [ngTemplateOutlet]="ref"></ng-template>
+        </div>
+    </div>
+</ng-container>
+<ng-template #ref>
+    <ng-container *ngFor="let menuButton of menuButtons">
+        <ng-template [ngTemplateOutlet]="menuButton.templateRef"></ng-template>
+    </ng-container>
+</ng-template>

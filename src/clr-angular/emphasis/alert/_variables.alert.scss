@@ -1,0 +1,74 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Alert font color
+// Usage: This file only
+$clr-app-level-alert-color: $clr-white !default;
+
+// Dimensions & Layout
+// Usage: ./_alert.clarity.scss
+$clr-icon-margin-right: 0.25rem !default;
+$clr-icon-dimension-sm: 0.666667rem !default;
+$clr-alert-icon-dimension-sm: 0.75rem !default;
+$clr-alert-top-margin: 0.25rem !default;
+$clr-alert-min-height: 1.5rem !default;
+$clr-alert-horizontal-padding: 0.5rem !default;
+$clr-alert-top-padding: 0.125rem !default;
+$clr-alert-bottom-padding: 0.375rem !default;
+$clr-alert-item-min-height: $clr-alert-icon-dimension-sm !default;
+
+// Info type
+// Usage: ../utils/_maps.clarity.scss
+$clr-alert-info-bg-color: $clr-action-blue-lightest;
+$clr-alert-info-font-color: $clr-dark-gray;
+$clr-alert-info-border-color: $clr-action-blue-light;
+$clr-alert-info-icon-color: $clr-action-blue;
+
+// Success type
+// Usage: ../utils/_maps.clarity.scss
+$clr-alert-success-bg-color: $clr-green-lightest;
+$clr-alert-success-font-color: $clr-dark-gray;
+$clr-alert-success-border-color: $clr-green;
+$clr-alert-success-icon-color: $clr-green-dark-midtone;
+
+// Warning type
+// Usage: ../utils/_maps.clarity.scss
+$clr-alert-warning-bg-color: $clr-yellow-lighter;
+$clr-alert-warning-font-color: $clr-dark-gray;
+$clr-alert-warning-border-color: $clr-yellow;
+$clr-alert-warning-icon-color: $clr-dark-gray;
+
+// Danger type
+// Usage: ../utils/_maps.clarity.scss
+$clr-alert-danger-bg-color: $clr-red-lighter;
+$clr-alert-danger-font-color: $clr-dark-gray;
+$clr-alert-danger-border-color: $clr-red-light;
+$clr-alert-danger-icon-color: $clr-red;
+
+// App Info type
+// Usage: ../utils/_maps.clarity.scss
+$clr-app-alert-info-bg-color: $clr-action-blue;
+$clr-app-alert-info-font-color: $clr-app-level-alert-color;
+$clr-app-alert-info-border-color: none;
+$clr-app-alert-info-icon-color: $clr-white;
+
+// App Warning type
+// Usage: ../utils/_maps.clarity.scss
+$clr-app-alert-warning-bg-color: $clr-yellow-dark;
+$clr-app-alert-warning-icon-color: $clr-white;
+$clr-app-alert-warning-border-color: none;
+$clr-app-alert-warning-font-color: $clr-app-level-alert-color;
+
+// App Danger type
+// Usage: ../utils/_maps.clarity.scss
+$clr-app-alert-danger-bg-color: $clr-red;
+$clr-app-alert-danger-icon-color: $clr-white;
+$clr-app-alert-danger-font-color: $clr-app-level-alert-color;
+$clr-app-alert-danger-border-color: none;
+
+$clr-alert-action-color: $clr-dark-gray; // Used for 'close' button in dropdowns on the right side of an alert
+$clr-alert-action-active-color: $action-purples-darker;
+$clr-app-alert-close-icon-color: $clr-white; // Color for the 'X' in an alert
+
+

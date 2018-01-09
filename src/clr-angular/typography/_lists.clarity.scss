@@ -1,0 +1,65 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('lists.clarity') {
+    %kill-list-styles {
+        padding-left: 0;
+        margin-left: 0;
+        list-style: none;
+    }
+
+    ul, ol {
+        list-style-position: inside;
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+
+        &.list {
+            list-style-position: outside;
+            margin-left: $clr-list-style-padding;
+
+            &.compact {
+                line-height: 0.75rem;
+
+                & > li {
+                    margin-bottom: 0.25rem;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+
+            }
+        }
+    }
+
+    // right now this causes no problems. but watch out in the future because it may
+    // cause issues with nested tabs, list-groups of sidenav lists or something.
+    // just be aware that this may need to be overridden down the line.
+    ul:not(.list-unstyled), ol {
+        & > li > ul.list-unstyled {
+            margin-left: $clr-list-style-padding;
+        }
+    }
+
+    ul.list-unstyled {
+        @extend %kill-list-styles;
+    }
+
+    li > ul {
+        margin-top: 0;
+        margin-left: $clr-list-style-padding;
+    }
+
+    ul.list-group {
+        margin-top: 0;
+    }
+
+    ul, ol {
+        &.list-spacer {
+            margin-top: 1rem;
+        }
+    }
+}

@@ -1,0 +1,185 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// TODO: Split badges and labels into separate files.
+
+@mixin generateLabelStyles($color:gray,$alias:1) {
+    $label-color-map: map-get($clr-label-colors,$color);
+    $badge-color-map: map-get($clr-badge-colors, $color);
+
+    &.label-#{$color},&.label-#{$alias} {
+        border: $clr-default-borderwidth solid map-get($label-color-map,background);
+    }
+
+    &.clickable.label-#{$color} {
+        &:hover, &:active {
+            text-decoration: none;
+            background: $clr-label-bg-hover-color;
+        }
+
+        &:active {
+            box-shadow: 0 $clr-default-borderwidth 0 0 map-get($label-color-map,background) inset;
+            transform: translateY(0.5px);
+        }
+    }
+
+    &.label-#{$color} > .badge {
+        background: map-get($badge-color-map,background);
+        color: map-get($badge-color-map,font)
+    }
+};
+
+@mixin generateBadgeStyles($color:gray,$alias:1) {
+    $color-map: map-get($clr-badge-colors,$color);
+    &.badge-#{$color},&.badge-#{$alias} {
+        background: map-get($color-map,background);
+        color: map-get($color-map,font)
+    }
+};
+
+@mixin generateStatusLabelStyles($status:info) {
+    $status-map: map-get($clr-label-status,$status);
+    &.label-#{$status} {
+        background: map-get($status-map,background);
+        color: map-get($status-map,font);
+        border: $clr-default-borderwidth solid map-get($status-map,border);
+    }
+};
+
+@mixin generateStatusBadgeStyles($status:info) {
+    $status-map: map-get($clr-badge-status,$status);
+    &.badge-#{$status} {
+        background: map-get($status-map,background);
+        color: map-get($status-map,font)
+    }
+}
+
+@include exports('labels.clarity') {
+    //NOTE: Had to use inline-flex, reset line-height to normal, and had to use change a few values
+    //instead of using our baselineRem function. This was done to achieve the desired look
+    //and to align this with our vertical baseline. Not sure why but aligning inline-blocks within inline-blocks
+    //is a bit tricky. I initially used display: inline-block but I wasn't able to align the labels properly.
+    .label, a.label {
+        //default
+        $label-nudge-for-vertical-alignment: 1px;
+
+        @include clr-getTypePropertiesForDomElement(label_text, (font-size, font-weight, letter-spacing));
+
+        // line-height needed to be adjusted to force center alignment
+        line-height: 0.458333rem;
+
+        $color-map: map-get($clr-label-colors, gray);
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 $clr-label-padding-left-right $label-nudge-for-vertical-alignment;
+        border-radius: 0.5rem;
+        border: $clr-default-borderwidth solid $gray-dark;
+        height: 0.875rem;
+        margin: 0 0.25rem 0 0;
+        white-space: nowrap;
+        // TODO: use contrast color generators instead of hard-coded color vars
+        color: $clr-label-font-color;
+
+        // TODO: use contrast color generators instead of hard-coded color vars
+        &:visited {
+            color: $clr-label-font-color;
+        }
+
+        &:focus, &:hover, &:active {
+            text-decoration: none;
+        }
+
+        // TODO: use contrast color generators instead of hard-coded color vars
+        &.clickable {
+            &:hover, &:active {
+                background: $clr-label-bg-hover-color;
+            }
+
+            &:active {
+                box-shadow: 0 1px 0 0 map-get($color-map, background) inset;
+                transform: translateY(0.5px);
+            }
+        }
+
+        @include generateLabelStyles(gray, 1);
+        @include generateLabelStyles(purple, 2);
+        @include generateLabelStyles(blue, 3);
+        @include generateLabelStyles(orange, 4);
+        @include generateLabelStyles(light-blue, 5);
+
+        @include generateStatusLabelStyles(info);
+        @include generateStatusLabelStyles(success);
+        @include generateStatusLabelStyles(warning);
+        @include generateStatusLabelStyles(danger);
+
+        & > .badge {
+            margin: 0 -0.375rem 0 0.25rem; //-0.375 is -9px. 12px initial label padding plus a negative margin of 9
+        }
+    }
+
+    //NOTE: Had to use inline-flex, reset line-height to normal, and had to use change a few values
+    //instead of using our baselineRem function. This was done to achieve the desired look
+    //and to align this with our vertical baseline. Not sure why but aligning inline-blocks within inline-blocks
+    //is a bit tricky. I initially used display: inline-block but I wasn't able to align the badges properly.
+    //TODO: I still am unable to align the badges center of the baseline but have managed to aligned it to the
+    //bottom. There are no margins which are influencing this. Need to figure out whats the issue.
+    .badge {
+        $color-map: map-get($clr-label-colors, gray);
+        $equiDimensions: 0.625rem;
+        $rem_10px: 0.416667rem;
+
+        display: inline-flex;
+        vertical-align: middle;
+        align-items: center;
+        justify-content: center;
+        min-width: $equiDimensions;
+        background: map-get($color-map, background);
+        height: $equiDimensions;
+        line-height: normal;
+        border-radius: $rem_10px;
+        font-size: $rem_10px;
+        padding: 0 0.166667rem;
+        margin-right: 0.25rem;
+        white-space: nowrap;
+        text-align: center;
+        // TODO: use contrast color generators instead of hard-coded color vars
+        color: $clr-badge-font-color;
+
+        // TODO: use contrast color generators instead of hard-coded color vars
+        &:visited {
+            color: $clr-badge-font-color;
+        }
+
+        @include generateBadgeStyles(gray, 1);
+        @include generateBadgeStyles(purple, 2);
+        @include generateBadgeStyles(blue, 3);
+        @include generateBadgeStyles(orange, 4);
+        @include generateBadgeStyles(light-blue, 5);
+
+        @include generateStatusBadgeStyles(info);
+        @include generateStatusBadgeStyles(success);
+        @include generateStatusBadgeStyles(danger);
+        @include generateStatusBadgeStyles(warning);
+    }
+
+    @include fixForFirefox() {
+        .label, a.label {
+            // properly aligns labels in firefox...
+            vertical-align: bottom;
+        }
+    }
+
+    @include fixForIE10AndUp {
+        .badge {
+            padding: 0.083333rem 0.125rem 0;
+        }
+    }
+
+    @include fixForMsEdge {
+        .badge {
+            padding: 0.083333rem 0.125rem 0;
+        }
+    }
+}

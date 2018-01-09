@@ -1,17 +1,17 @@
 /*
- * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Directive, Input, OnInit, TemplateRef, ViewContainerRef} from "@angular/core";
 
-import {Loading} from "../../clarity-angular/utils/loading/loading";
+import {ClrLoading} from "../../clr-angular/utils/loading/loading";
 
 const LATENCY = 2000;
 
 @Directive({selector: "[clrFakeLoader]"})
 export class FakeLoader implements OnInit {
-    constructor(private template: TemplateRef<any>, private container: ViewContainerRef, private loading: Loading) {}
+    constructor(private template: TemplateRef<any>, private container: ViewContainerRef, private loading: ClrLoading) {}
 
     @Input("clrFakeLoader") fake: boolean;
 

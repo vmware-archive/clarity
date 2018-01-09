@@ -1,0 +1,53 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Usage: ../forms/_forms.clarity.scss
+$clr-form-text-color: $clr-black;
+
+// Usage: ../forms/checkbox/_checkboox.clarity.scss
+$clr-checkbox-checkmark-color: $clr-white;
+
+// Usage: ../data/tree-view/_tree-view.clarity.scss
+// Usage: ../forms/_radio.clarity.scss
+// Usage: ../forms/checkbox/_checkboox.clarity.scss
+$clr-checkbox-radio-label-height: 1rem !default;
+$clr-checkbox-radio-height: $clr-icon-dimension-sm !default;
+
+// Usage: ../forms/_radio.clarity.scss
+// Usage: ../forms/checkbox/_checkboox.clarity.scss
+$clr-checkbox-radio-padding-left: $clr-checkbox-radio-height + 0.25rem;
+$clr-custom-checkbox-radio-top: ($clr-checkbox-radio-label-height - $clr-checkbox-radio-height) / 2 !default;
+$clr-form-field-background-color: $clr-action-blue-light-midtone !default;
+$clr-form-disabled-background-color: $clr-light-midtone-gray !default;
+$clr-checkbox-disabled-background-color: $clr-light-midtone-gray !default;
+
+$clr-radio-disabled-bg-color: $clr-form-disabled-background-color;
+
+// Usage: ../forms/_radio.clarity.scss
+$clr-radio-checked-box-shadow: inset 0 0 0 0.25rem $clr-form-field-background-color;
+$clr-radio-focused-box-shadow: 0 0 $clr-outline-blur $clr-outline-spread $clr-outline-color;
+
+// Usage: ../forms/checkbox/_checkboox.clarity.scss
+$clr-indeterminate-checkbox-border-color: $clr-action-blue-light-midtone !default;
+$clr-form-field-disabled-color: $clr-black!default;
+$clr-checkbox-disabled-checkmark-color: $clr-gray!default;
+// Usage: ../forms/_radio.clarity.scss
+$clr-radio-disabled-font-color: $clr-dark-gray !default;
+$clr-form-field-border-color: $clr-dark-midtone-gray !default;
+$clr-radio-disabled-checked-box-shadow: $clr-radio-checked-box-shadow;
+
+// Usage: ../forms/_forms.clarity.scss
+$clr-form-icon-dim: $clr-icon-dimension-sm !default;
+$clr-forms-input-invalid-color: clr-getColor(dark-midtone, reds);
+$clr-forms-input-invalid-icon-color: $reds-dark;
+
+// Usage: ../data/stack-view/_stack-view.clarity.scss
+// Usage: ../forms/_forms.clarity.scss
+// Usage: ../forms/_inputs.clarity.scss
+$styledInputs: inputs("text", "password", "number", "email", "url", "tel", "date", "time", "datetime-local");
+
+// Usage: ../forms/_forms.clarity.scss
+// Usage: ../forms/_inputs.clarity.scss
+$styledInputs1: inputs("button", "submit");
+

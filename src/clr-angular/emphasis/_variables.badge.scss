@@ -1,0 +1,27 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Usage:
+// - ./_labels.clarity.scss
+// - ../utils/_maps.clarity.scss
+$clr-badge-font-color: $gray-lightest;
+
+// Usage: ../utils/_maps.clarity.scss
+$clr-badge-font-color-contrast: $clr-black;
+
+$clr-badge-info-bg-color: $action-blues-dark-midtone;
+$clr-badge-info-font-color: $clr-white;
+
+$clr-badge-success-bg-color: $greens-dark-midtone;
+$clr-badge-success-font-color: $clr-white;
+$clr-badge-warning-bg-color: $yellows-light;
+$clr-badge-warning-font-color: $clr-black;
+$clr-badge-danger-bg-color: $reds-dark-midtone;
+$clr-badge-danger-font-color: $clr-white;
+
+$clr-badge-gray-bg-color: $clr-gray;
+$clr-badge-purple-bg-color: $clr-action-purple-light-midtone;
+$clr-badge-blue-bg-color: $clr-action-blue-dark;
+$clr-badge-orange-bg-color: $clr-yellow-light-midtone;
+$clr-badge-light-blue-bg-color: $clr-action-blue-lighter;

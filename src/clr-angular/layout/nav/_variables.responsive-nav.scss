@@ -1,0 +1,19 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Usage: ../layout/nav/_responsive-nav.clarity.scss
+// Responsive Nav
+$clr-sliding-panel-text-color: clr-getTextColor();
+$clr-sliding-panel-width: 15rem;
+$clr-sliding-panel-width-sm: 12rem;
+$clr-trigger-position: $clr-sliding-panel-width + 0.5rem;
+$clr-trigger-position-sm: $clr-sliding-panel-width-sm + 0.5rem;
+$clr-sliding-panel-z-index: map-get($clr-layers, sidepanel);
+$clr-sliding-panel-backdrop-z-index: map-get($clr-layers, sidepanel-bg);
+$clr-sliding-transition-time: 0.3s;
+$clr-transition-style: ease;
+$clr-nav-background-color: $clr-light-gray;
+$clr-responsive-nav-hover-bg: $clr-white;
+$clr-trigger-animation: transform (2 * $clr-sliding-transition-time) $clr-transition-style;
+$clr-sliding-panel-animation: transform $clr-sliding-transition-time $clr-transition-style;

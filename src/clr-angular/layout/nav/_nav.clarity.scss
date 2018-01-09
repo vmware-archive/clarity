@@ -1,0 +1,72 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('nav.clarity') {
+    .nav {
+        display: flex; //For the elements inside the nav
+        height: $clr-subnav-height;
+        list-style-type: none;
+        align-items: center;
+        box-shadow: 0 -1px 0 $clr-nav-box-shadow-color inset;
+        margin: 0;
+        width: 100%;
+        white-space: nowrap;
+
+        .nav-item {
+            display: inline-block;
+            margin-right: 1rem;
+
+            &.active > .nav-link {
+                color: $clr-nav-link-active-color;
+                box-shadow: 0 -1px 0 $clr-nav-box-shadow-color inset;
+            }
+        }
+
+        .nav-link {
+            @include clr-getTypePropertiesForDomElement(tab_text, (font-size, font-weight, letter-spacing));
+
+            display: inline-block;
+            color: $clr-nav-link-color;
+            padding: 0 0.125rem;
+            box-shadow: none;
+            line-height: $clr-subnav-height;
+
+            //Clarity Buttons as .nav-links in .nav
+            &.btn {
+                text-transform: none;
+                margin: 0;
+                margin-bottom: -1 * $clr-default-borderwidth; //-1px to account for the border of the button
+                border-radius: 0;
+            }
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: inherit;
+            }
+
+            &:hover,
+            &.active {
+                box-shadow: 0 -3px 0 $clr-nav-active-box-shadow-color inset;
+                transition: box-shadow 0.2s ease-in;
+            }
+
+            &:hover,
+            &:focus,
+            &:active,
+            &.active {
+                text-decoration: none;
+            }
+
+            &.active {
+                color: $clr-nav-link-active-color;
+            }
+
+            // When using clrTabLink directive, DOM has both .nav-link and .nav-item in the same elem
+            &.nav-item {
+                margin-right: 1rem;
+            }
+        }
+    }
+}

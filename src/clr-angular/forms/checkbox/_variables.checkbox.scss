@@ -1,0 +1,10 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Usage: ../forms/checkbox/_checkbox.clarity.scss
+$clr-checkbox-checkmark-color: $clr-white;
+$checkmark-full-size: $clr-checkbox-radio-height / 2;
+$checkmark-half-size: $checkmark-full-size / 2;
+$checkmark-border-style: ($clr-checkbox-radio-height / 8) solid white;
+$clr-checkbox-disabled-font-color: $clr-dark-gray;

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="25px" height="38px" viewBox="0 0 25 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>ic-bulb</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="6" y="33" width="13" height="3" rx="1.5"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="13" height="3" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Landing-page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="landing-page" transform="translate(-237.000000, -1277.000000)">
+            <g id="product-based" transform="translate(225.000000, 1272.000000)">
+                <g id="ic-bulb" transform="translate(12.000000, 5.000000)">
+                    <rect id="Rectangle-4" fill="#E64120" x="6" y="28" width="13" height="3" rx="1.5"></rect>
+                    <ellipse id="Oval" fill="#E64120" cx="12" cy="36" rx="4" ry="2"></ellipse>
+                    <use id="Rectangle-4-Copy" stroke="#E64120" mask="url(#mask-2)" stroke-width="10" xlink:href="#path-1"></use>
+                    <path d="M6,23.4755356 C6,22.373274 6.85899712,21.7218018 7.9371589,22.0151849 C7.9371589,22.0151849 11.2155758,22.9864763 12.5,22.9864763 C13.7846335,22.9864763 17.0787992,22.0109423 17.0787992,22.0109423 C18.1398491,21.7175533 19,22.3727774 19,23.4755356 L19,24.0041788 C19,25.1064404 18.1064574,26 16.9972399,26 L8.00276013,26 C6.89666625,26 6,25.106937 6,24.0041788 L6,23.4755356 Z" id="Rectangle-3" fill="#E64120"></path>
+                    <path d="M22.0238095,12.5234308 C22.0238095,7.25534824 17.760324,2.98387097 12.5,2.98387097 C7.23967598,2.98387097 2.97619048,7.25534824 2.97619048,12.5234308 C2.97619048,17.7915134 7.23967598,22.0629907 12.5,22.0629907 C17.760324,22.0629907 22.0238095,17.7915134 22.0238095,12.5234308 Z M0,12.5234308 C0,5.60693097 5.59644063,0 12.5,0 C19.4035594,0 25,5.60693097 25,12.5234308 C25,19.4399307 19.4035594,25.0468617 12.5,25.0468617 C5.59644063,25.0468617 0,19.4399307 0,12.5234308 Z" id="Oval-2" fill="#E64120"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

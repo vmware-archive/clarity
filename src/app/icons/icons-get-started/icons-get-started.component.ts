@@ -3,61 +3,61 @@ import { Component } from '@angular/core';
 
 const ICONS_IMPORTS_ALL = `
 <!--CLARITY ICONS STYLE-->
-<link rel="stylesheet" href="path/to/node_modules/clarity-icons/clarity-icons.min.css">
+<link rel="stylesheet" href="path/to/node_modules/@clr/icons/clr-icons.min.css">
 
 <!--CLARITY ICONS DEPENDENCY: CUSTOM ELEMENTS POLYFILL-->
 <script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
 
 <!--CLARITY ICONS API & ALL ICON SETS-->
-<script src="path/to/node_modules/clarity-icons/clarity-icons.min.js"></script>
+<script src="path/to/node_modules/@clr/icons/clr-icons.min.js"></script>
 `;
 
 const ICONS_IMPORTS_SOME = `
 <!--CLARITY ICONS STYLE-->
-<link rel="stylesheet" href="path/to/node_modules/clarity-icons/clarity-icons.min.css">
+<link rel="stylesheet" href="path/to/node_modules/@clr/icons/clr-icons.min.css">
 
 <!--CLARITY ICONS DEPENDENCY: CUSTOM ELEMENTS POLYFILL-->
 <script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
 
 <!--CLARITY ICONS API & CORE SHAPES SET-->
-<script src="path/to/node_modules/clarity-icons/clarity-icons-lite.min.js"></script>
+<script src="path/to/node_modules/@clr/icons/clr-icons-lite.min.js"></script>
 
 <!--ICON SETS-->
-<script src="path/to/node_modules/clarity-icons/shapes/social-shapes.min.js"></script>
-<script src="path/to/node_modules/clarity-icons/shapes/travel-shapes.min.js"></script>
+<script src="path/to/node_modules/@clr/icons/shapes/social-shapes.min.js"></script>
+<script src="path/to/node_modules/@clr/icons/shapes/travel-shapes.min.js"></script>
 `;
 
 const ICONS_IMPORTS_TS_CORE = `
-import 'clarity-icons';
+import '@clr/icons';
 `;
 
 const ICONS_IMPORTS_TS_SOME = `
-import 'clarity-icons';
-import 'clarity-icons/shapes/essential-shapes';
-import 'clarity-icons/shapes/technology-shapes';
+import '@clr/icons';
+import '@clr/icons/shapes/essential-shapes';
+import '@clr/icons/shapes/technology-shapes';
 `;
 
 const ICONS_IMPORTS_TS_ALL = `
-import 'clarity-icons';
-import 'clarity-icons/shapes/all-shapes';
+import '@clr/icons';
+import '@clr/icons/shapes/all-shapes';
 `;
 
 const ICONS_NODE_IMPORTS = `
 "styles": [
     ...
-    "../node_modules/clarity-icons/clarity-icons.min.css",
+    "../node_modules/@clr/icons/clr-icons.min.css",
     ...
 ],
 "scripts": [
     ...
     "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-    "../node_modules/clarity-icons/clarity-icons.min.js"
+    "../node_modules/@clr/icons/clr-icons.min.js"
     ...
 ]`;
 
 const ICONS_TS_IMPORTS = `
-    import 'clarity-icons';
-import 'clarity-icons/shapes/essential-shapes';
+    import '@clr/icons';
+import '@clr/icons/shapes/essential-shapes';
 `;
 
 @Component({

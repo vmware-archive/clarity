@@ -5,15 +5,14 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "@clr/angular";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-form-validation",
     templateUrl: "./wizard-form-validation.demo.html"
 })
 export class WizardFormValidation {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     @ViewChild("number") numberField: any;
 
     open: boolean = false;
@@ -26,13 +25,13 @@ export class WizardFormValidation {
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     ...
 })
 export class WizardFormValidation {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     @ViewChild("number") numberFi: any;
 
     model = {

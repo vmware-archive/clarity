@@ -5,7 +5,7 @@
  */
 export const EXAMPLES = {
     stateInterface: `
-interface State {
+interface ClrDatagridStateInterface {
     page?: {
         from?: number;
         to?: number;
@@ -20,14 +20,14 @@ interface State {
 `,
 
     serverDrivenTS: `
-import {State} from "clarity-angular";
+import {ClrDatagridStateInterface} from "@clr/angular";
 
 class MyComponent {
     users: User[];
     total: number;
     loading: boolean = true;
 
-    refresh(state: State) {
+    refresh(state: ClrDatagridStateInterface) {
         this.loading = true;
         // We convert the filters from an array to a map,
         // because that's what our backend-calling service is expecting

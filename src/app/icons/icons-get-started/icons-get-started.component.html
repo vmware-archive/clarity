@@ -10,7 +10,7 @@
 
 <p>
     Install the Clarity Icons package through npm:
-    <clr-code-snippet [clrCode]="'npm install clarity-icons --save'"
+    <clr-code-snippet [clrCode]="'npm install @clr/icons --save'"
                       [clrDisablePrism]="true"></clr-code-snippet>
 </p>
 
@@ -21,13 +21,13 @@
 
 
 <p>
-    Load the library in your app by including <code class="clr-code">clarity-icons.min.css</code> and <code
-        class="clr-code">clarity-icons.min.js</code>.
+    Load the library in your app by including <code class="clr-code">clr-icons.min.css</code> and <code
+        class="clr-code">clr-icons.min.js</code>.
     Also, make sure to include <code class="clr-code">custom-elements.min.js</code>, the Custom Elements polyfill before
-    <code class="clr-code">clarity-icons.min.js</code>:
+    <code class="clr-code">clr-icons.min.js</code>:
     <clr-code-snippet [clrCode]="iconsImportsAllExample"></clr-code-snippet>
 
-    That's it! As <code class="clr-code">clarity-icons.min.js</code> loads not only the Clarity Icons Api, but also all
+    That's it! As <code class="clr-code">clr-icons.min.js</code> loads not only the Clarity Icons Api, but also all
     icons sets,
     you will have access to more than 100 different icons that have variants, orientations, and colors out of the box.
     You can now render any icon with <code class="clr-code">clr-icon</code> tag and specify your desired shape in its
@@ -42,9 +42,9 @@
 
 <h3 class="paragraph-header">Load icon sets individually:</h3>
 <p>
-    If you want to use icons from few individual sets, you don't have to load all icons with <code class="clr-code">clarity-icons.min.js</code>.
+    If you want to use icons from few individual sets, you don't have to load all icons with <code class="clr-code">clr-icons.min.js</code>.
     Instead, load the lighter version of Clarity Icons library with <code
-        class="clr-code">clarity-icons-lite.min.js</code>, which loads only Clarity Icons Api and Core Shapes set.
+        class="clr-code">clr-icons-lite.min.js</code>, which loads only Clarity Icons Api and Core Shapes set.
     For example, if you want to use icons from only Social Shapes and Travel Shapes, you would load Clarity Icons this
     way:
     <clr-code-snippet [clrCode]="iconsImportsSomeExample"></clr-code-snippet>

@@ -22,7 +22,10 @@ const appRoutes: Routes = [
     },
     {
         path: "",
-        component: HomeComponent
+        component: HomeComponent,
+        data: {
+            bodyClass: "layout-home"
+        }
     },
 
     // just in case people who may have bookmarked the old iconography url, redirect them to the new url.

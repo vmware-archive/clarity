@@ -5,15 +5,14 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "@clr/angular";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-design-size-demo",
     templateUrl: "./wizard-design-size.demo.html",
 })
 export class WizardDesignSizeDemo {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     open: boolean = false;
     size: string = "xl";
 

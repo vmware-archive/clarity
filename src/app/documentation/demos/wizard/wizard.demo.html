@@ -714,7 +714,7 @@
     ...
 &#125;)
 export class WizardJumpToDemo &#123;
-    @ViewChild("ohai") wizard: Wizard; // makes wizard accessible through this.wizard!!!
+    @ViewChild("ohai") wizard: ClrWizard; // makes wizard accessible through this.wizard!!!
     ...
 </code></pre>
 
@@ -915,8 +915,8 @@ export class WizardJumpToDemo &#123;
     ...
 &#125;)
 export class WizardJumpToDemo &#123;
-    @ViewChild("firstPage") wizardPage_1: WizardPage;
-    @ViewChild("secondPage") wizardPage_2: WizardPage;
+    @ViewChild("firstPage") wizardPage_1: ClrWizardPage;
+    @ViewChild("secondPage") wizardPage_2: ClrWizardPage;
 
     get pageAreDone(): boolean &123;
         return this.firstPage.completed &amp;&amp; this.secondPage.completed;

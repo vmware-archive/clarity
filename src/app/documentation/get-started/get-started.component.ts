@@ -3,7 +3,7 @@ import {Component} from "@angular/core";
 const NG_MODULE_EXAMPLE = `
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { ClarityModule } from "clarity-angular";
+import { ClarityModule } from "@clr/angular";
 import { AppComponent } from "./app.component";
 
 @NgModule({
@@ -19,39 +19,39 @@ export class AppModule {    }
 `;
 
 const ICONS_IMPORTS = `
-<link rel="stylesheet" href="path/to/node_modules/clarity-icons/clarity-icons.min.css">
+<link rel="stylesheet" href="path/to/node_modules/@clr/icons/clr-icons.min.css">
 <script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
-<script src="path/to/node_modules/clarity-icons/clarity-icons.min.js"></script>
+<script src="path/to/node_modules/@clr/icons/clr-icons.min.js"></script>
 `;
 
 const ICONS_NODE_IMPORTS = `
 "styles": [
       ...
-      "../node_modules/clarity-icons/clarity-icons.min.css",
+      "../node_modules/@clr/icons/clr-icons.min.css",
       ...
 ],
 "scripts": [
   ...
   "../node_modules/mutationobserver-shim/dist/mutationobserver.min.js",
   "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-  "../node_modules/clarity-icons/clarity-icons.min.js"
+  "../node_modules/@clr/icons/clr-icons.min.js"
   ...
 ]
 `;
 
 const ICONS_TS_IMPORTS = `
-import 'clarity-icons';
-import 'clarity-icons/shapes/essential-shapes';
+import '@clr/icons';
+import '@clr/icons/shapes/essential-shapes';
 `;
 
 const UI_HTML_IMPORT = `
-<link rel="stylesheet" href="path/to/node_modules/clarity-ui/clarity-ui.min.css">
+<link rel="stylesheet" href="path/to/node_modules/@clr/ui/clr-ui.min.css">
 `;
 
 const UI_NODE_IMPORTS = `
 "styles": [
       ...
-      "../node_modules/clarity-ui/clarity-ui.min.css",
+      "../node_modules/@clr/ui/clr-ui.min.css",
       ...
   ]
 `;

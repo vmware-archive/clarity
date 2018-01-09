@@ -5,8 +5,7 @@
  */
 
 import { Component, ViewChild, OnInit } from "@angular/core";
-import { Wizard } from "@clr/angular";
-import { CodeHighlight } from "@clr/angular";
+import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
 
 @Component({
     moduleId: module.id,
@@ -15,8 +14,8 @@ import { CodeHighlight } from "@clr/angular";
     styles: [".stress { color: red; }"]
 })
 export class WizardAltNextDemo implements OnInit {
-    @ViewChild("wizard") wizard: Wizard;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild("wizard") wizard: ClrWizard;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
     open: boolean = false;
     showCancelConfirm: boolean = false;
 
@@ -71,14 +70,13 @@ export class WizardAltNextDemo implements OnInit {
 
     code: string = `
 import { Component, ViewChild, OnInit } from "@angular/core";
-import { Wizard } from "clarity-angular";
-import { CodeHighlight } from "clarity-angular";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     ...
 })
 export class WizardAltNextDemo implements OnInit {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
 
     public model: any;
     public stressText: boolean = false;

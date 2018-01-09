@@ -4,33 +4,32 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ViewChild} from "@angular/core";
-import {Wizard} from "@clr/angular";
-import {CodeHighlight} from "@clr/angular";
+import {ClrWizard, ClrCodeHighlight} from "@clr/angular";
 
 @Component({
     selector: "clr-wizard-basic",
     templateUrl: "./wizard-basic.demo.html"
 })
 export class WizardBasic {
-    @ViewChild("wizardmd") wizardMedium: Wizard;
-    @ViewChild("wizardlg") wizardLarge: Wizard;
-    @ViewChild("wizardxl") wizardExtraLarge: Wizard;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild("wizardmd") wizardMedium: ClrWizard;
+    @ViewChild("wizardlg") wizardLarge: ClrWizard;
+    @ViewChild("wizardxl") wizardExtraLarge: ClrWizard;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
     mdOpen: boolean = false;
     lgOpen: boolean = false;
     xlOpen: boolean = false;
 
     code: string = `import {Component, ViewChild} from "@angular/core";
-import {Wizard} from "clarity-angular";
+import {ClrWizard} from "@clr/angular";
 
 @Component({
     ...
 })
 export class WizardBasic {
-    @ViewChild("wizardmd") wizardMedium: Wizard;
-    @ViewChild("wizardlg") wizardLarge: Wizard;
-    @ViewChild("wizardxl") wizardExtraLarge: Wizard;
+    @ViewChild("wizardmd") wizardMedium: ClrWizard;
+    @ViewChild("wizardlg") wizardLarge: ClrWizard;
+    @ViewChild("wizardxl") wizardExtraLarge: ClrWizard;
 
     mdOpen: boolean = false;
     lgOpen: boolean = false;

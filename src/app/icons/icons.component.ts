@@ -15,6 +15,7 @@ import { Router, NavigationEnd } from "@angular/router";
 import { EssentialShapes } from "@clr/icons/shapes/essential-shapes";
 import { style, state, animate, transition, trigger } from "@angular/animations";
 import { IconsViewService } from "./icons-view.service";
+import { filter } from "rxjs/operators/filter";
 
 let essentialShapesNames = Object.keys(EssentialShapes);
 let blinkEssentialShapes = essentialShapesNames;
@@ -78,8 +79,9 @@ export class IconsComponent implements AfterViewInit, OnDestroy {
         @Inject(PLATFORM_ID) private platformId: Object
     ) {
         this._subscriptions.push(
-            this._router.events
-            .filter(event => event instanceof NavigationEnd)
+            this._router.events.pipe(
+                filter(event => event instanceof NavigationEnd)
+            )
             .subscribe(event => {
                 this.isOnIconSetsRoute = _router.isActive("/icons/icon-sets", false);
                 

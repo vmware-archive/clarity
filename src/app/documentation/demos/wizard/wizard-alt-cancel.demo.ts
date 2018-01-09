@@ -5,7 +5,7 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "@clr/angular";
+import { ClrWizard } from "@clr/angular";
 import { CodeHighlight } from "@clr/angular";
 
 @Component({
@@ -14,7 +14,7 @@ import { CodeHighlight } from "@clr/angular";
     templateUrl: "./wizard-alt-cancel.demo.html"
 })
 export class WizardAltCancelDemo {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
     open: boolean = false;
 
@@ -38,13 +38,13 @@ export class WizardAltCancelDemo {
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "clarity-angular";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     ...
 })
 export class WizardAltCancelDemo {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
 
     public showCancelConfirm: boolean = false;
 

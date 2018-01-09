@@ -5,7 +5,7 @@
  */
 export const EXAMPLES = {
     stringFilterInterface: `
-interface StringFilter<T> {
+interface ClrDatagridStringFilterInterface<T> {
     accepts(item: T, search: string): boolean;
 }
 `,
@@ -19,9 +19,9 @@ interface StringFilter<T> {
 `,
 
     stringFilterTS: `
-import {StringFilter} from "clarity-angular";
+import {ClrDatagridStringFilterInterface} from "@clr/angular";
 
-class PokemonFilter implements StringFilter<User> {
+class PokemonFilter implements ClrDatagridStringFilterInterface<User> {
     accepts(user: User, search: string):boolean {
         return "" + user.pokemon.number == search
             || user.pokemon.name.toLowerCase().indexOf(search) >= 0;

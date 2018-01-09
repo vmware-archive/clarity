@@ -4,13 +4,10 @@
     padding-top: 24px;
 }
 
-.clrweb-error-block .logo-block {
+.clrweb-error-block .logo-block img {
     width: 100%;
     max-width: 380px;
-    background-image: url(/assets/images/clarity_logo.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
+    text-align: center;
     height: 286px;
     opacity: 0.28;
 }

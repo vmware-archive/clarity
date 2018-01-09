@@ -5,18 +5,16 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "@clr/angular";
-import { CodeHighlight } from "@clr/angular";
+import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-async-validation",
     templateUrl: "./wizard-async-validation.demo.html"
 })
 export class WizardAsyncValidation {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     @ViewChild("myForm") formData: any;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
     loadingFlag: boolean = false;
     errorFlag: boolean = false;
@@ -47,13 +45,13 @@ export class WizardAsyncValidation {
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     ...
 })
 export class WizardAsyncValidation {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     @ViewChild("myForm") formData: any;
 
     loadingFlag: boolean = false;

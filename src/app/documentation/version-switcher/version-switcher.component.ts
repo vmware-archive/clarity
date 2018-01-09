@@ -19,13 +19,20 @@ export class VersionSwitcherComponent {
   versions: Version[] = [];
   environment = environment;
   current: string;
-  child: UrlSegment;
+  child: string;
   subscription: Subscription;
 
   constructor(private http: HttpClient, private location: Location, private route: ActivatedRoute, private router: Router, @Inject(PLATFORM_ID) private platformId: Object) {
     this.subscription = this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
-        this.child = this.route.firstChild.snapshot.url[0];
+        let route = this.route.firstChild;
+        this.child = (route.snapshot.url.length) ? route.snapshot.url[0].path : "";
+        while (route.firstChild !== null) {
+          if (route.firstChild.snapshot.url.length) {
+            this.child += '/' + route.firstChild.snapshot.url[0].path;
+          }
+          route = route.firstChild;
+        }
       }
     });
   }

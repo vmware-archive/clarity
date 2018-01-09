@@ -54,7 +54,7 @@
 
     <h3 id="seedProjectClarity">Starting With a Clarity Seed Project (Recommended)</h3>
     <p>For a new project, the best approach is to clone the Clarity seed project and modify it to fit your needs. The
-        seed project is integrated with clarity-ui and clarity-angular, so you don’t need to install Clarity
+        seed project is integrated with @clr/ui and @clr/angular, so you don’t need to install Clarity
         separately.
     </p>
     <p></p>
@@ -100,9 +100,9 @@
         <a id="clarity_icons"></a>
     </p>
     <ul class="list">
-        <li><b>clarity-icons.</b> The library that provides the custom element icons.</li>
-        <li><b>clarity-ui.</b> Contains the static styles for building HTML components.</li>
-        <li><b>clarity-angular.</b> Contains the Angular components. This package depends on clarity-ui for styles.
+        <li><b>@clr/icons.</b> The library that provides the custom element icons.</li>
+        <li><b>@clr/ui.</b> Contains the static styles for building HTML components.</li>
+        <li><b>@clr/angular.</b> Contains the Angular components. This package depends on @clr/ui for styles.
         </li>
     </ul>
     <h5 id="step-2a-install-clarity-icons">Step 2a: Install Clarity Icons</h5>
@@ -110,7 +110,7 @@
     <ol class="list">
         <li>Install the Clarity Icons library through npm:
             <clr-code-snippet
-                    [clrCode]="'npm install clarity-icons --save'"
+                    [clrCode]="'npm install @clr/icons --save'"
                     [clrDisablePrism]="true"></clr-code-snippet>
         </li>
         <li>Install the polyfill for Custom Elements:
@@ -119,10 +119,10 @@
                     [clrDisablePrism]="true"></clr-code-snippet>
         </li>
         <li>
-            Load the library in your app by including <code class="clr-code">clarity-icons.min.css</code> and <code
-                class="clr-code">clarity-icons.min.js</code>.
+            Load the library in your app by including <code class="clr-code">clr-icons.min.css</code> and <code
+                class="clr-code">clr-icons.min.js</code>.
             Also, make sure to include <code class="clr-code">custom-elements.min.js</code>, the Custom Elements
-            polyfill before <code class="clr-code">clarity-icons.min.js</code>:
+            polyfill before <code class="clr-code">clr-icons.min.js</code>:
             <clr-code-snippet [clrCode]="iconsImportsExample"></clr-code-snippet>
 
             <p>
@@ -135,11 +135,11 @@
     <ol class="list">
         <li>Install Clarity UI package through npm:
             <clr-code-snippet
-                    [clrCode]="'npm install clarity-ui --save'"
+                    [clrCode]="'npm install @clr/ui --save'"
                     [clrDisablePrism]="true"></clr-code-snippet>
         </li>
         <li>
-            Include clarity-ui.min.css in your HTML file:
+            Include clr-ui.min.css in your HTML file:
             <clr-code-snippet [clrCode]="uiHTMLImport"></clr-code-snippet>
             If your site is built with <a href="https://github.com/angular/angular-cli">angular-cli</a> you can achieve
             the above by adding the file to the styles array in <code class="clr-code">angular-cli.json</code>:
@@ -152,9 +152,9 @@
     <ol class="list">
         <li>If you haven't already, complete steps 1 and 2 for installing Clarity UI in the preceding section.
         </li>
-        <li>Install the clarity-angular package through npm:
+        <li>Install the @clr/angular package through npm:
             <clr-code-snippet
-                    [clrCode]="'npm install clarity-angular --save'"
+                    [clrCode]="'npm install @clr/angular --save'"
                     [clrDisablePrism]="true"></clr-code-snippet>
         </li>
         <li>Import the ClarityModule into your Angular application's module. Your application's main module might look

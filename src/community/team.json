@@ -15,7 +15,7 @@
     }, {
         "name": "Eudes Petonnet-Vincent",
         "role": "clarityNG Lead",
-        "blurb": "Eudes is the technical lead for Clarity. He spends most of his day working on the overall architecture of clarity-angular as well as building Angular components for Clarity.",
+        "blurb": "Eudes is the technical lead for Clarity. He spends most of his day working on the overall architecture of @clr/angular as well as building Angular components for Clarity.",
         "twitter": "EudesPV",
         "img": "eudes.png",
         "workstreams": ["UI", "CR", "NG"]

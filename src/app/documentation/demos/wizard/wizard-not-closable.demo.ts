@@ -4,28 +4,26 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "@clr/angular";
-import { CodeHighlight } from "@clr/angular";
+import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-not-closable",
     templateUrl: "./wizard-not-closable.demo.html"
 })
 export class WizardNotClosable {
-    @ViewChild("wizard") wizard: Wizard;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild("wizard") wizard: ClrWizard;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
     open: boolean = false;
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "clarity-angular";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     ...
 })
 export class WizardNotClosableDemo {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     open: boolean = false;
 }
 `;

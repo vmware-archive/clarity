@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {ServerModule} from '@angular/platform-server';
 import {ModuleMapLoaderModule} from '@nguniversal/module-map-ngfactory-loader';
-import {ServerPrebootModule} from 'preboot/server';
 
 import {AppModule} from './app.module';
 import {AppComponent, PLATFORM_TOKEN} from './app.component';
@@ -13,7 +12,6 @@ import {AppComponent, PLATFORM_TOKEN} from './app.component';
     AppModule,
     ServerModule,
     ModuleMapLoaderModule,
-    ServerPrebootModule.recordEvents({appRoot: 'body'})
   ],
   providers: [
     { provide: PLATFORM_TOKEN, useValue: 'Server' }

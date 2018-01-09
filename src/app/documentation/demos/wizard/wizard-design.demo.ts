@@ -5,14 +5,11 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { Wizard, WizardPage } from "@clr/angular";
-
-import { ÇlrFocusTrapTracker } from "@clr/angular";
+import { ClrWizard, ClrWizardPage, ÇlrFocusTrapTracker } from "@clr/angular";
 import { DisableFocusTrap } from "../../utils/disable-focus-trap";
 
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-design-demo",
     templateUrl: "./wizard-design.demo.html",
     host: {
@@ -92,7 +89,7 @@ import { DisableFocusTrap } from "../../utils/disable-focus-trap";
     ]
 })
 export class WizardDesignDemo {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     @ViewChild("number") numberField: any;
 
     open: boolean = true;
@@ -291,7 +288,7 @@ export class WizardDesignDemo {
         this.showPowerError = false;
     }
 
-    @ViewChild("pageOne") pageOne: WizardPage;
+    @ViewChild("pageOne") pageOne: ClrWizardPage;
 
     get pageOneTitle(): string {
         if (this.pageOne.completed) {
@@ -300,7 +297,7 @@ export class WizardDesignDemo {
         return "Basic Information";
     }
 
-    @ViewChild("pageTwo") pageTwo: WizardPage;
+    @ViewChild("pageTwo") pageTwo: ClrWizardPage;
 
     get pageTwoTitle(): string {
         if (this.pageTwo.completed) {
@@ -309,7 +306,7 @@ export class WizardDesignDemo {
         return "Color";
     }
 
-    @ViewChild("pageThree") pageThree: WizardPage;
+    @ViewChild("pageThree") pageThree: ClrWizardPage;
 
     get pageThreeTitle(): string {
         if (this.pageThree.completed) {
@@ -318,7 +315,7 @@ export class WizardDesignDemo {
         return "Power";
     }
 
-    @ViewChild("pageFour") pageFour: WizardPage;
+    @ViewChild("pageFour") pageFour: ClrWizardPage;
 
     get pageFourTitle(): string {
         if (this.pageFour.completed) {

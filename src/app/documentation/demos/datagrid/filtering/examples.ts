@@ -5,7 +5,7 @@
  */
 export const EXAMPLES = {
     filterInterface: `
-interface Filter<T> {
+interface ClrDatagridFilterInterface<T> {
     isActive(): boolean;
     accepts(item: T): boolean;
     changes: Observable<any>;
@@ -13,9 +13,9 @@ interface Filter<T> {
 `,
 
     inlineFilterTS: `
-import {Filter} from "clarity-angular";
+import {ClrDatagridFilterInterface} from "@clr/angular";
 
-class MyFilter implements Filter<User> {
+class MyFilter implements ClrDatagridFilterInterface<User> {
     changes = new Subject<any>();
     isActive(): boolean { /* ... */ }
     accepts(user: User) { /* ... */ }
@@ -38,14 +38,14 @@ class MyComponent {
 `,
 
     customFilterComponentTS: `
-import {Filter, DatagridFilter} from "clarity-angular";
+import {ClrDatagridFilterInterface, ClrDatagridFilter} from "@clr/angular";
 
 @Component({
     selector: "my-filter",
     /* ... */
 })
 class MyFilter implements Filter<User> {
-    constructor(private filterContainer: DatagridFilter) {
+    constructor(private filterContainer: ClrDatagridFilter) {
         filterContainer.setFilter(this);
     }
     changes = new Subject<any>();
@@ -87,13 +87,13 @@ class MyReusableFilter {
 `,
 
     colorFilterTS: `
-import {Filter} from "clarity-angular";
+import {ClrDatagridFilterInterface} from "@clr/angular";
 
 @Component({
     selector: "color-filter",
     /* The rest of the filter component's declaration */
 })
-class ColorFilter implements Filter<User> {
+class ColorFilter implements ClrDatagridFilterInterface<User> {
     changes = new Subject<any>();
     isActive(): boolean { /* ... */ }
     accepts(user: User) { /* ... */ }

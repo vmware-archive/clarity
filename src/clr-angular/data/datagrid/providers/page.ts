@@ -23,9 +23,13 @@ export class Page {
         const oldSize = this._size;
         if (size !== oldSize) {
             this._size = size;
-            // Yeap. That's the formula to keep the first item from the old page still
-            // displayed in the new one.
-            this._current = Math.floor(oldSize / size * (this._current - 1)) + 1;
+            if (size === 0) {
+                this._current = 1;
+            } else {
+                // Yeap. That's the formula to keep the first item from the old page still
+                // displayed in the new one.
+                this._current = Math.floor(oldSize / size * (this._current - 1)) + 1;
+            }
             // We always emit an event even if the current page index didn't change, because
             // the size changing means the items inside the page are different
             this._change.next(this._current);

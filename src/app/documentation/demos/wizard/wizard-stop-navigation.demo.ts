@@ -5,17 +5,15 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "@clr/angular";
-import { CodeHighlight } from "@clr/angular";
+import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-stop-navigation",
     templateUrl: "./wizard-stop-navigation.demo.html"
 })
 export class WizardStopNavigation {
-    @ViewChild("wizard") wizard: Wizard;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild("wizard") wizard: ClrWizard;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
     untouched: boolean = true;
     loading: boolean = false;
@@ -70,13 +68,13 @@ export class WizardStopNavigation {
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     ...
 })
 export class WizardStopNavigation {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
 
     untouched: boolean = true;
     loading: boolean = false;

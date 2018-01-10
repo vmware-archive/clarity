@@ -4,16 +4,16 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, ViewChild } from "@angular/core";
-import { Wizard, WizardPage } from "@clr/angular";
+import { ClrWizard, ClrWizardPage } from "@clr/angular";
 
 @Component({
   selector: "clr-wizard-async-completion",
   templateUrl: "./wizard-async-completion.demo.html"
 })
 export class WizardAsyncCompletion {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     @ViewChild("myForm") formData: any;
-    @ViewChild("myFinishPage") finishPage: WizardPage;
+    @ViewChild("myFinishPage") finishPage: ClrWizardPage;
 
     loadingFlag: boolean = false;
     errorFlag: boolean = false;
@@ -70,14 +70,15 @@ export class WizardAsyncCompletion {
         }, 1000);
     }
 
-    code: string = `
+    code: string = `import { ClrWizard, ClrWizard } from "@clr/angular";
+
 @Component({
     ...
 })
 export class WizardAsyncCompletion {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     @ViewChild("myForm") formData: any;
-    @ViewChild("myFinishPage") finishPage: WizardPage;
+    @ViewChild("myFinishPage") finishPage: ClrWizardPage;
 
     loadingFlag: boolean = false;
     errorFlag: boolean = false;

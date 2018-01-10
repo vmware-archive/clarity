@@ -5,17 +5,15 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "@clr/angular";
-import { CodeHighlight } from "@clr/angular";
+import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-custom-buttons",
     templateUrl: "./wizard-custom-buttons.demo.html"
 })
 export class WizardCustomButtonsDemo {
-    @ViewChild("wizard") wizard: Wizard;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild("wizard") wizard: ClrWizard;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
     open: boolean = false;
 
     public handleDangerClick(): void {
@@ -40,13 +38,13 @@ export class WizardCustomButtonsDemo {
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     ...
 })
 export class WizardCustomButtonsDemo {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
 
     public handleDangerClick(): void {
         this.wizard.finish();

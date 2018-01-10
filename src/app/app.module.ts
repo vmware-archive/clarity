@@ -2,7 +2,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BrowserModule, Title} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import {ClarityModule} from "@clr/angular";
-import {BrowserPrebootModule} from "preboot/browser";
 
 import {AppRoutingModule} from "./app-routing.module";
 import {AppComponent, PLATFORM_TOKEN} from "./app.component";
@@ -19,7 +18,6 @@ import {DocumentationModule} from "./documentation/documentation.module";
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: "clarity" }),
-        BrowserPrebootModule.replayEvents(),
         BrowserAnimationsModule,
         ClarityModule,
         DocumentationModule,

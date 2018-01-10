@@ -5,23 +5,20 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "@clr/angular";
-import { WizardPage } from "@clr/angular";
-import { CodeHighlight } from "@clr/angular";
+import { ClrWizard, ClrWizardPage, ClrCodeHighlight } from "@clr/angular";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-jump-to",
     templateUrl: "./wizard-jump-to.demo.html"
 })
 export class WizardJumpToDemo {
-    @ViewChild("wizard") wizard: Wizard;
-    @ViewChild("pageThree") pageThree: WizardPage;
-    @ViewChild("pageFive") pageFive: WizardPage;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild("wizard") wizard: ClrWizard;
+    @ViewChild("pageThree") pageThree: ClrWizardPage;
+    @ViewChild("pageFive") pageFive: ClrWizardPage;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
     open: boolean = false;
 
-    public jumpTo(page: WizardPage) {
+    public jumpTo(page: ClrWizardPage) {
         if (page && page.completed) {
             this.wizard.navService.setCurrentPage(page);
         } else {
@@ -40,18 +37,17 @@ export class WizardJumpToDemo {
 
     code: string = `
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "clarity-angular";
-import { WizardPage } from "clarity-angular";
+import { ClrWizard, ClrWizardPage } from "@clr/angular";
 
 @Component({
     ...
 })
 export class WizardJumpToDemo {
-    @ViewChild("wizard") wizard: Wizard;
-    @ViewChild("pageThree") pageThree: WizardPage;
-    @ViewChild("pageFive") pageFive: WizardPage;
+    @ViewChild("wizard") wizard: ClrWizard;
+    @ViewChild("pageThree") pageThree: ClrWizardPage;
+    @ViewChild("pageFive") pageFive: ClrWizardPage;
 
-    public jumpTo(page: WizardPage) {
+    public jumpTo(page: ClrWizardPage) {
         if (page && page.completed) {
             this.wizard.navService.setCurrentPage(page);
         } else {

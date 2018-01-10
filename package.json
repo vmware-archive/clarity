@@ -45,9 +45,8 @@
     "core-js": "^2.4.1",
     "intl": "^1.2.5",
     "jump.js": "^1.0.2",
-    "preboot": "^5.1.7",
     "prismjs": "^1.8.3",
-    "rxjs": "^5.4.2",
+    "rxjs": "^5.5.6",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

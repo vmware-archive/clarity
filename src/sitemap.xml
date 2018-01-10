@@ -4,6 +4,11 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://vmware.github.io/clarity/not-found</loc>
+        <changefreq>daily</changefreq>
+        <priority>0</priority>
+    </url>
+    <url>
         <loc>https://vmware.github.io/clarity/community</loc>
         <changefreq>daily</changefreq>
     </url>

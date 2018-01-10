@@ -5,7 +5,7 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "@clr/angular";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     moduleId: module.id,
@@ -13,7 +13,7 @@ import { Wizard } from "@clr/angular";
     templateUrl: "./wizard-simple.demo.html"
 })
 export class WizardSimple {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     skipStepTwo: boolean = true;
     _open: boolean = false;
 
@@ -30,7 +30,7 @@ export class WizardSimple {
     ...
 })
 export class WizardSimple {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     skipStepTwo: boolean = true;
     _open: boolean = false;
 

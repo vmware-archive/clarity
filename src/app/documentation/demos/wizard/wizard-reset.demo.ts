@@ -5,17 +5,15 @@
  */
 
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { Wizard } from "@clr/angular";
-import { CodeHighlight } from "@clr/angular";
+import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-reset",
     templateUrl: "./wizard-reset.demo.html"
 })
 export class WizardResetDemo implements OnInit {
-    @ViewChild("wizard") wizard: Wizard;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild("wizard") wizard: ClrWizard;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
     public open: boolean = false;
 
@@ -46,7 +44,7 @@ export class WizardResetDemo implements OnInit {
 
     code: string = `
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { Wizard } from "../../clarity-angular/wizard/wizard";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     moduleId: module.id,
@@ -54,7 +52,7 @@ import { Wizard } from "../../clarity-angular/wizard/wizard";
     templateUrl: "./wizard-reset.demo.html"
 })
 export class WizardResetDemo implements OnInit {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
 
     public open: boolean = false;
 

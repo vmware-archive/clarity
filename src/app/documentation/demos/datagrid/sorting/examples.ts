@@ -5,9 +5,9 @@
  */
 export const EXAMPLES = {
     sortingTS: `
-import {Comparator} from "clarity-angular";
+import {ClrDatagridComparatorInterface} from "@clr/angular";
 
-class PokemonComparator implements Comparator<User> {
+class PokemonComparator implements ClrDatagridComparatorInterface<User> {
     compare(a: User, b: User) {
         return a.pokemon.number - b.pokemon.number;
     }

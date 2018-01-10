@@ -5,29 +5,28 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "@clr/angular";
-import { CodeHighlight } from "@clr/angular";
+import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
 
 @Component({
-    moduleId: module.id,
     selector: "clr-wizard-force-forward",
     templateUrl: "./wizard-force-forward.demo.html"
 })
 export class WizardForceForwardDemo {
-    @ViewChild("wizard") wizard: Wizard;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+    @ViewChild("wizard") wizard: ClrWizard;
+    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
     _open: boolean = false;
 
     open() {
         this._open = !this.open;
     }
 
-    code: string = `
+    code: string = `import { ClrWizard } from "@clr/angular";
+
 @Component({
     ...
 })
 export class WizardForceForwardDemo {
-    @ViewChild("wizard") wizard: Wizard;
+    @ViewChild("wizard") wizard: ClrWizard;
     _open: boolean = false;
 
     open() {

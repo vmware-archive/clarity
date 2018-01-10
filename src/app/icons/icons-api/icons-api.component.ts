@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 const API_IMPORTS = `
-import { ClarityIcons } from 'clarity-icons';
+import { ClarityIcons } from '@clr/icons';
 `;
 
 const CHECK_ICON_TEMPLATE = `

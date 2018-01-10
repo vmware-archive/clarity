@@ -3,12 +3,15 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, OnDestroy, OnInit} from "@angular/core";
+import {Component, ContentChild, ContentChildren, OnDestroy, OnInit, QueryList} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
 import {Point} from "../../popover/common/popover";
 
+import {ClrDatagridColumnToggleButton} from "./datagrid-column-toggle-button";
+import {ClrDatagridColumnToggleTitle} from "./datagrid-column-toggle-title";
 import {DatagridHideableColumnModel} from "./datagrid-hideable-column.model";
+import {ColumnToggleButtonsService} from "./providers/column-toggle-buttons.service";
 import {HideableColumnService} from "./providers/hideable-column.service";
 
 @Component({
@@ -24,7 +27,8 @@ import {HideableColumnService} from "./providers/hideable-column.service";
         <div class="column-switch"
              *clrPopoverOld="open; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint">
             <div class="switch-header">
-                Show Columns
+                <ng-container *ngIf="!title">Show Columns</ng-container>
+                <ng-content select="clr-dg-column-toggle-title"></ng-content>
                 <button
                     class="btn btn-sm btn-link"
                     (click)="toggleUI()"
@@ -42,7 +46,10 @@ import {HideableColumnService} from "./providers/hideable-column.service";
                     </clr-checkbox>
                 </li>
             </ul>
-            <div class="switch-footer">
+            <div class="switch-footer" *ngIf="buttons.length > 0">
+                <ng-content select="clr-dg-column-toggle-button"></ng-content>
+            </div>
+            <div class="switch-footer" *ngIf="buttons.length === 0">
                 <div>
                     <button
                             class="btn btn-sm btn-link p6 text-uppercase"
@@ -66,7 +73,7 @@ import {HideableColumnService} from "./providers/hideable-column.service";
 })
 
 export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
-    private _hideableColumnChangeSubscription: Subscription;
+    private subscriptions: Subscription[] = [];
     private _allColumnsVisible: boolean;
 
     /***
@@ -89,14 +96,19 @@ export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
         this._allColumnsVisible = value;
     }
 
-    constructor(public hideableColumnService: HideableColumnService) {}
+    @ContentChild(ClrDatagridColumnToggleTitle) title: ClrDatagridColumnToggleTitle;
+    @ContentChildren(ClrDatagridColumnToggleButton) buttons: QueryList<ClrDatagridColumnToggleButton>;
+
+    constructor(public hideableColumnService: HideableColumnService,
+                private columnToggleButtons: ColumnToggleButtonsService) {}
 
     ngOnInit() {
-        this._hideableColumnChangeSubscription = this.hideableColumnService.columnListChange.subscribe((columnList) => {
+        this.subscriptions.push(this.hideableColumnService.columnListChange.subscribe((columnList) => {
             // Reset the list of columns
             this.columns.length = 0;
             this.hideableColumnService.updateForLastVisibleColumn();
             this.allColumnsVisible = this.hideableColumnService.checkForAllColumnsVisible;
+            this.columnToggleButtons.selectAllDisabled = this.allColumnsVisible;
 
             // Add only the hidden columns to the toggler.
             columnList.forEach((col) => {
@@ -104,11 +116,19 @@ export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
                     this.columns.push(col);
                 }
             });
-        });
+        }));
+
+        this.subscriptions.push(this.columnToggleButtons.okButtonClicked.subscribe(() => {
+            this.toggleUI();
+        }));
+
+        this.subscriptions.push(this.columnToggleButtons.selectAllButtonClicked.subscribe(() => {
+            this.selectAll();
+        }));
     }
 
     ngOnDestroy() {
-        this._hideableColumnChangeSubscription.unsubscribe();
+        this.subscriptions.forEach(sub => sub.unsubscribe());
     }
 
     selectAll() {
@@ -119,6 +139,7 @@ export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
     toggleColumn(event: boolean, column: DatagridHideableColumnModel) {
         column.hidden = !event;
         this.allColumnsVisible = this.hideableColumnService.checkForAllColumnsVisible;
+        this.columnToggleButtons.selectAllDisabled = this.allColumnsVisible;
         this.hideableColumnService.updateForLastVisibleColumn();
     }
 

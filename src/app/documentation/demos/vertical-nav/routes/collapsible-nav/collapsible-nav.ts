@@ -34,6 +34,19 @@ const HTML_EXAMPLE = `
 </clr-vertical-nav>
 `;
 
+const HTML_EXAMPLE_1 = `
+<clr-vertical-nav [clrVerticalNavCollapsible]="true" class="nav-trigger--bottom">
+    <a clrVerticalNavLink routerLink="...">
+        <clr-icon clrVerticalNavIcon shape="user"></clr-icon>
+        Normal
+    </a>
+    <a clrVerticalNavLink routerLink="...">
+        <clr-icon clrVerticalNavIcon shape="bolt"></clr-icon>
+        Electric
+    </a>
+</clr-vertical-nav>
+`;
+
 @Component({
     selector: "clr-vertical-nav-collapsible-demo",
     templateUrl: "./collapsible-nav.html",
@@ -41,6 +54,7 @@ const HTML_EXAMPLE = `
 })
 export class CollapsibleNavDemo {
     htmlExample = HTML_EXAMPLE;
+    htmlExample1 = HTML_EXAMPLE_1;
 
     collapsible: boolean = true;
     collapsed: boolean = false;

@@ -57,3 +57,42 @@
 </div>
 
 <clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>
+
+<p>
+    To place the collapse/expand trigger after the links, use the <code class="clr-code">.nav-trigger--bottom</code>
+    class along with <code class="clr-code">clr-vertical-nav</code>.
+</p>
+
+<div class="clr-example">
+    <div class="main-container" style="height: 400px">
+        <header class="header">
+            <div class="branding">
+                <a href="javascript://">
+                    <clr-icon shape="bolt" class="is-inverse"></clr-icon>
+                    <span class="title">Project Pokémon</span>
+                </a>
+            </div>
+        </header>
+        <div class="content-container">
+            <div class="content-area">
+                Normal
+                The Normal type is the most basic type of Pokémon.
+                They are very common and appear from the very first route you visit.
+                Most Normal Pokémon are single type, but there is a large
+                contingent having a second type of Flying.
+            </div>
+            <clr-vertical-nav [clrVerticalNavCollapsible]="true" class="nav-trigger--bottom">
+                <a clrVerticalNavLink href="javascript://" class="active">
+                    <clr-icon clrVerticalNavIcon shape="user"></clr-icon>
+                    Normal
+                </a>
+                <a clrVerticalNavLink href="javascript://">
+                    <clr-icon clrVerticalNavIcon shape="bolt"></clr-icon>
+                    Electric
+                </a>
+            </clr-vertical-nav>
+        </div>
+    </div>
+</div>
+
+<clr-code-snippet [clrCode]="htmlExample1"></clr-code-snippet>

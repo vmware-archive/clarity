@@ -4,8 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
-import {ClrIconCustomTag, ClrLoading, ClrMainContainer, IconCustomTag, MainContainer} from "@clr/angular";
-import {Loading} from "@clr/angular/index";
+import {ClrIconCustomTag, ClrLoading, ClrMainContainer, IconCustomTag, Loading, MainContainer} from "@clr/angular";
 
 @Component({selector: "KS-root", templateUrl: "./app.component.html", styleUrls: ["./app.component.scss"]})
 export class AppComponent {

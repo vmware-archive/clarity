@@ -87,7 +87,7 @@ export class KSCode implements AfterViewInit {
     private aCodeHighlight: CodeHighlight;
     private aClrCodeHighlight: ClrCodeHighlight;
 
-    @ViewChildren(CodeHighlight) highlights: QueryList<CodeHighlight>;
+    @ViewChildren(ClrCodeHighlight) highlights: QueryList<ClrCodeHighlight>;
     CSS_EXAMPLE = CSS_EXAMPLE;
     HTML_EXAMPLE = HTML_EXAMPLE;
     JAVASCRIPT_EXAMPLE = JAVASCRIPT_EXAMPLE;

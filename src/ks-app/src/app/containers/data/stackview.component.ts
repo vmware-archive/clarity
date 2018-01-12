@@ -8,6 +8,7 @@ import {Component} from "@angular/core";
 import {
     ClrDatagrid,
     ClrStackBlock,
+    ClrStackHeader,
     ClrStackInput,
     ClrStackSelect,
     ClrStackView,
@@ -20,7 +21,6 @@ import {
     StackView,
     StackViewCustomTags
 } from "@clr/angular";
-import {ClrStackHeader} from "@clr/angular";
 
 @Component({templateUrl: "./stackview.component.html"})
 export class KSStackView {

@@ -5,8 +5,14 @@
  */
 
 import {Component} from "@angular/core";
-import {ClrSignpost, ClrSignpostContent, ClrSignpostTrigger, Signpost, SignpostContent} from "@clr/angular";
-import {SignpostTrigger} from "@clr/angular/index";
+import {
+    ClrSignpost,
+    ClrSignpostContent,
+    ClrSignpostTrigger,
+    Signpost,
+    SignpostContent,
+    SignpostTrigger
+} from "@clr/angular";
 
 @Component({templateUrl: "./signposts.component.html"})
 export class KSSignposts {

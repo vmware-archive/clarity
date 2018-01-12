@@ -12,7 +12,9 @@ import {
     ClrDatagridCell,
     ClrDatagridColumn,
     ClrDatagridColumnToggle,
+    ClrDatagridComparatorInterface,
     ClrDatagridFilter,
+    ClrDatagridFilterInterface,
     ClrDatagridFooter,
     ClrDatagridHideableColumn,
     ClrDatagridItems,
@@ -20,6 +22,8 @@ import {
     ClrDatagridPlaceholder,
     ClrDatagridRow,
     ClrDatagridRowDetail,
+    ClrDatagridStateInterface,
+    ClrDatagridStringFilterInterface,
     Comparator,
     Datagrid,
     DatagridActionBar,
@@ -40,13 +44,6 @@ import {
     State,
     StringFilter
 } from "@clr/angular";
-
-import {ClrDatagridComparatorInterface} from "../../../../../clr-angular/data/datagrid/interfaces/comparator.interface";
-import {ClrDatagridFilterInterface} from "../../../../../clr-angular/data/datagrid/interfaces/filter.interface";
-import {ClrDatagridStateInterface} from "../../../../../clr-angular/data/datagrid/interfaces/state.interface";
-import {
-    ClrDatagridStringFilterInterface
-} from "../../../../../clr-angular/data/datagrid/interfaces/string-filter.interface";
 
 import {PokemonComparator} from "./pokemon-comparator";
 import {DatagridKitchenSinkData} from "./pokemon-data";

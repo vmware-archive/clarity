@@ -13,8 +13,7 @@ import {
     Dropdown,
     DropdownItem,
     DropdownMenu,
-    DropdownTrigger,
-    menuPositions
+    DropdownTrigger
 } from "@clr/angular";
 
 @Component({templateUrl: "./dropdowns.component.html"})

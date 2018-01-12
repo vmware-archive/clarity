@@ -14,15 +14,13 @@ import {
     ClrVerticalNavIcon,
     ClrVerticalNavLink,
     Header,
-    MainContainerWillyWonka,
-    NavDetectionOompaLoompa,
     NavLevelDirective,
+    VerticalNav,
     VerticalNavGroup,
     VerticalNavGroupChildren,
     VerticalNavIcon,
     VerticalNavLink
 } from "@clr/angular";
-import {VerticalNav} from "@clr/angular/index";
 
 import {VerticalNavCases} from "./vertical-nav-cases";
 
@@ -37,8 +35,6 @@ export class KSVerticalNav {
     private aClrHeader: ClrHeader;
     private aNavLevelDirective: NavLevelDirective;
     private aClrNavLevel: ClrNavLevel;
-    private aNavDetectionOompaLoompa: NavDetectionOompaLoompa;
-    private aMainContainerWillyWonka: MainContainerWillyWonka;
     private aVerticalNav: VerticalNav;
     private aClrVerticalNav: ClrVerticalNav;
     private aVerticalNavGroup: VerticalNavGroup;

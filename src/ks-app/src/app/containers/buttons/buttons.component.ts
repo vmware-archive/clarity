@@ -5,7 +5,7 @@
  */
 
 import {Component} from "@angular/core";
-import {Button, ClrButton} from "@clr/angular";
+import {Button, ClrButton, ClrLoadingButton, LoadingButton} from "@clr/angular";
 
 
 @Component({templateUrl: "./buttons.component.html"})
@@ -19,6 +19,8 @@ export class KSButtons {
      */
     private aButton: Button;
     private aClrButton: ClrButton;
+    private aLoadingButton: LoadingButton;
+    private aCLrLoadingButton: ClrLoadingButton;
 
     constructor() {
         this.display = this.numbers;

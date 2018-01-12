@@ -143,4 +143,11 @@ export class Page {
         }
         return lastInPage;
     }
+
+    /**
+     * Resets the page size to 0
+     */
+    public resetPageSize(): void {
+        this.size = 0;
+    }
 }

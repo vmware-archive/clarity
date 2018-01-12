@@ -71,7 +71,7 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
      */
     private _pageSubscription: Subscription;
     ngOnDestroy() {
-        this.pageSize = 0;
+        this.page.resetPageSize();
         if (this._pageSubscription) {
             this._pageSubscription.unsubscribe();
         }

@@ -5,9 +5,32 @@
  */
 
 import {Component} from "@angular/core";
+import {
+    ClrStackBlock,
+    ClrStackHeader,
+    ClrStackInput,
+    ClrStackSelect,
+    ClrStackView,
+    ClrStackViewCustomTags,
+    ClrTreeNode,
+    StackBlock,
+    StackHeader,
+    StackInput,
+    StackSelect,
+    StackView,
+    StackViewCustomTags,
+    TreeNode
+} from "@clr/angular";
 
 @Component({templateUrl: "./tree-view.component.html"})
 export class KSTreeView {
-    selected1: boolean = false;
-    selected1Child: boolean = true;
+    /**
+     * @description
+     * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
+     */
+    private aTreeNode: TreeNode;
+    private aClrTreeNode: ClrTreeNode;
+    // END Clarity Stackview Entities
+    selected1 = false;
+    selected1Child = true;
 }

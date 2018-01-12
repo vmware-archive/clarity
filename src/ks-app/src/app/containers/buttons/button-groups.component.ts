@@ -5,6 +5,14 @@
  */
 
 import {Component} from "@angular/core";
+import {ButtonGroup, ClrButtonGroup} from "@clr/angular";
 
 @Component({templateUrl: "./button-groups.component.html"})
-export class KSButtonGroups {}
+export class KSButtonGroups {
+    /**
+     * @description
+     * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
+     */
+    private aButton: ButtonGroup;
+    private aClrButton: ClrButtonGroup;
+}

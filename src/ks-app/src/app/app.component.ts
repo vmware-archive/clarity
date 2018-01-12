@@ -4,9 +4,22 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
+import {ClrIconCustomTag, ClrLoading, ClrMainContainer, IconCustomTag, Loading, MainContainer} from "@clr/angular";
 
 @Component({selector: "KS-root", templateUrl: "./app.component.html", styleUrls: ["./app.component.scss"]})
 export class AppComponent {
+    /**
+     * @description
+     * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
+     * This is a catchall for entities w/o explicit app demos.
+     */
+    private aIconCustomTag: IconCustomTag;
+    private aClrIconCustomTag: ClrIconCustomTag;
+    private aMainContainer: MainContainer;
+    private aClrMainContainer: ClrMainContainer;
+    private aLoading: Loading;
+    private aClrLoading: ClrLoading;
+
     title = "KS";
     links = [
         {path: "alerts", title: "Alerts"},
@@ -14,6 +27,7 @@ export class AppComponent {
         {path: "buttons", title: "Buttons"},
         {path: "cards", title: "Cards"},
         {path: "checkboxes", title: "Checkboxes"},
+        {path: "code", title: "Code"},
         {path: "colors", title: "Colors"},
         {path: "datagrids", title: "Datagrid"},
         {path: "dropdowns", title: "Dropdowns"},

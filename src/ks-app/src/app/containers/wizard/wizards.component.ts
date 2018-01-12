@@ -5,11 +5,53 @@
  */
 
 import {Component, OnInit, ViewChild} from "@angular/core";
-import {Wizard} from "@clr/angular";
-import {WizardPage} from "@clr/angular";
+import {
+    ClrWizardButton,
+    ClrWizardCustomTags,
+    ClrWizardHeaderAction,
+    ClrWizardPageButtons,
+    ClrWizardPageHeaderActions,
+    ClrWizardPageNavTitle,
+    ClrWizardPageTitle,
+    ClrWizardStepnav,
+    Wizard,
+    WizardButton,
+    WizardCustomTags,
+    WizardHeaderAction,
+    WizardPageButtonsDirective,
+    WizardPageHeaderActionsDirective,
+    WizardPageNavTitleDirective,
+    WizardPageTitleDirective,
+    WizardStepnav,
+    WizardStepnavItem
+} from "@clr/angular";
 
 @Component({templateUrl: "./wizards.component.html"})
 export class KSWizards implements OnInit {
+    /**
+     * @description
+     * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
+     */
+    // private aWizard: Wizard; //used here
+    // private aWizardPage: WizardPage; //used here
+    private aWizardStepnav: WizardStepnav;
+    private aClrWizardStepnav: ClrWizardStepnav;
+    private aWizardStepnavItem: WizardStepnavItem;
+    private aClrWizardStepnavItem: WizardStepnavItem;
+    private aWizardButton: WizardButton;
+    private aClrWizardButton: ClrWizardButton;
+    private aWizardHeaderAction: WizardHeaderAction;
+    private aClrWizardHeaderAction: ClrWizardHeaderAction;
+    private aWizardCustomTags: WizardCustomTags;
+    private aClrWizardCustomTags: ClrWizardCustomTags;
+    private aWizardPageTitleDirective: WizardPageTitleDirective;
+    private aClrWizardPageTitle: ClrWizardPageTitle;
+    private aWizardPageNavTitleDirective: WizardPageNavTitleDirective;
+    private aClrWizardPageNavTitle: ClrWizardPageNavTitle;
+    private aWizardPageButtonsDirective: WizardPageButtonsDirective;
+    private aClrWizardPageButtons: ClrWizardPageButtons;
+    private aWizardPageHeaderActionsDirective: WizardPageHeaderActionsDirective;
+    private aClrWizardPageHeaderActions: ClrWizardPageHeaderActions;
     // Form Wizard Demo
     @ViewChild("formWizard") formWizard: Wizard;
     formOpen: boolean = false;

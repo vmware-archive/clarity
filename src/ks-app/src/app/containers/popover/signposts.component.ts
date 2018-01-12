@@ -5,9 +5,27 @@
  */
 
 import {Component} from "@angular/core";
+import {
+    ClrSignpost,
+    ClrSignpostContent,
+    ClrSignpostTrigger,
+    Signpost,
+    SignpostContent,
+    SignpostTrigger
+} from "@clr/angular";
 
 @Component({templateUrl: "./signposts.component.html"})
 export class KSSignposts {
+    /**
+     * @description
+     * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
+     */
+    private aSignpost: Signpost;
+    private aClrSignpost: ClrSignpost;
+    private aSignpostContent: SignpostContent;
+    private aClrSignpostContent: ClrSignpostContent;
+    private aSignpostTrigger: SignpostTrigger;
+    private aClrSignpostTrigger: ClrSignpostTrigger;
     openState: boolean = false;
     positions = [{icon: "help-info", description: "Right bottom", position: "right-bottom", id: "rightBottomTrigger"}];
 }

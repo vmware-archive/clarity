@@ -262,7 +262,7 @@ a.btn-primary {
         margin-top: $bl-0_25;
     }
     pre {
-        // TODO: move this into the background style of the code-highlight 
+        // TODO: move this into the background style of the code-highlight
         // component...
         background: #FFF !important;
     }
@@ -273,7 +273,11 @@ a.btn-primary {
     width: auto;
     min-width: auto;
 }
-
 .margin-top-24 {
     margin-top: 24px;
+}
+
+.margin-right-0_25 {
+    // Fix for badges demo in tree-view
+    margin-right: 0.25rem;
 }

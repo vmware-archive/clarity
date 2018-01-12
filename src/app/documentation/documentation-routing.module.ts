@@ -260,7 +260,7 @@ const documentationRoutes: Routes = [
                 loadChildren: "app/documentation/demos/tabs/tabs.demo.module#TabsDemoModule",
                 data: {
                     bodyClass: "page-tables",
-                    browserTitle: "Tables"
+                    browserTitle: "Tabs"
                 }
             },
             {

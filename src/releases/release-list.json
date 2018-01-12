@@ -1,15 +1,25 @@
 {
-    "current": "0.10.21",
+    "current": "0.11.0",
     "all": {
+        "0.11.0": {
+            "date": "Jan 11, 2017",
+            "sketch": "0.11.0",
+            "commit": "f6530c683f80000feccdbc85fbec0a94365f85bb"
+        },
         "0.11.0-rc.1": {
             "date": "Jan 5, 2017",
-            "sketch": "0.10.11",
+            "sketch": "0.11.0",
             "commit": "912242a417eb6a72e7da70f60842e2e7e6a2df9c"
         },
         "0.11.0-beta.1": {
             "date": "Dec 21, 2017",
-            "sketch": "0.10.11",
+            "sketch": "0.11.0",
             "commit": "76b938a13ab2f6d40b7ffb3403d7dcc9844e0630"
+        },
+        "0.10.22": {
+            "date": "Jan 11, 2018",
+            "sketch": "0.10.11",
+            "commit": "5c929a7893cbab0c202488e0d76c8cd141f0e5e9"
         },
         "0.10.21": {
             "date": "Jan 4, 2018",

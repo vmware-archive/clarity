@@ -19,6 +19,7 @@ export const APP_ROUTES: Routes = [
     {path: "code-highlight", loadChildren: "app/code/code-highlight.demo.module"},
     {path: "color", loadChildren: "app/color/color.demo.module"},
     {path: "datagrid", loadChildren: "app/datagrid/datagrid.demo.module"},
+    {path: "datepicker", loadChildren: "app/datepicker/datepicker.demo.module"},
     {path: "dropdown", loadChildren: "app/dropdown/dropdown.demo.module"},
     {path: "forms", loadChildren: "app/forms/forms.demo.module"},
     {path: "grid", loadChildren: "app/grid/grid.demo.module"},

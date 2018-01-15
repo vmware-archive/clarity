@@ -1,0 +1,114 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+$clr-calendar-click-target: 1.5rem;
+$clr-calendar-background-color: $clr-white;
+$clr-calendar-border-color: $clr-light-midtone-gray;
+$clr-datepicker-trigger-hover-color: $clr-action-blue;
+$clr-calendar-margin-top: 0.25rem;
+$clr-calendar-padding: 0.5rem;
+
+$clr-calendar-btn-color: $action-blues-light-midtone;
+$clr-calendar-btn-padding: 0.25rem;
+
+@include exports('datepicker.clarity') {
+    .datepicker-container {
+        display: inline-block;
+    }
+
+    .datepicker-trigger {
+        //Dimensions
+        height: $clr-calendar-click-target;
+        width: $clr-calendar-click-target;
+        padding: 0;
+
+        //Other Props
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        &:hover clr-icon {
+            fill: $clr-datepicker-trigger-hover-color;
+        }
+    }
+
+    .calendar {
+        display: flex;
+        flex-direction: column;
+
+        //Dimensions
+        padding: $clr-calendar-padding;
+        margin-top: $clr-calendar-margin-top;
+        width: 278px;
+        height: 314px;
+
+        //Other Props
+        background: $clr-calendar-background-color;
+        border: 1px solid $clr-calendar-border-color;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+
+    .calendar-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .calendar-table {
+        flex: 1 1 auto;
+
+        //Dimensions
+        width: 100%;
+    }
+
+    .calendar-cell {
+        //Dimensions
+        height: $clr-calendar-click-target;
+        width: $clr-calendar-click-target;
+        min-height: $clr-calendar-click-target;
+        min-width: $clr-calendar-click-target;
+
+        //Other Props
+        text-align: center;
+    }
+
+    .weekdays {
+        flex: 0 0 $clr-calendar-click-target;
+    }
+
+    .day {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .calendar-btn,
+    .date {
+        &:hover,
+        &:focus {
+            background: #eee;
+        }
+
+        &:focus {
+            //Only because we have defined a background color for focus above
+            outline: 0;
+        }
+    }
+
+    .calendar-btn {
+        //Dimensions
+        height: $clr-calendar-click-target;
+        line-height: $clr-calendar-click-target;
+        padding: 0 $clr-calendar-btn-padding;
+        margin: 0;
+
+        //Other Props
+        border: none;
+        border-radius: $clr-default-borderradius;
+        background: none;
+        cursor: pointer;
+        color: $clr-calendar-btn-color;
+        font-size: 18px;
+        font-weight: 200;
+    }
+}

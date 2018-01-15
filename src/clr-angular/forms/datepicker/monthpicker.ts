@@ -35,7 +35,7 @@ export class ClrMonthPicker {
      * @returns {ReadonlyArray<string>}
      */
     get months(): ReadonlyArray<string> {
-        return this._dateUtilsService.localeMonthsLong;
+        return this._dateUtilsService.localeMonthsWide;
     }
 
     /**

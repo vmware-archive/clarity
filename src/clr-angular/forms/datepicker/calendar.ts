@@ -28,6 +28,7 @@ export class ClrCalendar extends AbstractPopover {
     ) {
         super(_injector, parent);
         this.configurePopover();
+        this._dateUtilsService.initializeCalendar();
     }
 
     /**
@@ -45,14 +46,34 @@ export class ClrCalendar extends AbstractPopover {
      * @returns {ReadonlyArray<string>}
      */
     get localeDaysShort(): ReadonlyArray<string> {
-        return this._dateUtilsService.localeDaysShort;
+        return this._dateUtilsService.localeDaysNarrow;
     }
 
+    /**
+     * Returns if the current view is that of the month picker
+     * @returns {boolean}
+     */
     get isMonthView(): boolean {
         return this._calendarViewService.isMonthView;
     }
 
     set isMonthView(value: boolean) {
         this._calendarViewService.isMonthView = value;
+    }
+
+    /**
+     * Returns the month value of the calendar in the TranslationWidth.Abbreviated format.
+     * @returns {string}
+     */
+    get calendarMonth(): string {
+        return this._dateUtilsService.getMonthAbbreviated(this._dateUtilsService.calendarMonth);
+    }
+
+    /**
+     * Returns the year value of the calendar.
+     * @returns {number}
+     */
+    get calendarYear(): number {
+        return this._dateUtilsService.calendarYear;
     }
 }

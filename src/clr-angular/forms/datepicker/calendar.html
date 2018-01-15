@@ -1,8 +1,12 @@
 <clr-monthpicker *ngIf="isMonthView"></clr-monthpicker>
 <ng-container *ngIf="!isMonthView">
     <div class="calendar-header">
-        <button class="calendar-btn" type="button" (click)="isMonthView = true">Month</button>
-        <button class="calendar-btn" type="button">Year</button>
+        <button class="calendar-btn" type="button" (click)="isMonthView = true">
+            {{calendarMonth}}
+        </button>
+        <button class="calendar-btn" type="button">
+            {{calendarYear}}
+        </button>
     </div>
     <table class="calendar-table weekdays">
         <tr class="calendar-row">

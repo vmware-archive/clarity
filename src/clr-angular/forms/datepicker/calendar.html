@@ -1,14 +1,19 @@
-<div class="calendar-header">
-    <button class="calendar-btn">Month</button>
-    <button class="calendar-btn">Year</button>
-</div>
-<table class="calendar-table weekdays">
-    <tr class="calendar-row">
-        <td *ngFor="let day of localeDaysShort" class="calendar-cell day">
-            {{day}}
-        </td>
-    </tr>
-</table>
-<table class="calendar-table calendar-dates">
+<clr-monthpicker *ngIf="isMonthView"></clr-monthpicker>
+<ng-container *ngIf="!isMonthView">
+    <div class="calendar-header">
+        <button class="calendar-btn" type="button" (click)="isMonthView = true">Month</button>
+        <button class="calendar-btn" type="button">Year</button>
+    </div>
+    <table class="calendar-table weekdays">
+        <tr class="calendar-row">
+            <td *ngFor="let day of localeDaysShort" class="calendar-cell day">
+                {{day}}
+            </td>
+        </tr>
+    </table>
+    <table class="calendar-table calendar-dates">
+        <tr class="calendar-row">
 
-</table>
+        </tr>
+    </table>
+</ng-container>

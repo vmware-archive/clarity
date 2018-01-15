@@ -10,7 +10,40 @@ $clr-calendar-margin-top: 0.25rem;
 $clr-calendar-padding: 0.5rem;
 
 $clr-calendar-btn-color: $action-blues-light-midtone;
+$clr-calendar-btn-hover-focus-color: $gray-light;
 $clr-calendar-btn-padding: 0.25rem;
+
+$clr-calendar-month-cell-height: 2rem;
+$clr-calendar-month-cell-padding: 0.5rem;
+
+@mixin generate-calendar-button($height: $clr-calendar-click-target, $padding: $clr-calendar-btn-padding) {
+    //Dimensions
+    height: $height;
+    padding: 0 $padding;
+    margin: 0;
+
+    //Other Props
+    line-height: $clr-calendar-click-target;
+    border: none;
+    border-radius: $clr-default-borderradius;
+    background: none;
+    cursor: pointer;
+    color: $clr-calendar-btn-color;
+    font-size: 18px;
+    font-weight: 200;
+
+
+    &:hover,
+    &:focus {
+        background: $clr-calendar-btn-hover-focus-color;
+    }
+
+    &:focus {
+        //Only because we have defined a background color for focus above
+        outline: 0;
+    }
+}
+
 
 @include exports('datepicker.clarity') {
     .datepicker-container {
@@ -82,33 +115,26 @@ $clr-calendar-btn-padding: 0.25rem;
         font-weight: 600;
     }
 
-    .calendar-btn,
-    .date {
-        &:hover,
-        &:focus {
-            background: #eee;
-        }
-
-        &:focus {
-            //Only because we have defined a background color for focus above
-            outline: 0;
-        }
+    .calendar-btn {
+        @include generate-calendar-button();
     }
 
-    .calendar-btn {
+    .monthpicker {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        //Other props
+        overflow: hidden;
+    }
+
+    .month {
+        @include generate-calendar-button($clr-calendar-month-cell-height, $clr-calendar-month-cell-padding);
         //Dimensions
-        height: $clr-calendar-click-target;
-        line-height: $clr-calendar-click-target;
-        padding: 0 $clr-calendar-btn-padding;
-        margin: 0;
+        width: 127px;
 
         //Other Props
-        border: none;
-        border-radius: $clr-default-borderradius;
-        background: none;
-        cursor: pointer;
-        color: $clr-calendar-btn-color;
-        font-size: 18px;
-        font-weight: 200;
+        text-align: left;
+        outline-offset: -5px;
     }
 }

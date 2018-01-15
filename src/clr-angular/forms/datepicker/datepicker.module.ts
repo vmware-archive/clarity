@@ -13,12 +13,14 @@ import {ClrFocusTrapModule} from "../../utils/focus-trap/focus-trap.module";
 import {ClrDatepicker} from "./datepicker";
 import {ClrDatepickerContainer} from "./datepicker-container";
 import {ClrCalendar} from "./calendar";
+import {ClrMonthPicker} from "./monthpicker";
 
 
 export const CLR_DATEPICKER_MODULE: Type<any>[] = [
     ClrDatepickerContainer,
     ClrDatepicker,
-    ClrCalendar
+    ClrCalendar,
+    ClrMonthPicker
 ];
 
 @NgModule({

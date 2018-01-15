@@ -8,6 +8,7 @@ import {Component, ElementRef, Injector, SkipSelf} from "@angular/core";
 import {AbstractPopover} from "../../popover/common/abstract-popover";
 import {Point} from "../../popover/common/popover";
 import {DateUtilsService} from "./providers/date-utils.service";
+import {CalendarViewService} from "./providers/calendar-view.service";
 
 @Component({
     selector: "clr-calendar",
@@ -15,14 +16,15 @@ import {DateUtilsService} from "./providers/date-utils.service";
     host: {
         "[class.calendar]": "true",
     },
-    providers: [DateUtilsService]
+    providers: [DateUtilsService, CalendarViewService]
 })
 export class ClrCalendar extends AbstractPopover {
 
     constructor(
         @SkipSelf() parent: ElementRef,
         private _injector: Injector,
-        private _dateUtilsService: DateUtilsService
+        private _dateUtilsService: DateUtilsService,
+        private _calendarViewService: CalendarViewService
     ) {
         super(_injector, parent);
         this.configurePopover();
@@ -37,7 +39,20 @@ export class ClrCalendar extends AbstractPopover {
         this.closeOnOutsideClick = true;
     }
 
+    /**
+     * Returns an array of days in the TranslationWidth.Narrow format.
+     * Eg: [S, M, T, ...] for en-US
+     * @returns {ReadonlyArray<string>}
+     */
     get localeDaysShort(): ReadonlyArray<string> {
         return this._dateUtilsService.localeDaysShort;
+    }
+
+    get isMonthView(): boolean {
+        return this._calendarViewService.isMonthView;
+    }
+
+    set isMonthView(value: boolean) {
+        this._calendarViewService.isMonthView = value;
     }
 }

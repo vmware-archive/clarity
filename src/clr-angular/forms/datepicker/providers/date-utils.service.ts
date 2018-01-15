@@ -5,7 +5,10 @@
  */
 
 import {Inject, Injectable, LOCALE_ID} from "@angular/core";
-import {FormStyle, getLocaleDayNames, getLocaleFirstDayOfWeek, TranslationWidth, WeekDay} from "@angular/common";
+import {
+    FormStyle, getLocaleDayNames, getLocaleFirstDayOfWeek, getLocaleMonthNames, TranslationWidth,
+    WeekDay
+} from "@angular/common";
 
 const TOTAL_DAYS_IN_MONTH_VIEW: number = 42;
 const NO_OF_DAYS_IN_A_WEEK: number = 7;
@@ -33,7 +36,21 @@ export class DateUtilsService {
         this._localeDaysShort = tempArr;
     }
 
+    /**
+     * Returns an array of days in the TranslationWidth.Narrow format.
+     * Eg: [S, M, T, ...] for en-US
+     * @returns {ReadonlyArray<string>}
+     */
     get localeDaysShort(): ReadonlyArray<string> {
         return this._localeDaysShort;
+    }
+
+    /**
+     * Returns an array of month names in the TranslationWidth.Wide format.
+     * e.g. `[January, February, ...]` for en-US
+     * @returns {ReadonlyArray<string>}
+     */
+    get localeMonthsLong(): ReadonlyArray<string> {
+        return getLocaleMonthNames(this.locale, FormStyle.Format, TranslationWidth.Wide);
     }
 }

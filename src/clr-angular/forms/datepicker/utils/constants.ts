@@ -42,3 +42,7 @@ export const BIG_ENDIAN: InputDateDisplayFormat = {
     name: "BIG_ENDIAN",
     format: YEAR + "/" + MONTH + "/" + DATE
 };
+
+export const NO_OF_DAYS_IN_A_WEEK: number = 7;
+export const NO_OF_ROWS_IN_CALENDAR_VIEW: number = 6;
+export const TOTAL_DAYS_IN_DAYS_VIEW: number = NO_OF_DAYS_IN_A_WEEK * NO_OF_ROWS_IN_CALENDAR_VIEW;

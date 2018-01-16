@@ -12,6 +12,7 @@ import {CalendarViewService} from "./providers/calendar-view.service";
 import {CalendarCell} from "./model/calendar-cell";
 import {DateIOService} from "./providers/date-io.service";
 import {CalendarDate} from "./model/calendar-date";
+import {CalendarMatrix} from "./model/calendar-matrix";
 
 @Component({
     selector: "clr-calendar",
@@ -50,7 +51,7 @@ export class ClrCalendar extends AbstractPopover {
      * 6x7 matrix of CalendarCell.
      * @returns {CalendarCell[][]}
      */
-    get calendarMatrix(): CalendarCell[][] {
+    get calendarMatrix(): CalendarMatrix {
         return this._dateUtilsService.currentCalendarMatrix;
     }
 

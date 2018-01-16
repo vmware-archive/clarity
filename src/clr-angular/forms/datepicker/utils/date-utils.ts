@@ -41,9 +41,9 @@ export function getDay(year: number, month: number, date: number): WeekDay {
  */
 export function getPreviousMonth(year: number, month: number): CalendarView {
     if (month === 0) {
-        return {month: 11, year: year - 1};
+        return {year: year - 1, month: 11};
     } else {
-        return {month: month - 1, year: year};
+        return {year: year, month: month - 1};
     }
 }
 
@@ -56,8 +56,8 @@ export function getPreviousMonth(year: number, month: number): CalendarView {
  */
 export function getNextMonth(year: number, month: number): CalendarView {
     if (month === 11) {
-        return {month: 0, year: year + 1};
+        return {year: year + 1, month: 0};
     } else {
-        return {month: month + 1, year: year};
+        return {year: year, month: month + 1};
     }
 }

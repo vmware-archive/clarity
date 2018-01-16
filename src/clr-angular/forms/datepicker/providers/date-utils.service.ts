@@ -12,10 +12,8 @@ import {CalendarCell} from "../model/calendar-cell";
 import {getDay, getNextMonth, getNumberOfDaysInTheMonth, getPreviousMonth} from "../utils/date-utils";
 import {CalendarDate} from "../model/calendar-date";
 import {CalendarView} from "../model/calendar-view";
-
-const NO_OF_DAYS_IN_A_WEEK: number = 7;
-const NO_OF_ROWS_IN_CALENDAR_VIEW: number = 6;
-const TOTAL_DAYS_IN_DAYS_VIEW: number = NO_OF_DAYS_IN_A_WEEK * NO_OF_ROWS_IN_CALENDAR_VIEW;
+import {CalendarMatrix} from "../model/calendar-matrix";
+import {NO_OF_DAYS_IN_A_WEEK, NO_OF_ROWS_IN_CALENDAR_VIEW, TOTAL_DAYS_IN_DAYS_VIEW} from "../utils/constants";
 
 @Injectable()
 export class DateUtilsService {
@@ -31,9 +29,9 @@ export class DateUtilsService {
         this._currentCalendarMatrix = this.generateCalendarMatrix(this.calendarYear, this.calendarMonth);
     }
 
-    private _currentCalendarMatrix: CalendarCell[][];
+    private _currentCalendarMatrix: CalendarMatrix;
 
-    get currentCalendarMatrix(): CalendarCell[][] {
+    get currentCalendarMatrix(): CalendarMatrix {
         return this._currentCalendarMatrix;
     }
 
@@ -262,23 +260,28 @@ export class DateUtilsService {
      * @param {number} month
      * @returns {CalendarCell[][]}
      */
-    generateCalendarMatrix(year: number, month: number): CalendarCell[][] {
+    generateCalendarMatrix(year: number, month: number): CalendarMatrix {
         const noOfDaysInPrevMonth: number = getNumberOfDaysInTheMonth(year, month - 1);
         const noOfDaysInCurrMonth: number = getNumberOfDaysInTheMonth(year, month);
 
-        const datesInPreviousMonth: CalendarCell[]
+        const prev: CalendarCell[]
             = this.generateCalendarCellsFromPreviousMonth(year, month, noOfDaysInPrevMonth);
 
-        const datesinCurrentMonth: CalendarCell[]
+        const curr: CalendarCell[]
             = this.generateCalendarCellsFromCurrentMonth(year, month, noOfDaysInCurrMonth);
 
         const noOfDaysInNextMonth: number
-            = TOTAL_DAYS_IN_DAYS_VIEW - (noOfDaysInCurrMonth + datesInPreviousMonth.length);
+            = TOTAL_DAYS_IN_DAYS_VIEW - (noOfDaysInCurrMonth + prev.length);
 
-        const datesInNextMonth: CalendarCell[]
+        const next: CalendarCell[]
             = this.generateCalendarCellsFromNextMonth(year, month, noOfDaysInNextMonth);
 
-        return this.convertCalendarCellsIntoMatrix(datesInPreviousMonth, datesinCurrentMonth, datesInNextMonth);
+        const calMatrix: CalendarMatrix = new CalendarMatrix(prev, curr, next, new CalendarView(year, month));
+
+        if (this.selectedDate) {
+            calMatrix.markDateActive(this.selectedDate);
+        }
+        return calMatrix;
     }
 
     /**
@@ -364,31 +367,5 @@ export class DateUtilsService {
             });
 
         return datesInNextMonth;
-    }
-
-    /**
-     * Using the Calendar cells from the previous, current and next month, this function
-     * generates the Calendar Matrix/Table which is used to render the current Calendar View.
-     * @param {CalendarCell[]} prev
-     * @param {CalendarCell[]} curr
-     * @param {CalendarCell[]} next
-     * @returns {CalendarCell[][]}
-     */
-    private convertCalendarCellsIntoMatrix(prev: CalendarCell[], curr: CalendarCell[], next: CalendarCell[]): CalendarCell[][] {
-        const combinationArr: CalendarCell[] = [
-            ...prev,
-            ...curr,
-            ...next
-        ];
-
-        const matrix: CalendarCell[][] = [];
-        for (let i = 0; i < NO_OF_ROWS_IN_CALENDAR_VIEW; i++) {
-            const tempArr: CalendarCell[] = [];
-            for (let j = 0; j < NO_OF_DAYS_IN_A_WEEK; j++) {
-                tempArr.push(combinationArr.shift());
-            }
-            matrix.push(tempArr);
-        }
-        return matrix;
     }
 }

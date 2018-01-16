@@ -22,6 +22,9 @@ $clr-calendar-picker-btn-font-weight: 200;
 $clr-calendar-today-date-cell-color: $clr-black;
 $clr-calendar-today-date-cell-font-weight: 600;
 
+$clr-calendar-active-date-cell-background-color: $action-blues-light-midtone;
+$clr-calendar-active-date-cell-color: $clr-white;
+
 @mixin generate-calendar-button(
     $height: $clr-calendar-click-target,
     $padding: $clr-calendar-btn-padding) {
@@ -147,6 +150,12 @@ $clr-calendar-today-date-cell-font-weight: 600;
         &.is-today {
             color: $clr-calendar-today-date-cell-color;
             font-weight: $clr-calendar-today-date-cell-font-weight;
+        }
+
+        &.is-active,
+        &.is-active:focus {
+            background: $clr-calendar-active-date-cell-background-color;
+            color: $clr-calendar-active-date-cell-color;
         }
 
         &.is-disabled {

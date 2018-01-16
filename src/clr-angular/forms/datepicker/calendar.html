@@ -27,13 +27,14 @@
         </tr>
     </table>
     <table class="calendar-table calendar-dates">
-        <tr class="calendar-row" *ngFor="let row of calendarMatrix">
+        <tr class="calendar-row" *ngFor="let row of calendarMatrix.matrix">
             <td *ngFor="let cell of row" class="calendar-cell">
                 <button
                     class="date"
                     type="button"
                     [class.is-today]="cell.isTodaysDate"
-                    [class.is-disabled]="cell.isDisabled">
+                    [class.is-disabled]="cell.isDisabled"
+                    [class.is-active]="cell.isActive">
                     {{cell.calendarDate.date}}
                 </button>
             </td>

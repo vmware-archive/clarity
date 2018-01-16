@@ -10,6 +10,8 @@ import {Point} from "../../popover/common/popover";
 import {DateUtilsService} from "./providers/date-utils.service";
 import {CalendarViewService} from "./providers/calendar-view.service";
 import {CalendarCell} from "./model/calendar-cell";
+import {DateIOService} from "./providers/date-io.service";
+import {CalendarDate} from "./model/calendar-date";
 
 @Component({
     selector: "clr-calendar",
@@ -25,10 +27,22 @@ export class ClrCalendar extends AbstractPopover {
         @SkipSelf() parent: ElementRef,
         private _injector: Injector,
         private _dateUtilsService: DateUtilsService,
+        private _dateIOService: DateIOService,
         private _calendarViewService: CalendarViewService
     ) {
         super(_injector, parent);
         this.configurePopover();
+        this.processInput();
+        this._dateUtilsService.initializeCalendar();
+    }
+
+    private processInput(): void {
+        const inputDate: Date = this._dateIOService.processInput();
+        if (inputDate) {
+            const calDate: CalendarDate
+                = new CalendarDate(inputDate.getFullYear(), inputDate.getMonth(), inputDate.getDate());
+            this._dateUtilsService.selectedDate = calDate;
+        }
     }
 
     /**

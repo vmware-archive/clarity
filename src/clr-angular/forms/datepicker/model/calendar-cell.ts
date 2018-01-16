@@ -10,6 +10,7 @@ export class CalendarCell {
     constructor(
         public calendarDate: CalendarDate,
         public isTodaysDate: boolean = false,
-        public isDisabled: boolean = false) {
+        public isDisabled: boolean = false,
+        public isActive: boolean = false) {
     }
 }

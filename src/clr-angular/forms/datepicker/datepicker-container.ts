@@ -5,6 +5,7 @@
  */
 import {Component} from "@angular/core";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
+import {DateIOService} from "./providers/date-io.service";
 
 @Component({
     selector: "clr-datepicker-container",
@@ -15,12 +16,13 @@ import {IfOpenService} from "../../utils/conditional/if-open.service";
         </button>
         <clr-calendar *clrIfOpen></clr-calendar>
     `,
-    providers: [IfOpenService],
+    providers: [IfOpenService, DateIOService],
     host: {"[class.datepicker-container]": "true"}
 })
 export class ClrDatepickerContainer {
     constructor(
-        public ifOpenService: IfOpenService) {
+        public ifOpenService: IfOpenService,
+        private _dateIOService: DateIOService) {
     }
 
     toggleDatepicker(event: MouseEvent) {

@@ -21,13 +21,12 @@ const TOTAL_DAYS_IN_DAYS_VIEW: number = NO_OF_DAYS_IN_A_WEEK * NO_OF_ROWS_IN_CAL
 export class DateUtilsService {
     constructor(@Inject(LOCALE_ID) public locale: string) {
         this.initializeLocaleDaysNarrow();
-        this.initializeCalendar();
     }
 
     /**
      * Sets the calendar year and month and generates the calendar matrix.
      */
-    private initializeCalendar(): void {
+    initializeCalendar(): void {
         this.initializeCalendarMonthAndYear();
         this._currentCalendarMatrix = this.generateCalendarMatrix(this.calendarYear, this.calendarMonth);
     }
@@ -188,11 +187,31 @@ export class DateUtilsService {
     }
 
     /**
+     * Date selected by the user
+     */
+    private _selectedDate: CalendarDate;
+
+    get selectedDate(): CalendarDate {
+        return this._selectedDate;
+    }
+
+    set selectedDate(value: CalendarDate) {
+        if (value && !value.isEqual(this._selectedDate)) {
+            this._selectedDate = value;
+        }
+    }
+
+    /**
      * Initializes the current month and year.
      */
     private initializeCalendarMonthAndYear(): void {
-        this.calendarMonth = this.currentMonth;
-        this.calendarYear = this.currentYear;
+        if (this.selectedDate) {
+            this.calendarYear = this.selectedDate.year;
+            this.calendarMonth = this.selectedDate.month;
+        } else {
+            this.calendarYear = this.currentYear;
+            this.calendarMonth = this.currentMonth;
+        }
     }
 
     /**
@@ -277,14 +296,15 @@ export class DateUtilsService {
             .fill(null)
             .map((date, index) => {
                 const calendarDate: CalendarDate = new CalendarDate(
-                    noOfDays - (datesFromPrevMonthInCalendarView - (index + 1)),
+                    previousMonthView.year,
                     previousMonthView.month,
-                    previousMonthView.year
+                    noOfDays - (datesFromPrevMonthInCalendarView - (index + 1))
                 );
                 return new CalendarCell(
                     calendarDate,
                     false,
-                    true
+                    true,
+                    false
                 );
             });
         return datesInPreviousMonth;
@@ -303,12 +323,14 @@ export class DateUtilsService {
             .fill(null)
             .map((date, index) => {
                 const calDate: CalendarDate = new CalendarDate(
-                    index + 1,
+                    year,
                     month,
-                    year
+                    index + 1
                 );
                 return new CalendarCell(
                     calDate,
+                    false,
+                    false,
                     false
                 );
             });
@@ -334,11 +356,11 @@ export class DateUtilsService {
             .fill(null)
             .map((date, index) => {
                 const calDate: CalendarDate = new CalendarDate(
-                    index + 1,
+                    nextMonth.year,
                     nextMonth.month,
-                    nextMonth.year
+                    index + 1
                 );
-                return new CalendarCell(calDate, false, true);
+                return new CalendarCell(calDate, false, true, false);
             });
 
         return datesInNextMonth;
@@ -352,8 +374,7 @@ export class DateUtilsService {
      * @param {CalendarCell[]} next
      * @returns {CalendarCell[][]}
      */
-    private convertCalendarCellsIntoMatrix(
-        prev: CalendarCell[], curr: CalendarCell[], next: CalendarCell[]): CalendarCell[][] {
+    private convertCalendarCellsIntoMatrix(prev: CalendarCell[], curr: CalendarCell[], next: CalendarCell[]): CalendarCell[][] {
         const combinationArr: CalendarCell[] = [
             ...prev,
             ...curr,

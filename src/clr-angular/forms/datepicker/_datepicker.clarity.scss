@@ -16,32 +16,36 @@ $clr-calendar-btn-padding: 0.25rem;
 $clr-calendar-month-cell-height: 2rem;
 $clr-calendar-month-cell-padding: 0.5rem;
 
-@mixin generate-calendar-button($height: $clr-calendar-click-target, $padding: $clr-calendar-btn-padding) {
-    //Dimensions
-    height: $height;
-    padding: 0 $padding;
-    margin: 0;
+$clr-calendar-picker-btn-font-size: 0.75rem;
+$clr-calendar-picker-btn-font-weight: 200;
 
-    //Other Props
-    line-height: $clr-calendar-click-target;
-    border: none;
-    border-radius: $clr-default-borderradius;
-    background: none;
-    cursor: pointer;
-    color: $clr-calendar-btn-color;
-    font-size: 18px;
-    font-weight: 200;
+$clr-calendar-today-date-cell-color: $clr-black;
+$clr-calendar-today-date-cell-font-weight: 600;
 
+@mixin generate-calendar-button(
+    $height: $clr-calendar-click-target,
+    $padding: $clr-calendar-btn-padding) {
+        //Dimensions
+        height: $height;
+        padding: 0 $padding;
+        margin: 0;
 
-    &:hover,
-    &:focus {
-        background: $clr-calendar-btn-hover-focus-color;
-    }
+        //Other Props
+        line-height: $clr-calendar-click-target;
+        border: none;
+        border-radius: $clr-default-borderradius;
+        background: none;
+        cursor: pointer;
 
-    &:focus {
-        //Only because we have defined a background color for focus above
-        outline: 0;
-    }
+        &:hover,
+        &:focus {
+            background: $clr-calendar-btn-hover-focus-color;
+        }
+
+        &:focus {
+            //Only because we have defined a background color for focus above
+            outline: 0;
+        }
 }
 
 
@@ -101,6 +105,7 @@ $clr-calendar-month-cell-padding: 0.5rem;
         width: $clr-calendar-click-target;
         min-height: $clr-calendar-click-target;
         min-width: $clr-calendar-click-target;
+        padding: 0;
 
         //Other Props
         text-align: center;
@@ -117,6 +122,34 @@ $clr-calendar-month-cell-padding: 0.5rem;
 
     .calendar-btn {
         @include generate-calendar-button();
+
+        //Other Props
+        color: $clr-calendar-btn-color;
+        font-size: $clr-calendar-picker-btn-font-size;
+        font-weight: $clr-calendar-picker-btn-font-weight;
+    }
+
+    .date {
+        @include generate-calendar-button($padding: 0);
+
+        //Dimensions
+        width: 100%;
+
+        //Other Props
+        color: inherit;
+
+        &.is-today {
+            color: $clr-calendar-today-date-cell-color;
+            font-weight: $clr-calendar-today-date-cell-font-weight;
+        }
+
+        &.is-disabled {
+            opacity: 0.25;
+
+            &:hover {
+                background: none;
+            }
+        }
     }
 
     .monthpicker {
@@ -134,6 +167,9 @@ $clr-calendar-month-cell-padding: 0.5rem;
         width: 127px;
 
         //Other Props
+        color: $clr-calendar-btn-color;
+        font-size: $clr-calendar-picker-btn-font-size;
+        font-weight: $clr-calendar-picker-btn-font-weight;
         text-align: left;
         outline-offset: -5px;
     }

@@ -9,6 +9,7 @@ import {AbstractPopover} from "../../popover/common/abstract-popover";
 import {Point} from "../../popover/common/popover";
 import {DateUtilsService} from "./providers/date-utils.service";
 import {CalendarViewService} from "./providers/calendar-view.service";
+import {CalendarCell} from "./model/calendar-cell";
 
 @Component({
     selector: "clr-calendar",
@@ -28,7 +29,15 @@ export class ClrCalendar extends AbstractPopover {
     ) {
         super(_injector, parent);
         this.configurePopover();
-        this._dateUtilsService.initializeCalendar();
+    }
+
+    /**
+     * Gets the calendar cells for the current view. The result is a
+     * 6x7 matrix of CalendarCell.
+     * @returns {CalendarCell[][]}
+     */
+    get calendarMatrix(): CalendarCell[][] {
+        return this._dateUtilsService.currentCalendarMatrix;
     }
 
     /**

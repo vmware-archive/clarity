@@ -16,8 +16,15 @@
         </tr>
     </table>
     <table class="calendar-table calendar-dates">
-        <tr class="calendar-row">
-
+        <tr class="calendar-row" *ngFor="let row of calendarMatrix">
+            <td *ngFor="let cell of row" class="calendar-cell">
+                <button
+                    class="date"
+                    [class.is-today]="cell.isTodaysDate"
+                    [class.is-disabled]="cell.isDisabled">
+                    {{cell.calendarDate.date}}
+                </button>
+            </td>
         </tr>
     </table>
 </ng-container>

@@ -38,7 +38,8 @@
                     [class.is-disabled]="cell.isDisabled"
                     [class.is-active]="cell.isActive"
                     [attr.tabindex]="cell.tabIndex"
-                    (click)="setDate(cell)">
+                    (click)="setDate(cell)"
+                    (focus)="onCalendarCellFocus(cell)">
                     {{cell.calendarDate.date}}
                 </button>
             </td>

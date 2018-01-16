@@ -218,7 +218,7 @@ export class DateUtilsService {
     }
 
     set focusedDate(value: CalendarDate) {
-        if (value && !value.isEqual(this._selectedDate)) {
+        if (value && !value.isEqual(this._focusedDate)) {
             if (this._focusedDate) {
                 this.currentCalendarMatrix.setDateFocusableFlag(this._focusedDate, false);
             }

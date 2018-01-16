@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ElementRef, Injector, SkipSelf} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, Injector, SkipSelf} from "@angular/core";
 import {AbstractPopover} from "../../popover/common/abstract-popover";
 import {Point} from "../../popover/common/popover";
 import {DateUtilsService} from "./providers/date-utils.service";
@@ -24,11 +24,12 @@ import {DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW} from "../../utils/key-cod
     },
     providers: [DateUtilsService, CalendarViewService]
 })
-export class ClrCalendar extends AbstractPopover {
+export class ClrCalendar extends AbstractPopover implements AfterViewInit {
 
     constructor(
         @SkipSelf() parent: ElementRef,
         private _injector: Injector,
+        private _elRef: ElementRef,
         private _dateUtilsService: DateUtilsService,
         private _dateIOService: DateIOService,
         private _calendarViewService: CalendarViewService,
@@ -47,6 +48,10 @@ export class ClrCalendar extends AbstractPopover {
                 = new CalendarDate(inputDate.getFullYear(), inputDate.getMonth(), inputDate.getDate());
             this._dateUtilsService.selectedDate = calDate;
         }
+    }
+
+    ngAfterViewInit() {
+        this._calendarViewService.focusCell(this._elRef);
     }
 
     /**
@@ -136,6 +141,14 @@ export class ClrCalendar extends AbstractPopover {
         this._ifOpenService.open = false;
     }
 
+    get focusedDate(): CalendarDate {
+        return this._dateUtilsService.focusedDate;
+    }
+
+    set focusedDate(value: CalendarDate) {
+        this._dateUtilsService.focusedDate = value;
+    }
+
     /**
      * Handles the keyboard events when the user navigates using the arrow keys.
      * @param {KeyboardEvent} event
@@ -166,6 +179,26 @@ export class ClrCalendar extends AbstractPopover {
     }
 
     private incrementDateAndFocus(incrementBy: number): void {
-        console.log(incrementBy);
+        this.incrementFocusedDateBy(incrementBy);
+        this._calendarViewService.focusCell(this._elRef);
+    }
+
+    private incrementFocusedDateBy(incrementBy: number): void {
+        if (this.focusedDate) {
+            // Creating new Javascript Date object to increment because
+            // it will automatically take care of switching to next or previous
+            // months without we having to worry about it.
+            const newFocusedDate: Date = new Date(this.focusedDate.year, this.focusedDate.month, this.focusedDate.date);
+            newFocusedDate.setDate(newFocusedDate.getDate() + incrementBy);
+            const newDate: number = newFocusedDate.getDate();
+            const newMonth: number = newFocusedDate.getMonth();
+            const newYear: number = newFocusedDate.getFullYear();
+            this.focusedDate = new CalendarDate(newYear, newMonth, newDate);
+            this._dateUtilsService.updateCalendar(newYear, newMonth);
+        }
+    }
+
+    onCalendarCellFocus(cell: CalendarCell): void {
+        this.focusedDate = cell.calendarDate;
     }
 }

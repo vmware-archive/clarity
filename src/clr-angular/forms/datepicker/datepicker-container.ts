@@ -14,7 +14,7 @@ import {DateIOService} from "./providers/date-io.service";
         <button class="datepicker-trigger" (click)="toggleDatepicker($event)">
             <clr-icon shape="calendar"></clr-icon>
         </button>
-        <clr-calendar *clrIfOpen></clr-calendar>
+        <clr-calendar *clrIfOpen clrFocusTrap></clr-calendar>
     `,
     providers: [IfOpenService, DateIOService],
     host: {"[class.datepicker-container]": "true"}

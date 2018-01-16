@@ -13,7 +13,7 @@ import {getDay, getNextMonth, getNumberOfDaysInTheMonth, getPreviousMonth} from 
 import {CalendarDate} from "../model/calendar-date";
 import {CalendarView} from "../model/calendar-view";
 import {CalendarMatrix} from "../model/calendar-matrix";
-import {NO_OF_DAYS_IN_A_WEEK, NO_OF_ROWS_IN_CALENDAR_VIEW, TOTAL_DAYS_IN_DAYS_VIEW} from "../utils/constants";
+import {NO_OF_DAYS_IN_A_WEEK, TOTAL_DAYS_IN_DAYS_VIEW} from "../utils/constants";
 
 @Injectable()
 export class DateUtilsService {
@@ -26,7 +26,7 @@ export class DateUtilsService {
      */
     initializeCalendar(): void {
         this.initializeCalendarMonthAndYear();
-        this._currentCalendarMatrix = this.generateCalendarMatrix(this.calendarYear, this.calendarMonth);
+        this.generateCalendarMatrix(this.calendarYear, this.calendarMonth);
     }
 
     private _currentCalendarMatrix: CalendarMatrix;
@@ -67,7 +67,7 @@ export class DateUtilsService {
         }
         this.calendarMonth = month;
         this.calendarYear = year;
-        this._currentCalendarMatrix = this.generateCalendarMatrix(this.calendarYear, this.calendarMonth);
+        this.generateCalendarMatrix(this.calendarYear, this.calendarMonth);
     }
 
     /**
@@ -157,6 +157,12 @@ export class DateUtilsService {
      */
     todaysFullDate: Date = new Date();
 
+    get todaysCalendarDate(): CalendarDate {
+        return new CalendarDate(
+            this.todaysFullDate.getFullYear(), this.todaysFullDate.getMonth(), this.todaysFullDate.getDate()
+        );
+    }
+
     /**
      * Returns the current date.
      * eg: 1, 2, 3, ... 31.
@@ -201,6 +207,24 @@ export class DateUtilsService {
             this._selectedDate = value;
             if (this.currentCalendarMatrix) {
                 this.currentCalendarMatrix.setDateActiveFlag(value, true);
+            }
+        }
+    }
+
+    private _focusedDate: CalendarDate;
+
+    get focusedDate(): CalendarDate {
+        return this._focusedDate;
+    }
+
+    set focusedDate(value: CalendarDate) {
+        if (value && !value.isEqual(this._selectedDate)) {
+            if (this._focusedDate) {
+                this.currentCalendarMatrix.setDateFocusableFlag(this._focusedDate, false);
+            }
+            this._focusedDate = value;
+            if (this.currentCalendarMatrix) {
+                this.currentCalendarMatrix.setDateFocusableFlag(value, true);
             }
         }
     }
@@ -258,39 +282,6 @@ export class DateUtilsService {
     }
 
     /**
-     * Generates and returns a 6x7 matrix of DateCell for the year and month passed.
-     * The 6x7 matrix is structured according to the first day of the week.
-     * 6 rows to accommodate months which might have dates spanning over 6 weeks.
-     * 7 columns because there are 7 days in a week :P :D
-     * @param {number} year
-     * @param {number} month
-     * @returns {CalendarCell[][]}
-     */
-    generateCalendarMatrix(year: number, month: number): CalendarMatrix {
-        const noOfDaysInPrevMonth: number = getNumberOfDaysInTheMonth(year, month - 1);
-        const noOfDaysInCurrMonth: number = getNumberOfDaysInTheMonth(year, month);
-
-        const prev: CalendarCell[]
-            = this.generateCalendarCellsFromPreviousMonth(year, month, noOfDaysInPrevMonth);
-
-        const curr: CalendarCell[]
-            = this.generateCalendarCellsFromCurrentMonth(year, month, noOfDaysInCurrMonth);
-
-        const noOfDaysInNextMonth: number
-            = TOTAL_DAYS_IN_DAYS_VIEW - (noOfDaysInCurrMonth + prev.length);
-
-        const next: CalendarCell[]
-            = this.generateCalendarCellsFromNextMonth(year, month, noOfDaysInNextMonth);
-
-        const calMatrix: CalendarMatrix = new CalendarMatrix(prev, curr, next, new CalendarView(year, month));
-
-        if (this.selectedDate) {
-            calMatrix.setDateActiveFlag(this.selectedDate, true);
-        }
-        return calMatrix;
-    }
-
-    /**
      * Generates the Calendar Cells required in the current view from the previous month.
      * @param {number} year
      * @param {number} month
@@ -313,6 +304,7 @@ export class DateUtilsService {
                     calendarDate,
                     false,
                     true,
+                    false,
                     false
                 );
             });
@@ -338,6 +330,7 @@ export class DateUtilsService {
                 );
                 return new CalendarCell(
                     calDate,
+                    false,
                     false,
                     false,
                     false
@@ -369,9 +362,67 @@ export class DateUtilsService {
                     nextMonth.month,
                     index + 1
                 );
-                return new CalendarCell(calDate, false, true, false);
+                return new CalendarCell(
+                    calDate,
+                    false,
+                    true,
+                    false,
+                    false);
             });
 
         return datesInNextMonth;
+    }
+
+    /**
+     * Generates and returns a 6x7 matrix of DateCell for the year and month passed.
+     * The 6x7 matrix is structured according to the first day of the week.
+     * 6 rows to accommodate months which might have dates spanning over 6 weeks.
+     * 7 columns because there are 7 days in a week :P :D
+     * @param {number} year
+     * @param {number} month
+     * @returns {CalendarCell[][]}
+     */
+    generateCalendarMatrix(year: number, month: number): void {
+        const noOfDaysInPrevMonth: number = getNumberOfDaysInTheMonth(year, month - 1);
+        const noOfDaysInCurrMonth: number = getNumberOfDaysInTheMonth(year, month);
+
+        const prev: CalendarCell[]
+            = this.generateCalendarCellsFromPreviousMonth(year, month, noOfDaysInPrevMonth);
+
+        const curr: CalendarCell[]
+            = this.generateCalendarCellsFromCurrentMonth(year, month, noOfDaysInCurrMonth);
+
+        const noOfDaysInNextMonth: number
+            = TOTAL_DAYS_IN_DAYS_VIEW - (noOfDaysInCurrMonth + prev.length);
+
+        const next: CalendarCell[]
+            = this.generateCalendarCellsFromNextMonth(year, month, noOfDaysInNextMonth);
+
+        this._currentCalendarMatrix = new CalendarMatrix(prev, curr, next, new CalendarView(year, month));
+        this.setCalendarFlags();
+    }
+
+    private setCalendarFlags(): void {
+        if (this.selectedDate) {
+            this.currentCalendarMatrix.setDateActiveFlag(this.selectedDate, true);
+        }
+        const focusableCell: CalendarDate = this.getFocusableCell();
+        this.currentCalendarMatrix.setDateFocusableFlag(focusableCell, true);
+    }
+
+    private getFocusableCell(): CalendarDate {
+        if (this.focusedDate) {
+            if (this.currentCalendarMatrix.isDateInMatrix(this.focusedDate)) {
+                return this.focusedDate;
+            } else {
+                this.focusedDate = null;
+            }
+        } else if (this.selectedDate && this.currentCalendarMatrix.isDateInMatrix(this.selectedDate)) {
+            return this.selectedDate;
+        } else if (this.currentCalendarMatrix.isDateInMatrix(this.todaysCalendarDate)) {
+            return this.todaysCalendarDate;
+        } else {
+            return new CalendarDate(this.calendarYear, this.calendarMonth, 15);
+        }
     }
 }

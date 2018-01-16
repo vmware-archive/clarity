@@ -89,6 +89,10 @@ $clr-calendar-active-date-cell-color: $clr-white;
         border: 1px solid $clr-calendar-border-color;
         border-radius: 3px;
         overflow: hidden;
+
+        //TODO: doesnt really need a focus style
+        //Have to add it because of a focus trap bug which focuses back on the container
+        outline: none;
     }
 
     .calendar-header {

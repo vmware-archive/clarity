@@ -26,7 +26,9 @@
             </td>
         </tr>
     </table>
-    <table class="calendar-table calendar-dates">
+    <table
+        class="calendar-table calendar-dates"
+        (keydown)="onCalendarKeyDown($event)">
         <tr class="calendar-row" *ngFor="let row of calendarMatrix.matrix">
             <td *ngFor="let cell of row" class="calendar-cell">
                 <button
@@ -35,6 +37,7 @@
                     [class.is-today]="cell.isTodaysDate"
                     [class.is-disabled]="cell.isDisabled"
                     [class.is-active]="cell.isActive"
+                    [attr.tabindex]="cell.tabIndex"
                     (click)="setDate(cell)">
                     {{cell.calendarDate.date}}
                 </button>

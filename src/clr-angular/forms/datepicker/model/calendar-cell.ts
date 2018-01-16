@@ -11,6 +11,11 @@ export class CalendarCell {
         public calendarDate: CalendarDate,
         public isTodaysDate: boolean = false,
         public isDisabled: boolean = false,
-        public isActive: boolean = false) {
+        public isActive: boolean = false,
+        public isFocusable: boolean = false) {
+    }
+
+    get tabIndex(): number {
+        return this.isFocusable ? 0 : -1;
     }
 }

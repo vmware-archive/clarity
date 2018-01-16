@@ -38,6 +38,12 @@ export class CalendarMatrix {
         }
     }
 
+    setDateFocusableFlag(calDate: CalendarDate, flag: boolean): void {
+        if (this.isDateInMatrix(calDate)) {
+            this.current[calDate.date - 1].isFocusable = flag;
+        }
+    }
+
     /**
      * Using the Calendar cells from the previous, current and next month, this function
      * generates the Calendar Matrix/Table which is used to render the current Calendar View.

@@ -14,6 +14,7 @@ import {DateIOService} from "./providers/date-io.service";
 import {CalendarDate} from "./model/calendar-date";
 import {CalendarMatrix} from "./model/calendar-matrix";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
+import {DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW} from "../../utils/key-codes/key-codes";
 
 @Component({
     selector: "clr-calendar",
@@ -124,10 +125,47 @@ export class ClrCalendar extends AbstractPopover {
         this._dateUtilsService.moveToNextMonth();
     }
 
+    /**
+     * Updates the selected date depending on the CalendarCell which was clicked.
+     * @param {CalendarCell} cell
+     */
     setDate(cell: CalendarCell): void {
         const date: CalendarDate = cell.calendarDate;
         this._dateUtilsService.selectedDate = date;
         this._dateIOService.updateDate(date.toDate());
         this._ifOpenService.open = false;
+    }
+
+    /**
+     * Handles the keyboard events when the user navigates using the arrow keys.
+     * @param {KeyboardEvent} event
+     */
+    onCalendarKeyDown(event: KeyboardEvent): void {
+        if (event) {
+            switch(event.keyCode) {
+                case UP_ARROW:
+                    event.preventDefault();
+                    this.incrementDateAndFocus(-7);
+                    break;
+                case DOWN_ARROW:
+                    event.preventDefault();
+                    this.incrementDateAndFocus(7);
+                    break;
+                case LEFT_ARROW:
+                    event.preventDefault();
+                    this.incrementDateAndFocus(-1);
+                    break;
+                case RIGHT_ARROW:
+                    event.preventDefault();
+                    this.incrementDateAndFocus(1);
+                    break;
+                default:
+                    break; //No default case. TSLint x-(
+            }
+        }
+    }
+
+    private incrementDateAndFocus(incrementBy: number): void {
+        console.log(incrementBy);
     }
 }

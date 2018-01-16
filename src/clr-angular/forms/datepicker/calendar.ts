@@ -85,4 +85,16 @@ export class ClrCalendar extends AbstractPopover {
     get calendarYear(): number {
         return this._dateUtilsService.calendarYear;
     }
+
+    moveToPreviousMonth(): void {
+        this._dateUtilsService.moveToPreviousMonth();
+    }
+
+    moveToCurrentMonth(): void {
+        this._dateUtilsService.moveToCurrentMonth();
+    }
+
+    moveToNextMonth(): void {
+        this._dateUtilsService.moveToNextMonth();
+    }
 }

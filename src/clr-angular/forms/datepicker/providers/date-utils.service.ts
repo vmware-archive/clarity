@@ -56,6 +56,39 @@ export class DateUtilsService {
         this._localeDaysNarrow = tempArr;
     }
 
+    private updateCalendarMonthAndYear(calendarView: CalendarView): void {
+        this.calendarMonth = calendarView.month;
+        this.calendarYear = calendarView.year;
+    }
+
+    /**
+     * Moves the calendar to the previous month
+     */
+    moveToPreviousMonth(): void {
+        this.updateCalendarMonthAndYear(getPreviousMonth(this.calendarYear, this.calendarMonth));
+        this._currentCalendarMatrix = this.generateCalendarMatrix(this.calendarYear, this.calendarMonth);
+    }
+
+    /**
+     * Moves the calendar to the current date
+     */
+    moveToCurrentMonth(): void {
+        if (this.calendarMonth === this.currentMonth && this.calendarYear === this.currentYear) {
+            return;
+        }
+        this.calendarYear = this.currentYear;
+        this.calendarMonth = this.currentMonth;
+        this._currentCalendarMatrix = this.generateCalendarMatrix(this.calendarYear, this.calendarMonth);
+    }
+
+    /**
+     * Moves the calendar to the next month
+     */
+    moveToNextMonth(): void {
+        this.updateCalendarMonthAndYear(getNextMonth(this.calendarYear, this.calendarMonth));
+        this._currentCalendarMatrix = this.generateCalendarMatrix(this.calendarYear, this.calendarMonth);
+    }
+
     /**
      * Returns an array of days in the TranslationWidth.Narrow format factoring the
      * first day of the week.

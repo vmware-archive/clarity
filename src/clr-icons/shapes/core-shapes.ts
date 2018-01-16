@@ -99,6 +99,14 @@ const coreShapes: any = {
             </svg>
         `,
 
+    "circle": `
+        <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" role="img">
+            <title>circle</title>
+            <path d="M18,4A14,14,0,1,0,32,18,14,14,0,0,0,18,4Zm0,26A12,12,0,1,1,30,18,12,12,0,0,1,18,30Z" class="clr-i-outline clr-i-outline-path-1"/>
+            <path d="M18,4A14,14,0,1,0,32,18,14,14,0,0,0,18,4Z" class="clr-i-solid clr-i-solid-path-1"/>
+        </svg>`,
+
 
     "cog": `
             <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" class="can-alert can-badge has-solid" role="img">
@@ -510,6 +518,7 @@ Object.defineProperty(coreShapes, "house", descriptorConfig(coreShapes.home));
 Object.defineProperty(coreShapes, "settings", descriptorConfig(coreShapes.cog));
 Object.defineProperty(coreShapes, "success", descriptorConfig(coreShapes.check));
 Object.defineProperty(coreShapes, "calendar", descriptorConfig(coreShapes.calendar));
+Object.defineProperty(coreShapes, "circle", descriptorConfig(coreShapes.circle));
 Object.defineProperty(coreShapes, "close", descriptorConfig(coreShapes.times));
 Object.defineProperty(coreShapes, "warning", descriptorConfig(coreShapes["exclamation-triangle"]));
 Object.defineProperty(coreShapes, "error", descriptorConfig(coreShapes["exclamation-circle"]));

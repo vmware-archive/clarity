@@ -27,6 +27,7 @@ $clr-calendar-today-date-cell-font-weight: 600;
     $padding: $clr-calendar-btn-padding) {
         //Dimensions
         height: $height;
+        min-width: $height;
         padding: 0 $padding;
         margin: 0;
 
@@ -90,6 +91,11 @@ $clr-calendar-today-date-cell-font-weight: 600;
     .calendar-header {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+    }
+
+    .calendar-switchers {
+        display: flex;
     }
 
     .calendar-table {
@@ -150,6 +156,19 @@ $clr-calendar-today-date-cell-font-weight: 600;
                 background: none;
             }
         }
+    }
+
+    .monthpicker-trigger,
+    .yearpicker-trigger {
+        min-width: 2.5rem;
+    }
+
+    .monthpicker-trigger {
+        text-align: left;
+    }
+
+    .yearpicker-trigger {
+        text-align: right;
     }
 
     .monthpicker {

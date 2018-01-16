@@ -1,10 +1,21 @@
 <clr-monthpicker *ngIf="isMonthView"></clr-monthpicker>
 <ng-container *ngIf="!isMonthView">
     <div class="calendar-header">
-        <button class="calendar-btn" type="button" (click)="isMonthView = true">
+        <button class="calendar-btn monthpicker-trigger" type="button" (click)="isMonthView = true">
             {{calendarMonth}}
         </button>
-        <button class="calendar-btn" type="button">
+        <div class="calendar-switchers">
+            <button class="calendar-btn" type="button" (click)="moveToPreviousMonth()">
+                <clr-icon shape="angle" dir="left"></clr-icon>
+            </button>
+            <button class="calendar-btn" type="button" (click)="moveToCurrentMonth()">
+                <clr-icon shape="circle" class="is-solid"></clr-icon>
+            </button>
+            <button class="calendar-btn" type="button" (click)="moveToNextMonth()">
+                <clr-icon shape="angle" dir="right"></clr-icon>
+            </button>
+        </div>
+        <button class="calendar-btn yearpicker-trigger" type="button">
             {{calendarYear}}
         </button>
     </div>
@@ -20,6 +31,7 @@
             <td *ngFor="let cell of row" class="calendar-cell">
                 <button
                     class="date"
+                    type="button"
                     [class.is-today]="cell.isTodaysDate"
                     [class.is-disabled]="cell.isDisabled">
                     {{cell.calendarDate.date}}

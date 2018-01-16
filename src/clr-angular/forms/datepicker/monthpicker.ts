@@ -43,8 +43,8 @@ export class ClrMonthPicker {
      * @param {string} month
      */
     changeMonth(month: string): void {
-        //TODO: Add month setter logic
-
+        const calViewMonthIndex: number = this.months.indexOf(month);
+        this._dateUtilsService.updateCalendar(this._dateUtilsService.calendarYear, calViewMonthIndex);
         //Disable Monthpicker
         this._calendarViewService.isMonthView = false;
     }

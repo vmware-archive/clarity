@@ -204,13 +204,18 @@ export class DateIOService {
         }
     }
 
-    private _dateChanged: Subject<Date> = new Subject<Date>();
+    private _dateChanged: Subject<string> = new Subject<string>();
 
-    get dateChanged(): Observable<Date> {
+    get dateChanged(): Observable<string> {
         return this._dateChanged.asObservable();
     }
 
-    emitDate(date: Date) {
-        this._dateChanged.next(date);
+    updateDate(date: Date) {
+        this.inputDate = this.toLocaleDisplayFormatString(date);
+        this.emitDate(this.inputDate);
+    }
+
+    private emitDate(dateStr: string) {
+        this._dateChanged.next(dateStr);
     }
 }

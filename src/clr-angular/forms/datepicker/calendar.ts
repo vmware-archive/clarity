@@ -13,6 +13,7 @@ import {CalendarCell} from "./model/calendar-cell";
 import {DateIOService} from "./providers/date-io.service";
 import {CalendarDate} from "./model/calendar-date";
 import {CalendarMatrix} from "./model/calendar-matrix";
+import {IfOpenService} from "../../utils/conditional/if-open.service";
 
 @Component({
     selector: "clr-calendar",
@@ -29,7 +30,8 @@ export class ClrCalendar extends AbstractPopover {
         private _injector: Injector,
         private _dateUtilsService: DateUtilsService,
         private _dateIOService: DateIOService,
-        private _calendarViewService: CalendarViewService
+        private _calendarViewService: CalendarViewService,
+        private _ifOpenService: IfOpenService
     ) {
         super(_injector, parent);
         this.configurePopover();
@@ -101,15 +103,31 @@ export class ClrCalendar extends AbstractPopover {
         return this._dateUtilsService.calendarYear;
     }
 
+    /**
+     * Moves the calendar to the previous month
+     */
     moveToPreviousMonth(): void {
         this._dateUtilsService.moveToPreviousMonth();
     }
 
+    /**
+     * Moves the calendar to the current month
+     */
     moveToCurrentMonth(): void {
         this._dateUtilsService.moveToCurrentMonth();
     }
 
+    /**
+     * Moves the calendar to the next month
+     */
     moveToNextMonth(): void {
         this._dateUtilsService.moveToNextMonth();
+    }
+
+    setDate(cell: CalendarCell): void {
+        const date: CalendarDate = cell.calendarDate;
+        this._dateUtilsService.selectedDate = date;
+        this._dateIOService.updateDate(date.toDate());
+        this._ifOpenService.open = false;
     }
 }

@@ -34,7 +34,8 @@
                     type="button"
                     [class.is-today]="cell.isTodaysDate"
                     [class.is-disabled]="cell.isDisabled"
-                    [class.is-active]="cell.isActive">
+                    [class.is-active]="cell.isActive"
+                    (click)="setDate(cell)">
                     {{cell.calendarDate.date}}
                 </button>
             </td>

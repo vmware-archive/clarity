@@ -195,7 +195,13 @@ export class DateUtilsService {
 
     set selectedDate(value: CalendarDate) {
         if (value && !value.isEqual(this._selectedDate)) {
+            if (this._selectedDate) {
+                this.currentCalendarMatrix.setDateActiveFlag(this._selectedDate, false);
+            }
             this._selectedDate = value;
+            if (this.currentCalendarMatrix) {
+                this.currentCalendarMatrix.setDateActiveFlag(value, true);
+            }
         }
     }
 
@@ -279,7 +285,7 @@ export class DateUtilsService {
         const calMatrix: CalendarMatrix = new CalendarMatrix(prev, curr, next, new CalendarView(year, month));
 
         if (this.selectedDate) {
-            calMatrix.markDateActive(this.selectedDate);
+            calMatrix.setDateActiveFlag(this.selectedDate, true);
         }
         return calMatrix;
     }

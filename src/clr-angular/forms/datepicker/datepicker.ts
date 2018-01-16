@@ -61,9 +61,8 @@ export class ClrDatepicker implements OnDestroy {
     }
 
     private initializeSubscriptions(): void {
-        this._sub = this._dateIOService.dateChanged.subscribe((date) => {
-            const inputValue: string = this._dateIOService.toLocaleDisplayFormatString(date);
-            this.elRef.nativeElement.value = inputValue;
+        this._sub = this._dateIOService.dateChanged.subscribe((dateStr) => {
+            this.elRef.nativeElement.value = dateStr;
         });
     }
 

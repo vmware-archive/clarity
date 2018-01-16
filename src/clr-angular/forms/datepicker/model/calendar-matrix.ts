@@ -32,9 +32,9 @@ export class CalendarMatrix {
         return true;
     }
 
-    markDateActive(calDate: CalendarDate): void {
+    setDateActiveFlag(calDate: CalendarDate, flag: boolean): void {
         if (this.isDateInMatrix(calDate)) {
-            this.current[calDate.date - 1].isActive = true;
+            this.current[calDate.date - 1].isActive = flag;
         }
     }
 

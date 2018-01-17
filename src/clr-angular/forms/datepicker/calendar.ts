@@ -100,6 +100,18 @@ export class ClrCalendar extends AbstractPopover implements AfterViewInit, OnDes
     }
 
     /**
+     * Returns if the current view is that of the year picker
+     * @returns {boolean}
+     */
+    get isYearView(): boolean {
+        return this._calendarViewService.isYearView;
+    }
+
+    set isYearView(value: boolean) {
+        this._calendarViewService.isYearView = value;
+    }
+
+    /**
      * Returns the month value of the calendar in the TranslationWidth.Abbreviated format.
      * @returns {string}
      */

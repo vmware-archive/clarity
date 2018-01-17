@@ -14,13 +14,14 @@ import {ClrDatepicker} from "./datepicker";
 import {ClrDatepickerContainer} from "./datepicker-container";
 import {ClrCalendar} from "./calendar";
 import {ClrMonthPicker} from "./monthpicker";
+import {ClrYearPicker} from "./yearpicker";
 
-
-export const CLR_DATEPICKER_MODULE: Type<any>[] = [
+export const CLR_DATEPICKER_DIRECTIVES: Type<any>[] = [
     ClrDatepickerContainer,
     ClrDatepicker,
     ClrCalendar,
-    ClrMonthPicker
+    ClrMonthPicker,
+    ClrYearPicker
 ];
 
 @NgModule({
@@ -31,8 +32,8 @@ export const CLR_DATEPICKER_MODULE: Type<any>[] = [
         ClrIconModule,
         ClrFocusTrapModule
     ],
-    declarations: [CLR_DATEPICKER_MODULE],
-    exports: [CLR_DATEPICKER_MODULE],
+    declarations: [CLR_DATEPICKER_DIRECTIVES],
+    exports: [CLR_DATEPICKER_DIRECTIVES],
     entryComponents: [ClrDatepickerContainer]
 })
 export class ClrDatepickerModule {}

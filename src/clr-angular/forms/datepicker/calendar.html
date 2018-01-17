@@ -1,5 +1,6 @@
 <clr-monthpicker *ngIf="isMonthView"></clr-monthpicker>
-<ng-container *ngIf="!isMonthView">
+<clr-yearpicker *ngIf="isYearView"></clr-yearpicker>
+<ng-container *ngIf="!isMonthView && !isYearView">
     <div class="calendar-header">
         <button class="calendar-btn monthpicker-trigger" type="button" (click)="isMonthView = true">
             {{calendarMonth}}
@@ -15,7 +16,7 @@
                 <clr-icon shape="angle" dir="right"></clr-icon>
             </button>
         </div>
-        <button class="calendar-btn yearpicker-trigger" type="button">
+        <button class="calendar-btn yearpicker-trigger" type="button" (click)="isYearView = true">
             {{calendarYear}}
         </button>
     </div>

@@ -102,8 +102,14 @@ $clr-calendar-active-cell-color: $clr-white;
         align-items: center;
     }
 
-    .calendar-switchers {
+    .calendar-switchers,
+    .year-switchers {
         display: flex;
+    }
+
+    .year-switchers {
+        justify-content: space-between;
+        flex: 0 0 auto;
     }
 
     .calendar-table {
@@ -188,16 +194,23 @@ $clr-calendar-active-cell-color: $clr-white;
         text-align: right;
     }
 
-    .monthpicker {
+    .monthpicker,
+    .yearpicker,
+    .years {
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
 
         //Other props
         overflow: hidden;
     }
 
-    .month {
+    .monthpicker,
+    .years {
+        flex-wrap: wrap;
+    }
+
+    .month,
+    .year {
         @include generate-calendar-button($clr-calendar-month-cell-height, $clr-calendar-month-cell-padding);
         //Dimensions
         width: 127px;
@@ -206,7 +219,6 @@ $clr-calendar-active-cell-color: $clr-white;
         color: $clr-calendar-btn-color;
         font-size: $clr-calendar-picker-btn-font-size;
         font-weight: $clr-calendar-picker-btn-font-weight;
-        text-align: left;
         outline-offset: -5px;
 
         &.is-active {
@@ -217,5 +229,13 @@ $clr-calendar-active-cell-color: $clr-white;
         &.is-active:focus {
             background: $clr-calendar-active-focus-cell-background-color
         }
+    }
+
+    .month {
+        text-align: left;
+    }
+
+    .year {
+        text-align: center;
     }
 }

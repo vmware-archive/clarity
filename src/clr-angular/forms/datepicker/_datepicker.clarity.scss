@@ -22,8 +22,9 @@ $clr-calendar-picker-btn-font-weight: 200;
 $clr-calendar-today-date-cell-color: $clr-black;
 $clr-calendar-today-date-cell-font-weight: 600;
 
-$clr-calendar-active-date-cell-background-color: $action-blues-light-midtone;
-$clr-calendar-active-date-cell-color: $clr-white;
+$clr-calendar-active-cell-background-color: $action-blues-light-midtone;
+$clr-calendar-active-focus-cell-background-color: $action-blues-dark-midtone;
+$clr-calendar-active-cell-color: $clr-white;
 
 @mixin generate-calendar-button(
     $height: $clr-calendar-click-target,
@@ -156,10 +157,13 @@ $clr-calendar-active-date-cell-color: $clr-white;
             font-weight: $clr-calendar-today-date-cell-font-weight;
         }
 
-        &.is-active,
+        &.is-active {
+            background: $clr-calendar-active-cell-background-color;
+            color: $clr-calendar-active-cell-color;
+        }
+
         &.is-active:focus {
-            background: $clr-calendar-active-date-cell-background-color;
-            color: $clr-calendar-active-date-cell-color;
+            background: $clr-calendar-active-focus-cell-background-color
         }
 
         &.is-disabled {
@@ -204,5 +208,14 @@ $clr-calendar-active-date-cell-color: $clr-white;
         font-weight: $clr-calendar-picker-btn-font-weight;
         text-align: left;
         outline-offset: -5px;
+
+        &.is-active {
+            background: $clr-calendar-active-cell-background-color;
+            color: $clr-calendar-active-cell-color;
+        }
+
+        &.is-active:focus {
+            background: $clr-calendar-active-focus-cell-background-color
+        }
     }
 }

@@ -10,7 +10,8 @@ import {Component, LOCALE_ID} from "@angular/core";
     // Note the .css extension here, not .scss. That's the best we can have at the moment.
     styleUrls: ["./datepicker.demo.scss"],
     templateUrl: "./basic-datepicker.html",
-    providers: [{provide: LOCALE_ID, useValue: "en"}]
+    providers: [{provide: LOCALE_ID, useValue: "en"}],
+    //providers: [{provide: LOCALE_ID, useValue: "ar-AE"}]
     //providers: [{provide: LOCALE_ID, useValue: "hi"}]
     //providers: [{provide: LOCALE_ID, useValue: "ak"}]
     //providers: [{provide: LOCALE_ID, useValue: "fr"}]

@@ -233,6 +233,7 @@ $clr-calendar-active-cell-color: $clr-white;
 
     .month {
         text-align: left;
+        @include overflow-ellipsis();
     }
 
     .year {

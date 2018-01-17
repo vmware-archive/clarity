@@ -10,11 +10,13 @@ import localeFr from '@angular/common/locales/fr';
 import localeRu from "@angular/common/locales/ru";
 import localeAk from "@angular/common/locales/ak";
 import localeHi from "@angular/common/locales/hi";
+import localeAr from "@angular/common/locales/ar-AE";
 
 registerLocaleData(localeFr);
 registerLocaleData(localeRu);
 registerLocaleData(localeAk);
 registerLocaleData(localeHi);
+registerLocaleData(localeAr);
 
 @Component({
     selector: "clr-datepicker-demo",

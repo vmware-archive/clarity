@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {AfterViewInit, Component, ElementRef, Injector, SkipSelf} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, Injector, OnDestroy, SkipSelf} from "@angular/core";
 import {AbstractPopover} from "../../popover/common/abstract-popover";
 import {Point} from "../../popover/common/popover";
 import {DateUtilsService} from "./providers/date-utils.service";
@@ -15,6 +15,7 @@ import {CalendarDate} from "./model/calendar-date";
 import {CalendarMatrix} from "./model/calendar-matrix";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW} from "../../utils/key-codes/key-codes";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     selector: "clr-calendar",
@@ -24,7 +25,9 @@ import {DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW} from "../../utils/key-cod
     },
     providers: [DateUtilsService, CalendarViewService]
 })
-export class ClrCalendar extends AbstractPopover implements AfterViewInit {
+export class ClrCalendar extends AbstractPopover implements AfterViewInit, OnDestroy {
+
+    private _sub: Subscription;
 
     constructor(
         @SkipSelf() parent: ElementRef,
@@ -39,6 +42,9 @@ export class ClrCalendar extends AbstractPopover implements AfterViewInit {
         this.configurePopover();
         this.processInput();
         this._dateUtilsService.initializeCalendar();
+        this._sub = this._dateUtilsService.focusCellChanged.subscribe(() => {
+           this._calendarViewService.focusCell(this._elRef);
+        });
     }
 
     private processInput(): void {
@@ -179,11 +185,6 @@ export class ClrCalendar extends AbstractPopover implements AfterViewInit {
     }
 
     private incrementDateAndFocus(incrementBy: number): void {
-        this.incrementFocusedDateBy(incrementBy);
-        this._calendarViewService.focusCell(this._elRef);
-    }
-
-    private incrementFocusedDateBy(incrementBy: number): void {
         if (this.focusedDate) {
             // Creating new Javascript Date object to increment because
             // it will automatically take care of switching to next or previous
@@ -200,5 +201,11 @@ export class ClrCalendar extends AbstractPopover implements AfterViewInit {
 
     onCalendarCellFocus(cell: CalendarCell): void {
         this.focusedDate = cell.calendarDate;
+    }
+
+    ngOnDestroy() {
+        if (this._sub) {
+            this._sub.unsubscribe();
+        }
     }
 }

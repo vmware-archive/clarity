@@ -14,6 +14,8 @@ import {CalendarDate} from "../model/calendar-date";
 import {CalendarView} from "../model/calendar-view";
 import {CalendarMatrix} from "../model/calendar-matrix";
 import {NO_OF_DAYS_IN_A_WEEK, TOTAL_DAYS_IN_DAYS_VIEW} from "../utils/constants";
+import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class DateUtilsService {
@@ -63,11 +65,19 @@ export class DateUtilsService {
      */
     updateCalendar(year: number, month: number): void {
         if (this.calendarYear === year && this.calendarMonth === month) {
+            this._focusCellChanged.next();
             return;
         }
         this.calendarMonth = month;
         this.calendarYear = year;
         this.generateCalendarMatrix(this.calendarYear, this.calendarMonth);
+        this._focusCellChanged.next();
+    }
+
+    private _focusCellChanged: Subject<void> = new Subject<void>();
+
+    get focusCellChanged(): Observable<void> {
+        return this._focusCellChanged.asObservable();
     }
 
     /**
@@ -402,6 +412,9 @@ export class DateUtilsService {
         this.setCalendarFlags();
     }
 
+    /**
+     * Set the selected and focusable cells in the calendar
+     */
     private setCalendarFlags(): void {
         if (this.selectedDate) {
             this.currentCalendarMatrix.setDateActiveFlag(this.selectedDate, true);
@@ -410,14 +423,18 @@ export class DateUtilsService {
         this.currentCalendarMatrix.setDateFocusableFlag(focusableCell, true);
     }
 
+    /**
+     * Get the date that should be focusable initially in the calendar.
+     * @returns {CalendarDate}
+     */
     private getFocusableCell(): CalendarDate {
         if (this.focusedDate) {
             if (this.currentCalendarMatrix.isDateInMatrix(this.focusedDate)) {
                 return this.focusedDate;
-            } else {
-                this.focusedDate = null;
             }
-        } else if (this.selectedDate && this.currentCalendarMatrix.isDateInMatrix(this.selectedDate)) {
+            this.focusedDate = null;
+        }
+        if (this.selectedDate && this.currentCalendarMatrix.isDateInMatrix(this.selectedDate)) {
             return this.selectedDate;
         } else if (this.currentCalendarMatrix.isDateInMatrix(this.todaysCalendarDate)) {
             return this.todaysCalendarDate;

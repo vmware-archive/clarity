@@ -206,16 +206,20 @@ export class DateIOService {
 
     private _dateChanged: Subject<string> = new Subject<string>();
 
+    /**
+     * Observable to let the subscribers know that the date has been updated.
+     * @returns {Observable<string>}
+     */
     get dateChanged(): Observable<string> {
         return this._dateChanged.asObservable();
     }
 
+    /**
+     * Function to update the date and emit it to the dateChanged subscribers.
+     * @param {Date} date
+     */
     updateDate(date: Date) {
         this.inputDate = this.toLocaleDisplayFormatString(date);
-        this.emitDate(this.inputDate);
-    }
-
-    private emitDate(dateStr: string) {
-        this._dateChanged.next(dateStr);
+        this._dateChanged.next(this.inputDate);
     }
 }

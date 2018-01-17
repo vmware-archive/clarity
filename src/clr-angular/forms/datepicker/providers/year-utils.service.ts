@@ -12,14 +12,23 @@ import {Injectable} from "@angular/core";
 export class YearUtilsService {
 
     private _startYear: number;
-    private _currYear: number;
 
     private _years: number[];
 
+    /**
+     * Gets the generated year range.
+     * @returns {number[]}
+     */
     get years(): number[] {
         return this._years;
     }
 
+    /**
+     * Generates the year range based on the year parameter.
+     * eg: If 2018 is passed the output will be [2010, 2011, ..., 2019]
+     * @param {number} year
+     * @returns {number[]}
+     */
     generateYearRange(year: number): number[] {
         const remainder: number = year % NO_YEAR_IN_VIEW;
         let floor: number = year - remainder;
@@ -28,30 +37,52 @@ export class YearUtilsService {
         return arr;
     }
 
+    /**
+     * Function which generate a range of number from floor to ceil.
+     * @param {number} floor
+     * @param {number} ceil
+     * @returns {any[]}
+     */
     private generateRange(floor: number, ceil: number) {
         return Array.from({length: (ceil - floor)}, (v, k) => k + floor);
     }
 
-    initializeYearPicker(calYear: number, currYear: number): void {
+    /**
+     * Initializes the year picker based on the calendar year.
+     * @param {number} calYear
+     * @param {number} currYear
+     */
+    initializeYearPicker(calYear: number): void {
         this._startYear = calYear;
-        this._currYear = currYear;
         this.populateYearRange();
     }
 
+    /**
+     * Populates the generated year range.
+     */
     private populateYearRange(): void {
         this._years = this.generateYearRange(this._startYear);
     }
 
+    /**
+     * Generates the year range for the next decade.
+     */
     moveToNextDecade(): void {
         this._startYear = this._startYear + 10;
         this.populateYearRange();
     }
 
+    /**
+     * Generates the year range for the current decade.
+     */
     moveToCurrentDecade(): void {
-        this._startYear = this._currYear;
+        this._startYear = (new Date().getFullYear());
         this.populateYearRange();
     }
 
+    /**
+     * Generates the year range for the previous decade.
+     */
     moveToPreviousDecade(): void {
         this._startYear = this._startYear - 10;
         this.populateYearRange();

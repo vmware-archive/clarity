@@ -45,35 +45,53 @@ export class ClrYearPicker {
         private _yearUtilsService: YearUtilsService,
         private _elRef: ElementRef
     ) {
-        this._yearUtilsService.initializeYearPicker(this.calendarYear, this.currentYear);
+        this._yearUtilsService.initializeYearPicker(this.calendarYear);
     }
 
+    /**
+     * Gets the year range for the current year picker view.
+     * @returns {number[]}
+     */
     get years(): number[] {
         return this._yearUtilsService.years;
     }
 
+    /**
+     * Gets the year which the user is currently on.
+     * @returns {number}
+     */
     get calendarYear(): number {
         return this._dateUtilsService.calendarYear;
     }
 
-    get currentYear(): number {
-        return this._dateUtilsService.currentYear;
-    }
-
+    /**
+     * This function is called when the user selects one of the years. After updating the year,
+     * the year picker is closed.
+     * @param {number} year
+     */
     changeYear(year: number): void {
         this._dateUtilsService.updateCalendar(year, this._dateUtilsService.calendarMonth);
         //Disable Yearpicker
         this._calendarViewService.isYearView = false;
     }
 
+    /**
+     * Moves the year picker view to the next decade.
+     */
     moveToNextDecade(): void {
         this._yearUtilsService.moveToNextDecade();
     }
 
+    /**
+     * Moves the year picker view to the current decade.
+     */
     moveToCurrentDecade(): void {
         this._yearUtilsService.moveToCurrentDecade();
     }
 
+    /**
+     * Moves the year picker view to the previous decade.
+     */
     moveToPreviousDecade(): void {
         this._yearUtilsService.moveToPreviousDecade();
     }

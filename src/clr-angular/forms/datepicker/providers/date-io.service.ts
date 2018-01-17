@@ -15,7 +15,7 @@ import {
     SEPARATORS,
     InputDateDisplayFormat
 } from "../utils/constants";
-import {getNumberOfDaysInTheMonth} from "../utils/date-utils";
+import {getNumberOfDaysInTheMonth, parseToFourDigitYear} from "../utils/date-utils";
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
 
@@ -23,7 +23,20 @@ import {Observable} from "rxjs/Observable";
 export class DateIOService {
     public cldrLocaleDateFormat: string = DEFAULT_LOCALE_FORMAT;
     private localeDisplayFormat: InputDateDisplayFormat = BIG_ENDIAN;
-    public inputDate: string;
+
+    private _inputDate: string;
+
+    get inputDate(): string {
+        return this._inputDate;
+    }
+
+    set inputDate(value: string) {
+        this._inputDate = value;
+        let date: Date = this.processInput();
+        if (date) {
+            this._dateValidated.next(date);
+        }
+    }
 
     constructor(@Inject(LOCALE_ID) public locale: string) {
         this.cldrLocaleDateFormat = getLocaleDateFormat(this.locale, FormatWidth.Short);
@@ -31,7 +44,7 @@ export class DateIOService {
     }
 
     processInput(): Date {
-        return this.isValidInput(this.inputDate);
+        return this.isValidInput(this._inputDate);
     }
 
     toLocaleDisplayFormatString(date: Date): string {
@@ -163,6 +176,17 @@ export class DateIOService {
      * @returns {Date}
      */
     private validateAndGetDate(year: number, month: number, date: number): Date {
+        if (year < -1) {
+            return null;
+        } else if (year > 99 && year < 1000) {
+            return null;
+        } else if (year > -1 && year < 100) {
+            const fourDigitYear: number = parseToFourDigitYear(year);
+            if (fourDigitYear === -1) {
+                return null;
+            }
+            year = fourDigitYear;
+        }
         if (this.isValidMonth(month) && this.isValidDate(year, month, date)) {
             return new Date(year, month, date);
         }
@@ -212,6 +236,12 @@ export class DateIOService {
      */
     get dateChanged(): Observable<string> {
         return this._dateChanged.asObservable();
+    }
+
+    private _dateValidated: Subject<Date> = new Subject<Date>();
+
+    get dateValidated(): Observable<Date> {
+        return this._dateValidated.asObservable();
     }
 
     /**

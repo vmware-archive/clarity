@@ -18,4 +18,9 @@ import {Component, LOCALE_ID} from "@angular/core";
     //providers: [{provide: LOCALE_ID, useValue: "ru-UA"}]
 })
 export class BasicDatepickerDemo {
+    inputDate: string;
+
+    dateChanged(date: Date) {
+        this.inputDate = date.toLocaleDateString();
+    }
 }

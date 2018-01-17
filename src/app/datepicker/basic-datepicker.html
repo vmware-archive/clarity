@@ -5,7 +5,11 @@
   -->
 
 <h4>Basic Datepicker</h4>
-<input type="text" clrDatepicker>
+<input type="text" clrDatepicker (clrDatepickerChange)="dateChanged($event)">
+
+<p>
+    {{inputDate}}
+</p>
 
 <p>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam

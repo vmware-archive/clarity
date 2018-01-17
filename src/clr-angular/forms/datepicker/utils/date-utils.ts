@@ -61,3 +61,23 @@ export function getNextMonth(year: number, month: number): CalendarView {
         return new CalendarView(year, month + 1);
     }
 }
+
+/**
+ * Takes in a 2 digit year and returns the corresponding 4 digit year.
+ * Window of 80 years before and 20 years after the present year.
+ * Credit: https://github.com/globalizejs/globalize/blob/e1b31cd6a4f1cff75b185b68b7a32220aac5196f/src/date/parse.js
+ * @param {number} year
+ * @returns {number}
+ */
+export function parseToFourDigitYear(year: number): number {
+    if (year < 0 || year > 100) {
+        return -1;
+    }
+    const currYear: number = (new Date()).getFullYear();
+    const century: number = Math.floor(currYear / 100) * 100;
+    let result: number = year + century;
+    if (result > currYear + 20) {
+        result = result - 100;
+    }
+    return result;
+}

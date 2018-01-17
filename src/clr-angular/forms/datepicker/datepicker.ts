@@ -5,9 +5,10 @@
  */
 
 import {
-    ComponentFactory, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, HostBinding, HostListener,
+    ComponentFactory, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EventEmitter, HostBinding,
+    HostListener,
     OnDestroy,
-    Optional,
+    Optional, Output,
     ViewContainerRef
 } from "@angular/core";
 import {ClrDatepickerContainer} from "./datepicker-container";
@@ -20,7 +21,10 @@ import {Subscription} from "rxjs/Subscription";
 })
 export class ClrDatepicker implements OnDestroy {
 
-    private _sub: Subscription;
+    /**
+     * Subscriptions to all the services and queries changes
+     */
+    private _subscriptions: Subscription[] = [];
 
     constructor(@Optional() private container: ClrDatepickerContainer,
                 private vcr: ViewContainerRef,
@@ -60,10 +64,17 @@ export class ClrDatepicker implements OnDestroy {
         this._dateIOService = componentRef.injector.get(DateIOService);
     }
 
+    /**
+     * Initialize DateIO Subscriptions
+     */
     private initializeSubscriptions(): void {
-        this._sub = this._dateIOService.dateChanged.subscribe((dateStr) => {
+        this._subscriptions.push(this._dateIOService.dateChanged.subscribe((dateStr) => {
+            //Is there a better way to set this other than use the elementRef?
             this.elRef.nativeElement.value = dateStr;
-        });
+        }));
+        this._subscriptions.push(this._dateIOService.dateValidated.subscribe((date) => {
+            this._dateUpdated.emit(date);
+        }));
     }
 
     @HostBinding("attr.placeholder")
@@ -71,20 +82,23 @@ export class ClrDatepicker implements OnDestroy {
         return this._dateIOService.placeholderText;
     }
 
-    @HostListener("input")
-    onValueChange() {
-        //Is there a better way to retrieve this other than use the elementRef?
-        const value: string = this.elRef.nativeElement.value;
+    @HostListener("change", ['$event.target'])
+    onValueChange(target: HTMLInputElement) {
+        const value: string = target.value;
         if (value) {
-            this._dateIOService.inputDate = value.trim();
+            this.inputDate = value.trim();
         } else {
-            this._dateIOService.inputDate = "";
+            this.inputDate = "";
         }
     }
 
+    set inputDate(value: string) {
+        this._dateIOService.inputDate = value;
+    }
+
+    @Output("clrDatepickerChange") _dateUpdated: EventEmitter<Date> = new EventEmitter<Date>(false);
+
     ngOnDestroy() {
-        if(this._sub) {
-            this._sub.unsubscribe();
-        }
+        this._subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
     }
 }

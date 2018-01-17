@@ -16,7 +16,8 @@ import {YearUtilsService} from "./providers/year-utils.service";
                 <clr-icon shape="angle" dir="left"></clr-icon>
             </button>
             <button class="calendar-btn" type="button" (click)="moveToCurrentDecade()">
-                <clr-icon shape="refresh"></clr-icon>
+                <clr-icon shape="refresh
+"></clr-icon>
             </button>
             <button class="calendar-btn" type="button" (click)="moveToNextDecade()">
                 <clr-icon shape="angle" dir="right"></clr-icon>

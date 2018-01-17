@@ -183,15 +183,17 @@ $clr-calendar-active-cell-color: $clr-white;
 
     .monthpicker-trigger,
     .yearpicker-trigger {
-        min-width: 2.5rem;
+        //Dimensions
+        min-width: 1.5rem;
+
+        //Other Props
+        text-align: center;
+        @include overflow-ellipsis();
     }
 
     .monthpicker-trigger {
-        text-align: left;
-    }
-
-    .yearpicker-trigger {
-        text-align: right;
+        //Dimensions
+        padding: 0;
     }
 
     .monthpicker,

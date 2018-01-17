@@ -23,6 +23,7 @@ import {DatagridFilteringDemo} from "./filtering/filtering";
 import {DatagridFullDemo} from "./full/full";
 import {DatagridHideShowDemo} from "./hide-show-columns/hide-show";
 import {DatagridKitchenSinkDemo} from "./kitchen-sink/kitchen-sink";
+import {DatagridConditionalPaginationDemo} from "./pagination-conditional/pagination-conditional";
 import {DatagridPaginationScrollingDemo} from "./pagination-scrolling/pagination-scrolling";
 import {DatagridPaginationDemo} from "./pagination/pagination";
 import {DatagridPlaceholderDemo} from "./placeholder/placeholder";
@@ -53,6 +54,7 @@ import {Example} from "./utils/example";
         DatagridHideShowDemo,
         DatagridPaginationDemo,
         DatagridPaginationScrollingDemo,
+        DatagridConditionalPaginationDemo,
         DatagridSelectionDemo,
         DatagridSelectionSingleDemo,
         DatagridSelectionRowModeDemo,
@@ -82,6 +84,7 @@ import {Example} from "./utils/example";
         DatagridFullDemo,
         DatagridPaginationDemo,
         DatagridPaginationScrollingDemo,
+        DatagridConditionalPaginationDemo,
         DatagridSelectionDemo,
         DatagridSelectionSingleDemo,
         DatagridSelectionRowModeDemo,

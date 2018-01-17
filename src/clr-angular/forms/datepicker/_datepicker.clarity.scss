@@ -213,7 +213,7 @@ $clr-calendar-active-cell-color: $clr-white;
     .year {
         @include generate-calendar-button($clr-calendar-month-cell-height, $clr-calendar-month-cell-padding);
         //Dimensions
-        width: 127px;
+        width: 126px;
 
         //Other Props
         color: $clr-calendar-btn-color;

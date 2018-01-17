@@ -17,6 +17,7 @@ import {DatagridFilteringDemo} from "./filtering/filtering";
 import {DatagridFullDemo} from "./full/full";
 import {DatagridHideShowDemo} from "./hide-show-columns/hide-show";
 import {DatagridKitchenSinkDemo} from "./kitchen-sink/kitchen-sink";
+import {DatagridConditionalPaginationDemo} from "./pagination-conditional/pagination-conditional";
 import {DatagridPaginationScrollingDemo} from "./pagination-scrolling/pagination-scrolling";
 import {DatagridPaginationDemo} from "./pagination/pagination";
 import {DatagridPlaceholderDemo} from "./placeholder/placeholder";
@@ -47,6 +48,7 @@ const ROUTES: Routes = [{
         {path: "string-filtering", component: DatagridStringFilteringDemo},
         {path: "pagination", component: DatagridPaginationDemo},
         {path: "pagination-scrolling", component: DatagridPaginationScrollingDemo},
+        {path: "pagination-conditional", component: DatagridConditionalPaginationDemo},
         {path: "selection", component: DatagridSelectionDemo},
         {path: "selection-single", component: DatagridSelectionSingleDemo},
         {path: "selection-row-mode", component: DatagridSelectionRowModeDemo},

@@ -55,6 +55,8 @@ export default function(): void {
             expect(this.pageInstance.current).toBe(2);
             this.pageInstance.size = 10;
             expect(this.pageInstance.current).toBe(3);
+            this.pageInstance.size = 0;
+            expect(this.pageInstance.current).toBe(1);
         });
 
         it("correctly uses the last item's index if the last page is not full", function() {

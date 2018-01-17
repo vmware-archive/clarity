@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,7 +11,10 @@ import {Page} from "./providers/page";
 @Component({
     selector: "clr-dg-pagination",
     template: `
-        <ul class="pagination" *ngIf="page.last > 1">
+        <div class="pagination-description">
+            <ng-content></ng-content>
+        </div>
+        <ul class="pagination-list" *ngIf="page.last > 1">
             <li *ngIf="page.current > 1">
                 <button 
                     class="pagination-previous" 
@@ -43,8 +46,7 @@ import {Page} from "./providers/page";
             </li>
         </ul>
     `,
-    // IE10 comes to pollute even our components declaration
-    styles: [`:host { display: block; }`]
+    host: {"[class.pagination]": "true"}
 })
 export class DatagridPagination implements OnDestroy, OnInit {
     constructor(public page: Page) {
@@ -69,7 +71,10 @@ export class DatagridPagination implements OnDestroy, OnInit {
      */
     private _pageSubscription: Subscription;
     ngOnDestroy() {
-        this._pageSubscription.unsubscribe();
+        this.page.resetPageSize();
+        if (this._pageSubscription) {
+            this._pageSubscription.unsubscribe();
+        }
     }
 
     /**

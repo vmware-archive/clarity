@@ -69,6 +69,12 @@ export default function(): void {
                 expect(component.firstItem).toBe(pageService.firstItem);
                 expect(component.lastItem).toBe(pageService.lastItem);
             });
+
+            it("resets the page size to 0 when pagination is destroyed", () => {
+                pageService.size = 7;
+                component.ngOnDestroy();
+                expect(pageService.size).toBe(0);
+            });
         });
 
         describe("Template API", function() {

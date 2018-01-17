@@ -645,8 +645,18 @@
         border-radius: 0 0 $clr-global-borderradius $clr-global-borderradius;
 
         .pagination {
-            margin-left: 1.5rem;
-            height: calc(1.5rem - #{2 * $clr-default-borderwidth});
+            display: flex;
+            align-items: center;
+
+            &-description {
+                white-space: nowrap;
+            }
+
+            &-list {
+                margin-left: 1.5rem;
+                height: calc(1.5rem - #{2 * $clr-default-borderwidth});
+            }
+
         }
 
         .column-switch-wrapper {
@@ -733,7 +743,7 @@
 
     // Yes, this is not .datagrid-pagination on purpose.
     // I've been told to consider a potential separate pagination component.
-    .pagination {
+    .pagination-list {
         list-style: none;
         display: flex;
         flex-flow: row nowrap;
@@ -855,7 +865,7 @@
             height: 1rem;
             padding: 0 $clr-table-cellpadding;
             line-height: calc(1rem - 1px);
-            .pagination {
+            .pagination-list {
                 height: calc(1rem - #{2 * $clr-default-borderwidth});
             }
             .column-switch-wrapper .column-toggle--action {

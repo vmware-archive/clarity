@@ -11,9 +11,10 @@ import {User} from "../inventory/user";
 const EXAMPLE = `
 <-- Inside the full datagrid declaration -->
 <clr-dg-footer>
-    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-    of {{pagination.totalItems}} users
-    <clr-dg-pagination #pagination [clrDgPageSize]="10"></clr-dg-pagination>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{pagination.totalItems}} users
+    </clr-dg-pagination>
 </clr-dg-footer>
 `;
 

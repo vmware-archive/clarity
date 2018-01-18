@@ -138,7 +138,8 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20
+            "dox": 20,
+            "isUpdated": true
         },
         {
             "url": "dropdowns",

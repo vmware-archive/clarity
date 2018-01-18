@@ -15,7 +15,7 @@
         border: $clr-default-borderwidth solid rgba(0, 148, 210, 1);
         cursor: pointer;
         text-decoration: none;
-        transform: translate3d(0, -2px, 0);
+        transform: translateY(-2px);
         transition: border 0.2s ease, transform 0.2s ease;
     }
 

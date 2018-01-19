@@ -20,7 +20,7 @@
                 ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
             }
 
-        }</script><link href="styles.43a438c13cc508dd515b.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">pre[_ngcontent-c0] {
+        }</script><link href="styles.6594ca5c32c242407881.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">pre[_ngcontent-c0] {
             background: transparent;
             padding: 12px;
         }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-tables"><clr-main-container class="main-container">
@@ -104,7 +104,7 @@
 
             <p>
                 The following is a static example of tabs with their associated sections.
-                You cannot switch between tabs in this static demo because it does not 
+                You cannot switch between tabs in this static demo because it does not
                 contain the JavaScript to handle this behavior.
             </p>
             <p>
@@ -170,22 +170,22 @@
 
             <h6 id="accessibility">Accessibility</h6>
 
-            <p>The active tab should have the attribute <code class="clr-code">aria-selected</code> 
+            <p>The active tab should have the attribute <code class="clr-code">aria-selected</code>
                 set to <code class="clr-code">true</code>, and the others to false.</p>
 
-            <p>The active panel associated with the active tab should have the attribute <code class="clr-code">aria-hidden</code> set to <code class="clr-code">true</code>, 
+            <p>The active panel associated with the active tab should have the attribute <code class="clr-code">aria-hidden</code> set to <code class="clr-code">true</code>,
                 and the others <code class="clr-code">to false</code>.</p>
 
-            <p>In addition, each tab should have an aria-controls attribute set to the id of the 
-                matching panel and each panel should have an <code class="clr-code">aria-labelledby</code> 
+            <p>In addition, each tab should have an aria-controls attribute set to the id of the
+                matching panel and each panel should have an <code class="clr-code">aria-labelledby</code>
                 attribute set to the id of the tab associated with the panel.</p>
 
             <h4 id="angular-component">Angular Component</h4>
 
             <h5>Simple Tabs</h5>
             <p>
-                The tabs component uses the <code class="clr-code">*clrIfActive</code> structural 
-                directive to lazy load the content of an active tab. For simple cases, using the 
+                The tabs component uses the <code class="clr-code">*clrIfActive</code> structural
+                directive to lazy load the content of an active tab. For simple cases, using the
                 microsyntax as shown below would suffice.
             </p>
             <clr-modal-tabs-angular-simple>
@@ -269,7 +269,7 @@
 
             <h5>Tabs with two-way binding</h5>
             <p>
-                If you'd like to use two-way binding on the active state of the tabs, we recommend that 
+                If you'd like to use two-way binding on the active state of the tabs, we recommend that
                 you use the de-sugared syntax of the structural directive by wrapping it in <code class="clr-code">ng-template</code> as shown below.
             </p>
 
@@ -395,18 +395,18 @@
             <h5>Tab Overflow</h5>
 
             <p>
-                Tab overflow is used when the tab group is larger than its containing space, or used to 
+                Tab overflow is used when the tab group is larger than its containing space, or used to
                 preserve space. The overflow is configurable so you can assign tabs to the dropdown menu.
             </p>
 
             <p>
-                Tab overflow is shown below as an ellipses button in the tab group and is the last 
+                Tab overflow is shown below as an ellipses button in the tab group and is the last
                 position to the right. Clicking on the ellipses will show the overflow dropdown menu.
             </p>
 
             <p>
-                We recommend that a overflow dropdown have at least two options in it. We also recommend 
-                that you test out scenarios with tab labels that may vary in length or when translated to 
+                We recommend that a overflow dropdown have at least two options in it. We also recommend
+                that you test out scenarios with tab labels that may vary in length or when translated to
                 another language to make sure there is enough room for them.
             </p>
 
@@ -643,7 +643,7 @@
                     <td class="hidden-xs-down">&lt;true, false&gt;</td>
                     <td class="hidden-xs-down">false</td>
                     <td class="left">
-                        Two-way binding on the state of the tab content. The content of the active 
+                        Two-way binding on the state of the tab content. The content of the active
                         tab will lazily load when set to true, and destroy it when set to false.
                     </td>
                 </tr>
@@ -654,30 +654,30 @@
         <div id="design-guidelines">
             <h3 id="guidelines">Usage</h3>
 
-            <p>Use tabs for alternate views within the <a routerlink="/documentation/sidenav" href="/documentation/sidenav">sidenav</a> 
+            <p>Use tabs for alternate views within the <a routerlink="../../../sidenav" href="/documentation/v0.11/sidenav">sidenav</a>
                 or main content area.</p>
 
-            <p>Don’t use tabs to break user interactions into a series of steps. Serial workflows are 
-                best presented in a <a routerlink="/documentation/wizards" href="/documentation/wizards">wizard</a>.</p>
+            <p>Don’t use tabs to break user interactions into a series of steps. Serial workflows are
+                best presented in a <a routerlink="../../../wizards" href="/documentation/v0.11/wizards">wizard</a>.</p>
 
             <p>Avoid using tabs in cards and modals.</p>
 
             <h3 id="presentation">Presentation</h3>
 
-            <p>Tabs appear in a single, non-scrollable row, above their content. The width of each tab 
+            <p>Tabs appear in a single, non-scrollable row, above their content. The width of each tab
                 is dependent on its label.</p>
 
-            <p>To ensure that all tabs appear in the container, avoid using more than seven tabs and 
+            <p>To ensure that all tabs appear in the container, avoid using more than seven tabs and
                 limit labels to one or two words.</p>
 
             <h3 id="content">Content</h3>
 
-            <p>While the content within tabs is flexible, follow these guidelines for organization and 
+            <p>While the content within tabs is flexible, follow these guidelines for organization and
                 presentation:</p>
 
             <ul class="list">
                 <li>Ensure that the content in each view is independent of the content in other views.</li>
-                <li>Don’t force users to navigate back and forth to compare data–keep such content 
+                <li>Don’t force users to navigate back and forth to compare data–keep such content
                     in the same view.</li>
                 <li>Avoid cross-linking between tabs.</li>
                 <li>If the content within a view is broad, divide it into subsections.</li>
@@ -1126,4 +1126,4 @@
 </nav></documentation>
 
 </clr-main-container>
-</root><script type="text/javascript" src="inline.dea3f1369c7a8fd81858.bundle.js"></script><script type="text/javascript" src="polyfills.f706d3bf723a412f1398.bundle.js"></script><script type="text/javascript" src="main.8a3c4e584ad03d04358c.bundle.js"></script></body></html>
+</root><script type="text/javascript" src="inline.5e109020ef473fa3040c.bundle.js"></script><script type="text/javascript" src="polyfills.f706d3bf723a412f1398.bundle.js"></script><script type="text/javascript" src="main.561b4b6f9d607320533f.bundle.js"></script></body></html>

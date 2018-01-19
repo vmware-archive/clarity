@@ -6,26 +6,39 @@
 import {Component} from "@angular/core";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {DateIOService} from "./providers/date-io.service";
+import {DatepickerActiveService} from "./providers/datepicker-active.service";
 
 @Component({
     selector: "clr-datepicker-container",
     template: `
         <ng-content></ng-content>
-        <button class="datepicker-trigger" (click)="toggleDatepicker($event)">
+        <button class="datepicker-trigger" (click)="toggleCalendar($event)" *ngIf="isActive">
             <clr-icon shape="calendar"></clr-icon>
         </button>
         <clr-calendar *clrIfOpen clrFocusTrap></clr-calendar>
     `,
-    providers: [IfOpenService, DateIOService],
+    providers: [IfOpenService, DateIOService, DatepickerActiveService],
     host: {"[class.datepicker-container]": "true"}
 })
 export class ClrDatepickerContainer {
     constructor(
-        public ifOpenService: IfOpenService,
-        private _dateIOService: DateIOService) {
+        public _ifOpenService: IfOpenService,
+        private _datepickerActiveService: DatepickerActiveService) {
     }
 
-    toggleDatepicker(event: MouseEvent) {
-        this.ifOpenService.toggleWithEvent(event);
+    /**
+     * Toggles the calendar.
+     * @param {MouseEvent} event
+     */
+    toggleCalendar(event: MouseEvent) {
+        this._ifOpenService.toggleWithEvent(event);
+    }
+
+    /**
+     * Returns if the calendar should be active or not.
+     * @returns {boolean}
+     */
+    get isActive(): boolean {
+        return this._datepickerActiveService.active;
     }
 }

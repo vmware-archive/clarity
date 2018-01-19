@@ -38,8 +38,8 @@
                         <div class="clrweb-DoxMedia-text">
                             <h6>Titles</h6>
                             <p>
-                                Titles are <b>concise summaries</b>. The wizard title describes the 
-                                overall workflow. The step title describes the task being completed. The content 
+                                Titles are <b>concise summaries</b>. The wizard title describes the
+                                overall workflow. The step title describes the task being completed. The content
                                 title should be similar to its step title.
                             </p>
                         </div>
@@ -65,8 +65,8 @@
                             <h6>Buttons</h6>
                             <p>
                                 Default progress buttons are provided, but can be overridden. Buttons are
-                                right-aligned based on the Z Pattern. Read more about it in 
-                                <a routerLink="/documentation/buttons">Button Placement</a>.
+                                right-aligned based on the Z Pattern. Read more about it in
+                                <a routerLink="../../../buttons">Button Placement</a>.
                             </p>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                                 </div>
                                 <span class="alert-text">
                                     Clarity Wizards are not dismissed when clicking on the background overlay.
-                                    This prevents losing information or data. An option to override this is available. 
+                                    This prevents losing information or data. An option to override this is available.
                                 </span>
                             </div>
                         </div>
@@ -368,10 +368,10 @@
             <h3 id="custom-buttons">Custom Buttons and Page-Level Button Overrides</h3>
 
             <p>
-                A <em>page override</em> is defining a button at the page level in place of a button of the 
-                same type at the wizard level. These types include finish, danger, next, previous, and cancel. 
-                If you override the click events of these buttons with an output like <code 
-                class="clr-code">clrWizardPagePreventDefault</code>, you can also short-circuit the default 
+                A <em>page override</em> is defining a button at the page level in place of a button of the
+                same type at the wizard level. These types include finish, danger, next, previous, and cancel.
+                If you override the click events of these buttons with an output like <code
+                class="clr-code">clrWizardPagePreventDefault</code>, you can also short-circuit the default
                 action of the button to define your own custom action at the page level.
             </p>
 
@@ -397,7 +397,7 @@
             <p>
                 By default, a custom button will be styled as an outline button. Meaning it will look like a
                 "previous" type of button. For example, you would get an action blue, outlined button with the
-                text "Wallaby" inside it if you created a button with the following declaration: <code 
+                text "Wallaby" inside it if you created a button with the following declaration: <code
                 class="clr-code">&lt;clr-wizard-button [type]="'wallaby'"&gt;Wallaby&lt;/clr-wizard-button&gt;</code>.
                 And if your page was listening to the <code class="clr-code">clrWizardPageCustomButton</code> output,
                 your event handler would receive the button type <code class="clr-code">wallaby</code> as a parameter
@@ -668,7 +668,7 @@
 
             <h3 id="non-closable-wizard">Non-Closable Wizard</h3>
 
-            <p>In some circumstances, you may want to not show the closing × icon in the top right of the 
+            <p>In some circumstances, you may want to not show the closing × icon in the top right of the
                 Wizard modal. You can remove this close × icon by setting the
                 <code class="clr-code">clrWizardClosable</code> input to <code class="clr-code">false</code>.</p>
 
@@ -749,7 +749,7 @@ export class WizardJumpToDemo &#123;
             <h6>Inputs of note</h6>
             <ul class="list">
                 <li>
-                    <code class="clr-code">clrWizardSize</code> (string) sets the size of the wizard. 
+                    <code class="clr-code">clrWizardSize</code> (string) sets the size of the wizard.
                     Acceptable values are
                     <code class="clr-code">md</code>, <code class="clr-code">lg</code>, and
                     <code class="clr-code">xl</code> representing medium, large, and extra-large wizards.

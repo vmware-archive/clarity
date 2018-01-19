@@ -129,8 +129,10 @@ You can submit an issue or a bug to our [GitHub repository](https://github.com/v
 
 * The link to the reproduction scenario you created using one of the Clarity Plunker Templates
 * If possible please provide a minimal demo illustrating the issue by forking one of the Clarity Plunker Templates
-  - Clarity Version: [Latest - 0.9.x](https://plnkr.co/uNwwZe)
-  - Clarity Version: [Legacy - 0.8.15](https://plnkr.co/8TwwdL)
+  - [Light Theme v11](https://stackblitz.com/edit/clarity-light-theme-v11)
+  - [Dark Theme v11](https://stackblitz.com/edit/clarity-dark-theme-v11)
+  - [Light Theme v10](https://stackblitz.com/edit/clarity-light-theme-v10)
+  - [Dark Theme v10](https://stackblitz.com/edit/clarity-dark-theme-v10)
 * The version number of Angular
 * The version number of Clarity
 * The browser name and version number

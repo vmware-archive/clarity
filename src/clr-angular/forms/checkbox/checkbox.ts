@@ -50,6 +50,7 @@ export class ClrCheckbox implements ControlValueAccessor {
     }
 
     // If our host has a name attribute, we apply it to the checkbox.
+    // If our host has a name attribute, we apply it to the checkbox.
     @Input("name") public name: string = null;
 
     // If the host is disabled we apply it to the checkbox

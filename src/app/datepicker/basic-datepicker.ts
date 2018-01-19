@@ -20,7 +20,15 @@ import {Component, LOCALE_ID} from "@angular/core";
 export class BasicDatepickerDemo {
     inputDate: string;
 
+    test: string = "";
+
     dateChanged(date: Date) {
+        console.log("Date Changed", date);
         this.inputDate = date.toLocaleDateString();
+    }
+
+    testChange(date: string) {
+        console.log("ngModel Changed", date);
+        this.test = date;
     }
 }

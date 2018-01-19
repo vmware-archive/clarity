@@ -6,7 +6,7 @@
 
 import {
     ComponentFactory, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EventEmitter, HostBinding,
-    HostListener,
+    HostListener, Inject,
     OnDestroy,
     Optional, Output,
     ViewContainerRef
@@ -15,6 +15,7 @@ import {ClrDatepickerContainer} from "./datepicker-container";
 import {EmptyAnchor} from "../../utils/host-wrapping/empty-anchor";
 import {DateIOService} from "./providers/date-io.service";
 import {Subscription} from "rxjs/Subscription";
+import {ControlValueAccessor, DefaultValueAccessor, FormControl, NG_VALUE_ACCESSOR, NgModel} from "@angular/forms";
 
 @Directive({
     selector: "[clrDatepicker]"
@@ -30,6 +31,7 @@ export class ClrDatepicker implements OnDestroy {
                 private vcr: ViewContainerRef,
                 private elRef: ElementRef,
                 private cfr: ComponentFactoryResolver,
+                @Optional() private _ngModel: NgModel,
                 @Optional() private _dateIOService: DateIOService) {
         if (!container) {
             const compRef: ComponentRef<ClrDatepickerContainer> = this.wrapContainer();
@@ -69,8 +71,9 @@ export class ClrDatepicker implements OnDestroy {
      */
     private initializeSubscriptions(): void {
         this._subscriptions.push(this._dateIOService.dateChanged.subscribe((dateStr) => {
-            //Is there a better way to set this other than use the elementRef?
-            this.elRef.nativeElement.value = dateStr;
+            //This makes sure that ngModelChange is fired
+            //TODO: Check if there is a better way to do this.
+            this._ngModel.control.setValue(dateStr);
         }));
         this._subscriptions.push(this._dateIOService.dateValidated.subscribe((date) => {
             this._dateUpdated.emit(date);

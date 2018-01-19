@@ -5,7 +5,11 @@
   -->
 
 <h4>Basic Datepicker</h4>
-<input type="text" clrDatepicker (clrDatepickerChange)="dateChanged($event)">
+<input type="text" clrDatepicker (clrDatepickerChange)="dateChanged($event)" [ngModel]="test" (ngModelChange)="testChange($event)">
+
+<h1>
+    {{test}}
+</h1>
 
 <p>
     {{inputDate}}

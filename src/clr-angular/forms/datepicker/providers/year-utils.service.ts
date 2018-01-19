@@ -15,6 +15,16 @@ export class YearUtilsService {
 
     private _years: number[];
 
+    private _focusedYear: number;
+
+    get focusedYear(): number {
+        return this._focusedYear;
+    }
+
+    set focusedYear(value: number) {
+        this._focusedYear = value;
+    }
+
     /**
      * Gets the generated year range.
      * @returns {number[]}
@@ -62,6 +72,11 @@ export class YearUtilsService {
      */
     private populateYearRange(): void {
         this._years = this.generateYearRange(this._startYear);
+        const floor: number = this._years[0];
+        const ceil: number = this._years[this.years.length - 1];
+        if (!this.focusedYear || this._focusedYear < floor || this.focusedYear > ceil) {
+            this._focusedYear = Math.floor((floor + ceil) / 2);
+        }
     }
 
     /**

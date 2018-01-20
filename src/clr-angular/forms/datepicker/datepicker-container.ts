@@ -12,7 +12,11 @@ import {DatepickerActiveService} from "./providers/datepicker-active.service";
     selector: "clr-datepicker-container",
     template: `
         <ng-content></ng-content>
-        <button class="datepicker-trigger" (click)="toggleCalendar($event)" *ngIf="isActive">
+        <button 
+            type="button" 
+            class="datepicker-trigger" 
+            (click)="toggleCalendar($event)" 
+            *ngIf="isActive">
             <clr-icon shape="calendar"></clr-icon>
         </button>
         <clr-calendar *clrIfOpen clrFocusTrap></clr-calendar>

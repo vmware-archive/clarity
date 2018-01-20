@@ -8,13 +8,15 @@ import {RouterModule, Routes} from "@angular/router";
 
 import {BasicDatepickerDemo} from "./basic-datepicker";
 import {DatepickerDemo} from "./datepicker.demo";
+import {DatepickerInFormDemo} from "./datepicker-in-form";
 
 const ROUTES: Routes = [{
     path: "",
     component: DatepickerDemo,
     children: [
         {path: "", redirectTo: "basic", pathMatch: "full"},
-        {path: "basic", component: BasicDatepickerDemo}
+        {path: "basic", component: BasicDatepickerDemo},
+        {path: "forms", component: DatepickerInFormDemo}
     ]
 }];
 

@@ -71,9 +71,12 @@ export class ClrDatepicker implements OnDestroy {
      */
     private initializeSubscriptions(): void {
         this._subscriptions.push(this._dateIOService.dateChanged.subscribe((dateStr) => {
+            this.elRef.nativeElement.value = dateStr;
             //This makes sure that ngModelChange is fired
             //TODO: Check if there is a better way to do this.
-            this._ngModel.control.setValue(dateStr);
+            if (this._ngModel) {
+                this._ngModel.control.setValue(dateStr);
+            }
         }));
         this._subscriptions.push(this._dateIOService.dateValidated.subscribe((date) => {
             this._dateUpdated.emit(date);

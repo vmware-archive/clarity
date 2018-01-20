@@ -33,7 +33,7 @@ $clr-calendar-active-cell-color: $clr-white;
         height: $height;
         min-width: $height;
         padding: 0 $padding;
-        margin: 0;
+        margin: 0 !important; //Because stupid forms target buttons directly. We really need to refactor forms.
 
         //Other Props
         line-height: $clr-calendar-click-target;
@@ -93,6 +93,7 @@ $clr-calendar-active-cell-color: $clr-white;
         border: 1px solid $clr-calendar-border-color;
         border-radius: 3px;
         overflow: hidden;
+        z-index: map-get($clr-layers,dropdown-menu);
 
         //TODO: doesnt really need a focus style
         //Have to add it because of a focus trap bug which focuses back on the container

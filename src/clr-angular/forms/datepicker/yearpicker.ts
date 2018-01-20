@@ -112,9 +112,11 @@ export class ClrYearPicker {
     @HostListener("keydown", ["$event"])
     onKeyDown(event: KeyboardEvent) {
         const keyCode: number = event.keyCode;
-        if (this.years && this.years.length === 10) {
+        if (this.years) {
+            const floor: number = this.years[0];
+            const ceil: number = this.years[this.years.length - 1];
             if (keyCode === UP_ARROW) {
-                if (this.focusedYear === this.years[0]) {
+                if (this.focusedYear === floor) {
                     this.focusedYear--;
                     this.moveToPreviousDecade();
                 } else {
@@ -122,7 +124,7 @@ export class ClrYearPicker {
                 }
                 this._calendarViewService.focusCell(this._elRef);
             } else if (keyCode === DOWN_ARROW) {
-                if (this.focusedYear === this.years[9]) {
+                if (this.focusedYear === ceil) {
                     this.focusedYear++;
                     this.moveToNextDecade();
                 } else {
@@ -130,7 +132,7 @@ export class ClrYearPicker {
                 }
                 this._calendarViewService.focusCell(this._elRef);
             } else if (keyCode === RIGHT_ARROW) {
-                if (this.focusedYear + 5 > this.years[9]) {
+                if (this.focusedYear + 5 > ceil) {
                     this.focusedYear = this.focusedYear + 5;
                     this.moveToNextDecade();
                 } else {
@@ -138,7 +140,7 @@ export class ClrYearPicker {
                 }
                 this._calendarViewService.focusCell(this._elRef);
             } else if (keyCode === LEFT_ARROW) {
-                if (this.focusedYear - 5 < this.years[0]) {
+                if (this.focusedYear - 5 < floor) {
                     this.focusedYear = this.focusedYear - 5;
                     this.moveToPreviousDecade();
                 } else {

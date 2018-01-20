@@ -57,6 +57,9 @@ $clr-calendar-active-cell-color: $clr-white;
 @include exports('datepicker.clarity') {
     .datepicker-container {
         display: inline-block;
+
+        //Other Props
+        white-space: nowrap;
     }
 
     .datepicker-trigger {

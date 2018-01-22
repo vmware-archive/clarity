@@ -70,7 +70,6 @@ export class DateIOService {
      * The order of the date parts results in either of these 3 formats:
      * MIDDLE_ENDIAN, LITTLE_ENDIAN, or BIG_ENDIAN
      * More info here: https://en.wikipedia.org/wiki/Date_format_by_country
-     * @param {string} format
      */
     processLocaleFormat(format: string): void {
         format = format.toLocaleLowerCase();
@@ -102,8 +101,6 @@ export class DateIOService {
     /**
      * Detects if the input date string contains any one
      * of the separators from the SEPARTORS array.
-     * @param {string} date
-     * @returns {string}
      */
     private detectSeparator(date: string): string {
         let separatorUsed: string;
@@ -118,8 +115,6 @@ export class DateIOService {
 
     /**
      * Checks if the date parts are numbers
-     * @param {string[]} dateParts
-     * @returns {boolean}
      */
     private areDatePartsNumbers(dateParts: string[]): boolean {
         for (const part of dateParts) {
@@ -133,8 +128,6 @@ export class DateIOService {
     /**
      * Checks if the month entered by the user is valid or not.
      * Note: Month is 0 based.
-     * @param {number} month
-     * @returns {boolean}
      */
     isValidMonth(month: number): boolean {
         if (month > -1 && month < 12) {
@@ -145,10 +138,6 @@ export class DateIOService {
 
     /**
      * Checks if the date is valid depending on the year and month provided.
-     * @param {number} year
-     * @param {number} month
-     * @param {number} date
-     * @returns {boolean}
      */
     isValidDate(year: number, month: number, date: number): boolean {
         if (date > 0 && date <= getNumberOfDaysInTheMonth(year, month)) {
@@ -160,8 +149,6 @@ export class DateIOService {
     /**
      * Checks if the string is a non negative number.
      * Credit: https://stackoverflow.com/a/24457420/8960224
-     * @param {string} num
-     * @returns {boolean}
      */
     isNonNegativeNumber(num: string): boolean {
         return /^\d+$/.test(num);
@@ -170,10 +157,6 @@ export class DateIOService {
     /**
      * Validates the parameters provided and returns the date.
      * If the parameters are not valid (eg: month > 11 because month is 0 based) then return null
-     * @param {number} year
-     * @param {number} month
-     * @param {number} date
-     * @returns {Date}
      */
     private validateAndGetDate(year: number, month: number, date: number): Date {
         if (year < -1) {
@@ -195,8 +178,6 @@ export class DateIOService {
 
     /**
      * Checks if the input provided by the user is valid.
-     * @param {string} date
-     * @returns {boolean}
      */
     isValidInput(date: string): Date {
         if (!date) {
@@ -232,7 +213,6 @@ export class DateIOService {
 
     /**
      * Observable to let the subscribers know that the date has been updated.
-     * @returns {Observable<string>}
      */
     get dateChanged(): Observable<string> {
         return this._dateChanged.asObservable();
@@ -246,7 +226,6 @@ export class DateIOService {
 
     /**
      * Function to update the date and emit it to the dateChanged subscribers.
-     * @param {Date} date
      */
     updateDate(date: Date) {
         this.inputDate = this.toLocaleDisplayFormatString(date);

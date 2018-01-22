@@ -27,7 +27,6 @@ export class YearUtilsService {
 
     /**
      * Gets the generated year range.
-     * @returns {number[]}
      */
     get years(): number[] {
         return this._years;
@@ -36,8 +35,6 @@ export class YearUtilsService {
     /**
      * Generates the year range based on the year parameter.
      * eg: If 2018 is passed the output will be [2010, 2011, ..., 2019]
-     * @param {number} year
-     * @returns {number[]}
      */
     generateYearRange(year: number): number[] {
         const remainder: number = year % NO_YEAR_IN_VIEW;
@@ -49,9 +46,6 @@ export class YearUtilsService {
 
     /**
      * Function which generate a range of number from floor to ceil.
-     * @param {number} floor
-     * @param {number} ceil
-     * @returns {any[]}
      */
     private generateRange(floor: number, ceil: number) {
         return Array.from({length: (ceil - floor)}, (v, k) => k + floor);
@@ -59,8 +53,6 @@ export class YearUtilsService {
 
     /**
      * Initializes the year picker based on the calendar year.
-     * @param {number} calYear
-     * @param {number} currYear
      */
     initializeYearPicker(calYear: number): void {
         this._startYear = calYear;

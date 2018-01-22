@@ -12,8 +12,6 @@ export class CalendarDate {
 
     /**
      * Checks if the passed CalendarDate is equal to itself.
-     * @param {CalendarDate} calDate
-     * @returns {boolean}
      */
     isEqual(calDate: CalendarDate) {
         if (calDate) {
@@ -26,7 +24,6 @@ export class CalendarDate {
 
     /**
      * Converts the CalendarDate into the Javascript Date object.
-     * @returns {Date}
      */
     toDate(): Date {
         const date: Date = new Date();

@@ -43,7 +43,6 @@ export class ClrDatepicker implements OnDestroy {
 
     /**
      * Wraps the Datepicker directive by the Datepicker container.
-     * @returns {ComponentRef<ClrDatepickerContainer>}
      */
     private wrapContainer(): ComponentRef<ClrDatepickerContainer> {
         // We need a new anchor, since we're projecting the current one.
@@ -61,7 +60,6 @@ export class ClrDatepicker implements OnDestroy {
 
     /**
      * Populates references to the DatepickerContainer services.
-     * @param {ComponentRef<ClrDatepickerContainer>} componentRef
      */
     private populateContainerServices(componentRef: ComponentRef<ClrDatepickerContainer>): void {
         this._dateIOService = componentRef.injector.get(DateIOService);

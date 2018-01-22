@@ -9,10 +9,6 @@ import {CalendarView} from "../model/calendar-view";
 
 /**
  * Returns the number of days in a month.
- * eg: 28, 29, 30 or 31
- * @param {number} year
- * @param {number} month
- * @returns {number}
  */
 export function getNumberOfDaysInTheMonth(year: number, month: number): number {
     //month + 1 because we want to go to the next month
@@ -23,10 +19,6 @@ export function getNumberOfDaysInTheMonth(year: number, month: number): number {
 
 /**
  * Returns the day for the corresponding date where 0 represents Sunday.
- * @param {number} year
- * @param {number} month
- * @param {number} date
- * @returns {number}
  */
 export function getDay(year: number, month: number, date: number): WeekDay {
     return (new Date(year, month, date)).getDay();
@@ -35,9 +27,6 @@ export function getDay(year: number, month: number, date: number): WeekDay {
 /**
  * Returns a [month, year] tuple of the previous month based on the month and year passed to
  * this method.
- * @param {number} month
- * @param {number} year
- * @returns {[number , number]}
  */
 export function getPreviousMonth(year: number, month: number): CalendarView {
     if (month === 0) {
@@ -50,9 +39,6 @@ export function getPreviousMonth(year: number, month: number): CalendarView {
 /**
  * Returns a [month, year] tuple of the next month based on the month and year passed to
  * this method.
- * @param {number} month
- * @param {number} year
- * @returns {[number , number]}
  */
 export function getNextMonth(year: number, month: number): CalendarView {
     if (month === 11) {
@@ -66,8 +52,6 @@ export function getNextMonth(year: number, month: number): CalendarView {
  * Takes in a 2 digit year and returns the corresponding 4 digit year.
  * Window of 80 years before and 20 years after the present year.
  * Credit: https://github.com/globalizejs/globalize/blob/e1b31cd6a4f1cff75b185b68b7a32220aac5196f/src/date/parse.js
- * @param {number} year
- * @returns {number}
  */
 export function parseToFourDigitYear(year: number): number {
     if (year < 0 || year > 100) {

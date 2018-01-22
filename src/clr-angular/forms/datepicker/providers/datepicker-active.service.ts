@@ -19,7 +19,6 @@ export class DatepickerActiveService {
      * Returns if the calendar should be active or not.
      * If the user agent is mobile and the screen width is less than DATEPICKER_ACTIVE_BREAKPOINT
      * then the calendar is inactive.
-     * @returns {boolean}
      */
     get active(): boolean {
         //https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent
@@ -36,7 +35,6 @@ export class DatepickerActiveService {
 
     /**
      * Checks if the user agent string has the word "mobile" in it.
-     * @returns {boolean}
      */
     private isUserAgentMobile(): boolean {
         return this._isUserAgentMobile;

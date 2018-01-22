@@ -38,7 +38,6 @@ export class ClrMonthPicker {
     /**
      * Returns an array of days in the TranslationWidth.Narrow format.
      * Eg: [S, M, T, ...] for en-US
-     * @returns {ReadonlyArray<string>}
      */
     get months(): ReadonlyArray<string> {
         return this._dateUtilsService.localeMonthsWide;
@@ -46,7 +45,6 @@ export class ClrMonthPicker {
 
     /**
      * Changes the month value
-     * @param {string} month
      */
     changeMonth(month: string): void {
         const calViewMonthIndex: number = this.months.indexOf(month);

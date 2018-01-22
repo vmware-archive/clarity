@@ -55,7 +55,6 @@ export class ClrYearPicker {
 
     /**
      * Gets the year range for the current year picker view.
-     * @returns {number[]}
      */
     get years(): number[] {
         return this._yearUtilsService.years;
@@ -63,7 +62,6 @@ export class ClrYearPicker {
 
     /**
      * Gets the year which the user is currently on.
-     * @returns {number}
      */
     get calendarYear(): number {
         return this._dateUtilsService.calendarYear;
@@ -80,7 +78,6 @@ export class ClrYearPicker {
     /**
      * This function is called when the user selects one of the years. After updating the year,
      * the year picker is closed.
-     * @param {number} year
      */
     changeYear(year: number): void {
         this._dateUtilsService.updateCalendar(year, this._dateUtilsService.calendarMonth);

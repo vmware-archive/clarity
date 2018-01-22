@@ -63,7 +63,6 @@ export class ClrCalendar extends AbstractPopover implements AfterViewInit, OnDes
     /**
      * Gets the calendar cells for the current view. The result is a
      * 6x7 matrix of CalendarCell.
-     * @returns {CalendarCell[][]}
      */
     get calendarMatrix(): CalendarMatrix {
         return this._dateUtilsService.currentCalendarMatrix;
@@ -81,7 +80,6 @@ export class ClrCalendar extends AbstractPopover implements AfterViewInit, OnDes
     /**
      * Returns an array of days in the TranslationWidth.Narrow format.
      * Eg: [S, M, T, ...] for en-US
-     * @returns {ReadonlyArray<string>}
      */
     get localeDaysShort(): ReadonlyArray<string> {
         return this._dateUtilsService.localeDaysNarrow;
@@ -89,7 +87,6 @@ export class ClrCalendar extends AbstractPopover implements AfterViewInit, OnDes
 
     /**
      * Returns if the current view is that of the month picker
-     * @returns {boolean}
      */
     get isMonthView(): boolean {
         return this._calendarViewService.isMonthView;
@@ -101,7 +98,6 @@ export class ClrCalendar extends AbstractPopover implements AfterViewInit, OnDes
 
     /**
      * Returns if the current view is that of the year picker
-     * @returns {boolean}
      */
     get isYearView(): boolean {
         return this._calendarViewService.isYearView;
@@ -113,7 +109,6 @@ export class ClrCalendar extends AbstractPopover implements AfterViewInit, OnDes
 
     /**
      * Returns the month value of the calendar in the TranslationWidth.Abbreviated format.
-     * @returns {string}
      */
     get calendarMonth(): string {
         return this._dateUtilsService.getMonthAbbreviated(this._dateUtilsService.calendarMonth);
@@ -121,7 +116,6 @@ export class ClrCalendar extends AbstractPopover implements AfterViewInit, OnDes
 
     /**
      * Returns the year value of the calendar.
-     * @returns {number}
      */
     get calendarYear(): number {
         return this._dateUtilsService.calendarYear;
@@ -150,7 +144,6 @@ export class ClrCalendar extends AbstractPopover implements AfterViewInit, OnDes
 
     /**
      * Updates the selected date depending on the CalendarCell which was clicked.
-     * @param {CalendarCell} cell
      */
     setDate(cell: CalendarCell): void {
         const date: CalendarDate = cell.calendarDate;
@@ -169,7 +162,6 @@ export class ClrCalendar extends AbstractPopover implements AfterViewInit, OnDes
 
     /**
      * Handles the keyboard events when the user navigates using the arrow keys.
-     * @param {KeyboardEvent} event
      */
     onCalendarKeyDown(event: KeyboardEvent): void {
         if (event) {

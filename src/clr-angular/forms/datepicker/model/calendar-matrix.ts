@@ -47,10 +47,6 @@ export class CalendarMatrix {
     /**
      * Using the Calendar cells from the previous, current and next month, this function
      * generates the Calendar Matrix/Table which is used to render the current Calendar View.
-     * @param {CalendarCell[]} prev
-     * @param {CalendarCell[]} curr
-     * @param {CalendarCell[]} next
-     * @returns {CalendarCell[][]}
      */
     private convertCalendarCellsIntoMatrix(prev: CalendarCell[], curr: CalendarCell[], next: CalendarCell[]): void {
         const combinationArr: CalendarCell[] = [

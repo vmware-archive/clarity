@@ -60,8 +60,6 @@ export class DateUtilsService {
 
     /**
      * Updates the calendar month and year.
-     * @param {number} year
-     * @param {number} month
      */
     updateCalendar(year: number, month: number): void {
         if (this.calendarYear === year && this.calendarMonth === month) {
@@ -107,7 +105,6 @@ export class DateUtilsService {
      * Returns an array of days in the TranslationWidth.Narrow format factoring the
      * first day of the week.
      * Eg: [S, M, T, ...] for en-US
-     * @returns {ReadonlyArray<string>}
      */
     get localeDaysNarrow(): ReadonlyArray<string> {
         return this._localeDaysNarrow;
@@ -116,7 +113,6 @@ export class DateUtilsService {
     /**
      * Returns an array of month names in the TranslationWidth.Abbreviated format.
      * e.g. `[Jan, Feb, ...]` for en-US
-     * @returns {ReadonlyArray<string>}
      */
     get localeMonthsAbbreviated(): ReadonlyArray<string> {
         return getLocaleMonthNames(this.locale, FormStyle.Format, TranslationWidth.Abbreviated);
@@ -125,7 +121,6 @@ export class DateUtilsService {
     /**
      * Returns an array of month names in the TranslationWidth.Wide format.
      * e.g. `[January, February, ...]` for en-US
-     * @returns {ReadonlyArray<string>}
      */
     get localeMonthsWide(): ReadonlyArray<string> {
         return getLocaleMonthNames(this.locale, FormStyle.Format, TranslationWidth.Wide);
@@ -163,7 +158,6 @@ export class DateUtilsService {
 
     /**
      * Variable to store today's date.
-     * @type {Date}
      */
     todaysFullDate: Date = new Date();
 
@@ -176,7 +170,6 @@ export class DateUtilsService {
     /**
      * Returns the current date.
      * eg: 1, 2, 3, ... 31.
-     * @returns {number}
      */
     get currentDate(): number {
         return this.todaysFullDate.getDate();
@@ -185,7 +178,6 @@ export class DateUtilsService {
     /**
      * Returns the current month as a 0-based value.
      * eg: 0, 1, 2, ... 12.
-     * @returns {number}
      */
     get currentMonth(): number {
         return this.todaysFullDate.getMonth();
@@ -194,7 +186,6 @@ export class DateUtilsService {
     /**
      * Returns the current year.
      * eg: 2018
-     * @returns {number}
      */
     get currentYear(): number {
         return this.todaysFullDate.getFullYear();
@@ -254,7 +245,6 @@ export class DateUtilsService {
 
     /**
      * Returns the string value of the month in the TranslationWidth.Wide format
-     * @param {string} month
      */
     getMonthLong(month: number): string {
         return this.localeMonthsWide[month];
@@ -262,8 +252,6 @@ export class DateUtilsService {
 
     /**
      * Returns the string value of the month in the TranslationWidth.Abbreviated format
-     * @param {number} month
-     * @returns {string}
      */
     getMonthAbbreviated(month: number): string {
         return this.localeMonthsAbbreviated[month];
@@ -276,9 +264,6 @@ export class DateUtilsService {
      * if first day of the current month lands on Wednesday, then
      * (this.getDay function would return 3 since
      * first day of the week is 0), we need the 3 days from the previous month.
-     * @param {number} year
-     * @param {number} month
-     * @returns {number}
      */
     private noOfDaysFromPreviousMonthInCalendarView(year: number, month: number): number {
         const firstDayOfCurrMonth: number = getDay(year, month, 1);
@@ -293,10 +278,6 @@ export class DateUtilsService {
 
     /**
      * Generates the Calendar Cells required in the current view from the previous month.
-     * @param {number} year
-     * @param {number} month
-     * @param {number} noOfDays
-     * @returns {CalendarCell[]}
      */
     private generateCalendarCellsFromPreviousMonth(year: number, month: number, noOfDays: number): CalendarCell[] {
         const datesFromPrevMonthInCalendarView: number = this.noOfDaysFromPreviousMonthInCalendarView(year, month);
@@ -323,10 +304,6 @@ export class DateUtilsService {
 
     /**
      * Generates the Calendar Cells for the current month.
-     * @param {number} year
-     * @param {number} month
-     * @param {number} noOfDays
-     * @returns {CalendarCell[]}
      */
     private generateCalendarCellsFromCurrentMonth(year: number, month: number, noOfDays: number): CalendarCell[] {
         const datesinCurrentMonth: CalendarCell[]
@@ -356,10 +333,6 @@ export class DateUtilsService {
 
     /**
      * Generates the Calendar Cells required in the current view from the next month.
-     * @param {number} year
-     * @param {number} month
-     * @param {number} noOfDays
-     * @returns {CalendarCell[]}
      */
     private generateCalendarCellsFromNextMonth(year: number, month: number, noOfDays: number): CalendarCell[] {
         const nextMonth: CalendarView = getNextMonth(year, month);
@@ -388,9 +361,6 @@ export class DateUtilsService {
      * The 6x7 matrix is structured according to the first day of the week.
      * 6 rows to accommodate months which might have dates spanning over 6 weeks.
      * 7 columns because there are 7 days in a week :P :D
-     * @param {number} year
-     * @param {number} month
-     * @returns {CalendarCell[][]}
      */
     generateCalendarMatrix(year: number, month: number): void {
         const noOfDaysInPrevMonth: number = getNumberOfDaysInTheMonth(year, month - 1);
@@ -425,7 +395,6 @@ export class DateUtilsService {
 
     /**
      * Get the date that should be focusable initially in the calendar.
-     * @returns {CalendarDate}
      */
     private getFocusableCell(): CalendarDate {
         if (this.focusedDate) {

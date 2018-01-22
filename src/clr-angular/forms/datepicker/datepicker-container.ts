@@ -32,7 +32,6 @@ export class ClrDatepickerContainer {
 
     /**
      * Toggles the calendar.
-     * @param {MouseEvent} event
      */
     toggleCalendar(event: MouseEvent) {
         this._ifOpenService.toggleWithEvent(event);
@@ -40,7 +39,6 @@ export class ClrDatepickerContainer {
 
     /**
      * Returns if the calendar should be active or not.
-     * @returns {boolean}
      */
     get isActive(): boolean {
         return this._datepickerActiveService.active;

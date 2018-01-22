@@ -6,7 +6,7 @@
 
 import {
     ComponentFactory, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EventEmitter, HostBinding,
-    HostListener, Inject,
+    HostListener,
     OnDestroy,
     Optional, Output,
     ViewContainerRef
@@ -15,7 +15,7 @@ import {ClrDatepickerContainer} from "./datepicker-container";
 import {EmptyAnchor} from "../../utils/host-wrapping/empty-anchor";
 import {DateIOService} from "./providers/date-io.service";
 import {Subscription} from "rxjs/Subscription";
-import {ControlValueAccessor, DefaultValueAccessor, FormControl, NG_VALUE_ACCESSOR, NgModel} from "@angular/forms";
+import {NgModel} from "@angular/forms";
 
 @Directive({
     selector: "[clrDatepicker]",

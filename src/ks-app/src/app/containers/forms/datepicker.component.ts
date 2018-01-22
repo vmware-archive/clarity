@@ -12,7 +12,7 @@ import {Component} from "@angular/core";
 })
 export class KSDatepicker {
   buttonClick(): void {
-    console.log("Button Clicked");
+    console.log("Form Submitted");
   }
 
   datepickerOutput: string = "";

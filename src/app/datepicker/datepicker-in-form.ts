@@ -11,7 +11,6 @@ import {Component} from "@angular/core";
     styleUrls: ["./datepicker.demo.scss"],
     template: `
         <form class="form" #simpleForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="!isSubmitted">
-            {{simpleForm.value | json}}
             <div class="form-group">
                 <label for="date">Enter Date</label>
                 <input type="text" id="date" name="date" [(ngModel)]="date" clrDatepicker (clrDatepickerChange)="dateChanged($event)">
@@ -21,6 +20,9 @@ import {Component} from "@angular/core";
                 <input id="name" type="text" name="name" [(ngModel)]="name">
             </div>
             <button class="btn" (click)="buttonClick()" type="submit">Submit</button>
+            <p>
+                {{simpleForm.value | json}}
+            </p>
         </form>
         <div *ngIf="isSubmitted">
             <p>Date: {{date}}</p>

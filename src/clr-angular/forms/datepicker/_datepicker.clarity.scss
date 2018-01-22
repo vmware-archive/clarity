@@ -9,6 +9,12 @@ $clr-datepicker-trigger-hover-color: $clr-action-blue;
 $clr-calendar-margin-top: 0.25rem;
 $clr-calendar-padding: 0.5rem;
 
+$clr-calendar-width: (7 * $clr-calendar-click-target) + (2 * $clr-calendar-padding) + 0.083344;
+//(No of days in the week * 36px + 2 * 12px padding + 2px for border
+
+$clr-calendar-height: (8 * $clr-calendar-click-target) + (2 * $clr-calendar-padding) + 0.083344;
+//(8 = 6 date rows + 1 row for day heading + 1 row for calendar switches and month/year pickers)
+
 $clr-calendar-btn-color: $action-blues-light-midtone;
 $clr-calendar-btn-hover-focus-color: $gray-light;
 $clr-calendar-btn-padding: 0.25rem;
@@ -41,16 +47,18 @@ $clr-calendar-active-cell-color: $clr-white;
         border-radius: $clr-default-borderradius;
         background: none;
         cursor: pointer;
+}
 
-        &:hover,
-        &:focus {
-            background: $clr-calendar-btn-hover-focus-color;
-        }
+@mixin generate-calendar-focus-style() {
+    &:hover,
+    &:focus {
+        background: $clr-calendar-btn-hover-focus-color;
+    }
 
-        &:focus {
-            //Only because we have defined a background color for focus above
-            outline: 0;
-        }
+    &:focus {
+        //Only because we have defined a background color for focus above
+        outline: 0;
+    }
 }
 
 
@@ -63,16 +71,9 @@ $clr-calendar-active-cell-color: $clr-white;
     }
 
     .datepicker-trigger {
-        //Dimensions
-        height: $clr-calendar-click-target;
-        width: $clr-calendar-click-target;
-        padding: 0;
+        @include generate-calendar-button();
 
         //Other Props
-        background: none;
-        border: none;
-        cursor: pointer;
-
         &:hover clr-icon {
             fill: $clr-datepicker-trigger-hover-color;
         }
@@ -85,8 +86,8 @@ $clr-calendar-active-cell-color: $clr-white;
         //Dimensions
         padding: $clr-calendar-padding;
         margin-top: $clr-calendar-margin-top;
-        width: 278px;
-        height: 314px;
+        width: $clr-calendar-width;
+        height: $clr-calendar-height;
 
         //Other Props
         background: $clr-calendar-background-color;
@@ -146,6 +147,7 @@ $clr-calendar-active-cell-color: $clr-white;
 
     .calendar-btn {
         @include generate-calendar-button();
+        @include generate-calendar-focus-style();
 
         //Other Props
         color: $clr-calendar-btn-color;
@@ -155,6 +157,7 @@ $clr-calendar-active-cell-color: $clr-white;
 
     .date {
         @include generate-calendar-button($padding: 0);
+        @include generate-calendar-focus-style();
 
         //Dimensions
         width: 100%;
@@ -218,6 +221,8 @@ $clr-calendar-active-cell-color: $clr-white;
     .month,
     .year {
         @include generate-calendar-button($clr-calendar-month-cell-height, $clr-calendar-month-cell-padding);
+        @include generate-calendar-focus-style();
+
         //Dimensions
         width: 126px;
 

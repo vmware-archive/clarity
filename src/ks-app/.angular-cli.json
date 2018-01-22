@@ -20,7 +20,7 @@
       "prefix": "KS",
       "styles": [
         "../node_modules/@clr/icons/clr-icons.min.css",
-        "../node_modules/@clr/ui/clr-ui-dark.min.css",
+        "../node_modules/@clr/ui/clr-ui.min.css",
         "../node_modules/prismjs/themes/prism-solarizedlight.css",
         "styles.scss"
       ],

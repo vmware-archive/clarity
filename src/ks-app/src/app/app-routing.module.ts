@@ -44,6 +44,7 @@ import {KSSpinners} from "./containers/spinners/spinners.component";
 import {KSTables} from "./containers/tables/tables.component";
 import {KSTypography} from "./containers/typography/typography.component";
 import {KSWizards} from "./containers/wizard/wizards.component";
+import {KSDatepicker} from "./containers/forms/datepicker.component";
 
 export const routes: Routes = [
     {path: "", redirectTo: "alerts", pathMatch: "full"},
@@ -61,6 +62,7 @@ export const routes: Routes = [
     {path: "login", component: KSLogin, data: {state: "login"}},
     {path: "checkboxes", component: KSCheckboxes, data: {state: "checkboxes"}},
     {path: "forms", component: KSForms, data: {state: "forms"}},
+    {path: "datepicker", component: KSDatepicker, data: {state: "datepicker"}},
     {path: "inputs", component: KSInputs, data: {state: "inputs"}},
     {path: "radios", component: KSRadios, data: {state: "radios"}},
     {path: "selects", component: KSSelects, data: {state: "selects"}},

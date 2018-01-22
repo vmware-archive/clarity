@@ -63,6 +63,7 @@ import {KSSpinners} from "./containers/spinners/spinners.component";
 import {KSTables} from "./containers/tables/tables.component";
 import {KSTypography} from "./containers/typography/typography.component";
 import {KSWizards} from "./containers/wizard/wizards.component";
+import {KSDatepicker} from "./containers/forms/datepicker.component";
 
 @NgModule({
     declarations: [
@@ -76,7 +77,7 @@ import {KSWizards} from "./containers/wizard/wizards.component";
         KSLogin,        KSWikipediaDemo,  KSAbbeyRoadDemo, KSBeatlesDemo,
         KSRevolverDemo, KSRubberSoulDemo, KSDayAndAgeDemo, KSSamsTownDemo,
         KSKillersDemo,  KSHotFussDemo,    KSProgressBars,  KSSpinners,
-        KSTables,       KSTooltips
+        KSTables,       KSTooltips,       KSDatepicker
     ],
     imports:
         [BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, ClarityModule, AppRoutingModule],

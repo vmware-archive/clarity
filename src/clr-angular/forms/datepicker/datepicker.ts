@@ -18,7 +18,8 @@ import {Subscription} from "rxjs/Subscription";
 import {ControlValueAccessor, DefaultValueAccessor, FormControl, NG_VALUE_ACCESSOR, NgModel} from "@angular/forms";
 
 @Directive({
-    selector: "[clrDatepicker]"
+    selector: "[clrDatepicker]",
+    host: {"[class.datepicker]": "true"}
 })
 export class ClrDatepicker implements OnDestroy {
 

@@ -111,7 +111,8 @@
             & > button,
             & > a,
             & > #{$styledInputs1},
-            & > .btn {
+            & > .btn,
+            & > .datepicker-container {
                 flex: 0 1 auto;
                 margin-left: 0;
                 margin-right: 0.5rem;
@@ -201,7 +202,8 @@
                 .checkbox,
                 .radio,
                 .checkbox-inline,
-                .radio-inline {
+                .radio-inline,
+                .datepicker-container {
                     flex: 1 1 100%;
                 }
 

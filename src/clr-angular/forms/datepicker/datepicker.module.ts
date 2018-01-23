@@ -8,7 +8,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule, Type} from "@angular/core";
 import {ClrHostWrappingModule} from "../../utils/host-wrapping/host-wrapping.module";
 import {ClrConditionalModule} from "../../utils/conditional/conditional.module";
-import {ClrIconModule} from "../../icon";
+import {ClrIconModule} from "../../icon/icon.module";
 import {ClrFocusTrapModule} from "../../utils/focus-trap/focus-trap.module";
 import {ClrDatepicker} from "./datepicker";
 import {ClrDatepickerContainer} from "./datepicker-container";

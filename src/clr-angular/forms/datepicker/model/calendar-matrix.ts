@@ -21,10 +21,17 @@ export class CalendarMatrix {
 
     private _matrix: CalendarCell[][];
 
+    /**
+     * CalendarCell matrix. Size 6x7
+     * @returns {CalendarCell[][]}
+     */
     get matrix(): CalendarCell[][] {
         return this._matrix;
     }
 
+    /**
+     * Checks if the CalendarDate passed is in the CalendarMatrix.
+     */
     isDateInMatrix(calDate: CalendarDate): boolean {
         if (!this.calendarView.inCalendarView(calDate)) {
             return false;
@@ -32,12 +39,18 @@ export class CalendarMatrix {
         return true;
     }
 
+    /**
+     * If the CalendarDate exists in the matrix, sets its active flag
+     */
     setDateActiveFlag(calDate: CalendarDate, flag: boolean): void {
         if (this.isDateInMatrix(calDate)) {
             this.current[calDate.date - 1].isActive = flag;
         }
     }
 
+    /**
+     * If the CalendarDate exists in the matrix, sets its focusable flag
+     */
     setDateFocusableFlag(calDate: CalendarDate, flag: boolean): void {
         if (this.isDateInMatrix(calDate)) {
             this.current[calDate.date - 1].isFocusable = flag;

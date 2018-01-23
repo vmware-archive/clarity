@@ -32,7 +32,7 @@ export class ClrMonthPicker {
         private _elRef: ElementRef
     ) {
         this._focusedMonth = this._dateUtilsService.calendarMonth;
-        //this._calendarViewService.focusCell(this._elRef);
+        this._calendarViewService.focusCell(this._elRef);
     }
 
     /**

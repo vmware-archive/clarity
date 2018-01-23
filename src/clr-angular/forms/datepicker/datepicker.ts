@@ -37,8 +37,8 @@ export class ClrDatepicker implements OnDestroy {
         if (!container) {
             const compRef: ComponentRef<ClrDatepickerContainer> = this.wrapContainer();
             this.populateContainerServices(compRef);
-            this.initializeSubscriptions();
         }
+        this.initializeSubscriptions();
     }
 
     /**
@@ -69,17 +69,19 @@ export class ClrDatepicker implements OnDestroy {
      * Initialize DateIO Subscriptions
      */
     private initializeSubscriptions(): void {
-        this._subscriptions.push(this._dateIOService.dateChanged.subscribe((dateStr) => {
-            this.elRef.nativeElement.value = dateStr;
-            //This makes sure that ngModelChange is fired
-            //TODO: Check if there is a better way to do this.
-            if (this._ngModel) {
-                this._ngModel.control.setValue(dateStr);
-            }
-        }));
-        this._subscriptions.push(this._dateIOService.dateValidated.subscribe((date) => {
-            this._dateUpdated.emit(date);
-        }));
+        if (this._dateIOService) {
+            this._subscriptions.push(this._dateIOService.dateChanged.subscribe((dateStr) => {
+                this.elRef.nativeElement.value = dateStr;
+                //This makes sure that ngModelChange is fired
+                //TODO: Check if there is a better way to do this.
+                if (this._ngModel) {
+                    this._ngModel.control.setValue(dateStr);
+                }
+            }));
+            this._subscriptions.push(this._dateIOService.dateValidated.subscribe((date) => {
+                this._dateUpdated.emit(date);
+            }));
+        }
     }
 
     @HostBinding("attr.placeholder")

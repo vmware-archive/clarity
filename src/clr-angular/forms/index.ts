@@ -5,3 +5,4 @@
  */
 export * from "./checkbox/index";
 export * from "./forms.module";
+export * from "./datepicker/index";

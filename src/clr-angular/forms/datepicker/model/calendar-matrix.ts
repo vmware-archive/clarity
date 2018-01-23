@@ -23,7 +23,6 @@ export class CalendarMatrix {
 
     /**
      * CalendarCell matrix. Size 6x7
-     * @returns {CalendarCell[][]}
      */
     get matrix(): CalendarCell[][] {
         return this._matrix;

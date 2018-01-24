@@ -35,7 +35,7 @@ export class DateIOService {
         this._inputDate = value;
         const date: Date = this.processInput();
         if (date) {
-            this._dateValidated.next(date);
+            this._dateUpdated.next(date);
         }
     }
 
@@ -242,19 +242,19 @@ export class DateIOService {
         }
     }
 
-    private _dateChanged: Subject<string> = new Subject<string>();
+    private _dateStrUpdated: Subject<string> = new Subject<string>();
 
     /**
      * Observable to let the subscribers know that the date has been updated.
      */
-    get dateChanged(): Observable<string> {
-        return this._dateChanged.asObservable();
+    get dateStrUpdated(): Observable<string> {
+        return this._dateStrUpdated.asObservable();
     }
 
-    private _dateValidated: Subject<Date> = new Subject<Date>();
+    private _dateUpdated: Subject<Date> = new Subject<Date>();
 
-    get dateValidated(): Observable<Date> {
-        return this._dateValidated.asObservable();
+    get dateUpdated(): Observable<Date> {
+        return this._dateUpdated.asObservable();
     }
 
     /**
@@ -262,6 +262,6 @@ export class DateIOService {
      */
     updateDate(date: Date) {
         this.inputDate = this.toLocaleDisplayFormatString(date);
-        this._dateChanged.next(this.inputDate);
+        this._dateStrUpdated.next(this.inputDate);
     }
 }

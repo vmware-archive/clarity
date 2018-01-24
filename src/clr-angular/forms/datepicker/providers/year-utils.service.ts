@@ -10,7 +10,6 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class YearUtilsService {
-
     private _startYear: number;
 
     private _years: number[];
@@ -38,8 +37,8 @@ export class YearUtilsService {
      */
     generateYearRange(year: number): number[] {
         const remainder: number = year % NO_YEAR_IN_VIEW;
-        let floor: number = year - remainder;
-        let ceil: number = floor + NO_YEAR_IN_VIEW;
+        const floor: number = year - remainder;
+        const ceil: number = floor + NO_YEAR_IN_VIEW;
         const arr: number[] = this.generateRange(floor, ceil);
         return arr;
     }

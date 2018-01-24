@@ -4,14 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {CalendarView} from "./calendar-view";
 import {CalendarDate} from "./calendar-date";
+import {CalendarView} from "./calendar-view";
 
 export default function(): void {
     describe("Calendar View", function() {
-        let calendarView: CalendarView = new CalendarView(2018, 5);
-        let calendarDate1: CalendarDate = new CalendarDate(2018, 5, 25);
-        let calendarDate2: CalendarDate = new CalendarDate(2018, 1, 25);
+        const calendarView: CalendarView = new CalendarView(2018, 5);
+        const calendarDate1: CalendarDate = new CalendarDate(2018, 5, 25);
+        const calendarDate2: CalendarDate = new CalendarDate(2018, 1, 25);
 
         it("checks if the passed CalendarDate is in the CalendarView or not", () => {
             expect(calendarView.year).toBe(2018);
@@ -19,6 +19,6 @@ export default function(): void {
 
             expect(calendarView.inCalendarView(calendarDate1)).toBe(true);
             expect(calendarView.inCalendarView(calendarDate2)).toBe(false);
-        })
+        });
     });
 }

@@ -5,17 +5,19 @@
  */
 
 import {AfterViewInit, Component, ElementRef, Injector, OnDestroy, SkipSelf} from "@angular/core";
+import {Subscription} from "rxjs/Subscription";
+
 import {AbstractPopover} from "../../popover/common/abstract-popover";
 import {Point} from "../../popover/common/popover";
-import {DateUtilsService} from "./providers/date-utils.service";
-import {CalendarViewService} from "./providers/calendar-view.service";
-import {CalendarCell} from "./model/calendar-cell";
-import {DateIOService} from "./providers/date-io.service";
-import {CalendarDate} from "./model/calendar-date";
-import {CalendarMatrix} from "./model/calendar-matrix";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW} from "../../utils/key-codes/key-codes";
-import {Subscription} from "rxjs/Subscription";
+
+import {CalendarCell} from "./model/calendar-cell";
+import {CalendarDate} from "./model/calendar-date";
+import {CalendarMatrix} from "./model/calendar-matrix";
+import {CalendarViewService} from "./providers/calendar-view.service";
+import {DateIOService} from "./providers/date-io.service";
+import {DateUtilsService} from "./providers/date-utils.service";
 
 @Component({
     selector: "clr-calendar",
@@ -26,32 +28,25 @@ import {Subscription} from "rxjs/Subscription";
     providers: [DateUtilsService, CalendarViewService]
 })
 export class ClrCalendar extends AbstractPopover implements AfterViewInit, OnDestroy {
-
     private _sub: Subscription;
 
-    constructor(
-        @SkipSelf() parent: ElementRef,
-        private _injector: Injector,
-        private _elRef: ElementRef,
-        private _dateUtilsService: DateUtilsService,
-        private _dateIOService: DateIOService,
-        private _calendarViewService: CalendarViewService,
-        private _ifOpenService: IfOpenService
-    ) {
+    constructor(@SkipSelf() parent: ElementRef, private _injector: Injector, private _elRef: ElementRef,
+                private _dateUtilsService: DateUtilsService, private _dateIOService: DateIOService,
+                private _calendarViewService: CalendarViewService, private _ifOpenService: IfOpenService) {
         super(_injector, parent);
         this.configurePopover();
         this.processInput();
         this._dateUtilsService.initializeCalendar();
         this._sub = this._dateUtilsService.focusCellChanged.subscribe(() => {
-           this._calendarViewService.focusCell(this._elRef);
+            this._calendarViewService.focusCell(this._elRef);
         });
     }
 
     private processInput(): void {
         const inputDate: Date = this._dateIOService.processInput();
         if (inputDate) {
-            const calDate: CalendarDate
-                = new CalendarDate(inputDate.getFullYear(), inputDate.getMonth(), inputDate.getDate());
+            const calDate: CalendarDate =
+                new CalendarDate(inputDate.getFullYear(), inputDate.getMonth(), inputDate.getDate());
             this._dateUtilsService.selectedDate = calDate;
         }
     }
@@ -165,7 +160,7 @@ export class ClrCalendar extends AbstractPopover implements AfterViewInit, OnDes
      */
     onCalendarKeyDown(event: KeyboardEvent): void {
         if (event) {
-            switch(event.keyCode) {
+            switch (event.keyCode) {
                 case UP_ARROW:
                     event.preventDefault();
                     this.incrementDateAndFocus(-7);
@@ -183,7 +178,7 @@ export class ClrCalendar extends AbstractPopover implements AfterViewInit, OnDes
                     this.incrementDateAndFocus(1);
                     break;
                 default:
-                    break; //No default case. TSLint x-(
+                    break;  // No default case. TSLint x-(
             }
         }
     }

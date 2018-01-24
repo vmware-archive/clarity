@@ -4,10 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ElementRef, HostListener} from "@angular/core";
-import {DateUtilsService} from "./providers/date-utils.service";
-import {CalendarViewService} from "./providers/calendar-view.service";
-import {YearUtilsService} from "./providers/year-utils.service";
+
 import {DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW} from "../../utils/key-codes/key-codes";
+
+import {CalendarViewService} from "./providers/calendar-view.service";
+import {DateUtilsService} from "./providers/date-utils.service";
+import {YearUtilsService} from "./providers/year-utils.service";
 
 @Component({
     selector: "clr-yearpicker",
@@ -42,12 +44,8 @@ import {DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW} from "../../utils/key-cod
     }
 })
 export class ClrYearPicker {
-    constructor(
-        private _dateUtilsService: DateUtilsService,
-        private _calendarViewService: CalendarViewService,
-        private _yearUtilsService: YearUtilsService,
-        private _elRef: ElementRef
-    ) {
+    constructor(private _dateUtilsService: DateUtilsService, private _calendarViewService: CalendarViewService,
+                private _yearUtilsService: YearUtilsService, private _elRef: ElementRef) {
         this.focusedYear = this.calendarYear;
         this._yearUtilsService.initializeYearPicker(this.calendarYear);
         this._calendarViewService.focusCell(this._elRef);
@@ -81,7 +79,7 @@ export class ClrYearPicker {
      */
     changeYear(year: number): void {
         this._dateUtilsService.updateCalendar(year, this._dateUtilsService.calendarMonth);
-        //Disable Yearpicker
+        // Disable Yearpicker
         this._calendarViewService.isYearView = false;
     }
 

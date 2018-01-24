@@ -7,15 +7,14 @@ import {ModuleWithProviders} from "@angular/core/src/metadata/ng_module";
 import {RouterModule, Routes} from "@angular/router";
 
 import {BasicDatepickerDemo} from "./basic-datepicker";
-import {DatepickerDemo} from "./datepicker.demo";
 import {DatepickerInFormDemo} from "./datepicker-in-form";
+import {DatepickerDemo} from "./datepicker.demo";
 
 const ROUTES: Routes = [{
     path: "",
     component: DatepickerDemo,
     children: [
-        {path: "", redirectTo: "basic", pathMatch: "full"},
-        {path: "basic", component: BasicDatepickerDemo},
+        {path: "", redirectTo: "basic", pathMatch: "full"}, {path: "basic", component: BasicDatepickerDemo},
         {path: "forms", component: DatepickerInFormDemo}
     ]
 }];

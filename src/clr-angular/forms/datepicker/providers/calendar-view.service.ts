@@ -9,7 +9,6 @@ import {first} from "rxjs/operator/first";
 
 @Injectable()
 export class CalendarViewService {
-
     constructor(private _ngZone: NgZone) {}
 
     private _isMonthView: boolean = false;
@@ -36,11 +35,11 @@ export class CalendarViewService {
         }
     }
 
-    //Credit: Material: https://github.com/angular/material2/blob/master/src/lib/datepicker/calendar.ts
+    // Credit: Material: https://github.com/angular/material2/blob/master/src/lib/datepicker/calendar.ts
     focusCell(elRef: ElementRef): void {
         this._ngZone.runOutsideAngular(() => {
             first.call(this._ngZone.onStable.asObservable()).subscribe(() => {
-                const focusEl = elRef.nativeElement.querySelector('[tabindex="0"]');
+                const focusEl = elRef.nativeElement.querySelector("[tabindex=\"0\"]");
                 if (focusEl) {
                     focusEl.focus();
                 }

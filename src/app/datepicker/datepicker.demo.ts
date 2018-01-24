@@ -3,14 +3,13 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
-
-import { registerLocaleData } from '@angular/common';
-import localeFr from '@angular/common/locales/fr';
-import localeRu from "@angular/common/locales/ru";
+import {registerLocaleData} from "@angular/common";
 import localeAk from "@angular/common/locales/ak";
-import localeHi from "@angular/common/locales/hi";
 import localeAr from "@angular/common/locales/ar-AE";
+import localeFr from "@angular/common/locales/fr";
+import localeHi from "@angular/common/locales/hi";
+import localeRu from "@angular/common/locales/ru";
+import {Component} from "@angular/core";
 
 registerLocaleData(localeFr);
 registerLocaleData(localeRu);
@@ -24,5 +23,4 @@ registerLocaleData(localeAr);
     styleUrls: ["./datepicker.demo.scss"],
     templateUrl: "./datepicker.demo.html"
 })
-export class DatepickerDemo {
-}
+export class DatepickerDemo {}

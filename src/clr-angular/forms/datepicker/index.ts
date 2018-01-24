@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-//Module
+// Module
 export * from "./datepicker.module";
 
-//Components
+// Components
 export * from "./datepicker";
 export * from "./datepicker-container";
 export * from "./calendar";

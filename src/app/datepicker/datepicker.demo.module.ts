@@ -5,18 +5,18 @@
  */
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
+import {FormsModule} from "@angular/forms";
+
+import {ClarityModule} from "../../clr-angular";
 
 import {BasicDatepickerDemo} from "./basic-datepicker";
-import {ROUTING} from "./datepicker.demo.routing";
-import {DatepickerDemo} from "./datepicker.demo";
-import {ClarityModule} from "../../clr-angular";
-import {FormsModule} from "@angular/forms";
 import {DatepickerInFormDemo} from "./datepicker-in-form";
+import {DatepickerDemo} from "./datepicker.demo";
+import {ROUTING} from "./datepicker.demo.routing";
 
 @NgModule({
     imports: [CommonModule, ClarityModule, ROUTING, FormsModule],
     declarations: [DatepickerDemo, BasicDatepickerDemo, DatepickerInFormDemo],
     exports: [DatepickerDemo, BasicDatepickerDemo, DatepickerInFormDemo]
 })
-export default class DatepickerDemoModule {
-}
+export default class DatepickerDemoModule {}

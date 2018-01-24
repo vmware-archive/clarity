@@ -6,38 +6,38 @@
 import {Component} from "@angular/core";
 
 @Component({
-  selector: "clr-datepicker-in-forn-demo",
-  // Note the .css extension here, not .scss. That's the best we can have at the moment.
-  templateUrl: "./datepicker.component.html"
+    selector: "clr-datepicker-in-forn-demo",
+    // Note the .css extension here, not .scss. That's the best we can have at the moment.
+    templateUrl: "./datepicker.component.html"
 })
 export class KSDatepicker {
-  buttonClick(): void {
-    console.log("Form Submitted");
-  }
+    buttonClick(): void {
+        console.log("Form Submitted");
+    }
 
-  datepickerOutput: string = "";
+    datepickerOutput: string = "";
 
-  isSubmitted: boolean = false;
+    isSubmitted: boolean = false;
 
-  onSubmit(): void {
-    console.log("Submitting");
-    this.isSubmitted = true;
-  }
+    onSubmit(): void {
+        console.log("Submitting");
+        this.isSubmitted = true;
+    }
 
-  date: string = "";
+    date: string = "";
 
-  name: string = "";
+    name: string = "";
 
-  reset(): void {
-    this.isSubmitted = false;
-    this.date = "";
-    this.name = "";
-  }
+    reset(): void {
+        this.isSubmitted = false;
+        this.date = "";
+        this.name = "";
+    }
 
-  dateChanged(date: Date): void {
-    this.datepickerOutput = date.toLocaleDateString();
-    setTimeout(() => {
-      this.datepickerOutput = "";
-    }, 2000);
-  }
+    dateChanged(date: Date): void {
+        this.datepickerOutput = date.toLocaleDateString();
+        setTimeout(() => {
+            this.datepickerOutput = "";
+        }, 2000);
+    }
 }

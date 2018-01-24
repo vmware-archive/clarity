@@ -11,10 +11,10 @@ import {CalendarView} from "../model/calendar-view";
  * Returns the number of days in a month.
  */
 export function getNumberOfDaysInTheMonth(year: number, month: number): number {
-    //month + 1 because we want to go to the next month
-    //date 0 because date is 1 based and 0 means we are getting the last date of the previous month.
-    //confusing but works
-    return (new Date(year,  month + 1, 0)).getDate();
+    // month + 1 because we want to go to the next month
+    // date 0 because date is 1 based and 0 means we are getting the last date of the previous month.
+    // confusing but works
+    return (new Date(year, month + 1, 0)).getDate();
 }
 
 /**

@@ -21,8 +21,8 @@ export class DatepickerActiveService {
      * then the calendar is inactive.
      */
     get active(): boolean {
-        //https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent
-        //What they recommend is:
+        // https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent
+        // What they recommend is:
         //"In summary, we recommend looking for the string 'Mobi'
         // anywhere in the User Agent to detect a mobile device."
         if (window) {

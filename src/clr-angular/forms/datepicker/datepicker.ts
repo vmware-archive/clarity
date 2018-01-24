@@ -5,35 +5,37 @@
  */
 
 import {
-    ComponentFactory, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EventEmitter, HostBinding,
+    ComponentFactory,
+    ComponentFactoryResolver,
+    ComponentRef,
+    Directive,
+    ElementRef,
+    EventEmitter,
+    HostBinding,
     HostListener,
     OnDestroy,
-    Optional, Output,
+    Optional,
+    Output,
     ViewContainerRef
 } from "@angular/core";
-import {ClrDatepickerContainer} from "./datepicker-container";
-import {EmptyAnchor} from "../../utils/host-wrapping/empty-anchor";
-import {DateIOService} from "./providers/date-io.service";
-import {Subscription} from "rxjs/Subscription";
 import {NgModel} from "@angular/forms";
+import {Subscription} from "rxjs/Subscription";
+
+import {EmptyAnchor} from "../../utils/host-wrapping/empty-anchor";
+
+import {ClrDatepickerContainer} from "./datepicker-container";
+import {DateIOService} from "./providers/date-io.service";
 import {DatepickerActiveService} from "./providers/datepicker-active.service";
 
-@Directive({
-    selector: "[clrDatepicker]",
-    host: {"[class.datepicker]": "true"}
-})
+@Directive({selector: "[clrDatepicker]", host: {"[class.datepicker]": "true"}})
 export class ClrDatepicker implements OnDestroy {
-
     /**
      * Subscriptions to all the services and queries changes
      */
     private _subscriptions: Subscription[] = [];
 
-    constructor(@Optional() private container: ClrDatepickerContainer,
-                private vcr: ViewContainerRef,
-                private elRef: ElementRef,
-                private cfr: ComponentFactoryResolver,
-                @Optional() private _ngModel: NgModel,
+    constructor(@Optional() private container: ClrDatepickerContainer, private vcr: ViewContainerRef,
+                private elRef: ElementRef, private cfr: ComponentFactoryResolver, @Optional() private _ngModel: NgModel,
                 @Optional() private _dateIOService: DateIOService,
                 @Optional() private _datepickerActiveService: DatepickerActiveService) {
         if (!container) {
@@ -49,12 +51,10 @@ export class ClrDatepicker implements OnDestroy {
     private wrapContainer(): ComponentRef<ClrDatepickerContainer> {
         // We need a new anchor, since we're projecting the current one.
         this.vcr.createComponent(this.cfr.resolveComponentFactory(EmptyAnchor));
-        const factory: ComponentFactory<ClrDatepickerContainer>
-            = this.cfr.resolveComponentFactory(ClrDatepickerContainer);
-        const componentRef: ComponentRef<ClrDatepickerContainer>
-            = this.vcr.createComponent(
-            factory, undefined, undefined, [[this.elRef.nativeElement]]
-        );
+        const factory: ComponentFactory<ClrDatepickerContainer> =
+            this.cfr.resolveComponentFactory(ClrDatepickerContainer);
+        const componentRef: ComponentRef<ClrDatepickerContainer> =
+            this.vcr.createComponent(factory, undefined, undefined, [[this.elRef.nativeElement]]);
         // We can now remove the useless anchor
         this.vcr.remove(0);
         return componentRef;
@@ -75,8 +75,8 @@ export class ClrDatepicker implements OnDestroy {
         if (this._dateIOService) {
             this._subscriptions.push(this._dateIOService.dateChanged.subscribe((dateStr) => {
                 this.elRef.nativeElement.value = dateStr;
-                //This makes sure that ngModelChange is fired
-                //TODO: Check if there is a better way to do this.
+                // This makes sure that ngModelChange is fired
+                // TODO: Check if there is a better way to do this.
                 if (this._ngModel) {
                     this._ngModel.control.setValue(dateStr);
                 }
@@ -92,7 +92,7 @@ export class ClrDatepicker implements OnDestroy {
         return this._dateIOService.placeholderText;
     }
 
-    @HostListener("change", ['$event.target'])
+    @HostListener("change", ["$event.target"])
     onValueChange(target: HTMLInputElement) {
         const value: string = target.value;
         if (value) {

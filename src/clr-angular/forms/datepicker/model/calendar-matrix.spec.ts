@@ -4,13 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {CalendarDate} from "./calendar-date";
 import {CalendarCell} from "./calendar-cell";
+import {CalendarDate} from "./calendar-date";
 import {CalendarMatrix} from "./calendar-matrix";
 import {CalendarView} from "./calendar-view";
 
-export default function (): void {
-    describe("Calendar Matrix", function () {
+export default function(): void {
+    describe("Calendar Matrix", function() {
         let calendarMatrix: CalendarMatrix;
         let calendarView: CalendarView;
         let prev: CalendarCell[];
@@ -18,13 +18,13 @@ export default function (): void {
         let next: CalendarCell[];
 
         beforeEach(() => {
-            //Generating the month of January in 2018 manually.
+            // Generating the month of January in 2018 manually.
             prev = generateCalendarCells(2017, 11, 31, 31, true);
             curr = generateCalendarCells(2018, 0, 1, 31, false);
             next = generateCalendarCells(2018, 1, 1, 10, true);
             calendarView = new CalendarView(2018, 0);
 
-            //Generating the calendar matrix using the manually generated data.
+            // Generating the calendar matrix using the manually generated data.
             calendarMatrix = new CalendarMatrix(prev, curr, next, calendarView);
         });
 
@@ -48,9 +48,9 @@ export default function (): void {
         });
 
         it("sets the active flag for dates in the CalendarView", () => {
-            let calendarDate: CalendarDate = new CalendarDate(2018, 0 , 1);
+            const calendarDate: CalendarDate = new CalendarDate(2018, 0, 1);
             calendarMatrix.setDateActiveFlag(calendarDate, true);
-            let matrix: CalendarCell[][] = calendarMatrix.matrix;
+            const matrix: CalendarCell[][] = calendarMatrix.matrix;
 
             for (let i = 0; i < 6; i++) {
                 for (let j = 0; j < 7; j++) {
@@ -64,9 +64,9 @@ export default function (): void {
         });
 
         it("doesn't set the active flag for dates in the CalendarView", () => {
-            let calendarDate: CalendarDate = new CalendarDate(2018, 1 , 1);
+            const calendarDate: CalendarDate = new CalendarDate(2018, 1, 1);
             calendarMatrix.setDateActiveFlag(calendarDate, true);
-            let matrix: CalendarCell[][] = calendarMatrix.matrix;
+            const matrix: CalendarCell[][] = calendarMatrix.matrix;
 
             for (let i = 0; i < 6; i++) {
                 for (let j = 0; j < 7; j++) {
@@ -76,9 +76,9 @@ export default function (): void {
         });
 
         it("sets the focusable flag for dates in the CalendarView", () => {
-            let calendarDate: CalendarDate = new CalendarDate(2018, 0 , 1);
+            const calendarDate: CalendarDate = new CalendarDate(2018, 0, 1);
             calendarMatrix.setDateFocusableFlag(calendarDate, true);
-            let matrix: CalendarCell[][] = calendarMatrix.matrix;
+            const matrix: CalendarCell[][] = calendarMatrix.matrix;
 
             for (let i = 0; i < 6; i++) {
                 for (let j = 0; j < 7; j++) {
@@ -92,9 +92,9 @@ export default function (): void {
         });
 
         it("doesn't set the active flag for dates in the CalendarView", () => {
-            let calendarDate: CalendarDate = new CalendarDate(2018, 1 , 1);
+            const calendarDate: CalendarDate = new CalendarDate(2018, 1, 1);
             calendarMatrix.setDateFocusableFlag(calendarDate, true);
-            let matrix: CalendarCell[][] = calendarMatrix.matrix;
+            const matrix: CalendarCell[][] = calendarMatrix.matrix;
 
             for (let i = 0; i < 6; i++) {
                 for (let j = 0; j < 7; j++) {
@@ -105,14 +105,13 @@ export default function (): void {
     });
 }
 
-function generateCalendarCells(year: number, month: number, from: number, to: number, disabled: boolean): CalendarCell[] {
-    let temp: CalendarCell[] = [];
+function generateCalendarCells(year: number, month: number, from: number, to: number,
+                               disabled: boolean): CalendarCell[] {
+    const temp: CalendarCell[] = [];
     for (let i = from; i <= to; i++) {
-        let calendarDate: CalendarDate = new CalendarDate(year, month, i);
-        let calendarCell: CalendarCell = new CalendarCell(calendarDate, false, disabled);
+        const calendarDate: CalendarDate = new CalendarDate(year, month, i);
+        const calendarCell: CalendarCell = new CalendarCell(calendarDate, false, disabled);
         temp.push(calendarCell);
     }
     return temp;
 }
-
-

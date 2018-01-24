@@ -7,10 +7,7 @@
 import {CalendarDate} from "./calendar-date";
 
 export class CalendarView {
-    constructor(
-        public year: number,
-        public month: number) {
-    }
+    constructor(public year: number, public month: number) {}
 
     inCalendarView(calDate: CalendarDate): boolean {
         return (this.year === calDate.year && this.month === calDate.month);

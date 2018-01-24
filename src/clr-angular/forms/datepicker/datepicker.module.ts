@@ -6,32 +6,23 @@
 
 import {CommonModule} from "@angular/common";
 import {NgModule, Type} from "@angular/core";
-import {ClrHostWrappingModule} from "../../utils/host-wrapping/host-wrapping.module";
-import {ClrConditionalModule} from "../../utils/conditional/conditional.module";
+
 import {ClrIconModule} from "../../icon/icon.module";
+import {ClrConditionalModule} from "../../utils/conditional/conditional.module";
 import {ClrFocusTrapModule} from "../../utils/focus-trap/focus-trap.module";
+import {ClrHostWrappingModule} from "../../utils/host-wrapping/host-wrapping.module";
+
+import {ClrCalendar} from "./calendar";
 import {ClrDatepicker} from "./datepicker";
 import {ClrDatepickerContainer} from "./datepicker-container";
-import {ClrCalendar} from "./calendar";
 import {ClrMonthPicker} from "./monthpicker";
 import {ClrYearPicker} from "./yearpicker";
 
-export const CLR_DATEPICKER_DIRECTIVES: Type<any>[] = [
-    ClrDatepickerContainer,
-    ClrDatepicker,
-    ClrCalendar,
-    ClrMonthPicker,
-    ClrYearPicker
-];
+export const CLR_DATEPICKER_DIRECTIVES: Type<any>[] =
+    [ClrDatepickerContainer, ClrDatepicker, ClrCalendar, ClrMonthPicker, ClrYearPicker];
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ClrHostWrappingModule,
-        ClrConditionalModule,
-        ClrIconModule,
-        ClrFocusTrapModule
-    ],
+    imports: [CommonModule, ClrHostWrappingModule, ClrConditionalModule, ClrIconModule, ClrFocusTrapModule],
     declarations: [CLR_DATEPICKER_DIRECTIVES],
     exports: [CLR_DATEPICKER_DIRECTIVES],
     entryComponents: [ClrDatepickerContainer]

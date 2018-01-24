@@ -5,19 +5,14 @@
  */
 
 export class CalendarDate {
-    constructor(public year: number,
-                public month: number,
-                public date: number) {
-    }
+    constructor(public year: number, public month: number, public date: number) {}
 
     /**
      * Checks if the passed CalendarDate is equal to itself.
      */
     isEqual(calDate: CalendarDate) {
         if (calDate) {
-            return ((this.year === calDate.year)
-                && (this.month === calDate.month)
-                && (this.date === calDate.date));
+            return ((this.year === calDate.year) && (this.month === calDate.month) && (this.date === calDate.date));
         }
         return false;
     }

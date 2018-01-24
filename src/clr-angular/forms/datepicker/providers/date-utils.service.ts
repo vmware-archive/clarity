@@ -4,18 +4,23 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Inject, Injectable, LOCALE_ID} from "@angular/core";
 import {
-    FormStyle, getLocaleDayNames, getLocaleFirstDayOfWeek, getLocaleMonthNames, TranslationWidth
+    FormStyle,
+    getLocaleDayNames,
+    getLocaleFirstDayOfWeek,
+    getLocaleMonthNames,
+    TranslationWidth
 } from "@angular/common";
-import {CalendarCell} from "../model/calendar-cell";
-import {getDay, getNextMonth, getNumberOfDaysInTheMonth, getPreviousMonth} from "../utils/date-utils";
-import {CalendarDate} from "../model/calendar-date";
-import {CalendarView} from "../model/calendar-view";
-import {CalendarMatrix} from "../model/calendar-matrix";
-import {NO_OF_DAYS_IN_A_WEEK, TOTAL_DAYS_IN_DAYS_VIEW} from "../utils/constants";
+import {Inject, Injectable, LOCALE_ID} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
+
+import {CalendarCell} from "../model/calendar-cell";
+import {CalendarDate} from "../model/calendar-date";
+import {CalendarMatrix} from "../model/calendar-matrix";
+import {CalendarView} from "../model/calendar-view";
+import {NO_OF_DAYS_IN_A_WEEK, TOTAL_DAYS_IN_DAYS_VIEW} from "../utils/constants";
+import {getDay, getNextMonth, getNumberOfDaysInTheMonth, getPreviousMonth} from "../utils/date-utils";
 
 @Injectable()
 export class DateUtilsService {
@@ -44,11 +49,11 @@ export class DateUtilsService {
      * eg: [S, M, T...] for en-US.
      */
     private initializeLocaleDaysNarrow(): void {
-        //Get locale day names starting with Sunday
+        // Get locale day names starting with Sunday
         const tempArr: string[] = getLocaleDayNames(this.locale, FormStyle.Format, TranslationWidth.Narrow);
-        //Get first day of the week based on the locale
+        // Get first day of the week based on the locale
         const firstDayOfWeek: number = getLocaleFirstDayOfWeek(this.locale);
-        //Rearrange the tempArr to start with the first day of the week based on the locale.
+        // Rearrange the tempArr to start with the first day of the week based on the locale.
         if (firstDayOfWeek > 0) {
             const prevDays: string[] = tempArr.splice(0, firstDayOfWeek);
             prevDays.forEach((item) => {
@@ -82,7 +87,7 @@ export class DateUtilsService {
      * Moves the calendar to the previous month
      */
     moveToPreviousMonth(): void {
-        let calView: CalendarView = getPreviousMonth(this.calendarYear, this.calendarMonth);
+        const calView: CalendarView = getPreviousMonth(this.calendarYear, this.calendarMonth);
         this.updateCalendar(calView.year, calView.month);
     }
 
@@ -97,7 +102,7 @@ export class DateUtilsService {
      * Moves the calendar to the next month
      */
     moveToNextMonth(): void {
-        let calView: CalendarView = getNextMonth(this.calendarYear, this.calendarMonth);
+        const calView: CalendarView = getNextMonth(this.calendarYear, this.calendarMonth);
         this.updateCalendar(calView.year, calView.month);
     }
 
@@ -162,9 +167,8 @@ export class DateUtilsService {
     todaysFullDate: Date = new Date();
 
     get todaysCalendarDate(): CalendarDate {
-        return new CalendarDate(
-            this.todaysFullDate.getFullYear(), this.todaysFullDate.getMonth(), this.todaysFullDate.getDate()
-        );
+        return new CalendarDate(this.todaysFullDate.getFullYear(), this.todaysFullDate.getMonth(),
+                                this.todaysFullDate.getDate());
     }
 
     /**
@@ -282,22 +286,12 @@ export class DateUtilsService {
     private generateCalendarCellsFromPreviousMonth(year: number, month: number, noOfDays: number): CalendarCell[] {
         const datesFromPrevMonthInCalendarView: number = this.noOfDaysFromPreviousMonthInCalendarView(year, month);
         const previousMonthView: CalendarView = getPreviousMonth(year, month);
-        const datesInPreviousMonth: CalendarCell[]
-            = Array(datesFromPrevMonthInCalendarView)
-            .fill(null)
-            .map((date, index) => {
-                const calendarDate: CalendarDate = new CalendarDate(
-                    previousMonthView.year,
-                    previousMonthView.month,
-                    noOfDays - (datesFromPrevMonthInCalendarView - (index + 1))
-                );
-                return new CalendarCell(
-                    calendarDate,
-                    false,
-                    true,
-                    false,
-                    false
-                );
+        const datesInPreviousMonth: CalendarCell[] =
+            Array(datesFromPrevMonthInCalendarView).fill(null).map((date, index) => {
+                const calendarDate: CalendarDate =
+                    new CalendarDate(previousMonthView.year, previousMonthView.month,
+                                     noOfDays - (datesFromPrevMonthInCalendarView - (index + 1)));
+                return new CalendarCell(calendarDate, false, true, false, false);
             });
         return datesInPreviousMonth;
     }
@@ -306,25 +300,12 @@ export class DateUtilsService {
      * Generates the Calendar Cells for the current month.
      */
     private generateCalendarCellsFromCurrentMonth(year: number, month: number, noOfDays: number): CalendarCell[] {
-        const datesinCurrentMonth: CalendarCell[]
-            = Array(noOfDays)
-            .fill(null)
-            .map((date, index) => {
-                const calDate: CalendarDate = new CalendarDate(
-                    year,
-                    month,
-                    index + 1
-                );
-                return new CalendarCell(
-                    calDate,
-                    false,
-                    false,
-                    false,
-                    false
-                );
-            });
+        const datesinCurrentMonth: CalendarCell[] = Array(noOfDays).fill(null).map((date, index) => {
+            const calDate: CalendarDate = new CalendarDate(year, month, index + 1);
+            return new CalendarCell(calDate, false, false, false, false);
+        });
 
-        //Check for today's date
+        // Check for today's date
         if (year === this.currentYear && month === this.currentMonth) {
             datesinCurrentMonth[this.currentDate - 1].isTodaysDate = true;
         }
@@ -336,22 +317,10 @@ export class DateUtilsService {
      */
     private generateCalendarCellsFromNextMonth(year: number, month: number, noOfDays: number): CalendarCell[] {
         const nextMonth: CalendarView = getNextMonth(year, month);
-        const datesInNextMonth: CalendarCell[]
-            = Array(noOfDays)
-            .fill(null)
-            .map((date, index) => {
-                const calDate: CalendarDate = new CalendarDate(
-                    nextMonth.year,
-                    nextMonth.month,
-                    index + 1
-                );
-                return new CalendarCell(
-                    calDate,
-                    false,
-                    true,
-                    false,
-                    false);
-            });
+        const datesInNextMonth: CalendarCell[] = Array(noOfDays).fill(null).map((date, index) => {
+            const calDate: CalendarDate = new CalendarDate(nextMonth.year, nextMonth.month, index + 1);
+            return new CalendarCell(calDate, false, true, false, false);
+        });
 
         return datesInNextMonth;
     }
@@ -366,17 +335,13 @@ export class DateUtilsService {
         const noOfDaysInPrevMonth: number = getNumberOfDaysInTheMonth(year, month - 1);
         const noOfDaysInCurrMonth: number = getNumberOfDaysInTheMonth(year, month);
 
-        const prev: CalendarCell[]
-            = this.generateCalendarCellsFromPreviousMonth(year, month, noOfDaysInPrevMonth);
+        const prev: CalendarCell[] = this.generateCalendarCellsFromPreviousMonth(year, month, noOfDaysInPrevMonth);
 
-        const curr: CalendarCell[]
-            = this.generateCalendarCellsFromCurrentMonth(year, month, noOfDaysInCurrMonth);
+        const curr: CalendarCell[] = this.generateCalendarCellsFromCurrentMonth(year, month, noOfDaysInCurrMonth);
 
-        const noOfDaysInNextMonth: number
-            = TOTAL_DAYS_IN_DAYS_VIEW - (noOfDaysInCurrMonth + prev.length);
+        const noOfDaysInNextMonth: number = TOTAL_DAYS_IN_DAYS_VIEW - (noOfDaysInCurrMonth + prev.length);
 
-        const next: CalendarCell[]
-            = this.generateCalendarCellsFromNextMonth(year, month, noOfDaysInNextMonth);
+        const next: CalendarCell[] = this.generateCalendarCellsFromNextMonth(year, month, noOfDaysInNextMonth);
 
         this._currentCalendarMatrix = new CalendarMatrix(prev, curr, next, new CalendarView(year, month));
         this.setCalendarFlags();

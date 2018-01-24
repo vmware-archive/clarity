@@ -4,9 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ElementRef, HostListener} from "@angular/core";
-import {DateUtilsService} from "./providers/date-utils.service";
-import {CalendarViewService} from "./providers/calendar-view.service";
+
 import {DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW} from "../../utils/key-codes/key-codes";
+
+import {CalendarViewService} from "./providers/calendar-view.service";
+import {DateUtilsService} from "./providers/date-utils.service";
 
 @Component({
     selector: "clr-monthpicker",
@@ -26,11 +28,8 @@ import {DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW} from "../../utils/key-cod
     }
 })
 export class ClrMonthPicker {
-    constructor(
-        private _dateUtilsService: DateUtilsService,
-        private _calendarViewService: CalendarViewService,
-        private _elRef: ElementRef
-    ) {
+    constructor(private _dateUtilsService: DateUtilsService, private _calendarViewService: CalendarViewService,
+                private _elRef: ElementRef) {
         this._focusedMonth = this._dateUtilsService.calendarMonth;
         this._calendarViewService.focusCell(this._elRef);
     }
@@ -49,7 +48,7 @@ export class ClrMonthPicker {
     changeMonth(month: string): void {
         const calViewMonthIndex: number = this.months.indexOf(month);
         this._dateUtilsService.updateCalendar(this._dateUtilsService.calendarYear, calViewMonthIndex);
-        //Disable Monthpicker
+        // Disable Monthpicker
         this._calendarViewService.isMonthView = false;
     }
 
@@ -61,7 +60,7 @@ export class ClrMonthPicker {
         if (keyCode === UP_ARROW && this._focusedMonth > 0) {
             this._focusedMonth--;
             this._calendarViewService.focusCell(this._elRef);
-        } else if (keyCode === DOWN_ARROW  && this._focusedMonth < 11) {
+        } else if (keyCode === DOWN_ARROW && this._focusedMonth < 11) {
             this._focusedMonth++;
             this._calendarViewService.focusCell(this._elRef);
         } else if (keyCode === RIGHT_ARROW && this._focusedMonth < 6) {

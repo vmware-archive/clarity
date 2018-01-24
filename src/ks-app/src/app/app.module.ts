@@ -37,6 +37,7 @@ import {KSAlerts} from "./containers/emphasis/alerts.component";
 import {KSBadges} from "./containers/emphasis/badges.component";
 import {KSLabels} from "./containers/emphasis/labels.component";
 import {KSCheckboxes} from "./containers/forms/checkboxes.component";
+import {KSDatepicker} from "./containers/forms/datepicker.component";
 import {KSForms} from "./containers/forms/forms.component";
 import {KSInputs} from "./containers/forms/inputs.component";
 import {KSRadios} from "./containers/forms/radios.component";
@@ -63,7 +64,6 @@ import {KSSpinners} from "./containers/spinners/spinners.component";
 import {KSTables} from "./containers/tables/tables.component";
 import {KSTypography} from "./containers/typography/typography.component";
 import {KSWizards} from "./containers/wizard/wizards.component";
-import {KSDatepicker} from "./containers/forms/datepicker.component";
 
 @NgModule({
     declarations: [

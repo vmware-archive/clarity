@@ -9,13 +9,12 @@ import {CalendarDate} from "./calendar-date";
 
 export default function(): void {
     describe("Calendar Cell", function() {
-        let calendarDate: CalendarDate = new CalendarDate(2018, 0, 1);
+        const calendarDate: CalendarDate = new CalendarDate(2018, 0, 1);
         let calendarCell: CalendarCell;
         let calendarCellDefaults: CalendarCell;
 
         beforeEach(() => {
-            calendarCell
-                = new CalendarCell(calendarDate, false, false, false, false);
+            calendarCell = new CalendarCell(calendarDate, false, false, false, false);
             calendarCellDefaults = new CalendarCell(calendarDate);
         });
 

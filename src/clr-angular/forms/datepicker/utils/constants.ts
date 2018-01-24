@@ -14,18 +14,17 @@ export const SEPARATORS: string[] = ["/", "-"];
 // https://en.wikipedia.org/wiki/Date_format_by_country
 export const LITTLE_ENDIAN_REGEX: RegExp = /d+.m+.y+/i;
 export const MIDDLE_ENDIAN_REGEX: RegExp = /m+.d+.y+/i;
-//No need for BIG_ENDIAN_REGEX because anything that doesn't satisfy the above 2
-//is automatically BIG_ENDIAN
+// No need for BIG_ENDIAN_REGEX because anything that doesn't satisfy the above 2
+// is automatically BIG_ENDIAN
 
 export const YEAR: string = "YYYY";
 export const MONTH: string = "MM";
 export const DATE: string = "DD";
 
-export type FormatType = "LITTLE_ENDIAN" | "MIDDLE_ENDIAN" | "BIG_ENDIAN";
+export type FormatType = "LITTLE_ENDIAN"|"MIDDLE_ENDIAN"|"BIG_ENDIAN";
 
 export type InputDateDisplayFormat = {
-  readonly name: FormatType;
-  readonly format: string;
+    readonly name: FormatType; readonly format: string;
 };
 
 export const LITTLE_ENDIAN: InputDateDisplayFormat = {
@@ -47,6 +46,6 @@ export const NO_OF_DAYS_IN_A_WEEK: number = 7;
 export const NO_OF_ROWS_IN_CALENDAR_VIEW: number = 6;
 export const TOTAL_DAYS_IN_DAYS_VIEW: number = NO_OF_DAYS_IN_A_WEEK * NO_OF_ROWS_IN_CALENDAR_VIEW;
 
-//iPad mini screen width
-//http://stephen.io/mediaqueries/#iPadMini
+// iPad mini screen width
+// http://stephen.io/mediaqueries/#iPadMini
 export const DATEPICKER_ACTIVE_BREAKPOINT: number = 768;

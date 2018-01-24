@@ -5,10 +5,11 @@
  */
 
 import {addHelpers} from "../../data/datagrid/helpers.spec";
+
 import CalendarCellSpecs from "./model/calendar-cell.spec";
 import CalendarDateSpecs from "./model/calendar-date.spec";
-import CalendarViewSpecs from "./model/calendar-view.spec";
 import CalendarMatrixSpecs from "./model/calendar-matrix.spec";
+import CalendarViewSpecs from "./model/calendar-view.spec";
 
 fdescribe("Datepicker", function() {
     addHelpers();

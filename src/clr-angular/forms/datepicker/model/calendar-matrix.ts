@@ -4,18 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import {NO_OF_DAYS_IN_A_WEEK, NO_OF_ROWS_IN_CALENDAR_VIEW} from "../utils/constants";
+
 import {CalendarCell} from "./calendar-cell";
 import {CalendarDate} from "./calendar-date";
-import {NO_OF_DAYS_IN_A_WEEK, NO_OF_ROWS_IN_CALENDAR_VIEW} from "../utils/constants";
 import {CalendarView} from "./calendar-view";
 
 export class CalendarMatrix {
-    constructor(
-        public prev: CalendarCell[],
-        public current: CalendarCell[],
-        public next: CalendarCell[],
-        public calendarView: CalendarView
-    ) {
+    constructor(public prev: CalendarCell[], public current: CalendarCell[], public next: CalendarCell[],
+                public calendarView: CalendarView) {
         this.convertCalendarCellsIntoMatrix(prev, current, next);
     }
 
@@ -61,11 +58,7 @@ export class CalendarMatrix {
      * generates the Calendar Matrix/Table which is used to render the current Calendar View.
      */
     private convertCalendarCellsIntoMatrix(prev: CalendarCell[], curr: CalendarCell[], next: CalendarCell[]): void {
-        const combinationArr: CalendarCell[] = [
-            ...prev,
-            ...curr,
-            ...next
-        ];
+        const combinationArr: CalendarCell[] = [...prev, ...curr, ...next];
 
         const matrix: CalendarCell[][] = [];
         for (let i = 0; i < NO_OF_ROWS_IN_CALENDAR_VIEW; i++) {

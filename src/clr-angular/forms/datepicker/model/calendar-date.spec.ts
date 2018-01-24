@@ -6,11 +6,11 @@
 
 import {CalendarDate} from "./calendar-date";
 
-export default function (): void {
-    describe("Calendar Date", function () {
-        let calendarDate1: CalendarDate = new CalendarDate(2018, 0, 1);
-        let calendarDate2: CalendarDate = new CalendarDate(2018, 5, 21);
-        let calendarDate3: CalendarDate = new CalendarDate(2018, 0, 1);
+export default function(): void {
+    describe("Calendar Date", function() {
+        const calendarDate1: CalendarDate = new CalendarDate(2018, 0, 1);
+        const calendarDate2: CalendarDate = new CalendarDate(2018, 5, 21);
+        const calendarDate3: CalendarDate = new CalendarDate(2018, 0, 1);
 
         it("2 Calendar Dates are equal when the month, year and date matches", () => {
             expect(calendarDate1.isEqual(calendarDate3)).toBe(true);
@@ -26,8 +26,8 @@ export default function (): void {
         });
 
         it("converts a calendar date to the javascript date object", () => {
-            let date1: Date = calendarDate1.toDate();
-            let date2: Date = calendarDate2.toDate();
+            const date1: Date = calendarDate1.toDate();
+            const date2: Date = calendarDate2.toDate();
 
             expect(date1).not.toBeNull();
             expect(date1.getDate()).toBe(1);

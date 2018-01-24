@@ -25,10 +25,7 @@ import {DatepickerActiveService} from "./providers/datepicker-active.service";
     host: {"[class.datepicker-container]": "true"}
 })
 export class ClrDatepickerContainer {
-    constructor(
-        public _ifOpenService: IfOpenService,
-        private _datepickerActiveService: DatepickerActiveService) {
-    }
+    constructor(public _ifOpenService: IfOpenService, private _datepickerActiveService: DatepickerActiveService) {}
 
     /**
      * Toggles the calendar.

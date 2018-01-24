@@ -49,10 +49,19 @@ export class DateIOService {
     }
 
     /**
-     * Processes the Javascript Date object input provided by the user
+     * Processes the Javascript Date object input provided by the user.
      */
     processDate(date: Date) {
         if (date) {
+            //Note: There is a reason we convert this back to string and not store the
+            //date object directly as it is passed by the user.
+            //You could create a Javascript Date object like this
+            //let date = new Date("Test"). This is an invalid date object
+            //but it still is a date object (for eg: instance of checks don't work here).
+            //On our end we convert this object to string, and check if its valid or not.
+            //The inputDate property in this service is the single source of truth and if the user
+            //passes a Date object, it is converted to a string and stored in inputDate.
+            //Feel free to let me know if there is a better way to do this.
             const dateStr: string = this.toLocaleDisplayFormatString(date);
             if (this.isValidInput(dateStr)) {
                 this._inputDate = dateStr;

@@ -156,22 +156,37 @@ export class DateIOService {
 
     /**
      * Validates the parameters provided and returns the date.
-     * If the parameters are not valid (eg: month > 11 because month is 0 based) then return null
+     * If the parameters are not
+     * valid then return null.
+     * NOTE: (Month here is 1 based since the user has provided that as an input)
      */
-    private validateAndGetDate(year: number, month: number, date: number): Date {
-        if (year < -1) {
+    private validateAndGetDate(year: string, month: string, date: string): Date {
+        //HELP ME!!!!
+        //I don't know whats wrong with the TS compiler. It throws an error if I write
+        //the below if statement. The error is:
+        //Operator '!==' cannot be applied to types '2' and '4'
+        //More info here: https://github.com/Microsoft/TypeScript/issues/12794#issuecomment-270342936
+        /*
+        if (year.length !== 2 || year.length !== 4) {
             return null;
-        } else if (year > 99 && year < 1000) {
+        }
+        */
+
+        //Instead I have to write the logic like this x-(
+        let y: number = +year;
+        const m: number = +month - 1; //month is 0 based
+        const d: number = +date;
+        if (!this.isValidMonth(m) || !this.isValidDate(y, m, d)) {
             return null;
-        } else if (year > -1 && year < 100) {
-            const fourDigitYear: number = parseToFourDigitYear(year);
-            if (fourDigitYear === -1) {
+        }
+        if (year.length === 2) {
+            y = parseToFourDigitYear(y);
+            if (y === -1) {
                 return null;
             }
-            year = fourDigitYear;
-        }
-        if (this.isValidMonth(month) && this.isValidDate(year, month, date)) {
-            return new Date(year, month, date);
+            return new Date(y, m, d);
+        } else if (year.length === 4) {
+            return new Date(y, m, d);
         }
         return null;
     }
@@ -194,18 +209,18 @@ export class DateIOService {
         if (!this.areDatePartsNumbers(dateParts)) {
             return null;
         }
-        let firstPart: number = +dateParts[0];
-        let secondPart: number = +dateParts[1];
-        const thirdPart: number = +dateParts[2];
+        let firstPart: string = dateParts[0];
+        let secondPart: string = dateParts[1];
+        const thirdPart: string = dateParts[2];
         if (this.localeDisplayFormat === LITTLE_ENDIAN) {
             //secondPart is month && firstPart is date
-            return this.validateAndGetDate(thirdPart, secondPart - 1, firstPart);
+            return this.validateAndGetDate(thirdPart, secondPart, firstPart);
         } else if (this.localeDisplayFormat === MIDDLE_ENDIAN) {
             //firstPart is month && secondPart is date
-            return this.validateAndGetDate(thirdPart, firstPart - 1,secondPart);
+            return this.validateAndGetDate(thirdPart, firstPart,secondPart);
         } else {
             //secondPart is month && thirdPart is date
-            return this.validateAndGetDate(firstPart , secondPart - 1, thirdPart);
+            return this.validateAndGetDate(firstPart , secondPart, thirdPart);
         }
     }
 

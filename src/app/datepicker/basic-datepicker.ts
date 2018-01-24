@@ -19,7 +19,7 @@ import {Component, LOCALE_ID} from "@angular/core";
 })
 export class BasicDatepickerDemo {
     date: string;
-    datepickerContainer: string;
+    datepickerContainer: Date = new Date();
 
     model: string = "";
 
@@ -30,6 +30,6 @@ export class BasicDatepickerDemo {
 
     datepickerContainerChange(date: Date) {
         console.log("Datepicker Container Output Changed", date);
-        this.datepickerContainer = date.toLocaleDateString();
+        this.datepickerContainer = date;
     }
 }

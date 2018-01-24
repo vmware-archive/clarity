@@ -14,7 +14,7 @@
         [(ngModel)]="model">
 </div>
 <div class="row">
-    <div class="col-xs-4">
+    <div class="col-xs-12 col-md-10 col-lg-5">
         <table class="table">
             <thead>
             <tr>
@@ -52,7 +52,7 @@
         clrDatepicker (clrDatepickerChange)="datepickerChange($event)">
 </div>
 <div class="row">
-    <div class="col-xs-4">
+    <div class="col-xs-12 col-md-10 col-lg-5">
         <table class="table">
             <thead>
             <tr>
@@ -80,16 +80,16 @@
     <h6>a. clr-datepicker-container</h6>
     <p></p>
     <clr-datepicker-container>
-        <input clrDatepicker (clrDatepickerChange)="datepickerContainerChange($event)">
+        <input [clrDatepicker]="datepickerContainer" (clrDatepickerChange)="datepickerContainerChange($event)">
     </clr-datepicker-container>
 </div>
 
 <div class="row">
-    <div class="col-xs-4">
+    <div class="col-xs-12 col-md-10 col-lg-5">
         <table class="table">
             <thead>
             <tr>
-                <th>(clrDatepickerChange)</th>
+                <th>[(clrDatepicker)]</th>
             </tr>
             </thead>
             <tbody>

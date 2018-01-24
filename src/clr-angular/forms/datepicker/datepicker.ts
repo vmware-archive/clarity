@@ -12,7 +12,7 @@ import {
     ElementRef,
     EventEmitter,
     HostBinding,
-    HostListener,
+    HostListener, Input,
     OnDestroy,
     Optional,
     Output,
@@ -109,6 +109,17 @@ export class ClrDatepicker implements OnDestroy {
 
     set inputDate(value: string) {
         this._dateIOService.inputDate = value;
+    }
+
+    @Input("clrDatepicker")
+    set date(value: Date) {
+        if (value) {
+            this._dateIOService.processDate(value);
+            const dateStr: string = this._dateIOService.toLocaleDisplayFormatString(value);
+            if (this._dateIOService.isValidInput(dateStr)) {
+                this.elRef.nativeElement.value = dateStr;
+            }
+        }
     }
 
     @Output("clrDatepickerChange") _dateUpdated: EventEmitter<Date> = new EventEmitter<Date>(false);

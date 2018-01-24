@@ -48,18 +48,35 @@ export class DateIOService {
         return this.isValidInput(this._inputDate);
     }
 
-    toLocaleDisplayFormatString(date: Date): string {
-        const dateNo: number = date.getDate();
-        const monthNo: number = date.getMonth() + 1;
-        const dateStr: string = dateNo > 9 ? dateNo.toString() : "0" + dateNo;
-        const monthStr: string = monthNo > 9 ? monthNo.toString() : "0" + monthNo;
-        if (this.localeDisplayFormat === LITTLE_ENDIAN) {
-            return dateStr + "/" + monthStr + "/" + date.getFullYear();
-        } else if (this.localeDisplayFormat === MIDDLE_ENDIAN) {
-            return monthStr + "/" + dateStr + "/" + date.getFullYear();
-        } else {
-            return date.getFullYear() + "/" + monthStr + "/" + dateStr;
+    /**
+     * Processes the Javascript Date object input provided by the user
+     */
+    processDate(date: Date) {
+        if (date) {
+            const dateStr: string = this.toLocaleDisplayFormatString(date);
+            if (this.isValidInput(dateStr)) {
+                this._inputDate = dateStr;
+            } else {
+                this._inputDate = "";
+            }
         }
+    }
+
+    toLocaleDisplayFormatString(date: Date): string {
+        if (date) {
+            const dateNo: number = date.getDate();
+            const monthNo: number = date.getMonth() + 1;
+            const dateStr: string = dateNo > 9 ? dateNo.toString() : "0" + dateNo;
+            const monthStr: string = monthNo > 9 ? monthNo.toString() : "0" + monthNo;
+            if (this.localeDisplayFormat === LITTLE_ENDIAN) {
+                return dateStr + "/" + monthStr + "/" + date.getFullYear();
+            } else if (this.localeDisplayFormat === MIDDLE_ENDIAN) {
+                return monthStr + "/" + dateStr + "/" + date.getFullYear();
+            } else {
+                return date.getFullYear() + "/" + monthStr + "/" + dateStr;
+            }
+        }
+        return "";
     }
 
     get placeholderText(): string {

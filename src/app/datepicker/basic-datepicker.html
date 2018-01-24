@@ -37,16 +37,6 @@
 
 <div>
     <h6>b. clrDatepicker</h6>
-    <clr-alert [clrAlertClosable]="false" [clrAlertType]="'alert-warning'">
-        <div class="alert-item">
-            <span class="alert-text">
-                We do not support an Input for <code class="clr-code">[clrDatepicker]</code>
-                since the user can use <code class="clr-code">ngModel</code> directly.
-                The output is supported because we emit a Javascript Date object which
-                <code class="clr-code">&lt;input type=&quot;text&quot;&gt;</code> does not do.
-            </span>
-        </div>
-    </clr-alert>
     <p></p>
     <input
         clrDatepicker (clrDatepickerChange)="datepickerChange($event)">

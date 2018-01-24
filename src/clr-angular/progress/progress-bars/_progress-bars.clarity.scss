@@ -4,7 +4,7 @@
 
 @import "utils/mixins.clarity";
 
-@include exports('prgross-bars.clarity') {
+@include exports('progress-bars.clarity') {
     // KEY POINTS TO NOTE:
     // - Firefox does not handle transitions on progress bars yet. So the movement
     //   of the progress bar is going to be choppy if it's not indeterminate.

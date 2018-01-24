@@ -32,8 +32,8 @@ export default function(): void {
             expect(calendarMatrix.matrix).not.toBeNull();
             expect(calendarMatrix.matrix.length).toBe(6);
 
-            for (let i = 0; i < calendarMatrix.matrix.length; i++) {
-                expect(calendarMatrix.matrix[i].length).toBe(7);
+            for (const matrix of calendarMatrix.matrix) {
+                expect(matrix.length).toBe(7);
             }
         });
 

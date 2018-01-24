@@ -18,17 +18,18 @@ import {Component, LOCALE_ID} from "@angular/core";
     //providers: [{provide: LOCALE_ID, useValue: "ru-UA"}]
 })
 export class BasicDatepickerDemo {
-    inputDate: string;
+    date: string;
+    datepickerContainer: string;
 
-    test: string = "";
+    model: string = "";
 
-    dateChanged(date: Date) {
-        console.log("Date Changed", date);
-        this.inputDate = date.toLocaleDateString();
+    datepickerChange(date: Date) {
+        console.log("Datepicker Output Changed", date);
+        this.date = date.toLocaleDateString();
     }
 
-    testChange(date: string) {
-        console.log("ngModel Changed", date);
-        this.test = date;
+    datepickerContainerChange(date: Date) {
+        console.log("Datepicker Container Output Changed", date);
+        this.datepickerContainer = date.toLocaleDateString();
     }
 }

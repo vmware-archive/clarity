@@ -4,102 +4,107 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<h4>Basic Datepicker</h4>
-<input type="text" clrDatepicker (clrDatepickerChange)="dateChanged($event)" [ngModel]="test" (ngModelChange)="testChange($event)">
+<h4>1. Datepicker - Auto Host Wrapped</h4>
 
-<h1>
-    {{test}}
-</h1>
+<div>
+    <h6>a. ngModel</h6>
+    <p></p>
+    <input
+        clrDatepicker
+        [(ngModel)]="model">
+</div>
+<div class="row">
+    <div class="col-xs-4">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>[(ngModel)]</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{model}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<pre>
+    <code clr-code-highlight="language-html">
+        &lt;input clrDatepicker [(ngModel)]=&quot;model&quot;&gt;
+    </code>
+</pre>
 
-<p>
-    {{inputDate}}
-</p>
+<div>
+    <h6>b. clrDatepicker</h6>
+    <clr-alert [clrAlertClosable]="false" [clrAlertType]="'alert-warning'">
+        <div class="alert-item">
+            <span class="alert-text">
+                We do not support an Input for <code class="clr-code">[clrDatepicker]</code>
+                since the user can use <code class="clr-code">ngModel</code> directly.
+                The output is supported because we emit a Javascript Date object which
+                <code class="clr-code">&lt;input type=&quot;text&quot;&gt;</code> does not do.
+            </span>
+        </div>
+    </clr-alert>
+    <p></p>
+    <input
+        clrDatepicker (clrDatepickerChange)="datepickerChange($event)">
+</div>
+<div class="row">
+    <div class="col-xs-4">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>(clrDatepickerChange)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{date}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
+<pre>
+    <code clr-code-highlight="language-html">
+         &lt;input clrDatepicker (clrDatepickerChange)=&quot;datepickerChange($event)&quot;&gt;
+    </code>
+</pre>
 
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
+<h4>2. Datepicker - Wrapper Provided</h4>
 
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
+<div>
+    <h6>a. clr-datepicker-container</h6>
+    <p></p>
+    <clr-datepicker-container>
+        <input clrDatepicker (clrDatepickerChange)="datepickerContainerChange($event)">
+    </clr-datepicker-container>
+</div>
 
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
+<div class="row">
+    <div class="col-xs-4">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>(clrDatepickerChange)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{datepickerContainer}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
-
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
-
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
-
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
-
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
-
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
-
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
-
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
-
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
-
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
-
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
-
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
-
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque eius expedita harum, ipsam
-    iste iusto laboriosam magnam quibusdam quis sed. Alias consequuntur eligendi fugiat harum quo tempora voluptates.
-</p>
+<pre>
+    <code clr-code-highlight="language-html">
+        &lt;clr-datepicker-container&gt;
+            &lt;input clrDatepicker (clrDatepickerChange)=&quot;datepickerContainerChange($event)&quot;&gt;
+        &lt;/clr-datepicker-container&gt;
+    </code>
+</pre>

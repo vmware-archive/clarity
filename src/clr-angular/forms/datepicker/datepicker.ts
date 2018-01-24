@@ -16,6 +16,7 @@ import {EmptyAnchor} from "../../utils/host-wrapping/empty-anchor";
 import {DateIOService} from "./providers/date-io.service";
 import {Subscription} from "rxjs/Subscription";
 import {NgModel} from "@angular/forms";
+import {DatepickerActiveService} from "./providers/datepicker-active.service";
 
 @Directive({
     selector: "[clrDatepicker]",
@@ -33,7 +34,8 @@ export class ClrDatepicker implements OnDestroy {
                 private elRef: ElementRef,
                 private cfr: ComponentFactoryResolver,
                 @Optional() private _ngModel: NgModel,
-                @Optional() private _dateIOService: DateIOService) {
+                @Optional() private _dateIOService: DateIOService,
+                @Optional() private _datepickerActiveService: DatepickerActiveService) {
         if (!container) {
             const compRef: ComponentRef<ClrDatepickerContainer> = this.wrapContainer();
             this.populateContainerServices(compRef);
@@ -63,6 +65,7 @@ export class ClrDatepicker implements OnDestroy {
      */
     private populateContainerServices(componentRef: ComponentRef<ClrDatepickerContainer>): void {
         this._dateIOService = componentRef.injector.get(DateIOService);
+        this._datepickerActiveService = componentRef.injector.get(DatepickerActiveService);
     }
 
     /**
@@ -97,6 +100,11 @@ export class ClrDatepicker implements OnDestroy {
         } else {
             this.inputDate = "";
         }
+    }
+
+    @HostBinding("attr.type")
+    get isActive(): string {
+        return this._datepickerActiveService.active ? "text" : "date";
     }
 
     set inputDate(value: string) {

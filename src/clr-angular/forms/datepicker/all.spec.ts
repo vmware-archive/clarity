@@ -12,7 +12,8 @@ import CalendarMatrixSpecs from "./model/calendar-matrix.spec";
 import CalendarViewSpecs from "./model/calendar-view.spec";
 
 import CalendarViewServiceSpecs from "./providers/calendar-view.service.spec";
-import YearUtilsService from "./providers/year-utils.service.spec";
+import YearUtilsServiceSpecs from "./providers/year-utils.service.spec";
+import DateIOServiceSpecs from "./providers/date-io.service.spec";
 
 fdescribe("Datepicker", function() {
     addHelpers();
@@ -26,6 +27,7 @@ fdescribe("Datepicker", function() {
 
     describe("Providers", function() {
         CalendarViewServiceSpecs();
-        YearUtilsService();
+        YearUtilsServiceSpecs();
+        DateIOServiceSpecs();
     });
 });

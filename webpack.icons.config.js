@@ -12,6 +12,7 @@ module.exports = {
         "index": "./src/clr-icons/index.ts",
         "interfaces/icon-alias": "./src/clr-icons/interfaces/icon-alias.ts",
         "interfaces/icon-template": "./src/clr-icons/interfaces/icon-template.ts",
+        "interfaces/icon-interfaces": "./src/clr-icons/interfaces/icon-interfaces.ts",
         "utils/descriptor-config": "./src/clr-icons/utils/descriptor-config.ts",
         "clr-icons-api": "./src/clr-icons/clr-icons-api.ts",
         "clr-icons-element": "./src/clr-icons/clr-icons-element.ts",

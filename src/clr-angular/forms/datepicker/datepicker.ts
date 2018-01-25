@@ -114,11 +114,8 @@ export class ClrDatepicker implements OnDestroy {
     @Input("clrDatepicker")
     set date(value: Date) {
         if (value) {
-            this._dateIOService.processDate(value);
-            const dateStr: string = this._dateIOService.toLocaleDisplayFormatString(value);
-            if (this._dateIOService.isValidInput(dateStr)) {
-                this.elRef.nativeElement.value = dateStr;
-            }
+            const dateStr: string = this._dateIOService.processDate(value);
+            this.elRef.nativeElement.value = dateStr;
         }
     }
 

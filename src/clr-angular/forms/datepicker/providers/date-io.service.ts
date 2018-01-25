@@ -51,7 +51,7 @@ export class DateIOService {
     /**
      * Processes the Javascript Date object input provided by the user.
      */
-    processDate(date: Date) {
+    processDate(date: Date): string {
         if (date) {
             //Note: There is a reason we convert this back to string and not store the
             //date object directly as it is passed by the user.
@@ -65,8 +65,10 @@ export class DateIOService {
             const dateStr: string = this.toLocaleDisplayFormatString(date);
             if (this.isValidInput(dateStr)) {
                 this._inputDate = dateStr;
+                return dateStr;
             } else {
                 this._inputDate = "";
+                return "";
             }
         }
     }
@@ -221,7 +223,7 @@ export class DateIOService {
     /**
      * Checks if the input provided by the user is valid.
      */
-    isValidInput(date: string): Date {
+    private isValidInput(date: string): Date {
         if (!date) {
             return null;
         }

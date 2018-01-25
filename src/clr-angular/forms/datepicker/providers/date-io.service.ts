@@ -98,7 +98,7 @@ export class DateIOService {
      * MIDDLE_ENDIAN, LITTLE_ENDIAN, or BIG_ENDIAN
      * More info here: https://en.wikipedia.org/wiki/Date_format_by_country
      */
-    processLocaleFormat(format: string): void {
+    private processLocaleFormat(format: string): void {
         format = format.toLocaleLowerCase();
         if (LITTLE_ENDIAN_REGEX.test(format)) {
             this.localeDisplayFormat = LITTLE_ENDIAN;
@@ -156,7 +156,7 @@ export class DateIOService {
      * Checks if the month entered by the user is valid or not.
      * Note: Month is 0 based.
      */
-    isValidMonth(month: number): boolean {
+    private isValidMonth(month: number): boolean {
         if (month > -1 && month < 12) {
             return true;
         }
@@ -166,7 +166,7 @@ export class DateIOService {
     /**
      * Checks if the date is valid depending on the year and month provided.
      */
-    isValidDate(year: number, month: number, date: number): boolean {
+    private isValidDate(year: number, month: number, date: number): boolean {
         if (date > 0 && date <= getNumberOfDaysInTheMonth(year, month)) {
             return true;
         }
@@ -177,7 +177,7 @@ export class DateIOService {
      * Checks if the string is a non negative number.
      * Credit: https://stackoverflow.com/a/24457420/8960224
      */
-    isNonNegativeNumber(num: string): boolean {
+    private isNonNegativeNumber(num: string): boolean {
         return /^\d+$/.test(num);
     }
 

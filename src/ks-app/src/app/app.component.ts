@@ -3,6 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import "@clr/icons";
+
 import {Component} from "@angular/core";
 import {ClrIconCustomTag, ClrLoading, ClrMainContainer, IconCustomTag, Loading, MainContainer} from "@clr/angular";
 

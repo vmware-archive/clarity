@@ -73,7 +73,7 @@ export class DateIOService {
         }
     }
 
-    toLocaleDisplayFormatString(date: Date): string {
+    private toLocaleDisplayFormatString(date: Date): string {
         if (date) {
             const dateNo: number = date.getDate();
             const monthNo: number = date.getMonth() + 1;

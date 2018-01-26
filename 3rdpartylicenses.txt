@@ -1,8 +1,8 @@
-@clr/icons@0.11.0
+@clr/icons@0.11.2
 MIT
 MIT
 
-core-js@2.5.1
+core-js@2.5.3
 MIT
 Copyright (c) 2014-2017 Denis Pushkarev
 
@@ -117,7 +117,7 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-webpack@3.8.1
+webpack@3.10.0
 MIT
 Copyright JS Foundation and other contributors
 
@@ -140,7 +140,7 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-zone.js@0.8.18
+zone.js@0.8.20
 MIT
 The MIT License
 
@@ -164,35 +164,35 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-@clr/angular@0.11.0
+@angular/forms@5.2.2
 MIT
 MIT
 
-@angular/animations@5.0.0
+@clr/angular@0.11.2
 MIT
 MIT
 
-@angular/common@5.0.0
+@angular/core@5.2.2
 MIT
 MIT
 
-@angular/core@5.0.0
+@angular/platform-browser@5.2.2
 MIT
 MIT
 
-@angular/platform-browser@5.0.0
+@angular/router@5.2.2
 MIT
 MIT
 
-@angular/forms@5.0.0
+@angular/common@5.2.2
 MIT
 MIT
 
-@angular/router@5.0.0
+@angular/animations@5.2.2
 MIT
 MIT
 
-prismjs@1.8.3
+prismjs@1.10.0
 MIT
 MIT LICENSE
 
@@ -216,6 +216,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-@clr/ui@0.11.0
+@clr/ui@0.11.2
 MIT
 MIT

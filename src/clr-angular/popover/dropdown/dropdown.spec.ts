@@ -5,6 +5,7 @@
  */
 import {Component, ViewChild} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {By} from "@angular/platform-browser";
 
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 
@@ -18,8 +19,7 @@ export default function(): void {
         let compiled: any;
 
         beforeEach(() => {
-            TestBed.configureTestingModule(
-                {imports: [ClrDropdownModule], declarations: [TestComponent], providers: [IfOpenService]});
+            TestBed.configureTestingModule({imports: [ClrDropdownModule], declarations: [TestComponent]});
 
             fixture = TestBed.createComponent(TestComponent);
             fixture.detectChanges();
@@ -176,6 +176,29 @@ export default function(): void {
             fixture.detectChanges();
             expect(compiled.querySelector(".dropdown-item")).toBeNull();
         });
+
+        it("doesn't close before custom click events have triggered", function() {
+            const ifOpenService = fixture.debugElement.query(By.directive(ClrDropdown)).injector.get(IfOpenService);
+
+            const dropdownToggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
+            dropdownToggle.click();
+            fixture.detectChanges();
+
+            const nestedToggle: HTMLElement = compiled.querySelector(".nested");
+            nestedToggle.click();
+            fixture.detectChanges();
+
+            ifOpenService.openChange.subscribe(() => {
+                expect(fixture.componentInstance.customClickHandlerDone).toBe(true);
+            });
+
+            const nestedItem: HTMLElement = compiled.querySelector(".nested-item");
+            nestedItem.click();
+            fixture.detectChanges();
+
+            // Make sure the dropdown correctly closed, otherwise our expect() in the subscription might not have run.
+            expect(ifOpenService.open).toBe(false);
+        });
     });
 }
 
@@ -196,7 +219,8 @@ export default function(): void {
                 <clr-dropdown>
                     <button clrDropdownTrigger class="nested">Nested</button>
                     <clr-dropdown-menu *clrIfOpen>
-                        <a href="javascript://" clrDropdownItem class="nested-item">Foo</a>
+                        <a href="javascript://" clrDropdownItem class="nested-item"
+                           (click)="customClickHandler()">Foo</a>
                     </clr-dropdown-menu>
                 </clr-dropdown>
             </clr-dropdown-menu>
@@ -211,5 +235,11 @@ class TestComponent {
 
     outsideButtonClickHandler(): void {
         this.testCnt++;
+    }
+
+
+    customClickHandlerDone = false;
+    customClickHandler() {
+        this.customClickHandlerDone = true;
     }
 }

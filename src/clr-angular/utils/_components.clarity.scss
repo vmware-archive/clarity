@@ -43,7 +43,7 @@
 //Code
 @import "../code/syntax-highlight/code.clarity"; // depends on variables.clarity, mixins.clarity, helpers.clarity, code.scss
 
-//@import "./custom-forms/custom-forms.clarity"; // deleted
+//@import "./custom-forms-deprecated/custom-forms-deprecated.clarity"; // deleted
 
 //Dropdowns
 //depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity
@@ -98,13 +98,13 @@
 @import "../popover/tooltip/tooltips.clarity";
 
 //Forms
-@import "../forms/utils/form-variables.clarity";
-@import "../forms/utils/mixins.clarity";
-@import "../forms/inputs.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
-@import "../forms/checkbox/checkbox.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
-@import "../forms/radio.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
-@import "../forms/select.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity, icons.clarity, images.clarity
-@import "../forms/forms.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
+@import "../forms-deprecated/utils/form-variables.clarity";
+@import "../forms-deprecated/utils/mixins.clarity";
+@import "../forms-deprecated/inputs.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
+@import "../forms-deprecated/checkbox/checkbox.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
+@import "../forms-deprecated/radio.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
+@import "../forms-deprecated/select.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity, icons.clarity, images.clarity
+@import "../forms-deprecated/forms.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
 
 //Stack View
 //depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, forms.clarity

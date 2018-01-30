@@ -11,6 +11,10 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
  */
 let latestId = 0;
 
+/**
+ * @deprecated ClrCheckbox will be renamed to ClrCheckboxDeprecated in 0.12, and will be replaced with a new
+ * implementation in 0.13, so if you import it you will need to update your references.
+ */
 @Component({
     selector: "clr-checkbox",
     template: `
@@ -38,9 +42,9 @@ let latestId = 0;
      * which allows us to use [(ngModel)] directly on our component,
      * with all the automatic features wiring that come with it.
      */
-    providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ClrCheckbox), multi: true}]
+    providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ClrCheckboxDeprecated), multi: true}]
 })
-export class ClrCheckbox implements ControlValueAccessor {
+export class ClrCheckboxDeprecated implements ControlValueAccessor {
     // If our host has an ID attribute, we use this instead of our index.
     @Input("id")
     _id: string = (latestId++).toString();

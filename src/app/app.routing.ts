@@ -20,7 +20,7 @@ export const APP_ROUTES: Routes = [
     {path: "color", loadChildren: "app/color/color.demo.module"},
     {path: "datagrid", loadChildren: "app/datagrid/datagrid.demo.module"},
     {path: "dropdown", loadChildren: "app/dropdown/dropdown.demo.module"},
-    {path: "forms", loadChildren: "app/forms/forms.demo.module"},
+    {path: "forms-deprecated", loadChildren: "app/forms-deprecated/forms.demo.module"},
     {path: "grid", loadChildren: "app/grid/grid.demo.module"},
     {path: "iconography", loadChildren: "app/iconography/iconography.demo.module"},
     {path: "images", loadChildren: "app/images/images.demo.module"},

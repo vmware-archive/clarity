@@ -8,8 +8,9 @@ browsers:
 
 system:
   plugins:
-    html-reporter:
+    'html-reporter/gemini': 
       enabled: true
+      path: 'gemini-report'
 
 
 #compositeImage: true

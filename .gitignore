@@ -21,6 +21,7 @@ src/clr-angular/.ng_build
 *.launch
 .settings/
 *.sublime-workspace
+*.code-workspace
 
 # IDE - VSCode
 .vscode/*

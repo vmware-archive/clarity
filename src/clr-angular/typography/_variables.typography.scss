@@ -3,6 +3,7 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Usage: ../typography/_typography.clarity.scss
+$clr-fontSkipBase64: false !default;
 $clr-font: Metropolis, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !default; //Default font stack for Clarity
 
 // Usage: ../data/datagrid/_datagrid.clarity.scss

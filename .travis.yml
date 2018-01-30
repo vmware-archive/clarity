@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "7.0"
+  - "8"
 env:
   global:
     - CXX=g++-4.8
@@ -37,8 +37,8 @@ cache:
 before_install:
 
 before_script:
-  - npm install -g gemini
-  - npm install -g html-reporter
+  - npm install -g gemini@5.2.0
+  - npm install -g html-reporter@2.0.1
 
 script:
   - npm run $TEST_SUITE # run unit test and css regression test sets in parallel

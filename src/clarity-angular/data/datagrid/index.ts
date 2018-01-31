@@ -16,6 +16,8 @@ import {DatagridActionOverflow} from "./datagrid-action-overflow";
 import {DatagridCell} from "./datagrid-cell";
 import {DatagridColumn} from "./datagrid-column";
 import {DatagridColumnToggle} from "./datagrid-column-toggle";
+import {DatagridColumnToggleButton} from "./datagrid-column-toggle-button";
+import {DatagridColumnToggleTitle} from "./datagrid-column-toggle-title";
 import {DatagridDetailRegisterer} from "./datagrid-detail-registerer";
 import {DatagridFilter} from "./datagrid-filter";
 import {DatagridFooter} from "./datagrid-footer";
@@ -41,6 +43,8 @@ export * from "./datagrid-action-bar";
 export * from "./datagrid-action-overflow";
 export * from "./datagrid-column";
 export * from "./datagrid-column-toggle";
+export * from "./datagrid-column-toggle-button";
+export * from "./datagrid-column-toggle-title";
 export * from "./datagrid-hidable-column.directive";
 export * from "./datagrid-filter";
 export * from "./datagrid-items";
@@ -65,8 +69,9 @@ export * from "./built-in/comparators/datagrid-property-comparator";
 export const DATAGRID_DIRECTIVES: Type<any>[] = [
     // Core
     Datagrid, DatagridActionBar, DatagridActionOverflow, DatagridColumn, DatagridColumnToggle,
-    DatagridHideableColumnDirective, DatagridFilter, DatagridItems, DatagridItemsTrackBy, DatagridRow,
-    DatagridRowDetail, DatagridDetailRegisterer, DatagridCell, DatagridFooter, DatagridPagination, DatagridPlaceholder,
+    DatagridColumnToggleButton, DatagridColumnToggleTitle, DatagridHideableColumnDirective, DatagridFilter,
+    DatagridItems, DatagridItemsTrackBy, DatagridRow, DatagridRowDetail, DatagridDetailRegisterer, DatagridCell,
+    DatagridFooter, DatagridPagination, DatagridPlaceholder,
 
     // Renderers
     DatagridMainRenderer, DatagridTableRenderer, DatagridHeadRenderer, DatagridHeaderRenderer, DatagridBodyRenderer,

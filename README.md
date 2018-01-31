@@ -96,7 +96,7 @@ If you already have an Angular application, you can follow the installation step
     @NgModule({
         imports: [
             BrowserModule,
-            ClarityModule.forRoot(),
+            ClarityModule,
             ....
          ],
          declarations: [ AppComponent ],

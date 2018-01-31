@@ -2,27 +2,27 @@
     "current": "0.11.2-patch",
     "all": {
         "0.11.2-patch": {
-            "date": "Jan 26, 2017",
+            "date": "Jan 26, 2018",
             "sketch": "0.11.0",
             "commit": "48d9c95c84d58cd74da19927ef8e388640d84101"
         },
         "0.11.2": {
-            "date": "Jan 25, 2017",
+            "date": "Jan 25, 2018",
             "sketch": "0.11.0",
             "commit": "a0df7e1c82cdff78ceb5265b7f8cdbc742f419a7"
         },
         "0.11.1": {
-            "date": "Jan 18, 2017",
+            "date": "Jan 18, 2018",
             "sketch": "0.11.0",
             "commit": "61a51350b10473c32a167e931d707fd26dbeb626"
         },
         "0.11.0": {
-            "date": "Jan 11, 2017",
+            "date": "Jan 11, 2018",
             "sketch": "0.11.0",
             "commit": "f6530c683f80000feccdbc85fbec0a94365f85bb"
         },
         "0.11.0-rc.1": {
-            "date": "Jan 5, 2017",
+            "date": "Jan 5, 2018",
             "sketch": "0.11.0",
             "commit": "912242a417eb6a72e7da70f60842e2e7e6a2df9c"
         },
@@ -32,12 +32,12 @@
             "commit": "76b938a13ab2f6d40b7ffb3403d7dcc9844e0630"
         },
         "0.10.24": {
-            "date": "Jan 25, 2017",
+            "date": "Jan 25, 2018",
             "sketch": "0.10.11",
             "commit": "065b43e2fc35a2e9290ef5420c3b9ba134646d79"
         },
         "0.10.23": {
-            "date": "Jan 18, 2017",
+            "date": "Jan 18, 2018",
             "sketch": "0.10.11",
             "commit": "ceb2efb7a67ca6602c77300c2bbbf4f73ed39fed"
         },

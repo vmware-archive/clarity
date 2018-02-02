@@ -26,6 +26,8 @@ import {ClrDatagridActionOverflow} from "./datagrid-action-overflow";
 import {ClrDatagridCell} from "./datagrid-cell";
 import {ClrDatagridColumn} from "./datagrid-column";
 import {ClrDatagridColumnToggle} from "./datagrid-column-toggle";
+import {ClrDatagridColumnToggleButton} from "./datagrid-column-toggle-button";
+import {ClrDatagridColumnToggleTitle} from "./datagrid-column-toggle-title";
 import {DatagridDetailRegisterer} from "./datagrid-detail-registerer";
 import {ClrDatagridFilter} from "./datagrid-filter";
 import {ClrDatagridFooter} from "./datagrid-footer";
@@ -55,7 +57,7 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
     ClrDatagrid, ClrDatagridActionBar, ClrDatagridActionOverflow, ClrDatagridColumn, ClrDatagridColumnToggle,
     ClrDatagridHideableColumn, ClrDatagridFilter, ClrDatagridItems, ClrDatagridItemsTrackBy, ClrDatagridRow,
     ClrDatagridRowDetail, DatagridDetailRegisterer, ClrDatagridCell, ClrDatagridFooter, ClrDatagridPagination,
-    ClrDatagridPlaceholder,
+    ClrDatagridPlaceholder, ClrDatagridColumnToggleButton, ClrDatagridColumnToggleTitle,
 
     // Renderers
     DatagridMainRenderer, DatagridTableRenderer, DatagridHeadRenderer, DatagridHeaderRenderer, DatagridBodyRenderer,

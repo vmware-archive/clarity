@@ -18,7 +18,8 @@ import NestedPropertySpecs from "./built-in/nested-property.spec";
 import DatagridActionBarSpecs from "./datagrid-action-bar.spec";
 import DatagridActionOverflowSpecs from "./datagrid-action-overflow.spec";
 import DatagridCellSpecs from "./datagrid-cell.spec";
-import DatagridColumnToggle from "./datagrid-column-toggle.spec";
+import DatagridColumnToggleButtonSpecs from "./datagrid-column-toggle-button.spec";
+import DatagridColumnToggleSpecs from "./datagrid-column-toggle.spec";
 import DatagridColumnSpecs from "./datagrid-column.spec";
 import DatagridFilterSpecs from "./datagrid-filter.spec";
 import DatagridFooterSpecs from "./datagrid-footer.spec";
@@ -32,6 +33,7 @@ import DatagridRowDetailSpecs from "./datagrid-row-detail.spec";
 import DatagridRowSpecs from "./datagrid-row.spec";
 import DatagridSpecs from "./datagrid.spec";
 import {addHelpers} from "./helpers.spec";
+import ColumnToggleButtonsServiceSpecs from "./providers/column-toggle-buttons.service.spec";
 import FiltersProviderSpecs from "./providers/filters.spec";
 import DatagridHideableColumnServiceSpecs from "./providers/hideable-column.service.spec";
 import ItemsProviderSpecs from "./providers/items.spec";
@@ -60,6 +62,7 @@ describe("Datagrid", function() {
         ItemsProviderSpecs();
         SelectionProviderSpecs();
         DatagridHideableColumnServiceSpecs();
+        ColumnToggleButtonsServiceSpecs();
     });
     describe("Components", function() {
         DatagridActionBarSpecs();
@@ -76,7 +79,8 @@ describe("Datagrid", function() {
         DatagridPlaceholderSpecs();
         DatagridSpecs();
         DatagridHideableColumnSpec();
-        DatagridColumnToggle();
+        DatagridColumnToggleSpecs();
+        DatagridColumnToggleButtonSpecs();
         DatagridHideableColumnDirectiveSpec();
     });
     describe("Render", function() {

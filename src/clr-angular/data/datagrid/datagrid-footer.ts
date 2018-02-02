@@ -3,9 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, ContentChild, OnInit} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
+import {ClrDatagridColumnToggle} from "./datagrid-column-toggle";
 import {HideableColumnService} from "./providers/hideable-column.service";
 import {Selection, SelectionType} from "./providers/selection";
 
@@ -18,7 +19,8 @@ import {Selection, SelectionType} from "./providers/selection";
                 {{selection.current.length}}
             </clr-checkbox>
         </ng-container>
-        <clr-dg-column-toggle *ngIf="activeToggler"></clr-dg-column-toggle>
+        <ng-content select="clr-dg-column-toggle"></ng-content>
+        <clr-dg-column-toggle *ngIf="!toggle && activeToggler"></clr-dg-column-toggle>
         <div class="datagrid-foot-description">
             <ng-content></ng-content>
         </div>
@@ -37,6 +39,8 @@ export class ClrDatagridFooter implements OnInit {
 
     /* reference to the enum so that template can access */
     public SELECTION_TYPE = SelectionType;
+
+    @ContentChild(ClrDatagridColumnToggle) toggle: ClrDatagridColumnToggle;
 
     ngOnInit() {
         this.subscriptions.push(this.hideableColumnService.columnListChange.subscribe((change) => {

@@ -28,6 +28,10 @@
             &:disabled {
                 @include disabled-form-fields();
             }
+
+            option {
+                color: $clr-option-font-color;
+            }
         }
 
         //Remove default arrow from IE

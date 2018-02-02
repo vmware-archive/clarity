@@ -121,7 +121,7 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
         this.nbBreakingChanges = this.breakingChanges ? this.breakingChanges.length : 0;
         this.nbBugFixes = this.bugFixes ? this.bugFixes.length : 0;
         this.nbNewComponents = this.newComponents ? this.newComponents.length : 0;
-        this.newPackageFormat = (compareReleases("0.11.0", releaseNo) >= 0);
+        this.newPackageFormat = (compareReleases("0.11.0-beta", releaseNo) >= 0);
     }
 
     ngAfterViewInit() {

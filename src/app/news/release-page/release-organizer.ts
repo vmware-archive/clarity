@@ -24,33 +24,63 @@ function organize() {
 }
 
 export function compareReleases(rA, rB) {
-    let splitA = rA.split(".").map(part => parseInt(part, 10));
-    let splitB = rB.split(".").map(part => parseInt(part, 10));
-    let countA = 0;
-    let countB = 0;
+    const returnA = -1;
+    const returnB = 1;
+    // Simple string comparison for equality
+    if (rA === rB) {
+        return 0;
+    }
+    // Place these in order of importance, if any others are ever needed. alpha is lower than beta, etc.
+    const modifiers = ['alpha', 'beta', 'rc'];
 
-    if (rA.indexOf("-") > -1 && rB.indexOf("-") > -1) {
-        let minorVersionA = rA.split("-")[1].split(".");
-        let minorVersionB = rB.split("-")[1].split(".");
-        if (minorVersionA[0] < minorVersionB[0]) {
-            countA++;
-        } else {
-            countB++;
+    const splitA = rA.split("-");
+    const splitB = rB.split("-");
+    const versionA = splitA[0].split(".").map(part => parseInt(part, 10));
+    const versionB = splitB[0].split(".").map(part => parseInt(part, 10));
+
+    // Check the main semver numbers
+    for (let i = 0; i < 3; i++) {
+        if (versionA[i] > versionB[i]) {
+            return returnA;
+        } else if (versionA[i] < versionB[i]) {
+            return returnB;
         }
     }
 
-    for (let i in splitA) {
-        if (splitA[i] < splitB[i]) {
-            countA++;
-        } else if (splitA[i] > splitB[i]) {
-            countB++;
+    // Ok, need to compare against -modifier.version
+    const modifierA = (splitA[1]) ? splitA[1].split(".") : [];
+    const modifierB = (splitB[1]) ? splitB[1].split(".") : [];
+
+    // Check special case of -patch
+    if (modifierA.indexOf('patch') === 0) {
+        return returnA;
+    } else if (modifierB.indexOf('patch') === 0) {
+        return returnB;
+    }
+
+    // Compare modifiers
+    for (let i = 0; i < 2; i++) {
+        const indexA = modifiers.indexOf(modifierA[0]);
+        const indexB = modifiers.indexOf(modifierB[0]);
+
+        // If modifiers are different we can compute
+        if (indexA !== -1 && indexB !== -1) {
+            // Case where modifiers are equal like rc.1 and rc.2
+            if (indexA === indexB) {
+                const modVersionA = modifierA[1] || 0;
+                const modVersionB = modifierB[1] || 0;
+                return (modVersionA > modVersionB) ? returnA : returnB;
+            }
+            return (indexA > indexB) ? returnA : returnB;
+        } else if (indexA > indexB) {
+          // Here the B has no modifier, so is newer
+          return returnB;
+        } else if (indexA < indexB) {
+          // Here the A has no modifier, so it is newer
+          return returnA;
         }
     }
 
-    if (countA > countB) {
-        return 1;
-    } else if (countB > countA) {
-        return -1;
-    }
-    return 0;
+    // Otherwise, we have an unknown value provided
+    return -2;
 }

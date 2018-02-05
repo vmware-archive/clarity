@@ -13,11 +13,13 @@ import {FiltersProvider} from "./providers/filters";
 import {Page} from "./providers/page";
 import {Sort} from "./providers/sort";
 import {StateDebouncer} from "./providers/state-debouncer.provider";
+import {TableHeightService} from "./providers/table-height.service";
 import {DomAdapter} from "./render/dom-adapter";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 
-const PROVIDERS_NEEDED =
-    [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher, Page, StateDebouncer];
+const PROVIDERS_NEEDED = [
+    Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher, Page, StateDebouncer, TableHeightService
+];
 
 export default function(): void {
     describe("DatagridHideableColumn directive", function() {

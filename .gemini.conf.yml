@@ -8,7 +8,7 @@ browsers:
 
 system:
   plugins:
-    'html-reporter/gemini': 
+    'html-reporter/gemini':
       enabled: true
       path: 'reports/gemini'
 

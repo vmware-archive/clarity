@@ -15,9 +15,12 @@ import {Page} from "./providers/page";
 import {Selection, SelectionType} from "./providers/selection";
 import {Sort} from "./providers/sort";
 import {StateDebouncer} from "./providers/state-debouncer.provider";
+import {TableHeightService} from "./providers/table-height.service";
 
-const PROVIDERS_NEEDED =
-    [Selection, Items, FiltersProvider, Sort, Page, HideableColumnService, StateDebouncer, ColumnToggleButtonsService];
+const PROVIDERS_NEEDED = [
+    Selection, Items, FiltersProvider, Sort, Page, HideableColumnService, StateDebouncer, ColumnToggleButtonsService,
+    TableHeightService
+];
 
 export default function(): void {
     describe("ClrDatagridFooter component", function() {
@@ -33,7 +36,7 @@ export default function(): void {
             });
 
             it("adds the .datagrid-cell class to the host", function() {
-                expect(context.clarityElement.classList.contains("datagrid-foot")).toBeTruthy();
+                expect(context.clarityElement.classList.contains("datagrid-footer")).toBeTruthy();
             });
 
             it("does not show the selection details when selection type is None", function() {

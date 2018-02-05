@@ -17,7 +17,9 @@ export default function(): void {
         let organizer: MockDatagridRenderOrganizer;
 
         beforeEach(function() {
-            context = this.create(DatagridHeadRenderer, SimpleTest, [MOCK_ORGANIZER_PROVIDER]);
+            context = this.create(DatagridHeadRenderer, SimpleTest, [
+                MOCK_ORGANIZER_PROVIDER,
+            ]);
             organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
         });
 

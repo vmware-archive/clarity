@@ -72,7 +72,9 @@ let nbRow: number = 0;
             depending on whether the details replace the row or not.
         -->
         <ng-template #detail>
-            <ng-content select="clr-dg-row-detail"></ng-content>
+            <div class="datagrid-row-detail-wrapper">
+                <ng-content select="clr-dg-row-detail"></ng-content>
+            </div>
         </ng-template>
     `,
     host: {

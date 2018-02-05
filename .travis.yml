@@ -1,5 +1,5 @@
 language: node_js
-node_js: 
+node_js:
   - "8"
 
 env:
@@ -29,14 +29,13 @@ addons:
       - google-chrome-stable
   artifacts:
     paths:
-      - "$TRAVIS_BUILD_DIR/reports/"
-
+      - $TRAVIS_BUILD_DIR/reports/gemini
 cache:
   apt: true
   directories:
     - node_modules
 
-before_install: 
+before_install:
 
 before_script:
   - npm install -g gemini@5.2.0 html-reporter@2.0.1

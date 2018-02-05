@@ -33,6 +33,7 @@ import {Selection, SelectionType} from "./providers/selection";
 import {Sort} from "./providers/sort";
 import {StateDebouncer} from "./providers/state-debouncer.provider";
 import {StateProvider} from "./providers/state.provider";
+import {TableHeightService} from "./providers/table-height.service";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 @Component({
@@ -51,6 +52,7 @@ import {DatagridRenderOrganizer} from "./render/render-organizer";
         StateDebouncer,
         StateProvider,
         ColumnToggleButtonsService,
+        TableHeightService,
     ],
     host: {"[class.datagrid-host]": "true"}
 })

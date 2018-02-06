@@ -127,7 +127,8 @@ export default function(): void {
                expect(this.container.nativeElement.textContent.trim()).toEqual("40414243");
            }));
 
-        itIgnore(["firefox"], "can accept an NonNgIterable instead of an array", fakeAsync(function(this: TestContext) {
+        itIgnore(["firefox", "safari"], "can accept an NonNgIterable instead of an array",
+                 fakeAsync(function(this: TestContext) {
                      this.testComponent.numbers = {
                          get(index: number) {
                              return index;

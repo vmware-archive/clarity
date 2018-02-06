@@ -87,6 +87,7 @@
         "karma-jasmine-html-reporter": "^0.2.2",
         "karma-jasmine-matchers": "^3.7.0",
         "karma-mocha-reporter": "^2.2.4",
+        "karma-safari-launcher": "^1.0.0",
         "karma-sourcemap-loader": "^0.3.7",
         "karma-webpack": "^2.0.4",
         "lite-server": "^2.3.0",

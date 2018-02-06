@@ -8,6 +8,7 @@ import {Component, QueryList, TemplateRef, ViewChildren} from "@angular/core";
 import {DatagridColumnToggle} from "./datagrid-column-toggle";
 import {DatagridHideableColumn} from "./datagrid-hideable-column";
 import {TestContext} from "./helpers.spec";
+import {ColumnToggleButtonsService} from "./providers/column-toggle-buttons.service";
 import {HideableColumnService} from "./providers/hideable-column.service";
 
 export default function(): void {
@@ -15,6 +16,7 @@ export default function(): void {
         describe("Typescript API", function() {
             let hideableColumnService: HideableColumnService;
             let component: DatagridColumnToggle;
+            let columnToggleButtons: ColumnToggleButtonsService;
 
             function getTestColumns(): DatagridHideableColumn[] {
                 // Mixed columns: 1/2 hidden (true) & 1/2 showing (false)
@@ -39,7 +41,8 @@ export default function(): void {
 
             beforeEach(function() {
                 hideableColumnService = new HideableColumnService();
-                component = new DatagridColumnToggle(hideableColumnService);
+                columnToggleButtons = new ColumnToggleButtonsService();
+                component = new DatagridColumnToggle(hideableColumnService, columnToggleButtons);
             });
 
             it("gets a list of hideable columns from the HideableColumnService", function() {
@@ -104,7 +107,8 @@ export default function(): void {
             let hideableColumnService: HideableColumnService;
 
             beforeEach(function() {
-                context = this.create(DatagridColumnToggle, SimpleTest, [HideableColumnService]);
+                context =
+                    this.create(DatagridColumnToggle, SimpleTest, [HideableColumnService, ColumnToggleButtonsService]);
                 hideableColumnService = context.getClarityProvider(HideableColumnService);
             });
 
@@ -141,7 +145,7 @@ export default function(): void {
                 expect(context.clarityDirective.open).toBe(true);
 
                 // Testing 'OK'
-                const closeOK = context.clarityElement.querySelector(".switch-footer > .action-right > button");
+                const closeOK = context.clarityElement.querySelector(".switch-footer .action-right button");
                 closeOK.click();
                 context.detectChanges();
                 expect(context.clarityDirective.open).toBe(false);
@@ -268,6 +272,60 @@ export default function(): void {
                 context.detectChanges();
                 expect(columnCheckboxes[columnCheckboxes.length - 1].disabled).toBe(false);
             });
+
+            it("shows the default buttons", function() {
+                const iconBtn = context.clarityElement.querySelector(".column-switch-wrapper > button");
+                expect(context.clarityDirective.open).toBe(false);
+                iconBtn.click();
+                context.detectChanges();
+                expect(context.clarityDirective.open).toBe(true);
+
+                const buttons = context.clarityElement.querySelectorAll(".switch-footer button");
+                expect(buttons[0].innerText).toEqual("Select All".toUpperCase());
+                expect(buttons[1].innerText).toEqual("OK".toUpperCase());
+                const title = context.clarityElement.querySelector(".switch-header");
+                expect(title.innerHTML).toContain("Show Columns");
+            });
+        });
+
+        describe("Custom buttons", function() {
+            // Until we can properly type "this"
+            let context: TestContext<DatagridColumnToggle, CustomButtonsTest>;
+
+            beforeEach(function() {
+                context = this.create(DatagridColumnToggle, CustomButtonsTest,
+                                      [HideableColumnService, ColumnToggleButtonsService]);
+            });
+
+            it("projects custom buttons and title", function() {
+                const iconBtn = context.clarityElement.querySelector(".column-switch-wrapper > button");
+                expect(context.clarityDirective.open).toBe(false);
+                iconBtn.click();
+                context.detectChanges();
+                expect(context.clarityDirective.open).toBe(true);
+
+                const buttons = context.clarityElement.querySelectorAll(".switch-footer button");
+                expect(buttons[0].innerText).toEqual("Select All!".toUpperCase());
+                expect(buttons[1].innerText).toEqual("OK!".toUpperCase());
+                const title = context.clarityElement.querySelector(".switch-header");
+                expect(title.innerHTML).toContain("Custom Title");
+            });
+
+            it("handles the click events", function() {
+                const service = context.getClarityProvider(ColumnToggleButtonsService);
+                spyOn(service, "buttonClicked");
+                const iconBtn = context.clarityElement.querySelector(".column-switch-wrapper > button");
+                iconBtn.click();
+                service.selectAllDisabled = false;
+                context.detectChanges();
+                const buttons = context.clarityElement.querySelectorAll(".switch-footer button");
+                buttons[0].click();
+                context.detectChanges();
+                expect(service.buttonClicked).toHaveBeenCalledTimes(1);
+                buttons[1].click();
+                context.detectChanges();
+                expect(service.buttonClicked).toHaveBeenCalledTimes(2);
+            });
         });
     });
 }
@@ -287,3 +345,14 @@ class SimpleTest {
     @ViewChildren(TemplateRef) templates: QueryList<TemplateRef<any>>;
     shown: boolean = true;
 }
+
+@Component({
+    template: `
+        <clr-dg-column-toggle>
+            <clr-dg-column-toggle-button clrType="selectAll">Select All!</clr-dg-column-toggle-button>
+            <clr-dg-column-toggle-button clrType="ok">OK!</clr-dg-column-toggle-button>
+            <clr-dg-column-toggle-title>Custom Title</clr-dg-column-toggle-title>
+        </clr-dg-column-toggle>
+    `
+})
+class CustomButtonsTest {}

@@ -22,6 +22,7 @@ import {DatagridItems} from "./datagrid-items";
 import {DatagridPlaceholder} from "./datagrid-placeholder";
 import {DatagridRow} from "./datagrid-row";
 import {State} from "./interfaces/state";
+import {ColumnToggleButtonsService} from "./providers/column-toggle-buttons.service";
 import {FiltersProvider} from "./providers/filters";
 import {ExpandableRowsCount} from "./providers/global-expandable-rows";
 import {HideableColumnService} from "./providers/hideable-column.service";
@@ -38,8 +39,18 @@ import {DatagridRenderOrganizer} from "./render/render-organizer";
     selector: "clr-datagrid",
     templateUrl: "./datagrid.html",
     providers: [
-        Selection, Sort, FiltersProvider, Page, Items, DatagridRenderOrganizer, RowActionService, ExpandableRowsCount,
-        HideableColumnService, StateDebouncer, StateProvider
+        Selection,
+        Sort,
+        FiltersProvider,
+        Page,
+        Items,
+        DatagridRenderOrganizer,
+        RowActionService,
+        ExpandableRowsCount,
+        HideableColumnService,
+        StateDebouncer,
+        StateProvider,
+        ColumnToggleButtonsService,
     ],
     host: {"[class.datagrid-host]": "true"}
 })

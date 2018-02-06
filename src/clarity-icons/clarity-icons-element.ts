@@ -29,23 +29,6 @@ export function ClarityIconElement() {
     _instance.clrIconUniqId = "_clr_icon_" + clrIconId;
     clrIconId++;
 
-    Object.defineProperty(_instance, "currentShapeAttrVal", {
-        get: function() {
-            return _instance._currentShapeAttrVal;
-        },
-        set: function(shapeName: string) {
-            if (shapeName) {
-                _instance._currentShapeAttrVal = shapeName;
-
-                // callback function to remove the subscription
-                _instance._shapeTemplateSubscription =
-                    ShapeTemplateObserver.instance.subscribeTo(shapeName, (updatedTemplate: string) => {
-                        this._injectTemplate(updatedTemplate);
-                    });
-            }
-        }
-    });
-
     return _instance;
 }
 
@@ -95,14 +78,20 @@ ClarityIconElement.prototype.connectedCallback = function() {
     if (this.hasAttribute("shape")) {
         const shapeAttrValue = this.getAttribute("shape").split(/\s/)[0];
 
-        if (shapeAttrValue === this.currentShapeAttrVal) {
-            return;
-        }
+        this._shapeTemplateSubscription =
+            ShapeTemplateObserver.instance.subscribeTo(shapeAttrValue, (updatedTemplate: string) => {
+                this._injectTemplate(updatedTemplate);
+            });
 
         this.currentShapeAttrVal = shapeAttrValue;
 
         if (ClarityIconsApi.instance.has(this.currentShapeAttrVal)) {
-            this.currentShapeTemplate = ClarityIconsApi.instance.get(this.currentShapeAttrVal);
+            const currentShapeTemplate = ClarityIconsApi.instance.get(this.currentShapeAttrVal);
+            if (currentShapeTemplate === this.currentShapeTemplate) {
+                return;
+            } else {
+                this.currentShapeTemplate = currentShapeTemplate;
+            }
         } else {
             this._injectErrorTemplate();
             return;
@@ -137,6 +126,17 @@ ClarityIconElement.prototype.attributeChangedCallback = function(attributeName: 
 
     if (attributeName === "shape") {
         this.currentShapeAttrVal = newValue.split(/\s/)[0];
+
+        // transfer change handler callback to new shape name
+        if (this._shapeTemplateSubscription) {
+            // remove the existing change handler callback on the old shape name
+            this._shapeTemplateSubscription();
+            // create a new subscription on the new shape name
+            this._shapeTemplateSubscription =
+                ShapeTemplateObserver.instance.subscribeTo(this.currentShapeAttrVal, (updatedTemplate: string) => {
+                    this._injectTemplate(updatedTemplate);
+                });
+        }
 
         if (ClarityIconsApi.instance.has(this.currentShapeAttrVal)) {
             this.currentShapeTemplate = ClarityIconsApi.instance.get(this.currentShapeAttrVal);

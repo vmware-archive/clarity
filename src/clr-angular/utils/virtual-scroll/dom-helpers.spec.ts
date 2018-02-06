@@ -4,6 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import {itIgnore} from "../../../../tests/tests.helpers";
+
 import {
     getScrollTop,
     offsetHeight,
@@ -56,7 +58,7 @@ export default function(): void {
                 expect(ratioBottomReady(this.viewport)).toBe(2);
             });
 
-            it("takes padding of the viewport into account", function(this: TestContext) {
+            itIgnore(["firefox"], "takes padding of the viewport into account", function(this: TestContext) {
                 this.viewport.style.padding = "50px";
                 expect(ratioBottomReady(this.viewport)).toBe(3);
             });
@@ -99,7 +101,7 @@ export default function(): void {
                 expect(ratioTopReady(this.viewport)).toBe(2);
             });
 
-            it("takes padding of the viewport into account", function(this: TestContext) {
+            itIgnore(["firefox"], "takes padding of the viewport into account", function(this: TestContext) {
                 this.viewport.style.padding = "50px";
                 this.viewport.scrollTop = 300;
                 expect(ratioTopReady(this.viewport)).toBe(3);

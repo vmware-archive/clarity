@@ -8,9 +8,10 @@ import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing"
 import {By} from "@angular/platform-browser";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
+import {itIgnore} from "../../../../tests/tests.helpers";
+
 import {NonNgIterable} from "./non-ng-iterable";
 import {VirtualForOf} from "./virtual-for-of";
-
 
 @Component({
     template: `
@@ -126,19 +127,19 @@ export default function(): void {
                expect(this.container.nativeElement.textContent.trim()).toEqual("40414243");
            }));
 
-        it("can accept an NonNgIterable instead of an array", fakeAsync(function(this: TestContext) {
-               this.testComponent.numbers = {
-                   get(index: number) {
-                       return index;
-                   }
-               };
-               this.fixture.detectChanges();
-               tick();
-               expect(this.container.nativeElement.textContent.trim()).toEqual("-2-10123");
-               this.scroll(1);
-               expect(this.container.nativeElement.textContent.trim()).toEqual("-101234");
-               this.scroll(-2);
-               expect(this.container.nativeElement.textContent.trim()).toEqual("-3-2-1012");
-           }));
+        itIgnore(["firefox"], "can accept an NonNgIterable instead of an array", fakeAsync(function(this: TestContext) {
+                     this.testComponent.numbers = {
+                         get(index: number) {
+                             return index;
+                         }
+                     };
+                     this.fixture.detectChanges();
+                     tick();
+                     expect(this.container.nativeElement.textContent.trim()).toEqual("-2-10123");
+                     this.scroll(1);
+                     expect(this.container.nativeElement.textContent.trim()).toEqual("-101234");
+                     this.scroll(-2);
+                     expect(this.container.nativeElement.textContent.trim()).toEqual("-3-2-1012");
+                 }));
     });
 }

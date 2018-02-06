@@ -9,6 +9,7 @@ import {FormsModule} from "@angular/forms";
 import {By} from "@angular/platform-browser";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
+import {itIgnore} from "../../../../tests/tests.helpers";
 import {ClrModal} from "../../modal/modal";
 import {ClrModalModule} from "../../modal/modal.module";
 
@@ -58,7 +59,7 @@ describe("FocusTrap", () => {
             expect(document.activeElement).toEqual(element);
         });
 
-        it(`should keep focus within nested element with focus trap directive`, () => {
+        itIgnore(["firefox"], `should keep focus within nested element with focus trap directive`, () => {
             component.level1 = true;
             fixture.detectChanges();
             const levelOneFocusTrap = compiled.querySelector("#levelOneFocusTrap");
@@ -66,7 +67,7 @@ describe("FocusTrap", () => {
             expect(document.activeElement).toEqual(levelOneFocusTrap);
         });
 
-        it(`should keep focus within last focus trap directive element`, () => {
+        itIgnore(["firefox"], `should keep focus within last focus trap directive element`, () => {
             component.level1 = true;
             component.level2 = true;
             fixture.detectChanges();
@@ -79,23 +80,24 @@ describe("FocusTrap", () => {
                 .toEqual(levelTwoButton, `element inside currently active focus trap directive wasn't focused`);
         });
 
-        it(`should keep trap focus within previous focus trap element if last one is removed`, () => {
-            component.level1 = true;
-            component.level2 = true;
-            component.level3 = true;
-            fixture.detectChanges();
-            const levelThreeButton = compiled.querySelector("#levelThreeButton");
-            const levelTwoButton = compiled.querySelector("#levelTwoButton");
-            const levelTwoFocusTrap = compiled.querySelector("#levelTwoFocusTrap");
-            levelThreeButton.focus();
-            component.level3 = false;
-            fixture.detectChanges();
-            lastInput.focus();
-            expect(document.activeElement).toEqual(levelTwoFocusTrap);
-            levelTwoButton.focus();
-            expect(document.activeElement)
-                .toEqual(levelTwoButton, `element inside currently active focus trap directive wasn't focused`);
-        });
+        itIgnore(
+            ["firefox"], `should keep trap focus within previous focus trap element if last one is removed`, () => {
+                component.level1 = true;
+                component.level2 = true;
+                component.level3 = true;
+                fixture.detectChanges();
+                const levelThreeButton = compiled.querySelector("#levelThreeButton");
+                const levelTwoButton = compiled.querySelector("#levelTwoButton");
+                const levelTwoFocusTrap = compiled.querySelector("#levelTwoFocusTrap");
+                levelThreeButton.focus();
+                component.level3 = false;
+                fixture.detectChanges();
+                lastInput.focus();
+                expect(document.activeElement).toEqual(levelTwoFocusTrap);
+                levelTwoButton.focus();
+                expect(document.activeElement)
+                    .toEqual(levelTwoButton, `element inside currently active focus trap directive wasn't focused`);
+            });
     });
 
 

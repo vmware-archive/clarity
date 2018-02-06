@@ -10,7 +10,6 @@
             @include custom-inputs(1rem);
             @include clr-form-fields-appearance(2.5rem, $clr-form-field-border-color);
             @include input-border-bottom-animation($clr-input-border-color);
-
             position: relative;
             padding: 0 ($clr-dropdown-caret-icon-dimension + 0.5rem) 0 0.25rem;
             cursor: pointer;
@@ -27,6 +26,10 @@
 
             &:disabled {
                 @include disabled-form-fields();
+            }
+
+            option {
+                color: $clr-select-option-font-color;
             }
         }
 
@@ -64,7 +67,6 @@
         &.disabled > select,
         select:disabled {
             @include disabled-form-fields();
-
             &:hover {
                 background: none;
                 border-color: $clr-form-field-border-color;
@@ -93,6 +95,7 @@
         }
         option {
             padding: 0.125rem 0.25rem;
+            color: $clr-multiselect-option-font-color;
         }
     }
 }

@@ -1,6 +1,7 @@
 language: node_js
-node_js:
+node_js: 
   - "8"
+
 env:
   global:
     - CXX=g++-4.8
@@ -28,17 +29,17 @@ addons:
       - google-chrome-stable
   artifacts:
     paths:
-      - $TRAVIS_BUILD_DIR/gemini-report/
+      - "$TRAVIS_BUILD_DIR/reports/"
+
 cache:
   apt: true
   directories:
     - node_modules
 
-before_install:
+before_install: 
 
 before_script:
-  - npm install -g gemini@5.2.0
-  - npm install -g html-reporter@2.0.1
+  - npm install -g gemini@5.2.0 html-reporter@2.0.1
 
 script:
   - npm run $TEST_SUITE # run unit test and css regression test sets in parallel

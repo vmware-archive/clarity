@@ -40,6 +40,11 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
                 loader: 'null-loader'
+            },
+            {
+                test: /\.(js|ts)$/, loader: 'istanbul-instrumenter-loader',
+                enforce: 'post',
+                exclude: [ /\.(e2e|spec)\.ts$/, /node_modules/]
             }
         ]
     }

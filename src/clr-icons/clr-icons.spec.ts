@@ -3,8 +3,6 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ClarityIconsApi} from "./clarity-icons-api";
-
 import {
     getErrorShape,
     giveAngleShapeTitle,
@@ -549,6 +547,14 @@ describe("ClarityIcons", () => {
             expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(testShape));
         });
 
+        it("should update template if template change before injected", () => {
+            const testIcon = document.createElement("clr-icon") as ClarityIconElement;
+            testIcon.setAttribute("shape", "user");
+            const testShape = `<svg><g><title>first</title></g></svg>`;
+            ClarityIcons.add({"user": testShape});
+            document.body.appendChild(testIcon);
+            expect(removeWhitespace(testIcon.innerHTML)).toBe(removeWhitespace(testShape));
+        });
 
         it("should add template change handler callbacks", () => {
             const userAttrName = "user";
@@ -559,9 +565,28 @@ describe("ClarityIcons", () => {
             userIcon2.setAttribute("shape", userAttrName);
             const homeIcon = document.createElement("clr-icon") as ClarityIconElement;
             homeIcon.setAttribute("shape", homeAttrName);
+            document.body.appendChild(userIcon1);
+            document.body.appendChild(userIcon2);
+            document.body.appendChild(homeIcon);
 
             expect(changeHandlerCallbacks[userAttrName].length).toBe(2);
             expect(changeHandlerCallbacks[homeAttrName].length).toBe(1);
+        });
+
+
+        it("should transfer change handler callback to updated shape name key", () => {
+            const userAttrName = "user";
+            const homeAttrName = "home";
+
+            const testIcon = document.createElement("clr-icon") as ClarityIconElement;
+            testIcon.setAttribute("shape", userAttrName);
+            document.body.appendChild(testIcon);
+            expect(changeHandlerCallbacks[userAttrName].length).toBe(1);
+            testIcon.setAttribute("shape", homeAttrName);
+            expect(changeHandlerCallbacks[userAttrName]).toBeUndefined();
+            expect(changeHandlerCallbacks[homeAttrName].length).toBe(1);
+            document.body.removeChild(testIcon);
+            expect(changeHandlerCallbacks[homeAttrName]).toBeUndefined();
         });
 
         it("should remove template change handler callbacks when icon removed from the DOM", () => {
@@ -594,6 +619,7 @@ describe("ClarityIcons", () => {
 
             clarityIcon.setAttribute("shape", nonExistingShape);
             clarityIcon.setAttribute("title", customTitle);
+            document.body.appendChild(clarityIcon);
 
             expect(removeWhitespace(clarityIcon.innerHTML))
                 .toBe(removeWhitespace(getErrorShape(clrIconUniqId, customTitle)));

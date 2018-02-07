@@ -3,6 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import {TrackByFunction} from "@angular/core";
 import {fakeAsync, tick} from "@angular/core/testing";
 import {Subject} from "rxjs/Subject";
 
@@ -250,81 +251,79 @@ export default function(): void {
 
         describe("client-side selection and pagination", function() {
             const items = [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}, {id: 8}, {id: 9}, {id: 10}];
-            function testSelectedItems(selectedIndexes: any[]) {
-                items.forEach((item, index) => {
+            function cloneItems() {
+                return items.map(item => {
+                    return {...item};
+                });
+            }
+            function testSelectedItems(latestItems, selectedIndexes: any[]) {
+                latestItems.forEach((item, index) => {
                     const state = selectedIndexes.indexOf(index) > -1;
                     expect(selectionInstance.isSelected(item)).toEqual(state);
                 });
             }
 
             beforeEach(function() {
-                beforeEach(function() {
-                    itemsInstance.smartenUp();
-                    itemsInstance.all = items;
-                    pageInstance.size = 3;
-                });
+                itemsInstance.smartenUp();
+                itemsInstance.all = items;
+                pageInstance.size = 3;
             });
 
             describe("multi-selection", function() {
-                function testMultiSelection() {
-                    selectionInstance.setSelected(items[2], true);
-                    testSelectedItems([2]);
-                    expect(selectionInstance.current).toEqual([items[2]]);
-                    pageInstance.current = 3;
-                    testSelectedItems([2]);
-                    expect(selectionInstance.current).toEqual([items[2]]);
-                }
-
                 beforeEach(function() {
                     selectionInstance.selectionType = SelectionType.Multi;
                 });
 
-                it("should support no trackBy", function() {
-                    testMultiSelection();
+                it("should preserve selection on page change", function() {
+                    selectionInstance.setSelected(items[2], true);
+                    expect(selectionInstance.current).toEqual([items[2]]);
+                    pageInstance.current = 3;
+                    expect(selectionInstance.current).toEqual([items[2]]);
                 });
 
-                it("should support trackBy item", function() {
-                    itemsInstance.trackBy = (index, item) => item.id;
-                    itemsInstance.all = items;
-                    testMultiSelection();
-                });
+                function testTrackBy(trackBy: TrackByFunction<{id: number}>) {
+                    return fakeAsync(function() {
+                        itemsInstance.trackBy = trackBy;
+                        selectionInstance.setSelected(items[2], true);
+                        const clones = cloneItems();
+                        itemsInstance.all = clones;
+                        tick();
+                        expect(selectionInstance.current).toEqual([clones[2]]);
+                        testSelectedItems(clones, [2]);
+                    });
+                }
 
-                it("should support trackBy index", function() {
-                    itemsInstance.trackBy = (index, item) => index;
-                    itemsInstance.all = items;
-                    testMultiSelection();
-                });
+                it("should support trackBy item", testTrackBy((index, item) => item.id));
+                it("should support trackBy index", testTrackBy((index, item) => index));
             });
 
             describe("single selection", function() {
-                function testSingleSelection() {
-                    selectionInstance.currentSingle = items[2];
-                    pageInstance.current = 2;
-                    testSelectedItems([2]);
-                    selectionInstance.currentSingle = items[5];
-                    pageInstance.current = 3;
-                    testSelectedItems([5]);
-                }
-
                 beforeEach(function() {
                     selectionInstance.selectionType = SelectionType.Single;
                 });
 
-                it("should support no trackBy", function() {
-                    testSingleSelection();
+                it("should preserve selection on page change", function() {
+                    selectionInstance.currentSingle = items[2];
+                    pageInstance.current = 2;
+                    expect(selectionInstance.isSelected(items[2])).toBe(true);
+                    selectionInstance.currentSingle = items[5];
+                    pageInstance.current = 3;
+                    expect(selectionInstance.isSelected(items[5])).toBe(true);
                 });
 
-                it("should support trackBy item", function() {
-                    itemsInstance.trackBy = (index, item) => item.id;
-                    itemsInstance.all = items;
-                    testSingleSelection();
-                });
+                function testTrackBy(trackBy: TrackByFunction<{id: number}>) {
+                    return fakeAsync(function() {
+                        itemsInstance.trackBy = trackBy;
+                        selectionInstance.currentSingle = items[2];
+                        const clones = cloneItems();
+                        itemsInstance.all = clones;
+                        tick();
+                        testSelectedItems(clones, [2]);
+                    });
+                }
 
-                it("should support trackBy index", function() {
-                    itemsInstance.trackBy = (index, item) => index;
-                    itemsInstance.all = items;
-                    testSingleSelection();
-                });
+                it("should support trackBy item", testTrackBy((index, item) => item.id));
+                it("should support trackBy index", testTrackBy((index, item) => index));
             });
         });
 

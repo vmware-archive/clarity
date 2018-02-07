@@ -71,6 +71,7 @@ export default function(): void {
             beforeEach(function() {
                 context = this.create(ClrDatagridRow, FullTest, PROVIDERS);
                 selectionProvider = TestBed.get(Selection);
+                TestBed.get(Items).all = [{id: 1}, {id: 2}];
             });
 
             it("doesn't display a checkbox unless selection type is multi", function() {

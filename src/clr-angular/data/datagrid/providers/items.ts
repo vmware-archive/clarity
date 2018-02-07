@@ -79,14 +79,16 @@ export class Items {
      * List of all items in the datagrid
      */
     private _all: any[];
+    public get all() {
+        return this._all;
+    }
     public set all(items: any[]) {
+        this._all = items;
+        this.emitAllChanges(items);
         if (this.smart) {
-            this._all = items;
-            this.emitAllChanges(items);
             this._filterItems();
         } else {
             this._displayed = items;
-            this.emitAllChanges(items);
             this.emitChange();
         }
     }

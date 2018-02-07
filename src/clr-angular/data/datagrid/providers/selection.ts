@@ -61,7 +61,7 @@ export class Selection {
 
             // Filter out any unmatched items if we're using smart datagrids where we expect all items to be present
             if (this._items.smart) {
-                leftOver = this.current.filter(selected => updatedItems.indexOf(selected) > -1);
+                leftOver = leftOver.filter(selected => updatedItems.indexOf(selected) > -1);
             }
 
             // TODO: Discussed this with Eudes and this is fine for now.
@@ -134,7 +134,7 @@ export class Selection {
         }
         this._currentSingle = value;
         if (this._items.trackBy && value) {
-            const lookup = this._items.displayed.findIndex(maybe => maybe === value);
+            const lookup = this._items.all.findIndex(maybe => maybe === value);
             this.selectedSingle = this._items.trackBy(lookup, value);
         }
         this.emitChange();
@@ -212,8 +212,8 @@ export class Selection {
                     this.current.push(item);
                     if (trackBy) {
                         // Push selected ref onto array
-                        const lookup = this._items.displayed.findIndex(maybe => maybe === item);
-                        this.selected.push(this._items.trackBy(0, item));
+                        const lookup = this._items.all.findIndex(maybe => maybe === item);
+                        this.selected.push(this._items.trackBy(lookup, item));
                     }
                     this.emitChange();
                 }

@@ -104,6 +104,7 @@
 @import "../forms/checkbox/checkbox.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
 @import "../forms/radio.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
 @import "../forms/select.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity, icons.clarity, images.clarity
+@import "../forms/datepicker/datepicker.clarity";
 @import "../forms/forms.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
 
 //Stack View

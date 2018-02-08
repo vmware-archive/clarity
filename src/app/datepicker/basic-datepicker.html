@@ -1,0 +1,100 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>1. Datepicker - Auto Host Wrapped</h4>
+
+<div>
+    <h6>a. ngModel</h6>
+    <p></p>
+    <input
+        clrDatepicker
+        [(ngModel)]="model">
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-10 col-lg-5">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>[(ngModel)]</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{model}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<pre>
+    <code clr-code-highlight="language-html">
+        &lt;input clrDatepicker [(ngModel)]=&quot;model&quot;&gt;
+    </code>
+</pre>
+
+<div>
+    <h6>b. clrDatepicker</h6>
+    <p></p>
+    <input
+        clrDatepicker (clrDatepickerChange)="datepickerChange($event)">
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-10 col-lg-5">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>(clrDatepickerChange)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{date}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<pre>
+    <code clr-code-highlight="language-html">
+         &lt;input clrDatepicker (clrDatepickerChange)=&quot;datepickerChange($event)&quot;&gt;
+    </code>
+</pre>
+
+<h4>2. Datepicker - Wrapper Provided</h4>
+
+<div>
+    <h6>a. clr-datepicker-container</h6>
+    <p></p>
+    <clr-datepicker-container>
+        <input [clrDatepicker]="datepickerContainer" (clrDatepickerChange)="datepickerContainerChange($event)">
+    </clr-datepicker-container>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-10 col-lg-5">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>[(clrDatepicker)]</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{datepickerContainer}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<pre>
+    <code clr-code-highlight="language-html">
+        &lt;clr-datepicker-container&gt;
+            &lt;input [clrDatepicker]="datepickerContainer" (clrDatepickerChange)=&quot;datepickerContainerChange($event)&quot;&gt;
+        &lt;/clr-datepicker-container&gt;
+    </code>
+</pre>

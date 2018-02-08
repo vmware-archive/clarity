@@ -37,6 +37,7 @@ import {KSAlerts} from "./containers/emphasis/alerts.component";
 import {KSBadges} from "./containers/emphasis/badges.component";
 import {KSLabels} from "./containers/emphasis/labels.component";
 import {KSCheckboxes} from "./containers/forms/checkboxes.component";
+import {KSDatepicker} from "./containers/forms/datepicker.component";
 import {KSForms} from "./containers/forms/forms.component";
 import {KSInputs} from "./containers/forms/inputs.component";
 import {KSRadios} from "./containers/forms/radios.component";
@@ -76,7 +77,7 @@ import {KSWizards} from "./containers/wizard/wizards.component";
         KSLogin,        KSWikipediaDemo,  KSAbbeyRoadDemo, KSBeatlesDemo,
         KSRevolverDemo, KSRubberSoulDemo, KSDayAndAgeDemo, KSSamsTownDemo,
         KSKillersDemo,  KSHotFussDemo,    KSProgressBars,  KSSpinners,
-        KSTables,       KSTooltips
+        KSTables,       KSTooltips,       KSDatepicker
     ],
     imports:
         [BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, ClarityModule, AppRoutingModule],

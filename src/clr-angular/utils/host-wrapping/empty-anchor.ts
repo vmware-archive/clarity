@@ -3,6 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-export * from "./checkbox/index";
-export * from "./forms.module";
-export * from "./datepicker/index";
+
+import {Component} from "@angular/core";
+
+@Component({
+    selector: "clr-empty-anchor",
+    template: "",
+})
+export class EmptyAnchor {}

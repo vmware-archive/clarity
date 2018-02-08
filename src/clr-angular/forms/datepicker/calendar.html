@@ -1,0 +1,49 @@
+<clr-monthpicker *ngIf="isMonthView"></clr-monthpicker>
+<clr-yearpicker *ngIf="isYearView"></clr-yearpicker>
+<ng-container *ngIf="!isMonthView && !isYearView">
+    <div class="calendar-header">
+        <div class="calendar-switchers">
+            <button class="calendar-btn" type="button" (click)="moveToPreviousMonth()">
+                <clr-icon shape="angle" dir="left"></clr-icon>
+            </button>
+            <button class="calendar-btn monthpicker-trigger" type="button" (click)="isMonthView = true">
+                {{calendarMonth}}
+            </button>
+            <button class="calendar-btn" type="button" (click)="moveToNextMonth()">
+                <clr-icon shape="angle" dir="right"></clr-icon>
+            </button>
+            <button class="calendar-btn" type="button" (click)="moveToCurrentMonth()">
+                <clr-icon shape="refresh"></clr-icon>
+            </button>
+        </div>
+        <button class="calendar-btn yearpicker-trigger" type="button" (click)="isYearView = true">
+            {{calendarYear}}
+        </button>
+    </div>
+    <table class="calendar-table weekdays">
+        <tr class="calendar-row">
+            <td *ngFor="let day of localeDaysShort" class="calendar-cell day">
+                {{day}}
+            </td>
+        </tr>
+    </table>
+    <table
+        class="calendar-table calendar-dates"
+        (keydown)="onCalendarKeyDown($event)">
+        <tr class="calendar-row" *ngFor="let row of calendarMatrix.matrix">
+            <td *ngFor="let cell of row" class="calendar-cell">
+                <button
+                    class="date"
+                    type="button"
+                    [class.is-today]="cell.isTodaysDate"
+                    [class.is-disabled]="cell.isDisabled"
+                    [class.is-active]="cell.isActive"
+                    [attr.tabindex]="cell.tabIndex"
+                    (click)="setDate(cell)"
+                    (focus)="onCalendarCellFocus(cell)">
+                    {{cell.calendarDate.date}}
+                </button>
+            </td>
+        </tr>
+    </table>
+</ng-container>

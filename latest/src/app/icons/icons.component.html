@@ -1,0 +1,113 @@
+<ng-template #searchBarContent>
+    <label for="search-icons-sticky" class="searchbar-label">
+        <clr-icon shape="search" size="24"></clr-icon>
+        <!-- [value]="searchValue" has eixst to make the input value persist when the searchbar get teleported -->
+        <button aria-label="Close" class="close" type="button" (click)="resetSearchBar()" [class.active]="searchValue">
+            <clr-icon shape="close" size="24"></clr-icon>
+        </button>
+        <input id="search-icons-sticky" [(ngModel)]="searchValue" placeholder="Search for Clarity Icons..." type="text" class="searchbar-input" (input)="getSearchValue($event)">
+    </label>
+    <div class="icon-preview-settings">
+        <div class="form-group">
+            <div class="toggle-switch">
+                <input type="checkbox" id="solidCheckBox"  [(ngModel)]="iconSolidness">
+                <label for="solidCheckBox"><span class="solid-preview-label">Preview:</span> Solid</label>
+            </div>
+            <div class="radio-group">
+                <label>Variations:</label>
+                <div class="radio-inline">
+                    <input type="radio" id="noneRadio" [value]="" name="notificationType" [(ngModel)]="iconDecoration" checked>
+                    <label for="noneRadio">none</label>
+                </div>
+                <div class="radio-inline">
+                    <input type="radio" id="badgeRadio" [value]="'badge'" name="notificationType" [(ngModel)]="iconDecoration">
+                    <label for="badgeRadio">badge</label>
+
+                </div>
+                <div class="radio-inline">
+                    <input type="radio" id="alertRadio" [value]="'alert'" name="notificationType" [(ngModel)]="iconDecoration">
+                    <label for="alertRadio">alert</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<section class="icons-header">
+
+    <div class="icons-background">
+        <div class="icon-bg-wrapper" [class.glow]="blinkIconsRandomly.indexOf(i)>=0"
+             *ngFor="let shape of blinkIconsFromEssentialSet; let i = index;">
+            <clr-icon [attr.shape]="shape" size="24"></clr-icon>
+        </div>
+    </div>
+
+    <div class="icons-header-wrapper">
+        <h1>Clarity Icons</h1>
+        <p class="icons-header-message">Over 200 beautiful and easy to use SVG icons, flexible with variations to meet&nbsp;your&nbsp;needs</p>
+        <div *ngIf="isOnIconSetsRoute" class="header-buttons">
+            <a class="btn btn-primary" routerLink="./clarity-icons">GET STARTED</a>
+            <a class="btn btn-primary hidden-sm-down" [href]="allSetsLink">DOWNLOAD ALL SVG SETS</a>
+        </div>
+        <div *ngIf="!isOnIconSetsRoute" class="header-buttons">
+            <a class="btn btn-primary" routerLink="./clarity-icons">GET STARTED</a>
+            <a class="btn btn-primary" routerLink="./icon-sets">SEE ICON SETS</a>
+        </div>
+    </div>
+
+</section>
+<div class="searchbar-container sticky" *ngIf="isOnIconSetsRoute && isSearchbarSticky"
+     [@searchBarStickAnimation]="isSearchbarSticky">
+    <div class="icons-search-wrapper">
+        <ng-container *ngTemplateOutlet="searchBarContent"></ng-container>
+    </div>
+</div>
+<section class="icons-content">
+    <div class="searchbar-container" *ngIf="isOnIconSetsRoute">
+        <div class="icons-search-wrapper" *ngIf="!isSearchbarSticky">
+            <ng-container *ngTemplateOutlet="searchBarContent"></ng-container>
+        </div>
+    </div>
+    <div class="content-container">
+        <nav class="sidenav icons-sidenav" [clr-nav-level]="2">
+            <section class="sidenav-content" [class.on-icon-sets]="isOnIconSetsRoute" [class.sticky]="isSidenavSticky">
+
+                <section class="nav-group">
+                    <input id="overview" type="checkbox">
+                    <label for="overview">Overview</label>
+                    <ul class="nav-list">
+                        <li><a routerLinkActive="active" [routerLink]="['./clarity-icons']" class="nav-link">Get Started</a></li>
+                        <li><a routerLinkActive="active" [routerLink]="['./how-to-use']" class="nav-link">How To Use</a>
+                        </li>
+                        <li><a routerLinkActive="active" [routerLink]="['./api']" class="nav-link">API</a></li>
+                    </ul>
+                </section>
+
+                <section class="nav-group">
+                    <input id="iconsets" type="checkbox">
+                    <label for="iconsets">Icon Sets</label>
+                    <ul class="nav-list">
+                        <li><a routerLink="./icon-sets" fragment="core-shapes"
+                               class="nav-link">Core</a></li>
+                        <li><a routerLink="./icon-sets" fragment="commerce-shapes"
+                               class="nav-link">Commerce</a></li>
+                        <li><a routerLink="./icon-sets" fragment="essential-shapes"
+                               class="nav-link">Essential</a></li>
+                        <li><a routerLink="./icon-sets" fragment="media-shapes"
+                               class="nav-link">Media</a></li>
+                        <li><a routerLink="./icon-sets" fragment="social-shapes"
+                               class="nav-link">Social</a></li>
+                        <li><a routerLink="./icon-sets" fragment="travel-shapes"
+                               class="nav-link">Travel</a></li>
+                        <li><a routerLink="./icon-sets" fragment="technology-shapes"
+                               class="nav-link">Technology</a></li>
+                    </ul>
+                </section>
+            </section>
+        </nav>
+        <div class="content-area">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</section>
+<section class="icons-footer"></section>

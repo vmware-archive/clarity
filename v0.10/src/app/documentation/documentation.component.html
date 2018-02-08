@@ -1,0 +1,27 @@
+<router-outlet></router-outlet>
+<nav class="sidenav" [clr-nav-level]="2">
+    <section class="sidenav-content">
+        <version-switcher></version-switcher>
+
+        <a class="nav-link" routerLink="/" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact:true}">Component Status</a>
+
+        <a class="nav-link" routerLink="/get-started" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact:true}">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern"></documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component"></documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav>

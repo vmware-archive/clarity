@@ -1,0 +1,131 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Lazy Loading Navigation Links</h4>
+
+<p>
+    <code class="clr-code">clrIfExpanded</code> structural directive can be used along with
+    <code class="clr-code">clr-vertical-nav-group-children</code> to lazily load links inside of a
+    <code class="clr-code">clr-vertical-nav-group</code>.
+</p>
+
+<div class="clr-example">
+    <div class="main-container" style="height: 432px">
+        <header class="header">
+            <div class="branding">
+                <a href="javascript://">
+                    <clr-icon shape="bolt" class="is-inverse"></clr-icon>
+                    <span class="title">Project Pokémon</span>
+                </a>
+            </div>
+        </header>
+        <div class="content-container">
+            <div class="content-area">
+                <router-outlet></router-outlet>
+            </div>
+            <clr-vertical-nav [clrVerticalNavCollapsible]="demoCollapsible">
+                <clr-vertical-nav-group
+                        routerLinkActive="active">
+                    <a routerLink="./normal" hidden aria-hidden="true">
+                    </a>
+                    <clr-icon shape="user" clrVerticalNavIcon></clr-icon>
+                    Normal
+                    <clr-vertical-nav-group-children *clrIfExpanded="true">
+                        <a clrVerticalNavLink
+                           routerLink="./normal/pidgey"
+                           routerLinkActive="active">
+                            Pidgey
+                        </a>
+                        <a clrVerticalNavLink
+                           routerLink="./normal/snorlax"
+                           routerLinkActive="active">
+                            Snorlax
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <clr-vertical-nav-group
+                        routerLinkActive="active">
+                    <a routerLink="./fire" hidden aria-hidden="true">
+                    </a>
+                    <clr-icon shape="flame" clrVerticalNavIcon></clr-icon>
+                    Fire
+                    <clr-vertical-nav-group-children *clrIfExpanded>
+                        <a clrVerticalNavLink
+                           routerLink="./fire/charmander"
+                           routerLinkActive="active">
+                            Charmander
+                        </a>
+                        <a clrVerticalNavLink
+                           routerLink="./fire/charizard"
+                           routerLinkActive="active">
+                            Charizard
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <clr-vertical-nav-group
+                        routerLinkActive="active">
+                    <a routerLink="./electric" hidden aria-hidden="true">
+                    </a>
+                    <clr-icon shape="bolt" clrVerticalNavIcon></clr-icon>
+                    Electric
+                    <clr-vertical-nav-group-children *clrIfExpanded>
+                        <a clrVerticalNavLink
+                           routerLink="./electric/pikachu"
+                           routerLinkActive="active">
+                            Pikachu
+                        </a>
+                        <a clrVerticalNavLink
+                           routerLink="./electric/raichu"
+                           routerLinkActive="active">
+                            Raichu
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <a clrVerticalNavLink routerLinkActive="active" routerLink="./credit">
+                    <clr-icon shape="certificate" clrVerticalNavIcon></clr-icon>
+                    Credit
+                </a>
+            </clr-vertical-nav>
+        </div>
+    </div>
+</div>
+
+<p></p>
+
+<clr-alert clrAlertType="warning" [clrAlertClosable]="false">
+    <clr-alert-item>
+        <span class="alert-text">
+             We recommend that the application
+            <a target="_blank" href="https://angular.io/guide/router">routing</a> be
+            hierarchical.
+        </span>
+    </clr-alert-item>
+    <clr-alert-item>
+        <span class="alert-text">
+            For the nav group highlighting to work with lazy loading, we need to
+            add an empty hidden link with the <code class="clr-code">routerLink</code>
+            pointing to a common URL prefix for the children links
+            as shown below.
+        </span>
+    </clr-alert-item>
+    <clr-alert-item>
+        <span class="alert-text">
+            Please do not add
+            the <code class="clr-code">clrVerticalNavLink</code>
+            directive to the empty link.
+        </span>
+    </clr-alert-item>
+</clr-alert>
+
+<clr-code-snippet [clrCode]="htmlExample" clrLanguage="html"></clr-code-snippet>
+
+<p></p>
+
+<clr-code-snippet [clrCode]="routesExample" clrLanguage="typescript"></clr-code-snippet>
+
+
+
+

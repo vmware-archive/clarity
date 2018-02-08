@@ -1,0 +1,50 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Introducing Clarity Dark Theme</h6>
+        <p>
+            Themes help you customize the look and feel of an application. Clarity now ships with a dark theme to compliment the original
+            light theme that has been the default. Dark themes are best suited to applications that are content-sparse and
+            highly interactive.
+        </p>
+        <p>
+            It's easy to switch your application over to the dark theme. For applications that build with
+            <code class="clr-code">angular-cli</code> or
+            <code class="clr-code">webpack</code> it will be as simple as updating the styles array in your
+            <code class="clr-code">.angular-cli.json</code> or
+            <code class="clr-code">webpack.config.js</code> files so they consume the new
+            <code class="clr-code">clarity-ui-dark.css</code> file instead of the default
+            <code class="clr-code">clarity-ui.css</code> file.
+        </p>
+        <p>
+            Adding the dark theme also adds the ability for applications to create a custom theme. However, this requires those applications
+            to build their styles with Clarity scss files and override the component variables with custom colors. Full details
+            about how to switch to dark theme or start a custom theme can be found in the
+            <a routerLink="/documentation/themes" fragment="examples">theme</a> documentation.
+        </p>
+        <div class="alert alert-warning">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        If you are using SASS source files from Clarity UI, you may need to update your import paths as some variables have been moved to facilitate dark theme.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fix multi-alert pager background color (<a href="https://github.com/vmware/clarity/pull/1726">#1726</a>)</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>A new icon,
+        <clr-icon shape="cursor-hand-click"></clr-icon>
+        <code class="clr-code">cursor-hand-click</code> is added to the Essential Icons set.</li>
+</ul>

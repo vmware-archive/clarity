@@ -1,0 +1,156 @@
+<h2>Highlights</h2>
+
+
+<ul class="list-unstyled whats-new-highlights">
+    <li new-component>
+        <h6>New component: Datagrid</h6>
+        <p>
+            Clarity NG now provides a Datagrid Angular component. It comes with a first set of features, including sorting, filtering, pagination and multi-selection. It supports pre-loaded data as well as server-driven data, where only the currently displayed items
+            are loaded in the browser. We have a list of features we plan to add in future versions, but we welcome any feedback or request to add to that list or change its priorities.
+        </p>
+        <p>
+            Clarity's Datagrid uses a declarative interface, so you can use it as you would use an HTML table, directly in your templates. Here is a basic example with simple objects:
+        </p>
+        <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-datagrid&gt;
+    &lt;clr-dg-column &#91;clrDgField&#93;=&quot;'id'&quot;&gt;User ID&lt;/clr-dg-column&gt;
+    &lt;clr-dg-column &#91;clrDgField&#93;=&quot;'name'&quot;&gt;Name&lt;/clr-dg-column&gt;
+    &lt;clr-dg-column &#91;clrDgField&#93;=&quot;'creation'&quot;&gt;Creation date&lt;/clr-dg-column&gt;
+    &lt;clr-dg-row *clrDgItems=&quot;let user of users&quot;&gt;
+        &lt;clr-dg-cell&gt;&#123;&#123; user.id &#125;&#125;&lt;/clr-dg-cell&gt;
+        &lt;clr-dg-cell&gt;&#123;&#123; user.name &#125;&#125;&lt;/clr-dg-cell&gt;
+        &lt;clr-dg-cell&gt;&#123;&#123; user.creation | date &#125;&#125;&lt;/clr-dg-cell&gt;
+    &lt;/clr-dg-row&gt;
+
+    &lt;clr-dg-footer&gt;
+        &#123;&#123; pagination.firstItem + 1 &#125;&#125; - &#123;&#123; pagination.lastItem + 1 &#125;&#125;
+        of &#123;&#123; pagination.totalItems &#125;&#125;
+        &lt;clr-dg-pagination #pagination &#91;clrDgPageSize&#93;=&quot;10&quot;&gt;&lt;/clr-dg-pagination&gt;
+    &lt;/clr-dg-footer&gt;
+&lt;/clr-datagrid&gt;
+</code></pre>
+
+        <p>
+            We will have full documentation coming soon for more advanced examples.
+        </p>
+
+    </li>
+
+
+
+
+
+
+    <li breaking-change>
+        <h6>Replace Font Awesome with Clarity Icons</h6>
+
+        <p>
+            Clarity UI now depends on <a routerLink="/documentation/iconography">Clarity Icons</a> instead of Font Awesome for iconography.
+        </p>
+
+        <p><b>Breaking Change</b></p>
+
+        <p><a routerLink="/documentation/dropdowns">Dropdowns</a> Toggles now have an updated markup:</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;button class=&quot;dropdown-toggle btn btn-outline-primary&quot;&gt;
+    Dropdown
+    &lt;clr-icon shape=&quot;caret&quot; class=&quot;icon-orient-down&quot;&gt;&lt;/clr-icon&gt;
+&lt;/button&gt;
+</code></pre>
+
+        <p><b>Note:</b> Clarity recommends that you use a button for the toggle. The button can contain either text or an icon.</p>
+
+        <p><b>Deprecation</b></p>
+
+        <div class="alert alert-info">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        Existing support for font icons in Clarity components is now being deprecated and will be removed in 0.8.0.
+                        Clarity recommends using Clarity Icons.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            Use the following markup for using Clarity Icons in Branding, Header Nav and Header Actions:
+        </p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;header class=&quot;header-6&quot;&gt;
+    &lt;div class=&quot;branding&quot;&gt;
+        &lt;a href=&quot;javascript://&quot; class=&quot;nav-link&quot;&gt;
+            &lt;clr-icon shape=&quot;vm-bug&quot;&gt;&lt;/clr-icon&gt;
+            &lt;span class=&quot;title&quot;&gt;Project Clarity&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;header-nav&quot;&gt;
+        &lt;a href=&quot;javascript://&quot; class=&quot;nav-link nav-icon&quot;&gt;
+            &lt;clr-icon shape=&quot;cloud&quot;&gt;&lt;/clr-icon&gt;
+        &lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; class=&quot;active nav-link nav-icon&quot;&gt;
+            &lt;clr-icon shape=&quot;folder&quot;&gt;&lt;/clr-icon&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;form class=&quot;search&quot;&gt;
+        &lt;label for=&quot;search_input&quot;&gt;
+            &lt;input id=&quot;search_input&quot; type=&quot;text&quot; placeholder=&quot;Search for keywords...&quot;&gt;
+        &lt;/label&gt;
+    &lt;/form&gt;
+    &lt;div class=&quot;header-actions&quot;&gt;
+        &lt;div class=&quot;dropdown bottom-right&quot;&gt;
+            &lt;button class=&quot;dropdown-toggle nav-icon&quot;&gt;
+                &lt;clr-icon shape=&quot;user&quot;&gt;&lt;/clr-icon&gt;
+                &lt;clr-icon shape=&quot;caret&quot; class=&quot;icon-orient-down&quot;&gt;&lt;/clr-icon&gt;
+            &lt;/button&gt;
+            &lt;div class=&quot;dropdown-menu&quot;&gt;
+                &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot;&gt;About&lt;/a&gt;
+                &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot;&gt;Preferences&lt;/a&gt;
+                &lt;a href=&quot;javascript://&quot; class=&quot;dropdown-item&quot;&gt;Logout&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+</code></pre>
+    </li>
+
+
+
+    <li breaking-change>
+
+        <h6>Refactor Angular Dropdown Component</h6>
+
+        <p>The Angular <a routerLink="/documentation/dropdowns">Dropdowns</a> component now uses attribute directives for dropdown toggles and menu items</p>
+
+        <p><b>Breaking Change</b></p>
+
+        <ol class="list">
+            <li><code class="clr-code">clrDropdownToggle</code> should be used to indicate a dropdown toggle used in the angular dropdown component</li>
+            <li><code class="clr-code">clrDropdownItem</code> should be used to indicate a dropdown item in the angular dropdown component</li>
+        </ol>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;clr-dropdown [clrMenuPosition]=&quot;'bottom-right'&quot;&gt;
+    &lt;button class=&quot;btn btn-outline-primary&quot; clrDropdownToggle&gt;
+        Dropdown
+        &lt;clr-icon shape=&quot;caret&quot; class=&quot;icon-orient-down&quot;&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+    &lt;div class=&quot;dropdown-menu&quot;&gt;
+        &lt;label class=&quot;dropdown-header&quot;&gt;Dropdown header&lt;/label&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Action 1&lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Action 2&lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; class=&quot;disabled&quot; clrDropdownItem&gt;Disabled Action&lt;/a&gt;
+        &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Link 1&lt;/a&gt;
+        &lt;a href=&quot;javascript://&quot; clrDropdownItem&gt;Link 2&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/clr-dropdown&gt;
+</code></pre>
+
+    </li>
+</ul>

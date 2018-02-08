@@ -1,0 +1,32 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Clarity Component Modularization</h6>
+        <p>
+            With 0.9.5, Clarity now ships its components in their own individual Angular modules. Thus, you can load a specific NgModule for each Clarity component that your app uses. For example, if your app uses Datagrid and Modal components you can import their modules as follows:
+        </p>
+<pre>
+    <code clr-code-highlight="language-typescript">
+import &#123; ClrDatagridModule, ClrModalModule &#125; from "clarity-angular";</code></pre>
+    </li>
+    <li>
+        <h6>New Clarity wizard final</h6>
+        <p>Since its beta release with 0.9.0, the Clarity wizard has had code coverage enhanced by nearly 400 unit tests, has had a full CSS regression test suite added, has had extensive code documentation added to its major components and providers, and has had several features and bugs addressed.</p>
+        <p>The Clarity team has put a lot of time and effort into the new wizard component. Keep an eye out for improved documentation in the near future! For the time being, there are many demos, code examples, and extensive documentation on the current website for you.</p>
+    </li>
+    <li>
+        <h6>Nested menu in Dropdowns</h6>
+        <p>Now dropdown component supports nested menus. Please refer to the dropdown’s documentation for more details.</p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed the issue with height for datagrids. Footer stays fixed to the bottom of a datagrid container when it has a fixed height.</li>
+    <li bug-fix>Fixed the modal issue in Firefox.</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>CSS regression tests for Datagrid added in.</li>
+</ul>

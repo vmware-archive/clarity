@@ -1,0 +1,24 @@
+.clrweb-error-block {
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 24px;
+}
+
+.clrweb-error-block .logo-block {
+    width: 100%;
+    max-width: 380px;
+    background-image: url(/assets/images/clarity_logo.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    height: 286px;
+    opacity: 0.28;
+}
+
+.clrweb-error-block p.error-code {
+    font-size: 60px;
+    font-weight: 200;
+    line-height: 1em;
+    opacity: 0.5;
+    margin-top: 0;
+}

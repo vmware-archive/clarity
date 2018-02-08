@@ -1,0 +1,5 @@
+<svg version="1.1" width="36" height="36"  viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>line-chart-outline-badged</title>
+                <path class="clr-i-outline--badged clr-i-outline-path-1--badged" d="M32,13.22V29H4V7H22.57a7.52,7.52,0,0,1-.07-1,7.52,7.52,0,0,1,.07-1H4A2,2,0,0,0,2,7V29a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V12.34A7.45,7.45,0,0,1,32,13.22Z"></path><polygon class="clr-i-outline--badged clr-i-outline-path-2--badged" points="15.63 12 9.28 21.28 6.75 19.04 5.42 20.53 9.65 24.28 15.61 15.56 22.28 25.5 30.57 14.55 28.97 13.35 22.38 22.06 15.63 12"></polygon><circle class="clr-i-outline--badged clr-i-outline-path-3--badged clr-i-badge" cx="30" cy="6" r="5"></circle>
+                <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+            </svg>

@@ -1,0 +1,138 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+    <div class="main-container">
+        <div class="alert alert-app-level alert-danger" style="margin-bottom:24px">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                    </div>
+                    <div class="alert-text">
+                        Alert Type: Danger
+                    </div>
+                    <div class="alert-actions">
+                        <button class="btn alert-action">Action</button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="close" aria-label="Close">
+                <clr-icon aria-hidden="true" shape="close"></clr-icon>
+            </button>
+        </div>
+        <div class="alert alert-app-level alert-warning" style="margin-bottom:24px">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                    </div>
+                    <div class="alert-text">
+                        Alert Type: Warning
+                    </div>
+                    <div class="alert-actions">
+                        <button class="btn alert-action">Action</button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="close" aria-label="Close">
+                <clr-icon aria-hidden="true" shape="close"></clr-icon>
+            </button>
+        </div>
+        <div class="alert alert-app-level alert-info">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <div class="alert-text">
+                        Alert Type: Info
+                    </div>
+                    <div class="alert-actions">
+                        <button class="btn alert-action">Action</button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="close" aria-label="Close">
+                <clr-icon aria-hidden="true" shape="close"></clr-icon>
+            </button>
+        </div>
+    </div>
+</div>
+<clr-code-snippet [clrCode]="htmlExample1"></clr-code-snippet>
+
+<h3>Examples</h3>
+<h6>1. App-Level Alert in the main-container</h6>
+<div class="clr-example">
+    <div class="main-container">
+        <div class="alert alert-app-level alert-info">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <div class="alert-text">
+                        A new update is now available. Upgrade to v.1234.
+                    </div>
+                    <div class="alert-actions">
+                        <button class="btn alert-action">Install Update</button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="close" aria-label="Close">
+                <clr-icon aria-hidden="true" shape="close"></clr-icon>
+            </button>
+        </div>
+        <header class="header header-6">
+            <div class="branding">
+                <span class="title">Header</span>
+            </div>
+        </header>
+        <div class="content-container">
+            <div class="content-area">
+                <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view
+                    of disruptive innovation via workplace diversity and empowerment.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet [clrCode]="htmlExample2"></clr-code-snippet>
+
+<h6>2. Custom Icon in an App-Level Alert</h6>
+<div class="clr-example">
+    <div class="main-container">
+        <div class="alert alert-app-level alert-warning">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="download"></clr-icon>
+                    </div>
+                    <div class="alert-text">
+                        A new update is now available. Upgrade to v.1234.
+                    </div>
+                    <div class="alert-actions">
+                        <button class="btn alert-action">Install Update</button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="close" aria-label="Close">
+                <clr-icon aria-hidden="true" shape="close"></clr-icon>
+            </button>
+        </div>
+        <header class="header header-6">
+            <div class="branding">
+                <span class="title">Header</span>
+            </div>
+        </header>
+        <div class="content-container">
+            <div class="content-area">
+                <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view
+                    of disruptive innovation via workplace diversity and empowerment.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet [clrCode]="htmlExample3"></clr-code-snippet>

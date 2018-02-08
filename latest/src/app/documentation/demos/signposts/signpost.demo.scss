@@ -1,0 +1,46 @@
+// Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+
+.signpost-default {
+    display: flex;
+    padding: 24px;
+}
+
+.signpost-positions {
+    display: flex;
+    padding: 24px;
+
+    .description {
+        flex: 1 1;
+    }
+
+    .demo {
+        flex: 1 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        //width: 100%;
+    }
+}
+
+.signpost-triggers-wrapper {
+    width: 100%;
+}
+
+.signpost-trigger-demo {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 24px;
+    width: 100%;border: 1px darkred;
+
+    .signpost-item {
+        flex: 1 0 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 24px;
+    }
+}

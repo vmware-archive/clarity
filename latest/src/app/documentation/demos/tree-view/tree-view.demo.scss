@@ -1,0 +1,27 @@
+// Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+.example-margin-bottom {
+    margin-bottom: 24px;
+}
+
+.example-selected-nodes {
+
+    &:not(:last-child)::after {
+        content: ", ";
+    }
+
+    &:last-child::after {
+        content: ".";
+    }
+}
+
+.example-display-json {
+    padding: 12px;
+    margin: 0;
+    max-height: 480px;
+    height: 480px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

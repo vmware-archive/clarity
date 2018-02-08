@@ -1,0 +1,146 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>clarity-angular is AoT ready</h6>
+        <p>
+            Clarity-Angular now supports
+            <a href="https://angular.io/docs/ts/latest/cookbook/aot-compiler.html">Ahead-of-Time (AoT)
+            compilation</a>. Starting with 0.8.0, the clarity-angular npm package contains the files in es5 es2015 format that can be compiled with ngc compiler. In addition, the package contains clarity-angular.umd.js file. If your application
+            is setup using systemJS, please update your systemJS configuration to point to the clarity-angular.umd.js file as shown in the
+            <a href="https://github.com/vmware/clarity/blob/master/README.md">README</a>.
+        </p>
+    </li>
+
+    <li>
+        <h6>ClarityIcons API released</h6>
+        <p>
+            As part of 0.8.0, we have created a publically accessible API for customizing the Clarity Icons library in your application. At a high level, `ClarityIcons` is now a namespace off of the browser `window` object. More documentation is coming soon! So make
+            sure to keep an eye on our <a routerLink="/documentation/iconography">documentation</a>.
+        </p>
+    </li>
+    <li>
+        <h6>Adding your own icons to ClarityIcons</h6>
+        <p>
+            Using the newly released ClarityIcons API, you can now add your own icons to the publically available ClarityIcons architecture. Use the following call to add your icon to our library in your application:
+        </p>
+        <pre><code clr-code-highlight="language-typescript">
+ClarityIcons.add(&#123;"shapeNameGoesHere": &quot;&lt;svg ... &gt;[your SVG code goes here]&lt;/svg&gt;&quot;&#125;);
+</code></pre>
+        <p>
+            This API method will assign your SVG markup to the named shape you sent it. It can then be retrieved like in your application like any other icon in the ClarityIcons library.
+        </p>
+        <pre><code clr-code-highlight="language-typescript">
+&lt;clr-icon shape=&quot;shapeNameGoesHere&quot;&gt;&lt;/clr-icon&gt;
+</code></pre>
+    </li>
+    <li>
+        <h6>Creating custom aliases for ClarityIcons</h6>
+        <p>
+            You can now create aliases for the icons in your application with a single API call:
+        </p>
+        <pre><code clr-code-highlight="language-typescript">
+ClarityIcons.alias(&#123;"bell": ["alarm", "oh-noehz"]&#125;);
+</code></pre>
+        <p>
+            The above alias method call will assign "alarm" and "oh-noehz" names to the existing "bell" icon shape. Now you can use the "bell" icon with any of the new names you have assigned it.
+        </p>
+        <pre><code clr-code-highlight="language-html">
+&lt;clr-icon shape=&quot;bell&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;alarm&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;oh-noehz&quot;&gt;&lt;/clr-icon&gt;
+</code></pre>
+    </li>
+    <li>
+        <h6>Added new icons in Clarity Icons</h6>
+        <p>
+            Clarity Icons now includes new icon shapes such as
+            <code class="clr-code">half-star</code>, <code class="clr-code">circle-check</code>, and <code class="clr-code">storage</code>.
+        </p>
+    </li>
+
+    <li>
+        <h6>Implemented variant icons for existing icon set</h6>
+        <p>The architecture introduced in 0.7.5 to allow for solid, badged, and alerted icon variants has been extended to all applicable icons in Clarity.</p>
+        <p>Use the following classnames with your <code class="clr-code">clr-icon</code> elements.</p>
+        <pre><code clr-code-highlight="language-html">
+&lt;clr-icon shape=&quot;...&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;has-badge&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;has-badge--success&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;has-badge--error&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;has-badge--info&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;has-alert&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;is-solid&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;is-solid has-badge--success&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;is-solid has-badge--error&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;is-solid has-badge--info&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;...&quot; class=&quot;is-solid has-alert&quot;&gt;&lt;/clr-icon&gt;
+</code></pre>
+        <p>Check out our <a routerLink="/documentation/iconography">icon documentation</a> for more.</p>
+    </li>
+
+
+    <li breaking-change>
+        <h6>Added forRoot() and forChild() to ClarityModule</h6>
+        <p>
+            Added <code class="clr-code">forRoot()</code> and
+            <code class="clr-code">forChild()</code> methods on <code class="clr-code">ClarityModule</code> to prevent reimport of services in lazy loaded feature modules. Click
+            <a href="https://angular.io/docs/ts/latest/cookbook/ngmodule-faq.html#!#!23q-for-root">here</a> for more information. Clarity Module should now be imported as follows:
+        </p>
+        <pre><code clr-code-highlight="language-typescript">
+import &#123; NgModule &#125; from '@angular/core';
+import &#123; BrowserModule &#125; from '@angular/platform-browser';
+import &#123; ClarityModule &#125; from 'clarity-angular';
+import &#123; AppComponent &#125; from './app.component';
+
+@NgModule(&#123;
+    imports: [
+        BrowserModule,
+        ClarityModule.forRoot(),
+        ....
+        ],
+        declarations: [ AppComponent ],
+        bootstrap: [ AppComponent ]
+&#125;)
+export class AppModule &#123;    &#125;
+</code></pre>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Upgraded Clarity font to Metropolis Release 8 and removed subsetting to support latin extended characters.
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul>
+    <li>Added Icon Buttons Demo to the documentation</li>
+</ul>
+
+<h2>Deprecations</h2>
+<ul>
+    <li breaking-change>
+        Following card classes are no longer supported:
+        <ul>
+            <li><code class="clr-code">.card-subtitle</code></li>
+            <li><code class="clr-code">.group</code></li>
+            <li><code class="clr-code">.icon</code></li>
+            <li><code class="clr-code">.description</code></li>
+            <li><code class="clr-code">.title</code></li>
+            <li><code class="clr-code">.card-link</code></li>
+            <li><code class="clr-code">.card-overflow-menu</code></li>
+        </ul>
+    </li>
+
+
+    <li breaking-change>
+        We have removed deprecated classes from Clarity Icons. This includes:
+        <ul class="list">
+            <li><code class="clr-code">icon-color-*</code> style color classes</li>
+            <li><code class="clr-code">icon-orientation-*</code> style direction classes</li>
+            <li><code class="clr-code">icon-size-*</code> style size classes</li>
+        </ul>
+        If you are still using these deprecated classes, please switch to the current styling rules our <a routerLink="/documentation/iconography">Clarity Icons documentation</a>.
+    </li>
+</ul>

@@ -1,0 +1,433 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+
+        <h5 class="component-summary" id="tree-view-header">
+            A tree is a hierarchical component that shows the visual representation
+            of the parent-child relationship between nodes.
+        </h5>
+
+        <div id="design-guidelines">
+            <h3>Three Main Variations</h3>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Basic Tree</h4>
+                    <p>
+                        A basic tree provides a tree structure with named nodes and an
+                        arrow to expand and collapse child nodes.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-tree-node-basic-structure-demo></clr-tree-node-basic-structure-demo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Basic Tree With Icons</h4>
+                    <p>
+                        A tree can include icons to represent the type of nodes within that group.
+                        Icons appear between the collapse/expand arrow and the parent node title.
+                    </p>
+                    <p>
+                        When using icons in a tree, make sure to use them on all nodes.
+                        Do not alternate between using and not using icons within the same tree.
+                    </p>
+                    <p>
+                        If using a tree in the context of other components, make sure those icons
+                        are distinctive and easily recognizable. Use neutral colors to avoid
+                        overloading the tree and related components with colors and shapes.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-tree-view-dynamic-demo></clr-tree-view-dynamic-demo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Checkbox Tree</h4>
+                    <p>
+                        A checkbox tree features checkboxes between the collapse/expand
+                        arrow and the name to indicate whether a node is selected. A
+                        parent node with children that are both selected and not selected
+                        is shown with an “indeterminate” state.
+                    </p>
+                    <p>
+                        Checkbox trees should not be used together with icons for the nodes.
+                        As with icon trees, make sure to put checkboxes on all nodes of a
+                        checkbox tree. Do not alternate between types of trees in a checkbox
+                        tree.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-tree-view-prepopulate-demo></clr-tree-view-prepopulate-demo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Style</h3>
+
+            <p>
+                The styling of each piece of a tree node is consistent across the different types of trees.
+            </p>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Touch Targets</h4>
+                    <p>
+                        The dimensions of the expand/collapse arrow and the node title allow
+                        for a comfortable touch target allowing use with a mouse or a touch screen.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <img
+                                        src="assets/images/documentation/tree-view/example_tree_touch.svg"
+                                        alt="Touch Targets"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-info has-margin-top-b2">
+                <div class="alert-items">
+                    <div class="alert-item static">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                        </div>
+                        <div class="alert-text">
+                            Touch Targets are relevant even outside of a mobile form factor.
+                            Many new desktop environments, especially those running Windows,
+                            allow for the use of a touch screen and should be considered
+                            when designing your applications.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Behavior</h3>
+            <p>
+                To explain the behavior of the tree, here is the terminology we’ll be using in this section:
+            </p>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <h6>Highlight</h6>
+                    <p>Click on a node in the tree to either “highlight” it or navigate to its relative content.</p>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <h6>Select</h6>
+                    <p>Choose items to apply an action. For example, selecting a checkbox in the tree.</p>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <h6>Expand / Collapse</h6>
+                    <p>Use the arrow to the left of a node to expand or collapse a node in the tree.</p>
+                </div>
+            </div>
+
+            <h3>Interacting With Nodes</h3>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Expanding / Collapsing Nodes</h4>
+                    <p>
+                        To expand or collapse a parent node, the user clicks on the expand/collapse arrow.
+                        Clicking on the node item itself does not expand or collapse a node.
+                        It serves as a highlighting mechanism.
+                    </p>
+                    <p>
+                        In read-only trees where highlighting is not an option,
+                        this pattern remains true for consistency.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <img
+                                        src="assets/images/documentation/tree-view/example_tree_interacting.svg"
+                                        alt="Interacting With Nodes"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Highlighting Tree Nodes</h4>
+                    <p>
+                        To navigate to a content area based on a tree node or to highlight
+                        a tree node in order to take a subsequent action based on
+                        the selection, a user clicks on the node title itself.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <img
+                                        src="assets/images/documentation/tree-view/example_tree_highlighting.svg"
+                                        alt="Highlighting Tree Nodes"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Interacting With Checkbox Trees</h4>
+                    <p>
+                        With a checkbox tree, a user is able to perform one or a
+                        combination of three actions by clicking on one of three
+                        distinct targets:
+                    </p>
+                    <ol class="list">
+                        <li style="margin-top:24px">
+                            Expanding and Collapsing: a user is able to perform this
+                            action by clicking on the expand / collapse arrow.
+                        </li>
+                        <li style="margin-top:24px">
+                            Checking a Checkbox: this would require clicking on the
+                            checkbox itself to check or uncheck a treenode. This
+                            will also affect the status of the parent node’s checkbox.
+                        </li>
+                        <li style="margin-top:24px">
+                            Highlighting Tree Node: a user can highlight a tree node by
+                            clicking on the name (label) of the tree node. This allows
+                            for the possibility of loading content based on selection
+                            to provide more information on a tree node.
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <img
+                                        src="assets/images/documentation/tree-view/example_tree_checkbox_interacting.svg"
+                                        alt="Interacting with Checkbox Trees"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Loading Data</h3>
+            <p>The way to load data within the tree is based on the scenario in which the tree is being used.</p>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h6>Load Parent Nodes First</h6>
+                    <p>
+                        With a dynamic tree, make sure to load the parent
+                        nodes first and then lazy load child nodes when requested.
+                    </p>
+                    <p>
+                        A general goal to keep in mind is that you want to minimize
+                        the time a user needs to spend before their first
+                        interaction with the tree as well as every
+                        subsequent interaction afterwards.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h6-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <img
+                                        src="assets/images/documentation/tree-view/example_tree_lazyloading.svg"
+                                        alt="Loading Data"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="code-examples">
+            <h3 id="examples">Code &amp; Examples</h3>
+
+            <h3>Basic Tree Node</h3>
+
+            <p>
+                A basic tree can be created by simply nesting
+                <code class="clr-code">clr-tree-node</code> tags along with the
+                <code class="clr-code">clrIfExpanded</code> directive.
+            </p>
+
+            <section class="clr-demo">
+                <clr-tree-node-basic-structure-dm-demo></clr-tree-node-basic-structure-dm-demo>
+            </section>
+
+            <p>
+                The <code class="clr-code">clrIfExpanded</code> directive supports two-way binding
+                which can be used to expand/collapse a tree node.
+            </p>
+
+            <section class="clr-demo">
+                <clr-tree-node-label-change-expand-demo></clr-tree-node-label-change-expand-demo>
+            </section>
+
+            <h3>Routing using a Tree</h3>
+
+            <p>
+                Use the <code class="clr-code">.clr-treenode-link</code> class to style content inside of a Tree Node
+                as clickable. To indicate an active Tree Node use the <code class="clr-code">.active</code> class
+                along with <code class="clr-code">.clr-treenode-link</code>.
+            </p>
+
+            <section class="clr-demo">
+                <clr-tree-node-routing-demo></clr-tree-node-routing-demo>
+            </section>
+
+            <h3>Generating A Tree Dynamically</h3>
+
+            <section class="clr-demo">
+                <clr-tree-view-dynamic-demo
+                        [clrDemoShowCode]="true"
+                        [clrDemoShowHalf]="true"></clr-tree-view-dynamic-demo>
+            </section>
+
+            <h3>Lazy Loading A Tree Node</h3>
+
+            <p>
+                A node can be lazily loaded by leveraging the <code class="clr-code">clrLoading</code>
+                directive.
+            </p>
+
+            <section class="clr-demo">
+                <clr-tree-node-lazy-loading-demo></clr-tree-node-lazy-loading-demo>
+            </section>
+
+            <h3>Checkbox Tree</h3>
+
+            <p>
+                Selection can be enable on all tree nodes by using the
+                <code class="clr-code">[(clrSelected)]</code> input on the root node.
+            </p>
+
+            <section class="clr-demo">
+                <clr-tree-view-basic-structure-demo></clr-tree-view-basic-structure-demo>
+            </section>
+
+            <h3>Toggling The Checked State Of A Tree Node</h3>
+
+            <section class="clr-demo">
+                <clr-tree-node-selection-demo></clr-tree-node-selection-demo>
+            </section>
+
+            <h3>Prepopulating a Checkbox Tree</h3>
+
+            <section class="clr-demo">
+                <clr-tree-view-prepopulate-demo [clrDemoShowCode]="true">
+                </clr-tree-view-prepopulate-demo>
+            </section>
+
+            <h2>Summary of Options</h2>
+
+            <h4>Tree Node (clr-tree-node)</h4>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[(clrSelected)]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">true, false</td>
+                    <td class="hidden-xs-down">false</td>
+                    <td class="left">
+                        Two-way binding on the state of a Tree Node: Checked or Unchecked
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrIndeterminate]</b>
+                        <div class="hidden-sm-up">Type: any</div>
+                        <div class="hidden-sm-up">Default: NA</div>
+                    </td>
+                    <td class="hidden-xs-down">any</td>
+                    <td class="hidden-xs-down">NA</td>
+                    <td class="left">
+                        Sets the indeterminate state of a tree node.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4>Directives used along with clr-tree-node</h4>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[(clrIfExpanded)]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">true, false</td>
+                    <td class="hidden-xs-down">false</td>
+                    <td class="left">
+                        Two-way binding on the state of the Tree-Node: expanded / collapsed
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrLoading]</b>
+                        <div class="hidden-sm-up">Type: boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">any</td>
+                    <td class="hidden-xs-down">NA</td>
+                    <td class="left">
+                        Activates a spinner to indicate that the node children are loading.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
+</clr-doc-wrapper>

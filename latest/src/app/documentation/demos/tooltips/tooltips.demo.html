@@ -1,0 +1,166 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="a-tooltip-provides-a-short-description-of-a-ui-element">A tooltip 
+            provides a short description of a UI element.</h5>
+
+        <div id="code-examples">
+            <h6 id="tooltip">.tooltip</h6>
+            <p>This class wraps an actionable icon followed by the <code class="clr-code">.tooltip-content</code> 
+                to be shown on the icon. The content appears when the user hovers over the icon.</p>
+
+            <h6 id="tooltip-content">.tooltip-content</h6>
+            <p>This class contains the text that will be shown when the tooltip is visible.</p>
+
+            <h3 id="sizes">Sizes</h3>
+
+            <p>Tooltips support four sizes, defined by using one of the following classes with the
+                <code class="clr-code">.tooltip</code> class:</p>
+
+            <ul class="list">
+                <li>.tooltip-xs</li>
+                <li>.tooltip-sm</li>
+                <li>.tooltip-md</li>
+                <li>.tooltip-lg</li>
+            </ul>
+
+            <clr-tooltips-sizes-demo class="tooltip-demo"></clr-tooltips-sizes-demo>
+
+            <h3 id="directions">Directions</h3>
+
+            <p>Tooltips support six directions, defined by using one of the following classes with the
+                <code class="clr-code">.tooltip</code> class:</p>
+
+            <ul class="list">
+                <li>.tooltip-top-right</li>
+                <li>.tooltip-top-left</li>
+                <li>.tooltip-bottom-right</li>
+                <li>.tooltip-bottom-left</li>
+                <li>.tooltip-right</li>
+                <li>.tooltip-left</li>
+            </ul>
+
+            <clr-tooltips-directions-demo class="tooltip-demo"></clr-tooltips-directions-demo>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>Use tooltips for actionable icons that do not have text labels, such as the icons in a 
+                toolbar. A tooltip is visible on hover.</p>
+
+            <p>Don’t use a tooltip on:</p>
+
+            <ul class="list">
+                <li><strong>Components.</strong> Provide a descriptive label and use inline or signpost
+                    help for more information.
+                </li>
+                <li><strong>Static images.</strong> Use the HTML alt tag to provide information about the image.</li>
+                <li><strong>Textual links.</strong> Ensure that the link describes its destination and is not truncated.
+                </li>
+            </ul>
+
+            <p>Don’t rely on tooltips to meet accessibility requirements. Rather, ensure that your underlying 
+                content is well-structured for accessibility, for example, by using ARIA roles.</p>
+
+            <h4 id="placement">Placement</h4>
+
+            <p>Choose a tooltip position that ensures the entire tooltip is visible on the screen and that 
+                the tooltip does not cover an important UI element. By default, the positioning for tooltips 
+                is to the top-right of the icon, pointing to its center.</p>
+
+            <p>Other positions are:</p>
+
+            <ul class="list">
+                <li>Top left</li>
+                <li>Bottom right</li>
+                <li>Bottom left</li>
+                <li>Side left</li>
+                <li>Side right</li>
+            </ul>
+
+            <h4 id="size">Size</h4>
+
+            <p>Set a width that accommodates the text string. The default is 240 px. Other choices are
+                72 px, 120 px, and 360 px.</p>
+
+            <h4 id="text">Text</h4>
+
+            <ul class="list">
+                <li>Use a verb phrase to describe the action on the icon, for example, “Edit settings.”</li>
+                <li>Use only plain text and be concise. Tooltips can be a sentence fragment.</li>
+                <li>If more detailed information is required, use another form of help.</li>
+                <li>Use sentence-style caps and no ending punctuation.</li>
+            </ul>
+        </div>
+
+        <div id="ng-code-examples">
+            <h2 id="angular-component">Angular Component</h2>
+
+            <p>
+                The tooltip component uses the <code class="clr-code">*clrIfOpen</code> structural directive
+                (detailed documentation coming soon) on the tooltip content
+                to indicate clearly that said content is only present in the DOM when open. We heavily recommend using
+                it for many reasons: better performance, making the intent clear in your own templates,
+                and following a more natural lifecycle for any directives or components inside of the tooltip.
+            </p>
+            <p>
+                If for some reason this behavior was not the one you wanted, for instance if you want screenreaders to
+                read the tooltip inline as opposed to when the user moves focus to the trigger,
+                we also support the tooltip content without a
+                <code class="clr-code">*clrIfOpen</code> directive on it. It will be created eagerly when the tooltip
+                itself initializes, and will not be destroyed or recreated until the tooltip itself is. Please make
+                sure you know exactly why you are omitting this directive if you end up doing so.
+            </p>
+
+            <h3 id="summary-of-options">Summary of Options</h3>
+
+            <h6><code class="clr-code">&lt;clr-tooltip-content&gt;</code> component</h6>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input / Output</th>
+                    <th class="left hidden-xs-down">Values</th>
+                    <th class="left hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[clrPosition]</b>
+                        <div class="hidden-sm-up">Values:<br/>Direction classnames</div>
+                        <div class="hidden-sm-up">Default: "right"</div>
+                    </td>
+                    <td class="left hidden-xs-down">
+                        top-right, top-left, bottom-right, bottom-left, right, left
+                    </td>
+                    <td class="left hidden-xs-down">right</td>
+                    <td class="left">Sets the direction in which the tooltip will open.</td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrSize]</b>
+                        <div class="hidden-sm-up">Values: xs, sm, md, lg</div>
+                        <div class="hidden-sm-up">Default: md</div>
+                    </td>
+                    <td class="left hidden-xs-down">
+                        xs, sm, md, lg
+                    </td>
+                    <td class="left hidden-xs-down">md</td>
+                    <td class="left">Sets the size of the tooltip.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4 id="example">Example</h4>
+            <p>Below are tooltip examples using various directions and sizes.</p>
+            <clr-tooltips-angular-demo></clr-tooltips-angular-demo>
+        </div>
+
+    </article>
+</clr-doc-wrapper>

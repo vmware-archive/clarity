@@ -1,0 +1,68 @@
+// Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../../styles/clarity-imports';
+@import "~@clr/ui/src/image/icons.clarity";
+
+.clr-example{
+
+    position: relative;
+
+    &.squeeze{
+        padding: 24px;
+    }
+
+    &.example-center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.example-column{
+            flex-direction: column;
+        }
+    }
+
+    .example-icon{
+        display: inline-block;
+        height: rem(1);
+        width: rem(1);
+        padding: 0;
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor: pointer;
+        vertical-align: middle;
+
+        &.example-add-icon{
+            background-image: generateAddIcon();
+
+            &:hover{
+                background-image: generateAddIcon($action-blues-dark-midtone);
+            }
+        }
+
+        &.example-edit-icon{
+            background-image: generateEditIcon();
+
+            &:hover{
+                background-image: generateEditIcon($action-blues-dark-midtone);
+            }
+        }
+
+        &.example-folder-add-icon{
+            background-image: generateFolderAddIcon();
+
+            &:hover{
+                background-image: generateFolderAddIcon($action-blues-dark-midtone);
+            }
+        }
+
+        &.example-more-icon{
+            background-image: generateMoreIcon();
+
+            &:hover{
+                background-image: generateMoreIcon($action-blues-dark-midtone);
+            }
+        }
+    }
+}

@@ -1,0 +1,323 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Simpler imports</h6>
+        <p>Now you can import all of our components from clarity-angular:</p>
+
+        <pre><code clr-code-highlight="language-js">
+import &#123; DROPDOWN_DIRECTIVES &#125; from 'clarity-angular';
+import &#123; Modal &#125; from 'clarity-angular';
+...
+</code></pre>
+        <p>If you are using system.js, you also need to add the package config for the above import statements to work:
+        </p>
+        <pre><code clr-code-highlight="language-js">
+System.config(&#123;
+    packages: &#123;
+        'clarity-angular' : &#123; main: 'index.js', defaultExtension: 'js' &#125;,
+        ...
+    &#125;,
+    ...
+&#125;);
+</code></pre>
+
+    </li>
+    <li>
+        <h6>Upgrade to Angular 2 RC4</h6>
+        <p>Using <a href="https://angular.io/docs/ts/latest/guide/animations.html" target="_blank">Angular's new animation system</a> in Modal and Stackview.</p>
+    </li>
+
+    <li>
+        <h6>Taking actions on alerts</h6>
+        <p>Alerts can now support alert actions. Actions can be dropdowns or links.</p>
+        <p>Dropdowns as alert actions:</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;alert alert-danger&quot;&gt;
+    &lt;div class=&quot;alert-item&quot;&gt;
+        &lt;span&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&lt;/span&gt;
+        &lt;div class=&quot;alert-actions&quot;&gt;
+            &lt;div class=&quot;alert-action dropdown bottom-right&quot;&gt;
+                &lt;a class=&quot;dropdown-toggle&quot;&gt;Actions&lt;/a&gt;
+                &lt;div class=&quot;dropdown-menu&quot;&gt;
+                    &lt;a class=&quot;dropdown-item&quot; href=&quot;javascript://&quot;&gt;Shutdown&lt;/a&gt;
+                    &lt;a class=&quot;dropdown-item&quot; href=&quot;javascript://&quot;&gt;Suspend&lt;/a&gt;
+                    &lt;a class=&quot;dropdown-item&quot; href=&quot;javascript://&quot;&gt;Reboot&lt;/a&gt;
+                    &lt;a class=&quot;dropdown-item&quot; href=&quot;javascript://&quot;&gt;Delete&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+        <p>Links as alert actions:</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;alert alert-info&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;&gt;
+        &lt;span aria-hidden=&quot;true&quot;&gt;&times;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class=&quot;alert-item&quot;&gt;
+        &lt;span class=&quot;alert-text&quot;&gt;
+            ...
+        &lt;/span&gt;
+        &lt;div class=&quot;alert-actions&quot;&gt;
+            &lt;a href=&quot;javascript://&quot; class=&quot;alert-action&quot;&gt;Acknowledge&lt;/a&gt;
+            &lt;a href=&quot;javascript://&quot; class=&quot;alert-action&quot;&gt;Reset to green&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </li>
+
+    <li>
+        <h6>Inverse Spinners</h6>
+        <p>Use the <code class="clr-code">.spinner-inverse</code> class to generate spinners for dark backgrounds:</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;span class=&quot;spinner spinner-inverse&quot;&gt;
+    Loading...
+&lt;/span&gt;
+</code></pre>
+    </li>
+</ul>
+
+<h2>Breaking Changes</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li breaking-change>
+        <h6>Angular RC4</h6>
+        <p>In order to use Clarity 0.3.0 components, your web application must also be on Angular version RC4. Here are sample version numbers you could use in your <code class="clr-code">package.json</code>:</p>
+
+        <pre><code clr-code-highlight="language-js">
+"dependencies": &#123;
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.4",
+    "@angular/http": "2.0.0-rc.4",
+    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "@angular/router": "3.0.0-beta.1",
+    "@angular/upgrade": "2.0.0-rc.4",
+    ...
+&#125;
+</code></pre>
+
+        <p>Refer to <a href="https://github.com/angular/angular/blob/master/CHANGELOG.md" target="_blank">Angular's changelog</a> for a complete list of breaking changes that may impact your application.</p>
+    </li>
+
+    <li breaking-change>
+        <h6>Modal and Stack View</h6>
+        <p>Because Angular animations are built on top of the <a href="https://w3c.github.io/web-animations/" target="_blank">Web Animations API</a>, your application must include <code class="clr-code">web-animations.min.js</code> polyfill for the animation
+            to work on browsers that do not support it. You can add the polyfill by installing it on your app...</p>
+
+        <pre><code clr-code-highlight="language-js">
+"dependencies": &#123;
+    ...
+    "web-animations-js": "^2.2.1",
+    ...
+&#125;
+</code></pre>
+
+        <p>...and including it in your application. A sample dev version of your <code class="clr-code">index.html</code> might include something like:</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;script src=&quot;node_modules/web-animations-js/web-animations.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+    </li>
+
+    <li breaking-change>
+        <h6>Form Validation</h6>
+        <p>The markup for validating forms has changed from...</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;validated-input invalid&quot;&gt;
+    &lt;input type=&quot;text&quot; style=&quot;width:300px&quot;/&gt;
+    &lt;div aria-hidden=&quot;true&quot; class=&quot;tooltip tooltip-md&quot;&gt;This field is required.&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+        <p>...to...</p>
+
+        <pre><code clr-code-highlight="language-html">
+    &lt;div class=&quot;tooltip tooltip-validation invalid&quot;&gt;
+        &lt;input type=&quot;text&quot; style=&quot;width:300px&quot;/&gt;
+        &lt;span class=&quot;tooltip-content&quot;&gt;This field is required.&lt;/span&gt;
+    &lt;/div&gt;
+        </code></pre>
+    </li>
+
+    <li breaking-change>
+        <h6>Login Form Refactor</h6>
+        <p>Login forms now have to be wrapped with a <code class="clr-code">.login-wrapper</code>. This was done to support login backgrounds and fix an IE 10/11 vertical alignment issue.</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;login-wrapper&quot;&gt;
+    &lt;div class=&quot;login&quot;&gt;
+        ...
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </li>
+
+    <li breaking-change>
+        <h6>Login Validation Refactor</h6>
+        <p>The login form validation markup has changed from...</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;error active&quot;&gt;
+    &lt;span class=&quot;alert-icon icon-danger-white&quot;&gt;&lt;/span&gt;
+    Invalid user name or password
+&lt;/div&gt;
+</code></pre>
+
+        <p>...to...</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;error active&quot;&gt;
+    Invalid user name or password
+&lt;/div&gt;
+</code></pre>
+
+        <p>The need to explicitly use the icon markup was removed.</p>
+    </li>
+
+    <li breaking-change>
+        <h6>Layout Refactor</h6>
+        <p>Clarity layout has changed from...</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;main-nav&quot;&gt;
+    &lt;header class=&quot;header&quot;&gt;&lt;/header&gt;
+    &lt;nav class=&quot;sub-nav&quot;&gt;&lt;/nav&gt;
+&lt;/div&gt;
+&lt;div class=&quot;main-container&quot;&gt;
+    &lt;div class=&quot;content-area&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;side-nav&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+        <p>...to...</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;main-container&quot;&gt;
+    &lt;header class=&quot;header&quot;&gt;&lt;/header&gt;
+    &lt;nav class=&quot;sub-nav&quot;&gt;&lt;/nav&gt;
+    &lt;div class=&quot;content-container&quot;&gt;
+        &lt;div class=&quot;content-area&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;side-nav&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+        <p>This refactor gives us the ability to add other elements like app level alerts or footers to the <code class="clr-code">.main-container</code> which is now a vertical flexbox. Additional sections can also be added to the <code class="clr-code">.content-container</code>            (a horizontal flexbox) which contains the <code class="clr-code">.sidenav</code> and the <code class="clr-code">.content-area</code> after this change.</p>
+    </li>
+
+    <li breaking-change>
+        <h6>Alerts</h6>
+        <p>Alert markup has changed from...</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;alert alert-danger alert-sm&quot;&gt;
+    &lt;div class=&quot;alert-item&quot;&gt;
+        &lt;span class=&quot;alert-icon icon-danger&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;alert-text&quot;&gt;Alert in a card.&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;&gt;
+        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+
+        <p>...to...</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;alert alert-danger alert-sm&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;&gt;
+        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class=&quot;alert-item&quot;&gt;
+        &lt;span&gt;Alert in a card.&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+        <p>Changes:</p>
+        <ol class="list">
+            <li>Move the <code class="clr-code">.close</code> button on the top before the <code class="clr-code">.alert-item</code></li>
+            <li>Remove the <code class="clr-code">.alert-icon</code> markup from <code class="clr-code">.alert-item</code></li>
+        </ol>
+    </li>
+
+    <li breaking-change>
+        <h6>Header</h6>
+        <p>Header branding area markup has change from...</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;branding&quot;&gt;
+    &lt;a&gt;&lt;img src=&quot;img/vmw-logo.svg&quot; class=&quot;logo&quot;&gt;&lt;/a&gt;
+    &lt;span class=&quot;title&quot;&gt;Clarity Demo&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+
+        <p>...to...</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;branding&quot;&gt;
+    &lt;a href=&quot;#&quot;&gt;
+        &lt;span class=&quot;clr-icon clr-vmw-logo&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;title&quot;&gt;Clarity Demo&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+
+        <p>Header Search markup has changed from...</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;search-box&quot;&gt;
+    &lt;span class=&quot;nav-icon fa fa-search&quot;&gt;&lt;/span&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;Search for VMs...&quot;&gt;
+&lt;/div&gt;
+</code></pre>
+
+        <p>...to...</p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;form class=&quot;search-box&quot;&gt;
+    &lt;span class=&quot;nav-icon fa fa-search&quot;&gt;&lt;/span&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;Search for VMs...&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+    </li>
+</ul>
+
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fix master build&#39;s warning message
+    </li>
+    <li bug-fix>Update the Clarity grid rows with the correct margins
+    </li>
+    <li bug-fix>Multiple scroll bars appear when screen is resized in the new layout
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Update typography documentation
+    </li>
+    <li>Icons - Implementation: HTML/CSS
+    </li>
+    <li>Define default illustration for the background of the login form
+    </li>
+    <li>Finalize the list component
+    </li>
+    <li>Support product logo as a div/span svg background
+    </li>
+    <li>Implement the popover/tooltip component
+    </li>
+    <li>Update clarity seed to use 0.3.0
+    </li>
+    <li>Update build info (CONTRIBUTING.md, peer dependency versions, etc) to current
+    </li>
+</ul>

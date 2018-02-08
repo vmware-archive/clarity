@@ -1,0 +1,60 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<button class="btn btn-primary" (click)="wizard.open()">Open Wizard</button>
+<button class="btn btn-outline" (click)="jumpToThree()">Try to Open at Step 3</button>
+<button class="btn btn-outline" (click)="jumpToFive()">Try to Open at Step 5</button>
+
+<clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardSize]="'md'">
+    <clr-wizard-title>Jump-To a Page</clr-wizard-title>
+
+    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Done</clr-wizard-button>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 1</ng-template>
+        <p>
+            If the wizard can navigate to a page, you can click on the buttons 
+            above to have it open up at step three or step five. Try clicking through
+            all the pages, closing the wizard, and clicking on the buttons.
+        </p>
+        <p>
+            Enabling a page for navigation entails setting the pages before it as 
+            both ready to complete and completed. This can be done programmatically as
+            well.
+        </p>
+        <p>
+            If a page cannot be navigated to, you can either programmatically set the
+            wizard to open on the first page or tell it to open on the last navigable
+            page in the workflow.
+        </p>
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 2</ng-template>
+        <p>Content for step 2</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page #pageThree>
+        <ng-template clrPageTitle>Page 3</ng-template>
+        <p>Content for step 3</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 4</ng-template>
+        <p>Content for step 4</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page #pageFive>
+        <ng-template clrPageTitle>Page 5</ng-template>
+        <p>Content for step 5</p>
+    </clr-wizard-page>
+</clr-wizard>
+
+<clr-code-snippet [clrLanguage]="'typescript'" [clrCode]="code"></clr-code-snippet>
+<clr-code-snippet [clrLanguage]="'html'" [clrCode]="html"></clr-code-snippet>

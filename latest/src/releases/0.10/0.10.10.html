@@ -1,0 +1,43 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Clarity (UI) SASS now uses rem values
+            (<a target="_blank" href="https://github.com/vmware/clarity/issues/1079">#1079</a>)</h6>
+        <p>NOTE: <code class="clr-code">$clr_baselineRem</code> is now depricated in the SASS files</p>
+        <p>With one simple change you can now radically alter the layout of a Clarity application by changing the
+            font-size on the html element. This will even increase the vertical rhythym.</p>
+<pre><code clr-code-highlight="language-css">
+$clr_baseline: 24;
+html &#123;
+  font-size: $clr_baseline * 1px;
+&#125;
+body &#123;
+    line-height: 1rem;
+    font-size: (14/$clr_baseline) * 1rem;
+&#125;
+</code></pre>
+        <p>This now enables Clarity consumers to override in their own CSS with the following</p>
+<pre><code clr-code-highlight="language-css">
+html &#123;
+  font-size: 28px;
+&#125;
+</code></pre>
+    </li>
+</ul>
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed a datagrid alignment bug
+        (<a target="_blank" href="https://github.com/vmware/clarity/issues/1512">#1512</a>)
+    </li>
+    <li bug-fix>Fixed abrupt column width change when declaring expandable rows
+        (<a target="_blank" href="https://github.com/vmware/clarity/issues/1294">#1294</a>)
+    </li>
+</ul>
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Allow non-SVG items added to Clarity Icons to be sized
+        (<a target="_blank" href="https://github.com/vmware/clarity/issues/1567">#1567</a>)
+    </li>
+    <li>Adds a guard to FocusTrap for inconsistent behavior in IE11
+        (<a target="_blank" href="https://github.com/vmware/clarity/issues/1587">#1587</a>)</li>
+</ul>

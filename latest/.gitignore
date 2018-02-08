@@ -1,0 +1,16 @@
+dist/
+tmp/
+node_modules/
+typings/
+.idea/
+gemini-report/
+.DS_Store
+.npmrc.clarity
+npm-debug.log
+
+.sass-cache/
+_site/
+js/
+.vscode
+auto-generated-news.component.html
+auto-generated-routes.ts

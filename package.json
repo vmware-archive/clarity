@@ -1,0 +1,11 @@
+{
+  "name": "website",
+  "version": "0.10.18",
+  "scripts": {
+    "start": "http-server ."
+  },
+  "private": true,
+  "devDependencies": {
+    "http-server": "latest"
+  }
+}

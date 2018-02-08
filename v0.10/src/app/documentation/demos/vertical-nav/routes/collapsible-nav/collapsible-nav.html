@@ -1,0 +1,98 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Collapsible Vertical Nav</h4>
+
+<p>
+    <code class="clr-code">[clrVerticalNavCollapsible]</code> input can be used to toggle the collapsible behavior
+    of the Vertical Nav. The state of the nav can be controlled by the
+    <code class="clr-code">[(clrVerticalNavCollapsed)]</code> input.
+</p>
+
+<div class="clr-example">
+    <div class="main-container" style="height: 400px">
+        <header class="header">
+            <div class="branding">
+                <a href="javascript://">
+                    <clr-icon shape="bolt" class="is-inverse"></clr-icon>
+                    <span class="title">Project Pokémon</span>
+                </a>
+            </div>
+        </header>
+        <div class="content-container">
+            <div class="content-area">
+                <router-outlet></router-outlet>
+            </div>
+            <clr-vertical-nav [clrVerticalNavCollapsible]="collapsible" [(clrVerticalNavCollapsed)]="collapsed">
+                <a clrVerticalNavLink routerLink="./normal" routerLinkActive="active">
+                    <clr-icon clrVerticalNavIcon shape="user"></clr-icon>
+                    Normal
+                </a>
+                <a clrVerticalNavLink routerLink="./electric" routerLinkActive="active">
+                    <clr-icon clrVerticalNavIcon shape="bolt"></clr-icon>
+                    Electric
+                </a>
+                <a clrVerticalNavLink routerLink="./poison" routerLinkActive="active">
+                    <clr-icon clrVerticalNavIcon shape="sad-face"></clr-icon>
+                    Poison
+                </a>
+                <a clrVerticalNavLink routerLink="./grass" routerLinkActive="active">
+                    <clr-icon clrVerticalNavIcon shape="bug"></clr-icon>
+                    Grass
+                </a>
+                <a clrVerticalNavLink routerLink="./fighting" routerLinkActive="active">
+                    <clr-icon clrVerticalNavIcon shape="shield"></clr-icon>
+                    Fighting
+                </a>
+                <a clrVerticalNavLink routerLink="./credit" routerLinkActive="active">
+                    <clr-icon clrVerticalNavIcon shape="certificate"></clr-icon>
+                    Credit
+                </a>
+            </clr-vertical-nav>
+        </div>
+    </div>
+</div>
+
+<clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>
+
+<p>
+    To place the collapse/expand trigger after the links, use the <code class="clr-code">.nav-trigger--bottom</code>
+    class along with <code class="clr-code">clr-vertical-nav</code>.
+</p>
+
+<div class="clr-example">
+    <div class="main-container" style="height: 400px">
+        <header class="header">
+            <div class="branding">
+                <a href="javascript://">
+                    <clr-icon shape="bolt" class="is-inverse"></clr-icon>
+                    <span class="title">Project Pokémon</span>
+                </a>
+            </div>
+        </header>
+        <div class="content-container">
+            <div class="content-area">
+                Normal
+                The Normal type is the most basic type of Pokémon.
+                They are very common and appear from the very first route you visit.
+                Most Normal Pokémon are single type, but there is a large
+                contingent having a second type of Flying.
+            </div>
+            <clr-vertical-nav [clrVerticalNavCollapsible]="true" class="nav-trigger--bottom">
+                <a clrVerticalNavLink href="javascript://" class="active">
+                    <clr-icon clrVerticalNavIcon shape="user"></clr-icon>
+                    Normal
+                </a>
+                <a clrVerticalNavLink href="javascript://">
+                    <clr-icon clrVerticalNavIcon shape="bolt"></clr-icon>
+                    Electric
+                </a>
+            </clr-vertical-nav>
+        </div>
+    </div>
+</div>
+
+<clr-code-snippet [clrCode]="htmlExample1"></clr-code-snippet>

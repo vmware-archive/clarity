@@ -1,0 +1,79 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Here is a progress bar at the very top of a card.</p>
+                    <div class="progress-block">
+                        <label>Label</label>
+                        <div class="progress-static">
+                            <div class="progress-meter" [attr.data-value]="value1"></div>
+                        </div>
+                    </div>
+                    <div class="progress-block">
+                        <label>Longer Label</label>
+                        <div class="progress-static">
+                            <div class="progress-meter" [attr.data-value]="value2"></div>
+                        </div>
+                    </div>
+                    <div class="progress-block">
+                        <label>Really, Really, Really Long Label</label>
+                        <div class="progress success">
+                            <progress value="{{value3}}" max="100" [attr.data-displayval]="value3 + '%'"></progress>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="progress-static top">
+                        <div class="progress-meter" data-value="33"></div>
+                    </div>
+                    <a href="javascript://" class="card-link">Click</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-xs-12 col-sm-6&quot;&gt;
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;div class=&quot;card-block&quot;&gt;
+                &lt;h4 class=&quot;card-title&quot;&gt;Card title&lt;/h4&gt;
+                &lt;p class=&quot;card-text&quot;&gt;Here is a progress bar at the very top of a card.&lt;/p&gt;
+                &lt;div class=&quot;progress-block&quot;&gt;
+                    &lt;label&gt;Label&lt;/label&gt;
+                    &lt;div class=&quot;progress-static&quot;&gt;
+                        &lt;div class=&quot;progress-meter&quot; data-value=&quot;...&quot;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;progress-block&quot;&gt;
+                    &lt;label&gt;Longer Label&lt;/label&gt;
+                    &lt;div class=&quot;progress-static&quot;&gt;
+                        &lt;div class=&quot;progress-meter&quot; data-value=&quot;...&quot;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;progress-block&quot;&gt;
+                    &lt;label&gt;Really, Really, Really Long Label&lt;/label&gt;
+                    &lt;div class=&quot;progress success&quot;&gt;
+                        &lt;progress value=&quot;...&quot; max=&quot;100&quot; data-displayval=&quot;...%&quot;&gt;&lt;/progress&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;card-footer&quot;&gt;
+                &lt;div class=&quot;progress-static top&quot;&gt;
+                    &lt;div class=&quot;progress-meter&quot; data-value=&quot;...&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;a href=&quot;...&quot; class=&quot;card-link&quot;&gt;Click&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>

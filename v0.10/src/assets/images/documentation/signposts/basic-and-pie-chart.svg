@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="864px" height="336px" viewBox="0 0 864 336" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>img1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12,92 L12,164.994792 C12,166.647694 13.3440029,168 15.0019146,168 L288.998085,168 C290.657605,168 292,166.654523 292,164.994792 L292,3.00520784 C292,1.35230649 290.655997,0 288.998085,0 L15.0019146,0 C13.3423948,0 12,1.34547738 12,3.00520784 L12,80 L0,80 L12,92 Z" id="path-1"></path>
+        <path d="M12,146 L12,266.990905 C12,268.659011 13.3424394,270 14.9984224,270 L344.001578,270 C345.650248,270 347,268.652782 347,266.990905 L347,3.00909453 C347,1.34098906 345.657561,0 344.001578,0 L14.9984224,0 C13.3497519,0 12,1.34721751 12,3.00909453 L12,134 L0,134 L12,146 Z" id="path-2"></path>
+        <path d="M0,132 C36.451,132 66,102.451 66,66 C66,29.55 36.451,0 0,0 L0,132 Z" id="path-3"></path>
+        <path d="M101,55.9658112 C90.8544204,62.3240389 78.8565222,66 66,66 C29.549,66 0,36.451 0,0 L101,0 L101,55.9658112 L101,55.9658112 Z" id="path-5"></path>
+        <path d="M10.6734726,90 C3.92300069,79.6466801 0,67.2815036 0,54 C0,31.6784563 11.0814394,11.9445444 28.0432714,-1.33866251e-11 L66,-8.07793567e-27 L66,90 L10.6734726,90 L10.6734726,90 Z" id="path-7"></path>
+        <path d="M66,2.84217094e-14 C29.549,2.84217094e-14 0,29.55 0,66 L66,66 L66,0 L66,2.84217094e-14 Z" id="path-9"></path>
+        <path d="M35,0 C22.1434778,0 10.1455796,3.67608548 -5.79802872e-12,10.0344304 L1.61558713e-27,66 L35,66 L35,2.84217094e-14 L35,0 Z" id="path-11"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="img1-piechart">
+            <g id="img1">
+                <g id="img-piechart">
+                    <rect id="Rectangle-9-Copy" fill="#EEEEEE" fill-rule="evenodd" x="0" y="0" width="864" height="336"></rect>
+                    <g id="with-title-copy-3" stroke-width="1" fill-rule="evenodd" transform="translate(86.000000, 75.000000)">
+                        <g id="Combined-Shape">
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                            <path stroke="#9A9A9A" stroke-width="1" d="M1.20710678,80.5 L12.5,91.7928932 L12.5,164.994792 C12.5,166.374208 13.6227963,167.5 15.0019146,167.5 L288.998085,167.5 C290.380743,167.5 291.5,166.3791 291.5,164.994792 L291.5,3.00520784 C291.5,1.62579244 290.377204,0.5 288.998085,0.5 L15.0019146,0.5 C13.6192569,0.5 12.5,1.62089953 12.5,3.00520784 L12.5,80.5 L1.20710678,80.5 Z"></path>
+                        </g>
+                        <text id="Historians-believe-t" font-family="Metropolis-Regular, Metropolis" font-size="14" font-weight="normal" line-spacing="24" fill="#565656">
+                            <tspan x="36" y="38">Historians believe that the Greeks </tspan>
+                            <tspan x="36" y="62">actually originated pie pastry. The </tspan>
+                            <tspan x="36" y="86">pies during this period were made </tspan>
+                            <tspan x="36" y="110">of a flour-water paste wrapped </tspan>
+                            <tspan x="36" y="134">around meat.</tspan>
+                        </text>
+                        <path d="M275.090927,16.8978706 L278.573888,13.3437676 C278.875144,13.0363581 278.875144,12.5379666 278.573888,12.2305571 C278.272632,11.9231476 277.784217,11.9231476 277.482961,12.2305571 L274,15.7846602 L270.517039,12.2305571 C270.215783,11.9231476 269.727368,11.9231476 269.426112,12.2305571 C269.124856,12.5379666 269.124856,13.0363581 269.426112,13.3437676 L272.909073,16.8978706 L269.225942,20.6562324 C268.924686,20.9636419 268.924686,21.4620334 269.225942,21.7694429 C269.527198,22.0768524 270.015613,22.0768524 270.316869,21.7694429 L274,18.011081 L277.683131,21.7694429 C277.984387,22.0768524 278.472802,22.0768524 278.774058,21.7694429 C279.075314,21.4620334 279.075314,20.9636419 278.774058,20.6562324 L275.090927,16.8978706 Z" id="Fill-1" fill="#747474"></path>
+                    </g>
+                    <text id="Basic" font-family="Metropolis-Regular, Metropolis" font-size="12" font-weight="normal" line-spacing="16" fill="#853FB3">
+                        <tspan x="98" y="267">Basic </tspan>
+                    </text>
+                    <g id="info-007cbb" transform="translate(64.000000, 146.000000)" stroke-width="1" fill-rule="evenodd" fill="#007CBB">
+                        <g id="Page-1">
+                            <path d="M7.95346667,3 C8.4688,3 8.8868,3.418 8.8868,3.93333333 C8.8868,4.44866667 8.4688,4.86666667 7.95346667,4.86666667 C7.43813333,4.86666667 7.02013333,4.44866667 7.02013333,3.93333333 C7.02013333,3.418 7.43813333,3 7.95346667,3" id="Fill-1"></path>
+                            <path d="M10,11.3333333 L8.66666667,11.3333333 L8.66666667,6 L6.66666667,6 C6.29866667,6 6,6.29866667 6,6.66666667 C6,7.03466667 6.29866667,7.33333333 6.66666667,7.33333333 L7.33333333,7.33333333 L7.33333333,11.3333333 L6,11.3333333 C5.632,11.3333333 5.33333333,11.6313333 5.33333333,12 C5.33333333,12.3686667 5.632,12.6666667 6,12.6666667 L10,12.6666667 C10.3686667,12.6666667 10.6666667,12.3686667 10.6666667,12 C10.6666667,11.6313333 10.3686667,11.3333333 10,11.3333333" id="Fill-3"></path>
+                            <path d="M8,14.6666667 C4.318,14.6666667 1.33333333,11.6813333 1.33333333,8 C1.33333333,4.318 4.318,1.33333333 8,1.33333333 C11.6813333,1.33333333 14.6666667,4.318 14.6666667,8 C14.6666667,11.6813333 11.6813333,14.6666667 8,14.6666667 M8,0 C3.582,0 0,3.582 0,8 C0,12.418 3.582,16 8,16 C12.418,16 16,12.418 16,8 C16,3.582 12.418,0 8,0" id="Fill-5"></path>
+                        </g>
+                    </g>
+                    <g id="signpost2" stroke-width="1" fill-rule="evenodd" transform="translate(430.000000, 24.000000)">
+                        <g id="with-title-copy-6" transform="translate(22.000000, 0.000000)">
+                            <g id="Combined-Shape">
+                                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                                <path stroke="#9A9A9A" stroke-width="1" d="M1.20710678,134.5 L12.5,145.792893 L12.5,266.990905 C12.5,268.380955 13.6166731,269.5 14.9984224,269.5 L344.001578,269.5 C345.376422,269.5 346.5,268.374319 346.5,266.990905 L346.5,3.00909453 C346.5,1.61904532 345.383327,0.5 344.001578,0.5 L14.9984224,0.5 C13.6235782,0.5 12.5,1.62568105 12.5,3.00909453 L12.5,134.5 L1.20710678,134.5 Z"></path>
+                            </g>
+                            <text id="With-title-and-image" font-family="Metropolis-Regular, Metropolis" font-size="12" font-weight="normal" line-spacing="16" fill="#853FB3">
+                                <tspan x="15" y="294">With title and image</tspan>
+                            </text>
+                            <path d="M331.090927,16.8978706 L334.573888,13.3437676 C334.875144,13.0363581 334.875144,12.5379666 334.573888,12.2305571 C334.272632,11.9231476 333.784217,11.9231476 333.482961,12.2305571 L330,15.7846602 L326.517039,12.2305571 C326.215783,11.9231476 325.727368,11.9231476 325.426112,12.2305571 C325.124856,12.5379666 325.124856,13.0363581 325.426112,13.3437676 L328.909073,16.8978706 L325.225942,20.6562324 C324.924686,20.9636419 324.924686,21.4620334 325.225942,21.7694429 C325.527198,22.0768524 326.015613,22.0768524 326.316869,21.7694429 L330,18.011081 L333.683131,21.7694429 C333.984387,22.0768524 334.472802,22.0768524 334.774058,21.7694429 C335.075314,21.4620334 335.075314,20.9636419 334.774058,20.6562324 L331.090927,16.8978706 Z" id="Fill-1" fill="#747474"></path>
+                        </g>
+                        <g id="pie" transform="translate(70.000000, 114.000000)">
+                            <path d="M132,66 C132,102.451 102.451,132 66,132 C29.549,132 0,102.451 0,66 C0,29.549 29.549,0 66,0 C102.451,0 132,29.549 132,66" id="Fill-1" fill="#C1272D"></path>
+                            <g id="Group-5" transform="translate(66.000000, 0.000000)">
+                                <mask id="mask-4" fill="white">
+                                    <use xlink:href="#path-3"></use>
+                                </mask>
+                                <g id="Clip-4"></g>
+                                <polygon id="Fill-3" fill="#FF5400" mask="url(#mask-4)" points="0 66 0 -16 49 -6 80 33 75 97 35 150"></polygon>
+                            </g>
+                            <g id="Group-8" transform="translate(0.000000, 66.000000)">
+                                <mask id="mask-6" fill="white">
+                                    <use xlink:href="#path-5"></use>
+                                </mask>
+                                <g id="Clip-7"></g>
+                                <polygon id="Fill-6" fill="#0093D6" mask="url(#mask-6)" points="66 0 101 84 29 87 -21 36"></polygon>
+                            </g>
+                            <g id="Group-11" transform="translate(0.000000, 12.000000)">
+                                <mask id="mask-8" fill="white">
+                                    <use xlink:href="#path-7"></use>
+                                </mask>
+                                <g id="Clip-10"></g>
+                                <polygon id="Fill-9" fill="#003B7B" mask="url(#mask-8)" points="66 54 -21 90 -32 75 -16 0"></polygon>
+                            </g>
+                            <g id="Group-14">
+                                <mask id="mask-10" fill="white">
+                                    <use xlink:href="#path-9"></use>
+                                </mask>
+                                <g id="Clip-13"></g>
+                                <polygon id="Fill-12" fill="#FFB38C" mask="url(#mask-10)" points="-16 12 66 66 31 -15"></polygon>
+                            </g>
+                            <g id="Group-17" transform="translate(31.000000, 0.000000)">
+                                <mask id="mask-12" fill="white">
+                                    <use xlink:href="#path-11"></use>
+                                </mask>
+                                <g id="Clip-16"></g>
+                                <polygon id="Fill-15" fill="#A4D8E8" mask="url(#mask-12)" points="35 66 0 -15 35 -16"></polygon>
+                            </g>
+                        </g>
+                        <g id="Group-2" transform="translate(229.000000, 139.000000)">
+                            <circle id="Oval-2" fill="#FF5400" cx="6" cy="9" r="6"></circle>
+                            <circle id="Oval-2-Copy-2" fill="#003B7B" cx="6" cy="45" r="6"></circle>
+                            <circle id="Oval-2-Copy" fill="#0093D6" cx="6" cy="27" r="6"></circle>
+                            <circle id="Oval-2-Copy-3" fill="#FFB38C" cx="6" cy="63" r="6"></circle>
+                            <circle id="Oval-2-Copy-4" fill="#A4D8E8" cx="6" cy="81" r="6"></circle>
+                            <text id="Apple-44%-Pumpkin-25" font-family="Metropolis-Regular, Metropolis" font-size="13" font-weight="normal" line-spacing="18" fill="#565656">
+                                <tspan x="20" y="13">Apple 44%</tspan>
+                                <tspan x="20" y="31">Pumpkin 25%</tspan>
+                                <tspan x="20" y="49">Cherry 15%</tspan>
+                                <tspan x="20" y="67">Pecan 9%</tspan>
+                                <tspan x="20" y="85">Other 7%</tspan>
+                            </text>
+                        </g>
+                        <text id="America’s-favorite-p" font-family="Metropolis-Regular, Metropolis" font-size="14" font-weight="normal" line-spacing="24" fill="#565656">
+                            <tspan x="58" y="68">America’s favorite pies. Based on a survey </tspan>
+                            <tspan x="58" y="92">of 1200 adults.</tspan>
+                        </text>
+                        <text id="Pie-chart-of-pies" font-family="Metropolis-Light, Metropolis" font-size="18" font-weight="300" line-spacing="24" fill="#000000">
+                            <tspan x="58" y="42">Pie chart of pies</tspan>
+                        </text>
+                        <g id="info-007cbb" transform="translate(0.000000, 127.000000)" fill="#007CBB">
+                            <g id="Page-1">
+                                <path d="M7.95346667,3 C8.4688,3 8.8868,3.418 8.8868,3.93333333 C8.8868,4.44866667 8.4688,4.86666667 7.95346667,4.86666667 C7.43813333,4.86666667 7.02013333,4.44866667 7.02013333,3.93333333 C7.02013333,3.418 7.43813333,3 7.95346667,3" id="Fill-1"></path>
+                                <path d="M10,11.3333333 L8.66666667,11.3333333 L8.66666667,6 L6.66666667,6 C6.29866667,6 6,6.29866667 6,6.66666667 C6,7.03466667 6.29866667,7.33333333 6.66666667,7.33333333 L7.33333333,7.33333333 L7.33333333,11.3333333 L6,11.3333333 C5.632,11.3333333 5.33333333,11.6313333 5.33333333,12 C5.33333333,12.3686667 5.632,12.6666667 6,12.6666667 L10,12.6666667 C10.3686667,12.6666667 10.6666667,12.3686667 10.6666667,12 C10.6666667,11.6313333 10.3686667,11.3333333 10,11.3333333" id="Fill-3"></path>
+                                <path d="M8,14.6666667 C4.318,14.6666667 1.33333333,11.6813333 1.33333333,8 C1.33333333,4.318 4.318,1.33333333 8,1.33333333 C11.6813333,1.33333333 14.6666667,4.318 14.6666667,8 C14.6666667,11.6813333 11.6813333,14.6666667 8,14.6666667 M8,0 C3.582,0 0,3.582 0,8 C0,12.418 3.582,16 8,16 C12.418,16 16,12.418 16,8 C16,3.582 12.418,0 8,0" id="Fill-5"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

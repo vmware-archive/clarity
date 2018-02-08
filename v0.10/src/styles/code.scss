@@ -1,0 +1,54 @@
+//Styles for Clarity Demos
+.clr-example {
+    margin-top: baselineRem(1);
+    .main-container {
+        height: auto;
+        padding-top: 0;
+        background: $gray-lighter;
+        .content-area {
+            overflow-y: hidden;
+        }
+    }
+    &.squeeze {
+        padding: $clr_baselineRem_2;
+    }
+}
+
+.modal.static {
+    position: relative;
+    padding: $clr_baselineRem_3;
+}
+
+.modal-backdrop.static {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.modal-icon {
+    float: left;
+    color: $clr-green;
+    font-size: rem(3);
+    margin-right: $clr_baselineRem_0_5;
+}
+
+.backdrop-example-container {
+    position: relative;
+    padding: $clr_baselineRem_1;
+}
+
+.bump-down {
+    margin-top: $clr_baselineRem_1 !important;
+}
+
+//Overriding PrismJS styles. This is in code.scss and not in code.clarity.scss because
+//we don't want to override the background in case someone chooses to use
+//another PrismJS theme.
+:not(pre)>code[class*="language-"],
+pre[class*="language-"],
+pre {
+    background: transparent;
+    padding: 0 0 $clr_baselineRem_1 $clr_baselineRem_1;
+}

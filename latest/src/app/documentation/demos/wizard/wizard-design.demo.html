@@ -1,0 +1,195 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+    <div class="backdrop-example-container">
+        <div *ngIf="!open" style="margin: 0 auto; text-align: center">
+            <button class="btn btn-outline btn-inverse" (click)="open = true">Show wizard</button>
+        </div>
+
+        <clr-wizard #wizard [clrWizardOpen]="open" (clrWizardOpenChange)="reset($event)">
+            <clr-wizard-title>New Pok&egrave;mon</clr-wizard-title>
+
+            <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+            <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+            <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+            <clr-wizard-button [type]="'finish'">Done</clr-wizard-button>
+
+            <clr-wizard-page #pageOne [clrWizardPageNextDisabled]="name.pristine || !formPageOneValid">
+                <ng-template clrPageTitle>Basic Information</ng-template>
+                <ng-template clrPageNavTitle>{{ pageOneTitle }}</ng-template>
+                <form #formPageOne="ngForm">
+                    <section class="form-block">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <label for="nameInput" aria-haspopup="true" role="tooltip"
+                                [class.invalid]="name.touched && !name.valid"
+                                class="tooltip tooltip-validation tooltip-md tooltip-bottom-left">
+                                <input type="text" id="nameInput" required [(ngModel)]="model.name" name="name" #name="ngModel">
+                                <span class="tooltip-content">This field cannot be empty!</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ht_feet">Height</label>
+                            <div class="select">
+                                <select id="ht_feet"
+                                    name="ht_feet"
+                                    [(ngModel)]="model.ht_feet">
+                                    <option
+                                        *ngFor="let measure of [ '0 ft.', '1 ft.', '2 ft.', '3 ft.', '4 ft.' ]"
+                                        [value]="measure">
+                                        {{measure}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="select">
+                                <select id="ht_inches"
+                                    name="ht_inches"
+                                    [(ngModel)]="model.ht_inches">
+                                    <option
+                                        *ngFor="let inch of [ '0 in.', '1 in.', '2 in.', '3 in.', '4 in.', '5 in.', '6 in.', '7 in.', '8 in.', '9 in.', '10 in.', '11 in.' ]"
+                                        [value]="inch">
+                                        {{inch}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Weight</label>
+                            <label for="weightInput" aria-haspopup="true" role="tooltip"
+                                [class.invalid]="name.touched && !weight.valid"
+                                class="tooltip tooltip-validation tooltip-md tooltip-bottom-left">
+                                <input type="text"
+                                    id="weightInput"
+                                    required
+                                    [(ngModel)]="model.weight"
+                                    name="weight"
+                                    #weight="ngModel"
+                                    placeholder="lbs."
+                                    class="col-sm-5 col-xs-12">
+                                <span class="tooltip-content">This field cannot be empty!</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <div class="select">
+                                <select id="gender"
+                                    name="gender"
+                                    [(ngModel)]="model.gender">
+                                    <option *ngFor="let g of [ 'Male', 'Female' ]"
+                                        [value]="g">
+                                        {{g}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </clr-wizard-page>
+
+            <clr-wizard-page #pageTwo>
+                <ng-template clrPageTitle>Color</ng-template>
+                <ng-template clrPageNavTitle>{{ pageTwoTitle }}</ng-template>
+                <form #formPageTwo="ngForm">
+                    <section class="form-block">
+                        <label>Your pok&egrave;mon will be {{ colorLabel }}.</label>
+                        <div class="row wizdemo-color-block-row">
+                            <div *ngFor="let color of colorList"
+                                class="wizdemo-color-block-wrapper col-xs-3">
+                                    <div class="wizdemo-color-block"
+                                         [style.backgroundColor]="color"
+                                         [class.active]="color === model.color"
+                                         (click)="model.color = color">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                        </div>
+                    </section>
+                </form>
+            </clr-wizard-page>
+
+            <clr-wizard-page #pageThree [clrWizardPageNextDisabled]="!formPageThreeValid">
+                <ng-template clrPageTitle>Power</ng-template>
+                <ng-template clrPageNavTitle>{{ pageThreeTitle }}</ng-template>
+
+                <clr-alert [clrAlertClosable]="false" clrAlertType="alert-error" *ngIf="showPowerError">
+                    <clr-alert-item>
+                        <span class="alert-text">
+                            Your power and weakness cannot be from the same source.
+                        </span>
+                    </clr-alert-item>
+                </clr-alert>
+
+                <form #formPageTwo="ngForm">
+                    <section class="form-block">
+                        <label>Your pok&egrave;mon {{ textsplanationOfPower }}.</label>
+                        <div class="row wizdemo-color-block-row">
+                            <div *ngFor="let icon of powerSources"
+                                class="wizdemo-color-block-wrapper col-xs-3">
+                                    <div class="wizdemo-color-block is-icon"
+                                         [class.active]="icon === model.power"
+                                         [class.disabled]="icon === model.weakness"
+                                         (click)="setPower(icon)">
+                                        <clr-icon [attr.shape]="icon"></clr-icon>
+                                    </div>
+                                </div>
+                        </div>
+                    </section>
+                </form>
+            </clr-wizard-page>
+
+            <clr-wizard-page #pageFour [clrWizardPageNextDisabled]="!formPageThreeValid">
+                <ng-template clrPageTitle>Weakness</ng-template>
+                <ng-template clrPageNavTitle>{{ pageFourTitle }}</ng-template>
+
+                <clr-alert [clrAlertClosable]="false" clrAlertType="alert-error" *ngIf="showPowerError">
+                    <clr-alert-item>
+                        <span class="alert-text">
+                            Your power and weakness cannot be from the same source.
+                        </span>
+                    </clr-alert-item>
+                </clr-alert>
+
+                <form #formPageTwo="ngForm">
+                    <section class="form-block">
+                        <label>Your pok&egrave;mon {{ textsplanationOfWeakness }}.</label>
+                        <div class="row wizdemo-color-block-row">
+                            <div *ngFor="let icon of powerSources"
+                                class="wizdemo-color-block-wrapper col-xs-3">
+                                    <div class="wizdemo-color-block is-icon"
+                                         [class.active]="icon === model.weakness"
+                                         [class.disabled]="icon === model.power"
+                                         (click)="setWeakness(icon)">
+                                        <clr-icon [attr.shape]="icon"></clr-icon>
+                                    </div>
+                                </div>
+                        </div>
+                    </section>
+                </form>
+            </clr-wizard-page>
+
+            <clr-wizard-page #pageFive (clrWizardPageOnLoad)="createRanking()">
+                <ng-template clrPageTitle>Summary</ng-template>
+
+                <p>
+                    Your pok&egrave;mon's name is {{ model.name }}. {{ model.gender === "Male" ? "He" : "She" }}
+                    {{ textsplanationOfPower }} but {{ textsplanationOfWeakness }}.
+                </p>
+
+                <p>
+                    Your pok&egrave;mon's power ranking is: {{ model.ranking }}{{ powerRankingPunctuation }}
+                </p>
+
+                <p>
+                    {{ textsplanationOfRanking }}
+                </p>
+            </clr-wizard-page>
+        </clr-wizard>
+    </div>
+</div>

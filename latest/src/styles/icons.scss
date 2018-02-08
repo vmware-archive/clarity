@@ -1,0 +1,30 @@
+.layout-icons {
+    .main-container {
+        display: unset;
+        transform: none;
+    }
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+
+        /*  translate3d is here for better performance.
+            However, it affects the .headerbackdrop layer order
+            so it should be set to none when the screen is small.   */
+
+        transform: translate3d(0, 0, 0);
+        z-index: map-get($clr-layers, sidepanel);
+    }
+
+    .main-container {
+
+        &.open-hamburger-menu,
+        &.open-overflow-menu {
+            .header {
+
+                transform: none;
+            }
+        }
+    }
+}

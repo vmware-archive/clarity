@@ -1,0 +1,29 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Compact Datagrid</h2>
+
+<p>
+    To increase the information density of your Datagrid or to decrease the amount of space it takes up, add the <code class="clr-code">datagrid-compact</code> class to it. This class decreases the amount of whitespace paddings in the default Datagrid style.
+</p>
+
+<clr-datagrid class="datagrid-compact">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Pokemon</clr-dg-column>
+    <clr-dg-row *ngFor="let user of users; let i = index;">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>
+            <clr-icon shape="user"></clr-icon>
+            {{user.name}}
+        </clr-dg-cell>
+        <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<clr-code-snippet [clrCode]="compactExample" clrLanguage="html"></clr-code-snippet>

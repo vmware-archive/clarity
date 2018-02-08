@@ -1,0 +1,177 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="progbar-examples">
+    <h4>Inline Progress Bar</h4>
+    <div class="progress-block">
+        <label>Simple Layout</label>
+        <div class="progress">
+            <progress value="{{inlineProgress}}" max="100" [attr.data-displayval]="inlineProgress + '%'"></progress>
+        </div>
+        <span>More text</span>
+    </div>
+
+    <div class="progress-block">
+        <label>Complex Layout</label>
+        <div class="progress-group">
+            <div class="row">
+                <div class="col-xs-6">Left</div>
+                <div class="col-xs-6 text-right">Right</div>
+            </div>
+            <div class="progress-static">
+                <div class="progress-meter" [attr.data-value]="inlineStaticProgbarValue" [attr.data-displayval]="inlineStaticProgbarValue + '%'"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">Left</div>
+                <div class="col-xs-6 text-right">Right</div>
+            </div>
+        </div>
+        <span>More text</span>
+    </div>
+
+    <h4>Labeled, Static Progress Bar</h4>
+    <div class="progress-block">
+        <label>Complex Layout</label>
+        <div class="progress-group">
+            <div class="row">
+                <div class="col-xs-6">Left</div>
+                <div class="col-xs-6 text-right">Right</div>
+            </div>
+            <div class="progress-static labeled danger">
+                <div class="progress-meter" [attr.data-value]="staticLabeledProgbarValue" [attr.data-displayval]="staticLabeledProgbarValue + '%'"></div>
+                <span>{{staticLabeledProgbarValue}}%</span>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">Left</div>
+                <div class="col-xs-6 text-right">Right</div>
+            </div>
+        </div>
+    </div>
+
+    <h4>Stacked Progress Bars</h4>
+    <div class="progress-block">
+        <label>Stacked Layout</label>
+        <div class="progress-group">
+            <div class="progress-static labeled danger">
+                <div class="progress-meter" [attr.data-value]="staticDangerValue" [attr.data-displayval]="staticDangerValue + '%'"></div>
+                <span>{{staticDangerValue}}%</span>
+            </div>
+            <div class="progress-static labeled">
+                <div class="progress-meter" [attr.data-value]="staticLabeledProgbarValue" [attr.data-displayval]="staticLabeledProgbarValue + '%'"></div>
+                <span>{{staticLabeledProgbarValue}}%</span>
+            </div>
+            <div class="progress-static labeled success">
+                <div class="progress-meter" [attr.data-value]="staticSuccessValue" [attr.data-displayval]="staticSuccessValue + '%'"></div>
+                <span>{{staticSuccessValue}}%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="progress-block">
+        <label>Stacked (but resized) Layout</label>
+        <div class="progress-group" style="font-size: 1px">
+            <div class="progress-static danger">
+                <div class="progress-meter" [attr.data-value]="staticDangerValue" [attr.data-displayval]="staticDangerValue + '%'"></div>
+                <span>{{staticDangerValue}}%</span>
+            </div>
+            <div class="progress-static">
+                <div class="progress-meter" [attr.data-value]="staticLabeledProgbarValue" [attr.data-displayval]="staticLabeledProgbarValue + '%'"></div>
+                <span>{{staticLabeledProgbarValue}}%</span>
+            </div>
+            <div class="progress-static success">
+                <div class="progress-meter" [attr.data-value]="staticSuccessValue" [attr.data-displayval]="staticSuccessValue + '%'"></div>
+                <span>{{staticSuccessValue}}%</span>
+            </div>
+        </div>
+    </div>
+
+    <p><button class="btn btn-outline" (click)="setNewValues()">Load New Values</button></p>
+</div>
+
+<pre><code clr-code-highlight="language-html">
+&lt;h4&gt;Inline Progress Bar&lt;/h4&gt;
+&lt;div class=&quot;progress-block&quot;&gt;
+    &lt;label&gt;Simple Layout&lt;/label&gt;
+    &lt;div class=&quot;progress&quot;&gt;
+        &lt;progress value=&quot;...&quot; max=&quot;100&quot; data-displayval=&quot;...%&quot;&gt;&lt;/progress&gt;
+    &lt;/div&gt;
+    &lt;span&gt;More text&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;progress-block&quot;&gt;
+    &lt;label&gt;Complex Layout&lt;/label&gt;
+    &lt;div class=&quot;progress-group&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-xs-6&quot;&gt;Left&lt;/div&gt;
+            &lt;div class=&quot;col-xs-6 text-right&quot;&gt;Right&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;progress-static&quot;&gt;
+            &lt;div class=&quot;progress-meter&quot; data-value=&quot;...&quot; data-displayval=&quot;...%&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-xs-6&quot;&gt;Left&lt;/div&gt;
+            &lt;div class=&quot;col-xs-6 text-right&quot;&gt;Right&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span&gt;More text&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;h4&gt;Labeled, Static Progress Bar&lt;/h4&gt;
+&lt;div class=&quot;progress-block&quot;&gt;
+    &lt;label&gt;Complex Layout&lt;/label&gt;
+    &lt;div class=&quot;progress-group&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-xs-6&quot;&gt;Left&lt;/div&gt;
+            &lt;div class=&quot;col-xs-6 text-right&quot;&gt;Right&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;progress-static labeled danger&quot;&gt;
+            &lt;div class=&quot;progress-meter&quot; data-value=&quot;...&quot; data-displayval=&quot;...%&quot;&gt;&lt;/div&gt;
+            &lt;span&gt;...%&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-xs-6&quot;&gt;Left&lt;/div&gt;
+            &lt;div class=&quot;col-xs-6 text-right&quot;&gt;Right&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h4&gt;Stacked Progress Bars&lt;/h4&gt;
+&lt;div class=&quot;progress-block&quot;&gt;
+    &lt;label&gt;Stacked Layout&lt;/label&gt;
+    &lt;div class=&quot;progress-group&quot;&gt;
+        &lt;div class=&quot;progress-static labeled danger&quot;&gt;
+            &lt;div class=&quot;progress-meter&quot; data-value=&quot;...&quot; data-displayval=&quot;...%&quot;&gt;&lt;/div&gt;
+            &lt;span&gt;...%&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;progress-static labeled&quot;&gt;
+            &lt;div class=&quot;progress-meter&quot; data-value=&quot;...&quot; data-displayval=&quot;...%&quot;&gt;&lt;/div&gt;
+            &lt;span&gt;...%&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;progress-static labeled success&quot;&gt;
+            &lt;div class=&quot;progress-meter&quot; data-value=&quot;...&quot; data-displayval=&quot;...%&quot;&gt;&lt;/div&gt;
+            &lt;span&gt;...%&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;progress-block&quot;&gt;
+    &lt;label&gt;Stacked (but resized) Layout&lt;/label&gt;
+    &lt;div class=&quot;progress-group&quot; style=&quot;font-size: 1px&quot;&gt;
+        &lt;div class=&quot;progress-static danger&quot;&gt;
+            &lt;div class=&quot;progress-meter&quot; data-value=&quot;...&quot; data-displayval=&quot;...%&quot;&gt;&lt;/div&gt;
+            &lt;span&gt;...%&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;progress-static&quot;&gt;
+            &lt;div class=&quot;progress-meter&quot; data-value=&quot;...&quot; data-displayval=&quot;...%&quot;&gt;&lt;/div&gt;
+            &lt;span&gt;...%&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;progress-static success&quot;&gt;
+            &lt;div class=&quot;progress-meter&quot; data-value=&quot;...&quot; data-displayval=&quot;...%&quot;&gt;&lt;/div&gt;
+            &lt;span&gt;...%&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>

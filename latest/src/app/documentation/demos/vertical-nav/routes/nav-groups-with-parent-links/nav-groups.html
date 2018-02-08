@@ -1,0 +1,141 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Nav Groups (with parent link)</h4>
+
+<p>
+    The <code class="clr-code">clr-vertical-nav-group</code> component should be to create
+    nav groups. The links inside of a nav group should be wrapped inside of a
+    <code class="clr-code">clr-vertical-nav-group-children</code> component.
+</p>
+
+<h5>Mixed Navigation</h5>
+
+<p>
+    Navigation Links can also be added directly inside of the
+    <code class="clr-code">clr-vertical-nav</code> without creating a
+    <code class="clr-code">clr-vertical-nav-group</code>
+    to create a mixed navigation.
+</p>
+
+<h5>Lazy Loading Navigation Links</h5>
+
+<p>
+    <code class="clr-code">clrIfExpanded</code> structural directive can be used along with
+    <code class="clr-code">clr-vertical-nav-group-children</code> to lazily load links inside of a
+    <code class="clr-code">clr-vertical-nav-group</code>.
+</p>
+
+<div class="clr-example">
+    <div class="main-container" style="height: 432px">
+        <header class="header">
+            <div class="branding">
+                <a href="javascript://">
+                    <clr-icon shape="bolt" class="is-inverse"></clr-icon>
+                    <span class="title">Project Pokémon</span>
+                </a>
+            </div>
+        </header>
+        <div class="content-container">
+            <div class="content-area">
+                <router-outlet></router-outlet>
+            </div>
+            <clr-vertical-nav [clrVerticalNavCollapsible]="demoCollapsible">
+                <clr-vertical-nav-group
+                        routerLinkActive="active">
+                    <a clrVerticalNavLink
+                       routerLink="./normal"
+                       routerLinkActive="active"
+                       [routerLinkActiveOptions]="{exact:true}">
+                        <clr-icon shape="user" clrVerticalNavIcon></clr-icon>
+                        Normal
+                    </a>
+                    <clr-vertical-nav-group-children *clrIfExpanded="true">
+                        <a clrVerticalNavLink
+                           routerLink="./normal/pidgey"
+                           routerLinkActive="active">
+                            Pidgey
+                        </a>
+                        <a clrVerticalNavLink
+                           routerLink="./normal/snorlax"
+                           routerLinkActive="active">
+                            Snorlax
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <clr-vertical-nav-group
+                        routerLinkActive="active">
+                    <a clrVerticalNavLink
+                       routerLink="./fire"
+                       routerLinkActive="active"
+                       [routerLinkActiveOptions]="{exact:true}">
+                        <clr-icon shape="flame" clrVerticalNavIcon></clr-icon>
+                        Fire
+                    </a>
+                    <clr-vertical-nav-group-children *clrIfExpanded>
+                        <a clrVerticalNavLink
+                           routerLink="./fire/charmander"
+                           routerLinkActive="active">
+                            Charmander
+                        </a>
+                        <a clrVerticalNavLink
+                           routerLink="./fire/charizard"
+                           routerLinkActive="active">
+                            Charizard
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <clr-vertical-nav-group
+                        routerLinkActive="active">
+                    <a clrVerticalNavLink
+                       routerLink="./electric"
+                       routerLinkActive="active"
+                       [routerLinkActiveOptions]="{exact:true}">
+                        <clr-icon shape="bolt" clrVerticalNavIcon></clr-icon>
+                        Electric
+                    </a>
+                    <clr-vertical-nav-group-children *clrIfExpanded>
+                        <a clrVerticalNavLink
+                           routerLink="./electric/pikachu"
+                           routerLinkActive="active">
+                            Pikachu
+                        </a>
+                        <a clrVerticalNavLink
+                           routerLink="./electric/raichu"
+                           routerLinkActive="active">
+                            Raichu
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <a clrVerticalNavLink routerLinkActive="active" routerLink="./credit">
+                    <clr-icon shape="certificate" clrVerticalNavIcon></clr-icon>
+                    Credit
+                </a>
+            </clr-vertical-nav>
+        </div>
+    </div>
+</div>
+
+<clr-code-snippet [clrCode]="htmlExample" clrLanguage="html"></clr-code-snippet>
+
+<p></p>
+
+<clr-alert clrAlertType="warning" [clrAlertClosable]="false">
+    <clr-alert-item>
+        <span class="alert-text">
+            For the nav group highlighting to work, the application
+            <a target="_blank" href="https://angular.io/guide/router">routing</a>
+            should be hierarchical. Please refer to the example
+            below.
+        </span>
+    </clr-alert-item>
+</clr-alert>
+
+<clr-code-snippet [clrCode]="routesExample" clrLanguage="typescript"></clr-code-snippet>
+
+
+
+

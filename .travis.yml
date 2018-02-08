@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - "8"
+
+script: 
+  - cd latest && npm install && npm run deploy:ci
+  - cd ../v0.10 && npm install && npm run deploy:ci
+  - cd ../
+deploy:
+  provider: pages
+  verbose: true
+  local_dir: deploy
+  skip-cleanup: true
+  github-token: $GITHUB_OAUTH_TOKEN
+  keep-history: true
+  committer-from-gh: true
+  on:
+    branch: website
+
+# We can't run these jobs in parallel yet because jobs destroy their workspace.
+# To do this, we would have to deploy artifacts from each job somewhere, and
+# retrieve them before the final deploy stage. Running them in the same job like
+# this allows us to bypass that chaos, but slows the build obviously.
+# https://docs.travis-ci.com/user/build-stages/#Data-persistence-between-stages-and-jobs

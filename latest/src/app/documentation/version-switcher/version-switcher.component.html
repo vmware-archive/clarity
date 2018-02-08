@@ -1,0 +1,9 @@
+<clr-dropdown>
+  <button type="button" class="dropdown-toggle btn btn-link" clrDropdownTrigger>
+    Version {{current}}
+    <clr-icon shape="caret down"></clr-icon>
+  </button>
+  <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
+    <a href="{{environment.base}}/documentation/{{version.version}}/{{child}}" clrDropdownItem *ngFor="let version of versions">{{version.version}}</a>
+  </clr-dropdown-menu>
+</clr-dropdown>

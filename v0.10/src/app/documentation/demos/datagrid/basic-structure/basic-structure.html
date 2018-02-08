@@ -1,0 +1,34 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Basic structure</h2>
+
+<p>
+    To use our Datagrid, you do not need to pass an array of data or a JSON configuration to a
+    single element. Instead, we leverage a pure declarative API, just like any other Angular
+    component. You write your HTML just as you would for a basic table, with a
+    <code class="clr-code">*ngFor</code> (or <code class="clr-code">*clrDgItems</code>, see
+    Smart iterator) on the rows to iterate over your
+    data.
+</p>
+
+<clr-datagrid>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *ngFor="let user of users">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>{{user.color}}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<clr-code-snippet [clrCode]="example" clrLanguage="html"></clr-code-snippet>

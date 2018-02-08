@@ -1,0 +1,119 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Nav Groups</h4>
+
+<p>
+    The <code class="clr-code">clr-vertical-nav-group</code> component should be used to create
+    nav groups. The links inside of a nav group should be wrapped inside of a
+    <code class="clr-code">clr-vertical-nav-group-children</code> component.
+</p>
+
+<h5>Mixed Navigation</h5>
+
+<p>
+    Navigation Links can also be added directly inside of the
+    <code class="clr-code">clr-vertical-nav</code> without creating a
+    <code class="clr-code">clr-vertical-nav-group</code>
+    to create a mixed navigation.
+</p>
+
+<div class="clr-example">
+    <div class="main-container" style="height: 432px">
+        <header class="header">
+            <div class="branding">
+                <a href="javascript://">
+                    <clr-icon shape="bolt" class="is-inverse"></clr-icon>
+                    <span class="title">Project Pokémon</span>
+                </a>
+            </div>
+        </header>
+        <div class="content-container">
+            <div class="content-area">
+                <router-outlet></router-outlet>
+            </div>
+            <clr-vertical-nav [clrVerticalNavCollapsible]="demoCollapsible">
+                <clr-vertical-nav-group
+                        routerLinkActive="active">
+                    <clr-icon shape="user" clrVerticalNavIcon></clr-icon>
+                    Normal
+                    <clr-vertical-nav-group-children>
+                        <a clrVerticalNavLink
+                           routerLink="./normal/pidgey"
+                           routerLinkActive="active">
+                            Pidgey
+                        </a>
+                        <a clrVerticalNavLink
+                           routerLink="./normal/snorlax"
+                           routerLinkActive="active">
+                            Snorlax
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <clr-vertical-nav-group
+                        routerLinkActive="active">
+                    <clr-icon shape="flame" clrVerticalNavIcon></clr-icon>
+                    Fire
+                    <clr-vertical-nav-group-children>
+                        <a clrVerticalNavLink
+                           routerLink="./fire/charmander"
+                           routerLinkActive="active">
+                            Charmander
+                        </a>
+                        <a clrVerticalNavLink
+                           routerLink="./fire/charizard"
+                           routerLinkActive="active">
+                            Charizard
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <clr-vertical-nav-group
+                        routerLinkActive="active">
+                    <clr-icon shape="bolt" clrVerticalNavIcon></clr-icon>
+                    Electric
+                    <clr-vertical-nav-group-children>
+                        <a clrVerticalNavLink
+                           routerLink="./electric/pikachu"
+                           routerLinkActive="active">
+                            Pikachu
+                        </a>
+                        <a clrVerticalNavLink
+                           routerLink="./electric/raichu"
+                           routerLinkActive="active">
+                            Raichu
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <a clrVerticalNavLink routerLinkActive="active" routerLink="./credit">
+                    <clr-icon shape="certificate" clrVerticalNavIcon></clr-icon>
+                    Credit
+                </a>
+            </clr-vertical-nav>
+        </div>
+    </div>
+</div>
+
+<p></p>
+
+<clr-alert clrAlertType="warning" [clrAlertClosable]="false">
+    <clr-alert-item>
+        <span class="alert-text">
+             We recommend that the application
+            <a target="_blank" href="https://angular.io/guide/router">routing</a> be
+            hierarchical.
+        </span>
+    </clr-alert-item>
+</clr-alert>
+
+<clr-code-snippet [clrCode]="htmlExample" clrLanguage="html"></clr-code-snippet>
+
+<p></p>
+
+<clr-code-snippet [clrCode]="routesExample" clrLanguage="typescript"></clr-code-snippet>
+
+
+
+

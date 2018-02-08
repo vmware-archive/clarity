@@ -1,0 +1,59 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary"
+            id="the-login-page-is-a-predefined-form-for-applications-that-require-authentication">The
+            login page is a predefined form for applications that require authentication.</h5>
+
+        <div id="code-examples">
+        <p>Use Clarity’s login form by extending the <code class="clr-code">.login</code>
+            classname on <code class="clr-code">form</code> and wrapping it
+            in a container extending the <code class="clr-code">.login-wrapper</code> class.</p>
+
+        <h6 id="title-subtitle-and-trademark">.title, .subtitle and .trademark</h6>
+
+        <p>Extend the <code class="clr-code">.title</code> and <code class="clr-code">.subtitle</code>
+            class on labels indicating the product title and subtitle. If your product title has the
+            trademark symbol, make sure to wrap the trademark symbol in a <code class="clr-code">span</code>
+            with the <code class="clr-code">.trademark</code> class on it.</p>
+
+        <h6 id="username">.username</h6>
+
+        <p>Extend the <code class="clr-code">.username</code> class on the username input field.</p>
+
+        <h6 id="password">.password</h6>
+
+        <p>Extend the <code class="clr-code">.password</code> class on the password input field.</p>
+
+        <h6 id="error-active">.error, .active</h6>
+
+        <p>This wrapper contains a validation message. Extend the <code class="clr-code">.active</code>
+            class with <code class="clr-code">.error</code> to display the validation message.</p>
+
+        <h4 id="example">Example</h4>
+
+        <clr-login-example-demo></clr-login-example-demo>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>This component provides a complete login experience.</p>
+
+            <p>To customize the login page, remove the elements you don’t need, per your use case.
+                For example, your app may require fewer fields.</p>
+
+            <h4 id="validation">Validation</h4>
+
+            <p>Validation occurs on submit. If the user enters an incorrect user name or password, a
+                validation message appears below the password field.</p>
+
+            <p>For security reasons, Clarity does not call out whether the error occurred in the user
+                name or password field. The validation message text should indicate this situation; for
+                example, “The user name or password is incorrect.”</p>
+
+            <h4 id="responsiveness">Responsiveness</h4>
+
+            <p>The layout adapts to different screen sizes at 768px and 544px.</p>
+        </div>
+    </article>
+</clr-doc-wrapper>

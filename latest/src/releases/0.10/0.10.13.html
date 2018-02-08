@@ -1,0 +1,30 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>New alerts pager for multiple app level alerts</h6>
+        <p></p>
+        <div>
+            With 0.10.13, you can now have multiple app level alerts that with a simple pagination
+            arrow to navigate through them. Just wrap app level alerts in the clr-alerts component like this example. <a href="https://github.com/vmware/clarity/pull/1530" target="_blank">(#1530)</a>
+<pre><code clr-code-highlight="language-html">
+    &lt;clr-alerts&gt;
+        &lt;clr-alert [clrAlertType]=&quot;'info'&quot; [clrAlertAppLevel]=&quot;true&quot;&gt;...&lt;/clr-alert&gt;
+        &lt;clr-alert [clrAlertType]=&quot;'warning'&quot; [clrAlertAppLevel]=&quot;true&quot;&gt;...&lt;/clr-alert&gt;
+        &lt;clr-alert [clrAlertType]=&quot;'danger'&quot; [clrAlertAppLevel]=&quot;true&quot;&gt;...&lt;/clr-alert&gt;
+    &lt;/clr-alerts&gt;
+</code></pre>
+        </div>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Fixed deselection of currently displayed items
+        <a href="https://github.com/vmware/clarity/pull/1626" target="_blank">(#1626)</a>
+        </li>
+    <li bug-fix>
+        Fixed an issue with selection on the datagrid when using OnPush mode
+        <a href="https://github.com/vmware/clarity/pull/1658" target="_blank">(#1658)</a>
+    </li>
+</ul>

@@ -1,0 +1,82 @@
+@import '../../../../styles/clarity-imports';
+
+.card {
+    margin-top: 0;
+    .card-title {
+        text-transform: lowercase;
+        margin-bottom: $clr-baseline;
+        height: 24px;
+    }
+
+    .card-link {
+        margin: 0;
+    }
+
+    .card-block {
+        padding: $clr-baseline;
+    }
+    .card-footer {
+        display: flex;
+        .download-svg-icon {
+            margin: 0 0 0 auto;
+        }
+    }
+}
+
+pre, clr-code-snippet /deep/ pre {
+    background-color: $clr-near-white;
+    padding: 12px;
+}
+
+.aliases {
+    font-size: 12px;
+    color: #666;
+}
+
+.icon-highlight-code {
+    margin-top: $clr_baselineRem_0_5;
+    color: $clr-red-light-midtone;
+}
+
+.icon-variants {
+    margin-top: $clr-baseline;
+    display: flex;
+    flex-direction: row;
+    button.icon-variant {
+        flex: 0 0 auto;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+
+        border: 1px dashed rgba($clr-dark-gray, 0);
+        background-color: transparent;
+        outline: none;
+
+        color: $clr-dark-gray;
+        cursor: pointer;
+
+        padding: 0;
+        margin-right: $clr_baselineRem_0_1;
+
+        transition: all 0.2s ease-out;
+
+        &.active {
+            border: 1px dashed rgba($clr-dark-gray, 1);
+            border-radius: $clr-default-borderradius;
+        }
+
+        &:hover {
+            border: 1px dashed rgba($clr-dark-gray, 1);
+            border-radius: $clr-default-borderradius;
+        }
+
+        clr-icon {
+            align-self: center;
+            margin: auto;
+            width: 24px;
+            height: 24px;
+        }
+    }
+}

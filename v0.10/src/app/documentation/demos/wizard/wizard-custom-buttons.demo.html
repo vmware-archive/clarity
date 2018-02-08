@@ -1,0 +1,76 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<button class="btn btn-primary" (click)="wizard.open()">Wizard + Button Overrides</button>
+
+<clr-wizard #wizard
+    [(clrWizardOpen)]="open"
+    [clrWizardSize]="'lg'">
+
+    <clr-wizard-title>Custom and default buttons</clr-wizard-title>
+
+    <clr-wizard-button [type]="'cancel'">Default</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Default</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Default</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Default</clr-wizard-button>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 1 with default buttons</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>Default buttons</ng-template> <!-- optional -->
+
+        <p>Content for page 1.</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page 
+        (clrWizardPageCustomButton)="doCustomClick($event)">
+
+        <ng-template clrPageTitle>Page 2 with custom buttons</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>Custom buttons</ng-template> <!-- optional -->
+
+        <p>Content for page 2.</p>
+
+        <ng-template clrPageButtons>
+            <clr-wizard-button [type]="'cancel'">Page Override</clr-wizard-button>
+            <clr-wizard-button [type]="'custom-previous'">Custom</clr-wizard-button>
+            <clr-wizard-button [type]="'custom-next'">Custom</clr-wizard-button>
+        </ng-template>
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 3 with default buttons</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>Default buttons</ng-template> <!-- optional -->
+
+        <p>Content for page 3.</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page 
+        (clrWizardPageCustomButton)="doCustomClick($event)">
+
+        <ng-template clrPageTitle>Page 4 with custom finish</ng-template> <!-- mandatory -->
+        <ng-template clrPageNavTitle>Custom buttons</ng-template> <!-- optional -->
+
+        <p *ngIf="!showWarning">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, 
+            officiis rem id explicabo incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur 
+            quas! Quaerat explicabo expedita placeat vero.
+        </p>
+
+        <p *ngIf="showWarning">
+            <button type="submit" class="btn btn-danger" (click)="handleDangerClick()">
+                Click here if you are sure
+            </button>
+        </p>
+
+        <ng-template clrPageButtons>
+            <clr-wizard-button [type]="'cancel'">Page Override</clr-wizard-button>
+            <clr-wizard-button [type]="'previous'">Page Override</clr-wizard-button>
+            <clr-wizard-button [type]="'custom-danger'">Custom</clr-wizard-button>
+        </ng-template>
+    </clr-wizard-page>
+</clr-wizard>
+
+<clr-code-snippet [clrLanguage]="'typescript'" [clrCode]="code"></clr-code-snippet>
+<clr-code-snippet [clrLanguage]="'html'" [clrCode]="html"></clr-code-snippet>

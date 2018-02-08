@@ -1,0 +1,16 @@
+
+<!--
+  ~ Copyright (c) 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+    <p>Use the <code class="clr-code">clrLoading</code> directive to toggle the spinner in a button</p>
+    <button [clrLoading]="validateLoading" class="btn btn-info-outline" (click)="validateDemo()">Validate</button>
+    <button [clrLoading]="submitLoading" type="submit" class="btn btn-success-outline" (click)="submitDemo()">Submit</button>
+
+    <clr-code-snippet [clrCode]="mainHTMLExample" clrLanguage="html"></clr-code-snippet>
+
+    <clr-code-snippet [clrCode]="mainTSExample" clrLanguage="typescript"></clr-code-snippet>
+</div>

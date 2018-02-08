@@ -1,0 +1,116 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Custom filters</h2>
+
+<p>
+    Similarly to the advanced sorting features, sometimes the default filter on a string property
+    is not what you need. When this is the case you can write your own filter, with fully
+    custom template and controller, and both wrap it in and pass it to a
+    <code class="clr-code">&lt;clr-dg-filter&gt;</code> component in your column declaration.
+    This can be done whether or not your column is declared as a
+    <code class="clr-code">clrDgField</code>, and will always take precedence over it if it is.
+</p>
+<p>
+    The filter you provide to the <code class="clr-code">&lt;clr-dg-filter&gt;</code> component
+    needs to implement the <code class="clr-code">ClrDatagridFilterInterface</code> interface provided by Clarity:
+</p>
+<clr-code-snippet [clrCode]="examples.filterInterface" clrLanguage="typescript"></clr-code-snippet>
+
+<p>
+    There are several ways to pass your filter to the
+    <code class="clr-code">&lt;clr-dg-filter&gt;</code> component:
+</p>
+<ul>
+    <li>
+        The simplest, but less reusable way, is to simply inline your filter's template in the
+        column and use the <code class="clr-code">[clrDgFilter]</code> input to pass your filter
+        instance:
+        <clr-code-snippet [clrCode]="examples.inlineFilterTS" clrLanguage="typescript"></clr-code-snippet>
+        <clr-code-snippet [clrCode]="examples.inlineFilterHTML" clrLanguage="html"></clr-code-snippet>
+    </li>
+    <li>
+        A more reusable way is to write an actual component for your custom filter,
+        and inject its <code class="clr-code">DatagridFilter</code> parent in its constructor so
+        that it can register itself:
+        <clr-code-snippet [clrCode]="examples.customFilterComponentTS" clrLanguage="typescript"></clr-code-snippet>
+        <clr-code-snippet [clrCode]="examples.customFilterComponentHTML" clrLanguage="html"></clr-code-snippet>
+    </li>
+    <li>
+        Finally, if you want to have a completely reusable filter independently of our Datagrid,
+        you can write a component for it and use a template reference variable to declare the
+        filter to its container:
+        <clr-code-snippet [clrCode]="examples.templateVariableTS" clrLanguage="typescript"></clr-code-snippet>
+        <clr-code-snippet [clrCode]="examples.templateVariableHTML" clrLanguage="html"></clr-code-snippet>
+    </li>
+</ul>
+
+<p>
+    In our example, we can create "color picker" filter, rather than have to search by color name.
+</p>
+
+<clr-datagrid>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Pokemon</clr-dg-column>
+    <clr-dg-column>
+        Favorite color
+        <clr-dg-filter [clrDgFilter]="colorFilter">
+            <clr-datagrid-color-filter-demo #colorFilter class="color-filter">
+            </clr-datagrid-color-filter-demo>
+        </clr-dg-filter>
+    </clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<clr-code-snippet [clrCode]="examples.colorFilterTS" clrLanguage="typescript"></clr-code-snippet>
+<clr-code-snippet [clrCode]="examples.colorFilterHTML" clrLanguage="html"></clr-code-snippet>
+
+<h4>Preset Column Filters</h4>
+
+<p>
+    You can use a preset filter on columns to initialze the data grid to a specific filtered state.
+    <code class="clr-code">[(clrFilterValue)]</code> can be pre-set.
+</p>
+
+<clr-code-snippet [clrCode]="examples.stringFilterColumnPresetHTML" clrLanguage="html"></clr-code-snippet>
+
+<clr-datagrid>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'" [(clrFilterValue)]="myFilterValue">Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>
+        Pokemon
+        <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter"></clr-dg-string-filter>
+    </clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            {{user.pokemon.name}} <span class="badge badge-5">#{{user.pokemon.number}}</span>
+        </clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>

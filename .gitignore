@@ -3,6 +3,7 @@
 
 # build
 /deploy
+/clarity
 
 # IDEs and editors
 /.idea

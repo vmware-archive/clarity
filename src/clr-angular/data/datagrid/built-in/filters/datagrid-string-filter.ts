@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewChild} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild} from "@angular/core";
 
 import {ClrDatagridFilter} from "../../datagrid-filter";
 import {ClrDatagridStringFilterInterface} from "../../interfaces/string-filter.interface";
@@ -32,7 +32,7 @@ import {DatagridStringFilterImpl} from "./datagrid-string-filter-impl";
 })
 export class DatagridStringFilter extends DatagridFilterRegistrar<DatagridStringFilterImpl> implements CustomFilter,
                                                                                                        AfterViewInit {
-    constructor(private renderer: Renderer2, filters: FiltersProvider, private domAdapter: DomAdapter) {
+    constructor(filters: FiltersProvider, private domAdapter: DomAdapter) {
         super(filters);
     }
 

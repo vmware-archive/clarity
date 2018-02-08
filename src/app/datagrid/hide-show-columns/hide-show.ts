@@ -20,7 +20,7 @@ export class DatagridHideShowDemo {
     showDate = true;
     conditionalSignpost: boolean = true;
 
-    constructor(private inventory: Inventory) {
+    constructor(inventory: Inventory) {
         inventory.size = 10;
         inventory.reset();
         this.users = inventory.all;

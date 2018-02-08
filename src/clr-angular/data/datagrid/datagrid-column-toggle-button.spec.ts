@@ -3,14 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, QueryList, TemplateRef, ViewChildren} from "@angular/core";
-
-import {ClrDatagridColumnToggle} from "./datagrid-column-toggle";
+import {Component} from "@angular/core";
 import {ClrDatagridColumnToggleButton} from "./datagrid-column-toggle-button";
-import {DatagridHideableColumnModel} from "./datagrid-hideable-column.model";
 import {TestContext} from "./helpers.spec";
 import {ColumnToggleButtonsService} from "./providers/column-toggle-buttons.service";
-import {HideableColumnService} from "./providers/hideable-column.service";
 
 export default function(): void {
     describe("Datagrid Column Toggle Button component", function() {

@@ -8,14 +8,16 @@ let id: number = 0;
 
 export class ProgBarExample {
     intervalId: any;
-
     demoId: string = "prog-example-toggle-" + id++;
-
     value: number = 0;
     intervalTimeInMs: number = 100;
+    title: string;
+    isLabeled: boolean;
 
-    constructor(private label: string = "demo", private title: string = "Progress Bar",
-                private isLabeled: boolean = false) {}
+    constructor(private label: string = "demo", title: string = "Progress Bar", isLabeled: boolean = false) {
+        this.title = title;
+        this.isLabeled = isLabeled;
+    }
 
     cssClassnames(): string {
         return ["progress", this.label].join(" ");

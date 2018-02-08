@@ -18,7 +18,7 @@ export class DatagridScrollingDemo {
     manyUsers: User[];
     users: User[];
 
-    constructor(private inventory: Inventory) {
+    constructor(inventory: Inventory) {
         inventory.size = 30;
         inventory.reset();
         this.manyUsers = inventory.all;

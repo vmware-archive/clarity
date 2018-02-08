@@ -238,37 +238,6 @@ class ViewTestComponent {
 
 @Component({
     template: `
-        <clr-wizard-page
-            (clrWizardPageOnLoad)="myOnLoad()"
-            [clrWizardPageNextDisabled]="nextDisabled">
-            {{content1}}
-        </clr-wizard-page>
-        <clr-wizard-page
-            (clrWizardPageOnCommit)="myOnCommit($event)">
-            Content2
-         </clr-wizard-page>
-         <clr-wizard-page>
-            Content3
-         </clr-wizard-page>
-    `
-})
-class TestComponent {
-    @ViewChildren(ClrWizardPage) wizardPageChildren: QueryList<ClrWizardPage>;
-    open: boolean = true;
-    nextDisabled: boolean = false;
-    content1: String = "Content1";
-
-    myOnLoad(): void {
-        this.content1 = "This Works Better";
-    }
-
-    myOnCommit(event: any): void {
-        event.preventDefault();
-    }
-}
-
-@Component({
-    template: `
         <ng-container *ngFor="let page of [0, 1, 2, 3]">
             <clr-wizard-page [id]="3 === page ? 'lastpage' : page">
                 Content for page {{ page }}

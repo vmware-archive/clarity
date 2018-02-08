@@ -22,7 +22,7 @@ export class DatagridTestCasesDemo {
 
     loading: boolean = false;
 
-    constructor(private inventory: Inventory) {
+    constructor(inventory: Inventory) {
         inventory.size = 15;
         inventory.reset();
         this.users = inventory.all;

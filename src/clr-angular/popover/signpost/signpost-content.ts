@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, ElementRef, Inject, Injector, Input, Optional, SkipSelf} from "@angular/core";
+import {Component, ElementRef, Inject, Injector, Input, Optional} from "@angular/core";
 
 import {AbstractPopover} from "../common/abstract-popover";
 import {POPOVER_HOST_ANCHOR} from "../common/popover-host-anchor.token";

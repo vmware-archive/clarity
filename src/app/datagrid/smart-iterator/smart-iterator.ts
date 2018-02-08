@@ -25,7 +25,7 @@ export class DatagridSmartIteratorDemo {
     example = EXAMPLE;
     users: User[];
 
-    constructor(private inventory: Inventory) {
+    constructor(inventory: Inventory) {
         inventory.size = 10;
         inventory.reset();
         this.users = inventory.all;

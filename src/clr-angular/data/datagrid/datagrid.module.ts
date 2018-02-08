@@ -40,7 +40,6 @@ import {ClrDatagridRow} from "./datagrid-row";
 import {ClrDatagridRowDetail} from "./datagrid-row-detail";
 import {ClrDatagridComparatorInterface} from "./interfaces/comparator.interface";
 import {ClrDatagridFilterInterface} from "./interfaces/filter.interface";
-import {ClrDatagridSortOrder} from "./interfaces/sort-order";
 import {ClrDatagridStateInterface} from "./interfaces/state.interface";
 import {ClrDatagridStringFilterInterface} from "./interfaces/string-filter.interface";
 import {DatagridBodyRenderer} from "./render/body-renderer";
@@ -150,13 +149,13 @@ export enum SortOrder {
     Desc = -1
 }
 /** @deprecated since 0.11 */
-export interface Comparator<T> extends ClrDatagridComparatorInterface<any> {}
+export interface Comparator<T> extends ClrDatagridComparatorInterface<T> {}
 /** @deprecated since 0.11 */
-export interface Filter<T> extends ClrDatagridFilterInterface<any> {}
+export interface Filter<T> extends ClrDatagridFilterInterface<T> {}
 /** @deprecated since 0.11 */
 export interface State extends ClrDatagridStateInterface {}
 /** @deprecated since 0.11 */
-export interface StringFilter<T> extends ClrDatagridStringFilterInterface<any> {}
+export interface StringFilter<T> extends ClrDatagridStringFilterInterface<T> {}
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const DATAGRID_DIRECTIVES = CLR_DATAGRID_DIRECTIVES;

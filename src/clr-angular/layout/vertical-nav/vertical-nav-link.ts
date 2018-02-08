@@ -19,10 +19,12 @@ import {VerticalNavGroupService} from "./providers/vertical-nav-group.service";
 export class ClrVerticalNavLink {
     constructor(@Optional() private _navGroupService: VerticalNavGroupService) {}
 
+    /* tslint:disable */
     @HostListener("click")
     private expandParentNavGroup(): void {
         if (this._navGroupService) {
             this._navGroupService.expand();
         }
     }
+    /* tslint:enable */
 }

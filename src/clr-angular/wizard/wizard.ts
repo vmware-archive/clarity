@@ -58,7 +58,7 @@ export class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      */
     constructor(public navService: WizardNavigationService, public pageCollection: PageCollectionService,
                 public buttonService: ButtonHubService, public headerActionService: HeaderActionService,
-                private elementRef: ElementRef, private differs: IterableDiffers) {
+                private elementRef: ElementRef, differs: IterableDiffers) {
         this.goNextSubscription = this.navService.movedToNextPage.subscribe(() => {
             this.onMoveNext.emit();
         });

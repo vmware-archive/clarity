@@ -13,7 +13,7 @@ import {DatagridRenderOrganizer} from "./render-organizer";
 
 @Directive({selector: "clr-dg-column"})
 export class DatagridHeaderRenderer implements OnDestroy {
-    constructor(private el: ElementRef, private renderer: Renderer2, private organizer: DatagridRenderOrganizer,
+    constructor(private el: ElementRef, private renderer: Renderer2, organizer: DatagridRenderOrganizer,
                 private domAdapter: DomAdapter, private columnResizer: DatagridColumnResizer) {
         this.subscriptions.push(organizer.clearWidths.subscribe(() => this.clearWidth()));
         this.subscriptions.push(organizer.detectStrictWidths.subscribe(() => this.detectStrictWidth()));

@@ -13,6 +13,7 @@ import "zone.js/dist/fake-async-test";
 import "zone.js/dist/sync-test";
 import "zone.js/dist/proxy";
 import "zone.js/dist/jasmine-patch";
+import JasmineExpect from "jasmine-expect";
 
 /* tslint:disable no-var-requires no-require-imports */
 const browserTesting = require("@angular/platform-browser-dynamic/testing");

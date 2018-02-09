@@ -10,12 +10,15 @@ module.exports = function(karma) {
     karma.set({
         autoWatch: true,
         basePath: "",
-        frameworks: ["jasmine"],
+        frameworks: ["jasmine", "jasmine-matchers"],
         files: [
             //PrismJS
-            { pattern: './node_modules/prismjs/themes/prism.css', included: true, watched: false},
-            { pattern: './node_modules/prismjs/prism.js', included: true, watched: false},
-            { pattern: './node_modules/prismjs/components/prism-typescript.min.js', included: true, watched: false},
+            { pattern: './node_modules/prismjs/themes/prism.css', included: true, watched: false },
+            { pattern: './node_modules/prismjs/prism.js', included: true, watched: false },
+            { pattern: './node_modules/prismjs/components/prism-typescript.min.js', included: true, watched: false },
+
+            // Custom Elements
+            { pattern: './node_modules/@webcomponents/custom-elements/custom-elements.min.js', included: true, watched: false },
 
             // Clarity
             { pattern: './dist/clr-ui/clr-ui.min.css', included: true, watched: true },

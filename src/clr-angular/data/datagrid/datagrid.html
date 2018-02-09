@@ -8,6 +8,7 @@
 <div class="datagrid-overlay-wrapper">
     <div class="datagrid-scroll-wrapper">
         <div class="datagrid" #datagrid>
+            <div *ngIf="caption != null" class="datagrid-caption">{{caption}}</div>            
             <clr-dg-table-wrapper class="datagrid-table-wrapper">
                 <div clrDgHead class="datagrid-head">
                     <div class="datagrid-row datagrid-row-flex">

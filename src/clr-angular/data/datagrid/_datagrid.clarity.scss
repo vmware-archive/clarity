@@ -48,6 +48,12 @@
         // IE & Firefox needs this
         min-height: 1px;
     }
+    .datagrid-caption {
+        text-align: center;
+        display: block;
+        padding: 3px;
+        background-color: rgba(0,0,0,0);
+    }
     .datagrid-head, .datagrid-body, .datagrid-row, .datagrid-column, .datagrid-cell, .datagrid-fixed-column {
         display: block;
     }

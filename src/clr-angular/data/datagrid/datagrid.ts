@@ -68,7 +68,9 @@ export class ClrDatagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     public get loading(): boolean {
         return this.items.loading;
     }
-
+    @Input("clrCaption")
+    public caption:string;
+    
     @Input("clrDgLoading")
     public set loading(value: boolean) {
         this.items.loading = value;

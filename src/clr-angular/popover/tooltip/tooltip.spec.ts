@@ -35,15 +35,3 @@ describe("Tooltip component", function() {
     `
 })
 class SimpleTest {}
-
-@Component({
-    template: `
-        <clr-tooltip [clrTooltipDirection]="'top-right'" [clrTooltipSize]="'xs'">
-            <clr-icon shape="info-circle" class="tooltip-anchor"></clr-icon>
-            <clr-tooltip-content>
-                <span>Lorem ipsum sit</span>
-            </clr-tooltip-content>
-        </clr-tooltip>
-    `
-})
-class InputTest {}

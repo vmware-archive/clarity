@@ -14,7 +14,7 @@ import {DatagridRenderOrganizer} from "./render-organizer";
 
 @Directive({selector: "clr-dg-column", providers: [DragDispatcher]})
 export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
-    constructor(private el: ElementRef, private renderer: Renderer2, private organizer: DatagridRenderOrganizer,
+    constructor(el: ElementRef, private renderer: Renderer2, private organizer: DatagridRenderOrganizer,
                 private domAdapter: DomAdapter, private dragDispatcher: DragDispatcher) {
         this.columnEl = el.nativeElement;
     }

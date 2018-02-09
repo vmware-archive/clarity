@@ -24,7 +24,7 @@ export class DatagridTestCasesAsyncDemo {
         this.loading = !this.loading;
     }
 
-    constructor(private inventory: Inventory) {
+    constructor(inventory: Inventory) {
         inventory.size = 15;
         inventory.reset();
 

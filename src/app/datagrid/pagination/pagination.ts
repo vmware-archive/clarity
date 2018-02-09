@@ -28,7 +28,7 @@ export class DatagridPaginationDemo {
     users: User[];
     expanded: false;
 
-    constructor(private inventory: Inventory) {
+    constructor(inventory: Inventory) {
         inventory.size = 103;
         inventory.reset();
         this.users = inventory.all;

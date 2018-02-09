@@ -5,7 +5,6 @@
  */
 import {Component} from "@angular/core";
 import {Items} from "./providers/items";
-import {Page} from "./providers/page";
 
 @Component({
     selector: "clr-dg-placeholder",
@@ -20,7 +19,7 @@ import {Page} from "./providers/page";
     host: {"[class.datagrid-placeholder-container]": "true"}
 })
 export class ClrDatagridPlaceholder {
-    constructor(private items: Items, private page: Page) {}
+    constructor(private items: Items) {}
 
     /**
      * Tests if the datagrid is empty, meaning it doesn't contain any items

@@ -5,7 +5,6 @@
  */
 import {
     AfterViewInit,
-    ChangeDetectorRef,
     Directive,
     EmbeddedViewRef,
     Input,
@@ -49,8 +48,7 @@ const PRELOAD_MARGIN = 1;
 @Directive({selector: "[clrVirtualForOf]"})
 export class VirtualForOf<T> implements AfterViewInit {
     constructor(private viewContainer: ViewContainerRef, private template: TemplateRef<{$implicit: T}>,
-                private renderer: Renderer2, private cdr: ChangeDetectorRef, private rendererFactory: RendererFactory2,
-                private ngZone: NgZone) {
+                renderer: Renderer2, private rendererFactory: RendererFactory2, private ngZone: NgZone) {
         this.containerEl = <HTMLElement>renderer.parentNode(viewContainer.element.nativeElement);
     }
 

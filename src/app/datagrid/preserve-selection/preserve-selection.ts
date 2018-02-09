@@ -28,7 +28,7 @@ export class DatagridPreserveSelectionDemo {
         this._selected = selection;
     }
 
-    constructor(private inventory: Inventory) {
+    constructor(inventory: Inventory) {
         inventory.size = 100;
         inventory.reset();
         this.users = inventory.all;

@@ -17,7 +17,7 @@ import {User} from "../inventory/user";
 export class DatagridPaginationScrollingDemo {
     users: User[];
 
-    constructor(private inventory: Inventory) {
+    constructor(inventory: Inventory) {
         inventory.size = 100;
         inventory.reset();
         this.users = inventory.all;

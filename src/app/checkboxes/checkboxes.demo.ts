@@ -17,7 +17,7 @@ export class CheckboxesDemo {
     nativeIndeterminateState: boolean = true;
     termsAgreement: boolean = true;
 
-    constructor(private status: Status) {
+    constructor(status: Status) {
         this.list = status.fetch();
     }
 

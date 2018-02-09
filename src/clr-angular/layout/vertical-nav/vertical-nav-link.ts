@@ -20,7 +20,7 @@ export class ClrVerticalNavLink {
     constructor(@Optional() private _navGroupService: VerticalNavGroupService) {}
 
     @HostListener("click")
-    private expandParentNavGroup(): void {
+    public expandParentNavGroup(): void {
         if (this._navGroupService) {
             this._navGroupService.expand();
         }

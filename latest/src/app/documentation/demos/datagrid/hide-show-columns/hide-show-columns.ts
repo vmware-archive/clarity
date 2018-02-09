@@ -8,6 +8,14 @@ import { Component } from "@angular/core";
 import { Inventory } from "../inventory/inventory";
 import { User } from "../inventory/user";
 
+const CUSTOM_TOGGLE = `
+<clr-dg-column-toggle>
+    <clr-dg-column-toggle-title>Kolumne Herauschauen!</clr-dg-column-toggle-title>
+    <clr-dg-column-toggle-button clrType="selectAll">Alle auswählen!</clr-dg-column-toggle-button>
+    <clr-dg-column-toggle-button clrType="ok"><clr-icon shape="check"></clr-icon></clr-dg-column-toggle-button>
+</clr-dg-column-toggle>
+`;
+
 const EXAMPLE = `
 <clr-datagrid>
     <clr-dg-column>
@@ -28,7 +36,17 @@ const EXAMPLE = `
         ...
     </clr-dg-row>
 
-    <clr-dg-footer></clr-dg-footer>
+    <clr-dg-footer>
+        <!-- Optional customization of hide/show columns toggle -->
+        <clr-dg-column-toggle>
+            <clr-dg-column-toggle-title>Kolumne Herauschauen!</clr-dg-column-toggle-title>
+            <clr-dg-column-toggle-button clrType="selectAll">Alle auswählen!</clr-dg-column-toggle-button>
+            <clr-dg-column-toggle-button clrType="ok"><clr-icon shape="check"></clr-icon></clr-dg-column-toggle-button>
+        </clr-dg-column-toggle>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{pagination.totalItems}} users
+        <clr-dg-pagination #pagination [clrDgPageSize]="currentPageSize"></clr-dg-pagination>
+    </clr-dg-footer>
 </clr-datagrid>
 `;
 
@@ -40,6 +58,7 @@ const EXAMPLE = `
 })
 export class DatagridHideShowColumnsDemo {
     example = EXAMPLE;
+    customToggle = CUSTOM_TOGGLE;
     users: User[];
     currentPageSize: number = 10;
 

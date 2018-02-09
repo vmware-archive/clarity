@@ -5,7 +5,6 @@
  */
 
 import {NgModule} from "@angular/core";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 import {EmptyAnchor} from "./empty-anchor";
 

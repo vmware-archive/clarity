@@ -11,13 +11,9 @@ export class ProgBarExample {
     demoId: string = "prog-example-toggle-" + id++;
     value: number = 0;
     intervalTimeInMs: number = 100;
-    title: string;
-    isLabeled: boolean;
 
-    constructor(private label: string = "demo", title: string = "Progress Bar", isLabeled: boolean = false) {
-        this.title = title;
-        this.isLabeled = isLabeled;
-    }
+    constructor(private label: string = "demo", public title: string = "Progress Bar",
+                public isLabeled: boolean = false) {}
 
     cssClassnames(): string {
         return ["progress", this.label].join(" ");

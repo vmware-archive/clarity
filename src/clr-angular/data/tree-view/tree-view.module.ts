@@ -8,7 +8,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule, Type} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 
-import {ClrFormsModule} from "../../forms/forms.module";
+import {ClrFormsModule} from "../../forms-deprecated/forms.module";
 import {ClrIconModule} from "../../icon/icon.module";
 import {ClrIfExpandModule} from "../../utils/expand/if-expand.module";
 import {ClrTreeNode} from "./tree-node";

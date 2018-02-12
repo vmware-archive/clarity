@@ -6,18 +6,22 @@
 
 import {CommonModule} from "@angular/common";
 import {NgModule, Type} from "@angular/core";
-import {ClrCheckbox} from "./checkbox";
+import {ClrCheckboxDeprecated} from "./checkbox";
 
-export const CLR_CHECKBOX_DIRECTIVES: Type<any>[] = [ClrCheckbox];
+export const CLR_CHECKBOX_DIRECTIVES: Type<any>[] = [ClrCheckboxDeprecated];
 
 @NgModule({imports: [CommonModule], declarations: [CLR_CHECKBOX_DIRECTIVES], exports: [CLR_CHECKBOX_DIRECTIVES]})
 export class ClrCheckboxModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export interface Checkbox extends ClrCheckbox {}
+export interface Checkbox extends ClrCheckboxDeprecated {}
 /** @deprecated since 0.11 */
-export const Checkbox = ClrCheckbox;
+export const Checkbox = ClrCheckboxDeprecated;
+/** @deprecated since 0.12 */
+export interface ClrCheckbox extends ClrCheckboxDeprecated {}
+/** @deprecated since 0.12 */
+export const ClrCheckbox = ClrCheckboxDeprecated;
 /* tslint:enable variable-name */
 /** @deprecated since 0.11 */
 export const CHECKBOX_DIRECTIVES = CLR_CHECKBOX_DIRECTIVES;

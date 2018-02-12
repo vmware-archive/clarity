@@ -9,7 +9,7 @@ import {ClrButtonModule} from "./button/button.module";
 import {ClrCodeModule} from "./code/code.module";
 import {ClrDataModule} from "./data/data.module";
 import {ClrEmphasisModule} from "./emphasis/emphasis.module";
-import {ClrFormsModule} from "./forms/forms.module";
+import {ClrFormsModule} from "./forms-deprecated/forms.module";
 import {ClrIconModule} from "./icon/icon.module";
 import {ClrLayoutModule} from "./layout/layout.module";
 import {ClrModalModule} from "./modal/modal.module";

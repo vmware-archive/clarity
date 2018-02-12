@@ -44,6 +44,7 @@ import {
     ClrButton,
     ClrButtonGroup,
     ClrCheckbox,
+    ClrCheckboxDeprecated,
     ClrCodeHighlight,
     ClrDatagrid,
     ClrDatagridActionBar,
@@ -189,7 +190,13 @@ import {
 } from "./public_api";
 
 describe("Deprecations", () => {
-    describe("since v0.11", () => {
+    describe("since v0.12, remove in 0.13", () => {
+        it("should export deprecated checkbox items", () => {
+            expect(ClrCheckbox).toEqual(ClrCheckboxDeprecated);
+        });
+    });
+
+    describe("since v0.11, remove in 0.12", () => {
         it("should export deprecated buttons items", () => {
             expect(BUTTON_GROUP_DIRECTIVES).toEqual(CLR_BUTTON_GROUP_DIRECTIVES);
             expect(Button).toEqual(ClrButton);

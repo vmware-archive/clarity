@@ -9,11 +9,11 @@ import {FormsModule} from "@angular/forms";
 
 import {ClrFormsModule} from "../forms.module";
 
-import {ClrCheckbox} from "./checkbox";
+import {ClrCheckboxDeprecated} from "./checkbox";
 
 
 abstract class CheckboxTest {
-    @ViewChild(ClrCheckbox) checkboxInstance: ClrCheckbox;
+    @ViewChild(ClrCheckboxDeprecated) checkboxInstance: ClrCheckboxDeprecated;
 
     checked = false;
     indeterminate = false;
@@ -64,7 +64,7 @@ class IndeterminateCheckbox extends CheckboxTest {}
 describe("Checkbox", () => {
     let fixture: ComponentFixture<CheckboxTest>;
     let testInstance: CheckboxTest;
-    let checkboxInstance: ClrCheckbox;
+    let checkboxInstance: ClrCheckboxDeprecated;
     let checkboxElement: HTMLInputElement;
     let labelElement: HTMLLabelElement;
 

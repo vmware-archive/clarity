@@ -6,9 +6,9 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser";
 
+import {DragDispatcher} from "../../../utils/drag-and-drop/providers/drag-dispatcher";
 import {ClrDatagrid} from "../datagrid";
 import {TestContext} from "../helpers.spec";
-import {DragDispatcher} from "../providers/drag-dispatcher";
 
 import {DatagridColumnResizer} from "./column-resizer";
 import {DomAdapter} from "./dom-adapter";
@@ -61,14 +61,14 @@ export default function(): void {
             column4DragDispatcher = column4.injector.get(DragDispatcher);
         });
         it("accesses separator-dragger and seperator-tracker elements when the drag listener is added in", function() {
-            expect(column1DragDispatcher.handleRef.nativeElement).not.toBeUndefined();
-            expect(column2DragDispatcher.handleRef.nativeElement).not.toBeUndefined();
-            expect(column3DragDispatcher.handleRef.nativeElement).not.toBeUndefined();
-            expect(column4DragDispatcher.handleRef.nativeElement).not.toBeUndefined();
-            expect(column1DragDispatcher.handleTrackerRef.nativeElement).not.toBeUndefined();
-            expect(column2DragDispatcher.handleTrackerRef.nativeElement).not.toBeUndefined();
-            expect(column3DragDispatcher.handleTrackerRef.nativeElement).not.toBeUndefined();
-            expect(column4DragDispatcher.handleTrackerRef.nativeElement).not.toBeUndefined();
+            expect(column1DragDispatcher.draggable.self).not.toBeUndefined();
+            expect(column2DragDispatcher.draggable.self).not.toBeUndefined();
+            expect(column3DragDispatcher.draggable.self).not.toBeUndefined();
+            expect(column4DragDispatcher.draggable.self).not.toBeUndefined();
+            expect(column1DragDispatcher.draggable.ghost).not.toBeUndefined();
+            expect(column2DragDispatcher.draggable.ghost).not.toBeUndefined();
+            expect(column3DragDispatcher.draggable.ghost).not.toBeUndefined();
+            expect(column4DragDispatcher.draggable.ghost).not.toBeUndefined();
         });
         it("accesses column minimum width on the first drag attempt", function() {
             column1ResizerDirective.dragStartHandler();
@@ -130,7 +130,7 @@ export default function(): void {
             onMoveEvent = {pageX: pageDragPosX + 50};
             column3ResizerDirective.dragMoveHandler(onMoveEvent);
             expect(column3ResizerDirective.dragDistancePositionX).toBe(50);
-            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement).getPropertyValue("right"))
+            expect(getComputedStyle(<HTMLElement>column3DragDispatcher.draggable.ghost).getPropertyValue("right"))
                 .toBe("-50px");
             column3ResizerDirective.dragEndHandler();
             expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBe(250);
@@ -142,7 +142,7 @@ export default function(): void {
             column3ResizerDirective.dragMoveHandler(onMoveEvent);
             expect(column3ResizerDirective.dragDistancePositionX).toBe(-50);
             expect(document.body.style.cursor).toBe("col-resize");
-            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement).getPropertyValue("right"))
+            expect(getComputedStyle(<HTMLElement>column3DragDispatcher.draggable.ghost).getPropertyValue("right"))
                 .toBe("50px");
             column3ResizerDirective.dragEndHandler();
             expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBe(150);
@@ -156,7 +156,7 @@ export default function(): void {
             column3ResizerDirective.dragMoveHandler(onMoveEvent);
             expect(column3ResizerDirective.dragDistancePositionX).toBe(0);
             expect(document.body.style.cursor).toBe("col-resize");
-            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement).getPropertyValue("right"))
+            expect(getComputedStyle(<HTMLElement>column3DragDispatcher.draggable.ghost).getPropertyValue("right"))
                 .toBe("0px");
             column3ResizerDirective.dragEndHandler();
             expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBe(96);
@@ -170,24 +170,24 @@ export default function(): void {
             column3ResizerDirective.dragMoveHandler(onMoveEvent);
             /* Default minimum width is 96px; thus, 120-96 = 24 so it could be dragged and shrunk by only 24px. */
             expect(column3ResizerDirective.dragDistancePositionX).toBe(-24);
-            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement).getPropertyValue("right"))
+            expect(getComputedStyle(<HTMLElement>column3DragDispatcher.draggable.ghost).getPropertyValue("right"))
                 .toBe("24px");
             column3ResizerDirective.dragEndHandler();
             expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBe(96);
         });
         it("should render the drag tracker in the appropriate styles", function() {
-            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement).display).toBe("none");
+            expect(getComputedStyle(<HTMLElement>column3DragDispatcher.draggable.ghost).display).toBe("none");
             column3ResizerDirective.dragStartHandler();
-            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement).display).toBe("block");
+            expect(getComputedStyle(<HTMLElement>column3DragDispatcher.draggable.ghost).display).toBe("block");
             pageDragPosX = column3ResizerDirective.pageStartPositionX;
             onMoveEvent = {pageX: pageDragPosX + 50};
             column3ResizerDirective.dragMoveHandler(onMoveEvent);
             expect(document.body.style.cursor).toBe("col-resize");
             column3ResizerDirective.dragEndHandler();
             expect(document.body.style.cursor).toBe("auto");
-            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement).getPropertyValue("right"))
+            expect(getComputedStyle(<HTMLElement>column3DragDispatcher.draggable.ghost).getPropertyValue("right"))
                 .toBe("0px");
-            expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement).getPropertyValue("display"))
+            expect(getComputedStyle(<HTMLElement>column3DragDispatcher.draggable.ghost).getPropertyValue("display"))
                 .toBe("none");
         });
         it("emits an event once dragging ends", function() {

@@ -37,8 +37,24 @@ export class DomAdapter {
         return parseInt(element.getBoundingClientRect().right, 10);
     }
 
+    clientRectLeft(element: any): number {
+        return parseInt(element.getBoundingClientRect().left, 10);
+    }
+
+    clientRectTop(element: any): number {
+        return parseInt(element.getBoundingClientRect().top, 10);
+    }
+
+    clientRectBottom(element: any): number {
+        return parseInt(element.getBoundingClientRect().bottom, 10);
+    }
+
     clientRectWidth(element: any): number {
         return parseInt(element.getBoundingClientRect().width, 10);
+    }
+
+    clientRectHeight(element: any): number {
+        return parseInt(element.getBoundingClientRect().height, 10);
     }
 
     minWidth(element: any): number {

@@ -6,6 +6,8 @@
 import {Component, ContentChild, ElementRef, EventEmitter, HostBinding, Input, Output, ViewChild} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
+import {DragDispatcher} from "../../utils/drag-and-drop/providers/drag-dispatcher";
+
 import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
 import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
 import {DatagridStringFilterImpl} from "./built-in/filters/datagrid-string-filter-impl";
@@ -13,7 +15,6 @@ import {DatagridHideableColumnModel} from "./datagrid-hideable-column.model";
 import {ClrDatagridComparatorInterface} from "./interfaces/comparator.interface";
 import {ClrDatagridSortOrder} from "./interfaces/sort-order";
 import {CustomFilter} from "./providers/custom-filter";
-import {DragDispatcher} from "./providers/drag-dispatcher";
 import {FiltersProvider} from "./providers/filters";
 import {Sort} from "./providers/sort";
 import {DatagridFilterRegistrar} from "./utils/datagrid-filter-registrar";
@@ -101,12 +102,12 @@ export class ClrDatagridColumn extends DatagridFilterRegistrar<DatagridStringFil
 
     @ViewChild("columnHandle")
     set handleElRef(value: ElementRef) {
-        this._dragDispatcher.handleRef = value;
+        this._dragDispatcher.draggable.self = value.nativeElement;
     }
 
     @ViewChild("columnHandleTracker")
     set handleTrackerElRef(value: ElementRef) {
-        this._dragDispatcher.handleTrackerRef = value;
+        this._dragDispatcher.draggable.ghost = value.nativeElement;
     }
 
     /**

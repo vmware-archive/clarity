@@ -7,14 +7,14 @@
 import {AfterViewInit, Directive, ElementRef, EventEmitter, OnDestroy, Output, Renderer2} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
-import {DragDispatcher} from "../providers/drag-dispatcher";
+import {DragDispatcher} from "../../../utils/drag-and-drop/providers/drag-dispatcher";
 
 import {DomAdapter} from "./dom-adapter";
 import {DatagridRenderOrganizer} from "./render-organizer";
 
 @Directive({selector: "clr-dg-column", providers: [DragDispatcher]})
 export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
-    constructor(el: ElementRef, private renderer: Renderer2, private organizer: DatagridRenderOrganizer,
+    constructor(private el: ElementRef, private renderer: Renderer2, private organizer: DatagridRenderOrganizer,
                 private domAdapter: DomAdapter, private dragDispatcher: DragDispatcher) {
         this.columnEl = el.nativeElement;
     }
@@ -23,7 +23,7 @@ export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
     columnRectWidth: number;
     columnResizeBy: number = 0;
 
-    handleTrackerEl: ElementRef;
+    handleTrackerEl: Node;
 
     pageStartPositionX: number;
     dragDistancePositionX: number;  // relative to pageStartPosition
@@ -42,8 +42,8 @@ export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
     }
 
     ngAfterViewInit() {
-        this.handleTrackerEl = this.dragDispatcher.handleTrackerRef.nativeElement;
-        this.dragDispatcher.addDragListener();
+        this.dragDispatcher.initialize();
+        this.handleTrackerEl = this.dragDispatcher.draggable.ghost;
         this.subscriptions.push(this.dragDispatcher.onDragStart.subscribe(() => this.dragStartHandler()));
         this.subscriptions.push(this.dragDispatcher.onDragMove.subscribe(($event) => this.dragMoveHandler($event)));
         this.subscriptions.push(this.dragDispatcher.onDragEnd.subscribe(() => this.dragEndHandler()));

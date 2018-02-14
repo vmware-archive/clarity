@@ -22,6 +22,7 @@ import {SocialShapes} from "./shapes/social-shapes";
 import {TechnologyShapes} from "./shapes/technology-shapes";
 import {TravelShapes} from "./shapes/travel-shapes";
 import {changeHandlerCallbacks} from "./utils/shape-template-observer";
+import {clrIconSVG} from "./utils/svg-tag-generator";
 
 describe("ClarityIcons", () => {
     afterEach(() => {
@@ -97,17 +98,10 @@ describe("ClarityIcons", () => {
         it("should return EssentialShapes['pencil'] when 'pencil' is passed in after including EssentialShapes", () => {
             ClarityIcons.add(EssentialShapes);
 
-            const expected = `
-                <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" class="has-solid"
-                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" role="img">
-                    <title>pencil</title>
-    
-                    <path class="clr-i-outline clr-i-outline-path-1" d="M33.87,8.32,28,2.42a2.07,2.07,0,0,0-2.92,0L4.27,23.2l-1.9,8.2a2.06,2.06,0,0,0,2,2.5,2.14,2.14,0,0,0,.43,0L13.09,32,33.87,11.24A2.07,2.07,0,0,0,33.87,8.32ZM12.09,30.2,4.32,31.83l1.77-7.62L21.66,8.7l6,6ZM29,13.25l-6-6,3.48-3.46,5.9,6Z"/>
-    
+            const expected = clrIconSVG(
+                `<path class="clr-i-outline clr-i-outline-path-1" d="M33.87,8.32,28,2.42a2.07,2.07,0,0,0-2.92,0L4.27,23.2l-1.9,8.2a2.06,2.06,0,0,0,2,2.5,2.14,2.14,0,0,0,.43,0L13.09,32,33.87,11.24A2.07,2.07,0,0,0,33.87,8.32ZM12.09,30.2,4.32,31.83l1.77-7.62L21.66,8.7l6,6ZM29,13.25l-6-6,3.48-3.46,5.9,6Z"/>
                     <path class="clr-i-solid clr-i-solid-path-1" d="M4.22,23.2l-1.9,8.2a2.06,2.06,0,0,0,2,2.5,2.14,2.14,0,0,0,.43,0L13,32,28.84,16.22,20,7.4Z"/>
-                    <path class="clr-i-solid clr-i-solid-path-2" d="M33.82,8.32l-5.9-5.9a2.07,2.07,0,0,0-2.92,0L21.72,5.7l8.83,8.83,3.28-3.28A2.07,2.07,0,0,0,33.82,8.32Z"/>
-                </svg>
-            `;
+                    <path class="clr-i-solid clr-i-solid-path-2" d="M33.82,8.32l-5.9-5.9a2.07,2.07,0,0,0-2.92,0L21.72,5.7l8.83,8.83,3.28-3.28A2.07,2.07,0,0,0,33.82,8.32Z"/>`);
             expect(removeWhitespace(expected)).toEqual(removeWhitespace(ClarityIcons.get("pencil")));
         });
     });
@@ -382,13 +376,15 @@ describe("ClarityIcons", () => {
             const clarityIcon = document.createElement("clr-icon") as ClarityIconElement;
             const customTitle = "my-custom-title";
 
-            let timeStart = performance.now();
+            const timeStart = performance.now();
             clarityIcon.setAttribute("shape", "angle");
-            console.log("Icon shape processing took: " + (performance.now() - timeStart));
+            const settingShapeAttr = performance.now() - timeStart;
 
-            timeStart = performance.now();
             clarityIcon.setAttribute("title", customTitle);
-            console.log("Icon title processing took: " + (performance.now() - timeStart));
+            const settingTitleAttr = performance.now() - timeStart;
+
+            console.log("Icon shape attr setting took: " + settingShapeAttr);
+            console.log("Icon title attr setting took: " + settingTitleAttr);
 
             const clrIconUniqId = clarityIcon.clrIconUniqId;
             const testShape = giveAngleShapeTitle(clrIconUniqId, customTitle);

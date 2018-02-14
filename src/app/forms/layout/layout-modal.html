@@ -1,0 +1,52 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+
+<h1>Layout - {{layout}} - {{grid ? 'grid' : 'no grid'}}</h1>
+
+<button class="btn btn-primary" (click)="vertical = true">Vertical</button>
+<button class="btn btn-primary" (click)="horizontal = true">Horizontal</button>
+<button class="btn btn-primary" (click)="compact = true">Compact</button>
+<button class="btn btn-primary" (click)="verticalGrid = true">Vertical Grid</button>
+<button class="btn btn-primary" (click)="horizontalGrid = true">Horizontal Grid</button>
+<button class="btn btn-primary" (click)="compactGrid = true">Compact Grid</button>
+
+<clr-modal [(clrModalOpen)]="vertical">
+    <h3 class="modal-title">Forms in modal</h3>
+    <div class="modal-body">
+        <layout-vertical-demo></layout-vertical-demo>
+    </div>
+</clr-modal>
+<clr-modal [(clrModalOpen)]="horizontal">
+    <h3 class="modal-title">Forms in modal</h3>
+    <div class="modal-body">
+        <layout-horizontal-demo></layout-horizontal-demo>
+    </div>
+</clr-modal>
+<clr-modal [(clrModalOpen)]="compact">
+    <h3 class="modal-title">Forms in modal</h3>
+    <div class="modal-body">
+        <layout-compact-demo></layout-compact-demo>
+    </div>
+</clr-modal>
+<clr-modal [(clrModalOpen)]="verticalGrid">
+    <h3 class="modal-title">Forms in modal</h3>
+    <div class="modal-body">
+        <layout-vertical-grid-demo></layout-vertical-grid-demo>
+    </div>
+</clr-modal>
+<clr-modal [(clrModalOpen)]="horizontalGrid">
+    <h3 class="modal-title">Forms in modal</h3>
+    <div class="modal-body">
+        <layout-horizontal-grid-demo></layout-horizontal-grid-demo>
+    </div>
+</clr-modal>
+<clr-modal [(clrModalOpen)]="compactGrid">
+    <h3 class="modal-title">Forms in modal</h3>
+    <div class="modal-body">
+        <layout-compact-grid-demo></layout-compact-grid-demo>
+    </div>
+</clr-modal>

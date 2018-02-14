@@ -1,0 +1,60 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('forms.textarea') {
+    // @TODO Fix selectors when old forms are removed to allow better defaults
+    .clr-textarea-wrapper {
+        white-space: nowrap;
+        display: flex;
+        margin-top: $clr-forms-baseline;
+        
+        .clr-validate-icon {
+            margin-left: 0;
+        }
+    }
+    
+    .clr-textarea {
+        max-width: calc(100% - #{$clr-forms-baseline});
+        height: auto;
+
+        resize: vertical;
+        background: $clr-forms-textarea-background-color;
+        border: 1px solid $clr-forms-border-color;
+        color: $clr-forms-text-color;
+        border-radius: $clr-forms-baseline / 2;
+        padding: calc(#{$clr-forms-baseline} + 2px) $clr-forms-baseline * 2;
+        @include clr-getTypePropertiesForDomElement(form_label, (font-size));
+        
+        &:focus {
+            outline: 0;
+            box-shadow: 0 0 2px 2px $clr-outline-color;
+        }
+    }
+    
+    .clr-error .clr-textarea {
+        border-color: $clr-forms-invalid-color;
+        
+        &:focus {
+            outline: 0;
+            box-shadow: 0 0 2px 2px lighten($clr-forms-invalid-color, 30%);
+        }
+    }
+    
+    
+    .clr-control-container textarea {
+        width: auto; // @TODO remove when removing old forms - forced 100% width by old forms
+    }
+
+    .clr-form-control.row .clr-textarea-wrapper {
+        max-width: calc(100% - #{$clr-forms-baseline});
+    }
+
+    .clr-form-compact .clr-textarea-wrapper {
+        margin-top: 0;
+        
+        .clr-textarea {
+            @include form-flatten-compact-adjustments();
+        }
+    }
+}

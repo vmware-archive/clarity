@@ -17,3 +17,4 @@ $clr-stack-view-stack-block-expanded-bg-color: $clr-global-selection-color;
 $clr-stack-view-stack-block-expandable-hover: $gray-light;
 $clr-stack-view-stack-block-content-text-color: inherit;
 $clr-stack-view-stack-block-expanded-text-color: $clr-black;
+$styledInputs: inputs("text", "password", "number", "email", "url", "tel", "date", "time", "datetime-local");

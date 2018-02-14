@@ -1,0 +1,89 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Input Group</h2>
+
+<form class="clr-form">
+    <div class="clr-form-control">
+        <label for="{{width}}-{{layout}}-icons" class="clr-control-label">Basic input group with icons on both sides</label>
+        <div class="clr-control-container">
+            <div class="clr-input-wrapper">
+                <div class="clr-input-group" [ngClass]="{'clr-focus': focus1}">
+                    <clr-icon shape="calendar"></clr-icon>
+                    <input type="text" id="{{width}}-{{layout}}-basic" placeholder="Enter value here" class="clr-input" (focus)="focus1 = true" (blur)="focus1 = false">
+                    <clr-icon shape="calendar"></clr-icon>
+                </div>
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            </div>
+            <span class="clr-subtext">Helper Text</span>
+        </div>
+    </div>
+    
+    <div class="clr-form-control">
+        <label for="{{width}}-{{layout}}-select" class="clr-control-label">Basic input group a select</label>
+        <div class="clr-control-container">
+            <div class="clr-input-wrapper">
+                <div class="clr-input-group" [ngClass]="{'clr-focus': focus2}">
+                    <select>
+                        <option>http://</option>
+                        <option>https://</option>
+                        <option>git://</option>
+                    </select>
+                    <input type="text" id="{{width}}-{{layout}}-select" placeholder="Enter value here" class="clr-input" (focus)="focus2 = true" (blur)="focus2 = false">
+                </div>
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            </div>
+            <span class="clr-subtext">Helper Text</span>
+        </div>
+    </div>
+    
+    <div class="clr-form-control">
+        <label for="{{width}}-{{layout}}-password" class="clr-control-label">Basic password with toggle</label>
+        <div class="clr-control-container">
+            <div class="clr-input-wrapper">
+                <div class="clr-input-group" [ngClass]="{'clr-focus': focus3}">
+                    <input type="password" name="password" *ngIf="!show" id="{{width}}-{{layout}}-password" [(ngModel)]="password" placeholder="Enter value here" class="clr-input" (focus)="focus3 = true" (blur)="focus3 = false">
+                    <clr-icon shape="eye" *ngIf="!show" class="clr-input-group-icon-action" (click)="show = true"></clr-icon>
+                    
+                    <input type="text" name="password" *ngIf="show" id="{{width}}-{{layout}}-password" [(ngModel)]="password" placeholder="Enter value here" class="clr-input" (focus)="focus3 = true" (blur)="focus3 = false">
+                    <clr-icon shape="eye-hide" *ngIf="show" class="clr-input-group-icon-action" (click)="show = false"></clr-icon>
+                </div>
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            </div>
+            <span class="clr-subtext">Helper Text</span>
+        </div>
+    </div>
+
+    <div class="clr-form-control">
+        <label for="{{width}}-{{layout}}-prefixsuffix" class="clr-control-label">Basic input group with prefix + suffix</label>
+        <div class="clr-control-container">
+            <div class="clr-input-wrapper">
+                <div class="clr-input-group" [ngClass]="{'clr-focus': focus4}">
+                    $
+                    <input type="number" id="{{width}}-{{layout}}-prefixsuffix" placeholder="Enter value here" class="clr-input" (focus)="focus4 = true" (blur)="focus4 = false">
+                    .00
+                </div>
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            </div>
+            <span class="clr-subtext">Helper Text</span>
+        </div>
+    </div>
+
+    <div class="clr-form-control">
+        <label for="{{width}}-{{layout}}-search" class="clr-control-label">Basic input group with prefix + suffix</label>
+        <div class="clr-control-container">
+            <div class="clr-input-wrapper">
+                <div class="clr-input-group" [ngClass]="{'clr-focus': focus5}">
+                    <clr-icon shape="search"></clr-icon>
+                    <input type="search" name="search" [(ngModel)]="search" id="{{width}}-{{layout}}-search" placeholder="Enter value here" class="clr-input" (focus)="focus5 = true" (blur)="focus5 = false">
+                    <clr-icon shape="times-circle" (click)="search = ''" [ngClass]="{'clr-input-group-icon-action': search.length}"></clr-icon>
+                </div>
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            </div>
+            <span class="clr-subtext">Helper Text</span>
+        </div>
+    </div>
+</form>

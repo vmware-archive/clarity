@@ -7,6 +7,7 @@
 import {Component} from "@angular/core";
 import {async} from "@angular/core/testing";
 
+import {itIgnore} from "../../../../tests/tests.helpers";
 import {TestContext} from "../../data/datagrid/helpers.spec";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW} from "../../utils/key-codes/key-codes";
@@ -88,34 +89,35 @@ export default function() {
                 }
             });
 
-            it("updates the tab indices correctly", async(() => {
-                   const buttons: HTMLButtonElement[] = context.clarityElement.querySelectorAll("button");
-                   expect(buttons[1].tabIndex).toBe(0);
+            // IE doesn't support KeyboardEvent constructor
+            itIgnore(["ie"], "updates the tab indices correctly", async(() => {
+                         const buttons: HTMLButtonElement[] = context.clarityElement.querySelectorAll("button");
+                         expect(buttons[1].tabIndex).toBe(0);
 
-                   context.clarityElement.dispatchEvent(createKeyboardEvent(DOWN_ARROW, "keydown"));
-                   context.detectChanges();
+                         context.clarityElement.dispatchEvent(createKeyboardEvent(DOWN_ARROW, "keydown"));
+                         context.detectChanges();
 
-                   expect(buttons[1].tabIndex).toBe(-1);
-                   expect(buttons[2].tabIndex).toBe(0);
+                         expect(buttons[1].tabIndex).toBe(-1);
+                         expect(buttons[2].tabIndex).toBe(0);
 
-                   context.clarityElement.dispatchEvent(createKeyboardEvent(UP_ARROW, "keydown"));
-                   context.detectChanges();
+                         context.clarityElement.dispatchEvent(createKeyboardEvent(UP_ARROW, "keydown"));
+                         context.detectChanges();
 
-                   expect(buttons[2].tabIndex).toBe(-1);
-                   expect(buttons[1].tabIndex).toBe(0);
+                         expect(buttons[2].tabIndex).toBe(-1);
+                         expect(buttons[1].tabIndex).toBe(0);
 
-                   context.clarityElement.dispatchEvent(createKeyboardEvent(RIGHT_ARROW, "keydown"));
-                   context.detectChanges();
+                         context.clarityElement.dispatchEvent(createKeyboardEvent(RIGHT_ARROW, "keydown"));
+                         context.detectChanges();
 
-                   expect(buttons[1].tabIndex).toBe(-1);
-                   expect(buttons[7].tabIndex).toBe(0);
+                         expect(buttons[1].tabIndex).toBe(-1);
+                         expect(buttons[7].tabIndex).toBe(0);
 
-                   context.clarityElement.dispatchEvent(createKeyboardEvent(LEFT_ARROW, "keydown"));
-                   context.detectChanges();
+                         context.clarityElement.dispatchEvent(createKeyboardEvent(LEFT_ARROW, "keydown"));
+                         context.detectChanges();
 
-                   expect(buttons[7].tabIndex).toBe(-1);
-                   expect(buttons[1].tabIndex).toBe(0);
-               }));
+                         expect(buttons[7].tabIndex).toBe(-1);
+                         expect(buttons[1].tabIndex).toBe(0);
+                     }));
         });
 
         describe("Typescript API", () => {
@@ -196,7 +198,8 @@ export default function() {
                 ]);
             }
 
-            it("handles the up arrow", function() {
+            // IE doesn't handle KeyboardEvent constructor
+            itIgnore(["ie"], "handles the up arrow", function() {
                 createMonthPicker(this, new DayModel(2015, 11, 1));
 
                 expect(context.clarityDirective.getTabIndex(11)).toBe(0, "Month 11 doesn't have tabindex 0");
@@ -214,7 +217,8 @@ export default function() {
                 expect(context.clarityDirective.getTabIndex(0)).toBe(0, "Month 0 does't have tabindex 0");
             });
 
-            it("handles the down arrow", function() {
+            // IE doesn't handle KeyboardEvent constructor
+            itIgnore(["ie"], "handles the down arrow", function() {
                 createMonthPicker(this, new DayModel(2015, 0, 1));
 
                 expect(context.clarityDirective.getTabIndex(0)).toBe(0, "Month 0 doesn't have tabindex 0");
@@ -232,7 +236,8 @@ export default function() {
                 expect(context.clarityDirective.getTabIndex(11)).toBe(0, "Month 11 does't have tabindex 0");
             });
 
-            it("handles the right arrow", function() {
+            // IE doesn't handle KeyboardEvent constructor
+            itIgnore(["ie"], "handles the right arrow", function() {
                 createMonthPicker(this, new DayModel(2015, 0, 1));
                 expect(context.clarityDirective.getTabIndex(0)).toBe(0, "Month 0 doesn't have tabindex 0");
 
@@ -259,7 +264,8 @@ export default function() {
                 expect(context.clarityDirective.getTabIndex(11)).toBe(0, "Month 11 doesn't have the tabindex -1");
             });
 
-            it("handles the left arrow", function() {
+            // IE doesn't handle KeyboardEvent constructor
+            itIgnore(["ie"], "handles the left arrow", function() {
                 createMonthPicker(this, new DayModel(2015, 6, 1));
                 expect(context.clarityDirective.getTabIndex(6)).toBe(0, "Month 6 doesn't have tabindex 0");
 

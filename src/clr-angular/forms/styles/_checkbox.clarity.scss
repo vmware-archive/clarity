@@ -1,0 +1,102 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('forms.checkbox') {
+    $mark-half-size: $clr-forms-checkbox-mark-size / 2;
+
+    // @TODO un-nest the checkbox from the wrapper, after old forms are removed
+    .clr-checkbox-wrapper {
+        @include form-flatten-validate-text();
+        position: relative;
+
+        //Hide the default checkbox behind the pseudo elements
+        //Opacity is set to 0 so that the input remains accessible
+        input[type="checkbox"] {
+            @include checkbox-radio-input-styles($clr-forms-checkbox-size);
+        }
+
+        label {
+            @include checkbox-radio-label-styles($clr-forms-checkbox-label-height, $clr-forms-checkbox-padding-left, $clr-forms-checkbox-label-color);
+        }
+
+        //Checkbox base
+        input[type="checkbox"] + label::before {
+            @include checkbox-radio-shared-inactive(
+                $clr-forms-checkbox-height, 
+                $clr-forms-checkbox-top, 
+                0, 
+                $clr-forms-border-color);
+            border-radius: $clr-global-borderradius;
+        }
+
+        input[type="checkbox"]:focus + label::before {
+            @include include-outline-style-form-fields();
+        }
+
+        //Checkmark
+        input[type="checkbox"] + label::after {
+            position: absolute;
+            content: '';
+            display: none;
+            height: $mark-half-size + $clr-rem-1px;
+            width: $clr-forms-checkbox-mark-size;
+            border-left: $clr-forms-checkbox-border-style;
+            border-bottom: $clr-forms-checkbox-border-style;
+            top: ($clr-forms-baseline * 4 - $clr-checkbox-radio-height) / 2;
+            left: $mark-half-size;
+            transform: translate(0, $mark-half-size) rotate(-45deg);
+            border-color: $clr-forms-checkbox-mark-color;
+        }
+
+        input[type="checkbox"]:checked + label::before {
+            background: $clr-forms-checkbox-background-color;
+            border: none;
+        }
+
+        input[type="checkbox"]:checked + label::after {
+            display: inline-block;
+        }
+
+        input[type="checkbox"].clr-indeterminate + label::before {
+            border: $clr-default-borderwidth solid $clr-forms-checkbox-indeterminate-border-color;
+        }
+        input[type="checkbox"].clr-indeterminate + label::after {
+            border-left: none;
+            border-bottom-color: $clr-forms-checkbox-indeterminate-border-color;
+            display: inline-block;
+            transform: translate(0, $mark-half-size);
+        }
+
+        &.clr-checkbox-inline {
+            @include form-inline-input();
+        }
+    }
+
+    .clr-form-control-disabled .clr-checkbox-wrapper {
+        input[type="checkbox"] + label::before, input[type="checkbox"]:checked + label::before {
+            background-color: $clr-forms-checkbox-disabled-background-color;
+            border: none;
+        }
+
+        input[type="checkbox"]:checked + label::after {
+            $disabled-border-style: ($clr-forms-checkbox-height / 8) solid $clr-forms-checkbox-disabled-mark-color;
+            border-left: $disabled-border-style;
+            border-bottom: $disabled-border-style;
+        }
+
+        input[type="checkbox"]:checked.clr-indeterminate + label::after {
+            border-left: none;
+        }
+    }
+    
+    .clr-form-compact .clr-checkbox-wrapper {
+        @include form-flatten-compact-adjustments();
+        @include form-inline-input();
+        height: $clr-forms-baseline * 4;
+
+        .clr-control-label {
+            margin-top: 0;
+        }
+    }
+}

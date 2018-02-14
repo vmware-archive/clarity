@@ -88,16 +88,28 @@ module.exports = function(karma) {
         mime: {
             "text/x-typescript": ["ts", "tsx"]
         },
-        reporters: ["mocha", "coverage-istanbul"],
+        reporters: ["mocha", "coverage-istanbul", "html", "notify"],
+        htmlReporter: {
+            outputFile: "./reports/unit/index.html",
+            useLegacyStyle: true,
+            useCompactStyle: true
+        },
         coverageIstanbulReporter: {
             dir: "./reports/coverage/",
             fixWebpackSourcePaths: true,
             reports: ["html", "lcovonly", "cobertura"]
         },
-        browsers: ["Chrome_Headless"],
+        browsers: [
+            // ChromeHeadless is the default, but you can toggle this list in dev. Always reset back to just ChromeHeadless.
+            "ChromeHeadless", 
+            // "FirefoxHeadless",
+            // "Safari",
+            // "Edge",
+            // "IE",
+        ],
         browserNoActivityTimeout: 100000,
-        port: 9018,
-        runnerPort: 9101,
+        port: 9090,
+        runnerPort: 9191,
         colors: true,
         logLevel: karma.LOG_INFO,
         singleRun: process.env.TRAVIS ? true : false,
@@ -105,8 +117,9 @@ module.exports = function(karma) {
         webpackServer: { noInfo: true, quiet: true },
         webpackMiddleware: { noInfo: true, quiet: true },
         webpack: require("./webpack.test.config"),
+        captureTimeout: 120000,
         customLaunchers: {
-            Chrome_Headless: {
+            ChromeHeadless: {
                 base: "Chrome",
                 flags: [
                     "--headless",
@@ -127,7 +140,9 @@ module.exports = function(karma) {
         config.browsers = [
             "chrome_latest_win_10",
             "firefox_latest_win_10",
-            // "safari_latest_osx_11"
+            "safari_latest_osx_11",
+            // "ie_11_win_8_1",
+            // "edge_latest_win_10",
         ];
         config.customLaunchers = browsers;
         config.sauceLabs = {

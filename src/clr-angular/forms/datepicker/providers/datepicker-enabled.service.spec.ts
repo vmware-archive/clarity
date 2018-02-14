@@ -4,12 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import {describeIgnore} from "../../../../../tests/tests.helpers";
 import {DATEPICKER_ENABLE_BREAKPOINT} from "../../../utils/breakpoints/breakpoints";
 
 import {DatepickerEnabledService} from "./datepicker-enabled.service";
 
 export default function() {
-    describe("Datepicker Enabled Service", () => {
+    // IE doesn't handle userAgent spies
+    // @TODO Investigate if we care about IE here
+    describeIgnore(["ie"], "Datepicker Enabled Service", () => {
         function initializeSpies(userAgent: string, innerWidth: number): DatepickerEnabledService {
             spyOnProperty(document.defaultView.navigator, "userAgent", "get").and.returnValue(userAgent);
             spyOnProperty(document.defaultView, "innerWidth", "get").and.returnValue(innerWidth);

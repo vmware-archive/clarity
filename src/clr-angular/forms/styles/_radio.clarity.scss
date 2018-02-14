@@ -1,0 +1,73 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('forms.radio') {
+    // @TODO un-nest the radio inputs when old forms are removed
+    .clr-radio-wrapper {
+        @include form-flatten-validate-text();
+        position: relative;
+
+        //Hide the default radio
+        input[type="radio"] {
+            @include checkbox-radio-input-styles($clr-forms-radio-size);
+        }
+
+        label {
+            @include checkbox-radio-label-styles($clr-forms-radio-label-height, $clr-forms-radio-padding-left, $clr-forms-radio-label-color);
+        }
+
+        label:empty {
+            padding-left: 0;
+        }
+
+        //Radio button base
+        input[type="radio"] + label::before {
+            @include checkbox-radio-shared-inactive(
+                $clr-forms-radio-height, 
+                $clr-forms-radio-top, 
+                0, 
+                $clr-forms-border-color);
+            border-radius: 50%;
+        }
+
+        //Checked Radio Styles
+        input[type="radio"]:checked + label::before {
+            box-shadow: $clr-forms-radio-selected-shadow;
+            border: none;
+        }
+
+        //Outline color for unchecked radios
+        input[type="radio"]:focus + label::before {
+            outline: 0;
+            box-shadow: $clr-forms-radio-focused-shadow;
+        }
+
+        //Outline color for checked radios
+        input[type="radio"]:focus:checked + label::before {
+            outline: 0;
+            box-shadow: $clr-forms-radio-selected-shadow, $clr-forms-radio-focused-shadow;
+        }
+
+        &.disabled {
+            input[type="radio"]:checked + label::before {
+                background-color: $clr-forms-radio-disabled-background-color; // 'dot' color
+                box-shadow: $clr-forms-radio-disabled-shadow; //background-color around the dot
+            }
+        }
+
+        &.clr-radio-inline {
+            @include form-inline-input();
+        }
+    }
+
+    .clr-form-compact .clr-radio-wrapper {
+        @include form-flatten-compact-adjustments();
+        @include form-inline-input();
+        height: $clr-forms-baseline * 4;
+
+        .clr-control-label {
+            margin-top: 0;
+        }
+    }
+}

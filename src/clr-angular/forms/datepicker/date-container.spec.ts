@@ -8,6 +8,7 @@ import {Component} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
 import {Subscription} from "rxjs/Subscription";
 
+import {itIgnore} from "../../../../tests/tests.helpers";
 import {TestContext} from "../../data/datagrid/helpers.spec";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {FormControlService} from "../common/form-control.service";
@@ -76,7 +77,8 @@ export default function() {
         });
 
         describe("Typescript API", () => {
-            it("toggles the datepicker popover", () => {
+            // IE doesn't support MouseEvent constructors
+            itIgnore(["ie"], "toggles the datepicker popover", () => {
                 const ifOpenService: IfOpenService = context.getClarityProvider(IfOpenService);
                 const fakeEvent: MouseEvent = new MouseEvent("fakeEvent");
                 let flag: boolean;

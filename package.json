@@ -30,7 +30,8 @@
         "tslint:fix": "node_modules/.bin/tslint -p . -c tslint.json --fix \"src/**/*.ts\" -e \"**/node_modules/**\" -e \"src/ks-app/**\"",
         "webpack": "webpack --progress --colors",
         "preks:publish": "npm run build",
-        "ks:publish": "cd src/ks-app; npm run build; cd ../../dist/ks-app; cat index.html > 404.html; surge; cd ../../"
+        "ks:publish": "cd src/ks-app; npm run build; cd ../../dist/ks-app; cat index.html > 404.html; surge; cd ../../",
+        "dev:publish": "npm run build; cat ./dist/index.html > ./dist/200.html; surge --domain clarity-forms.surge.sh --project ./dist;"
     },
     "dependencies": {
         "@angular/animations": "^5.0.0",
@@ -86,11 +87,15 @@
         "karma-chrome-launcher": "~2.1.1",
         "karma-cli": "~1.0.1",
         "karma-coverage-istanbul-reporter": "^1.2.1",
+        "karma-edge-launcher": "^0.4.2",
         "karma-firefox-launcher": "^1.1.0",
+        "karma-htmlfile-reporter": "^0.3.5",
+        "karma-ie-launcher": "^1.0.0",
         "karma-jasmine": "~1.1.0",
         "karma-jasmine-html-reporter": "^0.2.2",
         "karma-jasmine-matchers": "^3.7.0",
         "karma-mocha-reporter": "^2.2.4",
+        "karma-notify-reporter": "^1.0.1",
         "karma-safari-launcher": "^1.0.0",
         "karma-sauce-launcher": "^1.2.0",
         "karma-sourcemap-loader": "^0.3.7",

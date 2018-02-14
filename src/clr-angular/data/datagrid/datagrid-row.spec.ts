@@ -7,6 +7,7 @@
 import {Component} from "@angular/core";
 import {fakeAsync, TestBed, tick} from "@angular/core/testing";
 
+import {itIgnore} from "../../../../tests/tests.helpers";
 import {Expand} from "../../utils/expand/providers/expand";
 import {LoadingListener} from "../../utils/loading/loading-listener";
 
@@ -191,7 +192,9 @@ export default function(): void {
                 expect(selectionProvider.current).toEqual([]);
             });
 
-            it("select the model on space or enter when `rowSelectionMode` is enabled", function() {
+            // IE doesn't support Event constructor
+            // @TODO Consider if we care to fix this test for IE support
+            itIgnore(["ie"], "select the model on space or enter when `rowSelectionMode` is enabled", function() {
                 selectionProvider.selectionType = SelectionType.Multi;
                 selectionProvider.rowSelectionMode = true;
                 context.testComponent.item = {id: 1};
@@ -316,7 +319,7 @@ export default function(): void {
             });
 
             it("should update cells for columns", function() {
-                // TODO: ffigure out how to test for cell changes and make sure updateCellsForColumns is called
+                // TODO: figure out how to test for cell changes and make sure updateCellsForColumns is called
                 spyOn(context.clarityDirective, "updateCellsForColumns");
                 hideableColumnService = context.getClarityProvider(HideableColumnService);
 

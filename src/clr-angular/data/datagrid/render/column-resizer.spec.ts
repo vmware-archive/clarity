@@ -133,7 +133,8 @@ export default function(): void {
             expect(getComputedStyle(column3DragDispatcher.handleTrackerRef.nativeElement).getPropertyValue("right"))
                 .toBe("-50px");
             column3ResizerDirective.dragEndHandler();
-            expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBe(250);
+            // IE has 1px off for some reason
+            expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBeWithinRange(249, 250);
         });
         it("should shrink the column width by 50px", function() {
             column3ResizerDirective.dragStartHandler();
@@ -215,7 +216,8 @@ export default function(): void {
             emulateResize(column3ResizerDirective, 50);
             expect(domAdapter.clientRectWidth(column1ResizerDirective.columnEl)).toBeLessThan(column1InitialWidth);
             expect(domAdapter.clientRectWidth(column2ResizerDirective.columnEl)).toBeLessThan(column2InitialWidth);
-            expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBe(250);
+            // IE is off 1px
+            expect(domAdapter.clientRectWidth(column3ResizerDirective.columnEl)).toBeWithinRange(249, 250);
             expect(domAdapter.clientRectWidth(column4ResizerDirective.columnEl)).toBeLessThan(column4InitialWidth);
         });
         it("columns with strict width should keep their widths if other columns get resized", function() {

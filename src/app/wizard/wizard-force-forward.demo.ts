@@ -15,34 +15,4 @@ export class WizardForceForwardDemo {
     open() {
         this._open = !this.open;
     }
-
-    code: string = `
-@Component({
-    ...
-})
-export class WizardForceForwardDemo {
-    @ViewChild("wizard") wizard: Wizard;
-    _open: boolean = false;
-
-    open() {
-        this._open = !this.open;
-    }
-}
-    `;
-
-    html: string = `
-<clr-wizard #wizard [(clrWizardOpen)]="_open" [clrWizardForceForwardNavigation]="true">
-    <clr-wizard-title>Wizard, Only Forward Navigation</clr-wizard-title>
-
-    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
-    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
-
-    <clr-wizard-page *ngFor="let page of [1, 2, 3, 4]">
-        <ng-template clrPageTitle>Title for page {{ page }}</ng-template>
-        <p>Content for page {{ page }}.</p>
-    </clr-wizard-page>
-</clr-wizard>
-`;
 }

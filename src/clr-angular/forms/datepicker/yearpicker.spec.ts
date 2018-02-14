@@ -7,6 +7,7 @@
 import {Component} from "@angular/core";
 import {async} from "@angular/core/testing";
 
+import {itIgnore} from "../../../../tests/tests.helpers";
 import {TestContext} from "../../data/datagrid/helpers.spec";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW} from "../../utils/key-codes/key-codes";
@@ -115,35 +116,36 @@ export default function() {
                 }
             });
 
-            it("updates the tab indices correctly", async(() => {
-                   const buttons: HTMLButtonElement[] = context.clarityElement.querySelectorAll(".year");
+            // IE doesn't handle KeyboardEvent constructor
+            itIgnore(["ie"], "updates the tab indices correctly", async(() => {
+                         const buttons: HTMLButtonElement[] = context.clarityElement.querySelectorAll(".year");
 
-                   expect(buttons[3].tabIndex).toBe(0);
+                         expect(buttons[3].tabIndex).toBe(0);
 
-                   context.clarityElement.dispatchEvent(createKeyboardEvent(DOWN_ARROW, "keydown"));
-                   context.detectChanges();
+                         context.clarityElement.dispatchEvent(createKeyboardEvent(DOWN_ARROW, "keydown"));
+                         context.detectChanges();
 
-                   expect(buttons[3].tabIndex).toBe(-1);
-                   expect(buttons[4].tabIndex).toBe(0);
+                         expect(buttons[3].tabIndex).toBe(-1);
+                         expect(buttons[4].tabIndex).toBe(0);
 
-                   context.clarityElement.dispatchEvent(createKeyboardEvent(UP_ARROW, "keydown"));
-                   context.detectChanges();
+                         context.clarityElement.dispatchEvent(createKeyboardEvent(UP_ARROW, "keydown"));
+                         context.detectChanges();
 
-                   expect(buttons[4].tabIndex).toBe(-1);
-                   expect(buttons[3].tabIndex).toBe(0);
+                         expect(buttons[4].tabIndex).toBe(-1);
+                         expect(buttons[3].tabIndex).toBe(0);
 
-                   context.clarityElement.dispatchEvent(createKeyboardEvent(RIGHT_ARROW, "keydown"));
-                   context.detectChanges();
+                         context.clarityElement.dispatchEvent(createKeyboardEvent(RIGHT_ARROW, "keydown"));
+                         context.detectChanges();
 
-                   expect(buttons[3].tabIndex).toBe(-1);
-                   expect(buttons[8].tabIndex).toBe(0);
+                         expect(buttons[3].tabIndex).toBe(-1);
+                         expect(buttons[8].tabIndex).toBe(0);
 
-                   context.clarityElement.dispatchEvent(createKeyboardEvent(LEFT_ARROW, "keydown"));
-                   context.detectChanges();
+                         context.clarityElement.dispatchEvent(createKeyboardEvent(LEFT_ARROW, "keydown"));
+                         context.detectChanges();
 
-                   expect(buttons[8].tabIndex).toBe(-1);
-                   expect(buttons[3].tabIndex).toBe(0);
-               }));
+                         expect(buttons[8].tabIndex).toBe(-1);
+                         expect(buttons[3].tabIndex).toBe(0);
+                     }));
         });
 
         describe("Typescript API", () => {
@@ -260,7 +262,8 @@ export default function() {
                 ]);
             }
 
-            it("handles up arrow", function() {
+            // IE doesn't handle KeyboardEvent constructor
+            itIgnore(["ie"], "handles up arrow", function() {
                 createYearPicker(this, 2010);
 
                 // Boundary
@@ -275,7 +278,8 @@ export default function() {
                 expect(context.clarityDirective.yearRangeModel.inRange(2010)).toBe(false);
             });
 
-            it("handles down arrow", function() {
+            // IE doesn't handle KeyboardEvent constructor
+            itIgnore(["ie"], "handles down arrow", function() {
                 createYearPicker(this, 2009);
 
                 // Boundary
@@ -290,7 +294,8 @@ export default function() {
                 expect(context.clarityDirective.yearRangeModel.inRange(2010)).toBe(true);
             });
 
-            it("handles right arrow", function() {
+            // IE doesn't handle KeyboardEvent constructor
+            itIgnore(["ie"], "handles right arrow", function() {
                 createYearPicker(this, 2001);
                 expect(context.clarityDirective.getTabIndex(2001)).toBe(0);
                 context.clarityDirective.onKeyDown(createKeyboardEvent(RIGHT_ARROW, "keydown"));
@@ -303,7 +308,8 @@ export default function() {
                 expect(context.clarityDirective.getTabIndex(2011)).toBe(0);
             });
 
-            it("handles left arrow", function() {
+            // IE doesn't handle KeyboardEvent constructor
+            itIgnore(["ie"], "handles left arrow", function() {
                 createYearPicker(this, 2005);
                 expect(context.clarityDirective.getTabIndex(2005)).toBe(0);
                 context.clarityDirective.onKeyDown(createKeyboardEvent(LEFT_ARROW, "keydown"));

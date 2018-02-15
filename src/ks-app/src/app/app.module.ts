@@ -14,6 +14,7 @@ import {
     ClrButtonGroupModule,
     ClrDataModule,
     ClrFormsModule,
+    ClrFormsNextModule,
     ClrIconModule,
     ClrLayoutModule,
     ClrModalModule,
@@ -79,8 +80,10 @@ import {KSWizards} from "./containers/wizard/wizards.component";
         KSKillersDemo,  KSHotFussDemo,    KSProgressBars,  KSSpinners,
         KSTables,       KSTooltips,       KSDatepicker
     ],
-    imports:
-        [BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, ClarityModule, AppRoutingModule],
+    imports: [
+        BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, ClarityModule, ClrFormsNextModule,
+        AppRoutingModule
+    ],
     providers: [],
     bootstrap: [AppComponent]
 })

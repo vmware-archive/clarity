@@ -43,3 +43,23 @@
         </div>
     </section>
 </form>
+
+<h2>Angular component</h2>
+
+<!-- Full user control -->
+<clr-radio-container>
+  <input clrRadio type="radio" name="angular-radio" id="first" value="0">
+  <label for="first">With id</label>
+</clr-radio-container>
+
+<!-- User can't be bothered to give an ID -->
+<clr-radio-container>
+  <input clrRadio type="radio" name="angular-radio" value="1">
+  <label>No id</label>
+</clr-radio-container>
+
+<!-- Radio with no label -->
+<input clrRadio type="radio" name="angular-radio" value="2">
+
+<!-- Radio with no label, but the user still wants a specific ID -->
+<input clrRadio type="radio" name="angular-radio" id="last" value="3">

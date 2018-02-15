@@ -10,6 +10,8 @@ import {EmptyAnchor} from "./empty-anchor";
 
 
 /**
+ * @private
+ *
  * Internal module, please do not export!
  */
 @NgModule({declarations: [EmptyAnchor], exports: [EmptyAnchor], entryComponents: [EmptyAnchor]})

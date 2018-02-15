@@ -6,10 +6,14 @@
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 
-import {ClarityModule} from "../../clr-angular/clr-angular.module";
+import {ClarityModule, ClrRadioModule} from "../../clr-angular";
 
 import {RadiosDemo} from "./radios.demo";
 import {ROUTING} from "./radios.demo.routing";
 
-@NgModule({imports: [CommonModule, ClarityModule, ROUTING], declarations: [RadiosDemo], exports: [RadiosDemo]})
+@NgModule({
+    imports: [CommonModule, ClarityModule, ClrRadioModule, ROUTING],
+    declarations: [RadiosDemo],
+    exports: [RadiosDemo]
+})
 export class RadiosDemoModule {}

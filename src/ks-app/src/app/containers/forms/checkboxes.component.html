@@ -77,3 +77,32 @@
         </div>
     </section>
 </form>
+
+<h2>New Angular checkbox</h2>
+
+<!-- Full user control -->
+<clr-checkbox-container>
+  <input clrCheckbox type="checkbox" id="first">
+  <label for="first">With id</label>
+</clr-checkbox-container>
+
+<!-- User can't be bothered to give an ID -->
+<clr-checkbox-container>
+  <input clrCheckbox type="checkbox">
+  <label>No id</label>
+</clr-checkbox-container>
+
+<!-- Checkbox with no label -->
+<input clrCheckbox type="checkbox">
+
+<!-- Checkbox with no label, but the user still wants a specific ID -->
+<input clrCheckbox type="checkbox" id="last">
+
+<!-- Indeterminate with label -->
+<clr-checkbox-container>
+  <input clrCheckbox type="checkbox" [indeterminate]="true">
+  <label>Indeterminate with label</label>
+</clr-checkbox-container>
+
+<!-- Indeterminate without label -->
+<input clrCheckbox type="checkbox" [indeterminate]="true">

@@ -24,6 +24,9 @@ export class Droppable implements AfterViewInit, OnDestroy {
 
     private _dropAllowed: boolean = false;
 
+    private ghostElWidth: number;
+    private ghostElHeight: number;
+
     set dropAllowed(value: boolean) {
         this._dropAllowed = value;
         this._dropAllowed ? this.draggableEnter() : this.draggableLeave();
@@ -39,6 +42,26 @@ export class Droppable implements AfterViewInit, OnDestroy {
     @Output("clrDrop") dropEmitter: EventEmitter<DraggableEvent> = new EventEmitter();
 
     @Input("clrDragAndDropGroup") groupKey: string;
+
+    private _dropMarginTop: number = 0;
+    private _dropMarginBottom: number = 0;
+    private _dropMarginLeft: number = 0;
+    private _dropMarginRight: number = 0;
+
+    @Input("clrDropMargin")
+    set dropMargin(value: number|{top?: number, bottom?: number, left?: number, right?: number}) {
+        if (typeof value === "number") {
+            this._dropMarginTop = value;
+            this._dropMarginBottom = value;
+            this._dropMarginLeft = value;
+            this._dropMarginRight = value;
+        } else {
+            this._dropMarginTop = value.top || 0;
+            this._dropMarginBottom = value.bottom || 0;
+            this._dropMarginLeft = value.left || 0;
+            this._dropMarginRight = value.right || 0;
+        }
+    }
 
     constructor(private el: ElementRef, private dragAndDrop: DragAndDropDispatcher, private renderer: Renderer2,
                 private domAdapter: DomAdapter) {
@@ -63,12 +86,18 @@ export class Droppable implements AfterViewInit, OnDestroy {
             this.dragEndSubscription =
                 this.dragAndDrop.onDragEnd.subscribe((endEvent: DraggableEvent) => this.onDragEnd(endEvent));
 
+            this.ghostElWidth = this.domAdapter.clientRectWidth(moveEvent.draggable.ghost);
+            this.ghostElHeight = this.domAdapter.clientRectHeight(moveEvent.draggable.ghost);
+
             this.getClientElState(this.droppableEl);
             this.renderer.addClass(this.droppableEl, "drop-enabled");
             this.isDragMoveStarted = true;
         }
 
-        if (this.isWithinBoundaries(moveEvent.ghostAnchorPosition.x, moveEvent.ghostAnchorPosition.y)) {
+        const ghostElCenterX = moveEvent.ghostAnchorPosition.x + this.ghostElWidth / 2;
+        const ghostElCenterY = moveEvent.ghostAnchorPosition.y + this.ghostElHeight / 2;
+
+        if (this.isWithinBoundaries(ghostElCenterX, ghostElCenterY)) {
             if (!this._dropAllowed) {
                 this.dropAllowed = true;
             }
@@ -82,9 +111,11 @@ export class Droppable implements AfterViewInit, OnDestroy {
 
     private onDragEnd(endEvent: DraggableEvent) {
         this.isDragMoveStarted = false;
+
         this.renderer.removeClass(this.droppableEl, "drop-enabled");
 
         if (this._dropAllowed) {
+            this._dropAllowed = false;
             this.dragAndDrop.drop();
             this.renderer.removeClass(this.droppableEl, "drop-allowed");
             this.dropEmitter.emit(endEvent);
@@ -112,11 +143,10 @@ export class Droppable implements AfterViewInit, OnDestroy {
     }
 
     private isWithinBoundaries(x: number, y: number): boolean {
-        if (this.clientLeft > x || this.clientRight < x) {
+        if (this.clientLeft - this._dropMarginLeft > x || this.clientRight + this._dropMarginRight < x) {
             return false;
         }
-
-        if (this.clientTop > y || this.clientBottom < y) {
+        if (this.clientTop - this._dropMarginTop > y || this.clientBottom + this._dropMarginBottom < y) {
             return false;
         }
 

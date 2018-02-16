@@ -46,9 +46,6 @@ export class Draggable implements AfterViewInit, OnDestroy {
     private clientLeft: number;
     private clientTop: number;
 
-    private clientWidth: number;
-    private clientHeight: number;
-
     private initMoveX: number;
     private initMoveY: number;
 
@@ -188,18 +185,11 @@ export class Draggable implements AfterViewInit, OnDestroy {
             if (this.customGhostState.isDirectChild) {
                 this.initMoveXOnEl = 0;
                 this.initMoveYOnEl = 0;
-
-                this.clientWidth = this.domAdapter.clientRectWidth(this.dragDispatcher.draggable.ghost);
-                this.clientHeight = this.domAdapter.clientRectHeight(this.dragDispatcher.draggable.ghost);
-
             } else {
                 // delta between very first mouse position and draggable element position
                 // which gives where on draggable element initial mousemove event is detected
                 this.initMoveXOnEl = this.initMoveX - this.clientLeft;
                 this.initMoveYOnEl = this.initMoveY - this.clientTop;
-
-                this.clientWidth = this.domAdapter.clientRectWidth(this.dragDispatcher.draggable.self);
-                this.clientHeight = this.domAdapter.clientRectHeight(this.dragDispatcher.draggable.self);
             }
 
 

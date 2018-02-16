@@ -6,37 +6,174 @@
 <h2>Drag and Drop</h2>
 
 <div class="clr-example">
-    <h4>Basic Draggables</h4>
-    <p>
-        Use <code class="clr-code">clrDraggable</code> directive to make an element or component draggable.
-    </p>
-    <button class="btn btn-primary" clrDraggable>Draggable Button</button>
+    <h4>Basic Draggable</h4>
+    <div class="row">
+        <div class="col-xs-12">
+            <p>
+                Use <code class="clr-code">clrDraggable</code> directive to make an element or component draggable.
+            </p>
+            <button class="btn btn-primary" clrDraggable>Draggable Button</button>
+            <button class="btn btn-success" clrDraggable>Draggable Button</button>
+            <button class="btn btn-warning" clrDraggable>Draggable Button</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="card" clrDroppable>
+                <div class="card-block">
+                    <h3 class="card-title">Droppable Card 1</h3>
+                    <p class="card-text">
+                        ...
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="card" clrDroppable>
+                <div class="card-block">
+                    <h3 class="card-title">Droppable Card 2</h3>
+                    <p class="card-text">
+                        ...
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="card" clrDroppable>
+                <div class="card-block">
+                    <h3 class="card-title">Droppable Card 3</h3>
+                    <p class="card-text">
+                        ...
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clr-example">
+    <h4>Basic Draggable</h4>
+    <div class="row">
+        <div class="col-xs-12">
+            <p>
+                Use <code class="clr-code">clrDragAndDropGroup</code> directive to make particular draggables interact
+                with particular droppables.
+            </p>
+            <button class="btn btn-primary" clrDraggable clrDragAndDropGroup="dnd-1">Draggable Button</button>
+            <button class="btn btn-success" clrDraggable clrDragAndDropGroup="dnd-2">Draggable Button</button>
+            <button class="btn btn-warning" clrDraggable clrDragAndDropGroup="dnd-3">Draggable Button</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="card" clrDroppable clrDragAndDropGroup="dnd-3">
+                <div class="card-block">
+                    <h3 class="card-title">Droppable Card 1</h3>
+                    <p class="card-text">
+                        ...
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="card" clrDroppable clrDragAndDropGroup="dnd-2">
+                <div class="card-block">
+                    <h3 class="card-title">Droppable Card 2</h3>
+                    <p class="card-text">
+                        ...
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="card" clrDroppable clrDragAndDropGroup="dnd-1">
+                <div class="card-block">
+                    <h3 class="card-title">Droppable Card 3</h3>
+                    <p class="card-text">
+                        ...
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="clr-example">
     <h4>Custom Ghosts</h4>
-    <p>You can use another element or component as a draggable ghost using <code class="clr-code">clr-draggable-ghost</code> component with <code class="clr-code">*clrIfDragged</code>.</p>
-    <button class="btn btn-primary" clrDraggable>Draggable Button
-        <clr-draggable-ghost *clrIfDragged>
-            <span class="label label-orange">Draggable Ghost Label</span>
-        </clr-draggable-ghost>
-    </button>
+    <div class="row">
+        <div class="col-xs-12">
+            <p>You can use another element or component as a draggable ghost using <code class="clr-code">clr-draggable-ghost</code>
+                component with <code class="clr-code">*clrIfDragged</code>.</p>
+            <button class="btn btn-primary" clrDraggable clrDragAndDropGroup="custom-ghost">Draggable Button
+                <clr-draggable-ghost *clrIfDragged>
+                    <span class="label label-warning">Draggable Ghost Label</span>
+                </clr-draggable-ghost>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card" clrDroppable clrDragAndDropGroup="custom-ghost">
+                <div class="card-block">
+                    <h3 class="card-title">Droppable Card</h3>
+                    <p class="card-text">
+                        ...
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="clr-example">
     <h4>Draggable Handle</h4>
-    <p>Sometimes there are cases where users should be able to move a whole element just by dragging with a handle element. To do that, you can use <code class="clr-code">clrDraggableHandle</code> directive.</p>
-    <button class="btn btn-primary" clrDraggable>
-        Draggable Button
-        <clr-icon shape="folder" size="18" clrDraggableHandle></clr-icon>
-    </button>
+    <div class="row">
+        <div class="col-xs-12">
+            <p>Sometimes there are cases where users should be able to move a whole element just by dragging with a handle
+                element. To do that, you can use <code class="clr-code">clrDraggableHandle</code> directive.</p>
+            <button class="btn btn-primary" clrDraggable clrDragAndDropGroup="draggable-handle">
+                Draggable Button
+                <clr-icon shape="folder" class="is-warning is-solid" size="18" clrDraggableHandle></clr-icon>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card" clrDroppable clrDragAndDropGroup="draggable-handle">
+                <div class="card-block">
+                    <h3 class="card-title">Droppable Card</h3>
+                    <p class="card-text">
+                        ...
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="clr-example">
     <h4>Nested Draggables</h4>
-    <p>You can also nest a draggable element or component inside another one. In the following example, both button and icon are draggable.</p>
-    <button class="btn btn-primary" clrDraggable>
-        Draggable Button
-        <clr-icon shape="folder" class="is-warning is-solid" size="18" clrDraggable></clr-icon>
-    </button>
+    <div class="row">
+        <div class="col-xs-12">
+            <p>You can also nest a draggable inside another one. In the following example, both button and
+                icon are draggable.</p>
+            <button class="btn btn-primary" clrDraggable clrDragAndDropGroup="nested-draggable">
+                Draggable Button
+                <clr-icon shape="folder" class="is-warning is-solid" size="18" clrDraggable clrDragAndDropGroup="nested-draggable"></clr-icon>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card" clrDroppable clrDragAndDropGroup="nested-draggable">
+                <div class="card-block">
+                    <h3 class="card-title">Droppable Card</h3>
+                    <p class="card-text">
+                        ...
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

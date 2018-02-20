@@ -41,7 +41,7 @@ export class Droppable implements AfterViewInit, OnDestroy {
     @Output("clrDragLeave") dragLeaveEmitter: EventEmitter<DraggableEvent> = new EventEmitter();
     @Output("clrDrop") dropEmitter: EventEmitter<DraggableEvent> = new EventEmitter();
 
-    @Input("clrDragAndDropGroup") groupKey: string;
+    @Input("clrDragAndDropGroup") groupKey: string|string[];
 
     private _dropMarginTop: number = 0;
     private _dropMarginBottom: number = 0;
@@ -70,7 +70,8 @@ export class Droppable implements AfterViewInit, OnDestroy {
 
     private onDragStart(startEvent: DraggableEvent) {
         // this dragStart event handler method should be only responsible for subscribing to dragMove events.
-        if (startEvent.dragAndDropGroup === this.groupKey ||
+        if (typeof this.groupKey === "string" && startEvent.dragAndDropGroup === this.groupKey ||
+            this.groupKey && this.groupKey.indexOf(startEvent.dragAndDropGroup) > -1 ||
             typeof this.groupKey === "undefined" && typeof startEvent.dragAndDropGroup === "undefined") {
             // Must subscribe to the dragmove events only when the linkValue's between draggables and droppables match.
             // Otherwise all droppable will try to listen to dragMove events.

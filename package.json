@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "0.10.18",
+  "version": "0.11.6",
   "scripts": {
     "start": "http-server ."
   },

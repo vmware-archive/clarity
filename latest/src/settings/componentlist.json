@@ -128,7 +128,7 @@
             "ui": 10,
             "core": -1,
             "ng": 10,
-            "dox": 5
+            "dox": 10
         },
         {
             "url": "datagrid",

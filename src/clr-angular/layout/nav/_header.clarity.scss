@@ -302,7 +302,7 @@
                     @include header-nav-appearance();
                 }
 
-                clr-icon:not([shape^="caret"]) {
+                .dropdown-toggle.nav-icon clr-icon:not([shape^="caret"]) {
                     position: absolute;
                     top: 50%;
                     transform: translateY(-50%);

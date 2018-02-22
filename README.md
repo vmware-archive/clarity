@@ -14,7 +14,7 @@ Clarity is published as three npm packages:
 * __@clr/ui.__ Contains the static styles for building HTML components.
 * __@clr/angular.__ Contains the Angular components. This package depends on @clr/ui for styles.
 
-The easiest way to run a sample Angular application with Clarity is to use the [Clarity Seed](https://github.com/vmware/clarity-seed). 
+The easiest way to run a sample Angular application with Clarity is to use the [Clarity Seed](https://github.com/vmware/clarity-seed).
 
 If you already have an Angular application, you can follow the installation steps below to include and use Clarity in your application.
 
@@ -25,7 +25,7 @@ If you already have an Angular application, you can follow the installation step
     npm install @clr/icons --save
     ```
 
-2. Install the polyfill for Custom Elements: 
+2. Install the polyfill for Custom Elements:
     ```bash
     npm install @webcomponents/custom-elements --save
     ```
@@ -38,7 +38,7 @@ If you already have an Angular application, you can follow the installation step
     <script src="path/to/node_modules/clr-icons/clr-icons.min.js"></script>
     ```
 
-    If your site is built with [angular-cli](https://github.com/angular/angular-cli) you can achieve the above by adding the files to the styles array and 
+    If your site is built with [angular-cli](https://github.com/angular/angular-cli) you can achieve the above by adding the files to the styles array and
     scripts array in `angular-cli.json`:
     ```js
     "styles": [
@@ -66,7 +66,7 @@ If you already have an Angular application, you can follow the installation step
     <link rel="stylesheet" href="path/to/node_modules/@clr/ui/clr-ui.min.css">
     ```
 
-    If your site is built with [angular-cli](https://github.com/angular/angular-cli), you can achieve the above by adding the file to the styles array in 
+    If your site is built with [angular-cli](https://github.com/angular/angular-cli), you can achieve the above by adding the file to the styles array in
     `angular-cli.json`:
     ```js
     "styles": [
@@ -96,7 +96,7 @@ If you already have an Angular application, you can follow the installation step
     @NgModule({
         imports: [
             BrowserModule,
-            ClarityModule.forRoot(),
+            ClarityModule,
             ....
          ],
          declarations: [ AppComponent ],
@@ -104,7 +104,7 @@ If you already have an Angular application, you can follow the installation step
     })
     export class AppModule {    }
     ```
-    
+
     If your application uses [systemjs](https://github.com/systemjs/systemjs), add the clarity-angular configuration
     as in the example below.
     ```
@@ -117,7 +117,7 @@ If you already have an Angular application, you can follow the installation step
     	...
     });
     ```
-    
+
 ## Documentation
 
 For documentation on the Clarity Design System, including a list of components and example usage, see [our website](https://vmware.github.io/clarity).

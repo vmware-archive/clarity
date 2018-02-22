@@ -17,7 +17,11 @@ gemini.suite('navigation', (child) => {
             })
             .setCaptureElements('.clr-example .main-container')
             .ignoreElements('pre')
-            .capture('default');
+            .capture('default')
+            .capture('header-dropdown', function(actions, find) {
+                actions.click(find('#dropdown-with-icons'));
+                actions.wait(WAIT_LOAD_TIME);
+            })
     });
 
     gemini.suite('header-colors', (child) => {

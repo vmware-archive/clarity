@@ -61,4 +61,4 @@ import {Example} from "./utils/example";
     ],
     exports: [TreeViewDemo]
 })
-export default class TreeDemoModule {}
+export class TreeViewDemoModule {}

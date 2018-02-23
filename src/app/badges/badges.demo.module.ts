@@ -18,4 +18,4 @@ import {ROUTING} from "./badges.demo.routing";
     declarations: [BadgesDemo, BadgeColorsDemo, BadgeStatusesDemo],
     exports: [BadgesDemo, BadgeColorsDemo, BadgeStatusesDemo]
 })
-export default class BadgesDemoModule {}
+export class BadgesDemoModule {}

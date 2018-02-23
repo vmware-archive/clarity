@@ -21,7 +21,7 @@ const SuppressChunksPlugin = require('suppress-chunks-webpack-plugin').default;
 const { NoEmitOnErrorsPlugin, SourceMapDevToolPlugin, NamedModulesPlugin } = require('webpack');
 const { InsertConcatAssetsWebpackPlugin, NamedLazyChunksWebpackPlugin, BaseHrefWebpackPlugin } = require('@angular/cli/plugins/webpack');
 const { CommonsChunkPlugin } = require('webpack').optimize;
-const { AotPlugin } = require('@ngtools/webpack');
+const { AngularCompilerPlugin } = require('@ngtools/webpack');
 
 const nodeModules = path.join(process.cwd(), 'node_modules');
 const realNodeModules = fs.realpathSync(nodeModules);
@@ -405,13 +405,8 @@ module.exports = {
       "async": "common"
     }),
     new NamedModulesPlugin({}),
-    new AotPlugin({
+    new AngularCompilerPlugin({
       "mainPath": "main.ts",
-      "replaceExport": false,
-      "hostReplacementPaths": {
-        "environments/environment.ts": "environments/environment.ts"
-      },
-      "exclude": [],
       "tsConfigPath": "src/tsconfig.app.json",
       "skipCodeGeneration": true
     }),

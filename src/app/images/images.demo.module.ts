@@ -12,4 +12,4 @@ import {ImagesDemo} from "./images.demo";
 import {ROUTING} from "./images.demo.routing";
 
 @NgModule({imports: [CommonModule, ClarityModule, ROUTING], declarations: [ImagesDemo], exports: [ImagesDemo]})
-export default class ImagesDemoModule {}
+export class ImagesDemoModule {}

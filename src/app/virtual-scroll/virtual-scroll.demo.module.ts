@@ -20,4 +20,4 @@ import {ROUTING} from "./virtual-scroll.demo.routing";
     declarations:
         [VirtualScrollDemo, VirtualScrollArrayDemo, VirtualScrollInfiniteGeneratorDemo, VirtualScrollSlotMachineDemo]
 })
-export default class VirtualScrollDemoModule {}
+export class VirtualScrollDemoModule {}

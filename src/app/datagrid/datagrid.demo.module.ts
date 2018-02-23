@@ -102,4 +102,4 @@ import {Example} from "./utils/example";
         DatagridKitchenSinkDemo
     ]
 })
-export default class DatagridDemoModule {}
+export class DatagridDemoModule {}

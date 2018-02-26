@@ -173,35 +173,33 @@ let makeSVG = (shapeTitle, shapeContent) => {
 };
 
 
+let convertToCamelCase = (kebabCase) => {
+    // will convert core-shapes into CoreShapes
+    return kebabCase.split("-").map(splitPart => splitPart.charAt(0).toUpperCase() + splitPart.slice(1)).join("");
+};
+
 //use shapes from this directory
 const SOURCE_PATH = path.join(__dirname, "../dist/clr-icons/shapes");
 
 let makeSVGset = (setName, callback) => {
 
     let importSet = require(SOURCE_PATH + "/" + setName + ".js");
-    let exportedName = Object.getOwnPropertyNames(importSet)[1];
+
+    let exportedName = convertToCamelCase(setName);
+
     let setShapes = importSet[exportedName];
 
     let setShapesContainerDir = path.join(SOURCE_PATH, setName);
 
     createContainerDir(setShapesContainerDir)
         .then((containerDirPath)=> {
-
             let shapes = breakUpAllShapeTemplates(setShapes);
-
             let shapeNames = Object.keys(shapes);
-
             return Promise.all(shapeNames.map((shapeName)=> {
-
-
                 //the path that a new file will be written to
                 let filePath = path.join(containerDirPath, getFileName(shapeName));
-
                 return writeToFile(filePath, makeSVG(shapeName, shapes[shapeName]));
-
             }));
-
-
         })
         .then(()=> {
 

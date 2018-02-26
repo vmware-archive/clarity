@@ -14,13 +14,13 @@ import {
 } from "./helpers.spec";
 import {ClarityIcons} from "./index";
 import {AllShapes} from "./shapes/all-shapes";
-import {CommerceShapes} from "./shapes/commerce-shapes";
+import {ClrShapeECheck, CommerceShapes} from "./shapes/commerce-shapes";
 import {CoreShapes} from "./shapes/core-shapes";
-import {EssentialShapes} from "./shapes/essential-shapes";
-import {MediaShapes} from "./shapes/media-shapes";
-import {SocialShapes} from "./shapes/social-shapes";
-import {TechnologyShapes} from "./shapes/technology-shapes";
-import {TravelShapes} from "./shapes/travel-shapes";
+import {ClrShapePencil, EssentialShapes} from "./shapes/essential-shapes";
+import {ClrShapePlay, MediaShapes} from "./shapes/media-shapes";
+import {ClrShapeStar, SocialShapes} from "./shapes/social-shapes";
+import {ClrShapeCPU, TechnologyShapes} from "./shapes/technology-shapes";
+import {ClrShapeCar, TravelShapes} from "./shapes/travel-shapes";
 import {changeHandlerCallbacks} from "./utils/shape-template-observer";
 import {clrIconSVG} from "./utils/svg-tag-generator";
 
@@ -49,7 +49,21 @@ describe("ClarityIcons", () => {
             testAllShapes(ClarityIcons, currentAllShapes);
         });
 
-        it("should return shapes from CommerceShapes and CoreShapes sets if EssentialShapes set is added in.", () => {
+        it("should return all shapes from CoreShapes and few selected shapes from other sets if shapes are individually added in.",
+           () => {
+               ClarityIcons.add({car: ClrShapeCar});
+               ClarityIcons.add({"e-check": ClrShapeECheck});
+               ClarityIcons.add({pencil: ClrShapePencil});
+               ClarityIcons.add({play: ClrShapePlay});
+               ClarityIcons.add({star: ClrShapeStar});
+               ClarityIcons.add({cpu: ClrShapeCPU});
+               const currentAllShapes = Object.assign({}, CoreShapes, {car: ClrShapeCar}, {"e-check": ClrShapeECheck},
+                                                      {pencil: ClrShapePencil}, {play: ClrShapePlay},
+                                                      {star: ClrShapeStar}, {cpu: ClrShapeCPU});
+               testAllShapes(ClarityIcons, currentAllShapes);
+           });
+
+        it("should return shapes from CommerceShapes and CoreShapes sets if CommerceShapes set is added in.", () => {
             ClarityIcons.add(CommerceShapes);
             const currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes);
             testAllShapes(ClarityIcons, currentAllShapes);
@@ -61,7 +75,7 @@ describe("ClarityIcons", () => {
             testAllShapes(ClarityIcons, currentAllShapes);
         });
 
-        it("should return shapes from MediaShapes and CoreShapes sets if EssentialShapes set is added in.", () => {
+        it("should return shapes from MediaShapes and CoreShapes sets if MediaShapes set is added in.", () => {
             ClarityIcons.add(MediaShapes);
             const currentAllShapes = Object.assign({}, CoreShapes, MediaShapes);
             testAllShapes(ClarityIcons, currentAllShapes);
@@ -74,7 +88,7 @@ describe("ClarityIcons", () => {
         });
 
         it("should return shapes from TravelShapes and CoreShapes sets " +
-               "if the EssentialShapes set is added in.",
+               "if the TravelShapes set is added in.",
            () => {
                ClarityIcons.add(TravelShapes);
                const currentAllShapes = Object.assign({}, CoreShapes, TravelShapes);

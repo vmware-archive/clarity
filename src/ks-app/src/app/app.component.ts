@@ -3,10 +3,15 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import "@clr/icons";
-
 import {Component} from "@angular/core";
 import {ClrIconCustomTag, ClrLoading, ClrMainContainer, IconCustomTag, Loading, MainContainer} from "@clr/angular";
+import {ClarityIcons} from "@clr/icons";
+import {ClrShapeStore} from "@clr/icons/shapes/commerce-shapes";
+import {ClrShapePin} from "@clr/icons/shapes/essential-shapes";
+import {ClrShapeHeadphones} from "@clr/icons/shapes/media-shapes";
+import {ClrShapeStar} from "@clr/icons/shapes/social-shapes";
+import {ClrShapeHelix} from "@clr/icons/shapes/technology-shapes";
+import {ClrShapeCar} from "@clr/icons/shapes/travel-shapes";
 
 @Component({selector: "KS-root", templateUrl: "./app.component.html", styleUrls: ["./app.component.scss"]})
 export class AppComponent {
@@ -54,4 +59,15 @@ export class AppComponent {
         {path: "vertical-nav", title: "Vertical Nav"},
         {path: "wizards", title: "Wizards"}
     ];
+
+    constructor() {
+        ClarityIcons.add({
+            "store": ClrShapeStore,
+            "pin": ClrShapePin,
+            "headphones": ClrShapeHeadphones,
+            "star": ClrShapeStar,
+            "car": ClrShapeCar,
+            "helix": ClrShapeHelix
+        });
+    }
 }

@@ -12,6 +12,7 @@ import {BasicButtonGroupDemo} from "./angular/basic-structure/basic-button-group
 import {ButtonGroupAngularDemo} from "./angular/button-group-angular";
 import {HideShowOverflowToggleDemo} from "./angular/hide-show-overflow-toggle/hide-show-overflow-toggle";
 import {IconButtonGroupDemo} from "./angular/icon-buttons/icon-button-group";
+import {LoadingButtonGroupDemo} from "./angular/loading-buttons/loading-button-group";
 import {MenuDirectionsDemo} from "./angular/menu-directions/menu-directions";
 import {MixedButtonGroupDemo} from "./angular/mixed-buttons/mixed-button-group";
 import {MoveAllInMenuDemo} from "./angular/move-all-in-menu/move-all-in-menu";
@@ -54,6 +55,7 @@ import {ButtonGroupTypes} from "./static/types/button-group-types";
         ProjectionUpdateTest4Demo,
         ProjectionUpdateTest5Demo,
         ProjectionUpdateTest6Demo,
+        LoadingButtonGroupDemo,
 
         StaticButtonGroupBasicStructureDemo,
         ButtonGroupCheckboxesDemo,
@@ -85,6 +87,7 @@ import {ButtonGroupTypes} from "./static/types/button-group-types";
         ProjectionUpdateTest4Demo,
         ProjectionUpdateTest5Demo,
         ProjectionUpdateTest6Demo,
+        LoadingButtonGroupDemo,
 
         StaticButtonGroupBasicStructureDemo,
         ButtonGroupCheckboxesDemo,

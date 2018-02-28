@@ -27,4 +27,4 @@ import {ROUTING} from "./stack-view.demo.routing";
         StackViewStaticDemo
     ]
 })
-export default class StackViewDemoModule {}
+export class StackViewDemoModule {}

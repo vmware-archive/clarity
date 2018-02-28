@@ -44,4 +44,4 @@ import {ROUTING} from "./wizard.demo.routing";
         WizardStopNavigation
     ]
 })
-export default class WizardDemoModule {}
+export class WizardDemoModule {}

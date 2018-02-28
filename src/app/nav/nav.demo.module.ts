@@ -31,4 +31,4 @@ import {SubNavDemo} from "./sub-nav";
         ResponsiveNav2Demo
     ]
 })
-export default class NavDemoModule {}
+export class NavDemoModule {}

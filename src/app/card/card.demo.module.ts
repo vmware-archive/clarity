@@ -31,4 +31,4 @@ import {ROUTING} from "./card.demo.routing";
         CardDropdownDemo, CardListGroupDemo
     ]
 })
-export default class CardDemoModule {}
+export class CardDemoModule {}

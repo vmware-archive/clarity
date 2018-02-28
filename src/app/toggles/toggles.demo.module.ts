@@ -12,4 +12,4 @@ import {TogglesDemo} from "./toggles.demo";
 import {ROUTING} from "./toggles.demo.routing";
 
 @NgModule({imports: [CommonModule, ClarityModule, ROUTING], declarations: [TogglesDemo], exports: [TogglesDemo]})
-export default class TogglesDemoModule {}
+export class TogglesDemoModule {}

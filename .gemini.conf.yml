@@ -10,7 +10,7 @@ system:
   plugins:
     'html-reporter/gemini': 
       enabled: true
-      path: 'gemini-report'
+      path: 'reports/gemini'
 
 
 #compositeImage: true

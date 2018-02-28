@@ -7,7 +7,7 @@
 /.ng_build
 src/clr-angular/.ng_build
 
-/gemini-report/
+/reports
 
 # dependencies
 /node_modules
@@ -41,6 +41,7 @@ testem.log
 /typings
 /src/clr-angular/package.json
 /src/clr-angular/README.md
+sauceconnect.log
 
 # e2e
 /e2e/*.js

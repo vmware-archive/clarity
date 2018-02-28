@@ -5,9 +5,10 @@
  */
 
 import {animate, state, style, transition, trigger} from "@angular/animations";
-import {Component, EventEmitter, Input, OnDestroy, Optional, Output, SkipSelf} from "@angular/core";
+import {Component, EventEmitter, Inject, Input, OnDestroy, Optional, Output, SkipSelf} from "@angular/core";
 
 import {Expand} from "../../utils/expand/providers/expand";
+import {UNIQUE_ID, UNIQUE_ID_PROVIDER} from "../../utils/id-generator/id-generator.service";
 import {LoadingListener} from "../../utils/loading/loading-listener";
 
 import {AbstractTreeSelection} from "./abstract-tree-selection";
@@ -22,7 +23,8 @@ import {TreeSelectionService} from "./providers/tree-selection.service";
             provide: TreeSelectionService,
             useFactory: clrTreeSelectionProviderFactory,
             deps: [[new Optional(), new SkipSelf(), TreeSelectionService]]
-        }
+        },
+        UNIQUE_ID_PROVIDER
     ],
     animations: [trigger("childNodesState",
                          [
@@ -30,11 +32,11 @@ import {TreeSelectionService} from "./providers/tree-selection.service";
                              state("collapsed", style({"height": 0, "overflow-y": "hidden"})),
                              transition("expanded <=> collapsed", animate("0.2s ease-in-out"))
                          ])],
-    host: {"class": ".clr-tree-node"}
+    host: {"class": "clr-tree-node"}
 })
 export class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
     constructor(public nodeExpand: Expand, @Optional() @SkipSelf() public parent: ClrTreeNode,
-                public treeSelectionService: TreeSelectionService) {
+                public treeSelectionService: TreeSelectionService, @Inject(UNIQUE_ID) public nodeId: string) {
         super(parent);
         if (this.parent) {
             this.parent.register(this);

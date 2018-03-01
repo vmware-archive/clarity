@@ -7,7 +7,7 @@
 
 import {Component, EventEmitter, Input, Optional, Output, SkipSelf, TemplateRef, ViewChild} from "@angular/core";
 
-import {LoadingListener} from "../../utils/loading";
+import {LoadingListener} from "../../utils/loading/loading-listener";
 import {ButtonInGroupService} from "../providers/button-in-group.service";
 
 @Component({

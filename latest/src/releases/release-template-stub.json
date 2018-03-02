@@ -1,4 +1,6 @@
 {
+    "0.11.7-patch.1": "src/releases/0.11/0.11.7-patch.1.html",
+    "0.11.7": "src/releases/0.11/0.11.7.html",
     "0.11.6": "src/releases/0.11/0.11.6.html",
     "0.11.5": "src/releases/0.11/0.11.5.html",
     "0.11.4": "src/releases/0.11/0.11.4.html",
@@ -10,6 +12,7 @@
     "0.11.0-rc.1": "src/releases/0.11/0.11.0-rc.1.html",
     "0.11.0-beta.1": "src/releases/0.11/0.11.0-beta.1.html",
 
+    "0.10.27": "src/releases/0.10/0.10.27.html",
     "0.10.26": "src/releases/0.10/0.10.26.html",
     "0.10.25": "src/releases/0.10/0.10.25.html",
     "0.10.24": "src/releases/0.10/0.10.24.html",

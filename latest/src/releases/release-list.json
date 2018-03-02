@@ -1,6 +1,16 @@
 {
-    "current": "0.11.6",
+    "current": "0.11.7",
     "all": {
+        "0.11.7-patch.1": {
+            "date": "March 1, 2018",
+            "sketch": "0.11.6",
+            "commit": "a78ab39580ca3b84fde06e49372c8e8ee95e73cc"
+        },
+        "0.11.7": {
+            "date": "March 1, 2018",
+            "sketch": "0.11.6",
+            "commit": "0e2e25491f8aeff5c9419e94b55055f0f54eeac0"
+        },
         "0.11.6": {
             "date": "Feb 22, 2018",
             "sketch": "0.11.6",
@@ -50,6 +60,11 @@
             "date": "Dec 21, 2017",
             "sketch": "0.11.0",
             "commit": "76b938a13ab2f6d40b7ffb3403d7dcc9844e0630"
+        },
+        "0.10.27": {
+            "date": "March 1, 2018",
+            "sketch": "0.10.11",
+            "commit": "02481dba993ec5174628d0bfbf18e81991de70aa"
         },
         "0.10.26": {
             "date": "Feb 15, 2018",

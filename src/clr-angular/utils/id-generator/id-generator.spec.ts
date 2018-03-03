@@ -4,72 +4,51 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, Inject, NgModule, Type} from "@angular/core";
+import {Component, Inject, NgModule} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
 
 import {UNIQUE_ID, UNIQUE_ID_PROVIDER} from "./id-generator.service";
 
 @Component({
-    selector: "test-zero",
+    selector: "id-test",
     template: `
         <div [id]="divId">My Div</div>`,
     providers: [UNIQUE_ID_PROVIDER]
 })
-class IdZero {
+class IdTest {
     constructor(@Inject(UNIQUE_ID) public divId: string) {}
 }
 
-@Component({
-    selector: "test-one",
-    template: `
-        <div [id]="divId">My Div</div>`,
-    providers: [UNIQUE_ID_PROVIDER]
-})
-class IdOne {
-    constructor(@Inject(UNIQUE_ID) public divId: string) {}
-}
-
-@Component({
-    selector: "test-two",
-    template: `
-        <div [id]="divId">My Div</div>`,
-    providers: [UNIQUE_ID_PROVIDER]
-})
-class IdTwo {
-    constructor(@Inject(UNIQUE_ID) public divId: string) {}
-}
-
-@NgModule({declarations: [IdZero, IdOne, IdTwo], exports: [IdZero, IdOne, IdTwo]})
+@NgModule({declarations: [IdTest], exports: [IdTest]})
 class IdTestingModule {}
 
 @Component({
     template: `
-        <test-zero></test-zero>
-        <test-one></test-one>
-        <test-two></test-two>`
+        <id-test></id-test>
+        <id-test></id-test>
+        <id-test></id-test>`
 })
 class UniqueIdTest {}
 
-interface TestContext<T extends UniqueIdTest|IdZero|IdOne|IdTwo> {
-    fixture: ComponentFixture<T>;
-    idZero: IdZero;
-    idOne: IdOne;
-    idTwo: IdTwo;
-}
-
-describe("Unique ID Generator Service", function() {
-    function setupTest<T>(testContext: TestContext<T>, testComponent: Type<T>) {
+describe("ID Generator Service", function() {
+    it("generates uniq id's", function() {
+        const fixture: ComponentFixture<UniqueIdTest>;
         TestBed.configureTestingModule(
-            {imports: [IdTestingModule], providers: [UNIQUE_ID_PROVIDER], declarations: [testComponent]});
-        testContext.fixture = TestBed.createComponent(testComponent);
-        testContext.idZero = testContext.fixture.debugElement.query(By.directive(IdZero)).componentInstance;
-        testContext.idOne = testContext.fixture.debugElement.query(By.directive(IdOne)).componentInstance;
-        testContext.idTwo = testContext.fixture.debugElement.query(By.directive(IdTwo)).componentInstance;
-    }
+            {imports: [IdTestingModule], providers: [UNIQUE_ID_PROVIDER], declarations: [UniqueIdTest]});
+        fixture = TestBed.createComponent(UniqueIdTest);
+        fixture.detectChanges();
 
-    it("generates uniq id's in the correct order", function() {
-        setupTest(this, UniqueIdTest);
-        expect(this.idZero !== this.idOne !== this.idTwo).toBe(true);
+        const elements = fixture.debugElement.queryAll(By.directive(IdTest));
+
+        for (const element of elements) {
+            // For each element, filter the array of elements and remove the ones w/ the same id
+            const unmatched = elements.filter(otherElement => otherElement.nativeElement.lastChild.id !==
+                                                  element.nativeElement.lastChild.id);
+
+            // Expect to have two unmatched elements (b/c we have three in UniqueIdTest template)
+            expect(unmatched.length).toBe(2);
+        }
+        fixture.destroy();
     });
 });

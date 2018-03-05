@@ -52,7 +52,7 @@
 </div>
 
 <div class="clr-example">
-    <h4>Basic Draggable</h4>
+    <h4>Hook particular Draggables up with particular Droppables</h4>
     <div class="row">
         <div class="col-xs-12">
             <p>
@@ -129,7 +129,8 @@
     <h4>Draggable Handle</h4>
     <div class="row">
         <div class="col-xs-12">
-            <p>Sometimes there are cases where users should be able to move a whole element just by dragging with a handle
+            <p>Sometimes there are cases where users should be able to move a whole element just by dragging with a
+                handle
                 element. To do that, you can use <code class="clr-code">clrDraggableHandle</code> directive.</p>
             <button class="btn btn-primary" clrDraggable clrDragAndDropGroup="draggable-handle">
                 Draggable Button
@@ -159,7 +160,8 @@
                 icon are draggable.</p>
             <button class="btn btn-primary" clrDraggable clrDragAndDropGroup="nested-draggable">
                 Draggable Button
-                <clr-icon shape="folder" class="is-warning is-solid" size="18" clrDraggable clrDragAndDropGroup="nested-draggable"></clr-icon>
+                <clr-icon shape="folder" class="is-warning is-solid" size="18" clrDraggable
+                          clrDragAndDropGroup="nested-draggable"></clr-icon>
             </button>
         </div>
     </div>
@@ -175,5 +177,19 @@
             </div>
         </div>
     </div>
+</div>
 
+
+<div class="clr-example button-group-dnd">
+    <h4>Button Group</h4>
+
+    <div class="btn-group btn-primary">
+        <ng-container *ngFor="let button of buttonGroup; let i = index;">
+            <button class="btn" [clrDraggable]="button" clrDragAndDropGroup="button-group" (clrDragStart)="onDragStart($event)" (clrDragEnd)="onDragEnd($event)">
+                <clr-icon [attr.shape]="button.shape"></clr-icon>
+            </button>
+            <div *ngIf="i!==buttonGroup.length-1" class="button-group-droppable" clrDroppable [clrDropMargin]="20"
+                 clrDragAndDropGroup="button-group" (clrDrop)="buttonGroupDrop($event, i)"></div>
+        </ng-container>
+    </div>
 </div>

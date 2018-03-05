@@ -6,11 +6,15 @@
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 
+import {ClrButtonGroupModule} from "../../clr-angular/button/button-group/button-group.module";
 import {ClrIconModule} from "../../clr-angular/icon/icon.module";
 import {ClrDragAndDropModule} from "../../clr-angular/utils/drag-and-drop/drag-and-drop.module";
 
 import {DragAndDropDemo} from "./drag-and-drop.demo";
 import {ROUTING} from "./drag-and-drop.demo.routing";
 
-@NgModule({imports: [CommonModule, ClrDragAndDropModule, ClrIconModule, ROUTING], declarations: [DragAndDropDemo]})
-export default class DragAndDropDemoModule {}
+@NgModule({
+    imports: [CommonModule, ClrDragAndDropModule, ClrIconModule, ClrButtonGroupModule, ROUTING],
+    declarations: [DragAndDropDemo]
+})
+export class DragAndDropDemoModule {}

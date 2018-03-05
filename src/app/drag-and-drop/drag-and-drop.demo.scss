@@ -2,3 +2,35 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+.button-group-dnd {
+    .drop-area {
+        position: relative;
+        flex: 0 0 auto;
+        &::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -2px;
+            width: 4px;
+            height: 100%;
+            display: none;
+            z-index: 1;
+        }
+        &.drop-enabled
+        {
+            border: none;
+            &::after{
+                background: #bbb;
+                display: block;
+            }
+        }
+        &.drop-allowed {
+            border: none;
+            &::after{
+                background: #8939AD;
+                display: block;
+            }
+        }
+
+    }
+}

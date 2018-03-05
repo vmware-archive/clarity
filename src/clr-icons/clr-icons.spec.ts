@@ -342,7 +342,10 @@ describe("ClarityIcons", () => {
             const clarityIcon = document.createElement("clr-icon");
             clarityIcon.setAttribute("shape", "test-shape");
 
-            expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(testShape));
+            expect(clarityIcon.innerHTML).toContain(`src="arrow-icon.png"`);
+            expect(clarityIcon.innerHTML).toContain(`width="42"`);
+            expect(clarityIcon.innerHTML).toContain(`height="42"`);
+            expect(clarityIcon.innerHTML).toContain(`alt="arrow-icon"`);
         });
 
         it("should append title text after non-svg template if title attribute is specified", () => {
@@ -354,11 +357,13 @@ describe("ClarityIcons", () => {
             clarityIcon.setAttribute("title", "my-custom-title");
 
             const clrIconUniqId = clarityIcon.clrIconUniqId;
-            const shapeAfterTitleAttrChange =
-                `<img src="arrow-icon.png" alt="arrow-icon" width="42" height="42"><span class="is-off-screen" id="${
-                    clrIconUniqId}">my-custom-title</span>`;
 
-            expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(shapeAfterTitleAttrChange));
+            expect(clarityIcon.innerHTML).toContain(`src="arrow-icon.png"`);
+            expect(clarityIcon.innerHTML).toContain(`width="42"`);
+            expect(clarityIcon.innerHTML).toContain(`height="42"`);
+            expect(clarityIcon.innerHTML).toContain(`alt="arrow-icon"`);
+            expect(clarityIcon.innerHTML)
+                .toContain(`<span class="is-off-screen" id="${clrIconUniqId}">my-custom-title</span>`);
         });
 
         it("should not inject anything if the custom title is not given", () => {

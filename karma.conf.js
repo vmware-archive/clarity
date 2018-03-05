@@ -127,7 +127,7 @@ module.exports = function(karma) {
         config.browsers = [
             "chrome_latest_win_10",
             "firefox_latest_win_10",
-            "safari_latest_osx_11"
+            // "safari_latest_osx_11"
         ];
         config.customLaunchers = browsers;
         config.sauceLabs = {

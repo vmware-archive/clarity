@@ -1,7 +1,8 @@
-import * as Browser from "detect-browser";
+import * as BrowserDetector from "detect-browser";
+const browser = BrowserDetector.detect();
 
 export const itIgnore = (browsers: string[], should: string, test: any, focus?: boolean) => {
-  if (browsers.length && browsers.indexOf(Browser.name) >= 0) {
+  if (browsers.length && browsers.indexOf(browser.name) >= 0) {
     return xit(should, test);
   }
 

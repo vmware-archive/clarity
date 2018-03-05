@@ -63,12 +63,15 @@ export class DragDispatcher {
         return this._renderer.listen(element, startOnEvent, (startEvent: any) => {
             this._dragStartPosition = {x: startEvent.clientX, y: startEvent.clientY};
             startEvent.stopPropagation();
+            startEvent.preventDefault();
             this.notifyDragStart(startEvent);
 
             dragMoveListener = this._ngZone.runOutsideAngular(() => {
                 return this._renderer.listen("document", moveOnEvent, (moveEvent: any) => {
                     moveEvent.stopPropagation();
+                    moveEvent.preventDefault();
                     this.notifyDragMove(moveEvent);
+                    return;
                 });
             });
 
@@ -77,11 +80,15 @@ export class DragDispatcher {
                 dragMoveListener();
                 this._dragEndPosition = {x: endEvent.clientX, y: endEvent.clientY};
                 endEvent.stopPropagation();
+                endEvent.preventDefault();
                 this.notifyDragEnd(endEvent);
 
                 // Unsubscribing from itself
                 dragEndListener();
+                return;
             });
+
+            return;
         });
     }
 

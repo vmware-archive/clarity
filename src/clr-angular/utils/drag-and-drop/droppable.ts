@@ -20,17 +20,12 @@ export class Droppable implements AfterViewInit, OnDestroy {
 
     private isDragMoveStarted: boolean = false;
 
-    private droppableEl: Node;
+    private dropAllowed: boolean = false;
 
-    private _dropAllowed: boolean = false;
+    private droppableEl: Node;
 
     private ghostElWidth: number;
     private ghostElHeight: number;
-
-    set dropAllowed(value: boolean) {
-        this._dropAllowed = value;
-        this._dropAllowed ? this.draggableEnter() : this.draggableLeave();
-    }
 
     private dragStartSubscription: Subscription;
     private dragMoveSubscription: Subscription;
@@ -99,13 +94,15 @@ export class Droppable implements AfterViewInit, OnDestroy {
         const ghostElCenterY = moveEvent.ghostAnchorPosition.y + this.ghostElHeight / 2;
 
         if (this.isWithinBoundaries(ghostElCenterX, ghostElCenterY)) {
-            if (!this._dropAllowed) {
+            if (!this.dropAllowed) {
                 this.dropAllowed = true;
+                this.draggableEnter(moveEvent);
             }
             this.dragOverEmitter.emit(moveEvent);
         } else {
-            if (this._dropAllowed) {
+            if (this.dropAllowed) {
                 this.dropAllowed = false;
+                this.draggableLeave(moveEvent);
             }
         }
     }
@@ -115,8 +112,8 @@ export class Droppable implements AfterViewInit, OnDestroy {
 
         this.renderer.removeClass(this.droppableEl, "drop-enabled");
 
-        if (this._dropAllowed) {
-            this._dropAllowed = false;
+        if (this.dropAllowed) {
+            this.dropAllowed = false;
             this.dragAndDrop.drop();
             this.renderer.removeClass(this.droppableEl, "drop-allowed");
             this.dropEmitter.emit(endEvent);
@@ -126,14 +123,14 @@ export class Droppable implements AfterViewInit, OnDestroy {
         this.unsubscribeFrom(this.dragEndSubscription);
     }
 
-    private draggableEnter(): void {
+    private draggableEnter(enterEvent: DraggableEvent): void {
         this.renderer.addClass(this.droppableEl, "drop-allowed");
-        this.dragEnterEmitter.emit();
+        this.dragEnterEmitter.emit(enterEvent);
     }
 
-    private draggableLeave(): void {
+    private draggableLeave(leaveEvent: DraggableEvent): void {
         this.renderer.removeClass(this.droppableEl, "drop-allowed");
-        this.dragLeaveEmitter.emit();
+        this.dragLeaveEmitter.emit(leaveEvent);
     }
 
     private getClientElState(element: Node) {

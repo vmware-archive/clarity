@@ -60,9 +60,10 @@ export class Draggable implements AfterViewInit, OnDestroy {
 
     // This input is or transfering payload from draggable to dropppable
     // We probably need to have a definite type on it with an interface instead of having any.
-    @Input("clrDraggable") data: any;
+    // TODO: rename to dataTransfer or transferData
+    @Input("clrDraggable") private data: any;
 
-    @Input("clrDragAndDropGroup") groupKey: string;
+    @Input("clrDragAndDropGroup") private groupKey: string;
 
     private subscriptions: Subscription[] = [];
 
@@ -138,12 +139,17 @@ export class Draggable implements AfterViewInit, OnDestroy {
             nativeEvent = event;
         }
 
+        console.log(nativeEvent.pageX, nativeEvent.pageY);
+
         const clientPosition: DragPosition = {x: nativeEvent.pageX, y: nativeEvent.pageY};
+
+        console.log(clientPosition);
+
         return {
             draggable: this.dragDispatcher.draggable,
             dragPosition: clientPosition,
             dragAndDropGroup: this.groupKey,
-            data: this.data
+            data: this.data  // rename it as dataTransfer
         };
     }
 

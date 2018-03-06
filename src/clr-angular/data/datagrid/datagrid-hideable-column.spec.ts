@@ -5,10 +5,11 @@
  */
 import {Component, ViewChild} from "@angular/core";
 
+import {DragDispatcher} from "../../utils/drag-and-drop/providers/drag-dispatcher";
+
 import {ClrDatagridColumn} from "./datagrid-column";
 import {ClrDatagridHideableColumn} from "./datagrid-hideable-column";
 import {TestContext} from "./helpers.spec";
-import {DragDispatcher} from "./providers/drag-dispatcher";
 import {FiltersProvider} from "./providers/filters";
 import {Page} from "./providers/page";
 import {Sort} from "./providers/sort";

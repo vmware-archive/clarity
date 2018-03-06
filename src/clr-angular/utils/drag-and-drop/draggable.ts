@@ -139,11 +139,7 @@ export class Draggable implements AfterViewInit, OnDestroy {
             nativeEvent = event;
         }
 
-        console.log(nativeEvent.pageX, nativeEvent.pageY);
-
         const clientPosition: DragPosition = {x: nativeEvent.pageX, y: nativeEvent.pageY};
-
-        console.log(clientPosition);
 
         return {
             draggable: this.dragDispatcher.draggable,

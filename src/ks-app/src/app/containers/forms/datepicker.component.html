@@ -1,0 +1,21 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h6>NgModel</h6>
+<input type="date" clrDate [(ngModel)]="model">
+
+<h6>clrDate</h6>
+<input type="date" [(clrDate)]="date">
+
+<h6>NgModel - Container Provided</h6>
+<clr-date-container>
+  <input type="date" clrDate [(ngModel)]="model1">
+</clr-date-container>
+
+<h6>clrDate - Container Provided</h6>
+<clr-date-container>
+  <input type="date" [(clrDate)]="date1">
+</clr-date-container>

@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {HostBinding, Input, OnInit, Type, ViewContainerRef} from "@angular/core";
+import {HostBinding, InjectionToken, Injector, Input, OnInit, Type, ViewContainerRef} from "@angular/core";
 
 import {DynamicWrapper, HostWrapper} from "../../utils/host-wrapping";
 
@@ -29,8 +29,15 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit {
         }
     }
 
+    private _containerInjector: Injector;
+
+    protected getProviderFromContainer<T>(token: Type<T>|InjectionToken<T>, notFoundValue?: T): T {
+        return this._containerInjector.get(token, notFoundValue);
+    }
+
     ngOnInit() {
-        this.formControlService = new HostWrapper(this.wrapperType, this.vcr).get(FormControlService);
+        this._containerInjector = new HostWrapper(this.wrapperType, this.vcr);
+        this.formControlService = this._containerInjector.get(FormControlService);
         if (this._id) {
             this.formControlService.id = this._id;
         } else {

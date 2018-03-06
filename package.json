@@ -22,8 +22,8 @@
         "cssUpdate": "./scripts/docker-cdc.js -u",
         "replace": "replace",
         "tslint:check": "node_modules/.bin/tslint -p . -c tslint.json \"src/**/*.ts\" -e \"**/node_modules/**\" -e \"src/ks-app/**\"",
-        "tslint:spec": "node_modules/.bin/tslint -p . -c tslint.spec.json \"src/**/*.spec.ts\" -e \"**/node_modules/**\"",
-        "tslint:fix": "node_modules/.bin/tslint -p . -c tslint.json --fix \"src/**/*.ts\" -e \"**/node_modules/**\"",
+        "tslint:spec": "node_modules/.bin/tslint -p . -c tslint.spec.json \"src/**/*.spec.ts\" -e \"**/node_modules/**\" -e \"src/ks-app/**\"",
+        "tslint:fix": "node_modules/.bin/tslint -p . -c tslint.json --fix \"src/**/*.ts\" -e \"**/node_modules/**\" -e \"src/ks-app/**\"",
         "webpack": "webpack --progress --colors",
         "preks:publish": "npm run build",
         "ks:publish": "cd src/ks-app; npm run build; cd ../../dist/ks-app; cat index.html > 404.html; surge; cd ../../"

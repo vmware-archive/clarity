@@ -18,6 +18,7 @@ import {KSAlerts} from "./containers/emphasis/alerts.component";
 import {KSBadges} from "./containers/emphasis/badges.component";
 import {KSLabels} from "./containers/emphasis/labels.component";
 import {KSCheckboxes} from "./containers/forms/checkboxes.component";
+import {KSDatepicker} from "./containers/forms/datepicker.component";
 import {KSForms} from "./containers/forms/forms.component";
 import {KSInputs} from "./containers/forms/inputs.component";
 import {KSRadios} from "./containers/forms/radios.component";
@@ -60,6 +61,7 @@ export const routes: Routes = [
     {path: "lists", component: KSLists, data: {state: "lists"}},
     {path: "login", component: KSLogin, data: {state: "login"}},
     {path: "checkboxes", component: KSCheckboxes, data: {state: "checkboxes"}},
+    {path: "datepicker", component: KSDatepicker, data: {state: "datepicker"}},
     {path: "forms", component: KSForms, data: {state: "forms"}},
     {path: "inputs", component: KSInputs, data: {state: "inputs"}},
     {path: "radios", component: KSRadios, data: {state: "radios"}},

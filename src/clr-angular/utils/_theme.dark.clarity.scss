@@ -432,6 +432,16 @@ $clr-toggle-disabled-on-handle-border-color: $clr-toggle-handle-color;
 $clr-toggle-bg-color-off: $clr-white;
 $clr-toggle-bg-color-on: #60b515;
 $clr-toggle-handle-bg-color: $clr-toggle-handle-color; // main-container bg color (replaced fafafa in light theme)
+
+$clr-calendar-background-color: #22343C;
+$clr-calendar-border-color: $clr-black;
+$clr-datepicker-trigger-hover-color: #49AFD9;
+$clr-calendar-btn-color: #49AFD9;
+$clr-calendar-btn-hover-focus-color: #29414E;
+$clr-calendar-active-cell-background-color: #324F61;
+$clr-calendar-active-focus-cell-background-color: #324F61;
+$clr-calendar-today-date-cell-color: $clr-white;
+$clr-calendar-active-cell-color: $clr-white;
 // END: form
 
 /**********

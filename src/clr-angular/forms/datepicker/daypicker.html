@@ -1,0 +1,22 @@
+<div class="calendar-header">
+    <div class="calendar-pickers">
+        <button class="calendar-btn monthpicker-trigger" type="button" (click)="changeToMonthView()">
+            {{calendarMonth}}
+        </button>
+        <button class="calendar-btn yearpicker-trigger" type="button" (click)="changeToYearView()">
+            {{calendarYear}}
+        </button>
+    </div>
+    <div class="calendar-switchers">
+        <button class="calendar-btn switcher" type="button" (click)="previousMonth()">
+            <clr-icon shape="angle" dir="left"></clr-icon>
+        </button>
+        <button class="calendar-btn switcher" type="button" (click)="currentMonth()">
+            <clr-icon shape="event"></clr-icon>
+        </button>
+        <button class="calendar-btn switcher" type="button" (click)="nextMonth()">
+            <clr-icon shape="angle" dir="right"></clr-icon>
+        </button>
+    </div>
+</div>
+<clr-calendar></clr-calendar>

@@ -5,6 +5,7 @@
  */
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 import {DraggableGhost} from "./draggable-ghost";
 import {CLR_DRAG_AND_DROP_DIRECTIVES} from "./index";

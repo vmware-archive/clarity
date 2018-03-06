@@ -17,7 +17,7 @@ interface ClarityIconElement extends HTMLElement {
     clrIconUniqId: string;
 }
 
-interface CustomEventInit {
+interface CustomEvent {
     pageX?: number;
     pageY?: number;
 }

@@ -138,12 +138,10 @@ export class Draggable implements AfterViewInit, OnDestroy {
         } else {
             nativeEvent = event;
         }
-
-        const clientPosition: DragPosition = {x: nativeEvent.pageX, y: nativeEvent.pageY};
-
+        const positionOnPage: DragPosition = {x: nativeEvent.pageX, y: nativeEvent.pageY};
         return {
             draggable: this.dragDispatcher.draggable,
-            dragPosition: clientPosition,
+            dragPosition: positionOnPage,
             dragAndDropGroup: this.groupKey,
             data: this.data  // rename it as dataTransfer
         };
@@ -175,7 +173,6 @@ export class Draggable implements AfterViewInit, OnDestroy {
 
         if (!this.isDragMoveStarted) {
             this.renderer.removeClass(this.dragDispatcher.draggable.ghost, "draggable-ghost--hidden");
-
             // very first mouse position
             this.initMoveX = draggableEvent.dragPosition.x;
             this.initMoveY = draggableEvent.dragPosition.y;
@@ -193,7 +190,6 @@ export class Draggable implements AfterViewInit, OnDestroy {
                 this.initMoveXOnEl = this.initMoveX - this.clientLeft;
                 this.initMoveYOnEl = this.initMoveY - this.clientTop;
             }
-
 
             this.renderer.setStyle(this.dragDispatcher.draggable.ghost, "left", this.clientLeft + "px");
             this.renderer.setStyle(this.dragDispatcher.draggable.ghost, "top", this.clientTop + "px");

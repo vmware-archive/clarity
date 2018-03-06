@@ -4,17 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {CommonModule} from "@angular/common";
-import {NgModule, Type} from "@angular/core";
+import {NgModule} from "@angular/core";
 
-import {Draggable} from "./draggable";
 import {DraggableGhost} from "./draggable-ghost";
-import {DraggableHandle} from "./draggable-handle";
-import {Droppable} from "./droppable";
-import {IfDragged} from "./if-dragged";
+import {CLR_DRAG_AND_DROP_DIRECTIVES} from "./index";
 import {DragAndDropDispatcher} from "./providers/drag-and-drop-dispatcher";
-
-export const CLR_DRAG_AND_DROP_DIRECTIVES: Type<any>[] =
-    [Draggable, Droppable, DraggableGhost, DraggableHandle, IfDragged];
 
 @NgModule({
     imports: [CommonModule],

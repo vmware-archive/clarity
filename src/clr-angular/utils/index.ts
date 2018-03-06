@@ -6,3 +6,4 @@
 
 export * from "./animations/index";
 export * from "./loading/index";
+export * from "./drag-and-drop/index";

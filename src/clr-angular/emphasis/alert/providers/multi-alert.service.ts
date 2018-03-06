@@ -57,6 +57,9 @@ export class MultiAlertService {
     }
 
     previous() {
+        if (this.activeAlerts.length === 0) {
+            return;
+        }
         this.current = (this.current === 0) ? this.activeAlerts.length - 1 : this.current - 1;
     }
 

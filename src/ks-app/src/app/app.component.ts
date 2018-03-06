@@ -29,6 +29,7 @@ export class AppComponent {
         {path: "buttons", title: "Buttons"},
         {path: "cards", title: "Cards"},
         {path: "checkboxes", title: "Checkboxes"},
+        {path: "datepicker", title: "Datepicker"},
         {path: "code", title: "Code"},
         {path: "colors", title: "Colors"},
         {path: "datagrids", title: "Datagrid"},

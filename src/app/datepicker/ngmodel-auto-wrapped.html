@@ -1,0 +1,27 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div>
+    <h6>ngModel Auto Wrapped</h6>
+    <p></p>
+    <input type="date" clrDate [(ngModel)]="model">
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-10 col-lg-5">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>[(ngModel)]</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{model}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

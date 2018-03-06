@@ -1,0 +1,15 @@
+<table class="calendar-table weekdays">
+    <tr class="calendar-row">
+        <td *ngFor="let day of localeDaysNarrow" class="calendar-cell weekday">
+            {{day}}
+        </td>
+    </tr>
+</table>
+<table
+    class="calendar-table calendar-dates">
+    <tr class="calendar-row" *ngFor="let row of calendarViewModel.calendarView">
+        <td *ngFor="let dayView of row" class="calendar-cell">
+            <clr-day [clrDayView]="dayView"></clr-day>
+        </td>
+    </tr>
+</table>

@@ -26,9 +26,12 @@ class MyComponent {
                [clrDgSortBy]="pokemonComparator">Pokemon</clr-dg-column>
 `,
     preSortTS: `
-    import {ClrDatagridSortOrder} from '@clr/angular';
-    ...
+import {ClrDatagridSortOrder} from '@clr/angular';
+...
+@Component({ /* ... */ })
+class MyComponent {
     this.descSort = ClrDatagridSortOrder.DESC;
+}
 `,
     preSortHTML: `
     <clr-dg-column [clrDgField]="'name'" [clrDgSortOrder]="descSort">Name</clr-dg-column>

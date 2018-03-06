@@ -22,6 +22,7 @@ export class DatagridSortingDemo {
     usersDeprecated: User[];
     sortOrder: SortOrder = SortOrder.Unsorted;
     sorted: boolean = false;
+    descSort: SortOrder = SortOrder.Desc;
 
 
     pokemonComparator = new PokemonComparator();

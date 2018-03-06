@@ -137,3 +137,36 @@
 
 <clr-code-snippet [clrCode]="examples.sortingTS" clrLanguage="typescript"></clr-code-snippet>
 <clr-code-snippet [clrCode]="examples.sortingHTML" clrLanguage="html"></clr-code-snippet>
+
+<h4>Pre-Sorted Columns</h4>
+<p>Columns can be pre-sorted ascending or descending by declaring the <code class="clr-code">clrSortOrder</code>
+    input on a <code class="clr-code">clr-dg-column<</code> . You must also provide the
+    <code class="clr-code">[clrDgField]</code> so it knows what field in the provided object to sort on. Clarity
+    provides an enum for such a scenario: <code class="clr-code">SortOrder</code></p>
+<p>Here is an example that presorts the <b>Name</b> column for descending sort order.</p>
+
+<clr-code-snippet [clrCode]="examples.preSortTS" clrLanguage="typescript"></clr-code-snippet>
+<clr-code-snippet [clrCode]="examples.preSortHTML" clrLanguage="html"></clr-code-snippet>
+
+<clr-datagrid>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'" [clrDgSortOrder]="descSort">Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>
+        Pokemon
+    </clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            {{user.pokemon.name}} <span class="badge badge-5">#{{user.pokemon.number}}</span>
+        </clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>

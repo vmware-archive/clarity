@@ -6,7 +6,7 @@
 import {Component} from "@angular/core";
 import {Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
-import {SortOrder} from "@clr/angular";
+import {ClrDatagridSortOrder} from "@clr/angular";
 import {PokemonComparator} from "../utils/pokemon-comparator";
 import {EXAMPLES} from "./examples";
 
@@ -20,9 +20,9 @@ export class DatagridSortingDemo {
     examples = EXAMPLES;
     users: User[];
     usersDeprecated: User[];
-    sortOrder: SortOrder = SortOrder.Unsorted;
+    sortOrder: ClrDatagridSortOrder = ClrDatagridSortOrder.DESC;
     sorted: boolean = false;
-
+    descSort: ClrDatagridSortOrder = ClrDatagridSortOrder.DESC;
 
     pokemonComparator = new PokemonComparator();
 

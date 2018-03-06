@@ -17,6 +17,7 @@ abstract class CheckboxTest {
 
     checked = false;
     indeterminate = false;
+    ariaLabeledById = "clr-id-0";
 }
 
 @Component({
@@ -61,6 +62,13 @@ class InlineCheckbox extends CheckboxTest {}
 })
 class IndeterminateCheckbox extends CheckboxTest {}
 
+@Component({
+    template: `
+        <clr-checkbox [clrAriaLabeledBy]="ariaLabeledById"></clr-checkbox>
+    `
+})
+class AriaLabeledByCheckbox extends CheckboxTest {}
+
 describe("Checkbox", () => {
     let fixture: ComponentFixture<CheckboxTest>;
     let testInstance: CheckboxTest;
@@ -96,7 +104,7 @@ describe("Checkbox", () => {
             imports: [ClrFormsModule, FormsModule],
             declarations: [
                 BasicCheckbox, CheckboxWithNgModel, CheckboxWithLabel, CheckboxWithName, InlineCheckbox,
-                IndeterminateCheckbox
+                IndeterminateCheckbox, AriaLabeledByCheckbox
             ]
         });
     });
@@ -158,6 +166,11 @@ describe("Checkbox", () => {
         fixture.componentInstance.indeterminate = false;
         assertIndeterminate(false);
         assertChecked(false);
+    });
+
+    it("supports aria-labelledby on checkboxElements", () => {
+        createTestComponent(AriaLabeledByCheckbox);
+        expect(checkboxElement.getAttribute("aria-labelledby")).toEqual("clr-id-0");
     });
 
     it("sets indeterminate state to false when the checked state is toggled by user actions", () => {

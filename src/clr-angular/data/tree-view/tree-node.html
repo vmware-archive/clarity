@@ -24,8 +24,9 @@
         class="clr-treenode-checkbox"
         *ngIf="selectable"
         [(ngModel)]="selected"
-        [(clrIndeterminate)]="indeterminate"></clr-checkbox>
-    <div class="clr-treenode-content">
+        [(clrIndeterminate)]="indeterminate"
+        [clrAriaLabeledBy]="nodeId"></clr-checkbox>
+    <div class="clr-treenode-content" [id]="nodeId">
         <ng-content></ng-content>
     </div>
 </div>

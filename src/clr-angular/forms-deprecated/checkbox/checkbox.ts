@@ -29,7 +29,8 @@ let latestId = 0;
             This works for cases when users toggle the checkbox using the keyboard too:
             https://stackoverflow.com/questions/27878940/spacebar-triggering-click-event-on-checkbox
         -->
-        <input type="checkbox" [id]="id" [name]="name" [checked]="checked"
+        <input type="checkbox" [attr.aria-labelledby]="clrAriaLabeledBy"
+               [id]="id" [name]="name" [checked]="checked"
                [indeterminate]="indeterminate" [disabled]="disabled"
                (blur)="touch()" (click)="checkIndeterminateState()">
         <label [attr.for]="id">
@@ -52,6 +53,9 @@ export class ClrCheckboxDeprecated implements ControlValueAccessor {
     public get id() {
         return `clr-checkbox-${this._id}`;
     }
+
+    // If host provides an clrAriaLabeledBy input, we apply it to the checkbox
+    @Input("clrAriaLabeledBy") public clrAriaLabeledBy: string = null;
 
     // If our host has a name attribute, we apply it to the checkbox.
     @Input("name") public name: string = null;

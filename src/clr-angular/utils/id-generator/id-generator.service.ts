@@ -10,7 +10,11 @@ let NB_INSTANCES = 0;
 
 export const UNIQUE_ID = new InjectionToken<string>("UNIQUE_ID");
 
+export function uniqueIdFactory() {
+    return "clr-id-" + (NB_INSTANCES++);
+}
+
 export const UNIQUE_ID_PROVIDER = {
     provide: UNIQUE_ID,
-    useFactory: () => "clr-id-" + (NB_INSTANCES++)
+    useFactory: uniqueIdFactory
 };

@@ -32,6 +32,7 @@ export class AppComponent {
         {path: "code", title: "Code"},
         {path: "colors", title: "Colors"},
         {path: "datagrids", title: "Datagrid"},
+        {path: "draganddrop", title: "Drag and Drop"},
         {path: "dropdowns", title: "Dropdowns"},
         {path: "forms", title: "Forms"},
         {path: "inputs", title: "Inputs"},

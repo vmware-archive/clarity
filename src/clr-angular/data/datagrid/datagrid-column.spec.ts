@@ -7,6 +7,8 @@ import {Component, ViewChild} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
 import {Subject} from "rxjs/Subject";
 
+import {DragDispatcher} from "../../utils/drag-and-drop/providers/drag-dispatcher";
+
 import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
 import {DatagridStringFilter} from "./built-in/filters/datagrid-string-filter";
 import {ClrDatagridColumn} from "./datagrid-column";
@@ -17,13 +19,13 @@ import {ClrDatagridComparatorInterface} from "./interfaces/comparator.interface"
 import {ClrDatagridFilterInterface} from "./interfaces/filter.interface";
 import {ClrDatagridSortOrder} from "./interfaces/sort-order";
 import {ClrDatagridStringFilterInterface} from "./interfaces/string-filter.interface";
-import {DragDispatcher} from "./providers/drag-dispatcher";
 import {FiltersProvider} from "./providers/filters";
 import {Page} from "./providers/page";
 import {Sort} from "./providers/sort";
 import {StateDebouncer} from "./providers/state-debouncer.provider";
 import {DomAdapter} from "./render/dom-adapter";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
+
 
 const PROVIDERS_NEEDED =
     [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher, Page, StateDebouncer];

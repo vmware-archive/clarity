@@ -19,4 +19,4 @@ import {Status} from "./data/status";
     providers: [Status],
     exports: [CheckboxesDemo]
 })
-export default class CheckboxesDemoModule {}
+export class CheckboxesDemoModule {}

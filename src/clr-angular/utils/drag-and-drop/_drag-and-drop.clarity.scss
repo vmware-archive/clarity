@@ -1,0 +1,42 @@
+/*!
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+@include exports('drag-and-drop.clarity') {
+
+    .draggable {
+        cursor: grab;
+    }
+    .draggable-ghost {
+        position: fixed;
+        display: block;
+        top: 0;
+        left: 0;
+        opacity: 0.9;
+        pointer-events: none;
+        z-index: 99999;
+        will-change: top, left;
+        transform: translateZ(-1);
+    }
+    .draggable-ghost--hidden {
+        display: none;
+    }
+    .in-drag {
+        cursor: grabbing;
+        user-select: none;
+        * {
+            pointer-events: none;
+        }
+    }
+    .drop-area {
+        &.drop-enabled {
+            border: dashed 2px grey;
+        }
+        &.drop-allowed {
+            border: dashed 2px greenyellow;
+        }
+    }
+
+}

@@ -33,4 +33,4 @@ import {Example} from "./utils/example";
         FormCompactDemo, TemplateDrivenFormsDemo, ReactiveFormsDemo
     ]
 })
-export default class FormsDemoModule {}
+export class FormsDeprecatedDemoModule {}

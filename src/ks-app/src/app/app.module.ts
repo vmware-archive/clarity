@@ -33,6 +33,7 @@ import {KSDatagrid} from "./containers/data/datagrid.component";
 import {FakeLoader} from "./containers/data/fake-loader";
 import {KSStackView} from "./containers/data/stackview.component";
 import {KSTreeView} from "./containers/data/tree-view.component";
+import {KSDragAndDrop} from "./containers/drag-and-drop/drag-and-drop.component";
 import {KSAlerts} from "./containers/emphasis/alerts.component";
 import {KSBadges} from "./containers/emphasis/badges.component";
 import {KSLabels} from "./containers/emphasis/labels.component";
@@ -76,7 +77,7 @@ import {KSWizards} from "./containers/wizard/wizards.component";
         KSLogin,        KSWikipediaDemo,  KSAbbeyRoadDemo, KSBeatlesDemo,
         KSRevolverDemo, KSRubberSoulDemo, KSDayAndAgeDemo, KSSamsTownDemo,
         KSKillersDemo,  KSHotFussDemo,    KSProgressBars,  KSSpinners,
-        KSTables,       KSTooltips
+        KSTables,       KSTooltips,       KSDragAndDrop
     ],
     imports:
         [BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, ClarityModule, AppRoutingModule],

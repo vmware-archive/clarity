@@ -17,4 +17,4 @@ import {ROUTING} from "./color.demo.routing";
     declarations: [ColorsDemo, ColorPalette, ColorLuminanceDemo, ColorContrastDemo],
     exports: [ColorsDemo, ColorPalette, ColorLuminanceDemo, ColorContrastDemo]
 })
-export default class ColorDemoModule {}
+export class ColorDemoModule {}

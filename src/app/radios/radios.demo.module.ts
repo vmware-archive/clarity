@@ -12,4 +12,4 @@ import {RadiosDemo} from "./radios.demo";
 import {ROUTING} from "./radios.demo.routing";
 
 @NgModule({imports: [CommonModule, ClarityModule, ROUTING], declarations: [RadiosDemo], exports: [RadiosDemo]})
-export default class RadiosDemoModule {}
+export class RadiosDemoModule {}

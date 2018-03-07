@@ -29,4 +29,4 @@ import {ROUTING} from "./layout.demo.routing";
         LayoutSubnavPrimaryDemo, LayoutSidenavPrimaryDemo, LayoutAdditionalSectionsDemo
     ]
 })
-export default class LayoutDemoModule {}
+export class LayoutDemoModule {}

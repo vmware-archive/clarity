@@ -15,6 +15,7 @@ import {ClrLayoutModule} from "./layout/layout.module";
 import {ClrModalModule} from "./modal/modal.module";
 import {ClrPopoverModule} from "./popover/popover.module";
 import {ClrConditionalModule} from "./utils/conditional/conditional.module";
+import {ClrDragAndDropModule} from "./utils/drag-and-drop/drag-and-drop.module";
 import {ClrIfExpandModule} from "./utils/expand/if-expand.module";
 import {ClrFocusTrapModule} from "./utils/focus-trap/focus-trap.module";
 import {ClrLoadingModule} from "./utils/loading/loading.module";
@@ -22,9 +23,9 @@ import {ClrWizardModule} from "./wizard/wizard.module";
 
 @NgModule({
     exports: [
-        ClrEmphasisModule, ClrDataModule, ClrIconModule, ClrModalModule, ClrLoadingModule, ClrIfExpandModule,
-        ClrConditionalModule, ClrFocusTrapModule, ClrButtonModule, ClrCodeModule, ClrFormsModule, ClrLayoutModule,
-        ClrPopoverModule, ClrWizardModule
+        ClrEmphasisModule, ClrDataModule, ClrIconModule, ClrDragAndDropModule, ClrModalModule, ClrLoadingModule,
+        ClrIfExpandModule, ClrConditionalModule, ClrFocusTrapModule, ClrButtonModule, ClrCodeModule, ClrFormsModule,
+        ClrLayoutModule, ClrPopoverModule, ClrWizardModule
     ]
 })
 export class ClarityModule {

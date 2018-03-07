@@ -2,7 +2,7 @@ import * as Browser from "detect-browser";
 
 export const itIgnore = (browsers: string[], should: string, test: any, focus?: boolean) => {
   if (browsers.length && browsers.indexOf(Browser.name) >= 0) {
-    return;
+    return xit(should, test);
   }
 
   return (focus) ? fit(should, test) : it(should, test);

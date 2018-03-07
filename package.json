@@ -1,6 +1,6 @@
 {
     "name": "clr-all",
-    "version": "0.11.4",
+    "version": "0.11.6",
     "private": true,
     "scripts": {
         "start": "webpack-dev-server -d --open",
@@ -87,6 +87,8 @@
         "karma-jasmine-html-reporter": "^0.2.2",
         "karma-jasmine-matchers": "^3.7.0",
         "karma-mocha-reporter": "^2.2.4",
+        "karma-safari-launcher": "^1.0.0",
+        "karma-sauce-launcher": "^1.2.0",
         "karma-sourcemap-loader": "^0.3.7",
         "karma-webpack": "^2.0.4",
         "lite-server": "^2.3.0",

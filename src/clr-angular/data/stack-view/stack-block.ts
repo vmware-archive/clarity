@@ -26,15 +26,12 @@ import {Component, EventEmitter, HostBinding, Input, OnInit, Optional, Output, S
     `],
     // Make sure the host has the proper class for styling purposes
     host: {"[class.stack-block]": "true"},
-    animations:
-        [trigger("collapse",
-                 [
-                     state("true", style({"height": 0, "overflow-y": "hidden"})),
-                     transition("true => false",
-                                [animate("0.2s ease-in-out", style({"height": "*", "overflow-y": "hidden"}))]),
-                     transition("false => true",
-                                [style({"height": "*", "overflow-y": "hidden"}), animate("0.2s ease-in-out")])
-                 ])]
+    animations: [trigger("collapse",
+                         [
+                             state("true", style({"height": 0})),
+                             transition("true => false", [animate("0.2s ease-in-out", style({"height": "*"}))]),
+                             transition("false => true", [style({"height": "*"}), animate("0.2s ease-in-out")])
+                         ])]
 })
 export class ClrStackBlock implements OnInit {
     @HostBinding("class.stack-block-expanded") @Input("clrSbExpanded") expanded: boolean = false;

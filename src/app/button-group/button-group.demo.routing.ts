@@ -10,6 +10,7 @@ import {BasicButtonGroupDemo} from "./angular/basic-structure/basic-button-group
 import {ButtonGroupAngularDemo} from "./angular/button-group-angular";
 import {HideShowOverflowToggleDemo} from "./angular/hide-show-overflow-toggle/hide-show-overflow-toggle";
 import {IconButtonGroupDemo} from "./angular/icon-buttons/icon-button-group";
+import {LoadingButtonGroupDemo} from "./angular/loading-buttons/loading-button-group";
 import {MenuDirectionsDemo} from "./angular/menu-directions/menu-directions";
 import {MixedButtonGroupDemo} from "./angular/mixed-buttons/mixed-button-group";
 import {MoveAllInMenuDemo} from "./angular/move-all-in-menu/move-all-in-menu";
@@ -59,6 +60,7 @@ const ROUTES: Routes = [{
                 {path: "basic-structure", component: BasicButtonGroupDemo},
                 {path: "directions", component: MenuDirectionsDemo},
                 {path: "icon-button", component: IconButtonGroupDemo},
+                {path: "loading-button", component: LoadingButtonGroupDemo},
                 {path: "hide-overflow", component: HideShowOverflowToggleDemo},
                 {path: "mixed-buttons", component: MixedButtonGroupDemo},
                 {path: "move-button-in-menu", component: MoveButtonInMenuDemo},

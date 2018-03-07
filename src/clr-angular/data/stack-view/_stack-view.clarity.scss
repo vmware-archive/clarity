@@ -59,6 +59,7 @@
             // Wrapping for nested stack-blocks
             flex-flow: row wrap;
             border-bottom: 1px solid $clr-stack-view-stack-block-border-bottom;
+            overflow-y: hidden;
         }
 
         // We have to handle potential nested elements, typically for web components

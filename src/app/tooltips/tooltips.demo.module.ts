@@ -28,4 +28,4 @@ import {ROUTING} from "./tooltips.demo.routing";
         TooltipsTextDemo, TooltipsButtonsDemo
     ]
 })
-export default class TooltipsDemoModule {}
+export class TooltipsDemoModule {}

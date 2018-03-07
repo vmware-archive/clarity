@@ -7,6 +7,7 @@
 
 import {Component, EventEmitter, Input, Optional, Output, SkipSelf, TemplateRef, ViewChild} from "@angular/core";
 
+import {LoadingListener} from "../../utils/loading";
 import {ButtonInGroupService} from "../providers/button-in-group.service";
 
 @Component({
@@ -19,12 +20,14 @@ import {ButtonInGroupService} from "../providers/button-in-group.service";
                 [attr.type]="type"
                 [attr.name]="name"
                 [attr.disabled]="disabled">
+                <span class="spinner spinner-inline" *ngIf="loading"></span>
                 <ng-content></ng-content>
             </button>
         </ng-template>
-    `
+    `,
+    providers: [{provide: LoadingListener, useExisting: ClrButton}]
 })
-export class ClrButton {
+export class ClrButton implements LoadingListener {
     private _enableService: boolean = false;
 
     @ViewChild("buttonProjectedRef") templateRef: TemplateRef<ClrButton>;
@@ -106,6 +109,16 @@ export class ClrButton {
         } else {
             this._disabled = null;
         }
+    }
+
+    public loading: boolean;
+
+    startLoading(): void {
+        this.loading = true;
+    }
+
+    doneLoading(): void {
+        this.loading = false;
     }
 
     @Output("click") _click: EventEmitter<boolean> = new EventEmitter<boolean>(false);

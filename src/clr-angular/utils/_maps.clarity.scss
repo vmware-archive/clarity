@@ -155,7 +155,7 @@ $clr-badge-colors: (// Also used for badges
 $clr-global-button-properties-map: (
     default: (
         background-color: $clr-btn-default-bg-color,
-        border-color: $clr-btn-default-color,
+        border-color: $clr-btn-default-outline-color,
         color: $clr-btn-default-color,
         hover-background-color: $clr-btn-default-hover-bg-color,
         hover-color: $clr-btn-default-hover-color,

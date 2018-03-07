@@ -97,6 +97,7 @@ $clr-action-blue-lighter: #89cbdf !default;
 $clr-action-blue-light: #49afd9 !default;
 $clr-action-blue-light-midtone: #0094d2 !default;
 $clr-action-blue: #007cbb !default;
+$clr-action-blue-accessible: #0077b7 !default;
 $clr-action-blue-dark-midtone: #007cbb !default;
 $clr-action-blue-dark: #004a70 !default;
 $clr-action-blue-darker: #003a59 !default;
@@ -110,7 +111,8 @@ $clr-action-blue-list: (
         $clr-action-blue,
         $clr-action-blue-dark,
         $clr-action-blue-darker,
-        $clr-action-blue-darkest
+        $clr-action-blue-darkest,
+        $clr-action-blue-accessible
 );
 
 $clr-action-blue-textColorOverrides: (
@@ -207,6 +209,7 @@ $clr-green-lightest: #dff0d0 !default;
 $clr-green-lighter: #c6e4ab !default;
 $clr-green: #60b515 !default;
 $clr-green-light-midtone: #62a420 !default;
+$clr-green-accessible: #308300 !default;
 $clr-green-dark-midtone: #318700 !default;
 $clr-green-dark: #266900 !default;
 $clr-green-darker: #1d5100 !default;
@@ -221,7 +224,8 @@ $clr-green-list: (
     $clr-green-dark-midtone,
     $clr-green-dark,
     $clr-green-darker,
-    $clr-green-darkest
+    $clr-green-darkest,
+    $clr-green-accessible
 );
 
 $clr-green-textColorOverrides: (

@@ -416,6 +416,7 @@
     .alerts-pager-control {
         display: flex;
         margin-top: $clr-alert-top-margin;
+        white-space: nowrap;
     }
 
     $clr-alerts-pager-item-width: 33.33%;

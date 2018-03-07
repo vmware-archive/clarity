@@ -4,9 +4,9 @@ The Clarity website is an Angular CLI project that has server-side rendering ena
 
 ### Setup
 
-Clone the repository, checkout the `new-website` branch, and install node modules.
+Clone the repository, checkout the `website` branch, and install node modules.
 
-    git clone https://github.com/vmware/clarity.git --branch new-website clarity-website
+    git clone https://github.com/vmware/clarity.git --branch website clarity-website
     cd clarity-website
     npm install
 

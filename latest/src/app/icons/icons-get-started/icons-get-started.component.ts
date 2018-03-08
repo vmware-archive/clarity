@@ -60,6 +60,18 @@ const ICONS_TS_IMPORTS = `
 import '@clr/icons/shapes/essential-shapes';
 `;
 
+const ICONS_OPTIMIZATION = `
+import { ClarityIcons } from "@clr/icons";
+import { ClrShapePin } from "@clr/icons/shapes/essential-shapes";
+import { ClrShapeStar } from "@clr/icons/shapes/social-shapes";
+import { ClrShapeCar } from "@clr/icons/shapes/travel-shapes";
+
+ClarityIcons.add({
+  pin: ClrShapePin,
+  star: ClrShapeStar,
+  car: ClrShapeCar
+});`
+
 @Component({
     selector: 'icons-get-started',
     templateUrl: './icons-get-started.component.html',
@@ -72,5 +84,6 @@ export class IconsGetStartedComponent {
     public iconsImportsTSCoreExample = ICONS_IMPORTS_TS_CORE;
     public iconsImportsTSSomeExample = ICONS_IMPORTS_TS_SOME;
     public iconsImportsTSAllExample = ICONS_IMPORTS_TS_ALL;
+    public iconsOptimizationExample = ICONS_OPTIMIZATION;
 
 }

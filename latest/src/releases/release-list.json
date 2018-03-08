@@ -1,6 +1,11 @@
 {
-    "current": "0.11.7",
+    "current": "0.11.8",
     "all": {
+        "0.11.8": {
+            "date": "March 8, 2018",
+            "sketch": "0.11.6",
+            "commit": "67e4064763dac339b363ea29aa4f4d28a7432b41"
+        },
         "0.11.7-patch.1": {
             "date": "March 1, 2018",
             "sketch": "0.11.6",

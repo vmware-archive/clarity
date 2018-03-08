@@ -25,7 +25,8 @@
             "core": -1,
             "ng": 20,
             "dox": 20,
-            "newLayout": true
+            "newLayout": true,
+            "updated": true
         },
         {
             "url": "badges",
@@ -78,7 +79,8 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20
+            "dox": 20,
+            "updated": true
         },
         {
             "url": "code-highlight",
@@ -129,7 +131,8 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20
+            "dox": 20,
+            "updated": true
         },
         {
             "url": "datagrid",

@@ -159,6 +159,10 @@ const EXAMPLE_STATIC = `
     </form>
 `;
 
+const EXAMPLE_ARIA_LABELLEDBY = `
+    <clr-checkbox [clrAriaLabeledBy]="'Your aria-labelledby string here'"></clr-checkbox>
+`;
+
 
 const status = new Status();
 
@@ -185,5 +189,6 @@ export class CheckboxesTypesDemo {
     example = EXAMPLE;
     example_inline = EXAMPLE_INLINE;
     example_static = EXAMPLE_STATIC;
+    example_aria_labelledby = EXAMPLE_ARIA_LABELLEDBY;
 
 }

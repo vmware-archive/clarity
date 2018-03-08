@@ -7,6 +7,8 @@ script:
   - cd ../v0.10 && npm install && npm run deploy:ci
   - cd ../
 deploy:
+  edge:
+    branch: v1.8.47
   provider: pages
   verbose: true
   local_dir: deploy

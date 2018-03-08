@@ -23,5 +23,16 @@ class MyComponent {
 <-- In the columns declaration -->
 <clr-dg-column [clrDgField]="'pokemon.name'"
                [clrDgSortBy]="pokemonComparator">Pokemon</clr-dg-column>
+`,
+    preSortTS: `
+    import {SortOrder} from 'clarity-angular';
+    ...
+    @Component({ /* ... */ })
+    class MyComponent {
+        this.descSort = SortOrder.Desc;
+    }
+`,
+    preSortHTML: `
+    <clr-dg-column [clrDgField]="'name'" [clrDgSortOrder]="descSort">Name</clr-dg-column>
 `
 };

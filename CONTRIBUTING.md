@@ -119,13 +119,11 @@ These documents provide guidance creating a well-crafted commit message:
 
 #### Contributing to Documentation
 
-The [Clarity documentation website](https://vmware.github.io/clarity/documentation) is also housed in this repository under the `new-website` branch.  You can contribute to the documentation by submitting pull requests against that branch.
-
-The documentation website is written in Angular using angular-cli.  You can serve the documentation by [installing](https://github.com/angular/angular-cli#installation) angular-cli, checking out the `new-website` branch, and running `npm start`.   
+The [Clarity documentation website](https://vmware.github.io/clarity) is also in this repository in the `website` branch.  You can contribute to the documentation by submitting pull requests against that branch. Details about how to setup and run the website locally can be found on the wiki at https://github.com/vmware/clarity/wiki/Building-the-Website.
 
 ## Reporting Bugs and Creating Issues
 
-You can submit an issue or a bug to our [GitHub repository](https://github.com/vmware/clarity/issues).  You must provide:
+You can submit an issue or a bug to our [GitHub repository](https://github.com/vmware/clarity/issues). You must provide:
 
 * The link to the reproduction scenario you created using one of the Clarity Plunker Templates
 * If possible please provide a minimal demo illustrating the issue by forking one of the Clarity Plunker Templates

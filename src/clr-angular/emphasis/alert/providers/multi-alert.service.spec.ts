@@ -55,5 +55,9 @@ describe("Multi Alert provider", function() {
         anotherAlert.componentInstance.close();
         expect(multiAlertService.count).toBe(1);
         expect(multiAlertService.current).toBe(0);
+        // Ensure current alert does not drop below 0
+        alert.componentInstance.close();
+        expect(multiAlertService.count).toBe(0);
+        expect(multiAlertService.current).toBe(0);
     });
 });

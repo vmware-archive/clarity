@@ -115,8 +115,8 @@ const documentationRoutes: Routes = [
                 path: "datepicker",
                 loadChildren: "app/documentation/demos/datepicker/datepicker.demo.module#DatepickerDemoModule",
                 data: {
-                    bodyClass: "page-datagrid",
-                    browserTitle: "Datagrid"
+                    bodyClass: "page-datepicker",
+                    browserTitle: "Datepicker"
                 }
             },
             {

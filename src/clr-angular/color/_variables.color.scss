@@ -21,6 +21,7 @@ $action-blues-dark-midtone: clr-getColor(dark-midtone,action-blues);
 $action-blues-dark: clr-getColor(dark,action-blues);
 $action-blues-darker: clr-getColor(darker,action-blues);
 $action-blues-darkest: clr-getColor(darkest,action-blues);
+$action-blues-accessible: clr-getColor(accessible,action-blues);
 // Reds
 $reds-lightest: clr-getColor(lightest,reds);
 $reds-lighter: clr-getColor(lighter,reds);
@@ -39,6 +40,7 @@ $greens-dark-midtone: clr-getColor(dark-midtone,greens);
 $greens-dark: clr-getColor(dark,greens);
 $greens-darker: clr-getColor(darker,greens);
 $greens-darkest: clr-getColor(darkest,greens);
+$greens-accessible: clr-getColor(accessible,greens);
 // Purples
 $action-purples-lightest: clr-getColor(lightest,action-purples);
 $action-purples-lighter: clr-getColor(lighter,action-purples);

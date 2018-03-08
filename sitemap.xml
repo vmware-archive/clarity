@@ -156,6 +156,10 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://vmware.github.io/clarity/documentation/v0.11/datepicker</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://vmware.github.io/clarity/documentation/v0.11/dropdowns</loc>
         <changefreq>daily</changefreq>
     </url>
@@ -505,6 +509,10 @@
     </url>
     <url>
         <loc>https://vmware.github.io/clarity/news</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://vmware.github.io/clarity/news/0.11.8</loc>
         <changefreq>daily</changefreq>
     </url>
     <url>

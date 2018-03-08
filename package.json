@@ -7,6 +7,7 @@
         "clean": "del ./dist",
         "cpy": "cpy",
         "build": "npm-run-all clean build:angular webpack build:icons",
+        "postbuild": "node ./scripts/aot-check.js",
         "pretest": "webpack",
         "test": "karma start ./karma.conf.js",
         "test:travis": "npm-run-all clang:check tslint:check tslint:spec test",

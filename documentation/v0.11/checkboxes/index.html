@@ -505,6 +505,18 @@
         <!---->
     </clr-code-snippet>
 
+<h4>aria-labelledby</h4>
+<p>You can add the attribute for <code class="clr-code">aria-labelledby</code> to the input element of your
+    clr-checkbox. Just add the optional <code class="clr-code">@Input</code> for <code class="clr-code">
+        clrAriaLabeledBy</code> and set the string value for that checkbox.</p>
+
+<clr-code-snippet clrlanguage="html" _nghost-c0="">
+        <!----><!---->
+            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;clr-checkbox [clrAriaLabeledBy]="'Your aria-labelledby string here'"&gt;&lt;/clr-checkbox&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
 <h2>Summary of Options</h2>
 
 <h4>Checkboxes (clr-checkbox)</h4>
@@ -588,6 +600,18 @@
             <td class="hidden-xs-down">false</td>
             <td class="left">
                 Styles the checkbox as an inline element.
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <b>[clrAriaLabeledBy]</b>
+                <div class="hidden-sm-up">Type: string</div>
+                <div class="hidden-sm-up">Default: false</div>
+            </td>
+            <td class="hidden-xs-down">string</td>
+            <td class="hidden-xs-down">false</td>
+            <td class="left">
+                Sets the attribute for <code class="clr-code">aria-labelledby</code> on the checkbox input.
             </td>
         </tr>
     </tbody>
@@ -1040,4 +1064,4 @@
 </nav></documentation>
 
 </clr-main-container>
-</root><script type="text/javascript" src="inline.9aaccf35afc9e233a378.bundle.js"></script><script type="text/javascript" src="polyfills.f706d3bf723a412f1398.bundle.js"></script><script type="text/javascript" src="main.2e3acedef285047e0476.bundle.js"></script></body></html>
+</root><script type="text/javascript" src="inline.1f4a74bc9caf63dffc48.bundle.js"></script><script type="text/javascript" src="polyfills.f706d3bf723a412f1398.bundle.js"></script><script type="text/javascript" src="main.2e3acedef285047e0476.bundle.js"></script></body></html>

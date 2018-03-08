@@ -1,0 +1,14 @@
+<form class="form" [formGroup]="dateForm" novalidate>
+    <section class="form-block">
+        <label>Reactive Form Demo</label>
+        <div class="form-group">
+            <label for="dateControl">Date</label>
+            <input id="dateControl" type="date" clrDate formControlName="date"/>
+        </div>
+    </section>
+</form>
+<pre class="datepicker-output">
+{{dateForm.value | json}}
+</pre>
+<clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>
+<clr-code-snippet [clrCode]="tsExample" [clrLanguage]="'typescript'"></clr-code-snippet>

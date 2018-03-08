@@ -121,14 +121,15 @@
             "dox": 20
         },
         {
-            "url": null,
-            "text": "Datepicker",
+            "url": "datepicker",
+            "newLayout": true,
+            "text": "Date Picker",
             "type": "component",
             "ux": 20,
-            "ui": 10,
+            "ui": 20,
             "core": -1,
-            "ng": 10,
-            "dox": 10
+            "ng": 20,
+            "dox": 20
         },
         {
             "url": "datagrid",

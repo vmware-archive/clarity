@@ -196,6 +196,17 @@ export default function() {
                 expect(context.clarityDirective.yearRangeModel.inRange(new Date().getFullYear())).toBe(true);
             });
 
+            it("does not regenerate the year range when its on the current decade", () => {
+                // Move to the current decade
+                context.clarityDirective.currentDecade();
+                expect(context.clarityDirective.yearRangeModel.inRange(new Date().getFullYear())).toBe(true);
+
+                // Move again and check
+                spyOn(context.clarityDirective.yearRangeModel, "currentDecade");
+                context.clarityDirective.currentDecade();
+                expect(context.clarityDirective.yearRangeModel.currentDecade).not.toHaveBeenCalled();
+            });
+
             it("gets the correct tab indices on initialization", () => {
                 const years: number[] = context.clarityDirective.yearRangeModel.yearRange;
 

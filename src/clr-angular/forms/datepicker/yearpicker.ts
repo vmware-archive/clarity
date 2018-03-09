@@ -104,7 +104,9 @@ export class ClrYearpicker implements AfterViewInit {
      * Updates the YearRangeModel to the current decade.
      */
     currentDecade(): void {
-        this.yearRangeModel = this.yearRangeModel.currentDecade();
+        if (!this.yearRangeModel.inRange(this._dateNavigationService.today.year)) {
+            this.yearRangeModel = this.yearRangeModel.currentDecade();
+        }
         this._datepickerFocusService.focusCell(this._elRef);
     }
 

@@ -127,6 +127,29 @@ export default function() {
                 expect(dateNavigationService.displayedCalendar.month).toBe(date.getMonth());
             });
 
+            it("does not regenerate the current calendar " +
+                   "when the displayed calendar is already current",
+               () => {
+                   let count: number = 0;
+                   const sub: Subscription = dateNavigationService.displayedCalendarChange.subscribe(() => {
+                       count++;
+                   });
+
+                   initalizeCalendar(new DayModel(2017, 0, 1));
+                   expect(count).toBe(0);
+
+                   dateNavigationService.moveToCurrentMonth();
+                   expect(count).toBe(1);
+
+                   dateNavigationService.moveToCurrentMonth();
+                   expect(count).toBe(1);
+
+                   dateNavigationService.moveToCurrentMonth();
+                   expect(count).toBe(1);
+
+                   sub.unsubscribe();
+               });
+
             it("supports the focused day property", () => {
                 expect(dateNavigationService.focusedDay).toBeUndefined();
                 dateNavigationService.focusedDay = new DayModel(2015, 2, 2);

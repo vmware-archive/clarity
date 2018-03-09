@@ -105,7 +105,9 @@ export class DateNavigationService {
      * Moves the displayed calendar to the current month and year.
      */
     moveToCurrentMonth(): void {
-        this.setDisplayedCalendar(new CalendarModel(this.today.year, this.today.month));
+        if (!this.displayedCalendar.isDayInCalendar(this.today)) {
+            this.setDisplayedCalendar(new CalendarModel(this.today.year, this.today.month));
+        }
         this._focusOnCalendarChange.next();
     }
 

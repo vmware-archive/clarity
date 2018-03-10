@@ -40,6 +40,7 @@ export class AppComponent {
         {path: "datagrids", title: "Datagrid"},
         {path: "dropdowns", title: "Dropdowns"},
         {path: "forms", title: "Forms"},
+        {path: "iconography", title: "Iconography"},
         {path: "inputs", title: "Inputs"},
         {path: "labels", title: "Labels"},
         {path: "lists", title: "Lists"},

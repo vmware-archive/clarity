@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import {ChartShapes} from "./chart-shapes";
 import {CommerceShapes} from "./commerce-shapes";
 import {CoreShapes} from "./core-shapes";
 import {EssentialShapes} from "./essential-shapes";
@@ -12,8 +13,9 @@ import {SocialShapes} from "./social-shapes";
 import {TechnologyShapes} from "./technology-shapes";
 import {TravelShapes} from "./travel-shapes";
 
-const allShapesSets =
-    [CoreShapes, CommerceShapes, EssentialShapes, MediaShapes, SocialShapes, TechnologyShapes, TravelShapes];
+const allShapesSets = [
+    CoreShapes, CommerceShapes, EssentialShapes, MediaShapes, SocialShapes, TechnologyShapes, TravelShapes, ChartShapes
+];
 
 const allShapes: any = {};
 

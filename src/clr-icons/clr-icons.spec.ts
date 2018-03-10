@@ -14,6 +14,7 @@ import {
 } from "./helpers.spec";
 import {ClarityIcons} from "./index";
 import {AllShapes} from "./shapes/all-shapes";
+import {ChartShapes, ClrShapeBarChart} from "./shapes/chart-shapes";
 import {ClrShapeECheck, CommerceShapes} from "./shapes/commerce-shapes";
 import {CoreShapes} from "./shapes/core-shapes";
 import {ClrShapePencil, EssentialShapes} from "./shapes/essential-shapes";
@@ -43,9 +44,10 @@ describe("ClarityIcons", () => {
             ClarityIcons.add(MediaShapes);
             ClarityIcons.add(TravelShapes);
             ClarityIcons.add(TechnologyShapes);
+            ClarityIcons.add(ChartShapes);
 
             const currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes, EssentialShapes, SocialShapes,
-                                                   MediaShapes, TravelShapes, TechnologyShapes);
+                                                   MediaShapes, TravelShapes, TechnologyShapes, ChartShapes);
             testAllShapes(ClarityIcons, currentAllShapes);
         });
 
@@ -57,9 +59,10 @@ describe("ClarityIcons", () => {
                ClarityIcons.add({play: ClrShapePlay});
                ClarityIcons.add({star: ClrShapeStar});
                ClarityIcons.add({cpu: ClrShapeCPU});
-               const currentAllShapes = Object.assign({}, CoreShapes, {car: ClrShapeCar}, {"e-check": ClrShapeECheck},
-                                                      {pencil: ClrShapePencil}, {play: ClrShapePlay},
-                                                      {star: ClrShapeStar}, {cpu: ClrShapeCPU});
+               ClarityIcons.add({"bar-chart": ClrShapeBarChart});
+               const currentAllShapes = Object.assign(
+                   {}, CoreShapes, {car: ClrShapeCar}, {"e-check": ClrShapeECheck}, {pencil: ClrShapePencil},
+                   {play: ClrShapePlay}, {star: ClrShapeStar}, {cpu: ClrShapeCPU}, {"bar-chart": ClrShapeBarChart});
                testAllShapes(ClarityIcons, currentAllShapes);
            });
 
@@ -102,10 +105,16 @@ describe("ClarityIcons", () => {
                testAllShapes(ClarityIcons, currentAllShapes);
            });
 
+        it("should return shapes from ChartShapes and CoreShapes sets if ChartShapes set is added in.", () => {
+            ClarityIcons.add(ChartShapes);
+            const currentAllShapes = Object.assign({}, CoreShapes, ChartShapes);
+            testAllShapes(ClarityIcons, currentAllShapes);
+        });
+
         it("should return all icons from all sets if the AllShapes set is added in", () => {
             ClarityIcons.add(AllShapes);
             const currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes, EssentialShapes, MediaShapes,
-                                                   SocialShapes, TravelShapes, TechnologyShapes);
+                                                   SocialShapes, TravelShapes, TechnologyShapes, ChartShapes);
             testAllShapes(ClarityIcons, currentAllShapes);
         });
 

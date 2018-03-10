@@ -8,22 +8,11 @@ import {NgModule} from "@angular/core";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {
-    ClarityModule,
-    ClrAlertModule,
-    ClrButtonGroupModule,
-    ClrDataModule,
-    ClrFormsModule,
-    ClrFormsNextModule,
-    ClrIconModule,
-    ClrLayoutModule,
-    ClrModalModule,
-    ClrPopoverModule,
-    ClrWizardModule
-} from "@clr/angular";
+import {ClarityModule, ClrFormsNextModule} from "@clr/angular";
 
 import {AppRoutingModule} from "./app-routing.module";
 import {AppComponent} from "./app.component";
+
 import {KSButtonGroups} from "./containers/buttons/button-groups.component";
 import {KSButtons} from "./containers/buttons/buttons.component";
 import {KSCards} from "./containers/cards/cards.component";
@@ -43,6 +32,7 @@ import {KSForms} from "./containers/forms/forms.component";
 import {KSInputs} from "./containers/forms/inputs.component";
 import {KSRadios} from "./containers/forms/radios.component";
 import {KSSelects} from "./containers/forms/selects.component";
+import {KSIconSelection} from "./containers/iconography/icon-selection.component";
 import {KSLists} from "./containers/lists/lists.component";
 import {KSLogin} from "./containers/login/login.component";
 import {KSModals} from "./containers/modal/modals.component";
@@ -68,17 +58,17 @@ import {KSWizards} from "./containers/wizard/wizards.component";
 
 @NgModule({
     declarations: [
-        AppComponent,   KSAlerts,         KSBadges,        KSButtons,
-        KSButtonGroups, KSColors,         KSCode,          KSCodeSnippetComponent,
-        KSDatagrid,     KSStackView,      KSTreeView,      KSLabels,
-        KSCheckboxes,   KSForms,          KSInputs,        KSLists,
-        KSRadios,       KSSelects,        KSModals,        KSTabs,
-        KSVerticalNav,  KSDropdowns,      KSSignposts,     KSTooltips,
-        KSTypography,   KSWizards,        KSCards,         FakeLoader,
-        KSLogin,        KSWikipediaDemo,  KSAbbeyRoadDemo, KSBeatlesDemo,
-        KSRevolverDemo, KSRubberSoulDemo, KSDayAndAgeDemo, KSSamsTownDemo,
-        KSKillersDemo,  KSHotFussDemo,    KSProgressBars,  KSSpinners,
-        KSTables,       KSTooltips,       KSDatepicker
+        AppComponent,    KSAlerts,       KSBadges,         KSButtons,
+        KSButtonGroups,  KSColors,       KSCode,           KSCodeSnippetComponent,
+        KSDatagrid,      KSStackView,    KSTreeView,       KSLabels,
+        KSIconSelection, KSCheckboxes,   KSForms,          KSInputs,
+        KSLists,         KSRadios,       KSSelects,        KSModals,
+        KSTabs,          KSVerticalNav,  KSDropdowns,      KSSignposts,
+        KSTooltips,      KSTypography,   KSWizards,        KSCards,
+        FakeLoader,      KSLogin,        KSWikipediaDemo,  KSAbbeyRoadDemo,
+        KSBeatlesDemo,   KSRevolverDemo, KSRubberSoulDemo, KSDayAndAgeDemo,
+        KSSamsTownDemo,  KSKillersDemo,  KSHotFussDemo,    KSProgressBars,
+        KSSpinners,      KSTables,       KSTooltips,       KSDatepicker
     ],
     imports: [
         BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, ClarityModule, ClrFormsNextModule,

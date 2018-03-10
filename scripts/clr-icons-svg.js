@@ -14,7 +14,8 @@ const SHAPE_SETS = [
     "media-shapes",
     "social-shapes",
     "technology-shapes",
-    "travel-shapes"
+    "travel-shapes",
+    "chart-shapes"
 ];
 
 writeSVGIcons(SHAPE_SETS, () => {

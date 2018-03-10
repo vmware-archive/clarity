@@ -10,8 +10,6 @@ const {UglifyJsPlugin} = require('webpack').optimize;
 module.exports = {
     entry: {
         "index": "./src/clr-icons/index.ts",
-        "interfaces/icon-alias": "./src/clr-icons/interfaces/icon-alias.ts",
-        "interfaces/icon-template": "./src/clr-icons/interfaces/icon-template.ts",
         "interfaces/icon-interfaces": "./src/clr-icons/interfaces/icon-interfaces.ts",
         "utils/descriptor-config": "./src/clr-icons/utils/descriptor-config.ts",
         "clr-icons-api": "./src/clr-icons/clr-icons-api.ts",
@@ -33,7 +31,9 @@ module.exports = {
         "shapes/travel-shapes": "./src/clr-icons/shapes/travel-shapes.ts",
         "shapes/travel-shapes.min": "./src/clr-icons/shapes/travel-shapes.ts",
         "shapes/technology-shapes": "./src/clr-icons/shapes/technology-shapes.ts",
-        "shapes/technology-shapes.min": "./src/clr-icons/shapes/technology-shapes.ts"
+        "shapes/technology-shapes.min": "./src/clr-icons/shapes/technology-shapes.ts",
+        "shapes/chart-shapes": "./src/clr-icons/shapes/chart-shapes.ts",
+        "shapes/chart-shapes.min": "./src/clr-icons/shapes/chart-shapes.ts"
     },
     output: {
         path: path.resolve(__dirname, 'dist/clr-icons'),

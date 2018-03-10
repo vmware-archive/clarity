@@ -23,6 +23,7 @@ import {KSForms} from "./containers/forms/forms.component";
 import {KSInputs} from "./containers/forms/inputs.component";
 import {KSRadios} from "./containers/forms/radios.component";
 import {KSSelects} from "./containers/forms/selects.component";
+import {KSIconSelection} from "./containers/iconography/icon-selection.component";
 import {KSLists} from "./containers/lists/lists.component";
 import {KSLogin} from "./containers/login/login.component";
 import {KSModals} from "./containers/modal/modals.component";
@@ -63,6 +64,7 @@ export const routes: Routes = [
     {path: "checkboxes", component: KSCheckboxes, data: {state: "checkboxes"}},
     {path: "datepicker", component: KSDatepicker, data: {state: "datepicker"}},
     {path: "forms", component: KSForms, data: {state: "forms"}},
+    {path: "iconography", component: KSIconSelection, data: {state: "iconography"}},
     {path: "inputs", component: KSInputs, data: {state: "inputs"}},
     {path: "radios", component: KSRadios, data: {state: "radios"}},
     {path: "selects", component: KSSelects, data: {state: "selects"}},

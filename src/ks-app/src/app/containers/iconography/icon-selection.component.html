@@ -1,0 +1,52 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h1>Iconography</h1>
+
+<div class="clr-icon-selection">
+  <section>
+    <h5>Preview Settings</h5>
+    <div class="row clr-icon-preview-settings">
+
+      <div class="form-group clr-solid-checkbox">
+        <div class="toggle-switch">
+          <input type="checkbox" id="solidCheckBox" (change)="onChangeSolid($event)">
+          <label for="solidCheckBox">Solid:</label>
+        </div>
+      </div>
+      <div class="form-group clr-variant-radios" (change)="onChangeStatus($event)">
+        <label>Decoration:</label>
+        <div class="radio-inline">
+          <input type="radio" id="noneRadio" name="notificationType" checked>
+          <label for="noneRadio">none</label>
+        </div>
+        <div class="radio-inline">
+          <input type="radio" id="badgeRadio" name="notificationType">
+          <label for="badgeRadio">badge</label>
+
+        </div>
+        <div class="radio-inline">
+          <input type="radio" id="alertRadio" name="notificationType">
+          <label for="alertRadio">alert</label>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section *ngFor="let set of allShapeSets">
+    <h5>{{set.name}}</h5>
+    <div class="row clr-icon-collection">
+      <div *ngFor="let shape of set.shapes" class="clr-icon-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <clr-icon [attr.shape]="shape" [ngClass]="previewClasses"></clr-icon>
+        <span class="icon-shape-name">{{shape}}</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+

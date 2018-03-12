@@ -45,9 +45,12 @@
     .datepicker-trigger {
         @include generate-calendar-button();
 
-        //Other Props
-        &:hover clr-icon {
-            fill: $clr-datepicker-trigger-hover-color;
+        .datepicker-trigger-icon {
+            fill: $clr-datepicker-trigger-color;
+
+            &:hover {
+                fill: $clr-datepicker-trigger-hover-color;
+            }
         }
     }
 

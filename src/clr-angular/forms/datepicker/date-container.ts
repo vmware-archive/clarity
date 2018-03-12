@@ -24,7 +24,7 @@ import {LocaleHelperService} from "./providers/locale-helper.service";
             class="datepicker-trigger"
             (click)="toggleDatepicker($event)"
             *ngIf="isEnabled">
-            <clr-icon shape="calendar"></clr-icon>
+            <clr-icon shape="calendar" class="datepicker-trigger-icon"></clr-icon>
         </button>
         <clr-datepicker-view-manager *clrIfOpen clrFocusTrap></clr-datepicker-view-manager>
     `,

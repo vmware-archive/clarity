@@ -11,3 +11,4 @@ export const LEFT_ARROW: number = 37;
 export const ENTER: number = 13;
 export const SPACE: number = 32;
 export const TAB: number = 9;
+export const ESC: number = 27;

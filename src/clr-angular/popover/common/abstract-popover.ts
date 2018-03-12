@@ -7,6 +7,7 @@ import {
     AfterViewChecked,
     ElementRef,
     HostBinding,
+    HostListener,
     Injectable,
     Injector,
     OnDestroy,
@@ -16,6 +17,7 @@ import {
 import {Subscription} from "rxjs/Subscription";
 
 import {IfOpenService} from "../../utils/conditional/if-open.service";
+import {ESC} from "../../utils/key-codes/key-codes";
 
 import {Point, Popover} from "./popover";
 import {PopoverOptions} from "./popover-options.interface";
@@ -88,6 +90,13 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
     @HostBinding("class.is-off-screen")
     get isOffScreen() {
         return this.ifOpenService.open ? false : true;
+    }
+
+    @HostListener("keydown", ["$event"])
+    onKeyDown(event: KeyboardEvent) {
+        if (event && event.keyCode === ESC && this.ifOpenService.open) {
+            this.ifOpenService.open = false;
+        }
     }
 
     /*

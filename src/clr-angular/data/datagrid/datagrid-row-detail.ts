@@ -54,27 +54,30 @@ export class ClrDatagridRowDetail implements AfterContentInit, OnDestroy {
         this.expand.replace = !!value;
     }
 
-    private subscription: Subscription;
+    /**
+     * Subscriptions to all the services and QueryList changes
+     */
+    private _subscriptions: Subscription[] = [];
 
     ngAfterContentInit() {
         const columnsList = this.hideableColumnService.getColumns();
         this.updateCellsForColumns(columnsList);
 
         // Triggered when the Cells list changes per row-renderer
-        this.cells.changes.subscribe((cellList) => {
+        this._subscriptions.push(this.cells.changes.subscribe((cellList) => {
             const columnList = this.hideableColumnService.getColumns();
             if (cellList.length === columnList.length) {
                 this.updateCellsForColumns(columnList);
             }
-        });
+        }));
 
         // Used to set things up the first time but only after all the columns are ready.
-        this.subscription = this.hideableColumnService.columnListChange.subscribe((columnList) => {
+        this._subscriptions.push(this.hideableColumnService.columnListChange.subscribe((columnList) => {
             // Prevents cell updates when cols and cells array are not aligned
             if (columnList.length === this.cells.length) {
                 this.updateCellsForColumns(columnList);
             }
-        });
+        }));
     }
 
     public updateCellsForColumns(columnList: DatagridHideableColumnModel[]) {
@@ -87,6 +90,6 @@ export class ClrDatagridRowDetail implements AfterContentInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.subscription.unsubscribe();
+        this._subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
     }
 }

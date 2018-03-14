@@ -251,11 +251,13 @@ export default function(): void {
 
         describe("client-side selection and pagination", function() {
             const items = [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}, {id: 8}, {id: 9}, {id: 10}];
+
             function cloneItems() {
                 return items.map(item => {
                     return {...item};
                 });
             }
+
             function testSelectedItems(latestItems, selectedIndexes: any[]) {
                 latestItems.forEach((item, index) => {
                     const state = selectedIndexes.indexOf(index) > -1;
@@ -309,6 +311,18 @@ export default function(): void {
                     selectionInstance.currentSingle = items[5];
                     pageInstance.current = 3;
                     expect(selectionInstance.isSelected(items[5])).toBe(true);
+                });
+
+                it("does not apply trackBy to single selection with no items", () => {
+                    const emptyItems = new Items(filtersInstance, sortInstance, pageInstance);
+                    const selection: Selection = new Selection(emptyItems, filtersInstance);
+
+                    spyOn(emptyItems, "trackBy");
+
+                    expect(selection.currentSingle).toBeUndefined();
+                    selection.currentSingle = items[2];
+
+                    expect(emptyItems.trackBy).not.toHaveBeenCalled();
                 });
 
                 function testTrackBy(trackBy: TrackByFunction<{id: number}>) {

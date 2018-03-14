@@ -133,7 +133,7 @@ export class Selection {
             return;
         }
         this._currentSingle = value;
-        if (this._items.trackBy && value) {
+        if (this._items.all && this._items.trackBy && value) {
             const lookup = this._items.all.findIndex(maybe => maybe === value);
             this.selectedSingle = this._items.trackBy(lookup, value);
         }

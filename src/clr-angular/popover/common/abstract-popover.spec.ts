@@ -4,9 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ElementRef, Injector, Optional} from "@angular/core";
+import {Component, ElementRef, Injector, Optional, ViewChild} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 
+import {ClrConditionalModule} from "../../utils/conditional/conditional.module";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {ESC} from "../../utils/key-codes/key-codes";
 
@@ -17,32 +18,53 @@ describe("Abstract Popover", function() {
     let compiled: any;
     let ifOpenService: IfOpenService;
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({declarations: [TestPopover], providers: [IfOpenService]});
-        fixture = TestBed.createComponent(TestPopover);
-        compiled = fixture.nativeElement;
-        ifOpenService = fixture.debugElement.injector.get(IfOpenService);
-        fixture.detectChanges();
+    describe("Keyboard Events", () => {
+        beforeEach(() => {
+            TestBed.configureTestingModule({declarations: [TestPopover], providers: [IfOpenService]});
+            ifOpenService = TestBed.get(IfOpenService);
+            ifOpenService.open = true;
+            fixture = TestBed.createComponent(TestPopover);
+            compiled = fixture.nativeElement;
+            fixture.detectChanges();
+        });
+
+        it("closes the popover when ESC is pressed", () => {
+            const event: KeyboardEvent = new KeyboardEvent("keydown");
+            Object.defineProperties(event, {keyCode: {get: () => ESC}});
+
+            document.dispatchEvent(event);
+
+            expect(ifOpenService.open).toBe(false);
+        });
     });
 
-    it("adds a binding for keydown events", () => {
-        spyOn(fixture.componentInstance, "onKeyDown").and.callThrough();
+    describe("Popover with clrIfOpen Directive", () => {
+        beforeEach(() => {
+            TestBed.configureTestingModule({
+                declarations: [TestPopover, TestPopoverWithIfOpenDirective],
+                imports: [ClrConditionalModule],
+                providers: [IfOpenService]
+            });
+            ifOpenService = TestBed.get(IfOpenService);
+            fixture = TestBed.createComponent(TestPopoverWithIfOpenDirective);
+            compiled = fixture.nativeElement;
+            fixture.detectChanges();
+        });
 
-        fixture.debugElement.triggerEventHandler("keydown", {keyCode: ESC});
+        it("opens the abstract popover only after IfOpenService is in open state", () => {
+            expect(ifOpenService.open).toBe(false);
+            expect(fixture.componentInstance.testPopover).toBeUndefined();
 
-        expect(fixture.componentInstance.onKeyDown).toHaveBeenCalled();
-    });
+            ifOpenService.open = true;
+            fixture.detectChanges();
 
-    it("closes the popover when ESC is pressed", () => {
-        ifOpenService.open = true;
-
-        fixture.debugElement.triggerEventHandler("keydown", {keyCode: ESC});
-
-        expect(ifOpenService.open).toBe(false);
+            expect(fixture.componentInstance.testPopover).not.toBeUndefined();
+        });
     });
 });
 
 @Component({
+    selector: "test-popover",
     template: `
         <div>Popover</div>
     `
@@ -51,4 +73,13 @@ class TestPopover extends AbstractPopover {
     constructor(injector: Injector, @Optional() parent: ElementRef) {
         super(injector, parent);
     }
+}
+
+@Component({
+    template: `
+        <test-popover *clrIfOpen></test-popover>
+    `
+})
+class TestPopoverWithIfOpenDirective {
+    @ViewChild(TestPopover) testPopover;
 }

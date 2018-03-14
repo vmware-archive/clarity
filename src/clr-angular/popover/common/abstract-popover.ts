@@ -7,7 +7,6 @@ import {
     AfterViewChecked,
     ElementRef,
     HostBinding,
-    HostListener,
     Injectable,
     Injector,
     OnDestroy,
@@ -34,10 +33,17 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
 
         this.popoverInstance = new Popover(this.el.nativeElement);
         this.subscription = this.ifOpenService.openChange.subscribe((change) => {
-            change ? this.anchor() : this.release();
+            if (change) {
+                this.anchor();
+                this.attachESCListener();
+            } else {
+                this.release();
+                this.detachESCListener();
+            }
         });
         if (this.ifOpenService.open) {
             this.anchor();
+            this.attachESCListener();
         }
     }
 
@@ -80,6 +86,7 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
 
     ngOnDestroy() {
         this.release();
+        this.detachESCListener();
         this.subscription.unsubscribe();
     }
 
@@ -92,26 +99,35 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
         return this.ifOpenService.open ? false : true;
     }
 
-    @HostListener("keydown", ["$event"])
-    onKeyDown(event: KeyboardEvent) {
-        if (event && event.keyCode === ESC && this.ifOpenService.open) {
-            this.ifOpenService.open = false;
-        }
-    }
-
     /*
      * Until https://github.com/angular/angular/issues/8785 is supported, we don't have any way to instantiate
      * a separate directive on the host. So let's do dirty but performant for now.
      */
     public closeOnOutsideClick = false;
-    private hostListener: () => void;
-    private documentListener: () => void;
+    private hostClickListener: () => void;
+    private documentClickListener: () => void;
+    private documentESCListener: () => void;
     private ignore: any;
+
+    private attachESCListener(): void {
+        this.documentESCListener = this.renderer.listen("document", "keydown", event => {
+            if (event && event.keyCode === ESC) {
+                this.ifOpenService.open = false;
+            }
+        });
+    }
+
+    private detachESCListener(): void {
+        if (this.documentESCListener) {
+            this.documentESCListener();
+            delete this.documentESCListener;
+        }
+    }
 
     private attachOutsideClickListener() {
         if (this.closeOnOutsideClick) {
-            this.hostListener = this.renderer.listen(this.el.nativeElement, "click", event => this.ignore = event);
-            this.documentListener = this.renderer.listen("document", "click", event => {
+            this.hostClickListener = this.renderer.listen(this.el.nativeElement, "click", event => this.ignore = event);
+            this.documentClickListener = this.renderer.listen("document", "click", event => {
                 if (event === this.ignore) {
                     delete this.ignore;
                 } else {
@@ -123,13 +139,13 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
 
     private detachOutsideClickListener() {
         if (this.closeOnOutsideClick) {
-            if (this.hostListener) {
-                this.hostListener();
-                delete this.hostListener;
+            if (this.hostClickListener) {
+                this.hostClickListener();
+                delete this.hostClickListener;
             }
-            if (this.documentListener) {
-                this.documentListener();
-                delete this.documentListener;
+            if (this.documentClickListener) {
+                this.documentClickListener();
+                delete this.documentClickListener;
             }
         }
     }

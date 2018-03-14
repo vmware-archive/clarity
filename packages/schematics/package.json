@@ -1,0 +1,34 @@
+{
+    "name": "@clr/schematics",
+    "version": "0.1.0",
+    "description": "Schematics for Clarity",
+    "homepage": "https://vmware.github.io/clarity/",
+    "bugs": {
+        "url": "https://github.com/vmware/clarity/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:vmware/clarity.git"
+    },
+    "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "test": "npm run build && jasmine **/*_spec.js"
+    },
+    "keywords": [
+        "angular",
+        "clarity",
+        "schematics"
+    ],
+    "author": "clarity",
+    "license": "MIT",
+    "schematics": "./src/collection.json",
+    "dependencies": {
+        "@angular-devkit/core": "^0.4.3",
+        "@angular-devkit/schematics": "^0.4.3",
+        "@schematics/angular": "^0.4.3",
+        "@types/jasmine": "^2.6.0",
+        "@types/node": "^8.0.31",
+        "jasmine": "^2.8.0",
+        "typescript": "~2.6.2"
+    }
+}

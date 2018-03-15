@@ -11,11 +11,13 @@ import { MediaShapes } from "@clr/icons/shapes/media-shapes";
 import { SocialShapes } from "@clr/icons/shapes/social-shapes";
 import { TravelShapes } from "@clr/icons/shapes/travel-shapes";
 import { TechnologyShapes } from "@clr/icons/shapes/technology-shapes";
+import { ChartShapes } from "@clr/icons/shapes/chart-shapes";
 
 import { ICONS_TAGS } from "./icons-tags"
 
 const HIDE_ICONS = {
-    "vm-bug": true
+    "vm-bug": true,
+    "process-on-vm": true
 };
 
 
@@ -127,6 +129,9 @@ export const IconsInventory = {
     },
     "technology-shapes": {
         searchableIcons: makeSetSearchable(TechnologyShapes, [])
+    },
+    "chart-shapes": {
+        searchableIcons: makeSetSearchable(ChartShapes, [])
     }
 
 };

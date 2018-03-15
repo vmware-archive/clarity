@@ -127,11 +127,10 @@ export const IconsInventory = {
     "travel-shapes": {
         searchableIcons: makeSetSearchable(TravelShapes, [])
     },
-    "technology-shapes": {
-        searchableIcons: makeSetSearchable(TechnologyShapes, [])
-    },
     "chart-shapes": {
         searchableIcons: makeSetSearchable(ChartShapes, [])
+    },
+    "technology-shapes": {
+        searchableIcons: makeSetSearchable(TechnologyShapes, [])
     }
-
 };

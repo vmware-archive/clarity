@@ -1,0 +1,5 @@
+<svg version="1.1" width="36" height="36"  viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>bar-chart-outline-badged</title>
+                <path class="clr-i-outline--badged clr-i-outline-path-1--badged" d="M33,30H32V13.22a7.49,7.49,0,0,1-2,.28V30H26V12.34a7.53,7.53,0,0,1-2-1.85V30H22V12a2,2,0,0,0-2-2H16a2,2,0,0,0-2,2V30H12V18a2,2,0,0,0-2-2H6a2,2,0,0,0-2,2V30H3a1,1,0,0,0,0,2H33a1,1,0,0,0,0-2ZM10,30H6V18h4Zm10,0H16V12h4Z"></path><circle class="clr-i-outline--badged clr-i-outline-path-2--badged clr-i-badge" cx="30" cy="6" r="5"></circle>
+                <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+            </svg>

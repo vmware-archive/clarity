@@ -626,7 +626,8 @@
         // Datagrid has a margin top of 1 baseline. action bar is supposed to be 1/2 baseline from the datagrid
         // Had to use translate instead of negative margins to pull the
         // action bar down. negative margin screws up the click targets.
-        transform: translateY(0.5rem);
+        margin-bottom: -0.5rem;
+        margin-top: 0.5rem;
     }
 
     .datagrid-foot {

@@ -211,6 +211,7 @@
     }
 
     .datagrid-header {
+        background-color: $clr-thead-bgcolor;
         position: sticky;
         top: 0;
         display: flex;
@@ -218,6 +219,12 @@
         border-bottom: $clr-table-borderstyle;
         border-bottom-width: 2px;
         z-index: map-get($clr-layers, datagrid-header);
+
+        .datagrid-row {
+            &:hover {
+                background-color: $clr-thead-bgcolor;
+            }
+        }
     }
 
     .datagrid-table {
@@ -249,7 +256,6 @@
             vertical-align: top;
             background: none;
             border: 0;
-            background-color: $clr-thead-bgcolor;
 
             &:last-child {
                 .datagrid-column-separator {
@@ -355,7 +361,6 @@
 
             &.datagrid-fixed-column {
                 flex: 0 0 $clr-datagrid-fixed-column-size;
-                // IE10 needs this
                 max-width: $clr-datagrid-fixed-column-size;
                 min-width: $clr-datagrid-fixed-column-size;
             }
@@ -453,7 +458,6 @@
 
             &.datagrid-fixed-column {
                 flex: 0 0 $clr-datagrid-fixed-column-size;
-                // IE10 needs this
                 max-width: $clr-datagrid-fixed-column-size;
                 min-width: $clr-datagrid-fixed-column-size;
             }

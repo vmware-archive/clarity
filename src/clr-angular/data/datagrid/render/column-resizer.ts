@@ -21,7 +21,6 @@ export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
         this.columnEl = el.nativeElement;
     }
 
-    // columnHeight: number = 462;
     columnEl: any;
     columnRectWidth: number;
     columnResizeBy: number = 0;

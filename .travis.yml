@@ -29,7 +29,8 @@ addons:
       - google-chrome-stable
   artifacts:
     paths:
-      - $TRAVIS_BUILD_DIR/reports/gemini
+      - "$TRAVIS_BUILD_DIR/reports/"
+
 cache:
   apt: true
   directories:

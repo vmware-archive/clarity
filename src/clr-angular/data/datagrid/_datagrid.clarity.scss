@@ -16,6 +16,7 @@
     .datagrid-host {
         display: flex;
         flex-flow: column nowrap;
+        padding-top: 0.5rem; //TODO: Remove. Temp fix. Matt to follow new UX recommendations with pinned columns
     }
 
     .datagrid-overlay-wrapper {
@@ -47,6 +48,7 @@
         flex-flow: column nowrap;
         // IE & Firefox needs this
         min-height: 1px;
+        margin-top: 0.5rem; //TODO: Remove. Temp fix. Matt to follow new UX recommendations with pinned columns
     }
     .datagrid-head, .datagrid-body, .datagrid-row, .datagrid-column, .datagrid-cell, .datagrid-fixed-column {
         display: block;
@@ -622,11 +624,6 @@
         display: flex;
         flex-flow: row nowrap;
         align-items: stretch;
-
-        // Datagrid has a margin top of 1 baseline. action bar is supposed to be 1/2 baseline from the datagrid
-        // Had to use translate instead of negative margins to pull the
-        // action bar down. negative margin screws up the click targets.
-        transform: translateY(0.5rem);
     }
 
     .datagrid-foot {

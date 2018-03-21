@@ -352,6 +352,18 @@ export default function(): void {
                 expect(selectionInstance.isSelected(itemsC[0])).toEqual(stateC);
             }
 
+            function testToggleAllSelection(stateA, stateB, stateC) {
+                itemsA.forEach(element => {
+                    expect(selectionInstance.isSelected(element)).toEqual(stateA);
+                });
+                itemsB.forEach(element => {
+                    expect(selectionInstance.isSelected(element)).toEqual(stateB);
+                });
+                itemsC.forEach(element => {
+                    expect(selectionInstance.isSelected(element)).toEqual(stateC);
+                });
+            }
+
             describe("multi-selection", function() {
                 beforeEach(function() {
                     selectionInstance.selectionType = SelectionType.Multi;
@@ -370,6 +382,25 @@ export default function(): void {
                        itemsInstance.all = itemsC;
                        tick();
                        testSelection(false, false, true);
+                       expect(selectionInstance.current[0].modified).toEqual(true);
+                   }));
+
+                it("should support toggleAll selection on page change", fakeAsync(() => {
+                       itemsInstance.trackBy = (index, item) => item.id;
+                       itemsInstance.all = itemsA;
+                       pageInstance.size = 3;
+                       pageInstance.current = 1;
+                       tick();
+                       selectionInstance.toggleAll();
+                       testToggleAllSelection(true, false, false);
+                       itemsInstance.all = itemsB;
+                       pageInstance.current = 2;
+                       tick();
+                       testToggleAllSelection(true, false, false);
+                       itemsInstance.all = itemsC;
+                       pageInstance.current = 1;
+                       tick();
+                       testToggleAllSelection(false, false, true);
                        expect(selectionInstance.current[0].modified).toEqual(true);
                    }));
             });

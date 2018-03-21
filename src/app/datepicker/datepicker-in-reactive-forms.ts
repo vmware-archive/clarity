@@ -12,4 +12,6 @@ import {FormControl, FormGroup} from "@angular/forms";
     styleUrls: ["./datepicker.demo.scss"],
     templateUrl: "./datepicker-in-reactive-forms.html"
 })
-export class DatepickerInReactiveForms { dateForm = new FormGroup({date: new FormControl()}); }
+export class DatepickerInReactiveForms {
+    dateForm = new FormGroup({date: new FormControl("03/05/2018"), name: new FormControl("Jane")});
+}

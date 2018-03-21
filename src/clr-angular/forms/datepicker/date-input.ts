@@ -61,7 +61,23 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
             this.populateContainerServices();
         }
         this.initializeSubscriptions();
+        this.processInitialInputs();
+    }
+
+    /**
+     * Process the inputs initialized by the user which were missed
+     * because of late subscriptions or lifecycle method calls.
+     */
+    private processInitialInputs(): void {
         this.processUserDateObject(this.dateValueOnInitialLoad);
+
+        // Handle Inital Value from Reactive Forms
+        // TODO: We are repeating this logic at multiple places. This makes me think
+        // if this class should have implemented the ControlValueAccessor interface.
+        // Will explore that later and see if its a cleaner solution.
+        if (this._ngControl && this._ngControl.value) {
+            this.updateInputValue(this._ngControl.value);
+        }
     }
 
     /**
@@ -130,22 +146,26 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     /**
      * Processes a date object to check if its valid or not.
      */
-    processUserDateObject(value: Date) {
+    private processUserDateObject(value: Date) {
         if (this._dateIOService) {
             // The date object is converted back to string because in Javascript you can create a date object
             // like this: new Date("Test"). This is a date object but it is invalid. Converting the date object
             // that the user passed helps us to verify the validity of the date object.
             const dateStr: string = this._dateIOService.toLocaleDisplayFormatString(value);
-            const date: Date = this._dateIOService.isValidInput(dateStr);
-            if (date) {
-                const dayModel: DayModel = new DayModel(date.getFullYear(), date.getMonth(), date.getDate());
-                if (!dayModel.isEqual(this._dateNavigationService.selectedDay)) {
-                    this._dateNavigationService.selectedDay = dayModel;
-                    this.writeDateStrToInputField(dateStr);
-                }
-            } else {
-                this._dateNavigationService.selectedDay = null;
+            this.updateInputValue(dateStr);
+        }
+    }
+
+    private updateInputValue(dateStr: string): void {
+        const date: Date = this._dateIOService.isValidInput(dateStr);
+        if (date) {
+            const dayModel: DayModel = new DayModel(date.getFullYear(), date.getMonth(), date.getDate());
+            if (!dayModel.isEqual(this._dateNavigationService.selectedDay)) {
+                this._dateNavigationService.selectedDay = dayModel;
+                this.writeDateStrToInputField(dateStr);
             }
+        } else {
+            this._dateNavigationService.selectedDay = null;
         }
     }
 

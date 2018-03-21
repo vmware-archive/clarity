@@ -6,7 +6,7 @@
 
 import {Component, DebugElement, ViewChild} from "@angular/core";
 import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
-import {FormsModule} from "@angular/forms";
+import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {By} from "@angular/platform-browser";
 
 import {TestContext} from "../../data/datagrid/helpers.spec";
@@ -179,6 +179,44 @@ export default function() {
                }));
         });
 
+        describe("Datepicker with Reactive Forms", () => {
+            let fixture: ComponentFixture<TestComponentWithReactiveForms>;
+            let compiled: any;
+
+            let dateContainerDebugElement: DebugElement;
+            let dateInputDebugElement: DebugElement;
+
+            beforeEach(function() {
+                TestBed.configureTestingModule(
+                    {imports: [ReactiveFormsModule, ClrFormsModule], declarations: [TestComponentWithReactiveForms]});
+
+                fixture = TestBed.createComponent(TestComponentWithReactiveForms);
+                fixture.detectChanges();
+                compiled = fixture.nativeElement;
+                dateContainerDebugElement = fixture.debugElement.query(By.directive(ClrDateContainer));
+                dateInputDebugElement = fixture.debugElement.query(By.directive(ClrDateInput));
+                dateNavigationService = dateContainerDebugElement.injector.get(DateNavigationService);
+            });
+
+            it("initializes the input and the selected day with the value set by the user", () => {
+                expect(fixture.componentInstance.date.value).not.toBeNull();
+
+                expect(dateInputDebugElement.nativeElement.value).toBe(fixture.componentInstance.dateInput);
+                expect(dateNavigationService.selectedDay.year).toBe(2015);
+                expect(dateNavigationService.selectedDay.month).toBe(0);
+                expect(dateNavigationService.selectedDay.date).toBe(1);
+            });
+
+            it("updates the input and the selected day when the value is updated by the user", () => {
+                fixture.componentInstance.date.setValue("05/05/2018");
+
+                expect(dateInputDebugElement.nativeElement.value).toBe("05/05/2018");
+                expect(dateNavigationService.selectedDay.year).toBe(2018);
+                expect(dateNavigationService.selectedDay.month).toBe(4);
+                expect(dateNavigationService.selectedDay.date).toBe(5);
+            });
+        });
+
         describe("Datepicker with clrDate", () => {
             let fixture: ComponentFixture<TestComponentWithClrDate>;
             let compiled: any;
@@ -277,4 +315,14 @@ class TestComponentWithNgModel {
 })
 class TestComponentWithClrDate {
     date: Date;
+}
+
+@Component({
+    template: `
+        <input id="dateControl" type="date" clrDate [formControl]="date">
+    `
+})
+class TestComponentWithReactiveForms {
+    dateInput: string = "01/01/2015";
+    date: FormControl = new FormControl(this.dateInput);
 }

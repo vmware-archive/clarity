@@ -31,6 +31,40 @@
         -ms-overflow-style: -ms-autohiding-scrollbar;
     }
 
+    .datagrid-container {
+        font-size: $clr-table-fontsize;
+        padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
+    }
+
+    .datagrid-expandable-caret {
+        padding: calc(0.125rem - #{$clr-default-borderwidth}) $horizontalPadding 0.125rem;
+        text-align: center;
+
+        .datagrid-expandable-caret-button {
+            @include clr-no-styles-button();
+            cursor: pointer;
+            height: 1.25rem;
+            width: 1.25rem;
+        }
+
+        .datagrid-expandable-caret-icon {
+            color: $gray-dark;
+            // nudge down for vertical alignment...
+            margin-top: 0.125rem;
+            svg {
+                transition: transform 0.2s ease-in-out;
+            }
+        }
+
+        .spinner {
+            margin-top: 0.25rem;
+        }
+
+        &.datagrid-column {
+            padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
+        }
+    }
+
     .datagrid-head, .datagrid-body, .datagrid-row, .datagrid-column, .datagrid-cell, .datagrid-fixed-column {
         display: block;
     }
@@ -465,40 +499,16 @@
             &.datagrid-row-actions {
                 background: none;
             }
-            .datagrid-action-toggle {
-                @include clr-no-styles-button();
-                &:active {
-                    color: $clr-datagrid-action-toggle; // Fixed active state on this button for Safari.
-                }
-
-            }
 
             &.datagrid-expandable-caret {
                 padding: calc(0.125rem - #{$clr-default-borderwidth}) $horizontalPadding 0.125rem;
                 text-align: center;
+            }
 
-                .datagrid-expandable-caret-button {
-                    @include clr-no-styles-button();
-                    cursor: pointer;
-                    height: 1.25rem;
-                    width: 1.25rem;
-                }
-
-                .datagrid-expandable-caret-icon {
-                    color: $gray-dark;
-                    // nudge down for vertical alignment...
-                    margin-top: 0.125rem;
-                    svg {
-                        transition: transform 0.2s ease-in-out;
-                    }
-                }
-
-                .spinner {
-                    margin-top: 0.25rem;
-                }
-
-                &.datagrid-column {
-                    padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
+            .datagrid-action-toggle {
+                @include clr-no-styles-button();
+                &:active {
+                    color: $clr-datagrid-action-toggle; // Fixed active state on this button for Safari.
                 }
             }
         }
@@ -748,10 +758,12 @@
             }
         }
         .datagrid-expandable-caret {
+            text-align: center;
             .spinner {
                 margin-top: 0.125rem;
             }
             .datagrid-expandable-caret-button {
+                @include clr-no-styles-button();
                 height: 1rem;
                 width: 1rem;
                 outline-offset: $clr-datagrid-compact-outline-offset;

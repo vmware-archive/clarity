@@ -13,8 +13,11 @@ import {DatepickerDateInputDemo} from "./datepicker-date-input";
 import {DatepickerDateInputExplicitWrapperDemo} from "./datepicker-date-input-explicit-wrapper";
 import {DatepickerDEDemo} from "./datepicker-DE";
 import {DatepickerHIDemo} from "./datepicker-HI";
+import {DatepickerHRDemo} from "./datepicker-hr";
 import {DatepickerInReactiveForms} from "./datepicker-in-reactive-forms";
 import {DatepickerInTemplateDrivenFormsDemo} from "./datepicker-in-template-driven-forms";
+import {DatepickerKKJDemo} from "./datepicker-KKJ";
+import {DatepickerLocaleData} from "./datepicker-locale-data";
 import {DatepickerDemo} from "./datepicker.demo";
 import {NgModelAutoWrappedDatepickerDemo} from "./ngmodel-auto-wrapped";
 import {NgModelExplicitWrapperDemo} from "./ngmodel-wrapper-explicit-wrapper";
@@ -30,9 +33,16 @@ const ROUTES: Routes = [{
         {path: "datepicker-date-input-wrapper-present", component: DatepickerDateInputExplicitWrapperDemo},
         {path: "template-driven-forms", component: DatepickerInTemplateDrivenFormsDemo},
         {path: "reactive-forms", component: DatepickerInReactiveForms},
-        {path: "css-regression", component: DatepickerCSSRegressionDemo}, {path: "de", component: DatepickerDEDemo},
-        {path: "hi", component: DatepickerHIDemo}, {path: "ak", component: DatepickerAKDemo},
-        {path: "ar", component: DatepickerARDemo}
+        {path: "css-regression", component: DatepickerCSSRegressionDemo}, {
+            path: "locale-data",
+            component: DatepickerLocaleData,
+            children: [
+                {path: "", redirectTo: "de", pathMatch: "full"}, {path: "de", component: DatepickerDEDemo},
+                {path: "hi", component: DatepickerHIDemo}, {path: "ak", component: DatepickerAKDemo},
+                {path: "ar", component: DatepickerARDemo}, {path: "kkj", component: DatepickerKKJDemo},
+                {path: "hr", component: DatepickerHRDemo}
+            ]
+        }
     ]
 }];
 

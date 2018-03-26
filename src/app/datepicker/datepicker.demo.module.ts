@@ -16,8 +16,11 @@ import {DatepickerDateInputDemo} from "./datepicker-date-input";
 import {DatepickerDateInputExplicitWrapperDemo} from "./datepicker-date-input-explicit-wrapper";
 import {DatepickerDEDemo} from "./datepicker-DE";
 import {DatepickerHIDemo} from "./datepicker-HI";
+import {DatepickerHRDemo} from "./datepicker-hr";
 import {DatepickerInReactiveForms} from "./datepicker-in-reactive-forms";
 import {DatepickerInTemplateDrivenFormsDemo} from "./datepicker-in-template-driven-forms";
+import {DatepickerKKJDemo} from "./datepicker-KKJ";
+import {DatepickerLocaleData} from "./datepicker-locale-data";
 import {DatepickerDemo} from "./datepicker.demo";
 import {ROUTING} from "./datepicker.demo.routing";
 import {NgModelAutoWrappedDatepickerDemo} from "./ngmodel-auto-wrapped";
@@ -29,13 +32,13 @@ import {NgModelExplicitWrapperDemo} from "./ngmodel-wrapper-explicit-wrapper";
         DatepickerDemo, DatepickerInTemplateDrivenFormsDemo, DatepickerInReactiveForms,
         NgModelAutoWrappedDatepickerDemo, NgModelExplicitWrapperDemo, DatepickerDateInputDemo,
         DatepickerDateInputExplicitWrapperDemo, DatepickerCSSRegressionDemo, DatepickerDEDemo, DatepickerHIDemo,
-        DatepickerAKDemo, DatepickerARDemo
+        DatepickerAKDemo, DatepickerARDemo, DatepickerKKJDemo, DatepickerHRDemo, DatepickerLocaleData
     ],
     exports: [
         DatepickerDemo, DatepickerInTemplateDrivenFormsDemo, DatepickerInReactiveForms,
         NgModelAutoWrappedDatepickerDemo, NgModelExplicitWrapperDemo, DatepickerDateInputDemo,
         DatepickerDateInputExplicitWrapperDemo, DatepickerCSSRegressionDemo, DatepickerDEDemo, DatepickerHIDemo,
-        DatepickerAKDemo, DatepickerARDemo
+        DatepickerAKDemo, DatepickerARDemo, DatepickerKKJDemo, DatepickerHRDemo, DatepickerLocaleData
     ]
 })
 export class DatepickerDemoModule {}

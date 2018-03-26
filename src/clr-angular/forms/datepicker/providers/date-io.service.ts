@@ -9,13 +9,14 @@ import {Injectable} from "@angular/core";
 import {
     BIG_ENDIAN,
     DEFAULT_LOCALE_FORMAT,
+    DELIMITER_REGEX,
     InputDateDisplayFormat,
     LITTLE_ENDIAN,
     LITTLE_ENDIAN_REGEX,
     MIDDLE_ENDIAN,
     MIDDLE_ENDIAN_REGEX,
-    NON_NEGATIVE_NUMBER,
-    SEPARATORS
+    RTL_REGEX,
+    USER_INPUT_REGEX
 } from "../utils/constants";
 import {getNumberOfDaysInTheMonth, parseToFourDigitYear} from "../utils/date-utils";
 
@@ -25,6 +26,7 @@ import {LocaleHelperService} from "./locale-helper.service";
 export class DateIOService {
     public cldrLocaleDateFormat: string = DEFAULT_LOCALE_FORMAT;
     private localeDisplayFormat: InputDateDisplayFormat = LITTLE_ENDIAN;
+    private delimiters: [string, string] = ["/", "/"];
 
     constructor(private _localeHelperService: LocaleHelperService) {
         this.cldrLocaleDateFormat = this._localeHelperService.localeDateFormat;
@@ -41,6 +43,26 @@ export class DateIOService {
             // everything else is set to BIG-ENDIAN FORMAT
             this.localeDisplayFormat = BIG_ENDIAN;
         }
+        this.extractDelimiters();
+    }
+
+    private extractDelimiters(): void {
+        if (this.cldrLocaleDateFormat) {
+            // Sanitize Date Format. Remove RTL characters.
+            // FIXME: When we support RTL, remove this and handle it correctly.
+            const localeFormat: string = this.cldrLocaleDateFormat.replace(RTL_REGEX, "");
+            const delimiters: string[] = localeFormat.split(DELIMITER_REGEX);
+
+            // NOTE: The split from the CLDR date format should always result
+            // in an arary with 4 elements. The 1st and the 2nd values are the delimiters
+            // we will use in order.
+            // Eg: "dd/MM/y".split(/d+|m+|y+/i) results in ["", "/", "/", ""]
+            if (delimiters && delimiters.length === 4) {
+                this.delimiters = [delimiters[1], delimiters[2]];
+            } else {
+                console.error("Unexpected date format received. Delimiters extracted: ", delimiters);
+            }
+        }
     }
 
     toLocaleDisplayFormatString(date: Date): string {
@@ -53,53 +75,19 @@ export class DateIOService {
             const dateStr: string = dateNo > 9 ? dateNo.toString() : "0" + dateNo;
             const monthStr: string = monthNo > 9 ? monthNo.toString() : "0" + monthNo;
             if (this.localeDisplayFormat === LITTLE_ENDIAN) {
-                return dateStr + "/" + monthStr + "/" + date.getFullYear();
+                return dateStr + this.delimiters[0] + monthStr + this.delimiters[1] + date.getFullYear();
             } else if (this.localeDisplayFormat === MIDDLE_ENDIAN) {
-                return monthStr + "/" + dateStr + "/" + date.getFullYear();
+                return monthStr + this.delimiters[0] + dateStr + this.delimiters[1] + date.getFullYear();
             } else {
-                return date.getFullYear() + "/" + monthStr + "/" + dateStr;
+                return date.getFullYear() + this.delimiters[0] + monthStr + this.delimiters[1] + dateStr;
             }
         }
         return "";
     }
 
     get placeholderText(): string {
-        return this.localeDisplayFormat.format;
-    }
-
-    /**
-     * Detects if the input date string contains any one
-     * of the separators from the SEPARTORS array.
-     */
-    private detectSeparator(date: string): string {
-        let separatorUsed: string;
-        for (const separator of SEPARATORS) {
-            if (date.indexOf(separator) > -1) {
-                separatorUsed = separator;
-                break;
-            }
-        }
-        return separatorUsed;
-    }
-
-    /**
-     * Checks if the string is a non negative number.
-     * Credit: https://stackoverflow.com/a/24457420/8960224
-     */
-    private isNonNegativeNumber(num: string): boolean {
-        return NON_NEGATIVE_NUMBER.test(num);
-    }
-
-    /**
-     * Checks if the date parts are numbers
-     */
-    private areDatePartsNumbers(dateParts: string[]): boolean {
-        for (const part of dateParts) {
-            if (!this.isNonNegativeNumber(part)) {
-                return false;
-            }
-        }
-        return true;
+        const format: [string, string, string] = this.localeDisplayFormat.format;
+        return format[0] + this.delimiters[0] + format[1] + this.delimiters[1] + format[2];
     }
 
     /**
@@ -152,12 +140,8 @@ export class DateIOService {
         if (!date) {
             return null;
         }
-        const separator: string = this.detectSeparator(date);
-        if (!separator) {
-            return null;
-        }
-        const dateParts: string[] = date.split(separator);
-        if (dateParts.length !== 3 || !this.areDatePartsNumbers(dateParts)) {
+        const dateParts: string[] = date.match(USER_INPUT_REGEX);
+        if (!dateParts || dateParts.length !== 3) {
             return null;
         }
         const [firstPart, secondPart, thirdPart] = dateParts;

@@ -9,6 +9,8 @@ import localeAr from "@angular/common/locales/ar-AE";
 import localeDe from "@angular/common/locales/de";
 import localeFr from "@angular/common/locales/fr";
 import localeHi from "@angular/common/locales/hi";
+import localeHR from "@angular/common/locales/hr";
+import localeKKJ from "@angular/common/locales/kkj";
 import localeRu from "@angular/common/locales/ru";
 import {Component} from "@angular/core";
 
@@ -18,6 +20,8 @@ registerLocaleData(localeAk);
 registerLocaleData(localeHi);
 registerLocaleData(localeAr);
 registerLocaleData(localeDe);
+registerLocaleData(localeKKJ);
+registerLocaleData(localeHR);
 
 @Component({
     selector: "clr-datepicker-demo",

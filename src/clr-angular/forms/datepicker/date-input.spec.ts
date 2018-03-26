@@ -96,6 +96,22 @@ export default function() {
                 });
             });
 
+            describe("Date Display", () => {
+                it("displays the date on the input when the selectedDay is updated", () => {
+                    dateNavigationService.notifySelectedDayChanged(new DayModel(2015, 1, 1));
+                    expect(context.clarityElement.value).toBe("02/01/2015");
+
+                    dateNavigationService.notifySelectedDayChanged(new DayModel(2018, 5, 1));
+                    expect(context.clarityElement.value).toBe("06/01/2018");
+                });
+
+                it("calls the DateIOService toLocaleDisplayFormatString method to display the selectedDay", () => {
+                    spyOn(dateIOService, "toLocaleDisplayFormatString");
+                    dateNavigationService.notifySelectedDayChanged(new DayModel(2015, 1, 1));
+                    expect(dateIOService.toLocaleDisplayFormatString).toHaveBeenCalled();
+                });
+            });
+
             describe("Host Bindings & Listeners", () => {
                 it("binds the placeholderText to the placeholder of the input", () => {
                     expect(context.clarityElement.placeholder).toBe("MM/DD/YYYY");

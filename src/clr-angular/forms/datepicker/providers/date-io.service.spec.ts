@@ -6,6 +6,8 @@
 
 import {registerLocaleData} from "@angular/common";
 import localeAk from "@angular/common/locales/ak";
+import localeHr from "@angular/common/locales/hr";
+import localeKkj from "@angular/common/locales/kkj";
 
 import {assertEqualDates} from "../utils/test-utils";
 
@@ -13,6 +15,8 @@ import {DateIOService} from "./date-io.service";
 import {LocaleHelperService} from "./locale-helper.service";
 
 registerLocaleData(localeAk);
+registerLocaleData(localeHr);
+registerLocaleData(localeKkj);
 
 export default function() {
     describe("Date IO Service", () => {
@@ -38,10 +42,20 @@ export default function() {
 
                 expect(dateIOServ.toLocaleDisplayFormatString(new Date(2015, 1, 1))).toBe("02/01/2015");
 
-                const localeHelperServ1: LocaleHelperService = new LocaleHelperService("ak");
-                const dateIOServ1: DateIOService = new DateIOService(localeHelperServ1);
+                const localeHelperServAK: LocaleHelperService = new LocaleHelperService("ak");
+                const dateIOServAK: DateIOService = new DateIOService(localeHelperServAK);
 
-                expect(dateIOServ1.toLocaleDisplayFormatString(new Date(2015, 1, 1))).toBe("2015/02/01");
+                expect(dateIOServAK.toLocaleDisplayFormatString(new Date(2015, 1, 1))).toBe("2015/02/01");
+
+                const localeHelperServHR: LocaleHelperService = new LocaleHelperService("hr");
+                const dateIOServHR: DateIOService = new DateIOService(localeHelperServHR);
+
+                expect(dateIOServHR.toLocaleDisplayFormatString(new Date(2015, 1, 1))).toBe("01. 02. 2015");
+
+                const localeHelperServKKJ: LocaleHelperService = new LocaleHelperService("kkj");
+                const dateIOServKKJ: DateIOService = new DateIOService(localeHelperServKKJ);
+
+                expect(dateIOServKKJ.toLocaleDisplayFormatString(new Date(2016, 1, 15))).toBe("15/02 2016");
             });
 
             it("processes an invalid date object as an empty string", () => {
@@ -65,10 +79,24 @@ export default function() {
                 dateIOService = new DateIOService(localeHelperService);
             });
 
-            it("ignores text", () => {
+            it("ignores just text", () => {
                 const inputDate: string = "abc";
                 const date: Date = dateIOService.isValidInput(inputDate);
                 expect(date).toBeNull();
+            });
+
+            it("ignores invalid dates", () => {
+                let inputDate: string = "10/21/test";
+                const date1: Date = dateIOService.isValidInput(inputDate);
+                expect(date1).toBeNull();
+
+                inputDate = "test/1/1";
+                const date2: Date = dateIOService.isValidInput(inputDate);
+                expect(date2).toBeNull();
+
+                inputDate = "test test test";
+                const date3: Date = dateIOService.isValidInput(inputDate);
+                expect(date3).toBeNull();
             });
 
             it("ignores empty strings", () => {
@@ -111,6 +139,21 @@ export default function() {
                 expect(assertEqualDates(date, new Date(2015, 0, 2))).toBe(true);
             });
 
+            it("ignores invalid dates", () => {
+                let inputDate: string = "01/55/2015";
+                const date: Date = dateIOService.isValidInput(inputDate);
+                expect(date).toBeNull();
+
+                inputDate = "02/29/2015";
+                const date1: Date = dateIOService.isValidInput(inputDate);
+                expect(date1).toBeNull();
+
+                // Leap Year
+                inputDate = "02/29/2016";
+                const date2: Date = dateIOService.isValidInput(inputDate);
+                expect(assertEqualDates(date2, new Date(2016, 1, 29))).toBe(true);
+            });
+
             it("parses a 1 digit month", () => {
                 const inputDate: string = "1/02/2015";
                 const date: Date = dateIOService.isValidInput(inputDate);
@@ -123,18 +166,28 @@ export default function() {
                 expect(dateIOService.isValidInput(inputDate)).toBeNull();
             });
 
-            it("ignores negative numbers", () => {
-                let inputDate: string = "13/-2/2015";
+            it("ignores the minus sign and considers it as a delimiter", () => {
+                let inputDate: string = "1/-2/2015";
                 let date: Date = dateIOService.isValidInput(inputDate);
-                expect(date).toBeNull();
+                expect(assertEqualDates(date, new Date(2015, 0, 2)));
 
-                inputDate = "-13/2/2015";
+                inputDate = "-2/5/2015";
                 date = dateIOService.isValidInput(inputDate);
-                expect(date).toBeNull();
+                expect(assertEqualDates(date, new Date(2015, 1, 5)));
 
-                inputDate = "13/2/-2015";
+                inputDate = "1/2/-2015";
                 date = dateIOService.isValidInput(inputDate);
-                expect(date).toBeNull();
+                expect(assertEqualDates(date, new Date(2015, 0, 2)));
+            });
+
+            it("processes dates with different delimiters", () => {
+                let inputDate: string = "1/ 2/2015";
+                let date: Date = dateIOService.isValidInput(inputDate);
+                expect(assertEqualDates(date, new Date(2015, 0, 2)));
+
+                inputDate = "1.3 .2016";
+                date = dateIOService.isValidInput(inputDate);
+                expect(assertEqualDates(date, new Date(2016, 0, 3)));
             });
         });
     });

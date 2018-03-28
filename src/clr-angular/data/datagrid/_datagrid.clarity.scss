@@ -372,7 +372,7 @@
         .datagrid-foot-select.checkbox {
             display: block;
             line-height: inherit;
-            flex: 1 1 (1.5rem - (2 * $clr-rem-1px)); // can't use calc() in flex. #thanksIE!
+            flex: 0 0 (1.5rem - (2 * $clr-rem-1px)); // can't use calc() in flex. #thanksIE!
             margin-right: 0.083333rem; // Space for the instance when a hideable column toggle is next to it.
 
             label {
@@ -657,8 +657,7 @@
         }
 
         .column-switch-wrapper {
-            // We need this container to fill the space between itself and the right side of the footer
-            flex: 1 1 100%;
+            flex: 0 0 auto;
 
             &.active {
                 .column-toggle--action {
@@ -735,7 +734,9 @@
 
     .datagrid-foot-description {
         display: block;
+        flex: 1 1 auto;
         white-space: nowrap;
+        text-align: right;
     }
 
     // Yes, this is not .datagrid-pagination on purpose.

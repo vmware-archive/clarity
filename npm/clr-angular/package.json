@@ -6,6 +6,7 @@
     "homepage": "https://vmware.github.io/clarity/",
     "main": "clr-angular/bundles/clr-angular.umd.js",
     "module": "clr-angular/esm5/clr-angular.js",
+    "keywords": ["ng-add", "clarity", "angular", "components"],
     "repository" : {
         "type" : "git",
         "url" : "git@github.com:vmware/clarity.git"
@@ -18,11 +19,14 @@
         "@angular/platform-browser": "^5.0.0",
         "@angular/platform-browser-dynamic": "^5.0.0",
         "@angular/router": "^5.0.0",
+        "@angular-devkit/core": "^0.4.7",
+        "@angular-devkit/schematics": "^0.4.7",
         "@clr/ui": "@VERSION"
     },
     "author": "clarity",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/vmware/clarity/issues"
-    }
+    },
+    "collection": "schematics/collection.json"
 }

@@ -44,7 +44,7 @@ import {ClrDatagridFilterInterface, ClrDatagridFilter} from "@clr/angular";
     selector: "my-filter",
     /* ... */
 })
-class MyFilter implements Filter<User> {
+class MyFilter implements ClrDatagridFilterInterface<User> {
     constructor(private filterContainer: ClrDatagridFilter) {
         filterContainer.setFilter(this);
     }

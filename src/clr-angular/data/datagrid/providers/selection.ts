@@ -189,6 +189,29 @@ export class Selection {
     }
 
     /**
+     * Selects an item
+     */
+    private selectItem(item: any): void {
+        this.current.push(item);
+        if (this._items.trackBy) {
+            // Push selected ref onto array
+            const lookup = this._items.all.findIndex(maybe => maybe === item);
+            this.selected.push(this._items.trackBy(lookup, item));
+        }
+    }
+
+    /**
+     * Deselects an item
+     */
+    private deselectItem(indexOfItem: number): void {
+        this.current.splice(indexOfItem, 1);
+        if (this._items.trackBy && indexOfItem < this.selected.length) {
+            // Keep selected refs array in sync
+            this.selected.splice(indexOfItem, 1);
+        }
+    }
+
+    /**
      * Selects or deselects an item
      */
     public setSelected(item: any, selected: boolean) {
@@ -200,21 +223,11 @@ export class Selection {
                 break;
             case SelectionType.Multi:
                 const index = this.current.indexOf(item);
-                const trackBy = this._items.trackBy;
                 if (index >= 0 && !selected) {
-                    this.current.splice(index, 1);
-                    if (trackBy) {
-                        // Keep selected refs array in sync
-                        this.selected.splice(index, 1);
-                    }
+                    this.deselectItem(index);
                     this.emitChange();
                 } else if (index < 0 && selected) {
-                    this.current.push(item);
-                    if (trackBy) {
-                        // Push selected ref onto array
-                        const lookup = this._items.all.findIndex(maybe => maybe === item);
-                        this.selected.push(this._items.trackBy(lookup, item));
-                    }
+                    this.selectItem(item);
                     this.emitChange();
                 }
                 break;
@@ -251,16 +264,19 @@ export class Selection {
          * If at least one item isn't selected, we select every currently displayed item.
          */
         if (this.isAllSelected()) {
-            this.current = this.current.filter(item => {
-                return this._items.displayed.indexOf(item) < 0;
+            this._items.displayed.forEach((item, displayIndex) => {
+                const currentIndex = this.current.indexOf(item);
+                if (currentIndex > -1) {
+                    this.deselectItem(currentIndex);
+                }
             });
         } else {
             this._items.displayed.forEach(item => {
                 if (this.current.indexOf(item) < 0) {
-                    this.current.push(item);
+                    this.selectItem(item);
                 }
             });
-            this.emitChange();
         }
+        this.emitChange();
     }
 }

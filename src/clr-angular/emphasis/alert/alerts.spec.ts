@@ -68,6 +68,39 @@ describe("ClrAlerts component", function() {
             expect(testComponent.currentAlertIndex).toEqual(1);
         });
 
+        it("allows changing alert index from 1 to 0", function() {
+            this.create(TestComponent);
+            const testComponent = fixture.componentInstance;
+            fixture.detectChanges();
+            testComponent.currentAlertIndex = 1;
+            fixture.detectChanges();
+            expect(testComponent.alertsInstance.currentAlertIndex).toEqual(1);
+            testComponent.currentAlertIndex = 0;
+            fixture.detectChanges();
+            expect(testComponent.alertsInstance.currentAlertIndex).toEqual(0);
+        });
+
+        it("does not allow invalid indexes (undefined, null, -1, 1.5, string)", function() {
+            this.create(TestComponent);
+            const testComponent = fixture.componentInstance;
+            fixture.detectChanges();
+            testComponent.currentAlertIndex = undefined;
+            fixture.detectChanges();
+            expect(testComponent.alertsInstance.currentAlertIndex).toEqual(0);
+            testComponent.currentAlertIndex = null;
+            fixture.detectChanges();
+            expect(testComponent.alertsInstance.currentAlertIndex).toEqual(0);
+            testComponent.currentAlertIndex = -1;
+            fixture.detectChanges();
+            expect(testComponent.alertsInstance.currentAlertIndex).toEqual(0);
+            testComponent.currentAlertIndex = 1.5;
+            fixture.detectChanges();
+            expect(testComponent.alertsInstance.currentAlertIndex).toEqual(0);
+            testComponent.currentAlertIndex = "string";
+            fixture.detectChanges();
+            expect(testComponent.alertsInstance.currentAlertIndex).toEqual(0);
+        });
+
         it("offers two way binding on the alert instance", function() {
             this.create(TestAlertInstance);
             fixture.detectChanges();

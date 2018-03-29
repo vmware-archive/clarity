@@ -29,7 +29,7 @@ export class ClrAlerts implements AfterContentInit {
      */
     @Input("clrCurrentAlertIndex")
     public set _inputCurrentIndex(index: number) {
-        if (index) {
+        if (Number.isInteger(index) && index >= 0) {
             this.multiAlertService.current = index;
         }
     }

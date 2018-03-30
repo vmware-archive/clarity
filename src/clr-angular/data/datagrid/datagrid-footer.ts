@@ -13,22 +13,18 @@ import {Selection, SelectionType} from "./providers/selection";
 @Component({
     selector: "clr-dg-footer",
     template: `
-        <div class="datagrid-footer-left">
-            <ng-container
-                    *ngIf="(selection.selectionType === SELECTION_TYPE.Multi) && (selection.current.length > 0)">
-                <clr-checkbox [clrDisabled]="true" [clrChecked]="true" class="datagrid-foot-select">
-                    {{selection.current.length}}
-                </clr-checkbox>
-            </ng-container>
-            <ng-content select="clr-dg-column-toggle"></ng-content>
-            <clr-dg-column-toggle *ngIf="!toggle && activeToggler"></clr-dg-column-toggle>
+        <ng-container
+                *ngIf="(selection.selectionType === SELECTION_TYPE.Multi) && (selection.current.length > 0)">
+            <clr-checkbox [clrDisabled]="true" [clrChecked]="true" class="datagrid-footer-select">
+                {{selection.current.length}}
+            </clr-checkbox>
+        </ng-container>
+        <ng-content select="clr-dg-column-toggle"></ng-content>
+        <clr-dg-column-toggle *ngIf="!toggle && activeToggler"></clr-dg-column-toggle>
+        <div class="datagrid-footer-description">
+            <ng-content></ng-content>
         </div>
-        <div class="datagrid-footer-right">
-            <div class="datagrid-foot-description">
-                <ng-content></ng-content>
-            </div>
-            <ng-content select="clr-dg-pagination"></ng-content>
-        </div>
+        <ng-content select="clr-dg-pagination"></ng-content>
     `,
     host: {
         "[class.datagrid-footer]": "true",

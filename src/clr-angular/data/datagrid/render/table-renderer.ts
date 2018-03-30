@@ -40,7 +40,7 @@ export class DatagridTableRenderer implements OnDestroy {
 
     ngAfterViewInit() {
         this.outsideContainer.createEmbeddedView(this.projected);
-        this.table.tableElement = this.el;
+        this.table.tableRef = this.el;
     }
 
     private tableMode(on: boolean) {

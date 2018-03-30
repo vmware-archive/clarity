@@ -10,7 +10,7 @@
         display: flex;
         flex-flow: column nowrap;
         height: auto;
-        position: relative; // for the .datagrid-spinner to work.
+        position: relative; // Makes .datagrid-spinner work. TODO: This must be removed from the topic branch b4 merge.
         width: 100%;
     }
 
@@ -238,7 +238,7 @@
 
         // This changes the height and position of the datagrid-spinner when there is an action-bar
         // Allows us to cover the action-bar with the spinner backgdrop and prevent user interactions.
-        &  ~ .datagrid-spinner {
+        & ~ .datagrid-spinner {
             height: calc(100% - 1rem);
             top: 1rem; // Account for the margin above the datagrid-action-bar
         }
@@ -552,31 +552,16 @@
         flex: 0 0 auto;
         display: flex;
         flex-flow: row nowrap;
+        justify-content: flex-end;
+        align-items: stretch;
         height: 1.5rem;
         padding: 0 $clr-table-cellpadding;
         // Account for borders
         line-height: calc(1.5rem - #{3 * $clr-default-borderwidth});
         font-size: clr-getTypePropertyValueForDomElement(table_header, font-size);
         background-color: $clr-thead-bgcolor;
-        border-top: $clr-default-borderwidth solid $clr-table-footer-border-top-color;
+        border: $clr-default-borderwidth solid $clr-table-footer-border-top-color;
         border-radius: 0 0 $clr-global-borderradius $clr-global-borderradius;
-        border-left: $clr-table-borderstyle;
-        border-bottom: $clr-table-borderstyle;
-        border-right: $clr-table-borderstyle;
-
-        .datagrid-footer-left, .datagrid-footer-right {
-            flex: 1;
-        }
-
-        .datagrid-footer-left {
-            display: flex;
-            justify-content: flex-start;
-        }
-
-        .datagrid-footer-right {
-            display: flex;
-            justify-content: flex-end;
-        }
 
         .pagination {
             display: flex;
@@ -589,52 +574,6 @@
             &-list {
                 margin-left: 1.5rem;
                 height: calc(1.5rem - #{2 * $clr-default-borderwidth});
-
-                list-style: none;
-                display: flex;
-                flex-flow: row nowrap;
-                justify-content: center;
-                align-items: stretch;
-
-                > * {
-                    padding: 0 0.1rem;
-                    margin-left: 0.3rem;
-
-                    &:first-child {
-                        margin-left: 0;
-                    }
-                }
-
-                .pagination-current {
-                    font-weight: 600;
-                    border-bottom: (2 * $clr-default-borderwidth) solid $action-blues-dark-midtone;
-                }
-
-                $clr-pagination-extra-margin: 0.25rem;
-                .pagination-previous, .pagination-next {
-                    display: inline-block;
-                    vertical-align: middle;
-                    width: $clr-datagrid-icon-size;
-                    height: $clr-datagrid-icon-size;
-                    background-repeat: no-repeat;
-                    background-size: contain;
-                }
-
-                .pagination-previous {
-                    margin-right: $clr-pagination-extra-margin;
-                    background-image: generateLeftCaretIcon($gray-dark);
-                }
-                .pagination-next {
-                    margin-left: $clr-pagination-extra-margin;
-                    background-image: generateRightCaretIcon($gray-dark);
-                }
-
-                button {
-                    @include clr-no-styles-button();
-                    color: $gray-dark;
-                    // FIXME: this should be in the general reboot
-                    cursor: pointer;
-                }
             }
         }
 
@@ -696,7 +635,7 @@
 
                     li {
                         line-height: 1rem;
-                        padding-left: 2 * $clr-rem-1px;
+                        padding-left: 2 * $clr-rem-1px; // Hack that doesn't fix issue #539. TODO: Fix issue #539.
                     }
                 }
 
@@ -714,10 +653,29 @@
             }
         }
     }
-
-    .datagrid-foot-description {
+    .datagrid-footer-select.checkbox {
         display: block;
-        white-space: nowrap;
+        line-height: inherit;
+        flex: 1 1 (1.5rem - (2 * $clr-rem-1px)); // can't use calc() in flex. #thanksIE!
+        margin-right: 0.083333rem; // Space for the instance when a hideable column toggle is next to it.
+        align-self: flex-start;
+        label {
+            color: unset;
+            cursor: default;
+            opacity: 1;
+            line-height: inherit;
+        }
+
+        input[type="checkbox"] + label {
+            &::before, &::after {
+                top: 0.333333rem;
+            }
+
+            &::after {
+                border-left-color: $clr-white;
+                border-bottom-color: $clr-white;
+            }
+        }
     }
 
     .datagrid-spinner {
@@ -729,6 +687,7 @@
         top: 0.5rem;
         height: calc(100% - 0.5rem); // Account for the margin above the datagrid-action-bar
         background-color: $clr-datagrid-loading-background;
+        z-index: map-get($clr-layers, modal-bg); // Keeps the spinner above the datagrid header.
     }
 
     .datagrid-select {
@@ -792,6 +751,20 @@
             }
         }
 
+        .datagrid-footer-select.checkbox {
+            input[type="checkbox"] + label {
+                &::before, &::after {
+                    top: 0.11111rem;
+                }
+
+                // Need a better way to prevent the border-color from getting clobbered.
+                &::after {
+                    border-left-color: $clr-white;
+                    border-bottom-color: $clr-white;
+                }
+            }
+        }
+
         .datagrid-footer {
             height: 1rem;
             padding: 0 $clr-table-cellpadding;
@@ -803,11 +776,61 @@
                 margin: 0;
                 outline-offset: $clr-datagrid-compact-outline-offset;
             }
-            .datagrid-foot-select.checkbox input[type="checkbox"] + label {
-                &::before, &::after {
-                    top: 0.11111rem;
-                }
+        }
+    }
+
+    .datagrid-footer-description {
+        display: block;
+        white-space: nowrap;
+    }
+
+    // Yes, this is not .datagrid-pagination on purpose.
+    // I've been told to consider a potential separate pagination component.
+    .pagination-list {
+        list-style: none;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: stretch;
+
+        > * {
+            padding: 0 0.1rem;
+            margin-left: 0.3rem;
+
+            &:first-child {
+                margin-left: 0;
             }
+        }
+
+        .pagination-current {
+            font-weight: 600;
+            border-bottom: (2 * $clr-default-borderwidth) solid $action-blues-dark-midtone;
+        }
+
+        $clr-pagination-extra-margin: 0.25rem;
+        .pagination-previous, .pagination-next {
+            display: inline-block;
+            vertical-align: middle;
+            width: $clr-datagrid-icon-size;
+            height: $clr-datagrid-icon-size;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .pagination-previous {
+            margin-right: $clr-pagination-extra-margin;
+            background-image: generateLeftCaretIcon($gray-dark);
+        }
+        .pagination-next {
+            margin-left: $clr-pagination-extra-margin;
+            background-image: generateRightCaretIcon($gray-dark);
+        }
+
+        button {
+            @include clr-no-styles-button();
+            color: $gray-dark;
+            // FIXME: this should be in the general reboot
+            cursor: pointer;
         }
     }
 
@@ -825,6 +848,7 @@
         min-width: 0 !important;
     }
 
+    // This class is only applied temporarily, to improve rendering performance, while performing internal operations.
     // Used in table-renderer.ts in noLayout with NO_LAYOUT_CLASS.
     .datagrid-no-layout {
         display: block;

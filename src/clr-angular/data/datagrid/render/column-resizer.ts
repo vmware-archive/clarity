@@ -57,7 +57,7 @@ export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
             this.columnMinWidth = this.domAdapter.minWidth(this.columnEl);
         }
         this.renderer.setStyle(this.handleTrackerEl, "display", "block");
-        this.renderer.setStyle(this.handleTrackerEl, "height", `${this.table.tableRef.nativeElement.clientHeight}px`);
+        this.renderer.setStyle(this.handleTrackerEl, "height", this.table.getHeight());
         this.renderer.setStyle(document.body, "cursor", "col-resize");
         this.dragDistancePositionX = 0;
         this.columnRectWidth = this.domAdapter.clientRectWidth(this.columnEl);

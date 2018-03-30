@@ -8,13 +8,13 @@ import {ElementRef, Injectable} from "@angular/core";
 
 /**
  * @description
- * Internal datagrid service that holds a reference to the clr-dg-table element.
+ * Internal datagrid service that holds a reference to the clr-dg-table element and exposes a method to get height.
  */
 @Injectable()
 export class TableHeightService {
     public tableRef: ElementRef;
 
-    set tableElement(table: ElementRef) {
-        this.tableRef = table;
+    getHeight(): string {
+        return `${this.tableRef.nativeElement.clientHeight}px`;
     }
 }

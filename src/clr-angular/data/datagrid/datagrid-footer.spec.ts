@@ -45,7 +45,7 @@ export default function(): void {
 
                 context.detectChanges();
 
-                expect(context.clarityElement.querySelector(".datagrid-foot-select")).toBeNull();
+                expect(context.clarityElement.querySelector(".datagrid-footer-select")).toBeNull();
             });
 
             it("does not show the selection details when selection type is single", function() {
@@ -55,7 +55,7 @@ export default function(): void {
 
                 context.detectChanges();
 
-                expect(context.clarityElement.querySelector(".datagrid-foot-select")).toBeNull();
+                expect(context.clarityElement.querySelector(".datagrid-footer-select")).toBeNull();
             });
 
             it("shows the selection details when more than one item is selected", function() {
@@ -66,23 +66,23 @@ export default function(): void {
                 context.clarityDirective.cdr.markForCheck();
                 context.detectChanges();
 
-                expect(context.clarityElement.querySelector(".datagrid-foot-select")).not.toBeNull();
-                expect(context.clarityElement.querySelector(".datagrid-foot-select").textContent).toMatch("1");
+                expect(context.clarityElement.querySelector(".datagrid-footer-select")).not.toBeNull();
+                expect(context.clarityElement.querySelector(".datagrid-footer-select").textContent).toMatch("1");
 
 
                 clarityDirectiveSelection.current.push(1);
                 context.clarityDirective.cdr.markForCheck();
                 context.detectChanges();
 
-                expect(context.clarityElement.querySelector(".datagrid-foot-select")).not.toBeNull();
-                expect(context.clarityElement.querySelector(".datagrid-foot-select").textContent).toMatch("2");
+                expect(context.clarityElement.querySelector(".datagrid-footer-select")).not.toBeNull();
+                expect(context.clarityElement.querySelector(".datagrid-footer-select").textContent).toMatch("2");
 
                 clarityDirectiveSelection.current = [];
 
                 context.clarityDirective.cdr.markForCheck();
                 context.detectChanges();
 
-                expect(context.clarityElement.querySelector(".datagrid-foot-select")).toBeNull();
+                expect(context.clarityElement.querySelector(".datagrid-footer-select")).toBeNull();
             });
         });
 

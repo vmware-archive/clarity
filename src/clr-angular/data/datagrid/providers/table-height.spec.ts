@@ -28,7 +28,7 @@ describe("TableHeightService", function() {
 
     it("sets a tableRef property with an elementReference", function() {
         const table: TableHeightService = new TableHeightService();
-        table.tableElement = fixture.debugElement.componentInstance.elementRef;
+        table.tableRef = fixture.debugElement.componentInstance.elementRef;
         expect(table.tableRef).toBe(fixture.debugElement.componentInstance.elementRef);
     });
 });

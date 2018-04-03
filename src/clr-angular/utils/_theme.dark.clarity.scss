@@ -333,7 +333,7 @@ $clr-card-divider-color: $clr-card-border-color;
  * Usage: ../data/datagrid/_datagrid.clarity.scss
  */
 $clr-datagrid-row-hover: #29414e;
-$clr-datagrid-row-selected: #324f61;
+$clr-datagrid-row-selected: $clr-white;
 $clr-datagrid-popover-bg-color: #22343c;
 $clr-datagrid-action-toggle: $clr-datagrid-font-color;
 $clr-datagrid-popover-border-color: $clr-black;

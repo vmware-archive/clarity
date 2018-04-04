@@ -6,6 +6,9 @@ let geminiSuiteFor = (suiteElementId, additionalCaptures = {}) => {
     let execJSFuncInBrowserScope = new Function("window", `document.getElementById('${suiteElementId}').scrollIntoView();`);
 
     return gemini.suite(suiteElementId, (child) => {
+        if(suiteElementId === "datagrid-compact-with-signpost") {
+            child.setTolerance(15);
+        }
         Object.keys(additionalCaptures).reduce((fromPrevCapture, captureName) => {
             return fromPrevCapture.capture(captureName, additionalCaptures[captureName]);
         }, child.setUrl("/datagrid/compact")

@@ -57,7 +57,7 @@ export class DatagridRowExpandAnimation {
     this.oldHeight = this.domAdapter.computedHeight(this.el.nativeElement);
     // We set the height of the element immediately to avoid a flicker before the animation starts.
     this.renderer.setStyle(this.el.nativeElement, 'height', this.oldHeight + 'px');
-    this.renderer.setStyle(this.el.nativeElement, 'overflow-y', 'hidden');
+    this.renderer.addClass(this.el.nativeElement, 'datagrid-computing-row-height');
     setTimeout(() => {
       if (this.expand.loading) {
         return;
@@ -73,11 +73,11 @@ export class DatagridRowExpandAnimation {
     this.renderOrganizer.scrollbar.next();
     const newHeight = this.domAdapter.computedHeight(this.el.nativeElement);
     this.running = this.el.nativeElement.animate(
-      { height: [this.oldHeight + 'px', newHeight + 'px'], overflowY: ['hidden', 'hidden'], easing: 'ease-in-out' },
+      { height: [this.oldHeight + 'px', newHeight + 'px'], easing: 'ease-in-out' },
       { duration: 200 }
     );
     this.running.onfinish = () => {
-      this.renderer.setStyle(this.el.nativeElement, 'overflow-y', null);
+      this.renderer.removeClass(this.el.nativeElement, 'datagrid-computing-row-height');
       delete this.running;
     };
     delete this.oldHeight;

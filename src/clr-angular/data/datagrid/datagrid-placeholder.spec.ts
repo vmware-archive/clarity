@@ -56,15 +56,6 @@ export default function(): void {
       it('projects content when there are no items', function() {
         expect(context.clarityElement.textContent.trim()).toMatch('Hello world');
       });
-
-      it(
-        'has height 1px (which acts as a bottom border for the last row)' + 'when no empty rows are needed',
-        function() {
-          itemsProvider.all = new Array(2);
-          context.detectChanges();
-          expect(context.clarityElement.scrollHeight).toBe(1);
-        }
-      );
     });
   });
 }

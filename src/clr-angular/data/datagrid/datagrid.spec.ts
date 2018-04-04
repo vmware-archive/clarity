@@ -3,17 +3,21 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Renderer2 } from '@angular/core';
 import { Subject } from 'rxjs';
 
 import { DatagridPropertyStringFilter } from './built-in/filters/datagrid-property-string-filter';
 import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
 import { ClrDatagrid } from './datagrid';
+import { DatagridDisplayMode } from './enums/display-mode.enum';
 import { TestContext } from './helpers.spec';
 import { ClrDatagridComparatorInterface } from './interfaces/comparator.interface';
 import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { ClrDatagridStateInterface } from './interfaces/state.interface';
 import { ClrDatagridStringFilterInterface } from './interfaces/string-filter.interface';
+import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
+import { MockDisplayModeService } from './providers/display-mode.mock';
+import { DisplayModeService } from './providers/display-mode.service';
 import { FiltersProvider } from './providers/filters';
 import { ExpandableRowsCount } from './providers/global-expandable-rows';
 import { HideableColumnService } from './providers/hideable-column.service';
@@ -22,7 +26,305 @@ import { Page } from './providers/page';
 import { RowActionService } from './providers/row-action-service';
 import { Selection, SelectionType } from './providers/selection';
 import { Sort } from './providers/sort';
+import { StateDebouncer } from './providers/state-debouncer.provider';
+import { StateProvider } from './providers/state.provider';
+import { TableSizeService } from './providers/table-size.service';
 import { DatagridRenderOrganizer } from './render/render-organizer';
+
+@Component({
+  template: `
+    <clr-datagrid *ngIf="!destroy"
+                  [(clrDgSelected)]="selected" [clrDgLoading]="loading" (clrDgRefresh)="refresh($event)">
+        <clr-dg-column>
+            First
+            <clr-dg-filter *ngIf="filter" [clrDgFilter]="testFilter"></clr-dg-filter>
+        </clr-dg-column>
+        <clr-dg-column>Second</clr-dg-column>
+    
+        <clr-dg-row *clrDgItems="let item of items">
+            <clr-dg-cell>{{item}}</clr-dg-cell>
+            <clr-dg-cell>{{item * item}}</clr-dg-cell>
+        </clr-dg-row>
+    
+        <clr-dg-footer>{{items.length}} items</clr-dg-footer>
+    </clr-datagrid>
+`,
+})
+class FullTest {
+  items = [1, 2, 3];
+
+  loading = false;
+  selected: number[];
+
+  nbRefreshed = 0;
+  latestState: ClrDatagridStateInterface;
+
+  fakeLoad = false;
+
+  // ClrDatagridFilterInterface needed to test the non-emission of refresh on destroy, even with an active filter
+  filter = false;
+  testFilter = new TestFilter();
+
+  destroy = false;
+
+  refresh(state: ClrDatagridStateInterface) {
+    this.nbRefreshed++;
+    this.latestState = state;
+    this.loading = this.fakeLoad;
+  }
+}
+
+@Component({
+  template: `
+    <clr-datagrid>
+        <clr-dg-column>First</clr-dg-column>
+        <clr-dg-column>Second</clr-dg-column>
+    
+        <clr-dg-row *ngFor="let item of items">
+            <clr-dg-cell>{{item}}</clr-dg-cell>
+            <clr-dg-cell>{{item * item}}</clr-dg-cell>
+        </clr-dg-row>
+    
+        <clr-dg-footer>{{items.length}} items</clr-dg-footer>
+    </clr-datagrid>
+`,
+})
+class NgForTest {
+  items = [1, 2, 3];
+}
+
+// Have to wrap the OnPush component otherwise change detection doesn't run.
+// The secret here is OnPush only updates on input changes, hence the wrapper.
+@Component({
+  template: `
+    <multi-select-test [items]="items" [selected]="selected"></multi-select-test>
+    `,
+})
+class OnPushTest {
+  items = [1, 2, 3];
+  selected: any[] = [];
+}
+
+@Component({
+  selector: 'multi-select-test',
+  template: `
+    <clr-datagrid [(clrDgSelected)]="selected">
+        <clr-dg-column>First</clr-dg-column>
+        <clr-dg-column>Second</clr-dg-column>
+    
+        <clr-dg-row *clrDgItems="let item of items;" [clrDgItem]="item">
+            <clr-dg-cell>{{item}}</clr-dg-cell>
+            <clr-dg-cell>{{item * item}}</clr-dg-cell>
+        </clr-dg-row>
+    </clr-datagrid>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+class MultiSelectionTest {
+  @Input() items: any[] = [];
+  @Input() selected: any[] = [];
+}
+
+@Component({
+  template: `
+    <clr-datagrid [(clrDgSingleSelected)]="selected">
+        <clr-dg-column>First</clr-dg-column>
+        <clr-dg-column>Second</clr-dg-column>
+    
+        <clr-dg-row *clrDgItems="let item of items;" [clrDgItem]="item">
+            <clr-dg-cell>{{item}}</clr-dg-cell>
+            <clr-dg-cell>{{item * item}}</clr-dg-cell>
+        </clr-dg-row>
+    
+        <clr-dg-footer (click)="selected = null">{{selected}}</clr-dg-footer>
+    </clr-datagrid>
+`,
+})
+class SingleSelectionTest {
+  items = [1, 2, 3];
+  selected: any;
+}
+
+@Component({
+  template: `
+    <clr-datagrid>
+        <clr-dg-column>First</clr-dg-column>
+        <clr-dg-column>Second</clr-dg-column>
+    
+        <clr-dg-row *clrDgItems="let item of items;">
+        
+            <clr-dg-action-overflow *ngIf="item > showIfGreaterThan">
+                <button class="action-item">Edit</button>
+            </clr-dg-action-overflow>
+                
+            <clr-dg-cell>{{item}}</clr-dg-cell>
+            <clr-dg-cell>{{item * item}}</clr-dg-cell>
+        </clr-dg-row>
+    
+        <clr-dg-footer>{{items.length}} items</clr-dg-footer>
+    </clr-datagrid>
+`,
+})
+class ActionableRowTest {
+  items = [1, 2, 3];
+  showIfGreaterThan = 0;
+}
+
+@Component({
+  template: `
+    <clr-datagrid>
+        <clr-dg-column>First</clr-dg-column>
+        <clr-dg-column>Second</clr-dg-column>
+    
+        <clr-dg-row *clrDgItems="let item of items;" [clrDgItem]="item">
+            <clr-dg-cell>{{item}}</clr-dg-cell>
+            <clr-dg-cell>{{item * item}}</clr-dg-cell>
+            <ng-template [ngIf]="expandable">
+                <clr-dg-row-detail *clrIfExpanded>Detail</clr-dg-row-detail>
+            </ng-template>
+        </clr-dg-row>
+    
+        <clr-dg-footer>{{items.length}} items</clr-dg-footer>
+    </clr-datagrid>
+`,
+})
+class ExpandableRowTest {
+  items = [1, 2, 3];
+  expandable = true;
+}
+
+@Component({
+  template: `
+        <clr-datagrid>
+            <clr-dg-column>First</clr-dg-column>
+            <clr-dg-column>Second</clr-dg-column>
+
+            <clr-dg-row *clrDgItems="let item of items; index as i">
+                <clr-dg-action-overflow *ngIf="action && i === 1">
+                    <button class="action-item">Edit</button>
+                </clr-dg-action-overflow>
+                <clr-dg-cell>{{item}}</clr-dg-cell>
+                <clr-dg-cell>{{item * item}}</clr-dg-cell>
+                <ng-template [ngIf]="expandable && i === 1">
+                    <clr-dg-row-detail *clrIfExpanded>Detail</clr-dg-row-detail>
+                </ng-template>
+            </clr-dg-row>
+
+            <clr-dg-footer>{{items.length}} items</clr-dg-footer>
+        </clr-datagrid>
+    `,
+})
+class ChocolateClrDgItemsTest {
+  items = [1, 2, 3];
+  action = false;
+  expandable = false;
+}
+
+@Component({
+  template: `
+        <clr-datagrid>
+            <clr-dg-column>First</clr-dg-column>
+            <clr-dg-column>Second</clr-dg-column>
+
+            <clr-dg-row *ngFor="let item of items; index as i">
+                <clr-dg-action-overflow *ngIf="action && i === 1">
+                    <button class="action-item">Edit</button>
+                </clr-dg-action-overflow>
+                <clr-dg-cell>{{item}}</clr-dg-cell>
+                <clr-dg-cell>{{item * item}}</clr-dg-cell>
+                <ng-template [ngIf]="expandable && i === 1">
+                    <clr-dg-row-detail *clrIfExpanded>Detail</clr-dg-row-detail>
+                </ng-template>
+            </clr-dg-row>
+
+            <clr-dg-footer>{{items.length}} items</clr-dg-footer>
+        </clr-datagrid>
+    `,
+})
+class ChocolateNgForTest {
+  items = [1, 2, 3];
+  action = false;
+  expandable = false;
+}
+
+class TestComparator implements ClrDatagridComparatorInterface<number> {
+  compare(a: number, b: number): number {
+    return 0;
+  }
+}
+
+class TestFilter implements ClrDatagridFilterInterface<number> {
+  isActive(): boolean {
+    return true;
+  }
+
+  accepts(n: number): boolean {
+    return true;
+  }
+
+  changes = new Subject<boolean>();
+}
+
+class TestStringFilter implements ClrDatagridStringFilterInterface<number> {
+  accepts(item: number, search: string) {
+    return true;
+  }
+}
+
+@Component({
+  selector: 'hidden-column-test',
+  template: `
+    <clr-datagrid>
+        <clr-dg-column>
+            <ng-container *clrDgHideableColumn="{hidden: true}">
+                First
+            </ng-container>
+        </clr-dg-column>
+        <clr-dg-column>Second</clr-dg-column>
+    
+        <clr-dg-row *ngFor="let item of items;">
+            <clr-dg-cell>{{item}}</clr-dg-cell>
+            <clr-dg-cell>{{item * item}}</clr-dg-cell>
+        </clr-dg-row>
+    </clr-datagrid>`,
+})
+class HiddenColumnTest {
+  items = [1, 2, 3];
+}
+
+@Component({
+  template: `
+    <clr-datagrid>
+        <clr-dg-column>First</clr-dg-column>
+        <clr-dg-column>Second</clr-dg-column>
+    
+        <clr-dg-row *ngFor="let item of items;">
+            <clr-dg-cell>{{item}}</clr-dg-cell>
+            <clr-dg-cell>{{item * item}}</clr-dg-cell>
+        </clr-dg-row>
+    </clr-datagrid>`,
+})
+class ProjectionTest {
+  constructor(renderer: Renderer2) {}
+
+  items = [1, 2, 3];
+}
+
+const PROVIDERS = [
+  { provide: DisplayModeService, useClass: MockDisplayModeService },
+  Selection,
+  Sort,
+  FiltersProvider,
+  Page,
+  Items,
+  DatagridRenderOrganizer,
+  RowActionService,
+  ExpandableRowsCount,
+  HideableColumnService,
+  StateDebouncer,
+  StateProvider,
+  ColumnToggleButtonsService,
+  TableSizeService,
+];
 
 export default function(): void {
   describe('ClrDatagrid component', function() {
@@ -44,13 +346,13 @@ export default function(): void {
 
       it('allows to manually resize the datagrid', function() {
         const organizer: DatagridRenderOrganizer = context.getClarityProvider(DatagridRenderOrganizer);
-        let resizeDone: boolean = false;
-        organizer.done.subscribe(() => {
-          resizeDone = true;
+        let resizeSteps = 0;
+        organizer.renderStep.subscribe(() => {
+          resizeSteps++;
         });
-        expect(resizeDone).toBe(false);
+        expect(resizeSteps).toBe(0);
         context.clarityDirective.resize();
-        expect(resizeDone).toBe(true);
+        expect(resizeSteps).toBe(7);
       });
     });
 
@@ -204,19 +506,19 @@ export default function(): void {
       });
 
       it('projects columns in the header', function() {
-        const header = context.clarityElement.querySelector('.datagrid-head');
+        const header = context.clarityElement.querySelector('.datagrid-header');
         expect(header.textContent).toMatch(/First\s*Second/);
       });
 
       it('projects the footer', function() {
-        expect(context.clarityElement.querySelector('.datagrid-foot')).not.toBeNull();
+        expect(context.clarityElement.querySelector('.datagrid-footer')).not.toBeNull();
       });
 
       it('adds a11y roles to datagrid', function() {
-        const tableWrapper = context.clarityElement.querySelector('.datagrid-table-wrapper');
+        const tableWrapper = context.clarityElement.querySelector('.datagrid-table');
         expect(tableWrapper.attributes.role.value).toEqual('grid');
 
-        const header = context.clarityElement.querySelector('.datagrid-head');
+        const header = context.clarityElement.querySelector('.datagrid-header');
         expect(header.attributes.role.value).toEqual('rowgroup');
 
         const row = context.clarityElement.querySelector('.datagrid-row');
@@ -230,23 +532,14 @@ export default function(): void {
     describe('Iterators', function() {
       it('projects rows when using ngFor', function() {
         this.context = this.create(ClrDatagrid, NgForTest, [HideableColumnService]);
-        const body = this.context.clarityElement.querySelector('.datagrid-body');
+        const body = this.context.clarityElement.querySelector('.datagrid-table');
         expect(body.textContent).toMatch(/1\s*1\s*2\s*4\s*3\s*9/);
       });
 
       it('uses the rows template when using clrDgItems', function() {
         this.context = this.create(ClrDatagrid, FullTest, [HideableColumnService]);
-        const body = this.context.clarityElement.querySelector('.datagrid-body');
+        const body = this.context.clarityElement.querySelector('.datagrid-table');
         expect(body.textContent).toMatch(/1\s*1\s*2\s*4\s*3\s*9/);
-      });
-
-      it('respects the trackBy option when using clrDgItems', function() {
-        this.context = this.create(ClrDatagrid, TrackByTest, [HideableColumnService]);
-        const oldFirstRow = this.context.clarityElement.querySelector('clr-dg-row');
-        this.context.testComponent.items = [42];
-        this.context.detectChanges();
-        const newFirstRow = this.context.clarityElement.querySelector('clr-dg-row');
-        expect(newFirstRow).toBe(oldFirstRow);
       });
     });
 
@@ -261,12 +554,12 @@ export default function(): void {
         context = this.create(ClrDatagrid, ActionableRowTest, [HideableColumnService]);
         rowActionService = context.getClarityProvider(RowActionService);
         expect(rowActionService.hasActionableRow).toBe(true);
-        const datagridHead = context.clarityElement.querySelector('.datagrid-head');
+        const datagridHead = context.clarityElement.querySelector('.datagrid-header');
         headActionOverflowCell = datagridHead.querySelector('.datagrid-column.datagrid-row-actions');
-        actionOverflowCell = context.clarityElement.querySelectorAll('clr-dg-cell.datagrid-row-actions');
+        actionOverflowCell = context.clarityElement.querySelectorAll('.datagrid-row-actions');
         actionOverflow = context.clarityElement.querySelectorAll('clr-dg-action-overflow');
         expect(headActionOverflowCell).not.toBeNull();
-        expect(actionOverflowCell.length).toEqual(3);
+        expect(actionOverflowCell.length).toEqual(4);
         expect(actionOverflow.length).toEqual(3);
       });
 
@@ -278,7 +571,7 @@ export default function(): void {
         actionOverflow = context.clarityElement.querySelectorAll('clr-dg-action-overflow');
         expect(actionOverflow.length).toEqual(0);
         expect(rowActionService.hasActionableRow).toBe(false);
-        const datagridHead = context.clarityElement.querySelector('.datagrid-head');
+        const datagridHead = context.clarityElement.querySelector('.datagrid-header');
         headActionOverflowCell = datagridHead.querySelector('.datagrid-column.datagrid-row-actions');
         actionOverflowCell = context.clarityElement.querySelectorAll('clr-dg-cell.datagrid-single-select');
         expect(headActionOverflowCell).toBeNull();
@@ -466,288 +759,43 @@ export default function(): void {
         });
       });
     });
+
+    describe('Content Projection', function() {
+      let context: TestContext<ClrDatagrid, OnPushTest>;
+      let displayModeService: MockDisplayModeService;
+
+      beforeEach(function() {
+        context = this.createWithOverride(ClrDatagrid, ProjectionTest, [], [], PROVIDERS);
+        displayModeService = <MockDisplayModeService>context.getClarityProvider(DisplayModeService);
+      });
+
+      it('moves columns into the display container', function() {
+        displayModeService.updateView(DatagridDisplayMode.DISPLAY);
+        const displayHeader = context.clarityElement.querySelector('.datagrid-header');
+        const displayColumns = displayHeader.querySelectorAll('.datagrid-column');
+        expect(displayColumns.length).toBe(2);
+      });
+
+      it('moves rows into the display container', function() {
+        displayModeService.updateView(DatagridDisplayMode.DISPLAY);
+        const displayTable = context.clarityElement.querySelector('.datagrid-table');
+        const displayRows = displayTable.querySelectorAll('.datagrid-row');
+        expect(displayRows.length).toBe(4);
+      });
+
+      it('moves columns into the calculation container', function() {
+        displayModeService.updateView(DatagridDisplayMode.CALCULATE);
+        const calculationHeader = context.clarityElement.querySelector('.datagrid-calculation-header');
+        const calculationColumns = calculationHeader.querySelectorAll('.datagrid-column');
+        expect(calculationColumns.length).toBe(2);
+      });
+
+      it('moves the rows into the calculation container', function() {
+        displayModeService.updateView(DatagridDisplayMode.CALCULATE);
+        const calculationTable = context.clarityElement.querySelector('.datagrid-calculation-table');
+        const calculationRows = calculationTable.querySelectorAll('.datagrid-row');
+        expect(calculationRows.length).toBe(3);
+      });
+    });
   });
-}
-
-@Component({
-  template: `
-    <clr-datagrid *ngIf="!destroy"
-                  [(clrDgSelected)]="selected" [clrDgLoading]="loading" (clrDgRefresh)="refresh($event)">
-        <clr-dg-column>
-            First
-            <clr-dg-filter *ngIf="filter" [clrDgFilter]="testFilter"></clr-dg-filter>
-        </clr-dg-column>
-        <clr-dg-column>Second</clr-dg-column>
-
-        <clr-dg-row *clrDgItems="let item of items">
-            <clr-dg-cell>{{item}}</clr-dg-cell>
-            <clr-dg-cell>{{item * item}}</clr-dg-cell>
-        </clr-dg-row>
-
-        <clr-dg-footer>{{items.length}} items</clr-dg-footer>
-    </clr-datagrid>
-`,
-})
-class FullTest {
-  items = [1, 2, 3];
-
-  loading = false;
-  selected: number[];
-
-  nbRefreshed = 0;
-  latestState: ClrDatagridStateInterface<number>;
-
-  fakeLoad = false;
-
-  // ClrDatagridFilterInterface needed to test the non-emission of refresh on destroy, even with an active filter
-  filter = false;
-  testFilter = new TestFilter();
-
-  destroy = false;
-
-  refresh(state: ClrDatagridStateInterface<number>) {
-    this.nbRefreshed++;
-    this.latestState = state;
-    this.loading = this.fakeLoad;
-  }
-}
-
-@Component({
-  template: `
-    <clr-datagrid>
-        <clr-dg-column>First</clr-dg-column>
-        <clr-dg-column>Second</clr-dg-column>
-
-        <clr-dg-row *ngFor="let item of items">
-            <clr-dg-cell>{{item}}</clr-dg-cell>
-            <clr-dg-cell>{{item * item}}</clr-dg-cell>
-        </clr-dg-row>
-
-        <clr-dg-footer>{{items.length}} items</clr-dg-footer>
-    </clr-datagrid>
-`,
-})
-class NgForTest {
-  items = [1, 2, 3];
-}
-
-@Component({
-  template: `
-    <clr-datagrid>
-        <clr-dg-column>First</clr-dg-column>
-        <clr-dg-column>Second</clr-dg-column>
-
-        <clr-dg-row *clrDgItems="let item of items; trackBy: trackByIndex">
-            <clr-dg-cell>{{item}}</clr-dg-cell>
-            <clr-dg-cell>{{item * item}}</clr-dg-cell>
-        </clr-dg-row>
-
-        <clr-dg-footer>{{items.length}} items</clr-dg-footer>
-    </clr-datagrid>
-`,
-})
-class TrackByTest {
-  items = [1, 2, 3];
-
-  trackByIndex(index: number, item: number) {
-    return index;
-  }
-}
-
-// Have to wrap the OnPush component otherwise change detection doesn't run.
-// The secret here is OnPush only updates on input changes, hence the wrapper.
-@Component({
-  template: `
-    <multi-select-test [items]="items" [selected]="selected"></multi-select-test>
-    `,
-})
-class OnPushTest {
-  items = [1, 2, 3];
-  selected: number[] = [];
-}
-
-@Component({
-  selector: 'multi-select-test',
-  template: `
-    <clr-datagrid [(clrDgSelected)]="selected">
-        <clr-dg-column>First</clr-dg-column>
-        <clr-dg-column>Second</clr-dg-column>
-
-        <clr-dg-row *clrDgItems="let item of items;" [clrDgItem]="item">
-            <clr-dg-cell>{{item}}</clr-dg-cell>
-            <clr-dg-cell>{{item * item}}</clr-dg-cell>
-        </clr-dg-row>
-    </clr-datagrid>`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-class MultiSelectionTest {
-  @Input() items: number[] = [];
-  @Input() selected: number[] = [];
-}
-
-@Component({
-  template: `
-    <clr-datagrid [(clrDgSingleSelected)]="selected">
-        <clr-dg-column>First</clr-dg-column>
-        <clr-dg-column>Second</clr-dg-column>
-
-        <clr-dg-row *clrDgItems="let item of items;" [clrDgItem]="item">
-            <clr-dg-cell>{{item}}</clr-dg-cell>
-            <clr-dg-cell>{{item * item}}</clr-dg-cell>
-        </clr-dg-row>
-
-        <clr-dg-footer (click)="selected = null">{{selected}}</clr-dg-footer>
-    </clr-datagrid>
-`,
-})
-class SingleSelectionTest {
-  items = [1, 2, 3];
-  selected: number;
-}
-
-@Component({
-  template: `
-    <clr-datagrid>
-        <clr-dg-column>First</clr-dg-column>
-        <clr-dg-column>Second</clr-dg-column>
-
-        <clr-dg-row *clrDgItems="let item of items;">
-
-            <clr-dg-action-overflow *ngIf="item > showIfGreaterThan">
-                <button class="action-item">Edit</button>
-            </clr-dg-action-overflow>
-
-            <clr-dg-cell>{{item}}</clr-dg-cell>
-            <clr-dg-cell>{{item * item}}</clr-dg-cell>
-        </clr-dg-row>
-
-        <clr-dg-footer>{{items.length}} items</clr-dg-footer>
-    </clr-datagrid>
-`,
-})
-class ActionableRowTest {
-  items = [1, 2, 3];
-  showIfGreaterThan = 0;
-}
-
-@Component({
-  template: `
-    <clr-datagrid>
-        <clr-dg-column>First</clr-dg-column>
-        <clr-dg-column>Second</clr-dg-column>
-
-        <clr-dg-row *clrDgItems="let item of items;" [clrDgItem]="item">
-            <clr-dg-cell>{{item}}</clr-dg-cell>
-            <clr-dg-cell>{{item * item}}</clr-dg-cell>
-            <ng-template [ngIf]="expandable">
-                <clr-dg-row-detail *clrIfExpanded>Detail</clr-dg-row-detail>
-            </ng-template>
-        </clr-dg-row>
-
-        <clr-dg-footer>{{items.length}} items</clr-dg-footer>
-    </clr-datagrid>
-`,
-})
-class ExpandableRowTest {
-  items = [1, 2, 3];
-  expandable = true;
-}
-
-@Component({
-  template: `
-        <clr-datagrid>
-            <clr-dg-column>First</clr-dg-column>
-            <clr-dg-column>Second</clr-dg-column>
-
-            <clr-dg-row *clrDgItems="let item of items; index as i">
-                <clr-dg-action-overflow *ngIf="action && i === 1">
-                    <button class="action-item">Edit</button>
-                </clr-dg-action-overflow>
-                <clr-dg-cell>{{item}}</clr-dg-cell>
-                <clr-dg-cell>{{item * item}}</clr-dg-cell>
-                <ng-template [ngIf]="expandable && i === 1">
-                    <clr-dg-row-detail *clrIfExpanded>Detail</clr-dg-row-detail>
-                </ng-template>
-            </clr-dg-row>
-
-            <clr-dg-footer>{{items.length}} items</clr-dg-footer>
-        </clr-datagrid>
-    `,
-})
-class ChocolateClrDgItemsTest {
-  items = [1, 2, 3];
-  action = false;
-  expandable = false;
-}
-
-@Component({
-  template: `
-        <clr-datagrid>
-            <clr-dg-column>First</clr-dg-column>
-            <clr-dg-column>Second</clr-dg-column>
-
-            <clr-dg-row *ngFor="let item of items; index as i">
-                <clr-dg-action-overflow *ngIf="action && i === 1">
-                    <button class="action-item">Edit</button>
-                </clr-dg-action-overflow>
-                <clr-dg-cell>{{item}}</clr-dg-cell>
-                <clr-dg-cell>{{item * item}}</clr-dg-cell>
-                <ng-template [ngIf]="expandable && i === 1">
-                    <clr-dg-row-detail *clrIfExpanded>Detail</clr-dg-row-detail>
-                </ng-template>
-            </clr-dg-row>
-
-            <clr-dg-footer>{{items.length}} items</clr-dg-footer>
-        </clr-datagrid>
-    `,
-})
-class ChocolateNgForTest {
-  items = [1, 2, 3];
-  action = false;
-  expandable = false;
-}
-
-class TestComparator implements ClrDatagridComparatorInterface<number> {
-  compare(a: number, b: number): number {
-    return 0;
-  }
-}
-
-class TestFilter implements ClrDatagridFilterInterface<number> {
-  isActive(): boolean {
-    return true;
-  }
-
-  accepts(n: number): boolean {
-    return true;
-  }
-
-  changes = new Subject<boolean>();
-}
-
-class TestStringFilter implements ClrDatagridStringFilterInterface<number> {
-  accepts(item: number, search: string) {
-    return true;
-  }
-}
-
-@Component({
-  selector: 'hidden-column-test',
-  template: `
-    <clr-datagrid>
-        <clr-dg-column>
-            <ng-container *clrDgHideableColumn="{hidden: true}">
-                First
-            </ng-container>
-        </clr-dg-column>
-        <clr-dg-column>Second</clr-dg-column>
-
-        <clr-dg-row *ngFor="let item of items;">
-            <clr-dg-cell>{{item}}</clr-dg-cell>
-            <clr-dg-cell>{{item * item}}</clr-dg-cell>
-        </clr-dg-row>
-    </clr-datagrid>`,
-})
-class HiddenColumnTest {
-  items = [1, 2, 3];
 }

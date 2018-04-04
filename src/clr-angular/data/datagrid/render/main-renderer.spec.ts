@@ -6,51 +6,62 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Needed to recreate issue #1084
+import { DatagridRenderStep } from '../enums/render-step.enum';
 import { ClrDatagridModule } from '../datagrid.module';
 import { TestContext } from '../helpers.spec';
-import { Page } from '../providers/page';
 
 import { DatagridHeaderRenderer } from './header-renderer';
 import { DatagridMainRenderer } from './main-renderer';
 import { DatagridRenderOrganizer } from './render-organizer';
-import { Selection } from '../providers/selection';
-import { Items } from '../providers/items';
-import { DatagridStringFilter } from '@clr/angular';
-import { FiltersProvider } from '../providers/filters';
+import { MockDatagridRenderOrganizer } from './render-organizer.mock';
+import { DisplayModeService } from '../providers/display-mode.service';
 import { StateDebouncer } from '../providers/state-debouncer.provider';
-import { Sort } from '../providers/sort';
-import { RowActionService } from '../providers/row-action-service';
-import { Expand } from '../../../utils/expand/providers/expand';
+import { Page } from '../providers/page';
+import { ExpandableRowsCount } from '../providers/global-expandable-rows';
 import { HideableColumnService } from '../providers/hideable-column.service';
-import { DatagridCellRenderer } from './cell-renderer';
+import { Selection } from '../providers/selection';
+import { RowActionService } from '../providers/row-action-service';
+import { FiltersProvider } from '../providers/filters';
+import { Sort } from '../providers/sort';
+import { Items } from '../providers/items';
+import { TableSizeService } from '../providers/table-size.service';
+import { ColumnToggleButtonsService } from '../providers/column-toggle-buttons.service';
+import { StateProvider } from '../providers/state.provider';
+import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 
 const PROVIDERS = [
-  DatagridCellRenderer,
-  DatagridRenderOrganizer,
-  DatagridStringFilter,
-  Expand,
-  FiltersProvider,
-  HideableColumnService,
-  Items,
-  Page,
-  RowActionService,
+  DisplayModeService,
   Selection,
   Sort,
+  FiltersProvider,
+  Page,
+  Items,
+  {
+    provide: DatagridRenderOrganizer,
+    useClass: MockDatagridRenderOrganizer,
+  },
+  RowActionService,
+  ExpandableRowsCount,
+  HideableColumnService,
   StateDebouncer,
+  StateProvider,
+  ColumnToggleButtonsService,
+  TableSizeService,
+  DomAdapter,
 ];
 
 export default function(): void {
   describe('DatagridMainRenderer directive', function() {
     describe('static loading', function() {
       let context: TestContext<DatagridMainRenderer<number>, StaticTest>;
-      let organizer: DatagridRenderOrganizer;
+      let organizer: MockDatagridRenderOrganizer;
       let resizeSpy: jasmine.Spy;
       let computeWidthSpy: jasmine.Spy;
 
       beforeEach(function() {
         resizeSpy = spyOn(DatagridRenderOrganizer.prototype, 'resize');
-        context = this.create(DatagridMainRenderer, StaticTest);
-        organizer = context.getClarityProvider(DatagridRenderOrganizer);
+        context = this.createWithOverride(DatagridMainRenderer, StaticTest, [], [], PROVIDERS);
+        organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
         computeWidthSpy = spyOn(DatagridHeaderRenderer.prototype, 'computeWidth');
       });
 
@@ -83,14 +94,14 @@ export default function(): void {
       it('computes the widths of the columns when notified', function() {
         expect(computeWidthSpy.calls.count()).toBe(0);
         // Too lazy to do something other than casting right now.
-        (<any>organizer)._computeWidths.next();
+        organizer.updateRenderStep.next(DatagridRenderStep.COMPUTE_COLUMN_WIDTHS);
         expect(computeWidthSpy.calls.count()).toBe(context.clarityDirective.headers.length);
       });
 
       it('sets the widths of the columns for the other components', function() {
         expect(organizer.widths.length).toBe(0);
         // Too lazy to do something other than casting right now.
-        (<any>organizer)._computeWidths.next();
+        organizer.updateRenderStep.next(DatagridRenderStep.COMPUTE_COLUMN_WIDTHS);
         expect(organizer.widths.length).toBe(context.clarityDirective.headers.length);
       });
     });
@@ -256,74 +267,6 @@ export default function(): void {
         context.detectChanges();
         expect(organizer.widths[0].strict).toBe(true);
         expect(organizer.widths[1].strict).toBe(false);
-      });
-    });
-
-    describe('scrollbar spy on page change', () => {
-      let context: TestContext<DatagridMainRenderer<number>, DatagridHeightTest>;
-      let page: Page;
-      let organizer: DatagridRenderOrganizer;
-
-      beforeEach(function() {
-        context = this.create(DatagridMainRenderer, DatagridHeightTest);
-        page = context.getClarityProvider(Page);
-        organizer = context.getClarityProvider(DatagridRenderOrganizer);
-      });
-
-      it('scrollbar spy when the page has changed', () => {
-        let scrollSpyFlag: boolean = false;
-        organizer.scrollbar.subscribe(() => {
-          scrollSpyFlag = true;
-        });
-
-        context.detectChanges();
-        organizer.resize();
-
-        context.fixture.whenStable().then(() => {
-          expect(scrollSpyFlag).toBe(true);
-        });
-
-        scrollSpyFlag = false;
-
-        page.next();
-        context.detectChanges();
-
-        context.fixture.whenStable().then(() => {
-          expect(scrollSpyFlag).toBe(true);
-        });
-      });
-    });
-
-    describe('scrollbar spy on expandable rows', () => {
-      let context: TestContext<DatagridMainRenderer<number>, DatagridScrollbarTest>;
-      let organizer: DatagridRenderOrganizer;
-
-      beforeEach(function() {
-        context = this.create(DatagridMainRenderer, DatagridScrollbarTest);
-        organizer = context.getClarityProvider(DatagridRenderOrganizer);
-      });
-
-      it('adds scrollbar when the rows are expanded', () => {
-        let scrollSpyFlag: boolean = false;
-        organizer.scrollbar.subscribe(() => {
-          scrollSpyFlag = true;
-        });
-
-        context.detectChanges();
-        organizer.resize();
-
-        context.fixture.whenStable().then(() => {
-          expect(scrollSpyFlag).toBe(true);
-        });
-
-        scrollSpyFlag = false;
-
-        context.testComponent.expand = true;
-        context.detectChanges();
-
-        context.fixture.whenStable().then(() => {
-          expect(scrollSpyFlag).toBe(true);
-        });
       });
     });
   });
@@ -504,28 +447,4 @@ class DatagridHeightTest {
       this.pageSize = 5; // after 3rd click
     }
   }
-}
-
-@Component({
-  template: `
-        <clr-datagrid>
-            <clr-dg-column>Number</clr-dg-column>
-            <clr-dg-row *clrDgItems="let number of numbers">
-                <clr-dg-cell>{{number}}</clr-dg-cell>
-                <clr-dg-row-detail *clrIfExpanded="expand">
-                    Lorem ipsum...
-                </clr-dg-row-detail>
-            </clr-dg-row>
-
-            <clr-dg-footer>
-                <clr-dg-pagination [clrDgPageSize]="pageSize"></clr-dg-pagination>
-            </clr-dg-footer>
-        </clr-datagrid>
-    `,
-})
-class DatagridScrollbarTest {
-  numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-  pageSize = 5;
-
-  expand: boolean = false;
 }

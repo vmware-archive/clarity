@@ -3,62 +3,72 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import { NgForOf, NgForOfContext } from '@angular/common';
 import {
   Directive,
   DoCheck,
   Input,
   IterableDiffer,
   IterableDiffers,
-  OnChanges,
-  SimpleChanges,
   TemplateRef,
   TrackByFunction,
+  ViewContainerRef,
+  OnDestroy,
 } from '@angular/core';
-import { NgForOfContext } from '@angular/common';
 
 import { Items } from './providers/items';
+import { Subscription } from 'rxjs';
 
 @Directive({
   selector: '[clrDgItems][clrDgItemsOf]',
 })
-export class ClrDatagridItems<T = any> implements OnChanges, DoCheck {
+export class ClrDatagridItems<T> implements DoCheck, OnDestroy {
+  private iterableProxy: NgForOf<T>;
   private _rawItems: T[];
+  private differ: IterableDiffer<T> | null = null;
+  private subscriptions: Subscription[] = [];
+
   @Input('clrDgItemsOf')
   public set rawItems(items: T[]) {
-    this._rawItems = items ? items : [];
-  }
-  private _differ: IterableDiffer<T>;
-
-  constructor(
-    public template: TemplateRef<NgForOfContext<T>>,
-    private _differs: IterableDiffers,
-    private _items: Items<T>
-  ) {
-    _items.smartenUp();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if ('rawItems' in changes) {
-      const currentItems = changes.rawItems.currentValue;
-      if (!this._differ && currentItems) {
-        this._differ = this._differs.find(currentItems).create(this._items.trackBy);
-      }
-    }
+    this._rawItems = items ? items : []; // local copy for ngOnChange diffing
   }
 
   @Input('clrDgItemsTrackBy')
   set trackBy(value: TrackByFunction<T>) {
-    this._items.trackBy = value;
+    this.iterableProxy.ngForTrackBy = value;
+  }
+
+  constructor(
+    public template: TemplateRef<NgForOfContext<T>>,
+    private differs: IterableDiffers,
+    private items: Items,
+    private vcr: ViewContainerRef
+  ) {
+    items.smartenUp();
+    this.iterableProxy = new NgForOf<T>(this.vcr, this.template, this.differs);
+    this.subscriptions.push(
+      items.change.subscribe(newItems => {
+        this.iterableProxy.ngForOf = newItems;
+        this.iterableProxy.ngDoCheck();
+      })
+    );
   }
 
   ngDoCheck() {
-    if (this._differ) {
-      const changes = this._differ.diff(this._rawItems);
+    if (!this.differ) {
+      this.differ = this.differs.find(this._rawItems).create(this.iterableProxy.ngForTrackBy);
+    }
+    if (this.differ) {
+      const changes = this.differ.diff(this._rawItems);
       if (changes) {
         // TODO: not very efficient right now,
         // but premature optimization is the root of all evil.
-        this._items.all = this._rawItems;
+        this.items.all = this._rawItems;
       }
     }
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 }

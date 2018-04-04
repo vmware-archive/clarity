@@ -9,23 +9,30 @@ import {
   ElementRef,
   EventEmitter,
   HostBinding,
+  Injector,
   Input,
+  OnDestroy,
+  OnInit,
   Output,
   ViewChild,
+  ViewContainerRef,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
+
+import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
 
 import { DatagridPropertyComparator } from './built-in/comparators/datagrid-property-comparator';
 import { DatagridPropertyStringFilter } from './built-in/filters/datagrid-property-string-filter';
 import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
 import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
+import { ClrDatagridSortOrder } from './enums/sort-order.enum';
 import { ClrDatagridComparatorInterface } from './interfaces/comparator.interface';
-import { ClrDatagridSortOrder } from './interfaces/sort-order';
 import { CustomFilter } from './providers/custom-filter';
 import { DragDispatcher } from './providers/drag-dispatcher';
 import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
+import { WrappedColumn } from './wrapped-column';
 
 let nbCount: number = 0;
 
@@ -41,10 +48,12 @@ let nbCount: number = 0;
                     [clrDgStringFilter]="registered"
                     [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
 
-            <ng-template #columnTitle><ng-content></ng-content></ng-template>
+            <ng-template #columnTitle>
+                <ng-content></ng-content>
+            </ng-template>
 
             <button class="datagrid-column-title" *ngIf="sortable" (click)="sort()" type="button">
-               <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
+                <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
             </button>
 
             <span class="datagrid-column-title" *ngIf="!sortable">
@@ -64,8 +73,14 @@ let nbCount: number = 0;
     role: 'columnheader',
   },
 })
-export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>> {
-  constructor(private _sort: Sort<T>, filters: FiltersProvider<T>, private _dragDispatcher: DragDispatcher) {
+export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>>
+  implements OnDestroy, OnInit {
+  constructor(
+    private _sort: Sort<T>,
+    filters: FiltersProvider<T>,
+    private _dragDispatcher: DragDispatcher,
+    private vcr: ViewContainerRef
+  ) {
     super(filters);
     this._sortSubscription = _sort.change.subscribe(sort => {
       // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
@@ -83,7 +98,6 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
 
     this.columnId = 'dg-col-' + nbCount.toString(); // Approximate a GUID
     nbCount++;
-    // put index here
   }
 
   /**
@@ -360,4 +374,14 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
    *
    */
   public hideable: DatagridHideableColumnModel;
+
+  private wrappedInjector: Injector;
+
+  ngOnInit() {
+    this.wrappedInjector = new HostWrapper(WrappedColumn, this.vcr);
+  }
+
+  public get _view() {
+    return this.wrappedInjector.get(WrappedColumn, this.vcr).columnView;
+  }
 }

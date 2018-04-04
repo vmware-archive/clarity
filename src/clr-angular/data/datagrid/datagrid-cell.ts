@@ -3,10 +3,24 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ContentChildren, ElementRef, QueryList, Renderer2 } from '@angular/core';
+import {
+  Component,
+  ContentChildren,
+  ElementRef,
+  Injector,
+  OnDestroy,
+  OnInit,
+  QueryList,
+  Renderer2,
+  ViewContainerRef,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
+
 import { ClrSignpost } from '../../popover/signpost/signpost';
+import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
+
 import { HideableColumnService } from './providers/hideable-column.service';
+import { WrappedCell } from './wrapped-cell';
 
 @Component({
   selector: 'clr-dg-cell',
@@ -19,7 +33,7 @@ import { HideableColumnService } from './providers/hideable-column.service';
     role: 'cell',
   },
 })
-export class ClrDatagridCell {
+export class ClrDatagridCell implements OnInit, OnDestroy {
   /*********
    * @property signpost
    *
@@ -49,7 +63,8 @@ export class ClrDatagridCell {
   constructor(
     public hideableColumnService: HideableColumnService,
     private _el: ElementRef,
-    private _renderer: Renderer2
+    private _renderer: Renderer2,
+    private vcr: ViewContainerRef
   ) {}
 
   private mapHideableColumn(columnId: string) {
@@ -73,9 +88,19 @@ export class ClrDatagridCell {
     }
   }
 
+  private wrappedInjector: Injector;
+
+  ngOnInit() {
+    this.wrappedInjector = new HostWrapper(WrappedCell, this.vcr);
+  }
+
   ngOnDestroy() {
     if (this.hiddenStateSubscription) {
       this.hiddenStateSubscription.unsubscribe();
     }
+  }
+
+  public get _view() {
+    return this.wrappedInjector.get(WrappedCell, this.vcr).cellView;
   }
 }

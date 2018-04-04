@@ -3,6 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import { DatagridRenderStep } from './../enums/render-step.enum';
 import { DatagridRenderOrganizer } from './render-organizer';
 
 /**
@@ -20,7 +21,11 @@ export default function(): void {
 
     it("doesn't clear widths on the first rendering", function(this: UserContext) {
       let clearedWidths = false;
-      this.organizer.clearWidths.subscribe(() => (clearedWidths = true));
+      this.organizer.renderStep.subscribe(step => {
+        if (step === DatagridRenderStep.CLEAR_WIDTHS) {
+          clearedWidths = true;
+        }
+      });
       this.organizer.resize();
       expect(clearedWidths).toBe(false);
       this.organizer.resize();
@@ -30,21 +35,35 @@ export default function(): void {
     it('follows the correct rendering order', function(this: UserContext) {
       // Initial sizing to make sure clearWidths is included in the next one.
       this.organizer.resize();
-      let step = 0;
-      this.organizer.noLayout.subscribe(on => expect(step++).toBe(on ? 0 : 7));
-      this.organizer.clearWidths.subscribe(() => expect(step++).toBe(1));
-      this.organizer.detectStrictWidths.subscribe(() => expect(step++).toBe(2));
-      this.organizer.tableMode.subscribe(on => expect(step++).toBe(on ? 3 : 5));
-      this.organizer.computeWidths.subscribe(() => expect(step++).toBe(4));
-      this.organizer.alignColumns.subscribe(() => expect(step++).toBe(6));
-      this.organizer.scrollbar.subscribe(() => expect(step++).toBe(8));
+      const stepsRecieved: DatagridRenderStep[] = [];
+      this.organizer.renderStep.subscribe(renderStep => {
+        stepsRecieved.push(renderStep);
+      });
       this.organizer.resize();
+
+      expect(stepsRecieved).toEqual([
+        DatagridRenderStep.CALCULATE_MODE_ON,
+        DatagridRenderStep.CLEAR_WIDTHS,
+        DatagridRenderStep.DETECT_STRICT_WIDTHS,
+        DatagridRenderStep.COMPUTE_COLUMN_WIDTHS,
+        DatagridRenderStep.ALIGN_COLUMNS,
+        DatagridRenderStep.CALCULATE_MODE_OFF,
+        DatagridRenderStep.UPDATE_ROW_WIDTH,
+      ]);
     });
 
     it('clears the widths when when resizing', function(this: UserContext) {
       this.organizer.widths = [{ px: 1, strict: false }, { px: 2, strict: true }];
       this.organizer.resize();
       expect(this.organizer.widths).toEqual([]);
+    });
+
+    it('provides a filtering utility that targets one step', function(this: UserContext) {
+      let currentStep: DatagridRenderStep = null;
+      this.organizer.filterRenderSteps(DatagridRenderStep.ALIGN_COLUMNS).subscribe(step => (currentStep = step));
+      expect(currentStep).toBeNull();
+      this.organizer.resize();
+      expect(currentStep).toBe(DatagridRenderStep.ALIGN_COLUMNS);
     });
   });
 }

@@ -15,20 +15,20 @@ import { Selection, SelectionType } from './providers/selection';
   template: `
         <ng-container
             *ngIf="(selection.selectionType === SELECTION_TYPE.Multi) && (selection.current.length > 0)">
-            <clr-checkbox-container class="datagrid-foot-select disabled">
+            <clr-checkbox-container class="datagrid-footer-select disabled">
                 <input clrCheckbox type="checkbox" checked="checked" disabled>
                 <label>{{selection.current.length}}</label>
             </clr-checkbox-container>
         </ng-container>
         <ng-content select="clr-dg-column-toggle"></ng-content>
         <clr-dg-column-toggle *ngIf="!toggle && activeToggler"></clr-dg-column-toggle>
-        <div class="datagrid-foot-description">
+        <div class="datagrid-footer-description">
             <ng-content></ng-content>
         </div>
         <ng-content select="clr-dg-pagination"></ng-content>
     `,
   host: {
-    '[class.datagrid-foot]': 'true',
+    '[class.datagrid-footer]': 'true',
   },
 })
 export class ClrDatagridFooter<T = any> implements OnInit {

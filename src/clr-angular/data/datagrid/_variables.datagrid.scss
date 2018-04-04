@@ -14,3 +14,11 @@ $clr-datagrid-popover-border-color: $clr-light-midtone-gray;
 $clr-datagrid-action-popover-hover-color: $gray-light;
 $clr-datagrid-loading-background: rgba($clr-white, 0.6);
 $clr-datagrid-row-selected: $clr-black;
+$horizontalPadding: ($clr-datagrid-fixed-column-size - 1.25rem) / 2;
+
+$clr-datagrid-icon-size: 0.583333rem;
+$clr-datagrid-action-arrow-size: 0.25rem;
+$clr-datagrid-fixed-column-size: (2 * $clr-table-cellpadding) + $clr-table-lineheight;
+$clr-datagrid-column-handle-tracker-top: -0.5rem;
+$clr-datagrid-column-separator-expandby: 0.5rem;
+$clr-datagrid-compact-outline-offset: -0.1666667rem;

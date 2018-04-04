@@ -9,11 +9,15 @@ import {
   Component,
   ContentChild,
   ContentChildren,
+  ElementRef,
   EventEmitter,
   Input,
   OnDestroy,
   Output,
   QueryList,
+  Renderer2,
+  ViewChild,
+  ViewContainerRef,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
@@ -21,8 +25,10 @@ import { ClrDatagridColumn } from './datagrid-column';
 import { ClrDatagridItems } from './datagrid-items';
 import { ClrDatagridPlaceholder } from './datagrid-placeholder';
 import { ClrDatagridRow } from './datagrid-row';
+import { DatagridDisplayMode } from './enums/display-mode.enum';
 import { ClrDatagridStateInterface } from './interfaces/state.interface';
 import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
+import { DisplayModeService } from './providers/display-mode.service';
 import { FiltersProvider } from './providers/filters';
 import { ExpandableRowsCount } from './providers/global-expandable-rows';
 import { HideableColumnService } from './providers/hideable-column.service';
@@ -33,6 +39,7 @@ import { Selection, SelectionType } from './providers/selection';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 import { StateProvider } from './providers/state.provider';
+import { TableSizeService } from './providers/table-size.service';
 import { DatagridRenderOrganizer } from './render/render-organizer';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
@@ -52,6 +59,8 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
     StateDebouncer,
     StateProvider,
     ColumnToggleButtonsService,
+    TableSizeService,
+    DisplayModeService,
   ],
   host: { '[class.datagrid-host]': 'true' },
 })
@@ -64,6 +73,9 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
     public selection: Selection<T>,
     public rowActionService: RowActionService,
     private stateProvider: StateProvider<T>,
+    private displayMode: DisplayModeService,
+    private renderer: Renderer2,
+    private el: ElementRef,
     public commonStrings: ClrCommonStrings
   ) {}
 
@@ -186,18 +198,24 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
    */
 
   @ContentChildren(ClrDatagridRow) rows: QueryList<ClrDatagridRow<T>>;
+  @ViewChild('scrollableColumns', { read: ViewContainerRef })
+  scrollableColumns: ViewContainerRef;
 
   ngAfterContentInit() {
+    if (!this.items.smart) {
+      this.items.all = this.rows.map((row: ClrDatagridRow<T>) => row.item);
+    }
+
     this._subscriptions.push(
       this.rows.changes.subscribe(() => {
         if (!this.items.smart) {
           this.items.all = this.rows.map((row: ClrDatagridRow<T>) => row.item);
         }
+        this.rows.forEach(row => {
+          this._displayedRows.insert(row._view);
+        });
       })
     );
-    if (!this.items.smart) {
-      this.items.all = this.rows.map((row: ClrDatagridRow<T>) => row.item);
-    }
 
     this._subscriptions.push(
       this.columns.changes.subscribe((columns: ClrDatagridColumn<T>[]) => {
@@ -225,6 +243,44 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
         }
       })
     );
+    // A subscription that listens for displayMode changes on the datagrid
+    this.displayMode.view.subscribe(viewChange => {
+      // Remove any projected columns from the projectedDisplayColumns container
+      for (let i = this._projectedDisplayColumns.length; i > 0; i--) {
+        this._projectedDisplayColumns.detach();
+      }
+      // Remove any projected columns from the projectedCalculationColumns container
+      for (let i = this._projectedCalculationColumns.length; i > 0; i--) {
+        this._projectedCalculationColumns.detach();
+      }
+      // Remove any projected rows from the calculationRows container
+      for (let i = this._calculationRows.length; i > 0; i--) {
+        this._calculationRows.detach();
+      }
+      // Remove any projected rows from the displayedRows container
+      for (let i = this._displayedRows.length; i > 0; i--) {
+        this._displayedRows.detach();
+      }
+      if (viewChange === DatagridDisplayMode.DISPLAY) {
+        // Set state, style for the datagrid to DISPLAY and insert row & columns into containers
+        this.renderer.removeClass(this.el.nativeElement, 'datagrid-calculate-mode');
+        this.columns.forEach(column => {
+          this._projectedDisplayColumns.insert(column._view);
+        });
+        this.rows.forEach(row => {
+          this._displayedRows.insert(row._view);
+        });
+      } else {
+        // Set state, style for the datagrid to CALCULATE and insert row & columns into containers
+        this.renderer.addClass(this.el.nativeElement, 'datagrid-calculate-mode');
+        this.columns.forEach(column => {
+          this._projectedCalculationColumns.insert(column._view);
+        });
+        this.rows.forEach(row => {
+          this._calculationRows.insert(row._view);
+        });
+      }
+    });
   }
 
   /**
@@ -239,4 +295,13 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
   resize(): void {
     this.organizer.resize();
   }
+
+  @ViewChild('projectedDisplayColumns', { read: ViewContainerRef })
+  _projectedDisplayColumns: ViewContainerRef;
+  @ViewChild('projectedCalculationColumns', { read: ViewContainerRef })
+  _projectedCalculationColumns: ViewContainerRef;
+  @ViewChild('displayedRows', { read: ViewContainerRef })
+  _displayedRows: ViewContainerRef;
+  @ViewChild('calculationRows', { read: ViewContainerRef })
+  _calculationRows: ViewContainerRef;
 }

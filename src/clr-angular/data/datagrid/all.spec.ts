@@ -35,23 +35,25 @@ import DatagridRowSpecs from './datagrid-row.spec';
 import DatagridSpecs from './datagrid.spec';
 import { addHelpers } from './helpers.spec';
 import ColumnToggleButtonsServiceSpecs from './providers/column-toggle-buttons.service.spec';
+import DisplayModeServiceSpecs from './providers/display-mode.service.spec';
 import FiltersProviderSpecs from './providers/filters.spec';
 import DatagridHideableColumnServiceSpecs from './providers/hideable-column.service.spec';
 import ItemsProviderSpecs from './providers/items.spec';
 import PageProviderSpecs from './providers/page.spec';
 import SelectionProviderSpecs from './providers/selection.spec';
 import SortProviderSpecs from './providers/sort.spec';
-import DatagridBodyRendererSpecs from './render/body-renderer.spec';
+import TableSizeServiceSpec from './providers/table-size.service.spec';
 import DatagridCellRendererSpecs from './render/cell-renderer.spec';
 import DatagridColumnResizerSpecs from './render/column-resizer.spec';
 import DomAdapterSpecs from '../../utils/dom-adapter/dom-adapter.spec';
-import DatagridHeadRendererSpecs from './render/head-renderer.spec';
 import DatagridHeaderRendererSpecs from './render/header-renderer.spec';
 import DatagridMainRendererSpecs from './render/main-renderer.spec';
 import NoopDomAdapterSpecs from './render/noop-dom-adapter.spec';
 import DatagridRenderOrganizerSpecs from './render/render-organizer.spec';
 import DatagridRowRendererSpecs from './render/row-renderer.spec';
-import DatagridTableRendererSpecs from './render/table-renderer.spec';
+import WrappedCellSpec from './wrapped-cell.spec';
+import WrappedColumnSpec from './wrapped-column.spec';
+import WrappedRowSpec from './wrapped-row.spec';
 
 describe('Datagrid', function() {
   addHelpers();
@@ -64,6 +66,8 @@ describe('Datagrid', function() {
     SelectionProviderSpecs();
     DatagridHideableColumnServiceSpecs();
     ColumnToggleButtonsServiceSpecs();
+    DisplayModeServiceSpecs();
+    TableSizeServiceSpec();
   });
   describe('Components', function() {
     DatagridActionBarSpecs();
@@ -83,6 +87,9 @@ describe('Datagrid', function() {
     DatagridColumnToggleSpecs();
     DatagridColumnToggleButtonSpecs();
     DatagridHideableColumnDirectiveSpec();
+    WrappedCellSpec();
+    WrappedColumnSpec();
+    WrappedRowSpec();
   });
   describe('Render', function() {
     DomAdapterSpecs();
@@ -90,11 +97,8 @@ describe('Datagrid', function() {
     DatagridRenderOrganizerSpecs();
     DatagridCellRendererSpecs();
     DatagridRowRendererSpecs();
-    DatagridBodyRendererSpecs();
     DatagridHeaderRendererSpecs();
-    DatagridHeadRendererSpecs();
     DatagridColumnResizerSpecs();
-    DatagridTableRendererSpecs();
     DatagridMainRendererSpecs();
     DatagridRowExpandAnimationSpecs();
   });

@@ -10,6 +10,7 @@ import { Expand } from '../../utils/expand/providers/expand';
 
 import { ClrDatagridCell } from './datagrid-cell';
 import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
+import { ExpandableRowsCount } from './providers/global-expandable-rows';
 import { HideableColumnService } from './providers/hideable-column.service';
 import { RowActionService } from './providers/row-action-service';
 import { Selection, SelectionType } from './providers/selection';
@@ -21,18 +22,29 @@ import { Selection, SelectionType } from './providers/selection';
 @Component({
   selector: 'clr-dg-row-detail',
   template: `
-        <ng-container *ngIf="!replace">
-            <clr-dg-cell class="datagrid-fixed-column"
-                *ngIf="selection.selectionType === SELECTION_TYPE.Multi 
-                    || selection.selectionType === SELECTION_TYPE.Single"></clr-dg-cell>
-            <clr-dg-cell *ngIf="rowActionService.hasActionableRow" class="datagrid-fixed-column"></clr-dg-cell>
-            <clr-dg-cell class="datagrid-fixed-column"></clr-dg-cell>
+        <ng-container *ngIf="!replacedRow">
+            <!-- space for multiselection state -->
+            <div class="datagrid-cell datagrid-select datagrid-fixed-column"
+                *ngIf="selection.selectionType === SELECTION_TYPE.Multi">
+            </div>
+            <!-- space for single selection state -->
+            <div class="datagrid-cell datagrid-select datagrid-fixed-column"
+                *ngIf="selection.selectionType === SELECTION_TYPE.Single">
+            </div>
+            <!-- space for single row action; only displayType if we have at least one actionable row in datagrid -->
+            <div class="datagrid-cell datagrid-row-actions datagrid-fixed-column"
+                *ngIf="rowActionService.hasActionableRow">
+            </div>
+            <!-- space for expandable caret action; only displayType if we have at least one expandable row in datagrid -->
+            <div *ngIf="expandableRows.hasExpandableRow"
+                        class="datagrid-expandable-caret datagrid-fixed-column datagrid-cell">
+            </div>
         </ng-container>
         <ng-content></ng-content>
     `,
   host: {
     '[class.datagrid-row-flex]': 'true',
-    '[class.datagrid-row-detail]': '!replace',
+    '[class.datagrid-row-detail]': 'true',
     '[class.datagrid-container]': 'cells.length === 0',
   },
 })
@@ -41,34 +53,29 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
   public SELECTION_TYPE = SelectionType;
 
   constructor(
-    public selection: Selection<T>,
+    public selection: Selection,
     public rowActionService: RowActionService,
     public expand: Expand,
-    public hideableColumnService: HideableColumnService
+    public hideableColumnService: HideableColumnService,
+    public expandableRows: ExpandableRowsCount
   ) {}
 
   @ContentChildren(ClrDatagridCell) cells: QueryList<ClrDatagridCell>;
 
-  get replace() {
-    return this.expand.replace;
-  }
-
   @Input('clrDgReplace')
   set replace(value: boolean) {
-    this.expand.replace = !!value;
+    this.expand.setReplace(!!value);
   }
 
-  /**
-   * Subscriptions to all the services and QueryList changes
-   */
-  private _subscriptions: Subscription[] = [];
+  private subscriptions: Subscription[] = [];
+  public replacedRow = false;
 
   ngAfterContentInit() {
     const columnsList = this.hideableColumnService.getColumns();
     this.updateCellsForColumns(columnsList);
 
     // Triggered when the Cells list changes per row-renderer
-    this._subscriptions.push(
+    this.subscriptions.push(
       this.cells.changes.subscribe(cellList => {
         const columnList = this.hideableColumnService.getColumns();
         if (cellList.length === columnList.length) {
@@ -78,12 +85,18 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
     );
 
     // Used to set things up the first time but only after all the columns are ready.
-    this._subscriptions.push(
+    this.subscriptions.push(
       this.hideableColumnService.columnListChange.subscribe(columnList => {
         // Prevents cell updates when cols and cells array are not aligned
         if (columnList.length === this.cells.length) {
           this.updateCellsForColumns(columnList);
         }
+      })
+    );
+
+    this.subscriptions.push(
+      this.expand.replace.subscribe(replaceChange => {
+        this.replacedRow = replaceChange;
       })
     );
   }
@@ -98,6 +111,6 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
   }
 
   ngOnDestroy() {
-    this._subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 }

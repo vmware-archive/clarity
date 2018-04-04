@@ -5,67 +5,37 @@
  */
 
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { filter } from 'rxjs/operators';
+
+import { DatagridRenderStep } from '../enums/render-step.enum';
 
 @Injectable()
 export class DatagridRenderOrganizer {
+  protected _renderStep: Subject<DatagridRenderStep> = new Subject<DatagridRenderStep>();
+  public get renderStep(): Observable<DatagridRenderStep> {
+    return this._renderStep.asObservable();
+  }
+
+  public filterRenderSteps(step: DatagridRenderStep) {
+    return this.renderStep.pipe(filter(testStep => step === testStep));
+  }
+
   private alreadySized = false;
 
   public widths: { px: number; strict: boolean }[] = [];
 
-  protected _noLayout = new Subject<boolean>();
-  public get noLayout(): Observable<boolean> {
-    return this._noLayout.asObservable();
-  }
-
-  protected _clearWidths = new Subject<any>();
-  public get clearWidths(): Observable<any> {
-    return this._clearWidths.asObservable();
-  }
-
-  protected _detectStrictWidths = new Subject<any>();
-  public get detectStrictWidths(): Observable<any> {
-    return this._detectStrictWidths.asObservable();
-  }
-
-  protected _tableMode = new Subject<boolean>();
-  public get tableMode(): Observable<boolean> {
-    return this._tableMode.asObservable();
-  }
-
-  protected _computeWidths = new Subject<any>();
-  public get computeWidths(): Observable<any> {
-    return this._computeWidths.asObservable();
-  }
-
-  protected _alignColumns = new Subject<any>();
-  public get alignColumns(): Observable<any> {
-    return this._alignColumns.asObservable();
-  }
-
-  public scrollbar = new Subject<any>();
-  public scrollbarWidth = new Subject<number>();
-
-  protected _done = new Subject<any>();
-  public get done(): Observable<any> {
-    return this._done.asObservable();
-  }
-
   public resize() {
     this.widths.length = 0;
-    this._noLayout.next(true);
+    this._renderStep.next(DatagridRenderStep.CALCULATE_MODE_ON);
     if (this.alreadySized) {
-      this._clearWidths.next();
+      this._renderStep.next(DatagridRenderStep.CLEAR_WIDTHS);
     }
-    this._detectStrictWidths.next();
-    this._tableMode.next(true);
-    this._computeWidths.next();
-    this._tableMode.next(false);
-    this._alignColumns.next();
-    this._noLayout.next(false);
-    this.scrollbar.next();
+    this._renderStep.next(DatagridRenderStep.DETECT_STRICT_WIDTHS);
+    this._renderStep.next(DatagridRenderStep.COMPUTE_COLUMN_WIDTHS);
+    this._renderStep.next(DatagridRenderStep.ALIGN_COLUMNS);
     this.alreadySized = true;
-    this._done.next();
+    this._renderStep.next(DatagridRenderStep.CALCULATE_MODE_OFF);
+    this._renderStep.next(DatagridRenderStep.UPDATE_ROW_WIDTH);
   }
 }

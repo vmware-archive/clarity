@@ -34,7 +34,7 @@
     <p>Datagrid height should be fixed irrespective on the number of rows displayed.</p>
     <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
     <div style="height: 300px">
-        <clr-datagrid style="height: 100%" [clDgRowSelection]="true">
+        <clr-datagrid style="height: 100%" [clrDgLoading]="loading">
             <clr-dg-column>User ID</clr-dg-column>
             <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
             <clr-dg-column>Creation date</clr-dg-column>

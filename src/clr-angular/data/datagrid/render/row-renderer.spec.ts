@@ -6,7 +6,9 @@
 import { Component } from '@angular/core';
 
 import { DatagridWillyWonka } from '../chocolate/datagrid-willy-wonka';
+import { DatagridRenderStep } from '../enums/render-step.enum';
 import { TestContext } from '../helpers.spec';
+import { DisplayModeService } from '../providers/display-mode.service';
 import { FiltersProvider } from '../providers/filters';
 import { ExpandableRowsCount } from '../providers/global-expandable-rows';
 import { HideableColumnService } from '../providers/hideable-column.service';
@@ -36,6 +38,7 @@ const PROVIDERS = [
   HideableColumnService,
   DatagridWillyWonka,
   StateDebouncer,
+  DisplayModeService,
 ];
 export default function(): void {
   describe('DatagridRowRenderer directive', function() {
@@ -51,13 +54,13 @@ export default function(): void {
     });
 
     it('sets the widths of the cells when notified', function() {
-      organizer.alignColumns.next();
+      organizer.updateRenderStep.next(DatagridRenderStep.ALIGN_COLUMNS);
       expect(cellWidthSpy.calls.allArgs()).toEqual([[false, 42], [true, 24]]);
     });
 
     it("doesn't set the width when the organizer doesn't have them yet", function() {
       organizer.widths = [];
-      organizer.alignColumns.next();
+      organizer.updateRenderStep.next(DatagridRenderStep.ALIGN_COLUMNS);
       expect(cellWidthSpy).not.toHaveBeenCalled();
     });
 

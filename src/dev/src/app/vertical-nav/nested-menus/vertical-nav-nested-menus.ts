@@ -16,6 +16,7 @@ export class VerticalNavNestedMenusDemo {
 
   constructor(public verticalNavCases: VerticalNavCases) {
     this.case = this.verticalNavCases.allNestedMenu;
+    console.log(this.case);
   }
 
   private _collapse: boolean = false;

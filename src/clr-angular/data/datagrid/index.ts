@@ -20,7 +20,7 @@ export * from './datagrid-pagination';
 export * from './datagrid-placeholder';
 
 export * from './interfaces/state.interface';
-export * from './interfaces/sort-order';
+export * from './enums/sort-order.enum';
 export * from './interfaces/filter.interface';
 export * from './interfaces/string-filter.interface';
 export * from './interfaces/comparator.interface';

@@ -225,6 +225,32 @@
 
 </div>
 
+<h3>Table Caption</h3>
+<div id="table-caption">
+    <clr-datagrid [clrCaption]="'Table Caption'">
+        <clr-dg-column>User ID</clr-dg-column>
+        <clr-dg-column>Name</clr-dg-column>
+        <clr-dg-column>Creation date</clr-dg-column>
+        <clr-dg-column>Favorite color</clr-dg-column>
+
+        <clr-dg-placeholder>We couldn't find any users!</clr-dg-placeholder>
+        <clr-dg-row *ngFor="let user of []"></clr-dg-row>
+
+        <clr-dg-footer>{{[].length}} users</clr-dg-footer>
+    </clr-datagrid>
+
+    <clr-datagrid>
+        <clr-dg-column>User ID</clr-dg-column>
+        <clr-dg-column>Name</clr-dg-column>
+        <clr-dg-column>Creation date</clr-dg-column>
+        <clr-dg-column>Favorite color</clr-dg-column>
+
+        <clr-dg-row *ngFor="let user of []"></clr-dg-row>
+
+        <clr-dg-footer>{{[].length}} users</clr-dg-footer>
+    </clr-datagrid>
+</div>
+
 <h3>Vertical scrolling</h3>
 
 <clr-datagrid id="vertical-scrolling">

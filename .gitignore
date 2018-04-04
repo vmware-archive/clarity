@@ -8,6 +8,7 @@
 src/clarity-angular/.ng_build
 
 /gemini-report/
+/reports/
 
 # dependencies
 /node_modules

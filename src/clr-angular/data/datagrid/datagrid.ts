@@ -33,6 +33,7 @@ import { Selection, SelectionType } from './providers/selection';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 import { StateProvider } from './providers/state.provider';
+import {TableHeightService} from "./providers/table-height.service";
 import { DatagridRenderOrganizer } from './render/render-organizer';
 import { ClrCommonStrings } from '../../utils/i18n';
 
@@ -52,6 +53,7 @@ import { ClrCommonStrings } from '../../utils/i18n';
     StateDebouncer,
     StateProvider,
     ColumnToggleButtonsService,
+    TableHeightService
   ],
   host: { '[class.datagrid-host]': 'true' },
 })

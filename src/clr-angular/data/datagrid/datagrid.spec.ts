@@ -204,19 +204,19 @@ export default function(): void {
       });
 
       it('projects columns in the header', function() {
-        const header = context.clarityElement.querySelector('.datagrid-head');
+        const header = context.clarityElement.querySelector('.datagrid-header');
         expect(header.textContent).toMatch(/First\s*Second/);
       });
 
       it('projects the footer', function() {
-        expect(context.clarityElement.querySelector('.datagrid-foot')).not.toBeNull();
+        expect(context.clarityElement.querySelector('.datagrid-footer')).not.toBeNull();
       });
 
       it('adds a11y roles to datagrid', function() {
-        const tableWrapper = context.clarityElement.querySelector('.datagrid-table-wrapper');
+        const tableWrapper = context.clarityElement.querySelector('.datagrid-table');
         expect(tableWrapper.attributes.role.value).toEqual('grid');
 
-        const header = context.clarityElement.querySelector('.datagrid-head');
+        const header = context.clarityElement.querySelector('.datagrid-header');
         expect(header.attributes.role.value).toEqual('rowgroup');
 
         const row = context.clarityElement.querySelector('.datagrid-row');
@@ -261,7 +261,7 @@ export default function(): void {
         context = this.create(ClrDatagrid, ActionableRowTest, [HideableColumnService]);
         rowActionService = context.getClarityProvider(RowActionService);
         expect(rowActionService.hasActionableRow).toBe(true);
-        const datagridHead = context.clarityElement.querySelector('.datagrid-head');
+        const datagridHead = context.clarityElement.querySelector('.datagrid-header');
         headActionOverflowCell = datagridHead.querySelector('.datagrid-column.datagrid-row-actions');
         actionOverflowCell = context.clarityElement.querySelectorAll('clr-dg-cell.datagrid-row-actions');
         actionOverflow = context.clarityElement.querySelectorAll('clr-dg-action-overflow');
@@ -278,7 +278,7 @@ export default function(): void {
         actionOverflow = context.clarityElement.querySelectorAll('clr-dg-action-overflow');
         expect(actionOverflow.length).toEqual(0);
         expect(rowActionService.hasActionableRow).toBe(false);
-        const datagridHead = context.clarityElement.querySelector('.datagrid-head');
+        const datagridHead = context.clarityElement.querySelector('.datagrid-header');
         headActionOverflowCell = datagridHead.querySelector('.datagrid-column.datagrid-row-actions');
         actionOverflowCell = context.clarityElement.querySelectorAll('clr-dg-cell.datagrid-single-select');
         expect(headActionOverflowCell).toBeNull();

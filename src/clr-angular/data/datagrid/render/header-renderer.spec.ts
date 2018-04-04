@@ -10,6 +10,7 @@ import { FiltersProvider } from '../providers/filters';
 import { Page } from '../providers/page';
 import { Sort } from '../providers/sort';
 import { StateDebouncer } from '../providers/state-debouncer.provider';
+import {TableHeightService} from "../providers/table-height.service";
 
 import { DomAdapter } from './dom-adapter';
 import { MOCK_DOM_ADAPTER_PROVIDER, MockDomAdapter } from './dom-adapter.mock';
@@ -31,6 +32,7 @@ export default function(): void {
         FiltersProvider,
         Page,
         StateDebouncer,
+        TableHeightService
       ]);
       domAdapter = <MockDomAdapter>context.getClarityProvider(DomAdapter);
       organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);

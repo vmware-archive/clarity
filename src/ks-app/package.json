@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^5.0.0",
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
-    "@clr/angular": "file:../../dist/clr-angular/clr-angular-0.11.11.tgz",
+    "@clr/angular": "file:../../dist/clr-angular/clr-angular-0.11.12.tgz",
     "@clr/icons": "file:../../dist/clr-icons",
     "@clr/ui": "file:../../dist/clr-ui",
     "@webcomponents/custom-elements": "1.0.0",

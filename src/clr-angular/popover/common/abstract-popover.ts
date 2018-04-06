@@ -9,6 +9,7 @@ import {
     HostBinding,
     Injectable,
     Injector,
+    NgZone,
     OnDestroy,
     Renderer2,
     SkipSelf
@@ -24,7 +25,7 @@ import {PopoverOptions} from "./popover-options.interface";
 // Literally any annotation would work here, but writing our own @HoneyBadger annotation feels overkill.
 @Injectable()
 export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
-    constructor(injector: Injector, @SkipSelf() protected parentHost: ElementRef) {
+    constructor(private _ngZone: NgZone, injector: Injector, @SkipSelf() protected parentHost: ElementRef) {
         this.el = injector.get(ElementRef);
         this.ifOpenService = injector.get(IfOpenService);
         this.renderer = injector.get(Renderer2);
@@ -111,10 +112,20 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
 
     private attachESCListener(): void {
         this.documentESCListener = this.renderer.listen("document", "keydown", event => {
-            if (event && event.keyCode === ESC) {
-                this.ifOpenService.open = false;
+            if (NgZone.isInAngularZone()) {
+                this.ESCHandler(event);
+            } else {
+                this._ngZone.run(() => {
+                    this.ESCHandler(event);
+                });
             }
         });
+    }
+
+    private ESCHandler(event) {
+        if (event && event.keyCode === ESC) {
+            this.ifOpenService.open = false;
+        }
     }
 
     private detachESCListener(): void {
@@ -128,12 +139,22 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
         if (this.closeOnOutsideClick) {
             this.hostClickListener = this.renderer.listen(this.el.nativeElement, "click", event => this.ignore = event);
             this.documentClickListener = this.renderer.listen("document", "click", event => {
-                if (event === this.ignore) {
-                    delete this.ignore;
+                if (NgZone.isInAngularZone()) {
+                    this.outsideClickHandler(event);
                 } else {
-                    this.ifOpenService.open = false;
+                    this._ngZone.run(() => {
+                        this.outsideClickHandler(event);
+                    });
                 }
             });
+        }
+    }
+
+    private outsideClickHandler(event) {
+        if (event === this.ignore) {
+            delete this.ignore;
+        } else {
+            this.ifOpenService.open = false;
         }
     }
 

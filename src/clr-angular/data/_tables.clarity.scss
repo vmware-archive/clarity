@@ -176,8 +176,6 @@ $clr-table--compact-verticalPadding: ($clr-table--compact-rowHeight - $clr-table
     }
 
     .table.table-noborder {
-        $clr-table-noborder-bordercolor: clr-getColor(4);
-
         border-radius: 0;
         box-shadow: none;
         background-color: transparent;
@@ -185,7 +183,7 @@ $clr-table--compact-verticalPadding: ($clr-table--compact-rowHeight - $clr-table
 
         th {
             background-color: transparent;
-            border-bottom-color: $clr-table-noborder-bordercolor;
+            border-bottom-color: $clr-table-border-color;
             border-top: 0 none;
 
             &:first-child {

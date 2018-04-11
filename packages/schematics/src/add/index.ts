@@ -13,6 +13,15 @@ import { Schema as ComponentOptions } from "./schema";
 
 import * as ts from "typescript";
 import * as fs from "fs";
+import {join} from "path";
+
+// Determine where to load the package.json, if doing local dev or not
+let corePackage: any;
+if (fs.existsSync(join(__dirname, "../../package.json"))) {
+    corePackage = require("../../package.json")
+ } else {
+    corePackage = require("../../../../package.json");
+ }
 
 // Looks up and finds the path to the app module (or other module if specified)
 function findModuleFromOptions(host: Tree, options: ComponentOptions): Path | undefined {
@@ -38,6 +47,12 @@ function updateJsonFile(path: string, callback: (a: any) => any) {
     const json = JSON.parse(fs.readFileSync(path, "utf-8"));
     callback(json);
     fs.writeFileSync(path, JSON.stringify(json, null, 2));
+}
+
+// Looks at the project for the correct CLI config file
+function findCliConfig() {
+    return ['angular.json', '.angular.json', 'angular-cli.json', '.angular-cli.json']
+        .find(file => fs.existsSync(file));
 }
 
 // Handles adding a module to the NgModule 
@@ -80,13 +95,13 @@ export default function(options: ComponentOptions): Rule {
         updateJsonFile("package.json", json => {
             const packages = Object.keys(json.dependencies);
             if (!packages.includes("@clr/angular")) {
-                json.dependencies["@clr/angular"] = "^0.11.0";
+                json.dependencies["@clr/angular"] = `^${corePackage.version}`;
             }
             if (!packages.includes("@clr/ui")) {
-                json.dependencies["@clr/ui"] = "^0.11.0";
+                json.dependencies["@clr/ui"] = `^${corePackage.version}`;
             }
             if (!packages.includes("@clr/icons")) {
-                json.dependencies["@clr/icons"] = "^0.11.0";
+                json.dependencies["@clr/icons"] = `^${corePackage.version}`;
             }
             if (!packages.includes("@webcomponents/custom-elements")) {
                 json.dependencies["@webcomponents/custom-elements"] = "^1.0.0";
@@ -94,25 +109,49 @@ export default function(options: ComponentOptions): Rule {
         });
 
         // Add Clarity assets to .angular-cli.json, if not found
-        updateJsonFile(".angular-cli.json", json => {
-            const scripts = json.apps[0].scripts;
-            const scriptsSearch = scripts.join("|");
-            const styles = json.apps[0].styles;
-            const stylesSearch = styles.join("|");
+        const config = findCliConfig();
+        if (config) {
+            updateJsonFile(config, json => {
+                // @TODO abstract this out to a utility, maybe schematics will provide one
+                let scripts, styles = [];
+                if (json.apps) {
+                    scripts = json.apps[0].scripts;
+                    styles = json.apps[0].styles;
+                } else if (json.projects) {
+                    const projects = Object.keys(json.projects);
+                    const project = projects.find(key => {
+                        if (json.projects[key].projectType === "application") {
+                            return true;
+                        }
+                        return false;
+                    });
+                    if (!project) {
+                        console.info(`Could not update CLI config file to add scripts and styles. You'll have to add them manually.`);
+                        return;
+                    }
+                    scripts = json.projects[project].architect.build.options.scripts;
+                    styles = json.projects[project].architect.build.options.styles;
+                }
 
-            if (stylesSearch.search("../node_modules/@clr/ui/clr-ui") < 0) {
-                styles.push("../node_modules/@clr/ui/clr-ui.min.css");
-            }
-            if (stylesSearch.search("../node_modules/@clr/icons/clr-icons") < 0) {
-                styles.push("../node_modules/@clr/icons/clr-icons.min.css");
-            }
-            if (scriptsSearch.search("../node_modules/@clr/icons/clr-icons.min.js") < 0) {
-                scripts.push("../node_modules/@clr/icons/clr-icons.min.js");
-            }
-            if (scriptsSearch.search("../node_modules/@webcomponents/custom-elements/custom-elements.min.js") < 0) {
-                scripts.push("../node_modules/@webcomponents/custom-elements/custom-elements.min.js");
-            }
-        });
+                const scriptsSearch = scripts.join("|");
+                const stylesSearch = styles.join("|");
+    
+                if (stylesSearch.search("../node_modules/@clr/ui/clr-ui") < 0) {
+                    styles.push("../node_modules/@clr/ui/clr-ui.min.css");
+                }
+                if (stylesSearch.search("../node_modules/@clr/icons/clr-icons") < 0) {
+                    styles.push("../node_modules/@clr/icons/clr-icons.min.css");
+                }
+                if (scriptsSearch.search("../node_modules/@clr/icons/clr-icons.min.js") < 0) {
+                    scripts.push("../node_modules/@clr/icons/clr-icons.min.js");
+                }
+                if (scriptsSearch.search("../node_modules/@webcomponents/custom-elements/custom-elements.min.js") < 0) {
+                    scripts.push("../node_modules/@webcomponents/custom-elements/custom-elements.min.js");
+                }
+            });
+        } else {
+            console.info(`No CLI config found, skipping`);
+        }
 
         // Chain a series of tasks to setup Clarity
         // 1. Add ClarityModule to NgModule

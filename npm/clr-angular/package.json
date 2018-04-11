@@ -19,14 +19,16 @@
         "@angular/platform-browser": "^5.0.0",
         "@angular/platform-browser-dynamic": "^5.0.0",
         "@angular/router": "^5.0.0",
-        "@angular-devkit/core": "^0.4.7",
-        "@angular-devkit/schematics": "^0.4.7",
         "@clr/ui": "@VERSION"
+    },
+    "dependencies": {
+        "@angular-devkit/core": "^0.5.5",
+        "@angular-devkit/schematics": "^0.5.5"
     },
     "author": "clarity",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/vmware/clarity/issues"
     },
-    "collection": "schematics/collection.json"
+    "schematics": "./schematics/collection.json"
 }

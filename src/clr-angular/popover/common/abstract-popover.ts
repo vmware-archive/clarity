@@ -61,6 +61,8 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
     protected popoverPoint: Point;
     protected popoverOptions: PopoverOptions = {};
 
+    protected ignoredElement: any;
+
     protected anchor() {
         this.updateAnchor = true;
         // Ugh
@@ -107,6 +109,7 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
     private hostClickListener: () => void;
     private documentClickListener: () => void;
     private documentESCListener: () => void;
+    private ignoredElementClickListener: () => void;
     private ignore: any;
 
     private attachESCListener(): void {
@@ -127,6 +130,10 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
     private attachOutsideClickListener() {
         if (this.closeOnOutsideClick) {
             this.hostClickListener = this.renderer.listen(this.el.nativeElement, "click", event => this.ignore = event);
+            if (this.ignoredElement) {
+                this.ignoredElementClickListener =
+                    this.renderer.listen(this.ignoredElement, "click", event => this.ignore = event);
+            }
             this.documentClickListener = this.renderer.listen("document", "click", event => {
                 if (event === this.ignore) {
                     delete this.ignore;
@@ -142,6 +149,10 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
             if (this.hostClickListener) {
                 this.hostClickListener();
                 delete this.hostClickListener;
+            }
+            if (this.ignoredElementClickListener) {
+                this.ignoredElementClickListener();
+                delete this.ignoredElementClickListener;
             }
             if (this.documentClickListener) {
                 this.documentClickListener();

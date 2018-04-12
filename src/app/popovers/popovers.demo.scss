@@ -1,0 +1,15 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import "../_utils/code";
+
+.dummy-menu {
+    border: 1px solid;
+    padding: 12px;
+    background: white;
+    border-radius: 3px;
+    margin-top: 18px;
+
+    z-index: 1000;
+}

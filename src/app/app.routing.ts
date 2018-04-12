@@ -32,6 +32,7 @@ export const APP_ROUTES: Routes = [
     {path: "login", loadChildren: "app/login/login.demo.module#LoginDemoModule"},
     {path: "modal", loadChildren: "app/modal/modal.demo.module#ModalDemoModule"},
     {path: "navigation", loadChildren: "app/nav/nav.demo.module#NavDemoModule"},
+    {path: "popovers", loadChildren: "app/popovers/popovers.demo.module#PopoversDemoModule"},
     {path: "progress-bars", loadChildren: "app/progress-bars/progress-bars.demo.module#ProgressBarsDemoModule"},
     {path: "radios", loadChildren: "app/radios/radios.demo.module#RadiosDemoModule"},
     {path: "selects", loadChildren: "app/selects/selects.demo.module#SelectsDemoModule"},

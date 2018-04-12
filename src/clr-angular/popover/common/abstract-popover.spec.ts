@@ -4,14 +4,16 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ElementRef, Injector, Optional, ViewChild} from "@angular/core";
+import {Component, ElementRef, forwardRef, Injector, Optional, ViewChild} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {By} from "@angular/platform-browser";
 
 import {ClrConditionalModule} from "../../utils/conditional/conditional.module";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {ESC} from "../../utils/key-codes/key-codes";
 
 import {AbstractPopover} from "./abstract-popover";
+import {POPOVER_HOST_ANCHOR} from "./popover-host-anchor.token";
 
 describe("Abstract Popover", function() {
     let fixture: ComponentFixture<any>;
@@ -61,12 +63,42 @@ describe("Abstract Popover", function() {
             expect(fixture.componentInstance.testPopover).not.toBeUndefined();
         });
     });
+
+    describe("Open popover on focus", () => {
+        beforeEach(() => {
+            TestBed.configureTestingModule(
+                {declarations: [TestPopoverIgnoreElement, InputFocusPopover], imports: [ClrConditionalModule]});
+            fixture = TestBed.createComponent(InputFocusPopover);
+            compiled = fixture.nativeElement;
+            fixture.detectChanges();
+        });
+
+        it("keeps the popover open when the input is focused", () => {
+            const input = fixture.debugElement.query(By.css("input"));
+
+            input.triggerEventHandler("focus", {});
+            fixture.detectChanges();
+
+            expect(fixture.debugElement.query(By.css(".test-popover"))).not.toBeNull();
+        });
+
+        it("initializes the ignored element", () => {
+            const input = fixture.debugElement.query(By.css("input"));
+
+            input.triggerEventHandler("focus", {});
+            fixture.detectChanges();
+
+            const popover: TestPopoverIgnoreElement = fixture.componentInstance.popover;
+
+            expect(popover.ignoredElement).toBeDefined();
+        });
+    });
 });
 
 @Component({
     selector: "test-popover",
     template: `
-        <div>Popover</div>
+        <div class="test-popover">Popover</div>
     `
 })
 class TestPopover extends AbstractPopover {
@@ -81,5 +113,38 @@ class TestPopover extends AbstractPopover {
     `
 })
 class TestPopoverWithIfOpenDirective {
-    @ViewChild(TestPopover) testPopover;
+    @ViewChild(TestPopover) testPopover: TestPopover;
+}
+
+@Component({
+    template: `
+        <input type="text" #ignoreInput (focus)="onFocus($event)">
+        <test-popover-ignore *clrIfOpen></test-popover-ignore>
+    `,
+    providers: [IfOpenService, {provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef}]
+})
+class InputFocusPopover {
+    @ViewChild("ignoreInput") ignore: ElementRef;
+    @ViewChild(forwardRef(() => TestPopoverIgnoreElement)) popover: TestPopoverIgnoreElement;
+
+    constructor(private ifOpenService: IfOpenService) {}
+
+    onFocus(event: FocusEvent) {
+        this.ifOpenService.toggleWithEvent(event);
+    }
+}
+
+@Component({
+    selector: "test-popover-ignore",
+    template: `
+        <div class="test-popover">Popover</div>
+    `
+})
+class TestPopoverIgnoreElement extends AbstractPopover {
+    constructor(injector: Injector, @Optional() parent: ElementRef, parentHost: InputFocusPopover) {
+        super(injector, parent);
+        if (parentHost && parentHost.ignore) {
+            this.ignoredElement = parentHost.ignore.nativeElement;
+        }
+    }
 }

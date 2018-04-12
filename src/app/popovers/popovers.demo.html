@@ -1,0 +1,24 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<div class="row">
+    <div class="col-xs-12 col-md-6">
+        <h6>1. Open Popover on focus</h6>
+        <div>
+            <clr-dummy-anchor [openOnFocus]="true">
+                <clr-dummy-menu *clrIfOpen>Dummy Menu</clr-dummy-menu>
+            </clr-dummy-anchor>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-6">
+        <h6>2. Open Popover on click</h6>
+        <div>
+            <clr-dummy-anchor [openOnFocus]="false">
+                <clr-dummy-menu *clrIfOpen>Dummy Menu</clr-dummy-menu>
+            </clr-dummy-anchor>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 {
     "name": "clr-all",
-    "version": "0.11.12",
+    "version": "0.11.13",
     "private": true,
     "scripts": {
         "start": "webpack-dev-server -d --open",

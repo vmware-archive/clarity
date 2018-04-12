@@ -5,6 +5,8 @@
  */
 
 export const ICONS_TAGS = {
+    "unknown-status": ["help", "question"],
+    "help": ["question"],
     "floppy": ["disk", "save"],
     "image": ["graphic"],
     "envelope": ["letter"],

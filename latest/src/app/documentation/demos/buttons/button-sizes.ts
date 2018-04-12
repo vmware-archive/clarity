@@ -30,6 +30,16 @@ const HTML_EXAMPLE_3 = `
 <button class="btn btn-success btn-block">Success</button>
 `;
 
+const HTML_EXAMPLE_4 = `
+<button class="btn btn-link">Flat Regular</button>
+<button class="btn btn-link" disabled>Flat Disabled</button>
+`;
+
+const HTML_EXAMPLE_5 = `
+<button class="btn btn-link btn-sm">Flat Regular</button>
+<button class="btn btn-link btn-sm" disabled>Flat Disabled</button>
+`;
+
 @Component({
     selector: "clr-buttons-demo-button-sizes",
     templateUrl: "./button-sizes.html",
@@ -39,4 +49,6 @@ export class ButtonSizesDemo {
     htmlExample1 = HTML_EXAMPLE_1;
     htmlExample2 = HTML_EXAMPLE_2;
     htmlExample3 = HTML_EXAMPLE_3;
+    htmlExample4 = HTML_EXAMPLE_4;
+    htmlExample5 = HTML_EXAMPLE_5;
 }

@@ -3,7 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, ElementRef, Inject, Injector, Input, Optional} from "@angular/core";
+import {Component, ElementRef, Inject, Injector, Input, NgZone, Optional} from "@angular/core";
+
 import {AbstractPopover} from "../common/abstract-popover";
 import {Point} from "../common/popover";
 import {POPOVER_HOST_ANCHOR} from "../common/popover-host-anchor.token";
@@ -25,11 +26,11 @@ const SIZES: string[] = ["xs", "sm", "md", "lg"];
     }
 })
 export class ClrTooltipContent extends AbstractPopover {
-    constructor(injector: Injector, @Optional() @Inject(POPOVER_HOST_ANCHOR) parentHost: ElementRef) {
+    constructor(ngZone: NgZone, injector: Injector, @Optional() @Inject(POPOVER_HOST_ANCHOR) parentHost: ElementRef) {
         if (!parentHost) {
             throw new Error("clr-tooltip-content should only be used inside of a clr-tooltip");
         }
-        super(injector, parentHost);
+        super(ngZone, injector, parentHost);
         // Defaults
         this.position = "right";
         this.size = "sm";

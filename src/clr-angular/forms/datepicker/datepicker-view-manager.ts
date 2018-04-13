@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ElementRef, Injector, SkipSelf} from "@angular/core";
+import {Component, ElementRef, Injector, NgZone, SkipSelf} from "@angular/core";
 
 import {AbstractPopover} from "../../popover/common/abstract-popover";
 import {Point} from "../../popover/common/popover";
@@ -19,8 +19,9 @@ import {ViewManagerService} from "./providers/view-manager.service";
     host: {"[class.datepicker]": "true"}
 })
 export class ClrDatepickerViewManager extends AbstractPopover {
-    constructor(@SkipSelf() parent: ElementRef, _injector: Injector, private _viewManagerService: ViewManagerService) {
-        super(_injector, parent);
+    constructor(@SkipSelf() parent: ElementRef, _injector: Injector, private _viewManagerService: ViewManagerService,
+                ngZone: NgZone) {
+        super(ngZone, _injector, parent);
         this.configurePopover();
     }
 

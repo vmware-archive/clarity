@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ElementRef, Injector, Optional, ViewChild} from "@angular/core";
+import {Component, ElementRef, Injector, NgZone, Optional, ViewChild} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {ClrConditionalModule} from "../../utils/conditional/conditional.module";
@@ -70,8 +70,8 @@ describe("Abstract Popover", function() {
     `
 })
 class TestPopover extends AbstractPopover {
-    constructor(injector: Injector, @Optional() parent: ElementRef) {
-        super(injector, parent);
+    constructor(ngZone: NgZone, injector: Injector, @Optional() parent: ElementRef) {
+        super(ngZone, injector, parent);
     }
 }
 

@@ -31,7 +31,7 @@ let nbCount: number = 0;
             <clr-dg-string-filter
                     *ngIf="field && !customFilter"
                     [clrDgStringFilter]="registered"
-                    [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
+                    (clrFilterValueChange)="filterValueChange.emit($event)"></clr-dg-string-filter>
 
             <ng-template #columnTitle><ng-content></ng-content></ng-template>
 

@@ -31,12 +31,5 @@
 // Component variables
 @import "../utils/variables.clarity"; // depends on helpers.clarity, color.clarity
 
-// Bootstrap 4 Dependencies - Begin Part 2
-
-@import "~bootstrap/scss/media";
-@import "~bootstrap/scss/utilities";
-@import '~bootstrap/scss/images';
-@import "~bootstrap/scss/list-group";
-@import "~bootstrap/scss/close";
-@import "~bootstrap/scss/grid";
-@import "~bootstrap/scss/responsive-embed";
+// Clarity scss maps w/ overridable variables per component
+@import "maps.clarity";

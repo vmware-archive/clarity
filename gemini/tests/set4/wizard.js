@@ -191,7 +191,7 @@ gemini.suite('wizard', (child) => {
                 actions.wait(WAIT_TIME); // wait for modal to fully load
                 actions.waitForElementToShow('.content-for-page-1', WAIT_TIME);
             })
-            .setCaptureElements('.content-container')
+            .setCaptureElements('.modal-dialog')
             .capture('default');
     });
 });

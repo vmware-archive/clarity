@@ -3,8 +3,15 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 
-// Clarity scss maps w/ overridable variables per component
-@import "maps.clarity";
+// Bootstrap 4 Dependencies - Begin Part 2
+// NOTE: These are here b/c they need to be overwritable for the $clr-breakpoints map in a theme.
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/utilities";
+@import '~bootstrap/scss/images';
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/responsive-embed";
 
 //Reboot
 @import "../utils/reboot.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity

@@ -255,6 +255,7 @@
             //Show on input focus
             & > input:focus + .tooltip-content {
                 background: $clr-forms-input-invalid-color;
+                border: $arrow-border-width solid $clr-forms-input-invalid-color;
                 visibility: visible;
                 opacity: 1;
             }
@@ -266,7 +267,7 @@
             &.tooltip-bottom-right > input:focus + .tooltip-content {
                 left: 100%;
                 right: auto;
-                //6px to the right & left of the error icon + 8px for half width of the error icon
+                ////6px to the right & left of the error icon + 8px for half width of the error icon
                 margin-left: -1 * ($error-icon-margin + $error-icon-width / 2);
             }
 
@@ -279,20 +280,32 @@
             }
 
             //Set arrow colors to red :(
-            & > .tooltip-content::before, &.tooltip-top-right > .tooltip-content::before {
+            & > .tooltip-content::before, .tooltip-content::after {
                 @include vertical-tooltip-arrow-color(top, right, $clr-forms-input-invalid-color);
             }
 
-            &.tooltip-top-left > .tooltip-content::before {
-                @include vertical-tooltip-arrow-color(top, left, $clr-forms-input-invalid-color);
+            &.tooltip-top-right > .tooltip-content {
+                &::before, &::after {
+                    @include vertical-tooltip-arrow-color(top, right, $clr-forms-input-invalid-color);
+                }
             }
 
-            &.tooltip-bottom-right > .tooltip-content::before {
-                @include vertical-tooltip-arrow-color(bottom, right, $clr-forms-input-invalid-color);
+            &.tooltip-top-left > .tooltip-content {
+                &::before, &::after {
+                    @include vertical-tooltip-arrow-color(top, left, $clr-forms-input-invalid-color);
+                }
             }
 
-            &.tooltip-bottom-left > .tooltip-content::before {
-                @include vertical-tooltip-arrow-color(bottom, left, $clr-forms-input-invalid-color);
+            &.tooltip-bottom-right > .tooltip-content {
+                &::before, &::after {
+                    @include vertical-tooltip-arrow-color(bottom, right, $clr-forms-input-invalid-color);
+                }
+            }
+
+            &.tooltip-bottom-left > .tooltip-content {
+                &::before, &::after {
+                    @include vertical-tooltip-arrow-color(bottom, left, $clr-forms-input-invalid-color);
+                }
             }
 
             &.tooltip-left > input:focus + .tooltip-content {
@@ -300,7 +313,7 @@
                 left: auto;
                 margin: 0 ($error-icon-margin + $error-icon-width/2) 0 0;
 
-                &::before {
+                &::before, &::after {
                     @include horizontal-tooltip-arrow-color(top, left, $clr-forms-input-invalid-color);
                 }
             }
@@ -310,7 +323,7 @@
                 right: auto;
                 margin: 0 0 0 ($error-icon-margin + $error-icon-width/2);
 
-                &::before {
+                &::before, &::after {
                     @include horizontal-tooltip-arrow-color(top, right, $clr-forms-input-invalid-color);
                 }
             }

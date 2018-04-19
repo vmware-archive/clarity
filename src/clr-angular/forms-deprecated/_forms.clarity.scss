@@ -186,7 +186,7 @@
         }
 
         //Media Queries for the form-group for small screens
-        @media screen and (max-width: map-get($clr-breakpoints, small)) {
+        @media screen and (max-width: map-get($grid-breakpoints, sm)) {
 
             .form-group {
                 padding-left: 0;

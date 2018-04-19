@@ -2,9 +2,11 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+// TODO: The BS4 imports were actually in dependencies.clarity.scss
+// We will get rid of BS4 so this should go away soon.
 
 // Bootstrap 4 Dependencies - Begin Part 2
-// NOTE: These are here b/c they need to be overwritable for the $clr-breakpoints map in a theme.
+// NOTE: These are here b/c they need to be overwritable for the $grid-breakpoints map in a theme.
 @import "~bootstrap/scss/media";
 @import "~bootstrap/scss/utilities";
 @import '~bootstrap/scss/images';
@@ -12,6 +14,9 @@
 @import "~bootstrap/scss/close";
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/responsive-embed";
+
+// Clarity scss maps w/ overridable variables per component
+@import "maps.clarity";
 
 //Reboot
 @import "../utils/reboot.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity

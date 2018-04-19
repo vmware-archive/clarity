@@ -321,7 +321,7 @@
         }
     }
 
-    @media screen and (max-width: map-get($clr-breakpoints, medium)) {
+    @media screen and (max-width: map-get($grid-breakpoints, md)) {
         .alert {
             .alert-item {
                 flex-wrap: wrap;

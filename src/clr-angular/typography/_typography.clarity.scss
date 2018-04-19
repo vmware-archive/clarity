@@ -72,7 +72,7 @@
 }
 
 //Generates responsive typography based on the element style map in variables.clarity.scss
-@mixin clr-getTypeProperties($element, $whichTypeProperties: (), $breakpoint-property: min-width, $breakpoints-map: $clr-breakpoints) {
+@mixin clr-getTypeProperties($element, $whichTypeProperties: (), $breakpoint-property: min-width, $breakpoints-map: $grid-breakpoints) {
     //Check if the element exists in the $clr-elements style map
     @if map-has-key($clr-elements, $element) {
         $elMap: map-get($clr-elements, $element); //get the element style map
@@ -94,8 +94,8 @@
         //     }
         //     //Everything else except the common properties has a media query
         //     @else {
-        //         @if $breakpoint != "clr-common" and map-has-key($clr-breakpoints, $breakpoint) {
-        //             $breakpoint: map-get($clr-breakpoints, $breakpoint);
+        //         @if $breakpoint != "clr-common" and map-has-key($grid-breakpoints, $breakpoint) {
+        //             $breakpoint: map-get($grid-breakpoints, $breakpoint);
         //             @media screen and (# {$breakpoint-property}: $breakpoint) {
         //                 @include clr-getAllTypeKeys($val-map, $el-map);
         //             }

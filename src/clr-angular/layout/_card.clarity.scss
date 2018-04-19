@@ -237,7 +237,7 @@
     //Credit: Bootstrap 4 Card Masonry
     //Added some fixes to avoid flickering in Clickable cards
     //Added extra column classes to control the number of CSS columns
-    @media screen and (min-width: map-get($clr-breakpoints, small)) {
+    @media screen and (min-width: map-get($grid-breakpoints, sm)) {
         .card-columns {
             column-count: 3;
             column-gap: 0.5rem;

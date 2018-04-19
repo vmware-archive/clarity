@@ -2,6 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+// Bootstrap 4 Grid Overrides
+@import "../utils/bs4-grid-breakpoint-overrides.clarity";
 
 // Bootstrap 4 Dependencies - Begin Part 1
 @import "~bootstrap/scss/variables";
@@ -30,6 +32,3 @@
 
 // Component variables
 @import "../utils/variables.clarity"; // depends on helpers.clarity, color.clarity
-
-// Clarity scss maps w/ overridable variables per component
-@import "maps.clarity";

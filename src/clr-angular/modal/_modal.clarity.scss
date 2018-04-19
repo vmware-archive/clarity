@@ -15,7 +15,7 @@
     align-items: center;
     padding: 2rem;
 
-    @media screen and (max-width: map-get($clr-breakpoints, small)) {
+    @media screen and (max-width: map-get($grid-breakpoints, sm)) {
         padding: 0.5rem;
     }
 }
@@ -104,14 +104,14 @@
 }
 
 @media screen
-and (max-width: map-get($clr-breakpoints, medium))
+and (max-width: map-get($grid-breakpoints, md))
 and (orientation: landscape) {
     .modal-body {
         max-height: 55vh;
     }
 }
 
-@media screen and (max-width: map-get($clr-breakpoints, small)) {
+@media screen and (max-width: map-get($grid-breakpoints, sm)) {
     .modal-content {
         padding: 0.5rem 0 0.5rem 1rem;
     }

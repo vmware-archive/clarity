@@ -306,13 +306,6 @@ $clr-button-appearance-map: (
 
 // Typography
 // Headers
-$clr-breakpoints: (
-    small : 544px,
-    medium: 768px,
-    large : 992px,
-    xlarge: 1200px
-) !default;
-
 $clr-h1: (
     clr-common: (
         color: $clr-h1-color,

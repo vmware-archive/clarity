@@ -185,7 +185,7 @@
             line-height: $adjusted_lineHeight;
         }
 
-        @media screen and (max-width: map-get($clr-breakpoints, small)) {
+        @media screen and (max-width: map-get($grid-breakpoints, sm)) {
             .btn,
             .dropdown-item {
                 $adjusted_lineHeight: 1.5rem;

@@ -382,7 +382,7 @@
         }
     }
 
-    @media screen and (max-width: map-get($clr-breakpoints, medium)) {
+    @media screen and (max-width: map-get($grid-breakpoints, md)) {
         header,
         .header {
 

@@ -135,18 +135,19 @@ export default function(options: ComponentOptions): Rule {
 
                 const scriptsSearch = scripts.join("|");
                 const stylesSearch = styles.join("|");
+                const pathPrefix = (json.apps) ? "../" : "";
     
-                if (stylesSearch.search("../node_modules/@clr/ui/clr-ui") < 0) {
-                    styles.push("../node_modules/@clr/ui/clr-ui.min.css");
+                if (stylesSearch.search("node_modules/@clr/ui/clr-ui") < 0) {
+                    styles.push(pathPrefix + "node_modules/@clr/ui/clr-ui.min.css");
                 }
-                if (stylesSearch.search("../node_modules/@clr/icons/clr-icons") < 0) {
-                    styles.push("../node_modules/@clr/icons/clr-icons.min.css");
+                if (stylesSearch.search("node_modules/@clr/icons/clr-icons") < 0) {
+                    styles.push(pathPrefix + "node_modules/@clr/icons/clr-icons.min.css");
                 }
-                if (scriptsSearch.search("../node_modules/@clr/icons/clr-icons.min.js") < 0) {
-                    scripts.push("../node_modules/@clr/icons/clr-icons.min.js");
+                if (scriptsSearch.search("node_modules/@clr/icons/clr-icons.min.js") < 0) {
+                    scripts.push(pathPrefix + "node_modules/@clr/icons/clr-icons.min.js");
                 }
-                if (scriptsSearch.search("../node_modules/@webcomponents/custom-elements/custom-elements.min.js") < 0) {
-                    scripts.push("../node_modules/@webcomponents/custom-elements/custom-elements.min.js");
+                if (scriptsSearch.search("node_modules/@webcomponents/custom-elements/custom-elements.min.js") < 0) {
+                    scripts.push(pathPrefix + "node_modules/@webcomponents/custom-elements/custom-elements.min.js");
                 }
             });
         } else {

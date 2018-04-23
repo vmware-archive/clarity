@@ -6,6 +6,7 @@
 
 import {Component} from "@angular/core";
 
+import {itIgnore} from "../../../../tests/tests.helpers";
 import {TestContext} from "../../data/datagrid/helpers.spec";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 
@@ -105,7 +106,8 @@ export default function() {
                 expect(context.clarityDirective.selectDay).toHaveBeenCalled();
             });
 
-            it("updates the focusable date when a button is focused", () => {
+            // @TODO determine if this actually fails in IE
+            itIgnore(["ie"], "updates the focusable date when a button is focused", () => {
                 spyOn(context.clarityDirective, "onDayViewFocus");
                 const button: HTMLButtonElement = context.clarityElement.children[0];
 

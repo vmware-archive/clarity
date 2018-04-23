@@ -110,6 +110,18 @@
 @import "../popover/tooltip/tooltips.clarity";
 
 //Forms
+@import "../forms/styles/mixins.forms";
+@import "../forms/styles/containers.clarity";
+@import "../forms/styles/form.clarity";
+@import "../forms/styles/checkbox.clarity";
+@import "../forms/styles/file.clarity";
+@import "../forms/styles/input.clarity";
+@import "../forms/styles/input-group.clarity";
+@import "../forms/styles/radio.clarity";
+@import "../forms/styles/select.clarity";
+@import "../forms/styles/textarea.clarity";
+
+//Forms Deprecated
 @import "../forms-deprecated/utils/form-variables.clarity";
 @import "../forms-deprecated/utils/mixins.clarity";
 @import "../forms-deprecated/inputs.clarity"; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity

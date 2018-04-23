@@ -8,6 +8,7 @@ import {Component, DebugElement, ViewChild} from "@angular/core";
 import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
 import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {By} from "@angular/platform-browser";
+import {itIgnore} from "../../../../tests/tests.helpers";
 
 import {TestContext} from "../../data/datagrid/helpers.spec";
 import {ClrFormsModule} from "../../forms-deprecated";
@@ -117,7 +118,9 @@ export default function() {
                     expect(context.clarityElement.placeholder).toBe("MM/DD/YYYY");
                 });
 
-                it("binds the input type correctly", () => {
+                // Ignore Safari and IE here because it silently disallows setting to `date` types
+                // since it is not supported.
+                itIgnore(["safari", "ie"], "binds the input type correctly", () => {
                     expect(context.clarityElement.type).toBe("text");
 
                     enabledService.fakeIsEnabled = false;
@@ -184,15 +187,16 @@ export default function() {
                 expect(fixture.componentInstance.dateValue).toBe("02/01/2015");
             });
 
-            it("updates the model and the selectedDay when the changes the input field", fakeAsync(() => {
-                   dateInputDebugElement.nativeElement.value = "01/02/2015";
-                   dateInputDebugElement.nativeElement.dispatchEvent(new Event("change"));
+            // IE doesn't handle Event constructor
+            itIgnore(["ie"], "updates the model and the selectedDay when the changes the input field", fakeAsync(() => {
+                         dateInputDebugElement.nativeElement.value = "01/02/2015";
+                         dateInputDebugElement.nativeElement.dispatchEvent(new Event("change"));
 
-                   fixture.detectChanges();
-                   tick();
+                         fixture.detectChanges();
+                         tick();
 
-                   expect(dateNavigationService.selectedDay).toEqual(new DayModel(2015, 0, 2));
-               }));
+                         expect(dateNavigationService.selectedDay).toEqual(new DayModel(2015, 0, 2));
+                     }));
         });
 
         describe("Datepicker with Reactive Forms", () => {
@@ -285,7 +289,8 @@ export default function() {
                 expect(fixture.componentInstance.date.getDate()).toBe(date.getDate());
             });
 
-            it("emits the date when the user changes the input", () => {
+            // IE doesn't like event constructors
+            itIgnore(["ie"], "emits the date when the user changes the input", () => {
                 dateInputDebugElement.nativeElement.value = "01/02/2015";
                 dateInputDebugElement.nativeElement.dispatchEvent(new Event("change"));
 

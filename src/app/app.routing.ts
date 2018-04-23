@@ -21,6 +21,7 @@ export const APP_ROUTES: Routes = [
     {path: "datagrid", loadChildren: "app/datagrid/datagrid.demo.module#DatagridDemoModule"},
     {path: "datepicker", loadChildren: "app/datepicker/datepicker.demo.module#DatepickerDemoModule"},
     {path: "dropdown", loadChildren: "app/dropdown/dropdown.demo.module#DropdownDemoModule"},
+    {path: "forms", loadChildren: "app/forms/forms.demo.module#FormsDemoModule"},
     {path: "forms-deprecated", loadChildren: "app/forms-deprecated/forms.demo.module#FormsDeprecatedDemoModule"},
     {path: "grid", loadChildren: "app/grid/grid.demo.module#GridDemoModule"},
     {path: "iconography", loadChildren: "app/iconography/iconography.demo.module#IconographyDemoModule"},

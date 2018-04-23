@@ -175,7 +175,7 @@ export default function(): void {
                 expect(hideableColumns.length).toBe(renderedTemplates.length);
 
                 for (let i = 0; i < renderedTemplates.length; i++) {
-                    expect(hideableColumns[i].id).toEqual(renderedTemplates[i].innerText);
+                    expect(hideableColumns[i].id).toEqual(renderedTemplates[i].innerText.trim());
                 }
 
                 // Now test when columns are updated
@@ -189,7 +189,7 @@ export default function(): void {
                 expect(updatedColumns.length).toBe(updatedRenderedTemplates.length);
 
                 for (let i = 0; i < updatedRenderedTemplates.length; i++) {
-                    expect(updatedColumns[i].id).toEqual(updatedRenderedTemplates[i].innerText);
+                    expect(updatedColumns[i].id).toEqual(updatedRenderedTemplates[i].innerText.trim());
                 }
             });
 
@@ -283,8 +283,8 @@ export default function(): void {
                 expect(context.clarityDirective.open).toBe(true);
 
                 const buttons = context.clarityElement.querySelectorAll(".switch-footer button");
-                expect(buttons[0].innerText).toEqual("Select All".toUpperCase());
-                expect(buttons[1].innerText).toEqual("OK".toUpperCase());
+                expect(buttons[0].innerText.trim().toUpperCase()).toEqual("Select All".toUpperCase());
+                expect(buttons[1].innerText.trim().toUpperCase()).toEqual("OK".toUpperCase());
                 const title = context.clarityElement.querySelector(".switch-header");
                 expect(title.innerHTML).toContain("Show Columns");
             });
@@ -307,8 +307,8 @@ export default function(): void {
                 expect(context.clarityDirective.open).toBe(true);
 
                 const buttons = context.clarityElement.querySelectorAll(".switch-footer button");
-                expect(buttons[0].innerText).toEqual("Select All!".toUpperCase());
-                expect(buttons[1].innerText).toEqual("OK!".toUpperCase());
+                expect(buttons[0].innerText.trim().toUpperCase()).toEqual("Select All!".toUpperCase());
+                expect(buttons[1].innerText.trim().toUpperCase()).toEqual("OK!".toUpperCase());
                 const title = context.clarityElement.querySelector(".switch-header");
                 expect(title.innerHTML).toContain("Custom Title");
             });

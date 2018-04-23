@@ -1,0 +1,84 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Text Input</h2>
+
+<form class="clr-form">
+    <div class="clr-form-control">
+        <label class="clr-control-label">Basic</label>
+        <div class="clr-control-container">
+            <div class="clr-file-wrapper">
+                <label for="basic" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
+                <input type="file" id="basic" placeholder="Enter value here" class="clr-file">
+            </div>
+            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
+            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            <span class="clr-subtext">Helper Text</span>
+        </div>
+    </div>
+    
+    <div class="clr-form-control">
+        <label for="basic-default" class="clr-control-label">Basic default</label>
+        <div class="clr-control-container">
+            <div class="clr-file-wrapper">
+                <input type="file" id="basic-default" placeholder="Enter value here">
+            </div>
+            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
+            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            <span class="clr-subtext">Helper Text</span>
+        </div>
+    </div>
+    
+    <div class="clr-form-control">
+        <label class="clr-control-label">Error</label>
+        <div class="clr-control-container clr-error">
+            <div class="clr-file-wrapper">
+                <label for="error" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
+                <input type="file" id="error" placeholder="Enter value here" class="clr-file">
+            </div>
+            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
+            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            <span class="clr-subtext">Helper Text</span>
+        </div>
+    </div>
+    
+    <div class="clr-form-control">
+        <label for="error-default" class="clr-control-label">Error default</label>
+        <div class="clr-control-container clr-error">
+            <div class="clr-file-wrapper">
+                <input type="file" id="error-default" placeholder="Enter value here">
+            </div>
+            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
+            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            <span class="clr-subtext">Helper Text</span>
+        </div>
+    </div>
+
+    <div class="clr-form-control clr-form-control-disabled">
+        <label class="clr-control-label">Disabled</label>
+        <div class="clr-control-container clr-error">
+            <div class="clr-file-wrapper">
+                <label for="disabled" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
+                <input type="file" id="disaled" disabled placeholder="Enter value here" class="clr-file">
+            </div>
+            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
+            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            <span class="clr-subtext">Helper Text</span>
+        </div>
+    </div>
+    
+    <div class="clr-form-control clr-form-control-disabled">
+        <label for="disabled-default" class="clr-control-label">Disabled default</label>
+        <div class="clr-control-container clr-error">
+            <div class="clr-file-wrapper">
+                <input type="file" id="disabled-default" disabled placeholder="Enter value here">
+            </div>
+            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
+            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            <span class="clr-subtext">Helper Text</span>
+        </div>
+    </div>
+</form>

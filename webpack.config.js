@@ -442,7 +442,7 @@ module.exports = {
   },
   "devServer": {
     "historyApiFallback": true,
-    "port": 4200,
+    "port": 8000,
     "host":"0.0.0.0",
     "disableHostCheck": true
   }

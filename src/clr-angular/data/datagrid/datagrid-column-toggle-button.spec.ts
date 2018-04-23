@@ -62,7 +62,7 @@ export default function(): void {
             });
 
             it("projects content", function() {
-                expect(button.innerText).toEqual("Testing 1 2 3".toUpperCase());
+                expect(button.innerText.trim().toUpperCase()).toEqual("Testing 1 2 3".toUpperCase());
             });
 
             it("should disable the button when all are active", function() {

@@ -18,7 +18,7 @@ import {
     Output,
     QueryList
 } from "@angular/core";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 
 import {GHOST_PAGE_ANIMATION} from "../modal/utils/ghost-page-animations";
 

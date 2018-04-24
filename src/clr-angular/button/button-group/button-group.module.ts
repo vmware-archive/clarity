@@ -20,7 +20,8 @@ export const CLR_BUTTON_GROUP_DIRECTIVES: Type<any>[] = [ClrButton, ClrButtonGro
     declarations: [CLR_BUTTON_GROUP_DIRECTIVES],
     exports: [CLR_BUTTON_GROUP_DIRECTIVES]
 })
-export class ClrButtonGroupModule {}
+export class ClrButtonGroupModule {
+}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

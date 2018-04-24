@@ -20,7 +20,8 @@ export const CLR_TREE_VIEW_DIRECTIVES: Type<any>[] = [ClrTreeNode];
     declarations: [CLR_TREE_VIEW_DIRECTIVES],
     exports: [CLR_TREE_VIEW_DIRECTIVES, ClrIfExpandModule]
 })
-export class ClrTreeViewModule {}
+export class ClrTreeViewModule {
+}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

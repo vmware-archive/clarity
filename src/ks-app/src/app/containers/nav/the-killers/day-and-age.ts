@@ -18,4 +18,5 @@ import {Component} from "@angular/core";
         </p>
     `
 })
-export class KSDayAndAgeDemo {}
+export class KSDayAndAgeDemo {
+}

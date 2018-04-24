@@ -31,7 +31,8 @@ export const CLR_STACK_VIEW_DIRECTIVES: Type<any>[] = [
     declarations: [CLR_STACK_VIEW_DIRECTIVES],
     exports: [CLR_STACK_VIEW_DIRECTIVES]
 })
-export class ClrStackViewModule {}
+export class ClrStackViewModule {
+}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

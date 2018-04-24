@@ -361,4 +361,5 @@ class ExpandTest {
             <clr-dg-cell>Name</clr-dg-cell>
         </clr-dg-row>`
 })
-class HideShowTest {}
+class HideShowTest {
+}

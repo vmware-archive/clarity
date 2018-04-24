@@ -330,4 +330,5 @@ export default function() {
         <clr-yearpicker></clr-yearpicker>
     `
 })
-class TestComponent {}
+class TestComponent {
+}

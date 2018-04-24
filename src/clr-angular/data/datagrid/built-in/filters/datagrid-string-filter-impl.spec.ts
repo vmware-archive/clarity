@@ -3,18 +3,17 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {StringFilter} from "../../interfaces/string-filter.interface";
+import {ClrDatagridStringFilterInterface} from "../../interfaces/string-filter.interface";
 
 import {DatagridStringFilterImpl} from "./datagrid-string-filter-impl";
 
 export default function(): void {
     describe("DatagridStringFilterImpl", function() {
-        let stringFilter: TestFilter;
         let fullFilter: DatagridStringFilterImpl;
 
         beforeEach(function() {
-            stringFilter = new TestFilter();
-            fullFilter = new DatagridStringFilterImpl(this.stringFilter);
+            const stringFilter = new TestFilter();
+            fullFilter = new DatagridStringFilterImpl(stringFilter);
         });
 
         it("updates the lowercase value when the raw value changes", function() {
@@ -52,7 +51,7 @@ export default function(): void {
     });
 }
 
-class TestFilter implements StringFilter<string> {
+class TestFilter implements ClrDatagridStringFilterInterface<string> {
     accepts(item: string, search: string) {
         return item.toLowerCase() === search;
     }

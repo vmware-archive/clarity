@@ -12,7 +12,8 @@ export const CLR_CODE_HIGHLIGHT_DIRECTIVES: Type<any>[] = [ClrCodeHighlight];
 
 @NgModule(
     {imports: [CommonModule], declarations: [CLR_CODE_HIGHLIGHT_DIRECTIVES], exports: [CLR_CODE_HIGHLIGHT_DIRECTIVES]})
-export class ClrSyntaxHighlightModule {}
+export class ClrSyntaxHighlightModule {
+}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

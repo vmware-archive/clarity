@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ContentChild, ContentChildren, OnDestroy, OnInit, QueryList} from "@angular/core";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 
 import {Point} from "../../popover/common/popover";
 

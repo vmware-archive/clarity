@@ -3,8 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Observable} from "rxjs/Observable";
-import {Subject} from "rxjs/Subject";
+import {Observable} from "rxjs";
+import {Subject} from "rxjs";
 import {ClrDatagridFilterInterface} from "../../interfaces/filter.interface";
 import {ClrDatagridStringFilterInterface} from "../../interfaces/string-filter.interface";
 

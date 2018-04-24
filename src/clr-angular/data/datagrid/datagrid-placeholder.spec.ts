@@ -20,7 +20,7 @@ export default function(): void {
             beforeEach(function() {
                 this.pageProvider = new Page(new StateDebouncer());
                 this.itemsProvider = new Items(null, null, this.pageProvider);
-                this.component = new ClrDatagridPlaceholder(this.itemsProvider, this.pageProvider);
+                this.component = new ClrDatagridPlaceholder(this.itemsProvider);
             });
 
             it("detects if the Datagrid is empty", function() {
@@ -35,13 +35,11 @@ export default function(): void {
         describe("View", function() {
             let context: TestContext<ClrDatagridPlaceholder, SimpleTest>;
             let itemsProvider: Items;
-            let pageProvider: Page;
 
             beforeEach(function() {
                 context = this.create(ClrDatagridPlaceholder, SimpleTest,
                                       [Items, Page, Sort, FiltersProvider, StateDebouncer]);
                 itemsProvider = TestBed.get(Items);
-                pageProvider = TestBed.get(Page);
             });
 
             it("is empty when there are items", function() {
@@ -72,4 +70,5 @@ export default function(): void {
 }
 
 @Component({template: `<clr-dg-placeholder>Hello world</clr-dg-placeholder>`})
-class SimpleTest {}
+class SimpleTest {
+}

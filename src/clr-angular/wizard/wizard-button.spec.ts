@@ -61,7 +61,8 @@ export default function(): void {
                     <clr-wizard-button></clr-wizard-button>
                 `
             })
-            class TestComponent {}
+            class TestComponent {
+            }
 
             function runTypeConstantCheck(component: any, fnToTest: any, buttonType: string, typeConstant: any) {
                 buttonComponent.type = "next";
@@ -996,7 +997,6 @@ export default function(): void {
             const navService = new NavServiceMock();
             const buttonHub = new ButtonHubMock();
             let myTestComponent: ViewTestComponent;
-            let myTestComponentEl: HTMLElement;
             let buttonElement: HTMLElement;
             let actualButton: HTMLElement;
 
@@ -1019,7 +1019,6 @@ export default function(): void {
                 buttonElement = buttonDebugEl.nativeElement;
                 actualButton = buttonElement.querySelector("button");
                 myTestComponent = fixture.componentInstance;
-                myTestComponentEl = fixture.debugElement.nativeElement;
             });
 
             afterEach(() => {

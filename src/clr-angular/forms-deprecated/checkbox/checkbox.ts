@@ -47,8 +47,7 @@ let latestId = 0;
 })
 export class ClrCheckboxDeprecated implements ControlValueAccessor {
     // If our host has an ID attribute, we use this instead of our index.
-    @Input("id")
-    _id: string = (latestId++).toString();
+    @Input("id") _id: string = (latestId++).toString();
 
     public get id() {
         return `clr-checkbox-${this._id}`;

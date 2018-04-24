@@ -63,4 +63,5 @@ export default function(): void {
         </button>
     `
 })
-class TestTrigger {}
+class TestTrigger {
+}

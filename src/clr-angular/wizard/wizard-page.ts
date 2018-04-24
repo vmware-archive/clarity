@@ -435,8 +435,7 @@ export class ClrWizardPage implements OnInit {
      * @memberof WizardPage
      *
      */
-    @Input("id")
-    _id: any = (wizardPageIndex++).toString();
+    @Input("id") _id: any = (wizardPageIndex++).toString();
 
     /**
      * A read-only getter that generates an ID string for the wizard page from

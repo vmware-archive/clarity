@@ -40,7 +40,8 @@ class WrappedDirective implements OnInit {
     exports: [WrapperComponent, WrappedDirective],
     entryComponents: [WrapperComponent]
 })
-class HostWrappingTestModule {}
+class HostWrappingTestModule {
+}
 
 
 @Component({
@@ -48,14 +49,16 @@ class HostWrappingTestModule {}
         <span wrappedDirective>World</span>
     `
 })
-class WrappingTest {}
+class WrappingTest {
+}
 
 @Component({
     template: `
         <wrapper-component><span wrappedDirective>World</span></wrapper-component>
     `
 })
-class ExplicitTest {}
+class ExplicitTest {
+}
 
 @Component({
     template: `

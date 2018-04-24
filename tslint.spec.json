@@ -1,8 +1,0 @@
-{
-  "rulesDirectory": [
-    "./node_modules/tslint-defocus/dist"
-  ],
-  "rules": {
-    "defocus": true
-  }
-}

@@ -17,4 +17,5 @@ import {POPOVER_HOST_ANCHOR} from "../common/popover-host-anchor.token";
     },
     providers: [IfOpenService, {provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef}]
 })
-export class ClrTooltip {}
+export class ClrTooltip {
+}

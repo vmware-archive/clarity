@@ -17,12 +17,12 @@ import {ClrTabOverflowContent} from "./tab-overflow-content";
         </clr-tab-overflow-content>
     `
 })
-class TestComponent {}
+class TestComponent {
+}
 
 describe("TabOverflowContent", () => {
     let fixture: ComponentFixture<any>;
     let compiled: any;
-    let instance: any;
 
     beforeEach(() => {
         TestBed.configureTestingModule(
@@ -31,7 +31,6 @@ describe("TabOverflowContent", () => {
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
         compiled = fixture.nativeElement;
-        instance = fixture.componentInstance;
     });
 
     it("has the correct css classes", () => {

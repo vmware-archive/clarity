@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {AfterContentChecked, ChangeDetectorRef, OnDestroy} from "@angular/core";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 import {WillyWonka} from "./willy-wonka";
 
 export abstract class OompaLoompa implements AfterContentChecked, OnDestroy {

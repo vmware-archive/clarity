@@ -40,4 +40,5 @@ export default function(): void {
         </span>
     `
 })
-class SimpleTest {}
+class SimpleTest {
+}

@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Injectable} from "@angular/core";
-import {Observable} from "rxjs/Observable";
-import {map} from "rxjs/operators/map";
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
 
 import {DatagridPropertyComparator} from "../built-in/comparators/datagrid-property-comparator";
 import {DatagridPropertyStringFilter} from "../built-in/filters/datagrid-property-string-filter";

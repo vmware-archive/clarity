@@ -30,7 +30,8 @@ export const CLR_NAVIGATION_DIRECTIVES: Type<any>[] =
     }],
     exports: [CLR_NAVIGATION_DIRECTIVES]
 })
-export class ClrNavigationModule {}
+export class ClrNavigationModule {
+}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

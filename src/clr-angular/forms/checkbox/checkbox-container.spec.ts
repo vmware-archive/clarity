@@ -20,7 +20,8 @@ import {ClrCheckboxContainer} from "./checkbox-container";
         </clr-checkbox-container>
     `
 })
-class SimpleTest {}
+class SimpleTest {
+}
 
 interface TestContext {
     fixture: ComponentFixture<SimpleTest>;

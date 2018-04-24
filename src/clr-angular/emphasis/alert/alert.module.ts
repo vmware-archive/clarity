@@ -22,7 +22,8 @@ export const CLR_ALERT_DIRECTIVES: Type<any>[] = [ClrAlert, ClrAlertItem, ClrAle
     declarations: [CLR_ALERT_DIRECTIVES],
     exports: [CLR_ALERT_DIRECTIVES]
 })
-export class ClrAlertModule {}
+export class ClrAlertModule {
+}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

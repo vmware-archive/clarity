@@ -7,4 +7,6 @@
 import {Component} from "@angular/core";
 
 @Component({templateUrl: "./tabs.component.html"})
-export class KSTabs { inOverflow: boolean = false; }
+export class KSTabs {
+    inOverflow: boolean = false;
+}

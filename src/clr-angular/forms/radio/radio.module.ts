@@ -19,4 +19,5 @@ import {ClrRadioContainer} from "./radio-container";
     exports: [ClrCommonFormsModule, ClrRadio, ClrRadioContainer],
     entryComponents: [ClrRadioContainer]
 })
-export class ClrRadioModule {}
+export class ClrRadioModule {
+}

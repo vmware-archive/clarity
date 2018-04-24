@@ -77,4 +77,5 @@ import {KSWizards} from "./containers/wizard/wizards.component";
     providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

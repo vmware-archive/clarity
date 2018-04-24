@@ -18,7 +18,8 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit {
 
     _id: string;
 
-    @HostBinding() @Input()
+    @HostBinding()
+    @Input()
     get id() {
         return this._id;
     }

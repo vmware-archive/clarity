@@ -538,7 +538,8 @@ class NoIconsNoNavGroupTestComponent {
         </clr-vertical-nav>
     `
 })
-class IconsButNoNavGroupTestComponent {}
+class IconsButNoNavGroupTestComponent {
+}
 
 @Component({
     template: `
@@ -553,7 +554,8 @@ class IconsButNoNavGroupTestComponent {}
         </div>
     `
 })
-class OnlyNavGroupTestComponent {}
+class OnlyNavGroupTestComponent {
+}
 
 @Component({
     template: `
@@ -568,7 +570,8 @@ class OnlyNavGroupTestComponent {}
         </clr-vertical-nav>
     `
 })
-class IconsAndNavGroupTestComponent {}
+class IconsAndNavGroupTestComponent {
+}
 
 @Component({
     template: `

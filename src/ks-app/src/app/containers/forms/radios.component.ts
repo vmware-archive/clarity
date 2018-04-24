@@ -7,4 +7,5 @@
 import {Component} from "@angular/core";
 
 @Component({templateUrl: "./radios.component.html"})
-export class KSRadios {}
+export class KSRadios {
+}

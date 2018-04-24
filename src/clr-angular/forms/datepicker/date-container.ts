@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, OnDestroy} from "@angular/core";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {DynamicWrapper} from "../../utils/host-wrapping";

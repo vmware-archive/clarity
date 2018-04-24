@@ -55,13 +55,13 @@ if (program.update) {
  * @param config
  */
 function runGemini(config) {
-    shell.exec("webpack");
-    let server = shell.exec("node_modules/.bin/lite-server --baseDir=dist" , { async: true });
+    shell.exec("ng build dev");
+    let server = shell.exec("node_modules/.bin/lite-server --baseDir=dist/dev" , { async: true });
     let status = shell.exec("docker run --rm --name=clarity_chrome -d -p 4444:4444 selenium/standalone-chrome@sha256:b899f16b6d963600ef6da8a8dd49e311146033ed66cb5af71eccb78ab378e19a");
     let geminiStatus = 0;
     if (status.code === 0) {
         config.args.forEach(function(arg) {
-            let gemini = shell.exec(`gemini ${config.action} gemini/tests/${arg} --root-url ${generateRootUrl()}`); // TODO: A better way to build string cmds.
+            let gemini = shell.exec(`gemini ${config.action} gemini/tests/${arg} --html-reporter-path ./reports/gemini/${arg} --root-url ${generateRootUrl()}`); // TODO: A better way to build string cmds.
             geminiStatus += gemini.code; // add up any non-zero exit codes
         });
         shell.exec("docker stop clarity_chrome");

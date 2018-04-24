@@ -63,4 +63,5 @@ export default function(): void {
         </clr-dg-table-wrapper>
     `
 })
-class SimpleTest {}
+class SimpleTest {
+}

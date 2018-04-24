@@ -28,7 +28,8 @@ export const CLR_TABS_DIRECTIVES: Type<any>[] =
     declarations: [CLR_TABS_DIRECTIVES],
     exports: [CLR_TABS_DIRECTIVES, ClrConditionalModule]
 })
-export class ClrTabsModule {}
+export class ClrTabsModule {
+}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

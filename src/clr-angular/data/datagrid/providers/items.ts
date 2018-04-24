@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Injectable, TrackByFunction} from "@angular/core";
-import {Observable} from "rxjs/Observable";
-import {Subject} from "rxjs/Subject";
-import {Subscription} from "rxjs/Subscription";
+import {Observable} from "rxjs";
+import {Subject} from "rxjs";
+import {Subscription} from "rxjs";
 
 import {FiltersProvider} from "./filters";
 import {Page} from "./page";

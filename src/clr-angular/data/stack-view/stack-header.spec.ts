@@ -18,7 +18,8 @@ import {ClrStackViewModule} from "./stack-view.module";
         </clr-stack-header>
    `
 })
-class TestComponent {}
+class TestComponent {
+}
 
 export default function(): void {
     "use strict";

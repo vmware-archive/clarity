@@ -10,12 +10,14 @@ import {IfOpenService} from "../../utils/conditional/if-open.service";
 export class ClrTooltipTrigger {
     constructor(private ifOpenService: IfOpenService) {}
 
-    @HostListener("mouseenter") @HostListener("focus")
+    @HostListener("mouseenter")
+    @HostListener("focus")
     showTooltip(): void {
         this.ifOpenService.open = true;
     }
 
-    @HostListener("mouseleave") @HostListener("blur")
+    @HostListener("mouseleave")
+    @HostListener("blur")
     hideTooltip(): void {
         this.ifOpenService.open = false;
     }

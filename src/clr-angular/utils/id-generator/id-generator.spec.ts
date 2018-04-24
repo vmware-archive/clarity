@@ -21,7 +21,8 @@ class IdTest {
 }
 
 @NgModule({declarations: [IdTest], exports: [IdTest]})
-class IdTestingModule {}
+class IdTestingModule {
+}
 
 @Component({
     template: `
@@ -29,11 +30,12 @@ class IdTestingModule {}
         <id-test></id-test>
         <id-test></id-test>`
 })
-class UniqueIdTest {}
+class UniqueIdTest {
+}
 
 describe("ID Generator Service", function() {
     it("generates uniq id's", function() {
-        const fixture: ComponentFixture<UniqueIdTest>;
+        let fixture: ComponentFixture<UniqueIdTest>;
         TestBed.configureTestingModule(
             {imports: [IdTestingModule], providers: [UNIQUE_ID_PROVIDER], declarations: [UniqueIdTest]});
         fixture = TestBed.createComponent(UniqueIdTest);

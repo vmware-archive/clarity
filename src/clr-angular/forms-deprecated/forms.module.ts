@@ -11,4 +11,5 @@ import {ClrDatepickerModule} from "../forms/datepicker/datepicker.module";
 import {ClrCheckboxModule} from "./checkbox/checkbox.module";
 
 @NgModule({imports: [CommonModule], exports: [ClrCheckboxModule, ClrDatepickerModule]})
-export class ClrFormsModule {}
+export class ClrFormsModule {
+}

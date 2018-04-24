@@ -28,4 +28,5 @@ export default function(): void {
 }
 
 @Component({template: `<clr-dg-action-bar>Hello world</clr-dg-action-bar>`})
-class SimpleTest {}
+class SimpleTest {
+}

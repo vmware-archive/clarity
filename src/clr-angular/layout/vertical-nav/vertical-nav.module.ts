@@ -24,7 +24,8 @@ export const CLR_VERTICAL_NAV_DIRECTIVES: Type<any>[] =
     declarations: [CLR_VERTICAL_NAV_DIRECTIVES],
     exports: [CLR_VERTICAL_NAV_DIRECTIVES, ClrIfExpandModule, ClrIconModule]
 })
-export class ClrVerticalNavModule {}
+export class ClrVerticalNavModule {
+}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

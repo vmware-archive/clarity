@@ -11,4 +11,5 @@ import {ClrTabsModule} from "./tabs/tabs.module";
 import {ClrVerticalNavModule} from "./vertical-nav/vertical-nav.module";
 
 @NgModule({exports: [ClrMainContainerModule, ClrNavigationModule, ClrTabsModule, ClrVerticalNavModule]})
-export class ClrLayoutModule {}
+export class ClrLayoutModule {
+}

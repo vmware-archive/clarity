@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ElementRef, OnDestroy, Renderer2, TemplateRef, ViewChild, ViewContainerRef} from "@angular/core";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 
 import {COMPUTE_WIDTH_CLASS, NO_LAYOUT_CLASS} from "./constants";
 import {DatagridRenderOrganizer} from "./render-organizer";

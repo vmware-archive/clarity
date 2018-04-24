@@ -14,7 +14,7 @@ import {
     Output,
     QueryList
 } from "@angular/core";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 
 import {Expand} from "../../utils/expand/providers/expand";
 import {LoadingListener} from "../../utils/loading/loading-listener";

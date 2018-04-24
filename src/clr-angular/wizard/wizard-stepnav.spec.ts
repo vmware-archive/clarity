@@ -42,7 +42,6 @@ class TestComponent {
 export default function(): void {
     describe("New Wizard Stepnav", () => {
         let fixture: ComponentFixture<any>;
-        let testItemComponent: ClrWizardStepnav;
         let debugEl: DebugElement;
         let myStepnavEl: HTMLElement;
         const pageCollection = new StepnavPageCollection();
@@ -58,7 +57,6 @@ export default function(): void {
             });
             fixture = TestBed.createComponent(TestComponent);
             fixture.detectChanges();
-            testItemComponent = fixture.componentInstance.stepNav;
             debugEl = fixture.debugElement.query(By.directive(ClrWizardStepnav));
             myStepnavEl = debugEl.nativeElement;
         });

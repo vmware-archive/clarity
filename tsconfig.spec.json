@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist/out-tsc/spec",
+    "types": [
+      "jasmine",
+      "node",
+      "jasmine-expect"
+    ]
+  },
+  "files": [
+    "tests/tests.entry.ts"
+  ],
+  "include": [
+    "**/*.spec.ts",
+    "**/*.d.ts"
+  ]
+}

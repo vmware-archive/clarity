@@ -253,7 +253,6 @@ export default function(): void {
     describe("ClrWizardPage", () => {
         let fixture: ComponentFixture<any>;
         let testComponent: TypescriptTestComponent;
-        let debugEl: DebugElement;
         let testWizardPage: ClrWizardPage;
         let otherWizardPage: ClrWizardPage;
         const pageCollection = new MyPageCollectionMock();
@@ -277,7 +276,6 @@ export default function(): void {
                 });
                 fixture = TestBed.createComponent(IdTestComponent);
                 fixture.detectChanges();
-                debugEl = fixture.debugElement;
                 myTestComponent = fixture.componentInstance;
                 firstPage = myTestComponent.pages.toArray()[0];
                 secondPage = myTestComponent.pages.toArray()[1];
@@ -349,13 +347,9 @@ export default function(): void {
 
             it("should not pass a negative number as an id", () => {
                 let myId: string;
-                let myMungedId: string[];
-                let generatedId: string;
 
                 firstPage._id = -1;
                 myId = firstPage.id;
-                myMungedId = myId.split("-").reverse();
-                generatedId = myMungedId[0];
                 expect(myId).not.toBe("clr-wizard-page--1", "should not pass a negative number as an id");
             });
 
@@ -408,7 +402,6 @@ export default function(): void {
                 });
                 fixture = TestBed.createComponent(TypescriptTestComponent);
                 fixture.detectChanges();
-                debugEl = fixture.debugElement;
                 testComponent = fixture.componentInstance;
                 navService = fixture.debugElement.injector.get(WizardNavigationService);
                 testWizardPage = testComponent.wizardPageChildren.toArray()[0];
@@ -697,7 +690,6 @@ export default function(): void {
                 });
                 fixture = TestBed.createComponent(TemplateTestComponent);
                 fixture.detectChanges();
-                debugEl = fixture.debugElement;
                 templateTestComponent = fixture.componentInstance;
                 navService = fixture.debugElement.injector.get(WizardNavigationService);
                 navWizardPage = templateTestComponent.navigationTemplateTester;
@@ -970,7 +962,6 @@ export default function(): void {
                 });
                 fixture = TestBed.createComponent(ViewTestComponent);
                 fixture.detectChanges();
-                debugEl = fixture.debugElement;
                 viewTestComponent = fixture.componentInstance;
                 navService = fixture.debugElement.injector.get(WizardNavigationService);
                 allTestPages = fixture.debugElement.queryAll(By.directive(ClrWizardPage));

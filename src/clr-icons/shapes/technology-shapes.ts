@@ -9,6 +9,10 @@ import {clrIconSVG} from "../utils/svg-tag-generator";
 // TODO: deprecate these imported shapes in 0.12
 // TODO: remove these imported shapes in 0.13
 import {ClrShapeBarChart, ClrShapeLineChart} from "./chart-shapes";
+interface Window {
+    ClarityIcons: any;
+}
+declare var window: Window;
 
 /* tslint:disable:variable-name */
 export const ClrShapeRulerPencil = clrIconSVG(

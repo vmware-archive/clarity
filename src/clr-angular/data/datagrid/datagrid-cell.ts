@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ContentChildren, ElementRef, QueryList, Renderer2} from "@angular/core";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 import {ClrSignpost} from "../../popover/signpost/signpost";
 import {HideableColumnService} from "./providers/hideable-column.service";
 

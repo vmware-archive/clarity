@@ -11,10 +11,12 @@ import {ClrLabel} from "./label";
 
 
 @Component({template: `<label></label>`})
-class NoForTest {}
+class NoForTest {
+}
 
 @Component({template: `<label for="hello"></label>`})
-class ExplicitForTest {}
+class ExplicitForTest {
+}
 
 export default function(): void {
     describe("ClrLabel", () => {

@@ -24,7 +24,8 @@ export const CLR_DROPDOWN_DIRECTIVES: Type<any>[] = [ClrDropdown, ClrDropdownMen
     declarations: [CLR_DROPDOWN_DIRECTIVES],
     exports: [CLR_DROPDOWN_DIRECTIVES, ClrConditionalModule, ClrIconModule]
 })
-export class ClrDropdownModule {}
+export class ClrDropdownModule {
+}
 
 
 /* tslint:disable variable-name */

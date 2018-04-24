@@ -7,4 +7,5 @@ import {Directive} from "@angular/core";
 import {WillyWonka} from "../../../utils/chocolate/willy-wonka";
 
 @Directive({selector: "clr-main-container"})
-export class MainContainerWillyWonka extends WillyWonka {}
+export class MainContainerWillyWonka extends WillyWonka {
+}

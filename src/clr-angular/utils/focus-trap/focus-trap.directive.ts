@@ -20,6 +20,7 @@ import {FocusTrapTracker} from "./focus-trap-tracker.service";
 @Directive({selector: "[clrFocusTrap]"})
 export class FocusTrapDirective implements AfterViewInit, OnDestroy {
     private _previousActiveElement: HTMLElement;
+    /* tslint:disable-next-line:no-unused-variable */
     private document: Document;
 
     constructor(public elementRef: ElementRef, injector: Injector, private focusTrapsTracker: FocusTrapTracker,

@@ -7,4 +7,5 @@
 import {Component} from "@angular/core";
 
 @Component({templateUrl: "./tables.component.html"})
-export class KSTables {}
+export class KSTables {
+}

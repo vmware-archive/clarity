@@ -17,7 +17,8 @@ import {ClrRadioContainer} from "./radio-container";
        <input type="radio" clrRadio />
     `
 })
-class SimpleTest {}
+class SimpleTest {
+}
 
 export default function(): void {
     describe("Radio directive", () => {

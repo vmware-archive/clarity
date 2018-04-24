@@ -8,7 +8,7 @@ import {Component, ViewChild} from "@angular/core";
 import {fakeAsync, TestBed, tick} from "@angular/core/testing";
 
 import {TestContext} from "../../helpers.spec";
-import {StringFilter} from "../../interfaces/string-filter.interface";
+import {ClrDatagridStringFilterInterface} from "../../interfaces/string-filter.interface";
 import {CustomFilter} from "../../providers/custom-filter";
 import {FiltersProvider} from "../../providers/filters";
 import {Page} from "../../providers/page";
@@ -103,7 +103,7 @@ export default function(): void {
     });
 }
 
-class TestFilter implements StringFilter<string> {
+class TestFilter implements ClrDatagridStringFilterInterface<string> {
     accepts(item: string, search: string) {
         return item.toLowerCase() === search;
     }
@@ -116,6 +116,6 @@ class TestFilter implements StringFilter<string> {
 class FullTest {
     @ViewChild(CustomFilter) customFilter: CustomFilter;
 
-    filter: StringFilter<any>;
+    filter: ClrDatagridStringFilterInterface<any>;
     filterValue: string;
 }

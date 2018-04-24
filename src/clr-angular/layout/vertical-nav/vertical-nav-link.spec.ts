@@ -106,7 +106,8 @@ export default function(): void {
     `,
     providers: [VerticalNavService, VerticalNavIconService, VerticalNavGroupRegistrationService]
 })
-class TestComponent {}
+class TestComponent {
+}
 
 @Component({
     template: `

@@ -7,4 +7,5 @@
 import {Component} from "@angular/core";
 
 @Component({templateUrl: "./selects.component.html"})
-export class KSSelects {}
+export class KSSelects {
+}

@@ -10,4 +10,5 @@ import {NgModule} from "@angular/core";
 import {ClrLabel} from "./label";
 
 @NgModule({imports: [CommonModule], declarations: [ClrLabel], exports: [ClrLabel]})
-export class ClrCommonFormsModule {}
+export class ClrCommonFormsModule {
+}

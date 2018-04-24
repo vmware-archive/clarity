@@ -24,7 +24,8 @@ export const CLR_SIGNPOST_DIRECTIVES: Type<any>[] = [ClrSignpost, ClrSignpostCon
     providers: []
 })
 
-export class ClrSignpostModule {}
+export class ClrSignpostModule {
+}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

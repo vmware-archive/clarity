@@ -9,8 +9,8 @@
  * It could potentially be used as part of @clr/ui as a vanilla Javascript helper.
  */
 
-import {Observable} from "rxjs/Observable";
-import {Subject} from "rxjs/Subject";
+import {Observable} from "rxjs";
+import {Subject} from "rxjs";
 import {PopoverOptions} from "./popover-options.interface";
 export enum Point {
     RIGHT_CENTER,

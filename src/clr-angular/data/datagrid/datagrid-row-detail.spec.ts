@@ -148,4 +148,5 @@ class FullTest {
         </clr-dg-row-detail>
     `
 })
-class HiddenTest {}
+class HiddenTest {
+}

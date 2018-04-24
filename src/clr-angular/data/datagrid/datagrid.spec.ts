@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {ChangeDetectionStrategy, Component, Input} from "@angular/core";
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 
 import {DatagridPropertyStringFilter} from "./built-in/filters/datagrid-property-string-filter";
 import {DatagridStringFilterImpl} from "./built-in/filters/datagrid-string-filter-impl";

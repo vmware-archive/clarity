@@ -3,9 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 
-import {Filter} from "../interfaces/filter";
+import {ClrDatagridFilterInterface} from "../interfaces/filter.interface";
 
 import {FiltersProvider} from "./filters";
 import {Page} from "./page";
@@ -62,8 +62,8 @@ export default function(): void {
 
         it("exposes an Observable that proxies all filters changes", function() {
             let nbChanges = 0;
-            let latestChanges: Filter<any>[];
-            this.filtersInstance.change.subscribe((changes: Filter<any>[]) => {
+            let latestChanges: ClrDatagridFilterInterface<any>[];
+            this.filtersInstance.change.subscribe((changes: ClrDatagridFilterInterface<any>[]) => {
                 nbChanges++;
                 latestChanges = changes;
             });
@@ -129,7 +129,7 @@ export default function(): void {
     });
 }
 
-abstract class TestFilter implements Filter<number> {
+abstract class TestFilter implements ClrDatagridFilterInterface<number> {
     private active = false;
 
     toggle() {

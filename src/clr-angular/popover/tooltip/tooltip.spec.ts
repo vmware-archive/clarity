@@ -34,4 +34,5 @@ describe("Tooltip component", function() {
         </clr-tooltip>
     `
 })
-class SimpleTest {}
+class SimpleTest {
+}

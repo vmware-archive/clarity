@@ -1,0 +1,238 @@
+{
+    "$schema":
+        "./node_modules/@angular-devkit/core/src/workspace/workspace-schema.json",
+    "version": 1,
+    "newProjectRoot": "src",
+    "projects": {
+        "dev": {
+            "root": "",
+            "projectType": "application",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/dev",
+                        "index": "src/dev/src/index.html",
+                        "main": "src/dev/src/main.ts",
+                        "polyfills": "src/dev/src/polyfills.ts",
+                        "tsConfig": "src/dev/tsconfig.dev.json",
+                        "assets": [
+                            {
+                                "glob": "favicon.ico",
+                                "input": "src/dev/src",
+                                "output": "/"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "src/dev/src/assets",
+                                "output": "/assets"
+                            }
+                        ],
+                        "styles": [
+                            "src/clr-angular/main.scss",
+                            "src/clr-icons/clr-icons.scss",
+                            "node_modules/prismjs/themes/prism-solarizedlight.css"
+                        ],
+                        "scripts": [
+                            "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
+                            "node_modules/prismjs/prism.js",
+                            "node_modules/prismjs/components/prism-typescript.min.js",
+                            "node_modules/prismjs/components/prism-json.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace":
+                                        "src/dev/src/environments/environment.ts",
+                                    "with":
+                                        "src/dev/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "dev:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "dev:build:production"
+                        }
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/dev/test.ts",
+                        "polyfills": "src/dev/polyfills.ts",
+                        "tsConfig": "src/dev/tsconfig.spec.json",
+                        "karmaConfig": "src/dev/karma.conf.js",
+                        "styles": [],
+                        "scripts": [],
+                        "assets": [
+                            {
+                                "glob": "favicon.ico",
+                                "input": "src/dev/",
+                                "output": "/"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "src/dev/assets",
+                                "output": "/assets"
+                            }
+                        ]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "src/dev/tsconfig.app.json",
+                            "src/dev/tsconfig.spec.json"
+                        ],
+                        "exclude": ["**/node_modules/**"]
+                    }
+                }
+            }
+        },
+        "ks-app": {
+            "root": "",
+            "projectType": "application",
+            "prefix": "ks",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/ks-app",
+                        "index": "src/ks-app/src/index.html",
+                        "main": "src/ks-app/src/main.ts",
+                        "polyfills": "src/ks-app/src/polyfills.ts",
+                        "tsConfig": "src/ks-app/tsconfig.ks-app.json",
+                        "assets": [
+                            {
+                                "glob": "favicon.ico",
+                                "input": "src/ks-app/src",
+                                "output": "/"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "src/ks-app/src/assets",
+                                "output": "/assets"
+                            }
+                        ],
+                        "styles": [
+                            "src/clr-angular/main.scss",
+                            "src/clr-icons/clr-icons.scss",
+                            "node_modules/prismjs/themes/prism-solarizedlight.css",
+                            "src/ks-app/src/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
+                            "node_modules/prismjs/prism.js",
+                            "node_modules/prismjs/components/prism-typescript.min.js",
+                            "node_modules/prismjs/components/prism-json.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace":
+                                        "src/ks-app/src/environments/environment.ts",
+                                    "with":
+                                        "src/ks-app/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "ks-app:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "ks-app:build:production"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "src/ks-app/tsconfig.app.json",
+                            "src/ks-app/tsconfig.spec.json"
+                        ],
+                        "exclude": ["**/node_modules/**"]
+                    }
+                }
+            }
+        },
+        "clr-angular": {
+            "root": "src/clr-angular",
+            "projectType": "library",
+            "prefix": "clr",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "options": {
+                        "project": "src/clr-angular/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "project": "src/clr-angular/ng-package.prod.json"
+                        }
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "tests/tests.entry.ts",
+                        "tsConfig": "tsconfig.spec.json",
+                        "karmaConfig": "karma.conf.js"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "src/clr-angular/tsconfig.lint.json",
+                            "src/clr-angular/tsconfig.spec.json"
+                        ],
+                        "exclude": ["**/node_modules/**"]
+                    }
+                }
+            }
+        }
+    },
+    "schematics": {
+        "@schematics/angular:component": {
+            "styleext": "css"
+        }
+    },
+    "defaultProject": "dev"
+}

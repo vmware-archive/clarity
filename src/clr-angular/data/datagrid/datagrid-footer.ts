@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {ChangeDetectorRef, Component, ContentChild, OnInit} from "@angular/core";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 
 import {ClrDatagridColumnToggle} from "./datagrid-column-toggle";
 import {HideableColumnService} from "./providers/hideable-column.service";

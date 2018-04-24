@@ -317,6 +317,14 @@ export default function(): void {
                     context.detectChanges();
                     expect(context.testComponent.selected).toEqual(2);
                 });
+
+                it("sets deprecated attribute 'clDgRowSelection' as expected `rowSelectionMode` is enabled",
+                   function() {
+                       expect(selection.rowSelectionMode).toBe(false);
+                       context.clarityDirective.rowSelectionModeDeprecated = true;
+                       context.detectChanges();
+                       expect(selection.rowSelectionMode).toBe(true);
+                   });
             });
 
             describe("View", function() {
@@ -401,12 +409,12 @@ export default function(): void {
             <clr-dg-filter *ngIf="filter" [clrDgFilter]="testFilter"></clr-dg-filter>
         </clr-dg-column>
         <clr-dg-column>Second</clr-dg-column>
-    
+
         <clr-dg-row *clrDgItems="let item of items">
             <clr-dg-cell>{{item}}</clr-dg-cell>
             <clr-dg-cell>{{item * item}}</clr-dg-cell>
         </clr-dg-row>
-    
+
         <clr-dg-footer>{{items.length}} items</clr-dg-footer>
     </clr-datagrid>
 `
@@ -440,12 +448,12 @@ class FullTest {
     <clr-datagrid>
         <clr-dg-column>First</clr-dg-column>
         <clr-dg-column>Second</clr-dg-column>
-    
+
         <clr-dg-row *ngFor="let item of items">
             <clr-dg-cell>{{item}}</clr-dg-cell>
             <clr-dg-cell>{{item * item}}</clr-dg-cell>
         </clr-dg-row>
-    
+
         <clr-dg-footer>{{items.length}} items</clr-dg-footer>
     </clr-datagrid>
 `
@@ -459,12 +467,12 @@ class NgForTest {
     <clr-datagrid>
         <clr-dg-column>First</clr-dg-column>
         <clr-dg-column>Second</clr-dg-column>
-    
+
         <clr-dg-row *clrDgItems="let item of items; trackBy: trackByIndex">
             <clr-dg-cell>{{item}}</clr-dg-cell>
             <clr-dg-cell>{{item * item}}</clr-dg-cell>
         </clr-dg-row>
-    
+
         <clr-dg-footer>{{items.length}} items</clr-dg-footer>
     </clr-datagrid>
 `
@@ -495,7 +503,7 @@ class OnPushTest {
     <clr-datagrid [(clrDgSelected)]="selected">
         <clr-dg-column>First</clr-dg-column>
         <clr-dg-column>Second</clr-dg-column>
-    
+
         <clr-dg-row *clrDgItems="let item of items;" [clrDgItem]="item">
             <clr-dg-cell>{{item}}</clr-dg-cell>
             <clr-dg-cell>{{item * item}}</clr-dg-cell>
@@ -513,12 +521,12 @@ class MultiSelectionTest {
     <clr-datagrid [(clrDgSingleSelected)]="selected">
         <clr-dg-column>First</clr-dg-column>
         <clr-dg-column>Second</clr-dg-column>
-    
+
         <clr-dg-row *clrDgItems="let item of items;" [clrDgItem]="item">
             <clr-dg-cell>{{item}}</clr-dg-cell>
             <clr-dg-cell>{{item * item}}</clr-dg-cell>
         </clr-dg-row>
-    
+
         <clr-dg-footer (click)="selected = null">{{selected}}</clr-dg-footer>
     </clr-datagrid>
 `
@@ -533,17 +541,17 @@ class SingleSelectionTest {
     <clr-datagrid>
         <clr-dg-column>First</clr-dg-column>
         <clr-dg-column>Second</clr-dg-column>
-    
+
         <clr-dg-row *clrDgItems="let item of items;">
-        
+
             <clr-dg-action-overflow *ngIf="item > showIfGreaterThan">
                 <button class="action-item">Edit</button>
             </clr-dg-action-overflow>
-                
+
             <clr-dg-cell>{{item}}</clr-dg-cell>
             <clr-dg-cell>{{item * item}}</clr-dg-cell>
         </clr-dg-row>
-    
+
         <clr-dg-footer>{{items.length}} items</clr-dg-footer>
     </clr-datagrid>
 `
@@ -558,7 +566,7 @@ class ActionableRowTest {
     <clr-datagrid>
         <clr-dg-column>First</clr-dg-column>
         <clr-dg-column>Second</clr-dg-column>
-    
+
         <clr-dg-row *clrDgItems="let item of items;" [clrDgItem]="item">
             <clr-dg-cell>{{item}}</clr-dg-cell>
             <clr-dg-cell>{{item * item}}</clr-dg-cell>
@@ -566,7 +574,7 @@ class ActionableRowTest {
                 <clr-dg-row-detail *clrIfExpanded>Detail</clr-dg-row-detail>
             </ng-template>
         </clr-dg-row>
-    
+
         <clr-dg-footer>{{items.length}} items</clr-dg-footer>
     </clr-datagrid>
 `
@@ -666,7 +674,7 @@ class TestStringFilter implements ClrDatagridStringFilterInterface<number> {
             </ng-container>
         </clr-dg-column>
         <clr-dg-column>Second</clr-dg-column>
-    
+
         <clr-dg-row *ngFor="let item of items;">
             <clr-dg-cell>{{item}}</clr-dg-cell>
             <clr-dg-cell>{{item * item}}</clr-dg-cell>

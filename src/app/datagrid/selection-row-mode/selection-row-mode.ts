@@ -9,7 +9,7 @@ import {Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
 
 const SINGLE_SELECTION_EXAMPLE = `
-<clr-datagrid [(clrDgSingleSelected)]="selectedUser" [clDgRowSelection]="true">
+<clr-datagrid [(clrDgSingleSelected)]="selectedUser" [clrDgRowSelection]="true">
     <-- ... -->
     <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
         <-- ... -->
@@ -21,7 +21,7 @@ Selected user: <span class="username" *ngIf="selectedUser">{{selectedUser.name}}
 `;
 
 const MULTI_SELECTION_EXAMPLE = `
-<clr-datagrid [(clrDgSelected)]="selected" [clDgRowSelection]="true">
+<clr-datagrid [(clrDgSelected)]="selected" [clrDgRowSelection]="true">
     <-- ... -->
     <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
         <-- ... -->

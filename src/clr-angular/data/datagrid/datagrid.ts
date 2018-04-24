@@ -124,9 +124,18 @@ export class ClrDatagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     /**
      * Selection/Deselection on row click mode
      */
-    @Input("clDgRowSelection")
+    @Input("clrDgRowSelection")
     set rowSelectionMode(value: boolean) {
         this.selection.rowSelectionMode = value;
+    }
+
+    /**
+     * stay backwards compatible , will be renamed to clrDgRowSelection
+     * @deprecated since 0.12
+     */
+    @Input("clDgRowSelection")
+    set rowSelectionModeDeprecated(value: boolean) {
+        this.rowSelectionMode = value;
     }
 
     /**

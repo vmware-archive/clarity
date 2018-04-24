@@ -101,7 +101,7 @@ module.exports = function(karma) {
         },
         browsers: [
             // ChromeHeadless is the default, but you can toggle this list in dev. Always reset back to just ChromeHeadless.
-            "ChromeHeadless", 
+            "ChromeHeadless",
             // "FirefoxHeadless",
             // "Safari",
             // "Edge",
@@ -140,7 +140,7 @@ module.exports = function(karma) {
         config.browsers = [
             "chrome_latest_win_10",
             "firefox_latest_win_10",
-            "safari_latest_osx_11",
+            // "safari_latest_osx_11",
             // "ie_11_win_8_1",
             // "edge_latest_win_10",
         ];

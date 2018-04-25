@@ -219,6 +219,7 @@ export default function(): void {
                 this.context.testComponent.filterValue = "M";
                 this.context.detectChanges();
                 expect(this.context.clarityDirective.filterValue).toBe("M");
+
                 this.context.clarityDirective.filterValue = "t";
                 this.context.detectChanges();
                 expect(this.context.testComponent.filterValue).toBe("t");
@@ -236,6 +237,12 @@ export default function(): void {
 
                 stringFilterComponent.value = "T";
                 expect(this.context.testComponent.filterValue).toBe("T");
+
+                stringFilterComponent.value = "";
+                expect(this.context.testComponent.filterValue).toBe("");
+
+                stringFilterComponent.value = "m";
+                expect(this.context.testComponent.filterValue).toBe("m");
             });
 
             it("accepts a custom filter in the projected content", function() {
@@ -484,7 +491,7 @@ class StringFilterTest {
 
 @Component({
     template: `
-        <clr-dg-column [clrDgField]="field" [(clrFilterValue)]="filterValue">
+        <clr-dg-column [(clrFilterValue)]="filterValue" [clrDgField]="field" >
             Column Title
         </clr-dg-column>
     `

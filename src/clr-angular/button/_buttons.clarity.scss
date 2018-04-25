@@ -251,9 +251,7 @@
     .radio-inline.btn {
         padding: 0;
         label {
-            //needed for chrome
-            //refer: http://stackoverflow.com/a/32196680/3538394
-            display: inline-table;
+            display: block;
 
             line-height: inherit;
             padding: 0 0.5rem;

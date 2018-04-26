@@ -5,6 +5,7 @@
  */
 import {Component, ViewChild} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
+import {By} from "@angular/platform-browser";
 import {Subject} from "rxjs/Subject";
 
 import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
@@ -212,15 +213,36 @@ export default function(): void {
                 expect(this.context.testComponent.sortOrder).toBe(ClrDatagridSortOrder.ASC);
             });
 
-            it("offers two way binding on the filtered state", function() {
+            it("offers two-way binding on the filtered state", function() {
                 this.context = this.create(ClrDatagridColumn, PreFilterTest, PROVIDERS_NEEDED);
                 this.context.testComponent.field = "test";
                 this.context.testComponent.filterValue = "M";
                 this.context.detectChanges();
                 expect(this.context.clarityDirective.filterValue).toBe("M");
+
                 this.context.clarityDirective.filterValue = "t";
                 this.context.detectChanges();
                 expect(this.context.testComponent.filterValue).toBe("t");
+            });
+
+            it("should emit on string filter value changes", function() {
+                this.context = this.create(ClrDatagridColumn, PreFilterTest, PROVIDERS_NEEDED);
+                this.context.testComponent.field = "test";
+
+                this.context.detectChanges();
+
+                const stringFilterDebugElement =
+                    this.context.fixture.debugElement.query(By.directive(DatagridStringFilter));
+                const stringFilterComponent = stringFilterDebugElement.injector.get(DatagridStringFilter);
+
+                stringFilterComponent.value = "T";
+                expect(this.context.testComponent.filterValue).toBe("T");
+
+                stringFilterComponent.value = "";
+                expect(this.context.testComponent.filterValue).toBe("");
+
+                stringFilterComponent.value = "m";
+                expect(this.context.testComponent.filterValue).toBe("m");
             });
 
             it("accepts a custom filter in the projected content", function() {
@@ -453,7 +475,7 @@ class FilterTest {
 
 @Component({
     template: `
-        <clr-dg-column [clrDgField]="field">
+        <clr-dg-column [clrDgField]="field" [(clrFilterValue)]="filterValue">
             Hello world
             <clr-dg-string-filter class="my-string-filter" [clrDgStringFilter]="filter"></clr-dg-string-filter>
         </clr-dg-column>
@@ -469,7 +491,7 @@ class StringFilterTest {
 
 @Component({
     template: `
-        <clr-dg-column [clrDgField]="field" [(clrFilterValue)]="filterValue">
+        <clr-dg-column [(clrFilterValue)]="filterValue" [clrDgField]="field" >
             Column Title
         </clr-dg-column>
     `

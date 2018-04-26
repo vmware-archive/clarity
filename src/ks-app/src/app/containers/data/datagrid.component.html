@@ -31,6 +31,13 @@
 </clr-datagrid>
 
 <h3>Sort and Filter</h3>
+<div id="sort-and-filter">
+  <div class="card card-block">
+    <p class="card-text username-list">
+      Name filter value: {{nameFilter}}
+    </p>
+  </div>
+</div>
 <clr-datagrid [class.datagrid-compact]="isCompact">
   <clr-dg-column>User ID</clr-dg-column>
   <clr-dg-column [clrDgField]="'name'" [(clrFilterValue)]="nameFilter">Name</clr-dg-column>

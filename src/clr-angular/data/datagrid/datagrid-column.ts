@@ -20,7 +20,6 @@ import {DatagridFilterRegistrar} from "./utils/datagrid-filter-registrar";
 
 let nbCount: number = 0;
 
-
 @Component({
     selector: "clr-dg-column",
     template: `
@@ -51,7 +50,6 @@ let nbCount: number = 0;
     `,
     host: {"[class.datagrid-column]": "true", "[class.datagrid-column--hidden]": "hidden"}
 })
-
 export class ClrDatagridColumn extends DatagridFilterRegistrar<DatagridStringFilterImpl> {
     constructor(private _sort: Sort, filters: FiltersProvider, private _dragDispatcher: DragDispatcher) {
         super(filters);
@@ -307,7 +305,7 @@ export class ClrDatagridColumn extends DatagridFilterRegistrar<DatagridStringFil
     }
 
     @Input("clrFilterValue")
-    public set filterValue(newValue: string) {
+    public set updateFilterValue(newValue: string) {
         if (!this.filter) {
             return;
         }
@@ -316,8 +314,12 @@ export class ClrDatagridColumn extends DatagridFilterRegistrar<DatagridStringFil
         }
         if (newValue !== this.filter.value) {
             this.filter.value = newValue;
-            this.filterValueChange.emit(newValue);
         }
+    }
+
+    public set filterValue(newValue: string) {
+        this.updateFilterValue = newValue;
+        this.filterValueChange.emit(this.filter.value);
     }
 
     @Output("clrFilterValueChange") filterValueChange = new EventEmitter();

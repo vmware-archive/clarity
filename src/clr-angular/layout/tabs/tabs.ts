@@ -26,7 +26,7 @@ import {TABS_ID, TABS_ID_PROVIDER} from "./tabs-id.provider";
                 <div class="tabs-overflow bottom-right" [class.open]="ifOpenService.open"
                      (click)="toggleOverflow($event)">
                     <li role="presentation" class="nav-item">
-                        <button class="btn btn-link nav-link dropdown-toggle" [class.active]="activeTabInOverflow">
+                        <button class="btn btn-link nav-link dropdown-toggle" type="button" [class.active]="activeTabInOverflow">
                             <clr-icon shape="ellipsis-horizontal" [class.is-info]="ifOpenService.open"></clr-icon>
                         </button>
                     </li>

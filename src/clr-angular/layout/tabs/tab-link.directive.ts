@@ -7,6 +7,7 @@ import {
     ComponentFactoryResolver,
     Directive,
     ElementRef,
+    HostBinding,
     HostListener,
     Inject,
     Input,
@@ -27,7 +28,6 @@ let nbTabLinkComponents: number = 0;
         "[id]": "tabLinkId",
         "[attr.aria-selected]": "active",
         "[attr.aria-controls]": "ariaControls",
-        "role": "presentation",
         "[class.btn]": "true",
         "[class.btn-link]": "!inOverflow",
         "[class.nav-link]": "!inOverflow",
@@ -74,5 +74,15 @@ export class ClrTabLink {
 
     get active() {
         return this.ifActiveService.current === this.id;
+    }
+
+    @HostBinding("attr.role")
+    get role(): string {
+        return "presentation";
+    }
+
+    @HostBinding("attr.type")
+    get type(): string {
+        return "button";
     }
 }

@@ -10,18 +10,29 @@ import {Component} from "@angular/core";
     styleUrls: ["./grid.demo.scss"],
     template: `
         <h2>Grid</h2>
-        <ul>
-            <li><a [routerLink]="['./grid-columns']">Columns</a></li>
-            <li><a [routerLink]="['./grid-column-stacking']">Column Stacking</a></li>
-            <li><a [routerLink]="['./grid-column-offsetting']">Column Offsetting</a></li>
-            <li><a [routerLink]="['./grid-column-push']">Column Push</a></li>
-            <li><a [routerLink]="['./grid-column-pull']">Column Pull</a></li>
-            <li><a [routerLink]="['./grid-auto-layout-1']">Auto Layout Demo 1</a></li>
-            <li><a [routerLink]="['./grid-auto-layout-2']">Auto Layout Demo 2</a></li>
-            <li><a [routerLink]="['./grid-items-vertical-alignment']">Vertical Alignment</a></li>
-            <li><a [routerLink]="['./grid-items-individual-vertical-alignment']">Individual Vertical Alignment</a></li>
-            <li><a [routerLink]="['./grid-items-horizontal-alignment']">Horizontal Alignment</a></li>
-        </ul>
+        <div class="clr-row">
+            <div class="clr-col-12 clr-col-md-6">
+                <ul>
+                    <li><a [routerLink]="['./grid-columns']">Columns</a></li>
+                    <li><a [routerLink]="['./grid-columns-stacking']">Column Stacking</a></li>
+                    <li><a [routerLink]="['./grid-columns-offsetting']">Column Offsetting</a></li>
+                    <li><a [routerLink]="['./grid-column-wrapping']">Column Wrapping</a></li>
+                    <li><a [routerLink]="['./grid-equal-widths']">Auto Layout - Equal Widths</a></li>
+                    <li><a [routerLink]="['./grid-one-col-width']">Auto Layout - Setting One Col Width</a></li>
+                    <li><a [routerLink]="['./grid-variable-width-content']">Auto Layout - Variable Width Content</a></li>
+                    <li><a [routerLink]="['./grid-equal-width-multi-row']">Auto Layout - Equal Width Multi Row</a></li>
+                </ul>
+            </div>
+            <div class="clr-col-12 clr-col-md-6">
+                <ul>
+                    <li><a [routerLink]="['./grid-no-gutters']">No Gutters</a></li>
+                    <li><a [routerLink]="['./grid-horizontal-alignment']">Alignment - Horizontal</a></li>
+                    <li><a [routerLink]="['./grid-vertical-alignment']">Alignment - Vertical</a></li>
+                    <li><a [routerLink]="['./grid-ordering']">Column Ordering</a></li>
+                    <li><a [routerLink]="['./grid-nesting']">Grid Nesting</a></li>
+                </ul>
+            </div>
+        </div>
         <router-outlet></router-outlet>
     `
 })

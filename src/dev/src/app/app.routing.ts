@@ -24,6 +24,7 @@ export const APP_ROUTES: Routes = [
     {path: "forms", loadChildren: "src/app/forms/forms.demo.module#FormsDemoModule"},
     {path: "forms-deprecated", loadChildren: "src/app/forms-deprecated/forms.demo.module#FormsDeprecatedDemoModule"},
     {path: "grid", loadChildren: "src/app/grid/grid.demo.module#GridDemoModule"},
+    {path: "grid-deprecated", loadChildren: "src/app/grid-deprecated/grid.demo.module#DeprecatedGridDemoModule"},
     {path: "iconography", loadChildren: "src/app/iconography/iconography.demo.module#IconographyDemoModule"},
     {path: "images", loadChildren: "src/app/images/images.demo.module#ImagesDemoModule"},
     {path: "input-fields", loadChildren: "src/app/input-fields/input-fields.demo.module#InputFieldsDemoModule"},

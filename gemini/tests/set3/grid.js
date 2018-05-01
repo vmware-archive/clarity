@@ -19,8 +19,8 @@ gemini.suite('grid', (child) => {
             .capture('default');
     });
 
-    gemini.suite('grid-column-stacking', (child) => {
-        child.setUrl('/grid/grid-column-stacking')
+    gemini.suite('grid-columns-stacking', (child) => {
+        child.setUrl('/grid/grid-columns-stacking')
             .before((actions, find) => {
                 actions.waitForElementToShow('.clr-example', WAIT_TIME);
                 actions.wait(WAIT_LOAD_TIME);
@@ -29,8 +29,8 @@ gemini.suite('grid', (child) => {
             .capture('default');
     });
 
-    gemini.suite('grid-column-offsetting', (child) => {
-        child.setUrl('/grid/grid-column-offsetting')
+    gemini.suite('grid-columns-offsetting', (child) => {
+        child.setUrl('/grid/grid-columns-offsetting')
             .before((actions, find) => {
                 actions.waitForElementToShow('.clr-example', WAIT_TIME);
                 actions.wait(WAIT_LOAD_TIME);
@@ -39,8 +39,8 @@ gemini.suite('grid', (child) => {
             .capture('default');
     });
 
-    gemini.suite('grid-column-push', (child) => {
-        child.setUrl('/grid/grid-column-push')
+    gemini.suite('grid-column-wrapping', (child) => {
+        child.setUrl('/grid/grid-column-wrapping')
             .before((actions, find) => {
                 actions.waitForElementToShow('.clr-example', WAIT_TIME);
                 actions.wait(WAIT_LOAD_TIME);
@@ -49,8 +49,8 @@ gemini.suite('grid', (child) => {
             .capture('default');
     });
 
-    gemini.suite('grid-column-pull', (child) => {
-        child.setUrl('/grid/grid-column-pull')
+    gemini.suite('grid-equal-width-columns', (child) => {
+        child.setUrl('/grid/grid-equal-widths')
             .before((actions, find) => {
                 actions.waitForElementToShow('.clr-example', WAIT_TIME);
                 actions.wait(WAIT_LOAD_TIME);
@@ -59,8 +59,8 @@ gemini.suite('grid', (child) => {
             .capture('default');
     });
 
-    gemini.suite('grid-auto-layout-1', (child) => {
-        child.setUrl('/grid/grid-auto-layout-1')
+    gemini.suite('grid-one-col-width', (child) => {
+        child.setUrl('/grid/grid-one-col-width')
             .before((actions, find) => {
                 actions.waitForElementToShow('.clr-example', WAIT_TIME);
                 actions.wait(WAIT_LOAD_TIME);
@@ -69,8 +69,8 @@ gemini.suite('grid', (child) => {
             .capture('default');
     });
 
-    gemini.suite('grid-auto-layout-2', (child) => {
-        child.setUrl('/grid/grid-auto-layout-2')
+    gemini.suite('grid-variable-width-content', (child) => {
+        child.setUrl('/grid/grid-variable-width-content')
             .before((actions, find) => {
                 actions.waitForElementToShow('.clr-example', WAIT_TIME);
                 actions.wait(WAIT_LOAD_TIME);
@@ -79,8 +79,8 @@ gemini.suite('grid', (child) => {
             .capture('default');
     });
 
-    gemini.suite('grid-items-vertical-alignment', (child) => {
-        child.setUrl('/grid/grid-items-vertical-alignment')
+    gemini.suite('grid-equal-width-row', (child) => {
+        child.setUrl('/grid/grid-equal-width-multi-row')
             .before((actions, find) => {
                 actions.waitForElementToShow('.clr-example', WAIT_TIME);
                 actions.wait(WAIT_LOAD_TIME);
@@ -89,8 +89,8 @@ gemini.suite('grid', (child) => {
             .capture('default');
     });
 
-    gemini.suite('grid-items-individual-vertical-alignment', (child) => {
-        child.setUrl('/grid/grid-items-individual-vertical-alignment')
+    gemini.suite('grid-no-gutters', (child) => {
+        child.setUrl('/grid/grid-no-gutters')
             .before((actions, find) => {
                 actions.waitForElementToShow('.clr-example', WAIT_TIME);
                 actions.wait(WAIT_LOAD_TIME);
@@ -99,8 +99,8 @@ gemini.suite('grid', (child) => {
             .capture('default');
     });
 
-    gemini.suite('grid-items-horizontal-alignment', (child) => {
-        child.setUrl('/grid/grid-items-horizontal-alignment')
+    gemini.suite('grid-horizontal-alignment', (child) => {
+        child.setUrl('/grid/grid-horizontal-alignment')
             .before((actions, find) => {
                 actions.waitForElementToShow('.clr-example', WAIT_TIME);
                 actions.wait(WAIT_LOAD_TIME);
@@ -109,4 +109,33 @@ gemini.suite('grid', (child) => {
             .capture('default');
     });
 
+    gemini.suite('grid-vertical-alignment', (child) => {
+        child.setUrl('/grid/grid-vertical-alignment')
+            .before((actions, find) => {
+                actions.waitForElementToShow('.clr-example', WAIT_TIME);
+                actions.wait(WAIT_LOAD_TIME);
+            })
+            .setCaptureElements('.clr-example')
+            .capture('default');
+    });
+
+    gemini.suite('grid-ordering', (child) => {
+        child.setUrl('/grid/grid-ordering')
+            .before((actions, find) => {
+                actions.waitForElementToShow('.clr-example', WAIT_TIME);
+                actions.wait(WAIT_LOAD_TIME);
+            })
+            .setCaptureElements('.clr-example')
+            .capture('default');
+    });
+
+    gemini.suite('grid-nesting', (child) => {
+        child.setUrl('/grid/grid-nesting')
+            .before((actions, find) => {
+                actions.waitForElementToShow('.clr-example', WAIT_TIME);
+                actions.wait(WAIT_LOAD_TIME);
+            })
+            .setCaptureElements('.clr-example')
+            .capture('default');
+    });
 });

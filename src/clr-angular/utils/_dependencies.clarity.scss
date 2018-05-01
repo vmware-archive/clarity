@@ -21,6 +21,13 @@
 @import "../utils/mixins.clarity";
 @import "../utils/helpers.clarity";
 
+// Grid Dependencies
+@import "../layout/grid/variables/variables.clarity";
+@import "../layout/grid/mixins/breakpoint.clarity";
+@import "../layout/grid/mixins/grid.clarity";
+@import "../layout/grid/mixins/grid-framework.clarity";
+@import "../layout/grid/utilities/flex.clarity";
+
 //Color
 @import "../color/utils/colors.clarity";
 @import "../color/utils/contrast-cache.clarity";

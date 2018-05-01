@@ -67,7 +67,8 @@
 
 //Grid
 //depends on variables.clarity, mixins.clarity
-@import "../layout/grid.clarity";
+@import "../layout/grid-deprecated.clarity";
+@import "../layout/grid/grid.clarity";
 
 //Lists
 //depends on variables.clarity, mixins.clarity, helpers.clarity, typograph.clarity

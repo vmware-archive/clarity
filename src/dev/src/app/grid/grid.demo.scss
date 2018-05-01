@@ -5,8 +5,7 @@
 @import "../_utils/code";
 
 .clr-example{
-
-    .clr-example-col-value{
+    span {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -14,6 +13,10 @@
         border-radius: 3px;
         background: #DDE3E5;
         margin: 6px 0;
+
+        &.clr-example-enable-borders {
+            border: 1px solid #414957;
+        }
     }
 
     .clr-example-row {

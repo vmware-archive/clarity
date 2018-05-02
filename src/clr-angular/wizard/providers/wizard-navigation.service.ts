@@ -737,12 +737,14 @@ export class WizardNavigationService implements OnDestroy {
 
     /**
      * @memberof WizardNavigationService
+     * @deprecated since 0.12
      */
     private _wizardGhostPageState: string = GHOST_PAGE_ANIMATION.STATES.NO_PAGES;
 
 
     /**
      * @memberof WizardNavigationService
+     * @deprecated since 0.12
      */
     public get wizardGhostPageState(): string {
         return this._wizardGhostPageState;
@@ -750,6 +752,7 @@ export class WizardNavigationService implements OnDestroy {
 
     /**
      * @memberof WizardNavigationService
+     * @deprecated since 0.12
      */
     public set wizardGhostPageState(value: string) {
         if (this.hideWizardGhostPages) {
@@ -761,11 +764,13 @@ export class WizardNavigationService implements OnDestroy {
 
     /**
      * @memberof WizardNavigationService
+     * @deprecated since 0.12
      */
     private _hideWizardGhostPages: boolean = true;
 
     /**
      * @memberof WizardNavigationService
+     * @deprecated since 0.12
      */
     public get hideWizardGhostPages(): boolean {
         return this._hideWizardGhostPages;
@@ -773,6 +778,7 @@ export class WizardNavigationService implements OnDestroy {
 
     /**
      * @memberof WizardNavigationService
+     * @deprecated since 0.12
      */
     public set hideWizardGhostPages(value: boolean) {
         this._hideWizardGhostPages = value;

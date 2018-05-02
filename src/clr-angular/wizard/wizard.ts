@@ -99,9 +99,10 @@ export class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
 
     /**
      * The property that reveals the ghost pages in the wizard. Set through the
-     * clrWizardShowGhostPages input.
+     * clrWizardshowGhostPages input.
      *
      * @memberof Wizard
+     * @deprecated since 0.12
      *
      */
     @Input("clrWizardShowGhostPages") showGhostPages: boolean = false;
@@ -773,6 +774,7 @@ export class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      *
      * @name ghostPageState
      * @memberof Wizard
+     * @deprecated since 0.12
      */
     public get ghostPageState(): string {
         return this.navService.wizardGhostPageState;
@@ -783,6 +785,7 @@ export class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
      *
      * @name deactivateGhostPages
      * @memberof ClrWizard
+     * @deprecated since 0.12
      */
     public deactivateGhostPages(): void {
         this.setGhostPages("deactivate");

@@ -17,10 +17,10 @@ import {
 } from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
+import {DomAdapter} from "../../../utils/dom-adapter/dom-adapter";
 import {Items} from "../providers/items";
 import {Page} from "../providers/page";
 
-import {DomAdapter} from "./dom-adapter";
 import {DatagridHeaderRenderer} from "./header-renderer";
 import {NoopDomAdapter} from "./noop-dom-adapter";
 import {DatagridRenderOrganizer} from "./render-organizer";

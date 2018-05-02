@@ -7,13 +7,13 @@
 import {Component, ViewChild} from "@angular/core";
 import {fakeAsync, TestBed, tick} from "@angular/core/testing";
 
+import {DomAdapter} from "../../../../utils/dom-adapter/dom-adapter";
 import {TestContext} from "../../helpers.spec";
 import {StringFilter} from "../../interfaces/string-filter.interface";
 import {CustomFilter} from "../../providers/custom-filter";
 import {FiltersProvider} from "../../providers/filters";
 import {Page} from "../../providers/page";
 import {StateDebouncer} from "../../providers/state-debouncer.provider";
-import {DomAdapter} from "../../render/dom-adapter";
 
 import {DatagridStringFilter} from "./datagrid-string-filter";
 import {DatagridStringFilterImpl} from "./datagrid-string-filter-impl";

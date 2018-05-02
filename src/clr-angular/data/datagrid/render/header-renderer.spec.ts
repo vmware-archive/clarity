@@ -5,14 +5,14 @@
  */
 import {Component} from "@angular/core";
 
+import {DomAdapter} from "../../../utils/dom-adapter/dom-adapter";
+import {MOCK_DOM_ADAPTER_PROVIDER, MockDomAdapter} from "../../../utils/dom-adapter/dom-adapter.mock";
 import {TestContext} from "../helpers.spec";
 import {FiltersProvider} from "../providers/filters";
 import {Page} from "../providers/page";
 import {Sort} from "../providers/sort";
 import {StateDebouncer} from "../providers/state-debouncer.provider";
 
-import {DomAdapter} from "./dom-adapter";
-import {MOCK_DOM_ADAPTER_PROVIDER, MockDomAdapter} from "./dom-adapter.mock";
 import {DatagridHeaderRenderer} from "./header-renderer";
 import {DatagridRenderOrganizer} from "./render-organizer";
 import {MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer} from "./render-organizer.mock";

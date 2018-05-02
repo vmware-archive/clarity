@@ -5,11 +5,11 @@
  */
 import {Component} from "@angular/core";
 
+import {DomAdapter} from "../../../utils/dom-adapter/dom-adapter";
+import {MOCK_DOM_ADAPTER_PROVIDER, MockDomAdapter} from "../../../utils/dom-adapter/dom-adapter.mock";
 import {TestContext} from "../helpers.spec";
 
 import {DatagridBodyRenderer} from "./body-renderer";
-import {DomAdapter} from "./dom-adapter";
-import {MOCK_DOM_ADAPTER_PROVIDER, MockDomAdapter} from "./dom-adapter.mock";
 import {DatagridRenderOrganizer} from "./render-organizer";
 
 export default function(): void {

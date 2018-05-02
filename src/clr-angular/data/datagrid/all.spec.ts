@@ -10,6 +10,8 @@
  * over the place because we load them asynchronously.
  */
 
+import DomAdapterSpecs from "../../utils/dom-adapter/dom-adapter.spec";
+
 import DatagridRowExpandAnimationSpecs from "./animation-hack/row-expand-animation.spec";
 import DatagridPropertyComparatorSpecs from "./built-in/comparators/datagrid-property-comparator.spec";
 import DatagridPropertyStringFilterSpecs from "./built-in/filters/datagrid-property-string-filter.spec";
@@ -43,7 +45,6 @@ import SortProviderSpecs from "./providers/sort.spec";
 import DatagridBodyRendererSpecs from "./render/body-renderer.spec";
 import DatagridCellRendererSpecs from "./render/cell-renderer.spec";
 import DatagridColumnResizerSpecs from "./render/column-resizer.spec";
-import DomAdapterSpecs from "./render/dom-adapter.spec";
 import DatagridHeadRendererSpecs from "./render/head-renderer.spec";
 import DatagridHeaderRendererSpecs from "./render/header-renderer.spec";
 import DatagridMainRendererSpecs from "./render/main-renderer.spec";

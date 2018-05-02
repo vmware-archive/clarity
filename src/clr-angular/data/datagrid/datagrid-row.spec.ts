@@ -7,6 +7,7 @@
 import {Component} from "@angular/core";
 import {fakeAsync, TestBed, tick} from "@angular/core/testing";
 
+import {DomAdapter} from "../../utils/dom-adapter/dom-adapter";
 import {Expand} from "../../utils/expand/providers/expand";
 import {LoadingListener} from "../../utils/loading/loading-listener";
 
@@ -23,7 +24,6 @@ import {RowActionService} from "./providers/row-action-service";
 import {Selection, SelectionType} from "./providers/selection";
 import {Sort} from "./providers/sort";
 import {StateDebouncer} from "./providers/state-debouncer.provider";
-import {DomAdapter} from "./render/dom-adapter";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 const PROVIDERS = [

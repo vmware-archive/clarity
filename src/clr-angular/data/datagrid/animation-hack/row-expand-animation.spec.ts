@@ -7,8 +7,8 @@ import {Component} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
 
+import {MOCK_DOM_ADAPTER_PROVIDER} from "../../../utils/dom-adapter/dom-adapter.mock";
 import {Expand} from "../../../utils/expand/providers/expand";
-import {MOCK_DOM_ADAPTER_PROVIDER} from "../render/dom-adapter.mock";
 import {DatagridRenderOrganizer} from "../render/render-organizer";
 
 import {DatagridRowExpandAnimation} from "./row-expand-animation";

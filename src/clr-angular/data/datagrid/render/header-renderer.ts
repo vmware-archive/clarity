@@ -6,9 +6,10 @@
 import {Directive, ElementRef, OnDestroy, Renderer2} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
+import {DomAdapter} from "../../../utils/dom-adapter/dom-adapter";
+
 import {DatagridColumnResizer} from "./column-resizer";
 import {STRICT_WIDTH_CLASS} from "./constants";
-import {DomAdapter} from "./dom-adapter";
 import {DatagridRenderOrganizer} from "./render-organizer";
 
 @Directive({selector: "clr-dg-column"})

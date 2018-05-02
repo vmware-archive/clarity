@@ -7,6 +7,8 @@ import {Component, ViewChild} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
 import {Subject} from "rxjs/Subject";
 
+import {DomAdapter} from "../../utils/dom-adapter/dom-adapter";
+
 import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
 import {DatagridStringFilter} from "./built-in/filters/datagrid-string-filter";
 import {ClrDatagridColumn} from "./datagrid-column";
@@ -22,7 +24,6 @@ import {FiltersProvider} from "./providers/filters";
 import {Page} from "./providers/page";
 import {Sort} from "./providers/sort";
 import {StateDebouncer} from "./providers/state-debouncer.provider";
-import {DomAdapter} from "./render/dom-adapter";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 
 const PROVIDERS_NEEDED =

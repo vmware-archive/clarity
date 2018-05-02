@@ -348,6 +348,7 @@
 
     }
 
+    //TODO: deprecate .clr-wizard--ghosted for v0.12
     .clr-wizard--ghosted {
 
         .modal-dialog {
@@ -528,6 +529,7 @@
             height: 100%;
         }
 
+        // TODO: deprecate .modal-ghost-wrapper for v0.12
         .modal-ghost-wrapper {
             display: none;
         }

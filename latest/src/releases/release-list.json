@@ -1,6 +1,11 @@
 {
-    "current": "0.11.15",
+    "current": "0.11.16",
     "all": {
+        "0.11.16": {
+            "date": "May 3, 2018",
+            "sketch": "0.11.6",
+            "commit": "3dcd69ae35a47be9d6759aad806621d6f9e24f84"
+        },
         "0.11.15": {
             "date": "April 26, 2018",
             "sketch": "0.11.6",

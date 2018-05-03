@@ -76,6 +76,16 @@ describe("Modal", () => {
            expect(compiled.textContent).toMatch(/Footer/);
        }));
 
+    it("should set aria-hidden attribute to false if opened", fakeAsync(() => {
+           fixture.componentInstance.opened = false;
+           fixture.detectChanges();
+           expect(compiled.querySelector(".modal-dialog")).toBeNull();
+           // open modal
+           getModalInstance(fixture).open();
+           fixture.detectChanges();
+           expect(compiled.querySelector(".modal-dialog").getAttribute("aria-hidden")).toBe("false");
+       }));
+
     it("shows and hides the modal based on the clrModalOpen input", fakeAsync(() => {
            fixture.componentInstance.opened = false;
            flushAndExpectOpen(fixture, false);

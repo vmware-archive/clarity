@@ -16,20 +16,37 @@ import {
 } from "./helpers.spec";
 import {ClarityIcons} from "./index";
 import {AllShapes} from "./shapes/all-shapes";
-import {ChartShapes, ClrShapeBarChart} from "./shapes/chart-shapes";
-import {ClrShapeECheck, CommerceShapes} from "./shapes/commerce-shapes";
+import {ChartShapes} from "./shapes/chart-shapes";
+import {CommerceShapes} from "./shapes/commerce-shapes";
 import {CoreShapes} from "./shapes/core-shapes";
-import {ClrShapePencil, EssentialShapes} from "./shapes/essential-shapes";
-import {ClrShapePlay, MediaShapes} from "./shapes/media-shapes";
-import {ClrShapeStar, SocialShapes} from "./shapes/social-shapes";
-import {ClrShapeCPU, TechnologyShapes} from "./shapes/technology-shapes";
-import {ClrShapeCar, TravelShapes} from "./shapes/travel-shapes";
+import {EssentialShapes} from "./shapes/essential-shapes";
+import {MediaShapes} from "./shapes/media-shapes";
+import {SocialShapes} from "./shapes/social-shapes";
+import {TechnologyShapes} from "./shapes/technology-shapes";
+import {TextEditShapes} from "./shapes/text-edit-shapes";
+import {TravelShapes} from "./shapes/travel-shapes";
 import {changeHandlerCallbacks} from "./utils/shape-template-observer";
 import {clrIconSVG} from "./utils/svg-tag-generator";
+
+
 
 // All tests failing here in IE stem from IE rearranging attributes and normalizing the elements, so simple
 // innerHTML comparisons don't match these nuances.
 // @TODO Fix icons tests so they run in IE by not comparing string literals but actually inspecting element composition
+
+// This is a base test object for all sets
+/* tslint:disable:no-string-literal */
+const ALL_SETS = [
+    {name: "Commerce shapes", shapes: CommerceShapes, randomShape: {"e-check": CommerceShapes["e-check"]}},
+    {name: "Essential shapes", shapes: EssentialShapes, randomShape: {pencil: EssentialShapes["pencil"]}},
+    {name: "Social shapes", shapes: SocialShapes, randomShape: {star: SocialShapes["star"]}},
+    {name: "Media shapes", shapes: MediaShapes, randomShape: {play: MediaShapes["play"]}},
+    {name: "Travel shapes", shapes: TravelShapes, randomShape: {car: TravelShapes["car"]}},
+    {name: "Technology shapes", shapes: TechnologyShapes, randomShape: {cpu: TechnologyShapes["cpu"]}},
+    {name: "Chart shapes", shapes: ChartShapes, randomShape: {"bar-chart": ChartShapes["bar-chart"]}},
+    {name: "Text Edit shapes", shapes: TextEditShapes, randomShape: {bold: TextEditShapes["bold"]}}
+];
+/* tslint:enable:no-string-literal */
 
 describe("ClarityIcons", () => {
     afterEach(() => {
@@ -44,83 +61,37 @@ describe("ClarityIcons", () => {
 
     describe("ClarityIconsApi.get()", () => {
         it("should return all icons when no argument is passed in", () => {
-            ClarityIcons.add(CommerceShapes);
-            ClarityIcons.add(EssentialShapes);
-            ClarityIcons.add(SocialShapes);
-            ClarityIcons.add(MediaShapes);
-            ClarityIcons.add(TravelShapes);
-            ClarityIcons.add(TechnologyShapes);
-            ClarityIcons.add(ChartShapes);
+            for (const shapeSet of ALL_SETS) {
+                ClarityIcons.add(shapeSet.shapes);
+            }
 
-            const currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes, EssentialShapes, SocialShapes,
-                                                   MediaShapes, TravelShapes, TechnologyShapes, ChartShapes);
+            const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.shapes));
             testAllShapes(ClarityIcons, currentAllShapes);
         });
 
         it("should return all shapes from CoreShapes and few selected shapes from other sets if shapes are individually added in.",
            () => {
-               ClarityIcons.add({car: ClrShapeCar});
-               ClarityIcons.add({"e-check": ClrShapeECheck});
-               ClarityIcons.add({pencil: ClrShapePencil});
-               ClarityIcons.add({play: ClrShapePlay});
-               ClarityIcons.add({star: ClrShapeStar});
-               ClarityIcons.add({cpu: ClrShapeCPU});
-               ClarityIcons.add({"bar-chart": ClrShapeBarChart});
-               const currentAllShapes = Object.assign(
-                   {}, CoreShapes, {car: ClrShapeCar}, {"e-check": ClrShapeECheck}, {pencil: ClrShapePencil},
-                   {play: ClrShapePlay}, {star: ClrShapeStar}, {cpu: ClrShapeCPU}, {"bar-chart": ClrShapeBarChart});
+               for (const shapeSet of ALL_SETS) {
+                   ClarityIcons.add(shapeSet.randomShape);
+               }
+               const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.randomShape));
+
                testAllShapes(ClarityIcons, currentAllShapes);
            });
 
-        it("should return shapes from CommerceShapes and CoreShapes sets if CommerceShapes set is added in.", () => {
-            ClarityIcons.add(CommerceShapes);
-            const currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes);
-            testAllShapes(ClarityIcons, currentAllShapes);
-        });
-
-        it("should return shapes from EssentialShapes and CoreShapes sets if EssentialShapes set is added in.", () => {
-            ClarityIcons.add(EssentialShapes);
-            const currentAllShapes = Object.assign({}, CoreShapes, EssentialShapes);
-            testAllShapes(ClarityIcons, currentAllShapes);
-        });
-
-        it("should return shapes from MediaShapes and CoreShapes sets if MediaShapes set is added in.", () => {
-            ClarityIcons.add(MediaShapes);
-            const currentAllShapes = Object.assign({}, CoreShapes, MediaShapes);
-            testAllShapes(ClarityIcons, currentAllShapes);
-        });
-
-        it("should return shapes from SocialShapes and CoreShapes sets if SocialShapes set is added in.", () => {
-            ClarityIcons.add(SocialShapes);
-            const currentAllShapes = Object.assign({}, CoreShapes, SocialShapes);
-            testAllShapes(ClarityIcons, currentAllShapes);
-        });
-
-        it("should return shapes from TravelShapes and CoreShapes sets " +
-               "if the TravelShapes set is added in.",
-           () => {
-               ClarityIcons.add(TravelShapes);
-               const currentAllShapes = Object.assign({}, CoreShapes, TravelShapes);
-               testAllShapes(ClarityIcons, currentAllShapes);
-           });
-
-        it("should return shapes from TechnologyShapes and CoreShapes sets if TechnologyShapes set is added in.",
-           () => {
-               ClarityIcons.add(TechnologyShapes);
-               const currentAllShapes = Object.assign({}, CoreShapes, TechnologyShapes);
-               testAllShapes(ClarityIcons, currentAllShapes);
-           });
-
-        it("should return shapes from ChartShapes and CoreShapes sets if ChartShapes set is added in.", () => {
-            ClarityIcons.add(ChartShapes);
-            const currentAllShapes = Object.assign({}, CoreShapes, ChartShapes);
-            testAllShapes(ClarityIcons, currentAllShapes);
-        });
+        for (const shapeSet of ALL_SETS) {
+            it(`should return shapes from ${shapeSet.name} and Core shapes if ${
+                   shapeSet.name} set is individually added in.`,
+               () => {
+                   ClarityIcons.add(shapeSet.shapes);
+                   const currentAllShapes = Object.assign({}, CoreShapes, shapeSet.shapes);
+                   testAllShapes(ClarityIcons, currentAllShapes);
+               });
+        }
 
         it("should return all icons from all sets if the AllShapes set is added in", () => {
             ClarityIcons.add(AllShapes);
-            const currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes, EssentialShapes, MediaShapes,
-                                                   SocialShapes, TravelShapes, TechnologyShapes, ChartShapes);
+            const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.shapes));
             testAllShapes(ClarityIcons, currentAllShapes);
         });
 
@@ -582,7 +553,7 @@ describe("ClarityIcons", () => {
             const testIcon = document.createElement("clr-icon") as ClarityIconElement;
             testIcon.setAttribute("shape", "user");
             const testShape = `<svg><g><title>first</title></g></svg>`;
-            ClarityIcons.add({"user": testShape});
+            ClarityIcons.add({user: testShape});
             document.body.appendChild(testIcon);
             expect(removeWhitespace(testIcon.innerHTML)).toBe(removeWhitespace(testShape));
         });
@@ -603,7 +574,6 @@ describe("ClarityIcons", () => {
             expect(changeHandlerCallbacks[userAttrName].length).toBe(2);
             expect(changeHandlerCallbacks[homeAttrName].length).toBe(1);
         });
-
 
         it("should transfer change handler callback to updated shape name key", () => {
             const userAttrName = "user";
@@ -690,48 +660,26 @@ describe("ClarityIcons", () => {
             testIconStyles(CoreShapes, ["vm-bug"]);
         });
 
-        it("CommerceShapes should not include fill attribute", () => {
-            testIconStyles(CommerceShapes);
-        });
-
-        it("EssentialShapes should not include fill attribute", () => {
-            testIconStyles(EssentialShapes);
-        });
-
-        it("MediaShapes should not include fill attribute", () => {
-            testIconStyles(MediaShapes);
-        });
-
-        it("SocialShapes should not include fill attribute", () => {
-            testIconStyles(SocialShapes);
-        });
-
-        it("TravelShapes should not include fill attribute", () => {
-            testIconStyles(TravelShapes);
-        });
-
-        it("TechnologyShapes should not include fill attribute", () => {
-            testIconStyles(TechnologyShapes);
-        });
+        for (const shapeSet of ALL_SETS) {
+            it(`${shapeSet.name} should not include fill attribute`, () => {
+                testIconStyles(shapeSet.name);
+            });
+        }
 
         it("No two shapes should have the same name unless their templates are identical", () => {
-            const allShapeTemplates: any =
-                [CoreShapes, EssentialShapes, CommerceShapes, MediaShapes, SocialShapes, TechnologyShapes];
+            const allShapeSets: any = [CoreShapes].concat(ALL_SETS.map(set => set.shapes));
             const shapesTested: any = {};
             const duplicatesFound: string[] = [];
-            const removeSpacesBreaks = (template: string): string => {
-                return template.replace(/\n|\r/g, "").replace(/\s/g, "");
-            };
 
-            allShapeTemplates.map((shapeTemplates: any) => {
-                for (const shapeName in shapeTemplates) {
-                    if (shapeTemplates.hasOwnProperty(shapeName)) {
+            allShapeSets.map((shapeSet: any) => {
+                for (const shapeName in shapeSet) {
+                    if (shapeSet.hasOwnProperty(shapeName)) {
                         if (!shapesTested.hasOwnProperty(shapeName)) {
-                            shapesTested[shapeName] = shapeTemplates[shapeName];
+                            shapesTested[shapeName] = shapeSet[shapeName];
                         } else {
                             duplicatesFound.push(shapeName);
-                            expect(removeSpacesBreaks(shapeTemplates[shapeName]))
-                                .toBe(removeSpacesBreaks(shapesTested[shapeName]));
+                            expect(removeWhitespace(shapeSet[shapeName]))
+                                .toBe(removeWhitespace(shapesTested[shapeName]));
                         }
                     }
                 }
@@ -743,9 +691,7 @@ describe("ClarityIcons", () => {
         });
 
         it("each icons should have the required attributes only once in their templates", () => {
-            const currentAllShapes = Object.assign({}, CoreShapes, CommerceShapes, EssentialShapes, SocialShapes,
-                                                   MediaShapes, TravelShapes, TechnologyShapes);
-
+            const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.shapes));
             testAllShapesRequiredAttributes(currentAllShapes);
         });
     });

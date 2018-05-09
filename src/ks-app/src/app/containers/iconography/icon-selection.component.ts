@@ -13,6 +13,7 @@ import {EssentialShapes} from "@clr/icons/shapes/essential-shapes";
 import {MediaShapes} from "@clr/icons/shapes/media-shapes";
 import {SocialShapes} from "@clr/icons/shapes/social-shapes";
 import {TechnologyShapes} from "@clr/icons/shapes/technology-shapes";
+import {TextEditShapes} from "@clr/icons/shapes/text-edit-shapes";
 import {TravelShapes} from "@clr/icons/shapes/travel-shapes";
 
 @Component({templateUrl: "./icon-selection.component.html", styleUrls: ["./icon-selection.component.scss"]})
@@ -26,6 +27,7 @@ export class KSIconSelection {
         ClarityIcons.add(TechnologyShapes);
         ClarityIcons.add(TravelShapes);
         ClarityIcons.add(ChartShapes);
+        ClarityIcons.add(TextEditShapes);
     }
     previewClasses: any = {"is-solid": false, "has-alert": false, "has-badge": false};
 
@@ -59,6 +61,7 @@ export class KSIconSelection {
         {name: "Social Shapes", shapes: Object.keys(SocialShapes)},
         {name: "Travel Shapes", shapes: Object.keys(TravelShapes)},
         {name: "Technology Shapes", shapes: Object.keys(TechnologyShapes)},
-        {name: "Chart Shapes", shapes: Object.keys(ChartShapes)}
+        {name: "Chart Shapes", shapes: Object.keys(ChartShapes)},
+        {name: "Text Edit Shapes", shapes: Object.keys(TextEditShapes)}
     ];
 }

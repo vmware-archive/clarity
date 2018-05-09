@@ -33,7 +33,9 @@ module.exports = {
         "shapes/technology-shapes": "./src/clr-icons/shapes/technology-shapes.ts",
         "shapes/technology-shapes.min": "./src/clr-icons/shapes/technology-shapes.ts",
         "shapes/chart-shapes": "./src/clr-icons/shapes/chart-shapes.ts",
-        "shapes/chart-shapes.min": "./src/clr-icons/shapes/chart-shapes.ts"
+        "shapes/chart-shapes.min": "./src/clr-icons/shapes/chart-shapes.ts",
+        "shapes/text-edit-shapes": "./src/clr-icons/shapes/text-edit-shapes.ts",
+        "shapes/text-edit-shapes.min": "./src/clr-icons/shapes/text-edit-shapes.ts"
     },
     output: {
         path: path.resolve(__dirname, 'dist/clr-icons'),

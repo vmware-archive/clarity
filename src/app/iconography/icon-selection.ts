@@ -12,6 +12,7 @@ import {EssentialShapes} from "../../clr-icons/shapes/essential-shapes";
 import {MediaShapes} from "../../clr-icons/shapes/media-shapes";
 import {SocialShapes} from "../../clr-icons/shapes/social-shapes";
 import {TechnologyShapes} from "../../clr-icons/shapes/technology-shapes";
+import {TextEditShapes} from "../../clr-icons/shapes/text-edit-shapes";
 import {TravelShapes} from "../../clr-icons/shapes/travel-shapes";
 
 @Component({
@@ -56,6 +57,7 @@ export class IconSelectionDemo {
         {name: "Social Shapes", shapes: Object.keys(SocialShapes)},
         {name: "Travel Shapes", shapes: Object.keys(TravelShapes)},
         {name: "Technology Shapes", shapes: Object.keys(TechnologyShapes)},
-        {name: "Chart Shapes", shapes: Object.keys(ChartShapes)}
+        {name: "Chart Shapes", shapes: Object.keys(ChartShapes)},
+        {name: "Text Edit Shapes", shapes: Object.keys(TextEditShapes)}
     ];
 }

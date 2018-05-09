@@ -5,7 +5,8 @@
  */
 import {clrIconSVG} from "../utils/svg-tag-generator";
 
-// TODO: remove imported shapes in 0.12
+// TODO: deprecate these imported shapes in 0.12
+// TODO: remove these imported shapes in 0.13
 import {ClrShapeWand} from "./essential-shapes";
 
 /* tslint:disable:variable-name */

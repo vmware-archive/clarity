@@ -6,6 +6,10 @@
 import {descriptorConfig} from "../utils/descriptor-config";
 import {clrIconSVG} from "../utils/svg-tag-generator";
 
+// TODO: deprecate these imported shapes in 0.12
+// TODO: remove these imported shapes in 0.13
+import {ClrShapeBarChart, ClrShapeLineChart} from "./chart-shapes";
+
 /* tslint:disable:variable-name */
 export const ClrShapeRulerPencil = clrIconSVG(
     `<polygon class="clr-i-outline clr-i-outline-path-1" points="9 17.41 9 27 18.59 27 16.59 25 11 25 11 19.41 9 17.41"/>
@@ -220,16 +224,7 @@ export const ClrShapeMouse = clrIconSVG(
             <path class="clr-i-outline clr-i-outline-path-2" d="M18,15a1,1,0,0,1-1-1V10a1,1,0,0,1,2,0v4A1,1,0,0,1,18,15Z"/>
             <path class="clr-i-solid clr-i-solid-path-1" d="M18,2A10,10,0,0,0,8,12V24a10,10,0,0,0,20,0V12A10,10,0,0,0,18,2Zm1.3,11.44a1.3,1.3,0,0,1-2.6,0V10a1.3,1.3,0,0,1,2.6,0Z"/>
 </svg>`);
-export const ClrShapeLineChart = clrIconSVG(
-    `<path class="clr-i-outline clr-i-outline-path-1" d="M32,5H4A2,2,0,0,0,2,7V29a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V7A2,2,0,0,0,32,5ZM4,29V7H32V29Z"/>
-                <polygon class="clr-i-outline clr-i-outline-path-2" points="22.28 25.5 15.61 15.56 9.65 24.28 5.42 20.53 6.75 19.04 9.28 21.28 15.63 12 22.38 22.06 28.97 13.35 30.57 14.55 22.28 25.5"/>
-                <path class="clr-i-outline--badged clr-i-outline-path-1--badged" d="M32,13.22V29H4V7H22.57a7.52,7.52,0,0,1-.07-1,7.52,7.52,0,0,1,.07-1H4A2,2,0,0,0,2,7V29a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V12.34A7.45,7.45,0,0,1,32,13.22Z"/>
-                <polygon class="clr-i-outline--badged clr-i-outline-path-2--badged" points="15.63 12 9.28 21.28 6.75 19.04 5.42 20.53 9.65 24.28 15.61 15.56 22.28 25.5 30.57 14.55 28.97 13.35 22.38 22.06 15.63 12"/>
-                <circle class="clr-i-outline--badged clr-i-outline-path-3--badged clr-i-badge" cx="30" cy="6" r="5"/>
-                <path class="clr-i-solid clr-i-solid-path-1" d="M32,5H4A2,2,0,0,0,2,7V29a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V7A2,2,0,0,0,32,5ZM22.56,25.94l-7.1-10.58L9.12,24.64l-4.5-4L6,19.05l2.7,2.39,6.76-9.88,7.19,10.71,7-9.27,1.7,1.28Z"/>
-                <path class="clr-i-solid--badged clr-i-solid-path-1--badged" d="M30.32,13.48l1.06.8L22.56,25.94l-7.1-10.58L9.12,24.64l-4.5-4L6,19.05l2.7,2.39,6.76-9.88,7.19,10.71,6.66-8.81A7.44,7.44,0,0,1,22.57,5H4A2,2,0,0,0,2,7V29a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V12.34A7.45,7.45,0,0,1,30.32,13.48Z"/>
-                <circle class="clr-i-solid--badged clr-i-solid-path-2--badged clr-i-badge" cx="30" cy="6" r="5"/>
-</svg>`);
+
 export const ClrShapeDashboard = clrIconSVG(
     `<path class="clr-i-outline clr-i-outline-path-1" d="M25.18,12.32l-5.91,5.81a3,3,0,1,0,1.41,1.42l5.92-5.81Z"/>
                 <path class="clr-i-outline clr-i-outline-path-2" d="M18,4.25A16.49,16.49,0,0,0,5.4,31.4l.3.35H30.3l.3-.35A16.49,16.49,0,0,0,18,4.25Zm11.34,25.5H6.66a14.43,14.43,0,0,1-3.11-7.84H7v-2H3.55A14.41,14.41,0,0,1,7,11.29l2.45,2.45,1.41-1.41L8.43,9.87A14.41,14.41,0,0,1,17,6.29v3.5h2V6.3a14.47,14.47,0,0,1,13.4,13.61H28.92v2h3.53A14.43,14.43,0,0,1,29.34,29.75Z"/>
@@ -279,14 +274,6 @@ export const ClrShapeStorage = clrIconSVG(
                 <path class="clr-i-solid--alerted clr-i-solid-path-2--alerted clr-i-alert" d="M26.85,1l-5.72,9.91a1.28,1.28,0,0,0,1.1,1.91H33.68a1.28,1.28,0,0,0,1.1-1.91L29.06,1A1.28,1.28,0,0,0,26.85,1Z"/>
                 <path class="clr-i-solid--badged clr-i-solid-path-1--badged" d="M17.91,18.28c8.08,0,14.66-1.74,15.09-3.94v-1.6a7.47,7.47,0,0,1-7.38-.8,48.3,48.3,0,0,1-7.71.59A39.4,39.4,0,0,1,6.25,11V9a39.4,39.4,0,0,0,11.66,1.51,51,51,0,0,0,6-.34,7.46,7.46,0,0,1-.59-7.65c-1.87-.18-3.73-.26-5.28-.26-5.57,0-15,.93-15,4.43V29.29c0,3.49,9.43,4.43,15,4.43s15-.93,15-4.43V24.09C32.57,26.28,26,28,17.91,28A39.4,39.4,0,0,1,6.25,26.52v-2A39.4,39.4,0,0,0,17.91,26C26,26,32.57,24.28,33,22.09V16.34c-.43,2.2-7,3.94-15.09,3.94A39.4,39.4,0,0,1,6.25,18.77v-2A39.4,39.4,0,0,0,17.91,18.28Z"/>
                 <circle class="clr-i-solid--badged clr-i-solid-path-2--badged clr-i-badge" cx="30" cy="5.86" r="5"/>
-</svg>`);
-export const ClrShapeBarChart = clrIconSVG(
-    `<path class="clr-i-outline clr-i-outline-path-1" d="M33,30H32V7a2,2,0,0,0-2-2H26a2,2,0,0,0-2,2V30H22V12a2,2,0,0,0-2-2H16a2,2,0,0,0-2,2V30H12V18a2,2,0,0,0-2-2H6a2,2,0,0,0-2,2V30H3a1,1,0,0,0,0,2H33a1,1,0,0,0,0-2ZM10,30H6V18h4Zm10,0H16V12h4Zm10,0H26V7h4Z"/>
-                <path class="clr-i-outline--badged clr-i-outline-path-1--badged" d="M33,30H32V13.22a7.49,7.49,0,0,1-2,.28V30H26V12.34a7.53,7.53,0,0,1-2-1.85V30H22V12a2,2,0,0,0-2-2H16a2,2,0,0,0-2,2V30H12V18a2,2,0,0,0-2-2H6a2,2,0,0,0-2,2V30H3a1,1,0,0,0,0,2H33a1,1,0,0,0,0-2ZM10,30H6V18h4Zm10,0H16V12h4Z"/>
-                <circle class="clr-i-outline--badged clr-i-outline-path-2--badged clr-i-badge" cx="30" cy="6" r="5"/>
-                <path class="clr-i-solid clr-i-solid-path-1" d="M33,30H30V7a2,2,0,0,0-2-2H26a2,2,0,0,0-2,2V30H21V12a2,2,0,0,0-2-2H17a2,2,0,0,0-2,2V30H12V18a2,2,0,0,0-2-2H8a2,2,0,0,0-2,2V30H3a1,1,0,0,0,0,2H33a1,1,0,0,0,0-2Z"/>
-                <path class="clr-i-solid--badged clr-i-solid-path-1--badged" d="M33,30H30V13.5a7.48,7.48,0,0,1-6-3V30H21V12a2,2,0,0,0-2-2H17a2,2,0,0,0-2,2V30H12V18a2,2,0,0,0-2-2H8a2,2,0,0,0-2,2V30H3a1,1,0,0,0,0,2H33a1,1,0,0,0,0-2Z"/>
-                <circle class="clr-i-solid--badged clr-i-solid-path-2--badged clr-i-badge" cx="30" cy="6" r="5"/>
 </svg>`);
 export const ClrShapeCluster = clrIconSVG(
     `<path d="M31.36,8H27.5v2H31V30H27.5v2H33V9.67A1.65,1.65,0,0,0,31.36,8Z" class="clr-i-outline clr-i-outline-path-1"/>

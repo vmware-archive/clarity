@@ -11,10 +11,12 @@ import {EssentialShapes} from "./essential-shapes";
 import {MediaShapes} from "./media-shapes";
 import {SocialShapes} from "./social-shapes";
 import {TechnologyShapes} from "./technology-shapes";
+import {TextEditShapes} from "./text-edit-shapes";
 import {TravelShapes} from "./travel-shapes";
 
 const allShapesSets = [
-    CoreShapes, CommerceShapes, EssentialShapes, MediaShapes, SocialShapes, TechnologyShapes, TravelShapes, ChartShapes
+    CoreShapes, CommerceShapes, EssentialShapes, MediaShapes, SocialShapes, TechnologyShapes, TravelShapes, ChartShapes,
+    TextEditShapes
 ];
 
 const allShapes: any = {};

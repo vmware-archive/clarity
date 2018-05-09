@@ -6,7 +6,8 @@
 import {descriptorConfig} from "../utils/descriptor-config";
 import {clrIconSVG} from "../utils/svg-tag-generator";
 
-// TODO: remove imported shapes in 0.12
+// TODO: deprecate these imported shapes in 0.12
+// TODO: remove these imported shapes in 0.13
 import {ClrShapeAngleDouble} from "./core-shapes";
 
 /* tslint:disable:variable-name */
@@ -747,6 +748,8 @@ export const ClrShapeWand = clrIconSVG(
             <path class="clr-i-outline clr-i-outline-path-2" d="M32.53,20.47l2.09-2.09a.8.8,0,0,0-1.13-1.13l-2.09,2.09-2.09-2.09a.8.8,0,0,0-1.13,1.13l2.09,2.09-2.09,2.09a.8.8,0,0,0,1.13,1.13l2.09-2.09,2.09,2.09a.8.8,0,0,0,1.13-1.13Z"/>
             <path class="clr-i-outline clr-i-outline-path-3" d="M14.78,6.51a.8.8,0,0,0,1.13,0L17.4,5l1.49,1.49A.8.8,0,0,0,20,5.38L18.54,3.89,20,2.4a.8.8,0,0,0-1.13-1.13L17.4,2.76,15.91,1.27A.8.8,0,1,0,14.78,2.4l1.49,1.49L14.78,5.38A.8.8,0,0,0,14.78,6.51Z"/>
             <path class="clr-i-outline clr-i-outline-path-4" d="M8.33,15.26a.8.8,0,0,0,1.13,0l1.16-1.16,1.16,1.16a.8.8,0,1,0,1.13-1.13L11.76,13l1.16-1.16a.8.8,0,1,0-1.13-1.13l-1.16,1.16L9.46,10.68a.8.8,0,1,0-1.13,1.13L9.49,13,8.33,14.13A.8.8,0,0,0,8.33,15.26Z"/>`);
+export const ClrShapeCursorMove = clrIconSVG(
+    `<path d="M28.85,12.89a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41L30.14,17H19V5.86l2.69,2.7a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.42L18,2,12.89,7.15a1,1,0,0,0-.29.71,1,1,0,0,0,1.71.7L17,5.86V17H5.86l2.7-2.69a1,1,0,0,0,0-1.41,1,1,0,0,0-1.42,0L2,18l5.14,5.11a1,1,0,0,0,.71.29,1,1,0,0,0,.7-1.71L5.86,19H17V30.14l-2.69-2.7a1,1,0,0,0-1.71.7,1,1,0,0,0,.29.71L18,34l5.11-5.14a1,1,0,0,0,0-1.42,1,1,0,0,0-1.41,0L19,30.14V19H30.14l-2.7,2.69a1,1,0,0,0,.7,1.71,1,1,0,0,0,.71-.29L34,18Z" class="clr-i-outline clr-i-outline-path-1" />`);
 
 
 
@@ -760,6 +763,7 @@ export const EssentialShapes: any = {
     "cursor-arrow": ClrShapeCursorArrow,
     "cursor-hand": ClrShapeCursorHand,
     "cursor-hand-click": ClrShapeCursorHandClick,
+    "cursor-move": ClrShapeCursorMove,
     "resize": ClrShapeResize,
     "objects": ClrShapeObjects,
     "book": ClrShapeBook,

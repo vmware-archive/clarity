@@ -94,7 +94,8 @@ export class DatagridMainRenderer implements AfterContentInit, AfterViewChecked,
      * Refer: http://stackoverflow.com/questions/24396205/flex-grow-not-working-in-internet-explorer-11-0
      */
     private computeDatagridHeight() {
-        const value: number = this.domAdapter.computedHeight(this.el.nativeElement);
+        // IE doesn't return correct value for getComputedStyle(element).getPropertyValue("height")
+        const value: number = this.domAdapter.clientRectHeight(this.el.nativeElement);
         this.renderer.setStyle(this.el.nativeElement, "height", value + "px");
         this._heightSet = true;
     }

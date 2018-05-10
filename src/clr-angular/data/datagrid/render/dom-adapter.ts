@@ -33,6 +33,10 @@ export class DomAdapter {
         return parseInt(getComputedStyle(element).getPropertyValue("height"), 10);
     }
 
+    clientRectHeight(element: any): number {
+        return parseInt(element.getBoundingClientRect().height, 10);
+    }
+
     clientRectRight(element: any): number {
         return parseInt(element.getBoundingClientRect().right, 10);
     }

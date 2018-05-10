@@ -72,6 +72,7 @@
         background: $clr-calendar-background-color;
         border: 1px solid $clr-calendar-border-color;
         border-radius: $clr-default-borderradius;
+        box-shadow: 0 $clr-default-borderwidth 0.125rem $clr-popover-box-shadow-color;
         overflow: hidden;
         z-index: map-get($clr-layers,dropdown-menu);
     }

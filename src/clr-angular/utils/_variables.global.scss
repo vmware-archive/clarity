@@ -78,3 +78,6 @@ $grid-gutter-widths: (
 // Usage: ../emphasis/alert/_alert.clarity.scss
 $close-color--normal: $gray-dark;
 $close-color--hover: $clr-black;
+
+// Box Shadow
+$clr-popover-box-shadow-color: rgba(clr-getColor(dark), 0.25);

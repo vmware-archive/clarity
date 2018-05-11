@@ -158,6 +158,7 @@ Finally, and this is harder to put in black-or-white terms, keep the API as simp
 - If the template is just a few lines, it should go inline in the component's metadata with `template`. Otherwise, it should be in a separate HTML file using `templateUrl`.
 - Bindings that are always true should be declared directly in the component's metadata using the `host` option. Other bindings should be on the corresponding property or getter, using the `@HostBinding` annotation.
 - Host listeners should always use the `@HostListener` annotation.
+- Methods used as event listeners in a component or directive should be named in a way that describe **what** they do, not **when** they trigger. For instance, if a method is used when the user clicks a button to toggle the selection, the method name should **not** be `onClick()`, it should be `toggleSelection()`. Here are more typical method names that are commonly used but that you should avoid: `onClick()`, `onHover()`, `onFocus()`, `onScroll()`, etc.
 
 
 ### Gotchas
@@ -173,6 +174,7 @@ Finally, and this is harder to put in black-or-white terms, keep the API as simp
 
 - We expect extensive unit test coverage of any code submitted.
 - Unit tests should not duplicate coverage. In particular, avoid multiple unit tests failing for the same error.
+- Do not test several components at the same time, unless you're specifically writing an integration test. You should manually declare parent components that might be needed for your test as **providers**, or even better mock them. In other words, make sure the only components your are declaring in your testing module are the currently tested component and the test host.
 - Split your unit tests in Typescript API, Template API and View (details coming soon).
 
 

@@ -22,7 +22,8 @@ export const CLR_TOOLTIP_DIRECTIVES: Type<any>[] = [ClrTooltip, ClrTooltipTrigge
     declarations: [CLR_TOOLTIP_DIRECTIVES],
     exports: [CLR_TOOLTIP_DIRECTIVES, ClrConditionalModule, ClrIconModule]
 })
-export class ClrTooltipModule {}
+export class ClrTooltipModule {
+}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

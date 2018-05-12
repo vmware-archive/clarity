@@ -32,4 +32,5 @@ export const CLR_DATEPICKER_DIRECTIVES: Type<any>[] = [
     exports: [CLR_DATEPICKER_DIRECTIVES],
     entryComponents: [ClrDateContainer]
 })
-export class ClrDatepickerModule {}
+export class ClrDatepickerModule {
+}

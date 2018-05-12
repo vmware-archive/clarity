@@ -9,4 +9,5 @@ import {NgModule} from "@angular/core";
 import {VIRTUAL_SCROLL_DIRECTIVES} from "./index";
 
 @NgModule({imports: [CommonModule], declarations: [VIRTUAL_SCROLL_DIRECTIVES], exports: [VIRTUAL_SCROLL_DIRECTIVES]})
-export class ClrVirtualScrollModule {}
+export class ClrVirtualScrollModule {
+}

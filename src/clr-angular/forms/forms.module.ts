@@ -16,4 +16,5 @@ import {ClrRadioModule} from "./radio/radio.module";
     imports: [CommonModule],
     exports: [ClrCommonFormsModule, ClrCheckboxNextModule, ClrRadioModule, ClrDatepickerModule]
 })
-export class ClrFormsNextModule {}
+export class ClrFormsNextModule {
+}

@@ -18,7 +18,8 @@ export const CLR_MODAL_DIRECTIVES: Type<any>[] = [ClrModal];
     declarations: [CLR_MODAL_DIRECTIVES],
     exports: [CLR_MODAL_DIRECTIVES]
 })
-export class ClrModalModule {}
+export class ClrModalModule {
+}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

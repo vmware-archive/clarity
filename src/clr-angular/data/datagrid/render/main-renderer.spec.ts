@@ -110,14 +110,12 @@ export default function(): void {
 
         describe("smart datagrid height", function() {
             let context: ComponentFixture<DatagridHeightTest>;
-            let compiled: any;
 
             beforeEach(function() {
                 TestBed.configureTestingModule(
                     {imports: [BrowserAnimationsModule, ClrDatagridModule], declarations: [DatagridHeightTest]});
                 context = TestBed.createComponent(DatagridHeightTest);
                 context.detectChanges();
-                compiled = context.nativeElement;
             });
 
             it("sets an initial datagrid height", function() {

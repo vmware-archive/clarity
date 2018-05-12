@@ -172,4 +172,5 @@ export default function() {
         <clr-calendar></clr-calendar>
     `
 })
-class TestComponent {}
+class TestComponent {
+}

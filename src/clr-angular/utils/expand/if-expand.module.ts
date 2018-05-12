@@ -9,4 +9,5 @@ import {NgModule} from "@angular/core";
 import {EXPAND_DIRECTIVES} from "./index";
 
 @NgModule({imports: [CommonModule], declarations: [EXPAND_DIRECTIVES], exports: [EXPAND_DIRECTIVES]})
-export class ClrIfExpandModule {}
+export class ClrIfExpandModule {
+}

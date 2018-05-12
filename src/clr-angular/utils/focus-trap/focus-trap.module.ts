@@ -15,4 +15,5 @@ import {FOCUS_TRAP_DIRECTIVES} from "./index";
     declarations: [FOCUS_TRAP_DIRECTIVES],
     exports: [FOCUS_TRAP_DIRECTIVES]
 })
-export class ClrFocusTrapModule {}
+export class ClrFocusTrapModule {
+}

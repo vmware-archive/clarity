@@ -6,7 +6,7 @@
 
 import {Component} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 
 import {itIgnore} from "../../../../tests/tests.helpers";
 import {TestContext} from "../../data/datagrid/helpers.spec";
@@ -105,4 +105,5 @@ export default function() {
         </clr-date-container>
     `
 })
-class TestComponent {}
+class TestComponent {
+}

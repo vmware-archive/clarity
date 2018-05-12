@@ -19,4 +19,5 @@ import {ClrCheckboxContainer} from "./checkbox-container";
     exports: [ClrCommonFormsModule, ClrCheckboxNext, ClrCheckboxContainer],
     entryComponents: [ClrCheckboxContainer]
 })
-export class ClrCheckboxNextModule {}
+export class ClrCheckboxNextModule {
+}

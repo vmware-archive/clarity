@@ -20,6 +20,7 @@ import {ClrDropdown} from "./dropdown";
     }
 })
 export class ClrDropdownTrigger {
+    /* tslint:disable-next-line:no-unused-variable */
     private isRootLevelToggle: boolean = true;
 
     constructor(dropdown: ClrDropdown, private ifOpenService: IfOpenService) {

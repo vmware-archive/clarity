@@ -11,4 +11,5 @@ import {Component} from "@angular/core";
         <p>All information was sourced on wikipedia</p>
     `
 })
-export class KSWikipediaDemo {}
+export class KSWikipediaDemo {
+}

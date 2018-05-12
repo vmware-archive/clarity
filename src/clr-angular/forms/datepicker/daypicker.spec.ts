@@ -164,4 +164,5 @@ export default function() {
         <clr-daypicker></clr-daypicker>
     `
 })
-class TestComponent {}
+class TestComponent {
+}

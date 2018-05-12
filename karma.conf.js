@@ -43,7 +43,31 @@ module.exports = function(karma) {
     const config = {
         autoWatch: true,
         basePath: "",
-        frameworks: ["jasmine", "jasmine-matchers"],
+        frameworks: [
+            "jasmine",
+            "jasmine-matchers",
+            "@angular-devkit/build-angular"
+        ],
+        plugins: [
+            // Frameworks
+            require("karma-jasmine"),
+            require("karma-jasmine-matchers"),
+            require("@angular-devkit/build-angular/plugins/karma"),
+            require('karma-scss-preprocessor'),
+            // Reporters
+            require("karma-jasmine-html-reporter"),
+            require("karma-htmlfile-reporter"),
+            require("karma-coverage-istanbul-reporter"),
+            require("karma-mocha-reporter"),
+            require("karma-notify-reporter"),
+            // Launchers
+            require("karma-chrome-launcher"),
+            require("karma-edge-launcher"),
+            require("karma-ie-launcher"),
+            require("karma-firefox-launcher"),
+            require("karma-safari-launcher"),
+            require("karma-sauce-launcher")
+        ],
         files: [
             //PrismJS
             {
@@ -71,9 +95,9 @@ module.exports = function(karma) {
                 watched: false
             },
 
-            // Clarity
+            // Clarity UI
             {
-                pattern: "./dist/clr-ui/clr-ui.min.css",
+                pattern: "./src/clr-angular/main.scss",
                 included: true,
                 watched: true
             },
@@ -81,12 +105,11 @@ module.exports = function(karma) {
             // Entry point to all our spec files
             { pattern: "./tests/tests.entry.ts", watched: false }
         ],
-        exclude: ["node_modules/**/*spec.js"],
         preprocessors: {
-            "./tests/tests.entry.ts": ["webpack"]
+            'src/clr-angular/**/*.scss': ['scss']
         },
-        mime: {
-            "text/x-typescript": ["ts", "tsx"]
+        client: {
+            clearContext: false // leave Jasmine Spec Runner output visible in browser
         },
         reporters: ["mocha", "coverage-istanbul", "html", "notify"],
         htmlReporter: {
@@ -114,9 +137,6 @@ module.exports = function(karma) {
         logLevel: karma.LOG_INFO,
         singleRun: process.env.TRAVIS ? true : false,
         concurrency: Infinity,
-        webpackServer: { noInfo: true, quiet: true },
-        webpackMiddleware: { noInfo: true, quiet: true },
-        webpack: require("./webpack.test.config"),
         captureTimeout: 120000,
         customLaunchers: {
             ChromeHeadless: {

@@ -15,4 +15,5 @@ import {ClrLoadingButtonModule} from "./button-loading/loading-button.module";
         ClrButtonGroupModule,
     ]
 })
-export class ClrButtonModule {}
+export class ClrButtonModule {
+}

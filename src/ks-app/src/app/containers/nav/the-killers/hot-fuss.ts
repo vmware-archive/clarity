@@ -19,4 +19,5 @@ import {Component} from "@angular/core";
         </p>
     `
 })
-export class KSHotFussDemo {}
+export class KSHotFussDemo {
+}

@@ -28,7 +28,6 @@ class TestComponent {
 
 describe("Tab", () => {
     let fixture: ComponentFixture<any>;
-    let compiled: any;
     let instance: any;
 
     beforeEach(() => {
@@ -39,7 +38,6 @@ describe("Tab", () => {
         });
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
-        compiled = fixture.nativeElement;
         instance = fixture.componentInstance.tabInstance;
     });
 

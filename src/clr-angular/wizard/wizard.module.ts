@@ -32,7 +32,8 @@ export const CLR_WIZARD_DIRECTIVES: any[] = [
     declarations: [CLR_WIZARD_DIRECTIVES],
     exports: [CLR_WIZARD_DIRECTIVES]
 })
-export class ClrWizardModule {}
+export class ClrWizardModule {
+}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

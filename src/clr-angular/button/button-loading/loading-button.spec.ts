@@ -14,14 +14,12 @@ import {ClrLoadingButtonModule} from "./loading-button.module";
 
 describe("Loading Buttons", () => {
     let fixture: ComponentFixture<TestLoadingButtonComponent>;
-    let componentInstance: TestLoadingButtonComponent;
 
     beforeEach(() => {
         TestBed.configureTestingModule(
             {imports: [ClrLoadingModule, ClrLoadingButtonModule], declarations: [TestLoadingButtonComponent]});
 
         fixture = TestBed.createComponent(TestLoadingButtonComponent);
-        componentInstance = fixture.componentInstance;
 
         fixture.detectChanges();
     });

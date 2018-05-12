@@ -43,17 +43,20 @@ class GenericControl extends WrappedFormControl<GenericWrapper> {
     exports: [ClrCommonFormsModule, GenericWrapper, GenericControl],
     entryComponents: [GenericWrapper]
 })
-class CommonFormsTestModule {}
+class CommonFormsTestModule {
+}
 
 
 /*
  * Actual test components, one for each case we support
  */
 @Component({template: `<input genericControl />`})
-class NoWrapperNoId {}
+class NoWrapperNoId {
+}
 
 @Component({template: `<input genericControl id="hello" />`})
-class NoWrapperWithId {}
+class NoWrapperWithId {
+}
 
 @Component({
     template: `
@@ -65,7 +68,8 @@ class NoWrapperWithId {}
         
     `
 })
-class WithWrapperNoId {}
+class WithWrapperNoId {
+}
 
 @Component({
     template: `
@@ -77,7 +81,8 @@ class WithWrapperNoId {}
 
     `
 })
-class WithWrapperWithId {}
+class WithWrapperWithId {
+}
 
 export default function(): void {
     describe("Common forms integration", () => {

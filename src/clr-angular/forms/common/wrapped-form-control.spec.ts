@@ -35,23 +35,28 @@ class TestControl extends WrappedFormControl<TestWrapper> {
     exports: [TestWrapper, TestControl],
     entryComponents: [TestWrapper]
 })
-class WrappedFormControlTestModule {}
+class WrappedFormControlTestModule {
+}
 
 
 /*
  * Actual test components, one for each case we support
  */
 @Component({template: `<input testControl />`})
-class NoWrapperNoId {}
+class NoWrapperNoId {
+}
 
 @Component({template: `<input testControl id="hello" />`})
-class NoWrapperWithId {}
+class NoWrapperWithId {
+}
 
 @Component({template: `<test-wrapper><input testControl /></test-wrapper>`})
-class WithWrapperNoId {}
+class WithWrapperNoId {
+}
 
 @Component({template: `<test-wrapper><input testControl id="hello" /></test-wrapper>`})
-class WithWrapperWithId {}
+class WithWrapperWithId {
+}
 
 interface TestContext {
     fixture: ComponentFixture<any>;

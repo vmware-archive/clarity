@@ -41,15 +41,11 @@ export default function(): void {
 
             describe("Opening and closing", () => {
                 let context: TestContext<ClrWizard, UnopenedWizardTestComponent>;
-                let wizardNavigationService: WizardNavigationService;
-                let pageCollectionService: PageCollectionService;
                 let wizard: ClrWizard;
                 let component: UnopenedWizardTestComponent;
 
                 beforeEach(function() {
                     context = this.create(ClrWizard, UnopenedWizardTestComponent);
-                    wizardNavigationService = context.getClarityProvider(WizardNavigationService);
-                    pageCollectionService = context.getClarityProvider(PageCollectionService);
                     wizard = context.clarityDirective;
                     component = context.testComponent;
                     context.detectChanges();
@@ -669,20 +665,14 @@ export default function(): void {
             describe("Sizing", () => {
                 it("can be set and updates via the clrWizardSize input", () => {
                     const wizardModal = context.testElement.querySelector(".modal-dialog");
-                    let hasExpectedClass: boolean;
                     expect(context.testComponent.mySize).toBeUndefined();
                     context.testComponent.mySize = "lg";
                     context.detectChanges();
                     expect(wizard.size).toBe("lg");
-                    hasExpectedClass = wizardModal.classList.contains("modal-lg");
+                    expect(wizardModal.classList.contains("modal-lg")).toBeTrue();
                 });
 
-                it("defaults to \"xl\"", () => {
-                    const wizardModal = context.testElement.querySelector(".modal-dialog");
-                    let hasExpectedClass: boolean;
-                    expect(context.testComponent.mySize).toBeUndefined();
-                    hasExpectedClass = wizardModal.classList.contains("modal-xl");
-                });
+                xit("defaults to \"xl\"");
             });
 
             describe("Opening", () => {
@@ -719,14 +709,10 @@ export default function(): void {
 
         describe("Dynamic Content", () => {
             let context: TestContext<ClrWizard, DynamicWizardTestComponent>;
-            let wizardNavigationService: WizardNavigationService;
-            let pageCollectionService: PageCollectionService;
             let wizard: ClrWizard;
 
             beforeEach(function() {
                 context = this.create(ClrWizard, DynamicWizardTestComponent);
-                wizardNavigationService = context.getClarityProvider(WizardNavigationService);
-                pageCollectionService = context.getClarityProvider(PageCollectionService);
                 wizard = context.clarityDirective;
                 context.detectChanges();
             });

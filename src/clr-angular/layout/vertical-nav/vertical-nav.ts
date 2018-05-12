@@ -5,7 +5,7 @@
  */
 
 import {Component, EventEmitter, Input, OnDestroy, Output} from "@angular/core";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 
 import {VerticalNavGroupRegistrationService} from "./providers/vertical-nav-group-registration.service";
 import {VerticalNavIconService} from "./providers/vertical-nav-icon.service";

@@ -11,7 +11,8 @@ import {ClrIconCustomTag} from "./icon";
 export const CLR_ICON_DIRECTIVES: Type<any>[] = [ClrIconCustomTag];
 
 @NgModule({imports: [CommonModule], declarations: [CLR_ICON_DIRECTIVES], exports: [CLR_ICON_DIRECTIVES]})
-export class ClrIconModule {}
+export class ClrIconModule {
+}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

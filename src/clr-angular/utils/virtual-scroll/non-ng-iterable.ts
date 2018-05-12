@@ -9,7 +9,9 @@
  * Angular iterates over it in dev mode. Prod mode is fine, but dev mode iterating means it hangs
  * the app on infinite generators.
  */
-export interface NonNgIterable<T> { get(index?: number): T; }
+export interface NonNgIterable<T> {
+    get(index?: number): T;
+}
 
 export function isNonNgIterable<T>(o: any): o is NonNgIterable<T> {
     return "get" in o;

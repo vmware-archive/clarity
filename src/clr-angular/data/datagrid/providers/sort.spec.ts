@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Comparator} from "../interfaces/comparator";
+import {ClrDatagridComparatorInterface} from "../interfaces/comparator.interface";
 
 import {Sort} from "./sort";
 import {StateDebouncer} from "./state-debouncer.provider";
@@ -90,7 +90,7 @@ export default function(): void {
 
         it("exposes an Observable to follow sort changes", function() {
             let nbChanges = 0;
-            let latestComparator: Comparator<number>;
+            let latestComparator: ClrDatagridComparatorInterface<number>;
             let latestReverse: boolean;
             this.sortInstance.change.subscribe((sort: Sort) => {
                 nbChanges++;
@@ -115,7 +115,7 @@ export default function(): void {
     });
 }
 
-class TestComparator implements Comparator<number> {
+class TestComparator implements ClrDatagridComparatorInterface<number> {
     compare(a: number, b: number): number {
         return a - b;
     }

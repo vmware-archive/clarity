@@ -17,7 +17,8 @@ import {ClrCheckboxContainer} from "./checkbox-container";
        <input type="checkbox" clrCheckbox />
     `
 })
-class SimpleTest {}
+class SimpleTest {
+}
 
 export default function(): void {
     describe("Checkbox directive", () => {

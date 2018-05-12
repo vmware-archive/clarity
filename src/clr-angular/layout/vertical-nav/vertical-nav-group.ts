@@ -6,7 +6,7 @@
 
 import {animate, AnimationEvent, state, style, transition, trigger} from "@angular/animations";
 import {AfterContentInit, Component, EventEmitter, HostBinding, Input, OnDestroy, Output} from "@angular/core";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 
 import {Expand} from "../../utils/expand/providers/expand";
 

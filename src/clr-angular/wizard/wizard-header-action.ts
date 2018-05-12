@@ -25,12 +25,10 @@ let wizardHeaderActionIndex = 0;
 })
 export class ClrWizardHeaderAction {
     // title is explanatory text added to the header action
-    @Input("title")
-    title: string = "";
+    @Input("title") title: string = "";
 
     // If our host has an ID attribute, we use this instead of our index.
-    @Input("id")
-    _id: string = (wizardHeaderActionIndex++).toString();
+    @Input("id") _id: string = (wizardHeaderActionIndex++).toString();
 
     public get id(): string {
         return `clr-wizard-header-action-${this._id}`;

@@ -13,7 +13,7 @@ import {
     Renderer2,
     SkipSelf
 } from "@angular/core";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {ESC} from "../../utils/key-codes/key-codes";

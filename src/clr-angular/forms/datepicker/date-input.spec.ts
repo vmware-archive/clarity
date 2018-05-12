@@ -142,7 +142,6 @@ export default function() {
 
         describe("Datepicker with ngModel", () => {
             let fixture: ComponentFixture<TestComponentWithNgModel>;
-            let compiled: any;
             let dateContainerDebugElement: DebugElement;
             let dateInputDebugElement: DebugElement;
 
@@ -152,7 +151,6 @@ export default function() {
 
                 fixture = TestBed.createComponent(TestComponentWithNgModel);
                 fixture.detectChanges();
-                compiled = fixture.nativeElement;
                 dateContainerDebugElement = fixture.debugElement.query(By.directive(ClrDateContainer));
                 dateInputDebugElement = fixture.debugElement.query(By.directive(ClrDateInput));
                 dateNavigationService = dateContainerDebugElement.injector.get(DateNavigationService);
@@ -201,7 +199,6 @@ export default function() {
 
         describe("Datepicker with Reactive Forms", () => {
             let fixture: ComponentFixture<TestComponentWithReactiveForms>;
-            let compiled: any;
 
             let dateContainerDebugElement: DebugElement;
             let dateInputDebugElement: DebugElement;
@@ -212,7 +209,6 @@ export default function() {
 
                 fixture = TestBed.createComponent(TestComponentWithReactiveForms);
                 fixture.detectChanges();
-                compiled = fixture.nativeElement;
                 dateContainerDebugElement = fixture.debugElement.query(By.directive(ClrDateContainer));
                 dateInputDebugElement = fixture.debugElement.query(By.directive(ClrDateInput));
                 dateNavigationService = dateContainerDebugElement.injector.get(DateNavigationService);
@@ -239,7 +235,6 @@ export default function() {
 
         describe("Datepicker with clrDate", () => {
             let fixture: ComponentFixture<TestComponentWithClrDate>;
-            let compiled: any;
             let dateContainerDebugElement: DebugElement;
             let dateInputDebugElement: DebugElement;
 
@@ -249,7 +244,6 @@ export default function() {
 
                 fixture = TestBed.createComponent(TestComponentWithClrDate);
                 fixture.detectChanges();
-                compiled = fixture.nativeElement;
                 dateContainerDebugElement = fixture.debugElement.query(By.directive(ClrDateContainer));
                 dateInputDebugElement = fixture.debugElement.query(By.directive(ClrDateInput));
                 dateNavigationService = dateContainerDebugElement.injector.get(DateNavigationService);
@@ -316,7 +310,8 @@ export default function() {
         <input type="date" clrDate>
     `
 })
-class TestComponent {}
+class TestComponent {
+}
 
 @Component({
     template: `

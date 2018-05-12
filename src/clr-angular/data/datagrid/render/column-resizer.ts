@@ -5,7 +5,7 @@
  */
 
 import {AfterViewInit, Directive, ElementRef, EventEmitter, OnDestroy, Output, Renderer2} from "@angular/core";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 
 import {DragDispatcher} from "../providers/drag-dispatcher";
 

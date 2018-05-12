@@ -12,4 +12,5 @@ import {Component} from "@angular/core";
         <ng-content></ng-content>
     `
 })
-export class ClrVerticalNavGroupChildren {}
+export class ClrVerticalNavGroupChildren {
+}

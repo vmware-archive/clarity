@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ElementRef, Input, OnDestroy, Optional, SkipSelf} from "@angular/core";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {POPOVER_HOST_ANCHOR} from "../common/popover-host-anchor.token";

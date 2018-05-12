@@ -300,4 +300,5 @@ export default function() {
         <clr-monthpicker></clr-monthpicker>
     `
 })
-class TestComponent {}
+class TestComponent {
+}

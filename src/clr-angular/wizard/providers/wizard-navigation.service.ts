@@ -5,9 +5,9 @@
  */
 
 import {Injectable, OnDestroy, TemplateRef} from "@angular/core";
-import {Observable} from "rxjs/Observable";
-import {Subject} from "rxjs/Subject";
-import {Subscription} from "rxjs/Subscription";
+import {Observable} from "rxjs";
+import {Subject} from "rxjs";
+import {Subscription} from "rxjs";
 
 import {GHOST_PAGE_ANIMATION} from "../../modal/utils/ghost-page-animations";
 import {ClrWizardPage} from "../wizard-page";

@@ -837,17 +837,15 @@
                 padding-bottom: calc(#{$clr-table--compact-verticalPadding});
             }
         }
-        .datagrid-signpost-trigger .signpost .signpost-trigger {
-            clr-icon:not(
-            [shape="info-circle"],
-            [shape="exclamation-triangle"],
-            [shape="exclamation-circle"],
-            [shape="check-circle"],
-            [shape="info"],
+        .datagrid-signpost-trigger .signpost .signpost-trigger clr-icon:not(
+            [shape="info-circle"]):not(
+            [shape="exclamation-triangle"]):not(
+            [shape="exclamation-circle"]):not(
+            [shape="check-circle"]):not(
+            [shape="info"]):not(
             [shape="error"]) {
                 width: 0.875rem; //21px
                 height: 0.875rem; //21px
-            }
         }
         .datagrid-body .datagrid-row .datagrid-action-toggle {
             padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);

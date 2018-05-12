@@ -6,7 +6,7 @@
 import {Component, ViewChild} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 
 import {DatagridPropertyComparator} from "./built-in/comparators/datagrid-property-comparator";
 import {DatagridStringFilter} from "./built-in/filters/datagrid-string-filter";
@@ -455,7 +455,7 @@ class SimpleDeprecatedTest {
 class SimpleTest {
     comparator: ClrDatagridComparatorInterface<any>|string;
     field: string;
-    sortOrder = ClrDatagridSortOrder.Unsorted;
+    sortOrder = ClrDatagridSortOrder.UNSORTED;
 }
 
 @Component({

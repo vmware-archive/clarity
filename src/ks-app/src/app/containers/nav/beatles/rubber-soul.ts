@@ -18,4 +18,5 @@ import {Component} from "@angular/core";
         </p>
     `
 })
-export class KSRubberSoulDemo {}
+export class KSRubberSoulDemo {
+}

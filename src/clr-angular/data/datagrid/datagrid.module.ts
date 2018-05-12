@@ -82,7 +82,8 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
     ],
     exports: [CLR_DATAGRID_DIRECTIVES, ClrIfExpandModule]
 })
-export class ClrDatagridModule {}
+export class ClrDatagridModule {
+}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

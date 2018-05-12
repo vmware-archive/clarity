@@ -7,4 +7,5 @@
 import {Component} from "@angular/core";
 
 @Component({templateUrl: "./lists.component.html"})
-export class KSLists {}
+export class KSLists {
+}

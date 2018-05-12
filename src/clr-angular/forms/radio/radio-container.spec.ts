@@ -20,7 +20,8 @@ import {ClrRadioContainer} from "./radio-container";
         </clr-radio-container>
     `
 })
-class SimpleTest {}
+class SimpleTest {
+}
 
 interface TestContext {
     fixture: ComponentFixture<SimpleTest>;

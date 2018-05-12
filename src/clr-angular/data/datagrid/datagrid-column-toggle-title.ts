@@ -9,4 +9,5 @@ import {Component} from "@angular/core";
     selector: "clr-dg-column-toggle-title",
     template: `<ng-content></ng-content>`,
 })
-export class ClrDatagridColumnToggleTitle {}
+export class ClrDatagridColumnToggleTitle {
+}

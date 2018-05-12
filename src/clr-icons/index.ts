@@ -11,6 +11,11 @@ const clarityIcons: ClarityIconsApi = ClarityIconsApi.instance;
 
 clarityIcons.add(CoreShapes);
 
+interface Window {
+    ClarityIcons: any;
+}
+declare var window: Window;
+
 // check if there is a global object called "ClarityIcons"
 if (typeof window !== "undefined") {
     if (!window.hasOwnProperty("ClarityIcons")) {

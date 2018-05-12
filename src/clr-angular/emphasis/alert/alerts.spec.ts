@@ -174,7 +174,7 @@ describe("ClrAlerts component", function() {
         describe("sets classname as expected", function() {
             it("sets danger classname as expected", function() {
                 const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
-                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                const myAlert: ClrAlert = fixture.componentInstance.alertsInstance.currentAlert;
                 myAlert.alertType = "danger";
                 fixture.detectChanges();
 
@@ -182,7 +182,7 @@ describe("ClrAlerts component", function() {
             });
             it("sets info classname as expected", function() {
                 const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
-                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                const myAlert: ClrAlert = fixture.componentInstance.alertsInstance.currentAlert;
                 myAlert.alertType = "info";
                 fixture.detectChanges();
 
@@ -190,7 +190,7 @@ describe("ClrAlerts component", function() {
             });
             it("sets success classname as expected", function() {
                 const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
-                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                const myAlert: ClrAlert = fixture.componentInstance.alertsInstance.currentAlert;
                 myAlert.alertType = "success";
                 fixture.detectChanges();
 
@@ -198,7 +198,7 @@ describe("ClrAlerts component", function() {
             });
             it("sets warning classname as expected", function() {
                 const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
-                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                const myAlert: ClrAlert = fixture.componentInstance.alertsInstance.currentAlert;
                 myAlert.alertType = "warning";
                 fixture.detectChanges();
 
@@ -211,7 +211,7 @@ describe("ClrAlerts component", function() {
         describe("sets classname as expected with deprecated alert type", function() {
             it("sets danger classname as expected", function() {
                 const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
-                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                const myAlert: ClrAlert = fixture.componentInstance.alertsInstance.currentAlert;
                 myAlert.alertType = "alert-danger";
                 fixture.detectChanges();
 
@@ -219,7 +219,7 @@ describe("ClrAlerts component", function() {
             });
             it("sets info classname as expected", function() {
                 const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
-                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                const myAlert: ClrAlert = fixture.componentInstance.alertsInstance.currentAlert;
                 myAlert.alertType = "alert-info";
                 fixture.detectChanges();
 
@@ -227,7 +227,7 @@ describe("ClrAlerts component", function() {
             });
             it("sets success classname as expected", function() {
                 const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
-                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                const myAlert: ClrAlert = fixture.componentInstance.alertsInstance.currentAlert;
                 myAlert.alertType = "alert-success";
                 fixture.detectChanges();
 
@@ -235,7 +235,7 @@ describe("ClrAlerts component", function() {
             });
             it("sets warning classname as expected", function() {
                 const alertsContainer: Element = fixture.nativeElement.querySelector(".alerts");
-                const myAlert: Alert = fixture.componentInstance.alertsInstance.currentAlert;
+                const myAlert: ClrAlert = fixture.componentInstance.alertsInstance.currentAlert;
                 myAlert.alertType = "alert-warning";
                 fixture.detectChanges();
 

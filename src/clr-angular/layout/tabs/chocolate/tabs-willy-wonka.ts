@@ -7,4 +7,5 @@ import {Directive} from "@angular/core";
 import {WillyWonka} from "../../../utils/chocolate/willy-wonka";
 
 @Directive({selector: "clr-tabs"})
-export class TabsWillyWonka extends WillyWonka {}
+export class TabsWillyWonka extends WillyWonka {
+}

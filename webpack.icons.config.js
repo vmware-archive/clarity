@@ -5,9 +5,10 @@
  */
 
 const path = require("path");
-const {UglifyJsPlugin} = require('webpack').optimize;
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
+    mode: "development",
     entry: {
         "index": "./src/clr-icons/index.ts",
         "interfaces/icon-interfaces": "./src/clr-icons/interfaces/icon-interfaces.ts",
@@ -33,15 +34,16 @@ module.exports = {
         "shapes/technology-shapes": "./src/clr-icons/shapes/technology-shapes.ts",
         "shapes/technology-shapes.min": "./src/clr-icons/shapes/technology-shapes.ts",
         "shapes/chart-shapes": "./src/clr-icons/shapes/chart-shapes.ts",
-        "shapes/chart-shapes.min": "./src/clr-icons/shapes/chart-shapes.ts",
+        "shapes/chart-shapes.min": "./src/clr-icons/shapes/chart-shapes.ts",,
         "shapes/text-edit-shapes": "./src/clr-icons/shapes/text-edit-shapes.ts",
-        "shapes/text-edit-shapes.min": "./src/clr-icons/shapes/text-edit-shapes.ts"
+        "shapes/text-edit-shapes.min": "./src/clr-icons/shapes/text-edit-shapes.ts",
     },
     output: {
         path: path.resolve(__dirname, 'dist/clr-icons'),
         filename: '[name].js',
         libraryTarget: 'umd'
     },
+    target: "node",
     resolve: {
         modules: [
             "./node_modules"
@@ -51,8 +53,6 @@ module.exports = {
     devtool: 'source-map',
     plugins: [
         new UglifyJsPlugin({
-            minimize: true,
-            sourceMap: true,
             include: /\.min\.js$/,
         })
     ],
@@ -64,7 +64,7 @@ module.exports = {
                 loaders: [{
                     loader: 'awesome-typescript-loader',
                     options: {
-                        configFileName: 'tsconfig.icons.json'
+                        configFileName: 'src/clr-icons/tsconfig.icons.json'
                     }
                 }]
             }

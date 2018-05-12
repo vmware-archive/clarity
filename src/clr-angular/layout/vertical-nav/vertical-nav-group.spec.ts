@@ -119,7 +119,7 @@ export default function(): void {
         });
 
         describe("Nav Group Internals with clrIfExpanded", () => {
-            let navGroup: VerticalNavGroup;
+            let navGroup: ClrVerticalNavGroup;
 
             beforeEach(() => {
                 fixture = TestBed.createComponent(IfExpandedTestComponent);
@@ -205,14 +205,12 @@ export default function(): void {
 
         describe("View Basics", () => {
             let navGroup: ClrVerticalNavGroup;
-            let expandService: Expand;
 
             beforeEach(() => {
                 fixture = TestBed.createComponent(TemplateAPITestComponent);
                 fixture.detectChanges();
                 compiled = fixture.nativeElement;
                 navGroup = fixture.componentInstance.navGroup;
-                expandService = fixture.debugElement.query(By.directive(ClrVerticalNavGroup)).injector.get(Expand);
             });
 
             afterEach(() => {

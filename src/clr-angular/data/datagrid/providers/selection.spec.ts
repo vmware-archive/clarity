@@ -5,7 +5,7 @@
  */
 import {TrackByFunction} from "@angular/core";
 import {fakeAsync, tick} from "@angular/core/testing";
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 
 import {ClrDatagridFilterInterface} from "../interfaces/filter.interface";
 

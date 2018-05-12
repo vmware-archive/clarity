@@ -357,4 +357,5 @@ class SimpleTest {
         </clr-dg-column-toggle>
     `
 })
-class CustomButtonsTest {}
+class CustomButtonsTest {
+}

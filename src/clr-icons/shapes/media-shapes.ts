@@ -7,6 +7,11 @@ import {clrIconSVG} from "../utils/svg-tag-generator";
 
 // TODO: deprecate these imported shapes in 0.12
 // TODO: remove these imported shapes in 0.13
+interface Window {
+    ClarityIcons: any;
+}
+declare var window: Window;
+
 import {ClrShapeWand} from "./essential-shapes";
 
 /* tslint:disable:variable-name */

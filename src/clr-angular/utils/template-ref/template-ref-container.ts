@@ -12,4 +12,6 @@ import {Component, TemplateRef, ViewChild} from "@angular/core";
       </ng-template>
     `,
 })
-export class TemplateRefContainer { @ViewChild(TemplateRef) template: TemplateRef<any>; }
+export class TemplateRefContainer {
+    @ViewChild(TemplateRef) template: TemplateRef<any>;
+}

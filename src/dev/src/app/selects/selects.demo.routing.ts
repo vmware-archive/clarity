@@ -6,8 +6,18 @@
 import {ModuleWithProviders} from "@angular/core/src/metadata/ng_module";
 import {RouterModule, Routes} from "@angular/router";
 
+import {BasicNgSelectDemo} from "./basic-ng-select";
+import {SelectStaticDemo} from "./select-static";
 import {SelectsDemo} from "./selects.demo";
 
-const ROUTES: Routes = [{path: "", component: SelectsDemo}];
+const ROUTES: Routes = [{
+    path: "",
+    component: SelectsDemo,
+    children: [
+        {path: "", redirectTo: "select-static", pathMatch: "full"},
+        {path: "select-static", component: SelectStaticDemo},
+        {path: "basic-select", component: BasicNgSelectDemo},
+    ]
+}];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forChild(ROUTES);

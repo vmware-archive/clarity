@@ -11,10 +11,11 @@ import {ClrCheckboxNextModule} from "./checkbox/checkbox.module";
 import {ClrCommonFormsModule} from "./common/common.module";
 import {ClrDatepickerModule} from "./datepicker/datepicker.module";
 import {ClrRadioModule} from "./radio/radio.module";
+import {ClrSelectModule} from "./select/select.module";
 
 @NgModule({
     imports: [CommonModule],
-    exports: [ClrCommonFormsModule, ClrCheckboxNextModule, ClrRadioModule, ClrDatepickerModule]
+    exports: [ClrCommonFormsModule, ClrCheckboxNextModule, ClrRadioModule, ClrDatepickerModule, ClrSelectModule]
 })
 export class ClrFormsNextModule {
 }

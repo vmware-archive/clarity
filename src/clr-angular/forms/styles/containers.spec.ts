@@ -30,15 +30,15 @@ import {ClrIconModule} from "../../icon/icon.module";
             Basic checkbox</label>
         <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-checkbox-wrapper">
-                <input type="checkbox" name="checkbox1" id="{{layout}}-checkbox1" placeholder="Enter value here" class="clr-checkbox"> 
+                <input type="checkbox" name="checkbox1" id="{{layout}}-checkbox1" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox1" class="clr-control-label">
                     option 1
                 </label>
-                <input type="checkbox" name="checkbox2" id="{{layout}}-checkbox2" placeholder="Enter value here" class="clr-checkbox"> 
+                <input type="checkbox" name="checkbox2" id="{{layout}}-checkbox2" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox2" class="clr-control-label">
                     option 2
                 </label>
-                <input type="checkbox" name="checkbox3" id="{{layout}}-checkbox3" placeholder="Enter value here" class="clr-checkbox"> 
+                <input type="checkbox" name="checkbox3" id="{{layout}}-checkbox3" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox3" class="clr-control-label">
                     option 3
                 </label>
@@ -48,21 +48,21 @@ import {ClrIconModule} from "../../icon/icon.module";
             <span class="clr-subtext">Helper Text</span>
         </div>
     </div>
-    
+
     <div class="clr-form-control" [ngClass]="{row: grid}" id="checkbox-inline">
         <label class="clr-control-label" [ngClass]="{'col-xs-12': grid, 'col-md-2': grid && layout !== 'vertical'}">
             Inline checkbox</label>
         <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-checkbox-wrapper clr-checkbox-inline">
-                <input type="checkbox" name="checkbox7" id="{{layout}}-checkbox7" placeholder="Enter value here" class="clr-checkbox"> 
+                <input type="checkbox" name="checkbox7" id="{{layout}}-checkbox7" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox7" class="clr-control-label">
                     option 1
                 </label>
-                <input type="checkbox" name="checkbox8" id="{{layout}}-checkbox8" placeholder="Enter value here" class="clr-checkbox"> 
+                <input type="checkbox" name="checkbox8" id="{{layout}}-checkbox8" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox8" class="clr-control-label">
                     option 2
                 </label>
-                <input type="checkbox" name="checkbox9" id="{{layout}}-checkbox9" placeholder="Enter value here" class="clr-checkbox"> 
+                <input type="checkbox" name="checkbox9" id="{{layout}}-checkbox9" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox9" class="clr-control-label">
                     option 3
                 </label>
@@ -78,11 +78,11 @@ import {ClrIconModule} from "../../icon/icon.module";
             Basic radio</label>
         <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-radio-wrapper">
-                <input type="radio" name="radio1" id="{{layout}}-radio1" placeholder="Enter value here" class="clr-radio"> 
+                <input type="radio" name="radio1" id="{{layout}}-radio1" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio1" class="clr-control-label">option 1</label>
-                <input type="radio" name="radio1" id="{{layout}}-radio2" placeholder="Enter value here" class="clr-radio"> 
+                <input type="radio" name="radio1" id="{{layout}}-radio2" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio2" class="clr-control-label">option 2</label>
-                <input type="radio" name="radio1" id="{{layout}}-radio3" placeholder="Enter value here" class="clr-radio"> 
+                <input type="radio" name="radio1" id="{{layout}}-radio3" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio3" class="clr-control-label">option 3</label>
             </div>
             <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
@@ -96,11 +96,11 @@ import {ClrIconModule} from "../../icon/icon.module";
             Inline radio</label>
         <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-radio-wrapper clr-radio-inline">
-                <input type="radio" name="radio2" id="{{layout}}-radio4" placeholder="Enter value here" class="clr-radio"> 
+                <input type="radio" name="radio2" id="{{layout}}-radio4" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio4" class="clr-control-label">option 1</label>
-                <input type="radio" name="radio2" id="{{layout}}-radio5" placeholder="Enter value here" class="clr-radio"> 
+                <input type="radio" name="radio2" id="{{layout}}-radio5" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio5" class="clr-control-label">option 2</label>
-                <input type="radio" name="radio2" id="{{layout}}-radio6" placeholder="Enter value here" class="clr-radio"> 
+                <input type="radio" name="radio2" id="{{layout}}-radio6" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio6" class="clr-control-label">option 3</label>
             </div>
             <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
@@ -281,11 +281,15 @@ describe("Form layouts", () => {
         });
 
         describe("textarea", () => {
+            let textarea;
+            beforeEach(() => {
+                textarea = height("#textarea textarea");
+            });
             // @TODO Figure out why IE can't calculate things normally
-            itIgnore(["ie"], "control height", () => verifyHeight("#textarea", base * 30));
+            itIgnore(["ie"], "control height", () => verifyHeight("#textarea", textarea + base * 7, false));
             it("label height", () => verifyHeight("#textarea .clr-control-label", base * 3));
-            itIgnore(["ie"], "wrapper height", () => verifyHeight("#textarea .clr-textarea-wrapper", base * 23));
-            itIgnore(["ie"], "textarea height", () => verifyHeight("#textarea .clr-textarea", base * 23));
+            itIgnore(["ie"], "wrapper height", () => verifyHeight("#textarea .clr-textarea-wrapper", textarea, false));
+            itIgnore(["ie"], "textarea height", () => verifyHeight("#textarea .clr-textarea", textarea, false));
             it("subtext height", () => verifyHeight("#textarea .clr-subtext", base * 2));
         });
 
@@ -385,11 +389,15 @@ describe("Form layouts", () => {
         });
 
         describe("textarea", () => {
-            // @TODO Figure out IE calculations
-            itIgnore(["ie"], "control height", () => verifyHeight("#textarea", base * 27));
+            let textarea;
+            beforeEach(() => {
+                textarea = height("#textarea textarea");
+            });
+            // @TODO Figure out why IE can't calculate things normally
+            itIgnore(["ie"], "control height", () => verifyHeight("#textarea", textarea + base * 4, false));
             it("label height", () => verifyHeight("#textarea .clr-control-label", base * 3));
-            itIgnore(["ie"], "wrapper height", () => verifyHeight("#textarea .clr-textarea-wrapper", base * 23));
-            itIgnore(["ie"], "textarea height", () => verifyHeight("#textarea .clr-textarea", base * 23));
+            itIgnore(["ie"], "wrapper height", () => verifyHeight("#textarea .clr-textarea-wrapper", textarea, false));
+            itIgnore(["ie"], "textarea height", () => verifyHeight("#textarea .clr-textarea", textarea, false));
             it("subtext height", () => verifyHeight("#textarea .clr-subtext", base * 2));
         });
 
@@ -487,12 +495,16 @@ describe("Form layouts", () => {
         });
 
         describe("textarea", () => {
-            // @TODO Figure out why IE calculates differently
-            itIgnore(["ie"], "control height", () => verifyHeight("#textarea", base * 23));
+            let textarea;
+            beforeEach(() => {
+                textarea = height("#textarea textarea");
+            });
+            // @TODO Figure out why IE can't calculate things normally
+            itIgnore(["ie"], "control height", () => verifyHeight("#textarea", textarea, false));
             it("label height", () => verifyHeight("#textarea .clr-control-label", base * 3));
-            itIgnore(["ie"], "wrapper height", () => verifyHeight("#textarea .clr-textarea-wrapper", base * 23));
-            itIgnore(["ie"], "textarea height", () => verifyHeight("#textarea .clr-textarea", base * 23));
-            itIgnore(["ie"], "subtext height", () => verifyHeight("#textarea .clr-subtext", base * 22));
+            itIgnore(["ie"], "wrapper height", () => verifyHeight("#textarea .clr-textarea-wrapper", textarea, false));
+            itIgnore(["ie"], "textarea height", () => verifyHeight("#textarea .clr-textarea", textarea, false));
+            it("subtext height", () => verifyHeight("#textarea .clr-subtext", textarea - base, false));
         });
 
         describe("select", () => {

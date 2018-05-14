@@ -155,7 +155,7 @@ module.exports = function(karma) {
 
     // We'll use saucelabs for testing if and only if the access key is set in ENV, and CI flag is set.
     // We'll modify the config as necessary.
-    if (process.env.SAUCE_ACCESS_KEY && process.env.TRAVIS) {
+    if (process.env.SAUCE_ACCESS_KEY && process.env.TRAVIS === "true") {
         config.reporters.push("saucelabs");
         config.browsers = [
             "chrome_latest_win_10",
@@ -168,6 +168,7 @@ module.exports = function(karma) {
         config.sauceLabs = {
             testName: "Unit Tests",
             startConnect: true,
+            extendedDebugging: true,
             // If you need to debug, here are some options
             // connectOptions: {
             //     verbose: true,

@@ -8,8 +8,10 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 
 import {ClrDatepickerModule} from "../forms/datepicker/datepicker.module";
+import {ClrSelectModule} from "../forms/select/select.module";
+
 import {ClrCheckboxModule} from "./checkbox/checkbox.module";
 
-@NgModule({imports: [CommonModule], exports: [ClrCheckboxModule, ClrDatepickerModule]})
+@NgModule({imports: [CommonModule], exports: [ClrCheckboxModule, ClrDatepickerModule, ClrSelectModule]})
 export class ClrFormsModule {
 }

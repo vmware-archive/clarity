@@ -2,6 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import "./_menu-mixins.clarity.scss";
+
 %dropdown-content {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -66,21 +68,7 @@
     }
 
     .dropdown-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        margin-top: 0.083333rem;
-        display: flex;
-        flex-direction: column;
-        background: $clr-dropdown-bg-color;
-        padding: 0.5rem 0;
-        border: $clr-default-borderwidth solid $clr-dropdown-border-color;
-        box-shadow: 0 $clr-default-borderwidth 0.125rem $clr-dropdown-box-shadow;
-        min-width: 5rem;
-        max-width: 15rem;
-        border-radius: $clr-global-borderradius;
-        visibility: hidden;
-        z-index: map-get($clr-layers, dropdown-menu);
+        @include generate-dropdown-menu();
 
         .dropdown-header {
             @include clr-getTypePropertiesForDomElement(dropdown_header, (font-size, font-weight, letter-spacing));

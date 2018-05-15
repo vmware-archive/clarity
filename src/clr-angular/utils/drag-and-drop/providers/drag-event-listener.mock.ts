@@ -7,8 +7,12 @@ import {Subject} from "rxjs/Subject";
 import {ClrDragEventListener} from "./drag-event-listener";
 
 export class MockDragEventListener {
+    public draggableEl: Node;
     public dragStarted: Subject<any> = new Subject<any>();
     public dragEnded: Subject<any> = new Subject<any>();
+    public attachDragListeners(draggableEl: Node) {
+        this.draggableEl = draggableEl;
+    }
 }
 
 export const MOCK_DRAG_EVENT_LISTENER_PROVIDER = {

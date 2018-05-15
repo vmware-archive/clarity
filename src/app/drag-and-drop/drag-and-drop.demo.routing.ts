@@ -7,6 +7,8 @@ import {ModuleWithProviders} from "@angular/core/src/metadata/ng_module";
 import {RouterModule, Routes} from "@angular/router";
 
 import {BasicDraggableDemo} from "./basic-draggable.demo";
+import {CustomGhostAndHandleDemo} from "./custom-ghost-and-handle.demo";
+import {CustomGhostDemo} from "./custom-ghost.demo";
 import {DragAndDropDemo} from "./drag-and-drop.demo";
 import {DraggableHandleDemo} from "./draggable-handle.demo";
 
@@ -15,7 +17,8 @@ const ROUTES: Routes = [{
     component: DragAndDropDemo,
     children: [
         {path: "", redirectTo: "draggable", pathMatch: "full"}, {path: "draggable", component: BasicDraggableDemo},
-        {path: "draggable-handle", component: DraggableHandleDemo}
+        {path: "draggable-handle", component: DraggableHandleDemo}, {path: "custom-ghost", component: CustomGhostDemo},
+        {path: "custom-ghost-and-handle", component: CustomGhostAndHandleDemo}
     ]
 }];
 

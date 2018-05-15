@@ -17,6 +17,7 @@ export class MockDragEventListener {
     private listeners: (() => void)[];
     public draggableEl: Node;
     public dragStarted: Subject<any> = new Subject<any>();
+    public dragMoved: Subject<any> = new Subject<any>();
     public dragEnded: Subject<any> = new Subject<any>();
 
     public attachDragListeners(draggableEl: Node) {

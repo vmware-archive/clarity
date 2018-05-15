@@ -4,7 +4,6 @@
   ],
   "rules": {
     "class-name": true,
-    "curly": true,
     "defocus": true,
     "file-header": [true, "Copyright \\(c\\) 20[0-9]{2}(-20[0-9]{2})? VMware, Inc\\."],
     "forin": true,
@@ -41,9 +40,7 @@
     "no-var-requires": true,
     "prefer-const": true,
     "prefer-for-of": true,
-    "quotemark": false,
     "radix": true,
-    "semicolon": [true, "always"],
     "switch-default": true,
     "triple-equals": [
       true,
@@ -55,5 +52,8 @@
       "allow-leading-underscore",
       "ban-keywords"
     ]
-  }
+  },
+  "extends": [
+    "tslint-config-prettier"
+  ]
 }

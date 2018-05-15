@@ -42,4 +42,8 @@ before_script:
   - npm install -g gemini@5.2.0 html-reporter@2.0.1
 
 script:
-  - npm run $TEST_SUITE # run unit test and css regression test sets in parallel
+  - echo $TRAVIS_PULL_REQUEST
+  - echo $TRAVIS_PULL_REQUEST_SHA
+  - echo $(git merge-base HEAD $TRAVIS_BRANCH)
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then precise-commits --check-only --head=$TRAVIS_PULL_REQUEST_SHA --base=$(git merge-base HEAD $TRAVIS_BRANCH); fi'
+#  - npm run $TEST_SUITE # run unit test and css regression test sets in parallel

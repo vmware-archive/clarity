@@ -11,6 +11,7 @@ import {TestContext} from "../../data/datagrid/helpers.spec";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 
 import {ClrDatepickerViewManager} from "./datepicker-view-manager";
+import {DateFormControlService} from "./providers/date-form-control.service";
 import {DateIOService} from "./providers/date-io.service";
 import {DateNavigationService} from "./providers/date-navigation.service";
 import {DatepickerFocusService} from "./providers/datepicker-focus.service";
@@ -25,7 +26,7 @@ export default function() {
         beforeEach(function() {
             context = this.create(ClrDatepickerViewManager, TestComponent, [
                 ViewManagerService, DatepickerFocusService, IfOpenService, DateNavigationService, LocaleHelperService,
-                DateIOService
+                DateIOService, DateFormControlService
             ]);
             viewManagerService = context.getClarityProvider(ViewManagerService);
         });

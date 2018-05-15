@@ -13,6 +13,7 @@ import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {ClrDay} from "./day";
 import {DayViewModel} from "./model/day-view.model";
 import {DayModel} from "./model/day.model";
+import {DateFormControlService} from "./providers/date-form-control.service";
 import {DateIOService} from "./providers/date-io.service";
 import {DateNavigationService} from "./providers/date-navigation.service";
 import {LocaleHelperService} from "./providers/locale-helper.service";
@@ -22,8 +23,9 @@ export default function() {
         let context: TestContext<ClrDay, TestComponent>;
 
         beforeEach(function() {
-            context = this.create(ClrDay, TestComponent,
-                                  [LocaleHelperService, DateNavigationService, DateIOService, IfOpenService]);
+            context = this.create(
+                ClrDay, TestComponent,
+                [LocaleHelperService, DateNavigationService, DateIOService, IfOpenService, DateFormControlService]);
         });
 
         describe("View Basics", function() {
@@ -193,6 +195,16 @@ export default function() {
                 expect(dateNavigationService.focusedDay.date).toBe(testDayView.dayModel.date);
                 expect(dateNavigationService.focusedDay.month).toBe(testDayView.dayModel.month);
                 expect(dateNavigationService.focusedDay.year).toBe(testDayView.dayModel.year);
+            });
+
+            it("marks the date control as dirty when a date is selected", () => {
+                const dateFormControlService: DateFormControlService =
+                    context.getClarityProvider(DateFormControlService);
+                spyOn(dateFormControlService, "markAsDirty");
+
+                context.clarityDirective.selectDay();
+
+                expect(dateFormControlService.markAsDirty).toHaveBeenCalled();
             });
         });
     });

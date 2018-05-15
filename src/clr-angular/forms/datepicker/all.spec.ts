@@ -17,6 +17,7 @@ import CalendarModelSpecs from "./model/calendar.model.spec";
 import DayModelSpecs from "./model/day.model.spec";
 import YearRangeModelSpecs from "./model/year-range.model.spec";
 import MonthpickerSpecs from "./monthpicker.spec";
+import DateFormControlServiceSpecs from "./providers/date-form-control.service.spec";
 import DateIOServiceSpecs from "./providers/date-io.service.spec";
 import DateNavigationServiceSpecs from "./providers/date-navigation.service.spec";
 import DatepickerEnabledServiceSpecs from "./providers/datepicker-enabled.service.spec";
@@ -42,6 +43,7 @@ describe("Datepicker", function() {
         DateIOServiceSpecs();
         DateNavigationServiceSpecs();
         DatepickerEnabledServiceSpecs();
+        DateFormControlServiceSpecs();
     });
 
     describe("Components", function() {

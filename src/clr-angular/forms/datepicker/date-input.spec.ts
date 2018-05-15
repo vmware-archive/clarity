@@ -6,10 +6,10 @@
 
 import {Component, DebugElement, ViewChild} from "@angular/core";
 import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
-import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule} from "@angular/forms";
 import {By} from "@angular/platform-browser";
-import {itIgnore} from "../../../../tests/tests.helpers";
 
+import {itIgnore} from "../../../../tests/tests.helpers";
 import {TestContext} from "../../data/datagrid/helpers.spec";
 import {ClrFormsModule} from "../../forms-deprecated";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
@@ -18,6 +18,7 @@ import {FormControlService} from "../common/form-control.service";
 import {ClrDateContainer} from "./date-container";
 import {ClrDateInput} from "./date-input";
 import {DayModel} from "./model/day.model";
+import {DateFormControlService} from "./providers/date-form-control.service";
 import {DateIOService} from "./providers/date-io.service";
 import {DateNavigationService} from "./providers/date-navigation.service";
 import {DatepickerEnabledService} from "./providers/datepicker-enabled.service";
@@ -30,6 +31,7 @@ export default function() {
         let enabledService: MockDatepickerEnabledService;
         let dateIOService: DateIOService;
         let dateNavigationService: DateNavigationService;
+        let dateFormControlService: DateFormControlService;
 
         describe("Basics", () => {
             beforeEach(function() {
@@ -37,7 +39,8 @@ export default function() {
                     set: {
                         providers: [
                             {provide: DatepickerEnabledService, useClass: MockDatepickerEnabledService}, IfOpenService,
-                            DateNavigationService, LocaleHelperService, DateIOService, FormControlService
+                            DateNavigationService, LocaleHelperService, DateIOService, FormControlService,
+                            DateFormControlService
                         ]
                     }
                 });
@@ -212,10 +215,11 @@ export default function() {
                 dateContainerDebugElement = fixture.debugElement.query(By.directive(ClrDateContainer));
                 dateInputDebugElement = fixture.debugElement.query(By.directive(ClrDateInput));
                 dateNavigationService = dateContainerDebugElement.injector.get(DateNavigationService);
+                dateFormControlService = dateContainerDebugElement.injector.get(DateFormControlService);
             });
 
             it("initializes the input and the selected day with the value set by the user", () => {
-                expect(fixture.componentInstance.date.value).not.toBeNull();
+                expect(fixture.componentInstance.testForm.get("date").value).not.toBeNull();
 
                 expect(dateInputDebugElement.nativeElement.value).toBe(fixture.componentInstance.dateInput);
                 expect(dateNavigationService.selectedDay.year).toBe(2015);
@@ -224,12 +228,71 @@ export default function() {
             });
 
             it("updates the input and the selected day when the value is updated by the user", () => {
-                fixture.componentInstance.date.setValue("05/05/2018");
+                fixture.componentInstance.testForm.setValue({date: "05/05/2018"});
 
                 expect(dateInputDebugElement.nativeElement.value).toBe("05/05/2018");
                 expect(dateNavigationService.selectedDay.year).toBe(2018);
                 expect(dateNavigationService.selectedDay.month).toBe(4);
                 expect(dateNavigationService.selectedDay.date).toBe(5);
+            });
+
+            it("marks the form as touched when the markAsTouched event is received", () => {
+                const date = fixture.componentInstance.testForm.get("date");
+                expect(date.touched).toBe(false);
+
+                dateFormControlService.markAsTouched();
+
+                expect(date.touched).toBe(true);
+            });
+
+            it("marks the form as dirty when the markAsDirty event is received", () => {
+                const date = fixture.componentInstance.testForm.get("date");
+                expect(date.dirty).toBe(false);
+
+                dateFormControlService.markAsDirty();
+
+                expect(date.dirty).toBe(true);
+            });
+        });
+
+        describe("Datepicker with Template Driven Forms", () => {
+            let fixture: ComponentFixture<TestComponentWithTemplateDrivenForms>;
+            let dateContainerDebugElement: DebugElement;
+
+            beforeEach(function() {
+                TestBed.configureTestingModule(
+                    {imports: [FormsModule, ClrFormsModule], declarations: [TestComponentWithTemplateDrivenForms]});
+                fixture = TestBed.createComponent(TestComponentWithTemplateDrivenForms);
+                fixture.detectChanges();
+
+                dateContainerDebugElement = fixture.debugElement.query(By.directive(ClrDateContainer));
+                dateFormControlService = dateContainerDebugElement.injector.get(DateFormControlService);
+            });
+
+            it("marks the form as touched when the markAsTouched event is received", (done) => {
+                fixture.whenStable().then(() => {
+                    const form = fixture.componentInstance.templateForm.form;
+                    expect(form.get("date").touched).toBe(false);
+
+                    dateFormControlService.markAsTouched();
+
+                    fixture.detectChanges();
+                    expect(form.get("date").touched).toBe(true);
+                    done();
+                });
+            });
+
+            it("marks the form as dirty when the markAsDirty event is received", (done) => {
+                fixture.whenStable().then(() => {
+                    const form = fixture.componentInstance.templateForm.form;
+                    expect(form.get("date").dirty).toBe(false);
+
+                    dateFormControlService.markAsDirty();
+
+                    fixture.detectChanges();
+                    expect(form.get("date").dirty).toBe(true);
+                    done();
+                });
             });
         });
 
@@ -335,10 +398,25 @@ class TestComponentWithClrDate {
 
 @Component({
     template: `
-        <input id="dateControl" type="date" clrDate [formControl]="date">
+        <form [formGroup]="testForm">
+            <input id="dateControl" type="date" clrDate formControlName="date">
+        </form>
     `
 })
 class TestComponentWithReactiveForms {
     dateInput: string = "01/01/2015";
-    date: FormControl = new FormControl(this.dateInput);
+    testForm = new FormGroup({date: new FormControl(this.dateInput)});
+}
+
+@Component({
+    template: `
+        <form #templateForm="ngForm">
+            <input type="date" clrDate [(ngModel)]="dateInput" name="date">
+        </form>
+        {{templateForm.touched}}
+    `
+})
+class TestComponentWithTemplateDrivenForms {
+    @ViewChild("templateForm") templateForm: NgForm;
+    dateInput: string = "01/01/2015";
 }

@@ -6,23 +6,9 @@
   -->
 
 <h4>Loading Buttons</h4>
-<button [clrLoading]="validateLoading" class="btn btn-info-outline" (click)="validateDemo()">Validate</button>
-<button [clrLoading]="submitLoading" type="submit" class="btn btn-success-outline" (click)="submitDemo()">Submit</button>
-
-<pre>
-    <code clr-code-highlight="language-html">
-    &lt;button [clrLoading]=&quot;validateLoading&quot; class=&quot;btn btn-info-outline&quot;&gt;Validate&lt;/button&gt;
-    &lt;button [clrLoading]=&quot;submitLoading&quot; type=&quot;submit&quot; class=&quot;btn btn-success-outline&quot;&gt;Success&lt;/button&gt;
-    </code>
-</pre>
+<button [clrLoading]="validateState" class="btn btn-primary" (click)="validateDemo()">Validate</button>
+<button [clrLoading]="submitState" type="submit" class="btn btn-success-outline" (click)="submitDemo()">Submit</button>
 
 <h4>Small Loading Buttons</h4>
-<button [clrLoading]="validateSmLoading" class="btn btn-sm btn-info-outline" (click)="validateSmDemo()">Validate</button>
-<button [clrLoading]="submitSmLoading" type="submit" class="btn btn-sm btn-success-outline" (click)="submitSmDemo()">Submit</button>
-
-<pre>
-    <code clr-code-highlight="language-html">
-    &lt;button [clrLoading]=&quot;validateSmLoading&quot; class=&quot;btn btn-sm btn-info-outline&quot;&gt;Validate&lt;/button&gt;
-    &lt;button [clrLoading]=&quot;submitSmLoading&quot; type=&quot;submit&quot; class=&quot;btn btn-sm btn-success-outline&quot;&gt;Success&lt;/button&gt;
-    </code>
-</pre>
+<button [clrLoading]="validateSmState" class="btn btn-sm btn-info-outline" (click)="validateSmDemo()">Validate</button>
+<button [clrLoading]="submitSmState" type="submit" class="btn btn-sm btn-success-outline" (click)="submitSmDemo()">Submit</button>

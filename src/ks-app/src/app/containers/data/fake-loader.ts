@@ -17,10 +17,10 @@ export class FakeLoader implements OnInit {
 
     ngOnInit() {
         if (this.fake) {
-            this.loading.loading = true;
+            this.loading.loadingState = true;
             setTimeout(() => {
                 this.load();
-                this.loading.loading = false;
+                this.loading.loadingState = false;
             }, LATENCY);
         } else {
             this.load();

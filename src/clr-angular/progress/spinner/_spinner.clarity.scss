@@ -39,6 +39,11 @@
             // TODO: get ux input on direction here
             background: generateSpinnerIcon($clr-white);
         }
+
+        &.spinner-check {
+            animation: none;
+            background: generateCheckIcon($clr-spinner-color);
+        }
     }
 
     //Spinners inside of small buttons

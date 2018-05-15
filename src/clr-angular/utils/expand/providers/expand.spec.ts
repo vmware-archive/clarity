@@ -3,6 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import {ClrLoadingState} from "../../loading";
+
 import {Expand} from "./expand";
 
 export default function(): void {
@@ -19,9 +21,9 @@ export default function(): void {
         });
 
         it("implements LoadingListener", function() {
-            this.expand.startLoading();
+            this.expand.loadingStateChange(ClrLoadingState.LOADING);
             expect(this.expand.loading).toBe(true);
-            this.expand.doneLoading();
+            this.expand.loadingStateChange(ClrLoadingState.DEFAULT);
             expect(this.expand.loading).toBe(false);
         });
 
@@ -36,10 +38,10 @@ export default function(): void {
         it("re-triggers animation when done loading", function() {
             let animates = 0;
             this.expand.animate.subscribe(() => animates++);
-            this.expand.startLoading();
+            this.expand.loadingStateChange(ClrLoadingState.LOADING);
             this.expand.expanded = true;
             expect(animates).toBe(1);
-            this.expand.doneLoading();
+            this.expand.loadingStateChange(ClrLoadingState.DEFAULT);
             expect(animates).toBe(2);
         });
     });

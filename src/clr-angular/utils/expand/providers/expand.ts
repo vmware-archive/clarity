@@ -7,6 +7,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Subject} from "rxjs";
 import {LoadingListener} from "../../../utils/loading/loading-listener";
+import {ClrLoadingState} from "../../loading";
 
 @Injectable()
 export class Expand implements LoadingListener {
@@ -52,13 +53,15 @@ export class Expand implements LoadingListener {
         return this._expandChange.asObservable();
     }
 
-
-    startLoading(): void {
-        this.loading = true;
-    }
-
-    doneLoading(): void {
-        this.loading = false;
-        this._animate.next();
+    loadingStateChange(state: ClrLoadingState): void {
+        switch (state) {
+            case ClrLoadingState.LOADING:
+                this.loading = true;
+                break;
+            default:
+                this.loading = false;
+                this._animate.next();
+                break;
+        }
     }
 }

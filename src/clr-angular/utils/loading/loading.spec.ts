@@ -6,7 +6,7 @@
 import {Component, Injectable, ViewChild} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
 
-import {ClrLoading} from "./loading";
+import {ClrLoading, ClrLoadingState} from "./loading";
 import {LoadingListener} from "./loading-listener";
 
 describe("Loading directive", function() {
@@ -35,18 +35,17 @@ describe("Loading directive", function() {
     });
 
     it("ignores successive inputs with the same value", function() {
-        spyOn(this.listener, "startLoading");
-        spyOn(this.listener, "doneLoading");
+        spyOn(this.listener, "loadingStateChange");
         this.testComponent.loading = false;
         this.fixture.detectChanges();
-        this.testComponent.loading = null;
+        this.testComponent.loading = false;
         this.fixture.detectChanges();
-        expect(this.listener.doneLoading).toHaveBeenCalledTimes(0);
+        expect(this.listener.loadingStateChange).toHaveBeenCalledTimes(0);
         this.testComponent.loading = true;
         this.fixture.detectChanges();
-        this.testComponent.loading = 42;
+        this.testComponent.loading = true;
         this.fixture.detectChanges();
-        expect(this.listener.startLoading).toHaveBeenCalledTimes(1);
+        expect(this.listener.loadingStateChange).toHaveBeenCalledTimes(1);
     });
 
     it("stops loading when destroyed", function() {
@@ -72,11 +71,7 @@ class FullTest {
 class DummyListener implements LoadingListener {
     public loading = false;
 
-    startLoading(): void {
-        this.loading = true;
-    }
-
-    doneLoading(): void {
-        this.loading = false;
+    loadingStateChange(state: ClrLoadingState): void {
+        this.loading = state === ClrLoadingState.LOADING;
     }
 }

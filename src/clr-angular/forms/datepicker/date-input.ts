@@ -30,6 +30,7 @@ import {WrappedFormControl} from "../common/wrapped-form-control";
 
 import {ClrDateContainer} from "./date-container";
 import {DayModel} from "./model/day.model";
+import {DateFormControlService} from "./providers/date-form-control.service";
 import {DateIOService} from "./providers/date-io.service";
 import {DateNavigationService} from "./providers/date-navigation.service";
 import {DatepickerEnabledService} from "./providers/datepicker-enabled.service";
@@ -46,6 +47,7 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
                 @Optional() private _dateIOService: DateIOService,
                 @Optional() private _dateNavigationService: DateNavigationService,
                 @Optional() private _datepickerEnabledService: DatepickerEnabledService,
+                @Optional() private dateFormControlService: DateFormControlService,
                 @Inject(PLATFORM_ID) private platformId: Object) {
         super(ClrDateContainer, vcr);
     }
@@ -117,6 +119,7 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
         this._dateIOService = this.getProviderFromContainer(DateIOService);
         this._dateNavigationService = this.getProviderFromContainer(DateNavigationService);
         this._datepickerEnabledService = this.getProviderFromContainer(DatepickerEnabledService);
+        this.dateFormControlService = this.getProviderFromContainer(DateFormControlService);
     }
 
     /**
@@ -254,6 +257,20 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
                     }
                 }));
             }
+        }
+
+        if (this.dateFormControlService) {
+            this._subscriptions.push(this.dateFormControlService.touchedChange.subscribe(() => {
+                if (this._ngControl) {
+                    this._ngControl.control.markAsTouched();
+                }
+            }));
+
+            this._subscriptions.push(this.dateFormControlService.dirtyChange.subscribe(() => {
+                if (this._ngControl) {
+                    this._ngControl.control.markAsDirty();
+                }
+            }));
         }
     }
 }

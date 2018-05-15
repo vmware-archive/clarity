@@ -11,6 +11,7 @@ import {IfOpenService} from "../../utils/conditional/if-open.service";
 
 import {DayViewModel} from "./model/day-view.model";
 import {DayModel} from "./model/day.model";
+import {DateFormControlService} from "./providers/date-form-control.service";
 import {DateNavigationService} from "./providers/date-navigation.service";
 
 @Component({
@@ -31,7 +32,8 @@ import {DateNavigationService} from "./providers/date-navigation.service";
     host: {"[class.day]": "true"}
 })
 export class ClrDay {
-    constructor(private _dateNavigationService: DateNavigationService, private _ifOpenService: IfOpenService) {}
+    constructor(private _dateNavigationService: DateNavigationService, private _ifOpenService: IfOpenService,
+                private dateFormControlService: DateFormControlService) {}
 
     /**
      * DayViewModel input which is used to build the Day View.
@@ -51,6 +53,7 @@ export class ClrDay {
     selectDay(): void {
         const day: DayModel = this.dayView.dayModel;
         this._dateNavigationService.notifySelectedDayChanged(day);
+        this.dateFormControlService.markAsDirty();
         this._ifOpenService.open = false;
     }
 }

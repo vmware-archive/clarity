@@ -12,6 +12,7 @@ import {Component} from "@angular/core";
     templateUrl: "./datepicker-in-template-driven-forms.html"
 })
 export class DatepickerInTemplateDrivenFormsDemo {
+    name: string = "Jane";
     date1: string = "01/02/2015";
     date2: string = "";
 

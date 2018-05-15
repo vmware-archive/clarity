@@ -5,8 +5,10 @@
  */
 
 import {Component, ViewChild} from "@angular/core";
-import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
+import {ClrLoadingState} from "../../utils/loading";
 import {ClrLoadingModule} from "../../utils/loading/loading.module";
 
 import {ClrLoadingButton} from "./loading-button";
@@ -16,8 +18,10 @@ describe("Loading Buttons", () => {
     let fixture: ComponentFixture<TestLoadingButtonComponent>;
 
     beforeEach(() => {
-        TestBed.configureTestingModule(
-            {imports: [ClrLoadingModule, ClrLoadingButtonModule], declarations: [TestLoadingButtonComponent]});
+        TestBed.configureTestingModule({
+            imports: [ClrLoadingModule, ClrLoadingButtonModule, NoopAnimationsModule],
+            declarations: [TestLoadingButtonComponent]
+        });
 
         fixture = TestBed.createComponent(TestLoadingButtonComponent);
 
@@ -28,24 +32,24 @@ describe("Loading Buttons", () => {
         fixture.destroy();
     });
 
-    it("implements LoadingListener", () => {
-        const instance: ClrLoadingButton = fixture.componentInstance.loadingButtonInstance;
-
-        instance.startLoading();
-        expect(instance.loading).toBe(true);
-
-        instance.doneLoading();
-        expect(instance.loading).toBe(false);
-    });
-
-    it("displays spinner when [clrLoading] value is true", () => {
-        fixture.componentInstance.flag = true;
+    it("displays spinner when [(clrButtonState)] value is LOADING", () => {
+        fixture.componentInstance.buttonState = ClrLoadingState.LOADING;
         fixture.detectChanges();
         expect(fixture.nativeElement.querySelector(".spinner")).toBeTruthy();
     });
 
-    it("hides spinner when [clrLoading] value is false", () => {
-        fixture.componentInstance.flag = false;
+    it("sets the state back to DEFAULT when [(clrButtonState)] value is VALIDATED", fakeAsync(() => {
+           fixture.componentInstance.buttonState = ClrLoadingState.SUCCESS;
+           fixture.detectChanges();
+           expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.SUCCESS);
+
+           tick(2000);
+           fixture.detectChanges();
+           expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.DEFAULT);
+       }));
+
+    it("hides spinner when [(clrButtonState)] value is DEFAULT", () => {
+        fixture.componentInstance.buttonState = ClrLoadingState.DEFAULT;
         fixture.detectChanges();
         expect(fixture.nativeElement.querySelector(".spinner")).toBeFalsy();
     });
@@ -53,11 +57,11 @@ describe("Loading Buttons", () => {
 
 @Component({
     template: `
-        <button [clrLoading]="flag" id="testBtn">Test 1</button>
+        <button [(clrLoading)]="buttonState" id="testBtn">Test 1</button>
     `
 })
 class TestLoadingButtonComponent {
     @ViewChild(ClrLoadingButton) loadingButtonInstance: ClrLoadingButton;
 
-    flag: boolean = false;
+    buttonState: ClrLoadingState = ClrLoadingState.DEFAULT;
 }

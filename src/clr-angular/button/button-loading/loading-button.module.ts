@@ -7,16 +7,12 @@
 import {CommonModule} from "@angular/common";
 import {NgModule, Type} from "@angular/core";
 
-import {ClrLoadingModule} from "../../utils/loading/loading.module";
 import {ClrLoadingButton} from "./loading-button";
 
 export const CLR_LOADING_BUTTON_DIRECTIVES: Type<any>[] = [ClrLoadingButton];
 
-@NgModule({
-    imports: [CommonModule, ClrLoadingModule],
-    declarations: [CLR_LOADING_BUTTON_DIRECTIVES],
-    exports: [CLR_LOADING_BUTTON_DIRECTIVES, ClrLoadingModule]
-})
+@NgModule(
+    {imports: [CommonModule], declarations: [CLR_LOADING_BUTTON_DIRECTIVES], exports: [CLR_LOADING_BUTTON_DIRECTIVES]})
 export class ClrLoadingButtonModule {
 }
 

@@ -7,7 +7,7 @@
 import {Component, DebugElement, ViewChild} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import {ClrLoadingModule} from "../../utils/loading";
+import {ClrLoadingModule, ClrLoadingState} from "../../utils/loading";
 import {ButtonInGroupService} from "../providers/button-in-group.service";
 
 import {ClrButton} from "./button";
@@ -151,14 +151,13 @@ export default function(): void {
             });
 
             it("implements LoadingListener", () => {
-                expect(componentInstance.button1.startLoading).toBeDefined();
-                expect(componentInstance.button1.doneLoading).toBeDefined();
+                expect(componentInstance.button1.loadingStateChange).toBeDefined();
             });
 
             it("sets loading to true on start loading", () => {
                 expect(componentInstance.button1.loading).toBeUndefined();
 
-                componentInstance.button1.startLoading();
+                componentInstance.button1.loadingStateChange(ClrLoadingState.LOADING);
 
                 expect(componentInstance.button1.loading).toBe(true);
             });
@@ -166,7 +165,7 @@ export default function(): void {
             it("sets loading to false on done loading", () => {
                 expect(componentInstance.button1.loading).toBeUndefined();
 
-                componentInstance.button1.doneLoading();
+                componentInstance.button1.loadingStateChange(ClrLoadingState.DEFAULT);
 
                 expect(componentInstance.button1.loading).toBe(false);
             });

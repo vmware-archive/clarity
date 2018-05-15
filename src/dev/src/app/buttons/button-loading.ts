@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
+import {ClrLoadingState} from "@clr/angular";
 
 @Component({
     selector: "clr-buttons-demo-button-loading",
@@ -11,28 +12,36 @@ import {Component} from "@angular/core";
     styleUrls: ["./buttons.demo.scss"]
 })
 export class ButtonLoadingDemo {
-    private validateLoading: boolean = false;
-    private submitLoading: boolean = false;
-    private validateSmLoading: boolean = false;
-    private submitSmLoading: boolean = false;
+    public validateState: ClrLoadingState = ClrLoadingState.DEFAULT;
+    public submitState: ClrLoadingState = ClrLoadingState.DEFAULT;
+    public validateSmState: boolean = false;
+    public submitSmState: ClrLoadingState = ClrLoadingState.DEFAULT;
 
     validateDemo() {
-        this.validateLoading = true;
-        setTimeout(() => this.validateLoading = false, 1500);
+        this.validateState = ClrLoadingState.LOADING;
+        setTimeout(() => {
+            this.validateState = ClrLoadingState.SUCCESS;
+        }, 1500);
     }
 
     submitDemo() {
-        this.submitLoading = true;
-        setTimeout(() => this.submitLoading = false, 1500);
+        this.submitState = ClrLoadingState.LOADING;
+        setTimeout(() => {
+            this.submitState = ClrLoadingState.DEFAULT;
+        }, 1500);
     }
 
     validateSmDemo() {
-        this.validateSmLoading = true;
-        setTimeout(() => this.validateSmLoading = false, 1500);
+        this.validateSmState = true;
+        setTimeout(() => {
+            this.validateSmState = false;
+        }, 1500);
     }
 
     submitSmDemo() {
-        this.submitSmLoading = true;
-        setTimeout(() => this.submitSmLoading = false, 1500);
+        this.submitSmState = ClrLoadingState.LOADING;
+        setTimeout(() => {
+            this.submitSmState = ClrLoadingState.DEFAULT;
+        }, 1500);
     }
 }

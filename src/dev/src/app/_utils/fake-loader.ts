@@ -5,7 +5,7 @@
  */
 import {Directive, Input, OnInit, TemplateRef, ViewContainerRef} from "@angular/core";
 
-import {ClrLoading} from "@clr/angular";
+import {ClrLoading, ClrLoadingState} from "@clr/angular";
 
 const LATENCY = 2000;
 
@@ -17,10 +17,10 @@ export class FakeLoader implements OnInit {
 
     ngOnInit() {
         if (this.fake) {
-            this.loading.loading = true;
+            this.loading.loadingState = ClrLoadingState.LOADING;
             setTimeout(() => {
                 this.load();
-                this.loading.loading = false;
+                this.loading.loadingState = ClrLoadingState.DEFAULT;
             }, LATENCY);
         } else {
             this.load();

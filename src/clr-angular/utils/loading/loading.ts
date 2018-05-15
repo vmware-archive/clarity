@@ -7,32 +7,47 @@ import {Directive, Input, OnDestroy, Optional} from "@angular/core";
 
 import {LoadingListener} from "./loading-listener";
 
+export enum ClrLoadingState {
+    DEFAULT,
+    LOADING,
+    SUCCESS,
+    ERROR
+}
+
 @Directive({selector: "[clrLoading]"})
 export class ClrLoading implements OnDestroy {
     // We find the first parent that handles something loading
     constructor(@Optional() private listener: LoadingListener) {}
 
-    private _loading = false;
-    public get loading() {
-        return this._loading;
+    private _loadingState: ClrLoadingState = ClrLoadingState.DEFAULT;
+
+    public get loadingState() {
+        return this._loadingState;
     }
+
     @Input("clrLoading")
-    public set loading(value: boolean) {
-        value = !!value;
-        if (value === this._loading) {
-            return;
+    public set loadingState(value: boolean|ClrLoadingState) {
+        if (value === null) {
+            value = ClrLoadingState.DEFAULT;
         }
-        this._loading = value;
-        if (this.listener) {
+
+        if (typeof value === "boolean") {
             if (value) {
-                this.listener.startLoading();
+                value = ClrLoadingState.LOADING;
             } else {
-                this.listener.doneLoading();
+                value = ClrLoadingState.DEFAULT;
             }
         }
+
+        if (value === this._loadingState) {
+            return;
+        }
+
+        this._loadingState = value;
+        this.listener.loadingStateChange(value);
     }
 
     ngOnDestroy() {
-        this.loading = false;
+        this.loadingState = ClrLoadingState.DEFAULT;
     }
 }

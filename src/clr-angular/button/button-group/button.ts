@@ -7,6 +7,7 @@
 
 import {Component, EventEmitter, Input, Optional, Output, SkipSelf, TemplateRef, ViewChild} from "@angular/core";
 
+import {ClrLoadingState} from "../../utils/loading";
 import {LoadingListener} from "../../utils/loading/loading-listener";
 import {ButtonInGroupService} from "../providers/button-in-group.service";
 
@@ -113,12 +114,8 @@ export class ClrButton implements LoadingListener {
 
     public loading: boolean;
 
-    startLoading(): void {
-        this.loading = true;
-    }
-
-    doneLoading(): void {
-        this.loading = false;
+    loadingStateChange(state: ClrLoadingState): void {
+        this.loading = state === ClrLoadingState.LOADING;
     }
 
     @Output("click") _click: EventEmitter<boolean> = new EventEmitter<boolean>(false);

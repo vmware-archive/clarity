@@ -14,6 +14,7 @@ import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {FormControlService} from "../common/form-control.service";
 
 import {ClrDateContainer} from "./date-container";
+import {DateFormControlService} from "./providers/date-form-control.service";
 import {DateIOService} from "./providers/date-io.service";
 import {DateNavigationService} from "./providers/date-navigation.service";
 import {DatepickerEnabledService} from "./providers/datepicker-enabled.service";
@@ -24,13 +25,15 @@ export default function() {
     describe("Date Container Component", () => {
         let context: TestContext<ClrDateContainer, TestComponent>;
         let enabledService: MockDatepickerEnabledService;
+        let dateFormControlService: DateFormControlService;
 
         beforeEach(function() {
             TestBed.overrideComponent(ClrDateContainer, {
                 set: {
                     providers: [
                         {provide: DatepickerEnabledService, useClass: MockDatepickerEnabledService}, IfOpenService,
-                        DateNavigationService, LocaleHelperService, DateIOService, FormControlService
+                        DateNavigationService, LocaleHelperService, DateIOService, FormControlService,
+                        DateFormControlService
                     ]
                 }
             });
@@ -38,6 +41,7 @@ export default function() {
             context = this.create(ClrDateContainer, TestComponent, []);
 
             enabledService = <MockDatepickerEnabledService>context.getClarityProvider(DatepickerEnabledService);
+            dateFormControlService = context.getClarityProvider(DateFormControlService);
         });
 
         describe("View Basics", () => {
@@ -93,6 +97,14 @@ export default function() {
                 expect(flag).toBe(true);
 
                 sub.unsubscribe();
+            });
+
+            it("marks the date control as touched when the datepicker popover is toggled", () => {
+                spyOn(dateFormControlService, "markAsTouched");
+
+                context.clarityDirective.toggleDatepicker(null);
+
+                expect(dateFormControlService.markAsTouched).toHaveBeenCalled();
             });
         });
     });

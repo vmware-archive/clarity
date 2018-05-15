@@ -13,6 +13,7 @@ import {DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW} from "../../utils/key-cod
 
 import {ClrCalendar} from "./calendar";
 import {DayModel} from "./model/day.model";
+import {DateFormControlService} from "./providers/date-form-control.service";
 import {DateIOService} from "./providers/date-io.service";
 import {DateNavigationService} from "./providers/date-navigation.service";
 import {DatepickerFocusService} from "./providers/datepicker-focus.service";
@@ -33,7 +34,7 @@ export default function() {
 
             context = this.create(ClrCalendar, TestComponent, [
                 {provide: DateNavigationService, useValue: dateNavigationService}, DateIOService, IfOpenService,
-                ViewManagerService, LocaleHelperService, DatepickerFocusService
+                ViewManagerService, LocaleHelperService, DatepickerFocusService, DateFormControlService
             ]);
         });
 

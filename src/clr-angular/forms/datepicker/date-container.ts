@@ -10,6 +10,7 @@ import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {DynamicWrapper} from "../../utils/host-wrapping";
 import {FormControlService} from "../common/form-control.service";
 
+import {DateFormControlService} from "./providers/date-form-control.service";
 import {DateIOService} from "./providers/date-io.service";
 import {DateNavigationService} from "./providers/date-navigation.service";
 import {DatepickerEnabledService} from "./providers/datepicker-enabled.service";
@@ -30,7 +31,7 @@ import {LocaleHelperService} from "./providers/locale-helper.service";
     `,
     providers: [
         FormControlService, IfOpenService, LocaleHelperService, DateIOService, DateNavigationService,
-        DatepickerEnabledService
+        DatepickerEnabledService, DateFormControlService
     ],
     host: {"[class.date-container]": "true"}
 })
@@ -41,7 +42,8 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
     private _sub: Subscription;
 
     constructor(private _ifOpenService: IfOpenService, private _dateNavigationService: DateNavigationService,
-                private _datepickerEnabledService: DatepickerEnabledService) {
+                private _datepickerEnabledService: DatepickerEnabledService,
+                private dateFormControlService: DateFormControlService) {
         this._sub = this._ifOpenService.openChange.subscribe((open) => {
             if (open) {
                 this.initializeCalendar();
@@ -68,6 +70,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
      */
     toggleDatepicker(event: MouseEvent) {
         this._ifOpenService.toggleWithEvent(event);
+        this.dateFormControlService.markAsTouched();
     }
 
     /**

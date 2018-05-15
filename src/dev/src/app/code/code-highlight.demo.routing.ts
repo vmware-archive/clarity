@@ -10,6 +10,7 @@ import {CodeHighlightImportsDemo} from "./code-highlight-imports";
 import {CodeHighlightSnippetDemo} from "./code-highlight-snippet";
 import {CodeHighlightDemo} from "./code-highlight.demo";
 
+/** @deprecated since 0.12 */
 const ROUTES: Routes = [{
     path: "",
     component: CodeHighlightDemo,
@@ -20,4 +21,5 @@ const ROUTES: Routes = [{
     ]
 }];
 
+/** @deprecated since 0.12 */
 export const ROUTING: ModuleWithProviders = RouterModule.forChild(ROUTES);

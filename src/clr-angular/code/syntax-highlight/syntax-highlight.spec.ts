@@ -8,6 +8,7 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {ClrSyntaxHighlightModule} from "./syntax-highlight.module";
 
+/** @deprecated since 0.12 */
 @Component({
     template: `
         <pre>

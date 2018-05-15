@@ -7,6 +7,7 @@ import {AfterViewInit, Component, Input, ViewChild} from "@angular/core";
 
 import {ClrCodeHighlight} from "@clr/angular";
 
+/** @deprecated since 0.12 */
 @Component({
     selector: "clr-example",
     template: `

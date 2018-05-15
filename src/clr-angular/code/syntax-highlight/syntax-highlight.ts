@@ -6,8 +6,10 @@
 import {isPlatformBrowser} from "@angular/common";
 import {Directive, ElementRef, Inject, Input, PLATFORM_ID, Renderer2} from "@angular/core";
 
+/** @deprecated since 0.12 */
 declare var Prism: any;
 
+/** @deprecated since 0.12 */
 @Directive({selector: "code[clr-code-highlight]"})
 export class ClrCodeHighlight {
     private _highlight: string = "";

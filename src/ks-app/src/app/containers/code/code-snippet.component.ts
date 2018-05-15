@@ -7,6 +7,7 @@
 import {AfterViewInit, Component, Input, ViewChild} from "@angular/core";
 import {CodeHighlight} from "@clr/angular";
 
+/** @deprecated since 0.12 */
 @Component({
     selector: "code-snippet",
     template: `<pre><code [clr-code-highlight]="'language-'+language">{{code.trim()}}</code></pre>`,

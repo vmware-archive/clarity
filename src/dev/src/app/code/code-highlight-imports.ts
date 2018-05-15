@@ -5,6 +5,7 @@
  */
 import {Component} from "@angular/core";
 
+/** @deprecated since 0.12 */
 @Component({
     selector: "clr-code-highlight-imports-demo",
     templateUrl: "./code-highlight-imports.html",

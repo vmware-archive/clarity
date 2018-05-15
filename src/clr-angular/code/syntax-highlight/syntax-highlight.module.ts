@@ -8,8 +8,10 @@ import {CommonModule} from "@angular/common";
 import {NgModule, Type} from "@angular/core";
 import {ClrCodeHighlight} from "./syntax-highlight";
 
+/** @deprecated since 0.12 */
 export const CLR_CODE_HIGHLIGHT_DIRECTIVES: Type<any>[] = [ClrCodeHighlight];
 
+/** @deprecated since 0.12 */
 @NgModule(
     {imports: [CommonModule], declarations: [CLR_CODE_HIGHLIGHT_DIRECTIVES], exports: [CLR_CODE_HIGHLIGHT_DIRECTIVES]})
 export class ClrSyntaxHighlightModule {

@@ -7,6 +7,7 @@
 import {AfterViewInit, Component, QueryList, ViewChildren} from "@angular/core";
 import {ClrCodeHighlight, CodeHighlight} from "@clr/angular";
 
+/** @deprecated since 0.12 */
 const CSS_EXAMPLE = `.some-component {
   display: flex;
   flex-direction: column;
@@ -15,6 +16,7 @@ const CSS_EXAMPLE = `.some-component {
   flex-wrap: wrap;
 }`;
 
+/** @deprecated since 0.12 */
 const HTML_EXAMPLE = `<pre>
   <code clr-code-highlight="language-css">
     .some-component {
@@ -27,6 +29,7 @@ const HTML_EXAMPLE = `<pre>
   </code>
 </pre>`;
 
+/** @deprecated since 0.12 */
 const JAVASCRIPT_EXAMPLE = `var Token = _.Token = function(type, content, alias, matchedStr, greedy) {
 	this.type = type;
 	this.content = content;
@@ -36,6 +39,7 @@ const JAVASCRIPT_EXAMPLE = `var Token = _.Token = function(type, content, alias,
 	this.greedy = !!greedy;
 };`;
 
+/** @deprecated since 0.12 */
 const TYPESCRIPT_EXAMPLE = `import {Component} from "@angular/core";
 import {Items} from "./providers/items";
 import {Page} from "./providers/page";
@@ -63,6 +67,7 @@ export class ClrDatagridPlaceholder {
     }
 }`;
 
+/** @deprecated since 0.12 */
 const JSON_EXAMPLE = `{
   "extends": "../tsconfig.json",
   "compilerOptions": {
@@ -78,6 +83,7 @@ const JSON_EXAMPLE = `{
   ]
 }`;
 
+/** @deprecated since 0.12 */
 @Component({templateUrl: "./code.component.html"})
 export class KSCode implements AfterViewInit {
     /**

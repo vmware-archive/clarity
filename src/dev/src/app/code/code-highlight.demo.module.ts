@@ -13,6 +13,7 @@ import {CodeHighlightSnippetDemo} from "./code-highlight-snippet";
 import {CodeHighlightDemo} from "./code-highlight.demo";
 import {ROUTING} from "./code-highlight.demo.routing";
 
+/** @deprecated since 0.12 */
 @NgModule({
     imports: [CommonModule, ClarityModule, ROUTING],
     declarations: [CodeHighlightDemo, CodeHighlightImportsDemo, CodeHighlightSnippetDemo],

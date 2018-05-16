@@ -12,6 +12,7 @@ import { SocialShapes } from "@clr/icons/shapes/social-shapes";
 import { TravelShapes } from "@clr/icons/shapes/travel-shapes";
 import { TechnologyShapes } from "@clr/icons/shapes/technology-shapes";
 import { ChartShapes } from "@clr/icons/shapes/chart-shapes";
+import { TextEditShapes } from "@clr/icons/shapes/text-edit-shapes";
 
 import { ICONS_TAGS } from "./icons-tags"
 
@@ -129,6 +130,9 @@ export const IconsInventory = {
     },
     "chart-shapes": {
         searchableIcons: makeSetSearchable(ChartShapes, [])
+    },
+    "text-edit-shapes": {
+        searchableIcons: makeSetSearchable(TextEditShapes, [])
     },
     "technology-shapes": {
         searchableIcons: makeSetSearchable(TechnologyShapes, [])

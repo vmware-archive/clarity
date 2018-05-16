@@ -10,7 +10,7 @@
     <div class="icon-preview-settings">
         <div class="form-group">
             <div class="toggle-switch">
-                <input type="checkbox" id="solidCheckBox"  [(ngModel)]="iconSolidness">
+                <input type="checkbox" id="solidCheckBox" [(ngModel)]="iconSolidness">
                 <label for="solidCheckBox"><span class="solid-preview-label">Preview:</span> Solid</label>
             </div>
             <div class="radio-group">
@@ -36,8 +36,7 @@
 <section class="icons-header">
 
     <div class="icons-background">
-        <div class="icon-bg-wrapper" [class.glow]="blinkIconsRandomly.indexOf(i)>=0"
-             *ngFor="let shape of blinkIconsFromEssentialSet; let i = index;">
+        <div class="icon-bg-wrapper" [class.glow]="blinkIconsRandomly.indexOf(i)>=0" *ngFor="let shape of blinkIconsFromEssentialSet; let i = index;">
             <clr-icon [attr.shape]="shape" size="24"></clr-icon>
         </div>
     </div>
@@ -56,8 +55,7 @@
     </div>
 
 </section>
-<div class="searchbar-container sticky" *ngIf="isOnIconSetsRoute && isSearchbarSticky"
-     [@searchBarStickAnimation]="isSearchbarSticky">
+<div class="searchbar-container sticky" *ngIf="isOnIconSetsRoute && isSearchbarSticky" [@searchBarStickAnimation]="isSearchbarSticky">
     <div class="icons-search-wrapper">
         <ng-container *ngTemplateOutlet="searchBarContent"></ng-container>
     </div>
@@ -87,22 +85,15 @@
                     <input id="iconsets" type="checkbox">
                     <label for="iconsets">Icon Sets</label>
                     <ul class="nav-list">
-                        <li><a routerLink="./icon-sets" fragment="core-shapes"
-                               class="nav-link">Core</a></li>
-                        <li><a routerLink="./icon-sets" fragment="commerce-shapes"
-                               class="nav-link">Commerce</a></li>
-                        <li><a routerLink="./icon-sets" fragment="essential-shapes"
-                               class="nav-link">Essential</a></li>
-                        <li><a routerLink="./icon-sets" fragment="media-shapes"
-                               class="nav-link">Media</a></li>
-                        <li><a routerLink="./icon-sets" fragment="social-shapes"
-                               class="nav-link">Social</a></li>
-                        <li><a routerLink="./icon-sets" fragment="travel-shapes"
-                               class="nav-link">Travel</a></li>
-                        <li><a routerLink="./icon-sets" fragment="chart-shapes"
-                               class="nav-link">Chart</a></li>
-                        <li><a routerLink="./icon-sets" fragment="technology-shapes"
-                               class="nav-link">Technology</a></li>
+                        <li><a routerLink="./icon-sets" fragment="core-shapes" class="nav-link">Core</a></li>
+                        <li><a routerLink="./icon-sets" fragment="commerce-shapes" class="nav-link">Commerce</a></li>
+                        <li><a routerLink="./icon-sets" fragment="essential-shapes" class="nav-link">Essential</a></li>
+                        <li><a routerLink="./icon-sets" fragment="media-shapes" class="nav-link">Media</a></li>
+                        <li><a routerLink="./icon-sets" fragment="social-shapes" class="nav-link">Social</a></li>
+                        <li><a routerLink="./icon-sets" fragment="travel-shapes" class="nav-link">Travel</a></li>
+                        <li><a routerLink="./icon-sets" fragment="chart-shapes" class="nav-link">Chart</a></li>
+                        <li><a routerLink="./icon-sets" fragment="text-edit-shapes" class="nav-link">Text Edit</a></li>
+                        <li><a routerLink="./icon-sets" fragment="technology-shapes" class="nav-link">Technology</a></li>
                     </ul>
                 </section>
             </section>

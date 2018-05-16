@@ -7,14 +7,14 @@ import { HostBinding, InjectionToken, Injector, Input, OnInit, Type, ViewContain
 
 import { DynamicWrapper, HostWrapper } from '../../utils/host-wrapping';
 
-import { FormControlService } from './form-control.service';
+import { ControlIdService } from './providers/control-id.service';
 
 export class WrappedFormControl<W extends DynamicWrapper> implements OnInit {
   // I lost way too much time trying to make this work without injecting the ViewContainerRef and the Injector,
   // I'm giving up. So we have to inject these two manually for now.
   constructor(protected wrapperType: Type<W>, protected vcr: ViewContainerRef) {}
 
-  protected formControlService: FormControlService;
+  protected controlIdService: ControlIdService;
 
   _id: string;
 
@@ -25,8 +25,8 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit {
   }
   set id(value: string) {
     this._id = value;
-    if (this.formControlService) {
-      this.formControlService.id = value;
+    if (this.controlIdService) {
+      this.controlIdService.id = value;
     }
   }
 
@@ -38,12 +38,12 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit {
 
   ngOnInit() {
     this._containerInjector = new HostWrapper(this.wrapperType, this.vcr);
-    this.formControlService = this._containerInjector.get(FormControlService);
+    this.controlIdService = this._containerInjector.get(ControlIdService);
     if (this._id) {
-      this.formControlService.id = this._id;
+      this.controlIdService.id = this._id;
     } else {
-      this._id = this.formControlService.id;
+      this._id = this.controlIdService.id;
     }
-    // No need to subscribe to formControlService.idChange because the input is the only one that can update the id.
+    // No need to subscribe to controlIdService.idChange because the input is the only one that can update the id.
   }
 }

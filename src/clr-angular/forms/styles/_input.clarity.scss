@@ -12,7 +12,6 @@
     @include custom-inputs-reset($clr-forms-baseline * 4);
     @include form-fields-appearance($clr-forms-border-color);
     padding: 0 $clr-forms-baseline;
-    margin-right: $clr-forms-icon-size;
     max-height: $clr-forms-baseline * 4;
 
     @include clr-getTypePropertiesForDomElement(form_label, (font-size));

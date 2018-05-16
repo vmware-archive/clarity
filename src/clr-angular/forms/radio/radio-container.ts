@@ -7,7 +7,7 @@
 import { Component } from '@angular/core';
 
 import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
-import { FormControlService } from '../common/form-control.service';
+import { ControlIdService } from '../common/providers/control-id.service';
 
 @Component({
   selector: 'clr-radio-container',
@@ -18,7 +18,7 @@ import { FormControlService } from '../common/form-control.service';
         <label *ngIf="_dynamic"></label>
     `,
   host: { '[class.radio]': 'true' },
-  providers: [FormControlService],
+  providers: [ControlIdService],
 })
 export class ClrRadioContainer implements DynamicWrapper {
   // Indicates whether the container is dynamically created by the radio button itself

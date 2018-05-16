@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 import { itIgnore } from '../../../../tests/tests.helpers';
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
-import { FormControlService } from '../common/form-control.service';
+import { ControlIdService } from '../common/providers/control-id.service';
 
 import { ClrDateContainer } from './date-container';
 import { DateFormControlService } from './providers/date-form-control.service';
@@ -36,7 +36,7 @@ export default function() {
             DateNavigationService,
             LocaleHelperService,
             DateIOService,
-            FormControlService,
+            ControlIdService,
             DateFormControlService,
           ],
         },

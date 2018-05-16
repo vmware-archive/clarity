@@ -25,6 +25,8 @@ import { Component } from '@angular/core';
             <li><a [routerLink]="['./file']">File</a></li>
             <li><a [routerLink]="['./textarea']">Textarea</a></li>
             <li><a [routerLink]="['./select']">Select</a></li>
+            <li><a [routerLink]="['./template-driven']">Template Driven</a></li>
+            <li><a [routerLink]="['./reactive']">Reactive</a></li>
         </ul>
         <router-outlet></router-outlet>
     `,

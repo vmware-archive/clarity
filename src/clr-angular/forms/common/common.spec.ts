@@ -11,8 +11,8 @@ import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 import { ClrHostWrappingModule } from '../../utils/host-wrapping/host-wrapping.module';
 
 import { ClrCommonFormsModule } from './common.module';
-import { FormControlService } from './form-control.service';
-import { WrappedFormControl } from './wrapped-form-control';
+import { ControlIdService } from './providers/control-id.service';
+import { WrappedFormControl } from './wrapped-control';
 
 /*
  * Components representing generic form controls.
@@ -24,7 +24,7 @@ import { WrappedFormControl } from './wrapped-form-control';
         <ng-content></ng-content>
         <label id="container-view-label-after"></label>
     `,
-  providers: [FormControlService],
+  providers: [ControlIdService],
 })
 class GenericWrapper implements DynamicWrapper {
   _dynamic = false;
@@ -61,7 +61,6 @@ class NoWrapperWithId {}
             <input genericControl />
             <label id="test-view-label-after"></label>
         </generic-wrapper>
-        
     `,
 })
 class WithWrapperNoId {}
@@ -87,7 +86,7 @@ export default function(): void {
         fixture.detectChanges();
         if (!expectedId) {
           const wrapperDebug = fixture.debugElement.query(By.directive(GenericWrapper));
-          expectedId = wrapperDebug.injector.get(FormControlService).id;
+          expectedId = wrapperDebug.injector.get(ControlIdService).id;
         }
         const input = fixture.nativeElement.querySelector('input');
         expect(input.getAttribute('id')).toBe(expectedId, 'input has the wrong id attribute');

@@ -13,7 +13,7 @@ import { itIgnore } from '../../../../tests/tests.helpers';
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrFormsModule } from '../../forms-deprecated';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
-import { FormControlService } from '../common/form-control.service';
+import { ControlIdService } from '../common/providers/control-id.service';
 
 import { ClrDateContainer } from './date-container';
 import { ClrDateInput } from './date-input';
@@ -43,7 +43,7 @@ export default function() {
               DateNavigationService,
               LocaleHelperService,
               DateIOService,
-              FormControlService,
+              ControlIdService,
               DateFormControlService,
             ],
           },

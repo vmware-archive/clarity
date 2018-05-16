@@ -6,7 +6,7 @@
 
 import { Directive, ViewContainerRef } from '@angular/core';
 
-import { WrappedFormControl } from '../common/wrapped-form-control';
+import { WrappedFormControl } from '../common/wrapped-control';
 
 import { ClrCheckboxContainer } from './checkbox-container';
 

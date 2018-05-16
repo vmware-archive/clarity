@@ -11,13 +11,13 @@ import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
 import { ClrHostWrappingModule } from '../../utils/host-wrapping/host-wrapping.module';
 
-import { FormControlService } from './form-control.service';
-import { WrappedFormControl } from './wrapped-form-control';
+import { ControlIdService } from './providers/control-id.service';
+import { WrappedFormControl } from './wrapped-control';
 
 /*
  * Components using the WrappedFormControl we want to test.
  */
-@Component({ selector: 'test-wrapper', template: `<ng-content></ng-content>`, providers: [FormControlService] })
+@Component({ selector: 'test-wrapper', template: `<ng-content></ng-content>`, providers: [ControlIdService] })
 class TestWrapper implements DynamicWrapper {
   _dynamic = false;
 }
@@ -56,7 +56,7 @@ interface TestContext {
   fixture: ComponentFixture<any>;
   wrapper: TestWrapper;
   control: TestControl;
-  formControlService: FormControlService;
+  controlIdService: ControlIdService;
   input: any;
 }
 
@@ -69,47 +69,47 @@ export default function(): void {
       const wrapperDebugElement = testContext.fixture.debugElement.query(By.directive(TestWrapper));
       testContext.wrapper = wrapperDebugElement.componentInstance;
       testContext.control = testContext.fixture.debugElement.query(By.directive(TestControl)).injector.get(TestControl);
-      testContext.formControlService = wrapperDebugElement.injector.get(FormControlService);
+      testContext.controlIdService = wrapperDebugElement.injector.get(ControlIdService);
       testContext.input = testContext.fixture.nativeElement.querySelector('input');
     }
 
     describe('with an explicit wrapper', function() {
-      it('uses HostWrapper to inject the FormControlService', function(this: TestContext) {
+      it('uses HostWrapper to inject the ControlIdService', function(this: TestContext) {
         spyOn(HostWrapper.prototype, 'get').and.callThrough();
         setupTest(this, WithWrapperNoId);
-        expect(HostWrapper.prototype.get).toHaveBeenCalledWith(FormControlService);
+        expect(HostWrapper.prototype.get).toHaveBeenCalledWith(ControlIdService);
         expect(this.wrapper._dynamic).toBe(false);
       });
 
       it('sets the id of the host to the id given by the service', function(this: TestContext) {
         setupTest(this, WithWrapperNoId);
-        expect(this.input.getAttribute('id')).toBe(this.formControlService.id);
+        expect(this.input.getAttribute('id')).toBe(this.controlIdService.id);
       });
 
       it('updates the service to the correct id if it exists', function(this: TestContext) {
         setupTest(this, WithWrapperWithId);
         expect(this.input.getAttribute('id')).toBe('hello');
-        expect(this.formControlService.id).toBe('hello');
+        expect(this.controlIdService.id).toBe('hello');
       });
     });
 
     describe('without an explicit wrapper', function() {
-      it('uses HostWrapper to inject the FormControlService', function(this: TestContext) {
+      it('uses HostWrapper to inject the ControlIdService', function(this: TestContext) {
         spyOn(HostWrapper.prototype, 'get').and.callThrough();
         setupTest(this, NoWrapperNoId);
-        expect(HostWrapper.prototype.get).toHaveBeenCalledWith(FormControlService);
+        expect(HostWrapper.prototype.get).toHaveBeenCalledWith(ControlIdService);
         expect(this.wrapper._dynamic).toBe(true);
       });
 
       it('sets the id of the host to the id given by the service', function(this: TestContext) {
         setupTest(this, NoWrapperNoId);
-        expect(this.input.getAttribute('id')).toBe(this.formControlService.id);
+        expect(this.input.getAttribute('id')).toBe(this.controlIdService.id);
       });
 
       it('updates the service to the correct id if it exists', function(this: TestContext) {
         setupTest(this, NoWrapperWithId);
         expect(this.input.getAttribute('id')).toBe('hello');
-        expect(this.formControlService.id).toBe('hello');
+        expect(this.controlIdService.id).toBe('hello');
       });
     });
   });

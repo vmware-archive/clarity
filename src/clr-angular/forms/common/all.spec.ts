@@ -11,13 +11,23 @@
  */
 
 import CommonSpecs from './common.spec';
-import FormControlServiceSpecs from './form-control.service.spec';
+import ErrorSpecs from './error.spec';
+import HelperSpecs from './helper.spec';
+import ControlStatusServiceSpecs from './if-error/if-error.service.spec';
+import IfErrorSpecs from './if-error/if-error.spec';
 import LabelSpecs from './label.spec';
-import WrappedFormControlSpecs from './wrapped-form-control.spec';
+import ControlIdServiceSpecs from './providers/control-id.service.spec';
+import NgControlServiceSpecs from './providers/ng-control.service.spec';
+import WrappedControlSpecs from './wrapped-control.spec';
 
 describe('Forms common utilities', function() {
-  FormControlServiceSpecs();
+  ControlIdServiceSpecs();
+  ControlStatusServiceSpecs();
+  NgControlServiceSpecs();
   LabelSpecs();
-  WrappedFormControlSpecs();
+  IfErrorSpecs();
+  WrappedControlSpecs();
   CommonSpecs();
+  ErrorSpecs();
+  HelperSpecs();
 });

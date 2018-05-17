@@ -1,6 +1,6 @@
 {
     "name": "@clr/angular",
-    "version": "0.11.18",
+    "version": "0.11.18-patch.1",
     "description": "Angular components for Clarity",
     "es2015": "clr-angular/esm2015/clr-angular.js",
     "homepage": "https://vmware.github.io/clarity/",
@@ -19,7 +19,7 @@
         "@angular/platform-browser": "^5.0.0",
         "@angular/platform-browser-dynamic": "^5.0.0",
         "@angular/router": "^5.0.0",
-        "@clr/ui": "0.11.18"
+        "@clr/ui": "0.11.18-patch.1"
     },
     "author": "clarity",
     "license": "MIT",

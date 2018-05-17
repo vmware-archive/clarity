@@ -10,9 +10,10 @@
  */
 
 import {Injectable} from "@angular/core";
+import {DomAdapter} from "./dom-adapter";
 
 @Injectable()
-export class NoopDomAdapter {
+export class NoopDomAdapter implements DomAdapter {
     userDefinedWidth(element: any): number {
         return 0;
     }
@@ -26,6 +27,10 @@ export class NoopDomAdapter {
     }
 
     computedHeight(element: any): number {
+        return 0;
+    }
+
+    clientRectHeight(element: any): number {
         return 0;
     }
 

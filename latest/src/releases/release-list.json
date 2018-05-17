@@ -1,6 +1,11 @@
 {
     "current": "0.11.18",
     "all": {
+        "0.11.18-patch.1": {
+            "date": "May 17, 2018",
+            "sketch": "0.11.6",
+            "commit": "43c9515e22ccdeb3da447ce44101c5de2a2577b5"
+        },
         "0.11.18": {
             "date": "May 17, 2018",
             "sketch": "0.11.6",

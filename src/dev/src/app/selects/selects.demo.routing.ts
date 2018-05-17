@@ -7,6 +7,7 @@ import {ModuleWithProviders} from "@angular/core/src/metadata/ng_module";
 import {RouterModule, Routes} from "@angular/router";
 
 import {BasicNgSelectDemo} from "./basic-ng-select";
+import {OptionalMenuDemo} from "./optional-menu";
 import {SelectStaticDemo} from "./select-static";
 import {SelectsDemo} from "./selects.demo";
 
@@ -15,8 +16,8 @@ const ROUTES: Routes = [{
     component: SelectsDemo,
     children: [
         {path: "", redirectTo: "select-static", pathMatch: "full"},
-        {path: "select-static", component: SelectStaticDemo},
-        {path: "basic-select", component: BasicNgSelectDemo},
+        {path: "select-static", component: SelectStaticDemo}, {path: "basic-select", component: BasicNgSelectDemo},
+        {path: "optional-menu", component: OptionalMenuDemo}
     ]
 }];
 

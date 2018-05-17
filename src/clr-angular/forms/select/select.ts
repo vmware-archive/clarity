@@ -4,11 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {AfterContentInit, Component, ElementRef, HostListener, ViewChild} from "@angular/core";
+import {AfterContentInit, Component, ContentChild, ElementRef, HostListener, ViewChild} from "@angular/core";
 
 import {POPOVER_HOST_ANCHOR} from "../../popover/common/popover-host-anchor.token";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
 import {TAB} from "../../utils/key-codes/key-codes";
+import {ClrOptions} from "./options";
 
 @Component({
     selector: "clr-select",
@@ -18,6 +19,7 @@ import {TAB} from "../../utils/key-codes/key-codes";
 })
 export class ClrSelect implements AfterContentInit {
     @ViewChild("input") input: ElementRef;
+    @ContentChild(ClrOptions) options: ClrOptions;
 
     constructor(private ifOpenService: IfOpenService) {}
 

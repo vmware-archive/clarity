@@ -17,4 +17,16 @@ More info here: https://stackoverflow.com/a/34445203/3538394
         <clr-icon shape="caret down" size="12"></clr-icon>
     </button>
 </div>
-<ng-content></ng-content>
+
+<!-- Content projected by the consumer in ng-template. -->
+<ng-template #projectedOptions>
+    <ng-content></ng-content>
+</ng-template>
+
+<!-- Create the options menu ourself if the consumer doesnt provide the menu. -->
+<clr-options *ngIf="!options">
+    <ng-container [ngTemplateOutlet]="projectedOptions"></ng-container>
+</clr-options>
+
+<!-- If consumer provides the menu, render it -->
+<ng-container *ngIf="options" [ngTemplateOutlet]="projectedOptions"></ng-container>

@@ -10,13 +10,14 @@ import {NgModule} from "@angular/core";
 import {ClrIconModule} from "../../icon";
 import {ClrConditionalModule} from "../../utils/conditional/conditional.module";
 
+import {ClrOption} from "./option";
 import {ClrOptions} from "./options";
 import {ClrSelect} from "./select";
 
 @NgModule({
     imports: [CommonModule, ClrIconModule],
-    declarations: [ClrSelect, ClrOptions],
-    exports: [ClrSelect, ClrOptions, ClrConditionalModule]
+    declarations: [ClrSelect, ClrOptions, ClrOption],
+    exports: [ClrSelect, ClrOptions, ClrOption, ClrConditionalModule]
 })
 export class ClrSelectModule {
 }

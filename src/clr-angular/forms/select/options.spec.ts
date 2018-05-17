@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ElementRef} from "@angular/core";
+import {TestBed} from "@angular/core/testing";
 
 import {TestContext} from "../../data/datagrid/helpers.spec";
 import {POPOVER_HOST_ANCHOR} from "../../popover/common/popover-host-anchor.token";
@@ -22,17 +23,28 @@ import {ClrOptions} from "./options";
 class TestComponent {
 }
 
+@Component({
+    template: `
+        <clr-options>
+            Test
+        </clr-options>
+    `,
+    providers: [IfOpenService]
+})
+class TestComponentWithError {
+}
+
 export default function(): void {
     describe("Select Options Menu Component", function() {
         let context: TestContext<ClrOptions, TestComponent>;
         let ifOpenService: IfOpenService;
 
-        beforeEach(function() {
-            context = this.create(ClrOptions, TestComponent, [IfOpenService]);
-            ifOpenService = context.getClarityProvider(IfOpenService);
-        });
-
         describe("View Basics", function() {
+            beforeEach(function() {
+                context = this.create(ClrOptions, TestComponent, []);
+                ifOpenService = context.getClarityProvider(IfOpenService);
+            });
+
             it("projects content", function() {
                 const menu = context.testElement.querySelector("clr-options");
                 expect(menu.textContent).toMatch(/Test/);
@@ -49,6 +61,15 @@ export default function(): void {
                 menu.click();
 
                 expect(ifOpenService.open).toBe(true);
+            });
+        });
+
+        describe("Error Condition", function() {
+            it("throws an error when options menu is not used inside of clr-select", function() {
+                TestBed.configureTestingModule({declarations: [ClrOptions, TestComponentWithError]});
+                expect(() => {
+                    TestBed.createComponent(TestComponentWithError);
+                }).toThrowError("clr-options should only be used inside of a clr-select");
             });
         });
     });

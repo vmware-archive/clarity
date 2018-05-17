@@ -49,4 +49,9 @@
 
         visibility: visible;
     }
+
+    .clr-option {
+        @include generate-dropdown-item();
+        @include generate-dropdown-item-height();
+    }
 }

@@ -12,6 +12,7 @@
 
 import {addHelpers} from "../../data/datagrid/helpers.spec";
 
+import OptionSpecs from "./option.spec";
 import OptionsSpecs from "./options.spec";
 import SelectSpecs from "./select.spec";
 
@@ -21,5 +22,6 @@ describe("Select component", function() {
     describe("Directives", () => {
         SelectSpecs();
         OptionsSpecs();
+        OptionSpecs();
     });
 });

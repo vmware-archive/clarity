@@ -25,3 +25,65 @@
     visibility: hidden;
     z-index: map-get($clr-layers, dropdown-menu);
 }
+
+@mixin generate-dropdown-item() {
+    @include clr-getTypePropertiesForDomElement(dropdown_text, (font-size, letter-spacing, font-weight));
+
+    background: transparent;
+    border: 0;
+    color: $clr-dropdown-item-text-color;
+    cursor: pointer;
+    display: block;
+    margin: 0;
+    padding: $clr-rem-1px 1rem 0;
+    width: 100%;
+    text-transform: none;
+
+    &:hover,
+    &:focus {
+        background-color: $clr-dropdown-bg-hover-color;
+        color: $clr-dropdown-item-text-color;
+        text-decoration: none;
+    }
+
+    &.active {
+        background: $clr-dropdown-selection-color;
+        color: $clr-dropdown-active-text-color;
+    }
+
+    &:active {
+        box-shadow: none;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+
+    &.disabled,
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.4;
+        user-select: none;
+
+        &:hover {
+            background: none;
+        }
+
+        &:active,
+        &:focus {
+            background: none;
+            box-shadow: none;
+        }
+    }
+}
+
+@mixin generate-dropdown-item-height() {
+
+    height: $clr-dropdown-item-height;
+    line-height: $clr-dropdown-item-height;
+
+    @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+        height: $clr-dropdown-item-height-sm;
+        line-height: $clr-dropdown-item-height-sm;
+    }
+}

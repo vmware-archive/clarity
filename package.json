@@ -1,6 +1,6 @@
 {
     "name": "clr-all",
-    "version": "0.11.14",
+    "version": "0.12.0-beta.3",
     "private": true,
     "scripts": {
         "build:icons:web": "webpack --config webpack.icons.config.js",
@@ -19,9 +19,9 @@
         "build:angular:ngpackagr": "ng build clr-angular",
         "build:angular": "npm-run-all build:angular:package build:angular:ngpackagr",
         "build:schematics:ts": "tsc -p ./src/schematics/tsconfig.json",
-        "build:schematics:collection": "cpy 'src/schematics/src/collection.json' ./dist/clr-angular/schematics",
+        "build:schematics:collection": "cpy --parents --cwd='src/schematics/src/' '**/*.json' ../../../dist/clr-angular/schematics",
         "build:schematics": "npm-run-all build:schematics:ts build:schematics:collection",
-        "build": "npm-run-all clean build:ui build:icons build:schematics build:angular",
+        "build": "npm-run-all clean build:ui build:icons build:angular build:schematics",
         "ng": "ng",
         "start": "ng serve dev",
         "clean": "del ./dist",

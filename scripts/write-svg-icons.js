@@ -164,10 +164,10 @@ let makeSVG = (shapeTitle, shapeContent) => {
     let closingTag = `</svg>`;
 
     return `${openingTag}
-                ${title}
-                ${shapeContent}
-                ${transparentBG}
-            ${closingTag}`;
+    ${title}
+    ${shapeContent}
+    ${transparentBG}
+${closingTag}`;
 
 
 };

@@ -7,7 +7,8 @@
 
 import {animate, keyframes, style, transition, trigger} from "@angular/animations";
 import {Component, ElementRef, EventEmitter, Output, Renderer2} from "@angular/core";
-import {ClrLoadingState, LoadingListener} from "../../utils/loading";
+import {ClrLoadingState} from "../../utils/loading/loading";
+import {LoadingListener} from "../../utils/loading/loading-listener";
 
 @Component({
     selector: "button[clrLoading]",

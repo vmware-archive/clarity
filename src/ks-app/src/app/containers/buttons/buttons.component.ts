@@ -5,11 +5,15 @@
  */
 
 import {Component} from "@angular/core";
-import {Button, ClrButton, ClrLoadingButton, LoadingButton} from "@clr/angular";
+import {Button, ClrButton, ClrLoadingButton, ClrLoadingState, LoadingButton} from "@clr/angular";
 
 
 @Component({templateUrl: "./buttons.component.html"})
 export class KSButtons {
+    public validateState: ClrLoadingState = ClrLoadingState.DEFAULT;
+    public submitState: ClrLoadingState = ClrLoadingState.DEFAULT;
+    public validateSmState: boolean = false;
+    public submitSmState: ClrLoadingState = ClrLoadingState.DEFAULT;
     numbers: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     display: number[];
 
@@ -33,5 +37,33 @@ export class KSButtons {
             this.display.push(this.numbers[Math.floor(Math.random() * this.numbers.length)]);
         }
         console.log(this.display);
+    }
+
+    validateDemo() {
+        this.validateState = ClrLoadingState.LOADING;
+        setTimeout(() => {
+            this.validateState = ClrLoadingState.SUCCESS;
+        }, 1500);
+    }
+
+    submitDemo() {
+        this.submitState = ClrLoadingState.LOADING;
+        setTimeout(() => {
+            this.submitState = ClrLoadingState.DEFAULT;
+        }, 1500);
+    }
+
+    validateSmDemo() {
+        this.validateSmState = true;
+        setTimeout(() => {
+            this.validateSmState = false;
+        }, 1500);
+    }
+
+    submitSmDemo() {
+        this.submitSmState = ClrLoadingState.LOADING;
+        setTimeout(() => {
+            this.submitSmState = ClrLoadingState.DEFAULT;
+        }, 1500);
     }
 }

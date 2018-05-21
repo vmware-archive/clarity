@@ -41,9 +41,10 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist/clr-icons'),
         filename: '[name].js',
-        libraryTarget: 'umd'
+        libraryTarget: 'umd',
+        globalObject: "this"
     },
-    target: "node",
+    target: "web",
     resolve: {
         modules: [
             "./node_modules"

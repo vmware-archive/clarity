@@ -3,7 +3,10 @@
   "dest": "../../dist/clr-angular",
   "lib": {
     "entryFile": "./public_api.ts",
-    "flatModuleFile": "clr-angular"
+    "flatModuleFile": "clr-angular",
+    "umdModuleIds": {
+        "rxjs": "rxjs"
+    }
   },
   "whitelistedNonPeerDependencies": ["@angular-devkit/core", "@angular-devkit/schematics"]
 }

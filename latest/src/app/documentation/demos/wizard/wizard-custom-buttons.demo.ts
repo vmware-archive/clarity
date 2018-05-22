@@ -5,7 +5,7 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     selector: "clr-wizard-custom-buttons",
@@ -13,7 +13,7 @@ import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
 })
 export class WizardCustomButtonsDemo {
     @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
+
     open: boolean = false;
 
     public handleDangerClick(): void {

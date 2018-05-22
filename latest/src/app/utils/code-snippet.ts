@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, Input, ViewChild, AfterViewInit} from "@angular/core";
-import {CodeHighlight} from "@clr/angular";
+import {CodeHighlight} from "./code-highlight";
 
 @Component({
     selector: "clr-code-snippet",

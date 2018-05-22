@@ -17,18 +17,19 @@ import {TreeNodeRoutingDemo} from "./tree-node-routing/tree-node-routing";
 import {TreeViewPrepopulateDemo} from "./tree-view-prepopulate/tree-view-prepopulate";
 import {TreeNodeBasicStructureDMDemo} from "./basic-tree-node-DM/tree-node-basic-DM";
 
-import {Example} from "./utils/example";
 import {TreeViewDemo} from "./tree-view.demo";
 import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {LazyLoadedLocationsComponent} from "./lazy-loading/lazy-loaded-locations";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
         CommonModule,
         ClarityModule,
         RouterModule.forChild([{path: "", component: TreeViewDemo}]),
-        DocWrapperModule
+        DocWrapperModule,
+        UtilsModule
     ],
     declarations: [
         TreeNodeBasicStructureDemo,
@@ -41,7 +42,6 @@ import {LazyLoadedLocationsComponent} from "./lazy-loading/lazy-loaded-locations
         TreeNodeSelectionDemo,
         TreeNodeRoutingDemo,
         TreeViewPrepopulateDemo,
-        Example,
         TreeViewDemo
     ],
     exports: [

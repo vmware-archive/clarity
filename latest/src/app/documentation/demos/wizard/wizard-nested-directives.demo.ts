@@ -3,8 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, ViewChild} from "@angular/core";
-import {ClrCodeHighlight} from "@clr/angular";
+import {Component} from "@angular/core";
 
 @Component({
     selector: "clr-wizard-nested-directives",
@@ -13,7 +12,6 @@ import {ClrCodeHighlight} from "@clr/angular";
     `
 })
 export class WizardNestedDirectiveDemo {
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
     html: string = `<clr-wizard #wizard [(clrWizardOpen)]="open">
     <clr-wizard-title>Wizard Title</clr-wizard-title>

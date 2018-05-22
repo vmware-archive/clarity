@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, ViewChild } from "@angular/core";
-import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     moduleId: module.id,
@@ -13,7 +13,7 @@ import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
 })
 export class WizardNoCancel {
     @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
+
     open: boolean = false;
 
     pageArray: string[] = [ "1", "2", "3" ];

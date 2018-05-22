@@ -5,7 +5,7 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     selector: "clr-wizard-force-forward",
@@ -13,7 +13,7 @@ import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
 })
 export class WizardForceForwardDemo {
     @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
+
     _open: boolean = false;
 
     open() {

@@ -20,7 +20,6 @@ import {ButtonsIconsDemo} from "./buttons-icons";
 import {ButtonLoadingDemo} from "./button-loading";
 import {ButtonsDemo} from "./buttons.demo";
 
-import {Example} from "./utils/example";
 import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {ButtonsIconsSmallDemo} from "./buttons-icons-sm";
@@ -50,9 +49,7 @@ import {IconButtonsDemo} from "./icon-buttons";
         ButtonLoadingDemo,
         IconButtonsDemo,
 
-        ButtonsDemo,
-
-        Example
+        ButtonsDemo
     ],
     exports: [
         ButtonsDemo

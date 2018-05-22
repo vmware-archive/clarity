@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component, ViewChild} from "@angular/core";
-import {ClrWizard, ClrCodeHighlight} from "@clr/angular";
+import {ClrWizard} from "@clr/angular";
 
 @Component({
     selector: "clr-wizard-basic",
@@ -14,7 +14,6 @@ export class WizardBasic {
     @ViewChild("wizardmd") wizardMedium: ClrWizard;
     @ViewChild("wizardlg") wizardLarge: ClrWizard;
     @ViewChild("wizardxl") wizardExtraLarge: ClrWizard;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
     mdOpen: boolean = false;
     lgOpen: boolean = false;

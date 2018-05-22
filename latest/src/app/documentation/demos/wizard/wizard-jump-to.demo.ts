@@ -5,7 +5,7 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { ClrWizard, ClrWizardPage, ClrCodeHighlight } from "@clr/angular";
+import { ClrWizard, ClrWizardPage } from "@clr/angular";
 
 @Component({
     selector: "clr-wizard-jump-to",
@@ -15,7 +15,7 @@ export class WizardJumpToDemo {
     @ViewChild("wizard") wizard: ClrWizard;
     @ViewChild("pageThree") pageThree: ClrWizardPage;
     @ViewChild("pageFive") pageFive: ClrWizardPage;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
+
     open: boolean = false;
 
     public jumpTo(page: ClrWizardPage) {

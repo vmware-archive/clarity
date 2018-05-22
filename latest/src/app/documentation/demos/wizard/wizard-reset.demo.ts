@@ -5,7 +5,7 @@
  */
 
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     selector: "clr-wizard-reset",
@@ -13,7 +13,6 @@ import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
 })
 export class WizardResetDemo implements OnInit {
     @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
     public open: boolean = false;
 

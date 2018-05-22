@@ -5,7 +5,7 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     selector: "clr-wizard-stop-navigation",
@@ -13,7 +13,6 @@ import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
 })
 export class WizardStopNavigation {
     @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
     untouched: boolean = true;
     loading: boolean = false;

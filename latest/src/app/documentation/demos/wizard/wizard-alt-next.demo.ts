@@ -5,7 +5,7 @@
  */
 
 import { Component, ViewChild, OnInit } from "@angular/core";
-import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     moduleId: module.id,
@@ -15,7 +15,7 @@ import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
 })
 export class WizardAltNextDemo implements OnInit {
     @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
+
     open: boolean = false;
     showCancelConfirm: boolean = false;
 

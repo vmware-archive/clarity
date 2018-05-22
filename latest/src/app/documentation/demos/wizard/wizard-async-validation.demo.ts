@@ -5,7 +5,7 @@
  */
 
 import { Component, ViewChild } from "@angular/core";
-import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
+import { ClrWizard } from "@clr/angular";
 
 @Component({
     selector: "clr-wizard-async-validation",
@@ -14,7 +14,6 @@ import { ClrWizard, ClrCodeHighlight } from "@clr/angular";
 export class WizardAsyncValidation {
     @ViewChild("wizard") wizard: ClrWizard;
     @ViewChild("myForm") formData: any;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
     loadingFlag: boolean = false;
     errorFlag: boolean = false;

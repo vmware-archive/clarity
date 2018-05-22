@@ -35,30 +35,79 @@ export default function(): void {
             fixture.destroy();
         });
 
-        it("should be able to register element as default handle", function() {
-            dragHandleRegistrar.draggableEl = draggableEl;
-            expect(dragHandleRegistrar.customHandle).toBeUndefined();
-            expect(draggableEl.classList.contains("drag-handle")).toBeTruthy();
+        it("registers element as default handle on assignment", function() {
+            dragHandleRegistrar.defaultHandleEl = draggableEl;
             expect(dragEventListener.draggableEl).toBe(draggableEl);
+            expect(draggableEl.hasListener).toBeTruthy();
+            expect(draggableEl.classList.contains("drag-handle")).toBeTruthy();
         });
 
-        it("should be able to register custom element as drag handle", function() {
-            dragHandleRegistrar.draggableEl = draggableEl;
+        it("registers custom element as handle", function() {
             dragHandleRegistrar.registerCustomHandle(customHandleEl);
-            expect(draggableEl.classList.contains("drag-handle")).toBeFalsy();
+
             expect(dragHandleRegistrar.customHandle).toBe(customHandleEl);
             expect(dragEventListener.draggableEl).toBe(customHandleEl);
+
+            expect(customHandleEl.hasListener).toBeTruthy();
+            expect(customHandleEl.classList.contains("drag-handle")).toBeTruthy();
         });
 
-        it("should be able to unregister custom element and fallback to default handle", function() {
-            dragHandleRegistrar.draggableEl = draggableEl;
+        it("registers custom element as drag handle after default handle is set", function() {
+            dragHandleRegistrar.defaultHandleEl = draggableEl;
             dragHandleRegistrar.registerCustomHandle(customHandleEl);
+            // Once custom handle gets registered, listeners and drag styles should be removed from default element.
+            expect(draggableEl.hasListener).toBeFalsy();
+            expect(draggableEl.classList.contains("drag-handle")).toBeFalsy();
 
-            dragHandleRegistrar.unregisterCustomHandle();
-            expect(dragHandleRegistrar.customHandle).toBeUndefined();
-            expect(draggableEl.classList.contains("drag-handle")).toBeTruthy();
-            expect(dragEventListener.draggableEl).toBe(draggableEl);
+            expect(dragHandleRegistrar.customHandle).toBe(customHandleEl);
+            expect(dragEventListener.draggableEl).toBe(customHandleEl);
+
+            expect(customHandleEl.hasListener).toBeTruthy();
+            expect(customHandleEl.classList.contains("drag-handle")).toBeTruthy();
         });
+
+        it("unregisters custom handle", function() {
+            dragHandleRegistrar.registerCustomHandle(customHandleEl);
+            expect(dragHandleRegistrar.customHandle).toBe(customHandleEl);
+            expect(customHandleEl.hasListener).toBeTruthy();
+            expect(customHandleEl.classList.contains("drag-handle")).toBeTruthy();
+            dragHandleRegistrar.unregisterCustomHandle();
+
+            expect(dragHandleRegistrar.customHandle).toBeUndefined();
+            expect(customHandleEl.hasListener).toBeFalsy();
+            expect(customHandleEl.classList.contains("drag-handle")).toBeFalsy();
+        });
+
+        it("unregisters custom handle and fall back to default handle if default handle is set before custom handle",
+           function() {
+               dragHandleRegistrar.defaultHandleEl = draggableEl;
+               dragHandleRegistrar.registerCustomHandle(customHandleEl);
+               dragHandleRegistrar.unregisterCustomHandle();
+               expect(dragHandleRegistrar.customHandle).toBeUndefined();
+               expect(dragEventListener.draggableEl).toBe(draggableEl);
+               expect(draggableEl.hasListener).toBeTruthy();
+               expect(draggableEl.classList.contains("drag-handle")).toBeTruthy();
+           });
+
+        it("keeps custom element as drag handle even after default handle is set", function() {
+            dragHandleRegistrar.registerCustomHandle(customHandleEl);
+            dragHandleRegistrar.defaultHandleEl = draggableEl;
+
+            expect(dragHandleRegistrar.customHandle).toBe(customHandleEl);
+            expect(customHandleEl.hasListener).toBeTruthy();
+            expect(customHandleEl.classList.contains("drag-handle")).toBeTruthy();
+        });
+
+        it("unregisters custom handle and fall back to default handle if default handle is set after custom handle",
+           function() {
+               dragHandleRegistrar.registerCustomHandle(customHandleEl);
+               dragHandleRegistrar.defaultHandleEl = draggableEl;
+               dragHandleRegistrar.unregisterCustomHandle();
+               expect(dragHandleRegistrar.customHandle).toBeUndefined();
+               expect(dragEventListener.draggableEl).toBe(draggableEl);
+               expect(draggableEl.hasListener).toBeTruthy();
+               expect(draggableEl.classList.contains("drag-handle")).toBeTruthy();
+           });
     });
 }
 

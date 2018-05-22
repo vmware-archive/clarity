@@ -8,29 +8,30 @@ import {Injectable, Renderer2} from "@angular/core";
 import {ClrDragEventListener} from "./drag-event-listener";
 
 // This provider registers the drag handle element.
-// If clrDragHandle is nested inside clrDraggable, the drag handle will be clrDragHandle element.
-// If not, the default or fallback drag handle will the clrDraggable element.
-// When it registers the handle element, it attaches that element to the listeners from ClrDragEventListener.
+// When it registers a element as a drag handle, it attaches that element to the listeners from ClrDragEventListener.
 // Also, it adds the "drag-handle" css class to the registered element through Renderer.
-
 @Injectable()
 export class ClrDragHandleRegistrar<T> {
     private _customHandleEl: Node;
-    private _draggableEl: Node;
+    private _defaultHandleEl: Node;
 
-    set draggableEl(value: Node) {
-        // First, we set clrDraggable element as the default drag handle.
-        this._draggableEl = value;
-        this.makeElementHandle(this._draggableEl);
+    set defaultHandleEl(value: Node) {
+        this._defaultHandleEl = value;  // defaultHandleEl will be usually the clrDraggable element.
+
+        // If the customHandleEl has been registered,
+        // don't make the defaultHandleEl the drag handle yet until the customHandleEl is unregistered.
+        if (!this._customHandleEl) {
+            this.makeElementHandle(this._defaultHandleEl);
+        }
     }
 
     constructor(private dragEventListener: ClrDragEventListener<T>, private renderer: Renderer2) {}
 
     private makeElementHandle(el: Node) {
-        if (this._draggableEl && this._draggableEl !== el) {
+        if (this._defaultHandleEl && this._defaultHandleEl !== el) {
             // Before making an element the custom handle element,
             // we should remove the existing drag-handle class from the draggable element.
-            this.renderer.removeClass(this._draggableEl, "drag-handle");
+            this.renderer.removeClass(this._defaultHandleEl, "drag-handle");
         }
         this.dragEventListener.attachDragListeners(el);
         this.renderer.addClass(el, "drag-handle");
@@ -41,12 +42,18 @@ export class ClrDragHandleRegistrar<T> {
     }
 
     public registerCustomHandle(handleElement: Node) {
+        this.dragEventListener.detachDragListeners();  // removes the existing listeners
         this._customHandleEl = handleElement;
         this.makeElementHandle(this._customHandleEl);
     }
 
     public unregisterCustomHandle() {
+        this.dragEventListener.detachDragListeners();  // removes the existing listeners
+        this.renderer.removeClass(this._customHandleEl, "drag-handle");
         delete this._customHandleEl;
-        this.makeElementHandle(this._draggableEl);
+        // if default handle is set, make that handle
+        if (this._defaultHandleEl) {
+            this.makeElementHandle(this._defaultHandleEl);
+        }
     }
 }

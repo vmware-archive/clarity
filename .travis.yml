@@ -7,10 +7,10 @@ env:
     - CXX=g++-4.8
   matrix:
     - TEST_SUITE='test:travis'
-    - TEST_SUITE='test:visual set1'
-    - TEST_SUITE='test:visual set2'
-    - TEST_SUITE='test:visual set3'
-    - TEST_SUITE='test:visual set4'
+#    - TEST_SUITE='test:visual set1'
+#    - TEST_SUITE='test:visual set2'
+#    - TEST_SUITE='test:visual set3'
+#    - TEST_SUITE='test:visual set4'
 
 sudo: required
 dist: trusty
@@ -42,8 +42,8 @@ before_script:
   - npm install -g gemini@5.2.0 html-reporter@2.0.1
 
 script:
-  - echo $TRAVIS_PULL_REQUEST
-  - echo $TRAVIS_PULL_REQUEST_SHA
-  - echo $(git merge-base HEAD $TRAVIS_BRANCH)
-  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then precise-commits --check-only --head=$TRAVIS_PULL_REQUEST_SHA --base=$(git merge-base HEAD $TRAVIS_BRANCH); fi'
+  - echo 'TRAVIS_BRANCH: '; echo $TRAVIS_BRANCH
+  - MERGE_HEAD=$(git merge-base HEAD $TRAVIS_BRANCH); echo $MERGE_HEAD
+  - BRANCH_HEAD=$(git rev-parse --verify HEAD); echo $BRANCH_HEAD
+  - precise-commits --check-only
 #  - npm run $TEST_SUITE # run unit test and css regression test sets in parallel

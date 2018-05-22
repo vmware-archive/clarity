@@ -26,7 +26,7 @@
         "start": "ng serve dev",
         "clean": "del ./dist",
         "test:aot": "ng build --prod ks-app",
-        "test:format": "precise-commits --check-only",
+        "test:format": "precise-commits --check-only --head=5413e4cc9 --base=0f9312826",
         "test:lint": "tslint -p . -c tslint.json \"src/**/*.ts\" -e \"src/ks-app/**\" -e \"src/schematics/**\"",
         "test:visual": "./scripts/docker-cdc.js -t",
         "test": "ng test clr-angular",

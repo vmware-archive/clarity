@@ -7,10 +7,10 @@ env:
     - CXX=g++-4.8
   matrix:
     - TEST_SUITE='test:travis'
-    - TEST_SUITE='test:visual set1'
-    - TEST_SUITE='test:visual set2'
-    - TEST_SUITE='test:visual set3'
-    - TEST_SUITE='test:visual set4'
+#    - TEST_SUITE='test:visual set1'
+#    - TEST_SUITE='test:visual set2'
+#    - TEST_SUITE='test:visual set3'
+#    - TEST_SUITE='test:visual set4'
 
 sudo: required
 dist: trusty
@@ -42,4 +42,6 @@ before_script:
   - npm install -g gemini@5.2.0 html-reporter@2.0.1
 
 script:
-  - npm run $TEST_SUITE # run unit test and css regression test sets in parallel
+  - echo 'TRAVIS_BRANCH: '; echo $TRAVIS_BRANCH
+  - ./node_modules/.bin/precise-commits --check-only --head=94af36147 --base=0f9312826
+#  - npm run $TEST_SUITE # run unit test and css regression test sets in parallel

@@ -189,7 +189,16 @@ import {
   WizardStepnavItem,
 } from './public_api';
 
+import { EssentialShapes } from '../clr-icons/shapes/essential-shapes';
+
 describe('Deprecations', () => {
+  describe('since v0.13, remove in 1.0', () => {
+    it('should export deprecated icons', () => {
+      expect(EssentialShapes.eye).toBeDefined();
+      expect(EssentialShapes['eye-hide']).toBeDefined();
+    });
+  });
+
   describe('since v0.12, remove in 0.13', () => {
     it('should export deprecated checkbox items', () => {
       expect(ClrCheckbox).toEqual(ClrCheckboxDeprecated);

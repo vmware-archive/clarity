@@ -8,7 +8,6 @@
     @include input-border-bottom-animation($clr-forms-focused-color);
     margin-right: $clr-forms-baseline * 4;
     max-width: calc(100% - 1rem);
-    color: $clr-forms-text-color;
 
     .clr-input {
       background: none;
@@ -18,6 +17,7 @@
 
       &:not([readonly]):focus {
         background-size: 0%;
+        border: 0;
       }
     }
 
@@ -29,5 +29,11 @@
       color: $clr-forms-focused-color;
       cursor: pointer;
     }
+  }
+
+  .clr-error .clr-input-group {
+    border-bottom-color: $clr-forms-invalid-color;
+    @include input-border-bottom-animation($clr-forms-invalid-color);
+    margin-right: $clr-forms-baseline;
   }
 }

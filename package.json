@@ -32,7 +32,7 @@
         "test:lint": "tslint -p . -c tslint.json \"src/**/*.ts\" -e \"src/ks-app/**\" -e \"src/schematics/**\"",
         "test:visual": "./scripts/docker-cdc.js -t",
         "test:golden2": "ts-api-guardian --verify golden/clr-angular.d.ts dist/golden/clr-angular.d.ts",
-        "test:golden": "diff -u dist/golden/clr-angular.d.ts golden/clr-angular.d.ts",
+        "test:golden": "diff -u golden/clr-angular.d.ts dist/golden/clr-angular.d.ts",
         "test": "ng test clr-angular",
         "test:watch": "ng test clr-angular --watch",
         "test:travis": "npm-run-all test:format test:lint test build test:aot test:golden",

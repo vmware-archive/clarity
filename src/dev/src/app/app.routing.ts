@@ -34,6 +34,7 @@ export const APP_ROUTES: Routes = [
   { path: 'login', loadChildren: 'src/app/login/login.demo.module#LoginDemoModule' },
   { path: 'modal', loadChildren: 'src/app/modal/modal.demo.module#ModalDemoModule' },
   { path: 'navigation', loadChildren: 'src/app/nav/nav.demo.module#NavDemoModule' },
+  { path: 'password', loadChildren: 'src/app/password/password.demo.module#PasswordDemoModule' },
   { path: 'popovers', loadChildren: 'src/app/popovers/popovers.demo.module#PopoversDemoModule' },
   { path: 'progress-bars', loadChildren: 'src/app/progress-bars/progress-bars.demo.module#ProgressBarsDemoModule' },
   { path: 'radios', loadChildren: 'src/app/radios/radios.demo.module#RadiosDemoModule' },

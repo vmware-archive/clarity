@@ -43,7 +43,5 @@ before_script:
 
 script:
   - echo 'TRAVIS_BRANCH: '; echo $TRAVIS_BRANCH
-  - MERGE_HEAD=$(git merge-base HEAD $TRAVIS_BRANCH); echo $MERGE_HEAD
-  - BRANCH_HEAD=$(git rev-parse --verify HEAD); echo $BRANCH_HEAD
-  - precise-commits --check-only
+  - ./node_modules/.bin/precise-commits --check-only --head=2f0e81b0b --base=0f9312826
 #  - npm run $TEST_SUITE # run unit test and css regression test sets in parallel

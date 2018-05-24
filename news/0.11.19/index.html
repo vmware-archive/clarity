@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Releases - 0.4.1</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Releases - 0.11.19</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
                 i[r] = i[r] || function () {
@@ -55,7 +55,7 @@
     <router-outlet></router-outlet><news class="content-container"><div class="content-area">
     <section>
         
-        <h1>0.4.1 Changelog</h1>
+        <h1>0.11.19 Changelog</h1>
         <hr>
 
         <!---->
@@ -78,7 +78,7 @@
                 <!----><div class="summary-block">
                     <p class="summary-block-title">Released</p>
                     <p class="summary-block-details">
-                        Sep 7, 2016
+                        May 24, 2018
                     </p>
                 </div>
             </div>
@@ -88,13 +88,13 @@
                 <img class="icon" src="assets/images/logos/npm.svg">
                 <div class="description">
                     <p class="title">NPM Packages</p>
-                    <!----><p>
-                        <a href="https://www.npmjs.com/package/clarity-ui" target="_blank">clarity-ui</a><br>
-                        <a href="https://www.npmjs.com/package/clarity-angular" target="_blank">clarity-angular</a>
-                        <!---->
-                        <!---->
-                    </p>
                     <!---->
+                    <!----><p>
+                        <a href="https://www.npmjs.com/package/@clr/ui" target="_blank">@clr/ui</a><br>
+                        <a href="https://www.npmjs.com/package/@clr/angular" target="_blank">@clr/angular</a>
+                        <!----><br>
+                        <!----><a href="https://www.npmjs.com/package/@clr/icons" target="_blank">@clr/icons</a>
+                    </p>
                 </div>
             </div>
             <div class="group whats-new-mediablock">
@@ -103,125 +103,29 @@
                     <p class="title">Sketch template</p>
                     <p>
                         
-                        <a sketchtemplatelink="" target="_blank" href="assets/images/sketchTemplates/Clarity-Template-0.3.0.sketch">Download the 0.3.0 Sketch Template</a>
+                        <a sketchtemplatelink="" target="_blank" href="assets/images/sketchTemplates/Clarity-Template-0.11.6.sketch">Download the 0.11.6 Sketch Template</a>
                     </p>
                 </div>
             </div>
-            <!---->
+            <!----><div class="group whats-new-mediablock">
+                <img class="icon" src="assets/images/logos/git.svg">
+                <div class="description">
+                    <p class="title">Git Change</p>
+                    <p>
+                        <a target="_blank" href="https://github.com/vmware/clarity/commit/0737915bfd981701bda4b825a8b440d748f3e3a4">
+                            Direct link to the git change
+                        </a>
+                    </p>
+                </div>
+            </div>
         </div>
 
         <!----><!---->
             <!---->
 
-<h2>Highlights</h2>
-<ul class="list-unstyled whats-new-highlights">
-    <li>
-        <h6>Add a medium spinner size</h6>
-        <p>Clarity Spinners now support 3 sizes:</p>
-        <ul>
-            <li><code class="clr-code">.spinner-sm</code></li>
-            <li><code class="clr-code">.spinner-md</code></li>
-            <li><code class="clr-code">.spinner-lg</code></li>
-        </ul>
-        <p><code class="clr-code">.spinner-inline</code> is always a small sized spinner and can be used with text.</p>
-    </li>
-    <li>
-        <h6>Allow forms to use a grid layout</h6>
-        <p>
-            Clarity Forms can now be used within Grids by extending the <code class="clr-code">.row</code> class on a <code class="clr-code">.form-group</code> and wrapping the form fields in column classes.
-        </p>
-    </li>
-    <li>
-        <h6>Add inputs/outputs to tabs and remove unnecessary wrapper elements</h6>
-        <p>
-            While the markup hasn't changed for the tabs, the final rendered HTML looks a bit different with this release. Most notable changes are:
-        </p>
-
-        <ul class="list" style="list-style: disc; margin-top: 24px">
-            <li>
-                Moved most of the attributes to <code class="clr-code">&lt;clr-tab-link&gt;&lt;/clr-tab-link&gt;</code> and <code class="clr-code">&lt;clr-tab-content&gt;&lt;/clr-tab-content&gt;</code> tags from their children.
-            </li>
-            <li>
-                <code class="clr-code">.active</code> class applied to the active <code class="clr-code">&lt;clr-tab-link&gt;&lt;/clr-tab-link&gt;</code> and <code class="clr-code">&lt;clr-tab-content&gt;&lt;/clr-tab-content&gt;</code> tags.
-            </li>
-            <li>
-                Ability to assign custom id's to <code class="clr-code">&lt;clr-tab-link&gt;&lt;/clr-tab-link&gt;</code> and <code class="clr-code">&lt;clr-tab-content&gt;&lt;/clr-tab-content&gt;</code> tags
-            </li>
-            <li>
-                Removed <code class="clr-code">&lt;li&gt;&lt;/li&gt;</code> tags in the tab links
-            </li>
-        </ul>
-        <div style="margin-top: 24px">
-            This is a simplified version of what the markup renders to in the browser:
-            <h6>Until 0.4.0:</h6>
-            <pre><code clr-code-highlight="language-html" class="language-html">
-&lt;clr-tabs&gt;
-    &lt;ul class="nav" role="tablist"&gt;
-        &lt;clr-tab-link&gt;
-            &lt;li class="nav-item" role="presentation"&gt;
-            &lt;a class="nav-link active" href="#"
-                role="tab" id="clr-tabs-0-tab-0"
-                aria-selected="true" aria-controls="clr-tabs-0-content-0"&gt;
-                ...
-            &lt;/a&gt;
-            &lt;/li&gt;
-        &lt;/clr-tab-link&gt;
-        ...
-    &lt;/ul&gt;
-    &lt;clr-tab-content&gt;
-        &lt;section role="tabpanel" id="clr-tabs-0-content-0" aria-hidden="false" aria-labelledby="clr-tabs-0-tab-0"&gt;
-        ...
-        &lt;/section&gt;
-    &lt;/clr-tab-content&gt;
-    ...
-&lt;/clr-tabs&gt;
-</code></pre>
-            <h6>In 0.4.1:</h6>
-            <pre><code clr-code-highlight="language-html" class="language-html">
-&lt;clr-tabs&gt;
-    &lt;ul class="nav" role="tablist"&gt;
-        &lt;clr-tab-link class="nav-item
-        active" role="presentation"
-        id="link1" aria-selected="true"
-        aria-controls="content1"&gt;
-            &lt;a class="nav-link" href="#" role="tab"&gt;
-            ...
-            &lt;/a&gt;
-        &lt;/clr-tab-link&gt;
-    &lt;/ul&gt;
-    &lt;clr-tab-content role="tabpanel"
-        id="content1" aria-hidden="false"
-        aria-labelledby="link1"
-        data-hidden="false"
-        class="active"&gt;
-        &lt;section&gt;
-        ...
-        &lt;/section&gt;
-    &lt;/clr-tab-content&gt;
-&lt;/clr-tabs&gt;
-</code></pre>
-        </div>
-    </li>
-</ul>
-
 <h2>Bug Fixes</h2>
 <ul class="list">
-    <li bug-fix="">
-        Refactor toggles to use baselineRem and fix vertical alignment issues
-    </li>
-</ul>
-
-<h2>Other Changes</h2>
-<ul class="list">
-    <li>
-        Upgrade to BS4 Alpha 4
-    </li>
-    <li>
-        Add grid flex items vertical and horizontal alignment demos to the website
-    </li>
-    <li>
-        Revisit color for selected state
-    </li>
+    <li bug-fix="">Fixed <code class="clr-code">clr-datepicker</code> marking a control with <code class="clr-code">touched</code> and <code class="clr-code">dirty</code> properly (<a href="https://github.com/vmware/clarity/pull/2284" target="_blank">#2284</a>)</li>
 </ul>
 
         
@@ -236,7 +140,7 @@
             <label for="tab0" htmlfor="tab0">0.11 Changelogs</label>
             <ul class="nav-list">
                 <!----><li>
-                    <a class="nav-link" routerlinkactive="active" href="/news/0.11.19">0.11.19</a>
+                    <a class="nav-link active" routerlinkactive="active" href="/news/0.11.19">0.11.19</a>
                 </li><li>
                     <a class="nav-link" routerlinkactive="active" href="/news/0.11.18-patch.1">0.11.18-patch.1</a>
                 </li><li>
@@ -526,7 +430,7 @@
                 </li><li>
                     <a class="nav-link" routerlinkactive="active" href="/news/0.4.2">0.4.2</a>
                 </li><li>
-                    <a class="nav-link active" routerlinkactive="active" href="/news/0.4.1">0.4.1</a>
+                    <a class="nav-link" routerlinkactive="active" href="/news/0.4.1">0.4.1</a>
                 </li><li>
                     <a class="nav-link" routerlinkactive="active" href="/news/0.4.0">0.4.0</a>
                 </li>

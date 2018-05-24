@@ -1,6 +1,6 @@
 {
     "name": "clr-all",
-    "version": "0.12.0-beta.3",
+    "version": "0.12.0-beta.4",
     "private": true,
     "scripts": {
         "build:icons:web": "webpack --config webpack.icons.config.js",
@@ -35,7 +35,10 @@
         "format:fix": "node_modules/.bin/clang-format -style=file -i --glob=src/**/*.ts",
         "visual:fix": "./scripts/docker-cdc.js -u",
         "lint:fix": "tslint -p . -c tslint.json --fix \"src/**/*.ts\" -e \"**/node_modules/**\" -e \"src/ks-app/**\" -e \"src/schematics/**\"",
-        "publish:all": "node scripts/publish.js",
+        "publish:latest": "npm publish dist/clr-ui; npm publish dist/clr-angular; npm publish dist/clr-icons",
+        "publish:alpha": "npm publish dist/clr-ui --tag alpha; npm publish dist/clr-angular --tag alpha; npm publish dist/clr-icons --tag alpha",
+        "publish:beta": "npm publish dist/clr-ui --tag beta; npm publish dist/clr-angular --tag beta; npm publish dist/clr-icons --tag beta",
+        "publish:rc": "npm publish dist/clr-ui --tag rc; npm publish dist/clr-angular --tag rc; npm publish dist/clr-icons --tag rc",
         "ks:publish": "ng build --prod ks-app; cat ./dist/ks-app/index.html > ./dist/ks-app/404.html; surge -p ./dist/ks-app"
     },
     "dependencies": {

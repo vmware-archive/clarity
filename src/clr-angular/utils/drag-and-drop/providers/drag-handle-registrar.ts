@@ -15,6 +15,10 @@ export class ClrDragHandleRegistrar<T> {
     private _customHandleEl: Node;
     private _defaultHandleEl: Node;
 
+    get defaultHandleEl() {
+        return this._defaultHandleEl;
+    }
+
     set defaultHandleEl(value: Node) {
         this._defaultHandleEl = value;  // defaultHandleEl will be usually the clrDraggable element.
 
@@ -37,7 +41,7 @@ export class ClrDragHandleRegistrar<T> {
         this.renderer.addClass(el, "drag-handle");
     }
 
-    get customHandle() {
+    get customHandleEl() {
         return this._customHandleEl;
     }
 

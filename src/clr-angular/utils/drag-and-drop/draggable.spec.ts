@@ -24,8 +24,8 @@ export default function(): void {
                 this.fixture = TestBed.createComponent(NestedHandleTest);
                 this.testComponent = this.fixture.componentInstance;
                 this.draggable = this.fixture.debugElement.query(By.directive(ClrDraggable));
-                this.dragEvenListener = this.draggable.injector.get(ClrDragEventListener);
-                this.dragDragRegistrar = this.draggable.injector.get(ClrDragHandleRegistrar);
+                this.dragEventListener = this.draggable.injector.get(ClrDragEventListener);
+                this.dragHandleRegistrar = this.draggable.injector.get(ClrDragHandleRegistrar);
             });
 
             afterEach(function() {
@@ -36,9 +36,9 @@ export default function(): void {
                 this.fixture.detectChanges();
 
                 expect(this.draggable.nativeElement.classList.contains("drag-handle")).toBeTruthy();
-                expect(this.dragEvenListener.draggableEl).toBe(this.draggable.nativeElement);
-                expect(this.dragDragRegistrar._defaultHandleEl).toBe(this.draggable.nativeElement);
-                expect(this.dragDragRegistrar.customHandle).toBeUndefined();
+                expect(this.dragEventListener.draggableEl).toBe(this.draggable.nativeElement);
+                expect(this.dragHandleRegistrar.defaultHandleEl).toBe(this.draggable.nativeElement);
+                expect(this.dragHandleRegistrar.customHandleEl).toBeUndefined();
             });
 
             it("should have its nested handle as drag handle if it is present", function() {
@@ -47,9 +47,9 @@ export default function(): void {
                 this.dragHandle = this.fixture.debugElement.query(By.directive(ClrDragHandle));
                 expect(this.draggable.nativeElement.classList.contains("drag-handle")).toBeFalsy();
                 expect(this.dragHandle.nativeElement.classList.contains("drag-handle")).toBeTruthy();
-                expect(this.dragEvenListener.draggableEl).toBe(this.dragHandle.nativeElement);
-                expect(this.dragDragRegistrar.customHandle).toBe(this.dragHandle.nativeElement);
-                expect(this.dragDragRegistrar._defaultHandleEl)
+                expect(this.dragEventListener.draggableEl).toBe(this.dragHandle.nativeElement);
+                expect(this.dragHandleRegistrar.customHandleEl).toBe(this.dragHandle.nativeElement);
+                expect(this.dragHandleRegistrar.defaultHandleEl)
                     .toBe(
                         this.draggable.nativeElement,
                         `The default handle should be still set to the draggable element even though it's not made an active drag handle.`);

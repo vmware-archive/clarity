@@ -45,7 +45,7 @@ export default function(): void {
         it("registers custom element as handle", function() {
             dragHandleRegistrar.registerCustomHandle(customHandleEl);
 
-            expect(dragHandleRegistrar.customHandle).toBe(customHandleEl);
+            expect(dragHandleRegistrar.customHandleEl).toBe(customHandleEl);
             expect(dragEventListener.draggableEl).toBe(customHandleEl);
 
             expect(customHandleEl.hasListener).toBeTruthy();
@@ -59,7 +59,7 @@ export default function(): void {
             expect(draggableEl.hasListener).toBeFalsy();
             expect(draggableEl.classList.contains("drag-handle")).toBeFalsy();
 
-            expect(dragHandleRegistrar.customHandle).toBe(customHandleEl);
+            expect(dragHandleRegistrar.customHandleEl).toBe(customHandleEl);
             expect(dragEventListener.draggableEl).toBe(customHandleEl);
 
             expect(customHandleEl.hasListener).toBeTruthy();
@@ -68,12 +68,12 @@ export default function(): void {
 
         it("unregisters custom handle", function() {
             dragHandleRegistrar.registerCustomHandle(customHandleEl);
-            expect(dragHandleRegistrar.customHandle).toBe(customHandleEl);
+            expect(dragHandleRegistrar.customHandleEl).toBe(customHandleEl);
             expect(customHandleEl.hasListener).toBeTruthy();
             expect(customHandleEl.classList.contains("drag-handle")).toBeTruthy();
             dragHandleRegistrar.unregisterCustomHandle();
 
-            expect(dragHandleRegistrar.customHandle).toBeUndefined();
+            expect(dragHandleRegistrar.customHandleEl).toBeUndefined();
             expect(customHandleEl.hasListener).toBeFalsy();
             expect(customHandleEl.classList.contains("drag-handle")).toBeFalsy();
         });
@@ -83,7 +83,7 @@ export default function(): void {
                dragHandleRegistrar.defaultHandleEl = draggableEl;
                dragHandleRegistrar.registerCustomHandle(customHandleEl);
                dragHandleRegistrar.unregisterCustomHandle();
-               expect(dragHandleRegistrar.customHandle).toBeUndefined();
+               expect(dragHandleRegistrar.customHandleEl).toBeUndefined();
                expect(dragEventListener.draggableEl).toBe(draggableEl);
                expect(draggableEl.hasListener).toBeTruthy();
                expect(draggableEl.classList.contains("drag-handle")).toBeTruthy();
@@ -93,7 +93,7 @@ export default function(): void {
             dragHandleRegistrar.registerCustomHandle(customHandleEl);
             dragHandleRegistrar.defaultHandleEl = draggableEl;
 
-            expect(dragHandleRegistrar.customHandle).toBe(customHandleEl);
+            expect(dragHandleRegistrar.customHandleEl).toBe(customHandleEl);
             expect(customHandleEl.hasListener).toBeTruthy();
             expect(customHandleEl.classList.contains("drag-handle")).toBeTruthy();
         });
@@ -103,7 +103,7 @@ export default function(): void {
                dragHandleRegistrar.registerCustomHandle(customHandleEl);
                dragHandleRegistrar.defaultHandleEl = draggableEl;
                dragHandleRegistrar.unregisterCustomHandle();
-               expect(dragHandleRegistrar.customHandle).toBeUndefined();
+               expect(dragHandleRegistrar.customHandleEl).toBeUndefined();
                expect(dragEventListener.draggableEl).toBe(draggableEl);
                expect(draggableEl.hasListener).toBeTruthy();
                expect(draggableEl.classList.contains("drag-handle")).toBeTruthy();

@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {AfterViewInit, Component, QueryList, ViewChildren} from "@angular/core";
-import {ClrCodeHighlight, CodeHighlight} from "@clr/angular";
+import { AfterViewInit, Component, QueryList, ViewChildren } from '@angular/core';
+import { ClrCodeHighlight, CodeHighlight } from '@clr/angular';
 
 /** @deprecated since 0.12 */
 const CSS_EXAMPLE = `.some-component {
@@ -84,25 +84,25 @@ const JSON_EXAMPLE = `{
 }`;
 
 /** @deprecated since 0.12 */
-@Component({templateUrl: "./code.component.html"})
+@Component({ templateUrl: './code.component.html' })
 export class KSCode implements AfterViewInit {
-    /**
-     * @description
-     * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
-     */
-    private aCodeHighlight: CodeHighlight;
-    private aClrCodeHighlight: ClrCodeHighlight;
+  /**
+   * @description
+   * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
+   */
+  private aCodeHighlight: CodeHighlight;
+  private aClrCodeHighlight: ClrCodeHighlight;
 
-    @ViewChildren(ClrCodeHighlight) highlights: QueryList<ClrCodeHighlight>;
-    CSS_EXAMPLE = CSS_EXAMPLE;
-    HTML_EXAMPLE = HTML_EXAMPLE;
-    JAVASCRIPT_EXAMPLE = JAVASCRIPT_EXAMPLE;
-    TYPESCRIPT_EXAMPLE = TYPESCRIPT_EXAMPLE;
-    JSON_EXAMPLE = JSON_EXAMPLE;
+  @ViewChildren(ClrCodeHighlight) highlights: QueryList<ClrCodeHighlight>;
+  CSS_EXAMPLE = CSS_EXAMPLE;
+  HTML_EXAMPLE = HTML_EXAMPLE;
+  JAVASCRIPT_EXAMPLE = JAVASCRIPT_EXAMPLE;
+  TYPESCRIPT_EXAMPLE = TYPESCRIPT_EXAMPLE;
+  JSON_EXAMPLE = JSON_EXAMPLE;
 
-    ngAfterViewInit() {
-        this.highlights.forEach(highlight => {
-            highlight.redraw();
-        });
-    }
+  ngAfterViewInit() {
+    this.highlights.forEach(highlight => {
+      highlight.redraw();
+    });
+  }
 }

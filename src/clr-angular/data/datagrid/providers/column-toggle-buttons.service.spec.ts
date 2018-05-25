@@ -4,35 +4,35 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {ColumnToggleButtonsService} from "./column-toggle-buttons.service";
+import { ColumnToggleButtonsService } from './column-toggle-buttons.service';
 
 export default function(): void {
-    describe("ColumnToggleButtons provider", function() {
-        let service: ColumnToggleButtonsService;
+  describe('ColumnToggleButtons provider', function() {
+    let service: ColumnToggleButtonsService;
 
-        beforeEach(function() {
-            service = new ColumnToggleButtonsService();
-        });
-
-        it("should have expected properties", function() {
-            expect(service.buttons).toBeNull();
-            expect(service.selectAllDisabled).toBe(false);
-            expect(service.okButtonClicked.subscribe).toBeDefined();
-            expect(service.selectAllButtonClicked.subscribe).toBeDefined();
-        });
-
-        it("should emit clicks", function() {
-            let calls = 0;
-            service.okButtonClicked.subscribe(() => {
-                calls++;
-            });
-            service.selectAllButtonClicked.subscribe(() => {
-                calls++;
-            });
-
-            service.buttonClicked("ok");
-            service.buttonClicked("selectAll");
-            expect(calls).toEqual(2);
-        });
+    beforeEach(function() {
+      service = new ColumnToggleButtonsService();
     });
+
+    it('should have expected properties', function() {
+      expect(service.buttons).toBeNull();
+      expect(service.selectAllDisabled).toBe(false);
+      expect(service.okButtonClicked.subscribe).toBeDefined();
+      expect(service.selectAllButtonClicked.subscribe).toBeDefined();
+    });
+
+    it('should emit clicks', function() {
+      let calls = 0;
+      service.okButtonClicked.subscribe(() => {
+        calls++;
+      });
+      service.selectAllButtonClicked.subscribe(() => {
+        calls++;
+      });
+
+      service.buttonClicked('ok');
+      service.buttonClicked('selectAll');
+      expect(calls).toEqual(2);
+    });
+  });
 }

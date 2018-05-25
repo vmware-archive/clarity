@@ -3,12 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-forms-demo",
-    styleUrls: [],
-    template: `
+  selector: 'clr-forms-demo',
+  styleUrls: [],
+  template: `
         <h2>Forms</h2>
         <ul>
             <li><a [routerLink]="['./form-fields']">Form Fields</a></li>
@@ -21,7 +21,6 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./form-reactive']">Reactive Forms</a></li>
         </ul>
         <router-outlet></router-outlet>
-    `
+    `,
 })
-export class FormsDemo {
-}
+export class FormsDemo {}

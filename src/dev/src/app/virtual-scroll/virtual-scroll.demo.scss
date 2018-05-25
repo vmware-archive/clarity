@@ -2,30 +2,30 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-.container  {
-    height: 120px;
-    width: 120px;
-    border: 1px solid black;
-    overflow: auto;
+.container {
+  height: 120px;
+  width: 120px;
+  border: 1px solid black;
+  overflow: auto;
 }
 
 .slot-machine {
-    height: 130px;
-    width: 182px;
-    border: 1px solid black;
+  height: 130px;
+  width: 182px;
+  border: 1px solid black;
 }
 
 .slot {
-    display: inline-block;
-    height: 100%;
-    width: 60px;
-    padding: 0 10px;
-    overflow: auto;
+  display: inline-block;
+  height: 100%;
+  width: 60px;
+  padding: 0 10px;
+  overflow: auto;
 }
 
 .slot img {
-    float: left;
-    height: 40px;
-    width: 40px;
-    margin-bottom: 5px;
+  float: left;
+  height: 40px;
+  width: 40px;
+  margin-bottom: 5px;
 }

@@ -4,19 +4,19 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
-import {Subject} from "rxjs";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class VerticalNavGroupService {
-    private _expandChange: Subject<boolean> = new Subject<boolean>();
+  private _expandChange: Subject<boolean> = new Subject<boolean>();
 
-    get expandChange(): Observable<boolean> {
-        return this._expandChange.asObservable();
-    }
+  get expandChange(): Observable<boolean> {
+    return this._expandChange.asObservable();
+  }
 
-    expand(): void {
-        this._expandChange.next(true);
-    }
+  expand(): void {
+    this._expandChange.next(true);
+  }
 }

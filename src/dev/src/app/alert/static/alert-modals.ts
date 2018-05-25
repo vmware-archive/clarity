@@ -3,9 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
-@Component(
-    {selector: "clr-alert-demo-modals", styleUrls: ["../alert.demo.scss"], templateUrl: "./alert-modals.demo.html"})
-export class AlertModalsDemo {
-}
+@Component({
+  selector: 'clr-alert-demo-modals',
+  styleUrls: ['../alert.demo.scss'],
+  templateUrl: './alert-modals.demo.html',
+})
+export class AlertModalsDemo {}

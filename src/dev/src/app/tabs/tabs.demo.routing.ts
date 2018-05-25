@@ -3,20 +3,23 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ModuleWithProviders} from "@angular/core/src/metadata/ng_module";
-import {RouterModule, Routes} from "@angular/router";
+import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
+import { RouterModule, Routes } from '@angular/router';
 
-import {TabsAngularDemo} from "./tabs-angular";
-import {TabsStaticDemo} from "./tabs-static";
-import {TabsDemo} from "./tabs.demo";
+import { TabsAngularDemo } from './tabs-angular';
+import { TabsStaticDemo } from './tabs-static';
+import { TabsDemo } from './tabs.demo';
 
-const ROUTES: Routes = [{
-    path: "",
+const ROUTES: Routes = [
+  {
+    path: '',
     component: TabsDemo,
     children: [
-        {path: "", redirectTo: "static", pathMatch: "full"}, {path: "static", component: TabsStaticDemo},
-        {path: "angular", component: TabsAngularDemo}
-    ]
-}];
+      { path: '', redirectTo: 'static', pathMatch: 'full' },
+      { path: 'static', component: TabsStaticDemo },
+      { path: 'angular', component: TabsAngularDemo },
+    ],
+  },
+];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forChild(ROUTES);

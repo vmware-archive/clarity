@@ -4,21 +4,21 @@
 
 // Style overrides for KS App
 .header {
-    .branding {
-        .nav-link {
-            .clr-icon {
-                height: 36px;
-                width: 36px;
-                margin-right: 12px;
-            }
+  .branding {
+    .nav-link {
+      .clr-icon {
+        height: 36px;
+        width: 36px;
+        margin-right: 12px;
       }
     }
+  }
 }
 
 .sidenav {
-    border-right: none;
+  border-right: none;
 
-    .sidenav-content {
-        padding-bottom: 0;
-    }
+  .sidenav-content {
+    padding-bottom: 0;
+  }
 }

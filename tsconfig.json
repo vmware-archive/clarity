@@ -9,17 +9,12 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "typeRoots": ["node_modules/@types"],
     "paths": {
-        "@clr/angular": ["src/clr-angular"],
-        "@clr/icons": ["src/clr-icons"],
-        "@clr/icons/shapes/*": ["src/clr-icons/shapes", "src/clr-icons/shapes/*"]
+      "@clr/angular": ["src/clr-angular"],
+      "@clr/icons": ["src/clr-icons"],
+      "@clr/icons/shapes/*": ["src/clr-icons/shapes", "src/clr-icons/shapes/*"]
     },
-    "lib": [
-      "es2017",
-      "dom"
-    ]
+    "lib": ["es2017", "dom"]
   }
 }

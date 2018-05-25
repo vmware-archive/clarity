@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
-import {Inventory} from "../inventory/inventory";
-import {User} from "../inventory/user";
+import { Inventory } from '../inventory/inventory';
+import { User } from '../inventory/user';
 
 const EXAMPLE = `
 <-- Inside the full datagrid declaration -->
@@ -21,23 +21,23 @@ const EXAMPLE = `
 `;
 
 @Component({
-    selector: "clr-datagrid-conditional-pagination-demo",
-    providers: [Inventory],
-    templateUrl: "pagination-conditional.html",
-    styleUrls: ["../datagrid.demo.scss"]
+  selector: 'clr-datagrid-conditional-pagination-demo',
+  providers: [Inventory],
+  templateUrl: 'pagination-conditional.html',
+  styleUrls: ['../datagrid.demo.scss'],
 })
 export class DatagridConditionalPaginationDemo {
-    example = EXAMPLE;
-    users: User[];
-    paginationEnabled: boolean = false;
+  example = EXAMPLE;
+  users: User[];
+  paginationEnabled: boolean = false;
 
-    constructor(inventory: Inventory) {
-        inventory.size = 103;
-        inventory.reset();
-        this.users = inventory.all;
-    }
+  constructor(inventory: Inventory) {
+    inventory.size = 103;
+    inventory.reset();
+    this.users = inventory.all;
+  }
 
-    toggle(): void {
-        this.paginationEnabled = !this.paginationEnabled;
-    }
+  toggle(): void {
+    this.paginationEnabled = !this.paginationEnabled;
+  }
 }

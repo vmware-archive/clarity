@@ -4,38 +4,38 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, OnInit, ViewChild} from "@angular/core";
+import { Component, OnInit, ViewChild } from '@angular/core';
 
-import {ClrCodeHighlight, ClrWizard} from "@clr/angular";
+import { ClrCodeHighlight, ClrWizard } from '@clr/angular';
 
-@Component({selector: "clr-wizard-reset", templateUrl: "./wizard-reset.demo.html"})
+@Component({ selector: 'clr-wizard-reset', templateUrl: './wizard-reset.demo.html' })
 export class WizardResetDemo implements OnInit {
-    @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
+  @ViewChild('wizard') wizard: ClrWizard;
+  @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
-    public open: boolean = false;
+  public open: boolean = false;
 
-    public model: any;
+  public model: any;
 
-    public ngOnInit() {
-        this.model = {forceReset: false, favoriteColor: "", luckyNumber: "", flavorOfIceCream: ""};
+  public ngOnInit() {
+    this.model = { forceReset: false, favoriteColor: '', luckyNumber: '', flavorOfIceCream: '' };
+  }
+
+  public doFinish(): void {
+    this.doReset();
+  }
+
+  public doReset(): void {
+    if (this.model.forceReset) {
+      this.model.forceReset = false;
+      this.model.favoriteColor = '';
+      this.model.luckyNumber = '';
+      this.model.flavorOfIceCream = '';
+      this.wizard.reset();
     }
+  }
 
-    public doFinish(): void {
-        this.doReset();
-    }
-
-    public doReset(): void {
-        if (this.model.forceReset) {
-            this.model.forceReset = false;
-            this.model.favoriteColor = "";
-            this.model.luckyNumber = "";
-            this.model.flavorOfIceCream = "";
-            this.wizard.reset();
-        }
-    }
-
-    code: string = `
+  code: string = `
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { ClrWizard } from "@clr/angular";
 
@@ -75,7 +75,7 @@ export class WizardResetDemo implements OnInit {
 }
 `;
 
-    html: string = `
+  html: string = `
 <clr-wizard #wizard [(clrWizardOpen)]="open" (clrWizardOnFinish)="doFinish()"
     (clrWizardOnCancel)="doFinish()">
 

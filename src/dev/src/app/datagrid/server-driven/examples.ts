@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 export const EXAMPLES = {
-    stateInterface: `
+  stateInterface: `
 interface State {
     page?: {
         from?: number;
@@ -19,7 +19,7 @@ interface State {
 }
 `,
 
-    serverDrivenTS: `
+  serverDrivenTS: `
 import {State} from "@clr/angular";
 
 class MyComponent {
@@ -50,7 +50,7 @@ class MyComponent {
 }
 `,
 
-    serverDrivenHTML: `
+  serverDrivenHTML: `
 <clr-datagrid (clrDgRefresh)="refresh($event)" [clrDgLoading]="loading">
     <clr-dg-column>User ID</clr-dg-column>
     <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
@@ -74,5 +74,5 @@ class MyComponent {
         <clr-dg-pagination #pagination [clrDgTotalItems]="total"></clr-dg-pagination>
     </clr-dg-footer>
 </clr-datagrid>
-`
+`,
 };

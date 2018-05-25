@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 export const EXAMPLES = {
-    filterInterface: `
+  filterInterface: `
 interface Filter<T> {
     isActive(): boolean;
     accepts(item: T): boolean;
@@ -12,7 +12,7 @@ interface Filter<T> {
 }
 `,
 
-    inlineFilterTS: `
+  inlineFilterTS: `
 import {Filter} from "@clr/angular";
 
 class MyFilter implements Filter<User> {
@@ -27,7 +27,7 @@ class MyComponent {
 }
 `,
 
-    inlineFilterHTML: `
+  inlineFilterHTML: `
 <-- In the columns declaration -->
 <clr-dg-column>
     My column
@@ -37,7 +37,7 @@ class MyComponent {
 </clr-dg-column>
 `,
 
-    customFilterComponentTS: `
+  customFilterComponentTS: `
 import {Filter, DatagridFilter} from "@clr/angular";
 
 @Component({
@@ -54,7 +54,7 @@ class MyFilter implements Filter<User> {
 }
 `,
 
-    customFilterComponentHTML: `
+  customFilterComponentHTML: `
 <-- In the columns declaration -->
 <clr-dg-column>
     My column
@@ -64,7 +64,7 @@ class MyFilter implements Filter<User> {
 </clr-dg-column>
 `,
 
-    templateVariableTS: `
+  templateVariableTS: `
 @Component({
     selector: "my-reusable-filter",
     /* ... */
@@ -76,7 +76,7 @@ class MyReusableFilter {
 }
 `,
 
-    templateVariableHTML: `
+  templateVariableHTML: `
 <-- In the columns declaration -->
 <clr-dg-column>
     My column
@@ -86,7 +86,7 @@ class MyReusableFilter {
 </clr-dg-column>
 `,
 
-    colorFilterTS: `
+  colorFilterTS: `
 import {Filter} from "@clr/angular";
 
 @Component({
@@ -100,7 +100,7 @@ class ColorFilter implements Filter<User> {
 }
 `,
 
-    colorFilterHTML: `
+  colorFilterHTML: `
 <-- In the columns declaration -->
 <clr-dg-column>
     Favorite color
@@ -108,5 +108,5 @@ class ColorFilter implements Filter<User> {
         <color-filter #colorFilter></color-filter>
     </clr-dg-filter>
 </clr-dg-column>
-`
+`,
 };

@@ -4,18 +4,20 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {CommonModule} from "@angular/common";
-import {NgModule, Type} from "@angular/core";
-import {ClrCodeHighlight} from "./syntax-highlight";
+import { CommonModule } from '@angular/common';
+import { NgModule, Type } from '@angular/core';
+import { ClrCodeHighlight } from './syntax-highlight';
 
 /** @deprecated since 0.12 */
 export const CLR_CODE_HIGHLIGHT_DIRECTIVES: Type<any>[] = [ClrCodeHighlight];
 
 /** @deprecated since 0.12 */
-@NgModule(
-    {imports: [CommonModule], declarations: [CLR_CODE_HIGHLIGHT_DIRECTIVES], exports: [CLR_CODE_HIGHLIGHT_DIRECTIVES]})
-export class ClrSyntaxHighlightModule {
-}
+@NgModule({
+  imports: [CommonModule],
+  declarations: [CLR_CODE_HIGHLIGHT_DIRECTIVES],
+  exports: [CLR_CODE_HIGHLIGHT_DIRECTIVES],
+})
+export class ClrSyntaxHighlightModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

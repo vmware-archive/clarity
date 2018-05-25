@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
         <clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardSize]="'lg'">
             <clr-wizard-title>My Wizard Title</clr-wizard-title>
             <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
@@ -46,12 +46,12 @@ import {Component} from "@angular/core";
                 <p>Content for step 5</p>
             </clr-wizard-page>
         </clr-wizard>
-    `
+    `,
 })
 export class HeaderActionsTestComponent {
-    open: boolean = true;
-    _headerActionWasClicked = false;
-    headerActionClicked = function() {
-        this._headerActionWasClicked = true;
-    };
+  open: boolean = true;
+  _headerActionWasClicked = false;
+  headerActionClicked = function() {
+    this._headerActionWasClicked = true;
+  };
 }

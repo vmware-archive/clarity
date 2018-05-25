@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 export const EXAMPLES = {
-    sortingTS: `
+  sortingTS: `
 import {Comparator} from "@clr/angular";
 
 class PokemonComparator implements Comparator<User> {
@@ -19,12 +19,12 @@ class MyComponent {
 }
 `,
 
-    sortingHTML: `
+  sortingHTML: `
 <-- In the columns declaration -->
 <clr-dg-column [clrDgField]="'pokemon.name'"
     [clrDgSortBy]="pokemonComparator">Pokemon</clr-dg-column>
 
 <-- Or, default propery comparator created by shortcut on clrDgSortBy -->
 <clr-dg-column [clrDgSortBy]="'pokemon.name'">Pokemon</clr-dg-column>
-`
+`,
 };

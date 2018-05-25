@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from "./signpost";
-export * from "./signpost-content";
-export * from "./signpost-trigger";
-export * from "./signpost.module";
+export * from './signpost';
+export * from './signpost-content';
+export * from './signpost-trigger';
+export * from './signpost.module';

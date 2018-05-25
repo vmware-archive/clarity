@@ -3,10 +3,10 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @include exports('grid-deprecated.clarity') {
-    .row {
-        &.force-fit {
-            margin-left: 0;
-            margin-right: 0;
-        }
+  .row {
+    &.force-fit {
+      margin-left: 0;
+      margin-right: 0;
     }
+  }
 }

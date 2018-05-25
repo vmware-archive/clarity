@@ -4,5 +4,5 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 export interface ClrDatagridStringFilterInterface<T> {
-    accepts(item: T, search: string): boolean;
+  accepts(item: T, search: string): boolean;
 }

@@ -7,7 +7,7 @@
 /**
  * This is the en-001 short locale date format. Setting as default.
  */
-export const DEFAULT_LOCALE_FORMAT: string = "dd/MM/y";
+export const DEFAULT_LOCALE_FORMAT: string = 'dd/MM/y';
 
 // https://en.wikipedia.org/wiki/Date_format_by_country
 export const LITTLE_ENDIAN_REGEX: RegExp = /d+.+m+.+y+/i;
@@ -23,29 +23,30 @@ export const MOBILE_USERAGENT_REGEX: RegExp = /Mobi/i;
 
 export const RTL_REGEX: RegExp = /\u200f/g;
 
-export const YEAR: string = "YYYY";
-export const MONTH: string = "MM";
-export const DATE: string = "DD";
+export const YEAR: string = 'YYYY';
+export const MONTH: string = 'MM';
+export const DATE: string = 'DD';
 
-export type FormatType = "LITTLE_ENDIAN"|"MIDDLE_ENDIAN"|"BIG_ENDIAN";
+export type FormatType = 'LITTLE_ENDIAN' | 'MIDDLE_ENDIAN' | 'BIG_ENDIAN';
 
 export type InputDateDisplayFormat = {
-    readonly name: FormatType; readonly format: [string, string, string]
+  readonly name: FormatType;
+  readonly format: [string, string, string];
 };
 
 export const LITTLE_ENDIAN: InputDateDisplayFormat = {
-    name: "LITTLE_ENDIAN",
-    format: [DATE, MONTH, YEAR]
+  name: 'LITTLE_ENDIAN',
+  format: [DATE, MONTH, YEAR],
 };
 
 export const MIDDLE_ENDIAN: InputDateDisplayFormat = {
-    name: "MIDDLE_ENDIAN",
-    format: [MONTH, DATE, YEAR]
+  name: 'MIDDLE_ENDIAN',
+  format: [MONTH, DATE, YEAR],
 };
 
 export const BIG_ENDIAN: InputDateDisplayFormat = {
-    name: "BIG_ENDIAN",
-    format: [YEAR, MONTH, DATE]
+  name: 'BIG_ENDIAN',
+  format: [YEAR, MONTH, DATE],
 };
 
 export const NO_OF_DAYS_IN_A_WEEK: number = 7;

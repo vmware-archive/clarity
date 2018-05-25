@@ -3,12 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-button-group-static-demo",
-    styleUrls: ["../button-group.demo.scss"],
-    template: `
+  selector: 'clr-button-group-static-demo',
+  styleUrls: ['../button-group.demo.scss'],
+  template: `
         <h4>Static Styles</h4>
         <ul>
             <li><a [routerLink]="['./basic-structure']">Basic Structure</a></li>
@@ -22,7 +22,6 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./cards']">Cards</a></li>
         </ul>
         <router-outlet></router-outlet>
-    `
+    `,
 })
-export class ButtonGroupStaticDemo {
-}
+export class ButtonGroupStaticDemo {}

@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 const EXAMPLE_1 = `
 <clr-tree-node>
@@ -40,23 +40,23 @@ const EXAMPLE_2 = `
 `;
 
 @Component({
-    selector: "clr-tree-node-label-change-expand-demo",
-    styleUrls: ["../tree-view.demo.scss"],
-    templateUrl: "./label-change-on-expand.html"
+  selector: 'clr-tree-node-label-change-expand-demo',
+  styleUrls: ['../tree-view.demo.scss'],
+  templateUrl: './label-change-on-expand.html',
 })
 export class TreeNodeLabelChangeOnExpandDemo {
-    private _expanded: boolean = false;
+  private _expanded: boolean = false;
 
-    example1 = EXAMPLE_1;
-    example2 = EXAMPLE_2;
+  example1 = EXAMPLE_1;
+  example2 = EXAMPLE_2;
 
-    get expanded(): boolean {
-        return this._expanded;
-    }
+  get expanded(): boolean {
+    return this._expanded;
+  }
 
-    set expanded(value: boolean) {
-        this._expanded = value;
-    }
+  set expanded(value: boolean) {
+    this._expanded = value;
+  }
 
-    selected: boolean = false;
+  selected: boolean = false;
 }

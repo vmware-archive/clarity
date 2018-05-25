@@ -3,16 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ChangeDetectorRef, Component, ContentChild, OnInit} from "@angular/core";
-import {Subscription} from "rxjs";
+import { ChangeDetectorRef, Component, ContentChild, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import {ClrDatagridColumnToggle} from "./datagrid-column-toggle";
-import {HideableColumnService} from "./providers/hideable-column.service";
-import {Selection, SelectionType} from "./providers/selection";
+import { ClrDatagridColumnToggle } from './datagrid-column-toggle';
+import { HideableColumnService } from './providers/hideable-column.service';
+import { Selection, SelectionType } from './providers/selection';
 
 @Component({
-    selector: "clr-dg-footer",
-    template: `
+  selector: 'clr-dg-footer',
+  template: `
         <ng-container
             *ngIf="(selection.selectionType === SELECTION_TYPE.Multi) && (selection.current.length > 0)">
             <clr-checkbox [clrDisabled]="true" [clrChecked]="true" class="datagrid-foot-select">
@@ -26,40 +26,45 @@ import {Selection, SelectionType} from "./providers/selection";
         </div>
         <ng-content select="clr-dg-pagination"></ng-content>
     `,
-    host: {
-        "[class.datagrid-foot]": "true",
-    }
+  host: {
+    '[class.datagrid-foot]': 'true',
+  },
 })
 export class ClrDatagridFooter implements OnInit {
-    constructor(public selection: Selection, public hideableColumnService: HideableColumnService,
-                public cdr: ChangeDetectorRef) {}
+  constructor(
+    public selection: Selection,
+    public hideableColumnService: HideableColumnService,
+    public cdr: ChangeDetectorRef
+  ) {}
 
-    public activeToggler: boolean;
-    private subscriptions: Subscription[] = [];
+  public activeToggler: boolean;
+  private subscriptions: Subscription[] = [];
 
-    /* reference to the enum so that template can access */
-    public SELECTION_TYPE = SelectionType;
+  /* reference to the enum so that template can access */
+  public SELECTION_TYPE = SelectionType;
 
-    @ContentChild(ClrDatagridColumnToggle) toggle: ClrDatagridColumnToggle;
+  @ContentChild(ClrDatagridColumnToggle) toggle: ClrDatagridColumnToggle;
 
-    ngOnInit() {
-        this.subscriptions.push(this.hideableColumnService.columnListChange.subscribe((change) => {
-            const hiddenColumnsInSub = change.filter(col => col);
-            if (hiddenColumnsInSub.length > 0) {
-                this.activeToggler = true;
-            }
-        }));
-
-        const hiddenColumns = this.hideableColumnService.getColumns().filter(col => col);
-
-        if (hiddenColumns.length > 0) {
-            this.activeToggler = true;
+  ngOnInit() {
+    this.subscriptions.push(
+      this.hideableColumnService.columnListChange.subscribe(change => {
+        const hiddenColumnsInSub = change.filter(col => col);
+        if (hiddenColumnsInSub.length > 0) {
+          this.activeToggler = true;
         }
-    }
+      })
+    );
 
-    ngOnDestroy() {
-        this.subscriptions.forEach((sub) => {
-            sub.unsubscribe();
-        });
+    const hiddenColumns = this.hideableColumnService.getColumns().filter(col => col);
+
+    if (hiddenColumns.length > 0) {
+      this.activeToggler = true;
     }
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => {
+      sub.unsubscribe();
+    });
+  }
 }

@@ -3,12 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-dropdown-static-positioning-demo",
-    styleUrls: ["./dropdown.demo.scss"],
-    templateUrl: "./dropdown-static-positioning.demo.html"
+  selector: 'clr-dropdown-static-positioning-demo',
+  styleUrls: ['./dropdown.demo.scss'],
+  templateUrl: './dropdown-static-positioning.demo.html',
 })
-export class DropdownStaticPositioningDemo {
-}
+export class DropdownStaticPositioningDemo {}

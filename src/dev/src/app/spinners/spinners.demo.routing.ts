@@ -3,20 +3,23 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ModuleWithProviders} from "@angular/core/src/metadata/ng_module";
-import {RouterModule, Routes} from "@angular/router";
+import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
+import { RouterModule, Routes } from '@angular/router';
 
-import {SpinnerSizesDemo} from "./spinner-sizes";
-import {SpinnerTypesDemo} from "./spinner-types";
-import {SpinnerDemo} from "./spinner.demo";
+import { SpinnerSizesDemo } from './spinner-sizes';
+import { SpinnerTypesDemo } from './spinner-types';
+import { SpinnerDemo } from './spinner.demo';
 
-const ROUTES: Routes = [{
-    path: "",
+const ROUTES: Routes = [
+  {
+    path: '',
     component: SpinnerDemo,
     children: [
-        {path: "", redirectTo: "spinner-types", pathMatch: "full"},
-        {path: "spinner-types", component: SpinnerTypesDemo}, {path: "spinner-sizes", component: SpinnerSizesDemo}
-    ]
-}];
+      { path: '', redirectTo: 'spinner-types', pathMatch: 'full' },
+      { path: 'spinner-types', component: SpinnerTypesDemo },
+      { path: 'spinner-sizes', component: SpinnerSizesDemo },
+    ],
+  },
+];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forChild(ROUTES);

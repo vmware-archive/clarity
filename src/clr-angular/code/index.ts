@@ -4,5 +4,5 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from "./code.module";
-export * from "./syntax-highlight/index";
+export * from './code.module';
+export * from './syntax-highlight/index';

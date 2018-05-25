@@ -3,11 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, Input} from "@angular/core";
+import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: "recursive-structure",
-    template: `
+  selector: 'recursive-structure',
+  template: `
         <clr-tree-node>
             {{item.name}}
             <ng-template [clrIfExpanded]="item.expanded" *ngFor="let child of item.children">
@@ -17,9 +17,9 @@ import {Component, Input} from "@angular/core";
                 </recursive-structure>
             </ng-template>
         </clr-tree-node>
-    `
+    `,
 })
 export class RecursiveStructureComponent {
-    @Input() item: any;
-    @Input() selected: boolean = false;
+  @Input() item: any;
+  @Input() selected: boolean = false;
 }

@@ -3,33 +3,36 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import {EXAMPLES} from "./examples";
+import { EXAMPLES } from './examples';
 
-@Component(
-    {selector: "clr-reactive-forms-demo", styleUrls: ["./reactive-forms.scss"], templateUrl: "./reactive-forms.html"})
+@Component({
+  selector: 'clr-reactive-forms-demo',
+  styleUrls: ['./reactive-forms.scss'],
+  templateUrl: './reactive-forms.html',
+})
 export class ReactiveFormsDemo {
-    examples = EXAMPLES;
+  examples = EXAMPLES;
 
-    employeeAddressForm = new FormGroup({
-        fullName: new FormControl("", Validators.required),
-        address: new FormGroup({
-            postalCode: new FormControl("", Validators.required),
-            country: new FormControl("", Validators.required)
-        })
-    });
+  employeeAddressForm = new FormGroup({
+    fullName: new FormControl('', Validators.required),
+    address: new FormGroup({
+      postalCode: new FormControl('', Validators.required),
+      country: new FormControl('', Validators.required),
+    }),
+  });
 
-    submitted = false;
+  submitted = false;
 
-    onSubmit() {
-        this.submitted = true;
-        console.log(this.employeeAddressForm.value);
-    }
+  onSubmit() {
+    this.submitted = true;
+    console.log(this.employeeAddressForm.value);
+  }
 
-    addNewEmployeeAddress() {
-        this.employeeAddressForm.reset();
-        this.submitted = false;
-    }
+  addNewEmployeeAddress() {
+    this.employeeAddressForm.reset();
+    this.submitted = false;
+  }
 }

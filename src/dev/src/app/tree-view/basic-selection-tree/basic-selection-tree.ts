@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 const EXAMPLE_1 = `
 <clr-tree-node [(clrSelected)]="selected1">
@@ -58,15 +58,15 @@ const EXAMPLE_2 = `
 `;
 
 @Component({
-    selector: "clr-basic-selection-tree-demo",
-    styleUrls: ["../tree-view.demo.scss"],
-    templateUrl: "./basic-selection-tree.html"
+  selector: 'clr-basic-selection-tree-demo',
+  styleUrls: ['../tree-view.demo.scss'],
+  templateUrl: './basic-selection-tree.html',
 })
 export class BasicSelectionTreeDemo {
-    example1 = EXAMPLE_1;
-    example2 = EXAMPLE_2;
+  example1 = EXAMPLE_1;
+  example2 = EXAMPLE_2;
 
-    selected1: boolean = false;
-    selected1Child: boolean = false;
-    selected2: boolean = false;
+  selected1: boolean = false;
+  selected1Child: boolean = false;
+  selected2: boolean = false;
 }

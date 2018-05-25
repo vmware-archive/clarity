@@ -4,12 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import {ClrDatepickerModule} from "../forms/datepicker/datepicker.module";
-import {ClrCheckboxModule} from "./checkbox/checkbox.module";
+import { ClrDatepickerModule } from '../forms/datepicker/datepicker.module';
+import { ClrCheckboxModule } from './checkbox/checkbox.module';
 
-@NgModule({imports: [CommonModule], exports: [ClrCheckboxModule, ClrDatepickerModule]})
-export class ClrFormsModule {
-}
+@NgModule({ imports: [CommonModule], exports: [ClrCheckboxModule, ClrDatepickerModule] })
+export class ClrFormsModule {}

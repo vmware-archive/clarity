@@ -24,7 +24,7 @@
       "format": "path",
       "description": "The directory the app resides in"
     },
-    "module":  {
+    "module": {
       "type": "string",
       "description": "Allows specification of the declaring module.",
       "alias": "m",

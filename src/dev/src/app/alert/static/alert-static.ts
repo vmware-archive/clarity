@@ -3,12 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-alert-demo-static",
-    styleUrls: ["../alert.demo.scss"],
-    template: `
+  selector: 'clr-alert-demo-static',
+  styleUrls: ['../alert.demo.scss'],
+  template: `
         <h4>Static Styles</h4>
         <ul>
             <li><a [routerLink]="['./styles']">Styles</a></li>
@@ -19,7 +19,6 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./app-level']">App Level Alerts</a></li>
         </ul>
         <router-outlet></router-outlet>
-    `
+    `,
 })
-export class AlertStaticDemo {
-}
+export class AlertStaticDemo {}

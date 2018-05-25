@@ -4,118 +4,121 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component} from "@angular/core";
-import {TestBed} from "@angular/core/testing";
-import {Subscription} from "rxjs";
+import { Component } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { Subscription } from 'rxjs';
 
-import {itIgnore} from "../../../../tests/tests.helpers";
-import {TestContext} from "../../data/datagrid/helpers.spec";
-import {IfOpenService} from "../../utils/conditional/if-open.service";
-import {FormControlService} from "../common/form-control.service";
+import { itIgnore } from '../../../../tests/tests.helpers';
+import { TestContext } from '../../data/datagrid/helpers.spec';
+import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { FormControlService } from '../common/form-control.service';
 
-import {ClrDateContainer} from "./date-container";
-import {DateFormControlService} from "./providers/date-form-control.service";
-import {DateIOService} from "./providers/date-io.service";
-import {DateNavigationService} from "./providers/date-navigation.service";
-import {DatepickerEnabledService} from "./providers/datepicker-enabled.service";
-import {MockDatepickerEnabledService} from "./providers/datepicker-enabled.service.mock";
-import {LocaleHelperService} from "./providers/locale-helper.service";
+import { ClrDateContainer } from './date-container';
+import { DateFormControlService } from './providers/date-form-control.service';
+import { DateIOService } from './providers/date-io.service';
+import { DateNavigationService } from './providers/date-navigation.service';
+import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
+import { MockDatepickerEnabledService } from './providers/datepicker-enabled.service.mock';
+import { LocaleHelperService } from './providers/locale-helper.service';
 
 export default function() {
-    describe("Date Container Component", () => {
-        let context: TestContext<ClrDateContainer, TestComponent>;
-        let enabledService: MockDatepickerEnabledService;
-        let dateFormControlService: DateFormControlService;
+  describe('Date Container Component', () => {
+    let context: TestContext<ClrDateContainer, TestComponent>;
+    let enabledService: MockDatepickerEnabledService;
+    let dateFormControlService: DateFormControlService;
 
-        beforeEach(function() {
-            TestBed.overrideComponent(ClrDateContainer, {
-                set: {
-                    providers: [
-                        {provide: DatepickerEnabledService, useClass: MockDatepickerEnabledService}, IfOpenService,
-                        DateNavigationService, LocaleHelperService, DateIOService, FormControlService,
-                        DateFormControlService
-                    ]
-                }
-            });
+    beforeEach(function() {
+      TestBed.overrideComponent(ClrDateContainer, {
+        set: {
+          providers: [
+            { provide: DatepickerEnabledService, useClass: MockDatepickerEnabledService },
+            IfOpenService,
+            DateNavigationService,
+            LocaleHelperService,
+            DateIOService,
+            FormControlService,
+            DateFormControlService,
+          ],
+        },
+      });
 
-            context = this.create(ClrDateContainer, TestComponent, []);
+      context = this.create(ClrDateContainer, TestComponent, []);
 
-            enabledService = <MockDatepickerEnabledService>context.getClarityProvider(DatepickerEnabledService);
-            dateFormControlService = context.getClarityProvider(DateFormControlService);
-        });
-
-        describe("View Basics", () => {
-            it("renders the datepicker toggle button based on the enabled service", () => {
-                expect(enabledService.isEnabled).toBe(true);
-                expect(context.clarityElement.querySelector(".datepicker-trigger")).not.toBeNull();
-
-                enabledService.fakeIsEnabled = false;
-                context.detectChanges();
-
-                expect(context.clarityElement.querySelector(".datepicker-trigger")).toBeNull();
-            });
-
-            it("clicking on the button toggles the datepicker popover", () => {
-                spyOn(context.clarityDirective, "toggleDatepicker");
-                const button: HTMLButtonElement = context.clarityElement.querySelector(".datepicker-trigger");
-
-                button.click();
-                context.detectChanges();
-
-                expect(context.clarityDirective.toggleDatepicker).toHaveBeenCalled();
-            });
-
-            it("projects the date input", () => {
-                expect(context.clarityElement.querySelector("input")).not.toBeNull();
-            });
-
-            it("shows the datepicker view manager when .datepicker-trigger is clicked", () => {
-                expect(context.clarityElement.querySelector("clr-datepicker-view-manager")).toBeNull();
-
-                const button: HTMLButtonElement = context.clarityElement.querySelector(".datepicker-trigger");
-                button.click();
-                context.detectChanges();
-
-                expect(context.clarityElement.querySelector("clr-datepicker-view-manager")).not.toBeNull();
-            });
-        });
-
-        describe("Typescript API", () => {
-            // IE doesn't support MouseEvent constructors
-            itIgnore(["ie"], "toggles the datepicker popover", () => {
-                const ifOpenService: IfOpenService = context.getClarityProvider(IfOpenService);
-                const fakeEvent: MouseEvent = new MouseEvent("fakeEvent");
-                let flag: boolean;
-                const sub: Subscription = ifOpenService.openChange.subscribe((open) => {
-                    flag = open;
-                });
-
-                expect(flag).toBeUndefined();
-                context.clarityDirective.toggleDatepicker(fakeEvent);
-                context.detectChanges();
-
-                expect(flag).toBe(true);
-
-                sub.unsubscribe();
-            });
-
-            it("marks the date control as touched when the datepicker popover is toggled", () => {
-                spyOn(dateFormControlService, "markAsTouched");
-
-                context.clarityDirective.toggleDatepicker(null);
-
-                expect(dateFormControlService.markAsTouched).toHaveBeenCalled();
-            });
-        });
+      enabledService = <MockDatepickerEnabledService>context.getClarityProvider(DatepickerEnabledService);
+      dateFormControlService = context.getClarityProvider(DateFormControlService);
     });
+
+    describe('View Basics', () => {
+      it('renders the datepicker toggle button based on the enabled service', () => {
+        expect(enabledService.isEnabled).toBe(true);
+        expect(context.clarityElement.querySelector('.datepicker-trigger')).not.toBeNull();
+
+        enabledService.fakeIsEnabled = false;
+        context.detectChanges();
+
+        expect(context.clarityElement.querySelector('.datepicker-trigger')).toBeNull();
+      });
+
+      it('clicking on the button toggles the datepicker popover', () => {
+        spyOn(context.clarityDirective, 'toggleDatepicker');
+        const button: HTMLButtonElement = context.clarityElement.querySelector('.datepicker-trigger');
+
+        button.click();
+        context.detectChanges();
+
+        expect(context.clarityDirective.toggleDatepicker).toHaveBeenCalled();
+      });
+
+      it('projects the date input', () => {
+        expect(context.clarityElement.querySelector('input')).not.toBeNull();
+      });
+
+      it('shows the datepicker view manager when .datepicker-trigger is clicked', () => {
+        expect(context.clarityElement.querySelector('clr-datepicker-view-manager')).toBeNull();
+
+        const button: HTMLButtonElement = context.clarityElement.querySelector('.datepicker-trigger');
+        button.click();
+        context.detectChanges();
+
+        expect(context.clarityElement.querySelector('clr-datepicker-view-manager')).not.toBeNull();
+      });
+    });
+
+    describe('Typescript API', () => {
+      // IE doesn't support MouseEvent constructors
+      itIgnore(['ie'], 'toggles the datepicker popover', () => {
+        const ifOpenService: IfOpenService = context.getClarityProvider(IfOpenService);
+        const fakeEvent: MouseEvent = new MouseEvent('fakeEvent');
+        let flag: boolean;
+        const sub: Subscription = ifOpenService.openChange.subscribe(open => {
+          flag = open;
+        });
+
+        expect(flag).toBeUndefined();
+        context.clarityDirective.toggleDatepicker(fakeEvent);
+        context.detectChanges();
+
+        expect(flag).toBe(true);
+
+        sub.unsubscribe();
+      });
+
+      it('marks the date control as touched when the datepicker popover is toggled', () => {
+        spyOn(dateFormControlService, 'markAsTouched');
+
+        context.clarityDirective.toggleDatepicker(null);
+
+        expect(dateFormControlService.markAsTouched).toHaveBeenCalled();
+      });
+    });
+  });
 }
 
 @Component({
-    template: `
+  template: `
         <clr-date-container>
             <input type="date" clrDate>
         </clr-date-container>
-    `
+    `,
 })
-class TestComponent {
-}
+class TestComponent {}

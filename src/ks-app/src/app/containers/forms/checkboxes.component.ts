@@ -4,23 +4,23 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component} from "@angular/core";
-import {Checkbox, ClrCheckbox} from "@clr/angular";
+import { Component } from '@angular/core';
+import { Checkbox, ClrCheckbox } from '@clr/angular';
 
-@Component({templateUrl: "./checkboxes.component.html"})
+@Component({ templateUrl: './checkboxes.component.html' })
 export class KSCheckboxes {
-    /**
-     * @description
-     * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
-     */
-    private aCheckbox: Checkbox;
-    private aClrCheckbox: ClrCheckbox;
-    // END Clarity Stackview Entities
-    indeterminateState: boolean = true;
-    nativeIndeterminateState: boolean = true;
-    active: boolean = false;
+  /**
+   * @description
+   * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
+   */
+  private aCheckbox: Checkbox;
+  private aClrCheckbox: ClrCheckbox;
+  // END Clarity Stackview Entities
+  indeterminateState: boolean = true;
+  nativeIndeterminateState: boolean = true;
+  active: boolean = false;
 
-    onToggleIndeterminateState() {
-        this.indeterminateState = !this.indeterminateState;
-    }
+  onToggleIndeterminateState() {
+    this.indeterminateState = !this.indeterminateState;
+  }
 }

@@ -4,17 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ViewChild} from "@angular/core";
-import {ClrWizard} from "@clr/angular";
+import { Component, ViewChild } from '@angular/core';
+import { ClrWizard } from '@clr/angular';
 
-@Component({selector: "clr-wizard-form-validation", templateUrl: "./wizard-form-validation.demo.html"})
+@Component({ selector: 'clr-wizard-form-validation', templateUrl: './wizard-form-validation.demo.html' })
 export class WizardFormValidation {
-    @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild("number") numberField: any;
+  @ViewChild('wizard') wizard: ClrWizard;
+  @ViewChild('number') numberField: any;
 
-    model = {name: "", favorite: "", number: ""};
+  model = { name: '', favorite: '', number: '' };
 
-    code: string = `
+  code: string = `
 import { Component, ViewChild } from "@angular/core";
 import { ClrWizard } from "@clr/angular";
 
@@ -33,7 +33,7 @@ export class WizardFormValidation {
 }
 `;
 
-    html: string = `
+  html: string = `
 <clr-wizard #wizard [(clrWizardOpen)]="open">
     <clr-wizard-title>Wizard with form validation</clr-wizard-title>
 

@@ -3,18 +3,18 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, OnInit} from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: "clr-modal-animation-demo",
-    styleUrls: ["./modal.demo.scss"],
-    templateUrl: "./modal-animation.demo.html"
+  selector: 'clr-modal-animation-demo',
+  styleUrls: ['./modal.demo.scss'],
+  templateUrl: './modal-animation.demo.html',
 })
 export class ModalAnimationDemo implements OnInit {
-    animatedExampleIn: boolean = false;
+  animatedExampleIn: boolean = false;
 
-    ngOnInit(): void {
-        // If you want interactivity, go to the Angular component demo. :-P
-        setInterval(() => this.animatedExampleIn = !this.animatedExampleIn, 2000);
-    }
+  ngOnInit(): void {
+    // If you want interactivity, go to the Angular component demo. :-P
+    setInterval(() => (this.animatedExampleIn = !this.animatedExampleIn), 2000);
+  }
 }

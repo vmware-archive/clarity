@@ -4,11 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import {ClrLabel} from "./label";
+import { ClrLabel } from './label';
 
-@NgModule({imports: [CommonModule], declarations: [ClrLabel], exports: [ClrLabel]})
-export class ClrCommonFormsModule {
-}
+@NgModule({ imports: [CommonModule], declarations: [ClrLabel], exports: [ClrLabel] })
+export class ClrCommonFormsModule {}

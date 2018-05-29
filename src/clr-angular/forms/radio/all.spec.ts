@@ -10,10 +10,10 @@
  * over the place because we load them asynchronously.
  */
 
-import RadioContainerSpecs from "./radio-container.spec";
-import RadioSpecs from "./radio.spec";
+import RadioContainerSpecs from './radio-container.spec';
+import RadioSpecs from './radio.spec';
 
-describe("Radio component", function() {
-    RadioContainerSpecs();
-    RadioSpecs();
+describe('Radio component', function() {
+  RadioContainerSpecs();
+  RadioSpecs();
 });

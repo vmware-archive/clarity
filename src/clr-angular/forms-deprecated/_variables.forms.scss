@@ -30,8 +30,8 @@ $clr-radio-focused-box-shadow: 0 0 $clr-outline-blur $clr-outline-spread $clr-ou
 
 // Usage: ../forms/checkbox/_checkboox.clarity.scss
 $clr-indeterminate-checkbox-border-color: $clr-action-blue-light-midtone !default;
-$clr-form-field-disabled-color: $clr-black!default;
-$clr-checkbox-disabled-checkmark-color: $clr-gray!default;
+$clr-form-field-disabled-color: $clr-black !default;
+$clr-checkbox-disabled-checkmark-color: $clr-gray !default;
 // Usage: ../forms/_radio.clarity.scss
 $clr-radio-disabled-font-color: $clr-dark-gray !default;
 $clr-form-field-border-color: $clr-dark-midtone-gray !default;
@@ -45,9 +45,8 @@ $clr-forms-input-invalid-icon-color: $reds-dark;
 // Usage: ../data/stack-view/_stack-view.clarity.scss
 // Usage: ../forms/_forms.clarity.scss
 // Usage: ../forms/_inputs.clarity.scss
-$styledInputs: inputs("text", "password", "number", "email", "url", "tel", "date", "time", "datetime-local");
+$styledInputs: inputs('text', 'password', 'number', 'email', 'url', 'tel', 'date', 'time', 'datetime-local');
 
 // Usage: ../forms/_forms.clarity.scss
 // Usage: ../forms/_inputs.clarity.scss
-$styledInputs1: inputs("button", "submit");
-
+$styledInputs1: inputs('button', 'submit');

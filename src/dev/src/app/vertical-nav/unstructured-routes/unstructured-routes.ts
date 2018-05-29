@@ -3,43 +3,43 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import "@clr/icons/shapes/technology-shapes";
+import '@clr/icons/shapes/technology-shapes';
 
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
-import {VerticalNavCases} from "../vertical-nav-cases";
+import { VerticalNavCases } from '../vertical-nav-cases';
 
 @Component({
-    selector: "clr-vertical-nav-unstructured-routes-demo",
-    templateUrl: "./unstructured-routes.html",
-    styleUrls: ["../vertical-nav.demo.scss"]
+  selector: 'clr-vertical-nav-unstructured-routes-demo',
+  templateUrl: './unstructured-routes.html',
+  styleUrls: ['../vertical-nav.demo.scss'],
 })
 export class UnstructuredRoutesDemo {
-    option: string = "lazy";
+  option: string = 'lazy';
 
-    case: any;
+  case: any;
 
-    groupExpand: boolean = true;
+  groupExpand: boolean = true;
 
-    updateGroupExpand(event: any) {
-        this.groupExpand = event;
-    }
+  updateGroupExpand(event: any) {
+    this.groupExpand = event;
+  }
 
-    navCollapsed: boolean = false;
+  navCollapsed: boolean = false;
 
-    updateNavCollapsed(val: boolean): void {
-        this.navCollapsed = val;
-    }
+  updateNavCollapsed(val: boolean): void {
+    this.navCollapsed = val;
+  }
 
-    toggleNav(): void {
-        this.navCollapsed = !this.navCollapsed;
-    }
+  toggleNav(): void {
+    this.navCollapsed = !this.navCollapsed;
+  }
 
-    toggleGroup(): void {
-        this.groupExpand = !this.groupExpand;
-    }
+  toggleGroup(): void {
+    this.groupExpand = !this.groupExpand;
+  }
 
-    constructor(public verticalNavCases: VerticalNavCases) {
-        this.case = this.verticalNavCases.allNestedIconMenu;
-    }
+  constructor(public verticalNavCases: VerticalNavCases) {
+    this.case = this.verticalNavCases.allNestedIconMenu;
+  }
 }

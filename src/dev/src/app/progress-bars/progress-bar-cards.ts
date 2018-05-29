@@ -3,13 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-progress-bar-cards-demo",
-    styleUrls: ["progress-bars.demo.scss"],
-    templateUrl: "./progress-bar-cards.html"
+  selector: 'clr-progress-bar-cards-demo',
+  styleUrls: ['progress-bars.demo.scss'],
+  templateUrl: './progress-bar-cards.html',
 })
-
-export class ProgressBarCardsDemo {
-}
+export class ProgressBarCardsDemo {}

@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import AbstractTreeSelectionSpecs from "./abstract-tree-selection.spec";
-import TreeNodeSpecs from "./tree-node.spec";
+import AbstractTreeSelectionSpecs from './abstract-tree-selection.spec';
+import TreeNodeSpecs from './tree-node.spec';
 
-describe("Tree View Directives", () => {
-    AbstractTreeSelectionSpecs();
-    TreeNodeSpecs();
+describe('Tree View Directives', () => {
+  AbstractTreeSelectionSpecs();
+  TreeNodeSpecs();
 });

@@ -3,27 +3,29 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
-import {Server} from "./data/server";
-import {Status} from "./data/status";
+import { Server } from './data/server';
+import { Status } from './data/status';
 
-@Component(
-    {selector: "clr-checkboxes-demo", styleUrls: ["./checkboxes.demo.scss"], templateUrl: "./checkboxes.demo.html"})
-
+@Component({
+  selector: 'clr-checkboxes-demo',
+  styleUrls: ['./checkboxes.demo.scss'],
+  templateUrl: './checkboxes.demo.html',
+})
 export class CheckboxesDemo {
-    list: Server[];
-    indeterminateState: boolean = true;
-    nativeIndeterminateState: boolean = true;
-    termsAgreement: boolean = true;
+  list: Server[];
+  indeterminateState: boolean = true;
+  nativeIndeterminateState: boolean = true;
+  termsAgreement: boolean = true;
 
-    constructor(status: Status) {
-        this.list = status.fetch();
-    }
+  constructor(status: Status) {
+    this.list = status.fetch();
+  }
 
-    onToggleIndeterminateState() {
-        this.indeterminateState = !this.indeterminateState;
-    }
+  onToggleIndeterminateState() {
+    this.indeterminateState = !this.indeterminateState;
+  }
 
-    active: boolean = false;
+  active: boolean = false;
 }

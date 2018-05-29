@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 export const EXAMPLES = {
-    reactiveTS: `
+  reactiveTS: `
 import {Component} from "@angular/core";
 
 import {FormGroup, FormControl, Validators} from "@angular/forms";
@@ -34,7 +34,7 @@ export class ReactiveFormsDemo {
 }
 `,
 
-    reactiveHTML: `
+  reactiveHTML: `
 <form class="form" [formGroup]="employeeAddressForm" (ngSubmit)="onSubmit()" [hidden]="submitted">
     <section class="form-block">
         <label>Add Employee Address</label>
@@ -92,5 +92,5 @@ export class ReactiveFormsDemo {
             [disabled]="employeeAddressForm.invalid">Add</button>
     </section>
 </form>
-`
+`,
 };

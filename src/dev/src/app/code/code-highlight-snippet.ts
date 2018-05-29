@@ -3,13 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 /** @deprecated since 0.12 */
 @Component({
-    selector: "clr-code-highlight-snippet-demo",
-    templateUrl: "./code-highlight-snippet.html",
-    styleUrls: ["./code-highlight.demo.scss"]
+  selector: 'clr-code-highlight-snippet-demo',
+  templateUrl: './code-highlight-snippet.html',
+  styleUrls: ['./code-highlight.demo.scss'],
 })
-export class CodeHighlightSnippetDemo {
-}
+export class CodeHighlightSnippetDemo {}

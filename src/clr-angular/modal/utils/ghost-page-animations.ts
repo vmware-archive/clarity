@@ -8,6 +8,6 @@
  * @deprecated since 0.12
  */
 export const GHOST_PAGE_ANIMATION = {
-    STATES: {NO_PAGES: "inactive", ALL_PAGES: "ready", NEXT_TO_LAST_PAGE: "penultimateGhost", LAST_PAGE: "lastGhost"},
-    TRANSITIONS: {IN: "100ms ease-out", OUT: "100ms ease-in"}
+  STATES: { NO_PAGES: 'inactive', ALL_PAGES: 'ready', NEXT_TO_LAST_PAGE: 'penultimateGhost', LAST_PAGE: 'lastGhost' },
+  TRANSITIONS: { IN: '100ms ease-out', OUT: '100ms ease-in' },
 };

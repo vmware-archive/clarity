@@ -157,8 +157,8 @@ $clr-app-alert-danger-font-color: $clr-theme-app-alert-font-color;
 $clr-app-alert-danger-border-color: transparent;
 
 // NOTE: Alerts sometimes have buttons in them.
-$clr-alert-action-color: $clr-white;         // Used for dropdowns on the right side of an alert
-$clr-alert-action-active-color: $clr-white;  // Alert dropdowns when they are clicked on
+$clr-alert-action-color: $clr-white; // Used for dropdowns on the right side of an alert
+$clr-alert-action-active-color: $clr-white; // Alert dropdowns when they are clicked on
 $clr-app-alert-close-icon-color: $clr-black; // Colors for the 'X' close btn in global alerts
 /**********
  * END: Alerts
@@ -188,7 +188,6 @@ $clr-badge-blue-bg-color: #007cbb;
 $clr-badge-orange-bg-color: #ff9c32;
 $clr-badge-light-blue-bg-color: #89cbdf;
 // END: Badge
-
 
 /*****************
  * Buttons
@@ -226,8 +225,8 @@ $clr-btn-default-hover-bg-color: hsla(0, 0%, 100%, 0.1); // hover-background-col
 $clr-btn-default-hover-color: #57c7ea; // hover-color
 $clr-btn-default-box-shadow-color: $clr-black; // active-box-shadow-color
 $clr-btn-default-checked-color: $clr-white; // checked-color
-$clr-btn-default-disabled-color: $clr-btn-outline-disabled-font-color;                  // disabled-color
-$clr-btn-default-disabled-border-color: $clr-btn-disabled-border-color;             // disabled-border-color
+$clr-btn-default-disabled-color: $clr-btn-outline-disabled-font-color; // disabled-color
+$clr-btn-default-disabled-border-color: $clr-btn-disabled-border-color; // disabled-border-color
 
 // Default button
 $clr-btn-default-outline-color: #49afd9; // border-color, color, checked-background-color
@@ -236,8 +235,8 @@ $clr-btn-default-outline-hover-bg-color: hsla(0, 0%, 100%, 0.1); // hover-backgr
 $clr-btn-default-outline-hover-color: #57c7ea; // hover-color
 $clr-btn-default-outline-box-shadow-color: $clr-black; // active-box-shadow-color
 $clr-btn-default-outline-checked-color: $clr-white; // checked-color
-$clr-btn-default-outline-disabled-color: $clr-btn-outline-disabled-font-color;                  // disabled-color
-$clr-btn-default-outline-disabled-border-color: $clr-btn-disabled-border-color;             // disabled-border-color
+$clr-btn-default-outline-disabled-color: $clr-btn-outline-disabled-font-color; // disabled-color
+$clr-btn-default-outline-disabled-border-color: $clr-btn-disabled-border-color; // disabled-border-color
 $clr-btn-default-outline-checked-color: $clr-btn-disabled-bg-color;
 
 // Primary button
@@ -248,9 +247,9 @@ $clr-btn-primary-hover-bg-color: #57c7ea; // hover-background-color
 $clr-btn-primary-hover-color: $clr-black; // hover-color
 $clr-btn-primary-box-shadow-color: #0065ab; // active-box-shadow-color
 $clr-btn-primary-checked-color: $clr-white; // checked-color
-$clr-btn-primary-disabled-color: $clr-btn-disabled-font-color;                  // disabled-color
-$clr-btn-primary-disabled-bg-color: $clr-btn-disabled-bg-color;                  // disabled-bg-color
-$clr-btn-primary-disabled-border-color: $clr-btn-disabled-border-color;             // disabled-border-color
+$clr-btn-primary-disabled-color: $clr-btn-disabled-font-color; // disabled-color
+$clr-btn-primary-disabled-bg-color: $clr-btn-disabled-bg-color; // disabled-bg-color
+$clr-btn-primary-disabled-border-color: $clr-btn-disabled-border-color; // disabled-border-color
 
 // Success button
 $clr-btn-success-color: $clr-black; // color, checked-color,
@@ -259,8 +258,8 @@ $clr-btn-success-hover-bg-color: #85c81a; // hover-background-color
 $clr-btn-success-hover-color: $clr-btn-success-color; // hover-color
 $clr-btn-success-box-shadow-color: #266900; // active-box-shadow-color
 $clr-btn-success-checked-bg-color: $clr-btn-success-hover-bg-color; // checked-background-color
-$clr-btn-success-disabled-color: $clr-btn-disabled-font-color;                    // disabled-color
-$clr-btn-success-disabled-bg-color: $clr-btn-disabled-bg-color;          // disabled-background-color
+$clr-btn-success-disabled-color: $clr-btn-disabled-font-color; // disabled-color
+$clr-btn-success-disabled-bg-color: $clr-btn-disabled-bg-color; // disabled-background-color
 $clr-btn-success-disabled-border-color: $clr-btn-disabled-border-color; // disabled-border-color
 
 // Success outline button
@@ -270,9 +269,9 @@ $clr-btn-success-outline-hover-bg-color: hsla(0, 0%, 100%, 0.1); // hover-backgr
 $clr-btn-success-outline-hover-color: #85c81a; // hover-color
 $clr-btn-success-outline-box-shadow-color: $clr-black; // active-box-shadow-color
 $clr-btn-success-outline-checked-color: $clr-white; // checked-color
-$clr-btn-success-outline-disabled-color: $clr-btn-outline-disabled-font-color;                   // disabled-color
-$clr-btn-success-outline-disabled-bg-color: transparent;                 // disabled-background-color
-$clr-btn-success-outline-disabled-border-color: $clr-btn-disabled-border-color;              // disabled-border-color
+$clr-btn-success-outline-disabled-color: $clr-btn-outline-disabled-font-color; // disabled-color
+$clr-btn-success-outline-disabled-bg-color: transparent; // disabled-background-color
+$clr-btn-success-outline-disabled-border-color: $clr-btn-disabled-border-color; // disabled-border-color
 
 // Danger button
 $clr-btn-danger-color: $clr-black; // color, checked-color,
@@ -281,39 +280,38 @@ $clr-btn-danger-hover-bg-color: #ff665f; // hover-background-color
 $clr-btn-danger-hover-color: $clr-btn-danger-color; // hover-color
 $clr-btn-danger-box-shadow-color: #c92100; // active-box-shadow-color
 $clr-btn-danger-checked-bg-color: $reds-dark-midtone; // checked-background-color
-$clr-btn-danger-disabled-color: $clr-btn-disabled-font-color;                           // disabled-color,
-$clr-btn-danger-disabled-bg-color: $clr-btn-disabled-bg-color;                 // disabled-background-color
-$clr-btn-danger-disabled-border-color: $clr-btn-disabled-border-color;  // disabled-border-color
+$clr-btn-danger-disabled-color: $clr-btn-disabled-font-color; // disabled-color,
+$clr-btn-danger-disabled-bg-color: $clr-btn-disabled-bg-color; // disabled-background-color
+$clr-btn-danger-disabled-border-color: $clr-btn-disabled-border-color; // disabled-border-color
 
 // Danger outline button
-$clr-btn-danger-outline-border-color: #f54f47;                  // border-color
-$clr-btn-danger-outline-color: #f54f47;                         // color
+$clr-btn-danger-outline-border-color: #f54f47; // border-color
+$clr-btn-danger-outline-color: #f54f47; // color
 $clr-btn-danger-outline-hover-bg-color: hsla(0, 0%, 100%, 0.1); // hover-background-color
-$clr-btn-danger-outline-hover-color: #ff665f;                   // hover-color
-$clr-btn-danger-outline-box-shadow-color: $clr-black;           // active-box-shadow-color
-$clr-btn-danger-outline-checked-bg-color: #f54f47;              // checked-background-color
-$clr-btn-danger-outline-checked-color: $clr-white;              // checked-color
-$clr-btn-danger-outline-disabled-color: $clr-btn-outline-disabled-font-color;                   // disabled-color
-$clr-btn-danger-outline-disabled-bg-color: transparent;                 // disabled-background-color
-$clr-btn-danger-outline-disabled-border-color: $clr-btn-disabled-border-color;              // disabled-border-color
-
+$clr-btn-danger-outline-hover-color: #ff665f; // hover-color
+$clr-btn-danger-outline-box-shadow-color: $clr-black; // active-box-shadow-color
+$clr-btn-danger-outline-checked-bg-color: #f54f47; // checked-background-color
+$clr-btn-danger-outline-checked-color: $clr-white; // checked-color
+$clr-btn-danger-outline-disabled-color: $clr-btn-outline-disabled-font-color; // disabled-color
+$clr-btn-danger-outline-disabled-bg-color: transparent; // disabled-background-color
+$clr-btn-danger-outline-disabled-border-color: $clr-btn-disabled-border-color; // disabled-border-color
 
 // Link button
-$clr-btn-link-color: #49AFD9;         // color
-$clr-btn-link-hover-color: #57C7EA;   // hover-color
-$clr-btn-link-checked-color: #49AFD9; // checked-color
-$clr-btn-link-disabled-color: $clr-btn-outline-disabled-font-color;  // disabled-color
+$clr-btn-link-color: #49afd9; // color
+$clr-btn-link-hover-color: #57c7ea; // hover-color
+$clr-btn-link-checked-color: #49afd9; // checked-color
+$clr-btn-link-disabled-color: $clr-btn-outline-disabled-font-color; // disabled-color
 
 // Inverse button
 $clr-btn-inverse-border-color: $clr-black; // border-color
 $clr-btn-inverse-bg-color: transparent; // background-color
 $clr-btn-inverse-color: $clr-black; // color
-$clr-btn-inverse-hover-bg-color: rgba(0,0,0,.1); // hover-background-color
+$clr-btn-inverse-hover-bg-color: rgba(0, 0, 0, 0.1); // hover-background-color
 $clr-btn-inverse-hover-color: $clr-black; // hover-color
 $clr-btn-inverse-box-shadow-color: #a9b6be; // active-box-shadow-color
 $clr-btn-inverse-checked-bg-color: rgba($clr-white, 0.15); // checked-background-color
 $clr-btn-inverse-checked-color: $clr-white; // checked-color
-$clr-btn-inverse-disabled-color: $clr-btn-outline-disabled-font-color;   // disabled-color
+$clr-btn-inverse-disabled-color: $clr-btn-outline-disabled-font-color; // disabled-color
 $clr-btn-inverse-disabled-border-color: $clr-btn-disabled-border-color; // disabled-border-color
 // END: Buttons
 
@@ -367,7 +365,7 @@ $clr-dropdown-font-color: #adbbc4;
 $clr-dropdown-selection-color: #324f61;
 $clr-dropdown-box-shadow: $clr-popover-box-shadow-color;
 $clr-dropdown-divider-color: $clr-dropdown-border-color;
-$clr-dropdown-header-color: #ADBBC4;
+$clr-dropdown-header-color: #adbbc4;
 // END: Dropdown overrides
 
 /**********
@@ -406,14 +404,14 @@ $clr-checkbox-disabled-background-color: #8f9ba3;
 $clr-checkbox-disabled-font-color: #8f9ba3;
 $clr-checkbox-disabled-checkmark-color: #22343c;
 
-$clr-outline-color:  #49afd9;
+$clr-outline-color: #49afd9;
 $clr-form-field-disabled-background-color: #8f9ba3;
 $clr-form-field-background-color: $clr-checkbox-color;
 $clr-radio-checked-box-shadow: inset 0 0 0 0.25rem $clr-form-field-background-color;
 $clr-radio-focused-box-shadow: 0 0 $clr-outline-blur $clr-outline-spread $clr-outline-color;
 
 $clr-radio-disabled-font-color: #8f9ba3; // font color
-$clr-radio-disabled-bg-color: #22343c;  // 'dot' color
+$clr-radio-disabled-bg-color: #22343c; // 'dot' color
 $clr-radio-disabled-checked-box-shadow: inset 0 0 0 0.25rem #8f9ba3; //background-color around the dot
 
 $clr-form-text-color: $clr-white;
@@ -440,14 +438,14 @@ $clr-toggle-bg-color-off: $clr-white;
 $clr-toggle-bg-color-on: #60b515;
 $clr-toggle-handle-bg-color: $clr-toggle-handle-color; // main-container bg color (replaced fafafa in light theme)
 
-$clr-calendar-background-color: #22343C;
+$clr-calendar-background-color: #22343c;
 $clr-calendar-border-color: $clr-black;
-$clr-datepicker-trigger-color: #49AFD9;
-$clr-datepicker-trigger-hover-color: #57C7EA;
-$clr-calendar-btn-color: #49AFD9;
-$clr-calendar-btn-hover-focus-color: #29414E;
-$clr-calendar-active-cell-background-color: #324F61;
-$clr-calendar-active-focus-cell-background-color: #324F61;
+$clr-datepicker-trigger-color: #49afd9;
+$clr-datepicker-trigger-hover-color: #57c7ea;
+$clr-calendar-btn-color: #49afd9;
+$clr-calendar-btn-hover-focus-color: #29414e;
+$clr-calendar-active-cell-background-color: #324f61;
+$clr-calendar-active-focus-cell-background-color: #324f61;
 $clr-calendar-today-date-cell-color: $clr-white;
 $clr-calendar-active-cell-color: $clr-white;
 // END: form
@@ -467,7 +465,7 @@ $clr-header-2-bg-color: #165266;
 $clr-header-3-bg-color: #1a4c72;
 $clr-header-4-bg-color: #5c3552;
 $clr-header-5-bg-color: #3e436a;
-$clr-header-6-bg-color: #0F171C;
+$clr-header-6-bg-color: #0f171c;
 // END Header overrides
 
 /*****************
@@ -511,7 +509,7 @@ $clr-label-warning-border-color: $clr-label-warning-bg-color;
  * - ../image/_icons.clarity.scss (login background image)
  */
 $clr-login-background-color: $clr-global-app-background;
-$clr-login-background: "%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%3Csvg%20width%3D%22736px%22%20height%3D%22838px%22%20viewBox%3D%220%200%20736%20838%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Ctitle%3Evector%20art%3C%2Ftitle%3E%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%3Cdefs%3E%3C%2Fdefs%3E%3Cg%20id%3D%22symbols%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20id%3D%22Login%22%20transform%3D%22translate(-504.000000%2C%200.000000)%22%3E%3Cg%20id%3D%22replaceable-image%22%20transform%3D%22translate(504.000000%2C%200.000000)%22%3E%3Cg%20id%3D%22vector-art%22%20transform%3D%22translate(-78.000000%2C%20-82.000000)%22%3E%3Crect%20id%3D%22Rectangle-path%22%20fill%3D%22%2322343E%22%20x%3D%220%22%20y%3D%220.38%22%20width%3D%221127.55%22%20height%3D%22921.62%22%3E%3C%2Frect%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%232F657B%22%20points%3D%220%203.06%200%20599.24%20298.14%20301.43%22%3E%3C%2Fpolygon%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%23438597%22%20points%3D%220%20408.65%200%20599.24%2095.29%20504.06%22%3E%3C%2Fpolygon%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%232F657B%22%20points%3D%22918.21%20921.95%20818.63%20822.3%20718.89%20921.95%22%3E%3C%2Fpolygon%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%233B758E%22%20points%3D%22818.63%20822.3%20298.14%20301.43%200%20599.24%200%20655.02%20266.51%20921.95%20718.89%20921.95%22%3E%3C%2Fpolygon%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%23579EB2%22%20points%3D%22512.67%20921.95%2095.29%20504.06%200%20599.24%200%20654.97%20267.06%20921.95%22%3E%3C%2Fpolygon%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%23344B57%22%20points%3D%22266.51%20921.95%200%20655.02%200%20921.95%22%3E%3C%2Fpolygon%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%23A7C9D5%22%20points%3D%221128%200%20799.58%200%201128%20329.83%22%3E%3C%2Fpolygon%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%23344B57%22%20points%3D%221128%20329.83%20799.58%200%20599.9%200%20298.14%20301.43%20818.63%20822.3%201128%20513.18%22%3E%3C%2Fpolygon%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E";
+$clr-login-background: '%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%3Csvg%20width%3D%22736px%22%20height%3D%22838px%22%20viewBox%3D%220%200%20736%20838%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Ctitle%3Evector%20art%3C%2Ftitle%3E%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%3Cdefs%3E%3C%2Fdefs%3E%3Cg%20id%3D%22symbols%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20id%3D%22Login%22%20transform%3D%22translate(-504.000000%2C%200.000000)%22%3E%3Cg%20id%3D%22replaceable-image%22%20transform%3D%22translate(504.000000%2C%200.000000)%22%3E%3Cg%20id%3D%22vector-art%22%20transform%3D%22translate(-78.000000%2C%20-82.000000)%22%3E%3Crect%20id%3D%22Rectangle-path%22%20fill%3D%22%2322343E%22%20x%3D%220%22%20y%3D%220.38%22%20width%3D%221127.55%22%20height%3D%22921.62%22%3E%3C%2Frect%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%232F657B%22%20points%3D%220%203.06%200%20599.24%20298.14%20301.43%22%3E%3C%2Fpolygon%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%23438597%22%20points%3D%220%20408.65%200%20599.24%2095.29%20504.06%22%3E%3C%2Fpolygon%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%232F657B%22%20points%3D%22918.21%20921.95%20818.63%20822.3%20718.89%20921.95%22%3E%3C%2Fpolygon%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%233B758E%22%20points%3D%22818.63%20822.3%20298.14%20301.43%200%20599.24%200%20655.02%20266.51%20921.95%20718.89%20921.95%22%3E%3C%2Fpolygon%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%23579EB2%22%20points%3D%22512.67%20921.95%2095.29%20504.06%200%20599.24%200%20654.97%20267.06%20921.95%22%3E%3C%2Fpolygon%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%23344B57%22%20points%3D%22266.51%20921.95%200%20655.02%200%20921.95%22%3E%3C%2Fpolygon%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%23A7C9D5%22%20points%3D%221128%200%20799.58%200%201128%20329.83%22%3E%3C%2Fpolygon%3E%3Cpolygon%20id%3D%22Shape%22%20fill%3D%22%23344B57%22%20points%3D%221128%20329.83%20799.58%200%20599.9%200%20298.14%20301.43%20818.63%20822.3%201128%20513.18%22%3E%3C%2Fpolygon%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E';
 // END LOGIN
 
 /**********
@@ -568,8 +566,8 @@ $clr-nav-shadow: 0 -1px 0 #485764 inset;
  * Usage: ../progress/progress-bars/_progress-bars./clarity.scss
  */
 $clr-progress-defaultBarColor: #49afd9;
-$clr-progress-success-color: #60B515;
-$clr-progress-danger-color: #F54F47;
+$clr-progress-success-color: #60b515;
+$clr-progress-danger-color: #f54f47;
 $clr-progress-warning-color: $clr-progress-danger-color;
 $clr-progress-bgColor: #324650;
 // END Progress Bars
@@ -604,7 +602,7 @@ $clr-signpost-pointer-psuedo-border: $clr-signpost-border-size solid $clr-signpo
  */
 $clr-spinner-color: #49afd9;
 $clr-spinner-bg-color: #324650;
-$clr-spinner-opacity: 1.0;
+$clr-spinner-opacity: 1;
 // END Spinners
 
 /*********
@@ -743,6 +741,6 @@ $clr-wizard-title-text: #e9ecef;
 $clr-wizard-main-textColor: #adbbc4;
 // TODO: deprecate the ghost page variables below at 0.12
 $clr-wizard-ghost-1: #1f2f36;
-$clr-wizard-ghost-2: #1b2a30 ;
+$clr-wizard-ghost-2: #1b2a30;
 $clr-wizard-ghost-last: #bbb;
 // END: Wizard

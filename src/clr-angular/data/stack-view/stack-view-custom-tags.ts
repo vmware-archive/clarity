@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Directive} from "@angular/core";
+import { Directive } from '@angular/core';
 
-@Directive({selector: "clr-stack-label, clr-stack-content"})
+@Directive({ selector: 'clr-stack-label, clr-stack-content' })
 export class ClrStackViewCustomTags {
-    // No behavior
-    // The only purpose is to "declare" the tag in Angular
+  // No behavior
+  // The only purpose is to "declare" the tag in Angular
 }

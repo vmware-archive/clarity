@@ -13,12 +13,12 @@
  * but I don"t see a way to do it simply without it being completely irrelevant.
  */
 
-import StackBlockSpecs from "./stack-block.spec";
-import StackHeaderSpecs from "./stack-header.spec";
-import StackViewSpecs from "./stack-view.spec";
+import StackBlockSpecs from './stack-block.spec';
+import StackHeaderSpecs from './stack-header.spec';
+import StackViewSpecs from './stack-view.spec';
 
-describe("Stack View directives", () => {
-    StackViewSpecs();
-    StackHeaderSpecs();
-    StackBlockSpecs();
+describe('Stack View directives', () => {
+  StackViewSpecs();
+  StackHeaderSpecs();
+  StackBlockSpecs();
 });

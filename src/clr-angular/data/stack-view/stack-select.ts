@@ -9,25 +9,25 @@
  * TODO: Offer a a way to customize the value displayed, plain value may be unreadable.
  */
 
-import {Component} from "@angular/core";
-import {StackControl} from "./stack-control";
-import {ClrStackView} from "./stack-view";
+import { Component } from '@angular/core';
+import { StackControl } from './stack-control';
+import { ClrStackView } from './stack-view';
 
 @Component({
-    selector: "clr-stack-select",
-    inputs: ["model: clrModel"],
-    outputs: ["modelChange: clrModelChange"],
-    template: `
+  selector: 'clr-stack-select',
+  inputs: ['model: clrModel'],
+  outputs: ['modelChange: clrModelChange'],
+  template: `
         <span *ngIf="!stackView.editing">{{model}}</span>
         <div class="select" *ngIf="stackView.editing" >
             <select [(ngModel)]="model">
                 <ng-content></ng-content>
             </select>
         </div>
-    `
+    `,
 })
 export class ClrStackSelect extends StackControl {
-    constructor(public stackView: ClrStackView) {
-        super(stackView);
-    }
+  constructor(public stackView: ClrStackView) {
+    super(stackView);
+  }
 }

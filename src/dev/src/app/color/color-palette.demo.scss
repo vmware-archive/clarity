@@ -2,60 +2,59 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "./color-shared.demo";
+@import './color-shared.demo';
 
 .card-block {
-    padding-bottom: 0;
-    overflow: hidden;
-    padding-left: 0;
-    padding-right: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 p.card-swatch {
-    background: #ccc;
-    color: #000;
-    margin: 0;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.666667rem;
+  background: #ccc;
+  color: #000;
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.666667rem;
 
-    &.upsize {
-        padding-top: 2rem;
-    }
+  &.upsize {
+    padding-top: 2rem;
+  }
 
-    &:before,
-    &:after {
-        clear: both;
-        display: table;
-        content: '';
-    }
+  &:before,
+  &:after {
+    clear: both;
+    display: table;
+    content: '';
+  }
 
-    .hex-contrast {
-        display: block;
-        float: left;
-        & > span {
-            color: black;
-            padding-left: 0.125rem;
-        }
+  .hex-contrast {
+    display: block;
+    float: left;
+    & > span {
+      color: black;
+      padding-left: 0.125rem;
     }
+  }
 
-    .rgb-value {
-        display: block;
-        float: right;
-        font-size: 0.9em;
-    }
+  .rgb-value {
+    display: block;
+    float: right;
+    font-size: 0.9em;
+  }
 
-    &:not(.dark-text) {
-        color: #fff;
-    }
+  &:not(.dark-text) {
+    color: #fff;
+  }
 }
 
 .card-swatch-block {
-    padding: 0;
-    box-shadow: none;
-    border: none;
+  padding: 0;
+  box-shadow: none;
+  border: none;
 }
 
 .card-swatch-divider {
-    height: 0.5rem;
+  height: 0.5rem;
 }
-

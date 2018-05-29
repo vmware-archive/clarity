@@ -3,12 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-tooltips-directions-demo",
-    styleUrls: ["./tooltips.demo.scss"],
-    templateUrl: "./tooltips-directions.html"
+  selector: 'clr-tooltips-directions-demo',
+  styleUrls: ['./tooltips.demo.scss'],
+  templateUrl: './tooltips-directions.html',
 })
-export class TooltipsDirectionsDemo {
-}
+export class TooltipsDirectionsDemo {}

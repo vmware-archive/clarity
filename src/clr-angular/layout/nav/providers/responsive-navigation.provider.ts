@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {ResponsiveNavigationService} from "./responsive-navigation.service";
+import { ResponsiveNavigationService } from './responsive-navigation.service';
 
 export function ResponsiveNavigationProvider(existing: ResponsiveNavigationService) {
-    return existing || new ResponsiveNavigationService();
+  return existing || new ResponsiveNavigationService();
 }

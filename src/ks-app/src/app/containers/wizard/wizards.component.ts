@@ -4,89 +4,91 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, OnInit, ViewChild} from "@angular/core";
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
-    ClrWizardButton,
-    ClrWizardCustomTags,
-    ClrWizardHeaderAction,
-    ClrWizardPageButtons,
-    ClrWizardPageHeaderActions,
-    ClrWizardPageNavTitle,
-    ClrWizardPageTitle,
-    ClrWizardStepnav,
-    Wizard,
-    WizardButton,
-    WizardCustomTags,
-    WizardHeaderAction,
-    WizardPageButtonsDirective,
-    WizardPageHeaderActionsDirective,
-    WizardPageNavTitleDirective,
-    WizardPageTitleDirective,
-    WizardStepnav,
-    WizardStepnavItem
-} from "@clr/angular";
+  ClrWizardButton,
+  ClrWizardCustomTags,
+  ClrWizardHeaderAction,
+  ClrWizardPageButtons,
+  ClrWizardPageHeaderActions,
+  ClrWizardPageNavTitle,
+  ClrWizardPageTitle,
+  ClrWizardStepnav,
+  Wizard,
+  WizardButton,
+  WizardCustomTags,
+  WizardHeaderAction,
+  WizardPageButtonsDirective,
+  WizardPageHeaderActionsDirective,
+  WizardPageNavTitleDirective,
+  WizardPageTitleDirective,
+  WizardStepnav,
+  WizardStepnavItem,
+} from '@clr/angular';
 
-@Component({templateUrl: "./wizards.component.html"})
+@Component({ templateUrl: './wizards.component.html' })
 export class KSWizards implements OnInit {
-    /**
-     * @description
-     * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
-     */
-    // private aWizard: Wizard; //used here
-    // private aWizardPage: WizardPage; //used here
-    private aWizardStepnav: WizardStepnav;
-    private aClrWizardStepnav: ClrWizardStepnav;
-    private aWizardStepnavItem: WizardStepnavItem;
-    private aClrWizardStepnavItem: WizardStepnavItem;
-    private aWizardButton: WizardButton;
-    private aClrWizardButton: ClrWizardButton;
-    private aWizardHeaderAction: WizardHeaderAction;
-    private aClrWizardHeaderAction: ClrWizardHeaderAction;
-    private aWizardCustomTags: WizardCustomTags;
-    private aClrWizardCustomTags: ClrWizardCustomTags;
-    private aWizardPageTitleDirective: WizardPageTitleDirective;
-    private aClrWizardPageTitle: ClrWizardPageTitle;
-    private aWizardPageNavTitleDirective: WizardPageNavTitleDirective;
-    private aClrWizardPageNavTitle: ClrWizardPageNavTitle;
-    private aWizardPageButtonsDirective: WizardPageButtonsDirective;
-    private aClrWizardPageButtons: ClrWizardPageButtons;
-    private aWizardPageHeaderActionsDirective: WizardPageHeaderActionsDirective;
-    private aClrWizardPageHeaderActions: ClrWizardPageHeaderActions;
-    // Form Wizard Demo
-    @ViewChild("formWizard") formWizard: Wizard;
-    formOpen: boolean = false;
-    formModel = {name: "", favorite: "", number: ""};
+  /**
+   * @description
+   * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
+   */
+  // private aWizard: Wizard; //used here
+  // private aWizardPage: WizardPage; //used here
+  private aWizardStepnav: WizardStepnav;
+  private aClrWizardStepnav: ClrWizardStepnav;
+  private aWizardStepnavItem: WizardStepnavItem;
+  private aClrWizardStepnavItem: WizardStepnavItem;
+  private aWizardButton: WizardButton;
+  private aClrWizardButton: ClrWizardButton;
+  private aWizardHeaderAction: WizardHeaderAction;
+  private aClrWizardHeaderAction: ClrWizardHeaderAction;
+  private aWizardCustomTags: WizardCustomTags;
+  private aClrWizardCustomTags: ClrWizardCustomTags;
+  private aWizardPageTitleDirective: WizardPageTitleDirective;
+  private aClrWizardPageTitle: ClrWizardPageTitle;
+  private aWizardPageNavTitleDirective: WizardPageNavTitleDirective;
+  private aClrWizardPageNavTitle: ClrWizardPageNavTitle;
+  private aWizardPageButtonsDirective: WizardPageButtonsDirective;
+  private aClrWizardPageButtons: ClrWizardPageButtons;
+  private aWizardPageHeaderActionsDirective: WizardPageHeaderActionsDirective;
+  private aClrWizardPageHeaderActions: ClrWizardPageHeaderActions;
+  // Form Wizard Demo
+  @ViewChild('formWizard') formWizard: Wizard;
+  formOpen: boolean = false;
+  formModel = { name: '', favorite: '', number: '' };
 
-    // Ghosts demo
-    @ViewChild("ghostWizard") ghostWizard: Wizard;
-    ghostModel: any;
-    ghostOpen: boolean = false;
-    typesOfPages = ["All", "Odd", "First and even", "First and last"];
+  // Ghosts demo
+  @ViewChild('ghostWizard') ghostWizard: Wizard;
+  ghostModel: any;
+  ghostOpen: boolean = false;
+  typesOfPages = ['All', 'Odd', 'First and even', 'First and last'];
 
-    get isAll(): boolean {
-        return this.ghostModel.typesOfPages === "" || this.ghostModel.typesOfPages === "All" ||
-            this.ghostModel.typesOfPages === null;
-    }
+  get isAll(): boolean {
+    return (
+      this.ghostModel.typesOfPages === '' ||
+      this.ghostModel.typesOfPages === 'All' ||
+      this.ghostModel.typesOfPages === null
+    );
+  }
 
-    get showEvenPages(): boolean {
-        return this.isAll || this.ghostModel.typesOfPages === "First and even";
-    }
+  get showEvenPages(): boolean {
+    return this.isAll || this.ghostModel.typesOfPages === 'First and even';
+  }
 
-    get showPageThree(): boolean {
-        return this.isAll || this.ghostModel.typesOfPages === "Odd";
-    }
+  get showPageThree(): boolean {
+    return this.isAll || this.ghostModel.typesOfPages === 'Odd';
+  }
 
-    get showPageFive(): boolean {
-        return this.isAll || this.ghostModel.typesOfPages === "Odd" ||
-            this.ghostModel.typesOfPages === "First and last";
-    }
+  get showPageFive(): boolean {
+    return this.isAll || this.ghostModel.typesOfPages === 'Odd' || this.ghostModel.typesOfPages === 'First and last';
+  }
 
-    // inlineWizard demo
-    @ViewChild("inlineWizard") inlineWizard: Wizard;
-    inlineOpen: boolean = false;
+  // inlineWizard demo
+  @ViewChild('inlineWizard') inlineWizard: Wizard;
+  inlineOpen: boolean = false;
 
-    ngOnInit() {
-        // For ghosts demo
-        this.ghostModel = {typesOfPages: ""};
-    }
+  ngOnInit() {
+    // For ghosts demo
+    this.ghostModel = { typesOfPages: '' };
+  }
 }

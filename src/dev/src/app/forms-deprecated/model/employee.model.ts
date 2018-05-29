@@ -4,5 +4,5 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 export class Employee {
-    constructor(public id: number, public firstName: string, public lastName: string, public employeeType?: string) {}
+  constructor(public id: number, public firstName: string, public lastName: string, public employeeType?: string) {}
 }

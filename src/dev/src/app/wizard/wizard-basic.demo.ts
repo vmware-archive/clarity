@@ -4,18 +4,18 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ViewChild} from "@angular/core";
+import { Component, ViewChild } from '@angular/core';
 
-import {ClrCodeHighlight} from "@clr/angular";
-import {ClrWizard} from "@clr/angular";
+import { ClrCodeHighlight } from '@clr/angular';
+import { ClrWizard } from '@clr/angular';
 
-@Component({selector: "clr-wizard-basic", templateUrl: "./wizard-basic.demo.html"})
+@Component({ selector: 'clr-wizard-basic', templateUrl: './wizard-basic.demo.html' })
 export class WizardBasicDemo {
-    @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
-    open: boolean = false;
+  @ViewChild('wizard') wizard: ClrWizard;
+  @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
+  open: boolean = false;
 
-    code: string = `
+  code: string = `
 import { Component, ViewChild } from "@angular/core";
 import { Wizard } from "@clr/angular";
 
@@ -30,7 +30,7 @@ export class WizardBasicDemo {
 }
 `;
 
-    html: string = `
+  html: string = `
 <clr-wizard #wizard [(clrWizardOpen)]="open">
     <clr-wizard-title>Wizard Title</clr-wizard-title>
 

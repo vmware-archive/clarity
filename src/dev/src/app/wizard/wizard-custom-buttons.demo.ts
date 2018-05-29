@@ -4,37 +4,37 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ViewChild} from "@angular/core";
+import { Component, ViewChild } from '@angular/core';
 
-import {ClrCodeHighlight} from "@clr/angular";
-import {ClrWizard} from "@clr/angular";
+import { ClrCodeHighlight } from '@clr/angular';
+import { ClrWizard } from '@clr/angular';
 
-@Component({selector: "clr-wizard-custom-buttons", templateUrl: "./wizard-custom-buttons.demo.html"})
+@Component({ selector: 'clr-wizard-custom-buttons', templateUrl: './wizard-custom-buttons.demo.html' })
 export class WizardCustomButtonsDemo {
-    @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
+  @ViewChild('wizard') wizard: ClrWizard;
+  @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
-    public handleDangerClick(): void {
-        this.wizard.finish(false);
+  public handleDangerClick(): void {
+    this.wizard.finish(false);
+  }
+
+  public showWarning = false;
+
+  public doCustomClick(buttonType: string): void {
+    if ('custom-next' === buttonType) {
+      this.wizard.next(false);
     }
 
-    public showWarning = false;
-
-    public doCustomClick(buttonType: string): void {
-        if ("custom-next" === buttonType) {
-            this.wizard.next(false);
-        }
-
-        if ("custom-previous" === buttonType) {
-            this.wizard.previous();
-        }
-
-        if ("custom-danger" === buttonType) {
-            this.showWarning = true;
-        }
+    if ('custom-previous' === buttonType) {
+      this.wizard.previous();
     }
 
-    code: string = `
+    if ('custom-danger' === buttonType) {
+      this.showWarning = true;
+    }
+  }
+
+  code: string = `
 import { Component, ViewChild } from "@angular/core";
 import { Wizard } from "@clr/angular";
 
@@ -66,7 +66,7 @@ export class WizardCustomButtonsDemo {
 }
 `;
 
-    html: string = `
+  html: string = `
 <clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardSize]="'lg'">
 
     <clr-wizard-title>Custom and default buttons</clr-wizard-title>

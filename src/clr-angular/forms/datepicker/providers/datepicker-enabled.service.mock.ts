@@ -4,20 +4,19 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Injectable} from "@angular/core";
-import {DatepickerEnabledService} from "./datepicker-enabled.service";
-
+import { Injectable } from '@angular/core';
+import { DatepickerEnabledService } from './datepicker-enabled.service';
 
 @Injectable()
 export class MockDatepickerEnabledService extends DatepickerEnabledService {
-    fakeIsEnabled: boolean = true;
+  fakeIsEnabled: boolean = true;
 
-    get isEnabled(): boolean {
-        return this.fakeIsEnabled;
-    }
+  get isEnabled(): boolean {
+    return this.fakeIsEnabled;
+  }
 }
 
 export const MOCK_DATEPICKER_ENABLED_PROVIDER = {
-    provide: DatepickerEnabledService,
-    useClass: MockDatepickerEnabledService
+  provide: DatepickerEnabledService,
+  useClass: MockDatepickerEnabledService,
 };

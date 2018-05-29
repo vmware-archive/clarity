@@ -3,24 +3,24 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Directive, ElementRef, OnDestroy} from "@angular/core";
-import {Subscription} from "rxjs";
+import { Directive, ElementRef, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import {DomAdapter} from "./dom-adapter";
-import {DatagridRenderOrganizer} from "./render-organizer";
+import { DomAdapter } from './dom-adapter';
+import { DatagridRenderOrganizer } from './render-organizer';
 
-@Directive({selector: "[clrDgBody]"})
+@Directive({ selector: '[clrDgBody]' })
 export class DatagridBodyRenderer implements OnDestroy {
-    constructor(private el: ElementRef, private organizer: DatagridRenderOrganizer, private domAdapter: DomAdapter) {
-        this.subscription = organizer.scrollbar.subscribe(() => this.computeScrollbarWidth());
-    }
+  constructor(private el: ElementRef, private organizer: DatagridRenderOrganizer, private domAdapter: DomAdapter) {
+    this.subscription = organizer.scrollbar.subscribe(() => this.computeScrollbarWidth());
+  }
 
-    private subscription: Subscription;
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
-    }
+  private subscription: Subscription;
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
-    private computeScrollbarWidth() {
-        this.organizer.scrollbarWidth.next(this.domAdapter.scrollBarWidth(this.el.nativeElement));
-    }
+  private computeScrollbarWidth() {
+    this.organizer.scrollbarWidth.next(this.domAdapter.scrollBarWidth(this.el.nativeElement));
+  }
 }

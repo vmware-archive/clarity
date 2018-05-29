@@ -2,23 +2,23 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../_utils/code";
-@import "../../../../clr-angular/image/icons.clarity";
+@import '../_utils/code';
+@import '../../../../clr-angular/image/icons.clarity';
 
-.clr-example{
-    position: relative;
+.clr-example {
+  position: relative;
 
-    &.squeeze{
-        padding: 24px;
+  &.squeeze {
+    padding: 24px;
+  }
+
+  &.example-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.example-column {
+      flex-direction: column;
     }
-
-    &.example-center{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        &.example-column{
-            flex-direction: column;
-        }
-    }
+  }
 }

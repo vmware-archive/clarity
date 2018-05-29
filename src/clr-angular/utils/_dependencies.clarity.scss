@@ -3,39 +3,38 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Bootstrap 4 Grid Overrides
-@import "../utils/bs4-grid-breakpoint-overrides.clarity";
+@import '../utils/bs4-grid-breakpoint-overrides.clarity';
 
 // Bootstrap 4 Dependencies - Begin Part 1
-@import "../../../node_modules/bootstrap/scss/variables";
-@import "../../../node_modules/bootstrap/scss/mixins";
-@import "../../../node_modules/bootstrap/scss/normalize";
+@import '../../../node_modules/bootstrap/scss/variables';
+@import '../../../node_modules/bootstrap/scss/mixins';
+@import '../../../node_modules/bootstrap/scss/normalize';
 //Bootstrap 4 Dependencies - End Part 1
 
-
 // Vendor
-@import "../utils/vendor/decimalRounding.clarity";
-@import "../utils/vendor/mathPow.clarity";
+@import '../utils/vendor/decimalRounding.clarity';
+@import '../utils/vendor/mathPow.clarity';
 // End Vendor
 
 // Clarity Internal Dependencies- Begin Part 1
-@import "../utils/mixins.clarity";
-@import "../utils/helpers.clarity";
+@import '../utils/mixins.clarity';
+@import '../utils/helpers.clarity';
 
 // Grid Dependencies
-@import "../layout/grid/variables/variables.clarity";
-@import "../layout/grid/mixins/breakpoint.clarity";
-@import "../layout/grid/mixins/grid.clarity";
-@import "../layout/grid/mixins/grid-framework.clarity";
-@import "../layout/grid/utilities/flex.clarity";
+@import '../layout/grid/variables/variables.clarity';
+@import '../layout/grid/mixins/breakpoint.clarity';
+@import '../layout/grid/mixins/grid.clarity';
+@import '../layout/grid/mixins/grid-framework.clarity';
+@import '../layout/grid/utilities/flex.clarity';
 
 //Color
-@import "../color/utils/colors.clarity";
-@import "../color/utils/contrast-cache.clarity";
-@import "../color/utils/helpers.clarity";
-@import "../color/color.clarity"; // depends on colors.clarity, helper.clarity, contrast-cache.clarity
+@import '../color/utils/colors.clarity';
+@import '../color/utils/contrast-cache.clarity';
+@import '../color/utils/helpers.clarity';
+@import '../color/color.clarity'; // depends on colors.clarity, helper.clarity, contrast-cache.clarity
 
 //Layer - z-indices
-@import "../utils/layers.clarity";
+@import '../utils/layers.clarity';
 
 // Component variables
-@import "../utils/variables.clarity"; // depends on helpers.clarity, color.clarity
+@import '../utils/variables.clarity'; // depends on helpers.clarity, color.clarity

@@ -4,27 +4,30 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 export class Hero {
-    constructor(public id: number, public name: string, public power: string, public alterEgo?: string) {}
+  constructor(public id: number, public name: string, public power: string, public alterEgo?: string) {}
 }
 
-@Component(
-    {selector: "clr-modal-dynamic-form", styleUrls: ["./modal.demo.scss"], templateUrl: "./modal-form.demo.html"})
+@Component({
+  selector: 'clr-modal-dynamic-form',
+  styleUrls: ['./modal.demo.scss'],
+  templateUrl: './modal-form.demo.html',
+})
 export class ModalFormDemo {
-    basic: boolean = false;
-    powers = ["Really Smart", "Super Flexible", "Super Hot", "Weather Changer"];
+  basic: boolean = false;
+  powers = ['Really Smart', 'Super Flexible', 'Super Hot', 'Weather Changer'];
 
-    model = new Hero(18, "Dr IQ", this.powers[0], "Chuck Overstreet");
+  model = new Hero(18, 'Dr IQ', this.powers[0], 'Chuck Overstreet');
 
-    submitted = false;
+  submitted = false;
 
-    onSubmit(form: any) {
-        this.submitted = true;
-    }
+  onSubmit(form: any) {
+    this.submitted = true;
+  }
 
-    get diagnostic() {
-        return JSON.stringify(this.model);
-    }
+  get diagnostic() {
+    return JSON.stringify(this.model);
+  }
 }

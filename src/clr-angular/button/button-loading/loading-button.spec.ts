@@ -4,64 +4,67 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ViewChild} from "@angular/core";
-import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
-import {NoopAnimationsModule} from "@angular/platform-browser/animations";
+import { Component, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import {ClrLoadingState} from "../../utils/loading";
-import {ClrLoadingModule} from "../../utils/loading/loading.module";
+import { ClrLoadingState } from '../../utils/loading';
+import { ClrLoadingModule } from '../../utils/loading/loading.module';
 
-import {ClrLoadingButton} from "./loading-button";
-import {ClrLoadingButtonModule} from "./loading-button.module";
+import { ClrLoadingButton } from './loading-button';
+import { ClrLoadingButtonModule } from './loading-button.module';
 
-describe("Loading Buttons", () => {
-    let fixture: ComponentFixture<TestLoadingButtonComponent>;
+describe('Loading Buttons', () => {
+  let fixture: ComponentFixture<TestLoadingButtonComponent>;
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [ClrLoadingModule, ClrLoadingButtonModule, NoopAnimationsModule],
-            declarations: [TestLoadingButtonComponent]
-        });
-
-        fixture = TestBed.createComponent(TestLoadingButtonComponent);
-
-        fixture.detectChanges();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [ClrLoadingModule, ClrLoadingButtonModule, NoopAnimationsModule],
+      declarations: [TestLoadingButtonComponent],
     });
 
-    afterEach(() => {
-        fixture.destroy();
-    });
+    fixture = TestBed.createComponent(TestLoadingButtonComponent);
 
-    it("displays spinner when [(clrButtonState)] value is LOADING", () => {
-        fixture.componentInstance.buttonState = ClrLoadingState.LOADING;
-        fixture.detectChanges();
-        expect(fixture.nativeElement.querySelector(".spinner")).toBeTruthy();
-    });
+    fixture.detectChanges();
+  });
 
-    it("sets the state back to DEFAULT when [(clrButtonState)] value is VALIDATED", fakeAsync(() => {
-           fixture.componentInstance.buttonState = ClrLoadingState.SUCCESS;
-           fixture.detectChanges();
-           expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.SUCCESS);
+  afterEach(() => {
+    fixture.destroy();
+  });
 
-           tick(2000);
-           fixture.detectChanges();
-           expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.DEFAULT);
-       }));
+  it('displays spinner when [(clrButtonState)] value is LOADING', () => {
+    fixture.componentInstance.buttonState = ClrLoadingState.LOADING;
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.spinner')).toBeTruthy();
+  });
 
-    it("hides spinner when [(clrButtonState)] value is DEFAULT", () => {
-        fixture.componentInstance.buttonState = ClrLoadingState.DEFAULT;
-        fixture.detectChanges();
-        expect(fixture.nativeElement.querySelector(".spinner")).toBeFalsy();
-    });
+  it(
+    'sets the state back to DEFAULT when [(clrButtonState)] value is VALIDATED',
+    fakeAsync(() => {
+      fixture.componentInstance.buttonState = ClrLoadingState.SUCCESS;
+      fixture.detectChanges();
+      expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.SUCCESS);
+
+      tick(2000);
+      fixture.detectChanges();
+      expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.DEFAULT);
+    })
+  );
+
+  it('hides spinner when [(clrButtonState)] value is DEFAULT', () => {
+    fixture.componentInstance.buttonState = ClrLoadingState.DEFAULT;
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.spinner')).toBeFalsy();
+  });
 });
 
 @Component({
-    template: `
+  template: `
         <button [(clrLoading)]="buttonState" id="testBtn">Test 1</button>
-    `
+    `,
 })
 class TestLoadingButtonComponent {
-    @ViewChild(ClrLoadingButton) loadingButtonInstance: ClrLoadingButton;
+  @ViewChild(ClrLoadingButton) loadingButtonInstance: ClrLoadingButton;
 
-    buttonState: ClrLoadingState = ClrLoadingState.DEFAULT;
+  buttonState: ClrLoadingState = ClrLoadingState.DEFAULT;
 }

@@ -3,12 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
-import {ClrStackView} from "./stack-view";
+import { Component } from '@angular/core';
+import { ClrStackView } from './stack-view';
 
 @Component({
-    selector: "clr-stack-header",
-    template: `
+  selector: 'clr-stack-header',
+  template: `
         <h4 class="stack-header">
             <span class="stack-title"><ng-content></ng-content></span>
             
@@ -23,11 +23,13 @@ import {ClrStackView} from "./stack-view";
             </span>
         </h4>
     `,
-    // Custom elements are inline by default
-    styles: [`
+  // Custom elements are inline by default
+  styles: [
+    `
         :host { display: block; }
-    `]
+    `,
+  ],
 })
 export class ClrStackHeader {
-    constructor(public stackView: ClrStackView) {}
+  constructor(public stackView: ClrStackView) {}
 }

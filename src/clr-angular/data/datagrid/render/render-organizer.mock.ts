@@ -4,41 +4,41 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Injectable} from "@angular/core";
-import {Subject} from "rxjs";
-import {DatagridRenderOrganizer} from "./render-organizer";
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { DatagridRenderOrganizer } from './render-organizer';
 
 /**
  * Mock that gives direct access to the subjects, to trigger specific parts of the render cycle.
  */
 @Injectable()
 export class MockDatagridRenderOrganizer extends DatagridRenderOrganizer {
-    public get noLayout(): Subject<boolean> {
-        return this._noLayout;
-    }
+  public get noLayout(): Subject<boolean> {
+    return this._noLayout;
+  }
 
-    public get clearWidths(): Subject<any> {
-        return this._clearWidths;
-    }
+  public get clearWidths(): Subject<any> {
+    return this._clearWidths;
+  }
 
-    public get detectStrictWidths(): Subject<any> {
-        return this._detectStrictWidths;
-    }
+  public get detectStrictWidths(): Subject<any> {
+    return this._detectStrictWidths;
+  }
 
-    public get tableMode(): Subject<boolean> {
-        return this._tableMode;
-    }
+  public get tableMode(): Subject<boolean> {
+    return this._tableMode;
+  }
 
-    public get computeWidths(): Subject<any> {
-        return this._computeWidths;
-    }
+  public get computeWidths(): Subject<any> {
+    return this._computeWidths;
+  }
 
-    public get alignColumns(): Subject<any> {
-        return this._alignColumns;
-    }
+  public get alignColumns(): Subject<any> {
+    return this._alignColumns;
+  }
 }
 
 export const MOCK_ORGANIZER_PROVIDER = {
-    provide: DatagridRenderOrganizer,
-    useClass: MockDatagridRenderOrganizer
+  provide: DatagridRenderOrganizer,
+  useClass: MockDatagridRenderOrganizer,
 };

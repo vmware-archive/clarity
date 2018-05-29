@@ -4,15 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {CommonModule} from "@angular/common";
-import {NgModule, Type} from "@angular/core";
-import {ClrCheckboxDeprecated} from "./checkbox";
+import { CommonModule } from '@angular/common';
+import { NgModule, Type } from '@angular/core';
+import { ClrCheckboxDeprecated } from './checkbox';
 
 export const CLR_CHECKBOX_DIRECTIVES: Type<any>[] = [ClrCheckboxDeprecated];
 
-@NgModule({imports: [CommonModule], declarations: [CLR_CHECKBOX_DIRECTIVES], exports: [CLR_CHECKBOX_DIRECTIVES]})
-export class ClrCheckboxModule {
-}
+@NgModule({ imports: [CommonModule], declarations: [CLR_CHECKBOX_DIRECTIVES], exports: [CLR_CHECKBOX_DIRECTIVES] })
+export class ClrCheckboxModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

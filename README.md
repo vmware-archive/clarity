@@ -11,7 +11,6 @@ Project Clarity is an open source design system that brings together UX guidelin
 ## Getting Started
 
 Clarity is published as three npm packages:
-
 * **@clr/icons.** Contains the custom element icons.
 * **@clr/ui.** Contains the static styles for building HTML components.
 * **@clr/angular.** Contains the Angular components. This package depends on @clr/ui for styles.
@@ -21,7 +20,6 @@ The easiest way to run a sample Angular application with Clarity is to use the [
 If you already have an Angular application, you can follow the installation steps below to include and use Clarity in your application.
 
 ### Installing Clarity Icons
-
 1.  Install Clarity Icons package through npm:
 
     ```bash

@@ -33,8 +33,8 @@ export class ClrButton implements LoadingListener {
   @ViewChild('buttonProjectedRef') templateRef: TemplateRef<ClrButton>;
 
   constructor(
-    @SkipSelf()
-    @Optional()
+        @SkipSelf()
+        @Optional()
     public buttonInGroupService: ButtonInGroupService
   ) {}
 

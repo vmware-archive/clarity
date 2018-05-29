@@ -11,8 +11,8 @@ const shell = require('shelljs');
 const ip = require('ip');
 
 function generateRootUrl() {
-  let myIp = ip.address();
-  return `http://${myIp}:3000/`;
+    let myIp = ip.address();
+    return `http://${myIp}:3000/`;
 }
 
 // Define the cli interactions we support, help text

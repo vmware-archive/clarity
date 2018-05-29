@@ -10,7 +10,7 @@
 
   //To override the visited state of anchor links styled as buttons
   &:visited {
-    color: map-get($button-property-map, color);
+        color: map-get($button-property-map, color);
   }
 
   &:hover {

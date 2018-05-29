@@ -2,55 +2,56 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../_utils/code";
+@import '../_utils/code';
 
 .datagrid-nav {
-    column-count: 3;
+  column-count: 3;
 }
 
 .color-square {
-    display: inline-block;
-    vertical-align: bottom;
-    height: 13px;
-    width: 13px;
-    border: 1px solid black;
-    border-radius: 4px;
+  display: inline-block;
+  vertical-align: bottom;
+  height: 13px;
+  width: 13px;
+  border: 1px solid black;
+  border-radius: 4px;
 }
 
 .color-filter {
-    display: block;
-    width: 100px;
+  display: block;
+  width: 100px;
 }
 
 .color-selectable {
-    cursor: pointer;
-    margin: 2px;
-    opacity: 0.2;
+  cursor: pointer;
+  margin: 2px;
+  opacity: 0.2;
 
-    &:hover, &.color-selected {
-        opacity: 1;
-    }
+  &:hover,
+  &.color-selected {
+    opacity: 1;
+  }
 }
 
 .lorem-ipsum {
-    width: 300px;
+  width: 300px;
 }
 
 .username-list {
-    margin-bottom: 0;
+  margin-bottom: 0;
 
-    .username:not(:last-child)::after {
-        content: ", ";
-    }
-    .username:last-child::after {
-        content: ".";
-    }
+  .username:not(:last-child)::after {
+    content: ', ';
+  }
+  .username:last-child::after {
+    content: '.';
+  }
 }
 
 #vertical-scrolling {
-    height: 500px;
+  height: 500px;
 }
 
 .conditional-datagrid {
-    height: 300px;
+  height: 300px;
 }

@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 const EXAMPLE_1 = `
 <clr-tree-node>
@@ -72,17 +72,17 @@ const EXAMPLE_2 = `
 `;
 
 @Component({
-    selector: "clr-tree-lazy-loading-node-demo",
-    styleUrls: ["../tree-view.demo.scss"],
-    templateUrl: "./lazy-loading-tree-node.html"
+  selector: 'clr-tree-lazy-loading-node-demo',
+  styleUrls: ['../tree-view.demo.scss'],
+  templateUrl: './lazy-loading-tree-node.html',
 })
 export class LazyLoadingTreeNodeDemo {
-    slowLoad = true;
+  slowLoad = true;
 
-    example1 = EXAMPLE_1;
-    example2 = EXAMPLE_2;
+  example1 = EXAMPLE_1;
+  example2 = EXAMPLE_2;
 
-    selected: boolean = true;
+  selected: boolean = true;
 
-    parentSelected: boolean = false;
+  parentSelected: boolean = false;
 }

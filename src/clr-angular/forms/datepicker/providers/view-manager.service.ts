@@ -4,12 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Injectable} from "@angular/core";
+import { Injectable } from '@angular/core';
 
 const enum DatepickerViewEnum {
-    MONTHVIEW = "MONTHVIEW",
-    YEARVIEW = "YEARVIEW",
-    DAYVIEW = "DAYVIEW"
+  MONTHVIEW = 'MONTHVIEW',
+  YEARVIEW = 'YEARVIEW',
+  DAYVIEW = 'DAYVIEW',
 }
 
 /**
@@ -17,29 +17,29 @@ const enum DatepickerViewEnum {
  */
 @Injectable()
 export class ViewManagerService {
-    private _currentView: DatepickerViewEnum = DatepickerViewEnum.DAYVIEW;
+  private _currentView: DatepickerViewEnum = DatepickerViewEnum.DAYVIEW;
 
-    get isDayView(): boolean {
-        return this._currentView === DatepickerViewEnum.DAYVIEW;
-    }
+  get isDayView(): boolean {
+    return this._currentView === DatepickerViewEnum.DAYVIEW;
+  }
 
-    get isYearView(): boolean {
-        return this._currentView === DatepickerViewEnum.YEARVIEW;
-    }
+  get isYearView(): boolean {
+    return this._currentView === DatepickerViewEnum.YEARVIEW;
+  }
 
-    get isMonthView(): boolean {
-        return this._currentView === DatepickerViewEnum.MONTHVIEW;
-    }
+  get isMonthView(): boolean {
+    return this._currentView === DatepickerViewEnum.MONTHVIEW;
+  }
 
-    changeToMonthView(): void {
-        this._currentView = DatepickerViewEnum.MONTHVIEW;
-    }
+  changeToMonthView(): void {
+    this._currentView = DatepickerViewEnum.MONTHVIEW;
+  }
 
-    changeToYearView(): void {
-        this._currentView = DatepickerViewEnum.YEARVIEW;
-    }
+  changeToYearView(): void {
+    this._currentView = DatepickerViewEnum.YEARVIEW;
+  }
 
-    changeToDayView(): void {
-        this._currentView = DatepickerViewEnum.DAYVIEW;
-    }
+  changeToDayView(): void {
+    this._currentView = DatepickerViewEnum.DAYVIEW;
+  }
 }

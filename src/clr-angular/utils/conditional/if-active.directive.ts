@@ -3,12 +3,21 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Directive, EventEmitter, Inject, Input, OnDestroy, Output, TemplateRef, ViewContainerRef} from "@angular/core";
-import {Subscription} from "rxjs";
+import {
+  Directive,
+  EventEmitter,
+  Inject,
+  Input,
+  OnDestroy,
+  Output,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import {IF_ACTIVE_ID, IfActiveService} from "./if-active.service";
+import { IF_ACTIVE_ID, IfActiveService } from './if-active.service';
 
-@Directive({selector: "[clrIfActive]"})
+@Directive({ selector: '[clrIfActive]' })
 
 /**********
  *
@@ -21,77 +30,81 @@ import {IF_ACTIVE_ID, IfActiveService} from "./if-active.service";
  *
  */
 export class IfActiveDirective implements OnDestroy {
-    private subscription: Subscription;
-    private wasActive: boolean = false;
+  private subscription: Subscription;
+  private wasActive: boolean = false;
 
-    constructor(private ifActiveService: IfActiveService, @Inject(IF_ACTIVE_ID) private id: number,
-                private template: TemplateRef<any>, private container: ViewContainerRef) {
-        this.checkAndUpdateView(ifActiveService.current);
+  constructor(
+    private ifActiveService: IfActiveService,
+    @Inject(IF_ACTIVE_ID) private id: number,
+    private template: TemplateRef<any>,
+    private container: ViewContainerRef
+  ) {
+    this.checkAndUpdateView(ifActiveService.current);
 
-        this.subscription = this.ifActiveService.currentChange.subscribe((newCurrentId) => {
-            this.checkAndUpdateView(newCurrentId);
-        });
+    this.subscription = this.ifActiveService.currentChange.subscribe(newCurrentId => {
+      this.checkAndUpdateView(newCurrentId);
+    });
+  }
+
+  private checkAndUpdateView(currentId: number) {
+    const isNowActive = currentId === this.id;
+    // only emit if the new active state is changed since last time.
+    if (isNowActive !== this.wasActive) {
+      this.updateView(isNowActive);
+      this.activeChange.emit(isNowActive);
+      this.wasActive = isNowActive;
     }
+  }
 
-    private checkAndUpdateView(currentId: number) {
-        const isNowActive = currentId === this.id;
-        // only emit if the new active state is changed since last time.
-        if (isNowActive !== this.wasActive) {
-            this.updateView(isNowActive);
-            this.activeChange.emit(isNowActive);
-            this.wasActive = isNowActive;
-        }
+  /*********
+   *
+   * @description
+   * A setter that updates IfActiveService.active with value.
+   *
+   * @param value
+   */
+  @Input('clrIfActive')
+  public set active(value: boolean) {
+    if (value) {
+      this.ifActiveService.current = this.id;
     }
+  }
 
-    /*********
-     *
-     * @description
-     * A setter that updates IfActiveService.active with value.
-     *
-     * @param value
-     */
-    @Input("clrIfActive")
-    public set active(value: boolean) {
-        if (value) {
-            this.ifActiveService.current = this.id;
-        }
+  /**********
+   * @property activeChange
+   *
+   * @description
+   * An event emitter that emits when the active property is set to allow for 2way binding when the directive is
+   * used with de-structured / de-sugared syntax.
+   *
+   */
+  @Output('clrIfActiveChange') activeChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
+
+  /********
+   *
+   * @description
+   * A getter that returns the current IfActiveService.active value.
+   */
+  public get active() {
+    return this.ifActiveService.current === this.id;
+  }
+
+  /*********
+   *
+   * @description
+   * Function that takes a any value and either created an embedded view for the associated ViewContainerRef or,
+   * Clears all views from the ViewContainerRef
+   * @param value
+   */
+  public updateView(value: boolean) {
+    if (value) {
+      this.container.createEmbeddedView(this.template);
+    } else {
+      this.container.clear();
     }
+  }
 
-    /**********
-     * @property activeChange
-     *
-     * @description
-     * An event emitter that emits when the active property is set to allow for 2way binding when the directive is
-     * used with de-structured / de-sugared syntax.
-     *
-     */
-    @Output("clrIfActiveChange") activeChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
-
-    /********
-     *
-     * @description
-     * A getter that returns the current IfActiveService.active value.
-     */
-    public get active() {
-        return this.ifActiveService.current === this.id;
-    }
-
-    /*********
-     *
-     * @description
-     * Function that takes a any value and either created an embedded view for the associated ViewContainerRef or,
-     * Clears all views from the ViewContainerRef
-     * @param value
-     */
-    public updateView(value: boolean) {
-        if (value) {
-            this.container.createEmbeddedView(this.template);
-        } else {
-            this.container.clear();
-        }
-    }
-
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
-    }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

@@ -3,9 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
-@Component(
-    {selector: "clr-grid-demo-one-col-width", templateUrl: "./one-col-width.html", styleUrls: ["../../grid.demo.scss"]})
-export class GridOneColWidthDemo {
-}
+@Component({
+  selector: 'clr-grid-demo-one-col-width',
+  templateUrl: './one-col-width.html',
+  styleUrls: ['../../grid.demo.scss'],
+})
+export class GridOneColWidthDemo {}

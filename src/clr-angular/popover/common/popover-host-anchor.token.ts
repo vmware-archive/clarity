@@ -4,6 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {ElementRef, InjectionToken} from "@angular/core";
+import { ElementRef, InjectionToken } from '@angular/core';
 
-export const POPOVER_HOST_ANCHOR = new InjectionToken<ElementRef>("POPOVER_HOST_ANCHOR");
+export const POPOVER_HOST_ANCHOR = new InjectionToken<ElementRef>('POPOVER_HOST_ANCHOR');

@@ -4,6 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from "./radio";
-export * from "./radio-container";
-export * from "./radio.module";
+export * from './radio';
+export * from './radio-container';
+export * from './radio.module';

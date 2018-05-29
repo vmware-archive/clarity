@@ -3,16 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
-import {ComponentFixture, TestBed} from "@angular/core/testing";
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {ClrIconModule} from "../../icon/icon.module";
+import { ClrIconModule } from '../../icon/icon.module';
 
-import {MainContainerWillyWonka} from "./chocolate/main-container-willy-wonka";
-import {ClrNavigationModule} from "./navigation.module";
+import { MainContainerWillyWonka } from './chocolate/main-container-willy-wonka';
+import { ClrNavigationModule } from './navigation.module';
 
 @Component({
-    template: `        
+  template: `        
         <clr-header class="header">
             <div class="branding">
                 <a href="#" class="nav-link">
@@ -27,41 +27,40 @@ import {ClrNavigationModule} from "./navigation.module";
                 <a class="active nav-link" href="javascript://"><span class="nav-text">About</span></a>
             </div>
         </clr-header>
-   `
+   `,
 })
-class TestComponent {
-}
+class TestComponent {}
 
-describe("Header", () => {
-    let fixture: ComponentFixture<any>;
-    let compiled: any;
+describe('Header', () => {
+  let fixture: ComponentFixture<any>;
+  let compiled: any;
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [ClrNavigationModule, ClrIconModule],
-            declarations: [TestComponent],
-            providers: [MainContainerWillyWonka]
-        });
-
-        fixture = TestBed.createComponent(TestComponent);
-        fixture.detectChanges();
-        compiled = fixture.nativeElement;
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [ClrNavigationModule, ClrIconModule],
+      declarations: [TestComponent],
+      providers: [MainContainerWillyWonka],
     });
 
-    afterEach(() => {
-        fixture.destroy();
-    });
+    fixture = TestBed.createComponent(TestComponent);
+    fixture.detectChanges();
+    compiled = fixture.nativeElement;
+  });
 
-    it("projects content", () => {
-        expect(compiled.textContent).toMatch(/Title/);
-        expect(compiled.textContent).toMatch(/Components/);
-    });
+  afterEach(() => {
+    fixture.destroy();
+  });
 
-    it("shows the hamburger trigger when the level1 directive is registered", () => {
-        expect(compiled.querySelector(".header-hamburger-trigger")).not.toBeNull();
-    });
+  it('projects content', () => {
+    expect(compiled.textContent).toMatch(/Title/);
+    expect(compiled.textContent).toMatch(/Components/);
+  });
 
-    it("shows the overflow trigger when the level2 directive is registered", () => {
-        expect(compiled.querySelector(".header-overflow-trigger")).not.toBeNull();
-    });
+  it('shows the hamburger trigger when the level1 directive is registered', () => {
+    expect(compiled.querySelector('.header-hamburger-trigger')).not.toBeNull();
+  });
+
+  it('shows the overflow trigger when the level2 directive is registered', () => {
+    expect(compiled.querySelector('.header-overflow-trigger')).not.toBeNull();
+  });
 });

@@ -4,35 +4,34 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component} from "@angular/core";
-import {addHelpers, TestContext} from "../../data/datagrid/helpers.spec";
-import {ClrTooltip} from "./tooltip";
+import { Component } from '@angular/core';
+import { addHelpers, TestContext } from '../../data/datagrid/helpers.spec';
+import { ClrTooltip } from './tooltip';
 
-describe("Tooltip component", function() {
-    addHelpers();
+describe('Tooltip component', function() {
+  addHelpers();
 
-    describe("Simple", function() {
-        let context: TestContext<ClrTooltip, SimpleTest>;
+  describe('Simple', function() {
+    let context: TestContext<ClrTooltip, SimpleTest>;
 
-        beforeEach(function() {
-            context = this.create(ClrTooltip, SimpleTest);
-        });
-
-        it("projects anchor content", function() {
-            expect(context.clarityElement.textContent).toMatch(/Hello/);
-        });
+    beforeEach(function() {
+      context = this.create(ClrTooltip, SimpleTest);
     });
+
+    it('projects anchor content', function() {
+      expect(context.clarityElement.textContent).toMatch(/Hello/);
+    });
+  });
 });
 
 @Component({
-    template: `
+  template: `
         <clr-tooltip>
             <span class="tooltip-anchor">Hello</span>
             <clr-tooltip-content>
                 <span>World</span>
             </clr-tooltip-content>
         </clr-tooltip>
-    `
+    `,
 })
-class SimpleTest {
-}
+class SimpleTest {}

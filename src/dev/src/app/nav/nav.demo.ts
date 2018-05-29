@@ -3,12 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-nav-demo",
-    styleUrls: [],
-    template: `
+  selector: 'clr-nav-demo',
+  styleUrls: [],
+  template: `
         <h2>Navigation</h2>
         <ul>
             <li><a [routerLink]="['./headers']">Headers</a></li>
@@ -19,7 +19,6 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./responsive-nav2']">Responsive Nav 2 Code Snippets</a></li>
         </ul>
         <router-outlet></router-outlet>
-    `
+    `,
 })
-export class NavDemo {
-}
+export class NavDemo {}

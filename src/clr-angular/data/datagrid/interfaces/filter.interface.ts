@@ -3,12 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Observable} from "rxjs";
+import { Observable } from 'rxjs';
 
 export interface ClrDatagridFilterInterface<T> {
-    isActive(): boolean;
+  isActive(): boolean;
 
-    accepts(item: T): boolean;
+  accepts(item: T): boolean;
 
-    changes: Observable<any>;
+  changes: Observable<any>;
 }

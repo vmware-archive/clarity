@@ -10,46 +10,46 @@
  * to native DOM elements' methods and properties in the Datagrid happens here.
  */
 
-import {Injectable} from "@angular/core";
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class DomAdapter {
-    userDefinedWidth(element: any): number {
-        element.classList.add("datagrid-cell-width-zero");
-        const userDefinedWidth = parseInt(getComputedStyle(element).getPropertyValue("width"), 10);
-        element.classList.remove("datagrid-cell-width-zero");
-        return userDefinedWidth;
-    }
+  userDefinedWidth(element: any): number {
+    element.classList.add('datagrid-cell-width-zero');
+    const userDefinedWidth = parseInt(getComputedStyle(element).getPropertyValue('width'), 10);
+    element.classList.remove('datagrid-cell-width-zero');
+    return userDefinedWidth;
+  }
 
-    scrollBarWidth(element: any) {
-        return element.offsetWidth - element.clientWidth;
-    }
+  scrollBarWidth(element: any) {
+    return element.offsetWidth - element.clientWidth;
+  }
 
-    scrollWidth(element: any) {
-        return element.scrollWidth || 0;
-    }
+  scrollWidth(element: any) {
+    return element.scrollWidth || 0;
+  }
 
-    computedHeight(element: any): number {
-        return parseInt(getComputedStyle(element).getPropertyValue("height"), 10);
-    }
+  computedHeight(element: any): number {
+    return parseInt(getComputedStyle(element).getPropertyValue('height'), 10);
+  }
 
-    clientRectHeight(element: any): number {
-        return parseInt(element.getBoundingClientRect().height, 10);
-    }
+  clientRectHeight(element: any): number {
+    return parseInt(element.getBoundingClientRect().height, 10);
+  }
 
-    clientRectRight(element: any): number {
-        return parseInt(element.getBoundingClientRect().right, 10);
-    }
+  clientRectRight(element: any): number {
+    return parseInt(element.getBoundingClientRect().right, 10);
+  }
 
-    clientRectWidth(element: any): number {
-        return parseInt(element.getBoundingClientRect().width, 10);
-    }
+  clientRectWidth(element: any): number {
+    return parseInt(element.getBoundingClientRect().width, 10);
+  }
 
-    minWidth(element: any): number {
-        return parseInt(getComputedStyle(element).getPropertyValue("min-width"), 10);
-    }
+  minWidth(element: any): number {
+    return parseInt(getComputedStyle(element).getPropertyValue('min-width'), 10);
+  }
 
-    focus(element: any): void {
-        element.focus();
-    }
+  focus(element: any): void {
+    element.focus();
+  }
 }

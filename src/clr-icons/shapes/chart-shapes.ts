@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {clrIconSVG} from "../utils/svg-tag-generator";
+import { clrIconSVG } from '../utils/svg-tag-generator';
 
 /* tslint:disable:variable-name */
 export const ClrShapeAxisChart = clrIconSVG(`
@@ -219,20 +219,20 @@ export const ClrShapeTickChart = clrIconSVG(`
   <path class="clr-i-solid--alerted clr-i-solid-path-2--alerted clr-i-alert" d="M 26.854 1.144 L 21.134 11.004 C 20.579 11.818 21.114 12.928 22.097 13.001 C 22.142 13.005 22.188 13.006 22.234 13.004 L 33.684 13.004 C 34.669 13.036 35.319 11.991 34.855 11.122 C 34.834 11.081 34.81 11.042 34.784 11.004 L 29.064 1.144 C 28.57 0.299 27.348 0.299 26.854 1.144 Z"/>`);
 
 export const ChartShapes: any = {
-    "axis-chart": ClrShapeAxisChart,
-    "bar-chart": ClrShapeBarChart,
-    "bubble-chart": ClrShapeBubbleChart,
-    "cloud-chart": ClrShapeCloudChart,
-    "curve-chart": ClrShapeCurveChart,
-    "grid-chart": ClrShapeGridChart,
-    "line-chart": ClrShapeLineChart,
-    "pie-chart": ClrShapePieChart,
-    "tick-chart": ClrShapeTickChart,
-    "scatter-plot": ClrShapeScatterPlot,
-    "box-plot": ClrShapeBoxPlot,
-    "heat-map": ClrShapeHeatMap
+  'axis-chart': ClrShapeAxisChart,
+  'bar-chart': ClrShapeBarChart,
+  'bubble-chart': ClrShapeBubbleChart,
+  'cloud-chart': ClrShapeCloudChart,
+  'curve-chart': ClrShapeCurveChart,
+  'grid-chart': ClrShapeGridChart,
+  'line-chart': ClrShapeLineChart,
+  'pie-chart': ClrShapePieChart,
+  'tick-chart': ClrShapeTickChart,
+  'scatter-plot': ClrShapeScatterPlot,
+  'box-plot': ClrShapeBoxPlot,
+  'heat-map': ClrShapeHeatMap,
 };
 
-if (typeof window !== "undefined" && window.hasOwnProperty("ClarityIcons")) {
-    window.ClarityIcons.add(ChartShapes);
+if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
+  window.ClarityIcons.add(ChartShapes);
 }

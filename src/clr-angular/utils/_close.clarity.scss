@@ -3,30 +3,31 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @include exports('close.clarity') {
+  .close {
+    transition: color linear 0.2s;
+    font-weight: 200;
+    text-shadow: none;
+    line-height: inherit;
+    color: $close-color--normal;
+    opacity: 1;
 
-    .close {
-        transition: color linear 0.2s;
-        font-weight: 200;
-        text-shadow: none;
-        line-height: inherit;
-        color: $close-color--normal;
-        opacity: 1;
-
-        clr-icon {
-            fill: $close-color--normal
-        }
-
-        &:focus, &:hover, &:active {
-            opacity: 1;
-            color: $close-color--hover;
-
-            clr-icon {
-                fill: $close-color--hover;
-            }
-        }
-
-        &:focus {
-            @include include-outline-style-form-fields();
-        }
+    clr-icon {
+      fill: $close-color--normal;
     }
+
+    &:focus,
+    &:hover,
+    &:active {
+      opacity: 1;
+      color: $close-color--hover;
+
+      clr-icon {
+        fill: $close-color--hover;
+      }
+    }
+
+    &:focus {
+      @include include-outline-style-form-fields();
+    }
+  }
 }

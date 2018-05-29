@@ -10,23 +10,23 @@
  * TODO: Mirror input attributes from the host to the actual input: size, min, max, placeholder, ...
  */
 
-import {Component} from "@angular/core";
-import {StackControl} from "./stack-control";
-import {ClrStackView} from "./stack-view";
+import { Component } from '@angular/core';
+import { StackControl } from './stack-control';
+import { ClrStackView } from './stack-view';
 
 @Component({
-    selector: "clr-stack-input",
-    inputs: ["model: clrModel", "type"],
-    outputs: ["modelChange: clrModelChange"],
-    template: `
+  selector: 'clr-stack-input',
+  inputs: ['model: clrModel', 'type'],
+  outputs: ['modelChange: clrModelChange'],
+  template: `
         <span *ngIf="!stackView.editing">{{model}}</span>
         <input [type]="type" *ngIf="stackView.editing" [(ngModel)]="model"/>
-    `
+    `,
 })
 export class ClrStackInput extends StackControl {
-    type: string = "text";
+  type: string = 'text';
 
-    constructor(public stackView: ClrStackView) {
-        super(stackView);
-    }
+  constructor(public stackView: ClrStackView) {
+    super(stackView);
+  }
 }

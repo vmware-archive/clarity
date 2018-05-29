@@ -3,12 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-modal-demo",
-    styleUrls: ["./modal.demo.scss"],
-    template: `
+  selector: 'clr-modal-demo',
+  styleUrls: ['./modal.demo.scss'],
+  template: `
         <h2>Modal</h2>
 
         <ul>
@@ -27,7 +27,6 @@ import {Component} from "@angular/core";
         </ul>
 
         <router-outlet></router-outlet>
-    `
+    `,
 })
-export class ModalDemo {
-}
+export class ModalDemo {}

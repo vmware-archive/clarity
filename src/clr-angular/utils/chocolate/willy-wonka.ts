@@ -3,9 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {AfterViewChecked} from "@angular/core";
-import {Observable} from "rxjs";
-import {Subject} from "rxjs";
+import { AfterViewChecked } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 /*
  * After a conversation with the Angular core team, it turns out we don't have much of a choice for our
@@ -16,13 +16,13 @@ import {Subject} from "rxjs";
  * It has the potential to trigger change detection loops or kill app performances.
  */
 export class WillyWonka implements AfterViewChecked {
-    private _chocolate = new Subject<void>();
+  private _chocolate = new Subject<void>();
 
-    public get chocolate(): Observable<void> {
-        return this._chocolate.asObservable();
-    }
+  public get chocolate(): Observable<void> {
+    return this._chocolate.asObservable();
+  }
 
-    ngAfterViewChecked() {
-        this._chocolate.next();
-    }
+  ngAfterViewChecked() {
+    this._chocolate.next();
+  }
 }

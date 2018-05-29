@@ -2,76 +2,76 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../_utils/code";
+@import '../_utils/code';
 
 @mixin clrdemo-colorPaletteLabels {
-    text-transform: uppercase;
-    font-size: 0.5rem;
-    line-height: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.5rem;
+  line-height: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
 }
 
 @mixin clr-colordemo-hexContrastBlockStyles {
-    display: block;
-    line-height: 3.333333rem;
-    font-size: 2rem;
+  display: block;
+  line-height: 3.333333rem;
+  font-size: 2rem;
 }
 
 @mixin clr-colordemo-hexContrastLabelStyles($color: #ffffff, $textcolor: null) {
-    & > .hex-contrast::after {
-        content: '#{$color}';
-        display: block;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
+  & > .hex-contrast::after {
+    content: '#{$color}';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 
-        @if $textcolor != null {
-            color: $textcolor;
-        }
-
-        @include clrdemo-colorPaletteLabels;
+    @if $textcolor != null {
+      color: $textcolor;
     }
+
+    @include clrdemo-colorPaletteLabels;
+  }
 }
 
 @mixin clr-colordemo-sharedContainerStyles {
-    font-size: 0.666667rem;
-    margin: 0;
-    padding: 1.4rem;
+  font-size: 0.666667rem;
+  margin: 0;
+  padding: 1.4rem;
 }
 
 @mixin clr-colordemo-sharedTableStyles {
-    table {
-        border-collapse: collapse;
-        min-width: 47.5rem;
-        min-width: 40rem;
-        width: 100%;
-    }
+  table {
+    border-collapse: collapse;
+    min-width: 47.5rem;
+    min-width: 40rem;
+    width: 100%;
+  }
 
-    th {
-        font-weight: normal;
-        text-align: center;
-        color: clr-getColor(light-midtone);
-    }
+  th {
+    font-weight: normal;
+    text-align: center;
+    color: clr-getColor(light-midtone);
+  }
 
-    td {
-        border: $clr-default-borderwidth solid clr-getColor(white);
-        vertical-align: middle;
-        width: 8%;
-        text-align: center;
-        font-weight: 100;
-        color: #000;
-        position: relative;
-    }
+  td {
+    border: $clr-default-borderwidth solid clr-getColor(white);
+    vertical-align: middle;
+    width: 8%;
+    text-align: center;
+    font-weight: 100;
+    color: #000;
+    position: relative;
+  }
 }
 
 @mixin clr-colordemo-luminanceAndContrastTableStyles {
-    th {
-        font-size: 0.458333rem;
-        color: clr-getColor(darker);
-        text-transform: uppercase;
-        background-color: clr-getColor(lighter);
-        padding: 0.333333rem;
-    }
+  th {
+    font-size: 0.458333rem;
+    color: clr-getColor(darker);
+    text-transform: uppercase;
+    background-color: clr-getColor(lighter);
+    padding: 0.333333rem;
+  }
 }

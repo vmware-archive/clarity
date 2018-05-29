@@ -3,38 +3,37 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
-import {ComponentFixture, TestBed} from "@angular/core/testing";
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {ClrSyntaxHighlightModule} from "./syntax-highlight.module";
+import { ClrSyntaxHighlightModule } from './syntax-highlight.module';
 
 /** @deprecated since 0.12 */
 @Component({
-    template: `
+  template: `
         <pre>
             <code clr-code-highlight="language-html">
                 &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
             </code>
         </pre>
-   `
+   `,
 })
-class TestComponent {
-}
+class TestComponent {}
 
-describe("CodeHighlight", () => {
-    let fixture: ComponentFixture<any>;
+describe('CodeHighlight', () => {
+  let fixture: ComponentFixture<any>;
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({imports: [ClrSyntaxHighlightModule], declarations: [TestComponent]});
-        fixture = TestBed.createComponent(TestComponent);
-        fixture.detectChanges();
-    });
+  beforeEach(() => {
+    TestBed.configureTestingModule({ imports: [ClrSyntaxHighlightModule], declarations: [TestComponent] });
+    fixture = TestBed.createComponent(TestComponent);
+    fixture.detectChanges();
+  });
 
-    afterEach(() => {
-        fixture.destroy();
-    });
+  afterEach(() => {
+    fixture.destroy();
+  });
 
-    it("extends a language-* class on the code tag", () => {
-        expect(fixture.nativeElement.querySelector("code.language-html")).not.toBeNull();
-    });
+  it('extends a language-* class on the code tag', () => {
+    expect(fixture.nativeElement.querySelector('code.language-html')).not.toBeNull();
+  });
 });

@@ -20,12 +20,9 @@ $clr-layers: null;
     tooltips: 1070);
 */
 
-
-
 /*================================================================================*/
 /* Overwrite the default variable assignments in _variables.clarity.scss here:    */
 /*================================================================================*/
-
 
 // Breakpoints
 $grid-breakpoints: null; // (small: 544px, medium: 768px, large : 992px, xlarge: 1200px);
@@ -47,9 +44,9 @@ $clr-baseline: null; // 24px;
 
 // Paragraphs
 $clr-typography-smalltext: null; // 13/$clr-rem-denominator*$clr-font-size;
-$clr-typography-xsmalltext: null;  // 12/$clr-rem-denominator*$clr-font-size;
-$clr-typography-xxsmalltext: null;  // 11/$clr-rem-denominator*$clr-font-size;
-$clr-typography-tinytext: null;  // 10/$clr-rem-denominator*$clr-font-size;
+$clr-typography-xsmalltext: null; // 12/$clr-rem-denominator*$clr-font-size;
+$clr-typography-xxsmalltext: null; // 11/$clr-rem-denominator*$clr-font-size;
+$clr-typography-tinytext: null; // 10/$clr-rem-denominator*$clr-font-size;
 
 // Navigation
 $clr-sidenav-width: null; // 18%;
@@ -87,8 +84,6 @@ $clr-button-horizontal-margin: null; // $clr-baseline*0.5;
 
 // Icons
 $clr-icon-dimension-sm: null; // 16/$clr-rem-denominator*$clr-font-size;
-
-
 
 /*================================================================================*/
 /* Overwrite the default variable assignments in _colors.clarity.scss here:       */
@@ -155,8 +150,6 @@ $clr-green-dark: null; //  #266900;
 $clr-green-darker: null; //  #1d5100;
 $clr-green-darkest: null; //  #0f2900;
 
-
-
 /*================================================================================*/
 /* Overwrite the default variable assignments in _tooltips.clarity.scss here:     */
 /*================================================================================*/
@@ -168,9 +161,6 @@ $margin-value: null; // $clr-baseline*0.25;
 $arrow-height: null; // $clr-baseline*0.25;
 $arrow-width: null; // 5/24*$clr-baseline;
 $clr-tooltip-adjusted-margin: null; // $margin-value + $arrow-width * 2;
-
-
-
 
 /*================================================================================*/
 /* Overwrite the default variable assignments in _tables.clarity.scss here:       */
@@ -198,15 +188,11 @@ $clr-table-vertpadding: null; // (($clr-table-cellpadding - $clr-table-borderwid
 // To make sure they correctly cover the whole area up to the border.
 $clr-table-cornercellradius: null; // $clr-default-borderradius - 1;
 
-
-
 /*================================================================================*/
 /* Overwrite the default variable assignments in _sidenav.clarity.scss here:      */
 /*================================================================================*/
 
 $clr-sidenav-border-color: null; // $clr-light-midtone-gray;
-
-
 
 /*================================================================================*/
 /* Overwrite the default variable assignments in _modal.clarity.scss here:        */
@@ -217,8 +203,6 @@ $clr-modal-md-width: null; // 24*$clr-baseline;
 $clr-modal-lg-width: null; // 36*$clr-baseline;
 $clr-modal-xl-width: null; // 48*$clr-baseline;
 
-
-
 /*================================================================================*/
 /* Overwrite the default variable assignments in _login.clarity.scss here:        */
 /*================================================================================*/
@@ -226,8 +210,6 @@ $clr-modal-xl-width: null; // 48*$clr-baseline;
 $clr-login-background-color: null; // $clr-white;
 $clr-login-width: null; // 21*$clr-baseline;
 $clr-login-icon-size: null; // $clr-icon-dimension-sm;
-
-
 
 /*================================================================================*/
 /* Overwrite the default variable assignments in _labels.clarity.scss here:        */
@@ -259,8 +241,6 @@ $clr-label-colors: null; /* (
     )
 ); */
 
-
-
 /*================================================================================*/
 /* Overwrite the default variable assignments in _forms.clarity.scss here:        */
 /*================================================================================*/
@@ -276,8 +256,6 @@ $clr-form-icon-dim: null; // $clr-icon-dimension-sm;
 
 $clr-custom-checkbox-radio-top: null; // ($clr-baseline - $clr-checkbox-radio-height) / 2;
 
-
-
 /*================================================================================*/
 /* Overwrite the default variable assignments in _buttons.clarity.scss here:      */
 /*================================================================================*/
@@ -286,8 +264,6 @@ $clr-button-horizontal-padding: null; // $clr-baseline*0.5;
 $clr-button-height: null; // $clr-baseline*1.5;
 $clr-button-height-sm: null; // $clr-baseline;
 $clr-button-padding: null; // 0 $clr-button-horizontal-padding;
-
-
 
 /*================================================================================*/
 /* Overwrite the default variable assignments in _alert.clarity.scss here:        */

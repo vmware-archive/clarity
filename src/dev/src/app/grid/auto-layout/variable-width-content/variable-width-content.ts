@@ -3,12 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-grid-demo-variable-width-content",
-    templateUrl: "./variable-width-content.html",
-    styleUrls: ["../../grid.demo.scss"]
+  selector: 'clr-grid-demo-variable-width-content',
+  templateUrl: './variable-width-content.html',
+  styleUrls: ['../../grid.demo.scss'],
 })
-export class GridVariableWidthContentDemo {
-}
+export class GridVariableWidthContentDemo {}

@@ -3,30 +3,32 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {AfterViewInit, Component, Input, ViewChild} from "@angular/core";
+import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 
-import {ClrCodeHighlight} from "@clr/angular";
+import { ClrCodeHighlight } from '@clr/angular';
 
 /** @deprecated since 0.12 */
 @Component({
-    selector: "clr-example",
-    template: `
+  selector: 'clr-example',
+  template: `
         <pre><code [clr-code-highlight]="'language-'+language">{{code.trim()}}</code></pre>
     `,
-    styles: [`
+  styles: [
+    `
         pre {
             background: transparent;
             padding: 12px;
         }
-    `]
+    `,
+  ],
 })
 export class Example implements AfterViewInit {
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
+  @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
-    @Input("clrCode") public code: string;
-    @Input("clrLanguage") public language: string;
+  @Input('clrCode') public code: string;
+  @Input('clrLanguage') public language: string;
 
-    ngAfterViewInit(): void {
-        this.codeHighlight.redraw();
-    }
+  ngAfterViewInit(): void {
+    this.codeHighlight.redraw();
+  }
 }

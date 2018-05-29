@@ -7,78 +7,83 @@
 var WAIT_TIME = 5000;
 var WAIT_LOAD_TIME = 1000;
 
-gemini.suite('datepicker', (child) => {
-    gemini.suite("no-input", (child) => {
-        child.setUrl("/datepicker/css-regression")
-            .before((actions, find) => {
-                actions.waitForElementToShow('.clr-example-1', WAIT_TIME);
-                actions.wait(WAIT_LOAD_TIME);
-            })
-            .setCaptureElements('.clr-example-1 .date-input')
-            .capture('default');
-    });
+gemini.suite('datepicker', child => {
+  gemini.suite('no-input', child => {
+    child
+      .setUrl('/datepicker/css-regression')
+      .before((actions, find) => {
+        actions.waitForElementToShow('.clr-example-1', WAIT_TIME);
+        actions.wait(WAIT_LOAD_TIME);
+      })
+      .setCaptureElements('.clr-example-1 .date-input')
+      .capture('default');
+  });
 
-    gemini.suite("user-input", (child) => {
-        child.setUrl("/datepicker/css-regression")
-            .before((actions, find) => {
-                actions.waitForElementToShow('.clr-example-2', WAIT_TIME);
-                actions.wait(WAIT_LOAD_TIME);
-                this.trigger = find(".clr-example-2 .datepicker-trigger")
-            })
-            .setCaptureElements('.clr-example-input')
-            .capture('default')
-            .capture('trigger-hovered', (actions, find) => {
-                actions.mouseMove(this.trigger);
-                actions.wait(WAIT_LOAD_TIME);
-            });
-    });
+  gemini.suite('user-input', child => {
+    child
+      .setUrl('/datepicker/css-regression')
+      .before((actions, find) => {
+        actions.waitForElementToShow('.clr-example-2', WAIT_TIME);
+        actions.wait(WAIT_LOAD_TIME);
+        this.trigger = find('.clr-example-2 .datepicker-trigger');
+      })
+      .setCaptureElements('.clr-example-input')
+      .capture('default')
+      .capture('trigger-hovered', (actions, find) => {
+        actions.mouseMove(this.trigger);
+        actions.wait(WAIT_LOAD_TIME);
+      });
+  });
 
-    gemini.suite("datepicker", (child) => {
-        child.setUrl("/datepicker/css-regression")
-            .before((actions, find) => {
-                actions.waitForElementToShow('.clr-example-2', WAIT_TIME);
-                actions.wait(WAIT_LOAD_TIME);
-                this.trigger = find(".clr-example-2 .datepicker-trigger");
-                actions.click(this.trigger);
-                actions.wait(WAIT_LOAD_TIME);
-            })
-            .setCaptureElements('.clr-example-2')
-            .capture('default');
-    });
+  gemini.suite('datepicker', child => {
+    child
+      .setUrl('/datepicker/css-regression')
+      .before((actions, find) => {
+        actions.waitForElementToShow('.clr-example-2', WAIT_TIME);
+        actions.wait(WAIT_LOAD_TIME);
+        this.trigger = find('.clr-example-2 .datepicker-trigger');
+        actions.click(this.trigger);
+        actions.wait(WAIT_LOAD_TIME);
+      })
+      .setCaptureElements('.clr-example-2')
+      .capture('default');
+  });
 
-    gemini.suite("monthpicker", (child) => {
-        child.setUrl("/datepicker/css-regression")
-            .before((actions, find) => {
-                actions.waitForElementToShow('.clr-example-2', WAIT_TIME);
-                actions.wait(WAIT_LOAD_TIME);
-                this.trigger = find(".clr-example-2 .datepicker-trigger");
-                actions.click(this.trigger);
-                actions.wait(WAIT_LOAD_TIME);
-                this.monthpickerTrigger = find(".monthpicker-trigger");
-                actions.click(this.monthpickerTrigger);
-                actions.wait(WAIT_LOAD_TIME);
-                actions.mouseMove(".month");
-                actions.wait(WAIT_LOAD_TIME);
-            })
-            .setCaptureElements('.clr-example-2')
-            .capture('default');
-    });
+  gemini.suite('monthpicker', child => {
+    child
+      .setUrl('/datepicker/css-regression')
+      .before((actions, find) => {
+        actions.waitForElementToShow('.clr-example-2', WAIT_TIME);
+        actions.wait(WAIT_LOAD_TIME);
+        this.trigger = find('.clr-example-2 .datepicker-trigger');
+        actions.click(this.trigger);
+        actions.wait(WAIT_LOAD_TIME);
+        this.monthpickerTrigger = find('.monthpicker-trigger');
+        actions.click(this.monthpickerTrigger);
+        actions.wait(WAIT_LOAD_TIME);
+        actions.mouseMove('.month');
+        actions.wait(WAIT_LOAD_TIME);
+      })
+      .setCaptureElements('.clr-example-2')
+      .capture('default');
+  });
 
-    gemini.suite("yearpicker", (child) => {
-        child.setUrl("/datepicker/css-regression")
-            .before((actions, find) => {
-                actions.waitForElementToShow('.clr-example-2', WAIT_TIME);
-                actions.wait(WAIT_LOAD_TIME);
-                this.trigger = find(".clr-example-2 .datepicker-trigger");
-                actions.click(this.trigger);
-                actions.wait(WAIT_LOAD_TIME);
-                this.yearpickerTrigger = find(".yearpicker-trigger");
-                actions.click(this.yearpickerTrigger);
-                actions.wait(WAIT_LOAD_TIME);
-                actions.mouseMove(".year");
-                actions.wait(WAIT_LOAD_TIME);
-            })
-            .setCaptureElements('.clr-example-2')
-            .capture('default');
-    });
+  gemini.suite('yearpicker', child => {
+    child
+      .setUrl('/datepicker/css-regression')
+      .before((actions, find) => {
+        actions.waitForElementToShow('.clr-example-2', WAIT_TIME);
+        actions.wait(WAIT_LOAD_TIME);
+        this.trigger = find('.clr-example-2 .datepicker-trigger');
+        actions.click(this.trigger);
+        actions.wait(WAIT_LOAD_TIME);
+        this.yearpickerTrigger = find('.yearpicker-trigger');
+        actions.click(this.yearpickerTrigger);
+        actions.wait(WAIT_LOAD_TIME);
+        actions.mouseMove('.year');
+        actions.wait(WAIT_LOAD_TIME);
+      })
+      .setCaptureElements('.clr-example-2')
+      .capture('default');
+  });
 });

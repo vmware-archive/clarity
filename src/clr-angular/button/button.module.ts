@@ -4,16 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {NgModule} from "@angular/core";
+import { NgModule } from '@angular/core';
 
-import {ClrButtonGroupModule} from "./button-group/button-group.module";
-import {ClrLoadingButtonModule} from "./button-loading/loading-button.module";
+import { ClrButtonGroupModule } from './button-group/button-group.module';
+import { ClrLoadingButtonModule } from './button-loading/loading-button.module';
 
 @NgModule({
-    exports: [
-        ClrLoadingButtonModule,
-        ClrButtonGroupModule,
-    ]
+  exports: [ClrLoadingButtonModule, ClrButtonGroupModule],
 })
-export class ClrButtonModule {
-}
+export class ClrButtonModule {}

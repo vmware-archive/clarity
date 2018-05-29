@@ -3,42 +3,42 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @include exports('forms.file') {
-    .clr-file-wrapper {
-        @include form-flatten-validate-text();
-        position: relative;
-        margin-top: $clr-forms-baseline;
+  .clr-file-wrapper {
+    @include form-flatten-validate-text();
+    position: relative;
+    margin-top: $clr-forms-baseline;
 
-        .btn {
-            margin: 0;
-        }
+    .btn {
+      margin: 0;
     }
+  }
 
-    .clr-file {
-        width: 0;
-        height: 0;
-        opacity: 0;
-        overflow: hidden;
-        position: absolute;
-        z-index: -1;
+  .clr-file {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .clr-form-compact .clr-file-wrapper {
+    @include form-flatten-compact-adjustments();
+    margin-top: 0;
+
+    & ~ .clr-validate-icon {
+      line-height: $clr-forms-baseline * 4;
     }
-    
-    .clr-form-compact .clr-file-wrapper {
-        @include form-flatten-compact-adjustments();
-        margin-top: 0;
-        
-        & ~ .clr-validate-icon {
-            line-height: $clr-forms-baseline * 4;
-        }
-        & ~ .clr-subtext {
-            line-height: $clr-forms-baseline * 4;
-            margin-top: 0;
-        }
-        .clr-control-label {
-            margin-top: 0;
-            line-height: 0.9rem; // Fixes extra height in FF
-        }
-        .btn {
-            height: 1rem;
-        }
+    & ~ .clr-subtext {
+      line-height: $clr-forms-baseline * 4;
+      margin-top: 0;
     }
+    .clr-control-label {
+      margin-top: 0;
+      line-height: 0.9rem; // Fixes extra height in FF
+    }
+    .btn {
+      height: 1rem;
+    }
+  }
 }

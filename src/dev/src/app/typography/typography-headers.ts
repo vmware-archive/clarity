@@ -3,13 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-typography-headers",
-    styleUrls: ["./typography.demo.scss"],
-    templateUrl: "./typography-headers.html"
+  selector: 'clr-typography-headers',
+  styleUrls: ['./typography.demo.scss'],
+  templateUrl: './typography-headers.html',
 })
-
-export class TypographyHeadersDemo {
-}
+export class TypographyHeadersDemo {}

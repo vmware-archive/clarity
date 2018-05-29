@@ -3,15 +3,15 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, TemplateRef, ViewChild} from "@angular/core";
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
       <ng-template>
         <ng-content></ng-content>
       </ng-template>
     `,
 })
 export class TemplateRefContainer {
-    @ViewChild(TemplateRef) template: TemplateRef<any>;
+  @ViewChild(TemplateRef) template: TemplateRef<any>;
 }

@@ -3,18 +3,18 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {AfterContentInit, Component, ContentChildren, Inject, QueryList} from "@angular/core";
+import { AfterContentInit, Component, ContentChildren, Inject, QueryList } from '@angular/core';
 
-import {IfActiveService} from "../../utils/conditional/if-active.service";
-import {IfOpenService} from "../../utils/conditional/if-open.service";
+import { IfActiveService } from '../../utils/conditional/if-active.service';
+import { IfOpenService } from '../../utils/conditional/if-open.service';
 
-import {TabsService} from "./providers/tabs.service";
-import {ClrTabLink} from "./tab-link.directive";
-import {TABS_ID, TABS_ID_PROVIDER} from "./tabs-id.provider";
+import { TabsService } from './providers/tabs.service';
+import { ClrTabLink } from './tab-link.directive';
+import { TABS_ID, TABS_ID_PROVIDER } from './tabs-id.provider';
 
 @Component({
-    selector: "clr-tabs",
-    template: `
+  selector: 'clr-tabs',
+  template: `
         <ul class="nav" role="tablist">
             <!--tab links-->
             <ng-container *ngFor="let link of tabLinkDirectives">
@@ -44,25 +44,30 @@ import {TABS_ID, TABS_ID_PROVIDER} from "./tabs-id.provider";
         <!--tab content-->
         <ng-content></ng-content>
     `,
-    providers: [IfActiveService, IfOpenService, TabsService, TABS_ID_PROVIDER]
+  providers: [IfActiveService, IfOpenService, TabsService, TABS_ID_PROVIDER],
 })
 export class ClrTabs implements AfterContentInit {
-    @ContentChildren(ClrTabLink, {descendants: true}) tabLinkDirectives: QueryList<ClrTabLink>;
+  @ContentChildren(ClrTabLink, { descendants: true })
+  tabLinkDirectives: QueryList<ClrTabLink>;
 
-    constructor(public ifActiveService: IfActiveService, public ifOpenService: IfOpenService,
-                public tabsService: TabsService, @Inject(TABS_ID) public tabsId: number) {}
+  constructor(
+    public ifActiveService: IfActiveService,
+    public ifOpenService: IfOpenService,
+    public tabsService: TabsService,
+    @Inject(TABS_ID) public tabsId: number
+  ) {}
 
-    get activeTabInOverflow() {
-        return this.tabsService.overflowTabs.indexOf(this.tabsService.activeTab) > -1;
+  get activeTabInOverflow() {
+    return this.tabsService.overflowTabs.indexOf(this.tabsService.activeTab) > -1;
+  }
+
+  ngAfterContentInit() {
+    if (typeof this.ifActiveService.current === 'undefined') {
+      this.tabLinkDirectives.first.activate();
     }
+  }
 
-    ngAfterContentInit() {
-        if (typeof this.ifActiveService.current === "undefined") {
-            this.tabLinkDirectives.first.activate();
-        }
-    }
-
-    toggleOverflow(event: any) {
-        this.ifOpenService.toggleWithEvent(event);
-    }
+  toggleOverflow(event: any) {
+    this.ifOpenService.toggleWithEvent(event);
+  }
 }

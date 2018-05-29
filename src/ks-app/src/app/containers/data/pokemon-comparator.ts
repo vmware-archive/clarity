@@ -4,11 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Comparator} from "@clr/angular";
-import {User} from "./user";
+import { Comparator } from '@clr/angular';
+import { User } from './user';
 
 export class PokemonComparator implements Comparator<User> {
-    compare(a: User, b: User) {
-        return a.pokemon.number - b.pokemon.number;
-    }
+  compare(a: User, b: User) {
+    return a.pokemon.number - b.pokemon.number;
+  }
 }

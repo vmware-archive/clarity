@@ -4,24 +4,24 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ViewChild} from "@angular/core";
-import {ClrWizard} from "@clr/angular";
+import { Component, ViewChild } from '@angular/core';
+import { ClrWizard } from '@clr/angular';
 
-@Component({selector: "clr-wizard-skip-page", templateUrl: "./wizard-skip-page.demo.html"})
+@Component({ selector: 'clr-wizard-skip-page', templateUrl: './wizard-skip-page.demo.html' })
 export class WizardSkipPageDemo {
-    @ViewChild("wizard") wizard: ClrWizard;
-    skipStepTwo: boolean = true;
-    _open: boolean = false;
+  @ViewChild('wizard') wizard: ClrWizard;
+  skipStepTwo: boolean = true;
+  _open: boolean = false;
 
-    toggleStepTwo() {
-        this.skipStepTwo = !this.skipStepTwo;
-    }
+  toggleStepTwo() {
+    this.skipStepTwo = !this.skipStepTwo;
+  }
 
-    open() {
-        this._open = !this.open;
-    }
+  open() {
+    this._open = !this.open;
+  }
 
-    code: string = `
+  code: string = `
 @Component({
     ...
 })
@@ -40,7 +40,7 @@ export class WizardSkipPageDemo {
 }
     `;
 
-    html: string = `
+  html: string = `
 <clr-wizard #wizard [(clrWizardOpen)]="_open">
     <clr-wizard-title>Skipping Page Two</clr-wizard-title>
 

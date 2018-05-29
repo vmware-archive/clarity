@@ -3,7 +3,7 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Structure
-$clr-forms-baseline: .25rem;
+$clr-forms-baseline: 0.25rem;
 $clr-forms-icon-size: 1rem;
 $clr-form-disabled-background-color: $clr-light-midtone-gray !default;
 
@@ -13,7 +13,7 @@ $clr-forms-text-color: $clr-black;
 $clr-forms-invalid-color: clr-getColor(dark-midtone, reds);
 $clr-forms-subtext-color: $clr-gray;
 $clr-forms-border-color: $clr-dark-midtone-gray !default;
-$clr-forms-focused-color: clr-getColor(light-midtone,action-blues);
+$clr-forms-focused-color: clr-getColor(light-midtone, action-blues);
 $clr-forms-disabled-opacity: 0.54 !default;
 
 // Textarea

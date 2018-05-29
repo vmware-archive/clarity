@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
         <h2>Dropdowns</h2>
         <ul>
             <li><a [routerLink]="['./default']">Default Styles (Static)</a></li>
@@ -19,7 +19,6 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./dropdown-header']">Dropdown Header</a></li>
         </ul>
         <router-outlet></router-outlet>
-    `
+    `,
 })
-export class DropdownDemo {
-}
+export class DropdownDemo {}

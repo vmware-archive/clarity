@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Directive, TemplateRef} from "@angular/core";
+import { Directive, TemplateRef } from '@angular/core';
 
-@Directive({selector: "[clrPageNavTitle]"})
+@Directive({ selector: '[clrPageNavTitle]' })
 export class ClrWizardPageNavTitle {
-    constructor(public pageNavTitleTemplateRef: TemplateRef<any>) {}
+  constructor(public pageNavTitleTemplateRef: TemplateRef<any>) {}
 }

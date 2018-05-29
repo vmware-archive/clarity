@@ -3,117 +3,119 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @include exports('forms.select') {
-    .clr-select-wrapper, .clr-multiselect-wrapper {
-        position: relative;
-        white-space: nowrap;
+  .clr-select-wrapper,
+  .clr-multiselect-wrapper {
+    position: relative;
+    white-space: nowrap;
 
-        select {
-            @include custom-inputs(1rem);
-            @include form-fields-appearance($clr-forms-border-color);
-            @include input-border-bottom-animation($clr-forms-focused-color);
-            position: relative;
-            padding: 0 ($clr-forms-select-caret-size + $clr-forms-baseline * 2) 0 $clr-forms-baseline;
-            cursor: pointer;
-            @include clr-getTypePropertiesForDomElement(form_label, (font-size));
-            //Moves the :after pseudo element (arrow) to the back so that clicking over it activates
-            //the dropdown.
-            z-index: map-get($clr-layers, select-box);
+    select {
+      @include custom-inputs(1rem);
+      @include form-fields-appearance($clr-forms-border-color);
+      @include input-border-bottom-animation($clr-forms-focused-color);
+      position: relative;
+      padding: 0 ($clr-forms-select-caret-size + $clr-forms-baseline * 2) 0 $clr-forms-baseline;
+      cursor: pointer;
+      @include clr-getTypePropertiesForDomElement(form_label, (font-size));
+      //Moves the :after pseudo element (arrow) to the back so that clicking over it activates
+      //the dropdown.
+      z-index: map-get($clr-layers, select-box);
 
-            &:hover,
-            &:active {
-                border-color: $clr-forms-select-hover-background;
-                background: $clr-forms-select-hover-background;
-            }
+      &:hover,
+      &:active {
+        border-color: $clr-forms-select-hover-background;
+        background: $clr-forms-select-hover-background;
+      }
 
-            &:disabled {
-                @include disabled-form-fields();
-            }
+      &:disabled {
+        @include disabled-form-fields();
+      }
 
-            option {
-                color: $clr-forms-select-option-color;
-            }
-        }
-
-        //Remove default arrow from IE
-        select::-ms-expand {
-            display: none;
-        }
+      option {
+        color: $clr-forms-select-option-color;
+      }
     }
 
-    .clr-select-wrapper {
-        max-height: $clr-forms-baseline * 4;
-        display: inline-block;
+    //Remove default arrow from IE
+    select::-ms-expand {
+      display: none;
+    }
+  }
 
-        &::after {
-            position: absolute;
-            content: '';
-            height: $clr-forms-select-caret-size;
-            width: $clr-forms-select-caret-size;
-            top: ($clr-forms-baseline * 4 - $clr-forms-select-caret-size) / 2;
-            right: $clr-forms-baseline;
-            // TODO: get rid of generated icons?
-            background-image: generateCaretIcon($clr-forms-select-caret-color);
-            @include icon-background-styles();
-            margin: 0;
-        }
+  .clr-select-wrapper {
+    max-height: $clr-forms-baseline * 4;
+    display: inline-block;
 
-        &:hover::after {
-            color: $clr-forms-select-caret-hover-color;
-        }
+    &::after {
+      position: absolute;
+      content: '';
+      height: $clr-forms-select-caret-size;
+      width: $clr-forms-select-caret-size;
+      top: ($clr-forms-baseline * 4 - $clr-forms-select-caret-size) / 2;
+      right: $clr-forms-baseline;
+      // TODO: get rid of generated icons?
+      background-image: generateCaretIcon($clr-forms-select-caret-color);
+      @include icon-background-styles();
+      margin: 0;
     }
 
-    .clr-error .clr-select-wrapper::after {
-        right: $clr-forms-icon-size + $clr-forms-baseline;
+    &:hover::after {
+      color: $clr-forms-select-caret-hover-color;
+    }
+  }
+
+  .clr-error .clr-select-wrapper::after {
+    right: $clr-forms-icon-size + $clr-forms-baseline;
+  }
+
+  .clr-multiselect-wrapper {
+    margin-top: $clr-forms-baseline;
+    display: flex;
+
+    .clr-validate-icon {
+      margin-left: 0;
+    }
+  }
+
+  //Multiple Select
+  select[multiple],
+  select[size] {
+    padding: 0;
+    background: $clr-forms-select-multiple-background-color;
+    border: $clr-default-borderwidth solid $clr-forms-select-multiple-border-color;
+    border-radius: $clr-global-borderradius;
+    height: auto;
+
+    &:hover,
+    &:active {
+      background: $clr-forms-select-multiple-background-color;
+      border-color: $clr-forms-select-multiple-border-color;
+    }
+    option {
+      padding: ($clr-forms-baseline / 2) $clr-forms-baseline;
+      color: $clr-forms-select-multiple-option-color;
+    }
+  }
+
+  .clr-form-control-disabled .clr-select {
+    &.disabled {
+      @include disabled-form-fields();
+
+      &:hover::after {
+        color: $clr-forms-select-caret-color;
+      }
     }
 
-    .clr-multiselect-wrapper {
-        margin-top: $clr-forms-baseline;
-        display: flex;
-
-        .clr-validate-icon {
-            margin-left: 0;
-        }
+    &.disabled > select,
+    select:disabled {
+      @include disabled-form-fields();
+      &:hover {
+        background: none;
+        border-color: $clr-forms-border-color;
+      }
     }
+  }
 
-    //Multiple Select
-    select[multiple], select[size] {
-        padding: 0;
-        background: $clr-forms-select-multiple-background-color;
-        border: $clr-default-borderwidth solid $clr-forms-select-multiple-border-color;
-        border-radius: $clr-global-borderradius;
-        height: auto;
-
-        &:hover,
-        &:active {
-            background: $clr-forms-select-multiple-background-color;
-            border-color: $clr-forms-select-multiple-border-color;
-        }
-        option {
-            padding: ($clr-forms-baseline / 2) $clr-forms-baseline;
-            color: $clr-forms-select-multiple-option-color;
-        }
-    }
-
-    .clr-form-control-disabled .clr-select {
-        &.disabled {
-            @include disabled-form-fields();
-
-            &:hover::after {
-                color: $clr-forms-select-caret-color;
-            }
-        }
-
-        &.disabled > select,
-        select:disabled {
-            @include disabled-form-fields();
-            &:hover {
-                background: none;
-                border-color: $clr-forms-border-color;
-            }
-        }
-    }
-
-    .clr-form-compact .clr-multiselect-wrapper {
-        margin-top: 0;
-    }
+  .clr-form-compact .clr-multiselect-wrapper {
+    margin-top: 0;
+  }
 }

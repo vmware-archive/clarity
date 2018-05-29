@@ -2,88 +2,88 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-
 /* Vendor */
 
-@import "../../../../clr-angular/utils/vendor/decimalRounding.clarity";
-@import "../../../../clr-angular/utils/vendor/mathPow.clarity";
+@import '../../../../clr-angular/utils/vendor/decimalRounding.clarity';
+@import '../../../../clr-angular/utils/vendor/mathPow.clarity';
 
 /* End Vendor */
 
-
-
 /* Clarity - Begin Part 1 */
 
-@import "../../../../clr-angular/utils/mixins.clarity";
-@import "../../../../clr-angular/utils/helpers.clarity";
-@import "../../../../clr-angular/utils/bs4-grid-breakpoint-overrides.clarity";
+@import '../../../../clr-angular/utils/mixins.clarity';
+@import '../../../../clr-angular/utils/helpers.clarity';
+@import '../../../../clr-angular/utils/bs4-grid-breakpoint-overrides.clarity';
 
 //Color
-@import "../../../../clr-angular/color/utils/colors.clarity";
-@import "../../../../clr-angular/color/utils/contrast-cache.clarity";
-@import "../../../../clr-angular/color/utils/helpers.clarity";
-@import "../../../../clr-angular/color/color.clarity"; // depends on colors.clarity, helper.clarity, contrast-cache.clarity
+@import '../../../../clr-angular/color/utils/colors.clarity';
+@import '../../../../clr-angular/color/utils/contrast-cache.clarity';
+@import '../../../../clr-angular/color/utils/helpers.clarity';
+@import '../../../../clr-angular/color/color.clarity'; // depends on colors.clarity, helper.clarity, contrast-cache.clarity
 
 //Layer - z-indices
-@import "../../../../clr-angular/utils/layers.clarity";
+@import '../../../../clr-angular/utils/layers.clarity';
 
 //Variables
-@import "../../../../clr-angular/utils/variables.clarity"; // depends on helpers.clarity, color.clarity
-@import "../../../../clr-angular/utils/maps.clarity";
+@import '../../../../clr-angular/utils/variables.clarity'; // depends on helpers.clarity, color.clarity
+@import '../../../../clr-angular/utils/maps.clarity';
 /* Clarity - End Part 1 */
 
 //Styles for Clarity Demos
-.clr-example{
-    margin-top: 1rem;
+.clr-example {
+  margin-top: 1rem;
 
-    .main-container{
-        height: auto;
-        padding-top: 0;
+  .main-container {
+    height: auto;
+    padding-top: 0;
 
-        .content-area{
-            overflow-y: hidden;
-        }
+    .content-area {
+      overflow-y: hidden;
     }
+  }
 
-    &.squeeze{
-        padding: 2rem;
-    }
+  &.squeeze {
+    padding: 2rem;
+  }
 }
 
 .modal.static {
-    position: relative;
-    padding: 3rem;
-    z-index: map-get($clr-layers,sidepanel-bg) - 1;
+  position: relative;
+  padding: 3rem;
+  z-index: map-get($clr-layers, sidepanel-bg) - 1;
 }
 
 .modal-backdrop.static {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: map-get($clr-layers,sidepanel-bg) - 2;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: map-get($clr-layers, sidepanel-bg) - 2;
 }
 
 .modal-icon {
-    float: left;
-    color: $clr-green;
-    font-size: 3rem;
-    margin-right: 0.5rem;
+  float: left;
+  color: $clr-green;
+  font-size: 3rem;
+  margin-right: 0.5rem;
 }
 
 .backdrop-example-container {
-    position: relative;
-    padding: 1rem;
+  position: relative;
+  padding: 1rem;
 }
 
 .bump-down {
-    margin-top: 1rem !important;
+  margin-top: 1rem !important;
 }
 
 //Overriding PrismJS styles. This is in code.scss and not in code.clarity.scss because
 //we don't want to override the background in case someone chooses to use
 //another PrismJS theme.
-:not(pre) > code[class*="language-"], pre[class*="language-"], pre, code[class*="language-"]{
-    background: transparent;
+:not(pre) > code[class*='language-'],
+pre[class*='language-'],
+pre,
+code[class*='language-'] {
+  background: transparent;
 }

@@ -8,30 +8,30 @@
 // Saved as a spec so it gets gobbled up and just runs.
 
 export function reportSlowSpecs(): void {
-    const reportSlowerThanMs = 250;
+  const reportSlowerThanMs = 250;
 
-    function now() {
-        return (new Date()).getTime();
-    }
+  function now() {
+    return new Date().getTime();
+  }
 
-    const slowSpecs = {
-        jasmineStarted() {
-            this._specTimes = [];
-        },
+  const slowSpecs = {
+    jasmineStarted() {
+      this._specTimes = [];
+    },
 
-        specStarted() {
-            this._specStartedTime = now();
-        },
+    specStarted() {
+      this._specStartedTime = now();
+    },
 
-        specDone(result: any) {
-            const time = now() - this._specStartedTime;
+    specDone(result: any) {
+      const time = now() - this._specStartedTime;
 
-            this._specTimes.push({fullName: result.fullName, time: time});
-            if (time >= reportSlowerThanMs) {
-                console.warn(`${result.fullName} took ${time}ms`);
-            }
-        }
-    };
+      this._specTimes.push({ fullName: result.fullName, time: time });
+      if (time >= reportSlowerThanMs) {
+        console.warn(`${result.fullName} took ${time}ms`);
+      }
+    },
+  };
 
-    jasmine.getEnv().addReporter(slowSpecs);
+  jasmine.getEnv().addReporter(slowSpecs);
 }

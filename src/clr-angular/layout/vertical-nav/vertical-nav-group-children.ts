@@ -4,13 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-vertical-nav-group-children",
-    template: `
+  selector: 'clr-vertical-nav-group-children',
+  template: `
         <ng-content></ng-content>
-    `
+    `,
 })
-export class ClrVerticalNavGroupChildren {
-}
+export class ClrVerticalNavGroupChildren {}

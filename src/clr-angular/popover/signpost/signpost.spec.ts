@@ -3,107 +3,107 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, ViewChild} from "@angular/core";
+import { Component, ViewChild } from '@angular/core';
 
-import {IfOpenService} from "../../utils/conditional/if-open.service";
-import {addHelpers, TestContext} from "../../utils/testing/helpers.spec";
+import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { addHelpers, TestContext } from '../../utils/testing/helpers.spec';
 
-import {ClrSignpost} from "./signpost";
-import {ClrSignpostModule} from "./signpost.module";
+import { ClrSignpost } from './signpost';
+import { ClrSignpostModule } from './signpost.module';
 
 export default function(): void {
-    describe("Signpost", function() {
-        addHelpers([ClrSignpostModule]);
+  describe('Signpost', function() {
+    addHelpers([ClrSignpostModule]);
 
-        describe("default trigger", function() {
-            let context: TestContext<ClrSignpost, TestDefaultSignpost>;
-            let ifOpenService: IfOpenService;
+    describe('default trigger', function() {
+      let context: TestContext<ClrSignpost, TestDefaultSignpost>;
+      let ifOpenService: IfOpenService;
 
-            beforeEach(function() {
-                context = this.create(ClrSignpost, TestDefaultSignpost);
-                ifOpenService = context.getClarityProvider(IfOpenService);
-            });
+      beforeEach(function() {
+        context = this.create(ClrSignpost, TestDefaultSignpost);
+        ifOpenService = context.getClarityProvider(IfOpenService);
+      });
 
-            it("adds the .signpost class to clr-signpost", function() {
-                expect(context.clarityElement.classList).toContain("signpost");
-            });
+      it('adds the .signpost class to clr-signpost', function() {
+        expect(context.clarityElement.classList).toContain('signpost');
+      });
 
-            it("has a default trigger that can hide/show content", function() {
-                const signpostToggle: HTMLElement = context.testElement.querySelector(".signpost-action");
-                let signpostContent: HTMLElement;
+      it('has a default trigger that can hide/show content', function() {
+        const signpostToggle: HTMLElement = context.testElement.querySelector('.signpost-action');
+        let signpostContent: HTMLElement;
 
-                // Test we have a trigger
-                expect(signpostToggle).not.toBeNull();
+        // Test we have a trigger
+        expect(signpostToggle).not.toBeNull();
 
-                // // Test that content shows
-                signpostToggle.click();
-                context.detectChanges();
-                signpostContent = context.testElement.querySelector(".signpost-content");
-                expect(signpostContent).not.toBeNull();
-                expect(ifOpenService.open).toBe(true);
+        // // Test that content shows
+        signpostToggle.click();
+        context.detectChanges();
+        signpostContent = context.testElement.querySelector('.signpost-content');
+        expect(signpostContent).not.toBeNull();
+        expect(ifOpenService.open).toBe(true);
 
-                // Test that content hides again
-                signpostToggle.click();
-                context.detectChanges();
-                signpostContent = context.testElement.querySelector(".signpost-content");
-                expect(signpostContent).toBeNull();
-                expect(ifOpenService.open).toBe(false);
-            });
-        });
-
-        describe("custom trigger", function() {
-            let context: TestContext<ClrSignpost, TestCustomTriggerSignpost>;
-            let ifOpenService: IfOpenService;
-
-            beforeEach(function() {
-                context = this.create(ClrSignpost, TestCustomTriggerSignpost);
-                ifOpenService = context.getClarityProvider(IfOpenService);
-            });
-
-            /********
-             * This test assumes that if
-             */
-            it("does not display the default trigger", function() {
-                const triggerIcon: HTMLElement = context.testElement.querySelector("clr-icon");
-
-                /**********
-                 * If there is a clr-icon we are testing that it is not the same shape
-                 * used for the default trigger.
-                 */
-                if (triggerIcon) {
-                    expect(triggerIcon.getAttribute("shape")).not.toBe("info");
-                }
-            });
-
-            it("projects a custom trigger element to hide/show content", function() {
-                const signpostTrigger: HTMLElement = context.testElement.querySelector(".signpost-action");
-                let signpostContent: HTMLElement;
-
-                expect(signpostTrigger.textContent.trim()).toBe("Custom trigger");
-
-                // Test we have a trigger
-                expect(signpostTrigger).not.toBeNull();
-
-                // Test it shows after changes
-                signpostTrigger.click();
-                context.detectChanges();
-                signpostContent = context.testElement.querySelector(".signpost-content");
-                expect(signpostContent).not.toBeNull();
-                expect(ifOpenService.open).toBe(true);
-
-                // Test it hide when clicked again
-                signpostTrigger.click();
-                context.detectChanges();
-                signpostContent = context.testElement.querySelector(".signpost-content");
-                expect(signpostContent).toBeNull();
-                expect(ifOpenService.open).toBe(false);
-            });
-        });
+        // Test that content hides again
+        signpostToggle.click();
+        context.detectChanges();
+        signpostContent = context.testElement.querySelector('.signpost-content');
+        expect(signpostContent).toBeNull();
+        expect(ifOpenService.open).toBe(false);
+      });
     });
+
+    describe('custom trigger', function() {
+      let context: TestContext<ClrSignpost, TestCustomTriggerSignpost>;
+      let ifOpenService: IfOpenService;
+
+      beforeEach(function() {
+        context = this.create(ClrSignpost, TestCustomTriggerSignpost);
+        ifOpenService = context.getClarityProvider(IfOpenService);
+      });
+
+      /********
+       * This test assumes that if
+       */
+      it('does not display the default trigger', function() {
+        const triggerIcon: HTMLElement = context.testElement.querySelector('clr-icon');
+
+        /**********
+         * If there is a clr-icon we are testing that it is not the same shape
+         * used for the default trigger.
+         */
+        if (triggerIcon) {
+          expect(triggerIcon.getAttribute('shape')).not.toBe('info');
+        }
+      });
+
+      it('projects a custom trigger element to hide/show content', function() {
+        const signpostTrigger: HTMLElement = context.testElement.querySelector('.signpost-action');
+        let signpostContent: HTMLElement;
+
+        expect(signpostTrigger.textContent.trim()).toBe('Custom trigger');
+
+        // Test we have a trigger
+        expect(signpostTrigger).not.toBeNull();
+
+        // Test it shows after changes
+        signpostTrigger.click();
+        context.detectChanges();
+        signpostContent = context.testElement.querySelector('.signpost-content');
+        expect(signpostContent).not.toBeNull();
+        expect(ifOpenService.open).toBe(true);
+
+        // Test it hide when clicked again
+        signpostTrigger.click();
+        context.detectChanges();
+        signpostContent = context.testElement.querySelector('.signpost-content');
+        expect(signpostContent).toBeNull();
+        expect(ifOpenService.open).toBe(false);
+      });
+    });
+  });
 }
 
 @Component({
-    template: `
+  template: `
         <button class="outside-click-test">
             Button to test clicks outside of the dropdown component
         </button>
@@ -118,17 +118,16 @@ export default function(): void {
                 Signpost content
             </clr-signpost-content>
         </clr-signpost>
-    `
+    `,
 })
-
 class TestCustomTriggerSignpost {
-    @ViewChild(ClrSignpost) signpost: ClrSignpost;
+  @ViewChild(ClrSignpost) signpost: ClrSignpost;
 
-    position: string = "right-middle";
+  position: string = 'right-middle';
 }
 
 @Component({
-    template: `
+  template: `
         <button class="outside-click-test">
             Button to test clicks outside of the dropdown component
         </button>
@@ -137,11 +136,10 @@ class TestCustomTriggerSignpost {
                 Signpost content
             </clr-signpost-content>
         </clr-signpost>
-    `
+    `,
 })
-
 class TestDefaultSignpost {
-    @ViewChild(ClrSignpost) signpost: ClrSignpost;
+  @ViewChild(ClrSignpost) signpost: ClrSignpost;
 
-    openState: boolean = false;
+  openState: boolean = false;
 }

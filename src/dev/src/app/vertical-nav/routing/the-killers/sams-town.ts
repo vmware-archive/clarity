@@ -3,11 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-sams-town-demo",
-    template: `
+  selector: 'clr-sams-town-demo',
+  template: `
         <!--Credit https://en.wikipedia.org/wiki/Sam%27s_Town-->
         <h4>Sam's Town (2006)</h4>
         <p>
@@ -18,7 +18,6 @@ import {Component} from "@angular/core";
             chronologically, everything important that got me to where I am today".
             Sam's Town has sold over 4.5 million copies worldwide.
         </p>
-    `
+    `,
 })
-export class SamsTownDemo {
-}
+export class SamsTownDemo {}

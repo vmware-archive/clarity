@@ -3,14 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
-import {Route} from "@angular/router";
+import { Component } from '@angular/core';
+import { Route } from '@angular/router';
 
-import {APP_ROUTES} from "./app.routing";
+import { APP_ROUTES } from './app.routing';
 
 @Component({
-    selector: "my-app-content-container",
-    template: `
+  selector: 'my-app-content-container',
+  template: `
             <main class="content-area">
                 <router-outlet></router-outlet>
             </main>
@@ -53,9 +53,8 @@ import {APP_ROUTES} from "./app.routing";
                     </a>
                 </ng-container>
             </clr-vertical-nav-->
-        `
+        `,
 })
-
 export class AppContentContainerComponent {
-    public routes: Route[] = APP_ROUTES;
+  public routes: Route[] = APP_ROUTES;
 }

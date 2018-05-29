@@ -4,11 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {StringFilter} from "@clr/angular";
-import {User} from "./user";
+import { StringFilter } from '@clr/angular';
+import { User } from './user';
 
 export class PokemonFilter implements StringFilter<User> {
-    accepts(user: User, search: string): boolean {
-        return "" + user.pokemon.number === search || user.pokemon.name.toLowerCase().indexOf(search) >= 0;
-    }
+  accepts(user: User, search: string): boolean {
+    return '' + user.pokemon.number === search || user.pokemon.name.toLowerCase().indexOf(search) >= 0;
+  }
 }

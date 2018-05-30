@@ -20,7 +20,7 @@ import {ClrDropdown} from "./dropdown";
     }
 })
 export class ClrDropdownTrigger {
-    private isRootLevelToggle: boolean = true;
+    public isRootLevelToggle: boolean = true;
 
     constructor(dropdown: ClrDropdown, private ifOpenService: IfOpenService) {
         // if the containing dropdown has a parent, then this is not the root level one

@@ -5,6 +5,7 @@
  */
 import {Type} from "@angular/core";
 
+import {ClrDragHandle} from "./drag-handle";
 import {ClrDraggable} from "./draggable";
 import {ClrDroppable} from "./droppable";
 import {ClrIfDragged} from "./if-dragged";
@@ -12,5 +13,6 @@ import {ClrIfDragged} from "./if-dragged";
 export * from "./draggable";
 export * from "./droppable";
 export * from "./if-dragged";
+export * from "./drag-handle";
 
-export const DRAG_AND_DROP_DIRECTIVES: Type<any>[] = [ClrDraggable, ClrDroppable, ClrIfDragged];
+export const DRAG_AND_DROP_DIRECTIVES: Type<any>[] = [ClrDraggable, ClrDroppable, ClrIfDragged, ClrDragHandle];

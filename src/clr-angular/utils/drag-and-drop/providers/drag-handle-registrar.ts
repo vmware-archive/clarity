@@ -19,8 +19,8 @@ export class ClrDragHandleRegistrar<T> {
         return this._defaultHandleEl;
     }
 
-    set defaultHandleEl(value: Node) {
-        this._defaultHandleEl = value;  // defaultHandleEl will be usually the clrDraggable element.
+    set defaultHandleEl(el: Node) {
+        this._defaultHandleEl = el;  // defaultHandleEl will be usually the clrDraggable element.
 
         // If the customHandleEl has been registered,
         // don't make the defaultHandleEl the drag handle yet until the customHandleEl is unregistered.
@@ -45,9 +45,9 @@ export class ClrDragHandleRegistrar<T> {
         return this._customHandleEl;
     }
 
-    public registerCustomHandle(handleElement: Node) {
+    public registerCustomHandle(el: Node) {
         this.dragEventListener.detachDragListeners();  // removes the existing listeners
-        this._customHandleEl = handleElement;
+        this._customHandleEl = el;
         this.makeElementHandle(this._customHandleEl);
     }
 

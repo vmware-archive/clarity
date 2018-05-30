@@ -9,7 +9,6 @@ import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing"
 import {FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule} from "@angular/forms";
 import {By} from "@angular/platform-browser";
 
-import {itIgnore} from "../../../../tests/tests.helpers";
 import {TestContext} from "../../data/datagrid/helpers.spec";
 import {ClrFormsModule} from "../../forms-deprecated";
 import {IfOpenService} from "../../utils/conditional/if-open.service";

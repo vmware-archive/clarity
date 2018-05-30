@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Subscription} from "rxjs";
+import {Subscription} from "rxjs/Subscription";
 
 import {DateFormControlService} from "./date-form-control.service";
 

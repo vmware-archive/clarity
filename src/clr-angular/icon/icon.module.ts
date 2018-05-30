@@ -5,13 +5,34 @@
  */
 
 import {CommonModule} from "@angular/common";
-import {NgModule, Type} from "@angular/core";
+import {isDevMode, NgModule, Type} from "@angular/core";
+
 import {ClrIconCustomTag} from "./icon";
 
 export const CLR_ICON_DIRECTIVES: Type<any>[] = [ClrIconCustomTag];
 
+// TODO: remove this warning in v0.13
+export const DEPRECATED_SHAPE_WARNING =
+    `Starting in Clarity Icons v0.12, some icons have been deprecated in their respective sets and moved to other sets:
+    ******************************************************************************************************
+    "wand" has been moved to essential-shapes from media-shapes.
+    "angle-double" has been moved to core-shapes from essential-shapes.
+    "calendar" and "event" have been moved to core-shapes from social-shapes. 
+    "bar-chart" and "line-chart" have been moved to chart-shapes from technology-shapes.
+    ******************************************************************************************************
+    `;
+
+
+let warningThrownOnce = false;
+
 @NgModule({imports: [CommonModule], declarations: [CLR_ICON_DIRECTIVES], exports: [CLR_ICON_DIRECTIVES]})
 export class ClrIconModule {
+    constructor() {
+        if (isDevMode() && !warningThrownOnce) {
+            console.warn(DEPRECATED_SHAPE_WARNING);
+            warningThrownOnce = true;
+        }
+    }
 }
 
 /* tslint:disable variable-name */

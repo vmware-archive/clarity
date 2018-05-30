@@ -1,7 +1,5 @@
 {
-  "rulesDirectory": [
-    "./node_modules/tslint-defocus/dist"
-  ],
+  "rulesDirectory": ["./node_modules/tslint-defocus/dist"],
   "rules": {
     "class-name": true,
     "curly": true,
@@ -14,14 +12,7 @@
     "no-arg": true,
     "no-bitwise": true,
     "no-conditional-assignment": true,
-    "no-console": [
-      true,
-      "debug",
-      "info",
-      "time",
-      "timeEnd",
-      "trace"
-    ],
+    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
     "no-construct": true,
     "no-debugger": true,
     "no-duplicate-variable": true,
@@ -34,7 +25,7 @@
     "no-shadowed-variable": true,
     "no-string-literal": true,
     "no-switch-case-fall-through": true,
-    "no-this-assignment": [true, {"allow-destructuring": true}],
+    "no-this-assignment": [true, { "allow-destructuring": true }],
     "no-unused-expression": true,
     "no-unused-variable": true,
     "no-var-keyword": true,
@@ -43,17 +34,9 @@
     "prefer-for-of": true,
     "quotemark": false,
     "radix": true,
-    "semicolon": [true, "always"],
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
     "switch-default": true,
-    "triple-equals": [
-      true,
-      "allow-null-check"
-    ],
-    "variable-name": [
-      true,
-      "check-format",
-      "allow-leading-underscore",
-      "ban-keywords"
-    ]
+    "triple-equals": [true, "allow-null-check"],
+    "variable-name": [true, "check-format", "allow-leading-underscore", "ban-keywords"]
   }
 }

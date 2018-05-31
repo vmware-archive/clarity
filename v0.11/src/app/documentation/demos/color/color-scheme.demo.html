@@ -1,0 +1,45 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<clipboard-input [clrCopyContent]="copyContent"></clipboard-input>
+<svg width="100%" height="100%" [attr.viewBox]="viewBox" class="donut">
+
+    <path *ngFor="let bgColor of scheme.schemeColors; let bgColorIndex = index;" class="bg-segment"
+          [attr.d]="getPath(360/scheme.schemeColors.length, 21)"
+          [attr.cx]="cx"
+          [attr.cy]="cy"
+          [attr.fill]="bgColor.hex"
+          [class.active]="bgColorIndex===activeIndex"
+          [attr.transform]="multiRotate(bgColorIndex, 360/scheme.schemeColors.length)"></path>
+
+    <g (mouseleave)="activeIndex=-1">
+        <path *ngFor="let color of scheme.schemeColors; let colorIndex = index;" class="clickable-segment"
+              [attr.d]="getPath(360/scheme.schemeColors.length, 20)"
+              [attr.cx]="cx"
+              [attr.cy]="cy"
+              [attr.fill]="color.hex"
+              [attr.transform]="multiRotate(colorIndex, 360/scheme.schemeColors.length)"
+              (mouseover)="activeIndex=colorIndex"
+              (click)="activeIndex=colorIndex; copyContent=color.hex; copyNotificationOnClick()"></path>
+
+        <circle fill="white"
+                [attr.cx]="cx"
+                [attr.cy]="cy"
+                [attr.r]="donutHoleRadius"></circle>
+
+        <text [attr.x]="cx"
+              [attr.y]="cy" font-size="3" text-anchor="middle" dy="0.75" *ngIf="activeIndex>-1" class="hex-color">
+            {{activeColor}}
+        </text>
+
+        <text [attr.x]="cx"
+              [attr.y]="cy"
+              [class.notify]="copyOnClick"
+              font-size="2.8" text-anchor="middle" dy="5.5" class="copy-text">
+            Copied!
+        </text>
+    </g>
+</svg>

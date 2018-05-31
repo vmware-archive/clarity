@@ -1,0 +1,184 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary"
+            id="a-card-presents-high-level-information-and-can-guide-the-user-toward-related-actions-and-details">A card
+            presents high-level information and can guide the user toward related actions and details.</h5>
+
+        <div id="code-examples">
+            <h4 id="basic-card">Basic Card</h4>
+
+            <p>A <code class="clr-code">.card</code> can contain a <code class="clr-code">.card-header</code>,
+                <code class="clr-code">.card-footer</code>, and one or more <code
+                class="clr-code">.card-block</code>s.</p>
+
+            <clr-card-layout-demo></clr-card-layout-demo>
+
+            <h4 id="clickable-cards">Clickable Cards</h4>
+
+            <p>Adding the <code class="clr-code">.clickable</code> class makes the entire card clickable, initiating a
+                single action.</p>
+
+            <clr-card-clickable-demo></clr-card-clickable-demo>
+
+            <h4 id="images-in-cards">Images in Cards</h4>
+
+            <p>A <code class="clr-code">.card-img</code> can be placed anywhere in the card, or it can occupy the entire
+                card.</p>
+
+            <clr-card-images-demo></clr-card-images-demo>
+
+            <h4 id="dropdowns-in-cards">Dropdowns in Cards</h4>
+
+            <p>The footer can contain two actions. For more actions, use a
+                <a routerLink="./dropdowns">dropdown</a>.</p>
+
+            <clr-card-dropdown-demo></clr-card-dropdown-demo>
+
+            <h4 id="card-media-block">Card Media Block</h4>
+
+            <p>A <code class="clr-code">.card-media-block</code> combines a <code class="clr-code">.card-media-image</code>
+                and <code class="clr-code">.card-media-description</code>. The description can contain a <code
+                class="clr-code">.card-media-title</code> and a <code class="clr-code">.card-media-text</code>.</p>
+
+            <clr-card-media-block-demo></clr-card-media-block-demo>
+
+            <h4 id="alerts-in-cards">Alerts in Cards</h4>
+
+            <p>Cards can contain <a routerLink="./alerts">alerts</a>.</p>
+
+            <clr-card-alert-demo></clr-card-alert-demo>
+
+            <h4 id="lists-in-cards">Lists in Cards</h4>
+
+            <p>Cards can contain <a routerLink="./lists">lists</a>.</p>
+
+            <clr-lists-in-cards-demo></clr-lists-in-cards-demo>
+
+            <h4 id="list-groups-in-cards">List Groups in Cards</h4>
+
+            <p>Cards can contain <a href="http://v4-alpha.getbootstrap.com/components/list-group/"
+                target="_blank">Bootstrap 4 List Groups</a>.</p>
+
+            <clr-list-group-demo></clr-list-group-demo>
+
+            <h4 id="progress-bars-in-cards">Progress Bars in Cards</h4>
+
+            <p>Cards can contain <a routerLink="./progress">progress bars</a>.</p>
+
+            <clr-progress-bar-cards-demo></clr-progress-bar-cards-demo>
+
+            <clr-progress-bar-inline-cards-demo></clr-progress-bar-inline-cards-demo>
+
+            <h4 id="card-layout">Card Layout</h4>
+
+            <p>Clarity recommends using cards in a <a routerLink="./grid">grid</a> or a CSS column
+                layout.</p>
+
+            <h5 id="cards-in-a-grid">Cards in a Grid</h5>
+
+            <clr-card-grid-demo></clr-card-grid-demo>
+
+            <h5 id="cards-in-css-columns">Cards in CSS Columns</h5>
+
+            <p>Cards can be placed in <code class="clr-code">.card-columns</code>. The default number of columns is
+                three, but can be changed to two or four by adding <code class="clr-code">.card-columns-2</code> or
+                <code class="clr-code">.card-columns-4</code>.</p>
+
+            <clr-card-masonry-demo></clr-card-masonry-demo>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>Example use cases for cards include:</p>
+
+            <ul class="list">
+                <li>Presenting objects, services, or content summaries while providing entry points to more detail</li>
+                <li>Representing applications and initiating actions, such as download</li>
+                <li>Displaying metrics</li>
+            </ul>
+
+            <h3 id="content----keep-it-simple">Content – keep it simple</h3>
+
+            <p>Cards can contain text, images, data visualizations, or multimedia. Ensure that the content serves your
+                use case. Keep it simple and legible. Avoid using too much content, overloading the card with too many
+                actions, and placing links within the content.</p>
+
+            <h3 id="calls-to-action">Calls to action</h3>
+
+            <p>Place the primary action and a single additional action, if required, in the card footer, left-aligned.
+                This placement supports the F-pattern layout.</p>
+
+            <p>For more than two actions, use a <a routerLink="./dropdowns">dropdown</a>. Do not place more
+                than eight items in the dropdown menu.</p>
+
+            <div class="row buttons-modal-gfx">
+                <div class="col-xs-12 col-sm">
+                    <span>
+                        <img src="assets/images/documentation/buttons/buttons_in_cards_2.png?1481751307980894000"
+                            alt="Buttons align left in cards"/>
+                        <p><b><font color="#318700">Do.</font> </b>This card correctly aligns actions on the left.</p>
+                    </span>
+                </div>
+                <div class="col-xs-12 col-sm">
+                    <span>
+                        <img src="assets/images/documentation/buttons/buttons_in_cards_1.png?1481751307980894000"
+                            alt="Buttons do not align right in cards"/>
+                        <p><b><font color="#E62700">Don't.</font> </b> Users might not scan to the bottom right of wide
+                            cards.</p>
+                    </span>
+                </div>
+            </div>
+
+            <h3 id="clickable-cards----be-predictable">Clickable cards – be predictable</h3>
+
+            <p>When the entire card is clickable, the resulting action must be an expected outcome. A common action is
+                to navigate to more details. Not every card need be clickable.
+                <!-- A common action is to navigate to more details. -->
+            </p>
+
+            <h3 id="progress-bars----be-consistent">Progress bars – be consistent</h3>
+
+            <div class="row buttons-modal-gfx">
+                <div class="col-xs-12 col-sm">
+                    <span>
+                        Progress bars belong at the card top or above the footer,   closest to the triggering action.
+                        Be consistent with progress bar placement within a card group.
+                    </span>
+                </div>
+                <div class="hidden-xs-down col-sm">
+                    <span>
+                        <img src="assets/images/documentation/cards/card_progress.png?1481751307980894000"/>
+                    </span>
+                </div>
+            </div>
+
+            <h3 id="group-cards-by-theme-or-element">Group cards by theme or element</h3>
+
+            <!-- When grouping cards, consider the mental model you want to convey: -->
+
+            <ul class="list">
+                <li>Homogeneous content facilitates scanning – users quickly find and compare information of interest.
+                    <!-- Objects, applications, and services are typically collected in individual, homogeneous groups.-->
+                </li>
+                <li>Content of varying type often shows “the bigger picture.”
+                    <!-- such a collection might show the number of users logged in, recent tasks, alerts, and
+                        infrastructure to build.  Cards in heterogeneous groups often don't have associated actions. -->
+                </li>
+            </ul>
+
+            <h3 id="use-a-grid-for-card-layout">Use a grid for card layout</h3>
+
+            <p>A grid places cards in fixed rows and columns: more content in less vertical space means less scrolling.
+                It’s easy for users to scan content in this layout. If in doubt, use the grid.</p>
+
+            <h3 id="switching-views-cards-and-datagrids">Switching views: cards and datagrids</h3>
+
+            <p>In homogeneous card groups, consider enabling users to switch between card view and datagrid view. While
+                cards show richer content than a datagrid, a datagrid lists more items at once.</p>
+
+            <p>Toggles for switching between views go in the upper right of the card group. The card group should be the
+                default view.</p>
+        </div>
+    </article>
+</clr-doc-wrapper>

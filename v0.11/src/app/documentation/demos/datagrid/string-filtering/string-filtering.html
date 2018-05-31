@@ -1,0 +1,114 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Built-in filters</h2>
+
+<p>
+    Before reading this, you should make sure you read the
+    previous section on custom filters. Done? Then you
+    might be a bit overwhelmed by the complexity of custom filters, understandably.
+    What if you want <em>just a bit more</em> than default string value filters, but phenomenal
+    cosmic filter power turns out to be slightly overkill? This is where our built-in custom
+    filters come handy. They let you customize specific parts of the filter like the
+    string matching function, without having to rewrite the whole thing yourself from two-way
+    binding inputs to integration in the datagrid.
+</p>
+
+<h4>String filter</h4>
+
+<p>
+    At the moment, the only built-in filter we provide is the "string" filter one, meaning the
+    user is offered a text input, and the rows will be filtered based on a string-matching
+    function you provide. You should now be familiar with our use of interfaces for this, so here
+    is the interface your string matcher should implement:
+</p>
+<clr-code-snippet [clrCode]="examples.stringFilterInterface" clrLanguage="typescript"></clr-code-snippet>
+<p>
+    Once you have it, you simply need to pass it to a
+    <code class="clr-code">&lt;clr-dg-string-filter&gt;</code> component:
+</p>
+<clr-code-snippet [clrCode]="examples.stringFilterInput" clrLanguage="html"></clr-code-snippet>
+
+<p>
+    In our example, we can allow the user to filter not only by pokemon name, but also by
+    entering the exact number of the pokemon he's interested in.
+</p>
+
+<clr-datagrid>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>
+        Pokemon
+        <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter"></clr-dg-string-filter>
+    </clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            {{user.pokemon.name}} <span class="badge badge-5">#{{user.pokemon.number}}</span>
+        </clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<clr-code-snippet [clrCode]="examples.stringFilterTS" clrLanguage="typescript"></clr-code-snippet>
+<clr-code-snippet [clrCode]="examples.stringFilterHTML" clrLanguage="html"></clr-code-snippet>
+
+<h4>String filter with preset value</h4>
+
+<p>
+    You can use a preset filter with string filters to initialze the data grid to a specific state.
+    <code class="clr-code">[(clrFilterValue)]</code> can be pre-set.
+</p>
+
+<clr-code-snippet [clrCode]="examples.stringFilterPresetHTML" clrLanguage="html"></clr-code-snippet>
+
+<clr-datagrid>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>
+        Pokemon
+        <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter" [(clrFilterValue)]="myFilterValue"></clr-dg-string-filter>
+    </clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            {{user.pokemon.name}} <span class="badge badge-5">#{{user.pokemon.number}}</span>
+        </clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<clr-alert clrAlertType="info" [clrAlertClosable]="false">
+    <clr-alert-item>
+        <div class="alert-text">
+            We are planning on writing more of these semi-customisable filters in future releases,
+            including a filter where the user selects values among the ones that are actually
+            present in the data.
+            <br>
+            If the one you are looking for isn't implemented yet, you can absolutely write it
+            yourself using the fully customisable filters. And if you think it's good, feel free
+            to contribute back to Clarity and add it for everyone!
+        </div>
+    </clr-alert-item>
+</clr-alert>

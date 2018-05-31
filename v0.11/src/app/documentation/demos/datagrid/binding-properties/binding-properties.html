@@ -1,0 +1,66 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Binding model properties to columns</h2>
+
+<p>
+    For an easy setup of datagrid column features, you can simply specify the property to bind it to
+    in your model. When you do, the column will benefit from all built-in features for this case:
+    sorting based on the natural comparison, filtering based on string value, and anything else we
+    might add in the future. You can bind to as deep a property as you want in your model, using
+    a standard dot-separated syntax:
+    <code class="clr-code">[clrDgField]=&quot;'my.deep.property'&quot;</code>
+</p>
+<p>
+    You can also see in the following example how every feature we offer is always opt-in:
+    we did not declare any binding on the "User ID" column, which means it is not sortable or
+    filterable.
+</p>
+
+<clr-datagrid>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
+    <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
+    <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<clr-code-snippet [clrCode]="example" clrLanguage="html"></clr-code-snippet>
+
+<div class="alert alert-warning">
+    <div class="alert-items">
+        <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+            </div>
+            <span class="alert-text">
+                In this example, the <code class="clr-code">[clrDgField]</code> input is a hard-coded
+                string, so it needs to be quoted twice:
+                <code class="clr-code">[clrDgField]=&quot;'name'&quot;</code>.
+            </span>
+            <br>
+            <span>
+                Another way to write this would be
+                <code class="clr-code">clrDgField=&quot;name&quot;</code>, without
+                having the extra quotes, but we do not recommend this. In particular, this leaves a
+                potentially unwanted attribute on the element, whereas the previous syntax only adds
+                a property to the corresponding Javascript object.
+            </span>
+        </div>
+    </div>
+</div>

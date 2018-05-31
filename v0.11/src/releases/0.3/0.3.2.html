@@ -1,0 +1,56 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>App Level Alerts</h6>
+        <p>An app-level alert appears at the top of the screen, above the application header. This alert is reserved for a system-level message.</p>
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;alert alert-app-level alert-danger&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;close&quot; aria-label=&quot;Close&quot;&gt;
+        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class=&quot;alert-item&quot;&gt;
+        &lt;div class=&quot;alert-text&quot;&gt;
+            Alert Type: Danger
+        &lt;/div&gt;
+        &lt;div class=&quot;alert-actions&quot;&gt;
+            &lt;button class=&quot;btn alert-action&quot;&gt;Action&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </li>
+    <li>
+        <h6>Inverse Buttons, update outline buttons and add min and max widths to buttons</h6>
+        <p>Inverse buttons can be used on dark backgrounds</p>
+        <pre><code clr-code-highlight="language-html">
+&lt;button type=&quot;submit&quot; class=&quot;btn btn-inverse&quot;&gt;Inverse&lt;/button&gt;
+</code></pre>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        The closing &quot;x&quot; in an alert seems vertically mis-aligned
+    </li>
+    <li bug-fix> Stackviews do not render correctly on IE
+    </li>
+    <li bug-fix> Buttons alignment bug fix
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>
+        Improve sass compilation watch
+    </li>
+    <li>
+        Clean up gulpfile.js
+    </li>
+    <li>
+        Create variables for common Clarity height/width values
+    </li>
+    <li>
+        Create a landing page for Clarity Demos
+    </li>
+</ul>

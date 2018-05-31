@@ -81,7 +81,6 @@ const deploy = () => {
   ];
   const removed = del.sync(paths, {force: true});
   console.log("Cleared old build!");
-  console.log(removed);
 
   // Update the index.html base href
   replaceInFile.sync({

@@ -1,0 +1,146 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary"
+            id="a-stack-view-displays-keyvalue-pairs-which-users-can-expand-to-show-more-detail">A stack view displays
+            key/value pairs, which users can expand to show more detail.</h5>
+
+        <div id="code-examples">
+            <h3 id="html-and-styles">HTML and Styles</h3>
+
+            <div class="alert alert-warning">
+                <div class="alert-items">
+                    <div class="alert-item static">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                        </div>
+                        <span class="alert-text">
+                            We do not recommend using Stack View as a static component since the DOM structure
+                            is architected to enable the Stack View's Javascript behavior and animation handling.
+                            If you cannot use the Angular component, these are the elements and
+                            classes you will need to use to benefit from Clarity's styles, without the animations.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <clr-stack-view-static-demo class="clrweb-stackview-demo"></clr-stack-view-static-demo>
+
+            <h3 id="basic-stack-view-component">Basic Stack View Component</h3>
+
+            <clr-stack-view-angular-basic-demo class="clrweb-stackview-demo"></clr-stack-view-angular-basic-demo>
+
+            <h3 id="stack-view-with-editing-in-a-modal">Stack View With Editing in a Modal</h3>
+
+            <clr-stack-view-angular-modal-edit-demo 
+            class="clrweb-stackview-demo"></clr-stack-view-angular-modal-edit-demo>
+
+            <h3 id="lazy-loading-of-children">Lazy Loading of Children</h3>
+
+            <p>This example shows how to leverage the various inputs and outputs provided by
+                <code class="clr-code">&lt;clr-stack-block&gt;</code> to make blocks expandable even 
+                though their children are loaded on demand from the server.</p>
+
+            <clr-stack-view-angular-lazyload-demo class="clrweb-stackview-demo"></clr-stack-view-angular-lazyload-demo>
+
+            <h6 id="options-for-ltclr-stack-blockgt">Options for &lt;clr-stack-block&gt;</h6>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="left hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[clrSbExpandable]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">
+                            Default:<br/> true if <code class="clr-code">&lt;clr-stack-block&gt;</code> 
+                            children are detected
+                        </div>
+                    </td>
+                    <td class="hidden-xs-down">true, false</td>
+                    <td class="left hidden-xs-down">
+                        true if and only if
+                        <code class="clr-code">&lt;clr-stack-block&gt;</code> children are detected
+                    </td>
+                    <td class="left">
+                        Makes the stack block expandable, even if it doesn’t contain any nested
+                        <code class="clr-code">&lt;clr-stack-block&gt;</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrSbExpanded]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">true, false</td>
+                    <td class="left hidden-xs-down">false</td>
+                    <td class="left">
+                        Two-way binding on the state of the block: expanded or collapsed. Has no effect 
+                        if the block is not expandable.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrSbNotifyChange]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">true, false</td>
+                    <td class="left hidden-xs-down">false</td>
+                    <td class="left">
+                        Shows an updated indicator on the stack block, when set to true.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>Stack views are designed for use in the main content area and modals. Use a stack view 
+                when you want to:</p>
+
+            <ul class="list">
+                <li>Display related key/value pairs, for example, an object’s settings.</li>
+                <li>Progressively disclose data. This is useful when the set of key/value pairs is large 
+                    or you want to enable users to reveal more complex or less frequently used data 
+                    as necessary.
+                </li>
+            </ul>
+
+            <h4 id="enabling-value-editing">Enabling Value Editing</h4>
+
+            <p>In this pattern, the component includes an Edit button on the top right, which on click opens 
+                an editable stack view in a modal. This design prevents users from accidentally altering a 
+                value in the main content area. Common editing controls include input fields, select boxes, 
+                checkboxes, and radio buttons.</p>
+
+            <h4 id="labels">Labels</h4>
+
+            <ul class="list">
+                <li>Provide terse labels that let users know what is under the label. Try to keep the 
+                    label to one line.
+                </li>
+                <li>Use noun phrases, sentence-style capitalization, and no ending punctuation.</li>
+                <li>Avoid using icons.</li>
+            </ul>
+
+            <h4 id="highlights-and-horizontal-lines">Highlights and Horizontal lines</h4>
+
+            <p>The stack view highlight color (#DDDDDD) differs from the usual Clarity highlight color
+                to make it more distinct. Expanded sections have a lighter background color to make it 
+                easier to understand the hierarchy.</p>
+
+            <p>Horizontal lines in the stack editor are for readability–they help users quickly discern 
+                the relationship between columns.</p>
+        </div>
+    </article>
+</clr-doc-wrapper>

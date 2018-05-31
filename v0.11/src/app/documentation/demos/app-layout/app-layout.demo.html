@@ -1,0 +1,211 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="a-properly-structured-layout-enforces-an-optimal-consistent-experience-across-applications">A properly structured layout enforces an optimal, consistent experience across applications.</h5>
+
+        <div id="design-guidelines">
+            <h3 id="layout">Layout</h3>
+
+            <p><strong>.main-container:</strong></p>
+            <div>
+                The <code class="clr-code">.main-container</code> is a vertical flexbox which wraps the following components:
+                <ul class="list">
+                    <li><a routerLink="./alerts">App-Level Alert</a></li>
+                    <li><a routerLink="./header">Header</a></li>
+                    <li><a routerLink="./header">Subnav</a></li>
+                    <li>Content Container</li>
+                </ul>
+            </div>
+
+            <p><strong>Note:</strong> Although Clarity does not have a footer component, a custom footer can be added in the main-container.</p>
+
+            <p><strong>.content-container:</strong></p>
+            <div>
+                The <code class="clr-code">.content-container</code> is a horizontal flexbox which wraps the following components:
+                <ul class="list">
+                    <li>Content Area</li>
+                    <li><a routerLink="./sidenav">Sidenav</a></li>
+                </ul>
+            </div>
+
+            <clr-layout-all-demo></clr-layout-all-demo>
+
+            <h3 id="guidelines">Basic Structure</h3>
+
+            <p>Two constants of an app built in Clarity are the header and content area. These are the blocks upon which you build your app model.</p>
+
+            <div class="row cozy-sm">
+                <div class="col-xs-12 col-md-5">
+                    <img src="assets/images/documentation/app-layout/header_contentarea.png?1481674789140619000" alt="Header and Content Area" />
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <h5 style="margin-top:0">Header</h5>
+                    The <a routerLink="./header">header</a> is for branding and app-level elements such as navigation, search, and account settings.
+
+                    <h5>Content Area</h5>
+                    The content area is where users focus their attention most of the time, gathering information and performing tasks–it is the canvas for your application. As the largest portion of your app, the content area is always visible.
+                </div>
+            </div>
+
+            <h3 id="layout-1">Layout</h3>
+            <p>Your layout should reflect the information or workflow of the selected <a routerLink="./navigation">navigation</a>. When laying out the content, keep the following in mind:</p>
+
+            <ul class="list">
+                <li>The flow of content–how to create a hierarchy and layout that draws attention to the areas of importance</li>
+                <li>The importance of designing to the <a routerLink="./grid">grid</a></li>
+                <li>How to aid users in completing their tasks</li>
+                <li>How to handle large amounts of data</li>
+                <li>Responsive design (if that is part of your product’s goals)</li>
+            </ul>
+
+            <h5 id="common-layout-patterns">Common Layout Patterns</h5>
+
+            <p>Content can consist of any of the <a routerLink="./">Clarity components</a>, or no components and just information. Following are common layout patterns and recommended usage. For information on navigation components, header, subnav,
+                and sidenav, see <a routerLink="./navigation">Navigation</a>.</p>
+
+            <h6 id="cards">Cards</h6>
+
+            <div class="row cozy-sm">
+                <div class="col-xs-12 col-md-5">
+                    <img src="assets/images/documentation/app-layout/cards.png?1481674789140619000" alt="Cards" />
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <div>
+                        <a routerLink="./cards">Cards</a> are for presenting high-level information and guiding users to related actions and details. Cards might include a combination of text, images, and data visualizations.
+                    </div>
+                    <p>
+                        Benefits of using cards include:
+                    </p>
+                    <ul class="list">
+                        <li>Ability to see data in a collection</li>
+                        <li>Facilitates scanning of information</li>
+                        <li>Works well across platforms</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h6 id="tables-and-datagrids">Tables and Datagrids</h6>
+
+            <div class="row cozy-sm">
+                <div class="col-xs-12 col-md-5">
+                    <img src="assets/images/documentation/app-layout/tables.png?1481674789140619000" alt="Tables and Datagrids" />
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <div>
+                        <a routerLink="./tables">Tables</a> and datagrids are for good for managing large amounts of data. These layouts work well when users need to compare data and perform batch operations.
+                    </div>
+                    <p>
+                        A table is a static view. A datagrid provides users flexibility in viewing the data, including filtering and sorting.
+                    </p>
+                    <p>
+                        Complex tables and datagrids work best on larger screens.
+                    </p>
+                </div>
+            </div>
+
+            <h6 id="forms">Forms</h6>
+
+            <div class="row cozy-sm">
+                <div class="col-xs-12 col-md-5">
+                    <img src="assets/images/documentation/app-layout/forms.png?1481674789140619000" alt="Forms" />
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <div>
+                        <a routerLink="./forms">Forms</a> are for collecting data from users. Forms are comprised of other components, including labels, input fields, labels, checkboxes, radio buttons, and text.
+                    </div>
+                    <p>
+                        A benefit of a form is that users can see what information they must provide. Conversely, too many fields can discourage the user.
+                    </p>
+                    <p>Inline forms are better than modals in cases where you don't want to block users from performing other actions.</p>
+                </div>
+            </div>
+
+            <h6 id="tabs">Tabs</h6>
+
+            <div class="row cozy-sm">
+                <div class="col-xs-12 col-md-5">
+                    <img src="assets/images/documentation/app-layout/tabs.png?1481674789140619000" alt="Tabs" />
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <div>
+                        <a routerLink="./tabs">Tabs</a> appear in a single, non-scrollable row, at the top of the content area. They are good for breaking content into separate, related views.
+                    </div>
+                    <p>
+                        Tabs are not appropriate if users need to compare data across views.
+                    </p>
+                </div>
+            </div>
+
+            <h6 id="white-space-and-typography">White Space and Typography</h6>
+
+            <div class="row cozy-sm">
+                <div class="col-xs-12 col-md-5">
+                    <img src="assets/images/documentation/app-layout/typography.png?1481674789140619000" alt="White Space and Typography" />
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <div>
+                        White space and <a routerLink="./typography">typography</a> are important elements in conveying hierarchy. These elements direct users to what they should view next and make the content and data easier to parse. They also
+                        helps bring consistency to an app.
+                    </div>
+                </div>
+            </div>
+
+            <h6 id="button-placement">Button Placement</h6>
+
+            <p>In the content area, buttons are left-aligned, with the primary button in the leftmost position. This placement supports the F-pattern layout.</p>
+
+            <div class="row cozy-sm">
+                <div class="col-xs-12 col-md-5">
+                    <img src="assets/images/documentation/app-layout/do_button_alignment.png?1481674789140619000" alt="Buttons align left in content area" />
+                    <p><b><font color="#318700">Do.</font> </b> Left-alignment puts buttons closest to the content.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <div>
+                        <img src="assets/images/documentation/app-layout/dont_button_alignment.png?1481674789140619000" alt="Buttons do not align right in content area" />
+                        <p><b><font color="#E62700">Don't.</font> </b>On the right, buttons might appear separate from content.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h4 id="using-vertical-rhythm-for-layout">Using Vertical Rhythm for Layout</h4>
+
+            <p>Vertical rhythm is the repetition of spatial relationships in a design. A consistent rhythm gives elements a uniform and balanced placement in a design. The more consistent the design, the easier it is for users to read and understand.</p>
+
+            <h6 id="the-clarity-baseline-is-24px">The Clarity Baseline is 24px</h6>
+
+            <p>All elements in Clarity are built in terms of 24px:</p>
+
+            <ul class="list">
+                <li>The height of all components and text elements is in multiples of 24px.</li>
+                <li>The vertical white space between elements is also in multiples of 24px.</li>
+            </ul>
+
+            <p><img src="assets/images/documentation/app-layout/24_baseline.png?1481674789140619000" alt="24px Baseline" /></p>
+
+            <h6 id="repeat-24px-in-your-layout">Repeat 24px in Your Layout</h6>
+            <p>
+                Calculate the vertical margins and padding between elements using the Clarity baseline.
+                A multiple of 24px can be a whole or half-ratio. Common numbers include: 6px, 12px, 18px,
+                24px, 30px, 36px, 42px, 48px, 54px, 60px, 66px, 72px.
+            </p>
+
+
+            <h6 id="rem-units">Changing vertical rhythm with rem</h6>
+            <p>
+                Clarity uses <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units" target="_blank">rem units</a> for its whitespace and sizing. If the 24px vertical baseline
+                is too large or too small for your needs, you can edit this globally across a Clarity application
+                by changing the <code class="clr-code">font-size</code> style of the <code class="clr-code">html</code>
+                element, as in the example below.
+            </p>
+
+            <clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>
+
+            <p>
+                Note that the declaration on the <code class="clr-code">html</code> selector needs to happen
+                <em>after</em> the Clarity CSS has been loaded. Also note that the "grid" for Clarity layouts and
+                components is equal to one-fourth of the baseline. So instead of a 6px grid, the example above will
+                put your application on a 5px grid.
+            </p>
+        </div>
+    </article>
+</clr-doc-wrapper>

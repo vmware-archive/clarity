@@ -1,0 +1,136 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example" style="margin-top: 0">
+    <div class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div class="content-container">
+            <clr-vertical-nav [clrVerticalNavCollapsible]="demoCollapsible">
+                <clr-vertical-nav-group>
+                    <clr-icon shape="user" clrVerticalNavIcon *ngIf="!demoHideIcons"></clr-icon>
+                    Normal
+                    <clr-vertical-nav-group-children>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Pidgey
+                        </a>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Rattata
+                        </a>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Spearow
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <clr-vertical-nav-group class="active" [clrVerticalNavGroupExpanded]="demoExpandedGroup">
+                    <clr-icon shape="flame" clrVerticalNavIcon *ngIf="!demoHideIcons"></clr-icon>
+                    Fire
+                    <clr-vertical-nav-group-children>
+                        <a href="javascript://" clrVerticalNavLink class="active">
+                            Charmander
+                        </a>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Charmeleon
+                        </a>
+                        <a href="javascript://" clrVerticalNavLink *ngIf="!demoLongLabel">
+                            Charizard
+                        </a>
+                        <a href="javascript://" clrVerticalNavLink *ngIf="demoLongLabel">
+                            Ultra Rare Mega Charizard (Secret Rare)
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <a href="javascript://" clrVerticalNavLink *ngIf="demoMixedNav">
+                    Ice
+                </a>
+                <a href="javascript://" clrVerticalNavLink *ngIf="demoMixedNavWithIcons">
+                    <clr-icon shape="block" clrVerticalNavIcon *ngIf="!demoHideIcons"></clr-icon>
+                    Ice
+                </a>
+                <clr-vertical-nav-group>
+                    <clr-icon shape="download-cloud" clrVerticalNavIcon *ngIf="!demoHideIcons"></clr-icon>
+                    Water
+                    <clr-vertical-nav-group-children>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Blastoise
+                        </a>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Squirtle
+                        </a>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Wartortle
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <clr-vertical-nav-group>
+                    <clr-icon shape="bolt" clrVerticalNavIcon *ngIf="!demoHideIcons"></clr-icon>
+                    Electric
+                    <clr-vertical-nav-group-children>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Magnemite
+                        </a>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Pikachu
+                        </a>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Raichu
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <a href="javascript://" clrVerticalNavLink *ngIf="demoMixedNav">
+                    Poison
+                </a>
+                <a href="javascript://" clrVerticalNavLink *ngIf="demoMixedNavWithIcons">
+                    <clr-icon shape="sad-face" clrVerticalNavIcon *ngIf="!demoHideIcons"></clr-icon>
+                    Poison
+                </a>
+                <clr-vertical-nav-group *ngIf="!demoLongLabel">
+                    <clr-icon shape="bug" clrVerticalNavIcon *ngIf="!demoHideIcons"></clr-icon>
+                    Grass
+                    <clr-vertical-nav-group-children>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Bulbasaur
+                        </a>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Ivysaur
+                        </a>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Venusaur
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <clr-vertical-nav-group *ngIf="demoLongLabel">
+                    <clr-icon shape="bug" clrVerticalNavIcon *ngIf="!demoHideIcons"></clr-icon>
+                    Grass, Fighting, Dragon, Steel, Psychic
+                    <clr-vertical-nav-group-children>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Bulbasaur
+                        </a>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Ivysaur
+                        </a>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Venusaur
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <clr-vertical-nav-group>
+                    <clr-icon shape="block" clrVerticalNavIcon *ngIf="!demoHideIcons"></clr-icon>
+                    Ice
+                    <clr-vertical-nav-group-children>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Articuno
+                        </a>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Dewgong
+                        </a>
+                        <a href="javascript://" clrVerticalNavLink>
+                            Jynx
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+            </clr-vertical-nav>
+        </div>
+    </div>
+</div>

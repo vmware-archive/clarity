@@ -1,0 +1,107 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Cards Refactor</h6>
+        <p>Cards have been refactored to support a simple semantic layout:</p>
+        <pre><code clr-code-highlight="language-html">
+&lt;div class="card"&gt;
+    &lt;div class="card-header"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;div class="card-block"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;div class="card-footer"&gt;
+        ...
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+        <ul class="list">
+            Additional features added are:
+            <li>Cards in CSS Columns</li>
+            <li>Card Media Blocks</li>
+            <li>Images can now be added anywhere inside of the card using the <code class="clr-code">.card-img</code> class</li>
+        </ul>
+
+        <p>We recommend moving all card actions into the card footer.</p>
+
+        <div class="alert alert-warning">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        Following classes are being deprecated and will be removed in 0.8.0.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="left">Deprecated Classes</th>
+                            <th class="left">Replacement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="left"><code class="clr-code">.card-link</code></td>
+                            <td class="left">Flat/Link Buttons - <code class="clr-code">.btn .btn-sm .btn-link</code></td>
+                        </tr>
+                        <tr>
+                            <td class="left"><code class="clr-code">.group</code></td>
+                            <td class="left"><code class="clr-code">.card-media-block</code></td>
+                        </tr>
+                        <tr>
+                            <td class="left"><code class="clr-code">.card-overflow-menu</code></td>
+                            <td class="left"><code class="clr-code">.dropdown</code></td>
+                        </tr>
+                        <tr>
+                            <td class="left"><code class="clr-code">.card-img-top</code></td>
+                            <td class="left">Use the <code class="clr-code">.card-img</code> class irrespective of where the image is placed in the card.</td>
+                        </tr>
+                        <tr>
+                            <td class="left"><code class="clr-code">.card-divider</code></td>
+                            <td class="left">Card header and blocks now have a bottom border which act as card dividers. Multiple card blocks can be used to divide the content. This helps organizing the content in cards.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </li>
+    <li>
+        <h6>SASS Overrides</h6>
+        <p>
+            To give our users the ability to easily customize the look of the Clarity Design System, we have added over-rideable variables to the Clarity SASS source code.
+        </p>
+        <p>
+            We recommend that users make customizations in the
+            <code class="clr-code">utils/_overwrite.clarity.scss</code>. This file was created so that users of the Clarity Design System could overwrite our default variable assignments in one location.
+        </p>
+        <p>
+            Overriding the default Clarity Design System variables requires you to rebuild Clarity with your own SASS build.
+        </p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed alignment of card footer links in MSEdge</li>
+    <li bug-fix>Applied not-allowed cursor to disabled text areas</li>
+    <li bug-fix>Fixed an issue where dropdowns were getting cut off in the headers</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Added favicon to website</li>
+    <li>Updated sketch template to version 0.6.0</li>
+    <li>Moved to TravisCI</li>
+    <li>Overhauled website navigation to allow it to run at root level locally and as a project github pages</li>
+    <li>Designed a new logo for the Clarity Design System</li>
+    <li>Moved website to github</li>
+</ul>

@@ -1,0 +1,52 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="progbar-examples">
+    <h4>Static Progress Bar</h4>
+    <div class="progress-static">
+        <div class="progress-meter" [attr.data-value]="staticProgbarValue" [attr.data-displayval]="staticProgbarValue + '%'"></div>
+    </div>
+
+    <h4>Labeled, Static Progress Bar</h4>
+    <div class="progress-static labeled">
+        <div class="progress-meter" [attr.data-value]="staticLabeledProgbarValue" [attr.data-displayval]="staticLabeledProgbarValue + '%'"></div>
+        <span>{{staticLabeledProgbarValue}}%</span>
+    </div>
+
+    <h4>Red Static Progress Bar</h4>
+    <div class="progress-static danger">
+        <div class="progress-meter" [attr.data-value]="staticDangerValue"></div>
+    </div>
+
+    <h4>Green Static Progress Bar</h4>
+    <div class="progress-static success">
+        <div class="progress-meter" [attr.data-value]="staticSuccessValue"></div>
+    </div>
+    <p><button class="btn btn-outline" (click)="setNewValues()">Load New Values</button></p>
+</div>
+
+<pre><code clr-code-highlight="language-html">
+&lt;h4&gt;Static Progress Bar&lt;/h4&gt;
+&lt;div class=&quot;progress-static&quot;&gt;
+    &lt;div class=&quot;progress-meter&quot; data-value=&quot;16&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h4&gt;Labeled, Static Progress Bar&lt;/h4&gt;
+&lt;div class=&quot;progress-static labeled&quot;&gt;
+    &lt;div class=&quot;progress-meter&quot; data-value=&quot;87&quot; data-displayval=&quot;87%&quot;&gt;&lt;/div&gt;
+    &lt;span&gt;87%&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;h4&gt;Red Static Progress Bar&lt;/h4&gt;
+&lt;div class=&quot;progress-static danger&quot;&gt;
+    &lt;div class=&quot;progress-meter&quot; data-value=&quot;8&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h4&gt;Green Static Progress Bar&lt;/h4&gt;
+&lt;div class=&quot;progress-static success&quot;&gt;
+    &lt;div class=&quot;progress-meter&quot; data-value=&quot;80&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>

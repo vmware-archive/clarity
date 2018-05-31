@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, Renderer,InjectionToken, Inject} from '@angular/core';
 import {Router, NavigationEnd} from "@angular/router";
 import {Title} from '@angular/platform-browser';
+import {environment} from "../environments/environment";
 
 export const PLATFORM_TOKEN = new InjectionToken<string>("clarity");
 
@@ -13,6 +14,8 @@ const PRODUCT_TITLE = require('../settings/global.json').alt_title;
     templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
+    
+    environment = environment;
 
     constructor(private renderer: Renderer, private el: ElementRef, private router: Router, private titleService: Title) {
     }

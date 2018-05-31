@@ -1,0 +1,51 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+    <div class="main-container">
+        <header class="header header-6">
+            <div class="branding">
+                <span class="title">Header</span>
+            </div>
+        </header>
+        <div class="content-container">
+            <div class="content-area">
+                <clr-alert [clrAlertClosable]="false">
+                    <div clr-alert-item class="alert-item">
+                        <span class="alert-text">
+                            This alert cannot be dismissed.
+                        </span>
+                        <div class="alert-actions">
+                            <clr-dropdown>
+                                <button class="dropdown-toggle" clrDropdownTrigger>
+                                    Actions
+                                    <clr-icon shape="caret down"></clr-icon>
+                                </button>
+                                <clr-dropdown-menu clrPosition="bottom-right">
+                                    <a href="javascript://" class="dropdown-item" clrDropdownItem>Shutdown</a>
+                                    <a href="javascript://" class="dropdown-item" clrDropdownItem>Delete</a>
+                                    <a href="javascript://" class="dropdown-item" clrDropdownItem>Reboot</a>
+                                </clr-dropdown-menu>
+                            </clr-dropdown>
+                        </div>
+                    </div>
+                </clr-alert>
+                <clr-alert [clrAlertType]="'alert-warning'">
+                    <div clr-alert-item class="alert-item">
+                        <span class="alert-text">
+                            Try closing this alert.
+                        </span>
+                    </div>
+                </clr-alert>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>

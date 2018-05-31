@@ -1,0 +1,110 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Add a medium spinner size</h6>
+        <p>Clarity Spinners now support 3 sizes:</p>
+        <ul>
+            <li><code class="clr-code">.spinner-sm</code></li>
+            <li><code class="clr-code">.spinner-md</code></li>
+            <li><code class="clr-code">.spinner-lg</code></li>
+        </ul>
+        <p><code class="clr-code">.spinner-inline</code> is always a small sized spinner and can be used with text.</p>
+    </li>
+    <li>
+        <h6>Allow forms to use a grid layout</h6>
+        <p>
+            Clarity Forms can now be used within Grids by extending the <code class="clr-code">.row</code> class on a <code class="clr-code">.form-group</code> and wrapping the form fields in column classes.
+        </p>
+    </li>
+    <li>
+        <h6>Add inputs/outputs to tabs and remove unnecessary wrapper elements</h6>
+        <p>
+            While the markup hasn't changed for the tabs, the final rendered HTML looks a bit different with this release. Most notable changes are:
+        </p>
+
+        <ul class="list" style="list-style: disc; margin-top: 24px">
+            <li>
+                Moved most of the attributes to <code class="clr-code">&lt;clr-tab-link&gt;&lt;/clr-tab-link&gt;</code> and <code class="clr-code">&lt;clr-tab-content&gt;&lt;/clr-tab-content&gt;</code> tags from their children.
+            </li>
+            <li>
+                <code class="clr-code">.active</code> class applied to the active <code class="clr-code">&lt;clr-tab-link&gt;&lt;/clr-tab-link&gt;</code> and <code class="clr-code">&lt;clr-tab-content&gt;&lt;/clr-tab-content&gt;</code> tags.
+            </li>
+            <li>
+                Ability to assign custom id's to <code class="clr-code">&lt;clr-tab-link&gt;&lt;/clr-tab-link&gt;</code> and <code class="clr-code">&lt;clr-tab-content&gt;&lt;/clr-tab-content&gt;</code> tags
+            </li>
+            <li>
+                Removed <code class="clr-code">&lt;li&gt;&lt;/li&gt;</code> tags in the tab links
+            </li>
+        </ul>
+        <div style="margin-top: 24px">
+            This is a simplified version of what the markup renders to in the browser:
+            <h6>Until 0.4.0:</h6>
+            <pre><code clr-code-highlight="language-html">
+&lt;clr-tabs&gt;
+    &lt;ul class=&quot;nav&quot; role=&quot;tablist&quot;&gt;
+        &lt;clr-tab-link&gt;
+            &lt;li class=&quot;nav-item&quot; role=&quot;presentation&quot;&gt;
+            &lt;a class=&quot;nav-link active&quot; href=&quot;#&quot;
+                role=&quot;tab&quot; id=&quot;clr-tabs-0-tab-0&quot;
+                aria-selected=&quot;true&quot; aria-controls=&quot;clr-tabs-0-content-0&quot;&gt;
+                ...
+            &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/clr-tab-link&gt;
+        ...
+    &lt;/ul&gt;
+    &lt;clr-tab-content&gt;
+        &lt;section role=&quot;tabpanel&quot; id=&quot;clr-tabs-0-content-0&quot; aria-hidden=&quot;false&quot; aria-labelledby=&quot;clr-tabs-0-tab-0&quot;&gt;
+        ...
+        &lt;/section&gt;
+    &lt;/clr-tab-content&gt;
+    ...
+&lt;/clr-tabs&gt;
+</code></pre>
+            <h6>In 0.4.1:</h6>
+            <pre><code clr-code-highlight="language-html">
+&lt;clr-tabs&gt;
+    &lt;ul class=&quot;nav&quot; role=&quot;tablist&quot;&gt;
+        &lt;clr-tab-link class=&quot;nav-item
+        active&quot; role=&quot;presentation&quot;
+        id=&quot;link1&quot; aria-selected=&quot;true&quot;
+        aria-controls=&quot;content1&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;#&quot; role=&quot;tab&quot;&gt;
+            ...
+            &lt;/a&gt;
+        &lt;/clr-tab-link&gt;
+    &lt;/ul&gt;
+    &lt;clr-tab-content role=&quot;tabpanel&quot;
+        id=&quot;content1&quot; aria-hidden=&quot;false&quot;
+        aria-labelledby=&quot;link1&quot;
+        data-hidden=&quot;false&quot;
+        class=&quot;active&quot;&gt;
+        &lt;section&gt;
+        ...
+        &lt;/section&gt;
+    &lt;/clr-tab-content&gt;
+&lt;/clr-tabs&gt;
+</code></pre>
+        </div>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Refactor toggles to use baselineRem and fix vertical alignment issues
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>
+        Upgrade to BS4 Alpha 4
+    </li>
+    <li>
+        Add grid flex items vertical and horizontal alignment demos to the website
+    </li>
+    <li>
+        Revisit color for selected state
+    </li>
+</ul>

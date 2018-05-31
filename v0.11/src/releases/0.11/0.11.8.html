@@ -1,0 +1,60 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li new-component>
+        <h6>Date Picker</h6>
+        <p>
+            Clarity NG now provides a Date Picker Component. Date Picker can be enabled as shown below:
+        </p>
+        <pre><code clr-code-highlight="language-html">
+&lt;input type=&quot;date&quot; clrDate/&gt;</code></pre>
+        <p>
+            The initial version of the Date Picker uses locale identifiers supported by Angular to display the dates according to the
+            locale date format. It also supports features like keyboard navigation, navigating to the previous, current and
+            next month. For more details please refer to the
+            <a href="https://vmware.github.io/clarity/documentation/v0.11/datepicker" target="_blank">
+                Date Picker documentation
+            </a>.
+        </p>
+    </li>
+    <li>
+        <h6>Optimize Clarity Icons in your application</h6>
+        <p>
+            Before
+            <code class="clr-code">v0.11.8</code>, users had to import the whole icons sets even if they needed to use only a few icons from those sets. Now with
+            <code class="clr-code">v0.11.8</code>, users can import each icon shapes as individual modules and add them to the Clarity Icons API. Leveraging this
+            new method of importing icons with Tree-shaking process, you can make a significant optimization to the size
+            of Clarity Icons in your application. For example, if you need to use
+            <code class="clr-code">car</code>,
+            <code class="clr-code">pin</code>, and
+            <code class="clr-code">star</code> icons in an application, you can import and add them in the following way:
+        </p>
+
+<pre><code clr-code-highlight="language-ts">
+import &#123; ClarityIcons &#125; from &quot;@clr/icons&quot;;
+import &#123; ClrShapePin &#125; from &quot;@clr/icons/shapes/essential-shapes&quot;;
+import &#123; ClrShapeStar &#125; from &quot;@clr/icons/shapes/social-shapes&quot;;
+import &#123; ClrShapeCar &#125; from &quot;@clr/icons/shapes/travel-shapes&quot;;
+
+ClarityIcons.add(&#123;
+    pin: ClrShapePin,
+    star: ClrShapeStar,
+    car: ClrShapeCar
+&#125;);
+</code></pre>
+        <p>
+            You can see that each shape modules have <code class="clr-code">ClrShape</code> prefix in the example above. An important thing to note here is that,
+            to take advantage of this new method, you should only load Clarity Icons by importing it from
+            <code class="clr-code">"@clr/icons"</code> and make sure that you are not loading it via a script tag or in some other manner.
+        </p>
+    </li>
+</ul>
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Fixed an issue with the alerts pager component (<a href="https://github.com/vmware/clarity/pull/2046" target="_blank">#2046</a>)
+    </li>
+</ul>
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Added aria-labelledby support to clr-checkboxes (<a href="https://github.com/vmware/clarity/pull/2029" target="_blank">#2029</a>)</li>
+</ul>

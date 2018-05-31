@@ -1,0 +1,154 @@
+// Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import "./color-shared.demo";
+
+@mixin clr-colordemo-contrast($bgcolor, $type, $weight: normal) {
+    $contrastColor: clr-getTextContrast($bgcolor, $type, $weight);
+    $className: null;
+
+    @if $weight == thin or $weight == bold {
+        $className: $weight;
+    } @else {
+        $className: $type;
+    }
+
+    .#{$className} {
+        color: $contrastColor;
+        @include clr-colordemo-hexContrastLabelStyles($contrastColor, $contrastColor);
+    }
+}
+
+@mixin clr-colordemo-contrastLoop($bgcolor) {
+    $contrast-testlist: (darkest, middle-light, lightest, middle-dark, thin, bold);
+    $contrast-testlistLength: length($contrast-testlist);
+
+    td {
+        background-color: $bgcolor;
+    }
+
+    @for $i from 1 through $contrast-testlistLength {
+        $current: nth($contrast-testlist, $i);
+        $specialTone: if($bgcolor == #fff, middle-dark, middle-light);
+
+        @if $current == thin {
+            @include clr-colordemo-contrast($bgcolor, $specialTone, $current);
+        } @else if $current == bold {
+            @include clr-colordemo-contrast($bgcolor, $specialTone, $current);
+        } @else {
+            @include clr-colordemo-contrast($bgcolor, $current);
+        }
+    }
+}
+
+.colordemo-contrast {
+    @include clr-colordemo-sharedContainerStyles;
+    @include clr-colordemo-sharedTableStyles;
+    @include clr-colordemo-luminanceAndContrastTableStyles;
+
+    margin: rem(1.4) 0;
+
+    .hex-contrast {
+        @include clr-colordemo-hexContrastBlockStyles;
+    }
+
+    .white-test {
+        @include clr-colordemo-contrastLoop($clr-white);
+    }
+
+    .black-test {
+        @include clr-colordemo-contrastLoop($clr-black);
+    }
+
+    .gray-test {
+        @include clr-colordemo-contrastLoop($clr-gray);
+    }
+
+    $allMyTextColors: (
+        "gray": map-get($clr-grays, text-colors),
+        "action": map-get($clr-action-blues, text-colors),
+        "purple": map-get($clr-action-purples, text-colors),
+        "red": map-get($clr-reds, text-colors),
+        "yellow": map-get($clr-yellows, text-colors),
+        "green": map-get($clr-greens, text-colors)
+    );
+    .colordemo-textcolor {
+        td {
+            background-color: $clr-white;
+
+            .hex-contrast {
+                font-weight: 400;
+            }
+
+            &.lightest-dark, &.text-dark,
+            &.subtext-dark, &.hoverable-dark,
+            &.hovered-dark, &.clicked-dark,
+            &.white-dark {
+                background-color: $clr-near-black;
+            }
+        }
+
+        @each $section in ("gray" "action" "purple" "red" "yellow" "green") {
+            .#{$section}-text-test {
+
+                $currentMap: map-get($allMyTextColors, $section);
+
+                @each $textType in ("lightest" "text" "subtext" "hoverable" "hovered" "clicked" "white") {
+                    td.#{$textType}-dark {
+                        $textColor: #f00;
+                        @if ($textType == "lightest") {
+                            $textColor: map-get($currentMap, $textType);
+                        } @else if ($textType == "white") {
+                            $textColor: _clr-getAchromaticColor($clr-black, white);
+                        } @else {
+                            $textColor: map-get(map-get($currentMap, darkBg), $textType);
+                        }
+
+                        color: $textColor;
+                        @include clr-colordemo-hexContrastLabelStyles($textColor, $textColor);
+                    }
+                }
+
+                @each $textType in ("darkest" "text" "subtext" "hoverable" "hovered" "clicked" "black") {
+                    td.#{$textType}-light {
+                        $textColor: #f00;
+                        @if ($textType == "darkest") {
+                            $textColor: map-get($currentMap, #{$textType});
+                        } @else if ($textType == "black") {
+                            $textColor: _clr-getAchromaticColor($clr-white, black);
+                        } @else {
+                            $textColor: map-get(map-get($currentMap, lightBg), #{$textType});
+                        }
+
+                        color: $textColor;
+                        @include clr-colordemo-hexContrastLabelStyles($textColor, $textColor);
+                    }
+                }
+            }
+        }
+    }
+    table {
+        max-width: 600px;
+        min-width: auto;
+        width: 600px;
+        margin-bottom: 4rem;
+
+        th:first-child {
+            text-align: left;
+        }
+    }
+
+    table td {
+        min-width: 80px;
+
+        &:first-child {
+            background-color: transparent;
+            width: 50%;
+            min-width: 120px;
+            max-width: 300px;
+            text-align: left;
+            padding-left: 8px;
+        }
+    }
+}

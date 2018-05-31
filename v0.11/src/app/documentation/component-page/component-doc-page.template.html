@@ -1,0 +1,74 @@
+<div class="dox-wrapper dox-header" [class.new-component-layout]="useNewLayout">
+    <section>
+        <h1>{{title}}</h1>
+        <h5 *ngIf="description">
+            {{ description }}
+        </h5>
+
+        <div *ngIf="!useNewLayout" class="component-workstream-bugs">
+            <span class="bug bug-html" [class.hidden]="!uiDone && !uiInProgress">
+            <img src="assets/images/bugs/badge_html5{{uiInProgress?'_inprogress':''}}.svg"
+                    alt="{{uiInProgress?'Development in Progress':'HTML5'}}"
+                    title="{{uiInProgress?'Development in Progress':'HTML5'}}">
+            </span>
+            <span class="bug bug-css" [class.hidden]="!uiDone && !uiInProgress">
+            <img src="assets/images/bugs/badge_css3{{uiInProgress?'_inprogress':''}}.svg"
+                    alt="{{uiInProgress?'Development in Progress':'CSS3'}}"
+                    title="{{uiInProgress?'Development in Progress':'CSS3'}}">
+            </span>
+            <span class="bug bug-ng" *ngIf="ngDone || ngInProgress">
+            <img src="assets/images/bugs/badge_ng{{ngInProgress?'_inprogress':''}}.svg"
+                    alt="{{uiInProgress?'Development in Progress':'Angular'}}"
+                    title="{{uiInProgress?'Development in Progress':'Angular'}}">
+            </span>
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled" [scrollspy]="scrollable">
+                <li *ngIf="!useNewLayout">
+                    <a routerLink="."
+                       routerLinkActive="active"
+                       fragment="top"
+                       id="topTabLink"
+                       class="clrweb-tablink">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <li *ngIf="!useNewLayout">
+                    <a routerLink="."
+                       routerLinkActive="active"
+                       fragment="guidelines"
+                       class="clrweb-tablink"
+                       id="guidelinesTabLink">
+                        Design Guidelines
+                    </a>
+                </li>
+                <li *ngIf="useNewLayout">
+                    <a routerLink="."
+                       routerLinkActive="active"
+                       fragment="top"
+                       id="topTabLink"
+                       class="clrweb-tablink">
+                        Design Guidelines
+                    </a>
+                </li>
+                <li *ngIf="useNewLayout">
+                    <a routerLink="."
+                       routerLinkActive="active"
+                       fragment="examples"
+                       class="clrweb-tablink"
+                       id="guidelinesTabLink">
+                        Code &amp; Examples
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener #scrollable>
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        ${content}
+    </div>
+</section>

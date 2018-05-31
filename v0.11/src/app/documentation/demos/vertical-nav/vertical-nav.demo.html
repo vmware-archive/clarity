@@ -1,0 +1,465 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="badges-header">
+            This is a vertically-aligned navigational component.
+        </h5>
+
+        <div id="design-guidelines">
+            <h3>Design Guidelines</h3>
+            <p>
+                Vertical navigation is a familiar navigation pattern for users. It can fit as many navigation links as
+                needed, scrolling when the content exceeds the viewport.
+            </p>
+
+            <clr-basic-vertical-nav-demo></clr-basic-vertical-nav-demo>
+
+            <h4>Usage</h4>
+            <p>Use the vertical navigation when you need:</p>
+            <ul class="list">
+                <li>to collapse and expand the navigation to free up space for the content area</li>
+                <li>a hierarchical navigation or nested navigation</li>
+                <li>many links in the navigation across a top level of navigation</li>
+                <li>icons to describe navigation items which is helpful when the navigation is collapsed</li>
+            </ul>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia is-do-block">
+                        <div class="clrweb-DoxMedia-block" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-basic-vertical-nav-usage-demo></clr-basic-vertical-nav-usage-demo>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Do</h6>
+                            <p>
+                                Use vertical navigation with a header.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia is-dont-block">
+                        <div class="clrweb-DoxMedia-block" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-basic-vertical-nav-usage-demo
+                                        [demoToggleDont]="true"></clr-basic-vertical-nav-usage-demo>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p>
+                                Use vertical navigation with a header and subnav. Having too many places 
+                                for navigation is confusing for users.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Layout</h3>
+
+            <p>
+                Vertical navigation has a few layout options including dividers and section headers. Active 
+                links are displayed with a white background. Touch targets are larger for easier interaction 
+                and span the entire width of the navigation, similar to the space of the active link indicator.
+            </p>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-just-navs-demo></clr-just-navs-demo>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Basic</h6>
+                            <div>
+                                No dividers or section headers.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-just-navs-demo [demoWithDividers]="true"></clr-just-navs-demo>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Dividers</h6>
+                            <div>
+                                Used to separate logical clusters of navigation items. Best used when you 
+                                have two or more links in a cluster.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-just-navs-demo [demoWithHeadersAndDividers]="true"></clr-just-navs-demo>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Dividers & Headers</h6>
+                            <div>
+                                Used to separate logical clusters of navigation items. Best used when you 
+                                have two or more links in a cluster.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Icons</h3>
+
+            <p>
+                Icons should be placed to the left of the link label. Active links will display a blue icon. 
+                Make sure your icons are distinctive and easily recognizable. Touch targets include the 
+                entire width of the navigation including the icon.
+            </p>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia is-do-block">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-icons-demo></clr-vertical-nav-icons-demo>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Do</h6>
+                            <p>
+                                Use icons across all links if you choose to use them.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia is-dont-block">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-icons-demo [demoHideIcons]="true"></clr-vertical-nav-icons-demo>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p>
+                                Add icons to some links and not to other links. This becomes difficult to scan and read.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Hierarchy</h3>
+
+            <p>
+                Hierarchy is used to show parent-child relationship between links. If a child link is active 
+                and the parent item is collapsed, the parent will display as active. When expanded, the active 
+                indicator will display on the child link. Clicking on text, carets or icons will expand and 
+                collapse the parent item.
+            </p>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-groups-demo [demoHideIcons]="true"></clr-vertical-nav-groups-demo>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Basic</h6>
+                            <div>
+                                Top level hierarchy items are semibold font weight and have a caret to the 
+                                right. Child links are normal font weight.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-groups-demo [demoExpandedGroup]="true"></clr-vertical-nav-groups-demo>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Icons</h6>
+                            <div>
+                                Icons are only applied to the top level navigation items. They are not applied 
+                                to child links.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-groups-demo [demoHideIcons]="true"
+                                 [demoMixedNav]="true"></clr-vertical-nav-groups-demo>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Mixed</h6>
+                            <div>
+                                Top level hierarchy items without child links are semibold. Clicking on one 
+                                will navigate a user to a page.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <clr-alert clrAlertType="info" [clrAlertClosable]="false">
+                <clr-alert-item>
+                        <span class="alert-text">
+                            If you need a summary or overview-type landing page for a link group, we recommend 
+                            you make it as your first child link.
+                        </span>
+                </clr-alert-item>
+            </clr-alert>
+
+            <h3>Collapse & Expand Navigation</h3>
+
+            <p>
+                Collapsing and expanding navigation is used to create more space in content areas or to bring 
+                greater focus to content. The double caret in the upper right corner will collapse and 
+                expand the navigation.
+            </p>
+
+            <h5>Basic</h5>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-collapsible-vertical-nav-demo
+                                        [demoHideIcons]="true"></clr-collapsible-vertical-nav-demo>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>No Icons</h6>
+                            <div>
+                                When no icons are present, collapsing the navigation will show a basic bar. The 
+                                entire bar is a click target that can expand the navigation.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-collapsible-vertical-nav-demo
+                                        [demoCollapsed]="true"></clr-collapsible-vertical-nav-demo>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Icons</h6>
+                            <div>
+                                When collapsed, text will disappear and only icons will show. Clicking on an icon will
+                                navigate the user. An active link will also show as an active icon when collapsed.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5>Hierarchy</h5>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-groups-demo [demoHideIcons]="true"
+                                                            [demoCollapsible]="true"></clr-vertical-nav-groups-demo>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>No Icons</h6>
+                            <div>
+                                When no icons are present, collapsing the navigation will show a basic bar. The 
+                                entire bar is a click target that can expand the navigation.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-groups-demo [demoCollapsible]="true"></clr-vertical-nav-groups-demo>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Icons</h6>
+                            <div>
+                                Top level hierarchy items will show a caret next to its icon when the navigation is
+                                collapsed. Clicking one will expand the navigation its top level item.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-groups-demo [demoMixedNavWithIcons]="true"
+                                [demoCollapsible]="true"></clr-vertical-nav-groups-demo>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Mixed</h6>
+                            <div>
+                                Top level items without children will show no caret next to the icon. Clicking on 
+                                an icon with no caret will navigate the user to a page.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Long Labels</h3>
+
+            <p>
+                When labels get too long they will be trimmed and followed by an ellipsis (…). We recommend 
+                that navigation labels remain short and concise to prevent an ellipsis from showing.
+            </p>
+
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-just-navs-demo [demoLongLabel]="true"></clr-just-navs-demo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-icons-demo [demoLongLabel]="true"></clr-vertical-nav-icons-demo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-groups-demo [demoLongLabel]="true"
+                                [demoExpandedGroup]="true"></clr-vertical-nav-groups-demo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Smaller Screens - Responsive</h3>
+
+            <p>
+                When screens drop below 768px wide, the navigation will hide completely and can be shown by 
+                clicking on one of the header icons. All normal vertical navigation designs and behaviors 
+                are the same in the responsive state. Read the Responsive section in Navigation for more 
+                information on how this works.
+            </p>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="clrweb-DoxMedia-img">
+                                        <img
+                                            src="assets/images/documentation/vertical-nav/responsive-left.png"
+                                            alt="Responsive Vertical Nav"
+                                            class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="clrweb-DoxMedia-img">
+                                        <img
+                                            src="assets/images/documentation/vertical-nav/responsive-right.png"
+                                            alt="Responsive Vertical Nav"
+                                            class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="code-examples">
+            <h3 id="examples">Code &amp; Examples</h3>
+
+            <p>
+                We have {{childRoutes.length}} Vertical Nav demos. Starting with the basics, each demo shows
+                you one or more of the advanced Vertical Nav features.
+            </p>
+
+            <p></p>
+
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    <ul class="list">
+                        <li><a routerLink="./basic-structure">Basic Structure</a></li>
+                        <li><a routerLink="./icon-links">Icon Links</a></li>
+                        <li><a routerLink="./collapsible-nav">Collapsible Navigation</a></li>
+                        <li><a routerLink="./nav-groups">Vertical Nav Groups</a></li>
+                        <li><a routerLink="./lazy-loading-nav-links">Lazy Loading Nav Links in Nav Groups</a></li>
+                        <!--li><a routerLink="./nav-groups">Nav Groups</a></li>
+                        <li><a routerLink="./no-lazy-loading">Unstructured Routes</a></li-->
+                    </ul>
+                </div>
+            </div>
+
+            <div #demoView></div>
+
+            <router-outlet></router-outlet>
+
+            <div class="datagrid-demo-pagination">
+                <button class="btn btn-primary demo-pagination-prev" *ngIf="previous" (click)="movePrevious()">
+                    <clr-icon shape="angle left"></clr-icon>
+                    {{previousRoute.data.demoName}}
+                </button>
+                <button class="btn btn-primary demo-pagination-next" *ngIf="next" (click)="moveNext()">
+                    {{nextRoute.data.demoName}}
+                    <clr-icon shape="angle right"></clr-icon>
+                </button>
+            </div>
+        </div>
+
+    </article>
+</clr-doc-wrapper>

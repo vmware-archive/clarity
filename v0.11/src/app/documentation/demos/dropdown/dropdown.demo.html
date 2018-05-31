@@ -1,0 +1,337 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary"
+            id="a-dropdown-menu-lists-actions-that-users-can-perform-within-an-application-or-on-a-selected-object">A
+            dropdown menu allows the user to choose an option or action from a contextual list. The source of the
+            dropdown is usually a button.</h5>
+
+        <div id="design-guidelines">
+            <div class="clrweb-DoxMedia">
+                <div class="clrweb-DoxMedia-block">
+                    <div class="clrweb-DoxMedia-img">
+                        <img src="assets/images/documentation/dropdowns/img_dropdown menu styles.png" alt="Dropdown menu styles">
+                    </div>
+                </div>
+            </div>
+
+
+            <h3 id="description">Description</h3>
+            <p></p>
+            <ul class="list">
+                <li>Default line height is 30 px; 36 px for x-small breakpoint (<544px) touch targets</li>
+                <li>Headers and or dividers may be used to organize a longer list of items</li>
+                <li>Menu width: Minimum 168 px; Maximum 336 px</li>
+                <li>Items in the list have hover and click states</li>
+            </ul>
+
+            <div class="clrweb-DoxVersusBox">
+                <div class="clrweb-DoxVersusBox-pin">
+                    <clr-icon shape="pin"></clr-icon>
+                </div>
+                <div class="clrweb-DoxVersusBox-items">
+                    <div class="clrweb-DoxVersusBox-itemWrapper">
+                        <div class="clrweb-DoxVersusBox-item">
+                            <clr-dropdown>
+                                <button type="button" clrDropdownTrigger class="btn btn-link">
+                                    Departments
+                                    <clr-icon shape="caret down"></clr-icon>
+                                </button>
+                                <clr-dropdown-menu clrPosition="bottom-left">
+                                    <button type="button" clrDropdownItem>Art</button>
+                                    <button type="button" clrDropdownItem>Business</button>
+                                    <button type="button" clrDropdownItem>Science</button>
+                                    <button type="button" clrDropdownItem>Mathematics</button>
+                                </clr-dropdown-menu>
+                            </clr-dropdown>
+                            <p><b>Dropdown menus</b> present a list of options that take an immediate
+                                action or navigate the user outside of the current context.</p>
+                        </div>
+                    </div>
+                    <div class="clrweb-DoxVersusBox-vsWrapper">
+                        <div class="clrweb-DoxVersusBox-vs">vs</div>
+                    </div>
+                    <div class="clrweb-DoxVersusBox-itemWrapper">
+                        <div class="clrweb-DoxVersusBox-item">
+                            <div class="select">
+                                <select id="selects_3">
+                                    <option>New York</option>
+                                    <option>San Francisco</option>
+                                    <option>Austin</option>
+                                    <option>Paris</option>
+                                    <option>Seattle</option>
+                                </select>
+                            </div>
+                            <p><b>Select boxes</b> present a list of options that the user can choose from and
+                                apply to an input field.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="behavior">Behavior</h3>
+            <p></p>
+            <ul class="list">
+                <li>Clicking on the toggle opens the dropdown</li>
+                <li>By default, selecting a menu item or clicking outside the menu dismisses the menu. You can change
+                    this behavior to keep the menu open on item selection</li>
+            </ul>
+
+            <h3 id="placement">Placement</h3>
+            <p>
+                By default, a dropdown opens from the bottom of the toggle, along the left side. You can change
+                the placement by using one of the eight direction classes.
+            </p>
+
+            <div class="clrweb-DoxMedia">
+                <div class="clrweb-DoxMedia-block">
+                    <div class="clrweb-DoxMedia-img">
+                        <img src="assets/images/documentation/dropdowns/img_menu_placement.png" alt="Dropdown menu placement">
+                    </div>
+                </div>
+            </div>
+
+
+            <h3 id="recommendations">Recommendations</h3>
+            <p></p>
+            <ul class="list">
+                <li>Use a button for the toggle. The button can contain either text or an icon</li>
+                <li>Order menu items by usage, except for destructive actions, which belong at the bottom</li>
+                <li>Keep the text short and concise. Long menu items are truncated from the end and an ellipsis added</li>
+                <li>Nested menus may be used to organize long lists of items into categories</li>
+                <li>Limit menus to three levels: Root menu plus up to two levels of nested menus</li>
+                <li>Disable a menu item if:</li>
+                <ul class="list">
+                    <li>It can apply in a different context</li>
+                    <li>The user doesn’t have permissions for the action</li>
+                    <li>An applicable object is not currently selected</li>
+                </ul>
+            </ul>
+        </div>
+
+        <div id="code-examples">
+            <h2 id="nested-menu">Nested Menu</h2>
+
+            <p>Nested menus are an extension of dropdown menus. They save screen space by organizing a long list of
+                items into categories that the user can click to reveal deeper levels.</p>
+
+            <h3>Description</h3>
+            <p></p>
+            <ul class="list">
+                <li>Same visual style as standard dropdown menu with the exception of a darker border (#9A9A9A)</li>
+                <li>Slight overlap (4px) over root menu to emphasize stack order</li>
+                <li>Width: Minimum 168 px; Maximum 336 px</li>
+                <li>Default line height is 30 px; 36 px for x-small breakpoint (<544px)</li>
+            </ul>
+
+            <h3>Interaction</h3>
+            <p></p>
+            <ul class="list">
+                <li>With mouse: Click group name to reveal nested menus. Group name stays in selected state to
+                    serve as a breadcrumb</li>
+                <li>Clicking outside of the menu dismisses all menus</li>
+            </ul>
+
+            <div class="clrweb-DoxMedia">
+                <div class="clrweb-DoxMedia-block">
+                    <div class="clrweb-DoxMedia-img">
+                        <img src="assets/images/documentation/dropdowns/img_nested_levels.png"
+                            alt="Dropdown nested menu"/>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Placement</h3>
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <img src="assets/images/documentation/dropdowns/img_placement_default.png"
+                                    alt="Dropdown nested menu"/>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Default placement and stack order</h6>
+                            <p>
+                                By default a nested menu pops up on the right side of its root menu.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <img src="assets/images/documentation/dropdowns/img_placement_resp.png"
+                                    alt="Dropdown nested menu"/>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Small screen / responsive placement and stack order (<544px)</h6>
+                            <p>
+                                If screen space isn’t available to the right of the root menu, the nested menu
+                                appears on the left side. If there is a second nested menu, it appears to the
+                                right of the first nested menu, creating a zig-zag pattern.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="examples">Examples</h3>
+
+            <h6 id="default-dropdown-bottom-left">1. Default dropdown (bottom-left):</h6>
+
+            <clr-dropdown-static-default-demo></clr-dropdown-static-default-demo>
+
+            <h6 id="bottom-right">2. Bottom-right</h6>
+
+            <clr-dropdown-static-positioning-demo></clr-dropdown-static-positioning-demo>
+
+            <h6 id="clarity-icon-as-the-dropdown-toggle">3. Clarity icon as the dropdown toggle</h6>
+
+            <clr-dropdown-static-icon-toggle-demo></clr-dropdown-static-icon-toggle-demo>
+
+            <h6 id="link-button-as-the-dropdown-toggle">4. Link Button as the dropdown toggle</h6>
+
+            <clr-dropdown-static-buttonlink-toggle-demo></clr-dropdown-static-buttonlink-toggle-demo>
+
+            <h3>CSS classes</h3>
+
+            <h6 id="dropdown">.dropdown:</h6>
+
+            <p>This class is a wrapper class around the <code class="clr-code">.dropdown-toggle</code> and th
+                <code class="clr-code">.dropdown-menu</code>
+            </p>
+
+            <h6 id="dropdown-toggle">.dropdown-toggle:</h6>
+
+            <p>Extend this class on a button, icon or text link clicking on which the dropdown menu
+                will be activated</p>
+
+            <h6 id="dropdown-menu">.dropdown-menu:</h6>
+
+            <p>A required wrapper intended to contain the dropdown menu. Items in the menu should extend the <code
+                class="clr-code">.dropdown-header</code>
+                or <code class="clr-code">.dropdown-item</code> class. <code class="clr-code">.dropdown-divider</code> 
+                can be on a block element used to seperate item groups.
+                <code class="clr-code">.active</code> class with <code class="clr-code">.dropdown-item</code> adds a
+                different styling for selected elements.
+                Add the <code class="clr-code">.disabled</code> class to dropdown items to style them as disabled.</p>
+
+            <h6 id="open">.open:</h6>
+
+            <p>A class to open the dropdown menu. Must be applied with <code class="clr-code">.dropdown</code></p>
+
+            <p>The following classes when extended along with <code class="clr-code">.dropdown</code> will
+                open the menu in the respective directions:</p>
+
+            <ul class="list">
+                <li>.bottom-left</li>
+                <li>.bottom-right</li>
+                <li>.top-left</li>
+                <li>.top-right</li>
+                <li>.left-bottom</li>
+                <li>.left-top</li>
+                <li>.right-top</li>
+                <li>.right-bottom</li>
+            </ul>
+
+            <p>If used in one of the nested menus (that is, not the root level <code class="clr-code">.dropdown</code>),
+                only the following classes are valid:</p>
+
+            <ul class="list">
+                <li>.bottom-left</li>
+                <li>.bottom-right</li>
+                <li>.top-left</li>
+                <li>.top-right</li>
+            </ul>
+
+
+            <h2 id="angular-component">Angular Component</h2>
+
+            <p>
+                The dropdown component uses the <code class="clr-code">*clrIfOpen</code> structural directive
+                (detailed documentation coming soon) on the
+                menu to indicate clearly that the menu is only present in the DOM when open. We heavily recommend using
+                it for many reasons: better performance, making the intent clear in your own templates,
+                and following a more natural lifecycle for any directives or components inside of the menu.
+            </p>
+            <p>
+                If for some reason this behavior was not the one you wanted, we also support the dropdown menu without a
+                <code class="clr-code">*clrIfOpen</code> directive on it. It will be created eagerly when the dropdown
+                itself initializes, and will not be destroyed or recreated until the dropdown itself is. Please make
+                sure you know exactly why you are omitting this directive if you end up doing so.
+            </p>
+
+            <h3 id="summary-of-options">Summary of Options</h3>
+
+            <h6><code class="clr-code">&lt;clr-dropdown&gt;</code> component</h6>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input / Output</th>
+                    <th class="left hidden-xs-down">Values</th>
+                    <th class="left hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[clrCloseMenuOnItemClick]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: true</div>
+                    </td>
+                    <td class="left hidden-xs-down">Boolean</td>
+                    <td class="left hidden-xs-down">true</td>
+                    <td class="left">If true, the menu will close when a dropdown item is clicked</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h6><code class="clr-code">&lt;clr-dropdown-menu&gt;</code> component</h6>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input / Output</th>
+                    <th class="left hidden-xs-down">Values</th>
+                    <th class="left hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[clrPosition]</b>
+                        <div class="hidden-sm-up">Values:<br/>Direction classnames</div>
+                        <div class="hidden-sm-up">Default: "bottom-left"</div>
+                    </td>
+                    <td class="left hidden-xs-down">
+                        CSS dropdown menu direction classnames.
+                    </td>
+                    <td class="left hidden-xs-down">bottom-left</td>
+                    <td class="left">Sets the direction in which the menu will open. If used in one of the nested menus,
+                        only four classes are valid: bottom-left, bottom-right, top-left, and top-right.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4 id="example">Example</h4>
+
+            <h6 id="clrmenuposition-is-set-to-top-left-default-is-bottom-left">1. <code class="clr-code">clrPosition</code>
+                is set to top-left.
+                Default is bottom-left. For nested <code class="clr-code">&lt;clr-dropdown&gt;</code>,
+                only the following positions are valid:
+                bottom-left, bottom-right, top-left, top-right.</h6>
+
+            <clr-dropdown-angular-positioning-demo></clr-dropdown-angular-positioning-demo>
+
+            <h6 id="clrclosemenuonitemclick-is-set-to-false-default-is-true">2. clrCloseMenuOnItemClick is set to false.
+                Default is true.</h6>
+
+            <clr-dropdown-angular-close-item-false-demo></clr-dropdown-angular-close-item-false-demo>
+        </div>
+    </article>
+</clr-doc-wrapper>

@@ -4,49 +4,39 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-
 const fs = require('fs');
 const path = require('path');
 const mkdirp = require('mkdirp');
 const cheerio = require('cheerio');
 
-const targetFileType = "svg";
+const targetFileType = 'svg';
 
-let getFileName = (name) => {
-    return name + "." + targetFileType;
+let getFileName = name => {
+  return name + '.' + targetFileType;
 };
 
-let createContainerDir = (dirPath) => {
+let createContainerDir = dirPath => {
+  return new Promise((resolve, reject) => {
+    if (fs.existsSync(dirPath)) {
+      reject(new Error(`${dirPath} already exists!`));
+    }
 
-    return new Promise((resolve, reject)=> {
+    mkdirp(dirPath, err => {
+      if (err) reject(err);
 
-        if (fs.existsSync(dirPath)) {
-            reject(new Error(`${dirPath} already exists!`));
-        }
-
-        mkdirp(dirPath, (err) => {
-            if (err) reject(err);
-
-            resolve(dirPath);
-        });
-
+      resolve(dirPath);
     });
-
+  });
 };
 
 let writeToFile = (fiePath, content) => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile(fiePath, content, err => {
+      if (err) reject(err);
 
-    return new Promise((resolve, reject) => {
-
-        fs.writeFile(fiePath, content, (err) => {
-
-            if (err) reject(err);
-
-            resolve(fiePath);
-
-        });
-
+      resolve(fiePath);
     });
+  });
 };
 
 /*
@@ -59,71 +49,93 @@ let writeToFile = (fiePath, content) => {
  * */
 
 let breakUpShapeTemplate = (shapeName, shapeTemplate) => {
+  let expandedShape = {};
 
-    let expandedShape = {};
+  $ = cheerio.load(shapeTemplate);
 
-    $ = cheerio.load(shapeTemplate);
+  let childWrapper = $('<div class="svg-child-element"></div>');
 
-    let childWrapper = $('<div class="svg-child-element"></div>');
+  //each svg graphic elements inside will be wrapped with the markup above.
+  $('svg')
+    .children()
+    .wrap(childWrapper);
 
-    //each svg graphic elements inside will be wrapped with the markup above.
-    $("svg").children().wrap(childWrapper);
-
-    //the elements with the same class name suffix goes into the same property
-    $("svg").children().each((index, element) => {
-
-        if ($(element).children().first().hasClass("clr-i-outline")) {
-
-            if (expandedShape[shapeName + "-line"]) {
-                expandedShape[shapeName + "-line"] += $(element).html();
-            } else {
-                expandedShape[shapeName + "-line"] = $(element).html();
-            }
-
+  //the elements with the same class name suffix goes into the same property
+  $('svg')
+    .children()
+    .each((index, element) => {
+      if (
+        $(element)
+          .children()
+          .first()
+          .hasClass('clr-i-outline')
+      ) {
+        if (expandedShape[shapeName + '-line']) {
+          expandedShape[shapeName + '-line'] += $(element).html();
+        } else {
+          expandedShape[shapeName + '-line'] = $(element).html();
         }
-        else if ($(element).children().first().hasClass("clr-i-outline--badged")) {
-            if (expandedShape[shapeName + "-outline-badged"]) {
-                expandedShape[shapeName + "-outline-badged"] += $(element).html();
-            } else {
-                expandedShape[shapeName + "-outline-badged"] = $(element).html();
-            }
+      } else if (
+        $(element)
+          .children()
+          .first()
+          .hasClass('clr-i-outline--badged')
+      ) {
+        if (expandedShape[shapeName + '-outline-badged']) {
+          expandedShape[shapeName + '-outline-badged'] += $(element).html();
+        } else {
+          expandedShape[shapeName + '-outline-badged'] = $(element).html();
         }
-        else if ($(element).children().first().hasClass("clr-i-outline--alerted")) {
-            if (expandedShape[shapeName + "-outline-alerted"]) {
-                expandedShape[shapeName + "-outline-alerted"] += $(element).html();
-            } else {
-                expandedShape[shapeName + "-outline-alerted"] = $(element).html();
-            }
+      } else if (
+        $(element)
+          .children()
+          .first()
+          .hasClass('clr-i-outline--alerted')
+      ) {
+        if (expandedShape[shapeName + '-outline-alerted']) {
+          expandedShape[shapeName + '-outline-alerted'] += $(element).html();
+        } else {
+          expandedShape[shapeName + '-outline-alerted'] = $(element).html();
         }
-        else if ($(element).children().first().hasClass("clr-i-solid")) {
-            if (expandedShape[shapeName + "-solid"]) {
-                expandedShape[shapeName + "-solid"] += $(element).html();
-            } else {
-                expandedShape[shapeName + "-solid"] = $(element).html();
-            }
+      } else if (
+        $(element)
+          .children()
+          .first()
+          .hasClass('clr-i-solid')
+      ) {
+        if (expandedShape[shapeName + '-solid']) {
+          expandedShape[shapeName + '-solid'] += $(element).html();
+        } else {
+          expandedShape[shapeName + '-solid'] = $(element).html();
         }
-        else if ($(element).children().first().hasClass("clr-i-solid--badged")) {
-            if (expandedShape[shapeName + "-solid-badged"]) {
-                expandedShape[shapeName + "-solid-badged"] += $(element).html();
-            } else {
-                expandedShape[shapeName + "-solid-badged"] = $(element).html();
-            }
+      } else if (
+        $(element)
+          .children()
+          .first()
+          .hasClass('clr-i-solid--badged')
+      ) {
+        if (expandedShape[shapeName + '-solid-badged']) {
+          expandedShape[shapeName + '-solid-badged'] += $(element).html();
+        } else {
+          expandedShape[shapeName + '-solid-badged'] = $(element).html();
         }
-        else if ($(element).children().first().hasClass("clr-i-solid--alerted")) {
-            if (expandedShape[shapeName + "-solid-alerted"]) {
-                expandedShape[shapeName + "-solid-alerted"] += $(element).html();
-            } else {
-                expandedShape[shapeName + "-solid-alerted"] = $(element).html();
-            }
+      } else if (
+        $(element)
+          .children()
+          .first()
+          .hasClass('clr-i-solid--alerted')
+      ) {
+        if (expandedShape[shapeName + '-solid-alerted']) {
+          expandedShape[shapeName + '-solid-alerted'] += $(element).html();
+        } else {
+          expandedShape[shapeName + '-solid-alerted'] = $(element).html();
         }
-        else {
-            //DO NOTHING;
-        }
-
+      } else {
+        //DO NOTHING;
+      }
     });
 
-    return expandedShape;
-
+  return expandedShape;
 };
 
 /*
@@ -133,20 +145,16 @@ let breakUpShapeTemplate = (shapeName, shapeTemplate) => {
  * @return {Object} Object contains all the disintegrated icon templates.
  * */
 
-let breakUpAllShapeTemplates = (shapes) => {
+let breakUpAllShapeTemplates = shapes => {
+  let allExpandedShapes = {};
 
-    let allExpandedShapes = {};
-
-    for (let shapeName in shapes) {
-        if (shapes.hasOwnProperty(shapeName)) {
-
-            Object.assign(allExpandedShapes, breakUpShapeTemplate(shapeName, shapes[shapeName]));
-        }
+  for (let shapeName in shapes) {
+    if (shapes.hasOwnProperty(shapeName)) {
+      Object.assign(allExpandedShapes, breakUpShapeTemplate(shapeName, shapes[shapeName]));
     }
+  }
 
-    return allExpandedShapes;
-
-
+  return allExpandedShapes;
 };
 
 /*
@@ -157,83 +165,72 @@ let breakUpAllShapeTemplates = (shapes) => {
  * */
 
 let makeSVG = (shapeTitle, shapeContent) => {
+  let openingTag = `<svg version="1.1" width="36" height="36"  viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">`;
+  let title = `<title>${shapeTitle}</title>`;
+  let transparentBG = `<rect x="0" y="0" width="36" height="36" fill-opacity="0"/>`;
+  let closingTag = `</svg>`;
 
-    let openingTag = `<svg version="1.1" width="36" height="36"  viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">`;
-    let title = `<title>${shapeTitle}</title>`;
-    let transparentBG = `<rect x="0" y="0" width="36" height="36" fill-opacity="0"/>`;
-    let closingTag = `</svg>`;
-
-    return `${openingTag}
+  return `${openingTag}
     ${title}
     ${shapeContent}
     ${transparentBG}
 ${closingTag}`;
-
-
 };
 
-
-let convertToCamelCase = (kebabCase) => {
-    // will convert core-shapes into CoreShapes
-    return kebabCase.split("-").map(splitPart => splitPart.charAt(0).toUpperCase() + splitPart.slice(1)).join("");
+let convertToCamelCase = kebabCase => {
+  // will convert core-shapes into CoreShapes
+  return kebabCase
+    .split('-')
+    .map(splitPart => splitPart.charAt(0).toUpperCase() + splitPart.slice(1))
+    .join('');
 };
 
 //use shapes from this directory
-const SOURCE_PATH = path.join(__dirname, "../dist/clr-icons/shapes");
+const SOURCE_PATH = path.join(__dirname, '../dist/clr-icons/shapes');
 
 let makeSVGset = (setName, callback) => {
+  let importSet = require(SOURCE_PATH + '/' + setName + '.js');
 
-    let importSet = require(SOURCE_PATH + "/" + setName + ".js");
+  let exportedName = convertToCamelCase(setName);
 
-    let exportedName = convertToCamelCase(setName);
+  let setShapes = importSet[exportedName];
 
-    let setShapes = importSet[exportedName];
+  let setShapesContainerDir = path.join(SOURCE_PATH, setName);
 
-    let setShapesContainerDir = path.join(SOURCE_PATH, setName);
-
-    createContainerDir(setShapesContainerDir)
-        .then((containerDirPath)=> {
-            let shapes = breakUpAllShapeTemplates(setShapes);
-            let shapeNames = Object.keys(shapes);
-            return Promise.all(shapeNames.map((shapeName)=> {
-                //the path that a new file will be written to
-                let filePath = path.join(containerDirPath, getFileName(shapeName));
-                return writeToFile(filePath, makeSVG(shapeName, shapes[shapeName]));
-            }));
+  createContainerDir(setShapesContainerDir)
+    .then(containerDirPath => {
+      let shapes = breakUpAllShapeTemplates(setShapes);
+      let shapeNames = Object.keys(shapes);
+      return Promise.all(
+        shapeNames.map(shapeName => {
+          //the path that a new file will be written to
+          let filePath = path.join(containerDirPath, getFileName(shapeName));
+          return writeToFile(filePath, makeSVG(shapeName, shapes[shapeName]));
         })
-        .then(()=> {
+      );
+    })
+    .then(() => {
+      console.log(`Completed writing ${setName} svg files`);
 
-            console.log(`Completed writing ${setName} svg files`);
-
-            callback();
-
-
-        })
-        .catch((error)=> {
-
-            callback(error);
-
-        });
+      callback();
+    })
+    .catch(error => {
+      callback(error);
+    });
 };
-
 
 let writeSVGicons = (sets, callback) => {
+  let numOfTasksCompleted = 0;
 
-    let numOfTasksCompleted = 0;
+  sets.forEach(setName => {
+    makeSVGset(setName, () => {
+      numOfTasksCompleted++;
 
-    sets.forEach((setName) => {
-        makeSVGset(setName, () => {
-
-            numOfTasksCompleted++;
-
-            if (numOfTasksCompleted === sets.length) {
-                callback();
-            }
-        });
+      if (numOfTasksCompleted === sets.length) {
+        callback();
+      }
     });
-
-
+  });
 };
-
 
 module.exports = writeSVGicons;

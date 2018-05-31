@@ -4,43 +4,43 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ViewChild} from "@angular/core";
+import { Component, ViewChild } from '@angular/core';
 
-import {ClrCodeHighlight} from "@clr/angular";
-import {ClrWizard} from "@clr/angular";
+import { ClrCodeHighlight } from '@clr/angular';
+import { ClrWizard } from '@clr/angular';
 
-@Component({selector: "clr-wizard-ghosts", templateUrl: "./wizard-ghosts.demo.html"})
+@Component({ selector: 'clr-wizard-ghosts', templateUrl: './wizard-ghosts.demo.html' })
 export class WizardGhostsDemo {
-    @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
+  @ViewChild('wizard') wizard: ClrWizard;
+  @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
-    public model: any;
+  public model: any;
 
-    public ngOnInit() {
-        this.model = {typesOfPages: ""};
-    }
+  public ngOnInit() {
+    this.model = { typesOfPages: '' };
+  }
 
-    open: boolean = false;
+  open: boolean = false;
 
-    typesOfPages = ["All", "Odd", "First and even", "First and last"];
+  typesOfPages = ['All', 'Odd', 'First and even', 'First and last'];
 
-    get isAll(): boolean {
-        return this.model.typesOfPages === "" || this.model.typesOfPages === "All" || this.model.typesOfPages === null;
-    }
+  get isAll(): boolean {
+    return this.model.typesOfPages === '' || this.model.typesOfPages === 'All' || this.model.typesOfPages === null;
+  }
 
-    get showEvenPages(): boolean {
-        return this.isAll || this.model.typesOfPages === "First and even";
-    }
+  get showEvenPages(): boolean {
+    return this.isAll || this.model.typesOfPages === 'First and even';
+  }
 
-    get showPageThree(): boolean {
-        return this.isAll || this.model.typesOfPages === "Odd";
-    }
+  get showPageThree(): boolean {
+    return this.isAll || this.model.typesOfPages === 'Odd';
+  }
 
-    get showPageFive(): boolean {
-        return this.isAll || this.model.typesOfPages === "Odd" || this.model.typesOfPages === "First and last";
-    }
+  get showPageFive(): boolean {
+    return this.isAll || this.model.typesOfPages === 'Odd' || this.model.typesOfPages === 'First and last';
+  }
 
-    code: string = `
+  code: string = `
 import { Component, ViewChild } from "@angular/core";
 import { Wizard } from "@clr/angular";
 
@@ -53,7 +53,7 @@ export class WizardGhostsDemo {
 }
 `;
 
-    html: string = `
+  html: string = `
 <clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardShowGhostPages]="true">
     <clr-wizard-title>Ghost Pages</clr-wizard-title>
 

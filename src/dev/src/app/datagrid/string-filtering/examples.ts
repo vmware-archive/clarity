@@ -4,13 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 export const EXAMPLES = {
-    stringFilterInterface: `
+  stringFilterInterface: `
 interface StringFilter<T> {
     accepts(item: T, search: string): boolean;
 }
 `,
 
-    stringFilterInput: `
+  stringFilterInput: `
 <-- In the columns declaration -->
 <clr-dg-column>
     My column
@@ -18,7 +18,7 @@ interface StringFilter<T> {
 </clr-dg-column>
 `,
 
-    stringFilterTS: `
+  stringFilterTS: `
 import {StringFilter} from "@clr/angular";
 
 class PokemonFilter implements StringFilter<User> {
@@ -34,7 +34,7 @@ class MyComponent {
 }
 `,
 
-    stringFilterHTML: `
+  stringFilterHTML: `
 <-- In the columns declaration -->
 <clr-dg-column>
     Pokemon
@@ -42,7 +42,7 @@ class MyComponent {
 </clr-dg-column>
 `,
 
-    stringPreFilterTS: `
+  stringPreFilterTS: `
 import ...
 
 @Component({
@@ -54,7 +54,7 @@ export class DatagridStringFilteringDemo {
     myFilterValue2 = "M";
     ...
 `,
-    stringPreFilterHTML: `
+  stringPreFilterHTML: `
 ...
     <clr-dg-column
             [clrDgField]="'name'"
@@ -67,5 +67,5 @@ export class DatagridStringFilteringDemo {
                 [(clrFilterValue)]="myFilterValue2"></clr-dg-string-filter>
     </clr-dg-column>
 ...
-`
+`,
 };

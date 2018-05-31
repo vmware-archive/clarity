@@ -3,12 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import "@clr/icons/shapes/essential-shapes";
+import '@clr/icons/shapes/essential-shapes';
 
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
         <h2>Vertical Navigation</h2>
         <ul>
             <li><a [routerLink]="['./static']">Static</a></li>
@@ -26,7 +26,6 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./all']">All Cases</a></li>
         </ul>
         <router-outlet></router-outlet>
-    `
+    `,
 })
-export class VerticalNavDemo {
-}
+export class VerticalNavDemo {}

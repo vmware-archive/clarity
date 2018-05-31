@@ -3,11 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-stack-view-demo",
-    template: `
+  selector: 'clr-stack-view-demo',
+  template: `
         <h2>Stack View</h2>
 
         <ul>
@@ -18,7 +18,6 @@ import {Component} from "@angular/core";
         </ul>
 
         <router-outlet></router-outlet>
-    `
+    `,
 })
-export class StackViewDemo {
-}
+export class StackViewDemo {}

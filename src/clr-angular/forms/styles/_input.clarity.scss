@@ -3,47 +3,47 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @include exports('forms.input') {
-    .clr-input-wrapper {
-        white-space: nowrap;
-        height: $clr-forms-baseline * 4;
-    }
-    
-    .clr-input {
-        @include custom-inputs-reset($clr-forms-baseline * 4);
-        @include form-fields-appearance($clr-forms-border-color);
-        padding: 0 $clr-forms-baseline;
-        margin-right: $clr-forms-icon-size; 
-        max-height: $clr-forms-baseline * 4;
+  .clr-input-wrapper {
+    white-space: nowrap;
+    height: $clr-forms-baseline * 4;
+  }
 
-        @include clr-getTypePropertiesForDomElement(form_label, (font-size));
-        
-        &[readonly] {
-            border: none;
-        }
-        
-        &:not([readonly]) {
-            @include input-border-bottom-animation($clr-forms-focused-color);
-        }
+  .clr-input {
+    @include custom-inputs-reset($clr-forms-baseline * 4);
+    @include form-fields-appearance($clr-forms-border-color);
+    padding: 0 $clr-forms-baseline;
+    margin-right: $clr-forms-icon-size;
+    max-height: $clr-forms-baseline * 4;
+
+    @include clr-getTypePropertiesForDomElement(form_label, (font-size));
+
+    &[readonly] {
+      border: none;
     }
 
-    .clr-error .clr-input:not([readonly]) {
-        border-bottom-color: $clr-forms-invalid-color;
-        @include input-border-bottom-animation($clr-forms-invalid-color);
+    &:not([readonly]) {
+      @include input-border-bottom-animation($clr-forms-focused-color);
     }
+  }
 
-    .clr-form-control.row .clr-input-wrapper {
-        max-width: calc(100% - #{$clr-forms-icon-size});
-    }
+  .clr-error .clr-input:not([readonly]) {
+    border-bottom-color: $clr-forms-invalid-color;
+    @include input-border-bottom-animation($clr-forms-invalid-color);
+  }
 
-    .clr-form-compact .clr-input {
-        @include form-flatten-compact-adjustments();
-    }
+  .clr-form-control.row .clr-input-wrapper {
+    max-width: calc(100% - #{$clr-forms-icon-size});
+  }
 
-    .clr-form-control-readonly .clr-input {
-        border: none;
-    }
+  .clr-form-compact .clr-input {
+    @include form-flatten-compact-adjustments();
+  }
 
-    .clr-form-control-multi .clr-input {
-        max-width: calc(100% + #{$clr-forms-icon-size});
-    }
+  .clr-form-control-readonly .clr-input {
+    border: none;
+  }
+
+  .clr-form-control-multi .clr-input {
+    max-width: calc(100% + #{$clr-forms-icon-size});
+  }
 }

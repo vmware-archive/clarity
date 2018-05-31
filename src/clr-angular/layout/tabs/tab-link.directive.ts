@@ -4,85 +4,92 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    ComponentFactoryResolver,
-    Directive,
-    ElementRef,
-    HostBinding,
-    HostListener,
-    Inject,
-    Input,
-    ViewContainerRef
-} from "@angular/core";
+  ComponentFactoryResolver,
+  Directive,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  Inject,
+  Input,
+  ViewContainerRef,
+} from '@angular/core';
 
-import {IF_ACTIVE_ID, IfActiveService} from "../../utils/conditional/if-active.service";
-import {TemplateRefContainer} from "../../utils/template-ref/template-ref-container";
+import { IF_ACTIVE_ID, IfActiveService } from '../../utils/conditional/if-active.service';
+import { TemplateRefContainer } from '../../utils/template-ref/template-ref-container';
 
-import {AriaService} from "./providers/aria.service";
-import {TABS_ID} from "./tabs-id.provider";
+import { AriaService } from './providers/aria.service';
+import { TABS_ID } from './tabs-id.provider';
 
 let nbTabLinkComponents: number = 0;
 
 @Directive({
-    selector: "[clrTabLink]",
-    host: {
-        "[id]": "tabLinkId",
-        "[attr.aria-selected]": "active",
-        "[attr.aria-controls]": "ariaControls",
-        "[class.btn]": "true",
-        "[class.btn-link]": "!inOverflow",
-        "[class.nav-link]": "!inOverflow",
-        "[class.nav-item]": "!inOverflow",
-        "[class.active]": "active"
-    }
+  selector: '[clrTabLink]',
+  host: {
+    '[id]': 'tabLinkId',
+    '[attr.aria-selected]': 'active',
+    '[attr.aria-controls]': 'ariaControls',
+    '[class.btn]': 'true',
+    '[class.btn-link]': '!inOverflow',
+    '[class.nav-link]': '!inOverflow',
+    '[class.nav-item]': '!inOverflow',
+    '[class.active]': 'active',
+  },
 })
 export class ClrTabLink {
-    @Input("clrTabLinkInOverflow") inOverflow: boolean;
-    templateRefContainer: TemplateRefContainer;
+  @Input('clrTabLinkInOverflow') inOverflow: boolean;
+  templateRefContainer: TemplateRefContainer;
 
-    constructor(public ifActiveService: IfActiveService, @Inject(IF_ACTIVE_ID) private id: number,
-                private ariaService: AriaService, private el: ElementRef, private cfr: ComponentFactoryResolver,
-                private viewContainerRef: ViewContainerRef, @Inject(TABS_ID) public tabsId: number) {
-        if (!this.tabLinkId) {
-            this.tabLinkId = "clr-tab-link-" + (nbTabLinkComponents++);
-        }
-
-        // Tab links can be rendered in one of two places: in the main area or inside the overflow dropdown menu.
-        // Here, we create a container so that its template can be used to create embeddedView on the fly.
-        // See TabsService's renderView() method and how it's used in Tabs class for an example.
-        const factory = this.cfr.resolveComponentFactory(TemplateRefContainer);
-        this.templateRefContainer =
-            this.viewContainerRef.createComponent(factory, 1, undefined, [[this.el.nativeElement]]).instance;
+  constructor(
+    public ifActiveService: IfActiveService,
+    @Inject(IF_ACTIVE_ID) private id: number,
+    private ariaService: AriaService,
+    private el: ElementRef,
+    private cfr: ComponentFactoryResolver,
+    private viewContainerRef: ViewContainerRef,
+    @Inject(TABS_ID) public tabsId: number
+  ) {
+    if (!this.tabLinkId) {
+      this.tabLinkId = 'clr-tab-link-' + nbTabLinkComponents++;
     }
 
-    get ariaControls(): string {
-        return this.ariaService.ariaControls;
-    }
+    // Tab links can be rendered in one of two places: in the main area or inside the overflow dropdown menu.
+    // Here, we create a container so that its template can be used to create embeddedView on the fly.
+    // See TabsService's renderView() method and how it's used in Tabs class for an example.
+    const factory = this.cfr.resolveComponentFactory(TemplateRefContainer);
+    this.templateRefContainer = this.viewContainerRef.createComponent(factory, 1, undefined, [
+      [this.el.nativeElement],
+    ]).instance;
+  }
 
-    get tabLinkId(): string {
-        return this.ariaService.ariaLabelledBy;
-    }
+  get ariaControls(): string {
+    return this.ariaService.ariaControls;
+  }
 
-    @Input("id")
-    set tabLinkId(id: string) {
-        this.ariaService.ariaLabelledBy = id;
-    }
+  get tabLinkId(): string {
+    return this.ariaService.ariaLabelledBy;
+  }
 
-    @HostListener("click")
-    activate() {
-        this.ifActiveService.current = this.id;
-    }
+  @Input('id')
+  set tabLinkId(id: string) {
+    this.ariaService.ariaLabelledBy = id;
+  }
 
-    get active() {
-        return this.ifActiveService.current === this.id;
-    }
+  @HostListener('click')
+  activate() {
+    this.ifActiveService.current = this.id;
+  }
 
-    @HostBinding("attr.role")
-    get role(): string {
-        return "presentation";
-    }
+  get active() {
+    return this.ifActiveService.current === this.id;
+  }
 
-    @HostBinding("attr.type")
-    get type(): string {
-        return "button";
-    }
+  @HostBinding('attr.role')
+  get role(): string {
+    return 'presentation';
+  }
+
+  @HostBinding('attr.type')
+  get type(): string {
+    return 'button';
+  }
 }

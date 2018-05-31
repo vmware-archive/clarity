@@ -5,13 +5,13 @@
  */
 
 export class ResponsiveNavControlMessage {
-    constructor(private _controlCode: string, private _navLevel: number) {}
+  constructor(private _controlCode: string, private _navLevel: number) {}
 
-    get controlCode(): string {
-        return this._controlCode;
-    }
+  get controlCode(): string {
+    return this._controlCode;
+  }
 
-    get navLevel(): number {
-        return this._navLevel;
-    }
+  get navLevel(): number {
+    return this._navLevel;
+  }
 }

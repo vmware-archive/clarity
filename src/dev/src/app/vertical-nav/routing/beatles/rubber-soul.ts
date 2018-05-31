@@ -3,11 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-rubber-soul-demo",
-    template: `
+  selector: 'clr-rubber-soul-demo',
+  template: `
         <!--Credit https://en.wikipedia.org/wiki/Rubber_Soul-->
         <h4>Rubber Soul (1965)</h4>
         <p>
@@ -17,7 +17,6 @@ import {Component} from "@angular/core";
             in the United Kingdom for several weeks, as well as in the United States, 
             where it was issued with a different selection of tracks.
         </p>
-    `
+    `,
 })
-export class RubberSoulDemo {
-}
+export class RubberSoulDemo {}

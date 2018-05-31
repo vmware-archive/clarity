@@ -4,25 +4,25 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {TemplateRef} from "@angular/core";
+import { TemplateRef } from '@angular/core';
 
 export class MockPage {
-    constructor(pageIndex: number) {
-        this.id = "this-is-my-page-id-" + pageIndex++;
-    }
+  constructor(pageIndex: number) {
+    this.id = 'this-is-my-page-id-' + pageIndex++;
+  }
 
-    public id: string;
-    public disabled = false;
-    public current = false;
-    public completed = false;
-    public readyToComplete = false;
+  public id: string;
+  public disabled = false;
+  public current = false;
+  public completed = false;
+  public readyToComplete = false;
 
-    public reset(): void {
-        this.disabled = false;
-        this.current = false;
-        this.completed = false;
-        this.readyToComplete = false;
-    }
+  public reset(): void {
+    this.disabled = false;
+    this.current = false;
+    this.completed = false;
+    this.readyToComplete = false;
+  }
 
-    public navTitle: TemplateRef<any>;
+  public navTitle: TemplateRef<any>;
 }

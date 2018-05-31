@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 const EXAMPLE_1 = `
 <clr-tree-node [(clrIndeterminate)]="indeterminate1">
@@ -110,31 +110,31 @@ const EXAMPLE_4 = `
 `;
 
 @Component({
-    selector: "clr-indeterminate-node-demo",
-    styleUrls: ["../tree-view.demo.scss"],
-    templateUrl: "./indeterminate-node.html"
+  selector: 'clr-indeterminate-node-demo',
+  styleUrls: ['../tree-view.demo.scss'],
+  templateUrl: './indeterminate-node.html',
 })
 export class IndeterminateNodeDemo {
-    example1 = EXAMPLE_1;
-    example2 = EXAMPLE_2;
-    example3 = EXAMPLE_3;
-    example4 = EXAMPLE_4;
+  example1 = EXAMPLE_1;
+  example2 = EXAMPLE_2;
+  example3 = EXAMPLE_3;
+  example4 = EXAMPLE_4;
 
-    selected1: boolean = true;
-    selected2: boolean = false;
-    selected3: boolean = false;
-    selected4: boolean = true;
-    selected5: boolean = true;
-    selected6: boolean = true;
-    selected7: boolean = true;
-    selected8: boolean = true;
-    selected9: boolean = true;
-    selected10: boolean = true;
+  selected1: boolean = true;
+  selected2: boolean = false;
+  selected3: boolean = false;
+  selected4: boolean = true;
+  selected5: boolean = true;
+  selected6: boolean = true;
+  selected7: boolean = true;
+  selected8: boolean = true;
+  selected9: boolean = true;
+  selected10: boolean = true;
 
-    indeterminate1: boolean = true;
-    indeterminate2: boolean = true;
-    indeterminate3: boolean = true;
-    indeterminate4: boolean = true;
+  indeterminate1: boolean = true;
+  indeterminate2: boolean = true;
+  indeterminate3: boolean = true;
+  indeterminate4: boolean = true;
 
-    iSelectedNode: boolean = false;
+  iSelectedNode: boolean = false;
 }

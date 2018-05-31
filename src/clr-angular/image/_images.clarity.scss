@@ -3,33 +3,35 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @mixin icon-background-styles() {
-    background-repeat: no-repeat;
-    background-size: contain;
-    vertical-align: middle;
+  background-repeat: no-repeat;
+  background-size: contain;
+  vertical-align: middle;
 }
 
 @include exports('images.clarity') {
-    %icon-styles {
-        display: inline-block;
-        height: $clr-icon-dimension-sm;
-        width: $clr-icon-dimension-sm;
-        padding: 0;
-        @include icon-background-styles();
+  %icon-styles {
+    display: inline-block;
+    height: $clr-icon-dimension-sm;
+    width: $clr-icon-dimension-sm;
+    padding: 0;
+    @include icon-background-styles();
+  }
+
+  .alert-icon,
+  .clr-icon {
+    @extend %icon-styles;
+
+    &.clr-icon-warning,
+    &.icon-warning {
+      background-image: generateWarningIcon();
     }
 
-    .alert-icon, .clr-icon {
-        @extend %icon-styles;
-
-        &.clr-icon-warning, &.icon-warning {
-            background-image: generateWarningIcon();
-        }
-
-        &.clr-icon-warning-white {
-            background-image: generateWarningIcon($gray-lightest);
-        }
-
-        &.clr-vmw-logo {
-            background-image: generateVMWLogo();
-        }
+    &.clr-icon-warning-white {
+      background-image: generateWarningIcon($gray-lightest);
     }
+
+    &.clr-vmw-logo {
+      background-image: generateVMWLogo();
+    }
+  }
 }

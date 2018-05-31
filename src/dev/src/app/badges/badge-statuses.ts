@@ -3,9 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
-@Component(
-    {selector: "clr-badge-statuses-demo", styleUrls: ["./badges.demo.scss"], templateUrl: "./badge-statuses.demo.html"})
-export class BadgeStatusesDemo {
-}
+@Component({
+  selector: 'clr-badge-statuses-demo',
+  styleUrls: ['./badges.demo.scss'],
+  templateUrl: './badge-statuses.demo.html',
+})
+export class BadgeStatusesDemo {}

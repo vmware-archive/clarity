@@ -14,8 +14,8 @@ $clr-wizard-stepnav-border-size: 0.166667rem;
 $clr-wizard-stepnav-border-color: clr-getColor(3);
 $clr-wizard-stepnav-border-color--active: $clr-green;
 $clr-wizard-footer-height: 3.5rem;
-$clr-wizard-stepnav-active-bgcolor: #D9E4EA; // TODO: consolidate color values into semantic variable names
-$clr-wizard-header-action-color: clr-getTextColor($clr-wizard-main-bgcolor, hoverable);;
+$clr-wizard-stepnav-active-bgcolor: #d9e4ea; // TODO: consolidate color values into semantic variable names
+$clr-wizard-header-action-color: clr-getTextColor($clr-wizard-main-bgcolor, hoverable);
 $clr-wizard-header-action-color--hovered: clr-getTextColor($clr-wizard-sidenav-bgcolor, darkest);
 $clr-wizard-box-shadow: 0 $clr-rem-1px (2 * $clr-rem-1px) (2 * $clr-rem-1px) rgba(0, 0, 0, 0.2);
 $clr-wizard-step-nav-border-color: #e4e4e4;
@@ -33,7 +33,7 @@ $clr-wizard-xl-nav-max-width: 13rem;
 $clr-wizard-xl-dialog-max-height: 75vh;
 
 //TODO: Deprecate the variables below for v0.12
-$clr-wizard-ghost-1: #bbb;    // TODO: consolidate color values into semantic variable names
+$clr-wizard-ghost-1: #bbb; // TODO: consolidate color values into semantic variable names
 $clr-wizard-ghost-2: #9a9a9a; // TODO: consolidate color values into semantic variable names
 $clr-wizard-ghost-wrapper-width: 2rem;
 $clr-wizard-ghost-panel-width: 1rem;

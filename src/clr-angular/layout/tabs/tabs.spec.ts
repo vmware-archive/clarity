@@ -3,16 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, Type, ViewChild} from "@angular/core";
+import { Component, Type, ViewChild } from '@angular/core';
 
-import {addHelpers, TestContext} from "../../data/datagrid/helpers.spec";
+import { addHelpers, TestContext } from '../../data/datagrid/helpers.spec';
 
-import {TabsService} from "./providers/tabs.service";
-import {ClrTab} from "./tab";
-import {ClrTabs} from "./tabs";
+import { TabsService } from './providers/tabs.service';
+import { ClrTab } from './tab';
+import { ClrTabs } from './tabs';
 
 @Component({
-    template: `
+  template: `
     <clr-tabs>
         <clr-tab #first>
             <button clrTabLink>Tab1</button>
@@ -42,16 +42,16 @@ import {ClrTabs} from "./tabs";
             </clr-tab-content>
         </clr-tab>
     </clr-tabs>
-   `
+   `,
 })
 class TestComponent {
-    @ViewChild(ClrTabs) tabsInstance: ClrTabs;
-    @ViewChild("first") firstTab: ClrTab;
-    inOverflow: boolean = false;
+  @ViewChild(ClrTabs) tabsInstance: ClrTabs;
+  @ViewChild('first') firstTab: ClrTab;
+  inOverflow: boolean = false;
 }
 
 @Component({
-    template: `
+  template: `
     <clr-tabs>
         <clr-tab *ngIf="true" #first>
             <button clrTabLink>Tab1</button>
@@ -62,14 +62,14 @@ class TestComponent {
             <clr-tab-content *clrIfActive>Content2</clr-tab-content>
         </clr-tab>
     </clr-tabs>
-   `
+   `,
 })
 class NgIfFirstTest {
-    @ViewChild("first") firstTab: ClrTab;
+  @ViewChild('first') firstTab: ClrTab;
 }
 
 @Component({
-    template: `
+  template: `
     <clr-tabs>
         <clr-tab #first>
             <button clrTabLink>Tab1</button>
@@ -80,14 +80,14 @@ class NgIfFirstTest {
             <clr-tab-content *clrIfActive>Content2</clr-tab-content>
         </clr-tab>
     </clr-tabs>
-   `
+   `,
 })
 class NgIfSecondTest {
-    @ViewChild("first") firstTab: ClrTab;
+  @ViewChild('first') firstTab: ClrTab;
 }
 
 @Component({
-    template: `
+  template: `
     <clr-tabs>
         <clr-tab>
             <button clrTabLink>ParentTab 1</button>
@@ -109,93 +109,93 @@ class NgIfSecondTest {
                 </clr-tab-content>
         </clr-tab>
     </clr-tabs>
-    `
+    `,
 })
 class NestedTabsTest {
-    @ViewChild(ClrTabs) tabsInstance: ClrTabs;
+  @ViewChild(ClrTabs) tabsInstance: ClrTabs;
 }
 
-describe("Tabs", () => {
-    addHelpers();
+describe('Tabs', () => {
+  addHelpers();
 
-    describe("Projection", () => {
-        let context: TestContext<ClrTabs, TestComponent>;
-        let compiled: any;
+  describe('Projection', () => {
+    let context: TestContext<ClrTabs, TestComponent>;
+    let compiled: any;
 
-        beforeEach(function() {
-            context = this.create(ClrTabs, TestComponent);
-            context.fixture.detectChanges();
-            compiled = context.fixture.nativeElement;
-        });
-
-        afterEach(() => {
-            context.fixture.destroy();
-        });
-
-        it("projects all the links and just the active content", () => {
-            expect(compiled.querySelectorAll("button.nav-link").length).toEqual(4);
-            expect(compiled.querySelectorAll("p").length).toEqual(1);
-
-            const content: HTMLElement = compiled.querySelector("p");
-            expect(content.textContent.trim()).toMatch("Content1");
-        });
-
-        it("projects correctly when there's one or more overflow tabs", () => {
-            expect(compiled.querySelector(".tabs-overflow")).toBeNull();
-            expect(compiled.querySelector(".tab4")).toBeDefined();
-            expect(compiled.querySelector(".tabs-overflow .tab4")).toBeNull();
-
-            context.fixture.componentInstance.inOverflow = true;
-            context.fixture.detectChanges();
-            expect(compiled.querySelector(".tabs-overflow")).toBeDefined();
-
-            const toggle: HTMLElement = compiled.querySelector(".dropdown-toggle");
-            toggle.click();
-            context.fixture.detectChanges();
-            expect(compiled.querySelector(".tabs-overflow .tab4")).toBeDefined();
-        });
+    beforeEach(function() {
+      context = this.create(ClrTabs, TestComponent);
+      context.fixture.detectChanges();
+      compiled = context.fixture.nativeElement;
     });
 
-    describe("Nested Projection", () => {
-        let context: TestContext<ClrTabs, NestedTabsTest>;
-        let compiled: any;
-
-        beforeEach(function() {
-            context = this.create(ClrTabs, NestedTabsTest);
-            context.fixture.detectChanges();
-            compiled = context.fixture.nativeElement;
-        });
-
-        afterEach(() => {
-            context.fixture.destroy();
-        });
-
-        it("shouldn't project nested tab links in parent tabs", () => {
-            expect(compiled.querySelectorAll("button.nav-link").length).toEqual(4);
-            const parentLevelNav = compiled.querySelectorAll("ul.nav")[0];
-            const childLevelNav = compiled.querySelectorAll("ul.nav")[1];
-            expect(parentLevelNav.querySelectorAll("button.nav-link").length).toEqual(2);
-            expect(childLevelNav.querySelectorAll("button.nav-link").length).toEqual(2);
-        });
+    afterEach(() => {
+      context.fixture.destroy();
     });
 
-    describe("Default tab", function() {
-        function expectFirstTabActive<T extends TestComponent|NgIfFirstTest|NgIfSecondTest>(testType: Type<T>) {
-            const context: TestContext<ClrTabs, T> = this.create(ClrTabs, testType);
-            const tabsService = context.getClarityProvider(TabsService);
-            expect(tabsService.activeTab).toEqual(context.testComponent.firstTab);
-        }
+    it('projects all the links and just the active content', () => {
+      expect(compiled.querySelectorAll('button.nav-link').length).toEqual(4);
+      expect(compiled.querySelectorAll('p').length).toEqual(1);
 
-        it("sets the first tab as active by default", function() {
-            expectFirstTabActive.call(this, TestComponent);
-        });
-
-        it("doesn't ignore tabs with *ngIf", function() {
-            expectFirstTabActive.call(this, NgIfFirstTest);
-        });
-
-        it("doesn't prioritize tabs with *ngIf", function() {
-            expectFirstTabActive.call(this, NgIfSecondTest);
-        });
+      const content: HTMLElement = compiled.querySelector('p');
+      expect(content.textContent.trim()).toMatch('Content1');
     });
+
+    it("projects correctly when there's one or more overflow tabs", () => {
+      expect(compiled.querySelector('.tabs-overflow')).toBeNull();
+      expect(compiled.querySelector('.tab4')).toBeDefined();
+      expect(compiled.querySelector('.tabs-overflow .tab4')).toBeNull();
+
+      context.fixture.componentInstance.inOverflow = true;
+      context.fixture.detectChanges();
+      expect(compiled.querySelector('.tabs-overflow')).toBeDefined();
+
+      const toggle: HTMLElement = compiled.querySelector('.dropdown-toggle');
+      toggle.click();
+      context.fixture.detectChanges();
+      expect(compiled.querySelector('.tabs-overflow .tab4')).toBeDefined();
+    });
+  });
+
+  describe('Nested Projection', () => {
+    let context: TestContext<ClrTabs, NestedTabsTest>;
+    let compiled: any;
+
+    beforeEach(function() {
+      context = this.create(ClrTabs, NestedTabsTest);
+      context.fixture.detectChanges();
+      compiled = context.fixture.nativeElement;
+    });
+
+    afterEach(() => {
+      context.fixture.destroy();
+    });
+
+    it("shouldn't project nested tab links in parent tabs", () => {
+      expect(compiled.querySelectorAll('button.nav-link').length).toEqual(4);
+      const parentLevelNav = compiled.querySelectorAll('ul.nav')[0];
+      const childLevelNav = compiled.querySelectorAll('ul.nav')[1];
+      expect(parentLevelNav.querySelectorAll('button.nav-link').length).toEqual(2);
+      expect(childLevelNav.querySelectorAll('button.nav-link').length).toEqual(2);
+    });
+  });
+
+  describe('Default tab', function() {
+    function expectFirstTabActive<T extends TestComponent | NgIfFirstTest | NgIfSecondTest>(testType: Type<T>) {
+      const context: TestContext<ClrTabs, T> = this.create(ClrTabs, testType);
+      const tabsService = context.getClarityProvider(TabsService);
+      expect(tabsService.activeTab).toEqual(context.testComponent.firstTab);
+    }
+
+    it('sets the first tab as active by default', function() {
+      expectFirstTabActive.call(this, TestComponent);
+    });
+
+    it("doesn't ignore tabs with *ngIf", function() {
+      expectFirstTabActive.call(this, NgIfFirstTest);
+    });
+
+    it("doesn't prioritize tabs with *ngIf", function() {
+      expectFirstTabActive.call(this, NgIfSecondTest);
+    });
+  });
 });

@@ -3,12 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-tree-view-demo",
-    styleUrls: ["./tree-view.demo.scss"],
-    template: `
+  selector: 'clr-tree-view-demo',
+  styleUrls: ['./tree-view.demo.scss'],
+  template: `
         <h2>New Tree View</h2>
 
         <ul>
@@ -28,7 +28,6 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./tree-node-routing']">Tree Node Routing</a></li>
         </ul>
         <router-outlet></router-outlet>
-    `
+    `,
 })
-export class TreeViewDemo {
-}
+export class TreeViewDemo {}

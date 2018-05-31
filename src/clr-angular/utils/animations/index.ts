@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from "./collapse/index";
-export * from "./fade/index";
-export * from "./fade-slide/index";
-export * from "./slide/index";
+export * from './collapse/index';
+export * from './fade/index';
+export * from './fade-slide/index';
+export * from './slide/index';

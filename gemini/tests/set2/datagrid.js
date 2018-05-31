@@ -7,7 +7,6 @@
 var WAIT_TIME = 10000;
 var WAIT_LOAD_TIME = 2000;
 
-
 // TODO: revisit this in 0.12
 // gemini.suite('datagrid', (child) => {
 //

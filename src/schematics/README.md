@@ -23,6 +23,7 @@ ng add @clr/schematics
 To test locally, install `@angular-devkit/schematics` globally and use the `schematics` command line tool. That tool acts the same as the `generate` command of the Angular CLI, but also has a debug mode.
 
 Check the documentation with
+
 ```bash
 schematics --help
 ```
@@ -39,4 +40,3 @@ To publish, simply do:
 npm run build
 npm publish
 ```
- 

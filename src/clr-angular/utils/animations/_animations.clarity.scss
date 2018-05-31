@@ -15,26 +15,26 @@ $clr-animation-duration: 0.2s;
 $clr-animation-easing: ease-in-out;
 
 @include exports('animations.clarity') {
-    .fade {
-        opacity: 0;
-        transition: opacity $clr-animation-duration $clr-animation-easing;
-        will-change: opacity;
+  .fade {
+    opacity: 0;
+    transition: opacity $clr-animation-duration $clr-animation-easing;
+    will-change: opacity;
 
-        &.in {
-            opacity: 1;
-        }
+    &.in {
+      opacity: 1;
     }
+  }
 
-    .fadeDown {
-        opacity: 0;
-        transform: translate(0, -25%);
-        transition: opacity $clr-animation-duration $clr-animation-easing,
-        transform $clr-animation-duration $clr-animation-easing;
-        will-change: opacity, transform;
+  .fadeDown {
+    opacity: 0;
+    transform: translate(0, -25%);
+    transition: opacity $clr-animation-duration $clr-animation-easing,
+      transform $clr-animation-duration $clr-animation-easing;
+    will-change: opacity, transform;
 
-        &.in {
-            opacity: 1;
-            transform: translate(0, 0);
-        }
+    &.in {
+      opacity: 1;
+      transform: translate(0, 0);
     }
+  }
 }

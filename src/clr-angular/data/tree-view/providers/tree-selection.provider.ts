@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {TreeSelectionService} from "./tree-selection.service";
+import { TreeSelectionService } from './tree-selection.service';
 
 export function clrTreeSelectionProviderFactory(existing: TreeSelectionService) {
-    return existing || new TreeSelectionService();
+  return existing || new TreeSelectionService();
 }

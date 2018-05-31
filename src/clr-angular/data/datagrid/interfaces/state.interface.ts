@@ -3,11 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ClrDatagridComparatorInterface} from "./comparator.interface";
-import {ClrDatagridFilterInterface} from "./filter.interface";
+import { ClrDatagridComparatorInterface } from './comparator.interface';
+import { ClrDatagridFilterInterface } from './filter.interface';
 
 export interface ClrDatagridStateInterface {
-    page?: {from?: number; to?: number; size?: number;};
-    sort?: {by: string|ClrDatagridComparatorInterface<any>; reverse: boolean;};
-    filters?: ({property: string, value: string}|ClrDatagridFilterInterface<any>)[];
+  page?: { from?: number; to?: number; size?: number };
+  sort?: { by: string | ClrDatagridComparatorInterface<any>; reverse: boolean };
+  filters?: ({ property: string; value: string } | ClrDatagridFilterInterface<any>)[];
 }

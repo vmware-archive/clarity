@@ -4,35 +4,35 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ViewChild} from "@angular/core";
+import { Component, ViewChild } from '@angular/core';
 
-import {ClrCodeHighlight} from "@clr/angular";
-import {ClrWizard} from "@clr/angular";
+import { ClrCodeHighlight } from '@clr/angular';
+import { ClrWizard } from '@clr/angular';
 
-@Component({selector: "clr-wizard-alt-cancel", templateUrl: "./wizard-alt-cancel.demo.html"})
+@Component({ selector: 'clr-wizard-alt-cancel', templateUrl: './wizard-alt-cancel.demo.html' })
 export class WizardAltCancelDemo {
-    @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
+  @ViewChild('wizard') wizard: ClrWizard;
+  @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
-    public showCancelConfirm: boolean = false;
+  public showCancelConfirm: boolean = false;
 
-    public pageCustomCancel(): void {
-        this.showCancelConfirm = true;
+  public pageCustomCancel(): void {
+    this.showCancelConfirm = true;
+  }
+
+  public doPageCancel() {
+    this.showCancelConfirm = false;
+    this.wizard.close();
+  }
+
+  public doCancel() {
+    if (confirm('Do you really, really want to close the wizard?')) {
+      this.showCancelConfirm = false;
+      this.wizard.close();
     }
+  }
 
-    public doPageCancel() {
-        this.showCancelConfirm = false;
-        this.wizard.close();
-    }
-
-    public doCancel() {
-        if (confirm("Do you really, really want to close the wizard?")) {
-            this.showCancelConfirm = false;
-            this.wizard.close();
-        }
-    }
-
-    code: string = `
+  code: string = `
 import { Component, ViewChild } from "@angular/core";
 import { Wizard } from "@clr/angular";
 
@@ -62,7 +62,7 @@ export class WizardAltCancelDemo {
 }
 `;
 
-    html: string = `
+  html: string = `
 <clr-wizard #wizard [(clrWizardOpen)]="open" (clrWizardOnCancel)="doCancel()" [clrWizardPreventDefaultCancel]="true">
     <clr-wizard-title>Wizard with alternate cancel</clr-wizard-title>
 

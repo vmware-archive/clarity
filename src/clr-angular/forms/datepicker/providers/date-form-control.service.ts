@@ -4,28 +4,28 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Injectable} from "@angular/core";
-import {Observable, Subject} from "rxjs";
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class DateFormControlService {
-    private _touchedChange: Subject<void> = new Subject<void>();
+  private _touchedChange: Subject<void> = new Subject<void>();
 
-    get touchedChange(): Observable<void> {
-        return this._touchedChange.asObservable();
-    }
+  get touchedChange(): Observable<void> {
+    return this._touchedChange.asObservable();
+  }
 
-    private _dirtyChange: Subject<void> = new Subject<void>();
+  private _dirtyChange: Subject<void> = new Subject<void>();
 
-    get dirtyChange(): Observable<void> {
-        return this._dirtyChange.asObservable();
-    }
+  get dirtyChange(): Observable<void> {
+    return this._dirtyChange.asObservable();
+  }
 
-    markAsTouched(): void {
-        this._touchedChange.next();
-    }
+  markAsTouched(): void {
+    this._touchedChange.next();
+  }
 
-    markAsDirty(): void {
-        this._dirtyChange.next();
-    }
+  markAsDirty(): void {
+    this._dirtyChange.next();
+  }
 }

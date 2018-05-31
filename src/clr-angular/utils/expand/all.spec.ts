@@ -10,15 +10,14 @@
  * over the place because we load them asynchronously.
  */
 
+import IfExpandSpecs from './if-expanded.spec';
+import ExpandSpecs from './providers/expand.spec';
 
-import IfExpandSpecs from "./if-expanded.spec";
-import ExpandSpecs from "./providers/expand.spec";
-
-describe("If Expand Directive", function() {
-    describe("Providers", function() {
-        ExpandSpecs();
-    });
-    describe("Components", function() {
-        IfExpandSpecs();
-    });
+describe('If Expand Directive', function() {
+  describe('Providers', function() {
+    ExpandSpecs();
+  });
+  describe('Components', function() {
+    IfExpandSpecs();
+  });
 });

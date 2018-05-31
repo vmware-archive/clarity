@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from "./data.module";
-export * from "./datagrid/index";
-export * from "./tree-view/index";
-export * from "./stack-view/index";
+export * from './data.module';
+export * from './datagrid/index';
+export * from './tree-view/index';
+export * from './stack-view/index';

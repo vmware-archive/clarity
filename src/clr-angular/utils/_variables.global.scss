@@ -41,7 +41,7 @@ $clr-outline-offset: -5px;
 // App bg color
 $clr-global-app-background: $gray-lighter;
 // App selection color
-$clr-global-selection-color: #D9E4EA;
+$clr-global-selection-color: #d9e4ea;
 $clr-selection-color: $clr-global-selection-color; // $clr-selection-color is deprecated and will be removed.
 // App hover color
 $clr-global-hover-color: $gray-light;
@@ -59,19 +59,19 @@ $clr-baseline-px: 24px !default;
 $clr-baseline-int: $clr-baseline-px / 1px;
 // TODO: this exists because we need to compute 1px equivalents in themes on some values that
 // cannot use calc() in IE11.
-$clr-rem-1px: 1/$clr-baseline-int * 1rem;
-$clr-rem-1px: 1/$clr-baseline-int * 1rem;
+$clr-rem-1px: 1 / $clr-baseline-int * 1rem;
+$clr-rem-1px: 1 / $clr-baseline-int * 1rem;
 
 //BS4 overrides
 $enable-flex: true;
 $grid-gutter-width-base: 1rem;
 // Bootstrap overrides
 $grid-gutter-widths: (
-    xs: $grid-gutter-width-base,
-    sm: $grid-gutter-width-base,
-    md: $grid-gutter-width-base,
-    lg: $grid-gutter-width-base,
-    xl: $grid-gutter-width-base
+  xs: $grid-gutter-width-base,
+  sm: $grid-gutter-width-base,
+  md: $grid-gutter-width-base,
+  lg: $grid-gutter-width-base,
+  xl: $grid-gutter-width-base
 );
 
 // Close button colors

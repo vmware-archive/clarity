@@ -2,241 +2,238 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@mixin generate-calendar-button(
-    $height: $clr-calendar-click-target,
-    $padding: $clr-calendar-btn-padding) {
-    //Dimensions
-    height: $height;
-    min-width: $height;
-    padding: 0 $padding;
-    margin: 0 !important; //Because stupid forms target buttons directly. We really need to refactor forms.
+@mixin generate-calendar-button($height: $clr-calendar-click-target, $padding: $clr-calendar-btn-padding) {
+  //Dimensions
+  height: $height;
+  min-width: $height;
+  padding: 0 $padding;
+  margin: 0 !important; //Because stupid forms target buttons directly. We really need to refactor forms.
 
-    //Other Props
-    color: inherit;
-    border: none;
-    border-radius: $clr-default-borderradius;
-    background: none;
-    cursor: pointer;
-    line-height: $clr-calendar-click-target;
+  //Other Props
+  color: inherit;
+  border: none;
+  border-radius: $clr-default-borderradius;
+  background: none;
+  cursor: pointer;
+  line-height: $clr-calendar-click-target;
 }
 
 @mixin generate-calendar-focus-style() {
-    &:hover,
-    &:focus {
-        background: $clr-calendar-btn-hover-focus-color;
-    }
+  &:hover,
+  &:focus {
+    background: $clr-calendar-btn-hover-focus-color;
+  }
 
-    &:focus {
-        //Only because we have defined a background color for focus above
-        outline: 0;
-    }
+  &:focus {
+    //Only because we have defined a background color for focus above
+    outline: 0;
+  }
 }
 
-
 @include exports('datepicker.clarity') {
-    .date-container {
-        display: inline-flex;
-        align-items: center;
+  .date-container {
+    display: inline-flex;
+    align-items: center;
 
-        //Other Props
-        white-space: nowrap;
+    //Other Props
+    white-space: nowrap;
+  }
+
+  .datepicker-trigger {
+    @include generate-calendar-button();
+
+    .datepicker-trigger-icon {
+      fill: $clr-datepicker-trigger-color;
+
+      &:hover {
+        fill: $clr-datepicker-trigger-hover-color;
+      }
+    }
+  }
+
+  .date-input {
+    flex: 1 1 auto;
+  }
+
+  .datepicker {
+    display: flex;
+    flex-direction: column;
+
+    //Dimensions
+    padding: $clr-calendar-padding;
+    margin-top: $clr-calendar-margin-top;
+    width: $clr-calendar-width;
+    height: $clr-calendar-height;
+
+    //Other Props
+    background: $clr-calendar-background-color;
+    border: 1px solid $clr-calendar-border-color;
+    border-radius: $clr-default-borderradius;
+    box-shadow: 0 $clr-default-borderwidth 0.125rem $clr-popover-box-shadow-color;
+    overflow: hidden;
+    z-index: map-get($clr-layers, dropdown-menu);
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .calendar-switchers,
+  .year-switchers {
+    display: flex;
+  }
+
+  .year-switchers {
+    flex: 0 0 auto;
+    width: $clr-switcher-width;
+    align-self: center;
+  }
+
+  .calendar-table {
+    flex: 1 1 auto;
+
+    //Dimensions
+    width: 100%;
+  }
+
+  .calendar-cell {
+    //Dimensions
+    height: $clr-calendar-click-target;
+    width: $clr-calendar-click-target;
+    min-height: $clr-calendar-click-target;
+    min-width: $clr-calendar-click-target;
+    padding: 0;
+
+    //Other Props
+    text-align: center;
+  }
+
+  .day {
+    display: inline-block;
+  }
+
+  .weekdays {
+    flex: 0 0 $clr-calendar-click-target;
+  }
+
+  .weekday {
+    font-size: $clr-day-font-size;
+    font-weight: 600;
+  }
+
+  .calendar-btn {
+    @include generate-calendar-button();
+    @include generate-calendar-focus-style();
+
+    //Other Props
+    font-size: $clr-calendar-picker-btn-font-size;
+    font-weight: $clr-calendar-picker-btn-font-weight;
+  }
+
+  .day-btn {
+    @include generate-calendar-button($padding: 0);
+    @include generate-calendar-focus-style();
+
+    //Dimensions
+    width: 100%;
+
+    //Other Props
+    color: inherit;
+
+    &.is-today {
+      color: $clr-calendar-today-date-cell-color;
+      font-weight: $clr-calendar-today-date-cell-font-weight;
     }
 
-    .datepicker-trigger {
-        @include generate-calendar-button();
-
-        .datepicker-trigger-icon {
-            fill: $clr-datepicker-trigger-color;
-
-            &:hover {
-                fill: $clr-datepicker-trigger-hover-color;
-            }
-        }
+    &.is-selected {
+      background: $clr-calendar-active-cell-background-color;
+      color: $clr-calendar-active-cell-color;
     }
 
-    .date-input {
-        flex: 1 1 auto;
+    &.is-selected:focus {
+      background: $clr-calendar-active-focus-cell-background-color;
     }
 
-    .datepicker {
-        display: flex;
-        flex-direction: column;
+    &.is-disabled {
+      opacity: 0.25;
 
-        //Dimensions
-        padding: $clr-calendar-padding;
-        margin-top: $clr-calendar-margin-top;
-        width: $clr-calendar-width;
-        height: $clr-calendar-height;
+      &:hover {
+        background: none;
+      }
+    }
+  }
 
-        //Other Props
-        background: $clr-calendar-background-color;
-        border: 1px solid $clr-calendar-border-color;
-        border-radius: $clr-default-borderradius;
-        box-shadow: 0 $clr-default-borderwidth 0.125rem $clr-popover-box-shadow-color;
-        overflow: hidden;
-        z-index: map-get($clr-layers,dropdown-menu);
+  .calendar-pickers {
+    display: flex;
+  }
+
+  .switcher {
+    color: $clr-calendar-btn-color;
+  }
+
+  .monthpicker-trigger,
+  .yearpicker-trigger {
+    //Dimensions
+    min-width: 2rem;
+    max-width: 2.5rem;
+
+    //Other Props
+    color: $clr-calendar-btn-color;
+    text-align: center;
+    @include overflow-ellipsis();
+  }
+
+  .monthpicker,
+  .yearpicker {
+    min-height: $clr-monthpicker-min-height;
+  }
+
+  .monthpicker,
+  .yearpicker,
+  .years {
+    display: flex;
+    flex-direction: column;
+
+    //Other props
+    overflow: hidden;
+  }
+
+  .monthpicker,
+  .years {
+    flex-wrap: wrap;
+  }
+
+  .month,
+  .year {
+    @include generate-calendar-button($clr-calendar-month-cell-height, $clr-calendar-month-cell-padding);
+    @include generate-calendar-focus-style();
+
+    //Dimensions
+    width: $clr-month-year-btn-width;
+
+    //Other Props
+    font-size: $clr-calendar-picker-btn-font-size;
+    font-weight: $clr-calendar-picker-btn-font-weight;
+    outline-offset: -5px; //needed for chrome
+
+    &.is-selected {
+      background: $clr-calendar-active-cell-background-color;
+      color: $clr-calendar-active-cell-color;
     }
 
-    .calendar-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    &.is-selected:focus {
+      background: $clr-calendar-active-focus-cell-background-color;
     }
+  }
 
-    .calendar-switchers,
-    .year-switchers {
-        display: flex;
-    }
+  .month {
+    text-align: center;
+    @include overflow-ellipsis();
+  }
 
-    .year-switchers {
-        flex: 0 0 auto;
-        width: $clr-switcher-width;
-        align-self: center;
-    }
-
-    .calendar-table {
-        flex: 1 1 auto;
-
-        //Dimensions
-        width: 100%;
-    }
-
-    .calendar-cell {
-        //Dimensions
-        height: $clr-calendar-click-target;
-        width: $clr-calendar-click-target;
-        min-height: $clr-calendar-click-target;
-        min-width: $clr-calendar-click-target;
-        padding: 0;
-
-        //Other Props
-        text-align: center;
-    }
-
-    .day {
-        display: inline-block;
-    }
-
-    .weekdays {
-        flex: 0 0 $clr-calendar-click-target;
-    }
-
-    .weekday {
-        font-size: $clr-day-font-size;
-        font-weight: 600;
-    }
-
-    .calendar-btn {
-        @include generate-calendar-button();
-        @include generate-calendar-focus-style();
-
-        //Other Props
-        font-size: $clr-calendar-picker-btn-font-size;
-        font-weight: $clr-calendar-picker-btn-font-weight;
-    }
-
-    .day-btn {
-        @include generate-calendar-button($padding: 0);
-        @include generate-calendar-focus-style();
-
-        //Dimensions
-        width: 100%;
-
-        //Other Props
-        color: inherit;
-
-        &.is-today {
-            color: $clr-calendar-today-date-cell-color;
-            font-weight: $clr-calendar-today-date-cell-font-weight;
-        }
-
-        &.is-selected {
-            background: $clr-calendar-active-cell-background-color;
-            color: $clr-calendar-active-cell-color;
-        }
-
-        &.is-selected:focus {
-            background: $clr-calendar-active-focus-cell-background-color
-        }
-
-        &.is-disabled {
-            opacity: 0.25;
-
-            &:hover {
-                background: none;
-            }
-        }
-    }
-
-    .calendar-pickers {
-        display: flex;
-    }
-
-    .switcher {
-        color: $clr-calendar-btn-color;
-    }
-
-    .monthpicker-trigger,
-    .yearpicker-trigger {
-        //Dimensions
-        min-width: 2rem;
-        max-width: 2.5rem;
-
-        //Other Props
-        color: $clr-calendar-btn-color;
-        text-align: center;
-        @include overflow-ellipsis();
-    }
-
-    .monthpicker,
-    .yearpicker {
-        min-height: $clr-monthpicker-min-height;
-    }
-
-    .monthpicker,
-    .yearpicker,
-    .years {
-        display: flex;
-        flex-direction: column;
-
-        //Other props
-        overflow: hidden;
-    }
-
-    .monthpicker,
-    .years {
-        flex-wrap: wrap;
-    }
-
-    .month,
-    .year {
-        @include generate-calendar-button($clr-calendar-month-cell-height, $clr-calendar-month-cell-padding);
-        @include generate-calendar-focus-style();
-
-        //Dimensions
-        width: $clr-month-year-btn-width;
-
-        //Other Props
-        font-size: $clr-calendar-picker-btn-font-size;
-        font-weight: $clr-calendar-picker-btn-font-weight;
-        outline-offset: -5px; //needed for chrome
-
-        &.is-selected {
-            background: $clr-calendar-active-cell-background-color;
-            color: $clr-calendar-active-cell-color;
-        }
-
-        &.is-selected:focus {
-            background: $clr-calendar-active-focus-cell-background-color
-        }
-    }
-
-    .month {
-        text-align: center;
-        @include overflow-ellipsis();
-    }
-
-    .year {
-        text-align: center;
-    }
+  .year {
+    text-align: center;
+  }
 }

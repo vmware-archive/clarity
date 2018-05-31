@@ -3,9 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
-@Component(
-    {selector: "clr-card-media-block-demo", styleUrls: ["./card.demo.scss"], templateUrl: "./card-media-block.html"})
-export class CardMediaBlockDemo {
-}
+@Component({
+  selector: 'clr-card-media-block-demo',
+  styleUrls: ['./card.demo.scss'],
+  templateUrl: './card-media-block.html',
+})
+export class CardMediaBlockDemo {}

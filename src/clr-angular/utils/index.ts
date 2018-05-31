@@ -4,5 +4,5 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from "./animations/index";
-export * from "./loading/index";
+export * from './animations/index';
+export * from './loading/index';

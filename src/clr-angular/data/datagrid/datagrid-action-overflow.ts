@@ -3,15 +3,15 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, EventEmitter, Input, OnDestroy, Output} from "@angular/core";
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 
-import {Point} from "../../popover/common/popover";
+import { Point } from '../../popover/common/popover';
 
-import {RowActionService} from "./providers/row-action-service";
+import { RowActionService } from './providers/row-action-service';
 
 @Component({
-    selector: "clr-dg-action-overflow",
-    template: `
+  selector: 'clr-dg-action-overflow',
+  template: `
         <button (click)="toggle($event)" type="button" class="datagrid-action-toggle" #anchor>
             <clr-icon shape="ellipsis-vertical"></clr-icon>
         </button>
@@ -21,64 +21,63 @@ import {RowActionService} from "./providers/row-action-service";
                 <ng-content></ng-content>
             </div>
         </ng-template>
-    `
+    `,
 })
-
 export class ClrDatagridActionOverflow implements OnDestroy {
-    public anchorPoint: Point = Point.RIGHT_CENTER;
-    public popoverPoint: Point = Point.LEFT_CENTER;
+  public anchorPoint: Point = Point.RIGHT_CENTER;
+  public popoverPoint: Point = Point.LEFT_CENTER;
 
-    constructor(private rowActionService: RowActionService) {
-        this.rowActionService.register();
+  constructor(private rowActionService: RowActionService) {
+    this.rowActionService.register();
+  }
+
+  ngOnDestroy() {
+    this.rowActionService.unregister();
+  }
+
+  /**
+   * Tracks whether the action overflow menu is open or not
+   */
+  private _open = false;
+  public get open() {
+    return this._open;
+  }
+
+  @Input('clrDgActionOverflowOpen')
+  public set open(open: boolean) {
+    const boolOpen = !!open;
+    if (boolOpen !== this._open) {
+      this._open = boolOpen;
+      this.openChanged.emit(boolOpen);
     }
+  }
 
-    ngOnDestroy() {
-        this.rowActionService.unregister();
-    }
+  @Output('clrDgActionOverflowOpenChange') public openChanged = new EventEmitter<boolean>(false);
 
-    /**
-     * Tracks whether the action overflow menu is open or not
-     */
-    private _open = false;
-    public get open() {
-        return this._open;
-    }
-
-    @Input("clrDgActionOverflowOpen")
-    public set open(open: boolean) {
-        const boolOpen = !!open;
-        if (boolOpen !== this._open) {
-            this._open = boolOpen;
-            this.openChanged.emit(boolOpen);
-        }
-    }
-
-    @Output("clrDgActionOverflowOpenChange") public openChanged = new EventEmitter<boolean>(false);
-
-    /*
+  /*
      * We need to remember the click that opens the menu, to make sure it doesn't close the menu instantly
      * when the event bubbles up the DOM all the way to the document, which we also listen to.
      */
-    private openingEvent: any;
+  private openingEvent: any;
 
-    /**
-     * Shows/hides the action overflow menu
-     */
-    public toggle(event: any) {
-        this.openingEvent = event;
-        this.open = !this.open;
-    }
+  /**
+   * Shows/hides the action overflow menu
+   */
+  public toggle(event: any) {
+    this.openingEvent = event;
+    this.open = !this.open;
+  }
 
-    public close(event: MouseEvent) {
-        /*
+  public close(event: MouseEvent) {
+    /*
          * Because this listener is added synchonously, before the event finishes bubbling up the DOM,
          * we end up firing on the very click that just opened the menu, p
          * otentially closing it immediately every time. So we just ignore it.
          */
-        if (event === this.openingEvent) {
-            delete this.openingEvent;
-            return;
-        }
-        this.open = false;
+    if (event === this.openingEvent) {
+      delete this.openingEvent;
+      return;
     }
+    this.open = false;
+  }
 }

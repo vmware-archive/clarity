@@ -4,17 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Injectable} from "@angular/core";
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class VerticalNavGroupRegistrationService {
-    public navGroupCount: number = 0;
+  public navGroupCount: number = 0;
 
-    registerNavGroup() {
-        this.navGroupCount++;
-    }
+  registerNavGroup() {
+    this.navGroupCount++;
+  }
 
-    unregisterNavGroup(): void {
-        this.navGroupCount--;
-    }
+  unregisterNavGroup(): void {
+    this.navGroupCount--;
+  }
 }

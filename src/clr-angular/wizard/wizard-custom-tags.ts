@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Directive} from "@angular/core";
+import { Directive } from '@angular/core';
 
-@Directive({selector: "clr-wizard-title, clr-wizard-pagetitle"})
+@Directive({ selector: 'clr-wizard-title, clr-wizard-pagetitle' })
 export class ClrWizardCustomTags {
-    // No behavior
-    // The only purpose is to "declare" the tag in Angular
+  // No behavior
+  // The only purpose is to "declare" the tag in Angular
 }

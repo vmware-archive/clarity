@@ -3,11 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-abbey-road-demo",
-    template: `
+  selector: 'clr-abbey-road-demo',
+  template: `
         <!--Credit https://en.wikipedia.org/wiki/Abbey_Road-->
         <h4>Abbey Road (1969)</h4>
         <p>
@@ -20,7 +20,6 @@ import {Component} from "@angular/core";
             A double A-side single from the album, "Something"/"Come Together", 
             released in October, topped the Billboard chart in the US.
         </p>
-    `
+    `,
 })
-export class AbbeyRoad2Demo {
-}
+export class AbbeyRoad2Demo {}

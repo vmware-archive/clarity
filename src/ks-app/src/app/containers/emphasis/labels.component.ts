@@ -4,8 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
-@Component({templateUrl: "./labels.component.html"})
-export class KSLabels {
-}
+@Component({ templateUrl: './labels.component.html' })
+export class KSLabels {}

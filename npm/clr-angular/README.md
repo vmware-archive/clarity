@@ -1,21 +1,25 @@
 ### Installing Clarity Angular
 
-1. Install Clarity Icons package through npm:
+1.  Install Clarity Icons package through npm:
+
     ```
     npm install @clr/icons
     ```
 
-2. Install Clarity UI package through npm:
+2.  Install Clarity UI package through npm:
+
     ```
     npm install @clr/ui
     ```
 
-3. Install the clarity-angular package through npm:
+3.  Install the clarity-angular package through npm:
+
     ```
     npm install @clr/angular
     ```
 
-4. Import the ClarityModule into your Angular application's module.  Your application's main module might look like this:
+4.  Import the ClarityModule into your Angular application's module. Your application's main module might look like this:
+
     ```
     import { NgModule } from '@angular/core';
     import { BrowserModule } from '@angular/platform-browser';

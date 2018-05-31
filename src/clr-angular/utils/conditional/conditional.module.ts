@@ -3,11 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import {CONDITIONAL_DIRECTIVES} from "./index";
+import { CONDITIONAL_DIRECTIVES } from './index';
 
-@NgModule({imports: [CommonModule], declarations: [CONDITIONAL_DIRECTIVES], exports: [CONDITIONAL_DIRECTIVES]})
-export class ClrConditionalModule {
-}
+@NgModule({ imports: [CommonModule], declarations: [CONDITIONAL_DIRECTIVES], exports: [CONDITIONAL_DIRECTIVES] })
+export class ClrConditionalModule {}

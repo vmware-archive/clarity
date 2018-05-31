@@ -26,7 +26,7 @@
         "start": "ng serve dev",
         "clean": "del ./dist",
         "test:aot": "ng build --prod ks-app",
-        "test:format": "node ./scripts/format-check.js",
+        "test:format": "prettier --list-different ./**/*.{js,json,md,ts,scss}",
         "test:lint": "tslint -p . -c tslint.json \"src/**/*.ts\" -e \"src/ks-app/**\" -e \"src/schematics/**\"",
         "test:visual": "./scripts/docker-cdc.js -t",
         "test": "ng test clr-angular",

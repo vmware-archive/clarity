@@ -4,16 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { Component, EventEmitter, Input, Optional, Output, SkipSelf, TemplateRef, ViewChild } from '@angular/core';
 
-import {Component, EventEmitter, Input, Optional, Output, SkipSelf, TemplateRef, ViewChild} from "@angular/core";
-
-import {ClrLoadingState} from "../../utils/loading";
-import {LoadingListener} from "../../utils/loading/loading-listener";
-import {ButtonInGroupService} from "../providers/button-in-group.service";
+import { ClrLoadingState } from '../../utils/loading';
+import { LoadingListener } from '../../utils/loading/loading-listener';
+import { ButtonInGroupService } from '../providers/button-in-group.service';
 
 @Component({
-    selector: "clr-button",
-    template: `
+  selector: 'clr-button',
+  template: `
         <ng-template #buttonProjectedRef>
             <button 
                 [class]="classNames" 
@@ -26,105 +25,109 @@ import {ButtonInGroupService} from "../providers/button-in-group.service";
             </button>
         </ng-template>
     `,
-    providers: [{provide: LoadingListener, useExisting: ClrButton}]
+  providers: [{ provide: LoadingListener, useExisting: ClrButton }],
 })
 export class ClrButton implements LoadingListener {
-    private _enableService: boolean = false;
+  private _enableService: boolean = false;
 
-    @ViewChild("buttonProjectedRef") templateRef: TemplateRef<ClrButton>;
+  @ViewChild('buttonProjectedRef') templateRef: TemplateRef<ClrButton>;
 
-    constructor(@SkipSelf() @Optional() public buttonInGroupService: ButtonInGroupService) {}
+  constructor(
+    @SkipSelf()
+    @Optional()
+    public buttonInGroupService: ButtonInGroupService
+  ) {}
 
-    private _inMenu: boolean = false;
+  private _inMenu: boolean = false;
 
-    get inMenu(): boolean {
-        return this._inMenu;
+  get inMenu(): boolean {
+    return this._inMenu;
+  }
+
+  @Input('clrInMenu')
+  set inMenu(value: boolean) {
+    value = !!value;
+    if (this._inMenu !== value) {
+      this._inMenu = value;
+      // We check if the service flag is enabled
+      // and if the service exists because the service is optional
+      if (this._enableService && this.buttonInGroupService) {
+        this.buttonInGroupService.updateButtonGroup(this);
+      }
     }
+  }
 
-    @Input("clrInMenu")
-    set inMenu(value: boolean) {
-        value = !!value;
-        if (this._inMenu !== value) {
-            this._inMenu = value;
-            // We check if the service flag is enabled
-            // and if the service exists because the service is optional
-            if (this._enableService && this.buttonInGroupService) {
-                this.buttonInGroupService.updateButtonGroup(this);
-            }
-        }
+  private _classNames: string = 'btn';
+
+  get classNames(): string {
+    return this._classNames;
+  }
+
+  @Input('class')
+  set classNames(value: string) {
+    if (typeof value === 'string') {
+      const classNames: string[] = value.split(' ');
+      if (classNames.indexOf('btn') === -1) {
+        classNames.push('btn');
+      }
+      this._classNames = classNames.join(' ');
     }
+  }
 
-    private _classNames: string = "btn";
+  private _name: string = null;
 
-    get classNames(): string {
-        return this._classNames;
+  get name(): string {
+    return this._name;
+  }
+
+  @Input('name')
+  set name(value: string) {
+    if (typeof value === 'string') {
+      this._name = value;
     }
+  }
 
-    @Input("class")
-    set classNames(value: string) {
-        if (typeof value === "string") {
-            const classNames: string[] = value.split(" ");
-            if (classNames.indexOf("btn") === -1) {
-                classNames.push("btn");
-            }
-            this._classNames = classNames.join(" ");
-        }
+  private _type: string = null;
+
+  get type(): string {
+    return this._type;
+  }
+
+  @Input('type')
+  set type(value: string) {
+    if (typeof value === 'string') {
+      this._type = value;
     }
+  }
 
-    private _name: string = null;
+  private _disabled: any = null;
 
-    get name(): string {
-        return this._name;
+  get disabled(): any {
+    return this._disabled;
+  }
+
+  @Input('disabled')
+  set disabled(value: any) {
+    if (value !== null && value !== false) {
+      this._disabled = '';
+    } else {
+      this._disabled = null;
     }
+  }
 
-    @Input("name")
-    set name(value: string) {
-        if (typeof value === "string") {
-            this._name = value;
-        }
-    }
+  public loading: boolean;
 
-    private _type: string = null;
+  loadingStateChange(state: ClrLoadingState): void {
+    this.loading = state === ClrLoadingState.LOADING;
+  }
 
-    get type(): string {
-        return this._type;
-    }
+  @Output('click') _click: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
-    @Input("type")
-    set type(value: string) {
-        if (typeof value === "string") {
-            this._type = value;
-        }
-    }
+  emitClick(): void {
+    this._click.emit(true);
+  }
 
-    private _disabled: any = null;
-
-    get disabled(): any {
-        return this._disabled;
-    }
-
-    @Input("disabled")
-    set disabled(value: any) {
-        if (value !== null && value !== false) {
-            this._disabled = "";
-        } else {
-            this._disabled = null;
-        }
-    }
-
-    public loading: boolean;
-
-    loadingStateChange(state: ClrLoadingState): void {
-        this.loading = state === ClrLoadingState.LOADING;
-    }
-
-    @Output("click") _click: EventEmitter<boolean> = new EventEmitter<boolean>(false);
-
-    emitClick(): void {
-        this._click.emit(true);
-    }
-
-    ngAfterViewInit() {
-        this._enableService = true;
-    }
+  ngAfterViewInit() {
+    this._enableService = true;
+  }
 }

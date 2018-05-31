@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 const EXAMPLE_1 = `
 <clr-tree-node>
@@ -53,11 +53,11 @@ const EXAMPLE_2 = `
 `;
 
 @Component({
-    selector: "clr-tree-node-basic-structure-demo",
-    styleUrls: ["../tree-view.demo.scss"],
-    templateUrl: "./tree-node-basic.html"
+  selector: 'clr-tree-node-basic-structure-demo',
+  styleUrls: ['../tree-view.demo.scss'],
+  templateUrl: './tree-node-basic.html',
 })
 export class TreeNodeBasicStructureDemo {
-    example1 = EXAMPLE_1;
-    example2 = EXAMPLE_2;
+  example1 = EXAMPLE_1;
+  example2 = EXAMPLE_2;
 }

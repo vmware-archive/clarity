@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 export const EXAMPLES = {
-    templateHTML: `
+  templateHTML: `
 <form #employeeForm="ngForm" (ngSubmit)="onSubmit()" [hidden]="submitted">
     <section class="form-block">
         <label>Add Employee Information</label>
@@ -57,5 +57,5 @@ export const EXAMPLES = {
             [disabled]="employeeForm.form.invalid">Add</button>
     </section>
 </form>
-`
+`,
 };

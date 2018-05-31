@@ -4,10 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-
-import {NgModule} from "@angular/core";
-import {ClrSyntaxHighlightModule} from "./syntax-highlight/syntax-highlight.module";
+import { NgModule } from '@angular/core';
+import { ClrSyntaxHighlightModule } from './syntax-highlight/syntax-highlight.module';
 /** @deprecated */
-@NgModule({exports: [ClrSyntaxHighlightModule]})
-export class ClrCodeModule {
-}
+@NgModule({ exports: [ClrSyntaxHighlightModule] })
+export class ClrCodeModule {}

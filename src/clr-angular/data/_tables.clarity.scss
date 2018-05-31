@@ -34,205 +34,212 @@ $clr-table--compact-verticalPadding: ($clr-table--compact-rowHeight - $clr-table
 
 // Mixin for basic table styles to be able to reuse them on non-table elements.
 @mixin basic-table($table, $thead, $tbody, $tr, $th, $td) {
+  #{$table} {
+    border-collapse: separate;
+    border: $clr-table-borderstyle;
+    border-radius: $clr-global-borderradius;
 
-    #{$table} {
-        border-collapse: separate;
-        border: $clr-table-borderstyle;
-        border-radius: $clr-global-borderradius;
+    background-color: $clr-table-bgcolor;
+    color: $clr-table-font-color;
+    margin: 0;
+    margin-top: 1rem;
+    max-width: 100%;
+    width: 100%;
 
-        background-color: $clr-table-bgcolor;
-        color: $clr-table-font-color;
-        margin: 0;
-        margin-top: 1rem;
-        max-width: 100%;
-        width: 100%;
+    #{$th},
+    #{$td} {
+      font-size: $clr-table-fontsize;
+      line-height: $clr-table-lineheight;
+      border-top: $clr-table-borderwidth solid $clr-tablerow-bordercolor;
+      padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
+      text-align: center;
+      vertical-align: top;
 
-        #{$th},
+      &.left {
+        text-align: left;
+
+        &:first-child {
+          padding-left: $clr-table-smallpadding;
+        }
+      }
+    }
+
+    #{$th} {
+      @include clr-getTypePropertiesForDomElement(table_header, (color, font-size, font-weight, letter-spacing));
+
+      background-color: $clr-thead-bgcolor;
+      vertical-align: bottom;
+      border-bottom: $clr-table-borderstyle;
+      border-top: 0 none;
+    }
+
+    #{$tbody} #{$tr}:first-child #{$td} {
+      border-top: 0 none;
+    }
+
+    // in the rare event we have more than one tbody element.
+    #{$tbody} + #{$tbody} {
+      border-top: $clr-table-borderstyle;
+    }
+
+    // Rounded corners on tables are a pain...
+    #{$thead} #{$th} {
+      &:first-child {
+        border-radius: $clr-table-cornercellradius 0 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 $clr-table-cornercellradius 0 0;
+      }
+    }
+
+    #{$tbody}:last-child {
+      #{$tr}:last-child {
         #{$td} {
-            font-size: $clr-table-fontsize;
-            line-height: $clr-table-lineheight;
-            border-top: $clr-table-borderwidth solid $clr-tablerow-bordercolor;
-            padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
-            text-align: center;
-            vertical-align: top;
+          &:first-child {
+            border-radius: 0 0 0 $clr-table-cornercellradius;
+          }
 
-            &.left {
-                text-align: left;
-
-                &:first-child {
-                    padding-left: $clr-table-smallpadding;
-                }
-            }
+          &:last-child {
+            border-radius: 0 0 $clr-table-cornercellradius 0;
+          }
         }
-
-        #{$th} {
-            @include clr-getTypePropertiesForDomElement(table_header, (color, font-size, font-weight, letter-spacing));
-
-            background-color: $clr-thead-bgcolor;
-            vertical-align: bottom;
-            border-bottom: $clr-table-borderstyle;
-            border-top: 0 none;
-        }
-
-        #{$tbody} #{$tr}:first-child #{$td} {
-            border-top: 0 none;
-        }
-
-        // in the rare event we have more than one tbody element.
-        #{$tbody} + #{$tbody} {
-            border-top: $clr-table-borderstyle;
-        }
-
-        // Rounded corners on tables are a pain...
-        #{$thead} #{$th} {
-            &:first-child {
-                border-radius: $clr-table-cornercellradius 0 0 0;
-            }
-
-            &:last-child {
-                border-radius: 0 $clr-table-cornercellradius 0 0;
-            }
-        }
-
-        #{$tbody}:last-child {
-            #{$tr}:last-child {
-                #{$td} {
-                    &:first-child {
-                        border-radius: 0 0 0 $clr-table-cornercellradius;
-                    }
-
-                    &:last-child {
-                        border-radius: 0 0 $clr-table-cornercellradius 0;
-                    }
-                }
-            }
-        }
+      }
     }
+  }
 
-    &#{$table}-compact {
-        #{$th}, #{$td} {
-            padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);
-            padding-bottom: calc(#{$clr-table--compact-verticalPadding});
-        }
+  &#{$table}-compact {
+    #{$th},
+    #{$td} {
+      padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);
+      padding-bottom: calc(#{$clr-table--compact-verticalPadding});
     }
+  }
 }
 
 @include exports('tables.clarity') {
-    @include basic-table(".table", "thead", "tbody", "tr", "th", "td");
+  @include basic-table('.table', 'thead', 'tbody', 'tr', 'th', 'td');
 
-    .table.table-vertical {
-        thead th {
-            border: 0 none;
-            border-radius: 0;
-            display: none;
-        }
-
-        th {
-            border-bottom: 0;
-            border-top: $clr-table-borderwidth solid $clr-table-bordercolor;
-            vertical-align: top;
-        }
-
-        td, th {
-            text-align: left;
-            border-color: $clr-table-bordercolor;
-
-            &:first-child {
-                border-right: $clr-table-borderstyle;
-                background-color: $clr-thead-bgcolor;
-                font-weight: clr-getTypePropertyValueForDomElement(table_header, font-weight);
-            }
-        }
-
-        tbody:first-of-type {
-            tr:first-child {
-                th, td {
-                    border-top: 0 none;
-
-                    &:first-child {
-                        border-radius: $clr-table-cornercellradius 0 0 0;
-                    }
-
-                    &:last-child {
-                        border-radius: 0 $clr-table-cornercellradius 0 0;
-                    }
-                }
-            }
-        }
-
-        tbody:last-child {
-            tr:last-child {
-                th, td {
-                    &:first-child {
-                        border-radius: 0 0 0 $clr-table-cornercellradius;
-                    }
-
-                    &:last-child {
-                        border-radius: 0 0 $clr-table-cornercellradius 0;
-                    }
-                }
-            }
-        }
+  .table.table-vertical {
+    thead th {
+      border: 0 none;
+      border-radius: 0;
+      display: none;
     }
 
-    .table.table-noborder {
-        border-radius: 0;
-        box-shadow: none;
-        background-color: transparent;
-        border: 0;
+    th {
+      border-bottom: 0;
+      border-top: $clr-table-borderwidth solid $clr-table-bordercolor;
+      vertical-align: top;
+    }
 
-        th {
-            background-color: transparent;
-            border-bottom-color: $clr-table-border-color;
-            border-top: 0 none;
+    td,
+    th {
+      text-align: left;
+      border-color: $clr-table-bordercolor;
 
-            &:first-child {
-                // need this for vertical tables...
-                border-right: 0 none;
-            }
-        }
+      &:first-child {
+        border-right: $clr-table-borderstyle;
+        background-color: $clr-thead-bgcolor;
+        font-weight: clr-getTypePropertyValueForDomElement(table_header, font-weight);
+      }
+    }
 
+    tbody:first-of-type {
+      tr:first-child {
+        th,
         td {
-            border-top: 0 none;
+          border-top: 0 none;
 
-            // there's no border so we have to adjust padding to preserve baseline.
-            padding-top: calc(#{$clr-table-topcellpadding} + #{$clr-table-borderwidth});
+          &:first-child {
+            border-radius: $clr-table-cornercellradius 0 0 0;
+          }
 
-            &:first-child {
-                border-right: 0 none;
-            }
+          &:last-child {
+            border-radius: 0 $clr-table-cornercellradius 0 0;
+          }
         }
-
-        thead th {
-            &:first-child, &:last-child {
-                border-radius: 0;
-            }
-        }
-
-        th, td {
-            //  Very specific use of !important to avoid specificity inflation.
-            border-radius: 0 !important;
-
-            &:first-child {
-                padding-left: 0;
-            }
-        }
+      }
     }
 
-    .table.table-compact {
-        th, td {
-            // nudge down to force row to 24px height with border
-            padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);
-            padding-bottom: $clr-table--compact-verticalPadding;
-        }
+    tbody:last-child {
+      tr:last-child {
+        th,
+        td {
+          &:first-child {
+            border-radius: 0 0 0 $clr-table-cornercellradius;
+          }
 
-        &.table-noborder {
-            th, td {
-                // nudge down to force row to 24px height with border
-                padding-top: calc(#{$clr-table--compact-verticalPadding} + 2px);
-                // account for now missing bottom border
-                padding-bottom: calc(#{$clr-table--compact-verticalPadding} + 1px);
-            }
+          &:last-child {
+            border-radius: 0 0 $clr-table-cornercellradius 0;
+          }
         }
+      }
     }
+  }
+
+  .table.table-noborder {
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+    border: 0;
+
+    th {
+      background-color: transparent;
+      border-bottom-color: $clr-table-border-color;
+      border-top: 0 none;
+
+      &:first-child {
+        // need this for vertical tables...
+        border-right: 0 none;
+      }
+    }
+
+    td {
+      border-top: 0 none;
+
+      // there's no border so we have to adjust padding to preserve baseline.
+      padding-top: calc(#{$clr-table-topcellpadding} + #{$clr-table-borderwidth});
+
+      &:first-child {
+        border-right: 0 none;
+      }
+    }
+
+    thead th {
+      &:first-child,
+      &:last-child {
+        border-radius: 0;
+      }
+    }
+
+    th,
+    td {
+      //  Very specific use of !important to avoid specificity inflation.
+      border-radius: 0 !important;
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+
+  .table.table-compact {
+    th,
+    td {
+      // nudge down to force row to 24px height with border
+      padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);
+      padding-bottom: $clr-table--compact-verticalPadding;
+    }
+
+    &.table-noborder {
+      th,
+      td {
+        // nudge down to force row to 24px height with border
+        padding-top: calc(#{$clr-table--compact-verticalPadding} + 2px);
+        // account for now missing bottom border
+        padding-bottom: calc(#{$clr-table--compact-verticalPadding} + 1px);
+      }
+    }
+  }
 }

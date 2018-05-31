@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {ClarityIcons} from "./index";
-import {AllShapes} from "./shapes/all-shapes";
+import { ClarityIcons } from './index';
+import { AllShapes } from './shapes/all-shapes';
 
 ClarityIcons.add(AllShapes);
 
-export {ClarityIcons};
+export { ClarityIcons };

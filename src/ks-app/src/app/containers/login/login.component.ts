@@ -4,35 +4,35 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, OnInit} from "@angular/core";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-@Component({templateUrl: "./login.component.html"})
+@Component({ templateUrl: './login.component.html' })
 export class KSLogin {
-    loginForm: FormGroup;
+  loginForm: FormGroup;
 
-    constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) {}
 
-    ngOnInit() {
-        this.loginForm = this.formBuilder.group({
-            authSource: "admin",
-            username: ["", Validators.required],
-            password: ["", Validators.required],
-            remember: ""
-        });
-    }
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      authSource: 'admin',
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      remember: '',
+    });
+  }
 
-    submitted = false;
+  submitted = false;
 
-    onSubmit() {
-        this.submitted = true;
-        console.log(this.loginForm.value);
-    }
+  onSubmit() {
+    this.submitted = true;
+    console.log(this.loginForm.value);
+  }
 
-    login() {
-        this.submitted = true;
-        console.log(this.loginForm.value);
-        this.loginForm.reset();
-        this.submitted = false;
-    }
+  login() {
+    this.submitted = true;
+    console.log(this.loginForm.value);
+    this.loginForm.reset();
+    this.submitted = false;
+  }
 }

@@ -10,5 +10,5 @@
  */
 
 export const CLARITY_PROVIDERS: any[] = [
-    // TODO: remove this file once we are 100% sure we won"t need global providers.
+  // TODO: remove this file once we are 100% sure we won"t need global providers.
 ];

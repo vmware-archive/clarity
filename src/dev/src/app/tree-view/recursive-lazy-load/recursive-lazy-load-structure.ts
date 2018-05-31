@@ -3,11 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, Input} from "@angular/core";
+import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: "recursive-lazy-load-structure",
-    template: `
+  selector: 'recursive-lazy-load-structure',
+  template: `
         <clr-tree-node [(clrSelected)]="item.selected">
             {{item.name}}
             <ng-template [clrIfExpanded]="item.expanded" *ngFor="let child of item.children">
@@ -19,10 +19,10 @@ import {Component, Input} from "@angular/core";
                 </ng-template>
             </ng-template>
         </clr-tree-node>
-    `
+    `,
 })
 export class RecursiveLazyLoadStructureComponent {
-    @Input() item: any;
-    @Input() selected: boolean = false;
-    slowLoad = true;
+  @Input() item: any;
+  @Input() selected: boolean = false;
+  slowLoad = true;
 }

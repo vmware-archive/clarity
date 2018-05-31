@@ -1,22 +1,17 @@
 {
-    "compilerOptions": {
-        "outDir": "../../dist/clr-icons",
-        "target": "es5",
-        "declaration": true,
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "lib": [ "es2015", "dom" ],
-        "removeComments": false,
-        "noImplicitAny": true
-    },
-    "include": [
-        "typings.d.ts",
-        "**/*.ts"
-    ],
-    "exclude": [
-        "**/*.spec.ts"
-    ]
+  "compilerOptions": {
+    "outDir": "../../dist/clr-icons",
+    "target": "es5",
+    "declaration": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["es2015", "dom"],
+    "removeComments": false,
+    "noImplicitAny": true
+  },
+  "include": ["typings.d.ts", "**/*.ts"],
+  "exclude": ["**/*.spec.ts"]
 }

@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
         <!--Credit https://en.wikipedia.org/wiki/The_Beatles-->
         <h4>Beatles</h4>
         <p>
@@ -19,7 +19,6 @@ import {Component} from "@angular/core";
             years, led by primary songwriters Lennon and McCartney, they came to be perceived as an embodiment of the
             ideals shared by the counterculture of the 1960s.
         </p>
-    `
+    `,
 })
-export class KSBeatlesDemo {
-}
+export class KSBeatlesDemo {}

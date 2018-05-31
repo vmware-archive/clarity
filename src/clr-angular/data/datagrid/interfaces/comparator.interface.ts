@@ -4,5 +4,5 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 export interface ClrDatagridComparatorInterface<T> {
-    compare(a: T, b: T): number;
+  compare(a: T, b: T): number;
 }

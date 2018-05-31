@@ -2,7 +2,8 @@
 PLEASE FILL OUT THE FOLLOWING. WE MAY CLOSE INCOMPLETE ISSUES.
 -->
 
-**Select one ...**  (check one with "x")
+**Select one ...** (check one with "x")
+
 ```
 [ ] bug
 [ ] feature request
@@ -10,19 +11,24 @@ PLEASE FILL OUT THE FOLLOWING. WE MAY CLOSE INCOMPLETE ISSUES.
 ```
 
 ### Expected behavior
+
 <!-- Describe the expected behavior. -->
 
 ### Actual behavior
+
 <!-- Describe the actual behavior and provide a minimal app that demonstrates the issue. Fork one of the Clarity Plunker Templates and recreate the issue. Then submit your link with the issue. -->
 
 ### Reproduction of behavior
+
 <!-- Include a working plunker link reproducing the behavior. -->
+
 <!-- Clarity Plunker Templates -->
+
 * Include a link to the reproduction scenario you created by forking one of the Clarity Plunker Templates:
-<!-- Clarity Version: [Light Theme v11](https://stackblitz.com/edit/clarity-light-theme-v11) -->
-<!-- Clarity Version: [Dark Theme v11](https://stackblitz.com/edit/clarity-dark-theme-v11) -->
-<!-- Clarity Version: [Light Theme v10](https://stackblitz.com/edit/clarity-light-theme-v10) -->
-<!-- Clarity Version: [Dark Theme v10](https://stackblitz.com/edit/clarity-dark-theme-v10) -->
+  <!-- Clarity Version: [Light Theme v11](https://stackblitz.com/edit/clarity-light-theme-v11) -->
+  <!-- Clarity Version: [Dark Theme v11](https://stackblitz.com/edit/clarity-dark-theme-v11) -->
+  <!-- Clarity Version: [Light Theme v10](https://stackblitz.com/edit/clarity-light-theme-v10) -->
+  <!-- Clarity Version: [Dark Theme v10](https://stackblitz.com/edit/clarity-dark-theme-v10) -->
 
 ### Environment details
 
@@ -30,6 +36,6 @@ PLEASE FILL OUT THE FOLLOWING. WE MAY CLOSE INCOMPLETE ISSUES.
 
 * **Clarity version:**
 
-* **OS and version:** 
+* **OS and version:**
 
 * **Browser:** [all | Chrome XX | Firefox XX | IE XX | Safari XX | Mobile Chrome XX | Android X.X Web Browser | iOS XX Safari | iOS XX UIWebView | iOS XX WKWebView ]

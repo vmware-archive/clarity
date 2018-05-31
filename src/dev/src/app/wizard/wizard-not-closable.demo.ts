@@ -3,18 +3,18 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, ViewChild} from "@angular/core";
+import { Component, ViewChild } from '@angular/core';
 
-import {ClrCodeHighlight} from "@clr/angular";
-import {ClrWizard} from "@clr/angular";
+import { ClrCodeHighlight } from '@clr/angular';
+import { ClrWizard } from '@clr/angular';
 
-@Component({selector: "clr-wizard-basic", templateUrl: "./wizard-not-closable.demo.html"})
+@Component({ selector: 'clr-wizard-basic', templateUrl: './wizard-not-closable.demo.html' })
 export class WizardNotClosableDemo {
-    @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
-    open: boolean = false;
+  @ViewChild('wizard') wizard: ClrWizard;
+  @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
+  open: boolean = false;
 
-    code: string = `
+  code: string = `
 import { Component, ViewChild } from "@angular/core";
 import { ClrWizard } from "@clr/angular";
 
@@ -27,7 +27,7 @@ export class WizardNotClosableDemo {
 }
 `;
 
-    html: string = `
+  html: string = `
 <clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardClosable]="false">
     <clr-wizard-title>Wizard, not closable</clr-wizard-title>
 

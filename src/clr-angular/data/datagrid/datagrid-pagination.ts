@@ -3,14 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from "@angular/core";
-import {Subscription} from "rxjs";
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import {Page} from "./providers/page";
+import { Page } from './providers/page';
 
 @Component({
-    selector: "clr-dg-pagination",
-    template: `
+  selector: 'clr-dg-pagination',
+  template: `
         <div class="pagination-description">
             <ng-content></ng-content>
         </div>
@@ -46,131 +46,131 @@ import {Page} from "./providers/page";
             </li>
         </ul>
     `,
-    host: {"[class.pagination]": "true"}
+  host: { '[class.pagination]': 'true' },
 })
 export class ClrDatagridPagination implements OnDestroy, OnInit {
-    constructor(public page: Page) {
-        /*
+  constructor(public page: Page) {
+    /*
          * Default page size is 10.
          * The reason we set it in this constructor and not in the provider itself is because
          * we don't want pagination (page size 0) if this component isn't present in the datagrid.
          */
-        page.size = 10;
-    }
+    page.size = 10;
+  }
 
-    /**********
-     * Subscription to the Page service for page changes.
-     * Note: this only emits after the datagrid is initialized/stabalized and the page changes.
-     */
-    ngOnInit() {
-        this._pageSubscription = this.page.change.subscribe(current => this.currentChanged.emit(current));
-    }
+  /**********
+   * Subscription to the Page service for page changes.
+   * Note: this only emits after the datagrid is initialized/stabalized and the page changes.
+   */
+  ngOnInit() {
+    this._pageSubscription = this.page.change.subscribe(current => this.currentChanged.emit(current));
+  }
 
-    /**
-     * Subscription to the page service changes
-     */
-    private _pageSubscription: Subscription;
-    ngOnDestroy() {
-        this.page.resetPageSize();
-        if (this._pageSubscription) {
-            this._pageSubscription.unsubscribe();
-        }
+  /**
+   * Subscription to the page service changes
+   */
+  private _pageSubscription: Subscription;
+  ngOnDestroy() {
+    this.page.resetPageSize();
+    if (this._pageSubscription) {
+      this._pageSubscription.unsubscribe();
     }
+  }
 
-    /**
-     * Page size
-     */
-    public get pageSize(): number {
-        return this.page.size;
+  /**
+   * Page size
+   */
+  public get pageSize(): number {
+    return this.page.size;
+  }
+  @Input('clrDgPageSize')
+  public set pageSize(size: number) {
+    if (typeof size === 'number') {
+      this.page.size = size;
     }
-    @Input("clrDgPageSize")
-    public set pageSize(size: number) {
-        if (typeof size === "number") {
-            this.page.size = size;
-        }
-    }
+  }
 
-    /**
-     * Total items (needed to guess the last page)
-     */
-    public get totalItems(): number {
-        return this.page.totalItems;
+  /**
+   * Total items (needed to guess the last page)
+   */
+  public get totalItems(): number {
+    return this.page.totalItems;
+  }
+  @Input('clrDgTotalItems')
+  public set totalItems(total: number) {
+    if (typeof total === 'number') {
+      this.page.totalItems = total;
     }
-    @Input("clrDgTotalItems")
-    public set totalItems(total: number) {
-        if (typeof total === "number") {
-            this.page.totalItems = total;
-        }
-    }
+  }
 
-    /**
-     * Last page
-     */
-    public get lastPage(): number {
-        return this.page.last;
+  /**
+   * Last page
+   */
+  public get lastPage(): number {
+    return this.page.last;
+  }
+  @Input('clrDgLastPage')
+  public set lastPage(last: number) {
+    if (typeof last === 'number') {
+      this.page.last = last;
     }
-    @Input("clrDgLastPage")
-    public set lastPage(last: number) {
-        if (typeof last === "number") {
-            this.page.last = last;
-        }
-    }
+  }
 
-    /**
-     * Current page
-     */
-    public get currentPage(): number {
-        return this.page.current;
+  /**
+   * Current page
+   */
+  public get currentPage(): number {
+    return this.page.current;
+  }
+  @Input('clrDgPage')
+  public set currentPage(page: number) {
+    if (typeof page === 'number') {
+      this.page.current = page;
     }
-    @Input("clrDgPage")
-    public set currentPage(page: number) {
-        if (typeof page === "number") {
-            this.page.current = page;
-        }
-    }
+  }
 
-    @Output("clrDgPageChange") currentChanged = new EventEmitter<number>(false);
+  @Output('clrDgPageChange') currentChanged = new EventEmitter<number>(false);
 
-    /**
-     * Moves to the previous page if it exists
-     */
-    public previous() {
-        this.page.previous();
-    }
+  /**
+   * Moves to the previous page if it exists
+   */
+  public previous() {
+    this.page.previous();
+  }
 
-    /**
-     * Moves to the next page if it exists
-     */
-    public next() {
-        this.page.next();
-    }
+  /**
+   * Moves to the next page if it exists
+   */
+  public next() {
+    this.page.next();
+  }
 
-    /**
-     * Index of the first item displayed on the current page, starting at 0
-     */
-    public get firstItem(): number {
-        return this.page.firstItem;
-    }
+  /**
+   * Index of the first item displayed on the current page, starting at 0
+   */
+  public get firstItem(): number {
+    return this.page.firstItem;
+  }
 
-    /**
-     * Index of the last item displayed on the current page, starting at 0
-     */
-    public get lastItem(): number {
-        return this.page.lastItem;
-    }
+  /**
+   * Index of the last item displayed on the current page, starting at 0
+   */
+  public get lastItem(): number {
+    return this.page.lastItem;
+  }
 
-    /**
-     * Conditionally adds page numbers before and after the current page
-     */
-    public get middlePages(): number[] {
-        const middlePages: number[] = [];
-        if (this.page.current > 1) {
-            middlePages.push(this.page.current - 1);
-        }
-        middlePages.push(this.page.current);
-        if (this.page.current < this.page.last) {
-            middlePages.push(this.page.current + 1);
-        }
-        return middlePages;
+  /**
+   * Conditionally adds page numbers before and after the current page
+   */
+  public get middlePages(): number[] {
+    const middlePages: number[] = [];
+    if (this.page.current > 1) {
+      middlePages.push(this.page.current - 1);
     }
+    middlePages.push(this.page.current);
+    if (this.page.current < this.page.last) {
+      middlePages.push(this.page.current + 1);
+    }
+    return middlePages;
+  }
 }

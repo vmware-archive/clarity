@@ -4,6 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from "./checkbox";
-export * from "./checkbox-container";
-export * from "./checkbox.module";
+export * from './checkbox';
+export * from './checkbox-container';
+export * from './checkbox.module';

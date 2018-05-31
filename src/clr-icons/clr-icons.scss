@@ -6,195 +6,195 @@ $clr-icon-color-success: #318700;
 $clr-icon-color-danger: #e62700;
 $clr-icon-color-warning: #fac400;
 $clr-icon-color-error: #e62700;
-$clr-icon-color-info: #007CBB;
-$clr-icon-color-inverse: #FFFFFF;
-$clr-icon-color-highlight: #007CBB;
+$clr-icon-color-info: #007cbb;
+$clr-icon-color-inverse: #ffffff;
+$clr-icon-color-highlight: #007cbb;
 @mixin setIconColor($clr-icon-color) {
-    fill: $clr-icon-color;
-    .transparent-fill-stroke {
-        stroke: $clr-icon-color;
-    }
+  fill: $clr-icon-color;
+  .transparent-fill-stroke {
+    stroke: $clr-icon-color;
+  }
 }
 
 @mixin rotateSVGIcon($deg) {
-    svg {
-        transform: rotate($deg);
-    }
+  svg {
+    transform: rotate($deg);
+  }
 }
 
 @mixin flipSVGIcon($direction) {
-    @if $direction == 'horizontal' {
-        svg {
-            transform: scale(-1) rotateX(180deg);
-        }
-    } @else if $direction == 'vertical' {
-        svg {
-            transform: scale(-1) rotateY(180deg);
-        }
+  @if $direction == 'horizontal' {
+    svg {
+      transform: scale(-1) rotateX(180deg);
     }
+  } @else if $direction == 'vertical' {
+    svg {
+      transform: scale(-1) rotateY(180deg);
+    }
+  }
 }
 
 clr-icon {
-    display: inline-block;
-    margin: 0;
-    height: $clr-icon-size;
-    width: $clr-icon-size;
-    vertical-align: middle;
-    @include setIconColor(currentColor);
-    &.is-green,
-    &.is-success {
-        @include setIconColor($clr-icon-color-success);
+  display: inline-block;
+  margin: 0;
+  height: $clr-icon-size;
+  width: $clr-icon-size;
+  vertical-align: middle;
+  @include setIconColor(currentColor);
+  &.is-green,
+  &.is-success {
+    @include setIconColor($clr-icon-color-success);
+  }
+  &.is-red,
+  &.is-danger,
+  &.is-error {
+    @include setIconColor($clr-icon-color-error);
+  }
+  &.is-warning {
+    @include setIconColor($clr-icon-color-warning);
+  }
+  &.is-blue,
+  &.is-info {
+    @include setIconColor($clr-icon-color-info);
+  }
+  &.is-white,
+  &.is-inverse {
+    @include setIconColor($clr-icon-color-inverse);
+  }
+  &.is-highlight {
+    @include setIconColor($clr-icon-color-highlight);
+  }
+  &[shape$=' up'],
+  &[dir='up'] {
+    @include rotateSVGIcon(0deg);
+  }
+  &[shape$=' down'],
+  &[dir='down'] {
+    @include rotateSVGIcon(180deg);
+  }
+  &[shape$=' right'],
+  &[dir='right'] {
+    @include rotateSVGIcon(90deg);
+  }
+  &[shape$=' left'],
+  &[dir='left'] {
+    @include rotateSVGIcon(270deg);
+  }
+  &[flip='horizontal'] {
+    @include flipSVGIcon('horizontal');
+  }
+  &[flip='vertical'] {
+    @include flipSVGIcon('vertical');
+  }
+  .clr-i-badge {
+    @include setIconColor($clr-icon-color-danger);
+  }
+  & > * {
+    height: 100%;
+    width: 100%;
+    display: block;
+    pointer-events: none;
+  }
+  & > svg {
+    transition: inherit;
+    title {
+      display: none;
     }
-    &.is-red,
-    &.is-danger,
-    &.is-error {
-        @include setIconColor($clr-icon-color-error);
+  }
+  .clr-i-solid,
+  .clr-i-solid--badged,
+  .clr-i-solid--alerted {
+    display: none;
+  }
+  .clr-i-outline--alerted,
+  .clr-i-outline--badged {
+    &:not(.clr-i-outline) {
+      display: none;
     }
-    &.is-warning {
-        @include setIconColor($clr-icon-color-warning);
+  }
+  &[class*='has-alert'] .can-alert {
+    .clr-i-outline--alerted {
+      display: block;
     }
-    &.is-blue,
-    &.is-info {
-        @include setIconColor($clr-icon-color-info);
+    .clr-i-outline:not(.clr-i-outline--alerted) {
+      display: none;
     }
-    &.is-white,
-    &.is-inverse {
-        @include setIconColor($clr-icon-color-inverse);
-    }
-    &.is-highlight {
-        @include setIconColor($clr-icon-color-highlight);
-    }
-    &[shape$=" up"],
-    &[dir="up"] {
-        @include rotateSVGIcon(0deg);
-    }
-    &[shape$=" down"],
-    &[dir="down"] {
-        @include rotateSVGIcon(180deg);
-    }
-    &[shape$=" right"],
-    &[dir="right"] {
-        @include rotateSVGIcon(90deg);
-    }
-    &[shape$=" left"],
-    &[dir="left"] {
-        @include rotateSVGIcon(270deg);
-    }
-    &[flip="horizontal"] {
-        @include flipSVGIcon('horizontal');
-    }
-    &[flip="vertical"] {
-        @include flipSVGIcon('vertical');
-    }
-    .clr-i-badge {
-        @include setIconColor($clr-icon-color-danger);
-    }
-    & > * {
-        height: 100%;
-        width: 100%;
-        display: block;
-        pointer-events: none;
-    }
-    & > svg {
-        transition: inherit;
-        title {
-            display: none;
-        }
-    }
-    .clr-i-solid,
-    .clr-i-solid--badged,
-    .clr-i-solid--alerted {
-        display: none;
-    }
-    .clr-i-outline--alerted,
+  }
+  &[class*='has-badge'] .can-badge {
     .clr-i-outline--badged {
-        &:not(.clr-i-outline) {
-            display: none;
-        }
+      display: block;
     }
-    &[class*="has-alert"] .can-alert {
-        .clr-i-outline--alerted {
-            display: block;
-        }
-        .clr-i-outline:not(.clr-i-outline--alerted) {
-            display: none;
-        }
+    .clr-i-outline:not(.clr-i-outline--badged) {
+      display: none;
     }
-    &[class*="has-badge"] .can-badge {
-        .clr-i-outline--badged {
-            display: block;
-        }
-        .clr-i-outline:not(.clr-i-outline--badged) {
-            display: none;
-        }
+  }
+  &.is-solid .has-solid {
+    .clr-i-solid {
+      display: block;
     }
-    &.is-solid .has-solid {
-        .clr-i-solid {
-            display: block;
-        }
-        .clr-i-outline,
-        .clr-i-outline--badged {
-            display: none;
-        }
-        .clr-i-solid--alerted,
-        .clr-i-solid--badged {
-            &:not(.clr-i-solid) {
-                display: none;
-            }
-        }
+    .clr-i-outline,
+    .clr-i-outline--badged {
+      display: none;
     }
-    &.is-solid[class*="has-badge"] .can-badge.has-solid {
-        .clr-i-solid--badged {
-            display: block;
-        }
-        .clr-i-outline,
-        .clr-i-outline--badged,
-        .clr-i-solid:not(.clr-i-solid--badged) {
-            display: none;
-        }
+    .clr-i-solid--alerted,
+    .clr-i-solid--badged {
+      &:not(.clr-i-solid) {
+        display: none;
+      }
     }
-    &.is-solid[class*="has-alert"] .can-alert.has-solid {
-        .clr-i-solid--alerted {
-            display: block;
-        }
-        .clr-i-outline,
-        .clr-i-outline--alerted,
-        .clr-i-solid:not(.clr-i-solid--alerted) {
-            display: none;
-        }
+  }
+  &.is-solid[class*='has-badge'] .can-badge.has-solid {
+    .clr-i-solid--badged {
+      display: block;
     }
-    &.has-badge--success {
-        .clr-i-badge {
-            @include setIconColor($clr-icon-color-success);
-        }
+    .clr-i-outline,
+    .clr-i-outline--badged,
+    .clr-i-solid:not(.clr-i-solid--badged) {
+      display: none;
     }
-    &.has-badge--error {
-        .clr-i-badge {
-            @include setIconColor($clr-icon-color-error);
-        }
+  }
+  &.is-solid[class*='has-alert'] .can-alert.has-solid {
+    .clr-i-solid--alerted {
+      display: block;
     }
-    &.has-badge--info {
-        .clr-i-badge {
-            @include setIconColor($clr-icon-color-info);
-        }
+    .clr-i-outline,
+    .clr-i-outline--alerted,
+    .clr-i-solid:not(.clr-i-solid--alerted) {
+      display: none;
     }
-    &.has-alert {
-        .clr-i-alert {
-            @include setIconColor($clr-icon-color-warning);
-        }
+  }
+  &.has-badge--success {
+    .clr-i-badge {
+      @include setIconColor($clr-icon-color-success);
     }
-    .is-off-screen {
-        position: fixed !important;
-        border: none !important;
-        height: 1px !important;
-        width: 1px !important;
+  }
+  &.has-badge--error {
+    .clr-i-badge {
+      @include setIconColor($clr-icon-color-error);
+    }
+  }
+  &.has-badge--info {
+    .clr-i-badge {
+      @include setIconColor($clr-icon-color-info);
+    }
+  }
+  &.has-alert {
+    .clr-i-alert {
+      @include setIconColor($clr-icon-color-warning);
+    }
+  }
+  .is-off-screen {
+    position: fixed !important;
+    border: none !important;
+    height: 1px !important;
+    width: 1px !important;
 
-        left: 0px !important;
-        top: -1px !important;
+    left: 0px !important;
+    top: -1px !important;
 
-        overflow: hidden !important;
+    overflow: hidden !important;
 
-        padding: 0 !important;
-        margin: 0 0 -1px 0 !important;
-    }
+    padding: 0 !important;
+    margin: 0 0 -1px 0 !important;
+  }
 }

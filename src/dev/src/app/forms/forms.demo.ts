@@ -3,12 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-forms-demo",
-    styles: [`.list-nav { columns: 3; margin-bottom: 20px; }`],
-    template: `
+  selector: 'clr-forms-demo',
+  styles: [`.list-nav { columns: 3; margin-bottom: 20px; }`],
+  template: `
         <h2>Forms</h2>
         <ul class="list-nav">
             <li><a [routerLink]="['./layout-vertical']">Layout Vertical</a></li>
@@ -27,7 +27,6 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./select']">Select</a></li>
         </ul>
         <router-outlet></router-outlet>
-    `
+    `,
 })
-export class FormsDemo {
-}
+export class FormsDemo {}

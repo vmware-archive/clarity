@@ -3,894 +3,911 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @include exports('datagrid.clarity') {
-    @include basic-table(".datagrid", ".datagrid-head", ".datagrid-body",
-        ".datagrid-row", ".datagrid-column", ".datagrid-cell");
+  @include basic-table(
+    '.datagrid',
+    '.datagrid-head',
+    '.datagrid-body',
+    '.datagrid-row',
+    '.datagrid-column',
+    '.datagrid-cell'
+  );
 
-    $clr-datagrid-icon-size: 0.583333rem;
-    $clr-datagrid-action-arrow-size: 0.25rem;
-    $clr-datagrid-fixed-column-size: (2 * $clr-table-cellpadding) + $clr-table-lineheight;
-    $clr-datagrid-column-handle-tracker-top: -0.5rem;
-    $clr-datagrid-column-separator-expandby: 0.5rem;
-    $clr-datagrid-compact-outline-offset: -0.1666667rem;
+  $clr-datagrid-icon-size: 0.583333rem;
+  $clr-datagrid-action-arrow-size: 0.25rem;
+  $clr-datagrid-fixed-column-size: (2 * $clr-table-cellpadding) + $clr-table-lineheight;
+  $clr-datagrid-column-handle-tracker-top: -0.5rem;
+  $clr-datagrid-column-separator-expandby: 0.5rem;
+  $clr-datagrid-compact-outline-offset: -0.1666667rem;
 
-    .datagrid-host {
-        display: flex;
-        flex-flow: column nowrap;
-        padding-top: 0.5rem; //TODO: Remove. Temp fix. Matt to follow new UX recommendations with pinned columns
+  .datagrid-host {
+    display: flex;
+    flex-flow: column nowrap;
+    padding-top: 0.5rem; //TODO: Remove. Temp fix. Matt to follow new UX recommendations with pinned columns
+  }
+
+  .datagrid-overlay-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex: 0 auto; // Same as flex: initial. It sizes the item based on width/height properties or its content.
+    width: 100%;
+    min-height: 100%; // Must be min to fix Safari bug: height: 100% won't fill flex parent. http://bit.ly/2qAPkha
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    .datagrid-spinner {
+      flex: 0 0 100%;
+      margin-left: -100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $clr-datagrid-loading-background;
+    }
+  }
+  .datagrid-scroll-wrapper {
+    display: flex;
+    flex-direction: row;
+    min-width: 100%;
+  }
+  .datagrid {
+    display: flex;
+    flex-flow: column nowrap;
+    // IE & Firefox needs this
+    min-height: 1px;
+    margin-top: 0.5rem; //TODO: Remove. Temp fix. Matt to follow new UX recommendations with pinned columns
+  }
+  .datagrid-head,
+  .datagrid-body,
+  .datagrid-row,
+  .datagrid-column,
+  .datagrid-cell,
+  .datagrid-fixed-column {
+    display: block;
+  }
+  .datagrid-table-wrapper {
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    // IE & Firefox needs this
+    min-height: 1px;
+  }
+  .datagrid-body {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    display: flex;
+    flex-direction: column;
+
+    //TODO: Use the spinner min height mixin. The mixin needs to be fixed before it can be used.
+    min-height: 3rem;
+  }
+  .datagrid-head {
+    flex: 0 0 auto;
+  }
+  .datagrid-row-flex {
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  .datagrid-column {
+    display: flex;
+    flex: 1 1 auto;
+    &.datagrid-fixed-width {
+      flex: 0 0 auto;
     }
 
-    .datagrid-overlay-wrapper {
-        display: flex;
-        flex-direction: row;
-        flex: 0 auto; // Same as flex: initial. It sizes the item based on width/height properties or its content.
-        width: 100%;
-        min-height: 100%; // Must be min to fix Safari bug: height: 100% won't fill flex parent. http://bit.ly/2qAPkha
-        overflow-x: auto;
-        overflow-y: hidden;
+    &--hidden {
+      display: none;
+    }
+  }
 
-        .datagrid-spinner {
-            flex: 0 0 100%;
-            margin-left: -100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: $clr-datagrid-loading-background;
-        }
+  .datagrid-cell {
+    flex: 1 1 auto;
+    &.datagrid-fixed-width {
+      flex: 0 0 auto;
+    }
 
+    &--hidden {
+      display: none;
     }
-    .datagrid-scroll-wrapper {
-        display: flex;
-        flex-direction: row;
-        min-width: 100%;
+  }
+
+  // Class only applied temporarily when preforming internal operations,
+  // to improve rendering performance.
+  .datagrid-no-layout {
+    display: block;
+
+    .datagrid-body,
+    .datagrid-row,
+    .datagrid-cell {
+      display: none;
     }
-    .datagrid {
-        display: flex;
-        flex-flow: column nowrap;
-        // IE & Firefox needs this
-        min-height: 1px;
-        margin-top: 0.5rem; //TODO: Remove. Temp fix. Matt to follow new UX recommendations with pinned columns
+
+    .datagrid-head,
+    .datagrid-head .datagrid-row,
+    .datagrid-column {
+      display: block;
     }
-    .datagrid-head, .datagrid-body, .datagrid-row, .datagrid-column, .datagrid-cell, .datagrid-fixed-column {
-        display: block;
-    }
-    .datagrid-table-wrapper {
-        flex: 1 1 auto;
-        display: flex;
-        flex-flow: column nowrap;
-        // IE & Firefox needs this
-        min-height: 1px;
-    }
+  }
+
+  // Class only applied temporarily when computing columns width
+  .datagrid-computing-columns-width {
+    display: block;
+
     .datagrid-body {
-        flex: 1 1 auto;
-        overflow-y: auto;
-        -ms-overflow-style: -ms-autohiding-scrollbar;
-
-        display: flex;
-        flex-direction: column;
-
-        //TODO: Use the spinner min height mixin. The mixin needs to be fixed before it can be used.
-        min-height: 3rem;
+      display: table;
+      table-layout: auto;
     }
     .datagrid-head {
-        flex: 0 0 auto;
+      display: table-header-group;
     }
-    .datagrid-row-flex {
-        flex: 1 1 auto;
-        display: flex;
-        flex-flow: row nowrap;
+    .datagrid-row {
+      display: table-row-group;
     }
-    .datagrid-column {
-        display: flex;
-        flex: 1 1 auto;
-        &.datagrid-fixed-width {
-            flex: 0 0 auto;
-        }
-
-        &--hidden {
-            display: none;
-        }
+    .datagrid-head .datagrid-row {
+      display: table-row;
     }
-
+    .datagrid-row-master {
+      display: table-row;
+    }
+    .datagrid-row-detail {
+      display: none;
+    }
+    .datagrid-column,
     .datagrid-cell {
-        flex: 1 1 auto;
-        &.datagrid-fixed-width {
-            flex: 0 0 auto;
-        }
-
-        &--hidden {
-            display: none;
-        }
+      display: table-cell;
     }
-
-    // Class only applied temporarily when preforming internal operations,
-    // to improve rendering performance.
-    .datagrid-no-layout {
-        display: block;
-
-        .datagrid-body, .datagrid-row, .datagrid-cell {
-            display: none;
-        }
-
-        .datagrid-head, .datagrid-head .datagrid-row, .datagrid-column {
-            display: block;
-        }
+    .datagrid-column-separator {
+      display: none;
     }
-
-    // Class only applied temporarily when computing columns width
-    .datagrid-computing-columns-width {
-        display: block;
-
-        .datagrid-body {
-            display: table;
-            table-layout: auto;
-        }
-        .datagrid-head {
-            display: table-header-group;
-        }
-        .datagrid-row {
-            display: table-row-group;
-        }
-        .datagrid-head .datagrid-row {
-            display: table-row;
-        }
-        .datagrid-row-master {
-            display: table-row;
-        }
-        .datagrid-row-detail {
-            display: none;
-        }
-        .datagrid-column, .datagrid-cell {
-            display: table-cell;
-        }
-        .datagrid-column-separator {
-            display: none;
-        }
-        .datagrid-placeholder-container {
-            display: none;
-        }
-        .datagrid-fixed-column {
-            display: none;
-        }
-    }
-
-    // TODO: the nesting in this SCSS is a bit extremes. is it necessary?
-    .datagrid {
-        flex: 1 1 auto;
-        width: auto; // override the basic table's style of width: 100%
-        max-width: none; // override the basic table's style of max-width: 100%
-
-        .datagrid-body {
-            .datagrid-row:last-child {
-                .datagrid-cell {
-                    &:first-child {
-                        border-radius: 0;
-                    }
-                    &:last-child {
-                        border-radius: 0;
-                    }
-                }
-            }
-        }
-
-        .datagrid-column, .datagrid-cell {
-            text-align: left;
-            min-width: 4rem;
-            &.datagrid-fixed-column {
-                flex: 0 0 $clr-datagrid-fixed-column-size;
-                // IE10 needs this
-                max-width: $clr-datagrid-fixed-column-size;
-                min-width: $clr-datagrid-fixed-column-size;
-            }
-        }
-
-        .datagrid-head {
-            background-color: $clr-thead-bgcolor;
-            border-bottom: (2 * $clr-table-borderwidth) solid $clr-table-header-border-bottom-color;
-
-            .datagrid-row-actions {
-                @extend .datagrid-column;
-            }
-        }
-
-        .datagrid-column {
-            vertical-align: top;
-            background: none;
-            border-bottom: 0;
-
-            .datagrid-column-title {
-                @include clr-no-styles-button();
-                color: $clr-table-font-color;
-                text-align: left;
-                flex: 1 1 auto;
-                align-self: flex-start;
-            }
-
-            button.datagrid-column-title:hover {
-                text-decoration: underline;
-                cursor: pointer;
-            }
-
-            .datagrid-column-separator {
-                $dg-padding-less-border: 0.5rem - $clr-rem-1px;
-                position: relative;
-                left: 0.5rem;
-                flex: 0 0 auto;
-                width: $clr-default-borderwidth;
-                order: 100;
-                margin-left: auto;
-
-                &::after {
-                    content: "";
-                    position: absolute;
-                    height: calc(100% + #{$clr-datagrid-column-separator-expandby} - #{$clr-default-borderwidth});
-                    width: $clr-rem-1px;
-                    top: calc(-0.5 * #{$clr-datagrid-column-separator-expandby} + 1px);
-                    left: 0;
-                    background-color: $clr-table-border-color;
-                }
-
-                .datagrid-column-handle {
-                    @include clr-no-styles-button();
-                    display: block;
-                    position: absolute;
-                    width: calc(0.5rem + 1px);
-                    right: -0.25rem;
-                    top: -0.25rem;
-                    cursor: col-resize;
-                    height: calc(100% + 0.5rem - #{$clr-default-borderwidth});
-                }
-                .datagrid-column-handle-tracker {
-                    position: absolute;
-                    right: 0;
-                    top: $clr-datagrid-column-handle-tracker-top;
-                    display: none;
-                    width: 0;
-                    height: 100vh;
-                    border-right: $clr-default-borderwidth dotted $clr-action-blue-lighter;
-                }
-                .exceeded-max {
-                    border-right: $clr-default-borderwidth dotted rgba($clr-red-light-midtone, 0.3);
-                }
-            }
-
-            &:last-child {
-                .datagrid-column-separator {
-                    display: none;
-                }
-            }
-
-            .datagrid-column-flex {
-                display: flex;
-                flex: 1 1 auto;
-            }
-
-            clr-dg-filter,
-            clr-dg-string-filter {
-                display: flex;
-                order: 99;
-                margin-left: auto;
-            }
-
-            &.asc, &.desc {
-                font-weight: 600;
-
-                .datagrid-column-flex::after {
-                    content: "";
-                    display: flex;
-                    flex: 0 0 auto;
-                    vertical-align: middle;
-                    width: $clr-datagrid-icon-size;
-                    height: $clr-datagrid-icon-size;
-                    margin-left: 0.25rem;
-                    background-repeat: no-repeat;
-                    background-size: contain;
-                }
-            }
-
-            &.asc {
-                .datagrid-column-flex::after {
-                    background-image: generateUpArrowIcon($action-blues-dark-midtone);
-                }
-            }
-            &.desc {
-                .datagrid-column-flex::after {
-                    background-image: generateDownArrowIcon($action-blues-dark-midtone);
-                }
-            }
-
-            .datagrid-filter-toggle {
-                @include clr-no-styles-button();
-                cursor: pointer;
-                float: right;
-                vertical-align: middle;
-                width: $clr-datagrid-icon-size;
-                height: $clr-datagrid-icon-size;
-                margin: 0 0.25rem;
-                background-repeat: no-repeat;
-                background-size: contain;
-                background-image: generateFilterIcon($gray-dark-midtone);
-
-                &:hover {
-                    background-image: generateFilterIcon($action-blues-dark-midtone);
-                }
-
-                &.datagrid-filter-open {
-                    background-image: generateFilterIcon($action-blues-dark-midtone);
-                }
-
-                &.datagrid-filtered {
-                    background-image: generateFilterIcon($action-blues-dark-midtone),
-                    generateCircleIcon($action-blues-dark-midtone);
-                }
-
-            }
-
-            .datagrid-filter {
-                position: absolute;
-                top: 100%;
-                right: 0;
-                margin-top: 0.2rem;
-                background: $clr-datagrid-popover-bg-color;
-                padding: 0.75rem;
-                border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
-                box-shadow: 0 1px 3px rgba($gray-dark, 0.25);
-                border-radius: $clr-global-borderradius;
-                font-weight: normal;
-                z-index: map-get($clr-layers, dropdown-menu);
-
-                .datagrid-filter-close-wrapper {
-                    text-align: right;
-
-                    .close {
-                        float: none;
-                    }
-                }
-
-                // FIXME: remove
-                .datagrid-filter-apply {
-                    margin-bottom: 0;
-                }
-            }
-        }
-
-        .datagrid-select {
-            .radio label,
-            .checkbox label {
-                display: block;
-                // These are the properties in default checkbox styles, so we
-                // have to override these rather than stuff like width and height.
-                min-height: $clr-table-lineheight - $clr-rem-1px;
-                padding-left: $clr-table-lineheight;
-
-                &::before, &::after {
-                    top: 0;
-                }
-            }
-        }
-
-        .datagrid-foot-select.checkbox {
-            display: block;
-            line-height: inherit;
-            flex: 0 0 (1.5rem - (2 * $clr-rem-1px)); // can't use calc() in flex. #thanksIE!
-            margin-right: 0.083333rem; // Space for the instance when a hideable column toggle is next to it.
-
-            label {
-                color: unset;
-                cursor: default;
-                opacity: 1;
-                line-height: inherit;
-            }
-
-            input[type="checkbox"] + label {
-                &::before, &::after {
-                    top: 0.333333rem;
-                }
-
-                &::after {
-                    border-left-color: $clr-white;
-                    border-bottom-color: $clr-white;
-                }
-            }
-        }
-
-        .datagrid-row-actions {
-            padding: 0;
-
-            clr-icon {
-                height: $clr-table-lineheight;
-                vertical-align: bottom;
-            }
-        }
-
-        .datagrid-signpost-trigger .signpost {
-            margin: -0.3rem 0;
-            height: 1.03rem;
-            .signpost-trigger {
-                height: inherit;
-                line-height: 1rem;
-            }
-        }
-
-        $horizontalPadding: ($clr-datagrid-fixed-column-size - 1.25rem) / 2;
-
-        .datagrid-expandable-caret {
-            padding: calc(0.125rem - #{$clr-default-borderwidth}) $horizontalPadding 0.125rem;
-            text-align: center;
-
-            .datagrid-expandable-caret-button {
-                @include clr-no-styles-button();
-                cursor: pointer;
-                height: 1.25rem;
-                width: 1.25rem;
-            }
-
-            .datagrid-expandable-caret-icon {
-                color: $gray-dark;
-                // nudge down for vertical alignment...
-                margin-top: 0.125rem;
-                svg {
-                    transition: transform 0.2s ease-in-out;
-                }
-            }
-
-            .spinner {
-                margin-top: 0.25rem;
-            }
-
-            &.datagrid-column {
-                padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
-            }
-        }
-
-        .datagrid-body .datagrid-row {
-            border-top: $clr-table-borderwidth solid $clr-table-border-color;
-            flex-shrink: 0;
-
-            &:first-child {
-                border-top: 0;
-            }
-
-            &:hover {
-                background-color: $clr-datagrid-row-hover;
-            }
-
-            &.datagrid-selected {
-                color: $clr-datagrid-row-selected;
-                background-color: $clr-global-selection-color;
-            }
-
-            .datagrid-action-overflow {
-                position: absolute;
-                background: $clr-datagrid-popover-bg-color;
-                padding: 0.25rem 0.25rem;
-                margin-left: 0.25rem;
-                border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
-                box-shadow: 0 1px 3px rgba($gray-dark, 0.25);
-                border-radius: $clr-global-borderradius;
-                font-weight: normal;
-                z-index: map-get($clr-layers, dropdown-menu);
-                white-space: nowrap;
-
-                &::before {
-                    content: '';
-                    position: absolute;
-                    top: 50%;
-                    right: 100%;
-                    width: 0;
-                    height: 0;
-                    margin-top: -1 * $clr-datagrid-action-arrow-size;
-                    border-right: $clr-datagrid-action-arrow-size solid $clr-datagrid-popover-border-color;
-                    border-top: $clr-datagrid-action-arrow-size solid transparent;
-                    border-bottom: $clr-datagrid-action-arrow-size solid transparent;
-                }
-
-                &::after {
-                    content: '';
-                    position: absolute;
-                    top: 50%;
-                    right: 100%;
-                    width: 0;
-                    height: 0;
-                    // not all browsers support calc() in psuedoelements
-                    margin-top: -1 * $clr-datagrid-action-arrow-size + $clr-rem-1px;
-                    border-right: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid $clr-datagrid-popover-bg-color;
-                    border-top: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid transparent;
-                    border-bottom: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid transparent;
-                }
-
-                .action-item {
-                    @include clr-getTypePropertiesForDomElement(dropdown_text, (color, font-size, letter-spacing));
-
-                    background: transparent;
-                    border: 0;
-                    color: $clr-app-font-color-primary;
-                    cursor: pointer;
-                    display: block;
-                    line-height: calc(#{clr-getTypePropertyValueForDomElement(dropdown_text, line-height)} - 1px);
-                    margin: 0;
-                    padding: 1px 1rem 0;
-                    text-align: left;
-                    width: 100%;
-
-                    &:hover,
-                    &:focus {
-                        text-decoration: none;
-                        background-color: $clr-datagrid-action-popover-hover-color;
-                    }
-
-                    &.active {
-                        background: $clr-datagrid-row-hover;
-                        color: $clr-black;
-                    }
-
-                    &:focus {
-                        outline: 0;
-                    }
-
-                    &.disabled,
-                    &:disabled {
-                        cursor: not-allowed;
-                        opacity: 0.4;
-                        user-select: none;
-
-                        &:hover {
-                            background: none;
-                        }
-
-                        &:active,
-                        &:focus {
-                            background: none;
-                            box-shadow: none;
-                        }
-                    }
-
-                    clr-icon {
-                        vertical-align: middle;
-                        transform: translate3d(0px, -1px, 0);
-                    }
-                }
-            }
-
-            .datagrid-action-toggle {
-                cursor: pointer;
-                color: $clr-datagrid-action-toggle;
-                border: none;
-                background: none;
-                padding: calc(0.375rem - #{$clr-table-borderwidth});
-                margin: calc(0.125rem - #{$clr-table-borderwidth}) $horizontalPadding;
-            }
-
-            &.datagrid-selected .datagrid-action-toggle {
-                color: $clr-black;
-            }
-
-            .datagrid-row-detail {
-                &.datagrid-container {
-                    padding-top: 0;
-                }
-
-                .datagrid-cell {
-                    padding-top: 0;
-                }
-            }
-        }
-
-        .datagrid-cell {
-            border-top: 0;
-        }
-
-        .datagrid-container {
-            font-size: $clr-table-fontsize;
-            padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
-        }
-    }
-
     .datagrid-placeholder-container {
+      display: none;
+    }
+    .datagrid-fixed-column {
+      display: none;
+    }
+  }
+
+  // TODO: the nesting in this SCSS is a bit extremes. is it necessary?
+  .datagrid {
+    flex: 1 1 auto;
+    width: auto; // override the basic table's style of width: 100%
+    max-width: none; // override the basic table's style of max-width: 100%
+
+    .datagrid-body {
+      .datagrid-row:last-child {
+        .datagrid-cell {
+          &:first-child {
+            border-radius: 0;
+          }
+          &:last-child {
+            border-radius: 0;
+          }
+        }
+      }
+    }
+
+    .datagrid-column,
+    .datagrid-cell {
+      text-align: left;
+      min-width: 4rem;
+      &.datagrid-fixed-column {
+        flex: 0 0 $clr-datagrid-fixed-column-size;
+        // IE10 needs this
+        max-width: $clr-datagrid-fixed-column-size;
+        min-width: $clr-datagrid-fixed-column-size;
+      }
+    }
+
+    .datagrid-head {
+      background-color: $clr-thead-bgcolor;
+      border-bottom: (2 * $clr-table-borderwidth) solid $clr-table-header-border-bottom-color;
+
+      .datagrid-row-actions {
+        @extend .datagrid-column;
+      }
+    }
+
+    .datagrid-column {
+      vertical-align: top;
+      background: none;
+      border-bottom: 0;
+
+      .datagrid-column-title {
+        @include clr-no-styles-button();
+        color: $clr-table-font-color;
+        text-align: left;
         flex: 1 1 auto;
-        display: flex;
-        justify-content: center;
-    }
+        align-self: flex-start;
+      }
 
-    .datagrid-placeholder {
-        background: $clr-table-bgcolor;
-        border-top: $clr-default-borderwidth solid $clr-table-border-color;
-        width: 100%;
+      button.datagrid-column-title:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
 
-        &.datagrid-empty {
-            border-top: 0;
-            padding: 0.5rem;
-            display: flex;
-            flex-flow: column nowrap;
-            align-items: center;
-            justify-content: center;
-            font-size: clr-getTypePropertyValueForDomElement(datagrid_placeholder, font-size);
-            color: $clr-dark-midtone-gray;
-
-            .datagrid-placeholder-image {
-                width: 2.5rem;
-                height: 2.5rem;
-                margin-bottom: 0.5rem;
-                background-repeat: no-repeat;
-                background-size: contain;
-                background-position: center;
-                background-image: generateEmptyDatagridPlaceholder();
-            }
-        }
-    }
-
-    .datagrid-action-bar {
+      .datagrid-column-separator {
+        $dg-padding-less-border: 0.5rem - $clr-rem-1px;
+        position: relative;
+        left: 0.5rem;
         flex: 0 0 auto;
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: stretch;
-    }
+        width: $clr-default-borderwidth;
+        order: 100;
+        margin-left: auto;
 
-    .datagrid-foot {
-        flex: 0 0 auto;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-end;
-        align-items: stretch;
-        height: 1.5rem;
-        padding: 0 $clr-table-cellpadding;
-        // Account for borders
-        line-height: calc(1.5rem - #{3 * $clr-default-borderwidth});
-        font-size: clr-getTypePropertyValueForDomElement(table_header, font-size);
-        background-color: $clr-thead-bgcolor;
-        border-top: (2 * $clr-default-borderwidth) solid $clr-table-footer-border-top-color;
-        border-radius: 0 0 $clr-global-borderradius $clr-global-borderradius;
-
-        .pagination {
-            display: flex;
-            align-items: center;
-
-            &-description {
-                white-space: nowrap;
-            }
-
-            &-list {
-                margin-left: 1.5rem;
-                height: calc(1.5rem - #{2 * $clr-default-borderwidth});
-            }
-
+        &::after {
+          content: '';
+          position: absolute;
+          height: calc(100% + #{$clr-datagrid-column-separator-expandby} - #{$clr-default-borderwidth});
+          width: $clr-rem-1px;
+          top: calc(-0.5 * #{$clr-datagrid-column-separator-expandby} + 1px);
+          left: 0;
+          background-color: $clr-table-border-color;
         }
 
-        .column-switch-wrapper {
-            flex: 0 0 auto;
-
-            &.active {
-                .column-toggle--action {
-                    color: $clr-action-blue;
-                }
-            }
-            .column-toggle--action {
-                // I'm overriding .btn/.btn-link here but am not confident this is the correct way to do it.
-                min-width: 0.75rem;
-                padding-left: 0;
-                padding-right: 0;
-
-                color: $clr-dark-midtone-gray;
-                &:hover {
-                    color: $clr-action-blue;
-                }
-            }
-
-            .column-switch {
-                border-radius: $clr-global-borderradius;
-                padding: 0.75rem;
-                background-color: $clr-datagrid-popover-bg-color;
-                border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
-                box-shadow: 0 1px 3px rgba(116, 116, 116, 0.25); // TODO: Add theme-able variable
-                width: 10.416667rem;
-                display: flex;
-                flex-direction: column;
-
-                .switch-header {
-                    display: flex;
-                    justify-content: space-between;
-                    font-weight: clr-getTypePropertyValueForDomElement(datagrid_column_toggle_title, font-weight);
-                    font-size: clr-getTypePropertyValueForDomElement(datagrid_column_toggle_title, font-size);
-                    padding-bottom: 0.5rem;
-                    line-height: 1rem;
-
-                    button {
-                        min-width: 0.75rem;
-                        margin: 0;
-                        padding: 0;
-                        color: $clr-dark-midtone-gray;
-
-                        &:hover {
-                            color: $clr-action-blue;
-                        }
-                    }
-                }
-
-                .switch-content {
-                    max-height: 12.5rem;
-                    overflow-y: auto;
-                    min-height: calc(1rem + #{$clr-default-borderwidth}); // prevents scrollbars in IE.
-
-                    li {
-                        line-height: 1rem;
-                        padding-left: 2 * $clr-rem-1px; // Hack that doesn't fix issue #539. TODO: Fix issue #539.
-                    }
-                }
-
-                .switch-footer {
-                    .btn {
-                        margin: 0;
-                        padding: 0;
-                    }
-
-                    .action-right {
-                        display: flex;
-                        justify-content: flex-end
-                    }
-                }
-            }
+        .datagrid-column-handle {
+          @include clr-no-styles-button();
+          display: block;
+          position: absolute;
+          width: calc(0.5rem + 1px);
+          right: -0.25rem;
+          top: -0.25rem;
+          cursor: col-resize;
+          height: calc(100% + 0.5rem - #{$clr-default-borderwidth});
         }
-    }
+        .datagrid-column-handle-tracker {
+          position: absolute;
+          right: 0;
+          top: $clr-datagrid-column-handle-tracker-top;
+          display: none;
+          width: 0;
+          height: 100vh;
+          border-right: $clr-default-borderwidth dotted $clr-action-blue-lighter;
+        }
+        .exceeded-max {
+          border-right: $clr-default-borderwidth dotted rgba($clr-red-light-midtone, 0.3);
+        }
+      }
 
-    .datagrid-foot-description {
-        display: block;
+      &:last-child {
+        .datagrid-column-separator {
+          display: none;
+        }
+      }
+
+      .datagrid-column-flex {
+        display: flex;
         flex: 1 1 auto;
-        white-space: nowrap;
-        text-align: right;
-    }
+      }
 
-    // Yes, this is not .datagrid-pagination on purpose.
-    // I've been told to consider a potential separate pagination component.
-    .pagination-list {
-        list-style: none;
+      clr-dg-filter,
+      clr-dg-string-filter {
         display: flex;
-        flex-flow: row nowrap;
-        justify-content: center;
-        align-items: stretch;
+        order: 99;
+        margin-left: auto;
+      }
 
-        > * {
-            padding: 0 0.1rem;
-            margin-left: 0.3rem;
+      &.asc,
+      &.desc {
+        font-weight: 600;
 
-            &:first-child {
-                margin-left: 0;
-            }
+        .datagrid-column-flex::after {
+          content: '';
+          display: flex;
+          flex: 0 0 auto;
+          vertical-align: middle;
+          width: $clr-datagrid-icon-size;
+          height: $clr-datagrid-icon-size;
+          margin-left: 0.25rem;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.asc {
+        .datagrid-column-flex::after {
+          background-image: generateUpArrowIcon($action-blues-dark-midtone);
+        }
+      }
+      &.desc {
+        .datagrid-column-flex::after {
+          background-image: generateDownArrowIcon($action-blues-dark-midtone);
+        }
+      }
+
+      .datagrid-filter-toggle {
+        @include clr-no-styles-button();
+        cursor: pointer;
+        float: right;
+        vertical-align: middle;
+        width: $clr-datagrid-icon-size;
+        height: $clr-datagrid-icon-size;
+        margin: 0 0.25rem;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: generateFilterIcon($gray-dark-midtone);
+
+        &:hover {
+          background-image: generateFilterIcon($action-blues-dark-midtone);
         }
 
-        .pagination-current {
-            font-weight: 600;
-            border-bottom: (2 * $clr-default-borderwidth) solid $action-blues-dark-midtone;
+        &.datagrid-filter-open {
+          background-image: generateFilterIcon($action-blues-dark-midtone);
         }
 
-        $clr-pagination-extra-margin: 0.25rem;
-        .pagination-previous, .pagination-next {
-            display: inline-block;
-            vertical-align: middle;
-            width: $clr-datagrid-icon-size;
-            height: $clr-datagrid-icon-size;
-            background-repeat: no-repeat;
-            background-size: contain;
+        &.datagrid-filtered {
+          background-image: generateFilterIcon($action-blues-dark-midtone),
+            generateCircleIcon($action-blues-dark-midtone);
+        }
+      }
+
+      .datagrid-filter {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 0.2rem;
+        background: $clr-datagrid-popover-bg-color;
+        padding: 0.75rem;
+        border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
+        box-shadow: 0 1px 3px rgba($gray-dark, 0.25);
+        border-radius: $clr-global-borderradius;
+        font-weight: normal;
+        z-index: map-get($clr-layers, dropdown-menu);
+
+        .datagrid-filter-close-wrapper {
+          text-align: right;
+
+          .close {
+            float: none;
+          }
         }
 
-        .pagination-previous {
-            margin-right: $clr-pagination-extra-margin;
-            background-image: generateLeftCaretIcon($gray-dark);
+        // FIXME: remove
+        .datagrid-filter-apply {
+          margin-bottom: 0;
         }
-        .pagination-next {
-            margin-left: $clr-pagination-extra-margin;
-            background-image: generateRightCaretIcon($gray-dark);
-        }
-
-        button {
-            @include clr-no-styles-button();
-            color: $gray-dark;
-            // FIXME: this should be in the general reboot
-            cursor: pointer;
-        }
+      }
     }
 
     .datagrid-select {
-        .radio, .checkbox {
-            margin-top: -1 * $clr-rem-1px;
+      .radio label,
+      .checkbox label {
+        display: block;
+        // These are the properties in default checkbox styles, so we
+        // have to override these rather than stuff like width and height.
+        min-height: $clr-table-lineheight - $clr-rem-1px;
+        padding-left: $clr-table-lineheight;
+
+        &::before,
+        &::after {
+          top: 0;
         }
+      }
     }
 
-    .datagrid-compact {
-        .datagrid-column .datagrid-column-separator {
-            &::after {
-                height: calc(100% + 0.5 * #{$clr-datagrid-column-separator-expandby} - #{$clr-default-borderwidth});
-                top: calc(-0.25 * #{$clr-datagrid-column-separator-expandby} + 1px);
-            }
-            .datagrid-column-handle-tracker {
-                top: 0.5*$clr-datagrid-column-handle-tracker-top;
-            }
+    .datagrid-foot-select.checkbox {
+      display: block;
+      line-height: inherit;
+      flex: 0 0 (1.5rem - (2 * $clr-rem-1px)); // can't use calc() in flex. #thanksIE!
+      margin-right: 0.083333rem; // Space for the instance when a hideable column toggle is next to it.
+
+      label {
+        color: unset;
+        cursor: default;
+        opacity: 1;
+        line-height: inherit;
+      }
+
+      input[type='checkbox'] + label {
+        &::before,
+        &::after {
+          top: 0.333333rem;
         }
+
+        &::after {
+          border-left-color: $clr-white;
+          border-bottom-color: $clr-white;
+        }
+      }
+    }
+
+    .datagrid-row-actions {
+      padding: 0;
+
+      clr-icon {
+        height: $clr-table-lineheight;
+        vertical-align: bottom;
+      }
+    }
+
+    .datagrid-signpost-trigger .signpost {
+      margin: -0.3rem 0;
+      height: 1.03rem;
+      .signpost-trigger {
+        height: inherit;
+        line-height: 1rem;
+      }
+    }
+
+    $horizontalPadding: ($clr-datagrid-fixed-column-size - 1.25rem) / 2;
+
+    .datagrid-expandable-caret {
+      padding: calc(0.125rem - #{$clr-default-borderwidth}) $horizontalPadding 0.125rem;
+      text-align: center;
+
+      .datagrid-expandable-caret-button {
+        @include clr-no-styles-button();
+        cursor: pointer;
+        height: 1.25rem;
+        width: 1.25rem;
+      }
+
+      .datagrid-expandable-caret-icon {
+        color: $gray-dark;
+        // nudge down for vertical alignment...
+        margin-top: 0.125rem;
+        svg {
+          transition: transform 0.2s ease-in-out;
+        }
+      }
+
+      .spinner {
+        margin-top: 0.25rem;
+      }
+
+      &.datagrid-column {
+        padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
+      }
+    }
+
+    .datagrid-body .datagrid-row {
+      border-top: $clr-table-borderwidth solid $clr-table-border-color;
+      flex-shrink: 0;
+
+      &:first-child {
+        border-top: 0;
+      }
+
+      &:hover {
+        background-color: $clr-datagrid-row-hover;
+      }
+
+      &.datagrid-selected {
+        color: $clr-datagrid-row-selected;
+        background-color: $clr-global-selection-color;
+      }
+
+      .datagrid-action-overflow {
+        position: absolute;
+        background: $clr-datagrid-popover-bg-color;
+        padding: 0.25rem 0.25rem;
+        margin-left: 0.25rem;
+        border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
+        box-shadow: 0 1px 3px rgba($gray-dark, 0.25);
+        border-radius: $clr-global-borderradius;
+        font-weight: normal;
+        z-index: map-get($clr-layers, dropdown-menu);
+        white-space: nowrap;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 100%;
+          width: 0;
+          height: 0;
+          margin-top: -1 * $clr-datagrid-action-arrow-size;
+          border-right: $clr-datagrid-action-arrow-size solid $clr-datagrid-popover-border-color;
+          border-top: $clr-datagrid-action-arrow-size solid transparent;
+          border-bottom: $clr-datagrid-action-arrow-size solid transparent;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 100%;
+          width: 0;
+          height: 0;
+          // not all browsers support calc() in psuedoelements
+          margin-top: -1 * $clr-datagrid-action-arrow-size + $clr-rem-1px;
+          border-right: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid $clr-datagrid-popover-bg-color;
+          border-top: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid transparent;
+          border-bottom: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid transparent;
+        }
+
+        .action-item {
+          @include clr-getTypePropertiesForDomElement(dropdown_text, (color, font-size, letter-spacing));
+
+          background: transparent;
+          border: 0;
+          color: $clr-app-font-color-primary;
+          cursor: pointer;
+          display: block;
+          line-height: calc(#{clr-getTypePropertyValueForDomElement(dropdown_text, line-height)} - 1px);
+          margin: 0;
+          padding: 1px 1rem 0;
+          text-align: left;
+          width: 100%;
+
+          &:hover,
+          &:focus {
+            text-decoration: none;
+            background-color: $clr-datagrid-action-popover-hover-color;
+          }
+
+          &.active {
+            background: $clr-datagrid-row-hover;
+            color: $clr-black;
+          }
+
+          &:focus {
+            outline: 0;
+          }
+
+          &.disabled,
+          &:disabled {
+            cursor: not-allowed;
+            opacity: 0.4;
+            user-select: none;
+
+            &:hover {
+              background: none;
+            }
+
+            &:active,
+            &:focus {
+              background: none;
+              box-shadow: none;
+            }
+          }
+
+          clr-icon {
+            vertical-align: middle;
+            transform: translate3d(0px, -1px, 0);
+          }
+        }
+      }
+
+      .datagrid-action-toggle {
+        cursor: pointer;
+        color: $clr-datagrid-action-toggle;
+        border: none;
+        background: none;
+        padding: calc(0.375rem - #{$clr-table-borderwidth});
+        margin: calc(0.125rem - #{$clr-table-borderwidth}) $horizontalPadding;
+      }
+
+      &.datagrid-selected .datagrid-action-toggle {
+        color: $clr-black;
+      }
+
+      .datagrid-row-detail {
+        &.datagrid-container {
+          padding-top: 0;
+        }
+
         .datagrid-cell {
-            clr-icon {
-                // should target all clr-icon elements
-                // so no classes are used
-                margin-top: calc(-.125rem - 1px);
-                margin-bottom: -0.125rem;
-            }
-            .badge {
-                margin-top: -0.125rem;
-                margin-bottom: -1px;
-            }
+          padding-top: 0;
         }
-        .datagrid-expandable-caret {
-            .spinner {
-                margin-top: 0.125rem;
-            }
-            .datagrid-expandable-caret-button {
-                height: 1rem;
-                width: 1rem;
-                outline-offset: $clr-datagrid-compact-outline-offset;
-            }
-            .datagrid-expandable-caret-icon {
-                margin: 0;
-            }
-            &.datagrid-cell {
-                padding: 0;
-            }
-            &.datagrid-column {
-                padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);
-                padding-bottom: calc(#{$clr-table--compact-verticalPadding});
-            }
-        }
-        .datagrid-signpost-trigger .signpost .signpost-trigger clr-icon:not(
-            [shape="info-circle"]):not(
-            [shape="exclamation-triangle"]):not(
-            [shape="exclamation-circle"]):not(
-            [shape="check-circle"]):not(
-            [shape="info"]):not(
-            [shape="error"]) {
-                width: 0.875rem; //21px
-                height: 0.875rem; //21px
-        }
-        .datagrid-body .datagrid-row .datagrid-action-toggle {
-            padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);
-            padding-bottom: calc(#{$clr-table--compact-verticalPadding});
-            margin-top: 0;
-            margin-bottom: 0;
-            clr-icon {
-                margin-bottom: 0;
-            }
-            outline-offset: $clr-datagrid-compact-outline-offset;
-        }
-        .datagrid-foot {
-            height: 1rem;
-            padding: 0 $clr-table-cellpadding;
-            line-height: calc(1rem - 1px);
-            .pagination-list {
-                height: calc(1rem - #{2 * $clr-default-borderwidth});
-            }
-            .column-switch-wrapper .column-toggle--action {
-                margin: 0;
-                outline-offset: $clr-datagrid-compact-outline-offset;
-            }
-            .datagrid-foot-select.checkbox input[type="checkbox"] + label {
-                &::before, &::after {
-                    top: 0.11111rem;
-                }
-            }
-        }
+      }
     }
 
-    // Needed for the hack to test if a cell has a user-defined width
-    .datagrid-cell-width-zero {
-        // Much zero. Such !important. Wow.
-        border: 0 !important;
-        padding: 0 !important;
-        width: 0;
-        flex: 0 0 auto !important;
-        min-width: 0 !important;
+    .datagrid-cell {
+      border-top: 0;
     }
 
-    @include fixForMsEdge {
-        .datagrid .datagrid-column .datagrid-filter-toggle {
-            // MSEdge doesn't round the rem units properly
-            width: 0.59rem;
-            height: 0.59rem;
-            margin-top: -1px;
-        }
+    .datagrid-container {
+      font-size: $clr-table-fontsize;
+      padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
     }
+  }
+
+  .datagrid-placeholder-container {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .datagrid-placeholder {
+    background: $clr-table-bgcolor;
+    border-top: $clr-default-borderwidth solid $clr-table-border-color;
+    width: 100%;
+
+    &.datagrid-empty {
+      border-top: 0;
+      padding: 0.5rem;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: center;
+      font-size: clr-getTypePropertyValueForDomElement(datagrid_placeholder, font-size);
+      color: $clr-dark-midtone-gray;
+
+      .datagrid-placeholder-image {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-bottom: 0.5rem;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        background-image: generateEmptyDatagridPlaceholder();
+      }
+    }
+  }
+
+  .datagrid-action-bar {
+    flex: 0 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+  }
+
+  .datagrid-foot {
+    flex: 0 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: stretch;
+    height: 1.5rem;
+    padding: 0 $clr-table-cellpadding;
+    // Account for borders
+    line-height: calc(1.5rem - #{3 * $clr-default-borderwidth});
+    font-size: clr-getTypePropertyValueForDomElement(table_header, font-size);
+    background-color: $clr-thead-bgcolor;
+    border-top: (2 * $clr-default-borderwidth) solid $clr-table-footer-border-top-color;
+    border-radius: 0 0 $clr-global-borderradius $clr-global-borderradius;
+
+    .pagination {
+      display: flex;
+      align-items: center;
+
+      &-description {
+        white-space: nowrap;
+      }
+
+      &-list {
+        margin-left: 1.5rem;
+        height: calc(1.5rem - #{2 * $clr-default-borderwidth});
+      }
+    }
+
+    .column-switch-wrapper {
+      flex: 0 0 auto;
+
+      &.active {
+        .column-toggle--action {
+          color: $clr-action-blue;
+        }
+      }
+      .column-toggle--action {
+        // I'm overriding .btn/.btn-link here but am not confident this is the correct way to do it.
+        min-width: 0.75rem;
+        padding-left: 0;
+        padding-right: 0;
+
+        color: $clr-dark-midtone-gray;
+        &:hover {
+          color: $clr-action-blue;
+        }
+      }
+
+      .column-switch {
+        border-radius: $clr-global-borderradius;
+        padding: 0.75rem;
+        background-color: $clr-datagrid-popover-bg-color;
+        border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
+        box-shadow: 0 1px 3px rgba(116, 116, 116, 0.25); // TODO: Add theme-able variable
+        width: 10.416667rem;
+        display: flex;
+        flex-direction: column;
+
+        .switch-header {
+          display: flex;
+          justify-content: space-between;
+          font-weight: clr-getTypePropertyValueForDomElement(datagrid_column_toggle_title, font-weight);
+          font-size: clr-getTypePropertyValueForDomElement(datagrid_column_toggle_title, font-size);
+          padding-bottom: 0.5rem;
+          line-height: 1rem;
+
+          button {
+            min-width: 0.75rem;
+            margin: 0;
+            padding: 0;
+            color: $clr-dark-midtone-gray;
+
+            &:hover {
+              color: $clr-action-blue;
+            }
+          }
+        }
+
+        .switch-content {
+          max-height: 12.5rem;
+          overflow-y: auto;
+          min-height: calc(1rem + #{$clr-default-borderwidth}); // prevents scrollbars in IE.
+
+          li {
+            line-height: 1rem;
+            padding-left: 2 * $clr-rem-1px; // Hack that doesn't fix issue #539. TODO: Fix issue #539.
+          }
+        }
+
+        .switch-footer {
+          .btn {
+            margin: 0;
+            padding: 0;
+          }
+
+          .action-right {
+            display: flex;
+            justify-content: flex-end;
+          }
+        }
+      }
+    }
+  }
+
+  .datagrid-foot-description {
+    display: block;
+    flex: 1 1 auto;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  // Yes, this is not .datagrid-pagination on purpose.
+  // I've been told to consider a potential separate pagination component.
+  .pagination-list {
+    list-style: none;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: stretch;
+
+    > * {
+      padding: 0 0.1rem;
+      margin-left: 0.3rem;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    .pagination-current {
+      font-weight: 600;
+      border-bottom: (2 * $clr-default-borderwidth) solid $action-blues-dark-midtone;
+    }
+
+    $clr-pagination-extra-margin: 0.25rem;
+    .pagination-previous,
+    .pagination-next {
+      display: inline-block;
+      vertical-align: middle;
+      width: $clr-datagrid-icon-size;
+      height: $clr-datagrid-icon-size;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .pagination-previous {
+      margin-right: $clr-pagination-extra-margin;
+      background-image: generateLeftCaretIcon($gray-dark);
+    }
+    .pagination-next {
+      margin-left: $clr-pagination-extra-margin;
+      background-image: generateRightCaretIcon($gray-dark);
+    }
+
+    button {
+      @include clr-no-styles-button();
+      color: $gray-dark;
+      // FIXME: this should be in the general reboot
+      cursor: pointer;
+    }
+  }
+
+  .datagrid-select {
+    .radio,
+    .checkbox {
+      margin-top: -1 * $clr-rem-1px;
+    }
+  }
+
+  .datagrid-compact {
+    .datagrid-column .datagrid-column-separator {
+      &::after {
+        height: calc(100% + 0.5 * #{$clr-datagrid-column-separator-expandby} - #{$clr-default-borderwidth});
+        top: calc(-0.25 * #{$clr-datagrid-column-separator-expandby} + 1px);
+      }
+      .datagrid-column-handle-tracker {
+        top: 0.5 * $clr-datagrid-column-handle-tracker-top;
+      }
+    }
+    .datagrid-cell {
+      clr-icon {
+        // should target all clr-icon elements
+        // so no classes are used
+        margin-top: calc(-0.125rem - 1px);
+        margin-bottom: -0.125rem;
+      }
+      .badge {
+        margin-top: -0.125rem;
+        margin-bottom: -1px;
+      }
+    }
+    .datagrid-expandable-caret {
+      .spinner {
+        margin-top: 0.125rem;
+      }
+      .datagrid-expandable-caret-button {
+        height: 1rem;
+        width: 1rem;
+        outline-offset: $clr-datagrid-compact-outline-offset;
+      }
+      .datagrid-expandable-caret-icon {
+        margin: 0;
+      }
+      &.datagrid-cell {
+        padding: 0;
+      }
+      &.datagrid-column {
+        padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);
+        padding-bottom: calc(#{$clr-table--compact-verticalPadding});
+      }
+    }
+    .datagrid-signpost-trigger
+      .signpost
+      .signpost-trigger
+      clr-icon:not([shape='info-circle']):not([shape='exclamation-triangle']):not([shape='exclamation-circle']):not([shape='check-circle']):not([shape='info']):not([shape='error']) {
+      width: 0.875rem; //21px
+      height: 0.875rem; //21px
+    }
+    .datagrid-body .datagrid-row .datagrid-action-toggle {
+      padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);
+      padding-bottom: calc(#{$clr-table--compact-verticalPadding});
+      margin-top: 0;
+      margin-bottom: 0;
+      clr-icon {
+        margin-bottom: 0;
+      }
+      outline-offset: $clr-datagrid-compact-outline-offset;
+    }
+    .datagrid-foot {
+      height: 1rem;
+      padding: 0 $clr-table-cellpadding;
+      line-height: calc(1rem - 1px);
+      .pagination-list {
+        height: calc(1rem - #{2 * $clr-default-borderwidth});
+      }
+      .column-switch-wrapper .column-toggle--action {
+        margin: 0;
+        outline-offset: $clr-datagrid-compact-outline-offset;
+      }
+      .datagrid-foot-select.checkbox input[type='checkbox'] + label {
+        &::before,
+        &::after {
+          top: 0.11111rem;
+        }
+      }
+    }
+  }
+
+  // Needed for the hack to test if a cell has a user-defined width
+  .datagrid-cell-width-zero {
+    // Much zero. Such !important. Wow.
+    border: 0 !important;
+    padding: 0 !important;
+    width: 0;
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+  }
+
+  @include fixForMsEdge {
+    .datagrid .datagrid-column .datagrid-filter-toggle {
+      // MSEdge doesn't round the rem units properly
+      width: 0.59rem;
+      height: 0.59rem;
+      margin-top: -1px;
+    }
+  }
 }

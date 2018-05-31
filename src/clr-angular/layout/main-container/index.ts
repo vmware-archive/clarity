@@ -4,5 +4,5 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from "./main-container";
-export * from "./main-container.module";
+export * from './main-container';
+export * from './main-container.module';

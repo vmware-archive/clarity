@@ -1,5 +1,4 @@
-Contributor Code of Conduct
-======================
+# Contributor Code of Conduct
 
 As contributors and maintainers of the Clarity project, we pledge to respect everyone who contributes by posting issues, updating documentation, submitting pull requests, providing feedback in comments, and any other activities.
 
@@ -13,7 +12,6 @@ If you are subjected to or witness unacceptable behavior, or have any other conc
 
 If you have suggestions to improve this Code of Conduct, please submit an issue or PR.
 
-
 **Attribution**
 
-This Code of Conduct is adapted from the Angular project, version 0.3a-angular, available at this page:  https://github.com/angular/code-of-conduct/blob/master/CODE_OF_CONDUCT.md
+This Code of Conduct is adapted from the Angular project, version 0.3a-angular, available at this page: https://github.com/angular/code-of-conduct/blob/master/CODE_OF_CONDUCT.md

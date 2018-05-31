@@ -3,11 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-hot-fuss-demo",
-    template: `
+  selector: 'clr-hot-fuss-demo',
+  template: `
         <!--https://en.wikipedia.org/wiki/Hot_Fuss-->
         <h4>Hot Fuss (2004)</h4>
         <p>
@@ -18,7 +18,6 @@ import {Component} from "@angular/core";
             successful singles: "Mr. Brightside", "Somebody Told Me", 
             "All These Things That I've Done" and "Smile Like You Mean It".
         </p>
-    `
+    `,
 })
-export class HotFussDemo {
-}
+export class HotFussDemo {}

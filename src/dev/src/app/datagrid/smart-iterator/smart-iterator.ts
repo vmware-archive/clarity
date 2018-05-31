@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
-import {Inventory} from "../inventory/inventory";
-import {User} from "../inventory/user";
+import { Inventory } from '../inventory/inventory';
+import { User } from '../inventory/user';
 
 const EXAMPLE = `
 <-- Inside the full datagrid declaration -->
@@ -16,18 +16,18 @@ const EXAMPLE = `
 `;
 
 @Component({
-    selector: "clr-datagrid-smart-iterator-demo",
-    providers: [Inventory],
-    templateUrl: "./smart-iterator.html",
-    styleUrls: ["../datagrid.demo.scss"]
+  selector: 'clr-datagrid-smart-iterator-demo',
+  providers: [Inventory],
+  templateUrl: './smart-iterator.html',
+  styleUrls: ['../datagrid.demo.scss'],
 })
 export class DatagridSmartIteratorDemo {
-    example = EXAMPLE;
-    users: User[];
+  example = EXAMPLE;
+  users: User[];
 
-    constructor(inventory: Inventory) {
-        inventory.size = 10;
-        inventory.reset();
-        this.users = inventory.all;
-    }
+  constructor(inventory: Inventory) {
+    inventory.size = 10;
+    inventory.reset();
+    this.users = inventory.all;
+  }
 }

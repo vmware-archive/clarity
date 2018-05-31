@@ -3,21 +3,20 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
-import {FormsModule} from "@angular/forms";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
-import {ClarityModule, ClrCheckboxNextModule} from "@clr/angular";
+import { ClarityModule, ClrCheckboxNextModule } from '@clr/angular';
 
-import {CheckboxesDemo} from "./checkboxes.demo";
-import {ROUTING} from "./checkboxes.demo.routing";
-import {Status} from "./data/status";
+import { CheckboxesDemo } from './checkboxes.demo';
+import { ROUTING } from './checkboxes.demo.routing';
+import { Status } from './data/status';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, ClrCheckboxNextModule, ClarityModule, ROUTING],
-    declarations: [CheckboxesDemo],
-    providers: [Status],
-    exports: [CheckboxesDemo]
+  imports: [CommonModule, FormsModule, ClrCheckboxNextModule, ClarityModule, ROUTING],
+  declarations: [CheckboxesDemo],
+  providers: [Status],
+  exports: [CheckboxesDemo],
 })
-export class CheckboxesDemoModule {
-}
+export class CheckboxesDemoModule {}

@@ -3,8 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
-@Component({selector: "clr-card-images-demo", styleUrls: ["./card.demo.scss"], templateUrl: "./card-images.html"})
-export class CardImagesDemo {
-}
+@Component({ selector: 'clr-card-images-demo', styleUrls: ['./card.demo.scss'], templateUrl: './card-images.html' })
+export class CardImagesDemo {}

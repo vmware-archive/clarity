@@ -2,26 +2,26 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import "../_utils/code";
+@import '../_utils/code';
 
-.clr-example{
-    span {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 36px;
-        border-radius: 3px;
-        background: #DDE3E5;
-        margin: 6px 0;
+.clr-example {
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    border-radius: 3px;
+    background: #dde3e5;
+    margin: 6px 0;
 
-        &.clr-example-enable-borders {
-            border: 1px solid #414957;
-        }
+    &.clr-example-enable-borders {
+      border: 1px solid #414957;
     }
+  }
 
-    .clr-example-row {
-        background: #414957;
-        height: 108px;
-        margin: 6px 0;
-    }
+  .clr-example-row {
+    background: #414957;
+    height: 108px;
+    margin: 6px 0;
+  }
 }

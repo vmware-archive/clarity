@@ -4,11 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import {POPOVER_DIRECTIVES} from "./index";
+import { POPOVER_DIRECTIVES } from './index';
 
-@NgModule({imports: [CommonModule], declarations: [POPOVER_DIRECTIVES], exports: [POPOVER_DIRECTIVES]})
-export class ClrCommonPopoverModule {
-}
+@NgModule({ imports: [CommonModule], declarations: [POPOVER_DIRECTIVES], exports: [POPOVER_DIRECTIVES] })
+export class ClrCommonPopoverModule {}

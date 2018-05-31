@@ -8,10 +8,10 @@
  */
 
 // Pre variable and theme dependencies
-@import "./utils/dependencies.clarity";
+@import './utils/dependencies.clarity';
 // Dependencies import the clarity variables file.
 // for all intents and purposes we can consider the values there as the
 // OG Theme: This is for generating the OG Clarity Theme
 
 // Clarity component code (consumes the variables and theme overrides)
-@import "./utils/components.clarity";
+@import './utils/components.clarity';

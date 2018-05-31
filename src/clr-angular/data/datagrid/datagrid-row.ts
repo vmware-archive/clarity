@@ -4,34 +4,33 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
-    AfterContentInit,
-    Component,
-    ContentChildren,
-    EventEmitter,
-    HostBinding,
-    HostListener,
-    Input,
-    Output,
-    QueryList
-} from "@angular/core";
-import {Subscription} from "rxjs";
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  Output,
+  QueryList,
+} from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import {Expand} from "../../utils/expand/providers/expand";
-import {LoadingListener} from "../../utils/loading/loading-listener";
+import { Expand } from '../../utils/expand/providers/expand';
+import { LoadingListener } from '../../utils/loading/loading-listener';
 
-import {ClrDatagridCell} from "./datagrid-cell";
-import {DatagridHideableColumnModel} from "./datagrid-hideable-column.model";
-import {ExpandableRowsCount} from "./providers/global-expandable-rows";
-import {HideableColumnService} from "./providers/hideable-column.service";
-import {RowActionService} from "./providers/row-action-service";
-import {Selection, SelectionType} from "./providers/selection";
-
+import { ClrDatagridCell } from './datagrid-cell';
+import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
+import { ExpandableRowsCount } from './providers/global-expandable-rows';
+import { HideableColumnService } from './providers/hideable-column.service';
+import { RowActionService } from './providers/row-action-service';
+import { Selection, SelectionType } from './providers/selection';
 
 let nbRow: number = 0;
 
 @Component({
-    selector: "clr-dg-row",
-    template: `
+  selector: 'clr-dg-row',
+  template: `
         <div class="datagrid-row-master datagrid-row-flex">
             <clr-dg-cell *ngIf="selection.selectionType === SELECTION_TYPE.Multi"
                          class="datagrid-select datagrid-fixed-column">
@@ -75,170 +74,174 @@ let nbRow: number = 0;
             <ng-content select="clr-dg-row-detail"></ng-content>
         </ng-template>
     `,
-    host: {
-        "[class.datagrid-row]": "true",
-        "[class.datagrid-selected]": "selected",
-        "[attr.tabindex]": "selection.rowSelectionMode ? 0 : null"
-    },
-    providers: [Expand, {provide: LoadingListener, useExisting: Expand}]
+  host: {
+    '[class.datagrid-row]': 'true',
+    '[class.datagrid-selected]': 'selected',
+    '[attr.tabindex]': 'selection.rowSelectionMode ? 0 : null',
+  },
+  providers: [Expand, { provide: LoadingListener, useExisting: Expand }],
 })
 export class ClrDatagridRow implements AfterContentInit {
-    public id: string;
+  public id: string;
 
-    /* reference to the enum so that template can access */
-    public SELECTION_TYPE = SelectionType;
+  /* reference to the enum so that template can access */
+  public SELECTION_TYPE = SelectionType;
 
-    private readonly ENTER_KEY_CODE = 13;
-    private readonly SPACE_KEY_CODE = 32;
+  private readonly ENTER_KEY_CODE = 13;
+  private readonly SPACE_KEY_CODE = 32;
 
-    /**
-     * Model of the row, to use for selection
-     */
-    @Input("clrDgItem") item: any;
+  /**
+   * Model of the row, to use for selection
+   */
+  @Input('clrDgItem') item: any;
 
-    @HostBinding("attr.role") role: string;
+  @HostBinding('attr.role') role: string;
 
-    constructor(public selection: Selection, public rowActionService: RowActionService,
-                public globalExpandable: ExpandableRowsCount, public expand: Expand,
-                public hideableColumnService: HideableColumnService) {
-        this.id = "clr-dg-row" + (nbRow++);
-        this.role = selection.rowSelectionMode ? "button" : null;
+  constructor(
+    public selection: Selection,
+    public rowActionService: RowActionService,
+    public globalExpandable: ExpandableRowsCount,
+    public expand: Expand,
+    public hideableColumnService: HideableColumnService
+  ) {
+    this.id = 'clr-dg-row' + nbRow++;
+    this.role = selection.rowSelectionMode ? 'button' : null;
+  }
+
+  private _selected = false;
+  /**
+   * Indicates if the row is selected
+   */
+  public get selected() {
+    if (this.selection.selectionType === SelectionType.None) {
+      return this._selected;
+    } else {
+      return this.selection.isSelected(this.item);
+    }
+  }
+
+  @Input('clrDgSelected')
+  public set selected(value: boolean) {
+    if (this.selection.selectionType === SelectionType.None) {
+      this._selected = value;
+    } else {
+      this.selection.setSelected(this.item, value);
+    }
+  }
+
+  @Output('clrDgSelectedChange') selectedChanged = new EventEmitter<boolean>(false);
+
+  public toggle(selected = !this.selected) {
+    if (selected !== this.selected) {
+      this.selected = selected;
+      this.selectedChanged.emit(selected);
+    }
+  }
+
+  public get expanded() {
+    return this.expand.expanded;
+  }
+
+  @Input('clrDgExpanded')
+  public set expanded(value: boolean) {
+    this.expand.expanded = value;
+  }
+
+  @Output('clrDgExpandedChange') expandedChange = new EventEmitter<boolean>(false);
+
+  public toggleExpand() {
+    if (this.expand.expandable) {
+      this.expanded = !this.expanded;
+      this.expandedChange.emit(this.expanded);
+    }
+  }
+
+  @HostListener('click')
+  public toggleSelection() {
+    if (!this.selection.rowSelectionMode) {
+      return;
     }
 
-    private _selected = false;
-    /**
-     * Indicates if the row is selected
-     */
-    public get selected() {
-        if (this.selection.selectionType === SelectionType.None) {
-            return this._selected;
-        } else {
-            return this.selection.isSelected(this.item);
-        }
+    switch (this.selection.selectionType) {
+      case SelectionType.None:
+        break;
+      case SelectionType.Single:
+        this.selection.currentSingle = this.item;
+        break;
+      case SelectionType.Multi:
+        this.toggle();
+        break;
+      default:
+        break;
+    }
+  }
+
+  @HostListener('keypress', ['$event'])
+  public keypress(event: KeyboardEvent) {
+    if (!this.selection.rowSelectionMode) {
+      return;
     }
 
-    @Input("clrDgSelected")
-    public set selected(value: boolean) {
-        if (this.selection.selectionType === SelectionType.None) {
-            this._selected = value;
-        } else {
-            this.selection.setSelected(this.item, value);
-        }
+    // Check to see if space or enter were pressed
+    if (event.keyCode === this.ENTER_KEY_CODE || event.keyCode === this.SPACE_KEY_CODE) {
+      // Prevent the default action to stop scrolling when space is pressed
+      event.preventDefault();
+      this.toggleSelection();
     }
+  }
 
-    @Output("clrDgSelectedChange") selectedChanged = new EventEmitter<boolean>(false);
+  private subscription: Subscription;
 
-    public toggle(selected = !this.selected) {
-        if (selected !== this.selected) {
-            this.selected = selected;
-            this.selectedChanged.emit(selected);
-        }
-    }
+  /*****
+   * property dgCells
+   *
+   * @description
+   * A Query List of the ClrDatagrid cells in this row.
+   *
+   */
+  @ContentChildren(ClrDatagridCell) dgCells: QueryList<ClrDatagridCell>;
 
-    public get expanded() {
-        return this.expand.expanded;
-    }
+  ngAfterContentInit() {
+    // Make sure things get started
+    const columnsList = this.hideableColumnService.getColumns();
+    this.updateCellsForColumns(columnsList);
 
-    @Input("clrDgExpanded")
-    public set expanded(value: boolean) {
-        this.expand.expanded = value;
-    }
+    // Triggered when the Cells list changes per row-renderer
+    this.dgCells.changes.subscribe(cellList => {
+      const columnList = this.hideableColumnService.getColumns();
+      if (cellList.length === columnList.length) {
+        this.updateCellsForColumns(columnList);
+      }
+    });
 
-    @Output("clrDgExpandedChange") expandedChange = new EventEmitter<boolean>(false);
+    // Used to set things up the first time but only after all the columns are ready.
+    this.subscription = this.hideableColumnService.columnListChange.subscribe(columnList => {
+      // Prevents cell updates when cols and cells array are not aligned - only seems to run on init / first time.
+      if (columnList.length === this.dgCells.length) {
+        this.updateCellsForColumns(columnList);
+      }
+    });
+  }
 
-    public toggleExpand() {
-        if (this.expand.expandable) {
-            this.expanded = !this.expanded;
-            this.expandedChange.emit(this.expanded);
-        }
-    }
+  /**********
+   *
+   * @description
+   * 1. Maps the new columnListChange to the dgCells list by index
+   * 2. Sets the hidden state on the cell
+   * Take a Column list and use index to access the columns for hideable properties.
+   *
+   */
+  public updateCellsForColumns(columnList: DatagridHideableColumnModel[]) {
+    // Map cells to columns with Array.index
+    this.dgCells.forEach((cell, index) => {
+      const currentColumn = columnList[index]; // Accounts for null space.
+      if (currentColumn) {
+        cell.id = currentColumn.id;
+      }
+    });
+  }
 
-    @HostListener("click")
-    public toggleSelection() {
-        if (!this.selection.rowSelectionMode) {
-            return;
-        }
-
-        switch (this.selection.selectionType) {
-            case SelectionType.None:
-                break;
-            case SelectionType.Single:
-                this.selection.currentSingle = this.item;
-                break;
-            case SelectionType.Multi:
-                this.toggle();
-                break;
-            default:
-                break;
-        }
-    }
-
-    @HostListener("keypress", ["$event"])
-    public keypress(event: KeyboardEvent) {
-        if (!this.selection.rowSelectionMode) {
-            return;
-        }
-
-        // Check to see if space or enter were pressed
-        if (event.keyCode === this.ENTER_KEY_CODE || event.keyCode === this.SPACE_KEY_CODE) {
-            // Prevent the default action to stop scrolling when space is pressed
-            event.preventDefault();
-            this.toggleSelection();
-        }
-    }
-
-    private subscription: Subscription;
-
-    /*****
-     * property dgCells
-     *
-     * @description
-     * A Query List of the ClrDatagrid cells in this row.
-     *
-     */
-    @ContentChildren(ClrDatagridCell) dgCells: QueryList<ClrDatagridCell>;
-
-    ngAfterContentInit() {
-        // Make sure things get started
-        const columnsList = this.hideableColumnService.getColumns();
-        this.updateCellsForColumns(columnsList);
-
-        // Triggered when the Cells list changes per row-renderer
-        this.dgCells.changes.subscribe((cellList) => {
-            const columnList = this.hideableColumnService.getColumns();
-            if (cellList.length === columnList.length) {
-                this.updateCellsForColumns(columnList);
-            }
-        });
-
-        // Used to set things up the first time but only after all the columns are ready.
-        this.subscription = this.hideableColumnService.columnListChange.subscribe((columnList) => {
-            // Prevents cell updates when cols and cells array are not aligned - only seems to run on init / first time.
-            if (columnList.length === this.dgCells.length) {
-                this.updateCellsForColumns(columnList);
-            }
-        });
-    }
-
-    /**********
-     *
-     * @description
-     * 1. Maps the new columnListChange to the dgCells list by index
-     * 2. Sets the hidden state on the cell
-     * Take a Column list and use index to access the columns for hideable properties.
-     *
-     */
-    public updateCellsForColumns(columnList: DatagridHideableColumnModel[]) {
-        // Map cells to columns with Array.index
-        this.dgCells.forEach((cell, index) => {
-            const currentColumn = columnList[index];  // Accounts for null space.
-            if (currentColumn) {
-                cell.id = currentColumn.id;
-            }
-        });
-    }
-
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
-    }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

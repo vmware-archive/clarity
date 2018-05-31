@@ -3,11 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-virtual-scroll-array-demo",
-    template: `
+  selector: 'clr-virtual-scroll-array-demo',
+  template: `
         <h3>100 items array</h3>
         <ul class="container">
             <li *clrVirtualFor="let n of numbers">
@@ -15,8 +15,8 @@ import {Component} from "@angular/core";
             </li>
         </ul>
     `,
-    styleUrls: ["./virtual-scroll.demo.scss"]
+  styleUrls: ['./virtual-scroll.demo.scss'],
 })
 export class VirtualScrollArrayDemo {
-    numbers = Array.from(Array(100).keys());
+  numbers = Array.from(Array(100).keys());
 }

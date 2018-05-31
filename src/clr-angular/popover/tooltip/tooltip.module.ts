@@ -4,26 +4,25 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {CommonModule} from "@angular/common";
-import {NgModule, Type} from "@angular/core";
+import { CommonModule } from '@angular/common';
+import { NgModule, Type } from '@angular/core';
 
-import {ClrIconModule} from "../../icon/icon.module";
-import {ClrConditionalModule} from "../../utils/conditional/conditional.module";
-import {ClrCommonPopoverModule} from "../common/popover.module";
+import { ClrIconModule } from '../../icon/icon.module';
+import { ClrConditionalModule } from '../../utils/conditional/conditional.module';
+import { ClrCommonPopoverModule } from '../common/popover.module';
 
-import {ClrTooltip} from "./tooltip";
-import {ClrTooltipContent} from "./tooltip-content";
-import {ClrTooltipTrigger} from "./tooltip-trigger";
+import { ClrTooltip } from './tooltip';
+import { ClrTooltipContent } from './tooltip-content';
+import { ClrTooltipTrigger } from './tooltip-trigger';
 
 export const CLR_TOOLTIP_DIRECTIVES: Type<any>[] = [ClrTooltip, ClrTooltipTrigger, ClrTooltipContent];
 
 @NgModule({
-    imports: [CommonModule, ClrCommonPopoverModule],
-    declarations: [CLR_TOOLTIP_DIRECTIVES],
-    exports: [CLR_TOOLTIP_DIRECTIVES, ClrConditionalModule, ClrIconModule]
+  imports: [CommonModule, ClrCommonPopoverModule],
+  declarations: [CLR_TOOLTIP_DIRECTIVES],
+  exports: [CLR_TOOLTIP_DIRECTIVES, ClrConditionalModule, ClrIconModule],
 })
-export class ClrTooltipModule {
-}
+export class ClrTooltipModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */

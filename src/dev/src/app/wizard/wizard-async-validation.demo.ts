@@ -4,43 +4,43 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ViewChild} from "@angular/core";
+import { Component, ViewChild } from '@angular/core';
 
-import {ClrCodeHighlight} from "@clr/angular";
-import {ClrWizard} from "@clr/angular";
+import { ClrCodeHighlight } from '@clr/angular';
+import { ClrWizard } from '@clr/angular';
 
-@Component({selector: "clr-wizard-async-validation", templateUrl: "./wizard-async-validation.demo.html"})
+@Component({ selector: 'clr-wizard-async-validation', templateUrl: './wizard-async-validation.demo.html' })
 export class WizardAsyncValidation {
-    @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild("myForm") formData: any;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
+  @ViewChild('wizard') wizard: ClrWizard;
+  @ViewChild('myForm') formData: any;
+  @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
-    loadingFlag: boolean = false;
-    errorFlag: boolean = false;
+  loadingFlag: boolean = false;
+  errorFlag: boolean = false;
 
-    // have to define doCancel because page will prevent doCancel from working
-    // if the page had a previous button, you would need to call
-    // this.wizard.previous() manually as well...
-    doCancel(): void {
-        this.wizard.close();
-    }
+  // have to define doCancel because page will prevent doCancel from working
+  // if the page had a previous button, you would need to call
+  // this.wizard.previous() manually as well...
+  doCancel(): void {
+    this.wizard.close();
+  }
 
-    onCommit(): void {
-        const value: any = this.formData.value;
-        this.loadingFlag = true;
-        this.errorFlag = false;
+  onCommit(): void {
+    const value: any = this.formData.value;
+    this.loadingFlag = true;
+    this.errorFlag = false;
 
-        setTimeout(() => {
-            if (value.answer === "42") {
-                this.wizard.forceNext();
-            } else {
-                this.errorFlag = true;
-            }
-            this.loadingFlag = false;
-        }, 1000);
-    }
+    setTimeout(() => {
+      if (value.answer === '42') {
+        this.wizard.forceNext();
+      } else {
+        this.errorFlag = true;
+      }
+      this.loadingFlag = false;
+    }, 1000);
+  }
 
-    code: string = `
+  code: string = `
 import { Component, ViewChild } from "@angular/core";
 import { Wizard } from "@clr/angular";
 
@@ -78,7 +78,7 @@ export class WizardAsyncValidation {
 }
 `;
 
-    html: string = `
+  html: string = `
 <clr-wizard #wizard [(clrWizardOpen)]="open">
     <clr-wizard-title>Async validation</clr-wizard-title>
 

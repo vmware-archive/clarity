@@ -2,29 +2,28 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-
 @include exports('tabs.clarity') {
   @media screen {
-    section[aria-hidden="true"] {
+    section[aria-hidden='true'] {
       display: none;
     }
   }
 
-  [data-hidden="true"] {
+  [data-hidden='true'] {
     display: none;
   }
 }
 
-button.nav-link{
+button.nav-link {
   border-radius: 0;
   text-transform: capitalize;
   min-width: 0;
 }
 
 .tabs-overflow {
-    position: relative;
+  position: relative;
 
-    .nav-item {
-        margin-right: 0;
-    }
+  .nav-item {
+    margin-right: 0;
+  }
 }

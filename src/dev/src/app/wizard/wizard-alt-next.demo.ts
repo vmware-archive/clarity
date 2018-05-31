@@ -4,62 +4,65 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, OnInit, ViewChild} from "@angular/core";
+import { Component, OnInit, ViewChild } from '@angular/core';
 
-import {ClrCodeHighlight} from "@clr/angular";
-import {ClrWizard} from "@clr/angular";
+import { ClrCodeHighlight } from '@clr/angular';
+import { ClrWizard } from '@clr/angular';
 
-@Component(
-    {selector: "clr-wizard-alt-next", templateUrl: "./wizard-alt-next.demo.html", styles: [".stress { color: red; }"]})
+@Component({
+  selector: 'clr-wizard-alt-next',
+  templateUrl: './wizard-alt-next.demo.html',
+  styles: ['.stress { color: red; }'],
+})
 export class WizardAltNextDemo implements OnInit {
-    @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
+  @ViewChild('wizard') wizard: ClrWizard;
+  @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
-    public model: any;
-    public stressText: boolean = false;
-    public errorFlag: boolean = false;
+  public model: any;
+  public stressText: boolean = false;
+  public errorFlag: boolean = false;
 
-    public ngOnInit() {
-        this.model = {allowNext: false, sequenceOne: "", sequenceTwo: "", sequenceThree: ""};
+  public ngOnInit() {
+    this.model = { allowNext: false, sequenceOne: '', sequenceTwo: '', sequenceThree: '' };
+  }
+
+  public pageCustomNext(): void {
+    if (confirm('Are you sure you got it right?')) {
+      this.errorFlag = false;
+      this.wizard.forceNext();
     }
+  }
 
-    public pageCustomNext(): void {
-        if (confirm("Are you sure you got it right?")) {
-            this.errorFlag = false;
-            this.wizard.forceNext();
-        }
+  public doFinish() {
+    const sequenceOneIsCorrect = this.model.sequenceOne === 3;
+    const sequenceTwoIsCorrect = this.model.sequenceTwo === 5;
+    const sequenceThreeIsCorrect = this.model.sequenceThree === 8;
+    const allAreCorrect = sequenceOneIsCorrect && sequenceTwoIsCorrect && sequenceThreeIsCorrect;
+
+    if (allAreCorrect) {
+      this.wizard.finish();
+      // resetting for another pass through
+      this.model.allowNext = false;
+      this.model.sequenceOne = '';
+      this.model.sequenceTwo = '';
+      this.model.sequenceThree = '';
+      this.wizard.reset();
+      this.errorFlag = false;
+    } else {
+      this.errorFlag = true;
     }
+  }
 
-    public doFinish() {
-        const sequenceOneIsCorrect = this.model.sequenceOne === 3;
-        const sequenceTwoIsCorrect = this.model.sequenceTwo === 5;
-        const sequenceThreeIsCorrect = this.model.sequenceThree === 8;
-        const allAreCorrect = sequenceOneIsCorrect && sequenceTwoIsCorrect && sequenceThreeIsCorrect;
-
-        if (allAreCorrect) {
-            this.wizard.finish();
-            // resetting for another pass through
-            this.model.allowNext = false;
-            this.model.sequenceOne = "";
-            this.model.sequenceTwo = "";
-            this.model.sequenceThree = "";
-            this.wizard.reset();
-            this.errorFlag = false;
-        } else {
-            this.errorFlag = true;
-        }
+  public doNext() {
+    if (this.model.allowNext) {
+      this.wizard.forceNext();
+      this.stressText = false;
+    } else {
+      this.stressText = true;
     }
+  }
 
-    public doNext() {
-        if (this.model.allowNext) {
-            this.wizard.forceNext();
-            this.stressText = false;
-        } else {
-            this.stressText = true;
-        }
-    }
-
-    code: string = `
+  code: string = `
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { Wizard } from "@clr/angular";
 import { CodeHighlight } from "@clr/angular";
@@ -124,7 +127,7 @@ export class WizardAltNextDemo implements OnInit {
 }
 `;
 
-    html: string = `
+  html: string = `
 <clr-wizard #wizard
     [(clrWizardOpen)]="open"
     [clrWizardSize]="'lg'"

@@ -3,31 +3,31 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @include exports('forms.input-group') {
-    .clr-input-group {
-        @include form-fields-appearance($clr-forms-border-color);
-        @include input-border-bottom-animation($clr-forms-focused-color);
-        margin-right: $clr-forms-baseline * 4;
-        max-width: calc(100% - 1rem);
-        color: $clr-forms-text-color;
-        
-        .clr-input {
-            background: none;
-            border: none;
-            margin-right: 0;
-            max-width: 100%;
-            
-            &:not([readonly]):focus {
-                background-size: 0%;
-            }
-        }
+  .clr-input-group {
+    @include form-fields-appearance($clr-forms-border-color);
+    @include input-border-bottom-animation($clr-forms-focused-color);
+    margin-right: $clr-forms-baseline * 4;
+    max-width: calc(100% - 1rem);
+    color: $clr-forms-text-color;
 
-        select {
-            border: none;
-        }
+    .clr-input {
+      background: none;
+      border: none;
+      margin-right: 0;
+      max-width: 100%;
 
-        .clr-input-group-icon-action {
-            color: $clr-forms-focused-color;
-            cursor: pointer;
-        }
+      &:not([readonly]):focus {
+        background-size: 0%;
+      }
     }
+
+    select {
+      border: none;
+    }
+
+    .clr-input-group-icon-action {
+      color: $clr-forms-focused-color;
+      cursor: pointer;
+    }
+  }
 }

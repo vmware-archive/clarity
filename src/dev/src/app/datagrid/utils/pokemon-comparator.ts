@@ -4,11 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {ClrDatagridComparatorInterface} from "@clr/angular";
-import {User} from "../inventory/user";
+import { ClrDatagridComparatorInterface } from '@clr/angular';
+import { User } from '../inventory/user';
 
 export class PokemonComparator implements ClrDatagridComparatorInterface<User> {
-    compare(a: User, b: User) {
-        return a.pokemon.number - b.pokemon.number;
-    }
+  compare(a: User, b: User) {
+    return a.pokemon.number - b.pokemon.number;
+  }
 }

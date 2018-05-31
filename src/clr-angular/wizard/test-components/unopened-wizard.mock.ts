@@ -4,11 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ViewChild} from "@angular/core";
-import {ClrWizard} from "../wizard";
+import { Component, ViewChild } from '@angular/core';
+import { ClrWizard } from '../wizard';
 
 @Component({
-    template: `
+  template: `
         <clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardSize]="'lg'">
             <clr-wizard-title>My Wizard Title</clr-wizard-title>
             <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
@@ -29,9 +29,9 @@ import {ClrWizard} from "../wizard";
                 <p>Content for step 3</p>
             </clr-wizard-page>
         </clr-wizard>
-    `
+    `,
 })
 export class UnopenedWizardTestComponent {
-    @ViewChild("wizard") wizard: ClrWizard;
-    open: boolean = false;
+  @ViewChild('wizard') wizard: ClrWizard;
+  open: boolean = false;
 }

@@ -4,6 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from "./loading";
-export * from "./loading-listener";
-export * from "./loading.module";
+export * from './loading';
+export * from './loading-listener';
+export * from './loading.module';

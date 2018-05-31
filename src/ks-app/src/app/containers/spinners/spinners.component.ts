@@ -4,8 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
-@Component({templateUrl: "./spinners.component.html"})
-export class KSSpinners {
-}
+@Component({ templateUrl: './spinners.component.html' })
+export class KSSpinners {}

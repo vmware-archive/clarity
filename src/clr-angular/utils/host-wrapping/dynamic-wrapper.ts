@@ -5,5 +5,5 @@
  */
 
 export interface DynamicWrapper {
-    _dynamic: boolean;
+  _dynamic: boolean;
 }

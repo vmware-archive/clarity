@@ -4,15 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Server} from "./server";
-import {SERVERS} from "./values";
+import { Server } from './server';
+import { SERVERS } from './values';
 
 export class Status {
-    private _all: Server[];
-    constructor() {
-        this._all = SERVERS;
-    }
-    fetch(): Server[] {
-        return this._all;
-    }
+  private _all: Server[];
+  constructor() {
+    this._all = SERVERS;
+  }
+  fetch(): Server[] {
+    return this._all;
+  }
 }

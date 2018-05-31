@@ -3,11 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ModuleWithProviders} from "@angular/core/src/metadata/ng_module";
-import {RouterModule, Routes} from "@angular/router";
+import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
+import { RouterModule, Routes } from '@angular/router';
 
-import {RadiosDemo} from "./radios.demo";
+import { RadiosDemo } from './radios.demo';
 
-const ROUTES: Routes = [{path: "", component: RadiosDemo}];
+const ROUTES: Routes = [{ path: '', component: RadiosDemo }];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forChild(ROUTES);

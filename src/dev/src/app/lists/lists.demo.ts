@@ -3,12 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "clr-lists-demo",
-    styleUrls: [],
-    template: `
+  selector: 'clr-lists-demo',
+  styleUrls: [],
+  template: `
         <h2>Lists</h2>
         <ul>
             <li><a [routerLink]="['./lists-ul']">Lists</a></li>
@@ -20,7 +20,6 @@ import {Component} from "@angular/core";
             <li><a [routerLink]="['./old-lists-in-cards']">Old Lists In Cards</a></li>
         </ul>
         <router-outlet></router-outlet>
-    `
+    `,
 })
-export class ListsDemo {
-}
+export class ListsDemo {}

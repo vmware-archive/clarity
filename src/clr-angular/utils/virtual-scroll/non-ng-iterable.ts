@@ -10,9 +10,9 @@
  * the app on infinite generators.
  */
 export interface NonNgIterable<T> {
-    get(index?: number): T;
+  get(index?: number): T;
 }
 
 export function isNonNgIterable<T>(o: any): o is NonNgIterable<T> {
-    return "get" in o;
+  return 'get' in o;
 }

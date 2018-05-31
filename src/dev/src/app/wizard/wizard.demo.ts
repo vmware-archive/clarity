@@ -4,11 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {Component, ViewEncapsulation} from "@angular/core";
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-    selector: "clr-wizard-demo",
-    template: `
+  selector: 'clr-wizard-demo',
+  template: `
       <h2>New Wizard</h2>
       <div class="row">
         <div class="col-xs-12 col-sm-6">
@@ -38,7 +38,6 @@ import {Component, ViewEncapsulation} from "@angular/core";
 
       <router-outlet></router-outlet>
    `,
-    encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
-export class WizardDemo {
-}
+export class WizardDemo {}

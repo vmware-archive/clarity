@@ -10,10 +10,10 @@
  * over the place because we load them asynchronously.
  */
 
-import CheckboxContainerSpecs from "./checkbox-container.spec";
-import CheckboxSpecs from "./checkbox.spec";
+import CheckboxContainerSpecs from './checkbox-container.spec';
+import CheckboxSpecs from './checkbox.spec';
 
-describe("Checkbox component", function() {
-    CheckboxContainerSpecs();
-    CheckboxSpecs();
+describe('Checkbox component', function() {
+  CheckboxContainerSpecs();
+  CheckboxSpecs();
 });

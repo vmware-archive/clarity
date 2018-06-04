@@ -101,6 +101,33 @@ export default function() {
 
           expect(dateNavigationService.selectedDay).toBeNull();
         });
+
+        it('outputs the date when the user selects a Date from the Date Picker', () => {
+          expect(context.testComponent.date).toBeUndefined();
+
+          dateNavigationService.notifySelectedDayChanged(new DayModel(2015, 1, 1));
+
+          expect(context.testComponent.date.getFullYear()).toBe(2015);
+          expect(context.testComponent.date.getMonth()).toBe(1);
+          expect(context.testComponent.date.getDate()).toBe(1);
+        });
+
+        it('outputs the date when the user changes the date manually in th input', () => {
+          expect(context.testComponent.date).toBeUndefined();
+
+          const input: HTMLInputElement = context.testElement.querySelector('input');
+          input.value = '01/01/2015';
+          input.dispatchEvent(new Event('change'));
+
+          expect(context.testComponent.date.getFullYear()).toBe(2015);
+          expect(context.testComponent.date.getMonth()).toBe(0);
+          expect(context.testComponent.date.getDate()).toBe(1);
+
+          input.value = '01/01/201';
+          input.dispatchEvent(new Event('change'));
+
+          expect(context.testComponent.date).toBe(null);
+        });
       });
 
       describe('Date Display', () => {
@@ -250,6 +277,30 @@ export default function() {
         expect(dateNavigationService.selectedDay.date).toBe(5);
       });
 
+      it('outputs the date when the user manually changes the date', () => {
+        const inputEl: HTMLInputElement = fixture.nativeElement.querySelector('input');
+        let date: Date = fixture.componentInstance.dateOutput;
+
+        expect(date).toBeUndefined();
+        inputEl.value = '01/01/2012';
+        inputEl.dispatchEvent(new Event('change'));
+        fixture.detectChanges();
+
+        date = fixture.componentInstance.dateOutput;
+
+        expect(date.getFullYear()).toBe(2012);
+        expect(date.getMonth()).toBe(0);
+        expect(date.getDate()).toBe(1);
+
+        inputEl.value = '01/01/201';
+        inputEl.dispatchEvent(new Event('change'));
+        fixture.detectChanges();
+
+        date = fixture.componentInstance.dateOutput;
+
+        expect(date).toBeNull();
+      });
+
       it('marks the form as touched when the markAsTouched event is received', () => {
         const date = fixture.componentInstance.testForm.get('date');
         expect(date.touched).toBe(false);
@@ -309,6 +360,30 @@ export default function() {
           expect(form.get('date').dirty).toBe(true);
           done();
         });
+      });
+
+      it('outputs the date when the user manually changes the date', () => {
+        const inputEl: HTMLInputElement = fixture.nativeElement.querySelector('input');
+        let date: Date = fixture.componentInstance.dateOutput;
+
+        expect(date).toBeUndefined();
+        inputEl.value = '01/01/2012';
+        inputEl.dispatchEvent(new Event('change'));
+        fixture.detectChanges();
+
+        date = fixture.componentInstance.dateOutput;
+
+        expect(date.getFullYear()).toBe(2012);
+        expect(date.getMonth()).toBe(0);
+        expect(date.getDate()).toBe(1);
+
+        inputEl.value = '01/01/201';
+        inputEl.dispatchEvent(new Event('change'));
+        fixture.detectChanges();
+
+        date = fixture.componentInstance.dateOutput;
+
+        expect(date).toBeNull();
       });
     });
 
@@ -389,10 +464,16 @@ export default function() {
 
 @Component({
   template: `
-        <input type="date" clrDate>
+        <input type="date" clrDate (clrDateChange)="dateChanged($event)">
     `,
 })
-class TestComponent {}
+class TestComponent {
+  date: Date;
+
+  dateChanged(date: Date) {
+    this.date = date;
+  }
+}
 
 @Component({
   template: `
@@ -417,24 +498,34 @@ class TestComponentWithClrDate {
 @Component({
   template: `
         <form [formGroup]="testForm">
-            <input id="dateControl" type="date" clrDate formControlName="date">
+            <input id="dateControl" type="date" clrDate (clrDateChange)="dateChanged($event)" formControlName="date">
         </form>
     `,
 })
 class TestComponentWithReactiveForms {
   dateInput: string = '01/01/2015';
   testForm = new FormGroup({ date: new FormControl(this.dateInput) });
+
+  dateOutput: Date;
+
+  dateChanged(date: Date) {
+    this.dateOutput = date;
+  }
 }
 
 @Component({
   template: `
         <form #templateForm="ngForm">
-            <input type="date" clrDate [(ngModel)]="dateInput" name="date">
+            <input type="date" clrDate (clrDateChange)="dateChanged($event)" [(ngModel)]="dateInput" name="date">
         </form>
-        {{templateForm.touched}}
     `,
 })
 class TestComponentWithTemplateDrivenForms {
   @ViewChild('templateForm') templateForm: NgForm;
   dateInput: string = '01/01/2015';
+  dateOutput: Date;
+
+  dateChanged(date: Date) {
+    this.dateOutput = date;
+  }
 }

@@ -9,6 +9,7 @@ import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing"
 import {FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule} from "@angular/forms";
 import {By} from "@angular/platform-browser";
 
+import {itIgnore} from "../../../../tests/tests.helpers";
 import {TestContext} from "../../data/datagrid/helpers.spec";
 import {ClrFormsModule} from "../../forms-deprecated";
 import {IfOpenService} from "../../utils/conditional/if-open.service";
@@ -37,11 +38,15 @@ export default function() {
                 TestBed.overrideComponent(ClrDateContainer, {
                     set: {
                         providers: [
-                            {provide: DatepickerEnabledService, useClass: MockDatepickerEnabledService}, IfOpenService,
-                            DateNavigationService, LocaleHelperService, DateIOService, FormControlService,
-                            DateFormControlService
-                        ]
-                    }
+                            {provide: DatepickerEnabledService, useClass: MockDatepickerEnabledService},
+                            IfOpenService,
+                            DateNavigationService,
+                            LocaleHelperService,
+                            DateIOService,
+                            FormControlService,
+                            DateFormControlService,
+                        ],
+                    },
                 });
 
                 context = this.create(ClrDateInput, TestComponent, []);
@@ -97,6 +102,33 @@ export default function() {
 
                     expect(dateNavigationService.selectedDay).toBeNull();
                 });
+
+                it("outputs the date when the user selects a Date from the Date Picker", () => {
+                    expect(context.testComponent.date).toBeUndefined();
+
+                    dateNavigationService.notifySelectedDayChanged(new DayModel(2015, 1, 1));
+
+                    expect(context.testComponent.date.getFullYear()).toBe(2015);
+                    expect(context.testComponent.date.getMonth()).toBe(1);
+                    expect(context.testComponent.date.getDate()).toBe(1);
+                });
+
+                it("outputs the date when the user changes the date manually in th input", () => {
+                    expect(context.testComponent.date).toBeUndefined();
+
+                    const input: HTMLInputElement = context.testElement.querySelector("input");
+                    input.value = "01/01/2015";
+                    input.dispatchEvent(new Event("change"));
+
+                    expect(context.testComponent.date.getFullYear()).toBe(2015);
+                    expect(context.testComponent.date.getMonth()).toBe(0);
+                    expect(context.testComponent.date.getDate()).toBe(1);
+
+                    input.value = "01/01/201";
+                    input.dispatchEvent(new Event("change"));
+
+                    expect(context.testComponent.date).toBe(null);
+                });
             });
 
             describe("Date Display", () => {
@@ -120,7 +152,9 @@ export default function() {
                     expect(context.clarityElement.placeholder).toBe("MM/DD/YYYY");
                 });
 
-                it("binds the input type correctly", () => {
+                // Ignore Safari and IE here because it silently disallows setting to `date` types
+                // since it is not supported.
+                itIgnore(["safari", "ie"], "binds the input type correctly", () => {
                     expect(context.clarityElement.type).toBe("text");
 
                     enabledService.fakeIsEnabled = false;
@@ -142,17 +176,17 @@ export default function() {
 
         describe("Datepicker with ngModel", () => {
             let fixture: ComponentFixture<TestComponentWithNgModel>;
-            let compiled: any;
             let dateContainerDebugElement: DebugElement;
             let dateInputDebugElement: DebugElement;
 
             beforeEach(function() {
-                TestBed.configureTestingModule(
-                    {imports: [FormsModule, ClrFormsModule], declarations: [TestComponentWithNgModel]});
+                TestBed.configureTestingModule({
+                    imports: [FormsModule, ClrFormsModule],
+                    declarations: [TestComponentWithNgModel],
+                });
 
                 fixture = TestBed.createComponent(TestComponentWithNgModel);
                 fixture.detectChanges();
-                compiled = fixture.nativeElement;
                 dateContainerDebugElement = fixture.debugElement.query(By.directive(ClrDateContainer));
                 dateInputDebugElement = fixture.debugElement.query(By.directive(ClrDateInput));
                 dateNavigationService = dateContainerDebugElement.injector.get(DateNavigationService);
@@ -187,31 +221,32 @@ export default function() {
                 expect(fixture.componentInstance.dateValue).toBe("02/01/2015");
             });
 
-            it("updates the model and the selectedDay when the changes the input field", fakeAsync(() => {
-                   dateInputDebugElement.nativeElement.value = "01/02/2015";
-                   dateInputDebugElement.nativeElement.dispatchEvent(new Event("change"));
+            // IE doesn't handle Event constructor
+            itIgnore(["ie"], "updates the model and the selectedDay when the changes the input field", fakeAsync(() => {
+                         dateInputDebugElement.nativeElement.value = "01/02/2015";
+                         dateInputDebugElement.nativeElement.dispatchEvent(new Event("change"));
 
-                   fixture.detectChanges();
-                   tick();
+                         fixture.detectChanges();
+                         tick();
 
-                   expect(dateNavigationService.selectedDay).toEqual(new DayModel(2015, 0, 2));
-               }));
+                         expect(dateNavigationService.selectedDay).toEqual(new DayModel(2015, 0, 2));
+                     }));
         });
 
         describe("Datepicker with Reactive Forms", () => {
             let fixture: ComponentFixture<TestComponentWithReactiveForms>;
-            let compiled: any;
 
             let dateContainerDebugElement: DebugElement;
             let dateInputDebugElement: DebugElement;
 
             beforeEach(function() {
-                TestBed.configureTestingModule(
-                    {imports: [ReactiveFormsModule, ClrFormsModule], declarations: [TestComponentWithReactiveForms]});
+                TestBed.configureTestingModule({
+                    imports: [ReactiveFormsModule, ClrFormsModule],
+                    declarations: [TestComponentWithReactiveForms],
+                });
 
                 fixture = TestBed.createComponent(TestComponentWithReactiveForms);
                 fixture.detectChanges();
-                compiled = fixture.nativeElement;
                 dateContainerDebugElement = fixture.debugElement.query(By.directive(ClrDateContainer));
                 dateInputDebugElement = fixture.debugElement.query(By.directive(ClrDateInput));
                 dateNavigationService = dateContainerDebugElement.injector.get(DateNavigationService);
@@ -234,6 +269,30 @@ export default function() {
                 expect(dateNavigationService.selectedDay.year).toBe(2018);
                 expect(dateNavigationService.selectedDay.month).toBe(4);
                 expect(dateNavigationService.selectedDay.date).toBe(5);
+            });
+
+            it("outputs the date when the user manually changes the date", () => {
+                const inputEl: HTMLInputElement = fixture.nativeElement.querySelector("input");
+                let date: Date = fixture.componentInstance.dateOutput;
+
+                expect(date).toBeUndefined();
+                inputEl.value = "01/01/2012";
+                inputEl.dispatchEvent(new Event("change"));
+                fixture.detectChanges();
+
+                date = fixture.componentInstance.dateOutput;
+
+                expect(date.getFullYear()).toBe(2012);
+                expect(date.getMonth()).toBe(0);
+                expect(date.getDate()).toBe(1);
+
+                inputEl.value = "01/01/201";
+                inputEl.dispatchEvent(new Event("change"));
+                fixture.detectChanges();
+
+                date = fixture.componentInstance.dateOutput;
+
+                expect(date).toBeNull();
             });
 
             it("marks the form as touched when the markAsTouched event is received", () => {
@@ -260,8 +319,10 @@ export default function() {
             let dateContainerDebugElement: DebugElement;
 
             beforeEach(function() {
-                TestBed.configureTestingModule(
-                    {imports: [FormsModule, ClrFormsModule], declarations: [TestComponentWithTemplateDrivenForms]});
+                TestBed.configureTestingModule({
+                    imports: [FormsModule, ClrFormsModule],
+                    declarations: [TestComponentWithTemplateDrivenForms],
+                });
                 fixture = TestBed.createComponent(TestComponentWithTemplateDrivenForms);
                 fixture.detectChanges();
 
@@ -269,7 +330,7 @@ export default function() {
                 dateFormControlService = dateContainerDebugElement.injector.get(DateFormControlService);
             });
 
-            it("marks the form as touched when the markAsTouched event is received", (done) => {
+            it("marks the form as touched when the markAsTouched event is received", done => {
                 fixture.whenStable().then(() => {
                     const form = fixture.componentInstance.templateForm.form;
                     expect(form.get("date").touched).toBe(false);
@@ -282,7 +343,7 @@ export default function() {
                 });
             });
 
-            it("marks the form as dirty when the markAsDirty event is received", (done) => {
+            it("marks the form as dirty when the markAsDirty event is received", done => {
                 fixture.whenStable().then(() => {
                     const form = fixture.componentInstance.templateForm.form;
                     expect(form.get("date").dirty).toBe(false);
@@ -294,21 +355,45 @@ export default function() {
                     done();
                 });
             });
+
+            it("outputs the date when the user manually changes the date", () => {
+                const inputEl: HTMLInputElement = fixture.nativeElement.querySelector("input");
+                let date: Date = fixture.componentInstance.dateOutput;
+
+                expect(date).toBeUndefined();
+                inputEl.value = "01/01/2012";
+                inputEl.dispatchEvent(new Event("change"));
+                fixture.detectChanges();
+
+                date = fixture.componentInstance.dateOutput;
+
+                expect(date.getFullYear()).toBe(2012);
+                expect(date.getMonth()).toBe(0);
+                expect(date.getDate()).toBe(1);
+
+                inputEl.value = "01/01/201";
+                inputEl.dispatchEvent(new Event("change"));
+                fixture.detectChanges();
+
+                date = fixture.componentInstance.dateOutput;
+
+                expect(date).toBeNull();
+            });
         });
 
         describe("Datepicker with clrDate", () => {
             let fixture: ComponentFixture<TestComponentWithClrDate>;
-            let compiled: any;
             let dateContainerDebugElement: DebugElement;
             let dateInputDebugElement: DebugElement;
 
             beforeEach(function() {
-                TestBed.configureTestingModule(
-                    {imports: [FormsModule, ClrFormsModule], declarations: [TestComponentWithClrDate]});
+                TestBed.configureTestingModule({
+                    imports: [FormsModule, ClrFormsModule],
+                    declarations: [TestComponentWithClrDate],
+                });
 
                 fixture = TestBed.createComponent(TestComponentWithClrDate);
                 fixture.detectChanges();
-                compiled = fixture.nativeElement;
                 dateContainerDebugElement = fixture.debugElement.query(By.directive(ClrDateContainer));
                 dateInputDebugElement = fixture.debugElement.query(By.directive(ClrDateInput));
                 dateNavigationService = dateContainerDebugElement.injector.get(DateNavigationService);
@@ -348,7 +433,8 @@ export default function() {
                 expect(fixture.componentInstance.date.getDate()).toBe(date.getDate());
             });
 
-            it("emits the date when the user changes the input", () => {
+            // IE doesn't like event constructors
+            itIgnore(["ie"], "emits the date when the user changes the input", () => {
                 dateInputDebugElement.nativeElement.value = "01/02/2015";
                 dateInputDebugElement.nativeElement.dispatchEvent(new Event("change"));
 
@@ -371,15 +457,21 @@ export default function() {
 
 @Component({
     template: `
-        <input type="date" clrDate>
-    `
+        <input type="date" clrDate (clrDateChange)="dateChanged($event)">
+    `,
 })
-class TestComponent {}
+class TestComponent {
+    date: Date;
+
+    dateChanged(date: Date) {
+        this.date = date;
+    }
+}
 
 @Component({
     template: `
         <input type="date" clrDate [(ngModel)]="dateValue">
-    `
+    `,
 })
 class TestComponentWithNgModel {
     dateValue: string;
@@ -390,7 +482,7 @@ class TestComponentWithNgModel {
 @Component({
     template: `
         <input type="date" [(clrDate)]="date">
-    `
+    `,
 })
 class TestComponentWithClrDate {
     date: Date;
@@ -399,24 +491,34 @@ class TestComponentWithClrDate {
 @Component({
     template: `
         <form [formGroup]="testForm">
-            <input id="dateControl" type="date" clrDate formControlName="date">
+            <input id="dateControl" type="date" clrDate (clrDateChange)="dateChanged($event)" formControlName="date">
         </form>
-    `
+    `,
 })
 class TestComponentWithReactiveForms {
     dateInput: string = "01/01/2015";
     testForm = new FormGroup({date: new FormControl(this.dateInput)});
+
+    dateOutput: Date;
+
+    dateChanged(date: Date) {
+        this.dateOutput = date;
+    }
 }
 
 @Component({
     template: `
         <form #templateForm="ngForm">
-            <input type="date" clrDate [(ngModel)]="dateInput" name="date">
+            <input type="date" clrDate (clrDateChange)="dateChanged($event)" [(ngModel)]="dateInput" name="date">
         </form>
-        {{templateForm.touched}}
-    `
+    `,
 })
 class TestComponentWithTemplateDrivenForms {
     @ViewChild("templateForm") templateForm: NgForm;
     dateInput: string = "01/01/2015";
+    dateOutput: Date;
+
+    dateChanged(date: Date) {
+        this.dateOutput = date;
+    }
 }

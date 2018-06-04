@@ -10,7 +10,7 @@
     <section class="form-block">
         <div class="form-group">
             <label for="dateControl">Date</label>
-            <input id="dateControl" type="date" clrDate formControlName="date"/>
+            <input id="dateControl" type="date" clrDate (clrDateChange)="dateChanged($event)" formControlName="date"/>
         </div>
         <div class="form-group">
             <label for="nameControl">Name</label>

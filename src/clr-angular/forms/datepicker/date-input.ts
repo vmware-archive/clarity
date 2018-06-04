@@ -21,7 +21,7 @@ import {
     PLATFORM_ID,
     Renderer2,
     Self,
-    ViewContainerRef
+    ViewContainerRef,
 } from "@angular/core";
 import {NgControl} from "@angular/forms";
 import {Subscription} from "rxjs/Subscription";
@@ -41,6 +41,22 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
      * Subscriptions to all the services and queries changes
      */
     private _subscriptions: Subscription[] = [];
+
+    // We need this variable because if the date input has a value initialized
+    // we do not output it. This variable is false during initial load. We make sure that
+    // during initial load dayModelOutputted is equal to the value entered by the user so that initialized
+    // value isn't emitted back to the user. After initial load,
+    // we set this to true and the dayModelOutputted is set only
+    // when the Output is emitted to the user.
+    private previousOutputInitializedFlag: boolean = false;
+    private previousOutput: DayModel;
+
+    private initializePreviousOutput(dayModel: DayModel) {
+        if (!this.previousOutputInitializedFlag) {
+            this.previousOutput = dayModel;
+            this.previousOutputInitializedFlag = true;
+        }
+    }
 
     constructor(@Optional() private container: ClrDateContainer, vcr: ViewContainerRef, private elRef: ElementRef,
                 private renderer: Renderer2, @Self() @Optional() private _ngControl: NgControl,
@@ -79,6 +95,7 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
         // Will explore that later and see if its a cleaner solution.
         if (this._ngControl && this._ngControl.value) {
             this.updateInputValue(this._ngControl.value);
+            this.initializePreviousOutput(this._dateNavigationService.selectedDay);
         }
     }
 
@@ -188,7 +205,7 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
      */
     @HostBinding("attr.type")
     get inputType(): string {
-        return (isPlatformBrowser(this.platformId) && this._datepickerEnabledService.isEnabled) ? "text" : "date";
+        return isPlatformBrowser(this.platformId) && this._datepickerEnabledService.isEnabled ? "text" : "date";
     }
 
     //
@@ -202,6 +219,16 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
 
     @Output("clrDateChange") _dateUpdated: EventEmitter<Date> = new EventEmitter<Date>(false);
 
+    private emitDateOutput(dayModel: DayModel): void {
+        if (dayModel && !dayModel.isEqual(this.previousOutput)) {
+            this._dateUpdated.emit(dayModel.toDate());
+            this.previousOutput = dayModel;
+        } else if (!dayModel && this.previousOutput) {
+            this._dateUpdated.emit(null);
+            this.previousOutput = null;
+        }
+    }
+
     /**
      * Fires this method when the user changes the input focuses out of the input field.
      */
@@ -211,15 +238,11 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
         const date: Date = this._dateIOService.isValidInput(value);
         if (date) {
             const dayModel: DayModel = new DayModel(date.getFullYear(), date.getMonth(), date.getDate());
-            if (!dayModel.isEqual(this._dateNavigationService.selectedDay)) {
-                this._dateNavigationService.selectedDay = dayModel;
-                this._dateUpdated.emit(date);
-            }
+            this._dateNavigationService.selectedDay = dayModel;
+            this.emitDateOutput(dayModel);
         } else {
-            if (this._dateNavigationService.selectedDay) {
-                this._dateNavigationService.selectedDay = null;
-                this._dateUpdated.emit(null);
-            }
+            this._dateNavigationService.selectedDay = null;
+            this.emitDateOutput(null);
         }
     }
 
@@ -230,7 +253,6 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
         if (this._dateNavigationService && this._dateIOService) {
             // This subscription is fired when the user selects a date from the popover.
             this._subscriptions.push(this._dateNavigationService.selectedDayChange.subscribe((dayModel: DayModel) => {
-                const date: Date = dayModel.toDate();
                 const dateStr: string = this._dateIOService.toLocaleDisplayFormatString(dayModel.toDate());
                 this.writeDateStrToInputField(dateStr);
                 // This makes sure that ngModelChange is fired
@@ -240,20 +262,20 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
                 if (this._ngControl) {
                     this._ngControl.control.setValue(dateStr);
                 }
-                this._dateUpdated.emit(date);
+                this.emitDateOutput(dayModel);
             }));
-
 
             // We do not emit an Output from this subscription because
             // we only emit the Output when the user has focused out of the input.
             if (this._ngControl) {
                 this._subscriptions.push(this._ngControl.valueChanges.subscribe((value: string) => {
-                    if (value) {
-                        const date: Date = this._dateIOService.isValidInput(value);
-                        if (date) {
-                            this._dateNavigationService.selectedDay =
-                                new DayModel(date.getFullYear(), date.getMonth(), date.getDate());
-                        }
+                    const date: Date = this._dateIOService.isValidInput(value);
+                    if (date) {
+                        const dayModel: DayModel = new DayModel(date.getFullYear(), date.getMonth(), date.getDate());
+                        this._dateNavigationService.selectedDay = dayModel;
+                        this.initializePreviousOutput(dayModel);
+                    } else {
+                        this.initializePreviousOutput(null);
                     }
                 }));
             }

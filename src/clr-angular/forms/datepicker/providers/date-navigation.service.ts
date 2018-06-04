@@ -59,6 +59,10 @@ export class DateNavigationService {
     return this._selectedDayChange.asObservable();
   }
 
+  /**
+   * Notifies that the selected day has changed so that the date can be emitted to the user.
+   * Note: Only to be called from day.ts
+   */
   notifySelectedDayChanged(dayModel: DayModel) {
     if (dayModel.isEqual(this.selectedDay)) {
       return;

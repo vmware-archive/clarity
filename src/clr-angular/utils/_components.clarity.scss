@@ -7,13 +7,13 @@
 
 // Bootstrap 4 Dependencies - Begin Part 2
 // NOTE: These are here b/c they need to be overwritable for the $grid-breakpoints map in a theme.
-@import '../../../node_modules/bootstrap/scss/media';
-@import '../../../node_modules/bootstrap/scss/utilities';
-@import '../../../node_modules/bootstrap/scss/images';
-@import '../../../node_modules/bootstrap/scss/list-group';
-@import '../../../node_modules/bootstrap/scss/close';
-@import '../../../node_modules/bootstrap/scss/grid';
-@import '../../../node_modules/bootstrap/scss/responsive-embed';
+@import 'bootstrap/scss/media';
+@import 'bootstrap/scss/utilities';
+@import 'bootstrap/scss/images';
+@import 'bootstrap/scss/list-group';
+@import 'bootstrap/scss/close';
+@import 'bootstrap/scss/grid';
+@import 'bootstrap/scss/responsive-embed';
 
 // Clarity scss maps w/ overridable variables per component
 @import 'maps.clarity';

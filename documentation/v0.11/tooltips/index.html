@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Tooltips</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Tooltips</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
                 i[r] = i[r] || function () {
@@ -20,7 +20,7 @@
                 ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
             }
 
-        }</script><link href="styles.88290316efb62a5e326e.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.clr-example[_ngcontent-c30]{position:relative}.clr-example.squeeze[_ngcontent-c30]{padding:24px}.clr-example.example-center[_ngcontent-c30]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.clr-example.example-center.example-column[_ngcontent-c30]{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.clr-example[_ngcontent-c30]   .example-icon[_ngcontent-c30]{display:inline-block;height:14px;width:14px;padding:0;background-repeat:no-repeat;background-size:contain;cursor:pointer;vertical-align:middle}.clr-example[_ngcontent-c30]   .example-icon.example-add-icon[_ngcontent-c30]{background-image:generateAddIcon()}.clr-example[_ngcontent-c30]   .example-icon.example-add-icon[_ngcontent-c30]:hover{background-image:generateAddIcon(#007cbb)}.clr-example[_ngcontent-c30]   .example-icon.example-edit-icon[_ngcontent-c30]{background-image:generateEditIcon()}.clr-example[_ngcontent-c30]   .example-icon.example-edit-icon[_ngcontent-c30]:hover{background-image:generateEditIcon(#007cbb)}.clr-example[_ngcontent-c30]   .example-icon.example-folder-add-icon[_ngcontent-c30]{background-image:generateFolderAddIcon()}.clr-example[_ngcontent-c30]   .example-icon.example-folder-add-icon[_ngcontent-c30]:hover{background-image:generateFolderAddIcon(#007cbb)}.clr-example[_ngcontent-c30]   .example-icon.example-more-icon[_ngcontent-c30]{background-image:generateMoreIcon()}.clr-example[_ngcontent-c30]   .example-icon.example-more-icon[_ngcontent-c30]:hover{background-image:generateMoreIcon(#007cbb)}</style><style ng-transition="clarity">.clr-example[_ngcontent-c31]{position:relative}.clr-example.squeeze[_ngcontent-c31]{padding:24px}.clr-example.example-center[_ngcontent-c31]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.clr-example.example-center.example-column[_ngcontent-c31]{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.clr-example[_ngcontent-c31]   .example-icon[_ngcontent-c31]{display:inline-block;height:14px;width:14px;padding:0;background-repeat:no-repeat;background-size:contain;cursor:pointer;vertical-align:middle}.clr-example[_ngcontent-c31]   .example-icon.example-add-icon[_ngcontent-c31]{background-image:generateAddIcon()}.clr-example[_ngcontent-c31]   .example-icon.example-add-icon[_ngcontent-c31]:hover{background-image:generateAddIcon(#007cbb)}.clr-example[_ngcontent-c31]   .example-icon.example-edit-icon[_ngcontent-c31]{background-image:generateEditIcon()}.clr-example[_ngcontent-c31]   .example-icon.example-edit-icon[_ngcontent-c31]:hover{background-image:generateEditIcon(#007cbb)}.clr-example[_ngcontent-c31]   .example-icon.example-folder-add-icon[_ngcontent-c31]{background-image:generateFolderAddIcon()}.clr-example[_ngcontent-c31]   .example-icon.example-folder-add-icon[_ngcontent-c31]:hover{background-image:generateFolderAddIcon(#007cbb)}.clr-example[_ngcontent-c31]   .example-icon.example-more-icon[_ngcontent-c31]{background-image:generateMoreIcon()}.clr-example[_ngcontent-c31]   .example-icon.example-more-icon[_ngcontent-c31]:hover{background-image:generateMoreIcon(#007cbb)}</style><style ng-transition="clarity">.clr-example[_ngcontent-c32]{position:relative}.clr-example.squeeze[_ngcontent-c32]{padding:24px}.clr-example.example-center[_ngcontent-c32]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.clr-example.example-center.example-column[_ngcontent-c32]{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.clr-example[_ngcontent-c32]   .example-icon[_ngcontent-c32]{display:inline-block;height:14px;width:14px;padding:0;background-repeat:no-repeat;background-size:contain;cursor:pointer;vertical-align:middle}.clr-example[_ngcontent-c32]   .example-icon.example-add-icon[_ngcontent-c32]{background-image:generateAddIcon()}.clr-example[_ngcontent-c32]   .example-icon.example-add-icon[_ngcontent-c32]:hover{background-image:generateAddIcon(#007cbb)}.clr-example[_ngcontent-c32]   .example-icon.example-edit-icon[_ngcontent-c32]{background-image:generateEditIcon()}.clr-example[_ngcontent-c32]   .example-icon.example-edit-icon[_ngcontent-c32]:hover{background-image:generateEditIcon(#007cbb)}.clr-example[_ngcontent-c32]   .example-icon.example-folder-add-icon[_ngcontent-c32]{background-image:generateFolderAddIcon()}.clr-example[_ngcontent-c32]   .example-icon.example-folder-add-icon[_ngcontent-c32]:hover{background-image:generateFolderAddIcon(#007cbb)}.clr-example[_ngcontent-c32]   .example-icon.example-more-icon[_ngcontent-c32]{background-image:generateMoreIcon()}.clr-example[_ngcontent-c32]   .example-icon.example-more-icon[_ngcontent-c32]:hover{background-image:generateMoreIcon(#007cbb)}</style><style ng-transition="clarity">pre[_ngcontent-c0] {
+        }</script><link href="styles.88290316efb62a5e326e.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.clr-example[_ngcontent-c31]{position:relative}.clr-example.squeeze[_ngcontent-c31]{padding:24px}.clr-example.example-center[_ngcontent-c31]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.clr-example.example-center.example-column[_ngcontent-c31]{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.clr-example[_ngcontent-c31]   .example-icon[_ngcontent-c31]{display:inline-block;height:14px;width:14px;padding:0;background-repeat:no-repeat;background-size:contain;cursor:pointer;vertical-align:middle}.clr-example[_ngcontent-c31]   .example-icon.example-add-icon[_ngcontent-c31]{background-image:generateAddIcon()}.clr-example[_ngcontent-c31]   .example-icon.example-add-icon[_ngcontent-c31]:hover{background-image:generateAddIcon(#007cbb)}.clr-example[_ngcontent-c31]   .example-icon.example-edit-icon[_ngcontent-c31]{background-image:generateEditIcon()}.clr-example[_ngcontent-c31]   .example-icon.example-edit-icon[_ngcontent-c31]:hover{background-image:generateEditIcon(#007cbb)}.clr-example[_ngcontent-c31]   .example-icon.example-folder-add-icon[_ngcontent-c31]{background-image:generateFolderAddIcon()}.clr-example[_ngcontent-c31]   .example-icon.example-folder-add-icon[_ngcontent-c31]:hover{background-image:generateFolderAddIcon(#007cbb)}.clr-example[_ngcontent-c31]   .example-icon.example-more-icon[_ngcontent-c31]{background-image:generateMoreIcon()}.clr-example[_ngcontent-c31]   .example-icon.example-more-icon[_ngcontent-c31]:hover{background-image:generateMoreIcon(#007cbb)}</style><style ng-transition="clarity">.clr-example[_ngcontent-c32]{position:relative}.clr-example.squeeze[_ngcontent-c32]{padding:24px}.clr-example.example-center[_ngcontent-c32]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.clr-example.example-center.example-column[_ngcontent-c32]{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.clr-example[_ngcontent-c32]   .example-icon[_ngcontent-c32]{display:inline-block;height:14px;width:14px;padding:0;background-repeat:no-repeat;background-size:contain;cursor:pointer;vertical-align:middle}.clr-example[_ngcontent-c32]   .example-icon.example-add-icon[_ngcontent-c32]{background-image:generateAddIcon()}.clr-example[_ngcontent-c32]   .example-icon.example-add-icon[_ngcontent-c32]:hover{background-image:generateAddIcon(#007cbb)}.clr-example[_ngcontent-c32]   .example-icon.example-edit-icon[_ngcontent-c32]{background-image:generateEditIcon()}.clr-example[_ngcontent-c32]   .example-icon.example-edit-icon[_ngcontent-c32]:hover{background-image:generateEditIcon(#007cbb)}.clr-example[_ngcontent-c32]   .example-icon.example-folder-add-icon[_ngcontent-c32]{background-image:generateFolderAddIcon()}.clr-example[_ngcontent-c32]   .example-icon.example-folder-add-icon[_ngcontent-c32]:hover{background-image:generateFolderAddIcon(#007cbb)}.clr-example[_ngcontent-c32]   .example-icon.example-more-icon[_ngcontent-c32]{background-image:generateMoreIcon()}.clr-example[_ngcontent-c32]   .example-icon.example-more-icon[_ngcontent-c32]:hover{background-image:generateMoreIcon(#007cbb)}</style><style ng-transition="clarity">.clr-example[_ngcontent-c33]{position:relative}.clr-example.squeeze[_ngcontent-c33]{padding:24px}.clr-example.example-center[_ngcontent-c33]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.clr-example.example-center.example-column[_ngcontent-c33]{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.clr-example[_ngcontent-c33]   .example-icon[_ngcontent-c33]{display:inline-block;height:14px;width:14px;padding:0;background-repeat:no-repeat;background-size:contain;cursor:pointer;vertical-align:middle}.clr-example[_ngcontent-c33]   .example-icon.example-add-icon[_ngcontent-c33]{background-image:generateAddIcon()}.clr-example[_ngcontent-c33]   .example-icon.example-add-icon[_ngcontent-c33]:hover{background-image:generateAddIcon(#007cbb)}.clr-example[_ngcontent-c33]   .example-icon.example-edit-icon[_ngcontent-c33]{background-image:generateEditIcon()}.clr-example[_ngcontent-c33]   .example-icon.example-edit-icon[_ngcontent-c33]:hover{background-image:generateEditIcon(#007cbb)}.clr-example[_ngcontent-c33]   .example-icon.example-folder-add-icon[_ngcontent-c33]{background-image:generateFolderAddIcon()}.clr-example[_ngcontent-c33]   .example-icon.example-folder-add-icon[_ngcontent-c33]:hover{background-image:generateFolderAddIcon(#007cbb)}.clr-example[_ngcontent-c33]   .example-icon.example-more-icon[_ngcontent-c33]{background-image:generateMoreIcon()}.clr-example[_ngcontent-c33]   .example-icon.example-more-icon[_ngcontent-c33]:hover{background-image:generateMoreIcon(#007cbb)}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
             background: transparent;
             padding: 12px;
         }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-tooltips"><clr-main-container class="main-container">
@@ -30,19 +30,18 @@
         </button>
         
         <div class="branding">
-            <a class="logo-and-title" routerlink="/" href="/">
+            <a class="logo-and-title" href="/clarity/">
                 <span class="clr-icon clarity-logo"></span>
                 <span class="title">Project Clarity</span>
             </a>
         </div>
         <div class="divider"></div>
         <div class="header-nav clr-nav-level-1">
-            <a class="nav-link" id="home-link" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Home</span></a>
-            
-            <a class="nav-link active" routerlink="/documentation" routerlinkactive="active" href="/documentation"><span class="nav-text">Documentation</span></a>
-            <a class="nav-link" routerlink="/icons" routerlinkactive="active" href="/icons"><span class="nav-text">Icons</span></a>
-            <a class="nav-link" routerlink="/community" routerlinkactive="active" href="/community"><span class="nav-text">Community</span></a>
-            <a class="nav-link" routerlink="/news" routerlinkactive="active" href="/news"><span class="nav-text">What's New</span></a>
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
         </div>
         <div class="settings">
             
@@ -76,12 +75,12 @@
         <div class="dox-tabs">
             <ul class="list-unstyled">
                 <!----><li>
-                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/documentation/v0.11/tooltips#top">
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/tooltips#top">
                         Examples &amp; Code
                     </a>
                 </li>
                 <!----><li>
-                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/documentation/v0.11/tooltips#guidelines">
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/tooltips#guidelines">
                         Design Guidelines
                     </a>
                 </li>
@@ -120,18 +119,18 @@
                 <li>.tooltip-lg</li>
             </ul>
 
-            <clr-tooltips-sizes-demo class="tooltip-demo" _nghost-c30="">
+            <clr-tooltips-sizes-demo class="tooltip-demo" _nghost-c31="">
 
-<h6 _ngcontent-c30="">Extra Small</h6>
-<div _ngcontent-c30="" class="clr-example squeeze example-center">
-    <a _ngcontent-c30="" aria-haspopup="true" class="tooltip tooltip-xs" href="javascript://" role="tooltip">
-        <clr-icon _ngcontent-c30="" shape="info-circle" size="24"></clr-icon>
-        <span _ngcontent-c30="" class="tooltip-content">Lorem</span>
+<h6 _ngcontent-c31="">Extra Small</h6>
+<div _ngcontent-c31="" class="clr-example squeeze example-center">
+    <a _ngcontent-c31="" aria-haspopup="true" class="tooltip tooltip-xs" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c31="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c31="" class="tooltip-content">Lorem</span>
     </a>
 </div>
-<clr-code-snippet _ngcontent-c30="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c31="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-xs"&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-xs"&gt;
     &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;span class="tooltip-content"&gt;Lorem&lt;/span&gt;
 &lt;/a&gt;</code></pre>
@@ -139,16 +138,16 @@
         <!---->
     </clr-code-snippet>
 
-<h6 _ngcontent-c30="">Small</h6>
-<div _ngcontent-c30="" class="clr-example squeeze example-center">
-    <a _ngcontent-c30="" aria-haspopup="true" class="tooltip tooltip-sm" href="javascript://" role="tooltip">
-        <clr-icon _ngcontent-c30="" shape="info-circle" size="24"></clr-icon>
-        <span _ngcontent-c30="" class="tooltip-content">Lorem ipsum sit</span>
+<h6 _ngcontent-c31="">Small</h6>
+<div _ngcontent-c31="" class="clr-example squeeze example-center">
+    <a _ngcontent-c31="" aria-haspopup="true" class="tooltip tooltip-sm" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c31="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c31="" class="tooltip-content">Lorem ipsum sit</span>
     </a>
 </div>
-<clr-code-snippet _ngcontent-c30="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c31="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm"&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm"&gt;
     &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;span class="tooltip-content"&gt;Lorem&lt;/span&gt;
 &lt;/a&gt;</code></pre>
@@ -156,18 +155,18 @@
         <!---->
     </clr-code-snippet>
 
-<h6 _ngcontent-c30="">Medium</h6>
-<div _ngcontent-c30="" class="clr-example squeeze example-center">
-    <a _ngcontent-c30="" aria-haspopup="true" class="tooltip tooltip-md" href="javascript://" role="tooltip">
-        <clr-icon _ngcontent-c30="" shape="info-circle" size="24"></clr-icon>
-        <span _ngcontent-c30="" class="tooltip-content">
+<h6 _ngcontent-c31="">Medium</h6>
+<div _ngcontent-c31="" class="clr-example squeeze example-center">
+    <a _ngcontent-c31="" aria-haspopup="true" class="tooltip tooltip-md" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c31="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c31="" class="tooltip-content">
             Lorem ipsum dolor sit amet, ipsum
         </span>
     </a>
 </div>
-<clr-code-snippet _ngcontent-c30="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c31="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-md"&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-md"&gt;
     &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;span class="tooltip-content"&gt;Lorem&lt;/span&gt;
 &lt;/a&gt;</code></pre>
@@ -175,16 +174,16 @@
         <!---->
     </clr-code-snippet>
 
-<h6 _ngcontent-c30="">Large</h6>
-<div _ngcontent-c30="" class="clr-example squeeze example-center">
-    <a _ngcontent-c30="" aria-haspopup="true" class="tooltip tooltip-lg" href="javascript://" role="tooltip">
-        <clr-icon _ngcontent-c30="" shape="info-circle" size="24"></clr-icon>
-        <span _ngcontent-c30="" class="tooltip-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+<h6 _ngcontent-c31="">Large</h6>
+<div _ngcontent-c31="" class="clr-example squeeze example-center">
+    <a _ngcontent-c31="" aria-haspopup="true" class="tooltip tooltip-lg" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c31="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c31="" class="tooltip-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
     </a>
 </div>
-<clr-code-snippet _ngcontent-c30="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c31="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-lg"&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-lg"&gt;
     &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;span class="tooltip-content"&gt;Lorem&lt;/span&gt;
 &lt;/a&gt;</code></pre>
@@ -207,18 +206,18 @@
                 <li>.tooltip-left</li>
             </ul>
 
-            <clr-tooltips-directions-demo class="tooltip-demo" _nghost-c31="">
+            <clr-tooltips-directions-demo class="tooltip-demo" _nghost-c32="">
 
-<h6 _ngcontent-c31="">Top-Right</h6>
-<div _ngcontent-c31="" class="clr-example squeeze example-center">
-    <a _ngcontent-c31="" aria-haspopup="true" class="tooltip tooltip-sm tooltip-top-right" href="javascript://" role="tooltip">
-        <clr-icon _ngcontent-c31="" shape="info-circle" size="24"></clr-icon>
-        <span _ngcontent-c31="" class="tooltip-content">Lorem ipsum sit</span>
+<h6 _ngcontent-c32="">Top-Right</h6>
+<div _ngcontent-c32="" class="clr-example squeeze example-center">
+    <a _ngcontent-c32="" aria-haspopup="true" class="tooltip tooltip-sm tooltip-top-right" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c32="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c32="" class="tooltip-content">Lorem ipsum sit</span>
     </a>
 </div>
-<clr-code-snippet _ngcontent-c31="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c32="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm tooltip-top-right"&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm tooltip-top-right"&gt;
     &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;span class="tooltip-content"&gt;Lorem ipsum sit&lt;/span&gt;
 &lt;/a&gt;</code></pre>
@@ -226,16 +225,16 @@
         <!---->
     </clr-code-snippet>
 
-<h6 _ngcontent-c31="">Top-Left</h6>
-<div _ngcontent-c31="" class="clr-example squeeze example-center">
-    <a _ngcontent-c31="" aria-haspopup="true" class="tooltip tooltip-sm tooltip-top-left" href="javascript://" role="tooltip">
-        <clr-icon _ngcontent-c31="" shape="info-circle" size="24"></clr-icon>
-        <span _ngcontent-c31="" class="tooltip-content">Lorem ipsum sit</span>
+<h6 _ngcontent-c32="">Top-Left</h6>
+<div _ngcontent-c32="" class="clr-example squeeze example-center">
+    <a _ngcontent-c32="" aria-haspopup="true" class="tooltip tooltip-sm tooltip-top-left" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c32="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c32="" class="tooltip-content">Lorem ipsum sit</span>
     </a>
 </div>
-<clr-code-snippet _ngcontent-c31="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c32="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm tooltip-top-left"&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm tooltip-top-left"&gt;
     &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;span class="tooltip-content"&gt;Lorem ipsum sit&lt;/span&gt;
 &lt;/a&gt;</code></pre>
@@ -243,16 +242,16 @@
         <!---->
     </clr-code-snippet>
 
-<h6 _ngcontent-c31="">Bottom-Right</h6>
-<div _ngcontent-c31="" class="clr-example squeeze example-center">
-    <a _ngcontent-c31="" aria-haspopup="true" class="tooltip tooltip-md tooltip-bottom-right" href="javascript://" role="tooltip">
-        <clr-icon _ngcontent-c31="" shape="info-circle" size="24"></clr-icon>
-        <span _ngcontent-c31="" class="tooltip-content">Lorem ipsum dolor sit amet, ipsum</span>
+<h6 _ngcontent-c32="">Bottom-Right</h6>
+<div _ngcontent-c32="" class="clr-example squeeze example-center">
+    <a _ngcontent-c32="" aria-haspopup="true" class="tooltip tooltip-md tooltip-bottom-right" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c32="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c32="" class="tooltip-content">Lorem ipsum dolor sit amet, ipsum</span>
     </a>
 </div>
-<clr-code-snippet _ngcontent-c31="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c32="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-md tooltip-bottom-right"&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-md tooltip-bottom-right"&gt;
     &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;span class="tooltip-content"&gt;Lorem ipsum dolor sit amet, ipsum&lt;/span&gt;
 &lt;/a&gt;</code></pre>
@@ -260,16 +259,16 @@
         <!---->
     </clr-code-snippet>
 
-<h6 _ngcontent-c31="">Bottom-Left</h6>
-<div _ngcontent-c31="" class="clr-example squeeze example-center">
-    <a _ngcontent-c31="" aria-haspopup="true" class="tooltip tooltip-lg tooltip-bottom-left" href="javascript://" role="tooltip">
-        <clr-icon _ngcontent-c31="" shape="info-circle" size="24"></clr-icon>
-        <span _ngcontent-c31="" class="tooltip-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+<h6 _ngcontent-c32="">Bottom-Left</h6>
+<div _ngcontent-c32="" class="clr-example squeeze example-center">
+    <a _ngcontent-c32="" aria-haspopup="true" class="tooltip tooltip-lg tooltip-bottom-left" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c32="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c32="" class="tooltip-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
     </a>
 </div>
-<clr-code-snippet _ngcontent-c31="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c32="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-lg tooltip-bottom-left"&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-lg tooltip-bottom-left"&gt;
     &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;span class="tooltip-content"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit&lt;/span&gt;
 &lt;/a&gt;</code></pre>
@@ -277,16 +276,16 @@
         <!---->
     </clr-code-snippet>
 
-<h6 _ngcontent-c31="">Right</h6>
-<div _ngcontent-c31="" class="clr-example squeeze example-center">
-    <a _ngcontent-c31="" aria-haspopup="true" class="tooltip tooltip-right" href="javascript://" role="tooltip">
-        <clr-icon _ngcontent-c31="" shape="info-circle" size="24"></clr-icon>
-        <span _ngcontent-c31="" class="tooltip-content">Lorem ipsum dolor sit amet, ipsum</span>
+<h6 _ngcontent-c32="">Right</h6>
+<div _ngcontent-c32="" class="clr-example squeeze example-center">
+    <a _ngcontent-c32="" aria-haspopup="true" class="tooltip tooltip-right" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c32="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c32="" class="tooltip-content">Lorem ipsum dolor sit amet, ipsum</span>
     </a>
 </div>
-<clr-code-snippet _ngcontent-c31="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c32="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-right"&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-right"&gt;
     &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;span class="tooltip-content"&gt;Lorem ipsum dolor sit amet, ipsum&lt;/span&gt;
 &lt;/a&gt;</code></pre>
@@ -294,16 +293,16 @@
         <!---->
     </clr-code-snippet>
 
-<h6 _ngcontent-c31="">Left</h6>
-<div _ngcontent-c31="" class="clr-example squeeze example-center">
-    <a _ngcontent-c31="" aria-haspopup="true" class="tooltip tooltip-sm tooltip-left" href="javascript://" role="tooltip">
-        <clr-icon _ngcontent-c31="" shape="info-circle" size="24"></clr-icon>
-        <span _ngcontent-c31="" class="tooltip-content">Lorem ipsum sit</span>
+<h6 _ngcontent-c32="">Left</h6>
+<div _ngcontent-c32="" class="clr-example squeeze example-center">
+    <a _ngcontent-c32="" aria-haspopup="true" class="tooltip tooltip-sm tooltip-left" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c32="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c32="" class="tooltip-content">Lorem ipsum sit</span>
     </a>
 </div>
-<clr-code-snippet _ngcontent-c31="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c32="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm tooltip-left"&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm tooltip-left"&gt;
     &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;span class="tooltip-content"&gt;Lorem ipsum sit&lt;/span&gt;
 &lt;/a&gt;</code></pre>
@@ -425,20 +424,20 @@
 
             <h4 id="example">Example</h4>
             <p>Below are tooltip examples using various directions and sizes.</p>
-            <clr-tooltips-angular-demo _nghost-c32="">
+            <clr-tooltips-angular-demo _nghost-c33="">
 
-<h6 _ngcontent-c32="">Top-Right</h6>
-<div _ngcontent-c32="" class="clr-example squeeze example-center" id="top-right">
-    <clr-tooltip _ngcontent-c32="" class="tooltip">
+<h6 _ngcontent-c33="">Top-Right</h6>
+<div _ngcontent-c33="" class="clr-example squeeze example-center" id="top-right">
+    <clr-tooltip _ngcontent-c33="" class="tooltip">
         
-        <clr-icon _ngcontent-c32="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
+        <clr-icon _ngcontent-c33="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
         <!---->
     
     </clr-tooltip>
 </div>
-<clr-code-snippet _ngcontent-c32="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c33="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;clr-tooltip&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-tooltip&gt;
     &lt;clr-icon clrTooltipTrigger shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;clr-tooltip-content clrPosition="top-right" clrSize="xs" *clrIfOpen&gt;
         &lt;span&gt;Lorem&lt;/span&gt;
@@ -448,18 +447,18 @@
         <!---->
     </clr-code-snippet>
 
-<h6 _ngcontent-c32="">Top-Left</h6>
-<div _ngcontent-c32="" class="clr-example squeeze example-center" id="top-left">
-    <clr-tooltip _ngcontent-c32="" class="tooltip">
+<h6 _ngcontent-c33="">Top-Left</h6>
+<div _ngcontent-c33="" class="clr-example squeeze example-center" id="top-left">
+    <clr-tooltip _ngcontent-c33="" class="tooltip">
         
-        <clr-icon _ngcontent-c32="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
+        <clr-icon _ngcontent-c33="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
         <!---->
     
     </clr-tooltip>
 </div>
-<clr-code-snippet _ngcontent-c32="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c33="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;clr-tooltip&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-tooltip&gt;
     &lt;clr-icon clrTooltipTrigger shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;clr-tooltip-content clrPosition="top-left" clrSize="sm" *clrIfOpen&gt;
         &lt;span&gt;Lorem ipsum&lt;/span&gt;
@@ -469,18 +468,18 @@
         <!---->
     </clr-code-snippet>
 
-<h6 _ngcontent-c32="">Bottom-Right</h6>
-<div _ngcontent-c32="" class="clr-example squeeze example-center" id="bottom-right">
-    <clr-tooltip _ngcontent-c32="" class="tooltip">
+<h6 _ngcontent-c33="">Bottom-Right</h6>
+<div _ngcontent-c33="" class="clr-example squeeze example-center" id="bottom-right">
+    <clr-tooltip _ngcontent-c33="" class="tooltip">
         
-        <clr-icon _ngcontent-c32="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
+        <clr-icon _ngcontent-c33="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
         <!---->
     
     </clr-tooltip>
 </div>
-<clr-code-snippet _ngcontent-c32="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c33="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;clr-tooltip&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-tooltip&gt;
     &lt;clr-icon clrTooltipTrigger shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;clr-tooltip-content clrPosition="bottom-right" clrSize="md" *clrIfOpen&gt;
         &lt;span&gt;Lorem ipsum sit&lt;/span&gt;
@@ -490,18 +489,18 @@
         <!---->
     </clr-code-snippet>
 
-<h6 _ngcontent-c32="">Bottom-Left</h6>
-<div _ngcontent-c32="" class="clr-example squeeze example-center" id="bottom-left">
-    <clr-tooltip _ngcontent-c32="" class="tooltip">
+<h6 _ngcontent-c33="">Bottom-Left</h6>
+<div _ngcontent-c33="" class="clr-example squeeze example-center" id="bottom-left">
+    <clr-tooltip _ngcontent-c33="" class="tooltip">
         
-        <clr-icon _ngcontent-c32="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
+        <clr-icon _ngcontent-c33="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
         <!---->
     
     </clr-tooltip>
 </div>
-<clr-code-snippet _ngcontent-c32="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c33="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;clr-tooltip&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-tooltip&gt;
     &lt;clr-icon clrTooltipTrigger shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;clr-tooltip-content clrPosition="bottom-left" clrSize="lg" *clrIfOpen&gt;
         &lt;span&gt;Lorem ipsum sit&lt;/span&gt;
@@ -511,18 +510,18 @@
         <!---->
     </clr-code-snippet>
 
-<h6 _ngcontent-c32="">Right</h6>
-<div _ngcontent-c32="" class="clr-example squeeze example-center" id="right">
-    <clr-tooltip _ngcontent-c32="" class="tooltip">
+<h6 _ngcontent-c33="">Right</h6>
+<div _ngcontent-c33="" class="clr-example squeeze example-center" id="right">
+    <clr-tooltip _ngcontent-c33="" class="tooltip">
         
-        <clr-icon _ngcontent-c32="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
+        <clr-icon _ngcontent-c33="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
         <!---->
     
     </clr-tooltip>
 </div>
-<clr-code-snippet _ngcontent-c32="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c33="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;clr-tooltip&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-tooltip&gt;
     &lt;clr-icon clrTooltipTrigger shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;clr-tooltip-content *clrIfOpen&gt;
         &lt;span&gt;Lorem ipsum sit&lt;/span&gt;
@@ -532,18 +531,18 @@
         <!---->
     </clr-code-snippet>
 
-<h6 _ngcontent-c32="">Left</h6>
-<div _ngcontent-c32="" class="clr-example squeeze example-center" id="left">
-    <clr-tooltip _ngcontent-c32="" class="tooltip">
+<h6 _ngcontent-c33="">Left</h6>
+<div _ngcontent-c33="" class="clr-example squeeze example-center" id="left">
+    <clr-tooltip _ngcontent-c33="" class="tooltip">
         
-        <clr-icon _ngcontent-c32="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
+        <clr-icon _ngcontent-c33="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
         <!---->
     
     </clr-tooltip>
 </div>
-<clr-code-snippet _ngcontent-c32="" _nghost-c0="">
+<clr-code-snippet _ngcontent-c33="" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;clr-tooltip&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-tooltip&gt;
     &lt;clr-icon clrTooltipTrigger shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
     &lt;clr-tooltip-content clrPosition="left" clrSize="sm" *clrIfOpen&gt;
         &lt;span&gt;Lorem ipsum sit&lt;/span&gt;
@@ -572,7 +571,7 @@
 
         <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11">Component Status</a>
 
-        <a class="nav-link" routerlink="get-started" routerlinkactive="active" href="/documentation/v0.11/get-started">Get Started</a>
+        <a class="nav-link" routerlink="get-started" routerlinkactive="active" href="/tooltips/(get-started)">Get Started</a>
 
         <section class="nav-group collapsible">
             <input id="tab2" type="checkbox">
@@ -581,7 +580,7 @@
                 <documentation-nav-links type="pattern">
         <!----><!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/app-layout">
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
                     Application Layout
                     <!---->
                     <!---->
@@ -607,7 +606,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/color">
+                <a class="nav-link" routerlinkactive="active" href="/color">
                     Color Palette
                     <!---->
                     <!---->
@@ -639,7 +638,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/navigation">
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
                     Navigation
                     <!---->
                     <!---->
@@ -671,7 +670,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/themes">
+                <a class="nav-link" routerlinkactive="active" href="/themes">
                     Themes
                     <!---->
                     <!---->
@@ -685,7 +684,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/typography">
+                <a class="nav-link" routerlinkactive="active" href="/typography">
                     Typography
                     <!---->
                     <!---->
@@ -710,7 +709,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/alerts">
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
                     Alerts
                     <!---->
                     <!---->
@@ -718,7 +717,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/badges">
+                <a class="nav-link" routerlinkactive="active" href="/badges">
                     Badges
                     <!---->
                     <!---->
@@ -726,7 +725,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/buttons">
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
                     Buttons
                     <!---->
                     <!---->
@@ -734,7 +733,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/button-group">
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
                     Button Group
                     <!---->
                     <!---->
@@ -742,7 +741,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/cards">
+                <a class="nav-link" routerlinkactive="active" href="/cards">
                     Cards
                     <!---->
                     <!---->
@@ -750,7 +749,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/checkboxes">
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
                     Checkboxes
                     <!---->
                     <!---->
@@ -758,7 +757,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/code-highlight">
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
                     Code Highlight
                     <!---->
                     <!---->
@@ -772,7 +771,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/datepicker">
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
                     Date Picker
                     <!---->
                     <!---->
@@ -780,7 +779,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/datagrid">
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
                     Datagrid
                     <!---->
                     <!---->
@@ -788,7 +787,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/dropdowns">
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
                     Dropdowns
                     <!---->
                     <!---->
@@ -796,7 +795,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/forms">
+                <a class="nav-link" routerlinkactive="active" href="/forms">
                     Forms (Layout)
                     <!---->
                     <!---->
@@ -804,7 +803,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/grid">
+                <a class="nav-link" routerlinkactive="active" href="/grid">
                     Grid
                     <!---->
                     <!---->
@@ -812,7 +811,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/header">
+                <a class="nav-link" routerlinkactive="active" href="/header">
                     Header
                     <!---->
                     <!---->
@@ -820,7 +819,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/input-fields">
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
                     Input Fields
                     <!---->
                     <!---->
@@ -828,7 +827,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/labels">
+                <a class="nav-link" routerlinkactive="active" href="/labels">
                     Labels
                     <!---->
                     <!---->
@@ -836,7 +835,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/lists">
+                <a class="nav-link" routerlinkactive="active" href="/lists">
                     Lists
                     <!---->
                     <!---->
@@ -844,7 +843,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/login">
+                <a class="nav-link" routerlinkactive="active" href="/login">
                     Login Page
                     <!---->
                     <!---->
@@ -854,7 +853,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/modals">
+                <a class="nav-link" routerlinkactive="active" href="/modals">
                     Modals
                     <!---->
                     <!---->
@@ -868,7 +867,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/progress">
+                <a class="nav-link" routerlinkactive="active" href="/progress">
                     Progress Bars
                     <!---->
                     <!---->
@@ -876,7 +875,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/radios">
+                <a class="nav-link" routerlinkactive="active" href="/radios">
                     Radio Buttons
                     <!---->
                     <!---->
@@ -886,7 +885,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/select-boxes">
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
                     Select Boxes
                     <!---->
                     <!---->
@@ -894,7 +893,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/sidenav">
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
                     Sidenav
                     <!---->
                     <!---->
@@ -902,7 +901,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/signposts">
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
                     Signposts
                     <!---->
                     <!---->
@@ -910,7 +909,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/spinners">
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
                     Spinners
                     <!---->
                     <!---->
@@ -918,7 +917,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/stack-view">
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
                     Stack View
                     <!---->
                     <!---->
@@ -926,7 +925,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/tables">
+                <a class="nav-link" routerlinkactive="active" href="/tables">
                     Tables
                     <!---->
                     <!---->
@@ -934,7 +933,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/tabs">
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
                     Tabs
                     <!---->
                     <!---->
@@ -944,7 +943,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/toggle-switches">
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
                     Toggle Switches
                     <!---->
                     <!---->
@@ -952,7 +951,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link active" routerlinkactive="active" href="/documentation/v0.11/tooltips">
+                <a class="nav-link active" routerlinkactive="active" href="/tooltips">
                     Tooltips
                     <!---->
                     <!---->
@@ -960,7 +959,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/tree-view">
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
                     Tree View
                     <!---->
                     <!---->
@@ -970,7 +969,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/vertical-nav">
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
                     Vertical Nav
                     <!---->
                     <!---->
@@ -980,7 +979,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/wizards">
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
                     Wizards
                     <!---->
                     <!---->
@@ -994,4 +993,4 @@
 </nav></documentation>
 
 </clr-main-container>
-</root><script type="text/javascript" src="inline.44ca3035a45e293c2d0c.bundle.js"></script><script type="text/javascript" src="polyfills.bbdcdbe4fde3ed2ec371.bundle.js"></script><script type="text/javascript" src="main.a379a9fecb5c7c04701f.bundle.js"></script></body></html>
+</root><script type="text/javascript" src="inline.6c667e229556ea18a389.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.ef731724b10805483fe9.bundle.js"></script></body></html>

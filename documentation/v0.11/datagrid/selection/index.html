@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Datagrid</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Datagrid</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
                 i[r] = i[r] || function () {
@@ -20,7 +20,7 @@
                 ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
             }
 
-        }</script><link href="styles.88290316efb62a5e326e.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.datagrid-demo-pagination[_ngcontent-c81]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.demo-pagination-next[_ngcontent-c81]{margin-left:auto}.demo-list[_ngcontent-c81]{-webkit-column-count:3;column-count:3;list-style-position:inside}</style><style ng-transition="clarity">.color-square[_ngcontent-c92]{display:inline-block;vertical-align:text-bottom;height:14px;width:14px;border:1px solid #000;border-radius:4px}.color-filter[_ngcontent-c92]{display:block;width:100px}.color-selectable[_ngcontent-c92]{cursor:pointer;margin:2px;opacity:.2}.color-selectable.color-selected[_ngcontent-c92], .color-selectable[_ngcontent-c92]:hover{opacity:1}.lorem-ipsum[_ngcontent-c92]{max-width:300px}.username-list[_ngcontent-c92]{margin-bottom:0}.username-list[_ngcontent-c92]   .username[_ngcontent-c92]:not(:last-child):after{content:", "}.username-list[_ngcontent-c92]   .username[_ngcontent-c92]:last-child:after{content:"."}h2[_ngcontent-c92]:first-child{margin-top:24px}</style><style ng-transition="clarity">pre[_ngcontent-c0] {
+        }</script><link href="styles.88290316efb62a5e326e.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.datagrid-demo-pagination[_ngcontent-c78]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.demo-pagination-next[_ngcontent-c78]{margin-left:auto}.demo-list[_ngcontent-c78]{-webkit-column-count:3;column-count:3;list-style-position:inside}</style><style ng-transition="clarity">.color-square[_ngcontent-c89]{display:inline-block;vertical-align:text-bottom;height:14px;width:14px;border:1px solid #000;border-radius:4px}.color-filter[_ngcontent-c89]{display:block;width:100px}.color-selectable[_ngcontent-c89]{cursor:pointer;margin:2px;opacity:.2}.color-selectable.color-selected[_ngcontent-c89], .color-selectable[_ngcontent-c89]:hover{opacity:1}.lorem-ipsum[_ngcontent-c89]{max-width:300px}.username-list[_ngcontent-c89]{margin-bottom:0}.username-list[_ngcontent-c89]   .username[_ngcontent-c89]:not(:last-child):after{content:", "}.username-list[_ngcontent-c89]   .username[_ngcontent-c89]:last-child:after{content:"."}h2[_ngcontent-c89]:first-child{margin-top:24px}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
             background: transparent;
             padding: 12px;
         }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-datagrid"><clr-main-container class="main-container">
@@ -30,19 +30,18 @@
         </button>
         
         <div class="branding">
-            <a class="logo-and-title" routerlink="/" href="/">
+            <a class="logo-and-title" href="/clarity/">
                 <span class="clr-icon clarity-logo"></span>
                 <span class="title">Project Clarity</span>
             </a>
         </div>
         <div class="divider"></div>
         <div class="header-nav clr-nav-level-1">
-            <a class="nav-link" id="home-link" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Home</span></a>
-            
-            <a class="nav-link active" routerlink="/documentation" routerlinkactive="active" href="/documentation"><span class="nav-text">Documentation</span></a>
-            <a class="nav-link" routerlink="/icons" routerlinkactive="active" href="/icons"><span class="nav-text">Icons</span></a>
-            <a class="nav-link" routerlink="/community" routerlinkactive="active" href="/community"><span class="nav-text">Community</span></a>
-            <a class="nav-link" routerlink="/news" routerlinkactive="active" href="/news"><span class="nav-text">What's New</span></a>
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
         </div>
         <div class="settings">
             
@@ -55,7 +54,7 @@
         <div class="header-backdrop"></div>
     </clr-header>
 
-    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-datagrid-demo _nghost-c81="" class="content-area dox-content-panel"><clr-doc-wrapper _ngcontent-c81="" class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-datagrid-demo _nghost-c78="" class="content-area dox-content-panel"><clr-doc-wrapper _ngcontent-c78="" class="dox-wrapper"><div class="dox-wrapper dox-header">
     <section>
         <h1>Datagrid</h1>
         <!---->
@@ -75,12 +74,12 @@
         <div class="dox-tabs">
             <ul class="list-unstyled">
                 <!----><li>
-                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/documentation/v0.11/datagrid#top">
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/datagrid#top">
                         Examples &amp; Code
                     </a>
                 </li>
                 <!----><li>
-                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/documentation/v0.11/datagrid#guidelines">
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/datagrid#guidelines">
                         Design Guidelines
                     </a>
                 </li>
@@ -95,64 +94,64 @@
     <div class="dox-content-wrapper">
         <a id="top"></a>
         
-    <article _ngcontent-c81="">
-        <h5 _ngcontent-c81="" class="component-summary" id="datagrids-are-for-organizing-large-volumes-of-data-that-users-can-scan-compare-and-perform-actions-on">
+    <article _ngcontent-c78="">
+        <h5 _ngcontent-c78="" class="component-summary" id="datagrids-are-for-organizing-large-volumes-of-data-that-users-can-scan-compare-and-perform-actions-on">
             Datagrids are for organizing large volumes of data that users can scan, compare, and perform actions
             on.</h5>
 
-        <div _ngcontent-c81="" id="code-examples">
+        <div _ngcontent-c78="" id="code-examples">
 
-            <p _ngcontent-c81="">
+            <p _ngcontent-c78="">
                 We have 18 datagrid demos. Starting with the basics, each demo shows
                 you one or more of the advanced Datagrid features.
             </p>
 
-            <div _ngcontent-c81="" class="row" style="margin-top: 24px">
-                <div _ngcontent-c81="" class="col-xs-12">
-                    <ul _ngcontent-c81="" class="list demo-list">
-                        <!----><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/structure">Basic Structure</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/custom-rendering">Custom Cell Rendering</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/smart-iterator">Smart Iterator</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/binding-properties">Binding Properties</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/custom-sorting">Custom Sorting</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/custom-filtering">Custom Filtering</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/string-filtering">String Filtering</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/pagination">Pagination</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/selection">Selection</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/selection-single">Single Selection</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/batch-action">Batch Action</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/single-action">Single Action</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/server-driven">Server Driven</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/placeholder">Placeholder</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/expandable-rows">Expandable Rows</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/compact">Compact</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/hide-show">Hide/Show</a></li><li _ngcontent-c81=""><a _ngcontent-c81="" href="/documentation/v0.11/datagrid/full">Full Demo</a></li>
+            <div _ngcontent-c78="" class="row" style="margin-top: 24px">
+                <div _ngcontent-c78="" class="col-xs-12">
+                    <ul _ngcontent-c78="" class="list demo-list">
+                        <!----><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/structure">Basic Structure</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/custom-rendering">Custom Cell Rendering</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/smart-iterator">Smart Iterator</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/binding-properties">Binding Properties</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/custom-sorting">Custom Sorting</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/custom-filtering">Custom Filtering</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/string-filtering">String Filtering</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/pagination">Pagination</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/selection">Selection</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/selection-single">Single Selection</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/batch-action">Batch Action</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/single-action">Single Action</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/server-driven">Server Driven</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/placeholder">Placeholder</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/expandable-rows">Expandable Rows</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/compact">Compact</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/hide-show">Hide/Show</a></li><li _ngcontent-c78=""><a _ngcontent-c78="" href="/datagrid/full">Full Demo</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div _ngcontent-c81=""></div>
+            <div _ngcontent-c78=""></div>
 
-            <router-outlet _ngcontent-c81=""></router-outlet><clr-datagrid-selection-demo _nghost-c92="">
+            <router-outlet _ngcontent-c78=""></router-outlet><clr-datagrid-selection-demo _nghost-c89="">
 
-<h2 _ngcontent-c92="">Selection</h2>
+<h2 _ngcontent-c89="">Selection</h2>
 
-<p _ngcontent-c92="">
+<p _ngcontent-c89="">
     To allow actions on multiple items at once, we provide the ability for the user to select rows
     in the datagrid. To make rows selectable in your datagrid, you need to do the following:
 </p>
-<ul _ngcontent-c92="">
-    <li _ngcontent-c92="">
-        Add a <code _ngcontent-c92="" class="clr-code">[clrDgItem]</code> input on each
-        <code _ngcontent-c92="" class="clr-code">&lt;clr-dg-row&gt;</code> component to tell us what model the user
+<ul _ngcontent-c89="">
+    <li _ngcontent-c89="">
+        Add a <code _ngcontent-c89="" class="clr-code">[clrDgItem]</code> input on each
+        <code _ngcontent-c89="" class="clr-code">&lt;clr-dg-row&gt;</code> component to tell us what model the user
         is actually selecting. Most of the time, this will simply be the current data object in
         the iteration.
     </li>
-    <li _ngcontent-c92="">
-        Add a <code _ngcontent-c92="" class="clr-code">[(clrDgSelected)]</code> two-way binding on the datagrid
+    <li _ngcontent-c89="">
+        Add a <code _ngcontent-c89="" class="clr-code">[(clrDgSelected)]</code> two-way binding on the datagrid
         itself, to have access to the list of currently selected items. Note that by adding
         items to this list yourself, you can dynamically select elements if you need to.
     </li>
 </ul>
 
-<p _ngcontent-c92="">
+<p _ngcontent-c89="">
     In the following example, we simply display the names of the selected users, but since we
     have access to the full objects, we could perform any operation we want on them.
 </p>
 
-<div _ngcontent-c92="" class="card card-block">
-    <p _ngcontent-c92="" class="card-text username-list">
+<div _ngcontent-c89="" class="card card-block">
+    <p _ngcontent-c89="" class="card-text username-list">
         Selected users:
-        <!----><em _ngcontent-c92="">No user selected.</em>
+        <!----><em _ngcontent-c89="">No user selected.</em>
         <!---->
     </p>
 </div>
 
-<clr-datagrid _ngcontent-c92="" class="datagrid-host">
+<clr-datagrid _ngcontent-c89="" class="datagrid-host">
 
 
 <div class="datagrid-overlay-wrapper">
@@ -181,7 +180,7 @@
                         <!---->
                         
                         <!---->
-                        <clr-dg-column _ngcontent-c92="" class="datagrid-column" style="width:0px;">
+                        <clr-dg-column _ngcontent-c89="" class="datagrid-column" style="width:0px;">
         <div class="datagrid-column-flex">
             
             
@@ -201,7 +200,7 @@
                 <div class="datagrid-column-handle-tracker"></div>
             </div>
         </div>
-    </clr-dg-column><clr-dg-column _ngcontent-c92="" class="datagrid-column" style="width:0px;">
+    </clr-dg-column><clr-dg-column _ngcontent-c89="" class="datagrid-column" style="width:0px;">
         <div class="datagrid-column-flex">
             
             
@@ -221,7 +220,7 @@
                 <div class="datagrid-column-handle-tracker"></div>
             </div>
         </div>
-    </clr-dg-column><clr-dg-column _ngcontent-c92="" class="datagrid-column" style="width:0px;">
+    </clr-dg-column><clr-dg-column _ngcontent-c89="" class="datagrid-column" style="width:0px;">
         <div class="datagrid-column-flex">
             
             
@@ -241,7 +240,7 @@
                 <div class="datagrid-column-handle-tracker"></div>
             </div>
         </div>
-    </clr-dg-column><clr-dg-column _ngcontent-c92="" class="datagrid-column" style="width:0px;">
+    </clr-dg-column><clr-dg-column _ngcontent-c89="" class="datagrid-column" style="width:0px;">
         <div class="datagrid-column-flex">
             
             
@@ -269,7 +268,7 @@
             
                 
 
-                <!----><!----><clr-dg-row _ngcontent-c92="" class="datagrid-row">
+                <!----><!----><clr-dg-row _ngcontent-c89="" class="datagrid-row">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -286,18 +285,18 @@
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        13811
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        39472
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Beverly
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Shenika
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Feb 14, 2015
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Jun 13, 2017
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:White;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Magenta;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -309,7 +308,7 @@
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -326,18 +325,18 @@
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        88223
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        90142
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Lenny
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Ellen
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Apr 17, 2017
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Jun 17, 2014
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Magenta;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Orange;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -349,7 +348,7 @@
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -366,18 +365,18 @@
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        62073
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        35010
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Keenan
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Debby
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Jun 29, 2016
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Feb 2, 2017
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Magenta;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Magenta;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -389,7 +388,7 @@
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -406,18 +405,18 @@
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        21237
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        29153
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Olene
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Keenan
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Mar 25, 2014
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Apr 17, 2017
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Green;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Red;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -429,7 +428,7 @@
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -446,18 +445,18 @@
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        36439
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        13205
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Alica
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Nidia
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Apr 25, 2014
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Sep 16, 2014
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Purple;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Blue;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -469,7 +468,7 @@
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -486,18 +485,18 @@
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        99518
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        69213
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Desirae
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Shenika
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Sep 10, 2016
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Oct 3, 2015
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Blue;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Yellow;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -509,7 +508,7 @@
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -526,18 +525,18 @@
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        40286
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        27315
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Keenan
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Georgia
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Jun 15, 2014
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Mar 24, 2015
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Red;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Red;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -549,7 +548,7 @@
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -566,18 +565,18 @@
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        87803
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        93549
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Letisha
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Nidia
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Oct 29, 2017
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Jun 29, 2014
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Black;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Red;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -589,7 +588,7 @@
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -606,18 +605,18 @@
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        57486
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        67335
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Beverly
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Genoveva
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Dec 21, 2016
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Feb 27, 2017
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Red;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Pink;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -629,7 +628,7 @@
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -646,18 +645,18 @@
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        78669
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        83224
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Lucius
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Jeana
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Aug 5, 2017
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Mar 1, 2014
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Black;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Pink;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -685,7 +684,7 @@
     </clr-dg-table-wrapper>
 
             
-            <clr-dg-footer _ngcontent-c92="" class="datagrid-foot">
+            <clr-dg-footer _ngcontent-c89="" class="datagrid-foot">
         <!---->
         
         <!---->
@@ -700,9 +699,9 @@
 </div>
 </clr-datagrid>
 
-<clr-code-snippet _ngcontent-c92="" clrlanguage="html" _nghost-c0="">
+<clr-code-snippet _ngcontent-c89="" clrlanguage="html" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;clr-datagrid [(clrDgSelected)]="selected"&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-datagrid [(clrDgSelected)]="selected"&gt;
     &lt;-- ... --&gt;
     &lt;clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user"&gt;
         &lt;-- ... --&gt;
@@ -715,16 +714,16 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
         <!---->
     </clr-code-snippet>
 
-<p _ngcontent-c92="">
+<p _ngcontent-c89="">
     Depending on the use case, you might want to allow selection when clicking anywhere in the grid row. Note that this
     is not recommended when the rows contain clickable items. For example, if your cells contain input, buttons, etc.
     it is best to avoid enabling whole row selection.
 </p>
-<p _ngcontent-c92="">
-    For row selection mode add <code _ngcontent-c92="" class="clr-code">[(clDgRowSelection)]</code> and
-    set it to <code _ngcontent-c92="" class="clr-code">true</code>.
+<p _ngcontent-c89="">
+    For row selection mode add <code _ngcontent-c89="" class="clr-code">[(clDgRowSelection)]</code> and
+    set it to <code _ngcontent-c89="" class="clr-code">true</code>.
 </p>
-<clr-datagrid _ngcontent-c92="" class="datagrid-host">
+<clr-datagrid _ngcontent-c89="" class="datagrid-host">
 
 
 <div class="datagrid-overlay-wrapper">
@@ -753,7 +752,7 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
                         <!---->
                         
                         <!---->
-                        <clr-dg-column _ngcontent-c92="" class="datagrid-column" style="width:0px;">
+                        <clr-dg-column _ngcontent-c89="" class="datagrid-column" style="width:0px;">
         <div class="datagrid-column-flex">
             
             
@@ -773,7 +772,7 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
                 <div class="datagrid-column-handle-tracker"></div>
             </div>
         </div>
-    </clr-dg-column><clr-dg-column _ngcontent-c92="" class="datagrid-column" style="width:0px;">
+    </clr-dg-column><clr-dg-column _ngcontent-c89="" class="datagrid-column" style="width:0px;">
         <div class="datagrid-column-flex">
             
             
@@ -793,7 +792,7 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
                 <div class="datagrid-column-handle-tracker"></div>
             </div>
         </div>
-    </clr-dg-column><clr-dg-column _ngcontent-c92="" class="datagrid-column" style="width:0px;">
+    </clr-dg-column><clr-dg-column _ngcontent-c89="" class="datagrid-column" style="width:0px;">
         <div class="datagrid-column-flex">
             
             
@@ -813,7 +812,7 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
                 <div class="datagrid-column-handle-tracker"></div>
             </div>
         </div>
-    </clr-dg-column><clr-dg-column _ngcontent-c92="" class="datagrid-column" style="width:0px;">
+    </clr-dg-column><clr-dg-column _ngcontent-c89="" class="datagrid-column" style="width:0px;">
         <div class="datagrid-column-flex">
             
             
@@ -841,7 +840,7 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
             
                 
 
-                <!----><!----><clr-dg-row _ngcontent-c92="" class="datagrid-row" tabindex="0" role="button">
+                <!----><!----><clr-dg-row _ngcontent-c89="" class="datagrid-row" tabindex="0" role="button">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -858,18 +857,18 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        13811
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        39472
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Beverly
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Shenika
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Feb 14, 2015
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Jun 13, 2017
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:White;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Magenta;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -881,7 +880,7 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row" tabindex="0" role="button">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row" tabindex="0" role="button">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -898,18 +897,18 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        88223
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        90142
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Lenny
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Ellen
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Apr 17, 2017
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Jun 17, 2014
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Magenta;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Orange;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -921,7 +920,7 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row" tabindex="0" role="button">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row" tabindex="0" role="button">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -938,18 +937,18 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        62073
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        35010
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Keenan
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Debby
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Jun 29, 2016
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Feb 2, 2017
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Magenta;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Magenta;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -961,7 +960,7 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row" tabindex="0" role="button">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row" tabindex="0" role="button">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -978,18 +977,18 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        21237
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        29153
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Olene
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Keenan
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Mar 25, 2014
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Apr 17, 2017
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Green;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Red;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -1001,7 +1000,7 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row" tabindex="0" role="button">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row" tabindex="0" role="button">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -1018,18 +1017,18 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        36439
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        13205
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Alica
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Nidia
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Apr 25, 2014
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Sep 16, 2014
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Purple;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Blue;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -1041,7 +1040,7 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row" tabindex="0" role="button">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row" tabindex="0" role="button">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -1058,18 +1057,18 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        99518
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        69213
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Desirae
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Shenika
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Sep 10, 2016
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Oct 3, 2015
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Blue;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Yellow;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -1081,7 +1080,7 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row" tabindex="0" role="button">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row" tabindex="0" role="button">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -1098,18 +1097,18 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        40286
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        27315
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Keenan
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Georgia
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Jun 15, 2014
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Mar 24, 2015
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Red;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Red;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -1121,7 +1120,7 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row" tabindex="0" role="button">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row" tabindex="0" role="button">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -1138,18 +1137,18 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        87803
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        93549
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Letisha
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Nidia
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Oct 29, 2017
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Jun 29, 2014
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Black;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Red;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -1161,7 +1160,7 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row" tabindex="0" role="button">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row" tabindex="0" role="button">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -1178,18 +1177,18 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        57486
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        67335
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Beverly
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Genoveva
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Dec 21, 2016
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Feb 27, 2017
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Red;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Pink;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -1201,7 +1200,7 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c92="" class="datagrid-row" tabindex="0" role="button">
+    </clr-dg-row><clr-dg-row _ngcontent-c89="" class="datagrid-row" tabindex="0" role="button">
         <div class="datagrid-row-master datagrid-row-flex">
             <!----><clr-dg-cell class="datagrid-select datagrid-fixed-column datagrid-cell">
         
@@ -1218,18 +1217,18 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        78669
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        83224
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Lucius
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Jeana
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
-        Aug 5, 2017
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
+        Mar 1, 2014
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c92="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c89="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c92="" class="color-square" style="backgroundColor:Black;"></span>
+            <span _ngcontent-c89="" class="color-square" style="backgroundColor:Pink;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -1257,7 +1256,7 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
     </clr-dg-table-wrapper>
 
             
-            <clr-dg-footer _ngcontent-c92="" class="datagrid-foot">
+            <clr-dg-footer _ngcontent-c89="" class="datagrid-foot">
         <!---->
         
         <!---->
@@ -1272,9 +1271,9 @@ Selected users: &lt;span *ngFor="let user of selected"&gt;{{user.name}}&lt;/span
 </div>
 </clr-datagrid>
 
-<clr-code-snippet _ngcontent-c92="" clrlanguage="html" _nghost-c0="">
+<clr-code-snippet _ngcontent-c89="" clrlanguage="html" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;clr-datagrid [(clrDgSingleSelected)]="selectedUser" [clDgRowSelection]="true"&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-datagrid [(clrDgSingleSelected)]="selectedUser" [clDgRowSelection]="true"&gt;
     &lt;-- ... --&gt;
     &lt;clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user"&gt;
         &lt;-- ... --&gt;
@@ -1286,15 +1285,15 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
         
         <!---->
     </clr-code-snippet>
-<p _ngcontent-c92="">
+<p _ngcontent-c89="">
     If you need an easier access to the selected state of a row, without having to go through the entire array,
-    we also provide a boolean <code _ngcontent-c92="" class="clr-code">[(clrDgSelected)]</code> two-way binding on the
-    <code _ngcontent-c92="" class="clr-code">&lt;clr-dg-row&gt;</code> itself. For instance, when your model itself tracks if items are
+    we also provide a boolean <code _ngcontent-c89="" class="clr-code">[(clrDgSelected)]</code> two-way binding on the
+    <code _ngcontent-c89="" class="clr-code">&lt;clr-dg-row&gt;</code> itself. For instance, when your model itself tracks if items are
     selected, you can simply write:
 </p>
-<clr-code-snippet _ngcontent-c92="" clrlanguage="html" _nghost-c0="">
+<clr-code-snippet _ngcontent-c89="" clrlanguage="html" _nghost-c5="">
         <!----><!---->
-            <pre _ngcontent-c0=""><code _ngcontent-c0="" class="language-html">&lt;clr-dg-row *clrDgItems="let item of items" [clrDgItem]="item" [(clrDgSelected)]="item.selected"&gt;
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-dg-row *clrDgItems="let item of items" [clrDgItem]="item" [(clrDgSelected)]="item.selected"&gt;
     &lt;-- ... --&gt;
 &lt;/clr-dg-row&gt;</code></pre>
         
@@ -1302,45 +1301,45 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
     </clr-code-snippet>
 </clr-datagrid-selection-demo>
 
-            <div _ngcontent-c81="" class="datagrid-demo-pagination">
-                <!----><button _ngcontent-c81="" class="btn btn-primary demo-pagination-prev">
-                    <clr-icon _ngcontent-c81="" shape="angle left"></clr-icon>
+            <div _ngcontent-c78="" class="datagrid-demo-pagination">
+                <!----><button _ngcontent-c78="" class="btn btn-primary demo-pagination-prev">
+                    <clr-icon _ngcontent-c78="" shape="angle left"></clr-icon>
                     Pagination
                 </button>
-                <!----><button _ngcontent-c81="" class="btn btn-primary demo-pagination-next">
+                <!----><button _ngcontent-c78="" class="btn btn-primary demo-pagination-next">
                     Single Selection
-                    <clr-icon _ngcontent-c81="" shape="angle right"></clr-icon>
+                    <clr-icon _ngcontent-c78="" shape="angle right"></clr-icon>
                 </button>
             </div>
 
             
         </div>
 
-        <div _ngcontent-c81="" id="design-guidelines">
-            <h3 _ngcontent-c81="" id="guidelines">Usage</h3>
+        <div _ngcontent-c78="" id="design-guidelines">
+            <h3 _ngcontent-c78="" id="guidelines">Usage</h3>
 
-            <h4 _ngcontent-c81="" id="for-structured-content">For Structured Content</h4>
+            <h4 _ngcontent-c78="" id="for-structured-content">For Structured Content</h4>
 
-            <p _ngcontent-c81="">Datagrids work best for structured, homogeneous content, where each object has the same attributes. When
+            <p _ngcontent-c78="">Datagrids work best for structured, homogeneous content, where each object has the same attributes. When
                 common attributes are directly aligned in columns, users can quickly scan and compare them.</p>
 
-            <p _ngcontent-c81="">For data sets with a blend of text, images, and data visualizations, or content with mixed formatting,
-                <a _ngcontent-c81="" routerlink="../../../cards" href="/cards">cards</a> offer a better layout.</p>
+            <p _ngcontent-c78="">For data sets with a blend of text, images, and data visualizations, or content with mixed formatting,
+                <a _ngcontent-c78="" routerlink="./cards" href="/datagrid/cards">cards</a> offer a better layout.</p>
 
-            <h4 _ngcontent-c81="" id="for-large-volumes-of-data">For Large Volumes of Data</h4>
+            <h4 _ngcontent-c78="" id="for-large-volumes-of-data">For Large Volumes of Data</h4>
 
-            <p _ngcontent-c81="">A datagrid is well-suited for presenting large volumes of data that don’t fit on one page.
+            <p _ngcontent-c78="">A datagrid is well-suited for presenting large volumes of data that don’t fit on one page.
                 Users can filter and sort the data according to preference.</p>
 
-            <p _ngcontent-c81="">For smaller amounts of data (10 to 20 lines), datagrids are a relatively heavy component.
+            <p _ngcontent-c78="">For smaller amounts of data (10 to 20 lines), datagrids are a relatively heavy component.
                 Use datagrids if:</p>
 
-            <ul _ngcontent-c81="">
-                <li _ngcontent-c81="">The data set will grow</li>
-                <li _ngcontent-c81="">Users need search, filter, or batch operations</li>
+            <ul _ngcontent-c78="">
+                <li _ngcontent-c78="">The data set will grow</li>
+                <li _ngcontent-c78="">Users need search, filter, or batch operations</li>
             </ul>
 
-            <p _ngcontent-c81="">For a smaller volume of data, use a <a _ngcontent-c81="" routerlink="../tables" href="/documentation/v0.11/tables">table</a>. Tables are a
+            <p _ngcontent-c78="">For a smaller volume of data, use a <a _ngcontent-c78="" routerlink="../tables" href="/tables">table</a>. Tables are a
                 lighter-weight solution with a static view.</p>
         </div>
     </article>
@@ -1361,7 +1360,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
 
         <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11">Component Status</a>
 
-        <a class="nav-link" routerlink="get-started" routerlinkactive="active" href="/documentation/v0.11/get-started">Get Started</a>
+        <a class="nav-link" routerlink="get-started" routerlinkactive="active" href="/datagrid/selection/(get-started)">Get Started</a>
 
         <section class="nav-group collapsible">
             <input id="tab2" type="checkbox">
@@ -1370,7 +1369,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
                 <documentation-nav-links type="pattern">
         <!----><!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/app-layout">
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
                     Application Layout
                     <!---->
                     <!---->
@@ -1396,7 +1395,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/color">
+                <a class="nav-link" routerlinkactive="active" href="/color">
                     Color Palette
                     <!---->
                     <!---->
@@ -1428,7 +1427,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/navigation">
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
                     Navigation
                     <!---->
                     <!---->
@@ -1460,7 +1459,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/themes">
+                <a class="nav-link" routerlinkactive="active" href="/themes">
                     Themes
                     <!---->
                     <!---->
@@ -1474,7 +1473,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/typography">
+                <a class="nav-link" routerlinkactive="active" href="/typography">
                     Typography
                     <!---->
                     <!---->
@@ -1499,7 +1498,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/alerts">
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
                     Alerts
                     <!---->
                     <!---->
@@ -1507,7 +1506,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/badges">
+                <a class="nav-link" routerlinkactive="active" href="/badges">
                     Badges
                     <!---->
                     <!---->
@@ -1515,7 +1514,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/buttons">
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
                     Buttons
                     <!---->
                     <!---->
@@ -1523,7 +1522,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/button-group">
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
                     Button Group
                     <!---->
                     <!---->
@@ -1531,7 +1530,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/cards">
+                <a class="nav-link" routerlinkactive="active" href="/cards">
                     Cards
                     <!---->
                     <!---->
@@ -1539,7 +1538,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/checkboxes">
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
                     Checkboxes
                     <!---->
                     <!---->
@@ -1547,7 +1546,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/code-highlight">
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
                     Code Highlight
                     <!---->
                     <!---->
@@ -1561,7 +1560,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/datepicker">
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
                     Date Picker
                     <!---->
                     <!---->
@@ -1569,7 +1568,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link active" routerlinkactive="active" href="/documentation/v0.11/datagrid">
+                <a class="nav-link active" routerlinkactive="active" href="/datagrid">
                     Datagrid
                     <!---->
                     <!---->
@@ -1577,7 +1576,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/dropdowns">
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
                     Dropdowns
                     <!---->
                     <!---->
@@ -1585,7 +1584,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/forms">
+                <a class="nav-link" routerlinkactive="active" href="/forms">
                     Forms (Layout)
                     <!---->
                     <!---->
@@ -1593,7 +1592,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/grid">
+                <a class="nav-link" routerlinkactive="active" href="/grid">
                     Grid
                     <!---->
                     <!---->
@@ -1601,7 +1600,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/header">
+                <a class="nav-link" routerlinkactive="active" href="/header">
                     Header
                     <!---->
                     <!---->
@@ -1609,7 +1608,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/input-fields">
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
                     Input Fields
                     <!---->
                     <!---->
@@ -1617,7 +1616,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/labels">
+                <a class="nav-link" routerlinkactive="active" href="/labels">
                     Labels
                     <!---->
                     <!---->
@@ -1625,7 +1624,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/lists">
+                <a class="nav-link" routerlinkactive="active" href="/lists">
                     Lists
                     <!---->
                     <!---->
@@ -1633,7 +1632,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/login">
+                <a class="nav-link" routerlinkactive="active" href="/login">
                     Login Page
                     <!---->
                     <!---->
@@ -1643,7 +1642,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/modals">
+                <a class="nav-link" routerlinkactive="active" href="/modals">
                     Modals
                     <!---->
                     <!---->
@@ -1657,7 +1656,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/progress">
+                <a class="nav-link" routerlinkactive="active" href="/progress">
                     Progress Bars
                     <!---->
                     <!---->
@@ -1665,7 +1664,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/radios">
+                <a class="nav-link" routerlinkactive="active" href="/radios">
                     Radio Buttons
                     <!---->
                     <!---->
@@ -1675,7 +1674,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/select-boxes">
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
                     Select Boxes
                     <!---->
                     <!---->
@@ -1683,7 +1682,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/sidenav">
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
                     Sidenav
                     <!---->
                     <!---->
@@ -1691,7 +1690,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/signposts">
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
                     Signposts
                     <!---->
                     <!---->
@@ -1699,7 +1698,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/spinners">
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
                     Spinners
                     <!---->
                     <!---->
@@ -1707,7 +1706,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/stack-view">
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
                     Stack View
                     <!---->
                     <!---->
@@ -1715,7 +1714,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/tables">
+                <a class="nav-link" routerlinkactive="active" href="/tables">
                     Tables
                     <!---->
                     <!---->
@@ -1723,7 +1722,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/tabs">
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
                     Tabs
                     <!---->
                     <!---->
@@ -1733,7 +1732,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/toggle-switches">
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
                     Toggle Switches
                     <!---->
                     <!---->
@@ -1741,7 +1740,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/tooltips">
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
                     Tooltips
                     <!---->
                     <!---->
@@ -1749,7 +1748,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/tree-view">
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
                     Tree View
                     <!---->
                     <!---->
@@ -1759,7 +1758,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/vertical-nav">
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
                     Vertical Nav
                     <!---->
                     <!---->
@@ -1769,7 +1768,7 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/wizards">
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
                     Wizards
                     <!---->
                     <!---->
@@ -1783,4 +1782,4 @@ Selected user: &lt;span class="username" *ngIf="selectedUser"&gt;{{selectedUser.
 </nav></documentation>
 
 </clr-main-container>
-</root><script type="text/javascript" src="inline.44ca3035a45e293c2d0c.bundle.js"></script><script type="text/javascript" src="polyfills.bbdcdbe4fde3ed2ec371.bundle.js"></script><script type="text/javascript" src="main.a379a9fecb5c7c04701f.bundle.js"></script></body></html>
+</root><script type="text/javascript" src="inline.6c667e229556ea18a389.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.ef731724b10805483fe9.bundle.js"></script></body></html>

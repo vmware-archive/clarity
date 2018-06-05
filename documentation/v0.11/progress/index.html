@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Progress Bars</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Progress Bars</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
                 i[r] = i[r] || function () {
@@ -20,26 +20,25 @@
                 ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
             }
 
-        }</script><link href="styles.88290316efb62a5e326e.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c46]   .nav-item[_ngcontent-c46]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c46]   .progbar-examples[_ngcontent-c46]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c46]   .progress-block[_ngcontent-c46]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c47]   .nav-item[_ngcontent-c47]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c47]   .progbar-examples[_ngcontent-c47]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c47]   .progress-block[_ngcontent-c47]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c48]   .nav-item[_ngcontent-c48]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c48]   .progbar-examples[_ngcontent-c48]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c48]   .progress-block[_ngcontent-c48]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c49]   .nav-item[_ngcontent-c49]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c49]   .progbar-examples[_ngcontent-c49]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c49]   .progress-block[_ngcontent-c49]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c50]   .nav-item[_ngcontent-c50]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c50]   .progbar-examples[_ngcontent-c50]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c50]   .progress-block[_ngcontent-c50]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c51]   .nav-item[_ngcontent-c51]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c51]   .progbar-examples[_ngcontent-c51]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c51]   .progress-block[_ngcontent-c51]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c52]   .nav-item[_ngcontent-c52]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c52]   .progbar-examples[_ngcontent-c52]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c52]   .progress-block[_ngcontent-c52]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c53]   .nav-item[_ngcontent-c53]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c53]   .progbar-examples[_ngcontent-c53]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c53]   .progress-block[_ngcontent-c53]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c54]   .nav-item[_ngcontent-c54]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c54]   .progbar-examples[_ngcontent-c54]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c54]   .progress-block[_ngcontent-c54]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c55]   .nav-item[_ngcontent-c55]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c55]   .progbar-examples[_ngcontent-c55]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c55]   .progress-block[_ngcontent-c55]{margin-top:1rem}</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-progress"><clr-main-container class="main-container">
+        }</script><link href="styles.88290316efb62a5e326e.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c47]   .nav-item[_ngcontent-c47]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c47]   .progbar-examples[_ngcontent-c47]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c47]   .progress-block[_ngcontent-c47]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c48]   .nav-item[_ngcontent-c48]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c48]   .progbar-examples[_ngcontent-c48]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c48]   .progress-block[_ngcontent-c48]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c49]   .nav-item[_ngcontent-c49]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c49]   .progbar-examples[_ngcontent-c49]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c49]   .progress-block[_ngcontent-c49]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c50]   .nav-item[_ngcontent-c50]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c50]   .progbar-examples[_ngcontent-c50]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c50]   .progress-block[_ngcontent-c50]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c51]   .nav-item[_ngcontent-c51]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c51]   .progbar-examples[_ngcontent-c51]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c51]   .progress-block[_ngcontent-c51]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c52]   .nav-item[_ngcontent-c52]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c52]   .progbar-examples[_ngcontent-c52]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c52]   .progress-block[_ngcontent-c52]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c53]   .nav-item[_ngcontent-c53]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c53]   .progbar-examples[_ngcontent-c53]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c53]   .progress-block[_ngcontent-c53]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c54]   .nav-item[_ngcontent-c54]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c54]   .progbar-examples[_ngcontent-c54]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c54]   .progress-block[_ngcontent-c54]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c55]   .nav-item[_ngcontent-c55]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c55]   .progbar-examples[_ngcontent-c55]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c55]   .progress-block[_ngcontent-c55]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c56]   .nav-item[_ngcontent-c56]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c56]   .progbar-examples[_ngcontent-c56]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c56]   .progress-block[_ngcontent-c56]{margin-top:1rem}</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-progress"><clr-main-container class="main-container">
     <clr-header class="header-6 header">
         <!----><button class="header-hamburger-trigger" type="button">
             <span></span>
         </button>
         
         <div class="branding">
-            <a class="logo-and-title" routerlink="/" href="/">
+            <a class="logo-and-title" href="/clarity/">
                 <span class="clr-icon clarity-logo"></span>
                 <span class="title">Project Clarity</span>
             </a>
         </div>
         <div class="divider"></div>
         <div class="header-nav clr-nav-level-1">
-            <a class="nav-link" id="home-link" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Home</span></a>
-            
-            <a class="nav-link active" routerlink="/documentation" routerlinkactive="active" href="/documentation"><span class="nav-text">Documentation</span></a>
-            <a class="nav-link" routerlink="/icons" routerlinkactive="active" href="/icons"><span class="nav-text">Icons</span></a>
-            <a class="nav-link" routerlink="/community" routerlinkactive="active" href="/community"><span class="nav-text">Community</span></a>
-            <a class="nav-link" routerlink="/news" routerlinkactive="active" href="/news"><span class="nav-text">What's New</span></a>
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
         </div>
         <div class="settings">
             
@@ -70,12 +69,12 @@
         <div class="dox-tabs">
             <ul class="list-unstyled">
                 <!----><li>
-                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/documentation/v0.11/progress#top">
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/progress#top">
                         Examples &amp; Code
                     </a>
                 </li>
                 <!----><li>
-                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/documentation/v0.11/progress#guidelines">
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/progress#guidelines">
                         Design Guidelines
                     </a>
                 </li>
@@ -99,32 +98,32 @@
                 constraints with styling HTML5 progress elements.
                 As browsers improve, the intent is for this container to go away.</p>
 
-            <clr-progress-bar-examples-demo class="clrweb-progress-demo" _nghost-c46="">
+            <clr-progress-bar-examples-demo class="clrweb-progress-demo" _nghost-c47="">
 
-<!----><div _ngcontent-c46="" class="progbar-examples">
-    <h4 _ngcontent-c46="">Progress Bar</h4>
-    <div _ngcontent-c46="" class="progress demo">
-        <progress _ngcontent-c46="" max="100" value="0" data-displayval="0%"></progress>
+<!----><div _ngcontent-c47="" class="progbar-examples">
+    <h4 _ngcontent-c47="">Progress Bar</h4>
+    <div _ngcontent-c47="" class="progress demo">
+        <progress _ngcontent-c47="" max="100" value="0" data-displayval="0%"></progress>
         <!---->
     </div>
-    <p _ngcontent-c46=""><button _ngcontent-c46="" class="btn btn-outline">Show</button></p>
-</div><div _ngcontent-c46="" class="progbar-examples">
-    <h4 _ngcontent-c46="">Labeled</h4>
-    <div _ngcontent-c46="" class="progress labeled">
-        <progress _ngcontent-c46="" max="100" value="0" data-displayval="0%"></progress>
-        <!----><span _ngcontent-c46="">0%</span>
+    <p _ngcontent-c47=""><button _ngcontent-c47="" class="btn btn-outline">Show</button></p>
+</div><div _ngcontent-c47="" class="progbar-examples">
+    <h4 _ngcontent-c47="">Labeled</h4>
+    <div _ngcontent-c47="" class="progress labeled">
+        <progress _ngcontent-c47="" max="100" value="0" data-displayval="0%"></progress>
+        <!----><span _ngcontent-c47="">0%</span>
     </div>
-    <p _ngcontent-c46=""><button _ngcontent-c46="" class="btn btn-outline">Show</button></p>
-</div><div _ngcontent-c46="" class="progbar-examples">
-    <h4 _ngcontent-c46="">Fade Out</h4>
-    <div _ngcontent-c46="" class="progress progress-fade">
-        <progress _ngcontent-c46="" max="100" value="0" data-displayval="0%"></progress>
+    <p _ngcontent-c47=""><button _ngcontent-c47="" class="btn btn-outline">Show</button></p>
+</div><div _ngcontent-c47="" class="progbar-examples">
+    <h4 _ngcontent-c47="">Fade Out</h4>
+    <div _ngcontent-c47="" class="progress progress-fade">
+        <progress _ngcontent-c47="" max="100" value="0" data-displayval="0%"></progress>
         <!---->
     </div>
-    <p _ngcontent-c46=""><button _ngcontent-c46="" class="btn btn-outline">Show</button></p>
+    <p _ngcontent-c47=""><button _ngcontent-c47="" class="btn btn-outline">Show</button></p>
 </div>
 
-<pre _ngcontent-c46=""><code _ngcontent-c46="" clr-code-highlight="language-html" class="language-html">
+<pre _ngcontent-c47=""><code _ngcontent-c47="" clr-code-highlight="language-html" class="language-html">
 &lt;h4&gt;Progress Bar&lt;/h4&gt;
 &lt;div class="progress demo"&gt;
     &lt;progress max="100" value="0" data-displayval="0%"&gt;&lt;/progress&gt;
@@ -149,14 +148,14 @@
                 progress bar. These progress bars feature a recurring animation that continues until the
                 task is complete and the progress bar is no longer needed.</p>
 
-            <clr-progress-bar-loop-demo class="clrweb-progress-demo" _nghost-c47="">
+            <clr-progress-bar-loop-demo class="clrweb-progress-demo" _nghost-c48="">
 
-<div _ngcontent-c47="" class="progbar-examples">
-    <h4 _ngcontent-c47="">Indeterminate/Looping</h4>
-    <div _ngcontent-c47="" class="progress loop"><progress _ngcontent-c47=""></progress></div>
+<div _ngcontent-c48="" class="progbar-examples">
+    <h4 _ngcontent-c48="">Indeterminate/Looping</h4>
+    <div _ngcontent-c48="" class="progress loop"><progress _ngcontent-c48=""></progress></div>
 </div>
 
-<pre _ngcontent-c47=""><code _ngcontent-c47="" clr-code-highlight="language-html" class="language-html">
+<pre _ngcontent-c48=""><code _ngcontent-c48="" clr-code-highlight="language-html" class="language-html">
 &lt;div class="progress loop"&gt;&lt;progress&gt;&lt;/progress&gt;&lt;/div&gt;
 </code></pre>
 </clr-progress-bar-loop-demo>
@@ -170,29 +169,29 @@
                 <li>Red to indicate danger or warning</li>
             </ul>
 
-            <clr-progress-bar-colors-demo class="clrweb-progress-demo" _nghost-c48="">
+            <clr-progress-bar-colors-demo class="clrweb-progress-demo" _nghost-c49="">
 
-<!----><div _ngcontent-c48="" class="progbar-examples">
-    <h4 _ngcontent-c48="">Normal</h4>
-    <div _ngcontent-c48="" class="progress">
-        <progress _ngcontent-c48="" max="100" value="0" data-displayval="0%"></progress>
+<!----><div _ngcontent-c49="" class="progbar-examples">
+    <h4 _ngcontent-c49="">Normal</h4>
+    <div _ngcontent-c49="" class="progress">
+        <progress _ngcontent-c49="" max="100" value="0" data-displayval="0%"></progress>
     </div>
-    <p _ngcontent-c48=""><button _ngcontent-c48="" class="btn btn-outline">Show</button></p>
-</div><div _ngcontent-c48="" class="progbar-examples">
-    <h4 _ngcontent-c48="">Success</h4>
-    <div _ngcontent-c48="" class="progress success">
-        <progress _ngcontent-c48="" max="100" value="0" data-displayval="0%"></progress>
+    <p _ngcontent-c49=""><button _ngcontent-c49="" class="btn btn-outline">Show</button></p>
+</div><div _ngcontent-c49="" class="progbar-examples">
+    <h4 _ngcontent-c49="">Success</h4>
+    <div _ngcontent-c49="" class="progress success">
+        <progress _ngcontent-c49="" max="100" value="0" data-displayval="0%"></progress>
     </div>
-    <p _ngcontent-c48=""><button _ngcontent-c48="" class="btn btn-outline">Show</button></p>
-</div><div _ngcontent-c48="" class="progbar-examples">
-    <h4 _ngcontent-c48="">Danger/Warning</h4>
-    <div _ngcontent-c48="" class="progress danger">
-        <progress _ngcontent-c48="" max="100" value="0" data-displayval="0%"></progress>
+    <p _ngcontent-c49=""><button _ngcontent-c49="" class="btn btn-outline">Show</button></p>
+</div><div _ngcontent-c49="" class="progbar-examples">
+    <h4 _ngcontent-c49="">Danger/Warning</h4>
+    <div _ngcontent-c49="" class="progress danger">
+        <progress _ngcontent-c49="" max="100" value="0" data-displayval="0%"></progress>
     </div>
-    <p _ngcontent-c48=""><button _ngcontent-c48="" class="btn btn-outline">Show</button></p>
+    <p _ngcontent-c49=""><button _ngcontent-c49="" class="btn btn-outline">Show</button></p>
 </div>
 
-<pre _ngcontent-c48=""><code _ngcontent-c48="" clr-code-highlight="language-html" class="language-html">
+<pre _ngcontent-c49=""><code _ngcontent-c49="" clr-code-highlight="language-html" class="language-html">
 &lt;h4&gt;Normal&lt;/h4&gt;
 &lt;div class="progress"&gt;
     &lt;progress max="100" value="0" data-displayval="0%"&gt;&lt;/progress&gt;
@@ -219,39 +218,39 @@
                 <li>Use flash animation to draw the user’s attention when the process has completed.</li>
             </ul>
 
-            <clr-progress-bar-animations-demo class="clrweb-progress-demo" _nghost-c49="">
+            <clr-progress-bar-animations-demo class="clrweb-progress-demo" _nghost-c50="">
 
-<!----><div _ngcontent-c49="" class="progbar-examples">
-    <h4 _ngcontent-c49="">Fade Out</h4>
-    <div _ngcontent-c49="" class="progress progress-fade">
-        <progress _ngcontent-c49="" max="100" value="0" data-displayval="0%"></progress>
+<!----><div _ngcontent-c50="" class="progbar-examples">
+    <h4 _ngcontent-c50="">Fade Out</h4>
+    <div _ngcontent-c50="" class="progress progress-fade">
+        <progress _ngcontent-c50="" max="100" value="0" data-displayval="0%"></progress>
         <!---->
     </div>
-    <p _ngcontent-c49=""><button _ngcontent-c49="" class="btn btn-outline">Show</button></p>
-</div><div _ngcontent-c49="" class="progbar-examples">
-    <h4 _ngcontent-c49="">Flash Then Fade</h4>
-    <div _ngcontent-c49="" class="progress flash progress-fade">
-        <progress _ngcontent-c49="" max="100" value="0" data-displayval="0%"></progress>
+    <p _ngcontent-c50=""><button _ngcontent-c50="" class="btn btn-outline">Show</button></p>
+</div><div _ngcontent-c50="" class="progbar-examples">
+    <h4 _ngcontent-c50="">Flash Then Fade</h4>
+    <div _ngcontent-c50="" class="progress flash progress-fade">
+        <progress _ngcontent-c50="" max="100" value="0" data-displayval="0%"></progress>
         <!---->
     </div>
-    <p _ngcontent-c49=""><button _ngcontent-c49="" class="btn btn-outline">Show</button></p>
-</div><div _ngcontent-c49="" class="progbar-examples">
-    <h4 _ngcontent-c49="">Flash Red, No Fade</h4>
-    <div _ngcontent-c49="" class="progress flash-danger">
-        <progress _ngcontent-c49="" max="100" value="0" data-displayval="0%"></progress>
+    <p _ngcontent-c50=""><button _ngcontent-c50="" class="btn btn-outline">Show</button></p>
+</div><div _ngcontent-c50="" class="progbar-examples">
+    <h4 _ngcontent-c50="">Flash Red, No Fade</h4>
+    <div _ngcontent-c50="" class="progress flash-danger">
+        <progress _ngcontent-c50="" max="100" value="0" data-displayval="0%"></progress>
         <!---->
     </div>
-    <p _ngcontent-c49=""><button _ngcontent-c49="" class="btn btn-outline">Show</button></p>
-</div><div _ngcontent-c49="" class="progbar-examples">
-    <h4 _ngcontent-c49="">Labeled With Success Flash And Fade</h4>
-    <div _ngcontent-c49="" class="progress flash progress-fade labeled">
-        <progress _ngcontent-c49="" max="100" value="0" data-displayval="0%"></progress>
-        <!----><span _ngcontent-c49="">0%</span>
+    <p _ngcontent-c50=""><button _ngcontent-c50="" class="btn btn-outline">Show</button></p>
+</div><div _ngcontent-c50="" class="progbar-examples">
+    <h4 _ngcontent-c50="">Labeled With Success Flash And Fade</h4>
+    <div _ngcontent-c50="" class="progress flash progress-fade labeled">
+        <progress _ngcontent-c50="" max="100" value="0" data-displayval="0%"></progress>
+        <!----><span _ngcontent-c50="">0%</span>
     </div>
-    <p _ngcontent-c49=""><button _ngcontent-c49="" class="btn btn-outline">Show</button></p>
+    <p _ngcontent-c50=""><button _ngcontent-c50="" class="btn btn-outline">Show</button></p>
 </div>
 
-<pre _ngcontent-c49=""><code _ngcontent-c49="" clr-code-highlight="language-html" class="language-html">
+<pre _ngcontent-c50=""><code _ngcontent-c50="" clr-code-highlight="language-html" class="language-html">
 &lt;h4&gt;Fade Out&lt;/h4&gt;
 &lt;div class="progress progress-fade"&gt;
     &lt;progress max="100" value="0" data-displayval="0%"&gt;&lt;/progress&gt;
@@ -312,42 +311,42 @@
 
             <h3 id="progress-bar-in-cards">Progress Bar in Cards</h3>
 
-            <clr-progress-bar-cards-demo class="clrweb-progress-demo" _nghost-c50="">
+            <clr-progress-bar-cards-demo class="clrweb-progress-demo" _nghost-c51="">
 
-<div _ngcontent-c50="" class="clr-example">
-    <div _ngcontent-c50="" class="row">
-        <div _ngcontent-c50="" class="col-xs-12 col-sm-4">
-            <div _ngcontent-c50="" class="card">
-                <div _ngcontent-c50="" class="card-block">
-                    <div _ngcontent-c50="" class="progress top">
-                        <progress _ngcontent-c50="" max="100" value="33"></progress>
+<div _ngcontent-c51="" class="clr-example">
+    <div _ngcontent-c51="" class="row">
+        <div _ngcontent-c51="" class="col-xs-12 col-sm-4">
+            <div _ngcontent-c51="" class="card">
+                <div _ngcontent-c51="" class="card-block">
+                    <div _ngcontent-c51="" class="progress top">
+                        <progress _ngcontent-c51="" max="100" value="33"></progress>
                     </div>
-                    <h4 _ngcontent-c50="" class="card-title">Card title</h4>
-                    <p _ngcontent-c50="" class="card-text">Here is a progress bar at the very top of a card, above the header.</p>
+                    <h4 _ngcontent-c51="" class="card-title">Card title</h4>
+                    <p _ngcontent-c51="" class="card-text">Here is a progress bar at the very top of a card, above the header.</p>
                 </div>
-                <div _ngcontent-c50="" class="card-footer">
-                    <a _ngcontent-c50="" class="card-link" href="javascript://">Click</a>
+                <div _ngcontent-c51="" class="card-footer">
+                    <a _ngcontent-c51="" class="card-link" href="javascript://">Click</a>
                 </div>
             </div>
         </div>
-        <div _ngcontent-c50="" class="col-xs-12 col-sm-4">
-            <div _ngcontent-c50="" class="card">
-                <div _ngcontent-c50="" class="card-block">
-                    <h4 _ngcontent-c50="" class="card-title">Card title</h4>
-                    <p _ngcontent-c50="" class="card-text">Here is a progress bar at the top of a card's footer, above the buttons.</p>
+        <div _ngcontent-c51="" class="col-xs-12 col-sm-4">
+            <div _ngcontent-c51="" class="card">
+                <div _ngcontent-c51="" class="card-block">
+                    <h4 _ngcontent-c51="" class="card-title">Card title</h4>
+                    <p _ngcontent-c51="" class="card-text">Here is a progress bar at the top of a card's footer, above the buttons.</p>
                 </div>
-                <div _ngcontent-c50="" class="card-footer">
-                    <div _ngcontent-c50="" class="progress">
-                        <progress _ngcontent-c50="" max="100" value="77"></progress>
+                <div _ngcontent-c51="" class="card-footer">
+                    <div _ngcontent-c51="" class="progress">
+                        <progress _ngcontent-c51="" max="100" value="77"></progress>
                     </div>
-                    <a _ngcontent-c50="" class="card-link" href="javascript://">Click</a>
+                    <a _ngcontent-c51="" class="card-link" href="javascript://">Click</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<pre _ngcontent-c50=""><code _ngcontent-c50="" clr-code-highlight="language-html" class="language-html">
+<pre _ngcontent-c51=""><code _ngcontent-c51="" clr-code-highlight="language-html" class="language-html">
 &lt;div class="row"&gt;
     &lt;div class="col-xs-12 col-sm-4"&gt;
         &lt;div class="card"&gt;
@@ -383,42 +382,42 @@
 
             <h3 id="static-progress-bar-in-cards">Static Progress Bar in Cards</h3>
 
-            <clr-progress-bar-static-cards-demo class="clrweb-progress-demo" _nghost-c51="">
+            <clr-progress-bar-static-cards-demo class="clrweb-progress-demo" _nghost-c52="">
 
-<div _ngcontent-c51="" class="clr-example">
-    <div _ngcontent-c51="" class="row">
-        <div _ngcontent-c51="" class="col-xs-12 col-sm-4">
-            <div _ngcontent-c51="" class="card">
-                <div _ngcontent-c51="" class="card-block">
-                    <h4 _ngcontent-c51="" class="card-title">Card title</h4>
-                    <p _ngcontent-c51="" class="card-text">Here is a progress bar at the very top of a card, above the header.</p>
+<div _ngcontent-c52="" class="clr-example">
+    <div _ngcontent-c52="" class="row">
+        <div _ngcontent-c52="" class="col-xs-12 col-sm-4">
+            <div _ngcontent-c52="" class="card">
+                <div _ngcontent-c52="" class="card-block">
+                    <h4 _ngcontent-c52="" class="card-title">Card title</h4>
+                    <p _ngcontent-c52="" class="card-text">Here is a progress bar at the very top of a card, above the header.</p>
                 </div>
-                <div _ngcontent-c51="" class="card-footer">
-                    <div _ngcontent-c51="" class="progress-static top">
-                        <div _ngcontent-c51="" class="progress-meter" data-value="33"></div>
+                <div _ngcontent-c52="" class="card-footer">
+                    <div _ngcontent-c52="" class="progress-static top">
+                        <div _ngcontent-c52="" class="progress-meter" data-value="33"></div>
                     </div>
-                    <a _ngcontent-c51="" class="card-link" href="javascript://">Click</a>
+                    <a _ngcontent-c52="" class="card-link" href="javascript://">Click</a>
                 </div>
             </div>
         </div>
-        <div _ngcontent-c51="" class="col-xs-12 col-sm-4">
-            <div _ngcontent-c51="" class="card">
-                <div _ngcontent-c51="" class="card-block">
-                    <h4 _ngcontent-c51="" class="card-title">Card title</h4>
-                    <p _ngcontent-c51="" class="card-text">Here is a progress bar at the top of a card's footer, above the buttons.</p>
+        <div _ngcontent-c52="" class="col-xs-12 col-sm-4">
+            <div _ngcontent-c52="" class="card">
+                <div _ngcontent-c52="" class="card-block">
+                    <h4 _ngcontent-c52="" class="card-title">Card title</h4>
+                    <p _ngcontent-c52="" class="card-text">Here is a progress bar at the top of a card's footer, above the buttons.</p>
                 </div>
-                <div _ngcontent-c51="" class="card-footer">
-                    <div _ngcontent-c51="" class="progress-static">
-                        <div _ngcontent-c51="" class="progress-meter" data-value="77"></div>
+                <div _ngcontent-c52="" class="card-footer">
+                    <div _ngcontent-c52="" class="progress-static">
+                        <div _ngcontent-c52="" class="progress-meter" data-value="77"></div>
                     </div>
-                    <a _ngcontent-c51="" class="card-link" href="javascript://">Click</a>
+                    <a _ngcontent-c52="" class="card-link" href="javascript://">Click</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<pre _ngcontent-c51=""><code _ngcontent-c51="" clr-code-highlight="language-html" class="language-html">
+<pre _ngcontent-c52=""><code _ngcontent-c52="" clr-code-highlight="language-html" class="language-html">
 &lt;div class="row"&gt;
     &lt;div class="col-xs-12 col-sm-4"&gt;
         &lt;div class="card"&gt;
@@ -454,22 +453,22 @@
 
             <h3 id="progress-bar-in-sidebar-navigation">Progress Bar in Sidebar Navigation</h3>
 
-            <clr-progress-bar-sidenav-demo class="clrweb-progress-demo" _nghost-c52="">
+            <clr-progress-bar-sidenav-demo class="clrweb-progress-demo" _nghost-c53="">
 
-<ul _ngcontent-c52="" class="sidenav list-unstyled col-xs-2">
-    <li _ngcontent-c52="" class="nav-item">
-        <a _ngcontent-c52="" class="nav-link" href="javascript://">Link</a>
-        <div _ngcontent-c52="" class="progress loop"><progress _ngcontent-c52=""></progress></div>
+<ul _ngcontent-c53="" class="sidenav list-unstyled col-xs-2">
+    <li _ngcontent-c53="" class="nav-item">
+        <a _ngcontent-c53="" class="nav-link" href="javascript://">Link</a>
+        <div _ngcontent-c53="" class="progress loop"><progress _ngcontent-c53=""></progress></div>
     </li>
-    <li _ngcontent-c52="" class="nav-item">
-        <a _ngcontent-c52="" class="nav-link" href="javascript://">Link</a>
+    <li _ngcontent-c53="" class="nav-item">
+        <a _ngcontent-c53="" class="nav-link" href="javascript://">Link</a>
     </li>
-    <li _ngcontent-c52="" class="nav-item">
-        <a _ngcontent-c52="" class="nav-link" href="javascript://">Another link</a>
+    <li _ngcontent-c53="" class="nav-item">
+        <a _ngcontent-c53="" class="nav-link" href="javascript://">Another link</a>
     </li>
 </ul>
 
-<pre _ngcontent-c52=""><code _ngcontent-c52="" clr-code-highlight="language-html" class="language-html">
+<pre _ngcontent-c53=""><code _ngcontent-c53="" clr-code-highlight="language-html" class="language-html">
 &lt;ul class="sidenav"&gt;
     &lt;li class="nav-item"&gt;
         &lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;
@@ -501,33 +500,33 @@
             <p>Because there was no way to turn off the animation in IE/Edge’s implementation of the HTML5
                 progress element, there is a related, though separate, component for static progress bars.</p>
 
-            <clr-progress-bar-static-demo class="clrweb-progress-demo" _nghost-c53="">
+            <clr-progress-bar-static-demo class="clrweb-progress-demo" _nghost-c54="">
 
-<div _ngcontent-c53="" class="progbar-examples">
-    <h4 _ngcontent-c53="">Static Progress Bar</h4>
-    <div _ngcontent-c53="" class="progress-static">
-        <div _ngcontent-c53="" class="progress-meter" data-value="77" data-displayval="77%"></div>
+<div _ngcontent-c54="" class="progbar-examples">
+    <h4 _ngcontent-c54="">Static Progress Bar</h4>
+    <div _ngcontent-c54="" class="progress-static">
+        <div _ngcontent-c54="" class="progress-meter" data-value="47" data-displayval="47%"></div>
     </div>
 
-    <h4 _ngcontent-c53="">Labeled, Static Progress Bar</h4>
-    <div _ngcontent-c53="" class="progress-static labeled">
-        <div _ngcontent-c53="" class="progress-meter" data-value="19" data-displayval="19%"></div>
-        <span _ngcontent-c53="">19%</span>
+    <h4 _ngcontent-c54="">Labeled, Static Progress Bar</h4>
+    <div _ngcontent-c54="" class="progress-static labeled">
+        <div _ngcontent-c54="" class="progress-meter" data-value="51" data-displayval="51%"></div>
+        <span _ngcontent-c54="">51%</span>
     </div>
 
-    <h4 _ngcontent-c53="">Red Static Progress Bar</h4>
-    <div _ngcontent-c53="" class="progress-static danger">
-        <div _ngcontent-c53="" class="progress-meter" data-value="26"></div>
+    <h4 _ngcontent-c54="">Red Static Progress Bar</h4>
+    <div _ngcontent-c54="" class="progress-static danger">
+        <div _ngcontent-c54="" class="progress-meter" data-value="75"></div>
     </div>
 
-    <h4 _ngcontent-c53="">Green Static Progress Bar</h4>
-    <div _ngcontent-c53="" class="progress-static success">
-        <div _ngcontent-c53="" class="progress-meter" data-value="93"></div>
+    <h4 _ngcontent-c54="">Green Static Progress Bar</h4>
+    <div _ngcontent-c54="" class="progress-static success">
+        <div _ngcontent-c54="" class="progress-meter" data-value="57"></div>
     </div>
-    <p _ngcontent-c53=""><button _ngcontent-c53="" class="btn btn-outline">Load New Values</button></p>
+    <p _ngcontent-c54=""><button _ngcontent-c54="" class="btn btn-outline">Load New Values</button></p>
 </div>
 
-<pre _ngcontent-c53=""><code _ngcontent-c53="" clr-code-highlight="language-html" class="language-html">
+<pre _ngcontent-c54=""><code _ngcontent-c54="" clr-code-highlight="language-html" class="language-html">
 &lt;h4&gt;Static Progress Bar&lt;/h4&gt;
 &lt;div class="progress-static"&gt;
     &lt;div class="progress-meter" data-value="16"&gt;&lt;/div&gt;
@@ -574,96 +573,96 @@
             <p>Progress bar groups allow for vertical stacking of elements above and below the progress bar.
                 To create a progress bar group, wrap the <code class="clr-code">.progress</code> and <code class="clr-code">.progress-static</code> element with a <code class="clr-code">.progress-group</code> element.</p>
 
-            <clr-progress-bar-inline-demo class="clrweb-progress-demo" _nghost-c54="">
+            <clr-progress-bar-inline-demo class="clrweb-progress-demo" _nghost-c55="">
 
-<div _ngcontent-c54="" class="progbar-examples">
-    <h4 _ngcontent-c54="">Inline Progress Bar</h4>
-    <div _ngcontent-c54="" class="progress-block">
-        <label _ngcontent-c54="">Simple Layout</label>
-        <div _ngcontent-c54="" class="progress">
-            <progress _ngcontent-c54="" max="100" value="0" data-displayval="0%"></progress>
+<div _ngcontent-c55="" class="progbar-examples">
+    <h4 _ngcontent-c55="">Inline Progress Bar</h4>
+    <div _ngcontent-c55="" class="progress-block">
+        <label _ngcontent-c55="">Simple Layout</label>
+        <div _ngcontent-c55="" class="progress">
+            <progress _ngcontent-c55="" max="100" value="0" data-displayval="0%"></progress>
         </div>
-        <span _ngcontent-c54="">More text</span>
+        <span _ngcontent-c55="">More text</span>
     </div>
 
-    <div _ngcontent-c54="" class="progress-block">
-        <label _ngcontent-c54="">Complex Layout</label>
-        <div _ngcontent-c54="" class="progress-group">
-            <div _ngcontent-c54="" class="row">
-                <div _ngcontent-c54="" class="col-xs-6">Left</div>
-                <div _ngcontent-c54="" class="col-xs-6 text-right">Right</div>
+    <div _ngcontent-c55="" class="progress-block">
+        <label _ngcontent-c55="">Complex Layout</label>
+        <div _ngcontent-c55="" class="progress-group">
+            <div _ngcontent-c55="" class="row">
+                <div _ngcontent-c55="" class="col-xs-6">Left</div>
+                <div _ngcontent-c55="" class="col-xs-6 text-right">Right</div>
             </div>
-            <div _ngcontent-c54="" class="progress-static">
-                <div _ngcontent-c54="" class="progress-meter" data-value="62" data-displayval="62%"></div>
+            <div _ngcontent-c55="" class="progress-static">
+                <div _ngcontent-c55="" class="progress-meter" data-value="94" data-displayval="94%"></div>
             </div>
-            <div _ngcontent-c54="" class="row">
-                <div _ngcontent-c54="" class="col-xs-6">Left</div>
-                <div _ngcontent-c54="" class="col-xs-6 text-right">Right</div>
-            </div>
-        </div>
-        <span _ngcontent-c54="">More text</span>
-    </div>
-
-    <h4 _ngcontent-c54="">Labeled, Static Progress Bar</h4>
-    <div _ngcontent-c54="" class="progress-block">
-        <label _ngcontent-c54="">Complex Layout</label>
-        <div _ngcontent-c54="" class="progress-group">
-            <div _ngcontent-c54="" class="row">
-                <div _ngcontent-c54="" class="col-xs-6">Left</div>
-                <div _ngcontent-c54="" class="col-xs-6 text-right">Right</div>
-            </div>
-            <div _ngcontent-c54="" class="progress-static labeled danger">
-                <div _ngcontent-c54="" class="progress-meter" data-value="28" data-displayval="28%"></div>
-                <span _ngcontent-c54="">28%</span>
-            </div>
-            <div _ngcontent-c54="" class="row">
-                <div _ngcontent-c54="" class="col-xs-6">Left</div>
-                <div _ngcontent-c54="" class="col-xs-6 text-right">Right</div>
+            <div _ngcontent-c55="" class="row">
+                <div _ngcontent-c55="" class="col-xs-6">Left</div>
+                <div _ngcontent-c55="" class="col-xs-6 text-right">Right</div>
             </div>
         </div>
+        <span _ngcontent-c55="">More text</span>
     </div>
 
-    <h4 _ngcontent-c54="">Stacked Progress Bars</h4>
-    <div _ngcontent-c54="" class="progress-block">
-        <label _ngcontent-c54="">Stacked Layout</label>
-        <div _ngcontent-c54="" class="progress-group">
-            <div _ngcontent-c54="" class="progress-static labeled danger">
-                <div _ngcontent-c54="" class="progress-meter" data-value="70" data-displayval="70%"></div>
-                <span _ngcontent-c54="">70%</span>
+    <h4 _ngcontent-c55="">Labeled, Static Progress Bar</h4>
+    <div _ngcontent-c55="" class="progress-block">
+        <label _ngcontent-c55="">Complex Layout</label>
+        <div _ngcontent-c55="" class="progress-group">
+            <div _ngcontent-c55="" class="row">
+                <div _ngcontent-c55="" class="col-xs-6">Left</div>
+                <div _ngcontent-c55="" class="col-xs-6 text-right">Right</div>
             </div>
-            <div _ngcontent-c54="" class="progress-static labeled">
-                <div _ngcontent-c54="" class="progress-meter" data-value="28" data-displayval="28%"></div>
-                <span _ngcontent-c54="">28%</span>
+            <div _ngcontent-c55="" class="progress-static labeled danger">
+                <div _ngcontent-c55="" class="progress-meter" data-value="52" data-displayval="52%"></div>
+                <span _ngcontent-c55="">52%</span>
             </div>
-            <div _ngcontent-c54="" class="progress-static labeled success">
-                <div _ngcontent-c54="" class="progress-meter" data-value="88" data-displayval="88%"></div>
-                <span _ngcontent-c54="">88%</span>
+            <div _ngcontent-c55="" class="row">
+                <div _ngcontent-c55="" class="col-xs-6">Left</div>
+                <div _ngcontent-c55="" class="col-xs-6 text-right">Right</div>
             </div>
         </div>
     </div>
 
-    <div _ngcontent-c54="" class="progress-block">
-        <label _ngcontent-c54="">Stacked (but resized) Layout</label>
-        <div _ngcontent-c54="" class="progress-group" style="font-size: 1px">
-            <div _ngcontent-c54="" class="progress-static danger">
-                <div _ngcontent-c54="" class="progress-meter" data-value="70" data-displayval="70%"></div>
-                <span _ngcontent-c54="">70%</span>
+    <h4 _ngcontent-c55="">Stacked Progress Bars</h4>
+    <div _ngcontent-c55="" class="progress-block">
+        <label _ngcontent-c55="">Stacked Layout</label>
+        <div _ngcontent-c55="" class="progress-group">
+            <div _ngcontent-c55="" class="progress-static labeled danger">
+                <div _ngcontent-c55="" class="progress-meter" data-value="66" data-displayval="66%"></div>
+                <span _ngcontent-c55="">66%</span>
             </div>
-            <div _ngcontent-c54="" class="progress-static">
-                <div _ngcontent-c54="" class="progress-meter" data-value="28" data-displayval="28%"></div>
-                <span _ngcontent-c54="">28%</span>
+            <div _ngcontent-c55="" class="progress-static labeled">
+                <div _ngcontent-c55="" class="progress-meter" data-value="52" data-displayval="52%"></div>
+                <span _ngcontent-c55="">52%</span>
             </div>
-            <div _ngcontent-c54="" class="progress-static success">
-                <div _ngcontent-c54="" class="progress-meter" data-value="88" data-displayval="88%"></div>
-                <span _ngcontent-c54="">88%</span>
+            <div _ngcontent-c55="" class="progress-static labeled success">
+                <div _ngcontent-c55="" class="progress-meter" data-value="13" data-displayval="13%"></div>
+                <span _ngcontent-c55="">13%</span>
             </div>
         </div>
     </div>
 
-    <p _ngcontent-c54=""><button _ngcontent-c54="" class="btn btn-outline">Load New Values</button></p>
+    <div _ngcontent-c55="" class="progress-block">
+        <label _ngcontent-c55="">Stacked (but resized) Layout</label>
+        <div _ngcontent-c55="" class="progress-group" style="font-size: 1px">
+            <div _ngcontent-c55="" class="progress-static danger">
+                <div _ngcontent-c55="" class="progress-meter" data-value="66" data-displayval="66%"></div>
+                <span _ngcontent-c55="">66%</span>
+            </div>
+            <div _ngcontent-c55="" class="progress-static">
+                <div _ngcontent-c55="" class="progress-meter" data-value="52" data-displayval="52%"></div>
+                <span _ngcontent-c55="">52%</span>
+            </div>
+            <div _ngcontent-c55="" class="progress-static success">
+                <div _ngcontent-c55="" class="progress-meter" data-value="13" data-displayval="13%"></div>
+                <span _ngcontent-c55="">13%</span>
+            </div>
+        </div>
+    </div>
+
+    <p _ngcontent-c55=""><button _ngcontent-c55="" class="btn btn-outline">Load New Values</button></p>
 </div>
 
-<pre _ngcontent-c54=""><code _ngcontent-c54="" clr-code-highlight="language-html" class="language-html">
+<pre _ngcontent-c55=""><code _ngcontent-c55="" clr-code-highlight="language-html" class="language-html">
 &lt;h4&gt;Inline Progress Bar&lt;/h4&gt;
 &lt;div class="progress-block"&gt;
     &lt;label&gt;Simple Layout&lt;/label&gt;
@@ -751,46 +750,46 @@
 
             <p>Progress bar blocks are also available for use inside of Clarity cards.</p>
 
-            <clr-progress-bar-inline-cards-demo class="clrweb-progress-demo" _nghost-c55="">
+            <clr-progress-bar-inline-cards-demo class="clrweb-progress-demo" _nghost-c56="">
 
-<div _ngcontent-c55="" class="clr-example">
-    <div _ngcontent-c55="" class="row">
-        <div _ngcontent-c55="" class="col-xs-12 col-sm-6">
-            <div _ngcontent-c55="" class="card">
-                <div _ngcontent-c55="" class="card-block">
-                    <h4 _ngcontent-c55="" class="card-title">Card title</h4>
-                    <p _ngcontent-c55="" class="card-text">Here is a progress bar at the very top of a card.</p>
-                    <div _ngcontent-c55="" class="progress-block">
-                        <label _ngcontent-c55="">Label</label>
-                        <div _ngcontent-c55="" class="progress-static">
-                            <div _ngcontent-c55="" class="progress-meter" data-value="89"></div>
+<div _ngcontent-c56="" class="clr-example">
+    <div _ngcontent-c56="" class="row">
+        <div _ngcontent-c56="" class="col-xs-12 col-sm-6">
+            <div _ngcontent-c56="" class="card">
+                <div _ngcontent-c56="" class="card-block">
+                    <h4 _ngcontent-c56="" class="card-title">Card title</h4>
+                    <p _ngcontent-c56="" class="card-text">Here is a progress bar at the very top of a card.</p>
+                    <div _ngcontent-c56="" class="progress-block">
+                        <label _ngcontent-c56="">Label</label>
+                        <div _ngcontent-c56="" class="progress-static">
+                            <div _ngcontent-c56="" class="progress-meter" data-value="89"></div>
                         </div>
                     </div>
-                    <div _ngcontent-c55="" class="progress-block">
-                        <label _ngcontent-c55="">Longer Label</label>
-                        <div _ngcontent-c55="" class="progress-static">
-                            <div _ngcontent-c55="" class="progress-meter" data-value="97"></div>
+                    <div _ngcontent-c56="" class="progress-block">
+                        <label _ngcontent-c56="">Longer Label</label>
+                        <div _ngcontent-c56="" class="progress-static">
+                            <div _ngcontent-c56="" class="progress-meter" data-value="42"></div>
                         </div>
                     </div>
-                    <div _ngcontent-c55="" class="progress-block">
-                        <label _ngcontent-c55="">Really, Really, Really Long Label</label>
-                        <div _ngcontent-c55="" class="progress success">
-                            <progress _ngcontent-c55="" max="100" value="9" data-displayval="9%"></progress>
+                    <div _ngcontent-c56="" class="progress-block">
+                        <label _ngcontent-c56="">Really, Really, Really Long Label</label>
+                        <div _ngcontent-c56="" class="progress success">
+                            <progress _ngcontent-c56="" max="100" value="54" data-displayval="54%"></progress>
                         </div>
                     </div>
                 </div>
-                <div _ngcontent-c55="" class="card-footer">
-                    <div _ngcontent-c55="" class="progress-static top">
-                        <div _ngcontent-c55="" class="progress-meter" data-value="33"></div>
+                <div _ngcontent-c56="" class="card-footer">
+                    <div _ngcontent-c56="" class="progress-static top">
+                        <div _ngcontent-c56="" class="progress-meter" data-value="33"></div>
                     </div>
-                    <a _ngcontent-c55="" class="card-link" href="javascript://">Click</a>
+                    <a _ngcontent-c56="" class="card-link" href="javascript://">Click</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<pre _ngcontent-c55=""><code _ngcontent-c55="" clr-code-highlight="language-html" class="language-html">
+<pre _ngcontent-c56=""><code _ngcontent-c56="" clr-code-highlight="language-html" class="language-html">
 &lt;div class="row"&gt;
     &lt;div class="col-xs-12 col-sm-6"&gt;
         &lt;div class="card"&gt;
@@ -846,8 +845,8 @@
 
             <h4 id="placement">Placement</h4>
 
-            <p>Progress bars are designed for use in the main content area, <a routerlink="../../../header" href="/documentation/v0.11/header">header</a>, <a routerlink="../../../cards" href="/documentation/v0.11/cards">cards</a>,
-                and <a routerlink="../../../modals" href="/documentation/v0.11/modals">modals</a>. The size of the progress bar adjusts to its
+            <p>Progress bars are designed for use in the main content area, <a routerlink="./header" href="/progress/header">header</a>, <a routerlink="./cards" href="/progress/cards">cards</a>,
+                and <a routerlink="./modals" href="/progress/modals">modals</a>. The size of the progress bar adjusts to its
                 container. Indicate which process is being monitored through placement of the progress bar in the
                 container.</p>
 
@@ -867,7 +866,7 @@
 
             <h4 id="progress-bar-versus-spinner">Progress Bar Versus Spinner</h4>
 
-            <p>Clarity also has a circular progress indicator, called a <a routerlink="../../../spinners" href="/documentation/v0.11/spinners">spinner</a>, which serves the same use case as
+            <p>Clarity also has a circular progress indicator, called a <a routerlink="./spinners" href="/progress/spinners">spinner</a>, which serves the same use case as
                 an indeterminate progress bar. Using a spinner or an indeterminate progress bar is
                 a matter of available space and activation point. In many cases, spinners are best
                 because they occupy less space.</p>
@@ -889,7 +888,7 @@
 
         <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11">Component Status</a>
 
-        <a class="nav-link" routerlink="get-started" routerlinkactive="active" href="/documentation/v0.11/get-started">Get Started</a>
+        <a class="nav-link" routerlink="get-started" routerlinkactive="active" href="/progress/(get-started)">Get Started</a>
 
         <section class="nav-group collapsible">
             <input id="tab2" type="checkbox">
@@ -898,7 +897,7 @@
                 <documentation-nav-links type="pattern">
         <!----><!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/app-layout">
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
                     Application Layout
                     <!---->
                     <!---->
@@ -924,7 +923,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/color">
+                <a class="nav-link" routerlinkactive="active" href="/color">
                     Color Palette
                     <!---->
                     <!---->
@@ -956,7 +955,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/navigation">
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
                     Navigation
                     <!---->
                     <!---->
@@ -988,7 +987,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/themes">
+                <a class="nav-link" routerlinkactive="active" href="/themes">
                     Themes
                     <!---->
                     <!---->
@@ -1002,7 +1001,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/typography">
+                <a class="nav-link" routerlinkactive="active" href="/typography">
                     Typography
                     <!---->
                     <!---->
@@ -1027,7 +1026,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/alerts">
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
                     Alerts
                     <!---->
                     <!---->
@@ -1035,7 +1034,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/badges">
+                <a class="nav-link" routerlinkactive="active" href="/badges">
                     Badges
                     <!---->
                     <!---->
@@ -1043,7 +1042,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/buttons">
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
                     Buttons
                     <!---->
                     <!---->
@@ -1051,7 +1050,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/button-group">
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
                     Button Group
                     <!---->
                     <!---->
@@ -1059,7 +1058,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/cards">
+                <a class="nav-link" routerlinkactive="active" href="/cards">
                     Cards
                     <!---->
                     <!---->
@@ -1067,7 +1066,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/checkboxes">
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
                     Checkboxes
                     <!---->
                     <!---->
@@ -1075,7 +1074,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/code-highlight">
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
                     Code Highlight
                     <!---->
                     <!---->
@@ -1089,7 +1088,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/datepicker">
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
                     Date Picker
                     <!---->
                     <!---->
@@ -1097,7 +1096,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/datagrid">
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
                     Datagrid
                     <!---->
                     <!---->
@@ -1105,7 +1104,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/dropdowns">
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
                     Dropdowns
                     <!---->
                     <!---->
@@ -1113,7 +1112,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/forms">
+                <a class="nav-link" routerlinkactive="active" href="/forms">
                     Forms (Layout)
                     <!---->
                     <!---->
@@ -1121,7 +1120,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/grid">
+                <a class="nav-link" routerlinkactive="active" href="/grid">
                     Grid
                     <!---->
                     <!---->
@@ -1129,7 +1128,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/header">
+                <a class="nav-link" routerlinkactive="active" href="/header">
                     Header
                     <!---->
                     <!---->
@@ -1137,7 +1136,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/input-fields">
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
                     Input Fields
                     <!---->
                     <!---->
@@ -1145,7 +1144,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/labels">
+                <a class="nav-link" routerlinkactive="active" href="/labels">
                     Labels
                     <!---->
                     <!---->
@@ -1153,7 +1152,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/lists">
+                <a class="nav-link" routerlinkactive="active" href="/lists">
                     Lists
                     <!---->
                     <!---->
@@ -1161,7 +1160,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/login">
+                <a class="nav-link" routerlinkactive="active" href="/login">
                     Login Page
                     <!---->
                     <!---->
@@ -1171,7 +1170,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/modals">
+                <a class="nav-link" routerlinkactive="active" href="/modals">
                     Modals
                     <!---->
                     <!---->
@@ -1185,7 +1184,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link active" routerlinkactive="active" href="/documentation/v0.11/progress">
+                <a class="nav-link active" routerlinkactive="active" href="/progress">
                     Progress Bars
                     <!---->
                     <!---->
@@ -1193,7 +1192,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/radios">
+                <a class="nav-link" routerlinkactive="active" href="/radios">
                     Radio Buttons
                     <!---->
                     <!---->
@@ -1203,7 +1202,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/select-boxes">
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
                     Select Boxes
                     <!---->
                     <!---->
@@ -1211,7 +1210,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/sidenav">
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
                     Sidenav
                     <!---->
                     <!---->
@@ -1219,7 +1218,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/signposts">
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
                     Signposts
                     <!---->
                     <!---->
@@ -1227,7 +1226,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/spinners">
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
                     Spinners
                     <!---->
                     <!---->
@@ -1235,7 +1234,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/stack-view">
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
                     Stack View
                     <!---->
                     <!---->
@@ -1243,7 +1242,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/tables">
+                <a class="nav-link" routerlinkactive="active" href="/tables">
                     Tables
                     <!---->
                     <!---->
@@ -1251,7 +1250,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/tabs">
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
                     Tabs
                     <!---->
                     <!---->
@@ -1261,7 +1260,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/toggle-switches">
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
                     Toggle Switches
                     <!---->
                     <!---->
@@ -1269,7 +1268,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/tooltips">
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
                     Tooltips
                     <!---->
                     <!---->
@@ -1277,7 +1276,7 @@
             </li>
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/tree-view">
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
                     Tree View
                     <!---->
                     <!---->
@@ -1287,7 +1286,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/vertical-nav">
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
                     Vertical Nav
                     <!---->
                     <!---->
@@ -1297,7 +1296,7 @@
             <!---->
         <!---->
             <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/documentation/v0.11/wizards">
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
                     Wizards
                     <!---->
                     <!---->
@@ -1311,4 +1310,4 @@
 </nav></documentation>
 
 </clr-main-container>
-</root><script type="text/javascript" src="inline.44ca3035a45e293c2d0c.bundle.js"></script><script type="text/javascript" src="polyfills.bbdcdbe4fde3ed2ec371.bundle.js"></script><script type="text/javascript" src="main.a379a9fecb5c7c04701f.bundle.js"></script></body></html>
+</root><script type="text/javascript" src="inline.6c667e229556ea18a389.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.ef731724b10805483fe9.bundle.js"></script></body></html>

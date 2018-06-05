@@ -17,4 +17,8 @@ export class KSDragAndDrop {
         inventory.reset();
         this.users = inventory.all;
     }
+
+    report($event: any) {
+        console.log($event);
+    }
 }

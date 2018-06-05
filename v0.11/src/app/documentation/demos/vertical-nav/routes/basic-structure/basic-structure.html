@@ -1,0 +1,40 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Basic Structure</h4>
+
+<p>
+    Use the <code class="clr-code">clr-vertical-nav</code> component to create the Vertical Nav.
+    Add the <code class="clr-code">clrVerticalNavLink</code> directive on each Nav Link in the Vertical Nav.
+</p>
+
+<div class="clr-example">
+    <div class="main-container" style="height: 400px">
+        <header class="header">
+            <div class="branding">
+                <a href="javascript://">
+                    <clr-icon shape="bolt" class="is-inverse"></clr-icon>
+                    <span class="title">Project Pokémon</span>
+                </a>
+            </div>
+        </header>
+        <div class="content-container">
+            <div class="content-area">
+                <router-outlet></router-outlet>
+            </div>
+            <clr-vertical-nav>
+                <a clrVerticalNavLink routerLink="./charmander" routerLinkActive="active">Charmander</a>
+                <a clrVerticalNavLink routerLink="./jigglypuff" routerLinkActive="active">Jigglypuff</a>
+                <a clrVerticalNavLink routerLink="./pikachu" routerLinkActive="active">Pikachu</a>
+                <a clrVerticalNavLink routerLink="./raichu" routerLinkActive="active">Raichu</a>
+                <a clrVerticalNavLink routerLink="./snorlax" routerLinkActive="active">Snorlax</a>
+                <a clrVerticalNavLink routerLink="./credit" routerLinkActive="active">Credit</a>
+            </clr-vertical-nav>
+        </div>
+    </div>
+</div>
+
+<clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>

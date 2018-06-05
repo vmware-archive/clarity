@@ -1,0 +1,85 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary"
+            id="use-the-table-styles-wherever-you-need-to-present-static-data-in-a-tabular-format">Use the table styles
+            wherever you need to present static data in a tabular format.</h5>
+
+        <div class="alert">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <div class="alert-text">
+                        For advanced features like sorting, filtering, pagination etc. see
+                        <a routerLink="./datagrid" target="_blank">Datagrid.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="code-examples">
+            <h3 id="basic-tables">Basic Tables</h3>
+
+            <p>Tables take up the full width of their container. Values in table cells are
+                center-aligned by default.</p>
+
+            <clr-tables-basic-demo></clr-tables-basic-demo>
+
+            <h3 id="left-aligned-table-cells">Left-Aligned Table Cells</h3>
+
+            <p>Values within cells can be left-aligned by adding the
+                <code class="clr-code">.left</code> classname to the table cell.</p>
+
+            <clr-tables-leftcell-demo></clr-tables-leftcell-demo>
+
+            <h3 id="multiline-table-cells">Multiline Table Cells</h3>
+
+            <p>Table cells automatically wrap text.</p>
+
+            <clr-tables-multiline-demo></clr-tables-multiline-demo>
+
+            <h3 id="non-bordered-tables">Non-Bordered Tables</h3>
+
+            <p>Tables can be displayed without borders by using the
+                <code class="clr-code">.table-noborder</code> classname.</p>
+
+            <clr-tables-noborder-demo></clr-tables-noborder-demo>
+
+            <h3 id="compact-tables">Compact Tables</h3>
+
+            <p>Table row heights can be reduced with the <code class="clr-code">.table-compact</code>
+                classname.</p>
+
+            <clr-tables-compact-demo></clr-tables-compact-demo>
+
+            <h3 id="compact-non-bordered-tables">Compact, Non-Bordered Tables</h3>
+
+            <p>The <code class="clr-code">.table-compact</code> and
+                <code class="clr-code">.table-noborder</code> classnames can be combined.</p>
+
+            <clr-tables-compact-noborder-demo></clr-tables-compact-noborder-demo>
+
+            <h3 id="vertical-tables">Vertical Tables</h3>
+
+            <p>Using the <code class="clr-code">.table-vertical</code> classname orients the table
+                vertically. The left-most column serves as the table header. The left-most cell
+                can be either a <code class="clr-code">td</code> or
+                <code class="clr-code">th</code> element.</p>
+
+            <p>Cells in a vertical table default to left alignment. We have no use cases for
+                center alignment at this time.</p>
+
+            <clr-tables-vertical-demo></clr-tables-vertical-demo>
+
+            <h3 id="vertical-compact-non-bordered-tables">Vertical, Compact, Non-bordered Tables</h3>
+            <clr-tables-vertical-noborder-compact-demo></clr-tables-vertical-noborder-compact-demo>
+
+            <h3 id="table-container-widths">Table Container Widths</h3>
+
+            <p>Tables can exist inside grid columns.</p>
+
+            <clr-tables-width-demo></clr-tables-width-demo>
+        </div>
+    </article>
+</clr-doc-wrapper>

@@ -1,0 +1,34 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <h6>Import All Shapes in Clarity Icons</h6>
+    <li>
+        Before Clarity v0.9.15, if you wanted to load all shapes, you had to import all sets one by one after loading
+        ClarityIcons:
+
+        <pre><code clr-code-highlight="language-ts" ngNonBindable>
+import &#x22;clarity-icons&#x22;;
+import &#x22;clarity-icons/shapes/essential-shapes&#x22;;
+import &#x22;clarity-icons/shapes/social-shapes&#x22;;
+import &#x22;clarity-icons/shapes/technology-shapes&#x22;;</code></pre>
+
+
+        Now, with Clarity v0.9.15 release, you can load all shapes by importing a single set, <code class="clr-code">all-shapes</code>:
+
+
+        <pre><code clr-code-highlight="language-ts" ngNonBindable>
+import &#x22;clarity-icons&#x22;;
+import &#x22;clarity-icons/shapes/all-shapes&#x22;;</code></pre>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed hide/show issue for datagrid rows using cells in the row detail.</li>
+    <li bug-fix>Fixed Dropdown to emit <code class="clr-code">clrDropdownOpenChange</code> state on all changes</li>
+    <li bug-fix>Fixed a positioning issue with inline spinners in wizards</li>
+</ul>
+
+<h4>Other Changes</h4>
+<ul class="list">
+    <li>Added styles to use momentum-based scrolling in webkit based browsers.</li>
+</ul>

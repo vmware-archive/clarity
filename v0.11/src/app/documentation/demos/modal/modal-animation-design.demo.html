@@ -1,0 +1,31 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example" style="background: #eee">
+    <div class="backdrop-example-container">
+        <div class="modal static">
+            <div class="modal-dialog fadeDown" [class.in]="animatedExampleIn" role="dialog" aria-hidden="true">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button aria-label="Close" class="close" type="button">
+                            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                        </button>
+                        <h3 class="modal-title">Delete datastore</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete <b>datastore743</b>? This action is permenant and cannot be recovered.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline" type="button">Cancel</button>
+                        <button class="btn btn-warning" type="button">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-backdrop fade static" [class.in]="animatedExampleIn" aria-hidden="true"></div>
+    </div>
+</div>

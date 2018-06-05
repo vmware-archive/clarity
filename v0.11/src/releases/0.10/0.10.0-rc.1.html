@@ -1,0 +1,123 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li breaking-change>
+        <h6>Unified API for Dropdown, Tooltip and Signpost</h6>
+        <p>
+            Dropdown, Tooltip and Signpost now have similar APIs to reduce the amount of learning needed
+            before using them. The patterns and naming conventions are the same for all three.
+            Here's how we recommend using them now:
+        </p>
+        <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-dropdown&gt;
+    &lt;button clrDropdownTrigger class=&quot;btn&quot;&gt;Dropdown&lt;/button&gt;
+    &lt;clr-dropdown-menu *clrIfOpen clrPosition="bottom-right"&gt;
+        &lt;a clrDropdownItem href=&quot;...&quot;&gt;Action 1&lt;/a&gt;
+        &lt;a clrDropdownItem href=&quot;...&quot;&gt;Action 2&lt;/a&gt;
+    &lt;/clr-dropdown-menu&gt;
+&lt;/clr-dropdown&gt;</code></pre>
+        <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-tooltip&gt;
+    &lt;clr-icon clrTooltipTrigger shape=&quot;info-standard&quot;&gt;&lt;/clr-icon&gt;
+    &lt;clr-tooltip-content *clrIfOpen clrPosition=&quot;top-right&quot; clrSize=&quot;xs&quot;&gt;
+        Tooltip
+    &lt;/clr-tooltip-content&gt;
+&lt;/clr-tooltip&gt;</code></pre>
+        <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-signpost&gt;
+    &lt;!-- Optional custom trigger, the default is the info icon --&gt;
+    &lt;button clrSignpostTrigger class=&quot;signpost-action btn btn-small btn-link&quot;&gt;
+        &lt;clr-icon shape=&quot;warning&quot;&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+    &lt;clr-signpost-content *clrIfOpen clrPosition=&quot;left-top&quot;&gt;
+        Signpost
+    &lt;/clr-signpost-content&gt;
+&lt;/clr-signpost&gt;</code></pre>
+        <p>
+            All three support the <code class="clr-code">*clrIfOpen</code> structural directive, which we heavily
+            recommend
+            using. In particular, it lets you lazy-load the content of much more easily than before. For specific use
+            cases
+            where you do not want the hidden content to be removed from the DOM (for instance, inline reading of
+            tooltips by
+            screenreaders rather than actionable elements to read the tooltip) you can omit the
+            <code class="clr-code">*clrIfOpen</code> directive, all three components make it optional, and will hide
+            the content with CSS only.
+        </p>
+
+        <h3>Breaking change</h3>
+        <p>
+            This unification introduces two breaking changes:
+        </p>
+        <ul>
+            <li>
+                Positioning and sizing options for all three components have been renamed and moved to the "popover"
+                element itself, as opposed to the wrapper. For instance, the previous syntax:
+                <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-tooltip clrTooltipDirection=&quot;top-right&quot; clrTooltipSize=&quot;xs&quot;&gt;
+    &lt;clr-icon clrTooltipTrigger shape=&quot;info-standard&quot;&gt;&lt;/clr-icon&gt;
+    &lt;clr-tooltip-content&gt;
+        Tooltip
+    &lt;/clr-tooltip-content&gt;
+&lt;/clr-tooltip&gt;</code></pre>
+                needs to be rewritten to:
+                <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-tooltip&gt;
+    &lt;clr-icon clrTooltipTrigger shape=&quot;info-standard&quot;&gt;&lt;/clr-icon&gt;
+    &lt;clr-tooltip-content clrPosition=&quot;top-right&quot; clrSize=&quot;xs&quot;&gt;
+        Tooltip
+    &lt;/clr-tooltip-content&gt;
+&lt;/clr-tooltip&gt;
+</code></pre>
+                The same applies to Dropdowns and Signposts.
+            </li>
+            <li>
+                The <code class="clr-code">[(clrDropdownMenuOpen)]</code> two-way binding is now handled by the
+                <code class="clr-code">*clrIfOpen</code> structural directive. For instance, to pre-open a dropdown,
+                the old API was:
+                <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-dropdown [clrDropdownMenuOpen]=&quot;true&quot;&gt;
+    &lt;button clrDropdownTrigger class=&quot;btn&quot;&gt;...&lt;/button&gt;
+    &lt;clr-dropdown-menu&gt;...&lt;/clr-dropdown-menu&gt;
+&lt;/clr-dropdown&gt;</code></pre>
+                To do the same with the new API, simply write:
+                <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-dropdown&gt;
+    &lt;button clrDropdownTrigger class=&quot;btn&quot;&gt;...&lt;/button&gt;
+    &lt;clr-dropdown-menu *clrIfOpen=&quot;true&quot;&gt;...&lt;/clr-dropdown-menu&gt;
+&lt;/clr-dropdown&gt;</code></pre>
+                Two-way binding on structural directives does not have a shorthand syntax, though, so you will need to
+                write explicitly the <code class="clr-code">&lt;ng-template&gt;</code> rather than use the simple "star"
+                syntactic sugar. So if you used to dynamically control the opening and closing of a dropdown like so:
+                <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-dropdown [(clrDropdownMenuOpen)]=&quot;open&quot;&gt;
+    &lt;button clrDropdownTrigger class=&quot;btn&quot;&gt;...&lt;/button&gt;
+    &lt;clr-dropdown-menu&gt;...&lt;/clr-dropdown-menu&gt;
+&lt;/clr-dropdown&gt;</code></pre>
+                You will need to change it to this syntax:
+                <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-dropdown&gt;
+    &lt;button clrDropdownTrigger class=&quot;btn&quot;&gt;...&lt;/button&gt;
+    &lt;ng-template [(clrIfOpen)]=&quot;open&quot;&gt;
+        &lt;clr-dropdown-menu&gt;...&lt;/clr-dropdown-menu&gt;
+    &lt;/ng-template&gt;
+&lt;/clr-dropdown&gt;</code></pre>
+                Note that Tooltip now offers the exact same API to control the show/hide behavior, and that Signpost
+                already
+                supported this from the beginning.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <h3>Updated to Angular 4.3</h3>
+        <p>
+            With the 0.10.0 release, Clarity has been updated to Angular 4.3.
+        </p>
+    </li>
+</ul>
+
+<h2>Additional Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Fixed conflicts between design and development rendering of icons.
+    </li>
+</ul>

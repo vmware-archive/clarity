@@ -1,0 +1,46 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+    <clr-tabs>
+        <clr-tab>
+            <button clrTabLink>Dashboard</button>
+            <ng-template [(clrIfActive)]="dashboardActive">
+                <clr-tab-content>
+                    <p>Content for Dashboard tab. Here is a <a href="javascript://">link</a> that can be accessed via clicking or through keyboard via tabbing.</p>
+                </clr-tab-content>
+            </ng-template>
+        </clr-tab>
+
+        <clr-tab>
+            <button clrTabLink>Management</button>
+            <ng-template [(clrIfActive)]="managementActive">
+                <clr-tab-content>
+                    <p>Content for Management tab.</p>
+                </clr-tab-content>
+            </ng-template>
+        </clr-tab>
+
+        <clr-tab>
+            <button clrTabLink>Cloud</button>
+            <ng-template [(clrIfActive)]="cloudActive">
+                <clr-tab-content>
+                    <p>Content for Cloud tab.</p>
+                </clr-tab-content>
+            </ng-template>
+        </clr-tab>
+
+        <clr-tab>
+            <button clrTabLink>Infrastructure</button>
+            <ng-template [(clrIfActive)]="infrastructureActive">
+                <clr-tab-content>
+                    <p>Content for Infrastructure tab.</p>
+                </clr-tab-content>
+            </ng-template>
+        </clr-tab>
+    </clr-tabs>
+</div>
+<clr-code-snippet [clrCode]="example"></clr-code-snippet>

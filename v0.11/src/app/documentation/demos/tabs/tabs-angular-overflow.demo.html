@@ -1,0 +1,36 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+    <clr-tabs>
+        <clr-tab>
+            <button clrTabLink id="link1">Dashboard</button>
+            <clr-tab-content id="content1" *clrIfActive>
+                <p>Content for Dashboard tab. Here is a <a href="javascript://">link</a> that can be accessed via
+                    clicking or through keyboard via tabbing.</p>
+            </clr-tab-content>
+        </clr-tab>
+        <clr-tab>
+            <button clrTabLink>Management</button>
+            <clr-tab-content *clrIfActive>
+                <p>Content for Management tab.</p>
+            </clr-tab-content>
+        </clr-tab>
+        <clr-tab>
+            <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Cloud</button>
+            <clr-tab-content *clrIfActive>
+                <p>Content for Cloud tab.</p>
+            </clr-tab-content>
+        </clr-tab>
+        <clr-tab>
+            <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Settings</button>
+            <clr-tab-content *clrIfActive>
+                <p>Content for Settings tab.</p>
+            </clr-tab-content>
+        </clr-tab>
+    </clr-tabs>
+</div>
+<clr-code-snippet [clrCode]="example"></clr-code-snippet>

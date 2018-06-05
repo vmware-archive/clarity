@@ -1,0 +1,83 @@
+$bl-3_0: baselineRem(3);
+
+.github-btn {
+    margin-top: $bl-1_0 - 4;
+}
+
+@media screen and (max-width: map-get($grid-breakpoints, md)) {
+    .github-btn {
+        display: none;
+    }
+
+    .header-dox {
+        .header-nav {
+            display: none;
+        }
+    }
+}
+
+.header-dox {
+
+    // Image positioning in the right column.
+    &__media-container {
+        padding-top: $bl-3_0;
+    }
+
+}
+
+#home-link {
+    display: none;
+
+    .open-hamburger-menu & {
+        display: inline-block;
+    }
+}
+
+// Container style for comps
+.header-demo {
+    padding: 24px 48px;
+    margin: 24px 15px -12px;
+    background-color: #eeeeee;
+
+    header {
+        a {
+            &:hover {
+                color: inherit;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: map-get($grid-breakpoints, md)) {
+    // Override for the comp demos
+    .header-demo {
+        padding: 12px 24px;
+        .branding {
+            padding: 0 12px;
+            min-width: 100px;
+        }
+    }
+    // Override for the sub-nav demo
+    .subnav {
+        .nav {
+            .nav-item {
+                &:nth-child(4) { // Removing this so it fits inside for demo purposes on mobile.
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .header-actions {
+        &--overflow {
+            width: 165px;
+            overflow: hidden;
+            font-size: 11px;
+        }
+    }
+}
+
+.col-no-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}

@@ -1,0 +1,32 @@
+/*
+ * Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+import {Component} from "@angular/core";
+
+const HTML_EXAMPLE = `
+<clr-alert [clrAlertSizeSmall]="true">
+    <div class="alert-item">
+        <span class="alert-text">
+            This is a small alert.
+        </span>
+    </div>
+</clr-alert>
+<clr-alert>
+    <div class="alert-item">
+        <span class="alert-text">
+            This is a regular alert.
+        </span>
+    </div>
+</clr-alert>
+`;
+
+@Component({
+    selector: "clr-alert-small-demo-angular",
+    styleUrls: ["../alerts.demo.scss"],
+    templateUrl: "./alert-angular-small.demo.html"
+})
+export class AlertAngularSmallDemo {
+    htmlExample = HTML_EXAMPLE;
+}

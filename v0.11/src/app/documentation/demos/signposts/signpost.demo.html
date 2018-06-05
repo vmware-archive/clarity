@@ -1,0 +1,225 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="a-signpost-description">The signpost is a convenient, lightweight way to show
+            contextual help of information without taking the user out of the current context.</h5>
+
+        <div id="design-guidelines">
+            <h3>Examples</h3>
+            <div class="clrweb-DoxMedia">
+                <div class="clrweb-DoxMedia-block">
+                    <div class="clrweb-DoxMedia-img">
+                        <img src="assets/images/documentation/signposts/basic-and-pie-chart.svg" 
+                        alt="basic and pie chart"/>
+                    </div>
+                </div>
+            </div>
+            <h3>Description</h3>
+            <p>A signpost displays contextual help or information in a popover dialog. Like a tooltip, it has an
+                arrow/pointer that extends out to the trigger element, but the dialog is larger to fit more content.
+                Signposts are designed to show a relatively small amount of content which may include: a title, images,
+                text links of image links. A vertical scrollbar (browser default) may be used if the content exceeds the
+                maximum height of the dialog.</p>
+            <h5 style="margin: 24px 0 12px;">Size</h5>
+            <ul class="list">
+                <li>Min-width 216px; Min-height 84px</li>
+                <li>Max-width 360px; Max-height 504px</li>
+            </ul>
+            <h3>Usage</h3>
+            <p style="margin-bottom: 12px;">Signposts should be used when you want to show a small 
+                amount of contextual help of information without taking the user out of the current 
+                context. Use sparingly as a supplemental element and not as a primary method of adding detail.</p>
+            <ul class="list">
+                <li>When the amount of content won't fit in a tooltip</li>
+                <li>When you want to include a header, image or text/image links in the content</li>
+                <li>When the information presented needs to stay in view at length (Unlike tooltips, signposts stay in
+                    view until the user interacts with another element)
+                </li>
+            </ul>
+            <h3>Interaction</h3>
+            <p>Clicking the icon triggers the signpost. It remains visible until the user clicks the close 
+                icon or clicks anywhere outside of the dialog to dismiss it. To keep the interface uncluttered, 
+                only one signpost is displayed at a time. When a dialog is visible, clicking an icon to open 
+                another one automatically dismisses the previous dialog.</p>
+            <div class="clrweb-DoxMedia">
+                <div class="clrweb-DoxMedia-block">
+                    <div class="clrweb-DoxMedia-img">
+                        <img src="assets/images/documentation/signposts/states.svg" alt=""/>
+                    </div>
+                </div>
+            </div>
+            <h3>Trigger icon and dialog positioning</h3>
+            <div class="clrweb-DoxMedia">
+                <div class="clrweb-DoxMedia-block">
+                    <div class="clrweb-DoxMedia-img">
+                        <img src="assets/images/documentation/signposts/positioning.svg" alt=""/>
+                    </div>
+                </div>
+                <div class="clrweb-DoxMedia-text">
+                    <p style="margin-top: 12px;">Default postion for the dialog is 6px to the right of the 
+                        trigger icon.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="clrweb-DoxMedia">
+                        <!-- Note: the image already has gray border w/ jagged bottom edge in it -->
+                        <img src="assets/images/documentation/signposts/inline-alignment.svg"
+                            alt="Signposts inline alignment" class="clrweb-Img">
+                        <div class="clrweb-DoxMedia-text">
+                            <p style="margin-top: 12px;">
+                                Default position for the dialog is 6px from the end of the text
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="clrweb-DoxMedia">
+                        <!-- Note: the image already has gray border w/ jagged bottom edge in it -->
+                        <img src="assets/images/documentation/signposts/column-alignment.svg"
+                            alt="Signpost in column alignment" class="clrweb-Img">
+                        <div class="clrweb-DoxMedia-text">
+                            <p style="margin-top: 12px;">
+                                In tables, the icons may be aligned in a column
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 style="margin-bottom: 12px;">Recommendations</h4>
+            <ul class="list">
+                <li>The popover should not be so large that it dominates the screen</li>
+                <li>Make sure that the popover doesn't obstruct other important information on the screen</li>
+                <li>With the exception of text/image links, don't insert any actionable components, such as 
+                    buttons, in the dialog
+                </li>
+                <li>Don't rely on signposts as a primary method of displaying additional information - i.e. 
+                    as a way to save space on a page
+                </li>
+                <li>
+                    Use sparingly as a device to add immediate, relevant information
+                </li>
+            </ul>
+        </div>
+
+        <div id="code-examples">
+            <h3 id="examples">Code &amp; Examples</h3>
+
+            <p>
+                The signpost component uses the <code class="clr-code">*clrIfOpen</code> structural directive
+                (detailed documentation coming soon) on the signpost content
+                to indicate clearly that said content is only present in the DOM when open. We heavily recommend using
+                it for many reasons: better performance, making the intent clear in your own templates,
+                and following a more natural lifecycle for any directives or components inside of the signpost.
+            </p>
+            <p>
+                If for some reason this behavior was not the one you wanted, for instance if you want screenreaders to
+                read the signpost inline as opposed to when the user activates the trigger,
+                we also support the signpost content without a
+                <code class="clr-code">*clrIfOpen</code> directive on it. It will be created eagerly when the signpost
+                itself initializes, and will not be destroyed or recreated until the signpost itself is. Please make
+                sure you know exactly why you are omitting this directive if you end up doing so.
+            </p>
+
+            <p>The default signpost is shown to the right of the trigger icon with the content centered 
+                vertically in the middle of the trigger. It opens with a click action. Once open its 
+                contents can be interacted with. The Signpost is closed when clicking on the
+                <clr-icon shape="close"></clr-icon>
+                icon or by clicking anywhere outside the <code class="clr-code">clr-signpost-content</code> element.
+            </p>
+            <div class="signpost-default">
+                <clr-signpost>
+                    <clr-signpost-content *clrIfOpen>
+                        <h3 style="margin-top: 0">Default Signpost</h3>
+                        <p>Position: <code class="clr-code">right-middle</code></p>
+                    </clr-signpost-content>
+                </clr-signpost>
+            </div>
+
+            <clr-code-snippet [clrLanguage]="'html'" [clrCode]="html"></clr-code-snippet>
+
+            <clr-signpost-paragraph-demo></clr-signpost-paragraph-demo>
+
+            <!-- A signpost popover in a form grid/no-grid is being affected by overflow issues.-->
+            <!--<h3 id="signposts-in-forms">Signposts in forms</h3>-->
+            <!--<clr-signpost-form-demo></clr-signpost-form-demo>-->
+
+            <h3 id="signposts-positions">Signpost positions</h3>
+            <p>
+                There are twelve signpost positions to help place the popover in an appropriate position 
+                when shown. You control the position and direction by declaring a position that orients 
+                your that Signpost content as you see fit. On a <code class="clr-code">clr-signpost-content</code> 
+                component add the input <code class="clr-code">[clrPosition]="'position'"</code> where 
+                position is one of the following:
+            </p>
+            <ul class="list">
+                <li><code class="clr-code">top-X: </code> the arrow will point down and the popover
+                    will be above the trigger in the X position where X = left, middle or right
+                </li>
+                <li><code class="clr-code">bottom-X: </code> the arrow will point up and the
+                    popover will be below the trigger in the X position where X = left, middle or right
+                </li>
+                <li><code class="clr-code">left-X: </code> the arrow will point right and the
+                    popover will be left of the trigger in the X position where X = top, middle or bottom
+                </li>
+                <li><code class="clr-code">right-X: </code> the arrow will point left and the
+                    popover will be right of the trigger in the X position where X = top, middle or bottom
+                </li>
+            </ul>
+            <clr-signpost-positions-demo></clr-signpost-positions-demo>
+
+            <h3 id="custom-triggers">Custom Triggers</h3>
+            <p>We provide a default trigger but you can add one yourself. The signpost component 
+                provides the <code class="clr-code">clrSignpostTrigger</code> attribute directive that 
+                can be added to the <code class="clr-code">clr-signpost-content</code> child. To control the 
+                position of your signpost, add <code class="clr-code">[clrPosition]="position"</code> so that 
+                it knows how the Signpost should point.</p>
+
+            <clr-signpost-triggers-demo></clr-signpost-triggers-demo>
+
+            <h2>Summary of Options</h2>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+
+                    <td class="left">
+                        <b>[clrPosition]</b>
+                        <div class="hidden-sm-up">Type: string</div>
+                        <div class="hidden-sm-up">Default: right-middle</div>
+                    </td>
+                    <td class="hidden-xs-down">string</td>
+                    <td class="hidden-xs-down">right-middle</td>
+                    <td class="left">
+                        Set the position of the <code class="clr-code">clr-signpost-content</code> popover: 
+                        anchorPoint & popoverPosition. For example: "right-middle" (ANCHOR-POSITION) will anchor 
+                        the clr-signpost-content popover and point to the icons middle on the right side. And, 
+                        the popover itself will be positioned to the right of the trigger icon
+                        with the icon in the vertical middle of the popover.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>clrSignpostTrigger</b>
+                        <div class="hidden-sm-up">Type: SignpostTriggerDirective</div>
+                        <div class="hidden-sm-up">Default: n/a</div>
+                    </td>
+                    <td class="hidden-xs-down">SignpostTriggerDirective</td>
+                    <td class="hidden-xs-down">n/a</td>
+                    <td class="left">
+                        The SignpostTriggerDirective is placed on the outer-most container element 
+                        for a custom trigger. It overrides the default Signpost trigger with custom content.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
+</clr-doc-wrapper>

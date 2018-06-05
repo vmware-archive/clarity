@@ -1,0 +1,50 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Added size attribute to Clarity Icons</h6>
+        <p>
+            You can now set an icon size through <code class="clr-code">size</code> attribute. The sizes set through <code class="clr-code">size</code> attribute overrides the CSS size style. If you don't set either the size attribute or the CSS size
+            style, the size defaults to 16 by 16 pixels.
+        </p>
+        <pre><code clr-code-highlight="language-html">
+&lt;clr-icon shape=&quot;info&quot; size=&quot;12&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;info&quot; size=&quot;16&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;info&quot; size=&quot;36&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;info&quot; size=&quot;48&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;info&quot; size=&quot;64&quot;&gt;&lt;/clr-icon&gt;
+&lt;clr-icon shape=&quot;info&quot; size=&quot;72&quot;&gt;&lt;/clr-icon&gt;
+</code></pre>
+        <div class="alert alert-warning">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        Please note that <code class="clr-code">.icon-size-[sm/md/lg]</code> classes
+                        are being deprecated and will be removed in 0.8.0.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed issue with Clarity Icons throwing an error in IE10 </li>
+    <li bug-fix>Cleaned up checkbox positioning so it is more resilient to positioning and size modifications</li>
+    <li bug-fix>Fixed scrolling issue with website on iOS</li>
+    <li bug-fix>Fixed broken links and image paths from website navigation rearchitecture for github-pages</li>
+    <li bug-fix>Fixed vertical alignment issue with alerts</li>
+    <li bug-fix>Corrected a margin issue with link/flat buttons in forms</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Updated TravisCI and added steps to github workflow</li>
+    <li>Created Angular component for checkboxes — documentation coming soon</li>
+    <li>Implemented website homepage redesign</li>
+    <li>Continued cleanup of website content</li>
+    <li>Improved installation instructions for Clarity Icons, Clarity UI, and Clarity Angular</li>
+</ul>

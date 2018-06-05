@@ -1,0 +1,110 @@
+<div class="content-area">
+    <section>
+        <!-- TODO: "Current release" on index -->
+        <h1>{{releaseNumber}} Changelog</h1>
+        <hr>
+
+        <div *ngIf="nbBreakingChanges > 0" class="alert alert-danger breaking-change-alert">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">This build introduces breaking change. Please read below.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-block whats-new-summary">
+            <div class="card-text summary-blocks">
+                <div class="summary-block">
+                    <p class="summary-block-title">Breaking Changes</p>
+                    <p class="summary-block-details">
+                        <span class="count">{{nbBreakingChanges}}</span> Change{{ nbBreakingChanges == 1 ? "" : "s" }}
+                    </p>
+                </div>
+                <div class="summary-block">
+                    <p class="summary-block-title">Bugs</p>
+                    <p class="summary-block-details">
+                        <span class="count">{{nbBugFixes}}</span> Bug Fix{{ nbBugFixes == 1 ? "" : "es" }}
+                    </p>
+                </div>
+                <div *ngIf="nbNewComponents > 0" class="summary-block">
+                    <p class="summary-block-title">New Components</p>
+                    <p class="summary-block-details">
+                        <span class="count">{{nbNewComponents}}</span> Component{{ nbNewComponents == 1 ? "" : "s" }}
+                    </p>
+                </div>
+                <div *ngIf="releaseDate" class="summary-block">
+                    <p class="summary-block-title">Released</p>
+                    <p class="summary-block-details">
+                        {{releaseDate}}
+                    </p>
+                </div>
+            </div>
+            <div class="card-divider"></div>
+
+            <div class="group whats-new-mediablock">
+                <img class="icon" src="assets/images/logos/npm.svg" />
+                <div class="description">
+                    <p class="title">NPM Packages</p>
+                    <p *ngIf="!newPackageFormat">
+                        <a href="https://www.npmjs.com/package/clarity-ui" target="_blank">clarity-ui</a><br>
+                        <a href="https://www.npmjs.com/package/clarity-angular" target="_blank">clarity-angular</a>
+                        <br *ngIf="hasIcons">
+                        <a *ngIf="hasIcons" href="https://www.npmjs.com/package/clarity-icons" target="_blank">clarity-icons</a>
+                    </p>
+                    <p *ngIf="newPackageFormat">
+                        <a href="https://www.npmjs.com/package/@clr/ui" target="_blank">@clr/ui</a><br>
+                        <a href="https://www.npmjs.com/package/@clr/angular" target="_blank">@clr/angular</a>
+                        <br *ngIf="hasIcons">
+                        <a *ngIf="hasIcons" href="https://www.npmjs.com/package/@clr/icons" target="_blank">@clr/icons</a>
+                    </p>
+                </div>
+            </div>
+            <div class="group whats-new-mediablock">
+                <img class="icon" src="assets/images/logos/sketch.png" />
+                <div class="description">
+                    <p class="title">Sketch template</p>
+                    <p>
+                        <!-- TODO: proper fallbacks? -->
+                        <a sketchTemplateLink [version]="sketchVersion">Download the {{sketchVersion}} Sketch Template</a>
+                    </p>
+                </div>
+            </div>
+            <div *ngIf="hasGitHub" class="group whats-new-mediablock">
+                <img class="icon" src="assets/images/logos/git.svg" />
+                <div class="description">
+                    <p class="title">Git Change</p>
+                    <p>
+                        <a href="https://github.com/vmware/clarity/commit/{{commit}}" target="_blank">
+                            Direct link to the git change
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <ng-container *ngIf="currentTemplate">
+            <ng-template [ngTemplateOutlet]="currentTemplate"></ng-template>
+        </ng-container>
+    </section>
+</div>
+<nav class="sidenav" [clr-nav-level]="2">
+    <section class="sidenav-content">
+        <a class="nav-link" routerLink="/news" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact:true}">Current Release ({{current}})</a>
+
+        <section *ngFor="let minor of minors; let i = index" class="nav-group collapsible">
+            <input id="tab{{i}}" type="checkbox" checked>
+            <label for="tab{{i}}">{{minor}} Changelogs</label>
+            <ul class="nav-list">
+                <li *ngFor="let patch of patches[minor]">
+                    <a class="nav-link" [routerLink]="patch" routerLinkActive="active">{{patch}}</a>
+                </li>
+            </ul>
+        </section>
+    </section>
+</nav>
+
+<!---AUTO GENERATED TEMPLATES--->

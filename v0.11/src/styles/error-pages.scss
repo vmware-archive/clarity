@@ -1,0 +1,63 @@
+// error page styling
+
+.layout-error-page {
+    background-color: #eaecf0;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    text-align: center;
+    width: 100vw;
+
+    .main-container {
+        background: none;
+    }
+
+    img {
+        @include clarityWebBoxShadow;
+        margin: 0 auto;
+        margin-top: 5%;
+    }
+
+    table.fancy-error {
+        width: 95%;
+        max-width: 708px;
+        margin: 5% auto 0;
+
+        tr.error-info > td {
+            padding: 48px;
+            height: 288px;
+            width: 50%;
+            vertical-align: middle;
+            background: #fff;
+
+            & > p {
+                width: 280px;
+                margin: 0 auto;
+                text-align: justify;
+            }
+
+            &.l {
+                background: $clrweb-altGray;
+
+                & > p {
+                    font-size: 64px;
+                    line-height: 1em;
+                    text-transform: lowercase;
+                    text-align: center;
+                }
+            }
+
+            &.r > p {
+                text-align: left;
+                font-size: 14px;
+            }
+        }
+
+        .btn-block {
+            border-radius: 0;
+            height: 36px;
+            margin: 0;
+        }
+    }
+}

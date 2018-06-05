@@ -1,0 +1,61 @@
+<section class="dox-content">
+  <h1>Component Status</h1>
+
+  <p>
+      The Clarity team is building a robust library of components as quickly as possible. Check back often for updates.
+      If a component you need is not listed here, <a href="https://github.com/vmware/clarity/issues">file a GitHub issue</a>.
+  </p>
+
+  <p class="component-legend">
+      <span class="component-legend-item">
+        <span class="symbol"><status-dot [status]="20"></status-dot></span>
+          <span class="terminology">Done</span>
+      </span>
+      <span class="component-legend-item">
+          <span class="symbol"><status-dot [status]="10"></status-dot></span>
+          <span class="terminology">In progress</span>
+      </span>
+      <span class="component-legend-item">
+          <span class="symbol"><status-dot [status]="5"></status-dot></span>
+          <span class="terminology">In queue</span>
+      </span>
+      <span class="component-legend-item">
+          <span class="symbol"><status-dot [status]="-1"></status-dot></span>
+          <span class="terminology">n/a</span>
+      </span>
+  </p>
+
+  <table class="table table-condensed table-component-list bump-down" style="max-width: 580px">
+      <thead>
+        <th>Item</th>
+        <th>UX</th>
+        <th>UI</th>
+        <th class="hidden-xs-down">Core</th>
+        <th>NG</th>
+        <th class="hidden-xs-down">Docs</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of components">
+          <td>
+            <a *ngIf="item.url" [routerLink]="getUrl(item)" [fragment]="getFragment(item)">{{item.text}}</a>
+            <span *ngIf="!item.url">{{item.text}}</span>
+          </td>
+          <td>
+            <status-dot [status]="item.ux"></status-dot>
+          </td>
+          <td>
+            <status-dot [status]="item.ui"></status-dot>
+          </td>
+          <td class="hidden-xs-down">
+            <status-dot [status]="item.core"></status-dot>
+          </td>
+          <td>
+            <status-dot [status]="item.ng"></status-dot>
+          </td>
+          <td class="hidden-xs-down">
+            <status-dot [status]="item.dox"></status-dot>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</section>

@@ -1,0 +1,269 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+
+        <h5 class="component-summary" id="labels-header">Labels show concise metadata in a compact format.</h5>
+
+        <div id="design-guidelines">
+            <div class="clr-demo-container">
+                <div class="clr-demo-container__content">
+                    <span class="label label-blue">john@example.com</span>
+                    <span class="label label-blue">james@example.com</span>
+                </div>
+            </div>
+
+            <h3>Style</h3>
+            <p>Labels are visually styled to differentiate them from buttons.</p>
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Overall Style</h4>
+                    <p>
+                        The distinctive visual style of labels deliberately deviates from buttons.
+                        This prevents users from confusing labels with buttons and allows labels to
+                        co-exist with other components without competing for
+                        a user's attention with primary and secondary buttons on the screen.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clr-demo-container">
+                            <span class="label label-purple">Fruit</span>
+                            <span class="label label-purple">Meat</span>
+                            <span class="label label-purple">Drink</span>
+                            <span class="label label-purple">Vegetable</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Color</h4>
+                    <p>
+                        The Clarity color palette and the colors you are using throughout your application
+                        should guide which colors you choose for your labels. We recommend reserving
+                        stoplight colors (red, yellow, and green) to display state or status.
+                    </p>
+                    <p>
+                        If the intent is to use colors as a way to have groups of labels be visually
+                        distinct from one another, keep in mind that there may be accessibility issues
+                        around using color as your sole differentiator.
+                    </p>
+                    <p>
+                        Avoid using too many colors within the same context, displaying too many colors may
+                        distract the user from the core of your application and the information it presents.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <img src="assets/images/documentation/labels/labels_color.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        Status colors are generally reserved to display state or status.
+                    </p>
+                </div>
+            </div>
+
+            <h3>Typography</h3>
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h5>Capitalization</h5>
+                    <p>
+                        To differentiate from buttons, it is recommended that you avoid using all caps for
+                        labels. Using all caps might make the user think the label is a button and conflates
+                        the use case for labels with actions and buttons.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia is-dont-block">
+                            <div class="clr-demo-container">
+                                <span class="label label-purple">LONDON (LOCATION)</span>
+                                <span class="label label-purple">NABLUS (LOCATION)</span>
+                            </div>
+                            <div class="clrweb-DoxMedia-text">
+                                <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                                <p>
+                                    Use all caps in labels
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h5>Multiline Text</h5>
+                    <p>
+                        Keep labels to one line of concise text. The use case for labels is to showcase
+                        information in a compact format.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia is-dont-block">
+                            <div class="clr-demo-container">
+                                <span style="padding: 15px; text-align: center" class="label label-purple">LONDON <br>(LOCATION)</span>
+                                <span style="padding: 15px; text-align: center" class="label label-purple">NABLUS <br>(LOCATION)</span>
+                            </div>
+                            <div class="clrweb-DoxMedia-text">
+                                <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                                <p>
+                                    Use multiple lines of text within a single label.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h5>Additional Metadata</h5>
+                    <p>
+                        Describe additional information or metadata in parenthesis if necssary.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia is-do-block">
+                            <div class="clr-demo-container">
+                                <span class="label label-orange">London (Location)</span>
+                                <span class="label label-orange">Nablus (Location)</span>
+                            </div>
+                            <div class="clrweb-DoxMedia-text">
+                                <h6 class="clrweb-DoxMedia-do-dont">Do</h6>
+                                <p>
+                                    Use parenthesis for additional metadata displayed in the same label.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Behavior</h3>
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h5>Clicking Labels</h5>
+                    <p>
+                        Labels may be clickable. In this case, clicking on a label should perform an action
+                        related to that label. Clicking on a location label used as a tag, for example,
+                        could serve to filter the results in a nearby list by that location. Clicking a
+                        label could also display more information about the metadata
+                        described by that label.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clr-demo-container">
+                            <a href="javascript://" class="label label-purple clickable">
+                                Chocolate
+                            </a>
+                            <a href="javascript://" class="label label-purple clickable">
+                                Vanilla
+                            </a>
+                            <a href="javascript://" class="label label-purple clickable">
+                                Mixed
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h5>Dismissing Labels</h5>
+                    <p>
+                        A label can be dismissed. Use a close icon at the right-most side of a label to dismiss it.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clr-demo-container">
+                            <!--<div [style.visibility]="(numberOfUnreadAlerts == 0) ? 'hidden' : 'visible' ">-->
+                            <!--COUNTER: {{numberOfUnreadAlerts}}-->
+                            <!--</div>-->
+                            <a
+                                    *ngIf="!hideJames"
+                                    (click)="hideJames = true"
+                                    href="javascript://"
+                                    class="label label-blue">
+                                james@test.com
+                                <clr-icon shape="close"></clr-icon>
+                            </a>
+                            <a
+                                    *ngIf="!hideJimmy"
+                                    (click)="hideJimmy = true"
+                                    href="javascript://"
+                                    class="label label-blue">
+                                jimmy@test.com
+                                <clr-icon shape="close"></clr-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h5>Labels and Badges</h5>
+                    <p>
+                        Labels and badges can be used together to show a count relating to the metadata
+                        displayed in the label.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clr-demo-container">
+                        <span class="label label-light-blue">
+                            Production
+                            <span class="badge badge-light-blue">12</span>
+                        </span>
+                            <span class="label label-light-blue">
+                            Dev/Test
+                            <span class="badge badge-light-blue">99+</span>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxBookmark hidden-sm-down">
+                            <div class="clrweb-DoxBookmark-bookmark">
+                                <clr-icon shape="bookmark"></clr-icon>
+                            </div>
+                            <p>Documentation for Badges is available <a routerLink="./badges">here</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="code-examples">
+            <h3 id="examples">Code &amp; Examples</h3>
+            <p>A label is a visual tag that provides additional information about data in the UI.</p>
+
+            <h6 id="labels-not-clickable">1. Labels (not clickable)</h6>
+
+            <clr-labels-default-demo></clr-labels-default-demo>
+
+            <h6 id="color-options">2. Color Options</h6>
+
+            <clr-labels-color-options-demo></clr-labels-color-options-demo>
+
+            <h6 id="clickable-labels">3. Clickable Labels</h6>
+
+            <clr-labels-clickable-demo></clr-labels-clickable-demo>
+
+            <h6 id="status-labels-not-clickable">4. Status Labels (not clickable)</h6>
+
+            <clr-labels-status-demo></clr-labels-status-demo>
+
+            <h6 id="labels-with-badges">5. Labels with Badges</h6>
+
+            <clr-labels-with-badges-demo></clr-labels-with-badges-demo>
+        </div>
+    </article>
+</clr-doc-wrapper>

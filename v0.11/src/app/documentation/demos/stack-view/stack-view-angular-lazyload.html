@@ -1,0 +1,34 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+    <clr-stack-view>
+        <clr-stack-header>
+            Lazily loaded children
+            <button class="stack-action btn btn-sm btn-link" (click)="resetChildren()" type="button">Reset</button>
+        </clr-stack-header>
+
+        <clr-stack-block #lazyBlock [clrSbExpandable]="true" (clrSbExpandedChange)="fetchChildren()">
+            <clr-stack-label>Label 1</clr-stack-label>
+            <clr-stack-content>Content 1</clr-stack-content>
+
+            <clr-stack-block *ngIf="children.length == 0">
+                <div>Loading...</div>
+            </clr-stack-block>
+
+            <clr-stack-block *ngFor="let child of children">
+                <clr-stack-label>{{child.title}}</clr-stack-label>
+                <clr-stack-content>{{child.content}}</clr-stack-content>
+            </clr-stack-block>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Label 2</clr-stack-label>
+            <clr-stack-content>Content 2</clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-view>
+</div>
+<clr-code-snippet [clrCode]="example"></clr-code-snippet>

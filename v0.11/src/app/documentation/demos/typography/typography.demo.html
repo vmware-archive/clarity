@@ -1,0 +1,391 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="clarity-uses-the-geometric-sans-serif-font-metropolis">Clarity uses the
+            geometric sans-serif font, Metropolis.</h5>
+
+        <div id="code-examples">
+            <h3 id="text-styles">Text Styles</h3>
+
+            <clr-typography-text></clr-typography-text>
+
+            <h3 id="header-styles">Header Styles</h3>
+
+            <clr-typography-headers></clr-typography-headers>
+
+            <h3 id="using-typography">Using Typography</h3>
+
+            <p>Clarity includes several SASS variables, collections, mixing, and functions for working
+                with typography. These are described below:</p>
+
+            <h6 id="clr-font">$clr-font</h6>
+
+            <p>This SASS variable points to our default text font, Metropolis.</p>
+
+            <h6 id="clr-altfont">$clr-altFont</h6>
+
+            <p>This SASS variable is only used for our headers (H1..H6). Currently, it also points to Metropolis.</p>
+
+            <h6 id="clr-font-size">$clr-font-size</h6>
+
+            <p>This SASS variable sets our default font size to 14px.</p>
+
+            <h6 id="clr-font-weights">$clr-font-weights</h6>
+
+            <p>This SASS variable contains a collection for the font weights used in Clarity — light, regular,
+                semibold, and bold. The actual weights assigned to these values are 200, 400, 500, and 600
+                respectively. The default font weight in Clarity is regular/400. The bold font-weight is actually
+                Metropolis semi-bold (600).</p>
+
+            <h6 id="clr-elements">$clr-elements</h6>
+
+            <p>This SASS variable contains a collection that can access all of the font properties for H1
+                through H6 and P1 through P8 as defined in our typography specs. These properties are returned
+                as a collection which contains nested collections of both common
+                font properties across all screen sizes, as well as breakpoint overrides.</p>
+
+            <pre><code clr-code-highlight="language-scss">
+// passing element label to map-get
+map-get($clr-elements, h3);
+
+// returns nested map of common properties and breakpoint overrides
+//  (
+//      clr-common: (
+//          font-weight: …,
+//          letter-spacing: …,
+//          font-family: …,
+//          line-height: …,
+//      ),
+//      small: (
+//          letter-spacing: [breakpoint override]
+//      ),
+//      medium: (
+//          letter-spacing: [breakpoint override]
+//      ),
+//      large: (
+//          letter-spacing: [breakpoint override]
+//      ),
+//      xlarge: (
+//          letter-spacing: [breakpoint override]
+//      )
+//  );
+</code></pre>
+
+            <h6 id="clr-typography-dom-to-type-element">$clr-typography-dom-to-type-element</h6>
+
+            <p>This collection maps Clarity components and DOM containers to their expected type
+                properties in <code>$clr-elements</code>.
+                Use the labels listed in the <em>Use For</em> column of the typography tables above.</p>
+
+            <h4 id="mixins">Mixins</h4>
+
+            <p>Clarity uses SASS mixins to make it easier to access the type properties in the variables and
+                collections listed above. The typography mixins return full CSS style definitions. They are
+                intended to be used inside SASS/SCSS style declarations, placeholders,
+                or other mixins.</p>
+
+            <h6 class="hidden-xs-down" id="clr-gettypepropertieselement-whichtypeproperties">clr-getTypeProperties
+                ($element, $whichTypeProperties)</h6>
+
+            <h6 class="hidden-sm-up" id="clr-gettypeproperties">clr-getTypeProperties</h6>
+
+            <p>Returns specified styles (from <code>$whichTypeProperties</code> list parameter) for all styles
+                from the designated typographic element (h1..h6 or p1..p8).</p>
+
+            <h6 id="parameters">Parameters</h6>
+
+            <div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="left">Parameter</th>
+                        <th class="left hidden-xs-down">Optional</th>
+                        <th class="left">Purpose</th>
+                        <th class="left hidden-xs-down">Default</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="left">$element</td>
+                        <td class="left hidden-xs-down">No</td>
+                        <td class="left">Key for the typographic properties in the <code
+                            class="clr-code">$clr-elements</code> map. <code class="clr-code">h1..h6</code> or <code
+                            class="clr-code">p1..p8</code></td>
+                        <td class="left hidden-xs-down">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="left">
+                            $whichTypeProperties
+                            <div class="hidden-sm-up">(Optional)</div>
+                        </td>
+                        <td class="left hidden-xs-down">Yes</td>
+                        <td class="left">A list of font style properties like <code class="clr-code">(font-weight,
+                            line-height)</code>. If empty, all properties will be returned.
+                        </td>
+                        <td class="left hidden-xs-down">An empty list</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h6 id="example">Example</h6>
+
+            <pre><code clr-code-highlight="language-scss">
+// passing type property list
+.my-styles {{'{'}}
+    @include clr-getTypeProperties(p1, (font-weight, font-size));
+{{'}'}};
+
+//  renders as...
+//  .my-styles {{'{'}}
+//      font-weight: 400;
+//      font-size: 14px;
+//  {{'}'}};
+
+// passing no type property list
+.all-my-styles {{'{'}}
+    @include clr-getTypeProperties(p8);
+{{'}'}};
+
+//  renders as...
+//  .all-my-styles {{'{'}}
+//      font-weight: 400;
+//      font-size: 10px;
+//      letter-spacing: 0.03em;
+//      line-height: 12px;
+//      margin-top: 24px;
+//      margin-bottom: 0;
+//  {{'}'}};
+</code></pre>
+
+            <h6 class="hidden-xs-down" id="clr-gettypepropertiesfordomelementelement-label-typepropertiestoget">
+                clr-getTypePropertiesForDomElement($element-label, $typePropertiesToGet)</h6>
+
+            <h6 class="hidden-sm-up" id="clr-gettypepropertiesfordomelement">clr-getTypePropertiesForDomElement</h6>
+
+            <p>An include that abstracts the clr-getTypeProperties mixin so that users can look up
+                typography based on how it is used in Clarity.</p>
+
+            <h6 id="parameters-1">Parameters</h6>
+
+            <div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="left">Parameter</th>
+                        <th class="left hidden-xs-down">Optional</th>
+                        <th class="left">Purpose</th>
+                        <th class="left hidden-xs-down">Default</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="left">$element-label</td>
+                        <td class="left hidden-xs-down">No</td>
+                        <td class="left">Key/label for the element as found in the <code class="clr-code">$clr-typography-dom-to-type-element</code>
+                            map. Existing labels can be found in the <em>Use For</em> column of the header and
+                            body text tables above.
+                        </td>
+                        <td class="left hidden-xs-down">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="left">
+                            $typePropertiesToGet
+                            <div class="hidden-sm-up">(Optional)</div>
+                        </td>
+                        <td class="left hidden-xs-down">Yes</td>
+                        <td class="left">A list of font style properties like <code class="clr-code">(font-weight,
+                            line-height)</code>. If empty, all properties will be returned.
+                        </td>
+                        <td class="left hidden-xs-down">An empty list</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h6 id="example-1">Example</h6>
+
+            <pre><code clr-code-highlight="language-scss">
+// passing type property list
+.sidenav-styles {{'{'}}
+    @include clr-getTypePropertiesForDomElement(p1, (font-weight, font-size));
+{{'}'}};
+
+//  renders as...
+//  .sidenav-styles {{'{'}}
+//      font-weight: 400;
+//      font-size: 14px;
+//      letter-spacing: 0.01em;
+//  {{'}'}};
+
+// passing no type property list
+.small-text-styles {{'{'}}
+    @include clr-getTypeProperties(label_text);
+{{'}'}};
+
+//  renders as...
+//  .small-text-styles {{'{'}}
+//      font-weight: 400;
+//      font-size: 11px;
+//      letter-spacing: 0.03em;
+//      line-height: 12px;
+//      margin-top: 24px;
+//      margin-bottom: 0;
+//  {{'}'}};
+</code></pre>
+
+            <h4 id="functions">Functions</h4>
+
+            <p>Clarity also includes functions that allow you to access typographic properties to assign
+                them to your own style properties or SASS variables.</p>
+
+            <h6 class="hidden-xs-down" id="clr-gettypepropertyvalueelement-label-valtoget">
+                clr-getTypePropertyValue($element-label, $valToGet)</h6>
+
+            <h6 id="clr-gettypepropertyvalue">clr-getTypePropertyValue</h6>
+
+            <p>Returns specified style value (from <code>$valToGet</code>) from styles for the designated
+                typographic element (h1..h6 or p1..p8). Returns an empty string <code>""</code> if the
+                typographic element does not have the style for which it was asked or
+                if it is passed invalid values.</p>
+
+            <h6 id="parameters-2">Parameters</h6>
+
+            <div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="left">Parameter</th>
+                        <th class="left hidden-xs-down">Optional</th>
+                        <th class="left">Purpose</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="left">$element-label</td>
+                        <td class="left hidden-xs-down">No</td>
+                        <td class="left">Key for the typographic properties in the <code
+                            class="clr-code">$clr-elements</code> map. <code class="clr-code">h1..h6</code> or <code
+                            class="clr-code">p1..p8</code></td>
+                    </tr>
+                    <tr>
+                        <td class="left">$valToGet</td>
+                        <td class="left hidden-xs-down">No</td>
+                        <td class="left">A CSS style property from the list of font style properties like <code
+                            class="clr-code">font-size</code>, <code class="clr-code">font-weight</code>, etc.
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h6 id="example-2">Example</h6>
+
+            <pre><code clr-code-highlight="language-scss">
+// passing type property list
+$myCustomVar: clr-getTypePropertyValue(p1, font-size);
+.my-style {{'{'}}
+    font-size: $myCustomVar;
+{{'}'}};
+
+//  renders as...
+//  .my-style {{'{'}}
+//      font-size: 14px;
+//  {{'}'}};
+</code></pre>
+
+            <h6 class="hidden-xs-down" id="clr-gettypepropertyvaluefordomelementelement-label-valtoget">
+                clr-getTypePropertyValueForDomElement($element-label, $valToGet)</h6>
+
+            <h6 class="hidden-sm-up" id="clr-gettypepropertyvaluefordomelement">clr-getTypePropertyValueForDomElement</h6>
+
+            <p>This SASS function serves as an abstraction of the <code>clr-getTypePropertyValue</code> above.
+                It performs a lookup against the <code>$clr-typography-dom-to-type-element</code> map so that
+                users can use more familiar component/DOM element labels (as listed in the tables above) to access
+                style property values.</p>
+
+            <p>The function returns a specified style value (from <code>$valToGet</code>) from styles for the
+                designated DOM element label (like page_mainHeading). Returns an empty string <code>""</code>
+                if the DOM element or the style is not found.</p>
+
+            <h6 id="parameters-3">Parameters</h6>
+
+            <div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="left">Parameter</th>
+                        <th class="left hidden-xs-down">Optional</th>
+                        <th class="left">Purpose</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="left">$element-label</td>
+                        <td class="left hidden-xs-down">No</td>
+                        <td class="left">Key/label for the element as found in the <code class="clr-code">$clr-typography-dom-to-type-element</code>
+                            map. Existing labels can be found in the <em>Use For</em> column of the header
+                            and body text tables above.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left">$valToGet</td>
+                        <td class="left hidden-xs-down">No</td>
+                        <td class="left">A CSS style property from the list of font style properties like <code
+                            class="clr-code">font-size</code>, <code class="clr-code">font-weight</code>, etc.
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h6 id="example-3">Example</h6>
+
+            <pre><code clr-code-highlight="language-scss">
+// passing type property list
+$myCustomVar: clr-getTypePropertyValueForDomElement(table_header, font-weight);
+.my-style {{'{'}}
+    font-weight: $myCustomVar;
+{{'}'}};
+
+//  renders as...
+//  .my-style {{'{'}}
+//      font-weight: 600;
+//  {{'}'}};
+</code></pre>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">The Metropolis Font</h3>
+
+            <p>Metropolis has clear, simple letters with rounded forms. <br/> This gives the font a
+                friendly and modern appearance.</p>
+
+            <p><img src="assets/images/documentation/typography/Typography-A-Z.png?1481774870417534000"
+                    alt="Metropolis light, regular, medium, and semibold"/></p>
+
+            <h3 id="font-weights-in-clarity">Font Weights in Clarity</h3>
+
+            <p>To maintain a light, clean look, Clarity does not use a weight stronger than semibold.</p>
+
+            <p><img src="assets/images/documentation/typography/Typography-Metropolis.png?1481774870417534000"
+                    alt="Metropolis light, regular, medium, and semibold"/></p>
+
+            <h3 id="use-the-built-in-styles">Use the Built-in Styles</h3>
+
+            <p>The Clarity team determined the optimal height and weight of the text for each component. Some
+                components also have line wrapping built-in. If not, text should be kept to a single line.</p>
+
+            <h3 id="use-text-links-for-navigation">Use Text Links for Navigation</h3>
+
+            <clr-typography-links></clr-typography-links>
+
+            <p>Don’t use text links for a call to action. <a routerLink="./buttons">Buttons</a>
+                are better.</p>
+        </div>
+    </article>
+</clr-doc-wrapper>

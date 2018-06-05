@@ -1,0 +1,102 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="row">
+    <div class="col-xs-12 col-sm-3">
+        <div class="clrweb-DoxMedia is-horizontal">
+            <div class="clrweb-DoxMedia-block is-colorblock">
+                <div class="clrweb-DoxMedia-img">
+                    S
+                </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+                <h6>Small Modal</h6>
+                <div>Width: 288px</div>
+                <button type="button" class="btn btn-sm btn-link no-margin" (click)="small = true">Launch</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3">
+        <div class="clrweb-DoxMedia is-horizontal">
+            <div class="clrweb-DoxMedia-block is-colorblock">
+                <div class="clrweb-DoxMedia-img">
+                    M
+                </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+                <h6>Medium Modal</h6>
+                <div>Width: 576px</div>
+                <button type="button" class="btn btn-sm btn-link no-margin" (click)="medium = true">Launch</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3">
+        <div class="clrweb-DoxMedia is-horizontal">
+            <div class="clrweb-DoxMedia-block is-colorblock">
+                <div class="clrweb-DoxMedia-img">
+                    L
+                </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+                <h6>Large Modal</h6>
+                <div>Width: 864px</div>
+                <button type="button" class="btn btn-sm btn-link no-margin" (click)="large = true">Launch</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3">
+        <div class="clrweb-DoxMedia is-horizontal">
+            <div class="clrweb-DoxMedia-block is-colorblock">
+                <div class="clrweb-DoxMedia-img">
+                    XL
+                </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+                <h6>X-Large Modal</h6>
+                <div>Width: 1152px</div>
+                <button type="button" class="btn btn-sm btn-link no-margin" (click)="extraLarge = true">Launch</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<clr-modal [(clrModalOpen)]="small" [clrModalSize]="'sm'">
+    <h3 class="modal-title">Small modal</h3>
+    <div class="modal-body">I am a small modal.</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="small = false">Ok</button>
+    </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="medium" [clrModalSize]="'md'">
+    <h3 class="modal-title">Medium modal</h3>
+    <div class="modal-body">I am a medium modal. I am the default size.</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="medium = false">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="medium = false">Ok</button>
+    </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="large" [clrModalSize]="'lg'">
+    <h3 class="modal-title">Large modal</h3>
+    <div class="modal-body">I am a large modal.</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="large = false">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="large = false">Ok</button>
+    </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="extraLarge" [clrModalSize]="'xl'">
+    <h3 class="modal-title">Extra large modal</h3>
+    <div class="modal-body">I am an extra large modal.</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="extraLarge = false">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="extraLarge = false">Ok</button>
+    </div>
+</clr-modal>

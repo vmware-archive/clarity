@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="38px" height="38px" viewBox="0 0 38 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_evolving</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M27.1393384,24.4692432 C28.3126294,22.7743395 29,20.7174418 29,18.5 C29,12.7010101 24.2989899,8 18.5,8 C12.7010101,8 8,12.7010101 8,18.5 C8,24.2989899 12.7010101,29 18.5,29" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="21" height="21" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <circle id="path-3" cx="19" cy="19" r="19"></circle>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="38" height="38" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+    </defs>
+    <g id="Landing-page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="landing-page" transform="translate(-230.000000, -1517.000000)" stroke="#E64120">
+            <g id="evolving" transform="translate(225.000000, 1512.000000)">
+                <g id="ic_evolving" transform="translate(5.000000, 5.000000)">
+                    <use id="Oval-4" mask="url(#mask-2)" stroke-width="3.6" stroke-linejoin="round" xlink:href="#path-1"></use>
+                    <use id="Oval-4-Copy-2" mask="url(#mask-4)" stroke-width="6" xlink:href="#path-3"></use>
+                    <polyline id="Path-8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" points="23.9798199 19 26.2228846 24.3480845 31.8305464 21.8609643"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

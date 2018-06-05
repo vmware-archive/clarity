@@ -1,0 +1,84 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<button class="btn btn-primary" (click)="wizardMedium.open()">Medium Wizard</button>
+<button class="btn btn-primary" (click)="wizardLarge.open()">Large Wizard</button>
+<button class="btn btn-primary" (click)="wizardExtraLarge.open()">X-Large Wizard</button>
+
+<clr-wizard #wizardmd [(clrWizardOpen)]="mdOpen" clrWizardSize="md">
+    <clr-wizard-title>Medium-Sized Wizard</clr-wizard-title>
+
+    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 1</ng-template>
+        <p>Content for step 1</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 2</ng-template>
+        <p>Content for step 2</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 3</ng-template>
+        <p>Content for step 3</p>
+    </clr-wizard-page>
+</clr-wizard>
+
+<clr-wizard #wizardlg [(clrWizardOpen)]="lgOpen" clrWizardSize="lg">
+    <clr-wizard-title>Large-Sized Wizard</clr-wizard-title>
+
+    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 1</ng-template>
+        <p>Content for step 1</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 2</ng-template>
+        <p>Content for step 2</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 3</ng-template>
+        <p>Content for step 3</p>
+    </clr-wizard-page>
+</clr-wizard>
+
+<clr-wizard #wizardxl [(clrWizardOpen)]="xlOpen">
+    <clr-wizard-title>XL Wizard (Default)</clr-wizard-title>
+
+    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 1</ng-template>
+        <p>Content for step 1</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 2</ng-template>
+        <p>Content for step 2</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 3</ng-template>
+        <p>Content for step 3</p>
+    </clr-wizard-page>
+</clr-wizard>
+
+<clr-code-snippet [clrLanguage]="'typescript'" [clrCode]="code"></clr-code-snippet>
+<clr-code-snippet [clrLanguage]="'html'" [clrCode]="html"></clr-code-snippet>

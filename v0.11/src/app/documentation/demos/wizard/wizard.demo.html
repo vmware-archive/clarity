@@ -1,0 +1,1135 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="wizardComponentSummary">
+            Wizards provide a way to go through a sequence of steps that form an end to end workflow..
+        </h5>
+
+        <div id="design-guidelines">
+            <h2 id="guidelines" style="margin-top: 48px">Design Guidelines</h2>
+
+            <p>
+                Wizards are used to help users walk through a defined step-by-step process. Each step
+                is in the sidebar on the left. As users complete steps, the steps are marked with a
+                green bar to the left.
+            </p>
+            <p>
+                Wizards should have at least 2 steps. If your wizard exceeds 10 steps, consider combining
+                similar steps.
+            </p>
+            <p>Here is when you might want to use a wizard over just a normal form:</p>
+            <ul class="list">
+                <li>if the user is <b>not familiar with the domain knowledge</b> needed to complete a process</li>
+                <li>if the user needs to accomplish a goal that has <b>many steps</b> in it</li>
+                <li>if steps must be completed in a <b>specific sequence</b></li>
+            </ul>
+
+            <h3 id="style">Style</h3>
+
+            <clr-wizard-design-demo></clr-wizard-design-demo>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Titles</h6>
+                            <p>
+                                Titles are <b>concise summaries</b>. The wizard title describes the
+                                overall workflow. The step title describes the task being completed. The content
+                                title should be similar to its step title.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Content</h6>
+                            <p>
+                                The content may differ between different types of wizards. Content can be text, a
+                                form, or both. Be <b>concise</b> and provide a <b>clear explanation</b> of the
+                                task or information a user should focus on.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Buttons</h6>
+                            <p>
+                                Default progress buttons are provided, but can be overridden. Buttons are
+                                right-aligned based on the Z Pattern. Read more about it in
+                                <a routerLink="./buttons">Button Placement</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="sizes">Sizes</h3>
+
+            <p>
+                There are multiple sizes for wizards. The Clarity wizard defaults to <b>x-large</b> but
+                different sizes could be used based on the content and screen sizes you are planning to
+                support. Always remember to test responsiveness as you design and use wizards. The best size
+                is one that doesn’t feel like there is too much or too little whitespace. If you’re unsure,
+                test different ones to see which looks best.
+            </p>
+
+            <clr-wizard-design-size-demo class="modal-size-design-demo"></clr-wizard-design-size-demo>
+
+            <div class="row" style="margin-top: 48px">
+                <div class="col-md-6 col-sm-12">
+                    <h3 id="step-indicators" style="margin: 21px 0 24px">Step Indicators</h3>
+                    <ul class="list">
+                        <li>Current step is indicated by a row-selected blue background</li>
+                        <li>Complete steps are indcated by a green bar to the left</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="clrweb-DoxMedia is-figure">
+                        <div class="clrweb-DoxMedia-block" style="height: 235px">
+                            <div class="clrweb-DoxMedia-img">
+                                <img class="clrweb-Img" src="assets/images/documentation/wizards/Wizard-Steps.png"
+                                    alt="Completed steps are highlighted with a green bar to the left"/>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <p>
+                                Completed steps are highlighted with a green bar to the left.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="building-steps">Building Steps</h3>
+
+            <p>
+                When building a step, it’s important to organize related tasks in it. Unrelated tasks should
+                be separate into a new step. This helps preserve context around the step being completed.
+            </p>
+            <p>
+                If a step’s content scrolls, consider splitting the step into two steps or use a larger
+                sized wizard. Scrolling content can sometimes be overlooked and users may try to progress
+                to the next step unintentionally.
+            </p>
+            <p>
+                It’s best to include only the required tasks in a step so users know they need to fill out
+                everything they see. Optional tasks slow the process of filling out a wizard.
+            </p>
+
+            <h3 id="conditional-steps">Conditional Steps</h3>
+
+            <p>
+                Conditional wizards change step content or the number of steps based on the entry from
+                another step. Non-conditional wizards are preferable. However, if a conditional wizard is
+                necessary, it is preferred to update the next step to be completed. Otherwise, users might lose
+                context of what change was made.
+            </p>
+
+            <div class="row" style="margin-top: 48px">
+                <div class="col-md-6 col-sm-12">
+                    <h3 id="dismissing" style="margin: 21px 0 24px">Dismissing Wizard</h3>
+                    <ul class="list">
+                        <li>
+                            A user needs to actively dismiss a wizard. A wizard should not disappear on its own
+                        </li>
+                        <li>
+                            Completing all of the steps or cancelling should dismiss the wizard
+                        </li>
+                    </ul>
+                    <div class="alert alert-warning" style=" margin-top: 21px">
+                        <div class="alert-items">
+                            <div class="alert-item static">
+                                <div class="alert-icon-wrapper">
+                                    <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                                </div>
+                                <span class="alert-text">
+                                    Clarity Wizards are not dismissed when clicking on the background overlay.
+                                    This prevents losing information or data. An option to override this is available.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="clrweb-DoxMedia is-figure">
+                        <div class="clrweb-DoxMedia-block" style="height: 235px">
+                            <div class="clrweb-DoxMedia-img">
+                                <img class="clrweb-Img" src="assets/images/documentation/wizards/Wizard-Dismissing.png"
+                                    alt="There are three ways of closing the wizard"/>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <p>
+                                The wizard can be closed by clicking the finish button, the cancel button, or
+                                canceling out by clicking the close "X" in the top right.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- hiding while UX crew debates what should go here
+            <h3 id="validation">Validation</h3>
+
+            <p>
+                Wizard validation is done either in page or asynchronously (after submission).
+            </p>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="clrweb-DoxMedia is-figure">
+                        <div class="clrweb-DoxMedia-block" style="height: 235px">
+                            <div class="clrweb-DoxMedia-img">
+                                <img class="clrweb-Img"
+                                    src="assets/images/documentation/wizards/Wizard-Validation-Inpage.png"
+                                    alt="The next button is often disabled with in-page validation"/>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>In Page</h6>
+                            <p>
+                                Use for <b>client-side validation</b>. For example, the format of a value like an
+                                email address. Fields with errors are indicated and have related tooltip error
+                                messages. The “Next” button can be disabled until the form is valid.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="clrweb-DoxMedia is-figure">
+                        <div class="clrweb-DoxMedia-block" style="height: 235px">
+                            <div class="clrweb-DoxMedia-img">
+                                <img class="clrweb-Img"
+                                    src="assets/images/documentation/wizards/Wizard-Validation-Async.png"
+                                    alt="Asynchronous validation is often communicated through the alert messages"/>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Asynchronous</h6>
+                            <p>
+                                Use for <b>server-side validation</b>, when you need to validate against data from
+                                a database. The “Next” button is enabled. Validation errors show in an alert
+                                within the content area.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    -->
+        </div>
+
+        <div id="code-examples">
+            <h3 id="examples">Code &amp; Examples</h3>
+
+            <!--
+
+            <p>Here is an example of the generated wizard markup using just HTML and CSS. Since the interactive
+                functionality of the wizard is not provided in the static version, we recommend using the Angular
+                component.</p>
+
+            <clr-wizard-demo-static></clr-wizard-demo-static>
+
+            <h3 id="basic-wizard">Basic Wizard</h3>
+
+            -->
+            <p id="basic-wizard">
+                The wizard is hidden and shown by toggling a boolean value assigned to the
+                <code class="clr-code">clrWizardOpen</code> input. The toggling of these values is
+                shown in the code examples below.
+            </p>
+
+            <p>
+                Note that you will probably want unique booleans for hiding and showing wizards
+                when you have more than one wizard on a page. If hiding and showing are all assigned
+                to the same boolean, the wizards will all hide and show together. This is probably
+                not the intended experience.
+            </p>
+
+            <p>
+                The wizard comes in three different sizes: medium, large, and extra-large. You can set
+                the size by providing the value as an input &mdash; <code class="clr-code">clrWizardSize</code>.
+                If not specified, the wizard will <b>default to extra-large</b>. Sizing options for
+                <code class="clr-code">clrWizardSize</code> are: <code class="clr-code">md</code>,
+                <code class="clr-code">lg</code>, and <code class="clr-code">xl</code>.
+            </p>
+
+            <clr-wizard-basic></clr-wizard-basic>
+
+            <h3 id="skipping-and-unskipping-steps">Skipping and Unskipping Steps</h3>
+
+            <p>
+                Depending on the flow of the wizard, you may want to skip or add steps in the wizard.
+                In the 0.9.0 wizard, this is accomplished by using the <code class="clr-code">*ngIf</code>
+                Angular directive.
+            </p>
+
+            <clr-wizard-simple></clr-wizard-simple>
+
+            <h4 id="skipping-with-ngfor">Skipping steps and *ngFor</h4>
+
+            <p>
+                If you are using <code class="clr-code">*ngFor</code> to generate your wizard pages and
+                still want to use <code class="clr-code">*ngIf</code> to hide them, you will want to
+                follow <a href="https://angular.io/docs/ts/latest/guide/structural-directives.html#!#one-per-element"
+                target="_blank">the Angular team's recommendations on nested structural directives</a>.
+            </p>
+
+            <p>
+                At a high level, this means wrapping your <code class="clr-code">&lt;clr-wizard-page
+                *ngIf="yourCondition"&gt;</code> inside a <code class="clr-code">&lt;ng-container
+                *ngFor="let page of pages"&gt;</code> element.
+            </p>
+
+            <p>
+                Alternatively, you could add and remove elements from the array of pages you are sending
+                to the <code class="clr-code">*ngFor</code>.
+            </p>
+
+            <clr-wizard-nested-directives></clr-wizard-nested-directives>
+
+            <h3 id="jumping-to-a-step">Programmatically Navigating the Wizard</h3>
+
+            <p>
+                There may be times when you need end-users to jump to a specific step in a wizard. The
+                way to do this is pass the page object to the <code class="clr-code">currentPage</code>
+                property of the wizard's
+                <code class="clr-code">WizardNavigationService</code> provider.
+            </p>
+            <p>
+                The safest way to ensure that end-users do not wind up in a bad state is to make sure
+                that the page to which they are navigating is completed and, if not, send users to the
+                last valid page using the <code class="clr-code">setLastEnabledPageCurrent()</code>
+                method on the same <code class="clr-code">WizardNavigationService</code>
+                provider, as in the example below.
+            </p>
+
+            <clr-wizard-jump-to></clr-wizard-jump-to>
+
+            <h3 id="overriding-the-title-in-the-wizard-page">Different Page Title in the Sidenav</h3>
+
+            <p>
+                By default, the nav item on the right-hand side will display the same title as the title
+                inside the <code class="clr-code">&lt;ng-template clrPageTitle&gt;</code> in your
+                <code class="clr-code">&lt;clr-wizard-page&gt;</code>. In fact, this is the <em>only</em>
+                element that is required inside your <code class="clr-code">&lt;clr-wizard-page&gt;</code>.
+                It provides not only the title at the top of the content area but also the item in the
+                sidenav to the left.
+            </p>
+
+            <p>
+                Sometimes, however, having the title in the content area match the nav item is not a
+                desired behavior. The title in the content area may be too long or the nav item may
+                need to update based on changes elsewhere in the wizard.
+            </p>
+
+            <p>
+                To accomplish this customization, you can use a <code
+                class="clr-code">&lt;ng-template clrPageNavTitle&gt;</code> element. When placed inside,
+                a <code class="clr-code">&lt;clr-wizard-page&gt;</code>, a <code class="clr-code">clrPageNavTitle</code>
+                template reference will be used in the nav sidebar of the wizard instead of the content title.
+            </p>
+
+            <p>
+                As with any Angular content, you can also use projection to change the titles in either a
+                <code class="clr-code">clrPageTitle</code> or <code class="clr-code">clrPageNavTitle</code>
+                whenever you need to.
+            </p>
+
+            <clr-wizard-titles></clr-wizard-titles>
+
+            <h3 id="custom-page-buttons">Overriding Buttons at the Page Level</h3>
+
+            <p>
+                As part of creating a wizard, you need to include a set of default buttons of types finish,
+                next, previous, and cancel as a direct child of your <code
+                class="clr-code">&lt;clr-wizard&gt;</code> element.
+            </p>
+
+            <clr-wizard-default-buttons></clr-wizard-default-buttons>
+
+            <p>
+                These buttons can be overridden at the page level, however, with other buttons of the same
+                type (but with different text) or with completely custom buttons. To override the default
+                buttons, include a new set of buttons inside a <code class="clr-code">&lt;ng-template
+                clrPageButtons&gt;</code>
+                template reference element. Sets of buttons defined at the page level will override the
+                default buttons defined at the wizard level.
+            </p>
+
+            <h3 id="custom-buttons">Custom Buttons and Page-Level Button Overrides</h3>
+
+            <p>
+                A <em>page override</em> is defining a button at the page level in place of a button of the
+                same type at the wizard level. These types include finish, danger, next, previous, and cancel.
+                If you override the click events of these buttons with an output like <code
+                class="clr-code">clrWizardPagePreventDefault</code>, you can also short-circuit the default
+                action of the button to define your own custom action at the page level.
+            </p>
+
+            <p>
+                A <em>custom button</em> is a different beast entirely. Custom buttons are not like
+                page overrides. They have no action assigned to them. So you will need to use the
+                <code class="clr-code">clrWizardPageCustomButton</code> output to assign an action to your custom
+                buttons. The output receives the custom button type which should allow you to route your wizard's
+                behavior based on the type of button it receives.
+            </p>
+
+            <p>
+                You can use specified custom button types such as <code class="clr-code">custom-finish</code>,
+                <code class="clr-code">custom-next</code>,
+                <code class="clr-code">custom-danger</code>,
+                <code class="clr-code">custom-previous</code>, or
+                <code class="clr-code">custom-cancel</code> to have your custom buttons inherit the styling
+                of the button listed in the latter part of the button type. Note, however, that these
+                custom buttons <em>do not</em> kick off the actions associated with their styled types.
+                You have to tell a wizard what you want a button to do.
+            </p>
+
+            <p>
+                By default, a custom button will be styled as an outline button. Meaning it will look like a
+                "previous" type of button. For example, you would get an action blue, outlined button with the
+                text "Wallaby" inside it if you created a button with the following declaration: <code
+                class="clr-code">&lt;clr-wizard-button [type]="'wallaby'"&gt;Wallaby&lt;/clr-wizard-button&gt;</code>.
+                And if your page was listening to the <code class="clr-code">clrWizardPageCustomButton</code> output,
+                your event handler would receive the button type <code class="clr-code">wallaby</code> as a parameter
+                when the custom button was clicked.
+            </p>
+
+            <p>
+                Reference the following example:
+            </p>
+
+            <clr-wizard-custom-buttons></clr-wizard-custom-buttons>
+
+            <h3 id="wizard-with-form-validation">Wizard with Form Validation</h3>
+
+            <p>
+                You can use form validation with the wizard. If you wish to disable the next button until
+                the form is valid, you can do so by setting the
+                <code class="clr-code">clrWizardPageNextDisabled</code> input of the
+                <code class="clr-code">&lt;clr-wizard-page&gt;</code> to the form’s valid property as shown
+                in the example.
+            </p>
+
+            <p>
+                Note also in the example how the text of the third step nav item changes as the form is
+                validated.
+            </p>
+
+            <clr-wizard-form-validation></clr-wizard-form-validation>
+
+            <h3 id="wizard-with-asynchronous-validation">Wizard with Asynchronous Validation</h3>
+
+            <p>
+                Some applications may need to make an an asynchronous call for server-side
+                validation of form input. The example below demonstrates how you can prevent
+                the wizard from moving forward with the next button by setting the <code class="clr-code">clrWizardPagePreventDefault</code>
+                input to false. Then enable it
+                by programmatically calling next when the asynchronous form validation passes.
+            </p>
+
+            <clr-wizard-async-validation></clr-wizard-async-validation>
+
+            <h3 id="wizard-with-asynchronous-completion">Wizard with Asynchronous Completion</h3>
+
+            <p>
+                While not a recommended pattern, some applications need to validate data before
+                finishing the wizard &mdash; as opposed to the sort of page-to-page validation
+                demonstrated above.
+            </p>
+
+            <p>
+                The approach to doing this on the final page of a wizard is very similar to validating
+                each page with the only twist being where the <code class="clr-code">finish()</code>
+                method should be called.
+            </p>
+
+            <clr-wizard-async-completion></clr-wizard-async-completion>
+
+            <h3 id="wizard-stop-navigation">Preventing Navigation and Disabling the Stepnav</h3>
+
+            <p>
+                If a wizard concludes with a long-running task or validation, preventing a user from
+                closing the wizard, jumping to a new page in the wizard, or navigating forwards or
+                backwards may be required. The Clarity wizard offers two inputs for disabling navigation.
+            </p>
+            <p>
+                The first is the <code class="clr-code">clrWizardPreventNavigation</code> input on
+                the <code class="clr-code">clr-wizard</code> component. When set to
+                <code class="clr-code">true</code>, this input prevents all stepnav links and buttons
+                from navigating away from the current wizard page.
+            </p>
+            <p>
+                The next input on the <code class="clr-code">clr-wizard</code> component is more specific
+                to the stepnav. When <code class="clr-code">clrWizardDisableStepnav</code> is set to
+                <code class="clr-code">true</code>, it only disables the links in the stepnav on the left
+                of the wizard. Buttons still work.
+            </p>
+            <p>
+                Examples of when and how to use both are demonstrated in the following example.
+            </p>
+
+            <clr-wizard-stop-navigation></clr-wizard-stop-navigation>
+
+            <h3 id="wizard-reset">Resetting the Wizard</h3>
+
+            <p>
+                While the easiest way to restore a wizard back to its pristine state is to destroy and
+                recreate it, there are use cases where this is not feasible. If you need to reset
+                the wizard while it is open, destroying and recreating it would be a poor experience
+                for users. Likewise, some applications are architected such that it is less expensive
+                to reuse an instance of a wizard instead of destroying it and making the backend
+                calls necessary to re-initialize a new instance.
+            </p>
+
+            <p>
+                The Clarity wizard includes a <code class="clr-code">reset()</code> convenience method.
+                In order to use it, you would need a reference to the wizard in your host component and
+                can call reset from there. In the example below, we use <code
+                class="clr-code">wizard.reset()</code> which references the ViewChild
+                <code class="clr-code">&lt;clr-wizard #wizard&gt;</code> in the host component's template.
+            </p>
+
+            <p>
+                The <code class="clr-code">reset()</code> method resets the wizard's
+                navigation and page state. So it clears out any pages that were
+                marked completed and sets the active page back to the first page of the wizard.
+            </p>
+
+            <p>
+                When resetting the wizard, it is your responsibility to reset your wizard's
+                model. This can be done either as part of the action that calls the reset, as in
+                the example below, or with an event handler that listens to the
+                <code class="clr-code">clrWizardOnReset</code> output.
+            </p>
+
+            <clr-wizard-reset></clr-wizard-reset>
+
+            <h5 id="force-forward">Making users go back through skipped pages</h5>
+
+            <p>
+                A different kind of wizard reset is one that occurs during navigation. For wizards
+                that use the next button to perform custom validations, users navigating backwards
+                in the wizard using the stepnav is problematic.
+            </p>
+
+            <p>
+                A user could, for instance, navigate from page 5 back to page 2 with the stepnav,
+                make changes on page 2, and then navigate back to page 5 (again using the stepnav).
+                The validation on the wizard would not run until the user clicked next or finish on
+                page 5, at which point they would be surprised with validation errors.
+            </p>
+
+            <p>
+                To avoid this, the Clarity wizard includes an input
+                <code class="clr-code">clrWizardForceForwardNavigation</code> which resets pages
+                when navigating backwards when set to <code class="clr-code">true</code>.
+            </p>
+
+            <p>
+                In the above example, pages 2, 3, and 4 would be reset to incomplete when the
+                user navigated from page 5 to page 2 using the stepnav.
+            </p>
+
+            <p>
+                This functionality is called “force forward” because it prevents users from jumping
+                backwards and forwards. An example is shown in the demo below.
+            </p>
+
+            <clr-wizard-force-forward></clr-wizard-force-forward>
+
+            <h3 id="alternative-cancel">Providing an Alternative Cancel for the Wizard</h3>
+
+            <p>
+                The Clarity wizard allows users to circumvent the default cancel/close action at
+                both the page and wizard level to enable their own functionality to validate,
+                prompt users, or reset their data.
+            </p>
+            <p>
+                At the wizard level, setting the <code class="clr-code">clrWizardPreventDefaultCancel</code>
+                input to true prevents the wizard’s cancel routine from running on any page. When the
+                <code class="clr-code">clrWizardPreventDefaultCancel</code> input is set, users must
+                also assign an event handler to the <code class="clr-code">clrWizardOnCancel</code>
+                output and manually call <code class="clr-code">close()</code> on their instance of
+                the wizard for the cancel action to take effect.
+            </p>
+            <p>
+                That cancel/close functionality of the wizard can also be overridden at the page
+                level. Users must set the <code class="clr-code">clrWizardPagePreventDefaultCancel</code>
+                input to true on the <code class="clr-code">&lt;clr-wizard-page&gt;</code> declaration
+                and likewise supply an event handler to the
+                <code class="clr-code">clrWizardPageOnCancel</code> output. This event handler will
+                also need to manually call <code class="clr-code">close()</code> for the expected
+                wizard cancel functionality to take effect.
+            </p>
+            <p>
+                In the case of a conflict where the cancel action is overridden at both the page and
+                wizard levels, the page level takes precedence.
+                <code class="clr-code">clrWizardOnCancel</code> will never be emitted. The example
+                below demonstrates this.
+            </p>
+
+            <clr-wizard-alt-cancel></clr-wizard-alt-cancel>
+
+            <h5 id="no-cancel">But what if I do not want any cancel buttons?</h5>
+
+            <p>
+                There are times when you may want your end-users to finish hey wizard before
+                they can do anything else. This may include installation routines or set up
+                of your application. In these instances, it makes sense to use a wizard that
+                does not have a cancel button and is also not closable.
+            </p>
+            <p>
+                If you do not want a cancel action in your wizard, do not include a cancel
+                button in your default set of buttons or do not include it in your
+                <code class="clr-code">&lt;ng-template clrPageButtons&gt;</code> template
+                reference at the page level.
+            </p>
+            <p>
+                This also applies to other button types like previous or next. Note, however,
+                that omission of next, previous, and finish buttons is not recommended and
+                could confuse end-users of your application.
+            </p>
+            <p>
+                The example below demonstrates a wizard without cancel buttons that is also
+                set to not be closable. The only way to close it is to the click all the way
+                through it.
+            </p>
+
+            <clr-wizard-no-cancel></clr-wizard-no-cancel>
+
+            <h3 id="alternative-cancel">Providing an Alternative Next for the Wizard</h3>
+
+            <p>
+                Just like with <code class="clr-code">clrWizardPreventDefaultCancel</code>,
+                the Clarity wizard allows users to override the default primary button actions at
+                both the page and wizard level. This includes danger, finish, and next buttons.
+            </p>
+            <p>
+                The use case for this is when you want the wizard to validate its contents
+                whenever the next button is clicked. It is less overt than manipulating the
+                <code class="clr-code">clrWizardPageNextDisabled</code> to enable or disable
+                a wizard page's primary buttons, as demonstrated in the form validation example above.
+            </p>
+            <p>
+                Overriding next, finish, and danger buttons at the wizard level involves setting
+                the <code class="clr-code">clrWizardPreventDefaultNext</code>
+                input to true. This prevents the wizard from executing the built-in methods that finish
+                the wizard and move the wizard to the next page.
+            </p>
+            <p>
+                Using <code class="clr-code">clrWizardPreventDefaultNext</code> requires that you handle
+                the <code class="clr-code">clrWizardOnNext</code> and
+                <code class="clr-code">clrWizardOnFinish</code> event emitters in your host component's
+                code. These routines will need to call
+                <code class="clr-code">wizard.forceNext()</code> and
+                <code class="clr-code">wizard.forceFinish()</code>, respectively.
+                <code class="clr-code">forceNext()</code> and <code class="clr-code">forceFinish()</code>
+                perform the work of finishing the wizard and moving it to the next page without the
+                checks and event emissions involved with calling the default
+                <code class="clr-code">next()</code> and <code class="clr-code">finish()</code>
+                methods in the wizard.
+            </p>
+            <p>
+                You can override the primary button actions at a page level by using the
+                <code class="clr-code">clrWizardPagePreventDefaultNext</code>
+                input.
+            </p>
+            <p>
+                As with wizard level overrides, you will need to provide an event handler for
+                the <code class="clr-code">clrWizardPageNext</code> and
+                <code class="clr-code">clrWizardPageFinish</code> outputs. If your specific page
+                does not have a finish button, there is no need to handle
+                the <code class="clr-code">clrWizardPageFinish</code> event. The same holds true
+                for wizard pages that do not have next buttons.
+            </p>
+            <p>
+                Also similar to the output routines at the wizard level, your page-level methods will
+                need to manually call the <code class="clr-code">wizard.forceNext()</code> and
+                <code class="clr-code">wizard.forceFinish()</code> methods to bring that functionality
+                back to the overridden page.
+            </p>
+            <p>
+                Just like with the cancel overrides, the page level override is used in place of the
+                wizard level override when a specific page has them both set. The example
+                below shows how this happens.
+            </p>
+
+            <clr-wizard-alt-next></clr-wizard-alt-next>
+
+            <h3 id="non-closable-wizard">Non-Closable Wizard</h3>
+
+            <p>In some circumstances, you may want to not show the closing × icon in the top right of the
+                Wizard modal. You can remove this close × icon by setting the
+                <code class="clr-code">clrWizardClosable</code> input to <code class="clr-code">false</code>.</p>
+
+            <clr-wizard-not-closable></clr-wizard-not-closable>
+            <h3 id="clarity-wizard-deep-dive">Clarity Wizard Deep-Dive</h3>
+
+            <p>
+                The Clarity wizard is a complex component made up of a number of subcomponents. Each
+                Clarity wizard also has a number of services whose chief responsibility is handling
+                communication between the wizard and its subcomponents.
+            </p>
+
+            <p>
+                The subcomponents that make up the wizard include a collection of buttons, wizard pages,
+                the “step-nav” to the left of the wizard’s content area, and the “step-nav items” which
+                constitute the links that appear in the step-nav.
+            </p>
+
+            <p>
+                The Clarity wizard also has a number of providers (services). The most important of these
+                services are the <code class="clr-code">WizardNavigationService</code> and the
+                <code class="clr-code">PageCollectionService</code>. At a high-level, the
+                <code class="clr-code">WizardNavigationService</code> (or “nav service”) manages the state
+                of the current page in a wizard, as well as functionality and communication related to
+                making pages current. The <code class="clr-code">PageCollectionService</code> (or “page
+                collection”) handles functionality that treats the pages within a wizard as a group of objects.
+            </p>
+            <p>
+                In the following sections, we will briefly touch upon the most important components and
+                services related to the wizard, as well as their most notable inputs, outputs, and public
+                methods and properties.
+            </p>
+
+            <h5>The wizard</h5>
+
+            <p>
+                The wizard component is a sort of meta-component that brings together a group of services
+                and subcomponents. Most of the time, everything you need to do with the wizard can be done
+                through a reference to the wizard in your host component.
+            </p>
+
+            <pre><code clr-code-highlight="language-typescript">@Component(&#123;
+    ...
+&#125;)
+export class WizardJumpToDemo &#123;
+    @ViewChild("ohai") wizard: ClrWizard; // makes wizard accessible through this.wizard!!!
+    ...
+</code></pre>
+
+        <pre><code clr-code-highlight="language-html">&lt;clr-wizard #ohai [(clrWizardOpen)]="open">
+    &lt;!-- the '#wizard' up there creates the reference that your ViewChild property looks for --&gt;
+    &lt;clr-wizard-title&gt;Your Wizard&lt;/clr-wizard-title&gt;
+    ...
+</code></pre>
+
+            <p>
+                Because the wizard’s functionality involves mostly monitoring the state and managing
+                communications with child components, the wizard expects some subcomponents to be declared in order for
+                it to avoid an existential crisis.
+            </p>
+
+            <p>
+                Every wizard needs a <code class="clr-code">&lt;clr-wizard-title&gt;</code>,
+                <code class="clr-code">&lt;clr-wizard-button&gt;</code>, and at least one
+                <code class="clr-code">&lt;clr-wizard-page&gt;</code> component to be declared as
+                its children. If these sub-components are not present, the wizard will throw an error.
+            </p>
+
+            <p>
+                As a convenience, wizards give you hooks to all of their services. If you have a reference to
+                the wizard in your host component as in the example above, you can access all of the important
+                nav service and page collection functionality. Specifically, the above example could call
+                <code class="clr-code">this.wizard.navService</code> or
+                <code class="clr-code">this.wizard.pageCollection</code> to access the nav service or page
+                collection, respectively.
+            </p>
+
+            <h6>Inputs of note</h6>
+            <ul class="list">
+                <li>
+                    <code class="clr-code">clrWizardSize</code> (string) sets the size of the wizard.
+                    Acceptable values are
+                    <code class="clr-code">md</code>, <code class="clr-code">lg</code>, and
+                    <code class="clr-code">xl</code> representing medium, large, and extra-large wizards.
+                    <code class="clr-code">xl</code> is default.
+                </li>
+                <li>
+                    <code class="clr-code">clrWizardClosable</code>> (boolean) hides or reveals the
+                    close “X” in the top right. If false, the close “X” will not be present. The property
+                    defaults to true.
+                </li>
+                <li>
+                    <code class="clr-code">clrWizardOpen</code>> (boolean) hides or shows the wizard, in
+                    the same way that <code class="clr-code">clrModalOpen</code> hides or shows a modal.
+                </li>
+                <li>
+                    <code class="clr-code">clrWizardPreventDefaultCancel</code>> (boolean) prevents a
+                    user’s cancel action from closing the wizard. Defaults to false.
+                </li>
+                <li>
+                    <code class="clr-code">clrWizardForceForwardNavigation</code>> (boolean)
+                    sets pages to incomplete when they are skipped over because a user navigates
+                    backwards using the stepnav. Most useful when validation is occurring on a page-by-page
+                    basis when the next button is clicked.
+                </li>
+                <li>
+                    When set to true, <code class="clr-code">clrWizardPreventNavigation</code>> (boolean)
+                    disables the buttons in the footer, the links in the stepnav to the left, and the close
+                    "X" in the top right of the wizard if present.
+                </li>
+                <li>
+                    <code class="clr-code">clrWizardDisableStepnav</code>> (boolean) disables the links in
+                    the stepnav when set to true.
+                </li>
+            </ul>
+
+            <h6>Outputs of note</h6>
+            <ul class="list">
+                <li>
+                    <code class="clr-code">clrWizardOpenChange</code>> is an output that fires an event
+                    after the wizard has opened.
+                </li>
+                <li>
+                    <code class="clr-code">clrWizardOnCancel</code>> fires an event after the wizard has
+                    been canceled and, in most cases, closed. This output can be used with the
+                    <code class="clr-code">clrWizardPreventDefaultCancel</code> input to
+                    implement custom functionality when a user wants to close or cancel a wizard.
+                </li>
+                <li>
+                    <code class="clr-code">clrWizardOnFinish</code>> emits an event after a wizard has
+                    been completed &mdash; once the finish button on the last page has been clicked. If
+                    you wanted to reset the wizard after it was finished, this would be a good output to consider.
+                </li>
+                <li>
+                    <code class="clr-code">clrWizardOnReset</code>> emits an event after the wizard has
+                    reset all of its pages to incomplete and also reset its navigation to make the first
+                    page in the step nav current.
+                </li>
+                <li>
+                    <code class="clr-code">clrWizardCurrentPageChanged</code>> is fired after the current
+                    page of the wizard has been changed.
+                </li>
+            </ul>
+
+            <h6>Useful properties on the wizard</h6>
+            <ul class="list">
+                <li>
+                    <code class="clr-code">wizard.currentPage</code> will retrieve the current page
+                    object (<code class="clr-code">WizardPage</code>) of the wizard.
+                </li>
+                <li>
+                    <code class="clr-code">wizard.isLast</code> returns a boolean telling you if the
+                    current page is the last page in the wizard.
+                </li>
+                <li>
+                    <code class="clr-code">wizard.isFirst</code> will also return a boolean, but this
+                    one will tell you if the current page is the first page in the wizard.
+                </li>
+            </ul>
+
+            <h6>Useful methods on the wizard</h6>
+            <ul class="list">
+                <li>
+                    <code class="clr-code">wizard.open()</code> opens the wizard.
+                </li>
+                <li>
+                    <code class="clr-code">wizard.close()</code> just closes the wizard but bypasses
+                    event emitters associated with finish and cancel. Use this method on the wizard
+                    to implement custom cancel or finish methods in your host component to avoid any
+                    circular event emission.
+                </li>
+                <li>
+                    You can pass a boolean to <code class="clr-code">wizard.toggle()</code> to hide
+                    or show the wizard. <code class="clr-code">wizard.toggle(false)</code> will hide
+                    the wizard and <code class="clr-code">wizard.toggle(true)</code> will show it.
+                </li>
+                <li>
+                    <code class="clr-code">wizard.previous()</code> will try to move the wizard to the
+                    page immediately before the current page &mdash; if it can. It will fail silently
+                    if the current page has no previous page to which it can move.
+                </li>
+                <li>
+                    <code class="clr-code">wizard.next()</code> will try to move the wizard to the page
+                    immediately after the current page. It will also fail silently if the current page
+                    has no page that follows it.
+                </li>
+                <li>
+                    <code class="clr-code">wizard.finish()</code> will initiate the routines associated
+                    with completing the wizard, as if a finish button had been clicked on the last page.
+                    You can use <code class="clr-code">wizard.finish()</code> in your code if you are
+                    using a custom finish or danger button on the last page in your wizard.
+                </li>
+                <li>
+                    <code class="clr-code">wizard.cancel()</code> will invoke the cancel routines for the
+                    wizard as if the close “X” or cancel button had been clicked. This should probably only
+                    be used if you have a custom cancel button that you need to wire up or if you want to
+                    cancel the wizard programmatically. If you are trying to circumvent the wizard’s cancel
+                    routine altogether, you would be better off using
+                    <code class="clr-code">wizard.close()</code>.
+                </li>
+                <li>
+                    <code class="clr-code">wizard.goTo()</code> accepts a string representing the id of the
+                    page you want the wizard to make current as a parameter. If you have references to
+                    your pages in your host component, the page id can be retrieved with
+                    <code class="clr-code">wizardpage.id</code> and can be passed into
+                    <code class="clr-code">wizard.goTo()</code> &mdash;
+                    <code class="clr-code">this.wizard.goTo(this.wizardpage.id)</code>. Note that
+                    <code class="clr-code">wizard.goTo()</code> checks to see if preceding pages have been
+                    completed before navigating to the specified page. If they have not been, it doesn’t
+                    do anything.
+                </li>
+                <li>
+                    <code class="clr-code">wizard.reset()</code> resets all pages' completed states to false
+                    and makes the first page in the wizard the current page &mdash; as if the wizard had
+                    never been opened before. See the demo below for a more extensive example and explanation.
+                </li>
+            </ul>
+
+            <h5>The wizard page</h5>
+
+            <p>
+                Besides the wizard, the second most important component is the wizard page. This is
+                because users often want to customize at the page level, instead of the wizard level.
+            </p>
+            <p>
+                Just like the wizard, the wizard page needs an expected element within it or it will
+                throw an error. Each wizard page needs a
+                <code class="clr-code">&lt;ng-template clrPageTitle&gt;</code> templateRef inside of
+                it. Without this, the wizard page will have an existential crisis and not know what to
+                call itself.
+            </p>
+            <p>
+                By default, the content of the <code class="clr-code">&lt;ng-template clrPageTitle&gt;</code>
+                templateRef will appear as the title in the content area of the wizard when the page
+                is current as well as in the page's associated link in the step nav to the left.
+            </p>
+            <p>
+                You can also save a reference to a wizard page in your host component if you want.
+                Each page has hooks to the nav service and page collection providers shared between
+                the wizard and its subcomponents.
+            </p>
+
+            <pre><code clr-code-highlight="language-typescript">@Component(&#123;
+    ...
+&#125;)
+export class WizardJumpToDemo &#123;
+    @ViewChild("firstPage") wizardPage_1: ClrWizardPage;
+    @ViewChild("secondPage") wizardPage_2: ClrWizardPage;
+
+    get pageAreDone(): boolean &123;
+        return this.firstPage.completed &amp;&amp; this.secondPage.completed;
+    &125;
+</code></pre>
+
+            <pre><code clr-code-highlight="language-html">&lt;clr-wizard [(clrWizardOpen)]="open">
+    &lt;clr-wizard-title&gt;Your Wizard&lt;/clr-wizard-title&gt;
+    &lt;clr-wizard-page #firstPage&gt;
+        ...
+    &lt;/clr-wizard-page&gt;
+    &lt;clr-wizard-page #secondPage&gt;
+        ...
+    &lt;/clr-wizard-page&gt;
+    ...
+</code></pre>
+
+            <h6>Inputs of note</h6>
+            <ul class="list">
+                <li>
+                    <code class="clr-code">clrWizardPageNextDisabled</code> is a boolean that
+                    disables the next button. It can be used to force validation on the current
+                    page before allowing users to move to the next page or finish a wizard.
+                    This is <code class="clr-code">false</code> by default.
+                </li>
+                <li>
+                    <code class="clr-code">clrWizardPagePreventDefault</code> is a boolean that
+                    circumvents all actions (cancel, finish, next, and previous) when the page
+                    is current. This can be used in combination with the outputs below to write
+                    your own wizard navigation procedures. This input is
+                    <code class="clr-code">false</code> by default.
+                </li>
+                <li>
+                    Most users, however, only want to monitor or circumvent the cancellation
+                    of the wizard. <code class="clr-code">clrWizardPagePreventDefaultCancel</code>
+                    does that. It is a boolean input that, if set to true, prevents the cancel
+                    action from firing when the page is current. Also
+                    <code class="clr-code">false</code> by default.
+                </li>
+            </ul>
+
+            <h6>Outputs of note</h6>
+            <ul class="list">
+                <li>
+                    <code class="clr-code">clrWizardPageOnCommit</code> is an output that emits
+                    after a page is marked completed by user action. Generally, this happens
+                    after danger, finish, or next buttons are clicked. It will not be fired
+                    if the page is marked completed programmatically.
+                </li>
+                <li>
+                    <code class="clr-code">clrWizardPageOnLoad</code> is emitted after a page is
+                    made the current page. It cannot circumvent making a page current but it
+                    will notify you when a page has been made current and it delivers the
+                    page’s id as a string.
+                </li>
+                <li>
+                    <code class="clr-code">clrWizardPageOnCancel</code> is an output that fires
+                    when a user's action on a page initiates the wizard’s cancel routine. This
+                    output, combined with the <code class="clr-code">clrWizardPagePreventDefaultCancel</code>
+                    or <code class="clr-code">clrWizardPagePreventDefault</code> inputs, allows you
+                    to customize or rewrite the cancellation of a wizard from a page level.
+                </li>
+                <li>
+                    Wizard pages also have a set of outputs that emit when different buttons
+                    are clicked in the wizard. Note that these events are only emitted for the
+                    page when the page is current. These outputs include:
+                    <code class="clr-code">clrWizardPageFinish</code> when the finish button is
+                    clicked, <code class="clr-code">clrWizardPagePrevious</code> when the previous button
+                    is clicked, <code class="clr-code">clrWizardPageNext</code> when the next button
+                    is clicked, <code class="clr-code">clrWizardPageDanger</code> when a danger button
+                    is clicked, <code class="clr-code">clrWizardPagePrimary</code> when a
+                    next/finish/danger button is clicked, and
+                    <code class="clr-code">clrWizardPageCustomButton</code> when any custom button
+                    is clicked. All of these outputs (and <code class="clr-code">clrWizardPageOnCancel</code>)
+                    can be combined with the <code class="clr-code">clrWizardPagePreventDefault</code>
+                    input to create a unique, page-based behavior. More examples are available
+                    in the demos below.
+                </li>
+            </ul>
+
+            <h6>Useful properties of the wizard page</h6>
+            <ul class="list">
+                <li>
+                    <code class="clr-code">wizardpage.id</code> returns the id of the page as a string.
+                </li>
+                <li>
+                    <code class="clr-code">wizardpage.completed</code> is a boolean that tells you if
+                    the page has been completed or not. If <code class="clr-code">true</code>, the page
+                    has been completed. If <code class="clr-code">false</code>, it has not.
+                </li>
+                <li>
+                    <code class="clr-code">wizardpage.current</code> is a boolean tells you if the page
+                    is the current page or not.
+                </li>
+            </ul>
+
+            <h6>Useful methods of the wizard page</h6>
+            <ul class="list">
+                <li>
+                    <code class="clr-code">wizardpage.makeCurrent()</code> tells the nav service to make
+                    <code class="clr-code">wizardpage</code> the current page. This method circumvents
+                    checks to see if the page can be made current. Use
+                    <code class="clr-code">wizard.goTo()</code> if you want to nav service to validate
+                    whether the specified page can be made current or not.
+                </li>
+            </ul>
+
+            <h5>Providers (Services)</h5>
+
+            <p>
+                The Clarity wizard has a number of services (providers) that are created by the wizard
+                and shared among all of its subcomponents. The two that you are most likely to interact
+                with are the <code class="clr-code">WizardNavigationService</code> and
+                <code class="clr-code">PageCollectionService</code>.
+            </p>
+
+            <h6>WizardNavigationService</h6>
+
+            <p>
+                The <code class="clr-code">WizardNavigationService</code> or “nav service” is the wizard’s
+                executive assistant. It communicates with the wizard, the pages, and the
+                <code class="clr-code">PageCollectionService</code> to make sure everyone stays in sync.
+                Most of what the nav service does is already available to you through convenience methods
+                on the wizard. Methods like <code class="clr-code">next()</code>,
+                <code class="clr-code">previous()</code>, and <code class="clr-code">finish()</code>.
+            </p>
+            <p>
+                It may have seemed, initially, that the wizard was super-helpful and doing lots of work.
+                But the truth is the nav service does all the work. The wizard just gets all the credit!
+            </p>
+            <p>
+                Because much of what the nav service does is behind-the-scenes, there is really only
+                a couple of methods and properties on the nav service that may interest you:
+            </p>
+
+            <ul class="list">
+                <li>
+                    <code class="clr-code">wizard.navService.currentPage</code> is a getter/setter
+                    That will return the current page is called on its own or set the current page
+                    to any WizardPage object that is passed to it. This bypasses most of the checks
+                    involved with setting the current page but still emits a
+                    <code class="clr-code">pageOnLoad</code> event.
+                </li>
+                <li>
+                    <code class="clr-code">wizard.navService.goTo()</code> takes either the id of a page
+                    or the page object itself and checks to see if it can make the page current. This is
+                    slightly more flexible than <code class="clr-code">wizard.goTo()</code> which only
+                    takes a page id.
+                </li>
+            </ul>
+
+            <h6>PageCollectionService</h6>
+
+            <p>
+                The <code class="clr-code">PageCollectionService</code> &mdash; or “page collection” &mdash;
+                groups all of the pages in the wizard together and acts as kind of a librarian. If you
+                are looking for a page or even a group of pages, the page collection has you covered.
+                The page collection also handles a small set of bulk actions on the pages in a wizard.
+            </p>
+
+            <p><b>Properties</b></p>
+
+            <ul class="list">
+                <li>
+                    <code class="clr-code">wizard.pageCollection.pages</code> is a
+                    <code class="clr-code">QueryList</code> of all the pages in a wizard.
+                </li>
+                <li>
+                    <code class="clr-code">wizard.pageCollection.pagesAsArray</code> is
+                    a convenient getter that returns
+                    <code class="clr-code">wizard.pageCollection.pages</code> as an array of page objects.
+                </li>
+            </ul>
+
+            <p><b>Methods</b></p>
+            <ul class="list">
+                <li>
+                    If you know a page’s id, you can pass it as a string parameter to
+                    <code class="clr-code">wizard.pageCollection.getPageById()</code> and it will
+                    return the page if it exists in the page collection.
+                </li>
+                <li>
+                    Alternatively, you can pass the page’s index in the list of pages as a number
+                    parameter to <code class="clr-code">wizard.pageCollection.getPageByIndex()</code>
+                    to get the page returned back to you.
+                </li>
+                <li>
+                    If you have a page and you need to know where it is in the list of pages, you
+                    can pass the page object as a parameter to
+                    <code class="clr-code">wizard.pageCollection.getPageIndex()</code>
+                    and it will return the page’s numeric index.
+                </li>
+                <li>
+                    Passing a page object to <code class="clr-code">wizard.pageCollection.getPreviousPage()</code>
+                    as a parameter will return you the page before it in the collection or null
+                    if your page object is the first page in the collection.
+                </li>
+                <li>
+                    Continuing the trend, you can pass a page object as a parameter to
+                    <code class="clr-code">wizard.pageCollection.getNextPage()</code> and it will
+                    return the page after your page object in the collection or null if your
+                    page object is the last page in the collection.
+                </li>
+                <li>
+                    <code class="clr-code">wizard.pageCollection.updateCompletedStates()</code>
+                    is a function that cleans up the page collection by figuring out the first page
+                    marked as incomplete and the collection and then marking every page after
+                    it incomplete as well. This is a useful method if you handle a lot of page
+                    state programmatically.
+                </li>
+            </ul>
+        </div>
+
+    </article>
+
+</clr-doc-wrapper>

@@ -1,0 +1,26 @@
+// Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../../styles/clarity-imports';
+
+.clr-example{
+
+    .example-aside-section{
+        width: 20%;
+        padding: 24px;
+        border: 1px solid;
+
+        @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+            display: none;
+        }
+    }
+
+    .example-footer{
+        $example-footer-height: 60px;
+        height: $example-footer-height;
+        line-height: $example-footer-height;
+        padding: 0 24px;
+        border: 1px solid;
+    }
+}

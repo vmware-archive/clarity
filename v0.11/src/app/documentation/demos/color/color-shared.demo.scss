@@ -1,0 +1,78 @@
+// Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../../styles/clarity-imports';
+
+@mixin clrdemo-colorPaletteLabels {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    line-height: 1.1rem;
+    font-weight: normal;
+    letter-spacing: 0.8;
+}
+
+@mixin clr-colordemo-hexContrastBlockStyles {
+    display: block;
+    line-height: 80px;
+    font-size: 2rem;
+}
+
+@mixin clr-colordemo-hexContrastLabelStyles($color: #ffffff, $textcolor: null) {
+    & > .hex-contrast::after {
+        content: '#{$color}';
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        @if $textcolor != null {
+            color: $textcolor;
+        }
+
+        @include clrdemo-colorPaletteLabels;
+    }
+}
+
+@mixin clr-colordemo-sharedContainerStyles {
+    font-size: 16px;
+    margin: 0;
+    padding: 1.4rem;
+}
+
+@mixin clr-colordemo-sharedTableStyles {
+    table {
+        border-collapse: collapse;
+        min-width: 1140px;
+        min-width: 960px;
+        width: 100%;
+    }
+
+    th {
+        font-weight: normal;
+        text-align: center;
+        color: clr-getColor(light-midtone);
+    }
+
+    td {
+        border: 1px solid clr-getColor(white);
+        vertical-align: middle;
+        width: 8%;
+        text-align: center;
+        font-weight: 100;
+        color: #000;
+        position: relative;
+    }
+}
+
+@mixin clr-colordemo-luminanceAndContrastTableStyles {
+    th {
+        font-size: 11px; // TODO: convert to rem() function
+        color: clr-getColor(darker);
+        text-transform: uppercase;
+        background-color: clr-getColor(lighter);
+        padding: 8px;
+    }
+}

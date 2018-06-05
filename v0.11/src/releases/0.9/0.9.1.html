@@ -1,0 +1,45 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>
+            Datagrid column resizing
+        </h6>
+        Column resizing is enabled in Datagrid by default now. Users can hover over a separator line that divides adjacent
+        column headers and drag it to resize the column before the dragged separator. It's also possible to bind through the
+        <code class="clr-code">(clrDgColumnResize)</code> directive on <code class="clr-code">clr-dg-column</code> to listen to
+        the resizing event and receive its emitted value which will be the new width size of the column.
+    </li>
+    <li>
+        <h6>Flip Clarity Icons</h6>
+        With 0.9.1, Clarity Icons has introduced an ability to flip icons horizontally and vertically. Usage examples:
+<pre><code clr-code-highlight="language-html" ngNonBindable>
+&#x3C;clr-icon shape=&#x22;floppy&#x22; flip=&#x22;horizontal&#x22;&#x3E;&#x3C;/clr-icon&#x3E;
+&#x3C;clr-icon shape=&#x22;floppy&#x22; flip=&#x22;vertical&#x22;&#x3E;&#x3C;/clr-icon&#x3E;
+</code></pre>
+    </li>
+    <li>
+        <h6>Sketch Template Updated</h6>
+        <a href="assets/images/sketchTemplates/Clarity-Template-0.9.0.sketch" target="_blank">The Clarity sketch template</a> has been updated with the latest changes in 0.9.0.
+    </li>
+    <li>
+        <h6>New Clarity wizard documentation</h6>
+        As the 0.9.0 Clarity wizard moves closer and closer to final, we have added extensive documentation
+        on its functionality and the different ways we have seen it used.
+        <a routerLink="/documentation/wizards">Check out the new wizards documentation</a>!
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Datagrid columns are resizable by dragging.</li>
+    <li>Action bar has been enabled in non-selectable Datagrids.</li>
+    <li>Clarity Icons has added new standard size icons for error, warning, success, and info icons.</li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed a misalignment issue in Datagrid columns with dynamically loaded <code class="clr-code">*clrDgItems</code>.</li>
+    <li bug-fix>Fixed an issue with Checkbox and Radio label alignment.</li>
+    <li bug-fix>Fixed an issue with the content wrapping in the Datagrid footer.</li>
+    <li bug-fix>Fixed an issue with Button Groups in cards.</li>
+</ul>

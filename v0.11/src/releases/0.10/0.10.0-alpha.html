@@ -1,0 +1,225 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li breaking-change>
+        <h2>Clarity Icons</h2>
+        New Icons added for <code class="clr-code">folder-open</code>, <code class="clr-code">filter-grid</code>,
+        <code class="clr-code">filter-grid-circle</code> and <code class="clr-code">map</code>
+    </li>
+
+    <li>
+        <h6>Sketch Template Updated</h6>
+        <a href="assets/images/sketchTemplates/Clarity-Template-0.9.0.sketch" target="_blank">
+        The Clarity sketch template</a> has been updated with the latest changes in 0.9.9. This change
+        includes the new color palette and fixes to forms, headers, wizard etc.
+    </li>
+
+    <li breaking-change>
+        <h2>Tree View (alpha)</h2>
+        <p>
+            0.10.0-alpha introduces a breaking change in the Tree View component.
+        </p>
+        <div>
+            This breaking change allows us to support important Tree View features like:
+            <ul class="list">
+                <li>Lazy Loading of Tree Nodes</li>
+                <li>Dynamically generating Trees with unknown depth.</li>
+            </ul>
+        </div>
+
+        <h3>Migrating to the New Tree View</h3>
+
+        <h4>1. Basic Tree</h4>
+
+        <div>
+            <h6>0.9 Tree View (before)</h6>
+            <div>
+                <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-tree-node&gt;
+    Parent Node
+    &lt;clr-tree-node&gt;
+        Child Node 1
+    &lt;/clr-tree-node&gt;
+    &lt;clr-tree-node&gt;
+        Child Node 2
+    &lt;/clr-tree-node&gt;
+&lt;/clr-tree-node&gt;</code></pre>
+            </div>
+        </div>
+        <div>
+            <h6>0.10.0-alpha Tree View (after)</h6>
+            <div>
+                The new tree uses the <code class="clr-code">*clrIfExpanded</code> structural
+                directive to render the child nodes only when the parent node is expanded.
+                We recommend that you use the de-sugared syntax of the structural directive.
+                <h6>1. De-sugared Syntax (Preferred)</h6>
+                <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-tree-node&gt;
+    Parent Node
+    &lt;ng-template clrIfExpanded&gt;
+        &lt;clr-tree-node&gt;
+            Child Node 1
+        &lt;/clr-tree-node&gt;
+        &lt;clr-tree-node&gt;
+            Child Node 2
+        &lt;/clr-tree-node&gt;
+    &lt;/ng-template&gt;
+&lt;/clr-tree-node&gt;</code></pre>
+                <h6>2. Microsyntax</h6>
+                <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-tree-node&gt;
+    Parent Node
+    &lt;clr-tree-node *clrIfExpanded&gt;
+        Child Node
+    &lt;/clr-tree-node&gt;
+    &lt;clr-tree-node *clrIfExpanded&gt;
+        Child Node 2
+    &lt;/clr-tree-node&gt;
+&lt;/clr-tree-node&gt;</code></pre>
+            </div>
+        </div>
+
+        <h4>2. Node Expand</h4>
+
+        <div>
+            <h6>0.9 Tree View (before)</h6>
+            <div>
+                <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-tree-node [(clrTreeNodeExpanded)]=&quot;expand&quot;&gt;
+    Parent Node
+    &lt;clr-tree-node&gt;
+        Child Node 1
+    &lt;/clr-tree-node&gt;
+    &lt;clr-tree-node&gt;
+        Child Node 2
+    &lt;/clr-tree-node&gt;
+&lt;/clr-tree-node&gt;</code></pre>
+            </div>
+        </div>
+
+        <div>
+            <h6>0.10.0-alpha Tree View (after)</h6>
+            <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-tree-node&gt;
+    Parent Node
+    &lt;ng-template [(clrIfExpanded)]=&quot;expand&quot;&gt;
+        &lt;clr-tree-node&gt;
+            Child Node 1
+        &lt;/clr-tree-node&gt;
+        &lt;clr-tree-node&gt;
+            Child Node 2
+        &lt;/clr-tree-node&gt;
+    &lt;/ng-template&gt;
+&lt;/clr-tree-node&gt;</code></pre>
+        </div>
+
+        <h4>3. Checkbox Tree</h4>
+
+        <div>
+            <h6>0.9 Tree View (before)</h6>
+            <div>
+                <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-tree&gt;
+    &lt;clr-tree-node&gt;
+        Parent Node
+        &lt;clr-tree-node&gt;
+            Child Node 1
+        &lt;/clr-tree-node&gt;
+        &lt;clr-tree-node&gt;
+            Child Node 2
+        &lt;/clr-tree-node&gt;
+    &lt;/clr-tree-node&gt;
+&lt;clr-tree&gt;</code></pre>
+            </div>
+        </div>
+
+        <div>
+            <h6>0.10.0-alpha Tree View (after)</h6>
+            <div>
+                To enable selection in the new Tree, use the <code class="clr-code">[(clrSelected)]</code>
+                Input on the root node.
+            </div>
+            <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-tree-node [(clrSelected)]="selected"&gt;
+    Parent Node
+    &lt;ng-template clrIfExpanded&gt;
+        &lt;clr-tree-node&gt;
+            Child Node 1
+        &lt;/clr-tree-node&gt;
+        &lt;clr-tree-node&gt;
+            Child Node 2
+        &lt;/clr-tree-node&gt;
+    &lt;/ng-template&gt;
+&lt;/clr-tree-node&gt;</code></pre>
+        </div>
+
+        <h4>4. Recursive Trees</h4>
+
+        The new Tree supports recursive checkbox tree.
+        Visit this <a href="https://plnkr.co/edit/YFYa0f?p=preview">plnkr</a> for a quick demo.
+
+        <h4>Breaking Changes</h4>
+
+        <div>
+            <h6>1. Input/Outputs Removed from clr-tree-node</h6>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="left">Input/Output</th>
+                        <th class="left">Alternative</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left"><code class="clr-code">[(clrTreeNodeExpanded)]</code></td>
+                    <td class="left">Input/Output on the <code class="clr-code">clrIfExpanded</code> directive</td>
+                </tr>
+                <tr>
+                    <td class="left"><code class="clr-code">[(clrTreeNodeExpandable)]</code></td>
+                    <td class="left">
+                        Not needed anymore because tree nodes automatically detect and register the
+                        <code class="clr-code">clrIfExpanded</code> directive to make themselves
+                        expandable
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left"><code class="clr-code">[clrTreeNodeLoading]</code></td>
+                    <td class="left">
+                        <code class="clr-code">clrLoading</code> directive nested
+                        in the <code class="clr-code">clrIfExpanded</code> directive to activate
+                        the loading indicator when the parent node is expanded
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left"><code class="clr-code">[(clrTreeNodeSelected)]</code></td>
+                    <td class="left">
+                        This has been replaced by <code class="clr-code">[(clrSelected)]</code>
+                        on the TreeNode.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left"><code class="clr-code">[(clrTreeNodeModel)]</code></td>
+                    <td class="left">
+                        Not needed anymore since this was only used to output the overall selection
+                        which the new tree does not do anymore.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <h6>2. clr-tree component</h6>
+            <p>
+                <code class="clr-code">clr-tree</code> and the Output
+                <code class="clr-code">(clrTreeSelectedChange)</code> have now been removed.
+                Because the nodes are now lazily loaded, there is no way for us to output
+                the currently selected nodes back to the user. Instead, you can now use
+                <code class="clr-code">(clrSelectedChange)</code> on the TreeNode itself.
+                <code class="clr-code">[clrTreeSelected]</code> input has now been replaced by
+                the <code class="clr-code">[clrSelected]</code> on the TreeNode.
+            </p>
+        </div>
+
+    </li>
+</ul>
+

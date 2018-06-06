@@ -7,8 +7,7 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { FormControlService } from '../common/form-control.service';
-
+import { ControlIdService } from '../common/providers/control-id.service';
 import { ClrCheckboxContainer } from './checkbox-container';
 
 @Component({
@@ -23,7 +22,7 @@ class SimpleTest {}
 
 interface TestContext {
   fixture: ComponentFixture<SimpleTest>;
-  formControlService: FormControlService;
+  controlIdService: ControlIdService;
   checkboxContainer: ClrCheckboxContainer;
   checkboxContainerEl: any;
 }
@@ -35,13 +34,13 @@ export default function(): void {
       this.fixture = TestBed.createComponent(SimpleTest);
       this.fixture.detectChanges();
       const checkboxContainerDE = this.fixture.debugElement.query(By.directive(ClrCheckboxContainer));
-      this.formControlService = checkboxContainerDE.injector.get(FormControlService, null);
+      this.controlIdService = checkboxContainerDE.injector.get(ControlIdService, null);
       this.checkboxContainer = checkboxContainerDE.componentInstance;
       this.checkboxContainerEl = checkboxContainerDE.nativeElement;
     });
 
-    it('declares a FormControlService provider', function(this: TestContext) {
-      expect(this.formControlService).toBeTruthy();
+    it('declares a ControlIdService provider', function(this: TestContext) {
+      expect(this.controlIdService).toBeTruthy();
     });
 
     it('implements DynamicWrapper', function(this: TestContext) {

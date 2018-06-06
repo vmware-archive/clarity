@@ -7,7 +7,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { ClrControlError } from './error';
+import { ClrControlHelper } from './helper';
+import { ClrIfError } from './if-error/if-error';
 import { ClrLabel } from './label';
 
-@NgModule({ imports: [CommonModule], declarations: [ClrLabel], exports: [ClrLabel] })
+@NgModule({
+  imports: [CommonModule],
+  declarations: [ClrLabel, ClrControlError, ClrControlHelper, ClrIfError],
+  exports: [ClrLabel, ClrControlError, ClrControlHelper, ClrIfError],
+})
 export class ClrCommonFormsModule {}

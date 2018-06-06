@@ -21,6 +21,8 @@ import { FormsLayoutHorizontalGridDemo } from './layout/layout-horizontal-grid';
 import { FormsLayoutModalDemo } from './layout/layout-modal';
 import { FormsLayoutVerticalDemo } from './layout/layout-vertical';
 import { FormsLayoutVerticalGridDemo } from './layout/layout-vertical-grid';
+import { FormsTemplateDrivenDemo } from './template-driven/template-driven';
+import { FormsReactiveDemo } from './reactive/reactive';
 
 const ROUTES: Routes = [
   {
@@ -42,6 +44,8 @@ const ROUTES: Routes = [
       { path: 'select', component: FormsSelectDemo },
       { path: 'text', component: FormsTextDemo },
       { path: 'textarea', component: FormsTextareaDemo },
+      { path: 'template-driven', component: FormsTemplateDrivenDemo },
+      { path: 'reactive', component: FormsReactiveDemo },
     ],
   },
 ];

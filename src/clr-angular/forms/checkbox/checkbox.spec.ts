@@ -6,8 +6,8 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { FormControlService } from '../common/form-control.service';
-import { WrappedFormControl } from '../common/wrapped-form-control';
+import { ControlIdService } from '../common/providers/control-id.service';
+import { WrappedFormControl } from '../common/wrapped-control';
 import { ClrCheckboxNext } from './checkbox';
 import { ClrCheckboxContainer } from './checkbox-container';
 
@@ -22,7 +22,7 @@ export default function(): void {
   describe('Checkbox directive', () => {
     it('correctly extends WrappedFormControl<ClrCheckboxContainer>', function() {
       spyOn(WrappedFormControl.prototype, 'ngOnInit');
-      TestBed.configureTestingModule({ declarations: [ClrCheckboxNext, SimpleTest], providers: [FormControlService] });
+      TestBed.configureTestingModule({ declarations: [ClrCheckboxNext, SimpleTest], providers: [ControlIdService] });
       this.fixture = TestBed.createComponent(SimpleTest);
       this.fixture.detectChanges();
       expect(

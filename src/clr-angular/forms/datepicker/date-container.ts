@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 
 import { IfOpenService } from '../../utils/conditional/if-open.service';
 import { DynamicWrapper } from '../../utils/host-wrapping';
-import { FormControlService } from '../common/form-control.service';
+import { ControlIdService } from '../common/providers/control-id.service';
 
 import { DateFormControlService } from './providers/date-form-control.service';
 import { DateIOService } from './providers/date-io.service';
@@ -30,7 +30,7 @@ import { LocaleHelperService } from './providers/locale-helper.service';
         <clr-datepicker-view-manager *clrIfOpen clrFocusTrap></clr-datepicker-view-manager>
     `,
   providers: [
-    FormControlService,
+    ControlIdService,
     IfOpenService,
     LocaleHelperService,
     DateIOService,

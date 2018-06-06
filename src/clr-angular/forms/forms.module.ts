@@ -10,10 +10,11 @@ import { NgModule } from '@angular/core';
 import { ClrCheckboxNextModule } from './checkbox/checkbox.module';
 import { ClrCommonFormsModule } from './common/common.module';
 import { ClrDatepickerModule } from './datepicker/datepicker.module';
+import { ClrInputModule } from './input/input.module';
 import { ClrRadioModule } from './radio/radio.module';
 
 @NgModule({
   imports: [CommonModule],
-  exports: [ClrCommonFormsModule, ClrCheckboxNextModule, ClrRadioModule, ClrDatepickerModule],
+  exports: [ClrCommonFormsModule, ClrCheckboxNextModule, ClrInputModule, ClrRadioModule, ClrDatepickerModule],
 })
 export class ClrFormsNextModule {}

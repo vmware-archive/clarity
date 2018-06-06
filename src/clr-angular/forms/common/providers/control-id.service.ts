@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 let counter = 0;
 
 @Injectable()
-export class FormControlService {
+export class ControlIdService {
   private _id = 'clr-form-control-' + ++counter;
   get id(): string {
     return this._id;

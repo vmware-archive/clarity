@@ -26,7 +26,7 @@ import {
 import { NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-import { WrappedFormControl } from '../common/wrapped-form-control';
+import { WrappedFormControl } from '../common/wrapped-control';
 
 import { ClrDateContainer } from './date-container';
 import { DayModel } from './model/day.model';

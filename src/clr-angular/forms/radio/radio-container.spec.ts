@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { FormControlService } from '../common/form-control.service';
+import { ControlIdService } from '../common/providers/control-id.service';
 
 import { ClrRadioContainer } from './radio-container';
 
@@ -23,7 +23,7 @@ class SimpleTest {}
 
 interface TestContext {
   fixture: ComponentFixture<SimpleTest>;
-  formControlService: FormControlService;
+  controlIdService: ControlIdService;
   radioContainer: ClrRadioContainer;
   radioContainerEl: any;
 }
@@ -35,13 +35,13 @@ export default function(): void {
       this.fixture = TestBed.createComponent(SimpleTest);
       this.fixture.detectChanges();
       const radioContainerDE = this.fixture.debugElement.query(By.directive(ClrRadioContainer));
-      this.formControlService = radioContainerDE.injector.get(FormControlService, null);
+      this.controlIdService = radioContainerDE.injector.get(ControlIdService, null);
       this.radioContainer = radioContainerDE.componentInstance;
       this.radioContainerEl = radioContainerDE.nativeElement;
     });
 
     it('declares a FormControlService provider', function(this: TestContext) {
-      expect(this.formControlService).toBeTruthy();
+      expect(this.controlIdService).toBeTruthy();
     });
 
     it('implements DynamicWrapper', function(this: TestContext) {

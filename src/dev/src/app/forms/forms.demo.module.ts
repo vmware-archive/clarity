@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ClarityModule } from '@clr/angular';
+import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
 
 import { FormsCheckboxDemo } from './controls/checkbox';
 import { FormsFileDemo } from './controls/file';
@@ -26,9 +26,11 @@ import { FormsLayoutHorizontalGridDemo } from './layout/layout-horizontal-grid';
 import { FormsLayoutModalDemo } from './layout/layout-modal';
 import { FormsLayoutVerticalDemo } from './layout/layout-vertical';
 import { FormsLayoutVerticalGridDemo } from './layout/layout-vertical-grid';
+import { FormsTemplateDrivenDemo } from './template-driven/template-driven';
+import { FormsReactiveDemo } from './reactive/reactive';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ROUTING],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ClrFormsNextModule, ROUTING],
   declarations: [
     FormsDemo,
     FormsInputGroupDemo,
@@ -45,6 +47,8 @@ import { FormsLayoutVerticalGridDemo } from './layout/layout-vertical-grid';
     FormsRadioDemo,
     FormsSelectDemo,
     FormsTextareaDemo,
+    FormsTemplateDrivenDemo,
+    FormsReactiveDemo,
   ],
   exports: [
     FormsDemo,
@@ -62,6 +66,8 @@ import { FormsLayoutVerticalGridDemo } from './layout/layout-vertical-grid';
     FormsRadioDemo,
     FormsSelectDemo,
     FormsTextareaDemo,
+    FormsTemplateDrivenDemo,
+    FormsReactiveDemo,
   ],
 })
 export class FormsDemoModule {}

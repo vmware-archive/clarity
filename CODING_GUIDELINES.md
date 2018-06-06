@@ -150,6 +150,7 @@ ClrFormsModule
 * Have related components (like parent / child) communicate by default through services.
 * Never use explicitly named template reference variables as part of the API, to query them through `@ContentChild`. Simply receive structural directives or inputs.
 * Never make HTTP calls, and never impose formatting constraints on their backend API.
+* In cases where a directive cannot be used unless it is a child of another directive, it is usually best to throw a new Error in the constructor to alert developers that it is not supported. [Example](src/clr-angular/popover/dropdown/dropdown-menu.ts)
 
 Finally, and this is harder to put in black-or-white terms, keep the API as simple and natural as possible, even if it means more work on Clarity's side. Implementing multiple directives and components and making them communicate through services will lead to a much more pleasant integration than forcing your consumer to pass data manually from one to the other. Here are a couple examples of what to do and not to do (taken from real-life carousel components):
 

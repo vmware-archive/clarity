@@ -22,8 +22,8 @@ export enum SelectionType {
 @Injectable()
 export class Selection {
   public id: string;
-  private selected: any[] = []; // Refs of selected items
-  private selectedSingle: any; // Ref of single selected item
+  private prevSelectionRefs: any[] = []; // Refs of selected items
+  private prevSingleSelectionRef: any; // Ref of single selected item
 
   constructor(private _items: Items, private _filters: FiltersProvider) {
     this.id = 'clr-dg-selection' + nbSelection++;
@@ -39,44 +39,85 @@ export class Selection {
 
     this.subscriptions.push(
       this._items.allChanges.subscribe(updatedItems => {
-        if (!this._selectable) {
-          return;
-        }
-        let leftOver: any[] = this.current.slice();
-        let newSingle: any;
+        switch (this.selectionType) {
+          case SelectionType.None: {
+            break;
+          }
 
-        // Calculate the references for each item
-        const trackBy: TrackByFunction<any> = this._items.trackBy;
-        const matched = [];
-        updatedItems.forEach((item, index) => {
-          const ref = trackBy(index, item);
-          // Look in current selected refs array if item is selected, and update actual value
-          if (this.selectedSingle === ref) {
-            newSingle = item;
-          } else if (this.selected.length) {
-            const selectedIndex = this.selected.indexOf(ref);
-            if (selectedIndex > -1) {
-              matched.push(selectedIndex);
-              leftOver[selectedIndex] = item;
+          case SelectionType.Single: {
+            let newSingle: any;
+            const trackBy: TrackByFunction<any> = this._items.trackBy;
+            let selectionUpdated: boolean = false;
+
+            updatedItems.forEach((item, index) => {
+              const ref = trackBy(index, item);
+              // If one of the updated items is the previously selectedSingle, set it as the new one
+              if (this.prevSingleSelectionRef === ref) {
+                newSingle = item;
+                selectionUpdated = true;
+              }
+            });
+
+            // Delete the currentSingle if it doesn't exist anymore if we're using smart datagrids
+            // where we expect all items to be present.
+            // No explicit "delete" is required, since it would still be undefined at this point.
+            // Marking it as selectionUpdated will emit the change when the currentSingle is updated below.
+            if (this._items.smart && !newSingle) {
+              selectionUpdated = true;
             }
-          }
-        });
 
-        // Filter out any unmatched items if we're using smart datagrids where we expect all items to be present
-        if (this._items.smart) {
-          leftOver = leftOver.filter(selected => updatedItems.indexOf(selected) > -1);
+            // TODO: Discussed this with Eudes and this is fine for now.
+            // But we need to figure out a different pattern for the
+            // child triggering the parent change detection problem.
+            // Using setTimeout for now to fix this.
+            setTimeout(() => {
+              if (selectionUpdated) {
+                this.currentSingle = newSingle;
+              }
+            }, 0);
+            break;
+          }
+
+          case SelectionType.Multi: {
+            let leftOver: any[] = this.current.slice();
+            const trackBy: TrackByFunction<any> = this._items.trackBy;
+            let selectionUpdated: boolean = false;
+
+            updatedItems.forEach((item, index) => {
+              const ref = trackBy(index, item);
+              // Look in current selected refs array if item is selected, and update actual value
+              const selectedIndex = this.prevSelectionRefs.indexOf(ref);
+              if (selectedIndex > -1) {
+                leftOver[selectedIndex] = item;
+                selectionUpdated = true;
+              }
+            });
+
+            // Filter out any unmatched items if we're using smart datagrids where we expect all items to be
+            // present
+            if (this._items.smart) {
+              leftOver = leftOver.filter(selected => updatedItems.indexOf(selected) > -1);
+              if (this.current.length !== leftOver.length) {
+                selectionUpdated = true;
+              }
+            }
+
+            // TODO: Discussed this with Eudes and this is fine for now.
+            // But we need to figure out a different pattern for the
+            // child triggering the parent change detection problem.
+            // Using setTimeout for now to fix this.
+            setTimeout(() => {
+              if (selectionUpdated) {
+                this.current = leftOver;
+              }
+            }, 0);
+            break;
+          }
+
+          default: {
+            break;
+          }
         }
-
-        // TODO: Discussed this with Eudes and this is fine for now.
-        // But we need to figure out a different pattern for the
-        // child triggering the parent change detection problem.
-        // Using setTimeout for now to fix this.
-        setTimeout(() => {
-          if (typeof newSingle !== 'undefined') {
-            this.currentSingle = newSingle;
-          }
-          this.current = leftOver;
-        }, 0);
       })
     );
   }
@@ -138,7 +179,7 @@ export class Selection {
     this._currentSingle = value;
     if (this._items.all && this._items.trackBy && value) {
       const lookup = this._items.all.findIndex(maybe => maybe === value);
-      this.selectedSingle = this._items.trackBy(lookup, value);
+      this.prevSingleSelectionRef = this._items.trackBy(lookup, value);
     }
     this.emitChange();
     // Ignore items changes in the same change detection cycle.
@@ -199,7 +240,7 @@ export class Selection {
     if (this._items.trackBy) {
       // Push selected ref onto array
       const lookup = this._items.all.findIndex(maybe => maybe === item);
-      this.selected.push(this._items.trackBy(lookup, item));
+      this.prevSelectionRefs.push(this._items.trackBy(lookup, item));
     }
   }
 
@@ -208,9 +249,9 @@ export class Selection {
    */
   private deselectItem(indexOfItem: number): void {
     this.current.splice(indexOfItem, 1);
-    if (this._items.trackBy && indexOfItem < this.selected.length) {
+    if (this._items.trackBy && indexOfItem < this.prevSelectionRefs.length) {
       // Keep selected refs array in sync
-      this.selected.splice(indexOfItem, 1);
+      this.prevSelectionRefs.splice(indexOfItem, 1);
     }
   }
 
@@ -267,7 +308,7 @@ export class Selection {
          * If at least one item isn't selected, we select every currently displayed item.
          */
     if (this.isAllSelected()) {
-      this._items.displayed.forEach((item, displayIndex) => {
+      this._items.displayed.forEach(item => {
         const currentIndex = this.current.indexOf(item);
         if (currentIndex > -1) {
           this.deselectItem(currentIndex);

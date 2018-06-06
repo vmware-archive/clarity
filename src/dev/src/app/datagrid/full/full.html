@@ -115,7 +115,7 @@
         <clr-dg-column class="lorem-ipsum" *ngIf="loremIpsumColumn">Multi-line text</clr-dg-column>
 
         <clr-dg-placeholder>No users found</clr-dg-placeholder>
-        <clr-dg-row *ngFor="let user of users" [clrDgItem]="user">
+        <clr-dg-row *ngFor="let user of users; trackBy: trackById" [clrDgItem]="user">
             <clr-dg-cell>{{user.id}}</clr-dg-cell>
             <clr-dg-cell>{{user.name}}</clr-dg-cell>
             <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>

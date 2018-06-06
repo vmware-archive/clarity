@@ -118,9 +118,12 @@ export class ClrDatagrid implements AfterContentInit, AfterViewInit, OnDestroy {
   @Input('clrDgSingleSelected')
   set singleSelected(value: any) {
     this.selection.selectionType = SelectionType.Single;
+    // the clrDgSingleSelected is updated in one of two cases:
+    // 1. an explicit value is passed
+    // 2. is being set to null or undefined, where previously it had a value
     if (value) {
       this.selection.currentSingle = value;
-    } else {
+    } else if (this.selection.currentSingle) {
       this.selection.currentSingle = null;
     }
   }

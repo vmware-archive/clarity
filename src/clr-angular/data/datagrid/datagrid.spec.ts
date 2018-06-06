@@ -300,7 +300,7 @@ export default function(): void {
 
       describe('Template API', function() {
         it('sets the currentSingle binding', function() {
-          expect(selection.currentSingle).toBeNull();
+          expect(selection.currentSingle).toBeUndefined();
           context.testComponent.selected = 1;
           context.detectChanges();
           expect(selection.currentSingle).toEqual(1);
@@ -309,8 +309,63 @@ export default function(): void {
           expect(selection.currentSingle).toBeNull();
         });
 
+        it('does not emit a change event for on initialization, before selection', function() {
+          let singleSelectedchangeCount: number = 0;
+          const sub = context.clarityDirective.singleSelectedChanged.subscribe(s => singleSelectedchangeCount++);
+
+          expect(selection.currentSingle).toBeUndefined();
+          expect(singleSelectedchangeCount).toEqual(0);
+
+          sub.unsubscribe();
+        });
+
+        it('it emits a change event when changing the selection', function() {
+          let singleSelectedchangeCount: number = 0;
+          const sub = context.clarityDirective.singleSelectedChanged.subscribe(s => singleSelectedchangeCount++);
+
+          context.testComponent.selected = 1;
+          context.detectChanges();
+          expect(selection.currentSingle).toEqual(1);
+          expect(singleSelectedchangeCount).toEqual(1);
+
+          sub.unsubscribe();
+        });
+
+        it('it does not emit a change event when setting selection to undefined/null if already undefined/null', function() {
+          let singleSelectedchangeCount: number = 0;
+          const sub = context.clarityDirective.singleSelectedChanged.subscribe(s => singleSelectedchangeCount++);
+
+          expect(selection.currentSingle).toBeUndefined();
+          expect(singleSelectedchangeCount).toEqual(0);
+
+          context.testComponent.selected = null;
+          context.detectChanges();
+          expect(selection.currentSingle).toBeUndefined();
+          expect(singleSelectedchangeCount).toEqual(0);
+
+          sub.unsubscribe();
+        });
+
+        it('it does not emit a change event when selecting the same value', function() {
+          let singleSelectedchangeCount: number = 0;
+          const sub = context.clarityDirective.singleSelectedChanged.subscribe(s => singleSelectedchangeCount++);
+
+          context.testComponent.selected = 1;
+          context.detectChanges();
+          expect(selection.currentSingle).toEqual(1);
+          expect(singleSelectedchangeCount).toEqual(1);
+
+          // re-assigning to the same value should not increase the singleSelectedchangeCount
+          context.testComponent.selected = 1;
+          context.detectChanges();
+          expect(selection.currentSingle).toEqual(1);
+          expect(singleSelectedchangeCount).toEqual(1);
+
+          sub.unsubscribe();
+        });
+
         it('offers two way binding on the currentSingle value', function() {
-          expect(selection.currentSingle).toBeNull();
+          expect(selection.currentSingle).toBeUndefined();
           context.testComponent.selected = 1;
           context.detectChanges();
           expect(selection.currentSingle).toEqual(1);

@@ -329,6 +329,19 @@ export default function(): void {
           expect(selectionInstance.isSelected(items[5])).toBe(true);
         });
 
+        it(
+          'should clear selection if it is no longer in dataset',
+          fakeAsync(() => {
+            selectionInstance.currentSingle = items[2];
+            pageInstance.current = 2;
+            expect(selectionInstance.isSelected(items[2])).toBe(true);
+
+            itemsInstance.all = cloneItems().splice(2, 1);
+            tick();
+            expect(selectionInstance.currentSingle).toBe(undefined);
+          })
+        );
+
         it('does not apply trackBy to single selection with no items', () => {
           const emptyItems = new Items(filtersInstance, sortInstance, pageInstance);
           const selection: Selection = new Selection(emptyItems, filtersInstance);

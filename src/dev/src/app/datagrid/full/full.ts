@@ -96,4 +96,8 @@ export class DatagridFullDemo {
         this.loading = false;
       });
   }
+
+  trackById(idx, item) {
+    return item.id;
+  }
 }

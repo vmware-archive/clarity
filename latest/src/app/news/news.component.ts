@@ -12,7 +12,7 @@ import {NavigationEnd, Router} from "@angular/router";
 import {BreakingChange} from "./counters/breaking-change.directive";
 import {BugFix} from "./counters/bug-fix.directive";
 import {NewComponent} from "./counters/new-component.directive";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 
 const RELEASES = require("../../releases/release-list.json");
 

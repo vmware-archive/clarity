@@ -5,7 +5,7 @@
 import {Directive, OnDestroy, OnInit, PLATFORM_ID, Inject} from "@angular/core";
 import {isPlatformBrowser} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 
 @Directive({
   selector: "[hash-listener]",

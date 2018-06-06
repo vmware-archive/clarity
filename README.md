@@ -14,3 +14,4 @@
 * Add new set of routes to `latest/src/sitemap.xml` for new version
 * Copy the `v0.10/src/sitemap.xml` to `[new]/src/sitemap.xml`
 * Do a search and replace for `../../../` -> `./` inside of `[new]/src/app/documentation` html files for fixing routes
+* Update the HomeComponent where there are several routes to versioned documentation links

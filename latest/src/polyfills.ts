@@ -24,9 +24,6 @@ import 'classlist.js';
 
 //require('smoothscroll-polyfill').polyfill();
 
-import "intl";
-import "intl/locale-data/jsonp/en";
-
 import "zone.js/dist/zone";
 import "reflect-metadata";
 

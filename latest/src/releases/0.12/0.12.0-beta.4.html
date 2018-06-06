@@ -1,0 +1,48 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMWare, Inc. All Rights Reserved.
+  ~ This software is released under MIT License.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6 breaking-change>Angular 6 support</h6>
+        <p>
+            Clarity has updated to run with Angular 6 and Rxjs 6 without the need for the rxjs-compat layer. The 0.12 release is only
+            certified to work with Angular 6 and above.
+        </p>
+        <h6>Support for Angular CLI <code class="clr-code">ng add</code></h6>
+        <p>
+            Clarity can now be installed using Angular CLI v6+ by simply running the following:
+            <code class="clr-code">ng add @clr/angular@next</code>. The
+            <code class="clr-code">@next</code> tag is necessary only while Clarity 0.12 is in prerelease, afterwards it won't be necessary. You can use this
+            with any Angular CLI project, even if you've already started to work on it.
+        </p>
+        <h6>Redesigned Forms</h6>
+        <p>Forms have been redesigned for better usability and developer experience. Currently they are only fully supported
+            in @clr/ui, but new Angular components will be arriving during 0.12 for important form controls like inputs,
+            passwords, and selects.</p>
+        <h6>New Spinner Button</h6>
+        <p>A new type of button is now available, that allows you to set the button to a spinner while an asyncrhonous event
+            occurs (such as saving or loading). You can read more about the details here
+            <a href="https://github.com/vmware/clarity/issues/1488">1488</a> and documentation will be available by 0.12 release.
+        </p>
+    </li>
+</ul>
+
+<h2>Deprecations</h2>
+<p>
+    To move forward, this release comes with a number of deprecations that will be removed in future versions of Clarity. You
+    should not use these features in new development, and plan for rewriting where necessary.
+</p>
+<ul>
+    <li>
+        <b>Code Highlight</b> will be removed, so if you happen to use it you may copy our implementation into your codebase
+        or find an alternative that suits your needs.</li>
+    <li>
+        <b>Wizard Ghost Pages</b> will be removed, which this is an undocumented feature that we're removing.</li>
+</ul>
+
+<p>We also revamped our internal build tooling to better align with Angular's tools. Some of the early betas were published
+    just to test functionality, and this was the first real beta.</p>

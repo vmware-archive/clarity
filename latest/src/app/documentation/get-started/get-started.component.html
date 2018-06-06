@@ -10,13 +10,24 @@
         industry.
     </p>
     <h2 id="howToUse">How to Use Clarity</h2>
-    <p>We offer three approaches for utilizing Clarity: UX, UX and UI, and Angular.</p>
+    <p>We offer three approaches for utilizing Clarity: just the UX guidelines, UX guidelines and our HTML/CSS framework, or put everything together with our Angular implementation.</p>
     <h3 id="designResources">Using Clarity Design Resources</h3>
     <p>Jumpstart your project with one of our Sketch-based design resources. Start by downloading the
         <a href="https://github.com/chrismsimpson/Metropolis" target="_blank">
             Metropolis fonts
         </a>. Then download your resource of choice.
     </p>
+    <div class="alert alert-warning">
+        <div class="alert-items">
+            <div class="alert-item static">
+                <div class="alert-icon-wrapper">
+                    <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                </div>
+                <span class="alert-text">We are working to update our Sketch Library for 0.12, until then the 0.11 versions should be used.</span>
+            </div>
+        </div>
+    </div>
+    <p></p>
     <div>
         <a href="assets/images/sketchLibraries/Clarity-UI-Library-0.11.6.sketch" target="_blank"
            class="btn btn-primary">
@@ -39,8 +50,39 @@
         </a>
     </div>
 
-    <h3 id="seedProjectClarity">Starting With a Clarity Seed Project (Recommended)</h3>
-    <p>For a new project, the best approach is to clone the Clarity seed project and modify it to fit your needs. The
+    <h3 id="angularCLI">Installing with the Angular CLI (Recommended)</h3>
+    <p>For any Angular application, which uses the CLI v6 or greater, we recommend using the <code class="clr-code">ng add</code> feature of the CLI to install Clarity for you. This works regardless if you have a brand new application, or one that you've been working on for some time, just as long as you have Angular 6 setup.</p>
+    <div class="alert alert-info">
+        <div class="alert-items">
+            <div class="alert-item static">
+                <div class="alert-icon-wrapper">
+                    <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                </div>
+                <span class="alert-text">We highly recommend that all Angular projects use the CLI, because we'll also work on supporting migration features which will make it easier to keep Clarity and Angular up to date.</span>
+            </div>
+        </div>
+    </div>
+    <p></p>
+    <ol class="list">
+        <li>Generate a new Angular application (if you haven't already):
+            <clr-code-snippet
+                    [clrCode]="'ng new my-app'"
+                    [clrDisablePrism]="true"></clr-code-snippet>
+        </li>
+        <li>Navigate to the directory:
+            <clr-code-snippet
+                    [clrCode]="'cd my-app'"
+                    [clrDisablePrism]="true"></clr-code-snippet>
+        </li>
+        <li>Run the ng add command for Clarity:
+            <clr-code-snippet
+                    [clrCode]="'ng add @clr/angular@next'"
+                    [clrDisablePrism]="true"></clr-code-snippet>
+        </li>
+    </ol>
+
+    <h3 id="seedProjectClarity">Starting With a Clarity Seed Project</h3>
+    <p>For a new project, another approach is to clone the Clarity seed project and modify it to fit your needs. The
         seed project is integrated with @clr/ui and @clr/angular, so you don’t need to install Clarity
         separately.
     </p>
@@ -62,7 +104,8 @@
                     [clrDisablePrism]="true"></clr-code-snippet>
         </li>
     </ol>
-    <h3 id="seedProjectAngular">Using an Angular Seed Project</h3>
+    
+    <h3 id="seedProjectAngular">Manually adding Clarity to an Angular project</h3>
     <p>You can build an Angular app, then install Clarity onto your project.</p>
     <h4 id="step-1-build-an-angular-2-app">Step 1: Build an Angular App</h4>
     <p></p>
@@ -81,8 +124,8 @@
             </ul>
         </li>
     </ol>
-    <h4 id="installing">Step 2: Install Clarity</h4>
-    <p>Clarity is published as three separate packages on NPM:</p>
+    <h4 id="installing">Step 2: Install Clarity packages</h4>
+    <p>Clarity is published as three separate packages on NPM, as well as one dependency.</p>
     <p>
         <a id="clarity_icons"></a>
     </p>
@@ -90,66 +133,35 @@
         <li><b>@clr/icons.</b> The library that provides the custom element icons.</li>
         <li><b>@clr/ui.</b> Contains the static styles for building HTML components.</li>
         <li><b>@clr/angular.</b> Contains the Angular components. This package depends on @clr/ui for styles.
-        </li>
+        <li><b>@webcomponents/custom-elements.</b> A polyfill for webcomponents for older browsers, which Clarity depends upon.</li>
     </ul>
-    <h5 id="step-2a-install-clarity-icons">Step 2a: Install Clarity Icons</h5>
-    <p></p>
-    <ol class="list">
-        <li>Install the Clarity Icons library through npm:
-            <clr-code-snippet
-                    [clrCode]="'npm install @clr/icons --save'"
-                    [clrDisablePrism]="true"></clr-code-snippet>
-        </li>
-        <li>Install the polyfill for Custom Elements:
-            <clr-code-snippet
-                    [clrCode]="'npm install @webcomponents/custom-elements@1.0.0 --save'"
-                    [clrDisablePrism]="true"></clr-code-snippet>
-        </li>
-        <li>
-            Load the library in your app by including <code class="clr-code">clr-icons.min.css</code> and <code
-                class="clr-code">clr-icons.min.js</code>.
-            Also, make sure to include <code class="clr-code">custom-elements.min.js</code>, the Custom Elements
-            polyfill before <code class="clr-code">clr-icons.min.js</code>:
-            <clr-code-snippet [clrCode]="iconsImportsExample"></clr-code-snippet>
 
-            <p>
-                Visit the <a routerLink="/icons">Clarity Icons</a> section for more installation information.
-            </p>
-        </li>
-    </ol>
-    <h5 id="step-2b-install-clarity-ui">Step 2b: Install Clarity UI</h5>
-    <p></p>
-    <ol class="list">
-        <li>Install Clarity UI package through npm:
-            <clr-code-snippet
-                    [clrCode]="'npm install @clr/ui --save'"
+    <p>Install them all by running the following command with NPM.</p>
+    <p><clr-code-snippet
+                    [clrCode]="'npm install @clr/icons @clr/angular @clr/ui @webcomponents/custom-elements@1.0.0 --save'"
                     [clrDisablePrism]="true"></clr-code-snippet>
-        </li>
-        <li>
-            Include clr-ui.min.css in your HTML file:
-            <clr-code-snippet [clrCode]="uiHTMLImport"></clr-code-snippet>
-            If your site is built with <a href="https://github.com/angular/angular-cli">angular-cli</a> you can achieve
-            the above by adding the file to the styles array in <code class="clr-code">angular-cli.json</code>:
-            <clr-code-snippet [clrCode]="uiNodeImports" [clrDisablePrism]="true"></clr-code-snippet>
-        </li>
-        <li>Write your HTML with the Clarity CSS class names and markup.</li>
-    </ol>
-    <h5 id="step-2c-install-clarity-angular">Step 2c: Install Clarity Angular</h5>
+    </p>
+
+    <h5 id="step-3-scripts-styles">Step 3: Adding scripts and styles</h5>
+    <p>If you are using the Angular CLI, you need to add the <code class="clr-code">angular.json</code> file.</p>
+    <p>Find the <code class="clr-code">scripts</code> and <code class="clr-code">styles</code> arrays and add the following:
+        <clr-code-snippet
+                [clrCode]="nodeImports"
+                [clrDisablePrism]="true"></clr-code-snippet></p>
     <p></p>
-    <ol class="list">
-        <li>If you haven't already, complete steps 1 and 2 for installing Clarity UI in the preceding section.
-        </li>
-        <li>Install the @clr/angular package through npm:
-            <clr-code-snippet
-                    [clrCode]="'npm install @clr/angular --save'"
-                    [clrDisablePrism]="true"></clr-code-snippet>
-        </li>
-        <li>Import the ClarityModule into your Angular application's module. Your application's main module might look
+    <p>If you are not using the CLI, you'll need to add the files listed above to your build tooling or you could also put them in the head of the index.html file like:
+    <clr-code-snippet
+                [clrCode]="htmlImports"
+                [clrDisablePrism]="true"></clr-code-snippet></p>
+    <p></p>
+a
+    <h5 id="step-4-install-clarity-angular">Step 4: Add Clarity to Angular application</h5>
+    <p>Import the ClarityModule into your Angular application's module. Some features also depend upon the <code class="clr-code">BrowserAnimationsModule</code>, so you should add it as well. Your application's main module might look
             like this:
             <clr-code-snippet [clrCode]="ngModuleExample" [clrLanguage]="'typescript'"></clr-code-snippet>
-        </li>
-    </ol>
-    <h4 id="step-3-run-your-app">Step 3: Run Your App</h4>
+    </p>
+    
+    <h4 id="step-5-run-your-app">Step 5: Run Your App</h4>
     <clr-code-snippet
             [clrCode]="'npm start'"
             [clrDisablePrism]="true"></clr-code-snippet>
@@ -179,10 +191,10 @@
     Stackblitz projects. Since it depends on your issue starting with the correct Clarity version and
     theme will help us deliver support:
     <ul class="list-unstyled">
-        <li><a href="https://stackblitz.com/edit/clarity-dark-theme-v11" target="_blank">Clarity v11: Dark Theme</a></li>
+        <li><a href="https://stackblitz.com/edit/clarity-light-theme-v012" target="_blank">Clarity v11: Light Theme</a></li>
+        <li><a href="https://stackblitz.com/edit/clarity-dark-theme-v012" target="_blank">Clarity v11: Dark Theme</a></li>
         <li><a href="https://stackblitz.com/edit/clarity-light-theme-v11" target="_blank">Clarity v11: Light Theme</a></li>
-        <li><a href="https://stackblitz.com/edit/clarity-dark-theme-v10" target="_blank">Clarity v10: Dark Theme</a></li>
-        <li><a href="https://stackblitz.com/edit/clarity-light-theme-v10" target="_blank">Clarity v10: Light Theme</a></li>
+        <li><a href="https://stackblitz.com/edit/clarity-dark-theme-v11" target="_blank">Clarity v11: Dark Theme</a></li>
     </ul>
 
     <h2 id="stackoverflow">StackOverflow</h2>

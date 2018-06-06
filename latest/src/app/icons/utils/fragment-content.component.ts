@@ -4,9 +4,9 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ActiveFragmentService } from "./active-fragment.service";
-import { Subscription } from "rxjs/Subscription";
+import { Subscription } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
-import "rxjs/add/operator/distinctUntilChanged";
+import {distinctUntilChanged} from "rxjs/operators";
 
 //noinspection TypeScriptCheckImport
 import jump from 'jump.js'
@@ -50,7 +50,7 @@ export class FragmentContentComponent implements AfterViewInit, OnDestroy {
         this.fragmentScrollHandler();
 
         let scrollSpySubscription = this._activeFragmentService.activeFragment
-            .distinctUntilChanged()
+            .pipe(distinctUntilChanged())
             .subscribe((fragment) => {
 
                 if (fragment) {

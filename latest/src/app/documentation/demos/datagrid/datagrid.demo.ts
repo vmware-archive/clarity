@@ -6,7 +6,7 @@
 import {Component, OnDestroy, OnInit, ViewChild} from "@angular/core";
 import {ClarityDocComponent} from "../clarity-doc";
 import {ActivatedRoute, NavigationEnd, Route, Router} from "@angular/router";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 import { environment } from "../../../../environments/environment";
 
 @Component({

@@ -6,8 +6,7 @@
 import {Component} from "@angular/core";
 import {User} from "../inventory/user";
 import {COLORS} from "../inventory/values";
-import {Observable} from "rxjs/Observable";
-import {Subject} from "rxjs/Subject";
+import {Observable, Subject} from "rxjs";
 
 @Component({
     selector: "clr-datagrid-color-filter-demo",

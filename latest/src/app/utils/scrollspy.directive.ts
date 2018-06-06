@@ -4,7 +4,7 @@
 
 import {Directive, Input, OnDestroy, OnInit, ContentChildren, QueryList, Renderer, ElementRef} from "@angular/core";
 import {RouterLinkWithHref} from "@angular/router";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 
 @Directive({
     selector: "[scrollspy]",

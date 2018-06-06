@@ -2,7 +2,7 @@ import { Component, Inject, PLATFORM_ID } from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import { Location, isPlatformBrowser } from "@angular/common";
 import { ActivatedRoute, Router, NavigationEnd, UrlSegment } from "@angular/router";
-import { Subscription } from "rxjs/Subscription";
+import { Subscription } from "rxjs";
 import {environment} from "../../../environments/environment";
 
 interface Version {

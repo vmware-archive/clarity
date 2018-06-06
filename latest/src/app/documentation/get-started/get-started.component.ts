@@ -3,57 +3,41 @@ import {Component} from "@angular/core";
 const NG_MODULE_EXAMPLE = `
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAminationsModule } from "@angular/platform-browser/animations";
 import { ClarityModule } from "@clr/angular";
 import { AppComponent } from "./app.component";
 
 @NgModule({
     imports: [
         BrowserModule,
+        BrwoserAnimationsModule,
         ClarityModule,
         ...
      ],
      declarations: [ AppComponent ],
      bootstrap: [ AppComponent ]
 })
-export class AppModule {    }
+export class AppModule { }
 `;
 
-const ICONS_IMPORTS = `
+const HTML_IMPORTS = `
+<link rel="stylesheet" href="path/to/node_modules/@clr/ui/clr-ui.min.css">
 <link rel="stylesheet" href="path/to/node_modules/@clr/icons/clr-icons.min.css">
 <script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
 <script src="path/to/node_modules/@clr/icons/clr-icons.min.js"></script>
 `;
 
-const ICONS_NODE_IMPORTS = `
+const NODE_IMPORTS = `
 "styles": [
-      ...
       "../node_modules/@clr/icons/clr-icons.min.css",
-      ...
+      "../node_modules/@clr/ui/clr-ui.min.css",
+      ... any other styles
 ],
 "scripts": [
-  ...
-  "../node_modules/mutationobserver-shim/dist/mutationobserver.min.js",
+  ... any existing scripts
   "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
   "../node_modules/@clr/icons/clr-icons.min.js"
-  ...
 ]
-`;
-
-const ICONS_TS_IMPORTS = `
-import '@clr/icons';
-import '@clr/icons/shapes/essential-shapes';
-`;
-
-const UI_HTML_IMPORT = `
-<link rel="stylesheet" href="path/to/node_modules/@clr/ui/clr-ui.min.css">
-`;
-
-const UI_NODE_IMPORTS = `
-"styles": [
-      ...
-      "../node_modules/@clr/ui/clr-ui.min.css",
-      ...
-  ]
 `;
 
 @Component({
@@ -69,9 +53,6 @@ export class GetStartedComponent {
     }
 
     public ngModuleExample = NG_MODULE_EXAMPLE;
-    public iconsImportsExample = ICONS_IMPORTS;
-    public iconsNodeImports = ICONS_NODE_IMPORTS;
-    public iconsTSImports = ICONS_TS_IMPORTS;
-    public uiHTMLImport = UI_HTML_IMPORT;
-    public uiNodeImports = UI_NODE_IMPORTS;
+    public htmlImports = HTML_IMPORTS;
+    public nodeImports = NODE_IMPORTS;
 }

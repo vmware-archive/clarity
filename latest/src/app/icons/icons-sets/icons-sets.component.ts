@@ -7,8 +7,8 @@ import { ActiveFragmentService } from "../utils/active-fragment.service";
 import { IconsInventory } from "./icons-inventory";
 import { FragmentContentComponent } from "../utils/fragment-content.component";
 import { style, state, animate, transition, trigger } from "@angular/animations";
-import { Subscription } from "rxjs/Subscription";
-import 'rxjs/add/operator/debounceTime';
+import { Subscription } from "rxjs";
+import {debounceTime} from 'rxjs/operators';
 import jump from "jump.js";
 
 import { COMMON_PATH } from "../icons.component";
@@ -68,7 +68,7 @@ export class IconsSetsComponent implements AfterViewInit, OnDestroy {
 
         // jump to the very first fragment on search results
         this.subscriptions.push(this._iconsViewService.searchValue
-            .debounceTime(200)
+            .pipe(debounceTime(200))
             .subscribe((searchedValue: string) => {
 
                 let firstFragRef = this.fragmentContentElRef.first;
@@ -157,7 +157,7 @@ export class IconsSetsComponent implements AfterViewInit, OnDestroy {
     filterIconsOnSearch() {
 
         this.subscriptions.push(this._iconsViewService.searchValue
-            .debounceTime(200)
+            .pipe(debounceTime(200))
             .subscribe((searchedValue: string) => {
 
                 // if icon detail box is open, close it when searching starts
@@ -194,7 +194,7 @@ export class IconsSetsComponent implements AfterViewInit, OnDestroy {
         // send GA searched icons
         // debounceTime is 1 second
         this.subscriptions.push(this._iconsViewService.searchValue
-            .debounceTime(1000)
+            .pipe(debounceTime(1000))
             .subscribe(() => {
 
                 if (window["trackIconSearch"] && this.searchedValue) {

@@ -9,13 +9,13 @@ import {
     PLATFORM_ID
 } from "@angular/core";
 import { isPlatformBrowser, isPlatformServer } from "@angular/common";
-import { Subscription } from "rxjs/Subscription";
+import { Subscription } from "rxjs";
 import { ActiveFragmentService } from "./utils/active-fragment.service";
 import { Router, NavigationEnd } from "@angular/router";
 import { EssentialShapes } from "@clr/icons/shapes/essential-shapes";
 import { style, state, animate, transition, trigger } from "@angular/animations";
 import { IconsViewService } from "./icons-view.service";
-import { filter } from "rxjs/operators/filter";
+import { filter } from "rxjs/operators";
 
 let essentialShapesNames = Object.keys(EssentialShapes);
 let blinkEssentialShapes = essentialShapesNames;

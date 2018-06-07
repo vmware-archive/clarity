@@ -9,6 +9,7 @@
 * Copy `v0.10/src/app/app.component.html` to `[new]/src/app/app.component.html`
 * Copy `v0.10/src/app/app.component.ts` to `[new]/src/app/app.component.ts`
 * Copy `v0.10/src/app/documentation/documentation-nav-links.component.ts` to `[new]/src/app/documentation/documentation-nav-links.component.ts`
+* Copy `v0.10/src/app/documentation/documentation.component.html` to `[new]/src/app/documentation/documentation.component.html`
 * Remove the redirect route from `[new]/src/app/documentation/documentation-routing.module.ts`
 * Update `.travis.yml` to build all versions
 * Add new set of routes to `latest/src/sitemap.xml` for new version

@@ -27,6 +27,7 @@ export class ClrDraggableStateRegistrar<T> {
         delete this.draggableEl;
         delete this.draggableElClientRect;
         delete this.draggableElComputedStyle;
+        delete this.stateEvent;
     }
     get hasDraggableState() {
         return !!this.draggableEl;

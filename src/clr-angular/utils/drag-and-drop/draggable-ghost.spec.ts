@@ -90,9 +90,8 @@ export default function(): void {
             });
 
             it("should appear aligned with draggable if draggable state is registered", function() {
-                this.draggableStateRegistrar.register(mockDraggable);
-
                 const mockDragMoveEvent = {dragPosition: {pageX: 120, pageY: 60}};
+                this.draggableStateRegistrar.register(mockDraggable, mockDragMoveEvent);
                 this.dragEventListener.dragMoved.next(mockDragMoveEvent);
 
                 expect(this.ghostElement.style.left).toBe(`${this.draggableStateRegistrar.clientRect.left}px`);
@@ -101,9 +100,9 @@ export default function(): void {
 
             it("should be dragged from its first drag position on the draggable if draggable state is registered",
                function() {
-                   this.draggableStateRegistrar.register(mockDraggable);
-
                    const mockDragMoveEvent1 = {dragPosition: {pageX: 120, pageY: 60}};
+                   this.draggableStateRegistrar.register(mockDraggable, mockDragMoveEvent1);
+
                    const initDeltaX =
                        mockDragMoveEvent1.dragPosition.pageX - this.draggableStateRegistrar.clientRect.left;
                    const initDeltaY =

@@ -4,11 +4,18 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
+import {ClrDragEventType} from "../interfaces/drag-event";
+
 import {ClrDraggableStateRegistrar} from "./draggable-state-registrar";
 
 export default function(): void {
     describe("Draggable State Registrar", function() {
         const mockDraggable = document.createElement("div");
+        const mockDragMoveEvent = {
+            dragPosition: {pageX: 11, pageY: 22},
+            draggableElement: mockDraggable,
+            type: ClrDragEventType.DRAG_START
+        };
         document.body.appendChild(mockDraggable);
 
         mockDraggable.style.position = "absolute";
@@ -24,10 +31,11 @@ export default function(): void {
 
         it("registers element and sets clientRect and computedStyle", function() {
             expect(draggableStateRegistrar.hasDraggableState).toBeFalsy();
-            draggableStateRegistrar.register(mockDraggable);
+            draggableStateRegistrar.register(mockDraggable, mockDragMoveEvent);
             expect(draggableStateRegistrar.hasDraggableState).toBeTruthy();
             expect(draggableStateRegistrar.clientRect).toEqual(domAdapter.clientRect(mockDraggable));
             expect(draggableStateRegistrar.computedStyle).toEqual(getComputedStyle(mockDraggable));
+            expect(draggableStateRegistrar.event).toEqual(mockDragMoveEvent);
         });
 
         it("unregisters element and deletes clientRect and computedStyle", function() {
@@ -36,6 +44,7 @@ export default function(): void {
             expect(draggableStateRegistrar.hasDraggableState).toBeFalsy();
             expect(draggableStateRegistrar.clientRect).toBeUndefined();
             expect(draggableStateRegistrar.computedStyle).toBeUndefined();
+            expect(draggableStateRegistrar.event).toBeUndefined();
         });
     });
 }

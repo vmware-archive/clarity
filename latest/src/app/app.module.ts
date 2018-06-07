@@ -4,7 +4,7 @@ import {NgModule} from "@angular/core";
 import {ClarityModule} from "@clr/angular";
 
 import {AppRoutingModule} from "./app-routing.module";
-import {AppComponent, PLATFORM_TOKEN} from "./app.component";
+import {AppComponent} from "./app.component";
 import {HomeComponent} from "./home/home.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
@@ -24,8 +24,7 @@ import {DocumentationModule} from "./documentation/documentation.module";
         AppRoutingModule
     ],
     providers: [
-        Title, 
-        { provide: PLATFORM_TOKEN, useValue: "Client" }
+        Title,
     ],
     bootstrap: [AppComponent]
 })

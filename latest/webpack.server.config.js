@@ -10,6 +10,7 @@ module.exports = {
     // This is an example of Static prerendering (generative)
     prerender: './prerender.ts'
   },
+  mode: 'none',
   target: 'node',
   resolve: { extensions: ['.js', '.ts'] },
   // Make sure we include all node_modules etc

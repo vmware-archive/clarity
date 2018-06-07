@@ -7,8 +7,8 @@
                 working together to craft exceptional experiences
             </p>
             <div class="home-hero-btn">
-                <a routerLink="/documentation/v0.12/get-started" class="btn btn-primary">Get Started</a>
-                <a routerLink="/documentation/v0.12" class="btn btn-secondary btn-outline">Documentation</a>
+                <a [routerLink]="['/documentation', environment.default, 'get-started']" class="btn btn-primary">Get Started</a>
+                <a [routerLink]="['/documentation', environment.default]" class="btn btn-secondary btn-outline">Documentation</a>
             </div>
             <p class="subtext">
                 View the <a href="https://github.com/vmware/clarity" target="_blank">source</a> on GitHub
@@ -28,7 +28,7 @@
                     <h3 class="home-card-title">Sketch Template</h3>
                     <p>
                         Jumpstart your project using our
-                        <a routerLink="/documentation/v0.12/get-started" fragment="designResources">Sketch template</a>
+                        <a [routerLink]="['/documentation', environment.default, 'get-started']" fragment="designResources">Sketch template</a>
                         with ready-to-use components.
                     </p>
                 </div>

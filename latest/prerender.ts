@@ -36,7 +36,7 @@ const argv = minimist(process.argv.slice(2), {
 const {
   AppServerModuleNgFactory,
   LAZY_MODULE_MAP
-} = require("./dist/server/main.bundle");
+} = require("./dist/server/main");
 
 // Path is relative to dist/ directory where it runs
 const BROWSER_FOLDER = join(process.cwd(), "browser");
@@ -46,7 +46,7 @@ const SRC_FOLDER = join(process.cwd(), '../', 'src');
 // Load the index.html file containing referances to your application bundle.
 const index = readFileSync(join("browser", "index.html"), "utf8");
 // Load the sitemap to know the list of urls to render
-const sitemapFile = readFileSync(join(process.cwd(), "server", "sitemap.xml"), {encoding: 'utf8'});
+const sitemapFile = readFileSync(join(process.cwd(), "browser", "sitemap.xml"), {encoding: 'utf8'});
 const sitemap = converter.xml2js(sitemapFile, {compact: true});
 
 // Build an array of routes and paths, only render the current version docs

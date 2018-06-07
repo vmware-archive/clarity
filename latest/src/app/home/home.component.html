@@ -6,9 +6,13 @@
                 UX guidelines, HTML/CSS framework, and Angular components
                 working together to craft exceptional experiences
             </p>
-            <div class="home-hero-btn">
-                <a [routerLink]="['/documentation', environment.default, 'get-started']" class="btn btn-primary">Get Started</a>
-                <a [routerLink]="['/documentation', environment.default]" class="btn btn-secondary btn-outline">Documentation</a>
+            <div class="home-hero-btn" *ngIf="environment.default === environment.version">
+                <a routerLink="get-started" class="btn btn-primary">Get Started</a>
+                <a routerLink="documentation" class="btn btn-secondary btn-outline">Documentation</a>
+            </div>
+            <div class="home-hero-btn" *ngIf="environment.default !== environment.version">
+                <a href="documentation/{{environment.default}}/get-started/" class="btn btn-primary">Get Started</a>
+                <a href="documentation/{{environment.default}}/" class="btn btn-secondary btn-outline">Documentation</a>
             </div>
             <p class="subtext">
                 View the <a href="https://github.com/vmware/clarity" target="_blank">source</a> on GitHub
@@ -28,7 +32,8 @@
                     <h3 class="home-card-title">Sketch Template</h3>
                     <p>
                         Jumpstart your project using our
-                        <a [routerLink]="['/documentation', environment.default, 'get-started']" fragment="designResources">Sketch template</a>
+                        <a *ngIf="environment.default === environment.version" routerLink="get-started" fragment="designResources">Sketch template</a>
+                        <a *ngIf="environment.default !== environment.version" href="documentation/{{environment.default}}/get-started/" fragment="designResources">Sketch template</a>
                         with ready-to-use components.
                     </p>
                 </div>

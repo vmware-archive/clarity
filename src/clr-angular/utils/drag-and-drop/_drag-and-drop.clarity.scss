@@ -9,6 +9,7 @@
         pointer-events: none;
         will-change: left, top;
         opacity: 0.6;
+        transform: translate3d(0px, 0px, 0);
         &.dragged {
             display: block;
         }

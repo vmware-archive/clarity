@@ -55,11 +55,6 @@ export class ClrDraggableGhost<T> implements OnDestroy {
     private setupDraggableGhost(event: ClrDragEvent<T>) {
         this.initPosition = {pageX: event.dragPosition.pageX, pageY: event.dragPosition.pageY};
 
-        this.renderer.setStyle(this.draggableGhostEl, "left", `${this.initPosition.pageX}px`);
-        this.renderer.setStyle(this.draggableGhostEl, "top", `${this.initPosition.pageY}px`);
-
-        this.renderer.setStyle(this.draggableGhostEl, "visibility", "visible");
-
         if (this.draggableStateRegistrar.hasDraggableState) {
             this.alignWithDraggable();
             const draggableClientRectLeft = this.draggableStateRegistrar.clientRect.left;
@@ -108,6 +103,8 @@ export class ClrDraggableGhost<T> implements OnDestroy {
 
         this.renderer.setStyle(this.draggableGhostEl, "left", `${this.dragPosition.pageX}px`);
         this.renderer.setStyle(this.draggableGhostEl, "top", `${this.dragPosition.pageY}px`);
+
+        this.renderer.setStyle(this.draggableGhostEl, "visibility", "visible");
     }
 
     ngOnDestroy() {

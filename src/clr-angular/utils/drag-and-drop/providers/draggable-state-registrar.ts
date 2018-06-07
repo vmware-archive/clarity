@@ -5,36 +5,39 @@
  */
 import {Injectable} from "@angular/core";
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
+import {ClrDragEvent} from "../interfaces/drag-event";
 
 
 @Injectable()
-export class ClrDraggableStateRegistrar {
+export class ClrDraggableStateRegistrar<T> {
     constructor(private domAdapter: DomAdapter) {}
 
     private draggableEl: Node;
     private draggableElClientRect: ClientRect;
     private draggableElComputedStyle: CSSStyleDeclaration;
+    private stateEvent: ClrDragEvent<T>;
 
-    public register(el: Node) {
+    public register(el: Node, event: ClrDragEvent<T>) {
         this.draggableEl = el;
         this.draggableElClientRect = this.domAdapter.clientRect(this.draggableEl);
         this.draggableElComputedStyle = getComputedStyle(<HTMLElement>this.draggableEl);
+        this.stateEvent = event;
     }
-
     public unregister() {
         delete this.draggableEl;
         delete this.draggableElClientRect;
         delete this.draggableElComputedStyle;
     }
-
     get hasDraggableState() {
         return !!this.draggableEl;
     }
-
     get clientRect() {
         return this.draggableElClientRect;
     }
     get computedStyle() {
         return this.draggableElComputedStyle;
+    }
+    get event() {
+        return this.stateEvent;
     }
 }

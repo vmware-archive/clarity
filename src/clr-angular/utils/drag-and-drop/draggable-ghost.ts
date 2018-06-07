@@ -35,14 +35,13 @@ export class ClrDraggableGhost<T> implements OnDestroy {
 
     constructor(private el: ElementRef, @Optional() private dragEventListener: ClrDragEventListener<T>,
                 private renderer: Renderer2, private ngZone: NgZone,
-                private draggableStateRegistrar: ClrDraggableStateRegistrar) {
+                private draggableStateRegistrar: ClrDraggableStateRegistrar<T>) {
         if (!this.dragEventListener) {
             throw new Error("The clr-draggable-ghost component can only be used inside of a clrDraggable directive.");
         }
 
         this.draggableGhostEl = this.el.nativeElement;
         this.renderer.addClass(document.body, "in-drag");
-
 
         this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
             if (!this.initPosition) {
@@ -53,16 +52,19 @@ export class ClrDraggableGhost<T> implements OnDestroy {
     }
 
     private setupDraggableGhost(event: ClrDragEvent<T>) {
-        this.initPosition = {pageX: event.dragPosition.pageX, pageY: event.dragPosition.pageY};
-
         if (this.draggableStateRegistrar.hasDraggableState) {
             this.alignWithDraggable();
             const draggableClientRectLeft = this.draggableStateRegistrar.clientRect.left;
             const draggableClientRectTop = this.draggableStateRegistrar.clientRect.top;
+            this.initPosition = {
+                pageX: this.draggableStateRegistrar.event.dragPosition.pageX,
+                pageY: this.draggableStateRegistrar.event.dragPosition.pageY
+            };
             this.initDragDelta.left = this.initPosition.pageX - draggableClientRectLeft;
             this.initDragDelta.top = this.initPosition.pageY - draggableClientRectTop;
             this.animateToOnLeave(`${draggableClientRectTop}px`, `${draggableClientRectLeft}px`);
         } else {
+            this.initPosition = {pageX: event.dragPosition.pageX, pageY: event.dragPosition.pageY};
             this.animateToOnLeave(`${this.initPosition.pageY}px`, `${this.initPosition.pageX}px`);
         }
     }

@@ -39,15 +39,15 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     constructor(private el: ElementRef, private dragEventListener: ClrDragEventListener<T>,
                 private dragHandleRegistrar: ClrDragHandleRegistrar<T>, private viewContainerRef: ViewContainerRef,
                 private cfr: ComponentFactoryResolver, private injector: Injector,
-                private draggableStateRegistrar: ClrDraggableStateRegistrar) {
+                private draggableStateRegistrar: ClrDraggableStateRegistrar<T>) {
         this.draggableEl = this.el.nativeElement;
         this.componentFactory = this.cfr.resolveComponentFactory<ClrDraggableGhost<T>>(ClrDraggableGhost);
     }
 
     @ContentChild(ClrIfDragged) customGhost: ClrDraggableGhost<T>;
 
-    private createDefaultGhost() {
-        this.draggableStateRegistrar.register(this.draggableEl);
+    private createDefaultGhost(event: ClrDragEvent<T>) {
+        this.draggableStateRegistrar.register(this.draggableEl, event);
         this.viewContainerRef.createComponent(this.componentFactory, 0, this.injector,
                                               [[this.draggableEl.cloneNode(true)]]);
     }
@@ -66,7 +66,7 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
 
         this.subscriptions.push(this.dragEventListener.dragStarted.subscribe((event: ClrDragEvent<T>) => {
             if (!this.customGhost) {
-                this.createDefaultGhost();
+                this.createDefaultGhost(event);
             }
             this.dragStartEmitter.emit(event);
         }));

@@ -6,21 +6,21 @@
 import {Component} from "@angular/core";
 
 const EXAMPLE = `
-<div class="row">
-    <div class="col-xs-4 offset-xs-5">
-        <span>.col-xs-4.offset-xs-5</span>
+<div class="clr-row">
+    <div class="clr-col-6">
+        <span>clr-col-7</span>
     </div>
-    <div class="col-xs-3 pull-xs-9">
-        <span>.col-xs-3.pull-xs-9</span>
+    <div class="clr-col-8">
+        <span>clr-col-8</span>
     </div>
 </div>
 `;
 
 @Component({
-    selector: "clr-grid-demo-column-pull",
-    templateUrl: "./grid-column-pull.html",
+    selector: "clr-grid-demo-column-wrapping",
+    templateUrl: "./grid-column-wrapping.html",
     styleUrls: ["./grid.demo.scss"]
 })
-export class GridColumnPullDemo {
+export class GridColumnWrappingDemo {
     example = EXAMPLE;
 }

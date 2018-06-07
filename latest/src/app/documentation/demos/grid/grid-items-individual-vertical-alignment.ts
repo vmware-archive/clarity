@@ -6,14 +6,14 @@
 import {Component} from "@angular/core";
 
 const EXAMPLE = `
-<div class="row">
-    <div class="col-xs flex-xs-top">
+<div class="clr-row">
+    <div class="clr-col clr-align-self-start">
         <span>1/3</span>
     </div>
-    <div class="col-xs flex-xs-middle">
+    <div class="clr-col clr-align-self-center">
         <span>1/3</span>
     </div>
-    <div class="col-xs flex-xs-bottom">
+    <div class="clr-col clr-align-self-end">
         <span>1/3</span>
     </div>
 </div>

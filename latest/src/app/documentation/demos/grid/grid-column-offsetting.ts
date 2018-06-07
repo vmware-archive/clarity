@@ -6,12 +6,12 @@
 import {Component} from "@angular/core";
 
 const EXAMPLE = `
-<div class="row">
-    <div class="col-sm-4">
-        <span>.col-sm-4</span>
+<div class="clr-row">
+    <div class="clr-col-sm-4">
+        <span>clr-col-sm-4</span>
     </div>
-    <div class="col-sm-6 offset-sm-2">
-        <span>.col-sm-6.offset-sm-2</span>
+    <div class="clr-col-sm-6 clr-offset-sm-2">
+        <span>clr-col-sm-6 clr-offset-sm-2</span>
     </div>
 </div>
 `;

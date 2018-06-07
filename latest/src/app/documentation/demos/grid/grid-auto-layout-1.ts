@@ -6,31 +6,31 @@
 import {Component} from "@angular/core";
 
 const EXAMPLE = `
-<div class="row">
-    <div class="col-xs">
+<div class="clr-row">
+    <div class="clr-col">
         <span>1/5</span>
     </div>
-    <div class="col-xs">
+    <div class="clr-col">
         <span>1/5</span>
     </div>
-    <div class="col-xs">
+    <div class="clr-col">
         <span>1/5</span>
     </div>
-    <div class="col-xs">
+    <div class="clr-col">
         <span>1/5</span>
     </div>
-    <div class="col-xs">
+    <div class="clr-col">
         <span>1/5</span>
     </div>
 </div>
-<div class="row">
-    <div class="col-xs">
+<div class="clr-row">
+    <div class="clr-col">
         <span>1/3</span>
     </div>
-    <div class="col-xs">
+    <div class="clr-col">
         <span>1/3</span>
     </div>
-    <div class="col-xs">
+    <div class="clr-col">
         <span>1/3</span>
     </div>
 </div>

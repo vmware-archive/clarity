@@ -6,21 +6,24 @@
 import {Component} from "@angular/core";
 
 const EXAMPLE = `
-<div class="row">
-    <div class="col-md-4 push-md-8">
-        <span>.col-md-4.push-md-8</span>
+<div class="clr-row">
+    <div class="clr-col">
+        <span>1st, Unordered</span>
     </div>
-    <div class="col-md-2">
-        <span>.col-md-2</span>
+    <div class="clr-col clr-order-3">
+        <span>2nd, Order 3</span>
+    </div>
+    <div class="clr-col clr-order-2">
+        <span>3rd, Order 2</span>
     </div>
 </div>
 `;
 
 @Component({
-    selector: "clr-grid-demo-column-push",
-    templateUrl: "./grid-column-push.html",
+    selector: "clr-grid-demo-column-ordering",
+    templateUrl: "./grid-column-ordering.html",
     styleUrls: ["./grid.demo.scss"]
 })
-export class GridColumnPushDemo {
+export class GridColumnOrderingDemo {
     example = EXAMPLE;
 }

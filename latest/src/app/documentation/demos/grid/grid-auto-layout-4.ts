@@ -7,35 +7,28 @@ import {Component} from "@angular/core";
 
 const EXAMPLE1 = `
 <div class="clr-row">
-    <div class="clr-col-4">
-        <span>1/3 (auto)</span>
+    <div class="clr-col">
+        <span>clr-col</span>
     </div>
     <div class="clr-col">
-        <span>Remaining</span>
+        <span>clr-col</span>
     </div>
-</div>
-`;
-
-const EXAMPLE2 = `
-<div class="clr-row">
-    <div class="clr-col">
-        <span>1/4 (auto)</span>
-    </div>
-    <div class="clr-col-6">
-        <span>1/2 (fixed)</span>
+    <div class="clr-break-row">
     </div>
     <div class="clr-col">
-        <span>1/4 (auto)</span>
+        <span>clr-col</span>
+    </div>
+    <div class="clr-col">
+        <span>clr-col</span>
     </div>
 </div>
 `;
 
 @Component({
-    selector: "clr-grid-demo-auto-layout-2",
-    templateUrl: "./grid-auto-layout-2.html",
+    selector: "clr-grid-demo-auto-layout-4",
+    templateUrl: "./grid-auto-layout-4.html",
     styleUrls: ["./grid.demo.scss"]
 })
-export class GridAutoLayout2Demo {
+export class GridAutoLayout4Demo {
     example1 = EXAMPLE1;
-    example2 = EXAMPLE2;
 }

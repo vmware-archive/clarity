@@ -4,31 +4,33 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from "@angular/core";
+import { ClrLoadingState } from '@clr/angular';
 
 const MAIN_TS_EXAMPLE = `
+import { ClrLoadingState } from '@clr/angular';
 
 export class ButtonLoadingDemo {
-  validateLoading: boolean = false;
-  submitLoading: boolean = false;
+  validateBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
+  submitBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
 
   validateDemo() {
-    this.validateLoading = true;
+    this.validateBtnState = ClrLoadingState.LOADING;
     //Validating Logic
-    this.validateLoading = false;
+    this.validateBtnState = ClrLoadingState.SUCCESS;
   }
 
   submitDemo() {
-    this.submitLoading = true;
+    this.submitBtnState = ClrLoadingState.LOADING;
     //Submit Logic
-    this.submitLoading = false;
+    this.submitBtnState = ClrLoadingState.DEFAULT;
   }
 }
     
 `;
 
 const MAIN_HTML_EXAMPLE = `
-<button [clrLoading]="validateLoading" class="btn btn-info-outline" (click)="validateDemo()">Validate</button>
-<button [clrLoading]="submitLoading" type="submit" class="btn btn-success-outline" (click)="submitDemo()">Submit</button>
+<button [clrLoading]="validateBtnState" class="btn btn-info-outline" (click)="validateDemo()">Validate</button>
+<button [clrLoading]="submitBtnState" type="submit" class="btn btn-success-outline" (click)="submitDemo()">Submit</button>
 `;
 
 
@@ -41,16 +43,16 @@ export class ButtonLoadingDemo {
     mainTSExample = MAIN_TS_EXAMPLE;
     mainHTMLExample = MAIN_HTML_EXAMPLE;
 
-    validateLoading: boolean = false;
-    submitLoading: boolean = false;
+    validateBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
+    submitBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
 
     validateDemo() {
-        this.validateLoading = true;
-        setTimeout(() => this.validateLoading = false, 1500);
+        this.validateBtnState = ClrLoadingState.LOADING;
+        setTimeout(() => this.validateBtnState = ClrLoadingState.SUCCESS, 1500);
     }
 
     submitDemo() {
-        this.submitLoading = true;
-        setTimeout(() => this.submitLoading = false, 1500);
+        this.submitBtnState = ClrLoadingState.LOADING;
+        setTimeout(() => this.submitBtnState = ClrLoadingState.DEFAULT, 1500);
     }
 }

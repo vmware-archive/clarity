@@ -6,15 +6,15 @@
 import {Component} from "@angular/core";
 
 const EXAMPLE = `
-<div class="row">
-    <div class="col-sm-12 col-md-6">
-        <span>.col-sm-12 .col-md-6</span>
+<div class="clr-row">
+    <div class="clr-col-sm-12 clr-col-md-6">
+        <span>clr-col-sm-12 clr-col-md-6</span>
     </div>
-    <div class="col-sm-12 col-md-6">
-        <span>.col-sm-12 .col-md-6</span>
+    <div class="clr-col-sm-12 clr-col-md-6">
+        <span>clr-col-sm-12 clr-col-md-6</span>
     </div>
-    <div class="col-sm-12 col-md-12">
-        <span>.col-sm-12 .col-md-12</span>
+    <div class="clr-col-sm-12 clr-col-md-12">
+        <span>clr-col-sm-12 clr-col-md-12</span>
     </div>
 </div>
 `;

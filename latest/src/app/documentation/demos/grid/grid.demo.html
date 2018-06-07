@@ -6,8 +6,20 @@
             create a familiar and easily navigable structure for content.</h5>
 
         <div id="code-examples">
-            <p>Clarity uses the <a href="http://v4-alpha.getbootstrap.com/layout/grid/" target="_blank">Bootstrap
-                4 Flex Grid</a>. This is a 12-column, responsive grid, per the Bootstrap documentation shown below:</p>
+            <p>
+                Clarity imports the 12-column
+                <a href="http://getbootstrap.com/docs/4.1/layout/grid/" target="_blank">
+                    Bootstrap 4 Flex Grid
+                </a>
+                and prefixes the grid classes.
+                Prefixing allows us to avoid conflicting with other grid systems.
+                However, it also means if you are familiar with the grid classes
+                in Bootstrap 4, the Clarity grid will be familiar.
+            </p>
+
+            <p>
+                Important features about the grid are listed below:
+            </p>
 
             <div class="row">
                 <div class="col-xs-12">
@@ -30,19 +42,19 @@
                         </tr>
                         <tr>
                             <td class="left">Container width</td>
-                            <td class="left">&lt;544px</td>
-                            <td class="left">≥544px</td>
+                            <td class="left">&lt;576px</td>
+                            <td class="left">≥576px</td>
                             <td class="left">≥768px</td>
                             <td class="left">≥992px</td>
                             <td class="left">≥1200px</td>
                         </tr>
                         <tr>
                             <td class="left">Class prefix</td>
-                            <td class="left"><code class="clr-code">.col-xs-</code></td>
-                            <td class="left"><code class="clr-code">.col-sm-</code></td>
-                            <td class="left"><code class="clr-code">.col-md-</code></td>
-                            <td class="left"><code class="clr-code">.col-lg-</code></td>
-                            <td class="left"><code class="clr-code">.col-xl-</code></td>
+                            <td class="left"><code class="clr-code">.clr-col-</code></td>
+                            <td class="left"><code class="clr-code">.clr-col-sm-</code></td>
+                            <td class="left"><code class="clr-code">.clr-col-md-</code></td>
+                            <td class="left"><code class="clr-code">.clr-col-lg-</code></td>
+                            <td class="left"><code class="clr-code">.clr-col-xl-</code></td>
                         </tr>
                         <tr>
                             <td class="left">Number of columns</td>
@@ -69,7 +81,7 @@
 
                     <div class="hidden-sm-up">
                         <p>
-                            <b>Grid Behavior</b><br/> Horizontal for extra-small (xs). All other breakpoints
+                            <b>Grid Behavior</b><br/> Horizontal for extra-small. All other breakpoints
                             are collapsed to start, then horizontal above the breakpoint.
                         </p>
 
@@ -86,18 +98,18 @@
                         <table class="table-vertical table">
                             <tr>
                                 <th>
-                                    Extra small<br/> &lt; 544px
+                                    Extra small<br/> &lt; 576px
                                 </th>
                                 <td>
-                                    <code class="clr-code">.col-xs-</code>
+                                    <code class="clr-code">.clr-col-</code>
                                 </td>
                             </tr>
                             <tr>
                                 <th>
-                                    Small<br/> &ge; 544px
+                                    Small<br/> &ge; 576px
                                 </th>
                                 <td>
-                                    <code class="clr-code">.col-sm-</code>
+                                    <code class="clr-code">.clr-col-sm-</code>
                                 </td>
                             </tr>
                             <tr>
@@ -105,7 +117,7 @@
                                     Medium<br/> &ge; 768px
                                 </th>
                                 <td>
-                                    <code class="clr-code">.col-md-</code>
+                                    <code class="clr-code">.clr-col-md-</code>
                                 </td>
                             </tr>
                             <tr>
@@ -113,7 +125,7 @@
                                     Large<br/> &ge; 992px
                                 </th>
                                 <td>
-                                    <code class="clr-code">.col-lg-</code>
+                                    <code class="clr-code">.clr-col-lg-</code>
                                 </td>
                             </tr>
                             <tr>
@@ -121,7 +133,7 @@
                                     Extra large<br/> &ge; 1200px
                                 </th>
                                 <td>
-                                    <code class="clr-code">.col-xl-</code>
+                                    <code class="clr-code">.clr-col-xl-</code>
                                 </td>
                             </tr>
                         </table>
@@ -132,12 +144,11 @@
 
             <h3 id="rows">Rows</h3>
 
-            <p>A <code class="clr-code">.row</code> is a horizontal group of 12 columns. When the number
-                of columns exceeds 12, the extra columns wrap to the next line.</p>
+            <p>A <code class="clr-code">.clr-row</code> is a horizontal group of 12 columns.</p>
 
             <h3 id="columns">Columns</h3>
 
-            <p>The column classes specify the number of columns per row.  The value appended to the class prefix must be
+            <p>The column classes specify the number of columns per row. The value appended to the class prefix must be
                 between 1 and 12.</p>
 
             <clr-grid-demo-columns></clr-grid-demo-columns>
@@ -146,76 +157,112 @@
 
             <p>Grid columns can occupy different widths on different device sizes.</p>
 
-            <p>In the example below, if the device size is ≥ 768px (medium or above), the grid has two columns of equal
+            <p>
+                In the example below, if the device size is ≥ 768px (medium or above), the grid has two columns of equal
                 width and a third column that occupies the entire width of the row.  For device sizes &lt; 768px, each
                 column occupies the entire width of the
-                row and the columns are stacked. Resize your browser to see how this works.</p>
+                row and the columns are stacked. Resize your browser to see how this works.
+            </p>
 
             <clr-grid-demo-column-stacking></clr-grid-demo-column-stacking>
 
-            <h3 id="column-offsets">Column Offsets</h3>
+            <h3 id="column-wrapping">Column Wrapping</h3>
 
-            <p>The <code class="clr-code">&lt;class-prefix&gt;-offset-*</code> classes increase a column’s
-                left margin by the width occupied by <code>*</code> number of columns.</p>
-            <clr-grid-demo-column-offsetting></clr-grid-demo-column-offsetting>
+            <p>
+                Placing more than 12 columns in a single row will wrap the columns exceeding the row,
+                as one unit, onto a new line.
+            </p>
 
-            <h3 id="column-ordering">Column Ordering</h3>
-
-            <p>The <code class="clr-code">push</code> and <code class="clr-code">pull</code> modifiers
-                change the order of columns.</p>
-
-            <h4 id="push">Push</h4>
-
-            <clr-grid-demo-column-push></clr-grid-demo-column-push>
-
-            <h4 id="pull">Pull</h4>
-
-            <clr-grid-demo-column-pull></clr-grid-demo-column-pull>
+            <clr-grid-demo-column-wrapping></clr-grid-demo-column-wrapping>
 
             <h3 id="flexbox-grid-auto-layout">Flexbox Grid Auto Layout</h3>
 
-            <p>Using the <code class="clr-code">.col-&lt;breakpoint&gt;</code> class divides the row into
+            <h6>Equal Width</h6>
+
+            <p>Using the <code class="clr-code">.clr-col-*</code> class divides the row into
                 equal width columns.</p>
 
             <clr-grid-demo-auto-layout-1></clr-grid-demo-auto-layout-1>
 
+            <h6>Setting One Column Width</h6>
+
+            <p>
+                A specific width can be assigned to a column. All the siblings of that columns will
+                automatically resize around it.
+            </p>
+
             <clr-grid-demo-auto-layout-2></clr-grid-demo-auto-layout-2>
+
+            <h6>Variable Width Content</h6>
+
+            <p>
+                Using the <code class="clr-code">.clr-col-*-auto</code> class on a column sizes it based on
+                the width of its content.
+            </p>
+
+            <clr-grid-demo-auto-layout-3></clr-grid-demo-auto-layout-3>
+
+            <h6>Multi Row</h6>
+
+            <p>
+                Using the <code class="clr-code">.clr-break-row</code> class after a column, breaks the following
+                columns to a new line.
+            </p>
+
+            <clr-grid-demo-auto-layout-4></clr-grid-demo-auto-layout-4>
+
+            <h3 id="column-offsets">Column Offsets</h3>
+
+            <p>The responsive <code class="clr-code">clr-offset-*</code> classes increase a column’s
+                left margin by <code class="clr-code">*</code> number of columns.</p>
+            <clr-grid-demo-column-offsetting></clr-grid-demo-column-offsetting>
+
+            <h3 id="column-ordering">Column Ordering</h3>
+
+            <p>The responsive <code class="clr-code">clr-order-*</code> class modifiers
+                change the order of columns where <code class="clr-code">*</code> represents the order.</p>
+
+            <clr-grid-demo-column-ordering></clr-grid-demo-column-ordering>
 
             <h3 id="vertical-alignment-in-rows">Vertical Alignment in Rows</h3>
 
-            <p>Columns within a row can be vertically aligned using the following classes:</p>
+            <p>Columns within a row can be vertically aligned using the following responsive classes:</p>
 
             <ul>
-                <li><code class="clr-code">flex-items-xs-top</code></li>
-                <li><code class="clr-code">flex-items-xs-middle</code></li>
-                <li><code class="clr-code">flex-items-xs-bottom</code></li>
+                <li><code class="clr-code">clr-align-items-*-start</code></li>
+                <li><code class="clr-code">clr-align-items-*-center</code></li>
+                <li><code class="clr-code">clr-align-items-*-end</code></li>
             </ul>
 
             <clr-grid-demo-vertical-alignment></clr-grid-demo-vertical-alignment>
 
-            <p>A column can individually be vertically aligned in a row using the following classes:</p>
+            <p>A column can individually be vertically aligned in a row using the following responsive classes:</p>
 
             <ul>
-                <li><code class="clr-code">flex-xs-top</code></li>
-                <li><code class="clr-code">flex-xs-middle</code></li>
-                <li><code class="clr-code">flex-xs-bottom</code></li>
+                <li><code class="clr-code">clr-align-self-*-start</code></li>
+                <li><code class="clr-code">clr-align-self-*-center</code></li>
+                <li><code class="clr-code">clr-align-self-*-end</code></li>
             </ul>
 
             <clr-grid-demo-individual-vertical-alignment></clr-grid-demo-individual-vertical-alignment>
 
             <h3 id="horizontal-alignment-in-rows">Horizontal Alignment in Rows</h3>
 
-            <p>To align columns horizontally within a row, extend the row with one of the following classes:</p>
+            <p>To align columns horizontally within a row, extend the row with one of the following responsive classes:</p>
 
             <ul>
-                <li><code class="clr-code">flex-items-xs-left</code></li>
-                <li><code class="clr-code">flex-items-xs-center</code></li>
-                <li><code class="clr-code">flex-items-xs-right</code></li>
-                <li><code class="clr-code">flex-items-xs-around</code></li>
-                <li><code class="clr-code">flex-items-xs-between</code></li>
+                <li><code class="clr-code">clr-justify-content-*-start</code></li>
+                <li><code class="clr-code">clr-justify-content-*-center</code></li>
+                <li><code class="clr-code">clr-justify-content-*-end</code></li>
+                <li><code class="clr-code">clr-justify-content-*-around</code></li>
+                <li><code class="clr-code">clr-justify-content-*-between</code></li>
             </ul>
 
             <clr-grid-demo-horizontal-alignment></clr-grid-demo-horizontal-alignment>
+
+            <h3 id="grid-nesting">Grid Nesting</h3>
+
+            <clr-grid-demo-nesting></clr-grid-demo-nesting>
         </div>
 
         <div id="design-guidelines">

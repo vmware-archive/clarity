@@ -6,75 +6,75 @@
 import {Component} from "@angular/core";
 
 const EXAMPLE_1 = `
-<div class="row flex-items-xs-left">
-    <div class="col-xs-4">
-        <span class="clr-example-col-value">
-            .col-xs-4
+<div class="clr-row clr-justify-content-start">
+    <div class="clr-col-4">
+        <span>
+            1/3
         </span>
     </div>
-    <div class="col-xs-4">
-        <span class="clr-example-col-value">
-            .col-xs-4
+    <div class="clr-col-4">
+        <span>
+            1/3
         </span>
     </div>
 </div>
 `;
 
 const EXAMPLE_2 = `
-<div class="row flex-items-xs-center">
-    <div class="col-xs-4">
-        <span class="clr-example-col-value">
-            .col-xs-4
+<div class="clr-row clr-justify-content-center">
+    <div class="clr-col-4">
+        <span>
+            1/3
         </span>
     </div>
-    <div class="col-xs-4">
-        <span class="clr-example-col-value">
-            .col-xs-4
+    <div class="clr-col-4">
+        <span>
+            1/3
         </span>
     </div>
 </div>
 `;
 
 const EXAMPLE_3 = `
-<div class="row flex-items-xs-right">
-    <div class="col-xs-4">
-        <span class="clr-example-col-value">
-            .col-xs-4
+<div class="clr-row clr-justify-content-end">
+    <div class="clr-col-4">
+        <span>
+            1/3
         </span>
     </div>
-    <div class="col-xs-4">
-        <span class="clr-example-col-value">
-            .col-xs-4
+    <div class="clr-col-4">
+        <span>
+            1/3
         </span>
     </div>
 </div>
 `;
 
 const EXAMPLE_4 = `
-<div class="row flex-items-xs-around">
-    <div class="col-xs-4">
-        <span class="clr-example-col-value">
-            .col-xs-4
+<div class="clr-row clr-justify-content-between">
+    <div class="clr-col-4">
+        <span>
+            1/3
         </span>
     </div>
-    <div class="col-xs-4">
-        <span class="clr-example-col-value">
-            .col-xs-4
+    <div class="clr-col-4">
+        <span>
+            1/3
         </span>
     </div>
 </div>
 `;
 
 const EXAMPLE_5 = `
-<div class="row flex-items-xs-between">
-    <div class="col-xs-4">
-        <span class="clr-example-col-value">
-            .col-xs-4
+<div class="clr-row clr-justify-content-around">
+    <div class="clr-col-4">
+        <span>
+            1/3
         </span>
     </div>
-    <div class="col-xs-4">
-        <span class="clr-example-col-value">
-            .col-xs-4
+    <div class="clr-col-4">
+        <span>
+            1/3
         </span>
     </div>
 </div>

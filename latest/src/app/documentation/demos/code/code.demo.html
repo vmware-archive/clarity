@@ -1,5 +1,17 @@
 <clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
     <article>
+        <div class="alert alert-danger">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        Code Highlight is deprecated and will be removed in 0.13. You can copy the implementation into your own application to maintain it yourself, or use a different code highlight module.
+                    </span>
+                </div>
+            </div>
+        </div>
         <h5 class="component-summary"
             id="code-highlight-is-a-custom-directive-to-highlight-code-blocks-using-prismhttpprismjscom"
             target="_blank">Code Highlight

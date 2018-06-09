@@ -16,6 +16,13 @@ sudo: required
 dist: trusty
 group: edge
 
+notifications:
+  email:
+  - wilkenj@vmware.com
+  slack:
+    secure: QpSneUjWu0vm/1o1Y/+Kqaoxz8GfF47lAbe9D8K9HvySvth+DSahGxOPCJQoc2I5Dfjq+v0kH0KbEPu/4KneUCyAM3dMsaKpA45txM2QJf8CmG6mvFR2I2yAVLmRdUt2lTugqG0WUifnWxIpNjrCQMb85t27NVO77ELS11et+KTtMSlbgK2QfxOj25BQX4cXwrOo/5zJ1kHjoomuOcn82XwAhcoUXpLZrGaXT7ye0TNYgKfm7KgMV9u1R9awoyUfnTx8nC43QFVsddayqFHz6ws83jSuxoLfTNQTvBvTKWsLd+9ACCVRpAKW1SE/faSYtGkJAlqSdjHWiiDbYAs33SYUTgwN32uzQzJjs3lbyjfE6k0XiyecdpAxFxqBDXWNjSivORpBVdJVnd/KVgEnvRTdqmRlCF7S+WkeDjUaW64HOVKIO4Et0oriF3v0miWro4t6HZ50qEeD4zyMXWY+IAuGoBoKEANkkKf06Pkgu8j+H1jmnMCYXfCthUZ0Fbq9gtKzjVPgwG0KWMRlhcqUrRQfZtU2+LX8H1NIRW1U2nKcFxJREADvfdbz+8vQBd6DzPXgmrx4AEDNGJ+ZYEIlQp/AdvteNwgj2wToPQTwFI/kD5eq/u5HyXKfMEQRzAFct2AoQZERm8ZFoQigICiruEuWT6viAhx0IcbQ/g7NmgA=
+
+
 services:
   - docker
 
@@ -42,4 +49,4 @@ before_script:
   - npm install -g gemini@5.2.0 html-reporter@2.0.1
 
 script:
-  - npm run $TEST_SUITE # run unit test and css regression test sets in parallel
+  - node scripts/travis

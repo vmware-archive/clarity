@@ -6,7 +6,7 @@
 
 <h2>Text Input</h2>
 
-<form class="clr-form" #form="ngForm" (submit)="submit()">
+<form clrForm #form="ngForm" (submit)="submit()">
   <input clrInput placeholder="Basic text" name="basic" [(ngModel)]="model.basic" />
 
   <clr-input-container>

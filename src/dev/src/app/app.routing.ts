@@ -28,6 +28,7 @@ export const APP_ROUTES: Routes = [
   { path: 'iconography', loadChildren: 'src/app/iconography/iconography.demo.module#IconographyDemoModule' },
   { path: 'images', loadChildren: 'src/app/images/images.demo.module#ImagesDemoModule' },
   { path: 'input-fields', loadChildren: 'src/app/input-fields/input-fields.demo.module#InputFieldsDemoModule' },
+  { path: 'input', loadChildren: 'src/app/input/input.demo.module#InputDemoModule' },
   { path: 'labels', loadChildren: 'src/app/labels/labels.demo.module#LabelsDemoModule' },
   { path: 'layout', loadChildren: 'src/app/layout/layout.demo.module#LayoutDemoModule' },
   { path: 'lists', loadChildren: 'src/app/lists/lists.demo.module#ListsDemoModule' },

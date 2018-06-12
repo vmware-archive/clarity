@@ -5,7 +5,7 @@
 @include exports('forms.input') {
   .clr-input-wrapper {
     white-space: nowrap;
-    height: $clr-forms-baseline * 4;
+    max-height: $clr-forms-baseline * 4;
   }
 
   .clr-input {

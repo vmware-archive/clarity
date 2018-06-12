@@ -12,6 +12,7 @@ import { ClrInputContainer } from '../input/input-container';
 
 import { ClrLabel } from './label';
 import { ControlIdService } from './providers/control-id.service';
+import { Layouts, LayoutService } from './providers/layout.service';
 
 @Component({ template: `<label></label>` })
 class NoForTest {}
@@ -19,8 +20,16 @@ class NoForTest {}
 @Component({ template: `<label for="hello"></label>` })
 class ExplicitForTest {}
 
-@Component({ template: `<clr-input-container><label for="hello"></label></clr-input-container>` })
+@Component({
+  template: `<clr-input-container><label for="hello"></label></clr-input-container>`,
+  providers: [LayoutService],
+})
 class ContainerizedTest {}
+
+@Component({
+  template: `<label for="hello" class="clr-col-xs-12 clr-col-md-3"></label>`,
+})
+class ExistingGridTest {}
 
 export default function(): void {
   describe('ClrLabel', () => {
@@ -63,6 +72,30 @@ export default function(): void {
       controlIdService.id = 'test';
       fixture.detectChanges();
       expect(label.getAttribute('for')).toBe('test');
+    });
+
+    it('adds the grid classes for non-vertical layouts', function() {
+      TestBed.configureTestingModule({
+        imports: [ClrIconModule],
+        declarations: [ClrLabel, ClrInputContainer, ContainerizedTest],
+        providers: [ControlIdService],
+      });
+      const fixture = TestBed.createComponent(ContainerizedTest);
+      const layoutService = fixture.debugElement.injector.get(LayoutService);
+      layoutService.layout = Layouts.HORIZONTAL;
+      fixture.detectChanges();
+      const label = fixture.nativeElement.querySelector('label');
+      expect(label.classList.contains('clr-col-md-2')).toBeTrue();
+      expect(label.classList.contains('clr-col-xs-12')).toBeTrue();
+    });
+
+    it('leaves the grid classes untouched if they exist', function() {
+      TestBed.configureTestingModule({ declarations: [ClrLabel, ExistingGridTest], providers: [ControlIdService] });
+      const fixture = TestBed.createComponent(ExistingGridTest);
+      fixture.detectChanges();
+      const label = fixture.nativeElement.querySelector('label');
+      expect(label.className).not.toContain('clr-col-md-2');
+      expect(label.className).toContain('clr-col-md-3');
     });
 
     it('leaves the for attribute untouched if it exists', function() {

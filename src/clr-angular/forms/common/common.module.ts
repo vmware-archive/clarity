@@ -11,10 +11,12 @@ import { ClrControlError } from './error';
 import { ClrControlHelper } from './helper';
 import { ClrIfError } from './if-error/if-error';
 import { ClrLabel } from './label';
+import { ClrForm } from './form';
+import { ClrLayout } from './layout';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [ClrLabel, ClrControlError, ClrControlHelper, ClrIfError],
-  exports: [ClrLabel, ClrControlError, ClrControlHelper, ClrIfError],
+  declarations: [ClrLabel, ClrControlError, ClrControlHelper, ClrIfError, ClrForm, ClrLayout],
+  exports: [ClrLabel, ClrControlError, ClrControlHelper, ClrIfError, ClrForm, ClrLayout],
 })
 export class ClrCommonFormsModule {}

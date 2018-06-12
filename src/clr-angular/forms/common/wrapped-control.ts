@@ -12,7 +12,7 @@ import { ControlIdService } from './providers/control-id.service';
 export class WrappedFormControl<W extends DynamicWrapper> implements OnInit {
   // I lost way too much time trying to make this work without injecting the ViewContainerRef and the Injector,
   // I'm giving up. So we have to inject these two manually for now.
-  constructor(protected wrapperType: Type<W>, protected vcr: ViewContainerRef) {}
+  constructor(protected wrapperType: Type<W>, protected vcr: ViewContainerRef, protected index: number = 0) {}
 
   protected controlIdService: ControlIdService;
 
@@ -37,7 +37,7 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit {
   }
 
   ngOnInit() {
-    this._containerInjector = new HostWrapper(this.wrapperType, this.vcr);
+    this._containerInjector = new HostWrapper(this.wrapperType, this.vcr, this.index);
     this.controlIdService = this._containerInjector.get(ControlIdService);
     if (this._id) {
       this.controlIdService.id = this._id;

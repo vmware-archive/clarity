@@ -14,6 +14,9 @@ import { NgControlService } from '../common/providers/ng-control.service';
 
 import { ClrInput } from './input';
 import { ClrInputContainer } from './input-container';
+import { ClrCommonFormsModule } from '../common/common.module';
+import { WrappedFormControl } from '../common/wrapped-control';
+import { ControlIdService } from '../common/providers/control-id.service';
 
 @Component({
   template: `
@@ -28,16 +31,6 @@ class InvalidUseTest {}
     `,
 })
 class SimpleTest {}
-
-@Component({
-  template: `
-       <input type="text" name="model" clrInput [(ngModel)]="model" />
-    `,
-  providers: [NgControlService, IfErrorService],
-})
-class ContainerizedTest {
-  model = '';
-}
 
 export default function(): void {
   describe('Input directive', () => {
@@ -55,44 +48,40 @@ export default function(): void {
 
     describe('basic use', () => {
       beforeEach(() => {
+        spyOn(WrappedFormControl.prototype, 'ngOnInit');
         TestBed.configureTestingModule({
-          imports: [FormsModule],
-          declarations: [ClrInput, SimpleTest],
+          imports: [FormsModule, ClrIconModule, ClrCommonFormsModule],
+          declarations: [ClrInput, ClrInputContainer, SimpleTest],
+          providers: [IfErrorService, NgControlService, ControlIdService],
         });
         fixture = TestBed.createComponent(SimpleTest);
-        input = fixture.debugElement;
+        input = fixture.debugElement.query(By.directive(ClrInput));
         ifErrorService = input.injector.get(IfErrorService, null);
+        ngControlService = input.injector.get(NgControlService, null);
+        spyOn(ifErrorService, 'triggerStatusChange');
+        spyOn(ngControlService, 'setControl');
+        fixture.detectChanges();
       });
 
       it('should apply the clr-input class', () => {
         expect(input.nativeElement.classList.contains('clr-input'));
       });
 
-      it('should not have the ifError service', () => {
-        expect(ifErrorService).toBeFalsy();
-      });
-    });
-
-    describe('containerized', () => {
-      beforeEach(() => {
-        TestBed.configureTestingModule({
-          imports: [ClrIconModule, FormsModule],
-          declarations: [ClrInput, ClrInputContainer, ContainerizedTest],
-        });
-        fixture = TestBed.createComponent(ContainerizedTest);
-        input = fixture.debugElement.query(By.directive(ClrInput));
-        ifErrorService = input.injector.get(IfErrorService, null);
-        ngControlService = input.injector.get(NgControlService, null);
+      it('should have the IfErrorService', () => {
+        expect(ifErrorService).toBeTruthy();
       });
 
-      it('should set the control on create', () => {
-        spyOn(ngControlService, 'setControl');
-        fixture.detectChanges();
+      it('should have the NgControlService and set the control', () => {
+        expect(ngControlService).toBeTruthy();
         expect(ngControlService.setControl).toHaveBeenCalled();
       });
 
+      it('correctly extends WrappedFormControl with ClrInputContainer', () => {
+        expect(input.injector.get(ClrInput).wrapperType).toBe(ClrInputContainer);
+        expect(WrappedFormControl.prototype.ngOnInit).toHaveBeenCalled();
+      });
+
       it('should handle blur events', () => {
-        spyOn(ifErrorService, 'triggerStatusChange');
         // inputs must be both invalid and blurred to register the validity
         input.nativeElement.value = 'abc';
         input.nativeElement.dispatchEvent(new Event('input'));

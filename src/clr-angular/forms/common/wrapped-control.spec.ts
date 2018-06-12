@@ -29,11 +29,27 @@ class TestControl extends WrappedFormControl<TestWrapper> {
   }
 }
 
+@Component({
+  selector: 'test-wrapper2',
+  template: `<div id="first"><ng-content></ng-content></div><div id="second"><ng-content></ng-content></div>`,
+  providers: [ControlIdService],
+})
+class TestWrapper2 implements DynamicWrapper {
+  _dynamic = false;
+}
+
+@Directive({ selector: '[testControl2]' })
+class TestControl2 extends WrappedFormControl<TestWrapper2> {
+  constructor(vcr: ViewContainerRef) {
+    super(TestWrapper2, vcr, 1);
+  }
+}
+
 @NgModule({
   imports: [ClrHostWrappingModule],
-  declarations: [TestWrapper, TestControl],
-  exports: [TestWrapper, TestControl],
-  entryComponents: [TestWrapper],
+  declarations: [TestWrapper, TestControl, TestWrapper2, TestControl2],
+  exports: [TestWrapper, TestControl, TestWrapper2, TestControl2],
+  entryComponents: [TestWrapper, TestWrapper2],
 })
 class WrappedFormControlTestModule {}
 
@@ -51,6 +67,9 @@ class WithWrapperNoId {}
 
 @Component({ template: `<test-wrapper><input testControl id="hello" /></test-wrapper>` })
 class WithWrapperWithId {}
+
+@Component({ template: `<test-wrapper2><input testControl id="hello" /></test-wrapper2>` })
+class WithMultipleNgContent {}
 
 interface TestContext {
   fixture: ComponentFixture<any>;
@@ -110,6 +129,14 @@ export default function(): void {
         setupTest(this, NoWrapperWithId);
         expect(this.input.getAttribute('id')).toBe('hello');
         expect(this.controlIdService.id).toBe('hello');
+      });
+    });
+
+    describe('with multiple projection slots', function() {
+      it('projects into the second slot when configured', function(this: TestContext) {
+        setupTest(this, WithMultipleNgContent);
+        expect(this.fixture.nativeElement.querySelector('#first').innerHTML).toBe('');
+        expect(this.fixture.nativeElement.querySelector('#second').querySelector('input')).toBeTruthy();
       });
     });
   });

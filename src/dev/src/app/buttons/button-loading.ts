@@ -16,6 +16,7 @@ export class ButtonLoadingDemo {
   public submitState: ClrLoadingState = ClrLoadingState.DEFAULT;
   public validateSmState: boolean = false;
   public submitSmState: ClrLoadingState = ClrLoadingState.DEFAULT;
+  public validateFalsyState: any;
 
   validateDemo() {
     this.validateState = ClrLoadingState.LOADING;
@@ -42,6 +43,13 @@ export class ButtonLoadingDemo {
     this.submitSmState = ClrLoadingState.LOADING;
     setTimeout(() => {
       this.submitSmState = ClrLoadingState.DEFAULT;
+    }, 1500);
+  }
+
+  validateFalsyDemo() {
+    this.validateFalsyState = true;
+    setTimeout(() => {
+      this.validateFalsyState = null;
     }, 1500);
   }
 }

@@ -27,16 +27,10 @@ export class ClrLoading implements OnDestroy {
 
   @Input('clrLoading')
   public set loadingState(value: boolean | ClrLoadingState) {
-    if (value === null) {
+    if (value === true) {
+      value = ClrLoadingState.LOADING;
+    } else if (!value) {
       value = ClrLoadingState.DEFAULT;
-    }
-
-    if (typeof value === 'boolean') {
-      if (value) {
-        value = ClrLoadingState.LOADING;
-      } else {
-        value = ClrLoadingState.DEFAULT;
-      }
     }
 
     if (value === this._loadingState) {

@@ -50,6 +50,18 @@ describe('Loading directive', function() {
     expect(this.listener.loadingStateChange).toHaveBeenCalledTimes(1);
   });
 
+  it('handles null or other falsy values as false', function() {
+    this.testComponent.loading = null;
+    this.fixture.detectChanges();
+    expect(this.clarityDirective.loadingState).toEqual(ClrLoadingState.DEFAULT);
+    this.testComponent.loading = undefined;
+    this.fixture.detectChanges();
+    expect(this.clarityDirective.loadingState).toEqual(ClrLoadingState.DEFAULT);
+    this.testComponent.loading = 0;
+    this.fixture.detectChanges();
+    expect(this.clarityDirective.loadingState).toEqual(ClrLoadingState.DEFAULT);
+  });
+
   it('stops loading when destroyed', function() {
     this.testComponent.loading = true;
     this.fixture.detectChanges();

@@ -1,0 +1,11 @@
+import {Component} from "@angular/core";
+import {FormGroup, FormControl, Validators} from "@angular/forms";
+
+@Component({
+    //...
+})
+export class ReactiveFormsDemo {
+    exampleForm = new FormGroup({
+        sample: new FormControl('', Validators.required),
+    });
+}

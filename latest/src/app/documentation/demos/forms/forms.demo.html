@@ -1,143 +1,137 @@
 <clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
     <article>
-        <h5 class="component-summary" id="a-form-is-a-structured-layout-of-related-input-components">A form is a
-            structured layout of related input components.</h5>
+        <h5 class="component-summary" id="a-form-is-a-structured-layout-of-related-input-components">
+            Forms are a grouping of input controls that allow a user to submit information to your application.    
+        </h5>
 
-        <div id="code-examples">
-            <p>A container, often a <code class="clr-code">div</code> with a <code class="clr-code">.form-group</code>
-                classname on it, wraps one or more <code class="clr-code">label</code> and <code
-                class="clr-code">input</code> pairs.</p>
-
-            <h6 id="form-block">.form-block</h6>
-
-            <p class="squish">This is an optional wrapper around one or more .form-group elements (see below). The
-                .form-block element can hold a label element that serves as a title or header for the form-groups within
-                it.</p>
-
-            <h6 id="form-group">.form-group</h6>
-
-            <p class="squish">This is a wrapper intended to contain a label and one or more input, .select, .checkbox,
-                .radio, or other form fields.</p>
-
-            <h6 id="select">.select</h6>
-
-            <p class="squish">This is a required wrapper intended to contain a select element and
-                its options. The wrapper is necessary to apply the custom Clarity styles for select boxes.</p>
-
-            <h6 id="radio-checkbox">.radio, .checkbox</h6>
-
-            <p class="squish">This is a required wrapper intended to contain a radio button or a checkbox
-                input followed by a label element. The wrapper is necessary to handle the alignment and
-                spacing of the elements within it.</p>
-
-            <h3 id="wrapper-elements">Wrapper Elements</h3>
-
-            <p><code class="clr-code">.form-block</code>, <code class="clr-code">.form-group</code>,
-                <code class="clr-code">.select</code>, <code class="clr-code">.radio</code>, and <code
-                class="clr-code">.checkbox</code> wrappers can be placed on any block HTML element. The
-                recommendation is for <code class="clr-code">.form-block</code> classnames to be placed on
-                <code class="clr-code">section</code> or <code class="clr-code">fieldset</code> elements and for <code
-                class="clr-code">.form-group</code> classnames to be placed on <code class="clr-code">div</code>
-                elements.</p>
-
-            <clr-forms-demo-fields></clr-forms-demo-fields>
-
-            <h3 id="compact-forms">Compact Forms</h3>
-
-            <p>For forms inside of smaller containers like modals or wizards, the whitespace around form groups and form
-                blocks can be minimized by using the <code>.compact</code> classname.</p>
-
-            <clr-forms-compact-demo></clr-forms-compact-demo>
-
-            <h3 id="forms-in-grid">Forms in Grid</h3>
-
-            <p>Forms can be used in a grid. Extend the <code class="clr-code">.row</code> class on a <code
-                class="clr-code">.form-group</code> and place the form fields in the grid column classes.
-                To occupy 100% of the column width, extend the <code class="clr-code">.form-control</code>
-                class on the form field. Resize your browser to see how forms in grids work.</p>
-
-            <clr-forms-demo-grid></clr-forms-demo-grid>
-
-            <h2 id="forms-using-angular-2">Forms Using Angular</h2>
-
-            <p>Following are examples of using Clarity forms with the Template-Driven and
-                Model-Driven/Reactive approaches in Angular.</p>
-            <p>
-                <b>Note:</b> For more information see the Angular documentation on
-                <a href="https://angular.io/docs/ts/latest/guide/forms.html">Template-Driven Forms</a> and
-                <a href="https://angular.io/docs/ts/latest/cookbook/dynamic-form.html">Model-Driven/Reactive Forms</a>
-            </p>
-
-            <h3 id="example-1-template-driven-forms">Example 1. Template-Driven Forms</h3>
-
-            <clr-template-driven-forms-demo></clr-template-driven-forms-demo>
-
-            <h3 id="example-2-model-driven-reactive-forms">Example 2. Model-Driven/Reactive Forms</h3>
-
-            <clr-reactive-forms-demo></clr-reactive-forms-demo>
+        <div class="alert alert-info">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        The forms documentation here describes the new forms introduced in version 0.12. The old forms are still available, but deprecated for removal in version 2.0. To see the old grid documentation, go to <a href="/clarity/documentation/v0.11/forms/">0.11 forms documentation</a>.
+                    </span>
+                </div>
+            </div>
         </div>
+
+        <h2 id="forms-code-samples">Forms with CSS</h2>
+
+        <p>If you want to use just the HTML/CSS for building your own form controls, this section describes how to use them. If you are interested in how to use it with Angular, please jump to the Angular section.</p>
+
+        <h4>Basic form</h4>
+
+        <p>A Clarity form first must include the <code class="clr-code">.clr-form</code> class, typically on the form element itself.</p>
+
+        <clr-code-snippet [clrCode]="uiForm"></clr-code-snippet>
+        
+        <h4>Layout options</h4>
+
+        <p>Forms support three layout options, vertical (default), horizontal, and compact. You can change the layout by simply applying an additional class to the form.</p>
+        
+        <clr-code-snippet [clrCode]="uiLayouts"></clr-code-snippet>
+        
+        <h4>Basic structure</h4>
+
+        <p>Each control that you add inside has a similar structure, and they are each covered in their own documentation. However, the general structure is like this for a normal text input.</p>
+        
+        <clr-code-snippet [clrCode]="uiStructure"></clr-code-snippet>
+        
+        <h4>Layouts with grid</h4>
+
+        <p>If you choose to use a layout other than vertical, you should also provide the corresponding grid classes to allow the form layout to dynamically switch to vertical for narrow width devices. Excluding this may cause experience issues with mobile or narrow widths.</p>
+        
+        <clr-code-snippet [clrCode]="uiGrid"></clr-code-snippet>
+        
+        <h4>Error state</h4>
+
+        <p>For error states, you simply need to add the <code class="clr-code">clr-error</code> class to the <code class="clr-code">clr-control-container</code> element. This will automatically display the error icon, turn the input outline to red, and change the color of the subtext to red. It is recommend that you change the content of the subtext for error messages, but that is up to the application to manage.</p>
+        
+        <clr-code-snippet [clrCode]="uiGrid"></clr-code-snippet>
+        
+        <p>View documentation for each form control to get specifics on their HTML structure.</p>
+        
+
+
+
+        <h2 id="forms-using-angular">Forms Using Angular</h2>
+        
+        <p>Clarity has created a set of directives to help manage forms with minimal effort by developers. The structure is more condensed and easier to implement, so it is the recommended approach to use the following if you are using Angular. More form controls are being added </p>
+
+        <div class="alert alert-info">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        The forms features described here are not part of the main <code class="clr-code">ClarityModule</code> in this release. You have to opt into them by including the additional <code class="clr-code">ClrFormsNextModule</code> in your module imports.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <h4>Include <code class="clr-code">ClrFormsNextModule</code></h4>
+        
+        <p>The new forms are opt-in right now, since they are not fully ready for use yet. In order to use it, begin by importing the <code class="clr-code">ClrFormsNextModule</code> and adding it to your module imports.</p>
+        
+        <clr-code-snippet [clrCode]="ngModule" clrLanguage="typescript"></clr-code-snippet>
+
+        <h4>Basic form</h4>
+
+        <p>Then declare a form start by adding the <code class="clr-code">clrForm</code> directive to the form element. This will wire up some internals to manage the form itself.</p>
+        
+        <clr-code-snippet [clrCode]="ngForm"></clr-code-snippet>
+        
+        <h4>Layout options</h4>
+
+        <p>If you wish to have a different layout, then you can use the <code class="clr-code">clrLayout</code> directive to set the desired layout. The appropriate grid classes will be applied to enable automatic layout switching for mobile viewports.</p>
+        
+        <clr-code-snippet [clrCode]="ngLayouts"></clr-code-snippet>
+        
+        <h4>Basic structure</h4>
+
+        <p>When you start to fill in your form controls, each will should be wrapped in a container like you see here in this text input example.</p>
+        
+        <clr-code-snippet [clrCode]="ngStructure"></clr-code-snippet>
+        
+        <h4>Helper and validation messages</h4>
+
+        <p>These Angular components also support built in helper text and validation with error messages. </p>
+        
+        <clr-code-snippet [clrCode]="ngHelpers"></clr-code-snippet>
+        
+        <h4>Multiple error messages</h4>
+
+        <p>If you want to support multiple error messages, you can do this by defining an error message for each scenario using <code class="clr-code">clrIfError</code>. It is recommended that you create an error message for each validatior you specify. Use the validator name provided in the binding for <code class="clr-code">*clrIfError="'errorName'"</code>, which might be your custom validator or a built in Angular one.</p>
+        
+        <clr-code-snippet [clrCode]="ngErrors"></clr-code-snippet>
+        
+        <h4>Reactive Forms</h4>
+
+        <p>Forms also work with reactive forms with the same support for validations.</p>
+        
+        <clr-code-snippet [clrCode]="ngReactiveTs" clrLanguage="typescript"></clr-code-snippet>
+        <clr-code-snippet [clrCode]="ngReactiveHtml"></clr-code-snippet>
 
         <div id="design-guidelines">
-            <h3 id="guidelines">Usage</h3>
+            <h3 id="guidelines">Design Guidelines</h3>
 
-            <p>Forms guide users through input in a structured, specific order. Forms are comprised of <a
-                routerLink="../../../typography">text</a> and input components such as <a
-                routerLink="../../../checkboxes">checkboxes</a>, <a
-                routerLink="../../../dropdowns">dropdowns</a>,
-                <a routerLink="../../../input-fields">input fields</a>, <a
-                routerLink="../../../radios">radio buttons</a>, and <a
-                routerLink="../../../toggle-switches">toggle switches</a>.</p>
-
-            <h4 id="minimize-scrolling">Minimize Scrolling</h4>
-
-            <p>For a form that scrolls several pages, consider organizing the content by:</p>
-
-            <ul class="list">
-                <li>Grouping related fields in a form block with a descriptive label.</li>
-                <li>Progressively revealing more complex or less frequently used data.</li>
-                <li>Dividing content into separate pages in a <a routerLink="../../../wizards">wizard</a>.</li>
-            </ul>
-
-            <h4 id="labels">Labels</h4>
-
-            <p>Labels appear to the left of a component, moving above the component when the user resizes the window to
-                smaller dimensions.</p>
-
-            <p>Labels use sentence case, and label headers use title case, with no ending punctuation.</p>
-
-            <h4 id="placeholder-text">Placeholder Text</h4>
-
-            <p>Located inside a field, placeholder text can help clarify expected input. Placeholder
-                text disappears when the user types in the field.</p>
-
-            <p>Tip: Use the label to show what information goes in the field and placeholder text
-                as a hint, description, or example format:</p>
-
-            <p>Label: Airport
-                <br/> Placeholder text: SFO, SJO</p>
-
-            <p>Placeholder text can replace labels only in simple forms with a few easily-understood fields, see the <a
-                    routerLink="../../../login">login page</a>.</p>
-
-            <h4 id="disabled-fields">Disabled Fields</h4>
-
-            <p>Show a disabled field only if the user can take a reasonable action to enable the
-                component. When disabling a component, also disable all associated elements, such
-                as the component label and explanatory text.</p>
-
-            <h4 id="button-placement">Button Placement</h4>
-
-            <p>Button placement depends on form type and where it appears in the UI. See <a
-                routerLink="../../../buttons">buttons</a> for guidelines.</p>
-
-            <h4 id="validation">Validation</h4>
-
-            <p>For information on validation, see <a routerLink="../../../input-fields">input fields</a>.</p>
-
-            <h4 id="focus-and-navigation">Focus and Navigation</h4>
-
-            <p>Provide auto focus in the first field by default. Users can then navigate through the form in a logical
-                sequence.</p>
+            <div class="alert alert-info">
+                <div class="alert-items">
+                    <div class="alert-item static">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                        </div>
+                        <span class="alert-text">
+                            The UX design guidelines documentation is currently a work in progress, and will be updated when they are ready.
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </article>
 </clr-doc-wrapper>

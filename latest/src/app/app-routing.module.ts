@@ -1,5 +1,6 @@
 import {NgModule}             from "@angular/core";
 import {RouterModule, Routes, PreloadAllModules} from "@angular/router";
+import {environment} from "../environments/environment";
 
 import {HomeComponent} from "./home/home.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
@@ -35,7 +36,7 @@ const appRoutes: Routes = [
     },
     {
         path: "get-started",
-        redirectTo: "/documentation/v0.11/get-started"
+        redirectTo: `documentation/${environment.version}/get-started`
     },
     {
         path: "**",

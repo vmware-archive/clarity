@@ -14,5 +14,5 @@ $clr-layers: (
     modal-bg: 1040,
     modal: 1050,
     tooltips: 1070,
-    draggable-ghost: 2147483647
+    draggable-ghost: 2147483647// maximum possible value for z-index across all browsers
 ) !default;

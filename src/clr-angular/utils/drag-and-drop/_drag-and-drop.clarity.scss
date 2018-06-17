@@ -4,15 +4,12 @@
     }
     .draggable-ghost {
         position: fixed;
+        display: block;
         visibility: hidden;
-        z-index: 2147483647; // max z-index;
+        z-index: map-get($clr-layers, draggable-ghost);
         pointer-events: none;
         will-change: left, top;
         opacity: 0.6;
-        transform: translate3d(0px, 0px, 0);
-        &.dragged {
-            display: block;
-        }
     }
     .in-drag {
         cursor: grabbing;

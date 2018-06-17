@@ -20,13 +20,11 @@ export default function(): void {
     describe("ClrDraggableGhost", function() {
         describe("Without Wrapping ClrDraggable", function() {
             it("should throw an error with a message", function() {
-                TestBed.configureTestingModule({
-                    declarations: [WithNoWrappingDraggable, ClrDraggableGhost],
-                    providers: [ClrDraggableSnapshot, DomAdapter]
-                });
+                TestBed.configureTestingModule(
+                    {declarations: [WithNoWrappingDraggable, ClrDraggableGhost], providers: [DomAdapter]});
 
                 expect(function() {
-                    this.fixture = TestBed.createComponent(WithNoWrappingDraggable);
+                    const fixture = TestBed.createComponent(WithNoWrappingDraggable);
                 })
                     .toThrowError(
                         "The clr-draggable-ghost component can only be used inside of a clrDraggable directive.");

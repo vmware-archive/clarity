@@ -36,10 +36,15 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     private subscriptions: Subscription[] = [];
     private componentFactory: ComponentFactory<ClrDraggableGhost<T>>;
 
-    constructor(private el: ElementRef, private dragEventListener: ClrDragEventListener<T>,
-                private dragHandleRegistrar: ClrDragHandleRegistrar<T>, private viewContainerRef: ViewContainerRef,
-                private cfr: ComponentFactoryResolver, private injector: Injector,
-                private draggableSnapshot: ClrDraggableSnapshot<T>) {
+    constructor(
+        private el: ElementRef,
+        private dragEventListener: ClrDragEventListener<T>,
+        private dragHandleRegistrar: ClrDragHandleRegistrar<T>,
+        private viewContainerRef: ViewContainerRef,
+        private cfr: ComponentFactoryResolver,
+        private injector: Injector,
+        private draggableSnapshot: ClrDraggableSnapshot<T>
+    ) {
         this.draggableEl = this.el.nativeElement;
         this.componentFactory = this.cfr.resolveComponentFactory<ClrDraggableGhost<T>>(ClrDraggableGhost);
     }
@@ -48,8 +53,11 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
 
     private createDefaultGhost(event: ClrDragEvent<T>) {
         this.draggableSnapshot.capture(this.draggableEl, event);
-        this.viewContainerRef.createComponent(this.componentFactory, 0, this.injector,
-                                              [[this.draggableEl.cloneNode(true)]]);
+        // NOTE: The default ghost element will appear
+        // next to the clrDraggable in the DOM as a sibling element.
+        this.viewContainerRef.createComponent(this.componentFactory, 0, this.injector, [
+            [this.draggableEl.cloneNode(true)]
+        ]);
     }
 
     private destroyDefaultGhost() {
@@ -64,21 +72,27 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     ngAfterContentInit() {
         this.dragHandleRegistrar.defaultHandleEl = this.draggableEl;
 
-        this.subscriptions.push(this.dragEventListener.dragStarted.subscribe((event: ClrDragEvent<T>) => {
-            if (!this.customGhost) {
-                this.createDefaultGhost(event);
-            }
-            this.dragStartEmitter.emit(event);
-        }));
-        this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
-            this.dragMoveEmitter.emit(event);
-        }));
-        this.subscriptions.push(this.dragEventListener.dragEnded.subscribe((event: ClrDragEvent<T>) => {
-            if (!this.customGhost) {
-                this.destroyDefaultGhost();
-            }
-            this.dragEndEmitter.emit(event);
-        }));
+        this.subscriptions.push(
+            this.dragEventListener.dragStarted.subscribe((event: ClrDragEvent<T>) => {
+                if (!this.customGhost) {
+                    this.createDefaultGhost(event);
+                }
+                this.dragStartEmitter.emit(event);
+            })
+        );
+        this.subscriptions.push(
+            this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
+                this.dragMoveEmitter.emit(event);
+            })
+        );
+        this.subscriptions.push(
+            this.dragEventListener.dragEnded.subscribe((event: ClrDragEvent<T>) => {
+                if (!this.customGhost) {
+                    this.destroyDefaultGhost();
+                }
+                this.dragEndEmitter.emit(event);
+            })
+        );
     }
 
     ngOnDestroy() {

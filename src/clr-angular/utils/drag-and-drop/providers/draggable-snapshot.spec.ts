@@ -27,24 +27,24 @@ export default function(): void {
         mockDraggable.style.marginTop = "5px";
 
         const domAdapter = new DomAdapter();
-        const draggableStateRegistrar = new ClrDraggableSnapshot(domAdapter);
+        const draggableSnapshot = new ClrDraggableSnapshot(domAdapter);
 
         it("registers element and sets clientRect and computedStyle", function() {
-            expect(draggableStateRegistrar.hasDraggableState).toBeFalsy();
-            draggableStateRegistrar.capture(mockDraggable, mockDragMoveEvent);
-            expect(draggableStateRegistrar.hasDraggableState).toBeTruthy();
-            expect(draggableStateRegistrar.clientRect).toEqual(domAdapter.clientRect(mockDraggable));
-            expect(draggableStateRegistrar.computedStyle).toEqual(getComputedStyle(mockDraggable));
-            expect(draggableStateRegistrar.event).toEqual(mockDragMoveEvent);
+            expect(draggableSnapshot.hasDraggableState).toBeFalsy();
+            draggableSnapshot.capture(mockDraggable, mockDragMoveEvent);
+            expect(draggableSnapshot.hasDraggableState).toBeTruthy();
+            expect(draggableSnapshot.clientRect).toEqual(domAdapter.clientRect(mockDraggable));
+            expect(draggableSnapshot.computedStyle).toEqual(getComputedStyle(mockDraggable));
+            expect(draggableSnapshot.event).toEqual(mockDragMoveEvent);
         });
 
         it("unregisters element and deletes clientRect and computedStyle", function() {
-            expect(draggableStateRegistrar.hasDraggableState).toBeTruthy();
-            draggableStateRegistrar.discard();
-            expect(draggableStateRegistrar.hasDraggableState).toBeFalsy();
-            expect(draggableStateRegistrar.clientRect).toBeUndefined();
-            expect(draggableStateRegistrar.computedStyle).toBeUndefined();
-            expect(draggableStateRegistrar.event).toBeUndefined();
+            expect(draggableSnapshot.hasDraggableState).toBeTruthy();
+            draggableSnapshot.discard();
+            expect(draggableSnapshot.hasDraggableState).toBeFalsy();
+            expect(draggableSnapshot.clientRect).toBeUndefined();
+            expect(draggableSnapshot.computedStyle).toBeUndefined();
+            expect(draggableSnapshot.event).toBeUndefined();
         });
     });
 }

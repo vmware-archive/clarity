@@ -10,6 +10,10 @@
         pointer-events: none;
         will-change: left, top;
         opacity: 0.6;
+        // default ghost contains the cloned .draggable
+        & > .draggable {
+            margin: 0;
+        }
     }
     .in-drag {
         cursor: grabbing;

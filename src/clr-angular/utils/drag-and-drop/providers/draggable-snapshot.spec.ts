@@ -9,7 +9,7 @@ import {ClrDragEventType} from "../interfaces/drag-event";
 import {ClrDraggableSnapshot} from "./draggable-snapshot";
 
 export default function(): void {
-    describe("Draggable State Registrar", function() {
+    describe("Draggable Snapshot", function() {
         const mockDraggable = document.createElement("div");
         const mockDragMoveEvent = {
             dragPosition: {pageX: 11, pageY: 22},
@@ -23,8 +23,6 @@ export default function(): void {
         mockDraggable.style.height = "50px";
         mockDraggable.style.left = "90px";
         mockDraggable.style.top = "45px";
-        mockDraggable.style.marginLeft = "10px";
-        mockDraggable.style.marginTop = "5px";
 
         const domAdapter = new DomAdapter();
         const draggableSnapshot = new ClrDraggableSnapshot(domAdapter);
@@ -34,7 +32,6 @@ export default function(): void {
             draggableSnapshot.capture(mockDraggable, mockDragMoveEvent);
             expect(draggableSnapshot.hasDraggableState).toBeTruthy();
             expect(draggableSnapshot.clientRect).toEqual(domAdapter.clientRect(mockDraggable));
-            expect(draggableSnapshot.computedStyle).toEqual(getComputedStyle(mockDraggable));
             expect(draggableSnapshot.event).toEqual(mockDragMoveEvent);
         });
 
@@ -43,7 +40,6 @@ export default function(): void {
             draggableSnapshot.discard();
             expect(draggableSnapshot.hasDraggableState).toBeFalsy();
             expect(draggableSnapshot.clientRect).toBeUndefined();
-            expect(draggableSnapshot.computedStyle).toBeUndefined();
             expect(draggableSnapshot.event).toBeUndefined();
         });
     });

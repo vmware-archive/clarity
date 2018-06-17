@@ -13,31 +13,22 @@ import {ClrDragEvent} from "../interfaces/drag-event";
 export class ClrDraggableSnapshot<T> {
     constructor(private domAdapter: DomAdapter) {}
 
-    private draggableEl: Node;
     private draggableElClientRect: ClientRect;
-    private draggableElComputedStyle: CSSStyleDeclaration;
     private stateEvent: ClrDragEvent<T>;
 
     public capture(el: Node, event: ClrDragEvent<T>) {
-        this.draggableEl = el;
-        this.draggableElClientRect = this.domAdapter.clientRect(this.draggableEl);
-        this.draggableElComputedStyle = getComputedStyle(<HTMLElement>this.draggableEl);
+        this.draggableElClientRect = this.domAdapter.clientRect(el);
         this.stateEvent = event;
     }
     public discard() {
-        delete this.draggableEl;
         delete this.draggableElClientRect;
-        delete this.draggableElComputedStyle;
         delete this.stateEvent;
     }
     get hasDraggableState() {
-        return !!this.draggableEl;
+        return !!this.stateEvent && !!this.draggableElClientRect;
     }
     get clientRect() {
         return this.draggableElClientRect;
-    }
-    get computedStyle() {
-        return this.draggableElComputedStyle;
     }
     get event() {
         return this.stateEvent;

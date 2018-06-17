@@ -15,11 +15,14 @@ import {ClrDraggableSnapshot} from "./providers/draggable-snapshot";
     selector: "clr-draggable-ghost",
     template: `<ng-content></ng-content>`,
     host: {class: "draggable-ghost"},
-    animations: [trigger(
-        "leaveAnimation",
-        [transition(
-            ":leave",
-            [style({left: "*", top: "*"}), animate("0.2s ease-in-out", style({top: "{{top}}", left: "{{left}}"}))])])]
+    animations: [
+        trigger("leaveAnimation", [
+            transition(":leave", [
+                style({left: "*", top: "*"}),
+                animate("0.2s ease-in-out", style({top: "{{top}}", left: "{{left}}"}))
+            ])
+        ])
+    ]
 })
 export class ClrDraggableGhost<T> implements OnDestroy {
     private draggableGhostEl: Node;
@@ -32,9 +35,13 @@ export class ClrDraggableGhost<T> implements OnDestroy {
 
     @HostBinding("@leaveAnimation") leaveAnimConfig = {value: 0, params: {top: "0px", left: "0px"}};
 
-    constructor(private el: ElementRef, @Optional() private dragEventListener: ClrDragEventListener<T>,
-                @Optional() private draggableStateSnapshot: ClrDraggableSnapshot<T>, private renderer: Renderer2,
-                private ngZone: NgZone) {
+    constructor(
+        private el: ElementRef,
+        @Optional() private dragEventListener: ClrDragEventListener<T>,
+        @Optional() private draggableStateSnapshot: ClrDraggableSnapshot<T>,
+        private renderer: Renderer2,
+        private ngZone: NgZone
+    ) {
         if (!this.dragEventListener || !this.dragEventListener) {
             throw new Error("The clr-draggable-ghost component can only be used inside of a clrDraggable directive.");
         }
@@ -42,17 +49,19 @@ export class ClrDraggableGhost<T> implements OnDestroy {
         this.draggableGhostEl = this.el.nativeElement;
         this.renderer.addClass(document.body, "in-drag");
 
-        this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
-            if (!this.initPosition) {
-                this.setupDraggableGhost(event);
-            }
-            this.moveGhostElement(event);
-        }));
+        this.subscriptions.push(
+            this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
+                if (!this.initPosition) {
+                    this.setupDraggableGhost(event);
+                }
+                this.moveGhostElement(event);
+            })
+        );
     }
 
     private setupDraggableGhost(event: ClrDragEvent<T>) {
         if (this.draggableStateSnapshot.hasDraggableState) {
-            this.alignWithDraggable();
+            this.setDraggableSize();
             const draggableClientRectLeft = this.draggableStateSnapshot.clientRect.left;
             const draggableClientRectTop = this.draggableStateSnapshot.clientRect.top;
             this.initPosition = {
@@ -68,23 +77,9 @@ export class ClrDraggableGhost<T> implements OnDestroy {
         }
     }
 
-    private alignWithDraggable() {
-        // Applying these negative margins is necessary as clientRect already accounts the margin space of the
-        // draggable. Also, as the draggable ghost is the clone of the draggable it also inherits the draggable's margin
-        // in itself resulting in unnecessarily applying the same margins spaces again, which creates misalignment with
-        // the draggable.
-
-        // So we have to apply these negative margins to the draggable ghost to
-        // align it exactly with the original draggable.
-
+    private setDraggableSize() {
         const draggableClientRectWidth = this.draggableStateSnapshot.clientRect.width;
         const draggableClientRectHeight = this.draggableStateSnapshot.clientRect.height;
-
-        const draggableMarginLeft = this.draggableStateSnapshot.computedStyle.marginLeft;
-        const draggableMarginTop = this.draggableStateSnapshot.computedStyle.marginTop;
-
-        this.renderer.setStyle(this.draggableGhostEl, "margin-left", `-${draggableMarginLeft}`);
-        this.renderer.setStyle(this.draggableGhostEl, "margin-top", `-${draggableMarginTop}`);
 
         this.renderer.setStyle(this.draggableGhostEl, "width", `${draggableClientRectWidth}px`);
         this.renderer.setStyle(this.draggableGhostEl, "height", `${draggableClientRectHeight}px`);

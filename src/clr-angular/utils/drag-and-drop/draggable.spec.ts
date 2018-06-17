@@ -28,8 +28,7 @@ export default function(): void {
                 TestBed.overrideComponent(ClrDraggable, {
                     set: {
                         providers: [
-                            DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot,
-                            MOCK_DRAG_EVENT_LISTENER_PROVIDER
+                            DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot, MOCK_DRAG_EVENT_LISTENER_PROVIDER
                         ]
                     }
                 });
@@ -110,8 +109,7 @@ export default function(): void {
                 TestBed.overrideComponent(ClrDraggable, {
                     set: {
                         providers: [
-                            DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot,
-                            MOCK_DRAG_EVENT_LISTENER_PROVIDER
+                            DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot, MOCK_DRAG_EVENT_LISTENER_PROVIDER
                         ]
                     }
                 });
@@ -174,8 +172,7 @@ export default function(): void {
                 TestBed.overrideComponent(ClrDraggable, {
                     set: {
                         providers: [
-                            DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot,
-                            MOCK_DRAG_EVENT_LISTENER_PROVIDER
+                            DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot, MOCK_DRAG_EVENT_LISTENER_PROVIDER
                         ]
                     }
                 });

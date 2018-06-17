@@ -17,7 +17,7 @@ import {ClrDraggable} from "./draggable";
 import {ClrDragEventListener} from "./providers/drag-event-listener";
 import {MOCK_DRAG_EVENT_LISTENER_PROVIDER} from "./providers/drag-event-listener.mock";
 import {ClrDragHandleRegistrar} from "./providers/drag-handle-registrar";
-import {ClrDraggableStateRegistrar} from "./providers/draggable-state-registrar";
+import {ClrDraggableStateRegistrar} from "./providers/draggable-snapshot";
 
 export default function(): void {
     describe("ClrDraggable", function() {

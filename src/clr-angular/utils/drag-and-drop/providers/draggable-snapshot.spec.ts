@@ -6,7 +6,7 @@
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
 import {ClrDragEventType} from "../interfaces/drag-event";
 
-import {ClrDraggableStateRegistrar} from "./draggable-state-registrar";
+import {ClrDraggableSnapshot} from "./draggable-snapshot";
 
 export default function(): void {
     describe("Draggable State Registrar", function() {
@@ -27,11 +27,11 @@ export default function(): void {
         mockDraggable.style.marginTop = "5px";
 
         const domAdapter = new DomAdapter();
-        const draggableStateRegistrar = new ClrDraggableStateRegistrar(domAdapter);
+        const draggableStateRegistrar = new ClrDraggableSnapshot(domAdapter);
 
         it("registers element and sets clientRect and computedStyle", function() {
             expect(draggableStateRegistrar.hasDraggableState).toBeFalsy();
-            draggableStateRegistrar.register(mockDraggable, mockDragMoveEvent);
+            draggableStateRegistrar.capture(mockDraggable, mockDragMoveEvent);
             expect(draggableStateRegistrar.hasDraggableState).toBeTruthy();
             expect(draggableStateRegistrar.clientRect).toEqual(domAdapter.clientRect(mockDraggable));
             expect(draggableStateRegistrar.computedStyle).toEqual(getComputedStyle(mockDraggable));
@@ -40,7 +40,7 @@ export default function(): void {
 
         it("unregisters element and deletes clientRect and computedStyle", function() {
             expect(draggableStateRegistrar.hasDraggableState).toBeTruthy();
-            draggableStateRegistrar.unregister();
+            draggableStateRegistrar.discard();
             expect(draggableStateRegistrar.hasDraggableState).toBeFalsy();
             expect(draggableStateRegistrar.clientRect).toBeUndefined();
             expect(draggableStateRegistrar.computedStyle).toBeUndefined();

@@ -9,7 +9,7 @@ import {Subscription} from "rxjs/Subscription";
 
 import {ClrDragEvent} from "./interfaces/drag-event";
 import {ClrDragEventListener} from "./providers/drag-event-listener";
-import {ClrDraggableSnapshot} from "./providers/draggable-state-registrar";
+import {ClrDraggableSnapshot} from "./providers/draggable-snapshot";
 
 @Component({
     selector: "clr-draggable-ghost",
@@ -33,7 +33,7 @@ export class ClrDraggableGhost<T> implements OnDestroy {
     @HostBinding("@leaveAnimation") leaveAnimConfig = {value: 0, params: {top: "0px", left: "0px"}};
 
     constructor(private el: ElementRef, @Optional() private dragEventListener: ClrDragEventListener<T>,
-                @Optional() private draggableStateRegistrar: ClrDraggableSnapshot<T>, private renderer: Renderer2,
+                @Optional() private draggableStateSnapshot: ClrDraggableSnapshot<T>, private renderer: Renderer2,
                 private ngZone: NgZone) {
         if (!this.dragEventListener || !this.dragEventListener) {
             throw new Error("The clr-draggable-ghost component can only be used inside of a clrDraggable directive.");
@@ -51,13 +51,13 @@ export class ClrDraggableGhost<T> implements OnDestroy {
     }
 
     private setupDraggableGhost(event: ClrDragEvent<T>) {
-        if (this.draggableStateRegistrar.hasDraggableState) {
+        if (this.draggableStateSnapshot.hasDraggableState) {
             this.alignWithDraggable();
-            const draggableClientRectLeft = this.draggableStateRegistrar.clientRect.left;
-            const draggableClientRectTop = this.draggableStateRegistrar.clientRect.top;
+            const draggableClientRectLeft = this.draggableStateSnapshot.clientRect.left;
+            const draggableClientRectTop = this.draggableStateSnapshot.clientRect.top;
             this.initPosition = {
-                pageX: this.draggableStateRegistrar.event.dragPosition.pageX,
-                pageY: this.draggableStateRegistrar.event.dragPosition.pageY
+                pageX: this.draggableStateSnapshot.event.dragPosition.pageX,
+                pageY: this.draggableStateSnapshot.event.dragPosition.pageY
             };
             this.initDragDelta.left = this.initPosition.pageX - draggableClientRectLeft;
             this.initDragDelta.top = this.initPosition.pageY - draggableClientRectTop;
@@ -77,11 +77,11 @@ export class ClrDraggableGhost<T> implements OnDestroy {
         // So we have to apply these negative margins to the draggable ghost to
         // align it exactly with the original draggable.
 
-        const draggableClientRectWidth = this.draggableStateRegistrar.clientRect.width;
-        const draggableClientRectHeight = this.draggableStateRegistrar.clientRect.height;
+        const draggableClientRectWidth = this.draggableStateSnapshot.clientRect.width;
+        const draggableClientRectHeight = this.draggableStateSnapshot.clientRect.height;
 
-        const draggableMarginLeft = this.draggableStateRegistrar.computedStyle.marginLeft;
-        const draggableMarginTop = this.draggableStateRegistrar.computedStyle.marginTop;
+        const draggableMarginLeft = this.draggableStateSnapshot.computedStyle.marginLeft;
+        const draggableMarginTop = this.draggableStateSnapshot.computedStyle.marginTop;
 
         this.renderer.setStyle(this.draggableGhostEl, "margin-left", `-${draggableMarginLeft}`);
         this.renderer.setStyle(this.draggableGhostEl, "margin-top", `-${draggableMarginTop}`);

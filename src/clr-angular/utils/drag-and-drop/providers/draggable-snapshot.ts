@@ -7,7 +7,8 @@ import {Injectable} from "@angular/core";
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
 import {ClrDragEvent} from "../interfaces/drag-event";
 
-
+// This service is used to capture the state of clrDraggable element
+// at a certain event and passes it to clrDraggableGhost component.
 @Injectable()
 export class ClrDraggableSnapshot<T> {
     constructor(private domAdapter: DomAdapter) {}

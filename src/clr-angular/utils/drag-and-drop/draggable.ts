@@ -24,7 +24,7 @@ import {ClrIfDragged} from "./if-dragged";
 import {ClrDragEvent} from "./interfaces/drag-event";
 import {ClrDragEventListener} from "./providers/drag-event-listener";
 import {ClrDragHandleRegistrar} from "./providers/drag-handle-registrar";
-import {ClrDraggableSnapshot} from "./providers/draggable-state-registrar";
+import {ClrDraggableSnapshot} from "./providers/draggable-snapshot";
 
 @Directive({
     selector: "[clrDraggable]",

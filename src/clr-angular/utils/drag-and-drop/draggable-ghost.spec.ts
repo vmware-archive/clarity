@@ -14,7 +14,7 @@ import {ClrDraggableGhost} from ".";
 import {ClrDragAndDropModule} from "./drag-and-drop.module";
 import {ClrDragEventListener} from "./providers/drag-event-listener";
 import {MOCK_DRAG_EVENT_LISTENER_PROVIDER} from "./providers/drag-event-listener.mock";
-import {ClrDraggableStateRegistrar} from "./providers/draggable-state-registrar";
+import {ClrDraggableSnapshot} from "./providers/draggable-snapshot";
 
 export default function(): void {
     describe("ClrDraggableGhost", function() {
@@ -22,14 +22,14 @@ export default function(): void {
             it("should throw an error with a message", function() {
                 TestBed.configureTestingModule({
                     declarations: [WithNoWrappingDraggable, ClrDraggableGhost],
-                    providers: [ClrDraggableStateRegistrar, DomAdapter]
+                    providers: [ClrDraggableSnapshot, DomAdapter]
                 });
 
                 expect(function() {
                     this.fixture = TestBed.createComponent(WithNoWrappingDraggable);
-                })
-                    .toThrowError(
-                        "The clr-draggable-ghost component can only be used inside of a clrDraggable directive.");
+                }).toThrowError(
+                    "The clr-draggable-ghost component can only be used inside of a clrDraggable directive."
+                );
             });
         });
 
@@ -49,7 +49,7 @@ export default function(): void {
                 TestBed.configureTestingModule({
                     imports: [ClrDragAndDropModule, NoopAnimationsModule],
                     declarations: [WithWrappingDraggable],
-                    providers: [MOCK_DRAG_EVENT_LISTENER_PROVIDER, DomAdapter, ClrDraggableStateRegistrar]
+                    providers: [MOCK_DRAG_EVENT_LISTENER_PROVIDER, DomAdapter, ClrDraggableSnapshot]
                 });
 
                 this.fixture = TestBed.createComponent(WithWrappingDraggable);
@@ -60,7 +60,7 @@ export default function(): void {
                 this.draggableGhostComponent = this.draggableGhostDebugElement.injector.get(ClrDraggableGhost);
                 this.ghostElement = this.draggableGhostDebugElement.nativeElement;
                 this.dragEventListener = TestBed.get(ClrDragEventListener);
-                this.draggableStateRegistrar = TestBed.get(ClrDraggableStateRegistrar);
+                this.draggableStateRegistrar = TestBed.get(ClrDraggableSnapshot);
             });
 
             afterEach(function() {
@@ -98,26 +98,23 @@ export default function(): void {
                 expect(this.ghostElement.style.top).toBe(`${this.draggableStateRegistrar.clientRect.top}px`);
             });
 
-            it("should be dragged from its first drag position on the draggable if draggable state is registered",
-               function() {
-                   const mockDragMoveEvent1 = {dragPosition: {pageX: 120, pageY: 60}};
-                   this.draggableStateRegistrar.register(mockDraggable, mockDragMoveEvent1);
+            it("should be dragged from its first drag position on the draggable if draggable state is registered", function() {
+                const mockDragMoveEvent1 = {dragPosition: {pageX: 120, pageY: 60}};
+                this.draggableStateRegistrar.register(mockDraggable, mockDragMoveEvent1);
 
-                   const initDeltaX =
-                       mockDragMoveEvent1.dragPosition.pageX - this.draggableStateRegistrar.clientRect.left;
-                   const initDeltaY =
-                       mockDragMoveEvent1.dragPosition.pageY - this.draggableStateRegistrar.clientRect.top;
+                const initDeltaX = mockDragMoveEvent1.dragPosition.pageX - this.draggableStateRegistrar.clientRect.left;
+                const initDeltaY = mockDragMoveEvent1.dragPosition.pageY - this.draggableStateRegistrar.clientRect.top;
 
-                   const mockDragMoveEvent2 = {dragPosition: {pageX: 180, pageY: 120}};
+                const mockDragMoveEvent2 = {dragPosition: {pageX: 180, pageY: 120}};
 
-                   this.dragEventListener.dragMoved.next(mockDragMoveEvent1);
-                   expect(this.ghostElement.style.left).toBe(`${this.draggableStateRegistrar.clientRect.left}px`);
-                   expect(this.ghostElement.style.top).toBe(`${this.draggableStateRegistrar.clientRect.top}px`);
+                this.dragEventListener.dragMoved.next(mockDragMoveEvent1);
+                expect(this.ghostElement.style.left).toBe(`${this.draggableStateRegistrar.clientRect.left}px`);
+                expect(this.ghostElement.style.top).toBe(`${this.draggableStateRegistrar.clientRect.top}px`);
 
-                   this.dragEventListener.dragMoved.next(mockDragMoveEvent2);
-                   expect(this.ghostElement.style.left).toBe(`${mockDragMoveEvent2.dragPosition.pageX - initDeltaX}px`);
-                   expect(this.ghostElement.style.top).toBe(`${mockDragMoveEvent2.dragPosition.pageY - initDeltaY}px`);
-               });
+                this.dragEventListener.dragMoved.next(mockDragMoveEvent2);
+                expect(this.ghostElement.style.left).toBe(`${mockDragMoveEvent2.dragPosition.pageX - initDeltaX}px`);
+                expect(this.ghostElement.style.top).toBe(`${mockDragMoveEvent2.dragPosition.pageY - initDeltaY}px`);
+            });
         });
     });
 }

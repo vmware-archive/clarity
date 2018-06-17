@@ -12,7 +12,7 @@ import ClrDragEventListenerSpecs from "./providers/drag-event-listener.spec";
 import ClrDragHandleRegistrarSpecs from "./providers/drag-handle-registrar.spec";
 import ClrDraggableStateRegistrarSpecs from "./providers/draggable-snapshot.spec";
 
-describe("Drag And Drop", function() {
+fdescribe("Drag And Drop", function() {
     describe("Providers", function() {
         ClrDragAndDropEventBusSpecs();
         ClrDragEventListenerSpecs();

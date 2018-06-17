@@ -17,7 +17,7 @@ import {ClrDraggable} from "./draggable";
 import {ClrDragEventListener} from "./providers/drag-event-listener";
 import {MOCK_DRAG_EVENT_LISTENER_PROVIDER} from "./providers/drag-event-listener.mock";
 import {ClrDragHandleRegistrar} from "./providers/drag-handle-registrar";
-import {ClrDraggableStateRegistrar} from "./providers/draggable-snapshot";
+import {ClrDraggableSnapshot} from "./providers/draggable-snapshot";
 
 export default function(): void {
     describe("ClrDraggable", function() {
@@ -28,7 +28,7 @@ export default function(): void {
                 TestBed.overrideComponent(ClrDraggable, {
                     set: {
                         providers: [
-                            DomAdapter, ClrDragHandleRegistrar, ClrDraggableStateRegistrar,
+                            DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot,
                             MOCK_DRAG_EVENT_LISTENER_PROVIDER
                         ]
                     }
@@ -110,7 +110,7 @@ export default function(): void {
                 TestBed.overrideComponent(ClrDraggable, {
                     set: {
                         providers: [
-                            DomAdapter, ClrDragHandleRegistrar, ClrDraggableStateRegistrar,
+                            DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot,
                             MOCK_DRAG_EVENT_LISTENER_PROVIDER
                         ]
                     }
@@ -174,7 +174,7 @@ export default function(): void {
                 TestBed.overrideComponent(ClrDraggable, {
                     set: {
                         providers: [
-                            DomAdapter, ClrDragHandleRegistrar, ClrDraggableStateRegistrar,
+                            DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot,
                             MOCK_DRAG_EVENT_LISTENER_PROVIDER
                         ]
                     }

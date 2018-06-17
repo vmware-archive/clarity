@@ -15,11 +15,14 @@ import {ClrDraggableSnapshot} from "./providers/draggable-snapshot";
     selector: "clr-draggable-ghost",
     template: `<ng-content></ng-content>`,
     host: {class: "draggable-ghost"},
-    animations: [trigger(
-        "leaveAnimation",
-        [transition(
-            ":leave",
-            [style({left: "*", top: "*"}), animate("0.2s ease-in-out", style({top: "{{top}}", left: "{{left}}"}))])])]
+    animations: [
+        trigger("leaveAnimation", [
+            transition(":leave", [
+                style({left: "*", top: "*"}),
+                animate("0.2s ease-in-out", style({top: "{{top}}", left: "{{left}}"}))
+            ])
+        ])
+    ]
 })
 export class ClrDraggableGhost<T> implements OnDestroy {
     private draggableGhostEl: Node;
@@ -32,9 +35,13 @@ export class ClrDraggableGhost<T> implements OnDestroy {
 
     @HostBinding("@leaveAnimation") leaveAnimConfig = {value: 0, params: {top: "0px", left: "0px"}};
 
-    constructor(private el: ElementRef, @Optional() private dragEventListener: ClrDragEventListener<T>,
-                @Optional() private draggableStateSnapshot: ClrDraggableSnapshot<T>, private renderer: Renderer2,
-                private ngZone: NgZone) {
+    constructor(
+        private el: ElementRef,
+        @Optional() private dragEventListener: ClrDragEventListener<T>,
+        @Optional() private draggableStateSnapshot: ClrDraggableSnapshot<T>,
+        private renderer: Renderer2,
+        private ngZone: NgZone
+    ) {
         if (!this.dragEventListener && !this.draggableStateSnapshot) {
             throw new Error("The clr-draggable-ghost component can only be used inside of a clrDraggable directive.");
         }
@@ -42,17 +49,19 @@ export class ClrDraggableGhost<T> implements OnDestroy {
         this.draggableGhostEl = this.el.nativeElement;
         this.renderer.addClass(document.body, "in-drag");
 
-        this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
-            if (!this.initPosition) {
-                this.setupDraggableGhost(event);
-            }
-            this.moveGhostElement(event);
-        }));
+        this.subscriptions.push(
+            this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
+                if (!this.initPosition) {
+                    this.setupDraggableGhost(event);
+                }
+                this.moveGhostElement(event);
+            })
+        );
     }
 
     private setupDraggableGhost(event: ClrDragEvent<T>) {
         if (this.draggableStateSnapshot.hasDraggableState) {
-            this.setDraggableSize();
+            this.matchDraggableSize();
             const draggableClientRectLeft = this.draggableStateSnapshot.clientRect.left;
             const draggableClientRectTop = this.draggableStateSnapshot.clientRect.top;
             this.initPosition = {
@@ -68,7 +77,7 @@ export class ClrDraggableGhost<T> implements OnDestroy {
         }
     }
 
-    private setDraggableSize() {
+    private matchDraggableSize() {
         const draggableClientRectWidth = this.draggableStateSnapshot.clientRect.width;
         const draggableClientRectHeight = this.draggableStateSnapshot.clientRect.height;
 

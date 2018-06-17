@@ -7,9 +7,9 @@
 <h4>Draggable button with a custom ghost</h4>
 
 <div class="clr-example">
-  <button class="btn btn-primary" clrDraggable>draggable
+  <button class="btn btn-primary" clrDraggable>draggable event
         <clr-draggable-ghost *clrIfDragged>
-            <button type="submit" class="btn btn-success">custom ghost</button>
+            <clr-icon shape="event" size="72" class="is-solid is-success" [ngStyle]="{'transform': 'translate3d(-50%, -50%, 0)'}"></clr-icon>
   </clr-draggable-ghost>
   </button>
 </div>

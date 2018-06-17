@@ -24,11 +24,11 @@ import {ClrIfDragged} from "./if-dragged";
 import {ClrDragEvent} from "./interfaces/drag-event";
 import {ClrDragEventListener} from "./providers/drag-event-listener";
 import {ClrDragHandleRegistrar} from "./providers/drag-handle-registrar";
-import {ClrDraggableStateRegistrar} from "./providers/draggable-state-registrar";
+import {ClrDraggableSnapshot} from "./providers/draggable-state-registrar";
 
 @Directive({
     selector: "[clrDraggable]",
-    providers: [ClrDragEventListener, ClrDragHandleRegistrar, ClrDraggableStateRegistrar, DomAdapter],
+    providers: [ClrDragEventListener, ClrDragHandleRegistrar, ClrDraggableSnapshot, DomAdapter],
     host: {class: "draggable"}
 })
 export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
@@ -39,7 +39,7 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     constructor(private el: ElementRef, private dragEventListener: ClrDragEventListener<T>,
                 private dragHandleRegistrar: ClrDragHandleRegistrar<T>, private viewContainerRef: ViewContainerRef,
                 private cfr: ComponentFactoryResolver, private injector: Injector,
-                private draggableStateRegistrar: ClrDraggableStateRegistrar<T>) {
+                private draggableStateRegistrar: ClrDraggableSnapshot<T>) {
         this.draggableEl = this.el.nativeElement;
         this.componentFactory = this.cfr.resolveComponentFactory<ClrDraggableGhost<T>>(ClrDraggableGhost);
     }
@@ -47,14 +47,14 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     @ContentChild(ClrIfDragged) customGhost: ClrDraggableGhost<T>;
 
     private createDefaultGhost(event: ClrDragEvent<T>) {
-        this.draggableStateRegistrar.register(this.draggableEl, event);
+        this.draggableStateRegistrar.capture(this.draggableEl, event);
         this.viewContainerRef.createComponent(this.componentFactory, 0, this.injector,
                                               [[this.draggableEl.cloneNode(true)]]);
     }
 
     private destroyDefaultGhost() {
         this.viewContainerRef.clear();
-        this.draggableStateRegistrar.unregister();
+        this.draggableStateRegistrar.discard();
     }
 
     @Output("clrDragStart") dragStartEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();

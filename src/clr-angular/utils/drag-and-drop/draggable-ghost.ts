@@ -9,20 +9,17 @@ import {Subscription} from "rxjs/Subscription";
 
 import {ClrDragEvent} from "./interfaces/drag-event";
 import {ClrDragEventListener} from "./providers/drag-event-listener";
-import {ClrDraggableStateRegistrar} from "./providers/draggable-state-registrar";
+import {ClrDraggableSnapshot} from "./providers/draggable-state-registrar";
 
 @Component({
     selector: "clr-draggable-ghost",
     template: `<ng-content></ng-content>`,
     host: {class: "draggable-ghost"},
-    animations: [
-        trigger("leaveAnimation", [
-            transition(":leave", [
-                style({left: "*", top: "*"}),
-                animate("0.2s ease-in-out", style({top: "{{top}}", left: "{{left}}"}))
-            ])
-        ])
-    ]
+    animations: [trigger(
+        "leaveAnimation",
+        [transition(
+            ":leave",
+            [style({left: "*", top: "*"}), animate("0.2s ease-in-out", style({top: "{{top}}", left: "{{left}}"}))])])]
 })
 export class ClrDraggableGhost<T> implements OnDestroy {
     private draggableGhostEl: Node;
@@ -35,28 +32,22 @@ export class ClrDraggableGhost<T> implements OnDestroy {
 
     @HostBinding("@leaveAnimation") leaveAnimConfig = {value: 0, params: {top: "0px", left: "0px"}};
 
-    constructor(
-        private el: ElementRef,
-        @Optional() private dragEventListener: ClrDragEventListener<T>,
-        private renderer: Renderer2,
-        private ngZone: NgZone,
-        private draggableStateRegistrar: ClrDraggableStateRegistrar<T>
-    ) {
-        if (!this.dragEventListener) {
+    constructor(private el: ElementRef, @Optional() private dragEventListener: ClrDragEventListener<T>,
+                @Optional() private draggableStateRegistrar: ClrDraggableSnapshot<T>, private renderer: Renderer2,
+                private ngZone: NgZone) {
+        if (!this.dragEventListener || !this.dragEventListener) {
             throw new Error("The clr-draggable-ghost component can only be used inside of a clrDraggable directive.");
         }
 
         this.draggableGhostEl = this.el.nativeElement;
         this.renderer.addClass(document.body, "in-drag");
 
-        this.subscriptions.push(
-            this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
-                if (!this.initPosition) {
-                    this.setupDraggableGhost(event);
-                }
-                this.moveGhostElement(event);
-            })
-        );
+        this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
+            if (!this.initPosition) {
+                this.setupDraggableGhost(event);
+            }
+            this.moveGhostElement(event);
+        }));
     }
 
     private setupDraggableGhost(event: ClrDragEvent<T>) {

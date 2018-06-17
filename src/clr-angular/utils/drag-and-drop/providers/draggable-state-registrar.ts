@@ -9,7 +9,7 @@ import {ClrDragEvent} from "../interfaces/drag-event";
 
 
 @Injectable()
-export class ClrDraggableStateRegistrar<T> {
+export class ClrDraggableSnapshot<T> {
     constructor(private domAdapter: DomAdapter) {}
 
     private draggableEl: Node;
@@ -17,13 +17,13 @@ export class ClrDraggableStateRegistrar<T> {
     private draggableElComputedStyle: CSSStyleDeclaration;
     private stateEvent: ClrDragEvent<T>;
 
-    public register(el: Node, event: ClrDragEvent<T>) {
+    public capture(el: Node, event: ClrDragEvent<T>) {
         this.draggableEl = el;
         this.draggableElClientRect = this.domAdapter.clientRect(this.draggableEl);
         this.draggableElComputedStyle = getComputedStyle(<HTMLElement>this.draggableEl);
         this.stateEvent = event;
     }
-    public unregister() {
+    public discard() {
         delete this.draggableEl;
         delete this.draggableElClientRect;
         delete this.draggableElComputedStyle;

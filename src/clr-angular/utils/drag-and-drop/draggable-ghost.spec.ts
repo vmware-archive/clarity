@@ -24,7 +24,7 @@ export default function(): void {
                     {declarations: [WithNoWrappingDraggable, ClrDraggableGhost], providers: [DomAdapter]});
 
                 expect(function() {
-                    const fixture = TestBed.createComponent(WithNoWrappingDraggable);
+                    TestBed.createComponent(WithNoWrappingDraggable);
                 })
                     .toThrowError(
                         "The clr-draggable-ghost component can only be used inside of a clrDraggable directive.");

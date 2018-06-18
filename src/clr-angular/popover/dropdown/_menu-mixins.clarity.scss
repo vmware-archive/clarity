@@ -34,8 +34,9 @@
     color: $clr-dropdown-item-text-color;
     cursor: pointer;
     display: block;
+    height: auto;
+    line-height: inherit;
     margin: 0;
-    padding: $clr-rem-1px 1rem 0;
     width: 100%;
     text-transform: none;
 
@@ -78,12 +79,9 @@
 }
 
 @mixin generate-dropdown-item-height() {
-
-    height: $clr-dropdown-item-height;
-    line-height: $clr-dropdown-item-height;
+    padding: 0.125rem 1rem;
 
     @media screen and (max-width: map-get($grid-breakpoints, sm)) {
-        height: $clr-dropdown-item-height-sm;
-        line-height: $clr-dropdown-item-height-sm;
+        padding: 0.25rem 1rem;
     }
 }

@@ -24,26 +24,14 @@ import {ClrSelect} from "./select";
 class TestComponent {
 }
 
-@Component({
-    template: `
-        <clr-select>
-            <clr-options class="test">
-                Test
-            </clr-options>
-        </clr-select>
-    `
-})
-class TestSelectWithMenu {
-}
-
 export default function(): void {
     describe("Select Component", function() {
-        let context: TestContext<ClrSelect, TestComponent>;
+        let context: TestContext<ClrSelect<string>, TestComponent>;
         let ifOpenService: IfOpenService;
 
         describe("Typescript API", function() {
             beforeEach(function() {
-                context = this.create(ClrSelect, TestComponent, [IfOpenService]);
+                context = this.create(ClrSelect, TestComponent, []);
                 ifOpenService = context.getClarityProvider(IfOpenService);
             });
 
@@ -86,7 +74,7 @@ export default function(): void {
 
         describe("View Basics", () => {
             beforeEach(function() {
-                context = this.create(ClrSelect, TestComponent, [IfOpenService]);
+                context = this.create(ClrSelect, TestComponent, []);
                 ifOpenService = context.getClarityProvider(IfOpenService);
             });
 
@@ -160,19 +148,6 @@ export default function(): void {
                 input.dispatchEvent(createKeyboardEvent(TAB, "keydown"));
 
                 expect(context.clarityDirective.closeMenuOnTabPress).toHaveBeenCalled();
-            });
-        });
-
-        describe("Select with Menu", () => {
-            beforeEach(function() {
-                context = this.create(ClrSelect, TestSelectWithMenu, [IfOpenService]);
-                ifOpenService = context.getClarityProvider(IfOpenService);
-            });
-
-            it("renders the menu projected by the consumer", () => {
-                const menus = context.clarityElement.querySelectorAll("clr-options");
-                expect(menus.length).toBe(1);
-                expect(menus[0].classList.contains("test")).toBe(true);
             });
         });
     });

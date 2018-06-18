@@ -11,6 +11,7 @@
 
     .clr-select-input-container {
         display: flex;
+        align-items: center;
     }
 
     .clr-select-input {
@@ -52,6 +53,17 @@
 
     .clr-option {
         @include generate-dropdown-item();
+    }
+
+    //NOTE: Adjust the height of the option only when its in the options menu
+    .clr-options .clr-option {
         @include generate-dropdown-item-height();
+    }
+
+    .clr-select-input .clr-option {
+        &:hover,
+        &.active {
+            background: none;
+        }
     }
 }

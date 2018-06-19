@@ -33,9 +33,9 @@ export class ClrDraggableGhost<T> implements OnDestroy {
     @HostBinding("@leaveAnimation") leaveAnimConfig = {value: 0, params: {top: "0px", left: "0px"}};
 
     constructor(private el: ElementRef, @Optional() private dragEventListener: ClrDragEventListener<T>,
-                @Optional() private draggableStateSnapshot: ClrDraggableSnapshot<T>, private renderer: Renderer2,
+                @Optional() private draggableSnapshot: ClrDraggableSnapshot<T>, private renderer: Renderer2,
                 private ngZone: NgZone) {
-        if (!this.dragEventListener && !this.draggableStateSnapshot) {
+        if (!this.dragEventListener && !this.draggableSnapshot) {
             throw new Error("The clr-draggable-ghost component can only be used inside of a clrDraggable directive.");
         }
 
@@ -51,13 +51,13 @@ export class ClrDraggableGhost<T> implements OnDestroy {
     }
 
     private setupDraggableGhost(event: ClrDragEvent<T>) {
-        if (this.draggableStateSnapshot.hasDraggableState) {
+        if (this.draggableSnapshot.hasDraggableState) {
             this.matchDraggableSize();
-            const draggableClientRectLeft = this.draggableStateSnapshot.clientRect.left;
-            const draggableClientRectTop = this.draggableStateSnapshot.clientRect.top;
+            const draggableClientRectLeft = this.draggableSnapshot.clientRect.left;
+            const draggableClientRectTop = this.draggableSnapshot.clientRect.top;
             this.initPosition = {
-                pageX: this.draggableStateSnapshot.event.dragPosition.pageX,
-                pageY: this.draggableStateSnapshot.event.dragPosition.pageY
+                pageX: this.draggableSnapshot.event.dragPosition.pageX,
+                pageY: this.draggableSnapshot.event.dragPosition.pageY
             };
             this.initDragDelta.left = this.initPosition.pageX - draggableClientRectLeft;
             this.initDragDelta.top = this.initPosition.pageY - draggableClientRectTop;
@@ -69,8 +69,8 @@ export class ClrDraggableGhost<T> implements OnDestroy {
     }
 
     private matchDraggableSize() {
-        const draggableClientRectWidth = this.draggableStateSnapshot.clientRect.width;
-        const draggableClientRectHeight = this.draggableStateSnapshot.clientRect.height;
+        const draggableClientRectWidth = this.draggableSnapshot.clientRect.width;
+        const draggableClientRectHeight = this.draggableSnapshot.clientRect.height;
 
         this.renderer.setStyle(this.draggableGhostEl, "width", `${draggableClientRectWidth}px`);
         this.renderer.setStyle(this.draggableGhostEl, "height", `${draggableClientRectHeight}px`);

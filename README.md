@@ -16,3 +16,7 @@
 * Copy the `v0.10/src/sitemap.xml` to `[new]/src/sitemap.xml`
 * Do a search and replace for `../../../` -> `./` inside of `[new]/src/app/documentation` html files for fixing routes
 * Update the HomeComponent where there are several routes to versioned documentation links
+
+### Caches
+
+Old versions of documentation are cached, so `v0.10` directory contains the source and `v0.10-cache` contains the built assets. During the build it will now copy the cache over instead of building, since this version of the documentation should be changed rarely.

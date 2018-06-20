@@ -43,10 +43,20 @@ cache:
   directories:
     - node_modules
 
-before_install:
-
 before_script:
   - npm install -g gemini@5.2.0 html-reporter@2.0.1
 
 script:
   - node scripts/travis
+
+jobs:
+  include:
+    - stage: publish
+      if: (NOT type IN (pull_request)) AND branch = master
+      before_script:
+        - npm run build
+      script:
+        - bash ./scripts/publish-build.sh
+
+
+

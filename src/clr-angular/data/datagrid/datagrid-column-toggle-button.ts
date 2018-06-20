@@ -18,7 +18,7 @@ import { ColumnToggleButtons, ColumnToggleButtonsService } from './providers/col
             <ng-content></ng-content>
         </button>
     `,
-  host: { '[class.action-right]': 'isOk()', '[style.display]': 'block' },
+  host: { '[class.action-right]': 'isOk()' },
 })
 export class ClrDatagridColumnToggleButton {
   @Input() clrType: ColumnToggleButtons;

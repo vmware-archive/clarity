@@ -36,7 +36,7 @@ export default function(): void {
             it("allows to manually force a refresh of displayed items when data mutates", function() {
                 const items: Items = context.getClarityProvider(Items);
                 let refreshed = false;
-                items.change.subscribe(() => refreshed = true);
+                items.change.subscribe(() => (refreshed = true));
                 expect(refreshed).toBe(false);
                 context.clarityDirective.dataChanged();
                 expect(refreshed).toBe(true);
@@ -155,7 +155,7 @@ export default function(): void {
                             by: comparator,
                             reverse: false,
                         },
-                        filters: [filter]
+                        filters: [filter],
                     });
                 });
 
@@ -171,7 +171,9 @@ export default function(): void {
                     filters.add(builtinStringFilter);
                     context.detectChanges();
                     expect(context.testComponent.latestState.filters).toEqual([
-                        customFilter, testStringFilter, {property: "test", value: "1234"}
+                        customFilter,
+                        testStringFilter,
+                        {property: "test", value: "1234"},
                     ]);
                 });
 
@@ -299,7 +301,7 @@ export default function(): void {
 
             describe("Template API", function() {
                 it("sets the currentSingle binding", function() {
-                    expect(selection.currentSingle).toBeNull();
+                    expect(selection.currentSingle).toBeUndefined();
                     context.testComponent.selected = 1;
                     context.detectChanges();
                     expect(selection.currentSingle).toEqual(1);
@@ -308,8 +310,68 @@ export default function(): void {
                     expect(selection.currentSingle).toBeNull();
                 });
 
+                it("does not emit a change event for on initialization, before selection", function() {
+                    let singleSelectedchangeCount: number = 0;
+                    const sub =
+                        context.clarityDirective.singleSelectedChanged.subscribe(s => singleSelectedchangeCount++);
+
+                    expect(selection.currentSingle).toBeUndefined();
+                    expect(singleSelectedchangeCount).toEqual(0);
+
+                    sub.unsubscribe();
+                });
+
+                it("it emits a change event when changing the selection", function() {
+                    let singleSelectedchangeCount: number = 0;
+                    const sub =
+                        context.clarityDirective.singleSelectedChanged.subscribe(s => singleSelectedchangeCount++);
+
+                    context.testComponent.selected = 1;
+                    context.detectChanges();
+                    expect(selection.currentSingle).toEqual(1);
+                    expect(singleSelectedchangeCount).toEqual(1);
+
+                    sub.unsubscribe();
+                });
+
+                it("it does not emit a change event when setting selection to undefined/null if already undefined/null",
+                   function() {
+                       let singleSelectedchangeCount: number = 0;
+                       const sub =
+                           context.clarityDirective.singleSelectedChanged.subscribe(s => singleSelectedchangeCount++);
+
+                       expect(selection.currentSingle).toBeUndefined();
+                       expect(singleSelectedchangeCount).toEqual(0);
+
+                       context.testComponent.selected = null;
+                       context.detectChanges();
+                       expect(selection.currentSingle).toBeUndefined();
+                       expect(singleSelectedchangeCount).toEqual(0);
+
+                       sub.unsubscribe();
+                   });
+
+                it("it does not emit a change event when selecting the same value", function() {
+                    let singleSelectedchangeCount: number = 0;
+                    const sub =
+                        context.clarityDirective.singleSelectedChanged.subscribe(s => singleSelectedchangeCount++);
+
+                    context.testComponent.selected = 1;
+                    context.detectChanges();
+                    expect(selection.currentSingle).toEqual(1);
+                    expect(singleSelectedchangeCount).toEqual(1);
+
+                    // re-assigning to the same value should not increase the singleSelectedchangeCount
+                    context.testComponent.selected = 1;
+                    context.detectChanges();
+                    expect(selection.currentSingle).toEqual(1);
+                    expect(singleSelectedchangeCount).toEqual(1);
+
+                    sub.unsubscribe();
+                });
+
                 it("offers two way binding on the currentSingle value", function() {
-                    expect(selection.currentSingle).toBeNull();
+                    expect(selection.currentSingle).toBeUndefined();
                     context.testComponent.selected = 1;
                     context.detectChanges();
                     expect(selection.currentSingle).toEqual(1);
@@ -417,7 +479,7 @@ export default function(): void {
 
         <clr-dg-footer>{{items.length}} items</clr-dg-footer>
     </clr-datagrid>
-`
+`,
 })
 class FullTest {
     items = [1, 2, 3];
@@ -456,7 +518,7 @@ class FullTest {
 
         <clr-dg-footer>{{items.length}} items</clr-dg-footer>
     </clr-datagrid>
-`
+`,
 })
 class NgForTest {
     items = [1, 2, 3];
@@ -475,7 +537,7 @@ class NgForTest {
 
         <clr-dg-footer>{{items.length}} items</clr-dg-footer>
     </clr-datagrid>
-`
+`,
 })
 class TrackByTest {
     items = [1, 2, 3];
@@ -490,7 +552,7 @@ class TrackByTest {
 @Component({
     template: `
     <multi-select-test [items]="items" [selected]="selected"></multi-select-test>
-    `
+    `,
 })
 class OnPushTest {
     items = [1, 2, 3];
@@ -509,7 +571,7 @@ class OnPushTest {
             <clr-dg-cell>{{item * item}}</clr-dg-cell>
         </clr-dg-row>
     </clr-datagrid>`,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class MultiSelectionTest {
     @Input() items: any[] = [];
@@ -529,7 +591,7 @@ class MultiSelectionTest {
 
         <clr-dg-footer (click)="selected = null">{{selected}}</clr-dg-footer>
     </clr-datagrid>
-`
+`,
 })
 class SingleSelectionTest {
     items = [1, 2, 3];
@@ -554,7 +616,7 @@ class SingleSelectionTest {
 
         <clr-dg-footer>{{items.length}} items</clr-dg-footer>
     </clr-datagrid>
-`
+`,
 })
 class ActionableRowTest {
     items = [1, 2, 3];
@@ -577,13 +639,12 @@ class ActionableRowTest {
 
         <clr-dg-footer>{{items.length}} items</clr-dg-footer>
     </clr-datagrid>
-`
+`,
 })
 class ExpandableRowTest {
     items = [1, 2, 3];
     expandable = true;
 }
-
 
 @Component({
     template: `
@@ -604,7 +665,7 @@ class ExpandableRowTest {
 
             <clr-dg-footer>{{items.length}} items</clr-dg-footer>
         </clr-datagrid>
-    `
+    `,
 })
 class ChocolateClrDgItemsTest {
     items = [1, 2, 3];
@@ -631,7 +692,7 @@ class ChocolateClrDgItemsTest {
 
             <clr-dg-footer>{{items.length}} items</clr-dg-footer>
         </clr-datagrid>
-    `
+    `,
 })
 class ChocolateNgForTest {
     items = [1, 2, 3];
@@ -663,7 +724,6 @@ class TestStringFilter implements ClrDatagridStringFilterInterface<number> {
     }
 }
 
-
 @Component({
     selector: "hidden-column-test",
     template: `
@@ -679,7 +739,7 @@ class TestStringFilter implements ClrDatagridStringFilterInterface<number> {
             <clr-dg-cell>{{item}}</clr-dg-cell>
             <clr-dg-cell>{{item * item}}</clr-dg-cell>
         </clr-dg-row>
-    </clr-datagrid>`
+    </clr-datagrid>`,
 })
 class HiddenColumnTest {
     items = [1, 2, 3];

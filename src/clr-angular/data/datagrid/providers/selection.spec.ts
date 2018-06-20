@@ -250,7 +250,18 @@ export default function(): void {
         });
 
         describe("client-side selection and pagination", function() {
-            const items = [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}, {id: 8}, {id: 9}, {id: 10}];
+            const items = [
+                {id: 1},
+                {id: 2},
+                {id: 3},
+                {id: 4},
+                {id: 5},
+                {id: 6},
+                {id: 7},
+                {id: 8},
+                {id: 9},
+                {id: 10},
+            ];
 
             function cloneItems() {
                 return items.map(item => {
@@ -312,6 +323,16 @@ export default function(): void {
                     pageInstance.current = 3;
                     expect(selectionInstance.isSelected(items[5])).toBe(true);
                 });
+
+                it("should clear selection if it is no longer in dataset", fakeAsync(() => {
+                       selectionInstance.currentSingle = items[2];
+                       pageInstance.current = 2;
+                       expect(selectionInstance.isSelected(items[2])).toBe(true);
+
+                       itemsInstance.all = cloneItems().splice(2, 1);
+                       tick();
+                       expect(selectionInstance.currentSingle).toBe(undefined);
+                   }));
 
                 it("does not apply trackBy to single selection with no items", () => {
                     const emptyItems = new Items(filtersInstance, sortInstance, pageInstance);

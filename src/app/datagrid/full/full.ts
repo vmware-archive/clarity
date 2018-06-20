@@ -11,12 +11,11 @@ import {ColorFilter} from "../utils/color-filter";
 import {PokemonComparator} from "../utils/pokemon-comparator";
 import {PokemonFilter} from "../utils/pokemon-filter";
 
-
 @Component({
     selector: "clr-datagrid-full-demo",
     providers: [Inventory],
     templateUrl: "./full.html",
-    styleUrls: ["../datagrid.demo.scss"]
+    styleUrls: ["../datagrid.demo.scss"],
 })
 export class DatagridFullDemo {
     options = {
@@ -82,18 +81,29 @@ export class DatagridFullDemo {
                 if (filter instanceof ColorFilter) {
                     filters.color = (<ColorFilter>filter).listSelected();
                 } else {
-                    const {property, value} = <{property: string, value: string}>filter;
+                    const {property, value} = < {
+                        property: string;
+                        value: string
+                    }
+                    > filter;
                     filters[property] = [value];
                 }
             }
         }
         this.inventory.filter(filters)
-            .sort(<{by: string, reverse: boolean}>state.sort)
+            .sort(<{
+                      by: string;
+                      reverse: boolean
+                  }>state.sort)
             .fetch(state.page && state.page.from, state.page && state.page.size)
             .then((result: FetchResult) => {
                 this.users = result.users;
                 this.total = result.length;
                 this.loading = false;
             });
+    }
+
+    trackById(idx, item) {
+        return item.id;
     }
 }

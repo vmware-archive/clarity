@@ -83,34 +83,39 @@ export class Selection {
             const trackBy: TrackByFunction<any> = this._items.trackBy;
             let selectionUpdated: boolean = false;
 
-            updatedItems.forEach((item, index) => {
-              const ref = trackBy(index, item);
-              // Look in current selected refs array if item is selected, and update actual value
-              const selectedIndex = this.prevSelectionRefs.indexOf(ref);
-              if (selectedIndex > -1) {
-                leftOver[selectedIndex] = item;
-                selectionUpdated = true;
-              }
-            });
+            // TODO: revisit this when we work on https://github.com/vmware/clarity/issues/2342
+            // currently, the selection is cleared when filter is applied, so the logic inside
+            // the if statement below results in broken behavior.
+            if (leftOver.length > 0) {
+              updatedItems.forEach((item, index) => {
+                const ref = trackBy(index, item);
+                // Look in current selected refs array if item is selected, and update actual value
+                const selectedIndex = this.prevSelectionRefs.indexOf(ref);
+                if (selectedIndex > -1) {
+                  leftOver[selectedIndex] = item;
+                  selectionUpdated = true;
+                }
+              });
 
-            // Filter out any unmatched items if we're using smart datagrids where we expect all items to be
-            // present
-            if (this._items.smart) {
-              leftOver = leftOver.filter(selected => updatedItems.indexOf(selected) > -1);
-              if (this.current.length !== leftOver.length) {
-                selectionUpdated = true;
+              // Filter out any unmatched items if we're using smart datagrids where we expect all items to be
+              // present
+              if (this._items.smart) {
+                leftOver = leftOver.filter(selected => updatedItems.indexOf(selected) > -1);
+                if (this.current.length !== leftOver.length) {
+                  selectionUpdated = true;
+                }
               }
+
+              // TODO: Discussed this with Eudes and this is fine for now.
+              // But we need to figure out a different pattern for the
+              // child triggering the parent change detection problem.
+              // Using setTimeout for now to fix this.
+              setTimeout(() => {
+                if (selectionUpdated) {
+                  this.current = leftOver;
+                }
+              }, 0);
             }
-
-            // TODO: Discussed this with Eudes and this is fine for now.
-            // But we need to figure out a different pattern for the
-            // child triggering the parent change detection problem.
-            // Using setTimeout for now to fix this.
-            setTimeout(() => {
-              if (selectionUpdated) {
-                this.current = leftOver;
-              }
-            }, 0);
             break;
           }
 
@@ -124,6 +129,7 @@ export class Selection {
 
   public clearSelection(): void {
     this.current.length = 0;
+    this.prevSelectionRefs = [];
     this.emitChange();
   }
 

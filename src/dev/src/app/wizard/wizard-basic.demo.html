@@ -7,31 +7,34 @@
 <button class="btn btn-primary" (click)="wizard.open()">Open Wizard</button>
 
 <clr-wizard #wizard [(clrWizardOpen)]="open">
-    <clr-wizard-title>Wizard Title</clr-wizard-title>
+  <clr-wizard-title>Wizard Title</clr-wizard-title>
 
-    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
-    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+  <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+  <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
 
-    <clr-wizard-page>
-        <ng-template clrPageTitle>Title for page 1</ng-template> <!-- mandatory -->
-        <ng-template clrPageNavTitle>Step 1</ng-template> <!-- optional -->
-        <p class="content-for-page-1">Content for step 1</p>
-    </clr-wizard-page>
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Title for page 1</ng-template>
+    <!-- mandatory -->
+    <ng-template clrPageNavTitle>Step 1</ng-template>
+    <!-- optional -->
+    <p class="content-for-page-1">Content for step 1</p>
+  </clr-wizard-page>
 
-    <clr-wizard-page>
-        <ng-template clrPageTitle>Title for page 2</ng-template> <!-- mandatory -->
-        <ng-template clrPageNavTitle>Step 2</ng-template> <!-- optional -->
-        <p class="content-for-page-2">Content for step 2</p>
-    </clr-wizard-page>
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Title for page 2</ng-template>
+    <!-- mandatory -->
+    <ng-template clrPageNavTitle>Step 2</ng-template>
+    <!-- optional -->
+    <p class="content-for-page-2">Content for step 2</p>
+  </clr-wizard-page>
 
-    <clr-wizard-page>
-        <ng-template clrPageTitle>Title for page 3</ng-template> <!-- mandatory -->
-        <ng-template clrPageNavTitle>Step 3</ng-template> <!-- optional -->
-        <p class="content-for-page-3">Content for step 3</p>
-    </clr-wizard-page>
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Title for page 3</ng-template>
+    <!-- mandatory -->
+    <ng-template clrPageNavTitle>Step 3</ng-template>
+    <!-- optional -->
+    <p class="content-for-page-3">Content for step 3</p>
+  </clr-wizard-page>
 </clr-wizard>
-
-<clr-example [clrLanguage]="'typescript'" [clrCode]="code"></clr-example>
-<clr-example [clrLanguage]="'html'" [clrCode]="html"></clr-example>

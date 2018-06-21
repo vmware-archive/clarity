@@ -6,13 +6,11 @@
 
 import { Component, ViewChild } from '@angular/core';
 
-import { ClrCodeHighlight } from '@clr/angular';
 import { ClrWizard } from '@clr/angular';
 
 @Component({ selector: 'clr-wizard-alt-cancel', templateUrl: './wizard-alt-cancel.demo.html' })
 export class WizardAltCancelDemo {
   @ViewChild('wizard') wizard: ClrWizard;
-  @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
   public showCancelConfirm: boolean = false;
 
@@ -31,53 +29,4 @@ export class WizardAltCancelDemo {
       this.wizard.close();
     }
   }
-
-  code: string = `
-import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "@clr/angular";
-
-@Component({
-    ...
-})
-export class WizardAltCancelDemo {
-    @ViewChild("wizard") wizard: Wizard;
-
-    public showCancelConfirm: boolean = false;
-
-    public pageCustomCancel(): void {
-        this.showCancelConfirm = true;
-    }
-
-    public doPageCancel() {
-        this.showCancelConfirm = false;
-        this.wizard.close();
-    }
-
-    public doCancel() {
-        if (confirm("Do you really, really want to close the wizard?")) {
-            this.showCancelConfirm = false;
-            this.wizard.close();
-        }
-    }
-}
-`;
-
-  html: string = `
-<clr-wizard #wizard [(clrWizardOpen)]="open" (clrWizardOnCancel)="doCancel()" [clrWizardPreventDefaultCancel]="true">
-    <clr-wizard-title>Wizard with alternate cancel</clr-wizard-title>
-
-    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
-    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
-
-    <clr-wizard-page>
-        ...
-    </clr-wizard-page>
-
-    <clr-wizard-page (clrWizardPageOnCancel)="pageCustomCancel()" [clrWizardPagePreventDefaultCancel]="true">
-        ...
-    </clr-wizard-page>
-</clr-wizard>
-`;
 }

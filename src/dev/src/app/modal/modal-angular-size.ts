@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-modal-angular-size-demo',
-  styleUrls: ['./modal.demo.scss'],
   templateUrl: './modal-angular-size.demo.html',
 })
 export class ModalAngularSizeDemo {

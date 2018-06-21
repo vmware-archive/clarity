@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-lists-unstyled-demo',
-  styleUrls: ['lists.demo.scss'],
   templateUrl: './lists-unstyled.html',
 })
 export class ListsUnstyledDemo {}

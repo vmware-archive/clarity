@@ -8,18 +8,6 @@ import { Component } from '@angular/core';
 import { Inventory } from '../inventory/inventory';
 import { User } from '../inventory/user';
 
-const EXAMPLE = `
-<clr-datagrid>
-    <-- ... -->
-    <clr-dg-placeholder>We couldn't find any users!</clr-dg-placeholder>
-    
-    <clr-dg-row *ngFor="let user of users">
-        <-- ... -->
-    </clr-dg-row>
-    <-- ... -->
-</clr-datagrid>
-`;
-
 @Component({
   selector: 'clr-datagrid-placeholder-demo',
   providers: [Inventory],
@@ -27,6 +15,5 @@ const EXAMPLE = `
   styleUrls: ['../datagrid.demo.scss'],
 })
 export class DatagridPlaceholderDemo {
-  example = EXAMPLE;
   users: User[] = [];
 }

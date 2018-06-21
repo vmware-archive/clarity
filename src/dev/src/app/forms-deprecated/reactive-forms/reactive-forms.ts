@@ -6,16 +6,11 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { EXAMPLES } from './examples';
-
 @Component({
   selector: 'clr-reactive-forms-demo',
-  styleUrls: ['./reactive-forms.scss'],
   templateUrl: './reactive-forms.html',
 })
 export class ReactiveFormsDemo {
-  examples = EXAMPLES;
-
   employeeAddressForm = new FormGroup({
     fullName: new FormControl('', Validators.required),
     address: new FormGroup({

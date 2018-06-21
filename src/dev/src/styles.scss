@@ -1,0 +1,50 @@
+@import '../../clr-angular/utils/layers.clarity';
+@import '../../clr-angular/color/utils/colors.clarity';
+
+.clr-example {
+  margin-top: 1rem;
+
+  .main-container {
+    height: auto;
+    padding-top: 0;
+
+    .content-area {
+      overflow-y: hidden;
+    }
+  }
+
+  &.squeeze {
+    padding: 2rem;
+  }
+}
+
+.modal.static {
+  position: relative;
+  padding: 3rem;
+  z-index: map-get($clr-layers, sidepanel-bg) - 1;
+}
+
+.modal-backdrop.static {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: map-get($clr-layers, sidepanel-bg) - 2;
+}
+
+.modal-icon {
+  float: left;
+  color: $clr-green;
+  font-size: 3rem;
+  margin-right: 0.5rem;
+}
+
+.backdrop-example-container {
+  position: relative;
+  padding: 1rem;
+}
+
+.bump-down {
+  margin-top: 1rem !important;
+}

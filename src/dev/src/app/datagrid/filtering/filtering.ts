@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 
 import { Inventory } from '../inventory/inventory';
 import { User } from '../inventory/user';
-import { EXAMPLES } from './examples';
 
 @Component({
   selector: 'clr-datagrid-filtering-demo',
@@ -16,7 +15,6 @@ import { EXAMPLES } from './examples';
   styleUrls: ['../datagrid.demo.scss'],
 })
 export class DatagridFilteringDemo {
-  examples = EXAMPLES;
   users: User[];
 
   constructor(inventory: Inventory) {

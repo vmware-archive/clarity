@@ -5,5 +5,5 @@
  */
 import { Component } from '@angular/core';
 
-@Component({ selector: 'clr-login-demo', styleUrls: ['./login.demo.scss'], templateUrl: './login.demo.html' })
+@Component({ selector: 'clr-login-demo', templateUrl: './login.demo.html' })
 export class LoginDemo {}

@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-labels-clickable-demo',
-  styleUrls: ['./labels.demo.scss'],
   templateUrl: './labels-clickable.demo.html',
 })
 export class LabelsClickableDemo {}

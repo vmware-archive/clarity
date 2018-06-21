@@ -5,78 +5,12 @@
  */
 import { Component } from '@angular/core';
 
-const EXAMPLE_HTML = `
-<recursive-structure [item]="root"></recursive-structure>
-`;
-
-const EXAMPLE_TS = `
-import {Component, Input} from "@angular/core";
-
-@Component({
-    selector: "recursive-structure",
-    template: \`
-        <clr-tree-node>
-            {{item.name}}
-            <ng-template [clrIfExpanded]="item.expanded" *ngFor="let child of item.children">
-                <recursive-structure
-                    [item]="child"
-                    ngProjectAs="clr-tree-node">
-                </recursive-structure>
-            </ng-template>
-        </clr-tree-node>
-    \`
-})
-export class RecursiveStructureComponent {
-    @Input() item: any;
-    @Input() selected: boolean = false;
-}
-`;
-
-const EXAMPLE_DATA = `
-root = {
-    name: "A1",
-    expanded: true,
-    children: [
-        {
-            name: "B1",
-            children: [
-                { name: "C1" },
-                { name: "C2" },
-                { name: "C3" }
-            ]
-        },
-        {
-            name: "B2",
-            expanded: true,
-            children: [
-                { name: "D1" },
-                { name: "D2" },
-                { name: "D3" }
-            ]
-        },
-        {
-            name: "B3",
-            expanded: true,
-            children: [
-                { name: "E1" },
-                { name: "E2" },
-                { name: "E3" }
-            ]
-        }
-    ]
-};
-`;
-
 @Component({
   selector: 'clr-tree-recursive-demo',
   styleUrls: ['../tree-view.demo.scss'],
   templateUrl: './recursive-tree.html',
 })
 export class RecursiveTreeDemo {
-  exampleHTML = EXAMPLE_HTML;
-  exampleTS = EXAMPLE_TS;
-  exampleDATA = EXAMPLE_DATA;
-
   root = {
     name: 'A1',
     expanded: true,

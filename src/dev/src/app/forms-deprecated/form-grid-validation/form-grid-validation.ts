@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-forms-demo-grid-validation',
-  styleUrls: ['./form-grid-validation.demo.scss'],
   templateUrl: './form-grid-validation.demo.html',
 })
 export class FormGridValidationDemo {

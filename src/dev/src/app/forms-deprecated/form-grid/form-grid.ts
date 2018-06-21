@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-forms-demo-grid',
-  styleUrls: ['./form-grid.demo.scss'],
   templateUrl: './form-grid.demo.html',
 })
 export class FormGridDemo {}

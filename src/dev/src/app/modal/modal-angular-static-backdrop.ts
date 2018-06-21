@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-modal-angular-static-backdrop-demo',
-  styleUrls: ['./modal.demo.scss'],
   templateUrl: './modal-angular-static-backdrop.demo.html',
 })
 export class ModalAngularStaticBackdropDemo {

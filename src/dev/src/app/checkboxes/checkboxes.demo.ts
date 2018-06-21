@@ -10,7 +10,6 @@ import { Status } from './data/status';
 
 @Component({
   selector: 'clr-checkboxes-demo',
-  styleUrls: ['./checkboxes.demo.scss'],
   templateUrl: './checkboxes.demo.html',
 })
 export class CheckboxesDemo {

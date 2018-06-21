@@ -5,48 +5,6 @@
  */
 import { Component } from '@angular/core';
 
-const EXAMPLE_1 = `
-<clr-tree-node>
-    Root Node
-    <ng-template clrIfExpanded>
-        <clr-tree-node  *ngFor="let node of nodes">
-            {{node}}
-            <ng-template clrIfExpanded>
-                <clr-tree-node  *ngFor="let node of nodes">
-                    {{node}}
-                    <ng-template clrIfExpanded>
-                        <clr-tree-node  *ngFor="let node of nodes">
-                            {{node}}
-                        </clr-tree-node>
-                    </ng-template>
-                </clr-tree-node>
-            </ng-template>
-        </clr-tree-node>
-    </ng-template>
-</clr-tree-node>
-`;
-
-const EXAMPLE_2 = `
-<clr-tree-node [(clrSelected)]="selected">
-    Root Node
-    <ng-template clrIfExpanded>
-        <clr-tree-node  *ngFor="let node of nodes">
-            {{node}}
-            <ng-template clrIfExpanded>
-                <clr-tree-node  *ngFor="let node of nodes">
-                    {{node}}
-                    <ng-template clrIfExpanded>
-                        <clr-tree-node  *ngFor="let node of nodes">
-                            {{node}}
-                        </clr-tree-node>
-                    </ng-template>
-                </clr-tree-node>
-            </ng-template>
-        </clr-tree-node>
-    </ng-template>
-</clr-tree-node>
-`;
-
 @Component({
   selector: 'clr-tree-node-10k-demo',
   styleUrls: ['../tree-view.demo.scss'],
@@ -54,9 +12,6 @@ const EXAMPLE_2 = `
 })
 export class TreeNode10kDemo {
   nodes: string[] = Array(10).fill('Tree Node');
-
-  example1 = EXAMPLE_1;
-  example2 = EXAMPLE_2;
 
   selected: boolean = false;
 }

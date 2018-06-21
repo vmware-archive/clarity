@@ -1,4 +1,3 @@
-
 <!--
   ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
@@ -6,147 +5,72 @@
   -->
 
 <form class="test-select">
-    <section class="form-block">
-        <label>Select Boxes</label>
-        <div class="form-group">
-            <label for="selects_1">This is a select box</label>
-            <div class="select">
-                <select id="selects_1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>50000000</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="selects_2">Text field paired with a select</label>
-            <input type="text" id="selects_2" placeholder="Test">
-            <div class="select">
-                <select id="selects_3">
-                    <option>New York</option>
-                    <option>San Francisco</option>
-                    <option>Austin</option>
-                    <option>Paris</option>
-                    <option>Seattle</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="selects_4">Disabled select</label>
-            <div class="select disabled">
-                <select id="selects_4" disabled>
-                    <option>New York</option>
-                    <option>San Francisco</option>
-                    <option>Austin</option>
-                    <option>Paris</option>
-                    <option>Seattle</option>
-                </select>
-            </div>
-        </div>
-    </section>
+  <section class="form-block">
+    <label>Select Boxes</label>
+    <div class="form-group">
+      <label for="selects_1">This is a select box</label>
+      <div class="select">
+        <select id="selects_1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>50000000</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="selects_2">Text field paired with a select</label>
+      <input type="text" id="selects_2" placeholder="Test">
+      <div class="select">
+        <select id="selects_3">
+          <option>New York</option>
+          <option>San Francisco</option>
+          <option>Austin</option>
+          <option>Paris</option>
+          <option>Seattle</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="selects_4">Disabled select</label>
+      <div class="select disabled">
+        <select id="selects_4" disabled>
+          <option>New York</option>
+          <option>San Francisco</option>
+          <option>Austin</option>
+          <option>Paris</option>
+          <option>Seattle</option>
+        </select>
+      </div>
+    </div>
+  </section>
 
-    <section class="form-block">
-        <label>Multi Select</label>
-        <div class="form-group">
-            <label for="selects_1">Multi Select</label>
-            <div class="select multiple">
-                <select id="selects_5" multiple>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>50000000</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="selects_4">Disabled select</label>
-            <div class="select multiple disabled">
-                <select id="selects_6" multiple disabled>
-                    <option>New York</option>
-                    <option>San Francisco</option>
-                    <option>Austin</option>
-                    <option>Paris</option>
-                    <option>Seattle</option>
-                </select>
-            </div>
-        </div>
-    </section>
+  <section class="form-block">
+    <label>Multi Select</label>
+    <div class="form-group">
+      <label for="selects_1">Multi Select</label>
+      <div class="select multiple">
+        <select id="selects_5" multiple>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>50000000</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="selects_4">Disabled select</label>
+      <div class="select multiple disabled">
+        <select id="selects_6" multiple disabled>
+          <option>New York</option>
+          <option>San Francisco</option>
+          <option>Austin</option>
+          <option>Paris</option>
+          <option>Seattle</option>
+        </select>
+      </div>
+    </div>
+  </section>
 </form>
-
-<pre>
-    <code clr-code-highlight="language-html">
-    &lt;form&gt;
-        &lt;section class=&quot;form-block&quot;&gt;
-            &lt;label&gt;Select Boxes&lt;/label&gt;
-            &lt;div class=&quot;form-group&quot;&gt;
-                &lt;label for=&quot;selects_1&quot;&gt;This is a select box&lt;/label&gt;
-                &lt;div class=&quot;select&quot;&gt;
-                    &lt;select id=&quot;selects_1&quot;&gt;
-                        &lt;option&gt;1&lt;/option&gt;
-                        &lt;option&gt;2&lt;/option&gt;
-                        &lt;option&gt;3&lt;/option&gt;
-                        &lt;option&gt;4&lt;/option&gt;
-                        &lt;option&gt;50000000&lt;/option&gt;
-                    &lt;/select&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class=&quot;form-group&quot;&gt;
-                &lt;label for=&quot;selects_2&quot;&gt;Text field paired with a select&lt;/label&gt;
-                &lt;input type=&quot;text&quot; id=&quot;selects_2&quot; placeholder=&quot;Test&quot;&gt;
-                &lt;div class=&quot;select&quot;&gt;
-                    &lt;select id=&quot;selects_3&quot;&gt;
-                        &lt;option&gt;New York&lt;/option&gt;
-                        &lt;option&gt;San Francisco&lt;/option&gt;
-                        &lt;option&gt;Austin&lt;/option&gt;
-                        &lt;option&gt;Paris&lt;/option&gt;
-                        &lt;option&gt;Seattle&lt;/option&gt;
-                    &lt;/select&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class=&quot;form-group&quot;&gt;
-                &lt;label for=&quot;selects_4&quot;&gt;Disabled select&lt;/label&gt;
-                &lt;div class=&quot;select disabled&quot;&gt;
-                    &lt;select id=&quot;selects_4&quot; disabled&gt;
-                        &lt;option&gt;New York&lt;/option&gt;
-                        &lt;option&gt;San Francisco&lt;/option&gt;
-                        &lt;option&gt;Austin&lt;/option&gt;
-                        &lt;option&gt;Paris&lt;/option&gt;
-                        &lt;option&gt;Seattle&lt;/option&gt;
-                    &lt;/select&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/section&gt;
-
-        &lt;section class=&quot;form-block&quot;&gt;
-            &lt;label&gt;Multi Select&lt;/label&gt;
-            &lt;div class=&quot;form-group&quot;&gt;
-                &lt;label for=&quot;selects_1&quot;&gt;Multi Select&lt;/label&gt;
-                &lt;div class=&quot;select multiple&quot;&gt;
-                    &lt;select id=&quot;selects_5&quot; multiple&gt;
-                        &lt;option&gt;1&lt;/option&gt;
-                        &lt;option&gt;2&lt;/option&gt;
-                        &lt;option&gt;3&lt;/option&gt;
-                        &lt;option&gt;4&lt;/option&gt;
-                        &lt;option&gt;50000000&lt;/option&gt;
-                    &lt;/select&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class=&quot;form-group&quot;&gt;
-                &lt;label for=&quot;selects_4&quot;&gt;Disabled select&lt;/label&gt;
-                &lt;div class=&quot;select multiple disabled&quot;&gt;
-                    &lt;select id=&quot;selects_6&quot; multiple disabled&gt;
-                        &lt;option&gt;New York&lt;/option&gt;
-                        &lt;option&gt;San Francisco&lt;/option&gt;
-                        &lt;option&gt;Austin&lt;/option&gt;
-                        &lt;option&gt;Paris&lt;/option&gt;
-                        &lt;option&gt;Seattle&lt;/option&gt;
-                    &lt;/select&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/section&gt;
-    &lt;/form&gt;
-    </code>
-</pre>

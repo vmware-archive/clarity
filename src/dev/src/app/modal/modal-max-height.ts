@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-modal-max-height-demo',
-  styleUrls: ['./modal.demo.scss'],
   templateUrl: './modal-max-height.html',
 })
 export class ModalMaxHeightDemo {

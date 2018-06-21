@@ -5,32 +5,16 @@
   -->
 
 <p>
-    Try it live:
-    <button class="btn btn-primary" (click)="basic = true">Show modal</button>
+  Try it live:
+  <button class="btn btn-primary" (click)="basic = true">Show modal</button>
 </p>
 <clr-modal [(clrModalOpen)]="basic">
-    <h3 class="modal-title">I have a nice title</h3>
-    <div class="modal-body">
-        <p>But not much to say...</p>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>
-        <button type="button" class="btn btn-primary" (click)="basic = false">Ok</button>
-    </div>
+  <h3 class="modal-title">I have a nice title</h3>
+  <div class="modal-body">
+    <p>But not much to say...</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="basic = false">Ok</button>
+  </div>
 </clr-modal>
-
-<pre>
-    <code clr-code-highlight="language-html">
-    &lt;button class=&quot;btn btn-primary&quot; (click)=&quot;opened = true&quot;&gt;Show modal&lt;/button&gt;
-        &lt;clr-modal [(clrModalOpen)]=&quot;opened&quot;&gt;
-        &lt;h3 class=&quot;modal-title&quot;&gt;I have a nice title&lt;/h3&gt;
-        &lt;div class=&quot;modal-body&quot;&gt;
-            &lt;p&gt;But not much to say...&lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;modal-footer&quot;&gt;
-            &lt;button type=&quot;button&quot; class=&quot;btn btn-outline&quot; (click)=&quot;opened = false&quot;&gt;Cancel&lt;/button&gt;
-            &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; (click)=&quot;opened = false&quot;&gt;Ok&lt;/button&gt;
-        &lt;/div&gt;
-    &lt;/clr-modal&gt;
-    </code>
-</pre>

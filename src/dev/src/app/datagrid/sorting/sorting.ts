@@ -9,7 +9,6 @@ import { ClrDatagridSortOrder } from '@clr/angular';
 import { Inventory } from '../inventory/inventory';
 import { User } from '../inventory/user';
 import { PokemonComparator } from '../utils/pokemon-comparator';
-import { EXAMPLES } from './examples';
 
 @Component({
   selector: 'clr-datagrid-sorting-demo',
@@ -18,7 +17,6 @@ import { EXAMPLES } from './examples';
   styleUrls: ['../datagrid.demo.scss'],
 })
 export class DatagridSortingDemo {
-  examples = EXAMPLES;
   users: User[];
   usersDeprecated: User[];
   sortOrder: ClrDatagridSortOrder = ClrDatagridSortOrder.UNSORTED;

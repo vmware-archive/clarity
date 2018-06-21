@@ -9,7 +9,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { ClarityModule } from '@clr/angular';
-import { CodeExample } from '../_utils/code-example';
 
 import { WizardAltCancelDemo } from './wizard-alt-cancel.demo';
 import { WizardAltNextDemo } from './wizard-alt-next.demo';
@@ -45,7 +44,6 @@ import { ROUTING } from './wizard.demo.routing';
     WizardAltCancelDemo,
     WizardInlineDemo,
     WizardJumpToDemo,
-    CodeExample,
     WizardAltNextDemo,
     WizardForceForwardDemo,
     WizardStopNavigation,
@@ -64,7 +62,6 @@ import { ROUTING } from './wizard.demo.routing';
     WizardInlineDemo,
     WizardResetDemo,
     WizardJumpToDemo,
-    CodeExample,
     WizardAltNextDemo,
     WizardForceForwardDemo,
     WizardStopNavigation,

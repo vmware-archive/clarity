@@ -31,7 +31,8 @@
             "styles": [
               "src/clr-angular/main.scss",
               "src/clr-icons/clr-icons.scss",
-              "node_modules/prismjs/themes/prism-solarizedlight.css"
+              "node_modules/prismjs/themes/prism-solarizedlight.css",
+              "src/dev/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["node_modules"]

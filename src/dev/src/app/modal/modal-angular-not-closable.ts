@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-modal-angular-not-closable-demo',
-  styleUrls: ['./modal.demo.scss'],
   templateUrl: './modal-angular-not-closable.demo.html',
 })
 export class ModalAngularNotClosableDemo {

@@ -7,42 +7,37 @@
 <h4>Testing Github Issue #1005</h4>
 
 <div class="row">
-    <div class="col-xs-12" [class.col-md-5]="showHalf">
-        <clr-tree-node *ngFor="let project of projects">
-            <clr-icon shape="folder"></clr-icon>
-            {{ project.name }}
-            <a class="label badge-link">
-                {{ project.badge }}
+  <div class="col-xs-12" [class.col-md-5]="showHalf">
+    <clr-tree-node *ngFor="let project of projects">
+      <clr-icon shape="folder"></clr-icon>
+      {{ project.name }}
+      <a class="label badge-link">
+        {{ project.badge }}
+      </a>
+      <ng-container *ngFor="let version of project.versions" ngProjectAs="clr-tree-node">
+        <ng-container *ngIf="version.languages.length > 1; else versionBlock">
+          <ng-template clrIfExpanded>
+            <clr-tree-node>
+              {{ version.number }}
+              <ng-template clrIfExpanded>
+                <clr-tree-node *ngFor="let language of version.languages">
+                  <a class="clr-treenode-link tree-link">
+                    {{ language.name }}
+                  </a>
+                </clr-tree-node>
+              </ng-template>
+            </clr-tree-node>
+          </ng-template>
+        </ng-container>
+
+        <ng-template #versionBlock>
+          <clr-tree-node *clrIfExpanded>
+            <a class="clr-treenode-link tree-link">
+              {{ version.number }}
             </a>
-            <ng-container *ngFor="let version of project.versions" ngProjectAs="clr-tree-node">
-                <ng-container *ngIf="version.languages.length > 1; else versionBlock">
-                    <ng-template clrIfExpanded>
-                        <clr-tree-node>
-                            {{ version.number }}
-                            <ng-template clrIfExpanded>
-                                <clr-tree-node *ngFor="let language of version.languages">
-                                    <a class="clr-treenode-link tree-link">
-                                        {{ language.name }}
-                                    </a>
-                                </clr-tree-node>
-                            </ng-template>
-                        </clr-tree-node>
-                    </ng-template>
-                </ng-container>
-
-                <ng-template #versionBlock>
-                    <clr-tree-node *clrIfExpanded>
-                        <a class="clr-treenode-link tree-link">
-                            {{ version.number }}
-                        </a>
-                    </clr-tree-node>
-                </ng-template>
-            </ng-container>
-        </clr-tree-node>
-    </div>
-</div>
-
-<div *ngIf="showCode">
-    <clr-example [clrCode]="exampleHTML" clrLanguage="html"></clr-example>
-    <clr-example [clrCode]="exampleTS" clrLanguage="typescript"></clr-example>
+          </clr-tree-node>
+        </ng-template>
+      </ng-container>
+    </clr-tree-node>
+  </div>
 </div>

@@ -8,28 +8,6 @@ import { Component } from '@angular/core';
 import { Inventory } from '../inventory/inventory';
 import { User } from '../inventory/user';
 
-const EXAMPLE = `
-<clr-datagrid>
-    <clr-dg-column>User ID</clr-dg-column>
-    <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
-    <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
-    <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
-    <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
-
-    <clr-dg-row *clrDgItems="let user of users">
-        <clr-dg-cell>{{user.id}}</clr-dg-cell>
-        <clr-dg-cell>{{user.name}}</clr-dg-cell>
-        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
-        <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
-        <clr-dg-cell>
-            <span class="color-square" [style.backgroundColor]="user.color"></span>
-        </clr-dg-cell>
-    </clr-dg-row>
-
-    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
-</clr-datagrid>
-`;
-
 @Component({
   selector: 'clr-datagrid-binding-properties-demo',
   providers: [Inventory],
@@ -37,7 +15,6 @@ const EXAMPLE = `
   styleUrls: ['../datagrid.demo.scss'],
 })
 export class DatagridBindingPropertiesDemo {
-  example = EXAMPLE;
   users: User[];
 
   nameFilter = 'd';

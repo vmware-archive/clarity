@@ -5,80 +5,39 @@
   -->
 
 <div class="clr-example">
-    <h4 class="stack-header">
-        <span class="stack-title">Static stack view</span>
-        <span class="stack-actions">
-            <button class="stack-action btn btn-sm btn-link" type="button">Edit</button>
-        </span>
-    </h4>
-    <dl class="stack-view">
+  <h4 class="stack-header">
+    <span class="stack-title">Static stack view</span>
+    <span class="stack-actions">
+      <button class="stack-action btn btn-sm btn-link" type="button">Edit</button>
+    </span>
+  </h4>
+  <dl class="stack-view">
+    <div class="stack-block">
+      <dt class="stack-block-label">Label 1</dt>
+      <dd class="stack-block-content">Content 1</dd>
+    </div>
+    <div class="stack-block stack-block-expandable stack-block-expanded">
+      <dt class="stack-block-label">Label 2</dt>
+      <dd class="stack-block-content">Content 2</dd>
+      <div class="stack-children">
         <div class="stack-block">
-            <dt class="stack-block-label">Label 1</dt>
-            <dd class="stack-block-content">Content 1</dd>
+          <dt class="stack-block-label">Sub-label 1</dt>
+          <dd class="stack-block-content">Sub-content 1</dd>
         </div>
-        <div class="stack-block stack-block-expandable stack-block-expanded">
-            <dt class="stack-block-label">Label 2</dt>
-            <dd class="stack-block-content">Content 2</dd>
-            <div class="stack-children">
-                <div class="stack-block">
-                    <dt class="stack-block-label">Sub-label 1</dt>
-                    <dd class="stack-block-content">Sub-content 1</dd>
-                </div>
-                <div class="stack-block">
-                    <dt class="stack-block-label">Sub-label 2</dt>
-                    <dd class="stack-block-content">Sub-content 2</dd>
-                </div>
-                <div class="stack-block">
-                    <dt class="stack-block-label">Sub-label 3</dt>
-                    <dd class="stack-block-content">Sub-content 3</dd>
-                </div>
-            </div>
+        <div class="stack-block">
+          <dt class="stack-block-label">Sub-label 2</dt>
+          <dd class="stack-block-content">Sub-content 2</dd>
         </div>
-        <div class="stack-block stack-block-expandable">
-            <dt class="stack-block-label">Label 3</dt>
-            <dd class="stack-block-content">Content 3</dd>
-            <div class="stack-children"></div>
+        <div class="stack-block">
+          <dt class="stack-block-label">Sub-label 3</dt>
+          <dd class="stack-block-content">Sub-content 3</dd>
         </div>
-    </dl>
+      </div>
+    </div>
+    <div class="stack-block stack-block-expandable">
+      <dt class="stack-block-label">Label 3</dt>
+      <dd class="stack-block-content">Content 3</dd>
+      <div class="stack-children"></div>
+    </div>
+  </dl>
 </div>
-
-
-<pre>
-    <code clr-code-highlight="language-html">
-    &lt;h4 class=&quot;stack-header&quot;&gt;
-        &lt;span class=&quot;stack-title&quot;&gt;Static stack view&lt;/span&gt;
-        &lt;span class=&quot;stack-actions&quot;&gt;
-            &lt;button class=&quot;stack-action btn btn-sm btn-link&quot; type=&quot;button&quot;&gt;Edit&lt;/button&gt;
-        &lt;/span&gt;
-    &lt;/h4&gt;
-    &lt;dl class=&quot;stack-view&quot;&gt;
-        &lt;div class=&quot;stack-block&quot;&gt;
-            &lt;dt class=&quot;stack-block-label&quot;&gt;Label 1&lt;/dt&gt;
-            &lt;dd class=&quot;stack-block-content&quot;&gt;Content 1&lt;/dd&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;stack-block stack-block-expandable stack-block-expanded&quot;&gt;
-            &lt;dt class=&quot;stack-block-label&quot;&gt;Label 2&lt;/dt&gt;
-            &lt;dd class=&quot;stack-block-content&quot;&gt;Content 2&lt;/dd&gt;
-            &lt;div class=&quot;stack-children&quot;&gt;
-                &lt;div class=&quot;stack-block&quot;&gt;
-                    &lt;dt class=&quot;stack-block-label&quot;&gt;Sub-label 1&lt;/dt&gt;
-                    &lt;dd class=&quot;stack-block-content&quot;&gt;Sub-content 1&lt;/dd&gt;
-                &lt;/div&gt;
-                &lt;div class=&quot;stack-block&quot;&gt;
-                    &lt;dt class=&quot;stack-block-label&quot;&gt;Sub-label 2&lt;/dt&gt;
-                    &lt;dd class=&quot;stack-block-content&quot;&gt;Sub-content 2&lt;/dd&gt;
-                &lt;/div&gt;
-                &lt;div class=&quot;stack-block&quot;&gt;
-                    &lt;dt class=&quot;stack-block-label&quot;&gt;Sub-label 3&lt;/dt&gt;
-                    &lt;dd class=&quot;stack-block-content&quot;&gt;Sub-content 3&lt;/dd&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;stack-block stack-block-expandable&quot;&gt;
-            &lt;dt class=&quot;stack-block-label&quot;&gt;Label 3&lt;/dt&gt;
-            &lt;dd class=&quot;stack-block-content&quot;&gt;Content 3&lt;/dd&gt;
-            &lt;div class=&quot;stack-children&quot;&gt;&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/dl&gt;
-    </code>
-</pre>

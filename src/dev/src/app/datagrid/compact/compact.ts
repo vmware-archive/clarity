@@ -13,19 +13,12 @@ import { DatagridKitchenSinkData } from '../kitchen-sink/kitchen-sink-data';
 import { PokemonComparator } from '../utils/pokemon-comparator';
 import { PokemonFilter } from '../utils/pokemon-filter';
 
-const COMPACT_EXAMPLE = `
-<clr-datagrid class="datagrid-compact">
-    <-- ... -->
-</clr-datagrid>
-`;
-
 @Component({
   selector: 'clr-datagrid-compact-demo',
   templateUrl: './compact.html',
   styleUrls: ['../datagrid.demo.scss'],
 })
 export class DatagridCompactDemo {
-  compactExample = COMPACT_EXAMPLE;
   nonPaginatedUsers: User[];
   users: User[];
   sortOrder: ClrDatagridSortOrder = ClrDatagridSortOrder.UNSORTED;

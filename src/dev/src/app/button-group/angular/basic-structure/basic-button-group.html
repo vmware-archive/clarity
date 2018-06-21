@@ -7,99 +7,47 @@
 <h4>Basic Structure</h4>
 
 <div class="clr-example">
-    <clr-button-group>
-        <clr-button name="button1" id="test">1</clr-button>
-        <clr-button type="button">2</clr-button>
-        <clr-button disabled>3</clr-button>
-        <clr-button disabled="false">4</clr-button>
-        <clr-button disabled="123">5</clr-button>
-        <clr-button>6</clr-button>
-    </clr-button-group>
+  <clr-button-group>
+    <clr-button name="button1" id="test">1</clr-button>
+    <clr-button type="button">2</clr-button>
+    <clr-button disabled>3</clr-button>
+    <clr-button disabled="false">4</clr-button>
+    <clr-button disabled="123">5</clr-button>
+    <clr-button>6</clr-button>
+  </clr-button-group>
 </div>
-
-<pre>
-    <code [clr-code-highlight]="'language-html'">
-    &lt;clr-button-group&gt;
-        &lt;clr-button name=&quot;button1&quot; id=&quot;test&quot;&gt;1&lt;/clr-button&gt;
-        &lt;clr-button type=&quot;button&quot;&gt;2&lt;/clr-button&gt;
-        &lt;clr-button disabled&gt;3&lt;/clr-button&gt;
-        &lt;clr-button disabled=&quot;false&quot;&gt;4&lt;/clr-button&gt;
-        &lt;clr-button disabled=&quot;123&quot;&gt;5&lt;/clr-button&gt;
-        &lt;clr-button&gt;6&lt;/clr-button&gt;
-    &lt;/clr-button-group&gt;
-    </code>
-</pre>
 
 <div class="clr-example">
-    <clr-button-group class="btn-primary">
-        <clr-button (click)="handleClick(1)">1</clr-button>
-        <clr-button (click)="handleClick(2)">2</clr-button>
-        <clr-button (click)="handleClick(3)">3</clr-button>
-        <clr-button (click)="handleClick(4)">4</clr-button>
-        <clr-button [clrInMenu]="true" (click)="handleClick(5)">5</clr-button>
-        <clr-button [clrInMenu]="true" (click)="handleClick(6)">6</clr-button>
-        <clr-button [clrInMenu]="true" (click)="handleClick(7)">7</clr-button>
-    </clr-button-group>
+  <clr-button-group class="btn-primary">
+    <clr-button (click)="handleClick(1)">1</clr-button>
+    <clr-button (click)="handleClick(2)">2</clr-button>
+    <clr-button (click)="handleClick(3)">3</clr-button>
+    <clr-button (click)="handleClick(4)">4</clr-button>
+    <clr-button [clrInMenu]="true" (click)="handleClick(5)">5</clr-button>
+    <clr-button [clrInMenu]="true" (click)="handleClick(6)">6</clr-button>
+    <clr-button [clrInMenu]="true" (click)="handleClick(7)">7</clr-button>
+  </clr-button-group>
 </div>
-
-<pre>
-    <code [clr-code-highlight]="'language-html'">
-    &lt;clr-button-group class=&quot;btn-primary&quot;&gt;
-        &lt;clr-button&gt;1&lt;/clr-button&gt;
-        &lt;clr-button&gt;2&lt;/clr-button&gt;
-        &lt;clr-button&gt;3&lt;/clr-button&gt;
-        &lt;clr-button&gt;4&lt;/clr-button&gt;
-        &lt;clr-button [clrInMenu]=&quot;true&quot;&gt;5&lt;/clr-button&gt;
-        &lt;clr-button [clrInMenu]=&quot;true&quot;&gt;6&lt;/clr-button&gt;
-        &lt;clr-button [clrInMenu]=&quot;true&quot;&gt;7&lt;/clr-button&gt;
-    &lt;/clr-button-group&gt;
-    </code>
-</pre>
 
 <div class="clr-example">
-    <clr-button-group class="btn-icon">
-        <clr-button>
-            <clr-icon shape="home"></clr-icon>
-        </clr-button>
-        <clr-button>
-            <clr-icon shape="check"></clr-icon>
-        </clr-button>
-        <clr-button>
-            <clr-icon shape="user"></clr-icon>
-        </clr-button>
-        <clr-button>
-            <clr-icon shape="bell"></clr-icon>
-        </clr-button>
-        <clr-button>
-            <clr-icon shape="search"></clr-icon>
-        </clr-button>
-        <clr-button>
-            <clr-icon shape="image"></clr-icon>
-        </clr-button>
-    </clr-button-group>
+  <clr-button-group class="btn-icon">
+    <clr-button>
+      <clr-icon shape="home"></clr-icon>
+    </clr-button>
+    <clr-button>
+      <clr-icon shape="check"></clr-icon>
+    </clr-button>
+    <clr-button>
+      <clr-icon shape="user"></clr-icon>
+    </clr-button>
+    <clr-button>
+      <clr-icon shape="bell"></clr-icon>
+    </clr-button>
+    <clr-button>
+      <clr-icon shape="search"></clr-icon>
+    </clr-button>
+    <clr-button>
+      <clr-icon shape="image"></clr-icon>
+    </clr-button>
+  </clr-button-group>
 </div>
-
-<pre>
-    <code [clr-code-highlight]="'language-html'">
-    &lt;clr-button-group class=&quot;btn-icon&quot;&gt;
-        &lt;clr-button&gt;
-            &lt;clr-icon shape=&quot;home&quot;&gt;&lt;/clr-icon&gt;
-        &lt;/clr-button&gt;
-        &lt;clr-button&gt;
-            &lt;clr-icon shape=&quot;check&quot;&gt;&lt;/clr-icon&gt;
-        &lt;/clr-button&gt;
-        &lt;clr-button&gt;
-            &lt;clr-icon shape=&quot;user&quot;&gt;&lt;/clr-icon&gt;
-        &lt;/clr-button&gt;
-        &lt;clr-button&gt;
-            &lt;clr-icon shape=&quot;bell&quot;&gt;&lt;/clr-icon&gt;
-        &lt;/clr-button&gt;
-        &lt;clr-button&gt;
-            &lt;clr-icon shape=&quot;search&quot;&gt;&lt;/clr-icon&gt;
-        &lt;/clr-button&gt;
-        &lt;clr-button&gt;
-            &lt;clr-icon shape=&quot;image&quot;&gt;&lt;/clr-icon&gt;
-        &lt;/clr-button&gt;
-    &lt;/clr-button-group&gt;
-    </code>
-</pre>

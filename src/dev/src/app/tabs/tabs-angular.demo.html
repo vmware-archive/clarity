@@ -5,67 +5,35 @@
   -->
 
 <div class="clr-example">
-    <button class="btn btn-primary" (click)="inOverflow = !inOverflow">Toggle</button>
-    <clr-tabs>
-        <clr-tab>
-            <button clrTabLink>Dashboard</button>
-            <clr-tab-content clrTabContentId="content1" *clrIfActive>
-                <p>Content for Dashboard tab. Here is a <a href="javascript://">link</a> that can be accessed via clicking
-                    or through keyboard via tabbing.</p>
-            </clr-tab-content>
-        </clr-tab>
+  <button class="btn btn-primary" (click)="inOverflow = !inOverflow">Toggle</button>
+  <clr-tabs>
+    <clr-tab>
+      <button clrTabLink>Dashboard</button>
+      <clr-tab-content clrTabContentId="content1" *clrIfActive>
+        <p>Content for Dashboard tab. Here is a
+          <a href="javascript://">link</a> that can be accessed via clicking or through keyboard via tabbing.</p>
+      </clr-tab-content>
+    </clr-tab>
 
-        <clr-tab>
-            <button clrTabLink>Management</button>
-            <clr-tab-content *clrIfActive="true">
-                <p>Content for Management tab.</p>
-            </clr-tab-content>
-        </clr-tab>
+    <clr-tab>
+      <button clrTabLink>Management</button>
+      <clr-tab-content *clrIfActive="true">
+        <p>Content for Management tab.</p>
+      </clr-tab-content>
+    </clr-tab>
 
-        <clr-tab>
-            <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Cloud</button>
-            <clr-tab-content *clrIfActive>
-                <p>Content for Cloud tab.</p>
-            </clr-tab-content>
-        </clr-tab>
+    <clr-tab>
+      <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Cloud</button>
+      <clr-tab-content *clrIfActive>
+        <p>Content for Cloud tab.</p>
+      </clr-tab-content>
+    </clr-tab>
 
-        <clr-tab>
-            <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Infrastructure</button>
-            <clr-tab-content *clrIfActive>
-                <p>Content for Infrastructure tab.</p>
-            </clr-tab-content>
-        </clr-tab>
-    </clr-tabs>
+    <clr-tab>
+      <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Infrastructure</button>
+      <clr-tab-content *clrIfActive>
+        <p>Content for Infrastructure tab.</p>
+      </clr-tab-content>
+    </clr-tab>
+  </clr-tabs>
 </div>
-
-<pre>
-    <code clr-code-highlight="language-html">
-    &lt;clr-tabs&gt;
-        &lt;clr-tab&gt;
-            &lt;button clrTabLink&gt;Dashboard&lt;/button&gt;
-            &lt;clr-tab-content *clrIfActive&gt;
-                &lt;p&gt;Content for Dashboard tab. Here is a &lt;a href="javascript://"&gt;link&lt;/a&gt; that can be accessed via clicking
-                    or through keyboard via tabbing.&lt;/p&gt;
-            &lt;/clr-tab-content&gt;
-        &lt;/clr-tab&gt;
-        &lt;clr-tab&gt;
-            &lt;button clrTabLink&gt;Management&lt;/button&gt;
-            &lt;clr-tab-content *clrIfActive&gt;
-                &lt;p&gt;Content for Management tab.&lt;/p&gt;
-            &lt;/clr-tab-content&gt;
-        &lt;/clr-tab&gt;
-        &lt;clr-tab&gt;
-            &lt;button clrTabLink [clrTabLinkInOverflow]="true"&gt;Cloud&lt;/button&gt;
-            &lt;clr-tab-content *clrIfActive&gt;
-                &lt;p&gt;Content for Cloud tab.&lt;/p&gt;
-            &lt;/clr-tab-content&gt;
-        &lt;/clr-tab&gt;
-        &lt;clr-tab&gt;
-            &lt;button clrTabLink [clrTabLinkInOverflow]="true"&gt;Infrastructure&lt;/button&gt;
-            &lt;clr-tab-content *clrIfActive&gt;
-                &lt;p&gt;Content for Infrastructure tab.&lt;/p&gt;
-            &lt;/clr-tab-content&gt;
-        &lt;/clr-tab&gt;
-    &lt;/clr-tabs&gt;
-    </code>
-</pre>

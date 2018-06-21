@@ -16,7 +16,6 @@ export const APP_ROUTES: Routes = [
   { path: 'buttons', loadChildren: 'src/app/buttons/buttons.demo.module#ButtonsDemoModule' },
   { path: 'card', loadChildren: 'src/app/card/card.demo.module#CardDemoModule' },
   { path: 'checkboxes', loadChildren: 'src/app/checkboxes/checkboxes.demo.module#CheckboxesDemoModule' },
-  { path: 'code-highlight', loadChildren: 'src/app/code/code-highlight.demo.module#CodeHighlightDemoModule' },
   { path: 'color', loadChildren: 'src/app/color/color.demo.module#ColorDemoModule' },
   { path: 'datagrid', loadChildren: 'src/app/datagrid/datagrid.demo.module#DatagridDemoModule' },
   { path: 'datepicker', loadChildren: 'src/app/datepicker/datepicker.demo.module#DatepickerDemoModule' },

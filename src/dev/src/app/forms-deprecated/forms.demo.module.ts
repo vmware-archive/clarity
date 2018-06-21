@@ -20,7 +20,6 @@ import { FormsDemo } from './forms.demo';
 import { ROUTING } from './forms.demo.routing';
 import { ReactiveFormsDemo } from './reactive-forms/reactive-forms';
 import { TemplateDrivenFormsDemo } from './template-driven-forms/template-driven-forms';
-import { Example } from './utils/example';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ROUTING],
@@ -34,7 +33,6 @@ import { Example } from './utils/example';
     FormCompactDemo,
     TemplateDrivenFormsDemo,
     ReactiveFormsDemo,
-    Example,
   ],
   exports: [
     FormsDemo,

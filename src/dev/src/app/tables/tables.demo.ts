@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-tables-demo',
-  styleUrls: [],
   template: `
         <h2>Tables</h2>
         <ul>

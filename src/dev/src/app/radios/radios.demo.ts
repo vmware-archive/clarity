@@ -5,5 +5,5 @@
  */
 import { Component } from '@angular/core';
 
-@Component({ selector: 'clr-radios-demo', styleUrls: ['./radios.demo.scss'], templateUrl: './radios.demo.html' })
+@Component({ selector: 'clr-radios-demo', templateUrl: './radios.demo.html' })
 export class RadiosDemo {}

@@ -6,118 +6,76 @@
 
 <h4>Checkboxes</h4>
 <div class="clr-example" id="btn-group-test-1">
-    <div class="btn-group">
-        <div class="checkbox btn">
-            <input type="checkbox" id="btn-check-1">
-            <label for="btn-check-1">Apples</label>
-        </div>
-        <div class="checkbox btn">
-            <input type="checkbox" id="btn-check-2">
-            <label for="btn-check-2">Kiwis</label>
-        </div>
-        <div class="checkbox btn">
-            <input type="checkbox" id="btn-check-3">
-            <label for="btn-check-3">Pears</label>
-        </div>
-        <div class="checkbox btn">
-            <input type="checkbox" id="btn-check-4">
-            <label for="btn-check-4">Oranges</label>
-        </div>
+  <div class="btn-group">
+    <div class="checkbox btn">
+      <input type="checkbox" id="btn-check-1">
+      <label for="btn-check-1">Apples</label>
     </div>
+    <div class="checkbox btn">
+      <input type="checkbox" id="btn-check-2">
+      <label for="btn-check-2">Kiwis</label>
+    </div>
+    <div class="checkbox btn">
+      <input type="checkbox" id="btn-check-3">
+      <label for="btn-check-3">Pears</label>
+    </div>
+    <div class="checkbox btn">
+      <input type="checkbox" id="btn-check-4">
+      <label for="btn-check-4">Oranges</label>
+    </div>
+  </div>
 </div>
-
-<pre>
-    <code [clr-code-highlight]="'language-html'">
-    &lt;div class=&quot;btn-group&quot;&gt;
-        &lt;div class=&quot;checkbox btn&quot;&gt;
-            &lt;input type=&quot;checkbox&quot; id=&quot;btn-check-1&quot;&gt;
-            &lt;label for=&quot;btn-check-1&quot;&gt;Apples&lt;/label&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;checkbox btn&quot;&gt;
-            &lt;input type=&quot;checkbox&quot; id=&quot;btn-check-2&quot;&gt;
-            &lt;label for=&quot;btn-check-2&quot;&gt;Kiwis&lt;/label&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;checkbox btn&quot;&gt;
-            &lt;input type=&quot;checkbox&quot; id=&quot;btn-check-3&quot;&gt;
-            &lt;label for=&quot;btn-check-3&quot;&gt;Pears&lt;/label&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;checkbox btn&quot;&gt;
-            &lt;input type=&quot;checkbox&quot; id=&quot;btn-check-4&quot;&gt;
-            &lt;label for=&quot;btn-check-4&quot;&gt;Oranges&lt;/label&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    </code>
-</pre>
 
 <h4>Angular Checkboxes</h4>
 <div class="clr-example" id="btn-group-test-2">
-    <div class="btn-group">
-        <clr-checkbox type="checkbox" class="btn">
-            Checkbox 1
-        </clr-checkbox>
-        <clr-checkbox type="checkbox" class="btn">
-            Checkbox 2
-        </clr-checkbox>
-        <clr-checkbox type="checkbox" class="btn">
-            Checkbox 3
-        </clr-checkbox>
-        <clr-checkbox type="checkbox" class="btn">
-            Checkbox 4
-        </clr-checkbox>
-    </div>
+  <div class="btn-group">
+    <clr-checkbox type="checkbox" class="btn">
+      Checkbox 1
+    </clr-checkbox>
+    <clr-checkbox type="checkbox" class="btn">
+      Checkbox 2
+    </clr-checkbox>
+    <clr-checkbox type="checkbox" class="btn">
+      Checkbox 3
+    </clr-checkbox>
+    <clr-checkbox type="checkbox" class="btn">
+      Checkbox 4
+    </clr-checkbox>
+  </div>
 </div>
-
-<pre>
-    <code [clr-code-highlight]="'language-html'">
-    &lt;div class=&quot;btn-group&quot;&gt;
-        &lt;clr-checkbox type=&quot;checkbox&quot; class=&quot;btn&quot;&gt;
-            Checkbox 1
-        &lt;/clr-checkbox&gt;
-        &lt;clr-checkbox type=&quot;checkbox&quot; class=&quot;btn&quot;&gt;
-            Checkbox 2
-        &lt;/clr-checkbox&gt;
-        &lt;clr-checkbox type=&quot;checkbox&quot; class=&quot;btn&quot;&gt;
-            Checkbox 3
-        &lt;/clr-checkbox&gt;
-        &lt;clr-checkbox type=&quot;checkbox&quot; class=&quot;btn&quot;&gt;
-            Checkbox 4
-        &lt;/clr-checkbox&gt;
-    &lt;/div&gt;
-    </code>
-</pre>
 
 <h4>Checked States</h4>
 
 <div class="clr-example" id="btn-group-test-3">
-    <div class="btn-group">
-        <clr-checkbox type="checkbox" class="btn" [clrChecked]="true">
-            Checkbox 1
-        </clr-checkbox>
-        <clr-checkbox type="checkbox" class="btn">
-            Checkbox 2
-        </clr-checkbox>
-        <clr-checkbox type="checkbox" class="btn" [clrChecked]="true">
-            Checkbox 3
-        </clr-checkbox>
-        <clr-checkbox type="checkbox" class="btn">
-            Checkbox 4
-        </clr-checkbox>
-    </div>
+  <div class="btn-group">
+    <clr-checkbox type="checkbox" class="btn" [clrChecked]="true">
+      Checkbox 1
+    </clr-checkbox>
+    <clr-checkbox type="checkbox" class="btn">
+      Checkbox 2
+    </clr-checkbox>
+    <clr-checkbox type="checkbox" class="btn" [clrChecked]="true">
+      Checkbox 3
+    </clr-checkbox>
+    <clr-checkbox type="checkbox" class="btn">
+      Checkbox 4
+    </clr-checkbox>
+  </div>
 </div>
 
 <div class="clr-example" id="btn-group-test-4">
-    <div class="btn-group">
-        <clr-checkbox type="checkbox" class="btn" [clrChecked]="true">
-            Checkbox 1
-        </clr-checkbox>
-        <clr-checkbox type="checkbox" class="btn" [clrChecked]="true">
-            Checkbox 2
-        </clr-checkbox>
-        <clr-checkbox type="checkbox" class="btn">
-            Checkbox 3
-        </clr-checkbox>
-        <clr-checkbox type="checkbox" class="btn">
-            Checkbox 4
-        </clr-checkbox>
-    </div>
+  <div class="btn-group">
+    <clr-checkbox type="checkbox" class="btn" [clrChecked]="true">
+      Checkbox 1
+    </clr-checkbox>
+    <clr-checkbox type="checkbox" class="btn" [clrChecked]="true">
+      Checkbox 2
+    </clr-checkbox>
+    <clr-checkbox type="checkbox" class="btn">
+      Checkbox 3
+    </clr-checkbox>
+    <clr-checkbox type="checkbox" class="btn">
+      Checkbox 4
+    </clr-checkbox>
+  </div>
 </div>

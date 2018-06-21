@@ -2,7 +2,15 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import '../_utils/code';
+@import '../../../../clr-angular/utils/vendor/decimalRounding.clarity';
+@import '../../../../clr-angular/utils/vendor/mathPow.clarity';
+@import '../../../../clr-angular/utils/mixins.clarity';
+@import '../../../../clr-angular/color/variables.color';
+@import '../../../../clr-angular/color/utils/colors.clarity';
+@import '../../../../clr-angular/color/utils/contrast-cache.clarity';
+@import '../../../../clr-angular/color/utils/helpers.clarity';
+@import '../../../../clr-angular/color/color.clarity';
+@import '../../../../clr-angular/utils/variables.global';
 
 @mixin clrdemo-colorPaletteLabels {
   text-transform: uppercase;

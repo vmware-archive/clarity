@@ -8,30 +8,6 @@ import { Component } from '@angular/core';
 import { Inventory } from '../inventory/inventory';
 import { User } from '../inventory/user';
 
-const SINGLE_SELECTION_EXAMPLE = `
-<clr-datagrid [(clrDgSingleSelected)]="selectedUser" [clrDgRowSelection]="true">
-    <-- ... -->
-    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
-        <-- ... -->
-    </clr-dg-row>
-   <-- ... -->
-</clr-datagrid>
-
-Selected user: <span class="username" *ngIf="selectedUser">{{selectedUser.name}}</span>
-`;
-
-const MULTI_SELECTION_EXAMPLE = `
-<clr-datagrid [(clrDgSelected)]="selected" [clrDgRowSelection]="true">
-    <-- ... -->
-    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
-        <-- ... -->
-    </clr-dg-row>
-   <-- ... -->
-</clr-datagrid>
-
-Selected users: <span *ngFor="let user of selected">{{user.name}}</span>
-`;
-
 @Component({
   selector: 'clr-datagrid-selection-row-mode-demo',
   providers: [Inventory],
@@ -39,8 +15,6 @@ Selected users: <span *ngFor="let user of selected">{{user.name}}</span>
   styleUrls: ['../datagrid.demo.scss'],
 })
 export class DatagridSelectionRowModeDemo {
-  singleSelectionExample = SINGLE_SELECTION_EXAMPLE;
-  multiSelectionExample = MULTI_SELECTION_EXAMPLE;
   users: User[];
   singleSelected: User;
   multiSelected: User[] = [];

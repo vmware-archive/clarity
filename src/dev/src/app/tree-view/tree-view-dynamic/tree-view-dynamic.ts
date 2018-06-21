@@ -10,100 +10,13 @@ import '@clr/icons/shapes/social-shapes';
 
 import { Component, Input } from '@angular/core';
 
-const EXAMPLE_HTML = `
-<clr-tree-node *ngFor="let directory of rootDirectory">
-    <clr-icon [attr.shape]="directory.icon"></clr-icon>
-    {{directory.name}}
-    <ng-template [clrIfExpanded]="directory.expanded">
-        <clr-tree-node *ngFor="let file of directory.files">
-            <button
-                (click)="openFile(directory.name, file.name)"
-                class="clr-treenode-link"
-                [class.active]="file.active">
-                <clr-icon [attr.shape]="file.icon"></clr-icon>
-                {{file.name}}
-            </button>
-        </clr-tree-node>
-    </ng-template>
-</clr-tree-node>
-`;
-
-const EXAMPLE_TS = `
-    rootDirectory: any[] = [
-        {
-            name: "Applications",
-            icon: "folder",
-            expanded: true,
-            files: [
-                {
-                    icon: "calendar",
-                    name: "Calendar",
-                    active: true
-                },
-                {
-                    icon: "line-chart",
-                    name: "Charts",
-                    active: false
-                },
-                {
-                    icon: "dashboard",
-                    name: "Dashboard",
-                    active: false
-                },
-                {
-                    icon: "map",
-                    name: "Maps",
-                    active: false
-                },
-                ...
-            ]
-        },
-        {
-            name: "Files",
-            icon: "folder",
-            expanded: false,
-            files: [
-                {
-                    icon: "file",
-                    name: "Cover Letter.doc",
-                    active: false
-                },
-                ...
-            ]
-        },
-        {
-            name: "Images",
-            icon: "folder",
-            expanded: false,
-            files: [
-                {
-                    icon: "image",
-                    name: "Screenshot.png",
-                    active: false
-                },
-                ...
-            ]
-        }
-    ];
-
-    openFile(directoryName: string, fileName: string) {
-        ...
-        ...
-    }
-`;
-
 @Component({
   selector: 'clr-tree-view-dynamic-demo',
   styleUrls: ['../tree-view.demo.scss'],
   templateUrl: './tree-view-dynamic.html',
 })
 export class TreeViewDynamicDemo {
-  @Input('clrDemoShowCode') showCode: boolean = true;
   @Input('clrDemoShowHalf') showHalf: boolean = true;
-
-  exampleHTML = EXAMPLE_HTML;
-
-  exampleTS = EXAMPLE_TS;
 
   rootDirectory: any[] = [
     {

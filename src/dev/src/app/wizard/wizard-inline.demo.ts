@@ -6,13 +6,11 @@
 
 import { Component, ViewChild } from '@angular/core';
 
-import { ClrCodeHighlight } from '@clr/angular';
 import { ClrWizard } from '@clr/angular';
 
 @Component({ selector: 'clr-wizard-inline', templateUrl: './wizard-inline.demo.html' })
 export class WizardInlineDemo {
   @ViewChild('wizard') wizard: ClrWizard;
-  @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
   public open: boolean = true;
 }

@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 import { ClrDatagridStateInterface } from '@clr/angular';
 import { FetchResult, Inventory } from '../inventory/inventory';
 import { User } from '../inventory/user';
-import { EXAMPLES } from './examples';
 
 @Component({
   selector: 'clr-datagrid-server-driven-demo',
@@ -16,7 +15,6 @@ import { EXAMPLES } from './examples';
   styleUrls: ['../datagrid.demo.scss'],
 })
 export class DatagridServerDrivenDemo {
-  examples = EXAMPLES;
   users: User[];
   total: number;
   loading: boolean = true;

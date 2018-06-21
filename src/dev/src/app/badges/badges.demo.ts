@@ -5,5 +5,5 @@
  */
 import { Component } from '@angular/core';
 
-@Component({ selector: 'clr-badges-demo', styleUrls: ['./badges.demo.scss'], templateUrl: './badges.demo.html' })
+@Component({ selector: 'clr-badges-demo', templateUrl: './badges.demo.html' })
 export class BadgesDemo {}

@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-lists-demo',
-  styleUrls: [],
   template: `
         <h2>Lists</h2>
         <ul>

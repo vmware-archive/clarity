@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-modal-angular-show-demo',
-  styleUrls: ['./modal.demo.scss'],
   templateUrl: './modal-angular-show.demo.html',
 })
 export class ModalAngularShowDemo {

@@ -5,22 +5,15 @@
   -->
 
 <p>
-    <button class="btn btn-primary" (click)="static = true">Show modal</button>
+  <button class="btn btn-primary" (click)="static = true">Show modal</button>
 </p>
 
 <clr-modal [(clrModalOpen)]="static" [clrModalStaticBackdrop]="true">
-    <h3 class="modal-title">Static backdrop</h3>
-    <div class="modal-body">
-        <p>Clicking on the backdrop doesn't do anything.</p>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="static = false">Ok</button>
-    </div>
+  <h3 class="modal-title">Static backdrop</h3>
+  <div class="modal-body">
+    <p>Clicking on the backdrop doesn't do anything.</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="static = false">Ok</button>
+  </div>
 </clr-modal>
-<pre>
-    <code clr-code-highlight="language-html">
-    &lt;clr-modal [(clrModalOpen)]=&quot;opened&quot; [clrModalStaticBackdrop]=&quot;true&quot;&gt;
-        ...
-    &lt;/clr-modal&gt;
-    </code>
-</pre>

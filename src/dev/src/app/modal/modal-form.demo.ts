@@ -12,7 +12,6 @@ export class Hero {
 
 @Component({
   selector: 'clr-modal-dynamic-form',
-  styleUrls: ['./modal.demo.scss'],
   templateUrl: './modal-form.demo.html',
 })
 export class ModalFormDemo {

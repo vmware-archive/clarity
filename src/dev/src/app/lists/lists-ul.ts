@@ -5,5 +5,5 @@
  */
 import { Component } from '@angular/core';
 
-@Component({ selector: 'clr-lists-ul-demo', styleUrls: ['lists.demo.scss'], templateUrl: './lists-ul.html' })
+@Component({ selector: 'clr-lists-ul-demo', templateUrl: './lists-ul.html' })
 export class ListsUlDemo {}

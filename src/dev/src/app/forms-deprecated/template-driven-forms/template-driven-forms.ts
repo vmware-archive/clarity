@@ -7,16 +7,11 @@ import { Component } from '@angular/core';
 
 import { Employee } from '../model/employee.model';
 
-import { EXAMPLES } from './examples';
-
 @Component({
   selector: 'clr-template-driven-forms-demo',
-  styleUrls: ['./template-driven-forms.scss'],
   templateUrl: './template-driven-forms.html',
 })
 export class TemplateDrivenFormsDemo {
-  examples = EXAMPLES;
-
   id: number = 1;
   employeeType: string[] = ['Full Time', 'Part Time'];
   model: Employee = new Employee(this.id, '', '', '');

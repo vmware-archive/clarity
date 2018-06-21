@@ -4,73 +4,69 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 <div class="clr-example">
-    <h4>Without Selection</h4>
-    <clr-tree-node>
-        A
-        <ng-template clrIfExpanded>
-            <ng-template [clrFakeLoader]="slowLoad" clrLoading>
+  <h4>Without Selection</h4>
+  <clr-tree-node>
+    A
+    <ng-template clrIfExpanded>
+      <ng-template [clrFakeLoader]="slowLoad" clrLoading>
+        <clr-tree-node>
+          B
+          <clr-tree-node *clrIfExpanded>
+            B.1
+            <ng-template clrIfExpanded>
+              <ng-template [clrFakeLoader]="slowLoad" clrLoading>
                 <clr-tree-node>
-                    B
-                    <clr-tree-node *clrIfExpanded>
-                        B.1
-                        <ng-template clrIfExpanded>
-                            <ng-template [clrFakeLoader]="slowLoad" clrLoading>
-                                <clr-tree-node>
-                                    B.1.1
-                                </clr-tree-node>
-                                <clr-tree-node>
-                                    B.1.2
-                                </clr-tree-node>
-                            </ng-template>
-                        </ng-template>
-                    </clr-tree-node>
-
-                    <clr-tree-node *clrIfExpanded>
-                        B.2
-                    </clr-tree-node>
+                  B.1.1
                 </clr-tree-node>
                 <clr-tree-node>
-                    C
+                  B.1.2
                 </clr-tree-node>
+              </ng-template>
             </ng-template>
-        </ng-template>
-    </clr-tree-node>
-</div>
+          </clr-tree-node>
 
-<clr-example [clrCode]="example1" [clrLanguage]="'html'"></clr-example>
+          <clr-tree-node *clrIfExpanded>
+            B.2
+          </clr-tree-node>
+        </clr-tree-node>
+        <clr-tree-node>
+          C
+        </clr-tree-node>
+      </ng-template>
+    </ng-template>
+  </clr-tree-node>
+</div>
 
 <div class="clr-example">
-    <h4>With Selection</h4>
-    <clr-tree-node [(clrSelected)]="parentSelected">
-        A
-        <ng-template clrIfExpanded>
-            <ng-template [clrFakeLoader]="slowLoad" clrLoading>
+  <h4>With Selection</h4>
+  <clr-tree-node [(clrSelected)]="parentSelected">
+    A
+    <ng-template clrIfExpanded>
+      <ng-template [clrFakeLoader]="slowLoad" clrLoading>
+        <clr-tree-node>
+          B
+          <clr-tree-node *clrIfExpanded [(clrSelected)]="selected">
+            B.1
+            <ng-template clrIfExpanded>
+              <ng-template [clrFakeLoader]="slowLoad" clrLoading>
                 <clr-tree-node>
-                    B
-                    <clr-tree-node *clrIfExpanded [(clrSelected)]="selected">
-                        B.1
-                        <ng-template clrIfExpanded>
-                            <ng-template [clrFakeLoader]="slowLoad" clrLoading>
-                                <clr-tree-node>
-                                    B.1.1
-                                </clr-tree-node>
-                                <clr-tree-node>
-                                    B.1.2
-                                </clr-tree-node>
-                            </ng-template>
-                        </ng-template>
-                    </clr-tree-node>
-
-                    <clr-tree-node *clrIfExpanded>
-                        B.2
-                    </clr-tree-node>
+                  B.1.1
                 </clr-tree-node>
                 <clr-tree-node>
-                    C
+                  B.1.2
                 </clr-tree-node>
+              </ng-template>
             </ng-template>
-        </ng-template>
-    </clr-tree-node>
-</div>
+          </clr-tree-node>
 
-<clr-example [clrCode]="example2" [clrLanguage]="'html'"></clr-example>
+          <clr-tree-node *clrIfExpanded>
+            B.2
+          </clr-tree-node>
+        </clr-tree-node>
+        <clr-tree-node>
+          C
+        </clr-tree-node>
+      </ng-template>
+    </ng-template>
+  </clr-tree-node>
+</div>

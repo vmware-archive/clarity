@@ -5,13 +5,11 @@
  */
 import { Component, ViewChild } from '@angular/core';
 
-import { ClrCodeHighlight } from '@clr/angular';
 import { ClrWizard } from '@clr/angular';
 
 @Component({ selector: 'clr-wizard-header-actions', templateUrl: './wizard-header-actions.demo.html' })
 export class WizardHeaderActionsDemo {
   @ViewChild('wizard') wizard: ClrWizard;
-  @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
   userActive: boolean = true;
 

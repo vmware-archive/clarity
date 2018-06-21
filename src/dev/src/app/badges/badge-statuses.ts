@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-badge-statuses-demo',
-  styleUrls: ['./badges.demo.scss'],
   templateUrl: './badge-statuses.demo.html',
 })
 export class BadgeStatusesDemo {}

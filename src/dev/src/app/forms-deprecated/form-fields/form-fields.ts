@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-forms-demo-fields',
-  styleUrls: ['./form-fields.demo.scss'],
   templateUrl: './form-fields.demo.html',
 })
 export class FormFieldsDemo {}

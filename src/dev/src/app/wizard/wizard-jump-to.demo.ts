@@ -6,7 +6,6 @@
 
 import { Component, ViewChild } from '@angular/core';
 
-import { ClrCodeHighlight } from '@clr/angular';
 import { ClrWizard } from '@clr/angular';
 import { ClrWizardPage } from '@clr/angular';
 
@@ -15,7 +14,6 @@ export class WizardJumpToDemo {
   @ViewChild('wizard') wizard: ClrWizard;
   @ViewChild('pageThree') pageThree: ClrWizardPage;
   @ViewChild('pageFive') pageFive: ClrWizardPage;
-  @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
   public jumpTo(page: ClrWizardPage) {
     if (page && page.completed) {
@@ -33,72 +31,4 @@ export class WizardJumpToDemo {
   public jumpToFive(): void {
     this.jumpTo(this.pageFive);
   }
-
-  code: string = `
-import { Component, ViewChild } from "@angular/core";
-import { Wizard } from "@clr/angular";
-import { WizardPage } from "@clr/angular";
-
-@Component({
-    ...
-})
-export class WizardJumpToDemo {
-    @ViewChild("wizard") wizard: Wizard;
-    @ViewChild("pageThree") pageThree: WizardPage;
-    @ViewChild("pageFive") pageFive: WizardPage;
-
-    public jumpTo(page: WizardPage) {
-        if (page && page.completed) {
-            this.wizard.navService.currentPage = page;
-        } else {
-            this.wizard.navService.setLastEnabledPageCurrent();
-        }
-        this.wizard.open();
-    }
-
-    public jumpToThree(): void {
-        this.jumpTo(this.pageThree);
-    }
-
-    public jumpToFive(): void {
-        this.jumpTo(this.pageFive);
-    }
-}
-    `;
-
-  html: string = `
-<clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardSize]="'md'">
-    <clr-wizard-title>Jump-To Wizard</clr-wizard-title>
-
-    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
-    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-    <clr-wizard-button [type]="'finish'">Done</clr-wizard-button>
-
-    <clr-wizard-page>
-        <ng-template clrPageTitle>Page 1</ng-template>
-        ...
-    </clr-wizard-page>
-
-    <clr-wizard-page>
-        <ng-template clrPageTitle>Page 2</ng-template>
-        ...
-    </clr-wizard-page>
-
-    <clr-wizard-page #pageThree>
-        <ng-template clrPageTitle>Page 3</ng-template>
-        ...
-    </clr-wizard-page>
-
-    <clr-wizard-page>
-        <ng-template clrPageTitle>Page 4</ng-template>
-        ...
-    </clr-wizard-page>
-
-    <clr-wizard-page #pageFive>
-        <ng-template clrPageTitle>Page 5</ng-template>
-        ...
-    </clr-wizard-page>
-</clr-wizard>
-`;
 }

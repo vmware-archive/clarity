@@ -46,8 +46,7 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "button-group",
@@ -159,8 +158,7 @@
             "ui": 20,
             "core": -1,
             "ng": 5,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "grid",
@@ -170,8 +168,7 @@
             "ui": 20,
             "core": -1,
             "ng": -1,
-            "dox": 20,
-            "isUpdated": true
+            "dox": 20
         },
         {
             "url": "header",

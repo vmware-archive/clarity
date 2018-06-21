@@ -184,6 +184,31 @@ export default function(): void {
         expect(nbChanges).toBe(3);
       });
 
+      it('does not emit selection change twice after a filter is applied', function() {
+        let nbChanges = 0;
+        let currentSelection: any;
+        selectionInstance.change.subscribe((items: any) => {
+          nbChanges++;
+          currentSelection = items;
+        });
+
+        selectionInstance.selectionType = SelectionType.Multi;
+        expect(nbChanges).toBe(1); // current is initialized to [] at this point
+
+        selectionInstance.current = [4, 2];
+        expect(nbChanges).toBe(2);
+
+        const evenFilter: EvenFilter = new EvenFilter();
+        filtersInstance.add(<ClrDatagridFilterInterface<any>>evenFilter);
+        evenFilter.toggle();
+
+        // current is set to [] because filter is applied, and nbChanges is 3.
+        // there isn't an additional change that would have been fired to
+        // update current selection given the new data set post filter.
+        expect(selectionInstance.current.length).toBe(0);
+        expect(nbChanges).toBe(3);
+      });
+
       it('clears selection when a filter is added', function() {
         selectionInstance.selectionType = SelectionType.Multi;
         selectionInstance.current = [4, 2];

@@ -1,34 +1,50 @@
 #!/usr/bin/env bash
 
-echo "Travis runs in the $(pwd) directory"
-# Set up the user for commiting and pushing.
+# Set up the user for committing and pushing.
 git config --global user.email "<mhippely@vmware.com>"
 git config --global user.name "clr-team"
 
+# Gets the git commit sha currently at HEAD
 SHA=$(git rev-parse HEAD)
+# Gets the commit message at HEAD
 MESSAGE=$(git log -1 --pretty=format:%s)
-
-# Clone repositories
-git clone https://${GITHUB_OAUTH_BUILD_TOKEN}@github.com/clr-team/clr-angular.git
-git clone https://${GITHUB_OAUTH_BUILD_TOKEN}@github.com/clr-team/clr-icons.git
-git clone https://${GITHUB_OAUTH_BUILD_TOKEN}@github.com/clr-team/clr-ui.git
+NEWLINE=$'\n'
 
 declare -a repos=("clr-angular" "clr-icons" "clr-ui")
 for repo in "${repos[@]}"
 do
+    # Clone build repository, error out if command fails
+    if ! git clone http://${GITHUB_OAUTH_BUILD_TOKEN}@github.com/clr-team/${repo}.git --depth 1
+    then
+        # Echo an informative message and redirect it to stderr
+        echo "Failed to clone ${repo}" >&2
+        # Exit with unspecified error code
+        exit 1
+    fi
+
     # change to the build repo directory
     cd "./${repo}"
-    # Delete all the files from last build
+
     # A filepath to the dist folder in clraity project
     DIST="$TRAVIS_BUILD_DIR/dist/${repo}/*"
+
     # Copy all files into the build repo
     cp -rf $DIST .
-    # Add any changes to git
+
+    # Add any changes and commit to the local repo
     git add -A
-    # Commit changes with a link to the vmware/clarity commit on master and its message
-    git commit -m "Clarity Build: http://github.com/vmware/clarity/commit/${SHA}\nMessage: ${MESSAGE}"
-    # Push changes up the the build repo
-    git push
-    # Go back up to
+    git commit -m "Clarity Build: ${MESSAGE}${NEWLINE}http://github.com/vmware/clarity/commit/${SHA}":
+
+    # Push changes up the the build repo, error out if command fails
+    if ! git push
+    then
+        # Echo an informative message and redirect it to stderr
+        echo "Failed to push changes to ${repo} build repository" >&2
+        # Exit with unspecified error code
+        exit 1
+    fi
+
+    # Go back up to root
     cd ..
 done
+exit 0

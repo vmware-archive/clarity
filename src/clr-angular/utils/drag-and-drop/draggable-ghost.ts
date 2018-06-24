@@ -11,6 +11,13 @@ import {ClrDragEvent} from "./interfaces/drag-event";
 import {ClrDragEventListener} from "./providers/drag-event-listener";
 import {ClrDraggableSnapshot} from "./providers/draggable-snapshot";
 
+type PagePosition = {
+    pageX: number; pageY: number;
+};
+type OffsetPosition = {
+    top: number; left: number;
+};
+
 @Component({
     selector: "clr-draggable-ghost",
     template: `<ng-content></ng-content>`,
@@ -26,10 +33,6 @@ export class ClrDraggableGhost<T> implements OnDestroy {
 
     private subscriptions: Subscription[] = [];
 
-    private initPosition: {pageX: number; pageY: number};
-    private dragPosition: {pageX: number; pageY: number};
-    private initDragDelta = {top: 0, left: 0};
-
     @HostBinding("@leaveAnimation") leaveAnimConfig = {value: 0, params: {top: "0px", left: "0px"}};
 
     constructor(private el: ElementRef, @Optional() private dragEventListener: ClrDragEventListener<T>,
@@ -42,56 +45,62 @@ export class ClrDraggableGhost<T> implements OnDestroy {
         this.draggableGhostEl = this.el.nativeElement;
         this.renderer.addClass(document.body, "in-drag");
 
+        this.setDefaultGhostSize(this.draggableGhostEl);
+
+        const offset: OffsetPosition = {
+            top: this.draggableSnapshot.hasDraggableState ?
+                this.draggableSnapshot.event.dragPosition.pageY - this.draggableSnapshot.clientRect.top :
+                0,
+            left: this.draggableSnapshot.hasDraggableState ?
+                this.draggableSnapshot.event.dragPosition.pageX - this.draggableSnapshot.clientRect.left :
+                0
+        };
+
+        let isAnimationConfigured: boolean = false;
+
         this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
-            if (!this.initPosition) {
-                this.setupDraggableGhost(event);
+            // On the first drag move event, we configure the animation as it's dependent on the first drag event.
+            if (!isAnimationConfigured) {
+                if (this.draggableSnapshot.hasDraggableState) {
+                    this.animateToOnLeave(`${this.draggableSnapshot.clientRect.top}px`,
+                                          `${this.draggableSnapshot.clientRect.left}px`);
+                } else {
+                    this.animateToOnLeave(`${event.dragPosition.pageY}px`, `${event.dragPosition.pageX}px`);
+                }
+                isAnimationConfigured = true;
             }
-            this.moveGhostElement(event);
+
+            // Position the draggable ghost.
+            const topLeftPosition: PagePosition = this.findTopLeftPosition(event.dragPosition, offset);
+            this.setPositionStyle(this.draggableGhostEl, topLeftPosition.pageX, topLeftPosition.pageY);
         }));
     }
 
-    private setupDraggableGhost(event: ClrDragEvent<T>) {
+    private setDefaultGhostSize(el: Node): void {
         if (this.draggableSnapshot.hasDraggableState) {
-            this.matchDraggableSize();
-            const draggableClientRectLeft = this.draggableSnapshot.clientRect.left;
-            const draggableClientRectTop = this.draggableSnapshot.clientRect.top;
-            this.initPosition = {
-                pageX: this.draggableSnapshot.event.dragPosition.pageX,
-                pageY: this.draggableSnapshot.event.dragPosition.pageY
-            };
-            this.initDragDelta.left = this.initPosition.pageX - draggableClientRectLeft;
-            this.initDragDelta.top = this.initPosition.pageY - draggableClientRectTop;
-            this.animateToOnLeave(`${draggableClientRectTop}px`, `${draggableClientRectLeft}px`);
-        } else {
-            this.initPosition = {pageX: event.dragPosition.pageX, pageY: event.dragPosition.pageY};
-            this.animateToOnLeave(`${this.initPosition.pageY}px`, `${this.initPosition.pageX}px`);
+            this.setSizeStyle(el, this.draggableSnapshot.clientRect.width, this.draggableSnapshot.clientRect.height);
         }
     }
 
-    private matchDraggableSize() {
-        const draggableClientRectWidth = this.draggableSnapshot.clientRect.width;
-        const draggableClientRectHeight = this.draggableSnapshot.clientRect.height;
-
-        this.renderer.setStyle(this.draggableGhostEl, "width", `${draggableClientRectWidth}px`);
-        this.renderer.setStyle(this.draggableGhostEl, "height", `${draggableClientRectHeight}px`);
-    }
-
-    private animateToOnLeave(top: string, left: string) {
+    private animateToOnLeave(top: string, left: string): void {
         this.ngZone.run(() => {
             this.leaveAnimConfig = {value: 0, params: {top: top, left: left}};
         });
     }
 
-    private moveGhostElement(event: ClrDragEvent<T>) {
-        this.dragPosition = {
-            pageX: event.dragPosition.pageX - this.initDragDelta.left,
-            pageY: event.dragPosition.pageY - this.initDragDelta.top
-        };
+    private findTopLeftPosition(dragPosition: PagePosition, offset: OffsetPosition): PagePosition {
+        return {pageX: dragPosition.pageX - offset.left, pageY: dragPosition.pageY - offset.top};
+    }
 
-        this.renderer.setStyle(this.draggableGhostEl, "left", `${this.dragPosition.pageX}px`);
-        this.renderer.setStyle(this.draggableGhostEl, "top", `${this.dragPosition.pageY}px`);
+    private setSizeStyle(el: Node, width: number, height: number): void {
+        this.renderer.setStyle(el, "width", `${width}px`);
+        this.renderer.setStyle(el, "height", `${height}px`);
+    }
 
-        this.renderer.setStyle(this.draggableGhostEl, "visibility", "visible");
+    private setPositionStyle(el: Node, left: number, top: number): void {
+        this.renderer.setStyle(el, "left", `${left}px`);
+        this.renderer.setStyle(el, "top", `${top}px`);
+        this.renderer.setStyle(el, "visibility", "visible");
     }
 
     ngOnDestroy() {

@@ -32,17 +32,6 @@ export default function(): void {
         });
 
         describe("With Wrapping ClrDraggable", function() {
-            const mockDraggable = document.createElement("div");
-            document.body.appendChild(mockDraggable);
-
-            mockDraggable.style.position = "absolute";
-            mockDraggable.style.width = "100px";
-            mockDraggable.style.height = "50px";
-            mockDraggable.style.left = "90px";
-            mockDraggable.style.top = "45px";
-            mockDraggable.style.marginLeft = "10px";
-            mockDraggable.style.marginTop = "5px";
-
             beforeEach(function() {
                 TestBed.configureTestingModule({
                     imports: [ClrDragAndDropModule, NoopAnimationsModule],
@@ -58,7 +47,6 @@ export default function(): void {
                 this.draggableGhostComponent = this.draggableGhostDebugElement.injector.get(ClrDraggableGhost);
                 this.ghostElement = this.draggableGhostDebugElement.nativeElement;
                 this.dragEventListener = TestBed.get(ClrDragEventListener);
-                this.draggableSnapshot = TestBed.get(ClrDraggableSnapshot);
             });
 
             afterEach(function() {
@@ -82,37 +70,88 @@ export default function(): void {
             it("should appear on the first drag move event", function() {
                 const mockDragMoveEvent = {dragPosition: {pageX: 33, pageY: 44}};
                 this.dragEventListener.dragMoved.next(mockDragMoveEvent);
+
+                expect(this.ghostElement.style.left).toBe(`${mockDragMoveEvent.dragPosition.pageX}px`);
+                expect(this.ghostElement.style.top).toBe(`${mockDragMoveEvent.dragPosition.pageY}px`);
                 expect(this.ghostElement.style.visibility).toBe("visible");
-                expect(this.ghostElement.style.left).toBe("33px");
-                expect(this.ghostElement.style.top).toBe("44px");
             });
 
-            it("should appear aligned with draggable if draggable state is registered", function() {
-                const mockDragMoveEvent = {dragPosition: {pageX: 120, pageY: 60}};
-                this.draggableSnapshot.capture(mockDraggable, mockDragMoveEvent);
+            it("should be dragged from mouse position on page", function() {
+                const mockDragMoveEvent1 = {dragPosition: {pageX: 120, pageY: 60}};
+                const mockDragMoveEvent2 = {dragPosition: {pageX: 180, pageY: 120}};
+
+                this.dragEventListener.dragMoved.next(mockDragMoveEvent1);
+                expect(this.ghostElement.style.left).toBe(`${mockDragMoveEvent1.dragPosition.pageX}px`);
+                expect(this.ghostElement.style.top).toBe(`${mockDragMoveEvent1.dragPosition.pageY}px`);
+
+                this.dragEventListener.dragMoved.next(mockDragMoveEvent2);
+                expect(this.ghostElement.style.left).toBe(`${mockDragMoveEvent2.dragPosition.pageX}px`);
+                expect(this.ghostElement.style.top).toBe(`${mockDragMoveEvent2.dragPosition.pageY}px`);
+            });
+        });
+
+        describe("With Wrapping ClrDraggable And Draggable Snapshot", function() {
+            const mockDraggable = document.createElement("div");
+            document.body.appendChild(mockDraggable);
+
+            mockDraggable.style.position = "absolute";
+            mockDraggable.style.width = "100px";
+            mockDraggable.style.height = "50px";
+            mockDraggable.style.left = "90px";
+            mockDraggable.style.top = "45px";
+
+            const mockDragStartEvent = {dragPosition: {pageX: 110, pageY: 55}};
+
+            beforeEach(function() {
+                TestBed.configureTestingModule({
+                    imports: [ClrDragAndDropModule, NoopAnimationsModule],
+                    declarations: [WithWrappingDraggable],
+                    providers: [MOCK_DRAG_EVENT_LISTENER_PROVIDER, DomAdapter, ClrDraggableSnapshot]
+                });
+
+                this.draggableSnapshot = TestBed.get(ClrDraggableSnapshot);
+                this.draggableSnapshot.capture(mockDraggable, mockDragStartEvent);
+
+                this.fixture = TestBed.createComponent(WithWrappingDraggable);
+                this.fixture.detectChanges();
+
+                this.draggableGhostDebugElement = this.fixture.debugElement.query(By.directive(ClrDraggableGhost));
+                this.ghostElement = this.draggableGhostDebugElement.nativeElement;
+                this.dragEventListener = TestBed.get(ClrDragEventListener);
+            });
+
+            afterEach(function() {
+                this.fixture.destroy();
+            });
+
+            it("should appear on the first drag move event", function() {
+                const mockDragMoveEvent = {dragPosition: {pageX: 33, pageY: 44}};
                 this.dragEventListener.dragMoved.next(mockDragMoveEvent);
 
-                expect(this.ghostElement.style.left).toBe(`${this.draggableSnapshot.clientRect.left}px`);
-                expect(this.ghostElement.style.top).toBe(`${this.draggableSnapshot.clientRect.top}px`);
+                const offsetLeft = mockDragStartEvent.dragPosition.pageX - this.draggableSnapshot.clientRect.left;
+                const offsetTop = mockDragStartEvent.dragPosition.pageY - this.draggableSnapshot.clientRect.top;
+
+                expect(this.ghostElement.style.left).toBe(`${mockDragMoveEvent.dragPosition.pageX - offsetLeft}px`);
+                expect(this.ghostElement.style.top).toBe(`${mockDragMoveEvent.dragPosition.pageY - offsetTop}px`);
+                expect(this.ghostElement.style.visibility).toBe("visible");
             });
 
             it("should be dragged from its first drag position on the draggable if draggable state is registered",
                function() {
                    const mockDragMoveEvent1 = {dragPosition: {pageX: 120, pageY: 60}};
-                   this.draggableSnapshot.capture(mockDraggable, mockDragMoveEvent1);
 
-                   const initDeltaX = mockDragMoveEvent1.dragPosition.pageX - this.draggableSnapshot.clientRect.left;
-                   const initDeltaY = mockDragMoveEvent1.dragPosition.pageY - this.draggableSnapshot.clientRect.top;
+                   const offsetLeft = mockDragStartEvent.dragPosition.pageX - this.draggableSnapshot.clientRect.left;
+                   const offsetTop = mockDragStartEvent.dragPosition.pageY - this.draggableSnapshot.clientRect.top;
 
                    const mockDragMoveEvent2 = {dragPosition: {pageX: 180, pageY: 120}};
 
                    this.dragEventListener.dragMoved.next(mockDragMoveEvent1);
-                   expect(this.ghostElement.style.left).toBe(`${this.draggableSnapshot.clientRect.left}px`);
-                   expect(this.ghostElement.style.top).toBe(`${this.draggableSnapshot.clientRect.top}px`);
+                   expect(this.ghostElement.style.left).toBe(`${mockDragMoveEvent1.dragPosition.pageX - offsetLeft}px`);
+                   expect(this.ghostElement.style.top).toBe(`${mockDragMoveEvent1.dragPosition.pageY - offsetTop}px`);
 
                    this.dragEventListener.dragMoved.next(mockDragMoveEvent2);
-                   expect(this.ghostElement.style.left).toBe(`${mockDragMoveEvent2.dragPosition.pageX - initDeltaX}px`);
-                   expect(this.ghostElement.style.top).toBe(`${mockDragMoveEvent2.dragPosition.pageY - initDeltaY}px`);
+                   expect(this.ghostElement.style.left).toBe(`${mockDragMoveEvent2.dragPosition.pageX - offsetLeft}px`);
+                   expect(this.ghostElement.style.top).toBe(`${mockDragMoveEvent2.dragPosition.pageY - offsetTop}px`);
                });
         });
     });

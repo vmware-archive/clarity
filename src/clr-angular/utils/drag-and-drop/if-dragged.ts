@@ -17,9 +17,9 @@ import {ClrDragEventListener} from "./providers/drag-event-listener";
 @Directive({selector: "[clrIfDragged]"})
 export class ClrIfDragged<T> implements OnDestroy {
     private subscriptions: Subscription[] = [];
-    constructor(private template: TemplateRef<any>, @SkipSelf() private container: ViewContainerRef,
+    constructor(private template: TemplateRef<any>, @Optional() @SkipSelf() private container: ViewContainerRef,
                 @Optional() private dragEventListener: ClrDragEventListener<T>) {
-        if (!this.dragEventListener) {
+        if (!this.dragEventListener && !this.container) {
             throw new Error("The *clrIfDragged directive can only be used inside of a `clrDraggable` directive.");
         }
 

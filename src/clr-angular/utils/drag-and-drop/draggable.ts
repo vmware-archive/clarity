@@ -14,7 +14,7 @@ import {
     Injector,
     OnDestroy,
     Output,
-    ViewContainerRef
+    ViewContainerRef,
 } from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
@@ -29,12 +29,13 @@ import {ClrDraggableSnapshot} from "./providers/draggable-snapshot";
 @Directive({
     selector: "[clrDraggable]",
     providers: [ClrDragEventListener, ClrDragHandleRegistrar, ClrDraggableSnapshot, DomAdapter],
-    host: {class: "draggable"}
+    host: {class: "draggable", "[class.being-dragged]": "dragOn"}
 })
 export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     private draggableEl: Node;
     private subscriptions: Subscription[] = [];
     private componentFactory: ComponentFactory<ClrDraggableGhost<T>>;
+    public dragOn: boolean = false;
 
     constructor(private el: ElementRef, private dragEventListener: ClrDragEventListener<T>,
                 private dragHandleRegistrar: ClrDragHandleRegistrar<T>, private viewContainerRef: ViewContainerRef,
@@ -71,6 +72,7 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
                 this.createDefaultGhost(event);
             }
             this.dragStartEmitter.emit(event);
+            this.dragOn = true;
         }));
         this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
             this.dragMoveEmitter.emit(event);
@@ -80,6 +82,7 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
                 this.destroyDefaultGhost();
             }
             this.dragEndEmitter.emit(event);
+            this.dragOn = false;
         }));
     }
 

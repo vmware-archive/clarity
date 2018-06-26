@@ -2,6 +2,16 @@
     .drag-handle {
         cursor: grab;
     }
+    .in-drag {
+        cursor: grabbing;
+        user-select: none;
+        * {
+            pointer-events: none;
+        }
+        .draggable {
+            opacity: 0.6;
+        }
+    }
     .draggable-ghost {
         position: fixed;
         display: block;
@@ -9,17 +19,10 @@
         z-index: map-get($clr-layers, draggable-ghost);
         pointer-events: none;
         will-change: left, top;
-        opacity: 0.6;
         // default ghost contains the cloned .draggable
         & > .draggable {
             margin: 0;
-        }
-    }
-    .in-drag {
-        cursor: grabbing;
-        user-select: none;
-        * {
-            pointer-events: none;
+            opacity: 1;
         }
     }
 }

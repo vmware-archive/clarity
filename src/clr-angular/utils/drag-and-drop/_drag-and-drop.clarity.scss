@@ -8,7 +8,7 @@
         * {
             pointer-events: none;
         }
-        .draggable {
+        .draggable.being-dragged {
             opacity: 0.6;
         }
     }

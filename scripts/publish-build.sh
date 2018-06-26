@@ -14,7 +14,7 @@ declare -a repos=("clr-angular" "clr-icons" "clr-ui")
 for repo in "${repos[@]}"
 do
     # Clone build repository, error out if command fails
-    if ! git clone http://${GITHUB_OAUTH_BUILD_TOKEN}@github.com/clr-team/${repo}.git --depth 1
+    if ! git clone https://${GITHUB_OAUTH_BUILD_TOKEN}@github.com/clr-team/${repo}.git --depth 1
     then
         # Echo an informative message and redirect it to stderr
         echo "Failed to clone ${repo}" >&2

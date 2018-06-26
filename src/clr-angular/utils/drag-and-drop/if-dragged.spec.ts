@@ -72,9 +72,8 @@ class MockVCRProvider {
     // tslint:disable-next-line
     constructor(private vcr: ViewContainerRef) {}
 }
-@Component({
-    template: `<div mockVCRProvider class="parent-vcr"><span class="if-dragged" *clrIfDragged>Test</span></div>`
-})
+@Component(
+    {template: `<div mockVCRProvider class="parent-vcr"><span class="if-dragged" *clrIfDragged>Test</span></div>`})
 class IfDraggedTest {}
 
 @Component({template: `<div *clrIfDragged>Test</div>`})

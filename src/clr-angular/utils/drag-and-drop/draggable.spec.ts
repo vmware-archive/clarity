@@ -49,12 +49,14 @@ export default function(): void {
                 expect(this.draggable.nativeElement.classList.contains("draggable")).toBeTruthy();
             });
 
-            it("should emit event on drag start", function() {
+            it("should emit event on drag start and have being-dragged class", function() {
                 const mockDragStartEvent = {dragPosition: {pageX: 11, pageY: 22}};
                 this.dragEventListener.dragStarted.next(mockDragStartEvent);
+                this.fixture.detectChanges();
                 expect(this.testComponent.dragStartEvent).toBe(mockDragStartEvent);
                 expect(this.testComponent.dragMoveEvent).toBeUndefined();
                 expect(this.testComponent.dragEndEvent).toBeUndefined();
+                expect(this.draggable.nativeElement.classList.contains("being-dragged")).toBeTruthy();
             });
 
             it("should emit event on drag move", function() {
@@ -68,9 +70,11 @@ export default function(): void {
             it("should emit event on drag end", function() {
                 const mockDragEndEvent = {dragPosition: {pageX: 77, pageY: 88}};
                 this.dragEventListener.dragEnded.next(mockDragEndEvent);
+                this.fixture.detectChanges();
                 expect(this.testComponent.dragStartEvent).toBeUndefined();
                 expect(this.testComponent.dragMoveEvent).toBeUndefined();
                 expect(this.testComponent.dragEndEvent).toBe(mockDragEndEvent);
+                expect(this.draggable.nativeElement.classList.contains("being-dragged")).toBeFalsy();
             });
 
             it("should have its own element as default drag handle when there is no nested drag handle", function() {

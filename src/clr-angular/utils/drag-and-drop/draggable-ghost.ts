@@ -43,7 +43,6 @@ export class ClrDraggableGhost<T> implements OnDestroy {
         }
 
         this.draggableGhostEl = this.el.nativeElement;
-        this.renderer.addClass(document.body, "in-drag");
 
         this.setDefaultGhostSize(this.draggableGhostEl);
 
@@ -104,7 +103,6 @@ export class ClrDraggableGhost<T> implements OnDestroy {
     }
 
     ngOnDestroy() {
-        this.renderer.removeClass(document.body, "in-drag");
         this.subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
     }
 }

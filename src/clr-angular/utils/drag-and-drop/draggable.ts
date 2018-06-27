@@ -25,10 +25,11 @@ import {ClrDragEvent} from "./interfaces/drag-event";
 import {ClrDragEventListener} from "./providers/drag-event-listener";
 import {ClrDragHandleRegistrar} from "./providers/drag-handle-registrar";
 import {ClrDraggableSnapshot} from "./providers/draggable-snapshot";
+import {GlobalDragMode} from "./providers/global-drag-mode";
 
 @Directive({
     selector: "[clrDraggable]",
-    providers: [ClrDragEventListener, ClrDragHandleRegistrar, ClrDraggableSnapshot, DomAdapter],
+    providers: [ClrDragEventListener, ClrDragHandleRegistrar, ClrDraggableSnapshot, GlobalDragMode, DomAdapter],
     host: {class: "draggable", "[class.being-dragged]": "dragOn"}
 })
 export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
@@ -40,7 +41,7 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     constructor(private el: ElementRef, private dragEventListener: ClrDragEventListener<T>,
                 private dragHandleRegistrar: ClrDragHandleRegistrar<T>, private viewContainerRef: ViewContainerRef,
                 private cfr: ComponentFactoryResolver, private injector: Injector,
-                private draggableSnapshot: ClrDraggableSnapshot<T>) {
+                private draggableSnapshot: ClrDraggableSnapshot<T>, private globalDragMode: GlobalDragMode) {
         this.draggableEl = this.el.nativeElement;
         this.componentFactory = this.cfr.resolveComponentFactory<ClrDraggableGhost<T>>(ClrDraggableGhost);
     }
@@ -68,21 +69,23 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
         this.dragHandleRegistrar.defaultHandleEl = this.draggableEl;
 
         this.subscriptions.push(this.dragEventListener.dragStarted.subscribe((event: ClrDragEvent<T>) => {
+            this.globalDragMode.enter();
+            this.dragOn = true;
             if (!this.customGhost) {
                 this.createDefaultGhost(event);
             }
             this.dragStartEmitter.emit(event);
-            this.dragOn = true;
         }));
         this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
             this.dragMoveEmitter.emit(event);
         }));
         this.subscriptions.push(this.dragEventListener.dragEnded.subscribe((event: ClrDragEvent<T>) => {
+            this.globalDragMode.exit();
+            this.dragOn = false;
             if (!this.customGhost) {
                 this.destroyDefaultGhost();
             }
             this.dragEndEmitter.emit(event);
-            this.dragOn = false;
         }));
     }
 

@@ -29,5 +29,12 @@ export default function(): void {
       service.layout = Layouts.HORIZONTAL;
       expect(service.layoutClass).toEqual('clr-form-horizontal');
     });
+
+    it('can validate layouts by string value', () => {
+      expect(service.isValid('vertical')).toBeTrue();
+      expect(service.isValid('horizontal')).toBeTrue();
+      expect(service.isValid('compact')).toBeTrue();
+      expect(service.isValid('asdf')).toBeFalse();
+    });
   });
 }

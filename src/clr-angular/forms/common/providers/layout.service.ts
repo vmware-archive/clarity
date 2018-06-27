@@ -15,12 +15,20 @@ export enum Layouts {
 @Injectable()
 export class LayoutService {
   layout: Layouts = Layouts.VERTICAL;
+  // This is basically a replacement for Object.values(), which IE11 and Node <9 don't support :(
+  // String enums cannot be reverse-mapped, meaning Layouts['COMPACT'] does not return 'compact' so
+  // this exists to deal with this little caveat to get the list of the values as an array.
+  private layoutValues: string[] = Object.keys(Layouts).map(key => Layouts[key]);
 
-  isVertical() {
+  isVertical(): boolean {
     return this.layout === Layouts.VERTICAL;
   }
 
   get layoutClass(): string {
     return `clr-form-${this.layout}`;
+  }
+
+  isValid(layout: string): boolean {
+    return this.layoutValues.indexOf(layout) > -1;
   }
 }

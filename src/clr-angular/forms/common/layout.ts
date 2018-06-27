@@ -19,8 +19,8 @@ export class ClrLayout implements OnInit {
   constructor(public layoutService: LayoutService) {}
 
   ngOnInit() {
-    // Only set the layout if it is a valid option from our enum
-    if (this.layout && Object.values(Layouts).includes(this.layout)) {
+    // Only set the layout if it is a valid option
+    if (this.layout && this.layoutService.isValid(this.layout)) {
       this.layoutService.layout = this.layout;
     }
   }

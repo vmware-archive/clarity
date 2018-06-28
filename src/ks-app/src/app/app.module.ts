@@ -55,6 +55,7 @@ import { KSSpinners } from './containers/spinners/spinners.component';
 import { KSTables } from './containers/tables/tables.component';
 import { KSTypography } from './containers/typography/typography.component';
 import { KSWizards } from './containers/wizard/wizards.component';
+import { KSToggle } from './containers/forms/toggle.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { KSWizards } from './containers/wizard/wizards.component';
     KSVerticalNav,
     KSDropdowns,
     KSSignposts,
+    KSToggle,
     KSTooltips,
     KSTypography,
     KSWizards,

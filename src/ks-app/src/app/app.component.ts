@@ -55,6 +55,7 @@ export class AppComponent {
     { path: 'tables', title: 'Tables' },
     { path: 'tabs', title: 'Tabs' },
     { path: 'tooltips', title: 'Tooltips' },
+    { path: 'toggle', title: 'Toggle' },
     { path: 'treeviews', title: 'Tree Views' },
     { path: 'typography', title: 'Typography' },
     { path: 'vertical-nav', title: 'Vertical Nav' },

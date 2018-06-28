@@ -25,11 +25,11 @@ import {ClrDragEvent} from "./interfaces/drag-event";
 import {ClrDragEventListener} from "./providers/drag-event-listener";
 import {ClrDragHandleRegistrar} from "./providers/drag-handle-registrar";
 import {ClrDraggableSnapshot} from "./providers/draggable-snapshot";
-import {GlobalDragMode} from "./providers/global-drag-mode";
+import {ClrGlobalDragMode} from "./providers/global-drag-mode";
 
 @Directive({
     selector: "[clrDraggable]",
-    providers: [ClrDragEventListener, ClrDragHandleRegistrar, ClrDraggableSnapshot, GlobalDragMode, DomAdapter],
+    providers: [ClrDragEventListener, ClrDragHandleRegistrar, ClrDraggableSnapshot, ClrGlobalDragMode, DomAdapter],
     host: {class: "draggable", "[class.being-dragged]": "dragOn"}
 })
 export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
@@ -41,7 +41,7 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     constructor(private el: ElementRef, private dragEventListener: ClrDragEventListener<T>,
                 private dragHandleRegistrar: ClrDragHandleRegistrar<T>, private viewContainerRef: ViewContainerRef,
                 private cfr: ComponentFactoryResolver, private injector: Injector,
-                private draggableSnapshot: ClrDraggableSnapshot<T>, private globalDragMode: GlobalDragMode) {
+                private draggableSnapshot: ClrDraggableSnapshot<T>, private globalDragMode: ClrGlobalDragMode) {
         this.draggableEl = this.el.nativeElement;
         this.componentFactory = this.cfr.resolveComponentFactory<ClrDraggableGhost<T>>(ClrDraggableGhost);
     }

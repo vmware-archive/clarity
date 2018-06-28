@@ -20,14 +20,16 @@ export default function(): void {
     describe("ClrDraggableGhost", function() {
         describe("Without Wrapping ClrDraggable", function() {
             it("should throw an error with a message", function() {
-                TestBed.configureTestingModule(
-                    {declarations: [WithNoWrappingDraggable, ClrDraggableGhost], providers: [DomAdapter]});
+                TestBed.configureTestingModule({
+                    declarations: [WithNoWrappingDraggable, ClrDraggableGhost],
+                    providers: [DomAdapter]
+                });
 
                 expect(function() {
                     TestBed.createComponent(WithNoWrappingDraggable);
-                })
-                    .toThrowError(
-                        "The clr-draggable-ghost component can only be used inside of a clrDraggable directive.");
+                }).toThrowError(
+                    "The clr-draggable-ghost component can only be used inside of a clrDraggable directive."
+                );
             });
         });
 
@@ -55,10 +57,6 @@ export default function(): void {
 
             it("should have draggable-ghost class", function() {
                 expect(this.ghostElement.classList.contains("draggable-ghost")).toBeTruthy();
-            });
-
-            it("should give in-drag class to document once instantiated", function() {
-                expect(document.body.classList.contains("in-drag")).toBeTruthy();
             });
 
             it("should remove in-drag class from document once destroyed", function() {
@@ -136,23 +134,22 @@ export default function(): void {
                 expect(this.ghostElement.style.visibility).toBe("visible");
             });
 
-            it("should be dragged from its first drag position on the draggable if draggable state is registered",
-               function() {
-                   const mockDragMoveEvent1 = {dragPosition: {pageX: 120, pageY: 60}};
+            it("should be dragged from its first drag position on the draggable if draggable state is registered", function() {
+                const mockDragMoveEvent1 = {dragPosition: {pageX: 120, pageY: 60}};
 
-                   const offsetLeft = mockDragStartEvent.dragPosition.pageX - this.draggableSnapshot.clientRect.left;
-                   const offsetTop = mockDragStartEvent.dragPosition.pageY - this.draggableSnapshot.clientRect.top;
+                const offsetLeft = mockDragStartEvent.dragPosition.pageX - this.draggableSnapshot.clientRect.left;
+                const offsetTop = mockDragStartEvent.dragPosition.pageY - this.draggableSnapshot.clientRect.top;
 
-                   const mockDragMoveEvent2 = {dragPosition: {pageX: 180, pageY: 120}};
+                const mockDragMoveEvent2 = {dragPosition: {pageX: 180, pageY: 120}};
 
-                   this.dragEventListener.dragMoved.next(mockDragMoveEvent1);
-                   expect(this.ghostElement.style.left).toBe(`${mockDragMoveEvent1.dragPosition.pageX - offsetLeft}px`);
-                   expect(this.ghostElement.style.top).toBe(`${mockDragMoveEvent1.dragPosition.pageY - offsetTop}px`);
+                this.dragEventListener.dragMoved.next(mockDragMoveEvent1);
+                expect(this.ghostElement.style.left).toBe(`${mockDragMoveEvent1.dragPosition.pageX - offsetLeft}px`);
+                expect(this.ghostElement.style.top).toBe(`${mockDragMoveEvent1.dragPosition.pageY - offsetTop}px`);
 
-                   this.dragEventListener.dragMoved.next(mockDragMoveEvent2);
-                   expect(this.ghostElement.style.left).toBe(`${mockDragMoveEvent2.dragPosition.pageX - offsetLeft}px`);
-                   expect(this.ghostElement.style.top).toBe(`${mockDragMoveEvent2.dragPosition.pageY - offsetTop}px`);
-               });
+                this.dragEventListener.dragMoved.next(mockDragMoveEvent2);
+                expect(this.ghostElement.style.left).toBe(`${mockDragMoveEvent2.dragPosition.pageX - offsetLeft}px`);
+                expect(this.ghostElement.style.top).toBe(`${mockDragMoveEvent2.dragPosition.pageY - offsetTop}px`);
+            });
         });
     });
 }

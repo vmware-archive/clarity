@@ -5,6 +5,9 @@
  */
 import ClrDragHandleSpecs from "./drag-handle.spec";
 import ClrDraggableGhostSpecs from "./draggable-ghost.spec";
+import ClrDraggableWithCustomGhostSpecs from "./draggable-with-custom-ghost.spec";
+import ClrDraggableWithDragHandleSpecs from "./draggable-with-drag-handle.spec";
+import ClrDraggableWithGhostAndHandleSpecs from "./draggable-with-ghost-and-handle.spec";
 import ClrDraggableSpecs from "./draggable.spec";
 import ClrIfDraggedSpecs from "./if-dragged.spec";
 import ClrDragAndDropEventBusSpecs from "./providers/drag-and-drop-event-bus.spec";
@@ -23,7 +26,12 @@ fdescribe("Drag And Drop", function() {
     describe("Components And Directives", function() {
         ClrIfDraggedSpecs();
         ClrDragHandleSpecs();
-        ClrDraggableSpecs();
+        describe("ClrDraggable", function() {
+            ClrDraggableSpecs();
+            ClrDraggableWithCustomGhostSpecs();
+            ClrDraggableWithDragHandleSpecs();
+            ClrDraggableWithGhostAndHandleSpecs();
+        });
         ClrDraggableGhostSpecs();
         ClrGlobalDragModeSpecs();
     });

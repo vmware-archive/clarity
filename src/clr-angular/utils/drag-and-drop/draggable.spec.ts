@@ -23,17 +23,12 @@ export default function(): void {
     describe("ClrDraggable", function() {
         describe("Basic Draggable", function() {
             beforeEach(function() {
-                TestBed.configureTestingModule({
-                    imports: [ClrDragAndDropModule, NoopAnimationsModule],
-                    declarations: [BasicDraggableTest]
-                });
+                TestBed.configureTestingModule(
+                    {imports: [ClrDragAndDropModule, NoopAnimationsModule], declarations: [BasicDraggableTest]});
                 TestBed.overrideComponent(ClrDraggable, {
                     set: {
                         providers: [
-                            DomAdapter,
-                            ClrDragHandleRegistrar,
-                            ClrDraggableSnapshot,
-                            ClrGlobalDragMode,
+                            DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot, ClrGlobalDragMode,
                             MOCK_DRAG_EVENT_LISTENER_PROVIDER
                         ]
                     }
@@ -101,10 +96,8 @@ export default function(): void {
                 this.dragEventListener.dragStarted.next();
                 expect(this.fixture.nativeElement.querySelectorAll("clr-draggable-ghost").length).toBe(1);
                 const draggableGhost = this.fixture.nativeElement.querySelector("clr-draggable-ghost");
-                expect(this.draggable.nativeElement.nextSibling).toBe(
-                    draggableGhost,
-                    `The default ghost appears next to the draggable element.`
-                );
+                expect(this.draggable.nativeElement.nextSibling)
+                    .toBe(draggableGhost, `The default ghost appears next to the draggable element.`);
                 expect(draggableGhost.querySelectorAll(".draggable").length).toBe(1);
                 expect(draggableGhost.querySelector(".draggable").textContent).toBe("Test");
             });
@@ -126,10 +119,7 @@ export default function(): void {
                 TestBed.overrideComponent(ClrDraggable, {
                     set: {
                         providers: [
-                            DomAdapter,
-                            ClrDragHandleRegistrar,
-                            ClrDraggableSnapshot,
-                            ClrGlobalDragMode,
+                            DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot, ClrGlobalDragMode,
                             MOCK_DRAG_EVENT_LISTENER_PROVIDER
                         ]
                     }
@@ -193,10 +183,7 @@ export default function(): void {
                 TestBed.overrideComponent(ClrDraggable, {
                     set: {
                         providers: [
-                            DomAdapter,
-                            ClrDragHandleRegistrar,
-                            ClrDraggableSnapshot,
-                            ClrGlobalDragMode,
+                            DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot, ClrGlobalDragMode,
                             MOCK_DRAG_EVENT_LISTENER_PROVIDER
                         ]
                     }
@@ -240,7 +227,8 @@ export default function(): void {
 }
 
 @Component({
-    template: `<div clrDraggable (clrDragStart)="dragStartEvent=$event;" (clrDragMove)="dragMoveEvent=$event;" (clrDragEnd)="dragEndEvent=$event;">Test</div>`
+    template:
+        `<div clrDraggable (clrDragStart)="dragStartEvent=$event;" (clrDragMove)="dragMoveEvent=$event;" (clrDragEnd)="dragEndEvent=$event;">Test</div>`
 })
 class BasicDraggableTest {
     dragStartEvent: any;

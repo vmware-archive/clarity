@@ -34,5 +34,6 @@ export default function(): void {
 
 @Component({providers: [ClrGlobalDragMode], template: `<div>test</div>`})
 class TestComponent {
+    // tslint:disable-next-line
     constructor(private renderer: Renderer2, private globalDragMode: ClrGlobalDragMode) {}
 }

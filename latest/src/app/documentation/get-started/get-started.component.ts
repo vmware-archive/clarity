@@ -10,7 +10,7 @@ import { AppComponent } from "./app.component";
 @NgModule({
     imports: [
         BrowserModule,
-        BrwoserAnimationsModule,
+        BrowserAnimationsModule,
         ClarityModule,
         ...
      ],

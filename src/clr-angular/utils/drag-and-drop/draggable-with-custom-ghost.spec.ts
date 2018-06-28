@@ -28,7 +28,10 @@ export default function(): void {
             TestBed.overrideComponent(ClrDraggable, {
                 set: {
                     providers: [
-                        DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot, ClrGlobalDragMode,
+                        DomAdapter,
+                        ClrDragHandleRegistrar,
+                        ClrDraggableSnapshot,
+                        ClrGlobalDragMode,
                         MOCK_DRAG_EVENT_LISTENER_PROVIDER
                     ]
                 }
@@ -46,9 +49,9 @@ export default function(): void {
 
         it("should project custom ghost on drag start", function() {
             this.dragEventListener.dragStarted.next();
-            expect(this.fixture.nativeElement.querySelectorAll("clr-draggable-ghost").length).toBe(1);
-            const draggableGhost = this.fixture.nativeElement.querySelector("clr-draggable-ghost");
-            expect(draggableGhost.querySelectorAll("clr-icon").length).toBe(1);
+            const draggableGhosts = this.fixture.nativeElement.querySelectorAll("clr-draggable-ghost");
+            expect(draggableGhosts.length).toBe(1);
+            expect(draggableGhosts[0].querySelectorAll("clr-icon").length).toBe(1);
         });
 
         it("should remove ghost on drag end", function() {

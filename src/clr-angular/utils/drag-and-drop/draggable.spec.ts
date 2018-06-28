@@ -105,7 +105,6 @@ export default function(): void {
             });
 
             it("should have its own element as default drag handle when there is no nested drag handle", function() {
-                this.fixture.detectChanges();
                 expect(this.draggable.nativeElement.classList.contains("drag-handle")).toBeTruthy();
                 expect(this.dragEventListener.draggableEl).toBe(this.draggable.nativeElement);
                 expect(this.dragHandleRegistrar.defaultHandleEl).toBe(this.draggable.nativeElement);

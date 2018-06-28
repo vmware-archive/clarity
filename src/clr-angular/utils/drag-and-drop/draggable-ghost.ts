@@ -38,7 +38,7 @@ export class ClrDraggableGhost<T> implements OnDestroy {
     constructor(private el: ElementRef, @Optional() private dragEventListener: ClrDragEventListener<T>,
                 @Optional() private draggableSnapshot: ClrDraggableSnapshot<T>, private renderer: Renderer2,
                 private ngZone: NgZone) {
-        if (!this.dragEventListener && !this.draggableSnapshot) {
+        if (!this.dragEventListener || !this.draggableSnapshot) {
             throw new Error("The clr-draggable-ghost component can only be used inside of a clrDraggable directive.");
         }
 

@@ -132,7 +132,7 @@
               }
             ],
             "styles": [
-              "src/clr-angular/main.scss",
+              "src/clr-angular/dark-theme.scss",
               "src/clr-icons/clr-icons.scss",
               "node_modules/prismjs/themes/prism-solarizedlight.css",
               "src/ks-app/src/styles.scss"

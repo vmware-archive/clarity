@@ -31,7 +31,7 @@
         "test:visual": "./scripts/docker-cdc.js -t",
         "test": "ng test clr-angular",
         "test:watch": "ng test clr-angular --watch",
-        "test:travis": "npm-run-all build:ui test:format test:lint test test:aot",
+        "test:travis": "npm-run-all build:ui test:format test:lint test test:aot build",
         "format:fix": "pretty-quick --staged",
         "visual:fix": "./scripts/docker-cdc.js -u",
         "lint:fix": "tslint -p . -c tslint.json --fix \"src/**/*.ts\" -e \"**/node_modules/**\" -e \"src/ks-app/**\" -e \"src/schematics/**\"",

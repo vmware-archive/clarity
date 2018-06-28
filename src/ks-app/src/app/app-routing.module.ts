@@ -46,6 +46,7 @@ import { KSSpinners } from './containers/spinners/spinners.component';
 import { KSTables } from './containers/tables/tables.component';
 import { KSTypography } from './containers/typography/typography.component';
 import { KSWizards } from './containers/wizard/wizards.component';
+import { KSToggle } from './containers/forms/toggle.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'alerts', pathMatch: 'full' },
@@ -70,6 +71,7 @@ export const routes: Routes = [
   { path: 'selects', component: KSSelects, data: { state: 'selects' } },
   { path: 'modals', component: KSModals, data: { state: 'modals' } },
   { path: 'tabs', component: KSTabs, data: { state: 'tabs' } },
+  { path: 'toggle', component: KSToggle, data: { state: 'toggle' } },
   { path: 'vertical-nav', component: KSVerticalNav, data: { state: 'vertical-nav' } },
   {
     path: 'vertical-nav',

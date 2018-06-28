@@ -48,10 +48,10 @@ export class ClrDraggableGhost<T> implements OnDestroy {
 
         const offset: OffsetPosition = {
             top: this.draggableSnapshot.hasDraggableState ?
-                this.draggableSnapshot.event.dragPosition.pageY - this.draggableSnapshot.clientRect.top :
+                this.draggableSnapshot.dragEvent.dragPosition.pageY - this.draggableSnapshot.clientRect.top :
                 0,
             left: this.draggableSnapshot.hasDraggableState ?
-                this.draggableSnapshot.event.dragPosition.pageX - this.draggableSnapshot.clientRect.left :
+                this.draggableSnapshot.dragEvent.dragPosition.pageX - this.draggableSnapshot.clientRect.left :
                 0
         };
 

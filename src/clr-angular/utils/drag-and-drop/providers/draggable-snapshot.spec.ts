@@ -32,7 +32,7 @@ export default function(): void {
             draggableSnapshot.capture(mockDraggable, mockDragMoveEvent);
             expect(draggableSnapshot.hasDraggableState).toBeTruthy();
             expect(draggableSnapshot.clientRect).toEqual(domAdapter.clientRect(mockDraggable));
-            expect(draggableSnapshot.event).toEqual(mockDragMoveEvent);
+            expect(draggableSnapshot.dragEvent).toEqual(mockDragMoveEvent);
         });
 
         it("unregisters element and deletes clientRect and computedStyle", function() {
@@ -40,7 +40,7 @@ export default function(): void {
             draggableSnapshot.discard();
             expect(draggableSnapshot.hasDraggableState).toBeFalsy();
             expect(draggableSnapshot.clientRect).toBeUndefined();
-            expect(draggableSnapshot.event).toBeUndefined();
+            expect(draggableSnapshot.dragEvent).toBeUndefined();
         });
     });
 }

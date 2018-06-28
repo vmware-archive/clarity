@@ -14,23 +14,23 @@ export class ClrDraggableSnapshot<T> {
     constructor(private domAdapter: DomAdapter) {}
 
     private draggableElClientRect: ClientRect;
-    private stateEvent: ClrDragEvent<T>;
+    private snapshotEvent: ClrDragEvent<T>;
 
-    public capture(el: Node, event: ClrDragEvent<T>) {
+    public capture(el: Node, event: ClrDragEvent<T>): void {
         this.draggableElClientRect = this.domAdapter.clientRect(el);
-        this.stateEvent = event;
+        this.snapshotEvent = event;
     }
-    public discard() {
+    public discard(): void {
         delete this.draggableElClientRect;
-        delete this.stateEvent;
+        delete this.snapshotEvent;
     }
-    get hasDraggableState() {
-        return !!this.stateEvent && !!this.draggableElClientRect;
+    get hasDraggableState(): boolean {
+        return !!this.snapshotEvent && !!this.draggableElClientRect;
     }
-    get clientRect() {
+    get clientRect(): ClientRect {
         return this.draggableElClientRect;
     }
-    get event() {
-        return this.stateEvent;
+    get dragEvent(): ClrDragEvent<T> {
+        return this.snapshotEvent;
     }
 }

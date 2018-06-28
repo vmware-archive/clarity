@@ -25,10 +25,17 @@ export default function(): void {
         mockDraggable.style.top = "45px";
 
         const domAdapter = new DomAdapter();
-        const draggableSnapshot = new ClrDraggableSnapshot(domAdapter);
+        let draggableSnapshot;
+
+        beforeEach(function() {
+            draggableSnapshot = new ClrDraggableSnapshot(domAdapter);
+        });
 
         it("registers element and sets clientRect and computedStyle", function() {
+            expect(draggableSnapshot.clientRect).toBeUndefined();
+            expect(draggableSnapshot.dragEvent).toBeUndefined();
             expect(draggableSnapshot.hasDraggableState).toBeFalsy();
+
             draggableSnapshot.capture(mockDraggable, mockDragMoveEvent);
             expect(draggableSnapshot.hasDraggableState).toBeTruthy();
             expect(draggableSnapshot.clientRect).toEqual(domAdapter.clientRect(mockDraggable));
@@ -36,7 +43,7 @@ export default function(): void {
         });
 
         it("unregisters element and deletes clientRect and computedStyle", function() {
-            expect(draggableSnapshot.hasDraggableState).toBeTruthy();
+            draggableSnapshot.capture(mockDraggable, mockDragMoveEvent);
             draggableSnapshot.discard();
             expect(draggableSnapshot.hasDraggableState).toBeFalsy();
             expect(draggableSnapshot.clientRect).toBeUndefined();

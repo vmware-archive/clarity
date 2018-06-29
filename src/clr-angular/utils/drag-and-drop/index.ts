@@ -6,12 +6,12 @@
 import {Type} from "@angular/core";
 
 import {ClrDragHandle} from "./drag-handle";
-import {ClrDraggable} from "./draggable";
+import {ClrDraggable} from "./draggable/draggable";
 import {ClrDraggableGhost} from "./draggable-ghost";
 import {ClrDroppable} from "./droppable";
 import {ClrIfDragged} from "./if-dragged";
 
-export * from "./draggable";
+export * from "./draggable/draggable";
 export * from "./droppable";
 export * from "./if-dragged";
 export * from "./drag-handle";

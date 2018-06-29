@@ -18,14 +18,14 @@ import {
 } from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
-import {DomAdapter} from "../dom-adapter/dom-adapter";
-import {ClrDraggableGhost} from "./draggable-ghost";
-import {ClrIfDragged} from "./if-dragged";
-import {ClrDragEvent} from "./interfaces/drag-event";
-import {ClrDragEventListener} from "./providers/drag-event-listener";
-import {ClrDragHandleRegistrar} from "./providers/drag-handle-registrar";
-import {ClrDraggableSnapshot} from "./providers/draggable-snapshot";
-import {ClrGlobalDragMode} from "./providers/global-drag-mode";
+import {DomAdapter} from "../../dom-adapter/dom-adapter";
+import {ClrDraggableGhost} from "../draggable-ghost";
+import {ClrIfDragged} from "../if-dragged";
+import {ClrDragEvent} from "../interfaces/drag-event";
+import {ClrDragEventListener} from "../providers/drag-event-listener";
+import {ClrDragHandleRegistrar} from "../providers/drag-handle-registrar";
+import {ClrDraggableSnapshot} from "../providers/draggable-snapshot";
+import {ClrGlobalDragMode} from "../providers/global-drag-mode";
 
 @Directive({
     selector: "[clrDraggable]",

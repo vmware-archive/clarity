@@ -24,17 +24,12 @@ export default function(): void {
         const mockDragMoveEvent = {dragPosition: {pageX: 33, pageY: 44}};
         const mockDragEndEvent = {dragPosition: {pageX: 77, pageY: 88}};
         beforeEach(function() {
-            TestBed.configureTestingModule({
-                imports: [ClrDragAndDropModule, NoopAnimationsModule],
-                declarations: [BasicDraggableTest]
-            });
+            TestBed.configureTestingModule(
+                {imports: [ClrDragAndDropModule, NoopAnimationsModule], declarations: [BasicDraggableTest]});
             TestBed.overrideComponent(ClrDraggable, {
                 set: {
                     providers: [
-                        DomAdapter,
-                        ClrDragHandleRegistrar,
-                        ClrDraggableSnapshot,
-                        ClrGlobalDragMode,
+                        DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot, ClrGlobalDragMode,
                         MOCK_DRAG_EVENT_LISTENER_PROVIDER
                     ]
                 }
@@ -113,10 +108,8 @@ export default function(): void {
             this.dragEventListener.dragStarted.next();
             const draggableGhost = this.fixture.nativeElement.querySelectorAll("clr-draggable-ghost");
             expect(draggableGhost.length).toBe(1);
-            expect(this.draggable.nativeElement.nextSibling).toBe(
-                draggableGhost[0],
-                `The default ghost appears next to the draggable element.`
-            );
+            expect(this.draggable.nativeElement.nextSibling)
+                .toBe(draggableGhost[0], `The default ghost appears next to the draggable element.`);
             expect(draggableGhost[0].querySelectorAll(".draggable").length).toBe(1);
             expect(draggableGhost[0].querySelector(".draggable").textContent).toBe("Test");
         });
@@ -138,7 +131,8 @@ export default function(): void {
 }
 
 @Component({
-    template: `<div clrDraggable (clrDragStart)="dragStartEvent=$event;" (clrDragMove)="dragMoveEvent=$event;" (clrDragEnd)="dragEndEvent=$event;">Test</div>`
+    template:
+        `<div clrDraggable (clrDragStart)="dragStartEvent=$event;" (clrDragMove)="dragMoveEvent=$event;" (clrDragEnd)="dragEndEvent=$event;">Test</div>`
 })
 class BasicDraggableTest {
     dragStartEvent: any;

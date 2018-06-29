@@ -5,21 +5,20 @@
  */
 import {Component} from "@angular/core";
 
-import {Inventory} from "../datagrid/inventory/inventory";
-import {User} from "../datagrid/inventory/user";
+import {Inventory} from "../data/inventory";
+import {User} from "../data/user";
 
-@Component({
-    selector: "basic-draggable-demo",
-    providers: [Inventory],
-    styleUrls: ["./drag-and-drop.demo.scss"],
-    templateUrl: "./basic-draggable.demo.html"
-})
-export class BasicDraggableDemo {
+@Component({templateUrl: "./dnd.component.html", styleUrls: ["./dnd.component.scss"], providers: [Inventory]})
+export class KSDragAndDrop {
     users: User[];
 
     constructor(inventory: Inventory) {
         inventory.size = 10;
         inventory.reset();
         this.users = inventory.all;
+    }
+
+    report($event: any) {
+        console.log($event);
     }
 }

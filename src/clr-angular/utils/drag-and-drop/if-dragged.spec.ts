@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Component} from "@angular/core";
+import {Component, Directive, ViewContainerRef} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
 
 import {ClrIfDragged} from "./if-dragged";
@@ -23,8 +23,10 @@ export default function(): void {
         });
         describe("With ClrDragEventListener", function() {
             beforeEach(function() {
-                TestBed.configureTestingModule(
-                    {declarations: [IfDraggedTest, ClrIfDragged], providers: [MOCK_DRAG_EVENT_LISTENER_PROVIDER]});
+                TestBed.configureTestingModule({
+                    declarations: [IfDraggedTest, ClrIfDragged, MockVCRProvider],
+                    providers: [MOCK_DRAG_EVENT_LISTENER_PROVIDER]
+                });
 
                 this.fixture = TestBed.createComponent(IfDraggedTest);
                 this.fixture.detectChanges();
@@ -50,11 +52,28 @@ export default function(): void {
                 this.dragEventListener.dragEnded.next();
                 expect(this.testElement.textContent.trim()).toBe("");
             });
+
+            it("should create its view as sibling to parent", function() {
+                // on dragstart event
+                this.dragEventListener.dragStarted.next();
+                expect(this.testElement.textContent.trim()).toBe("Test");
+
+                expect(this.fixture.nativeElement.childNodes.length).toBe(2);
+
+                expect(this.fixture.nativeElement.childNodes[0].classList.contains("parent-vcr")).toBeTruthy();
+                expect(this.fixture.nativeElement.childNodes[1].classList.contains("if-dragged")).toBeTruthy();
+            });
         });
     });
 }
 
-@Component({template: `<div *clrIfDragged>Test</div>`})
+@Directive({selector: "[mockVCRProvider]"})
+class MockVCRProvider {
+    // tslint:disable-next-line
+    constructor(private vcr: ViewContainerRef) {}
+}
+@Component(
+    {template: `<div mockVCRProvider class="parent-vcr"><span class="if-dragged" *clrIfDragged>Test</span></div>`})
 class IfDraggedTest {}
 
 @Component({template: `<div *clrIfDragged>Test</div>`})

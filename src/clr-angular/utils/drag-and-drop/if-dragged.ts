@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {Directive, OnDestroy, Optional, TemplateRef, ViewContainerRef} from "@angular/core";
+import {Directive, OnDestroy, Optional, SkipSelf, TemplateRef, ViewContainerRef} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
 import {ClrDragEvent} from "./interfaces/drag-event";
@@ -17,9 +17,9 @@ import {ClrDragEventListener} from "./providers/drag-event-listener";
 @Directive({selector: "[clrIfDragged]"})
 export class ClrIfDragged<T> implements OnDestroy {
     private subscriptions: Subscription[] = [];
-    constructor(private template: TemplateRef<any>, private container: ViewContainerRef,
+    constructor(private template: TemplateRef<any>, @Optional() @SkipSelf() private container: ViewContainerRef,
                 @Optional() private dragEventListener: ClrDragEventListener<T>) {
-        if (!this.dragEventListener) {
+        if (!this.dragEventListener || !this.container) {
             throw new Error("The *clrIfDragged directive can only be used inside of a `clrDraggable` directive.");
         }
 

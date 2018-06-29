@@ -14,6 +14,7 @@ import {KSColors} from "./containers/colors/colors.component";
 import {KSDatagrid} from "./containers/data/datagrid.component";
 import {KSStackView} from "./containers/data/stackview.component";
 import {KSTreeView} from "./containers/data/tree-view.component";
+import {KSDragAndDrop} from "./containers/drag-and-drop/dnd.component";
 import {KSAlerts} from "./containers/emphasis/alerts.component";
 import {KSBadges} from "./containers/emphasis/badges.component";
 import {KSLabels} from "./containers/emphasis/labels.component";
@@ -46,6 +47,7 @@ import {KSTables} from "./containers/tables/tables.component";
 import {KSTypography} from "./containers/typography/typography.component";
 import {KSWizards} from "./containers/wizard/wizards.component";
 
+
 export const routes: Routes = [
     {path: "", redirectTo: "alerts", pathMatch: "full"},
     {path: "alerts", component: KSAlerts, data: {state: "alerts"}},
@@ -55,6 +57,7 @@ export const routes: Routes = [
     {path: "code", component: KSCode, data: {state: "code"}},
     {path: "colors", component: KSColors, data: {state: "colors"}},
     {path: "datagrids", component: KSDatagrid, data: {state: "datagrids"}},
+    {path: "drag-and-drop", component: KSDragAndDrop, data: {state: "drag-and-drop"}},
     {path: "stackviews", component: KSStackView, data: {state: "stackviews"}},
     {path: "treeviews", component: KSTreeView, data: {state: "treeviews"}},
     {path: "labels", component: KSLabels, data: {state: "labels"}},

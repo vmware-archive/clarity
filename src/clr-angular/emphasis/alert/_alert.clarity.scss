@@ -34,6 +34,7 @@
 
     .alert-icon-wrapper {
         flex: 0 0 $alertIconWidth;
+        align-self: start;
         padding-top: $clr-rem-1px;
         height: 0.75rem;
     }
@@ -195,7 +196,6 @@
         margin: 0;
         border: none;
         border-radius: 0;
-        max-height: 4rem;
         overflow-y: auto;
 
         @include generateAlertType(app-info);
@@ -236,8 +236,13 @@
             }
         }
 
-        .alert-item > span, .alert-text {
-            flex: 0 0 auto;
+        .alert-item > span,
+        .alert-text {
+            flex: 0 1 auto;
+        }
+
+        .alert-icon-wrapper {
+            margin-top: 0.125rem;
         }
 
         .close {

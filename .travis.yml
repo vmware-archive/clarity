@@ -50,7 +50,7 @@ script:
 jobs:
   include:
     - stage: publish
-      if: "(NOT type IN (api, cron, pull_request)) AND branch = master AND repo = hippee-lee/clarity"
+      if: "(NOT type IN (api, cron, pull_request)) AND branch = master AND repo = vmware/clarity"
       before_script:
         - npm run build
       script:

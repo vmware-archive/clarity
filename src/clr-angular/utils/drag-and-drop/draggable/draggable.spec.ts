@@ -24,12 +24,17 @@ export default function(): void {
         const mockDragMoveEvent = {dragPosition: {pageX: 33, pageY: 44}};
         const mockDragEndEvent = {dragPosition: {pageX: 77, pageY: 88}};
         beforeEach(function() {
-            TestBed.configureTestingModule(
-                {imports: [ClrDragAndDropModule, NoopAnimationsModule], declarations: [BasicDraggableTest]});
+            TestBed.configureTestingModule({
+                imports: [ClrDragAndDropModule, NoopAnimationsModule],
+                declarations: [BasicDraggableTest]
+            });
             TestBed.overrideComponent(ClrDraggable, {
                 set: {
                     providers: [
-                        DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot, ClrGlobalDragMode,
+                        DomAdapter,
+                        ClrDragHandleRegistrar,
+                        ClrDraggableSnapshot,
+                        ClrGlobalDragMode,
                         MOCK_DRAG_EVENT_LISTENER_PROVIDER
                     ]
                 }
@@ -106,12 +111,21 @@ export default function(): void {
 
         it("should instantiate cloned version of draggable as ghost on drag start", function() {
             this.dragEventListener.dragStarted.next();
-            const draggableGhosts = this.fixture.nativeElement.querySelectorAll("clr-draggable-ghost");
-            expect(draggableGhosts.length).toBe(1);
-            expect(this.draggable.nativeElement.nextSibling)
-                .toBe(draggableGhosts[0], `The default ghost appears next to the draggable element.`);
-            expect(draggableGhosts[0].querySelectorAll(".draggable").length).toBe(1);
-            expect(draggableGhosts[0].querySelector(".draggable").textContent).toBe("Test");
+            const draggableGhost = this.fixture.nativeElement.querySelectorAll("clr-draggable-ghost");
+            expect(draggableGhost.length).toBe(1);
+            expect(this.draggable.nativeElement.nextSibling).toBe(
+                draggableGhost[0],
+                `The default ghost appears next to the draggable element.`
+            );
+            expect(draggableGhost[0].querySelectorAll(".draggable").length).toBe(1);
+            expect(draggableGhost[0].querySelector(".draggable").textContent).toBe("Test");
+        });
+
+        it("should create ghost as sibling", function() {
+            this.dragEventListener.dragStarted.next();
+            const draggable = this.fixture.nativeElement.querySelector(".draggable");
+            const draggableGhost = this.fixture.nativeElement.querySelector("clr-draggable-ghost");
+            expect(draggable.nextSibling).toBe(draggableGhost);
         });
 
         it("should remove ghost on drag end", function() {
@@ -124,8 +138,7 @@ export default function(): void {
 }
 
 @Component({
-    template:
-        `<div clrDraggable (clrDragStart)="dragStartEvent=$event;" (clrDragMove)="dragMoveEvent=$event;" (clrDragEnd)="dragEndEvent=$event;">Test</div>`
+    template: `<div clrDraggable (clrDragStart)="dragStartEvent=$event;" (clrDragMove)="dragMoveEvent=$event;" (clrDragEnd)="dragEndEvent=$event;">Test</div>`
 })
 class BasicDraggableTest {
     dragStartEvent: any;

@@ -6,8 +6,8 @@
 import {Type} from "@angular/core";
 
 import {ClrDragHandle} from "./drag-handle";
-import {ClrDraggable} from "./draggable/draggable";
 import {ClrDraggableGhost} from "./draggable-ghost";
+import {ClrDraggable} from "./draggable/draggable";
 import {ClrDroppable} from "./droppable";
 import {ClrIfDragged} from "./if-dragged";
 

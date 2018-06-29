@@ -11,12 +11,13 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {ClrIconModule} from "../../../icon/icon.module";
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
 import {ClrDragAndDropModule} from "../drag-and-drop.module";
-import {ClrDraggable} from "./draggable";
 import {ClrDragEventListener} from "../providers/drag-event-listener";
 import {MOCK_DRAG_EVENT_LISTENER_PROVIDER} from "../providers/drag-event-listener.mock";
 import {ClrDragHandleRegistrar} from "../providers/drag-handle-registrar";
 import {ClrDraggableSnapshot} from "../providers/draggable-snapshot";
 import {ClrGlobalDragMode} from "../providers/global-drag-mode";
+
+import {ClrDraggable} from "./draggable";
 
 export default function(): void {
     describe("With Custom Draggable Ghost", function() {
@@ -28,10 +29,7 @@ export default function(): void {
             TestBed.overrideComponent(ClrDraggable, {
                 set: {
                     providers: [
-                        DomAdapter,
-                        ClrDragHandleRegistrar,
-                        ClrDraggableSnapshot,
-                        ClrGlobalDragMode,
+                        DomAdapter, ClrDragHandleRegistrar, ClrDraggableSnapshot, ClrGlobalDragMode,
                         MOCK_DRAG_EVENT_LISTENER_PROVIDER
                     ]
                 }

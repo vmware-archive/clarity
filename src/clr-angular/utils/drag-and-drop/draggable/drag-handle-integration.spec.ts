@@ -9,9 +9,10 @@ import {By} from "@angular/platform-browser";
 
 import {ClrDragAndDropModule} from "../drag-and-drop.module";
 import {ClrDragHandle} from "../drag-handle";
-import {ClrDraggable} from "./draggable";
 import {ClrDragEventListener} from "../providers/drag-event-listener";
 import {ClrDragHandleRegistrar} from "../providers/drag-handle-registrar";
+
+import {ClrDraggable} from "./draggable";
 
 export default function(): void {
     describe("With ClrDragHandle", function() {

@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Guard for running only on the vmware/clarity repo
+if [ "$TRAVIS_REPO_SLUG" != "vmware/clarity" ]; then
+    echo "Not on vmware/clarity, not running publish script"
+    exit 0
+fi
+
 # Set up the user for committing and pushing.
 git config --global user.email "<mhippely@vmware.com>"
 git config --global user.name "clr-team"

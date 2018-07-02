@@ -6,7 +6,7 @@
 import { Directive, HostListener } from '@angular/core';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
 
-@Directive({ selector: '[clrTooltipTrigger]', host: { '[attr.tabindex]': '0' } })
+@Directive({ selector: '[clrTooltipTrigger]', host: { '[attr.tabindex]': '0', '[class.tooltip-trigger]': 'true' } })
 export class ClrTooltipTrigger {
   constructor(private ifOpenService: IfOpenService) {}
 

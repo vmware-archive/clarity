@@ -204,4 +204,12 @@
       pointer-events: none;
     }
   }
+
+  //Angular component with current structure focuses on the tooltip trigger
+  //whereas the static component host is focused on as its normally a link with an icon in it.
+  //Tooltip is due for a refactor but as of now this fix solves the immediate accessibility bug that
+  //the tooltip component faces.
+  .tooltip-trigger:focus + .tooltip-content {
+    visibility: visible;
+  }
 }

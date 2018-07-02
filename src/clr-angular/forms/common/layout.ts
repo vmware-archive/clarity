@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { AfterContentInit, Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { Directive, Input, OnInit } from '@angular/core';
 import { Layouts, LayoutService } from './providers/layout.service';
 
 @Directive({

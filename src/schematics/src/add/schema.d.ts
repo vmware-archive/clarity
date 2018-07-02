@@ -1,6 +1,4 @@
 export interface Schema {
-  sourceDir?: string;
-  appRoot?: string;
-  module?: string;
-  directory?: string;
+  project: string;
+  module: string;
 }

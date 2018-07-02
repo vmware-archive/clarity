@@ -4,36 +4,31 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Directive, HostListener, Optional, ViewContainerRef, Attribute, Renderer2, ElementRef } from '@angular/core';
+import { Directive, HostListener, Optional, ViewContainerRef, Renderer2, ElementRef } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
 import { NgControlService } from '../common/providers/ng-control.service';
-import { ClrInputContainer } from './input-container';
+import { ClrTextareaContainer } from './textarea-container';
 import { WrappedFormControl } from '../common/wrapped-control';
 import { ControlClassService } from '../common/providers/control-class.service';
 
-@Directive({ selector: '[clrInput]', host: { '[class.clr-input]': 'true' } })
-export class ClrInput extends WrappedFormControl<ClrInputContainer> {
+@Directive({ selector: '[clrTextarea]', host: { '[class.clr-textarea]': 'true' } })
+export class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> {
   constructor(
     vcr: ViewContainerRef,
     @Optional() ngControlService: NgControlService,
     @Optional() private ifErrorService: IfErrorService,
     @Optional() control: NgControl,
     @Optional() controlClassService: ControlClassService,
-    @Attribute('type') public type: string,
     renderer: Renderer2,
     el: ElementRef
   ) {
-    super(ClrInputContainer, vcr, 1);
+    super(ClrTextareaContainer, vcr, 1);
     if (!control) {
       throw new Error(
-        'clrInput can only be used within an Angular form control, add ngModel or formControl to the input'
+        'clrTextarea can only be used within an Angular form control, add ngModel or formControl to the textarea'
       );
-    }
-    // Set type if it is missing
-    if (!this.type) {
-      renderer.setAttribute(el.nativeElement, 'type', 'text');
     }
     if (controlClassService) {
       controlClassService.className = el.nativeElement.className;

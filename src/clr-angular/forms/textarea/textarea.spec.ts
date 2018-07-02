@@ -5,27 +5,28 @@
  */
 import { Component } from '@angular/core';
 
+import { ClrTextarea } from './textarea';
+import { ClrTextareaContainer } from './textarea-container';
+
 import { ControlBasicTest, ControlInvalidTest } from '../tests/control.spec';
-import { ClrInputContainer } from './input-container';
-import { ClrInput } from './input';
 
 @Component({
   template: `
-       <input type="text" clrInput />
+    <textarea clrTextarea></textarea>
     `,
 })
 class InvalidUseTest {}
 
 @Component({
   template: `
-       <input type="text" clrInput name="model" class="test-class" [(ngModel)]="model" />
+    <textarea clrTextarea name="model" class="test-class" [(ngModel)]="model"></textarea>
     `,
 })
 class SimpleTest {}
 
 export default function(): void {
-  describe('Input directive', () => {
-    ControlInvalidTest(ClrInput, InvalidUseTest);
-    ControlBasicTest(ClrInputContainer, ClrInput, SimpleTest, 'clr-input');
+  describe('Textarea directive', () => {
+    ControlInvalidTest(ClrTextarea, InvalidUseTest);
+    ControlBasicTest(ClrTextareaContainer, ClrTextarea, SimpleTest, 'clr-textarea');
   });
 }

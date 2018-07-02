@@ -16,13 +16,13 @@ import { ClrLabel } from '../common/label';
 import { ControlClassService } from '../common/providers/control-class.service';
 
 @Component({
-  selector: 'clr-input-container',
+  selector: 'clr-textarea-container',
   template: `
         <ng-content select="label"></ng-content>
         <label *ngIf="!label && addGrid()"></label>
         <div class="clr-control-container" [ngClass]="controlClass()">
-            <div class="clr-input-wrapper">
-                <ng-content select="[clrInput]"></ng-content>
+            <div class="clr-textarea-wrapper">
+                <ng-content select="[clrTextarea]"></ng-content>
                 <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
             </div>
             <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
@@ -35,7 +35,7 @@ import { ControlClassService } from '../common/providers/control-class.service';
   },
   providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService],
 })
-export class ClrInputContainer implements DynamicWrapper, OnDestroy {
+export class ClrTextareaContainer implements DynamicWrapper, OnDestroy {
   subscription: Subscription;
   invalid = false;
   _dynamic = false;

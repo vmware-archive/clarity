@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import InputContainerSpecs from './input-container.spec';
-import InputSpecs from './input.spec';
+import TextareaContainerSpecs from './textarea-container.spec';
+import TextareaSpecs from './textarea.spec';
 
-describe('Input component', function() {
-  InputContainerSpecs();
-  InputSpecs();
+describe('Textarea component', function() {
+  TextareaContainerSpecs();
+  TextareaSpecs();
 });

@@ -9,4 +9,15 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ControlClassService {
   className = '';
+
+  controlClass(invalid = false, grid = false) {
+    const controlClasses = [];
+    if (invalid) {
+      controlClasses.push('clr-error');
+    }
+    if (grid && this.className.indexOf('clr-col') === -1) {
+      controlClasses.push('clr-col-md-10 clr-col-xs-12');
+    }
+    return controlClasses.join(' ');
+  }
 }

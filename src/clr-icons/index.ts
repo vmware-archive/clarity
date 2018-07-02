@@ -28,3 +28,13 @@ if (typeof window !== 'undefined') {
 }
 
 export { clarityIcons as ClarityIcons };
+
+export * from './shapes/chart-shapes';
+export * from './shapes/commerce-shapes';
+export * from './shapes/core-shapes';
+export * from './shapes/essential-shapes';
+export * from './shapes/media-shapes';
+export * from './shapes/social-shapes';
+export * from './shapes/technology-shapes';
+export * from './shapes/text-edit-shapes';
+export * from './shapes/travel-shapes';

@@ -5,13 +5,17 @@
  */
 import { Component } from '@angular/core';
 import { ClrIconCustomTag, ClrLoading, ClrMainContainer, IconCustomTag, Loading, MainContainer } from '@clr/angular';
-import { ClarityIcons } from '@clr/icons';
-import { ClrShapeStore } from '@clr/icons/shapes/commerce-shapes';
-import { ClrShapePin } from '@clr/icons/shapes/essential-shapes';
-import { ClrShapeHeadphones } from '@clr/icons/shapes/media-shapes';
-import { ClrShapeStar } from '@clr/icons/shapes/social-shapes';
-import { ClrShapeHelix } from '@clr/icons/shapes/technology-shapes';
-import { ClrShapeCar } from '@clr/icons/shapes/travel-shapes';
+import {
+  ClarityIcons,
+  ClrShapeBarChart,
+  ClrShapeBold,
+  ClrShapeCar,
+  ClrShapeHeadphones,
+  ClrShapeHelix,
+  ClrShapePin,
+  ClrShapeStar,
+  ClrShapeStore,
+} from '@clr/icons';
 
 @Component({ selector: 'KS-root', templateUrl: './app.component.html', styleUrls: ['./app.component.scss'] })
 export class AppComponent {
@@ -70,6 +74,8 @@ export class AppComponent {
       star: ClrShapeStar,
       car: ClrShapeCar,
       helix: ClrShapeHelix,
+      bold: ClrShapeBold,
+      'bar-chart': ClrShapeBarChart,
     });
   }
 }

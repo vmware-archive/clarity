@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
+import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { SignpostDemo } from './signpost.demo';

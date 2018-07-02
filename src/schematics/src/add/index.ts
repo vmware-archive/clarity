@@ -25,35 +25,46 @@ if (fs.existsSync(join(__dirname, '../../package.json'))) {
 }
 
 // Looks up and finds the path to the app module (or other module if specified)
-function findModuleFromOptions(host: Tree, options: ComponentOptions): Path | undefined {
-  const modulePath = normalize('/' + options.sourceDir + '/' + options.appRoot + '/' + options.module);
-  const moduleBaseName = normalize(modulePath)
+function findModuleFromOptions(host: Tree, options: ComponentOptions, config: any): Path {
+  const modulePath = normalize('/' + config.projects[options.project].sourceRoot + '/' + options.module);
+  const moduleBaseName = normalize(options.module)
     .split('/')
     .pop();
 
+  // Try to handle any number of semi-valid paths
   if (host.exists(modulePath)) {
+    // Default /[PROJECT_SRC]/[MODULE]
     return normalize(modulePath);
   } else if (host.exists(modulePath + '.ts')) {
+    // /[PROJECT_SRC]/[MODULE].ts
     return normalize(modulePath + '.ts');
   } else if (host.exists(modulePath + '.module.ts')) {
+    // /[PROJECT_SRC]/[MODULE].module.ts
     return normalize(modulePath + '.module.ts');
-  } else if (host.exists(modulePath + '/' + moduleBaseName + '.module.ts')) {
-    return normalize(modulePath + '/' + moduleBaseName + '.module.ts');
+  } else if (host.exists(modulePath + '/app/' + moduleBaseName)) {
+    // /[PROJECT_SRC]/app/[MODULE]
+    return normalize(modulePath + '/app/' + moduleBaseName);
+  } else if (host.exists(modulePath + '/app/' + moduleBaseName + '.ts')) {
+    // /[PROJECT_SRC]/app/[MODULE].ts
+    return normalize(modulePath + '/app/' + moduleBaseName + '.ts');
+  } else if (host.exists(modulePath + '/app/' + moduleBaseName + '.module.ts')) {
+    // /[PROJECT_SRC]/app/[MODULE].module..ts
+    return normalize(modulePath + '/app/' + moduleBaseName + '.module.ts');
   } else {
-    throw new Error('Specified module does not exist');
+    throw new Error('Could not find the module, please specify a path to the app module file with the --module flag');
   }
+}
+
+// Read a file
+function readJsonFile(path: string) {
+  return JSON.parse(fs.readFileSync(path, 'utf-8'));
 }
 
 // Writes changes to a JSON file
 function updateJsonFile(path: string, callback: (a: any) => any) {
-  const json = JSON.parse(fs.readFileSync(path, 'utf-8'));
+  const json = readJsonFile(path);
   callback(json);
   fs.writeFileSync(path, JSON.stringify(json, null, 2));
-}
-
-// Looks at the project for the correct CLI config file
-function findCliConfig() {
-  return ['angular.json', '.angular.json', 'angular-cli.json', '.angular-cli.json'].find(file => fs.existsSync(file));
 }
 
 // Handles adding a module to the NgModule
@@ -89,7 +100,24 @@ function addDeclarationToNgModule(
 
 export default function(options: ComponentOptions): Rule {
   return (host: Tree, context: SchematicContext) => {
-    options.module = findModuleFromOptions(host, options);
+    const configFile = 'angular.json';
+
+    if (!fs.existsSync(configFile)) {
+      console.error('Could not install Clarity, requires Angular and Angular CLI version 6 or greater');
+      return;
+    }
+
+    const config = readJsonFile(configFile);
+
+    if (!options.project) {
+      if (!config.defaultProject) {
+        console.error('Could not find a default project, please specify --project PROJECT_NAME');
+        return;
+      }
+      options.project = config.defaultProject;
+    }
+
+    options.module = findModuleFromOptions(host, options, config);
 
     // Add Clarity packages to package.json, if not found
     updateJsonFile('package.json', json => {
@@ -109,54 +137,40 @@ export default function(options: ComponentOptions): Rule {
     });
 
     // Add Clarity assets to .angular-cli.json, if not found
-    const config = findCliConfig();
-    if (config) {
-      updateJsonFile(config, json => {
-        // @TODO abstract this out to a utility, maybe schematics will provide one
-        let scripts,
-          styles = [];
-        if (json.apps) {
-          scripts = json.apps[0].scripts;
-          styles = json.apps[0].styles;
-        } else if (json.projects) {
-          const projects = Object.keys(json.projects);
-          const project = projects.find(key => {
-            if (json.projects[key].projectType === 'application') {
-              return true;
-            }
-            return false;
-          });
-          if (!project) {
-            console.info(
-              `Could not update CLI config file to add scripts and styles. You'll have to add them manually.`
-            );
-            return;
-          }
-          scripts = json.projects[project].architect.build.options.scripts;
-          styles = json.projects[project].architect.build.options.styles;
+    updateJsonFile(configFile, json => {
+      const projects = Object.keys(json.projects);
+      const project = projects.find(key => {
+        if (key === options.project) {
+          return true;
         }
-
-        const scriptsSearch = scripts.join('|');
-        const stylesSearch = styles.join('|');
-        const pathPrefix = json.apps ? '../' : '';
-
-        if (stylesSearch.search('node_modules/@clr/ui/clr-ui') < 0) {
-          styles.push(pathPrefix + 'node_modules/@clr/ui/clr-ui.min.css');
-        }
-        if (stylesSearch.search('node_modules/@clr/icons/clr-icons') < 0) {
-          styles.push(pathPrefix + 'node_modules/@clr/icons/clr-icons.min.css');
-        }
-        if (scriptsSearch.search('node_modules/@clr/icons/clr-icons.min.js') < 0) {
-          scripts.push(pathPrefix + 'node_modules/@clr/icons/clr-icons.min.js');
-        }
-        if (scriptsSearch.search('node_modules/@webcomponents/custom-elements/custom-elements.min.js') < 0) {
-          // Want this first
-          scripts.unshift(pathPrefix + 'node_modules/@webcomponents/custom-elements/custom-elements.min.js');
-        }
+        return false;
       });
-    } else {
-      console.info(`No CLI config found, skipping`);
-    }
+      if (!project) {
+        console.info(`Could not update CLI config file to add scripts and styles. You'll have to add them manually.`);
+        return;
+      }
+
+      const scripts = json.projects[project].architect.build.options.scripts;
+      const styles = json.projects[project].architect.build.options.styles;
+
+      const scriptsSearch = scripts.join('|');
+      const stylesSearch = styles.join('|');
+      const pathPrefix = json.apps ? '../' : '';
+
+      if (stylesSearch.search('node_modules/@clr/ui/clr-ui') < 0) {
+        styles.unshift(pathPrefix + 'node_modules/@clr/ui/clr-ui.min.css');
+      }
+      if (stylesSearch.search('node_modules/@clr/icons/clr-icons') < 0) {
+        styles.unshift(pathPrefix + 'node_modules/@clr/icons/clr-icons.min.css');
+      }
+      if (scriptsSearch.search('node_modules/@clr/icons/clr-icons.min.js') < 0) {
+        scripts.push(pathPrefix + 'node_modules/@clr/icons/clr-icons.min.js');
+      }
+      if (scriptsSearch.search('node_modules/@webcomponents/custom-elements/custom-elements.min.js') < 0) {
+        // Want this first
+        scripts.unshift(pathPrefix + 'node_modules/@webcomponents/custom-elements/custom-elements.min.js');
+      }
+    });
 
     // Chain a series of tasks to setup Clarity
     // 1. Add ClarityModule to NgModule

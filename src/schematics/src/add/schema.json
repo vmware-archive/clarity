@@ -4,31 +4,15 @@
   "title": "Clarity Add Options Schema",
   "type": "object",
   "properties": {
-    "sourceDir": {
+    "project": {
       "type": "string",
-      "format": "path",
-      "description": "The path of the source directory.",
-      "default": "src",
-      "alias": "sd",
-      "visible": false
-    },
-    "appRoot": {
-      "type": "string",
-      "format": "path",
-      "default": "app",
-      "description": "The root of the application.",
-      "visible": false
-    },
-    "directory": {
-      "type": "string",
-      "format": "path",
-      "description": "The directory the app resides in"
+      "description": "The project to add Clarity to."
     },
     "module": {
       "type": "string",
-      "description": "Allows specification of the declaring module.",
+      "description": "The module file to add Clarity to, should be relative to project source directory.",
       "alias": "m",
-      "default": "app.module"
+      "default": "app/app.module.ts"
     }
   }
 }

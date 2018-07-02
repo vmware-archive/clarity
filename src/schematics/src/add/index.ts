@@ -150,7 +150,8 @@ export default function(options: ComponentOptions): Rule {
           scripts.push(pathPrefix + 'node_modules/@clr/icons/clr-icons.min.js');
         }
         if (scriptsSearch.search('node_modules/@webcomponents/custom-elements/custom-elements.min.js') < 0) {
-          scripts.push(pathPrefix + 'node_modules/@webcomponents/custom-elements/custom-elements.min.js');
+          // Want this first
+          scripts.unshift(pathPrefix + 'node_modules/@webcomponents/custom-elements/custom-elements.min.js');
         }
       });
     } else {

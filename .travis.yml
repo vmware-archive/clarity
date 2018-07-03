@@ -15,14 +15,14 @@ env:
 sudo: required
 dist: trusty
 group: edge
-
 notifications:
   email:
   - wilkenj@vmware.com
   - mhippely@vmware.com
   slack:
     on_pull_requests: false
-    secure: IY0IuSAWJLpuMjlC576jPkurpUu/RZI2AJRP1Bt3TQ0a1TnfQvTFkhcTZ5NMx/wAClNRQXjCUCWtQUc4G05LQ8CSQziD7ayh57W8GJOgxYbUWh++OwsV1bFPWG0dgkrxcM2+Zut1CxUSH9m3iA/T3LTYC/DSKCpNgROXW7Rbb0EoPZ9Rtw507Q3PdXcGvA7FNUqRnK1tspShGtVu7FGpdSscCuhUEvf70W/Km58LGrsmM8s0On1StRWlR7Tcyfzr4Pgdnp43We8oOb5lY2t1BPhAhxpSqloniJY2QprJUs4jQe7PcPrNJufHL5NqwjOs3J1E7M78LQccDxS3aXe8R+H92WVYDXzQ0gxfbLOmLuUZpmp52nmj3JrR4SEx3sxq2h/OPMl9Fnl22Qa6rGuYRM3qrS4ZW6+Yzj18pKE6G2ayC4HiFLa2KMRI9fZHjrc9gF0KgrfZ+ynAspJRBU0bZFuW51IcWPtXb4Vh17XB6ZSp5N3h4KlqPDTmGXKt6wCpq9DFmUrpSWaLjx/OZ7T9luXyVDYOifBQ+TqTzEjVlo0nY3qISO+qPYlRcwhDZ3mlMj7HOR6OtNtQSVnYRM59RQc4d8dxN+ss5sbKAabPDDFmwNonbuvHYTrh7BJ/vYI8uVpZipdlkErzHrNVOpzdWoZpAuWrY81Kqf/FjSOWKoA=
+    rooms:
+      secure: nv6QzBBhBOO1SCjVslfDTO8O58Z0EkTVxif86cwQy+N6SYbtjBAU9wABPsOjoCIBbGa5NZ7pQX3oe+MO4azHRYhLoPhRJPQ/YZ0++k5l7WhknnYuliz/CFjH1k/V91y64xbBqxNF7CgBAqEWePVU6mEHHhrIBPT/111eWk8hkhDhO2aAXLoJu9yOLm+diPFZRQCJareDsHlFtsfiCne33L080sE4dLvOXxL6GNXK95758658cYoMBRqCYNCkJK6sfQm9/nBcJRTBe+VaaSC+tBogS9XIpkp1+UNuUpTARtZPBrnMWGSG//KVFv5195ofOq4TCRf5AIr4bo0EGoA+JoonbcAw1e+fSWVMlk+mTTVB9IyG3upDJtHQdBVo4r9m1+Nk/0xnSul/XXYX3zN4/sdu5RfBEaRL3QjKqbd7/vHL7okPWJNPdGeWfvKnIaEvNnSflUt4OqkoEhfuHPRlw4tqakTlnWyzBNwRvMZdT1YFKzryOnIh2yhaX+zRk4JB8+8D0iM+Y4hHtgt3YC9TCWOjpLA1+wVcGsEIY6BZRctSDvo6V43lABn5Qe9nwxUB3LEQX0Fd7tTYBUfqJCoIkl80yQ46EpyvRfwh1nU0fVAmmDMyciVwn1s2WCTtAH4TIw09OAaXLr8mbQ/zIRVkzjR0FSeaNta0m8IrRkqbxoA=
 services:
   - docker
 
@@ -50,7 +50,7 @@ script:
 jobs:
   include:
     - stage: publish
-      if: "(NOT type IN (api, cron, pull_request)) AND branch = master"
+      if: "(NOT type IN (api, cron, pull_request)) AND branch = master AND repo = vmware/clarity"
       before_script:
         - npm run build
       script:

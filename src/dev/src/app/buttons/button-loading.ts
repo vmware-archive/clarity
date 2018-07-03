@@ -14,9 +14,30 @@ import { ClrLoadingState } from '@clr/angular';
 export class ButtonLoadingDemo {
   public validateState: ClrLoadingState = ClrLoadingState.DEFAULT;
   public submitState: ClrLoadingState = ClrLoadingState.DEFAULT;
+  public disabledState: ClrLoadingState = ClrLoadingState.DEFAULT;
+  public enabledState: ClrLoadingState = ClrLoadingState.DEFAULT;
+  public disabledStateDisabled: boolean = false;
+  public enabledStateDisabled: boolean = false;
+
   public validateSmState: boolean = false;
   public submitSmState: ClrLoadingState = ClrLoadingState.DEFAULT;
   public validateFalsyState: any;
+
+  disabledDemo() {
+    this.disabledState = ClrLoadingState.LOADING;
+    setTimeout(() => {
+      this.disabledState = ClrLoadingState.SUCCESS;
+      this.disabledStateDisabled = true;
+    }, 1500);
+  }
+
+  enabledDemo() {
+    this.enabledState = ClrLoadingState.LOADING;
+    setTimeout(() => {
+      this.enabledState = ClrLoadingState.SUCCESS;
+      this.enabledStateDisabled = false;
+    }, 1500);
+  }
 
   validateDemo() {
     this.validateState = ClrLoadingState.LOADING;

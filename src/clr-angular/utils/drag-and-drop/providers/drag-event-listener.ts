@@ -36,8 +36,10 @@ export class ClrDragEventListener<T> {
 
     constructor(private ngZone: NgZone, private renderer: Renderer2, private eventBus: ClrDragAndDropEventBus<T>) {}
 
+    public ghostElement?: Node;
     public dragDataTransfer?: T;
     public group?: string|string[];
+    public dropPointPosition?: {pageX: number; pageY: number};
 
     public attachDragListeners(draggableEl: Node) {
         this.draggableEl = draggableEl;
@@ -110,6 +112,11 @@ export class ClrDragEventListener<T> {
                 break;
         }
 
+        dragEvent.ghostElement = this.ghostElement;
+        dragEvent.dragDataTransfer = this.dragDataTransfer;
+        dragEvent.dropPointPosition = this.dropPointPosition;
+        dragEvent.group = this.group;
+
         this.eventBus.broadcast(dragEvent);
     }
 
@@ -125,9 +132,7 @@ export class ClrDragEventListener<T> {
         return {
             type: eventType,
             draggableElement: this.draggableEl,
-            dragPosition: {pageX: nativeEvent.pageX, pageY: nativeEvent.pageY},
-            dragDataTransfer: this.dragDataTransfer,
-            group: this.group
+            dragPosition: {pageX: nativeEvent.pageX, pageY: nativeEvent.pageY}
         };
     }
 }

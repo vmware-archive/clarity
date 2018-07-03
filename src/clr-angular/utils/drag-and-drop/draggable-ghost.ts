@@ -44,6 +44,10 @@ export class ClrDraggableGhost<T> implements OnDestroy {
 
         this.draggableGhostEl = this.el.nativeElement;
 
+        // Register the ghost element in DragEventListener to pass in a ClrDragEvent.
+        this.dragEventListener.ghostElement = this.draggableGhostEl;
+
+        // Default ghost size gets the size of ClrDraggable element.
         this.setDefaultGhostSize(this.draggableGhostEl);
 
         const offset: OffsetPosition = {
@@ -72,6 +76,7 @@ export class ClrDraggableGhost<T> implements OnDestroy {
             // Position the draggable ghost.
             const topLeftPosition: PagePosition = this.findTopLeftPosition(event.dragPosition, offset);
             this.setPositionStyle(this.draggableGhostEl, topLeftPosition.pageX, topLeftPosition.pageY);
+            this.dragEventListener.dropPointPosition = this.findDropPointPosition(topLeftPosition);
         }));
     }
 
@@ -89,6 +94,17 @@ export class ClrDraggableGhost<T> implements OnDestroy {
 
     private findTopLeftPosition(dragPosition: PagePosition, offset: OffsetPosition): PagePosition {
         return {pageX: dragPosition.pageX - offset.left, pageY: dragPosition.pageY - offset.top};
+    }
+
+    private findDropPointPosition(topLeftPosition: PagePosition): PagePosition {
+        if (this.draggableSnapshot.hasDraggableState) {
+            return {
+                pageX: topLeftPosition.pageX + this.draggableSnapshot.clientRect.width / 2,
+                pageY: topLeftPosition.pageY + this.draggableSnapshot.clientRect.height / 2
+            };
+        } else {
+            return topLeftPosition;
+        }
     }
 
     private setSizeStyle(el: Node, width: number, height: number): void {

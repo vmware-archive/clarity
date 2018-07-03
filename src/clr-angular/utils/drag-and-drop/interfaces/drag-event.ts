@@ -7,14 +7,17 @@ export enum ClrDragEventType {
     DRAG_START,
     DRAG_MOVE,
     DRAG_END,
+    DRAG_ENTER,
+    DRAG_LEAVE,
     DROP
 }
 
 export interface ClrDragEvent<T> {
-    // TODO: this interface will be expanded and customized as the implementation progresses.
     type: ClrDragEventType;
     group?: string|string[];
     draggableElement: Node;
-    dragPosition: {pageX: number, pageY: number};
+    ghostElement?: Node;
+    dragPosition: {pageX: number; pageY: number};
     dragDataTransfer?: T;
+    dropPointPosition?: {pageX: number; pageY: number};
 }

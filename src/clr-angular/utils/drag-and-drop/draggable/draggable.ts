@@ -14,8 +14,9 @@ import {
     Injector,
     OnDestroy,
     Output,
-    ViewContainerRef,
+    ViewContainerRef
 } from "@angular/core";
+import {Input} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
@@ -47,6 +48,16 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     }
 
     @ContentChild(ClrIfDragged) customGhost: ClrIfDragged<T>;
+
+    @Input("clrDraggable")
+    set dataTransfer(value: T) {
+        this.dragEventListener.dragDataTransfer = value;
+    }
+
+    @Input("clrGroup")
+    set group(value: string|string[]) {
+        this.dragEventListener.group = value;
+    }
 
     private createDefaultGhost(event: ClrDragEvent<T>) {
         this.draggableSnapshot.capture(this.draggableEl, event);

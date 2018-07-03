@@ -5,7 +5,7 @@
  */
 
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
-import { Component, ElementRef, EventEmitter, Output, Renderer2 } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
 import { ClrLoadingState } from '../../utils/loading/loading';
 import { LoadingListener } from '../../utils/loading/loading-listener';
 
@@ -17,7 +17,7 @@ import { LoadingListener } from '../../utils/loading/loading-listener';
                 <span @spinner class="spinner spinner-inline"></span>
             </span>
             <span *ngSwitchCase="buttonState.SUCCESS">
-                <span @validated class="spinner spinner-inline spinner-check"></span>
+                <span @validated (@validated.done)="this.loadingStateChange(this.buttonState.DEFAULT)" class="spinner spinner-inline spinner-check"></span>
             </span>
             <span *ngSwitchCase="buttonState.DEFAULT" @defaultButton>
                 <ng-content></ng-content>
@@ -38,36 +38,44 @@ import { LoadingListener } from '../../utils/loading/loading-listener';
     trigger('validated', [
       transition(':enter', [
         animate(
-          '300ms',
+          '600ms',
           keyframes([
-            style({ transform: 'scale(0,0)' }),
-            style({ opacity: 1 }),
-            style({ transform: 'scale(1.2,1.2)' }),
-            style({ transform: 'scale(.9,.9)' }),
-            style({ transform: 'scale(1,1)' }),
+            style({ transform: 'scale(0,0)', offset: 0 }),
+            style({ opacity: 1, offset: 0.2 }),
+            style({ transform: 'scale(1.2,1.2)', offset: 0.4 }),
+            style({ transform: 'scale(.9,.9)', offset: 0.6 }),
+            style({ transform: 'scale(1,1)', offset: 1 }),
           ])
         ),
       ]),
       transition(':leave', [style({ opacity: 1 }), animate('100ms ease-out', style({ opacity: 0 }))]),
     ]),
   ],
+  host: { '[attr.disabled]': "disabled? '' : null" },
 })
 export class ClrLoadingButton implements LoadingListener {
   public buttonState = ClrLoadingState;
   public state: ClrLoadingState = ClrLoadingState.DEFAULT;
 
+  @Input('disabled') public disabled: boolean;
+
   @Output('clrLoadingChange')
   public clrLoadingChange: EventEmitter<ClrLoadingState> = new EventEmitter<ClrLoadingState>(false);
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(public el: ElementRef, private renderer: Renderer2) {}
 
   loadingStateChange(state: ClrLoadingState): void {
+    if (state == this.state) {
+      return;
+    }
     this.state = state;
 
     switch (state) {
       case ClrLoadingState.DEFAULT:
         this.renderer.removeStyle(this.el.nativeElement, 'width');
-        this.renderer.removeAttribute(this.el.nativeElement, 'disabled');
+        if (!this.disabled) {
+          this.renderer.removeAttribute(this.el.nativeElement, 'disabled');
+        }
         break;
       case ClrLoadingState.LOADING:
         this.setExplicitButtonWidth();
@@ -75,9 +83,6 @@ export class ClrLoadingButton implements LoadingListener {
         break;
       case ClrLoadingState.SUCCESS:
         this.setExplicitButtonWidth();
-        setTimeout(() => {
-          this.loadingStateChange(ClrLoadingState.DEFAULT);
-        }, 1000);
         break;
       case ClrLoadingState.ERROR:
         this.loadingStateChange(ClrLoadingState.DEFAULT);
@@ -85,14 +90,13 @@ export class ClrLoadingButton implements LoadingListener {
       default:
         break;
     }
-
     this.clrLoadingChange.emit(state);
   }
 
   private setExplicitButtonWidth() {
-    if (getComputedStyle) {
-      const width = getComputedStyle(this.el.nativeElement).getPropertyValue('width');
-      this.renderer.setStyle(this.el.nativeElement, 'width', width);
+    if (this.el.nativeElement && this.el.nativeElement.getBoundingClientRect) {
+      const boundingClientRect = this.el.nativeElement.getBoundingClientRect();
+      this.renderer.setStyle(this.el.nativeElement, 'width', `${boundingClientRect.width}px`);
     }
   }
 }

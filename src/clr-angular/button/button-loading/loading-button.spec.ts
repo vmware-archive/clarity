@@ -45,9 +45,79 @@ describe('Loading Buttons', () => {
       fixture.detectChanges();
       expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.SUCCESS);
 
-      tick(2000);
+      tick(1000);
       fixture.detectChanges();
       expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.DEFAULT);
+    })
+  );
+
+  it(
+    'sets the disabled state back to value defined in disabled input',
+    fakeAsync(() => {
+      fixture.componentInstance.disabled = true;
+      fixture.detectChanges();
+
+      fixture.componentInstance.buttonState = ClrLoadingState.LOADING;
+      fixture.detectChanges();
+      expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.LOADING);
+      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes['disabled']).toBeTruthy();
+
+      fixture.componentInstance.buttonState = ClrLoadingState.SUCCESS;
+      fixture.detectChanges();
+      expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.SUCCESS);
+      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes['disabled']).toBeTruthy();
+
+      tick(1000);
+      fixture.detectChanges();
+      expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.DEFAULT);
+      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes['disabled']).toBeTruthy();
+
+      // now the input binding sets the disabled to false
+      // it should be disabled while loading, and success, but change back to not disabled when it goes back to DEFAULT
+      fixture.componentInstance.disabled = false;
+      fixture.detectChanges();
+
+      fixture.componentInstance.buttonState = ClrLoadingState.LOADING;
+      fixture.detectChanges();
+      expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.LOADING);
+      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes['disabled']).toBeTruthy();
+
+      fixture.componentInstance.buttonState = ClrLoadingState.SUCCESS;
+      fixture.detectChanges();
+      expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.SUCCESS);
+      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes['disabled']).toBeTruthy();
+
+      tick(1000);
+      fixture.detectChanges();
+      expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.DEFAULT);
+      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes['disabled']).toBeFalsy();
+    })
+  );
+
+  it(
+    'sets an explicit width value of the button when [(clrButtonState)] value is set to LOADING or SUCCESS',
+    fakeAsync(() => {
+      let style = fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes.style;
+      expect(style).toBeFalsy();
+
+      fixture.componentInstance.buttonState = ClrLoadingState.LOADING;
+      fixture.detectChanges();
+      style = fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes.style;
+      expect(style).toBeTruthy();
+      expect(style.value).toMatch(/width:*/);
+
+      fixture.componentInstance.buttonState = ClrLoadingState.SUCCESS;
+      fixture.detectChanges();
+      style = fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes.style;
+      expect(style).toBeTruthy();
+      expect(style.value).toMatch(/width:*/);
+
+      tick(1000);
+      fixture.detectChanges();
+      expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.DEFAULT);
+      style = fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes.style;
+      // here, we check to see if style.value is falsy instead of style, because even though the style is cleared the attribute remains
+      expect(style.value).toBeFalsy();
     })
   );
 
@@ -60,11 +130,12 @@ describe('Loading Buttons', () => {
 
 @Component({
   template: `
-        <button [(clrLoading)]="buttonState" id="testBtn">Test 1</button>
+        <button [(clrLoading)]="buttonState" id="testBtn" [disabled]="disabled">Test 1</button>
     `,
 })
 class TestLoadingButtonComponent {
   @ViewChild(ClrLoadingButton) loadingButtonInstance: ClrLoadingButton;
 
   buttonState: ClrLoadingState = ClrLoadingState.DEFAULT;
+  disabled: boolean = false;
 }

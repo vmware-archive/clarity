@@ -157,7 +157,7 @@
             "ux": 20,
             "ui": 20,
             "core": -1,
-            "ng": 5,
+            "ng": 20,
             "dox": 20
         },
         {
@@ -183,13 +183,23 @@
             "comments": ""
         },
         {
+            "url": "input",
+            "text": "Inputs",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
             "url": "input-fields",
             "text": "Input Fields",
             "type": "component",
             "ux": 20,
             "ui": 20,
             "core": -1,
-            "ng": 5,
+            "ng": -1,
             "dox": 20
         },
         {
@@ -311,7 +321,7 @@
             "ux": 20,
             "ui": 20,
             "core": -1,
-            "ng": -1,
+            "ng": 5,
             "dox": 20
         },
         {
@@ -370,6 +380,16 @@
         {
             "url": "tabs",
             "text": "Tabs",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "url": "textarea",
+            "text": "Textareas",
             "type": "component",
             "ux": 20,
             "ui": 20,

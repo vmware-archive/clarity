@@ -1,4 +1,4 @@
-import { ClarityModule, ClrFormsNextModule } from '@clr/forms';
+import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
 
 @NgModule({
     imports: [

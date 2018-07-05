@@ -152,6 +152,14 @@ const documentationRoutes: Routes = [
                 }
             },
             {
+                path: "input",
+                loadChildren: "app/documentation/demos/input/input.demo.module#InputDemoModule",
+                data: {
+                    bodyClass: "input",
+                    browserTitle: "Inputs"
+                }
+            },
+            {
                 path: "input-fields",
                 loadChildren: "app/documentation/demos/input-fields/input-fields.demo.module#InputFieldsDemoModule",
                 data: {
@@ -269,6 +277,14 @@ const documentationRoutes: Routes = [
                 data: {
                     bodyClass: "page-tables",
                     browserTitle: "Tabs"
+                }
+            },
+            {
+                path: "textarea",
+                loadChildren: "app/documentation/demos/textarea/textarea.demo.module#TextareaDemoModule",
+                data: {
+                    bodyClass: "page-textarea",
+                    browserTitle: "Textarea"
                 }
             },
             {

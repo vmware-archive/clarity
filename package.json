@@ -1,6 +1,6 @@
 {
     "name": "clr-all",
-    "version": "0.12.2",
+    "version": "0.12.3",
     "private": true,
     "scripts": {
         "build:icons:web": "webpack --config webpack.icons.config.js",

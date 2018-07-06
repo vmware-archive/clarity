@@ -176,6 +176,10 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://vmware.github.io/clarity/documentation/v0.12/input</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://vmware.github.io/clarity/documentation/v0.12/input-fields</loc>
         <changefreq>daily</changefreq>
     </url>
@@ -225,6 +229,10 @@
     </url>
     <url>
         <loc>https://vmware.github.io/clarity/documentation/v0.12/tables</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://vmware.github.io/clarity/documentation/v0.12/textarea</loc>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -756,6 +764,14 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://vmware.github.io/clarity/news/0.12.3-patch.2</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://vmware.github.io/clarity/news/0.12.3</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://vmware.github.io/clarity/news/0.12.2</loc>
         <changefreq>daily</changefreq>
     </url>
@@ -777,6 +793,10 @@
     </url>
     <url>
         <loc>https://vmware.github.io/clarity/news/0.12.0-beta.4</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://vmware.github.io/clarity/news/0.11.24</loc>
         <changefreq>daily</changefreq>
     </url>
     <url>

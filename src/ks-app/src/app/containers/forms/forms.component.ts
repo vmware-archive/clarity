@@ -6,10 +6,28 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  ClrInput,
+  ClrInputContainer,
+  ClrControlError,
+  ClrControlHelper,
+  ClrTextarea,
+  ClrForm,
+  ClrTextareaContainer,
+  ClrIfError,
+} from '@clr/angular';
 
 @Component({ templateUrl: './forms.component.html' })
 export class KSForms implements OnInit {
   employeeAddressForm: FormGroup;
+  clrInput: ClrInput;
+  clrInputContainer: ClrInputContainer;
+  clrForm: ClrForm;
+  clrTextarea: ClrTextarea;
+  clrTextareaContainer: ClrTextareaContainer;
+  clrControlHelper: ClrControlHelper;
+  clrControlError: ClrControlError;
+  clrIfError: ClrIfError;
 
   constructor(private formBuilder: FormBuilder) {}
 

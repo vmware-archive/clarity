@@ -8,4 +8,5 @@ export * from './datepicker/index';
 export * from './checkbox/index';
 export * from './input/index';
 export * from './radio/index';
+export * from './textarea/index';
 export * from './forms.module';

@@ -147,3 +147,13 @@ During the review process of your pull request(s), some changes might be request
 Once your contribution is fully implemented, reviewed and ready, we will rebase the topic branch on the newest `master` and squash down to fewer commits if needed (keeping you as the author, obviously). Chances are we will be more familiar with potential conflicts that might happen, but we can work with you if you want to solve some conflicts yourself. Once rebased we will merge the topic branch into `master`, which involves a quick internal pull request you don't have to worry about, and we will finally delete the topic branch.
 
 At that point, your contribution will be available in the next official release of Clarity.
+
+## New item guidelines
+
+When a new item is created and added to the public API, the following things should be verified to ensure it is exported and tested fully.
+
+* Ensure every new public item is re-exported through the `public_api.ts` file. Usually there are `index.ts` files in directories that any public items should be re-exported through, and then the `index.ts` files are re-exported up the tree. This only applies inside of `src/clr-angular` directory.
+* Ensure that every time you import inside of `clr-angular` directory that you import from the direct file, and not an index. This can be misleading and hard to catch, but it breaks AoT compilation if you don't export it correctly.
+* Include a reference to the public item in the ks-app somewhere, use it if possible but just importing it and setting it as a reference in the component properties ensures that we can test AoT compilation and proper visibility of items. It should be imported from `@clr/angular` and not from a relative path.
+
+If it is not meant to be a public item (like a private service), be sure not to include it in the `public_api.ts`.

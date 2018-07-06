@@ -90,6 +90,10 @@
       }
     }
 
+    .stack-block-label {
+      outline: none;
+    }
+
     .stack-block-label,
     .stack-block-content {
       padding: 0.25rem 0.5rem;
@@ -118,6 +122,14 @@
         margin: (0.25rem + $clr-rem-1px) 0.25rem 0 0;
         text-align: center;
       }
+    }
+
+    .stack-block-caret {
+      height: 0.5rem;
+      width: 0.5rem;
+      margin-right: 0.125rem;
+
+      fill: $clr-stack-view-stack-block-caret-color;
     }
 
     .stack-block-content {
@@ -171,6 +183,7 @@
         transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
       }
 
+      &.on-focus:not(.stack-block-expanded),
       &:hover:not(.stack-block-expanded) {
         > .stack-block-label,
         > .stack-block-content {
@@ -251,6 +264,22 @@
     .modal & {
       height: 55vh;
       margin-bottom: 0;
+    }
+  }
+
+  //Disable the generated icon without a breaking change for the stackview static markup
+  //Only targets the Angular component as of now. Static will require a breaking change.
+  .stack-view {
+    clr-stack-block.stack-block-expandable {
+      .stack-block-label::before {
+        content: none;
+      }
+    }
+
+    .stack-children clr-stack-block {
+      .stack-block-label {
+        padding-left: 1.5rem;
+      }
     }
   }
 }

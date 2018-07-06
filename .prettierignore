@@ -2,3 +2,4 @@ package-lock.json
 package.json
 dist/
 reports/
+golden/

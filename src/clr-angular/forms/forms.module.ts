@@ -12,7 +12,7 @@ import { ClrCommonFormsModule } from './common/common.module';
 import { ClrDatepickerModule } from './datepicker/datepicker.module';
 import { ClrInputModule } from './input/input.module';
 import { ClrRadioModule } from './radio/radio.module';
-import { ClrTextareaModule } from './textarea';
+import { ClrTextareaModule } from './textarea/textarea.module';
 
 @NgModule({
   imports: [CommonModule],

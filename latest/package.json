@@ -1,6 +1,6 @@
 {
   "name": "clarity",
-  "version": "0.12.2",
+  "version": "0.12.3",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -37,9 +37,9 @@
     "@angular/platform-browser-dynamic": "^6.0.4",
     "@angular/platform-server": "^6.0.4",
     "@angular/router": "^6.0.4",
-    "@clr/angular": "^0.12.3",
-    "@clr/icons": "^0.12.3",
-    "@clr/ui": "^0.12.3",
+    "@clr/angular": "^0.12.3-patch.2",
+    "@clr/icons": "^0.12.3-patch.2",
+    "@clr/ui": "^0.12.3-patch.2",
     "@webcomponents/custom-elements": "^1.0.4",
     "bootstrap": "^4.0.0-alpha.5",
     "classlist.js": "^1.1.20150312",

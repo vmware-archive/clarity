@@ -110,6 +110,96 @@ export default function(): void {
       expect(getBlockInstance(fixture).expandable).toBeTruthy();
     });
 
+    it('displays a caret when the stack block is expandable', () => {
+      fixture = TestBed.createComponent(DynamicBlock);
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.stack-block-caret')).not.toBeNull();
+
+      getBlockInstance(fixture).expandable = false;
+
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.stack-block-caret')).toBeNull();
+    });
+
+    it('toggles the caret direction based on the expandable property', () => {
+      fixture = TestBed.createComponent(DynamicBlock);
+      fixture.detectChanges();
+
+      const caret: HTMLElement = fixture.nativeElement.querySelector('.stack-block-caret');
+
+      expect(caret.getAttribute('dir')).toBe('right');
+
+      getBlockInstance(fixture).expanded = true;
+
+      fixture.detectChanges();
+
+      expect(caret.getAttribute('dir')).toBe('down');
+    });
+
+    it('adds the on-focus class when the stack label is focused in an expandable but collapsed stack block', () => {
+      fixture = TestBed.createComponent(DynamicBlock);
+      fixture.detectChanges();
+
+      const block: HTMLElement = fixture.nativeElement.querySelector('clr-stack-block');
+      const label: HTMLElement = fixture.nativeElement.querySelector('.stack-block-label');
+
+      expect(block.classList.contains('on-focus')).toBe(false);
+
+      label.focus();
+      fixture.detectChanges();
+
+      expect(block.classList.contains('on-focus')).toBe(true);
+
+      label.blur();
+      fixture.detectChanges();
+
+      expect(block.classList.contains('on-focus')).toBe(false);
+    });
+
+    it('does not add the on-focus class when the stack block is not expandable', () => {
+      fixture = TestBed.createComponent(DynamicBlock);
+      fixture.detectChanges();
+
+      getBlockInstance(fixture).expandable = false;
+      fixture.detectChanges();
+
+      const block: HTMLElement = fixture.nativeElement.querySelector('clr-stack-block');
+      const label: HTMLElement = fixture.nativeElement.querySelector('.stack-block-label');
+
+      expect(block.classList.contains('on-focus')).toBe(false);
+
+      label.focus();
+      fixture.detectChanges();
+
+      expect(block.classList.contains('on-focus')).toBe(false);
+    });
+
+    it('adds a button role on a stack label in an expandable stack block', () => {
+      fixture = TestBed.createComponent(DynamicBlock);
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.stack-block-label').getAttribute('role')).toBe('button');
+
+      getBlockInstance(fixture).expandable = false;
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.stack-block-label').getAttribute('role')).toBeNull();
+    });
+
+    it('adds a tabindex on a stack label in an expandable stack block', () => {
+      fixture = TestBed.createComponent(DynamicBlock);
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.stack-block-label').getAttribute('tabindex')).toBe('0');
+
+      getBlockInstance(fixture).expandable = false;
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.stack-block-label').getAttribute('tabindex')).toBeNull();
+    });
+
     it('starts collapsed', () => {
       fixture = TestBed.createComponent(DynamicBlock);
       fixture.detectChanges();

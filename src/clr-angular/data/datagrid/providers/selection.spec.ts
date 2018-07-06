@@ -186,10 +186,8 @@ export default function(): void {
 
       it('does not emit selection change twice after a filter is applied', function() {
         let nbChanges = 0;
-        let currentSelection: any;
         selectionInstance.change.subscribe((items: any) => {
           nbChanges++;
-          currentSelection = items;
         });
 
         selectionInstance.selectionType = SelectionType.Multi;

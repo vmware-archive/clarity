@@ -14,6 +14,7 @@ import { ClrStackInput } from './stack-input';
 import { ClrStackSelect } from './stack-select';
 import { ClrStackView } from './stack-view';
 import { ClrStackViewCustomTags } from './stack-view-custom-tags';
+import { ClrIconModule } from '../../icon/icon.module';
 
 export const CLR_STACK_VIEW_DIRECTIVES: Type<any>[] = [
   ClrStackView,
@@ -31,7 +32,7 @@ export const CLR_STACK_VIEW_DIRECTIVES: Type<any>[] = [
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ClrIconModule],
   declarations: [CLR_STACK_VIEW_DIRECTIVES],
   exports: [CLR_STACK_VIEW_DIRECTIVES],
 })

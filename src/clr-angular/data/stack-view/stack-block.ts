@@ -9,17 +9,28 @@ import { Component, EventEmitter, HostBinding, Input, OnInit, Optional, Output, 
 @Component({
   selector: 'clr-stack-block',
   template: `
-        <dt class="stack-block-label" (click)="toggleExpand()">
-            <ng-content select="clr-stack-label"></ng-content>
-        </dt>
-        <dd class="stack-block-content">
-            <ng-content></ng-content>
-        </dd>
-        <!-- FIXME: remove this string concatenation when boolean states are supported -->
-        <div [@collapse]="''+!expanded" class="stack-children">
-            <ng-content select="clr-stack-block"></ng-content>
-        </div>
-    `,
+    <dt class="stack-block-label"
+        (click)="toggleExpand()"
+        (keyup.enter)="toggleExpand()"
+        (keyup.space)="toggleExpand()"
+        (focus)="onStackBlockFocus(true)"
+        (blur)="onStackBlockFocus(false)"
+        [attr.role]="role"
+        [attr.tabindex]="tabIndex">
+      <clr-icon shape="caret"
+                class="stack-block-caret"
+                *ngIf="expandable"
+                [attr.dir]="caretDirection"></clr-icon>
+      <ng-content select="clr-stack-label"></ng-content>
+    </dt>
+    <dd class="stack-block-content">
+      <ng-content></ng-content>
+    </dd>
+    <!-- FIXME: remove this string concatenation when boolean states are supported -->
+    <div [@collapse]="''+!expanded" class="stack-children">
+      <ng-content select="clr-stack-block"></ng-content>
+    </div>
+  `,
   // Custom elements are inline by default
   styles: [
     `
@@ -45,6 +56,7 @@ export class ClrStackBlock implements OnInit {
   @Input('clrSbExpandable')
   expandable: boolean = false;
 
+  private focused: boolean = false;
   private _changedChildren: number = 0;
   private _fullyInitialized: boolean = false;
   private _changed: boolean = false;
@@ -97,5 +109,26 @@ export class ClrStackBlock implements OnInit {
       this.expanded = !this.expanded;
       this.expandedChange.emit(this.expanded);
     }
+  }
+
+  onStackBlockFocus(focusState: boolean): void {
+    this.focused = focusState;
+  }
+
+  get caretDirection(): string {
+    return this.expanded ? 'down' : 'right';
+  }
+
+  get role(): string {
+    return this.expandable ? 'button' : null;
+  }
+
+  get tabIndex(): string {
+    return this.expandable ? '0' : null;
+  }
+
+  @HostBinding('class.on-focus')
+  get onStackLabelFocus(): boolean {
+    return this.expandable && !this.expanded && this.focused;
   }
 }

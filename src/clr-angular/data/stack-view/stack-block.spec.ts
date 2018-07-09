@@ -200,6 +200,30 @@ export default function(): void {
       expect(fixture.nativeElement.querySelector('.stack-block-label').getAttribute('tabindex')).toBeNull();
     });
 
+    it('adds the aria-expanded attribute when the stack block is expandable', () => {
+      fixture = TestBed.createComponent(DynamicBlock);
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.stack-block-label').getAttribute('aria-expanded')).not.toBeNull();
+
+      getBlockInstance(fixture).expandable = false;
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.stack-block-label').getAttribute('aria-expanded')).toBeNull();
+    });
+
+    it('sets the aria-expanded attribute to true when the stack block is expanded', () => {
+      fixture = TestBed.createComponent(DynamicBlock);
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.stack-block-label').getAttribute('aria-expanded')).toBe('false');
+
+      getBlockInstance(fixture).expanded = true;
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.stack-block-label').getAttribute('aria-expanded')).toBe('true');
+    });
+
     it('starts collapsed', () => {
       fixture = TestBed.createComponent(DynamicBlock);
       fixture.detectChanges();

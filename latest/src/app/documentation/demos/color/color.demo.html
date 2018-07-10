@@ -1,7 +1,13 @@
 <clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
     <article><h5 class="component-summary"
                  id="the-clarity-color-palette-is-primarily-based-on-alignment-with-color-use-in-web-applications-and-support-for-accessibility">
-        The Clarity color palette is a full spectrum of bold hues and neutrals to meet all your design needs.
+        <ul>
+            <li><a routerLink="." fragment="color-palette">Clarity Color Palette</a></li>
+            <li><a routerLink="." fragment="functional-colors">Functional Colors</a></li>
+            <li><a routerLink="." fragment="chart">Chart Color Schemes</a></li>
+        </ul>
+
+        <p>The Clarity color palette is a full spectrum of bold hues and neutrals to meet all your design needs.</p>
     </h5>
 
         <div id="design-guidelines">
@@ -21,6 +27,13 @@
                 illustrations and other areas that call for color accent.</p>
 
             <clr-color-palette></clr-color-palette>
+
+            <h3 id="functional-colors">Functional Colors</h3>
+
+            <p>Clarity components use a set of colors to convey certain functions and meanings. These colors have been vetted
+            and tested to meet the accessibility standard for low vision.</p>
+
+            <clr-color-palette-functional></clr-color-palette-functional>
 
             <h3 id="guidelines">Color Usage</h3>
 
@@ -167,7 +180,7 @@
             </ul>
 
 
-            <h3>Color Scheme Examples for Charts</h3>
+            <h3 id="chart">Color Scheme Examples for Charts</h3>
 
             <p class="top-margin-18">These color schemes are designed to address contrast and colorblind accessibility. 
                 Feel free to use them just as they are or as a starting point for a customized palette.</p>

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Directive, HostListener, Optional, ViewContainerRef, Renderer2, ElementRef } from '@angular/core';
+import { Directive, HostListener, Optional, ViewContainerRef, Renderer2, ElementRef, OnInit } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
@@ -14,12 +14,12 @@ import { WrappedFormControl } from '../common/wrapped-control';
 import { ControlClassService } from '../common/providers/control-class.service';
 
 @Directive({ selector: '[clrTextarea]', host: { '[class.clr-textarea]': 'true' } })
-export class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> {
+export class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> implements OnInit {
   constructor(
     vcr: ViewContainerRef,
-    @Optional() ngControlService: NgControlService,
+    @Optional() private ngControlService: NgControlService,
     @Optional() private ifErrorService: IfErrorService,
-    @Optional() control: NgControl,
+    @Optional() private control: NgControl,
     @Optional() controlClassService: ControlClassService,
     renderer: Renderer2,
     el: ElementRef
@@ -33,8 +33,12 @@ export class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> {
     if (controlClassService) {
       controlClassService.className = el.nativeElement.className;
     }
-    if (ngControlService) {
-      ngControlService.setControl(control);
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+    if (this.ngControlService) {
+      this.ngControlService.setControl(this.control);
     }
   }
 

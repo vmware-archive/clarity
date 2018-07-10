@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { ClrIconModule } from '../../icon/icon.module';
@@ -16,7 +16,7 @@ import { WrappedFormControl } from '../common/wrapped-control';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { ControlClassService } from '../common/providers/control-class.service';
 
-export function ControlInvalidTest(testControl, testComponent): void {
+export function ControlInvalidSpec(testControl, testComponent): void {
   describe('invalid use', () => {
     it('throws error when used without a form control', () => {
       TestBed.configureTestingModule({ declarations: [testControl, testComponent] });
@@ -28,14 +28,22 @@ export function ControlInvalidTest(testControl, testComponent): void {
   });
 }
 
-export function ControlBasicTest(testContainer, testControl, testComponent, controlClass): void {
-  describe('basic use', () => {
+export function TemplateDrivenSpec(testContainer, testControl, testComponent, controlClass): void {
+  fullTest('template-driven', testContainer, testControl, testComponent, controlClass);
+}
+
+export function ReactiveSpec(testContainer, testControl, testComponent, controlClass): void {
+  fullTest('reactive', testContainer, testControl, testComponent, controlClass);
+}
+
+function fullTest(description, testContainer, testControl, testComponent, controlClass) {
+  describe(description, () => {
     let control, fixture, ifErrorService, ngControlService, controlClassService;
 
     beforeEach(() => {
       spyOn(WrappedFormControl.prototype, 'ngOnInit');
       TestBed.configureTestingModule({
-        imports: [FormsModule, ClrIconModule, ClrCommonFormsModule],
+        imports: [FormsModule, ClrIconModule, ClrCommonFormsModule, ReactiveFormsModule],
         declarations: [testContainer, testControl, testComponent],
         providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService],
       });

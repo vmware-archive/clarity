@@ -4,7 +4,16 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Directive, HostListener, Optional, ViewContainerRef, Attribute, Renderer2, ElementRef } from '@angular/core';
+import {
+  Directive,
+  HostListener,
+  Optional,
+  ViewContainerRef,
+  OnInit,
+  Attribute,
+  Renderer2,
+  ElementRef,
+} from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
@@ -14,12 +23,12 @@ import { WrappedFormControl } from '../common/wrapped-control';
 import { ControlClassService } from '../common/providers/control-class.service';
 
 @Directive({ selector: '[clrInput]', host: { '[class.clr-input]': 'true' } })
-export class ClrInput extends WrappedFormControl<ClrInputContainer> {
+export class ClrInput extends WrappedFormControl<ClrInputContainer> implements OnInit {
   constructor(
     vcr: ViewContainerRef,
-    @Optional() ngControlService: NgControlService,
+    @Optional() private ngControlService: NgControlService,
     @Optional() private ifErrorService: IfErrorService,
-    @Optional() control: NgControl,
+    @Optional() private control: NgControl,
     @Optional() controlClassService: ControlClassService,
     @Attribute('type') public type: string,
     renderer: Renderer2,
@@ -38,8 +47,12 @@ export class ClrInput extends WrappedFormControl<ClrInputContainer> {
     if (controlClassService) {
       controlClassService.className = el.nativeElement.className;
     }
-    if (ngControlService) {
-      ngControlService.setControl(control);
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+    if (this.ngControlService) {
+      this.ngControlService.setControl(this.control);
     }
   }
 

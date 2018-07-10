@@ -10,6 +10,7 @@ import { ClarityModule } from "@clr/angular";
 import { ColorLuminanceDemo } from "./color-luminance";
 import { ColorContrastDemo } from "./color-contrast";
 import { ColorPalette } from "./color-palette";
+import { ColorFunctional } from "./color-palette-functional";
 import { ColorScheme } from "./color-scheme";
 import { RouterModule } from "@angular/router";
 import { DocWrapperModule } from "../_doc-wrapper/doc-wrapper.module";
@@ -26,6 +27,7 @@ import { ClipboardInput } from "./clipboard-input";
     ],
     declarations: [
         ColorPalette,
+        ColorFunctional,
         ColorScheme,
         ClipboardInput,
         ColorLuminanceDemo,

@@ -4,20 +4,21 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ClrTextarea } from './textarea';
 import { ClrTextareaContainer } from './textarea-container';
 
-import { ContainerNoLabelSpec, ContainerFullSpec } from '../tests/container.spec';
+import { ContainerNoLabelSpec, TemplateDrivenSpec, ReactiveSpec } from '../tests/container.spec';
 
 @Component({
   template: `
-    <clr-textarea-container>
-      <textarea name="test" clrTextarea required [(ngModel)]="model"></textarea>
-      <label>Hello World</label>
-      <clr-control-helper>Helper text</clr-control-helper>
-      <clr-control-error>Must be at least 5 characters</clr-control-error>
-    </clr-textarea-container>
+  <clr-textarea-container>
+    <textarea name="test" clrTextarea required [(ngModel)]="model"></textarea>
+    <label>Hello World</label>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>Must be at least 5 characters</clr-control-error>
+  </clr-textarea-container>
     `,
 })
 class SimpleTest {
@@ -32,9 +33,27 @@ class SimpleTest {
 })
 class NoLabelTest {}
 
+@Component({
+  template: `
+  <form [formGroup]="form">
+    <clr-textarea-container>
+      <textarea name="test" clrTextarea formControlName="model"></textarea>
+      <label>Hello World</label>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error>Must be at least 5 characters</clr-control-error>
+    </clr-textarea-container>
+  </form>`,
+})
+class ReactiveTest {
+  form = new FormGroup({
+    model: new FormControl('', Validators.required),
+  });
+}
+
 export default function(): void {
   describe('ClrTextareaContainer', () => {
     ContainerNoLabelSpec(ClrTextareaContainer, ClrTextarea, NoLabelTest);
-    ContainerFullSpec(ClrTextareaContainer, ClrTextarea, SimpleTest, '.clr-textarea-wrapper [clrTextarea]');
+    TemplateDrivenSpec(ClrTextareaContainer, ClrTextarea, SimpleTest, '.clr-textarea-wrapper [clrTextarea]');
+    ReactiveSpec(ClrTextareaContainer, ClrTextarea, ReactiveTest, '.clr-textarea-wrapper [clrTextarea]');
   });
 }

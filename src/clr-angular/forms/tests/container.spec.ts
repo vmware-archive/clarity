@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { TestBed } from '@angular/core/testing';
-import { FormsModule, NgControl } from '@angular/forms';
+import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { ClrIconModule } from '../../icon/icon.module';
@@ -45,12 +45,20 @@ export function ContainerNoLabelSpec(testContainer, testControl, testComponent):
   });
 }
 
-export function ContainerFullSpec(testContainer, testControl, testComponent, wrapperClass): void {
-  describe('full example', () => {
+export function TemplateDrivenSpec(testContainer, testControl, testComponent, wrapperClass): void {
+  fullSpec('template-driven', testContainer, testControl, testComponent, wrapperClass);
+}
+
+export function ReactiveSpec(testContainer, testControl, testComponent, wrapperClass): void {
+  fullSpec('reactive', testContainer, testControl, testComponent, wrapperClass);
+}
+
+function fullSpec(description, testContainer, testControl, testComponent, wrapperClass) {
+  describe(description, () => {
     let fixture, containerDE, container, containerEl, ifErrorService, layoutService;
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [ClrIconModule, ClrCommonFormsModule, FormsModule],
+        imports: [ClrIconModule, ClrCommonFormsModule, FormsModule, ReactiveFormsModule],
         declarations: [testContainer, testControl, testComponent],
         providers: [NgControl, NgControlService, IfErrorService, LayoutService],
       });

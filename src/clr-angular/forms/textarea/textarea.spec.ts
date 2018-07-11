@@ -4,11 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ClrTextarea } from './textarea';
 import { ClrTextareaContainer } from './textarea-container';
 
-import { ControlBasicTest, ControlInvalidTest } from '../tests/control.spec';
+import { TemplateDrivenSpec, ControlInvalidSpec, ReactiveSpec } from '../tests/control.spec';
 
 @Component({
   template: `
@@ -22,11 +23,24 @@ class InvalidUseTest {}
     <textarea clrTextarea name="model" class="test-class" [(ngModel)]="model"></textarea>
     `,
 })
-class SimpleTest {}
+class TemplateDrivenTest {}
+
+@Component({
+  template: `
+  <div [formGroup]="example">
+    <textarea clrTextarea name="model" class="test-class" formControlName="model"></textarea>
+  </div>`,
+})
+class ReactiveTest {
+  example = new FormGroup({
+    model: new FormControl('', Validators.required),
+  });
+}
 
 export default function(): void {
   describe('Textarea directive', () => {
-    ControlInvalidTest(ClrTextarea, InvalidUseTest);
-    ControlBasicTest(ClrTextareaContainer, ClrTextarea, SimpleTest, 'clr-textarea');
+    ControlInvalidSpec(ClrTextarea, InvalidUseTest);
+    TemplateDrivenSpec(ClrTextareaContainer, ClrTextarea, TemplateDrivenTest, 'clr-textarea');
+    ReactiveSpec(ClrTextareaContainer, ClrTextarea, ReactiveTest, 'clr-textarea');
   });
 }

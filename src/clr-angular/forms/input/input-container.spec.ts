@@ -4,16 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ClrInput } from './input';
 import { ClrInputContainer } from './input-container';
 
-import { ContainerFullSpec, ContainerNoLabelSpec } from '../tests/container.spec';
+import { TemplateDrivenSpec, ReactiveSpec, ContainerNoLabelSpec } from '../tests/container.spec';
 
 @Component({
   template: `
     <clr-input-container>
-        <input type="text" name="test" clrInput required [(ngModel)]="model" />
+        <input name="model" clrInput required [(ngModel)]="model" />
         <label>Hello World</label>
         <clr-control-helper>Helper text</clr-control-helper>
         <clr-control-error>Must be at least 5 characters</clr-control-error>
@@ -27,14 +28,32 @@ class SimpleTest {
 @Component({
   template: `
   <clr-input-container>
-    <input clrInput [(ngModel)]="model" />
+    <input clrInput name="model" [(ngModel)]="model" />
   </clr-input-container>`,
 })
 class NoLabelTest {}
 
+@Component({
+  template: `
+  <form [formGroup]="form">
+    <clr-input-container>
+      <input clrInput formControlName="model" />
+      <label>Hello World</label>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error>Must be at least 5 characters</clr-control-error>
+    </clr-input-container>
+  </form>`,
+})
+class ReactiveTest {
+  form = new FormGroup({
+    model: new FormControl('', Validators.required),
+  });
+}
+
 export default function(): void {
   describe('ClrInputContainer', () => {
     ContainerNoLabelSpec(ClrInputContainer, ClrInput, NoLabelTest);
-    ContainerFullSpec(ClrInputContainer, ClrInput, SimpleTest, '.clr-input-wrapper [clrInput]');
+    TemplateDrivenSpec(ClrInputContainer, ClrInput, SimpleTest, '.clr-input-wrapper [clrInput]');
+    ReactiveSpec(ClrInputContainer, ClrInput, ReactiveTest, '.clr-input-wrapper [clrInput]');
   });
 }

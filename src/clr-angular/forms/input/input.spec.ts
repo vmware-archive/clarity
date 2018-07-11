@@ -4,8 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { ControlBasicTest, ControlInvalidTest } from '../tests/control.spec';
+import { TemplateDrivenSpec, ControlInvalidSpec, ReactiveSpec } from '../tests/control.spec';
 import { ClrInputContainer } from './input-container';
 import { ClrInput } from './input';
 
@@ -18,14 +19,28 @@ class InvalidUseTest {}
 
 @Component({
   template: `
-       <input type="text" clrInput name="model" class="test-class" [(ngModel)]="model" />
+       <input clrInput name="model" class="test-class" [(ngModel)]="model" />
     `,
 })
-class SimpleTest {}
+class TemplateDrivenTest {}
+
+@Component({
+  template: `
+    <div [formGroup]="example">
+       <input clrInput name="model" class="test-class" formControlName="model" />
+    </div>
+    `,
+})
+class ReactiveTest {
+  example = new FormGroup({
+    model: new FormControl('', Validators.required),
+  });
+}
 
 export default function(): void {
   describe('Input directive', () => {
-    ControlInvalidTest(ClrInput, InvalidUseTest);
-    ControlBasicTest(ClrInputContainer, ClrInput, SimpleTest, 'clr-input');
+    ControlInvalidSpec(ClrInput, InvalidUseTest);
+    TemplateDrivenSpec(ClrInputContainer, ClrInput, TemplateDrivenTest, 'clr-input');
+    ReactiveSpec(ClrInputContainer, ClrInput, ReactiveTest, 'clr-input');
   });
 }

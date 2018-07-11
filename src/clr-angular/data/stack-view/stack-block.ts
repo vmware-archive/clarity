@@ -50,7 +50,7 @@ export class ClrStackBlock implements OnInit {
     @Output("clrSbExpandedChange") expandedChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
     @HostBinding("class.stack-block-expandable") @Input("clrSbExpandable") expandable: boolean = false;
 
-    private focused: boolean = false;
+    focused: boolean = false;
     private _changedChildren: number = 0;
     private _fullyInitialized: boolean = false;
     private _changed: boolean = false;

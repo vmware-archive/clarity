@@ -57,7 +57,7 @@ export class ClrStackBlock implements OnInit {
   @Input('clrSbExpandable')
   expandable: boolean = false;
 
-  private focused: boolean = false;
+  focused: boolean = false;
   private _changedChildren: number = 0;
   private _fullyInitialized: boolean = false;
   private _changed: boolean = false;

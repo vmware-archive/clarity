@@ -13,10 +13,11 @@ import {Component, EventEmitter, HostBinding, Input, OnInit, Optional, Output, S
             (click)="toggleExpand()"
             (keyup.enter)="toggleExpand()"
             (keyup.space)="toggleExpand()"
-            (focus)="onStackBlockFocus(true)"
-            (blur)="onStackBlockFocus(false)"
+            (focus)="focused = true"
+            (blur)="focused = false"
             [attr.role]="role"
-            [attr.tabindex]="tabIndex">
+            [attr.tabindex]="tabIndex"
+            [attr.aria-expanded]="ariaExpanded">
             <clr-icon shape="caret"
                       class="stack-block-caret"
                       *ngIf="expandable"
@@ -100,10 +101,6 @@ export class ClrStackBlock implements OnInit {
         }
     }
 
-    onStackBlockFocus(focusState: boolean): void {
-        this.focused = focusState;
-    }
-
     get caretDirection(): string {
         return this.expanded ? 'down' : 'right';
     }
@@ -119,5 +116,13 @@ export class ClrStackBlock implements OnInit {
     @HostBinding('class.on-focus')
     get onStackLabelFocus(): boolean {
         return this.expandable && !this.expanded && this.focused;
+    }
+
+    get ariaExpanded(): string {
+        if (!this.expandable) {
+            return null;
+        } else {
+            return this.expanded ? 'true' : 'false';
+        }
     }
 }

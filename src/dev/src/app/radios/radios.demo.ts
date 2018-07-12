@@ -5,5 +5,23 @@
  */
 import { Component } from '@angular/core';
 
-@Component({ selector: 'clr-radios-demo', templateUrl: './radios.demo.html' })
-export class RadiosDemo {}
+@Component({
+  templateUrl: './radios.demo.html',
+})
+export class RadiosDemo {
+  vertical = {
+    one: '',
+    two: '',
+    three: '',
+  };
+  horizontal = {
+    one: '',
+    two: '',
+    three: '',
+  };
+  compact = {
+    one: '',
+    two: '',
+    three: '',
+  };
+}

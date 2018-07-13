@@ -6,7 +6,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { IfActiveDirective } from './if-active.directive';
+import { ClrIfActive } from './if-active.directive';
 import { IF_ACTIVE_ID_PROVIDER, IfActiveService } from './if-active.service';
 
 export default function(): void {
@@ -14,7 +14,7 @@ export default function(): void {
     describe('Typescript API', function() {
       beforeEach(function() {
         TestBed.configureTestingModule({
-          declarations: [IfActiveDirective, IfOpenTest],
+          declarations: [ClrIfActive, IfOpenTest],
           providers: [IfActiveService, IF_ACTIVE_ID_PROVIDER],
         });
         this.fixture = TestBed.createComponent(IfOpenTest);
@@ -91,7 +91,7 @@ export default function(): void {
     describe('View', function() {
       beforeEach(function() {
         TestBed.configureTestingModule({
-          declarations: [IfActiveDirective, IfOpenTest],
+          declarations: [ClrIfActive, IfOpenTest],
           providers: [IfActiveService, IF_ACTIVE_ID_PROVIDER],
         });
         this.fixture = TestBed.createComponent(IfOpenTest);
@@ -128,6 +128,6 @@ export default function(): void {
     `,
 })
 class IfOpenTest {
-  @ViewChild(IfActiveDirective) directive: IfActiveDirective;
+  @ViewChild(ClrIfActive) directive: ClrIfActive;
   activeState: boolean = false;
 }

@@ -21,7 +21,7 @@ import { IF_ACTIVE_ID, IfActiveService } from './if-active.service';
 
 /**********
  *
- * @class IfActiveDirective
+ * @class ClrIfActive
  *
  * @description
  * A structural directive that controls whether or not the associated TemplateRef is instantiated or not.
@@ -29,7 +29,7 @@ import { IF_ACTIVE_ID, IfActiveService } from './if-active.service';
  * the component using it in the component template.
  *
  */
-export class IfActiveDirective implements OnDestroy {
+export class ClrIfActive implements OnDestroy {
   private subscription: Subscription;
   private wasActive: boolean = false;
 

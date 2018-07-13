@@ -21,7 +21,7 @@ import { Expand } from './providers/expand';
  * TODO: make this a reusable directive outside of Datagrid, like [clrLoading].
  */
 @Directive({ selector: '[clrIfExpanded]' })
-export class IfExpanded implements OnInit, OnDestroy {
+export class ClrIfExpanded implements OnInit, OnDestroy {
   private _expanded: boolean = false;
 
   get expanded(): boolean {

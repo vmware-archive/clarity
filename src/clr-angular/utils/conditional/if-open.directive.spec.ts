@@ -6,14 +6,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { IfOpenDirective } from './if-open.directive';
+import { ClrIfOpen } from './if-open.directive';
 import { IfOpenService } from './if-open.service';
 
 export default function(): void {
   describe('IfOpen Directive', function() {
     describe('Typescript API', function() {
       beforeEach(function() {
-        TestBed.configureTestingModule({ declarations: [IfOpenDirective, IfOpenTest], providers: [IfOpenService] });
+        TestBed.configureTestingModule({ declarations: [ClrIfOpen, IfOpenTest], providers: [IfOpenService] });
         this.fixture = TestBed.createComponent(IfOpenTest);
         this.fixture.detectChanges();
         this.testComponent = this.fixture.componentInstance;
@@ -68,7 +68,7 @@ export default function(): void {
 
     describe('View', function() {
       beforeEach(function() {
-        TestBed.configureTestingModule({ declarations: [IfOpenDirective, IfOpenTest], providers: [IfOpenService] });
+        TestBed.configureTestingModule({ declarations: [ClrIfOpen, IfOpenTest], providers: [IfOpenService] });
         this.fixture = TestBed.createComponent(IfOpenTest);
         this.fixture.detectChanges();
         this.testComponent = this.fixture.componentInstance;
@@ -103,6 +103,6 @@ export default function(): void {
     `,
 })
 class IfOpenTest {
-  @ViewChild(IfOpenDirective) directive: IfOpenDirective;
+  @ViewChild(ClrIfOpen) directive: ClrIfOpen;
   openState: boolean = false;
 }

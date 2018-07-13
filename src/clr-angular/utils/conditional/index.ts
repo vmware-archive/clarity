@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Type } from '@angular/core';
-import { IfActiveDirective } from './if-active.directive';
-import { IfOpenDirective } from './if-open.directive';
+import { ClrIfActive } from './if-active.directive';
+import { ClrIfOpen } from './if-open.directive';
 
 export * from './if-active.directive';
 export * from './if-open.directive';
 
-export const CONDITIONAL_DIRECTIVES: Type<any>[] = [IfActiveDirective, IfOpenDirective];
+export const CONDITIONAL_DIRECTIVES: Type<any>[] = [ClrIfActive, ClrIfOpen];

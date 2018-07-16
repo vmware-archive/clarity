@@ -6,7 +6,7 @@
 import { Component, Inject, ViewChild } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { IfExpanded } from './if-expanded';
+import { ClrIfExpanded } from './if-expanded';
 import { Expand } from './providers/expand';
 
 export default function(): void {
@@ -18,7 +18,7 @@ export default function(): void {
                  * we can't use our usual shortcut, we need to rely on @ViewChild.
                  * A quick investigation didn't reveal a better solution yet, we might want to look into it more.
                  */
-        TestBed.configureTestingModule({ declarations: [IfExpanded, SimpleTest, TestCounter], providers: [Expand] });
+        TestBed.configureTestingModule({ declarations: [ClrIfExpanded, SimpleTest, TestCounter], providers: [Expand] });
         this.fixture = TestBed.createComponent(SimpleTest);
         this.fixture.detectChanges();
         this.testComponent = this.fixture.componentInstance;
@@ -72,7 +72,7 @@ export default function(): void {
                  * we can't use our usual shortcut, we need to rely on @ViewChild.
                  * A quick investigation didn't reveal a better solution yet, we might want to look into it more.
                  */
-        TestBed.configureTestingModule({ declarations: [IfExpanded, NgIfTest], providers: [Expand] });
+        TestBed.configureTestingModule({ declarations: [ClrIfExpanded, NgIfTest], providers: [Expand] });
         this.fixture = TestBed.createComponent(NgIfTest);
         this.fixture.detectChanges();
         this.testComponent = this.fixture.componentInstance;
@@ -101,7 +101,7 @@ export default function(): void {
   providers: [{ provide: 'counter', useValue: { total: 0 } }],
 })
 class SimpleTest {
-  @ViewChild(IfExpanded) ifExpanded: IfExpanded;
+  @ViewChild(ClrIfExpanded) ifExpanded: ClrIfExpanded;
 
   constructor(@Inject('counter') public counter: { total: number }) {}
 }

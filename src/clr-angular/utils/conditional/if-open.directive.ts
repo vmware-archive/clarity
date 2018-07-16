@@ -12,7 +12,7 @@ import { IfOpenService } from './if-open.service';
 
 /**********
  *
- * @class IfOpenDirective
+ * @class ClrIfOpen
  *
  * @description
  * A structural directive that controls whether or not the associated TemplateRef is instantiated or not.
@@ -20,7 +20,7 @@ import { IfOpenService } from './if-open.service';
  * using it in the component template.
  *
  */
-export class IfOpenDirective implements OnDestroy {
+export class ClrIfOpen implements OnDestroy {
   private subscription: Subscription;
 
   /*********

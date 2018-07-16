@@ -60,17 +60,17 @@ describe('Loading Buttons', () => {
       fixture.componentInstance.buttonState = ClrLoadingState.LOADING;
       fixture.detectChanges();
       expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.LOADING);
-      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes['disabled']).toBeTruthy();
+      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes.disabled).toBeTruthy();
 
       fixture.componentInstance.buttonState = ClrLoadingState.SUCCESS;
       fixture.detectChanges();
       expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.SUCCESS);
-      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes['disabled']).toBeTruthy();
+      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes.disabled).toBeTruthy();
 
       tick(1000);
       fixture.detectChanges();
       expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.DEFAULT);
-      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes['disabled']).toBeTruthy();
+      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes.disabled).toBeTruthy();
 
       // now the input binding sets the disabled to false
       // it should be disabled while loading, and success, but change back to not disabled when it goes back to DEFAULT
@@ -80,17 +80,17 @@ describe('Loading Buttons', () => {
       fixture.componentInstance.buttonState = ClrLoadingState.LOADING;
       fixture.detectChanges();
       expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.LOADING);
-      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes['disabled']).toBeTruthy();
+      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes.disabled).toBeTruthy();
 
       fixture.componentInstance.buttonState = ClrLoadingState.SUCCESS;
       fixture.detectChanges();
       expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.SUCCESS);
-      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes['disabled']).toBeTruthy();
+      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes.disabled).toBeTruthy();
 
       tick(1000);
       fixture.detectChanges();
       expect(fixture.componentInstance.buttonState).toEqual(ClrLoadingState.DEFAULT);
-      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes['disabled']).toBeFalsy();
+      expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes.disabled).toBeFalsy();
     })
   );
 

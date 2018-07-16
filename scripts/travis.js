@@ -33,7 +33,11 @@ if (
   process.env.TRAVIS_BRANCH === 'master'
 ) {
   shell.exec(`npm install ${AngularPackages.join(' ')} --no-save`);
-  shell.exec('npm run $TEST_SUITE');
+  if (shell.exec('npm run $TEST_SUITE').code !== 0) {
+    shell.exit(1);
+  }
 } else {
-  shell.exec('npm run $TEST_SUITE');
+  if (shell.exec('npm run $TEST_SUITE').code !== 0) {
+    shell.exit(1);
+  }
 }

@@ -1,17 +1,15 @@
 language: node_js
 node_js:
-  - "8"
-
+- '8'
 env:
   global:
-    - CXX=g++-4.8
+  - CXX=g++-4.8
   matrix:
-    - TEST_SUITE='test:travis'
-    - TEST_SUITE='test:visual set1'
-    - TEST_SUITE='test:visual set2'
-    - TEST_SUITE='test:visual set3'
-    - TEST_SUITE='test:visual set4'
-
+  - TEST_SUITE='test:travis'
+  - TEST_SUITE='test:visual set1'
+  - TEST_SUITE='test:visual set2'
+  - TEST_SUITE='test:visual set3'
+  - TEST_SUITE='test:visual set4'
 sudo: required
 dist: trusty
 group: edge
@@ -20,38 +18,33 @@ notifications:
   - wilkenj@vmware.com
   - mhippely@vmware.com
   slack:
-    on_pull_requests: false
-    rooms:
-      secure: nv6QzBBhBOO1SCjVslfDTO8O58Z0EkTVxif86cwQy+N6SYbtjBAU9wABPsOjoCIBbGa5NZ7pQX3oe+MO4azHRYhLoPhRJPQ/YZ0++k5l7WhknnYuliz/CFjH1k/V91y64xbBqxNF7CgBAqEWePVU6mEHHhrIBPT/111eWk8hkhDhO2aAXLoJu9yOLm+diPFZRQCJareDsHlFtsfiCne33L080sE4dLvOXxL6GNXK95758658cYoMBRqCYNCkJK6sfQm9/nBcJRTBe+VaaSC+tBogS9XIpkp1+UNuUpTARtZPBrnMWGSG//KVFv5195ofOq4TCRf5AIr4bo0EGoA+JoonbcAw1e+fSWVMlk+mTTVB9IyG3upDJtHQdBVo4r9m1+Nk/0xnSul/XXYX3zN4/sdu5RfBEaRL3QjKqbd7/vHL7okPWJNPdGeWfvKnIaEvNnSflUt4OqkoEhfuHPRlw4tqakTlnWyzBNwRvMZdT1YFKzryOnIh2yhaX+zRk4JB8+8D0iM+Y4hHtgt3YC9TCWOjpLA1+wVcGsEIY6BZRctSDvo6V43lABn5Qe9nwxUB3LEQX0Fd7tTYBUfqJCoIkl80yQ46EpyvRfwh1nU0fVAmmDMyciVwn1s2WCTtAH4TIw09OAaXLr8mbQ/zIRVkzjR0FSeaNta0m8IrRkqbxoA=
+    secure: YiAUJjD3zKQvRw1TrlmC/3vhm2J9gZBS74pTssohEStqxAq5KCW97xF5ZgeB9xr2/Vx1//40Jncl4PkvvSXGMJ6RDS8yh8fs+LzCytZzbo8WWL60mEX4Ezq7PwyBHshInMAilXNJvplWwSynR2YJwAD9BKIDtIv2uFNBzdr1OPNu3F6Ta3OVUMIaUUDYtmFAPUu0q7VCX6VcTiy8lvkpN5acTwvy+LcbVGbCK2Uzw8xXHV3tRY+PyhBynM1VZiGMPwVTUZV1S0GnZrSdwzGSHMuBHtJ1wwEy9nk/2FtBFfxa8LNE0s7JaqJLvcTfs9pHdz5BBuQvk2lLl0nf6QfK9z5HZJ45U8ezumIaAWRbATyQk49R/d2QBeIN89GYNq1bQdryIKoiMksH4wbBzuAJLjeEJmzTel8isUbhS1GU9M5Fch5/AL7vjdLHmul58z0rTccy4wA9kINU9S21Fxsx29Z4g02VegECfcAlKaIY6WjRCISKlg7ENQWEZRGV7bD/DnNsdoXhXPhXADi996CJPQx45bnbtzCLK+Aa3wlq+CjBeKyhecKoLC36WYAlAKZ0ZbuYXfMlDUtVMAY9oStKnDjoCGDBb3O4LH66CFRgW+CzjV8UgtggAgpCi4m5O4tl/o95WkF/YEul07qaHAftJCoEVMcXxb37gTkkqJdW2C0=
 services:
-  - docker
-
+- docker
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
-      - google-chrome
+    - ubuntu-toolchain-r-test
+    - google-chrome
     packages:
-      - g++-4.8
-      - google-chrome-stable
+    - g++-4.8
+    - google-chrome-stable
   artifacts:
     paths:
-      - "$TRAVIS_BUILD_DIR/reports/"
-
+    - "$TRAVIS_BUILD_DIR/reports/"
 cache:
   apt: true
   directories:
-    - node_modules
+  - node_modules
 before_script:
-  - npm install -g gemini@5.2.0 html-reporter@2.0.1
-
+- npm install -g gemini@5.2.0 html-reporter@2.0.1
 script:
-  - node scripts/travis
+- node scripts/travis
 jobs:
   include:
-    - stage: publish
-      if: "(NOT type IN (api, cron, pull_request)) AND branch = master AND repo = vmware/clarity"
-      before_script:
-        - npm run build
-      script:
-        - bash ./scripts/publish-build.sh
+  - stage: publish
+    if: "(NOT type IN (api, cron, pull_request)) AND branch = master AND repo = vmware/clarity"
+    before_script:
+    - npm run build
+    script:
+    - bash ./scripts/publish-build.sh

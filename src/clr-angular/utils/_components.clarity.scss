@@ -131,6 +131,7 @@
 @import '../forms-deprecated/select.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity, icons.clarity, images.clarity
 @import '../forms/datepicker/datepicker.clarity';
 @import '../forms-deprecated/forms.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
+@import '../forms/combobox/combobox.clarity';
 
 //Stack View
 //depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, forms.clarity

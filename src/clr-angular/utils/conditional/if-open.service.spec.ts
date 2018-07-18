@@ -4,6 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { ElementRef } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import { IfOpenService } from './if-open.service';
 
 export default function(): void {
@@ -20,7 +23,7 @@ export default function(): void {
         let currentChange: boolean;
 
         // Subscribe first
-        ifOpenService.openChange.subscribe((change: boolean) => {
+        const sub: Subscription = ifOpenService.openChange.subscribe((change: boolean) => {
           nbChanges++;
           currentChange = change;
         });
@@ -39,6 +42,8 @@ export default function(): void {
         ifOpenService.open = false;
         expect(nbChanges).toEqual(2);
         expect(currentChange).toEqual(false);
+
+        sub.unsubscribe();
       });
 
       it('sets the current open value in the service', function() {
@@ -55,6 +60,22 @@ export default function(): void {
         expect(test).toBeUndefined();
         test = ifOpenService.open;
         expect(test).toEqual(init);
+      });
+
+      it('provides a method to register elements on which click events are ignored while toggling popovers', () => {
+        expect(ifOpenService.registerIgnoredElement).toBeDefined();
+      });
+
+      it('provides an observable for ignored element changes', () => {
+        let testEl: ElementRef;
+        const sub: Subscription = ifOpenService.ignoredElementChange.subscribe((el: ElementRef) => {
+          testEl = el;
+        });
+
+        const elementRef: ElementRef = new ElementRef(null);
+        ifOpenService.registerIgnoredElement(elementRef);
+        expect(testEl).toBe(elementRef);
+        sub.unsubscribe();
       });
     });
   });

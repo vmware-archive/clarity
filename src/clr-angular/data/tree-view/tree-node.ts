@@ -169,8 +169,8 @@ export class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
   }
 
   @HostBinding('attr.role')
-  get hasParent(): string {
-    return !this.parent ? 'tree' : 'treeitem';
+  get treeNodeRole(): string {
+    return this.parent ? 'treeitem' : 'tree';
   }
 
   @HostBinding('attr.aria-multiselectable')
@@ -184,11 +184,7 @@ export class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
 
   @HostBinding('attr.aria-selected')
   get ariaSelected(): boolean {
-    if (!this.selectable) {
-      return null;
-    } else {
-      return this.selected;
-    }
+    return this.selectable ? this.selected : null;
   }
 
   /* Lifecycle */

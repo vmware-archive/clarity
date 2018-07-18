@@ -1,0 +1,87 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin generate-dropdown-menu() {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  //Dimensions
+  min-width: 5rem;
+  max-width: 15rem;
+
+  //Other
+  background: $clr-dropdown-bg-color;
+  border: $clr-default-borderwidth solid $clr-dropdown-border-color;
+  border-radius: $clr-global-borderradius;
+  box-shadow: 0 $clr-default-borderwidth 0.125rem $clr-dropdown-box-shadow;
+
+  margin-top: 0.083333rem;
+  padding: 0.5rem 0;
+
+  visibility: hidden;
+  z-index: map-get($clr-layers, dropdown-menu);
+}
+
+@mixin generate-dropdown-item() {
+  @include clr-getTypePropertiesForDomElement(dropdown_text, (font-size, letter-spacing, font-weight));
+
+  background: transparent;
+  border: 0;
+  color: $clr-dropdown-item-text-color;
+  cursor: pointer;
+  display: block;
+  height: auto;
+  line-height: inherit;
+  margin: 0;
+  width: 100%;
+  text-transform: none;
+
+  &:hover,
+  &:focus {
+    background-color: $clr-dropdown-bg-hover-color;
+    color: $clr-dropdown-item-text-color;
+    text-decoration: none;
+  }
+
+  &.active {
+    background: $clr-dropdown-selection-color;
+    color: $clr-dropdown-active-text-color;
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.disabled,
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+    user-select: none;
+
+    &:hover {
+      background: none;
+    }
+
+    &:active,
+    &:focus {
+      background: none;
+      box-shadow: none;
+    }
+  }
+}
+
+@mixin generate-dropdown-item-height() {
+  padding: 0.125rem 1rem;
+
+  @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+    padding: 0.25rem 1rem;
+  }
+}

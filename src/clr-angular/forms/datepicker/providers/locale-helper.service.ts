@@ -68,7 +68,7 @@ export class LocaleHelperService {
    */
   private initializeLocaleDaysNarrow(): void {
     // Get locale day names starting with Sunday
-    const tempArr: string[] = getLocaleDayNames(this.locale, FormStyle.Format, TranslationWidth.Narrow).slice();
+    const tempArr: string[] = getLocaleDayNames(this.locale, FormStyle.Standalone, TranslationWidth.Narrow).slice();
     // Get first day of the week based on the locale
     const firstDayOfWeek: number = this.firstDayOfWeek;
     // Rearrange the tempArr to start with the first day of the week based on the locale.
@@ -86,7 +86,7 @@ export class LocaleHelperService {
   private initializeLocaleMonthsAbbreviated(): void {
     this._localeMonthsAbbreviated = getLocaleMonthNames(
       this.locale,
-      FormStyle.Format,
+      FormStyle.Standalone,
       TranslationWidth.Abbreviated
     ).slice();
   }
@@ -96,7 +96,7 @@ export class LocaleHelperService {
    * e.g. `[January, February, ...]` for en-US
    */
   private initializeLocaleMonthsWide(): void {
-    this._localeMonthsWide = getLocaleMonthNames(this.locale, FormStyle.Format, TranslationWidth.Wide).slice();
+    this._localeMonthsWide = getLocaleMonthNames(this.locale, FormStyle.Standalone, TranslationWidth.Wide).slice();
   }
 
   /**

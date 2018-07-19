@@ -28,7 +28,8 @@
   &.required {
     &:after {
       content: '*';
-      font-size: 1.1em;
+      font-size: 0.58479532rem; // Approximately 14px.
+      line-height: 0.5rem;
       color: $clr-red;
       margin-left: 0.25rem;
     }

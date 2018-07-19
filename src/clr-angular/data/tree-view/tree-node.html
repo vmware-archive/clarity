@@ -34,7 +34,8 @@
 <!-- FIXME: remove this string concatenation when boolean states are supported -->
 <div
     class="clr-treenode-children"
-    [@childNodesState]="state">
+    [@childNodesState]="state"
+    [attr.role]="ariaTreeNodeChildrenRole">
     <ng-content select="clr-tree-node"></ng-content>
     <ng-content select="[clrIfExpanded]"></ng-content>
 </div>

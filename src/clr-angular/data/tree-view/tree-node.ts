@@ -187,6 +187,10 @@ export class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
     return this.selectable ? this.selected : null;
   }
 
+  get ariaTreeNodeChildrenRole(): string {
+    return this.children.length > 0 ? 'group' : null;
+  }
+
   /* Lifecycle */
   ngOnDestroy() {
     if (this.parent) {

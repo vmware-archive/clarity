@@ -400,6 +400,20 @@ export default function(): void {
 
         expect(caret.getAttribute('aria-expanded')).toBe('false');
       });
+
+      it('has the role group on the children container in all parent nodes', () => {
+        const parent: HTMLElement = compiled.querySelector('#parent');
+        const childrenContainer: HTMLElement = parent.querySelector('.clr-treenode-children');
+
+        expect(childrenContainer.getAttribute('role')).toBe('group');
+      });
+
+      it('does not have the role group on the children container in the leaf nodes', () => {
+        const child: HTMLElement = compiled.querySelector('#child');
+        const childrenContainer: HTMLElement = child.querySelector('.clr-treenode-children');
+
+        expect(childrenContainer.getAttribute('role')).toBe(null);
+      });
     });
 
     describe('Checkbox Tree Aria Attributes Test', () => {
@@ -803,7 +817,7 @@ export class RecursiveSelectableTreeTest {
     <clr-tree-node id="parent">
       A1
       <ng-template [clrIfExpanded]="true">
-        <clr-tree-node>
+        <clr-tree-node id="child">
           B1
         </clr-tree-node>
 

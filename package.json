@@ -26,7 +26,7 @@
         "ng": "ng",
         "start": "ng serve dev",
         "clean": "del ./dist",
-        "golden:fix": "ts-api-guardian --out golden/clr-angular.d.ts --stripExportPattern 'FocusTrapTracker' dist/clr-angular/index.d.ts",
+        "golden:fix": "npm run build:angular && ts-api-guardian --out golden/clr-angular.d.ts --stripExportPattern 'FocusTrapTracker' dist/clr-angular/index.d.ts",
         "test:aot": "ng build --prod ks-app",
         "test:format": "prettier --list-different './**/*.{js,json,md,ts,scss}'",
         "test:lint": "tslint -p . -c tslint.json \"src/**/*.ts\" -e \"src/ks-app/**\" -e \"src/schematics/**\"",

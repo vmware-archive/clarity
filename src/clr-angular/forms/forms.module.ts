@@ -13,6 +13,7 @@ import { ClrDatepickerModule } from './datepicker/datepicker.module';
 import { ClrInputModule } from './input/input.module';
 import { ClrPasswordModule } from './password/password.module';
 import { ClrRadioModule } from './radio/radio.module';
+import { ClrSelectModule } from './select/select.module';
 import { ClrTextareaModule } from './textarea/textarea.module';
 
 @NgModule({
@@ -23,8 +24,9 @@ import { ClrTextareaModule } from './textarea/textarea.module';
     ClrDatepickerModule,
     ClrInputModule,
     ClrPasswordModule,
-    ClrTextareaModule,
     ClrRadioModule,
+    ClrSelectModule,
+    ClrTextareaModule,
   ],
 })
 export class ClrFormsNextModule {}

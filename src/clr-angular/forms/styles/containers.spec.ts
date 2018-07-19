@@ -309,7 +309,7 @@ describe('Form layouts', () => {
       beforeEach(() => {
         multiselect = height('#multiselect select');
       });
-      it('control height', () => verifyHeight('#multiselect', multiselect + base * 7, false));
+      it('control height', () => verifyHeight('#multiselect', multiselect + base * 6, false));
       it('label height', () => verifyHeight('#multiselect .clr-control-label', base * 3));
       it('wrapper height', () => verifyHeight('#multiselect .clr-multiselect-wrapper', multiselect, false));
       it('select height', () => verifyHeight('#multiselect select', multiselect, false));
@@ -410,7 +410,7 @@ describe('Form layouts', () => {
       beforeEach(() => {
         multiselect = height('#multiselect select');
       });
-      it('control height', () => verifyHeight('#multiselect', multiselect + base * 4, false));
+      it('control height', () => verifyHeight('#multiselect', multiselect + base * 3, false));
       it('label height', () => verifyHeight('#multiselect .clr-control-label', base * 3, false));
       it('wrapper height', () => verifyHeight('#multiselect .clr-multiselect-wrapper', multiselect, false));
       it('select height', () => verifyHeight('#multiselect select', multiselect, false));

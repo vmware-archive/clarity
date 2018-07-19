@@ -11,9 +11,9 @@ gemini.suite('selects', child => {
   child
     .setUrl('/selects')
     .before((actions, find) => {
-      actions.waitForElementToShow('.form-block', WAIT_TIME);
+      actions.waitForElementToShow('.content-area', WAIT_TIME);
       actions.wait(WAIT_LOAD_TIME);
     })
-    .setCaptureElements('.test-select')
+    .setCaptureElements('.content-area')
     .capture('default');
 });

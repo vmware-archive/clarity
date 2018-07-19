@@ -789,6 +789,28 @@ export declare class ClrRadioContainer implements DynamicWrapper {
 export declare class ClrRadioModule {
 }
 
+export declare class ClrSelect extends WrappedFormControl<ClrSelectContainer> implements OnInit {
+    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, controlClassService: ControlClassService, el: ElementRef);
+    ngOnInit(): void;
+    onBlur(): void;
+}
+
+export declare class ClrSelectContainer implements DynamicWrapper, OnDestroy {
+    _dynamic: boolean;
+    invalid: boolean;
+    label: ClrLabel;
+    multi: boolean;
+    multiple: SelectMultipleControlValueAccessor;
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
+    addGrid(): boolean;
+    controlClass(): string;
+    ngOnDestroy(): void;
+    wrapperClass(): "clr-multiselect-wrapper" | "clr-select-wrapper";
+}
+
+export declare class ClrSelectModule {
+}
+
 export declare class ClrSignpost {
     customTrigger: ClrSignpostTrigger;
     useCustomTrigger: boolean;

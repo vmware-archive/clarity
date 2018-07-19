@@ -5,5 +5,26 @@
  */
 import { Component } from '@angular/core';
 
-@Component({ templateUrl: './selects.demo.html' })
-export class SelectsDemo {}
+@Component({
+  templateUrl: './selects.demo.html',
+})
+export class SelectsDemo {
+  vertical = {
+    one: '',
+    two: '',
+    three: '',
+    four: '',
+  };
+  horizontal = {
+    one: '',
+    two: '',
+    three: '',
+    four: '',
+  };
+  compact = {
+    one: '',
+    two: '',
+    three: '',
+    four: '',
+  };
+}

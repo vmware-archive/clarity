@@ -23,10 +23,16 @@ export default function(): void {
             TestBed.configureTestingModule({
                 imports: [ClrTreeViewModule, ClrIfExpandModule, NoopAnimationsModule],
                 declarations: [
-                    BasicTreeNodeTestComponent, TreeNodeAlternateSyntaxTestComponent, TreeNodeExpandedTestComponent,
-                    BasicTreeNodeSelectionTestComponent, RecursiveSelectableStructureTestComponent,
-                    RecursiveSelectableTreeTest, BasicTreeNodeIndeterminateNodeTest
-                ]
+                    BasicTreeNodeTestComponent,
+                    TreeNodeAlternateSyntaxTestComponent,
+                    TreeNodeExpandedTestComponent,
+                    BasicTreeNodeSelectionTestComponent,
+                    RecursiveSelectableStructureTestComponent,
+                    RecursiveSelectableTreeTest,
+                    BasicTreeNodeIndeterminateNodeTest,
+                    TreeAriaAttributesTest,
+                    CheckboxTreeAriaAttributesTest,
+                ],
             });
         });
 
@@ -356,6 +362,89 @@ export default function(): void {
                }));
         });
 
+        describe("Tree Aria Attributes Test", () => {
+            beforeEach(() => {
+                fixture = TestBed.createComponent(TreeAriaAttributesTest);
+                fixture.detectChanges();
+                compiled = fixture.nativeElement;
+            });
+
+            afterEach(() => {
+                fixture.destroy();
+            });
+
+            it("has role tree when the node is the parent", () => {
+                const parent: HTMLElement = compiled.querySelector("#parent");
+                expect(parent.getAttribute("role")).toBe("tree");
+            });
+
+            it("has role tree when the node is the child", () => {
+                const children: HTMLCollection = compiled.querySelector(".clr-treenode-children").children;
+
+                for (const child of Array.from(children)) {
+                    expect(child.getAttribute("role")).toBe("treeitem");
+                }
+            });
+
+            it("has the aria-exapanded attribute on the expand/collapse button", () => {
+                const parent: HTMLElement = compiled.querySelector("#parent");
+                const caret: HTMLButtonElement = parent.querySelector(".clr-treenode-caret");
+
+                expect(caret.getAttribute("aria-expanded")).toBe("true");
+
+                caret.click();
+                fixture.detectChanges();
+
+                expect(caret.getAttribute("aria-expanded")).toBe("false");
+            });
+
+            it("has the role group on the children container in all parent nodes", () => {
+                const parent: HTMLElement = compiled.querySelector("#parent");
+                const childrenContainer: HTMLElement = parent.querySelector(".clr-treenode-children");
+
+                expect(childrenContainer.getAttribute("role")).toBe("group");
+            });
+
+            it("does not have the role group on the children container in the leaf nodes", () => {
+                const child: HTMLElement = compiled.querySelector("#child");
+                const childrenContainer: HTMLElement = child.querySelector(".clr-treenode-children");
+
+                expect(childrenContainer.getAttribute("role")).toBe(null);
+            });
+        });
+
+        describe("Checkbox Tree Aria Attributes Test", () => {
+            beforeEach(() => {
+                fixture = TestBed.createComponent(CheckboxTreeAriaAttributesTest);
+                fixture.detectChanges();
+                compiled = fixture.nativeElement;
+            });
+
+            afterEach(() => {
+                fixture.destroy();
+            });
+
+            it("has aria-multiselectable attribute only on the parent node", () => {
+                const parent: HTMLElement = compiled.querySelector("#parent");
+                const children: HTMLCollection = compiled.querySelector(".clr-treenode-children").children;
+
+                expect(parent.getAttribute("aria-multiselectable")).toBe("true");
+
+                for (const child of Array.from(children)) {
+                    expect(child.getAttribute("aria-multiselectable")).toBe(null);
+                }
+            });
+
+            it("has aria-selected attribute on the checkbox tree node", () => {
+                const parent: HTMLElement = compiled.querySelector("#parent");
+                expect(parent.getAttribute("aria-selected")).toBe("false");
+
+                const child: HTMLElement = compiled.querySelector("#child");
+
+                expect(child.getAttribute("aria-selected")).toBe("true");
+            });
+        });
+
         describe("Basic Tree Node Indeterminate Tracker", () => {
             beforeEach(() => {
                 fixture = TestBed.createComponent(BasicTreeNodeIndeterminateNodeTest);
@@ -522,7 +611,7 @@ export default function(): void {
                 </clr-tree-node>
             </ng-template>
         </clr-tree-node>
-    `
+    `,
 })
 export class BasicTreeNodeTestComponent {
     @ViewChild("parentTreeNode") parentTreeNode: ClrTreeNode;
@@ -545,7 +634,7 @@ export class BasicTreeNodeTestComponent {
                 B3
             </clr-tree-node>
         </clr-tree-node>
-    `
+    `,
 })
 export class TreeNodeAlternateSyntaxTestComponent {
     @ViewChild("parentTreeNode") parentTreeNode: ClrTreeNode;
@@ -573,7 +662,7 @@ export class TreeNodeAlternateSyntaxTestComponent {
                 </clr-tree-node>
             </ng-template>
         </clr-tree-node>
-    `
+    `,
 })
 export class TreeNodeExpandedTestComponent {
     @ViewChild("parentTreeNode") parentTreeNode: ClrTreeNode;
@@ -598,7 +687,7 @@ export class TreeNodeExpandedTestComponent {
                 </clr-tree-node>
             </ng-template>
         </clr-tree-node>
-    `
+    `,
 })
 export class BasicTreeNodeSelectionTestComponent {
     @ViewChild("parentTreeNode") parentTreeNode: ClrTreeNode;
@@ -648,7 +737,7 @@ export class BasicTreeNodeSelectionTestComponent {
                 </clr-tree-node>
             </ng-template>
         </clr-tree-node>
-    `
+    `,
 })
 export class BasicTreeNodeIndeterminateNodeTest {
     @ViewChild("parentTreeNode") parentTreeNode: ClrTreeNode;
@@ -682,7 +771,7 @@ export class BasicTreeNodeIndeterminateNodeTest {
                 </recursive-selectable-structure-test>
             </ng-template>
         </clr-tree-node>
-    `
+    `,
 })
 export class RecursiveSelectableStructureTestComponent {
     @Input() item: any;
@@ -698,7 +787,7 @@ export class RecursiveSelectableStructureTestComponent {
             [item]="selectableRoot"
             [selected]="selectableRoot.selected">
         </recursive-selectable-structure-test>
-    `
+    `,
 })
 export class RecursiveSelectableTreeTest {
     @ViewChild("recursiveStructure") recursiveStructure: RecursiveSelectableStructureTestComponent;
@@ -710,7 +799,43 @@ export class RecursiveSelectableTreeTest {
         children:
             [
                 {name: "B1", selected: true, children: [{name: "C1"}, {name: "C2"}]},
-                {name: "B2", selected: true, expanded: true, children: [{name: "D1"}, {name: "D2", selected: false}]}
-            ]
+                {name: "B2", selected: true, expanded: true, children: [{name: "D1"}, {name: "D2", selected: false}]},
+            ],
     };
 }
+
+@Component({
+    template: `
+    <clr-tree-node id="parent">
+      A1
+      <ng-template [clrIfExpanded]="true">
+        <clr-tree-node id="child">
+          B1
+        </clr-tree-node>
+
+        <clr-tree-node>
+          B2
+        </clr-tree-node>
+      </ng-template>
+    </clr-tree-node>
+  `,
+})
+export class TreeAriaAttributesTest {}
+
+@Component({
+    template: `
+    <clr-tree-node id="parent" [clrSelected]="selected">
+      A1
+      <ng-template [clrIfExpanded]="true">
+        <clr-tree-node id="child" [clrSelected]="true">
+          B1
+        </clr-tree-node>
+
+        <clr-tree-node>
+          B2
+        </clr-tree-node>
+      </ng-template>
+    </clr-tree-node>
+  `,
+})
+export class CheckboxTreeAriaAttributesTest { selected: boolean = false; }

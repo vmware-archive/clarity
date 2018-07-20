@@ -5,7 +5,17 @@
  */
 
 import {animate, state, style, transition, trigger} from "@angular/animations";
-import {Component, EventEmitter, Inject, Input, OnDestroy, Optional, Output, SkipSelf} from "@angular/core";
+import {
+    Component,
+    EventEmitter,
+    HostBinding,
+    Inject,
+    Input,
+    OnDestroy,
+    Optional,
+    Output,
+    SkipSelf,
+} from "@angular/core";
 
 import {Expand} from "../../utils/expand/providers/expand";
 import {UNIQUE_ID, UNIQUE_ID_PROVIDER} from "../../utils/id-generator/id-generator.service";
@@ -19,20 +29,24 @@ import {TreeSelectionService} from "./providers/tree-selection.service";
     selector: "clr-tree-node",
     templateUrl: "./tree-node.html",
     providers: [
-        Expand, {provide: LoadingListener, useExisting: Expand}, {
+        Expand,
+        {provide: LoadingListener, useExisting: Expand},
+        {
             provide: TreeSelectionService,
             useFactory: clrTreeSelectionProviderFactory,
-            deps: [[new Optional(), new SkipSelf(), TreeSelectionService]]
+            deps: [[new Optional(), new SkipSelf(), TreeSelectionService]],
         },
-        UNIQUE_ID_PROVIDER
+        UNIQUE_ID_PROVIDER,
     ],
-    animations: [trigger("childNodesState",
-                         [
-                             state("expanded", style({"height": "*", "overflow-y": "hidden"})),
-                             state("collapsed", style({"height": 0, "overflow-y": "hidden"})),
-                             transition("expanded <=> collapsed", animate("0.2s ease-in-out"))
-                         ])],
-    host: {"class": "clr-tree-node"}
+    animations: [
+        trigger("childNodesState",
+                [
+                    state("expanded", style({height: "*", "overflow-y": "hidden"})),
+                    state("collapsed", style({height: 0, "overflow-y": "hidden"})),
+                    transition("expanded <=> collapsed", animate("0.2s ease-in-out")),
+                ]),
+    ],
+    host: {"[class.clr-tree-node]": "true"},
 })
 export class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
     constructor(public nodeExpand: Expand, @Optional() @SkipSelf() public parent: ClrTreeNode,
@@ -52,7 +66,7 @@ export class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
     /* Registration */
 
     checkIfChildNodeRegistered(node: ClrTreeNode): boolean {
-        return (this.children.indexOf(node) > -1);
+        return this.children.indexOf(node) > -1;
     }
 
     // TODO: This should ideally be in AbstractTreeSelection
@@ -131,7 +145,7 @@ export class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
     }
 
     public get caretDirection(): string {
-        return (this.nodeExpand.expanded) ? "down" : "right";
+        return this.nodeExpand.expanded ? "down" : "right";
     }
 
     get expanded(): boolean {
@@ -146,11 +160,33 @@ export class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
     }
 
     get state(): string {
-        return (this.expanded && !this.nodeExpand.loading) ? "expanded" : "collapsed";
+        return this.expanded && !this.nodeExpand.loading ? "expanded" : "collapsed";
+    }
+
+    @HostBinding("attr.role")
+    get treeNodeRole(): string {
+        return this.parent ? "treeitem" : "tree";
+    }
+
+    @HostBinding("attr.aria-multiselectable")
+    get rootAriaMultiSelectable(): boolean {
+        if (this.parent || !this.selectable) {
+            return null;
+        } else {
+            return true;
+        }
+    }
+
+    @HostBinding("attr.aria-selected")
+    get ariaSelected(): boolean {
+        return this.selectable ? this.selected : null;
+    }
+
+    get ariaTreeNodeChildrenRole(): string {
+        return this.children.length > 0 ? "group" : null;
     }
 
     /* Lifecycle */
-
     ngOnDestroy() {
         if (this.parent) {
             this.parent.unregister(this);

@@ -13,4 +13,12 @@ export class CommunityComponent {
   team: any[] = CLARITYTEAM.members;
   contributors: string[] = CONTRIBUTORS.contributors;
   teamImgUrl: string = "assets/images/team/";
+
+  onReqClick(url: string) {
+      if (window["trackHiringAlert"]){
+          window["trackHiringAlert"](url, true);
+          return false;
+      }
+      return true;
+  }
 }

@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, Renderer,InjectionToken, Inject} from '@angular/core';
+import {Component, ElementRef, OnInit, Renderer,InjectionToken} from '@angular/core';
 import {Router, NavigationEnd} from "@angular/router";
 import {Title} from '@angular/platform-browser';
 import {environment} from "../environments/environment";
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
     
     environment = environment;
 
-    constructor(private renderer: Renderer, private el: ElementRef, private router: Router, private titleService: Title) {
+    constructor(private renderer: Renderer, private el: ElementRef, public router: Router, private titleService: Title) {
     }
 
     ngOnInit() {
@@ -42,6 +42,12 @@ export class AppComponent implements OnInit {
     updateBodyClasses() {
         this.bodyClasses.length = 0;
         this.bodyClasses = this.collectRouteData("bodyClass");
+    }
+
+    trackBannerAction(eventLabel: string) {
+        if (window["trackHiringAlert"]){
+            window["trackHiringAlert"](eventLabel);
+        }
     }
 
     public productTitle = PRODUCT_TITLE;

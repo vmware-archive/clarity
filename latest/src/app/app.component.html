@@ -1,4 +1,14 @@
 <clr-main-container>
+    <clr-alert *ngIf="router.url === '/'" [clrAlertType]="'alert-info'" [clrAlertAppLevel]="true" (clrAlertClosedChange)="trackBannerAction('closed')">
+        <clr-alert-item>
+        <span class="alert-text">
+            We are hiring! Join the Clarity team.
+        </span>
+            <div class="alert-actions">
+                <a class="btn alert-action" routerLink="/community" (click)="trackBannerAction('view jobs')">View Jobs</a>
+            </div>
+        </clr-alert-item>
+    </clr-alert>
     <clr-header class="header-6">
         <div class="branding">
             <a routerLink="/" class="logo-and-title">

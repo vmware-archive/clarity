@@ -920,6 +920,8 @@ export declare class ClrTooltipTrigger {
 }
 
 export declare class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
+    readonly ariaSelected: boolean;
+    readonly ariaTreeNodeChildrenRole: string;
     readonly caretDirection: string;
     readonly children: ClrTreeNode[];
     expanded: boolean;
@@ -930,8 +932,10 @@ export declare class ClrTreeNode extends AbstractTreeSelection implements OnDest
     nodeSelected: boolean;
     nodeSelectedChange: EventEmitter<boolean>;
     parent: ClrTreeNode;
+    readonly rootAriaMultiSelectable: boolean;
     readonly selectable: boolean;
     readonly state: string;
+    readonly treeNodeRole: string;
     treeSelectionService: TreeSelectionService;
     constructor(nodeExpand: Expand, parent: ClrTreeNode, treeSelectionService: TreeSelectionService, nodeId: string);
     activateSelection(): void;

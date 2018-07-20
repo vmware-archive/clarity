@@ -148,7 +148,7 @@ The Clarity project team welcomes contributions from the community. For more det
 If you find a bug or want to request a new feature, please open a [GitHub issue](https://github.com/vmware/clarity/issues).
 
 * Include a link to the reproduction scenario you created by forking one of the Clarity Stackblitz Templates:
-  * [Light Theme v11](https://stackblitz.com/edit/clarity-light-theme-v11)
-  * [Dark Theme v11](https://stackblitz.com/edit/clarity-dark-theme-v11)
-  * [Light Theme v10](https://stackblitz.com/edit/clarity-light-theme-v10)
-  * [Dark Theme v10](https://stackblitz.com/edit/clarity-dark-theme-v10)
+  * [Light Theme v0.12](https://stackblitz.com/edit/clarity-light-theme-v012)
+  * [Dark Theme v0.12](https://stackblitz.com/edit/clarity-dark-theme-v012)
+  * [Light Theme v0.11](https://stackblitz.com/edit/clarity-light-theme-v11)
+  * [Dark Theme v0.11](https://stackblitz.com/edit/clarity-dark-theme-v11)

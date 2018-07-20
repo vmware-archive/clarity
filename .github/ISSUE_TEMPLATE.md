@@ -25,10 +25,10 @@ PLEASE FILL OUT THE FOLLOWING. WE MAY CLOSE INCOMPLETE ISSUES.
 <!-- Clarity Plunker Templates -->
 
 * Include a link to the reproduction scenario you created by forking one of the Clarity Plunker Templates:
-  <!-- Clarity Version: [Light Theme v11](https://stackblitz.com/edit/clarity-light-theme-v11) -->
-  <!-- Clarity Version: [Dark Theme v11](https://stackblitz.com/edit/clarity-dark-theme-v11) -->
-  <!-- Clarity Version: [Light Theme v10](https://stackblitz.com/edit/clarity-light-theme-v10) -->
-  <!-- Clarity Version: [Dark Theme v10](https://stackblitz.com/edit/clarity-dark-theme-v10) -->
+  <!-- Clarity Version: [Light Theme v0.12](https://stackblitz.com/edit/clarity-light-theme-v012) -->
+  <!-- Clarity Version: [Dark Theme v0.12](https://stackblitz.com/edit/clarity-dark-theme-v012) -->
+  <!-- Clarity Version: [Light Theme v0.11](https://stackblitz.com/edit/clarity-light-theme-v11) -->
+  <!-- Clarity Version: [Dark Theme v0.11](https://stackblitz.com/edit/clarity-dark-theme-v11) -->
 
 ### Environment details
 

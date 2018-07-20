@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Injectable } from '@angular/core';
+import { ElementRef, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
 
@@ -82,5 +82,19 @@ export class IfOpenService {
     this.originalEvent = event;
     this.open = !this.open;
     delete this.originalEvent;
+  }
+
+  /**
+   *  Popovers might need to ignore click events on an element
+   *  (eg: popover opens on focus on an input field. Clicks should be ignored in this case)
+   */
+  private _ignoredElementChange: Subject<ElementRef> = new Subject<ElementRef>();
+
+  get ignoredElementChange(): Observable<ElementRef> {
+    return this._ignoredElementChange.asObservable();
+  }
+
+  registerIgnoredElement(element: ElementRef) {
+    this._ignoredElementChange.next(element);
   }
 }

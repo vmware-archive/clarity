@@ -3,11 +3,25 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ModuleWithProviders } from '@angular/core';
+import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
 import { RouterModule, Routes } from '@angular/router';
 
+import { BasicNgSelectDemo } from './basic-ng-select';
+import { OptionalMenuDemo } from './optional-menu';
+import { SelectStaticDemo } from './select-static';
 import { SelectsDemo } from './selects.demo';
 
-const ROUTES: Routes = [{ path: '', component: SelectsDemo }];
+const ROUTES: Routes = [
+  {
+    path: '',
+    component: SelectsDemo,
+    children: [
+      { path: '', redirectTo: 'select-static', pathMatch: 'full' },
+      { path: 'select-static', component: SelectStaticDemo },
+      { path: 'basic-select', component: BasicNgSelectDemo },
+      { path: 'optional-menu', component: OptionalMenuDemo },
+    ],
+  },
+];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forChild(ROUTES);

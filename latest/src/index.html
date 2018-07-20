@@ -40,6 +40,21 @@
                 ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
             }
 
+            window["trackHiringAlert"] = function (eventLabel, externalLink) {
+                if (eventLabel) {
+                    if (externalLink) {
+                        ga('send', 'event', 'hiring-alert', 'click', eventLabel, {
+                            'transport': 'beacon',
+                            'hitCallback': function () {
+                                document.location = eventLabel;
+                            }
+                        });
+                    }
+                    else {
+                        ga('send', 'event', 'hiring-alert', 'click', eventLabel);
+                    }
+                }
+            }
         }
     </script>
 </head>

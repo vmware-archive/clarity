@@ -5,7 +5,17 @@
  */
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, EventEmitter, Inject, Input, OnDestroy, Optional, Output, SkipSelf } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostBinding,
+  Inject,
+  Input,
+  OnDestroy,
+  Optional,
+  Output,
+  SkipSelf,
+} from '@angular/core';
 
 import { Expand } from '../../utils/expand/providers/expand';
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
@@ -35,7 +45,7 @@ import { TreeSelectionService } from './providers/tree-selection.service';
       transition('expanded <=> collapsed', animate('0.2s ease-in-out')),
     ]),
   ],
-  host: { class: 'clr-tree-node' },
+  host: { '[class.clr-tree-node]': 'true' },
 })
 export class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
   constructor(
@@ -158,8 +168,30 @@ export class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
     return this.expanded && !this.nodeExpand.loading ? 'expanded' : 'collapsed';
   }
 
-  /* Lifecycle */
+  @HostBinding('attr.role')
+  get treeNodeRole(): string {
+    return this.parent ? 'treeitem' : 'tree';
+  }
 
+  @HostBinding('attr.aria-multiselectable')
+  get rootAriaMultiSelectable(): boolean {
+    if (this.parent || !this.selectable) {
+      return null;
+    } else {
+      return true;
+    }
+  }
+
+  @HostBinding('attr.aria-selected')
+  get ariaSelected(): boolean {
+    return this.selectable ? this.selected : null;
+  }
+
+  get ariaTreeNodeChildrenRole(): string {
+    return this.children.length > 0 ? 'group' : null;
+  }
+
+  /* Lifecycle */
   ngOnDestroy() {
     if (this.parent) {
       this.parent.unregister(this);

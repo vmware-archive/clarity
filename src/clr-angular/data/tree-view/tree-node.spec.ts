@@ -30,6 +30,8 @@ export default function(): void {
           RecursiveSelectableStructureTestComponent,
           RecursiveSelectableTreeTest,
           BasicTreeNodeIndeterminateNodeTest,
+          TreeAriaAttributesTest,
+          CheckboxTreeAriaAttributesTest,
         ],
       });
     });
@@ -361,6 +363,89 @@ export default function(): void {
           expect(fixture.componentInstance.selectedChildTracker).toBe(1);
         })
       );
+    });
+
+    describe('Tree Aria Attributes Test', () => {
+      beforeEach(() => {
+        fixture = TestBed.createComponent(TreeAriaAttributesTest);
+        fixture.detectChanges();
+        compiled = fixture.nativeElement;
+      });
+
+      afterEach(() => {
+        fixture.destroy();
+      });
+
+      it('has role tree when the node is the parent', () => {
+        const parent: HTMLElement = compiled.querySelector('#parent');
+        expect(parent.getAttribute('role')).toBe('tree');
+      });
+
+      it('has role tree when the node is the child', () => {
+        const children: HTMLCollection = compiled.querySelector('.clr-treenode-children').children;
+
+        for (const child of Array.from(children)) {
+          expect(child.getAttribute('role')).toBe('treeitem');
+        }
+      });
+
+      it('has the aria-exapanded attribute on the expand/collapse button', () => {
+        const parent: HTMLElement = compiled.querySelector('#parent');
+        const caret: HTMLButtonElement = parent.querySelector('.clr-treenode-caret');
+
+        expect(caret.getAttribute('aria-expanded')).toBe('true');
+
+        caret.click();
+        fixture.detectChanges();
+
+        expect(caret.getAttribute('aria-expanded')).toBe('false');
+      });
+
+      it('has the role group on the children container in all parent nodes', () => {
+        const parent: HTMLElement = compiled.querySelector('#parent');
+        const childrenContainer: HTMLElement = parent.querySelector('.clr-treenode-children');
+
+        expect(childrenContainer.getAttribute('role')).toBe('group');
+      });
+
+      it('does not have the role group on the children container in the leaf nodes', () => {
+        const child: HTMLElement = compiled.querySelector('#child');
+        const childrenContainer: HTMLElement = child.querySelector('.clr-treenode-children');
+
+        expect(childrenContainer.getAttribute('role')).toBe(null);
+      });
+    });
+
+    describe('Checkbox Tree Aria Attributes Test', () => {
+      beforeEach(() => {
+        fixture = TestBed.createComponent(CheckboxTreeAriaAttributesTest);
+        fixture.detectChanges();
+        compiled = fixture.nativeElement;
+      });
+
+      afterEach(() => {
+        fixture.destroy();
+      });
+
+      it('has aria-multiselectable attribute only on the parent node', () => {
+        const parent: HTMLElement = compiled.querySelector('#parent');
+        const children: HTMLCollection = compiled.querySelector('.clr-treenode-children').children;
+
+        expect(parent.getAttribute('aria-multiselectable')).toBe('true');
+
+        for (const child of Array.from(children)) {
+          expect(child.getAttribute('aria-multiselectable')).toBe(null);
+        }
+      });
+
+      it('has aria-selected attribute on the checkbox tree node', () => {
+        const parent: HTMLElement = compiled.querySelector('#parent');
+        expect(parent.getAttribute('aria-selected')).toBe('false');
+
+        const child: HTMLElement = compiled.querySelector('#child');
+
+        expect(child.getAttribute('aria-selected')).toBe('true');
+      });
     });
 
     describe('Basic Tree Node Indeterminate Tracker', () => {
@@ -725,4 +810,42 @@ export class RecursiveSelectableTreeTest {
       { name: 'B2', selected: true, expanded: true, children: [{ name: 'D1' }, { name: 'D2', selected: false }] },
     ],
   };
+}
+
+@Component({
+  template: `
+    <clr-tree-node id="parent">
+      A1
+      <ng-template [clrIfExpanded]="true">
+        <clr-tree-node id="child">
+          B1
+        </clr-tree-node>
+
+        <clr-tree-node>
+          B2
+        </clr-tree-node>
+      </ng-template>
+    </clr-tree-node>
+  `,
+})
+export class TreeAriaAttributesTest {}
+
+@Component({
+  template: `
+    <clr-tree-node id="parent" [clrSelected]="selected">
+      A1
+      <ng-template [clrIfExpanded]="true">
+        <clr-tree-node id="child" [clrSelected]="true">
+          B1
+        </clr-tree-node>
+
+        <clr-tree-node>
+          B2
+        </clr-tree-node>
+      </ng-template>
+    </clr-tree-node>
+  `,
+})
+export class CheckboxTreeAriaAttributesTest {
+  selected: boolean = false;
 }

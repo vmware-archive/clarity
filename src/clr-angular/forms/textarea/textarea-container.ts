@@ -36,7 +36,7 @@ import { ControlClassService } from '../common/providers/control-class.service';
   providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService],
 })
 export class ClrTextareaContainer implements DynamicWrapper, OnDestroy {
-  subscription: Subscription;
+  subscriptions: Subscription[] = [];
   invalid = false;
   _dynamic = false;
   @ContentChild(ClrLabel) label: ClrLabel;
@@ -46,9 +46,11 @@ export class ClrTextareaContainer implements DynamicWrapper, OnDestroy {
     @Optional() private layoutService: LayoutService,
     private controlClassService: ControlClassService
   ) {
-    this.subscription = this.ifErrorService.statusChanges.subscribe(control => {
-      this.invalid = control.invalid;
-    });
+    this.subscriptions.push(
+      this.ifErrorService.statusChanges.subscribe(control => {
+        this.invalid = control.invalid;
+      })
+    );
   }
 
   controlClass() {
@@ -63,8 +65,8 @@ export class ClrTextareaContainer implements DynamicWrapper, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.subscriptions) {
+      this.subscriptions.map(sub => sub.unsubscribe());
     }
   }
 }

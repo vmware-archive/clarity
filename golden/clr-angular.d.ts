@@ -624,7 +624,7 @@ export declare class ClrInputContainer implements DynamicWrapper, OnDestroy {
     _dynamic: boolean;
     invalid: boolean;
     label: ClrLabel;
-    subscription: Subscription;
+    subscriptions: Subscription[];
     constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService);
     addGrid(): boolean;
     controlClass(): string;
@@ -741,6 +741,37 @@ export declare class ClrNavLevel implements OnInit {
     ngOnInit(): void;
     onMouseClick(target: any): void;
     open(): void;
+}
+
+export declare class ClrPassword extends WrappedFormControl<ClrPasswordContainer> implements OnInit, OnDestroy {
+    subscription: Subscription;
+    type: string;
+    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, focusService: FocusService, controlClassService: ControlClassService, type: string, renderer: Renderer2, el: ElementRef, toggleService: BehaviorSubject<boolean>);
+    ngOnDestroy(): void;
+    ngOnInit(): void;
+    onBlur(): void;
+    onFocus(): void;
+}
+
+export declare class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
+    _dynamic: boolean;
+    _toggle: boolean;
+    clrToggle: boolean;
+    control: NgControl;
+    focus: boolean;
+    focusService: FocusService;
+    invalid: boolean;
+    label: ClrLabel;
+    show: boolean;
+    subscriptions: Subscription[];
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, focusService: FocusService, toggleService: BehaviorSubject<boolean>);
+    addGrid(): boolean;
+    controlClass(): string;
+    ngOnDestroy(): void;
+    toggle(): void;
+}
+
+export declare class ClrPasswordModule {
 }
 
 export declare class ClrPopoverModule {
@@ -891,7 +922,7 @@ export declare class ClrTextareaContainer implements DynamicWrapper, OnDestroy {
     _dynamic: boolean;
     invalid: boolean;
     label: ClrLabel;
-    subscription: Subscription;
+    subscriptions: Subscription[];
     constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService);
     addGrid(): boolean;
     controlClass(): string;
@@ -1410,6 +1441,10 @@ export declare const Tabs: typeof ClrTabs;
 
 /** @deprecated */
 export declare const TABS_DIRECTIVES: Type<any>[];
+
+export declare const ToggleService: InjectionToken<any>;
+
+export declare function ToggleServiceProvider(): BehaviorSubject<boolean>;
 
 /** @deprecated */
 export declare const Tooltip: typeof ClrTooltip;

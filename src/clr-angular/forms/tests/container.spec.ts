@@ -79,7 +79,7 @@ function fullSpec(description, testContainer, testControl, testComponent, wrappe
 
     it('injects the ifErrorService and subscribes', () => {
       expect(ifErrorService).toBeTruthy();
-      expect(container.subscription).toBeTruthy();
+      expect(container.subscriptions[0]).toBeTruthy();
     });
 
     it('projects the label as first child', () => {
@@ -143,10 +143,10 @@ function fullSpec(description, testContainer, testControl, testComponent, wrappe
     });
 
     it('cleans up on destroy', () => {
-      expect(container.subscription).toBeDefined();
-      spyOn(container.subscription, 'unsubscribe');
+      expect(container.subscriptions).toBeDefined();
+      spyOn(container.subscriptions[0], 'unsubscribe');
       container.ngOnDestroy();
-      expect(container.subscription.unsubscribe).toHaveBeenCalled();
+      expect(container.subscriptions[0].unsubscribe).toHaveBeenCalled();
     });
   });
 }

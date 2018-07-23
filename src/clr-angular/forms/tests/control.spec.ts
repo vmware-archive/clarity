@@ -47,13 +47,13 @@ function fullTest(description, testContainer, testControl, testComponent, contro
         declarations: [testContainer, testControl, testComponent],
         providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService],
       });
-      ifErrorService = TestBed.get(IfErrorService);
-      ngControlService = TestBed.get(NgControlService);
-      controlClassService = TestBed.get(ControlClassService);
-      spyOn(ifErrorService, 'triggerStatusChange');
-      spyOn(ngControlService, 'setControl');
       fixture = TestBed.createComponent(testComponent);
       control = fixture.debugElement.query(By.directive(testControl));
+      controlClassService = control.injector.get(ControlClassService);
+      ifErrorService = control.injector.get(IfErrorService);
+      ngControlService = control.injector.get(NgControlService);
+      spyOn(ifErrorService, 'triggerStatusChange');
+      spyOn(ngControlService, 'setControl');
       fixture.detectChanges();
     });
 

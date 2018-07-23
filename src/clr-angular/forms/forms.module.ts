@@ -11,6 +11,7 @@ import { ClrCheckboxNextModule } from './checkbox/checkbox.module';
 import { ClrCommonFormsModule } from './common/common.module';
 import { ClrDatepickerModule } from './datepicker/datepicker.module';
 import { ClrInputModule } from './input/input.module';
+import { ClrPasswordModule } from './password/password.module';
 import { ClrRadioModule } from './radio/radio.module';
 import { ClrTextareaModule } from './textarea/textarea.module';
 
@@ -19,10 +20,11 @@ import { ClrTextareaModule } from './textarea/textarea.module';
   exports: [
     ClrCommonFormsModule,
     ClrCheckboxNextModule,
+    ClrDatepickerModule,
     ClrInputModule,
+    ClrPasswordModule,
     ClrTextareaModule,
     ClrRadioModule,
-    ClrDatepickerModule,
   ],
 })
 export class ClrFormsNextModule {}

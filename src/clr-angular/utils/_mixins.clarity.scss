@@ -56,3 +56,19 @@ $clr-outline-spread: 2px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@mixin off-screen-styles() {
+  position: fixed !important;
+  border: none !important;
+  height: 1px !important;
+  width: 1px !important;
+
+  left: 0px !important;
+  top: -1px !important;
+
+  overflow: hidden !important;
+  visibility: hidden !important;
+
+  padding: 0 !important;
+  margin: 0 0 -1px 0 !important;
+}

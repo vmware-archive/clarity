@@ -46,10 +46,8 @@ export default function(): void {
             const checkStaticProps = function(dragEvent: any) {
                 // the following properties don't change accross different drag events
                 // and expected to stay the same in all of them.
-                expect(dragEvent.draggableElement).toBe(draggable.nativeElement);
                 expect(dragEvent.group).toBe("draggable-1");
                 expect(dragEvent.dragDataTransfer).toEqual(MOCK_DATA_PAYLOAD);
-                expect(dragEvent.ghostElement.textContent).toMatch(/draggable/);
             };
 
             it("should emit event with proper properties on dragStart", function() {
@@ -137,8 +135,8 @@ export default function(): void {
                 emulateDragEvent("mousemove", 10, 20);
                 fixture.detectChanges();
                 const draggableQueries = testElement.querySelectorAll(".being-dragged");
-                expect(draggableQueries[0].nextSibling.nodeName).toBe("CLR-DRAGGABLE-GHOST");
-                expect(draggableQueries[0].nextSibling.classList.contains("draggable-ghost")).toBeTruthy();
+                expect(draggableQueries[0].nextElementSibling.tagName).toBe("CLR-DRAGGABLE-GHOST");
+                expect(draggableQueries[0].nextElementSibling.classList.contains("draggable-ghost")).toBeTruthy();
             });
 
             it("should add draggable-match to all droppables with matching group", function() {

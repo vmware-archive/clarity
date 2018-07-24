@@ -15,7 +15,7 @@ interface Node {
 // when attachDragListener() is called and removes it when detachDragListener() is called.
 export class MockDragEventListener {
     private listeners: (() => void)[];
-    public draggableEl: Node;
+    public draggableEl: any;
     public dragStarted: Subject<any> = new Subject<any>();
     public dragMoved: Subject<any> = new Subject<any>();
     public dragEnded: Subject<any> = new Subject<any>();

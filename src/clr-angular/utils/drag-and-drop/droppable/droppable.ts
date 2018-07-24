@@ -7,7 +7,7 @@ import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, R
 import {Subscription} from "rxjs/Subscription";
 
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
-
+import {ClrDragEventExt} from "../drag-event-external";
 import {ClrDragEvent, ClrDragEventType} from "../interfaces/drag-event";
 import {ClrDropTolerance} from "../interfaces/drop-tolerance";
 import {ClrDragAndDropEventBus} from "../providers/drag-and-drop-event-bus";
@@ -15,14 +15,14 @@ import {ClrDragAndDropEventBus} from "../providers/drag-and-drop-event-bus";
 @Directive({
     selector: "[clrDroppable]",
     providers: [DomAdapter],
-    host: {class: "droppable", "[class.draggable-match]": "isDraggableMatch"}
+    host: {"[class.droppable]": "true", "[class.draggable-match]": "isDraggableMatch"}
 })
 export class ClrDroppable<T> implements OnInit, OnDestroy {
     private dragStartSubscription: Subscription;
     private dragMoveSubscription: Subscription;
     private dragEndSubscription: Subscription;
 
-    private droppableEl: Node;
+    private droppableEl: any;
     private clientRect: ClientRect;
 
     constructor(private el: ElementRef, private eventBus: ClrDragAndDropEventBus<T>, private domAdapter: DomAdapter,
@@ -53,12 +53,42 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     }
 
     @Input("clrDropTolerance")
-    set dropTolerance(value: number|ClrDropTolerance) {
+    set dropTolerance(value: number|string|ClrDropTolerance) {
         if (typeof value === "number") {
             this._dropTolerance.top = value;
             this._dropTolerance.right = value;
             this._dropTolerance.bottom = value;
             this._dropTolerance.left = value;
+        } else if (typeof value === "string") {
+            const toleranceValues = value.trim().split(/\s+/).map((tolerance) => parseInt(tolerance, 10));
+            switch (toleranceValues.length) {
+                case 1:
+                    this._dropTolerance.top = toleranceValues[0];
+                    this._dropTolerance.right = toleranceValues[0];
+                    this._dropTolerance.bottom = toleranceValues[0];
+                    this._dropTolerance.left = toleranceValues[0];
+                    break;
+                case 2:
+                    this._dropTolerance.top = toleranceValues[0];
+                    this._dropTolerance.right = toleranceValues[1];
+                    this._dropTolerance.bottom = toleranceValues[0];
+                    this._dropTolerance.left = toleranceValues[1];
+                    break;
+                case 3:
+                    this._dropTolerance.top = toleranceValues[0];
+                    this._dropTolerance.right = toleranceValues[1];
+                    this._dropTolerance.bottom = toleranceValues[2];
+                    this._dropTolerance.left = toleranceValues[1];
+                    break;
+                case 4:
+                    this._dropTolerance.top = toleranceValues[0];
+                    this._dropTolerance.right = toleranceValues[1];
+                    this._dropTolerance.bottom = toleranceValues[2];
+                    this._dropTolerance.left = toleranceValues[3];
+                    break;
+                default:
+                    break;
+            }
         } else if (value) {
             if (value.top) {
                 this._dropTolerance.top = value.top;
@@ -75,12 +105,12 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
         }
     }
 
-    @Output("clrDragStart") dragStartEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
-    @Output("clrDragMove") dragMoveEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
-    @Output("clrDragEnd") dragEndEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
-    @Output("clrDragLeave") dragLeaveEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
-    @Output("clrDragEnter") dragEnterEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
-    @Output("clrDrop") dropEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
+    @Output("clrDragStart") dragStartEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
+    @Output("clrDragMove") dragMoveEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
+    @Output("clrDragEnd") dragEndEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
+    @Output("clrDragLeave") dragLeaveEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
+    @Output("clrDragEnter") dragEnterEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
+    @Output("clrDrop") dropEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
 
     private unsubscribeFrom(subscription: Subscription): void {
         if (subscription) {
@@ -89,18 +119,27 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     }
 
     private checkGroupMatch(draggableGroup: string|string[]): boolean {
+        // Both Draggable and Droppable have clrGroup input.
+        // The clrGroup input can be both a string key or array of string keys in Draggable and Droppable.
+
+        // It's not match if Draggable has no defined value assigned to clrGroup, but Droppable has a defined clrGroup.
         if (!draggableGroup && this._group) {
             return false;
         }
-
+        // The same is true the other way round.
         if (!this._group && draggableGroup) {
             return false;
         }
 
+        // It's match if both Draggable and Droppable have no assigned value for clrGroup.
         if (!this._group && !draggableGroup) {
             return true;
         }
 
+        // It's match if both Draggable and Droppable have simple string keys that are matching.
+        // It's match if Draggable's simple clrGroup key is matching with one of the clrGroup keys of Droppable. The
+        // same is true the other way round.
+        // it's match if one of the clrGroup keys of Droppable is matching with one of the clrGroup keys of Draggable.
         if (typeof draggableGroup === "string") {
             if (typeof this._group === "string") {
                 return this._group === draggableGroup;
@@ -111,7 +150,7 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
             if (typeof this._group === "string") {
                 return draggableGroup.indexOf(this._group) > -1;
             } else {
-                return (this._group as string[]).filter(groupKey => draggableGroup.indexOf(groupKey) > -1).length > 0;
+                return (this._group as string[]).some(groupKey => draggableGroup.indexOf(groupKey) > -1);
             }
         }
     }
@@ -141,7 +180,7 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
 
         // Subscribe to dragMoved and dragEnded only if draggable and droppable have a matching group key.
         if (this.isDraggableMatch) {
-            this.dragStartEmitter.emit(dragStartEvent);
+            this.dragStartEmitter.emit(new ClrDragEventExt(dragStartEvent));
             this.dragMoveSubscription = this.eventBus.dragMoved.subscribe((dragMoveEvent: ClrDragEvent<T>) => {
                 this.onDragMove(dragMoveEvent);
             });
@@ -152,42 +191,45 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     }
 
     private onDragMove(dragMoveEvent: ClrDragEvent<T>): void {
-        if (!this._isDraggableOver && this.isInDropArea(dragMoveEvent.dropPointPosition)) {
+        const isInDropArea = this.isInDropArea(dragMoveEvent.dropPointPosition);
+        if (!this._isDraggableOver && isInDropArea) {
             this.isDraggableOver = true;
-            const dragEnterEvent = this.transformAndBroadcastEvent(dragMoveEvent, ClrDragEventType.DRAG_ENTER);
-            this.dragEnterEmitter.emit(dragEnterEvent);
-        } else if (this._isDraggableOver && !this.isInDropArea(dragMoveEvent.dropPointPosition)) {
+            const dragEnterEvent = {...dragMoveEvent, type: ClrDragEventType.DRAG_ENTER};
+            this.eventBus.broadcast(dragEnterEvent);
+            this.dragEnterEmitter.emit(new ClrDragEventExt(dragEnterEvent));
+        } else if (this._isDraggableOver && !isInDropArea) {
             this.isDraggableOver = false;
-            const dragLeaveEvent = this.transformAndBroadcastEvent(dragMoveEvent, ClrDragEventType.DRAG_LEAVE);
-            this.dragLeaveEmitter.emit(dragLeaveEvent);
+            const dragLeaveEvent = {...dragMoveEvent, type: ClrDragEventType.DRAG_LEAVE};
+            this.eventBus.broadcast(dragLeaveEvent);
+            this.dragLeaveEmitter.emit(new ClrDragEventExt(dragLeaveEvent));
         }
 
-        this.dragMoveEmitter.emit(dragMoveEvent);
+        this.dragMoveEmitter.emit(new ClrDragEventExt(dragMoveEvent));
     }
 
     private onDragEnd(dragEndEvent: ClrDragEvent<T>): void {
         if (this._isDraggableOver) {
             if (dragEndEvent.ghostElement) {
-                // By this point draggable ghost component would have been destroyed,
+                // By this point, the draggable ghost component is destroyed,
                 // but the element would be active until its animation completes.
                 // As such, once the ghost is dropped over, we will give it "dropped" class.
+
+                // This process cannot be done in the ghost component
+                // because any subscription to the drop event is ineffective or invalid
+                // as the component had been already destroyed.
                 this.renderer.addClass(dragEndEvent.ghostElement, "dropped");
             }
-            const dropEvent = this.transformAndBroadcastEvent(dragEndEvent, ClrDragEventType.DROP);
-            this.dropEmitter.emit(dropEvent);
+
+            const dropEvent = {...dragEndEvent, type: ClrDragEventType.DROP};
+            this.eventBus.broadcast(dropEvent);
+            this.dropEmitter.emit(new ClrDragEventExt(dropEvent));
             this.isDraggableOver = false;
         }
-        this.dragEndEmitter.emit(dragEndEvent);
+        this.dragEndEmitter.emit(new ClrDragEventExt(dragEndEvent));
         this.unsubscribeFrom(this.dragMoveSubscription);
         this.unsubscribeFrom(this.dragEndSubscription);
         this.isDraggableMatch = false;
         delete this.clientRect;
-    }
-
-    private transformAndBroadcastEvent(event: ClrDragEvent<T>, newEventType: ClrDragEventType): ClrDragEvent<T> {
-        event.type = newEventType;
-        this.eventBus.broadcast(event);
-        return event;
     }
 
     ngOnInit() {
@@ -200,8 +242,5 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
         this.unsubscribeFrom(this.dragStartSubscription);
         this.unsubscribeFrom(this.dragMoveSubscription);
         this.unsubscribeFrom(this.dragEndSubscription);
-        this.isDraggableMatch = false;
-        this.isDraggableOver = false;
-        delete this.clientRect;
     }
 }

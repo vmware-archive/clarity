@@ -11,6 +11,7 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {ClrIconModule} from "../../../icon/icon.module";
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
 import {ClrDragAndDropModule} from "../drag-and-drop.module";
+import {ClrDragEvent, ClrDragEventType} from "../interfaces/drag-event";
 import {ClrDragEventListener} from "../providers/drag-event-listener";
 import {MOCK_DRAG_EVENT_LISTENER_PROVIDER} from "../providers/drag-event-listener.mock";
 import {ClrDragHandleRegistrar} from "../providers/drag-handle-registrar";
@@ -21,7 +22,13 @@ import {ClrDraggable} from "./draggable";
 
 export default function(): void {
     describe("With Custom Draggable Ghost", function() {
+        let mockDragStartEventInt: ClrDragEvent<any>;
+        let mockDragEndEventInt: ClrDragEvent<any>;
+
         beforeEach(function() {
+            mockDragStartEventInt = {type: ClrDragEventType.DRAG_START, dragPosition: {pageX: 11, pageY: 22}};
+            mockDragEndEventInt = {type: ClrDragEventType.DRAG_END, dragPosition: {pageX: 77, pageY: 88}};
+
             TestBed.configureTestingModule({
                 imports: [ClrDragAndDropModule, ClrIconModule, NoopAnimationsModule],
                 declarations: [CustomGhostTest]
@@ -46,16 +53,16 @@ export default function(): void {
         });
 
         it("should project custom ghost on drag start", function() {
-            this.dragEventListener.dragStarted.next();
+            this.dragEventListener.dragStarted.next(mockDragStartEventInt);
             const draggableGhosts = this.fixture.nativeElement.querySelectorAll("clr-draggable-ghost");
             expect(draggableGhosts.length).toBe(1);
             expect(draggableGhosts[0].querySelectorAll("clr-icon").length).toBe(1);
         });
 
         it("should remove ghost on drag end", function() {
-            this.dragEventListener.dragStarted.next();
+            this.dragEventListener.dragStarted.next(mockDragStartEventInt);
             expect(this.fixture.nativeElement.querySelectorAll("clr-draggable-ghost").length).toBe(1);
-            this.dragEventListener.dragEnded.next();
+            this.dragEventListener.dragEnded.next(mockDragEndEventInt);
             expect(this.fixture.nativeElement.querySelectorAll("clr-draggable-ghost").length).toBe(0);
         });
     });

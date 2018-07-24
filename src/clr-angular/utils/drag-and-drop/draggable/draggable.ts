@@ -20,6 +20,7 @@ import {Input} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
+import {ClrDragEventExt} from "../drag-event-external";
 import {ClrDraggableGhost} from "../draggable-ghost";
 import {ClrIfDragged} from "../if-dragged";
 import {ClrDragEvent} from "../interfaces/drag-event";
@@ -31,10 +32,10 @@ import {ClrGlobalDragMode} from "../providers/global-drag-mode";
 @Directive({
     selector: "[clrDraggable]",
     providers: [ClrDragEventListener, ClrDragHandleRegistrar, ClrDraggableSnapshot, ClrGlobalDragMode, DomAdapter],
-    host: {class: "draggable", "[class.being-dragged]": "dragOn"}
+    host: {"[class.draggable]": "true", "[class.being-dragged]": "dragOn"}
 })
 export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
-    private draggableEl: Node;
+    private draggableEl: any;
     private subscriptions: Subscription[] = [];
     private componentFactory: ComponentFactory<ClrDraggableGhost<T>>;
     public dragOn: boolean = false;
@@ -72,9 +73,9 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
         this.draggableSnapshot.discard();
     }
 
-    @Output("clrDragStart") dragStartEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
-    @Output("clrDragMove") dragMoveEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
-    @Output("clrDragEnd") dragEndEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
+    @Output("clrDragStart") dragStartEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
+    @Output("clrDragMove") dragMoveEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
+    @Output("clrDragEnd") dragEndEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
 
     ngAfterContentInit() {
         this.dragHandleRegistrar.defaultHandleEl = this.draggableEl;
@@ -85,10 +86,11 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
             if (!this.customGhost) {
                 this.createDefaultGhost(event);
             }
-            this.dragStartEmitter.emit(event);
+
+            this.dragStartEmitter.emit(new ClrDragEventExt(event));
         }));
         this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
-            this.dragMoveEmitter.emit(event);
+            this.dragMoveEmitter.emit(new ClrDragEventExt(event));
         }));
         this.subscriptions.push(this.dragEventListener.dragEnded.subscribe((event: ClrDragEvent<T>) => {
             this.globalDragMode.exit();
@@ -96,7 +98,7 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
             if (!this.customGhost) {
                 this.destroyDefaultGhost();
             }
-            this.dragEndEmitter.emit(event);
+            this.dragEndEmitter.emit(new ClrDragEventExt(event));
         }));
     }
 

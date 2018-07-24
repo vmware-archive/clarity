@@ -15,12 +15,7 @@ export default function(): void {
         const dndEventBus = new ClrDragAndDropEventBus();
         const dragEventMockObj =
             (dragEventType: ClrDragEventType, dragDataTransfer?: DragTransfer): ClrDragEvent<DragTransfer> => {
-                return {
-                    type: dragEventType,
-                    draggableElement: null,
-                    dragPosition: {pageX: 0, pageY: 0},
-                    dragDataTransfer: dragDataTransfer
-                };
+                return {type: dragEventType, dragPosition: {pageX: 0, pageY: 0}, dragDataTransfer: dragDataTransfer};
             };
         let isEmitted: boolean;
 
@@ -43,15 +38,6 @@ export default function(): void {
                 expect(event.type).toBe(ClrDragEventType.DRAG_MOVE);
             });
             dndEventBus.broadcast(dragEventMockObj(ClrDragEventType.DRAG_MOVE));
-            expect(isEmitted).toBeTruthy();
-        });
-
-        it("should broadcast from correct Observable on drop event type", function() {
-            dndEventBus.dropped.subscribe((event: ClrDragEvent<DragTransfer>) => {
-                isEmitted = true;
-                expect(event.type).toBe(ClrDragEventType.DROP);
-            });
-            dndEventBus.broadcast(dragEventMockObj(ClrDragEventType.DROP));
             expect(isEmitted).toBeTruthy();
         });
 

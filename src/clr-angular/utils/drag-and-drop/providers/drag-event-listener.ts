@@ -12,7 +12,7 @@ import {ClrDragAndDropEventBus} from "./drag-and-drop-event-bus";
 
 @Injectable()
 export class ClrDragEventListener<T> {
-    private draggableEl: Node;
+    private draggableEl: any;
 
     private listeners: (() => void)[];
 
@@ -36,9 +36,12 @@ export class ClrDragEventListener<T> {
 
     constructor(private ngZone: NgZone, private renderer: Renderer2, private eventBus: ClrDragAndDropEventBus<T>) {}
 
-    public ghostElement?: Node;
+    // Draggable component sets these properties:
     public dragDataTransfer?: T;
     public group?: string|string[];
+
+    // DraggableGhost component sets these properties:
+    public ghostElement?: any;
     public dropPointPosition?: {pageX: number; pageY: number};
 
     public attachDragListeners(draggableEl: Node) {
@@ -112,10 +115,10 @@ export class ClrDragEventListener<T> {
                 break;
         }
 
+
+        // The following properties are set after they are broadcasted to the DraggableGhost component.
         dragEvent.ghostElement = this.ghostElement;
-        dragEvent.dragDataTransfer = this.dragDataTransfer;
         dragEvent.dropPointPosition = this.dropPointPosition;
-        dragEvent.group = this.group;
 
         this.eventBus.broadcast(dragEvent);
     }
@@ -131,8 +134,10 @@ export class ClrDragEventListener<T> {
 
         return {
             type: eventType,
-            draggableElement: this.draggableEl,
-            dragPosition: {pageX: nativeEvent.pageX, pageY: nativeEvent.pageY}
+            dragPosition: {pageX: nativeEvent.pageX, pageY: nativeEvent.pageY},
+            group: this.group,
+            dragDataTransfer: this.dragDataTransfer,
+            ghostElement: this.ghostElement
         };
     }
 }

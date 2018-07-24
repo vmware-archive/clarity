@@ -19,7 +19,6 @@ type DragTransfer = {
 const expectEventPropValues = <T>(event: ClrDragEvent<T>) => {
     return {
         toBe: (element: Node, pageX: number, pageY: number, dragTransfer?: T, group?: string|string[]) => {
-            expect(event.draggableElement).toBe(element);
             expect(event.dragPosition.pageX).toBe(pageX);
             expect(event.dragPosition.pageY).toBe(pageY);
 
@@ -46,7 +45,7 @@ export default function(): void {
         let fixture: ComponentFixture<any>;
         let testComponent: TestComponent;
 
-        let draggableButton: Node;
+        let draggableButton: any;
 
         beforeEach(function() {
             TestBed.configureTestingModule({declarations: [TestComponent], providers: [ClrDragAndDropEventBus]});

@@ -7,7 +7,7 @@
 import {Directive, ElementRef, OnDestroy, Optional} from "@angular/core";
 import {ClrDragHandleRegistrar} from "./providers/drag-handle-registrar";
 
-@Directive({selector: "[clrDragHandle]", host: {class: "drag-handle"}})
+@Directive({selector: "[clrDragHandle]", host: {"[class.drag-handle]": "true"}})
 export class ClrDragHandle<T> implements OnDestroy {
     constructor(private el: ElementRef, @Optional() private dragHandleRegistrar: ClrDragHandleRegistrar<T>) {
         if (!this.dragHandleRegistrar) {

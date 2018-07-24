@@ -15,9 +15,10 @@ export enum ClrDragEventType {
 export interface ClrDragEvent<T> {
     type: ClrDragEventType;
     group?: string|string[];
-    draggableElement: Node;
-    ghostElement?: Node;
+    ghostElement?: any;
     dragPosition: {pageX: number; pageY: number};
     dragDataTransfer?: T;
+    // For default ghosts, this dropPointPosition denotes the center point of the ghost element.
+    // This center point is used to determine whether the ghost is over droppable elements or not.
     dropPointPosition?: {pageX: number; pageY: number};
 }

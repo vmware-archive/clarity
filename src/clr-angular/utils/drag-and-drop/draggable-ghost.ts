@@ -21,7 +21,6 @@ type OffsetPosition = {
 @Component({
     selector: "clr-draggable-ghost",
     template: `<ng-content></ng-content>`,
-    host: {class: "draggable-ghost"},
     animations: [trigger(
         "leaveAnimation",
         [transition(
@@ -29,7 +28,7 @@ type OffsetPosition = {
             [style({left: "*", top: "*"}), animate("0.2s ease-in-out", style({top: "{{top}}", left: "{{left}}"}))])])]
 })
 export class ClrDraggableGhost<T> implements OnDestroy {
-    private draggableGhostEl: Node;
+    private draggableGhostEl: any;
 
     private subscriptions: Subscription[] = [];
 
@@ -43,6 +42,9 @@ export class ClrDraggableGhost<T> implements OnDestroy {
         }
 
         this.draggableGhostEl = this.el.nativeElement;
+
+        // Need to use Renderer2 as it runs outside of NgZone
+        this.renderer.addClass(this.draggableGhostEl, "draggable-ghost");
 
         // Register the ghost element in DragEventListener to pass in a ClrDragEvent.
         this.dragEventListener.ghostElement = this.draggableGhostEl;

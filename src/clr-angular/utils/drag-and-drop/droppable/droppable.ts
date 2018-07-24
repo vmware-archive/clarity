@@ -34,6 +34,8 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     private _isDraggableOver: boolean = false;
 
     set isDraggableOver(value: boolean) {
+        // We need to add/remove this draggable-over class via Renderer2
+        // because isDraggableOver is set outside of NgZone.
         if (value) {
             this.renderer.addClass(this.droppableEl, "draggable-over");
         } else {

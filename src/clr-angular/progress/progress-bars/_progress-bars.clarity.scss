@@ -96,8 +96,8 @@
 
   // Variations
   .progress {
-    @each $type, $color in (success, $clr-progress-success-color), (warning, $clr-progress-danger-color),
-      (danger, $clr-progress-warning-color)
+    @each $type, $color in (success, $clr-progress-success-color), (warning, $clr-progress-warning-color),
+      (danger, $clr-progress-danger-color)
     {
       &.#{$type} > progress {
         @include clr-progress-color($color);

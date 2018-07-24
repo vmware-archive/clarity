@@ -19,23 +19,22 @@ import { FocusTrapTracker } from './focus-trap-tracker.service';
 
 @Directive({ selector: '[clrFocusTrap]' })
 export class FocusTrapDirective implements AfterViewInit, OnDestroy {
-  private _previousActiveElement: HTMLElement;
-  /* tslint:disable-next-line:no-unused-variable */
+  private previousActiveElement: any;
   private document: Document;
 
   constructor(
-    public elementRef: ElementRef,
-    injector: Injector,
+    private el: ElementRef,
+    private injector: Injector,
     private focusTrapsTracker: FocusTrapTracker,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
-    this.document = injector.get(DOCUMENT);
+    this.document = this.injector.get(DOCUMENT);
     this.focusTrapsTracker.current = this;
   }
 
   @HostListener('document:focusin', ['$event'])
   onFocusIn(event: any) {
-    const nativeElement: HTMLElement = this.elementRef.nativeElement;
+    const nativeElement: HTMLElement = this.el.nativeElement;
 
     if (this.focusTrapsTracker.current === this && !nativeElement.contains(event.target)) {
       nativeElement.focus();
@@ -44,15 +43,14 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this._previousActiveElement = <HTMLElement>document.activeElement;
-      const nativeElement: HTMLElement = this.elementRef.nativeElement;
-      nativeElement.setAttribute('tabindex', '0');
+      this.previousActiveElement = <HTMLElement>this.document.activeElement;
+      this.el.nativeElement.setAttribute('tabindex', '0');
     }
   }
 
   public setPreviousFocus(): void {
-    if (this._previousActiveElement && this._previousActiveElement.focus) {
-      this._previousActiveElement.focus();
+    if (this.previousActiveElement && this.previousActiveElement.focus) {
+      this.previousActiveElement.focus();
     }
   }
 

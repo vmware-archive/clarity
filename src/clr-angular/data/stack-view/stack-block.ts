@@ -102,18 +102,18 @@ export class ClrStackBlock implements OnInit {
     }
 
     get caretDirection(): string {
-        return this.expanded ? 'down' : 'right';
+        return this.expanded ? "down" : "right";
     }
 
     get role(): string {
-        return this.expandable ? 'button' : null;
+        return this.expandable ? "button" : null;
     }
 
     get tabIndex(): string {
-        return this.expandable ? '0' : null;
+        return this.expandable ? "0" : null;
     }
 
-    @HostBinding('class.on-focus')
+    @HostBinding("class.on-focus")
     get onStackLabelFocus(): boolean {
         return this.expandable && !this.expanded && this.focused;
     }
@@ -122,7 +122,7 @@ export class ClrStackBlock implements OnInit {
         if (!this.expandable) {
             return null;
         } else {
-            return this.expanded ? 'true' : 'false';
+            return this.expanded ? "true" : "false";
         }
     }
 }

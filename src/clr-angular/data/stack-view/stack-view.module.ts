@@ -8,13 +8,14 @@ import {CommonModule} from "@angular/common";
 import {NgModule, Type} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 
+import {ClrIconModule} from "../../icon/icon.module";
+
 import {ClrStackBlock} from "./stack-block";
 import {ClrStackHeader} from "./stack-header";
 import {ClrStackInput} from "./stack-input";
 import {ClrStackSelect} from "./stack-select";
 import {ClrStackView} from "./stack-view";
 import {ClrStackViewCustomTags} from "./stack-view-custom-tags";
-import {ClrIconModule} from "../../icon/icon.module";
 
 export const CLR_STACK_VIEW_DIRECTIVES: Type<any>[] = [
     ClrStackView, ClrStackHeader, ClrStackBlock, ClrStackViewCustomTags,

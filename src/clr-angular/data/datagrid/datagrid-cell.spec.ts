@@ -43,6 +43,10 @@ export default function(): void {
             context.detectChanges();
             expect(context.clarityElement.classList.contains("datagrid-signpost-trigger")).toBeTruthy();
         });
+
+        it("adds a11y roles to the cell", function() {
+            expect(context.clarityElement.attributes.role.value).toBe("cell");
+        });
     });
 }
 
@@ -55,7 +59,7 @@ export default function(): void {
                     The user is strong.
                 </clr-signpost-content>
             </clr-signpost>
-        </clr-dg-cell>`
+        </clr-dg-cell>`,
 })
 class SimpleTest {
     signpostTest: boolean = false;

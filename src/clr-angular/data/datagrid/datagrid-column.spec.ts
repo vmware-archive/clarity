@@ -26,8 +26,15 @@ import {StateDebouncer} from "./providers/state-debouncer.provider";
 import {DomAdapter} from "./render/dom-adapter";
 import {DatagridRenderOrganizer} from "./render/render-organizer";
 
-const PROVIDERS_NEEDED =
-    [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, DragDispatcher, Page, StateDebouncer];
+const PROVIDERS_NEEDED = [
+    Sort,
+    FiltersProvider,
+    DatagridRenderOrganizer,
+    DomAdapter,
+    DragDispatcher,
+    Page,
+    StateDebouncer,
+];
 
 export default function(): void {
     describe("DatagridColumn component", function() {
@@ -340,6 +347,20 @@ export default function(): void {
                 expect(context.clarityElement.classList.contains("desc")).toBeTruthy();
             });
 
+            it("adds a11y roles to the column", function() {
+                expect(context.clarityElement.attributes.role.value).toEqual("columnheader");
+                expect(context.clarityElement.attributes["aria-sort"].value).toBe("none");
+
+                context.clarityDirective.sortBy = new TestComparator();
+                context.clarityDirective.sort();
+                context.detectChanges();
+                expect(context.clarityElement.attributes["aria-sort"].value).toBe("ascending");
+
+                context.clarityDirective.sort();
+                context.detectChanges();
+                expect(context.clarityElement.attributes["aria-sort"].value).toBe("descending");
+            });
+
             it("adds the .datagrid-column--hidden when not visible", function() {
                 context.clarityDirective.hideable = new DatagridHideableColumnModel(null, "dg-col-0", true);
                 context.detectChanges();
@@ -434,7 +455,7 @@ class TestStringFilter implements ClrDatagridStringFilterInterface<string> {
                 [(clrDgSorted)]="sorted">
             Hello world
         </clr-dg-column>
-    `
+    `,
 })
 class SimpleDeprecatedTest {
     comparator: ClrDatagridComparatorInterface<any>;
@@ -450,12 +471,12 @@ class SimpleDeprecatedTest {
                 [(clrDgSortOrder)]="sortOrder">
             Hello world
         </clr-dg-column>
-    `
+    `,
 })
 class SimpleTest {
     comparator: ClrDatagridComparatorInterface<any>|string;
     field: string;
-    sortOrder = ClrDatagridSortOrder.Unsorted;
+    sortOrder = ClrDatagridSortOrder.UNSORTED;
 }
 
 @Component({
@@ -466,7 +487,7 @@ class SimpleTest {
                 Filter content
             </clr-dg-filter>
         </clr-dg-column>
-    `
+    `,
 })
 class FilterTest {
     filter = new TestFilter();
@@ -479,9 +500,8 @@ class FilterTest {
             Hello world
             <clr-dg-string-filter class="my-string-filter" [clrDgStringFilter]="filter"></clr-dg-string-filter>
         </clr-dg-column>
-    `
+    `,
 })
-
 class StringFilterTest {
     filter = new TestStringFilter();
     field: string;
@@ -494,7 +514,7 @@ class StringFilterTest {
         <clr-dg-column [(clrFilterValue)]="filterValue" [clrDgField]="field" >
             Column Title
         </clr-dg-column>
-    `
+    `,
 })
 class PreFilterTest {
     field: string;
@@ -508,7 +528,7 @@ class PreFilterTest {
             <clr-dg-string-filter *ngIf="show" [(clrFilterValue)]="filterValue"
                                   [clrDgStringFilter]="filter"></clr-dg-string-filter>
         </clr-dg-column>
-    `
+    `,
 })
 class UnregisterTest {
     show: boolean;
@@ -522,9 +542,8 @@ class UnregisterTest {
             <ng-container *clrDgHideableColumn="{hidden: false}">
                 Name
             </ng-container>
-        </clr-dg-column>`
+        </clr-dg-column>`,
 })
-
 class HideableTest {
     @ViewChild(ClrDatagridHideableColumn) dgHideable: ClrDatagridHideableColumn;
 }

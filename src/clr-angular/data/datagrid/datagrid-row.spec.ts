@@ -61,6 +61,15 @@ export default function(): void {
                 context.detectChanges();
                 expect(context.clarityElement.querySelector(".datagrid-fixed-column")).not.toBeNull();
             });
+
+            it("adds a11y roles to the row", function() {
+                expect(context.clarityElement.attributes.role.value).toEqual("rowgroup");
+
+                const rowId = context.clarityDirective.id;
+                expect(context.clarityElement.attributes["aria-owns"].value).toEqual(rowId);
+                const rowContent = context.clarityElement.querySelector(".datagrid-row-master");
+                expect(rowContent.attributes.id.value).toEqual(rowId);
+            });
         });
 
         describe("Selection", function() {
@@ -157,14 +166,18 @@ export default function(): void {
                 context.testComponent.item = {id: 1};
                 context.detectChanges();
                 const row = context.clarityElement;
-                row.click();
+                expect(row.children).toBeDefined();
+
+                expect(row.children[0] instanceof HTMLLabelElement).toBeFalsy();
+                row.children[0].click();
                 context.detectChanges();
                 expect(selectionProvider.currentSingle).toBeUndefined();
 
                 // Enabling the rowSelectionMode
                 selectionProvider.rowSelectionMode = true;
                 context.detectChanges();
-                row.click();
+                expect(row.children[0] instanceof HTMLLabelElement).toBeTruthy();
+                row.children[0].click();
                 context.detectChanges();
                 expect(selectionProvider.currentSingle).toEqual(context.testComponent.item);
             });
@@ -174,38 +187,22 @@ export default function(): void {
                 context.testComponent.item = {id: 1};
                 context.detectChanges();
                 const row = context.clarityElement;
+                expect(row.children).toBeDefined();
                 expect(selectionProvider.current).toEqual([]);
-                row.click();
+                expect(row.children[0] instanceof HTMLLabelElement).toBeFalsy();
+                row.children[0].click();
                 context.detectChanges();
                 expect(selectionProvider.current).toEqual([]);
 
                 // Enabling the rowSelectionMode
                 selectionProvider.rowSelectionMode = true;
                 context.detectChanges();
-                row.click();
+                expect(row.children[0] instanceof HTMLLabelElement).toBeTruthy();
+                row.children[0].click();
                 context.detectChanges();
                 expect(selectionProvider.current).toEqual([context.testComponent.item]);
 
-                row.click();
-                context.detectChanges();
-                expect(selectionProvider.current).toEqual([]);
-            });
-
-            it("select the model on space or enter when `rowSelectionMode` is enabled", function() {
-                selectionProvider.selectionType = SelectionType.Multi;
-                selectionProvider.rowSelectionMode = true;
-                context.testComponent.item = {id: 1};
-                const row = context.clarityElement;
-                context.detectChanges();
-
-                const event: any = new Event("keypress");
-                event.keyCode = 13;  // Enter
-                row.dispatchEvent(event);
-                context.detectChanges();
-                expect(selectionProvider.current).toEqual([context.testComponent.item]);
-
-                event.keyCode = 32;  // Space
-                row.dispatchEvent(event);
+                row.children[0].click();
                 context.detectChanges();
                 expect(selectionProvider.current).toEqual([]);
             });
@@ -316,13 +313,13 @@ export default function(): void {
             });
 
             it("should update cells for columns", function() {
-                // TODO: ffigure out how to test for cell changes and make sure updateCellsForColumns is called
+                // TODO: figure out how to test for cell changes and make sure updateCellsForColumns is called
                 spyOn(context.clarityDirective, "updateCellsForColumns");
                 hideableColumnService = context.getClarityProvider(HideableColumnService);
 
                 const hiddenColumns: DatagridHideableColumnModel[] = [
                     new DatagridHideableColumnModel(null, "dg-col-0", false),
-                    new DatagridHideableColumnModel(null, "dg-col-1", true)
+                    new DatagridHideableColumnModel(null, "dg-col-1", true),
                 ];
 
                 hideableColumnService.updateColumnList(hiddenColumns);
@@ -345,7 +342,7 @@ class FullTest {
             <clr-dg-row-detail *clrIfExpanded>
                 Detail
             </clr-dg-row-detail>
-        </clr-dg-row>`
+        </clr-dg-row>`,
 })
 class ExpandTest {
     expanded = false;
@@ -356,6 +353,6 @@ class ExpandTest {
         <clr-dg-row>
             <clr-dg-cell>ID</clr-dg-cell>
             <clr-dg-cell>Name</clr-dg-cell>
-        </clr-dg-row>`
+        </clr-dg-row>`,
 })
 class HideShowTest {}

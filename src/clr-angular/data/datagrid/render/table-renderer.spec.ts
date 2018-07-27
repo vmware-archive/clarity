@@ -52,6 +52,11 @@ export default function(): void {
             expect(body.textContent).not.toMatch("Hello");
             expect(body.textContent).toMatch("World");
         });
+
+        it("adds a11y roles", function() {
+            const rowContent = context.clarityElement.querySelector(".datagrid-body");
+            expect(rowContent.attributes.role.value).toBe("rowgroup");
+        });
     });
 }
 
@@ -61,6 +66,6 @@ export default function(): void {
             <div ngProjectAs="[clrDgHead]">Hello</div>
             World
         </clr-dg-table-wrapper>
-    `
+    `,
 })
 class SimpleTest {}

@@ -51,6 +51,11 @@ export default function(): void {
       expect(body.textContent).not.toMatch('Hello');
       expect(body.textContent).toMatch('World');
     });
+
+    it('adds a11y roles', function() {
+      const rowContent = context.clarityElement.querySelector('.datagrid-body');
+      expect(rowContent.attributes.role.value).toBe('rowgroup');
+    });
   });
 }
 

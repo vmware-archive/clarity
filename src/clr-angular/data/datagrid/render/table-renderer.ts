@@ -14,7 +14,7 @@ import { DatagridRenderOrganizer } from './render-organizer';
   template: `
         <ng-template #head><ng-content select="[clrDgHead]"></ng-content></ng-template>
         <ng-container #outside></ng-container>
-        <div clrDgBody class="datagrid-body">
+        <div clrDgBody class="datagrid-body" role="rowgroup">
             <ng-container #inside></ng-container>
             <ng-content></ng-content>
         </div>

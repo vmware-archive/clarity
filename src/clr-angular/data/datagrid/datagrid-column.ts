@@ -57,7 +57,12 @@ let nbCount: number = 0;
             </div>
         </div>
     `,
-  host: { '[class.datagrid-column]': 'true', '[class.datagrid-column--hidden]': 'hidden' },
+  host: {
+    '[class.datagrid-column]': 'true',
+    '[class.datagrid-column--hidden]': 'hidden',
+    '[attr.aria-sort]': 'ariaSort',
+    role: 'columnheader',
+  },
 })
 export class ClrDatagridColumn extends DatagridFilterRegistrar<DatagridStringFilterImpl> {
   constructor(private _sort: Sort, filters: FiltersProvider, private _dragDispatcher: DragDispatcher) {
@@ -243,6 +248,18 @@ export class ClrDatagridColumn extends DatagridFilterRegistrar<DatagridStringFil
       case ClrDatagridSortOrder.DESC:
         this.sort(true);
         break;
+    }
+  }
+
+  public get ariaSort() {
+    switch (this._sortOrder) {
+      default:
+      case ClrDatagridSortOrder.UNSORTED:
+        return 'none';
+      case ClrDatagridSortOrder.ASC:
+        return 'ascending';
+      case ClrDatagridSortOrder.DESC:
+        return 'descending';
     }
   }
 

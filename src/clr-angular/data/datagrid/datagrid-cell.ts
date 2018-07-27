@@ -13,7 +13,11 @@ import { HideableColumnService } from './providers/hideable-column.service';
   template: `
         <ng-content></ng-content>
     `,
-  host: { '[class.datagrid-cell]': 'true', '[class.datagrid-signpost-trigger]': 'signpost.length > 0' },
+  host: {
+    '[class.datagrid-cell]': 'true',
+    '[class.datagrid-signpost-trigger]': 'signpost.length > 0',
+    role: 'cell',
+  },
 })
 export class ClrDatagridCell {
   /*********

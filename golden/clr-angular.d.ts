@@ -290,6 +290,7 @@ export declare class ClrDatagridCell {
 }
 
 export declare class ClrDatagridColumn extends DatagridFilterRegistrar<DatagridStringFilterImpl> {
+    readonly ariaSort: string;
     readonly asc: boolean;
     columnId: string;
     customFilter: boolean;
@@ -416,18 +417,16 @@ export declare class ClrDatagridRow implements AfterContentInit {
     hideableColumnService: HideableColumnService;
     id: string;
     item: any;
-    role: string;
+    radioId: string;
     rowActionService: RowActionService;
     selected: boolean;
     selectedChanged: EventEmitter<boolean>;
     selection: Selection;
     constructor(selection: Selection, rowActionService: RowActionService, globalExpandable: ExpandableRowsCount, expand: Expand, hideableColumnService: HideableColumnService);
-    keypress(event: KeyboardEvent): void;
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
     toggle(selected?: boolean): void;
     toggleExpand(): void;
-    toggleSelection(): void;
     updateCellsForColumns(columnList: DatagridHideableColumnModel[]): void;
 }
 

@@ -89,6 +89,9 @@
     display: flex;
     flex-flow: row nowrap;
   }
+  .datagrid-row-clickable {
+    cursor: pointer;
+  }
   .datagrid-column {
     display: flex;
     flex: 1 1 auto;

@@ -346,6 +346,20 @@ export default function(): void {
         expect(context.clarityElement.classList.contains('desc')).toBeTruthy();
       });
 
+      it('adds a11y roles to the column', function() {
+        expect(context.clarityElement.attributes.role.value).toEqual('columnheader');
+        expect(context.clarityElement.attributes['aria-sort'].value).toBe('none');
+
+        context.clarityDirective.sortBy = new TestComparator();
+        context.clarityDirective.sort();
+        context.detectChanges();
+        expect(context.clarityElement.attributes['aria-sort'].value).toBe('ascending');
+
+        context.clarityDirective.sort();
+        context.detectChanges();
+        expect(context.clarityElement.attributes['aria-sort'].value).toBe('descending');
+      });
+
       it('adds the .datagrid-column--hidden when not visible', function() {
         context.clarityDirective.hideable = new DatagridHideableColumnModel(null, 'dg-col-0', true);
         context.detectChanges();

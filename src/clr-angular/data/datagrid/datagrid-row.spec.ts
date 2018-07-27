@@ -7,7 +7,6 @@
 import { Component } from '@angular/core';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
-import { itIgnore } from '../../../../tests/tests.helpers';
 import { Expand } from '../../utils/expand/providers/expand';
 import { LoadingListener } from '../../utils/loading/loading-listener';
 
@@ -71,6 +70,15 @@ export default function(): void {
         context.getClarityProvider(ExpandableRowsCount).register();
         context.detectChanges();
         expect(context.clarityElement.querySelector('.datagrid-fixed-column')).not.toBeNull();
+      });
+
+      it('adds a11y roles to the row', function() {
+        expect(context.clarityElement.attributes.role.value).toEqual('rowgroup');
+
+        const rowId = context.clarityDirective.id;
+        expect(context.clarityElement.attributes['aria-owns'].value).toEqual(rowId);
+        const rowContent = context.clarityElement.querySelector('.datagrid-row-master');
+        expect(rowContent.attributes.id.value).toEqual(rowId);
       });
     });
 
@@ -174,14 +182,18 @@ export default function(): void {
         context.testComponent.item = { id: 1 };
         context.detectChanges();
         const row = context.clarityElement;
-        row.click();
+        expect(row.children).toBeDefined();
+
+        expect(row.children[0] instanceof HTMLLabelElement).toBeFalsy();
+        row.children[0].click();
         context.detectChanges();
         expect(selectionProvider.currentSingle).toBeUndefined();
 
         // Enabling the rowSelectionMode
         selectionProvider.rowSelectionMode = true;
         context.detectChanges();
-        row.click();
+        expect(row.children[0] instanceof HTMLLabelElement).toBeTruthy();
+        row.children[0].click();
         context.detectChanges();
         expect(selectionProvider.currentSingle).toEqual(context.testComponent.item);
       });
@@ -191,40 +203,22 @@ export default function(): void {
         context.testComponent.item = { id: 1 };
         context.detectChanges();
         const row = context.clarityElement;
+        expect(row.children).toBeDefined();
         expect(selectionProvider.current).toEqual([]);
-        row.click();
+        expect(row.children[0] instanceof HTMLLabelElement).toBeFalsy();
+        row.children[0].click();
         context.detectChanges();
         expect(selectionProvider.current).toEqual([]);
 
         // Enabling the rowSelectionMode
         selectionProvider.rowSelectionMode = true;
         context.detectChanges();
-        row.click();
+        expect(row.children[0] instanceof HTMLLabelElement).toBeTruthy();
+        row.children[0].click();
         context.detectChanges();
         expect(selectionProvider.current).toEqual([context.testComponent.item]);
 
-        row.click();
-        context.detectChanges();
-        expect(selectionProvider.current).toEqual([]);
-      });
-
-      // IE doesn't support Event constructor
-      // @TODO Consider if we care to fix this test for IE support
-      itIgnore(['ie'], 'select the model on space or enter when `rowSelectionMode` is enabled', function() {
-        selectionProvider.selectionType = SelectionType.Multi;
-        selectionProvider.rowSelectionMode = true;
-        context.testComponent.item = { id: 1 };
-        const row = context.clarityElement;
-        context.detectChanges();
-
-        const event: any = new Event('keypress');
-        event.keyCode = 13; // Enter
-        row.dispatchEvent(event);
-        context.detectChanges();
-        expect(selectionProvider.current).toEqual([context.testComponent.item]);
-
-        event.keyCode = 32; // Space
-        row.dispatchEvent(event);
+        row.children[0].click();
         context.detectChanges();
         expect(selectionProvider.current).toEqual([]);
       });

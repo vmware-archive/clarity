@@ -211,6 +211,20 @@ export default function(): void {
       it('projects the footer', function() {
         expect(context.clarityElement.querySelector('.datagrid-foot')).not.toBeNull();
       });
+
+      it('adds a11y roles to datagrid', function() {
+        const tableWrapper = context.clarityElement.querySelector('.datagrid-table-wrapper');
+        expect(tableWrapper.attributes.role.value).toEqual('grid');
+
+        const header = context.clarityElement.querySelector('.datagrid-head');
+        expect(header.attributes.role.value).toEqual('rowgroup');
+
+        const row = context.clarityElement.querySelector('.datagrid-row');
+        expect(row.attributes.role.value).toEqual('row');
+
+        const columns = context.clarityElement.querySelectorAll('.datagrid-column');
+        columns.forEach(column => expect(column.attributes.role.value).toEqual('columnheader'));
+      });
     });
 
     describe('Iterators', function() {

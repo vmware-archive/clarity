@@ -65,13 +65,8 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
     if (isPlatformBrowser(this.platformId) && this.focusTrapsTracker.nbFocusTrappers === 1) {
       this.topReboundEl = this.createFocusableOffScreenEl();
       this.bottomReboundEl = this.createFocusableOffScreenEl();
-
       // Add reboundBeforeTrapEl to the document body as the first child
-      const bodyFirstChild = this.document.body.firstChild;
-      if (bodyFirstChild) {
-        this.renderer.insertBefore(this.document.body, this.topReboundEl, bodyFirstChild);
-      }
-
+      this.renderer.insertBefore(this.document.body, this.topReboundEl, this.document.body.firstChild);
       // Add reboundAfterTrapEl to the document body as the last child
       this.renderer.appendChild(this.document.body, this.bottomReboundEl);
     }

@@ -40,6 +40,13 @@ const NODE_IMPORTS = `
 ]
 `;
 
+const UI_CDN = `
+<!-- Load the latest version -->
+<link rel="stylesheet" href="https://unpkg.com/@clr/ui/clr-ui.min.css" />
+<!-- Or load a specific version -->
+<link rel="stylesheet" href="https://unpkg.com/@clr/ui@0.12.5/clr-ui.min.css" />
+`;
+
 @Component({
     selector: "get-started",
     templateUrl: "./get-started.component.html",
@@ -49,9 +56,7 @@ const NODE_IMPORTS = `
 })
 export class GetStartedComponent {
 
-    constructor() {
-    }
-
+    public uiCdn = UI_CDN;
     public ngModuleExample = NG_MODULE_EXAMPLE;
     public htmlImports = HTML_IMPORTS;
     public nodeImports = NODE_IMPORTS;

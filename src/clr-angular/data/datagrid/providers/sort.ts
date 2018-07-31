@@ -11,17 +11,17 @@ import { ClrDatagridComparatorInterface } from '../interfaces/comparator.interfa
 import { StateDebouncer } from './state-debouncer.provider';
 
 @Injectable()
-export class Sort {
+export class Sort<T = any> {
   constructor(private stateDebouncer: StateDebouncer) {}
 
   /**
    * Currently active comparator
    */
-  private _comparator: ClrDatagridComparatorInterface<any>;
-  public get comparator(): ClrDatagridComparatorInterface<any> {
+  private _comparator: ClrDatagridComparatorInterface<T>;
+  public get comparator(): ClrDatagridComparatorInterface<T> {
     return this._comparator;
   }
-  public set comparator(value: ClrDatagridComparatorInterface<any>) {
+  public set comparator(value: ClrDatagridComparatorInterface<T>) {
     this.stateDebouncer.changeStart();
     this._comparator = value;
     this.emitChange();
@@ -45,12 +45,12 @@ export class Sort {
   /**
    * The Observable that lets other classes subscribe to sort changes
    */
-  private _change = new Subject<Sort>();
+  private _change = new Subject<Sort<T>>();
   private emitChange() {
     this._change.next(this);
   }
   // We do not want to expose the Subject itself, but the Observable which is read-only
-  public get change(): Observable<Sort> {
+  public get change(): Observable<Sort<T>> {
     return this._change.asObservable();
   }
 
@@ -61,7 +61,7 @@ export class Sort {
    *
    * @memberof Sort
    */
-  public toggle(sortBy: ClrDatagridComparatorInterface<any>, forceReverse?: boolean) {
+  public toggle(sortBy: ClrDatagridComparatorInterface<T>, forceReverse?: boolean) {
     this.stateDebouncer.changeStart();
     // We modify private properties directly, to batch the change event
     if (this.comparator === sortBy) {
@@ -84,7 +84,7 @@ export class Sort {
   /**
    * Compares two objects according to the current comparator
    */
-  public compare(a: any, b: any): number {
+  public compare(a: T, b: T): number {
     return (this.reverse ? -1 : 1) * this.comparator.compare(a, b);
   }
 }

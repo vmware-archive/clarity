@@ -39,11 +39,11 @@ const PROVIDERS_NEEDED = [
 export default function(): void {
   describe('DatagridColumn component', function() {
     describe('Typescript API', function() {
-      let sortService: Sort;
-      let filtersService: FiltersProvider;
+      let sortService: Sort<number>;
+      let filtersService: FiltersProvider<number>;
       let dragDispatcherService: DragDispatcher;
       let comparator: TestComparator;
-      let component: ClrDatagridColumn;
+      let component: ClrDatagridColumn<number>;
 
       beforeEach(function() {
         const stateDebouncer = new StateDebouncer();
@@ -297,7 +297,7 @@ export default function(): void {
     });
 
     describe('View basics', function() {
-      let context: TestContext<ClrDatagridColumn, SimpleTest>;
+      let context: TestContext<ClrDatagridColumn<number | string>, SimpleTest>;
 
       beforeEach(function() {
         context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
@@ -440,8 +440,8 @@ class TestFilter implements ClrDatagridFilterInterface<number> {
   changes = new Subject<boolean>();
 }
 
-class TestStringFilter implements ClrDatagridStringFilterInterface<string> {
-  accepts(s: string, search: string): boolean {
+class TestStringFilter implements ClrDatagridStringFilterInterface<number> {
+  accepts(n: number, search: string): boolean {
     return true;
   }
 }
@@ -457,7 +457,7 @@ class TestStringFilter implements ClrDatagridStringFilterInterface<string> {
     `,
 })
 class SimpleDeprecatedTest {
-  comparator: ClrDatagridComparatorInterface<any>;
+  comparator: ClrDatagridComparatorInterface<number>;
   field: string;
   sorted = false;
 }
@@ -473,7 +473,7 @@ class SimpleDeprecatedTest {
     `,
 })
 class SimpleTest {
-  comparator: ClrDatagridComparatorInterface<any> | string;
+  comparator: ClrDatagridComparatorInterface<number> | string;
   field: string;
   sortOrder = ClrDatagridSortOrder.UNSORTED;
 }
@@ -505,7 +505,7 @@ class StringFilterTest {
   filter = new TestStringFilter();
   field: string;
 
-  @ViewChild(DatagridStringFilter) stringFilter: DatagridStringFilter;
+  @ViewChild(DatagridStringFilter) stringFilter: DatagridStringFilter<number>;
 }
 
 @Component({

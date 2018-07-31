@@ -49,7 +49,7 @@ export class ClrDatagridHideableColumn {
    *
    */
   @Input('clrDgHideableColumn')
-  set clrDgHideableColumn(value: any) {
+  set clrDgHideableColumn(value: { hidden: boolean }) {
     this._hidden = value && value.hidden ? value.hidden : false;
     if (this.dgColumn.hideable) {
       this.dgColumn.hideable.hidden = value && value.hidden ? value.hidden : false;
@@ -82,7 +82,7 @@ export class ClrDatagridHideableColumn {
   constructor(
     private templateRef: TemplateRef<any>,
     private viewContainerRef: ViewContainerRef,
-    private dgColumn: ClrDatagridColumn
+    private dgColumn: ClrDatagridColumn<any>
   ) {
     this.columnId = dgColumn.columnId;
 

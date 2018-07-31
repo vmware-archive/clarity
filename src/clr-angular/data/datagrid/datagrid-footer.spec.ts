@@ -30,7 +30,7 @@ const PROVIDERS_NEEDED = [
 export default function(): void {
   describe('ClrDatagridFooter component', function() {
     describe('View', function() {
-      let context: TestContext<ClrDatagridFooter, SimpleTest>;
+      let context: TestContext<ClrDatagridFooter<number>, SimpleTest>;
 
       beforeEach(function() {
         context = this.create(ClrDatagridFooter, SimpleTest, PROVIDERS_NEEDED);
@@ -45,7 +45,7 @@ export default function(): void {
       });
 
       it('does not show the selection details when selection type is None', function() {
-        const clarityDirectiveSelection: Selection = context.clarityDirective.selection;
+        const clarityDirectiveSelection = context.clarityDirective.selection;
         clarityDirectiveSelection.selectionType = SelectionType.None;
 
         context.detectChanges();
@@ -54,7 +54,7 @@ export default function(): void {
       });
 
       it('does not show the selection details when selection type is single', function() {
-        const clarityDirectiveSelection: Selection = context.clarityDirective.selection;
+        const clarityDirectiveSelection = context.clarityDirective.selection;
         clarityDirectiveSelection.selectionType = SelectionType.Single;
         clarityDirectiveSelection.current.push(1);
 
@@ -64,7 +64,7 @@ export default function(): void {
       });
 
       it('shows the selection details when more than one item is selected', function() {
-        const clarityDirectiveSelection: Selection = context.clarityDirective.selection;
+        const clarityDirectiveSelection = context.clarityDirective.selection;
         clarityDirectiveSelection.selectionType = SelectionType.Multi;
         clarityDirectiveSelection.current.push(1);
 
@@ -91,7 +91,7 @@ export default function(): void {
     });
 
     describe('View with Custom Toggle Buttons', function() {
-      let context: TestContext<ClrDatagridFooter, ColumnTogglerTest>;
+      let context: TestContext<ClrDatagridFooter<void>, ColumnTogglerTest>;
 
       beforeEach(function() {
         context = this.create(ClrDatagridFooter, ColumnTogglerTest, PROVIDERS_NEEDED);

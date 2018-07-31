@@ -30,9 +30,9 @@ import { DatagridStringFilterImpl } from './datagrid-string-filter-impl';
         </clr-dg-filter>
     `,
 })
-export class DatagridStringFilter extends DatagridFilterRegistrar<DatagridStringFilterImpl>
+export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>>
   implements CustomFilter, AfterViewInit {
-  constructor(filters: FiltersProvider, private domAdapter: DomAdapter) {
+  constructor(filters: FiltersProvider<T>, private domAdapter: DomAdapter) {
     super(filters);
   }
 
@@ -40,11 +40,13 @@ export class DatagridStringFilter extends DatagridFilterRegistrar<DatagridString
    * Customizable filter logic based on a search text
    */
   @Input('clrDgStringFilter')
-  set customStringFilter(value: ClrDatagridStringFilterInterface<any> | RegisteredFilter<DatagridStringFilterImpl>) {
+  set customStringFilter(
+    value: ClrDatagridStringFilterInterface<T> | RegisteredFilter<T, DatagridStringFilterImpl<T>>
+  ) {
     if (value instanceof RegisteredFilter) {
       this.setFilter(value);
     } else {
-      this.setFilter(new DatagridStringFilterImpl(<ClrDatagridStringFilterInterface<any>>value));
+      this.setFilter(new DatagridStringFilterImpl(value));
     }
   }
 
@@ -61,7 +63,7 @@ export class DatagridStringFilter extends DatagridFilterRegistrar<DatagridString
   /**
    * We grab the ClrDatagridFilter we wrap to register this StringFilter to it.
    */
-  @ViewChild(ClrDatagridFilter) public filterContainer: ClrDatagridFilter;
+  @ViewChild(ClrDatagridFilter) public filterContainer: ClrDatagridFilter<T>;
   ngAfterViewInit() {
     this.filterContainer.openChanged.subscribe((open: boolean) => {
       if (open) {

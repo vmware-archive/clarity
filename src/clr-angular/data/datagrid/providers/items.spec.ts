@@ -16,9 +16,11 @@ import { StateDebouncer } from './state-debouncer.provider';
 
 const ALL_ITEMS = [9, 3, 5, 8, 2, 6, 10, 7, 4, 1];
 
+type User = { name: string };
+
 export default function(): void {
   describe('Items provider', function() {
-    function setSmartItems(itemsInstance: Items) {
+    function setSmartItems(itemsInstance: Items<number> | Items<User>) {
       itemsInstance.smartenUp();
       itemsInstance.all = ALL_ITEMS;
     }
@@ -119,8 +121,8 @@ export default function(): void {
 
     it('exposes an Observable to follow items changes', function() {
       let nbChanges = 0;
-      let latestDisplayed: any[];
-      this.itemsInstance.change.subscribe((items: any[]) => {
+      let latestDisplayed: number[];
+      this.itemsInstance.change.subscribe((items: number[]) => {
         nbChanges++;
         latestDisplayed = items;
       });
@@ -200,7 +202,7 @@ class TestComparator implements ClrDatagridComparatorInterface<number> {
   }
 }
 
-class NameFilter implements ClrDatagridFilterInterface<any> {
+class NameFilter implements ClrDatagridFilterInterface<User> {
   private _search = '';
   public search(value: string) {
     this._search = value;
@@ -213,13 +215,13 @@ class NameFilter implements ClrDatagridFilterInterface<any> {
 
   changes = new Subject<string>();
 
-  accepts(user: any): boolean {
+  accepts(user: User): boolean {
     return user.name.includes(this._search);
   }
 }
 
-class NameComparator implements ClrDatagridComparatorInterface<any> {
-  compare(a: any, b: any): number {
+class NameComparator implements ClrDatagridComparatorInterface<User> {
+  compare(a: User, b: User): number {
     return a.name < b.name ? -1 : 1;
   }
 }

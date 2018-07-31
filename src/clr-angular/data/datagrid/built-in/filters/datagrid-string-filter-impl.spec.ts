@@ -9,7 +9,7 @@ import { DatagridStringFilterImpl } from './datagrid-string-filter-impl';
 
 export default function(): void {
   describe('DatagridStringFilterImpl', function() {
-    let fullFilter: DatagridStringFilterImpl;
+    let fullFilter: DatagridStringFilterImpl<string>;
 
     beforeEach(function() {
       const stringFilter = new TestFilter();

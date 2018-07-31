@@ -18,8 +18,8 @@ import { Items } from './providers/items';
     `,
   host: { '[class.datagrid-placeholder-container]': 'true' },
 })
-export class ClrDatagridPlaceholder {
-  constructor(private items: Items) {}
+export class ClrDatagridPlaceholder<T = any> {
+  constructor(private items: Items<T>) {}
 
   /**
    * Tests if the datagrid is empty, meaning it doesn't contain any items

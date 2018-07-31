@@ -23,9 +23,9 @@ const PROVIDERS = [FiltersProvider, DomAdapter, Page, StateDebouncer];
 export default function(): void {
   describe('DatagridStringFilter component', function() {
     // Until we can properly type "this"
-    let context: TestContext<DatagridStringFilter, FullTest>;
+    let context: TestContext<DatagridStringFilter<string>, FullTest>;
     let filter: TestFilter;
-    let filtersInstance: FiltersProvider;
+    let filtersInstance: FiltersProvider<string>;
 
     function openFilter() {
       context.clarityElement.querySelector('.datagrid-filter-toggle').click();
@@ -119,6 +119,6 @@ class TestFilter implements ClrDatagridStringFilterInterface<string> {
 class FullTest {
   @ViewChild(CustomFilter) customFilter: CustomFilter;
 
-  filter: ClrDatagridStringFilterInterface<any>;
+  filter: ClrDatagridStringFilterInterface<string>;
   filterValue: string;
 }

@@ -36,12 +36,12 @@ import { Selection, SelectionType } from './providers/selection';
     '[class.datagrid-container]': 'cells.length === 0',
   },
 })
-export class ClrDatagridRowDetail implements AfterContentInit, OnDestroy {
+export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestroy {
   /* reference to the enum so that template can access it */
   public SELECTION_TYPE = SelectionType;
 
   constructor(
-    public selection: Selection,
+    public selection: Selection<T>,
     public rowActionService: RowActionService,
     public expand: Expand,
     public hideableColumnService: HideableColumnService

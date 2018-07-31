@@ -22,7 +22,7 @@ import { DatagridRenderOrganizer } from './render/render-organizer';
 
 export default function(): void {
   describe('ClrDatagridRowDetail component', function() {
-    let context: TestContext<ClrDatagridRowDetail, FullTest>;
+    let context: TestContext<ClrDatagridRowDetail<void>, FullTest>;
 
     beforeEach(function() {
       context = this.create(ClrDatagridRowDetail, FullTest, [
@@ -74,7 +74,7 @@ export default function(): void {
     });
 
     it('displays an extra empty cell when the datagrid is selectable', function() {
-      const selection: Selection = context.getClarityProvider(Selection);
+      const selection = context.getClarityProvider(Selection);
       selection.selectionType = SelectionType.Multi;
       context.detectChanges();
       expect(context.clarityElement.querySelectorAll('.datagrid-fixed-column').length).toBe(2);
@@ -90,7 +90,7 @@ export default function(): void {
     });
 
     it('displays as many extra empty cells as needed', function() {
-      const selection: Selection = context.getClarityProvider(Selection);
+      const selection = context.getClarityProvider(Selection);
       selection.selectionType = SelectionType.Multi;
       context.getClarityProvider(RowActionService).register();
       context.detectChanges();
@@ -101,7 +101,7 @@ export default function(): void {
       context.testComponent.replace = true;
       context.detectChanges();
       expect(context.clarityElement.querySelectorAll('.datagrid-fixed-column').length).toBe(0);
-      const selection: Selection = context.getClarityProvider(Selection);
+      const selection = context.getClarityProvider(Selection);
       selection.selectionType = SelectionType.Multi;
       context.getClarityProvider(RowActionService).register();
       context.detectChanges();
@@ -110,7 +110,7 @@ export default function(): void {
   });
 
   describe('ClrDatagridRowDetail hide/show cell behavior', function() {
-    let context: TestContext<ClrDatagridRowDetail, HiddenTest>;
+    let context: TestContext<ClrDatagridRowDetail<void>, HiddenTest>;
     let hideableColumnService: HideableColumnService;
 
     beforeEach(function() {

@@ -17,9 +17,9 @@ import { StateDebouncer } from './providers/state-debouncer.provider';
 export default function(): void {
   describe('ClrDatagridFilter component', function() {
     describe('Typescript API', function() {
-      let filterService: FiltersProvider;
+      let filterService: FiltersProvider<number>;
       let filter: TestFilter;
-      let component: ClrDatagridFilter;
+      let component: ClrDatagridFilter<number>;
 
       beforeEach(function() {
         const stateDebouncer = new StateDebouncer();
@@ -62,7 +62,7 @@ export default function(): void {
 
     describe('Template API', function() {
       // Until we can properly type "this"
-      let context: TestContext<ClrDatagridFilter, FullTest>;
+      let context: TestContext<ClrDatagridFilter<number>, FullTest>;
       let filter: TestFilter;
 
       beforeEach(function() {
@@ -92,7 +92,7 @@ export default function(): void {
     });
 
     describe('View', function() {
-      let context: TestContext<ClrDatagridFilter, FullTest>;
+      let context: TestContext<ClrDatagridFilter<number>, FullTest>;
 
       beforeEach(function() {
         context = this.create(ClrDatagridFilter, FullTest, [FiltersProvider, Page, StateDebouncer]);
@@ -137,6 +137,6 @@ class TestFilter implements ClrDatagridFilterInterface<number> {
 class FullTest {
   @ViewChild(CustomFilter) customFilter: CustomFilter;
 
-  filter: ClrDatagridFilterInterface<any>;
+  filter: ClrDatagridFilterInterface<number>;
   open: boolean;
 }

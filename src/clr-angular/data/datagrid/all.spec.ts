@@ -14,6 +14,7 @@ import DatagridRowExpandAnimationSpecs from './animation-hack/row-expand-animati
 import DatagridPropertyComparatorSpecs from './built-in/comparators/datagrid-property-comparator.spec';
 import DatagridPropertyStringFilterSpecs from './built-in/filters/datagrid-property-string-filter.spec';
 import DatagridStringFilterSpecs from './built-in/filters/datagrid-string-filter.spec';
+import DatagridStringFilterImplSpecs from './built-in/filters/datagrid-string-filter-impl.spec';
 import NestedPropertySpecs from './built-in/nested-property.spec';
 import DatagridActionBarSpecs from './datagrid-action-bar.spec';
 import DatagridActionOverflowSpecs from './datagrid-action-overflow.spec';
@@ -102,5 +103,6 @@ describe('Datagrid', function() {
     DatagridPropertyComparatorSpecs();
     DatagridPropertyStringFilterSpecs();
     DatagridStringFilterSpecs();
+    DatagridStringFilterImplSpecs();
   });
 });

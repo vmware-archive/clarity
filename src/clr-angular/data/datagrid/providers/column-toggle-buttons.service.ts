@@ -14,13 +14,13 @@ export class ColumnToggleButtonsService {
   buttons: TemplateRef<any> = null;
   selectAllDisabled: boolean = false;
 
-  private _okButtonClicked = new Subject<any>();
-  public get okButtonClicked(): Observable<any> {
+  private _okButtonClicked = new Subject<void>();
+  public get okButtonClicked(): Observable<void> {
     return this._okButtonClicked.asObservable();
   }
 
-  private _selectAllButtonClicked = new Subject<any>();
-  public get selectAllButtonClicked(): Observable<any> {
+  private _selectAllButtonClicked = new Subject<void>();
+  public get selectAllButtonClicked(): Observable<void> {
     return this._selectAllButtonClicked.asObservable();
   }
 

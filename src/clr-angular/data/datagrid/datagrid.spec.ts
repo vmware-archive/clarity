@@ -27,14 +27,14 @@ import { DatagridRenderOrganizer } from './render/render-organizer';
 export default function(): void {
   describe('ClrDatagrid component', function() {
     describe('Typescript API', function() {
-      let context: TestContext<ClrDatagrid, FullTest>;
+      let context: TestContext<ClrDatagrid<number>, FullTest>;
 
       beforeEach(function() {
         context = this.create(ClrDatagrid, FullTest, [HideableColumnService]);
       });
 
       it('allows to manually force a refresh of displayed items when data mutates', function() {
-        const items: Items = context.getClarityProvider(Items);
+        const items = context.getClarityProvider(Items);
         let refreshed = false;
         items.change.subscribe(() => (refreshed = true));
         expect(refreshed).toBe(false);
@@ -55,7 +55,7 @@ export default function(): void {
     });
 
     describe('Template API', function() {
-      let context: TestContext<ClrDatagrid, FullTest>;
+      let context: TestContext<ClrDatagrid<number>, FullTest>;
 
       beforeEach(function() {
         context = this.create(ClrDatagrid, FullTest, [HideableColumnService]);
@@ -69,7 +69,7 @@ export default function(): void {
       });
 
       it('offers two-way binding on the currently selected items', function() {
-        const selection: Selection = context.getClarityProvider(Selection);
+        const selection = context.getClarityProvider(Selection);
         context.testComponent.selected = [2];
         context.detectChanges();
         expect(selection.current).toEqual([2]);
@@ -79,7 +79,7 @@ export default function(): void {
       });
 
       it('allows to set pre-selected items when initializing the full list of items', function() {
-        const selection: Selection = context.getClarityProvider(Selection);
+        const selection = context.getClarityProvider(Selection);
         context.testComponent.items = [4, 5, 6];
         context.testComponent.selected = [5];
         context.detectChanges();
@@ -93,7 +93,7 @@ export default function(): void {
 
         it('emits once when the sort order changes', function() {
           context.testComponent.nbRefreshed = 0;
-          const sort: Sort = context.getClarityProvider(Sort);
+          const sort = context.getClarityProvider(Sort);
           sort.toggle(new TestComparator());
           context.detectChanges();
           expect(context.testComponent.nbRefreshed).toBe(1);
@@ -101,7 +101,7 @@ export default function(): void {
 
         it('emits once when the filters change', function() {
           context.testComponent.nbRefreshed = 0;
-          const filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
+          const filters = context.getClarityProvider(FiltersProvider);
           const filter = new TestFilter();
           filters.add(filter);
           context.detectChanges();
@@ -117,7 +117,7 @@ export default function(): void {
           page.size = 2;
           page.current = 2;
           context.testComponent.nbRefreshed = 0;
-          const filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
+          const filters = context.getClarityProvider(FiltersProvider);
           const filter = new TestFilter();
           filters.add(filter);
           context.detectChanges();
@@ -136,9 +136,9 @@ export default function(): void {
           context.testComponent.items = [1, 2, 3, 4, 5, 6];
           context.detectChanges();
           const comparator = new TestComparator();
-          const sort: Sort = context.getClarityProvider(Sort);
+          const sort = context.getClarityProvider(Sort);
           sort.toggle(comparator);
-          const filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
+          const filters = context.getClarityProvider(FiltersProvider);
           const filter = new TestFilter();
           filters.add(filter);
           const page: Page = context.getClarityProvider(Page);
@@ -160,7 +160,7 @@ export default function(): void {
         });
 
         it('emits the correct data for all filter types', function() {
-          const filters: FiltersProvider = context.getClarityProvider(FiltersProvider);
+          const filters = context.getClarityProvider(FiltersProvider);
           const customFilter = new TestFilter();
           const testStringFilter = new DatagridStringFilterImpl(new TestStringFilter());
           testStringFilter.value = 'whatever';
@@ -197,7 +197,7 @@ export default function(): void {
     });
 
     describe('View basics', function() {
-      let context: TestContext<ClrDatagrid, FullTest>;
+      let context: TestContext<ClrDatagrid<number>, FullTest>;
 
       beforeEach(function() {
         context = this.create(ClrDatagrid, FullTest, [HideableColumnService]);
@@ -251,7 +251,7 @@ export default function(): void {
     });
 
     describe('Actionable rows', function() {
-      let context: TestContext<ClrDatagrid, ActionableRowTest>;
+      let context: TestContext<ClrDatagrid<number>, ActionableRowTest>;
       let rowActionService: RowActionService;
       let headActionOverflowCell: HTMLElement;
       let actionOverflowCell: HTMLElement[];
@@ -300,12 +300,12 @@ export default function(): void {
     });
 
     describe('Single selection', function() {
-      let context: TestContext<ClrDatagrid, SingleSelectionTest>;
-      let selection: Selection;
+      let context: TestContext<ClrDatagrid<number>, SingleSelectionTest>;
+      let selection: Selection<number>;
 
       beforeEach(function() {
         context = this.create(ClrDatagrid, SingleSelectionTest, [Selection]);
-        selection = context.getClarityProvider(Selection);
+        selection = <Selection<number>>context.getClarityProvider(Selection);
       });
 
       describe('TypeScript API', function() {
@@ -408,12 +408,12 @@ export default function(): void {
     });
 
     describe('Multi selection', function() {
-      let context: TestContext<ClrDatagrid, OnPushTest>;
-      let selection: Selection;
+      let context: TestContext<ClrDatagrid<number>, OnPushTest>;
+      let selection: Selection<number>;
 
       beforeEach(function() {
         context = this.create(ClrDatagrid, OnPushTest, [Selection], [MultiSelectionTest]);
-        selection = context.getClarityProvider(Selection);
+        selection = <Selection<number>>context.getClarityProvider(Selection);
       });
 
       describe('Template API', function() {
@@ -495,7 +495,7 @@ class FullTest {
   selected: number[];
 
   nbRefreshed = 0;
-  latestState: ClrDatagridStateInterface;
+  latestState: ClrDatagridStateInterface<number>;
 
   fakeLoad = false;
 
@@ -505,7 +505,7 @@ class FullTest {
 
   destroy = false;
 
-  refresh(state: ClrDatagridStateInterface) {
+  refresh(state: ClrDatagridStateInterface<number>) {
     this.nbRefreshed++;
     this.latestState = state;
     this.loading = this.fakeLoad;
@@ -549,7 +549,7 @@ class NgForTest {
 class TrackByTest {
   items = [1, 2, 3];
 
-  trackByIndex(index: number, item: any) {
+  trackByIndex(index: number, item: number) {
     return index;
   }
 }
@@ -563,7 +563,7 @@ class TrackByTest {
 })
 class OnPushTest {
   items = [1, 2, 3];
-  selected: any[] = [];
+  selected: number[] = [];
 }
 
 @Component({
@@ -581,8 +581,8 @@ class OnPushTest {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class MultiSelectionTest {
-  @Input() items: any[] = [];
-  @Input() selected: any[] = [];
+  @Input() items: number[] = [];
+  @Input() selected: number[] = [];
 }
 
 @Component({
@@ -602,7 +602,7 @@ class MultiSelectionTest {
 })
 class SingleSelectionTest {
   items = [1, 2, 3];
-  selected: any;
+  selected: number;
 }
 
 @Component({

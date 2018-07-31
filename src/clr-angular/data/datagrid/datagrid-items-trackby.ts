@@ -10,11 +10,11 @@ import { Items } from './providers/items';
 @Directive({
   selector: '[ngForTrackBy]',
 })
-export class ClrDatagridItemsTrackBy {
-  constructor(@Optional() private _items: Items) {}
+export class ClrDatagridItemsTrackBy<T = any> {
+  constructor(@Optional() private _items: Items<T>) {}
 
   @Input('ngForTrackBy')
-  set trackBy(value: TrackByFunction<Function>) {
+  set trackBy(value: TrackByFunction<T>) {
     if (this._items) {
       this._items.trackBy = value;
     }

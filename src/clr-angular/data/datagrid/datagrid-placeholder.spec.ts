@@ -33,8 +33,8 @@ export default function(): void {
     });
 
     describe('View', function() {
-      let context: TestContext<ClrDatagridPlaceholder, SimpleTest>;
-      let itemsProvider: Items;
+      let context: TestContext<ClrDatagridPlaceholder<void>, SimpleTest>;
+      let itemsProvider: Items<void>;
 
       beforeEach(function() {
         context = this.create(ClrDatagridPlaceholder, SimpleTest, [Items, Page, Sort, FiltersProvider, StateDebouncer]);

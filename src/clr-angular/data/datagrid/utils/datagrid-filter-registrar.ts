@@ -7,22 +7,22 @@ import { OnDestroy } from '@angular/core';
 import { ClrDatagridFilterInterface } from '../interfaces/filter.interface';
 import { FiltersProvider, RegisteredFilter } from '../providers/filters';
 
-export abstract class DatagridFilterRegistrar<F extends ClrDatagridFilterInterface<any>> implements OnDestroy {
-  constructor(private filters: FiltersProvider) {}
+export abstract class DatagridFilterRegistrar<T, F extends ClrDatagridFilterInterface<T>> implements OnDestroy {
+  constructor(private filters: FiltersProvider<T>) {}
 
-  public registered: RegisteredFilter<F>;
+  public registered: RegisteredFilter<T, F>;
 
   public get filter(): F {
     return this.registered && this.registered.filter;
   }
 
-  public setFilter(filter: F | RegisteredFilter<F>) {
+  public setFilter(filter: F | RegisteredFilter<T, F>) {
     // If we previously had another filter, we unregister it
     this.deleteFilter();
     if (filter instanceof RegisteredFilter) {
-      this.registered = <RegisteredFilter<F>>filter;
+      this.registered = filter;
     } else if (filter) {
-      this.registered = this.filters.add(<F>filter);
+      this.registered = this.filters.add(filter);
     }
   }
 

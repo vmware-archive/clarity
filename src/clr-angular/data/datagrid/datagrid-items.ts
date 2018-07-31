@@ -14,21 +14,26 @@ import {
   TemplateRef,
   TrackByFunction,
 } from '@angular/core';
+import { NgForOfContext } from '@angular/common';
 
 import { Items } from './providers/items';
 
 @Directive({
   selector: '[clrDgItems][clrDgItemsOf]',
 })
-export class ClrDatagridItems implements OnChanges, DoCheck {
-  private _rawItems: any[];
+export class ClrDatagridItems<T = any> implements OnChanges, DoCheck {
+  private _rawItems: T[];
   @Input('clrDgItemsOf')
-  public set rawItems(items: any[]) {
+  public set rawItems(items: T[]) {
     this._rawItems = items ? items : [];
   }
-  private _differ: IterableDiffer<any>;
+  private _differ: IterableDiffer<T>;
 
-  constructor(public template: TemplateRef<any>, private _differs: IterableDiffers, private _items: Items) {
+  constructor(
+    public template: TemplateRef<NgForOfContext<T>>,
+    private _differs: IterableDiffers,
+    private _items: Items<T>
+  ) {
     _items.smartenUp();
   }
 
@@ -42,7 +47,7 @@ export class ClrDatagridItems implements OnChanges, DoCheck {
   }
 
   @Input('clrDgItemsTrackBy')
-  set trackBy(value: TrackByFunction<any>) {
+  set trackBy(value: TrackByFunction<T>) {
     this._items.trackBy = value;
   }
 

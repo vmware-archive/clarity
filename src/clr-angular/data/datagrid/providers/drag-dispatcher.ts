@@ -18,9 +18,9 @@ export class DragDispatcher {
   // Extra element to be used for tracking drag movements.
   handleTrackerRef: ElementRef;
 
-  private _onDragStart: Subject<void> = new Subject<void>();
-  private _onDragMove: Subject<void> = new Subject<void>();
-  private _onDragEnd: Subject<void> = new Subject<void>();
+  private _onDragStart: Subject<any> = new Subject<any>();
+  private _onDragMove: Subject<any> = new Subject<any>();
+  private _onDragEnd: Subject<any> = new Subject<any>();
 
   get onDragStart(): Observable<any> {
     return this._onDragStart;
@@ -45,8 +45,8 @@ export class DragDispatcher {
   }
 
   customDragEvent(element: HTMLElement, startOnEvent: string, moveOnEvent: string, endOnEvent: string): Function {
-    let dragMoveListener: any;
-    let dragEndListener: any;
+    let dragMoveListener: () => void;
+    let dragEndListener: () => void;
 
     return this._renderer.listen(element, startOnEvent, (startEvent: any) => {
       this.notifyDragStart(startEvent);

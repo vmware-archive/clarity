@@ -111,7 +111,7 @@ export class ClrDatagridModule {}
 
 /* tslint:disable variable-name */
 /** @deprecated since 0.11 */
-export interface Datagrid extends ClrDatagrid {}
+export interface Datagrid extends ClrDatagrid<any> {}
 /** @deprecated since 0.11 */
 export const Datagrid = ClrDatagrid;
 /** @deprecated since 0.11 */
@@ -123,7 +123,7 @@ export interface DatagridActionOverflow extends ClrDatagridActionOverflow {}
 /** @deprecated since 0.11 */
 export const DatagridActionOverflow = ClrDatagridActionOverflow;
 /** @deprecated since 0.11 */
-export interface DatagridColumn extends ClrDatagridColumn {}
+export interface DatagridColumn extends ClrDatagridColumn<any> {}
 /** @deprecated since 0.11 */
 export const DatagridColumn = ClrDatagridColumn;
 /** @deprecated since 0.11 */
@@ -135,19 +135,19 @@ export interface DatagridHideableColumnDirective extends ClrDatagridHideableColu
 /** @deprecated since 0.11 */
 export const DatagridHideableColumnDirective = ClrDatagridHideableColumn;
 /** @deprecated since 0.11 */
-export interface DatagridFilter extends ClrDatagridFilter {}
+export interface DatagridFilter extends ClrDatagridFilter<any> {}
 /** @deprecated since 0.11 */
 export const DatagridFilter = ClrDatagridFilter;
 /** @deprecated since 0.11 */
-export interface DatagridItems extends ClrDatagridItems {}
+export interface DatagridItems extends ClrDatagridItems<any> {}
 /** @deprecated since 0.11 */
 export const DatagridItems = ClrDatagridItems;
 /** @deprecated since 0.11 */
-export interface DatagridRow extends ClrDatagridRow {}
+export interface DatagridRow extends ClrDatagridRow<any> {}
 /** @deprecated since 0.11 */
 export const DatagridRow = ClrDatagridRow;
 /** @deprecated since 0.11 */
-export interface DatagridRowDetail extends ClrDatagridRowDetail {}
+export interface DatagridRowDetail extends ClrDatagridRowDetail<any> {}
 /** @deprecated since 0.11 */
 export const DatagridRowDetail = ClrDatagridRowDetail;
 /** @deprecated since 0.11 */
@@ -155,7 +155,7 @@ export interface DatagridCell extends ClrDatagridCell {}
 /** @deprecated since 0.11 */
 export const DatagridCell = ClrDatagridCell;
 /** @deprecated since 0.11 */
-export interface DatagridFooter extends ClrDatagridFooter {}
+export interface DatagridFooter extends ClrDatagridFooter<any> {}
 /** @deprecated since 0.11 */
 export const DatagridFooter = ClrDatagridFooter;
 /** @deprecated since 0.11 */
@@ -163,7 +163,7 @@ export interface DatagridPagination extends ClrDatagridPagination {}
 /** @deprecated since 0.11 */
 export const DatagridPagination = ClrDatagridPagination;
 /** @deprecated since 0.11 */
-export interface DatagridPlaceholder extends ClrDatagridPlaceholder {}
+export interface DatagridPlaceholder extends ClrDatagridPlaceholder<any> {}
 /** @deprecated since 0.11 */
 export const DatagridPlaceholder = ClrDatagridPlaceholder;
 /** @deprecated since 0.11 */
@@ -178,7 +178,7 @@ export interface Comparator<T> extends ClrDatagridComparatorInterface<T> {}
 /** @deprecated since 0.11 */
 export interface Filter<T> extends ClrDatagridFilterInterface<T> {}
 /** @deprecated since 0.11 */
-export interface State extends ClrDatagridStateInterface {}
+export interface State extends ClrDatagridStateInterface<any> {}
 /** @deprecated since 0.11 */
 export interface StringFilter<T> extends ClrDatagridStringFilterInterface<T> {}
 /* tslint:enable variable-name */

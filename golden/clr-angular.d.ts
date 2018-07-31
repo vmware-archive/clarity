@@ -240,26 +240,26 @@ export declare class ClrControlError {
 export declare class ClrControlHelper {
 }
 
-export declare class ClrDatagrid implements AfterContentInit, AfterViewInit, OnDestroy {
+export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, OnDestroy {
     SELECTION_TYPE: typeof SelectionType;
     allSelected: boolean;
-    columns: QueryList<ClrDatagridColumn>;
+    columns: QueryList<ClrDatagridColumn<T>>;
     expandableRows: ExpandableRowsCount;
-    items: Items;
-    iterator: ClrDatagridItems;
+    items: Items<T>;
+    iterator: ClrDatagridItems<T>;
     loading: boolean;
-    placeholder: ClrDatagridPlaceholder;
-    refresh: EventEmitter<ClrDatagridStateInterface>;
+    placeholder: ClrDatagridPlaceholder<T>;
+    refresh: EventEmitter<ClrDatagridStateInterface<T>>;
     rowActionService: RowActionService;
     rowSelectionMode: boolean;
     /** @deprecated */ rowSelectionModeDeprecated: boolean;
-    rows: QueryList<ClrDatagridRow>;
-    selected: any[];
-    selectedChanged: EventEmitter<any[]>;
-    selection: Selection;
-    singleSelected: any;
-    singleSelectedChanged: EventEmitter<any>;
-    constructor(columnService: HideableColumnService, organizer: DatagridRenderOrganizer, items: Items, expandableRows: ExpandableRowsCount, selection: Selection, rowActionService: RowActionService, stateProvider: StateProvider);
+    rows: QueryList<ClrDatagridRow<T>>;
+    selected: T[];
+    selectedChanged: EventEmitter<T[]>;
+    selection: Selection<T>;
+    singleSelected: T;
+    singleSelectedChanged: EventEmitter<T>;
+    constructor(columnService: HideableColumnService, organizer: DatagridRenderOrganizer, items: Items<T>, expandableRows: ExpandableRowsCount, selection: Selection<T>, rowActionService: RowActionService, stateProvider: StateProvider<T>);
     dataChanged(): void;
     ngAfterContentInit(): void;
     ngAfterViewInit(): void;
@@ -289,7 +289,7 @@ export declare class ClrDatagridCell {
     ngOnDestroy(): void;
 }
 
-export declare class ClrDatagridColumn extends DatagridFilterRegistrar<DatagridStringFilterImpl> {
+export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>> {
     readonly ariaSort: string;
     readonly asc: boolean;
     columnId: string;
@@ -303,14 +303,14 @@ export declare class ClrDatagridColumn extends DatagridFilterRegistrar<DatagridS
     readonly hidden: boolean;
     hideable: DatagridHideableColumnModel;
     projectedFilter: any;
-    sortBy: ClrDatagridComparatorInterface<any> | string;
+    sortBy: ClrDatagridComparatorInterface<T> | string;
     sortOrder: ClrDatagridSortOrder;
     sortOrderChange: EventEmitter<ClrDatagridSortOrder>;
     readonly sortable: boolean;
     /** @deprecated */ sorted: boolean;
     /** @deprecated */ sortedChange: EventEmitter<boolean>;
     updateFilterValue: string;
-    constructor(_sort: Sort, filters: FiltersProvider, _dragDispatcher: DragDispatcher);
+    constructor(_sort: Sort<T>, filters: FiltersProvider<T>, _dragDispatcher: DragDispatcher);
     ngOnDestroy(): void;
     sort(reverse?: boolean): void;
 }
@@ -336,15 +336,15 @@ export interface ClrDatagridComparatorInterface<T> {
     compare(a: T, b: T): number;
 }
 
-export declare class ClrDatagridFilter extends DatagridFilterRegistrar<ClrDatagridFilterInterface<any>> implements CustomFilter {
+export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>> implements CustomFilter {
     readonly active: boolean;
     anchorPoint: Point;
-    customFilter: ClrDatagridFilterInterface<any> | RegisteredFilter<ClrDatagridFilterInterface<any>>;
+    customFilter: ClrDatagridFilterInterface<T> | RegisteredFilter<T, ClrDatagridFilterInterface<T>>;
     open: boolean;
     openChanged: EventEmitter<boolean>;
     popoverOptions: PopoverOptions;
     popoverPoint: Point;
-    constructor(_filters: FiltersProvider);
+    constructor(_filters: FiltersProvider<T>);
     toggle(): void;
 }
 
@@ -354,30 +354,32 @@ export interface ClrDatagridFilterInterface<T> {
     isActive(): boolean;
 }
 
-export declare class ClrDatagridFooter implements OnInit {
+export declare class ClrDatagridFooter<T = any> implements OnInit {
     SELECTION_TYPE: typeof SelectionType;
     activeToggler: boolean;
     cdr: ChangeDetectorRef;
     hideableColumnService: HideableColumnService;
-    selection: Selection;
+    selection: Selection<T>;
     toggle: ClrDatagridColumnToggle;
-    constructor(selection: Selection, hideableColumnService: HideableColumnService, cdr: ChangeDetectorRef);
+    constructor(selection: Selection<T>, hideableColumnService: HideableColumnService, cdr: ChangeDetectorRef);
     ngOnDestroy(): void;
     ngOnInit(): void;
 }
 
 export declare class ClrDatagridHideableColumn {
-    clrDgHideableColumn: any;
+    clrDgHideableColumn: {
+        hidden: boolean;
+    };
     column: DatagridHideableColumnModel;
     columnId: string;
-    constructor(templateRef: TemplateRef<any>, viewContainerRef: ViewContainerRef, dgColumn: ClrDatagridColumn);
+    constructor(templateRef: TemplateRef<any>, viewContainerRef: ViewContainerRef, dgColumn: ClrDatagridColumn<any>);
 }
 
-export declare class ClrDatagridItems implements OnChanges, DoCheck {
-    rawItems: any[];
-    template: TemplateRef<any>;
-    trackBy: TrackByFunction<any>;
-    constructor(template: TemplateRef<any>, _differs: IterableDiffers, _items: Items);
+export declare class ClrDatagridItems<T = any> implements OnChanges, DoCheck {
+    rawItems: T[];
+    template: TemplateRef<NgForOfContext<T>>;
+    trackBy: TrackByFunction<T>;
+    constructor(template: TemplateRef<NgForOfContext<T>>, _differs: IterableDiffers, _items: Items<T>);
     ngDoCheck(): void;
     ngOnChanges(changes: SimpleChanges): void;
 }
@@ -402,12 +404,12 @@ export declare class ClrDatagridPagination implements OnDestroy, OnInit {
     previous(): void;
 }
 
-export declare class ClrDatagridPlaceholder {
+export declare class ClrDatagridPlaceholder<T = any> {
     readonly emptyDatagrid: boolean;
-    constructor(items: Items);
+    constructor(items: Items<T>);
 }
 
-export declare class ClrDatagridRow implements AfterContentInit {
+export declare class ClrDatagridRow<T = any> implements AfterContentInit {
     SELECTION_TYPE: typeof SelectionType;
     dgCells: QueryList<ClrDatagridCell>;
     expand: Expand;
@@ -416,13 +418,13 @@ export declare class ClrDatagridRow implements AfterContentInit {
     globalExpandable: ExpandableRowsCount;
     hideableColumnService: HideableColumnService;
     id: string;
-    item: any;
+    item: T;
     radioId: string;
     rowActionService: RowActionService;
     selected: boolean;
     selectedChanged: EventEmitter<boolean>;
-    selection: Selection;
-    constructor(selection: Selection, rowActionService: RowActionService, globalExpandable: ExpandableRowsCount, expand: Expand, hideableColumnService: HideableColumnService);
+    selection: Selection<T>;
+    constructor(selection: Selection<T>, rowActionService: RowActionService, globalExpandable: ExpandableRowsCount, expand: Expand, hideableColumnService: HideableColumnService);
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
     toggle(selected?: boolean): void;
@@ -430,15 +432,15 @@ export declare class ClrDatagridRow implements AfterContentInit {
     updateCellsForColumns(columnList: DatagridHideableColumnModel[]): void;
 }
 
-export declare class ClrDatagridRowDetail implements AfterContentInit, OnDestroy {
+export declare class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestroy {
     SELECTION_TYPE: typeof SelectionType;
     cells: QueryList<ClrDatagridCell>;
     expand: Expand;
     hideableColumnService: HideableColumnService;
     replace: boolean;
     rowActionService: RowActionService;
-    selection: Selection;
-    constructor(selection: Selection, rowActionService: RowActionService, expand: Expand, hideableColumnService: HideableColumnService);
+    selection: Selection<T>;
+    constructor(selection: Selection<T>, rowActionService: RowActionService, expand: Expand, hideableColumnService: HideableColumnService);
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
     updateCellsForColumns(columnList: DatagridHideableColumnModel[]): void;
@@ -450,18 +452,18 @@ export declare enum ClrDatagridSortOrder {
     DESC = -1,
 }
 
-export interface ClrDatagridStateInterface {
+export interface ClrDatagridStateInterface<T = any> {
     filters?: ({
         property: string;
         value: string;
-    } | ClrDatagridFilterInterface<any>)[];
+    } | ClrDatagridFilterInterface<T>)[];
     page?: {
         from?: number;
         to?: number;
         size?: number;
     };
     sort?: {
-        by: string | ClrDatagridComparatorInterface<any>;
+        by: string | ClrDatagridComparatorInterface<T>;
         reverse: boolean;
     };
 }
@@ -1261,17 +1263,17 @@ export declare const DatagridPagination: typeof ClrDatagridPagination;
 /** @deprecated */
 export declare const DatagridPlaceholder: typeof ClrDatagridPlaceholder;
 
-export declare class DatagridPropertyComparator implements ClrDatagridComparatorInterface<any> {
+export declare class DatagridPropertyComparator<T = any> implements ClrDatagridComparatorInterface<T> {
     prop: string;
     constructor(prop: string);
-    compare(a: any, b: any): number;
+    compare(a: T, b: T): number;
 }
 
-export declare class DatagridPropertyStringFilter implements ClrDatagridStringFilterInterface<any> {
+export declare class DatagridPropertyStringFilter<T = any> implements ClrDatagridStringFilterInterface<T> {
     exact: boolean;
     prop: string;
     constructor(prop: string, exact?: boolean);
-    accepts(item: any, search: string): boolean;
+    accepts(item: T, search: string): boolean;
 }
 
 /** @deprecated */
@@ -1280,14 +1282,14 @@ export declare const DatagridRow: typeof ClrDatagridRow;
 /** @deprecated */
 export declare const DatagridRowDetail: typeof ClrDatagridRowDetail;
 
-export declare class DatagridStringFilter extends DatagridFilterRegistrar<DatagridStringFilterImpl> implements CustomFilter, AfterViewInit {
-    customStringFilter: ClrDatagridStringFilterInterface<any> | RegisteredFilter<DatagridStringFilterImpl>;
-    filterContainer: ClrDatagridFilter;
+export declare class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>> implements CustomFilter, AfterViewInit {
+    customStringFilter: ClrDatagridStringFilterInterface<T> | RegisteredFilter<T, DatagridStringFilterImpl<T>>;
+    filterContainer: ClrDatagridFilter<T>;
     filterValueChange: EventEmitter<{}>;
     input: ElementRef;
     open: boolean;
     value: string;
-    constructor(filters: FiltersProvider, domAdapter: DomAdapter);
+    constructor(filters: FiltersProvider<T>, domAdapter: DomAdapter);
     close(): void;
     ngAfterViewInit(): void;
 }
@@ -1416,7 +1418,7 @@ export declare const StackView: typeof ClrStackView;
 export declare const StackViewCustomTags: typeof ClrStackViewCustomTags;
 
 /** @deprecated */
-export interface State extends ClrDatagridStateInterface {
+export interface State extends ClrDatagridStateInterface<any> {
 }
 
 /** @deprecated */

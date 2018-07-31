@@ -20,12 +20,12 @@ export enum SelectionType {
 }
 
 @Injectable()
-export class Selection {
+export class Selection<T = any> {
   public id: string;
-  private prevSelectionRefs: any[] = []; // Refs of selected items
-  private prevSingleSelectionRef: any; // Ref of single selected item
+  private prevSelectionRefs: T[] = []; // Refs of selected items
+  private prevSingleSelectionRef: T; // Ref of single selected item
 
-  constructor(private _items: Items, private _filters: FiltersProvider) {
+  constructor(private _items: Items<T>, private _filters: FiltersProvider<T>) {
     this.id = 'clr-dg-selection' + nbSelection++;
 
     this.subscriptions.push(
@@ -46,7 +46,7 @@ export class Selection {
 
           case SelectionType.Single: {
             let newSingle: any;
-            const trackBy: TrackByFunction<any> = this._items.trackBy;
+            const trackBy: TrackByFunction<T> = this._items.trackBy;
             let selectionUpdated: boolean = false;
 
             updatedItems.forEach((item, index) => {
@@ -174,11 +174,11 @@ export class Selection {
   /**
    * The current selection in single selection type
    */
-  private _currentSingle: any;
-  public get currentSingle(): any {
+  private _currentSingle: T;
+  public get currentSingle(): T {
     return this._currentSingle;
   }
-  public set currentSingle(value: any) {
+  public set currentSingle(value: T) {
     if (value === this._currentSingle) {
       return;
     }
@@ -197,11 +197,11 @@ export class Selection {
   /**
    * The current selection
    */
-  private _current: any[];
-  public get current(): any[] {
+  private _current: T[];
+  public get current(): T[] {
     return this._current;
   }
-  public set current(value: any[]) {
+  public set current(value: T[]) {
     this._current = value;
     this.emitChange();
     // Ignore items changes in the same change detection cycle.
@@ -213,7 +213,7 @@ export class Selection {
   /**
    * The Observable that lets other classes subscribe to selection changes
    */
-  private _change = new Subject<any[] | any>();
+  private _change = new Subject<T[] | T>();
   private emitChange() {
     if (this._selectionType === SelectionType.Single) {
       this._change.next(this.currentSingle);
@@ -222,14 +222,14 @@ export class Selection {
     }
   }
   // We do not want to expose the Subject itself, but the Observable which is read-only
-  public get change(): Observable<any[] | any> {
+  public get change(): Observable<T[] | T> {
     return this._change.asObservable();
   }
 
   /**
    * Checks if an item is currently selected
    */
-  public isSelected(item: any): boolean {
+  public isSelected(item: T): boolean {
     if (this._selectionType === SelectionType.Single) {
       return this.currentSingle === item;
     } else if (this._selectionType === SelectionType.Multi) {
@@ -241,7 +241,7 @@ export class Selection {
   /**
    * Selects an item
    */
-  private selectItem(item: any): void {
+  private selectItem(item: T): void {
     this.current.push(item);
     if (this._items.trackBy) {
       // Push selected ref onto array
@@ -264,7 +264,7 @@ export class Selection {
   /**
    * Selects or deselects an item
    */
-  public setSelected(item: any, selected: boolean) {
+  public setSelected(item: T, selected: boolean) {
     switch (this._selectionType) {
       case SelectionType.None:
         break;
@@ -293,12 +293,12 @@ export class Selection {
     if (this._selectionType !== SelectionType.Multi || !this._items.displayed) {
       return false;
     }
-    const displayedItems: any[] = this._items.displayed;
+    const displayedItems: T[] = this._items.displayed;
     const nbDisplayed = this._items.displayed.length;
     if (nbDisplayed < 1) {
       return false;
     }
-    const temp: any[] = displayedItems.filter(item => this.current.indexOf(item) > -1);
+    const temp: T[] = displayedItems.filter(item => this.current.indexOf(item) > -1);
     return temp.length === displayedItems.length;
   }
 

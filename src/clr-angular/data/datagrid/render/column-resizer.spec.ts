@@ -15,7 +15,7 @@ import { DomAdapter } from './dom-adapter';
 
 export default function(): void {
   describe('DatagridColumnResizer directive', function() {
-    let context: TestContext<ClrDatagrid, ColumnResizerTest>;
+    let context: TestContext<ClrDatagrid<number>, ColumnResizerTest>;
 
     let column1: DebugElement;
     let column2: DebugElement;

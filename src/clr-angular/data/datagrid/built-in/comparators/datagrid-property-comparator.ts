@@ -6,14 +6,14 @@
 import { ClrDatagridComparatorInterface } from '../../interfaces/comparator.interface';
 import { NestedProperty } from '../nested-property';
 
-export class DatagridPropertyComparator implements ClrDatagridComparatorInterface<any> {
-  private nestedProp: NestedProperty;
+export class DatagridPropertyComparator<T = any> implements ClrDatagridComparatorInterface<T> {
+  private nestedProp: NestedProperty<T>;
 
   constructor(public prop: string) {
     this.nestedProp = new NestedProperty(prop);
   }
 
-  public compare(a: any, b: any): number {
+  public compare(a: T, b: T): number {
     let propA = this.nestedProp.getPropValue(a);
     let propB = this.nestedProp.getPropValue(b);
 

@@ -6,14 +6,14 @@
 import { ClrDatagridStringFilterInterface } from '../../interfaces/string-filter.interface';
 import { NestedProperty } from '../nested-property';
 
-export class DatagridPropertyStringFilter implements ClrDatagridStringFilterInterface<any> {
-  private nestedProp: NestedProperty;
+export class DatagridPropertyStringFilter<T = any> implements ClrDatagridStringFilterInterface<T> {
+  private nestedProp: NestedProperty<T>;
 
   constructor(public prop: string, public exact = false) {
     this.nestedProp = new NestedProperty(prop);
   }
 
-  accepts(item: any, search: string): boolean {
+  accepts(item: T, search: string): boolean {
     const propValue = this.nestedProp.getPropValue(item);
     if (typeof propValue === 'undefined') {
       return false;

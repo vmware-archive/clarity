@@ -69,7 +69,7 @@ export default function(): void {
 
     it('receives an input for the trackBy option', function() {
       expect(this.itemsProvider.trackBy).toBeUndefined();
-      this.testComponent.trackBy = (index: number, item: any) => index;
+      this.testComponent.trackBy = (index: number, item: number) => index;
       this.fixture.detectChanges();
       expect(this.itemsProvider.trackBy).toBe(this.testComponent.trackBy);
     });
@@ -78,9 +78,9 @@ export default function(): void {
 
 @Component({ template: `<div *clrDgItems="let n of numbers; trackBy: trackBy">{{n}}</div>` })
 class FullTest {
-  @ViewChild(ClrDatagridItems) datagridItems: ClrDatagridItems;
+  @ViewChild(ClrDatagridItems) datagridItems: ClrDatagridItems<number>;
 
   numbers = [1, 2, 3, 4, 5];
 
-  trackBy: (index: number, item: any) => any;
+  trackBy: (index: number, item: number) => any;
 }

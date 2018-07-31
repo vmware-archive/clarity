@@ -54,15 +54,15 @@ import { DatagridRenderOrganizer } from './render/render-organizer';
   ],
   host: { '[class.datagrid-host]': 'true' },
 })
-export class ClrDatagrid implements AfterContentInit, AfterViewInit, OnDestroy {
+export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, OnDestroy {
   constructor(
     private columnService: HideableColumnService,
     private organizer: DatagridRenderOrganizer,
-    public items: Items,
+    public items: Items<T>,
     public expandableRows: ExpandableRowsCount,
-    public selection: Selection,
+    public selection: Selection<T>,
     public rowActionService: RowActionService,
-    private stateProvider: StateProvider
+    private stateProvider: StateProvider<T>
   ) {}
 
   /* reference to the enum so that template can access */
@@ -83,7 +83,7 @@ export class ClrDatagrid implements AfterContentInit, AfterViewInit, OnDestroy {
   /**
    * Output emitted whenever the data needs to be refreshed, based on user action or external ones
    */
-  @Output('clrDgRefresh') public refresh = new EventEmitter<ClrDatagridStateInterface>(false);
+  @Output('clrDgRefresh') public refresh = new EventEmitter<ClrDatagridStateInterface<T>>(false);
 
   /**
    * Public method to re-trigger the computation of displayed items manually
@@ -95,13 +95,13 @@ export class ClrDatagrid implements AfterContentInit, AfterViewInit, OnDestroy {
   /**
    * We grab the smart iterator from projected content
    */
-  @ContentChild(ClrDatagridItems) public iterator: ClrDatagridItems;
+  @ContentChild(ClrDatagridItems) public iterator: ClrDatagridItems<T>;
 
   /**
    * Array of all selected items
    */
   @Input('clrDgSelected')
-  set selected(value: any[]) {
+  set selected(value: T[]) {
     if (value) {
       this.selection.selectionType = SelectionType.Multi;
     } else {
@@ -110,13 +110,13 @@ export class ClrDatagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     this.selection.current = value;
   }
 
-  @Output('clrDgSelectedChange') selectedChanged = new EventEmitter<any[]>(false);
+  @Output('clrDgSelectedChange') selectedChanged = new EventEmitter<T[]>(false);
 
   /**
    * Selected item in single-select mode
    */
   @Input('clrDgSingleSelected')
-  set singleSelected(value: any) {
+  set singleSelected(value: T) {
     this.selection.selectionType = SelectionType.Single;
     // the clrDgSingleSelected is updated in one of two cases:
     // 1. an explicit value is passed
@@ -128,7 +128,7 @@ export class ClrDatagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     }
   }
 
-  @Output('clrDgSingleSelectedChange') singleSelectedChanged = new EventEmitter<any>(false);
+  @Output('clrDgSingleSelectedChange') singleSelectedChanged = new EventEmitter<T>(false);
 
   /**
    * Selection/Deselection on row click mode
@@ -170,12 +170,12 @@ export class ClrDatagrid implements AfterContentInit, AfterViewInit, OnDestroy {
   /**
    * Custom placeholder detection
    */
-  @ContentChild(ClrDatagridPlaceholder) public placeholder: ClrDatagridPlaceholder;
+  @ContentChild(ClrDatagridPlaceholder) public placeholder: ClrDatagridPlaceholder<T>;
 
   /**
    * Hideable Column data source / detection.
    */
-  @ContentChildren(ClrDatagridColumn) public columns: QueryList<ClrDatagridColumn>;
+  @ContentChildren(ClrDatagridColumn) public columns: QueryList<ClrDatagridColumn<T>>;
 
   /**
    * When the datagrid is user-managed without the smart iterator, we get the items displayed
@@ -183,22 +183,22 @@ export class ClrDatagrid implements AfterContentInit, AfterViewInit, OnDestroy {
    * displayed, typically for selection.
    */
 
-  @ContentChildren(ClrDatagridRow) rows: QueryList<ClrDatagridRow>;
+  @ContentChildren(ClrDatagridRow) rows: QueryList<ClrDatagridRow<T>>;
 
   ngAfterContentInit() {
     this._subscriptions.push(
       this.rows.changes.subscribe(() => {
         if (!this.items.smart) {
-          this.items.all = this.rows.map((row: ClrDatagridRow) => row.item);
+          this.items.all = this.rows.map((row: ClrDatagridRow<T>) => row.item);
         }
       })
     );
     if (!this.items.smart) {
-      this.items.all = this.rows.map((row: ClrDatagridRow) => row.item);
+      this.items.all = this.rows.map((row: ClrDatagridRow<T>) => row.item);
     }
 
     this._subscriptions.push(
-      this.columns.changes.subscribe((columns: ClrDatagridColumn[]) => {
+      this.columns.changes.subscribe((columns: ClrDatagridColumn<T>[]) => {
         this.columnService.updateColumnList(this.columns.map(col => col.hideable));
       })
     );
@@ -217,9 +217,9 @@ export class ClrDatagrid implements AfterContentInit, AfterViewInit, OnDestroy {
     this._subscriptions.push(
       this.selection.change.subscribe(s => {
         if (this.selection.selectionType === SelectionType.Single) {
-          this.singleSelectedChanged.emit(s);
+          this.singleSelectedChanged.emit(<T>s);
         } else if (this.selection.selectionType === SelectionType.Multi) {
-          this.selectedChanged.emit(s);
+          this.selectedChanged.emit(<T[]>s);
         }
       })
     );

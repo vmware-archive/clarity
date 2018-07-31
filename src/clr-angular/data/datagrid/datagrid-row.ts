@@ -84,7 +84,7 @@ let nbRow: number = 0;
   },
   providers: [Expand, { provide: LoadingListener, useExisting: Expand }],
 })
-export class ClrDatagridRow implements AfterContentInit {
+export class ClrDatagridRow<T = any> implements AfterContentInit {
   public id: string;
   public radioId: string;
 
@@ -94,10 +94,10 @@ export class ClrDatagridRow implements AfterContentInit {
   /**
    * Model of the row, to use for selection
    */
-  @Input('clrDgItem') item: any;
+  @Input('clrDgItem') item: T;
 
   constructor(
-    public selection: Selection,
+    public selection: Selection<T>,
     public rowActionService: RowActionService,
     public globalExpandable: ExpandableRowsCount,
     public expand: Expand,

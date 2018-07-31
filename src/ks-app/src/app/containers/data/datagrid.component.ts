@@ -76,39 +76,39 @@ export class KSDatagrid {
    * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
    */
   private aDatagrid: Datagrid;
-  private aClrDatagrid: ClrDatagrid;
+  private aClrDatagrid: ClrDatagrid<User>;
   private aDatagridActionBar: DatagridActionBar;
   private aClrDatagridActionBar: ClrDatagridActionBar;
   private aDatagridActionOverflow: DatagridActionOverflow;
   private aClrDatagridActionOverflow: ClrDatagridActionOverflow;
   private aDatagridColumn: DatagridColumn;
-  private aClrDatagridColumn: ClrDatagridColumn;
+  private aClrDatagridColumn: ClrDatagridColumn<User>;
   private aDatagridColumnToggle: DatagridColumnToggle;
   private aClrDatagridColumnToggle: ClrDatagridColumnToggle;
   private aDatagridHideableColumnDirective: DatagridHideableColumnDirective;
   private aClrDatagridHideableColumnDirective: ClrDatagridHideableColumn;
   private aDatagridFilter: DatagridFilter;
-  private aClrDatagridFilter: ClrDatagridFilter;
+  private aClrDatagridFilter: ClrDatagridFilter<User>;
   private aDatagridItems: DatagridItems;
-  private aClrDatagridItems: ClrDatagridItems;
+  private aClrDatagridItems: ClrDatagridItems<User>;
   private aDatagridRow: DatagridRow;
-  private aClrDatagridRow: ClrDatagridRow;
+  private aClrDatagridRow: ClrDatagridRow<User>;
   private aDatagridRowDetail: DatagridRowDetail;
-  private aClrDatagridRowDetail: ClrDatagridRowDetail;
+  private aClrDatagridRowDetail: ClrDatagridRowDetail<User>;
   private aDatagridCell: DatagridCell;
   private aClrDatagridCell: ClrDatagridCell;
   private aDatagridFooter: DatagridFooter;
-  private aClrDatagridFooter: ClrDatagridFooter;
+  private aClrDatagridFooter: ClrDatagridFooter<User>;
   private aDatagridPagination: DatagridPagination;
   private aClrDatagridPagination: ClrDatagridPagination;
   private aDatagridPlaceholder: DatagridPlaceholder;
-  private aClrDatagridPlaceholder: ClrDatagridPlaceholder;
+  private aClrDatagridPlaceholder: ClrDatagridPlaceholder<User>;
   private aComparator: Comparator<string>;
   private aClrDatagridComparatorInterface: ClrDatagridComparatorInterface<string>;
   private aFilter: Filter<string>;
   private aClrDatagridFilterInterface: ClrDatagridFilterInterface<string>;
   private aState: State;
-  private aClrDatagridStateInterface: ClrDatagridStateInterface;
+  private aClrDatagridStateInterface: ClrDatagridStateInterface<User>;
   private aStringFilter: StringFilter<string>;
   private aClrDatagridStringFilterInterface: ClrDatagridStringFilterInterface<string>;
   // END Clarity Data Entities

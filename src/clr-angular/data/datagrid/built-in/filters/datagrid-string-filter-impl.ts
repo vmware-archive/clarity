@@ -8,8 +8,8 @@ import { Subject } from 'rxjs';
 import { ClrDatagridFilterInterface } from '../../interfaces/filter.interface';
 import { ClrDatagridStringFilterInterface } from '../../interfaces/string-filter.interface';
 
-export class DatagridStringFilterImpl implements ClrDatagridFilterInterface<any> {
-  constructor(public filterFn: ClrDatagridStringFilterInterface<any>) {}
+export class DatagridStringFilterImpl<T = any> implements ClrDatagridFilterInterface<T> {
+  constructor(public filterFn: ClrDatagridStringFilterInterface<T>) {}
 
   /**
    * The Observable required as part of the Filter interface
@@ -58,7 +58,7 @@ export class DatagridStringFilterImpl implements ClrDatagridFilterInterface<any>
   /**
    * Tests if an item matches a search text
    */
-  public accepts(item: any): boolean {
+  public accepts(item: T): boolean {
     // We always test with the lowercase value of the input, to stay case insensitive
     return this.filterFn.accepts(item, this.lowerCaseValue);
   }

@@ -12,22 +12,22 @@ import { Page } from './page';
 import { StateDebouncer } from './state-debouncer.provider';
 
 @Injectable()
-export class FiltersProvider {
+export class FiltersProvider<T = any> {
   constructor(private _page: Page, private stateDebouncer: StateDebouncer) {}
   /**
    * This subject is the list of filters that changed last, not the whole list.
    * We emit a list rather than just one filter to allow batch changes to several at once.
    */
-  private _change = new Subject<ClrDatagridFilterInterface<any>[]>();
+  private _change = new Subject<ClrDatagridFilterInterface<T>[]>();
   // We do not want to expose the Subject itself, but the Observable which is read-only
-  public get change(): Observable<ClrDatagridFilterInterface<any>[]> {
+  public get change(): Observable<ClrDatagridFilterInterface<T>[]> {
     return this._change.asObservable();
   }
 
   /**
    * List of all filters, whether they're active or not
    */
-  private _all: RegisteredFilter<any>[] = [];
+  private _all: RegisteredFilter<T, ClrDatagridFilterInterface<T>>[] = [];
 
   /**
    * Tests if at least one filter is currently active
@@ -46,8 +46,8 @@ export class FiltersProvider {
   /**
    * Returns a list of all currently active filters
    */
-  public getActiveFilters(): ClrDatagridFilterInterface<any>[] {
-    const ret: ClrDatagridFilterInterface<any>[] = [];
+  public getActiveFilters(): ClrDatagridFilterInterface<T>[] {
+    const ret: ClrDatagridFilterInterface<T>[] = [];
     for (const { filter } of this._all) {
       if (filter && filter.isActive()) {
         ret.push(filter);
@@ -59,7 +59,7 @@ export class FiltersProvider {
   /**
    * Registers a filter, and returns a deregistration function
    */
-  public add<F extends ClrDatagridFilterInterface<any>>(filter: F): RegisteredFilter<F> {
+  public add<F extends ClrDatagridFilterInterface<T>>(filter: F): RegisteredFilter<T, F> {
     const index = this._all.length;
     const subscription = filter.changes.subscribe(() => this.resetPageAndEmitFilterChange([filter]));
     let hasUnregistered = false;
@@ -84,7 +84,7 @@ export class FiltersProvider {
   /**
    * Accepts an item if it is accepted by all currently active filters
    */
-  public accepts(item: any): boolean {
+  public accepts(item: T): boolean {
     for (const { filter } of this._all) {
       if (filter && filter.isActive() && !filter.accepts(item)) {
         return false;
@@ -93,7 +93,7 @@ export class FiltersProvider {
     return true;
   }
 
-  private resetPageAndEmitFilterChange(filters: ClrDatagridFilterInterface<any>[]) {
+  private resetPageAndEmitFilterChange(filters: ClrDatagridFilterInterface<T>[]) {
     this.stateDebouncer.changeStart();
     // filtering may change the page number such that current page number doesn't exist in the filtered dataset.
     // So here we always set the current page to 1 so that it'll fetch first page's data with the given filter.
@@ -103,6 +103,6 @@ export class FiltersProvider {
   }
 }
 
-export class RegisteredFilter<F extends ClrDatagridFilterInterface<any>> {
+export class RegisteredFilter<T, F extends ClrDatagridFilterInterface<T>> {
   constructor(public filter: F, public unregister: () => void) {}
 }

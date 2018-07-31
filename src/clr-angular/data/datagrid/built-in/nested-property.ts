@@ -7,7 +7,7 @@
  * Generic accessor for deep object properties
  * that can be specified as simple dot-separated strings.
  */
-export class NestedProperty {
+export class NestedProperty<T = any> {
   private splitProp: string[];
 
   constructor(private prop: string) {
@@ -18,7 +18,7 @@ export class NestedProperty {
 
   // Safe getter for a deep object property, will not throw an error but return
   // undefined if one of the intermediate properties is null or undefined.
-  public getPropValue(item: any): any {
+  public getPropValue(item: T): any {
     if (this.splitProp) {
       let value = item;
       for (const nestedProp of this.splitProp) {

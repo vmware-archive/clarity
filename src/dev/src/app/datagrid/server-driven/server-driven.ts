@@ -25,7 +25,7 @@ export class DatagridServerDrivenDemo {
     inventory.reset();
   }
 
-  refresh(state: ClrDatagridStateInterface) {
+  refresh(state: ClrDatagridStateInterface<User>) {
     this.loading = true;
     const filters: { [prop: string]: any[] } = {};
     if (state.filters) {

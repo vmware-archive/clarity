@@ -44,9 +44,9 @@ import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
         </ng-template>
     `,
 })
-export class ClrDatagridFilter extends DatagridFilterRegistrar<ClrDatagridFilterInterface<any>>
+export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>>
   implements CustomFilter {
-  constructor(_filters: FiltersProvider) {
+  constructor(_filters: FiltersProvider<T>) {
     super(_filters);
   }
 
@@ -73,7 +73,7 @@ export class ClrDatagridFilter extends DatagridFilterRegistrar<ClrDatagridFilter
   @Output('clrDgFilterOpenChange') public openChanged = new EventEmitter<boolean>(false);
 
   @Input('clrDgFilter')
-  public set customFilter(filter: ClrDatagridFilterInterface<any> | RegisteredFilter<ClrDatagridFilterInterface<any>>) {
+  public set customFilter(filter: ClrDatagridFilterInterface<T> | RegisteredFilter<T, ClrDatagridFilterInterface<T>>) {
     this.setFilter(filter);
   }
 

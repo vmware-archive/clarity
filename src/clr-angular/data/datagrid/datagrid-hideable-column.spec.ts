@@ -29,7 +29,7 @@ const PROVIDERS_NEEDED = [
 export default function(): void {
   describe('DatagridHideableColumn directive', function() {
     describe('TypeScript API', function() {
-      let context: TestContext<ClrDatagridColumn, HideableTest>;
+      let context: TestContext<ClrDatagridColumn<void>, HideableTest>;
 
       beforeEach(function() {
         context = this.create(ClrDatagridColumn, HideableTest, PROVIDERS_NEEDED);

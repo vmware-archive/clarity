@@ -13,8 +13,8 @@ import { Page } from './page';
 import { Sort } from './sort';
 
 @Injectable()
-export class Items {
-  constructor(private _filters: FiltersProvider, private _sort: Sort, private _page: Page) {}
+export class Items<T = any> {
+  constructor(private _filters: FiltersProvider<T>, private _sort: Sort<T>, private _page: Page) {}
 
   /**
    * Indicates if the data is currently loading
@@ -25,7 +25,7 @@ export class Items {
   /**
    * Tracking function to identify objects. Default is reference equality.
    */
-  public trackBy: TrackByFunction<any> = (index: number, item: any) => item;
+  public trackBy: TrackByFunction<T> = (index: number, item: T) => item;
 
   /**
    * Subscriptions to the other providers changes.
@@ -78,11 +78,11 @@ export class Items {
   /**
    * List of all items in the datagrid
    */
-  private _all: any[];
+  private _all: T[];
   public get all() {
     return this._all;
   }
-  public set all(items: any[]) {
+  public set all(items: T[]) {
     this._all = items;
     this.emitAllChanges(items);
     if (this.smart) {
@@ -105,13 +105,13 @@ export class Items {
   /**
    * Internal temporary step, which we preserve to avoid re-filtering or re-sorting if not necessary
    */
-  private _filtered: any[];
+  private _filtered: T[];
 
   /**
    * List of items currently displayed
    */
-  private _displayed: any[] = [];
-  public get displayed(): any[] {
+  private _displayed: T[] = [];
+  public get displayed(): T[] {
     // Ideally we could return an immutable array, but we don't have it in Clarity yet.
     return this._displayed;
   }
@@ -119,21 +119,21 @@ export class Items {
   /**
    * The Observable that lets other classes subscribe to items changes
    */
-  private _change = new Subject<any[]>();
+  private _change = new Subject<T[]>();
   private emitChange() {
     this._change.next(this.displayed);
   }
   // We do not want to expose the Subject itself, but the Observable which is read-only
-  public get change(): Observable<any[]> {
+  public get change(): Observable<T[]> {
     return this._change.asObservable();
   }
 
-  private _allChanges = new Subject<any[]>();
-  private emitAllChanges(items: any[]): void {
+  private _allChanges = new Subject<T[]>();
+  private emitAllChanges(items: T[]): void {
     this._allChanges.next(items);
   }
 
-  public get allChanges(): Observable<any[]> {
+  public get allChanges(): Observable<T[]> {
     return this._allChanges.asObservable();
   }
 

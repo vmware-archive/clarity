@@ -18,7 +18,7 @@ import { DatagridRenderOrganizer } from './render-organizer';
 export default function(): void {
   describe('DatagridMainRenderer directive', function() {
     describe('static loading', function() {
-      let context: TestContext<DatagridMainRenderer, StaticTest>;
+      let context: TestContext<DatagridMainRenderer<number>, StaticTest>;
       let organizer: DatagridRenderOrganizer;
       let resizeSpy: jasmine.Spy;
       let computeWidthSpy: jasmine.Spy;
@@ -72,7 +72,7 @@ export default function(): void {
     });
 
     describe('dynamic loading', function() {
-      let context: TestContext<DatagridMainRenderer, DynamicTest>;
+      let context: TestContext<DatagridMainRenderer<number>, DynamicTest>;
       let resizeSpy: jasmine.Spy;
 
       beforeEach(function() {
@@ -139,7 +139,7 @@ export default function(): void {
     });
 
     describe('smart columns width', function() {
-      let context: TestContext<DatagridMainRenderer, ColumnsWidthTest>;
+      let context: TestContext<DatagridMainRenderer<number>, ColumnsWidthTest>;
       let organizer: DatagridRenderOrganizer;
 
       beforeEach(function() {
@@ -184,7 +184,7 @@ export default function(): void {
     });
 
     describe('scrollbar spy on page change', () => {
-      let context: TestContext<DatagridMainRenderer, DatagridHeightTest>;
+      let context: TestContext<DatagridMainRenderer<number>, DatagridHeightTest>;
       let page: Page;
       let organizer: DatagridRenderOrganizer;
 
@@ -219,7 +219,7 @@ export default function(): void {
     });
 
     describe('scrollbar spy on expandable rows', () => {
-      let context: TestContext<DatagridMainRenderer, DatagridScrollbarTest>;
+      let context: TestContext<DatagridMainRenderer<number>, DatagridScrollbarTest>;
       let organizer: DatagridRenderOrganizer;
 
       beforeEach(function() {

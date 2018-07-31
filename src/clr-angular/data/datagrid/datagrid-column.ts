@@ -64,8 +64,8 @@ let nbCount: number = 0;
     role: 'columnheader',
   },
 })
-export class ClrDatagridColumn extends DatagridFilterRegistrar<DatagridStringFilterImpl> {
-  constructor(private _sort: Sort, filters: FiltersProvider, private _dragDispatcher: DragDispatcher) {
+export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>> {
+  constructor(private _sort: Sort<T>, filters: FiltersProvider<T>, private _dragDispatcher: DragDispatcher) {
     super(filters);
     this._sortSubscription = _sort.change.subscribe(sort => {
       // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
@@ -156,14 +156,14 @@ export class ClrDatagridColumn extends DatagridFilterRegistrar<DatagridStringFil
    * ClrDatagridComparatorInterface to use when sorting the column
    */
 
-  private _sortBy: ClrDatagridComparatorInterface<any>;
+  private _sortBy: ClrDatagridComparatorInterface<T>;
 
   public get sortBy() {
     return this._sortBy;
   }
 
   @Input('clrDgSortBy')
-  public set sortBy(comparator: ClrDatagridComparatorInterface<any> | string) {
+  public set sortBy(comparator: ClrDatagridComparatorInterface<T> | string) {
     if (typeof comparator === 'string') {
       this._sortBy = new DatagridPropertyComparator(comparator);
     } else {

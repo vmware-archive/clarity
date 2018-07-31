@@ -28,7 +28,7 @@ const PROVIDERS_NEEDED = [
 
 export default function(): void {
   describe('DatagridHideableColumnModel', function() {
-    let context: TestContext<ClrDatagridColumn, SimpleTest>;
+    let context: TestContext<ClrDatagridColumn<void>, SimpleTest>;
     let testDgHideableColumn: DatagridHideableColumnModel;
 
     beforeEach(function() {

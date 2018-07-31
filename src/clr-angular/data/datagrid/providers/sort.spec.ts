@@ -92,7 +92,7 @@ export default function(): void {
       let nbChanges = 0;
       let latestComparator: ClrDatagridComparatorInterface<number>;
       let latestReverse: boolean;
-      this.sortInstance.change.subscribe((sort: Sort) => {
+      this.sortInstance.change.subscribe((sort: Sort<number>) => {
         nbChanges++;
         latestComparator = sort.comparator;
         latestReverse = sort.reverse;

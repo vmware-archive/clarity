@@ -41,10 +41,10 @@ export const domAdapterFactory = (platformId: Object) => {
   selector: 'clr-datagrid',
   providers: [{ provide: DomAdapter, useFactory: domAdapterFactory, deps: [PLATFORM_ID] }],
 })
-export class DatagridMainRenderer implements AfterContentInit, AfterViewChecked, OnDestroy {
+export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterViewChecked, OnDestroy {
   constructor(
     private organizer: DatagridRenderOrganizer,
-    private items: Items,
+    private items: Items<T>,
     private page: Page,
     private domAdapter: DomAdapter,
     private el: ElementRef,

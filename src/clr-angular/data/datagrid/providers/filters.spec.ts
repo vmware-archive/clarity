@@ -62,8 +62,8 @@ export default function(): void {
 
     it('exposes an Observable that proxies all filters changes', function() {
       let nbChanges = 0;
-      let latestChanges: ClrDatagridFilterInterface<any>[];
-      this.filtersInstance.change.subscribe((changes: ClrDatagridFilterInterface<any>[]) => {
+      let latestChanges: ClrDatagridFilterInterface<number>[];
+      this.filtersInstance.change.subscribe((changes: ClrDatagridFilterInterface<number>[]) => {
         nbChanges++;
         latestChanges = changes;
       });

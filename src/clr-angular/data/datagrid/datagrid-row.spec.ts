@@ -41,11 +41,13 @@ const PROVIDERS = [
   StateDebouncer,
 ];
 
+type Item = { id: number };
+
 export default function(): void {
   describe('ClrDatagridRow component', function() {
     describe('View', function() {
       // Until we can properly type "this"
-      let context: TestContext<ClrDatagridRow, FullTest>;
+      let context: TestContext<ClrDatagridRow<Item>, FullTest>;
 
       beforeEach(function() {
         context = this.create(ClrDatagridRow, FullTest, PROVIDERS);
@@ -84,8 +86,8 @@ export default function(): void {
 
     describe('Selection', function() {
       // Until we can properly type "this"
-      let context: TestContext<ClrDatagridRow, FullTest>;
-      let selectionProvider: Selection;
+      let context: TestContext<ClrDatagridRow<Item>, FullTest>;
+      let selectionProvider: Selection<Item>;
 
       beforeEach(function() {
         context = this.create(ClrDatagridRow, FullTest, PROVIDERS);
@@ -235,7 +237,7 @@ export default function(): void {
 
     describe('Expand/Collapse', function() {
       // Until we can properly type "this"
-      let context: TestContext<ClrDatagridRow, ExpandTest>;
+      let context: TestContext<ClrDatagridRow<Item>, ExpandTest>;
       let expand: Expand;
 
       beforeEach(function() {
@@ -335,7 +337,7 @@ export default function(): void {
     });
 
     describe('Hide/Show', function() {
-      let context: TestContext<ClrDatagridRow, ExpandTest>;
+      let context: TestContext<ClrDatagridRow<Item>, ExpandTest>;
       let hideableColumnService: HideableColumnService;
 
       beforeEach(function() {
@@ -362,7 +364,7 @@ export default function(): void {
 
 @Component({ template: `<clr-dg-row [clrDgItem]="item" [(clrDgSelected)]="selected">Hello world</clr-dg-row>` })
 class FullTest {
-  item: any;
+  item: Item;
   selected = false;
 }
 

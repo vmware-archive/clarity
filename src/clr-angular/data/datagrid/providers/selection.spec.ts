@@ -19,31 +19,29 @@ import { StateDebouncer } from './state-debouncer.provider';
 const numberSort = (a: number, b: number) => a - b;
 
 export default function(): void {
-  let selectionInstance: Selection;
-  let sortInstance: Sort;
-  let pageInstance: Page;
-  let filtersInstance: FiltersProvider;
-  let itemsInstance: Items;
   describe('Selection provider', function() {
-    beforeEach(function() {
-      const stateDebouncer = new StateDebouncer();
-      pageInstance = new Page(stateDebouncer);
-      filtersInstance = new FiltersProvider(pageInstance, stateDebouncer);
-      sortInstance = new Sort(stateDebouncer);
-      itemsInstance = new Items(filtersInstance, sortInstance, pageInstance);
-
-      selectionInstance = new Selection(itemsInstance, filtersInstance);
-    });
-
-    afterEach(function() {
-      selectionInstance.destroy();
-      itemsInstance.destroy();
-    });
-
     describe('with smart items', function() {
+      let selectionInstance: Selection<number>;
+      let sortInstance: Sort<number>;
+      let pageInstance: Page;
+      let filtersInstance: FiltersProvider<number>;
+      let itemsInstance: Items<number>;
+
       beforeEach(function() {
+        const stateDebouncer = new StateDebouncer();
+        pageInstance = new Page(stateDebouncer);
+        filtersInstance = new FiltersProvider(pageInstance, stateDebouncer);
+        sortInstance = new Sort(stateDebouncer);
+        itemsInstance = new Items(filtersInstance, sortInstance, pageInstance);
         itemsInstance.smartenUp();
         itemsInstance.all = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        selectionInstance = new Selection(itemsInstance, filtersInstance);
+      });
+
+      afterEach(function() {
+        selectionInstance.destroy();
+        itemsInstance.destroy();
       });
 
       it('starts inactive', function() {
@@ -152,8 +150,8 @@ export default function(): void {
 
       it('exposes an Observable to follow selection changes in multi selection type', function() {
         let nbChanges = 0;
-        let currentSelection: any[];
-        selectionInstance.change.subscribe((items: any[]) => {
+        let currentSelection: number[];
+        selectionInstance.change.subscribe((items: number[]) => {
           nbChanges++;
           currentSelection = items;
         });
@@ -171,8 +169,8 @@ export default function(): void {
 
       it('exposes an Observable to follow selection changes in single selection type', function() {
         let nbChanges = 0;
-        let currentSelection: any;
-        selectionInstance.change.subscribe((items: any) => {
+        let currentSelection: number;
+        selectionInstance.change.subscribe((items: number) => {
           nbChanges++;
           currentSelection = items;
         });
@@ -213,7 +211,7 @@ export default function(): void {
 
         const evenFilter: EvenFilter = new EvenFilter();
 
-        filtersInstance.add(<ClrDatagridFilterInterface<any>>evenFilter);
+        filtersInstance.add(<ClrDatagridFilterInterface<number>>evenFilter);
 
         evenFilter.toggle();
 
@@ -278,6 +276,14 @@ export default function(): void {
     });
 
     describe('client-side selection and pagination', function() {
+      type Item = { id: number; modified?: boolean };
+
+      let selectionInstance: Selection<Item>;
+      let sortInstance: Sort<Item>;
+      let pageInstance: Page;
+      let filtersInstance: FiltersProvider<Item>;
+      let itemsInstance: Items<Item>;
+
       const items = [
         { id: 1 },
         { id: 2 },
@@ -297,7 +303,7 @@ export default function(): void {
         });
       }
 
-      function testSelectedItems(latestItems, selectedIndexes: any[]) {
+      function testSelectedItems(latestItems, selectedIndexes: number[]) {
         latestItems.forEach((item, index) => {
           const state = selectedIndexes.indexOf(index) > -1;
           expect(selectionInstance.isSelected(item)).toEqual(state);
@@ -305,9 +311,21 @@ export default function(): void {
       }
 
       beforeEach(function() {
+        const stateDebouncer = new StateDebouncer();
+        pageInstance = new Page(stateDebouncer);
+        filtersInstance = new FiltersProvider(pageInstance, stateDebouncer);
+        sortInstance = new Sort(stateDebouncer);
+        itemsInstance = new Items(filtersInstance, sortInstance, pageInstance);
         itemsInstance.smartenUp();
         itemsInstance.all = items;
         pageInstance.size = 3;
+
+        selectionInstance = new Selection(itemsInstance, filtersInstance);
+      });
+
+      afterEach(function() {
+        selectionInstance.destroy();
+        itemsInstance.destroy();
       });
 
       describe('multi-selection', function() {
@@ -367,7 +385,7 @@ export default function(): void {
 
         it('does not apply trackBy to single selection with no items', () => {
           const emptyItems = new Items(filtersInstance, sortInstance, pageInstance);
-          const selection: Selection = new Selection(emptyItems, filtersInstance);
+          const selection = new Selection(emptyItems, filtersInstance);
 
           spyOn(emptyItems, 'trackBy');
 
@@ -394,6 +412,14 @@ export default function(): void {
     });
 
     describe('server-driven selection and pagination', function() {
+      type Item = { id: number; modified?: boolean };
+
+      let selectionInstance: Selection<Item>;
+      let sortInstance: Sort<Item>;
+      let pageInstance: Page;
+      let filtersInstance: FiltersProvider<Item>;
+      let itemsInstance: Items<Item>;
+
       const itemsA = [{ id: 1 }, { id: 2 }, { id: 3 }];
       const itemsB = [{ id: 4 }, { id: 5 }, { id: 6 }];
       const itemsC = itemsA.map(item => Object.assign({ modified: true }, item));
@@ -415,6 +441,21 @@ export default function(): void {
           expect(selectionInstance.isSelected(element)).toEqual(stateC);
         });
       }
+
+      beforeEach(function() {
+        const stateDebouncer = new StateDebouncer();
+        pageInstance = new Page(stateDebouncer);
+        filtersInstance = new FiltersProvider(pageInstance, stateDebouncer);
+        sortInstance = new Sort(stateDebouncer);
+        itemsInstance = new Items(filtersInstance, sortInstance, pageInstance);
+
+        selectionInstance = new Selection(itemsInstance, filtersInstance);
+      });
+
+      afterEach(function() {
+        selectionInstance.destroy();
+        itemsInstance.destroy();
+      });
 
       describe('multi-selection', function() {
         beforeEach(function() {

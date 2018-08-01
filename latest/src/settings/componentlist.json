@@ -285,6 +285,16 @@
             "dox": 5
         },
         {
+            "url": "password",
+            "text": "Password",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
             "url": "progress",
             "text": "Progress Bars",
             "type": "component",

@@ -208,6 +208,14 @@ const documentationRoutes: Routes = [
                 }
             },
             {
+                path: "password",
+                loadChildren: "app/documentation/demos/password/password.demo.module#PasswordDemoModule",
+                data: {
+                    bodyClass: "page-password",
+                    browserTitle: "Password"
+                }
+            },
+            {
                 path: "progress",
                 loadChildren: "app/documentation/demos/progress-bars/progress-bars.demo.module#ProgressBarsDemoModule",
                 data: {

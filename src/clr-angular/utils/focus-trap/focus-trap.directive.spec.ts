@@ -53,11 +53,15 @@ describe('FocusTrap', () => {
       expect(directiveElement.getAttribute('tabindex')).toEqual('0');
     });
 
-    it('should add its off-screen focus rebounder elements to parent element on instantiation', () => {
+    it('should add its off-screen focus rebounder elements to document body on instantiation', () => {
       const offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
       expect(offScreenEls.length).toBe(2);
-      expect(offScreenEls[0].classList.contains('before-focus-trap')).toBeTruthy();
-      expect(offScreenEls[1].classList.contains('after-focus-trap')).toBeTruthy();
+    });
+
+    it('should add its off-screen focus elements as first an last elements in document body', () => {
+      const offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
+      expect(document.body.firstChild).toBe(offScreenEls[0]);
+      expect(document.body.lastChild).toBe(offScreenEls[1]);
     });
 
     it('should rebound focus back to the directive if one of rebounding elements gets focused', () => {
@@ -73,12 +77,10 @@ describe('FocusTrap', () => {
     });
 
     it('should remove its off-screen focus rebounder elements from parent element on removal', () => {
-      let offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
-      expect(offScreenEls.length).toBe(2);
+      expect(document.body.querySelectorAll('span.offscreen-focus-rebounder').length).toBe(2);
       component.mainFocusTrap = false;
       fixture.detectChanges();
-      offScreenEls = offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
-      expect(offScreenEls.length).toBe(0);
+      expect(document.body.querySelectorAll('span.offscreen-focus-rebounder').length).toBe(0);
     });
 
     it(`should add off-screen rebounder elements only once`, () => {
@@ -198,9 +200,8 @@ describe('FocusTrap', () => {
 });
 
 @Component({
-  template: `
-        <ng-container *ngIf="mainFocusTrap">
-        <form clrFocusTrap>
+  template: `    
+        <form clrFocusTrap *ngIf="mainFocusTrap">
             <button id="first">
                 Button to test first input
             </button>
@@ -223,7 +224,7 @@ describe('FocusTrap', () => {
                 </div>
             </div>
 
-        </form></ng-container>
+        </form>
     `,
 })
 class TestComponent {

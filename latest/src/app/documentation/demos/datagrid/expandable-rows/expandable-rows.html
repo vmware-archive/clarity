@@ -37,6 +37,16 @@
 <clr-code-snippet [clrCode]="examples.replace" clrLanguage="html"></clr-code-snippet>
 
 <p>
+    Sometimes you want to conditionally display the expandable row, depending on if the given row has any
+    content to expand. In order to handle this, you'll need to wrap your expandable row in a conditional 
+    <code class="clr-code">*ngIf</code> directive to handle this, but since you can't put two structural directives
+    on the same element you'll need to use <code class="clr-code">NgContainer</code> and <code class="clr-code">ngProjectAs</code>
+    like you see here in the following snippet.
+</p>
+
+<clr-code-snippet [clrCode]="examples.conditional" clrLanguage="html"></clr-code-snippet>
+
+<p>
     Finally, you might need to make a server call to get the details for a row before you can display them.
     This is a very common lazy loading pattern. In this case, you need to add a
     <code class="clr-code">[clrLoading]</code> directive receiving a boolean <em>anywhere in the row</em>.

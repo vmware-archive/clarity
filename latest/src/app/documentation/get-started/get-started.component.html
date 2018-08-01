@@ -11,7 +11,8 @@
     </p>
     <h2 id="howToUse">How to Use Clarity</h2>
     <p>We offer three approaches for utilizing Clarity: just the UX guidelines, UX guidelines and our HTML/CSS framework, or put everything together with our Angular implementation.</p>
-    <h3 id="designResources">Using Clarity Design Resources</h3>
+    
+    <h3 id="designResources">UX Guidelines: Using Clarity Design Resources</h3>
     <p>Jumpstart your project with one of our Sketch-based design resources. Start by downloading the
         <a href="https://github.com/chrismsimpson/Metropolis" target="_blank">
             Metropolis fonts
@@ -35,7 +36,14 @@
         </a>
     </div>
 
-    <h3 id="angularCLI">Installing with the Angular CLI (Recommended)</h3>
+    <h3 id="uiInstallation">HTML/CSS Framework</h3>
+    <p>If you just want to use our HTML/CSS implementations, you need to get the latest code from NPM and then add the assets to your project.</p>
+    <p><clr-code-snippet [clrCode]="'npm install @clr/ui --save'" [clrDisablePrism]="true"></clr-code-snippet></p>
+    <p>You'll need to include one of the files found at <code class="clr-code">node_modules/@clr/ui/clr-ui.min.css</code> for the normal theme or <code class="clr-code">node_modules/@clr/ui/clr-ui-dark.min.css</code> for the dark theme into your build tooling.</p>
+    <p>You can also load this CSS file from a CDN like you see below. See <a href="https://unpkg.com/#/">unpkg.com</a> for more details.</p>
+    <p><clr-code-snippet [clrCode]="uiCdn" clrLanguage="html"></clr-code-snippet></p>
+
+    <h3 id="angularCLI">Angular Option 1: Installing using Angular CLI (Recommended)</h3>
     <p>For any Angular application, which uses the CLI v6 or greater, we recommend using the <code class="clr-code">ng add</code> feature of the CLI to install Clarity for you. This works regardless if you have a brand new application, or one that you've been working on for some time, just as long as you have Angular 6 setup.</p>
     <div class="alert alert-info">
         <div class="alert-items">
@@ -69,31 +77,7 @@
     <p>If you are using the Angular CLI with multiple projects, you can specify which project to add Clarity to by using the <code class="clr-code">--project PROJETNAME</code> flag.</p>
     <p></p>
 
-    <h3 id="seedProjectClarity">Starting With a Clarity Seed Project</h3>
-    <p>For a new project, another approach is to clone the Clarity seed project and modify it to fit your needs. The
-        seed project is integrated with @clr/ui and @clr/angular, so you don’t need to install Clarity
-        separately.
-    </p>
-    <p></p>
-    <ol class="list">
-        <li>Clone the seed app:
-            <clr-code-snippet
-                    [clrCode]="'git clone https://github.com/vmware/clarity-seed.git'"
-                    [clrDisablePrism]="true"></clr-code-snippet>
-        </li>
-        <li>Install the dependencies:
-            <clr-code-snippet
-                    [clrCode]="'npm install'"
-                    [clrDisablePrism]="true"></clr-code-snippet>
-        </li>
-        <li>Run the seed app:
-            <clr-code-snippet
-                    [clrCode]="'npm start'"
-                    [clrDisablePrism]="true"></clr-code-snippet>
-        </li>
-    </ol>
-
-    <h3 id="seedProjectAngular">Manually adding Clarity to an Angular project</h3>
+    <h3 id="seedProjectAngular">Angular Option 2: Manually adding Clarity to an Angular project</h3>
     <p>You can build an Angular app, then install Clarity onto your project.</p>
     <h4 id="step-1-build-an-angular-2-app">Step 1: Build an Angular App</h4>
     <p></p>

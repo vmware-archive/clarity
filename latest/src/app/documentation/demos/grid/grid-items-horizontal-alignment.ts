@@ -51,7 +51,7 @@ const EXAMPLE_3 = `
 `;
 
 const EXAMPLE_4 = `
-<div class="clr-row clr-justify-content-between">
+<div class="clr-row clr-justify-content-around">
     <div class="clr-col-4">
         <span>
             1/3
@@ -66,7 +66,7 @@ const EXAMPLE_4 = `
 `;
 
 const EXAMPLE_5 = `
-<div class="clr-row clr-justify-content-around">
+<div class="clr-row clr-justify-content-between">
     <div class="clr-col-4">
         <span>
             1/3

@@ -48,5 +48,13 @@ class MyDetailComponent implements OnInit {
         fetchRemoteDetail(user).then(() => this.loading = false));
     }
 }
+`,
+
+    conditional: `
+<ng-container ngProjectAs="clr-dg-row-detail" *ngIf="true">
+  <clr-dg-row-detail *clrIfExpanded>
+    Lorem ipsum...
+  </clr-dg-row-detail>
+</ng-container>
 `
 };

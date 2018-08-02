@@ -424,6 +424,39 @@ export default function(): void {
                    {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
            });
 
+        it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '0 20'",
+           function() {
+               const tolerance = {top: 0, right: 20, bottom: 0, left: 20};
+               this.testComponent.tolerance = "0 20";
+               this.fixture.detectChanges();
+               this.eventBus.broadcast(mockDragStartEventInt);
+               expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
+               this.checkDropTolerance(
+                   {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
+           });
+
+        it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '0 0 20'",
+           function() {
+               const tolerance = {top: 0, right: 0, bottom: 20, left: 0};
+               this.testComponent.tolerance = "0 0 20";
+               this.fixture.detectChanges();
+               this.eventBus.broadcast(mockDragStartEventInt);
+               expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
+               this.checkDropTolerance(
+                   {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
+           });
+
+        it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '0 0 0 0'",
+           function() {
+               const tolerance = {top: 0, right: 0, bottom: 0, left: 0};
+               this.testComponent.tolerance = "0 0 0 0";
+               this.fixture.detectChanges();
+               this.eventBus.broadcast(mockDragStartEventInt);
+               expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
+               this.checkDropTolerance(
+                   {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
+           });
+
         it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '20 40 10'",
            function() {
                const tolerance = {top: 20, right: 40, bottom: 10, left: 40};

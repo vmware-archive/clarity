@@ -21,13 +21,6 @@
         "img": "eudes.png",
         "workstreams": ["UI", "CR", "NG"]
     }, {
-        "name": "Aditya Bhandari",
-        "role": "Developer",
-        "blurb": "Aditya is one of the first developers to join the Clarity team. He leads the direction of clarityUI and has built many Angular components for the library. He also collaborates with the UX team on interaction and visual design of new components.",
-        "twitter": "adityarb",
-        "img": "adityab.png",
-        "workstreams": ["UI", "CR", "NG"]
-    }, {
         "name": "Jeeyun Lim",
         "role": "Developer",
         "blurb": "Jeeyun is working on clarityCORE, which encompasses various tools for building, developing, and shipping Clarity. She's also creating Clarity's Angular components and making sure that the components are beautiful as well as sensible and functional.",

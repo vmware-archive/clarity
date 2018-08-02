@@ -51,10 +51,10 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
         this._group = value;
     }
 
-    private _dropTolerance: ClrDropTolerance = {top: 0, right: 0, bottom: 0, left: 0 };
+    private _dropTolerance: ClrDropTolerance = {top: 0, right: 0, bottom: 0, left: 0};
 
     private dropToleranceGenerator(top?: any, right?: any, bottom?: any, left?: any): ClrDropTolerance {
-        return {top: top, right: right || top, bottom: bottom || top, left: left || right || top };
+        return {top: top, right: right || top, bottom: bottom || top, left: left || right || top};
     }
 
     @Input("clrDropTolerance")

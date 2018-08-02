@@ -277,19 +277,22 @@ class TestComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.dragEventListener.attachDragListeners(this.draggableButtonRef.nativeElement);
 
-        this.subscriptions.push(this.dragEventListener.dragStarted.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
-            this.dragEvent = event;
-            this.dragStartFired = true;
-        }));
-        this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
-            this.dragEvent = event;
-            this.dragMoveFired = true;
-            this.nbDragMoveFired++;
-        }));
-        this.subscriptions.push(this.dragEventListener.dragEnded.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
-            this.dragEvent = event;
-            this.dragEndFired = true;
-        }));
+        this.subscriptions.push(
+            this.dragEventListener.dragStarted.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
+                this.dragEvent = event;
+                this.dragStartFired = true;
+            }));
+        this.subscriptions.push(
+            this.dragEventListener.dragMoved.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
+                this.dragEvent = event;
+                this.dragMoveFired = true;
+                this.nbDragMoveFired++;
+            }));
+        this.subscriptions.push(
+            this.dragEventListener.dragEnded.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
+                this.dragEvent = event;
+                this.dragEndFired = true;
+            }));
 
         this.subscriptions.push(this.eventBus.dragStarted.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
             this.dragStartDispatched = true;

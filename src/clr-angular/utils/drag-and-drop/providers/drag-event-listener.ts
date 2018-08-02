@@ -7,7 +7,7 @@ import {Injectable, NgZone, Renderer2} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 
-import {ClrDragEvent, ClrDragEventType} from "../interfaces/drag-event";
+import {ClrDragEventInternal, ClrDragEventType} from "../interfaces/drag-event";
 import {ClrDragAndDropEventBus} from "./drag-and-drop-event-bus";
 
 @Injectable()
@@ -16,21 +16,21 @@ export class ClrDragEventListener<T> {
 
     private listeners: (() => void)[];
 
-    private dragStart: Subject<ClrDragEvent<T>> = new Subject<ClrDragEvent<T>>();
-    private dragMove: Subject<ClrDragEvent<T>> = new Subject<ClrDragEvent<T>>();
-    private dragEnd: Subject<ClrDragEvent<T>> = new Subject<ClrDragEvent<T>>();
+    private dragStart: Subject<ClrDragEventInternal<T>> = new Subject<ClrDragEventInternal<T>>();
+    private dragMove: Subject<ClrDragEventInternal<T>> = new Subject<ClrDragEventInternal<T>>();
+    private dragEnd: Subject<ClrDragEventInternal<T>> = new Subject<ClrDragEventInternal<T>>();
 
     private hasDragStarted: boolean = false;
 
-    get dragStarted(): Observable<ClrDragEvent<T>> {
+    get dragStarted(): Observable<ClrDragEventInternal<T>> {
         return this.dragStart.asObservable();
     }
 
-    get dragMoved(): Observable<ClrDragEvent<T>> {
+    get dragMoved(): Observable<ClrDragEventInternal<T>> {
         return this.dragMove.asObservable();
     }
 
-    get dragEnded(): Observable<ClrDragEvent<T>> {
+    get dragEnded(): Observable<ClrDragEventInternal<T>> {
         return this.dragEnd.asObservable();
     }
 
@@ -99,7 +99,7 @@ export class ClrDragEventListener<T> {
     }
 
     private broadcast(event: MouseEvent|TouchEvent, eventType: ClrDragEventType): void {
-        const dragEvent: ClrDragEvent<T> = this.generateDragEvent(event, eventType);
+        const dragEvent: ClrDragEventInternal<T> = this.generateDragEvent(event, eventType);
 
         switch (dragEvent.type) {
             case ClrDragEventType.DRAG_START:
@@ -123,7 +123,7 @@ export class ClrDragEventListener<T> {
         this.eventBus.broadcast(dragEvent);
     }
 
-    private generateDragEvent(event: MouseEvent|TouchEvent, eventType: ClrDragEventType): ClrDragEvent<T> {
+    private generateDragEvent(event: MouseEvent|TouchEvent, eventType: ClrDragEventType): ClrDragEventInternal<T> {
         let nativeEvent: any;
 
         if ((<TouchEvent>event).hasOwnProperty("changedTouches")) {

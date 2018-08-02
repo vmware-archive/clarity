@@ -7,8 +7,8 @@ import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, R
 import {Subscription} from "rxjs/Subscription";
 
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
-import {ClrDragEventExt} from "../drag-event-external";
-import {ClrDragEvent, ClrDragEventType} from "../interfaces/drag-event";
+import {ClrDragEvent} from "../drag-event";
+import {ClrDragEventInternal, ClrDragEventType} from "../interfaces/drag-event";
 import {ClrDropTolerance} from "../interfaces/drop-tolerance";
 import {ClrDragAndDropEventBus} from "../providers/drag-and-drop-event-bus";
 
@@ -45,72 +45,39 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     }
 
     private _group: string|string[];
-    private _dropTolerance: ClrDropTolerance = {top: 0, right: 0, bottom: 0, left: 0};
 
     @Input("clrGroup")
     set group(value: string|string[]) {
         this._group = value;
     }
 
+    private _dropTolerance: ClrDropTolerance = {top: 0, right: 0, bottom: 0, left: 0 };
+
+    private dropToleranceGenerator(top?: any, right?: any, bottom?: any, left?: any): ClrDropTolerance {
+        return {top: top, right: right || top, bottom: bottom || top, left: left || right || top };
+    }
+
     @Input("clrDropTolerance")
     set dropTolerance(value: number|string|ClrDropTolerance) {
         if (typeof value === "number") {
-            this._dropTolerance.top = value;
-            this._dropTolerance.right = value;
-            this._dropTolerance.bottom = value;
-            this._dropTolerance.left = value;
+            this._dropTolerance = this.dropToleranceGenerator(value);
         } else if (typeof value === "string") {
             const toleranceValues = value.trim().split(/\s+/).map((tolerance) => parseInt(tolerance, 10));
-            switch (toleranceValues.length) {
-                case 1:
-                    this._dropTolerance.top = toleranceValues[0];
-                    this._dropTolerance.right = toleranceValues[0];
-                    this._dropTolerance.bottom = toleranceValues[0];
-                    this._dropTolerance.left = toleranceValues[0];
-                    break;
-                case 2:
-                    this._dropTolerance.top = toleranceValues[0];
-                    this._dropTolerance.right = toleranceValues[1];
-                    this._dropTolerance.bottom = toleranceValues[0];
-                    this._dropTolerance.left = toleranceValues[1];
-                    break;
-                case 3:
-                    this._dropTolerance.top = toleranceValues[0];
-                    this._dropTolerance.right = toleranceValues[1];
-                    this._dropTolerance.bottom = toleranceValues[2];
-                    this._dropTolerance.left = toleranceValues[1];
-                    break;
-                case 4:
-                    this._dropTolerance.top = toleranceValues[0];
-                    this._dropTolerance.right = toleranceValues[1];
-                    this._dropTolerance.bottom = toleranceValues[2];
-                    this._dropTolerance.left = toleranceValues[3];
-                    break;
-                default:
-                    break;
-            }
+            this._dropTolerance = this.dropToleranceGenerator(...toleranceValues);
         } else if (value) {
-            if (value.top) {
-                this._dropTolerance.top = value.top;
-            }
-            if (value.right) {
-                this._dropTolerance.right = value.right;
-            }
-            if (value.bottom) {
-                this._dropTolerance.bottom = value.bottom;
-            }
-            if (value.left) {
-                this._dropTolerance.left = value.left;
-            }
+            // The value could be passed in as {left: 20, top: 30 }
+            // In this case, the rest of the direction properties should be 0.
+            // That's why we initialize properties with 0 first, then override with user's given value.
+            this._dropTolerance = {...this.dropToleranceGenerator(0), ...value};
         }
     }
 
-    @Output("clrDragStart") dragStartEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
-    @Output("clrDragMove") dragMoveEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
-    @Output("clrDragEnd") dragEndEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
-    @Output("clrDragLeave") dragLeaveEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
-    @Output("clrDragEnter") dragEnterEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
-    @Output("clrDrop") dropEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
+    @Output("clrDragStart") dragStartEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
+    @Output("clrDragMove") dragMoveEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
+    @Output("clrDragEnd") dragEndEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
+    @Output("clrDragLeave") dragLeaveEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
+    @Output("clrDragEnter") dragEnterEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
+    @Output("clrDrop") dropEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
 
     private unsubscribeFrom(subscription: Subscription): void {
         if (subscription) {
@@ -174,40 +141,40 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
         }
     }
 
-    private onDragStart(dragStartEvent: ClrDragEvent<T>): void {
+    private onDragStart(dragStartEvent: ClrDragEventInternal<T>): void {
         // Check draggable and droppable have a matching group key.
         this.isDraggableMatch = this.checkGroupMatch(dragStartEvent.group);
 
         // Subscribe to dragMoved and dragEnded only if draggable and droppable have a matching group key.
         if (this.isDraggableMatch) {
-            this.dragStartEmitter.emit(new ClrDragEventExt(dragStartEvent));
-            this.dragMoveSubscription = this.eventBus.dragMoved.subscribe((dragMoveEvent: ClrDragEvent<T>) => {
+            this.dragStartEmitter.emit(new ClrDragEvent(dragStartEvent));
+            this.dragMoveSubscription = this.eventBus.dragMoved.subscribe((dragMoveEvent: ClrDragEventInternal<T>) => {
                 this.onDragMove(dragMoveEvent);
             });
-            this.dragEndSubscription = this.eventBus.dragEnded.subscribe((dragEndEvent: ClrDragEvent<T>) => {
+            this.dragEndSubscription = this.eventBus.dragEnded.subscribe((dragEndEvent: ClrDragEventInternal<T>) => {
                 this.onDragEnd(dragEndEvent);
             });
         }
     }
 
-    private onDragMove(dragMoveEvent: ClrDragEvent<T>): void {
+    private onDragMove(dragMoveEvent: ClrDragEventInternal<T>): void {
         const isInDropArea = this.isInDropArea(dragMoveEvent.dropPointPosition);
         if (!this._isDraggableOver && isInDropArea) {
             this.isDraggableOver = true;
             const dragEnterEvent = {...dragMoveEvent, type: ClrDragEventType.DRAG_ENTER};
             this.eventBus.broadcast(dragEnterEvent);
-            this.dragEnterEmitter.emit(new ClrDragEventExt(dragEnterEvent));
+            this.dragEnterEmitter.emit(new ClrDragEvent(dragEnterEvent));
         } else if (this._isDraggableOver && !isInDropArea) {
             this.isDraggableOver = false;
             const dragLeaveEvent = {...dragMoveEvent, type: ClrDragEventType.DRAG_LEAVE};
             this.eventBus.broadcast(dragLeaveEvent);
-            this.dragLeaveEmitter.emit(new ClrDragEventExt(dragLeaveEvent));
+            this.dragLeaveEmitter.emit(new ClrDragEvent(dragLeaveEvent));
         }
 
-        this.dragMoveEmitter.emit(new ClrDragEventExt(dragMoveEvent));
+        this.dragMoveEmitter.emit(new ClrDragEvent(dragMoveEvent));
     }
 
-    private onDragEnd(dragEndEvent: ClrDragEvent<T>): void {
+    private onDragEnd(dragEndEvent: ClrDragEventInternal<T>): void {
         if (this._isDraggableOver) {
             if (dragEndEvent.ghostElement) {
                 // By this point, the draggable ghost component is destroyed,
@@ -222,10 +189,10 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
 
             const dropEvent = {...dragEndEvent, type: ClrDragEventType.DROP};
             this.eventBus.broadcast(dropEvent);
-            this.dropEmitter.emit(new ClrDragEventExt(dropEvent));
+            this.dropEmitter.emit(new ClrDragEvent(dropEvent));
             this.isDraggableOver = false;
         }
-        this.dragEndEmitter.emit(new ClrDragEventExt(dragEndEvent));
+        this.dragEndEmitter.emit(new ClrDragEvent(dragEndEvent));
         this.unsubscribeFrom(this.dragMoveSubscription);
         this.unsubscribeFrom(this.dragEndSubscription);
         this.isDraggableMatch = false;
@@ -233,7 +200,7 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.dragStartSubscription = this.eventBus.dragStarted.subscribe((dragStartEvent: ClrDragEvent<T>) => {
+        this.dragStartSubscription = this.eventBus.dragStarted.subscribe((dragStartEvent: ClrDragEventInternal<T>) => {
             this.onDragStart(dragStartEvent);
         });
     }

@@ -20,10 +20,10 @@ import {Input} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
-import {ClrDragEventExt} from "../drag-event-external";
+import {ClrDragEvent} from "../drag-event";
 import {ClrDraggableGhost} from "../draggable-ghost";
 import {ClrIfDragged} from "../if-dragged";
-import {ClrDragEvent} from "../interfaces/drag-event";
+import {ClrDragEventInternal} from "../interfaces/drag-event";
 import {ClrDragEventListener} from "../providers/drag-event-listener";
 import {ClrDragHandleRegistrar} from "../providers/drag-handle-registrar";
 import {ClrDraggableSnapshot} from "../providers/draggable-snapshot";
@@ -60,7 +60,7 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
         this.dragEventListener.group = value;
     }
 
-    private createDefaultGhost(event: ClrDragEvent<T>) {
+    private createDefaultGhost(event: ClrDragEventInternal<T>) {
         this.draggableSnapshot.capture(this.draggableEl, event);
         // NOTE: The default ghost element will appear
         // next to the clrDraggable in the DOM as a sibling element.
@@ -73,32 +73,32 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
         this.draggableSnapshot.discard();
     }
 
-    @Output("clrDragStart") dragStartEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
-    @Output("clrDragMove") dragMoveEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
-    @Output("clrDragEnd") dragEndEmitter: EventEmitter<ClrDragEventExt<T>> = new EventEmitter();
+    @Output("clrDragStart") dragStartEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
+    @Output("clrDragMove") dragMoveEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
+    @Output("clrDragEnd") dragEndEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
 
     ngAfterContentInit() {
         this.dragHandleRegistrar.defaultHandleEl = this.draggableEl;
 
-        this.subscriptions.push(this.dragEventListener.dragStarted.subscribe((event: ClrDragEvent<T>) => {
+        this.subscriptions.push(this.dragEventListener.dragStarted.subscribe((event: ClrDragEventInternal<T>) => {
             this.globalDragMode.enter();
             this.dragOn = true;
             if (!this.customGhost) {
                 this.createDefaultGhost(event);
             }
 
-            this.dragStartEmitter.emit(new ClrDragEventExt(event));
+            this.dragStartEmitter.emit(new ClrDragEvent(event));
         }));
-        this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
-            this.dragMoveEmitter.emit(new ClrDragEventExt(event));
+        this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEventInternal<T>) => {
+            this.dragMoveEmitter.emit(new ClrDragEvent(event));
         }));
-        this.subscriptions.push(this.dragEventListener.dragEnded.subscribe((event: ClrDragEvent<T>) => {
+        this.subscriptions.push(this.dragEventListener.dragEnded.subscribe((event: ClrDragEventInternal<T>) => {
             this.globalDragMode.exit();
             this.dragOn = false;
             if (!this.customGhost) {
                 this.destroyDefaultGhost();
             }
-            this.dragEndEmitter.emit(new ClrDragEventExt(event));
+            this.dragEndEmitter.emit(new ClrDragEvent(event));
         }));
     }
 

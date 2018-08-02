@@ -8,7 +8,7 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {Subscription} from "rxjs/Subscription";
 
 import {emulateDragEvent} from "../helpers.spec";
-import {ClrDragEvent} from "../interfaces/drag-event";
+import {ClrDragEventInternal} from "../interfaces/drag-event";
 import {ClrDragAndDropEventBus} from "./drag-and-drop-event-bus";
 import {ClrDragEventListener} from "./drag-event-listener";
 
@@ -16,7 +16,7 @@ type DragTransfer = {
     data: any;
 };
 
-const expectEventPropValues = <T>(event: ClrDragEvent<T>) => {
+const expectEventPropValues = <T>(event: ClrDragEventInternal<T>) => {
     return {
         toBe: (element: Node, pageX: number, pageY: number, dragTransfer?: T, group?: string|string[]) => {
             expect(event.dragPosition.pageX).toBe(pageX);
@@ -263,7 +263,7 @@ class TestComponent implements OnInit, OnDestroy {
     dragMoveFired = false;
     dragEndFired = false;
 
-    dragEvent: ClrDragEvent<DragTransfer>;
+    dragEvent: ClrDragEventInternal<DragTransfer>;
 
     nbDragMoveFired = 0;
 
@@ -277,27 +277,27 @@ class TestComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.dragEventListener.attachDragListeners(this.draggableButtonRef.nativeElement);
 
-        this.subscriptions.push(this.dragEventListener.dragStarted.subscribe((event: ClrDragEvent<DragTransfer>) => {
+        this.subscriptions.push(this.dragEventListener.dragStarted.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
             this.dragEvent = event;
             this.dragStartFired = true;
         }));
-        this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<DragTransfer>) => {
+        this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
             this.dragEvent = event;
             this.dragMoveFired = true;
             this.nbDragMoveFired++;
         }));
-        this.subscriptions.push(this.dragEventListener.dragEnded.subscribe((event: ClrDragEvent<DragTransfer>) => {
+        this.subscriptions.push(this.dragEventListener.dragEnded.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
             this.dragEvent = event;
             this.dragEndFired = true;
         }));
 
-        this.subscriptions.push(this.eventBus.dragStarted.subscribe((event: ClrDragEvent<DragTransfer>) => {
+        this.subscriptions.push(this.eventBus.dragStarted.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
             this.dragStartDispatched = true;
         }));
-        this.subscriptions.push(this.eventBus.dragMoved.subscribe((event: ClrDragEvent<DragTransfer>) => {
+        this.subscriptions.push(this.eventBus.dragMoved.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
             this.dragMoveDispatched = true;
         }));
-        this.subscriptions.push(this.eventBus.dragEnded.subscribe((event: ClrDragEvent<DragTransfer>) => {
+        this.subscriptions.push(this.eventBus.dragEnded.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
             this.dragEndDispatched = true;
         }));
     }

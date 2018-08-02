@@ -7,7 +7,7 @@ import {animate, style, transition, trigger} from "@angular/animations";
 import {Component, ElementRef, HostBinding, NgZone, OnDestroy, Optional, Renderer2} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
-import {ClrDragEvent} from "./interfaces/drag-event";
+import {ClrDragEventInternal} from "./interfaces/drag-event";
 import {ClrDragEventListener} from "./providers/drag-event-listener";
 import {ClrDraggableSnapshot} from "./providers/draggable-snapshot";
 
@@ -63,7 +63,7 @@ export class ClrDraggableGhost<T> implements OnDestroy {
 
         let isAnimationConfigured: boolean = false;
 
-        this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
+        this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEventInternal<T>) => {
             // On the first drag move event, we configure the animation as it's dependent on the first drag event.
             if (!isAnimationConfigured) {
                 if (this.draggableSnapshot.hasDraggableState) {

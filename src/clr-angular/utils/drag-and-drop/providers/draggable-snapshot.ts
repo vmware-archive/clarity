@@ -5,7 +5,7 @@
  */
 import {Injectable} from "@angular/core";
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
-import {ClrDragEvent} from "../interfaces/drag-event";
+import {ClrDragEventInternal} from "../interfaces/drag-event";
 
 // This service is used to capture the state of clrDraggable element
 // at a certain event and passes it to clrDraggableGhost component.
@@ -14,9 +14,9 @@ export class ClrDraggableSnapshot<T> {
     constructor(private domAdapter: DomAdapter) {}
 
     private draggableElClientRect: ClientRect;
-    private snapshotDragEvent: ClrDragEvent<T>;
+    private snapshotDragEvent: ClrDragEventInternal<T>;
 
-    public capture(el: Node, event: ClrDragEvent<T>): void {
+    public capture(el: Node, event: ClrDragEventInternal<T>): void {
         this.draggableElClientRect = this.domAdapter.clientRect(el);
         this.snapshotDragEvent = event;
     }
@@ -30,7 +30,7 @@ export class ClrDraggableSnapshot<T> {
     get clientRect(): ClientRect {
         return this.draggableElClientRect;
     }
-    get dragEvent(): ClrDragEvent<T> {
+    get dragEvent(): ClrDragEventInternal<T> {
         return this.snapshotDragEvent;
     }
 }

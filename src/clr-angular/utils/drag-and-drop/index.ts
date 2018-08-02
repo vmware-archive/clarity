@@ -16,6 +16,7 @@ export * from "./droppable/droppable";
 export * from "./if-dragged";
 export * from "./drag-handle";
 export * from "./draggable-ghost";
+export * from "./drag-event";
 
 export const DRAG_AND_DROP_DIRECTIVES: Type<any>[] =
     [ClrDraggable, ClrDroppable, ClrIfDragged, ClrDragHandle, ClrDraggableGhost];

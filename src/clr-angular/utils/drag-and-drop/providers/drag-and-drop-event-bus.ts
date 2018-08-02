@@ -7,32 +7,32 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 
-import {ClrDragEvent, ClrDragEventType} from "../interfaces/drag-event";
+import {ClrDragEventInternal, ClrDragEventType} from "../interfaces/drag-event";
 
 @Injectable()
 export class ClrDragAndDropEventBus<T> {
-    private dragStart: Subject<ClrDragEvent<T>> = new Subject<ClrDragEvent<T>>();
-    private dragMove: Subject<ClrDragEvent<T>> = new Subject<ClrDragEvent<T>>();
-    private dragEnd: Subject<ClrDragEvent<T>> = new Subject<ClrDragEvent<T>>();
-    private drop: Subject<ClrDragEvent<T>> = new Subject<ClrDragEvent<T>>();
+    private dragStart: Subject<ClrDragEventInternal<T>> = new Subject<ClrDragEventInternal<T>>();
+    private dragMove: Subject<ClrDragEventInternal<T>> = new Subject<ClrDragEventInternal<T>>();
+    private dragEnd: Subject<ClrDragEventInternal<T>> = new Subject<ClrDragEventInternal<T>>();
+    private drop: Subject<ClrDragEventInternal<T>> = new Subject<ClrDragEventInternal<T>>();
 
-    get dragStarted(): Observable<ClrDragEvent<T>> {
+    get dragStarted(): Observable<ClrDragEventInternal<T>> {
         return this.dragStart.asObservable();
     }
 
-    get dragMoved(): Observable<ClrDragEvent<T>> {
+    get dragMoved(): Observable<ClrDragEventInternal<T>> {
         return this.dragMove.asObservable();
     }
 
-    get dragEnded(): Observable<ClrDragEvent<T>> {
+    get dragEnded(): Observable<ClrDragEventInternal<T>> {
         return this.dragEnd.asObservable();
     }
 
-    get dropped(): Observable<ClrDragEvent<T>> {
+    get dropped(): Observable<ClrDragEventInternal<T>> {
         return this.drop.asObservable();
     }
 
-    broadcast(event: ClrDragEvent<T>): void {
+    broadcast(event: ClrDragEventInternal<T>): void {
         switch (event.type) {
             case ClrDragEventType.DRAG_START:
                 this.dragStart.next(event);

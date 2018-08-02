@@ -10,8 +10,8 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
 import {ClrDragAndDropModule} from "../drag-and-drop.module";
-import {ClrDragEventExt} from "../drag-event-external";
-import {ClrDragEvent, ClrDragEventType} from "../interfaces/drag-event";
+import {ClrDragEvent} from "../drag-event";
+import {ClrDragEventInternal, ClrDragEventType} from "../interfaces/drag-event";
 import {ClrDragEventListener} from "../providers/drag-event-listener";
 import {MOCK_DRAG_EVENT_LISTENER_PROVIDER} from "../providers/drag-event-listener.mock";
 import {ClrDragHandleRegistrar} from "../providers/drag-handle-registrar";
@@ -21,22 +21,22 @@ import {ClrDraggable} from "./draggable";
 
 export default function(): void {
     describe("Basic Draggable", function() {
-        let mockDragStartEventInt: ClrDragEvent<any>;
-        let mockDragMoveEventInt: ClrDragEvent<any>;
-        let mockDragEndEventInt: ClrDragEvent<any>;
+        let mockDragStartEventInt: ClrDragEventInternal<any>;
+        let mockDragMoveEventInt: ClrDragEventInternal<any>;
+        let mockDragEndEventInt: ClrDragEventInternal<any>;
 
-        let mockDragStartEventExt: ClrDragEventExt<any>;
-        let mockDragMoveEventExt: ClrDragEventExt<any>;
-        let mockDragEndEventExt: ClrDragEventExt<any>;
+        let mockDragStartEventExt: ClrDragEvent<any>;
+        let mockDragMoveEventExt: ClrDragEvent<any>;
+        let mockDragEndEventExt: ClrDragEvent<any>;
 
         beforeEach(function() {
             mockDragStartEventInt = {type: ClrDragEventType.DRAG_START, dragPosition: {pageX: 11, pageY: 22}};
             mockDragMoveEventInt = {type: ClrDragEventType.DRAG_MOVE, dragPosition: {pageX: 33, pageY: 44}};
             mockDragEndEventInt = {type: ClrDragEventType.DRAG_END, dragPosition: {pageX: 77, pageY: 88}};
 
-            mockDragStartEventExt = new ClrDragEventExt(mockDragStartEventInt);
-            mockDragMoveEventExt = new ClrDragEventExt(mockDragMoveEventInt);
-            mockDragEndEventExt = new ClrDragEventExt(mockDragEndEventInt);
+            mockDragStartEventExt = new ClrDragEvent(mockDragStartEventInt);
+            mockDragMoveEventExt = new ClrDragEvent(mockDragMoveEventInt);
+            mockDragEndEventExt = new ClrDragEvent(mockDragEndEventInt);
 
             TestBed.configureTestingModule(
                 {imports: [ClrDragAndDropModule, NoopAnimationsModule], declarations: [BasicDraggableTest]});
@@ -149,7 +149,7 @@ export default function(): void {
         `<div clrDraggable (clrDragStart)="dragStartEvent=$event;" (clrDragMove)="dragMoveEvent=$event;" (clrDragEnd)="dragEndEvent=$event;">Test</div>`
 })
 class BasicDraggableTest {
-    dragStartEvent: ClrDragEventExt<any>;
-    dragMoveEvent: ClrDragEventExt<any>;
-    dragEndEvent: ClrDragEventExt<any>;
+    dragStartEvent: ClrDragEvent<any>;
+    dragMoveEvent: ClrDragEvent<any>;
+    dragEndEvent: ClrDragEvent<any>;
 }

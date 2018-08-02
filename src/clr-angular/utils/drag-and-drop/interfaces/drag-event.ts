@@ -12,7 +12,7 @@ export enum ClrDragEventType {
     DROP
 }
 
-export interface ClrDragEvent<T> {
+export interface ClrDragEventInternal<T> {
     type: ClrDragEventType;
     group?: string|string[];
     ghostElement?: any;

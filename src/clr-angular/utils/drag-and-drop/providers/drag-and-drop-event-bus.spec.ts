@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {ClrDragEvent, ClrDragEventType} from "../interfaces/drag-event";
+import {ClrDragEventInternal, ClrDragEventType} from "../interfaces/drag-event";
 import {ClrDragAndDropEventBus} from "./drag-and-drop-event-bus";
 
 type DragTransfer = {
@@ -14,7 +14,7 @@ export default function(): void {
     describe("Drag And Drop Event Bus Provider", function() {
         const dndEventBus = new ClrDragAndDropEventBus();
         const dragEventMockObj =
-            (dragEventType: ClrDragEventType, dragDataTransfer?: DragTransfer): ClrDragEvent<DragTransfer> => {
+            (dragEventType: ClrDragEventType, dragDataTransfer?: DragTransfer): ClrDragEventInternal<DragTransfer> => {
                 return {type: dragEventType, dragPosition: {pageX: 0, pageY: 0}, dragDataTransfer: dragDataTransfer};
             };
         let isEmitted: boolean;
@@ -24,7 +24,7 @@ export default function(): void {
         });
 
         it("should broadcast from correct Observable on drag start event type", function() {
-            dndEventBus.dragStarted.subscribe((event: ClrDragEvent<DragTransfer>) => {
+            dndEventBus.dragStarted.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
                 isEmitted = true;
                 expect(event.type).toBe(ClrDragEventType.DRAG_START);
             });
@@ -33,7 +33,7 @@ export default function(): void {
         });
 
         it("should broadcast from correct Observable on drag move event type", function() {
-            dndEventBus.dragMoved.subscribe((event: ClrDragEvent<DragTransfer>) => {
+            dndEventBus.dragMoved.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
                 isEmitted = true;
                 expect(event.type).toBe(ClrDragEventType.DRAG_MOVE);
             });
@@ -42,7 +42,7 @@ export default function(): void {
         });
 
         it("should broadcast from correct Observable on drag end event type", function() {
-            dndEventBus.dragEnded.subscribe((event: ClrDragEvent<DragTransfer>) => {
+            dndEventBus.dragEnded.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
                 isEmitted = true;
                 expect(event.type).toBe(ClrDragEventType.DRAG_END);
             });
@@ -51,7 +51,7 @@ export default function(): void {
         });
 
         it("should broadcast from correct Observable on drop event type", function() {
-            dndEventBus.dropped.subscribe((event: ClrDragEvent<DragTransfer>) => {
+            dndEventBus.dropped.subscribe((event: ClrDragEventInternal<DragTransfer>) => {
                 isEmitted = true;
                 expect(event.type).toBe(ClrDragEventType.DROP);
             });

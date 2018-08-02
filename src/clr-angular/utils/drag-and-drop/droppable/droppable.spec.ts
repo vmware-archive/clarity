@@ -382,17 +382,16 @@ export default function(): void {
                 {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
         });
 
-        it("can register dragEnter if dropPointPosition is within drop tolerance added as one string number",
-           function() {
-               const tolerance = 20;
-               this.testComponent.tolerance = "20";
-               this.fixture.detectChanges();
-               this.eventBus.broadcast(mockDragStartEventInt);
-               expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
-               this.checkDropTolerance({top: tolerance, right: tolerance, bottom: tolerance, left: tolerance});
-           });
+        it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '20'", function() {
+            const tolerance = 20;
+            this.testComponent.tolerance = "20";
+            this.fixture.detectChanges();
+            this.eventBus.broadcast(mockDragStartEventInt);
+            expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
+            this.checkDropTolerance({top: tolerance, right: tolerance, bottom: tolerance, left: tolerance});
+        });
 
-        it("can register dragEnter if dropPointPosition is within drop tolerance added as two string numbers",
+        it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '20 40'",
            function() {
                const tolerance = {top: 20, right: 40, bottom: 20, left: 40};
                this.testComponent.tolerance = "20 40";
@@ -403,7 +402,29 @@ export default function(): void {
                    {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
            });
 
-        it("can register dragEnter if dropPointPosition is within drop tolerance added as three string numbers",
+        it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '20 0'",
+           function() {
+               const tolerance = {top: 20, right: 0, bottom: 20, left: 0};
+               this.testComponent.tolerance = "20 0";
+               this.fixture.detectChanges();
+               this.eventBus.broadcast(mockDragStartEventInt);
+               expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
+               this.checkDropTolerance(
+                   {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
+           });
+
+        it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '20 0 0'",
+           function() {
+               const tolerance = {top: 20, right: 0, bottom: 0, left: 0};
+               this.testComponent.tolerance = "20 0";
+               this.fixture.detectChanges();
+               this.eventBus.broadcast(mockDragStartEventInt);
+               expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
+               this.checkDropTolerance(
+                   {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
+           });
+
+        it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '20 40 10'",
            function() {
                const tolerance = {top: 20, right: 40, bottom: 10, left: 40};
                this.testComponent.tolerance = "20 40 10";
@@ -414,7 +435,7 @@ export default function(): void {
                    {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
            });
 
-        it("can register dragEnter if dropPointPosition is within drop tolerance added as four string numbers",
+        it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '20 40 10 30'",
            function() {
                const tolerance = {top: 20, right: 40, bottom: 10, left: 30};
                this.testComponent.tolerance = "20 40 10 30";

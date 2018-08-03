@@ -11,6 +11,7 @@ import {FormsDemo} from "./forms.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
 import {UtilsModule} from "../../../utils/utils.module";
+import { FormsExampleBlockComponent } from "./forms-example-block";
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import {UtilsModule} from "../../../utils/utils.module";
         UtilsModule
     ],
     declarations: [
-        FormsDemo
+        FormsDemo,
+        FormsExampleBlockComponent,
     ],
     exports: [
         FormsDemo

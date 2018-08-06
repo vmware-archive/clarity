@@ -312,7 +312,7 @@ export default function(): void {
                 return dragEvent;
             };
 
-            this.checkDropTolerance = function(tolerance: ClrDropTolerance) {
+            this.detectEnterOrLeaveAt = function(tolerance: ClrDropTolerance) {
                 expect(new ClrDragEvent({
                     ...this.broadcastEnterLeaveEventAt(400 - tolerance.left, 200 - tolerance.top),
                     type: ClrDragEventType.DRAG_ENTER
@@ -346,6 +346,19 @@ export default function(): void {
                     type: ClrDragEventType.DRAG_LEAVE
                 })).toEqual(this.testComponent.dragLeaveEvent);
             };
+
+            this.expectDropToleranceInput = function(userInput: number|string|ClrDropTolerance) {
+                this.testComponent.tolerance = userInput;
+                this.fixture.detectChanges();
+                this.eventBus.broadcast(mockDragStartEventInt);
+                expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
+
+                return {
+                    toBeCheckedAs: function(expectedResult: ClrDropTolerance) {
+                        this.detectEnterOrLeaveAt(expectedResult);
+                    }.bind(this)
+                };
+            };
         });
 
         afterEach(function() {
@@ -358,58 +371,38 @@ export default function(): void {
            function() {
                this.eventBus.broadcast(mockDragStartEventInt);
                expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
-               this.checkDropTolerance({top: 0, right: 0, bottom: 0, left: 0});
+               this.detectEnterOrLeaveAt({top: 0, right: 0, bottom: 0, left: 0});
            });
 
 
 
         it("can register dragEnter if dropPointPosition is within drop tolerance added as number", function() {
-            const tolerance = 20;
-            this.testComponent.tolerance = tolerance;
-            this.fixture.detectChanges();
-            this.eventBus.broadcast(mockDragStartEventInt);
-            expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
-            this.checkDropTolerance({top: tolerance, right: tolerance, bottom: tolerance, left: tolerance});
+            const tolerance: number = 20;
+            this.expectDropToleranceInput(tolerance).toBeCheckedAs(
+                {top: tolerance, right: tolerance, bottom: tolerance, left: tolerance});
         });
 
         it("can register dragEnter if dropPointPosition is within drop tolerance added as object", function() {
-            const tolerance = {top: 20, right: 40, bottom: 60, left: 80};
+            const tolerance: ClrDropTolerance = {top: 20, right: 40, bottom: 60, left: 80};
             this.testComponent.tolerance = tolerance;
-            this.fixture.detectChanges();
-            this.eventBus.broadcast(mockDragStartEventInt);
-            expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
-            this.checkDropTolerance(
-                {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
+            this.expectDropToleranceInput(tolerance).toBeCheckedAs(tolerance);
         });
 
         it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '20'", function() {
-            const tolerance = 20;
-            this.testComponent.tolerance = "20";
-            this.fixture.detectChanges();
-            this.eventBus.broadcast(mockDragStartEventInt);
-            expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
-            this.checkDropTolerance({top: tolerance, right: tolerance, bottom: tolerance, left: tolerance});
+            this.expectDropToleranceInput("20").toBeCheckedAs({top: 20, right: 20, bottom: 20, left: 20});
         });
 
         it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '20 40'",
            function() {
                const tolerance = {top: 20, right: 40, bottom: 20, left: 40};
-               this.testComponent.tolerance = "20 40";
-               this.fixture.detectChanges();
-               this.eventBus.broadcast(mockDragStartEventInt);
-               expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
-               this.checkDropTolerance(
+               this.expectDropToleranceInput("20 40").toBeCheckedAs(
                    {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
            });
 
         it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '20 0'",
            function() {
                const tolerance = {top: 20, right: 0, bottom: 20, left: 0};
-               this.testComponent.tolerance = "20 0";
-               this.fixture.detectChanges();
-               this.eventBus.broadcast(mockDragStartEventInt);
-               expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
-               this.checkDropTolerance(
+               this.expectDropToleranceInput("20 0").toBeCheckedAs(
                    {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
            });
 
@@ -417,66 +410,45 @@ export default function(): void {
            function() {
                const tolerance = {top: 20, right: 0, bottom: 0, left: 0};
                this.testComponent.tolerance = "20 0";
-               this.fixture.detectChanges();
-               this.eventBus.broadcast(mockDragStartEventInt);
-               expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
-               this.checkDropTolerance(
+               this.expectDropToleranceInput(tolerance).toBeCheckedAs(
                    {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
            });
 
         it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '0 20'",
            function() {
                const tolerance = {top: 0, right: 20, bottom: 0, left: 20};
-               this.testComponent.tolerance = "0 20";
-               this.fixture.detectChanges();
-               this.eventBus.broadcast(mockDragStartEventInt);
-               expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
-               this.checkDropTolerance(
+               this.expectDropToleranceInput("0 20").toBeCheckedAs(
                    {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
            });
 
         it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '0 0 20'",
            function() {
                const tolerance = {top: 0, right: 0, bottom: 20, left: 0};
-               this.testComponent.tolerance = "0 0 20";
-               this.fixture.detectChanges();
-               this.eventBus.broadcast(mockDragStartEventInt);
-               expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
-               this.checkDropTolerance(
+               this.expectDropToleranceInput("0 0 20").toBeCheckedAs(
                    {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
            });
 
         it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '0 0 0 0'",
            function() {
                const tolerance = {top: 0, right: 0, bottom: 0, left: 0};
-               this.testComponent.tolerance = "0 0 0 0";
-               this.fixture.detectChanges();
-               this.eventBus.broadcast(mockDragStartEventInt);
-               expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
-               this.checkDropTolerance(
+               this.expectDropToleranceInput("0 0 0 0").toBeCheckedAs(
                    {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
            });
 
         it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '20 40 10'",
            function() {
                const tolerance = {top: 20, right: 40, bottom: 10, left: 40};
-               this.testComponent.tolerance = "20 40 10";
-               this.fixture.detectChanges();
-               this.eventBus.broadcast(mockDragStartEventInt);
-               expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
-               this.checkDropTolerance(
-                   {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
+               this.expectDropToleranceInput("20 40 10")
+                   .toBeCheckedAs(
+                       {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
            });
 
         it("can register dragEnter if dropPointPosition is within drop tolerance added as string of '20 40 10 30'",
            function() {
                const tolerance = {top: 20, right: 40, bottom: 10, left: 30};
-               this.testComponent.tolerance = "20 40 10 30";
-               this.fixture.detectChanges();
-               this.eventBus.broadcast(mockDragStartEventInt);
-               expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
-               this.checkDropTolerance(
-                   {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
+               this.expectDropToleranceInput("20 40 10 30")
+                   .toBeCheckedAs(
+                       {top: tolerance.top, right: tolerance.right, bottom: tolerance.bottom, left: tolerance.left});
            });
     });
 }

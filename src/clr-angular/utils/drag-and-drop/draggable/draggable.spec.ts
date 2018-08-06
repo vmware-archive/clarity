@@ -11,7 +11,7 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
 import {ClrDragAndDropModule} from "../drag-and-drop.module";
 import {ClrDragEvent} from "../drag-event";
-import {ClrDragEventInternal, ClrDragEventType} from "../interfaces/drag-event";
+import {DragEvent, DragEventType} from "../interfaces/drag-event";
 import {ClrDragEventListener} from "../providers/drag-event-listener";
 import {MOCK_DRAG_EVENT_LISTENER_PROVIDER} from "../providers/drag-event-listener.mock";
 import {ClrDragHandleRegistrar} from "../providers/drag-handle-registrar";
@@ -21,18 +21,18 @@ import {ClrDraggable} from "./draggable";
 
 export default function(): void {
     describe("Basic Draggable", function() {
-        let mockDragStartEventInt: ClrDragEventInternal<any>;
-        let mockDragMoveEventInt: ClrDragEventInternal<any>;
-        let mockDragEndEventInt: ClrDragEventInternal<any>;
+        let mockDragStartEventInt: DragEvent<any>;
+        let mockDragMoveEventInt: DragEvent<any>;
+        let mockDragEndEventInt: DragEvent<any>;
 
         let mockDragStartEventExt: ClrDragEvent<any>;
         let mockDragMoveEventExt: ClrDragEvent<any>;
         let mockDragEndEventExt: ClrDragEvent<any>;
 
         beforeEach(function() {
-            mockDragStartEventInt = {type: ClrDragEventType.DRAG_START, dragPosition: {pageX: 11, pageY: 22}};
-            mockDragMoveEventInt = {type: ClrDragEventType.DRAG_MOVE, dragPosition: {pageX: 33, pageY: 44}};
-            mockDragEndEventInt = {type: ClrDragEventType.DRAG_END, dragPosition: {pageX: 77, pageY: 88}};
+            mockDragStartEventInt = {type: DragEventType.DRAG_START, dragPosition: {pageX: 11, pageY: 22}};
+            mockDragMoveEventInt = {type: DragEventType.DRAG_MOVE, dragPosition: {pageX: 33, pageY: 44}};
+            mockDragEndEventInt = {type: DragEventType.DRAG_END, dragPosition: {pageX: 77, pageY: 88}};
 
             mockDragStartEventExt = new ClrDragEvent(mockDragStartEventInt);
             mockDragMoveEventExt = new ClrDragEvent(mockDragMoveEventInt);

@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-export enum ClrDragEventType {
+export enum DragEventType {
     DRAG_START,
     DRAG_MOVE,
     DRAG_END,
@@ -12,8 +12,8 @@ export enum ClrDragEventType {
     DROP
 }
 
-export interface ClrDragEventInternal<T> {
-    type: ClrDragEventType;
+export interface DragEvent<T> {
+    type: DragEventType;
     group?: string|string[];
     ghostElement?: any;
     dragPosition: {pageX: number; pageY: number};

@@ -5,7 +5,7 @@
  */
 import {Subject} from "rxjs/Subject";
 
-import {ClrDragEventType} from "../interfaces/drag-event";
+import {DragEventType} from "../interfaces/drag-event";
 import {ClrDragAndDropEventBus} from "./drag-and-drop-event-bus";
 
 export class MockDragAndDropEventBus {
@@ -16,16 +16,16 @@ export class MockDragAndDropEventBus {
 
     broadcast(event: any): void {
         switch (event.type) {
-            case ClrDragEventType.DRAG_START:
+            case DragEventType.DRAG_START:
                 this.dragStarted.next(event);
                 break;
-            case ClrDragEventType.DRAG_MOVE:
+            case DragEventType.DRAG_MOVE:
                 this.dragMoved.next(event);
                 break;
-            case ClrDragEventType.DRAG_END:
+            case DragEventType.DRAG_END:
                 this.dragEnded.next(event);
                 break;
-            case ClrDragEventType.DROP:
+            case DragEventType.DROP:
                 this.dropped.next(event);
                 break;
             default:

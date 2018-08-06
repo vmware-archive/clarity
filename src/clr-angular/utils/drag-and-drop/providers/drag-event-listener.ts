@@ -7,7 +7,7 @@ import {Injectable, NgZone, Renderer2} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 
-import {ClrDragEventInternal, ClrDragEventType} from "../interfaces/drag-event";
+import {DragEvent, DragEventType} from "../interfaces/drag-event";
 import {ClrDragAndDropEventBus} from "./drag-and-drop-event-bus";
 
 @Injectable()
@@ -16,21 +16,21 @@ export class ClrDragEventListener<T> {
 
     private listeners: (() => void)[];
 
-    private dragStart: Subject<ClrDragEventInternal<T>> = new Subject<ClrDragEventInternal<T>>();
-    private dragMove: Subject<ClrDragEventInternal<T>> = new Subject<ClrDragEventInternal<T>>();
-    private dragEnd: Subject<ClrDragEventInternal<T>> = new Subject<ClrDragEventInternal<T>>();
+    private dragStart: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
+    private dragMove: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
+    private dragEnd: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
 
     private hasDragStarted: boolean = false;
 
-    get dragStarted(): Observable<ClrDragEventInternal<T>> {
+    get dragStarted(): Observable<DragEvent<T>> {
         return this.dragStart.asObservable();
     }
 
-    get dragMoved(): Observable<ClrDragEventInternal<T>> {
+    get dragMoved(): Observable<DragEvent<T>> {
         return this.dragMove.asObservable();
     }
 
-    get dragEnded(): Observable<ClrDragEventInternal<T>> {
+    get dragEnded(): Observable<DragEvent<T>> {
         return this.dragEnd.asObservable();
     }
 
@@ -77,10 +77,10 @@ export class ClrDragEventListener<T> {
                     if (!this.hasDragStarted) {
                         this.hasDragStarted = true;
                         // Fire "dragstart"
-                        this.broadcast(moveEvent, ClrDragEventType.DRAG_START);
+                        this.broadcast(moveEvent, DragEventType.DRAG_START);
                     } else {
                         // Fire "dragmove"
-                        this.broadcast(moveEvent, ClrDragEventType.DRAG_MOVE);
+                        this.broadcast(moveEvent, DragEventType.DRAG_MOVE);
                     }
                 });
             });
@@ -92,23 +92,23 @@ export class ClrDragEventListener<T> {
                 if (this.hasDragStarted) {
                     // Fire "dragend" only if dragstart is registered
                     this.hasDragStarted = false;
-                    this.broadcast(endEvent, ClrDragEventType.DRAG_END);
+                    this.broadcast(endEvent, DragEventType.DRAG_END);
                 }
             });
         });
     }
 
-    private broadcast(event: MouseEvent|TouchEvent, eventType: ClrDragEventType): void {
-        const dragEvent: ClrDragEventInternal<T> = this.generateDragEvent(event, eventType);
+    private broadcast(event: MouseEvent|TouchEvent, eventType: DragEventType): void {
+        const dragEvent: DragEvent<T> = this.generateDragEvent(event, eventType);
 
         switch (dragEvent.type) {
-            case ClrDragEventType.DRAG_START:
+            case DragEventType.DRAG_START:
                 this.dragStart.next(dragEvent);
                 break;
-            case ClrDragEventType.DRAG_MOVE:
+            case DragEventType.DRAG_MOVE:
                 this.dragMove.next(dragEvent);
                 break;
-            case ClrDragEventType.DRAG_END:
+            case DragEventType.DRAG_END:
                 this.dragEnd.next(dragEvent);
                 break;
             default:
@@ -123,7 +123,7 @@ export class ClrDragEventListener<T> {
         this.eventBus.broadcast(dragEvent);
     }
 
-    private generateDragEvent(event: MouseEvent|TouchEvent, eventType: ClrDragEventType): ClrDragEventInternal<T> {
+    private generateDragEvent(event: MouseEvent|TouchEvent, eventType: DragEventType): DragEvent<T> {
         let nativeEvent: any;
 
         if ((<TouchEvent>event).hasOwnProperty("changedTouches")) {

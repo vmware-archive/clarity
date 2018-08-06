@@ -8,25 +8,25 @@ import {TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
 
 import {ClrDragEvent} from "../drag-event";
-import {ClrDragEventInternal, ClrDragEventType} from "../interfaces/drag-event";
+import {DragEvent, DragEventType} from "../interfaces/drag-event";
 import {ClrDropTolerance} from "../interfaces/drop-tolerance";
 import {ClrDragAndDropEventBus} from "../providers/drag-and-drop-event-bus";
 import {MOCK_DRAG_DROP_EVENT_BUS} from "../providers/drag-and-drop-event-bus.mock";
 import {ClrDroppable} from "./droppable";
 
 export default function(): void {
-    let mockDragStartEventInt: ClrDragEventInternal<any>;
-    let mockDragMoveEventInt: ClrDragEventInternal<any>;
-    let mockDragEndEventInt: ClrDragEventInternal<any>;
+    let mockDragStartEventInt: DragEvent<any>;
+    let mockDragMoveEventInt: DragEvent<any>;
+    let mockDragEndEventInt: DragEvent<any>;
 
     let mockDragStartEventExt: ClrDragEvent<any>;
     let mockDragMoveEventExt: ClrDragEvent<any>;
     let mockDragEndEventExt: ClrDragEvent<any>;
 
     beforeEach(function() {
-        mockDragStartEventInt = {type: ClrDragEventType.DRAG_START, dragPosition: {pageX: 11, pageY: 22}};
-        mockDragMoveEventInt = {type: ClrDragEventType.DRAG_MOVE, dragPosition: {pageX: 33, pageY: 44}};
-        mockDragEndEventInt = {type: ClrDragEventType.DRAG_END, dragPosition: {pageX: 77, pageY: 88}};
+        mockDragStartEventInt = {type: DragEventType.DRAG_START, dragPosition: {pageX: 11, pageY: 22}};
+        mockDragMoveEventInt = {type: DragEventType.DRAG_MOVE, dragPosition: {pageX: 33, pageY: 44}};
+        mockDragEndEventInt = {type: DragEventType.DRAG_END, dragPosition: {pageX: 77, pageY: 88}};
 
         mockDragStartEventExt = new ClrDragEvent(mockDragStartEventInt);
         mockDragMoveEventExt = new ClrDragEvent(mockDragMoveEventInt);
@@ -116,7 +116,7 @@ export default function(): void {
             decorateEventWithDropPosition(mockDragMoveEventExt, {pageX: 500, pageY: 300});
             this.eventBus.broadcast(mockDragMoveEventInt);
             expect(this.testComponent.dragMoveEvent).toEqual(mockDragMoveEventExt);
-            const enterEventExt = new ClrDragEvent({...mockDragMoveEventInt, type: ClrDragEventType.DRAG_ENTER});
+            const enterEventExt = new ClrDragEvent({...mockDragMoveEventInt, type: DragEventType.DRAG_ENTER});
             expect(this.testComponent.dragEnterEvent).toEqual(enterEventExt);
             expect(this.testComponent.dragLeaveEvent).toBeUndefined();
         });
@@ -147,11 +147,11 @@ export default function(): void {
             this.eventBus.broadcast(mockDragMoveEventInt);
 
             expect(this.testComponent.dragMoveEvent).toEqual(mockDragMoveEventExt);
-            const enterEventExt = new ClrDragEvent({...mockDragMoveEventInt, type: ClrDragEventType.DRAG_ENTER});
+            const enterEventExt = new ClrDragEvent({...mockDragMoveEventInt, type: DragEventType.DRAG_ENTER});
             expect(this.testComponent.dragEnterEvent).toEqual(enterEventExt);
             decorateEventWithDropPosition(mockDragMoveEventInt, {pageX: 0, pageY: 0});
             this.eventBus.broadcast(mockDragMoveEventInt);
-            const leaveEventExt = new ClrDragEvent({...mockDragMoveEventInt, type: ClrDragEventType.DRAG_LEAVE});
+            const leaveEventExt = new ClrDragEvent({...mockDragMoveEventInt, type: DragEventType.DRAG_LEAVE});
             expect(this.testComponent.dragLeaveEvent).toEqual(leaveEventExt);
         });
 
@@ -185,10 +185,10 @@ export default function(): void {
             decorateEventWithDropPosition(mockDragMoveEventExt, {pageX: 500, pageY: 300});
             this.eventBus.broadcast(mockDragMoveEventInt);
             expect(this.testComponent.dragMoveEvent).toEqual(mockDragMoveEventExt);
-            const enterEventExt = new ClrDragEvent({...mockDragMoveEventInt, type: ClrDragEventType.DRAG_ENTER});
+            const enterEventExt = new ClrDragEvent({...mockDragMoveEventInt, type: DragEventType.DRAG_ENTER});
             expect(this.testComponent.dragEnterEvent).toEqual(enterEventExt);
             this.eventBus.broadcast(mockDragEndEventInt);
-            const dropEventExt = new ClrDragEvent({...mockDragEndEventInt, type: ClrDragEventType.DROP});
+            const dropEventExt = new ClrDragEvent({...mockDragEndEventInt, type: DragEventType.DROP});
             expect(this.testComponent.dropEvent).toEqual(dropEventExt);
         });
 
@@ -307,7 +307,7 @@ export default function(): void {
                 delete this.testComponent.dragEnterEvent;
                 delete this.testComponent.dragLeaveEvent;
 
-                const dragEvent = {type: ClrDragEventType.DRAG_MOVE, dropPointPosition: {pageX: _pageX, pageY: _pageY}};
+                const dragEvent = {type: DragEventType.DRAG_MOVE, dropPointPosition: {pageX: _pageX, pageY: _pageY}};
                 this.eventBus.broadcast(dragEvent);
                 return dragEvent;
             };
@@ -315,35 +315,35 @@ export default function(): void {
             this.detectEnterOrLeaveAt = function(tolerance: ClrDropTolerance) {
                 expect(new ClrDragEvent({
                     ...this.broadcastEnterLeaveEventAt(400 - tolerance.left, 200 - tolerance.top),
-                    type: ClrDragEventType.DRAG_ENTER
+                    type: DragEventType.DRAG_ENTER
                 })).toEqual(this.testComponent.dragEnterEvent);
                 expect(new ClrDragEvent({
                     ...this.broadcastEnterLeaveEventAt(399 - tolerance.left, 199 - tolerance.top),
-                    type: ClrDragEventType.DRAG_LEAVE
+                    type: DragEventType.DRAG_LEAVE
                 })).toEqual(this.testComponent.dragLeaveEvent);
                 expect(new ClrDragEvent({
                     ...this.broadcastEnterLeaveEventAt(600 + tolerance.right, 200 - tolerance.top),
-                    type: ClrDragEventType.DRAG_ENTER
+                    type: DragEventType.DRAG_ENTER
                 })).toEqual(this.testComponent.dragEnterEvent);
                 expect(new ClrDragEvent({
                     ...this.broadcastEnterLeaveEventAt(601 + tolerance.right, 199 - tolerance.top),
-                    type: ClrDragEventType.DRAG_LEAVE
+                    type: DragEventType.DRAG_LEAVE
                 })).toEqual(this.testComponent.dragLeaveEvent);
                 expect(new ClrDragEvent({
                     ...this.broadcastEnterLeaveEventAt(600 + tolerance.right, 600 + tolerance.bottom),
-                    type: ClrDragEventType.DRAG_ENTER
+                    type: DragEventType.DRAG_ENTER
                 })).toEqual(this.testComponent.dragEnterEvent);
                 expect(new ClrDragEvent({
                     ...this.broadcastEnterLeaveEventAt(601 + tolerance.right, 601 + tolerance.bottom),
-                    type: ClrDragEventType.DRAG_LEAVE
+                    type: DragEventType.DRAG_LEAVE
                 })).toEqual(this.testComponent.dragLeaveEvent);
                 expect(new ClrDragEvent({
                     ...this.broadcastEnterLeaveEventAt(400 - tolerance.left, 600 + tolerance.bottom),
-                    type: ClrDragEventType.DRAG_ENTER
+                    type: DragEventType.DRAG_ENTER
                 })).toEqual(this.testComponent.dragEnterEvent);
                 expect(new ClrDragEvent({
                     ...this.broadcastEnterLeaveEventAt(399 - tolerance.left, 601 + tolerance.bottom),
-                    type: ClrDragEventType.DRAG_LEAVE
+                    type: DragEventType.DRAG_LEAVE
                 })).toEqual(this.testComponent.dragLeaveEvent);
             };
 

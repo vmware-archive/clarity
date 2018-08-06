@@ -23,7 +23,7 @@ import {DomAdapter} from "../../dom-adapter/dom-adapter";
 import {ClrDragEvent} from "../drag-event";
 import {ClrDraggableGhost} from "../draggable-ghost";
 import {ClrIfDragged} from "../if-dragged";
-import {ClrDragEventInternal} from "../interfaces/drag-event";
+import {DragEvent} from "../interfaces/drag-event";
 import {ClrDragEventListener} from "../providers/drag-event-listener";
 import {ClrDragHandleRegistrar} from "../providers/drag-handle-registrar";
 import {ClrDraggableSnapshot} from "../providers/draggable-snapshot";
@@ -60,7 +60,7 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
         this.dragEventListener.group = value;
     }
 
-    private createDefaultGhost(event: ClrDragEventInternal<T>) {
+    private createDefaultGhost(event: DragEvent<T>) {
         this.draggableSnapshot.capture(this.draggableEl, event);
         // NOTE: The default ghost element will appear
         // next to the clrDraggable in the DOM as a sibling element.
@@ -80,7 +80,7 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     ngAfterContentInit() {
         this.dragHandleRegistrar.defaultHandleEl = this.draggableEl;
 
-        this.subscriptions.push(this.dragEventListener.dragStarted.subscribe((event: ClrDragEventInternal<T>) => {
+        this.subscriptions.push(this.dragEventListener.dragStarted.subscribe((event: DragEvent<T>) => {
             this.globalDragMode.enter();
             this.dragOn = true;
             if (!this.customGhost) {
@@ -89,10 +89,10 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
 
             this.dragStartEmitter.emit(new ClrDragEvent(event));
         }));
-        this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEventInternal<T>) => {
+        this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: DragEvent<T>) => {
             this.dragMoveEmitter.emit(new ClrDragEvent(event));
         }));
-        this.subscriptions.push(this.dragEventListener.dragEnded.subscribe((event: ClrDragEventInternal<T>) => {
+        this.subscriptions.push(this.dragEventListener.dragEnded.subscribe((event: DragEvent<T>) => {
             this.globalDragMode.exit();
             this.dragOn = false;
             if (!this.customGhost) {

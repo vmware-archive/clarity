@@ -12,7 +12,7 @@ import {ClrIconModule} from "../../../icon/icon.module";
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
 import {ClrDragAndDropModule} from "../drag-and-drop.module";
 import {ClrDragHandle} from "../drag-handle";
-import {ClrDragEventInternal, ClrDragEventType} from "../interfaces/drag-event";
+import {DragEvent, DragEventType} from "../interfaces/drag-event";
 import {ClrDragEventListener} from "../providers/drag-event-listener";
 import {MOCK_DRAG_EVENT_LISTENER_PROVIDER} from "../providers/drag-event-listener.mock";
 import {ClrDragHandleRegistrar} from "../providers/drag-handle-registrar";
@@ -23,12 +23,12 @@ import {ClrDraggable} from "./draggable";
 
 export default function(): void {
     describe("With Custom Draggable Ghost and Handle", function() {
-        let mockDragStartEventInt: ClrDragEventInternal<any>;
-        let mockDragEndEventInt: ClrDragEventInternal<any>;
+        let mockDragStartEventInt: DragEvent<any>;
+        let mockDragEndEventInt: DragEvent<any>;
 
         beforeEach(function() {
-            mockDragStartEventInt = {type: ClrDragEventType.DRAG_START, dragPosition: {pageX: 11, pageY: 22}};
-            mockDragEndEventInt = {type: ClrDragEventType.DRAG_END, dragPosition: {pageX: 77, pageY: 88}};
+            mockDragStartEventInt = {type: DragEventType.DRAG_START, dragPosition: {pageX: 11, pageY: 22}};
+            mockDragEndEventInt = {type: DragEventType.DRAG_END, dragPosition: {pageX: 77, pageY: 88}};
 
             TestBed.configureTestingModule({
                 imports: [ClrDragAndDropModule, ClrIconModule, NoopAnimationsModule],

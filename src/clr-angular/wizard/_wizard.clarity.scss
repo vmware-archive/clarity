@@ -11,11 +11,8 @@
 @include exports('wizard.clarity') {
   .clr-wizard {
     .modal-dialog {
-      // removed for IE10... maybe remove altogether? or only remove for IE10?
-      // position: static;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       align-items: center;
       box-shadow: $clr-wizard-box-shadow;
       height: 50%;
@@ -28,10 +25,9 @@
       padding: 0;
       flex: 2 2 auto;
       width: 66%;
-      height: 100%;
+      height: initial;
       overflow: hidden;
       display: flex;
-      justify-content: space-between;
       align-items: flex-start;
       flex-direction: column;
     }
@@ -121,14 +117,13 @@
       flex: 1 1 auto;
       width: 34%;
       max-width: 34%;
-      display: block;
+      display: flex;
+      flex-direction: column;
       order: -1;
-      // TODO: test with many, many stepnav items!
       overflow: hidden;
       overflow-y: auto;
       padding-bottom: $clr-wizard-default-space;
       line-height: $clr-wizard-default-space;
-      // TODO: NEED COLORVAR HERE
       border-right: $clr-default-borderwidth solid $clr-wizard-step-nav-border-color;
       height: 100%;
       background-color: $clr-wizard-sidenav-bgcolor;
@@ -141,6 +136,7 @@
       font-size: 0.583333rem;
       color: $clr-wizard-sidenav-text;
       width: 100%;
+      flex: 1 1 auto;
     }
 
     .clr-wizard-stepnav-list {
@@ -212,6 +208,7 @@
       padding-left: $clr-wizard-default-space;
       padding-right: $clr-wizard-default-space * 0.5;
       padding-bottom: $clr-wizard-default-space;
+      flex: 0 0 auto;
     }
 
     // normal modal ignores this. wizard needs it so the nav and content
@@ -312,11 +309,7 @@
     &.wizard-xl {
       .modal-dialog {
         height: $clr-wizard-xl-dialog-max-height;
-      }
-
-      .modal-content,
-      .clr-wizard-stepnav-wrapper {
-        max-height: $clr-wizard-xl-dialog-max-height;
+        max-height: none;
       }
 
       .nav-panel,

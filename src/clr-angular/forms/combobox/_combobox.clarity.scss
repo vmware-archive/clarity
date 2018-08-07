@@ -1,0 +1,69 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../popover/dropdown/menu-mixins.clarity';
+
+@include exports('combobox.clarity') {
+  .clr-combobox {
+    display: inline-block;
+  }
+
+  .clr-combobox-input-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .clr-combobox-input {
+    //Dimensions
+    padding: 0 $clr-ng-select-trigger-right-padding 0 $clr-ng-select-trigger-left-padding;
+    min-height: $clr-ng-select-min-height;
+    width: $clr-ng-select-min-width;
+
+    //Mixins
+    @include form-fields-appearance($clr-forms-border-color);
+    @include clr-getTypePropertiesForDomElement(form_label, (font-size));
+    @include input-border-bottom-animation($clr-forms-focused-color);
+
+    //Others
+    outline: none;
+  }
+
+  .clr-combobox-trigger {
+    //Dimensions
+    height: $clr-ng-select-trigger-dimensions;
+    width: $clr-ng-select-trigger-dimensions;
+    padding: 0;
+    margin: 0;
+
+    //Other
+    background: none;
+    border: none;
+    color: $clr-ng-select-trigger-color;
+    cursor: pointer;
+    outline: none;
+    transform: translateX(-1 * $clr-ng-select-trigger-dimensions);
+  }
+
+  .clr-options {
+    @include generate-dropdown-menu();
+
+    visibility: visible;
+  }
+
+  .clr-option {
+    @include generate-dropdown-item();
+  }
+
+  //NOTE: Adjust the height of the option only when its in the options menu
+  .clr-options .clr-option {
+    @include generate-dropdown-item-height();
+  }
+
+  .clr-combobox-input .clr-option {
+    &:hover,
+    &.active {
+      background: none;
+    }
+  }
+}

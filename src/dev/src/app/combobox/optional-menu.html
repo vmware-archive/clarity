@@ -1,0 +1,28 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<!--
+  NOTE:
+  Select 2.0 implementation is still incomplete. DO NOT USE.
+  All issues related to clr-select will be closed until the implementation is completed.
+-->
+<h6>1. Menu provided by the consumer</h6>
+
+<clr-combobox>
+    <clr-options>
+        <clr-option [clrValue]="'Option 1'">Option 1</clr-option>
+        <clr-option [clrValue]="'Option 2'">Option 2</clr-option>
+        <clr-option [clrValue]="'Option 3'">Option 3</clr-option>
+    </clr-options>
+</clr-combobox>
+
+<h6>2. Menu not provided by the consumer</h6>
+
+<clr-combobox>
+    <clr-option [clrValue]="'Option 1'">Option 1</clr-option>
+    <clr-option [clrValue]="'Option 2'">Option 2</clr-option>
+    <clr-option [clrValue]="'Option 3'">Option 3</clr-option>
+</clr-combobox>

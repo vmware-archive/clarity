@@ -20,7 +20,7 @@ export class ClrIfDragged<T> implements OnDestroy {
     constructor(private template: TemplateRef<any>, @Optional() @SkipSelf() private container: ViewContainerRef,
                 @Optional() private dragEventListener: ClrDragEventListener<T>) {
         if (!this.dragEventListener || !this.container) {
-            throw new Error("The *clrIfDragged directive can only be used inside of a `clrDraggable` directive.");
+            throw new Error("The *clrIfDragged directive can only be used inside of a clrDraggable directive.");
         }
 
         this.subscriptions.push(this.dragEventListener.dragStarted.subscribe((event: DragEvent<T>) => {

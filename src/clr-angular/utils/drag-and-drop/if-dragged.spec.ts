@@ -18,7 +18,7 @@ export default function(): void {
 
                 expect(function() {
                     this.fixture = TestBed.createComponent(NoDragEventListener);
-                }).toThrowError("The *clrIfDragged directive can only be used inside of a `clrDraggable` directive.");
+                }).toThrowError("The *clrIfDragged directive can only be used inside of a clrDraggable directive.");
             });
         });
         describe("With ClrDragEventListener", function() {

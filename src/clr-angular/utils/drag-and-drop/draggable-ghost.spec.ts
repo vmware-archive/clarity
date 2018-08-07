@@ -44,7 +44,6 @@ export default function(): void {
 
                 this.testComponent = this.fixture.componentInstance;
                 this.draggableGhostDebugElement = this.fixture.debugElement.query(By.directive(ClrDraggableGhost));
-                this.draggableGhostComponent = this.draggableGhostDebugElement.injector.get(ClrDraggableGhost);
                 this.ghostElement = this.draggableGhostDebugElement.nativeElement;
                 this.dragEventListener = TestBed.get(ClrDragEventListener);
             });

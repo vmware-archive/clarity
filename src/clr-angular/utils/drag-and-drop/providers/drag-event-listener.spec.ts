@@ -52,7 +52,6 @@ export default function(): void {
 
             fixture = TestBed.createComponent(TestComponent);
             testComponent = fixture.componentInstance;
-
             fixture.detectChanges();
 
             dragEventListenerService =
@@ -60,10 +59,14 @@ export default function(): void {
             dragAndDropEventBusService = TestBed.get(ClrDragAndDropEventBus);
 
             draggableButton = testComponent.draggableButtonRef.nativeElement;
+            fixture.detectChanges();
         });
 
         afterEach(() => {
             fixture.destroy();
+            draggableButton = null;
+            // emulateDragEvent("mouseup", 0, 0, draggableButton);
+            // emulateDragEvent("touchend", 0, 0, draggableButton);
         });
 
         function testCases(startEvent: string, moveEvent: string, endEvent: string) {

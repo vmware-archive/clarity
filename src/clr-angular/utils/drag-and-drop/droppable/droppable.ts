@@ -59,6 +59,8 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
 
     @Input("clrDropTolerance")
     set dropTolerance(value: number|string|ClrDropTolerance) {
+        // If user provides an object here and wants to manipulate/update properties individually,
+        // the object must be immutable as we generate new object based user's given object.
         if (typeof value === "number") {
             this._dropTolerance = this.dropToleranceGenerator(value);
         } else if (typeof value === "string") {

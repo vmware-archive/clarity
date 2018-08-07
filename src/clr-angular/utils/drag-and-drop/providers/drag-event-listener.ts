@@ -14,7 +14,11 @@ import {ClrDragAndDropEventBus} from "./drag-and-drop-event-bus";
 export class ClrDragEventListener<T> {
     private draggableEl: any;
 
+    // contains the starting events such as mousedown and touchstart
     private listeners: (() => void)[];
+    // contains the nested events that happens after/inside the starting events
+    // such as selectstart, mousemove/touchmove, mouseup/touchend
+    private nestedListeners: (() => void)[];
 
     private dragStart: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
     private dragMove: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
@@ -56,23 +60,41 @@ export class ClrDragEventListener<T> {
         if (this.listeners) {
             this.listeners.map(event => event());
         }
+
+        // In most cases, once users start dragging with mousedown/touchstart events,
+        // they will end dragging at one point with mouseup/touchend.
+        // However, there might be a few cases where mousedown/touchstart events get registered,
+        // but the draggable element gets removed before user ends dragging.
+        // In that case, we need to remove the attached listeners that happened during the mousedown/touchstart events.
+        if (this.nestedListeners) {
+            this.nestedListeners.map(event => event());
+        }
     }
 
     private customDragEvent(element: Node, startOnEvent: string, moveOnEvent: string, endOnEvent: string): () => void {
-        let moveListener: () => void;
-        let endListener: () => void;
-
         return this.renderer.listen(element, startOnEvent, () => {
-            moveListener = this.ngZone.runOutsideAngular(() => {
+            // Initialize nested listeners' property with a new empty array;
+            this.nestedListeners = [];
+
+            // This is needed to disable selection during dragging (especially in EDGE/IE11).
+            this.nestedListeners.push(this.renderer.listen("document", "selectstart", (selectEvent: Event) => {
+                selectEvent.preventDefault();
+                selectEvent.stopImmediatePropagation();
+            }));
+
+            // Listen to mousemove/touchmove events outside of angular zone.
+            this.nestedListeners.push(this.ngZone.runOutsideAngular(() => {
                 return this.renderer.listen("document", moveOnEvent, (moveEvent: MouseEvent|TouchEvent) => {
-                    moveEvent.preventDefault();
+                    // Event.stopImmediatePropagation() is needed here to prevent nested draggables from getting dragged
+                    // altogether. We shouldn't use Event.stopPropagation() here as we are listening to the events
+                    // on the global element level.
 
-                    // Using .stopPropagation in this exceptional case,
-                    // where mousemove events are registered after mousedown without any interruptions
-                    // resulting in a dragging event. This is specially needed when draggables
-                    // are nested inside each other.
+                    // With Event.stopImmediatePropagation(), it registers the events sent from the inner most draggable
+                    // first. Then immediately after that, it stops listening to the same type of events on the same
+                    // element. So this will help us to not register the same events that would come from the parent
+                    // level draggables eventually.
 
-                    moveEvent.stopPropagation();
+                    moveEvent.stopImmediatePropagation();
 
                     if (!this.hasDragStarted) {
                         this.hasDragStarted = true;
@@ -83,18 +105,22 @@ export class ClrDragEventListener<T> {
                         this.broadcast(moveEvent, DragEventType.DRAG_MOVE);
                     }
                 });
-            });
+            }));
 
-            endListener = this.renderer.listen("document", endOnEvent, (endEvent: MouseEvent|TouchEvent) => {
-                moveListener();  // Unregister from mouseMove or touchMove
-                endListener();   // Unregister from mouseUp or touchEnd
+            // Listen to mouseup/touchend events.
+            this.nestedListeners.push(
+                this.renderer.listen("document", endOnEvent, (endEvent: MouseEvent|TouchEvent) => {
+                    if (this.hasDragStarted) {
+                        // Fire "dragend" only if dragstart is registered
+                        this.hasDragStarted = false;
+                        this.broadcast(endEvent, DragEventType.DRAG_END);
+                    }
 
-                if (this.hasDragStarted) {
-                    // Fire "dragend" only if dragstart is registered
-                    this.hasDragStarted = false;
-                    this.broadcast(endEvent, DragEventType.DRAG_END);
-                }
-            });
+                    // We must remove the the nested listeners every time drag completes.
+                    if (this.nestedListeners) {
+                        this.nestedListeners.map(event => event());
+                    }
+                }));
         });
     }
 

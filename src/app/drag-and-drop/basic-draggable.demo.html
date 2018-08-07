@@ -43,6 +43,28 @@
     </div>
 </div>
 
+<div class="clr-example">
+    <h4>Nested draggables</h4>
+
+    <div class="clr-example">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                <div class="card" clrDraggable>
+                    <div class="card-block">
+                        <h3 class="card-title">Draggable Card</h3>
+                        <p class="card-text">
+                            <button class="btn btn-primary" clrDraggable>Nested Draggable Button</button>
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="javascript://" class="btn btn-sm btn-link">Action 1</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <h4>Datagrid with draggable rows</h4>
 
 <div class="clr-example">
@@ -51,15 +73,15 @@
         <clr-dg-column>Name</clr-dg-column>
         <clr-dg-column>Creation date</clr-dg-column>
         <clr-dg-column>Favorite color</clr-dg-column>
-    
+
         <clr-dg-row *ngFor="let user of users" clrDraggable>
             <clr-dg-cell>{{user.id}}</clr-dg-cell>
             <clr-dg-cell>{{user.name}}</clr-dg-cell>
             <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
             <clr-dg-cell>{{user.color}}</clr-dg-cell>
         </clr-dg-row>
-    
+
         <clr-dg-footer>{{users.length}} users</clr-dg-footer>
-    </clr-datagrid>    
+    </clr-datagrid>
 </div>
 

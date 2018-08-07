@@ -149,6 +149,9 @@
 // no dependencies on other clarity scss
 @import '../utils/animations/animations.clarity';
 
+//Focus Trap
+@import '../utils/focus-trap/focus-trap.clarity';
+
 //Tabs
 @import '../layout/tabs/tabs.clarity'; // no dependencies on other clarity scss
 

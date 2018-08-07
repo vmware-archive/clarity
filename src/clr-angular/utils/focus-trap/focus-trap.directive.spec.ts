@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -12,7 +12,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { itIgnore } from '../../../../tests/tests.helpers';
 import { ClrModal } from '../../modal/modal';
 import { ClrModalModule } from '../../modal/modal.module';
-
 import { FocusTrapDirective } from './focus-trap.directive';
 import { ClrFocusTrapModule } from './focus-trap.module';
 
@@ -20,21 +19,26 @@ describe('FocusTrap', () => {
   let fixture: ComponentFixture<any>;
   let compiled: any;
   let component: TestComponent;
-  let directive: FocusTrapDirective;
+
   let lastInput: HTMLElement;
-  const tabEvent = { shiftKey: false, keyCode: 9, preventDefault: () => {} };
+
+  let directiveDebugElement: DebugElement;
+  let directiveInstance: FocusTrapDirective;
+  let directiveElement: HTMLElement;
 
   describe('default behavior', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({ imports: [ClrFocusTrapModule], declarations: [TestComponent] });
-
       fixture = TestBed.createComponent(TestComponent);
-      component = fixture.componentInstance;
       fixture.detectChanges();
-      compiled = fixture.nativeElement;
-      directive = fixture.debugElement.query(By.directive(FocusTrapDirective)).injector.get(FocusTrapDirective);
 
+      component = fixture.componentInstance;
+      compiled = fixture.nativeElement;
       lastInput = compiled.querySelector('#last');
+
+      directiveDebugElement = fixture.debugElement.query(By.directive(FocusTrapDirective));
+      directiveElement = directiveDebugElement.nativeElement;
+      directiveInstance = directiveDebugElement.injector.get(FocusTrapDirective);
     });
 
     afterEach(() => {
@@ -42,20 +46,69 @@ describe('FocusTrap', () => {
     });
 
     it('should create directive', () => {
-      expect(directive).toBeTruthy();
+      expect(directiveInstance).toBeTruthy();
     });
 
     it('should add tabindex attribute with value zero', () => {
-      directive.ngAfterViewInit();
-      const element: HTMLElement = directive.elementRef.nativeElement;
-      expect(element.getAttribute('tabindex')).toEqual('0');
+      expect(directiveElement.getAttribute('tabindex')).toEqual('0');
     });
 
-    it(`should focus on trappable element when tab key is pressed and last input is active`, () => {
-      const element = directive.elementRef.nativeElement;
-      lastInput.focus();
-      directive.onFocusIn(tabEvent);
-      expect(document.activeElement).toEqual(element);
+    it('should add its off-screen focus rebounder elements to document body on instantiation', () => {
+      const offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
+      expect(offScreenEls.length).toBe(2);
+    });
+
+    it('should add its off-screen focus elements as first an last elements in document body', () => {
+      const offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
+      expect(document.body.firstChild).toBe(offScreenEls[0]);
+      expect(document.body.lastChild).toBe(offScreenEls[1]);
+    });
+
+    it('should rebound focus back to the directive if one of rebounding elements gets focused', () => {
+      const offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
+
+      const beforeRebound = offScreenEls[0] as HTMLElement;
+      const afterRebound = offScreenEls[1] as HTMLElement;
+
+      beforeRebound.focus();
+      expect(document.activeElement).toBe(directiveElement);
+      afterRebound.focus();
+      expect(document.activeElement).toBe(directiveElement);
+    });
+
+    it('should remove its off-screen focus rebounder elements from parent element on removal', () => {
+      expect(document.body.querySelectorAll('span.offscreen-focus-rebounder').length).toBe(2);
+      component.mainFocusTrap = false;
+      fixture.detectChanges();
+      expect(document.body.querySelectorAll('span.offscreen-focus-rebounder').length).toBe(0);
+    });
+
+    it(`should add off-screen rebounder elements only once`, () => {
+      component.level1 = true;
+      fixture.detectChanges();
+      let offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
+      expect(offScreenEls.length).toBe(2);
+      component.level2 = true;
+      fixture.detectChanges();
+      offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
+      expect(offScreenEls.length).toBe(2);
+    });
+
+    it(`should remove off-screen rebounder elements only once`, () => {
+      component.level1 = true;
+      component.level2 = true;
+      fixture.detectChanges();
+      let offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
+      expect(offScreenEls.length).toBe(2);
+      component.level2 = false;
+      component.level1 = false;
+      fixture.detectChanges();
+      offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
+      expect(offScreenEls.length).toBe(2);
+      component.mainFocusTrap = false;
+      fixture.detectChanges();
+      offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
+      expect(offScreenEls.length).toBe(0);
     });
 
     itIgnore(['firefox'], `should keep focus within nested element with focus trap directive`, () => {
@@ -147,9 +200,8 @@ describe('FocusTrap', () => {
 });
 
 @Component({
-  template: `
-        <a href="#">Not in form</a>
-        <form clrFocusTrap>
+  template: `    
+        <form clrFocusTrap *ngIf="mainFocusTrap">
             <button id="first">
                 Button to test first input
             </button>
@@ -179,6 +231,7 @@ class TestComponent {
   level1 = false;
   level2 = false;
   level3 = false;
+  mainFocusTrap = true;
 }
 
 @Component({

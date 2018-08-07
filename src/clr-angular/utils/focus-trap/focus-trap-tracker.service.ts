@@ -20,6 +20,10 @@ export class FocusTrapTracker {
     this._current = value;
   }
 
+  get nbFocusTrappers(): number {
+    return this._previousFocusTraps.length;
+  }
+
   activatePreviousTrapper() {
     this._current = this._previousFocusTraps.pop();
   }

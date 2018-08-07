@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
-import {ClrDragEventType} from "../interfaces/drag-event";
+import {DragEventType} from "../interfaces/drag-event";
 
 import {ClrDraggableSnapshot} from "./draggable-snapshot";
 
@@ -14,7 +14,7 @@ export default function(): void {
         const mockDragMoveEvent = {
             dragPosition: {pageX: 11, pageY: 22},
             draggableElement: mockDraggable,
-            type: ClrDragEventType.DRAG_START
+            type: DragEventType.DRAG_START
         };
         document.body.appendChild(mockDraggable);
 

@@ -24,5 +24,16 @@
             margin: 0;
             opacity: 1;
         }
+        &.dropped {
+            opacity: 0;
+        }
+    }
+    .droppable {
+        &.draggable-match {
+            border: 1px dashed $clr-action-purple-light;
+        }
+        &.draggable-over {
+            border: 1px dashed $clr-action-purple-dark;
+        }
     }
 }

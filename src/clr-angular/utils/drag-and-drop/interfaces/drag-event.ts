@@ -3,18 +3,22 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-export enum ClrDragEventType {
+export enum DragEventType {
     DRAG_START,
     DRAG_MOVE,
     DRAG_END,
+    DRAG_ENTER,
+    DRAG_LEAVE,
     DROP
 }
 
-export interface ClrDragEvent<T> {
-    // TODO: this interface will be expanded and customized as the implementation progresses.
-    type: ClrDragEventType;
+export interface DragEvent<T> {
+    type: DragEventType;
     group?: string|string[];
-    draggableElement: Node;
-    dragPosition: {pageX: number, pageY: number};
+    ghostElement?: any;
+    dragPosition: {pageX: number; pageY: number};
     dragDataTransfer?: T;
+    // For default ghosts, this dropPointPosition denotes the center point of the ghost element.
+    // This center point is used to determine whether the ghost is over droppable elements or not.
+    dropPointPosition?: {pageX: number; pageY: number};
 }

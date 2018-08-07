@@ -7,43 +7,43 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 
-import {ClrDragEvent, ClrDragEventType} from "../interfaces/drag-event";
+import {DragEvent, DragEventType} from "../interfaces/drag-event";
 
 @Injectable()
 export class ClrDragAndDropEventBus<T> {
-    private dragStart: Subject<ClrDragEvent<T>> = new Subject<ClrDragEvent<T>>();
-    private dragMove: Subject<ClrDragEvent<T>> = new Subject<ClrDragEvent<T>>();
-    private dragEnd: Subject<ClrDragEvent<T>> = new Subject<ClrDragEvent<T>>();
-    private drop: Subject<ClrDragEvent<T>> = new Subject<ClrDragEvent<T>>();
+    private dragStart: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
+    private dragMove: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
+    private dragEnd: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
+    private drop: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
 
-    get dragStarted(): Observable<ClrDragEvent<T>> {
+    get dragStarted(): Observable<DragEvent<T>> {
         return this.dragStart.asObservable();
     }
 
-    get dragMoved(): Observable<ClrDragEvent<T>> {
+    get dragMoved(): Observable<DragEvent<T>> {
         return this.dragMove.asObservable();
     }
 
-    get dragEnded(): Observable<ClrDragEvent<T>> {
+    get dragEnded(): Observable<DragEvent<T>> {
         return this.dragEnd.asObservable();
     }
 
-    get dropped(): Observable<ClrDragEvent<T>> {
+    get dropped(): Observable<DragEvent<T>> {
         return this.drop.asObservable();
     }
 
-    broadcast(event: ClrDragEvent<T>): void {
+    broadcast(event: DragEvent<T>): void {
         switch (event.type) {
-            case ClrDragEventType.DRAG_START:
+            case DragEventType.DRAG_START:
                 this.dragStart.next(event);
                 break;
-            case ClrDragEventType.DRAG_MOVE:
+            case DragEventType.DRAG_MOVE:
                 this.dragMove.next(event);
                 break;
-            case ClrDragEventType.DRAG_END:
+            case DragEventType.DRAG_END:
                 this.dragEnd.next(event);
                 break;
-            case ClrDragEventType.DROP:
+            case DragEventType.DROP:
                 this.drop.next(event);
                 break;
             default:

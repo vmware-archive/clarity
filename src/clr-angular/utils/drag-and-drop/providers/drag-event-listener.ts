@@ -7,37 +7,42 @@ import {Injectable, NgZone, Renderer2} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 
-import {ClrDragEvent, ClrDragEventType} from "../interfaces/drag-event";
+import {DragEvent, DragEventType} from "../interfaces/drag-event";
 import {ClrDragAndDropEventBus} from "./drag-and-drop-event-bus";
 
 @Injectable()
 export class ClrDragEventListener<T> {
-    private draggableEl: Node;
+    private draggableEl: any;
 
     private listeners: (() => void)[];
 
-    private dragStart: Subject<ClrDragEvent<T>> = new Subject<ClrDragEvent<T>>();
-    private dragMove: Subject<ClrDragEvent<T>> = new Subject<ClrDragEvent<T>>();
-    private dragEnd: Subject<ClrDragEvent<T>> = new Subject<ClrDragEvent<T>>();
+    private dragStart: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
+    private dragMove: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
+    private dragEnd: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
 
     private hasDragStarted: boolean = false;
 
-    get dragStarted(): Observable<ClrDragEvent<T>> {
+    get dragStarted(): Observable<DragEvent<T>> {
         return this.dragStart.asObservable();
     }
 
-    get dragMoved(): Observable<ClrDragEvent<T>> {
+    get dragMoved(): Observable<DragEvent<T>> {
         return this.dragMove.asObservable();
     }
 
-    get dragEnded(): Observable<ClrDragEvent<T>> {
+    get dragEnded(): Observable<DragEvent<T>> {
         return this.dragEnd.asObservable();
     }
 
     constructor(private ngZone: NgZone, private renderer: Renderer2, private eventBus: ClrDragAndDropEventBus<T>) {}
 
+    // Draggable component sets these properties:
     public dragDataTransfer?: T;
     public group?: string|string[];
+
+    // DraggableGhost component sets these properties:
+    public ghostElement?: any;
+    public dropPointPosition?: {pageX: number; pageY: number};
 
     public attachDragListeners(draggableEl: Node) {
         this.draggableEl = draggableEl;
@@ -72,10 +77,10 @@ export class ClrDragEventListener<T> {
                     if (!this.hasDragStarted) {
                         this.hasDragStarted = true;
                         // Fire "dragstart"
-                        this.broadcast(moveEvent, ClrDragEventType.DRAG_START);
+                        this.broadcast(moveEvent, DragEventType.DRAG_START);
                     } else {
                         // Fire "dragmove"
-                        this.broadcast(moveEvent, ClrDragEventType.DRAG_MOVE);
+                        this.broadcast(moveEvent, DragEventType.DRAG_MOVE);
                     }
                 });
             });
@@ -87,33 +92,38 @@ export class ClrDragEventListener<T> {
                 if (this.hasDragStarted) {
                     // Fire "dragend" only if dragstart is registered
                     this.hasDragStarted = false;
-                    this.broadcast(endEvent, ClrDragEventType.DRAG_END);
+                    this.broadcast(endEvent, DragEventType.DRAG_END);
                 }
             });
         });
     }
 
-    private broadcast(event: MouseEvent|TouchEvent, eventType: ClrDragEventType): void {
-        const dragEvent: ClrDragEvent<T> = this.generateDragEvent(event, eventType);
+    private broadcast(event: MouseEvent|TouchEvent, eventType: DragEventType): void {
+        const dragEvent: DragEvent<T> = this.generateDragEvent(event, eventType);
 
         switch (dragEvent.type) {
-            case ClrDragEventType.DRAG_START:
+            case DragEventType.DRAG_START:
                 this.dragStart.next(dragEvent);
                 break;
-            case ClrDragEventType.DRAG_MOVE:
+            case DragEventType.DRAG_MOVE:
                 this.dragMove.next(dragEvent);
                 break;
-            case ClrDragEventType.DRAG_END:
+            case DragEventType.DRAG_END:
                 this.dragEnd.next(dragEvent);
                 break;
             default:
                 break;
         }
 
+
+        // The following properties are set after they are broadcasted to the DraggableGhost component.
+        dragEvent.ghostElement = this.ghostElement;
+        dragEvent.dropPointPosition = this.dropPointPosition;
+
         this.eventBus.broadcast(dragEvent);
     }
 
-    private generateDragEvent(event: MouseEvent|TouchEvent, eventType: ClrDragEventType): ClrDragEvent<T> {
+    private generateDragEvent(event: MouseEvent|TouchEvent, eventType: DragEventType): DragEvent<T> {
         let nativeEvent: any;
 
         if ((<TouchEvent>event).hasOwnProperty("changedTouches")) {
@@ -124,10 +134,10 @@ export class ClrDragEventListener<T> {
 
         return {
             type: eventType,
-            draggableElement: this.draggableEl,
             dragPosition: {pageX: nativeEvent.pageX, pageY: nativeEvent.pageY},
+            group: this.group,
             dragDataTransfer: this.dragDataTransfer,
-            group: this.group
+            ghostElement: this.ghostElement
         };
     }
 }

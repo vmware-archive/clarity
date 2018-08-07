@@ -14,14 +14,16 @@ import {
     Injector,
     OnDestroy,
     Output,
-    ViewContainerRef,
+    ViewContainerRef
 } from "@angular/core";
+import {Input} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 
 import {DomAdapter} from "../../dom-adapter/dom-adapter";
+import {ClrDragEvent} from "../drag-event";
 import {ClrDraggableGhost} from "../draggable-ghost";
 import {ClrIfDragged} from "../if-dragged";
-import {ClrDragEvent} from "../interfaces/drag-event";
+import {DragEvent} from "../interfaces/drag-event";
 import {ClrDragEventListener} from "../providers/drag-event-listener";
 import {ClrDragHandleRegistrar} from "../providers/drag-handle-registrar";
 import {ClrDraggableSnapshot} from "../providers/draggable-snapshot";
@@ -30,10 +32,10 @@ import {ClrGlobalDragMode} from "../providers/global-drag-mode";
 @Directive({
     selector: "[clrDraggable]",
     providers: [ClrDragEventListener, ClrDragHandleRegistrar, ClrDraggableSnapshot, ClrGlobalDragMode, DomAdapter],
-    host: {class: "draggable", "[class.being-dragged]": "dragOn"}
+    host: {"[class.draggable]": "true", "[class.being-dragged]": "dragOn"}
 })
 export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
-    private draggableEl: Node;
+    private draggableEl: any;
     private subscriptions: Subscription[] = [];
     private componentFactory: ComponentFactory<ClrDraggableGhost<T>>;
     public dragOn: boolean = false;
@@ -48,7 +50,17 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
 
     @ContentChild(ClrIfDragged) customGhost: ClrIfDragged<T>;
 
-    private createDefaultGhost(event: ClrDragEvent<T>) {
+    @Input("clrDraggable")
+    set dataTransfer(value: T) {
+        this.dragEventListener.dragDataTransfer = value;
+    }
+
+    @Input("clrGroup")
+    set group(value: string|string[]) {
+        this.dragEventListener.group = value;
+    }
+
+    private createDefaultGhost(event: DragEvent<T>) {
         this.draggableSnapshot.capture(this.draggableEl, event);
         // NOTE: The default ghost element will appear
         // next to the clrDraggable in the DOM as a sibling element.
@@ -68,24 +80,25 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     ngAfterContentInit() {
         this.dragHandleRegistrar.defaultHandleEl = this.draggableEl;
 
-        this.subscriptions.push(this.dragEventListener.dragStarted.subscribe((event: ClrDragEvent<T>) => {
+        this.subscriptions.push(this.dragEventListener.dragStarted.subscribe((event: DragEvent<T>) => {
             this.globalDragMode.enter();
             this.dragOn = true;
             if (!this.customGhost) {
                 this.createDefaultGhost(event);
             }
-            this.dragStartEmitter.emit(event);
+
+            this.dragStartEmitter.emit(new ClrDragEvent(event));
         }));
-        this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: ClrDragEvent<T>) => {
-            this.dragMoveEmitter.emit(event);
+        this.subscriptions.push(this.dragEventListener.dragMoved.subscribe((event: DragEvent<T>) => {
+            this.dragMoveEmitter.emit(new ClrDragEvent(event));
         }));
-        this.subscriptions.push(this.dragEventListener.dragEnded.subscribe((event: ClrDragEvent<T>) => {
+        this.subscriptions.push(this.dragEventListener.dragEnded.subscribe((event: DragEvent<T>) => {
             this.globalDragMode.exit();
             this.dragOn = false;
             if (!this.customGhost) {
                 this.destroyDefaultGhost();
             }
-            this.dragEndEmitter.emit(event);
+            this.dragEndEmitter.emit(new ClrDragEvent(event));
         }));
     }
 

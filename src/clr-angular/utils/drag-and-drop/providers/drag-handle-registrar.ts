@@ -12,8 +12,8 @@ import {ClrDragEventListener} from "./drag-event-listener";
 // Also, it adds the "drag-handle" css class to the registered element through Renderer.
 @Injectable()
 export class ClrDragHandleRegistrar<T> {
-    private _customHandleEl: Node;
-    private _defaultHandleEl: Node;
+    private _customHandleEl: any;
+    private _defaultHandleEl: any;
 
     get defaultHandleEl() {
         return this._defaultHandleEl;

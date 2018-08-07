@@ -6,7 +6,7 @@
 import {ClrDragHandleRegistrar} from "./drag-handle-registrar";
 
 export class MockDragHandleRegistrar {
-    private _customHandleEl: Node;
+    private _customHandleEl: any;
 
     get customHandle() {
         return this._customHandleEl;

@@ -2,8 +2,9 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@include exports('popover.clarity') {
-  .is-off-screen {
+@include exports('focus-trap.clarity') {
+  .offscreen-focus-rebounder {
     @include off-screen-styles();
+    visibility: visible !important;
   }
 }

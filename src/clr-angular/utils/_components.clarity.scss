@@ -34,6 +34,7 @@
 //Typography
 //depends on colors.clarity, color.clarity, variables.clarity, utilities.clarity
 @import '../typography/typography.clarity';
+@import '../typography/code.clarity';
 
 //Buttons
 @import '../button/buttons.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity
@@ -51,9 +52,6 @@
 //Cards
 //depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, list-group.clarity, buttons.clarity
 @import '../layout/card.clarity';
-
-//Code
-@import '../code/syntax-highlight/code.clarity'; // depends on variables.clarity, mixins.clarity, helpers.clarity, code.scss
 
 //@import "./custom-forms-deprecated/custom-forms-deprecated.clarity"; // deleted
 

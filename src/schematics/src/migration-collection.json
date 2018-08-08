@@ -2,9 +2,9 @@
   "$schema": "./node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
     "migration-0001": {
-      "version": "0.13.0-beta.1",
-      "factory": "./update/update-0.13.0-beta.1",
-      "description": "Updates for Clarity 0.13.0-beta.1"
+      "version": "0.13.0",
+      "factory": "./update/update-0.13.0",
+      "description": "Updates for Clarity 0.13.0"
     }
   }
 }

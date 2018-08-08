@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   selector: 'clr-responsive-nav-subnav-sidenav-demo',
   template: `
     <pre>
-    <code clr-code-highlight="language-html" ngNonBindable>
+    <code>
     &lt;clr-main-container&gt;
         &lt;clr-header&gt;
             ...

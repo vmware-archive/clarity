@@ -6,7 +6,6 @@
 import { NgModule } from '@angular/core';
 
 import { ClrButtonModule } from './button/button.module';
-import { ClrCodeModule } from './code/code.module';
 import { ClrDataModule } from './data/data.module';
 import { ClrEmphasisModule } from './emphasis/emphasis.module';
 import { ClrFormsModule } from './forms-deprecated/forms.module';
@@ -31,7 +30,6 @@ import { ClrWizardModule } from './wizard/wizard.module';
     ClrConditionalModule,
     ClrFocusTrapModule,
     ClrButtonModule,
-    ClrCodeModule,
     ClrFormsModule,
     ClrLayoutModule,
     ClrPopoverModule,

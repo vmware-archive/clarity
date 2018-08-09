@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="271px" height="286px" viewBox="0 0 271 286" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 12</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="227" height="232" rx="4"></rect>
+        <filter x="-3.1%" y="-2.2%" width="106.2%" height="106.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.8   0 0 0 0 0.8   0 0 0 0 0.8  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Forms-Recommended" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Forms-Documentation---v2" transform="translate(-877.000000, -1822.000000)">
+            <g id="Group-12" transform="translate(877.000000, 1822.000000)">
+                <rect id="Rectangle-3" fill="#EEEEEE" x="0" y="0" width="271" height="286"></rect>
+                <g id="Group-5" transform="translate(22.000000, 27.000000)">
+                    <g id="Rectangle-3">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <rect id="Rectangle-6" fill="#EEEEEE" x="20" y="30" width="26" height="6"></rect>
+                    <path d="M135.224026,35 L203.81257,35" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>
+                    <rect id="Rectangle-6" fill="#EEEEEE" x="20" y="54" width="21" height="6"></rect>
+                    <path d="M151.172078,59 L203.856032,59" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>
+                    <rect id="Rectangle-6" fill="#EEEEEE" x="20" y="78" width="32" height="6"></rect>
+                    <path d="M135.224026,83 L203.81257,83" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>
+                    <rect id="Rectangle-6" fill="#EEEEEE" x="20" y="102" width="26" height="6"></rect>
+                    <path d="M135.224026,107 L203.81257,107" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>
+                    <rect id="Rectangle-6" fill="#EEEEEE" x="20" y="126" width="43" height="6"></rect>
+                    <path d="M135.224026,131 L203.81257,131" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>
+                    <rect id="Rectangle-6" fill="#EEEEEE" x="20" y="150" width="26" height="6"></rect>
+                    <path d="M135.224026,155 L203.81257,155" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>
+                    <rect id="Rectangle-7" fill="#007CBB" x="19" y="182" width="60" height="18" rx="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

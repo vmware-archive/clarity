@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="420px" height="286px" viewBox="0 0 420 286" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 10</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="310" height="208" rx="4"></rect>
+        <filter x="-2.3%" y="-2.4%" width="104.5%" height="106.7%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.8   0 0 0 0 0.8   0 0 0 0 0.8  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Forms-Recommended" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Forms-Documentation---v2" transform="translate(-288.000000, -1253.000000)">
+            <g id="Group-10" transform="translate(288.000000, 1253.000000)">
+                <rect id="Rectangle-3" fill="#EEEEEE" x="0" y="0" width="420" height="286"></rect>
+                <g id="Group-2" transform="translate(55.000000, 37.000000)">
+                    <g id="Group">
+                        <g id="Rectangle-3">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        </g>
+                        <rect id="Rectangle-7" fill="#007CBB" x="30" y="144" width="72" height="18" rx="2"></rect>
+                    </g>
+                    <path d="M30.3246753,51 L129.728362,51" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>
+                    <rect id="Rectangle-6" fill="#EEEEEE" x="30" y="108" width="52" height="6"></rect>
+                    <path d="M30.2857143,127 L117.760959,127" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>
+                    <rect id="Rectangle-6" fill="#EEEEEE" x="30" y="70" width="46" height="6"></rect>
+                    <rect id="Rectangle-6" fill="#EEEEEE" x="30" y="32" width="46" height="6"></rect>
+                    <path d="M30.1103896,89 L63.9076431,89" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>
+                    <path d="M78.1103896,89 L111.907643,89" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

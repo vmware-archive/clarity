@@ -190,7 +190,8 @@
             "ui": 20,
             "core": -1,
             "ng": 20,
-            "dox": 20
+            "dox": 20,
+            "newLayout": true
         },
         {
             "url": "input-fields",
@@ -283,6 +284,17 @@
             "core": -1,
             "ng": 5,
             "dox": 5
+        },
+        {
+            "url": "password",
+            "text": "Password",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20,
+            "newLayout": true
         },
         {
             "url": "progress",

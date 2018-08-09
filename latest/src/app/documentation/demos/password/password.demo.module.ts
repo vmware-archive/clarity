@@ -5,29 +5,30 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "@clr/angular";
+import {ClarityModule, ClrFormsNextModule} from "@clr/angular";
+import {FormsModule} from "@angular/forms";
 
-import {FormsDemo} from "./forms.demo";
+import {PasswordDemo} from "./password.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
 import {UtilsModule} from "../../../utils/utils.module";
-import { FormsExampleBlockComponent } from "./forms-example-block";
 
 @NgModule({
     imports: [
         CommonModule,
         ClarityModule,
-        RouterModule.forChild([{path: "", component: FormsDemo}]),
+        ClrFormsNextModule,
+        FormsModule,
+        RouterModule.forChild([{path: "", component: PasswordDemo}]),
         DocWrapperModule,
         UtilsModule
     ],
     declarations: [
-        FormsDemo,
-        FormsExampleBlockComponent,
+        PasswordDemo
     ],
     exports: [
-        FormsDemo
+        PasswordDemo
     ]
 })
-export class FormsDemoModule {
+export class PasswordDemoModule {
 }

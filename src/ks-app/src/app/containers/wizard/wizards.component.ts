@@ -27,7 +27,7 @@ import {
 } from '@clr/angular';
 
 @Component({ templateUrl: './wizards.component.html' })
-export class KSWizards implements OnInit {
+export class KSWizards {
   /**
    * @description
    * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
@@ -52,43 +52,13 @@ export class KSWizards implements OnInit {
   private aClrWizardPageButtons: ClrWizardPageButtons;
   private aWizardPageHeaderActionsDirective: WizardPageHeaderActionsDirective;
   private aClrWizardPageHeaderActions: ClrWizardPageHeaderActions;
+
   // Form Wizard Demo
   @ViewChild('formWizard') formWizard: Wizard;
   formOpen: boolean = false;
   formModel = { name: '', favorite: '', number: '' };
 
-  // Ghosts demo
-  @ViewChild('ghostWizard') ghostWizard: Wizard;
-  ghostModel: any;
-  ghostOpen: boolean = false;
-  typesOfPages = ['All', 'Odd', 'First and even', 'First and last'];
-
-  get isAll(): boolean {
-    return (
-      this.ghostModel.typesOfPages === '' ||
-      this.ghostModel.typesOfPages === 'All' ||
-      this.ghostModel.typesOfPages === null
-    );
-  }
-
-  get showEvenPages(): boolean {
-    return this.isAll || this.ghostModel.typesOfPages === 'First and even';
-  }
-
-  get showPageThree(): boolean {
-    return this.isAll || this.ghostModel.typesOfPages === 'Odd';
-  }
-
-  get showPageFive(): boolean {
-    return this.isAll || this.ghostModel.typesOfPages === 'Odd' || this.ghostModel.typesOfPages === 'First and last';
-  }
-
   // inlineWizard demo
   @ViewChild('inlineWizard') inlineWizard: Wizard;
   inlineOpen: boolean = false;
-
-  ngOnInit() {
-    // For ghosts demo
-    this.ghostModel = { typesOfPages: '' };
-  }
 }

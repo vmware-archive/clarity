@@ -18,7 +18,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
                 <li><a [routerLink]="['./form-validation']">Form validation</a></li>
                 <li><a [routerLink]="['./async-validation']">Async validation</a></li>
                 <li><a [routerLink]="['./not-closable']">Not closable</a></li>
-                <li><a [routerLink]="['./ghost-pages']">Ghost pages</a></li>
                 <li><a [routerLink]="['./custom-buttons']">Custom buttons</a></li>
                 <li><a [routerLink]="['./jump-to']">Jump-to page</a></li>
             </ul>

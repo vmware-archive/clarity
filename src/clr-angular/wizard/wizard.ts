@@ -20,8 +20,6 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { GHOST_PAGE_ANIMATION } from '../modal/utils/ghost-page-animations';
-
 import { ButtonHubService } from './providers/button-hub.service';
 import { HeaderActionService } from './providers/header-actions.service';
 import { PageCollectionService } from './providers/page-collection.service';
@@ -45,7 +43,6 @@ import { ClrWizardPage } from './wizard-page';
     '[class.wizard-lg]': "size == 'lg'",
     '[class.wizard-xl]': "size == 'xl'",
     '[class.lastPage]': 'navService.currentPageIsLast',
-    '[class.clr-wizard--ghosted]': 'showGhostPages',
   },
 })
 export class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
@@ -100,16 +97,6 @@ export class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
    *
    */
   @Input('clrWizardSize') size: string = 'xl';
-
-  /**
-   * The property that reveals the ghost pages in the wizard. Set through the
-   * clrWizardshowGhostPages input.
-   *
-   * @memberof Wizard
-   * @deprecated since 0.12
-   *
-   */
-  @Input('clrWizardShowGhostPages') showGhostPages: boolean = false;
 
   /**
    * Resets page completed states when navigating backwards. Can be set using
@@ -370,7 +357,6 @@ export class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
 
   public ngOnInit(): void {
     this.currentPageSubscription = this.navService.currentPageChanged.subscribe((page: ClrWizardPage) => {
-      this.setGhostPages();
       this.currentPageChanged.emit();
     });
   }
@@ -407,15 +393,8 @@ export class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
    *
    */
   public ngAfterContentInit() {
-    const navService = this.navService;
-
     this.pageCollection.pages = this.pages;
     this.headerActionService.wizardHeaderActions = this.headerActions;
-
-    if (this.showGhostPages) {
-      navService.hideWizardGhostPages = false;
-      this.deactivateGhostPages();
-    }
 
     // Only trigger buttons ready if default is open (inlined)
     if (this._open) {
@@ -517,7 +496,6 @@ export class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     // Only render buttons when wizard is opened, to avoid chocolate errors
     this.buttonService.buttonsReady = true;
 
-    this.setGhostPages();
     this._openChanged.emit(true);
   }
 
@@ -534,7 +512,6 @@ export class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
     }
 
     this._open = false;
-    this.deactivateGhostPages();
     this._openChanged.emit(false);
   }
 
@@ -651,7 +628,6 @@ export class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
       return;
     }
 
-    this.deactivateGhostPages();
     this.close();
   }
 
@@ -770,56 +746,5 @@ export class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
   public reset() {
     this.pageCollection.reset();
     this.onReset.next();
-  }
-
-  /**
-   * A convenience getter to retrieve the ghost Page animation state from
-   * WizardNavigationService.
-   *
-   * @name ghostPageState
-   * @memberof Wizard
-   * @deprecated since 0.12
-   */
-  public get ghostPageState(): string {
-    return this.navService.wizardGhostPageState;
-  }
-
-  /**
-   * Convenience method that resets the ghost page animation.
-   *
-   * @name deactivateGhostPages
-   * @memberof ClrWizard
-   * @deprecated since 0.12
-   */
-  public deactivateGhostPages(): void {
-    this.setGhostPages('deactivate');
-  }
-
-  /**
-   * Manages the state of the ghost page animation based on the location
-   * of the current page in the workflow.
-   *
-   * Accepts an optional string parameter that can reset the ghost page
-   * animation to its closed state.
-   *
-   * @name setGhostPages
-   *
-   * @memberof ClrWizard
-   */
-  public setGhostPages(deactivateOrNot: string = ''): void {
-    const navService = this.navService;
-    const ghostpageStates = GHOST_PAGE_ANIMATION.STATES;
-
-    if (this.showGhostPages) {
-      if (deactivateOrNot === 'deactivate') {
-        navService.wizardGhostPageState = ghostpageStates.NO_PAGES;
-      } else if (navService.currentPageIsLast) {
-        navService.wizardGhostPageState = ghostpageStates.LAST_PAGE;
-      } else if (navService.currentPageIsNextToLast) {
-        navService.wizardGhostPageState = ghostpageStates.NEXT_TO_LAST_PAGE;
-      } else {
-        navService.wizardGhostPageState = ghostpageStates.ALL_PAGES;
-      }
-    }
   }
 }

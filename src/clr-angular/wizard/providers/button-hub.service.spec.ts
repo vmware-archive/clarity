@@ -52,12 +52,11 @@ export default function(): void {
       expect(wizardNavigationService.cancel).toHaveBeenCalled();
     });
 
-    it("'finish' calls wizard deactivateGhostPages, deactivateGhostPages.close, emit wizardFinished", function() {
+    it("'finish' calls wizard.close, emit wizardFinished", function() {
       const wizard = context.clarityDirective;
       const finalPage = wizard.pageCollection.lastPage;
 
       spyOn(wizard.wizardFinished, 'emit');
-      spyOn(wizard, 'deactivateGhostPages');
       spyOn(wizard, 'close');
 
       // set up for finish
@@ -67,7 +66,6 @@ export default function(): void {
 
       buttonHubService.buttonClicked('finish');
 
-      expect(wizard.deactivateGhostPages).toHaveBeenCalled();
       expect(wizard.wizardFinished.emit).toHaveBeenCalled();
       expect(wizard.close).toHaveBeenCalled();
     });

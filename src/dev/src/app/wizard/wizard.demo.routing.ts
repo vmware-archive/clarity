@@ -13,7 +13,6 @@ import { WizardBasicDemo } from './wizard-basic.demo';
 import { WizardCustomButtonsDemo } from './wizard-custom-buttons.demo';
 import { WizardForceForwardDemo } from './wizard-force-forward.demo';
 import { WizardFormValidation } from './wizard-form-validation.demo';
-import { WizardGhostsDemo } from './wizard-ghosts.demo';
 import { WizardHeaderActionsDemo } from './wizard-header-actions.demo';
 import { WizardInlineDemo } from './wizard-inline.demo';
 import { WizardJumpToDemo } from './wizard-jump-to.demo';
@@ -34,7 +33,6 @@ const ROUTES: Routes = [
       { path: 'form-validation', component: WizardFormValidation },
       { path: 'async-validation', component: WizardAsyncValidation },
       { path: 'not-closable', component: WizardNotClosableDemo },
-      { path: 'ghost-pages', component: WizardGhostsDemo },
       { path: 'custom-buttons', component: WizardCustomButtonsDemo },
       { path: 'header-actions', component: WizardHeaderActionsDemo },
       { path: 'alt-cancel', component: WizardAltCancelDemo },

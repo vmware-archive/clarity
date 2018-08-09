@@ -50,7 +50,7 @@ _Describe how you plan to implement the feature, answering questions among the f
 _Describe how long you expect it to take to implement, what help you might need, and any other details that might be helpful. Don't worry, this is obviously non-contractual. 😛_
 ```
 
-Once it's ready, post it either on the original GitHub issue for bug fixes, or in a new issue otherwise. If you are planning on implementing an already designed component, please mention the issue containing the existing specification in your proposal. If the original issue hasn't been updated in a while, please ping @youdz, @gnomeontherun or @adityarb88 on the issue to ensure we will start the discussion as soon as possible.
+Once it's ready, post it either on the original GitHub issue for bug fixes or in a new issue otherwise. If you are planning on implementing an already designed component, please mention the issue containing the existing specification in your proposal. If the original issue hasn't been updated in a while, please ping @youdz, @gnomeontherun or @mathisscott on the issue to ensure we will start the discussion as soon as possible.
 
 We will discuss the proposal with you publicly on the issue, potentially requesting changes, and hopefully accept it.
 

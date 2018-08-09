@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
+import { animate, AnimationEvent, style, transition, trigger } from '@angular/animations';
 import {
   Component,
   EventEmitter,
@@ -19,8 +19,6 @@ import {
 
 import { FocusTrapDirective } from '../utils/focus-trap/focus-trap.directive';
 import { ScrollingService } from '../utils/scrolling/scrolling-service';
-
-import { GHOST_PAGE_ANIMATION } from './utils/ghost-page-animations';
 
 @Component({
   selector: 'clr-modal',
@@ -41,36 +39,6 @@ import { GHOST_PAGE_ANIMATION } from './utils/ghost-page-animations';
       transition('void => *', [style({ opacity: 0 }), animate('0.2s ease-in-out', style({ opacity: 0.85 }))]),
       transition('* => void', [animate('0.2s ease-in-out', style({ opacity: 0 }))]),
     ]),
-    trigger('ghostPageOneState', [
-      state(GHOST_PAGE_ANIMATION.STATES.NO_PAGES, style({ left: '-24px' })),
-      state(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES, style({ left: '0' })),
-      state(GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE, style({ left: '-24px' })),
-      state(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE, style({ left: '-24px' })),
-      transition(GHOST_PAGE_ANIMATION.STATES.NO_PAGES + ' => *', animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-      transition(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES + ' => *', animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)),
-      transition(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE + ' => *', animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-      transition(
-        GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE + ' => *',
-        animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)
-      ),
-    ]),
-    // TODO: USE TRANSFORM, NOT LEFT...
-    trigger('ghostPageTwoState', [
-      state(GHOST_PAGE_ANIMATION.STATES.NO_PAGES, style({ left: '-24px', top: '24px', bottom: '24px' })),
-      state(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES, style({ left: '24px' })),
-      state(
-        GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE,
-        style({ left: '0px', top: '24px', bottom: '24px', background: '#bbb' })
-      ),
-      state(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE, style({ left: '-24px', top: '24px', bottom: '24px' })),
-      transition(GHOST_PAGE_ANIMATION.STATES.NO_PAGES + ' => *', animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-      transition(GHOST_PAGE_ANIMATION.STATES.ALL_PAGES + ' => *', animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)),
-      transition(GHOST_PAGE_ANIMATION.STATES.LAST_PAGE + ' => *', animate(GHOST_PAGE_ANIMATION.TRANSITIONS.IN)),
-      transition(
-        GHOST_PAGE_ANIMATION.STATES.NEXT_TO_LAST_PAGE + ' => *',
-        animate(GHOST_PAGE_ANIMATION.TRANSITIONS.OUT)
-      ),
-    ]),
   ],
 })
 export class ClrModal implements OnChanges, OnDestroy {
@@ -86,7 +54,6 @@ export class ClrModal implements OnChanges, OnDestroy {
   @Input('clrModalSkipAnimation') skipAnimation: string = 'false';
 
   // presently this is only used by wizards
-  @Input('clrModalGhostPageState') ghostPageState: string = 'hidden';
   @Input('clrModalOverrideScrollService') bypassScrollService: boolean = false;
   @Input('clrModalPreventClose') stopClose: boolean = false;
   @Output('clrModalAlternateClose') altClose: EventEmitter<boolean> = new EventEmitter<boolean>(false);

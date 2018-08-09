@@ -14,29 +14,22 @@
          [class.modal-xl]="size == 'xl'"
          role="dialog" [attr.aria-hidden]="!_open">
 
-        <div class="modal-outer-wrapper">
-            <div class="modal-content-wrapper">
-                <!-- only used in wizards -->
-                <ng-content select=".modal-nav"></ng-content>
+      <div class="modal-content-wrapper">
+        <!-- only used in wizards -->
+        <ng-content select=".modal-nav"></ng-content>
 
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" aria-label="Close"
-                                *ngIf="closable" (click)="close()">
-                            <clr-icon aria-hidden="true" shape="close"></clr-icon>
-                        </button>
-                        <ng-content select=".modal-title"></ng-content>
-                    </div>
-                    <ng-content select=".modal-body"></ng-content>
-                    <ng-content select=".modal-footer"></ng-content>
-                </div>
-            </div>
-            <!--todo: deprecate the modal-ghost-wrapper div below after 0.12-->
-            <div class="modal-ghost-wrapper">
-                <div [@ghostPageOneState]="ghostPageState" class="modal-ghost modal-ghost-1"></div>
-                <div [@ghostPageTwoState]="ghostPageState" class="modal-ghost modal-ghost-2"></div>
-            </div>
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" aria-label="Close"
+                    *ngIf="closable" (click)="close()">
+              <clr-icon aria-hidden="true" shape="close"></clr-icon>
+            </button>
+            <ng-content select=".modal-title"></ng-content>
+          </div>
+          <ng-content select=".modal-body"></ng-content>
+          <ng-content select=".modal-footer"></ng-content>
         </div>
+      </div>
     </div>
 
     <div [@fade] class="modal-backdrop"

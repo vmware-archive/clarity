@@ -17,7 +17,6 @@ import { WizardBasicDemo } from './wizard-basic.demo';
 import { WizardCustomButtonsDemo } from './wizard-custom-buttons.demo';
 import { WizardForceForwardDemo } from './wizard-force-forward.demo';
 import { WizardFormValidation } from './wizard-form-validation.demo';
-import { WizardGhostsDemo } from './wizard-ghosts.demo';
 import { WizardHeaderActionsDemo } from './wizard-header-actions.demo';
 import { WizardInlineDemo } from './wizard-inline.demo';
 import { WizardJumpToDemo } from './wizard-jump-to.demo';
@@ -37,7 +36,6 @@ import { ROUTING } from './wizard.demo.routing';
     WizardFormValidation,
     WizardAsyncValidation,
     WizardNotClosableDemo,
-    WizardGhostsDemo,
     WizardCustomButtonsDemo,
     WizardResetDemo,
     WizardHeaderActionsDemo,
@@ -54,7 +52,6 @@ import { ROUTING } from './wizard.demo.routing';
     WizardFormValidation,
     WizardAsyncValidation,
     WizardNotClosableDemo,
-    WizardGhostsDemo,
     WizardSkipPageDemo,
     WizardCustomButtonsDemo,
     WizardHeaderActionsDemo,

@@ -697,7 +697,6 @@ export declare class ClrModal implements OnChanges, OnDestroy {
     bypassScrollService: boolean;
     closable: boolean;
     focusTrap: FocusTrapDirective;
-    ghostPageState: string;
     size: string;
     readonly sizeClass: string;
     skipAnimation: string;
@@ -1055,7 +1054,6 @@ export declare class ClrWizard implements OnInit, OnDestroy, AfterContentInit, D
     differ: any;
     disableStepnav: boolean;
     forceForward: boolean;
-    /** @deprecated */ readonly ghostPageState: string;
     headerActionService: HeaderActionService;
     headerActions: QueryList<ClrWizardHeaderAction>;
     readonly isFirst: boolean;
@@ -1068,7 +1066,6 @@ export declare class ClrWizard implements OnInit, OnDestroy, AfterContentInit, D
     onReset: EventEmitter<any>;
     pageCollection: PageCollectionService;
     pages: QueryList<ClrWizardPage>;
-    /** @deprecated */ showGhostPages: boolean;
     size: string;
     stopCancel: boolean;
     readonly stopModalAnimations: string;
@@ -1079,7 +1076,6 @@ export declare class ClrWizard implements OnInit, OnDestroy, AfterContentInit, D
     cancel(): void;
     checkAndCancel(): void;
     close(): void;
-    /** @deprecated */ deactivateGhostPages(): void;
     finish(skipChecksAndEmits?: boolean): void;
     forceFinish(): void;
     forceNext(): void;
@@ -1094,7 +1090,6 @@ export declare class ClrWizard implements OnInit, OnDestroy, AfterContentInit, D
     prev(): void;
     previous(): void;
     reset(): void;
-    setGhostPages(deactivateOrNot?: string): void;
     toggle(value: boolean): void;
 }
 

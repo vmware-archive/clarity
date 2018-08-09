@@ -4,73 +4,321 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<form class="test-select">
-  <section class="form-block">
-    <label>Select Boxes</label>
-    <div class="form-group">
-      <label for="selects_1">This is a select box</label>
-      <div class="select">
-        <select id="selects_1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>50000000</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="selects_2">Text field paired with a select</label>
-      <input type="text" id="selects_2" placeholder="Test">
-      <div class="select">
-        <select id="selects_3">
-          <option>New York</option>
-          <option>San Francisco</option>
-          <option>Austin</option>
-          <option>Paris</option>
-          <option>Seattle</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="selects_4">Disabled select</label>
-      <div class="select disabled">
-        <select id="selects_4" disabled>
-          <option>New York</option>
-          <option>San Francisco</option>
-          <option>Austin</option>
-          <option>Paris</option>
-          <option>Seattle</option>
-        </select>
-      </div>
-    </div>
-  </section>
+<h2>CSS Select</h2>
 
-  <section class="form-block">
-    <label>Multi Select</label>
-    <div class="form-group">
-      <label for="selects_1">Multi Select</label>
-      <div class="select multiple">
-        <select id="selects_5" multiple>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>50000000</option>
+<h4>Vertical</h4>
+
+<form class="clr-form">
+  <div class="clr-form-control">
+    <label for="vertical-select-basic" class="clr-control-label">Basic select</label>
+    <div class="clr-control-container">
+      <div class="clr-select-wrapper">
+        <select id="vertical-select-basic" placeholder="Enter value here" class="clr-select">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
         </select>
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
       </div>
+      <span class="clr-subtext">Helper Text</span>
     </div>
-    <div class="form-group">
-      <label for="selects_4">Disabled select</label>
-      <div class="select multiple disabled">
-        <select id="selects_6" multiple disabled>
-          <option>New York</option>
-          <option>San Francisco</option>
-          <option>Austin</option>
-          <option>Paris</option>
-          <option>Seattle</option>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="vertical-select-basic-error" class="clr-control-label">Basic select, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-select-wrapper">
+        <select id="vertical-select-basic-error" placeholder="Enter value here" class="clr-select">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
         </select>
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
       </div>
+      <span class="clr-subtext">Helper Text</span>
     </div>
-  </section>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="vertical-select-multiple" class="clr-control-label">Basic select</label>
+    <div class="clr-control-container">
+      <div class="clr-multiselect-wrapper">
+        <select multiple id="vertical-select-multiple" placeholder="Enter value here" class="clr-select">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="vertical-select-multiple-error" class="clr-control-label">Basic select, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-multiselect-wrapper">
+        <select multiple id="vertical-select-multiple-error" placeholder="Enter value here" class="clr-select">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</form>
+
+<h4>Horizontal</h4>
+
+<form class="clr-form clr-form-horizontal">
+  <div class="clr-form-control">
+    <label for="horizontal-select-basic" class="clr-control-label">Basic select</label>
+    <div class="clr-control-container">
+      <div class="clr-select-wrapper">
+        <select id="horizontal-select-basic" placeholder="Enter value here" class="clr-select">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="horizontal-select-basic-error" class="clr-control-label">Basic select, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-select-wrapper">
+        <select id="horizontal-select-basic-error" placeholder="Enter value here" class="clr-select">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="horizontal-select-multiple" class="clr-control-label">Basic select</label>
+    <div class="clr-control-container">
+      <div class="clr-multiselect-wrapper">
+        <select multiple id="horizontal-select-multiple" placeholder="Enter value here" class="clr-select">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="horizontal-select-multiple-error" class="clr-control-label">Basic select, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-multiselect-wrapper">
+        <select multiple id="horizontal-select-multiple-error" placeholder="Enter value here" class="clr-select">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</form>
+
+<h4>Compact</h4>
+
+<form class="clr-form clr-form-compact">
+  <div class="clr-form-control">
+    <label for="compact-select-basic" class="clr-control-label">Basic select</label>
+    <div class="clr-control-container">
+      <div class="clr-select-wrapper">
+        <select id="compact-select-basic" placeholder="Enter value here" class="clr-select">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="compact-select-basic-error" class="clr-control-label">Basic select, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-select-wrapper">
+        <select id="compact-select-basic-error" placeholder="Enter value here" class="clr-select">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="compact-select-multiple" class="clr-control-label">Basic select</label>
+    <div class="clr-control-container">
+      <div class="clr-multiselect-wrapper">
+        <select multiple id="compact-select-multiple" placeholder="Enter value here" class="clr-select">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="compact-select-multiple-error" class="clr-control-label">Basic select, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-multiselect-wrapper">
+        <select multiple id="compact-select-multiple-error" placeholder="Enter value here" class="clr-select">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</form>
+
+<h2>Angular Select</h2>
+
+<h4>Vertical</h4>
+
+<form clrForm>
+  <select clrSelect [(ngModel)]="vertical.one" name="one" required>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+
+  <clr-select-container>
+    <label>Two</label>
+    <select clrSelect [(ngModel)]="vertical.two" name="two" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Three</label>
+    <select clrSelect [(ngModel)]="vertical.three" name="three" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Multi</label>
+    <select multiple clrSelect [(ngModel)]="vertical.four" name="four" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+</form>
+
+<h4>Horizontal</h4>
+
+<form clrForm clrLayout="horizontal">
+  <select clrSelect [(ngModel)]="horizontal.one" name="one" required>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+
+  <clr-select-container>
+    <label>two</label>
+    <select clrSelect [(ngModel)]="horizontal.two" name="two" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Three</label>
+    <select clrSelect [(ngModel)]="horizontal.three" name="three" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Multi</label>
+    <select multiple clrSelect [(ngModel)]="horizontal.four" name="four" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+</form>
+
+<h4>Compact</h4>
+
+<form clrForm clrLayout="compact">
+  <select clrSelect [(ngModel)]="compact.one" name="one" required>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+
+  <clr-select-container>
+    <label>Two</label>
+    <select clrSelect [(ngModel)]="compact.two" name="two" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Three</label>
+    <select clrSelect [(ngModel)]="compact.three" name="three" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Multi</label>
+    <select multiple clrSelect [(ngModel)]="compact.four" name="four" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
 </form>

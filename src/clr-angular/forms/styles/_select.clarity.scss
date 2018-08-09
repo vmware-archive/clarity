@@ -68,7 +68,6 @@
   }
 
   .clr-multiselect-wrapper {
-    margin-top: $clr-forms-baseline;
     display: flex;
 
     .clr-validate-icon {
@@ -94,6 +93,10 @@
       padding: ($clr-forms-baseline / 2) $clr-forms-baseline;
       color: $clr-forms-select-multiple-option-color;
     }
+  }
+
+  .clr-error select[multiple] {
+    border-color: $clr-forms-invalid-color;
   }
 
   .clr-form-control-disabled .clr-select {

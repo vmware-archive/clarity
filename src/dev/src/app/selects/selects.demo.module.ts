@@ -5,11 +5,16 @@
  */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
-import { ClarityModule } from '@clr/angular';
+import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
 
 import { SelectsDemo } from './selects.demo';
 import { ROUTING } from './selects.demo.routing';
 
-@NgModule({ imports: [CommonModule, ClarityModule, ROUTING], declarations: [SelectsDemo], exports: [SelectsDemo] })
+@NgModule({
+  imports: [CommonModule, ClarityModule, ClrFormsNextModule, FormsModule, ROUTING],
+  declarations: [SelectsDemo],
+  exports: [SelectsDemo],
+})
 export class SelectsDemoModule {}

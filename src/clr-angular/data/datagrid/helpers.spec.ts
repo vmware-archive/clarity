@@ -64,7 +64,7 @@ export function addHelpers(): void {
       extraDirectives: Type<any>[] = []
     ) => {
       TestBed.configureTestingModule({
-        imports: [ClarityModule.forRoot()],
+        imports: [ClarityModule],
         declarations: [testComponent, ...extraDirectives],
         providers: providers,
       });

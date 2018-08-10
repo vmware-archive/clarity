@@ -29,8 +29,6 @@ export declare const Checkbox: typeof ClrCheckboxDeprecated;
 export declare const CHECKBOX_DIRECTIVES: Type<any>[];
 
 export declare class ClarityModule {
-    /** @deprecated */ static forChild(): ModuleWithProviders;
-    /** @deprecated */ static forRoot(): ModuleWithProviders;
 }
 
 export declare const CLR_ALERT_DIRECTIVES: Type<any>[];

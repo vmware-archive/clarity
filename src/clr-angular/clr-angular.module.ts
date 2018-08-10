@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { ClrButtonModule } from './button/button.module';
 import { ClrCodeModule } from './code/code.module';
@@ -38,14 +38,4 @@ import { ClrWizardModule } from './wizard/wizard.module';
     ClrWizardModule,
   ],
 })
-export class ClarityModule {
-  /** @deprecated */
-  static forRoot(): ModuleWithProviders {
-    return { ngModule: ClarityModule, providers: [] };
-  }
-
-  /** @deprecated */
-  static forChild(): ModuleWithProviders {
-    return { ngModule: ClarityModule, providers: [] };
-  }
-}
+export class ClarityModule {}

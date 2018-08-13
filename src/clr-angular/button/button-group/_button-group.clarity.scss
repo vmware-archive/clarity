@@ -9,6 +9,7 @@
 
     .btn {
       margin: 0;
+      vertical-align: top;
 
       &:not(:first-child) {
         border-top-left-radius: 0;

@@ -32,6 +32,7 @@ export class DatagridKitchenSinkDemo {
   toAdd: User[] = [];
   toDelete: User[] = [];
   toEdit: User;
+  toExport: User[] = [];
   detail = 'default';
   replace = false;
   fixedHeight = false;
@@ -77,6 +78,7 @@ export class DatagridKitchenSinkDemo {
     this.toAdd = [];
     this.toDelete = [];
     this.toEdit = null;
+    this.toExport = [];
   }
 
   onDelete(user: User) {
@@ -100,6 +102,16 @@ export class DatagridKitchenSinkDemo {
   onAdd() {
     this.cleanUp();
     this.toAdd = this.selected.slice();
+  }
+
+  onExportAll() {
+    this.cleanUp();
+    this.toExport = this.users.slice();
+  }
+
+  onExportSelected() {
+    this.cleanUp();
+    this.toExport = this.selected.slice();
   }
 
   toggleId() {

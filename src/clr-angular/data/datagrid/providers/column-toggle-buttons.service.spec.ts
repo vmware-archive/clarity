@@ -17,22 +17,18 @@ export default function(): void {
     it('should have expected properties', function() {
       expect(service.buttons).toBeNull();
       expect(service.selectAllDisabled).toBe(false);
-      expect(service.okButtonClicked.subscribe).toBeDefined();
       expect(service.selectAllButtonClicked.subscribe).toBeDefined();
     });
 
-    it('should emit clicks', function() {
+    it('should emit clicks only if clrType is `selectAll`', function() {
       let calls = 0;
-      service.okButtonClicked.subscribe(() => {
-        calls++;
-      });
       service.selectAllButtonClicked.subscribe(() => {
         calls++;
       });
 
       service.buttonClicked('ok');
       service.buttonClicked('selectAll');
-      expect(calls).toEqual(2);
+      expect(calls).toEqual(1);
     });
   });
 }

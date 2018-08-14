@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { IfOpenService } from '../../utils/conditional/if-open.service';
@@ -50,7 +50,8 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
     private _ifOpenService: IfOpenService,
     private _dateNavigationService: DateNavigationService,
     private _datepickerEnabledService: DatepickerEnabledService,
-    private dateFormControlService: DateFormControlService
+    private dateFormControlService: DateFormControlService,
+    private container: ElementRef
   ) {
     this._sub = this._ifOpenService.openChange.subscribe(open => {
       if (open) {
@@ -63,7 +64,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
    * Returns if the Datepicker is enabled or not. If disabled, hides the datepicker trigger.
    */
   get isEnabled(): boolean {
-    return this._datepickerEnabledService.isEnabled;
+    return this._datepickerEnabledService.isEnabled && !this.container.nativeElement.children[0].disabled;
   }
 
   /**

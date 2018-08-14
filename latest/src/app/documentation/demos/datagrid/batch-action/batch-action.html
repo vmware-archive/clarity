@@ -18,6 +18,12 @@
     have access to the full objects, we could perform any operation we want on them.
 </p>
 
+<p>
+    Depending on the role of certain batch actions, you can choose to break button bars up into separate button groups.
+    To increase the visibility of the most important batch actions within each button group, we recommend organizing
+    batch actions in priority order from left to right.
+</p>
+
 <div class="card card-block">
     <p class="card-text username-list">
         Users to be added to group:
@@ -36,15 +42,32 @@
         <em *ngIf="toDelete.length == 0">No user selected.</em>
         <span class="username" *ngFor="let user of toDelete">{{user.name}}</span>
     </p>
+
+    <p class="card-text username-list">
+        Users to be exported:
+        <em *ngIf="toExport.length == 0">No user selected.</em>
+        <span class="username" *ngFor="let user of toExport">{{user.name}}</span>
+    </p>
 </div>
 
 <clr-datagrid [(clrDgSelected)]="selected">
     <clr-dg-action-bar>
         <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-secondary" (click)="onAdd()">
-                <clr-icon shape="plus"></clr-icon> Add to group</button>
-            <button type="button" class="btn btn-sm btn-secondary" (click)="onDelete()" ><clr-icon shape="close"></clr-icon> Delete</button>
-            <button type="button" class="btn btn-sm btn-secondary" (click)="onEdit()" *ngIf="selected.length == 1"><clr-icon shape="pencil"></clr-icon> Edit</button>
+            <button type="button" class="btn btn-sm btn-secondary" (click)="onAdd()">Add to group</button>
+            <button type="button" class="btn btn-sm btn-secondary" (click)="onDelete()">Delete</button>
+            <button type="button" class="btn btn-sm btn-secondary" (click)="onEdit()" *ngIf="selected.length == 1">Edit</button>
+        </div>
+        <div class="btn-group">
+            <clr-dropdown>
+                <button type="button" class="btn btn-sm btn-secondary" clrDropdownTrigger>
+                    Export
+                    <clr-icon shape="caret down"></clr-icon>
+                </button>
+                <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
+                    <button type="button" (click)="onExportAll()" clrDropdownItem>Export All</button>
+                    <button type="button" (click)="onExportSelected()" [disabled]="selected.length === 0" clrDropdownItem>Export Selected Items</button>
+                </clr-dropdown-menu>
+            </clr-dropdown>
         </div>
     </clr-dg-action-bar>
 

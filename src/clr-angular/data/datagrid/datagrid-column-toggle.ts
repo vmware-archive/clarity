@@ -58,14 +58,6 @@ import { HideableColumnService } from './providers/hideable-column.service';
                             type="button">Select All
                     </button>
                 </div>
-                <div class="action-right">
-                    <button
-                            (click)="toggleUI()"
-                            class="btn btn-primary"
-                            type="button">
-                        Ok
-                    </button>
-                </div>
             </div>
         </div>
     `,
@@ -118,12 +110,6 @@ export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
             this.columns.push(col);
           }
         });
-      })
-    );
-
-    this.subscriptions.push(
-      this.columnToggleButtons.okButtonClicked.subscribe(() => {
-        this.toggleUI();
       })
     );
 

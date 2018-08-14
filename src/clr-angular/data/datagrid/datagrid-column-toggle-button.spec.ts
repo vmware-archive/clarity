@@ -19,21 +19,13 @@ export default function(): void {
         component = new ClrDatagridColumnToggleButton(columnToggleButtons);
       });
 
-      it('knows if the button isOk()', function() {
-        component.clrType = 'ok';
-        expect(component.isOk()).toBe(true);
-        component.clrType = 'selectAll';
-        expect(component.isOk()).toBe(false);
-      });
-
-      it('gets the correct classes', function() {
-        component.clrType = 'ok';
-        expect(component.getClasses()).toEqual('btn btn-primary');
-        component.clrType = 'selectAll';
-        expect(component.getClasses()).toEqual('btn btn-sm btn-link p6 text-uppercase');
-      });
-
       it('calls the click method', function() {
+        spyOn(columnToggleButtons, 'buttonClicked');
+        component.click();
+        expect(columnToggleButtons.buttonClicked).toHaveBeenCalledWith(component.clrType);
+      });
+
+      it('calls the click method when clrType is `ok`', function() {
         component.clrType = 'ok';
         spyOn(columnToggleButtons, 'buttonClicked');
         component.click();
@@ -55,9 +47,6 @@ export default function(): void {
 
       it('has a button', function() {
         expect(button).toBeDefined();
-        expect(button.className).toContain('btn btn-primary');
-        context.testComponent.type = 'selectAll';
-        context.detectChanges();
         expect(button.className).toContain('btn btn-sm');
       });
 
@@ -81,5 +70,5 @@ export default function(): void {
     `,
 })
 class ButtonTest {
-  type = 'ok';
+  type = 'selectAll';
 }

@@ -17,6 +17,18 @@ const MAIN_EXAMPLE = `
             <button type="button" class="btn btn-sm btn-secondary" (click)="onDelete()" ><clr-icon shape="close"></clr-icon> Delete</button>
             <button type="button" class="btn btn-sm btn-secondary" (click)="onEdit()" *ngIf="selected.length == 1"><clr-icon shape="pencil"></clr-icon> Edit</button>
         </div>
+        <div class="btn-group">
+            <clr-dropdown>
+                <button type="button" class="btn btn-sm btn-secondary" clrDropdownTrigger>
+                    Export
+                    <clr-icon shape="caret down"></clr-icon>
+                </button>
+                <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
+                    <button type="button" (click)="onExportAll()" clrDropdownItem>Export All</button>
+                    <button type="button" (click)="onExportSelected()" [disabled]="selected.length === 0" clrDropdownItem>Export Selected Items</button>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
     </clr-dg-action-bar>
     <-- ... -->
     <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
@@ -41,6 +53,7 @@ export class DatagridBatchActionDemo {
     toAdd: User[] = [];
     toDelete: User[] = [];
     toEdit: User;
+    toExport: User[] = [];
 
     constructor(private inventory: Inventory) {
         inventory.size = 10;
@@ -52,6 +65,7 @@ export class DatagridBatchActionDemo {
         this.toAdd = [];
         this.toDelete = [];
         this.toEdit = null;
+        this.toExport = [];
     }
 
     onAdd() {
@@ -67,5 +81,15 @@ export class DatagridBatchActionDemo {
     onDelete() {
         this.cleanUp();
         this.toDelete =this.selected.slice();
+    }
+
+    onExportAll() {
+        this.cleanUp();
+        this.toExport = this.users.slice();
+    }
+
+    onExportSelected() {
+        this.cleanUp();
+        this.toExport = this.selected.slice();
     }
 }

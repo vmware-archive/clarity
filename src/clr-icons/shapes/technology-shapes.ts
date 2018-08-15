@@ -6,9 +6,6 @@
 import { descriptorConfig } from '../utils/descriptor-config';
 import { clrIconSVG } from '../utils/svg-tag-generator';
 
-// TODO: deprecate these imported shapes in 0.12
-// TODO: remove these imported shapes in 0.13
-import { ClrShapeBarChart, ClrShapeLineChart } from './chart-shapes';
 interface Window {
   ClarityIcons: any;
 }
@@ -1110,11 +1107,9 @@ export const TechnologyShapes: any = {
   devices: ClrShapeDevices,
   keyboard: ClrShapeKeyboard,
   mouse: ClrShapeMouse,
-  'line-chart': ClrShapeLineChart,
   dashboard: ClrShapeDashboard,
   host: ClrShapeHost,
   storage: ClrShapeStorage,
-  'bar-chart': ClrShapeBarChart,
   cluster: ClrShapeCluster,
   applications: ClrShapeApplications,
   building: ClrShapeBuilding,
@@ -1168,7 +1163,6 @@ export const TechnologyShapes: any = {
   'process-on-vm': ClrShapeProcessOnVM,
 };
 
-Object.defineProperty(TechnologyShapes, 'analytics', descriptorConfig(TechnologyShapes['line-chart']));
 Object.defineProperty(TechnologyShapes, 'server', descriptorConfig(TechnologyShapes.host));
 Object.defineProperty(TechnologyShapes, 'command', descriptorConfig(TechnologyShapes.terminal));
 Object.defineProperty(TechnologyShapes, 'mobile-phone', descriptorConfig(TechnologyShapes.mobile));

@@ -5,14 +5,10 @@
  */
 import { clrIconSVG } from '../utils/svg-tag-generator';
 
-// TODO: deprecate these imported shapes in 0.12
-// TODO: remove these imported shapes in 0.13
 interface Window {
   ClarityIcons: any;
 }
 declare var window: Window;
-
-import { ClrShapeWand } from './essential-shapes';
 
 /* tslint:disable:variable-name */
 export const ClrShapePlay = clrIconSVG(
@@ -150,7 +146,6 @@ export const MediaShapes: any = {
   headphones: ClrShapeHeadphones,
   'film-strip': ClrShapeFilmStrip,
   'music-note': ClrShapeMusicNote,
-  wand: ClrShapeWand,
   'image-gallery': ClrShapeImageGallery,
   'replay-all': ClrShapeReplayAll,
   'replay-one': ClrShapeReplayOne,

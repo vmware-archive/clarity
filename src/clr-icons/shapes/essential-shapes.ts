@@ -6,15 +6,14 @@
 import { descriptorConfig } from '../utils/descriptor-config';
 import { clrIconSVG } from '../utils/svg-tag-generator';
 
-// TODO: deprecate these imported shapes in 0.12
-// TODO: remove these imported shapes in 0.13
-
 interface Window {
   ClarityIcons: any;
 }
 declare var window: Window;
 
-import { ClrShapeAngleDouble, ClrShapeEye, ClrShapeEyeHide } from './core-shapes';
+// TODO: deprecate these imported shapes in 0.13
+// TODO: remove these imported shapes in 1.0
+import { ClrShapeEye, ClrShapeEyeHide } from './core-shapes';
 
 /* tslint:disable:variable-name */
 export const ClrShapeAddText = clrIconSVG(`<path class="clr-i-outline clr-i-outline-path-1" d="M31,21H13a1,1,0,0,0,0,2H31a1,1,0,0,0,0-2Z"/>
@@ -854,7 +853,6 @@ export const EssentialShapes: any = {
   'pop-out': ClrShapePopOut,
   filter: ClrShapeFilter,
   pin: ClrShapePin,
-  'angle-double': ClrShapeAngleDouble,
   file: ClrShapeFile,
   plus: ClrShapePlus,
   minus: ClrShapeMinus,
@@ -935,7 +933,6 @@ export { ClrShapeEye, ClrShapeEyeHide } from './core-shapes';
 Object.defineProperty(EssentialShapes, 'edit', descriptorConfig(EssentialShapes.pencil));
 Object.defineProperty(EssentialShapes, 'note-edit', descriptorConfig(EssentialShapes.note));
 Object.defineProperty(EssentialShapes, 'group', descriptorConfig(EssentialShapes.users));
-Object.defineProperty(EssentialShapes, 'collapse', descriptorConfig(EssentialShapes['angle-double']));
 Object.defineProperty(EssentialShapes, 'document', descriptorConfig(EssentialShapes.file));
 Object.defineProperty(EssentialShapes, 'add', descriptorConfig(EssentialShapes.plus));
 Object.defineProperty(EssentialShapes, 'cancel', descriptorConfig(EssentialShapes.ban));

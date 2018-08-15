@@ -132,6 +132,10 @@ describe('Tabs', () => {
       context.fixture.destroy();
     });
 
+    it('sets the role to tab on overflow button', () => {
+      expect(compiled.querySelector('button.nav-link').getAttribute('role')).toEqual('tab');
+    });
+
     it('projects all the links and just the active content', () => {
       expect(compiled.querySelectorAll('button.nav-link').length).toEqual(4);
       expect(compiled.querySelectorAll('p').length).toEqual(1);
@@ -153,6 +157,12 @@ describe('Tabs', () => {
       toggle.click();
       context.fixture.detectChanges();
       expect(compiled.querySelector('.tabs-overflow .tab4')).toBeDefined();
+    });
+
+    it('sets the role on the overflow button li to presentation', () => {
+      context.fixture.componentInstance.inOverflow = true;
+      context.fixture.detectChanges();
+      expect(compiled.querySelector('.tabs-overflow .nav-item').getAttribute('role')).toEqual('presentation');
     });
   });
 

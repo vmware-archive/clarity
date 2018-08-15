@@ -18,6 +18,7 @@ let nbTabContentComponents: number = 0;
     '[id]': 'tabContentId',
     '[attr.aria-labelledby]': 'ariaLabelledBy',
     '[attr.aria-hidden]': '!active',
+    '[attr.aria-expanded]': 'active',
     '[attr.data-hidden]': '!active',
     role: 'tabpanel',
   },

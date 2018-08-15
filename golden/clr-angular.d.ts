@@ -549,7 +549,7 @@ export declare class ClrFormsNextModule {
 export declare class ClrHeader implements OnDestroy {
     isNavLevel1OnPage: boolean;
     isNavLevel2OnPage: boolean;
-    readonly responsiveNavCodes: ResponsiveNavCodes;
+    responsiveNavCodes: typeof ResponsiveNavCodes;
     constructor(responsiveNavService: ResponsiveNavigationService);
     closeOpenNav(): void;
     initializeNavTriggers(navList: number[]): void;
@@ -906,11 +906,9 @@ export declare class ClrTabLink {
     readonly ariaControls: string;
     ifActiveService: IfActiveService;
     inOverflow: boolean;
-    readonly role: string;
     tabLinkId: string;
     tabsId: number;
     templateRefContainer: TemplateRefContainer;
-    readonly type: string;
     constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService, el: ElementRef, cfr: ComponentFactoryResolver, viewContainerRef: ViewContainerRef, tabsId: number);
     activate(): void;
 }
@@ -924,6 +922,7 @@ export declare class ClrTabs implements AfterContentInit {
     commonStrings: ClrCommonStrings;
     ifActiveService: IfActiveService;
     ifOpenService: IfOpenService;
+    readonly tabIds: string;
     tabLinkDirectives: QueryList<ClrTabLink>;
     tabsId: number;
     tabsService: TabsService;

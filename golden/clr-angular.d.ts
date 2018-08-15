@@ -476,7 +476,7 @@ export declare class ClrDataModule {
 export declare class ClrDateContainer implements DynamicWrapper, OnDestroy {
     _dynamic: boolean;
     readonly isEnabled: boolean;
-    constructor(_ifOpenService: IfOpenService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService);
+    constructor(_ifOpenService: IfOpenService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, container: ElementRef);
     ngOnDestroy(): void;
     toggleDatepicker(event: MouseEvent): void;
 }

@@ -819,6 +819,30 @@ export const ClrShapeWand = clrIconSVG(
 export const ClrShapeCursorMove = clrIconSVG(
   `<path d="M28.85,12.89a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41L30.14,17H19V5.86l2.69,2.7a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.42L18,2,12.89,7.15a1,1,0,0,0-.29.71,1,1,0,0,0,1.71.7L17,5.86V17H5.86l2.7-2.69a1,1,0,0,0,0-1.41,1,1,0,0,0-1.42,0L2,18l5.14,5.11a1,1,0,0,0,.71.29,1,1,0,0,0,.7-1.71L5.86,19H17V30.14l-2.69-2.7a1,1,0,0,0-1.71.7,1,1,0,0,0,.29.71L18,34l5.11-5.14a1,1,0,0,0,0-1.42,1,1,0,0,0-1.41,0L19,30.14V19H30.14l-2.7,2.69a1,1,0,0,0,.7,1.71,1,1,0,0,0,.71-.29L34,18Z" class="clr-i-outline clr-i-outline-path-1" />`
 );
+export const ClrShapeClone = clrIconSVG(
+  `<path d="M6,6H22v4h2V6a2,2,0,0,0-2-2H6A2,2,0,0,0,4,6V22a2,2,0,0,0,2,2h4V22H6Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M30,12H14a2,2,0,0,0-2,2V30a2,2,0,0,0,2,2H30a2,2,0,0,0,2-2V14A2,2,0,0,0,30,12Zm0,18H14V14H30Z" class="clr-i-outline clr-i-outline-path-2" /><polygon points="21 28 23 28 23 23 28 23 28 21 23 21 23 16 21 16 21 21 16 21 16 23 21 23 21 28" class="clr-i-outline clr-i-outline-path-3" /><path d="M24,10V6a2,2,0,0,0-2-2H6A2,2,0,0,0,4,6V22a2,2,0,0,0,2,2h4V12a2,2,0,0,1,2-2Z" class="clr-i-solid clr-i-solid-path-1" /><path d="M30,12H14a2,2,0,0,0-2,2V30a2,2,0,0,0,2,2H30a2,2,0,0,0,2-2V14A2,2,0,0,0,30,12ZM28,23H23v5H21V23H16V21h5V16h2v5h5Z" class="clr-i-solid clr-i-solid-path-2" />`
+);
+export const ClrShapeDetails = clrIconSVG(
+  `<path d="M32,6H4A2,2,0,0,0,2,8V28a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V8A2,2,0,0,0,32,6Zm0,22H4V8H32Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M9,14H27a1,1,0,0,0,0-2H9a1,1,0,0,0,0,2Z" class="clr-i-outline clr-i-outline-path-2" /><path d="M9,18H27a1,1,0,0,0,0-2H9a1,1,0,0,0,0,2Z" class="clr-i-outline clr-i-outline-path-3" /><path d="M9,22H19a1,1,0,0,0,0-2H9a1,1,0,0,0,0,2Z" class="clr-i-outline clr-i-outline-path-4" /><path d="M32,6H4A2,2,0,0,0,2,8V28a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V8A2,2,0,0,0,32,6ZM19,22H9a1,1,0,0,1,0-2H19a1,1,0,0,1,0,2Zm8-4H9a1,1,0,0,1,0-2H27a1,1,0,0,1,0,2Zm0-4H9a1,1,0,0,1,0-2H27a1,1,0,0,1,0,2Z" class="clr-i-solid clr-i-solid-path-1" />`
+);
+export const ClrShapeDragHandleCorner = clrIconSVG(
+  `<circle cx="12" cy="24" r="1.5" class="clr-i-outline clr-i-outline-path-1" /><circle cx="18" cy="24" r="1.5" class="clr-i-outline clr-i-outline-path-2" /><circle cx="18" cy="18" r="1.5" class="clr-i-outline clr-i-outline-path-3" /><circle cx="24" cy="12" r="1.5" class="clr-i-outline clr-i-outline-path-4" /><circle cx="24" cy="24" r="1.5" class="clr-i-outline clr-i-outline-path-5" /><circle cx="24" cy="18" r="1.5" class="clr-i-outline clr-i-outline-path-6" />`
+);
+export const ClrShapeEraser = clrIconSVG(
+  `<path d="M35.62,12a2.82,2.82,0,0,0-.84-2L27.49,2.65a2.9,2.9,0,0,0-4,0L2.83,23.28a2.84,2.84,0,0,0,0,4L7.53,32H3a1,1,0,0,0,0,2H28a1,1,0,0,0,0-2H16.74l18-18A2.82,2.82,0,0,0,35.62,12ZM13.91,32H10.36L4.25,25.89a.84.84,0,0,1,0-1.19l5.51-5.52,8.49,8.48ZM33.37,12.54,19.66,26.25l-8.48-8.49,13.7-13.7a.86.86,0,0,1,1.19,0l7.3,7.29a.86.86,0,0,1,.25.6A.82.82,0,0,1,33.37,12.54Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M28,32H15.33L19,28.37l-9.9-9.9L3.54,24a1.83,1.83,0,0,0,0,2.6L9,32H3a1,1,0,0,0,0,2H28a1,1,0,0,0,0-2Z" class="clr-i-solid clr-i-solid-path-1" /><path d="M34.08,10.65l-7.3-7.3a1.83,1.83,0,0,0-2.6,0L10.47,17.06l9.9,9.9L34.08,13.25A1.85,1.85,0,0,0,34.08,10.65Z" class="clr-i-solid clr-i-solid-path-2" />`
+);
+export const ClrShapeLandscape = clrIconSVG(
+  `<path d="M32,6H4A2,2,0,0,0,2,8V28a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V8A2,2,0,0,0,32,6Zm0,22H4V8H32Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M9,22a.82.82,0,0,0,.55-.21.8.8,0,0,0,0-1.13L7.83,18.8H28.17l-1.72,1.86a.8.8,0,0,0,0,1.13A.82.82,0,0,0,27,22a.78.78,0,0,0,.58-.26L31.09,18l-3.47-3.74a.79.79,0,0,0-1.13,0,.8.8,0,0,0,0,1.13l1.72,1.86H7.83l1.72-1.86a.8.8,0,0,0,0-1.13.79.79,0,0,0-1.13,0L4.91,18l3.47,3.74A.78.78,0,0,0,9,22Z" class="clr-i-outline clr-i-outline-path-2" /><path d="M32,6H4A2,2,0,0,0,2,8V28a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V8A2,2,0,0,0,32,6ZM27.77,21.88a1,1,0,0,1-.73.32,1,1,0,0,1-.68-.27,1,1,0,0,1-.06-1.41L27.71,19H8.29L9.7,20.52a1,1,0,0,1-.06,1.41A1,1,0,0,1,9,22.2a1,1,0,0,1-.73-.32L4.64,18l3.59-3.88A1,1,0,0,1,9.7,15.48L8.29,17H27.71L26.3,15.48a1,1,0,0,1,1.47-1.36L31.36,18Z" class="clr-i-solid clr-i-solid-path-1" />`
+);
+export const ClrShapePaste = clrIconSVG(
+  `<path d="M30,12H26v2h4v2h2V14A2,2,0,0,0,30,12Z" class="clr-i-outline clr-i-outline-path-1" /><rect x="30" y="18" width="2" height="6" class="clr-i-outline clr-i-outline-path-2" /><path d="M30,30H28v2h2a2,2,0,0,0,2-2V26H30Z" class="clr-i-outline clr-i-outline-path-3" /><path d="M24,22V6a2,2,0,0,0-2-2H6A2,2,0,0,0,4,6V22a2,2,0,0,0,2,2H22A2,2,0,0,0,24,22ZM6,6H22V22H6Z" class="clr-i-outline clr-i-outline-path-4" /><rect x="20" y="30" width="6" height="2" class="clr-i-outline clr-i-outline-path-5" /><path d="M14,26H12v4a2,2,0,0,0,2,2h4V30H14Z" class="clr-i-outline clr-i-outline-path-6" /><path d="M30,12H26v2h4v2h2V14A2,2,0,0,0,30,12Z" class="clr-i-solid clr-i-solid-path-1" /><rect x="30" y="18" width="2" height="6" class="clr-i-solid clr-i-solid-path-2" /><path d="M30,30H28v2h2a2,2,0,0,0,2-2V26H30Z" class="clr-i-solid clr-i-solid-path-3" /><rect x="4" y="4" width="20" height="20" rx="2" ry="2" class="clr-i-solid clr-i-solid-path-4" /><rect x="20" y="30" width="6" height="2" class="clr-i-solid clr-i-solid-path-5" /><path d="M14,26H12v4a2,2,0,0,0,2,2h4V30H14Z" class="clr-i-solid clr-i-solid-path-6" />`
+);
+export const ClrShapePortrait = clrIconSVG(
+  `<path d="M15.34,26.45a.8.8,0,0,0-1.13,0,.79.79,0,0,0,0,1.13L18,31.09l3.74-3.47a.79.79,0,0,0,.05-1.13.8.8,0,0,0-1.13,0L18.8,28.17V7.83l1.86,1.72a.8.8,0,1,0,1.08-1.17L18,4.91,14.26,8.38a.79.79,0,0,0,0,1.13.8.8,0,0,0,1.13,0L17.2,7.83V28.17Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M28,2H8A2,2,0,0,0,6,4V32a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V4A2,2,0,0,0,28,2Zm0,30H8V4H28Z" class="clr-i-outline clr-i-outline-path-2" /><path d="M28,2H8A2,2,0,0,0,6,4V32a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V4A2,2,0,0,0,28,2ZM20.52,26.3a1,1,0,0,1,1.36,1.47L18,31.36l-3.88-3.59a1,1,0,0,1,1.36-1.47L17,27.71V8.29L15.48,9.7a1,1,0,0,1-1.36-1.47L18,4.64l3.88,3.59a1,1,0,0,1,.05,1.41,1,1,0,0,1-.73.32,1,1,0,0,1-.68-.26L19,8.29V27.71Z" class="clr-i-solid clr-i-solid-path-1" />`
+);
+export const ClrShapeTreeView = clrIconSVG(
+  `<path d="M15,32H11a1,1,0,0,1-1-1V27a1,1,0,0,1,1-1h4a1,1,0,0,1,1,1v4A1,1,0,0,1,15,32Zm-3-2h2V28H12Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M15,16H11a1,1,0,0,0-1,1v1.2H5.8V12H7a1,1,0,0,0,1-1V7A1,1,0,0,0,7,6H3A1,1,0,0,0,2,7v4a1,1,0,0,0,1,1H4.2V29.8h6.36a.8.8,0,0,0,0-1.6H5.8V19.8H10V21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V17A1,1,0,0,0,15,16ZM4,8H6v2H4ZM14,20H12V18h2Z" class="clr-i-outline clr-i-outline-path-2" /><path d="M34,9a1,1,0,0,0-1-1H10v2H33A1,1,0,0,0,34,9Z" class="clr-i-outline clr-i-outline-path-3" /><path d="M33,18H18v2H33a1,1,0,0,0,0-2Z" class="clr-i-outline clr-i-outline-path-4" /><path d="M33,28H18v2H33a1,1,0,0,0,0-2Z" class="clr-i-outline clr-i-outline-path-5" /><rect x="10" y="26" width="6" height="6" rx="1" ry="1" class="clr-i-solid clr-i-solid-path-1" /><path d="M15,16H11a1,1,0,0,0-1,1v1.2H5.8V12H7a1,1,0,0,0,1-1V7A1,1,0,0,0,7,6H3A1,1,0,0,0,2,7v4a1,1,0,0,0,1,1H4.2V29.8H11a.8.8,0,1,0,0-1.6H5.8V19.8H10V21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V17A1,1,0,0,0,15,16Z" class="clr-i-solid clr-i-solid-path-2" /><path d="M33,8H10v2H33a1,1,0,0,0,0-2Z" class="clr-i-solid clr-i-solid-path-3" /><path d="M33,18H18v2H33a1,1,0,0,0,0-2Z" class="clr-i-solid clr-i-solid-path-4" /><path d="M33,28H18v2H33a1,1,0,0,0,0-2Z" class="clr-i-solid clr-i-solid-path-5" />`
+);
 
 export const EssentialShapes: any = {
   'add-text': ClrShapeAddText,
@@ -844,6 +868,7 @@ export const EssentialShapes: any = {
   sync: ClrShapeSync,
   'view-list': ClrShapeViewList,
   'view-cards': ClrShapeViewCards,
+  'tree-view': ClrShapeTreeView,
   lightbulb: ClrShapeLightbulb,
   download: ClrShapeDownload,
   upload: ClrShapeUpload,
@@ -924,6 +949,13 @@ export const EssentialShapes: any = {
   moon: ClrShapeMoon,
   sun: ClrShapeSun,
   wand: ClrShapeWand,
+  clone: ClrShapeClone,
+  details: ClrShapeDetails,
+  'drag-handle-corner': ClrShapeDragHandleCorner,
+  eraser: ClrShapeEraser,
+  landscape: ClrShapeLandscape,
+  paste: ClrShapePaste,
+  portrait: ClrShapePortrait,
 };
 
 // Moved to core, but reexported here for backwards compat

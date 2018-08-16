@@ -18,12 +18,3 @@ export const CLR_CODE_HIGHLIGHT_DIRECTIVES: Type<any>[] = [ClrCodeHighlight];
   exports: [CLR_CODE_HIGHLIGHT_DIRECTIVES],
 })
 export class ClrSyntaxHighlightModule {}
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export interface CodeHighlight extends ClrCodeHighlight {}
-/** @deprecated since 0.11 */
-export const CodeHighlight = ClrCodeHighlight;
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const CODE_HIGHLIGHT_DIRECTIVES = CLR_CODE_HIGHLIGHT_DIRECTIVES;

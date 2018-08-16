@@ -23,24 +23,3 @@ export const CLR_ALERT_DIRECTIVES: Type<any>[] = [ClrAlert, ClrAlertItem, ClrAle
   exports: [CLR_ALERT_DIRECTIVES],
 })
 export class ClrAlertModule {}
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export interface Alert extends ClrAlert {}
-/** @deprecated since 0.11 */
-export const Alert = ClrAlert;
-/** @deprecated since 0.11 */
-export interface AlertItem extends ClrAlertItem {}
-/** @deprecated since 0.11 */
-export const AlertItem = ClrAlertItem;
-/** @deprecated since 0.11 */
-export interface Alerts extends ClrAlerts {}
-/** @deprecated since 0.11 */
-export const Alerts = ClrAlerts;
-/** @deprecated since 0.11 */
-export interface AlertsPager extends ClrAlertsPager {}
-/** @deprecated since 0.11 */
-export const AlertsPager = ClrAlertsPager;
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const ALERT_DIRECTIVES = CLR_ALERT_DIRECTIVES;

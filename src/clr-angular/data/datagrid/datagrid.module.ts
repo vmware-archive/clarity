@@ -38,10 +38,6 @@ import { ClrDatagridPagination } from './datagrid-pagination';
 import { ClrDatagridPlaceholder } from './datagrid-placeholder';
 import { ClrDatagridRow } from './datagrid-row';
 import { ClrDatagridRowDetail } from './datagrid-row-detail';
-import { ClrDatagridComparatorInterface } from './interfaces/comparator.interface';
-import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
-import { ClrDatagridStateInterface } from './interfaces/state.interface';
-import { ClrDatagridStringFilterInterface } from './interfaces/string-filter.interface';
 import { DatagridBodyRenderer } from './render/body-renderer';
 import { DatagridCellRenderer } from './render/cell-renderer';
 import { DatagridColumnResizer } from './render/column-resizer';
@@ -108,79 +104,3 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   exports: [CLR_DATAGRID_DIRECTIVES, ClrIfExpandModule],
 })
 export class ClrDatagridModule {}
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export interface Datagrid extends ClrDatagrid<any> {}
-/** @deprecated since 0.11 */
-export const Datagrid = ClrDatagrid;
-/** @deprecated since 0.11 */
-export interface DatagridActionBar extends ClrDatagridActionBar {}
-/** @deprecated since 0.11 */
-export const DatagridActionBar = ClrDatagridActionBar;
-/** @deprecated since 0.11 */
-export interface DatagridActionOverflow extends ClrDatagridActionOverflow {}
-/** @deprecated since 0.11 */
-export const DatagridActionOverflow = ClrDatagridActionOverflow;
-/** @deprecated since 0.11 */
-export interface DatagridColumn extends ClrDatagridColumn<any> {}
-/** @deprecated since 0.11 */
-export const DatagridColumn = ClrDatagridColumn;
-/** @deprecated since 0.11 */
-export interface DatagridColumnToggle extends ClrDatagridColumnToggle {}
-/** @deprecated since 0.11 */
-export const DatagridColumnToggle = ClrDatagridColumnToggle;
-/** @deprecated since 0.11 */
-export interface DatagridHideableColumnDirective extends ClrDatagridHideableColumn {}
-/** @deprecated since 0.11 */
-export const DatagridHideableColumnDirective = ClrDatagridHideableColumn;
-/** @deprecated since 0.11 */
-export interface DatagridFilter extends ClrDatagridFilter<any> {}
-/** @deprecated since 0.11 */
-export const DatagridFilter = ClrDatagridFilter;
-/** @deprecated since 0.11 */
-export interface DatagridItems extends ClrDatagridItems<any> {}
-/** @deprecated since 0.11 */
-export const DatagridItems = ClrDatagridItems;
-/** @deprecated since 0.11 */
-export interface DatagridRow extends ClrDatagridRow<any> {}
-/** @deprecated since 0.11 */
-export const DatagridRow = ClrDatagridRow;
-/** @deprecated since 0.11 */
-export interface DatagridRowDetail extends ClrDatagridRowDetail<any> {}
-/** @deprecated since 0.11 */
-export const DatagridRowDetail = ClrDatagridRowDetail;
-/** @deprecated since 0.11 */
-export interface DatagridCell extends ClrDatagridCell {}
-/** @deprecated since 0.11 */
-export const DatagridCell = ClrDatagridCell;
-/** @deprecated since 0.11 */
-export interface DatagridFooter extends ClrDatagridFooter<any> {}
-/** @deprecated since 0.11 */
-export const DatagridFooter = ClrDatagridFooter;
-/** @deprecated since 0.11 */
-export interface DatagridPagination extends ClrDatagridPagination {}
-/** @deprecated since 0.11 */
-export const DatagridPagination = ClrDatagridPagination;
-/** @deprecated since 0.11 */
-export interface DatagridPlaceholder extends ClrDatagridPlaceholder<any> {}
-/** @deprecated since 0.11 */
-export const DatagridPlaceholder = ClrDatagridPlaceholder;
-/** @deprecated since 0.11 */
-export enum SortOrder {
-  // Cannot extend an enum so have to redeclare it
-  Unsorted = 0,
-  Asc = 1,
-  Desc = -1,
-}
-/** @deprecated since 0.11 */
-export interface Comparator<T> extends ClrDatagridComparatorInterface<T> {}
-/** @deprecated since 0.11 */
-export interface Filter<T> extends ClrDatagridFilterInterface<T> {}
-/** @deprecated since 0.11 */
-export interface State extends ClrDatagridStateInterface<any> {}
-/** @deprecated since 0.11 */
-export interface StringFilter<T> extends ClrDatagridStringFilterInterface<T> {}
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const DATAGRID_DIRECTIVES = CLR_DATAGRID_DIRECTIVES;

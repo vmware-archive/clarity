@@ -36,28 +36,3 @@ export const CLR_TABS_DIRECTIVES: Type<any>[] = [
   exports: [CLR_TABS_DIRECTIVES, ClrConditionalModule],
 })
 export class ClrTabsModule {}
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export interface Tab extends ClrTab {}
-/** @deprecated since 0.11 */
-export const Tab = ClrTab;
-/** @deprecated since 0.11 */
-export interface Tabs extends ClrTabs {}
-/** @deprecated since 0.11 */
-export const Tabs = ClrTabs;
-/** @deprecated since 0.11 */
-export interface TabContent extends ClrTabContent {}
-/** @deprecated since 0.11 */
-export const TabContent = ClrTabContent;
-/** @deprecated since 0.11 */
-export interface TabOverflowContent extends ClrTabOverflowContent {}
-/** @deprecated since 0.11 */
-export const TabOverflowContent = ClrTabOverflowContent;
-/** @deprecated since 0.11 */
-export interface TabLinkDirective extends ClrTabLink {}
-/** @deprecated since 0.11 */
-export const TabLinkDirective = ClrTabLink;
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const TABS_DIRECTIVES = CLR_TABS_DIRECTIVES;

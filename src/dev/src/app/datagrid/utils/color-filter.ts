@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, EventEmitter } from '@angular/core';
-import { Filter } from '@clr/angular';
+import { ClrDatagridFilterInterface } from '@clr/angular';
 import { User } from '../inventory/user';
 import { COLORS } from '../inventory/values';
 
@@ -17,7 +17,7 @@ import { COLORS } from '../inventory/values';
             [class.color-selected]="selectedColors[color]"></span>`,
   styleUrls: ['../datagrid.demo.scss'],
 })
-export class ColorFilter implements Filter<User> {
+export class ColorFilter implements ClrDatagridFilterInterface<User> {
   allColors = COLORS;
   selectedColors: { [color: string]: boolean } = {};
   nbColors = 0;

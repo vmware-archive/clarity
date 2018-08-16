@@ -5,7 +5,7 @@
  */
 
 import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
-import { CodeHighlight } from '@clr/angular';
+import { ClrCodeHighlight } from '@clr/angular';
 
 /** @deprecated since 0.12 */
 @Component({
@@ -21,7 +21,7 @@ import { CodeHighlight } from '@clr/angular';
   ],
 })
 export class KSCodeSnippetComponent implements AfterViewInit {
-  @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
+  @ViewChild(ClrCodeHighlight) codeHighlight: ClrCodeHighlight;
 
   @Input('code') public code: string;
   @Input('language') public language: string = 'html';

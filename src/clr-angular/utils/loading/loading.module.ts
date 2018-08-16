@@ -12,12 +12,3 @@ export const CLR_LOADING_DIRECTIVES: Type<any>[] = [ClrLoading];
 
 @NgModule({ imports: [CommonModule], declarations: [CLR_LOADING_DIRECTIVES], exports: [CLR_LOADING_DIRECTIVES] })
 export class ClrLoadingModule {}
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export interface Loading extends ClrLoading {}
-/** @deprecated since 0.11 */
-export const Loading = ClrLoading;
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const LOADING_DIRECTIVES = CLR_LOADING_DIRECTIVES;

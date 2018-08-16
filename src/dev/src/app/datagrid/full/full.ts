@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
-import { State } from '@clr/angular';
+import { ClrDatagridStateInterface } from '@clr/angular';
 import { FetchResult, Inventory } from '../inventory/inventory';
 import { User } from '../inventory/user';
 import { ColorFilter } from '../utils/color-filter';
@@ -70,7 +70,7 @@ export class DatagridFullDemo {
     });
   }
 
-  refresh(state: State) {
+  refresh(state: ClrDatagridStateInterface) {
     if (!this.isServerDriven) {
       return;
     }

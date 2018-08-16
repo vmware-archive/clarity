@@ -24,20 +24,3 @@ export const CLR_SIGNPOST_DIRECTIVES: Type<any>[] = [ClrSignpost, ClrSignpostCon
   providers: [],
 })
 export class ClrSignpostModule {}
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export interface Signpost extends ClrSignpost {}
-/** @deprecated since 0.11 */
-export const Signpost = ClrSignpost;
-/** @deprecated since 0.11 */
-export interface SignpostContent extends ClrSignpostContent {}
-/** @deprecated since 0.11 */
-export const SignpostContent = ClrSignpostContent;
-/** @deprecated since 0.11 */
-export interface SignpostTrigger extends ClrSignpostTrigger {}
-/** @deprecated since 0.11 */
-export const SignpostTrigger = ClrSignpostTrigger;
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const SIGNPOST_DIRECTIVES = CLR_SIGNPOST_DIRECTIVES;

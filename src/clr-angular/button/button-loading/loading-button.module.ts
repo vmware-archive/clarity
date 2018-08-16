@@ -17,12 +17,3 @@ export const CLR_LOADING_BUTTON_DIRECTIVES: Type<any>[] = [ClrLoadingButton];
   exports: [CLR_LOADING_BUTTON_DIRECTIVES],
 })
 export class ClrLoadingButtonModule {}
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export interface LoadingButton extends ClrLoadingButton {}
-/** @deprecated since 0.11 */
-export const LoadingButton = ClrLoadingButton;
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const LOADING_BUTTON_DIRECTIVES = CLR_LOADING_BUTTON_DIRECTIVES;

@@ -19,12 +19,3 @@ export const CLR_MODAL_DIRECTIVES: Type<any>[] = [ClrModal];
   exports: [CLR_MODAL_DIRECTIVES],
 })
 export class ClrModalModule {}
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export interface Modal extends ClrModal {}
-/** @deprecated since 0.11 */
-export const Modal = ClrModal;
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const MODAL_DIRECTIVES = CLR_MODAL_DIRECTIVES;

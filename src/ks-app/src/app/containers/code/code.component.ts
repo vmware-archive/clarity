@@ -5,7 +5,7 @@
  */
 
 import { AfterViewInit, Component, QueryList, ViewChildren } from '@angular/core';
-import { ClrCodeHighlight, CodeHighlight } from '@clr/angular';
+import { ClrCodeHighlight } from '@clr/angular';
 
 /** @deprecated since 0.12 */
 const CSS_EXAMPLE = `.some-component {
@@ -90,7 +90,6 @@ export class KSCode implements AfterViewInit {
    * @description
    * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
    */
-  private aCodeHighlight: CodeHighlight;
   private aClrCodeHighlight: ClrCodeHighlight;
 
   @ViewChildren(ClrCodeHighlight) highlights: QueryList<ClrCodeHighlight>;

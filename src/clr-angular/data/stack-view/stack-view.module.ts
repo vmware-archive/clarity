@@ -37,32 +37,3 @@ export const CLR_STACK_VIEW_DIRECTIVES: Type<any>[] = [
   exports: [CLR_STACK_VIEW_DIRECTIVES],
 })
 export class ClrStackViewModule {}
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export interface StackView extends ClrStackView {}
-/** @deprecated since 0.11 */
-export const StackView = ClrStackView;
-/** @deprecated since 0.11 */
-export interface StackHeader extends ClrStackHeader {}
-/** @deprecated since 0.11 */
-export const StackHeader = ClrStackHeader;
-/** @deprecated since 0.11 */
-export interface StackBlock extends ClrStackBlock {}
-/** @deprecated since 0.11 */
-export const StackBlock = ClrStackBlock;
-/** @deprecated since 0.11 */
-export interface StackViewCustomTags extends ClrStackViewCustomTags {}
-/** @deprecated since 0.11 */
-export const StackViewCustomTags = ClrStackViewCustomTags;
-/** @deprecated since 0.11 */
-export interface StackInput extends ClrStackInput {}
-/** @deprecated since 0.11 */
-export const StackInput = ClrStackInput;
-/** @deprecated since 0.11 */
-export interface StackSelect extends ClrStackSelect {}
-/** @deprecated since 0.11 */
-export const StackSelect = ClrStackSelect;
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const STACK_VIEW_DIRECTIVES = CLR_STACK_VIEW_DIRECTIVES;

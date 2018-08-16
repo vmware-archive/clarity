@@ -5,7 +5,7 @@
  */
 import { Component } from '@angular/core';
 
-import { State } from '@clr/angular';
+import { ClrDatagridStateInterface } from '@clr/angular';
 import { FetchResult, Inventory } from '../inventory/inventory';
 import { User } from '../inventory/user';
 
@@ -34,7 +34,7 @@ export class DatagridSelectionDemo {
     this.clientNoTrackByUsers = this.clientTrackByIndexUsers = this.clientTrackByIdUsers = this.inventory.all;
   }
 
-  refresh(state: State) {
+  refresh(state: ClrDatagridStateInterface) {
     this.loading = true;
     const filters: { [prop: string]: any[] } = {};
     if (state.filters) {

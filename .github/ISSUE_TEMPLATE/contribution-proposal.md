@@ -1,19 +1,22 @@
 ---
-name: Feature request
-about: Proposal for a new feature or enhancement
+name: Contribution proposal
+about: Proposal for a larger new feature or enhancement
 ---
 
-Please review our [Contribution guide](https://github.com/vmware/clarity/blob/master/CONTRIBUTING.md).
+_Please review our [Contribution guide](https://github.com/vmware/clarity/blob/master/CONTRIBUTING.md) for more details about how to contribute effectively._
 
 ## Summary
 
-Describe the change or feature in detail. Try to answer the following questions.
+_Describe the change or feature in detail. Try to answer the following questions._
 
 * What is the change?
-* What is a use case for this change?
 * Why should it go in Clarity?
 * Does this change impact existing behaviors? If so how?
 * If this change introduces a new behavior, is this behavior accessible?
+
+## Use case
+
+_Provide some specific details about how this change would improve your application and use case._
 
 ## Examples
 
@@ -29,7 +32,7 @@ _Describe the intended API for the feature you want to add. This would include:_
 
 _In the case of bug fixes or internal changes, there will most likely be no API changes._
 
-## Implementation Plan
+## Implementation plan
 
 _Describe how you plan to implement the feature, answering questions among the following or anything else you deem relevant._
 

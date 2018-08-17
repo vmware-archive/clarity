@@ -41,28 +41,6 @@ gemini.suite('grid-deprecated', child => {
       .capture('default');
   });
 
-  gemini.suite('grid-column-push', child => {
-    child
-      .setUrl('/grid-deprecated/grid-column-push')
-      .before((actions, find) => {
-        actions.waitForElementToShow('.clr-example', WAIT_TIME);
-        actions.wait(WAIT_LOAD_TIME);
-      })
-      .setCaptureElements('.clr-example')
-      .capture('default');
-  });
-
-  gemini.suite('grid-column-pull', child => {
-    child
-      .setUrl('/grid-deprecated/grid-column-pull')
-      .before((actions, find) => {
-        actions.waitForElementToShow('.clr-example', WAIT_TIME);
-        actions.wait(WAIT_LOAD_TIME);
-      })
-      .setCaptureElements('.clr-example')
-      .capture('default');
-  });
-
   gemini.suite('grid-auto-layout-1', child => {
     child
       .setUrl('/grid-deprecated/grid-auto-layout-1')

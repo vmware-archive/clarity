@@ -15,7 +15,7 @@ gemini.suite('datepicker', child => {
         actions.waitForElementToShow('.clr-example-1', WAIT_TIME);
         actions.wait(WAIT_LOAD_TIME);
       })
-      .setCaptureElements('.clr-example-1 .date-input')
+      .setCaptureElements('.clr-example-1 .clr-input')
       .capture('default');
   });
 

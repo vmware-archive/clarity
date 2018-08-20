@@ -1,0 +1,30 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div>
+    <h6>With [clrDate]</h6>
+    <p></p>
+    <clr-date-container>
+        <input type="date" [clrDate]="date" (clrDateChange)="dateChanged($event)">
+    </clr-date-container>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-10 col-lg-5">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>[(clrDate)]</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{date}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

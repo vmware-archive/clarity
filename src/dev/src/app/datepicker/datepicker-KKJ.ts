@@ -9,8 +9,10 @@ import { Component, LOCALE_ID } from '@angular/core';
   selector: 'clr-datepicker-kkj-demo',
   // Note the .css extension here, not .scss. That's the best we can have at the moment.
   styleUrls: ['./datepicker.demo.scss'],
-  template: `        
-        <input type="date" clrDate>
+  template: `
+  <div clrForm>        
+    <input type="date" clrDate>
+  </div>
     `,
   providers: [{ provide: LOCALE_ID, useValue: 'kkj' }],
 })

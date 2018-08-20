@@ -6,17 +6,11 @@
 
 <h2>Reactive Forms</h2>
 <h3>Simple Reactive Form</h3>
-<form class="form" [formGroup]="dateForm" novalidate>
-    <section class="form-block">
-        <div class="form-group">
-            <label for="dateControl">Date</label>
-            <input id="dateControl" type="date" clrDate (clrDateChange)="dateChanged($event)" formControlName="date"/>
-        </div>
-        <div class="form-group">
-            <label for="nameControl">Name</label>
-            <input type="text" id="nameControl" formControlName="name">
-        </div>
-    </section>
+<form clrForm [formGroup]="dateForm" novalidate>
+  <clr-date-container>
+      <label for="dateControl">Date</label>
+      <input id="dateControl" type="date" clrDate (clrDateChange)="dateChanged($event)" formControlName="date"/>
+  </clr-date-container>
 </form>
 
 <p>Form Value: {{dateForm.value | json}}</p>

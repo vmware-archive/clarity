@@ -51,6 +51,8 @@
     > progress {
       @include clr-appearance-normal();
 
+      display: block;
+
       background-color: $clr-progress-bgColor;
       border: none;
       // IE10 uses `color` to set the bar background-color

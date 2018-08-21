@@ -1,6 +1,6 @@
 {
   "name": "clr-all",
-  "version": "0.13.0-beta.1",
+  "version": "0.13.0-beta.2",
   "private": true,
   "scripts": {
     "build:icons:web": "webpack --config webpack.icons.config.js",
@@ -33,7 +33,7 @@
     "test:visual": "./scripts/docker-cdc.js -t",
     "test:golden2": "ts-api-guardian --verify golden/clr-angular.d.ts dist/golden/clr-angular.d.ts",
     "test:golden": "diff -u golden/clr-angular.d.ts dist/golden/clr-angular.d.ts",
-    "test": "ng test clr-angular",
+    "test": "ng test clr-angular --watch false",
     "test:watch": "ng test clr-angular --watch",
     "test:travis": "npm-run-all test:format test:lint test build test:aot test:golden",
     "format:fix": "pretty-quick --staged",

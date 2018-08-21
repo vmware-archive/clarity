@@ -7,9 +7,6 @@ export declare const CLR_BUTTON_GROUP_DIRECTIVES: Type<any>[];
 
 export declare const CLR_CHECKBOX_DIRECTIVES: Type<any>[];
 
-/** @deprecated */
-export declare const CLR_CODE_HIGHLIGHT_DIRECTIVES: Type<any>[];
-
 export declare const CLR_DATAGRID_DIRECTIVES: Type<any>[];
 
 export declare const CLR_DATEPICKER_DIRECTIVES: Type<any>[];
@@ -182,18 +179,6 @@ export declare class ClrCheckboxNext extends WrappedFormControl<ClrCheckboxConta
 }
 
 export declare class ClrCheckboxNextModule {
-}
-
-/** @deprecated */
-export declare class ClrCodeHighlight {
-    highlight: string;
-    constructor(_el: ElementRef, renderer: Renderer2, platformId: Object);
-    ngAfterContentInit(): void;
-    redraw(): void;
-}
-
-/** @deprecated */
-export declare class ClrCodeModule {
 }
 
 export declare class ClrCommonFormsModule {
@@ -840,10 +825,6 @@ export declare class ClrStackViewCustomTags {
 }
 
 export declare class ClrStackViewModule {
-}
-
-/** @deprecated */
-export declare class ClrSyntaxHighlightModule {
 }
 
 export declare class ClrTab {

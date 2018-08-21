@@ -16,8 +16,6 @@ import { AppComponent } from './app.component';
 import { KSButtonGroups } from './containers/buttons/button-groups.component';
 import { KSButtons } from './containers/buttons/buttons.component';
 import { KSCards } from './containers/cards/cards.component';
-import { KSCodeSnippetComponent } from './containers/code/code-snippet.component';
-import { KSCode } from './containers/code/code.component';
 import { KSColors } from './containers/colors/colors.component';
 import { KSDatagrid } from './containers/data/datagrid.component';
 import { FakeLoader } from './containers/data/fake-loader';
@@ -65,8 +63,6 @@ import { KSToggle } from './containers/forms/toggle.component';
     KSButtons,
     KSButtonGroups,
     KSColors,
-    KSCode,
-    KSCodeSnippetComponent,
     KSDatagrid,
     KSStackView,
     KSTreeView,

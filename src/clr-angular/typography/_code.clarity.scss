@@ -17,6 +17,7 @@
     white-space: pre;
   }
   //Overriding bootstrap code styles
+  // @deprecated Bootstrap dependencies are deprecated since 1.0. Review and edit before 2.0 if needed.
   code {
     &.clr-code {
       color: $reds-dark-midtone;

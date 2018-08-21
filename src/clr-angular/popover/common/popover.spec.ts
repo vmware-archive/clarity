@@ -63,37 +63,37 @@ describe('Popover', function() {
 
     popoverInstance.anchor(anchor, Point.TOP_LEFT, Point.BOTTOM_RIGHT);
     x = 0;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.TOP_LEFT, Point.BOTTOM_LEFT);
     x = padding;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.TOP_CENTER, Point.BOTTOM_RIGHT);
     x = padding + anchorWidth / 2 - popoverWidth - popoverMargin;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.TOP_CENTER, Point.BOTTOM_CENTER);
     x = padding + anchorWidth / 2 - popoverWidth / 2 - popoverMargin;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.TOP_CENTER, Point.BOTTOM_LEFT);
     x = padding + anchorWidth / 2 - popoverMargin;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.TOP_RIGHT, Point.BOTTOM_RIGHT);
     x = padding + anchorWidth - popoverWidth - popoverMargin * 2;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.TOP_RIGHT, Point.BOTTOM_LEFT);
     x = padding + anchorWidth;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     // popovers on the right side of the anchor
     x = padding + anchorWidth;
@@ -101,37 +101,37 @@ describe('Popover', function() {
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.RIGHT_TOP, Point.LEFT_BOTTOM);
     y = 0;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.RIGHT_TOP, Point.LEFT_TOP);
     y = padding;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.RIGHT_CENTER, Point.LEFT_BOTTOM);
     y = padding + anchorHeight / 2 - popoverHeight - popoverMargin;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.RIGHT_CENTER, Point.LEFT_CENTER);
     y = padding + anchorHeight / 2 - popoverHeight / 2 - popoverMargin;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.RIGHT_CENTER, Point.LEFT_TOP);
     y = padding + anchorHeight / 2 - popoverMargin;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.RIGHT_BOTTOM, Point.LEFT_BOTTOM);
     y = padding + anchorHeight - popoverHeight - popoverMargin * 2;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.RIGHT_BOTTOM, Point.LEFT_TOP);
     y = padding + anchorHeight;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     // popovers below the anchor
     y = padding + anchorHeight;
@@ -139,37 +139,37 @@ describe('Popover', function() {
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.BOTTOM_RIGHT, Point.TOP_LEFT);
     x = padding + anchorWidth;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.BOTTOM_RIGHT, Point.TOP_RIGHT);
     x = padding + anchorWidth - popoverWidth - popoverMargin * 2;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     x = padding + anchorWidth / 2 - popoverMargin;
     popoverInstance.anchor(anchor, Point.BOTTOM_CENTER, Point.TOP_LEFT);
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.BOTTOM_CENTER, Point.TOP_CENTER);
     x = padding + anchorWidth / 2 - popoverWidth / 2 - popoverMargin;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.BOTTOM_CENTER, Point.TOP_RIGHT);
     x = padding + anchorWidth / 2 - popoverWidth - popoverMargin;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.BOTTOM_LEFT, Point.TOP_LEFT);
     x = padding;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.BOTTOM_LEFT, Point.TOP_RIGHT);
     x = 0;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     // popovers on the left side of the anchor (some are covered already by above, so omitted)
     x = 0;
@@ -177,27 +177,27 @@ describe('Popover', function() {
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.LEFT_BOTTOM, Point.BOTTOM_RIGHT);
     y = padding + anchorHeight - popoverHeight - popoverMargin * 2;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.LEFT_CENTER, Point.RIGHT_TOP);
     y = padding + anchorHeight / 2 - popoverMargin;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.LEFT_CENTER, Point.RIGHT_CENTER);
     y = padding + anchorHeight / 2 - popoverHeight / 2 - popoverMargin;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.LEFT_CENTER, Point.RIGHT_BOTTOM);
     y = padding + anchorHeight / 2 - popoverHeight - popoverMargin;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
 
     popover.style.transform = 'none';
     popoverInstance.anchor(anchor, Point.LEFT_TOP, Point.TOP_RIGHT);
     y = padding;
-    expect(popover.style.transform).toEqual(`translateX(${x}px) translateY(${y}px)`);
+    expect(popover.style.transform).toEqual(`translateX(${Math.round(x)}px) translateY(${Math.round(y)}px)`);
   });
 
   afterEach(() => {

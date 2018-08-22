@@ -76,6 +76,16 @@ Start changes for Clarity 0.13.0
             );
           }
 
+          // Alert to using bootstrap's push / pull in Clarity grid
+          if (updated.search(/(push|pull)-(xs|sm|md|lg|xl)-([0-9])/g) > -1) {
+            logMessage(
+              'error',
+              'ACTION REQUIRED: Clarity has removed push and pull support in its grid system, you need either remove all uses or follow migration instructions.',
+              filePath,
+              '0.13.0-beta.2'
+            );
+          }
+
           if (content !== updated) {
             tree.overwrite(filePath, updated);
           }

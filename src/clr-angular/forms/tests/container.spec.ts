@@ -53,13 +53,16 @@ export function ReactiveSpec(testContainer, testControl, testComponent, wrapperC
   fullSpec('reactive', testContainer, testControl, testComponent, wrapperClass);
 }
 
-function fullSpec(description, testContainer, testControl, testComponent, wrapperClass) {
+function fullSpec(description, testContainer, directives: any | any[], testComponent, wrapperClass) {
   describe(description, () => {
     let fixture, containerDE, container, containerEl, ifErrorService, layoutService;
+    if (!Array.isArray(directives)) {
+      directives = [directives];
+    }
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [ClrIconModule, ClrCommonFormsModule, FormsModule, ReactiveFormsModule],
-        declarations: [testContainer, testControl, testComponent],
+        declarations: [testContainer, ...directives, testComponent],
         providers: [NgControl, NgControlService, IfErrorService, LayoutService],
       });
       fixture = TestBed.createComponent(testComponent);
@@ -121,6 +124,16 @@ function fullSpec(description, testContainer, testControl, testComponent, wrappe
 
     it('adds the .clr-form-control class to the host', () => {
       expect(containerEl.classList).toContain('clr-form-control');
+    });
+
+    it('adds the .clr-row class to the host on non-vertical layouts', () => {
+      expect(containerEl.classList).not.toContain('clr-row');
+      layoutService.layout = Layouts.HORIZONTAL;
+      fixture.detectChanges();
+      expect(containerEl.classList).toContain('clr-row');
+      layoutService.layout = Layouts.COMPACT;
+      fixture.detectChanges();
+      expect(containerEl.classList).toContain('clr-row');
     });
 
     it('computes the error class for the control container', () => {

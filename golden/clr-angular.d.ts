@@ -587,7 +587,7 @@ export declare class ClrInputModule {
 
 export declare class ClrLabel implements OnInit, OnDestroy {
     forAttr: string;
-    constructor(controlIdService: ControlIdService, ifErrorService: IfErrorService, layoutService: LayoutService, renderer: Renderer2, el: ElementRef);
+    constructor(controlIdService: ControlIdService, layoutService: LayoutService, renderer: Renderer2, el: ElementRef);
     ngOnDestroy(): void;
     ngOnInit(): void;
 }
@@ -727,15 +727,31 @@ export declare class ClrPasswordModule {
 export declare class ClrPopoverModule {
 }
 
-export declare class ClrRadio extends WrappedFormControl<ClrRadioContainer> {
-    constructor(vcr: ViewContainerRef);
+export declare class ClrRadio extends WrappedFormControl<ClrRadioWrapper> implements OnInit {
+    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, controlClassService: ControlClassService, el: ElementRef);
+    ngOnInit(): void;
+    onBlur(): void;
 }
 
-export declare class ClrRadioContainer implements DynamicWrapper {
-    _dynamic: boolean;
+export declare class ClrRadioContainer implements OnDestroy {
+    clrInline: boolean | string;
+    invalid: boolean;
+    label: ClrLabel;
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService);
+    addGrid(): boolean;
+    controlClass(): string;
+    ngOnDestroy(): void;
 }
 
 export declare class ClrRadioModule {
+}
+
+export declare class ClrRadioWrapper implements DynamicWrapper {
+    _dynamic: boolean;
+    controlClassService: ControlClassService;
+    hasContainer: boolean;
+    label: ClrLabel;
+    constructor(controlClassService: ControlClassService);
 }
 
 export declare class ClrSelect extends WrappedFormControl<ClrSelectContainer> implements OnInit {

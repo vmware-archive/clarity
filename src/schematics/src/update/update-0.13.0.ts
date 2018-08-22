@@ -76,6 +76,16 @@ Start changes for Clarity 0.13.0
             );
           }
 
+          // Alert to using deprecated icons
+          if (updated.search(/shape=['"](angle-double|bar-chart|collapse|line-chart|wand)['"]/g) > -1) {
+            logMessage(
+              'info',
+              'UPDATED: The following icons have been deprecated in its respective set and have been moved to another set: \n`angle-double`, `bar-chart`, `collapse`, `line-chart`, `wand`\nPlease check that they are being imported from the correct set.',
+              filePath,
+              '0.13.0-beta.2'
+            );
+          }
+
           // Alert to using bootstrap's push / pull in Clarity grid
           if (updated.search(/(push|pull)-(xs|sm|md|lg|xl)-([0-9])/g) > -1) {
             logMessage(

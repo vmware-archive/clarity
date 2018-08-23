@@ -18,12 +18,3 @@ export const CLR_LAYOUT_DIRECTIVES: Type<any>[] = [ClrMainContainer];
   exports: [CLR_LAYOUT_DIRECTIVES],
 })
 export class ClrMainContainerModule {}
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export interface MainContainer extends ClrMainContainer {}
-/** @deprecated since 0.11 */
-export const MainContainer = ClrMainContainer;
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const LAYOUT_DIRECTIVES = CLR_LAYOUT_DIRECTIVES;

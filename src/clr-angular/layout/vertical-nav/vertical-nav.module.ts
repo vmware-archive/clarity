@@ -30,28 +30,3 @@ export const CLR_VERTICAL_NAV_DIRECTIVES: Type<any>[] = [
   exports: [CLR_VERTICAL_NAV_DIRECTIVES, ClrIfExpandModule, ClrIconModule],
 })
 export class ClrVerticalNavModule {}
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export interface VerticalNav extends ClrVerticalNav {}
-/** @deprecated since 0.11 */
-export const VerticalNav = ClrVerticalNav;
-/** @deprecated since 0.11 */
-export interface VerticalNavGroup extends ClrVerticalNavGroup {}
-/** @deprecated since 0.11 */
-export const VerticalNavGroup = ClrVerticalNavGroup;
-/** @deprecated since 0.11 */
-export interface VerticalNavGroupChildren extends ClrVerticalNavGroupChildren {}
-/** @deprecated since 0.11 */
-export const VerticalNavGroupChildren = ClrVerticalNavGroupChildren;
-/** @deprecated since 0.11 */
-export interface VerticalNavIcon extends ClrVerticalNavIcon {}
-/** @deprecated since 0.11 */
-export const VerticalNavIcon = ClrVerticalNavIcon;
-/** @deprecated since 0.11 */
-export interface VerticalNavLink extends ClrVerticalNavLink {}
-/** @deprecated since 0.11 */
-export const VerticalNavLink = ClrVerticalNavLink;
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const VERTICAL_NAV_DIRECTIVES = CLR_VERTICAL_NAV_DIRECTIVES;

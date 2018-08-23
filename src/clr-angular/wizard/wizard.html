@@ -4,14 +4,12 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<!--todo: deprecate clrModalGhostPageState after 0.12-->
 <clr-modal
     [clrModalOpen]="_open"
     [clrModalSize]="size"
     [clrModalClosable]="closable"
     [clrModalStaticBackdrop]="true"
     [clrModalSkipAnimation]="stopModalAnimations"
-    [clrModalGhostPageState]="ghostPageState"
     [clrModalOverrideScrollService]="isStatic"
     [clrModalPreventClose]="true"
     (clrModalAlternateClose)="modalCancel()">

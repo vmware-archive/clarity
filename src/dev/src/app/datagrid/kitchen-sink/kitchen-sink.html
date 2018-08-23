@@ -156,16 +156,35 @@
             <em *ngIf="!toEdit">No user selected.</em>
             <span class="username" *ngIf="toEdit">{{toEdit.name}}</span>
         </p>
+
+        <p class="card-text username-list">
+          Users to be exported:
+          <em *ngIf="toExport.length == 0">No user selected.</em>
+          <span class="username" *ngFor="let user of toExport">{{user.name}}</span>
+        </p>
     </div>
 
     <clr-datagrid [(clrDgSelected)]="selected">
         <clr-dg-action-bar>
             <div class="btn-group" role="group" aria-label="Available Actions" *ngIf="selected.length > 0">
-                <button type="button" class="btn btn-sm btn-secondary" (click)="onAdd()"><clr-icon shape="plus"></clr-icon> Add
-                    to
-                    group</button>
-                <button type="button" class="btn btn-sm btn-secondary" (click)="onDelete()" ><clr-icon shape="close"></clr-icon> Delete</button>
-                <button type="button" class="btn btn-sm btn-secondary" (click)="onEdit()" *ngIf="selected.length == 1"><clr-icon shape="pencil"></clr-icon> Edit</button>
+                <button type="button" class="btn btn-sm btn-secondary" (click)="onAdd()">
+                  Add to group
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary" (click)="onDelete()">Delete</button>
+                <button type="button" class="btn btn-sm btn-secondary" (click)="onEdit()" *ngIf="selected.length == 1">Edit</button>
+            </div>
+
+            <div class="btn-group">
+              <clr-dropdown>
+                <button type="button" class="btn btn-sm btn-secondary" clrDropdownTrigger>
+                  Export
+                  <clr-icon shape="caret down"></clr-icon>
+                </button>
+                <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
+                  <button type="button" (click)="onExportAll()" clrDropdownItem>Export All</button>
+                  <button type="button" (click)="onExportSelected()" [disabled]="selected.length === 0" clrDropdownItem>Export Selected Items</button>
+                </clr-dropdown-menu>
+              </clr-dropdown>
             </div>
         </clr-dg-action-bar>
 

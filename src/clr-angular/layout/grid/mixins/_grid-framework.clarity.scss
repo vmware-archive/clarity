@@ -9,7 +9,6 @@
 ) {
   // Common properties for all breakpoints
   %clr-grid-column {
-    //position: relative; //Don't need this. BS4 has this but its not required. They are removing this too with this PR: https://github.com/twbs/bootstrap/pull/25255
     width: 100%;
     min-height: 1px; // Prevent columns from collapsing when empty
     padding-right: ($gutter / 2);

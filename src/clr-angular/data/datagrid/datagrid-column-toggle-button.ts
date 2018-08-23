@@ -10,34 +10,19 @@ import { ColumnToggleButtons, ColumnToggleButtonsService } from './providers/col
 @Component({
   selector: 'clr-dg-column-toggle-button',
   template: `
-        <button
+        <button class="btn btn-sm btn-link"
             (click)="click()"
-            [disabled]="toggleButtons.selectAllDisabled && !isOk()"
-            [ngClass]="getClasses()"
+            [disabled]="toggleButtons.selectAllDisabled"
             type="button">
             <ng-content></ng-content>
         </button>
     `,
-  host: { '[class.action-right]': 'isOk()' },
 })
 export class ClrDatagridColumnToggleButton {
-  @Input() clrType: ColumnToggleButtons;
+  /** @deprecated since 0.13 */
+  @Input() clrType: ColumnToggleButtons = 'selectAll';
 
   constructor(public toggleButtons: ColumnToggleButtonsService) {}
-
-  getClasses() {
-    let classes = 'btn ';
-    if (this.isOk()) {
-      classes += 'btn-primary';
-    } else {
-      classes += 'btn-sm btn-link p6 text-uppercase';
-    }
-    return classes;
-  }
-
-  isOk() {
-    return this.clrType === 'ok';
-  }
 
   click() {
     this.toggleButtons.buttonClicked(this.clrType);

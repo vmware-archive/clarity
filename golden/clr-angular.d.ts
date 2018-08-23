@@ -1,36 +1,4 @@
-/** @deprecated */
-export declare const Alert: typeof ClrAlert;
-
-/** @deprecated */
-export declare const ALERT_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const AlertItem: typeof ClrAlertItem;
-
-/** @deprecated */
-export declare const Alerts: typeof ClrAlerts;
-
-/** @deprecated */
-export declare const AlertsPager: typeof ClrAlertsPager;
-
-/** @deprecated */
-export declare const Button: typeof ClrButton;
-
-/** @deprecated */
-export declare const BUTTON_GROUP_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const ButtonGroup: typeof ClrButtonGroup;
-
-/** @deprecated */
-export declare const Checkbox: typeof ClrCheckboxDeprecated;
-
-/** @deprecated */
-export declare const CHECKBOX_DIRECTIVES: Type<any>[];
-
 export declare class ClarityModule {
-    /** @deprecated */ static forChild(): ModuleWithProviders;
-    /** @deprecated */ static forRoot(): ModuleWithProviders;
 }
 
 export declare const CLR_ALERT_DIRECTIVES: Type<any>[];
@@ -38,9 +6,6 @@ export declare const CLR_ALERT_DIRECTIVES: Type<any>[];
 export declare const CLR_BUTTON_GROUP_DIRECTIVES: Type<any>[];
 
 export declare const CLR_CHECKBOX_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const CLR_CODE_HIGHLIGHT_DIRECTIVES: Type<any>[];
 
 export declare const CLR_DATAGRID_DIRECTIVES: Type<any>[];
 
@@ -182,9 +147,6 @@ export declare class ClrCalendar implements OnDestroy {
     onKeyDown(event: KeyboardEvent): void;
 }
 
-/** @deprecated */
-export declare const ClrCheckbox: typeof ClrCheckboxDeprecated;
-
 export declare class ClrCheckboxContainer implements DynamicWrapper {
     _dynamic: boolean;
 }
@@ -217,18 +179,6 @@ export declare class ClrCheckboxNext extends WrappedFormControl<ClrCheckboxConta
 }
 
 export declare class ClrCheckboxNextModule {
-}
-
-/** @deprecated */
-export declare class ClrCodeHighlight {
-    highlight: string;
-    constructor(_el: ElementRef, renderer: Renderer2, platformId: Object);
-    ngAfterContentInit(): void;
-    redraw(): void;
-}
-
-/** @deprecated */
-export declare class ClrCodeModule {
 }
 
 export declare class ClrCommonFormsModule {
@@ -637,7 +587,7 @@ export declare class ClrInputModule {
 
 export declare class ClrLabel implements OnInit, OnDestroy {
     forAttr: string;
-    constructor(controlIdService: ControlIdService, ifErrorService: IfErrorService, layoutService: LayoutService, renderer: Renderer2, el: ElementRef);
+    constructor(controlIdService: ControlIdService, layoutService: LayoutService, renderer: Renderer2, el: ElementRef);
     ngOnDestroy(): void;
     ngOnInit(): void;
 }
@@ -699,7 +649,6 @@ export declare class ClrModal implements OnChanges, OnDestroy {
     bypassScrollService: boolean;
     closable: boolean;
     focusTrap: FocusTrapDirective;
-    ghostPageState: string;
     size: string;
     readonly sizeClass: string;
     skipAnimation: string;
@@ -778,15 +727,31 @@ export declare class ClrPasswordModule {
 export declare class ClrPopoverModule {
 }
 
-export declare class ClrRadio extends WrappedFormControl<ClrRadioContainer> {
-    constructor(vcr: ViewContainerRef);
+export declare class ClrRadio extends WrappedFormControl<ClrRadioWrapper> implements OnInit {
+    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, controlClassService: ControlClassService, el: ElementRef);
+    ngOnInit(): void;
+    onBlur(): void;
 }
 
-export declare class ClrRadioContainer implements DynamicWrapper {
-    _dynamic: boolean;
+export declare class ClrRadioContainer implements OnDestroy {
+    clrInline: boolean | string;
+    invalid: boolean;
+    label: ClrLabel;
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService);
+    addGrid(): boolean;
+    controlClass(): string;
+    ngOnDestroy(): void;
 }
 
 export declare class ClrRadioModule {
+}
+
+export declare class ClrRadioWrapper implements DynamicWrapper {
+    _dynamic: boolean;
+    controlClassService: ControlClassService;
+    hasContainer: boolean;
+    label: ClrLabel;
+    constructor(controlClassService: ControlClassService);
 }
 
 export declare class ClrSelect extends WrappedFormControl<ClrSelectContainer> implements OnInit {
@@ -876,10 +841,6 @@ export declare class ClrStackViewCustomTags {
 }
 
 export declare class ClrStackViewModule {
-}
-
-/** @deprecated */
-export declare class ClrSyntaxHighlightModule {
 }
 
 export declare class ClrTab {
@@ -1057,7 +1018,6 @@ export declare class ClrWizard implements OnInit, OnDestroy, AfterContentInit, D
     differ: any;
     disableStepnav: boolean;
     forceForward: boolean;
-    /** @deprecated */ readonly ghostPageState: string;
     headerActionService: HeaderActionService;
     headerActions: QueryList<ClrWizardHeaderAction>;
     readonly isFirst: boolean;
@@ -1070,7 +1030,6 @@ export declare class ClrWizard implements OnInit, OnDestroy, AfterContentInit, D
     onReset: EventEmitter<any>;
     pageCollection: PageCollectionService;
     pages: QueryList<ClrWizardPage>;
-    /** @deprecated */ showGhostPages: boolean;
     size: string;
     stopCancel: boolean;
     readonly stopModalAnimations: string;
@@ -1081,7 +1040,6 @@ export declare class ClrWizard implements OnInit, OnDestroy, AfterContentInit, D
     cancel(): void;
     checkAndCancel(): void;
     close(): void;
-    /** @deprecated */ deactivateGhostPages(): void;
     finish(skipChecksAndEmits?: boolean): void;
     forceFinish(): void;
     forceNext(): void;
@@ -1096,7 +1054,6 @@ export declare class ClrWizard implements OnInit, OnDestroy, AfterContentInit, D
     prev(): void;
     previous(): void;
     reset(): void;
-    setGhostPages(deactivateOrNot?: string): void;
     toggle(value: boolean): void;
 }
 
@@ -1230,60 +1187,11 @@ export declare class ClrYearpicker implements AfterViewInit {
     previousDecade(): void;
 }
 
-/** @deprecated */
-export declare const CODE_HIGHLIGHT_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const CodeHighlight: typeof ClrCodeHighlight;
-
 export declare function collapse(): AnimationMetadata[];
-
-/** @deprecated */
-export interface Comparator<T> extends ClrDatagridComparatorInterface<T> {
-}
 
 export declare const CONDITIONAL_DIRECTIVES: Type<any>[];
 
 export declare const CUSTOM_BUTTON_TYPES: any;
-
-/** @deprecated */
-export declare const Datagrid: typeof ClrDatagrid;
-
-/** @deprecated */
-export declare const DATAGRID_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const DatagridActionBar: typeof ClrDatagridActionBar;
-
-/** @deprecated */
-export declare const DatagridActionOverflow: typeof ClrDatagridActionOverflow;
-
-/** @deprecated */
-export declare const DatagridCell: typeof ClrDatagridCell;
-
-/** @deprecated */
-export declare const DatagridColumn: typeof ClrDatagridColumn;
-
-/** @deprecated */
-export declare const DatagridColumnToggle: typeof ClrDatagridColumnToggle;
-
-/** @deprecated */
-export declare const DatagridFilter: typeof ClrDatagridFilter;
-
-/** @deprecated */
-export declare const DatagridFooter: typeof ClrDatagridFooter;
-
-/** @deprecated */
-export declare const DatagridHideableColumnDirective: typeof ClrDatagridHideableColumn;
-
-/** @deprecated */
-export declare const DatagridItems: typeof ClrDatagridItems;
-
-/** @deprecated */
-export declare const DatagridPagination: typeof ClrDatagridPagination;
-
-/** @deprecated */
-export declare const DatagridPlaceholder: typeof ClrDatagridPlaceholder;
 
 export declare class DatagridPropertyComparator<T = any> implements ClrDatagridComparatorInterface<T> {
     prop: string;
@@ -1297,12 +1205,6 @@ export declare class DatagridPropertyStringFilter<T = any> implements ClrDatagri
     constructor(prop: string, exact?: boolean);
     accepts(item: T, search: string): boolean;
 }
-
-/** @deprecated */
-export declare const DatagridRow: typeof ClrDatagridRow;
-
-/** @deprecated */
-export declare const DatagridRowDetail: typeof ClrDatagridRowDetail;
 
 export declare class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>> implements CustomFilter, AfterViewInit {
     customStringFilter: ClrDatagridStringFilterInterface<T> | RegisteredFilter<T, DatagridStringFilterImpl<T>>;
@@ -1318,225 +1220,26 @@ export declare class DatagridStringFilter<T = any> extends DatagridFilterRegistr
 
 export declare const DEFAULT_BUTTON_TYPES: any;
 
-/** @deprecated */
-export declare const Dropdown: typeof ClrDropdown;
-
-/** @deprecated */
-export declare const DROPDOWN_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const DropdownItem: typeof ClrDropdownItem;
-
-/** @deprecated */
-export declare const DropdownMenu: typeof ClrDropdownMenu;
-
-/** @deprecated */
-export declare const DropdownTrigger: typeof ClrDropdownTrigger;
-
 export declare const EXPAND_DIRECTIVES: Type<any>[];
 
 export declare function fade(opacity?: number): AnimationMetadata[];
 
 export declare function fadeSlide(direction: string): AnimationMetadata[];
 
-/** @deprecated */
-export interface Filter<T> extends ClrDatagridFilterInterface<T> {
-}
-
-/** @deprecated */
-export declare const Header: typeof ClrHeader;
-
-/** @deprecated */
-export declare const ICON_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const IconCustomTag: typeof ClrIconCustomTag;
-
-/** @deprecated */
-export declare const LAYOUT_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const Loading: typeof ClrLoading;
-
-/** @deprecated */
-export declare const LOADING_BUTTON_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const LOADING_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const LoadingButton: typeof ClrLoadingButton;
-
 export declare abstract class LoadingListener {
     abstract loadingStateChange(state: ClrLoadingState): void;
 }
 
-/** @deprecated */
-export declare const MainContainer: typeof ClrMainContainer;
-
 export declare class MainContainerWillyWonka extends WillyWonka {
 }
-
-/** @deprecated */
-export declare const menuPositions: string[];
-
-/** @deprecated */
-export declare const Modal: typeof ClrModal;
-
-/** @deprecated */
-export declare const MODAL_DIRECTIVES: Type<any>[];
 
 export declare class NavDetectionOompaLoompa extends OompaLoompa {
     readonly flavor: number;
     constructor(cdr: ChangeDetectorRef, willyWonka: MainContainerWillyWonka, responsiveNavService: ResponsiveNavigationService);
 }
 
-/** @deprecated */
-export declare const NAVIGATION_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const NavLevelDirective: typeof ClrNavLevel;
-
-/** @deprecated */
-export declare const Signpost: typeof ClrSignpost;
-
-/** @deprecated */
-export declare const SIGNPOST_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const SignpostContent: typeof ClrSignpostContent;
-
-/** @deprecated */
-export declare const SignpostTrigger: typeof ClrSignpostTrigger;
-
 export declare function slide(direction: string): AnimationMetadata[];
-
-/** @deprecated */
-export declare enum SortOrder {
-    Unsorted = 0,
-    Asc = 1,
-    Desc = -1,
-}
-
-/** @deprecated */
-export declare const STACK_VIEW_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const StackBlock: typeof ClrStackBlock;
-
-/** @deprecated */
-export declare const StackHeader: typeof ClrStackHeader;
-
-/** @deprecated */
-export declare const StackInput: typeof ClrStackInput;
-
-/** @deprecated */
-export declare const StackSelect: typeof ClrStackSelect;
-
-/** @deprecated */
-export declare const StackView: typeof ClrStackView;
-
-/** @deprecated */
-export declare const StackViewCustomTags: typeof ClrStackViewCustomTags;
-
-/** @deprecated */
-export interface State extends ClrDatagridStateInterface<any> {
-}
-
-/** @deprecated */
-export interface StringFilter<T> extends ClrDatagridStringFilterInterface<T> {
-}
-
-/** @deprecated */
-export declare const Tab: typeof ClrTab;
-
-/** @deprecated */
-export declare const TabContent: typeof ClrTabContent;
-
-/** @deprecated */
-export declare const TabLinkDirective: typeof ClrTabLink;
-
-/** @deprecated */
-export declare const TabOverflowContent: typeof ClrTabOverflowContent;
-
-/** @deprecated */
-export declare const Tabs: typeof ClrTabs;
-
-/** @deprecated */
-export declare const TABS_DIRECTIVES: Type<any>[];
 
 export declare const ToggleService: InjectionToken<any>;
 
 export declare function ToggleServiceProvider(): BehaviorSubject<boolean>;
-
-/** @deprecated */
-export declare const Tooltip: typeof ClrTooltip;
-
-/** @deprecated */
-export declare const TOOLTIP_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const TooltipContent: typeof ClrTooltipContent;
-
-/** @deprecated */
-export declare const TooltipTrigger: typeof ClrTooltipTrigger;
-
-/** @deprecated */
-export declare const TREE_VIEW_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const TreeNode: typeof ClrTreeNode;
-
-/** @deprecated */
-export declare const VERTICAL_NAV_DIRECTIVES: Type<any>[];
-
-/** @deprecated */
-export declare const VerticalNav: typeof ClrVerticalNav;
-
-/** @deprecated */
-export declare const VerticalNavGroup: typeof ClrVerticalNavGroup;
-
-/** @deprecated */
-export declare const VerticalNavGroupChildren: typeof ClrVerticalNavGroupChildren;
-
-/** @deprecated */
-export declare const VerticalNavIcon: typeof ClrVerticalNavIcon;
-
-/** @deprecated */
-export declare const VerticalNavLink: typeof ClrVerticalNavLink;
-
-/** @deprecated */
-export declare const Wizard: typeof ClrWizard;
-
-/** @deprecated */
-export declare const WIZARD_DIRECTIVES: any[];
-
-/** @deprecated */
-export declare const WizardButton: typeof ClrWizardButton;
-
-/** @deprecated */
-export declare const WizardCustomTags: typeof ClrWizardCustomTags;
-
-/** @deprecated */
-export declare const WizardHeaderAction: typeof ClrWizardHeaderAction;
-
-/** @deprecated */
-export declare const WizardPage: typeof ClrWizardPage;
-
-/** @deprecated */
-export declare const WizardPageButtonsDirective: typeof ClrWizardPageButtons;
-
-/** @deprecated */
-export declare const WizardPageHeaderActionsDirective: typeof ClrWizardPageHeaderActions;
-
-/** @deprecated */
-export declare const WizardPageNavTitleDirective: typeof ClrWizardPageNavTitle;
-
-/** @deprecated */
-export declare const WizardPageTitleDirective: typeof ClrWizardPageTitle;
-
-/** @deprecated */
-export declare const WizardStepnav: typeof ClrWizardStepnav;
-
-/** @deprecated */
-export declare const WizardStepnavItem: typeof ClrWizardStepnavItem;

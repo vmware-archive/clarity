@@ -23,20 +23,3 @@ export const CLR_TOOLTIP_DIRECTIVES: Type<any>[] = [ClrTooltip, ClrTooltipTrigge
   exports: [CLR_TOOLTIP_DIRECTIVES, ClrConditionalModule, ClrIconModule],
 })
 export class ClrTooltipModule {}
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export interface Tooltip extends ClrTooltip {}
-/** @deprecated since 0.11 */
-export const Tooltip = ClrTooltip;
-/** @deprecated since 0.11 */
-export interface TooltipContent extends ClrTooltipContent {}
-/** @deprecated since 0.11 */
-export const TooltipContent = ClrTooltipContent;
-/** @deprecated since 0.11 */
-export interface TooltipTrigger extends ClrTooltipTrigger {}
-/** @deprecated since 0.11 */
-export const TooltipTrigger = ClrTooltipTrigger;
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const TOOLTIP_DIRECTIVES = CLR_TOOLTIP_DIRECTIVES;

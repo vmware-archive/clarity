@@ -7,8 +7,17 @@ To ensure the highest quality and maintainability for Clarity components, we adh
 ## File names
 
 * Components or directives should be named without a suffix like `datagrid-row.ts`, and be placed in the main module folder like `/datagrid/datagrid-row.ts`.
-* Providers, factories, services should be named with a suffix like `wizard-navigation.service.ts`. If the component has a single provider, the provider file can be placed directly in the same folder as the component itself. In the case of more complex components (like the Datagrid or the Wizard) where many providers are needed for the various subcomponents to communicate, the providers should be placed inside of a `providers` subfolder of the module folder like `/wizard/providers/wizard-navigation.service.ts`.
-* Interfaces and abstract classes used as interfaces should be named with a suffix like `datagrid-state.interface.ts`
+* Providers, factories, services should be named with a suffix like `wizard-navigation.service.ts`.
+  * If the component has a single provider, the provider file can be placed directly in the same folder as the component itself.
+  * In the case of more complex components (like the Datagrid or the Wizard) where many providers are needed for the various subcomponents to communicate, the providers should be placed inside of a `providers` subfolder of the module folder like `/wizard/providers/wizard-navigation.service.ts`.
+* Interfaces and abstract classes used as interfaces should be named with a suffix like `datagrid-state.interface.ts` \* If the component has a single provider, the provider file can be placed directly in the same folder as the component itself
+  * In the case of more complex components (like the Datagrid or the Wizard) where many providers are needed for the various subcomponents to communicate, the providers should be placed inside of a `providers` subfolder of the module folder like `/wizard/providers/wizard-navigation.service.ts`.
+* Interfaces and abstract classes used as interfaces should be named with a suffix like `datagrid-state.interface.ts`.
+  * If the component has one or two interfacees/abstract classes the file can be placed in the same folder as the component itself
+  * In the case of more complex components (w/ 3 or more) interfaces/abstract classes should be placed inside an interface subfolder like `/datagrid/interfaces/string-filter.interface.ts`
+* Enums should be named with a suffix like `sort-order.enum.ts`.
+  * If the component has one or two enums the file can be placed in the same folder as the component
+  * In the case of more complex components(w/ 3 or more enums) they should be placed in an `enum` subfolder like `/datagrid/enums/sort-order.enum.ts`
 
 ## Naming conventions
 

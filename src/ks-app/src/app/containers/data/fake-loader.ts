@@ -5,13 +5,13 @@
  */
 import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 
-import { Loading } from '@clr/angular';
+import { ClrLoading } from '@clr/angular';
 
 const LATENCY = 2000;
 
 @Directive({ selector: '[clrFakeLoader]' })
 export class FakeLoader implements OnInit {
-  constructor(private template: TemplateRef<any>, private container: ViewContainerRef, private loading: Loading) {}
+  constructor(private template: TemplateRef<any>, private container: ViewContainerRef, private loading: ClrLoading) {}
 
   @Input('clrFakeLoader') fake: boolean;
 

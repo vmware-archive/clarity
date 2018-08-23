@@ -7,6 +7,7 @@
 
 // Bootstrap 4 Dependencies - Begin Part 2
 // NOTE: These are here b/c they need to be overwritable for the $grid-breakpoints map in a theme.
+// @deprecated Bootstrap dependencies are deprecated since 1.0. Remove before 2.0.
 @import 'bootstrap/scss/media';
 @import 'bootstrap/scss/utilities';
 @import 'bootstrap/scss/images';
@@ -34,6 +35,7 @@
 //Typography
 //depends on colors.clarity, color.clarity, variables.clarity, utilities.clarity
 @import '../typography/typography.clarity';
+@import '../typography/code.clarity';
 
 //Buttons
 @import '../button/buttons.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity
@@ -51,9 +53,6 @@
 //Cards
 //depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, list-group.clarity, buttons.clarity
 @import '../layout/card.clarity';
-
-//Code
-@import '../code/syntax-highlight/code.clarity'; // depends on variables.clarity, mixins.clarity, helpers.clarity, code.scss
 
 //@import "./custom-forms-deprecated/custom-forms-deprecated.clarity"; // deleted
 

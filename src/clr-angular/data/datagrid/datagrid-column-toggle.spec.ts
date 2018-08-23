@@ -139,18 +139,6 @@ export default function(): void {
         // make sure the x is not stil in the dom
         const toggleUI = context.clarityElement.querySelector('.column-switch');
         expect(toggleUI).toBeNull();
-
-        // Open it for 'OK' btn close pathway
-        iconBtn.click();
-        context.detectChanges();
-        expect(context.clarityDirective.open).toBe(true);
-
-        // Testing 'OK'
-        const closeOK = context.clarityElement.querySelector('.switch-footer .action-right  button');
-        closeOK.click();
-        context.detectChanges();
-        expect(context.clarityDirective.open).toBe(false);
-        expect(toggleUI).toBeNull();
       });
 
       it('projects DatagridHideableContent TemplateRefs', function() {
@@ -283,7 +271,6 @@ export default function(): void {
 
         const buttons = context.clarityElement.querySelectorAll('.switch-footer button');
         expect(buttons[0].innerText.trim().toUpperCase()).toEqual('Select All'.toUpperCase());
-        expect(buttons[1].innerText.trim().toUpperCase()).toEqual('OK'.toUpperCase());
         const title = context.clarityElement.querySelector('.switch-header');
         expect(title.innerHTML).toContain('Show Columns');
       });

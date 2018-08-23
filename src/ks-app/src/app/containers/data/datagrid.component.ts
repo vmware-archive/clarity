@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   ClrDatagrid,
   ClrDatagridActionBar,
@@ -20,29 +20,10 @@ import {
   ClrDatagridItems,
   ClrDatagridPagination,
   ClrDatagridPlaceholder,
-  ClrDatagridRow,
   ClrDatagridRowDetail,
   ClrDatagridStateInterface,
   ClrDatagridStringFilterInterface,
-  Comparator,
-  Datagrid,
-  DatagridActionBar,
-  DatagridActionOverflow,
-  DatagridCell,
-  DatagridColumn,
-  DatagridColumnToggle,
-  DatagridFilter,
-  DatagridFooter,
-  DatagridHideableColumnDirective,
-  DatagridItems,
-  DatagridPagination,
-  DatagridPlaceholder,
-  DatagridRow,
-  DatagridRowDetail,
-  Filter,
-  SortOrder,
-  State,
-  StringFilter,
+  ClrDatagridSortOrder,
 } from '@clr/angular';
 
 import { PokemonComparator } from './pokemon-comparator';
@@ -65,7 +46,7 @@ export class KSDatagrid {
   showDate = true;
   showId = true;
   singleSelected: User;
-  sortOrder: SortOrder = SortOrder.Unsorted;
+  sortOrder: ClrDatagridSortOrder = ClrDatagridSortOrder.UNSORTED;
   toAdd: User[] = [];
   toDelete: User[] = [];
   toEdit: User;
@@ -75,41 +56,22 @@ export class KSDatagrid {
    * @description
    * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
    */
-  private aDatagrid: Datagrid;
   private aClrDatagrid: ClrDatagrid<User>;
-  private aDatagridActionBar: DatagridActionBar;
   private aClrDatagridActionBar: ClrDatagridActionBar;
-  private aDatagridActionOverflow: DatagridActionOverflow;
   private aClrDatagridActionOverflow: ClrDatagridActionOverflow;
-  private aDatagridColumn: DatagridColumn;
   private aClrDatagridColumn: ClrDatagridColumn<User>;
-  private aDatagridColumnToggle: DatagridColumnToggle;
   private aClrDatagridColumnToggle: ClrDatagridColumnToggle;
-  private aDatagridHideableColumnDirective: DatagridHideableColumnDirective;
   private aClrDatagridHideableColumnDirective: ClrDatagridHideableColumn;
-  private aDatagridFilter: DatagridFilter;
   private aClrDatagridFilter: ClrDatagridFilter<User>;
-  private aDatagridItems: DatagridItems;
   private aClrDatagridItems: ClrDatagridItems<User>;
-  private aDatagridRow: DatagridRow;
-  private aClrDatagridRow: ClrDatagridRow<User>;
-  private aDatagridRowDetail: DatagridRowDetail;
   private aClrDatagridRowDetail: ClrDatagridRowDetail<User>;
-  private aDatagridCell: DatagridCell;
   private aClrDatagridCell: ClrDatagridCell;
-  private aDatagridFooter: DatagridFooter;
   private aClrDatagridFooter: ClrDatagridFooter<User>;
-  private aDatagridPagination: DatagridPagination;
   private aClrDatagridPagination: ClrDatagridPagination;
-  private aDatagridPlaceholder: DatagridPlaceholder;
   private aClrDatagridPlaceholder: ClrDatagridPlaceholder<User>;
-  private aComparator: Comparator<string>;
   private aClrDatagridComparatorInterface: ClrDatagridComparatorInterface<string>;
-  private aFilter: Filter<string>;
   private aClrDatagridFilterInterface: ClrDatagridFilterInterface<string>;
-  private aState: State;
   private aClrDatagridStateInterface: ClrDatagridStateInterface<User>;
-  private aStringFilter: StringFilter<string>;
   private aClrDatagridStringFilterInterface: ClrDatagridStringFilterInterface<string>;
   // END Clarity Data Entities
 

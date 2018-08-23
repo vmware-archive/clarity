@@ -12,12 +12,3 @@ export const CLR_ICON_DIRECTIVES: Type<any>[] = [ClrIconCustomTag];
 
 @NgModule({ imports: [CommonModule], declarations: [CLR_ICON_DIRECTIVES], exports: [CLR_ICON_DIRECTIVES] })
 export class ClrIconModule {}
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export interface IconCustomTag extends ClrIconCustomTag {}
-/** @deprecated since 0.11 */
-export const IconCustomTag = ClrIconCustomTag;
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const ICON_DIRECTIVES = CLR_ICON_DIRECTIVES;

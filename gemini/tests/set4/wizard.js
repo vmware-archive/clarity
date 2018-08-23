@@ -32,7 +32,7 @@ gemini.suite('wizard', child => {
         actions.click(find('.clr-wizard-btn--primary'));
         actions.wait(WAIT_TIME); // wait for animations to complete
       })
-      .setCaptureElements('.modal-outer-wrapper')
+      .setCaptureElements('.modal-content-wrapper')
       .capture('default');
   });
 
@@ -52,7 +52,7 @@ gemini.suite('wizard', child => {
         actions.wait(WAIT_TIME); // wait for animations to complete
       })
       .ignoreElements('#nameInput')
-      .setCaptureElements('.modal-outer-wrapper')
+      .setCaptureElements('.modal-content-wrapper')
       .capture('default');
   });
 
@@ -66,61 +66,7 @@ gemini.suite('wizard', child => {
         actions.waitForElementToShow('.alert-item', WAIT_TIME);
         actions.wait(WAIT_TIME); // wait for animations to complete
       })
-      .setCaptureElements('.modal-outer-wrapper')
-      .capture('default');
-  });
-
-  gemini.suite('ghostpages-firstpage', child => {
-    child
-      .setUrl('/wizard/ghost-pages')
-      .before((actions, find) => {
-        actions.waitForElementToShow('.btn', WAIT_TIME);
-        actions.click(find('.btn'));
-        actions.wait(WAIT_TIME); // wait for modal to fully load
-        actions.waitForElementToShow('.content-for-page-1', WAIT_TIME);
-        actions.wait(WAIT_TIME); // wait for animations to complete
-      })
-      .setCaptureElements('.modal-outer-wrapper')
-      .capture('default');
-  });
-
-  gemini.suite('ghostpages-penultimatepage', child => {
-    child
-      .setUrl('/wizard/ghost-pages')
-      .before((actions, find) => {
-        actions.waitForElementToShow('.btn', WAIT_TIME);
-        actions.click(find('.btn'));
-        actions.wait(WAIT_TIME); // wait for modal to fully load
-        actions.waitForElementToShow('.content-for-page-1', WAIT_TIME);
-        actions.click(find('.clr-wizard-btn--primary'));
-        actions.waitForElementToShow('.content-for-page-2', WAIT_TIME);
-        actions.click(find('.clr-wizard-btn--primary'));
-        actions.waitForElementToShow('.content-for-page-3', WAIT_TIME);
-        actions.click(find('.clr-wizard-btn--primary')); // should be at page 4; next to last page
-        actions.wait(WAIT_TIME); // wait for animations to complete
-      })
-      .setCaptureElements('.modal-outer-wrapper')
-      .capture('default');
-  });
-
-  gemini.suite('ghostpages-lastpage', child => {
-    child
-      .setUrl('/wizard/ghost-pages')
-      .before((actions, find) => {
-        actions.waitForElementToShow('.btn', WAIT_TIME);
-        actions.click(find('.btn'));
-        actions.wait(WAIT_TIME); // wait for modal to fully load
-        actions.waitForElementToShow('.content-for-page-1', WAIT_TIME);
-        actions.click(find('.clr-wizard-btn--primary'));
-        actions.waitForElementToShow('.content-for-page-2', WAIT_TIME);
-        actions.click(find('.clr-wizard-btn--primary'));
-        actions.waitForElementToShow('.content-for-page-3', WAIT_TIME);
-        actions.click(find('.clr-wizard-btn--primary'));
-        actions.waitForElementToShow('.content-for-page-4', WAIT_TIME);
-        actions.click(find('.clr-wizard-btn--primary')); // should be at page 5, the last page
-        actions.wait(WAIT_TIME); // wait for animations to complete
-      })
-      .setCaptureElements('.modal-outer-wrapper')
+      .setCaptureElements('.modal-content-wrapper')
       .capture('default');
   });
 
@@ -139,7 +85,7 @@ gemini.suite('wizard', child => {
         actions.click(find('.clr-wizard-btn--primary'));
         actions.wait(WAIT_TIME); // wait for animations to complete
       })
-      .setCaptureElements('.modal-outer-wrapper')
+      .setCaptureElements('.modal-content-wrapper')
       .capture('default');
   });
 
@@ -151,7 +97,7 @@ gemini.suite('wizard', child => {
         actions.click(find('.btn'));
         actions.wait(WAIT_TIME); // wait for modal to fully load
       })
-      .setCaptureElements('.modal-outer-wrapper')
+      .setCaptureElements('.modal-content-wrapper')
       .capture('default');
   });
 
@@ -166,7 +112,7 @@ gemini.suite('wizard', child => {
         actions.click(find('.clr-wizard-btn--primary'));
         actions.wait(WAIT_TIME); // wait for animations to complete
       })
-      .setCaptureElements('.modal-outer-wrapper')
+      .setCaptureElements('.modal-content-wrapper')
       .capture('default');
   });
 

@@ -13,6 +13,7 @@ import { ClrInputContainer } from '../input/input-container';
 import { ClrLabel } from './label';
 import { ControlIdService } from './providers/control-id.service';
 import { Layouts, LayoutService } from './providers/layout.service';
+import { NgControlService } from './providers/ng-control.service';
 
 @Component({ template: `<label></label>` })
 class NoForTest {}
@@ -42,7 +43,7 @@ export default function(): void {
     });
 
     it("doesn't set the the class unless its inside of a container", function() {
-      TestBed.configureTestingModule({ declarations: [ClrLabel, NoForTest], providers: [ControlIdService] });
+      TestBed.configureTestingModule({ declarations: [ClrLabel, NoForTest], providers: [NgControlService] });
       const fixture = TestBed.createComponent(NoForTest);
       fixture.detectChanges();
       expect(
@@ -78,7 +79,7 @@ export default function(): void {
       TestBed.configureTestingModule({
         imports: [ClrIconModule],
         declarations: [ClrLabel, ClrInputContainer, ContainerizedTest],
-        providers: [ControlIdService],
+        providers: [LayoutService],
       });
       const fixture = TestBed.createComponent(ContainerizedTest);
       const layoutService = fixture.debugElement.injector.get(LayoutService);

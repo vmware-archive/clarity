@@ -19,26 +19,6 @@ import { ClrWizard } from './wizard';
 export default function(): void {
   describe('Wizard', () => {
     describe('Typescript API', () => {
-      describe('Ghost pages', () => {
-        // TODO: Ghost pages are not widely available atm. When they are then we should complete
-        // this test plan.
-        xit('should start out as deactivated', () => {});
-
-        xit('should opt out if showGhostPages is false', () => {});
-
-        xit('should set proper state when sent deactivate', () => {});
-
-        xit('should set proper state on last page', () => {});
-
-        xit('should set proper state when on next to last page', () => {});
-
-        xit('should fall through to proper state', () => {});
-
-        xit('should set expected state when first page is last page', () => {});
-
-        xit('should set expected state when first page is next to last page', () => {});
-      });
-
       describe('Opening and closing', () => {
         let context: TestContext<ClrWizard, UnopenedWizardTestComponent>;
         let wizard: ClrWizard;
@@ -52,12 +32,6 @@ export default function(): void {
         });
 
         describe('open', () => {
-          it('should call setGhostPages', () => {
-            spyOn(wizard, 'setGhostPages');
-            wizard.open();
-            expect(wizard.setGhostPages).toHaveBeenCalledTimes(1);
-          });
-
           it('should set this._open', () => {
             expect(wizard._open).toBe(false, 'hidden wizard._open should be false');
             wizard.open();
@@ -75,13 +49,6 @@ export default function(): void {
         });
 
         describe('close', () => {
-          it('should call deactivateGhostPages', () => {
-            spyOn(wizard, 'deactivateGhostPages');
-            wizard.open();
-            wizard.close();
-            expect(wizard.deactivateGhostPages).toHaveBeenCalledTimes(1);
-          });
-
           it('should set this._open', () => {
             expect(wizard._open).toBe(false, 'hidden wizard._open should be false');
             wizard.open();
@@ -91,15 +58,12 @@ export default function(): void {
           });
 
           it('should not do anything if stop navigation is set', () => {
-            spyOn(wizard, 'deactivateGhostPages');
-
             wizard.open();
             expect(wizard._open).toBe(true, 'visible wizard._open should be true');
 
             wizard.stopNavigation = true;
             wizard.close();
 
-            expect(wizard.deactivateGhostPages).not.toHaveBeenCalled();
             expect(wizard._open).toBe(true, 'wizard._open should not have changed');
           });
         });
@@ -258,18 +222,6 @@ export default function(): void {
             expect(wizard.currentPage).toBe(firstPage, 'resets to first page');
           });
         });
-
-        describe('ghostPageState', () => {
-          // TODO: Ghost pages are not widely available atm. When they are then we should complete
-          // this test plan.
-          xit('should call the navService', () => {});
-        });
-
-        describe('deactivateGhostPages', () => {
-          // TODO: Ghost pages are not widely available atm. When they are then we should complete
-          // this test plan.
-          xit('should should call the navService  with "deactivate" as the value', () => {});
-        });
       });
     });
 
@@ -291,11 +243,6 @@ export default function(): void {
       });
 
       describe('Current page onchange', () => {
-        xit('should update ghost pages', () => {
-          // TODO: Ghost pages are not widely available atm. When they are then we should complete
-          // this test plan.
-        });
-
         it('should emit pageOnLoad when wizard is created', () => {
           context.detectChanges();
           expect(context.testComponent._firstPageLoaded).toBe(1, 'only once when created');
@@ -659,12 +606,6 @@ export default function(): void {
         });
       });
 
-      describe('Ghost Pages', () => {
-        xit('can be set via the ??? input', () => {});
-
-        xit('navService.hideWizardGhostPages gets set as expected', () => {});
-      });
-
       describe('Sizing', () => {
         it('can be set and updates via the clrWizardSize input', () => {
           const wizardModal = context.testElement.querySelector('.modal-dialog');
@@ -821,12 +762,6 @@ export default function(): void {
     });
 
     describe('View and Behavior', () => {
-      describe('Ghost Pages', () => {
-        xit('do not appear by default', () => {});
-
-        xit('can be shown by setting the ??? input', () => {});
-      });
-
       describe('Close X', () => {
         xit('shows up by default', () => {});
 
@@ -866,10 +801,6 @@ export default function(): void {
 
         // validate that clrModalSkipAnimation is set as expected
         xit('clrModalSkipAnimation is set as expected', () => {});
-
-        // validate that clrModalGhostPageState is set as expected
-        // and is updated as expected
-        xit('clrModalGhostPageState is set and updated as expected', () => {});
       });
     });
   });

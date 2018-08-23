@@ -5,14 +5,7 @@
  */
 
 import { Component } from '@angular/core';
-import {
-  ClrTooltip,
-  ClrTooltipContent,
-  ClrTooltipTrigger,
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@clr/angular';
+import { ClrTooltip, ClrTooltipContent, ClrTooltipTrigger } from '@clr/angular';
 
 @Component({ templateUrl: './tooltips.component.html' })
 export class KSTooltips {
@@ -20,10 +13,7 @@ export class KSTooltips {
    * @description
    * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
    */
-  private aTooltip: Tooltip;
   private aClrTooltip: ClrTooltip;
-  private aTooltipContent: TooltipContent;
   private aClrTooltipContent: ClrTooltipContent;
-  private aTooltipTrigger: TooltipTrigger;
   private aClrTooltipTrigger: ClrTooltipTrigger;
 }

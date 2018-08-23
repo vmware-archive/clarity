@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
 import { Subscription } from 'rxjs';
 
-import { GHOST_PAGE_ANIMATION } from '../../modal/utils/ghost-page-animations';
 import { ClrWizardPage } from '../wizard-page';
 
 import { ButtonHubService } from './button-hub.service';
@@ -225,22 +224,9 @@ export class WizardNavigationService implements OnDestroy {
 
   /**
    * Returns a Boolean that tells you whether or not the current page is the
-   * next to last page in the Wizard.
-   *
-   * This is used to determine the animation state of ghost pages.
-   *
-   * @memberof WizardNavigationService
-   */
-  public get currentPageIsNextToLast(): boolean {
-    return this.pageCollection.penultimatePage === this.currentPage;
-  }
-
-  /**
-   * Returns a Boolean that tells you whether or not the current page is the
    * last page in the Wizard.
    *
-   * This is used to determine the animation state of ghost pages as well as
-   * which buttons should display in the wizard footer.
+   * This is used to determine which buttons should display in the wizard footer.
    *
    * @memberof WizardNavigationService
    */
@@ -729,54 +715,6 @@ export class WizardNavigationService implements OnDestroy {
    */
   public setFirstPageCurrent(): void {
     this.currentPage = this.pageCollection.pagesAsArray[0];
-  }
-
-  /**
-   * @memberof WizardNavigationService
-   * @deprecated since 0.12
-   */
-  private _wizardGhostPageState: string = GHOST_PAGE_ANIMATION.STATES.NO_PAGES;
-
-  /**
-   * @memberof WizardNavigationService
-   * @deprecated since 0.12
-   */
-  public get wizardGhostPageState(): string {
-    return this._wizardGhostPageState;
-  }
-
-  /**
-   * @memberof WizardNavigationService
-   * @deprecated since 0.12
-   */
-  public set wizardGhostPageState(value: string) {
-    if (this.hideWizardGhostPages) {
-      this._wizardGhostPageState = GHOST_PAGE_ANIMATION.STATES.NO_PAGES;
-    } else {
-      this._wizardGhostPageState = value;
-    }
-  }
-
-  /**
-   * @memberof WizardNavigationService
-   * @deprecated since 0.12
-   */
-  private _hideWizardGhostPages: boolean = true;
-
-  /**
-   * @memberof WizardNavigationService
-   * @deprecated since 0.12
-   */
-  public get hideWizardGhostPages(): boolean {
-    return this._hideWizardGhostPages;
-  }
-
-  /**
-   * @memberof WizardNavigationService
-   * @deprecated since 0.12
-   */
-  public set hideWizardGhostPages(value: boolean) {
-    this._hideWizardGhostPages = value;
   }
 
   /**

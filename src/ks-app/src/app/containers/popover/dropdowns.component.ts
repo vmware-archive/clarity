@@ -5,16 +5,7 @@
  */
 
 import { Component } from '@angular/core';
-import {
-  ClrDropdown,
-  ClrDropdownItem,
-  ClrDropdownMenu,
-  ClrDropdownTrigger,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-} from '@clr/angular';
+import { ClrDropdown, ClrDropdownItem, ClrDropdownMenu, ClrDropdownTrigger } from '@clr/angular';
 
 @Component({ templateUrl: './dropdowns.component.html' })
 export class KSDropdowns {
@@ -22,12 +13,8 @@ export class KSDropdowns {
    * @description
    * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
    */
-  private aDropdown: Dropdown;
   private aClrDropdown: ClrDropdown;
-  private aDropdownMenu: DropdownMenu;
   private aClrDropdownMenu: ClrDropdownMenu;
-  private aDropdownTrigger: DropdownTrigger;
   private aClrDropdownTrigger: ClrDropdownTrigger;
-  private aDropdownItem: DropdownItem;
   private aClrDropdownItem: ClrDropdownItem;
 }

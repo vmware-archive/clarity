@@ -2,6 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+// @deprecated Bootstrap dependencies are deprecated since 1.0. Review for removal of this file before 2.0
+// (note that there is a section at the bottom that's not related to bootstap but may also be candidate for removal by 2.0)
 @include exports('reboot.clarity') {
   // Customizing BS4 reboot file below from Bootstrap 4.0.0-alpha.3
   // Styles taken directly from BS4 reboot file.
@@ -393,6 +395,7 @@
   // END BS4 REBOOT STYLES
 
   //Overrides carried over from earlier versions of Clarity
+  //TODO: Review below items for removal before 2.0.
 
   dl {
     margin-bottom: 0;

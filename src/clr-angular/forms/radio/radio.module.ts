@@ -6,17 +6,19 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ClrIconModule } from '../../icon/icon.module';
 
 import { ClrHostWrappingModule } from '../../utils/host-wrapping/host-wrapping.module';
 import { ClrCommonFormsModule } from '../common/common.module';
 
 import { ClrRadio } from './radio';
 import { ClrRadioContainer } from './radio-container';
+import { ClrRadioWrapper } from './radio-wrapper';
 
 @NgModule({
-  imports: [CommonModule, ClrCommonFormsModule, ClrHostWrappingModule],
-  declarations: [ClrRadio, ClrRadioContainer],
-  exports: [ClrCommonFormsModule, ClrRadio, ClrRadioContainer],
-  entryComponents: [ClrRadioContainer],
+  imports: [CommonModule, ClrCommonFormsModule, ClrHostWrappingModule, ClrIconModule],
+  declarations: [ClrRadio, ClrRadioContainer, ClrRadioWrapper],
+  exports: [ClrCommonFormsModule, ClrRadio, ClrRadioContainer, ClrRadioWrapper],
+  entryComponents: [ClrRadioWrapper],
 })
 export class ClrRadioModule {}

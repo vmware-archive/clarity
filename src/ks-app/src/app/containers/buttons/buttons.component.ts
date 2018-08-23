@@ -5,7 +5,7 @@
  */
 
 import { Component } from '@angular/core';
-import { Button, ClrButton, ClrLoadingButton, ClrLoadingState, LoadingButton } from '@clr/angular';
+import { ClrButton, ClrLoadingButton, ClrLoadingState } from '@clr/angular';
 
 @Component({ templateUrl: './buttons.component.html' })
 export class KSButtons {
@@ -20,9 +20,7 @@ export class KSButtons {
    * @description
    * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
    */
-  private aButton: Button;
   private aClrButton: ClrButton;
-  private aLoadingButton: LoadingButton;
   private aCLrLoadingButton: ClrLoadingButton;
 
   constructor() {

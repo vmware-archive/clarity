@@ -344,111 +344,6 @@
     }
   }
 
-  //TODO: deprecate .clr-wizard--ghosted for v0.12
-  .clr-wizard--ghosted {
-    .modal-dialog {
-      display: block;
-      box-shadow: none;
-    }
-
-    .modal-outer-wrapper {
-      position: static;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 100%;
-      max-height: 100%;
-      box-shadow: none;
-      flex-direction: row;
-    }
-
-    .modal-content-wrapper {
-      box-shadow: $clr-wizard-ghost-shadow;
-    }
-
-    // ghosties!
-    .modal-ghost-wrapper {
-      display: block;
-      flex: 0 0 $clr-wizard-ghost-wrapper-width;
-      height: 100%;
-      position: relative;
-    }
-
-    .modal-ghost {
-      position: absolute;
-      top: $clr-wizard-ghost-wrapper-padding;
-      bottom: $clr-wizard-ghost-wrapper-padding;
-      background: $clr-wizard-ghost-1;
-      width: $clr-wizard-ghost-panel-width;
-      border-radius: 0 $clr-global-borderradius $clr-global-borderradius 0;
-      left: (-1 * $clr-wizard-ghost-panel-width);
-      box-shadow: $clr-wizard-ghost-shadow;
-      z-index: -1;
-    }
-
-    .modal-ghost-2 {
-      top: (2 * $clr-wizard-ghost-wrapper-padding);
-      bottom: (2 * $clr-wizard-ghost-wrapper-padding);
-      background: $clr-wizard-ghost-2;
-      z-index: -2;
-    }
-
-    .modal-dialog,
-    .modal-outer-wrapper {
-      width: $clr-wizard-ghost-dialog-default-width;
-    }
-
-    .modal-content-wrapper {
-      width: $clr-modal-md-width;
-    }
-
-    // sizing edits from ghosts
-    &.wizard-md {
-      .modal-dialog,
-      .modal-outer-wrapper {
-        width: $clr-wizard-ghost-dialog-default-width;
-      }
-
-      .modal-outer-wrapper {
-        min-height: $clr-wizard-all-dialog-min-height;
-      }
-
-      .modal-content-wrapper {
-        width: $clr-modal-md-width;
-      }
-    }
-
-    &.wizard-lg {
-      .modal-dialog,
-      .modal-outer-wrapper {
-        width: $clr-modal-lg-width + $clr-wizard-ghost-wrapper-width;
-      }
-
-      .modal-outer-wrapper {
-        min-height: $clr-wizard-all-dialog-min-height;
-      }
-
-      .modal-content-wrapper {
-        width: $clr-modal-lg-width;
-      }
-    }
-
-    &.wizard-xl {
-      .modal-dialog,
-      .modal-outer-wrapper {
-        width: $clr-modal-xl-width + $clr-wizard-ghost-wrapper-width;
-      }
-
-      .modal-outer-wrapper {
-        max-height: $clr-wizard-xl-dialog-max-height;
-      }
-
-      .modal-content-wrapper {
-        width: $clr-modal-xl-width;
-      }
-    }
-  }
-
   .clr-wizard--inline {
     display: block;
     width: 100%;
@@ -482,11 +377,6 @@
           width: 99%;
           height: 99%;
         }
-      }
-
-      .modal-outer-wrapper {
-        align-items: stretch;
-        width: 100%;
       }
 
       .modal-content {
@@ -526,11 +416,6 @@
     .modal-content-wrapper {
       align-items: stretch;
       height: 100%;
-    }
-
-    // TODO: deprecate .modal-ghost-wrapper for v0.12
-    .modal-ghost-wrapper {
-      display: none;
     }
 
     .clr-wizard-stepnav-wrapper,

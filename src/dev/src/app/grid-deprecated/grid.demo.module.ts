@@ -10,8 +10,6 @@ import { ClarityModule } from '@clr/angular';
 import { GridAutoLayout1Demo } from './grid-auto-layout-1';
 import { GridAutoLayout2Demo } from './grid-auto-layout-2';
 import { GridColumnOffsettingDemo } from './grid-column-offsetting';
-import { GridColumnPullDemo } from './grid-column-pull';
-import { GridColumnPushDemo } from './grid-column-push';
 import { GridColumnStackingDemo } from './grid-column-stacking';
 import { GridColumnsDemo } from './grid-columns';
 import { GridItemsHorizontalAlignmentDemo } from './grid-items-horizontal-alignment';
@@ -28,8 +26,6 @@ import { ROUTING } from './grid.demo.routing';
     GridColumnsDemo,
     GridColumnStackingDemo,
     GridColumnOffsettingDemo,
-    GridColumnPushDemo,
-    GridColumnPullDemo,
     DeprecatedGridDemo,
     GridItemsHorizontalAlignmentDemo,
     GridItemsIndividualVerticalAlignmentDemo,
@@ -41,8 +37,6 @@ import { ROUTING } from './grid.demo.routing';
     GridColumnsDemo,
     GridColumnStackingDemo,
     GridColumnOffsettingDemo,
-    GridColumnPushDemo,
-    GridColumnPullDemo,
     DeprecatedGridDemo,
     GridItemsHorizontalAlignmentDemo,
     GridItemsIndividualVerticalAlignmentDemo,

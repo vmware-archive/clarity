@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
-import { ClrIconCustomTag, ClrLoading, ClrMainContainer, IconCustomTag, Loading, MainContainer } from '@clr/angular';
+import { ClrIconCustomTag, ClrLoading, ClrMainContainer } from '@clr/angular';
 import { ClarityIcons } from '@clr/icons';
 import { ClrShapeStore } from '@clr/icons/shapes/commerce-shapes';
 import { ClrShapePin } from '@clr/icons/shapes/essential-shapes';
@@ -20,11 +20,8 @@ export class AppComponent {
    * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
    * This is a catchall for entities w/o explicit app demos.
    */
-  private aIconCustomTag: IconCustomTag;
   private aClrIconCustomTag: ClrIconCustomTag;
-  private aMainContainer: MainContainer;
   private aClrMainContainer: ClrMainContainer;
-  private aLoading: Loading;
   private aClrLoading: ClrLoading;
 
   title = 'KS';

@@ -62,6 +62,7 @@ $clr-baseline-int: $clr-baseline-px / 1px;
 $clr-rem-1px: 1 / $clr-baseline-int * 1rem;
 $clr-rem-1px: 1 / $clr-baseline-int * 1rem;
 
+// @deprecated Bootstrap dependencies are deprecated since 1.0. Review for removal before 2.0.
 //BS4 overrides
 $enable-flex: true;
 $grid-gutter-width-base: 1rem;

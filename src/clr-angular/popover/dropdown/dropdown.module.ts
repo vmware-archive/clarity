@@ -15,7 +15,6 @@ import { ClrDropdown } from './dropdown';
 import { ClrDropdownItem } from './dropdown-item';
 import { ClrDropdownMenu } from './dropdown-menu';
 import { ClrDropdownTrigger } from './dropdown-trigger';
-import { CLR_MENU_POSITIONS } from './menu-positions';
 
 export const CLR_DROPDOWN_DIRECTIVES: Type<any>[] = [ClrDropdown, ClrDropdownMenu, ClrDropdownTrigger, ClrDropdownItem];
 
@@ -25,26 +24,3 @@ export const CLR_DROPDOWN_DIRECTIVES: Type<any>[] = [ClrDropdown, ClrDropdownMen
   exports: [CLR_DROPDOWN_DIRECTIVES, ClrConditionalModule, ClrIconModule],
 })
 export class ClrDropdownModule {}
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export interface Dropdown extends ClrDropdown {}
-/** @deprecated since 0.11 */
-export const Dropdown = ClrDropdown;
-/** @deprecated since 0.11 */
-export interface DropdownMenu extends ClrDropdownMenu {}
-/** @deprecated since 0.11 */
-export const DropdownMenu = ClrDropdownMenu;
-/** @deprecated since 0.11 */
-export interface DropdownTrigger extends ClrDropdownTrigger {}
-/** @deprecated since 0.11 */
-export const DropdownTrigger = ClrDropdownTrigger;
-/** @deprecated since 0.11 */
-export interface DropdownItem extends ClrDropdownItem {}
-/** @deprecated since 0.11 */
-export const DropdownItem = ClrDropdownItem;
-/** @deprecated since 0.11 */
-export const menuPositions = CLR_MENU_POSITIONS;
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const DROPDOWN_DIRECTIVES = CLR_DROPDOWN_DIRECTIVES;

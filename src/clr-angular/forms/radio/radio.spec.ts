@@ -4,31 +4,43 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { ControlIdService } from '../common/providers/control-id.service';
-import { WrappedFormControl } from '../common/wrapped-control';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { ControlInvalidSpec, ReactiveSpec, TemplateDrivenSpec } from '../tests/control.spec';
 import { ClrRadio } from './radio';
-import { ClrRadioContainer } from './radio-container';
+import { ClrRadioWrapper } from './radio-wrapper';
 
 @Component({
   template: `
-       <input type="radio" clrRadio />
+    <input type="radio" clrRadio />
     `,
 })
-class SimpleTest {}
+class InvalidUseTest {}
+
+@Component({
+  template: `
+    <input type="radio" clrRadio name="model" class="test-class" [(ngModel)]="model" />
+  `,
+})
+class TemplateDrivenTest {}
+
+@Component({
+  template: `
+    <form [formGroup]="example">
+      <input type="radio" clrRadio name="model" class="test-class" formControlName="model" />
+    </form>
+  `,
+})
+class ReactiveTest {
+  example = new FormGroup({
+    model: new FormControl('', Validators.required),
+  });
+}
 
 export default function(): void {
-  describe('Radio directive', () => {
-    it('correctly extends WrappedFormControl<ClrRadioContainer>', function() {
-      spyOn(WrappedFormControl.prototype, 'ngOnInit');
-      TestBed.configureTestingModule({ declarations: [ClrRadio, SimpleTest], providers: [ControlIdService] });
-      this.fixture = TestBed.createComponent(SimpleTest);
-      this.fixture.detectChanges();
-      expect(this.fixture.debugElement.query(By.directive(ClrRadio)).injector.get(ClrRadio).wrapperType).toBe(
-        ClrRadioContainer
-      );
-      expect(WrappedFormControl.prototype.ngOnInit).toHaveBeenCalledTimes(1);
-    });
+  describe('ClrRadio directive', () => {
+    ControlInvalidSpec(ClrRadio, InvalidUseTest);
+    TemplateDrivenSpec(ClrRadioWrapper, ClrRadio, TemplateDrivenTest, 'clr-radio');
+    ReactiveSpec(ClrRadioWrapper, ClrRadio, ReactiveTest, 'clr-radio');
   });
 }

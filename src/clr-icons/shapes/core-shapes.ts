@@ -352,3 +352,4 @@ Object.defineProperty(CoreShapes, 'avatar', descriptorConfig(CoreShapes.user));
 Object.defineProperty(CoreShapes, 'caret', descriptorConfig(CoreShapes.angle));
 Object.defineProperty(CoreShapes, 'directory', descriptorConfig(CoreShapes.folder));
 Object.defineProperty(CoreShapes, 'notification', descriptorConfig(CoreShapes.bell));
+Object.defineProperty(CoreShapes, 'collapse', descriptorConfig(CoreShapes['angle-double']));

@@ -139,6 +139,23 @@ export default function(): void {
         expect(selectionInstance.isSelected(4)).toBe(true);
       });
 
+      it(
+        'accepts pre-selected items in multi selection type when `all` has not been defined',
+        fakeAsync(function() {
+          itemsInstance.all = null;
+          tick();
+          selectionInstance.selectionType = SelectionType.Multi;
+          selectionInstance.current = [4, 2];
+          tick();
+          itemsInstance.all = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+          tick();
+          expect(selectionInstance.isSelected(1)).toBe(false);
+          expect(selectionInstance.isSelected(2)).toBe(true);
+          expect(selectionInstance.isSelected(3)).toBe(false);
+          expect(selectionInstance.isSelected(4)).toBe(true);
+        })
+      );
+
       it('accepts pre-selected item in single selection type', function() {
         selectionInstance.selectionType = SelectionType.Single;
         selectionInstance.currentSingle = 2;
@@ -147,6 +164,23 @@ export default function(): void {
         expect(selectionInstance.isSelected(3)).toBe(false);
         expect(selectionInstance.isSelected(4)).toBe(false);
       });
+
+      it(
+        'accepts pre-selected item in single selection type when `all` has not been defined',
+        fakeAsync(function() {
+          itemsInstance.all = null;
+          tick();
+          selectionInstance.selectionType = SelectionType.Single;
+          selectionInstance.currentSingle = 2;
+          tick();
+          itemsInstance.all = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+          tick();
+          expect(selectionInstance.isSelected(1)).toBe(false);
+          expect(selectionInstance.isSelected(2)).toBe(true);
+          expect(selectionInstance.isSelected(3)).toBe(false);
+          expect(selectionInstance.isSelected(4)).toBe(false);
+        })
+      );
 
       it('exposes an Observable to follow selection changes in multi selection type', function() {
         let nbChanges = 0;
@@ -482,6 +516,20 @@ export default function(): void {
         );
 
         it(
+          'accepts pre-selected items with trackBy when `all` has not been defined',
+          fakeAsync(() => {
+            itemsInstance.trackBy = (index, item) => item.id;
+            selectionInstance.current = [{ id: 1 }, { id: 2 }, { id: 3 }];
+            tick();
+            itemsInstance.all = itemsA;
+            tick();
+            itemsA.forEach(item => {
+              expect(selectionInstance.isSelected(item)).toBe(true);
+            });
+          })
+        );
+
+        it(
           'should support toggleAll selection on page change',
           fakeAsync(() => {
             itemsInstance.trackBy = (index, item) => item.id;
@@ -525,6 +573,20 @@ export default function(): void {
             // tick();
             // testSelection(false, false, true);
             // expect(selectionInstance.currentSingle.modified).toEqual(true);
+          })
+        );
+
+        it(
+          'accepts pre-selected items with trackBy when `all` has not been defined',
+          fakeAsync(() => {
+            itemsInstance.trackBy = (index, item) => item.id;
+            selectionInstance.currentSingle = { id: 1 };
+            tick();
+            itemsInstance.all = itemsA;
+            tick();
+            expect(selectionInstance.isSelected(itemsA[0])).toBe(true);
+            expect(selectionInstance.isSelected(itemsA[1])).toBe(false);
+            expect(selectionInstance.isSelected(itemsA[2])).toBe(false);
           })
         );
       });

@@ -7,6 +7,7 @@
   .clr-radio-wrapper {
     @include form-flatten-validate-text();
     position: relative;
+    line-height: 1rem;
 
     //Hide the default radio
     input[type='radio'] {

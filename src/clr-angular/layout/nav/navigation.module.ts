@@ -37,16 +37,3 @@ export const CLR_NAVIGATION_DIRECTIVES: Type<any>[] = [
   exports: [CLR_NAVIGATION_DIRECTIVES],
 })
 export class ClrNavigationModule {}
-
-/* tslint:disable variable-name */
-/** @deprecated since 0.11 */
-export interface Header extends ClrHeader {}
-/** @deprecated since 0.11 */
-export const Header = ClrHeader;
-/** @deprecated since 0.11 */
-export interface NavLevelDirective extends ClrNavLevel {}
-/** @deprecated since 0.11 */
-export const NavLevelDirective = ClrNavLevel;
-/* tslint:enable variable-name */
-/** @deprecated since 0.11 */
-export const NAVIGATION_DIRECTIVES = CLR_NAVIGATION_DIRECTIVES;

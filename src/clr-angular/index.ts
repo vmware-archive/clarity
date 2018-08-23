@@ -7,7 +7,6 @@
 export * from './clr-angular.module';
 
 export * from './button/index';
-export * from './code/index';
 export * from './data/index';
 export * from './emphasis/index';
 export * from './forms/index';

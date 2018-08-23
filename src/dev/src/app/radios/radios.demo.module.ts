@@ -3,16 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
-import { ClarityModule, ClrRadioModule } from '@clr/angular';
+import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
 
 import { RadiosDemo } from './radios.demo';
 import { ROUTING } from './radios.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ClrRadioModule, ROUTING],
+  imports: [ClarityModule, ClrFormsNextModule, FormsModule, ROUTING],
   declarations: [RadiosDemo],
   exports: [RadiosDemo],
 })

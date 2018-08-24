@@ -22,8 +22,12 @@
   color: $clr-header-textColor;
   opacity: $clr-header-nav-opactiy;
 
-  &:hover {
+  &:enabled:hover {
     opacity: $clr-header-nav-hover-opacity;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }
 

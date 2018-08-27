@@ -25,7 +25,7 @@ export class ColorPalette {
             colors:
                 [
                     {value: "#003666", text: "light"}, {value: "#004981", text: "light"},
-                    {value: "#005c9b", text: "light"}, {value: "#007cbb", text: "mid", corePalette: true},
+                    {value: "#005c9b", text: "light"}, {value: "#0079b8", text: "mid", corePalette: true},
                     {value: "#0094d2", text: "dark"}, {value: "#49afd9", text: "dark"},
                     {value: "#89cbdf", text: "dark"}, {value: "#a6d8e7", text: "dark"},
                     {value: "#c5e5ef", text: "dark"}, {value: "#e1f1f6", text: "dark"}

@@ -105,7 +105,7 @@
 
       .popover-pointer {
         border-left: $clr-signpost-pointer-invisible-border;
-        right: -1px;
+        right: 0;
 
         &:before {
           border-left: $clr-signpost-pointer-invisible-border;

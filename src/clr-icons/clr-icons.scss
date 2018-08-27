@@ -6,9 +6,9 @@ $clr-icon-color-success: #318700;
 $clr-icon-color-danger: #e62700;
 $clr-icon-color-warning: #fac400;
 $clr-icon-color-error: #e62700;
-$clr-icon-color-info: #007cbb;
+$clr-icon-color-info: #0079b8;
 $clr-icon-color-inverse: #ffffff;
-$clr-icon-color-highlight: #007cbb;
+$clr-icon-color-highlight: #0079b8;
 @mixin setIconColor($clr-icon-color) {
   fill: $clr-icon-color;
   .transparent-fill-stroke {

@@ -29,7 +29,7 @@ export class KSColors {
         { value: '#003666', text: 'light' },
         { value: '#004981', text: 'light' },
         { value: '#005c9b', text: 'light' },
-        { value: '#007cbb', text: 'mid', corePalette: true },
+        { value: '#0079B8', text: 'mid', corePalette: true },
         { value: '#0094d2', text: 'dark' },
         { value: '#49afd9', text: 'dark' },
         { value: '#89cbdf', text: 'dark' },

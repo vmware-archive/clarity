@@ -41,6 +41,10 @@
       justify-content: center;
       align-items: center;
       background: $clr-datagrid-loading-background;
+
+      .spinner {
+        word-wrap: normal;
+      }
     }
   }
   .datagrid-scroll-wrapper {

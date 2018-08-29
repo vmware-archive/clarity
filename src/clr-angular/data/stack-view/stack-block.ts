@@ -40,9 +40,9 @@ import {Component, EventEmitter, HostBinding, Input, OnInit, Optional, Output, S
     host: {"[class.stack-block]": "true"},
     animations: [trigger("collapse",
                          [
-                             state("true", style({"height": 0})),
-                             transition("true => false", [animate("0.2s ease-in-out", style({"height": "*"}))]),
-                             transition("false => true", [style({"height": "*"}), animate("0.2s ease-in-out")])
+                             state("true", style({"height": 0, display: 'none'})),
+                             transition("true => false", [animate("0.2s ease-in-out", style({"height": "*", display: '*'}))]),
+                             transition("false => true", [style({"height": "*", display: '*'}), animate("0.2s ease-in-out")])
                          ])]
 })
 export class ClrStackBlock implements OnInit {

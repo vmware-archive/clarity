@@ -24,6 +24,7 @@ import { LoadingListener } from '../../utils/loading/loading-listener';
 import { AbstractTreeSelection } from './abstract-tree-selection';
 import { clrTreeSelectionProviderFactory } from './providers/tree-selection.provider';
 import { TreeSelectionService } from './providers/tree-selection.service';
+import { ClrCommonStrings } from '../../utils/i18n';
 
 @Component({
   selector: 'clr-tree-node',
@@ -54,7 +55,8 @@ export class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
     @SkipSelf()
     public parent: ClrTreeNode,
     public treeSelectionService: TreeSelectionService,
-    @Inject(UNIQUE_ID) public nodeId: string
+    @Inject(UNIQUE_ID) public nodeId: string,
+    public commonStrings: ClrCommonStrings
   ) {
     super(parent);
     if (this.parent) {
@@ -151,6 +153,10 @@ export class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
 
   public get caretDirection(): string {
     return this.nodeExpand.expanded ? 'down' : 'right';
+  }
+
+  public get caretTitle(): string {
+    return this.nodeExpand.expanded ? this.commonStrings.collapse : this.commonStrings.expand;
   }
 
   get expanded(): boolean {

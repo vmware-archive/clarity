@@ -19,6 +19,7 @@ import {
 
 import { FocusTrapDirective } from '../utils/focus-trap/focus-trap.directive';
 import { ScrollingService } from '../utils/scrolling/scrolling-service';
+import { ClrCommonStrings } from '../utils/i18n';
 
 @Component({
   selector: 'clr-modal',
@@ -58,7 +59,7 @@ export class ClrModal implements OnChanges, OnDestroy {
   @Input('clrModalPreventClose') stopClose: boolean = false;
   @Output('clrModalAlternateClose') altClose: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
-  constructor(private _scrollingService: ScrollingService) {}
+  constructor(private _scrollingService: ScrollingService, public commonStrings: ClrCommonStrings) {}
 
   get sizeClass(): string {
     if (this.size) {

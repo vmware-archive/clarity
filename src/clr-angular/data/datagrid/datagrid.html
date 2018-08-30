@@ -15,7 +15,8 @@
                         <div role="columnheader" class="datagrid-column datagrid-select datagrid-fixed-column"
                              *ngIf="selection.selectionType === SELECTION_TYPE.Multi">
                         <span class="datagrid-column-title">
-                            <clr-checkbox [(ngModel)]="allSelected"></clr-checkbox>
+                            <input clrCheckbox type="checkbox" [(ngModel)]="allSelected"
+                                   [attr.aria-label]="commonStrings.selectAll">
                         </span>
                             <div class="datagrid-column-separator"></div>
                         </div>

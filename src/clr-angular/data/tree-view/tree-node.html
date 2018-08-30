@@ -14,13 +14,15 @@
         <clr-icon
             class="clr-treenode-caret-icon"
             shape="caret"
-            [attr.dir]="caretDirection"></clr-icon>
+            [attr.dir]="caretDirection"
+            [attr.title]="caretTitle"></clr-icon>
     </button>
     <div class="clr-treenode-spinner-container" *ngIf="nodeExpand.expandable && nodeExpand.loading">
         <span class="clr-treenode-spinner spinner">
             Loading...
         </span>
     </div>
+    <!-- TODO: Move this to new checkboxes. But the indeterminate two-way binding makes it hard. -->
     <clr-checkbox
         class="clr-treenode-checkbox"
         *ngIf="selectable"

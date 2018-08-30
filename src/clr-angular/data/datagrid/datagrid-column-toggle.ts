@@ -13,6 +13,7 @@ import { ClrDatagridColumnToggleTitle } from './datagrid-column-toggle-title';
 import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
 import { HideableColumnService } from './providers/hideable-column.service';
+import { ClrCommonStrings } from '../../utils/i18n';
 
 @Component({
   selector: 'clr-dg-column-toggle',
@@ -22,7 +23,7 @@ import { HideableColumnService } from './providers/hideable-column.service';
                 (click)="toggleUI()"
                 class="btn btn-sm btn-link column-toggle--action"
                 type="button">
-            <clr-icon shape="view-columns"></clr-icon>
+            <clr-icon shape="view-columns" [attr.title]="commonStrings.pickColumns"></clr-icon>
         </button>
         <div class="column-switch"
              *clrPopoverOld="open; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint">
@@ -33,17 +34,18 @@ import { HideableColumnService } from './providers/hideable-column.service';
                     class="btn btn-sm btn-link"
                     (click)="toggleUI()"
                     type="button">
-                    <clr-icon
-                            shape="close"></clr-icon>
+                    <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
                 </button>
             </div>
             <ul class="switch-content list-unstyled">
                 <li *ngFor="let column of columns">
-                    <clr-checkbox [clrChecked]="!column.hidden"
-                                  [clrDisabled]="column.lastVisibleColumn"
-                                  (clrCheckedChange)="toggleColumn($event, column)">
-                        <ng-template [ngTemplateOutlet]="column.template"></ng-template>
-                    </clr-checkbox>
+                    <clr-checkbox-container>
+                        <input clrCheckbox type="checkbox"
+                          [disabled]="column.lastVisibleColumn"
+                          [ngModel]="!column.hidden" 
+                          (ngModelChange)="toggleColumn($event, column)">
+                        <label><ng-template [ngTemplateOutlet]="column.template"></ng-template></label>
+                    </clr-checkbox-container>
                 </li>
             </ul>
             <div class="switch-footer" *ngIf="buttons.length > 0">
@@ -92,7 +94,8 @@ export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
 
   constructor(
     public hideableColumnService: HideableColumnService,
-    private columnToggleButtons: ColumnToggleButtonsService
+    private columnToggleButtons: ColumnToggleButtonsService,
+    public commonStrings: ClrCommonStrings
   ) {}
 
   ngOnInit() {

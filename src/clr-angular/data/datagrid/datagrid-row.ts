@@ -15,6 +15,7 @@ import { ExpandableRowsCount } from './providers/global-expandable-rows';
 import { HideableColumnService } from './providers/hideable-column.service';
 import { RowActionService } from './providers/row-action-service';
 import { Selection, SelectionType } from './providers/selection';
+import { ClrCommonStrings } from '../../utils/i18n';
 
 let nbRow: number = 0;
 
@@ -45,13 +46,19 @@ let nbRow: number = 0;
       <div role="row" [id]="id" class="datagrid-row-master datagrid-row-flex">
         <clr-dg-cell *ngIf="selection.selectionType === SELECTION_TYPE.Multi"
                      class="datagrid-select datagrid-fixed-column">
-          <clr-checkbox [clrChecked]="selected" (clrCheckedChange)="toggle($event)"></clr-checkbox>
+          <input clrCheckbox type="checkbox" [ngModel]="selected" (ngModelChange)="toggle($event)"
+            [attr.aria-label]="commonStrings.select">
         </clr-dg-cell>
         <clr-dg-cell *ngIf="selection.selectionType === SELECTION_TYPE.Single"
                      class="datagrid-select datagrid-fixed-column">
           <div class="radio">
+            <!-- TODO: it would be better if in addition to the generic "Select" label, we could add aria-labelledby
+            to label the radio by the first cell in the row (typically an id or name).
+             It's pretty easy to label it with the whole row since we already have an id for it, but in most
+             cases the row is far too long to serve as a label, the screenreader reads every single cell content. -->
             <input type="radio" [id]="radioId" [name]="selection.id + '-radio'" [value]="item"
-                   [(ngModel)]="selection.currentSingle" [checked]="selection.currentSingle === item">
+                   [(ngModel)]="selection.currentSingle" [checked]="selection.currentSingle === item"
+                   [attr.aria-label]="commonStrings.select">
             <label for="{{radioId}}"></label>
           </div>
         </clr-dg-cell>
@@ -63,7 +70,10 @@ let nbRow: number = 0;
                      class="datagrid-expandable-caret datagrid-fixed-column">
           <ng-container *ngIf="expand.expandable">
             <button (click)="toggleExpand()" *ngIf="!expand.loading" type="button" class="datagrid-expandable-caret-button">
-              <clr-icon shape="caret" [attr.dir]="expand.expanded?'down':'right'" class="datagrid-expandable-caret-icon"></clr-icon>
+              <clr-icon shape="caret" 
+                class="datagrid-expandable-caret-icon"
+                [attr.dir]="expand.expanded ? 'down' : 'right'"
+                [attr.title]="expand.expanded ? commonStrings.collapse : commonStrings.expand"></clr-icon>
             </button>
             <div class="spinner spinner-sm" *ngIf="expand.loading"></div>
           </ng-container>
@@ -101,7 +111,8 @@ export class ClrDatagridRow<T = any> implements AfterContentInit {
     public rowActionService: RowActionService,
     public globalExpandable: ExpandableRowsCount,
     public expand: Expand,
-    public hideableColumnService: HideableColumnService
+    public hideableColumnService: HideableColumnService,
+    public commonStrings: ClrCommonStrings
   ) {
     this.id = 'clr-dg-row' + nbRow++;
     this.radioId = 'clr-dg-row-rd' + nbRow++;

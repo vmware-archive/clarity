@@ -12,6 +12,7 @@ import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { CustomFilter } from './providers/custom-filter';
 import { FiltersProvider, RegisteredFilter } from './providers/filters';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
+import { ClrCommonStrings } from '../../utils/i18n';
 
 /**
  * Custom filter that can be added in any column to override the default object property string filter.
@@ -32,10 +33,8 @@ import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
             <div class="datagrid-filter">
                 <!-- FIXME: this whole filter part needs a final design before we can try to have a cleaner DOM -->
                 <div class="datagrid-filter-close-wrapper">
-                    <button type="button" class="close" 
-                        aria-label="Close" (click)="open = false"
-                        type="button">
-                        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                    <button type="button" class="close" (click)="open = false">
+                        <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
                     </button>
                 </div>
     
@@ -46,7 +45,7 @@ import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 })
 export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>>
   implements CustomFilter {
-  constructor(_filters: FiltersProvider<T>) {
+  constructor(_filters: FiltersProvider<T>, public commonStrings: ClrCommonStrings) {
     super(_filters);
   }
 

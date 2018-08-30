@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 
 import { ClrAlert } from './alert';
 import { MultiAlertService } from './providers/multi-alert.service';
+import { ClrCommonStrings } from '../../utils/i18n';
 
 @Component({
   selector: 'clr-alerts-pager',
@@ -45,7 +46,7 @@ export class ClrAlertsPager implements OnInit, OnDestroy {
 
   @Output('clrCurrentAlertIndexChange') currentAlertIndexChange = new EventEmitter<number>();
 
-  constructor(public multiAlertService: MultiAlertService) {}
+  constructor(public multiAlertService: MultiAlertService, public commonStrings: ClrCommonStrings) {}
 
   ngOnInit() {
     this.multiAlertServiceChanges = this.multiAlertService.changes.subscribe(index => {

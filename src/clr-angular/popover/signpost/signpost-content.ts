@@ -9,6 +9,7 @@ import { AbstractPopover } from '../common/abstract-popover';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
 
 import { SIGNPOST_POSITIONS } from './signpost-positions';
+import { ClrCommonStrings } from '../../utils/i18n';
 
 // aka where the arrow / pointer is at in relation to the anchor
 const POSITIONS: string[] = [
@@ -32,8 +33,8 @@ const POSITIONS: string[] = [
         <div class="signpost-flex-wrap">
             <div class="popover-pointer"></div>
             <div class="signpost-content-header">
-                <button type="button" class="signpost-action close" aria-label="Close" (click)="close()">
-                    <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                <button type="button" class="signpost-action close" (click)="close()">
+                    <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
                 </button>
             </div>
             <div class="signpost-content-body">
@@ -48,16 +49,20 @@ export class ClrSignpostContent extends AbstractPopover {
     injector: Injector,
     @Optional()
     @Inject(POPOVER_HOST_ANCHOR)
-    parentHost: ElementRef
+    parentHost: ElementRef,
+    commonStrings: ClrCommonStrings
   ) {
     if (!parentHost) {
       throw new Error('clr-signpost-content should only be used inside of a clr-signpost');
     }
     super(injector, parentHost);
+    this.commonStrings = commonStrings;
     // Defaults
     this.position = 'right-middle';
     this.closeOnOutsideClick = true;
   }
+
+  commonStrings: ClrCommonStrings;
 
   /**********
    *

@@ -23,7 +23,7 @@ import { ControlClassService } from '../common/providers/control-class.service';
         <div class="clr-control-container" [ngClass]="controlClass()">
             <div class="clr-input-wrapper">
                 <ng-content select="[clrInput]"></ng-content>
-                <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
             </div>
             <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
             <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>

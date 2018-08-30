@@ -19,7 +19,7 @@ describe('ClrAlerts pager component', function() {
 
     beforeEach(() => {
       service = new MultiAlertService();
-      component = new ClrAlertsPager(service);
+      component = new ClrAlertsPager(service, {});
     });
 
     afterEach(() => {

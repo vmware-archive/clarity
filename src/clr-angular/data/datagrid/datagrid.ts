@@ -34,6 +34,7 @@ import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 import { StateProvider } from './providers/state.provider';
 import { DatagridRenderOrganizer } from './render/render-organizer';
+import { ClrCommonStrings } from '../../utils/i18n';
 
 @Component({
   selector: 'clr-datagrid',
@@ -62,7 +63,8 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
     public expandableRows: ExpandableRowsCount,
     public selection: Selection<T>,
     public rowActionService: RowActionService,
-    private stateProvider: StateProvider<T>
+    private stateProvider: StateProvider<T>,
+    public commonStrings: ClrCommonStrings
   ) {}
 
   /* reference to the enum so that template can access */

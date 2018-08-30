@@ -15,17 +15,22 @@ import { DateIOService } from './providers/date-io.service';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
+import { ClrCommonStrings } from '../../utils/i18n';
 
 @Component({
   selector: 'clr-date-container',
   template: `
         <ng-content></ng-content>
+        <!--
+          Isn't this button supposed to be aria-hidden="true"? 
+          I thought we decided screenreaders just typed the date in.
+        -->
         <button
             type="button"
             class="datepicker-trigger"
             (click)="toggleDatepicker($event)"
             *ngIf="isEnabled">
-            <clr-icon shape="calendar" class="datepicker-trigger-icon"></clr-icon>
+            <clr-icon shape="calendar" class="datepicker-trigger-icon" [attr.title]="commonStrings.open"></clr-icon>
         </button>
         <clr-datepicker-view-manager *clrIfOpen clrFocusTrap></clr-datepicker-view-manager>
     `,
@@ -50,7 +55,8 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
     private _ifOpenService: IfOpenService,
     private _dateNavigationService: DateNavigationService,
     private _datepickerEnabledService: DatepickerEnabledService,
-    private dateFormControlService: DateFormControlService
+    private dateFormControlService: DateFormControlService,
+    public commonStrings: ClrCommonStrings
   ) {
     this._sub = this._ifOpenService.openChange.subscribe(open => {
       if (open) {

@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, QueryList, TemplateRef, ViewChildren } from '@angular/core';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 import { ClrDatagridColumnToggle } from './datagrid-column-toggle';
 import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
@@ -44,7 +45,7 @@ export default function(): void {
       beforeEach(function() {
         hideableColumnService = new HideableColumnService();
         columnToggleButtons = new ColumnToggleButtonsService();
-        component = new ClrDatagridColumnToggle(hideableColumnService, columnToggleButtons);
+        component = new ClrDatagridColumnToggle(hideableColumnService, columnToggleButtons, {});
       });
 
       it('gets a list of hideable columns from the HideableColumnService', function() {
@@ -155,9 +156,7 @@ export default function(): void {
         iconBtn.click();
         context.detectChanges();
 
-        const renderedTemplates = context.clarityElement.querySelectorAll(
-          '.switch-content > li > clr-checkbox > label'
-        );
+        const renderedTemplates = context.clarityElement.querySelectorAll('.switch-content label');
 
         // Test the init properly
         expect(hideableColumns.length).toBe(renderedTemplates.length);
@@ -171,9 +170,7 @@ export default function(): void {
         hideableColumnService.updateColumnList(updatedColumns);
         context.detectChanges();
 
-        const updatedRenderedTemplates = context.clarityElement.querySelectorAll(
-          '.switch-content > li > clr-checkbox > label'
-        );
+        const updatedRenderedTemplates = context.clarityElement.querySelectorAll('.switch-content label');
 
         expect(updatedColumns.length).toBe(updatedRenderedTemplates.length);
 
@@ -182,29 +179,34 @@ export default function(): void {
         }
       });
 
-      it('toggles any hideable column when clicked', function() {
-        const hideableColumns: DatagridHideableColumnModel[] = [];
-        let nbCol: number = 0;
-        const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
+      it(
+        'toggles any hideable column when clicked',
+        fakeAsync(function() {
+          const hideableColumns: DatagridHideableColumnModel[] = [];
+          let nbCol: number = 0;
+          const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
 
-        context.testComponent.templates.forEach(col => {
-          hideableColumns.push(new DatagridHideableColumnModel(col, `dg-col-${nbCol}`, false));
-          nbCol++;
-        });
+          context.testComponent.templates.forEach(col => {
+            hideableColumns.push(new DatagridHideableColumnModel(col, `dg-col-${nbCol}`, false));
+            nbCol++;
+          });
 
-        hideableColumnService.updateColumnList(hideableColumns);
-        iconBtn.click();
-        context.detectChanges();
+          hideableColumnService.updateColumnList(hideableColumns);
+          iconBtn.click();
+          context.detectChanges();
+          // Thank you asynchronous [ngModel]...
+          tick();
 
-        const testColumn: DatagridHideableColumnModel = hideableColumns[0];
-        expect(testColumn.hidden).toBe(false);
+          const testColumn: DatagridHideableColumnModel = hideableColumns[0];
+          expect(testColumn.hidden).toBe(false);
 
-        const col0Clicker = context.clarityElement.querySelector('.switch-content > li > clr-checkbox > input');
-        col0Clicker.click();
-        expect(testColumn.hidden).toBe(true);
-        col0Clicker.click();
-        expect(testColumn.hidden).toBe(false);
-      });
+          const col0Clicker = context.clarityElement.querySelector('.switch-content input[type="checkbox"]');
+          col0Clicker.click();
+          expect(testColumn.hidden).toBe(true);
+          col0Clicker.click();
+          expect(testColumn.hidden).toBe(false);
+        })
+      );
 
       it('shows all of the hidden columns', function() {
         const hideableColumns: DatagridHideableColumnModel[] = [];
@@ -220,7 +222,7 @@ export default function(): void {
         iconBtn.click();
         context.detectChanges();
 
-        const columnCheckboxes = context.clarityElement.querySelectorAll('.switch-content > li > clr-checkbox > input');
+        const columnCheckboxes = context.clarityElement.querySelectorAll('.switch-content input[type="checkbox"]');
         const selectAll = context.clarityElement.querySelector('.switch-footer > div > button');
         for (let i = 0; i > columnCheckboxes.length; i++) {
           const checkbox = columnCheckboxes[i];
@@ -238,29 +240,36 @@ export default function(): void {
         expect(selectAll.disabled).toBe(true);
       });
 
-      it('knows when there is only one column showing', function() {
-        const hideableColumns: DatagridHideableColumnModel[] = [];
-        let nbCol: number = 0;
-        const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
+      it(
+        'knows when there is only one column showing',
+        fakeAsync(function() {
+          const hideableColumns: DatagridHideableColumnModel[] = [];
+          let nbCol: number = 0;
+          const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
 
-        context.testComponent.templates.forEach(col => {
-          hideableColumns.push(new DatagridHideableColumnModel(col, `dg-col-${nbCol}`, true));
-          nbCol++;
-        });
+          context.testComponent.templates.forEach(col => {
+            hideableColumns.push(new DatagridHideableColumnModel(col, `dg-col-${nbCol}`, true));
+            nbCol++;
+          });
 
-        const showing: TemplateRef<any> = context.testComponent.templates.first;
-        hideableColumns.push(new DatagridHideableColumnModel(showing, `dg-col-${nbCol}`, false));
+          const showing: TemplateRef<any> = context.testComponent.templates.first;
+          hideableColumns.push(new DatagridHideableColumnModel(showing, `dg-col-${nbCol}`, false));
 
-        hideableColumnService.updateColumnList(hideableColumns);
-        iconBtn.click();
-        context.detectChanges();
+          hideableColumnService.updateColumnList(hideableColumns);
+          iconBtn.click();
+          context.detectChanges();
+          // Thank you asynchronous [ngModel]...
+          tick();
 
-        const columnCheckboxes = context.clarityElement.querySelectorAll('.switch-content > li > clr-checkbox > input');
-        expect(columnCheckboxes[columnCheckboxes.length - 1].disabled).toBe(true);
-        columnCheckboxes[0].click();
-        context.detectChanges();
-        expect(columnCheckboxes[columnCheckboxes.length - 1].disabled).toBe(false);
-      });
+          const columnCheckboxes = context.clarityElement.querySelectorAll('.switch-content input[type="checkbox"]');
+          expect(columnCheckboxes[columnCheckboxes.length - 1].disabled).toBe(true);
+          columnCheckboxes[0].click();
+          context.detectChanges();
+          // Thank you asynchronous [ngModel]...
+          tick();
+          expect(columnCheckboxes[columnCheckboxes.length - 1].disabled).toBe(false);
+        })
+      );
 
       it('shows the default buttons', function() {
         const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');

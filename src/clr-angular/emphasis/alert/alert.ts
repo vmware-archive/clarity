@@ -8,13 +8,20 @@ import { ChangeDetectorRef, Component, EventEmitter, Input, Optional, Output } f
 // providers
 import { AlertIconAndTypesService } from './providers/icon-and-types.service';
 import { MultiAlertService } from './providers/multi-alert.service';
+import { ClrCommonStrings } from '../../utils/i18n';
 
-@Component({ selector: 'clr-alert', providers: [AlertIconAndTypesService], templateUrl: './alert.html' })
+@Component({
+  selector: 'clr-alert',
+  providers: [AlertIconAndTypesService],
+  templateUrl: './alert.html',
+  styles: [':host { display: block; }'],
+})
 export class ClrAlert {
   constructor(
     public iconService: AlertIconAndTypesService,
     public cdr: ChangeDetectorRef,
-    @Optional() public multiAlertService: MultiAlertService
+    @Optional() public multiAlertService: MultiAlertService,
+    public commonStrings: ClrCommonStrings
   ) {}
 
   @Input('clrAlertSizeSmall') isSmall: boolean = false;

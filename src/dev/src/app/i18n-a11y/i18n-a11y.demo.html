@@ -1,0 +1,47 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<clr-alert clrAlertType="warning">
+  <div class="alert-item">
+      <span class="alert-text" lang="en">
+        In this demo, all screenreader-only titles and labels are in French. But VoiceOver is stupid, and it completely
+        ignores the page's language when reading buttons. Links and any other text are fine, it's just buttons.
+      </span>
+  </div>
+</clr-alert>
+
+<p>
+  <clr-button-group>
+    <clr-button>1</clr-button>
+    <clr-button>2</clr-button>
+    <clr-button>3</clr-button>
+    <clr-button [clrInMenu]="true">4</clr-button>
+    <clr-button [clrInMenu]="true">5</clr-button>
+    <clr-button [clrInMenu]="true">6</clr-button>
+  </clr-button-group>
+</p>
+
+<clr-datagrid [(clrDgSelected)]="selected">
+  <clr-dg-column>ID Utilisateur</clr-dg-column>
+  <clr-dg-column>Nom</clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn>
+      Date de création
+    </ng-container>
+  </clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    Utilisateurs {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+    sur {{users.length}}
+    <clr-dg-pagination #pagination [clrDgTotalItems]="users.length"></clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

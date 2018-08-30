@@ -130,6 +130,9 @@ module.exports = function(karma) {
       // "Edge",
       // "IE",
     ],
+    // to avoid DISCONNECTED messages
+    browserDisconnectTimeout: 10000, // default 2000
+    browserDisconnectTolerance: 5, // default 0
     browserNoActivityTimeout: 100000,
     port: 9090,
     runnerPort: 9191,

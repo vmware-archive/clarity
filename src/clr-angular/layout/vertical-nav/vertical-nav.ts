@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { VerticalNavGroupRegistrationService } from './providers/vertical-nav-group-registration.service';
 import { VerticalNavIconService } from './providers/vertical-nav-icon.service';
 import { VerticalNavService } from './providers/vertical-nav.service';
+import { ClrCommonStrings } from '../../utils/i18n';
 
 @Component({
   selector: 'clr-vertical-nav',
@@ -57,7 +58,8 @@ export class ClrVerticalNav implements OnDestroy {
   constructor(
     private _navService: VerticalNavService,
     private _navIconService: VerticalNavIconService,
-    private _navGroupRegistrationService: VerticalNavGroupRegistrationService
+    private _navGroupRegistrationService: VerticalNavGroupRegistrationService,
+    public commonStrings: ClrCommonStrings
   ) {
     this._sub = this._navService.collapsedChanged.subscribe(value => {
       this._collapsedChanged.emit(value);

@@ -16,6 +16,7 @@ import { ControlIdService } from '../common/providers/control-id.service';
 import { FocusService } from '../common/providers/focus.service';
 import { LayoutService } from '../common/providers/layout.service';
 import { NgControlService } from '../common/providers/ng-control.service';
+import { ClrCommonStrings } from '../../utils/i18n';
 
 /* tslint:disable-next-line:variable-name */
 export const ToggleService = new InjectionToken<any>(undefined);
@@ -33,10 +34,18 @@ export function ToggleServiceProvider() {
       <div class="clr-input-wrapper">
         <div class="clr-input-group" [class.clr-focus]="focus">
           <ng-content select="[clrPassword]"></ng-content>
-          <clr-icon shape="eye" *ngIf="!show && clrToggle" class="clr-input-group-icon-action" (click)="toggle()"></clr-icon>
-          <clr-icon shape="eye-hide" *ngIf="show && clrToggle" class="clr-input-group-icon-action" (click)="toggle()"></clr-icon>
+          <clr-icon *ngIf="!show && clrToggle"
+            shape="eye" 
+            class="clr-input-group-icon-action"
+            [attr.title]="commonStrings.show"
+            (click)="toggle()"></clr-icon>
+          <clr-icon *ngIf="show && clrToggle" 
+            shape="eye-hide"
+            class="clr-input-group-icon-action"
+            [attr.title]="commonStrings.hide"
+            (click)="toggle()"></clr-icon>
         </div>
-        <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
       </div>
       <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
       <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
@@ -81,7 +90,8 @@ export class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
     @Optional() private layoutService: LayoutService,
     private controlClassService: ControlClassService,
     public focusService: FocusService,
-    @Inject(ToggleService) private toggleService: BehaviorSubject<boolean>
+    @Inject(ToggleService) private toggleService: BehaviorSubject<boolean>,
+    public commonStrings: ClrCommonStrings
   ) {
     this.subscriptions.push(
       this.ifErrorService.statusChanges.subscribe(control => {

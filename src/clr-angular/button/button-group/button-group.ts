@@ -9,6 +9,7 @@ import { Component, ContentChildren, ElementRef, HostListener, Input, QueryList 
 import { Point } from '../../popover/common/popover';
 import { CLR_MENU_POSITIONS } from '../../popover/dropdown/menu-positions';
 import { ButtonInGroupService } from '../providers/button-in-group.service';
+import { ClrCommonStrings } from '../../utils/i18n';
 
 import { ClrButton } from './button';
 
@@ -21,7 +22,11 @@ import { ClrButton } from './button';
 export class ClrButtonGroup {
   @ContentChildren(ClrButton) buttons: QueryList<ClrButton>;
 
-  constructor(public buttonGroupNewService: ButtonInGroupService, private elementRef: ElementRef) {}
+  constructor(
+    public buttonGroupNewService: ButtonInGroupService,
+    private elementRef: ElementRef,
+    public commonStrings: ClrCommonStrings
+  ) {}
 
   inlineButtons: ClrButton[] = [];
   menuButtons: ClrButton[] = [];

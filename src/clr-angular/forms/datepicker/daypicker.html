@@ -9,13 +9,13 @@
     </div>
     <div class="calendar-switchers">
         <button class="calendar-btn switcher" type="button" (click)="previousMonth()">
-            <clr-icon shape="angle" dir="left"></clr-icon>
+            <clr-icon shape="angle" dir="left" [attr.title]="commonStrings.previous"></clr-icon>
         </button>
         <button class="calendar-btn switcher" type="button" (click)="currentMonth()">
-            <clr-icon shape="event"></clr-icon>
+            <clr-icon shape="event" [attr.title]="commonStrings.current"></clr-icon>
         </button>
         <button class="calendar-btn switcher" type="button" (click)="nextMonth()">
-            <clr-icon shape="angle" dir="right"></clr-icon>
+            <clr-icon shape="angle" dir="right" [attr.title]="commonStrings.next"></clr-icon>
         </button>
     </div>
 </div>

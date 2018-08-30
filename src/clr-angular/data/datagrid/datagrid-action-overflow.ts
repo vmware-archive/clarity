@@ -8,12 +8,13 @@ import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core
 import { Point } from '../../popover/common/popover';
 
 import { RowActionService } from './providers/row-action-service';
+import { ClrCommonStrings } from '../../utils/i18n';
 
 @Component({
   selector: 'clr-dg-action-overflow',
   template: `
         <button (click)="toggle($event)" type="button" class="datagrid-action-toggle" #anchor>
-            <clr-icon shape="ellipsis-vertical"></clr-icon>
+            <clr-icon shape="ellipsis-vertical" [attr.title]="commonStrings.rowActions"></clr-icon>
         </button>
         <ng-template [(clrPopoverOld)]="open" [clrPopoverOldAnchor]="anchor" [clrPopoverOldAnchorPoint]="anchorPoint"
                      [clrPopoverOldPopoverPoint]="popoverPoint">
@@ -27,7 +28,7 @@ export class ClrDatagridActionOverflow implements OnDestroy {
   public anchorPoint: Point = Point.RIGHT_CENTER;
   public popoverPoint: Point = Point.LEFT_CENTER;
 
-  constructor(private rowActionService: RowActionService) {
+  constructor(private rowActionService: RowActionService, public commonStrings: ClrCommonStrings) {
     this.rowActionService.register();
   }
 

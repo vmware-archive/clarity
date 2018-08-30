@@ -16,7 +16,8 @@
         </div>
         <clr-icon shape="caret"
                   class="nav-group-trigger-icon"
-                  [attr.dir]="(this.expanded) ? 'down' : 'right'">
+                  [attr.dir]="(this.expanded) ? 'down' : 'right'"
+                  [attr.title]="(this.expanded) ? commonStrings.collapse : commonStrings.expand">
         </clr-icon>
     </button>
 </div>

@@ -11,19 +11,20 @@ import { YearRangeModel } from './model/year-range.model';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { ViewManagerService } from './providers/view-manager.service';
+import { ClrCommonStrings } from '../../utils/i18n';
 
 @Component({
   selector: 'clr-yearpicker',
   template: `
         <div class="year-switchers">
             <button class="calendar-btn switcher" type="button" (click)="previousDecade()">
-                <clr-icon shape="angle" dir="left"></clr-icon>
+                <clr-icon shape="angle" dir="left" [attr.title]="commonStrings.previous"></clr-icon>
             </button>
             <button class="calendar-btn switcher" type="button" (click)="currentDecade()">
-                <clr-icon shape="event"></clr-icon>
+                <clr-icon shape="event" [attr.title]="commonStrings.current"></clr-icon>
             </button>
             <button class="calendar-btn switcher" type="button" (click)="nextDecade()">
-                <clr-icon shape="angle" dir="right"></clr-icon>
+                <clr-icon shape="angle" dir="right" [attr.title]="commonStrings.next"></clr-icon>
             </button>
         </div>
         <div class="years">
@@ -47,7 +48,8 @@ export class ClrYearpicker implements AfterViewInit {
     private _dateNavigationService: DateNavigationService,
     private _viewManagerService: ViewManagerService,
     private _datepickerFocusService: DatepickerFocusService,
-    private _elRef: ElementRef
+    private _elRef: ElementRef,
+    public commonStrings: ClrCommonStrings
   ) {
     this.yearRangeModel = new YearRangeModel(this.calendarYear);
     this._focusedYear = this.calendarYear;

@@ -8,7 +8,10 @@
         [class.on-collapse]="collapsed"
         (click)="toggleByButton()"
         *ngIf="collapsible">
-    <clr-icon shape="angle-double" class="nav-trigger-icon" [attr.dir]="(this.collapsed) ? 'right' : 'left'"></clr-icon>
+    <clr-icon shape="angle-double"
+              class="nav-trigger-icon"
+              [attr.dir]="(this.collapsed) ? 'right' : 'left'"
+              [attr.title]="(this.collapsed) ? commonStrings.expand : commonStrings.collapse"></clr-icon>
 </button>
 <!-- Click handler on .nav-content is bad but required :-( -->
 <div class="nav-content">

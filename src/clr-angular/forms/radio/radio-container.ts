@@ -24,7 +24,7 @@ import { NgControlService } from '../common/providers/ng-control.service';
         <ng-content select="clr-radio-wrapper"></ng-content>
       </div>
       <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
-      <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
       <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
     </div>
     `,

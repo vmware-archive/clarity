@@ -11,6 +11,7 @@ import { IfOpenService } from '../../utils/conditional/if-open.service';
 import { TabsService } from './providers/tabs.service';
 import { ClrTabLink } from './tab-link.directive';
 import { TABS_ID, TABS_ID_PROVIDER } from './tabs-id.provider';
+import { ClrCommonStrings } from '../../utils/i18n';
 
 @Component({
   selector: 'clr-tabs',
@@ -27,7 +28,9 @@ import { TABS_ID, TABS_ID_PROVIDER } from './tabs-id.provider';
                      (click)="toggleOverflow($event)">
                     <li role="presentation" class="nav-item">
                         <button class="btn btn-link nav-link dropdown-toggle" type="button" [class.active]="activeTabInOverflow">
-                            <clr-icon shape="ellipsis-horizontal" [class.is-info]="ifOpenService.open"></clr-icon>
+                            <clr-icon shape="ellipsis-horizontal"
+                              [class.is-info]="ifOpenService.open"
+                              [attr.title]="commonStrings.more"></clr-icon>
                         </button>
                     </li>
                     <!--tab links in overflow menu-->
@@ -54,7 +57,8 @@ export class ClrTabs implements AfterContentInit {
     public ifActiveService: IfActiveService,
     public ifOpenService: IfOpenService,
     public tabsService: TabsService,
-    @Inject(TABS_ID) public tabsId: number
+    @Inject(TABS_ID) public tabsId: number,
+    public commonStrings: ClrCommonStrings
   ) {}
 
   get activeTabInOverflow() {

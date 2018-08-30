@@ -7,7 +7,7 @@
 <div class="alerts-pager-control">
     <div class="alerts-page-down">
         <button class="alerts-pager-button" (click)="pageDown()">
-            <clr-icon shape="caret left"></clr-icon>
+            <clr-icon shape="caret left" [attr.title]="commonStrings.previous"></clr-icon>
         </button>
     </div>
     <div class="alerts-pager-text">
@@ -15,7 +15,7 @@
     </div>
     <div class="alerts-page-up">
         <button class="alerts-pager-button" (click)="pageUp()">
-            <clr-icon shape="caret right"></clr-icon>
+            <clr-icon shape="caret right" [attr.title]="commonStrings.next"></clr-icon>
         </button>
     </div>
 </div>

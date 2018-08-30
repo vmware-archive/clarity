@@ -5,6 +5,7 @@
  */
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, HostBinding, Input, OnInit, Optional, Output, SkipSelf } from '@angular/core';
+import { ClrCommonStrings } from '../../utils/i18n';
 
 @Component({
   selector: 'clr-stack-block',
@@ -21,7 +22,8 @@ import { Component, EventEmitter, HostBinding, Input, OnInit, Optional, Output, 
       <clr-icon shape="caret"
                 class="stack-block-caret"
                 *ngIf="expandable"
-                [attr.dir]="caretDirection"></clr-icon>
+                [attr.dir]="caretDirection"
+                [attr.title]="caretTitle"></clr-icon>
       <ng-content select="clr-stack-label"></ng-content>
     </dt>
     <dd class="stack-block-content">
@@ -88,7 +90,8 @@ export class ClrStackBlock implements OnInit {
   constructor(
     @SkipSelf()
     @Optional()
-    private parent: ClrStackBlock
+    private parent: ClrStackBlock,
+    public commonStrings: ClrCommonStrings
   ) {
     if (parent) {
       parent.addChild();
@@ -114,6 +117,10 @@ export class ClrStackBlock implements OnInit {
 
   get caretDirection(): string {
     return this.expanded ? 'down' : 'right';
+  }
+
+  get caretTitle(): string {
+    return this.expanded ? this.commonStrings.collapse : this.commonStrings.expand;
   }
 
   get role(): string {

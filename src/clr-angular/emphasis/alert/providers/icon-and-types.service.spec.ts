@@ -5,10 +5,13 @@
  */
 
 import { AlertIconAndTypesService } from './icon-and-types.service';
+import { ClrCommonStrings } from '../../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../../utils/i18n/common-strings.service';
 
 export default function(): void {
   describe('Alert Icon and Types Service', function() {
     let testMe: AlertIconAndTypesService;
+    let commonStrings: ClrCommonStrings;
 
     function testShape(alertType: string): string {
       return testMe.iconInfoFromType(alertType).shape;
@@ -18,8 +21,13 @@ export default function(): void {
       return testMe.iconInfoFromType(alertType).cssClass;
     }
 
+    function testTitle(alertType: string): string {
+      return testMe.iconInfoFromType(alertType).title;
+    }
+
     beforeEach(() => {
-      testMe = new AlertIconAndTypesService();
+      commonStrings = new ClrCommonStringsService();
+      testMe = new AlertIconAndTypesService(commonStrings);
     });
 
     afterEach(() => {
@@ -64,6 +72,14 @@ export default function(): void {
       });
     });
 
+    describe('alertIconTitle()', function() {
+      it('returns title based on alertType', function() {
+        testMe.alertType = 'warning';
+        expect(testMe.alertType).toBe('warning');
+        expect(testMe.alertIconTitle).toBe(commonStrings.warning);
+      });
+    });
+
     describe('iconInfoFromType()', function() {
       it('returns default shape as fallthrough', function() {
         expect(testShape(null)).toBe('info-circle');
@@ -75,12 +91,21 @@ export default function(): void {
         expect(testCssClass('ohai')).toBe('alert-info');
       });
 
+      it('returns info title as fallthrough', function() {
+        expect(testTitle(null)).toBe(commonStrings.info);
+        expect(testTitle('ohai')).toBe(commonStrings.info);
+      });
+
       it('returns warning icon', function() {
         expect(testShape('warning')).toBe('exclamation-triangle');
       });
 
       it('returns .alert-warning', function() {
         expect(testCssClass('warning')).toBe('alert-warning');
+      });
+
+      it('returns warning title', function() {
+        expect(testTitle('warning')).toBe(commonStrings.warning);
       });
 
       it('returns danger icon', function() {
@@ -91,6 +116,10 @@ export default function(): void {
         expect(testCssClass('danger')).toBe('alert-danger');
       });
 
+      it('returns danger title', function() {
+        expect(testTitle('danger')).toBe(commonStrings.danger);
+      });
+
       it('returns success icon', function() {
         expect(testShape('success')).toBe('check-circle');
       });
@@ -99,12 +128,20 @@ export default function(): void {
         expect(testCssClass('success')).toBe('alert-success');
       });
 
+      it('returns success title', function() {
+        expect(testTitle('success')).toBe(commonStrings.success);
+      });
+
       it('returns info icon', function() {
         expect(testShape('info')).toBe('info-circle');
       });
 
       it('returns .alert-info', function() {
         expect(testCssClass('info')).toBe('alert-info');
+      });
+
+      it('returns info title', function() {
+        expect(testTitle('info')).toBe(commonStrings.info);
       });
     });
 

@@ -403,6 +403,7 @@
         cursor: default;
         opacity: 1;
         line-height: inherit;
+        font-weight: 400;
       }
 
       input[type='checkbox'] + label {
@@ -890,7 +891,7 @@
         margin: 0;
         outline-offset: $clr-datagrid-compact-outline-offset;
       }
-      .datagrid-foot-select.checkbox input[type='checkbox'] + label {
+      .datagrid-foot-select input[type='checkbox'] + label {
         &::before,
         &::after {
           top: 0.11111rem;

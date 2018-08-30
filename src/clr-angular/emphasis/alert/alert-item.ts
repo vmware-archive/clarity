@@ -13,7 +13,9 @@ import { AlertIconAndTypesService } from './providers/icon-and-types.service';
   selector: '.alert-item:not(.static), clr-alert-item',
   template: `
         <div class="alert-icon-wrapper">
-            <clr-icon class="alert-icon" [attr.shape]="iconService.alertIconShape"></clr-icon>
+            <clr-icon class="alert-icon" 
+              [attr.shape]="iconService.alertIconShape" 
+              [attr.title]="iconService.alertIconTitle"></clr-icon>
         </div>
         <ng-content></ng-content>
     `,

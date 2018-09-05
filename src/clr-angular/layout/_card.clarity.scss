@@ -79,9 +79,10 @@
     //Bootstrap 4 List Groups
     .list-group-item {
       font-size: $card-text-fontsize;
+      background-color: $clr-card-bg-color;
       border-left-width: 0;
       border-right-width: 0;
-      border-color: $clr-light-gray;
+      border-color: $clr-card-border-color;
       padding: 0.5rem 0.75rem;
     }
 

@@ -1,0 +1,75 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Server-Driven datagrid</h2>
+
+<p>
+    When dealing with large amounts of data or heavy processing, a datagrid often has access the
+    currently displayed data only, requesting only the necessary pieces from the server. This is a
+    very common case that we fully support.
+</p>
+<p>
+    We expose events and hooks on all parts of the datagrid to make sure you can trigger any
+    requests you need based on precise user actions. But an important thing to note is that when
+    the server does handle pagination, it needs to also deal with sorting and filtering,
+    because all three are tightly coupled. In light of this, we decided to expose a single global
+    output <code class="clr-code">(clrDgRefresh)</code> that emits the current "state" of the
+    datagrid whenever it changes due to a user action or an external one. This state has the
+    following format:
+</p>
+<clr-code-snippet [clrCode]="examples.stateInterface" clrLanguage="typescript"></clr-code-snippet>
+<p>
+    It contains all the information you need to send to the server in order to get the slice of
+    data currently displayed. It even contains redundant information (
+    <code class="clr-code">page.to</code> and <code class="clr-code">page.size</code> for instance),
+    to make sure you have access to the most practical for you without extra processing.
+</p>
+<p>
+    One important thing to note is that since you don't have all the data available at once, you
+    cannot use the smart iterator
+    <code class="clr-code">*clrDgItems</code>: it would sort, filter and paginate a subset of the
+    data that has already gone through all that. So all you need to do is to go back to a simple
+    <code class="clr-code">*ngFor</code>, which we support.
+</p>
+<p>
+    Finally, since server calls are involved, we need some way of notifying the user that his
+    action has been acknowledged and that we are currently working on it. To this effect, we
+    provide an input <code class="clr-code">[clrDgLoading]</code> that you can use to display the
+    datagrid in a loading state, while fetching data.
+</p>
+
+<p>
+    Here is an example showcasing all this with a fake server latency of 500ms. It also
+    demonstrates how to adapt the state we emit when it does not match exactly your server's API:
+    in this example, the filters are re-formatted from an array to a map.
+</p>
+
+<clr-datagrid (clrDgRefresh)="refresh($event)" [clrDgLoading]="loading">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
+    <clr-dg-column [clrDgField]="'pokemon'">Pokemon</clr-dg-column>
+    <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+
+    <clr-dg-row *ngFor="let user of users">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{total}} users
+        <clr-dg-pagination #pagination [clrDgTotalItems]="total"></clr-dg-pagination>
+    </clr-dg-footer>
+</clr-datagrid>
+
+<clr-code-snippet [clrCode]="examples.serverDrivenTS" clrLanguage="typescript"></clr-code-snippet>
+<clr-code-snippet [clrCode]="examples.serverDrivenHTML" clrLanguage="html"></clr-code-snippet>

@@ -1,0 +1,30 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+    <ul id="demoTabs" class="nav" role="tablist">
+        <li role="presentation" class="nav-item">
+            <button id="tabDashboard" class="btn btn-link nav-link active" aria-controls="panelDashboard" aria-selected="true" type="button">Dashboard</button>
+        </li>
+        <li role="presentation" class="nav-item">
+            <button id="tabManagement" class="btn btn-link nav-link" aria-controls="panelManagement" aria-selected="false" type="button">Management</button>
+        </li>
+        <li role="presentation" class="nav-item">
+            <button id="tabCloud" class="btn btn-link nav-link" aria-controls="panelCloud" aria-selected="false" type="button">Cloud</button>
+        </li>
+    </ul>
+    <section id="panelDashboard" role="tabpanel" aria-labelledby="tabDashboard">
+        <p>You cannot switch between tabs in this static demo because it does not contain the JavaScript to handle this behavior. The demo is here to show the look of tabs and the DOM structure.</p>
+    </section>
+    <section id="panelManagement" role="tabpanel" aria-labelledby="tabManagement" aria-hidden="true">
+        <p>Content 2</p>
+    </section>
+    <section id="panelCloud" role="tabpanel" aria-labelledby="tabCloud" aria-hidden="true">
+        <p>Content 3</p>
+    </section>
+</div>
+
+<clr-code-snippet [clrCode]="example"></clr-code-snippet>

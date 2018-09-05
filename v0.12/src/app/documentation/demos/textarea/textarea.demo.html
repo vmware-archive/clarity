@@ -1,0 +1,171 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="summary">
+            Textareas are a popular form control for long form text input, and Clarity supports both a CSS only and Angular component. You may wish to review the general <a routerLink="forms">forms</a> documentation about form controls.
+        </h5>
+
+        <h2 id="forms-code-samples">Angular Textarea Component</h2>
+
+        <p>If you are using Angular, the recommended approach is to always use the <code class="clr-code">ClrTextarea</code> directive on your textareas to help manage the form control. By using <code class="clr-code">ClrTextarea</code>, you'll automatically be able to leverage built in validation, helper text, and layout features in forms.</p>
+
+        <div class="alert alert-info">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        The forms features described here are not part of the main <code class="clr-code">ClarityModule</code> in this release. You have to opt into them by including the additional <code class="clr-code">ClrFormsNextModule</code> in your module imports.
+                    </span>
+                    <div class="alert-actions">
+                        <a routerLink="forms">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4>Basic textarea</h4>
+
+        <p>This is the most basic way to create a textarea inside of a form. This is only if you don't have a need for a label or validation. You need to add <code class="clr-code">clrTextarea</code> to your textarea to wire up the directive. Notice, it is not necessary to add <code class="clr-code">type="text"</code> as it is handled automatically. It will only work if you have the control wired up with either a template driven form or reactive form.</p>
+        
+        <p></p>
+
+        <form clrForm>
+            <textarea clrTextarea [(ngModel)]="exampleOne" name="description"></textarea>
+        </form>
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="ngBasic"></clr-code-snippet>
+        
+        <h4>Labels</h4>
+
+        <p>For anything beyond a standalone textarea field, you'll need to wrap it with the <code class="clr-code">ClrTextareaContainer</code> component. This is required to contain all of the logic and validation details for the individual textarea control.</p>
+
+        <p>Then you can add a <code class="clr-code">label</code> element and it will automatically get laid out correctly in the form.</p>
+
+        <p></p>
+
+        <form clrForm>
+            <clr-textarea-container>
+                <label>Description</label>
+                <textarea clrTextarea [(ngModel)]="exampleTwo" name="description"></textarea>
+            </clr-textarea-container>
+        </form>
+
+        <p></p>
+        
+        <clr-code-snippet [clrCode]="ngLabel"></clr-code-snippet>
+        
+        <h4>Helper and error messages</h4>
+
+        <p>The textarea form control wires up with the validations placed on it, such as <code class="clr-code">required</code> or even custom built validators in Angular. Under the hood, it looks at the <code class="clr-code">NgControl</code> values to determine the control validitity, and display the helper text or error message accordingly.</p>
+        
+        <p>Note: the validation only displays an error after the user has left focus on a control. This is for better UX where the user doesn't see an error while they are still typing.</p>
+
+        <p></p>
+        
+        <form clrForm>
+            <clr-textarea-container>
+                <label>Label</label>
+                <textarea clrTextarea [(ngModel)]="exampleThree" name="description" required></textarea>
+                <clr-control-helper>Helper text</clr-control-helper>
+                <clr-control-error>You must provide a description!</clr-control-error>
+            </clr-textarea-container>
+        </form>
+
+        <p></p>
+        
+        <clr-code-snippet [clrCode]="ngHelpers"></clr-code-snippet>
+        
+
+
+
+        <h2 id="css-component">CSS Input Component</h2>
+        
+        <p>Inputs can be used without Angular, but without some of the automatic interactivity. If you intend to create your own components, here are the basic features you'll need to build out.</p>
+
+        <h4>Basic input</h4>
+        
+        <p>It is possible to display the input by simply having the input as a standalone element not inside of a form. This may be useful in simple cases where you don't need a full form and just an inline input.</p>
+
+        <p></p>
+
+        <form class="clr-form">
+            <div class="clr-control-container">
+                <textarea placeholder="Describe something" class="clr-textarea"></textarea>
+            </div>
+        </form>
+
+        <p></p>
+        
+        <clr-code-snippet [clrCode]="uiBasic"></clr-code-snippet>
+
+        <h4>Full input display</h4>
+
+        <p>Each form control has a <code class="clr-code">.clr-form-control</code> wrapper, as well as a specific DOM structure necessary to layout the form control as desired. This works with all layout options as well without needing to change the DOM structure in any way.</p>
+
+        <p></p>
+
+        <form class="clr-form">
+            <div class="clr-form-control">
+                <label for="textarea-basic" class="clr-control-label">Basic textarea</label>
+                <div class="clr-control-container">
+                    <div class="clr-textarea-wrapper">
+                        <textarea id="textarea-basic" placeholder="Enter value here" class="clr-textarea"></textarea>
+                        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                    </div>
+                    <span class="clr-subtext">Helper Text</span>
+                </div>
+            </div>
+        </form>
+
+        <p></p>
+        
+        <clr-code-snippet [clrCode]="uiFull"></clr-code-snippet>
+        
+        <h4>Error state</h4>
+
+        <p>To signify an error state, you need to add the <code class="clr-code">.clr-error</code> class to the <code class="clr-code">.clr-control-container</code> element. This will show the <code class="clr-code">.clr-validate-icon</code> and turn the <code class="clr-code">.clr-subtext</code> message to red. If you have helper text that needs to change to error content, you'll have to handle the hiding and showing of that content inside of the <code class="clr-code">.clr-subtext</code> element.</p>
+        
+        <p></p>
+
+        <form class="clr-form">
+            <div class="clr-form-control">
+                <label for="textarea-basic-error" class="clr-control-label">Basic textarea, error</label>
+                <div class="clr-control-container clr-error">
+                <div class="clr-textarea-wrapper">
+                    <textarea id="textarea-basic-error" placeholder="Enter value here" class="clr-textarea"></textarea>
+                    <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                </div>
+                <span class="clr-subtext">Helper Text</span>
+                </div>
+            </div>
+        </form>
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="uiError"></clr-code-snippet>
+
+
+
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Design Guidelines</h3>
+
+            <div class="alert alert-info">
+                <div class="alert-items">
+                    <div class="alert-item static">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                        </div>
+                        <span class="alert-text">
+                            The UX design guidelines documentation is currently a work in progress, and will be updated when they are ready.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </article>
+</clr-doc-wrapper>

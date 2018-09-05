@@ -1,0 +1,220 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article><h5 class="component-summary"
+                 id="the-clarity-color-palette-is-primarily-based-on-alignment-with-color-use-in-web-applications-and-support-for-accessibility">
+        <ul>
+            <li><a routerLink="." fragment="color-palette">Clarity Color Palette</a></li>
+            <li><a routerLink="." fragment="functional-colors">Functional Colors</a></li>
+            <li><a routerLink="." fragment="chart">Chart Color Schemes</a></li>
+        </ul>
+
+        <p>The Clarity color palette is a full spectrum of bold hues and neutrals to meet all your design needs.</p>
+    </h5>
+
+        <div id="design-guidelines">
+            <h3 id="color-palette">The Clarity Color Palette</h3>
+
+            <p>The Clarity color palette is aligned with color use in web applications and support for accessibility. 
+                The colors below constitute the expanded color palette for Clarity. Text colors displayed in light or 
+                dark tints represent Clarity's recommended accessible pairing with the color.</p>
+
+            <h4 class="top-margin-36">Base, Primary and Secondary Colors</h4>
+
+            <p>The bulleted color swatches indicate colors that are part of the Clarity base color palette. You will 
+                find these colors in use throughout Clarity's components and design recommendations.</p>
+
+            <p>The large color swatches represent Clarity primary colors, recommended for use as the main color for your
+                design. The remaining colors are considered secondary. They may be used for charts, graphs, 
+                illustrations and other areas that call for color accent.</p>
+
+            <clr-color-palette></clr-color-palette>
+
+            <h3 id="functional-colors">Functional Colors</h3>
+
+            <p>Clarity components use a set of colors to convey certain functions and meanings. These colors have been vetted
+            and tested to meet the accessibility standard for low vision.</p>
+
+            <clr-color-palette-functional></clr-color-palette-functional>
+
+            <h3 id="guidelines">Color Usage</h3>
+
+            <h4 class="top-margin-36">Base Colors</h4>
+
+            <p>Colors used in Clarity's components and design recommendations.</p>
+
+            <ul class="list">
+                <li>Neutral colors are for text and backgrounds.</li>
+                <li>Action colors are for clickable items, such as buttons and links. Action Blue is reserved for 
+                    buttons and links.
+                </li>
+                <li>Stoplight colors are for indicating error conditions, warnings, and successes. Significant colors
+                    include: Stoplight Green for positive actions; Stoplight Red for warnings and errors.
+                </li>
+            </ul>
+
+            <h3>Choosing Colors</h3>
+
+            <h4 class="top-margin-36">Text Contrast</h4>
+
+            <p class="top-margin-18">Each color swatch in the palette is labeled with a black or white letter A to 
+                indicate its accessibility on the background color. Other text colors should be tested for contrast 
+                using an online contrast checker to make sure it passes the WCAG AA requirement for accessibility.</p>
+
+            <h4 class="top-margin-36">Charting Colors</h4>
+
+            <p class="top-margin-18">The large secondary palette allows for distinguishable markers in charts and 
+                graphs. With charts, it’s important to choose colors that have clear contrast for easy readability. The 
+                more colors that are used, the harder it is to distinguish each marker. For this reason, we recommend a 
+                maximum of six colors per chart.</p>
+
+            <h4 class="top-margin-36">Colorblind Accessibility</h4>
+
+            <p class="top-margin-18">It’s a good idea to test the color scheme you plan to use with a colorblind 
+                simulation app, such as Color Oracle. Alternatively, Adobe Photoshop and Illustrator come with a 
+                colorblind proofing view. You can use the simulation to adjust your color combinations to be 
+                accessible. In the example below, the image on right simulates how a person with colorblindness 
+                (Deuteranopia) would see the image on the left.</p>
+
+            <section class="vertical-padding-12">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <img src="assets/images/documentation/color/normal_vision_donut.png" alt="Normal vision"/>
+                    </div>
+                    <div class="col-xs-6">
+                        <img src="assets/images/documentation/color/colorblind_simulation_donut.png"
+                            alt="Colorblind simulation"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="vertical-padding-12">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <p class="p1">
+                            Some examples of color pairs that are difficult to distinguish for those with 
+                            colorblindness:
+                        </p>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <img src="assets/images/documentation/color/difficult_color_pairs_for_colorblindness.png"
+                            alt="difficult color pairs for colorblindness"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="vertical-padding-18">
+                <p class="top-margin-12">If these combinations can’t be avoided, leverage use of light and dark values. 
+                    For instance, Red and green both appear as brown to someone with red-green colorblindness. But a 
+                    light green paired with a dark red would be distinguishable in value.</p>
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <figure>
+                            <img src="assets/images/documentation/color/red_green_do.png" alt="Do"/>
+                            <figcaption class="do">Do</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-xs-6">
+                        <figure>
+                            <img src="assets/images/documentation/color/red_green_dont.png" alt="Don't"/>
+                            <figcaption class="dont">Don't</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="vertical-padding-18">
+
+                <p class="top-margin-12">Using light and dark values also helps in showing a clear division between 
+                    fields. Follow a pattern of alternating placement of light and dark colors. A simple way to ensure 
+                    sufficient contrast is to use a palette that is monochromatic.</p>
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <figure>
+                            <img src="assets/images/documentation/color/light_dark_do.png" alt="Do"/>
+                            <figcaption class="do">Do</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-xs-6">
+                        <figure>
+                            <img src="assets/images/documentation/color/light_light_dont.png" alt="Don't"/>
+                            <figcaption class="dont">Don't</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <p class="p1 no-margin">Create contrast by using a range of light and dark values.</p>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <p class="p1 no-margin">Use a palette with colors of similar values and saturation levels.</p>
+                    </div>
+                </div>
+            </section>
+
+            <h4 class="top-margin-36">Basic Tips</h4>
+
+            <p class="vertical-padding-12 no-margin">Avoid the temptation to use color as decoration. Colors should be 
+                used meaningfully to support the purpose of the chart.</p>
+
+            <ul class="list">
+                <li>A monochromatic palette is a great place to start. It ensures contrast in values and doesn’t 
+                    distract the user with a clashing color combination. If more colors are needed add a neutral or 
+                    almost neutral scale.
+                </li>
+                <li>When using multiple colors, select one as a main color, then choose some supporting
+                    colors-complementaries, analogous or neutrals.
+                </li>
+                <li>Complementary combinations such as blue and orange or yellow and purple work well together
+                    aesthetically. Analogous colors - colors next to each other on the color wheel - such as blue and 
+                    green also look nice.
+                </li>
+                <li>Test your colors for accessibility with a colorblind simulator.</li>
+                <li>Test your text and background color for accessibility with an online contrast checker.</li>
+                <li>Avoid using your project’s primary color or Clarity base colors in charts or graphics, e.g., the 
+                    blue bars in your bar chart should not be the same blue as the primary buttons.
+                </li>
+                <li>Optional: Choose a palette from the color scheme examples.</li>
+            </ul>
+
+
+            <h3 id="chart">Color Scheme Examples for Charts</h3>
+
+            <p class="top-margin-18">These color schemes are designed to address contrast and colorblind accessibility. 
+                Feel free to use them just as they are or as a starting point for a customized palette.</p>
+
+            <h4 class="top-margin-12 vertical-padding-18">Click color to display hex number</h4>
+            <h5 class="no-margin vertical-padding-12">Monochrome + neutral</h5>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let scheme of monochromeNeutralSchemes">
+                    <div class="svg-color-scheme-container">
+                        <clr-color-scheme [clrColorScheme]="scheme"></clr-color-scheme>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="no-margin vertical-padding-12">Multicolor</h5>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let scheme of multicolorSchemes">
+                    <div class="svg-color-scheme-container">
+                        <clr-color-scheme [clrColorScheme]="scheme"></clr-color-scheme>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Charting Example</h3>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="assets/images/documentation/color/charting_example.png" alt="Charting Example"/>
+                </div>
+            </div>
+
+        </div>
+    </article>
+
+</clr-doc-wrapper>

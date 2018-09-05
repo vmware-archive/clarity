@@ -1,0 +1,15 @@
+<div>
+    <p>Signposts should be used when you want to show a small amount of contextual help
+        of information without taking the user out of the current context. Use sparingly as a supplemental element and
+        not as a primary method of adding detail.
+        <clr-signpost>
+            <clr-signpost-content *clrIfOpen="openState">
+                <h3 style="margin-top: 0">Inline signpost</h3>
+                <p>Position: <code class="clr-code">right-middle</code></p>
+            </clr-signpost-content>
+        </clr-signpost>
+    </p>
+
+    <clr-code-snippet [clrLanguage]="'html'" [clrCode]="html"></clr-code-snippet>
+    <clr-code-snippet [clrLanguage]="'typescript'" [clrCode]="code"></clr-code-snippet>
+</div>

@@ -1,0 +1,91 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<h2>Selection batch action</h2>
+
+<p>
+    You can allow batch actions to be performed on selected rows in selectable datagrids. You can make the action
+    choices contextual to the selection by showing certain actions only if the selection meets the criteria.
+    Add a <code class="clr-code">clr-dg-action-bar</code> inside a <code class="clr-code">clr-datagrid</code>.
+    The content inside of it will be projected when one or more items is selected. We recommend that that you use
+    a button bar with small buttons as in the example.
+</p>
+
+<p>
+    In the following example, we simply display the names of the selected users, but since we
+    have access to the full objects, we could perform any operation we want on them.
+</p>
+
+<p>
+    Depending on the role of certain batch actions, you can choose to break button bars up into separate button groups.
+    To increase the visibility of the most important batch actions within each button group, we recommend organizing
+    batch actions in priority order from left to right.
+</p>
+
+<div class="card card-block">
+    <p class="card-text username-list">
+        Users to be added to group:
+        <em *ngIf="toAdd.length == 0">No user selected.</em>
+        <span class="username" *ngFor="let user of toAdd">{{user.name}}</span>
+    </p>
+
+    <p class="card-text username-list">
+        User to be edited:
+        <em *ngIf="!toEdit">No user selected.</em>
+        <span class="username" *ngIf="toEdit">{{toEdit.name}}</span>
+    </p>
+
+    <p class="card-text username-list">
+        Users to be deleted:
+        <em *ngIf="toDelete.length == 0">No user selected.</em>
+        <span class="username" *ngFor="let user of toDelete">{{user.name}}</span>
+    </p>
+
+    <p class="card-text username-list">
+        Users to be exported:
+        <em *ngIf="toExport.length == 0">No user selected.</em>
+        <span class="username" *ngFor="let user of toExport">{{user.name}}</span>
+    </p>
+</div>
+
+<clr-datagrid [(clrDgSelected)]="selected">
+    <clr-dg-action-bar>
+        <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-secondary" (click)="onAdd()">Add to group</button>
+            <button type="button" class="btn btn-sm btn-secondary" (click)="onDelete()">Delete</button>
+            <button type="button" class="btn btn-sm btn-secondary" (click)="onEdit()" *ngIf="selected.length == 1">Edit</button>
+        </div>
+        <div class="btn-group">
+            <clr-dropdown>
+                <button type="button" class="btn btn-sm btn-secondary" clrDropdownTrigger>
+                    Export
+                    <clr-icon shape="caret down"></clr-icon>
+                </button>
+                <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
+                    <button type="button" (click)="onExportAll()" clrDropdownItem>Export All</button>
+                    <button type="button" (click)="onExportSelected()" [disabled]="selected.length === 0" clrDropdownItem>Export Selected Items</button>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
+    </clr-dg-action-bar>
+
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<clr-code-snippet [clrCode]="mainExample" clrLanguage="html"></clr-code-snippet>

@@ -1,0 +1,284 @@
+$bl-0_25: baselineRem(0.25);
+$bl-0_5: baselineRem(0.5);
+$bl-0_75: baselineRem(0.75);
+$bl-1_5: baselineRem(1.5);
+$bl-0_833: baselineRem(0.83333);
+$bl-1_0: baselineRem(1);
+$bl-1_5: baselineRem(1.5);
+$bl-2_0: baselineRem(2);
+$bl-2_5: baselineRem(2.5);
+$bl-3_0: baselineRem(3);
+$bl-4_0: baselineRem(4);
+$clrweb-content-maxwidth: 900px;
+@mixin clarityWebBoxShadow {
+    box-shadow: 0 3px 0 0 #d7d7d7;
+}
+
+@mixin clarityHeaderBackground {
+    background-color: #002538;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+.spacious {
+    margin-top: $bl-2_0;
+}
+
+.cozy {
+    margin-top: $bl-1_5;
+}
+
+.cozy-sm {
+    margin-top: $bl-0_5;
+}
+
+p.cozy + p {
+    margin-top: 4px;
+}
+
+p.squish {
+    margin-top: 0;
+}
+
+ol.indent {
+    padding-left: $bl-2_0;
+    margin-top: $bl-1_0;
+    & li {
+        padding-bottom: $bl-0_5;
+    }
+}
+
+h6.indent + p.indent {
+    margin-top: 0;
+}
+
+.fully-wide {
+    padding: $bl-2_0 0;
+    text-align: center;
+}
+
+%killListStyles {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+
+.list-unstyled {
+    @extend %killListStyles;
+    & > li {
+        @extend %killListStyles;
+    }
+}
+
+.layout-default {
+    .main-container {
+        display: block;
+        height: auto;
+        min-height: 100vh;
+    }
+}
+
+.sidenav,
+.slider-nav {
+    .nav-group label {
+        font-weight: bold;
+        display: block;
+        width: 100%;
+    }
+    .nav-group label > a {
+        color: inherit;
+        text-decoration: none;
+        padding-left: $bl-0_5;
+        &:hover,
+        &:active,
+        &:focus {
+            color: inherit;
+            text-decoration: none;
+            background: #eee;
+        }
+        &.active {
+            background: #D9E4EA;
+            &:hover,
+            &:active,
+            &:focus {
+                background: #D9E4EA;
+            }
+        }
+    }
+    a.nav-link {
+        & > .nav-link-tag {
+            color: #313131;
+            display: inline-block;
+            padding-left: 8px;
+            font-size: 10px;
+            font-weight: 400;
+            vertical-align: top;
+            letter-spacing: 0.02em;
+            &.new {
+                color: #7e00b4;
+            }
+            &.updated {
+                color: #0094d2;
+            }
+        }
+    }
+}
+
+.slider-nav .nav-group label > a {
+    display: block;
+    width: auto;
+    margin-left: -1 * $bl-0_5;
+    margin-right: -1 * $bl-0_5;
+    border-radius: 3px 0 0 3px;
+}
+
+.valign {
+    display: table;
+    & > * {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+//Overriding PrismJS styles. This is in code.scss and not in code.clarity.scss because
+//we don't want to override the background in case someone chooses to use
+//another PrismJS theme.
+:not(pre) > code[class*="language-"],
+pre[class*="language-"],
+pre,
+code[class*="language-"] {
+    background: transparent;
+}
+
+@media (max-width: 991px) {
+    .layout-get-started,
+    .layout-components {
+        .content-area > section {
+            width: 100%;
+            padding-left: 0;
+        }
+    }
+}
+
+a.btn-primary {
+    color: #fafafa;
+    &:hover,
+    &:active,
+    &:visited,
+    &:focus {
+        color: #fff;
+    }
+}
+
+@media (min-width: 577px) {
+    ul#content_tabs {
+        .nav .nav-item {
+            margin-right: $bl-0_25;
+        }
+    }
+}
+
+//Center items in a grid
+//TODO: Remove this when the flex grid supports center and vertical alignment
+//Used in app-layout.md
+.center-demo-grid-item {
+    align-self: center;
+    text-align: center;
+}
+
+:not(.layout-home) {
+    .content-area section:first-of-type h1 {
+        margin-top: -1 * $bl-0_25;
+    }
+}
+
+.sidenav .sidenav-content {
+    margin-bottom: 0;
+    padding-bottom: $bl-1_0;
+}
+
+.header .branding .clarity-logo {
+    background-image: url(../assets/images/clarity_logo.svg);
+    margin-right: $bl-0_5 - 1;
+    min-width: none;
+    height: 36px;
+    width: 36px;
+}
+
+@media (max-width: 769px) {
+    html {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+    // landscape iPad
+    html {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+.layout-documentation,
+.layout-get-started,
+.layout-news {
+    .main-container .content-container .content-area {
+        padding-left: $bl-1_5;
+        padding-top: $bl-0_75;
+    }
+}
+
+// custom whitespace changes for website
+.layout-documentation,
+.layout-get-started,
+.layout-news {
+    h2,
+    h3 {
+        margin-top: 120px;
+    }
+    h2 + h3 {
+        margin-top: $bl-1_5;
+    }
+    h5 {
+        color: #000;
+        margin-top: 72px;
+    }
+    h4 {
+        margin-top: 72px;
+    }
+    h6 {
+        margin-top: 48px;
+    }
+    h5 + h6 {
+        margin-top: 36px;
+    }
+    h3 + h5,
+    h2 + h5,
+    h3 + h4,
+    h1 + h5 {
+        margin-top: $bl-1_0;
+    }
+    h6 + p {
+        margin-top: $bl-0_25;
+    }
+    pre {
+        // TODO: move this into the background style of the code-highlight
+        // component...
+        background: #FFF !important;
+    }
+}
+.btn.no-margin {
+    padding: 0;
+    margin: 0;
+    width: auto;
+    min-width: auto;
+}
+
+.margin-top-24 {
+    margin-top: 24px;
+}
+
+.margin-right-0_25 {
+    // Fix for badges demo in tree-view
+    margin-right: 0.25rem;
+}

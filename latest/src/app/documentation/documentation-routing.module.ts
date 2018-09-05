@@ -88,14 +88,6 @@ const documentationRoutes: Routes = [
                 }
             },
             {
-                path: "code-highlight",
-                loadChildren: "app/documentation/demos/code/code-highlight.demo.module#CodeHighlightDemoModule",
-                data: {
-                    bodyClass: "page-code-highlight",
-                    browserTitle: "Code Highlight"
-                }
-            },
-            {
                 path: "color",
                 loadChildren: "app/documentation/demos/color/color.demo.module#ColorDemoModule",
                 data: {

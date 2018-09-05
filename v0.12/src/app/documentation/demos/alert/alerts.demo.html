@@ -1,0 +1,597 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="alerts_header">Alerts are banners that communicate a message with a severity attached to it. They grab the user’s attention to provide critical information needed in context.</h5>
+
+        <div id="design-guidelines">
+            <h3 id="two_types">Two Main Types</h3>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="wrapper-thing">
+                                    <clr-alert clrAlertType="success" [clrAlertClosable]="false">
+                                        <clr-alert-item>
+                                            <span class="alert-text">
+                                                Your container has been created.
+                                            </span>
+                                        </clr-alert-item>
+                                    </clr-alert>
+
+                                    <clr-alert clrAlertType="info" [clrAlertClosable]="false">
+                                        <clr-alert-item>
+                                            <span class="alert-text">
+                                                You can customize your VM in the Settings Panel.
+                                            </span>
+                                        </clr-alert-item>
+                                    </clr-alert>
+
+                                    <clr-alert clrAlertType="warning" [clrAlertClosable]="false">
+                                        <clr-alert-item>
+                                            <span class="alert-text">
+                                                This feature is still under development.
+                                            </span>
+                                        </clr-alert-item>
+                                    </clr-alert>
+
+                                    <clr-alert clrAlertType="danger" [clrAlertClosable]="false">
+                                        <clr-alert-item>
+                                            <span class="alert-text">
+                                                Your license is about to expire.
+                                            </span>
+                                        </clr-alert-item>
+                                    </clr-alert>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Standard Alerts</h6>
+                            <p>
+                                Standard alerts are used in the context of an application <b>either in the content area itself or within components</b>.
+                            </p>
+                            <br>
+                            <p>
+                                There are <b>four different sub-types of standard alerts</b> success, info, warning, and error.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img app-alert-box">
+                                <clr-alert clrAlertType="success" [clrAlertAppLevel]="true"
+                                    [clrAlertClosable]="false">
+                                    <clr-alert-item>
+                                        <span class="alert-text">
+                                            Your container has been created.
+                                        </span>
+                                    </clr-alert-item>
+                                </clr-alert>
+
+                                <clr-alert clrAlertType="info" [clrAlertAppLevel]="true"
+                                    [clrAlertClosable]="false">
+                                    <clr-alert-item>
+                                        <span class="alert-text">
+                                            You can customize your VM in the Settings Panel.
+                                        </span>
+                                    </clr-alert-item>
+                                </clr-alert>
+
+                                <clr-alert clrAlertType="warning" [clrAlertAppLevel]="true"
+                                    [clrAlertClosable]="false">
+                                    <clr-alert-item>
+                                        <span class="alert-text">
+                                            This feature is still under development.
+                                        </span>
+                                    </clr-alert-item>
+                                </clr-alert>
+
+                                <clr-alert clrAlertType="danger" [clrAlertAppLevel]="true"
+                                    [clrAlertClosable]="false">
+                                    <clr-alert-item>
+                                        <span class="alert-text">
+                                            Your license is about to expire.
+                                        </span>
+                                    </clr-alert-item>
+                                </clr-alert>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>App-Level Alerts</h6>
+                            <p>
+                                App-level alerts are used in the <b>global context of an application</b>. They are placed at the very top of all content and navigation.
+                            </p>
+                            <p>
+                                There are <b>three different sub-types of app-level alerts</b> info, warning, and error.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="standard-alerts">Standard Alerts</h3>
+
+            <h5>Four different sub-types</h5>
+
+            <p>There are four different sub-types of standard alerts: error, warning, info, and success.</p>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img type-alert-box">
+                                <clr-alert clrAlertType="danger" [clrAlertClosable]="false">
+                                    <clr-alert-item>
+                                        <span class="alert-text">
+                                            Error
+                                        </span>
+                                        <div class="alert-actions">
+                                            <a class="alert-action" href="javascript://">Acknowledge</a>
+                                        </div>
+                                    </clr-alert-item>
+                                </clr-alert>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Error</h6>
+                            <p>
+                                Reserved for errors, malfunctions, as well as critical issues like license expiration.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img type-alert-box">
+                                <clr-alert clrAlertType="warning" [clrAlertClosable]="false">
+                                    <clr-alert-item>
+                                        <span class="alert-text">
+                                            Warning
+                                        </span>
+                                        <div class="alert-actions">
+                                            <a class="alert-action" href="javascript://">Acknowledge</a>
+                                        </div>
+                                    </clr-alert-item>
+                                </clr-alert>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Warning</h6>
+                            <p>
+                                Reserved for warnings: a message that needs the user attention and aknowledgment but might not cause errors.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img type-alert-box">
+                                <clr-alert clrAlertType="info" [clrAlertClosable]="false">
+                                    <clr-alert-item>
+                                        <span class="alert-text">
+                                            Info
+                                        </span>
+                                        <div class="alert-actions">
+                                            <a class="alert-action" href="javascript://">Acknowledge</a>
+                                        </div>
+                                    </clr-alert-item>
+                                </clr-alert>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Info</h6>
+                            <p>
+                                Provides info to users in context. Shouldn’t be overused to replace regular content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img type-alert-box">
+                                <clr-alert clrAlertType="success" [clrAlertClosable]="false">
+                                    <clr-alert-item>
+                                        <span class="alert-text">
+                                            Success
+                                        </span>
+                                        <div class="alert-actions">
+                                            <a class="alert-action" href="javascript://">Acknowledge</a>
+                                        </div>
+                                    </clr-alert-item>
+                                </clr-alert>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Success</h6>
+                            <p>
+                                Reserved to provide to a static persistent success message.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 id="order-in-context">Order in context</h4>
+
+            <p>
+                Standard alerts convey different levels of severity and urgency. They’re ordered by the urgency in which the user needs to pay attention to: error, warning, info, then success.
+            </p>
+            <p>
+                In the case there are multiple of each sub-type, all of them are shown before another sub-type is reached. For example, multiple errors are shown before the first warning is.
+            </p>
+
+            <h4 id="style">Style</h4>
+
+            <p>The consistency in the style of the standard alerts allows users to quickly identify them, pay attention to them, and acknowledge them.</p>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6>Typography</h6>
+                    <p>
+                        Depending on the sub-type of a standard alert, make sure to communicate a clear, concise, and actionable message.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6>Size</h6>
+                    <p>
+                        There are two sizes of standard alerts: default and compact. Use the compact alert only in places where vertical space is scarce and information density is needed. Cards provide a good example here.
+                    </p>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <clr-alert clrAlertType="info" [clrAlertClosable]="false">
+                                    <clr-alert-item>
+                                        <span class="alert-text">
+                                            Info
+                                        </span>
+                                        <div class="alert-actions">
+                                            <a class="alert-action" href="javascript://">Acknowledge</a>
+                                        </div>
+                                    </clr-alert-item>
+                                </clr-alert>
+                                <clr-alert clrAlertType="info" [clrAlertClosable]="false" [clrAlertSizeSmall]="true">
+                                    <clr-alert-item>
+                                        <span class="alert-text">
+                                            Compact Info
+                                        </span>
+                                    </clr-alert-item>
+                                </clr-alert>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 id="placement">Placement</h4>
+
+            <p>Standard alerts could be placed in multiple different contexts including inside of components.</p>
+
+            <h6>Modals</h6>
+
+            <div class="in-place-takeover">
+                <div class="clr-example">
+                    <div class="backdrop-example-container">
+                        <div *ngIf="!basic" style="margin: 0 auto; text-align: center">
+                            <button class="btn btn-outline btn-inverse" (click)="basic = true">Show modal</button>
+                        </div>
+                        <clr-modal [(clrModalOpen)]="basic" [clrModalStaticBackdrop]="true">
+                            <h3 class="modal-title">Deleting File</h3>
+                            <div class="modal-body">
+                                <clr-alert clrAlertType="danger" [clrAlertClosable]="false">
+                                    <clr-alert-item>
+                                        <span class="alert-text">
+                                            The file “mockups.sketch” is currently open and cannot be deleted.
+                                        </span>
+                                    </clr-alert-item>
+                                </clr-alert>
+                                <p>Are you sure you want to delete the file <b>“mockups.sketch”</b>?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-outline" type="button" (click)="basic = false">Keep File</button>
+                                <button class="btn btn-danger disabled" type="button">Delete</button>
+                            </div>
+                        </clr-modal>
+                    </div>
+                </div>
+            </div>
+
+            <p>
+                Alerts could appear within modals. It is recommended that no more than one alert appear within modal. Their function should not be to validate, validation should be done inline and closer to the error itself.
+            </p>
+
+            <p>&nbsp;</p>
+
+            <h6>Cards</h6>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <p>
+                        It is recommended to use concise language as you share an alert within a card. It is also recommended to use a compact-size alert. The focus of the alert should be on its content not on the alert appearing in it.
+                    </p>
+                    <p>
+                        It is also recommended to have an alert at the very top of a card, on top of its title. An alert is meant to attract the attention of the user.
+                    </p>
+                    <p>
+                        Using more than one alert within a card distracts the user and dilutes the importance of the alerts displayed.
+                    </p>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+
+                                <div class="card">
+                                    <div class="card-block">
+                                        <clr-alert clrAlertType="warning" [clrAlertClosable]="false"
+                                            [clrAlertSizeSmall]="true">
+                                            <clr-alert-item>
+                                                <span class="alert-text">
+                                                    Data might be outdated. Last update: 16 hours ago.
+                                                </span>
+                                            </clr-alert-item>
+                                        </clr-alert>
+                                        <div class="card-title" style="text-align: left;padding-top:4px">
+                                            Memory
+                                        </div>
+                                        <div style="width: 100%; padding-left: 10%; text-align: center">
+                                            <div style="margin-bottom:6px">
+                                                <span
+                                                    style="font-size: 28px;line-height: 28px;padding-right: 5px">
+                                                    10.05
+                                                </span>
+                                                <span>GB free</span>
+                                            </div>
+                                            <div class="progress success"
+                                                style="position: static;margin: 0;text-align: left;left: auto;">
+                                                <progress max="100" value="23" data-displayval="23%"
+                                                    style="position: static;display: block"></progress>
+                                            </div>
+                                            <div style="margin:8px 0 24px">
+                                                <span>
+                                                    1.94 GB used | 11.99 GB total
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer" style="text-align: left">
+                                        <button class="btn btn-sm btn-link">See All Statistics</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="app-level-alerts">App-Level Alerts</h3>
+
+            <h4>Three different subtypes</h4>
+
+            <p>There are three sub-types of app-level alerts: error, warning, and info.</p>
+
+            <div class="clrweb-DoxVersusBox">
+                <div class="clrweb-DoxVersusBox-pin">
+                    <clr-icon shape="pin"></clr-icon>
+                </div>
+                <div class="clrweb-DoxVersusBox-items">
+                    <div class="clrweb-DoxVersusBox-itemWrapper">
+                        <div class="clrweb-DoxVersusBox-item">
+                            <p><b>Why no success app-level alert?</b></p>
+                            <p>App-level alerts are global in nature. Reporting a success of an operation should either be communicated within context or as a notification message.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 id="order-in-context">Order in context</h4>
+
+            <p>App-level alerts follow the <b>same urgency order</b> as standard alerts: error, warning, and info.</p>
+
+            <h4 id="app-level-placement">Placement</h4>
+
+            <p>App-level alerts are placed at the very top of the global context. They should not be placed in any other configuration. Their purpose is to provide global alerts available and relating to the full context of the overall application.</p>
+
+            <div class="row" style="margin-top: 24px">
+                <div class="col-xs-12">
+                    <img alt="App-level alerts appear at the very top of your application" class="clrweb-Img" src="assets/images/documentation/alerts/app_level_placement.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="code-examples">
+            <h3 id="examples">Code &amp; Examples</h3>
+
+            <p id="alert-classes">Several classes and elements are required to implement the Clarity alert layout. A table of these classes and elements with a brief description of each follows:</p>
+
+            <clr-alert clrAlertType="danger" [clrAlertClosable]="false">
+                <clr-alert-item>
+                    <div class="alert-text">
+                        <div style="margin-bottom: 8px">The use of <code class="clr-code">.alert-item</code> in the <code class="clr-code">clr-alert</code> Angular component is deprecated. Try to use <code class="clr-code">clr-alert-item</code> instead.</div>
+                        <div style="margin-bottom: 8px">If your application uses a combination of <code class="clr-code">clr-alert</code> Angular components and hand-coded DOM alerts, you should put the <code class="clr-code">.static</code> class on your <code class="clr-code">.alert-item</code>  elements.</div>
+                        <div>Once <code class="clr-code">clr-alert</code> no longer recognizes <code class="clr-code">.alert-item</code> classnames as a subcomponent, it will no longer be an issue.</div>
+                    </div>
+                </clr-alert-item>
+            </clr-alert>
+
+            <table class="table table-vertical">
+                <tbody>
+                    <tr>
+                        <th style="width: 100px">.alert</th>
+                        <td>This class is a wrapper around <code class="clr-code">.alert-items</code> and the
+                <code class="clr-code">.close</code> button. Place the <code class="clr-code">.close</code> button before the alert items.</td>
+                    </tr>
+                    <tr>
+                        <th>.alert-items</th>
+                        <td>This class is a wrapper around one or more <code class="clr-code">.alert-item</code> elements.</td>
+                    </tr>
+                    <tr>
+                        <th>.alert-item</th>
+                        <td>This class is a wrapper around <code class="clr-code">.alert-text</code>, <code class="clr-code">.alert-icon-wrapper</code>, and <code class="clr-code">.alert-actions</code>.</td>
+                    </tr>
+                    <tr>
+                        <th>.alert-icon-wrapper</th>
+                        <td><code class="clr-code">.alert-icon-wrapper</code> contains a <code class="clr-code">clr-icon</code> with the classname <code class="clr-code">.alert-icon</code> applied to it. The icons used for the different alert types of success, danger, warning, and info are, respectively: <code class="clr-code">check-circle</code>, <code class="clr-code">exclamation-circle</code>, <code class="clr-code">exclamation-triangle</code>, and  <code class="clr-code">info-circle</code>.</td>
+                    </tr>
+                    <tr>
+                        <th>.alert-actions</th>
+                        <td><code class="clr-code">.alert-actions</code> can consist of dropdowns or links. Each action should extend the <code class="clr-code">.alert-action</code> class.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 id="types">Types</h3>
+
+            <p>Clarity has error, warning, information, and success alerts denoted by the following classes:</p>
+
+            <ul class="list">
+                <li>.alert-danger</li>
+                <li>.alert-warning</li>
+                <li>.alert-info</li>
+                <li>.alert-success</li>
+            </ul>
+
+            <clr-alert-demo-styles></clr-alert-demo-styles>
+
+            <h3 id="placement">Placement</h3>
+
+            <h5 id="alerts-in-the-content-area">Alerts in the Content Area</h5>
+            <clr-alert-demo-content-area></clr-alert-demo-content-area>
+
+            <h5 id="alerts-in-cards">Alerts in Cards</h5>
+            <clr-alert-demo-cards></clr-alert-demo-cards>
+
+            <h5 id="alerts-in-modals">Alerts in Modals</h5>
+            <clr-alert-demo-modals></clr-alert-demo-modals>
+
+            <h3 id="size">Size</h3>
+
+            <p>Use the <code class="clr-code">.alert-sm</code> class with <code class="clr-code">.alert</code> for an alert 24 pixels in height. The default is 36 pixels.</p>
+
+            <clr-alert-demo-sizes></clr-alert-demo-sizes>
+
+            <h3 id="app-level-alerts">App-Level Alerts</h3>
+
+            <h6 id="alert-app-level">.alert-app-level</h6>
+
+            <p>This class must be applied with <code class="clr-code">.alert</code> to render an app-level alert.</p>
+
+            <clr-alert-demo-app-level></clr-alert-demo-app-level>
+
+            <h2 id="angular-component">Angular Component</h2>
+
+            <h3 id="summary-of-options">Summary of Options</h3>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input</th>
+                    <th class="left hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[clrAlertClosable]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: true</div>
+                    </td>
+                    <td class="left hidden-xs-down">true, false</td>
+                    <td class="hidden-xs-down">true</td>
+                    <td class="left">If false, the alert will not be closable by clicking on the top-right "x".</td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[(clrAlertClosed)]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="left hidden-xs-down">true, false</td>
+                    <td class="hidden-xs-down">false</td>
+                    <td class="left">
+                        Two-way binding on the state of the alert: opened or closed.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrAlertType]</b>
+                        <div class="hidden-sm-up">Type: String</div>
+                        <div class="hidden-sm-up">Default:<br />"info"</div>
+                    </td>
+                    <td class="left hidden-xs-down">"info", "warning", "success" and "danger"</td>
+                    <td class="hidden-xs-down">"info"</td>
+                    <td class="left">Sets the type of the alert.</td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrAlertSizeSmall]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="left hidden-xs-down">true, false</td>
+                    <td class="hidden-xs-down">false</td>
+                    <td class="left">If true, renders a small alert.</td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrAlertIcon]</b>
+                        <div class="hidden-sm-up">Type: String</div>
+                        <div class="hidden-sm-up">Default: varies</div>
+                    </td>
+                    <td class="left hidden-xs-down">icon name as string</td>
+                    <td class="hidden-xs-down">varies</td>
+                    <td class="left">View <a routerLink="/icons">supported icons</a>.</td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrAlertAppLevel]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="left hidden-xs-down">true, false</td>
+                    <td class="hidden-xs-down">false</td>
+                    <td class="left">If true, renders an app-level alert.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h5 id="examples">Examples</h5>
+
+            <h6 id="clralertclosable-set-to-false-default-value-is-true">1. clrAlertClosable set to false. Default value is true.</h6>
+
+            <clr-alert-not-closable-demo-angular></clr-alert-not-closable-demo-angular>
+
+            <h6 id="clralerttype-set-to-alert-success">2. clrAlertType set to alert-success. Default value is alert-info. Accepts values same as the static alert type classes.</h6>
+
+            <clr-alert-success-demo-angular></clr-alert-success-demo-angular>
+
+            <h6 id="clralertsizesmall-set-to-true">3. clrAlertSizeSmall set to true. Default value is false.</h6>
+
+            <clr-alert-small-demo-angular></clr-alert-small-demo-angular>
+
+            <h6 id="binding-to-closedchange-event">4. Binding to the clrAlertClosedChange event.</h6>
+
+            <clr-alert-close-event-demo-angular></clr-alert-close-event-demo-angular>
+
+            <h6 id="applevelalert-set-to-true">5. clrAlertAppLevel set to true. Default is false.</h6>
+
+            <clr-alert-app-level-demo-angular></clr-alert-app-level-demo-angular>
+
+            <h6 id="applevelalert-pager">6. Multiple app level alerts can be displayed with previous and next buttons.</h6>
+
+            <clr-alert-app-level-alerts-demo-angular></clr-alert-app-level-alerts-demo-angular>
+
+        </div>
+    </article>
+</clr-doc-wrapper>

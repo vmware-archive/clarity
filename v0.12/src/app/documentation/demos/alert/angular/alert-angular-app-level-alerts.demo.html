@@ -1,0 +1,84 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+  <div class="clr-example">
+      <div class="main-container">
+          <clr-alerts>
+              <clr-alert [clrAlertType]="'info'" [clrAlertAppLevel]="true">
+                  <div class="alert-item">
+                      <span class="alert-text">
+                          View additional alerts using the pager
+                      </span>
+                      <div class="alert-actions">
+                          <button class="btn alert-action">Fix</button>
+                      </div>
+                  </div>
+              </clr-alert>
+              <clr-alert [clrAlertType]="'warning'" [clrAlertAppLevel]="true">
+                  <div class="alert-item">
+                      <span class="alert-text">
+                          Application level alerts should only be used for important messages.
+                      </span>
+                      <div class="alert-actions">
+                          <button class="btn alert-action">Fix</button>
+                      </div>
+                  </div>
+              </clr-alert>
+              <clr-alert [clrAlertType]="'danger'" [clrAlertAppLevel]="true">
+                  <div class="alert-item">
+                      <span class="alert-text">
+                          Don't add too many of these alerts!
+                      </span>
+                      <div class="alert-actions">
+                          <button class="btn alert-action">Fix</button>
+                      </div>
+                  </div>
+              </clr-alert>
+          </clr-alerts>
+          <header class="header header-6">
+              <div class="branding">
+                  <span class="title">Header</span>
+              </div>
+          </header>
+          <div class="content-container">
+              <div class="content-area">
+                  <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Delectus non beatae omnis esse quibusdam dolorum voluptatem
+                      reiciendis quaerat assumenda optio, porro expedita similique
+                      dolore quidem aliquam. Ullam, eaque enim nobis.
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div>
+<pre>
+<code clr-code-highlight="language-html">
+&lt;clr-alerts&gt;
+    &lt;clr-alert [clrAlertType]=&quot;'info'&quot; [clrAlertAppLevel]=&quot;true&quot;&gt;
+        &lt;div class=&quot;alert-item&quot;&gt;
+            &lt;span class=&quot;alert-text&quot;&gt;
+                This is the first app level alert.
+            &lt;/span&gt;
+            &lt;div class=&quot;alert-actions&quot;&gt;
+                &lt;button class=&quot;btn alert-action&quot;&gt;Fix&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/clr-alert&gt;
+    &lt;clr-alert [clrAlertType]=&quot;'danger'&quot; [clrAlertAppLevel]=&quot;true&quot;&gt;
+        &lt;div class=&quot;alert-item&quot;&gt;
+            &lt;span class=&quot;alert-text&quot;&gt;
+                This is a second app level alert.
+            &lt;/span&gt;
+            &lt;div class=&quot;alert-actions&quot;&gt;
+                &lt;button class=&quot;btn alert-action&quot;&gt;Fix&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/clr-alert&gt;
+&lt;/clr-alerts&gt;
+</code>
+</pre>
+  

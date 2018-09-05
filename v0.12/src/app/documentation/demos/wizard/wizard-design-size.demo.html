@@ -1,0 +1,76 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="row">
+    <div class="col-xs-12 col-sm-4">
+        <div class="clrweb-DoxMedia is-horizontal">
+            <div class="clrweb-DoxMedia-block is-colorblock">
+                <div class="clrweb-DoxMedia-img">
+                    M
+                </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+                <h6>Medium Modal</h6>
+                <div>Width: 576px</div>
+                <button type="button" class="btn btn-sm btn-link no-margin" (click)="openWizard('md')">Launch</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+        <div class="clrweb-DoxMedia is-horizontal">
+            <div class="clrweb-DoxMedia-block is-colorblock">
+                <div class="clrweb-DoxMedia-img">
+                    L
+                </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+                <h6>Large Modal</h6>
+                <div>Width: 864px</div>
+                <button type="button" class="btn btn-sm btn-link no-margin" (click)="openWizard('lg')">Launch</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+        <div class="clrweb-DoxMedia is-horizontal">
+            <div class="clrweb-DoxMedia-block is-colorblock">
+                <div class="clrweb-DoxMedia-img">
+                    XL
+                </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+                <h6>X-Large Modal</h6>
+                <div>Width: 1152px</div>
+                <button type="button" class="btn btn-sm btn-link no-margin" (click)="openWizard('xl')">Launch</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardSize]="size">
+    <clr-wizard-title>{{ textSize }} Wizard</clr-wizard-title>
+
+    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 1</ng-template>
+        <p>Content for step 1</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 2</ng-template>
+        <p>Content for step 2</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 3</ng-template>
+        <p>Content for step 3</p>
+    </clr-wizard-page>
+</clr-wizard>

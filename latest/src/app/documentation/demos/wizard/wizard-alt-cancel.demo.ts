@@ -6,7 +6,6 @@
 
 import { Component, ViewChild } from "@angular/core";
 import { ClrWizard } from "@clr/angular";
-import { CodeHighlight } from "@clr/angular";
 
 @Component({
     moduleId: module.id,
@@ -15,7 +14,6 @@ import { CodeHighlight } from "@clr/angular";
 })
 export class WizardAltCancelDemo {
     @ViewChild("wizard") wizard: ClrWizard;
-    @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
     open: boolean = false;
 
     public showCancelConfirm: boolean = false;

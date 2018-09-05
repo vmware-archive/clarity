@@ -1,0 +1,44 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Here is a progress bar at the very top of a card.</p>
+                    <div class="progress-block">
+                        <label>Label</label>
+                        <div class="progress-static">
+                            <div class="progress-meter" [attr.data-value]="value1"></div>
+                        </div>
+                    </div>
+                    <div class="progress-block">
+                        <label>Longer Label</label>
+                        <div class="progress-static">
+                            <div class="progress-meter" [attr.data-value]="value2"></div>
+                        </div>
+                    </div>
+                    <div class="progress-block">
+                        <label>Really, Really, Really Long Label</label>
+                        <div class="progress success">
+                            <progress value="{{value3}}" max="100" [attr.data-displayval]="value3 + '%'"></progress>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="progress-static top">
+                        <div class="progress-meter" data-value="33"></div>
+                    </div>
+                    <a href="javascript://" class="card-link">Click</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>

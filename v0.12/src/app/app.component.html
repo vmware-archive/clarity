@@ -1,0 +1,25 @@
+<clr-main-container>
+    <clr-header class="header-6">
+        <div class="branding">
+            <a href="{{environment.base}}/" class="logo-and-title">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">{{ productTitle }}</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav" [clr-nav-level]="1">
+            <a id="home-link" class="nav-link" href="{{environment.base}}/"><span class="nav-text">Home</span></a>
+            <a class="nav-link" routerLink="/" routerLinkActive="active"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="{{environment.base}}/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="{{environment.base}}/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="{{environment.base}}/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            <!-- watch/star widget from https://ghbtns.com/#original-watch-aka-star... apache 2 license. thanks, mdo! -->
+            <iframe class="github-btn" src="https://ghbtns.com/github-btn.html?user=vmware&repo=clarity&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+        </div>
+    </clr-header>
+
+    <router-outlet></router-outlet>
+
+</clr-main-container>

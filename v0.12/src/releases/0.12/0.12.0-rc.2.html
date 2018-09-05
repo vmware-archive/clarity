@@ -1,0 +1,44 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMWare, Inc. All Rights Reserved.
+  ~ This software is released under MIT License.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>
+            Input and form control validation components
+        </h6>
+        <p>
+            Angular input form control, which has built in validation support for template-driven or reactive forms. This is the first
+            of the upcoming Angular form controls. Documentation is pending for 0.12.
+        </p>
+    </li>
+    <li breaking-change>
+        <h6>Shape deprecations in Clarity Icons</h6>
+        <p>    
+            Clarity Icons v0.12 has deprecated some icons in their respective sets and moved to other sets:
+        </p>
+        <ul>
+            <li><code class="clr-code">wand</code> has been moved to "essential-shapes" from "media-shapes"</li>
+            <li><code class="clr-code">angle-double</code> has been moved to "core-shapes" from "essential-shapes"</li>
+            <li><code class="clr-code">calendar</code> and <code class="clr-code">event</code> have been moved to "core-shapes" from "social-shapes"</li>
+            <li><code class="clr-code">bar-chart</code> and <code class="clr-code">line-chart</code> have been moved to "chart-shapes" from "technology-shapes"</li>
+        </ul>
+    </li>
+</ul>
+
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Updated paths for theme SCSS files so developers can again use custom themes. Apps must now add
+        <code class="clr-code"><span class="nobr">--include-path=node_modules</span></code> to their SCSS build step to correctly build a custom theme. See Themes documentation for more details. (<a href="https://github.com/vmware/clarity/pull/2336"
+            target="_blank">#2336</a>)
+    </li>
+    <li bug-fix>
+        Fixed an issue where the Date Picker Output was not emitted when the user modified the Date Input manually.(<a href="https://github.com/vmware/clarity/pull/2334"
+            target="_blank">#2334</a>)
+    </li>
+</ul>

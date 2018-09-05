@@ -1,0 +1,147 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Expandable rows</h2>
+
+<p>
+    Use expandable rows when you have additional information for a row, or row cells that do not need to be shown at all
+    times. This helps minimize visual clutter. It also frees up the need of a second datagrid that gets updated with
+    details. This is sometimes called a master-detail or master-child pattern. Another use is replacing original row
+    data with a custom view or layout which includes most or all of the original row data. The expanded area can be
+    loaded with other components as well to fit your needs.
+</p>
+<p>
+    To make a row expandable, you need to put a <code class="clr-code">&lt;clr-dg-row-detail&gt;</code>
+    component inside your row, and add a <code class="clr-code">*clrIfExpanded</code> structural directive on it.
+    This directive doesn't take any input, it is here for 2 reasons: make sure the details are only instantiated once
+    they are needed, and make it very clear in <em>your</em> application templates that this part
+    of the DOM is not present at all times, but only when the row is expanded.
+    This component can contain anything: text, images, graphs, ... It can ignore the overall table layout.
+    If you wish to display details for each cell of the row individually and respect the table layout,
+    all you need to do is use our usual <code class="clr-code">&lt;clr-dg-cell&gt;</code> component in the detail.
+    Make sure you have exactly as many cells in the detail as you have in the row, or they will not align properly.
+</p>
+
+<clr-code-snippet [clrCode]="examples.basic" clrLanguage="html"></clr-code-snippet>
+
+<p>
+    If you want the details to replace the original row rather than expand under it, we offer a
+    <code class="clr-code">[clrDgReplace]</code> input that receives a boolean on the
+    <code class="clr-code">&lt;clr-dg-row-detail&gt;</code> component. In other words, to make details replace the row
+    they're in, just write:
+</p>
+
+<clr-code-snippet [clrCode]="examples.replace" clrLanguage="html"></clr-code-snippet>
+
+<p>
+    Sometimes you want to conditionally display the expandable row, depending on if the given row has any
+    content to expand. In order to handle this, you'll need to wrap your expandable row in a conditional 
+    <code class="clr-code">*ngIf</code> directive to handle this, but since you can't put two structural directives
+    on the same element you'll need to use <code class="clr-code">NgContainer</code> and <code class="clr-code">ngProjectAs</code>
+    like you see here in the following snippet.
+</p>
+
+<clr-code-snippet [clrCode]="examples.conditional" clrLanguage="html"></clr-code-snippet>
+
+<p>
+    Finally, you might need to make a server call to get the details for a row before you can display them.
+    This is a very common lazy loading pattern. In this case, you need to add a
+    <code class="clr-code">[clrLoading]</code> directive receiving a boolean <em>anywhere in the row</em>.
+    Yes, it can be absolutely anywhere, as long as it's in or on the row itself.
+    The easiest way to make the server call lazily is simply to create a component that will make the call on
+    initialization (typically in the <code class="clr-code">ngOnInit()</code> method), and to use that component
+    inside the <code class="clr-code">*clrIfExpanded</code> structural directive. Here is an example of what this
+    solution typically looks like.
+</p>
+
+<clr-code-snippet [clrCode]="examples.lazyLoadingRow" clrLanguage="html"></clr-code-snippet>
+<clr-code-snippet [clrCode]="examples.lazyLoadingDetail" clrLanguage="typescript"></clr-code-snippet>
+
+<div class="alert alert-info">
+    <div class="alert-items">
+        <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+            </div>
+            <span class="alert-text">
+                Note the <code class="clr-code">ngProjectAs</code> attribute on our custom detail component.
+                This is needed to make sure it is projected in the same place an actual
+                <code class="clr-code">&lt;clr-dg-row-detail&gt;</code> would be.
+            </span>
+        </div>
+    </div>
+</div>
+
+<p>
+    Here is an example showcasing all these different combinations in action:
+</p>
+
+<form>
+    <div class="form-group">
+        <label>Type of detail</label>
+        <div class="radio-inline">
+            <input type="radio" name="detail" id="detail-default" value="default" [(ngModel)]="detail">
+            <label for="detail-default">Overall</label>
+        </div>
+        <div class="radio-inline">
+            <input type="radio" name="detail" id="detail-columns" value="columns" [(ngModel)]="detail">
+            <label for="detail-columns">Per column</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="checkbox-inline">
+            <input type="checkbox" name="replace" id="replace" [(ngModel)]="replace">
+            <label for="replace">Replace row</label>
+        </div>
+        <div class="checkbox-inline">
+            <input type="checkbox" name="slow-load" id="slow-load" [(ngModel)]="slowLoad">
+            <label for="slow-load">Lazy loading</label>
+        </div>
+    </div>
+</form>
+
+<clr-datagrid>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
+    <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
+    <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+
+        <clr-dg-row-detail *clrIfExpanded [clrDgReplace]="replace">
+            <ng-template [clrFakeLoader]="slowLoad" clrLoading>
+                <ng-container *ngIf="detail === 'default'">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed
+                    quam. Proin rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget,
+                    pellentesque sed arcu. Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra. Aenean
+                    sagittis nibh lacus, in eleifend urna ultrices et. Mauris porttitor nisi nec velit pharetra porttitor.
+                    Vestibulum vulputate sollicitudin dolor ut tincidunt. Phasellus vitae blandit felis. Nullam posuere
+                    ipsum tincidunt velit pellentesque rhoncus. Morbi faucibus ut ipsum at malesuada. Nam vestibulum felis
+                    sit amet metus finibus hendrerit. Fusce faucibus odio eget ex vulputate rhoncus. Fusce nec aliquam leo,
+                    at suscipit diam.
+                </ng-container>
+
+                <ng-container *ngIf="detail === 'columns'">
+                    <clr-dg-cell>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</clr-dg-cell>
+                    <clr-dg-cell>Proin in neque in ante placerat mattis id sed quam.</clr-dg-cell>
+                    <clr-dg-cell>Proin rhoncus lacus et tempor dignissim.</clr-dg-cell>
+                    <clr-dg-cell>Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.</clr-dg-cell>
+                    <clr-dg-cell>Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra.</clr-dg-cell>
+                </ng-container>
+            </ng-template>
+        </clr-dg-row-detail>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>

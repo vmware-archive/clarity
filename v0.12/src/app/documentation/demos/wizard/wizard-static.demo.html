@@ -1,0 +1,158 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-code-snippet">
+    <div class="backdrop-example-container">
+        <div class="clr-wizard main-container">
+            <div class="modal static">
+                <div class="modal-dialog modal-xl" role="dialog">
+                    <div class="modal-outer-wrapper">
+                        <div class="modal-content-wrapper">
+                            <nav class="modal-nav clr-wizard-stepnav-wrapper">
+                                <h3 class="clr-wizard-title">Wizard Title</h3>
+                                <div class="clr-wizard-stepnav">
+                                    <ol class="clr-wizard-stepnav-list" role="tablist">
+                                        <li class="clr-wizard-stepnav-item clr-nav-link nav-item active" role="presentation" id="clr-wizard-step-0" aria-selected="true" aria-controls="clr-wizard-step-0">
+                                            <button class="btn btn-link clr-wizard-stepnav-link" type="button">
+                                                Step 1
+                                            </button>
+                                        </li><li class="clr-wizard-stepnav-item clr-nav-link nav-item" role="presentation" id="clr-wizard-step-1" aria-selected="false" aria-controls="clr-wizard-step-1">
+                                            <button class="btn btn-link clr-wizard-stepnav-link" type="button">
+                                                Step 2
+                                            </button>
+                                        </li><li class="clr-wizard-stepnav-item clr-nav-link nav-item" role="presentation" id="clr-wizard-step-2" aria-selected="false" aria-controls="clr-wizard-step-2">
+                                            <button class="btn btn-link clr-wizard-stepnav-link" type="button">
+                                                Step 3
+                                            </button>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </nav>
+
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button aria-label="Close" class="close" type="button">
+                                        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                                    </button>
+                                    <h3 class="modal-title">
+                                        <span class="modal-title-text">Title for page 1</span>
+                                    </h3>
+                                </div>
+                                <div class="modal-body">
+                                    <main class="clr-wizard-content">
+                                        <div role="tabpanel" id="clr-wizard-page-0" aria-hidden="false" aria-labelledby="clr-wizard-step-0" class="active clr-wizard-page">
+                                            <p>Content for step 1</p>
+                                        </div>
+
+                                        <div role="tabpanel" id="clr-wizard-page-1" aria-hidden="true" aria-labelledby="clr-wizard-step-1" class="clr-wizard-page">
+                                            <p>Content for step 2</p>
+                                        </div>
+
+                                        <div role="tabpanel" id="clr-wizard-page-2" aria-hidden="true" aria-labelledby="clr-wizard-step-2" class="clr-wizard-page">
+                                            <p>Content for step 3</p>
+                                        </div>
+                                    </main>
+                                </div>
+
+                                <div class="modal-footer clr-wizard-footer">
+                                    <div class="clr-wizard-footer-buttons">
+                                        <div class="clr-wizard-footer-buttons-wrapper">
+                                            <div class="clr-wizard-btn-wrapper">
+                                                <button class="btn clr-wizard-btn btn-link clr-wizard-btn--tertiary">
+                                                    Cancel
+                                                </button>
+                                            </div><div class="clr-wizard-btn-wrapper">
+                                                <button class="btn clr-wizard-btn btn-primary clr-wizard-btn--primary">
+                                                    Next
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div aria-hidden="true" class="modal-backdrop"></div>
+        </div>
+    </div>
+</div>
+
+<pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;clr-wizard&quot;&gt;
+    &lt;div class=&quot;modal static&quot;&gt;
+        &lt;div class=&quot;modal-dialog modal-xl&quot; role=&quot;dialog&quot;&gt;
+            &lt;div class=&quot;modal-outer-wrapper&quot;&gt;
+                &lt;div class=&quot;modal-content-wrapper&quot;&gt;
+                    &lt;nav class=&quot;modal-nav clr-wizard-stepnav-wrapper&quot;&gt;
+                        &lt;h3 class=&quot;clr-wizard-title&quot;&gt;Wizard Title&lt;/h3&gt;
+                        &lt;div class=&quot;clr-wizard-stepnav&quot;&gt;
+                            &lt;ol class=&quot;clr-wizard-stepnav-list&quot; role=&quot;tablist&quot;&gt;
+                                &lt;li class=&quot;clr-wizard-stepnav-item clr-nav-link nav-item active&quot; role=&quot;presentation&quot; id=&quot;clr-wizard-step-0&quot; aria-selected=&quot;true&quot; aria-controls=&quot;clr-wizard-step-0&quot;&gt;
+                                    &lt;button class=&quot;btn btn-link clr-wizard-stepnav-link&quot; type=&quot;button&quot;&gt;
+                                        Step 1
+                                    &lt;/button&gt;
+                                &lt;/li&gt;&lt;li class=&quot;clr-wizard-stepnav-item clr-nav-link nav-item&quot; role=&quot;presentation&quot; id=&quot;clr-wizard-step-1&quot; aria-selected=&quot;false&quot; aria-controls=&quot;clr-wizard-step-1&quot;&gt;
+                                    &lt;button class=&quot;btn btn-link clr-wizard-stepnav-link&quot; type=&quot;button&quot;&gt;
+                                        Step 2
+                                    &lt;/button&gt;
+                                &lt;/li&gt;&lt;li class=&quot;clr-wizard-stepnav-item clr-nav-link nav-item&quot; role=&quot;presentation&quot; id=&quot;clr-wizard-step-2&quot; aria-selected=&quot;false&quot; aria-controls=&quot;clr-wizard-step-2&quot;&gt;
+                                    &lt;button class=&quot;btn btn-link clr-wizard-stepnav-link&quot; type=&quot;button&quot;&gt;
+                                        Step 3
+                                    &lt;/button&gt;
+                                &lt;/li&gt;
+                            &lt;/ol&gt;
+                        &lt;/div&gt;
+                    &lt;/nav&gt;
+
+                    &lt;div class=&quot;modal-content&quot;&gt;
+                        &lt;div class=&quot;modal-header&quot;&gt;
+                            &lt;button aria-label=&quot;Close&quot; class=&quot;close&quot; type=&quot;button&quot;&gt;
+                                &lt;clr-icon aria-hidden=&quot;true&quot; shape=&quot;close&quot;&gt;&lt;/clr-icon&gt;
+                            &lt;/button&gt;
+                            &lt;h3 class=&quot;modal-title&quot;&gt;
+                                &lt;span class=&quot;modal-title-text&quot;&gt;Title for page 1&lt;/span&gt;
+                            &lt;/h3&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;modal-body&quot;&gt;
+                            &lt;main class=&quot;clr-wizard-content&quot;&gt;
+                                &lt;div role=&quot;tabpanel&quot; id=&quot;clr-wizard-page-0&quot; aria-hidden=&quot;false&quot; aria-labelledby=&quot;clr-wizard-step-0&quot; class=&quot;active clr-wizard-page&quot;&gt;
+                                    &lt;p&gt;Content for step 1&lt;/p&gt;
+                                &lt;/div&gt;
+
+                                &lt;div role=&quot;tabpanel&quot; id=&quot;clr-wizard-page-1&quot; aria-hidden=&quot;true&quot; aria-labelledby=&quot;clr-wizard-step-1&quot; class=&quot;clr-wizard-page&quot;&gt;
+                                    &lt;p&gt;Content for step 2&lt;/p&gt;
+                                &lt;/div&gt;
+
+                                &lt;div role=&quot;tabpanel&quot; id=&quot;clr-wizard-page-2&quot; aria-hidden=&quot;true&quot; aria-labelledby=&quot;clr-wizard-step-2&quot; class=&quot;clr-wizard-page&quot;&gt;
+                                    &lt;p&gt;Content for step 3&lt;/p&gt;
+                                &lt;/div&gt;
+                            &lt;/main&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class=&quot;modal-footer clr-wizard-footer&quot;&gt;
+                            &lt;div class=&quot;clr-wizard-footer-buttons&quot;&gt;
+                                &lt;div class=&quot;clr-wizard-footer-buttons-wrapper&quot;&gt;
+                                    &lt;div class=&quot;clr-wizard-btn-wrapper&quot;&gt;
+                                        &lt;button class=&quot;btn clr-wizard-btn btn-link clr-wizard-btn--tertiary&quot;&gt;
+                                            Cancel
+                                        &lt;/button&gt;
+                                    &lt;/div&gt;&lt;div class=&quot;clr-wizard-btn-wrapper&quot;&gt;
+                                        &lt;button class=&quot;btn clr-wizard-btn btn-primary clr-wizard-btn--primary&quot;&gt;
+                                            Next
+                                        &lt;/button&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;div aria-hidden=&quot;true&quot; class=&quot;modal-backdrop&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code>
+</pre>

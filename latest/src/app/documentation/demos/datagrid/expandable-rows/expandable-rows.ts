@@ -5,8 +5,7 @@
  */
 import {Component} from "@angular/core";
 
-import {State} from "@clr/angular";
-import {FetchResult, Inventory} from "../inventory/inventory";
+import {Inventory} from "../inventory/inventory";
 import {User} from "../inventory/user";
 import {EXAMPLES} from "./examples";
 

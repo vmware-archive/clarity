@@ -1,0 +1,153 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary"
+            id="datagrids-are-for-organizing-large-volumes-of-data-that-users-can-scan-compare-and-perform-actions-on">
+            Datagrids are for organizing large volumes of data that users can scan, compare, and perform actions
+            on.</h5>
+
+        <div id="code-examples">
+
+            <p>
+                We have {{childRoutes.length}} datagrid demos. Starting with the basics, each demo shows
+                you one or more of the advanced Datagrid features.
+            </p>
+
+            <div class="row" style="margin-top: 24px">
+                <div class="col-xs-12">
+                    <ul class="list demo-list">
+                        <li *ngFor="let route of childRoutes"><a [routerLink]="[route?.path]">{{route?.data?.demoName}}</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div #demoView></div>
+
+            <router-outlet></router-outlet>
+
+            <div class="datagrid-demo-pagination">
+                <button class="btn btn-primary demo-pagination-prev" *ngIf="previous" (click)="movePrevious()">
+                    <clr-icon shape="angle left"></clr-icon>
+                    {{previousRoute.data.demoName}}
+                </button>
+                <button class="btn btn-primary demo-pagination-next" *ngIf="next" (click)="moveNext()">
+                    {{nextRoute.data.demoName}}
+                    <clr-icon shape="angle right"></clr-icon>
+                </button>
+            </div>
+
+            <!--<form #datagridDemoForm="ngForm">
+                <section class="form-block">
+                    <label>Datagrid Demos</label>
+                    <div class="form-group">
+                        <label>Current Demo</label>
+                        <div class="select">
+                            <select
+                                    name="demos"
+                                    [(ngModel)]="model">
+                                <option *ngFor="let demo of demos" [value]="demo">{{demo}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+            </form>
+
+            <div class="datagrid-demos">
+                <ng-container *ngIf="model === 'Basic Structure'">
+                    <clr-datagrid-basic-structure-demo class="clrweb-datagrid-first-demo"></clr-datagrid-basic-structure-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Custom Cell Rendering'">
+                    <clr-datagrid-custom-rendering-demo class="clrweb-datagrid-first-demo"></clr-datagrid-custom-rendering-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Smart Iterator'">
+                    <clr-datagrid-smart-iterator-demo class="clrweb-datagrid-first-demo"></clr-datagrid-smart-iterator-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Binding Model Properties to Columns'">
+                    <clr-datagrid-binding-properties-demo class="clrweb-datagrid-first-demo"></clr-datagrid-binding-properties-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Custom Sort'">
+                    <clr-datagrid-sorting-demo class="clrweb-datagrid-first-demo"></clr-datagrid-sorting-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Custom Filters'">
+                    <clr-datagrid-filtering-demo class="clrweb-datagrid-first-demo"></clr-datagrid-filtering-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Built-in Filter'">
+                    <clr-datagrid-string-filtering-demo class="clrweb-datagrid-first-demo"></clr-datagrid-string-filtering-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Pagination'">
+                    <clr-datagrid-pagination-demo class="clrweb-datagrid-first-demo"></clr-datagrid-pagination-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Selection'">
+                    <clr-datagrid-selection-demo class="clrweb-datagrid-first-demo"></clr-datagrid-selection-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Single Selection'">
+                    <clr-datagrid-selection-single-demo class="clrweb-datagrid-first-demo"></clr-datagrid-selection-single-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Selection Batch Action'">
+                    <clr-datagrid-batch-action-demo class="clrweb-datagrid-first-demo"></clr-datagrid-batch-action-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Single Row Action'">
+                    <clr-datagrid-single-action-demo class="clrweb-datagrid-first-demo"></clr-datagrid-single-action-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Server-driven Datagrid'">
+                    <clr-datagrid-server-driven-demo class="clrweb-datagrid-first-demo"></clr-datagrid-server-driven-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Placeholder'">
+                    <clr-datagrid-placeholder-demo class="clrweb-datagrid-first-demo"></clr-datagrid-placeholder-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Expandable Rows'">
+                    <clr-datagrid-expandable-rows-demo class="clrweb-datagrid-first-demo"></clr-datagrid-expandable-rows-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Hide/Show Columns'">
+                    <clr-datagrid-hide-show-columns-demo class="clrweb-datagrid-first-demo"></clr-datagrid-hide-show-columns-demo>
+                </ng-container>
+
+                <ng-container *ngIf="model === 'Full Demo'">
+                    <clr-datagrid-full-demo class="clrweb-datagrid-first-demo"></clr-datagrid-full-demo>
+                </ng-container>
+            </div>-->
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <h4 id="for-structured-content">For Structured Content</h4>
+
+            <p>Datagrids work best for structured, homogeneous content, where each object has the same attributes. When
+                common attributes are directly aligned in columns, users can quickly scan and compare them.</p>
+
+            <p>For data sets with a blend of text, images, and data visualizations, or content with mixed formatting,
+                <a routerLink="./cards">cards</a> offer a better layout.</p>
+
+            <h4 id="for-large-volumes-of-data">For Large Volumes of Data</h4>
+
+            <p>A datagrid is well-suited for presenting large volumes of data that don’t fit on one page.
+                Users can filter and sort the data according to preference.</p>
+
+            <p>For smaller amounts of data (10 to 20 lines), datagrids are a relatively heavy component.
+                Use datagrids if:</p>
+
+            <ul>
+                <li>The data set will grow</li>
+                <li>Users need search, filter, or batch operations</li>
+            </ul>
+
+            <p>For a smaller volume of data, use a <a routerLink="../tables">table</a>. Tables are a
+                lighter-weight solution with a static view.</p>
+        </div>
+    </article>
+</clr-doc-wrapper>

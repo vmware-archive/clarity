@@ -1,0 +1,30 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div *ngFor="let type of colorTypes" class="progbar-examples">
+    <h4>{{type.title}}</h4>
+    <div [ngClass]="type.cssClassnames()">
+        <progress value="{{type.value}}" max="100" [attr.data-displayval]="type.value + '%'"></progress>
+    </div>
+    <p><button class="btn btn-outline" (click)="type.start()">Show</button></p>
+</div>
+
+<pre><code clr-code-highlight="language-html">
+&lt;h4&gt;Normal&lt;/h4&gt;
+&lt;div class=&quot;progress&quot;&gt;
+    &lt;progress max=&quot;100&quot; value=&quot;0&quot; data-displayval=&quot;0%&quot;&gt;&lt;/progress&gt;
+&lt;/div&gt;
+
+&lt;h4&gt;Success&lt;/h4&gt;
+&lt;div class=&quot;progress success&quot;&gt;
+    &lt;progress max=&quot;100&quot; value=&quot;0&quot; data-displayval=&quot;0%&quot;&gt;&lt;/progress&gt;
+&lt;/div&gt;
+
+&lt;h4&gt;Danger/Warning&lt;/h4&gt;
+&lt;div class=&quot;progress danger&quot;&gt;
+    &lt;progress max=&quot;100&quot; value=&quot;0&quot; data-displayval=&quot;0%&quot;&gt;&lt;/progress&gt;
+&lt;/div&gt;
+</code></pre>

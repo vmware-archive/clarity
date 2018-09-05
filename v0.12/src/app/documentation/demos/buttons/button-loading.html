@@ -1,0 +1,23 @@
+
+<!--
+  ~ Copyright (c) 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+    <p>Use the <code class="clr-code">clrLoading</code> directive to change the state of the spinner button. The directive can be set to one of the following values:</p>
+    <br>
+    <ul>
+        <li><code class="clr-code">ClrLoadingState.DEFAULT</code>: the default state of the button.</li>
+        <li><code class="clr-code">ClrLoadingState.LOADING</code>: replaces the button text with a spinner.</li>
+        <li><code class="clr-code">ClrLoadingState.SUCCESS</code>: briefly shows a check mark, and automatically transition back to the <code class="clr-code">ClrLoadingState.DEFAULT</code> state.</li>
+    </ul>
+    <br>
+    <button [clrLoading]="validateBtnState" class="btn btn-info-outline" (click)="validateDemo()">Validate</button>
+    <button [clrLoading]="submitBtnState" type="submit" class="btn btn-success-outline" (click)="submitDemo()">Submit</button>
+
+    <clr-code-snippet [clrCode]="mainHTMLExample" clrLanguage="html"></clr-code-snippet>
+
+    <clr-code-snippet [clrCode]="mainTSExample" clrLanguage="typescript"></clr-code-snippet>
+</div>

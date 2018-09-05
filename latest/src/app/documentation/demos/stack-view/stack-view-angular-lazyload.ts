@@ -5,7 +5,7 @@
  */
 import {Component, ViewChild} from "@angular/core";
 import {StackViewNgDemo} from "./stack-view-ng-demo";
-import {StackBlock} from "@clr/angular";
+import {ClrStackBlock} from "@clr/angular";
 
 const EXAMPLE = `
 <clr-stack-view>
@@ -41,7 +41,7 @@ const EXAMPLE = `
     styleUrls: ["./stack-view.demo.scss"]
 })
 export class StackViewAngularLazyloadDemo extends StackViewNgDemo {
-    @ViewChild("lazyBlock") lazyBlock: StackBlock;
+    @ViewChild("lazyBlock") lazyBlock: ClrStackBlock;
 
     resetChildren(): void {
         this.lazyBlock.expanded = false;

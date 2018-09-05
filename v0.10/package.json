@@ -8,7 +8,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "npm run generate-release-notes && ng serve --aot=true --output-hashing=false --port 4201",
+    "start": "ng serve --port 4201",
     "start:dynamic": "npm run build:dynamic && npm run serve:dynamic",
     "start:static": "npm run build:static && npm run serve:static",
     "build": "ng build",
@@ -20,7 +20,6 @@
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:static": "cd dist/browser && http-server",
     "serve:dynamic": "node dist/server",
-    "generate-release-notes": "node generate-template.js",
     "generate-404": "cat dist/index.html > dist/404.html",
     "deploy": "npm run build:client-and-server-bundles && npm run webpack:server && npm run generate:deploy",
     "deploy:ci": "npm run build:client-and-server-bundles && npm run webpack:server && npm run generate:deploy -- --directory=../../deploy/documentation/v0.10"

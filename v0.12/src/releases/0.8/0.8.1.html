@@ -1,0 +1,32 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Created a new Plunkr template for Clarity 0.8.x</h6>
+        <p>
+            Now that Clarity supports aot, the plunkr has been updated so that SystemJS can load clarity from the clarity-angular.umd.js file. The template is <a target="_blank" href="https://plnkr.co/edit/8TwwdL?p=preview">here</a>.
+        </p>
+    </li>
+    <li>
+        <h6>Added style for input types: tel and date</h6>
+        <p>
+            This fixes an issue filed for inputs that are of type tel or date where they did not conform to the Clarity visual style that other text inputs do.
+        </p>
+    </li>
+    <li>
+        <h6>Retrieve Clarity Icon templates through the <code class="clr-code">get()</code> method of ClarityIcons API</h6>
+        <p>You can now retrieve all Clarity Icon shape templates through <code class="clr-code">ClarityIcons.get()</code> method. Or if you want to retrieve the template of a particular shape, you can pass the shape name as an argument like <code class="clr-code">ClarityIcons.get("home")</code>.</p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed Datagrid's <code class="clr-code">*clrDgItems</code> to account for <a target="_blank" href="https://github.com/angular/angular/issues/13641">a breaking change introduced in Angular 2.4.1</a>.</li>
+    <li bug-fix>Fixed path issue on user/groups icon that caused outlined path to appear solid.</li>
+    <li bug-fix>Fixed website analytics to work with SPA.</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Updated coding guidelines with <code class="clr-code">clr-</code> prefix guidelines.</li>
+    <li>Added proper exporting for Stack View components.</li>
+</ul>

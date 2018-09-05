@@ -1,0 +1,99 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Selection</h2>
+
+<p>
+    To allow actions on multiple items at once, we provide the ability for the user to select rows
+    in the datagrid. To make rows selectable in your datagrid, you need to do the following:
+</p>
+<ul>
+    <li>
+        Add a <code class="clr-code">[clrDgItem]</code> input on each
+        <code class="clr-code">&lt;clr-dg-row&gt;</code> component to tell us what model the user
+        is actually selecting. Most of the time, this will simply be the current data object in
+        the iteration.
+    </li>
+    <li>
+        Add a <code class="clr-code">[(clrDgSelected)]</code> two-way binding on the datagrid
+        itself, to have access to the list of currently selected items. Note that by adding
+        items to this list yourself, you can dynamically select elements if you need to.
+    </li>
+</ul>
+
+<p>
+    In addition to a checkbox for each row to select individual rows, there will be a checkbox in the
+    header row that will select all of the currently visible rows.
+</p>
+
+<p>
+    In the following example, we simply display the names of the selected users, but since we
+    have access to the full objects, we could perform any operation we want on them.
+</p>
+
+<div class="card card-block">
+    <p class="card-text username-list">
+        Selected users:
+        <em *ngIf="selected.length == 0">No user selected.</em>
+        <span class="username" *ngFor="let user of selected">{{user.name}}</span>
+    </p>
+</div>
+
+<clr-datagrid [(clrDgSelected)]="selected">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<clr-code-snippet [clrCode]="mainExample" clrLanguage="html"></clr-code-snippet>
+
+<p>
+    Depending on the use case, you might want to allow selection when clicking anywhere in the grid row. Note that this
+    is not recommended when the rows contain clickable items. For example, if your cells contain input, buttons, etc.
+    it is best to avoid enabling whole row selection.
+</p>
+<p>
+    For row selection mode add <code class="clr-code">[(clDgRowSelection)]</code> and
+    set it to <code class="clr-code">true</code>.
+</p>
+<clr-datagrid [(clrDgSelected)]="rowSelected" [clDgRowSelection]="true">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<clr-code-snippet [clrCode]="rowSelectionExample" clrLanguage="html"></clr-code-snippet>
+<p>
+    If you need an easier access to the selected state of a row, without having to go through the entire array,
+    we also provide a boolean <code class="clr-code">[(clrDgSelected)]</code> two-way binding on the
+    <code class="clr-code">&lt;clr-dg-row&gt;</code> itself. For instance, when your model itself tracks if items are
+    selected, you can simply write:
+</p>
+<clr-code-snippet [clrCode]="singleRowExample" clrLanguage="html"></clr-code-snippet>

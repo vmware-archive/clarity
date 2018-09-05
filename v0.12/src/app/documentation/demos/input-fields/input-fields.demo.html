@@ -1,0 +1,139 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="clarity-has-a-single-line-input-field-and-a-multiline-text-area">Clarity has a
+            single-line input field and a multiline text area.</h5>
+
+        <div class="alert alert-info">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        The input fields documentation here is deprecated and applies only when using the old forms, which are scheduled for removal in version 2.0. To see the old forms documentation, go to <a href="/clarity/documentation/v0.11/forms/">0.11 forms documentation</a>.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div id="code-examples">
+            <p>Input fields are composed of a label followed by an <code class="clr-code">input</code> or <code
+                class="clr-code">textarea</code> wrapped in a block element with the <code
+                class="clr-code">.form-group</code> classname applied to it.</p>
+
+            <clr-input-fields-types-demo></clr-input-fields-types-demo>
+
+            <h4 id="required">Required Fields</h4>
+
+            <p>
+                <code class="clr-code">.required</code> class can be used to indicate required form
+                fields to be filled out by a user. Required fields show a red asterisk at the end
+                of the label.
+            </p>
+
+            <clr-input-required-demo></clr-input-required-demo>
+
+            <h4 id="form-validation">Form Validation</h4>
+
+            <p>You can use validation styling for input fields by wrapping the input tag in a container
+                with the <code class="clr-code">.tooltip</code> class along with the
+                <code class="clr-code">.tooltip-validation</code>
+                class. Use the <code class="clr-code">.invalid</code> class on the <code
+                class="clr-code">.tooltip-validation</code>
+                container to toggle the validation styling. Place the
+                <code class="clr-code">.tooltip-content</code> <b>after</b>
+                the <code class="clr-code">input</code> tag.</p>
+
+            <p>You can set the direction of the tooltip using these classes:</p>
+
+            <ul class="list">
+                <li>.tooltip-top-right</li>
+                <li>.tooltip-top-left</li>
+                <li>.tooltip-bottom-right</li>
+                <li>.tooltip-bottom-left</li>
+                <li>.tooltip-right</li>
+                <li>.tooltip-left</li>
+            </ul>
+
+            <p>You can set the size of the tooltips using these classes:</p>
+
+            <ul>
+                <li>.tooltip-xs</li>
+                <li>.tooltip-sm</li>
+                <li>.tooltip-md</li>
+                <li>.tooltip-lg</li>
+            </ul>
+
+            <h4 id="example">Example</h4>
+
+        <clr-forms-demo-validation></clr-forms-demo-validation>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <h4 id="labels">Labels</h4>
+
+            <p>Input fields require a brief label to indicate what information belongs in the
+                field. The label appears to the left of the input field and moves above it when
+                the app is resized smaller.</p>
+
+            <ul class="list">
+                <li>Ensure that the label wording is clear.</li>
+                <li>Keep the text to a single line.</li>
+                <li>Use sentence caps without final punctuation.</li>
+            </ul>
+
+            <h4 id="placeholder-text">Placeholder Text</h4>
+
+            <p>Located inside a field, placeholder text can help clarify expected input. Placeholder
+                text disappears when the user types in the field.</p>
+
+            <p>Tip: Use the label to show what information goes in the field and placeholder text
+                as a hint, description, or example format:</p>
+
+            <p>Label: Airport
+                <br/> Placeholder text: SFO, SJO</p>
+
+            <p>Placeholder text can replace labels only in simple forms with a few easily-understood fields,
+                see the <a routerLink="./login">login page</a>.</p>
+
+            <p>Placeholder text is not required for every input field.</p>
+
+            <h4 id="size">Size</h4>
+
+            <p>For the best user experience, consider localization and keep in mind that word length varies among
+                languages.</p>
+
+            <h4 id="multiple-input-fields">Multiple Input Fields</h4>
+
+            <p>A complex form might have multiple input fields, stacked vertically. Space the input
+                fields evenly, clearly associating labels with the corresponding input fields.</p>
+
+            <h4 id="validation">Validation</h4>
+
+            <p>Avoid overlaying the validation tooltip on the data is being validated. By default, the
+                position of the tooltip is to the top-right of the error icon, pointing to its center.
+                Other positions to consider are:</p>
+
+            <ul class="list">
+                <li>Top left</li>
+                <li>Bottom right</li>
+                <li>Bottom left</li>
+                <li>Side left</li>
+                <li>Side right</li>
+            </ul>
+
+            <p>Base the width of the tooltip on the message text. Choices are 72 px, 120 px, 240 px, and
+                360 px. The default is 240 px.</p>
+
+            <p>Make the message text short, but informative. For example, “The username already exists.
+                Enter a new name.” Try to limit the text to one line.</p>
+
+            <h4 id="multiline-text-area">Multiline Text Area</h4>
+
+            <p>Use a multiline text area when a user must enter a long string. Content wraps when the cursor
+                reaches the right edge and scrolls when it reaches the lower edge.</p>
+        </div>
+    </article>
+</clr-doc-wrapper>

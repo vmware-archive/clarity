@@ -1,0 +1,38 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Datagrid: Two-way binding and default values on filtered state</h6>
+        <p>Added two way binding to filter values for both <code class="clr-code">&lt;clr-dg-column&gt;</code>
+            and <code class="clr-code">&lt;dclr-dg-string-filter&gt;</code>. They now offer the
+            <code class="clr-code">[(clrFilterValue)]</code> property to bind to.</p>
+    </li>
+    <li>
+        <h6>Datagrid: Two-way binding on the sorted state of a column</h6>
+        <p>
+            <code class="clr-code">&lt;clr-dg-column&gt;</code> now offers a <code class="clr-code">[(clrDgSorted)]</code>
+            two-way binding to dynamically force a column to be sorted or not,
+            typically on initialization. It also lets consumers know at all
+            time if a column is sorted or not.
+        </p>
+    </li>
+    <li>
+        <h6>Datagrid: Single selection</h6>
+        <p>Added an option for single selection mode in datagrid.
+            Use <code class="clr-code">[(clrDgSingleSelected)]</code> to
+            use this feature.
+        </p>
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>
+        Moved component styles for form fields from <code class="clr-code">forms.clarity.scss</code>
+        into their own separate files.
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Updated datagrid component to support AOT.</li>
+</ul>

@@ -80,16 +80,6 @@
             "dox": 20
         },
         {
-            "url": "code-highlight",
-            "text": "Code Highlight",
-            "type": "component",
-            "ux": 20,
-            "ui": -1,
-            "core": -1,
-            "ng": 20,
-            "dox": 20
-        },
-        {
             "url": "/get-started#howToUse",
             "text": "Clarity Build",
             "ux": -1,

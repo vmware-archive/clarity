@@ -1,0 +1,9 @@
+<form clrForm>
+  <clr-password-container>
+    <label>Password</label>
+    <input placeholder="Password" clrPassword [(ngModel)]="exampleThree" name="password" required minlength="10" />
+    <clr-control-helper>Must contain at least 8 characters with at least one of them a special character like !@#$%^&*)</clr-control-helper>
+    <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+    <clr-control-error *clrIfError="'minlength'">It must be at least 8 characters!</clr-control-error>
+  </clr-password-container>
+</form>

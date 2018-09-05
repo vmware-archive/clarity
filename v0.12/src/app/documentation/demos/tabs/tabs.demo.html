@@ -1,0 +1,223 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="tabs-divide-content-into-separate-views-which-users-navigate-between">Tabs
+            divide content into separate views which users navigate between.</h5>
+
+        <div id="code-examples">
+            <h4 id="static">Static</h4>
+
+            <p>
+                The following is a static example of tabs with their associated sections.
+                You cannot switch between tabs in this static demo because it does not
+                contain the JavaScript to handle this behavior.
+            </p>
+            <p>
+                The active tab should have the additional class <code class="clr-code">active</code>.
+                The stylesheet will hide all the section elements where attribute <code
+                class="clr-code">aria-hidden</code>
+                is set to <code class="clr-code">true</code>.
+            </p>
+
+            <clr-tabs-demo-static></clr-tabs-demo-static>
+
+            <h6 id="accessibility">Accessibility</h6>
+
+            <p>The active tab should have the attribute <code class="clr-code">aria-selected</code>
+                set to <code class="clr-code">true</code>, and the others to false.</p>
+
+            <p>The active panel associated with the active tab should have the attribute <code
+                class="clr-code">aria-hidden</code> set to <code class="clr-code">true</code>,
+                and the others <code class="clr-code">to false</code>.</p>
+
+            <p>In addition, each tab should have an aria-controls attribute set to the id of the
+                matching panel and each panel should have an <code class="clr-code">aria-labelledby</code>
+                attribute set to the id of the tab associated with the panel.</p>
+
+            <h4 id="angular-component">Angular Component</h4>
+
+            <h5>Simple Tabs</h5>
+            <p>
+                The tabs component uses the <code class="clr-code">*clrIfActive</code> structural
+                directive to lazy load the content of an active tab. For simple cases, using the
+                microsyntax as shown below would suffice.
+            </p>
+            <clr-modal-tabs-angular-simple></clr-modal-tabs-angular-simple>
+
+            <h5>Tabs with two-way binding</h5>
+            <p>
+                If you'd like to use two-way binding on the active state of the tabs, we recommend that
+                you use the de-sugared syntax of the structural directive by wrapping it in <code
+                class="clr-code">ng-template</code> as shown below.
+            </p>
+
+            <clr-modal-tabs-angular></clr-modal-tabs-angular>
+
+            <h5>Tab Overflow</h5>
+
+            <p>
+                Tab overflow is used when the tab group is larger than its containing space, or used to
+                preserve space. The overflow is configurable so you can assign tabs to the dropdown menu.
+            </p>
+
+            <p>
+                Tab overflow is shown below as an ellipsis button in the tab group and is the last
+                position to the right. Clicking on the ellipsis will show the overflow dropdown menu.
+            </p>
+
+            <p>
+                We recommend that a overflow dropdown have at least two options in it. We also recommend
+                that you test out scenarios with tab labels that may vary in length or when translated to
+                another language to make sure there is enough room for them.
+            </p>
+
+            <clr-modal-tabs-angular-overflow></clr-modal-tabs-angular-overflow>
+
+            <h6 id="accessibility-1">Accessibility</h6>
+
+            <p>
+                All attributes associated with accessibility (<code class="clr-code">aria-controls</code>,
+                <code class="clr-code">aria-selected</code>, <code class="clr-code">aria-hidden</code>,
+                <code class="clr-code">aria-labelledby</code>, <code class="clr-code">role</code>)
+                are automatically created and managed by the angular component.
+            </p>
+
+            <h4 id="summary-of-options">Summary of Options</h4>
+
+            <h5>Tab Link Directive (clrTabLink)</h5>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[id]</b>
+                        <div class="hidden-sm-up">Values:<br/>&lt;any valid id for html element&gt;</div>
+                        <div class="hidden-sm-up">Default: auto-generated</div>
+                    </td>
+                    <td class="hidden-xs-down">&lt;any valid id for html element&gt;</td>
+                    <td class="hidden-xs-down">auto-generated</td>
+                    <td class="left">
+                        If explicitly set, will assign the set id as the id for the element.
+                        If not set, the component will auto-generate the id.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h5>Tab Content (clr-tab-content)</h5>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrTabLinkInOverflow]</b>
+                        <div class="hidden-sm-up">Values:<br/>true, false</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">&lt;true, false&gt;</td>
+                    <td class="hidden-xs-down">false</td>
+                    <td class="left">
+                        If true, then this tab link will go into the overflow section of the tabs.
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[id]</b>
+                        <div class="hidden-sm-up">Values:<br/>&lt;any valid id for html element&gt;</div>
+                        <div class="hidden-sm-up">Default: auto-generated</div>
+                    </td>
+                    <td class="hidden-xs-down">&lt;any valid id for html element&gt;</td>
+                    <td class="hidden-xs-down">auto-generated</td>
+                    <td class="left">
+                        Used on &lt;clr-tab-content&gt;. If explicitly set, will assign the set id as the id for the
+                        element. If not set, the component will auto-generate the id.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h5>Directives used along with clr-tab-content</h5>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[(clrIfActive)]</b>
+                        <div class="hidden-sm-up">Values:<br/>true, false</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">&lt;true, false&gt;</td>
+                    <td class="hidden-xs-down">false</td>
+                    <td class="left">
+                        Two-way binding on the state of the tab content. The content of the active
+                        tab will lazily load when set to true, and destroy it when set to false.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>Use tabs for alternate views within the <a routerLink="./sidenav">sidenav</a>
+                or main content area.</p>
+
+            <p>Don’t use tabs to break user interactions into a series of steps. Serial workflows are
+                best presented in a <a routerLink="./wizards">wizard</a>.</p>
+
+            <p>Avoid using tabs in cards and modals.</p>
+
+            <h3 id="presentation">Presentation</h3>
+
+            <p>Tabs appear in a single, non-scrollable row, above their content. The width of each tab
+                is dependent on its label.</p>
+
+            <p>To ensure that all tabs appear in the container, avoid using more than seven tabs and
+                limit labels to one or two words.</p>
+
+            <h3 id="content">Content</h3>
+
+            <p>While the content within tabs is flexible, follow these guidelines for organization and
+                presentation:</p>
+
+            <ul class="list">
+                <li>Ensure that the content in each view is independent of the content in other views.</li>
+                <li>Don’t force users to navigate back and forth to compare data–keep such content
+                    in the same view.</li>
+                <li>Avoid cross-linking between tabs.</li>
+                <li>If the content within a view is broad, divide it into subsections.</li>
+            </ul>
+
+            <h3 id="labels">Labels</h3>
+
+            <ul class="list">
+                <li>Ensure that the labels show a clear relationship between views.</li>
+                <li>Favor nouns over verbs, for example, Settings, Permissions, and Performance.</li>
+                <li>Avoid generic labels such as General or Advanced.</li>
+                <li>Use title-style caps.</li>
+                <li>Avoid using icons in labels.</li>
+            </ul>
+        </div>
+    </article>
+</clr-doc-wrapper>

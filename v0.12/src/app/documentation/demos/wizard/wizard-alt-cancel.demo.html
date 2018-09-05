@@ -1,0 +1,40 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<button class="btn btn-primary" (click)="wizard.open()">Alt-Cancel Wizard</button>
+
+<clr-wizard #wizard
+    [(clrWizardOpen)]="open"
+    [clrWizardSize]="'md'"
+    (clrWizardOnCancel)="doCancel()"
+    [clrWizardPreventDefaultCancel]="true"
+    >
+    <clr-wizard-title>Wizard with alternate cancel</clr-wizard-title>
+
+    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Wizard level alt-cancel</ng-template>
+        <p>Content for step 1</p>
+    </clr-wizard-page>
+
+    <clr-wizard-page (clrWizardPageOnCancel)="pageCustomCancel()"
+        [clrWizardPagePreventDefaultCancel]="true">
+        <ng-template clrPageTitle>Page level alt-cancel</ng-template> <!-- mandatory -->
+        <p *ngIf="!showCancelConfirm">Content for step 2</p>
+        <p *ngIf="showCancelConfirm">
+            <button type="submit" class="btn btn-danger" (click)="doPageCancel()">
+                Click here if you are sure
+            </button>
+        </p>
+    </clr-wizard-page>
+</clr-wizard>
+
+<clr-code-snippet [clrLanguage]="'typescript'" [clrCode]="code"></clr-code-snippet>
+<clr-code-snippet [clrLanguage]="'html'" [clrCode]="html"></clr-code-snippet>

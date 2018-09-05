@@ -1,0 +1,99 @@
+.layout-community {
+    overflow-y: hidden;
+
+    .main-container {
+        overflow-y: hidden;
+    }
+
+    section {
+        width: 100%;
+        padding-left: $bl-1_0;
+        padding-right: $bl-1_0;
+        max-width: baselineRem(44);
+        margin: 0 auto;
+        padding-top: $bl-1_0;
+
+        h3 {
+            margin-bottom: $bl-1_0;
+        }
+    }
+
+    section.community-top-section {
+        padding-top: 0;
+    }
+
+    .social-card {
+        color: #565656;
+        text-align: center;
+
+        &:hover, &:focus, &:active {
+            text-decoration: none;
+        }
+
+        & > .card {
+            width: 240px;
+            margin: 12px auto;
+            padding: 0 $bl-1_0;
+        }
+
+        .card-text {
+            font-size: rem(1);
+        }
+    }
+
+    .community-social-icon {
+        margin-bottom: 33px;
+        margin-top: 8px;
+
+        & > img {
+            height: 64px;
+        }
+    }
+
+    .social-card-socialcast .community-social-icon {
+        // Images from design are not properly sized. Tweaks needed to happen. -- smathis 2016 - 2017/04/21
+        padding-top: 1.3px;
+    }
+
+    .community-team-cards {
+        .row {
+            margin-left: -1 * $bl-1_0;
+            margin-right: -1 * $bl-1_0;
+        }
+
+        .card {
+            margin: 0;
+            background: none;
+            border: 0 none;
+            box-shadow: none;
+            text-align: center;
+            padding: 0 $bl-1_0;
+
+            .card-text {
+                margin: 0 0 12px;
+            }
+        }
+
+        img {
+            width: 124px;
+        }
+    }
+
+    .community-team-name {
+        margin-top: $bl-0_5;
+    }
+
+    .community-team-role {
+        margin-top: 0;
+        font-size: 14px;
+    }
+
+    .community-team-blurb {
+        margin-top: $bl-0_5;
+        text-align: left;
+    }
+}
+
+.contributor-list {
+    column-count: 3;
+}

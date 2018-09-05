@@ -1,0 +1,447 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li breaking-change>
+        <h6>Upgrade to Angular 4</h6>
+        <p>
+            Clarity-angular is now compatible with Angular 4. Please note that Angular 4 requires TypeScript version 2.1 or newer. 
+        </p>
+        <p>
+            For a full list of breaking changes for Angular 4, please refer to their <a href="https://github.com/angular/angular/blob/master/CHANGELOG.md" target="_blank">release notes</a>.
+        </p>
+        <p>
+            After upgrading to Clarity 0.9.0, please add the <code class="clr-code">BrowserAnimationsModule</code> in your module in order for our components with animations to work properly. Similarly, if you have unit tests with those components, plaase add the <code class="clr-code">NoopAnimationsModule</code> in your test module.
+        </p>
+        <p>
+            This is the minimal set of changes you have to make to use clarity-angular 0.9.0. Depending on your own project's dependencies, you might have to upgrade other packages.
+        </p>
+    </li>
+    <li>
+        <h6>Updates to the Datagrid Selection Behavior</h6>
+        <p>
+        Datagrid selection is now preserved when:
+        </p>
+        <ul class="list">
+        <li>The user navigates to a different page in the datagrid</li>
+        <li>The data is updated, provided the smart iterator is used in the datagrid</li>
+        </ul>
+    </li>
+    <li>
+        <h6>Expandable rows for Datagrid</h6>
+        <p>
+            This feature can be used when a Datagrid row has additional data or details
+            that can be shown when interacting with the row. It supports many options, including:
+        </p>
+        <ul class="list">
+            <li>Overall details for the row</li>
+            <li>Per-cell details</li>
+            <li>Replacing the original row rather than expand under it</li>
+            <li>Lazy-loading of details</li>
+        </ul>
+        <p>Here is an example of how to make a row expandable:</p>
+        <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-dg-row *clrDgItems=&quot;let user of users&quot;&gt;
+    &lt;clr-dg-cell&gt;{{user.id}}&lt;/clr-dg-cell&gt;
+    &lt;clr-dg-cell&gt;{{user.name}}&lt;/clr-dg-cell&gt;
+
+    &lt;clr-dg-row-detail *clrIfExpanded&gt;
+        This user likes ducks.
+    &lt;/clr-dg-row-detail&gt;
+&lt;/clr-dg-row&gt;</code></pre>
+
+        <p>
+        If you include the same amount of <code class="clr-code">&lt;clr-dg-cell&gt;</code>
+        elements in the row details as anywhere else in the datagrid, they will properly align
+        as a way to display details for each cell individually.
+        Details are only instantiated when the row becomes expanded, so they are naturally lazy loaded: just make any AJAX
+        call you need in the constructor or <code class="clr-code">ngOnInit()</code> of the component you put inside the
+        <code class="clr-code">*clrIfExpanded</code> structural directive.
+        To notify us that you want a spinner to be displayed while lazy loading, just include a
+        <code class="clr-code">[clrLoading]="myLoadingBoolean"</code> anywhere inside the details or even the row itself.
+        As long as <code class="clr-code">myLoadingBoolean</code> is true, a spinner will be displayed.
+        </p>
+    </li>
+</ul>
+
+<h2>Introducing the new Clarity wizard!</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Clarity wizard (beta)</h6>
+        <p>
+            0.9.0 introduces the beta version of the new and improved wizard component for
+            Clarity Angular. This wizard component has been rebuilt from
+            the ground up with an eye towards preserving as much of the old
+            API as possible to limit breaking changes, learning curves,
+            and migration complexity.
+        </p>
+        <p>
+            The beta wizard gives our users early access to the new
+            wizard so they can gauge the impact of the changes on their
+            applications.
+        </p>
+
+        <p>&nbsp;</p>
+
+        <h6>Migrating from the old to the new wizard</h6>
+        <p>
+            Moving from a 0.8 wizard to a 0.9 wizard involves a few minor
+            steps in the host component’s HTML. For the most basic
+            implementations, this should be all that is required.
+        </p>
+        <p>
+            Advanced implementations of the 0.8 wizard may be impacted by
+            the deprecations and breaking changes listed below. Please
+            examine your own code for impact.
+        </p>
+
+        <p><b>Migration steps</b></p>
+
+        <ul class="list">
+            <li>
+                The wizard title previously placed inside a <code
+                class="clr-code">div.wizard-title</code> element must now
+                be placed within a <code class="clr-code">clr-wizard-title</code>
+                element. This is a straight replace that requires no
+                additional code.
+            </li>
+            <li>
+                Each wizard must now contain a set of <code
+                class="clr-code">clr-wizard-button</code> elements as a direct child
+                of the <code class="clr-code">clr-wizard</code> element that offers 
+                four buttons of the following types: cancel, previous, next, and
+                finish. This set constitutes the default button set that will be
+                used by each page in the wizard if they're not overridden at the
+                page level.
+            </li>
+            <li>
+                Each wizard page must contain a <code
+                class="clr-code">&lt;ng-template pageTitle&gt;</code> element. This
+                element serves as both the page title as well as the text of the
+                nav element associated with the page. Optionally, a
+                <code class="clr-code">&lt;ng-template pageNavTitle&gt;</code> element
+                can be included to give alternate nav text if the page title
+                is too long. If your 0.8 wizard has a <code
+                class="clr-code">clr-wizard-step</code> title that is different
+                from your page title, then you should probably move the text in
+                your <code class="clr-code">clr-wizard-step</code> to a
+                <code class="clr-code">&lt;ng-template pageNavTitle&gt;</code> element
+                inside your <code class="clr-code">clr-wizard-page</code>.
+            </li>
+            <li>
+                <code class="clr-code">clr-wizard-step</code> elements are no longer
+                needed and should be removed.
+            </li>
+        </ul>
+
+        <p><b>0.8 wizard (before)</b></p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;clr-wizard #wizard [(clrWizardOpen)]="open"&gt;
+    &lt;div class="wizard-title"&gt;Wizard Title&lt;/div&gt;
+
+    &lt;clr-wizard-step&gt;Step 1&lt;/clr-wizard-step&gt;
+    &lt;clr-wizard-step&gt;Step 2&lt;/clr-wizard-step&gt;
+    &lt;clr-wizard-step&gt;Step 3&lt;/clr-wizard-step&gt;
+
+    &lt;clr-wizard-page&gt;Content for step 1&lt;/clr-wizard-page&gt;
+    &lt;clr-wizard-page&gt;Content for step 2&lt;/clr-wizard-page&gt;
+    &lt;clr-wizard-page&gt;Content for step 3&lt;/clr-wizard-page&gt;
+&lt;/clr-wizard&gt;
+</code></pre>
+
+        <p><b>0.9 wizard (after)</b></p>
+
+        <pre><code clr-code-highlight="language-html">
+&lt;clr-wizard #wizard [(clrWizardOpen)]="open"&gt;
+    &lt;clr-wizard-title&gt;Wizard Title&lt;/clr-wizard-title&gt;
+
+    &lt;clr-wizard-button type="cancel"&gt;Cancel&lt;/clr-wizard-button&gt;
+    &lt;clr-wizard-button type="previous"&gt;Back&lt;/clr-wizard-button&gt;
+    &lt;clr-wizard-button type="next"&gt;Next&lt;/clr-wizard-button&gt;
+    &lt;clr-wizard-button type="finish"&gt;Finish&lt;/clr-wizard-button&gt;
+
+    &lt;clr-wizard-page&gt;
+        &lt;ng-template clrPageTitle&gt;Title for page 1&lt;/ng-template&gt;
+        &lt;ng-template clrPageNavTitle&gt;Step 1&lt;/ng-template&gt;
+        Content for step 1
+    &lt;/clr-wizard-page&gt;
+
+    &lt;clr-wizard-page&gt;
+        &lt;ng-template clrPageTitle&gt;Title for page 2&lt;/ng-template&gt;
+        &lt;ng-template clrPageNavTitle&gt;Step 2&lt;/ng-template&gt;
+        Content for step 2
+    &lt;/clr-wizard-page&gt;
+
+    &lt;clr-wizard-page&gt;
+        &lt;ng-template clrPageTitle&gt;Title for page 3&lt;/ng-template&gt;
+        &lt;ng-template clrPageNavTitle&gt;Step 3&lt;/ng-template&gt;
+        Content for step 3
+    &lt;/clr-wizard-page&gt;
+&lt;/clr-wizard&gt;
+</code></pre>
+
+        <p>&nbsp;</p>
+
+        <h6>Benefits of the new wizard</h6>
+        <p>
+            The new wizard offers several immediate benefits compared
+            to the 0.8 wizard.
+        </p>
+
+        <ul class="list">
+            <li>
+                Now that users can define their own button sets, the
+                text inside of the buttons can say anything users
+                need them to say.
+            </li>
+            <li>
+                Because the text of our buttons is no longer hardcoded
+                inside the component code, button text can be localized
+                in your applications.
+            </li>
+            <li>
+                Previously the title of a <code 
+                class="clr-code">clr-wizard-page</code> relied on a very
+                specific and non-intuitive DOM and classname combination.
+                Wrapping this into a <code class="clr-code">&lt;ng-template
+                clrPageTitle&gt;</code> makes it easier
+                to manage your DOM structure and allows one element
+                to reflect both the page title and the title in the nav.
+            </li>
+            <li>
+                The 0.8 wizard required that the <code
+                class="clr-code">clr-wizard-step</code> elements be outside
+                of the <code class="clr-code">clr-wizard-page</code> elements.
+                This meant that the order of your pages and nav elements was
+                dependent upon their order inside the wizard. It also introduced
+                a disconnect between the two which could easily lead to one or
+                the other being presented out of order. The new wizard wraps titles
+                inside of <code class="clr-code">clr-wizard-page</code>
+                components, meaning all information about the pages is
+                encapsulated inside the host component.
+            </li>
+        </ul>
+
+        <p>&nbsp;</p>
+
+        <h6>Using the old wizard in 0.9.0</h6>
+        <p>
+             If you need time to update your old wizards to the new 0.9.0 wizards, 
+             Clarity has you covered. All you need to do is 
+             take your old declarations for wizards and wizard pages and change them
+             to <code class="clr-code">clr-wizard-deprecated</code> and
+             <code class="clr-code">clr-wizard-page-deprecated</code>.
+        </p>
+        <p>
+             The objects/classes have likewise been renamed to <code
+             class="clr-code">WizardDeprecated</code> and <code
+             class="clr-code">WizardPageDeprecated</code>, in the event your TypeScript
+             build or UMD complains.
+        </p>
+        <p>
+             No other changes are necessary to keep your old 0.8 wizards in 0.9.0.
+        </p>
+        <p>
+             But note that we are planning to completely remove the old wizards in
+             0.10.0.
+        </p>
+
+        <p>&nbsp;</p>
+
+        <h6>A note about IE10</h6>
+        <p>
+             At present, the new wizard will not work in IE10. There are known
+             issues with the new wizard in IE10 that we are waiting to resolved
+             until after the Clarity team has determined if it will continue
+             support for IE10 beyond 0.9.
+        </p>
+        <p>
+            For the time being, use the deprecated 0.8 wizard to continue IE10
+            support and please make sure to let the Clarity team know if
+            continued IE10 support is important for your product.
+        </p>
+    </li>
+</ul>
+
+<h2>Breaking changes</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li breaking-change>
+        <h6>wizard.selectTab() has been removed</h6>
+        <p>
+             Depending on your use case, <code
+             class="clr-code">wizard.goTo(pageId)</code> or <code
+             class="clr-code">wizard.navService.setCurrentPage(pageObj)</code>
+             is preferred.
+        </p>
+        <p>
+            <code class="clr-code">goTo(pageId)</code> checks if navigation is
+            allowed, based on the state of prior pages. <code
+            class="clr-code">wizard.navService.setCurrentPage(pageObj)</code>
+            just performs navigation.
+        </p>
+    </li>
+    <li breaking-change>
+        <h6>wizard.skipTab() and wizard.unskipTab() have been removed</h6>
+        <p>
+             You can now hide and show pages in the wizard  by using <code
+             class="clr-code">*ngIf</code> on your <code
+             class="clr-code">clr-wizard-page</code> elements.
+        </p>
+    </li>
+    <li breaking-change>
+        <h6>wizard.wizardStepChildren has been removed</h6>
+        <p>
+             The <code class="clr-code">wizardStepChildren</code> QueryList
+             is no longer necessary. You can update, hide, and manage the state
+             of your nav elements by navigating through and manipulating your pages.
+        </p>
+    </li>
+    <li breaking-change>
+        <h6>wizard.wizardPageChildren has been renamed</h6>
+        <p>
+             The <code class="clr-code">wizardPageChildren</code> QueryList
+             is now just <code class="clr-code">wizard.pages</code>.
+        </p>
+    </li>
+    <li breaking-change>
+        <h6>The clrWizardPageErrorFlag input has been removed</h6>
+        <p>
+             The <code class="clr-code">clrWizardPageErrorFlag</code> input has been removed.
+             The previous implementation offered no functional advantages over
+             handling valid page state within a host component.
+        </p>
+    </li>
+    <li breaking-change>
+        <h6>clrWizardPageIsSkipped has been removed</h6>
+        <p>
+             The <code class="clr-code">clrWizardPageIsSkipped</code> input has
+             been removed in favor of the use of <code class="clr-code">ngIf</code>
+             to hide and show pages.
+        </p>
+    </li>
+    <li breaking-change>
+        <h6>clrWizardPageHiddenChange and clrWizardPageSkippedChange have been removed</h6>
+        <p>
+             The <code class="clr-code">clrWizardPageSkippedChange</code>  and <code
+             class="clr-code">clrWizardPageHiddenChange</code>  outputs have been removed
+             now that the improved DOM structure allows for encapsulation and the use of
+             <code class="clr-code">ngIf</code> to hide and show both pages and  nav elements
+             together.
+        </p>
+    </li>
+    <li breaking-change>
+        <h6>The clr-wizard-step component has been removed</h6>
+        <p>
+            The wizard now handles its own stepnav items. There should be no need for users
+            to add or programmatically manipulate them outside of what they can do by
+            navigation or programmatically manipulating a wizard page.
+        </p>
+    </li>
+    <li breaking-change>
+        <code class="clr-code">clrWizardOpenChanged</code> output has
+        been changed to <code class="clr-code">clrWizardOpenChange</code> to
+        better support Angular's expectations with two-way binding.
+    </li>
+    <li breaking-change>
+        <code class="clr-code">clrWizardPageNextDisabledChanged</code> output has
+        been changed to <code class="clr-code">clrWizardPageNextDisabledChange</code> to
+        better support Angular's expectations with two-way binding.
+    </li>
+</ul>
+
+<h2>Other Breaking Changes</h2>
+<ul>
+    <li breaking-change>wizard.id has been removed</li>
+    <li breaking-change>WizardPage.title is now a TemplateRef and not a string</li>
+    <li breaking-change>WizardPage.hasProjectedTitleContent was removed because it was no
+        longer needed</li>
+</ul>
+
+<h2>Deprecations</h2>
+<ul>
+    <li>
+        The <code class="clr-code">wizard.prev()</code> convenience function
+        has been deprecated. We recommend that <code
+        class="clr-code">wizard.previous()</code> be used instead. <code
+        class="clr-code">wizard.prev()</code> still works with the 0.9.0 wizard,
+        however. But support for it will be dropped in the future.
+    </li>
+</ul>
+
+<h2>Known Issues</h2>
+<p>The beta version of the wizard has the following known issues:</p>
+<ul>
+    <li>IE10 browser support</li>
+    <li>
+        An unpredictable conflict when there is an alt-cancel routine at
+        the wizard and page level.
+    </li>
+</ul>
+
+<h2>New Features</h2>
+<p>
+    The new wizard arrives with improved capabilities and new functionality.
+    While we are committed to providing as much documentation as we can, there is
+    no way that we could document all the features of the new wizard before the 0.9.0
+    release.
+</p>
+<p>
+     For undocumented features,
+     the best source of truth is the demo app within
+     the Clarity sourcecode. All new features are presented there for the time being
+     with demonstrations highlighting their use.
+</p>
+<p>
+      A quick rundown of features in the new wizard follows:
+</p>
+<ul>
+    <li>
+        A cornucopia of inputs, outputs, services, and convenience functions all accessible
+        to anyone adding a templateRef onto their <code class="clr-code">clr-wizard</code>
+        declaration.
+    </li>
+    <li>
+         Button group overrides at the page level.
+    </li>
+    <li>
+         Custom buttons that can be assigned any action or routine.
+    </li>
+    <li>
+         Header actions in the title bar of the wizard.
+    </li>
+    <li>
+         A high-level way to subvert all wizard actions, allowing users to create their own
+         previous, next, finish, and cancel routines.
+    </li>
+    <li>
+        Reset functionality that can reset the navigation of the wizard to a pristine state.
+    </li>
+    <li>
+        A number of different navigational functions.
+    </li>
+    <li>
+        "Ghost pages" as in the initial design spec.
+    </li>
+    <li>
+        A static/inline version of the wizard.
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Fixed the click event listener for buttons inside of a button group.
+    </li>
+    <li bug-fix>
+        Fixed animation to value 0 in progress bars in webkit.
+    </li>
+    <li bug-fix>
+        Separators for clr-dg-column components have been correctly positioned.
+    </li>
+</ul>
+
+<h2>Other changes</h2>
+<ul class="list">
+    <li bug-fix>
+        Dropdown Items line-height has been updated to 30px on larger screens and 36px on smaller screens.
+    </li>
+</ul>

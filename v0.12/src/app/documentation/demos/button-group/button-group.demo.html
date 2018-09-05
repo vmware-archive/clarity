@@ -1,0 +1,748 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+
+        <h5 class="component-summary" id="buttons-header">
+            Button groups are for creating collections of similar type action buttons.
+        </h5>
+
+        <div id="design-guidelines">
+            <h3>Design Guidelines</h3>
+            <p>
+                Button groups follow normal <a routerLink="./buttons">Button</a>
+                design guidelines. All Button options regarding classes and sizes apply to
+                Button Groups. All features beflow are available with Solid, Outline and Flat in
+                normal and small sizes.
+            </p>
+
+            <h3>Three different types</h3>
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-4">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group btn-primary">
+                                    <button class="btn">Solid</button>
+                                    <button class="btn">Group</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <p>
+                                Solid button groups direct the user's attention to the
+                                <b>primary actions</b> the application is suggesting the
+                                user take.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-4">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group">
+                                    <button class="btn">Outline</button>
+                                    <button class="btn">Group</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <p>
+                                Outline groups are used to indicate a set of
+                                <b>secondary actions</b> or to reduce the visual
+                                noise on a page.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-4">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group btn-link">
+                                    <button class="btn">Flat</button>
+                                    <button class="btn">Group</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <p>
+                                Flat button groups are used as a set of
+                                <b>tertiary actions</b>. They are also typically
+                                used in Cards and above Datagrids.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Mixed Classes</h3>
+
+            <h5>Button Arrangement</h5>
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia is-do-block">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group btn-primary">
+                                    <button class="btn">Favorite</button>
+                                    <button class="btn btn-success">Add</button>
+                                    <button class="btn btn-danger">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Do</h6>
+                            <p>
+                                Arrange <b>primary</b> actions on the left,
+                                followed by <b>secondary</b> actions, and
+                                <b>warning</b> actions as the last button in
+                                a group.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia is-dont-block">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group btn-primary">
+                                    <button class="btn btn-danger">Delete</button>
+                                    <button class="btn btn-success">Add</button>
+                                    <button class="btn">Favorite</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p>
+                                Arrange <b>warning</b> actions as the first button in a group
+                                or have <b>seconday</b> actions before <b>primary</b> actions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <h5>Group Style</h5>
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia is-do-block">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group btn-primary">
+                                    <button class="btn">Create</button>
+                                    <button class="btn">Favorite</button>
+                                    <button class="btn" disabled>Download</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Do</h6>
+                            <p>
+                                Mix similar styled classes together to suit the
+                                solution's needs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia is-dont-block">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group btn-primary">
+                                    <button class="btn">Create</button>
+                                    <button class="btn">Favorite</button>
+                                    <button class="btn btn-outline-success" disabled>Download</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p>
+                                Mix differently styled classes together,
+                                like solid and outlined.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Icons</h3>
+
+            <h5>Width & Spacing</h5>
+
+            <div class="row">
+
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia is-do-block">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group btn-primary btn-icon">
+                                    <button class="btn">
+                                        <clr-icon shape="plus"></clr-icon>
+                                        <span class="clr-icon-title">Add</span>
+                                    </button>
+                                    <button class="btn">
+                                        <clr-icon shape="favorite"></clr-icon>
+                                        <span class="clr-icon-title">Favorite</span>
+                                    </button>
+                                    <button class="btn">
+                                        <clr-icon shape="download"></clr-icon>
+                                        <span class="clr-icon-title">Download</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Types & Sizes</h6>
+                            <p>
+                                Icon button groups are available in the solid, outline, and flat types. It’s also best to
+                                use the normal (36px) sized ones. This makes them easier to recognize and to click.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia is-dont-block">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group btn-primary btn-sm btn-icon">
+                                    <button class="btn">
+                                        <clr-icon shape="plus"></clr-icon>
+                                        <span class="clr-icon-title">Add</span>
+                                    </button>
+                                    <button class="btn">
+                                        <clr-icon shape="favorite"></clr-icon>
+                                        <span class="clr-icon-title">Favorite</span>
+                                    </button>
+                                    <button class="btn">
+                                        <clr-icon shape="download"></clr-icon>
+                                        <span class="clr-icon-title">Download</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p>
+                                Use small icon buttons in most cases. They are difficult to see and distinguish what
+                                the icon is or represents. They also create smaller click targets, making them harder to
+                                click.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group btn-primary">
+                                    <button class="btn">
+                                        <clr-icon shape="plus"></clr-icon>
+                                        Add
+                                    </button>
+                                    <button class="btn">
+                                        <clr-icon shape="favorite"></clr-icon>
+                                        Favorite
+                                    </button>
+                                    <button class="btn">
+                                        <clr-icon shape="download"></clr-icon>
+                                        Download
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>With Text</h6>
+                            <p>
+                                If you have the space, adding text helps users understand the action. Start icon buttons
+                                with icons and follow with text.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia is-dont-block">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group btn-primary">
+                                    <button class="btn">
+                                        Add
+                                        <clr-icon shape="plus"></clr-icon>
+                                    </button>
+                                    <button class="btn">
+                                        Favorite
+                                        <clr-icon shape="favorite"></clr-icon>
+                                    </button>
+                                    <button class="btn">
+                                        Download
+                                        <clr-icon shape="download"></clr-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p>
+                                Start icon buttons with text and follow with icon. This makes them more difficult to scan
+                                quickly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Overflow</h3>
+
+            <p>
+                Overflow is used when the button group is larger than its containing space, or used
+                to preserve space. The overflow is configurable so you can assign button actions to the
+                dropdown menu.
+            </p>
+
+            <h5>Interaction</h5>
+
+            <ul class="list">
+                <li>
+                    Overflow button is shown below as an ellipsis button in the button
+                    group and is the last position to the right
+                </li>
+                <li>Clicking on the ellipsis will show the overflow dropdown menu</li>
+            </ul>
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block not-centered" style="min-height:172px">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <div class="btn-group btn-primary">
+                                    <button class="btn">
+                                        Create
+                                    </button>
+                                    <button class="btn">
+                                        Favorite
+                                    </button>
+                                    <div class="btn-group-overflow open">
+                                        <button class="btn dropdown-toggle">
+                                            <clr-icon shape="ellipsis-horizontal"></clr-icon>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <button class="btn">Download</button>
+                                            <button class="btn">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5>Icons</h5>
+
+            <ul class="list">
+                <li>
+                    Button groups with text and icons, or just icons, will have text show in
+                    the dropdown menu
+                </li>
+                <li>Text for each action icon is needed for overflow to work properly</li>
+            </ul>
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block not-centered" style="min-height:172px">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <div class="btn-group btn-primary">
+                                    <button class="btn">
+                                        <clr-icon shape="plus"></clr-icon>
+                                        Add
+                                    </button>
+                                    <button class="btn">
+                                        <clr-icon shape="favorite"></clr-icon>
+                                        Favorite
+                                    </button>
+                                    <div class="btn-group-overflow open">
+                                        <button class="btn dropdown-toggle">
+                                            <clr-icon shape="ellipsis-horizontal"></clr-icon>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <button class="btn">
+                                                <clr-icon shape="download"></clr-icon>
+                                                Download
+                                            </button>
+                                            <button class="btn">
+                                                <clr-icon shape="refresh"></clr-icon>
+                                                Refresh
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block not-centered" style="min-height:172px">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group btn-primary btn-icon">
+                                    <button class="btn">
+                                        <clr-icon shape="plus"></clr-icon>
+                                        <span class="clr-icon-title">Add</span>
+                                    </button>
+                                    <button class="btn">
+                                        <clr-icon shape="favorite"></clr-icon>
+                                        <span class="clr-icon-title">Favorite</span>
+                                    </button>
+                                    <div class="btn-group-overflow open">
+                                        <button class="btn dropdown-toggle">
+                                            <clr-icon shape="ellipsis-horizontal"></clr-icon>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <button class="btn">
+                                                <clr-icon shape="download"></clr-icon>
+                                                <span class="clr-icon-title">Download</span>
+                                            </button>
+                                            <button class="btn">
+                                                <clr-icon shape="refresh"></clr-icon>
+                                                <span class="clr-icon-title">Refresh</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Multiple Groups</h3>
+
+            <p>Use when you want similar actions to be grouped together and separated from others.</p>
+
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia is-do-block">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group btn-primary" style="margin-right: 12px">
+                                    <button class="btn">Create</button>
+                                    <button class="btn">Edit</button>
+                                </div>
+                                <div class="btn-group btn-danger">
+                                    <button class="btn">Delete</button>
+                                    <button class="btn">Stop</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Do</h6>
+                            <p>
+                                Lead with <b>primary</b> actions followed by
+                                <b>secondary</b> actions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia is-dont-block">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group btn-danger" style="margin-right: 12px">
+                                    <button class="btn">Delete</button>
+                                    <button class="btn">Stop</button>
+                                </div>
+                                <div class="btn-group btn-primary">
+                                    <button class="btn">Create</button>
+                                    <button class="btn">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p>
+                                Lead with <b>secondary</b> actions followed by
+                                <b>primary</b> actions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Checkbox</h3>
+
+            <p>
+                Use when a small list of options can be selected from, similar to the
+                <a routerLink="./checkboxes">Checkbox</a> component
+            </p>
+            <ul class="list">
+                <li>blue indicates an option is selected, white (outline) indicates an unselected option</li>
+                <li>user can click the button to select, and click again to deselect</li>
+                <li>can be configured with preselected options</li>
+            </ul>
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia is-do-block">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group">
+                                    <clr-checkbox [clrChecked]="true" class="btn">Apples</clr-checkbox>
+                                    <clr-checkbox [clrChecked]="true" class="btn">Oranges</clr-checkbox>
+                                    <clr-checkbox class="btn">Kiwis</clr-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Do</h6>
+                            <p>
+                                Use option labels that are 1-3 short words.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia is-dont-block">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group">
+                                    <clr-checkbox [clrChecked]="true" class="btn">Apples</clr-checkbox>
+                                    <clr-checkbox class="btn">Fresh Local Gold Kiwis</clr-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p>
+                                Use option labels that are long or more than 3 words.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Radio</h3>
+
+            <p>
+                Use when selecting one option from a small list of options, similar to the
+                <a routerLink="./radios">Radio</a> component
+            </p>
+            <ul class="list">
+                <li>blue indicates an option is selected, white (outline) indicates an unselected option</li>
+                <li>user can click the button to select, and click again to deselect</li>
+                <li>can be configured with preselected options</li>
+            </ul>
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia is-do-block">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group">
+                                    <div class="radio btn">
+                                        <input type="radio" name="btn-group-radios" id="btn-radio-1" checked>
+                                        <label for="btn-radio-1">Pears</label>
+                                    </div>
+                                    <div class="radio btn">
+                                        <input type="radio" name="btn-group-radios" id="btn-radio-2">
+                                        <label for="btn-radio-2">Kiwis</label>
+                                    </div>
+                                    <div class="radio btn">
+                                        <input type="radio" name="btn-group-radios" id="btn-radio-3">
+                                        <label for="btn-radio-3">Oranges</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Do</h6>
+                            <p>
+                                Use option labels that are 1-3 short words.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia is-dont-block">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <div class="btn-group">
+                                    <div class="radio btn">
+                                        <input type="radio" name="btn-group-radios-1" id="btn-radio-4" checked>
+                                        <label for="btn-radio-4">Pears</label>
+                                    </div>
+                                    <div class="radio btn">
+                                        <input type="radio" name="btn-group-radios-1" id="btn-radio-5">
+                                        <label for="btn-radio-5">Fresh Local Gold Kiwis</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p>
+                                Use option labels that are long or more than 3 words.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="code-examples">
+            <h3 id="examples">Code &amp; Examples</h3>
+
+            <p>Clarity defines three button group types:</p>
+            <ul class="list">
+                <li><b>Solid</b>. A solid background with light text. These buttons are prominent on the page.</li>
+                <li><b>Outline.</b> A transparent background with colored border and text. On hover, the button fills with
+                    color.
+                </li>
+                <li><b>Flat.</b> Text in Action Blue, used to indicate an action.</li>
+            </ul>
+
+            <h4>Basic Structure</h4>
+
+            <clr-button-group-basic-structure-demo></clr-button-group-basic-structure-demo>
+
+            <h4>Types</h4>
+
+            <p>
+                Clarity <a routerLink="./buttons">Buttons</a> primary, outline and flat
+                classes can be used along with the <code class="clr-code">.btn-group</code> class to style the
+                buttons in a Button Group.
+            </p>
+
+            <clr-button-group-types-demo></clr-button-group-types-demo>
+
+            <h4>Mixed</h4>
+
+            <p>
+                Override a Button type in a Button Group by extending the Button type class
+                directly on the corresponding Button.
+            </p>
+
+            <clr-button-group-mixed-demo></clr-button-group-mixed-demo>
+
+            <h4>Icons</h4>
+
+            <p>
+                Text wrapped in <code class="clr-code">.clr-icon-title</code> is only displayed
+                in the Overflow Menu.
+            </p>
+
+            <clr-button-group-icons-demo></clr-button-group-icons-demo>
+
+            <h4>Checkbox</h4>
+
+            <clr-button-group-checkbox-demo></clr-button-group-checkbox-demo>
+
+            <h4>Radio</h4>
+
+            <clr-button-group-radio-demo></clr-button-group-radio-demo>
+
+            <h2 id="angular-component">Angular Component</h2>
+
+            <h3 id="summary-of-options">Summary of Options</h3>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="left hidden-xs-down">Values</th>
+                    <th class="left hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[clrInMenu]</b>
+                        <div class="left hidden-sm-up">Type: Boolean</div>
+                        <div class="left hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="left hidden-xs-down">true, false</td>
+                    <td class="left hidden-xs-down">false</td>
+                    <td class="left">
+                        Input which determines if the button is in the menu or inline.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrMenuPosition]</b>
+                        <div class="hidden-sm-up">Values:<br/>Direction classnames</div>
+                        <div class="hidden-sm-up">Default: "bottom-left"</div>
+                    </td>
+                    <td class="left hidden-xs-down">
+                        CSS dropdown menu direction classnames.
+                    </td>
+                    <td class="left hidden-xs-down">Bottom-left</td>
+                    <td class="left">Sets the direction in which the menu will open.</td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[name]</b>
+                        <div class="hidden-sm-up">Values:<br/>String</div>
+                        <div class="hidden-sm-up">N/A</div>
+                    </td>
+                    <td class="left hidden-xs-down">
+                        String
+                    </td>
+                    <td class="left hidden-xs-down">N/A</td>
+                    <td class="left">adds a name attribute with the value specified in the input</td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[type]</b>
+                        <div class="hidden-sm-up">Values:<br/>String</div>
+                        <div class="hidden-sm-up">submit</div>
+                    </td>
+                    <td class="left hidden-xs-down">
+                        String
+                    </td>
+                    <td class="left hidden-xs-down">submit</td>
+                    <td class="left">adds a type attribute with the value specified in the input</td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[disabled]</b>
+                        <div class="hidden-sm-up">Values:<br/>boolean</div>
+                        <div class="hidden-sm-up">false</div>
+                    </td>
+                    <td class="left hidden-xs-down">
+                        boolean
+                    </td>
+                    <td class="left hidden-xs-down">false</td>
+                    <td class="left">adds a disabled attribute if the input is set to true</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p>
+                Use the <code class="clr-code">clrInMenu</code> input to determine if a Button
+                belongs in the Overflow Menu or not.
+            </p>
+
+            <clr-button-group-angular-basic-structure-demo></clr-button-group-angular-basic-structure-demo>
+
+            <h4>Directions</h4>
+
+            <clr-button-group-angular-directions-demo></clr-button-group-angular-directions-demo>
+        </div>
+
+    </article>
+</clr-doc-wrapper>

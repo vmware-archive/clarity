@@ -1,0 +1,97 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMWare, Inc. All Rights Reserved.
+  ~ This software is released under MIT License.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6 breaking-change>Angular 6 support</h6>
+        <p>
+            Clarity has updated to run with Angular 6 and Rxjs 6 without the need for the rxjs-compat layer. The 0.12 release is only
+            certified to work with Angular 6 and above.
+        </p>
+    </li>
+    <li>
+        <h6>Support for Angular CLI <code class="clr-code">ng add</code></h6>
+        <p>
+            Clarity can now be installed using Angular CLI v6+ by simply running the following:
+            <code class="clr-code">ng add @clr/angular</code>. You can use this
+            with any Angular CLI project, even if you've already started to work on it.
+        </p>
+    </li>
+    <li>
+        <h6>Redesigned Forms</h6>
+        <p>Forms have been redesigned for better usability and developer experience. Currently they are only fully supported
+            in @clr/ui, but new Angular components will be arriving during 0.12 for important form controls like inputs,
+            passwords, and selects.</p>
+    </li>
+    <li breaking-change>
+        <h6>New Spinner Button</h6>
+        <p>A new type of button is now available, that allows you to set the button to a spinner while an asynchronous event
+            occurs (such as saving or loading). You can read more about the details here
+            <a href="https://github.com/vmware/clarity/issues/1488">1488</a> and updated documentation can be found <a
+                    routerLink="/documentation/v0.12/buttons" >here</a> under the Loading Buttons section.
+        </p>
+    </li>
+    <li>
+        <h6>Refreshed Grid</h6>
+        <p>
+            Our previous grid had some limitations and was based off Bootstrap 4.0.0-alpha.5. The new grid comes prefixed with
+            <code class="clr-code">clr-</code> so it doesn't conflict with other grid libraries and gives us better control. Another advantage is it will allow
+            us to solve a number of issues with popover clipping (due to position: relative) with the old grid. Refer to our
+            <a routerLink="/documentation/v0.12/grid">documentation</a> for more details.
+        </p>
+    </li>
+    <li>
+        <h6>
+            Input and form control validation components
+        </h6>
+        <p>
+            Angular input form control, which has built in validation support for template-driven or reactive forms. This is the first
+            of the upcoming Angular form controls.
+        </p>
+    </li>
+    <li breaking-change>
+        <h6>Shape deprecations in Clarity Icons</h6>
+        <p>
+            Clarity Icons v0.12 has deprecated some icons in their respective sets and moved to other sets:
+        </p>
+        <ul>
+            <li><code class="clr-code">wand</code> has been moved to "essential-shapes" from "media-shapes"</li>
+            <li><code class="clr-code">angle-double</code> has been moved to "core-shapes" from "essential-shapes"</li>
+            <li><code class="clr-code">calendar</code> and <code class="clr-code">event</code> have been moved to "core-shapes" from "social-shapes"</li>
+            <li><code class="clr-code">bar-chart</code> and <code class="clr-code">line-chart</code> have been moved to "chart-shapes" from "technology-shapes"</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>Deprecations</h2>
+<p>
+    To move forward, this release comes with a number of deprecations that will be removed in future versions of Clarity. You
+    should not use these features in new development, and plan for rewriting where necessary.
+</p>
+<ul>
+    <li>
+        <b>Code Highlight</b> will be removed, so if you happen to use it you may copy our implementation into your codebase
+        or find an alternative that suits your needs.</li>
+    <li>
+        <b>Wizard Ghost Pages</b> will be removed, which this is an undocumented feature that we're removing.</li>
+</ul>
+
+<p>We also revamped our internal build tooling to better align with Angular's tools. Some of the early betas were published
+    just to test functionality, and this was the first real beta.</p>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Updated paths for theme SCSS files so developers can again use custom themes. Apps must now add
+        <code class="clr-code"><span class="nobr">--include-path=node_modules</span></code> to their SCSS build step to correctly build a custom theme. See Themes documentation for more details. (<a href="https://github.com/vmware/clarity/pull/2336"
+                                                                                                                                                                                                       target="_blank">#2336</a>)
+    </li>
+    <li bug-fix>
+        Fixed an issue where the Date Picker Output was not emitted when the user modified the Date Input manually.(<a href="https://github.com/vmware/clarity/pull/2334"
+                                                                                                                       target="_blank">#2334</a>)
+    </li>
+</ul>

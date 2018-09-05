@@ -1,0 +1,41 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Separated Clarity Icons into multiple files</h6>
+        <p>As the Clarity Icons package gains more and more icons, it's not ideal for users to load them all
+            because all of them are bundled into a single JS file, clarity-icons.min.js. Thus, we've divided our
+            Clarity Icons shapes into four different categories: Core, Basic, Social, and Technology. Each of
+            these categories has its individual file (core-shapes.js, basic-shapes.js, social-shapes.js, and
+            technology-shapes.js) so that now users could load only the group of shapes they need to use after
+            loading clarity-icons-lite.umd.js, which is the light version of clarity-icons.min.js. For
+            example:</p>
+<pre><code clr-code-highlight="language-html">
+&lt;script src=&quot;path/to/node_modules/clarity-icons/clarity-icons-lite.umd.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;path/to/node_modules/clarity-icons/shapes/social-shapes.umd.js&quot;&gt;&lt;/script&gt;</code></pre>
+        <p>
+            The typescript equivalent of the code above is here:
+        </p>
+<pre><code clr-code-highlight="language-typescript">
+import "clarity-icons"
+import "clarity-icons/shapes/social-shapes"</code></pre>
+        <p>
+            Just one more thing to note here is that by default clarity-icons-lite.umd.js includes Core
+            shapes.
+        </p>
+    </li>
+    <li>
+        <h6>Sketch Template</h6>
+        <p>
+            The Sketch Template for Clarity v0.8.2 has been released. You can download the
+            Sketch Template
+            <a sketchTemplateLink version="0.8.2">here</a>
+        </p>
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>
+        Adjusted wizard styles to accommodate long titles.
+    </li>
+</ul>

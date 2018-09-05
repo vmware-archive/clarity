@@ -196,6 +196,7 @@ Finally, and this is harder to put in black-or-white terms, keep the API as simp
 ### Code style
 
 * If the template is just a few lines, it should go inline in the component's metadata with `template`. Otherwise, it should be in a separate HTML file using `templateUrl`.
+* Make sure to use CSS classnames with your components. We avoid using component tags in our CSS selectors. This often means adding a `host: { '[class.your-classname-here]': 'true' }` to your component definition. And in the CSS you would then use the classname defined on the host in your CSS selectors instead of the component element tag. So instead of using `clr-signpost { .. }` to apply styles to a component, you would use `.signpost { .. }`.
 * Bindings that are always true should be declared directly in the component's metadata using the `host` option. Other bindings should be on the corresponding property or getter, using the `@HostBinding` annotation.
 * Host listeners should always use the `@HostListener` annotation.
 * Methods used as event listeners in a component or directive should be named in a way that describe **what** they do, not **when** they trigger. For instance, if a method is used when the user clicks a button to toggle the selection, the method name should **not** be `onClick()`, it should be `toggleSelection()`. Here are more typical method names that are commonly used but that you should avoid: `onClick()`, `onHover()`, `onFocus()`, `onScroll()`, etc.
@@ -218,7 +219,7 @@ Finally, and this is harder to put in black-or-white terms, keep the API as simp
 ## Static UI
 
 * Remove unused HTML wrappers that might be left from previous prototypes of your code.
-* Avoid styling elements themselves, use CSS classes.
+* Avoid styling elements themselves, use CSS classes. This also means applying CSS styles to the classes on your Angular components. For example, don't use `clr-signpost > .btn` as a selector in your CSS. Use `.signpost > .btn` instead.
 * Keep your CSS selectors as flat as possible, try not to exceed 2 levels (e.g. `.parent .child`).
 * Do not hardcode colors, use the SCSS variables provided in `color/_variables.color.scss`.
 * Only use `rem` and `%` sizes. The only exception is `1px` borders that should remain 1px even on larger font sizes.

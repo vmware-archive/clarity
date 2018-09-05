@@ -2,6 +2,11 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@mixin square-off-btngroup-btns($dir: left) {
+  border-top-#{$dir}-radius: 0;
+  border-bottom-#{$dir}-radius: 0;
+}
+
 @include exports('button-group.clarity') {
   .btn-group {
     display: inline-flex;
@@ -10,23 +15,36 @@
     .btn {
       margin: 0;
       vertical-align: top;
+    }
 
+    .btn {
       &:not(:first-child) {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
+        @include square-off-btngroup-btns(left);
       }
 
       &:not(:last-child) {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+        @include square-off-btngroup-btns(right);
       }
     }
 
-    &.btn-primary .btn:not(:last-child),
-    &.btn-success .btn:not(:last-child),
-    &.btn-danger .btn:not(:last-child),
-    &.btn-warning .btn:not(:last-child) {
-      margin: 0 $clr-default-borderwidth 0 0;
+    .tooltip {
+      &:not(:first-child) .btn {
+        @include square-off-btngroup-btns(left);
+      }
+
+      &:not(:last-child) .btn {
+        @include square-off-btngroup-btns(right);
+      }
+    }
+
+    &.btn-primary,
+    &.btn-success,
+    &.btn-danger,
+    &.btn-warning {
+      .tooltip:not(:last-child) .btn,
+      .btn:not(:last-child) {
+        margin: 0 $clr-default-borderwidth 0 0;
+      }
     }
 
     //I couldn't reduce the nesting here :-(
@@ -52,6 +70,10 @@
 
     //To avoid double borders
     .btn + .btn {
+      border-left: none;
+    }
+
+    .tooltip:not(:first-child) .btn {
       border-left: none;
     }
 

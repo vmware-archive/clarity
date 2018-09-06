@@ -21,11 +21,11 @@
                 </clr-select-container>
                 <clr-input-container>
                     <input clrInput placeholder="Username"  name="username" [(ngModel)]="formData.username"  required />
-                    <clr-control-error>Username is required </clr-control-error>
+                    <clr-control-error *clrIfError="'required'">Username is required </clr-control-error>
                 </clr-input-container>
                 <clr-password-container>
                     <input clrPassword placeholder="password" name="password" [(ngModel)]="formData.password" required />
-                    <clr-control-error>Password is required</clr-control-error>
+                    <clr-control-error *clrIfError="'required'">Password is required</clr-control-error>
                 </clr-password-container>
 
                 <clr-checkbox-container>

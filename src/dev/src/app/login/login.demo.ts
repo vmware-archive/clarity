@@ -6,4 +6,10 @@
 import { Component } from '@angular/core';
 
 @Component({ selector: 'clr-login-demo', templateUrl: './login.demo.html' })
-export class LoginDemo {}
+export class LoginDemo {
+  formData = {
+    userType: 'Local Users',
+    username: '',
+    password: '',
+  };
+}

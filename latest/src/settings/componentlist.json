@@ -142,7 +142,7 @@
         },
         {
             "url": "forms",
-            "text": "Forms (Layout)",
+            "text": "Forms",
             "type": "component",
             "ux": 20,
             "ui": 20,

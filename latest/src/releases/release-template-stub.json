@@ -1,8 +1,10 @@
 {
+    "0.13.0": "src/releases/0.13/0.13.0.html",
     "0.13.0-rc.1": "src/releases/0.13/0.13.0-rc.1.html",
     "0.13.0-beta.2": "src/releases/0.13/0.13.0-beta.2.html",
     "0.13.0-beta.1": "src/releases/0.13/0.13.0-beta.1.html",
 
+    "0.12.12": "src/releases/0.12/0.12.12.html",
     "0.12.11": "src/releases/0.12/0.12.11.html",
     "0.12.10": "src/releases/0.12/0.12.10.html",
     "0.12.9": "src/releases/0.12/0.12.9.html",

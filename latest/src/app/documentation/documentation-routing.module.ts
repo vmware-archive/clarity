@@ -152,14 +152,6 @@ const documentationRoutes: Routes = [
                 }
             },
             {
-                path: "input-fields",
-                loadChildren: "app/documentation/demos/input-fields/input-fields.demo.module#InputFieldsDemoModule",
-                data: {
-                    bodyClass: "input-fields",
-                    browserTitle: "Input Fields"
-                }
-            },
-            {
                 path: "labels",
                 loadChildren: "app/documentation/demos/labels/labels.demo.module#LabelsDemoModule",
                 data: {

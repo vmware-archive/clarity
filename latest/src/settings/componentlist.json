@@ -184,16 +184,6 @@
             "newLayout": true
         },
         {
-            "url": "input-fields",
-            "text": "Input Fields",
-            "type": "component",
-            "ux": 20,
-            "ui": 20,
-            "core": -1,
-            "ng": -1,
-            "dox": 20
-        },
-        {
             "url": "labels",
             "text": "Labels",
             "type": "component",

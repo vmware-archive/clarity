@@ -307,8 +307,8 @@
             "dox": 5
         },
         {
-            "url": "select-boxes",
-            "text": "Select Boxes",
+            "url": "select",
+            "text": "Select",
             "type": "component",
             "ux": 20,
             "ui": 20,

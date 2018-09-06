@@ -216,11 +216,11 @@ const documentationRoutes: Routes = [
                 }
             },
             {
-                path: "select-boxes",
-                loadChildren: "app/documentation/demos/selects/selects.demo.module#SelectsDemoModule",
+                path: "select",
+                loadChildren: "app/documentation/demos/select/select.demo.module#SelectDemoModule",
                 data: {
                     bodyClass: "page-select-boxes",
-                    browserTitle: "Select Boxes"
+                    browserTitle: "Select"
                 }
             },
             {

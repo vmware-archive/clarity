@@ -5,10 +5,10 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from "@clr/angular";
+import {ClarityModule, ClrFormsNextModule} from "@clr/angular";
+import {FormsModule} from "@angular/forms";
 
-import {SelectsDemo} from "./selects.demo";
-import {SelectTypesDemo} from "./select-types.demo";
+import {SelectDemo} from "./select.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
 import {UtilsModule} from "../../../utils/utils.module";
@@ -17,17 +17,18 @@ import {UtilsModule} from "../../../utils/utils.module";
     imports: [
         CommonModule,
         ClarityModule,
+        ClrFormsNextModule,
+        FormsModule,
+        RouterModule.forChild([{path: "", component: SelectDemo}]),
         DocWrapperModule,
-        RouterModule.forChild([{path: "", component: SelectsDemo}]),
         UtilsModule
     ],
     declarations: [
-        SelectsDemo,
-        SelectTypesDemo
+        SelectDemo
     ],
     exports: [
-        SelectsDemo
+        SelectDemo
     ]
 })
-export class SelectsDemoModule {
+export class SelectDemoModule {
 }

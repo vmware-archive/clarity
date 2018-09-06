@@ -287,7 +287,7 @@
             "dox": 20
         },
         {
-            "url": "radios",
+            "url": "radio",
             "text": "Radio Buttons",
             "type": "component",
             "ux": 20,

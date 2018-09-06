@@ -208,10 +208,10 @@ const documentationRoutes: Routes = [
                 }
             },
             {
-                path: "radios",
-                loadChildren: "app/documentation/demos/radios/radios.demo.module#RadiosDemoModule",
+                path: "radio",
+                loadChildren: "app/documentation/demos/radio/radio.demo.module#RadioDemoModule",
                 data: {
-                    bodyClass: "page-radios",
+                    bodyClass: "page-radio",
                     browserTitle: "Radio Buttons"
                 }
             },

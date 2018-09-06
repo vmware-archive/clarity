@@ -5,10 +5,10 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule} from '@clr/angular';
+import {ClarityModule, ClrFormsNextModule} from "@clr/angular";
+import {FormsModule} from "@angular/forms";
 
-import {RadiosDemo} from "./radios.demo";
-import {RadiosTypesDemo} from "./radios-types.demo";
+import {RadioDemo} from "./radio.demo";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
 import {RouterModule} from "@angular/router";
 import {UtilsModule} from "../../../utils/utils.module";
@@ -17,17 +17,18 @@ import {UtilsModule} from "../../../utils/utils.module";
     imports: [
         CommonModule,
         ClarityModule,
+        ClrFormsNextModule,
+        FormsModule,
+        RouterModule.forChild([{path: "", component: RadioDemo}]),
         DocWrapperModule,
-        RouterModule.forChild([{path: "", component: RadiosDemo}]),
         UtilsModule
     ],
     declarations: [
-        RadiosTypesDemo,
-        RadiosDemo
+        RadioDemo
     ],
     exports: [
-        RadiosDemo
+        RadioDemo
     ]
 })
-export class RadiosDemoModule {
+export class RadioDemoModule {
 }

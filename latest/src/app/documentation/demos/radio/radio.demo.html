@@ -1,0 +1,204 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="summary">
+            Radio inputs radio buttons, users can select one option from a group of options.
+        </h5>
+
+        <h2 id="forms-code-samples">Angular Radio Component</h2>
+
+        <p>If you are using Angular, the recommended approach is to always use the <code class="clr-code">ClrRadio</code>
+            directive on your radio buttons to help manage the form control. By using <code class="clr-code">ClrRadio</code>,
+            you'll automatically be able to leverage built in validation, helper text, and layout features in forms.</p>
+
+        <div class="alert alert-info">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        The forms features described here are not part of the main <code class="clr-code">ClarityModule</code>
+                        in this release. You have to opt into them by including the additional <code class="clr-code">ClrFormsNextModule</code>
+                        in your module imports.
+                    </span>
+                    <div class="alert-actions">
+                        <a routerLink="forms">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4>Basic radio button</h4>
+
+        <p>While it is possible to create a radio button without a label, the cases are rare. However, it is possible
+            by just adding <code class="clr-code">clrRadio</code> to your radio button to wire up the
+            directive. Notice, it is necessary to add <code class="clr-code">type="radio"</code>.</p>
+
+        <p></p>
+
+        <input type="radio" clrRadio />
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="ngBasic"></clr-code-snippet>
+
+        <h4>Labels</h4>
+
+        <p>For anything beyond a standalone radio button, you'll need to wrap your radios with the <code class="clr-code">ClrRadioWrapper</code>
+            component when you include a label. This manages the label and display of the radio button for you.
+        </p>
+
+        <p></p>
+
+        <clr-radio-wrapper>
+            <input type="radio" clrRadio name="test2" />
+            <label>Option 1</label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+            <input type="radio" clrRadio name="test2" />
+            <label>Option 2</label>
+        </clr-radio-wrapper>
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="ngLabel"></clr-code-snippet>
+
+        <h4>Helper and error messages</h4>
+
+        <p>To leverage helper and validation messages, you'll need to wrap all of the radios inside of a <code class="clr-code">ClrRadioContainer</code>
+            component. The radio button container tracks the the validations placed on a radio button, such as <code
+                class="clr-code">required</code>
+            or even custom built validators in Angular. Under the hood, it looks at the <code class="clr-code">NgControl</code>
+            values to determine the control validitity, and display the helper text or error message accordingly.</p>
+
+        <p>Note: the validation in this example only displays an error after you focus and leave focus without
+            selecting a value. The easiest way to do this is to highlight the text in this paragraph, and hit tab a few
+            times to change the focus.</p>
+
+        <p></p>
+
+        <clr-radio-container>
+            <clr-radio-wrapper>
+                <input type="radio" clrRadio name="test3" required [(ngModel)]="exampleOne" />
+                <label>Option 1</label>
+            </clr-radio-wrapper>
+            <clr-radio-wrapper>
+                <input type="radio" clrRadio name="test3" required [(ngModel)]="exampleOne" />
+                <label>Option 2</label>
+            </clr-radio-wrapper>
+            <clr-control-helper>Helper text</clr-control-helper>
+            <clr-control-error>This field is required!</clr-control-error>
+        </clr-radio-container>
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="ngHelpers"></clr-code-snippet>
+
+
+
+
+        <h2 id="css-component">CSS Radio Component</h2>
+
+        <p>Radio buttons can be used without Angular, but without some of the automatic interactivity. If you intend to
+            create
+            your own components, here are the basic features you'll need to build out.</p>
+
+        <h4>Basic radio button</h4>
+
+        <p>This is the minimal markup needed to style the radio button control by wrapping it with the an element with
+            the
+            <code class="clr-code">clr-radio-wrapper</code> class. You must then put the input first, then the label
+            like you see below (the CSS selectors are specific about this ordering). You'll want to tie the input and
+            label together by providing an id for the label to connect. Ensure you add the <code class="clr-code">clr-radio</code>
+            class to the radio button as well.</p>
+
+        <p></p>
+
+        <div class="clr-radio-wrapper">
+            <input type="radio" id="radio1" name="radio-basic" class="clr-radio">
+            <label for="radio1">My choice</label>
+        </div>
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="uiBasic"></clr-code-snippet>
+
+        <h4>Full input display</h4>
+
+        <p>Each form control has a <code class="clr-code">.clr-form-control</code> wrapper, as well as a specific DOM
+            structure necessary to layout the form control as desired. This works with all layout options as well
+            without needing to change the DOM structure in any way.</p>
+
+        <p></p>
+
+        <div class="clr-form-control">
+            <label class="clr-control-label">Basic radio</label>
+            <div class="clr-control-container">
+                <div class="clr-radio-wrapper">
+                    <input type="radio" id="vertical-radio1" name="radio-full" class="clr-radio">
+                    <label for="vertical-radio1" class="clr-control-label">option 1</label>
+                    <input type="radio" id="vertical-radio2" name="radio-full" class="clr-radio">
+                    <label for="vertical-radio2" class="clr-control-label">option 2</label>
+                    <input type="radio" id="vertical-radio3" name="radio-full" class="clr-radio">
+                    <label for="vertical-radio3" class="clr-control-label">option 3</label>
+                </div>
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                <span class="clr-subtext">Helper Text</span>
+            </div>
+        </div>
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="uiFull"></clr-code-snippet>
+
+        <h4>Error state</h4>
+
+        <p>To signify an error state, you need to add the <code class="clr-code">.clr-error</code> class to the <code
+                class="clr-code">.clr-control-container</code> element. This will show the <code class="clr-code">.clr-validate-icon</code>
+            and turn the <code class="clr-code">.clr-subtext</code> message to red. If you have helper text that needs
+            to change to error content, you'll have to handle the hiding and showing of that content inside of the
+            <code class="clr-code">.clr-subtext</code> element.</p>
+
+        <p></p>
+
+        <div class="clr-form-control">
+            <label class="clr-control-label">Basic radio</label>
+            <div class="clr-control-container clr-error">
+                <div class="clr-radio-wrapper">
+                    <input type="radio" id="vertical-radio1" name="radio-error" class="clr-radio">
+                    <label for="vertical-radio1" class="clr-control-label">option 1</label>
+                    <input type="radio" id="vertical-radio2" name="radio-error" class="clr-radio">
+                    <label for="vertical-radio2" class="clr-control-label">option 2</label>
+                    <input type="radio" id="vertical-radio3" name="radio-error" class="clr-radio">
+                    <label for="vertical-radio3" class="clr-control-label">option 3</label>
+                </div>
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                <span class="clr-subtext">Error message</span>
+            </div>
+        </div>
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="uiError"></clr-code-snippet>
+
+
+
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>Use radio buttons when you want users to see all available options and the list of
+                options is small. For mutually exclusive options, consider a <a routerLink="../../../checkboxes">checkbox</a>
+                or <a routerLink="../../../toggle-switches">toggle switch</a>.</p>
+
+            <ul class="list">
+                <li>Radio buttons are best for six or fewer options.</li>
+                <li>For more than six options, consider a <a routerLink="../../../select-boxes">select box</a>, which
+                    prompts users to disclose the options.
+                </li>
+            </ul>
+        </div>
+
+
+    </article>
+</clr-doc-wrapper>

@@ -109,7 +109,7 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
     } else {
       this.selection.selectionType = SelectionType.None;
     }
-    this.selection.current = value;
+    this.selection.updateCurrent(value, false);
   }
 
   @Output('clrDgSelectedChange') selectedChanged = new EventEmitter<T[]>(false);

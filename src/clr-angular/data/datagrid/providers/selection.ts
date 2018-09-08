@@ -164,7 +164,7 @@ export class Selection<T = any> {
     if (value === SelectionType.None) {
       delete this.current;
     } else {
-      this.current = [];
+      this.updateCurrent([], false);
     }
   }
 
@@ -221,12 +221,18 @@ export class Selection<T = any> {
     return this._current;
   }
   public set current(value: T[]) {
+    this.updateCurrent(value, true);
+  }
+
+  public updateCurrent(value: T[], emit: boolean) {
     this._current = value;
-    this.emitChange();
-    // Ignore items changes in the same change detection cycle.
-    // @TODO This can likely be removed!
-    this.debounce = true;
-    setTimeout(() => (this.debounce = false));
+    if (emit) {
+      this.emitChange();
+      // Ignore items changes in the same change detection cycle.
+      // @TODO This can likely be removed!
+      this.debounce = true;
+      setTimeout(() => (this.debounce = false));
+    }
   }
 
   /**

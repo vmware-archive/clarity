@@ -5,17 +5,17 @@
  */
 export const EXAMPLES = {
     stateInterface: `
-interface ClrDatagridStateInterface {
+interface ClrDatagridStateInterface<T = any> {
     page?: {
         from?: number;
         to?: number;
         size?: number;
     }
     sort?: {
-        by: string | Comparator<any>
+        by: string | ClrDatagridComparatorInterface<T>;
         reverse: boolean;
     };
-    filters?: ({property: string, value: string} | Filter<any>)[];
+    filters?: ({property: string, value: string} | ClrDatagridFilterInterface<T>)[];
 }
 `,
 

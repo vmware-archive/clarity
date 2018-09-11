@@ -11,6 +11,8 @@ export declare const CLR_DATAGRID_DIRECTIVES: Type<any>[];
 
 export declare const CLR_DATEPICKER_DIRECTIVES: Type<any>[];
 
+export declare const CLR_DRAG_AND_DROP_DIRECTIVES: Type<any>[];
+
 export declare const CLR_DROPDOWN_DIRECTIVES: Type<any>[];
 
 export declare const CLR_ICON_DIRECTIVES: Type<any>[];
@@ -505,6 +507,53 @@ export declare class ClrDaypicker {
     previousMonth(): void;
 }
 
+export declare class ClrDragAndDropModule {
+}
+
+export declare class ClrDragEvent<T> {
+    dragDataTransfer: T;
+    dragPosition: {
+        pageX: number;
+        pageY: number;
+    };
+    dropPointPosition: {
+        pageX: number;
+        pageY: number;
+    };
+    group: string | string[];
+    constructor(dragEvent: DragEvent<T>);
+}
+
+export declare class ClrDraggable<T> implements AfterContentInit, OnDestroy {
+    customGhost: ClrIfDragged<T>;
+    dataTransfer: T;
+    dragEndEmitter: EventEmitter<ClrDragEvent<T>>;
+    dragMoveEmitter: EventEmitter<ClrDragEvent<T>>;
+    dragOn: boolean;
+    dragStartEmitter: EventEmitter<ClrDragEvent<T>>;
+    group: string | string[];
+    constructor(el: ElementRef, dragEventListener: DragEventListener<T>, dragHandleRegistrar: DragHandleRegistrar<T>, viewContainerRef: ViewContainerRef, cfr: ComponentFactoryResolver, injector: Injector, draggableSnapshot: DraggableSnapshot<T>, globalDragMode: GlobalDragMode);
+    ngAfterContentInit(): void;
+    ngOnDestroy(): void;
+}
+
+export declare class ClrDraggableGhost<T> implements OnDestroy {
+    leaveAnimConfig: {
+        value: number;
+        params: {
+            top: string;
+            left: string;
+        };
+    };
+    constructor(el: ElementRef, dragEventListener: DragEventListener<T>, draggableSnapshot: DraggableSnapshot<T>, renderer: Renderer2, ngZone: NgZone);
+    ngOnDestroy(): void;
+}
+
+export declare class ClrDragHandle<T> implements OnDestroy {
+    constructor(el: ElementRef, dragHandleRegistrar: DragHandleRegistrar<T>);
+    ngOnDestroy(): void;
+}
+
 export declare class ClrDropdown implements OnDestroy {
     ifOpenService: IfOpenService;
     isMenuClosable: boolean;
@@ -532,6 +581,21 @@ export declare class ClrDropdownTrigger {
     isRootLevelToggle: boolean;
     constructor(dropdown: ClrDropdown, ifOpenService: IfOpenService);
     onDropdownTriggerClick(event: any): void;
+}
+
+export declare class ClrDroppable<T> implements OnInit, OnDestroy {
+    dragEndEmitter: EventEmitter<ClrDragEvent<T>>;
+    dragEnterEmitter: EventEmitter<ClrDragEvent<T>>;
+    dragLeaveEmitter: EventEmitter<ClrDragEvent<T>>;
+    dragMoveEmitter: EventEmitter<ClrDragEvent<T>>;
+    dragStartEmitter: EventEmitter<ClrDragEvent<T>>;
+    dropEmitter: EventEmitter<ClrDragEvent<T>>;
+    dropTolerance: number | string | DropTolerance;
+    group: string | string[];
+    isDraggableOver: boolean;
+    constructor(el: ElementRef, eventBus: DragAndDropEventBus<T>, domAdapter: DomAdapter, renderer: Renderer2);
+    ngOnDestroy(): void;
+    ngOnInit(): void;
 }
 
 export declare class ClrEmphasisModule {
@@ -570,6 +634,11 @@ export declare class ClrIfActive implements OnDestroy {
     constructor(ifActiveService: IfActiveService, id: number, template: TemplateRef<any>, container: ViewContainerRef);
     ngOnDestroy(): void;
     updateView(value: boolean): void;
+}
+
+export declare class ClrIfDragged<T> implements OnDestroy {
+    constructor(template: TemplateRef<any>, container: ViewContainerRef, dragEventListener: DragEventListener<T>);
+    ngOnDestroy(): void;
 }
 
 export declare class ClrIfError {

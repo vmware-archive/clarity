@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 
 import { ClrButtonModule } from './button/button.module';
 import { ClrDataModule } from './data/data.module';
+import { ClrDragAndDropModule } from './utils/drag-and-drop/drag-and-drop.module';
 import { ClrEmphasisModule } from './emphasis/emphasis.module';
 import { ClrFormsModule } from './forms-deprecated/forms.module';
 import { ClrIconModule } from './icon/icon.module';
@@ -36,6 +37,7 @@ import { COMMON_STRINGS_PROVIDER } from './utils/i18n/common-strings.service';
     ClrLayoutModule,
     ClrPopoverModule,
     ClrWizardModule,
+    ClrDragAndDropModule,
   ],
   providers: [COMMON_STRINGS_PROVIDER],
 })

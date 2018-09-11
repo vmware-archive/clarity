@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 
 import { TestContext } from '../helpers.spec';
 
-import { MOCK_DOM_ADAPTER_PROVIDER } from './dom-adapter.mock';
+import { MOCK_DOM_ADAPTER_PROVIDER } from '../../../utils/dom-adapter/dom-adapter.mock';
 import { DatagridRenderOrganizer } from './render-organizer';
 import { MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer } from './render-organizer.mock';
 import { DatagridTableRenderer } from './table-renderer';

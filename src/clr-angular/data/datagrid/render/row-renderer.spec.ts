@@ -18,7 +18,7 @@ import { Sort } from '../providers/sort';
 import { StateDebouncer } from '../providers/state-debouncer.provider';
 
 import { DatagridCellRenderer } from './cell-renderer';
-import { DomAdapter } from './dom-adapter';
+import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from './render-organizer';
 import { MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer } from './render-organizer.mock';
 import { DatagridRowRenderer } from './row-renderer';

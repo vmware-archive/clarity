@@ -34,6 +34,7 @@ export class AppComponent {
     { path: 'code', title: 'Code' },
     { path: 'colors', title: 'Colors' },
     { path: 'datagrids', title: 'Datagrid' },
+    { path: 'drag-and-drop', title: 'Drag and Drop' },
     { path: 'datepicker', title: 'Datepicker' },
     { path: 'dropdowns', title: 'Dropdowns' },
     { path: 'forms', title: 'Forms' },

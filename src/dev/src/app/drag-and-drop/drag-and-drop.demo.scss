@@ -1,0 +1,27 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+.droppable-demo {
+  padding: 0.25rem 0;
+}
+.droppable-feature-variant {
+  & > label {
+    padding-right: 0.25rem;
+  }
+  .radio-inline {
+    display: inline-block;
+    padding-right: 0.25rem;
+    &:last-child {
+      padding-right: 0.5rem;
+    }
+  }
+}
+
+.droppable-tolerance-fields {
+  padding: 0.25rem 0;
+}
+
+span.label clr-icon {
+  margin-right: 0.125rem;
+}

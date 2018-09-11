@@ -1,0 +1,15 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Draggable button with a custom ghost</h4>
+
+<div class="clr-example">
+  <button class="btn btn-primary" clrDraggable>draggable event
+        <clr-draggable-ghost *clrIfDragged>
+            <clr-icon shape="event" size="72" class="is-solid is-success" [ngStyle]="{'transform': 'translate3d(-50%, -50%, 0)'}"></clr-icon>
+  </clr-draggable-ghost>
+  </button>
+</div>

@@ -12,7 +12,7 @@
 import { Directive, ElementRef, Renderer2 } from '@angular/core';
 
 import { Expand } from '../../../utils/expand/providers/expand';
-import { DomAdapter } from '../render/dom-adapter';
+import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from '../render/render-organizer';
 
 @Directive({ selector: 'clr-dg-row' })

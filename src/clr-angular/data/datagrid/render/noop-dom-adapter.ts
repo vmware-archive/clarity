@@ -10,7 +10,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import { DomAdapter } from './dom-adapter';
+import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 
 @Injectable()
 export class NoopDomAdapter implements DomAdapter {
@@ -30,16 +30,15 @@ export class NoopDomAdapter implements DomAdapter {
     return 0;
   }
 
-  clientRectHeight(element: any): number {
-    return 0;
-  }
-
-  clientRectRight(element: any): number {
-    return 0;
-  }
-
-  clientRectWidth(element: any): number {
-    return 0;
+  clientRect(element: any): ClientRect {
+    return {
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      width: 0,
+      height: 0,
+    };
   }
 
   minWidth(element: any): number {

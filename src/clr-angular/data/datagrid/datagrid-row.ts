@@ -114,8 +114,9 @@ export class ClrDatagridRow<T = any> implements AfterContentInit {
     public hideableColumnService: HideableColumnService,
     public commonStrings: ClrCommonStrings
   ) {
-    this.id = 'clr-dg-row' + nbRow++;
-    this.radioId = 'clr-dg-row-rd' + nbRow++;
+    nbRow++;
+    this.id = 'clr-dg-row' + nbRow;
+    this.radioId = 'clr-dg-row-rd' + nbRow;
   }
 
   private _selected = false;

@@ -509,7 +509,7 @@ export declare class ClrDropdown implements OnDestroy {
     ifOpenService: IfOpenService;
     isMenuClosable: boolean;
     parent: ClrDropdown;
-    constructor(parent: ClrDropdown, ifOpenService: IfOpenService, dropdownService: RootDropdownService);
+    constructor(parent: ClrDropdown, ifOpenService: IfOpenService, cdr: ChangeDetectorRef, dropdownService: RootDropdownService);
     ngOnDestroy(): void;
 }
 

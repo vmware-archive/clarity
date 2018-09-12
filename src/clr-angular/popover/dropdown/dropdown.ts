@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ElementRef, Input, OnDestroy, Optional, SkipSelf } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, Optional, SkipSelf } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { IfOpenService } from '../../utils/conditional/if-open.service';
@@ -22,21 +22,23 @@ import { ROOT_DROPDOWN_PROVIDER, RootDropdownService } from './providers/dropdow
   providers: [IfOpenService, ROOT_DROPDOWN_PROVIDER, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
 })
 export class ClrDropdown implements OnDestroy {
-  private _subscription: Subscription;
+  private subscriptions: Subscription[] = [];
 
   constructor(
     @SkipSelf()
     @Optional()
     public parent: ClrDropdown,
     public ifOpenService: IfOpenService,
+    private cdr: ChangeDetectorRef,
     dropdownService: RootDropdownService
   ) {
-    this._subscription = dropdownService.changes.subscribe(value => (this.ifOpenService.open = value));
+    this.subscriptions.push(dropdownService.changes.subscribe(value => (this.ifOpenService.open = value)));
+    this.subscriptions.push(ifOpenService.openChange.subscribe(value => this.cdr.markForCheck()));
   }
 
   @Input('clrCloseMenuOnItemClick') isMenuClosable: boolean = true;
 
   ngOnDestroy() {
-    this._subscription.unsubscribe();
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 }

@@ -532,7 +532,7 @@ export declare class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     dragOn: boolean;
     dragStartEmitter: EventEmitter<ClrDragEvent<T>>;
     group: string | string[];
-    constructor(el: ElementRef, dragEventListener: DragEventListener<T>, dragHandleRegistrar: DragHandleRegistrar<T>, viewContainerRef: ViewContainerRef, cfr: ComponentFactoryResolver, injector: Injector, draggableSnapshot: DraggableSnapshot<T>, globalDragMode: GlobalDragMode);
+    constructor(el: ElementRef, dragEventListener: DragEventListenerService<T>, dragHandleRegistrar: DragHandleRegistrarService<T>, viewContainerRef: ViewContainerRef, cfr: ComponentFactoryResolver, injector: Injector, draggableSnapshot: DraggableSnapshotService<T>, globalDragMode: GlobalDragModeService);
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
 }
@@ -545,12 +545,12 @@ export declare class ClrDraggableGhost<T> implements OnDestroy {
             left: string;
         };
     };
-    constructor(el: ElementRef, dragEventListener: DragEventListener<T>, draggableSnapshot: DraggableSnapshot<T>, renderer: Renderer2, ngZone: NgZone);
+    constructor(el: ElementRef, dragEventListener: DragEventListenerService<T>, draggableSnapshot: DraggableSnapshotService<T>, renderer: Renderer2, ngZone: NgZone);
     ngOnDestroy(): void;
 }
 
 export declare class ClrDragHandle<T> implements OnDestroy {
-    constructor(el: ElementRef, dragHandleRegistrar: DragHandleRegistrar<T>);
+    constructor(el: ElementRef, dragHandleRegistrar: DragHandleRegistrarService<T>);
     ngOnDestroy(): void;
 }
 
@@ -593,7 +593,7 @@ export declare class ClrDroppable<T> implements OnInit, OnDestroy {
     dropTolerance: number | string | DropTolerance;
     group: string | string[];
     isDraggableOver: boolean;
-    constructor(el: ElementRef, eventBus: DragAndDropEventBus<T>, domAdapter: DomAdapter, renderer: Renderer2);
+    constructor(el: ElementRef, eventBus: DragAndDropEventBusService<T>, domAdapter: DomAdapter, renderer: Renderer2);
     ngOnDestroy(): void;
     ngOnInit(): void;
 }
@@ -637,7 +637,7 @@ export declare class ClrIfActive implements OnDestroy {
 }
 
 export declare class ClrIfDragged<T> implements OnDestroy {
-    constructor(template: TemplateRef<any>, container: ViewContainerRef, dragEventListener: DragEventListener<T>);
+    constructor(template: TemplateRef<any>, container: ViewContainerRef, dragEventListener: DragEventListenerService<T>);
     ngOnDestroy(): void;
 }
 

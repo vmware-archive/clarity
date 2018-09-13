@@ -9,8 +9,8 @@ import { Subscription } from 'rxjs';
 
 import { emulateDragEvent } from '../helpers.spec';
 import { DragEvent } from '../interfaces/drag-event.interface';
-import { DragAndDropEventBus } from './drag-and-drop-event-bus.service';
-import { DragEventListener } from './drag-event-listener.service';
+import { DragAndDropEventBusService } from './drag-and-drop-event-bus.service';
+import { DragEventListenerService } from './drag-event-listener.service';
 
 type DragTransfer = {
   data: any;
@@ -39,7 +39,7 @@ const expectEventPropValues = <T>(event: DragEvent<T>) => {
 
 export default function(): void {
   describe('Drag Event Listener', function() {
-    let dragEventListenerService: DragEventListener<DragTransfer>;
+    let dragEventListenerService: DragEventListenerService<DragTransfer>;
 
     let fixture: ComponentFixture<any>;
     let testComponent: TestComponent;
@@ -47,13 +47,15 @@ export default function(): void {
     let draggableButton: any;
 
     beforeEach(function() {
-      TestBed.configureTestingModule({ declarations: [TestComponent], providers: [DragAndDropEventBus] });
+      TestBed.configureTestingModule({ declarations: [TestComponent], providers: [DragAndDropEventBusService] });
 
       fixture = TestBed.createComponent(TestComponent);
       testComponent = fixture.componentInstance;
       fixture.detectChanges();
 
-      dragEventListenerService = <DragEventListener<DragTransfer>>fixture.debugElement.injector.get(DragEventListener);
+      dragEventListenerService = <DragEventListenerService<DragTransfer>>fixture.debugElement.injector.get(
+        DragEventListenerService
+      );
 
       draggableButton = testComponent.draggableButtonRef.nativeElement;
       fixture.detectChanges();
@@ -243,7 +245,7 @@ export default function(): void {
 }
 
 @Component({
-  providers: [DragEventListener], // Should be declared here in a component level, not in the TestBed because Renderer2 wouldn't be present
+  providers: [DragEventListenerService], // Should be declared here in a component level, not in the TestBed because Renderer2 wouldn't be present
   template: `<button #draggableButton></button>`,
 })
 class TestComponent implements OnInit, OnDestroy {
@@ -262,8 +264,8 @@ class TestComponent implements OnInit, OnDestroy {
   constructor(
     renderer: Renderer2,
     ngZone: NgZone,
-    private dragEventListener: DragEventListener<DragTransfer>,
-    private eventBus: DragAndDropEventBus<DragTransfer>
+    private dragEventListener: DragEventListenerService<DragTransfer>,
+    private eventBus: DragAndDropEventBusService<DragTransfer>
   ) {}
 
   @ViewChild('draggableButton') draggableButtonRef: ElementRef;

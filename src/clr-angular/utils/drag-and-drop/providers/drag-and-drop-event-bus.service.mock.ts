@@ -6,7 +6,7 @@
 import { Subject } from 'rxjs';
 
 import { DragEventType } from '../interfaces/drag-event.interface';
-import { DragAndDropEventBus } from './drag-and-drop-event-bus.service';
+import { DragAndDropEventBusService } from './drag-and-drop-event-bus.service';
 
 export class MockDragAndDropEventBus {
   public dragStarted: Subject<any> = new Subject<any>();
@@ -35,6 +35,6 @@ export class MockDragAndDropEventBus {
 }
 
 export const MOCK_DRAG_DROP_EVENT_BUS = {
-  provide: DragAndDropEventBus,
+  provide: DragAndDropEventBusService,
   useClass: MockDragAndDropEventBus,
 };

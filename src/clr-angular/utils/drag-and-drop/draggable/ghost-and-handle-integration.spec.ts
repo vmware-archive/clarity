@@ -13,11 +13,11 @@ import { DomAdapter } from '../../dom-adapter/dom-adapter';
 import { ClrDragAndDropModule } from '../drag-and-drop.module';
 import { ClrDragHandle } from '../drag-handle';
 import { DragEvent, DragEventType } from '../interfaces/drag-event.interface';
-import { DragEventListener } from '../providers/drag-event-listener.service';
+import { DragEventListenerService } from '../providers/drag-event-listener.service';
 import { MOCK_DRAG_EVENT_LISTENER_PROVIDER } from '../providers/drag-event-listener.service.mock';
-import { DragHandleRegistrar } from '../providers/drag-handle-registrar.service';
-import { DraggableSnapshot } from '../providers/draggable-snapshot.service';
-import { GlobalDragMode } from '../providers/global-drag-mode.service';
+import { DragHandleRegistrarService } from '../providers/drag-handle-registrar.service';
+import { DraggableSnapshotService } from '../providers/draggable-snapshot.service';
+import { GlobalDragModeService } from '../providers/global-drag-mode.service';
 
 import { ClrDraggable } from './draggable';
 
@@ -38,9 +38,9 @@ export default function(): void {
         set: {
           providers: [
             DomAdapter,
-            DragHandleRegistrar,
-            DraggableSnapshot,
-            GlobalDragMode,
+            DragHandleRegistrarService,
+            DraggableSnapshotService,
+            GlobalDragModeService,
             MOCK_DRAG_EVENT_LISTENER_PROVIDER,
           ],
         },
@@ -48,8 +48,8 @@ export default function(): void {
 
       this.fixture = TestBed.createComponent(CustomGhostAndHandleTest);
       this.draggable = this.fixture.debugElement.query(By.directive(ClrDraggable));
-      this.dragEventListener = this.draggable.injector.get(DragEventListener);
-      this.dragHandleRegistrar = this.draggable.injector.get(DragHandleRegistrar);
+      this.dragEventListener = this.draggable.injector.get(DragEventListenerService);
+      this.dragHandleRegistrar = this.draggable.injector.get(DragHandleRegistrarService);
       this.fixture.detectChanges();
     });
 

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ClrDragHandle } from './drag-handle';
-import { DragHandleRegistrar } from './providers/drag-handle-registrar.service';
+import { DragHandleRegistrarService } from './providers/drag-handle-registrar.service';
 import { MOCK_DRAG_HANDLE_REGISTRAR_PROVIDER } from './providers/drag-handle-registrar.service.mock';
 
 export default function(): void {
@@ -32,7 +32,7 @@ export default function(): void {
         this.testComponent = this.fixture.componentInstance;
         this.fixture.detectChanges();
 
-        this.dragHandleRegistrar = TestBed.get(DragHandleRegistrar);
+        this.dragHandleRegistrar = TestBed.get(DragHandleRegistrarService);
         this.testElement = this.fixture.nativeElement;
       });
 

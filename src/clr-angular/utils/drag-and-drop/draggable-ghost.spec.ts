@@ -12,9 +12,9 @@ import { DomAdapter } from '../dom-adapter/dom-adapter';
 
 import { ClrDraggableGhost } from '.';
 import { ClrDragAndDropModule } from './drag-and-drop.module';
-import { DragEventListener } from './providers/drag-event-listener.service';
+import { DragEventListenerService } from './providers/drag-event-listener.service';
 import { MOCK_DRAG_EVENT_LISTENER_PROVIDER } from './providers/drag-event-listener.service.mock';
-import { DraggableSnapshot } from './providers/draggable-snapshot.service';
+import { DraggableSnapshotService } from './providers/draggable-snapshot.service';
 
 export default function(): void {
   describe('ClrDraggableGhost', function() {
@@ -36,7 +36,7 @@ export default function(): void {
         TestBed.configureTestingModule({
           imports: [ClrDragAndDropModule, NoopAnimationsModule],
           declarations: [WithWrappingDraggable],
-          providers: [MOCK_DRAG_EVENT_LISTENER_PROVIDER, DomAdapter, DraggableSnapshot],
+          providers: [MOCK_DRAG_EVENT_LISTENER_PROVIDER, DomAdapter, DraggableSnapshotService],
         });
 
         this.fixture = TestBed.createComponent(WithWrappingDraggable);
@@ -45,7 +45,7 @@ export default function(): void {
         this.testComponent = this.fixture.componentInstance;
         this.draggableGhostDebugElement = this.fixture.debugElement.query(By.directive(ClrDraggableGhost));
         this.ghostElement = this.draggableGhostDebugElement.nativeElement;
-        this.dragEventListener = TestBed.get(DragEventListener);
+        this.dragEventListener = TestBed.get(DragEventListenerService);
       });
 
       afterEach(function() {
@@ -95,10 +95,10 @@ export default function(): void {
         TestBed.configureTestingModule({
           imports: [ClrDragAndDropModule, NoopAnimationsModule],
           declarations: [WithWrappingDraggable],
-          providers: [MOCK_DRAG_EVENT_LISTENER_PROVIDER, DomAdapter, DraggableSnapshot],
+          providers: [MOCK_DRAG_EVENT_LISTENER_PROVIDER, DomAdapter, DraggableSnapshotService],
         });
 
-        this.draggableSnapshot = TestBed.get(DraggableSnapshot);
+        this.draggableSnapshot = TestBed.get(DraggableSnapshotService);
         this.draggableSnapshot.capture(mockDraggable, mockDragStartEvent);
 
         this.fixture = TestBed.createComponent(WithWrappingDraggable);
@@ -106,7 +106,7 @@ export default function(): void {
 
         this.draggableGhostDebugElement = this.fixture.debugElement.query(By.directive(ClrDraggableGhost));
         this.ghostElement = this.draggableGhostDebugElement.nativeElement;
-        this.dragEventListener = TestBed.get(DragEventListener);
+        this.dragEventListener = TestBed.get(DragEventListenerService);
       });
 
       afterEach(function() {

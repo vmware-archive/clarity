@@ -8,7 +8,7 @@ import { Injectable, Renderer2 } from '@angular/core';
 // This service class adds and removes the "in-drag" class to the document body element
 // through its public enter() and exit() methods.
 @Injectable()
-export class GlobalDragMode {
+export class GlobalDragModeService {
   constructor(private renderer: Renderer2) {}
 
   enter(): void {

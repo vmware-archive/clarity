@@ -11,7 +11,7 @@ import { ClrDroppable } from './droppable/droppable';
 import { ClrIfDragged } from './if-dragged';
 import { ClrDragHandle } from './drag-handle';
 import { ClrDraggableGhost } from './draggable-ghost';
-import { DragAndDropEventBus } from './providers/drag-and-drop-event-bus.service';
+import { DragAndDropEventBusService } from './providers/drag-and-drop-event-bus.service';
 
 export const CLR_DRAG_AND_DROP_DIRECTIVES: Type<any>[] = [
   ClrDraggable,
@@ -25,7 +25,7 @@ export const CLR_DRAG_AND_DROP_DIRECTIVES: Type<any>[] = [
   imports: [CommonModule],
   declarations: [CLR_DRAG_AND_DROP_DIRECTIVES],
   entryComponents: [ClrDraggableGhost],
-  providers: [DragAndDropEventBus],
+  providers: [DragAndDropEventBusService],
   exports: [CLR_DRAG_AND_DROP_DIRECTIVES],
 })
 export class ClrDragAndDropModule {}

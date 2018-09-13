@@ -7,7 +7,7 @@ import { Component, Directive, ViewContainerRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { ClrIfDragged } from './if-dragged';
-import { DragEventListener } from './providers/drag-event-listener.service';
+import { DragEventListenerService } from './providers/drag-event-listener.service';
 import { MOCK_DRAG_EVENT_LISTENER_PROVIDER } from './providers/drag-event-listener.service.mock';
 
 export default function(): void {
@@ -31,7 +31,7 @@ export default function(): void {
         this.fixture = TestBed.createComponent(IfDraggedTest);
         this.fixture.detectChanges();
 
-        this.dragEventListener = TestBed.get(DragEventListener);
+        this.dragEventListener = TestBed.get(DragEventListenerService);
         this.testElement = this.fixture.nativeElement;
       });
 

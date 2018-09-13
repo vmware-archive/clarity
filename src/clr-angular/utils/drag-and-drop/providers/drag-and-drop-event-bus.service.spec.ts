@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { DragEvent, DragEventType } from '../interfaces/drag-event.interface';
-import { DragAndDropEventBus } from './drag-and-drop-event-bus.service';
+import { DragAndDropEventBusService } from './drag-and-drop-event-bus.service';
 
 type DragTransfer = {
   data: any;
@@ -12,7 +12,7 @@ type DragTransfer = {
 
 export default function(): void {
   describe('Drag And Drop Event Bus Provider', function() {
-    const dndEventBus = new DragAndDropEventBus();
+    const dndEventBus = new DragAndDropEventBusService();
     const dragEventMockObj = (
       dragEventType: DragEventType,
       dragDataTransfer?: DragTransfer

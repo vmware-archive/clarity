@@ -8,8 +8,8 @@ import { Component, ElementRef, HostBinding, NgZone, OnDestroy, Optional, Render
 import { Subscription } from 'rxjs';
 
 import { DragEvent } from './interfaces/drag-event.interface';
-import { DragEventListener } from './providers/drag-event-listener.service';
-import { DraggableSnapshot } from './providers/draggable-snapshot.service';
+import { DragEventListenerService } from './providers/drag-event-listener.service';
+import { DraggableSnapshotService } from './providers/draggable-snapshot.service';
 
 type PagePosition = {
   pageX: number;
@@ -41,8 +41,8 @@ export class ClrDraggableGhost<T> implements OnDestroy {
 
   constructor(
     private el: ElementRef,
-    @Optional() private dragEventListener: DragEventListener<T>,
-    @Optional() private draggableSnapshot: DraggableSnapshot<T>,
+    @Optional() private dragEventListener: DragEventListenerService<T>,
+    @Optional() private draggableSnapshot: DraggableSnapshotService<T>,
     private renderer: Renderer2,
     private ngZone: NgZone
   ) {

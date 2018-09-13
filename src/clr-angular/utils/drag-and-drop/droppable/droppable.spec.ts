@@ -10,7 +10,7 @@ import { By } from '@angular/platform-browser';
 import { ClrDragEvent } from '../drag-event';
 import { DragEvent, DragEventType } from '../interfaces/drag-event.interface';
 import { DropTolerance } from '../interfaces/drop-tolerance.interface';
-import { DragAndDropEventBus } from '../providers/drag-and-drop-event-bus.service';
+import { DragAndDropEventBusService } from '../providers/drag-and-drop-event-bus.service';
 import { MOCK_DRAG_DROP_EVENT_BUS } from '../providers/drag-and-drop-event-bus.service.mock';
 import { ClrDroppable } from './droppable';
 
@@ -52,7 +52,7 @@ export default function(): void {
       this.testComponent = this.fixture.componentInstance;
       this.testElement = this.fixture.nativeElement;
       this.droppable = this.fixture.debugElement.query(By.directive(ClrDroppable));
-      this.eventBus = TestBed.get(DragAndDropEventBus);
+      this.eventBus = TestBed.get(DragAndDropEventBusService);
       this.fixture.detectChanges();
     });
 
@@ -218,7 +218,7 @@ export default function(): void {
       this.testComponent = this.fixture.componentInstance;
       this.testElement = this.fixture.nativeElement;
       this.droppable = this.fixture.debugElement.query(By.directive(ClrDroppable));
-      this.eventBus = TestBed.get(DragAndDropEventBus);
+      this.eventBus = TestBed.get(DragAndDropEventBusService);
       this.fixture.detectChanges();
     });
 
@@ -303,7 +303,7 @@ export default function(): void {
       this.testComponent = this.fixture.componentInstance;
       this.testElement = this.fixture.nativeElement;
       this.droppable = this.fixture.debugElement.query(By.directive(ClrDroppable));
-      this.eventBus = TestBed.get(DragAndDropEventBus);
+      this.eventBus = TestBed.get(DragAndDropEventBusService);
       this.fixture.detectChanges();
 
       this.broadcastEnterLeaveEventAt = function(_pageX: number, _pageY: number) {

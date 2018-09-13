@@ -9,7 +9,7 @@ import { Observable, Subject } from 'rxjs';
 import { DragEvent, DragEventType } from '../interfaces/drag-event.interface';
 
 @Injectable()
-export class DragAndDropEventBus<T> {
+export class DragAndDropEventBusService<T> {
   private dragStart: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
   private dragMove: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
   private dragEnd: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();

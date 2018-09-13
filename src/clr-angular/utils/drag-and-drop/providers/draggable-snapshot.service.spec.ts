@@ -6,7 +6,7 @@
 import { DomAdapter } from '../../dom-adapter/dom-adapter';
 import { DragEventType } from '../interfaces/drag-event.interface';
 
-import { DraggableSnapshot } from './draggable-snapshot.service';
+import { DraggableSnapshotService } from './draggable-snapshot.service';
 
 export default function(): void {
   describe('Draggable Snapshot', function() {
@@ -28,7 +28,7 @@ export default function(): void {
     let draggableSnapshot;
 
     beforeEach(function() {
-      draggableSnapshot = new DraggableSnapshot(domAdapter);
+      draggableSnapshot = new DraggableSnapshotService(domAdapter);
     });
 
     it('registers element and sets clientRect and computedStyle', function() {

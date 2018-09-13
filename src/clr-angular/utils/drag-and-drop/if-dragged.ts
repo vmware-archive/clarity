@@ -7,7 +7,7 @@ import { Directive, OnDestroy, Optional, SkipSelf, TemplateRef, ViewContainerRef
 import { Subscription } from 'rxjs';
 
 import { DragEvent } from './interfaces/drag-event.interface';
-import { DragEventListener } from './providers/drag-event-listener.service';
+import { DragEventListenerService } from './providers/drag-event-listener.service';
 
 // This structural directive will be used mainly together with `clr-draggable-ghost` directive inside of clrDraggable
 // directive. The directive is responsible for instantiating `clr-draggable-ghost` directive only during dragging so
@@ -22,7 +22,7 @@ export class ClrIfDragged<T> implements OnDestroy {
     @Optional()
     @SkipSelf()
     private container: ViewContainerRef,
-    @Optional() private dragEventListener: DragEventListener<T>
+    @Optional() private dragEventListener: DragEventListenerService<T>
   ) {
     if (!this.dragEventListener || !this.container) {
       throw new Error('The *clrIfDragged directive can only be used inside of a clrDraggable directive.');

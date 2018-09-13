@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { DragHandleRegistrar } from './drag-handle-registrar.service';
+import { DragHandleRegistrarService } from './drag-handle-registrar.service';
 
 export class MockDragHandleRegistrar {
   private _customHandleEl: any;
@@ -22,6 +22,6 @@ export class MockDragHandleRegistrar {
 }
 
 export const MOCK_DRAG_HANDLE_REGISTRAR_PROVIDER = {
-  provide: DragHandleRegistrar,
+  provide: DragHandleRegistrarService,
   useClass: MockDragHandleRegistrar,
 };

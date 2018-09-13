@@ -10,7 +10,7 @@ import { DragEvent } from '../interfaces/drag-event.interface';
 // This service is used to capture the state of clrDraggable element
 // at a certain event and passes it to clrDraggableGhost component.
 @Injectable()
-export class DraggableSnapshot<T> {
+export class DraggableSnapshotService<T> {
   constructor(private domAdapter: DomAdapter) {}
 
   private draggableElClientRect: ClientRect;

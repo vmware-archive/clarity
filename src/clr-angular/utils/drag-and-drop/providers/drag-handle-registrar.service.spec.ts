@@ -5,10 +5,10 @@
  */
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DragAndDropEventBus } from './drag-and-drop-event-bus.service';
-import { DragEventListener } from './drag-event-listener.service';
+import { DragAndDropEventBusService } from './drag-and-drop-event-bus.service';
+import { DragEventListenerService } from './drag-event-listener.service';
 import { MOCK_DRAG_EVENT_LISTENER_PROVIDER } from './drag-event-listener.service.mock';
-import { DragHandleRegistrar } from './drag-handle-registrar.service';
+import { DragHandleRegistrarService } from './drag-handle-registrar.service';
 
 export default function(): void {
   describe('Drag Handle Registrar', function() {
@@ -22,10 +22,13 @@ export default function(): void {
     let dragEventListener: any;
 
     beforeEach(() => {
-      TestBed.configureTestingModule({ declarations: [DragHandleTestComponent], providers: [DragAndDropEventBus] });
+      TestBed.configureTestingModule({
+        declarations: [DragHandleTestComponent],
+        providers: [DragAndDropEventBusService],
+      });
       fixture = TestBed.createComponent(DragHandleTestComponent);
-      dragHandleRegistrar = fixture.debugElement.injector.get(DragHandleRegistrar);
-      dragEventListener = fixture.debugElement.injector.get(DragEventListener);
+      dragHandleRegistrar = fixture.debugElement.injector.get(DragHandleRegistrarService);
+      dragEventListener = fixture.debugElement.injector.get(DragEventListenerService);
     });
 
     afterEach(() => {
@@ -107,7 +110,7 @@ export default function(): void {
 }
 
 @Component({
-  providers: [MOCK_DRAG_EVENT_LISTENER_PROVIDER, DragHandleRegistrar], // Should be declared here in a component level, not in the TestBed because Renderer2 wouldn't be present
+  providers: [MOCK_DRAG_EVENT_LISTENER_PROVIDER, DragHandleRegistrarService], // Should be declared here in a component level, not in the TestBed because Renderer2 wouldn't be present
   template: '<div>Test</div>',
 })
 class DragHandleTestComponent {}

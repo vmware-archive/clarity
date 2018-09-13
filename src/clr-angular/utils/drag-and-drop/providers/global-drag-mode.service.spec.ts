@@ -6,7 +6,7 @@
 import { Component, Renderer2 } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { GlobalDragMode } from './global-drag-mode.service';
+import { GlobalDragModeService } from './global-drag-mode.service';
 
 export default function(): void {
   describe('Global Drag Mode Service', function() {
@@ -15,7 +15,7 @@ export default function(): void {
 
       this.fixture = TestBed.createComponent(TestComponent);
       this.fixture.detectChanges();
-      this.globalDragMode = this.fixture.debugElement.injector.get(GlobalDragMode);
+      this.globalDragMode = this.fixture.debugElement.injector.get(GlobalDragModeService);
     });
 
     it('should give in-drag class to document when enter method is called', function() {
@@ -32,8 +32,8 @@ export default function(): void {
   });
 }
 
-@Component({ providers: [GlobalDragMode], template: `<div>test</div>` })
+@Component({ providers: [GlobalDragModeService], template: `<div>test</div>` })
 class TestComponent {
   // tslint:disable-next-line
-  constructor(private renderer: Renderer2, private globalDragMode: GlobalDragMode) {}
+  constructor(private renderer: Renderer2, private globalDragMode: GlobalDragModeService) {}
 }

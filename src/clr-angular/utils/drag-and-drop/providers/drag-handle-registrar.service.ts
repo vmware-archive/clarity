@@ -5,13 +5,13 @@
  */
 import { Injectable, Renderer2 } from '@angular/core';
 
-import { DragEventListener } from './drag-event-listener.service';
+import { DragEventListenerService } from './drag-event-listener.service';
 
 // This provider registers the drag handle element.
 // When it registers a element as a drag handle, it attaches that element to the listeners from ClrDragEventListener.
 // Also, it adds the "drag-handle" css class to the registered element through Renderer.
 @Injectable()
-export class DragHandleRegistrar<T> {
+export class DragHandleRegistrarService<T> {
   private _customHandleEl: any;
   private _defaultHandleEl: any;
 
@@ -29,7 +29,7 @@ export class DragHandleRegistrar<T> {
     }
   }
 
-  constructor(private dragEventListener: DragEventListener<T>, private renderer: Renderer2) {}
+  constructor(private dragEventListener: DragEventListenerService<T>, private renderer: Renderer2) {}
 
   private makeElementHandle(el: Node) {
     if (this._defaultHandleEl && this._defaultHandleEl !== el) {

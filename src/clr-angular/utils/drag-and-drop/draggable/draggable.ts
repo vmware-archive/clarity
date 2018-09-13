@@ -24,14 +24,20 @@ import { ClrDragEvent } from '../drag-event';
 import { ClrDraggableGhost } from '../draggable-ghost';
 import { ClrIfDragged } from '../if-dragged';
 import { DragEvent } from '../interfaces/drag-event.interface';
-import { DragEventListener } from '../providers/drag-event-listener.service';
-import { DragHandleRegistrar } from '../providers/drag-handle-registrar.service';
-import { DraggableSnapshot } from '../providers/draggable-snapshot.service';
-import { GlobalDragMode } from '../providers/global-drag-mode.service';
+import { DragEventListenerService } from '../providers/drag-event-listener.service';
+import { DragHandleRegistrarService } from '../providers/drag-handle-registrar.service';
+import { DraggableSnapshotService } from '../providers/draggable-snapshot.service';
+import { GlobalDragModeService } from '../providers/global-drag-mode.service';
 
 @Directive({
   selector: '[clrDraggable]',
-  providers: [DragEventListener, DragHandleRegistrar, DraggableSnapshot, GlobalDragMode, DomAdapter],
+  providers: [
+    DragEventListenerService,
+    DragHandleRegistrarService,
+    DraggableSnapshotService,
+    GlobalDragModeService,
+    DomAdapter,
+  ],
   host: { '[class.draggable]': 'true', '[class.being-dragged]': 'dragOn' },
 })
 export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
@@ -42,13 +48,13 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
 
   constructor(
     private el: ElementRef,
-    private dragEventListener: DragEventListener<T>,
-    private dragHandleRegistrar: DragHandleRegistrar<T>,
+    private dragEventListener: DragEventListenerService<T>,
+    private dragHandleRegistrar: DragHandleRegistrarService<T>,
     private viewContainerRef: ViewContainerRef,
     private cfr: ComponentFactoryResolver,
     private injector: Injector,
-    private draggableSnapshot: DraggableSnapshot<T>,
-    private globalDragMode: GlobalDragMode
+    private draggableSnapshot: DraggableSnapshotService<T>,
+    private globalDragMode: GlobalDragModeService
   ) {
     this.draggableEl = this.el.nativeElement;
     this.componentFactory = this.cfr.resolveComponentFactory<ClrDraggableGhost<T>>(ClrDraggableGhost);

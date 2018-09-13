@@ -7,10 +7,10 @@ import { Injectable, NgZone, Renderer2 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 import { DragEvent, DragEventType } from '../interfaces/drag-event.interface';
-import { DragAndDropEventBus } from './drag-and-drop-event-bus.service';
+import { DragAndDropEventBusService } from './drag-and-drop-event-bus.service';
 
 @Injectable()
-export class DragEventListener<T> {
+export class DragEventListenerService<T> {
   private draggableEl: any;
 
   // contains the starting events such as mousedown and touchstart
@@ -37,7 +37,7 @@ export class DragEventListener<T> {
     return this.dragEnd.asObservable();
   }
 
-  constructor(private ngZone: NgZone, private renderer: Renderer2, private eventBus: DragAndDropEventBus<T>) {}
+  constructor(private ngZone: NgZone, private renderer: Renderer2, private eventBus: DragAndDropEventBusService<T>) {}
 
   // Draggable component sets these properties:
   public dragDataTransfer?: T;

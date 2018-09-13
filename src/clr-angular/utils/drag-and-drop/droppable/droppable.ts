@@ -10,7 +10,7 @@ import { DomAdapter } from '../../dom-adapter/dom-adapter';
 import { ClrDragEvent } from '../drag-event';
 import { DragEvent, DragEventType } from '../interfaces/drag-event.interface';
 import { DropTolerance } from '../interfaces/drop-tolerance.interface';
-import { DragAndDropEventBus } from '../providers/drag-and-drop-event-bus.service';
+import { DragAndDropEventBusService } from '../providers/drag-and-drop-event-bus.service';
 
 @Directive({
   selector: '[clrDroppable]',
@@ -27,7 +27,7 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
 
   constructor(
     private el: ElementRef,
-    private eventBus: DragAndDropEventBus<T>,
+    private eventBus: DragAndDropEventBusService<T>,
     private domAdapter: DomAdapter,
     private renderer: Renderer2
   ) {

@@ -9,8 +9,8 @@ import { By } from '@angular/platform-browser';
 
 import { ClrDragAndDropModule } from '../drag-and-drop.module';
 import { ClrDragHandle } from '../drag-handle';
-import { DragEventListener } from '../providers/drag-event-listener.service';
-import { DragHandleRegistrar } from '../providers/drag-handle-registrar.service';
+import { DragEventListenerService } from '../providers/drag-event-listener.service';
+import { DragHandleRegistrarService } from '../providers/drag-handle-registrar.service';
 
 import { ClrDraggable } from './draggable';
 
@@ -22,8 +22,8 @@ export default function(): void {
       this.fixture = TestBed.createComponent(CustomHandleTest);
       this.testComponent = this.fixture.componentInstance;
       this.draggable = this.fixture.debugElement.query(By.directive(ClrDraggable));
-      this.dragEventListener = this.draggable.injector.get(DragEventListener);
-      this.dragHandleRegistrar = this.draggable.injector.get(DragHandleRegistrar);
+      this.dragEventListener = this.draggable.injector.get(DragEventListenerService);
+      this.dragHandleRegistrar = this.draggable.injector.get(DragHandleRegistrarService);
       this.fixture.detectChanges();
     });
 

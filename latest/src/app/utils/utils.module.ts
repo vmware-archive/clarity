@@ -24,7 +24,8 @@ import {CodeHighlight} from "./code-highlight";
         SketchTemplateLinkDirective,
         HashListener,
         ScrollSpy,
-        CodeSnippet
+        CodeSnippet,
+        CodeHighlight
     ]
 })
 export class UtilsModule {

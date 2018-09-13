@@ -8,7 +8,10 @@ import { Injectable, SkipSelf, Optional } from '@angular/core';
 import { ClrCommonStrings } from './common-strings.interface';
 
 @Injectable()
-export class ClrCommonStringsService implements Required<ClrCommonStrings> {
+// @TODO Put the Required type back in when our minimumly supported version of Angular uses
+// TS 2.8 or greater (should be Angular 7)
+// export class ClrCommonStringsService implements Required<ClrCommonStrings> {
+export class ClrCommonStringsService implements ClrCommonStrings {
   open = 'Open';
   close = 'Close';
   show = 'Show';

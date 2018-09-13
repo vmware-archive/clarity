@@ -6,7 +6,7 @@
 
 import { Component, EventEmitter, Input, Optional, Output, SkipSelf, TemplateRef, ViewChild } from '@angular/core';
 
-import { ClrLoadingState } from '../../utils/loading';
+import { ClrLoadingState } from '../../utils/loading/loading';
 import { LoadingListener } from '../../utils/loading/loading-listener';
 import { ButtonInGroupService } from '../providers/button-in-group.service';
 

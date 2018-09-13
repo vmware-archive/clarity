@@ -1,5 +1,5 @@
 {
-  "rulesDirectory": ["./node_modules/tslint-defocus/dist"],
+  "rulesDirectory": ["./node_modules/tslint-defocus/dist", "./tests/tslint/dist"],
   "rules": {
     "class-name": true,
     "curly": true,
@@ -10,6 +10,7 @@
     "label-position": true,
     "member-access": false,
     "no-arg": true,
+    "no-barrel-imports": true,
     "no-bitwise": true,
     "no-conditional-assignment": true,
     "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],

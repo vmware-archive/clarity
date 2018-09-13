@@ -6,7 +6,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '../../../../clr-angular';
+import { ClarityModule } from '@clr/angular';
 
 import { GridHorizontalAlignmentDemo } from './alignment/horizontal/horizontal-alignment';
 import { GridVerticalAlignmentDemo } from './alignment/vertical/vertical-alignment';

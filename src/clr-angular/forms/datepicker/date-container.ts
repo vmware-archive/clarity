@@ -7,7 +7,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { IfOpenService } from '../../utils/conditional/if-open.service';
-import { DynamicWrapper } from '../../utils/host-wrapping';
+import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 import { ControlIdService } from '../common/providers/control-id.service';
 
 import { DateFormControlService } from './providers/date-form-control.service';

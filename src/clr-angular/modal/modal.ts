@@ -19,7 +19,7 @@ import {
 
 import { FocusTrapDirective } from '../utils/focus-trap/focus-trap.directive';
 import { ScrollingService } from '../utils/scrolling/scrolling-service';
-import { ClrCommonStrings } from '../utils/i18n';
+import { ClrCommonStrings } from '../utils/i18n/common-strings.interface';
 
 @Component({
   selector: 'clr-modal',

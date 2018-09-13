@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core
 import { Point } from '../../popover/common/popover';
 
 import { RowActionService } from './providers/row-action-service';
-import { ClrCommonStrings } from '../../utils/i18n';
+import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
 @Component({
   selector: 'clr-dg-action-overflow',

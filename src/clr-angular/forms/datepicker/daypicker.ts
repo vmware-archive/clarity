@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { ViewManagerService } from './providers/view-manager.service';
-import { ClrCommonStrings } from '../../utils/i18n';
+import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
 @Component({ selector: 'clr-daypicker', templateUrl: './daypicker.html', host: { '[class.daypicker]': 'true' } })
 export class ClrDaypicker {

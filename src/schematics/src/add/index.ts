@@ -150,8 +150,10 @@ export default function(options: ComponentOptions): Rule {
         return;
       }
 
-      const scripts = json.projects[project].architect.build.options.scripts;
-      const styles = json.projects[project].architect.build.options.styles;
+      const target = json.projects[project].targets ? json.projects[project].targets : json.projects[project].architect;
+
+      const scripts = target.build.options.scripts;
+      const styles = target.build.options.styles;
 
       const scriptsSearch = scripts.join('|');
       const stylesSearch = styles.join('|');

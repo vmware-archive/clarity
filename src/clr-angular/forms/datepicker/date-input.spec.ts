@@ -11,7 +11,7 @@ import { By } from '@angular/platform-browser';
 
 import { itIgnore } from '../../../../tests/tests.helpers';
 import { TestContext } from '../../data/datagrid/helpers.spec';
-import { ClrFormsModule } from '../../forms-deprecated';
+import { ClrFormsModule } from '../../forms-deprecated/forms.module';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
 import { ControlIdService } from '../common/providers/control-id.service';
 

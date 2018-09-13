@@ -5,7 +5,8 @@
  */
 import { HostBinding, InjectionToken, Injector, Input, OnInit, Type, ViewContainerRef } from '@angular/core';
 
-import { DynamicWrapper, HostWrapper } from '../../utils/host-wrapping';
+import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
+import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 
 import { ControlIdService } from './providers/control-id.service';
 

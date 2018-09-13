@@ -7,7 +7,8 @@
 import { Component, DebugElement, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClrLoadingModule, ClrLoadingState } from '../../utils/loading';
+import { ClrLoadingModule } from '../../utils/loading/loading.module';
+import { ClrLoadingState } from '../../utils/loading/loading';
 import { ButtonInGroupService } from '../providers/button-in-group.service';
 
 import { ClrButton } from './button';

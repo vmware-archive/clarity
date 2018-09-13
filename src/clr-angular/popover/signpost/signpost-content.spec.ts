@@ -8,7 +8,7 @@ import { TestBed } from '@angular/core/testing';
 
 // I'm giving up, I'm using the datagrid ones for now.
 import { addHelpers, TestContext } from '../../data/datagrid/helpers.spec';
-import { ClrIconCustomTag } from '../../icon';
+import { ClrIconCustomTag } from '../../icon/icon';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
 

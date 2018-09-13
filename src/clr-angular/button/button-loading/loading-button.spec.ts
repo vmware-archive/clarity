@@ -8,7 +8,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ClrLoadingState } from '../../utils/loading';
+import { ClrLoadingState } from '../../utils/loading/loading';
 import { ClrLoadingModule } from '../../utils/loading/loading.module';
 
 import { ClrLoadingButton } from './loading-button';

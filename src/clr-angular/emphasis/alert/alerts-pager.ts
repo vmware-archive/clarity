@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 
 import { ClrAlert } from './alert';
 import { MultiAlertService } from './providers/multi-alert.service';
-import { ClrCommonStrings } from '../../utils/i18n';
+import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
 @Component({
   selector: 'clr-alerts-pager',

@@ -24,7 +24,7 @@ import { LoadingListener } from '../../utils/loading/loading-listener';
 import { AbstractTreeSelection } from './abstract-tree-selection';
 import { clrTreeSelectionProviderFactory } from './providers/tree-selection.provider';
 import { TreeSelectionService } from './providers/tree-selection.service';
-import { ClrCommonStrings } from '../../utils/i18n';
+import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
 @Component({
   selector: 'clr-tree-node',

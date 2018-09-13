@@ -9,7 +9,7 @@ import { AbstractPopover } from '../common/abstract-popover';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
 
 import { SIGNPOST_POSITIONS } from './signpost-positions';
-import { ClrCommonStrings } from '../../utils/i18n';
+import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
 // aka where the arrow / pointer is at in relation to the anchor
 const POSITIONS: string[] = [

@@ -9,7 +9,7 @@ import { IfOpenService } from '../../utils/conditional/if-open.service';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
 
 import { ClrSignpostTrigger } from './signpost-trigger';
-import { ClrCommonStrings } from '../../utils/i18n';
+import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
 @Component({
   selector: 'clr-signpost',

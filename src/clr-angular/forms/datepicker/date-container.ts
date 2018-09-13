@@ -15,7 +15,7 @@ import { DateIOService } from './providers/date-io.service';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
-import { ClrCommonStrings } from '../../utils/i18n';
+import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
 @Component({
   selector: 'clr-date-container',

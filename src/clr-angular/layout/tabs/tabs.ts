@@ -11,7 +11,7 @@ import { IfOpenService } from '../../utils/conditional/if-open.service';
 import { TabsService } from './providers/tabs.service';
 import { ClrTabLink } from './tab-link.directive';
 import { TABS_ID, TABS_ID_PROVIDER } from './tabs-id.provider';
-import { ClrCommonStrings } from '../../utils/i18n';
+import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
 @Component({
   selector: 'clr-tabs',

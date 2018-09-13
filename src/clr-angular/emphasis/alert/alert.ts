@@ -8,7 +8,7 @@ import { ChangeDetectorRef, Component, EventEmitter, Input, Optional, Output } f
 // providers
 import { AlertIconAndTypesService } from './providers/icon-and-types.service';
 import { MultiAlertService } from './providers/multi-alert.service';
-import { ClrCommonStrings } from '../../utils/i18n';
+import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
 @Component({
   selector: 'clr-alert',

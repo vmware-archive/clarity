@@ -9,7 +9,7 @@ import { Component, ContentChildren, ElementRef, HostListener, Input, QueryList 
 import { Point } from '../../popover/common/popover';
 import { CLR_MENU_POSITIONS } from '../../popover/dropdown/menu-positions';
 import { ButtonInGroupService } from '../providers/button-in-group.service';
-import { ClrCommonStrings } from '../../utils/i18n';
+import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
 import { ClrButton } from './button';
 

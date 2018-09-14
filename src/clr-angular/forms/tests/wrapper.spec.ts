@@ -92,7 +92,7 @@ export function WrapperContainerSpec(testContainer, testWrapper, testControl, te
     });
 
     it('does not add the wrapper class inside a container', () => {
-      expect(wrapperEl.classList).not.toContain(wrapperClass);
+      expect(wrapperEl.classList).toContain(wrapperClass);
     });
   });
 }

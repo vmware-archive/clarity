@@ -20,7 +20,7 @@ import { NgControlService } from '../common/providers/ng-control.service';
     <ng-content select="label"></ng-content>
     <label *ngIf="!label && addGrid()"></label>
     <div class="clr-control-container" [ngClass]="controlClass()">
-      <div class="clr-radio-wrapper" [class.clr-radio-inline]="clrInline">
+      <div [class.clr-radio-inline]="clrInline">
         <ng-content select="clr-radio-wrapper"></ng-content>
       </div>
       <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>

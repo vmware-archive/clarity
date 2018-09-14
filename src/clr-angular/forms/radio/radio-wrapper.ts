@@ -19,7 +19,7 @@ import { ClrLabel } from '../common/label';
     <label *ngIf="!label"></label>
   `,
   host: {
-    '[class.clr-radio-wrapper]': '!hasContainer',
+    '[class.clr-radio-wrapper]': 'true',
   },
   providers: [ControlIdService],
 })

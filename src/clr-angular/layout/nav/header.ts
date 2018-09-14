@@ -35,6 +35,7 @@ export class ClrHeader implements OnDestroy {
   private _subscription: Subscription;
   public isNavLevel1OnPage: boolean = false;
   public isNavLevel2OnPage: boolean = false;
+  public responsiveNavCodes = ResponsiveNavCodes;
 
   constructor(private responsiveNavService: ResponsiveNavigationService) {
     this._subscription = this.responsiveNavService.registeredNavs.subscribe({
@@ -42,11 +43,6 @@ export class ClrHeader implements OnDestroy {
         this.initializeNavTriggers(navLevelList);
       },
     });
-  }
-
-  // getter to access the responsive navigation codes from the template
-  get responsiveNavCodes(): ResponsiveNavCodes {
-    return ResponsiveNavCodes;
   }
 
   // reset triggers. handles cases when an application has different nav levels on different pages.

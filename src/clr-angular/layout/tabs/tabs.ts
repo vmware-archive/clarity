@@ -16,7 +16,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 @Component({
   selector: 'clr-tabs',
   template: `
-        <ul class="nav" role="tablist">
+        <ul class="nav" role="tablist" [attr.aria-owns]="tabIds">
             <!--tab links-->
             <ng-container *ngFor="let link of tabLinkDirectives">
                 <ng-container *ngIf="link.tabsId === tabsId && !link.inOverflow"
@@ -63,6 +63,10 @@ export class ClrTabs implements AfterContentInit {
 
   get activeTabInOverflow() {
     return this.tabsService.overflowTabs.indexOf(this.tabsService.activeTab) > -1;
+  }
+
+  get tabIds() {
+    return this.tabsService.children.map(tab => tab.tabLink.tabLinkId).join(' ');
   }
 
   ngAfterContentInit() {

@@ -51,6 +51,10 @@ describe('TabLink Directive', () => {
     expect(compiled.querySelector('.nav-link')).not.toBeNull();
   });
 
+  it('sets the role to tab', () => {
+    expect(compiled.querySelector('button').getAttribute('role')).toEqual('tab');
+  });
+
   it('sets itself as active when clicked', () => {
     const links: ClrTabLink[] = instance.tabLinkChildren.toArray();
     expect(links[0].active).toEqual(false);

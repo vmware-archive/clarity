@@ -257,12 +257,12 @@ export default function(): void {
           expect(myAriaControls).toBe(stepNavItemId, 'aria-controls should contain id');
         });
 
-        it('should have role of presentation', () => {
+        it('should have role of tab', () => {
           let myRole: string;
 
           expect(myStepnavItem.hasAttribute('role')).toBeTruthy('stepnav item should have role attr');
           myRole = myStepnavItem.getAttribute('role');
-          expect(myRole).toBe('presentation', 'aria role should be presentation');
+          expect(myRole).toBe('tab', 'aria role should be tab');
         });
 
         it('should have clr-nav-link and nav-item classes', () => {

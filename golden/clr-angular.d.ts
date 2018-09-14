@@ -596,8 +596,7 @@ export declare class ClrIfOpen implements OnDestroy {
 }
 
 export declare class ClrInput extends WrappedFormControl<ClrInputContainer> implements OnInit {
-    type: string;
-    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, controlClassService: ControlClassService, type: string, renderer: Renderer2, el: ElementRef);
+    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, controlClassService: ControlClassService, renderer: Renderer2, el: ElementRef);
     ngOnInit(): void;
     onBlur(): void;
 }
@@ -727,8 +726,7 @@ export declare class ClrNavLevel implements OnInit {
 
 export declare class ClrPassword extends WrappedFormControl<ClrPasswordContainer> implements OnInit, OnDestroy {
     subscription: Subscription;
-    type: string;
-    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, focusService: FocusService, controlClassService: ControlClassService, type: string, renderer: Renderer2, el: ElementRef, toggleService: BehaviorSubject<boolean>);
+    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, focusService: FocusService, controlClassService: ControlClassService, renderer: Renderer2, el: ElementRef, toggleService: BehaviorSubject<boolean>);
     ngOnDestroy(): void;
     ngOnInit(): void;
     onBlur(): void;
@@ -761,7 +759,7 @@ export declare class ClrPopoverModule {
 }
 
 export declare class ClrRadio extends WrappedFormControl<ClrRadioWrapper> implements OnInit {
-    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, controlClassService: ControlClassService, el: ElementRef);
+    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, controlClassService: ControlClassService, el: ElementRef, renderer: Renderer2);
     ngOnInit(): void;
     onBlur(): void;
 }
@@ -788,7 +786,7 @@ export declare class ClrRadioWrapper implements DynamicWrapper {
 }
 
 export declare class ClrSelect extends WrappedFormControl<ClrSelectContainer> implements OnInit {
-    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, controlClassService: ControlClassService, el: ElementRef);
+    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, controlClassService: ControlClassService, el: ElementRef, renderer: Renderer2);
     ngOnInit(): void;
     onBlur(): void;
 }

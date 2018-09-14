@@ -4,16 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {
-  Directive,
-  HostListener,
-  Optional,
-  ViewContainerRef,
-  OnInit,
-  Attribute,
-  Renderer2,
-  ElementRef,
-} from '@angular/core';
+import { Directive, HostListener, Optional, ViewContainerRef, OnInit, Renderer2, ElementRef } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
@@ -30,7 +21,6 @@ export class ClrInput extends WrappedFormControl<ClrInputContainer> implements O
     @Optional() private ifErrorService: IfErrorService,
     @Optional() private control: NgControl,
     @Optional() controlClassService: ControlClassService,
-    @Attribute('type') public type: string,
     renderer: Renderer2,
     el: ElementRef
   ) {
@@ -40,12 +30,8 @@ export class ClrInput extends WrappedFormControl<ClrInputContainer> implements O
         'clrInput can only be used within an Angular form control, add ngModel or formControl to the input'
       );
     }
-    // Set type if it is missing
-    if (!this.type) {
-      renderer.setAttribute(el.nativeElement, 'type', 'text');
-    }
     if (controlClassService) {
-      controlClassService.className = el.nativeElement.className;
+      controlClassService.initControlClass(renderer, el.nativeElement);
     }
   }
 

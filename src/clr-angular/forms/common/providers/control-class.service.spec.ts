@@ -32,5 +32,20 @@ export default function(): void {
       service.className = 'clr-col-md-3 clr-col-xs-12';
       expect(service.controlClass(false, true)).toBe('');
     });
+
+    it('should init the control class', function() {
+      const renderer = {
+        removeClass: jasmine.createSpy(),
+      };
+      const element = document.createElement('input');
+      element.className = 'test-class';
+      service.initControlClass(renderer, element);
+      expect(service.className).toEqual('test-class');
+      expect(renderer.removeClass).not.toHaveBeenCalled();
+      element.className = 'clr-col-4 test-class';
+      service.initControlClass(renderer, element);
+      expect(service.className).toEqual('clr-col-4 test-class');
+      expect(renderer.removeClass).toHaveBeenCalledWith(element, 'clr-col-4');
+    });
   });
 }

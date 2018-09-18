@@ -19,8 +19,6 @@ import { ClrFocusTrapModule } from './utils/focus-trap/focus-trap.module';
 import { ClrLoadingModule } from './utils/loading/loading.module';
 import { ClrWizardModule } from './wizard/wizard.module';
 
-import { COMMON_STRINGS_PROVIDER } from './utils/i18n/common-strings.service';
-
 @NgModule({
   exports: [
     ClrEmphasisModule,
@@ -37,6 +35,5 @@ import { COMMON_STRINGS_PROVIDER } from './utils/i18n/common-strings.service';
     ClrPopoverModule,
     ClrWizardModule,
   ],
-  providers: [COMMON_STRINGS_PROVIDER],
 })
 export class ClarityModule {}

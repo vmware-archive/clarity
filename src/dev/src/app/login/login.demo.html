@@ -24,17 +24,22 @@
                     <clr-control-error *clrIfError="'required'">Username is required </clr-control-error>
                 </clr-input-container>
                 <clr-password-container>
-                    <input clrPassword placeholder="password" name="password" [(ngModel)]="formData.password" required />
+                    <input clrPassword placeholder="password" name="password" [(ngModel)]="formData.password" required class="clr-password" />
                     <clr-control-error *clrIfError="'required'">Password is required</clr-control-error>
                 </clr-password-container>
-
-                <clr-checkbox-container>
-                    <input clrCheckbox type="checkbox" id="rememberme">
-                    <label for="rememberme">Remember me</label>
-                </clr-checkbox-container>
+                <div class="checkbox">
+                    <input type="checkbox" id="rememberme">
+                    <label for="rememberme">
+                        Remember me
+                    </label>
+                </div>
+                <div class="error active" *ngIf="!(formData.username && formData.password)" >
+                    Invalid user name or password
+                </div>
 
                 <button type="submit" class="btn btn-primary">NEXT</button>
                 <a href="javascript://" class="signup">Sign up for a Company ID</a>
+
             </div>
         </form>
     </div>

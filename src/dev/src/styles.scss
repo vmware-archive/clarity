@@ -4,6 +4,23 @@
 .clr-example {
   margin-top: 1rem;
 
+  .login-wrapper {
+    .clr-select {
+      width: 16rem;
+    }
+    .clr-input {
+      &[clrInput] {
+        width: 16rem;
+      }
+
+      &[clrPassword] {
+        width: calc(16rem - 16px);
+      }
+    }
+    .checkbox {
+      padding-top: 15px;
+    }
+  }
   .main-container {
     height: auto;
     padding-top: 0;

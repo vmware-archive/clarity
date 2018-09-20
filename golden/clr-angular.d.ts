@@ -521,7 +521,7 @@ export declare class ClrDragEvent<T> {
         pageY: number;
     };
     group: string | string[];
-    constructor(dragEvent: DragEvent<T>);
+    constructor(dragEvent: DragEventInterface<T>);
 }
 
 export declare class ClrDraggable<T> implements AfterContentInit, OnDestroy {
@@ -590,12 +590,19 @@ export declare class ClrDroppable<T> implements OnInit, OnDestroy {
     dragMoveEmitter: EventEmitter<ClrDragEvent<T>>;
     dragStartEmitter: EventEmitter<ClrDragEvent<T>>;
     dropEmitter: EventEmitter<ClrDragEvent<T>>;
-    dropTolerance: number | string | DropTolerance;
+    dropTolerance: number | string | ClrDropToleranceInterface;
     group: string | string[];
     isDraggableOver: boolean;
     constructor(el: ElementRef, eventBus: DragAndDropEventBusService<T>, domAdapter: DomAdapter, renderer: Renderer2);
     ngOnDestroy(): void;
     ngOnInit(): void;
+}
+
+export interface ClrDropToleranceInterface {
+    bottom?: number;
+    left?: number;
+    right?: number;
+    top?: number;
 }
 
 export declare class ClrEmphasisModule {

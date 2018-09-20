@@ -8,7 +8,15 @@ import { Component } from '@angular/core';
 import { Inventory } from '../data/inventory';
 import { User } from '../data/user';
 
-import { ClrDragEvent } from '@clr/angular';
+import {
+  ClrDraggable,
+  ClrDroppable,
+  ClrIfDragged,
+  ClrDragHandle,
+  ClrDragEvent,
+  ClrDraggableGhost,
+  ClrDropToleranceInterface,
+} from '@clr/angular';
 
 const FILES = [
   { name: 'img_001.jpg', group: 'image-file' },
@@ -18,6 +26,21 @@ const FILES = [
 
 @Component({ templateUrl: './dnd.component.html', providers: [Inventory] })
 export class KSDragAndDrop {
+  /**
+   * @description
+   * These exist so that the exported API from Clarity is tested when ks-app is compiled with --prod.
+   */
+
+  private aDraggable: ClrDraggable<any>;
+  private aDroppable: ClrDroppable<any>;
+  private aIfDragged: ClrIfDragged<any>;
+  private aDragHandle: ClrDragHandle<any>;
+  private aDragEvent: ClrDragEvent<any>;
+  private aDraggableGhost: ClrDraggableGhost<any>;
+  private aDropTolerance: ClrDropToleranceInterface;
+
+  // END Clarity Data Entities
+
   /* DnD on Datagrid row*/
   users: User[];
 

@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 import { DomAdapter } from '../../dom-adapter/dom-adapter';
 import { ClrDragEvent } from '../drag-event';
 import { DragEventInterface, DragEventType } from '../interfaces/drag-event.interface';
-import { DropToleranceInterface } from '../interfaces/drop-tolerance.interface';
+import { ClrDropToleranceInterface } from '../interfaces/drop-tolerance.interface';
 import { DragAndDropEventBusService } from '../providers/drag-and-drop-event-bus.service';
 
 @Directive({
@@ -55,14 +55,14 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     this._group = value;
   }
 
-  private _dropTolerance: DropToleranceInterface = { top: 0, right: 0, bottom: 0, left: 0 };
+  private _dropTolerance: ClrDropToleranceInterface = { top: 0, right: 0, bottom: 0, left: 0 };
 
-  private dropToleranceGenerator(top = 0, right = top, bottom = top, left = right): DropToleranceInterface {
+  private dropToleranceGenerator(top = 0, right = top, bottom = top, left = right): ClrDropToleranceInterface {
     return { top, right, bottom, left };
   }
 
   @Input('clrDropTolerance')
-  set dropTolerance(value: number | string | DropToleranceInterface) {
+  set dropTolerance(value: number | string | ClrDropToleranceInterface) {
     // If user provides an object here and wants to manipulate/update properties individually,
     // the object must be immutable as we generate new object based user's given object.
     if (typeof value === 'number') {

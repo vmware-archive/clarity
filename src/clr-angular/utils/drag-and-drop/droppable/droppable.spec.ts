@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 
 import { ClrDragEvent } from '../drag-event';
 import { DragEventInterface, DragEventType } from '../interfaces/drag-event.interface';
-import { DropToleranceInterface } from '../interfaces/drop-tolerance.interface';
+import { ClrDropToleranceInterface } from '../interfaces/drop-tolerance.interface';
 import { DragAndDropEventBusService } from '../providers/drag-and-drop-event-bus.service';
 import { MOCK_DRAG_DROP_EVENT_BUS } from '../providers/drag-and-drop-event-bus.service.mock';
 import { ClrDroppable } from './droppable';
@@ -318,7 +318,7 @@ export default function(): void {
         return dragEvent;
       };
 
-      this.detectEnterOrLeaveAt = function(tolerance: DropToleranceInterface) {
+      this.detectEnterOrLeaveAt = function(tolerance: ClrDropToleranceInterface) {
         expect(
           new ClrDragEvent({
             ...this.broadcastEnterLeaveEventAt(400 - tolerance.left, 200 - tolerance.top),
@@ -369,14 +369,14 @@ export default function(): void {
         ).toEqual(this.testComponent.dragLeaveEvent);
       };
 
-      this.expectDropToleranceInput = function(userInput: number | string | DropToleranceInterface) {
+      this.expectDropToleranceInput = function(userInput: number | string | ClrDropToleranceInterface) {
         this.testComponent.tolerance = userInput;
         this.fixture.detectChanges();
         this.eventBus.broadcast(mockDragStartEventInt);
         expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
 
         return {
-          toBeCheckedAs: function(expectedResult: DropToleranceInterface) {
+          toBeCheckedAs: function(expectedResult: ClrDropToleranceInterface) {
             this.detectEnterOrLeaveAt(expectedResult);
           }.bind(this),
         };
@@ -404,7 +404,7 @@ export default function(): void {
     });
 
     it('can register dragEnter if dropPointPosition is within drop tolerance added as object', function() {
-      const tolerance: DropToleranceInterface = { top: 20, right: 40, bottom: 60, left: 80 };
+      const tolerance: ClrDropToleranceInterface = { top: 20, right: 40, bottom: 60, left: 80 };
       this.testComponent.tolerance = tolerance;
       this.expectDropToleranceInput(tolerance).toBeCheckedAs(tolerance);
     });
@@ -529,7 +529,7 @@ class DroppableWithGroup {
         (clrDragEnter)="dragEnterEvent = $event;">Test</div>`,
 })
 class DroppableWithTolerance {
-  public tolerance: number | DropToleranceInterface;
+  public tolerance: number | ClrDropToleranceInterface;
   public dragStartEvent: any;
   public dragLeaveEvent: any;
   public dragEnterEvent: any;

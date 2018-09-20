@@ -17,7 +17,7 @@ class PokemonComparator implements ClrDatagridComparatorInterface<User> {
 
 @Component({ /* ... */ })
 class MyComponent {
-    private pokemonComparator = new PokemonComparator();
+    public pokemonComparator = new PokemonComparator();
 }
 `,
     sortingHTML: `

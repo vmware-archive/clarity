@@ -15,7 +15,7 @@ class PokemonComparator implements Comparator<User> {
 
 @Component({ /* ... */ })
 class MyComponent {
-    private pokemonComparator = new PokemonComparator();
+    public pokemonComparator = new PokemonComparator();
 }
 `,
 

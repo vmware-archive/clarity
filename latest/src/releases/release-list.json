@@ -1,13 +1,18 @@
 {
-    "current": "0.13.1",
+    "current": "0.13.2",
     "all": {
+        "0.13.2": {
+            "date": "Sep 20, 2018",
+            "sketch": "0.12.7",
+            "commit": "8703f1ce55cc05467ee7cb13d2f1a3d693e9a93e"
+        },
         "0.13.1-patch.1": {
-            "date": "Sep 6, 2018",
+            "date": "Sep 13, 2018",
             "sketch": "0.12.7",
             "commit": "69297fcbd35d6fedd8edf5d2b91b8678a757376b"
         },
         "0.13.1": {
-            "date": "Sep 6, 2018",
+            "date": "Sep 13, 2018",
             "sketch": "0.12.7",
             "commit": "73c57c9ad5637ef52fd56d4a2cbd114f029c4733"
         },

@@ -23,7 +23,7 @@ class MyFilter implements ClrDatagridFilterInterface<User> {
 
 @Component({ /* ... */ })
 class MyComponent {
-    private myFilter = new MyFilter();
+    public myFilter = new MyFilter();
 }
 `,
 

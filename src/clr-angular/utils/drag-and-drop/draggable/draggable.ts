@@ -23,7 +23,7 @@ import { DomAdapter } from '../../dom-adapter/dom-adapter';
 import { ClrDragEvent } from '../drag-event';
 import { ClrDraggableGhost } from '../draggable-ghost';
 import { ClrIfDragged } from '../if-dragged';
-import { DragEvent } from '../interfaces/drag-event.interface';
+import { DragEventInterface } from '../interfaces/drag-event.interface';
 import { DragEventListenerService } from '../providers/drag-event-listener.service';
 import { DragHandleRegistrarService } from '../providers/drag-handle-registrar.service';
 import { DraggableSnapshotService } from '../providers/draggable-snapshot.service';
@@ -72,7 +72,7 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     this.dragEventListener.group = value;
   }
 
-  private createDefaultGhost(event: DragEvent<T>) {
+  private createDefaultGhost(event: DragEventInterface<T>) {
     this.draggableSnapshot.capture(this.draggableEl, event);
     // NOTE: The default ghost element will appear
     // next to the clrDraggable in the DOM as a sibling element.
@@ -94,7 +94,7 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     this.dragHandleRegistrar.defaultHandleEl = this.draggableEl;
 
     this.subscriptions.push(
-      this.dragEventListener.dragStarted.subscribe((event: DragEvent<T>) => {
+      this.dragEventListener.dragStarted.subscribe((event: DragEventInterface<T>) => {
         this.globalDragMode.enter();
         this.dragOn = true;
         if (!this.customGhost) {
@@ -105,12 +105,12 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
       })
     );
     this.subscriptions.push(
-      this.dragEventListener.dragMoved.subscribe((event: DragEvent<T>) => {
+      this.dragEventListener.dragMoved.subscribe((event: DragEventInterface<T>) => {
         this.dragMoveEmitter.emit(new ClrDragEvent(event));
       })
     );
     this.subscriptions.push(
-      this.dragEventListener.dragEnded.subscribe((event: DragEvent<T>) => {
+      this.dragEventListener.dragEnded.subscribe((event: DragEventInterface<T>) => {
         this.globalDragMode.exit();
         this.dragOn = false;
         if (!this.customGhost) {

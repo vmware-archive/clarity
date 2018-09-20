@@ -6,32 +6,32 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-import { DragEvent, DragEventType } from '../interfaces/drag-event.interface';
+import { DragEventInterface, DragEventType } from '../interfaces/drag-event.interface';
 
 @Injectable()
 export class DragAndDropEventBusService<T> {
-  private dragStart: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
-  private dragMove: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
-  private dragEnd: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
-  private drop: Subject<DragEvent<T>> = new Subject<DragEvent<T>>();
+  private dragStart: Subject<DragEventInterface<T>> = new Subject<DragEventInterface<T>>();
+  private dragMove: Subject<DragEventInterface<T>> = new Subject<DragEventInterface<T>>();
+  private dragEnd: Subject<DragEventInterface<T>> = new Subject<DragEventInterface<T>>();
+  private drop: Subject<DragEventInterface<T>> = new Subject<DragEventInterface<T>>();
 
-  get dragStarted(): Observable<DragEvent<T>> {
+  get dragStarted(): Observable<DragEventInterface<T>> {
     return this.dragStart.asObservable();
   }
 
-  get dragMoved(): Observable<DragEvent<T>> {
+  get dragMoved(): Observable<DragEventInterface<T>> {
     return this.dragMove.asObservable();
   }
 
-  get dragEnded(): Observable<DragEvent<T>> {
+  get dragEnded(): Observable<DragEventInterface<T>> {
     return this.dragEnd.asObservable();
   }
 
-  get dropped(): Observable<DragEvent<T>> {
+  get dropped(): Observable<DragEventInterface<T>> {
     return this.drop.asObservable();
   }
 
-  broadcast(event: DragEvent<T>): void {
+  broadcast(event: DragEventInterface<T>): void {
     switch (event.type) {
       case DragEventType.DRAG_START:
         this.dragStart.next(event);

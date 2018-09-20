@@ -12,7 +12,7 @@ import { ClrIconModule } from '../../../icon/icon.module';
 import { DomAdapter } from '../../dom-adapter/dom-adapter';
 import { ClrDragAndDropModule } from '../drag-and-drop.module';
 import { ClrDragHandle } from '../drag-handle';
-import { DragEvent, DragEventType } from '../interfaces/drag-event.interface';
+import { DragEventInterface, DragEventType } from '../interfaces/drag-event.interface';
 import { DragEventListenerService } from '../providers/drag-event-listener.service';
 import { MOCK_DRAG_EVENT_LISTENER_PROVIDER } from '../providers/drag-event-listener.service.mock';
 import { DragHandleRegistrarService } from '../providers/drag-handle-registrar.service';
@@ -23,8 +23,8 @@ import { ClrDraggable } from './draggable';
 
 export default function(): void {
   describe('With Custom Draggable Ghost and Handle', function() {
-    let mockDragStartEventInt: DragEvent<any>;
-    let mockDragEndEventInt: DragEvent<any>;
+    let mockDragStartEventInt: DragEventInterface<any>;
+    let mockDragEndEventInt: DragEventInterface<any>;
 
     beforeEach(function() {
       mockDragStartEventInt = { type: DragEventType.DRAG_START, dragPosition: { pageX: 11, pageY: 22 } };

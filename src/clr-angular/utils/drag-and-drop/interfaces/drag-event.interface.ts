@@ -12,7 +12,7 @@ export enum DragEventType {
   DROP,
 }
 
-export interface DragEvent<T> {
+export interface DragEventInterface<T> {
   type: DragEventType;
   group?: string | string[];
   ghostElement?: any;

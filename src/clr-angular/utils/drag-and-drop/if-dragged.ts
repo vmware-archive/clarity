@@ -6,7 +6,7 @@
 import { Directive, OnDestroy, Optional, SkipSelf, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { DragEvent } from './interfaces/drag-event.interface';
+import { DragEventInterface } from './interfaces/drag-event.interface';
 import { DragEventListenerService } from './providers/drag-event-listener.service';
 
 // This structural directive will be used mainly together with `clr-draggable-ghost` directive inside of clrDraggable
@@ -29,12 +29,12 @@ export class ClrIfDragged<T> implements OnDestroy {
     }
 
     this.subscriptions.push(
-      this.dragEventListener.dragStarted.subscribe((event: DragEvent<T>) => {
+      this.dragEventListener.dragStarted.subscribe((event: DragEventInterface<T>) => {
         this.container.createEmbeddedView(this.template);
       })
     );
     this.subscriptions.push(
-      this.dragEventListener.dragEnded.subscribe((event: DragEvent<T>) => {
+      this.dragEventListener.dragEnded.subscribe((event: DragEventInterface<T>) => {
         this.container.clear();
       })
     );

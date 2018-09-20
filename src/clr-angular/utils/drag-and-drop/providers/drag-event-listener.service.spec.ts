@@ -8,7 +8,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Subscription } from 'rxjs';
 
 import { emulateDragEvent } from '../helpers.spec';
-import { DragEvent } from '../interfaces/drag-event.interface';
+import { DragEventInterface } from '../interfaces/drag-event.interface';
 import { DragAndDropEventBusService } from './drag-and-drop-event-bus.service';
 import { DragEventListenerService } from './drag-event-listener.service';
 
@@ -16,7 +16,7 @@ type DragTransfer = {
   data: any;
 };
 
-const expectEventPropValues = <T>(event: DragEvent<T>) => {
+const expectEventPropValues = <T>(event: DragEventInterface<T>) => {
   return {
     toBe: (element: Node, pageX: number, pageY: number, dragTransfer?: T, group?: string | string[]) => {
       expect(event.dragPosition.pageX).toBe(pageX);
@@ -257,7 +257,7 @@ class TestComponent implements OnInit, OnDestroy {
   dragMoveFired = false;
   dragEndFired = false;
 
-  dragEvent: DragEvent<DragTransfer>;
+  dragEvent: DragEventInterface<DragTransfer>;
 
   nbDragMoveFired = 0;
 
@@ -276,37 +276,37 @@ class TestComponent implements OnInit, OnDestroy {
     this.dragEventListener.attachDragListeners(this.draggableButtonRef.nativeElement);
 
     this.subscriptions.push(
-      this.dragEventListener.dragStarted.subscribe((event: DragEvent<DragTransfer>) => {
+      this.dragEventListener.dragStarted.subscribe((event: DragEventInterface<DragTransfer>) => {
         this.dragEvent = event;
         this.dragStartFired = true;
       })
     );
     this.subscriptions.push(
-      this.dragEventListener.dragMoved.subscribe((event: DragEvent<DragTransfer>) => {
+      this.dragEventListener.dragMoved.subscribe((event: DragEventInterface<DragTransfer>) => {
         this.dragEvent = event;
         this.dragMoveFired = true;
         this.nbDragMoveFired++;
       })
     );
     this.subscriptions.push(
-      this.dragEventListener.dragEnded.subscribe((event: DragEvent<DragTransfer>) => {
+      this.dragEventListener.dragEnded.subscribe((event: DragEventInterface<DragTransfer>) => {
         this.dragEvent = event;
         this.dragEndFired = true;
       })
     );
 
     this.subscriptions.push(
-      this.eventBus.dragStarted.subscribe((event: DragEvent<DragTransfer>) => {
+      this.eventBus.dragStarted.subscribe((event: DragEventInterface<DragTransfer>) => {
         this.dragStartDispatched = true;
       })
     );
     this.subscriptions.push(
-      this.eventBus.dragMoved.subscribe((event: DragEvent<DragTransfer>) => {
+      this.eventBus.dragMoved.subscribe((event: DragEventInterface<DragTransfer>) => {
         this.dragMoveDispatched = true;
       })
     );
     this.subscriptions.push(
-      this.eventBus.dragEnded.subscribe((event: DragEvent<DragTransfer>) => {
+      this.eventBus.dragEnded.subscribe((event: DragEventInterface<DragTransfer>) => {
         this.dragEndDispatched = true;
       })
     );

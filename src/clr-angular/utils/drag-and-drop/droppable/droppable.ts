@@ -8,8 +8,8 @@ import { Subscription } from 'rxjs';
 
 import { DomAdapter } from '../../dom-adapter/dom-adapter';
 import { ClrDragEvent } from '../drag-event';
-import { DragEvent, DragEventType } from '../interfaces/drag-event.interface';
-import { DropTolerance } from '../interfaces/drop-tolerance.interface';
+import { DragEventInterface, DragEventType } from '../interfaces/drag-event.interface';
+import { DropToleranceInterface } from '../interfaces/drop-tolerance.interface';
 import { DragAndDropEventBusService } from '../providers/drag-and-drop-event-bus.service';
 
 @Directive({
@@ -55,14 +55,14 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     this._group = value;
   }
 
-  private _dropTolerance: DropTolerance = { top: 0, right: 0, bottom: 0, left: 0 };
+  private _dropTolerance: DropToleranceInterface = { top: 0, right: 0, bottom: 0, left: 0 };
 
-  private dropToleranceGenerator(top = 0, right = top, bottom = top, left = right): DropTolerance {
+  private dropToleranceGenerator(top = 0, right = top, bottom = top, left = right): DropToleranceInterface {
     return { top, right, bottom, left };
   }
 
   @Input('clrDropTolerance')
-  set dropTolerance(value: number | string | DropTolerance) {
+  set dropTolerance(value: number | string | DropToleranceInterface) {
     // If user provides an object here and wants to manipulate/update properties individually,
     // the object must be immutable as we generate new object based user's given object.
     if (typeof value === 'number') {
@@ -152,23 +152,23 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     }
   }
 
-  private onDragStart(dragStartEvent: DragEvent<T>): void {
+  private onDragStart(dragStartEvent: DragEventInterface<T>): void {
     // Check draggable and droppable have a matching group key.
     this.isDraggableMatch = this.checkGroupMatch(dragStartEvent.group);
 
     // Subscribe to dragMoved and dragEnded only if draggable and droppable have a matching group key.
     if (this.isDraggableMatch) {
       this.dragStartEmitter.emit(new ClrDragEvent(dragStartEvent));
-      this.dragMoveSubscription = this.eventBus.dragMoved.subscribe((dragMoveEvent: DragEvent<T>) => {
+      this.dragMoveSubscription = this.eventBus.dragMoved.subscribe((dragMoveEvent: DragEventInterface<T>) => {
         this.onDragMove(dragMoveEvent);
       });
-      this.dragEndSubscription = this.eventBus.dragEnded.subscribe((dragEndEvent: DragEvent<T>) => {
+      this.dragEndSubscription = this.eventBus.dragEnded.subscribe((dragEndEvent: DragEventInterface<T>) => {
         this.onDragEnd(dragEndEvent);
       });
     }
   }
 
-  private onDragMove(dragMoveEvent: DragEvent<T>): void {
+  private onDragMove(dragMoveEvent: DragEventInterface<T>): void {
     const isInDropArea = this.isInDropArea(dragMoveEvent.dropPointPosition);
     if (!this._isDraggableOver && isInDropArea) {
       this.isDraggableOver = true;
@@ -185,7 +185,7 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     this.dragMoveEmitter.emit(new ClrDragEvent(dragMoveEvent));
   }
 
-  private onDragEnd(dragEndEvent: DragEvent<T>): void {
+  private onDragEnd(dragEndEvent: DragEventInterface<T>): void {
     if (this._isDraggableOver) {
       if (dragEndEvent.ghostElement) {
         // By this point, the draggable ghost component is destroyed,
@@ -211,7 +211,7 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.dragStartSubscription = this.eventBus.dragStarted.subscribe((dragStartEvent: DragEvent<T>) => {
+    this.dragStartSubscription = this.eventBus.dragStarted.subscribe((dragStartEvent: DragEventInterface<T>) => {
       this.onDragStart(dragStartEvent);
     });
   }

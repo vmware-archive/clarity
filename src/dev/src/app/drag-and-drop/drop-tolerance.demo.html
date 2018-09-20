@@ -10,14 +10,14 @@
 
     <label>Drop tolerance for Table A:</label>
     <div class="form-group droppable-tolerance-fields">
-        <input type="number" [ngModel]="tableADropTolerance.top" (ngModelChange)="updateTableAField({top: $event})"
+        <input clrInput type="number" [ngModel]="tableADropTolerance.top" (ngModelChange)="updateTableAField({top: $event})"
                id="table-a-top" name="top" placeholder="top">
-        <input type="number" [ngModel]="tableADropTolerance.right" (ngModelChange)="updateTableAField({right: $event})"
+        <input clrInput type="number" [ngModel]="tableADropTolerance.right" (ngModelChange)="updateTableAField({right: $event})"
                id="table-a-right" name="right" placeholder="right">
-        <input type="number" [ngModel]="tableADropTolerance.bottom"
+        <input clrInput type="number" [ngModel]="tableADropTolerance.bottom"
                (ngModelChange)="updateTableAField({bottom: $event})" id="table-a-bottom" name="bottom"
                placeholder="bottom">
-        <input type="number" [ngModel]="tableADropTolerance.left" (ngModelChange)="updateTableAField({left: $event})"
+        <input clrInput type="number" [ngModel]="tableADropTolerance.left" (ngModelChange)="updateTableAField({left: $event})"
                id="table-a-left" name="left" placeholder="left">
     </div>
 
@@ -27,14 +27,14 @@
 
     <label>Drop tolerance for Table B:</label>
     <div class="form-group droppable-tolerance-fields">
-        <input type="number" [ngModel]="tableBDropTolerance.top" (ngModelChange)="updateTableBField({top: $event})"
+        <input clrInput type="number" [ngModel]="tableBDropTolerance.top" (ngModelChange)="updateTableBField({top: $event})"
                id="table-b-top" name="top" placeholder="top">
-        <input type="number" [ngModel]="tableBDropTolerance.right" (ngModelChange)="updateTableBField({right: $event})"
+        <input clrInput type="number" [ngModel]="tableBDropTolerance.right" (ngModelChange)="updateTableBField({right: $event})"
                id="table-b-right" name="right" placeholder="right">
-        <input type="number" [ngModel]="tableBDropTolerance.bottom"
+        <input clrInput type="number" [ngModel]="tableBDropTolerance.bottom"
                (ngModelChange)="updateTableBField({bottom: $event})" id="table-b-bottom" name="bottom"
                placeholder="bottom">
-        <input type="number" [ngModel]="tableBDropTolerance.left" (ngModelChange)="updateTableBField({left: $event})"
+        <input clrInput type="number" [ngModel]="tableBDropTolerance.left" (ngModelChange)="updateTableBField({left: $event})"
                id="table-b-left" name="left" placeholder="left">
     </div>
 

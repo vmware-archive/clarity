@@ -3,7 +3,13 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component } from '@angular/core';
+import { Component, SimpleChanges } from '@angular/core';
 
 @Component({ selector: 'clr-login-demo', templateUrl: './login.demo.html' })
-export class LoginDemo {}
+export class LoginDemo {
+  formData = {
+    userType: 'Local Users',
+    username: '',
+    password: '',
+  };
+}

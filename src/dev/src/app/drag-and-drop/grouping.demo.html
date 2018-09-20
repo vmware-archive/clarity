@@ -8,8 +8,8 @@
 
 <div class="clr-example">
 
-    <div class="row">
-        <div class="col-xs-3">
+    <div class="clr-row">
+        <div class="clr-col-3">
             <table class="table" clrDroppable [clrGroup]="['image-file', 'movie-file', 'audio-file']" (clrDrop)="onDropBack($event)">
                 <thead>
                 <tr>
@@ -26,7 +26,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-xs-3">
+        <div class="clr-col-3">
             <table class="table" clrDroppable clrGroup="audio-file" (clrDrop)="onDropAudio($event)">
                 <thead>
                 <tr>
@@ -43,7 +43,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-xs-3">
+        <div class="clr-col-3">
             <table class="table" clrDroppable clrGroup="image-file" (clrDrop)="onDropImage($event)">
                 <thead>
                 <tr>
@@ -60,7 +60,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-xs-3">
+        <div class="clr-col-3">
             <table class="table" clrDroppable clrGroup="movie-file" (clrDrop)="onDropMovie($event)">
                 <thead>
                 <tr>

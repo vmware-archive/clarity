@@ -1,6 +1,6 @@
 {
   "name": "@clr/angular",
-  "version": "0.13.1-patch.1",
+  "version": "0.13.2",
   "description": "Angular components for Clarity",
   "es2015": "esm2015/clr-angular.js",
   "homepage": "https://vmware.github.io/clarity/",
@@ -23,7 +23,7 @@
     "@angular/forms": "^6.0.0",
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
-    "@clr/ui": "0.13.1-patch.1"
+    "@clr/ui": "0.13.2"
   },
   "author": "clarity",
   "license": "MIT",

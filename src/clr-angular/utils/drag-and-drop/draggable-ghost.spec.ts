@@ -10,7 +10,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DomAdapter } from '../dom-adapter/dom-adapter';
 
-import { ClrDraggableGhost } from '.';
+import { ClrDraggableGhost } from './index';
 import { ClrDragAndDropModule } from './drag-and-drop.module';
 import { DragEventListenerService } from './providers/drag-event-listener.service';
 import { MOCK_DRAG_EVENT_LISTENER_PROVIDER } from './providers/drag-event-listener.service.mock';

@@ -31,7 +31,7 @@ export class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> implem
       );
     }
     if (controlClassService) {
-      controlClassService.className = el.nativeElement.className;
+      controlClassService.initControlClass(renderer, el.nativeElement);
     }
   }
 

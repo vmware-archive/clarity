@@ -42,6 +42,7 @@ function fullTest(description, testContainer, testControl, testComponent, contro
 
     beforeEach(() => {
       spyOn(WrappedFormControl.prototype, 'ngOnInit');
+      spyOn(ControlClassService.prototype, 'initControlClass').and.callThrough();
       TestBed.configureTestingModule({
         imports: [FormsModule, ClrIconModule, ClrCommonFormsModule, ReactiveFormsModule],
         declarations: [testContainer, testControl, testComponent],
@@ -77,6 +78,7 @@ function fullTest(description, testContainer, testControl, testComponent, contro
 
     it('should set the class on the control with ControlClassService', () => {
       expect(controlClassService).toBeTruthy();
+      expect(controlClassService.initControlClass).toHaveBeenCalled();
       expect(controlClassService.className).toEqual('test-class');
     });
 

@@ -20,4 +20,17 @@ export class ControlClassService {
     }
     return controlClasses.join(' ');
   }
+
+  // We want to remove the column classes from the input up to the container
+  initControlClass(renderer, element: HTMLElement) {
+    if (element && element.className) {
+      this.className = element.className;
+      const klasses = element.className.split(' ');
+      klasses.forEach(klass => {
+        if (klass.startsWith('clr-col')) {
+          renderer.removeClass(element, klass);
+        }
+      });
+    }
+  }
 }

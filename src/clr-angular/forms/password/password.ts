@@ -10,7 +10,6 @@ import {
   HostListener,
   Optional,
   ViewContainerRef,
-  Attribute,
   Renderer2,
   Inject,
   ElementRef,
@@ -37,7 +36,6 @@ export class ClrPassword extends WrappedFormControl<ClrPasswordContainer> implem
     @Optional() private control: NgControl,
     @Optional() private focusService: FocusService,
     controlClassService: ControlClassService,
-    @Attribute('type') public type: string,
     renderer: Renderer2,
     el: ElementRef,
     @Inject(ToggleService) private toggleService: BehaviorSubject<boolean>
@@ -51,11 +49,9 @@ export class ClrPassword extends WrappedFormControl<ClrPasswordContainer> implem
     if (!this.focusService) {
       throw new Error('clrPassword requires being wrapped in <clr-password-container>');
     }
-    // Set type if it is missing
-    if (!this.type) {
-      renderer.setAttribute(el.nativeElement, 'type', 'password');
+    if (controlClassService) {
+      controlClassService.initControlClass(renderer, el.nativeElement);
     }
-    controlClassService.className = el.nativeElement.className;
     this.subscription = this.toggleService.subscribe(toggle => {
       renderer.setProperty(el.nativeElement, 'type', toggle ? 'text' : 'password');
     });

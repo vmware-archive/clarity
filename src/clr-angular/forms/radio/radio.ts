@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Directive, ElementRef, HostListener, OnInit, Optional, ViewContainerRef } from '@angular/core';
+import { Directive, Renderer2, ElementRef, HostListener, OnInit, Optional, ViewContainerRef } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
@@ -21,11 +21,12 @@ export class ClrRadio extends WrappedFormControl<ClrRadioWrapper> implements OnI
     @Optional() private ifErrorService: IfErrorService,
     @Optional() private control: NgControl,
     @Optional() controlClassService: ControlClassService,
-    el: ElementRef
+    el: ElementRef,
+    renderer: Renderer2
   ) {
     super(ClrRadioWrapper, vcr, 0);
     if (controlClassService) {
-      controlClassService.className = el.nativeElement.className;
+      controlClassService.initControlClass(renderer, el.nativeElement);
     }
   }
 

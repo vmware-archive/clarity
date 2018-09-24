@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 
 import { DatagridColumnResizer } from './column-resizer';
 import { STRICT_WIDTH_CLASS } from './constants';
-import { DomAdapter } from './dom-adapter';
+import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from './render-organizer';
 
 @Directive({ selector: 'clr-dg-column' })

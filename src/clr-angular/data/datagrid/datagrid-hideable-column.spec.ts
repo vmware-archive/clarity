@@ -13,7 +13,7 @@ import { FiltersProvider } from './providers/filters';
 import { Page } from './providers/page';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
-import { DomAdapter } from './render/dom-adapter';
+import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from './render/render-organizer';
 
 const PROVIDERS_NEEDED = [

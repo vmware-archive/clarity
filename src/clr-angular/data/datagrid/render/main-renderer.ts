@@ -20,7 +20,7 @@ import { Subscription } from 'rxjs';
 import { Items } from '../providers/items';
 import { Page } from '../providers/page';
 
-import { DomAdapter } from './dom-adapter';
+import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { DatagridHeaderRenderer } from './header-renderer';
 import { NoopDomAdapter } from './noop-dom-adapter';
 import { DatagridRenderOrganizer } from './render-organizer';
@@ -107,7 +107,7 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
    */
   private computeDatagridHeight() {
     // IE doesn't return correct value for getComputedStyle(element).getPropertyValue("height")
-    const value: number = this.domAdapter.clientRectHeight(this.el.nativeElement);
+    const value: number = this.domAdapter.clientRect(this.el.nativeElement).height;
     this.renderer.setStyle(this.el.nativeElement, 'height', value + 'px');
     this._heightSet = true;
   }

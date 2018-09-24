@@ -1,0 +1,83 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Grouping Draggables with Droppables</h4>
+
+<div class="clr-example">
+
+    <div class="clr-row">
+        <div class="clr-col-3">
+            <table class="table" clrDroppable [clrGroup]="['image-file', 'movie-file', 'audio-file']" (clrDrop)="onDropBack($event)">
+                <thead>
+                <tr>
+                    <th>Files:</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="files.length===0">
+                        <td>Nothing to drag here...</td>
+                    </tr>
+                    <tr *ngFor="let file of files">
+                        <td><span class="label" [clrDraggable]="file" [clrGroup]="file.group">{{file.name}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="clr-col-3">
+            <table class="table" clrDroppable clrGroup="audio-file" (clrDrop)="onDropAudio($event)">
+                <thead>
+                <tr>
+                    <th>Drop audio files here:</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngIf="droppedAudios.length===0">
+                    <td>Only audios will be accepted here.</td>
+                </tr>
+                <tr *ngFor="let file of droppedAudios">
+                    <td><span class="label" [clrDraggable]="file" [clrGroup]="file.group">{{file.name}}</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="clr-col-3">
+            <table class="table" clrDroppable clrGroup="image-file" (clrDrop)="onDropImage($event)">
+                <thead>
+                <tr>
+                    <th>Drop image files here:</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="droppedImages.length===0">
+                        <td>Only images will be accepted here.</td>
+                    </tr>
+                    <tr *ngFor="let file of droppedImages">
+                        <td><span class="label" [clrDraggable]="file" [clrGroup]="file.group">{{file.name}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="clr-col-3">
+            <table class="table" clrDroppable clrGroup="movie-file" (clrDrop)="onDropMovie($event)">
+                <thead>
+                <tr>
+                    <th>Drop movie files here:</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngIf="droppedMovies.length===0">
+                    <td>Only videos will be accpeted here.</td>
+                </tr>
+                <tr *ngFor="let file of droppedMovies">
+                    <td><span class="label" [clrDraggable]="file" [clrGroup]="file.group">{{file.name}}</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+

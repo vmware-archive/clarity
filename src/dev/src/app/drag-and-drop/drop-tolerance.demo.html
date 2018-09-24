@@ -1,0 +1,90 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Drop Tolerance</h4>
+
+<div class="form-block droppable-demo">
+
+    <label>Drop tolerance for Table A:</label>
+    <div class="form-group droppable-tolerance-fields">
+        <input clrInput type="number" [ngModel]="tableADropTolerance.top" (ngModelChange)="updateTableAField({top: $event})"
+               id="table-a-top" name="top" placeholder="top">
+        <input clrInput type="number" [ngModel]="tableADropTolerance.right" (ngModelChange)="updateTableAField({right: $event})"
+               id="table-a-right" name="right" placeholder="right">
+        <input clrInput type="number" [ngModel]="tableADropTolerance.bottom"
+               (ngModelChange)="updateTableAField({bottom: $event})" id="table-a-bottom" name="bottom"
+               placeholder="bottom">
+        <input clrInput type="number" [ngModel]="tableADropTolerance.left" (ngModelChange)="updateTableAField({left: $event})"
+               id="table-a-left" name="left" placeholder="left">
+    </div>
+
+</div>
+
+<div class="form-block droppable-demo">
+
+    <label>Drop tolerance for Table B:</label>
+    <div class="form-group droppable-tolerance-fields">
+        <input clrInput type="number" [ngModel]="tableBDropTolerance.top" (ngModelChange)="updateTableBField({top: $event})"
+               id="table-b-top" name="top" placeholder="top">
+        <input clrInput type="number" [ngModel]="tableBDropTolerance.right" (ngModelChange)="updateTableBField({right: $event})"
+               id="table-b-right" name="right" placeholder="right">
+        <input clrInput type="number" [ngModel]="tableBDropTolerance.bottom"
+               (ngModelChange)="updateTableBField({bottom: $event})" id="table-b-bottom" name="bottom"
+               placeholder="bottom">
+        <input clrInput type="number" [ngModel]="tableBDropTolerance.left" (ngModelChange)="updateTableBField({left: $event})"
+               id="table-b-left" name="left" placeholder="left">
+    </div>
+
+</div>
+<div class="clr-example">
+    <div class="clr-row">
+        <div class="clr-col-4 offset-xs-1">
+            <h6>A.</h6>
+            <table class="table" clrDroppable (clrDrop)="onDropBack($event)" [clrDropTolerance]="tableADropTolerance">
+                <thead>
+                <tr>
+                    <th>Files:</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngIf="files.length===0">
+                    <td>Nothing to drag here...</td>
+                </tr>
+                <tr *ngFor="let file of files">
+                    <td><span class="label" [clrDraggable]="file">{{file.name}}<clr-draggable-ghost *clrIfDragged>
+                                <clr-icon shape="image" size="36" class="is-solid"
+                                          style="transform: translate3d(-50%, -50%, 0);"></clr-icon>
+                            </clr-draggable-ghost></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="clr-col-4 offset-xs-1">
+            <h6>B.</h6>
+            <table class="table" clrDroppable (clrDrop)="onDropToUpload($event)"
+                   [clrDropTolerance]="tableBDropTolerance">
+                <thead>
+                <tr>
+                    <th>Drop here to upload:</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngIf="droppedFiles.length===0">
+                    <td>Nothing to upload here...</td>
+                </tr>
+                <tr *ngFor="let file of droppedFiles">
+                    <td><span class="label" [clrDraggable]="file">{{file.name}} <clr-draggable-ghost *clrIfDragged>
+                                <clr-icon shape="image" size="36" class="is-solid"
+                                          style="transform: translate3d(-50%, -50%, 0);"></clr-icon>
+                            </clr-draggable-ghost>
+                    </span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

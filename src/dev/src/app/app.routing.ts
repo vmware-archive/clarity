@@ -19,6 +19,7 @@ export const APP_ROUTES: Routes = [
   { path: 'color', loadChildren: 'src/app/color/color.demo.module#ColorDemoModule' },
   { path: 'combobox', loadChildren: 'src/app/combobox/combobox.demo.module#ComboboxDemoModule' },
   { path: 'datagrid', loadChildren: 'src/app/datagrid/datagrid.demo.module#DatagridDemoModule' },
+  { path: 'drag-and-drop', loadChildren: 'src/app/drag-and-drop/drag-and-drop.demo.module#DragAndDropDemoModule' },
   { path: 'datepicker', loadChildren: 'src/app/datepicker/datepicker.demo.module#DatepickerDemoModule' },
   { path: 'dropdown', loadChildren: 'src/app/dropdown/dropdown.demo.module#DropdownDemoModule' },
   { path: 'forms', loadChildren: 'src/app/forms/forms.demo.module#FormsDemoModule' },

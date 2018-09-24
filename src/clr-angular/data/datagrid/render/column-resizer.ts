@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 
 import { DragDispatcher } from '../providers/drag-dispatcher';
 
-import { DomAdapter } from './dom-adapter';
+import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from './render-organizer';
 
 @Directive({ selector: 'clr-dg-column', providers: [DragDispatcher] })
@@ -62,8 +62,8 @@ export class DatagridColumnResizer implements AfterViewInit, OnDestroy {
     this.renderer.setStyle(this.handleTrackerEl, 'display', 'block');
     this.renderer.setStyle(document.body, 'cursor', 'col-resize');
     this.dragDistancePositionX = 0;
-    this.columnRectWidth = this.domAdapter.clientRectWidth(this.columnEl);
-    this.pageStartPositionX = this.domAdapter.clientRectRight(this.columnEl);
+    this.columnRectWidth = this.domAdapter.clientRect(this.columnEl).width;
+    this.pageStartPositionX = this.domAdapter.clientRect(this.columnEl).right;
   }
 
   dragMoveHandler(moveEvent: any): void {

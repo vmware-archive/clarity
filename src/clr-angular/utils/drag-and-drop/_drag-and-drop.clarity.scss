@@ -1,0 +1,39 @@
+@include exports('drag-and-drop.clarity') {
+  .drag-handle {
+    cursor: grab;
+  }
+  .in-drag {
+    cursor: grabbing;
+    user-select: none;
+    * {
+      pointer-events: none;
+    }
+    .draggable.being-dragged {
+      opacity: 0.6;
+    }
+  }
+  .draggable-ghost {
+    position: fixed;
+    display: block;
+    visibility: hidden;
+    z-index: map-get($clr-layers, draggable-ghost);
+    pointer-events: none;
+    will-change: left, top;
+    // default ghost contains the cloned .draggable
+    & > .draggable {
+      margin: 0;
+      opacity: 1;
+    }
+    &.dropped {
+      opacity: 0;
+    }
+  }
+  .droppable {
+    &.draggable-match {
+      border: 1px dashed $clr-action-purple-light;
+    }
+    &.draggable-over {
+      border: 1px dashed $clr-action-purple-dark;
+    }
+  }
+}

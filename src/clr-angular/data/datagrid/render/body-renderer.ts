@@ -6,7 +6,7 @@
 import { Directive, ElementRef, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { DomAdapter } from './dom-adapter';
+import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from './render-organizer';
 
 @Directive({ selector: '[clrDgBody]' })

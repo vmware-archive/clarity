@@ -53,6 +53,28 @@ export default function(): void {
       expect(this.domAdapter.computedHeight(this.element)).toBe(1234);
     });
 
+    it('returns Element.getBoundingClientRect object through its clientRect method', function(this: UserContext) {
+      const left = 20;
+      const top = 10;
+      const width = 300;
+      const height = 400;
+
+      this.element.style.position = 'absolute';
+      this.element.style.left = `${left}px`;
+      this.element.style.top = `${top}px`;
+      this.element.style.width = `${width}px`;
+      this.element.style.height = `${height}px`;
+
+      expect(this.domAdapter.clientRect(this.element).width).toBe(width);
+      expect(this.domAdapter.clientRect(this.element).height).toBe(height);
+
+      expect(this.domAdapter.clientRect(this.element).top).toBe(top);
+      expect(this.domAdapter.clientRect(this.element).left).toBe(left);
+
+      expect(this.domAdapter.clientRect(this.element).right).toBe(left + width);
+      expect(this.domAdapter.clientRect(this.element).bottom).toBe(top + height);
+    });
+
     describe('user-defined width', function() {
       it('recognizes a width defined on the element', function(this: UserContext) {
         expect(this.domAdapter.userDefinedWidth(this.element)).toBe(0);

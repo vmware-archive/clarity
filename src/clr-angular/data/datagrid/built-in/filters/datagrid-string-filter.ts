@@ -9,7 +9,7 @@ import { ClrDatagridFilter } from '../../datagrid-filter';
 import { ClrDatagridStringFilterInterface } from '../../interfaces/string-filter.interface';
 import { CustomFilter } from '../../providers/custom-filter';
 import { FiltersProvider, RegisteredFilter } from '../../providers/filters';
-import { DomAdapter } from '../../render/dom-adapter';
+import { DomAdapter } from '../../../../utils/dom-adapter/dom-adapter';
 import { DatagridFilterRegistrar } from '../../utils/datagrid-filter-registrar';
 
 import { DatagridStringFilterImpl } from './datagrid-string-filter-impl';

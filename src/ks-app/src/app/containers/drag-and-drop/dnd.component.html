@@ -1,0 +1,521 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Draggable button</h4>
+
+<div class="clr-example">
+  <button class="btn btn-primary" clrDraggable>draggable</button>
+</div>
+
+<h4>Draggable cards</h4>
+
+<div class="clr-example">
+  <div class="clr-row">
+    <div class="clr-col-lg-4 clr-col-md-12 clr-col-sm-12 clr-col-12">
+      <div class="card" clrDraggable>
+        <div class="card-block">
+          <h3 class="card-title">Draggable Card 1</h3>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eum distinctio fuga sapiente enim tenetur et
+            saepe veniam eligendi! Doloribus ipsa vel eveniet rerum incidunt voluptates dolor? Non, porro modi!
+          </p>
+        </div>
+        <div class="card-footer">
+          <a href="javascript://" class="btn btn-sm btn-link">Action 1</a>
+        </div>
+      </div>
+    </div>
+    <div class="clr-col-lg-8 clr-col-md-12 clr-col-sm-12 clr-col-12">
+      <div class="card" clrDraggable>
+        <div class="card-block">
+          <h3 class="card-title">Draggable Card 2</h3>
+          <p class="card-text">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi aspernatur incidunt maxime doloribus,
+            temporibus tempore iure reiciendis, facilis nihil atque corrupti neque! Doloribus, quod praesentium ratione
+            accusamus sapiente omnis neque!
+          </p>
+        </div>
+        <div class="card-footer">
+          <a href="javascript://" class="btn btn-sm btn-link">Action 2</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clr-example">
+  <h4>Nested draggables</h4>
+
+  <div class="clr-example">
+    <div class="clr-row">
+      <div class="clr-col-lg-4 clr-col-md-12 clr-col-sm-12 clr-col-12">
+        <div class="card" clrDraggable>
+          <div class="card-block">
+            <h3 class="card-title">Draggable Card</h3>
+            <p class="card-text">
+              <button class="btn btn-primary" clrDraggable>Nested Draggable Button</button>
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="javascript://" class="btn btn-sm btn-link">Action 1</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h4>Datagrid with draggable rows</h4>
+
+<div class="clr-example">
+  <clr-datagrid>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *ngFor="let user of users" clrDraggable>
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>{{user.color}}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+  </clr-datagrid>
+</div>
+
+<h4>Draggable cards with a handle</h4>
+
+<div class="clr-example">
+  <div class="clr-row">
+    <div class="clr-col-lg-4 clr-col-md-12 clr-col-sm-12 clr-col-12">
+      <div class="card" clrDraggable>
+        <div class="card-block">
+          <h3 class="card-title">Draggable Card 1</h3>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eum distinctio fuga sapiente enim tenetur et
+            saepe veniam eligendi!
+            Doloribus ipsa vel eveniet rerum incidunt voluptates dolor? Non, porro modi!
+          </p>
+        </div>
+        <div class="card-footer">
+          <a href="javascript://" class="btn btn-sm btn-primary" clrDragHandle>Drag Handle</a>
+        </div>
+      </div>
+    </div>
+    <div class="clr-col-lg-8 clr-col-md-12 clr-col-sm-12 clr-col-12">
+      <div class="card" clrDraggable>
+        <div class="card-block">
+          <h3 class="card-title">Draggable Card 2</h3>
+          <p class="card-text">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi aspernatur incidunt maxime doloribus,
+            temporibus tempore
+            iure reiciendis, facilis nihil atque corrupti neque! Doloribus, quod praesentium ratione accusamus
+            sapiente omnis neque!
+          </p>
+        </div>
+        <div class="card-footer">
+          <a href="javascript://" class="btn btn-sm btn-primary" clrDragHandle>Drag Handle</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h4>Draggable cards with a custom ghost and handle</h4>
+
+<div class="clr-example">
+  <div class="clr-row">
+    <div class="clr-col-lg-4 clr-col-md-12 clr-col-sm-12 clr-col-12">
+      <div class="card" clrDraggable>
+        <clr-draggable-ghost *clrIfDragged>
+          <clr-icon shape="event" size="72" class="is-solid is-success"
+                    [ngStyle]="{'transform': 'translate3d(-50%, -50%, 0)'}"></clr-icon>
+        </clr-draggable-ghost>
+        <div class="card-block">
+          <h3 class="card-title">Custom ghost and handle card</h3>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eum distinctio fuga sapiente enim tenetur et
+            saepe veniam eligendi!
+            Doloribus ipsa vel eveniet rerum incidunt voluptates dolor? Non, porro modi!
+          </p>
+        </div>
+        <div class="card-footer">
+          <a href="javascript://" class="btn btn-sm btn-primary" clrDragHandle>Drag Handle</a>
+        </div>
+      </div>
+    </div>
+    <div class="clr-col-lg-8 clr-col-md-12 clr-col-sm-12 clr-col-12">
+      <div class="card" clrDraggable>
+        <clr-draggable-ghost *clrIfDragged>
+          <clr-icon shape="event" size="72" class="is-solid is-success"
+                    [ngStyle]="{'transform': 'translate3d(-50%, -50%, 0)'}"></clr-icon>
+        </clr-draggable-ghost>
+        <div class="card-block">
+          <h3 class="card-title">Custom ghost and handle card</h3>
+          <p class="card-text">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi aspernatur incidunt maxime doloribus,
+            temporibus tempore
+            iure reiciendis, facilis nihil atque corrupti neque! Doloribus, quod praesentium ratione accusamus
+            sapiente omnis neque!
+          </p>
+        </div>
+        <div class="card-footer">
+          <a href="javascript://" class="btn btn-sm btn-primary" clrDragHandle>Drag Handle</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h4>Basic Droppable</h4>
+
+<div class="form-group droppable-demo droppable-feature-variant" (change)="activateDemoVariant($event)">
+  <label>Variations: </label>
+
+  <section>
+    <input type="radio" id="basic-draggable" name="droppable-variant" checked>
+    <label for="basic-draggable"> Basic Draggable </label>
+  </section>
+  <section>
+    <input type="radio" id="custom-ghost" name="droppable-variant">
+    <label for="custom-ghost"> Custom Ghost </label>
+  </section>
+  <section>
+    <input type="radio" id="drag-handle" name="droppable-variant">
+    <label for="drag-handle"> Drag Handle </label>
+  </section>
+
+</div>
+
+<div class="clr-example" *ngIf="activeDemoVariant==='basic-draggable'">
+
+  <div class="clr-row">
+    <div class="clr-col-4 offset-xs-1">
+      <table class="table" clrDroppable (clrDrop)="onDropBackDroppables($event)">
+        <thead>
+        <tr>
+          <th>Files:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="filesForDroppables.length===0">
+          <td>Nothing to drag here...</td>
+        </tr>
+        <tr *ngFor="let file of filesForDroppables">
+          <td><span class="label" [clrDraggable]="file">{{file.name}}</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="clr-col-4 offset-xs-1">
+      <table class="table" clrDroppable (clrDrop)="onDropToUploadDroppables($event)">
+        <thead>
+        <tr>
+          <th>Drop here to upload:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="droppedFiles.length===0">
+          <td>Nothing to upload here...</td>
+        </tr>
+        <tr *ngFor="let file of droppedFiles">
+          <td><span class="label" [clrDraggable]="file">{{file.name}}</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="clr-example" *ngIf="activeDemoVariant==='custom-ghost'">
+  <clr-alert [clrAlertType]="'alert-info'">
+    <div clr-alert-item class="alert-item">
+                <span class="alert-text">
+                    Dragging a file will show an image icon as a custom ghost.
+                </span>
+    </div>
+  </clr-alert>
+  <div class="clr-row">
+    <div class="clr-col-4 offset-xs-1">
+      <table class="table" clrDroppable (clrDrop)="onDropBackDroppables($event)">
+        <thead>
+        <tr>
+          <th>Files:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="filesForDroppables.length===0">
+          <td>Nothing to drag here...</td>
+        </tr>
+        <tr *ngFor="let file of filesForDroppables">
+          <td>
+                        <span class="label" [clrDraggable]="file">{{file.name}}
+                            <clr-draggable-ghost *clrIfDragged>
+                                <clr-icon shape="image" size="36" class="is-solid"
+                                          style="transform: translate3d(-50%, -50%, 0);"></clr-icon>
+                            </clr-draggable-ghost>
+                        </span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="clr-col-4 offset-xs-1">
+      <table class="table" clrDroppable (clrDrop)="onDropToUploadDroppables($event)">
+        <thead>
+        <tr>
+          <th>Drop here to upload:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="droppedFiles.length===0">
+          <td>Nothing to upload here...</td>
+        </tr>
+        <tr *ngFor="let file of droppedFiles">
+          <td><span class="label" [clrDraggable]="file">{{file.name}}
+                    <clr-draggable-ghost *clrIfDragged>
+                                <clr-icon shape="image" size="36" class="is-solid"
+                                          style="transform: translate3d(-50%, -50%, 0);"></clr-icon>
+                            </clr-draggable-ghost>
+                    </span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+</div>
+
+
+<div class="clr-example" *ngIf="activeDemoVariant==='drag-handle'">
+  <clr-alert [clrAlertType]="'alert-info'">
+    <div clr-alert-item class="alert-item">
+                <span class="alert-text">
+                    Drag each file by its icon.
+                </span>
+    </div>
+  </clr-alert>
+  <div class="clr-row">
+    <div class="clr-col-4 offset-xs-1">
+      <table class="table" clrDroppable (clrDrop)="onDropBackDroppables($event)">
+        <thead>
+        <tr>
+          <th>Files:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="filesForDroppables.length===0">
+          <td>Nothing to drag here...</td>
+        </tr>
+        <tr *ngFor="let file of filesForDroppables">
+          <td>
+            <span class="label" [clrDraggable]="file"><clr-icon clrDragHandle shape="image" class="is-solid"></clr-icon> {{file.name}}</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="clr-col-4 offset-xs-1">
+      <table class="table" clrDroppable (clrDrop)="onDropToUploadDroppables($event)">
+        <thead>
+        <tr>
+          <th>Drop here to upload:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="droppedFiles.length===0">
+          <td>Nothing to upload here...</td>
+        </tr>
+        <tr *ngFor="let file of droppedFiles">
+          <td><span class="label" [clrDraggable]="file"><clr-icon clrDragHandle shape="image"
+                                                                  class="is-solid"></clr-icon> {{file.name}}</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<h4>Drop Tolerance</h4>
+
+<div class="clr-row">
+  <div class="clr-col-4 offset-xs-1">
+    <div class="form-block droppable-demo">
+
+      <label>Drop tolerance for Table A:</label>
+      <div class="form-group droppable-tolerance-fields">
+        <input clrInput type="number" [ngModel]="tableADropTolerance.top"
+               (ngModelChange)="updateTableAField({top: $event})"
+               id="table-a-top" name="top" placeholder="top">
+        <input clrInput type="number" [ngModel]="tableADropTolerance.right"
+               (ngModelChange)="updateTableAField({right: $event})"
+               id="table-a-right" name="right" placeholder="right">
+        <input clrInput type="number" [ngModel]="tableADropTolerance.bottom"
+               (ngModelChange)="updateTableAField({bottom: $event})" id="table-a-bottom" name="bottom"
+               placeholder="bottom">
+        <input clrInput type="number" [ngModel]="tableADropTolerance.left"
+               (ngModelChange)="updateTableAField({left: $event})"
+               id="table-a-left" name="left" placeholder="left">
+      </div>
+
+    </div>
+  </div>
+  <div class="clr-col-4 offset-xs-1">
+    <div class="form-block droppable-demo">
+
+      <label>Drop tolerance for Table B:</label>
+      <div class="form-group droppable-tolerance-fields">
+        <input clrInput type="number" [ngModel]="tableBDropTolerance.top"
+               (ngModelChange)="updateTableBField({top: $event})"
+               id="table-b-top" name="top" placeholder="top">
+        <input clrInput type="number" [ngModel]="tableBDropTolerance.right"
+               (ngModelChange)="updateTableBField({right: $event})"
+               id="table-b-right" name="right" placeholder="right">
+        <input clrInput type="number" [ngModel]="tableBDropTolerance.bottom"
+               (ngModelChange)="updateTableBField({bottom: $event})" id="table-b-bottom" name="bottom"
+               placeholder="bottom">
+        <input clrInput type="number" [ngModel]="tableBDropTolerance.left"
+               (ngModelChange)="updateTableBField({left: $event})"
+               id="table-b-left" name="left" placeholder="left">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="clr-example">
+  <div class="clr-row">
+    <div class="clr-col-4 offset-xs-1">
+      <h6>A.</h6>
+      <table class="table" clrDroppable (clrDrop)="onDropBackForDropTolerance($event)"
+             [clrDropTolerance]="tableADropTolerance">
+        <thead>
+        <tr>
+          <th>Files:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="filesForDropTolerance.length===0">
+          <td>Nothing to drag here...</td>
+        </tr>
+        <tr *ngFor="let file of filesForDropTolerance">
+          <td><span class="label" [clrDraggable]="file">{{file.name}}<clr-draggable-ghost *clrIfDragged>
+                                <clr-icon shape="image" size="36" class="is-solid"
+                                          style="transform: translate3d(-50%, -50%, 0);"></clr-icon>
+                            </clr-draggable-ghost></span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="clr-col-4 offset-xs-1">
+      <h6>B.</h6>
+      <table class="table" clrDroppable (clrDrop)="onDropToUploadForDropTolerance($event)"
+             [clrDropTolerance]="tableBDropTolerance">
+        <thead>
+        <tr>
+          <th>Drop here to upload:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="droppedFilesForDropTolerance.length===0">
+          <td>Nothing to upload here...</td>
+        </tr>
+        <tr *ngFor="let file of droppedFilesForDropTolerance">
+          <td><span class="label" [clrDraggable]="file">{{file.name}} <clr-draggable-ghost *clrIfDragged>
+                                <clr-icon shape="image" size="36" class="is-solid"
+                                          style="transform: translate3d(-50%, -50%, 0);"></clr-icon>
+                            </clr-draggable-ghost>
+                    </span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<h4>Grouping Draggables with Droppables</h4>
+
+<div class="clr-example">
+
+  <div class="clr-row">
+    <div class="clr-col-3">
+      <table class="table" clrDroppable [clrGroup]="['image-file', 'movie-file', 'audio-file']"
+             (clrDrop)="onDropBackForGrouping($event)">
+        <thead>
+        <tr>
+          <th>Files:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="groupingFiles.length===0">
+          <td>Nothing to drag here...</td>
+        </tr>
+        <tr *ngFor="let file of groupingFiles">
+          <td><span class="label" [clrDraggable]="file" [clrGroup]="file.group">{{file.name}}</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="clr-col-3">
+      <table class="table" clrDroppable clrGroup="audio-file" (clrDrop)="onDropAudioForGrouping($event)">
+        <thead>
+        <tr>
+          <th>Drop audio files here:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="droppedAudios.length===0">
+          <td>Only audios will be accepted here.</td>
+        </tr>
+        <tr *ngFor="let file of droppedAudios">
+          <td><span class="label" [clrDraggable]="file" [clrGroup]="file.group">{{file.name}}</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="clr-col-3">
+      <table class="table" clrDroppable clrGroup="image-file" (clrDrop)="onDropImageForGrouping($event)">
+        <thead>
+        <tr>
+          <th>Drop image files here:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="droppedImages.length===0">
+          <td>Only images will be accepted here.</td>
+        </tr>
+        <tr *ngFor="let file of droppedImages">
+          <td><span class="label" [clrDraggable]="file" [clrGroup]="file.group">{{file.name}}</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="clr-col-3">
+      <table class="table" clrDroppable clrGroup="movie-file" (clrDrop)="onDropMovieForGrouping($event)">
+        <thead>
+        <tr>
+          <th>Drop movie files here:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="droppedMovies.length===0">
+          <td>Only videos will be accpeted here.</td>
+        </tr>
+        <tr *ngFor="let file of droppedMovies">
+          <td><span class="label" [clrDraggable]="file" [clrGroup]="file.group">{{file.name}}</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

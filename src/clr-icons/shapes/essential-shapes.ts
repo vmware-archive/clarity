@@ -9,6 +9,7 @@ import { clrIconSVG } from '../utils/svg-tag-generator';
 interface Window {
   ClarityIcons: any;
 }
+
 declare var window: Window;
 
 // TODO: deprecate these imported shapes in 0.13
@@ -843,6 +844,12 @@ export const ClrShapePortrait = clrIconSVG(
 export const ClrShapeTreeView = clrIconSVG(
   `<path d="M15,32H11a1,1,0,0,1-1-1V27a1,1,0,0,1,1-1h4a1,1,0,0,1,1,1v4A1,1,0,0,1,15,32Zm-3-2h2V28H12Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M15,16H11a1,1,0,0,0-1,1v1.2H5.8V12H7a1,1,0,0,0,1-1V7A1,1,0,0,0,7,6H3A1,1,0,0,0,2,7v4a1,1,0,0,0,1,1H4.2V29.8h6.36a.8.8,0,0,0,0-1.6H5.8V19.8H10V21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V17A1,1,0,0,0,15,16ZM4,8H6v2H4ZM14,20H12V18h2Z" class="clr-i-outline clr-i-outline-path-2" /><path d="M34,9a1,1,0,0,0-1-1H10v2H33A1,1,0,0,0,34,9Z" class="clr-i-outline clr-i-outline-path-3" /><path d="M33,18H18v2H33a1,1,0,0,0,0-2Z" class="clr-i-outline clr-i-outline-path-4" /><path d="M33,28H18v2H33a1,1,0,0,0,0-2Z" class="clr-i-outline clr-i-outline-path-5" /><rect x="10" y="26" width="6" height="6" rx="1" ry="1" class="clr-i-solid clr-i-solid-path-1" /><path d="M15,16H11a1,1,0,0,0-1,1v1.2H5.8V12H7a1,1,0,0,0,1-1V7A1,1,0,0,0,7,6H3A1,1,0,0,0,2,7v4a1,1,0,0,0,1,1H4.2V29.8H11a.8.8,0,1,0,0-1.6H5.8V19.8H10V21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V17A1,1,0,0,0,15,16Z" class="clr-i-solid clr-i-solid-path-2" /><path d="M33,8H10v2H33a1,1,0,0,0,0-2Z" class="clr-i-solid clr-i-solid-path-3" /><path d="M33,18H18v2H33a1,1,0,0,0,0-2Z" class="clr-i-solid clr-i-solid-path-4" /><path d="M33,28H18v2H33a1,1,0,0,0,0-2Z" class="clr-i-solid clr-i-solid-path-5" />`
 );
+export const ClrShapeCursorHandGrab = clrIconSVG(
+  `<path d="M28.09,9.74a4,4,0,0,0-1.16.19c-.19-1.24-1.55-2.18-3.27-2.18A4,4,0,0,0,22.13,8,3.37,3.37,0,0,0,19,6.3a3.45,3.45,0,0,0-2.87,1.32,3.65,3.65,0,0,0-1.89-.51A3.05,3.05,0,0,0,11,9.89v.91c-1.06.4-4.11,1.8-4.91,4.84s.34,8,2.69,11.78a25.21,25.21,0,0,0,5.9,6.41.9.9,0,0,0,.53.17H25.55a.92.92,0,0,0,.55-.19,13.13,13.13,0,0,0,3.75-6.13A25.8,25.8,0,0,0,31.41,18v-5.5A3.08,3.08,0,0,0,28.09,9.74ZM29.61,18a24,24,0,0,1-1.47,9.15A12.46,12.46,0,0,1,25.2,32.2H15.47a23.75,23.75,0,0,1-5.2-5.72c-2.37-3.86-3-8.23-2.48-10.39A5.7,5.7,0,0,1,11,12.76v7.65a.9.9,0,0,0,1.8,0V9.89c0-.47.59-1,1.46-1s1.49.52,1.49,1v5.72h1.8V8.81c0-.28.58-.71,1.46-.71s1.53.48,1.53.75v6.89h1.8V10l.17-.12a2.1,2.1,0,0,1,1.18-.32c.93,0,1.5.44,1.5.68l0,6.5H27V11.87a1.91,1.91,0,0,1,1.12-.33c.86,0,1.52.51,1.52.94Z" class="clr-i-outline clr-i-outline-path-1" />`
+);
+export const ClrShapeCursorHandOpen = clrIconSVG(
+  `<path d="M31.46,8.57A3.11,3.11,0,0,0,27,5.75a3.19,3.19,0,0,0-4.66-2.64,3.29,3.29,0,0,0-6.42-.76,3.23,3.23,0,0,0-1.66-.46A3.27,3.27,0,0,0,11,5.18V17.84c-1.28-1.6-2.53-3.18-2.72-3.45A3.19,3.19,0,0,0,5.56,12.9a3.37,3.37,0,0,0-3.47,3.48C2.18,18.18,5.66,24.54,8,28c3.54,5.24,6.92,6,7.07,6l.18,0H25.59a.92.92,0,0,0,.55-.19,13.13,13.13,0,0,0,3.75-6.13c1-3.09,1.53-7.53,1.58-13.56ZM28.18,27.12a12.46,12.46,0,0,1-2.94,5.08H15.33c-.47-.14-3.07-1.1-5.87-5.25S3.94,17.27,3.89,16.29a1.5,1.5,0,0,1,.45-1.13,1.52,1.52,0,0,1,1.14-.46,1.43,1.43,0,0,1,1.32.71c.29.43,2.36,3,3.57,4.53L12.8,18.3V5.18a1.48,1.48,0,1,1,2.95,0V16.32h1.8v-13a1.51,1.51,0,0,1,3,0V16.45h1.8V6a1.43,1.43,0,1,1,2.85,0V17.44H27V8.54a1.33,1.33,0,0,1,2.65,0v5.55C29.62,20,29.14,24.21,28.18,27.12Z" class="clr-i-outline clr-i-outline-path-1" />`
+);
 
 export const EssentialShapes: any = {
   'add-text': ClrShapeAddText,
@@ -854,6 +861,8 @@ export const EssentialShapes: any = {
   'cursor-arrow': ClrShapeCursorArrow,
   'cursor-hand': ClrShapeCursorHand,
   'cursor-hand-click': ClrShapeCursorHandClick,
+  'cursor-hand-grab': ClrShapeCursorHandGrab,
+  'cursor-hand-open': ClrShapeCursorHandOpen,
   'cursor-move': ClrShapeCursorMove,
   resize: ClrShapeResize,
   objects: ClrShapeObjects,

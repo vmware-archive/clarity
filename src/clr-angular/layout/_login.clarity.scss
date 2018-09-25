@@ -5,8 +5,9 @@
 @include exports('login.clarity') {
   .login-wrapper {
     display: flex;
+    height: 100%;
     background: generateLoginBackground();
-    background-size: cover;
+    background-size: 100%;
     background-position: $clr-login-width 0;
     background-repeat: no-repeat;
 

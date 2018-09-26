@@ -6,7 +6,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
+import { ClrTooltipModule, ClrDropdownModule } from '@clr/angular';
 
 import { TooltipsAngularDemo } from './tooltips-angular';
 import { TooltipsButtonsDemo } from './tooltips-buttons';
@@ -18,7 +18,7 @@ import { TooltipsDemo } from './tooltips.demo';
 import { ROUTING } from './tooltips.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ClrTooltipModule, ClrDropdownModule, ROUTING],
   declarations: [
     TooltipsDemo,
     TooltipsSizesDemo,

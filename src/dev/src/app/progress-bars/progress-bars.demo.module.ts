@@ -6,8 +6,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
-
 import { OldProgressBarCardsDemo } from './old-progress-bar-cards';
 import { ProgressBarAnimationsDemo } from './progress-bar-animations';
 import { ProgressBarCardsDemo } from './progress-bar-cards';
@@ -23,7 +21,7 @@ import { ProgressBarsDemo } from './progress-bars.demo';
 import { ROUTING } from './progress-bars.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ROUTING],
   declarations: [
     ProgressBarExamplesDemo,
     ProgressBarColorsDemo,

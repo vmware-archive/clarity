@@ -12,12 +12,13 @@ import { ClrFormsModule } from '../../forms-deprecated/forms.module';
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrIfExpandModule } from '../../utils/expand/if-expand.module';
 import { ClrTreeNode } from './tree-node';
+import { ClrLoadingModule } from '../../utils/loading/loading.module';
 
 export const CLR_TREE_VIEW_DIRECTIVES: Type<any>[] = [ClrTreeNode];
 
 @NgModule({
   imports: [CommonModule, ClrIconModule, FormsModule, ClrFormsModule],
   declarations: [CLR_TREE_VIEW_DIRECTIVES],
-  exports: [CLR_TREE_VIEW_DIRECTIVES, ClrIfExpandModule],
+  exports: [CLR_TREE_VIEW_DIRECTIVES, ClrIfExpandModule, ClrLoadingModule],
 })
 export class ClrTreeViewModule {}

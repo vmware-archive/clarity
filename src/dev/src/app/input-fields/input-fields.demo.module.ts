@@ -6,13 +6,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
-
 import { InputFieldsDemo } from './input-fields.demo';
 import { ROUTING } from './input-fields.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ROUTING],
   declarations: [InputFieldsDemo],
   exports: [InputFieldsDemo],
 })

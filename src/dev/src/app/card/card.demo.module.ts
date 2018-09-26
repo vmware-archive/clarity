@@ -6,8 +6,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
-
 import { CardClickableDemo } from './card-clickable';
 import { CardDropdownDemo } from './card-dropdown';
 import { CardGridDemo } from './card-grid';
@@ -21,7 +19,7 @@ import { CardDemo } from './card.demo';
 import { ROUTING } from './card.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ROUTING],
   declarations: [
     CardDemo,
     CardOldDemo,

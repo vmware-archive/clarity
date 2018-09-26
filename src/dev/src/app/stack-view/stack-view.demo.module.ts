@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ClarityModule } from '@clr/angular';
+import { ClrStackViewModule, ClrModalModule } from '@clr/angular';
 
 import { StackViewAngularBasicDemo } from './stack-view-angular-basic';
 import { StackViewAngularLazyloadDemo } from './stack-view-angular-lazyload';
@@ -17,7 +17,7 @@ import { StackViewDemo } from './stack-view.demo';
 import { ROUTING } from './stack-view.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, FormsModule, ROUTING],
+  imports: [CommonModule, ClrStackViewModule, ClrModalModule, FormsModule, ROUTING],
   declarations: [
     StackViewDemo,
     StackViewAngularBasicDemo,

@@ -20,7 +20,7 @@ export const CLR_SIGNPOST_DIRECTIVES: Type<any>[] = [ClrSignpost, ClrSignpostCon
 @NgModule({
   imports: [CommonModule, ClrCommonPopoverModule, ClrIconModule],
   declarations: [CLR_SIGNPOST_DIRECTIVES],
-  exports: [CLR_SIGNPOST_DIRECTIVES, ClrConditionalModule],
+  exports: [CLR_SIGNPOST_DIRECTIVES, ClrConditionalModule, ClrIconModule],
   providers: [],
 })
 export class ClrSignpostModule {}

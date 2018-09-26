@@ -6,7 +6,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
+import { ClrIconModule, ClrDropdownModule } from '@clr/angular';
 
 import { HeaderColorsDemo } from './header-colors';
 import { HeaderTypesDemo } from './header-types';
@@ -21,7 +21,7 @@ import { SidenavDemo } from './sidenav';
 import { SubNavDemo } from './sub-nav';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ClrIconModule, ClrDropdownModule, ROUTING],
   declarations: [
     NavDemo,
     HeadersDemo,

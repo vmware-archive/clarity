@@ -6,8 +6,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
-
 import { ListsCompactDemo } from './lists-compact';
 import { ListsInCardsDemo } from './lists-in-cards';
 import { ListsMixedDemo } from './lists-mixed';
@@ -19,7 +17,7 @@ import { ROUTING } from './lists.demo.routing';
 import { OldListsInCardsDemo } from './old-lists-in-cards';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ROUTING],
   declarations: [
     ListsDemo,
     ListsUlDemo,

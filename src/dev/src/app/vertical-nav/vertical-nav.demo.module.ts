@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ClarityModule } from '@clr/angular';
+import { ClrVerticalNavModule, ClrAlertModule } from '@clr/angular';
 
 import { VerticalNavAllCases } from './all-cases/vertical-all-cases.demo';
 import { VerticalNavBasicDemo } from './basic/vertical-nav-basic';
@@ -54,7 +54,7 @@ import { Wikipedia1Demo } from './without-expanded-directive/wikipedia';
 import { WithoutExpandedDirectiveDemo } from './without-expanded-directive/without-expanded-directive';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ClarityModule, ROUTING],
+  imports: [CommonModule, FormsModule, ClrVerticalNavModule, ClrAlertModule, ROUTING],
   declarations: [
     VerticalNavDemo,
     VerticalNavStaticDemo,

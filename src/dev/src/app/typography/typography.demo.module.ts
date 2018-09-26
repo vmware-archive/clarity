@@ -6,8 +6,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
-
 import { TypographyFontCharTestDemo } from './typography-font-char-test';
 import { TypographyFontWeightDemo } from './typography-font-weight';
 import { TypographyHeadersDemo } from './typography-headers';
@@ -17,7 +15,7 @@ import { TypographyDemo } from './typography.demo';
 import { ROUTING } from './typography.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ROUTING],
   declarations: [
     TypographyDemo,
     TypographyFontWeightDemo,

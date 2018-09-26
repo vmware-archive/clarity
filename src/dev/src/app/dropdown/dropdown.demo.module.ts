@@ -6,7 +6,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
+import { ClrDropdownModule } from '@clr/angular';
 
 import { DropdownAngularCloseItemFalseDemo } from './dropdown-angular-close-item-false';
 import { DropdownAngularNestedDemo } from './dropdown-angular-nested';
@@ -20,7 +20,7 @@ import { DropdownDemo } from './dropdown.demo';
 import { ROUTING } from './dropdown.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ClrDropdownModule, ROUTING],
   declarations: [
     DropdownDemo,
     DropdownStaticDefaultDemo,

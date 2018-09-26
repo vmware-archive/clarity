@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ClarityModule } from '@clr/angular';
+import { ClrIconModule, ClrFormsModule, ClrTooltipModule, ClrModalModule } from '@clr/angular';
 
 import { FormCompactDemo } from './compact-forms/form-compact';
 import { FormFieldsDemo } from './form-fields/form-fields';
@@ -22,7 +22,16 @@ import { ReactiveFormsDemo } from './reactive-forms/reactive-forms';
 import { TemplateDrivenFormsDemo } from './template-driven-forms/template-driven-forms';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ROUTING],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ClrIconModule,
+    ClrFormsModule,
+    ClrTooltipModule,
+    ClrModalModule,
+    ROUTING,
+  ],
   declarations: [
     FormsDemo,
     FormFieldsDemo,

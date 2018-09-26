@@ -6,8 +6,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
-
 import { TablesBasicDemo } from './tables-basic';
 import { TablesCompactDemo } from './tables-compact';
 import { TablesCompactNoborderDemo } from './tables-compact-noborder';
@@ -21,7 +19,7 @@ import { TablesDemo } from './tables.demo';
 import { ROUTING } from './tables.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ROUTING],
   declarations: [
     TablesDemo,
     TablesBasicDemo,

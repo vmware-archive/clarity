@@ -5,7 +5,7 @@
  */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ClarityModule } from '@clr/angular';
+import { ClrIconModule, ClrLoadingButtonModule } from '@clr/angular';
 
 import { ButtonLoadingDemo } from './button-loading';
 import { ButtonSizesDemo } from './button-sizes';
@@ -24,7 +24,7 @@ import { TertiaryButtonDemo } from './tertiary-button';
 import { ToggleDemo } from './toggles';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ClrIconModule, ClrLoadingButtonModule, ROUTING],
   declarations: [
     ButtonsDemo,
     RealButtonDemo,

@@ -6,7 +6,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
+import { ClrIconModule } from '@clr/angular';
 
 import { LayoutAdditionalSectionsDemo } from './layout-additional-sections';
 import { LayoutAllDemo } from './layout-all';
@@ -19,7 +19,7 @@ import { LayoutDemo } from './layout.demo';
 import { ROUTING } from './layout.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ClrIconModule, ROUTING],
   declarations: [
     LayoutDemo,
     LayoutAllDemo,

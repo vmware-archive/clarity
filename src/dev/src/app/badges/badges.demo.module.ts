@@ -6,15 +6,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
-
 import { BadgeColorsDemo } from './badge-colors';
 import { BadgeStatusesDemo } from './badge-statuses';
 import { BadgesDemo } from './badges.demo';
 import { ROUTING } from './badges.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ROUTING],
   declarations: [BadgesDemo, BadgeColorsDemo, BadgeStatusesDemo],
   exports: [BadgesDemo, BadgeColorsDemo, BadgeStatusesDemo],
 })

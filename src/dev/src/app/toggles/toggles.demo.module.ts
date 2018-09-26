@@ -6,10 +6,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
-
 import { TogglesDemo } from './toggles.demo';
 import { ROUTING } from './toggles.demo.routing';
 
-@NgModule({ imports: [CommonModule, ClarityModule, ROUTING], declarations: [TogglesDemo], exports: [TogglesDemo] })
+@NgModule({ imports: [CommonModule, ROUTING], declarations: [TogglesDemo], exports: [TogglesDemo] })
 export class TogglesDemoModule {}

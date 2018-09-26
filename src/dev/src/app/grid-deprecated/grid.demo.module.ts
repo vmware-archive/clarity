@@ -5,7 +5,6 @@
  */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ClarityModule } from '@clr/angular';
 
 import { GridAutoLayout1Demo } from './grid-auto-layout-1';
 import { GridAutoLayout2Demo } from './grid-auto-layout-2';
@@ -19,7 +18,7 @@ import { DeprecatedGridDemo } from './grid.demo';
 import { ROUTING } from './grid.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ROUTING],
   declarations: [
     GridAutoLayout1Demo,
     GridAutoLayout2Demo,

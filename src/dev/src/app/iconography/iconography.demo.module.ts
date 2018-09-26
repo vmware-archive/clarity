@@ -6,7 +6,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
+import { ClrIconModule } from '@clr/angular';
 
 import { IconColorsDemo } from './icon-colors';
 import { IconInverseColorDemo } from './icon-inverse-color';
@@ -19,7 +19,7 @@ import { ROUTING } from './iconography.demo.routing';
 import { IconsViewBoxTestDemo } from './icons-view-box-test.demo';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ClrIconModule, ROUTING],
   declarations: [
     IconsDemo,
     IconColorsDemo,

@@ -6,7 +6,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
+import { ClrIconModule, ClrTabsModule } from '@clr/angular';
 
 import { TabsAngularDemo } from './tabs-angular';
 import { TabsStaticDemo } from './tabs-static';
@@ -14,7 +14,7 @@ import { TabsDemo } from './tabs.demo';
 import { ROUTING } from './tabs.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ClrIconModule, ClrTabsModule, ROUTING],
   declarations: [TabsDemo, TabsStaticDemo, TabsAngularDemo],
   exports: [TabsDemo, TabsStaticDemo, TabsAngularDemo],
 })

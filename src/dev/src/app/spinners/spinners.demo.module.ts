@@ -6,15 +6,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
-
 import { SpinnerSizesDemo } from './spinner-sizes';
 import { SpinnerTypesDemo } from './spinner-types';
 import { SpinnerDemo } from './spinner.demo';
 import { ROUTING } from './spinners.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ROUTING],
   declarations: [SpinnerDemo, SpinnerSizesDemo, SpinnerTypesDemo],
   exports: [SpinnerDemo, SpinnerSizesDemo, SpinnerTypesDemo],
 })

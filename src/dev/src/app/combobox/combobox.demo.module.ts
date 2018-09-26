@@ -5,7 +5,6 @@
  */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ClarityModule } from '@clr/angular';
 
 import { BasicNgComboboxDemo } from './basic-ng-combobox';
 import { OptionalMenuDemo } from './optional-menu';
@@ -14,7 +13,7 @@ import { ROUTING } from './combobox.demo.routing';
 import { ClrComboboxModule } from '../../../../clr-angular/forms/combobox/combobox.module';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING, ClrComboboxModule],
+  imports: [CommonModule, ROUTING, ClrComboboxModule],
   declarations: [ComboboxDemo, BasicNgComboboxDemo, OptionalMenuDemo],
   exports: [ComboboxDemo, BasicNgComboboxDemo, OptionalMenuDemo],
 })

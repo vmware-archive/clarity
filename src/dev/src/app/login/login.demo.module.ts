@@ -6,10 +6,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
-
 import { LoginDemo } from './login.demo';
 import { ROUTING } from './login.demo.routing';
 
-@NgModule({ imports: [CommonModule, ClarityModule, ROUTING], declarations: [LoginDemo], exports: [LoginDemo] })
+@NgModule({ imports: [CommonModule, ROUTING], declarations: [LoginDemo], exports: [LoginDemo] })
 export class LoginDemoModule {}

@@ -101,6 +101,6 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
     ClrOutsideClickModule,
   ],
   declarations: [CLR_DATAGRID_DIRECTIVES],
-  exports: [CLR_DATAGRID_DIRECTIVES, ClrIfExpandModule],
+  exports: [CLR_DATAGRID_DIRECTIVES, ClrIfExpandModule, ClrLoadingModule],
 })
 export class ClrDatagridModule {}

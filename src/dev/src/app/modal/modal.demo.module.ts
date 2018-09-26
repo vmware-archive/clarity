@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ClarityModule } from '@clr/angular';
+import { ClrIconModule, ClrModalModule } from '@clr/angular';
 
 import { ModalAngularNotClosableDemo } from './modal-angular-not-closable';
 import { ModalAngularShowDemo } from './modal-angular-show';
@@ -25,7 +25,7 @@ import { ModalDemo } from './modal.demo';
 import { ROUTING } from './modal.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING, FormsModule],
+  imports: [CommonModule, ClrIconModule, ClrModalModule, ROUTING, FormsModule],
   declarations: [
     ModalDemo,
     ModalStaticDemo,

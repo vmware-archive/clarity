@@ -6,7 +6,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
+import { ClrIconModule, ClrTreeViewModule } from '@clr/angular';
 import { UtilsDemoModule } from '../_utils/utils.module';
 
 import { BasicSelectionTreeDemo } from './basic-selection-tree/basic-selection-tree';
@@ -33,7 +33,7 @@ import { ROUTING } from './tree-view.demo.routing';
 import { TreeNode10kDemo } from './trees-10k/tree-10k.demo';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING, UtilsDemoModule],
+  imports: [CommonModule, ClrIconModule, ClrTreeViewModule, ROUTING, UtilsDemoModule],
   declarations: [
     RecursiveStructureComponent,
     RecursiveSelectableStructureComponent,

@@ -6,8 +6,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
-
 import { LabelsClickableDemo } from './labels-clickable';
 import { LabelsColorOptionsDemo } from './labels-color-options';
 import { LabelsDefaultDemo } from './labels-default';
@@ -17,7 +15,7 @@ import { LabelsDemo } from './labels.demo';
 import { ROUTING } from './labels.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ROUTING],
   declarations: [
     LabelsDemo,
     LabelsWithBadgesDemo,

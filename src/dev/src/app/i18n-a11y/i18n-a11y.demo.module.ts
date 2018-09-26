@@ -7,7 +7,7 @@ import { CommonModule, registerLocaleData } from '@angular/common';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import localeFr from '@angular/common/locales/fr';
 
-import { ClarityModule, ClrCommonStrings } from '@clr/angular';
+import { ClrCommonStrings, ClrAlertModule, ClrButtonGroupModule, ClrDatagridModule } from '@clr/angular';
 
 import { I18nA11yDemo } from './i18n-a11y.demo';
 import { CommonStringsService } from './common-strings.service';
@@ -16,7 +16,7 @@ import { ROUTING } from './i18n-a11y.demo.routing';
 registerLocaleData(localeFr);
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ClrAlertModule, ClrButtonGroupModule, ClrDatagridModule, ROUTING],
   declarations: [I18nA11yDemo],
   exports: [I18nA11yDemo],
   providers: [{ provide: LOCALE_ID, useValue: 'fr' }, { provide: ClrCommonStrings, useClass: CommonStringsService }],

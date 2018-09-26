@@ -6,7 +6,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
+import { ClrIconModule, ClrAlertModule, ClrDropdownModule } from '@clr/angular';
 
 import { AlertsDemo } from './alert.demo';
 import { ROUTING } from './alert.demo.routing';
@@ -26,7 +26,7 @@ import { AlertStaticDemo } from './static/alert-static';
 import { AlertStylesDemo } from './static/alert-styles';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ClrIconModule, ClrAlertModule, ClrDropdownModule, ROUTING],
   declarations: [
     AlertsDemo,
     AlertStaticDemo,

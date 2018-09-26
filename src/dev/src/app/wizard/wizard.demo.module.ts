@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ClarityModule } from '@clr/angular';
+import { ClrIconModule, ClrWizardModule, ClrAlertModule } from '@clr/angular';
 
 import { WizardAltCancelDemo } from './wizard-alt-cancel.demo';
 import { WizardAltNextDemo } from './wizard-alt-next.demo';
@@ -28,7 +28,7 @@ import { WizardDemo } from './wizard.demo';
 import { ROUTING } from './wizard.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ClarityModule, ROUTING],
+  imports: [CommonModule, FormsModule, ClrIconModule, ClrWizardModule, ClrAlertModule, ROUTING],
   declarations: [
     WizardBasicDemo,
     WizardDemo,

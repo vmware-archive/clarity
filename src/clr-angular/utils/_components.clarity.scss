@@ -8,13 +8,13 @@
 // Bootstrap 4 Dependencies - Begin Part 2
 // NOTE: These are here b/c they need to be overwritable for the $grid-breakpoints map in a theme.
 // @deprecated Bootstrap dependencies are deprecated since 1.0. Remove before 2.0.
-@import 'bootstrap/scss/media';
-@import 'bootstrap/scss/utilities';
-@import 'bootstrap/scss/images';
-@import 'bootstrap/scss/list-group';
-@import 'bootstrap/scss/close';
-@import 'bootstrap/scss/grid';
-@import 'bootstrap/scss/responsive-embed';
+@import '../utils/bootstrap/media';
+@import '../utils/bootstrap/utilities';
+@import '../utils/bootstrap/images';
+@import '../utils/bootstrap/list-group';
+@import '../utils/bootstrap/close';
+@import '../utils/bootstrap/grid';
+@import '../utils/bootstrap/responsive-embed';
 
 // Clarity scss maps w/ overridable variables per component
 @import 'maps.clarity';

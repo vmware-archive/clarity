@@ -27,7 +27,8 @@
         </label>
         <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-input-wrapper">
-                <input type="text" id="{{layout}}-disabled" placeholder="Enter value here" class="clr-input" value="test value" disabled>
+                <input type="text" id="{{layout}}-disabled" placeholder="Enter value here" class="clr-input" value="test value"
+                    disabled>
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
             </div>
             <span class="clr-subtext">Helper Text</span>
@@ -48,13 +49,24 @@
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
         <label for="{{layout}}-long" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
-            Basic input, This is the song that doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and they'll continue singing it forever just because..This is the song that doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and they'll continue singing it forever just because..This is the song that doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and they'll continue singing it forever just because..This is the song that doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and they'll continue singing it forever just because..</label>
+            Basic input, This is the song that doesn't end. It goes on and on my friend. Some people started singing it
+            not knowing what it was, and they'll continue singing it forever just because..This is the song that
+            doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and
+            they'll continue singing it forever just because..This is the song that doesn't end. It goes on and on my
+            friend. Some people started singing it not knowing what it was, and they'll continue singing it forever
+            just because..This is the song that doesn't end. It goes on and on my friend. Some people started singing
+            it not knowing what it was, and they'll continue singing it forever just because..</label>
         <div class="clr-control-container clr-error" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-long" placeholder="Enter value here" class="clr-input">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
             </div>
-            <span class="clr-subtext">This is the song that doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and they'll continue singing it forever just because This is the song that doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and they'll continue singing it forever just because.. This is the song that doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and they'll continue singing it forever just because..</span>
+            <span class="clr-subtext">This is the song that doesn't end. It goes on and on my friend. Some people
+                started singing it not knowing what it was, and they'll continue singing it forever just because This
+                is the song that doesn't end. It goes on and on my friend. Some people started singing it not knowing
+                what it was, and they'll continue singing it forever just because.. This is the song that doesn't end.
+                It goes on and on my friend. Some people started singing it not knowing what it was, and they'll
+                continue singing it forever just because..</span>
         </div>
     </div>
 
@@ -64,21 +76,20 @@
         <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox1" id="{{layout}}-checkbox1" placeholder="Enter value here" class="clr-checkbox">
-                <label for="{{layout}}-checkbox1" class="clr-control-label">
-                    option 1
-                </label>
-                <input type="checkbox" name="checkbox2" id="{{layout}}-checkbox2" placeholder="Enter value here" class="clr-checkbox">
-                <label for="{{layout}}-checkbox2" class="clr-control-label">
-                    option 2
-                </label>
-                <input type="checkbox" name="checkbox3" id="{{layout}}-checkbox3" placeholder="Enter value here" class="clr-checkbox">
-                <label for="{{layout}}-checkbox3" class="clr-control-label">
-                    option 3
-                </label>
+                <label for="{{layout}}-checkbox1" class="clr-control-label">option 1</label>
             </div>
-            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            <span class="clr-subtext">Helper Text</span>
+            <div class="clr-checkbox-wrapper">
+                <input type="checkbox" name="checkbox2" id="{{layout}}-checkbox2" placeholder="Enter value here" class="clr-checkbox">
+                <label for="{{layout}}-checkbox2" class="clr-control-label">option 2</label>
+            </div>
+            <div class="clr-checkbox-wrapper">
+                <input type="checkbox" name="checkbox3" id="{{layout}}-checkbox3" placeholder="Enter value here" class="clr-checkbox">
+                <label for="{{layout}}-checkbox3" class="clr-control-label">option 3</label>
+            </div>
+            <div class="clr-subtext-wrapper">
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                <span class="clr-subtext">Helper Text</span>
+            </div>
         </div>
     </div>
 
@@ -90,75 +101,76 @@
                 <input type="checkbox" name="checkbox1" id="{{layout}}-checkbox7" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox7" class="clr-control-label">option 1</label>
             </div>
-            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            <span class="clr-subtext">Helper Text</span>
+            <div class="clr-subtext-wrapper">
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                <span class="clr-subtext">Helper Text</span>
+            </div>
         </div>
         <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox2" id="{{layout}}-checkbox8" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox8" class="clr-control-label">option 2</label>
             </div>
-            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            <span class="clr-subtext">Helper Text</span>
+            <div class="clr-subtext-wrapper">
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                <span class="clr-subtext">Helper Text</span>
+            </div>
         </div>
         <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox3" id="{{layout}}-checkbox9" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox9" class="clr-control-label">option 3</label>
             </div>
-            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            <span class="clr-subtext">Helper Text</span>
+            <div class="clr-subtext-wrapper">
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                <span class="clr-subtext">Helper Text</span>
+            </div>
         </div>
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label class="clr-control-label"[ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic checbox, error</label>
-            <div class="clr-control-container clr-error" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
-                <div class="clr-checkbox-wrapper">
-                    <input type="checkbox" name="checkbox4" id="{{layout}}-checkbox10" placeholder="Enter value here" class="clr-checkbox">
-                    <label for="{{layout}}-checkbox10" class="clr-control-label">
-                        option 1
-                    </label>
-                    <input type="checkbox" name="checkbox5" id="{{layout}}-checkbox11" placeholder="Enter value here" class="clr-checkbox">
-                    <label for="{{layout}}-checkbox11" class="clr-control-label">
-                        option 2
-                    </label>
-                    <input type="checkbox" name="checkbox6" id="{{layout}}-checkbox12" placeholder="Enter value here" class="clr-checkbox">
-                    <label for="{{layout}}-checkbox12" class="clr-control-label">
-                        option 3
-                </label>
+        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+            <div class="clr-checkbox-wrapper">
+                <input type="checkbox" name="checkbox4" id="{{layout}}-checkbox10" placeholder="Enter value here" class="clr-checkbox">
+                <label for="{{layout}}-checkbox10" class="clr-control-label">option 1</label>
             </div>
-            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            <span class="clr-subtext">Helper Text</span>
+            <div class="clr-checkbox-wrapper">
+                <input type="checkbox" name="checkbox5" id="{{layout}}-checkbox11" placeholder="Enter value here" class="clr-checkbox">
+                <label for="{{layout}}-checkbox11" class="clr-control-label">option 2</label>
+            </div>
+            <div class="clr-checkbox-wrapper">
+                <input type="checkbox" name="checkbox6" id="{{layout}}-checkbox12" placeholder="Enter value here" class="clr-checkbox">
+                <label for="{{layout}}-checkbox12" class="clr-control-label">option 3</label>
+            </div>
+            <div class="clr-subtext-wrapper">
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                <span class="clr-subtext">Helper Text</span>
+            </div>
         </div>
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
         <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Inline checkbox</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-checkbox-wrapper clr-checkbox-inline">
+        <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+            <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox7" id="{{layout}}-checkbox13" placeholder="Enter value here" class="clr-checkbox">
-                <label for="{{layout}}-checkbox13" class="clr-control-label">
-                    option 1
-                </label>
-                <input type="checkbox" name="checkbox8" id="{{layout}}-checkbox14" placeholder="Enter value here" class="clr-checkbox">
-                <label for="{{layout}}-checkbox14" class="clr-control-label">
-                    option 2
-                </label>
-                <input type="checkbox" name="checkbox9" id="{{layout}}-checkbox15" placeholder="Enter value here" class="clr-checkbox">
-                <label for="{{layout}}-checkbox15" class="clr-control-label">
-                    option 3
-                </label>
+                <label for="{{layout}}-checkbox13" class="clr-control-label">option 1</label>
             </div>
-            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            <span class="clr-subtext">Helper Text</span>
+            <div class="clr-checkbox-wrapper">
+                <input type="checkbox" name="checkbox8" id="{{layout}}-checkbox14" placeholder="Enter value here" class="clr-checkbox">
+                <label for="{{layout}}-checkbox14" class="clr-control-label">option 2</label>
+            </div>
+            <div class="clr-checkbox-wrapper">
+                <input type="checkbox" name="checkbox9" id="{{layout}}-checkbox15" placeholder="Enter value here" class="clr-checkbox">
+                <label for="{{layout}}-checkbox15" class="clr-control-label">option 3</label>
+            </div>
+            <div class="clr-subtext-wrapper">
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                <span class="clr-subtext">Helper Text</span>
+            </div>
         </div>
     </div>
 
@@ -169,14 +181,19 @@
             <div class="clr-radio-wrapper">
                 <input type="radio" id="{{layout}}-radio1" name="radio-basic" class="clr-radio">
                 <label for="{{layout}}-radio1" class="clr-control-label">option 1</label>
+            </div>
+            <div class="clr-radio-wrapper">
                 <input type="radio" id="{{layout}}-radio2" name="radio-basic" class="clr-radio">
                 <label for="{{layout}}-radio2" class="clr-control-label">option 2</label>
+            </div>
+            <div class="clr-radio-wrapper">
                 <input type="radio" id="{{layout}}-radio3" name="radio-basic" class="clr-radio">
                 <label for="{{layout}}-radio3" class="clr-control-label">option 3</label>
             </div>
-            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            <span class="clr-subtext">Helper Text</span>
+            <div class="clr-subtext-wrapper">
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                <span class="clr-subtext">Helper Text</span>
+            </div>
         </div>
     </div>
 
@@ -187,32 +204,42 @@
             <div class="clr-radio-wrapper">
                 <input type="radio" name="radio2" id="{{layout}}-radio4" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio4" class="clr-control-label">option 1</label>
+            </div>
+            <div class="clr-radio-wrapper">
                 <input type="radio" name="radio2" id="{{layout}}-radio5" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio5" class="clr-control-label">option 2</label>
+            </div>
+            <div class="clr-radio-wrapper">
                 <input type="radio" name="radio2" id="{{layout}}-radio6" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio6" class="clr-control-label">option 3</label>
             </div>
-            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            <span class="clr-subtext">Helper Text</span>
+            <div class="clr-subtext-wrapper">
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                <span class="clr-subtext">Helper Text</span>
+            </div>
         </div>
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
         <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Inline radio</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-radio-wrapper clr-radio-inline">
+        <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+            <div class="clr-radio-wrapper">
                 <input type="radio" name="radio3" id="{{layout}}-radio7" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio7" class="clr-control-label">option 1</label>
+            </div>
+            <div class="clr-radio-wrapper">
                 <input type="radio" name="radio3" id="{{layout}}-radio8" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio8" class="clr-control-label">option 2</label>
+            </div>
+            <div class="clr-radio-wrapper">
                 <input type="radio" name="radio3" id="{{layout}}-radio9" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio9" class="clr-control-label">option 3</label>
             </div>
-            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            <span class="clr-subtext">Helper Text</span>
+            <div class="clr-subtext-wrapper">
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                <span class="clr-subtext">Helper Text</span>
+            </div>
         </div>
     </div>
 
@@ -350,7 +377,10 @@
                 <clr-tooltip>
                     <clr-icon clrTooltipTrigger shape="info-circle" size="24"></clr-icon>
                     <clr-tooltip-content clrPosition="bottom-left" clrSize="lg" *clrIfOpen>
-                        <span>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</span>
+                        <span>Leverage agile frameworks to provide a robust synopsis for high level overviews.
+                            Iterative approaches to corporate strategy foster collaborative thinking to further the
+                            overall value proposition. Organically grow the holistic world view of disruptive
+                            innovation via workplace diversity and empowerment.</span>
                     </clr-tooltip-content>
                 </clr-tooltip>
             </span>
@@ -387,8 +417,9 @@
             </div>
         </div>
     </div>
-    
-    <div class="clr-form-control clr-form-control-multi" [ngClass]="{'clr-row': grid && layout !== 'vertical'}" [style.display]="(!grid && layout !== 'vertical') ? 'none' : ''">
+
+    <div class="clr-form-control clr-form-control-multi" [ngClass]="{'clr-row': grid && layout !== 'vertical'}"
+        [style.display]="(!grid && layout !== 'vertical') ? 'none' : ''">
         <label for="{{layout}}-multiple" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Multiple inputs in same row, different sizes</label>
         <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-3': grid}">
@@ -414,7 +445,8 @@
         </div>
     </div>
 
-    <div class="clr-form-control clr-form-control-multi" [ngClass]="{'clr-row': grid && layout !== 'vertical'}" [style.display]="(!grid && layout !== 'vertical') ? 'none' : ''">
+    <div class="clr-form-control clr-form-control-multi" [ngClass]="{'clr-row': grid && layout !== 'vertical'}"
+        [style.display]="(!grid && layout !== 'vertical') ? 'none' : ''">
         <label for="{{layout}}-multiple-error" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Multiple inputs in same row, error</label>
         <div class="clr-control-container clr-error" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-3': grid}">

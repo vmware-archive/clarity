@@ -30,7 +30,7 @@ export default function(): void {
 
     it('should not add grid classes if already present ', function() {
       service.className = 'clr-col-md-3 clr-col-xs-12';
-      expect(service.controlClass(false, true)).toBe('');
+      expect(service.controlClass(false, true)).toBe('clr-col-md-3 clr-col-xs-12');
     });
 
     it('should init the control class', function() {
@@ -46,6 +46,16 @@ export default function(): void {
       service.initControlClass(renderer, element);
       expect(service.className).toEqual('clr-col-4 test-class');
       expect(renderer.removeClass).toHaveBeenCalledWith(element, 'clr-col-4');
+    });
+
+    it('should return any classes provided by default', function() {
+      service.className = 'test-class';
+      expect(service.controlClass(false, false)).toContain('test-class');
+    });
+
+    it('should return any additional classes passed by the control', function() {
+      service.className = 'test-class';
+      expect(service.controlClass(false, false, 'extra-class')).toBe('test-class extra-class');
     });
   });
 }

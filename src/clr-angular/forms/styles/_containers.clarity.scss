@@ -35,11 +35,20 @@
     display: inline-block;
   }
 
+  .clr-control-inline {
+    @include form-inline-input();
+  }
+
   .clr-subtext {
     display: block;
     @include clr-getTypePropertiesForDomElement(form_subtext, (font-size, line-height));
     color: $clr-forms-subtext-color;
     margin-top: $clr-forms-baseline;
+  }
+
+  .clr-subtext-wrapper {
+    flex-basis: 100%;
+    display: flex;
   }
 
   .clr-validate-icon {
@@ -65,12 +74,12 @@
   }
 
   .clr-form-horizontal {
-    .clr-control-label,
-    .clr-form-control.clr-form-control-multi .clr-control-label {
+    .clr-form-control > .clr-control-label,
+    .clr-form-control > .clr-form-control.clr-form-control-multi .clr-control-label {
       width: $clr-forms-baseline * 32;
       flex-shrink: 0;
     }
-    &.row .clr-control-label {
+    &.clr-row .clr-control-label {
       width: auto;
     }
 
@@ -105,8 +114,14 @@
     }
 
     .clr-subtext {
+      display: inline-block;
       margin-top: $clr-forms-baseline;
       margin-left: $clr-forms-baseline;
+    }
+
+    .clr-subtext-wrapper {
+      flex-basis: auto;
+      display: inline-block;
     }
   }
 }

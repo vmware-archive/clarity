@@ -12,11 +12,11 @@ import { ClrIconModule } from '../../icon/icon.module';
 @Component({
   template: `
 <form class="clr-form clr-form-{{layout}}">
-    <div class="clr-form-control" [ngClass]="{row: grid}" id="text">
-        <label for="{{layout}}-basic" class="clr-control-label" [ngClass]="{'col-xs-12': grid, 'col-md-2': grid && layout !== 'vertical'}">
-            Basic input
+    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="text">
+        <label for="{{layout}}-basic" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+            Input
         </label>
-        <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-basic" placeholder="Enter value here" class="clr-input">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
@@ -25,94 +25,114 @@ import { ClrIconModule } from '../../icon/icon.module';
         </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{row: grid}" id="checkbox">
-        <label class="clr-control-label" [ngClass]="{'col-xs-12': grid, 'col-md-2': grid && layout !== 'vertical'}">
-            Basic checkbox</label>
-        <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
+    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="checkbox">
+        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+            Checkbox</label>
+        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox1" id="{{layout}}-checkbox1" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox1" class="clr-control-label">
                     option 1
                 </label>
+            </div>
+            <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox2" id="{{layout}}-checkbox2" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox2" class="clr-control-label">
                     option 2
                 </label>
+            </div>
+            <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox3" id="{{layout}}-checkbox3" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox3" class="clr-control-label">
                     option 3
                 </label>
             </div>
-            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            <span class="clr-subtext">Helper Text</span>
+            <div class="clr-subtext-wrapper">
+              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <span class="clr-subtext">Helper Text</span>
+            </div>
         </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{row: grid}" id="checkbox-inline">
-        <label class="clr-control-label" [ngClass]="{'col-xs-12': grid, 'col-md-2': grid && layout !== 'vertical'}">
+    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="checkbox-inline">
+        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Inline checkbox</label>
-        <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-checkbox-wrapper clr-checkbox-inline">
+        <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+            <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox7" id="{{layout}}-checkbox7" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox7" class="clr-control-label">
                     option 1
                 </label>
+            </div>
+            <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox8" id="{{layout}}-checkbox8" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox8" class="clr-control-label">
                     option 2
                 </label>
+            </div>
+            <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox9" id="{{layout}}-checkbox9" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox9" class="clr-control-label">
                     option 3
                 </label>
             </div>
-            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            <span class="clr-subtext">Helper Text</span>
+            <div class="clr-subtext-wrapper">
+              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <span class="clr-subtext">Helper Text</span>
+            </div>
         </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{row: grid}" id="radio">
-        <label class="clr-control-label" [ngClass]="{'col-xs-12': grid, 'col-md-2': grid && layout !== 'vertical'}">
-            Basic radio</label>
-        <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
+    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="radio">
+        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+            Radio</label>
+        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-radio-wrapper">
                 <input type="radio" name="radio1" id="{{layout}}-radio1" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio1" class="clr-control-label">option 1</label>
+              </div>
+              <div class="clr-radio-wrapper">
                 <input type="radio" name="radio1" id="{{layout}}-radio2" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio2" class="clr-control-label">option 2</label>
+              </div>
+              <div class="clr-radio-wrapper">
                 <input type="radio" name="radio1" id="{{layout}}-radio3" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio3" class="clr-control-label">option 3</label>
             </div>
-            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            <span class="clr-subtext">Helper Text</span>
+            <div class="clr-subtext-wrapper">
+              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <span class="clr-subtext">Helper Text</span>
+            </div>
         </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{row: grid}" id="radio-inline">
-        <label class="clr-control-label" [ngClass]="{'col-xs-12': grid, 'col-md-2': grid && layout !== 'vertical'}">
+    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="radio-inline">
+        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Inline radio</label>
-        <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-radio-wrapper clr-radio-inline">
+        <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+            <div class="clr-radio-wrapper">
                 <input type="radio" name="radio2" id="{{layout}}-radio4" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio4" class="clr-control-label">option 1</label>
+            </div>
+            <div class="clr-radio-wrapper">
                 <input type="radio" name="radio2" id="{{layout}}-radio5" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio5" class="clr-control-label">option 2</label>
+            </div>
+            <div class="clr-radio-wrapper">
                 <input type="radio" name="radio2" id="{{layout}}-radio6" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio6" class="clr-control-label">option 3</label>
             </div>
-            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            <span class="clr-subtext">Helper Text</span>
+            <div class="clr-subtext-wrapper">
+              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <span class="clr-subtext">Helper Text</span>
+            </div>
         </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{row: grid}" id="file">
-        <label for="{{layout}}-file" class="clr-control-label" [ngClass]="{'col-xs-12': grid, 'col-md-2': grid && layout !== 'vertical'}">
-            Basic file</label>
-        <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
+    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="file">
+        <label for="{{layout}}-file" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+            File</label>
+        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-file-wrapper">
                 <label for="{{layout}}-file" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
                 <input #fileInput type="file" id="{{layout}}-file" placeholder="Enter value here" class="clr-file">
@@ -123,10 +143,10 @@ import { ClrIconModule } from '../../icon/icon.module';
         </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{row: grid}" id="file-plain">
-        <label for="{{layout}}-file3" class="clr-control-label" [ngClass]="{'col-xs-12': grid, 'col-md-2': grid && layout !== 'vertical'}">
+    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="file-plain">
+        <label for="{{layout}}-file3" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Plain file</label>
-        <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-file-wrapper">
                 <input type="file" id="{{layout}}-file" placeholder="Enter value here">
             </div>
@@ -136,10 +156,10 @@ import { ClrIconModule } from '../../icon/icon.module';
         </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{row: grid}" id="textarea">
-        <label for="{{layout}}-textarea-basic" class="clr-control-label" [ngClass]="{'col-xs-12': grid, 'col-md-2': grid && layout !== 'vertical'}">
-            Basic textarea</label>
-        <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
+    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="textarea">
+        <label for="{{layout}}-textarea-basic" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+            Textarea</label>
+        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-textarea-wrapper">
                 <textarea id="{{layout}}-textarea-basic" rows="5" placeholder="Enter value here" class="clr-textarea"></textarea>
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
@@ -148,10 +168,10 @@ import { ClrIconModule } from '../../icon/icon.module';
         </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{row: grid}" id="select">
-        <label class="clr-control-label" [ngClass]="{'col-xs-12': grid, 'col-md-2': grid && layout !== 'vertical'}">
-            Basic select</label>
-        <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
+    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="select">
+        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+            Select</label>
+        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-select-wrapper">
                 <select>
                     <option>Option 1</option>
@@ -164,11 +184,11 @@ import { ClrIconModule } from '../../icon/icon.module';
         </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{row: grid}" id="multiselect">
-        <label class="clr-control-label" [ngClass]="{'col-xs-12': grid, 'col-md-2': grid && layout !== 'vertical'}">
-            Basic multiselect
+    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="multiselect">
+        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+            Mmultiselect
         </label>
-        <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-multiselect-wrapper">
                 <select multiple>
                     <option>Option 1</option>
@@ -190,10 +210,6 @@ class SimpleTest {
 describe('Form layouts', () => {
   const base = 6;
   let native, instance, fixture;
-
-  beforeAll(() => {
-    console.log(`Width: ${window.innerWidth}, Height: ${window.innerHeight}`);
-  });
 
   function height(selector) {
     return native.querySelector(selector).getBoundingClientRect().height;
@@ -221,39 +237,43 @@ describe('Form layouts', () => {
     });
 
     describe('checkbox', () => {
-      it('control height', () => verifyHeight('#checkbox', base * 19));
+      it('control height', () => verifyHeight('#checkbox', base * 18));
       it('label height', () => verifyHeight('#checkbox .clr-control-label', base * 3));
-      it('wrapper height', () => verifyHeight('#checkbox .clr-checkbox-wrapper', base * 12));
+      it('container height', () => verifyHeight('#checkbox .clr-control-container', base * 15));
+      it('wrapper height', () => verifyHeight('#checkbox .clr-checkbox-wrapper', base * 4));
       it('checkbox height', () => verifyHeight('#checkbox .clr-checkbox', 16, false));
       it('checkbox label height', () => verifyHeight('#checkbox .clr-checkbox-wrapper .clr-control-label', base * 4));
       it('subtext height', () => verifyHeight('#checkbox .clr-subtext', base * 2));
     });
 
     describe('checkbox inline', () => {
-      xit('control height', () => verifyHeight('#checkbox-inline', base * 12));
+      it('control height', () => verifyHeight('#checkbox-inline', base * 10));
       it('label height', () => verifyHeight('#checkbox-inline .clr-control-label', base * 3));
-      xit('wrapper height', () => verifyHeight('#checkbox-inline .clr-checkbox-wrapper', base * 5));
+      it('container height', () => verifyHeight('#checkbox-inline .clr-control-container', base * 7));
+      it('wrapper height', () => verifyHeight('#checkbox-inline .clr-checkbox-wrapper', base * 4));
       it('checkbox height', () => verifyHeight('#checkbox-inline .clr-checkbox', 16, false));
-      xit('checkbox label height', () =>
+      it('checkbox label height', () =>
         verifyHeight('#checkbox-inline .clr-checkbox-wrapper .clr-control-label', base * 4));
       it('subtext height', () => verifyHeight('#checkbox-inline .clr-subtext', base * 2));
     });
 
     describe('radio', () => {
-      it('control height', () => verifyHeight('#radio', base * 19));
+      it('control height', () => verifyHeight('#radio', base * 18));
       it('label height', () => verifyHeight('#radio .clr-control-label', base * 3));
-      it('wrapper height', () => verifyHeight('#radio .clr-radio-wrapper', base * 12));
+      it('container height', () => verifyHeight('#radio .clr-control-container', base * 15));
+      it('wrapper height', () => verifyHeight('#radio .clr-radio-wrapper', base * 4));
       it('radio height', () => verifyHeight('#radio .clr-radio', 16, false));
       it('radio label height', () => verifyHeight('#radio .clr-radio-wrapper .clr-control-label', base * 4));
       it('subtext height', () => verifyHeight('#radio .clr-subtext', base * 2));
     });
 
     describe('radio inline', () => {
-      xit('control height', () => verifyHeight('#radio-inline', base * 12));
+      it('control height', () => verifyHeight('#radio-inline', base * 10));
       it('label height', () => verifyHeight('#radio-inline .clr-control-label', base * 3));
-      xit('wrapper height', () => verifyHeight('#radio-inline .clr-radio-wrapper', base * 5));
+      it('container height', () => verifyHeight('#radio-inline .clr-control-container', base * 7));
+      it('wrapper height', () => verifyHeight('#radio-inline .clr-radio-wrapper', base * 4));
       it('radio height', () => verifyHeight('#radio-inline .clr-radio', 16, false));
-      xit('radio label height', () => verifyHeight('#radio-inline .clr-radio-wrapper .clr-control-label', base * 4));
+      it('radio label height', () => verifyHeight('#radio-inline .clr-radio-wrapper .clr-control-label', base * 4));
       it('subtext height', () => verifyHeight('#radio-inline .clr-subtext', base * 2));
     });
 
@@ -327,40 +347,44 @@ describe('Form layouts', () => {
     });
 
     describe('checkbox', () => {
-      it('control height', () => verifyHeight('#checkbox', base * 16));
+      it('control height', () => verifyHeight('#checkbox', base * 15));
       it('label height', () => verifyHeight('#checkbox .clr-control-label', base * 3));
-      it('wrapper height', () => verifyHeight('#checkbox .clr-checkbox-wrapper', base * 12));
+      it('container height', () => verifyHeight('#checkbox .clr-control-container', base * 15));
+      it('wrapper height', () => verifyHeight('#checkbox .clr-checkbox-wrapper', base * 4));
       it('checkbox height', () => verifyHeight('#checkbox .clr-checkbox', 16, false));
       it('checkbox label height', () => verifyHeight('#checkbox .clr-checkbox-wrapper .clr-control-label', base * 4));
-      it('subtext height', () => verifyHeight('#checkbox .clr-subtext', base * 2));
+      it('subtext height', () => verifyHeight('#checkbox .clr-subtext-wrapper', base * 3));
     });
 
     describe('checkbox inline', () => {
-      xit('control height', () => verifyHeight('#checkbox-inline', base * 8));
+      it('control height', () => verifyHeight('#checkbox-inline', base * 7));
       it('label height', () => verifyHeight('#checkbox-inline .clr-control-label', base * 3));
-      xit('wrapper height', () => verifyHeight('#checkbox-inline .clr-checkbox-wrapper', base * 4));
+      it('container height', () => verifyHeight('#checkbox-inline .clr-control-container', base * 7));
+      it('wrapper height', () => verifyHeight('#checkbox-inline .clr-checkbox-wrapper', base * 4));
       it('checkbox height', () => verifyHeight('#checkbox-inline .clr-checkbox', 16, false));
       it('checkbox label height', () =>
         verifyHeight('#checkbox-inline .clr-checkbox-wrapper .clr-control-label', base * 4));
-      it('subtext height', () => verifyHeight('#checkbox-inline .clr-subtext', base * 2));
+      it('subtext height', () => verifyHeight('#checkbox-inline .clr-subtext-wrapper', base * 3));
     });
 
     describe('radio', () => {
-      it('control height', () => verifyHeight('#radio', base * 16));
+      it('control height', () => verifyHeight('#radio', base * 15));
       it('label height', () => verifyHeight('#radio .clr-control-label', base * 3));
-      it('wrapper height', () => verifyHeight('#radio .clr-radio-wrapper', base * 12));
+      it('container height', () => verifyHeight('#radio .clr-control-container', base * 15));
+      it('wrapper height', () => verifyHeight('#radio .clr-radio-wrapper', base * 4));
       it('radio height', () => verifyHeight('#radio .clr-radio', 16, false));
       it('radio label height', () => verifyHeight('#radio .clr-radio-wrapper .clr-control-label', base * 4));
-      it('subtext height', () => verifyHeight('#radio .clr-subtext', base * 2));
+      it('subtext height', () => verifyHeight('#radio .clr-subtext-wrapper', base * 3));
     });
 
     describe('radio inline', () => {
-      xit('control height', () => verifyHeight('#radio-inline', base * 8));
+      it('control height', () => verifyHeight('#radio-inline', base * 7));
       it('label height', () => verifyHeight('#radio-inline .clr-control-label', base * 3));
-      xit('wrapper height', () => verifyHeight('#radio-inline .clr-radio-wrapper', base * 4));
+      it('container height', () => verifyHeight('#radio-inline .clr-control-container', base * 7));
+      it('wrapper height', () => verifyHeight('#radio-inline .clr-radio-wrapper', base * 4));
       it('radio height', () => verifyHeight('#radio-inline .clr-radio', 16, false));
       it('radio label height', () => verifyHeight('#radio-inline .clr-radio-wrapper .clr-control-label', base * 4));
-      it('subtext height', () => verifyHeight('#radio-inline .clr-subtext', base * 2));
+      it('subtext height', () => verifyHeight('#radio-inline .clr-subtext-wrapper', base * 3));
     });
 
     describe('file', () => {
@@ -435,7 +459,7 @@ describe('Form layouts', () => {
       it('wrapper height', () => verifyHeight('#checkbox .clr-checkbox-wrapper', base * 4));
       it('checkbox height', () => verifyHeight('#checkbox .clr-checkbox', 16, false));
       it('checkbox label height', () => verifyHeight('#checkbox .clr-checkbox-wrapper .clr-control-label', base * 4));
-      it('subtext height', () => verifyHeight('#checkbox .clr-subtext', base * 3));
+      it('subtext height', () => verifyHeight('#checkbox .clr-subtext-wrapper', base * 4));
     });
 
     describe('checkbox inline', () => {
@@ -445,7 +469,7 @@ describe('Form layouts', () => {
       it('checkbox height', () => verifyHeight('#checkbox-inline .clr-checkbox', 16, false));
       it('checkbox label height', () =>
         verifyHeight('#checkbox-inline .clr-checkbox-wrapper .clr-control-label', base * 4));
-      it('subtext height', () => verifyHeight('#checkbox-inline .clr-subtext', base * 3));
+      it('subtext height', () => verifyHeight('#checkbox-inline .clr-subtext-wrapper', base * 4));
     });
 
     describe('radio', () => {
@@ -454,7 +478,7 @@ describe('Form layouts', () => {
       it('wrapper height', () => verifyHeight('#radio .clr-radio-wrapper', base * 4));
       it('radio height', () => verifyHeight('#radio .clr-radio', 16, false));
       it('radio label height', () => verifyHeight('#radio .clr-radio-wrapper .clr-control-label', base * 4));
-      it('subtext height', () => verifyHeight('#radio .clr-subtext', base * 3));
+      it('subtext height', () => verifyHeight('#radio .clr-subtext-wrapper', base * 4));
     });
 
     describe('radio inline', () => {
@@ -463,7 +487,7 @@ describe('Form layouts', () => {
       it('wrapper height', () => verifyHeight('#radio-inline .clr-radio-wrapper', base * 4));
       it('radio height', () => verifyHeight('#radio-inline .clr-radio', 16, false));
       it('radio label height', () => verifyHeight('#radio-inline .clr-radio-wrapper .clr-control-label', base * 4));
-      it('subtext height', () => verifyHeight('#radio-inline .clr-subtext', base * 3));
+      it('subtext height', () => verifyHeight('#radio-inline .clr-subtext-wrapper', base * 4));
     });
 
     describe('file', () => {
@@ -537,14 +561,13 @@ describe('Form layouts', () => {
     verticalTests();
   });
 
-  // @TODO Enable grid tests when new grid is setup
-  // describe("Vertical with Grid", () => {
-  //     beforeEach(() => {
-  //         instance.grid = true;
-  //         fixture.detectChanges();
-  //     });
-  //     verticalTests();
-  // });
+  describe('Vertical with Grid', () => {
+    beforeEach(() => {
+      instance.grid = true;
+      fixture.detectChanges();
+    });
+    verticalTests();
+  });
 
   describe('Horizontal', () => {
     beforeEach(() => {
@@ -554,14 +577,14 @@ describe('Form layouts', () => {
     horizontalTests();
   });
 
-  // describe("Horizontal with Grid", () => {
-  //     beforeEach(() => {
-  //         instance.layout = "horizontal";
-  //         instance.grid = true;
-  //         fixture.detectChanges();
-  //     });
-  //     horizontalTests();
-  // });
+  describe('Horizontal with Grid', () => {
+    beforeEach(() => {
+      instance.layout = 'horizontal';
+      instance.grid = true;
+      fixture.detectChanges();
+    });
+    horizontalTests();
+  });
 
   describe('Compact', () => {
     beforeEach(() => {
@@ -571,12 +594,12 @@ describe('Form layouts', () => {
     compactTests();
   });
 
-  // describe("Compact with Grid", () => {
-  //     beforeEach(() => {
-  //         instance.layout = "compact";
-  //         instance.grid = true;
-  //         fixture.detectChanges();
-  //     });
-  //     compactTests();
-  // });
+  describe('Compact with Grid', () => {
+    beforeEach(() => {
+      instance.layout = 'compact';
+      instance.grid = true;
+      fixture.detectChanges();
+    });
+    compactTests();
+  });
 });

@@ -32,6 +32,10 @@
     }
   }
 
+  .clr-form-control-disabled .clr-input-group-icon-action {
+    cursor: not-allowed;
+  }
+
   .clr-error .clr-input-group {
     border-bottom-color: $clr-forms-invalid-color;
     @include input-border-bottom-animation($clr-forms-invalid-color);

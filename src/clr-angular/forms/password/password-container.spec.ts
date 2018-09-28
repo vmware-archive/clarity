@@ -21,7 +21,7 @@ import { ContainerNoLabelSpec, ReactiveSpec, TemplateDrivenSpec } from '../tests
 @Component({
   template: `
     <clr-password-container [clrToggle]="toggler">
-        <input type="password" name="test" clrPassword required [(ngModel)]="model" />
+        <input type="password" name="test" clrPassword required [(ngModel)]="model" [disabled]="disabled" />
         <label>Hello World</label>
         <clr-control-helper>Helper text</clr-control-helper>
         <clr-control-error>Must be at least 5 characters</clr-control-error>
@@ -29,6 +29,7 @@ import { ContainerNoLabelSpec, ReactiveSpec, TemplateDrivenSpec } from '../tests
     `,
 })
 class TemplateDrivenTest {
+  disabled = false;
   model = '';
   toggler = true;
 }
@@ -53,8 +54,9 @@ class NoLabelTest {}
   </form>`,
 })
 class ReactiveTest {
+  disabled = false;
   form = new FormGroup({
-    model: new FormControl('', Validators.required),
+    model: new FormControl({ value: '', disabled: this.disabled }, Validators.required),
   });
 }
 

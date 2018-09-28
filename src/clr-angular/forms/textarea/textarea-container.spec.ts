@@ -14,7 +14,7 @@ import { ContainerNoLabelSpec, TemplateDrivenSpec, ReactiveSpec } from '../tests
 @Component({
   template: `
   <clr-textarea-container>
-    <textarea name="test" clrTextarea required [(ngModel)]="model"></textarea>
+    <textarea name="test" clrTextarea required [(ngModel)]="model" [disabled]="disabled"></textarea>
     <label>Hello World</label>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>Must be at least 5 characters</clr-control-error>
@@ -22,6 +22,7 @@ import { ContainerNoLabelSpec, TemplateDrivenSpec, ReactiveSpec } from '../tests
     `,
 })
 class SimpleTest {
+  disabled = false;
   model = '';
 }
 
@@ -45,8 +46,9 @@ class NoLabelTest {}
   </form>`,
 })
 class ReactiveTest {
+  disabled = false;
   form = new FormGroup({
-    model: new FormControl('', Validators.required),
+    model: new FormControl({ value: '', disabled: this.disabled }, Validators.required),
   });
 }
 

@@ -9,20 +9,24 @@ import { Component } from '@angular/core';
   templateUrl: './input.demo.html',
 })
 export class InputDemo {
+  disabled = true;
   vertical = {
     one: '',
     two: '',
     three: '',
+    four: '',
   };
   horizontal = {
     one: '',
     two: '',
     three: '',
+    four: '',
   };
   compact = {
     one: '',
     two: '',
     three: '',
+    four: '',
   };
   override = '';
   noform = '';

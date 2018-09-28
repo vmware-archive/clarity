@@ -6,26 +6,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './radios.demo.html',
+  styleUrls: ['./datepicker.demo.scss'],
+  templateUrl: './disabled.html',
 })
-export class RadiosDemo {
+export class DisabledDemo {
+  model: string = '';
   disabled = true;
-  vertical = {
-    one: '',
-    two: '',
-    three: '',
-    four: '',
-  };
-  horizontal = {
-    one: '',
-    two: '',
-    three: '',
-    four: '',
-  };
-  compact = {
-    one: '',
-    two: '',
-    three: '',
-    four: '',
-  };
 }

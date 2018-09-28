@@ -50,6 +50,9 @@
       }
     }
   }
+  .datepicker-trigger:disabled {
+    cursor: not-allowed;
+  }
   .clr-form-control {
     .datepicker-trigger {
       line-height: calc(1rem - 2px);

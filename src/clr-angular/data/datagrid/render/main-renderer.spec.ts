@@ -133,7 +133,7 @@ export default function(): void {
 
     describe('smart datagrid width', () => {
       let context: ComponentFixture<RenderWidthTest>;
-
+      let containerWidth: number;
       beforeEach(() => {
         TestBed.configureTestingModule({
           imports: [BrowserAnimationsModule, ClrDatagridModule],
@@ -142,12 +142,12 @@ export default function(): void {
         });
         context = TestBed.createComponent(RenderWidthTest);
         context.detectChanges();
+        containerWidth = context.componentInstance.container.nativeElement.clientWidth;
       });
 
       it('calculates the correct width with no row options', () => {
         context.componentInstance.currentTest = 'defaultDatagridTest';
         context.detectChanges();
-        const containerWidth = context.componentInstance.container.nativeElement.clientWidth;
         const datagridWidth = context.componentInstance.datagridDefault.nativeElement.clientWidth;
         expect(containerWidth).toEqual(datagridWidth);
       });
@@ -155,7 +155,6 @@ export default function(): void {
       it('calculates the correct width when single select is enabled', () => {
         context.componentInstance.currentTest = 'singleSelectTest';
         context.detectChanges();
-        const containerWidth = context.componentInstance.container.nativeElement.clientWidth;
         const datagridWidth = context.componentInstance.datagridSingleSelect.nativeElement.clientWidth;
         expect(containerWidth).toEqual(datagridWidth);
       });
@@ -163,7 +162,6 @@ export default function(): void {
       it('calculates correct width when multi select is enabled', () => {
         context.componentInstance.currentTest = 'multiSelectTest';
         context.detectChanges();
-        const containerWidth = context.componentInstance.container.nativeElement.clientWidth;
         const datagridWidth = context.componentInstance.datagridMultiSelect.nativeElement.clientWidth;
         expect(containerWidth).toEqual(datagridWidth);
       });
@@ -172,7 +170,6 @@ export default function(): void {
         context.componentInstance.currentTest = 'defaultDatagridTest';
         context.componentInstance.expandable = true;
         context.detectChanges();
-        const containerWidth = context.componentInstance.container.nativeElement.clientWidth;
         const datagridWidth = context.componentInstance.datagridDefault.nativeElement.clientWidth;
         expect(containerWidth).toEqual(datagridWidth);
       });
@@ -181,7 +178,6 @@ export default function(): void {
         context.componentInstance.currentTest = 'defaultDatagridTest';
         context.componentInstance.hasActions = true;
         context.detectChanges();
-        const containerWidth = context.componentInstance.container.nativeElement.clientWidth;
         const datagridWidth = context.componentInstance.datagridDefault.nativeElement.clientWidth;
         expect(containerWidth).toEqual(datagridWidth);
       });

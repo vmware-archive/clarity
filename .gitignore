@@ -6,6 +6,7 @@
 /out-tsc
 /.ng_build
 src/clr-angular/.ng_build
+src/clr-angular/.ng_pkg_build
 /tests/tslint/dist
 
 /reports

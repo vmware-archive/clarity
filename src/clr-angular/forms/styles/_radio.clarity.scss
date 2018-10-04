@@ -61,10 +61,10 @@
         box-shadow: $clr-forms-radio-disabled-shadow; //background-color around the dot
       }
     }
+  }
 
-    &.clr-radio-inline {
-      @include form-inline-input();
-    }
+  .clr-form-compact .clr-error .clr-subtext {
+    margin-left: 0;
   }
 
   .clr-form-compact .clr-radio-wrapper {

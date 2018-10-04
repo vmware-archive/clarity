@@ -6,7 +6,6 @@
 
 import { Component, ContentChild, Input, OnDestroy, Optional } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { isBoolean } from 'util';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
 import { ClrLabel } from '../common/label';
@@ -19,13 +18,13 @@ import { NgControlService } from '../common/providers/ng-control.service';
   template: `
     <ng-content select="label"></ng-content>
     <label *ngIf="!label && addGrid()"></label>
-    <div class="clr-control-container" [ngClass]="controlClass()">
-      <div [class.clr-radio-inline]="clrInline">
-        <ng-content select="clr-radio-wrapper"></ng-content>
+    <div class="clr-control-container" [class.clr-control-inline]="clrInline" [ngClass]="controlClass()">
+      <ng-content select="clr-radio-wrapper"></ng-content>
+      <div class="clr-subtext-wrapper">
+        <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
+        <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
+        <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
       </div>
-      <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
-      <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
-      <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
     </div>
     `,
   host: {
@@ -48,7 +47,7 @@ export class ClrRadioContainer implements OnDestroy {
    */
   @Input()
   set clrInline(value: boolean | string) {
-    if (!isBoolean(value)) {
+    if (typeof value === 'string') {
       this.inline = value === 'false' ? false : true;
     } else {
       this.inline = !!value;
@@ -71,7 +70,7 @@ export class ClrRadioContainer implements OnDestroy {
   }
 
   controlClass() {
-    return this.controlClassService.controlClass(this.invalid, this.addGrid());
+    return this.controlClassService.controlClass(this.invalid, this.addGrid(), this.inline ? 'clr-control-inline' : '');
   }
 
   addGrid() {

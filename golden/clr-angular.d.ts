@@ -459,23 +459,33 @@ export declare class ClrDataModule {
 export declare class ClrDateContainer implements DynamicWrapper, OnDestroy {
     _dynamic: boolean;
     commonStrings: ClrCommonStrings;
+    focus: boolean;
+    invalid: boolean;
     readonly isEnabled: boolean;
-    constructor(_ifOpenService: IfOpenService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStrings);
+    newFormsLayout: boolean;
+    constructor(_ifOpenService: IfOpenService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStrings, ifErrorService: IfErrorService, focusService: FocusService, controlClassService: ControlClassService, layoutService: LayoutService, newFormsLayout: boolean);
+    addGrid(): boolean;
+    controlClass(): string;
     ngOnDestroy(): void;
+    ngOnInit(): void;
     toggleDatepicker(event: MouseEvent): void;
 }
 
 export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {
     _dateUpdated: EventEmitter<Date>;
+    clrNewLayout: boolean;
     date: Date;
     readonly inputType: string;
+    newFormsLayout: boolean;
     placeholder: string;
     readonly placeholderText: string;
-    constructor(container: ClrDateContainer, vcr: ViewContainerRef, elRef: ElementRef, renderer: Renderer2, _ngControl: NgControl, _dateIOService: DateIOService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, platformId: Object);
+    constructor(container: ClrDateContainer, vcr: ViewContainerRef, elRef: ElementRef, renderer: Renderer2, _ngControl: NgControl, _dateIOService: DateIOService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, platformId: Object, ngControlService: NgControlService, controlClassService: ControlClassService, focusService: FocusService, ifErrorService: IfErrorService, control: NgControl, newFormsLayout: boolean);
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
     ngOnInit(): void;
     onValueChange(target: HTMLInputElement): void;
+    setBlurStates(): void;
+    setFocusStates(): void;
 }
 
 export declare class ClrDatepickerModule {

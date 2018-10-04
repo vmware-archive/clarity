@@ -8,6 +8,7 @@
     @include input-border-bottom-animation($clr-forms-focused-color);
     margin-right: $clr-forms-baseline * 4;
     max-width: calc(100% - 1rem);
+    height: 24px;
 
     .clr-input {
       background: none;

@@ -11,7 +11,12 @@ import { Subscription } from 'rxjs';
 import { itIgnore } from '../../../../tests/tests.helpers';
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { IfErrorService } from '../common/if-error/if-error.service';
+import { ControlClassService } from '../common/providers/control-class.service';
 import { ControlIdService } from '../common/providers/control-id.service';
+import { FocusService } from '../common/providers/focus.service';
+import { Layouts, LayoutService } from '../common/providers/layout.service';
+import { NgControlService } from '../common/providers/ng-control.service';
 
 import { ClrDateContainer } from './date-container';
 import { DateFormControlService } from './providers/date-form-control.service';
@@ -26,6 +31,7 @@ export default function() {
     let context: TestContext<ClrDateContainer, TestComponent>;
     let enabledService: MockDatepickerEnabledService;
     let dateFormControlService: DateFormControlService;
+    let ifOpenService: IfOpenService;
 
     beforeEach(function() {
       TestBed.overrideComponent(ClrDateContainer, {
@@ -35,6 +41,11 @@ export default function() {
             IfOpenService,
             DateNavigationService,
             LocaleHelperService,
+            ControlClassService,
+            IfErrorService,
+            FocusService,
+            LayoutService,
+            NgControlService,
             DateIOService,
             ControlIdService,
             DateFormControlService,
@@ -46,9 +57,13 @@ export default function() {
 
       enabledService = <MockDatepickerEnabledService>context.getClarityProvider(DatepickerEnabledService);
       dateFormControlService = context.getClarityProvider(DateFormControlService);
+      ifOpenService = context.getClarityProvider(IfOpenService);
     });
 
-    describe('View Basics', () => {
+    // @deprecated these tests refer to the old forms layout only and can be removed when its removed
+    describe('Deprecated View', () => {
+      it('applies the date-container class');
+
       it('renders the datepicker toggle button based on the enabled service', () => {
         expect(enabledService.isEnabled).toBe(true);
         expect(context.clarityElement.querySelector('.datepicker-trigger')).not.toBeNull();
@@ -84,10 +99,55 @@ export default function() {
       });
     });
 
+    describe('View Basics', () => {
+      beforeEach(() => {
+        context.clarityDirective.newFormsLayout = true;
+        context.detectChanges();
+      });
+
+      it('applies the clr-form-control class', () => {
+        expect(context.clarityElement.className).toContain('clr-form-control');
+      });
+
+      it('renders the datepicker toggle button based on the enabled service', () => {
+        expect(enabledService.isEnabled).toBe(true);
+        expect(context.clarityElement.querySelector('.datepicker-trigger')).not.toBeNull();
+
+        enabledService.fakeIsEnabled = false;
+        context.detectChanges();
+
+        expect(context.clarityElement.querySelector('.datepicker-trigger')).toBeNull();
+      });
+
+      it('clicking on the button toggles the datepicker popover', () => {
+        spyOn(context.clarityDirective, 'toggleDatepicker');
+        const button: HTMLButtonElement = context.clarityElement.querySelector('.datepicker-trigger');
+
+        button.click();
+        context.detectChanges();
+
+        expect(context.clarityDirective.toggleDatepicker).toHaveBeenCalled();
+      });
+
+      it('projects the date input', () => {
+        context.detectChanges();
+        expect(context.clarityElement.querySelector('input')).not.toBeNull();
+      });
+
+      it('shows the datepicker view manager when .datepicker-trigger is clicked', () => {
+        expect(context.clarityElement.querySelector('clr-datepicker-view-manager')).toBeNull();
+
+        const button: HTMLButtonElement = context.clarityElement.querySelector('.datepicker-trigger');
+        button.click();
+        context.detectChanges();
+
+        expect(context.clarityElement.querySelector('clr-datepicker-view-manager')).not.toBeNull();
+      });
+    });
+
     describe('Typescript API', () => {
       // IE doesn't support MouseEvent constructors
       itIgnore(['ie'], 'toggles the datepicker popover', () => {
-        const ifOpenService: IfOpenService = context.getClarityProvider(IfOpenService);
         const fakeEvent: MouseEvent = new MouseEvent('fakeEvent');
         let flag: boolean;
         const sub: Subscription = ifOpenService.openChange.subscribe(open => {
@@ -109,6 +169,19 @@ export default function() {
         context.clarityDirective.toggleDatepicker(null);
 
         expect(dateFormControlService.markAsTouched).toHaveBeenCalled();
+      });
+
+      it('returns the classes to apply to the control', () => {
+        expect(context.clarityDirective.controlClass()).toEqual('');
+        context.clarityDirective.invalid = true;
+        expect(context.clarityDirective.controlClass()).toEqual('clr-error');
+        const controlClassService = context.getClarityProvider(ControlClassService);
+        const layoutService = context.getClarityProvider(LayoutService);
+        layoutService.layout = Layouts.HORIZONTAL;
+        expect(context.clarityDirective.controlClass()).toContain('clr-error');
+        expect(context.clarityDirective.controlClass()).toContain('clr-col-md-10');
+        controlClassService.className = 'clr-col-2';
+        expect(context.clarityDirective.controlClass()).not.toContain('clr-col-md-10');
       });
     });
   });

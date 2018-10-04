@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ClarityModule } from '@clr/angular';
+import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
 
 import { DatepickerCSSRegressionDemo } from './css-regression';
 import { DatepickerAKDemo } from './datepicker-AK';
@@ -27,7 +27,7 @@ import { NgModelAutoWrappedDatepickerDemo } from './ngmodel-auto-wrapped';
 import { NgModelExplicitWrapperDemo } from './ngmodel-wrapper-explicit-wrapper';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, ClarityModule, ClrFormsNextModule, ROUTING, FormsModule, ReactiveFormsModule],
   declarations: [
     DatepickerDemo,
     DatepickerInTemplateDrivenFormsDemo,

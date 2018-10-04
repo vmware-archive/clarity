@@ -8,7 +8,7 @@ import {Component} from "@angular/core";
 const HTML_EXAMPLE = `
 <form class="form" #simpleForm="ngForm">
     <div class="form-block">
-        <label>Tempalte Driven Form Demo</label>
+        <label>Template Driven Form Demo</label>
         <div class="form-group">
             <label for="date">Enter Date</label>
             <input type="date" id="date" name="date" [(ngModel)]="date" clrDate>

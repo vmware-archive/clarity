@@ -232,12 +232,12 @@ $clr-action-purple-contrastCache: (
 );
 
 $clr-red-contrastCache: (
-  #e62700:
+  #e12200:
     (
       lightest: (low: $clr-white, default: $clr-white, high: null, superHigh: null),
       darkest: (low: $clr-near-white, default: $clr-white, high: null, superHigh: null),
       middle-light: (low: $clr-near-white, default: $clr-white, high: null, superHigh: null),
-      middle-dark: (low: $clr-black, default: $clr-black, high: null, superHigh: null)
+      middle-dark: (low: null, default: null, high: null, superHigh: null)
     ),
   #c92100:
     (

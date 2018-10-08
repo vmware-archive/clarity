@@ -111,7 +111,7 @@ export class ColorPalette {
       colors: [
         { value: '#a32100', text: 'light' },
         { value: '#c92100', text: 'light' },
-        { value: '#e62700', text: 'mid', corePalette: true },
+        { value: '#e12200', text: 'light', corePalette: true },
         { value: '#ebafa6', text: 'dark' },
         { value: '#f5dbd9', text: 'dark' },
       ],

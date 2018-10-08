@@ -368,8 +368,69 @@ $clr-dropdown-divider-color: $clr-dropdown-border-color;
 $clr-dropdown-header-color: #adbbc4;
 // END: Dropdown overrides
 
+/******
+ * Forms: TODO: track down component usages and names
+ * A form is a structured layout of related input components.
+ * There are a variety of variables used to change form elements, including:
+ *
+ * Usage:
+ * ../forms/styles/_checkbox.clarity.scss
+ * ../forms/styles/_containers.clarity.scss
+ * ../forms/styles/_file.clarity.scss
+ * ../forms/styles/_form.clarity.scss
+ * ../forms/styles/_input.clarity.scss
+ * ../forms/styles/_input-group.clarity.scss
+ * ../forms/styles/_mixings.forms.scss
+ * ../forms/styles/radio.clarity.scss
+ * ../forms/styles/_select.clarity.scss
+ * ../forms/styles/_textarea.clarity.scss
+ * ../forms/styles/_variables.clarity.scss
+ *
+ */
+
+//GENERIC
+$clr-forms-label-color: #adbbc4;
+$clr-forms-text-color: #e9ecef; // No label, no wrapper
+$clr-forms-invalid-color: #f54f47;
+$clr-forms-subtext-color: $clr-gray;
+$clr-forms-subtext-color: #adbbc4;
+$clr-forms-border-color: #adbbc4;
+$clr-forms-focused-color: #49afd9; // Vertical no wrapper, no label
+
+// Textarea
+$clr-forms-textarea-background-color: #17242b;
+
+// Select
+// TODO: Properly map these to updated dark theme design
+// NOTE: The new form selects seemed to be working like the deprecated form selects so I'm leaving
+//       these commented out for now.
+//$clr-forms-select-hover-background: rgba(221, 221, 221, 0.5); // CAN WE KEY THIS FROM A KNOWN COLOR
+//$clr-forms-select-caret-hover-color: $gray-dark;
+//$clr-forms-select-caret-color: $gray-dark-midtone;
+//$clr-forms-select-option-color: $clr-forms-text-color;
+//$clr-forms-select-multiple-background-color: $clr-white;
+//$clr-forms-select-multiple-border-color: $gray-light-midtone;
+//$clr-forms-select-multiple-option-color: $clr-forms-text-color;
+
+// Checkbox
+$clr-forms-checkbox-label-color: #adbbc4;
+$clr-forms-checkbox-background-color: #49afd9; // Use color here
+$clr-forms-checkbox-checked-shadow: inset 0 0 0 0.25rem $clr-forms-checkbox-background-color;
+$clr-forms-checkbox-indeterminate-border-color: #adbbc4;
+$clr-forms-checkbox-mark-color: $clr-black;
+$clr-forms-checkbox-disabled-background-color: #8f9ba3;
+$clr-forms-checkbox-disabled-mark-color: $clr-black;
+
+// Radio
+$clr-forms-radio-label-color: #adbbc4;
+$clr-forms-radio-selected-shadow: $clr-forms-checkbox-checked-shadow;
+$clr-forms-radio-focused-shadow: 0 0 $clr-outline-blur $clr-outline-spread $clr-outline-color;
+$clr-forms-radio-disabled-background-color: $clr-form-disabled-background-color;
+$clr-forms-radio-disabled-mark-color: $clr-forms-checkbox-disabled-mark-color;
+$clr-forms-radio-disabled-shadow: $clr-forms-checkbox-checked-shadow;
+
 /**********
- * Form
+ * Forms (Deprecated)
  * A form is a structured layout of related input components.
  * There are a variety of variables used to change form elements, including:
  * - Input

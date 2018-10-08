@@ -29,7 +29,6 @@
               }
             ],
             "styles": [
-              "src/clr-angular/main.scss",
               "src/clr-icons/clr-icons.scss",
               "node_modules/prismjs/themes/prism-solarizedlight.css",
               "src/dev/src/styles.scss"
@@ -61,6 +60,14 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "dark": {
+              "fileReplacements": [
+                {
+                  "replace": "src/dev/src/environments/environment.ts",
+                  "with": "src/dev/src/environments/environment.dark.ts"
+                }
+              ]
             }
           }
         },
@@ -72,6 +79,9 @@
           "configurations": {
             "production": {
               "browserTarget": "dev:build:production"
+            },
+            "dark": {
+              "browserTarget": "dev:build:dark"
             }
           }
         },

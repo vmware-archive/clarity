@@ -15,6 +15,15 @@ if (environment.production) {
   enableProdMode();
 }
 
+// Theme toggling, run `ng serve -c dark` to get dark theme
+if (environment.dark) {
+  // tslint:disable-next-line
+  require('style-loader!./../../clr-angular/dark-theme.scss');
+} else {
+  // tslint:disable-next-line
+  require('style-loader!./../../clr-angular/main.scss');
+}
+
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch(err => console.log(err));

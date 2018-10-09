@@ -5,6 +5,7 @@
  */
 
 import { Component, ContentChild, Input, OnDestroy, Optional } from '@angular/core';
+import { NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
@@ -29,6 +30,7 @@ import { NgControlService } from '../common/providers/ng-control.service';
     `,
   host: {
     '[class.clr-form-control]': 'true',
+    '[class.clr-form-control-disabled]': 'control?.disabled',
     '[class.clr-row]': 'addGrid()',
   },
   providers: [NgControlService, ControlClassService, IfErrorService],
@@ -38,6 +40,7 @@ export class ClrRadioContainer implements OnDestroy {
   invalid = false;
   @ContentChild(ClrLabel) label: ClrLabel;
   private inline = false;
+  control: NgControl;
 
   /*
    * Here we want to support the following cases
@@ -60,11 +63,17 @@ export class ClrRadioContainer implements OnDestroy {
   constructor(
     private ifErrorService: IfErrorService,
     @Optional() private layoutService: LayoutService,
-    private controlClassService: ControlClassService
+    private controlClassService: ControlClassService,
+    private ngControlService: NgControlService
   ) {
     this.subscriptions.push(
       this.ifErrorService.statusChanges.subscribe(control => {
         this.invalid = control.invalid;
+      })
+    );
+    this.subscriptions.push(
+      this.ngControlService.controlChanges.subscribe(control => {
+        this.control = control;
       })
     );
   }

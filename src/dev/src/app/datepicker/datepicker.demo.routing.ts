@@ -21,6 +21,7 @@ import { DatepickerLocaleData } from './datepicker-locale-data';
 import { DatepickerDemo } from './datepicker.demo';
 import { NgModelAutoWrappedDatepickerDemo } from './ngmodel-auto-wrapped';
 import { NgModelExplicitWrapperDemo } from './ngmodel-wrapper-explicit-wrapper';
+import { DisabledDemo } from './disabled';
 
 const ROUTES: Routes = [
   {
@@ -35,6 +36,7 @@ const ROUTES: Routes = [
       { path: 'template-driven-forms', component: DatepickerInTemplateDrivenFormsDemo },
       { path: 'reactive-forms', component: DatepickerInReactiveForms },
       { path: 'css-regression', component: DatepickerCSSRegressionDemo },
+      { path: 'disabled', component: DisabledDemo },
       {
         path: 'locale-data',
         component: DatepickerLocaleData,

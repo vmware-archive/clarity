@@ -4,6 +4,92 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
+<h2>Angular Textarea <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
+
+<h4>Vertical</h4>
+
+<form clrForm>
+  <textarea clrTextarea [(ngModel)]="vertical.one" name="one" required></textarea>
+
+  <clr-textarea-container>
+    <label>One</label>
+    <textarea clrTextarea [(ngModel)]="vertical.two" name="two" required></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+  <clr-textarea-container>
+    <label>Label</label>
+    <textarea clrTextarea [(ngModel)]="vertical.three" name="three" required></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+  <clr-textarea-container>
+    <label>Disabled</label>
+    <textarea clrTextarea [(ngModel)]="vertical.four" name="four" required [disabled]="disabled"></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+</form>
+
+<h4>Horizontal</h4>
+
+<form clrForm clrLayout="horizontal">
+  <textarea clrTextarea [(ngModel)]="horizontal.one" name="one" required></textarea>
+
+  <clr-textarea-container>
+    <label>One</label>
+    <textarea clrTextarea [(ngModel)]="horizontal.two" name="two" required></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+  <clr-textarea-container>
+    <label>Label</label>
+    <textarea clrTextarea [(ngModel)]="horizontal.three" name="three" required></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+  <clr-textarea-container>
+    <label>Disabled</label>
+    <textarea clrTextarea [(ngModel)]="compact.four" name="four" required [disabled]="disabled"></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+</form>
+
+<h4>Compact</h4>
+
+<form clrForm clrLayout="compact">
+  <textarea clrTextarea [(ngModel)]="compact.one" name="one" required></textarea>
+
+  <clr-textarea-container>
+    <label>One</label>
+    <textarea clrTextarea [(ngModel)]="compact.two" name="two" required></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+  <clr-textarea-container>
+    <label>Label</label>
+    <textarea clrTextarea [(ngModel)]="compact.three" name="three" required></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+  <clr-textarea-container>
+    <label>Disabled</label>
+    <textarea clrTextarea [(ngModel)]="compact.four" name="four" required [disabled]="disabled"></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+</form>
+
 <h2>CSS Textarea</h2>
 
 <h4>Vertical</h4>
@@ -82,66 +168,4 @@
       <span class="clr-subtext">Helper Text</span>
     </div>
   </div>
-</form>
-
-<h2>Angular Textarea</h2>
-
-<h4>Vertical</h4>
-
-<form clrForm>
-  <textarea clrTextarea [(ngModel)]="vertical.one" name="one" required></textarea>
-
-  <clr-textarea-container>
-    <label>One</label>
-    <textarea clrTextarea [(ngModel)]="vertical.two" name="two" required></textarea>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-textarea-container>
-
-  <clr-textarea-container>
-    <label>Label</label>
-    <textarea clrTextarea [(ngModel)]="vertical.three" name="three" required></textarea>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-textarea-container>
-</form>
-
-<h4>Horizontal</h4>
-
-<form clrForm clrLayout="horizontal">
-  <textarea clrTextarea [(ngModel)]="horizontal.one" name="one" required></textarea>
-
-  <clr-textarea-container>
-    <label>One</label>
-    <textarea clrTextarea [(ngModel)]="horizontal.two" name="two" required></textarea>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-textarea-container>
-
-  <clr-textarea-container>
-    <label>Label</label>
-    <textarea clrTextarea [(ngModel)]="horizontal.three" name="three" required></textarea>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-textarea-container>
-</form>
-
-<h4>Compact</h4>
-
-<form clrForm clrLayout="compact">
-  <textarea clrTextarea [(ngModel)]="compact.one" name="one" required></textarea>
-
-  <clr-textarea-container>
-    <label>One</label>
-    <textarea clrTextarea [(ngModel)]="compact.two" name="two" required></textarea>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-textarea-container>
-
-  <clr-textarea-container>
-    <label>Label</label>
-    <textarea clrTextarea [(ngModel)]="compact.three" name="three" required></textarea>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-textarea-container>
 </form>

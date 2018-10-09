@@ -9,22 +9,29 @@ import { Component } from '@angular/core';
   templateUrl: './selects.demo.html',
 })
 export class SelectsDemo {
+  disabled = true;
   vertical = {
     one: '',
     two: '',
     three: '',
     four: '',
+    five: '',
+    six: '',
   };
   horizontal = {
     one: '',
     two: '',
     three: '',
     four: '',
+    five: '',
+    six: '',
   };
   compact = {
     one: '',
     two: '',
     three: '',
     four: '',
+    five: '',
+    six: '',
   };
 }

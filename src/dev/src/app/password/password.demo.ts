@@ -9,20 +9,24 @@ import { Component } from '@angular/core';
   templateUrl: './password.demo.html',
 })
 export class PasswordDemo {
+  disabled = true;
   verticalToggle = false;
   vertical = {
     one: '',
     two: '',
     three: '',
+    four: '',
   };
   horizontal = {
     one: '',
     two: '',
     three: '',
+    four: '',
   };
   compact = {
     one: '',
     two: '',
     three: '',
+    four: '',
   };
 }

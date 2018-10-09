@@ -5,7 +5,8 @@
  */
 
 import { Component } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { TestBed, async } from '@angular/core/testing';
 import { Subscription } from 'rxjs';
 
 import { itIgnore } from '../../../../tests/tests.helpers';
@@ -34,6 +35,9 @@ export default function() {
     let ifOpenService: IfOpenService;
 
     beforeEach(function() {
+      TestBed.configureTestingModule({
+        imports: [FormsModule],
+      });
       TestBed.overrideComponent(ClrDateContainer, {
         set: {
           providers: [
@@ -143,6 +147,17 @@ export default function() {
 
         expect(context.clarityElement.querySelector('clr-datepicker-view-manager')).not.toBeNull();
       });
+
+      it('tracks the disabled state', async(() => {
+        expect(context.clarityElement.className).not.toContain('clr-form-control-disabled');
+        context.testComponent.disabled = true;
+        context.detectChanges();
+        // Have to wait for the whole control to settle or it doesn't track
+        context.fixture.whenStable().then(() => {
+          context.detectChanges();
+          expect(context.clarityElement.className).toContain('clr-form-control-disabled');
+        });
+      }));
     });
 
     describe('Typescript API', () => {
@@ -190,8 +205,11 @@ export default function() {
 @Component({
   template: `
         <clr-date-container>
-            <input type="date" clrDate>
+            <input type="date" clrDate [(ngModel)]="model" [disabled]="disabled">
         </clr-date-container>
     `,
 })
-class TestComponent {}
+class TestComponent {
+  model = '';
+  disabled = false;
+}

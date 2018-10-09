@@ -19,6 +19,17 @@ gemini.suite('datepicker', child => {
       .capture('default');
   });
 
+  gemini.suite('disabled', child => {
+    child
+      .setUrl('/datepicker/disabled')
+      .before((actions, find) => {
+        actions.waitForElementToShow('[clrForm]', WAIT_TIME);
+        actions.wait(WAIT_LOAD_TIME);
+      })
+      .setCaptureElements('[clrForm]')
+      .capture('default');
+  });
+
   gemini.suite('user-input', child => {
     child
       .setUrl('/datepicker/css-regression')

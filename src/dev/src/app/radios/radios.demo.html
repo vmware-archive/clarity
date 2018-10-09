@@ -4,6 +4,224 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
+
+
+<h2>Angular Radio <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
+
+<h4>Standalone</h4>
+
+<!-- No wrapper -->
+<input type="radio" clrRadio />
+
+<!-- No wrapper with id -->
+<input type="radio" clrRadio id="testing456" />
+
+<!-- Standalone with wrapper -->
+<clr-radio-wrapper>
+  <input type="radio" clrRadio />
+  <label>Test</label>
+</clr-radio-wrapper>
+
+<!-- Wrapper with id -->
+<clr-radio-wrapper>
+  <input type="radio" clrRadio id="testing123" />
+  <label for="testing123">Test</label>
+</clr-radio-wrapper>
+
+
+<h4>Vertical</h4>
+
+
+<form clrForm>
+
+  <clr-radio-container>
+    <label>First</label>
+    <clr-radio-wrapper>
+      <label>One</label>
+      <input clrRadio type="radio" [(ngModel)]="vertical.one" value="one" name="one" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label>
+      <input clrRadio type="radio" [(ngModel)]="vertical.one" value="two" name="one" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label>
+      <input clrRadio type="radio" [(ngModel)]="vertical.one" value="three" name="one" required />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+
+  <p>Selected: {{vertical.one}}</p>
+
+  <clr-radio-container clrInline>
+    <label>Second</label>
+    <clr-radio-wrapper>
+      <label>One</label>
+      <input clrRadio type="radio" [(ngModel)]="vertical.two" value="one" name="two" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label>
+      <input clrRadio type="radio" [(ngModel)]="vertical.two" value="two" name="two" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label>
+      <input clrRadio type="radio" [(ngModel)]="vertical.two" value="three" name="two" required />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+
+  <p>Selected: {{vertical.two}}</p>
+
+  <clr-radio-container clrInline>
+    <label>Disabled</label>
+    <clr-radio-wrapper>
+      <label>One</label>
+      <input clrRadio type="radio" [(ngModel)]="vertical.three" value="one" name="three" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label>
+      <input clrRadio type="radio" [(ngModel)]="vertical.three" value="two" name="three" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label>
+      <input clrRadio type="radio" [(ngModel)]="vertical.three" value="three" name="three" required [disabled]="disabled" />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+
+</form>
+
+<h4>Horizontal</h4>
+
+<form clrForm clrLayout="horizontal">
+  <clr-radio-container>
+    <label>First</label>
+    <clr-radio-wrapper>
+      <label>One</label>
+      <input clrRadio type="radio" [(ngModel)]="horizontal.one" value="one" name="one" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label>
+      <input clrRadio type="radio" [(ngModel)]="horizontal.one" value="two" name="one" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label>
+      <input clrRadio type="radio" [(ngModel)]="horizontal.one" value="three" name="one" required />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+
+  <p>Selected: {{horizontal.one}}</p>
+
+  <clr-radio-container clrInline>
+    <label>Second</label>
+    <clr-radio-wrapper>
+      <label>One</label>
+      <input clrRadio type="radio" [(ngModel)]="horizontal.two" value="one" name="two" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label>
+      <input clrRadio type="radio" [(ngModel)]="horizontal.two" value="two" name="two" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label>
+      <input clrRadio type="radio" [(ngModel)]="horizontal.two" value="three" name="two" required />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+
+  <p>Selected: {{horizontal.two}}</p>
+
+  <clr-radio-container clrInline>
+    <label>Second</label>
+    <clr-radio-wrapper>
+      <label>One</label>
+      <input clrRadio type="radio" [(ngModel)]="horizontal.three" value="one" name="three" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label>
+      <input clrRadio type="radio" [(ngModel)]="horizontal.three" value="two" name="three" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label>
+      <input clrRadio type="radio" [(ngModel)]="horizontal.three" value="three" name="three" required [disabled]="disabled" />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+
+</form>
+
+<h4>Compact</h4>
+
+<form clrForm clrLayout="compact">
+  <clr-radio-container>
+    <label>First</label>
+    <clr-radio-wrapper>
+      <label>One</label>
+      <input clrRadio type="radio" [(ngModel)]="compact.one" value="one" name="one" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label>
+      <input clrRadio type="radio" [(ngModel)]="compact.one" value="two" name="one" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label>
+      <input clrRadio type="radio" [(ngModel)]="compact.one" value="three" name="one" required />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+
+  <p>Selected: {{compact.one}}</p>
+
+  <clr-radio-container clrInline="false">
+    <label>Second</label>
+    <clr-radio-wrapper>
+      <label>One</label>
+      <input clrRadio type="radio" [(ngModel)]="compact.two" value="one" name="two" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label>
+      <input clrRadio type="radio" [(ngModel)]="compact.two" value="two" name="two" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label>
+      <input clrRadio type="radio" [(ngModel)]="compact.two" value="three" name="two" required />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+
+  <p>Selected: {{compact.two}}</p>
+
+  <clr-radio-container clrInline>
+    <label>Second</label>
+    <clr-radio-wrapper>
+      <label>One</label>
+      <input clrRadio type="radio" [(ngModel)]="compact.three" value="one" name="three" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label>
+      <input clrRadio type="radio" [(ngModel)]="compact.three" value="two" name="three" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label>
+      <input clrRadio type="radio" [(ngModel)]="compact.three" value="three" name="three" required [disabled]="disabled" />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+
+
+</form>
+
+
 <h2>CSS Radio</h2>
 
 <h4>Vertical</h4>
@@ -176,8 +394,7 @@
   </div>
 
   <div class="clr-form-control">
-    <label class="clr-control-label">
-      Basic radio, error</label>
+    <label class="clr-control-label">Basic radio, error</label>
     <div class="clr-control-container clr-error">
       <div class="clr-radio-wrapper">
         <input type="radio" name="radio2" id="compact-radio4" placeholder="Enter value here" class="clr-radio">
@@ -199,8 +416,7 @@
   </div>
 
   <div class="clr-form-control">
-    <label class="clr-control-label">
-      Inline radio</label>
+    <label class="clr-control-label">Inline radio</label>
     <div class="clr-control-container clr-control-inline">
       <div class="clr-radio-wrapper">
         <input type="radio" name="radio3" id="compact-radio7" placeholder="Enter value here" class="clr-radio">
@@ -220,163 +436,4 @@
       </div>
     </div>
   </div>
-</form>
-
-<h2>Angular Radio</h2>
-
-<h4>Standalone</h4>
-
-<!-- No wrapper -->
-<input type="radio" clrRadio />
-
-<!-- No wrapper with id -->
-<input type="radio" clrRadio id="testing456" />
-
-<!-- Standalone with wrapper -->
-<clr-radio-wrapper>
-  <input type="radio" clrRadio />
-  <label>Test</label>
-</clr-radio-wrapper>
-
-<!-- Wrapper with id -->
-<clr-radio-wrapper>
-  <input type="radio" clrRadio id="testing123" />
-  <label for="testing123">Test</label>
-</clr-radio-wrapper>
-
-
-<h4>Vertical</h4>
-
-
-<form clrForm>
-
-  <clr-radio-container>
-    <label>First</label>
-    <clr-radio-wrapper>
-      <label>One</label>
-      <input clrRadio type="radio" [(ngModel)]="vertical.one" value="one" name="one" required />
-    </clr-radio-wrapper>
-    <clr-radio-wrapper>
-      <label>Two</label>
-      <input clrRadio type="radio" [(ngModel)]="vertical.one" value="two" name="one" required />
-    </clr-radio-wrapper>
-    <clr-radio-wrapper>
-      <label>Three</label>
-      <input clrRadio type="radio" [(ngModel)]="vertical.one" value="three" name="one" required />
-    </clr-radio-wrapper>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-radio-container>
-
-  <p>Selected: {{vertical.one}}</p>
-
-  <clr-radio-container clrInline>
-    <label>Second</label>
-    <clr-radio-wrapper>
-      <label>One</label>
-      <input clrRadio type="radio" [(ngModel)]="vertical.two" value="one" name="two" required />
-    </clr-radio-wrapper>
-    <clr-radio-wrapper>
-      <label>Two</label>
-      <input clrRadio type="radio" [(ngModel)]="vertical.two" value="two" name="two" required />
-    </clr-radio-wrapper>
-    <clr-radio-wrapper>
-      <label>Three</label>
-      <input clrRadio type="radio" [(ngModel)]="vertical.two" value="three" name="two" required />
-    </clr-radio-wrapper>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-radio-container>
-
-  <p>Selected: {{vertical.two}}</p>
-</form>
-
-<h4>Horizontal</h4>
-
-<form clrForm clrLayout="horizontal">
-  <clr-radio-container>
-    <label>First</label>
-    <clr-radio-wrapper>
-      <label>One</label>
-      <input clrRadio type="radio" [(ngModel)]="horizontal.one" value="one" name="one" required />
-    </clr-radio-wrapper>
-    <clr-radio-wrapper>
-      <label>Two</label>
-      <input clrRadio type="radio" [(ngModel)]="horizontal.one" value="two" name="one" required />
-    </clr-radio-wrapper>
-    <clr-radio-wrapper>
-      <label>Three</label>
-      <input clrRadio type="radio" [(ngModel)]="horizontal.one" value="three" name="one" required />
-    </clr-radio-wrapper>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-radio-container>
-
-  <p>Selected: {{horizontal.one}}</p>
-
-  <clr-radio-container clrInline>
-    <label>Second</label>
-    <clr-radio-wrapper>
-      <label>One</label>
-      <input clrRadio type="radio" [(ngModel)]="horizontal.two" value="one" name="two" required />
-    </clr-radio-wrapper>
-    <clr-radio-wrapper>
-      <label>Two</label>
-      <input clrRadio type="radio" [(ngModel)]="horizontal.two" value="two" name="two" required />
-    </clr-radio-wrapper>
-    <clr-radio-wrapper>
-      <label>Three</label>
-      <input clrRadio type="radio" [(ngModel)]="horizontal.two" value="three" name="two" required />
-    </clr-radio-wrapper>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-radio-container>
-
-  <p>Selected: {{horizontal.two}}</p>
-
-</form>
-
-<h4>Compact</h4>
-
-<form clrForm clrLayout="compact">
-  <clr-radio-container>
-    <label>First</label>
-    <clr-radio-wrapper>
-      <label>One</label>
-      <input clrRadio type="radio" [(ngModel)]="compact.one" value="one" name="one" required />
-    </clr-radio-wrapper>
-    <clr-radio-wrapper>
-      <label>Two</label>
-      <input clrRadio type="radio" [(ngModel)]="compact.one" value="two" name="one" required />
-    </clr-radio-wrapper>
-    <clr-radio-wrapper>
-      <label>Three</label>
-      <input clrRadio type="radio" [(ngModel)]="compact.one" value="three" name="one" required />
-    </clr-radio-wrapper>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-radio-container>
-
-  <p>Selected: {{compact.one}}</p>
-
-  <clr-radio-container clrInline="false">
-    <label>Second</label>
-    <clr-radio-wrapper>
-      <label>One</label>
-      <input clrRadio type="radio" [(ngModel)]="compact.two" value="one" name="two" required />
-    </clr-radio-wrapper>
-    <clr-radio-wrapper>
-      <label>Two</label>
-      <input clrRadio type="radio" [(ngModel)]="compact.two" value="two" name="two" required />
-    </clr-radio-wrapper>
-    <clr-radio-wrapper>
-      <label>Three</label>
-      <input clrRadio type="radio" [(ngModel)]="compact.two" value="three" name="two" required />
-    </clr-radio-wrapper>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-radio-container>
-
-  <p>Selected: {{compact.two}}</p>
-
 </form>

@@ -4,6 +4,203 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
+<h2>Angular Select <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
+
+<h4>Vertical</h4>
+
+<form clrForm>
+  <select clrSelect [(ngModel)]="vertical.one" name="one" required>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+
+  <clr-select-container>
+    <label>Two</label>
+    <select clrSelect [(ngModel)]="vertical.two" name="two" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Three</label>
+    <select clrSelect [(ngModel)]="vertical.three" name="three" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Multi</label>
+    <select multiple clrSelect [(ngModel)]="vertical.four" name="four" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Disabled</label>
+    <select clrSelect [(ngModel)]="vertical.five" name="five" required [disabled]="disabled">
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Disabled</label>
+    <select multiple clrSelect [(ngModel)]="vertical.six" name="six" required [disabled]="disabled">
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+
+</form>
+
+<h4>Horizontal</h4>
+
+<form clrForm clrLayout="horizontal">
+  <select clrSelect [(ngModel)]="horizontal.one" name="one" required>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+
+  <clr-select-container>
+    <label>two</label>
+    <select clrSelect [(ngModel)]="horizontal.two" name="two" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Three</label>
+    <select clrSelect [(ngModel)]="horizontal.three" name="three" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Multi</label>
+    <select multiple clrSelect [(ngModel)]="horizontal.four" name="four" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Disabled</label>
+    <select clrSelect [(ngModel)]="horizontal.five" name="five" required [disabled]="disabled">
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+
+  <clr-select-container>
+    <label>Disabled</label>
+    <select multiple clrSelect [(ngModel)]="horizontal.six" name="six" required [disabled]="disabled">
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+</form>
+
+<h4>Compact</h4>
+
+<form clrForm clrLayout="compact">
+  <select clrSelect [(ngModel)]="compact.one" name="one" required>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+
+  <clr-select-container>
+    <label>Two</label>
+    <select clrSelect [(ngModel)]="compact.two" name="two" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Three</label>
+    <select clrSelect [(ngModel)]="compact.three" name="three" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Multi</label>
+    <select multiple clrSelect [(ngModel)]="compact.four" name="four" required>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+  <clr-select-container>
+    <label>Disabled</label>
+    <select clrSelect [(ngModel)]="compact.five" name="five" required [disabled]="disabled">
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+
+  <clr-select-container>
+    <label>Disabled</label>
+    <select multiple clrSelect [(ngModel)]="compact.six" name="six" required [disabled]="disabled">
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-select-container>
+
+</form>
+
 <h2>CSS Select</h2>
 
 <h4>Vertical</h4>
@@ -196,129 +393,4 @@
       <span class="clr-subtext">Helper Text</span>
     </div>
   </div>
-</form>
-
-<h2>Angular Select</h2>
-
-<h4>Vertical</h4>
-
-<form clrForm>
-  <select clrSelect [(ngModel)]="vertical.one" name="one" required>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
-
-  <clr-select-container>
-    <label>Two</label>
-    <select clrSelect [(ngModel)]="vertical.two" name="two" required>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-  </clr-select-container>
-
-  <clr-select-container>
-    <label>Three</label>
-    <select clrSelect [(ngModel)]="vertical.three" name="three" required>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-select-container>
-
-  <clr-select-container>
-    <label>Multi</label>
-    <select multiple clrSelect [(ngModel)]="vertical.four" name="four" required>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-select-container>
-</form>
-
-<h4>Horizontal</h4>
-
-<form clrForm clrLayout="horizontal">
-  <select clrSelect [(ngModel)]="horizontal.one" name="one" required>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
-
-  <clr-select-container>
-    <label>two</label>
-    <select clrSelect [(ngModel)]="horizontal.two" name="two" required>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-select-container>
-
-  <clr-select-container>
-    <label>Three</label>
-    <select clrSelect [(ngModel)]="horizontal.three" name="three" required>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-  </clr-select-container>
-
-  <clr-select-container>
-    <label>Multi</label>
-    <select multiple clrSelect [(ngModel)]="horizontal.four" name="four" required>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-select-container>
-</form>
-
-<h4>Compact</h4>
-
-<form clrForm clrLayout="compact">
-  <select clrSelect [(ngModel)]="compact.one" name="one" required>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
-
-  <clr-select-container>
-    <label>Two</label>
-    <select clrSelect [(ngModel)]="compact.two" name="two" required>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-select-container>
-
-  <clr-select-container>
-    <label>Three</label>
-    <select clrSelect [(ngModel)]="compact.three" name="three" required>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-  </clr-select-container>
-
-  <clr-select-container>
-    <label>Multi</label>
-    <select multiple clrSelect [(ngModel)]="compact.four" name="four" required>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-select-container>
 </form>

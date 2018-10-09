@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { TestBed } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
@@ -155,11 +155,24 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
       expect(container.invalid).toBeTrue();
     });
 
-    it('cleans up on destroy', () => {
-      expect(container.subscriptions).toBeDefined();
-      spyOn(container.subscriptions[0], 'unsubscribe');
-      container.ngOnDestroy();
-      expect(container.subscriptions[0].unsubscribe).toHaveBeenCalled();
+    it('tracks the disabled state', async(() => {
+      const test = fixture.debugElement.componentInstance;
+      test.disabled = true;
+      fixture.detectChanges();
+      // Have to wait for the whole control to settle or it doesn't track
+      fixture.whenStable().then(() => {
+        expect(containerEl.className).not.toContain('clr-form-control-disabled');
+        if (test.form) {
+          // Handle setting disabled based on reactive form
+          test.form.get('model').reset({ value: '', disabled: true });
+        }
+        fixture.detectChanges();
+        expect(containerEl.className).toContain('clr-form-control-disabled');
+      });
+    }));
+
+    it('implements ngOnDestroy', () => {
+      expect(container.ngOnDestroy).toBeDefined();
     });
   });
 }

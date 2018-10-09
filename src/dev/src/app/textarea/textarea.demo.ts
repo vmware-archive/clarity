@@ -9,19 +9,23 @@ import { Component } from '@angular/core';
   templateUrl: './textarea.demo.html',
 })
 export class TextareaDemo {
+  disabled = true;
   vertical = {
     one: '',
     two: '',
     three: '',
+    four: '',
   };
   horizontal = {
     one: '',
     two: '',
     three: '',
+    four: '',
   };
   compact = {
     one: '',
     two: '',
     three: '',
+    four: '',
   };
 }

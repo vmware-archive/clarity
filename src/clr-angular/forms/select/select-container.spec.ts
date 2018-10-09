@@ -25,7 +25,7 @@ class NoLabelTest {}
 @Component({
   template: `
   <clr-select-container>
-    <select name="test" clrSelect required [(ngModel)]="model">
+    <select name="test" clrSelect required [(ngModel)]="model" [disabled]="disabled">
       <option value="1">one</option>
       <option value="2">two</option>
     </select>
@@ -36,13 +36,14 @@ class NoLabelTest {}
     `,
 })
 class TemplateDrivenTest {
+  disabled = false;
   model = '';
 }
 
 @Component({
   template: `
   <clr-select-container>
-    <select multiple name="test" clrSelect required [(ngModel)]="model">
+    <select multiple name="test" clrSelect required [(ngModel)]="model" [disabled]="disabled">
       <option value="1">one</option>
       <option value="2">two</option>
     </select>
@@ -53,6 +54,7 @@ class TemplateDrivenTest {
     `,
 })
 class TemplateDrivenMultipleTest {
+  disabled = false;
   model = '';
 }
 
@@ -71,8 +73,9 @@ class TemplateDrivenMultipleTest {
   </form>`,
 })
 class ReactiveTest {
+  disabled = false;
   form = new FormGroup({
-    model: new FormControl('', Validators.required),
+    model: new FormControl({ value: '', disabled: this.disabled }, Validators.required),
   });
 }
 
@@ -91,8 +94,9 @@ class ReactiveTest {
   </form>`,
 })
 class ReactiveMultipleTest {
+  disabled = false;
   form = new FormGroup({
-    model: new FormControl('', Validators.required),
+    model: new FormControl({ value: '', disabled: this.disabled }, Validators.required),
   });
 }
 

@@ -5,6 +5,7 @@
  */
 import { Component, Inject, OnDestroy, Optional } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { NgControl } from '@angular/forms';
 
 import { IfOpenService } from '../../utils/conditional/if-open.service';
 import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
@@ -52,7 +53,7 @@ import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
         <div class="clr-input-wrapper">
           <div class="clr-input-group" [class.clr-focus]="focus">
             <ng-container *ngTemplateOutlet="clrDate"></ng-container>
-            <button type="button" class="datepicker-trigger" (click)="toggleDatepicker($event)" *ngIf="isEnabled" [attr.title]="commonStrings.open">
+            <button type="button" class="datepicker-trigger" (click)="toggleDatepicker($event)" *ngIf="isEnabled" [attr.title]="commonStrings.open" [disabled]="control?.disabled">
               <clr-icon shape="calendar" class="clr-input-group-icon-action"></clr-icon>
             </button>
             <clr-datepicker-view-manager *clrIfOpen clrFocusTrap></clr-datepicker-view-manager>
@@ -85,6 +86,7 @@ import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
   ],
   host: {
     '[class.date-container]': '!newFormsLayout',
+    '[class.clr-form-control-disabled]': 'control?.disabled',
     '[class.clr-form-control]': 'newFormsLayout',
   },
 })
@@ -92,6 +94,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
   _dynamic: boolean = false;
   invalid = false;
   focus = false;
+  control: NgControl;
 
   private subscriptions: Subscription[] = [];
 
@@ -107,7 +110,8 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
     @Optional() private layoutService: LayoutService,
     @Optional()
     @Inject(IS_NEW_FORMS_LAYOUT)
-    public newFormsLayout: boolean
+    public newFormsLayout: boolean,
+    private ngControlService: NgControlService
   ) {
     this.subscriptions.push(
       this._ifOpenService.openChange.subscribe(open => {
@@ -119,6 +123,11 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
     this.subscriptions.push(
       this.focusService.focusChange.subscribe(state => {
         this.focus = state;
+      })
+    );
+    this.subscriptions.push(
+      this.ngControlService.controlChanges.subscribe(control => {
+        this.control = control;
       })
     );
   }

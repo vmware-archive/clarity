@@ -5,7 +5,7 @@
  */
 
 import { Component, ContentChild, OnDestroy, Optional } from '@angular/core';
-import { SelectMultipleControlValueAccessor } from '@angular/forms';
+import { SelectMultipleControlValueAccessor, NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
@@ -32,6 +32,8 @@ import { ControlClassService } from '../common/providers/control-class.service';
     `,
   host: {
     '[class.clr-form-control]': 'true',
+    '[class.clr-form-control-disabled]': 'control?.disabled',
+
     '[class.clr-row]': 'addGrid()',
   },
   providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService],
@@ -42,13 +44,14 @@ export class ClrSelectContainer implements DynamicWrapper, OnDestroy {
   _dynamic = false;
   @ContentChild(ClrLabel) label: ClrLabel;
   @ContentChild(SelectMultipleControlValueAccessor) multiple: SelectMultipleControlValueAccessor;
-  multi = false;
+  private multi = false;
+  control: NgControl;
 
   constructor(
     private ifErrorService: IfErrorService,
     @Optional() private layoutService: LayoutService,
     private controlClassService: ControlClassService,
-    ngControlService: NgControlService
+    private ngControlService: NgControlService
   ) {
     this.subscriptions.push(
       this.ifErrorService.statusChanges.subscribe(control => {
@@ -56,8 +59,9 @@ export class ClrSelectContainer implements DynamicWrapper, OnDestroy {
       })
     );
     this.subscriptions.push(
-      ngControlService.controlChanges.subscribe(control => {
+      this.ngControlService.controlChanges.subscribe(control => {
         this.multi = control.valueAccessor instanceof SelectMultipleControlValueAccessor;
+        this.control = control;
       })
     );
   }

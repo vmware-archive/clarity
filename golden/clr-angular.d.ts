@@ -459,11 +459,12 @@ export declare class ClrDataModule {
 export declare class ClrDateContainer implements DynamicWrapper, OnDestroy {
     _dynamic: boolean;
     commonStrings: ClrCommonStrings;
+    control: NgControl;
     focus: boolean;
     invalid: boolean;
     readonly isEnabled: boolean;
     newFormsLayout: boolean;
-    constructor(_ifOpenService: IfOpenService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStrings, ifErrorService: IfErrorService, focusService: FocusService, controlClassService: ControlClassService, layoutService: LayoutService, newFormsLayout: boolean);
+    constructor(_ifOpenService: IfOpenService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStrings, ifErrorService: IfErrorService, focusService: FocusService, controlClassService: ControlClassService, layoutService: LayoutService, newFormsLayout: boolean, ngControlService: NgControlService);
     addGrid(): boolean;
     controlClass(): string;
     ngOnDestroy(): void;
@@ -689,10 +690,10 @@ export declare class ClrInput extends WrappedFormControl<ClrInputContainer> impl
 
 export declare class ClrInputContainer implements DynamicWrapper, OnDestroy {
     _dynamic: boolean;
+    control: NgControl;
     invalid: boolean;
     label: ClrLabel;
-    subscriptions: Subscription[];
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService);
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
     addGrid(): boolean;
     controlClass(): string;
     ngOnDestroy(): void;
@@ -821,7 +822,6 @@ export declare class ClrPassword extends WrappedFormControl<ClrPasswordContainer
 
 export declare class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
     _dynamic: boolean;
-    _toggle: boolean;
     clrToggle: boolean;
     commonStrings: ClrCommonStrings;
     control: NgControl;
@@ -830,8 +830,7 @@ export declare class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
     invalid: boolean;
     label: ClrLabel;
     show: boolean;
-    subscriptions: Subscription[];
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, focusService: FocusService, toggleService: BehaviorSubject<boolean>, commonStrings: ClrCommonStrings);
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, focusService: FocusService, ngControlService: NgControlService, toggleService: BehaviorSubject<boolean>, commonStrings: ClrCommonStrings);
     addGrid(): boolean;
     controlClass(): string;
     ngOnDestroy(): void;
@@ -852,9 +851,10 @@ export declare class ClrRadio extends WrappedFormControl<ClrRadioWrapper> implem
 
 export declare class ClrRadioContainer implements OnDestroy {
     clrInline: boolean | string;
+    control: NgControl;
     invalid: boolean;
     label: ClrLabel;
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService);
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
     addGrid(): boolean;
     controlClass(): string;
     ngOnDestroy(): void;
@@ -879,9 +879,9 @@ export declare class ClrSelect extends WrappedFormControl<ClrSelectContainer> im
 
 export declare class ClrSelectContainer implements DynamicWrapper, OnDestroy {
     _dynamic: boolean;
+    control: NgControl;
     invalid: boolean;
     label: ClrLabel;
-    multi: boolean;
     multiple: SelectMultipleControlValueAccessor;
     constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
     addGrid(): boolean;
@@ -1026,10 +1026,10 @@ export declare class ClrTextarea extends WrappedFormControl<ClrTextareaContainer
 
 export declare class ClrTextareaContainer implements DynamicWrapper, OnDestroy {
     _dynamic: boolean;
+    control: NgControl;
     invalid: boolean;
     label: ClrLabel;
-    subscriptions: Subscription[];
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService);
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
     addGrid(): boolean;
     controlClass(): string;
     ngOnDestroy(): void;

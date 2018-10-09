@@ -22,13 +22,7 @@
             Loading...
         </span>
     </div>
-    <!-- TODO: Move this to new checkboxes. But the indeterminate two-way binding makes it hard. -->
-    <clr-checkbox
-        class="clr-treenode-checkbox"
-        *ngIf="selectable"
-        [(ngModel)]="selected"
-        [(clrIndeterminate)]="indeterminate"
-        [clrAriaLabeledBy]="nodeId"></clr-checkbox>
+    <input type="checkbox" clrCheckbox *ngIf="selectable" [class.clr-indeterminate]="indeterminate" [(ngModel)]="selected" [attr.aria-labeledby]="nodeId" />
     <div class="clr-treenode-content" [id]="nodeId">
         <ng-content></ng-content>
     </div>

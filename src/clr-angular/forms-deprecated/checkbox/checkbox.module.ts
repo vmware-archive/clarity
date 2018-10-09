@@ -11,4 +11,4 @@ import { ClrCheckboxDeprecated } from './checkbox';
 export const CLR_CHECKBOX_DIRECTIVES: Type<any>[] = [ClrCheckboxDeprecated];
 
 @NgModule({ imports: [CommonModule], declarations: [CLR_CHECKBOX_DIRECTIVES], exports: [CLR_CHECKBOX_DIRECTIVES] })
-export class ClrCheckboxModule {}
+export class ClrCheckboxDeprecatedModule {}

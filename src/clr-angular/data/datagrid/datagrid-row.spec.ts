@@ -144,6 +144,24 @@ export default function(): void {
         expect(context.clarityElement.querySelector("input[type='radio']")).toBeNull();
       });
 
+      it('sets the id on the checkbox when selection type is multi', function() {
+        selectionProvider.selectionType = SelectionType.Multi;
+        context.detectChanges();
+        const label = context.clarityElement.querySelector('label');
+        expect(context.clarityElement.querySelector("input[type='checkbox']").getAttribute('id')).toEqual(
+          label.getAttribute('for')
+        );
+      });
+
+      it('sets the id on the radio button when selection type is single', function() {
+        selectionProvider.selectionType = SelectionType.Single;
+        context.detectChanges();
+        const label = context.clarityElement.querySelector('label');
+        expect(context.clarityElement.querySelector("input[type='radio']").getAttribute('id')).toEqual(
+          label.getAttribute('for')
+        );
+      });
+
       it('selects the model when the checkbox is clicked', function() {
         selectionProvider.selectionType = SelectionType.Multi;
         context.testComponent.item = { id: 1 };

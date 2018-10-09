@@ -7,7 +7,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClrCheckboxNextModule } from './checkbox/checkbox.module';
+import { ClrCheckboxModule } from './checkbox/checkbox.module';
 import { ClrCommonFormsModule } from './common/common.module';
 import { ClrDatepickerModule } from './datepicker/datepicker.module';
 import { ClrInputModule } from './input/input.module';
@@ -20,7 +20,7 @@ import { ClrTextareaModule } from './textarea/textarea.module';
   imports: [CommonModule],
   exports: [
     ClrCommonFormsModule,
-    ClrCheckboxNextModule,
+    ClrCheckboxModule,
     ClrDatepickerModule,
     ClrInputModule,
     ClrPasswordModule,

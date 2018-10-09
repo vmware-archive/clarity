@@ -27,8 +27,10 @@ export class IfErrorService implements OnDestroy {
     // Wait for the control to be available
     this.subscriptions.push(
       this.ngControlService.controlChanges.subscribe(control => {
-        this.control = control;
-        this.listenForChanges();
+        if (control) {
+          this.control = control;
+          this.listenForChanges();
+        }
       })
     );
   }

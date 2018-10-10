@@ -3,10 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Needed to recreate issue #1084
-
 import { ClrDatagridModule } from '../datagrid.module';
 import { TestContext } from '../helpers.spec';
 import { Page } from '../providers/page';
@@ -14,6 +13,31 @@ import { Page } from '../providers/page';
 import { DatagridHeaderRenderer } from './header-renderer';
 import { DatagridMainRenderer } from './main-renderer';
 import { DatagridRenderOrganizer } from './render-organizer';
+import { Selection } from '../providers/selection';
+import { Items } from '../providers/items';
+import { DatagridStringFilter } from '@clr/angular';
+import { FiltersProvider } from '../providers/filters';
+import { StateDebouncer } from '../providers/state-debouncer.provider';
+import { Sort } from '../providers/sort';
+import { RowActionService } from '../providers/row-action-service';
+import { Expand } from '../../../utils/expand/providers/expand';
+import { HideableColumnService } from '../providers/hideable-column.service';
+import { DatagridCellRenderer } from './cell-renderer';
+
+const PROVIDERS = [
+  DatagridCellRenderer,
+  DatagridRenderOrganizer,
+  DatagridStringFilter,
+  Expand,
+  FiltersProvider,
+  HideableColumnService,
+  Items,
+  Page,
+  RowActionService,
+  Selection,
+  Sort,
+  StateDebouncer,
+];
 
 export default function(): void {
   describe('DatagridMainRenderer directive', function() {
@@ -104,6 +128,58 @@ export default function(): void {
         context.testComponent.clrDgItems = [1];
         context.detectChanges();
         expect(resizeSpy.calls.count()).toBe(1);
+      });
+    });
+
+    describe('smart datagrid width', () => {
+      let context: ComponentFixture<RenderWidthTest>;
+      let containerWidth: number;
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          imports: [BrowserAnimationsModule, ClrDatagridModule],
+          declarations: [RenderWidthTest],
+          providers: PROVIDERS,
+        });
+        context = TestBed.createComponent(RenderWidthTest);
+        context.detectChanges();
+        containerWidth = context.componentInstance.container.nativeElement.clientWidth;
+      });
+
+      it('calculates the correct width with no row options', () => {
+        context.componentInstance.currentTest = 'defaultDatagridTest';
+        context.detectChanges();
+        const datagridWidth = context.componentInstance.datagridDefault.nativeElement.clientWidth;
+        expect(containerWidth).toEqual(datagridWidth);
+      });
+
+      it('calculates the correct width when single select is enabled', () => {
+        context.componentInstance.currentTest = 'singleSelectTest';
+        context.detectChanges();
+        const datagridWidth = context.componentInstance.datagridSingleSelect.nativeElement.clientWidth;
+        expect(containerWidth).toEqual(datagridWidth);
+      });
+
+      it('calculates correct width when multi select is enabled', () => {
+        context.componentInstance.currentTest = 'multiSelectTest';
+        context.detectChanges();
+        const datagridWidth = context.componentInstance.datagridMultiSelect.nativeElement.clientWidth;
+        expect(containerWidth).toEqual(datagridWidth);
+      });
+
+      it('calculates correct width when row is expandable', () => {
+        context.componentInstance.currentTest = 'defaultDatagridTest';
+        context.componentInstance.expandable = true;
+        context.detectChanges();
+        const datagridWidth = context.componentInstance.datagridDefault.nativeElement.clientWidth;
+        expect(containerWidth).toEqual(datagridWidth);
+      });
+
+      it('calculates correct width when row has actions', () => {
+        context.componentInstance.currentTest = 'defaultDatagridTest';
+        context.componentInstance.hasActions = true;
+        context.detectChanges();
+        const datagridWidth = context.componentInstance.datagridDefault.nativeElement.clientWidth;
+        expect(containerWidth).toEqual(datagridWidth);
       });
     });
 
@@ -251,6 +327,84 @@ export default function(): void {
       });
     });
   });
+}
+
+@Component({
+  template: `
+    <div #dgContainer style="width: 232px"> 
+      <!-- 
+        Datagrid side borders = 2px, 
+        action columns are 38px wide, 
+        Columns at min width = 2*96px
+        Total calculated datagrid width should be 232px and not be wider than the div container.
+      -->
+      <ng-template *ngIf="currentTest === 'defaultDatagridTest'" [ngTemplateOutlet]="default"></ng-template>
+      <ng-template *ngIf="currentTest === 'singleSelectTest'" [ngTemplateOutlet]="single"></ng-template>
+      <ng-template *ngIf="currentTest === 'multiSelectTest'" [ngTemplateOutlet]="multi"></ng-template>
+    </div>
+    <ng-template #default>
+      <clr-datagrid #datagridDefault>
+        <clr-dg-column>Column</clr-dg-column>
+        <clr-dg-column>Column</clr-dg-column>
+        <clr-dg-row>
+          <clr-dg-action-overflow *ngIf="hasActions">
+            <button class="action-item" (click)="return;">                
+              Edit
+            </button>
+          </clr-dg-action-overflow>
+          <clr-dg-cell>
+            Value
+            <ng-template [ngIf]="expandable">
+              <clr-dg-row-detail *clrIfExpanded>Detail</clr-dg-row-detail>
+            </ng-template>
+          </clr-dg-cell>
+          <clr-dg-cell>
+            Value
+            <ng-template [ngIf]="expandable">
+              <clr-dg-row-detail *clrIfExpanded>Detail</clr-dg-row-detail>
+            </ng-template>
+          </clr-dg-cell>
+        </clr-dg-row>
+      </clr-datagrid>
+    </ng-template>
+    <ng-template #single>
+      <clr-datagrid #datagridSingleSelect [(clrDgSingleSelected)]='singleSelect'>
+        <clr-dg-column>Column</clr-dg-column>
+        <clr-dg-column>Column</clr-dg-column>
+        <clr-dg-row>
+          <clr-dg-cell>Value</clr-dg-cell>
+          <clr-dg-cell>Value</clr-dg-cell>
+        </clr-dg-row>
+      </clr-datagrid>
+    </ng-template>
+    <ng-template #multi>
+      <clr-datagrid #datagridMultiSelect [(clrDgSelected)]="selected">
+        <clr-dg-column>Column</clr-dg-column>
+        <clr-dg-column>Column</clr-dg-column>
+        <clr-dg-row>
+          <clr-dg-cell>Value</clr-dg-cell>
+          <clr-dg-cell>Value</clr-dg-cell>
+        </clr-dg-row>
+      </clr-datagrid>
+    </ng-template>
+   `,
+})
+
+//
+class RenderWidthTest {
+  currentTest;
+  expandable = false;
+  hasActions = false;
+  selected: any[] = [];
+  singleSelect;
+  @ViewChild('dgContainer', { read: ElementRef })
+  container: ElementRef;
+  @ViewChild('datagridDefault', { read: ElementRef })
+  datagridDefault: ElementRef;
+  @ViewChild('datagridSingleSelect', { read: ElementRef })
+  datagridSingleSelect: ElementRef;
+  @ViewChild('datagridMultiSelect', { read: ElementRef })
+  datagridMultiSelect: ElementRef;
 }
 
 @Component({

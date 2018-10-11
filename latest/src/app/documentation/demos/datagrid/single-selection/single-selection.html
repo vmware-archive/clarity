@@ -54,14 +54,23 @@
 <clr-code-snippet [clrCode]="example" clrLanguage="html"></clr-code-snippet>
 
 <p>
-    Depending on the use case, you might want to allow selection when clicking anywhere in the grid row. Note that this
-    is not recommended when the rows contain clickable items. For example, if your cells contain input, buttons, etc.
-    it is best to avoid enabling whole row selection.
+    We also offer an <code class="clr-code">[clrDgRowSelection]</code> input to allow users to
+    click anywhere on a row to select it. We however recommend against using this feature unless you have
+    a very specific use case that requires it, due to the various accessibility concerns it raises
+    (table rows cannot be actionable elements at the same time). We are considering deprecating
+    this feature in the future if it continues to hinder accessibility.
 </p>
-<p>
-    For row selection mode add <code class="clr-code">[(clrDgRowSelection)]</code> and
-    set it to <code class="clr-code">true</code>.
-</p>
+
+<clr-alert [clrAlertType]="'danger'" [clrAlertClosable]="false">
+    <div clr-alert-item class="alert-item">
+        <span class="alert-text">
+            Do not use <code class="clr-code">[clrDgRowSelection]</code> if your row contains any type of clickable
+            elements (buttons, links, inputs, expand caret, single-row actions, etc.).
+            Doing so would produce invalid HTML in the form of nested buttons,
+            which will break in various unpredictable ways depending on the browser.
+        </span>
+    </div>
+</clr-alert>
 
 <div class="card card-block">
     <p class="card-text username-list">

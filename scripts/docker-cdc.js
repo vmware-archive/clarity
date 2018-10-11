@@ -67,7 +67,7 @@ function runGemini(config) {
   if (status.code === 0) {
     config.args.forEach(function(arg) {
       let gemini = shell.exec(
-        `gemini ${
+        `node_modules/.bin/gemini ${
           config.action
         } gemini/tests/${arg} --html-reporter-path ./reports/gemini/${arg} --root-url ${generateRootUrl()} --screenshots-dir ${screensDir}`
       ); // TODO: A better way to build string cmds.

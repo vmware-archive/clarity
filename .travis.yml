@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '8'
+- '10'
 env:
   global:
   - CXX=g++-4.8
@@ -36,8 +36,6 @@ cache:
   apt: true
   directories:
   - node_modules
-before_script:
-- npm install -g gemini@5.2.0 html-reporter@2.0.1
 script:
 - node scripts/travis
 jobs:

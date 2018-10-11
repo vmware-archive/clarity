@@ -54,11 +54,11 @@ export class DatagridFullDemo {
     // Timeout hack to make sure we completely reset the datagrid
     setTimeout(() => {
       this.inventory.size = this.options.totalUsers;
-      this.currentPageSize = Number.parseInt(this.options.pageSize);
+      this.currentPageSize = Number.parseInt(this.options.pageSize, 10);
       this.selected = this.options.selectable ? [] : null;
       this.loremIpsumColumn = this.options.loremIpsum;
       this.isServerDriven = this.options.server;
-      this.inventory.latency = Number.parseInt(this.options.latency);
+      this.inventory.latency = Number.parseInt(this.options.latency, 10);
 
       this.inventory.reset();
       if (this.isServerDriven) {

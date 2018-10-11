@@ -176,6 +176,7 @@ export class Selection<T = any> {
   /**
    * Ignore items changes in the same change detection cycle.
    */
+  // tslint:disable-next-line
   private debounce: boolean = false;
 
   /**

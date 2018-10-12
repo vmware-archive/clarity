@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
 import { ResponsiveNavCodes } from '../responsive-nav-codes';
 import { ResponsiveNavControlMessage } from '../responsive-nav-control-message';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ResponsiveNavigationService {
   public responsiveNavList: number[] = [];
   private registerNavSubject: Subject<number[]> = new Subject<number[]>();

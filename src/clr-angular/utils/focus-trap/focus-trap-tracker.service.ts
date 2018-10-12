@@ -6,7 +6,7 @@
 import { Injectable } from '@angular/core';
 import { FocusTrapDirective } from './focus-trap.directive';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class FocusTrapTracker {
   private _previousFocusTraps: FocusTrapDirective[] = [];
   private _current: FocusTrapDirective;

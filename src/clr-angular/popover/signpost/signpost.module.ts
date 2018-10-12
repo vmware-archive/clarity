@@ -21,6 +21,5 @@ export const CLR_SIGNPOST_DIRECTIVES: Type<any>[] = [ClrSignpost, ClrSignpostCon
   imports: [CommonModule, ClrCommonPopoverModule, ClrIconModule],
   declarations: [CLR_SIGNPOST_DIRECTIVES],
   exports: [CLR_SIGNPOST_DIRECTIVES, ClrConditionalModule],
-  providers: [],
 })
 export class ClrSignpostModule {}

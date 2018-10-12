@@ -5,13 +5,11 @@
  */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FocusTrapTracker } from './focus-trap-tracker.service';
 
 import { FOCUS_TRAP_DIRECTIVES } from './index';
 
 @NgModule({
   imports: [CommonModule],
-  providers: [FocusTrapTracker],
   declarations: [FOCUS_TRAP_DIRECTIVES],
   exports: [FOCUS_TRAP_DIRECTIVES],
 })

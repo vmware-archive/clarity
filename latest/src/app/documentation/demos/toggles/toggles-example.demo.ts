@@ -31,21 +31,31 @@ const EXAMPLE = `
                 <input type="checkbox" id="toggle_4">
                 <label for="toggle_4"></label>
             </div>
-            <label for="formGroupExampleInput">Toggles without any label</label>
             <div class="toggle-switch">
                 <input type="checkbox" id="toggle_5" checked>
                 <label for="toggle_5"></label>
             </div>
-            <label for="formGroupExampleInput">Toggles without any label</label>
             <div class="toggle-switch">
                 <input type="checkbox" id="toggle_6" checked disabled>
                 <label for="toggle_6"></label>
             </div>
-            <label for="formGroupExampleInput">Toggles without any label</label>
             <div class="toggle-switch">
                 <input type="checkbox" id="toggle_7" disabled>
                 <label for="toggle_7"></label>
             </div>
+        </div>
+    </section>
+    <section class="form-block">
+      <div class="form-group">
+          <label for="formGroupExampleInput">Right Label Toggles</label>
+          <div class="toggle-switch right-label">
+              <input type="checkbox" id="toggle_4">
+              <label for="toggle_4">Toggles turn on and off</label>
+          </div>
+          <div class="toggle-switch right-label">
+              <input type="checkbox" id="toggle_5" disabled>
+              <label for="toggle_5">Toggle off and disabled</label>
+          </div>
         </div>
     </section>
 </form>

@@ -6,7 +6,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClarityModule } from '@clr/angular';
+import { ClarityModule, ClrFormsDeprecatedModule } from '@clr/angular';
 
 import { BasicButtonGroupDemo } from './angular/basic-structure/basic-button-group';
 import { ButtonGroupAngularDemo } from './angular/button-group-angular';
@@ -38,7 +38,7 @@ import { ButtonGroupRadiosDemo } from './static/radio/button-group-radios';
 import { ButtonGroupTypes } from './static/types/button-group-types';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ClarityModule, ClrFormsDeprecatedModule, ROUTING],
   declarations: [
     BasicButtonGroupDemo,
     IconButtonGroupDemo,

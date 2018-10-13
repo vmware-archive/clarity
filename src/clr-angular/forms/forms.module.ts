@@ -29,4 +29,4 @@ import { ClrTextareaModule } from './textarea/textarea.module';
     ClrTextareaModule,
   ],
 })
-export class ClrFormsNextModule {}
+export class ClrFormsModule {}

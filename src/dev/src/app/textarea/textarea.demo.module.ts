@@ -6,13 +6,13 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
+import { ClarityModule } from '@clr/angular';
 
 import { TextareaDemo } from './textarea.demo';
 import { ROUTING } from './textarea.demo.routing';
 
 @NgModule({
-  imports: [ClarityModule, ClrFormsNextModule, FormsModule, ROUTING],
+  imports: [ClarityModule, FormsModule, ROUTING],
   declarations: [TextareaDemo],
 })
 export class TextareaDemoModule {}

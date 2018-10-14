@@ -8,7 +8,7 @@
 
 <p>
     Use the <code class="clr-code">clr-vertical-nav</code> component to create the Vertical Nav.
-    Add the <code class="clr-code">clrVerticalNavLink</code> directive on each Nav Link in the Vertical Nav.
+    Add the <code class="clr-code">clrVerticalNavLink</code> directive on each Nav Link in the Vertical Nav.  Use <code class="clr-code">&lt;div class="nav-divider"&gt;&lt;/div&gt;</code> to add a horizonal divider to separate logical groups.  
 </p>
 
 <div class="clr-example">
@@ -31,6 +31,7 @@
                 <a clrVerticalNavLink routerLink="./pikachu" routerLinkActive="active">Pikachu</a>
                 <a clrVerticalNavLink routerLink="./raichu" routerLinkActive="active">Raichu</a>
                 <a clrVerticalNavLink routerLink="./snorlax" routerLinkActive="active">Snorlax</a>
+                <div class="nav-divider"></div>
                 <a clrVerticalNavLink routerLink="./credit" routerLinkActive="active">Credit</a>
             </clr-vertical-nav>
         </div>

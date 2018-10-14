@@ -32,6 +32,13 @@ const ROW_SELECTION_EXAMPLE = `
 Selected user: <span class="username" *ngIf="selectedUser">{{selectedUser.name}}</span>
 `;
 
+const SELECTION_CHANGE_EVENT_EXAMPLE = `
+<clr-datagrid [clrDgSingleSelected]="selected"
+              (clrDgSingleSelectedChange)="selectionChanged($event)">
+    <-- ... -->
+</clr-datagrid>
+`
+
 @Component({
     moduleId: module.id,
     selector: "clr-datagrid-selection-single-demo",
@@ -42,6 +49,7 @@ Selected user: <span class="username" *ngIf="selectedUser">{{selectedUser.name}}
 export class DatagridSelectionSingleDemo {
     example = EXAMPLE;
     rowSelectionExample = ROW_SELECTION_EXAMPLE;
+    selectionChanceEventExample = SELECTION_CHANGE_EVENT_EXAMPLE;
     users: User[];
     singleSelected: User;
     rowSelected: User;

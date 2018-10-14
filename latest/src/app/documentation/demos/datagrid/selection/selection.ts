@@ -38,6 +38,13 @@ const ROW_SELECTION_EXAMPLE = `
 </clr-datagrid>
 `;
 
+const SELECTION_CHANGE_EVENT_EXAMPLE = `
+<clr-datagrid [clrDgSelected]="selected"
+              (clrDgSelectedChange)="selectionChanged($event)">
+    <-- ... -->
+</clr-datagrid>
+`;
+
 @Component({
     selector: "clr-datagrid-selection-demo",
     providers: [Inventory],
@@ -48,6 +55,7 @@ export class DatagridSelectionDemo {
     mainExample = MAIN_EXAMPLE;
     rowSelectionExample = ROW_SELECTION_EXAMPLE;
     singleRowExample = SINGLE_ROW_EXAMPLE;
+    selectionChanceEventExample = SELECTION_CHANGE_EVENT_EXAMPLE;
     users: User[];
     selected: User[] = [];
     rowSelected: User[] = [];

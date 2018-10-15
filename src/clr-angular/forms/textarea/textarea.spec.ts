@@ -9,14 +9,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClrTextarea } from './textarea';
 import { ClrTextareaContainer } from './textarea-container';
 
-import { TemplateDrivenSpec, ControlInvalidSpec, ReactiveSpec } from '../tests/control.spec';
+import { TemplateDrivenSpec, ControlStandaloneSpec, ReactiveSpec } from '../tests/control.spec';
 
 @Component({
   template: `
     <textarea clrTextarea></textarea>
     `,
 })
-class InvalidUseTest {}
+class StandaloneUseTest {}
 
 @Component({
   template: `
@@ -39,7 +39,7 @@ class ReactiveTest {
 
 export default function(): void {
   describe('Textarea directive', () => {
-    ControlInvalidSpec(ClrTextarea, InvalidUseTest);
+    ControlStandaloneSpec(StandaloneUseTest);
     TemplateDrivenSpec(ClrTextareaContainer, ClrTextarea, TemplateDrivenTest, 'clr-textarea');
     ReactiveSpec(ClrTextareaContainer, ClrTextarea, ReactiveTest, 'clr-textarea');
   });

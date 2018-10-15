@@ -28,6 +28,7 @@ import { FormsLayoutVerticalDemo } from './layout/layout-vertical';
 import { FormsLayoutVerticalGridDemo } from './layout/layout-vertical-grid';
 import { FormsTemplateDrivenDemo } from './template-driven/template-driven';
 import { FormsReactiveDemo } from './reactive/reactive';
+import { FormsResetDemo } from './reset/reset';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ROUTING],
@@ -49,6 +50,7 @@ import { FormsReactiveDemo } from './reactive/reactive';
     FormsTextareaDemo,
     FormsTemplateDrivenDemo,
     FormsReactiveDemo,
+    FormsResetDemo,
   ],
   exports: [
     FormsDemo,
@@ -68,6 +70,7 @@ import { FormsReactiveDemo } from './reactive/reactive';
     FormsTextareaDemo,
     FormsTemplateDrivenDemo,
     FormsReactiveDemo,
+    FormsResetDemo,
   ],
 })
 export class FormsDemoModule {}

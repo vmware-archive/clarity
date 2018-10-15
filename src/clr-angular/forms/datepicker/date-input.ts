@@ -13,6 +13,7 @@ import {
   HostBinding,
   HostListener,
   Inject,
+  Injector,
   Input,
   OnDestroy,
   OnInit,
@@ -24,11 +25,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { IfErrorService } from '../common/if-error/if-error.service';
-import { ControlClassService } from '../common/providers/control-class.service';
 import { FocusService } from '../common/providers/focus.service';
-import { NgControlService } from '../common/providers/ng-control.service';
 
 import { WrappedFormControl } from '../common/wrapped-control';
 
@@ -48,10 +45,7 @@ import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
   },
 })
 export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {
-  /**
-   * Subscriptions to all the services and queries changes
-   */
-  private _subscriptions: Subscription[] = [];
+  protected index = 4;
 
   //We need this variable because if the date input has a value initialized
   //we do not output it. This variable is false during initial load. We make sure that
@@ -72,32 +66,25 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
   @Input() clrNewLayout: boolean;
 
   constructor(
-    @Optional() private container: ClrDateContainer,
     vcr: ViewContainerRef,
-    private elRef: ElementRef,
-    private renderer: Renderer2,
+    injector: Injector,
+    protected el: ElementRef,
+    protected renderer: Renderer2,
     @Self()
     @Optional()
-    private _ngControl: NgControl,
+    protected control: NgControl,
+    @Optional() private container: ClrDateContainer,
     @Optional() private _dateIOService: DateIOService,
     @Optional() private _dateNavigationService: DateNavigationService,
     @Optional() private _datepickerEnabledService: DatepickerEnabledService,
     @Optional() private dateFormControlService: DateFormControlService,
     @Inject(PLATFORM_ID) private platformId: Object,
-    @Optional() private ngControlService: NgControlService,
-    @Optional() controlClassService: ControlClassService,
     @Optional() private focusService: FocusService,
-    @Optional() private ifErrorService: IfErrorService,
-    @Optional() private control: NgControl,
     @Optional()
     @Inject(IS_NEW_FORMS_LAYOUT)
     public newFormsLayout: boolean
   ) {
-    super(ClrDateContainer, vcr, 4);
-
-    if (controlClassService) {
-      controlClassService.initControlClass(this.renderer, this.elRef.nativeElement);
-    }
+    super(vcr, ClrDateContainer, injector, control, renderer, el);
   }
 
   /**
@@ -107,9 +94,6 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
    */
   ngOnInit() {
     super.ngOnInit();
-    if (this.ngControlService && this.control) {
-      this.ngControlService.setControl(this.control);
-    }
     if (!this.container) {
       this.populateContainerServices();
     }
@@ -131,8 +115,8 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     // TODO: We are repeating this logic at multiple places. This makes me think
     // if this class should have implemented the ControlValueAccessor interface.
     // Will explore that later and see if its a cleaner solution.
-    if (this._ngControl && this._ngControl.value) {
-      this.updateInputValue(this._ngControl.value);
+    if (this.control && this.control.value) {
+      this.updateInputValue(this.control.value);
       this.initializePreviousOutput(this._dateNavigationService.selectedDay);
     }
   }
@@ -161,13 +145,6 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
   }
 
   /**
-   * Unsubscribes from the subscriptions.
-   */
-  ngOnDestroy() {
-    this._subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
-  }
-
-  /**
    * Populates the services from the container component.
    */
   private populateContainerServices(): void {
@@ -181,7 +158,7 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
    * Writes the date string value to the input field
    */
   private writeDateStrToInputField(value: string): void {
-    this.renderer.setProperty(this.elRef.nativeElement, 'value', value);
+    this.renderer.setProperty(this.el.nativeElement, 'value', value);
   }
 
   private initialLoad: boolean = true;
@@ -275,10 +252,8 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
   }
 
   @HostListener('blur')
-  setBlurStates() {
-    if (this.ifErrorService) {
-      this.ifErrorService.triggerStatusChange();
-    }
+  triggerValidation() {
+    super.triggerValidation();
     if (this.focusService) {
       this.focusService.focused = false;
     }
@@ -307,7 +282,7 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
   private initializeSubscriptions(): void {
     if (this._dateNavigationService && this._dateIOService) {
       // This subscription is fired when the user selects a date from the popover.
-      this._subscriptions.push(
+      this.subscriptions.push(
         this._dateNavigationService.selectedDayChange.subscribe((dayModel: DayModel) => {
           const dateStr: string = this._dateIOService.toLocaleDisplayFormatString(dayModel.toDate());
           this.writeDateStrToInputField(dateStr);
@@ -315,8 +290,8 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
           // TODO: Check if there is a better way to do this.
           // NOTE: Its important to use NgControl and not NgModel because
           // NgModel only works with template driven forms
-          if (this._ngControl) {
-            this._ngControl.control.setValue(dateStr);
+          if (this.control) {
+            this.control.control.setValue(dateStr);
           }
           this.emitDateOutput(dayModel);
         })
@@ -324,9 +299,9 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
 
       // We do not emit an Output from this subscription because
       // we only emit the Output when the user has focused out of the input.
-      if (this._ngControl) {
-        this._subscriptions.push(
-          this._ngControl.valueChanges.subscribe((value: string) => {
+      if (this.control) {
+        this.subscriptions.push(
+          this.control.valueChanges.subscribe((value: string) => {
             const date: Date = this._dateIOService.isValidInput(value);
             if (date) {
               const dayModel: DayModel = new DayModel(date.getFullYear(), date.getMonth(), date.getDate());
@@ -344,18 +319,18 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     }
 
     if (this.dateFormControlService) {
-      this._subscriptions.push(
+      this.subscriptions.push(
         this.dateFormControlService.touchedChange.subscribe(() => {
-          if (this._ngControl) {
-            this._ngControl.control.markAsTouched();
+          if (this.control) {
+            this.control.control.markAsTouched();
           }
         })
       );
 
-      this._subscriptions.push(
+      this.subscriptions.push(
         this.dateFormControlService.dirtyChange.subscribe(() => {
-          if (this._ngControl) {
-            this._ngControl.control.markAsDirty();
+          if (this.control) {
+            this.control.control.markAsDirty();
           }
         })
       );

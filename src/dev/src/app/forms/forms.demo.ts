@@ -27,6 +27,7 @@ import { Component } from '@angular/core';
             <li><a [routerLink]="['./select']">Select</a></li>
             <li><a [routerLink]="['./template-driven']">Template Driven</a></li>
             <li><a [routerLink]="['./reactive']">Reactive</a></li>
+            <li><a [routerLink]="['./reset']">Reset</a></li>
         </ul>
         <router-outlet></router-outlet>
     `,

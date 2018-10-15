@@ -6,7 +6,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { ControlInvalidSpec, ReactiveSpec, TemplateDrivenSpec } from '../tests/control.spec';
+import { ControlStandaloneSpec, ReactiveSpec, TemplateDrivenSpec } from '../tests/control.spec';
 import { ClrCheckbox } from './checkbox';
 import { ClrCheckboxWrapper } from './checkbox-wrapper';
 
@@ -15,7 +15,7 @@ import { ClrCheckboxWrapper } from './checkbox-wrapper';
     <input type="checkbox" clrCheckbox />
     `,
 })
-class InvalidUseTest {}
+class StandaloneUseTest {}
 
 @Component({
   template: `
@@ -39,7 +39,7 @@ class ReactiveTest {
 
 export default function(): void {
   describe('ClrCheckbox directive', () => {
-    ControlInvalidSpec(ClrCheckbox, InvalidUseTest);
+    ControlStandaloneSpec(StandaloneUseTest);
     TemplateDrivenSpec(ClrCheckboxWrapper, ClrCheckbox, TemplateDrivenTest, 'clr-checkbox');
     ReactiveSpec(ClrCheckboxWrapper, ClrCheckbox, ReactiveTest, 'clr-checkbox');
   });

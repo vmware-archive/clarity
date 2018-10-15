@@ -7,16 +7,15 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { Observable, Subject, Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
 
 import { NgControlService } from '../providers/ng-control.service';
 
 @Injectable()
 export class IfErrorService implements OnDestroy {
   // Implement our own status changes observable, since Angular controls don't
-  // fire on events like blur, and we want to return the control instead of a string
-  private _statusChanges: Subject<NgControl> = new Subject();
-  get statusChanges(): Observable<NgControl> {
+  // fire on events like blur, and we want to return the boolean state instead of a string
+  private _statusChanges: Subject<boolean> = new Subject();
+  get statusChanges(): Observable<boolean> {
     return this._statusChanges.asObservable();
   }
 
@@ -38,16 +37,24 @@ export class IfErrorService implements OnDestroy {
   // Subscribe to the status change events, only after touched and emit the control
   private listenForChanges() {
     this.subscriptions.push(
-      this.control.statusChanges.pipe(filter(() => this.control.touched)).subscribe(() => {
-        this._statusChanges.next(this.control);
+      this.control.statusChanges.subscribe(() => {
+        this.sendValidity();
       })
     );
+  }
+
+  private sendValidity() {
+    if ((this.control.touched || this.control.dirty) && this.control.invalid) {
+      this._statusChanges.next(true);
+    } else {
+      this._statusChanges.next(false);
+    }
   }
 
   // Allows a control to push a status check upstream, such as on blur
   triggerStatusChange() {
     if (this.control) {
-      this._statusChanges.next(this.control);
+      this.sendValidity();
     }
   }
 

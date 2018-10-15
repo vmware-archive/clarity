@@ -3,15 +3,18 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { ClrForm } from './form';
 import { LayoutService } from './providers/layout.service';
+import { MarkControlService } from './providers/mark-control.service';
 
 @Component({ template: `<form clrForm></form>` })
-class SimpleTest {}
+class SimpleTest {
+  @ViewChild(ClrForm) form: ClrForm;
+}
 
 export default function(): void {
   describe('ClrForm', () => {
@@ -30,6 +33,17 @@ export default function(): void {
 
     it('provides the LayoutService', function() {
       expect(directive.injector.get(LayoutService)).toBeTruthy();
+    });
+
+    it('provides the MarkControlService', function() {
+      expect(directive.injector.get(MarkControlService)).toBeTruthy();
+    });
+
+    it('calls markAsDirty', function() {
+      const service = directive.injector.get(MarkControlService);
+      spyOn(service, 'markAsDirty');
+      directive.componentInstance.form.markAsDirty();
+      expect(service.markAsDirty).toHaveBeenCalled();
     });
   });
 }

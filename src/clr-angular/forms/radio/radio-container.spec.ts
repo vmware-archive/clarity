@@ -77,14 +77,14 @@ class ReactiveTest {
 
 export default function(): void {
   describe('ClrRadioContainer', () => {
-    ContainerNoLabelSpec(ClrRadioContainer, [ClrRadioWrapper, ClrRadio], NoLabelTest);
+    ContainerNoLabelSpec(ClrRadioContainer, [ClrRadio, ClrRadioWrapper], NoLabelTest);
     TemplateDrivenSpec(
       ClrRadioContainer,
-      [ClrRadioWrapper, ClrRadio],
+      [ClrRadio, ClrRadioWrapper],
       TemplateDrivenTest,
       '.clr-radio-wrapper [clrRadio]'
     );
-    ReactiveSpec(ClrRadioContainer, [ClrRadioWrapper, ClrRadio], ReactiveTest, '.clr-radio-wrapper [clrRadio]');
+    ReactiveSpec(ClrRadioContainer, [ClrRadio, ClrRadioWrapper], ReactiveTest, '.clr-radio-wrapper [clrRadio]');
 
     describe('inline buttons', () => {
       let fixture, containerDE, containerEl;

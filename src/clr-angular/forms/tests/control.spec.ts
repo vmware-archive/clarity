@@ -15,15 +15,19 @@ import { ClrCommonFormsModule } from '../common/common.module';
 import { WrappedFormControl } from '../common/wrapped-control';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { ControlClassService } from '../common/providers/control-class.service';
+import { MarkControlService } from '../common/providers/mark-control.service';
 
-export function ControlInvalidSpec(testControl, testComponent): void {
-  describe('invalid use', () => {
-    it('throws error when used without a form control', () => {
-      TestBed.configureTestingModule({ declarations: [testControl, testComponent] });
+export function ControlStandaloneSpec(testComponent): void {
+  describe('standalone use', () => {
+    it('should not throw an error when used without a form control', () => {
+      TestBed.configureTestingModule({
+        imports: [ClrIconModule, ClrCommonFormsModule],
+        declarations: [testComponent],
+      });
       expect(() => {
         const fixture = TestBed.createComponent(testComponent);
         fixture.detectChanges();
-      }).toThrow();
+      }).not.toThrow();
     });
   });
 }
@@ -38,7 +42,7 @@ export function ReactiveSpec(testContainer, testControl, testComponent, controlC
 
 function fullTest(description, testContainer, testControl, testComponent, controlClass) {
   describe(description, () => {
-    let control, fixture, ifErrorService, ngControlService, controlClassService;
+    let control, fixture, ifErrorService, controlClassService, markControlService;
 
     beforeEach(() => {
       spyOn(WrappedFormControl.prototype, 'ngOnInit');
@@ -46,15 +50,14 @@ function fullTest(description, testContainer, testControl, testComponent, contro
       TestBed.configureTestingModule({
         imports: [FormsModule, ClrIconModule, ClrCommonFormsModule, ReactiveFormsModule],
         declarations: [testContainer, testControl, testComponent],
-        providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService],
+        providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService, MarkControlService],
       });
       fixture = TestBed.createComponent(testComponent);
       control = fixture.debugElement.query(By.directive(testControl));
       controlClassService = control.injector.get(ControlClassService);
       ifErrorService = control.injector.get(IfErrorService);
-      ngControlService = control.injector.get(NgControlService);
+      markControlService = control.injector.get(MarkControlService);
       spyOn(ifErrorService, 'triggerStatusChange');
-      spyOn(ngControlService, 'setControl');
       fixture.detectChanges();
     });
 
@@ -66,9 +69,8 @@ function fullTest(description, testContainer, testControl, testComponent, contro
       expect(ifErrorService).toBeTruthy();
     });
 
-    it('should have the NgControlService and set the control', () => {
-      expect(ngControlService).toBeTruthy();
-      expect(ngControlService.setControl).toHaveBeenCalled();
+    it('should have the MarkControlService', () => {
+      expect(markControlService.markAsDirty).toBeTruthy();
     });
 
     it('correctly extends WrappedFormControl', () => {

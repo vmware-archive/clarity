@@ -33,7 +33,7 @@ class GenericWrapper implements DynamicWrapper {
 @Directive({ selector: '[genericControl]' })
 class GenericControl extends WrappedFormControl<GenericWrapper> {
   constructor(vcr: ViewContainerRef) {
-    super(GenericWrapper, vcr);
+    super(vcr, GenericWrapper, null, null, null, null);
   }
 }
 

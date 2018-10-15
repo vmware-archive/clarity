@@ -4,48 +4,25 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Directive, HostListener, Optional, ViewContainerRef, Renderer2, ElementRef, OnInit } from '@angular/core';
+import { Directive, ViewContainerRef, Renderer2, ElementRef, Injector, Optional, Self } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
-import { IfErrorService } from '../common/if-error/if-error.service';
-import { NgControlService } from '../common/providers/ng-control.service';
-import { ClrTextareaContainer } from './textarea-container';
 import { WrappedFormControl } from '../common/wrapped-control';
-import { ControlClassService } from '../common/providers/control-class.service';
+import { ClrTextareaContainer } from './textarea-container';
 
 @Directive({ selector: '[clrTextarea]', host: { '[class.clr-textarea]': 'true' } })
-export class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> implements OnInit {
+export class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> {
+  protected index = 1;
+
   constructor(
     vcr: ViewContainerRef,
-    @Optional() private ngControlService: NgControlService,
-    @Optional() private ifErrorService: IfErrorService,
-    @Optional() private control: NgControl,
-    @Optional() controlClassService: ControlClassService,
+    injector: Injector,
+    @Self()
+    @Optional()
+    control: NgControl,
     renderer: Renderer2,
     el: ElementRef
   ) {
-    super(ClrTextareaContainer, vcr, 1);
-    if (!control) {
-      throw new Error(
-        'clrTextarea can only be used within an Angular form control, add ngModel or formControl to the textarea'
-      );
-    }
-    if (controlClassService) {
-      controlClassService.initControlClass(renderer, el.nativeElement);
-    }
-  }
-
-  ngOnInit() {
-    super.ngOnInit();
-    if (this.ngControlService) {
-      this.ngControlService.setControl(this.control);
-    }
-  }
-
-  @HostListener('blur')
-  onBlur() {
-    if (this.ifErrorService) {
-      this.ifErrorService.triggerStatusChange();
-    }
+    super(vcr, ClrTextareaContainer, injector, control, renderer, el);
   }
 }

@@ -54,8 +54,8 @@ export class ClrSelectContainer implements DynamicWrapper, OnDestroy {
     private ngControlService: NgControlService
   ) {
     this.subscriptions.push(
-      this.ifErrorService.statusChanges.subscribe(control => {
-        this.invalid = control.invalid;
+      this.ifErrorService.statusChanges.subscribe(invalid => {
+        this.invalid = invalid;
       })
     );
     this.subscriptions.push(

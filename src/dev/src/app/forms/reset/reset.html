@@ -1,0 +1,22 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Reset and Validation</h2>
+
+<form clrForm [formGroup]="model">
+  <clr-input-container>
+    <label>Required</label>
+    <input clrInput placeholder="Input control" name="required" formControlName="required" />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+    <clr-control-error *clrIfError="'minlength'">Must be at least 5 characters</clr-control-error>
+    <clr-control-error *clrIfError="'pattern'">It must match 'asdfasdf'</clr-control-error>
+  </clr-input-container>
+
+  <button class="btn btn-primary" type="button" (click)="validate()">Validate</button>
+  <button class="btn btn-primary" type="button" (click)="model.reset()">Reset</button>
+  <button class="btn btn-primary" type="button" (click)="model.get('required').setValue('asdfasdf')">Fill in</button>
+</form>

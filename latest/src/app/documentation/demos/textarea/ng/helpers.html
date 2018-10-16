@@ -1,8 +1,8 @@
 <form clrForm>
-  <clr-input-container>
-    <label>Full name</label>
-    <input placeholder="Full name" clrInput [(ngModel)]="name" name="name" required />
+  <clr-textarea-container>
+    <label>Label</label>
+    <textarea clrTextarea [(ngModel)]="description" name="description" required></textarea>
     <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>This field is required!</clr-control-error>
-  </clr-input-container>
+    <clr-control-error>You must provide a description!</clr-control-error>
+  </clr-textarea-container>
 </form>

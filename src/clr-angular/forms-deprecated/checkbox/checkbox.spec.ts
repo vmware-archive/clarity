@@ -7,7 +7,7 @@ import { Component, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
-import { ClrFormsModule } from '../forms.module';
+import { ClrFormsDeprecatedModule } from '../forms.module';
 
 import { ClrCheckboxDeprecated } from './checkbox';
 
@@ -100,7 +100,7 @@ describe('Checkbox', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ClrFormsModule, FormsModule],
+      imports: [ClrFormsDeprecatedModule, FormsModule],
       declarations: [
         BasicCheckbox,
         CheckboxWithNgModel,

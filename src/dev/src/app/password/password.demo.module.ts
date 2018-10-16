@@ -6,13 +6,13 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
+import { ClarityModule } from '@clr/angular';
 
 import { PasswordDemo } from './password.demo';
 import { ROUTING } from './password.demo.routing';
 
 @NgModule({
-  imports: [ClarityModule, ClrFormsNextModule, FormsModule, ROUTING],
+  imports: [ClarityModule, FormsModule, ROUTING],
   declarations: [PasswordDemo],
 })
 export class PasswordDemoModule {}

@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ClrFormsNextModule } from '../../forms/forms.module';
+import { ClrFormsModule } from '../../forms/forms.module';
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrCommonPopoverModule } from '../../popover/common/popover.module';
 import { ClrIfExpandModule } from '../../utils/expand/if-expand.module';
@@ -94,7 +94,7 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   imports: [
     CommonModule,
     ClrIconModule,
-    ClrFormsNextModule,
+    ClrFormsModule,
     FormsModule,
     ClrCommonPopoverModule,
     ClrLoadingModule,

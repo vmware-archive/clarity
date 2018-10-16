@@ -11,7 +11,7 @@ import { By } from '@angular/platform-browser';
 
 import { itIgnore } from '../../../../tests/tests.helpers';
 import { TestContext } from '../../data/datagrid/helpers.spec';
-import { ClrFormsModule } from '../../forms-deprecated/forms.module';
+import { ClrFormsDeprecatedModule } from '../../forms-deprecated/forms.module';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
 import { IfErrorService } from '../common/if-error/if-error.service';
 import { ControlClassService } from '../common/providers/control-class.service';
@@ -237,7 +237,7 @@ export default function() {
 
       beforeEach(function() {
         TestBed.configureTestingModule({
-          imports: [FormsModule, ClrFormsModule],
+          imports: [FormsModule, ClrFormsDeprecatedModule],
           declarations: [TestComponentWithNgModel],
         });
 
@@ -304,7 +304,7 @@ export default function() {
 
       beforeEach(function() {
         TestBed.configureTestingModule({
-          imports: [ReactiveFormsModule, ClrFormsModule],
+          imports: [ReactiveFormsModule, ClrFormsDeprecatedModule],
           declarations: [TestComponentWithReactiveForms],
         });
 
@@ -383,7 +383,7 @@ export default function() {
 
       beforeEach(function() {
         TestBed.configureTestingModule({
-          imports: [FormsModule, ClrFormsModule],
+          imports: [FormsModule, ClrFormsDeprecatedModule],
           declarations: [TestComponentWithTemplateDrivenForms],
         });
         fixture = TestBed.createComponent(TestComponentWithTemplateDrivenForms);
@@ -451,7 +451,7 @@ export default function() {
 
       beforeEach(function() {
         TestBed.configureTestingModule({
-          imports: [FormsModule, ClrFormsModule],
+          imports: [FormsModule, ClrFormsDeprecatedModule],
           declarations: [TestComponentWithClrDate],
         });
 

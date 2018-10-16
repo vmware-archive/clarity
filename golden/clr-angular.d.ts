@@ -641,10 +641,10 @@ export declare class ClrEmphasisModule {
 export declare class ClrForm {
 }
 
-export declare class ClrFormsModule {
+export declare class ClrFormsDeprecatedModule {
 }
 
-export declare class ClrFormsNextModule {
+export declare class ClrFormsModule {
 }
 
 export declare class ClrHeader implements OnDestroy {

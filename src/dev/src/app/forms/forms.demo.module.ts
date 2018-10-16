@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
+import { ClarityModule } from '@clr/angular';
 
 import { FormsCheckboxDemo } from './controls/checkbox';
 import { FormsFileDemo } from './controls/file';
@@ -30,7 +30,7 @@ import { FormsTemplateDrivenDemo } from './template-driven/template-driven';
 import { FormsReactiveDemo } from './reactive/reactive';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ClrFormsNextModule, ROUTING],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ROUTING],
   declarations: [
     FormsDemo,
     FormsInputGroupDemo,

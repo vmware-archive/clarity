@@ -7,14 +7,14 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ClarityModule, ClrCheckboxNextModule } from '@clr/angular';
+import { ClarityModule, ClrFormsDeprecatedModule } from '@clr/angular';
 
 import { CheckboxesDemo } from './checkboxes.demo';
 import { ROUTING } from './checkboxes.demo.routing';
 import { Status } from './data/status';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ClrCheckboxNextModule, ClarityModule, ROUTING],
+  imports: [CommonModule, FormsModule, ClarityModule, ClrFormsDeprecatedModule, ROUTING],
   declarations: [CheckboxesDemo],
   providers: [Status],
   exports: [CheckboxesDemo],

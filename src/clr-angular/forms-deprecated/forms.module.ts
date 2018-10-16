@@ -14,4 +14,4 @@ import { ClrCheckboxModule } from './checkbox/checkbox.module';
   imports: [CommonModule],
   exports: [ClrCheckboxModule, ClrDatepickerModule],
 })
-export class ClrFormsModule {}
+export class ClrFormsDeprecatedModule {}

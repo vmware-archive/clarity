@@ -6,13 +6,13 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
+import { ClarityModule } from '@clr/angular';
 
 import { RadiosDemo } from './radios.demo';
 import { ROUTING } from './radios.demo.routing';
 
 @NgModule({
-  imports: [ClarityModule, ClrFormsNextModule, FormsModule, ROUTING],
+  imports: [ClarityModule, FormsModule, ROUTING],
   declarations: [RadiosDemo],
   exports: [RadiosDemo],
 })

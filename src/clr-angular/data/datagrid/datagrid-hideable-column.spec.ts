@@ -56,6 +56,34 @@ export default function(): void {
         expect(context.clarityDirective.columnId).toEqual(context.clarityDirective.hideable.id);
       });
     });
+
+    describe('TypeScript Output API', function() {
+      let context: TestContext<ClrDatagridColumn<void>, HideableOutputTest>;
+
+      beforeEach(function() {
+        context = this.create(ClrDatagridColumn, HideableTest, PROVIDERS_NEEDED);
+      });
+
+      it('creates a DatagridHideableColumn instance on the DatagridColumn', function() {
+        expect(context.clarityDirective.hideable).toBeDefined();
+      });
+
+      it('defaults the HideableColumn.hidden property to false', function() {
+        expect(context.clarityDirective.hideable.hidden).toBe(false);
+      });
+
+      it('correctly populates the DatagridHideableColumn instance with an id', function() {
+        expect(context.clarityDirective.columnId).toEqual(context.clarityDirective.hideable.id);
+      });
+
+      it('emits column state change', function() {
+        let hiddenState = false;
+        context.testComponent.directive.hiddenChange.subscribe(state => (hiddenState = state));
+
+        context.clarityDirective.hideable.hidden = true;
+        expect(hiddenState).toBeTrue();
+      });
+    });
   });
 }
 
@@ -70,4 +98,19 @@ export default function(): void {
 })
 class HideableTest {
   @ViewChild(ClrDatagridHideableColumn) directive: ClrDatagridHideableColumn;
+}
+
+@Component({
+  template: ` 
+        <clr-dg-column>
+            <!-- sugar syntax does not support @Output on structural directives, see https://github.com/angular/angular/issues/12121 -->
+            <ng-template clrDgHideableColumn [(clrDgHidden)]="hidden">
+                Name
+            </ng-template>
+        </clr-dg-column>
+    `,
+})
+class HideableOutputTest {
+  @ViewChild(ClrDatagridHideableColumn) directive: ClrDatagridHideableColumn;
+  hidden = false;
 }

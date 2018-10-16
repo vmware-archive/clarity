@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Input, TemplateRef, ViewContainerRef, Output, EventEmitter } from '@angular/core';
 
 import { ClrDatagridColumn } from './datagrid-column';
 import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
@@ -50,11 +50,18 @@ export class ClrDatagridHideableColumn {
    */
   @Input('clrDgHideableColumn')
   set clrDgHideableColumn(value: { hidden: boolean }) {
-    this._hidden = value && value.hidden ? value.hidden : false;
+    this.clrDgHidden = value && value.hidden ? value.hidden : false;
+  }
+
+  @Input('clrDgHidden')
+  set clrDgHidden(hidden: boolean) {
+    this._hidden = hidden ? hidden : false;
     if (this.dgColumn.hideable) {
-      this.dgColumn.hideable.hidden = value && value.hidden ? value.hidden : false;
+      this.dgColumn.hideable.hidden = this._hidden;
     }
   }
+
+  @Output('clrDgHiddenChange') public hiddenChange = new EventEmitter<boolean>();
 
   /**
    *
@@ -92,5 +99,6 @@ export class ClrDatagridHideableColumn {
     // Create instance of the utility class DatagridHideableColumn.
     // Note this is on the parent instance of DatagridColumn.
     this.dgColumn.hideable = new DatagridHideableColumnModel(this.templateRef, this.columnId, this._hidden);
+    this.dgColumn.hideable.hiddenChangeState.subscribe(state => this.hiddenChange.emit(state));
   }
 }

@@ -173,7 +173,7 @@ export default function(): void {
         context.testComponent.total = 1000;
         context.testComponent.current = 42;
         context.detectChanges();
-        expect(context.clarityElement.textContent.trim()).toMatch(/^1\D{3}414243\D{3}100$/);
+        expect(context.clarityElement.textContent.trim()).toMatch(/^1\D{3}41\s4243\s\D{3}100$/);
       });
 
       it('displays clickable page numbers', function() {

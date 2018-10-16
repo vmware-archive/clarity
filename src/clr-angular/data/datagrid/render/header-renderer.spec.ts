@@ -3,13 +3,15 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 
+import { DatagridRenderStep } from '../enums/render-step.enum';
 import { TestContext } from '../helpers.spec';
 import { FiltersProvider } from '../providers/filters';
 import { Page } from '../providers/page';
 import { Sort } from '../providers/sort';
 import { StateDebouncer } from '../providers/state-debouncer.provider';
+import { TableSizeService } from '../providers/table-size.service';
 
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { MOCK_DOM_ADAPTER_PROVIDER, MockDomAdapter } from '../../../utils/dom-adapter/dom-adapter.mock';
@@ -31,6 +33,8 @@ export default function(): void {
         FiltersProvider,
         Page,
         StateDebouncer,
+        TableSizeService,
+        Renderer2,
       ]);
       domAdapter = <MockDomAdapter>context.getClarityProvider(DomAdapter);
       organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
@@ -49,29 +53,29 @@ export default function(): void {
     it('resets the column to default width when notified', function() {
       context.clarityDirective.setWidth(123);
       expect(context.clarityElement.style.width).toBe('123px');
-      organizer.clearWidths.next();
+      organizer.updateRenderStep.next(DatagridRenderStep.CLEAR_WIDTHS);
       expect(context.clarityElement.style.width).toBeFalsy();
     });
 
     it('uses the width declared by the user if there is one', function() {
       domAdapter._userDefinedWidth = 123;
-      organizer.detectStrictWidths.next();
+      organizer.updateRenderStep.next(DatagridRenderStep.DETECT_STRICT_WIDTHS);
       expect(context.clarityDirective.strictWidth).toBe(123);
       domAdapter._userDefinedWidth = 0;
-      organizer.detectStrictWidths.next();
+      organizer.updateRenderStep.next(DatagridRenderStep.DETECT_STRICT_WIDTHS);
       expect(context.clarityDirective.strictWidth).toBeFalsy();
     });
 
     it('does not remove the width defined by the user', function() {
       context.clarityElement.style.width = '123px';
       domAdapter._userDefinedWidth = 123;
-      organizer.clearWidths.next();
-      organizer.detectStrictWidths.next();
+      organizer.updateRenderStep.next(DatagridRenderStep.CLEAR_WIDTHS);
+      organizer.updateRenderStep.next(DatagridRenderStep.DETECT_STRICT_WIDTHS);
       expect(context.clarityElement.style.width).toBe('123px');
       // One extra cycle to be sure, because clearing widths before computing them
       // might have a special case handling
       context.clarityDirective.computeWidth();
-      organizer.clearWidths.next();
+      organizer.updateRenderStep.next(DatagridRenderStep.CLEAR_WIDTHS);
       expect(context.clarityElement.style.width).toBe('123px');
     });
 

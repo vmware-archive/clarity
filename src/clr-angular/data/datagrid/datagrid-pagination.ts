@@ -16,53 +16,58 @@ import { Page } from './providers/page';
         </div>
         <ul class="pagination-list" *ngIf="page.last > 1">
             <li *ngIf="page.current > 1">
-                <button 
-                    class="pagination-previous" 
-                    (click)="page.previous()"
-                    type="button"></button>
+                <button
+                        class="pagination-previous"
+                        (click)="page.previous()"
+                        type="button"></button>
             </li>
             <li *ngIf="page.current > 2">
                 <button (click)="page.current = 1" type="button">1</button>
             </li>
             <li *ngIf="page.current > 3">...</li>
             <li *ngFor="let pageNum of middlePages" [class.pagination-current]="pageNum === page.current">
-                <button 
-                    *ngIf="pageNum !== page.current; else noButton" 
-                    (click)="page.current = pageNum"
-                    type="button">{{pageNum}}</button>
+                <button
+                        *ngIf="pageNum !== page.current; else noButton"
+                        (click)="page.current = pageNum"
+                        type="button">{{pageNum}}
+                </button>
                 <ng-template #noButton>{{pageNum}}</ng-template>
             </li>
             <li *ngIf="page.current < page.last - 2">...</li>
             <li *ngIf="page.current < page.last - 1">
-                <button 
-                    (click)="page.current = page.last"
-                    type="button">{{page.last}}</button>
+                <button
+                        (click)="page.current = page.last"
+                        type="button">{{page.last}}
+                </button>
             </li>
             <li *ngIf="page.current < page.last">
-                <button 
-                    class="pagination-next" 
-                    (click)="page.next()"
-                    type="button"></button>
+                <button
+                        class="pagination-next"
+                        (click)="page.next()"
+                        type="button"></button>
             </li>
         </ul>
     `,
   host: { '[class.pagination]': 'true' },
 })
 export class ClrDatagridPagination implements OnDestroy, OnInit {
-  constructor(public page: Page) {
-    /*
-         * Default page size is 10.
-         * The reason we set it in this constructor and not in the provider itself is because
-         * we don't want pagination (page size 0) if this component isn't present in the datagrid.
-         */
-    page.size = 10;
-  }
+  constructor(public page: Page) {}
+
+  private defaultSize = true;
 
   /**********
    * Subscription to the Page service for page changes.
    * Note: this only emits after the datagrid is initialized/stabalized and the page changes.
    */
   ngOnInit() {
+    /*
+     * Default page size is 10.
+     * The reason we set it in this constructor and not in the provider itself is because
+     * we don't want pagination (page size 0) if this component isn't present in the datagrid.
+     */
+    if (this.defaultSize) {
+      this.page.size = 10;
+    }
     this._pageSubscription = this.page.change.subscribe(current => this.currentChanged.emit(current));
   }
 
@@ -70,6 +75,7 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
    * Subscription to the page service changes
    */
   private _pageSubscription: Subscription;
+
   ngOnDestroy() {
     this.page.resetPageSize();
     if (this._pageSubscription) {
@@ -83,9 +89,11 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
   public get pageSize(): number {
     return this.page.size;
   }
+
   @Input('clrDgPageSize')
   public set pageSize(size: number) {
     if (typeof size === 'number') {
+      this.defaultSize = false;
       this.page.size = size;
     }
   }
@@ -96,6 +104,7 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
   public get totalItems(): number {
     return this.page.totalItems;
   }
+
   @Input('clrDgTotalItems')
   public set totalItems(total: number) {
     if (typeof total === 'number') {
@@ -109,6 +118,7 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
   public get lastPage(): number {
     return this.page.last;
   }
+
   @Input('clrDgLastPage')
   public set lastPage(last: number) {
     if (typeof last === 'number') {
@@ -122,6 +132,7 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
   public get currentPage(): number {
     return this.page.current;
   }
+
   @Input('clrDgPage')
   public set currentPage(page: number) {
     if (typeof page === 'number') {

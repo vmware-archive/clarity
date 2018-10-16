@@ -83,6 +83,25 @@ export function addHelpers(): void {
       });
       return (this._context = new TestContext<D, C>(clarityDirective, testComponent));
     };
+
+    this.createWithOverride = <D, C>(
+      clarityDirective: Type<D>,
+      testComponent: Type<C>,
+      providers: any[] = [],
+      extraDirectives: Type<any>[] = [],
+      serviceOverrides: any[]
+    ) => {
+      TestBed.configureTestingModule({
+        imports: [ClarityModule],
+        declarations: [testComponent, ...extraDirectives],
+        providers: providers,
+      }).overrideComponent(clarityDirective, {
+        set: {
+          providers: serviceOverrides,
+        },
+      });
+      return (this._context = new TestContext<D, C>(clarityDirective, testComponent));
+    };
   });
   afterEach(function() {
     if (this._context) {

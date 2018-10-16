@@ -6,6 +6,8 @@
 import { Directive, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
+import { DatagridRenderStep } from '../enums/render-step.enum';
+
 import { DatagridColumnResizer } from './column-resizer';
 import { STRICT_WIDTH_CLASS } from './constants';
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
@@ -16,15 +18,19 @@ export class DatagridHeaderRenderer implements OnDestroy {
   constructor(
     private el: ElementRef,
     private renderer: Renderer2,
-    organizer: DatagridRenderOrganizer,
+    private organizer: DatagridRenderOrganizer,
     private domAdapter: DomAdapter,
     private columnResizer: DatagridColumnResizer
   ) {
-    this.subscriptions.push(organizer.clearWidths.subscribe(() => this.clearWidth()));
-    this.subscriptions.push(organizer.detectStrictWidths.subscribe(() => this.detectStrictWidth()));
+    this.subscriptions.push(
+      this.organizer.filterRenderSteps(DatagridRenderStep.CLEAR_WIDTHS).subscribe(() => this.clearWidth())
+    );
+    this.subscriptions.push(
+      this.organizer
+        .filterRenderSteps(DatagridRenderStep.DETECT_STRICT_WIDTHS)
+        .subscribe(() => this.detectStrictWidth())
+    );
   }
-
-  private subscriptions: Subscription[] = [];
 
   /**
    * Indicates if the column has a strict width, so it doesn't shrink or expand based on the content.
@@ -32,6 +38,7 @@ export class DatagridHeaderRenderer implements OnDestroy {
   public strictWidth: number;
   private widthSet: boolean = false;
 
+  private subscriptions: Subscription[] = [];
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
@@ -66,8 +73,8 @@ export class DatagridHeaderRenderer implements OnDestroy {
         this.columnResizer.columnResizeBy = 0;
         this.widthSet = false;
       }
+      // Don't set width if there is a user-defined one. Just add the strict width class.
       this.renderer.addClass(this.el.nativeElement, STRICT_WIDTH_CLASS);
-      // We don't actually set the width if there already is a user-defined one, we just add the class
       return;
     }
     this.renderer.removeClass(this.el.nativeElement, STRICT_WIDTH_CLASS);

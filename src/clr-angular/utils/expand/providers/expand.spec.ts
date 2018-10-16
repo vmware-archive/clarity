@@ -14,10 +14,24 @@ export default function(): void {
     });
 
     it('starts with the correct default settings', function() {
+      let doesReplace = null;
+      this.expand.replace.subscribe(expandChange => {
+        doesReplace = expandChange;
+      });
       expect(this.expand.expandable).toBe(0, 'not expandable');
-      expect(this.expand.replace).toBe(false, 'not replacing the row');
+      expect(doesReplace).toBe(false, 'not replacing the row');
       expect(this.expand.loading).toBe(false, 'already loaded');
       expect(this.expand.expanded).toBe(false, 'collapsed');
+    });
+
+    it('notifies when cells are replaced', function() {
+      let isReplaced = null;
+      this.expand.replace.subscribe(replaceChange => {
+        isReplaced = replaceChange;
+      });
+      expect(isReplaced).toBe(false);
+      this.expand.setReplace(true);
+      expect(isReplaced).toBe(true);
     });
 
     it('implements LoadingListener', function() {

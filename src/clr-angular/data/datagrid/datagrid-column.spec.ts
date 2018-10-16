@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ViewChild } from '@angular/core';
+import { Component, Renderer2, ViewChild } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
@@ -13,16 +13,17 @@ import { DatagridStringFilter } from './built-in/filters/datagrid-string-filter'
 import { ClrDatagridColumn } from './datagrid-column';
 import { ClrDatagridHideableColumn } from './datagrid-hideable-column';
 import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
+import { ClrDatagridSortOrder } from './enums/sort-order.enum';
 import { TestContext } from './helpers.spec';
 import { ClrDatagridComparatorInterface } from './interfaces/comparator.interface';
 import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
-import { ClrDatagridSortOrder } from './interfaces/sort-order';
 import { ClrDatagridStringFilterInterface } from './interfaces/string-filter.interface';
 import { DragDispatcher } from './providers/drag-dispatcher';
 import { FiltersProvider } from './providers/filters';
 import { Page } from './providers/page';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
+import { TableSizeService } from './providers/table-size.service';
 import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from './render/render-organizer';
 
@@ -34,6 +35,8 @@ const PROVIDERS_NEEDED = [
   DragDispatcher,
   Page,
   StateDebouncer,
+  TableSizeService,
+  Renderer2,
 ];
 
 export default function(): void {
@@ -51,7 +54,7 @@ export default function(): void {
         filtersService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
         comparator = new TestComparator();
         dragDispatcherService = undefined;
-        component = new ClrDatagridColumn(sortService, filtersService, dragDispatcherService);
+        component = new ClrDatagridColumn(sortService, filtersService, dragDispatcherService, null);
       });
 
       it('has an id for identification', function() {
@@ -162,6 +165,11 @@ export default function(): void {
     });
 
     describe('Template API', function() {
+      it('provides a wrapped view for the content', function() {
+        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.directive = this.context.clarityDirective;
+        expect(this.directive._view).toBeDefined();
+      });
       it('receives an input for the comparator', function() {
         this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
         this.comparator = new TestComparator();

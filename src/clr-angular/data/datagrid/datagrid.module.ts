@@ -38,14 +38,14 @@ import { ClrDatagridPagination } from './datagrid-pagination';
 import { ClrDatagridPlaceholder } from './datagrid-placeholder';
 import { ClrDatagridRow } from './datagrid-row';
 import { ClrDatagridRowDetail } from './datagrid-row-detail';
-import { DatagridBodyRenderer } from './render/body-renderer';
 import { DatagridCellRenderer } from './render/cell-renderer';
 import { DatagridColumnResizer } from './render/column-resizer';
-import { DatagridHeadRenderer } from './render/head-renderer';
 import { DatagridHeaderRenderer } from './render/header-renderer';
 import { DatagridMainRenderer } from './render/main-renderer';
 import { DatagridRowRenderer } from './render/row-renderer';
-import { DatagridTableRenderer } from './render/table-renderer';
+import { WrappedCell } from './wrapped-cell';
+import { WrappedColumn } from './wrapped-column';
+import { WrappedRow } from './wrapped-row';
 
 export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   // Core
@@ -67,13 +67,13 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   ClrDatagridPlaceholder,
   ClrDatagridColumnToggleButton,
   ClrDatagridColumnToggleTitle,
+  WrappedCell,
+  WrappedColumn,
+  WrappedRow,
 
   // Renderers
   DatagridMainRenderer,
-  DatagridTableRenderer,
-  DatagridHeadRenderer,
   DatagridHeaderRenderer,
-  DatagridBodyRenderer,
   DatagridColumnResizer,
   DatagridRowRenderer,
   DatagridCellRenderer,
@@ -102,5 +102,6 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   ],
   declarations: [CLR_DATAGRID_DIRECTIVES],
   exports: [CLR_DATAGRID_DIRECTIVES, ClrIfExpandModule],
+  entryComponents: [WrappedCell, WrappedColumn, WrappedRow],
 })
 export class ClrDatagridModule {}

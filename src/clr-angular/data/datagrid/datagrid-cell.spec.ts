@@ -20,6 +20,11 @@ export default function(): void {
       context = this.create(ClrDatagridCell, SimpleTest, [DatagridRenderOrganizer, HideableColumnService]);
     });
 
+    it('provides a wrapped view for the content', function() {
+      this.directive = context.clarityDirective;
+      expect(this.directive._view).toBeDefined();
+    });
+
     it('projects content', function() {
       expect(context.clarityElement.textContent.trim()).toMatch('Hello world');
     });

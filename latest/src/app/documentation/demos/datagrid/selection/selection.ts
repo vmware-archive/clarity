@@ -55,7 +55,7 @@ export class DatagridSelectionDemo {
     mainExample = MAIN_EXAMPLE;
     rowSelectionExample = ROW_SELECTION_EXAMPLE;
     singleRowExample = SINGLE_ROW_EXAMPLE;
-    selectionChanceEventExample = SELECTION_CHANGE_EVENT_EXAMPLE;
+    selectionChangeEventExample = SELECTION_CHANGE_EVENT_EXAMPLE;
     users: User[];
     selected: User[] = [];
     rowSelected: User[] = [];

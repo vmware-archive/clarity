@@ -49,7 +49,7 @@ const SELECTION_CHANGE_EVENT_EXAMPLE = `
 export class DatagridSelectionSingleDemo {
     example = EXAMPLE;
     rowSelectionExample = ROW_SELECTION_EXAMPLE;
-    selectionChanceEventExample = SELECTION_CHANGE_EVENT_EXAMPLE;
+    selectionChangeEventExample = SELECTION_CHANGE_EVENT_EXAMPLE;
     users: User[];
     singleSelected: User;
     rowSelected: User;

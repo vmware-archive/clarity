@@ -68,7 +68,7 @@ const HTML_EXAMPLE = `
 const ROUTES_EXAMPLE = `
 ...
 {
-    path: "pokemons",
+    path: "pokemon",
     component: ProjectPokemon,
     children: [
         {

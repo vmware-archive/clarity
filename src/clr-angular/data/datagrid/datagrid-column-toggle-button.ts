@@ -26,5 +26,6 @@ export class ClrDatagridColumnToggleButton {
 
   click() {
     this.toggleButtons.buttonClicked(this.clrType);
+    this.toggleButtons.selectAllDisabled = true;
   }
 }

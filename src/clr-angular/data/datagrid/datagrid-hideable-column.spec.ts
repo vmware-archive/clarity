@@ -61,7 +61,7 @@ export default function(): void {
       let context: TestContext<ClrDatagridColumn<void>, HideableOutputTest>;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridColumn, HideableTest, PROVIDERS_NEEDED);
+        context = this.create(ClrDatagridColumn, HideableOutputTest, PROVIDERS_NEEDED);
       });
 
       it('creates a DatagridHideableColumn instance on the DatagridColumn', function() {
@@ -76,19 +76,22 @@ export default function(): void {
         expect(context.clarityDirective.columnId).toEqual(context.clarityDirective.hideable.id);
       });
 
-      it('emits column state change', function() {
-        let hiddenState = false;
-        context.testComponent.directive.hiddenChange.subscribe(state => (hiddenState = state));
+      it('input works correctly', function() {
+        context.testComponent.hidden = true;
+        context.detectChanges();
+        expect(context.clarityDirective.hideable.hidden).toBeTrue();
+      });
 
+      it('emits column state change', function() {
         context.clarityDirective.hideable.hidden = true;
-        expect(hiddenState).toBeTrue();
+        expect(context.testComponent.hidden).toBeTrue();
       });
     });
   });
 }
 
 @Component({
-  template: ` 
+  template: `
         <clr-dg-column>
             <ng-container *clrDgHideableColumn>
                 Name
@@ -101,7 +104,7 @@ class HideableTest {
 }
 
 @Component({
-  template: ` 
+  template: `
         <clr-dg-column>
             <!-- sugar syntax does not support @Output on structural directives, see https://github.com/angular/angular/issues/12121 -->
             <ng-template clrDgHideableColumn [(clrDgHidden)]="hidden">

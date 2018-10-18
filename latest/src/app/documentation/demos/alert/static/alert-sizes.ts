@@ -8,7 +8,7 @@ import {Component} from "@angular/core";
 const HTML_EXAMPLE = `
 <div class="alert alert-danger">
     <div class="alert-items">
-        <div class="alert-item static">
+        <div class="alert-item static" role="alert">
             <div class="alert-icon-wrapper">
                 <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
             </div>
@@ -21,7 +21,7 @@ const HTML_EXAMPLE = `
         <clr-icon aria-hidden="true" shape="close"></clr-icon>
     </button>
 </div>
-<div class="alert alert-success alert-sm">
+<div class="alert alert-success alert-sm" role="alert">
     <div class="alert-items">
         <div class="alert-item static">
             <div class="alert-icon-wrapper">

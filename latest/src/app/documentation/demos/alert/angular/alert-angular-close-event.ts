@@ -7,11 +7,11 @@ import {Component} from "@angular/core";
 
 const HTML_EXAMPLE = `
 <clr-alert [clrAlertType]="'alert-success'" (clrAlertClosedChange)="onClose()">
-    <div class="alert-item">
+    <clr-alert-item>
         <span class="alert-text">
             This alert indicates a success!
         </span>
-    </div>
+    </clr-alert-item>
 </clr-alert>
 <div>{{closeMessage}}</div>
 `;

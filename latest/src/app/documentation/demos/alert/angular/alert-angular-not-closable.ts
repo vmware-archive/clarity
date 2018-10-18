@@ -7,7 +7,7 @@ import {Component} from "@angular/core";
 
 const HTML_EXAMPLE = `
 <clr-alert [clrAlertClosable]="false">
-    <div clr-alert-item class="alert-item">
+    <clr-alert-item>
         <span class="alert-text">
             This alert cannot be dismissed.
         </span>
@@ -24,14 +24,14 @@ const HTML_EXAMPLE = `
                 </clr-dropdown-menu>
             </clr-dropdown>
         </div>
-    </div>
+    </clr-alert-item>
 </clr-alert>
 <clr-alert [clrAlertType]="'alert-warning'">
-    <div clr-alert-item class="alert-item">
+    <clr-alert-item>
         <span class="alert-text">
             Try closing this alert.
         </span>
-    </div>
+    </clr-alert-item>
 </clr-alert>
 `;
 

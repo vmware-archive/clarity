@@ -7,18 +7,18 @@ import {Component} from "@angular/core";
 
 const HTML_EXAMPLE = `
 <clr-alert [clrAlertType]="'alert-success'">
-    <div class="alert-item">
+    <clr-alert-item>
         <span class="alert-text">
             This alert indicates success.
         </span>
-    </div>
+    </clr-alert-item>
 </clr-alert>
 <clr-alert>
-    <div class="alert-item">
+    <clr-alert-item>
         <span class="alert-text">
             This is a default info alert.
         </span>
-    </div>
+    </clr-alert-item>
 </clr-alert>
 `;
 

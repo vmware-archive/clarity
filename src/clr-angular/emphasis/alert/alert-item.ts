@@ -8,9 +8,7 @@ import { Component } from '@angular/core';
 import { AlertIconAndTypesService } from './providers/icon-and-types.service';
 
 @Component({
-  // the .alert-item selector is deprecated; the :not clause is to allow us to use static
-  // examples in demos on the demo-app and website
-  selector: '.alert-item:not(.static), clr-alert-item',
+  selector: 'clr-alert-item',
   template: `
         <div class="alert-icon-wrapper">
             <clr-icon class="alert-icon" 

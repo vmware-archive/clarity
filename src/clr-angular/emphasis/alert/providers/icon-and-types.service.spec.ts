@@ -144,39 +144,5 @@ export default function(): void {
         expect(testTitle('info')).toBe(commonStrings.info);
       });
     });
-
-    describe('iconInfoFromType() -- deprecated types', function() {
-      it('returns warning icon', function() {
-        expect(testShape('alert-warning')).toBe('exclamation-triangle');
-      });
-
-      it('returns danger icon', function() {
-        expect(testShape('alert-danger')).toBe('exclamation-circle');
-      });
-
-      it('returns success icon', function() {
-        expect(testShape('alert-success')).toBe('check-circle');
-      });
-
-      it('returns info icon', function() {
-        expect(testShape('alert-info')).toBe('info-circle');
-      });
-
-      it('returns .alert-warning', function() {
-        expect(testCssClass('alert-warning')).toBe('alert-warning');
-      });
-
-      it('returns .alert-danger', function() {
-        expect(testCssClass('alert-danger')).toBe('alert-danger');
-      });
-
-      it('returns .alert-success', function() {
-        expect(testCssClass('alert-success')).toBe('alert-success');
-      });
-
-      it('returns .alert-info', function() {
-        expect(testCssClass('alert-info')).toBe('alert-info');
-      });
-    });
   });
 }

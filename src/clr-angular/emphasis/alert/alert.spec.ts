@@ -118,9 +118,6 @@ export default function(): void {
 
     it('Has an ARIA role of alert', () => {
       const myAlert: HTMLElement = compiled.querySelector('.alert');
-      console.log('#########################');
-      console.log(myAlert.getAttribute('role'));
-      console.log('#########################');
       expect(myAlert.getAttribute('role')).toBe('alert');
     });
 

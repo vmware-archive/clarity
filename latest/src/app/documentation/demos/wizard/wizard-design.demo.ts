@@ -52,12 +52,12 @@ import { DisableFocusTrap } from "../../utils/disable-focus-trap";
             .wizdemo-color-block.is-icon.active {
                 border-color: #fff;
                 color: #fff;
-                background: #007cbb;
+                background: #0079B8;
             }
         `,
         `
             .wizdemo-color-block.is-icon.active:hover {
-                border-color: #007cbb;
+                border-color: #0079B8;
             }
         `,
         `

@@ -10,7 +10,7 @@
                 <g id="Group-5" transform="translate(117.000000, 0.000000)">
                     <g id="in-progress" transform="translate(0.000000, 7.000000)">
                         <g transform="translate(6.000000, 6.000000) scale(1, -1) translate(-6.000000, -6.000000) ">
-                            <path d="M12,6 C12,2.6862915 9.3137085,0 6,0 C2.6862915,0 0,2.6862915 0,6 L12,6 Z" id="Oval-1" fill="#007CBB"></path>
+                            <path d="M12,6 C12,2.6862915 9.3137085,0 6,0 C2.6862915,0 0,2.6862915 0,6 L12,6 Z" id="Oval-1" fill="#0079B8"></path>
                             <path d="M12,12 C12,8.6862915 9.3137085,6 6,6 C2.6862915,6 0,8.6862915 0,12 L12,12 Z" id="Oval-1-Copy" fill="#89CBDF" transform="translate(6.000000, 9.000000) scale(1, -1) translate(-6.000000, -9.000000) "></path>
                         </g>
                     </g>

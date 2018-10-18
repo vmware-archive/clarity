@@ -464,7 +464,7 @@ _:-ms-fullscreen,
         }
     }
     &.is-dont-block &-text::before {
-        background: #E62700;
+        background: #e12200;
     }
     &.is-warn-block &-text::before {
         background: #EB8D00;
@@ -473,7 +473,7 @@ _:-ms-fullscreen,
         color: #318700;
     }
     &.is-dont-block &-do-dont {
-        color: #E62700;
+        color: #e12200;
     }
     &.is-warn-block &-warn {
         color: #EB8D00;

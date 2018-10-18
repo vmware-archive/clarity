@@ -116,6 +116,14 @@ export default function(): void {
       expect(compiled.querySelector('.alert')).toBeNull();
     });
 
+    it('Has an ARIA role of alert', () => {
+      const myAlert: HTMLElement = compiled.querySelector('.alert');
+      console.log('#########################');
+      console.log(myAlert.getAttribute('role'));
+      console.log('#########################');
+      expect(myAlert.getAttribute('role')).toBe('alert');
+    });
+
     it('shows and hides the alert based on the clrAlertClosed input', () => {
       expect(compiled.querySelector('.alert')).not.toBeNull();
       fixture.componentInstance.closed = true;

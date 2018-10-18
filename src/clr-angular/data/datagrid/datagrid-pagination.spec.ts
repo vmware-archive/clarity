@@ -140,12 +140,32 @@ export default function(): void {
         expect(context.testComponent.current).toBe(2);
       });
 
-      it("doesn't display the next button on the last page", function() {
+      it('displays a last button', function() {
+        context.testComponent.size = 10;
+        context.testComponent.total = 100;
+        context.testComponent.current = 1;
+        context.detectChanges();
+        const last = context.clarityElement.querySelector('.pagination-last');
+        expect(last).not.toBeNull();
+        last.click();
+        context.detectChanges();
+        expect(context.testComponent.current).toBe(10);
+      });
+
+      it('disables the next button on the last page', function() {
         context.testComponent.size = 10;
         context.testComponent.total = 100;
         context.testComponent.current = 10;
         context.detectChanges();
-        expect(context.clarityElement.querySelector('.pagination-next')).toBeNull();
+        expect(context.clarityElement.querySelector('.pagination-next:disabled')).not.toBeNull();
+      });
+
+      it('disables the last button on the last page', function() {
+        context.testComponent.size = 10;
+        context.testComponent.total = 100;
+        context.testComponent.current = 10;
+        context.detectChanges();
+        expect(context.clarityElement.querySelector('.pagination-last:disabled')).not.toBeNull();
       });
 
       it('displays a previous button', function() {
@@ -160,38 +180,117 @@ export default function(): void {
         expect(context.testComponent.current).toBe(9);
       });
 
-      it("doesn't display the previous button on the first page", function() {
+      it('displays a first button', function() {
+        context.testComponent.size = 10;
+        context.testComponent.total = 100;
+        context.testComponent.current = 10;
+        context.detectChanges();
+        const first = context.clarityElement.querySelector('.pagination-first');
+        expect(first).not.toBeNull();
+        first.click();
+        context.detectChanges();
+        expect(context.testComponent.current).toBe(1);
+      });
+
+      it('disables the previous button on the first page', function() {
         context.testComponent.size = 10;
         context.testComponent.total = 100;
         context.testComponent.current = 1;
         context.detectChanges();
-        expect(context.clarityElement.querySelector('.pagination-previous')).toBeNull();
+        expect(context.clarityElement.querySelector('.pagination-previous:disabled')).not.toBeNull();
       });
 
-      it('displays the first page, last page, and pages around the current one', function() {
+      it('disables the first button on the first page', function() {
         context.testComponent.size = 10;
-        context.testComponent.total = 1000;
-        context.testComponent.current = 42;
+        context.testComponent.total = 100;
+        context.testComponent.current = 1;
         context.detectChanges();
-        expect(context.clarityElement.textContent.trim()).toMatch(/^1\D{3}41\s4243\s\D{3}100$/);
+        expect(context.clarityElement.querySelector('.pagination-first:disabled')).not.toBeNull();
       });
 
-      it('displays clickable page numbers', function() {
+      it('changes the current page on enter', function() {
         context.testComponent.size = 10;
-        context.testComponent.total = 1000;
-        context.testComponent.current = 42;
+        context.testComponent.total = 100;
+        context.testComponent.current = 1;
         context.detectChanges();
-        const buttons = context.clarityElement.querySelectorAll('button');
-        const previousPageButton = buttons[2];
-        // We check we have the correct button
-        expect(previousPageButton.textContent.trim()).toBe('41');
-        previousPageButton.click();
-        expect(context.testComponent.current).toBe(41);
-        const lastPageButton = buttons[4];
-        // We check we have the correct button
-        expect(lastPageButton.textContent.trim()).toBe('100');
-        lastPageButton.click();
-        expect(context.testComponent.current).toBe(100);
+
+        const current = context.clarityElement.querySelector('.pagination-current');
+        expect(current).not.toBeNull();
+        current.value = 4;
+        current.dispatchEvent(new Event('input'));
+        current.dispatchEvent(
+          new KeyboardEvent('keydown', {
+            code: 'Enter',
+            key: 'Enter',
+          })
+        );
+        // Note: the toString() wouldn't be necessary if we used input type='number',
+        // but we decided to opt for type='text' for now due to limited cross-browser support
+        expect(context.testComponent.current.toString()).toBe('4');
+      });
+
+      it('changes the current page on blur', function() {
+        context.testComponent.size = 10;
+        context.testComponent.total = 100;
+        context.testComponent.current = 1;
+        context.detectChanges();
+
+        const current = context.clarityElement.querySelector('.pagination-current');
+        expect(current).not.toBeNull();
+        current.value = 4;
+        current.dispatchEvent(new Event('input'));
+        current.dispatchEvent(new Event('blur'));
+        // Note: the toString() wouldn't be necessary if we used input type='number',
+        // but we decided to opt for type='text' for now due to limited cross-browser support
+        expect(context.testComponent.current.toString()).toBe('4');
+      });
+
+      it('ignores the current page when input value is invalid', function() {
+        context.testComponent.size = 10;
+        context.testComponent.total = 100;
+        context.testComponent.current = 4;
+        context.detectChanges();
+
+        const current = context.clarityElement.querySelector('.pagination-current');
+        expect(current).not.toBeNull();
+        current.value = 'foo';
+        current.dispatchEvent(new Event('input'));
+        current.dispatchEvent(new Event('blur'));
+        // Note: the toString() wouldn't be necessary if we used input type='number',
+        // but we decided to opt for type='text' for now due to limited cross-browser support
+        expect(context.testComponent.current.toString()).toBe('4');
+      });
+
+      it('sets the current page to 1 when input value is less than 1', function() {
+        context.testComponent.size = 10;
+        context.testComponent.total = 100;
+        context.testComponent.current = 4;
+        context.detectChanges();
+
+        const current = context.clarityElement.querySelector('.pagination-current');
+        expect(current).not.toBeNull();
+        current.value = 0;
+        current.dispatchEvent(new Event('input'));
+        current.dispatchEvent(new Event('blur'));
+        // Note: the toString() wouldn't be necessary if we used input type='number',
+        // but we decided to opt for type='text' for now due to limited cross-browser support
+        expect(context.testComponent.current.toString()).toBe('1');
+      });
+
+      it('sets the current page to last page when input value is greater than the last page', function() {
+        context.testComponent.size = 10;
+        context.testComponent.total = 100;
+        context.testComponent.current = 4;
+        context.detectChanges();
+
+        const current = context.clarityElement.querySelector('.pagination-current');
+        expect(current).not.toBeNull();
+        current.value = 20;
+        current.dispatchEvent(new Event('input'));
+        current.dispatchEvent(new Event('blur'));
+        // Note: the toString() wouldn't be necessary if we used input type='number',
+        // but we decided to opt for type='text' for now due to limited cross-browser support
+        expect(context.testComponent.current.toString()).toBe('10');
       });
     });
   });

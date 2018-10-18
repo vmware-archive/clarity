@@ -3,57 +3,56 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
-
 import { Page } from './providers/page';
+import { ClrDatagridPageSize } from './datagrid-page-size';
 
 @Component({
   selector: 'clr-dg-pagination',
   template: `
-        <div class="pagination-description">
-            <ng-content></ng-content>
-        </div>
-        <ul class="pagination-list" *ngIf="page.last > 1">
-            <li *ngIf="page.current > 1">
-                <button
-                        class="pagination-previous"
-                        (click)="page.previous()"
-                        type="button"></button>
-            </li>
-            <li *ngIf="page.current > 2">
-                <button (click)="page.current = 1" type="button">1</button>
-            </li>
-            <li *ngIf="page.current > 3">...</li>
-            <li *ngFor="let pageNum of middlePages" [class.pagination-current]="pageNum === page.current">
-                <button
-                        *ngIf="pageNum !== page.current; else noButton"
-                        (click)="page.current = pageNum"
-                        type="button">{{pageNum}}
-                </button>
-                <ng-template #noButton>{{pageNum}}</ng-template>
-            </li>
-            <li *ngIf="page.current < page.last - 2">...</li>
-            <li *ngIf="page.current < page.last - 1">
-                <button
-                        (click)="page.current = page.last"
-                        type="button">{{page.last}}
-                </button>
-            </li>
-            <li *ngIf="page.current < page.last">
-                <button
-                        class="pagination-next"
-                        (click)="page.next()"
-                        type="button"></button>
-            </li>
-        </ul>
+    <div class="pagination-size" *ngIf="_pageSizeComponent">
+      <ng-content select="clr-dg-page-size"></ng-content>
+    </div>
+    <div class="pagination-description">
+      <ng-content></ng-content>
+    </div>
+    <div class="pagination-list" *ngIf="page.last > 1">
+      <button class="pagination-first" [disabled]="page.current <= 1" (click)="page.current = 1">
+        <clr-icon shape="step-forward-2 down"></clr-icon>
+      </button>
+      <button class="pagination-previous" [disabled]="page.current <= 1" (click)="page.current = page.current - 1">
+        <clr-icon shape="angle left"></clr-icon>
+      </button>
+      <input #currentPageInput type="text" class="pagination-current" [size]="page.last.toString().length" [value]="page.current"
+             (keydown.enter)="updateCurrentPage($event)" (blur)="updateCurrentPage($event)"/>&nbsp;/&nbsp;<span>{{page.last}}</span>
+      <button class="pagination-next" [disabled]="page.current >= page.last" (click)="page.current = page.current + 1">
+        <clr-icon shape="angle right"></clr-icon>
+      </button>
+      <button class="pagination-last" [disabled]="page.current >= page.last" (click)="page.current = page.last">
+        <clr-icon shape="step-forward-2 up"></clr-icon>
+      </button>
+    </div>
     `,
   host: { '[class.pagination]': 'true' },
 })
 export class ClrDatagridPagination implements OnDestroy, OnInit {
-  constructor(public page: Page) {}
+  @ContentChild(ClrDatagridPageSize) _pageSizeComponent: ClrDatagridPageSize;
+  @ViewChild('currentPageInput') currentPageInputRef: ElementRef;
 
   private defaultSize = true;
+
+  constructor(public page: Page) {}
 
   /**********
    * Subscription to the Page service for page changes.
@@ -183,5 +182,30 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
       middlePages.push(this.page.current + 1);
     }
     return middlePages;
+  }
+
+  /**
+   * We only update the pagination's current page on blur of the input field, or
+   * when they press enter.
+   */
+  public updateCurrentPage(event: any): void {
+    const parsed = parseInt(event.target.value, 10);
+
+    // if the input value, is not a number, we don't update the page
+    if (!isNaN(parsed)) {
+      if (parsed < 1) {
+        this.page.current = 1;
+      } else if (parsed > this.page.last) {
+        this.page.current = this.page.last;
+      } else {
+        this.page.current = parsed;
+      }
+    }
+
+    /**
+     * Set the input's value to the new current page. This is needed because the code
+     * above may have changed the value from what the user entered in.
+     */
+    this.currentPageInputRef.nativeElement.value = this.page.current;
   }
 }

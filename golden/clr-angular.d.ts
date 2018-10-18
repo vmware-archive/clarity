@@ -378,8 +378,10 @@ export declare class ClrDatagridModule {
 }
 
 export declare class ClrDatagridPagination implements OnDestroy, OnInit {
+    _pageSizeComponent: ClrDatagridPageSize;
     currentChanged: EventEmitter<number>;
     currentPage: number;
+    currentPageInputRef: ElementRef;
     readonly firstItem: number;
     readonly lastItem: number;
     lastPage: number;
@@ -392,6 +394,7 @@ export declare class ClrDatagridPagination implements OnDestroy, OnInit {
     ngOnDestroy(): void;
     ngOnInit(): void;
     previous(): void;
+    updateCurrentPage(event: any): void;
 }
 
 export declare class ClrDatagridPlaceholder<T = any> {

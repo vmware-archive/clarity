@@ -10,29 +10,6 @@ import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.se
 
 export default function(): void {
   describe('Datagrid Column Toggle Button component', function() {
-    describe('Typescript API', function() {
-      let columnToggleButtons: ColumnToggleButtonsService;
-      let component: ClrDatagridColumnToggleButton;
-
-      beforeEach(function() {
-        columnToggleButtons = new ColumnToggleButtonsService();
-        component = new ClrDatagridColumnToggleButton(columnToggleButtons);
-      });
-
-      it('calls the click method', function() {
-        spyOn(columnToggleButtons, 'buttonClicked');
-        component.click();
-        expect(columnToggleButtons.buttonClicked).toHaveBeenCalledWith(component.clrType);
-      });
-
-      it('calls the click method when clrType is `ok`', function() {
-        component.clrType = 'ok';
-        spyOn(columnToggleButtons, 'buttonClicked');
-        component.click();
-        expect(columnToggleButtons.buttonClicked).toHaveBeenCalledWith(component.clrType);
-      });
-    });
-
     describe('View', function() {
       // Until we can properly type "this"
       let context: TestContext<ClrDatagridColumnToggleButton, ButtonTest>;
@@ -55,20 +32,22 @@ export default function(): void {
       });
 
       it('should disable the button when all are active', function() {
-        context.testComponent.type = 'selectAll';
         columnToggleButtons.selectAllDisabled = true;
         context.detectChanges();
         expect(button.disabled).toBe(true);
+      });
+
+      it('calls the click method', function() {
+        spyOn(columnToggleButtons, 'buttonClicked');
+        button.click();
+        context.detectChanges();
+        expect(columnToggleButtons.buttonClicked).toHaveBeenCalled();
       });
     });
   });
 }
 
 @Component({
-  template: `
-        <clr-dg-column-toggle-button [clrType]="type">Testing 1 2 3</clr-dg-column-toggle-button>
-    `,
+  template: `<clr-dg-column-toggle-button>Testing 1 2 3</clr-dg-column-toggle-button>`,
 })
-class ButtonTest {
-  type = 'selectAll';
-}
+class ButtonTest {}

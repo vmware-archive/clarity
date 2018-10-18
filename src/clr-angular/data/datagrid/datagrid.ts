@@ -153,15 +153,6 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
   }
 
   /**
-   * stay backwards compatible , will be renamed to clrDgRowSelection
-   * @deprecated since 0.12
-   */
-  @Input('clDgRowSelection')
-  set rowSelectionModeDeprecated(value: boolean) {
-    this.rowSelectionMode = value;
-  }
-
-  /**
    * Indicates if all currently displayed items are selected
    */
   public get allSelected() {

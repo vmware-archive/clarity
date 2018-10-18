@@ -534,7 +534,7 @@ export default function(): void {
         const testPage = pageCollectionService.lastPage;
         spyOn(testPage.onCommit, 'emit');
 
-        wiz.navService.setCurrentPage(testPage);
+        wiz.navService.currentPage = testPage;
         expect(wiz.currentPage).toBe(testPage, 'last page was made current');
         context.detectChanges();
 

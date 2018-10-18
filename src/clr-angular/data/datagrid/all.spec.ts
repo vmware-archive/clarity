@@ -28,6 +28,7 @@ import DatagridHideableColumnSpec from './datagrid-hideable-column.model.spec';
 import DatagridHideableColumnDirectiveSpec from './datagrid-hideable-column.spec';
 import DatagridItemsTrackBySpecs from './datagrid-items-trackby.spec';
 import DatagridItemsSpecs from './datagrid-items.spec';
+import DatagridPageSizeSpecs from './datagrid-page-size.spec';
 import DatagridPaginationSpecs from './datagrid-pagination.spec';
 import DatagridPlaceholderSpecs from './datagrid-placeholder.spec';
 import DatagridRowDetailSpecs from './datagrid-row-detail.spec';
@@ -79,6 +80,7 @@ describe('Datagrid', function() {
     DatagridItemsTrackBySpecs();
     DatagridRowSpecs();
     DatagridRowDetailSpecs();
+    DatagridPageSizeSpecs();
     DatagridPaginationSpecs();
     DatagridFooterSpecs();
     DatagridPlaceholderSpecs();

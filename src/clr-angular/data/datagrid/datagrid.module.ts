@@ -35,6 +35,7 @@ import { ClrDatagridHideableColumn } from './datagrid-hideable-column';
 import { ClrDatagridItems } from './datagrid-items';
 import { ClrDatagridItemsTrackBy } from './datagrid-items-trackby';
 import { ClrDatagridPagination } from './datagrid-pagination';
+import { ClrDatagridPageSize } from './datagrid-page-size';
 import { ClrDatagridPlaceholder } from './datagrid-placeholder';
 import { ClrDatagridRow } from './datagrid-row';
 import { ClrDatagridRowDetail } from './datagrid-row-detail';
@@ -64,6 +65,7 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   ClrDatagridCell,
   ClrDatagridFooter,
   ClrDatagridPagination,
+  ClrDatagridPageSize,
   ClrDatagridPlaceholder,
   ClrDatagridColumnToggleButton,
   ClrDatagridColumnToggleTitle,

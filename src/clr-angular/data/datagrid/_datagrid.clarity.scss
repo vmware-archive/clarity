@@ -633,13 +633,49 @@
       display: flex;
       align-items: center;
 
+      &-size {
+        display: block;
+        flex: 1 1 auto;
+        white-space: nowrap;
+        text-align: right;
+
+        .clr-select-wrapper {
+          &::after {
+            top: 0.5rem;
+          }
+        }
+
+        .clr-page-size-select {
+          font-size: 100%;
+          margin-left: 0.5rem;
+          height: 1rem;
+          line-height: 1rem;
+          vertical-align: middle;
+        }
+      }
+
       &-description {
         white-space: nowrap;
       }
 
+      &-description,
+      &-size {
+        &::after {
+          content: '';
+          display: inline-block;
+          height: 1rem;
+          width: $clr-rem-1px;
+          background-color: $clr-table-border-color;
+          margin: 0 0.5rem;
+          vertical-align: middle;
+        }
+      }
+
       &-list {
-        margin-left: 1.5rem;
+        margin: 0 0.5rem;
         height: calc(1.5rem - #{2 * $clr-default-borderwidth});
+        display: flex;
+        align-items: center;
       }
     }
 
@@ -862,43 +898,62 @@
     justify-content: center;
     align-items: stretch;
 
-    > * {
-      padding: 0 0.1rem;
-      margin-left: 0.3rem;
+    .pagination-current {
+      background: none;
+      background-color: $clr-forms-textarea-background-color;
+      border: $clr-default-borderwidth solid $clr-datagrid-pagination-input-border-color;
+      border-radius: $clr-global-borderradius;
+      line-height: 1rem;
+      min-width: 1rem;
+      text-align: center;
+      transition: none !important;
 
-      &:first-child {
-        margin-left: 0;
+      &:focus,
+      &.clr-focus {
+        background: none;
+        border: $clr-default-borderwidth solid $clr-datagrid-pagination-input-border-focus-color;
+        box-shadow: 0 0 $clr-default-borderwidth $clr-datagrid-pagination-input-border-focus-color;
       }
     }
 
-    .pagination-current {
-      font-weight: 600;
-      border-bottom: (2 * $clr-default-borderwidth) solid $action-blues-dark-midtone;
+    > * {
+      padding: 0 0.1rem;
     }
 
-    $clr-pagination-extra-margin: 0.25rem;
+    $clr-pagination-extra-margin: 0.5rem;
+    .pagination-first,
+    .pagination-last,
     .pagination-previous,
     .pagination-next {
-      display: inline-block;
-      vertical-align: middle;
+      display: flex;
+      align-items: center;
       width: $clr-datagrid-icon-size;
       height: $clr-datagrid-icon-size;
       background-repeat: no-repeat;
       background-size: contain;
     }
 
+    .pagination-first:disabled,
+    .pagination-last:disabled,
+    .pagination-previous:disabled,
+    .pagination-next:disabled {
+      color: $clr-datagrid-pagination-btn-disabled-color;
+      opacity: $clr-datagrid-pagination-btn-disabled-opacity;
+    }
+
+    .pagination-first,
     .pagination-previous {
       margin-right: $clr-pagination-extra-margin;
-      background-image: generateLeftCaretIcon($gray-dark);
     }
+
+    .pagination-last,
     .pagination-next {
       margin-left: $clr-pagination-extra-margin;
-      background-image: generateRightCaretIcon($gray-dark);
     }
 
     button {
       @include clr-no-styles-button();
-      color: $gray-dark;
+      color: $clr-datagrid-pagination-btn-color;
       // FIXME: this should be in the general reboot
       cursor: pointer;
     }

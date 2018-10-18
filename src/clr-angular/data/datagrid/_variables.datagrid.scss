@@ -9,6 +9,11 @@ $clr-datagrid-fixed-column-size: (2 * $clr-table-cellpadding) + $clr-table-lineh
 $clr-datagrid-font-color: #adbbc4;
 $clr-datagrid-row-hover: $clr-light-gray;
 $clr-datagrid-action-toggle: $clr-dark-gray;
+$clr-datagrid-pagination-btn-color: $clr-dark-gray;
+$clr-datagrid-pagination-btn-disabled-color: $clr-gray;
+$clr-datagrid-pagination-btn-disabled-opacity: 0.56;
+$clr-datagrid-pagination-input-border-color: $clr-light-midtone-gray;
+$clr-datagrid-pagination-input-border-focus-color: $clr-action-blue-light;
 $clr-datagrid-popover-bg-color: $clr-white;
 $clr-datagrid-popover-border-color: $clr-light-midtone-gray;
 $clr-datagrid-action-popover-hover-color: $gray-light;

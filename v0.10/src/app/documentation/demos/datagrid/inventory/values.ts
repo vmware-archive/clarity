@@ -19,7 +19,7 @@ export const COLORS: string[] = [
     "White", "Gray", "Black"
 ];
 
-export const POKEMONS: Pokemon[] = [
+export const POKEMON: Pokemon[] = [
     {number: 1, name: "Bulbasaur"},    {number: 2, name: "Ivysaur"},      {number: 3, name: "Venusaur"},
     {number: 4, name: "Charmander"},   {number: 5, name: "Charmeleon"},   {number: 6, name: "Charizard"},
     {number: 7, name: "Squirtle"},     {number: 8, name: "Wartortle"},    {number: 9, name: "Blastoise"},

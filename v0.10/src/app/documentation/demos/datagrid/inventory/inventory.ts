@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {User} from "./user";
-import {BEGINNING, COLORS, NAMES, NOW, POKEMONS} from "./values";
+import {BEGINNING, COLORS, NAMES, NOW, POKEMON} from "./values";
 
 export class Inventory {
     public size = 100;
@@ -25,7 +25,7 @@ export class Inventory {
                 name: NAMES[randomInt(NAMES.length)],
                 creation: new Date(BEGINNING + randomInt(NOW - BEGINNING)),
                 color: COLORS[randomInt(COLORS.length)],
-                pokemon: POKEMONS[randomInt(POKEMONS.length)]
+                pokemon: POKEMON[randomInt(POKEMON.length)]
             });
         }
     }

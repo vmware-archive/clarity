@@ -21,7 +21,7 @@
                             <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
                             <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
                         </g>
-                        <rect id="Rectangle-7" fill="#007CBB" x="30" y="144" width="72" height="18" rx="2"></rect>
+                        <rect id="Rectangle-7" fill="#0079B8" x="30" y="144" width="72" height="18" rx="2"></rect>
                     </g>
                     <path d="M30.3246753,51 L129.728362,51" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>
                     <rect id="Rectangle-6" fill="#EEEEEE" x="30" y="108" width="52" height="6"></rect>

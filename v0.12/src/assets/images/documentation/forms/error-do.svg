@@ -20,7 +20,7 @@
                         <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
                         <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
                     </g>
-                    <rect id="Rectangle-7" fill="#007CBB" x="30" y="168" width="66" height="18" rx="2"></rect>
+                    <rect id="Rectangle-7" fill="#0079B8" x="30" y="168" width="66" height="18" rx="2"></rect>
                 </g>
                 <rect id="Rectangle-6" fill="#EEEEEE" x="137" y="62" width="46" height="6"></rect>
                 <path d="M139.324675,87 L238.728362,87" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>

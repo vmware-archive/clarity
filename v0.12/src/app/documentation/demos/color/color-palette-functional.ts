@@ -50,8 +50,8 @@ export class ColorFunctional {
         {
             legend: "Buttons and app-level alerts",
             colors: [
-                {value: "#007CBB", text: "light"},
-                {value: "#E62700", text: "light"},
+                {value: "#0079B8", text: "light"},
+                {value: "#e12200", text: "light"},
                 {value: "#C92100", text: "light"},
                 {value: "#C25400", text: "light"},
                 {value: "#318700", text: "light"},
@@ -153,7 +153,7 @@ export class ColorFunctional {
                 {value: "#7F6509", text: "light"},
                 {value: "#737373", text: "light"},
                 {value: "#AD73C8", text: "dark"},
-                {value: "#007CBB", text: "light"},
+                {value: "#0079B8", text: "light"},
                 {value: "#FF9C32", text: "dark"},
                 {value: "#89CBDF", text: "dark"}
             ]

@@ -1016,11 +1016,15 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://vmware.github.io/clarity/news/0.13.4</loc>
+        <loc>https://vmware.github.io/clarity/news/0.13.6</loc>
         <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>https://vmware.github.io/clarity/news/0.13.5</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://vmware.github.io/clarity/news/0.13.4</loc>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -1053,6 +1057,10 @@
     </url>
     <url>
         <loc>https://vmware.github.io/clarity/news/0.13.0-beta.1</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://vmware.github.io/clarity/news/0.12.14</loc>
         <changefreq>daily</changefreq>
     </url>
     <url>

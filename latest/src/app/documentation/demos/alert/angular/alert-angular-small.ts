@@ -7,18 +7,18 @@ import {Component} from "@angular/core";
 
 const HTML_EXAMPLE = `
 <clr-alert [clrAlertSizeSmall]="true">
-    <div class="alert-item">
+    <clr-alert-item>
         <span class="alert-text">
             This is a small alert.
         </span>
-    </div>
+    </clr-alert-item>
 </clr-alert>
 <clr-alert>
-    <div class="alert-item">
+    <clr-alert-item>
         <span class="alert-text">
             This is a regular alert.
         </span>
-    </div>
+    </clr-alert-item>
 </clr-alert>
 `;
 

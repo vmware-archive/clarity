@@ -9,7 +9,7 @@ const HTML_EXAMPLE = `
 <div class="modal static bump-down">
     <div class="modal-dialog" role="dialog" aria-hidden="true">
         <div class="modal-content">
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" role="alert">
                 <div class="alert-items">
                     <div class="alert-item static">
                         <div class="alert-icon-wrapper">

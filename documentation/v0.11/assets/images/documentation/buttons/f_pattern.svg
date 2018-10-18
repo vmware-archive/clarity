@@ -14,16 +14,16 @@
             <g id="Group-4" transform="translate(708.000000, 974.000000)">
                 <g id="Modal/Normal" transform="translate(42.000000, 46.000000)">
                     <g id="Group-10">
-                        <g id="Button/Primary" transform="translate(7.000000, 168.000000)" fill="#007CBB">
+                        <g id="Button/Primary" transform="translate(7.000000, 168.000000)" fill="#0079B8">
                             <rect id="background" x="0" y="0" width="78" height="36" rx="3"></rect>
                         </g>
-                        <g id="Button/Secondary" transform="translate(98.000000, 168.000000)" stroke="#007CBB" stroke-width="2">
+                        <g id="Button/Secondary" transform="translate(98.000000, 168.000000)" stroke="#0079B8" stroke-width="2">
                             <use id="background" mask="url(#mask-2)" xlink:href="#path-1"></use>
                         </g>
                         <g id="Group-3" opacity="0.05" transform="translate(6.000000, 0.000000)">
                             <rect id="Rectangle-6" fill="#000000" x="1" y="0" width="108" height="24"></rect>
                             <rect id="Rectangle-6" fill="#FFFFFF" x="12" y="180" width="56" height="12"></rect>
-                            <rect id="Rectangle-6" fill="#007CBB" x="104" y="179" width="56" height="12"></rect>
+                            <rect id="Rectangle-6" fill="#0079B8" x="104" y="179" width="56" height="12"></rect>
                             <rect id="Rectangle-6" fill="#565656" x="0" y="42" width="312" height="14"></rect>
                             <rect id="Rectangle-6" fill="#565656" x="0" y="65" width="294" height="14"></rect>
                             <rect id="Rectangle-6" fill="#565656" x="0" y="89" width="221" height="14"></rect>

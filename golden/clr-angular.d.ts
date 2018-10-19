@@ -356,11 +356,13 @@ export declare class ClrDatagridFooter<T = any> implements OnInit {
 }
 
 export declare class ClrDatagridHideableColumn {
+    clrDgHidden: boolean;
     clrDgHideableColumn: {
         hidden: boolean;
     };
     column: DatagridHideableColumnModel;
     columnId: string;
+    hiddenChange: EventEmitter<boolean>;
     constructor(templateRef: TemplateRef<any>, viewContainerRef: ViewContainerRef, dgColumn: ClrDatagridColumn<any>);
 }
 

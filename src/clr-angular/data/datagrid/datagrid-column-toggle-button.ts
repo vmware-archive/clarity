@@ -3,15 +3,15 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { ColumnToggleButtons, ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
+import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
 
 @Component({
   selector: 'clr-dg-column-toggle-button',
   template: `
         <button class="btn btn-sm btn-link"
-            (click)="click()"
+            (click)="toggleButtons.buttonClicked()"
             [disabled]="toggleButtons.selectAllDisabled"
             type="button">
             <ng-content></ng-content>
@@ -19,12 +19,5 @@ import { ColumnToggleButtons, ColumnToggleButtonsService } from './providers/col
     `,
 })
 export class ClrDatagridColumnToggleButton {
-  /** @deprecated since 0.13 */
-  @Input() clrType: ColumnToggleButtons = 'selectAll';
-
   constructor(public toggleButtons: ColumnToggleButtonsService) {}
-
-  click() {
-    this.toggleButtons.buttonClicked(this.clrType);
-  }
 }

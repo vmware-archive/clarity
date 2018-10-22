@@ -20,14 +20,13 @@ export default function(): void {
       expect(service.selectAllButtonClicked.subscribe).toBeDefined();
     });
 
-    it('should emit clicks only if clrType is `selectAll`', function() {
+    it('should emit clicks', function() {
       let calls = 0;
       service.selectAllButtonClicked.subscribe(() => {
         calls++;
       });
 
-      service.buttonClicked('ok');
-      service.buttonClicked('selectAll');
+      service.buttonClicked();
       expect(calls).toEqual(1);
     });
   });

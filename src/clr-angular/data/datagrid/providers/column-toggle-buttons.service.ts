@@ -7,8 +7,6 @@ import { Injectable, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
 
-export type ColumnToggleButtons = 'ok' | 'selectAll';
-
 @Injectable()
 export class ColumnToggleButtonsService {
   buttons: TemplateRef<any> = null;
@@ -19,9 +17,7 @@ export class ColumnToggleButtonsService {
     return this._selectAllButtonClicked.asObservable();
   }
 
-  public buttonClicked(type: ColumnToggleButtons): void {
-    if (type.toLowerCase() === 'selectall') {
-      this._selectAllButtonClicked.next();
-    }
+  public buttonClicked(): void {
+    this._selectAllButtonClicked.next();
   }
 }

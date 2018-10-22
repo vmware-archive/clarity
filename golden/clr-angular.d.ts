@@ -233,7 +233,6 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     refresh: EventEmitter<ClrDatagridStateInterface<T>>;
     rowActionService: RowActionService;
     rowSelectionMode: boolean;
-    /** @deprecated */ rowSelectionModeDeprecated: boolean;
     rows: QueryList<ClrDatagridRow<T>>;
     scrollableColumns: ViewContainerRef;
     selected: T[];

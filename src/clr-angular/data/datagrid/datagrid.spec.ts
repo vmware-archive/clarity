@@ -680,13 +680,6 @@ export default function(): void {
           context.detectChanges();
           expect(context.testComponent.selected).toEqual(2);
         });
-
-        it("sets deprecated attribute 'clDgRowSelection' as expected `rowSelectionMode` is enabled", function() {
-          expect(selection.rowSelectionMode).toBe(false);
-          context.clarityDirective.rowSelectionModeDeprecated = true;
-          context.detectChanges();
-          expect(selection.rowSelectionMode).toBe(true);
-        });
       });
 
       describe('View', function() {

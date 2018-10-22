@@ -65,23 +65,6 @@ module.exports = function(karma) {
       require('karma-sauce-launcher'),
     ],
     files: [
-      //PrismJS
-      {
-        pattern: './node_modules/prismjs/themes/prism.css',
-        included: true,
-        watched: false,
-      },
-      {
-        pattern: './node_modules/prismjs/prism.js',
-        included: true,
-        watched: false,
-      },
-      {
-        pattern: './node_modules/prismjs/components/prism-typescript.min.js',
-        included: true,
-        watched: false,
-      },
-
       // Custom Elements
       {
         pattern: './node_modules/@webcomponents/custom-elements/custom-elements.min.js',

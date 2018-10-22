@@ -8,6 +8,7 @@
 src/clr-angular/.ng_build
 src/clr-angular/.ng_pkg_build
 /tests/tslint/dist
+src/clr-angular/package.json
 
 /reports
 

@@ -28,20 +28,11 @@
                 "output": "/assets"
               }
             ],
-            "styles": [
-              "src/clr-icons/clr-icons.scss",
-              "node_modules/prismjs/themes/prism-solarizedlight.css",
-              "src/dev/src/styles.scss"
-            ],
+            "styles": ["src/clr-icons/clr-icons.scss", "src/dev/src/styles.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["node_modules"]
             },
-            "scripts": [
-              "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-              "node_modules/prismjs/prism.js",
-              "node_modules/prismjs/components/prism-typescript.min.js",
-              "node_modules/prismjs/components/prism-json.min.js"
-            ]
+            "scripts": ["node_modules/@webcomponents/custom-elements/custom-elements.min.js"]
           },
           "configurations": {
             "production": {

@@ -34,7 +34,9 @@ gemini.suite('modal', child => {
     child
       .setUrl('/modal/max-height')
       .before((actions, find) => {
-        actions.waitForElementToShow('.clr-example', WAIT_TIME);
+        actions.waitForElementToShow('.btn', WAIT_TIME);
+        actions.click(find('.btn'));
+        actions.waitForElementToShow('.modal-content', WAIT_TIME);
         actions.wait(WAIT_LOAD_TIME);
       })
       .setCaptureElements('.content-area')

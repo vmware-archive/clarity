@@ -148,14 +148,6 @@ export default function(): void {
           });
         });
 
-        describe('prev', () => {
-          it('should call the navService', () => {
-            spyOn(wizardNavigationService, 'previous');
-            wizard.prev();
-            expect(wizardNavigationService.previous).toHaveBeenCalledTimes(1);
-          });
-        });
-
         describe('previous', () => {
           it('should call the navService', () => {
             spyOn(wizardNavigationService, 'previous');

@@ -536,18 +536,6 @@ export class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
   }
 
   /**
-   * DEPRECATED. Moves the wizard to the previous page. Carried over from legacy.
-   *
-   * It is recommended that you use previous() instead.
-   *
-   * @name prev
-   * @memberof ClrWizard
-   */
-  public prev(): void {
-    this.previous();
-  }
-
-  /**
    * Moves the wizard to the previous page.
    *
    * @name previous

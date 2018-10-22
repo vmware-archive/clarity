@@ -1198,7 +1198,6 @@ export declare class ClrWizard implements OnInit, OnDestroy, AfterContentInit, D
     ngOnDestroy(): void;
     ngOnInit(): void;
     open(): void;
-    prev(): void;
     previous(): void;
     reset(): void;
     toggle(value: boolean): void;

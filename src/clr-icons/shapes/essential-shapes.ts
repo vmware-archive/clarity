@@ -12,10 +12,6 @@ interface Window {
 
 declare var window: Window;
 
-// TODO: deprecate these imported shapes in 0.13
-// TODO: remove these imported shapes in 1.0
-import { ClrShapeEye, ClrShapeEyeHide } from './core-shapes';
-
 /* tslint:disable:variable-name */
 export const ClrShapeAddText = clrIconSVG(`<path class="clr-i-outline clr-i-outline-path-1" d="M31,21H13a1,1,0,0,0,0,2H31a1,1,0,0,0,0-2Z"/>
             <path class="clr-i-outline clr-i-outline-path-2" d="M12,16a1,1,0,0,0,1,1H31a1,1,0,0,0,0-2H13A1,1,0,0,0,12,16Z"/>
@@ -905,8 +901,6 @@ export const EssentialShapes: any = {
   'circle-arrow': ClrShapeCircleArrow,
   'child-arrow': ClrShapeChildArrow,
   copy: ClrShapeCopy,
-  eye: ClrShapeEye,
-  'eye-hide': ClrShapeEyeHide,
   help: ClrShapeHelp,
   login: ClrShapeLogin,
   logout: ClrShapeLogout,
@@ -967,10 +961,6 @@ export const EssentialShapes: any = {
   portrait: ClrShapePortrait,
 };
 
-// Moved to core, but reexported here for backwards compat
-// @deprecated since 0.13, removal in 1.0
-export { ClrShapeEye, ClrShapeEyeHide } from './core-shapes';
-
 Object.defineProperty(EssentialShapes, 'edit', descriptorConfig(EssentialShapes.pencil));
 Object.defineProperty(EssentialShapes, 'note-edit', descriptorConfig(EssentialShapes.note));
 Object.defineProperty(EssentialShapes, 'group', descriptorConfig(EssentialShapes.users));
@@ -978,7 +968,6 @@ Object.defineProperty(EssentialShapes, 'document', descriptorConfig(EssentialSha
 Object.defineProperty(EssentialShapes, 'add', descriptorConfig(EssentialShapes.plus));
 Object.defineProperty(EssentialShapes, 'cancel', descriptorConfig(EssentialShapes.ban));
 Object.defineProperty(EssentialShapes, 'remove', descriptorConfig(EssentialShapes['times-circle']));
-Object.defineProperty(EssentialShapes, 'eye-show', descriptorConfig(EssentialShapes.eye));
 Object.defineProperty(EssentialShapes, 'sign-in', descriptorConfig(EssentialShapes.login));
 Object.defineProperty(EssentialShapes, 'sign-out', descriptorConfig(EssentialShapes.logout));
 Object.defineProperty(EssentialShapes, 'lightning', descriptorConfig(EssentialShapes.bolt));

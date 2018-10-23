@@ -4,6 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { FocusTrapTracker } from './focus-trap-tracker.service';
+import {FocusTrapTracker} from "./focus-trap-tracker.service";
 
-export function FocusTrapTrackerProvider(existing: FocusTrapTracker) {return existing || new FocusTrapTracker(); }
+export function FocusTrapTrackerProvider(existing: FocusTrapTracker) {
+    return existing || new FocusTrapTracker();
+}

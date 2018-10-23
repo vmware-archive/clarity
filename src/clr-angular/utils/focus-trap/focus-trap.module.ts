@@ -5,12 +5,10 @@
  */
 import {CommonModule} from "@angular/common";
 import {NgModule, Optional, SkipSelf} from "@angular/core";
-import {FocusTrapTracker} from "./focus-trap-tracker.service";
 
-import {FOCUS_TRAP_DIRECTIVES} from "./index";
-import {ResponsiveNavigationService} from "../../layout/nav/providers/responsive-navigation.service";
-import {ResponsiveNavigationProvider} from "../../layout/nav/providers/responsive-navigation.provider";
 import {FocusTrapTrackerProvider} from "./focus-trap-tracker.provider";
+import {FocusTrapTracker} from "./focus-trap-tracker.service";
+import {FOCUS_TRAP_DIRECTIVES} from "./index";
 
 @NgModule({
     imports: [CommonModule],

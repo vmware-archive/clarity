@@ -16,8 +16,6 @@ import {
   SimpleChange,
   ViewChild,
   Inject,
-  Renderer2,
-  ElementRef,
 } from '@angular/core';
 
 import { FocusTrapDirective } from '../utils/focus-trap/focus-trap.directive';
@@ -68,9 +66,7 @@ export class ClrModal implements OnChanges, OnDestroy {
   constructor(
     private _scrollingService: ScrollingService,
     public commonStrings: ClrCommonStrings,
-    @Inject(UNIQUE_ID) public modalId: string,
-    private el: ElementRef,
-    private renderer: Renderer2
+    @Inject(UNIQUE_ID) public modalId: string
   ) {}
 
   get sizeClass(): string {

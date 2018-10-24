@@ -121,6 +121,11 @@ export default function(): void {
       expect(myAlert.getAttribute('role')).toBe('alert');
     });
 
+    it('Has an ARIA-live value of assertive', () => {
+      const myAlert: HTMLElement = compiled.querySelector('.alert');
+      expect(myAlert.getAttribute('aria-live')).toBe('assertive');
+    });
+
     it('shows and hides the alert based on the clrAlertClosed input', () => {
       expect(compiled.querySelector('.alert')).not.toBeNull();
       fixture.componentInstance.closed = true;

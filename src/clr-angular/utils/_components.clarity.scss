@@ -13,7 +13,6 @@
 @import '../utils/bootstrap/images';
 @import '../utils/bootstrap/list-group';
 @import '../utils/bootstrap/close';
-@import '../utils/bootstrap/grid';
 @import '../utils/bootstrap/responsive-embed';
 
 // Clarity scss maps w/ overridable variables per component
@@ -21,9 +20,6 @@
 
 //Reboot
 @import '../utils/reboot.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
-
-//@import "./media/media.clarity"; //Deleted
-//@import "./utils/utilities.clarity"; // deleted
 
 //Popover
 @import '../popover/common/popover.clarity';
@@ -47,14 +43,9 @@
 //depends on variables.clarity, mixins.clarity, color.clarity, icons.clarity, buttons.clarity
 @import '../emphasis/alert/alert.clarity';
 
-//List Group
-//@import "./list-group/list-group.clarity"; // deleted
-
 //Cards
 //depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, list-group.clarity, buttons.clarity
 @import '../layout/card.clarity';
-
-//@import "./custom-forms-deprecated/custom-forms-deprecated.clarity"; // deleted
 
 //Dropdowns
 //depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity
@@ -66,7 +57,6 @@
 
 //Grid
 //depends on variables.clarity, mixins.clarity
-@import '../layout/grid-deprecated.clarity';
 @import '../layout/grid/grid.clarity';
 
 //Lists

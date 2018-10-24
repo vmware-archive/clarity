@@ -1,0 +1,44 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// @deprecated Bootstrap dependencies are deprecated since 1.0. Remove before 2.0.
+
+@import '../utils/mixins.clarity';
+
+@import '../utils/bootstrap/variables';
+@import '../utils/bootstrap/mixins';
+@import '../utils/bootstrap/mixins/clearfix';
+@import '../utils/bootstrap/mixins/grid-framework';
+@import '../utils/bootstrap/mixins/grid';
+
+//Color
+@import '../color/utils/colors.clarity';
+@import '../color/utils/helpers.clarity';
+@import '../color/color.clarity';
+@import '../color/variables.color';
+@import '../utils/variables.global';
+
+@include exports('grid-deprecated.clarity') {
+  .container {
+    @include make-container();
+    @include make-container-max-widths();
+  }
+
+  .container-fluid {
+    @include make-container();
+  }
+
+  .row {
+    @include make-row();
+  }
+
+  .row {
+    &.force-fit {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  @include make-grid-columns();
+}

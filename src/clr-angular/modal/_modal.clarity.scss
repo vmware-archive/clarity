@@ -79,6 +79,10 @@
   }
 }
 
+.modal-title-wrapper {
+  width: 100%;
+}
+
 .modal-body {
   // This doesn't do much, but at least with several paragraphs in the content
   // it doesn't mess up the modal's proportions.

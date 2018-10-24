@@ -94,10 +94,7 @@ export class ClrModal implements OnChanges, OnDestroy {
   @Input('clrModalPreventClose') stopClose: boolean = false;
   @Output('clrModalAlternateClose') altClose: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
-  constructor(
-    private _scrollingService: ScrollingService,
-    @Inject(UNIQUE_ID) public modalId: string
-  ) {}
+  constructor(private _scrollingService: ScrollingService, @Inject(UNIQUE_ID) public modalId: string) {}
 
   get sizeClass(): string {
     if (this.size) {

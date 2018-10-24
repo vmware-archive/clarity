@@ -15,10 +15,12 @@ import {
   Output,
   SimpleChange,
   ViewChild,
+  Inject,
 } from '@angular/core';
 
 import { FocusTrapDirective } from '../utils/focus-trap/focus-trap.directive';
 import { ScrollingService } from '../utils/scrolling/scrolling-service';
+import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../utils/id-generator/id-generator.service';
 
 import { GHOST_PAGE_ANIMATION } from './utils/ghost-page-animations';
 
@@ -26,6 +28,7 @@ import { GHOST_PAGE_ANIMATION } from './utils/ghost-page-animations';
   selector: 'clr-modal',
   viewProviders: [ScrollingService],
   templateUrl: './modal.html',
+  providers: [UNIQUE_ID_PROVIDER],
   styles: [
     `
         :host { display: none; }
@@ -91,7 +94,10 @@ export class ClrModal implements OnChanges, OnDestroy {
   @Input('clrModalPreventClose') stopClose: boolean = false;
   @Output('clrModalAlternateClose') altClose: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
-  constructor(private _scrollingService: ScrollingService) {}
+  constructor(
+    private _scrollingService: ScrollingService,
+    @Inject(UNIQUE_ID) public modalId: string
+  ) {}
 
   get sizeClass(): string {
     if (this.size) {

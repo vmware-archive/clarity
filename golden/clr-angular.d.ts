@@ -698,12 +698,13 @@ export declare class ClrModal implements OnChanges, OnDestroy {
     closable: boolean;
     focusTrap: FocusTrapDirective;
     ghostPageState: string;
+    modalId: string;
     size: string;
     readonly sizeClass: string;
     skipAnimation: string;
     staticBackdrop: boolean;
     stopClose: boolean;
-    constructor(_scrollingService: ScrollingService);
+    constructor(_scrollingService: ScrollingService, modalId: string);
     close(): void;
     fadeDone(e: AnimationEvent): void;
     ngOnChanges(changes: {

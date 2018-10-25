@@ -1,9 +1,14 @@
 {
-    "current": "0.13.6",
+    "current": "0.13.7",
     "all": {
+        "0.13.7": {
+            "date": "Oct 25, 2018",
+            "sketch": "0.13.5",
+            "commit": "aed3d3d36d1016ac5664f30ccc961d0e6b865510"
+        },
         "0.13.6": {
             "date": "Oct 18, 2018",
-            "sketch": "0.13.6",
+            "sketch": "0.13.5",
             "commit": "b9b47e7af1369c03eba053a53995d5abdf783d0c"
         },
         "0.13.5": {
@@ -55,6 +60,11 @@
             "date": "Aug 14, 2018",
             "sketch": "0.12.7",
             "commit": "175f3cb9318d629d014e5bcf2282ded34b102737"
+        },
+        "0.12.15": {
+            "date": "Oct 25, 2018",
+            "sketch": "0.12.7",
+            "commit": "e88b1e4a90ad83db76e3fa2526d8b5562eeeee0a"
         },
         "0.12.14": {
             "date": "Oct 18, 2018",
@@ -150,6 +160,11 @@
             "date": "May 23, 2018",
             "sketch": "0.12.2",
             "commit": "0737915bfd981701bda4b825a8b440d748f3e3a4"
+        },
+        "0.11.33": {
+            "date": "Oct 25, 2018",
+            "sketch": "0.11.6",
+            "commit": "94afba59ac09ec8d8a2ba55e25d72827f3d9f289"
         },
         "0.11.32": {
             "date": "Oct 11, 2018",

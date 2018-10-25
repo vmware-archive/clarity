@@ -24,5 +24,6 @@ export const ICONS_TAGS = {
     "flame": ["fire"],
     "talk-bubbles": ["chat"],
     "truck": ["shipping"],
-    "trash": ["delete", "remove"]
+    "trash": ["delete", "remove"],
+    "step-forward-2": ["first", "last", "start", "end"]
 };

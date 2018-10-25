@@ -1,6 +1,6 @@
 {
     "name": "clr-all",
-    "version": "0.11.32",
+    "version": "0.11.33",
     "private": true,
     "scripts": {
         "start": "webpack-dev-server -d --open",
@@ -9,7 +9,7 @@
         "build": "npm-run-all clean build:angular webpack build:icons",
         "postbuild": "node ./scripts/aot-check.js",
         "pretest": "webpack",
-        "test": "karma start ./karma.conf.js",
+        "test": "karma start ./karma.conf.js --single-run",
         "test:travis": "npm-run-all clang:check tslint:check tslint:spec test",
         "clang:check": "./scripts/clang-check.sh",
         "clang:format": "node_modules/.bin/clang-format -style=file -i --glob=src/**/*.ts",

@@ -21,16 +21,16 @@
     <div class="spinner" *ngIf="loadingFlag">
       Loading...
     </div>
-    <clr-alert [clrAlertType]="'alert-info'" [clrAlertClosable]="false">
-      <div class="alert-item">
+    <clr-alert clrAlertType="info" [clrAlertClosable]="false">
+      <clr-alert-item>
         This&nbsp;
         <a href="https://en.wikipedia.org/wiki/42_(number)#The_Hitchhiker.27s_Guide_to_the_Galaxy" target="_blank">wiki article</a>&nbsp;might help you answer the question.
-      </div>
+      </clr-alert-item>
     </clr-alert>
-    <clr-alert *ngIf="errorFlag" [clrAlertType]="'alert-danger'">
-      <div class="alert-item">
+    <clr-alert *ngIf="errorFlag" clrAlertType="danger">
+      <clr-alert-item>
         Your answer is incorrect.
-      </div>
+      </clr-alert-item>
     </clr-alert>
     <form #myForm="ngForm" [class.hide]="loadingFlag">
       <section class="form-block">

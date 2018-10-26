@@ -79,25 +79,25 @@ export default function(): void {
     });
 
     it('extends the alert type classes when clrAlertType is set', () => {
-      // default alert-info class
+      // default info class
       expect(compiled.querySelector('.alert-info')).not.toBeNull();
 
-      // set alert-danger
-      fixture.componentInstance.type = 'alert-danger';
+      // set danger
+      fixture.componentInstance.type = 'danger';
       fixture.detectChanges();
 
       expect(compiled.querySelector('.alert-info')).toBeNull();
       expect(compiled.querySelector('.alert-danger')).not.toBeNull();
 
-      // set alert-warning
-      fixture.componentInstance.type = 'alert-warning';
+      // set warning
+      fixture.componentInstance.type = 'warning';
       fixture.detectChanges();
 
       expect(compiled.querySelector('.alert-danger')).toBeNull();
       expect(compiled.querySelector('.alert-warning')).not.toBeNull();
 
-      // set alert-success
-      fixture.componentInstance.type = 'alert-success';
+      // set success
+      fixture.componentInstance.type = 'success';
       fixture.detectChanges();
 
       expect(compiled.querySelector('.alert-warning')).toBeNull();

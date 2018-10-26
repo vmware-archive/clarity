@@ -45,24 +45,21 @@ export class AlertIconAndTypesService {
     return this.iconInfoFromType(this._alertType).title;
   }
 
-  public iconInfoFromType(type: string, classOrShape: string = 'shape'): AlertInfoObject {
+  public iconInfoFromType(type: string): AlertInfoObject {
     const returnObj = { shape: '', cssClass: '', title: '' };
 
     switch (type) {
       case 'warning':
-      case 'alert-warning':
         returnObj.shape = 'exclamation-triangle';
         returnObj.cssClass = 'alert-warning';
         returnObj.title = this.commonStrings.warning;
         break;
       case 'danger':
-      case 'alert-danger':
         returnObj.shape = 'exclamation-circle';
         returnObj.cssClass = 'alert-danger';
         returnObj.title = this.commonStrings.danger;
         break;
       case 'success':
-      case 'alert-success':
         returnObj.shape = 'check-circle';
         returnObj.cssClass = 'alert-success';
         returnObj.title = this.commonStrings.success;

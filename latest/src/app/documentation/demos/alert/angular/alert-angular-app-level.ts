@@ -6,7 +6,7 @@
 import {Component} from "@angular/core";
 
 const HTML_EXAMPLE = `
-<clr-alert [clrAlertType]="'alert-danger'" [clrAlertAppLevel]="true">
+<clr-alert [clrAlertType]="'danger'" [clrAlertAppLevel]="true">
     <clr-alert-item>
         <span class="alert-text">
             This is an app level alert.

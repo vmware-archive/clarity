@@ -11,7 +11,7 @@
                         <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
                     </div>
                     <span class="alert-text">
-                        The forms documentation here describes the new forms introduced in version 0.12. The old forms are still available, but deprecated for removal in version 2.0. To see the old grid documentation, go to <a href="/clarity/documentation/v0.11/forms/">0.11 forms documentation</a>.
+                        The forms documentation here describes the new forms introduced in version 0.12. The old forms are still available, but deprecated for removal in version 2.0. To see the old grid documentation, go to <a href="/clarity/documentation/v0.11/forms/">0.11 forms documentation</a>. You will need to include the <code class="clr-code">ClrFormsDeprecatedModule</code> in your Angular module imports for the old checkbox and datepicker to work.
                     </span>
                 </div>
             </div>
@@ -20,25 +20,6 @@
         <h2 id="forms-using-angular">Forms Using Angular</h2>
         
         <p>Clarity has created a set of directives to help manage forms with minimal effort by developers. The structure is more condensed and easier to implement, so it is the recommended approach to use the following if you are using Angular. More form controls are being added regularly.</p>
-
-        <div class="alert alert-info">
-            <div class="alert-items">
-                <div class="alert-item static">
-                    <div class="alert-icon-wrapper">
-                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
-                    </div>
-                    <span class="alert-text">
-                        The forms features described here are not part of the main <code class="clr-code">ClarityModule</code> in this release. You have to opt into them by including the additional <code class="clr-code">ClrFormsNextModule</code> in your module imports.
-                    </span>
-                </div>
-            </div>
-        </div>
-
-        <h4>Include <code class="clr-code">ClrFormsNextModule</code></h4>
-        
-        <p>The new forms are opt-in right now, since they are not fully ready for use yet. In order to use it, begin by importing the <code class="clr-code">ClrFormsNextModule</code> and adding it to your module imports.</p>
-        
-        <clr-code-snippet [clrCode]="ngModule" clrLanguage="typescript"></clr-code-snippet>
 
         <h4>Basic form</h4>
 

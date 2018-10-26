@@ -26,7 +26,7 @@ const HTML_EXAMPLE = `
         </div>
     </clr-alert-item>
 </clr-alert>
-<clr-alert [clrAlertType]="'alert-warning'">
+<clr-alert [clrAlertType]="'warning'">
     <clr-alert-item>
         <span class="alert-text">
             Try closing this alert.

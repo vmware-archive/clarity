@@ -20,7 +20,7 @@ export class WizardJumpToDemo {
 
     public jumpTo(page: ClrWizardPage) {
         if (page && page.completed) {
-            this.wizard.navService.setCurrentPage(page);
+            this.wizard.navService.currentPage = page;
         } else {
             this.wizard.navService.setLastEnabledPageCurrent();
         }
@@ -49,7 +49,7 @@ export class WizardJumpToDemo {
 
     public jumpTo(page: ClrWizardPage) {
         if (page && page.completed) {
-            this.wizard.navService.setCurrentPage(page);
+            this.wizard.navService.currentPage = page;
         } else {
             this.wizard.navService.setLastEnabledPageCurrent();
         }

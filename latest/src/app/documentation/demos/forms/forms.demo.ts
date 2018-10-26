@@ -16,7 +16,6 @@ import * as NgErrors from "./ng/errors.html";
 import * as NgForm from "./ng/form.html";
 import * as NgHelpers from "./ng/helpers.html";
 import * as NgLayouts from "./ng/layouts.html";
-import * as NgModule from "!raw-loader!./ng/module.txt";
 import * as NgReactiveTs from "!raw-loader!./ng/reactive.txt";
 import * as NgReactiveHtml from "./ng/reactive.html";
 import * as NgStructure from "./ng/structure.html";
@@ -45,7 +44,6 @@ export class FormsDemo extends ClarityDocComponent {
     ngForm: any = NgForm;
     ngHelpers: any = NgHelpers;
     ngLayouts: any = NgLayouts;
-    ngModule: any = NgModule;
     ngReactiveTs: any = NgReactiveTs;
     ngReactiveHtml: any = NgReactiveHtml;
     ngStructure: any = NgStructure;

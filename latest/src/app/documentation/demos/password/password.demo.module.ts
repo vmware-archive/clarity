@@ -5,7 +5,7 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ClarityModule, ClrFormsNextModule} from "@clr/angular";
+import {ClarityModule} from "@clr/angular";
 import {FormsModule} from "@angular/forms";
 
 import {PasswordDemo} from "./password.demo";
@@ -17,7 +17,6 @@ import {UtilsModule} from "../../../utils/utils.module";
     imports: [
         CommonModule,
         ClarityModule,
-        ClrFormsNextModule,
         FormsModule,
         RouterModule.forChild([{path: "", component: PasswordDemo}]),
         DocWrapperModule,

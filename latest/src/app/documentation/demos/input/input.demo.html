@@ -8,22 +8,6 @@
 
         <p>If you are using Angular, the recommended approach is to always use the <code class="clr-code">ClrInput</code> directive on your inputs to help manage the form control. By using <code class="clr-code">ClrInput</code>, you'll automatically be able to leverage built in validation, helper text, and layout features in forms.</p>
 
-        <div class="alert alert-info">
-            <div class="alert-items">
-                <div class="alert-item static">
-                    <div class="alert-icon-wrapper">
-                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
-                    </div>
-                    <span class="alert-text">
-                        The forms features described here are not part of the main <code class="clr-code">ClarityModule</code> in this release. You have to opt into them by including the additional <code class="clr-code">ClrFormsNextModule</code> in your module imports.
-                    </span>
-                    <div class="alert-actions">
-                        <a routerLink="../../../forms">Learn more</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <h4>Basic input</h4>
 
         <p>This is the most basic way to create an input inside of a form. This is only if you don't have a need for a label or validation. You need to add <code class="clr-code">clrInput</code> to your input to wire up the directive. Notice, it is not necessary to add <code class="clr-code">type="text"</code> as it is handled automatically. It will only work if you have the control wired up with either a template driven form or reactive form.</p>

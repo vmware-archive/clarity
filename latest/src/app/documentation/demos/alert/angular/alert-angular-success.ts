@@ -6,7 +6,7 @@
 import {Component} from "@angular/core";
 
 const HTML_EXAMPLE = `
-<clr-alert [clrAlertType]="'alert-success'">
+<clr-alert [clrAlertType]="'success'">
     <clr-alert-item>
         <span class="alert-text">
             This alert indicates success.

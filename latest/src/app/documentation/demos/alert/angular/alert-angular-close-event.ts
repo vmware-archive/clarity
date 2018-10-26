@@ -6,7 +6,7 @@
 import {Component} from "@angular/core";
 
 const HTML_EXAMPLE = `
-<clr-alert [clrAlertType]="'alert-success'" (clrAlertClosedChange)="onClose()">
+<clr-alert [clrAlertType]="'success'" (clrAlertClosedChange)="onClose()">
     <clr-alert-item>
         <span class="alert-text">
             This alert indicates a success!
@@ -22,7 +22,7 @@ export class AlertAngularDemo  {
 
     onClose() {
         this.closeMessage = "The alert has been closed";
-        }
+    }
 }
 `;
 
